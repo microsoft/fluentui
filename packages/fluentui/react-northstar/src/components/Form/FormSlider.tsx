@@ -2,6 +2,7 @@ import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import Slider, { SliderProps } from '../Slider/Slider';
+import * as PropTypes from 'prop-types';
 
 interface FormSliderOwnProps extends SliderProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -10,7 +11,7 @@ type SelectedFormFieldCustomProps = Omit<
 >;
 export interface FormSliderProps extends SelectedFormFieldCustomProps, FormSliderOwnProps {}
 export type FormSliderStylesProps = never;
-export const FormSliderClassName = 'ui-form-slider';
+export const formSliderClassName = 'ui-form__slider';
 
 /**
  * An FormSlider renders a Slider wrapped by FormField.
@@ -18,20 +19,27 @@ export const FormSliderClassName = 'ui-form-slider';
 const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
-    className: FormSliderClassName,
+    className: formSliderClassName,
     displayName: 'FormSlider',
     overrideStyles: true,
-    shorthandConfig: {},
+    handledProps: Slider.handledProps,
     slots: {
       control: Slider,
     },
+    slotProps: ({ onChange }) => ({
+      control: {
+        onChange,
+      },
+    }),
   },
 );
 
 FormSlider.propTypes = {
   ...commonPropTypes.createCommon({
-    content: 'shorthand',
+    content: false,
+    children: false,
   }),
+  onChange: PropTypes.func,
 };
 
 export default FormSlider;

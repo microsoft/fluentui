@@ -125,6 +125,8 @@ export { default as FormSlider } from './components/Form/FormSlider';
 export * from './components/Form/FormSlider';
 export { default as FormCheckbox } from './components/Form/FormCheckbox';
 export * from './components/Form/FormCheckbox';
+export { default as FormFieldCustom } from './components/Form/FormFieldCustom';
+export * from './components/Form/FormFieldCustom';
 
 export * from './components/Grid/Grid';
 export { default as Grid } from './components/Grid/Grid';

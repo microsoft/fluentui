@@ -152,7 +152,10 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
 );
 
 _FormFieldBase.propTypes = {
-  ...commonPropTypes.createCommon(),
+  ...commonPropTypes.createCommon({
+    children: false,
+    content: false,
+  }),
   control: customPropTypes.itemShorthand,
   id: PropTypes.string,
   inline: PropTypes.bool,

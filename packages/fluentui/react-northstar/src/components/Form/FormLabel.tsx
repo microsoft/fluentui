@@ -10,13 +10,13 @@ interface FormLabelOwnProps {
 export interface FormLabelProps extends BoxProps, FormLabelOwnProps {}
 export type FormLabelStylesProps = Required<Pick<FormLabelOwnProps, 'inline' | 'required'>>;
 
-export const FormLabelClassName = 'ui-form-label';
+export const formLabelClassName = 'ui-form__label';
 
 /**
  * An FormLabel provides a slot for label in the FormField.
  */
 const FormLabel = compose<'label', FormLabelProps, FormLabelStylesProps, BoxProps, {}>(Box, {
-  className: FormLabelClassName,
+  className: formLabelClassName,
   displayName: 'FormLabel',
   overrideStyles: true,
   mapPropsToStylesProps: ({ inline, required }) => ({
