@@ -6,6 +6,7 @@
 
 import { Async } from '@uifabric/utilities';
 import * as React from 'react';
+import { Ref } from 'react';
 
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React.FormEvent<TElement> | undefined, newValue: TValue | undefined) => void;
@@ -42,7 +43,7 @@ export function useForceUpdate(): () => void;
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public
-export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void;
+export function useMergedRefs<T>(...refs: Ref<T>[]): (instance: T) => void;
 
 // @public
 export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
