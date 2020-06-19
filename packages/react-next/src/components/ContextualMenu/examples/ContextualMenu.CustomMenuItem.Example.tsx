@@ -4,7 +4,7 @@ import {
   IContextualMenuProps,
   IContextualMenuItem,
   IContextualMenuItemProps,
-} from '@fluentui/react-next';
+} from '@fluentui/react-next/lib/ContextualMenu';
 import { DefaultButton } from '@fluentui/react-next/lib/Button';
 
 export const ContextualMenuWithCustomMenuItemExample: React.FunctionComponent = () => {

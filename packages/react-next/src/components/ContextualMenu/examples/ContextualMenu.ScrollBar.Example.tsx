@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { DirectionalHint, IContextualMenuProps, IContextualMenuItem } from '@fluentui/react-next';
-import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { IContextualMenuProps, IContextualMenuItem, DirectionalHint, DefaultButton } from '@fluentui/react-next';
 
 export const ContextualMenuWithScrollBarExample: React.FunctionComponent = () => {
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;

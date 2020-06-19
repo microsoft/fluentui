@@ -11,7 +11,7 @@ import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-import { DefaultButton, IButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButton } from '@fluentui/react-next/lib/Button';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -33,7 +33,7 @@ describe('ContextualMenu', () => {
     const realFocusFirstChild = Utilities.focusFirstChild;
     jest.spyOn(Utilities, 'focusFirstChild').mockImplementation((rootElement: HTMLElement) => {
       function markAllVisible(element: Element) {
-        (element as any).isVisible = true;
+        ((element as unknown) as { isVisible: boolean }).isVisible = true;
         if (element.children.length) {
           for (let i = 0; i < element.children.length; i++) {
             markAllVisible(element.children[i]);
@@ -384,7 +384,7 @@ describe('ContextualMenu', () => {
   it('closes all menus on alt only', () => {
     let menuDismissed = false;
     let dismissedAll = false;
-    const onDismiss = (ev?: any, dismissAll?: boolean) => {
+    const onDismiss = (ev?: unknown, dismissAll?: boolean) => {
       menuDismissed = true;
       dismissedAll = !!dismissAll;
     };
@@ -601,7 +601,7 @@ describe('ContextualMenu', () => {
       },
       {
         text: 'TestText 2',
-        key: 'TestKey3',
+        key: 'TestKey2',
       },
       {
         text: 'TestText 3',
@@ -1093,7 +1093,7 @@ describe('ContextualMenu', () => {
   describe('IContextualMenuRenderItem function tests', () => {
     const contextualItem = React.createRef<IContextualMenuRenderItem>();
     let menuDismissed: boolean;
-    const onDismiss = (ev?: any, dismissAll?: boolean) => {
+    const onDismiss = () => {
       menuDismissed = true;
     };
 

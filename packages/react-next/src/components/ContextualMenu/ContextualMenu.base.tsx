@@ -61,14 +61,13 @@ export interface IContextualMenuState {
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: Element;
   submenuTarget?: Element;
-  positions?: any;
   slideDirectionalClassName?: string;
   subMenuId?: string;
   submenuDirection?: DirectionalHint;
 }
 
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined {
-  return item.subMenuProps ? item.subMenuProps.items : item.items;
+  return item.subMenuProps ? item.subMenuProps.items : (item.items as IContextualMenuItem[]);
 }
 
 /**
@@ -158,7 +157,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     this._gotMouseMove = false;
   }
 
-  public dismiss = (ev?: any, dismissAll?: boolean) => {
+  public dismiss = (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean) => {
     const { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -511,7 +510,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     totalItemCount: number,
     hasCheckmarks: boolean,
     hasIcons: boolean,
-  ): React.ReactNode => {
+  ): JSX.Element => {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
     const {
@@ -597,7 +596,9 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         break;
     }
 
-    return renderedItems;
+    // Since multiple nodes *could* be rendered, wrap them all in a fragment with this item's key.
+    // This ensures the reconciler handles multi-item output per-node correctly and does not re-mount content.
+    return <React.Fragment key={item.key}>{renderedItems}</React.Fragment>;
   };
 
   private _defaultMenuItemRenderer = (item: IContextualMenuItemRenderProps): React.ReactNode => {
@@ -758,7 +759,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       itemProps && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(itemProps, divProperties);
     return (
       // tslint:disable-next-line:deprecation
-      <div id={id} className={this._classNames.header} {...divHtmlProperties} style={item.style}>
+      <div id={id as string} className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}
@@ -1029,7 +1030,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     }, NavigationIdleDelay);
   };
 
-  private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
+  private _onItemMouseEnterBase = (
+    item: IContextualMenuItem,
+    ev: React.MouseEvent<HTMLElement>,
+    target?: HTMLElement,
+  ): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
     }
@@ -1037,7 +1042,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     this._updateFocusOnMouseEvent(item, ev, target);
   };
 
-  private _onItemMouseMoveBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
+  private _onItemMouseMoveBase = (
+    item: IContextualMenuItem,
+    ev: React.MouseEvent<HTMLElement>,
+    target: HTMLElement,
+  ): void => {
     const targetElement = ev.currentTarget as HTMLElement;
 
     // Always do this check to make sure we record a mouseMove if needed (even if we are timed out)
@@ -1062,7 +1071,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return !this._isScrollIdle || !this._gotMouseMove;
   }
 
-  private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
+  private _onMouseItemLeave = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
     }
@@ -1081,9 +1090,9 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
      * Edge and IE expose a setActive() function for focusable divs that
      * sets the page focus but does not scroll the parent element.
      */
-    if ((this._host as any).setActive) {
+    if ('setActive' in this._host) {
       try {
-        (this._host as any).setActive();
+        (this._host as { setActive(): void }).setActive();
       } catch (e) {
         /* no-op */
       }
@@ -1206,7 +1215,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     (dismiss || !ev.defaultPrevented) && this.dismiss(ev, true);
   };
 
-  private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
+  private _onItemKeyDown = (item: IContextualMenuItem, ev: React.KeyboardEvent<HTMLElement>): void => {
     const openKey = getRTL(this.props.theme) ? KeyCodes.left : KeyCodes.right;
 
     if (
@@ -1301,7 +1310,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
    * from calling setState() after unmount. Do NOT copy this pattern in synchronous
    * code.
    */
-  private _onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
+  private _onSubMenuDismiss = (ev?: React.MouseEvent | React.KeyboardEvent, dismissAll?: boolean): void => {
     if (dismissAll) {
       this.dismiss(ev, dismissAll);
     } else if (this._mounted) {

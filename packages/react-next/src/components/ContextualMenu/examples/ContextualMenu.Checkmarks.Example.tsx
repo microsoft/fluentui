@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
   ContextualMenuItemType,
-  DirectionalHint,
   IContextualMenuItem,
   IContextualMenuProps,
+  DefaultButton,
+  DirectionalHint,
 } from '@fluentui/react-next';
-import { DefaultButton } from '@fluentui/react-next/lib/Button';
 
 const keys: string[] = [
   'newItem',

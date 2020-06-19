@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useConstCallback } from '@uifabric/react-hooks';
 import { DefaultButton } from '@fluentui/react-next/lib/Button';
-import { IContextualMenuProps, IContextualMenuItem } from '@fluentui/react-next';
+import { IContextualMenuProps, IContextualMenuItem } from '@fluentui/react-next/lib/ContextualMenu';
 import { TextField, ITextFieldStyles } from '@fluentui/react-next/lib/TextField';
 
 const textFieldStyles: Partial<ITextFieldStyles> = {

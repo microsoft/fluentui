@@ -4,12 +4,13 @@ import { DefaultButton } from '@fluentui/react-next/lib/Button';
 import { Checkbox, ICheckboxStyles } from '@fluentui/react-next/lib/Checkbox';
 import {
   ContextualMenuItemType,
-  DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
+  DirectionalHint,
+  Dropdown,
+  IDropdownOption,
 } from '@fluentui/react-next';
-import { Dropdown, IDropdownOption } from '@fluentui/react-next/lib/Dropdown';
-import { getRTL } from '@fluentui/react-next/lib/Utilities';
+import { getRTL } from '@uifabric/utilities';
 import './ContextualMenuExample.scss';
 
 const DIRECTION_OPTIONS = [

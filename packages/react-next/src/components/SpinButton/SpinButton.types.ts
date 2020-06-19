@@ -4,10 +4,9 @@ import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
 import { ISpinButtonClassNames } from './SpinButton.classNames';
 import { KeyboardSpinDirection } from './SpinButton';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles, IButtonProps } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject } from '../../Utilities';
-import { IButtonProps } from '../../compat/Button';
 
 /**
  * {@docCategory SpinButton}

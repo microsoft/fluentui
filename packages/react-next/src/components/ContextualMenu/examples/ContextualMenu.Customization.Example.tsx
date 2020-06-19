@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {
   ContextualMenuItemType,
-  DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
+  DirectionalHint,
+  DefaultButton,
+  IconButton,
+  FocusZoneDirection,
 } from '@fluentui/react-next';
-import { DefaultButton, IconButton } from '@fluentui/react-next/lib/Button';
-import { FocusZoneDirection } from '@fluentui/react-next/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
 export const ContextualMenuCustomizationExample: React.FunctionComponent = () => {
@@ -24,7 +25,7 @@ function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void)
   );
 }
 
-function renderCategoriesList(item: IContextualMenuItem): JSX.Element {
+function renderCategoriesList(item: IContextualMenuItem & { categoryList: ICategoryList[] }): JSX.Element {
   return (
     <ul className="ms-ContextualMenu-customizationExample-categoriesList">
       <li className="ms-ContextualMenu-item">

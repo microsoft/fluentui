@@ -9,11 +9,14 @@ import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ICalloutContentStyleProps } from 'office-ui-fabric-react/lib/Callout';
+import { ICalloutContentStyles } from 'office-ui-fabric-react';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
-import { IFocusZoneProps } from '@fluentui/react-focus';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { IFocusZoneProps as IFocusZoneProps_2 } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IIconProps as IIconProps_2 } from '@fluentui/react-next/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
@@ -96,7 +99,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     // (undocumented)
     static defaultProps: IContextualMenuProps;
     // (undocumented)
-    dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
+    dismiss: (ev?: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element> | undefined, dismissAll?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
@@ -450,14 +453,14 @@ export interface IContextualMenu {
 
 // @public (undocumented)
 export interface IContextualMenuItem {
-    [propertyName: string]: any;
+    [propertyName: string]: unknown;
     ariaLabel?: string;
     canCheck?: boolean;
     checked?: boolean;
     className?: string;
     componentRef?: IRefObject<IContextualMenuRenderItem>;
     customOnRenderListLength?: number;
-    data?: any;
+    data?: unknown;
     disabled?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
     //
@@ -465,7 +468,7 @@ export interface IContextualMenuItem {
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
     href?: string;
-    iconProps?: IIconProps;
+    iconProps?: IIconProps_2;
     // @deprecated
     inactive?: boolean;
     itemProps?: Partial<IContextualMenuItemProps>;
@@ -477,7 +480,7 @@ export interface IContextualMenuItem {
     name?: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMouseDown?: (item: IContextualMenuItem, event: React.MouseEvent<HTMLElement>) => void;
-    onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+    onRender?: (item: IContextualMenuItem, dismissMenu: (ev?: React.MouseEvent<HTMLElement>, dismissAll?: boolean) => void) => React.ReactNode;
     onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
     primaryDisabled?: boolean;
     rel?: string;
@@ -489,7 +492,7 @@ export interface IContextualMenuItem {
     split?: boolean;
     // @deprecated
     style?: React.CSSProperties;
-    submenuIconProps?: IIconProps;
+    submenuIconProps?: IIconProps_2;
     subMenuProps?: IContextualMenuProps;
     target?: string;
     text?: string;
@@ -501,14 +504,14 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
     className?: string;
     classNames: IMenuItemClassNames;
     componentRef?: IRefObject<IContextualMenuRenderItem>;
-    dismissMenu?: (ev?: any, dismissAll?: boolean) => void;
+    dismissMenu?: (ev?: React.MouseEvent<HTMLElement>, dismissAll?: boolean) => void;
     dismissSubMenu?: () => void;
     getSubmenuTarget?: () => HTMLElement | undefined;
     hasIcons: boolean | undefined;
     index: number;
     item: IContextualMenuItem;
     onCheckmarkClick?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) => void;
-    openSubMenu?: (item: any, target: HTMLElement) => void;
+    openSubMenu?: (item: IContextualMenuItem, target: HTMLElement) => void;
     styles?: IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles>;
     theme?: ITheme;
 }
@@ -631,7 +634,7 @@ export interface IContextualMenuRenderItem {
 }
 
 // @public (undocumented)
-export interface IContextualMenuSection extends React.ClassAttributes<any> {
+export interface IContextualMenuSection extends React.ClassAttributes<unknown> {
     bottomDivider?: boolean;
     items: IContextualMenuItem[];
     title?: string;
@@ -649,8 +652,6 @@ export interface IContextualMenuState {
     expandedByMouseClick?: boolean;
     // (undocumented)
     expandedMenuItemKey?: string;
-    // (undocumented)
-    positions?: any;
     // (undocumented)
     slideDirectionalClassName?: string;
     // (undocumented)
@@ -681,8 +682,8 @@ export interface IContextualMenuStyles {
 
 // @public (undocumented)
 export interface IContextualMenuSubComponentStyles {
-    callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
-    menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
+    callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+    menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuStyles>;
 }
 
 // @public (undocumented)
@@ -953,7 +954,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     // @deprecated
     doNotContainWithinFocusZone?: boolean;
     // @deprecated
-    focusZoneProps?: IFocusZoneProps;
+    focusZoneProps?: IFocusZoneProps_2;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -2181,7 +2182,6 @@ export { useTheme }
 export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
-export * from "@fluentui/react-focus";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
@@ -2204,6 +2204,7 @@ export * from "office-ui-fabric-react/lib/Dropdown";
 export * from "office-ui-fabric-react/lib/ExtendedPicker";
 export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
+export * from "office-ui-fabric-react/lib/FocusZone";
 export * from "office-ui-fabric-react/lib/Grid";
 export * from "office-ui-fabric-react/lib/GroupedList";
 export * from "office-ui-fabric-react/lib/HoverCard";

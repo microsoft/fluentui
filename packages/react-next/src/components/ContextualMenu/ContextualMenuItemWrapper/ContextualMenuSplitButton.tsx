@@ -26,6 +26,12 @@ export interface IContextualMenuSplitButtonState {}
 
 const TouchIdleDelay = 500; /* ms */
 
+interface IKeytipAttributeProps {
+  ['data-ktp-execute-target']: string;
+  ['data-ktp-target']: string;
+  ['aria-describedby']: string;
+}
+
 export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _splitButton: HTMLDivElement;
   private _lastTouchTimeoutId: number | undefined;
@@ -81,7 +87,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     return (
       <KeytipData keytipProps={keytipProps} disabled={isItemDisabled(item)}>
-        {(keytipAttributes: any): JSX.Element => (
+        {(keytipAttributes: IKeytipAttributeProps): JSX.Element => (
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
             ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
@@ -91,8 +97,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-disabled={isItemDisabled(item)}
             aria-expanded={itemHasSubmenu ? item.key === expandedMenuItemKey : undefined}
             aria-haspopup={true}
-            aria-describedby={mergeAriaAttributeValues(item.ariaDescription, keytipAttributes['aria-describedby'])}
-            aria-checked={item.isChecked || item.checked}
+            aria-describedby={mergeAriaAttributeValues(
+              item.ariaDescription as string,
+              keytipAttributes['aria-describedby'],
+            )}
+            aria-checked={(item.isChecked as boolean) || item.checked}
             aria-posinset={focusableElementIndex + 1}
             aria-setsize={totalItemCount}
             onMouseEnter={this._onItemMouseEnterPrimary}
@@ -105,7 +114,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             onTouchStart={this._onTouchStart}
             tabIndex={0}
             data-is-focusable={true}
-            aria-roledescription={item['aria-roledescription']}
+            aria-roledescription={item['aria-roledescription'] as string}
           >
             {this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!)}
             {this._renderSplitDivider(item)}
@@ -186,7 +195,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     item: IContextualMenuItem,
     classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
     index: number,
-    keytipAttributes: any,
+    keytipAttributes: IKeytipAttributeProps,
   ) {
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,

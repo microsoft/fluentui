@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from '@fluentui/react-next';
+import {
+  ContextualMenuItemType,
+  IContextualMenuProps,
+  IContextualMenuItem,
+} from '@fluentui/react-next/lib/ContextualMenu';
 import { DefaultButton } from '@fluentui/react-next/lib/Button';
 
 export const ContextualMenuPersistedExample: React.FunctionComponent = () => {

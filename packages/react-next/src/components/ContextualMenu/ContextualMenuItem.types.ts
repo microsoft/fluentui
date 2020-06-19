@@ -80,7 +80,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
   /**
    * This prop will get set by ContextualMenu and can be called to open this item's subMenu, if present.
    */
-  openSubMenu?: (item: any, target: HTMLElement) => void;
+  openSubMenu?: (item: IContextualMenuItem, target: HTMLElement) => void;
 
   /**
    * This prop will get set by ContextualMenu and can be called to close this item's subMenu, if present.
@@ -91,7 +91,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
    * This prop will get set by ContextualMenu and can be called to close the menu this item belongs to.
    * If dismissAll is true, all menus will be closed.
    */
-  dismissMenu?: (ev?: any, dismissAll?: boolean) => void;
+  dismissMenu?: (ev?: React.MouseEvent<HTMLElement>, dismissAll?: boolean) => void;
 
   /**
    * This prop will get set by the wrapping component and will return the element that wraps this ContextualMenuItem.

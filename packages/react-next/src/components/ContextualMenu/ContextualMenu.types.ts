@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IIconProps } from '@fluentui/react-next/lib/Icon';
 import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
@@ -15,6 +15,7 @@ import {
   IContextualMenuItemStyleProps,
 } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
+import { ICalloutContentStyles } from 'office-ui-fabric-react';
 
 /**
  * {@docCategory ContextualMenu}
@@ -124,7 +125,6 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * Menu items to display.
-   * @defaultvalue []
    */
   items: IContextualMenuItem[];
 
@@ -205,7 +205,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   calloutProps?: ICalloutProps;
 
   /**
-   * Optional title to be displayed on top of the menu.
+   * Title to be displayed at the top of the menu, above the items.
    */
   title?: string;
 
@@ -230,7 +230,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   subMenuHoverDelay?: number;
 
   /**
-   * Method to override the render of the individual menu items
+   * Custom component to use for rendering individual menu items.
    * @defaultvalue ContextualMenuItem
    */
   contextualMenuItemAs?:
@@ -251,23 +251,19 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * to improve rendering performance when it becomes visible.
    * Note: When ContextualMenu is hidden its content will not be rendered. It will only render
    * once the ContextualMenu is visible.
-   * @defaultValue undefined
    */
   hidden?: boolean;
 
   /**
-   * If true, the component will be updated even when `hidden=true`.
-   * Note that this would consume resources to update even though
-   * nothing is being shown to the user.
-   * This might be helpful though if your updates are small and you want the
-   * contextual menu to be revealed fast to the user when `hidden` is set to false.
+   * If true, the menu will be updated even when `hidden=true`. Note that this will consume
+   * resources to update even when nothing is being shown to the user. This might be helpful if
+   * your updates are small and you want the menu to display quickly when `hidden` is set to false.
    */
   shouldUpdateWhenHidden?: boolean;
 
   /**
    * If true, the contextual menu will not be updated until focus enters the menu via other means.
    * This will only result in different behavior when `shouldFocusOnMount = false`.
-   * @defaultvalue null
    */
   delayUpdateFocusOnHover?: boolean;
 }
@@ -310,11 +306,9 @@ export interface IContextualMenuItem {
   key: string;
 
   /**
-   * Text description for the menu item to display
-   * If a standard dash (-) is passed in, then the item will be rendered as a divider
-   * If a dash must appear as text then the alternatives of
-   * emdash (—), figuredash (‒), or minus symbol (−)
-   * can be used instead
+   * Text of the menu item.
+   * If a standard hyphen (-) is passed in, then the item will be rendered as a divider.
+   * If a dash must appear as text, use an emdash (—), figuredash (‒), or minus symbol (−) instead.
    */
   text?: string;
 
@@ -326,7 +320,7 @@ export interface IContextualMenuItem {
   itemType?: ContextualMenuItemType;
 
   /**
-   * Props for the Icon.
+   * Props for an icon to display next to the item.
    */
   iconProps?: IIconProps;
 
@@ -378,12 +372,14 @@ export interface IContextualMenuItem {
   /**
    * Any custom data the developer wishes to associate with the menu item.
    */
-  data?: any;
+  data?: unknown;
 
   /**
    * Callback for when the menu item is invoked. If `ev.preventDefault()` is called in `onClick`,
    * the click will not close the menu.
-   * Returning true will dismiss the menu even if `ev.preventDefault()` was called.
+   *
+   * Only for ContextualMenu items, returning true will dismiss the menu even if `ev.preventDefault()`
+   * was called (does not apply for button or CommandBar sub-menu items).
    */
   onClick?: (
     ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
@@ -465,13 +461,13 @@ export interface IContextualMenuItem {
   style?: React.CSSProperties;
 
   /**
-   * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
-   * If none is specified, the aria-label attribute will contain the item name
+   * Custom accessible label for the element.
+   * If no override is specified, the `aria-label` attribute will contain the item name.
    */
   ariaLabel?: string;
 
   /**
-   * Optional title for displaying text when hovering over an item.
+   * Title (tooltip) text displayed when hovering over an item.
    */
   title?: string;
 
@@ -485,7 +481,10 @@ export interface IContextualMenuItem {
    * @param dismissMenu - Function to dismiss the menu. Can be used to ensure that a custom menu
    * item click dismisses the menu. (Will be undefined if rendering a command bar item.)
    */
-  onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+  onRender?: (
+    item: IContextualMenuItem,
+    dismissMenu: (ev?: React.MouseEvent<HTMLElement>, dismissAll?: boolean) => void,
+  ) => React.ReactNode;
 
   /**
    * A function to be executed on mouse down. This is executed before an `onClick` event and can
@@ -514,7 +513,7 @@ export interface IContextualMenuItem {
   /**
    * Any additional properties to use when custom rendering menu items.
    */
-  [propertyName: string]: any;
+  [propertyName: string]: unknown;
 
   /**
    * This prop is no longer used. All contextual menu items are now focusable when disabled.
@@ -523,11 +522,7 @@ export interface IContextualMenuItem {
   inactive?: boolean;
 
   /**
-   * Text description for the menu item to display
-   * If a standard dash (-) is passed in, then the item will be rendered as a divider
-   * If a dash must appear as text then the alternatives of
-   * emdash (—), figuredash (‒), or minus symbol (−)
-   * can be used instead
+   * Text of the menu item.
    * @deprecated Use `text` instead.
    */
   name?: string;
@@ -536,7 +531,7 @@ export interface IContextualMenuItem {
 /**
  * {@docCategory ContextualMenu}
  */
-export interface IContextualMenuSection extends React.ClassAttributes<any> {
+export interface IContextualMenuSection extends React.ClassAttributes<unknown> {
   /**
    * The items to include inside the section.
    */
@@ -649,8 +644,8 @@ export interface IContextualMenuStyles {
  */
 export interface IContextualMenuSubComponentStyles {
   /** Styles for the callout that hosts the ContextualMenu options. */
-  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
 
   /** Styles for each menu item. */
-  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuStyles>;
 }

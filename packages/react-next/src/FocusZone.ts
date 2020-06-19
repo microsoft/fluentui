@@ -1,1 +1,1 @@
-export * from '@fluentui/react-focus/lib/FocusZone';
+export * from 'office-ui-fabric-react/lib/FocusZone';

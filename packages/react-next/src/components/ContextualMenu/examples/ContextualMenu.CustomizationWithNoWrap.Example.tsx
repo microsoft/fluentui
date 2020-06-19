@@ -1,22 +1,24 @@
 import * as React from 'react';
 import {
   ContextualMenuItemType,
-  DirectionalHint,
   IContextualMenuProps,
   IContextualMenuItem,
+  DirectionalHint,
+  DefaultButton,
+  IconButton,
+  FocusZoneDirection,
+  IButtonProps,
 } from '@fluentui/react-next';
-import { DefaultButton, IconButton } from '@fluentui/react-next/lib/Button';
-import { FocusZoneDirection } from '@fluentui/react-next/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
 export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionComponent = () => {
   return <DefaultButton className="ContextualMenuButton3" text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
-function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
+function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void): JSX.Element {
   return (
     <IconButton
-      {...item}
+      {...(item as IButtonProps)}
       iconProps={{ iconName: item.text }}
       className="ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link"
       data-is-focusable={true}
@@ -26,11 +28,11 @@ function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
   );
 }
 
-function renderCategoriesList(item: any): JSX.Element {
+function renderCategoriesList(item: IContextualMenuItem & { categoryList?: ICategoryList[] }): JSX.Element {
   return (
     <ul className="ms-ContextualMenu-customizationExample-categoriesList">
       <li className="ms-ContextualMenu-item">
-        {item.categoryList.map((category: ICategoryList) => (
+        {item.categoryList!.map((category: ICategoryList) => (
           <DefaultButton
             key={category.name}
             className="ms-ContextualMenu-link ms-ContextualMenu-customizationExample-button"
