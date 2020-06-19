@@ -273,6 +273,7 @@
   right: -1px;
   bottom: -1px;
   content: '';
+  pointer-events: none;
   box-sizing: border-box;
   border-radius: var(--button-borderRadius);
   border: var(--button-focus-width, 2px) solid var(--button-focusColor);
