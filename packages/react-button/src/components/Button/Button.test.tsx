@@ -24,16 +24,16 @@ describe('Button', () => {
   });
 
   it('can be focused', () => {
-    const buttonRef = React.createRef<HTMLButtonElement>();
+    const rootRef = React.createRef<HTMLButtonElement>();
     const componentRef = React.createRef<ButtonRef>();
 
-    wrapper = mount(<Button ref={buttonRef} componentRef={componentRef} content="Focus me" />);
+    wrapper = mount(<Button ref={rootRef} componentRef={componentRef} content="Focus me" />);
 
-    expect(typeof buttonRef.current).toEqual('HTMLButtonElement');
-    expect(document.activeElement).not.toEqual(buttonRef.current);
+    expect(typeof rootRef.current).toEqual('HTMLButtonElement');
+    expect(document.activeElement).not.toEqual(rootRef.current);
 
     componentRef.current?.focus();
 
-    expect(document.activeElement).toEqual(buttonRef.current);
+    expect(document.activeElement).toEqual(rootRef.current);
   });
 });
