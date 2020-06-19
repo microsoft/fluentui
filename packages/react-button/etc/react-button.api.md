@@ -25,6 +25,7 @@ export interface ButtonOptions extends ComposeOptions<ButtonProps, ButtonSlots, 
 // @public (undocumented)
 export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
     circular?: boolean;
+    componentRef?: React.RefObject<ButtonRef>;
     content?: ShorthandValue<{}>;
     disabled?: boolean;
     fluid?: boolean;
@@ -40,6 +41,11 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
     size?: SizeValue;
     // Warning: (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
     tokens?: RecursivePartial<ButtonTokens>;
+}
+
+// @public (undocumented)
+export interface ButtonRef {
+    focus: () => void;
 }
 
 // @public (undocumented)
@@ -59,6 +65,8 @@ export interface ButtonSlots {
 
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
+    // (undocumented)
+    buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
 // @public (undocumented)

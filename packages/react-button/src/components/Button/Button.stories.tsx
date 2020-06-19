@@ -2,64 +2,74 @@ import * as React from 'react';
 import { Button } from './Button';
 import { ButtonProps } from './Button.types';
 import * as classes from './Button.stories.scss';
-import { Stack, Text } from 'office-ui-fabric-react';
+
+/**
+ * Temporary Stack until there's one in its own package.
+ */
+const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
+  const { horizontal, ...rest } = props;
+
+  return <div {...rest} className={horizontal ? classes.hStack : classes.vStack} />;
+};
+
+const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={classes.text} />;
 
 const ButtonVariants = (props: ButtonProps) => (
-  <div className={classes.hStack}>
+  <Stack horizontal>
     <Button content="Hello, world" icon="O" {...props} />
     <Button primary content="Hello, world" icon="X" {...props} />
     <Button disabled content="Hello, world" icon="X" {...props} />
     <Button primary disabled content="Hello, world" icon="X" {...props} />
-  </div>
+  </Stack>
 );
 
 export const ButtonCss = () => (
-  <Stack gap={20}>
-    <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
+  <Stack>
+    <Text>A button comes in default and `primary` flavors.</Text>
     <ButtonVariants />
 
-    <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
+    <Text>A button can appear round using the `circular` prop.</Text>
     <ButtonVariants circular />
 
-    <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
-    <div className={classes.vStack}>
+    <Text>A button can fill the width of its container using the `fluid` prop.</Text>
+    <Stack horizontal>
       <Button fluid content="Hello, world" icon="X" />
       <Button fluid primary content="Hello, world" icon="X" />
       <Button fluid disabled content="Hello, world" icon="X" />
       <Button fluid primary disabled content="Hello, world" icon="X" />
-    </div>
+    </Stack>
 
-    <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
+    <Text>A button can contain only an icon using the `iconOnly` prop.</Text>
     <ButtonVariants iconOnly />
 
-    <Text variant="xLarge">A button can be both `circular` and `iconOnly`.</Text>
+    <Text>A button can be both `circular` and `iconOnly`.</Text>
     <ButtonVariants circular iconOnly />
 
-    <Text variant="xLarge">An icon button can format its Icon to appear before or after its content.</Text>
-    <div className={classes.vStack}>
+    <Text>An icon button can format its Icon to appear before or after its content.</Text>
+    <Stack>
       <ButtonVariants iconPosition="before" />
       <ButtonVariants iconPosition="after" />
-    </div>
+    </Stack>
 
-    <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
+    <Text>A button can show a loading indicator using the `loading` prop.</Text>
     <ButtonVariants loading />
 
-    <Text variant="xLarge">A button can be sized.</Text>
-    <div className={classes.vStack}>
+    <Text>A button can be sized.</Text>
+    <Stack>
       <ButtonVariants size="smallest" />
       <ButtonVariants size="smaller" />
       <ButtonVariants size="small" />
       <ButtonVariants size="large" />
       <ButtonVariants size="larger" />
       <ButtonVariants size="largest" />
-    </div>
+    </Stack>
   </Stack>
 );
 
 export const ButtonTokens = () => (
-  <Stack gap={20}>
-    <Text variant="xLarge">A button can be colored using inline tokens.</Text>
-    <div className={classes.vStack}>
+  <Stack>
+    <Text>A button can be colored using inline tokens.</Text>
+    <Stack>
       <Button
         icon="O"
         tokens={{
@@ -183,9 +193,9 @@ export const ButtonTokens = () => (
         }}
         content="Spotify: LEARN MORE"
       />
-    </div>
-    <Text variant="xLarge">A tokenized button can be customized for any size or padding.</Text>
-    <div className={classes.vStack}>
+    </Stack>
+    <Text>A tokenized button can be customized for any size or padding.</Text>
+    <Stack horizontal>
       <Button
         content="I'm a small button with a large icon"
         icon="O"
@@ -207,6 +217,6 @@ export const ButtonTokens = () => (
           padding: '0 40px',
         }}
       />
-    </div>
+    </Stack>
   </Stack>
 );
