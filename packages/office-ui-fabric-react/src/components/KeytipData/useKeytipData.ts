@@ -14,36 +14,36 @@ export interface IKeytipData {
 }
 
 export function useKeytipData(options: KeytipDataOptions): IKeytipData {
-  let uniqueId: string | undefined;
-  const keytipProps: IKeytipProps | undefined = React.useMemo(
-    () =>
-      options.keytipProps
-        ? {
-            disabled: options.disabled,
-            ...options.keytipProps,
-          }
-        : undefined,
-    [options.keytipProps, options.disabled],
-  );
+  const uniqueId = React.useRef<string>();
+  const keytipProps: IKeytipProps | undefined = options.keytipProps
+    ? {
+        disabled: options.disabled,
+        ...options.keytipProps,
+      }
+    : undefined;
 
   const keytipManager = useConst<KeytipManager>(KeytipManager.getInstance());
 
   React.useEffect(() => {
     // Register Keytip in KeytipManager
     if (keytipProps) {
-      uniqueId = keytipManager.register(keytipProps);
+      uniqueId.current = keytipManager.register(keytipProps);
     }
 
     return () => {
       // Unregister Keytip in KeytipManager
-      keytipProps && keytipManager.unregister(keytipProps, uniqueId!);
+      keytipProps && keytipManager.unregister(keytipProps, uniqueId.current!);
     };
   }, []);
 
-  const prevKeytipProps = usePrevious(keytipProps);
+  const prevOptions = usePrevious(options);
 
-  if (uniqueId && keytipProps && prevKeytipProps !== keytipProps) {
-    keytipManager.update(keytipProps, uniqueId);
+  if (
+    uniqueId.current &&
+    keytipProps &&
+    (prevOptions?.keytipProps !== options.keytipProps || prevOptions?.disabled !== options.disabled)
+  ) {
+    keytipManager.update(keytipProps, uniqueId.current);
   }
 
   let nativeKeytipProps: IKeytipData = {
