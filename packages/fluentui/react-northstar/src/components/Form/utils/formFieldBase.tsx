@@ -11,7 +11,14 @@ import {
 } from '../../../utils';
 import { ShorthandValue, ProviderContextPrepared } from '../../../types';
 import Box, { BoxProps } from '../../Box/Box';
-import { getElementType, useUnhandledProps, useTelemetry, useAccessibility, compose } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  useUnhandledProps,
+  useTelemetry,
+  useAccessibility,
+  compose,
+  useStyles,
+} from '@fluentui/react-bindings';
 import FormLabel, { FormLabelProps } from '../FormLabel';
 import FormMessage, { FormMessageProps } from '../FormMessage';
 // @ts-ignore
@@ -43,6 +50,7 @@ export interface FormFieldBaseProps extends UIComponentProps, ChildrenComponentP
 }
 
 export const formFieldClassName = 'ui-form__field__base';
+export type FormFieldBaseStylesProps = never;
 
 const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
   (props, ref, composeOptions) => {
@@ -50,7 +58,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { message, inline, errorMessage, id, control, label } = props;
+    const { message, inline, errorMessage, id, control, label, className, design, styles, variables } = props;
 
     const slotProps = composeOptions.resolveSlotProps<FormFieldBaseProps>(props);
     const ElementType = getElementType(props);
@@ -59,6 +67,17 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     messageId.current = getOrGenerateIdFromShorthand('error-message-', errorMessage || message, messageId.current);
     const labelId = React.useRef<string>();
     labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
+
+    const { classes } = useStyles<FormFieldBaseStylesProps>(_FormFieldBase.displayName, {
+      className: formFieldClassName,
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    });
 
     const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
       debugName: composeOptions.displayName,
@@ -73,7 +92,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     const element = (
       <ElementType
         {...getA11yProps('root', {
-          className: formFieldClassName,
+          className: classes.root,
           ref,
         })}
       >
