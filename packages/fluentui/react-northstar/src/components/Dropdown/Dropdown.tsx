@@ -1055,10 +1055,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
 
     const handlers: (keyof DropdownProps)[] = [
-      newState.value !== undefined && 'onChange',
       newState.highlightedIndex !== undefined && 'onHighlightedIndexChange',
       newState.open !== undefined && 'onOpenChange',
       newState.searchQuery !== undefined && 'onSearchQueryChange',
+      newState.value !== undefined && 'onChange',
     ].filter(Boolean) as (keyof DropdownProps)[];
 
     this.setStateAndInvokeHandler(handlers, null, newState);
