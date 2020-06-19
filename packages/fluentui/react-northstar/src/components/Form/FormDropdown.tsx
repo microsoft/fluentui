@@ -20,10 +20,10 @@ const FormDropdown = compose<'div', FormDropdownProps, FormDropdownStylesProps, 
     displayName: 'FormDropdown',
     overrideStyles: true,
     shorthandConfig: {},
+    slots: {
+      control: Dropdown,
+    },
     slotProps: ({ errorMessage }) => ({
-      control: {
-        as: Dropdown,
-      },
       message: {
         error: errorMessage,
       },

@@ -21,10 +21,10 @@ const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, 
     overrideStyles: true,
     slots: {
       label: () => null,
+      control: Checkbox,
     },
     slotProps: ({ label }) => ({
       control: {
-        as: Checkbox,
         label,
       },
     }),

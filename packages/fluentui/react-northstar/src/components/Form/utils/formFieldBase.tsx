@@ -77,34 +77,30 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
           ref,
         })}
       >
-        {
-          <>
-            {createShorthand(composeOptions.slots.label, label, {
-              defaultProps: () =>
-                getA11yProps('label', {
-                  htmlFor: id,
-                  id: labelId.current,
-                  inline,
-                  ...slotProps.label,
-                }),
-            })}
-            {createShorthand(composeOptions.slots.message, errorMessage || message, {
-              defaultProps: () =>
-                getA11yProps('message', {
-                  id: messageId.current,
-                  ...slotProps.message,
-                }),
-            })}
-            {createShorthand(composeOptions.slots.control, control || {}, {
-              defaultProps: () =>
-                getA11yProps('control', {
-                  error: !!errorMessage || null,
-                  ...unhandledProps,
-                  ...slotProps.control,
-                }),
-            })}
-          </>
-        }
+        {createShorthand(composeOptions.slots.label, label, {
+          defaultProps: () =>
+            getA11yProps('label', {
+              htmlFor: id,
+              id: labelId.current,
+              inline,
+              ...slotProps.label,
+            }),
+        })}
+        {createShorthand(composeOptions.slots.message, errorMessage || message, {
+          defaultProps: () =>
+            getA11yProps('message', {
+              id: messageId.current,
+              ...slotProps.message,
+            }),
+        })}
+        {createShorthand(composeOptions.slots.control, control || {}, {
+          defaultProps: () =>
+            getA11yProps('control', {
+              error: !!errorMessage || null,
+              ...unhandledProps,
+              ...slotProps.control,
+            }),
+        })}
       </ElementType>
     );
     setEnd();

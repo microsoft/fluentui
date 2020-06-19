@@ -1,8 +1,8 @@
 import { Accessibility, FormFieldBehaviorProps, formFieldBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { createShorthandFactory, UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
+import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { getElementType, useUnhandledProps, useTelemetry, useStyles, useAccessibility } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -33,8 +33,7 @@ export const formFieldClassName = 'ui-form__field__custom';
 
 export type FormFieldStylesProps = Required<Pick<FormFieldCustomProps, 'type' | 'inline' | 'required'>>;
 
-const FormFieldCustom: React.FC<WithAsProp<FormFieldCustomProps>> &
-  FluentComponentStaticProps<FormFieldCustomProps> = props => {
+const FormFieldCustom: React.FC<FormFieldCustomProps> & FluentComponentStaticProps<FormFieldCustomProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(FormFieldCustom.displayName, context.telemetry);
   setStart();
@@ -98,9 +97,7 @@ FormFieldCustom.defaultProps = {
   accessibility: formFieldBehavior,
 };
 
-FormFieldCustom.create = createShorthandFactory({ Component: FormFieldCustom });
-
 /**
  * A FormFieldCustom represents a Form element containing a label and an input.
  */
-export default withSafeTypeForAs<typeof FormFieldCustom, FormFieldCustomProps>(FormFieldCustom);
+export default FormFieldCustom;

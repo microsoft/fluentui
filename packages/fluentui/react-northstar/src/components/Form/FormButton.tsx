@@ -20,11 +20,9 @@ const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, Select
     displayName: 'FormButton',
     overrideStyles: true,
     shorthandConfig: {},
-    slotProps: () => ({
-      control: {
-        as: Button,
-      },
-    }),
+    slots: {
+      control: Button,
+    },
   },
 );
 

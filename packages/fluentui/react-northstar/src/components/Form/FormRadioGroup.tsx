@@ -20,11 +20,9 @@ const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesP
     displayName: 'FormRadioGroup',
     overrideStyles: true,
     shorthandConfig: {},
-    slotProps: () => ({
-      control: {
-        as: RadioGroup,
-      },
-    }),
+    slots: {
+      control: RadioGroup,
+    },
   },
 );
 

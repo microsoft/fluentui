@@ -19,11 +19,9 @@ const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, Select
     displayName: 'FormSlider',
     overrideStyles: true,
     shorthandConfig: {},
-    slotProps: () => ({
-      control: {
-        as: Slider,
-      },
-    }),
+    slots: {
+      control: Slider,
+    },
   },
 );
 

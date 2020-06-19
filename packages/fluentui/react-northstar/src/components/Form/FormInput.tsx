@@ -20,9 +20,11 @@ const FormInput = compose<'div', FormInputProps, FormInputStylesProps, SelectedF
     displayName: 'FormInput',
     overrideStyles: false,
     shorthandConfig: {},
+    slots: {
+      control: Input,
+    },
     slotProps: ({ errorMessage }) => ({
       control: {
-        as: Input,
         error: !!errorMessage,
       },
       message: {
