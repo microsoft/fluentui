@@ -5,11 +5,11 @@ import { useRef, useCallback, Ref, MutableRefObject } from 'react';
  * updates all provided refs
  * @param refs- Refs to collectively update with one ref value.
  */
-export function useMergedRefs<T>(...refObjects: Ref<T>[]): (instance: T) => void {
+export function useMergedRefs<T>(...refs: Ref<T>[]): (instance: T) => void {
   const state = useRef<(Ref<T> | undefined)[]>();
 
   // Update refs list in immutatable state object.
-  state.current = refObjects;
+  state.current = refs;
 
   // Return cached callback which refers to mutable refs array within the immutable state.
   return useCallback((value: T) => {
