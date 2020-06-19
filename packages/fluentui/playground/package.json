@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/playground",
-  "version": "0.47.5",
+  "version": "0.47.6",
   "description": "> TODO: description",
   "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
   "bugs": {
@@ -31,7 +31,7 @@
     "test": "just-scripts test"
   },
   "dependencies": {
-    "@fluentui/react-theming": "^0.47.5",
+    "@fluentui/react-theming": "^0.47.6",
     "classnames": "^2.2.6"
   },
   "devDependencies": {
