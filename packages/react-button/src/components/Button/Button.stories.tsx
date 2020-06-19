@@ -4,12 +4,16 @@ import { ButtonProps } from './Button.types';
 import * as classes from './Button.stories.scss';
 import { Stack, Text } from 'office-ui-fabric-react';
 
+const onClick = () => {
+  alert('Clicked');
+};
+
 const ButtonVariants = (props: ButtonProps) => (
   <div className={classes.hStack}>
-    <Button {...props} content="Hello, world" icon="X" />
-    <Button {...props} primary content="Hello, world" icon="X" />
-    <Button {...props} disabled content="Hello, world" icon="X" />
-    <Button {...props} primary disabled content="Hello, world" icon="X" />
+    <Button content="Hello, world" icon="X" onClick={onClick} {...props} />
+    <Button primary content="Hello, world" icon="X" onClick={onClick} {...props} />
+    <Button disabled content="Hello, world" icon="X" onClick={onClick} {...props} />
+    <Button primary disabled content="Hello, world" icon="X" onClick={onClick} {...props} />
   </div>
 );
 
@@ -23,10 +27,10 @@ export const ButtonCss = () => (
 
     <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
     <div className={classes.vStack}>
-      <Button fluid content="Hello, world" icon="X" />
-      <Button fluid primary content="Hello, world" icon="X" />
-      <Button fluid disabled content="Hello, world" icon="X" />
-      <Button fluid primary disabled content="Hello, world" icon="X" />
+      <Button fluid content="Hello, world" icon="X" onClick={onClick} />
+      <Button fluid primary content="Hello, world" icon="X" onClick={onClick} />
+      <Button fluid disabled content="Hello, world" icon="X" onClick={onClick} />
+      <Button fluid primary disabled content="Hello, world" icon="X" onClick={onClick} />
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
@@ -203,5 +207,12 @@ export const ButtonTokens = () => (
         }}
       />
     </div>
+  </Stack>
+);
+
+export const ButtonAs = () => (
+  <Stack gap={20}>
+    <ButtonVariants as="div" content="Button as a div" />
+    <ButtonVariants as="span" content="Button as a span" />
   </Stack>
 );
