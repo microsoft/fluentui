@@ -1635,6 +1635,24 @@ describe('Dropdown', () => {
     });
   });
 
+  describe('searchInput', () => {
+    it("merges refs from user's input", () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+
+      const { keyDownOnSearchInput } = renderDropdown({
+        defaultSearchQuery: 'Foo',
+        multiple: true,
+        search: true,
+        searchInput: { inputRef },
+      });
+
+      keyDownOnSearchInput('Backspace');
+
+      // This test asserts also on internals that a condition that uses internal `inputRef` will pass.
+      expect(inputRef.current).toBeInstanceOf(HTMLInputElement);
+    });
+  });
+
   describe('disabled', () => {
     it('allows no action on the trigger button', () => {
       const {
