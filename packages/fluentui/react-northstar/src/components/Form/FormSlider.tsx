@@ -4,7 +4,7 @@ import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import Slider, { SliderProps } from '../Slider/Slider';
 
 interface FormSliderOwnProps extends SliderProps {}
-export type SelectedFormFieldCustomProps = Omit<
+type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables'
 >;
@@ -12,6 +12,9 @@ export interface FormSliderProps extends SelectedFormFieldCustomProps, FormSlide
 export type FormSliderStylesProps = never;
 export const FormSliderClassName = 'ui-form-slider';
 
+/**
+ * An FormSlider renders a Slider wrapped by FormField.
+ */
 const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {

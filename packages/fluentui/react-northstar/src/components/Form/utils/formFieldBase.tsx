@@ -2,13 +2,7 @@ import { Accessibility, FormFieldBehaviorProps, formFieldBehavior } from '@fluen
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import {
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  getOrGenerateIdFromShorthand,
-  createShorthand,
-} from '../../../utils';
+import { UIComponentProps, commonPropTypes, getOrGenerateIdFromShorthand, createShorthand } from '../../../utils';
 import { ShorthandValue, ProviderContextPrepared } from '../../../types';
 import Box, { BoxProps } from '../../Box/Box';
 import {
@@ -24,7 +18,7 @@ import FormMessage, { FormMessageProps } from '../FormMessage';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-export interface FormFieldBaseProps extends UIComponentProps, ChildrenComponentProps {
+export interface FormFieldBaseProps extends UIComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -49,9 +43,12 @@ export interface FormFieldBaseProps extends UIComponentProps, ChildrenComponentP
   errorMessage?: ShorthandValue<FormMessageProps>;
 }
 
-export const formFieldClassName = 'ui-form__field__base';
+export const formFieldBaseClassName = 'ui-form__field__base';
 export type FormFieldBaseStylesProps = never;
 
+/**
+ * A FormFiedBase represents a Form element containing a label and an input.
+ */
 const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -69,7 +66,8 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
 
     const { classes } = useStyles<FormFieldBaseStylesProps>(_FormFieldBase.displayName, {
-      className: formFieldClassName,
+      className: composeOptions.className,
+      composeOptions,
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -77,6 +75,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
         variables,
       }),
       rtl: context.rtl,
+      unstable_props: props,
     });
 
     const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
@@ -93,6 +92,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
+
           ref,
         })}
       >
@@ -126,27 +126,24 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     return element;
   },
   {
-    className: formFieldClassName,
+    className: formFieldBaseClassName,
     displayName: 'FormFieldBase',
-    overrideStyles: true,
     slots: {
       label: FormLabel,
       message: FormMessage,
       control: Box,
     },
     handledProps: [
-      'accessibility',
-      'inline',
       'as',
-      'children',
+      'accessibility',
       'className',
+      'variables',
+      'design',
+      'styles',
+      'inline',
       'control',
-      'design',
-      'design',
       'errorMessage',
       'message',
-      'variables',
-      'styles',
     ],
     shorthandConfig: {
       mappedProp: 'control',
@@ -155,21 +152,16 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
 );
 
 _FormFieldBase.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: false,
-  }),
-  control: customPropTypes.shorthandAllowingChildren,
+  ...commonPropTypes.createCommon(),
+  control: customPropTypes.itemShorthand,
   id: PropTypes.string,
   inline: PropTypes.bool,
   message: customPropTypes.itemShorthand,
-  errorMessage: customPropTypes.shorthandAllowingChildren,
+  errorMessage: customPropTypes.itemShorthand,
 };
 
 _FormFieldBase.defaultProps = {
   accessibility: formFieldBehavior,
 };
 
-/**
- * A FormFiedBase represents a Form element containing a label and an input.
- */
 export default _FormFieldBase;

@@ -4,7 +4,7 @@ import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormDropdownOwnProps extends DropdownProps {}
-export type SelectedFormFieldCustomProps = Omit<
+type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables'
 >;
@@ -13,6 +13,9 @@ export type FormDropdownStylesProps = never;
 
 export const formDropdownClassName = 'ui-form-dropdown';
 
+/**
+ * An FormDropdown renders a Dropdown wrapped by FormField.
+ */
 const FormDropdown = compose<'div', FormDropdownProps, FormDropdownStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {

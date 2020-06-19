@@ -12,6 +12,9 @@ export type FormLabelStylesProps = Required<Pick<FormLabelOwnProps, 'inline' | '
 
 export const FormLabelClassName = 'ui-form-label';
 
+/**
+ * An FormLabel provides a slot for label in the FormField.
+ */
 const FormLabel = compose<'label', FormLabelProps, FormLabelStylesProps, BoxProps, {}>(Box, {
   className: FormLabelClassName,
   displayName: 'FormLabel',

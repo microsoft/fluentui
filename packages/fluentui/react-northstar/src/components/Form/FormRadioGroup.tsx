@@ -4,7 +4,7 @@ import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import RadioGroup, { RadioGroupProps } from '../RadioGroup/RadioGroup';
 
 interface FormRadioGroupOwnProps extends RadioGroupProps {}
-export type SelectedFormFieldCustomProps = Omit<
+type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables'
 >;
@@ -13,6 +13,9 @@ export type FormRadioGroupStylesProps = never;
 
 export const FormRadioGroupClassName = 'ui-form-radio_group';
 
+/**
+ * An FormRadioGroup renders a RadioGroup wrapped by FormField.
+ */
 const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
