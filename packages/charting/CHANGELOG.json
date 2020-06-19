@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@uifabric/charting_v2.3.1",
+      "version": "2.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "doughnut chart circualr accessibility issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "58b2b5638d52a34fa16f0bd5ddf4d615a0311ad9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jun 2020 12:37:09 GMT",
       "tag": "@uifabric/charting_v2.3.0",
       "version": "2.3.0",

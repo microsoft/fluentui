@@ -52,6 +52,12 @@ export enum DayOfWeek {
     Wednesday = 3
 }
 
+// @public (undocumented)
+export const DAYS_IN_WEEK = 7;
+
+// @public
+export const findAvailableDate: (options: IAvailableDateOptions) => Date | undefined;
+
 // @public
 export enum FirstWeekOfYear {
     // (undocumented)
@@ -63,7 +69,28 @@ export enum FirstWeekOfYear {
 }
 
 // @public
+export const formatDay: (date: Date) => string;
+
+// @public
+export const formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
+
+// @public
+export const formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
+
+// @public
+export const formatYear: (date: Date) => string;
+
+// @public
+export const getBoundedDateRange: (dateRange: Date[], minDate?: Date | undefined, maxDate?: Date | undefined) => Date[];
+
+// @public
 export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
+
+// @public
+export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined) => DateRangeType;
+
+// @public
+export const getDayGrid: (options: IDayGridOptions) => IDay[][];
 
 // @public
 export function getMonthEnd(date: Date): Date;
@@ -86,8 +113,64 @@ export function getYearEnd(date: Date): Date;
 // @public
 export function getYearStart(date: Date): Date;
 
+// @public (undocumented)
+export interface IAvailableDateOptions extends IRestrictedDatesOptions {
+    direction: number;
+    initialDate: Date;
+    targetDate: Date;
+}
+
+// @public (undocumented)
+export interface IDateGridStrings {
+    days: string[];
+    months: string[];
+    shortDays: string[];
+    shortMonths: string[];
+}
+
+// @public (undocumented)
+export interface IDay {
+    date: string;
+    isInBounds: boolean;
+    isInMonth: boolean;
+    isSelected: boolean;
+    isToday: boolean;
+    key: string;
+    originalDate: Date;
+}
+
+// @public (undocumented)
+export interface IDayGridOptions extends IRestrictedDatesOptions {
+    dateRangeType: DateRangeType;
+    daysToSelectInDayView?: number;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    navigatedDate: Date;
+    selectedDate: Date;
+    showWeekNumbers?: boolean;
+    today?: Date;
+    weeksToShow?: number;
+    workWeekDays?: DayOfWeek[];
+}
+
+// @public (undocumented)
+export interface IRestrictedDatesOptions {
+    maxDate?: Date;
+    minDate?: Date;
+    restrictedDates?: Date[];
+}
+
+// @public
+export const isAfterMaxDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
+
+// @public
+export const isBeforeMinDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
+
 // @public
 export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
+
+// @public
+export const isRestrictedDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
 
 // @public
 export enum MonthOfYear {
