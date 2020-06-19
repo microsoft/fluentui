@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { renderToStaticMarkup } from 'react-dom/server';
 
@@ -52,33 +52,31 @@ describe('TextField snapshots', () => {
   it('renders correctly', () => {
     const className = 'testClassName';
     const inputClassName = 'testInputClassName';
-    const component = renderer.create(
-      <TextField label="Label" className={className} inputClassName={inputClassName} />,
-    );
+    const component = create(<TextField label="Label" className={className} inputClassName={inputClassName} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline unresizable correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} resizable={false} />);
+    const component = create(<TextField label="Label" multiline={true} resizable={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline resizable correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} resizable={true} />);
+    const component = create(<TextField label="Label" multiline={true} resizable={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline with placeholder correctly', () => {
-    const component = renderer.create(<TextField label="Label" multiline={true} placeholder="test placeholder" />);
+    const component = create(<TextField label="Label" multiline={true} placeholder="test placeholder" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders multiline correctly with props affecting styling', () => {
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
@@ -92,7 +90,7 @@ describe('TextField snapshots', () => {
   });
 
   it('renders multiline correctly with errorMessage', () => {
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
@@ -114,7 +112,7 @@ describe('TextField snapshots', () => {
         },
       },
     };
-    const component = renderer.create(
+    const component = create(
       <TextField
         label="Label"
         errorMessage="test message"
