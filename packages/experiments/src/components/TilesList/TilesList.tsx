@@ -474,7 +474,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           finalOnRenderRow({
             cellElements: currentRowCells,
             divProps: {
-              className: TilesListStyles.row,
+              className: css(TilesListStyles.row, {
+                [TilesListStyles.headerRow]: grid.mode === TilesGridMode.none,
+              }),
               role: 'presentation',
             },
           }),

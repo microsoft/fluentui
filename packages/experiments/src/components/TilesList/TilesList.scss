@@ -33,6 +33,10 @@
   visibility: hidden;
 }
 
+.header {
+  display: block;
+}
+
 .grid {
   display: flex;
   flex-direction: row;
@@ -45,6 +49,10 @@
 .row {
   display: flex;
   width: 100%;
+
+  &.headerRow {
+    display: block;
+  }
 }
 
 .shimmeredList {
