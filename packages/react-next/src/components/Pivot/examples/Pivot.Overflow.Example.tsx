@@ -4,7 +4,7 @@ import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 
 export const PivotOverflowExample: React.FunctionComponent = () => {
   return (
-    <Pivot aria-label="Pivot Overflow Example" linkFormat="tabs">
+    <Pivot aria-label="Pivot Overflow Example" linkFormat="tabs" headerOverflow="menu">
       <PivotItem headerText="1. This Pivot">
         <Label>Pivot #1</Label>
       </PivotItem>

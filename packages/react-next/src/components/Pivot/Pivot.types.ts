@@ -70,6 +70,16 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
   linkFormat?: PivotLinkFormatType;
 
   /**
+   * Overflow behavior when there is not enough room to display all of the links/tabs
+   *
+   * none: Pivot links will overflow the container and may not be visible
+   * menu: Display an overflow menu that contains the tabs that don't fit
+   *
+   * @default none
+   */
+  headerOverflow?: PivotHeaderOverflowType;
+
+  /**
    * Whether to skip rendering the tabpanel with the content of the selected tab.
    * Use this prop if you plan to separately render the tab content
    * and don't want to leave an empty tabpanel in the page that may confuse Screen Readers.
@@ -127,6 +137,12 @@ export type PivotLinkFormatType = 'links' | 'tabs';
  * Size of the pivot links/tabs
  */
 export type PivotLinkSizeType = 'normal' | 'large';
+
+/**
+ * {@docCategory Pivot}
+ * Determines what happens when there is not enough room to display all of the pivot links/tabs
+ */
+export type PivotHeaderOverflowType = 'none' | 'menu';
 
 /**
  * {@docCategory Pivot}

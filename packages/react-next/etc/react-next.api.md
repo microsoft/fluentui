@@ -475,6 +475,7 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     componentRef?: React.RefObject<IPivot>;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
+    headerOverflow?: PivotHeaderOverflowType;
     headersOnly?: boolean;
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
@@ -1027,6 +1028,9 @@ export const Pivot: React.FunctionComponent<IPivotProps>;
 
 // @public (undocumented)
 export const PivotBase: React.FunctionComponent<IPivotProps>;
+
+// @public
+export type PivotHeaderOverflowType = 'none' | 'menu';
 
 // @public (undocumented)
 export class PivotItem extends React.Component<IPivotItemProps, {}> {
