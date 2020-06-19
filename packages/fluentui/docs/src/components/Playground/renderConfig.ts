@@ -72,10 +72,12 @@ export const imports: Record<string, CodeSandboxImport> = {
   formik: {
     version: projectPackageJson.dependencies['formik'],
     module: Formik,
+    required: false,
   },
   'react-hook-form': {
     version: projectPackageJson.dependencies['react-hook-form'],
     module: ReactHookForm,
+    required: false,
   },
   lodash: {
     version: projectPackageJson.dependencies['lodash'],
