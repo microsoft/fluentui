@@ -6,7 +6,7 @@ import { Stack, Text } from 'office-ui-fabric-react';
 
 const ButtonVariants = (props: ButtonProps) => (
   <div className={classes.hStack}>
-    <Button content={'Hello, world'} icon="O" {...props} />
+    <Button content="Hello, world" icon="O" {...props} />
     <Button primary content="Hello, world" icon="X" {...props} />
     <Button disabled content="Hello, world" icon="X" {...props} />
     <Button primary disabled content="Hello, world" icon="X" {...props} />

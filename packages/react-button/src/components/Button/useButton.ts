@@ -21,9 +21,7 @@ export const useButton = (props: ButtonProps): ButtonState => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useImperativeHandle(props.componentRef, () => ({
-    focus: () => {
-      buttonRef.current?.focus();
-    },
+    focus: () => buttonRef.current?.focus(),
   }));
 
   return {
