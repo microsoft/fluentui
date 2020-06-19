@@ -70,8 +70,8 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
     "office-ui-fabric-react": "^7.121.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
   }
