@@ -87,6 +87,7 @@ export function useTelemetryColumns({
               isShowDetails: 'total',
               showPercentage: true,
               sortType: 'basic',
+              subgroup: 'timers',
             },
             showTotalDetails && {
               Cell: TelemetryTableRoundingCell,
@@ -96,6 +97,7 @@ export function useTelemetryColumns({
               accessor: 'msMin',
               disableFilters: true,
               sortType: 'basic',
+              subgroup: 'timers',
             },
             showTotalDetails && {
               Cell: TelemetryTableRoundingCell,
@@ -105,6 +107,7 @@ export function useTelemetryColumns({
               accessor: 'msMax',
               disableFilters: true,
               sortType: 'basic',
+              subgroup: 'timers',
             },
             showTotalDetails && {
               Cell: TelemetryTableRoundingCell,
@@ -114,6 +117,7 @@ export function useTelemetryColumns({
               accessor: 'msAvg',
               disableFilters: true,
               sortType: 'basic',
+              subgroup: 'timers',
             },
             {
               Cell: TelemetryTableRoundingCell,
@@ -125,6 +129,7 @@ export function useTelemetryColumns({
               isShowDetails: 'styles',
               showPercentage: true,
               sortType: 'basic',
+              subgroup: 'styles',
             },
 
             showStylesDetails && {
@@ -135,6 +140,7 @@ export function useTelemetryColumns({
               accessor: 'msResolveVariablesTotal',
               disableFilters: true,
               sortType: 'basic',
+              subgroup: 'styles',
             },
             showStylesDetails && {
               Cell: TelemetryTableRoundingCell,
@@ -144,6 +150,7 @@ export function useTelemetryColumns({
               accessor: 'msResolveStylesTotal',
               disableFilters: true,
               sortType: 'basic',
+              subgroup: 'styles',
             },
             showStylesDetails && {
               Cell: TelemetryTableRoundingCell,
@@ -157,6 +164,7 @@ export function useTelemetryColumns({
               accessor: 'msRenderStylesTotal',
               disableFilters: true,
               sortType: 'basic',
+              subgroup: 'styles',
             },
           ].filter(Boolean),
         },

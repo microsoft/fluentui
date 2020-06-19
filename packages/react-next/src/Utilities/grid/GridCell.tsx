@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css, getId } from '../../Utilities';
 import { IGridCellProps } from './GridCell.types';
-import { CommandButton } from '../../Button';
+import { CommandButton } from '../../compat/Button';
 
 export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
   public static defaultProps = {

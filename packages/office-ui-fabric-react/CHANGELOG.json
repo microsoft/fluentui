@@ -2,6 +2,56 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "office-ui-fabric-react_v7.121.1",
+      "version": "7.121.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding new isConformant test",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8800f1cab6daba604e97652c87c3a134994f8887",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Renaming utilities file",
+            "author": "pompomon@gmail.com",
+            "commit": "15dc5e8e782565c75bc5d637813cee8be2b8a384",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Keytip: add KeytipLayer storybook decorator and fix missing handled prop for link",
+            "author": "xgao@microsoft.com",
+            "commit": "ffb1099f3e09f1524d499b397a01377a7763066a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 16:07:40 GMT",
+      "tag": "office-ui-fabric-react_v7.121.0",
+      "version": "7.121.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Icon: Rendering children if passed down as props and adding snapshot tests for these scenarios.",
+            "author": "ololubek@microsoft.com",
+            "commit": "53993cc503c2c9d7d7c52a801ba90a564c303edd",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add new rounded corners to theme",
+            "author": "phkuo@microsoft.com",
+            "commit": "38f0dbf9228795618bc9c483f37527ae0b7e05d6",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jun 2020 12:37:16 GMT",
       "tag": "office-ui-fabric-react_v7.120.3",
       "version": "7.120.3",
