@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: Adding correct accessibility attributes when Button is rendered as something else.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-19T21:41:41.473Z"
+}
