@@ -151,6 +151,7 @@ Avatar.defaultProps = {
     }
 
     const reducedName = name
+      .replace(/\s+/g, ' ')
       .replace(/\s*\(.*?\)\s*/g, ' ')
       .replace(/\s*{.*?}\s*/g, ' ')
       .replace(/\s*\[.*?]\s*/g, ' ');
@@ -159,7 +160,7 @@ Avatar.defaultProps = {
       .split(' ')
       .filter(item => item !== '')
       .map(item => item.charAt(0))
-      .reduce((accumulator, currentValue) => accumulator + currentValue);
+      .reduce((accumulator, currentValue) => accumulator + currentValue, '');
 
     if (initials.length > 2) {
       return initials.charAt(0) + initials.charAt(initials.length - 1);
