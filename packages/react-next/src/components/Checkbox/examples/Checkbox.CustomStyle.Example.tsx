@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
 import { Stack } from '@fluentui/react-next/lib/Stack';
 import { Customizer } from '@fluentui/react-next/lib/Utilities';

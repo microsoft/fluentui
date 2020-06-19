@@ -18,7 +18,7 @@
   --button-padding: 0 24px;
   --button-margin: 0;
   --button-width: auto;
-  --button-height: var(--button-size-regular);
+  --button-minHeight: var(--button-size-regular);
   --button-minWidth: 96px;
   --button-maxWidth: 280px;
 
@@ -128,7 +128,7 @@
   border-radius: var(--button-borderRadius);
   border-width: var(--button-borderWidth);
   box-shadow: var(--button-boxShadow);
-  height: var(--button-height);
+  min-height: var(--button-minHeight);
   padding: var(--button-padding);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
@@ -174,13 +174,13 @@
   }
 
   &._iconOnly {
-    width: var(--button-height);
+    width: var(--button-minHeight);
     --button-padding: 0;
   }
 
   &._circular {
     --button-borderRadius: 50000px;
-    --button-minWidth: var(--button-height);
+    --button-minWidth: var(--button-minHeight);
   }
 
   &._fluid {
@@ -189,26 +189,26 @@
   }
 
   &._size_smallest {
-    --button-height: var(--button-size-smallest);
+    --button-minHeight: var(--button-size-smallest);
   }
 
   &._size_smaller {
-    --button-height: var(--button-size-smaller);
+    --button-minHeight: var(--button-size-smaller);
   }
 
   &._size_small {
-    --button-height: var(--button-size-small);
+    --button-minHeight: var(--button-size-small);
   }
 
   &._size_large {
-    --button-height: var(--button-size-large);
+    --button-minHeight: var(--button-size-large);
   }
 
   &._size_larger {
-    --button-height: var(--button-size-larger);
+    --button-minHeight: var(--button-size-larger);
   }
   &._size_largest {
-    --button-height: var(--button-size-largest);
+    --button-minHeight: var(--button-size-largest);
   }
 
   &._disabled {
@@ -230,7 +230,7 @@
   font-size: var(--button-iconSize, inherit);
   font-weight: normal;
 
-  &.disabled {
+  &._disabled {
     color: var(--button-disabled-iconColor, var(--button-disabled-contentColor));
   }
 }

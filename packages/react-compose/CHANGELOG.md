@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2020 12:40:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.2)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.0..@fluentui/react-compose_v0.11.2)
+
+### Patches
+
+- Pass forwarded ref as param in state option ([PR #13570](https://github.com/microsoft/fluentui/pull/13570) by xgao@microsoft.com)
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.0)
 

@@ -17,11 +17,10 @@ import {
   Async,
 } from '@uifabric/utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
-import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { FirstWeekOfYear, compareDates, compareDatePart } from '@fluentui/date-time-utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { compareDates, compareDatePart } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();

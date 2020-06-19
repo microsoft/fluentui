@@ -2,13 +2,22 @@ import * as React from 'react';
 import {
   ICalendar,
   ICalendarProps,
-  ICalendarStrings,
   ICalendarIconStrings,
   ICalendarFormatDateCallbacks,
   ICalendarStyleProps,
   ICalendarStyles,
 } from './Calendar.types';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import {
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType,
+  addMonths,
+  addYears,
+  formatMonthDayYear,
+  formatMonthYear,
+  formatDay,
+  formatYear,
+} from '@fluentui/date-time-utilities';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
 import { ICalendarDay } from './CalendarDay/CalendarDay.types';
@@ -24,7 +33,6 @@ import {
 } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DayPickerStrings } from './defaults';
-import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
@@ -46,12 +54,10 @@ export const defaultWorkWeekDays: DayOfWeek[] = [
 ];
 
 export const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
-  formatMonthDayYear: (date: Date, strings: ICalendarStrings) =>
-    strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear(),
-  formatMonthYear: (date: Date, strings: ICalendarStrings) =>
-    strings.months[date.getMonth()] + ' ' + date.getFullYear(),
-  formatDay: (date: Date) => date.getDate().toString(),
-  formatYear: (date: Date) => date.getFullYear().toString(),
+  formatMonthDayYear,
+  formatMonthYear,
+  formatDay,
+  formatYear,
 };
 
 export interface ICalendarState {
