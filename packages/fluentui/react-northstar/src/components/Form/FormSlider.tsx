@@ -1,41 +1,37 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import Slider, { SliderProps } from '../Slider/Slider';
 
-interface FormSliderOwnProps extends Omit<SliderProps, 'accessibility'> {}
-
-export interface FormSliderProps extends FormFieldCustomProps, FormSliderOwnProps {}
+interface FormSliderOwnProps extends SliderProps {}
+type SelectedFormFieldCustomProps = Omit<
+  FormFieldBaseProps,
+  'control' | 'styles' | 'accessibility' | 'design' | 'variables'
+>;
+export interface FormSliderProps extends SelectedFormFieldCustomProps, FormSliderOwnProps {}
 export type FormSliderStylesProps = never;
-
 export const FormSliderClassName = 'ui-form-slider';
 
-const FormSlider = compose<
-  'div',
-  FormSliderProps,
-  FormSliderStylesProps,
-  FormFieldCustomProps,
-  FormFieldCustomStylesProps
->(FormFieldCustom, {
-  className: FormSliderClassName,
-  displayName: 'FormSlider',
-  overrideStyles: true,
-  shorthandConfig: {},
-  slotProps: _ => ({
-    control: {
-      as: Slider,
+/**
+ * An FormSlider renders a Slider wrapped by FormField.
+ */
+const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, SelectedFormFieldCustomProps, {}>(
+  _FormFieldBase,
+  {
+    className: FormSliderClassName,
+    displayName: 'FormSlider',
+    overrideStyles: true,
+    shorthandConfig: {},
+    slots: {
+      control: Slider,
     },
-  }),
-}) as ComponentWithAs<'div', FormSliderProps> & { shorthandConfig: ShorthandConfig<FormSliderProps> };
-
-FormSlider.defaultProps = {};
+  },
+);
 
 FormSlider.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',
   }),
-  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormSlider;

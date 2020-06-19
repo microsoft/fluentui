@@ -5,6 +5,21 @@ import { FormFieldVariables } from './formFieldVariables';
 
 const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
+  label: ({ props }): ICSSInJSStyle => {
+    const { type, inline, required } = props;
+    return {
+      ...((!type || (type !== 'radio' && type !== 'checkbox')) && {
+        display: 'block',
+        marginBottom: pxToRem(4),
+      }),
+      ...(inline && { marginRight: pxToRem(10), display: 'inline' }),
+      ...(required && {
+        '::after': {
+          content: '"*"',
+        },
+      }),
+    };
+  },
   control: ({ props, variables: v }): ICSSInJSStyle => {
     const { type } = props;
     return {

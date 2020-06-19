@@ -26,27 +26,10 @@ const renderType = queryParams.renderType;
 const PerfTestScenario = scenarios[scenario];
 
 if (renderType === 'virtual-rerender') {
-  const PerfTestScenarioWrapper: React.FunctionComponent = () => {
-    const [renderCount, setRenderCounter] = React.useState(0);
-    React.useEffect(() => {
-      if (renderCount < iterations) {
-        setRenderCounter(renderCount + 1);
-      }
-    }, [renderCount]);
-
-    if (renderCount < iterations) {
-      return <PerfTestScenario />;
-    } else {
-      return (
-        <div>
-          <PerfTestScenario />
-          <div id="render-done" />
-        </div>
-      );
-    }
-  };
-
-  ReactDOM.render(<PerfTestScenarioWrapper />, div);
+  for (let i = 0; i < iterations - 1; i++) {
+    ReactDOM.render(<PerfTestScenario />, div);
+  }
+  ReactDOM.render(<PerfTestScenario />, div, () => div.appendChild(renderFinishedMarker));
 } else {
   // TODO: This seems to increase React (unstable_runWithPriority) render consumption from 4% to 72%!
   // const ScenarioContent = Array.from({ length: iterations }, () => scenarios[scenario]);

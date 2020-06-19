@@ -9,27 +9,20 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   getOrGenerateIdFromShorthand,
-  ShorthandFactory,
-  createShorthand,
 } from '../../utils';
-import { ShorthandValue, withSafeTypeForAs, ProviderContextPrepared } from '../../types';
-import { TextProps } from '../Text/Text';
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
+import Text, { TextProps } from '../Text/Text';
 import Input from '../Input/Input';
 import Box, { BoxProps } from '../Box/Box';
-import {
-  getElementType,
-  useUnhandledProps,
-  useTelemetry,
-  useStyles,
-  useAccessibility,
-  compose,
-  ComponentWithAs,
-  ShorthandConfig,
-} from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useTelemetry, useStyles, useAccessibility } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import FormLabel from './FormLabel';
-import FormMessage from './FormMessage';
 
 export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -72,166 +65,120 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
   hasErrorMessage: boolean;
 };
 
-const FormField = compose<'div', FormFieldProps, FormFieldStylesProps, {}, {}>(
-  (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
+const FormField: React.FC<WithAsProp<FormFieldProps>> & FluentComponentStaticProps<FormFieldProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
+  setStart();
 
-    const {
-      children,
-      control,
-      id,
-      label,
-      message,
-      name,
-      required,
+  const {
+    children,
+    control,
+    id,
+    label,
+    message,
+    name,
+    required,
+    type,
+    className,
+    design,
+    styles,
+    variables,
+    inline,
+    errorMessage,
+  } = props;
+
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(FormField.handledProps, props);
+  const messageId = React.useRef<string>();
+  messageId.current = getOrGenerateIdFromShorthand('error-message-', message || errorMessage, messageId.current);
+  const labelId = React.useRef<string>();
+  labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
+
+  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
+    debugName: FormField.displayName,
+    mapPropsToBehavior: () => ({
+      hasErrorMessage: !!errorMessage,
+      messageId: messageId.current,
+      labelId: labelId.current,
+    }),
+    rtl: context.rtl,
+  });
+
+  const { classes, styles: resolvedStyles } = useStyles<FormFieldStylesProps>(FormField.displayName, {
+    className: formFieldClassName,
+    mapPropsToStyles: () => ({
       type,
+      inline,
+      required,
+      hasErrorMessage: !!errorMessage,
+    }),
+    mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
       variables,
-      inline,
-      errorMessage,
-    } = props;
+    }),
+    rtl: context.rtl,
+  });
 
-    const slotProps = composeOptions.resolveSlotProps<FormFieldProps>(props);
-    const ElementType = getElementType(props);
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-    const messageId = React.useRef<string>();
-    messageId.current = getOrGenerateIdFromShorthand('error-message-', message || errorMessage, messageId.current);
-    const labelId = React.useRef<string>();
-    labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
-
-    const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
-      debugName: composeOptions.displayName,
-      mapPropsToBehavior: () => ({
-        hasErrorMessage: !!errorMessage,
-        messageId: messageId.current,
-        labelId: labelId.current,
+  const labelElement = Text.create(label, {
+    defaultProps: () =>
+      getA11yProps('label', {
+        as: 'label',
+        htmlFor: id,
+        id: labelId.current,
+        styles: resolvedStyles.label,
       }),
-      rtl: context.rtl,
-    });
+  });
 
-    const { classes, styles: resolvedStyles } = useStyles<FormFieldStylesProps>(FormField.displayName, {
-      className: composeOptions.className,
-      composeOptions,
-      mapPropsToStyles: () => ({
-        type,
-        inline,
+  const messageElement = Text.create(errorMessage || message, {
+    defaultProps: () =>
+      getA11yProps('message', {
+        className: formFieldMessageClassName,
+        id: messageId.current,
+        styles: resolvedStyles.message,
+      }),
+  });
+
+  const controlElement = Box.create(control || {}, {
+    defaultProps: () =>
+      getA11yProps('control', {
         required,
-        hasErrorMessage: !!errorMessage,
+        name,
+        type,
+        error: !!errorMessage || null,
+        styles: resolvedStyles.control,
       }),
-      mapPropsToInlineStyles: () => ({
-        className,
-        design,
-        styles,
-        variables,
-      }),
-      rtl: context.rtl,
-      unstable_props: props,
-    });
+  });
 
-    const labelElement = createShorthand(composeOptions.slots.label, label, {
-      defaultProps: () =>
-        getA11yProps('label', {
-          as: 'label',
-          htmlFor: id,
-          id: labelId.current,
-          styles: resolvedStyles.label,
-          required,
-          inline,
-          type,
-          ...slotProps.label,
-        }),
-    });
+  const shouldControlAppearFirst = () => {
+    return type && (type === 'checkbox' || type === 'radio');
+  };
 
-    const messageElement = createShorthand(composeOptions.slots.message, errorMessage || message, {
-      defaultProps: () =>
-        getA11yProps('message', {
-          className: formFieldMessageClassName,
-          id: messageId.current,
-          styles: resolvedStyles.message,
-          ...slotProps.message,
-        }),
-    });
+  const content = (
+    <>
+      {shouldControlAppearFirst() && controlElement}
+      {labelElement}
+      {!shouldControlAppearFirst() && controlElement}
+      {messageElement}
+    </>
+  );
 
-    const controlElement = createShorthand(composeOptions.slots.control, control || {}, {
-      defaultProps: () =>
-        getA11yProps('control', {
-          required,
-          name,
-          type,
-          error: !!errorMessage || null,
-          styles: resolvedStyles.control,
-          ...slotProps.control,
-        }),
-    });
-
-    const shouldControlAppearFirst = () => {
-      return type && (type === 'checkbox' || type === 'radio');
-    };
-
-    const content = (
-      <>
-        {shouldControlAppearFirst() && controlElement}
-        {labelElement}
-        {!shouldControlAppearFirst() && controlElement}
-        {messageElement}
-      </>
-    );
-
-    const element = (
-      <ElementType
-        {...getA11yProps('root', {
-          className: classes.root,
-          ref,
-          ...unhandledProps,
-        })}
-      >
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    );
-    setEnd();
-    return element;
-  },
-  {
-    className: formFieldClassName,
-    displayName: 'FormField',
-    overrideStyles: true,
-    slots: {
-      label: FormLabel,
-      message: FormMessage,
-      control: Box,
-    },
-    handledProps: [
-      'accessibility',
-      'control',
-      'inline',
-      'as',
-      'children',
-      'className',
-      'control',
-      'design',
-      'design',
-      'errorMessage',
-      'id',
-      'label',
-      'message',
-      'name',
-      'variables',
-      'type',
-      'styles',
-      'required',
-    ],
-    shorthandConfig: {
-      mappedProp: 'control',
-    },
-  },
-) as ComponentWithAs<'div', FormFieldProps> & {
-  create: ShorthandFactory<FormFieldProps>;
-  shorthandConfig: ShorthandConfig<FormFieldProps>;
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+  return element;
 };
+
+FormField.displayName = 'FormField';
 
 FormField.propTypes = {
   ...commonPropTypes.createCommon({
@@ -248,8 +195,11 @@ FormField.propTypes = {
   errorMessage: customPropTypes.shorthandAllowingChildren,
 };
 
+FormField.handledProps = Object.keys(FormField.propTypes) as any;
+
 FormField.defaultProps = {
   accessibility: formFieldBehavior,
+  as: 'div',
   control: { as: Input },
 };
 

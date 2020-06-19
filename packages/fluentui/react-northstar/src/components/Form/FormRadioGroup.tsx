@@ -1,41 +1,38 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import RadioGroup, { RadioGroupProps } from '../RadioGroup/RadioGroup';
 
-interface FormRadioGroupOwnProps extends Omit<RadioGroupProps, 'styles' | 'accessibility'> {}
-
-export interface FormRadioGroupProps extends FormFieldCustomProps, FormRadioGroupOwnProps {}
+interface FormRadioGroupOwnProps extends RadioGroupProps {}
+type SelectedFormFieldCustomProps = Omit<
+  FormFieldBaseProps,
+  'control' | 'styles' | 'accessibility' | 'design' | 'variables'
+>;
+export interface FormRadioGroupProps extends SelectedFormFieldCustomProps, FormRadioGroupOwnProps {}
 export type FormRadioGroupStylesProps = never;
 
 export const FormRadioGroupClassName = 'ui-form-radio_group';
 
-const FormRadioGroup = compose<
-  'div',
-  FormRadioGroupProps,
-  FormRadioGroupStylesProps,
-  FormFieldCustomProps,
-  FormFieldCustomStylesProps
->(FormFieldCustom, {
-  className: FormRadioGroupClassName,
-  displayName: 'FormRadioGroup',
-  overrideStyles: true,
-  shorthandConfig: {},
-  slotProps: _ => ({
-    control: {
-      as: RadioGroup,
+/**
+ * An FormRadioGroup renders a RadioGroup wrapped by FormField.
+ */
+const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesProps, SelectedFormFieldCustomProps, {}>(
+  _FormFieldBase,
+  {
+    className: FormRadioGroupClassName,
+    displayName: 'FormRadioGroup',
+    overrideStyles: true,
+    shorthandConfig: {},
+    slots: {
+      control: RadioGroup,
     },
-  }),
-}) as ComponentWithAs<'div', FormRadioGroupProps> & { shorthandConfig: ShorthandConfig<FormRadioGroupProps> };
-
-FormRadioGroup.defaultProps = {};
+  },
+);
 
 FormRadioGroup.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',
   }),
-  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormRadioGroup;

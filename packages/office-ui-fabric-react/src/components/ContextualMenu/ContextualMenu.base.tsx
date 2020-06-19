@@ -511,7 +511,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     totalItemCount: number,
     hasCheckmarks: boolean,
     hasIcons: boolean,
-  ): React.ReactNode => {
+  ): JSX.Element => {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
     const {
@@ -597,7 +597,9 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         break;
     }
 
-    return renderedItems;
+    // Since multiple nodes *could* be rendered, wrap them all in a fragment with this item's key.
+    // This ensures the reconciler handles multi-item output per-node correctly and does not re-mount content.
+    return <React.Fragment key={item.key}>{renderedItems}</React.Fragment>;
   };
 
   private _defaultMenuItemRenderer = (item: IContextualMenuItemRenderProps): React.ReactNode => {

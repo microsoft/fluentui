@@ -12,6 +12,9 @@ export type FormMessageStylesProps = Required<Pick<FormMessageOwnProps, 'error'>
 
 export const FormMessageClassName = 'ui-form-mesage';
 
+/**
+ * An FormMessage provides a slot for message in the FormField.
+ */
 const FormMessage = compose<'span', FormMessageProps, FormMessageStylesProps, BoxProps, {}>(Box, {
   className: FormMessageClassName,
   displayName: 'FormMessage',

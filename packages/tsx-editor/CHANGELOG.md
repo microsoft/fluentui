@@ -1,8 +1,26 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.95](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.95)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.94..@uifabric/tsx-editor_v0.11.95)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [0.11.94](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.94)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.67..@uifabric/tsx-editor_v0.11.94)
+
+### Patches
+
+- Add missing dep on example-data ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
 
 ## [0.11.67](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.67)
 
