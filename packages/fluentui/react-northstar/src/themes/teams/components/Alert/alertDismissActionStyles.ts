@@ -42,7 +42,7 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       color: v.dismissActionColor || 'currentColor',
       outline: 0,
       padding: 0,
-      border: 0,
+      borderWidth: 0,
       backgroundColor: v.dismissActionBackgroundColor,
       borderRadius: v.borderRadius,
       display: 'inline-flex',

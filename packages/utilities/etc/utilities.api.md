@@ -970,6 +970,9 @@ export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISett
 export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
+export function modalize(target: HTMLElement): () => void;
+
+// @public
 export function nullRender(): JSX.Element | null;
 
 // @public

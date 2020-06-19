@@ -182,6 +182,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       onLayerDidMount,
       isModeless,
       dragOptions,
+      enableAriaHiddenSiblings,
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
@@ -224,6 +225,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={true}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
+        enableAriaHiddenSiblings={enableAriaHiddenSiblings}
       >
         {dragOptions && isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
