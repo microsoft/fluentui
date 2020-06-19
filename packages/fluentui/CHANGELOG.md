@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Avatar` initials when the input only contains whitespace @rymeskar ([#13682](https://github.com/microsoft/fluentui/pull/13682))
 - Fix the order of callbacks in `Dropdown` @layershifter ([#13707](https://github.com/microsoft/fluentui/pull/13707))
 - Fix merging of `inputRef` on `searchInput` shorthand in `Dropdown` @layershifter ([#13711](https://github.com/microsoft/fluentui/pull/13711))
+- fix for `Attachment`, updating colors to match Teams redlines @notandrew ([#13168](https://github.com/microsoft/fluentui/pull/13168))
 
 ### Features
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))
@@ -79,7 +80,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Enable back focus zone in `CarouselNavigation` @kolaps33 ([#13086](https://github.com/microsoft/fluentui/pull/13086))
 - Update examples to focus on internal input when Tab is pressed in `RadioGroupItem` @assuncaocharles ([#13110](https://github.com/microsoft/fluentui/pull/13110))
 - Wrapped `Alert`, `Attachment`, `Box` and `ListItem` FC with `unstable_wrapWithFocusZone` @assuncaocharles ([#13093](https://github.com/microsoft/fluentui/pull/13093))
-- fix for `Attachment`, updating colors to match Teams redlines @notandrew ([#13168](https://github.com/microsoft/fluentui/pull/13168))
 - Update to Teams theme font stack @notandrew ([#13273](https://github.com/microsoft/fluentui/pull/13273))
 - Fix to use `useRef()` hook in functional components @layershifter ([#13228](https://github.com/microsoft/fluentui/pull/13228))
 - Exclude useless updates, fix `fixed` positioning in `Popper` @layershifter @kolaps33 ([#13044](https://github.com/microsoft/fluentui/pull/13044))
