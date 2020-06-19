@@ -17,7 +17,7 @@ export interface ButtonRef {
 
 export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
   /**
-   * Access the imperative api of the button.
+   * Access the imperative API of the Button.
    */
   componentRef?: React.RefObject<ButtonRef>;
 
