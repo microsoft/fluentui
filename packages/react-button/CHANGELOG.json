@@ -2,6 +2,29 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@fluentui/react-button_v0.3.6",
+      "version": "0.3.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding conformance test to components.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "7e490986f3c1b27a2702acbed5ee15a8531e7537",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "react-button: Adding api-extractor configuration.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8557ea009c32067945b0761030e8e1a1214d1b2d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jun 2020 12:37:09 GMT",
       "tag": "@fluentui/react-button_v0.3.5",
       "version": "0.3.5",
