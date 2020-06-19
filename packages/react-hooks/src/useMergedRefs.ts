@@ -8,10 +8,9 @@ import { useRef, useCallback, Ref, MutableRefObject } from 'react';
 export function useMergedRefs<T>(...refs: Ref<T>[]): (instance: T) => void {
   const state = useRef<(Ref<T> | undefined)[]>();
 
-  // Update refs list in immutatable state object.
+  // Update refs list.
   state.current = refs;
 
-  // Return cached callback which refers to mutable refs array within the immutable state.
   return useCallback((value: T) => {
     for (const ref of state.current!) {
       if (typeof ref === 'function') {
