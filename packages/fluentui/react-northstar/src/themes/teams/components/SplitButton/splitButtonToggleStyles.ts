@@ -84,7 +84,7 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
       ':focus-visible': {
         backgroundColor: v.toggleButtonBackgroundColorFocus,
         borderColor: v.toggleButtonBorderColorFocus,
-        color: v.toggleButtonColorFocus,
+        // color: v.toggleButtonColorFocus,
         borderWidth,
 
         ':hover': {
@@ -108,6 +108,11 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
         ':focus': borderFocusStyles[':focus'],
         ':focus-visible': {
           backgroundColor: v.toggleButtonPrimaryBackgroundColorFocus,
+        },
+
+        ':hover': {
+          color: v.toggleButtonPrimaryHoverColor,
+          backgroundColor: v.toggleButtonPrimaryHoverBackgroundColor,
         },
       }),
 
