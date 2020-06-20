@@ -2,7 +2,7 @@
   "packages": [
     "packages/react-button",
     "@fluentui/react-northstar",
-    "office-ui-fabric-react",
+    "packages/office-ui-fabric-react",
     "@fluentui/react-next",
     "@fluentui/react-icons"
   ],
