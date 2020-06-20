@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Utilities: getNativeProps prop list using Set for performance reasons.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-20T08:22:43.642Z"
+}
