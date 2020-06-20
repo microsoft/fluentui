@@ -249,7 +249,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
           {beakVisible && <div className={this._classNames.beakCurtain} />}
           <Popup
-            {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
+            {...getNativeProps(this.props, new Set(ARIA_ROLE_ATTRIBUTES))}
             ariaLabel={ariaLabel}
             onRestoreFocus={this.props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}

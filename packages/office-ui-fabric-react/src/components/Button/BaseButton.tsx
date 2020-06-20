@@ -30,6 +30,7 @@ import {
 } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
 import { IKeytipProps } from '../Keytip/Keytip.types';
+import { divProperties } from '@uifabric/utilities';
 
 /**
  * {@docCategory Button}
@@ -599,7 +600,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
-    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, [], ['disabled']);
+    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, divProperties, [
+      'disabled',
+    ]);
 
     // Add additional props to apply on primary action button
     if (primaryActionButtonProps) {
