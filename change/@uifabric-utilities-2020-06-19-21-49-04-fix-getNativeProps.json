@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "getNativeProperties: takes in Sets rather than string arrays for faster lookups.",
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-20T04:49:04.291Z"
+}
