@@ -22,7 +22,7 @@ const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, Select
     className: formSliderClassName,
     displayName: 'FormSlider',
     overrideStyles: true,
-    handledProps: Slider.handledProps,
+    handledProps: ['onChange'],
     slots: {
       control: Slider,
     },
@@ -36,8 +36,11 @@ const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, Select
 
 FormSlider.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false,
+    as: false,
+    accessibility: false,
     children: false,
+    className: false,
+    content: false,
   }),
   onChange: PropTypes.func,
 };

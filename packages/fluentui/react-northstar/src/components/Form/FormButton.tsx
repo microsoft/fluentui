@@ -23,7 +23,10 @@ const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, Select
     className: formButtonClassName,
     displayName: 'FormButton',
     overrideStyles: true,
-    handledProps: Object.keys(Button.propTypes) as any,
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
+    handledProps: ['onClick', 'onFocus'],
     slots: {
       control: Button,
     },
@@ -38,8 +41,11 @@ const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, Select
 
 FormButton.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false,
+    as: false,
+    accessibility: false,
     children: false,
+    className: false,
+    content: false,
   }),
   onFocus: PropTypes.func,
   onClick: PropTypes.func,

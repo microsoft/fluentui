@@ -23,7 +23,7 @@ const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, Sele
     className: formDropdownClassName,
     displayName: 'FormDropdown',
     overrideStyles: true,
-    handledProps: Dropdown.handledProps as any,
+    handledProps: ['onChange'],
     slots: {
       control: Dropdown,
     },
@@ -40,8 +40,11 @@ const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, Sele
 
 FormDropdown.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false,
+    as: false,
+    accessibility: false,
     children: false,
+    className: false,
+    content: false,
   }),
   onChange: PropTypes.func,
 };

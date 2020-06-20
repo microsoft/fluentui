@@ -105,19 +105,19 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
               ...slotProps.label,
             }),
         })}
-        {createShorthand(composeOptions.slots.message, errorMessage || message, {
-          defaultProps: () =>
-            getA11yProps('message', {
-              id: messageId.current,
-              ...slotProps.message,
-            }),
-        })}
         {createShorthand(composeOptions.slots.control, control || {}, {
           defaultProps: () =>
             getA11yProps('control', {
               error: !!errorMessage || null,
               ...unhandledProps,
               ...slotProps.control,
+            }),
+        })}
+        {createShorthand(composeOptions.slots.message, errorMessage || message, {
+          defaultProps: () =>
+            getA11yProps('message', {
+              id: messageId.current,
+              ...slotProps.message,
             }),
         })}
       </ElementType>
@@ -141,7 +141,6 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       'design',
       'styles',
       'inline',
-      'control',
       'errorMessage',
       'message',
     ],
@@ -152,11 +151,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
 );
 
 _FormFieldBase.propTypes = {
-  ...commonPropTypes.createCommon({
-    children: false,
-    content: false,
-  }),
-  control: customPropTypes.itemShorthand,
+  ...commonPropTypes.createCommon({ children: false }),
   id: PropTypes.string,
   inline: PropTypes.bool,
   message: customPropTypes.itemShorthand,

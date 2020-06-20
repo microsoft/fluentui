@@ -22,7 +22,6 @@ const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesP
     className: formRadioGroupClassName,
     displayName: 'FormRadioGroup',
     overrideStyles: true,
-    handledProps: RadioGroup.handledProps,
     slots: {
       control: RadioGroup,
     },
@@ -30,8 +29,11 @@ const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesP
 );
 
 FormRadioGroup.propTypes = commonPropTypes.createCommon({
-  content: false,
+  as: false,
+  accessibility: false,
   children: false,
+  className: false,
+  content: false,
 });
 
 export default FormRadioGroup;

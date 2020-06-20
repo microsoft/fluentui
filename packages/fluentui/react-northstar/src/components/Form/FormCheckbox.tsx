@@ -23,7 +23,7 @@ const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, 
     className: formCheckboxClassName,
     displayName: 'FormCheckbox',
     overrideStyles: true,
-    handledProps: Checkbox.handledProps,
+    handledProps: ['label', 'onChange', 'onClick'],
     slots: {
       label: () => null,
       control: Checkbox,
@@ -40,8 +40,11 @@ const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, 
 
 FormCheckbox.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false,
+    as: false,
+    accessibility: false,
     children: false,
+    className: false,
+    content: false,
   }),
   onChange: PropTypes.func,
   onClick: PropTypes.func,

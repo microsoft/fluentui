@@ -25,7 +25,6 @@ const FormInput = compose<'div', FormInputProps, FormInputStylesProps, SelectedF
     slots: {
       control: Input,
     },
-    handledProps: ['accessibility', 'as', 'children', 'className'],
     slotProps: ({ errorMessage }) => ({
       control: {
         error: !!errorMessage,
@@ -37,6 +36,12 @@ const FormInput = compose<'div', FormInputProps, FormInputStylesProps, SelectedF
   },
 );
 
-FormInput.propTypes = commonPropTypes.createCommon({ content: false, children: false });
+FormInput.propTypes = commonPropTypes.createCommon({
+  as: false,
+  accessibility: false,
+  children: false,
+  className: false,
+  content: false,
+});
 
 export default FormInput;
