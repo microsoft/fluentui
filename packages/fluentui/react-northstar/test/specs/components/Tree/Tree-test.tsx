@@ -183,5 +183,17 @@ describe('Tree', () => {
 
       checkOpenTitles(wrapper, ['1', '2', '21', '211', '22', '3']);
     });
+
+    it('should not colapse expanded items by default', () => {
+      const itemsClone = JSON.parse(JSON.stringify(items));
+      itemsClone[0]['expanded'] = true;
+      const wrapper = mountWithProvider(<Tree items={itemsClone} />);
+
+      checkOpenTitles(wrapper, ['1', '11', '12', '2', '3']);
+      getItems(wrapper)
+        .at(0) // title 1
+        .simulate('keydown', { keyCode: keyboardKey.ArrowRight });
+      checkOpenTitles(wrapper, ['1', '11', '12', '2', '3']);
+    });
   });
 });
