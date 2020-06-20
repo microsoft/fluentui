@@ -53,7 +53,7 @@
     "@uifabric/set-version": "^7.0.13",
     "@uifabric/theme-samples": "^7.0.94",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^7.121.0",
+    "office-ui-fabric-react": "^7.121.1",
     "tslib": "^1.10.0",
     "whatwg-fetch": "2.0.4"
   }

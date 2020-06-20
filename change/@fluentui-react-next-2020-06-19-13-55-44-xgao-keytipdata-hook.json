@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "Keytip: add KeytipLayer storybook decorator and fix missing handled prop for link",
+  "comment": "Avoid rendering KeytipData when keytipProps are not passed",
   "packageName": "@fluentui/react-next",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-06-18T18:09:19.612Z"
+  "date": "2020-06-19T20:55:44.871Z"
 }
