@@ -24,7 +24,7 @@ export const allowOverscrollOnElement: (element: HTMLElement | null, events: Eve
 export const allowScrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
 
 // @public
-export const anchorProperties: string[];
+export const anchorProperties: Set<string>;
 
 // @public
 export function appendFunction(parent: any, ...functions: any[]): () => void;
@@ -71,7 +71,7 @@ export class Async {
     }
 
 // @public
-export const audioProperties: string[];
+export const audioProperties: Set<string>;
 
 // @public
 export class AutoScroll {
@@ -102,13 +102,13 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
 }
 
 // @public
-export const baseElementEvents: string[];
+export const baseElementEvents: Set<string>;
 
 // @public
-export const baseElementProperties: string[];
+export const baseElementProperties: Set<string>;
 
 // @public
-export const buttonProperties: string[];
+export const buttonProperties: Set<string>;
 
 // @public
 export function calculatePrecision(value: number | string): number;
@@ -117,10 +117,10 @@ export function calculatePrecision(value: number | string): number;
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
-export const colGroupProperties: string[];
+export const colGroupProperties: Set<string>;
 
 // @public (undocumented)
-export const colProperties: string[];
+export const colProperties: Set<string>;
 
 // @public
 export function composeComponentAs<TProps>(outer: IComponentAs<TProps>, inner: IComponentAs<TProps>): IComponentAs<TProps>;
@@ -197,7 +197,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
 export function disableBodyScroll(): void;
 
 // @public
-export const divProperties: string[];
+export const divProperties: Set<string>;
 
 // @public
 export function doesElementContainFocus(element: HTMLElement): boolean;
@@ -295,7 +295,7 @@ export const FocusRects: React.FunctionComponent<{
 export function format(s: string, ...values: any[]): string;
 
 // @public
-export const formProperties: string[];
+export const formProperties: Set<string>;
 
 // @public
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
@@ -337,7 +337,7 @@ export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLEl
 export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: keyof React.ReactHTML, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
-export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
+export function getNativeProps<T>(props: Record<string, any>, allowedPropNames: Set<string>, excludedPropNames?: string[]): T;
 
 // @public
 export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
@@ -404,7 +404,7 @@ export function hoistMethods(destination: any, source: any, exclusions?: string[
 export function hoistStatics<TSource extends Object, TDest>(source: TSource, dest: TDest): TDest;
 
 // @public
-export const htmlElementProperties: string[];
+export const htmlElementProperties: Set<string>;
 
 // @public (undocumented)
 export interface IAsAsyncOptions<TProps> {
@@ -582,13 +582,13 @@ export interface IFitContentToBoundsOptions {
 }
 
 // @public
-export const iframeProperties: string[];
+export const iframeProperties: Set<string>;
 
 // @public @deprecated (undocumented)
-export const imageProperties: string[];
+export const imageProperties: Set<string>;
 
 // @public
-export const imgProperties: string[];
+export const imgProperties: Set<string>;
 
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
@@ -597,7 +597,7 @@ export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: R
 export function initializeFocusRects(window?: Window): void;
 
 // @public
-export const inputProperties: string[];
+export const inputProperties: Set<string>;
 
 // @public (undocumented)
 export interface IObjectWithKey {
@@ -937,10 +937,10 @@ export const KeyCodes: {
 export type KeyCodes = number;
 
 // @public
-export const labelProperties: string[];
+export const labelProperties: Set<string>;
 
 // @public
-export const liProperties: string[];
+export const liProperties: Set<string>;
 
 // @public
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
@@ -976,7 +976,7 @@ export function modalize(target: HTMLElement): () => void;
 export function nullRender(): JSX.Element | null;
 
 // @public
-export const olProperties: string[];
+export const olProperties: Set<string>;
 
 export { Omit }
 
@@ -984,7 +984,7 @@ export { Omit }
 export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public (undocumented)
-export const optionProperties: string[];
+export const optionProperties: Set<string>;
 
 // @public
 export interface Point {
@@ -1125,7 +1125,7 @@ export enum SelectionMode {
 }
 
 // @public
-export const selectProperties: string[];
+export const selectProperties: Set<string>;
 
 // @public
 export function setBaseUrl(baseUrl: string): void;
@@ -1178,22 +1178,22 @@ export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyl
 };
 
 // @public
-export const tableProperties: string[];
+export const tableProperties: Set<string>;
 
 // @public
-export const tdProperties: string[];
+export const tdProperties: Set<string>;
 
 // @public
-export const textAreaProperties: string[];
+export const textAreaProperties: Set<string>;
 
 // @public
-export const thProperties: string[];
+export const thProperties: Set<string>;
 
 // @public
 export function toMatrix<T>(items: T[], columnCount: number): T[][];
 
 // @public
-export const trProperties: string[];
+export const trProperties: Set<string>;
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
@@ -1208,7 +1208,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
 export function values<T>(obj: any): T[];
 
 // @public
-export const videoProperties: string[];
+export const videoProperties: Set<string>;
 
 // @public
 export function warn(message: string): void;
