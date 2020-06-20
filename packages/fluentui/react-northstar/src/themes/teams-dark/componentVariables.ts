@@ -12,7 +12,6 @@ export { default as Dialog } from './components/Dialog/dialogVariables';
 export { default as Divider } from './components/Divider/dividerVariables';
 export { default as Header } from './components/Header/headerVariables';
 export { default as HeaderDescription } from './components/Header/headerDescriptionVariables';
-export { default as ListItem } from './components/List/listItemVariables';
 export { default as RadioGroupItem } from './components/RadioGroup/radioGroupItemVariables';
 export { default as Segment } from './components/Segment/segmentVariables';
 export { default as Text } from './components/Text/textVariables';

@@ -277,4 +277,5 @@
   border-radius: var(--button-borderRadius);
   border: var(--button-focus-width, 2px) solid var(--button-focusColor);
   box-shadow: 0 0 0 var(--button-focus-innerWidth, 1px) var(--button-focusInnerColor) inset;
+  pointer-events: none;
 }
