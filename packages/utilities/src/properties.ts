@@ -5,7 +5,7 @@ import { filteredAssign } from './object';
  *
  * @public
  */
-export const baseElementEvents = [
+export const baseElementEvents = new Set([
   'onCopy',
   'onCut',
   'onPaste',
@@ -85,14 +85,14 @@ export const baseElementEvents = [
   'onPointerUp',
   'onGotPointerCapture',
   'onLostPointerCapture',
-];
+]);
 
 /**
  * An array of element attributes which are allowed on every html element type.
  *
  * @public
  */
-export const baseElementProperties = [
+export const baseElementProperties = new Set([
   'accessKey', // global
   'children', // global
   'className', // global
@@ -110,21 +110,22 @@ export const baseElementProperties = [
   'translate', // global
   'spellCheck', // global
   'name', // global
-];
+]);
 
 /**
  * An array of HTML element properties and events.
  *
  * @public
  */
-export const htmlElementProperties = baseElementProperties.concat(baseElementEvents);
+export const htmlElementProperties = new Set([...baseElementProperties, ...baseElementEvents]);
 
 /**
  * An array of LABEL tag properties and events.
  *
  * @public
  */
-export const labelProperties = htmlElementProperties.concat([
+export const labelProperties = new Set([
+  ...htmlElementProperties,
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
 ]);
 
@@ -133,7 +134,8 @@ export const labelProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const audioProperties = htmlElementProperties.concat([
+export const audioProperties = new Set([
+  ...htmlElementProperties,
   'height', // canvas, embed, iframe, img, input, object, video
   'loop', // audio, video
   'muted', // audio, video
@@ -147,7 +149,8 @@ export const audioProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const videoProperties = audioProperties.concat([
+export const videoProperties = new Set([
+  ...audioProperties,
   'poster', // video
 ]);
 
@@ -156,7 +159,8 @@ export const videoProperties = audioProperties.concat([
  *
  * @public
  */
-export const olProperties = htmlElementProperties.concat([
+export const olProperties = new Set([
+  ...htmlElementProperties,
   'start', // ol
 ]);
 
@@ -165,7 +169,8 @@ export const olProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const liProperties = htmlElementProperties.concat([
+export const liProperties = new Set([
+  ...htmlElementProperties,
   'value', // button, input, li, option, meter, progress, param
 ]);
 
@@ -174,7 +179,8 @@ export const liProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const anchorProperties = htmlElementProperties.concat([
+export const anchorProperties = new Set([
+  ...htmlElementProperties,
   'download', // a, area
   'href', // a, area, base, link
   'hrefLang', // a, area, link
@@ -189,7 +195,8 @@ export const anchorProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const buttonProperties = htmlElementProperties.concat([
+export const buttonProperties = new Set([
+  ...htmlElementProperties,
   'autoFocus', // button, input, select, textarea
   'disabled', // button, fieldset, input, optgroup, option, select, textarea
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
@@ -207,7 +214,8 @@ export const buttonProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const inputProperties = buttonProperties.concat([
+export const inputProperties = new Set([
+  ...buttonProperties,
   'accept', // input
   'alt', // area, img, input
   'autoCapitalize', // input, textarea
@@ -239,7 +247,8 @@ export const inputProperties = buttonProperties.concat([
  *
  * @public
  */
-export const textAreaProperties = buttonProperties.concat([
+export const textAreaProperties = new Set([
+  ...buttonProperties,
   'autoCapitalize', // input, textarea
   'cols', // textarea
   'dirname', // input, textarea
@@ -257,13 +266,15 @@ export const textAreaProperties = buttonProperties.concat([
  *
  * @public
  */
-export const selectProperties = buttonProperties.concat([
+export const selectProperties = new Set([
+  ...buttonProperties,
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
   'multiple', // input, select
   'required', // input, select, textarea
 ]);
 
-export const optionProperties = htmlElementProperties.concat([
+export const optionProperties = new Set([
+  ...htmlElementProperties,
   'selected', // option
   'value', // button, input, li, option, meter, progress, param
 ]);
@@ -273,7 +284,8 @@ export const optionProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const tableProperties = htmlElementProperties.concat([
+export const tableProperties = new Set([
+  ...htmlElementProperties,
   'cellPadding', // table
   'cellSpacing', // table
 ]);
@@ -290,7 +302,8 @@ export const trProperties = htmlElementProperties;
  *
  * @public
  */
-export const thProperties = htmlElementProperties.concat([
+export const thProperties = new Set([
+  ...htmlElementProperties,
   'rowSpan', // td, th
   'scope', // th
 ]);
@@ -300,18 +313,21 @@ export const thProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const tdProperties = htmlElementProperties.concat([
+export const tdProperties = new Set([
+  ...htmlElementProperties,
   'colSpan', // td
   'headers', // td
   'rowSpan', // td, th
   'scope', // th
 ]);
 
-export const colGroupProperties = htmlElementProperties.concat([
+export const colGroupProperties = new Set([
+  ...htmlElementProperties,
   'span', // col, colgroup
 ]);
 
-export const colProperties = htmlElementProperties.concat([
+export const colProperties = new Set([
+  ...htmlElementProperties,
   'span', // col, colgroup
 ]);
 
@@ -320,7 +336,8 @@ export const colProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const formProperties = htmlElementProperties.concat([
+export const formProperties = new Set([
+  ...htmlElementProperties,
   'acceptCharset', // form
   'action', // form
   'encType', // form
@@ -335,7 +352,8 @@ export const formProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const iframeProperties = htmlElementProperties.concat([
+export const iframeProperties = new Set([
+  ...htmlElementProperties,
   'allow', // iframe
   'allowFullScreen', // iframe
   'allowPaymentRequest', // iframe
@@ -355,7 +373,8 @@ export const iframeProperties = htmlElementProperties.concat([
  *
  * @public
  */
-export const imgProperties = htmlElementProperties.concat([
+export const imgProperties = new Set([
+  ...htmlElementProperties,
   'alt', // area, img, input
   'crossOrigin', // img
   'height', // canvas, embed, iframe, img, input, object, video
@@ -391,7 +410,12 @@ export const divProperties = htmlElementProperties;
  * @param allowedPropsNames-  The array of allowed propnames.
  * @returns The filtered props
  */
-export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T {
+export function getNativeProps<T>(
+  // tslint:disable-next-line:no-any
+  props: Record<string, any>,
+  allowedPropNames: Set<string>,
+  excludedPropNames?: string[],
+): T {
   // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
   // JSX attributes, but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
   // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then
@@ -401,7 +425,7 @@ export function getNativeProps<T>(props: {}, allowedPropNames: string[], exclude
     (propName: string) => {
       return (
         (!excludedPropNames || excludedPropNames.indexOf(propName) < 0) &&
-        (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0 || allowedPropNames.indexOf(propName) >= 0)
+        (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0 || allowedPropNames.has(propName))
       );
     },
     {},

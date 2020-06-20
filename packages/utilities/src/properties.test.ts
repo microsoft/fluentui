@@ -61,7 +61,7 @@ describe('getNativeProps', () => {
 
   it('can exclude properties', () => {
     // tslint:disable-next-line:no-any
-    let result = getNativeProps<any>({ a: 1, b: 2 }, ['a', 'b'], ['b']);
+    let result = getNativeProps<any>({ a: 1, b: 2 }, new Set(['a', 'b']), ['b']);
 
     expect(result.a).toBeDefined();
     expect(result.b).toBeUndefined();

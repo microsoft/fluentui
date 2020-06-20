@@ -10,6 +10,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noImplicitAny": true,
+    "downlevelIteration": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
