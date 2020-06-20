@@ -44,8 +44,8 @@ export const defaultTests: TestObject = {
   },
 
   /**
-   * if functional component: component has a displayName
-   * else: component's constructor is a named function and matches displayName
+   * If functional component: component has a displayName
+   * Else: component's constructor is a named function and matches displayName
    */
   'component-has-displayname': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     const { Component } = testInfo;
@@ -76,6 +76,7 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Ensures component is exported at top level allowing import { Component } from 'packageName' */
   'exported-top-level': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     if (!testInfo.isInternal) {
       it(`is exported at top-level`, () => {
@@ -88,6 +89,7 @@ export const defaultTests: TestObject = {
     }
   },
 
+  /** Ensures component has top level file in package/src/componentName */
   'has-top-level-file': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     if (!testInfo.isInternal) {
       it(`has corresponding top-level file 'package/src/Component'`, () => {
@@ -100,6 +102,7 @@ export const defaultTests: TestObject = {
     }
   },
 
+  /** If the component is a subcomponent, ensure its parent has the subcomponent as static property */
   'is-static-property': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     it(`is a static property of its parent`, () => {
       const { componentPath, displayName, useDefaultExport } = testInfo;
@@ -117,6 +120,7 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Ensures aria attributes are kebab cased */
   'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     it(`Aria attributes are kebab-cased`, () => {
       const { Component, customMount, requiredProps } = testInfo;
@@ -136,6 +140,7 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
   'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
     it(`has consistent custom callback names`, () => {
       const { Component, customMount, requiredProps } = testInfo;
@@ -148,7 +153,8 @@ export const defaultTests: TestObject = {
         for (const prop of Object.keys(props)) {
           if (prop.slice(0, 3) === 'on') {
             const partAndEvent = prop.slice(3).split(/[A-Z][a-z]+/);
-            expect(partAndEvent.length).toEqual(2);
+            // Needs to be partAndEvent >= 1 in case the callback is onChange, etc.
+            expect(partAndEvent.length).toBeGreaterThanOrEqual(1);
           }
         }
       }
