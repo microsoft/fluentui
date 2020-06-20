@@ -188,6 +188,10 @@ const Popup: React.FC<PopupProps> &
         e.preventDefault();
         setPopupOpen(true, e);
       },
+      click: e => {
+        e.preventDefault();
+        _.invoke(triggerRef.current, 'click');
+      },
       preventScroll: e => {
         e.preventDefault();
       },
@@ -319,12 +323,10 @@ const Popup: React.FC<PopupProps> &
         setPopupOpen(false, e);
         _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
       };
-      if (!_.includes(normalizedOn, 'context')) {
-        triggerProps.onClick = (e, ...args) => {
-          setPopupOpen(true, e);
-          _.invoke(triggerElement, 'props.onClick', e, ...args);
-        };
-      }
+      triggerProps.onClick = (e, ...args) => {
+        setPopupOpen(true, e);
+        _.invoke(triggerElement, 'props.onClick', e, ...args);
+      };
       triggerProps.onBlur = (e, ...args) => {
         if (shouldBlurClose(e)) {
           trySetOpen(false, e);
