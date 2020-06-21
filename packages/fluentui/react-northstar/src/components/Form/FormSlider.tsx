@@ -2,7 +2,6 @@ import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import Slider, { SliderProps } from '../Slider/Slider';
-import * as PropTypes from 'prop-types';
 
 interface FormSliderOwnProps extends SliderProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -22,15 +21,9 @@ const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, Select
     className: formSliderClassName,
     displayName: 'FormSlider',
     overrideStyles: true,
-    handledProps: ['onChange'],
     slots: {
       control: Slider,
     },
-    slotProps: ({ onChange }) => ({
-      control: {
-        onChange,
-      },
-    }),
   },
 );
 
@@ -42,7 +35,6 @@ FormSlider.propTypes = {
     className: false,
     content: false,
   }),
-  onChange: PropTypes.func,
 };
 
 export default FormSlider;

@@ -1,10 +1,11 @@
 import { isConformant } from 'test/specs/commonTests';
 import FormSlider from 'src/components/Form/FormSlider';
+import Slider from 'src/components/Slider/Slider';
 
 describe('FormSlider', () => {
   isConformant(FormSlider, {
     constructorName: 'FormSlider',
-    passesUnhandledPropsTo: 'Slider',
+    passesUnhandledPropsTo: Slider,
     eventTargets: {
       onChange: 'input',
       onKeyDown: 'input',

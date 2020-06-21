@@ -41,7 +41,11 @@ export interface Conformant {
   /** List of autocontrolled props for this component. */
   autoControlledProps?: string[];
   /** Child component that will receive unhandledProps. */
-  passesUnhandledPropsTo?: string;
+  passesUnhandledPropsTo?: React.ComponentType<any> & {
+    handledProps?: string[];
+    autoControlledProps?: string[];
+    deprecated_className?: string;
+  };
 }
 
 /**
@@ -262,8 +266,12 @@ export default function isConformant(
 
       test('passes extra props to the component it is renders as', () => {
         if (passesUnhandledPropsTo) {
-          const wrapper = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
-          expect(wrapper.find(`${passesUnhandledPropsTo}[data-extra-prop="foo"]`).length).toBeGreaterThan(0);
+          const wrapper = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(
+            passesUnhandledPropsTo.displayName,
+          );
+          expect(wrapper.find(`${passesUnhandledPropsTo.displayName}[data-extra-prop="foo"]`).length).toBeGreaterThan(
+            0,
+          );
         } else {
           const MyComponent = () => null;
           const wrapper = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />);
@@ -334,7 +342,7 @@ export default function isConformant(
     if (!isClassComponent) {
       test('uses "useUnhandledProps" hook', () => {
         const wrapper = passesUnhandledPropsTo
-          ? mount(<Component {...requiredProps} />).find(passesUnhandledPropsTo)
+          ? mount(<Component {...requiredProps} />).find(passesUnhandledPropsTo.displayName)
           : mount(<Component {...requiredProps} />);
         const element = getComponent(wrapper);
 
@@ -369,7 +377,7 @@ export default function isConformant(
     test("client's attributes override the ones provided by Fluent UI", () => {
       const wrapperProps = { ...requiredProps, [IS_FOCUSABLE_ATTRIBUTE]: false };
       const wrapper = passesUnhandledPropsTo
-        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(passesUnhandledPropsTo)
+        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(passesUnhandledPropsTo.displayName)
         : mount(<Component {...wrapperProps} accessibility={noopBehavior} />);
       const element = getComponent(wrapper);
 
@@ -419,11 +427,13 @@ export default function isConformant(
           [listenerName]: handlerSpy,
           [EVENT_TARGET_ATTRIBUTE]: true,
         };
-
+        const ComponentHandled = passesUnhandledPropsTo;
         const component = passesUnhandledPropsTo
-          ? mount(<Component {...props} />).find(passesUnhandledPropsTo)
+          ? mount(<ComponentHandled {...props} />)
           : mount(<Component {...props} />);
-
+        const componentPropTypes = passesUnhandledPropsTo
+          ? { ...Component.propTypes, ...passesUnhandledPropsTo.propTypes }
+          : Component.propTypes;
         const eventTarget = getEventTargetComponent(component, listenerName, eventTargets);
         const customHandler: Function = eventTarget.prop(listenerName);
 
@@ -432,7 +442,7 @@ export default function isConformant(
             customHandler(eventShape);
           });
         } else {
-          if (Component.propTypes[listenerName]) {
+          if (componentPropTypes[listenerName]) {
             throw new Error(
               `Handler for '${listenerName}' is not passed to child event emitter element <${eventTarget.type()} />`,
             );
@@ -469,7 +479,7 @@ export default function isConformant(
         let expectedArgs = [eventShape];
         let errorMessage = 'was not called with (event)';
 
-        if (_.has(Component.propTypes, listenerName)) {
+        if (_.has(componentPropTypes, listenerName)) {
           expectedArgs = [eventShape, expect.objectContaining(component.props())];
           errorMessage = [
             'was not called with (event, data).\n',

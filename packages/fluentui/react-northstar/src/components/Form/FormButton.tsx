@@ -2,7 +2,6 @@ import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Button, { ButtonProps } from '../Button/Button';
 import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
-import * as PropTypes from 'prop-types';
 
 interface FormButtonOwnProps extends ButtonProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -26,16 +25,9 @@ const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, Select
     shorthandConfig: {
       mappedProp: 'content',
     },
-    handledProps: ['onClick', 'onFocus'],
     slots: {
       control: Button,
     },
-    slotProps: ({ onFocus, onClick }) => ({
-      control: {
-        onFocus,
-        onClick,
-      },
-    }),
   },
 );
 
@@ -47,8 +39,6 @@ FormButton.propTypes = {
     className: false,
     content: false,
   }),
-  onFocus: PropTypes.func,
-  onClick: PropTypes.func,
 };
 
 export default FormButton;

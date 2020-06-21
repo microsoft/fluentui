@@ -2,7 +2,6 @@ import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
-import * as PropTypes from 'prop-types';
 
 interface FormDropdownOwnProps extends DropdownProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -23,18 +22,9 @@ const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, Sele
     className: formDropdownClassName,
     displayName: 'FormDropdown',
     overrideStyles: true,
-    handledProps: ['onChange'],
     slots: {
       control: Dropdown,
     },
-    slotProps: ({ errorMessage, onChange }) => ({
-      control: {
-        onChange,
-      },
-      message: {
-        error: errorMessage,
-      },
-    }),
   },
 );
 
@@ -46,7 +36,6 @@ FormDropdown.propTypes = {
     className: false,
     content: false,
   }),
-  onChange: PropTypes.func,
 };
 
 export default FormDropdown;

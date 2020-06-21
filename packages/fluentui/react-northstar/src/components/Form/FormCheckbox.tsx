@@ -2,7 +2,6 @@ import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
 import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
-import * as PropTypes from 'prop-types';
 
 interface FormCheckboxOwnProps extends CheckboxProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -23,16 +22,14 @@ const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, 
     className: formCheckboxClassName,
     displayName: 'FormCheckbox',
     overrideStyles: true,
-    handledProps: ['label', 'onChange', 'onClick'],
+    handledProps: ['label'],
     slots: {
       label: () => null,
       control: Checkbox,
     },
-    slotProps: ({ label, onChange, onClick }) => ({
+    slotProps: ({ label }) => ({
       control: {
         label,
-        onChange,
-        onClick,
       },
     }),
   },
@@ -46,8 +43,6 @@ FormCheckbox.propTypes = {
     className: false,
     content: false,
   }),
-  onChange: PropTypes.func,
-  onClick: PropTypes.func,
 };
 
 export default FormCheckbox;
