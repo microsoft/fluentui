@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
+import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
 import { warnDeprecations, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
 import { useBoolean, useControllableValue, useId } from '@uifabric/react-hooks';
 import { IconButton } from '../../compat/Button';
@@ -14,12 +14,13 @@ const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>
 const COMPONENT_NAME = 'SearchBox';
 
 const useComponentRef = (
-  props: ISearchBoxProps,
+  // tslint:disable-next-line:no-any
+  componentRef: React.Ref<ISearchBox> | undefined,
   inputElementRef: React.RefObject<HTMLInputElement>,
   hasFocus: boolean,
 ) => {
   React.useImperativeHandle(
-    props.componentRef,
+    componentRef,
     () => ({
       focus: () => {
         inputElementRef.current?.focus();
@@ -156,7 +157,7 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     defaultValue: 'value',
   });
 
-  useComponentRef(props, inputElementRef, hasFocus);
+  useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
     <div role="search" ref={rootElementRef} className={classNames.root} onFocusCapture={onFocusCapture}>
