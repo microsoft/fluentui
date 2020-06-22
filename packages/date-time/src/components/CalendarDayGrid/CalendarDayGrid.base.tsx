@@ -42,14 +42,6 @@ export interface IDayInfo extends IDay {
 
 export interface ICalendarDayGridState {
   activeDescendantId?: string;
-
-  /**
-   * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
-   * Weeks[weeks.length - 1] contains first week of next range. These are for transition states.
-   *
-   * Weeks[1... weeks.length - 2] contains the actual visible data
-   */
-  weeks?: IDayInfo[][];
 }
 
 /**
@@ -66,13 +58,79 @@ function useAnimateBackwards({ navigatedDate }: ICalendarDayGridProps): boolean 
   }
 }
 
+function useWeeks(props: ICalendarDayGridProps, onSelectDate: (date: Date) => void) {
+  /**
+   * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
+   * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.
+   */
+  const weeks = React.useMemo((): IDayInfo[][] => {
+    const weeksGrid = getDayGrid(props);
+
+    /**
+     * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
+     * Weeks[weeks.length - 1] contains first week of next range. These are for transition states.
+     *
+     * Weeks[1... weeks.length - 2] contains the actual visible data
+     */
+    const returnValue: IDayInfo[][] = [];
+
+    for (let weekIndex = 0; weekIndex < weeksGrid.length; weekIndex++) {
+      const week: IDayInfo[] = [];
+      for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
+        const day = weeksGrid[weekIndex][dayIndex];
+        const dayInfo: IDayInfo = {
+          onSelected: () => onSelectDate(day.originalDate),
+          ...day,
+        };
+
+        week.push(dayInfo);
+      }
+      returnValue.push(week);
+    }
+
+    return returnValue;
+  }, [props]);
+
+  return weeks;
+}
+
 export const CalendarDayGridBase = React.forwardRef(
   (props: ICalendarDayGridProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const navigatedDayRef = React.useRef<HTMLButtonElement>(null);
 
+    const onSelectDate = (selectedDate: Date): void => {
+      const {
+        dateRangeType,
+        firstDayOfWeek,
+        minDate,
+        maxDate,
+        workWeekDays,
+        daysToSelectInDayView,
+        restrictedDates,
+      } = props;
+      const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
+
+      let dateRange = getDateRangeArray(
+        selectedDate,
+        dateRangeType,
+        firstDayOfWeek,
+        workWeekDays,
+        daysToSelectInDayView,
+      );
+      dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
+
+      dateRange = dateRange.filter((d: Date) => {
+        return !isRestrictedDate(d, restrictedDatesOptions);
+      });
+
+      props.onSelectDate?.(selectedDate, dateRange);
+      props.onNavigateDate?.(selectedDate, true);
+    };
+
+    const weeks = useWeeks(props, onSelectDate);
     const animateBackwards = useAnimateBackwards(props);
 
-    return <CalendarDayGridBaseClass {...props} hoisted={{ animateBackwards, navigatedDayRef }} />;
+    return <CalendarDayGridBaseClass {...props} hoisted={{ animateBackwards, navigatedDayRef, weeks, onSelectDate }} />;
   },
 );
 CalendarDayGridBase.displayName = 'CalendarDayGridBase';
@@ -81,6 +139,8 @@ interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
   hoisted: {
     animateBackwards: boolean;
     navigatedDayRef: React.RefObject<HTMLButtonElement>;
+    weeks: IDayInfo[][];
+    onSelectDate(date: Date): void;
   };
 }
 
@@ -95,21 +155,13 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
 
     this.state = {
       activeDescendantId: getId(),
-      weeks: this._getWeeks(props),
     };
 
     this._onClose = this._onClose.bind(this);
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayGridClassProps): void {
-    this.setState({
-      weeks: this._getWeeks(nextProps),
-    });
-  }
-
   public render(): JSX.Element {
-    const { activeDescendantId, weeks } = this.state;
+    const { activeDescendantId } = this.state;
     const {
       styles,
       theme,
@@ -119,7 +171,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
       labelledBy,
       lightenDaysOutsideNavigatedMonth,
       animationDirection,
-      hoisted: { animateBackwards },
+      hoisted: { animateBackwards, weeks },
     } = this.props;
 
     this.classNames = getClassNames(styles, {
@@ -183,8 +235,14 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
   }
 
   private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>): JSX.Element => {
-    const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow } = this.props;
-    const { weeks } = this.state;
+    const {
+      showWeekNumbers,
+      strings,
+      firstDayOfWeek,
+      allFocusable,
+      weeksToShow,
+      hoisted: { weeks },
+    } = this.props;
     const dayLabels = strings.shortDays.slice();
     const firstOfMonthIndex = findIndex(weeks![1], (day: IDayInfo) => day.originalDate.getDate() === 1);
     if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
@@ -224,8 +282,14 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     ariaRole?: string,
     ariaHidden?: boolean,
   ): JSX.Element => {
-    const { showWeekNumbers, firstDayOfWeek, firstWeekOfYear, navigatedDate, strings } = this.props;
-    const { weeks } = this.state;
+    const {
+      showWeekNumbers,
+      firstDayOfWeek,
+      firstWeekOfYear,
+      navigatedDate,
+      strings,
+      hoisted: { weeks },
+    } = this.props;
     const weekNumbers = showWeekNumbers
       ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
       : null;
@@ -363,9 +427,9 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     // if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we
     // don't jump the view unnecessarily
     const isInCurrentView =
-      this.state.weeks &&
+      this.props.hoisted.weeks &&
       nextDate &&
-      this.state.weeks.slice(1, this.state.weeks.length - 1).some((week: IDayInfo[]) => {
+      this.props.hoisted.weeks.slice(1, this.props.hoisted.weeks.length - 1).some((week: IDayInfo[]) => {
         return week.some((day: IDayInfo) => {
           return compareDates(day.originalDate, nextDate!);
         });
@@ -388,41 +452,11 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
   ): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
-        this._onSelectDate(originalDate);
+        this.props.hoisted.onSelectDate(originalDate);
       } else {
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
       }
     };
-  };
-
-  private _onSelectDate = (selectedDate: Date): void => {
-    const {
-      onSelectDate,
-      onNavigateDate,
-      dateRangeType,
-      firstDayOfWeek,
-      minDate,
-      maxDate,
-      workWeekDays,
-      daysToSelectInDayView,
-      restrictedDates,
-    } = this.props;
-    const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
-
-    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
-    dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
-
-    dateRange = dateRange.filter((d: Date) => {
-      return !isRestrictedDate(d, restrictedDatesOptions);
-    });
-
-    if (onSelectDate) {
-      onSelectDate(selectedDate, dateRange);
-    }
-
-    if (onNavigateDate) {
-      onNavigateDate(selectedDate, true);
-    }
   };
 
   private _onClose = (): void => {
@@ -430,57 +464,6 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
       this.props.onDismiss();
     }
   };
-
-  /**
-   * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
-   * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.
-   */
-  private _getWeeks(propsToUse: ICalendarDayGridClassProps): IDayInfo[][] {
-    const {
-      selectedDate,
-      dateRangeType,
-      firstDayOfWeek,
-      firstWeekOfYear,
-      today,
-      minDate,
-      maxDate,
-      weeksToShow,
-      workWeekDays,
-      daysToSelectInDayView,
-      navigatedDate,
-    } = propsToUse;
-    const dayGridOptions = {
-      selectedDate,
-      dateRangeType,
-      firstDayOfWeek,
-      firstWeekOfYear,
-      today,
-      minDate,
-      maxDate,
-      weeksToShow,
-      workWeekDays,
-      daysToSelectInDayView,
-      navigatedDate,
-    };
-    const weeksGrid = getDayGrid(dayGridOptions);
-    const weeks: IDayInfo[][] = [];
-
-    for (let weekIndex = 0; weekIndex < weeksGrid.length; weekIndex++) {
-      const week: IDayInfo[] = [];
-      for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const day = weeksGrid[weekIndex][dayIndex];
-        const dayInfo: IDayInfo = {
-          onSelected: this._onSelectDate.bind(this, day.originalDate),
-          ...day,
-        };
-
-        week.push(dayInfo);
-      }
-      weeks.push(week);
-    }
-
-    return weeks;
-  }
 
   /**
    *
@@ -632,8 +615,13 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
    */
 
   private getDayInfosInRangeOfDay = (day: IDayInfo): IDayInfo[] => {
-    const { weeks } = this.state;
-    const { dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView } = this.props;
+    const {
+      dateRangeType,
+      firstDayOfWeek,
+      workWeekDays,
+      daysToSelectInDayView,
+      hoisted: { weeks },
+    } = this.props;
 
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
     const dateRangeHoverType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
