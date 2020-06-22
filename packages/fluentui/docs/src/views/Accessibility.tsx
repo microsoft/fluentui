@@ -48,7 +48,6 @@ export default () => (
       <li>{link('High Contrast', '#high-contrast')}</li>
       <li>{link('Zoom', '#zoom')}</li>
     </ul>
-
     <Header as="h2" content="Goals of Accessibility" />
     <p>
       Fluent UI components follow{' '}
@@ -112,13 +111,11 @@ export default () => (
         </li>
       </ol>
     </p>
-
     <Header as="h3" content="Out of Scope" />
     <p>
       Internationalization, globalization, keyboard shortcuts and language detection are deliberately not part of Fluent
       UI and should be handled by the hosting application.
     </p>
-
     <Header as="h2" content="Making an app / page accessible" />
     <p>
       Besides component level accessibility there are application / page level considerations, mostly regarding the
@@ -126,7 +123,6 @@ export default () => (
       {link('ARIA Landmarks Example', 'https://www.w3.org/TR/wai-aria-practices/examples/landmarks/index.html')} to
       identify and implement page areas.
     </p>
-
     <p>
       In some cases, ARIA attributes need to be provided by the consumer of Fluent UI if the required information cannot
       be derived from the components.
@@ -149,7 +145,6 @@ export default () => (
       Most typical examples are {code('aria-label')}, {code('aria-labelledby')} and {code('title')} attributes. In some
       cases the values need to be dynamically changed based on the state of the component/application.
     </p>
-
     <Header as="h3" content="Semantic HTML" />
     <p>
       While Fluent UI goes a long way in making the application accessible by default, it does build on having correct
@@ -166,7 +161,6 @@ export default () => (
         </Button>
       `}
     />
-
     <p>
       This is a simple example, clearly here the intent is to display a button with an icon labelled 'Download'. HTML
       representation is semantically correct and specifies essential
@@ -180,13 +174,11 @@ export default () => (
         </button>
       `}
     />
-
     <p>
       Although we highly recommend using semantically correct HTML elements, it is possible to render, for example,{' '}
       {code('<Button>')}
       component as {code('<div>')} and remain semantic by provided out of the box {code('role')} attribute.
     </p>
-
     <CodeSnippet
       value={`
         <Button as={"div"} aria-label='Download file'>
@@ -194,7 +186,6 @@ export default () => (
         </Button>
       `}
     />
-
     <p>Attribute {code('role="button"')} is added to button container:</p>
     <CodeSnippet
       mode="html"
@@ -213,7 +204,6 @@ export default () => (
       </li>
       <li>Use appropriate roles and {code('aria-*')} attributes</li>
     </ul>
-
     <Header as="h3" content="Design Considerations" />
     <p>
       Having a clear idea of how users would use the keyboard and screen readers to navigate through your app before
@@ -251,14 +241,12 @@ export default () => (
       Our strong recommendation here is to have clear accessibility designs and example user flows as early in the
       design process as possible.{' '}
     </p>
-
     <Header as="h2" content="Keyboard Navigation" />
     <p>
       The ability to navigate and interact with the application without a mouse is something that most now take for
       granted. It's often easier for users to select a particular item in a list using arrow keys, rather than
       attempting to select with the pointing device for example.{' '}
     </p>
-
     <Header as="h3" content="Tabbing and arrow key navigation" />
     <p>
       The {code('Tab')} key is used to move between focusable elements, and many users are familiar with this behavior
@@ -272,7 +260,6 @@ export default () => (
       {code('Tab')} key between the zones, and between the actionable elements with navigation keys. Fluent UI uses
       Focus Zones both within it's own library components and as a component that can be added by the user.
     </p>
-
     <Header as="h3" content="Virtual Screen Reader Navigation" />
     <p>
       Screen readers use different mode of keyboard navigation. They allow the user to navigate using their virtual
@@ -280,7 +267,6 @@ export default () => (
       own implementation of virtual navigation, but they all operate based on the ARIA roles and attributes. Fluent UI
       will render these attributes based on the Accessibility Behaviors of the component.
     </p>
-
     <Header as="h3" content="Accessibility Behaviors" />
     <p>
       In Fluent UI, accessibility behaviors encapsulate keyboard navigation and screen reader navigation. They
@@ -289,7 +275,6 @@ export default () => (
       provide their own roles and attributes by changing the behavior applied.{' '}
       {link('Read more about Accessibility Behaviors.', '/accessibility-behaviors')}
     </p>
-
     <Header as="h3" content="Focus Zone" />
     <p>
       Focus zones allow the Tab navigation to be broken down into smaller parts, so that user can use the {code('tab')}{' '}
@@ -297,7 +282,6 @@ export default () => (
       within these higher level components (buttons in a toolbar, items in a list).{' '}
       {link('Read more about FocusZone.', '/focus-zone')}
     </p>
-
     <Header as="h3" content="Focus Trap Zone" />
     <p>
       FocusTrapZone is used to grab and trap the focus inside an HTML element. Currently can be used only in{' '}
@@ -305,14 +289,12 @@ export default () => (
       elements of the FocusTrapZone. For example, when Popup opens, we want the focus to go inside Popup and trap there.{' '}
       {link('Read more about FocusTrapZone.', '/focus-trap-zone')}
     </p>
-
     <Header as="h3" content="Auto Focus Zone" />
     <p>
       AutoFocusZone is used to focus inner element on mount. Currently can be used in {code('Popup')}. For example, when
       we want to focus inner element in Popup when it mounts, but still without focus trap.{' '}
       {link('Read more about AutoFocusZone.', '/auto-focus-zone')}
     </p>
-
     <Header as="h3" content="Focus indicator" />
     <p>
       When a user is navigating through the application using the keyboard, it's important to make the element that
@@ -322,22 +304,18 @@ export default () => (
       mouse click events.
     </p>
     <p>The implementation and requirements on the consuming application/experience are work in progress.</p>
-
     <Header as="h3" content="Right Click Support" />
     <p>
       Screen reader has to make the user aware about the presence of the secondary action by a short meaningful label or
       description on the trigger element.
     </p>
-
     <Header as="h3" content="Elements that appear on hover over another element" />
     <p>
       Tooltips, popups and similar elements might appear only when the trigger element is hovered by mouse. Users using
       keyboard or screen readers to navigate are not able to hover the trigger element. Therefore such elements need to
       be visible also when the trigger element is in focused state.
     </p>
-
     <Header as="h2" content="Screen Readers" />
-
     <Header as="h3" content="Textual Representation" />
     <p>
       There are multiple ways ({code('aria-label')}, {code('aria-labelledby')}, {code('title')}) to set the text that is
@@ -382,28 +360,62 @@ export default () => (
         </button>
       `}
     />
-
+    <Header as="h3" content="Useful examples of labelling" />
+    <Header as="h4" content="Aria-labelledby refers to itself " />
+    In following example we want to get narrated from screen reader "delete Active members" button. Solution is
+    mentioned below, where `aria-labelledby` refers to the button `id` follows by heading element `id`. Screen reader
+    computes the accessible name in the order which is provided in `aria-labelledby`. The strategy was taken from the
+    {link(' Accessible Name and Description Computation 1.1', 'https://www.w3.org/TR/accname-1.1/#terminology')} page.
+    <CodeSnippet
+      value={`
+      <>
+      <Header as="h3" content="Active members" id="table-header" />
+      <Button
+        icon={<TableDeleteIcon />}
+        id="delete-button"
+        aria-label="delete"
+        aria-labelledby="delete-button table-header"
+      />
+    </>
+    `}
+    />
+    <Header as="h4" content="Aria-describedby or aria-labelledby refers to multiple elements" />
+    In following example we want to get narrated from screen reader "join call button" + additional information about
+    status of camera and microphone. We can reach it by refering to the status information with `aria-describedby`. This
+    attribute is narrated after the role infomation. Be carefull narration of this attribue can be turn off by change
+    verbosity level in the screen reader. If the purpose is that the information will be narrated each time on 100%,
+    then use rather `aria-labelledby`.
+    <CodeSnippet
+      value={`
+      <>
+      <Button
+        icon={<CallIcon />}
+        id="delete-button"
+        aria-label="join call"
+        aria-describedby="hidden-element-info-split1 hidden-element-info-split2"
+      />
+      <div id="hidden-element-status-camera">camera is on</div>
+      <div id="hidden-element-status-microphone">microphone is on </div>
+    </>
+    `}
+    />
     <Header as="h3" content="Live Regions" />
     <p>
       Out of scope for now. Can be used {link('react-aria-live', 'https://github.com/AlmeroSteyn/react-aria-live')}
       library for that purpose.
     </p>
-
     <Header as="h2" content="High Contrast" />
     <p>
       There will be a standard high contrast theme. Additionally, the DocSite can be used to test individual components
       work in HC mode and achieve sufficient clarity for partially sighted.
     </p>
-
     <Header as="h2" content="Zoom" />
     <p>Fluent UI components are tested zoomed up to 200%.</p>
-
     <Header as="h1" content="Contributing" />
     {link(
       'Accessibility contributing guide',
       'https://github.com/stardust-ui/accessibility/blob/master/CONTRIBUTING.md',
     )}
-
     <p>Read more about:</p>
     <ul>
       <li>
@@ -419,7 +431,6 @@ export default () => (
         <Link to="auto-focus-zone">AutoFocusZone</Link>
       </li>
     </ul>
-
     <GuidesNavigationFooter previous={{ name: 'FAQ', url: 'faq' }} next={{ name: 'Theming', url: 'theming' }} />
   </DocPage>
 );
