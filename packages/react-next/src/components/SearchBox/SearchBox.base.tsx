@@ -22,9 +22,7 @@ const useComponentRef = (
     props.componentRef,
     () => ({
       focus: () => inputElementRef.current?.focus(),
-      hasFocus: () => {
-        return hasFocus;
-      },
+      hasFocus: () => hasFocus,      
     }),
     [inputElementRef, hasFocus],
   );
