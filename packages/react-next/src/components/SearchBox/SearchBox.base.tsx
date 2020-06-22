@@ -21,9 +21,7 @@ const useComponentRef = (
   React.useImperativeHandle(
     props.componentRef,
     () => ({
-      focus: () => {
-        inputElementRef.current?.focus();
-      },
+      focus: () => inputElementRef.current?.focus(),
       hasFocus: () => {
         return hasFocus;
       },
