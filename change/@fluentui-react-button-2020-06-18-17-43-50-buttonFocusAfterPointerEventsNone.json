@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Button: Adding pointer-events: none to :after focus rectangle.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-19T00:43:50.885Z"
-}
