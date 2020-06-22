@@ -128,7 +128,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           name={link.headerText}
           keytipProps={link.keytipProps}
           data-content={contentString}
-          data-is-selected={isSelected}
         >
           {linkContent}
         </CommandButton>
