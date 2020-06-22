@@ -4,7 +4,7 @@ import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '@fluentui/react-next/lib/Icon';
 import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';

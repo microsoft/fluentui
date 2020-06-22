@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
+import { IButtonProps } from '@fluentui/react-next/lib/compat/Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 

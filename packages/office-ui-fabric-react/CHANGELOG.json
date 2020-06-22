@@ -2,6 +2,58 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "office-ui-fabric-react_v7.121.2",
+      "version": "7.121.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "KeytipData: convert to function component",
+            "author": "xgao@microsoft.com",
+            "commit": "0ea5b852e9aa0a465d15924dcb1607e76db7d431",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "use create with act wrapped in test",
+            "author": "xgao@microsoft.com",
+            "commit": "b0b4d703ec1178f2f3d80ead4d78a72e5fc64554",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "office-ui-fabric-react_v7.121.1",
+      "version": "7.121.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding new isConformant test",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8800f1cab6daba604e97652c87c3a134994f8887",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Renaming utilities file",
+            "author": "pompomon@gmail.com",
+            "commit": "15dc5e8e782565c75bc5d637813cee8be2b8a384",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Keytip: add KeytipLayer storybook decorator and fix missing handled prop for link",
+            "author": "xgao@microsoft.com",
+            "commit": "ffb1099f3e09f1524d499b397a01377a7763066a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jun 2020 16:07:40 GMT",
       "tag": "office-ui-fabric-react_v7.121.0",
       "version": "7.121.0",

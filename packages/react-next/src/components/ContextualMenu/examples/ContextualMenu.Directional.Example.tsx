@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useConstCallback } from '@uifabric/react-hooks';
-import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { Checkbox, ICheckboxStyles } from '@fluentui/react-next/lib/Checkbox';
 import {
   ContextualMenuItemType,

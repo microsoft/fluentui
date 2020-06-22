@@ -11,7 +11,7 @@ import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-import { DefaultButton, IButton } from '@fluentui/react-next/lib/Button';
+import { DefaultButton, IButton } from '@fluentui/react-next/lib/compat/Button';
 
 describe('ContextualMenu', () => {
   afterEach(() => {

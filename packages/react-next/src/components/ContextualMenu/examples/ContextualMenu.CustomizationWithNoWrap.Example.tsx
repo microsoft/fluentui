@@ -4,12 +4,10 @@ import {
   IContextualMenuProps,
   IContextualMenuItem,
   DirectionalHint,
-  DefaultButton,
-  IconButton,
   FocusZoneDirection,
-  IButtonProps,
 } from '@fluentui/react-next';
 import './ContextualMenuExample.scss';
+import { DefaultButton, IconButton, IButtonProps } from '@fluentui/react-next/lib/compat/Button';
 
 export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionComponent = () => {
   return <DefaultButton className="ContextualMenuButton3" text="Click for ContextualMenu" menuProps={menuProps} />;

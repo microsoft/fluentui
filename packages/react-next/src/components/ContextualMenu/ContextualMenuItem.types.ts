@@ -3,7 +3,7 @@ import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 
 /**
  * {@docCategory ContextualMenu}
