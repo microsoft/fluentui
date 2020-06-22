@@ -19,7 +19,7 @@ const beforeAndAfter = (
 });
 
 const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVariables> = {
-  root: ({ props, variables }): ICSSInJSStyle => {
+  root: ({ props, variables, rtl }): ICSSInJSStyle => {
     const { color, fitted, size, important, hasContent, vertical } = props;
     const colors = variables.colorScheme[color];
     return {
@@ -40,12 +40,12 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
             lineHeight: variables.textLineHeight,
             '::before': {
               ...beforeAndAfter(size, variables, colors, props),
-              marginRight: pxToRem(20),
+              ...(!rtl && { marginRight: pxToRem(20) }),
               marginInlineEnd: pxToRem(20),
             },
             '::after': {
               ...beforeAndAfter(size, variables, colors, props),
-              marginLeft: pxToRem(20),
+              ...(!rtl && { marginLeft: pxToRem(20) }),
               marginInlineStart: pxToRem(20),
             },
           }
