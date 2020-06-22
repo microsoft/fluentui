@@ -4,3 +4,4 @@ export * from './Link';
 export * from './Pivot';
 export * from './Slider';
 export * from './Toggle';
+export * from './withKeytipData';

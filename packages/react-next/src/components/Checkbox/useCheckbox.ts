@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mergeSlotProp } from '@fluentui/react-compose';
 import { useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
 import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
-import { useFocusRects, warnMutuallyExclusive } from '../../Utilities';
+import { useFocusRects, warnMutuallyExclusive, mergeAriaAttributeValues } from '../../Utilities';
 
 export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>): ICheckboxState => {
   const {
@@ -16,6 +16,7 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
     ariaSetSize,
     title,
     label,
+    keytipData,
   } = props;
 
   const id = useId('checkbox-', props.id);
@@ -58,13 +59,17 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
       id,
       title,
       onChange,
+      ...keytipData?.executeElementAttributes,
       'aria-disabled': disabled,
       'aria-label': ariaLabel || label,
       'aria-labelledby': ariaLabelledBy,
-      'aria-describedby': ariaDescribedBy,
+      'aria-describedby': mergeAriaAttributeValues(ariaDescribedBy, keytipData?.ariaDescribedBy),
       'aria-posinset': ariaPositionInSet,
       'aria-setsize': ariaSetSize,
       'aria-checked': isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false',
+    },
+    checkbox: {
+      ...keytipData?.targetElementAttributes,
     },
     container: {
       htmlFor: id,
