@@ -8,7 +8,7 @@ import { SpinButton, ISpinButtonStyles } from '@fluentui/react-next/lib/SpinButt
 import { Toggle } from '@fluentui/react-next/lib/Toggle';
 import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 import { IStackTokens, Stack } from '@fluentui/react-next/lib/Stack';
-import { withKeytipData } from '@fluentui/react-next/lib/compat';
+import { useKeytipData } from '@fluentui/react-next/lib/KeytipData';
 
 const pivotItemStyle: React.CSSProperties = { width: 500, paddingTop: 20 };
 const stackTokens: IStackTokens = { childrenGap: 20 };
@@ -20,40 +20,42 @@ const sampleOptions = [
   { key: 'C', text: 'Option 3' },
 ];
 
-const CheckboxWithKeytip = withKeytipData(Checkbox);
-const ToggleWithKeytip = withKeytipData(Toggle);
-const LinkWithKeytip = withKeytipData(Link);
+export const KeytipsBasicExample: React.FunctionComponent = () => {
+  const checkboxKeytipData = useKeytipData({ keytipProps: keytipMap.CheckboxKeytip });
+  const linkKeytipData = useKeytipData({ keytipProps: keytipMap.LinkKeytip });
+  const toggleKeytipData = useKeytipData({ keytipProps: keytipMap.ToggleKeytip });
 
-export const KeytipsBasicExample: React.FunctionComponent = () => (
-  <div>
-    <p>
-      For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content
-      are shown.
-    </p>
-    <Pivot>
-      <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
-        <Stack tokens={stackTokens}>
-          <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={spinButtonStyles} />
-          <ToggleWithKeytip onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
-          <span>
-            Go to{' '}
-            <LinkWithKeytip keytipProps={keytipMap.LinkKeytip} href="http://www.bing.com" target="_blank">
-              Bing
-            </LinkWithKeytip>
-          </span>
-        </Stack>
-      </PivotItem>
+  return (
+    <div>
+      <p>
+        For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content
+        are shown.
+      </p>
+      <Pivot>
+        <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
+          <Stack tokens={stackTokens}>
+            <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={spinButtonStyles} />
+            <Toggle onText="Yes" offText="No" keytipData={toggleKeytipData} />
+            <span>
+              Go to{' '}
+              <Link keytipData={linkKeytipData} href="http://www.bing.com" target="_blank">
+                Bing
+              </Link>
+            </span>
+          </Stack>
+        </PivotItem>
 
-      <PivotItem headerText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={pivotItemStyle}>
-        <Stack tokens={stackTokens}>
-          <CheckboxWithKeytip label="Checkbox" keytipProps={keytipMap.CheckboxKeytip} />
-          <Dropdown label="Dropdown" keytipProps={keytipMap.DropdownKeytip} options={sampleOptions} />
-        </Stack>
-      </PivotItem>
+        <PivotItem headerText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={pivotItemStyle}>
+          <Stack tokens={stackTokens}>
+            <Checkbox label="Checkbox" keytipData={checkboxKeytipData} />
+            <Dropdown label="Dropdown" keytipProps={keytipMap.DropdownKeytip} options={sampleOptions} />
+          </Stack>
+        </PivotItem>
 
-      <PivotItem headerText="Pivot 3" keytipProps={keytipMap.Pivot3Keytip} style={pivotItemStyle}>
-        <ComboBox label="Combo Box" keytipProps={keytipMap.ComboBoxKeytip} options={sampleOptions} />
-      </PivotItem>
-    </Pivot>
-  </div>
-);
+        <PivotItem headerText="Pivot 3" keytipProps={keytipMap.Pivot3Keytip} style={pivotItemStyle}>
+          <ComboBox label="Combo Box" keytipProps={keytipMap.ComboBoxKeytip} options={sampleOptions} />
+        </PivotItem>
+      </Pivot>
+    </div>
+  );
+};
