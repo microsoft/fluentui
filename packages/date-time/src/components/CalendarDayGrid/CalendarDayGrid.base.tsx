@@ -44,21 +44,7 @@ export interface ICalendarDayGridState {
   activeDescendantId?: string;
 }
 
-/**
- * Hook to determine whether to animate the CalendarDayGrid forwards or backwards
- * @returns true if the grid should animate backwards; false otherwise
- */
-function useAnimateBackwards({ navigatedDate }: ICalendarDayGridProps): boolean {
-  const previousNavigatedDate = usePrevious(navigatedDate);
-
-  if (!previousNavigatedDate || previousNavigatedDate <= navigatedDate) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-function useWeeks(props: ICalendarDayGridProps, onSelectDate: (date: Date) => void) {
+function useWeeks(props: ICalendarDayGridProps, onSelectDate: (date: Date) => void): IDayInfo[][] {
   /**
    * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
    * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.
@@ -92,6 +78,20 @@ function useWeeks(props: ICalendarDayGridProps, onSelectDate: (date: Date) => vo
   }, [props]);
 
   return weeks;
+}
+
+/**
+ * Hook to determine whether to animate the CalendarDayGrid forwards or backwards
+ * @returns true if the grid should animate backwards; false otherwise
+ */
+function useAnimateBackwards(weeks: IDayInfo[][]): boolean {
+  const previousNavigatedDate = usePrevious(weeks[0][0].originalDate);
+
+  if (!previousNavigatedDate || previousNavigatedDate <= weeks[0][0].originalDate) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 export const CalendarDayGridBase = React.forwardRef(
@@ -128,7 +128,7 @@ export const CalendarDayGridBase = React.forwardRef(
     };
 
     const weeks = useWeeks(props, onSelectDate);
-    const animateBackwards = useAnimateBackwards(props);
+    const animateBackwards = useAnimateBackwards(weeks);
 
     return <CalendarDayGridBaseClass {...props} hoisted={{ animateBackwards, navigatedDayRef, weeks, onSelectDate }} />;
   },
