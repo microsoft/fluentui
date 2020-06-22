@@ -1,11 +1,6 @@
 import { AccessibilityAttributes } from '@fluentui/accessibility';
-import {
-  AccessibilityHandlerProps,
-  FocusTrapZone,
-  FocusTrapZoneProps,
-  useTelemetry,
-  useAutoControlled,
-} from '@fluentui/react-bindings';
+import { AccessibilityHandlerProps, useTelemetry, useAutoControlled } from '@fluentui/react-bindings';
+import { FocusTrapZone, FocusTrapZoneProps } from '@fluentui/react-bindings/src/FocusZone';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';

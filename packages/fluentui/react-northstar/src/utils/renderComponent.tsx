@@ -8,7 +8,7 @@ import {
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
 } from '@fluentui/react-bindings';
-import FocusZone from '@fluentui/react-bindings/src/FocusZone/FocusZone';
+import { FocusZone } from '@fluentui/react-bindings/src/FocusZone';
 import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   emptyTheme,

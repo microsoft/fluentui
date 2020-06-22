@@ -1,6 +1,6 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import { compose, ComposedComponent, Telemetry } from '@fluentui/react-bindings';
-import FocusZone from '@fluentui/react-bindings/src/FocusZone/FocusZone';
+import { FocusZone } from '@fluentui/react-bindings/src/FocusZone';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';

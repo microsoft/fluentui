@@ -2,14 +2,13 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   AutoFocusZone,
   AutoFocusZoneProps,
-  FocusTrapZone,
-  FocusTrapZoneProps,
   getElementType,
   useAccessibility,
   useStyles,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
+import { FocusTrapZone, FocusTrapZoneProps } from '@fluentui/react-bindings/src/FocusZone';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
 import cx from 'classnames';

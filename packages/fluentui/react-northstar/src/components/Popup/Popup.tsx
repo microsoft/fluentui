@@ -1,11 +1,6 @@
 import { Accessibility, popupBehavior, PopupBehaviorProps } from '@fluentui/accessibility';
-import {
-  AutoFocusZoneProps,
-  FocusTrapZoneProps,
-  useAccessibility,
-  useAutoControlled,
-  useTelemetry,
-} from '@fluentui/react-bindings';
+import { AutoFocusZoneProps, useAccessibility, useAutoControlled, useTelemetry } from '@fluentui/react-bindings';
+import { FocusTrapZoneProps } from '@fluentui/react-bindings/src/FocusZone';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
