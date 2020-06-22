@@ -301,8 +301,10 @@ describe('SpinButton', () => {
     wrapper = mount(<SpinButton componentRef={ref} value="12" />);
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
-    ReactTestUtils.Simulate.blur(inputDOM);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
+      ReactTestUtils.Simulate.blur(inputDOM);
+    });
 
     expect(ref.current!.value).toBe('12');
     expect(inputDOM.value).toBe('12');
