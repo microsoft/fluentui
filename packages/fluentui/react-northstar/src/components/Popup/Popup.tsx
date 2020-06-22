@@ -189,7 +189,6 @@ const Popup: React.FC<PopupProps> &
         setPopupOpen(true, e);
       },
       click: e => {
-        e.stopPropagation();
         _.invoke(triggerRef.current, 'click');
       },
       preventScroll: e => {
