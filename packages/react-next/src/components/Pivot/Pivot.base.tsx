@@ -243,7 +243,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
               ref={setOverflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef as React.RefObject<IButton>}
               menuProps={overflowMenuProps}
-              menuIconProps={{ iconName: 'More' }}
+              menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
             />
           )}
         </FocusZone>
