@@ -12,7 +12,7 @@ const MULTIPLE_ITEMS = 'multiple';
 const NEWS = 'sponews';
 const STREAM = 'stream';
 const DESKTOP_FOLDER = 'desktopfolder';
-const DOCUMENTS_FOLDER = 'documentsfolder';
+const DOCUMENTS_FOLDER = 'documentfolder';
 const PICTURES_FOLDER = 'picturesfolder';
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 

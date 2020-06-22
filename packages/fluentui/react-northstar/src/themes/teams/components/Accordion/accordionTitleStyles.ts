@@ -33,12 +33,12 @@ const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleStylesProp
     overflow: 'hidden',
     height: '100%',
     width: pxToRem(16),
-    '-ms-grid-column': '1',
+    msGridColumn: '1',
   }),
   content: () => ({
     alignItems: 'center',
     display: 'grid',
-    '-ms-grid-column': '2',
+    msGridColumn: '2',
   }),
 };
 

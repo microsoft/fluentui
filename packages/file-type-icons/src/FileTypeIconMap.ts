@@ -256,7 +256,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   csv: {
     extensions: ['csv'],
   },
+  desktopfolder: {},
   docset: {},
+  documentfolder: {},
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -377,6 +379,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   photo360: {},
+  picturesfolder: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },

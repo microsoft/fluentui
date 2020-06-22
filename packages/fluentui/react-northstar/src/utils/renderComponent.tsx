@@ -9,6 +9,7 @@ import {
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
 } from '@fluentui/react-bindings';
+import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   emptyTheme,
   ComponentSlotStylesResolved,
@@ -80,7 +81,7 @@ const renderComponent = <P extends {}>(
     disableAnimations: context.disableAnimations || false,
     primaryDisplayName: displayName,
     props: stateAndProps,
-    renderer: context.renderer || { renderRule: () => '' },
+    renderer: context.renderer || noopRenderer,
     rtl,
     saveDebug,
     theme: context.theme || emptyTheme,

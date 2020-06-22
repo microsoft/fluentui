@@ -31,12 +31,12 @@ export function mergeComposeOptions(
 
   const inputClasses = Array.isArray(inputOptions.classes) ? inputOptions.classes : [inputOptions.classes];
 
-  const state: ComposePreparedOptions['state'] = (props, options) => {
+  const state: ComposePreparedOptions['state'] = (props, ref, options) => {
     if (inputOptions.state) {
-      return inputOptions.state(parentOptions.state(props, options), options);
+      return inputOptions.state(parentOptions.state(props, ref, options), ref, options);
     }
 
-    return parentOptions.state(props, options);
+    return parentOptions.state(props, ref, options);
   };
 
   return {
