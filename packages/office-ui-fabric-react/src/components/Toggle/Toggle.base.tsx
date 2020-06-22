@@ -114,6 +114,40 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
 
     const ariaRole = this.props.role ? this.props.role : 'switch';
 
+    const renderPill = (keytipAttributes: any = {}) => (
+      <button
+        {...toggleNativeProps}
+        {...keytipAttributes}
+        className={classNames.pill}
+        disabled={disabled}
+        id={this._id}
+        type="button"
+        role={ariaRole}
+        ref={this._toggleButton}
+        aria-disabled={disabled}
+        aria-checked={checked}
+        aria-label={ariaLabel ? ariaLabel : badAriaLabel}
+        data-is-focusable={true}
+        onChange={this._noop}
+        onClick={this._onClick}
+        aria-labelledby={labelledById}
+      >
+        <span className={classNames.thumb} />
+      </button>
+    );
+
+    const pillContent = keytipProps ? (
+      <KeytipData
+        keytipProps={keytipProps}
+        ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
+        disabled={disabled}
+      >
+        {(keytipAttributes: any): JSX.Element => renderPill(keytipAttributes)}
+      </KeytipData>
+    ) : (
+      renderPill()
+    );
+
     return (
       <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
         {label && (
@@ -123,33 +157,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
         )}
 
         <div className={classNames.container}>
-          <KeytipData
-            keytipProps={keytipProps}
-            ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
-            disabled={disabled}
-          >
-            {(keytipAttributes: any): JSX.Element => (
-              <button
-                {...toggleNativeProps}
-                {...keytipAttributes}
-                className={classNames.pill}
-                disabled={disabled}
-                id={this._id}
-                type="button"
-                role={ariaRole}
-                ref={this._toggleButton}
-                aria-disabled={disabled}
-                aria-checked={checked}
-                aria-label={ariaLabel ? ariaLabel : badAriaLabel}
-                data-is-focusable={true}
-                onChange={this._noop}
-                onClick={this._onClick}
-                aria-labelledby={labelledById}
-              >
-                <span className={classNames.thumb} />
-              </button>
-            )}
-          </KeytipData>
+          {pillContent}
           {stateText && (
             <Label htmlFor={this._id} className={classNames.text} id={stateTextId}>
               {stateText}

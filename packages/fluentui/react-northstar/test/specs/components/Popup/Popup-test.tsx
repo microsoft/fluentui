@@ -56,6 +56,21 @@ describe('Popup', () => {
     expect(getPopupContent(popup).exists()).toBe(false);
   };
 
+  describe('trigger', () => {
+    test('is called on click when on includes hover', () => {
+      const spy = jest.fn();
+
+      mountWithProvider(<Popup trigger={<button onClick={spy} />} content="Hi" on={['hover']} />)
+        .find('button')
+        .simulate('click');
+      expect(spy).toHaveBeenCalledTimes(1);
+      mountWithProvider(<Popup trigger={<button onClick={spy} />} content="Hi" on={['hover', 'focus']} />)
+        .find('button')
+        .simulate('click');
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
+  });
+
   describe('onOpenChange', () => {
     test('is called on click', () => {
       const spy = jest.fn();

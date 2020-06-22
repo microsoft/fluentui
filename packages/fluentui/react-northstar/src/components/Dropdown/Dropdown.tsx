@@ -289,7 +289,7 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
 
 class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, DropdownState> {
   buttonRef = React.createRef<HTMLElement>();
-  inputRef = React.createRef<HTMLInputElement>();
+  inputRef = React.createRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
   listRef = React.createRef<HTMLElement>();
   selectedItemsRef = React.createRef<HTMLDivElement>();
   containerRef = React.createRef<HTMLDivElement>();
@@ -699,7 +699,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         placeholder: noPlaceholder ? '' : placeholder,
         inline,
         variables,
-        inputRef: this.inputRef,
         disabled,
       }),
       overrideProps: this.handleSearchInputOverrides(
@@ -1201,6 +1200,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       },
       // same story as above for getRootProps.
       accessibilityComboboxProps,
+
+      inputRef: (node: HTMLInputElement) => {
+        handleRef(predefinedProps.inputRef, node);
+        this.inputRef.current = node;
+      },
       onFocus: (e: React.FocusEvent, searchInputProps: DropdownSearchInputProps) => {
         if (!disabled) {
           this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });

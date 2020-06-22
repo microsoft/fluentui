@@ -1,6 +1,6 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { setRTL, setWarningCallback } from '@uifabric/utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
@@ -32,19 +32,19 @@ describe('Persona', () => {
   });
 
   it('renders Persona correctly with no props', () => {
-    const component = renderer.create(<Persona />);
+    const component = create(<Persona />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders Persona correctly with initials', () => {
-    const component = renderer.create(<Persona primaryText="Kat Larrson" />);
+    const component = create(<Persona primaryText="Kat Larrson" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders Persona correctly with image', () => {
-    const component = renderer.create(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
+    const component = create(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

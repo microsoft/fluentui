@@ -12,18 +12,29 @@ export const ToggleBase = compose<'div', IToggleProps, {}, IToggleProps, {}>(
     const { checked } = state;
     const { 'aria-describedby': ariaDescribedBy, disabled, keytipProps, label, offText, onText } = props;
 
+    // tslint:disable-next-line:no-any
+    const renderPill = (keytipAttributes: any = {}) => {
+      return (
+        <slots.pill {...keytipAttributes} {...slotProps.pill}>
+          <slots.thumb {...slotProps.thumb} />
+        </slots.pill>
+      );
+    };
+
+    const pillContent = keytipProps ? (
+      <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
+        {// tslint:disable-next-line:no-any
+        (keytipAttributes: any): JSX.Element => renderPill(keytipAttributes)}
+      </KeytipData>
+    ) : (
+      renderPill()
+    );
+
     return (
       <slots.root ref={ref} {...slotProps.root}>
         {label && <slots.label {...slotProps.label} />}
         <slots.container {...slotProps.container}>
-          <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
-            {// tslint:disable-next-line:no-any
-            (keytipAttributes: any): JSX.Element => (
-              <slots.pill {...keytipAttributes} {...slotProps.pill}>
-                <slots.thumb {...slotProps.thumb} />
-              </slots.pill>
-            )}
-          </KeytipData>
+          {pillContent}
           {((checked && onText) || offText) && <slots.stateText {...slotProps.stateText} />}
         </slots.container>
       </slots.root>
