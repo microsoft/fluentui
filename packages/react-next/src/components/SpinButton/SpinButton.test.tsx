@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { ReactWrapper, mount } from 'enzyme';
 import { ISpinButtonState } from './SpinButton.base';
 import { SpinButton } from './SpinButton';
@@ -29,13 +29,13 @@ describe('SpinButton', () => {
   });
 
   it('renders correctly', () => {
-    const component = renderer.create(<SpinButton label="label" />);
+    const component = create(<SpinButton label="label" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with user-provided values', () => {
-    const component = renderer.create(
+    const component = create(
       <SpinButton label="label" value="0" ariaValueNow={0} ariaValueText="0 pt" data-test="test" />,
     );
     const tree = component.toJSON();

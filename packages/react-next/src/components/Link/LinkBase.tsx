@@ -11,12 +11,16 @@ export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
 
     const { 'aria-describedby': ariaDescribedBy, disabled, keytipProps } = props;
 
-    return (
-      <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
-        {// tslint:disable-next-line:no-any
-        (keytipAttributes: any): JSX.Element => <slots.root {...keytipAttributes} {...slotProps.root} />}
-      </KeytipData>
-    );
+    if (keytipProps) {
+      return (
+        <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
+          {// tslint:disable-next-line:no-any
+          (keytipAttributes: any): JSX.Element => <slots.root {...keytipAttributes} {...slotProps.root} />}
+        </KeytipData>
+      );
+    }
+
+    return <slots.root {...slotProps.root} />;
   },
   {
     displayName: 'LinkBase',
