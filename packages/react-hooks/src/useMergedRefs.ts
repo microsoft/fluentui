@@ -5,9 +5,7 @@ import { useRef, useCallback, Ref, MutableRefObject } from 'react';
  * updates all provided refs
  * @param refs- Refs to collectively update with one ref value.
  */
-export function useMergedRefs<T>(
-  ...refs: (React.Ref<T> | undefined | null)[]
-): (instance: Exclude<T, undefined>) => void {
+export function useMergedRefs<T>(...refs: (Ref<T> | undefined | null)[]): (instance: Exclude<T, undefined>) => void {
   const state = useRef<(Ref<T> | undefined)[]>();
 
   // Update refs list.
