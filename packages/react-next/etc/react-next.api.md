@@ -872,7 +872,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement> {
     allowPhoneInitials?: boolean;
     coinProps?: IPersonaCoinProps;
     coinSize?: number;
@@ -912,14 +912,6 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     tertiaryText?: string;
     text?: string;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IPersonaState {
-    // (undocumented)
-    isImageError?: boolean;
-    // (undocumented)
-    isImageLoaded?: boolean;
 }
 
 // @public (undocumented)
@@ -1659,27 +1651,13 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 export const Persona: React.FunctionComponent<IPersonaProps>;
 
 // @public
-export class PersonaBase extends React.Component<IPersonaProps, {}> {
-    constructor(props: IPersonaProps);
-    // (undocumented)
-    static defaultProps: IPersonaProps;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const PersonaBase: React.ForwardRefExoticComponent<IPersonaProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps>;
 
 // @public
-export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
-    constructor(props: IPersonaCoinProps);
-    // (undocumented)
-    static defaultProps: IPersonaCoinProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void;
-}
+export const PersonaCoinBase: React.ForwardRefExoticComponent<IPersonaCoinProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
