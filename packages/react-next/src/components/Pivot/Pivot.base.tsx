@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { KeyCodes, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
+import { KeyCodes, getNativeProps, divProperties, classNamesFunction, warn, css, getRTL } from '../../Utilities';
 import { CommandButton, IButton, ActionButton } from '../../compat/Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { Icon } from '../../Icon';
-import { css } from 'office-ui-fabric-react';
 import { useId, useControllableValue } from '@uifabric/react-hooks';
 import { useOverflow, OverflowItemsChangedCallback } from './useOverflow';
 import { IContextualMenuProps } from '../../ContextualMenu';
@@ -97,7 +96,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       renderLinkCollection: PivotLinkCollection,
       link: IPivotItemProps,
       renderPivotLinkSelectedKey: string | null | undefined,
-      className?: string,
+      className: string,
     ): JSX.Element => {
       const { itemKey, headerButtonProps, onRenderItemLink } = link;
       const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
@@ -119,7 +118,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           {...headerButtonProps}
           id={tabId}
           key={itemKey}
-          className={css(className || classNames.link, isSelected && classNames.linkIsSelected)}
+          className={css(className, isSelected && classNames.linkIsSelected)}
           onClick={onLinkClick.bind(this, itemKey)}
           onKeyDown={onKeyDown.bind(this, itemKey)}
           aria-label={link.ariaLabel}
@@ -204,13 +203,15 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
     const renderedSelectedKey = getSelectedKey();
     const renderedSelectedIndex = renderedSelectedKey ? linkCollection.keyToIndexMapping[renderedSelectedKey] : 0;
 
-    const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderedSelectedKey));
+    const items = linkCollection.links.map(l =>
+      renderPivotLink(linkCollection, l, renderedSelectedKey, classNames.link),
+    );
 
     const overflowMenuButtonComponentRef = React.useRef<IButton>();
-    const overflowMenuButtonElementRef = React.useRef<HTMLElement>();
+    const overflowMenuButtonRef = React.useRef<HTMLElement>();
     const setOverflowMenuButtonRef = (button: ActionButton | null) => {
       const node = ReactDOM.findDOMNode(button);
-      overflowMenuButtonElementRef.current = node instanceof HTMLElement ? node : undefined;
+      overflowMenuButtonRef.current = node instanceof HTMLElement ? node : undefined;
     };
 
     // The overflow menu starts empty and items[] is updated as the overflow items change
@@ -226,7 +227,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       }));
     };
 
-    useOverflow(overflowMenuButtonElementRef, onOverflowItemsChanged, [renderedSelectedIndex]);
+    useOverflow(overflowMenuButtonRef, onOverflowItemsChanged, getRTL(theme), [renderedSelectedIndex]);
 
     return (
       <div role="toolbar" {...divProps} ref={ref}>

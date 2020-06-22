@@ -183,11 +183,10 @@
   display: none;
 }
 
+// The overflow menu button is hidden until there's at least one link in the overflow
 .overflowMenuButton {
   visibility: hidden;
 }
-
-// Show the overflow menu button if there's at least one link in the overflow
 .link[data-is-overflowing='true'] ~ * .overflowMenuButton {
   visibility: visible;
 }

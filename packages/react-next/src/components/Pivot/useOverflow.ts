@@ -32,15 +32,18 @@ export type OverflowItemsChangedCallback = (
  *
  * @param onOverflowItemsChanged Callback to notify the user that the items in the overflow have changed.
  *
+ * @param rtl True if the element containing overflowMenuButtonRef is in right-to-left order
+ *
  * @param pinnedIndexes Optional: List of item indexes that should never go into the overflow menu.
  */
 export const useOverflow = (
-  overflowMenuButtonRef: React.RefObject<HTMLElement | undefined>,
+  overflowMenuButtonRef: React.RefObject<HTMLElement | undefined> | null | undefined,
   onOverflowItemsChanged: OverflowItemsChangedCallback,
+  rtl: boolean,
   pinnedIndexes?: readonly number[],
 ) => {
   React.useLayoutEffect(() => {
-    const menuButton = overflowMenuButtonRef.current;
+    const menuButton = overflowMenuButtonRef?.current;
     const container = menuButton?.parentElement;
     const win = container && getWindow(container);
     if (!container || !menuButton || !win) {
@@ -59,8 +62,6 @@ export const useOverflow = (
     if (items.length === 0) {
       return;
     }
-
-    const rtl = win.getComputedStyle(container).direction === 'rtl';
 
     // The position cache is an integral part of the algorithm and not just a performance optimization.
     // Each item has its position calculated and cached before it is hidden and moved into the overflow menu.
