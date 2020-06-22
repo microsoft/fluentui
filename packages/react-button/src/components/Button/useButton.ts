@@ -13,6 +13,6 @@ export const useButton = (
 ): ButtonState => {
   return {
     ...props,
-    style: getStyleFromPropsAndOptions(props, options),
+    style: getStyleFromPropsAndOptions(props, options, '--button'),
   };
 };

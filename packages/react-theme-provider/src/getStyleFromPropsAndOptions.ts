@@ -5,7 +5,7 @@ export const getStyleFromPropsAndOptions = <TProps extends StyleProps, TOptions 
   props: TProps,
   options: TOptions,
   prefix?: string,
-) => {
+): React.CSSProperties => {
   let rootSlotStyle: React.CSSProperties = {};
   options.slotProps.forEach(definition => {
     const nextSlotProps = definition(props);
