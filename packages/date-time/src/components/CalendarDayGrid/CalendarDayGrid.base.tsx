@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   KeyCodes,
   css,
-  getId,
   getRTL,
   getRTLSafeKeyCode,
   format,
@@ -28,7 +27,7 @@ import {
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
-import { usePrevious } from '@uifabric/react-hooks';
+import { usePrevious, useId } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarDayGridStyleProps, ICalendarDayGridStyles>();
 
@@ -38,10 +37,6 @@ interface IWeekCorners {
 
 export interface IDayInfo extends IDay {
   onSelected: () => void;
-}
-
-export interface ICalendarDayGridState {
-  activeDescendantId?: string;
 }
 
 function useWeeks(props: ICalendarDayGridProps, onSelectDate: (date: Date) => void): IDayInfo[][] {
@@ -98,6 +93,8 @@ export const CalendarDayGridBase = React.forwardRef(
   (props: ICalendarDayGridProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const navigatedDayRef = React.useRef<HTMLButtonElement>(null);
 
+    const activeDescendantId = useId();
+
     const onSelectDate = (selectedDate: Date): void => {
       const {
         dateRangeType,
@@ -130,7 +127,12 @@ export const CalendarDayGridBase = React.forwardRef(
     const weeks = useWeeks(props, onSelectDate);
     const animateBackwards = useAnimateBackwards(weeks);
 
-    return <CalendarDayGridBaseClass {...props} hoisted={{ animateBackwards, navigatedDayRef, weeks, onSelectDate }} />;
+    return (
+      <CalendarDayGridBaseClass
+        {...props}
+        hoisted={{ animateBackwards, navigatedDayRef, weeks, onSelectDate, activeDescendantId }}
+      />
+    );
   },
 );
 CalendarDayGridBase.displayName = 'CalendarDayGridBase';
@@ -140,11 +142,12 @@ interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
     animateBackwards: boolean;
     navigatedDayRef: React.RefObject<HTMLButtonElement>;
     weeks: IDayInfo[][];
+    activeDescendantId: string;
     onSelectDate(date: Date): void;
   };
 }
 
-class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProps, ICalendarDayGridState> {
+class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProps, {}> {
   private days: { [key: string]: HTMLElement | null } = {};
   private classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
 
@@ -153,15 +156,10 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
 
     initializeComponentRef(this);
 
-    this.state = {
-      activeDescendantId: getId(),
-    };
-
     this._onClose = this._onClose.bind(this);
   }
 
   public render(): JSX.Element {
-    const { activeDescendantId } = this.state;
     const {
       styles,
       theme,
@@ -171,7 +169,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
       labelledBy,
       lightenDaysOutsideNavigatedMonth,
       animationDirection,
-      hoisted: { animateBackwards, weeks },
+      hoisted: { animateBackwards, weeks, activeDescendantId },
     } = this.props;
 
     this.classNames = getClassNames(styles, {
@@ -326,8 +324,13 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     weekCorners?: IWeekCorners,
     ariaHidden?: boolean,
   ): JSX.Element => {
-    const { navigatedDate, dateTimeFormatter, allFocusable, strings } = this.props;
-    const { activeDescendantId } = this.state;
+    const {
+      navigatedDate,
+      dateTimeFormatter,
+      allFocusable,
+      strings,
+      hoisted: { activeDescendantId },
+    } = this.props;
     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
 
     return (
