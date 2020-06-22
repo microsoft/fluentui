@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Avoid rendering KeytipData when keytipProps are not passed",
-  "packageName": "@fluentui/react-next",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-19T20:55:44.871Z"
-}
