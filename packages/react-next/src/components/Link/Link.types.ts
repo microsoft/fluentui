@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
+import { IKeytipData } from '../../KeytipData';
 
 /**
  * {@docCategory Link}
@@ -72,9 +73,16 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
   theme?: ITheme;
 
   /**
-   * Optional keytip for this Link
+   * Optional keytip.
+   *
+   * @deprecated Use keytipData instead.
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Optional keytip data.
+   */
+  keytipData?: IKeytipData;
 }
 
 /**

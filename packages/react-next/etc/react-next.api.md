@@ -700,6 +700,8 @@ export interface ILinkOptions {
 export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
+    keytipData?: IKeytipData;
+    // @deprecated
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;

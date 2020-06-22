@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, useFocusRects } from '../../Utilities';
+import { classNamesFunction, useFocusRects, mergeAriaAttributeValues } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStaticStyles: true });
@@ -10,7 +10,7 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStat
  */
 // tslint:disable-next-line:no-any
 export const useLink = (props: ILinkProps): any => {
-  const { as, className, disabled, href, onClick, ref, styles, theme } = props;
+  const { as, className, disabled, href, onClick, ref, styles, theme, keytipData } = props;
 
   useComponentRef(props, ref);
   useFocusRects(ref);
@@ -37,7 +37,10 @@ export const useLink = (props: ILinkProps): any => {
   const slotProps = {
     root: {
       ...adjustPropsForRootType(rootType, props),
+      'aria-describedby': mergeAriaAttributeValues(props['aria-describedby'], keytipData?.ariaDescribedBy),
       'aria-disabled': disabled,
+      ...keytipData?.executeElementAttributes,
+      ...keytipData?.targetElementAttributes,
       className: classNames.root,
       onClick: _onClick,
       ref: ref,
