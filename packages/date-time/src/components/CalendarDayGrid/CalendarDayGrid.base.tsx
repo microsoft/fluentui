@@ -127,6 +127,16 @@ export const CalendarDayGridBase = React.forwardRef(
     const weeks = useWeeks(props, onSelectDate);
     const animateBackwards = useAnimateBackwards(weeks);
 
+    React.useImperativeHandle(
+      props.componentRef,
+      () => ({
+        focus() {
+          navigatedDayRef.current?.focus?.();
+        },
+      }),
+      [],
+    );
+
     return (
       <CalendarDayGridBaseClass
         {...props}
@@ -150,14 +160,6 @@ interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
 class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProps, {}> {
   private days: { [key: string]: HTMLElement | null } = {};
   private classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
-
-  public constructor(props: ICalendarDayGridClassProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    this._onClose = this._onClose.bind(this);
-  }
 
   public render(): JSX.Element {
     const {
@@ -226,10 +228,6 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
         </table>
       </FocusZone>
     );
-  }
-
-  public focus(): void {
-    this.props.hoisted.navigatedDayRef.current?.focus();
   }
 
   private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>): JSX.Element => {
