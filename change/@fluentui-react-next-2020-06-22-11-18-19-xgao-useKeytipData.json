@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Remove KeytipData for Checkbox,Toggle,Link",
+  "comment": "Remove KeytipData for Checkbox, Toggle, and Link.",
   "packageName": "@fluentui/react-next",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",

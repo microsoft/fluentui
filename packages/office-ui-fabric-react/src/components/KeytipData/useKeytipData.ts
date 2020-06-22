@@ -14,7 +14,7 @@ export interface IKeytipData {
 }
 
 /**
- * Hook that create attributes for component which enabled with Keytip.
+ * Hook that creates attributes for components which are enabled with Keytip.
  */
 export function useKeytipData(options: KeytipDataOptions): IKeytipData {
   const uniqueId = React.useRef<string>();

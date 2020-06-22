@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "export useKeytipData from index",
+  "comment": "Export useKeytipData from index.",
   "packageName": "office-ui-fabric-react",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",

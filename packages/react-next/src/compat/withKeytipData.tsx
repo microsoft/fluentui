@@ -4,7 +4,7 @@ import { KeytipDataOptions, useKeytipData, IKeytipData } from '../KeytipData';
 
 /**
  * HOC to output wrapped component that supports keytipProps prop,
- * given an input component that has keytipProps prop deprecated.
+ * given an input component that has deprecated keytipProps prop.
  *
  * @param Component - Component with keytipData prop and deprecated keytipProps prop.
  */
