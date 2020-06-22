@@ -1,14 +1,5 @@
 import * as React from 'react';
-import {
-  KeyCodes,
-  css,
-  getRTL,
-  getRTLSafeKeyCode,
-  format,
-  classNamesFunction,
-  findIndex,
-  initializeComponentRef,
-} from '@uifabric/utilities';
+import { KeyCodes, css, getRTL, getRTLSafeKeyCode, format, classNamesFunction, findIndex } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   addDays,
@@ -458,12 +449,6 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
       }
     };
-  };
-
-  private _onClose = (): void => {
-    if (this.props.onDismiss) {
-      this.props.onDismiss();
-    }
   };
 
   /**
