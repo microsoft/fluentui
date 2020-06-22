@@ -32,6 +32,7 @@ import FormDropdown from './FormDropdown';
 import FormButton from './FormButton';
 import FormRadioGroup from './FormRadioGroup';
 import FormSlider from './FormSlider';
+import FormFieldCustom from './FormFieldCustom';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -68,6 +69,7 @@ const Form: React.FC<WithAsProp<FormProps>> &
     Button: typeof FormButton;
     RadioGroup: typeof FormRadioGroup;
     Slider: typeof FormSlider;
+    FieldCustom: typeof FormFieldCustom;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
@@ -145,6 +147,7 @@ Form.create = createShorthandFactory({
 });
 
 Form.Field = FormField;
+Form.FieldCustom = FormFieldCustom;
 Form.Label = FormLabel;
 Form.Message = FormMessage;
 Form.Input = FormInput;

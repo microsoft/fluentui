@@ -29,10 +29,13 @@ export interface FormFieldCustomProps extends UIComponentProps, ChildrenComponen
   type?: string;
 }
 
-export const formFieldClassName = 'ui-form__field__custom';
+export const formFieldCustomClassName = 'ui-form__fieldcustom';
 
-export type FormFieldStylesProps = Required<Pick<FormFieldCustomProps, 'type' | 'inline' | 'required'>>;
+export type FormFieldCustomStylesProps = Required<Pick<FormFieldCustomProps, 'type' | 'inline' | 'required'>>;
 
+/**
+ * A FormFieldCustom represents a Form element containing a label and an input.
+ */
 const FormFieldCustom: React.FC<FormFieldCustomProps> & FluentComponentStaticProps<FormFieldCustomProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(FormFieldCustom.displayName, context.telemetry);
@@ -48,8 +51,8 @@ const FormFieldCustom: React.FC<FormFieldCustomProps> & FluentComponentStaticPro
     rtl: context.rtl,
   });
 
-  const { classes } = useStyles<FormFieldStylesProps>(FormFieldCustom.displayName, {
-    className: formFieldClassName,
+  const { classes } = useStyles<FormFieldCustomStylesProps>(FormFieldCustom.displayName, {
+    className: formFieldCustomClassName,
     mapPropsToStyles: () => ({
       type,
       inline,
@@ -83,6 +86,7 @@ FormFieldCustom.displayName = 'FormFieldCustom';
 FormFieldCustom.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
+    children: false,
   }),
   id: PropTypes.string,
   inline: PropTypes.bool,
@@ -97,7 +101,4 @@ FormFieldCustom.defaultProps = {
   accessibility: formFieldBehavior,
 };
 
-/**
- * A FormFieldCustom represents a Form element containing a label and an input.
- */
 export default FormFieldCustom;

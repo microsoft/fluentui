@@ -11,33 +11,27 @@ type SelectedFormFieldCustomProps = Omit<
 export interface FormDropdownProps extends SelectedFormFieldCustomProps, FormDropdownOwnProps {}
 export type FormDropdownStylesProps = never;
 
-export const formDropdownClassName = 'ui-form-dropdown';
+export const formDropdownClassName = 'ui-form__dropdown';
 
 /**
  * An FormDropdown renders a Dropdown wrapped by FormField.
  */
-const FormDropdown = compose<'div', FormDropdownProps, FormDropdownStylesProps, SelectedFormFieldCustomProps, {}>(
+const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
     className: formDropdownClassName,
     displayName: 'FormDropdown',
     overrideStyles: true,
-    shorthandConfig: {},
     slots: {
       control: Dropdown,
     },
-    slotProps: ({ errorMessage }) => ({
-      message: {
-        error: !!errorMessage,
-      },
-    }),
   },
 );
 
-FormDropdown.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: 'shorthand',
-  }),
-};
+FormDropdown.propTypes = commonPropTypes.createCommon({
+  accessibility: false,
+  children: false,
+  content: false,
+});
 
 export default FormDropdown;

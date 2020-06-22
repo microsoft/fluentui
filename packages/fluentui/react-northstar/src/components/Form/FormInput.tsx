@@ -1,6 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import Input, { InputProps } from '../Input/Input';
 import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
+import { commonPropTypes } from '../../utils';
 
 interface FormInputOwnProps extends InputProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -20,7 +21,7 @@ const FormInput = compose<'div', FormInputProps, FormInputStylesProps, SelectedF
   {
     className: formInputClassName,
     displayName: 'FormInput',
-    overrideStyles: false,
+    overrideStyles: true,
     slots: {
       control: Input,
     },
@@ -34,5 +35,10 @@ const FormInput = compose<'div', FormInputProps, FormInputStylesProps, SelectedF
     }),
   },
 );
+
+FormInput.propTypes = commonPropTypes.createCommon({
+  children: false,
+  content: false,
+});
 
 export default FormInput;

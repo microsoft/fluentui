@@ -6,12 +6,12 @@ import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 interface FormCheckboxOwnProps extends CheckboxProps {}
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
-  'control' | 'styles' | 'accessibility' | 'design' | 'label'
+  'control' | 'styles' | 'accessibility' | 'design' | 'variables' | 'label'
 >;
 export interface FormCheckboxProps extends SelectedFormFieldCustomProps, FormCheckboxOwnProps {}
 export type FormCheckboxStylesProps = never;
 
-export const formCheckboxClassName = 'ui-form-checkbox';
+export const formCheckboxClassName = 'ui-form__checkbox';
 
 /**
  * An FormCheckbox renders a Checkbox wrapped by FormField.
@@ -22,6 +22,7 @@ const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, 
     className: formCheckboxClassName,
     displayName: 'FormCheckbox',
     overrideStyles: true,
+    handledProps: ['label'],
     slots: {
       label: () => null,
       control: Checkbox,
@@ -34,10 +35,9 @@ const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, 
   },
 );
 
-FormCheckbox.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: 'shorthand',
-  }),
-};
+FormCheckbox.propTypes = commonPropTypes.createCommon({
+  content: false,
+  children: false,
+});
 
 export default FormCheckbox;

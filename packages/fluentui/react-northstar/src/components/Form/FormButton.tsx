@@ -11,7 +11,7 @@ type SelectedFormFieldCustomProps = Omit<
 export interface FormButtonProps extends SelectedFormFieldCustomProps, FormButtonOwnProps {}
 export type FormButtonStylesProps = never;
 
-export const formButtonClassName = 'ui-form-button';
+export const formButtonClassName = 'ui-form__button';
 
 /**
  * An FormButton renders a Button wrapped by FormField.
@@ -22,17 +22,15 @@ const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, Select
     className: formButtonClassName,
     displayName: 'FormButton',
     overrideStyles: true,
-    shorthandConfig: {},
     slots: {
       control: Button,
     },
   },
 );
 
-FormButton.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: 'shorthand',
-  }),
-};
+FormButton.propTypes = commonPropTypes.createCommon({
+  content: false, // Should be `true`, but will be passed via unhandled props to a Button
+  children: false,
+});
 
 export default FormButton;

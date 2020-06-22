@@ -11,7 +11,7 @@ type SelectedFormFieldCustomProps = Omit<
 export interface FormRadioGroupProps extends SelectedFormFieldCustomProps, FormRadioGroupOwnProps {}
 export type FormRadioGroupStylesProps = never;
 
-export const FormRadioGroupClassName = 'ui-form-radio_group';
+export const formRadioGroupClassName = 'ui-forms';
 
 /**
  * An FormRadioGroup renders a RadioGroup wrapped by FormField.
@@ -19,20 +19,18 @@ export const FormRadioGroupClassName = 'ui-form-radio_group';
 const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
-    className: FormRadioGroupClassName,
+    className: formRadioGroupClassName,
     displayName: 'FormRadioGroup',
     overrideStyles: true,
-    shorthandConfig: {},
     slots: {
       control: RadioGroup,
     },
   },
 );
 
-FormRadioGroup.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: 'shorthand',
-  }),
-};
+FormRadioGroup.propTypes = commonPropTypes.createCommon({
+  children: false,
+  content: false,
+});
 
 export default FormRadioGroup;

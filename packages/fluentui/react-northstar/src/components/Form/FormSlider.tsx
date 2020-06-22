@@ -10,7 +10,7 @@ type SelectedFormFieldCustomProps = Omit<
 >;
 export interface FormSliderProps extends SelectedFormFieldCustomProps, FormSliderOwnProps {}
 export type FormSliderStylesProps = never;
-export const FormSliderClassName = 'ui-form-slider';
+export const formSliderClassName = 'ui-form__slider';
 
 /**
  * An FormSlider renders a Slider wrapped by FormField.
@@ -18,20 +18,18 @@ export const FormSliderClassName = 'ui-form-slider';
 const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
-    className: FormSliderClassName,
+    className: formSliderClassName,
     displayName: 'FormSlider',
     overrideStyles: true,
-    shorthandConfig: {},
     slots: {
       control: Slider,
     },
   },
 );
 
-FormSlider.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: 'shorthand',
-  }),
-};
+FormSlider.propTypes = commonPropTypes.createCommon({
+  children: false,
+  content: false,
+});
 
 export default FormSlider;
