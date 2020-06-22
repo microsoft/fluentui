@@ -66,6 +66,10 @@ const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
           keyCombinations: _.includes(onAsArray, 'hover') &&
             !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
+        click: {
+          keyCombinations: _.includes(onAsArray, 'hover') &&
+            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+        },
       },
     },
   };
