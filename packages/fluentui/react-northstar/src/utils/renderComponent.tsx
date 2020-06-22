@@ -1,7 +1,6 @@
 import {
   AccessibilityActionHandlers,
   ComponentSlotClasses,
-  FocusZone,
   getElementType,
   deprecated_getTelemetry as getTelemetry,
   getUnhandledProps,
@@ -9,6 +8,7 @@ import {
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
 } from '@fluentui/react-bindings';
+import FocusZone from '@fluentui/react-bindings/src/FocusZone/FocusZone';
 import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   emptyTheme,
