@@ -334,7 +334,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
         )}
         ref={(element: HTMLTableCellElement) => {
           this.props.customDayCellRef && this.props.customDayCellRef(element, day.originalDate, classNames);
-          this._setDayCellRef(element, day, isNavigatedDate);
+          this._setDayCellRef(element, day);
         }}
         aria-hidden={ariaHidden}
         onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
@@ -347,7 +347,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
           key={day.key + 'button'}
           aria-hidden={ariaHidden}
           className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
-          onKeyDown={!ariaHidden ? this._onDayKeyDown(day.originalDate, weekIndex, dayIndex) : undefined}
+          onKeyDown={!ariaHidden ? this._onDayKeyDown(day.originalDate) : undefined}
           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
           id={isNavigatedDate ? activeDescendantId : undefined}
           aria-selected={day.isInBounds ? day.isSelected : undefined}
@@ -366,16 +366,11 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     );
   };
 
-  private _setDayCellRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
+  private _setDayCellRef(element: HTMLElement | null, day: IDayInfo): void {
     this.days[day.key] = element;
   }
 
-  private _navigateMonthEdge(
-    ev: React.KeyboardEvent<HTMLElement>,
-    date: Date,
-    weekIndex: number,
-    dayIndex: number,
-  ): void {
+  private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date): void {
     let targetDate: Date | undefined = undefined;
     let direction = 1; // by default search forward
     const { restrictedDates, minDate, maxDate } = this.props;
@@ -437,16 +432,12 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     }
   }
 
-  private _onDayKeyDown = (
-    originalDate: Date,
-    weekIndex: number,
-    dayIndex: number,
-  ): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
+  private _onDayKeyDown = (originalDate: Date): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
         this.props.hoisted.onSelectDate(originalDate);
       } else {
-        this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
+        this._navigateMonthEdge(ev, originalDate);
       }
     };
   };
