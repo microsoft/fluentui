@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "add usePrevious hook",
+  "packageName": "@uifabric/react-hooks",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-18T21:56:04.485Z"
+}

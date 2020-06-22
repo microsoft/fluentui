@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "useMergedRefs: Merging refs should produce an immutable ref object.",
+  "packageName": "@uifabric/react-hooks",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-19T19:26:25.030Z"
+}

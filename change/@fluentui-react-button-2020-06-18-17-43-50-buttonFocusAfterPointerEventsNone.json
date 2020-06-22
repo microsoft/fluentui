@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "react-button: Adding api-extractor configuration.",
+  "comment": "Button: Adding pointer-events: none to :after focus rectangle.",
   "packageName": "@fluentui/react-button",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",
-  "date": "2020-06-18T00:52:16.517Z"
+  "date": "2020-06-19T00:43:50.885Z"
 }

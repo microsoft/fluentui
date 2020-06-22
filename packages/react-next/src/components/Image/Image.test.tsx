@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit } from './Image.types';
@@ -19,7 +19,7 @@ describe('Image', () => {
   });
 
   it('renders Image correctly', () => {
-    const component = renderer.create(<Image src={testImage1x1} />);
+    const component = create(<Image src={testImage1x1} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -98,16 +98,12 @@ describe('Image', () => {
   });
 
   it('renders ImageFit.centerContain correctly', () => {
-    const component = renderer.create(
-      <Image src={testImage1x1} imageFit={ImageFit.centerContain} width={50} height={100} />,
-    );
+    const component = create(<Image src={testImage1x1} imageFit={ImageFit.centerContain} width={50} height={100} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('renders ImageFit.centerCover correctly', () => {
-    const component = renderer.create(
-      <Image src={testImage1x1} imageFit={ImageFit.centerCover} width={50} height={100} />,
-    );
+    const component = create(<Image src={testImage1x1} imageFit={ImageFit.centerCover} width={50} height={100} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
