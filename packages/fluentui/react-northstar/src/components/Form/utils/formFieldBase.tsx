@@ -92,7 +92,6 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
-
           ref,
         })}
       >
