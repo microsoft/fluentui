@@ -266,16 +266,12 @@ export default function isConformant(
 
       test('passes extra props to the component it is renders as', () => {
         if (passesUnhandledPropsTo) {
-          const wrapper = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(
-            passesUnhandledPropsTo.displayName,
-          );
-          expect(wrapper.find(`${passesUnhandledPropsTo.displayName}[data-extra-prop="foo"]`).length).toBeGreaterThan(
-            0,
-          );
+          const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
+          expect(el.prop('data-extra-prop')).toBe('foo');
         } else {
           const MyComponent = () => null;
-          const wrapper = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />);
-          expect(wrapper.find('MyComponent[data-extra-prop="foo"]').length).toBeGreaterThan(0);
+          const el = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />).find(MyComponent);
+          expect(el.prop('data-extra-prop')).toBe('foo');
         }
       });
     });
@@ -342,7 +338,7 @@ export default function isConformant(
     if (!isClassComponent) {
       test('uses "useUnhandledProps" hook', () => {
         const wrapper = passesUnhandledPropsTo
-          ? mount(<Component {...requiredProps} />).find(passesUnhandledPropsTo.displayName)
+          ? mount(<Component {...requiredProps} />).find(passesUnhandledPropsTo)
           : mount(<Component {...requiredProps} />);
         const element = getComponent(wrapper);
 
@@ -377,7 +373,7 @@ export default function isConformant(
     test("client's attributes override the ones provided by Fluent UI", () => {
       const wrapperProps = { ...requiredProps, [IS_FOCUSABLE_ATTRIBUTE]: false };
       const wrapper = passesUnhandledPropsTo
-        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(passesUnhandledPropsTo.displayName)
+        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(passesUnhandledPropsTo)
         : mount(<Component {...wrapperProps} accessibility={noopBehavior} />);
       const element = getComponent(wrapper);
 
