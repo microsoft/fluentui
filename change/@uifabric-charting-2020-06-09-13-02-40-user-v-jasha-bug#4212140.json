@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fontfamily inherited from fabric",
-  "packageName": "@uifabric/charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-09T07:32:40.336Z"
-}

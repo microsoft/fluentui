@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandBarButton } from '@fluentui/react-next/lib/compat/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet, IOverflowSetStyles } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';

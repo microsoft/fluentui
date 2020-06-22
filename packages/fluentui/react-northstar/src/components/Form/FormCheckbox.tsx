@@ -1,43 +1,48 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import * as customPropTypes from '@fluentui/react-proptypes';
 import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
-import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 
-interface FormCheckboxOwnProps extends Omit<CheckboxProps, 'styles' | 'accessibility' | 'label'> {}
-
-export interface FormCheckboxProps extends FormFieldCustomProps, FormCheckboxOwnProps {}
+interface FormCheckboxOwnProps extends CheckboxProps {}
+type SelectedFormFieldCustomProps = Omit<
+  FormFieldBaseProps,
+  'control' | 'styles' | 'accessibility' | 'design' | 'variables' | 'label'
+>;
+export interface FormCheckboxProps extends SelectedFormFieldCustomProps, FormCheckboxOwnProps {}
 export type FormCheckboxStylesProps = never;
 
-export const formCheckboxClassName = 'ui-form-checkbox';
+export const formCheckboxClassName = 'ui-form__checkbox';
 
-const FormCheckbox = compose<
-  'div',
-  FormCheckboxProps,
-  FormCheckboxStylesProps,
-  FormFieldCustomProps,
-  FormFieldCustomStylesProps
->(FormFieldCustom, {
-  className: formCheckboxClassName,
-  displayName: 'FormCheckbox',
-  overrideStyles: true,
-  slots: {
-    label: () => null,
-  },
-  slotProps: ({ label }) => ({
-    control: {
-      as: Checkbox,
-      label,
+/**
+ * An FormCheckbox renders a Checkbox wrapped by FormField.
+ */
+const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, SelectedFormFieldCustomProps, {}>(
+  _FormFieldBase,
+  {
+    className: formCheckboxClassName,
+    displayName: 'FormCheckbox',
+    overrideStyles: true,
+    handledProps: ['label'],
+    slots: {
+      label: () => null,
+      control: Checkbox,
     },
-  }),
-});
-
+    slotProps: ({ label }) => ({
+      control: {
+        label,
+      },
+    }),
+  },
+);
 
 FormCheckbox.propTypes = {
   ...commonPropTypes.createCommon({
-    content: 'shorthand',
+    as: false,
+    accessibility: false,
+    children: false,
+    className: false,
+    content: false,
   }),
-  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormCheckbox;

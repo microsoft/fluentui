@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/examples",
-  "version": "0.1.80",
+  "version": "0.1.81",
   "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.3.1",
     "@uifabric/azure-themes": "^7.1.28",
-    "@uifabric/charting": "^2.2.35",
+    "@uifabric/charting": "^2.3.0",
     "@uifabric/date-time": "^7.8.102",
     "@uifabric/example-app-base": "^7.12.80",
     "@uifabric/example-data": "^7.0.15",

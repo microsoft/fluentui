@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "Y axis ticks truncate issue resolved",
+  "comment": "doughnut chart circualr accessibility issue resolved",
   "packageName": "@uifabric/charting",
   "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-06-16T10:38:34.326Z"
+  "date": "2020-06-18T09:21:55.308Z"
 }

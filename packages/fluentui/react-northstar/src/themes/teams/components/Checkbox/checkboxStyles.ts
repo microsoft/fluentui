@@ -121,7 +121,7 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     }),
 
     ...(p.disabled && {
-      background: v.disabledBackground,
+      backgroundColor: v.disabledBackground,
       borderColor: v.disabledBorderColor,
     }),
 

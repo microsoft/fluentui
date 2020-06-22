@@ -1,42 +1,41 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import * as customPropTypes from '@fluentui/react-proptypes';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
-import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 
-interface FormDropdownOwnProps extends Omit<DropdownProps, 'styles'> {}
-
-export interface FormDropdownProps extends FormFieldCustomProps, FormDropdownOwnProps {}
+interface FormDropdownOwnProps extends DropdownProps {}
+type SelectedFormFieldCustomProps = Omit<
+  FormFieldBaseProps,
+  'control' | 'styles' | 'accessibility' | 'design' | 'variables'
+>;
+export interface FormDropdownProps extends SelectedFormFieldCustomProps, FormDropdownOwnProps {}
 export type FormDropdownStylesProps = never;
 
-export const formDropdownClassName = 'ui-form-dropdown';
+export const formDropdownClassName = 'ui-form__dropdown';
 
-const FormDropdown = compose<
-  'div',
-  FormDropdownProps,
-  FormDropdownStylesProps,
-  FormFieldCustomProps,
-  FormFieldCustomStylesProps
->(FormFieldCustom, {
-  className: formDropdownClassName,
-  displayName: 'FormDropdown',
-  overrideStyles: true,
-  shorthandConfig: {},
-  slotProps: ({ errorMessage }) => ({
-    control: {
-      as: Dropdown,
+/**
+ * An FormDropdown renders a Dropdown wrapped by FormField.
+ */
+const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, SelectedFormFieldCustomProps, {}>(
+  _FormFieldBase,
+  {
+    className: formDropdownClassName,
+    displayName: 'FormDropdown',
+    overrideStyles: true,
+    slots: {
+      control: Dropdown,
     },
-    message: {
-      error: errorMessage,
-    },
-  }),
-});
+  },
+);
 
 FormDropdown.propTypes = {
   ...commonPropTypes.createCommon({
-    content: 'shorthand',
+    as: false,
+    accessibility: false,
+    children: false,
+    className: false,
+    content: false,
   }),
-  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormDropdown;

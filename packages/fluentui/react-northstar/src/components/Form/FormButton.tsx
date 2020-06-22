@@ -1,39 +1,44 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import * as customPropTypes from '@fluentui/react-proptypes';
 import Button, { ButtonProps } from '../Button/Button';
-import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 
-interface FormButtonOwnProps extends Omit<ButtonProps, 'styles' | 'accessibility'> {}
-
-export interface FormButtonProps extends FormFieldCustomProps, FormButtonOwnProps {}
+interface FormButtonOwnProps extends ButtonProps {}
+type SelectedFormFieldCustomProps = Omit<
+  FormFieldBaseProps,
+  'control' | 'styles' | 'accessibility' | 'design' | 'variables'
+>;
+export interface FormButtonProps extends SelectedFormFieldCustomProps, FormButtonOwnProps {}
 export type FormButtonStylesProps = never;
 
-export const formButtonClassName = 'ui-form-button';
+export const formButtonClassName = 'ui-form__button';
 
-const FormButton = compose<
-  'div',
-  FormButtonProps,
-  FormButtonStylesProps,
-  FormFieldCustomProps,
-  FormFieldCustomStylesProps
->(FormFieldCustom, {
-  className: formButtonClassName,
-  displayName: 'FormButton',
-  overrideStyles: true,
-  shorthandConfig: {},
-  slotProps: () => ({
-    control: {
-      as: Button,
+/**
+ * An FormButton renders a Button wrapped by FormField.
+ */
+const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, SelectedFormFieldCustomProps, {}>(
+  _FormFieldBase,
+  {
+    className: formButtonClassName,
+    displayName: 'FormButton',
+    overrideStyles: true,
+    shorthandConfig: {
+      mappedProp: 'content',
     },
-  }),
-});
+    slots: {
+      control: Button,
+    },
+  },
+);
 
 FormButton.propTypes = {
   ...commonPropTypes.createCommon({
-    content: 'shorthand',
+    as: false,
+    accessibility: false,
+    children: false,
+    className: false,
+    content: false,
   }),
-  control: customPropTypes.shorthandAllowingChildren,
 };
 
 export default FormButton;

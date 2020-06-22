@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 18 Jun 2020 12:37:09 GMT",
+      "tag": "@fluentui/react-button_v0.3.5",
+      "version": "0.3.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Replacing height with min-height so Button can adapt in flex scenarios.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "face9b1f9822d7e44a8efdce5bf2e65f9ad75556",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@fluentui/react-button_v0.3.3",
       "version": "0.3.3",

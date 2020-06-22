@@ -1,39 +1,39 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import FormFieldCustom, { FormFieldCustomProps, FormFieldCustomStylesProps } from './FormFieldCustom';
+import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
 import RadioGroup, { RadioGroupProps } from '../RadioGroup/RadioGroup';
 
-interface FormRadioGroupOwnProps extends Omit<RadioGroupProps, 'styles' | 'accessibility'> {}
-
-export interface FormRadioGroupProps extends FormFieldCustomProps, FormRadioGroupOwnProps {}
+interface FormRadioGroupOwnProps extends RadioGroupProps {}
+type SelectedFormFieldCustomProps = Omit<
+  FormFieldBaseProps,
+  'control' | 'styles' | 'accessibility' | 'design' | 'variables'
+>;
+export interface FormRadioGroupProps extends SelectedFormFieldCustomProps, FormRadioGroupOwnProps {}
 export type FormRadioGroupStylesProps = never;
 
-export const FormRadioGroupClassName = 'ui-form-radio_group';
+export const formRadioGroupClassName = 'ui-forms';
 
-const FormRadioGroup = compose<
-  'div',
-  FormRadioGroupProps,
-  FormRadioGroupStylesProps,
-  FormFieldCustomProps,
-  FormFieldCustomStylesProps
->(FormFieldCustom, {
-  className: FormRadioGroupClassName,
-  displayName: 'FormRadioGroup',
-  overrideStyles: true,
-  shorthandConfig: {},
-  slotProps: () => ({
-    control: {
-      as: RadioGroup,
+/**
+ * An FormRadioGroup renders a RadioGroup wrapped by FormField.
+ */
+const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesProps, SelectedFormFieldCustomProps, {}>(
+  _FormFieldBase,
+  {
+    className: formRadioGroupClassName,
+    displayName: 'FormRadioGroup',
+    overrideStyles: true,
+    slots: {
+      control: RadioGroup,
     },
-  }),
-});
+  },
+);
 
-FormRadioGroup.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: 'shorthand',
-  }),
-  control: customPropTypes.shorthandAllowingChildren,
-};
+FormRadioGroup.propTypes = commonPropTypes.createCommon({
+  as: false,
+  accessibility: false,
+  children: false,
+  className: false,
+  content: false,
+});
 
 export default FormRadioGroup;
