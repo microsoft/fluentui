@@ -41,10 +41,12 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
             '::before': {
               ...beforeAndAfter(size, variables, colors, props),
               marginRight: pxToRem(20),
+              marginInlineEnd: pxToRem(20),
             },
             '::after': {
               ...beforeAndAfter(size, variables, colors, props),
               marginLeft: pxToRem(20),
+              marginInlineStart: pxToRem(20),
             },
           }
         : {
