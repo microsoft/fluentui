@@ -16,4 +16,12 @@ describe('kebabRules', () => {
 
     expect(rules).toEqual(['-webkit-font-smoothing', 'antialiased']);
   });
+
+  it('can avoid kebabing css variables', () => {
+    const rules = ['--fooBar', 'test'];
+
+    kebabRules(rules, 0);
+
+    expect(rules).toEqual(['--fooBar', 'test']);
+  });
 });
