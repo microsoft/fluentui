@@ -2,6 +2,27 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/react-hooks_v7.4.7",
+      "version": "7.4.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add usePrevious hook",
+            "author": "xgao@microsoft.com",
+            "commit": "0ea5b852e9aa0a465d15924dcb1607e76db7d431",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "useMergedRefs: Merging refs should produce an immutable ref object.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2ad257284fddfc2c0115a787ce1aab593e764979",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@uifabric/react-hooks_v7.4.6",
       "version": "7.4.6",
