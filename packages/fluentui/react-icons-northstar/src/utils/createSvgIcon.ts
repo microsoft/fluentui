@@ -26,7 +26,7 @@ const createSvgIcon = <TProps = {}>({ svg, displayName, handledProps = [] }: Svg
   const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & SvgIconProps> & {
     handledProps: (keyof (TProps & SvgIconProps))[];
   } = props => {
-    const context: StylesContextValue = React.useContext(ThemeContext);
+    const context: StylesContextValue & { rtl: boolean } = React.useContext(ThemeContext);
 
     const {
       alt,

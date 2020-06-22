@@ -1,7 +1,7 @@
 import createSvgIcon from '../utils/createSvgIcon';
 
 const OneNoteIcon = createSvgIcon({
-  svg: ({ classes, icons }) => (icons['one-note'] ? icons['one-note'].icon({ classes }) : null),
+  svg: ({ classes, icons }) => (icons['onenote'] ? icons['onenote'].icon({ classes }) : null),
   displayName: 'OneNoteIcon',
 });
 

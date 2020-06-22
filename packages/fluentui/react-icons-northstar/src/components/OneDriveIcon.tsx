@@ -1,7 +1,7 @@
 import createSvgIcon from '../utils/createSvgIcon';
 
 const OneDriveIcon = createSvgIcon({
-  svg: ({ classes, icons }) => (icons['one-drive'] ? icons['one-drive'].icon({ classes }) : null),
+  svg: ({ classes, icons }) => (icons['onedrive'] ? icons['onedrive'].icon({ classes }) : null),
   displayName: 'OneDriveIcon',
 });
 

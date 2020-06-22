@@ -26,6 +26,7 @@ import PageNotFound from './views/PageNotFound';
 import QuickStart from './views/QuickStart';
 import Theming from './views/Theming';
 import ThemingExamples from './views/ThemingExamples';
+import IconViewer from './views/IconViewer';
 import IntegrateCustomComponents from './views/IntegrateCustomComponents';
 import AccessibilityBehaviors from './views/AccessibilityBehaviors';
 import FocusZone from './views/FocusZoneDoc';
@@ -41,7 +42,7 @@ import SearchPagePrototype from './prototypes/SearchPage';
 import MentionsPrototype from './prototypes/mentions';
 import DropdownsPrototype from './prototypes/dropdowns';
 import PopupsPrototype from './prototypes/popups';
-import IconViewerPrototype from './prototypes/IconViewer';
+// import IconViewerPrototype from './prototypes/IconViewer';
 import AlertsPrototype from './prototypes/alerts';
 import NestedPopupsAndDialogsPrototype from './prototypes/NestedPopupsAndDialogs';
 import VirtualizedTreePrototype from './prototypes/VirtualizedTree';
@@ -80,7 +81,7 @@ const Routes = () => (
           <Route exact path="/prototype-mentions" component={MentionsPrototype} />
           <Route exact path="/prototype-dropdowns" component={DropdownsPrototype} />
           <Route exact path="/prototype-popups" component={PopupsPrototype} />
-          <Route exact path="/icon-viewer" component={IconViewerPrototype} />
+          {/*<Route exact path="/icon-viewer" component={IconViewerPrototype} />*/}
           <Route exact path="/prototype-alerts" component={AlertsPrototype} />
           <Route exact path="/prototype-editor-toolbar" component={EditorToolbarPrototype} />
           <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
@@ -106,6 +107,7 @@ const Routes = () => (
           <Route exact path="/component-architecture">
             <MarkdownPage page={ComponentArchitecture} />
           </Route>
+          <Route exact path="/icon-viewer" component={IconViewer} />
           <Route exact path="/theming-specification">
             <MarkdownPage page={ThemingSpecification} />
           </Route>
