@@ -1,6 +1,3 @@
-import cx from 'classnames';
-import * as React from 'react';
-import { iconClassNames } from '../utils/iconClassNames';
 import createSvgIcon from '../utils/createSvgIcon';
 
 const PlayIcon = createSvgIcon({

@@ -1,7 +1,7 @@
 import createSvgIcon from '../utils/createSvgIcon';
 
 const TriangleEndIcon = createSvgIcon({
-  svg: ({ classes, icons }) => (icons['triangle-end'] ? icons['triangle-end'].icon({ classes }) : null),
+  svg: ({ classes, icons }) => (icons['triangle-right'] ? icons['triangle-right'].icon({ classes }) : null),
   displayName: 'TriangleEndIcon',
 });
 
