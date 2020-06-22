@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "doughnut chart circualr accessibility issue resolved",
+  "comment": "doughnut chart target alignment updated",
   "packageName": "@uifabric/charting",
   "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-06-18T09:21:55.308Z"
+  "date": "2020-06-19T05:30:59.331Z"
 }

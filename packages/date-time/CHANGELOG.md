@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.9.0)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.101..@uifabric/date-time_v7.9.0)
+
+### Minor changes
+
+- Extract helper functions from date-time/Calendar ([PR #13640](https://github.com/microsoft/fluentui/pull/13640) by pompomon@gmail.com)
 
 ## [7.8.101](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.101)
 
