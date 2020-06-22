@@ -1,4 +1,4 @@
-import { TestObject, TestingOptions } from './types';
+import { TestObject, IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { mount } from 'enzyme';
 import * as React from 'react';
@@ -8,7 +8,7 @@ import * as ReactIs from 'react-is';
 
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
-  'has-docblock': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const maxWords = 25;
     const minWords = 5;
 
@@ -20,7 +20,7 @@ export const defaultTests: TestObject = {
   },
 
   /** Component file exports a valid React element type  */
-  'exports-component': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'exports-component': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`exports component from file under correct name`, () => {
       const { componentPath, Component, displayName } = testInfo;
       const componentFile = require(componentPath);
@@ -33,7 +33,7 @@ export const defaultTests: TestObject = {
   },
 
   /** Component file exports a valid React element and can render it */
-  'component-renders': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'component-renders': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`renders`, () => {
       const { requiredProps, Component, customMount } = testInfo;
       const mountedComponent = customMount
@@ -47,7 +47,7 @@ export const defaultTests: TestObject = {
    * If functional component: component has a displayName
    * Else: component's constructor is a named function and matches displayName
    */
-  'component-has-displayname': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { Component } = testInfo;
 
     it(`has a displayName or constructor name`, () => {
@@ -67,7 +67,7 @@ export const defaultTests: TestObject = {
   },
 
   /** Constructor/component name matches filename */
-  'name-matches-filename': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename`, () => {
       const { componentPath, displayName } = testInfo;
       const fileName = path.basename(componentPath, path.extname(componentPath));
@@ -77,7 +77,7 @@ export const defaultTests: TestObject = {
   },
 
   /** Ensures component is exported at top level allowing import { Component } from 'packageName' */
-  'exported-top-level': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (!testInfo.isInternal) {
       it(`is exported at top-level`, () => {
         const { displayName, componentPath, Component } = testInfo;
@@ -90,20 +90,20 @@ export const defaultTests: TestObject = {
   },
 
   /** Ensures component has top level file in package/src/componentName */
-  'has-top-level-file': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'has-top-level-file': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (!testInfo.isInternal) {
       it(`has corresponding top-level file 'package/src/Component'`, () => {
         const { displayName, componentPath, Component } = testInfo;
         const rootPath = componentPath.replace(/src.*/, '');
         const topLevelFile = require(path.join(rootPath, 'src', displayName));
 
-        expect(topLevelFile.default ? topLevelFile.default : topLevelFile[displayName]).toBe(Component);
+        expect(topLevelFile.default || topLevelFile[displayName]).toBe(Component);
       });
     }
   },
 
   /** If the component is a subcomponent, ensure its parent has the subcomponent as static property */
-  'is-static-property': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'is-static-property-of-parent': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`is a static property of its parent`, () => {
       const { componentPath, displayName, useDefaultExport } = testInfo;
       const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
@@ -121,40 +121,38 @@ export const defaultTests: TestObject = {
   },
 
   /** Ensures aria attributes are kebab cased */
-  'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Aria attributes are kebab-cased`, () => {
-      const { Component, customMount, requiredProps } = testInfo;
-      const mountedComponent = customMount
-        ? customMount(<Component {...requiredProps} />)
-        : mount(<Component {...requiredProps} />);
-      const props = mountedComponent.props();
+      const props = Object.keys(componentInfo.props);
 
-      if (props) {
-        for (const prop of Object.keys(props)) {
-          if (prop.toLowerCase().includes('aria')) {
-            expect(prop.split(/[A-Z][a-z]+/)?.length).toBeLessThanOrEqual(1);
-            expect(prop.split('-').length).toBeGreaterThan(1);
-          }
+      for (const prop of Object.keys(props)) {
+        if (prop.startsWith('aria')) {
+          expect(prop).toMatch(/^aria-[a-z]+$/);
         }
       }
     });
   },
 
+  // TODO: Test last word of callback name against list of valid verbs
   /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
-  'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: TestingOptions) => {
+  'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`has consistent custom callback names`, () => {
-      const { Component, customMount, requiredProps } = testInfo;
-      const mountedComponent = customMount
-        ? customMount(<Component {...requiredProps} />)
-        : mount(<Component {...requiredProps} />);
-      const props = mountedComponent.props();
+      const propKeys = Object.keys(componentInfo.props);
+      const { testingOptions } = testInfo;
+      const ignoreProps = testingOptions ? testingOptions['consistent-callback-names']?.ignoreProps : undefined;
 
-      if (props) {
-        for (const prop of Object.keys(props)) {
-          if (prop.slice(0, 3) === 'on') {
-            const partAndEvent = prop.slice(3).split(/[A-Z][a-z]+/);
-            // Needs to be partAndEvent >= 1 in case the callback is onChange, etc.
-            expect(partAndEvent.length).toBeGreaterThanOrEqual(1);
+      for (const propName of Object.keys(propKeys)) {
+        if (!ignoreProps?.includes(propName) && /^on[A-Z]/.test(propName)) {
+          const words = propName.slice(2).match(/[A-Z][a-z]+/g);
+
+          if (words) {
+            // Make sure last word doesn't end with ed
+            const lastWord = words[words.length - 1];
+            expect(lastWord.lastIndexOf('ed')).not.toBe(lastWord.length - 2);
+
+            // Checking on[Part][Event] [Part] matches a prop
+            const firstWord = words[0].toLowerCase;
+            expect(propKeys).toContain(firstWord);
           }
         }
       }

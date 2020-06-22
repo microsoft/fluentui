@@ -5,10 +5,16 @@ import { mount } from 'enzyme';
 
 export type Tests = keyof typeof defaultTests;
 
+export interface TestingOptions {
+  'consistent-callback-names'?: {
+    ignoreProps?: string[];
+  };
+}
+
 /**
  * {@docCategory isConformant}
  */
-export interface TestingOptions<TProps = {}> {
+export interface IsConformantOptions<TProps = {}> {
   /**
    * Path to component file.
    */
@@ -39,17 +45,21 @@ export interface TestingOptions<TProps = {}> {
    */
   extraTests?: TestObject;
   /**
-   * If the component has required props, they can be added in this object and will be applied when mounting/rendering
+   * If the component has required props, they can be added in this object and will be applied when mounting/rendering.
    */
   requiredProps?: Partial<TProps>;
   /**
-   * Optional flag to use the default export
+   * Optional flag to use the default export.
    * @defaultvalue false
    */
   useDefaultExport?: boolean;
+  /**
+   * Allows specific test options.
+   */
+  testingOptions?: TestingOptions;
 }
 
-export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: TestingOptions) => void;
+export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => void;
 
 export interface TestObject {
   [key: string]: ConformanceTest;

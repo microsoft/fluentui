@@ -1,11 +1,11 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-import { TestingOptions } from './types';
+import { IsConformantOptions } from './types';
 import { withCustomConfig } from 'react-docgen-typescript';
 import { defaultTests } from './defaultTests';
 
-export function isConformant(testInfo: TestingOptions) {
+export function isConformant(testInfo: IsConformantOptions) {
   const { componentPath, displayName, disabledTests = [], extraTests, isInternal } = testInfo;
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
 
