@@ -109,6 +109,11 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
         ':focus-visible': {
           backgroundColor: v.toggleButtonPrimaryBackgroundColorFocus,
         },
+
+        ':hover': {
+          color: v.toggleButtonPrimaryHoverColor,
+          backgroundColor: v.toggleButtonPrimaryHoverBackgroundColor,
+        },
       }),
 
       // Overrides for "disabled" split button

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
 import { TestImages } from '@uifabric/example-data';
-import { Icon } from '../../Icon';
+import { Icon } from '@fluentui/react-next';
 import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
