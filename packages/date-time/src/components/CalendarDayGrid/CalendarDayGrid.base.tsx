@@ -52,12 +52,23 @@ export interface ICalendarDayGridState {
   animateBackwards?: boolean;
 }
 
-export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, ICalendarDayGridState> {
+export const CalendarDayGridBase = React.forwardRef(
+  (props: ICalendarDayGridProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    return <CalendarDayGridBaseClass {...props} hoisted={{}} />;
+  },
+);
+CalendarDayGridBase.displayName = 'CalendarDayGridBase';
+
+interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
+  hoisted: {};
+}
+
+class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProps, ICalendarDayGridState> {
   private navigatedDay: HTMLElement | null;
   private days: { [key: string]: HTMLElement | null } = {};
   private classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
 
-  public constructor(props: ICalendarDayGridProps) {
+  public constructor(props: ICalendarDayGridClassProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -71,7 +82,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
   }
 
   // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayGridClassProps): void {
     const weeks = this._getWeeks(nextProps);
     let isBackwards = undefined;
 
@@ -425,7 +436,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
    * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
    * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.
    */
-  private _getWeeks(propsToUse: ICalendarDayGridProps): IDayInfo[][] {
+  private _getWeeks(propsToUse: ICalendarDayGridClassProps): IDayInfo[][] {
     const {
       selectedDate,
       dateRangeType,
