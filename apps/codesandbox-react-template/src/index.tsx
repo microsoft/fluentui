@@ -1,14 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { Dropdown, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import {
+  Fabric,
+  Checkbox,
+  ChoiceGroup,
+  Dropdown,
+  DropdownMenuItemType,
+  Slider,
+  Stack,
+  TextField,
+  Toggle,
+} from '@fluentui/react';
 
 let _rootDiv: HTMLElement;
 let choicegroupOptions = [
