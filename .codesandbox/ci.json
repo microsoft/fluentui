@@ -1,4 +1,4 @@
 {
   "packages": ["packages/react-button"],
-  "sandboxes": ["u0e3w"]
+  "sandboxes": ["u0e3w", "/apps/codesandbox/codesandbox-react-template"]
 }
