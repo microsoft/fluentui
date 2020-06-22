@@ -28,14 +28,10 @@ const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, Sele
   },
 );
 
-FormDropdown.propTypes = {
-  ...commonPropTypes.createCommon({
-    as: false,
-    accessibility: false,
-    children: false,
-    className: false,
-    content: false,
-  }),
-};
+FormDropdown.propTypes = commonPropTypes.createCommon({
+  accessibility: false,
+  children: false,
+  content: false,
+});
 
 export default FormDropdown;

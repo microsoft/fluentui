@@ -35,14 +35,9 @@ const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, 
   },
 );
 
-FormCheckbox.propTypes = {
-  ...commonPropTypes.createCommon({
-    as: false,
-    accessibility: false,
-    children: false,
-    className: false,
-    content: false,
-  }),
-};
+FormCheckbox.propTypes = commonPropTypes.createCommon({
+  content: false,
+  children: false,
+});
 
 export default FormCheckbox;

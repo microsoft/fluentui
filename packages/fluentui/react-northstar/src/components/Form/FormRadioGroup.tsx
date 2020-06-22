@@ -29,10 +29,7 @@ const FormRadioGroup = compose<'div', FormRadioGroupProps, FormRadioGroupStylesP
 );
 
 FormRadioGroup.propTypes = commonPropTypes.createCommon({
-  as: false,
-  accessibility: false,
   children: false,
-  className: false,
   content: false,
 });
 

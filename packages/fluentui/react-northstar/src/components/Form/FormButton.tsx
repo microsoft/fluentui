@@ -22,23 +22,15 @@ const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, Select
     className: formButtonClassName,
     displayName: 'FormButton',
     overrideStyles: true,
-    shorthandConfig: {
-      mappedProp: 'content',
-    },
     slots: {
       control: Button,
     },
   },
 );
 
-FormButton.propTypes = {
-  ...commonPropTypes.createCommon({
-    as: false,
-    accessibility: false,
-    children: false,
-    className: false,
-    content: false,
-  }),
-};
+FormButton.propTypes = commonPropTypes.createCommon({
+  content: false, // Should be `true`, but will be passed via unhandled props to a Button
+  children: false,
+});
 
 export default FormButton;

@@ -27,14 +27,9 @@ const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps, Select
   },
 );
 
-FormSlider.propTypes = {
-  ...commonPropTypes.createCommon({
-    as: false,
-    accessibility: false,
-    children: false,
-    className: false,
-    content: false,
-  }),
-};
+FormSlider.propTypes = commonPropTypes.createCommon({
+  children: false,
+  content: false,
+});
 
 export default FormSlider;

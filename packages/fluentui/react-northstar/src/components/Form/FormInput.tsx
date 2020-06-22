@@ -37,10 +37,7 @@ const FormInput = compose<'div', FormInputProps, FormInputStylesProps, SelectedF
 );
 
 FormInput.propTypes = commonPropTypes.createCommon({
-  as: false,
-  accessibility: false,
   children: false,
-  className: false,
   content: false,
 });
 
