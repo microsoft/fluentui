@@ -1,8 +1,58 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.7)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.6..@fluentui/react-button_v0.3.7)
+
+### Patches
+
+- Button: Adding pointer-events: none to :after focus rectangle. ([PR #13696](https://github.com/microsoft/fluentui/pull/13696) by humbertomakotomorimoto@gmail.com)
+
+## [0.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.6)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.5..@fluentui/react-button_v0.3.6)
+
+### Patches
+
+- react-button: Adding api-extractor configuration. ([PR #13654](https://github.com/microsoft/fluentui/pull/13654) by humbertomakotomorimoto@gmail.com)
+
+## [0.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.5)
+
+Thu, 18 Jun 2020 12:37:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.3..@fluentui/react-button_v0.3.5)
+
+### Patches
+
+- Button: Replacing height with min-height so Button can adapt in flex scenarios. ([PR #13655](https://github.com/microsoft/fluentui/pull/13655) by humbertomakotomorimoto@gmail.com)
+
+## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.3)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.0..@fluentui/react-button_v0.3.3)
+
+### Patches
+
+- The css output was being unintentionally botched by the postcss-clean minifier. Moving to clean-css directly without the postcss wrapping. ([PR #13612](https://github.com/microsoft/fluentui/pull/13612) by dzearing@microsoft.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.0)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.2.0..@fluentui/react-button_v0.3.0)
+
+### Minor changes
+
+- Adding inline tokens support to Button, fixing focus rects. ([PR #13416](https://github.com/microsoft/fluentui/pull/13416) by dzearing@microsoft.com)
+
+### Patches
+
+- ToggleButton: Updating to new css variables. ([PR #13569](https://github.com/microsoft/fluentui/pull/13569) by humbertomakotomorimoto@gmail.com)
+- Updating typings to conform with react-compose changes. ([PR #13521](https://github.com/microsoft/fluentui/pull/13521) by humbertomakotomorimoto@gmail.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.2.0)
 

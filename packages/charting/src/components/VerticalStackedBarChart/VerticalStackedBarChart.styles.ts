@@ -1,4 +1,5 @@
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
+import { HighContrastSelectorBlack, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
   const { className, theme, width, height, shouldHighlight, href } = props;
@@ -36,12 +37,15 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       },
       {
         selectors: {
-          text: {
-            ...theme.fonts.tiny,
-          },
           line: {
             opacity: 0.3,
             width: '1px',
+            stroke: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                stroke: 'rgb(179, 179, 179)',
+              },
+            },
           },
           path: {
             display: 'none',
@@ -56,13 +60,27 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       },
       {
         selectors: {
-          text: {
-            ...theme.fonts.medium,
-            opacity: 1,
-          },
+          text: [
+            theme.fonts.tiny,
+            {
+              fontWeight: FontWeights.semibold,
+              fill: theme.semanticColors.bodyText,
+              selectors: {
+                [HighContrastSelectorBlack]: {
+                  fill: 'rgb(179, 179, 179)',
+                },
+              },
+            },
+          ],
           line: {
             opacity: 0.2,
             width: '1px',
+            stroke: theme.semanticColors.bodyText,
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                stroke: 'rgb(179, 179, 179)',
+              },
+            },
           },
           path: {
             display: 'none',
@@ -86,7 +104,17 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       marginTop: '8px',
       marginLeft: '35px',
     },
-
-    xAxisText: [],
+    xAxisText: [
+      theme.fonts.tiny,
+      {
+        fontWeight: FontWeights.semibold,
+        fill: theme.semanticColors.bodyText,
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            fill: 'rgb(179, 179, 179)',
+          },
+        },
+      },
+    ],
   };
 };

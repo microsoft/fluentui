@@ -22,6 +22,7 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<
       height: '100%',
       position: 'absolute',
       right: pxToRem(7),
+      top: 0,
     };
   },
 };

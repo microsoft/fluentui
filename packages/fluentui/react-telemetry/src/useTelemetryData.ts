@@ -4,6 +4,7 @@ import { ComponentPerfStats, Telemetry } from '@fluentui/react-bindings';
 
 export type TelemetryDataItem = ComponentPerfStats & {
   componentName: string;
+  msAvg: number;
   msStylesTotal: number;
 };
 
@@ -20,6 +21,7 @@ export function useTelemetryData(
         (values: ComponentPerfStats, componentName: string): TelemetryDataItem => ({
           componentName,
           ...values,
+          msAvg: values.msTotal / values.renders,
           msStylesTotal: values.msResolveVariablesTotal + values.msResolveStylesTotal + values.msRenderStylesTotal,
         }),
       ),
@@ -36,6 +38,7 @@ export function useTelemetryData(
       msTotal: acc.msTotal + item.msTotal,
       msMin: acc.msMin + item.msMin,
       msMax: acc.msTotal + item.msMax,
+      msAvg: (acc.msTotal + item.msTotal) / (acc.renders + item.renders),
       msStylesTotal: acc.msStylesTotal + item.msStylesTotal,
 
       msResolveVariablesTotal: acc.msResolveVariablesTotal + item.msResolveVariablesTotal,
@@ -52,6 +55,7 @@ export function useTelemetryData(
       msTotal: 0,
       msMin: 0,
       msMax: 0,
+      msAvg: 0,
       msStylesTotal: 0,
 
       msResolveVariablesTotal: 0,

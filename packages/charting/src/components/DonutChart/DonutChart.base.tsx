@@ -23,6 +23,7 @@ interface IDonutChartState {
   isLegendSelected?: boolean;
   xCalloutValue?: string;
   yCalloutValue?: string;
+  focusedArcId?: string;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -101,7 +102,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const chartData = data && data.chartData;
     return (
       <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
+        <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
           <div>
             <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
               <Pie
@@ -116,9 +117,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 uniqText={this._uniqText}
                 onBlurCallback={this._onBlur}
                 activeArc={this.state.activeLegend}
+                focusedArcId={this.state.focusedArcId || ''}
                 href={href}
                 calloutId={this._calloutId}
                 valueInsideDonut={valueInsideDonut}
+                theme={theme!}
               />
             </svg>
           </div>
@@ -126,7 +129,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         {!this.props.hideTooltip && this.state.showHover ? (
           <Callout
             target={this._currentHoverElement}
-            coverTarget={true}
+            alignTargetEdge={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
             gapSpace={15}
@@ -215,7 +218,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return legends;
   }
 
-  private _focusCallback = (data: IChartDataPoint, element: SVGPathElement): void => {
+  private _focusCallback = (data: IChartDataPoint, id: string, element: SVGPathElement): void => {
     this._currentHoverElement = element;
     this.setState({
       showHover: true,
@@ -224,6 +227,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       color: data.color!,
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
+      focusedArcId: id,
     });
   };
 
@@ -239,7 +243,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
   };
   private _onBlur = (): void => {
-    this.setState({ showHover: false });
+    this.setState({ showHover: false, focusedArcId: '' });
   };
 
   private _hoverLeave(): void {

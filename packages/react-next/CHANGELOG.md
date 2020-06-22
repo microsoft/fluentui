@@ -1,8 +1,68 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 09 Jun 2020 12:35:17 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.46)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.45..@fluentui/react-next_v8.0.0-alpha.46)
+
+### Changes
+
+- Avoid rendering KeytipData when keytipProps are not passed ([PR #13688](https://github.com/microsoft/fluentui/pull/13688) by xgao@microsoft.com)
+
+## [8.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.45)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.44..@fluentui/react-next_v8.0.0-alpha.45)
+
+### Changes
+
+- Keytip: add KeytipLayer storybook decorator and fix missing handled prop for link ([PR #13687](https://github.com/microsoft/fluentui/pull/13687) by xgao@microsoft.com)
+- Creating compat layers for Button, Checkbox, Link, Pivot, Slider and Toggle components. ([PR #13575](https://github.com/microsoft/fluentui/pull/13575) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.43)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.42..@fluentui/react-next_v8.0.0-alpha.43)
+
+### Changes
+
+- Copy Persona component code to react-next project for migration ([PR #13510](https://github.com/microsoft/fluentui/pull/13510) by miclo@microsoft.com)
+- Copy Coachmark code to react-next to stage migration ([PR #13533](https://github.com/microsoft/fluentui/pull/13533) by miclo@microsoft.com)
+
+## [8.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.42)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.41..@fluentui/react-next_v8.0.0-alpha.42)
+
+### Changes
+
+- Add missing dependencies ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.41)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.39..@fluentui/react-next_v8.0.0-alpha.41)
+
+### Changes
+
+- Copying SwatchColorPicker to react-next, in preparation for converting to function component ([PR #13171](https://github.com/microsoft/fluentui/pull/13171) by czearing@outlook.com)
+- fix height and width check in the image component ([PR #13544](https://github.com/microsoft/fluentui/pull/13544) by nif_tony@outlook.com)
+- Checkbox: use state option ([PR #13570](https://github.com/microsoft/fluentui/pull/13570) by xgao@microsoft.com)
+
+## [8.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.39)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.37..@fluentui/react-next_v8.0.0-alpha.39)
+
+### Changes
+
+- PivotItem: Fixing typing error in headerButtonProps. ([PR #13550](https://github.com/microsoft/fluentui/pull/13550) by humbertomakotomorimoto@gmail.com)
+- Updating Link to use recomposable state. ([PR #13521](https://github.com/microsoft/fluentui/pull/13521) by humbertomakotomorimoto@gmail.com)
+- Checkbox: initial use compose ([PR #13435](https://github.com/microsoft/fluentui/pull/13435) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.37)
 
