@@ -936,6 +936,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-0 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -1353,6 +1357,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-1 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -1770,6 +1778,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-2 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -2187,6 +2199,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-3 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -2604,6 +2620,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-4 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -3021,6 +3041,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-5 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -3438,6 +3462,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-6 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -3855,6 +3883,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-7 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -4272,6 +4304,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-8 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>
@@ -4689,6 +4725,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 data-is-focusable={true}
                               >
                                 item-9 Lorem ipsum dolor sit
+                                <div
+                                  className="ms-HoverCard-host"
+                                  data-is-focusable={true}
+                                />
                               </div>
                             </div>
                           </div>

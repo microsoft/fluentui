@@ -7,9 +7,9 @@
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps } from '@fluentui/react-next/lib/compat/Button';
 import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
@@ -828,7 +828,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement> {
     allowPhoneInitials?: boolean;
     coinProps?: IPersonaCoinProps;
     coinSize?: number;
@@ -868,14 +868,6 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     tertiaryText?: string;
     text?: string;
     theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface IPersonaState {
-    // (undocumented)
-    isImageError?: boolean;
-    // (undocumented)
-    isImageLoaded?: boolean;
 }
 
 // @public (undocumented)
@@ -1615,27 +1607,13 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 export const Persona: React.FunctionComponent<IPersonaProps>;
 
 // @public
-export class PersonaBase extends React.Component<IPersonaProps, {}> {
-    constructor(props: IPersonaProps);
-    // (undocumented)
-    static defaultProps: IPersonaProps;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const PersonaBase: React.ForwardRefExoticComponent<IPersonaProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps>;
 
 // @public
-export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersonaState> {
-    constructor(props: IPersonaCoinProps);
-    // (undocumented)
-    static defaultProps: IPersonaCoinProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void;
-}
+export const PersonaCoinBase: React.ForwardRefExoticComponent<IPersonaCoinProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
@@ -2011,11 +1989,11 @@ export { useTheme }
 export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
+export * from "@fluentui/react-button/lib/Button";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
 export * from "office-ui-fabric-react/lib/Breadcrumb";
-export * from "office-ui-fabric-react/lib/Button";
 export * from "office-ui-fabric-react/lib/Calendar";
 export * from "office-ui-fabric-react/lib/Callout";
 export * from "office-ui-fabric-react/lib/Check";

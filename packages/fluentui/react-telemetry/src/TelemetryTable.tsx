@@ -33,6 +33,13 @@ type TelemetryTableProps = {
   onSortChange: (sort: TelemetryState['tableSort'] | undefined) => void;
 };
 
+type TelemetryHeaderGroup = HeaderGroup &
+  UseSortByColumnProps<{}> &
+  UseFiltersColumnProps<{}> & {
+    isShowDetails?: TelemetryTableExpandNames;
+    subgroup: 'styles' | 'timers';
+  };
+
 export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
   const { expand, componentFilter, sort, onComponentFilterChange, onExpandChange, onSortChange, telemetry } = props;
 
@@ -103,21 +110,22 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
         <thead>
           {headerGroups.map(group => (
             <tr {...group.getHeaderGroupProps()}>
-              {group.headers.map(
-                (
-                  column: HeaderGroup &
-                    UseSortByColumnProps<{}> &
-                    UseFiltersColumnProps<{}> & { isShowDetails?: TelemetryTableExpandNames },
-                ) => (
-                  <th
-                    {...column.getHeaderProps({
-                      style: styles.tableHeader({
-                        canFilter: column.canFilter,
-                        isShowDetails: !!column.isShowDetails,
-                      }),
-                    })}
-                  >
-                    <div {...column.getSortByToggleProps()}>
+              {group.headers.map((column: TelemetryHeaderGroup, index) => (
+                <th
+                  {...column.getHeaderProps({
+                    style: styles.tableHeader({
+                      isFirstInSubgroup:
+                        column.subgroup &&
+                        column.subgroup !== (group.headers[index - 1] as TelemetryHeaderGroup)?.subgroup,
+                      isLastInSubgroup:
+                        column.subgroup &&
+                        column.subgroup !== (group.headers[index + 1] as TelemetryHeaderGroup)?.subgroup,
+                      subgroup: column.subgroup,
+                    }),
+                  })}
+                >
+                  <div style={{ alignItems: 'center', display: 'flex' }}>
+                    <div {...column.getSortByToggleProps({ style: { flex: 1 } })}>
                       {column.render('Header')}
                       <span style={styles.tableSort()}>
                         {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
@@ -132,9 +140,9 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
                       />
                     )}
                     {column.canFilter && <div>{column.render('Filter')}</div>}
-                  </th>
-                ),
-              )}
+                  </div>
+                </th>
+              ))}
             </tr>
           ))}
         </thead>
@@ -216,7 +224,7 @@ export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
             setPageSize(Number(e.target.value));
           }}
         >
-          {[20, 30, 50, 100].map(pageSize => (
+          {[5, 10, 20, 30, 50, 100].map(pageSize => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
-import { IconButton } from '../../../../Button';
 import * as stylesImport from './ExtendedSelectedItem.scss';
 import { useId } from '@uifabric/react-hooks';
+import { IconButton } from '@fluentui/react-next/lib/compat/Button';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 

@@ -5,10 +5,12 @@
 ```ts
 
 import { Async } from '@uifabric/utilities';
-import * as React from 'react';
+import * as CSS from 'csstype';
+import * as PropTypes from 'prop-types';
+import * as React_2 from 'react';
 
 // @public (undocumented)
-export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React.FormEvent<TElement> | undefined, newValue: TValue | undefined) => void;
+export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React_2.FormEvent<TElement> | undefined, newValue: TValue | undefined) => void;
 
 // @public
 export interface IUseBooleanCallbacks {
@@ -33,7 +35,7 @@ export function useConstCallback<T extends (...args: any[]) => any>(callback: T)
 export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (newValue: TValue | undefined) => void]>;
 
 // @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev?: React_2.FormEvent<TElement>) => void]>;
 
 // @public
 export function useForceUpdate(): () => void;
@@ -41,11 +43,16 @@ export function useForceUpdate(): () => void;
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
+// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined | null)[]): (instance: Exclude<T, undefined>) => void;
 
 // @public
-export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
+export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React_2.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
+
+// @public
+export function usePrevious<T>(value: T): T | undefined;
 
 
 // (No @packageDocumentation comment for this package)

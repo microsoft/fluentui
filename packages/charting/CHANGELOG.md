@@ -1,8 +1,42 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 09 Jun 2020 12:35:17 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.2)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.1..@uifabric/charting_v2.3.2)
+
+### Patches
+
+- Vertical Bar chart code updated ([PR #13660](https://github.com/microsoft/fluentui/pull/13660) by v-jasha@microsoft.com)
+- doughnut chart target alignment updated ([PR #13703](https://github.com/microsoft/fluentui/pull/13703) by v-jasha@microsoft.com)
+
+## [2.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.1)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.0..@uifabric/charting_v2.3.1)
+
+### Patches
+
+- doughnut chart circualr accessibility issue resolved ([PR #13662](https://github.com/microsoft/fluentui/pull/13662) by v-jasha@microsoft.com)
+
+## [2.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.0)
+
+Thu, 18 Jun 2020 12:37:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.34..@uifabric/charting_v2.3.0)
+
+### Minor changes
+
+- adding focus border functionality to donut chart ([PR #13601](https://github.com/microsoft/fluentui/pull/13601) by v-sivsar@microsoft.com)
+
+### Patches
+
+- fontfamily inherited from fabric ([PR #13523](https://github.com/microsoft/fluentui/pull/13523) by v-jasha@microsoft.com)
+- Y axis ticks truncate issue resolved ([PR #13617](https://github.com/microsoft/fluentui/pull/13617) by v-jasha@microsoft.com)
+- adding css styles fixes, for both normal and high contrast mode ([PR #13639](https://github.com/microsoft/fluentui/pull/13639) by v-sivsar@microsoft.com)
 
 ## [2.2.31](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.31)
 

@@ -11,7 +11,7 @@ interface ToggleState extends ToggleProps {}
 
 /**
  * The useToggleButton hook processes the Button component props and returns state.
- * @param props
+ * @param props - ToggleButton props to derive state from.
  */
 export const useToggle = <TProps, TState extends TProps = TProps>(
   props: TProps & ToggleProps,

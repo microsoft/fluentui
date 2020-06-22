@@ -3,7 +3,8 @@ import { TelemetryPosition } from './useTelemetryState';
 import { CellAlign } from './useTelemetryColumns';
 
 type CellColor = { backgroundColor: string; color: string };
-const CELL_COLORS: CellColor[] = [
+
+const CELL_COLORS_STYLES: CellColor[] = [
   { backgroundColor: '#ffffff', color: '#000000' },
   { backgroundColor: '#ffffcc', color: '#000000' },
   { backgroundColor: '#ffeda0', color: '#000000' },
@@ -16,7 +17,8 @@ const CELL_COLORS: CellColor[] = [
   { backgroundColor: '#800026', color: '#ffffff' },
 ];
 
-const getCellColor = (p: number): CellColor => CELL_COLORS[Math.round((CELL_COLORS.length - 1) * p)];
+const getCellColorStyles = (p: number): CellColor =>
+  CELL_COLORS_STYLES[Math.round((CELL_COLORS_STYLES.length - 1) * p)];
 
 export const controls = (): React.CSSProperties => ({
   border: '1px solid #e5e5e4',
@@ -114,12 +116,13 @@ export const tableCell = ({
   textAlign: 'right',
 
   ...(align && { textAlign: align }),
-  ...(percentageRatio && { ...getCellColor(percentageRatio) }),
+  ...(percentageRatio && getCellColorStyles(percentageRatio)),
 });
 
 export const tableFooterCell = ({ align }: { align?: CellAlign }): React.CSSProperties => ({
   fontWeight: 'bold',
   textAlign: 'right',
+
   ...(align && { textAlign: align }),
 });
 
@@ -144,20 +147,36 @@ export const tableFilter = (): React.CSSProperties => ({
 });
 
 export const tableHeader = ({
-  canFilter,
-  isShowDetails,
+  isFirstInSubgroup,
+  isLastInSubgroup,
+  subgroup,
 }: {
-  canFilter?: boolean;
-  isShowDetails?: boolean;
+  isFirstInSubgroup: boolean;
+  isLastInSubgroup: boolean;
+  subgroup: 'styles' | 'timers';
 }): React.CSSProperties => ({
   border: '1px solid #e5e5e4',
   padding: 4,
 
-  ...((canFilter || isShowDetails) && {
-    border: undefined,
+  ...(subgroup && {
+    background: 'rgba(245, 245, 245, 0.75)',
+    borderBottomStyle: 'solid',
+    borderBottomWidth: '2px',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    fontWeight: 'normal',
 
-    alignItems: 'center',
-    display: 'flex',
+    ...(isFirstInSubgroup && {
+      background: 'transparent',
+      fontWeight: 'bold',
+    }),
+    ...(isLastInSubgroup && { borderRightColor: '#e5e5e4' }),
+  }),
+  ...(subgroup === 'timers' && {
+    borderBottomColor: 'cornflowerblue',
+  }),
+  ...(subgroup === 'styles' && {
+    borderBottomColor: 'salmon',
   }),
 });
 
