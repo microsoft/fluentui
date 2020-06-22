@@ -8,6 +8,7 @@ import {
   useFocusRects,
   warnDeprecations,
   warnMutuallyExclusive,
+  mergeAriaAttributeValues,
 } from '../../Utilities';
 import { IToggle, IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
@@ -41,6 +42,7 @@ export const useToggle = (
     role,
     styles,
     theme,
+    keytipData,
   } = props;
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked, onChange);
 
@@ -57,7 +59,9 @@ export const useToggle = (
   const labelId = `${id}-label`;
   const stateTextId = `${id}-stateText`;
   const stateText = checked ? onText : offText;
-  const toggleNativeProps = getNativeProps<HTMLInputElement>(props, inputProperties, ['defaultChecked']);
+  const toggleNativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties, [
+    'defaultChecked',
+  ]);
 
   // The following properties take priority for what Narrator should read:
   // 1. ariaLabel
@@ -126,8 +130,11 @@ export const useToggle = (
       'aria-checked': checked,
       'aria-label': ariaLabel ? ariaLabel : badAriaLabel,
       'aria-labelledby': labelledById,
+      'aria-describedby': mergeAriaAttributeValues(toggleNativeProps['aria-describedby'], keytipData?.ariaDescribedBy),
       className: classNames.pill,
       'data-is-focusable': true,
+      ...keytipData?.executeElementAttributes,
+      ...keytipData?.targetElementAttributes,
       disabled: disabled,
       id: id,
       onClick: onClick,

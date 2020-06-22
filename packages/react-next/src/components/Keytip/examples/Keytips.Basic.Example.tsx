@@ -21,6 +21,7 @@ const sampleOptions = [
 ];
 
 const CheckboxWithKeytip = withKeytipData(Checkbox);
+const ToggleWithKeytip = withKeytipData(Toggle);
 
 export const KeytipsBasicExample: React.FunctionComponent = () => (
   <div>
@@ -32,7 +33,7 @@ export const KeytipsBasicExample: React.FunctionComponent = () => (
       <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
         <Stack tokens={stackTokens}>
           <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={spinButtonStyles} />
-          <Toggle onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
+          <ToggleWithKeytip onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
           <span>
             Go to{' '}
             <Link keytipProps={keytipMap.LinkKeytip} href="http://www.bing.com" target="_blank">
