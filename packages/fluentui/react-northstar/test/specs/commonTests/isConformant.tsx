@@ -7,7 +7,7 @@ import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactIs from 'react-is';
-import { ReactWrapper } from 'enzyme';
+import { ComponentType, ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
 
@@ -36,16 +36,12 @@ export interface Conformant {
   /** Does this component render a Portal powered component? */
   rendersPortal?: boolean;
   /** This component uses wrapper slot to wrap the 'meaningful' element. */
-  wrapperComponent?: React.ReactType;
+  wrapperComponent?: React.ElementType;
   handlesAsProp?: boolean;
   /** List of autocontrolled props for this component. */
   autoControlledProps?: string[];
   /** Child component that will receive unhandledProps. */
-  passesUnhandledPropsTo?: React.ComponentType<any> & {
-    handledProps?: string[];
-    autoControlledProps?: string[];
-    deprecated_className?: string;
-  };
+  passesUnhandledPropsTo?: ComponentType<any>;
 }
 
 /**
@@ -267,10 +263,12 @@ export default function isConformant(
       test('passes extra props to the component it is renders as', () => {
         if (passesUnhandledPropsTo) {
           const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
+
           expect(el.prop('data-extra-prop')).toBe('foo');
         } else {
           const MyComponent = () => null;
           const el = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />).find(MyComponent);
+
           expect(el.prop('data-extra-prop')).toBe('foo');
         }
       });
@@ -423,14 +421,10 @@ export default function isConformant(
           [listenerName]: handlerSpy,
           [EVENT_TARGET_ATTRIBUTE]: true,
         };
-        const ComponentHandled = passesUnhandledPropsTo;
-        const component = passesUnhandledPropsTo
-          ? mount(<ComponentHandled {...props} />)
-          : mount(<Component {...props} />);
-        const componentPropTypes = passesUnhandledPropsTo
-          ? { ...Component.propTypes, ...passesUnhandledPropsTo.propTypes }
-          : Component.propTypes;
+
+        const component = mount(<Component {...props} />);
         const eventTarget = getEventTargetComponent(component, listenerName, eventTargets);
+
         const customHandler: Function = eventTarget.prop(listenerName);
 
         if (customHandler) {
@@ -438,13 +432,13 @@ export default function isConformant(
             customHandler(eventShape);
           });
         } else {
-          if (componentPropTypes[listenerName]) {
+          if (Component.propTypes[listenerName]) {
             throw new Error(
               `Handler for '${listenerName}' is not passed to child event emitter element <${eventTarget.type()} />`,
             );
           }
 
-          // We are cheking only props handled by component
+          // We are checking only props handled by component
           return;
         }
 
@@ -475,7 +469,7 @@ export default function isConformant(
         let expectedArgs = [eventShape];
         let errorMessage = 'was not called with (event)';
 
-        if (_.has(componentPropTypes, listenerName)) {
+        if (_.has(Component.propTypes, listenerName)) {
           expectedArgs = [eventShape, expect.objectContaining(component.props())];
           errorMessage = [
             'was not called with (event, data).\n',
@@ -486,7 +480,14 @@ export default function isConformant(
 
         // Components should return the event first, then any data
         try {
-          expect(handlerSpy).toHaveBeenLastCalledWith(...expectedArgs);
+          const lastHandlerCall = _.last(handlerSpy.mock.calls);
+
+          // We are using there a manual assert instead of `toHaveBeenLastCalledWith()` to
+          // run a comparison based on `expectedArgs` instead of comparing actual args from
+          // a function call.
+          expectedArgs.forEach((expectedArg, argI) => {
+            expect(lastHandlerCall[argI]).toEqual(expectedArg);
+          });
         } catch (err) {
           throw new Error(
             [
