@@ -3,6 +3,12 @@ import { IKeytipProps } from '../components/Keytip';
 import { KeytipDataOptions, useKeytipData } from '../KeytipData';
 import { IKeytipData } from 'office-ui-fabric-react';
 
+/**
+ * HOC to output wrapped component that supports keytipProps prop,
+ * given an input component that has keytipProps prop deprecated.
+ *
+ * @param Component Component with keytipData prop and deprecated keytipProps prop.
+ */
 export function withKeytipData<TProps extends { keytipData?: IKeytipData }>(
   Component: React.ComponentType<TProps>,
 ): React.ComponentType<TProps & { keytipProps?: IKeytipProps }> {

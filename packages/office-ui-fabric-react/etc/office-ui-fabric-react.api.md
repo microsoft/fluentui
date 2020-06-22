@@ -9599,7 +9599,7 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 // @public
 export function updateT(color: IColor, t: number): IColor;
 
-// @public (undocumented)
+// @public
 export function useKeytipData(options: KeytipDataOptions): IKeytipData;
 
 // @public
