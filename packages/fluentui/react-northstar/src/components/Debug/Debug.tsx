@@ -1,4 +1,4 @@
-import keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -12,12 +12,12 @@ import DebugRect from './DebugRect';
 
 /* eslint-disable no-console */
 
-type DebugProps = {
+export type DebugProps = {
   /** Existing document the popup should add listeners. */
   mountDocument?: Document;
 };
 
-type DebugState = {
+export type DebugState = {
   debugPanelPosition?: 'left' | 'right';
   fiberNav: FiberNavigator;
   selectedFiberNav: FiberNavigator;
@@ -91,7 +91,7 @@ class Debug extends React.Component<DebugProps, DebugState> {
   };
 
   handleKeyDown = e => {
-    const code = keyboardKey.getCode(e);
+    const code = getCode(e);
 
     switch (code) {
       case keyboardKey.Escape:

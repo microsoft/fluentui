@@ -56,7 +56,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   accessibility?: Accessibility<CarouselBehaviorProps>;
 
   /** Index of the currently active item. */
-  activeIndex?: number | string;
+  activeIndex?: number;
 
   /**
    * Sets the aria-roledescription attribute.
@@ -72,7 +72,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   circular?: boolean;
 
   /** Initial activeIndex value. */
-  defaultActiveIndex?: number | string;
+  defaultActiveIndex?: number;
 
   /**
    * Message generator for item position in the carousel. Used to generate the
@@ -128,7 +128,7 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   navigation: `${carouselClassName}__navigation`,
 };
 
-export const Carousel: React.FC<WithAsProp<CarouselProps>> &
+const Carousel: React.FC<WithAsProp<CarouselProps>> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;
@@ -171,6 +171,8 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
+    // As we are using "panels.length" it's fine to have dependency on them
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [items?.length],
   );
 
@@ -220,22 +222,27 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
     rtl: context.rtl,
   });
 
-  const paddleNextRef = React.createRef<HTMLElement>();
-  const paddlePreviousRef = React.createRef<HTMLElement>();
+  const paddleNextRef = React.useRef<HTMLElement>();
+  const paddlePreviousRef = React.useRef<HTMLElement>();
 
-  const focusItemAtIndex = _.debounce((index: number) => {
-    itemRefs[index].current?.focus();
-  }, 400);
+  const focusItemAtIndex = React.useMemo(
+    () =>
+      _.debounce((index: number) => {
+        itemRefs[index].current?.focus();
+      }, 400),
+    [itemRefs],
+  );
 
   React.useEffect(() => {
     return () => {
       focusItemAtIndex.cancel();
     };
-  }, [items]);
+  }, [focusItemAtIndex, items]);
 
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
     let nextActiveIndex = index;
+    const lastActiveIndex = state.activeIndex;
 
     if (index < 0) {
       if (!circular) {
@@ -251,7 +258,7 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
       nextActiveIndex = 0;
     }
 
-    actions.setIndexes(nextActiveIndex, lastItemIndex);
+    actions.setIndexes(nextActiveIndex, lastActiveIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, props);
 
@@ -306,15 +313,11 @@ export const Carousel: React.FC<WithAsProp<CarouselProps>> &
                   unmountOnExit
                   visible={active}
                   name={
-                    initialMounting
+                    initialMounting || !active
                       ? ''
-                      : active
-                      ? slideToNext
-                        ? 'carousel-slide-to-next-enter'
-                        : 'carousel-slide-to-previous-enter'
                       : slideToNext
-                      ? 'carousel-slide-to-next-exit'
-                      : 'carousel-slide-to-previous-exit'
+                      ? 'carousel-slide-to-next-enter'
+                      : 'carousel-slide-to-previous-enter'
                   }
                 >
                   <Ref innerRef={itemRef}>
@@ -472,11 +475,11 @@ Carousel.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  activeIndex: PropTypes.number,
   ariaRoleDescription: PropTypes.string,
   ariaLabel: PropTypes.string,
   circular: PropTypes.bool,
-  defaultActiveIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  defaultActiveIndex: PropTypes.number,
   getItemPositionText: PropTypes.func,
   items: customPropTypes.collectionShorthand,
   navigation: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),

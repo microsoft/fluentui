@@ -7,3 +7,5 @@ export * from './useMergedRefs';
 export * from './useControllableValue';
 export * from './useAsync';
 export * from './useOnEvent';
+export * from './useForceUpdate';
+export * from './usePrevious';

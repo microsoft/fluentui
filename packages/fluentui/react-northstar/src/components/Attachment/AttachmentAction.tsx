@@ -1,13 +1,28 @@
 import { buttonBehavior } from '@fluentui/accessibility';
-import { compose, ComponentWithAs } from '@fluentui/react-bindings';
-
-import { createShorthandFactory, ShorthandFactory } from '../../utils';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PropTypes from 'prop-types';
+import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { commonPropTypes } from '../../utils';
 import Button, { ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 interface AttachmentActionOwnProps {}
-export interface AttachmentActionProps extends AttachmentActionOwnProps, ButtonProps {}
+export interface AttachmentActionProps extends AttachmentActionOwnProps, ButtonProps {
+  text?: never;
+  iconOnly?: never;
+  circular?: never;
+  size?: never;
+  fluid?: never;
+  inverted?: never;
+}
 
-export type AttachmentActionStylesProps = never;
+export type AttachmentActionStylesProps = ButtonStylesProps & {
+  text?: never;
+  iconOnly?: never;
+  circular?: never;
+  size?: never;
+  fluid?: never;
+  inverted?: never;
+};
 export const attachmentActionClassName = 'ui-attachment__action';
 
 /**
@@ -22,16 +37,30 @@ const AttachmentAction = compose<
 >(Button, {
   className: attachmentActionClassName,
   displayName: 'AttachmentAction',
-}) as ComponentWithAs<'button', AttachmentActionProps> & { create: ShorthandFactory<any> };
+  overrideStyles: true,
+}) as ComponentWithAs<'button', AttachmentActionProps> & { shorthandConfig: ShorthandConfig<AttachmentActionProps> };
 
 AttachmentAction.defaultProps = {
   accessibility: buttonBehavior,
   as: 'button',
-  iconOnly: true,
-  text: true,
 };
-AttachmentAction.propTypes = Button.propTypes;
+AttachmentAction.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: 'shorthand',
+  }),
+  disabled: PropTypes.bool,
+  icon: customPropTypes.shorthandAllowingChildren,
+  iconPosition: PropTypes.oneOf(['before', 'after']),
+  loader: customPropTypes.itemShorthandWithoutJSX,
+  loading: PropTypes.bool,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+};
 
-AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction, mappedProp: 'content' });
+AttachmentAction.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 export default AttachmentAction;

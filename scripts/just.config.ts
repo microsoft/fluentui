@@ -47,6 +47,7 @@ function basicPreset() {
 module.exports = function preset() {
   basicPreset();
 
+  task('no-op', () => {}).cached();
   task('clean', clean);
   task('copy', copy);
   task('jest', jestTask);
@@ -62,8 +63,8 @@ module.exports = function preset() {
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
-  task('api-extractor:verify', verifyApiExtractor);
-  task('api-extractor:update', updateApiExtractor);
+  task('api-extractor:verify', verifyApiExtractor());
+  task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('bundle-size-collect', bundleSizeCollect);
@@ -98,21 +99,12 @@ module.exports = function preset() {
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
-  task('dev:storybook', series('clean', 'copy', 'sass', 'storybook:start'));
-  task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
+  task('dev:storybook', series('storybook:start'));
+  task('dev', series('copy', 'sass', 'webpack-dev-server'));
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
-  task(
-    'build',
-    series(
-      'clean',
-      'copy',
-      'sass',
-      'ts',
-      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json'))),
-    ),
-  ).cached();
+  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor:verify')).cached();
 
   task(
     'bundle',
@@ -121,8 +113,6 @@ module.exports = function preset() {
       condition('storybook:build', () => !!resolveCwd('./.storybook/main.js')),
     ),
   );
-
-  task('no-op', () => {}).cached();
 };
 
 module.exports.basic = basicPreset;

@@ -61,9 +61,7 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <div
             className=

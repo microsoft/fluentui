@@ -11,10 +11,9 @@ import {
   mergeStyleSets,
   FontWeights,
   Link,
-  getId,
   Text,
 } from 'office-ui-fabric-react';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useId } from '@uifabric/react-hooks';
 
 const DIRECTION_OPTIONS = [
   { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
@@ -87,14 +86,13 @@ const styles = mergeStyleSets({
   },
 });
 
-const labelId: string = getId('callout-label');
-const descriptionId: string = getId('callout-description');
-
 export const CalloutDirectionalExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const [isBeakVisible, { toggle: toggleIsBeakVisible }] = useBoolean(true);
   const [gapSpace, setGapSpace] = React.useState();
   const [beakWidth, setBeakWidth] = React.useState();
+  const labelId: string = useId('callout-label');
+  const descriptionId: string = useId('callout-description');
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
   const onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     setDirectionalHint(option.key as DirectionalHint);

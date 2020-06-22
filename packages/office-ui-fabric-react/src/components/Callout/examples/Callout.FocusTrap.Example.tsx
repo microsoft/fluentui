@@ -73,7 +73,7 @@ export const CalloutFocusTrapExample: React.FunctionComponent = () => {
             gapSpace={0}
             target={`.${styles.buttonArea}`}
             onDismiss={toggleIsCalloutVisible}
-            setInitialFocus={true}
+            setInitialFocus
           >
             <div className={styles.header}>
               <Text className={styles.title}>Callout title here</Text>

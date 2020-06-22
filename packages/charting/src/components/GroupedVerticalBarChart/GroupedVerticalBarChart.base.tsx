@@ -16,11 +16,12 @@ import {
 } from './GroupedVerticalBarChart.types';
 import {
   IGroupedVerticalBarChartData,
-  IGVBarChartSeriesPoint,
   IGVDataPoint,
-  IGVSingleDataPoint,
   IGVForBarChart,
-} from '@uifabric/charting';
+  IGVSingleDataPoint,
+  IGVBarChartSeriesPoint,
+} from '../../types/index';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
 type stringAxis = D3Axis<string>;
@@ -102,7 +103,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   public componentDidMount(): void {
     this._fitParentContainer();
-    window.addEventListener('resize', this._fitParentContainer);
   }
 
   public componentWillUnmount(): void {
@@ -110,15 +110,20 @@ export class GroupedVerticalBarChartBase extends React.Component<
     d3Select('#firstGElementForBars').remove();
   }
 
-  public componentDidUpdate(): void {
+  public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
     if (this._isGraphDraw) {
       // drawing graph after first update only to avoid multile g tags
       this._drawGraph();
       this._isGraphDraw = false;
     }
+    if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
+      this._fitParentContainer();
+      this._drawGraph();
+    }
   }
 
   public render(): React.ReactNode {
+    this._adjustProps();
     const { theme, className, styles } = this.props;
 
     if (this.props.parentRef) {
@@ -183,14 +188,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
             setInitialFocus={true}
             directionalHint={DirectionalHint.topRightEdge}
           >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.titleForHoverCard}
-              </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              </div>
-            </div>
+            <ChartHoverCard
+              XValue={this.state.xCalloutValue}
+              Legend={this.state.titleForHoverCard}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              color={this.state.color}
+            />
           </Callout>
         ) : null}
       </div>
@@ -494,7 +497,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .domain([0, domains[domains.length - 1]])
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
     const yAxis = d3AxisLeft(yAxisScale)
-      .tickPadding(10)
+      .tickPadding(5)
+      .ticks(this._yAxisTickCount, 's')
       .tickValues(domains);
 
     this._showYAxisGridLines &&

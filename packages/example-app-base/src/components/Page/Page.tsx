@@ -156,7 +156,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
       const bestPracticesProps: IBestPracticesSectionProps = {
         renderAs: BestPracticesSection,
         ...sectionProps,
-        sectionName: 'Best Practices',
+        sectionName: 'Best practices',
         bestPractices,
         dos,
         donts,
@@ -213,7 +213,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
         renderAs: MarkdownSection,
         ...sectionProps,
         sectionName: 'Accessibility',
-        readableSectionName: 'Accessibility Best Practices',
+        readableSectionName: 'Accessibility best practices',
         content: accessibility,
       });
 

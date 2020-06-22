@@ -40,6 +40,11 @@ const Usage = () => (
       description="Example of expandable card"
       examplePath="components/Card/Usage/CardExampleExpandable"
     />
+    <ComponentExample
+      title="Selectable cards in a navigable grid"
+      description="Example of selectable cards with no interactive children in a grid with keyboard navigation"
+      examplePath="components/Card/Usage/CardExampleSelectableGrid"
+    />
   </ExampleSection>
 );
 

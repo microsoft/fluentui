@@ -14,6 +14,7 @@ module.exports = {
     path.resolve(__dirname, '../../react-focus/dist/react-focus.api.json'),
     path.resolve(__dirname, '../../office-ui-fabric-react/dist/office-ui-fabric-react.api.json'),
     path.resolve(__dirname, '../../react-cards/dist/react-cards.api.json'),
+    path.resolve(__dirname, '../../date-time-utilities/dist/date-time-utilities.api.json'),
   ],
   outputRoot: path.resolve(__dirname, '../lib/pages'),
   fallbackGroup: 'references',

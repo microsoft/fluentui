@@ -21,6 +21,7 @@ import CardFooter from './CardFooter';
 import CardHeader from './CardHeader';
 import CardPreview from './CardPreview';
 import CardTopControls from './CardTopControls';
+import CardExpandableBox from './CardExpandableBox';
 
 export interface CardProps extends UIComponentProps {
   /**
@@ -56,9 +57,37 @@ export interface CardProps extends UIComponentProps {
 
   /** A card can show that it cannot be interacted with. */
   disabled?: boolean;
+
+  /** A card can be hiding part of the content and expand on hover/focus. */
+  expandable?: boolean;
+
+  /** A card can have elevation styles. */
+  elevated?: boolean;
+
+  /** A card can have inverted background styles. */
+  inverted?: boolean;
+
+  /** A card can have quiet styles. */
+  quiet?: boolean;
+
+  /** A card can show that it is currently selected or not. */
+  selected?: boolean;
 }
 
-export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid' | 'disabled'> & {
+export type CardStylesProps = Pick<
+  CardProps,
+  | 'compact'
+  | 'horizontal'
+  | 'centered'
+  | 'size'
+  | 'fluid'
+  | 'disabled'
+  | 'expandable'
+  | 'elevated'
+  | 'inverted'
+  | 'quiet'
+  | 'selected'
+> & {
   actionable: boolean;
 };
 
@@ -72,6 +101,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
     Preview: typeof CardPreview;
     TopControls: typeof CardPreview;
     Column: typeof CardColumn;
+    ExpandableBox: typeof CardExpandableBox;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
@@ -91,6 +121,11 @@ const Card: React.FC<WithAsProp<CardProps>> &
     fluid,
     onClick,
     disabled,
+    expandable,
+    elevated,
+    inverted,
+    quiet,
+    selected,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
@@ -98,12 +133,17 @@ const Card: React.FC<WithAsProp<CardProps>> &
     debugName: Card.displayName,
     actionHandlers: {
       performClick: e => {
+        // prevent Spacebar from scrolling
+        e.preventDefault();
         handleClick(e);
       },
       focusCard: e => {
         cardRef.current.focus();
       },
     },
+    mapPropsToBehavior: () => ({
+      disabled,
+    }),
     rtl: context.rtl,
   });
 
@@ -117,6 +157,11 @@ const Card: React.FC<WithAsProp<CardProps>> &
       fluid,
       actionable: !!onClick,
       disabled,
+      expandable,
+      elevated,
+      inverted,
+      quiet,
+      selected,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -165,6 +210,12 @@ Card.propTypes = {
   centered: PropTypes.bool,
   size: CustomPropTypes.size,
   fluid: PropTypes.bool,
+  expandable: PropTypes.bool,
+  disabled: PropTypes.bool,
+  elevated: PropTypes.bool,
+  quiet: PropTypes.bool,
+  inverted: PropTypes.bool,
+  selected: PropTypes.bool,
 };
 
 Card.defaultProps = {
@@ -179,6 +230,7 @@ Card.Footer = CardFooter;
 Card.Preview = CardPreview;
 Card.TopControls = CardTopControls;
 Card.Column = CardColumn;
+Card.ExpandableBox = CardExpandableBox;
 
 Card.create = createShorthandFactory({ Component: Card });
 

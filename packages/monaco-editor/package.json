@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/monaco-editor",
-  "version": "0.5.7",
+  "version": "0.5.9",
   "description": "Version of monaco-editor with configuration helpers and transformed CSS files",
   "module": "./lib/monacoBundle.js",
   "typings": "./esm/vs/editor/editor.api.d.ts",

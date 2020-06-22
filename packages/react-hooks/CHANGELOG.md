@@ -1,8 +1,36 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Tue, 05 May 2020 12:34:22 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.7](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.4.7)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.4.6..@uifabric/react-hooks_v7.4.7)
+
+### Patches
+
+- add usePrevious hook ([PR #13688](https://github.com/microsoft/fluentui/pull/13688) by xgao@microsoft.com)
+- useMergedRefs: Merging refs should produce an immutable ref object. ([PR #13712](https://github.com/microsoft/fluentui/pull/13712) by dzearing@microsoft.com)
+
+## [7.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.4.0)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.3.1..@uifabric/react-hooks_v7.4.0)
+
+### Minor changes
+
+- Add useForceUdpate hook ([PR #13146](https://github.com/microsoft/fluentui/pull/13146) by xgao@microsoft.com)
+
+## [7.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.3.1)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.3.0..@uifabric/react-hooks_v7.3.1)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.3.0)
 

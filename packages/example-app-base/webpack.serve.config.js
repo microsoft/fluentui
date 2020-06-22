@@ -6,7 +6,7 @@ module.exports = resources.createServeConfig({
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'demo.js',
+    filename: 'demo-app.js',
   },
 
   externals: {

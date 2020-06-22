@@ -9,6 +9,7 @@
       "etc/*.ts"
     ]
   },
+  "rulesDirectory": ["lib-commonjs/"],
   "rules": {
     "deprecation": true,
     "function-name": [

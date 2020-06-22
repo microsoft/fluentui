@@ -29,10 +29,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
     role="navigation"
   >
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <h3>
         Pages
@@ -373,10 +370,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
       </div>
     </div>
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <h3>
         More pages

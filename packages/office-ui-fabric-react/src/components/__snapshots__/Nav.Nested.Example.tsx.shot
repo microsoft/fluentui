@@ -29,10 +29,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
     role="navigation"
   >
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <div
         className=

@@ -23,7 +23,7 @@ const useClassNamesListener = (targetRef: React.RefObject<HTMLElement>, onChange
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [observer, targetRef]);
 };
 
 export default useClassNamesListener;

@@ -7,6 +7,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -14,7 +15,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-
 import {
   childrenExist,
   createShorthandFactory,
@@ -25,7 +25,6 @@ import {
   rtlTextContainer,
   SizeValue,
   ShorthandFactory,
-  ShorthandConfig,
   createShorthand,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
@@ -268,7 +267,7 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       loader: Loader,
     },
 
-    mapPropsToSlotProps: props => ({
+    slotProps: props => ({
       content: {
         size: props.size,
       },

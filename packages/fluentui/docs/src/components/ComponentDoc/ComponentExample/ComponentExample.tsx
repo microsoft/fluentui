@@ -1,5 +1,13 @@
 import { knobComponents, KnobsSnippet } from '@fluentui/code-sandbox';
-import { CopyToClipboard, KnobInspector, KnobProvider, LogInspector } from '@fluentui/docs-components';
+import {
+  CopyToClipboard,
+  KnobInspector,
+  KnobProvider,
+  LogInspector,
+  Editor,
+  EDITOR_BACKGROUND_COLOR,
+  EDITOR_GUTTER_COLOR,
+} from '@fluentui/docs-components';
 import {
   ComponentVariablesInput,
   constants,
@@ -19,7 +27,6 @@ import qs from 'qs';
 import SourceRender from 'react-source-render';
 
 import { examplePathToHash, getFormattedHash, scrollToAnchor } from '../../../utils';
-import Editor, { EDITOR_BACKGROUND_COLOR, EDITOR_GUTTER_COLOR } from '../../Editor';
 import { babelConfig, importResolver } from '../../Playground/renderConfig';
 import ExampleContext, { ExampleContextValue } from '../../../context/ExampleContext';
 import ComponentControls from '../ComponentControls';
@@ -222,6 +229,10 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     if (!this.kebabExamplePath) this.kebabExamplePath = _.kebabCase(this.props.examplePath);
 
     return this.kebabExamplePath;
+  };
+
+  getSourceFileNameHint = () => {
+    return `Source code: ${this.props.examplePath.split('/').pop()}`;
   };
 
   handleCodeApiChange = apiType => () => {
@@ -461,7 +472,11 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
             <Segment styles={{ padding: 0, borderBottom: '1px solid #ddd' }}>
               <Flex space="between" style={{ padding: '10px 20px' }}>
-                <ComponentExampleTitle description={description} title={title} />
+                <ComponentExampleTitle
+                  description={description}
+                  title={title}
+                  sourceHint={this.getSourceFileNameHint()}
+                />
 
                 <ComponentControls
                   titleForAriaLabel={title || titleForAriaLabel}

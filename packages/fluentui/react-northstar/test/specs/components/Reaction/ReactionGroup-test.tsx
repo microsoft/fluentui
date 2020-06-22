@@ -7,6 +7,6 @@ import implementsCollectionShorthandProp from 'test/specs/commonTests/implements
 const reactionGroupImplementsCollectionShorthandProp = implementsCollectionShorthandProp(ReactionGroup);
 
 describe('ReactionGroup', () => {
-  isConformant(ReactionGroup);
+  isConformant(ReactionGroup, { constructorName: 'ReactionGroup' });
   reactionGroupImplementsCollectionShorthandProp('items', Reaction);
 });

@@ -3,7 +3,10 @@ const { readConfig } = require('../read-config');
 const path = require('path');
 const findGitRoot = require('./findGitRoot');
 
-module.exports = function getAllPackageInfo() {
+/**
+ * @returns {import('./index.d').AllPackageInfo}
+ */
+function getAllPackageInfo() {
   const gitRoot = findGitRoot();
   const results = spawnSync('git', ['ls-tree', '-r', '--name-only', '--full-tree', 'HEAD']);
   const packageInfo = {};
@@ -25,4 +28,6 @@ module.exports = function getAllPackageInfo() {
     });
 
   return packageInfo;
-};
+}
+
+module.exports = getAllPackageInfo;

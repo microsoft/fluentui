@@ -61,7 +61,15 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   direction?: FocusZoneDirection;
 
   /**
-   * Optionally provide a selector for identifying the intial active element.
+   * Optionally defines the initial tabbable element inside the FocusZone.
+   * If a string is passed then it is treated as a selector for identifying the initial tabbable element.
+   * If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
+   */
+  defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
+
+  /**
+   * Optionally provide a selector for identifying the initial active element.
+   * @deprecated Use `defaultTabbableElement` instead.
    */
   defaultActiveElement?: string;
 
@@ -168,10 +176,24 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   handleTabKey?: FocusZoneTabbableElements;
 
   /**
+   * If true and FocusZone's root element (container) receives focus, the focus will land either on the
+   * defaultTabbableElement (if set) or on the first tabbable element of this FocusZone.
+   * Usually a case for nested focus zones, when the nested focus zone's container is a focusable element.
+   */
+  shouldFocusInnerElementWhenReceivedFocus?: boolean;
+
+  /**
    * If true and TAB key is not handled by FocusZone, resets current active element to null value.
    * For example, when roving index is not desirable and focus should always reset to the default tabbable element.
    */
   shouldResetActiveElementWhenTabFromZone?: boolean;
+
+  /**
+   * Determines whether the FocusZone will walk up the DOM trying to invoke click callbacks on focusable elements on
+   * Enter and Space keydowns to ensure accessibility for tags that don't guarantee this behavior.
+   * @defaultvalue true
+   */
+  shouldRaiseClicks?: boolean;
 
   /**
    * A callback method to determine if the input element should lose focus on arrow keys
@@ -218,7 +240,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
-   * @defaultvalue true
+   * @defaultvalue false
    */
   preventDefaultWhenHandled?: boolean;
 

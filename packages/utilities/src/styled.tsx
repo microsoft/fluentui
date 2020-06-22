@@ -22,6 +22,14 @@ export interface ICustomizableProps {
 
 const DefaultFields = ['theme', 'styles'];
 
+export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
+  /** Cache for all style functions. */
+  __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
+
+  /** True if no styles prop or styles from Customizer is passed to wrapped component. */
+  __noStyleOverride__: boolean;
+};
+
 /**
  * The styled HOC wrapper allows you to create a functional wrapper around a given component which will resolve
  * getStyles functional props, and mix customized props passed in using concatStyleSets.
@@ -64,7 +72,7 @@ export function styled<
     public static displayName = `Styled${Component.displayName || (Component as any).name}`;
 
     private _inCustomizerContext = false;
-    private _styles: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
+    private _styles: StyleFunction<TStyleProps, TStyleSet>;
 
     public render(): JSX.Element {
       return <CustomizerContext.Consumer>{this._renderContent}</CustomizerContext.Consumer>;
@@ -102,14 +110,21 @@ export function styled<
         // this._customizedStyles = customizedStyles;
 
         // Using styled components as the Component arg will result in nested styling arrays.
-        this._styles = (styleProps: TStyleProps) =>
+        const concatenatedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> = (styleProps: TStyleProps) =>
           concatStyleSetsWithProps(styleProps, baseStyles, customizedStyles, this.props.styles);
 
         // The __cachedInputs__ array is attached to the function and consumed by the
         // classNamesFunction as a list of keys to include for memoizing classnames.
+        (concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>).__cachedInputs__ = [
+          baseStyles,
+          customizedStyles,
+          this.props.styles,
+        ];
 
-        // tslint:disable-next-line:no-any
-        (this._styles as any).__cachedInputs__ = [baseStyles, customizedStyles, this.props.styles];
+        (concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>).__noStyleOverride__ =
+          !customizedStyles && !this.props.styles;
+
+        this._styles = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
       }
     }
 

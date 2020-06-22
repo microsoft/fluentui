@@ -2,6 +2,72 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/react-hooks_v7.4.7",
+      "version": "7.4.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add usePrevious hook",
+            "author": "xgao@microsoft.com",
+            "commit": "0ea5b852e9aa0a465d15924dcb1607e76db7d431",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "useMergedRefs: Merging refs should produce an immutable ref object.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2ad257284fddfc2c0115a787ce1aab593e764979",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/react-hooks_v7.4.6",
+      "version": "7.4.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/react-hooks_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add useForceUdpate hook",
+            "author": "xgao@microsoft.com",
+            "commit": "ecbfff23b83b795d51d73322a4938a2f6ed682bf",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/react-hooks_v7.3.1",
+      "version": "7.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 May 2020 12:34:22 GMT",
       "tag": "@uifabric/react-hooks_v7.3.0",
       "version": "7.3.0",

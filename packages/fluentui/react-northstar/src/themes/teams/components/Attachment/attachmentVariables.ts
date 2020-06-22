@@ -15,9 +15,6 @@ export type AttachmentVariables = {
 
   focusBackgroundColor: string;
   focusColor: string;
-  siblingsFocusColor: string;
-
-  siblingsHoverColor: string;
 
   progressColor: string;
   progressHeight: number;
@@ -29,27 +26,36 @@ export type AttachmentVariables = {
   descriptionFontSize: string;
   descriptionFontWeight: number;
   descriptionLineHeight: number;
+
+  actionHeight: string;
+  actionMaxWidth: string;
+  actionColor: string;
+  actionPrimaryColor: string;
+  actionColorDisabled: string;
+  actionIconSize: string;
+  actionLoaderBorderSize: string;
+  actionLoaderSize: string;
+  actionLoaderSvgHeight: string;
+  actionLoaderSvgAnimationHeight: string;
+  actionFocusBorderRadius: string;
 };
 
 export default (siteVariables: any): AttachmentVariables => ({
   padding: `${pxToRem(7)} ${pxToRem(3)} ${pxToRem(7)} ${pxToRem(11)}`, // padding set to 1px less to account for 1px border
   iconSpace: pxToRem(12),
   iconSize: pxToRem(32),
-  borderColor: siteVariables.colors.grey[200],
+  borderColor: siteVariables.colorScheme.default.border3,
   borderRadius: pxToRem(3),
-  backgroundColor: siteVariables.colors.grey[100],
-  backgroundColorHover: siteVariables.colors.grey[150],
-  textColor: siteVariables.colors.grey[750],
-  textColorHover: siteVariables.colors.grey[750],
+  backgroundColor: siteVariables.colorScheme.default.background4,
+  backgroundColorHover: siteVariables.colorScheme.default.backgroundHover1,
+  textColor: siteVariables.colorScheme.default.foreground,
+  textColorHover: siteVariables.colorScheme.default.foregroundHover,
   boxShadow: siteVariables.shadowLevel1,
 
   focusBackgroundColor: undefined,
   focusColor: undefined,
-  siblingsFocusColor: undefined,
 
-  siblingsHoverColor: undefined,
-
-  progressColor: siteVariables.colors.green[200],
+  progressColor: siteVariables.colorScheme.green.background,
   progressHeight: 4,
 
   headerFontSize: siteVariables.fontSizes.medium,
@@ -59,4 +65,17 @@ export default (siteVariables: any): AttachmentVariables => ({
   descriptionFontSize: siteVariables.fontSizes.small,
   descriptionFontWeight: siteVariables.fontWeightRegular,
   descriptionLineHeight: siteVariables.lineHeightDefault,
+
+  // action variables
+  actionHeight: pxToRem(32),
+  actionMaxWidth: pxToRem(280),
+  actionColor: siteVariables.colorScheme.default.foreground,
+  actionPrimaryColor: siteVariables.colorScheme.brand.foreground,
+  actionColorDisabled: siteVariables.colorScheme.brand.foregroundDisabled1,
+  actionIconSize: pxToRem(16),
+  actionLoaderBorderSize: pxToRem(2),
+  actionLoaderSize: pxToRem(20),
+  actionLoaderSvgHeight: pxToRem(1220),
+  actionLoaderSvgAnimationHeight: pxToRem(-1200),
+  actionFocusBorderRadius: pxToRem(3),
 });

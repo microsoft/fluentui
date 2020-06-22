@@ -91,7 +91,7 @@ class ComponentControlsCodeSandbox extends React.Component<
           name={exampleName}
           providedFiles={{
             [main]: { content: appTemplate },
-            'package.json': createPackageJson(main, exampleLanguage),
+            'package.json': createPackageJson(main, exampleCode, exampleLanguage),
           }}
           skipRedirect
           ref={this.codeSandboxerRef}

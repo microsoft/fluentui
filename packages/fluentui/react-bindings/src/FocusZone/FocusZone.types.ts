@@ -50,10 +50,12 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   direction?: FocusZoneDirection;
 
   /**
-   * Function which uses root element as parameter to return the intial tabbable element.
+   * Optionally defines the initial tabbable element inside the FocusZone.
+   * If a string is passed then it is treated as a selector for identifying the initial tabbable element.
+   * If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
    * For example, when there is a chat with a bottom-up approach, it is expected that the last chat message is tabbable (active), not the first default one.
    */
-  defaultTabbableElement?: (root: HTMLElement) => HTMLElement;
+  defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
 
   /**
    * Determines if a default tabbable element should be force focused on FocusZone mount.
@@ -62,9 +64,9 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   shouldFocusOnMount?: boolean;
 
   /**
-   * if true and FocusZone's root element (container) receives focus, the focus will land either on the defaultTabbableElement
-   * (if set) or on the first tabbable element of this FocusZone.
-   * Usually a case for nested focus zones, when nested focus zone's container is a focusable element.
+   * If true and FocusZone's root element (container) receives focus, the focus will land either on the
+   * defaultTabbableElement (if set) or on the first tabbable element of this FocusZone.
+   * Usually a case for nested focus zones, when the nested focus zone's container is a focusable element.
    */
   shouldFocusInnerElementWhenReceivedFocus?: boolean;
 
@@ -73,6 +75,12 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    * For example, when roving index is not desirable and focus should always reset to the default tabbable element.
    */
   shouldResetActiveElementWhenTabFromZone?: boolean;
+
+  /**
+   * Determines whether the FocusZone will walk up the DOM trying to invoke click callbacks on focusable elements on
+   * Enter and Space keydowns to ensure accessibility for tags that don't guarantee this behavior.
+   */
+  shouldRaiseClicks?: boolean;
 
   /**
    * If set, the FocusZone will not be tabbable and keyboard navigation will be disabled.

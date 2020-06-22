@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting';
 import { DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+interface IRootStyles {
+  height: string;
+  width: string;
+}
 
 export class VerticalBarChartStyledExample extends React.Component<IVerticalBarChartProps, {}> {
   constructor(props: IVerticalBarChartProps) {
@@ -8,6 +14,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
   }
 
   public render(): JSX.Element {
+    const rootStyle: IRootStyles = { width: '800px', height: '400px' };
     const points = [
       { x: 'One', y: 20 },
       { x: 'Two', y: 48 },
@@ -19,16 +26,9 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
       { x: 'Eight', y: 57 },
       { x: 'Nine', y: 14 },
       { x: 'Ten', y: 35 },
-      { x: 'Eleven', y: 21 },
-      { x: 'Twelve', y: 60 },
-      { x: 'Thirteen', y: 60 },
-      { x: 'Fourteen', y: 52 },
-      { x: 'Fifteen', y: 23 },
-      { x: 'Sixteen', y: 14 },
-      { x: 'Seventeen', y: 11 },
-      { x: 'Eighteen', y: 50 },
-      { x: 'Nineteen', y: 43 },
-      { x: 'Twenty', y: 20 },
+      { x: 'Elven', y: 20 },
+      { x: 'Twelve', y: 44 },
+      { x: 'Thirteen', y: 33 },
     ];
 
     const axisStyle = {
@@ -50,11 +50,6 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
         },
         xAxisDomain: axisStyle,
         xAxisTicks: axisStyle,
-        xAxisText: {
-          transform: 'rotateZ(-40deg)',
-          textAnchor: 'end',
-          ...textStyle,
-        },
         yAxisDomain: axisStyle,
         yAxisTicks: axisStyle,
         yAxisText: textStyle,
@@ -64,16 +59,19 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
     const customColors = [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark];
 
     return (
-      <VerticalBarChart
-        data={points}
-        width={800}
-        height={400}
-        barWidth={20}
-        yAxisTickCount={6}
-        styles={customStyles}
-        colors={customColors}
-        chartLabel={'Chart with Axis Labels and Custom Styles'}
-      />
+      <div className={mergeStyles(rootStyle)}>
+        <VerticalBarChart
+          data={points}
+          width={800}
+          height={400}
+          barWidth={20}
+          yAxisTickCount={6}
+          styles={customStyles}
+          colors={customColors}
+          hideLegend={true}
+          hideTooltip={true}
+        />
+      </div>
     );
   }
 }

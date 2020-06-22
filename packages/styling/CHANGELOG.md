@@ -1,8 +1,62 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 06 May 2020 12:32:22 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 16:07:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.13.0)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.18..@uifabric/styling_v7.13.0)
+
+### Minor changes
+
+- Add new rounded corners to theme ([PR #13635](https://github.com/microsoft/fluentui/pull/13635) by phkuo@microsoft.com)
+
+## [7.12.17](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.17)
+
+Wed, 10 Jun 2020 12:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.16..@uifabric/styling_v7.12.17)
+
+### Patches
+
+- ensure theme.ts is already included when importing from styling package ([PR #13537](https://github.com/microsoft/fluentui/pull/13537) by xgao@microsoft.com)
+
+## [7.12.16](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.16)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.15..@uifabric/styling_v7.12.16)
+
+### Patches
+
+- getGlobalClassNames: correct return type ([PR #13496](https://github.com/microsoft/fluentui/pull/13496) by xgao@microsoft.com)
+
+## [7.12.15](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.15)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.10..@uifabric/styling_v7.12.15)
+
+### Patches
+
+- Update styling package sideEffects to only the ones needed ([PR #13422](https://github.com/microsoft/fluentui/pull/13422) by xgao@microsoft.com)
+
+## [7.12.4](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.4)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.3..@uifabric/styling_v7.12.4)
+
+### Patches
+
+- Add selector to turn off high contrast adjustment in (only) Edge Chromium browser ([PR #13035](https://github.com/microsoft/fluentui/pull/13035) by xgao@microsoft.com)
+
+## [7.12.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.3)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.2..@uifabric/styling_v7.12.3)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.12.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.2)
 

@@ -21,6 +21,10 @@ export const useSelectedItems = <T extends {}>(
 ): IUseSelectedItemsResponse<T> => {
   const [items, setSelectedItems] = React.useState(selectedItems || []);
 
+  React.useEffect(() => {
+    setSelectedItems(selectedItems ? selectedItems : []);
+  }, [selectedItems]);
+
   const addItems = (itemsToAdd: T[]): void => {
     const newItems: T[] = items.concat(itemsToAdd);
     setSelectedItems(newItems);
@@ -55,9 +59,14 @@ export const useSelectedItems = <T extends {}>(
   };
 
   const removeItems = (itemsToRemove: any[]): void => {
-    const currentitems: T[] = [...items];
-    const updatedItems: T[] = currentitems.filter(item => itemsToRemove.indexOf(item) === -1);
-
+    const currentItems: T[] = [...items];
+    const updatedItems: T[] = currentItems;
+    // Intentionally not using .filter here as we want to only remove a specific
+    // item in case of duplicates of same item.
+    itemsToRemove.forEach(item => {
+      const index: number = updatedItems.indexOf(item);
+      updatedItems.splice(index, 1);
+    });
     setSelectedItems(updatedItems);
     selection.setItems(updatedItems);
   };

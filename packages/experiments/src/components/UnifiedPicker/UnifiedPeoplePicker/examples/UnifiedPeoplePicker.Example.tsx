@@ -8,7 +8,6 @@ import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePick
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 const _suggestions = [
   {
@@ -58,19 +57,25 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     ..._suggestions,
   ]);
 
+  const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
+
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
     item: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
     _markSuggestionSelected(item);
+    peopleSelectedItems.push(item.item);
+    setPeopleSelectedItems(peopleSelectedItems);
   };
 
   const _onSuggestionRemoved = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
     suggestionToRemove: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
+    // Intentionally checking on complete item object to ensure it is removed. Id cannot be used as the
+    // property is not populated for all the suggestions, and key does not exist on type checking.
     setPeopleSuggestions(suggestions => {
-      const modifiedSuggestions = suggestions.filter(item => item.id !== suggestionToRemove.id);
+      const modifiedSuggestions = suggestions.filter(suggestion => suggestion.item !== suggestionToRemove.item);
       return modifiedSuggestions;
     });
   };
@@ -97,21 +102,50 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     return copyText;
   };
 
+  const _onPaste = (pastedValue: string, selectedItemsList: IPersonaProps[]): void => {
+    // Find the suggestion corresponding to the specific text name
+    // and update the selectedItemsList to re-render everything.
+    const finalList: IPersonaProps[] = [];
+    if (pastedValue !== null) {
+      pastedValue.split(',').map(textValue => {
+        if (textValue) {
+          people.map(suggestionItem => {
+            if (suggestionItem.text === textValue) {
+              finalList.push(suggestionItem);
+            }
+          });
+        }
+      });
+    }
+    setPeopleSelectedItems(selectedItemsList.concat(finalList));
+  };
+
+  const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
+    // Updating the local copy as well at the parent level.
+    const currentItems: IPersonaProps[] = [...peopleSelectedItems];
+    const updatedItems: IPersonaProps[] = currentItems;
+    // Intentionally not using .filter here as we want to only remove a specific
+    // item in case of duplicates of same item.
+    itemsToRemove.forEach(item => {
+      const index: number = updatedItems.indexOf(item);
+      updatedItems.splice(index, 1);
+    });
+    setPeopleSelectedItems(updatedItems);
+  };
+
   const _onInputChange = (filterText: string): void => {
-    console.log(people[40]);
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
     const suggestionList = suggestions.map(item => {
       return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
+    // We want to show top 5 results
     setPeopleSuggestions(suggestionList.splice(0, 5));
   };
 
   function _startsWith(text: string, filterText: string): boolean {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
-
-  const selectionListSelection: Selection = new Selection();
 
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
@@ -126,14 +160,9 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {
-    ref: null,
-    key: 'normal',
     removeButtonAriaLabel: 'Remove',
-    selectedItems: [],
-    selection: selectionListSelection,
-    onItemsRemoved: () => {
-      // TODO: maintain local state
-    },
+    selectedItems: [...peopleSelectedItems],
+    onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
@@ -143,6 +172,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
         onInputChange={_onInputChange}
+        onPaste={_onPaste}
       />
     </>
   );

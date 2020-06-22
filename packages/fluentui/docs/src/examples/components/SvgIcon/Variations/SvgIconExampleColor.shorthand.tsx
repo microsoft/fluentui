@@ -4,8 +4,9 @@ import { CalendarIcon, CallIcon, CallVideoIcon } from '@fluentui/react-icons-nor
 
 const SvgIconExampleColor = () => (
   <Grid
-    columns="repeat(4, auto)"
     styles={{
+      gridTemplateColumns: 'repeat(4, auto)',
+      msGridColumns: '(1fr)[4]',
       alignItems: 'center',
     }}
     variables={{

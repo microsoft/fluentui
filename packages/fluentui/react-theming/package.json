@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theming",
-  "version": "0.48.0",
+  "version": "0.50.0",
   "description": "> TODO: description",
   "homepage": "https://github.com/microsoft/fluentui",
   "bugs": {
@@ -26,10 +26,11 @@
     "test": "just-scripts test"
   },
   "dependencies": {
+    "@fluentui/react-theme-provider": "^0.2.2",
     "@types/classnames": "^2.2.9",
     "@types/jss": "^9.5.8",
-    "@uifabric/merge-styles": "^7.11.2",
-    "@uifabric/utilities": "^7.16.1",
+    "@uifabric/merge-styles": "^7.14.1",
+    "@uifabric/utilities": "^7.21.1",
     "classnames": "^2.2.6",
     "jss": "^10.0.0",
     "jss-preset-default": "^10.0.0"

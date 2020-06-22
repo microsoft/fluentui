@@ -62,6 +62,9 @@ export const DefaultFontStyles: IFontStyles;
 // @public (undocumented)
 export const DefaultPalette: IPalette;
 
+// @public (undocumented)
+export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active) and (forced-colors: active)";
+
 // @public
 export function focusClear(): IRawStyle;
 
@@ -119,6 +122,11 @@ export namespace FontWeights {
 }
 
 // @public
+export function getEdgeChromiumNoHighContrastAdjustSelector(): {
+    [EdgeChromiumHighContrastSelector]: IRawStyle;
+};
+
+// @public
 export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
 
 // @public
@@ -131,7 +139,7 @@ export function getFocusStyle(theme: ITheme, options?: IGetFocusStylesOptions): 
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
 
 // @public
-export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): Partial<GlobalClassNames<T>>;
+export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): GlobalClassNames<T>;
 
 // @public
 export function getIcon(name?: string): IIconRecord | undefined;
@@ -288,6 +296,8 @@ export interface IEffects {
     elevation64: string;
     elevation8: string;
     roundedCorner2: string;
+    roundedCorner4: string;
+    roundedCorner6: string;
 }
 
 export { IFontFace }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { warnDeprecations, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
 import { useBoolean, useControllableValue, useId } from '@uifabric/react-hooks';
-import { IconButton } from '../../Button';
+import { IconButton } from '../../compat/Button';
 import { Icon } from '../../Icon';
 
 export interface ISearchBoxState {

@@ -2,6 +2,21 @@
   "name": "@uifabric/tslint-rules",
   "entries": [
     {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/tslint-rules_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Creating custom lint rule to enforce use of keyboard-key library instead of deprecated keyboard event props.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce5c014aa4c23951afe4d1ca5e45ddb711e2f0fc",
+            "package": "@uifabric/tslint-rules"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Apr 2020 12:34:50 GMT",
       "tag": "@uifabric/tslint-rules_v7.2.0",
       "version": "7.2.0",

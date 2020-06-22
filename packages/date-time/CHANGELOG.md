@@ -1,8 +1,44 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.9.0)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.101..@uifabric/date-time_v7.9.0)
+
+### Minor changes
+
+- Extract helper functions from date-time/Calendar ([PR #13640](https://github.com/microsoft/fluentui/pull/13640) by pompomon@gmail.com)
+
+## [7.8.101](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.101)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.100..@uifabric/date-time_v7.8.101)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [7.8.74](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.74)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.73..@uifabric/date-time_v7.8.74)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+
+## [7.8.73](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.73)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.55..@uifabric/date-time_v7.8.73)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.8.55](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.55)
 

@@ -48,6 +48,7 @@
     "start-exp": "yarn workspace @uifabric/experiments start",
     "stats:build": "gulp stats",
     "stats:save": "gulp stats:save",
+    "syncpack:fix": "syncpack fix-mismatches --prod --dev",
     "test": "lerna run test --stream",
     "test:fluentui:circulars": "gulp test:circulars:run",
     "test:fluentui:e2e": "gulp test:e2e",
@@ -59,9 +60,9 @@
     "vrtest": "cd apps && cd vr-tests && npm run screener"
   },
   "devDependencies": {
-    "beachball": "^1.29.4",
+    "beachball": "^1.31.2",
     "lerna": "^3.15.0",
-    "lint-staged": "^7.0.5",
+    "lint-staged": "^10.2.9",
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
@@ -71,27 +72,6 @@
     "tsconfig-paths": "^3.7.0"
   },
   "license": "MIT",
-  "lint-staged": {
-    "linters": {
-      "*.{ts,tsx}": [
-        "node ./scripts/lint-staged/prettier",
-        "node ./scripts/lint-staged/tslint",
-        "git add"
-      ],
-      "*.{js,jsx,json,scss,css,html,htm,md,yml}": [
-        "node ./scripts/lint-staged/prettier",
-        "node ./scripts/lint-staged/auto-convert-change-files",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "common/scripts/*.js",
-      "packages/tslint-rules/tslint.json",
-      "**/CHANGELOG.*",
-      "**/*.api.md",
-      "**/_*.scss"
-    ]
-  },
   "workspaces": {
     "packages": [
       "apps/*",
@@ -102,7 +82,7 @@
   },
   "resolutions": {
     "webpack": "^4.35.0",
-    "autoprefixer": "7.2.6",
+    "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
   }
 }

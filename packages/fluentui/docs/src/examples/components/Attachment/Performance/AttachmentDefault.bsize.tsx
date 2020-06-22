@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Provider, themes, Attachment } from '@fluentui/react-northstar';
+import { Provider, teamsTheme, Attachment } from '@fluentui/react-northstar';
 
 const AttachmentDefaultBsize = () => (
-  <Provider theme={themes.teams}>
+  <Provider theme={teamsTheme}>
     <Attachment header="Document.docx" />
   </Provider>
 );

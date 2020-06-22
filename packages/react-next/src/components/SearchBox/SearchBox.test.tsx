@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
 import { KeyCodes, resetIds } from '../../Utilities';
@@ -9,7 +10,7 @@ import { ISearchBoxState } from './SearchBox.base';
 // tslint:disable:jsx-no-lambda
 
 describe('SearchBox', () => {
-  let component: renderer.ReactTestRenderer | undefined;
+  let component: ReactTestRenderer | undefined;
   let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState> | undefined;
 
   beforeEach(() => {
@@ -28,8 +29,8 @@ describe('SearchBox', () => {
   });
 
   it('renders SearchBox correctly', () => {
-    component = renderer.create(<SearchBox />);
-    const tree = component.toJSON();
+    component = create(<SearchBox />);
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -57,8 +58,8 @@ describe('SearchBox', () => {
   });
 
   it('renders SearchBox without animation correctly', () => {
-    component = renderer.create(<SearchBox disableAnimation={true} />);
-    const tree = component.toJSON();
+    component = create(<SearchBox disableAnimation={true} />);
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

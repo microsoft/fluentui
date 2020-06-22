@@ -13,7 +13,7 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
       pointerEvents: 'none',
       ...getContainerStyles({
         placement: p.basePlacement,
-        margin: v.pointerMargin,
+        padding: v.pointerMargin,
       }),
     }),
   }),
@@ -24,6 +24,7 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
       borderColor: v.borderColor,
       borderSize: v.borderSize,
       gap: v.pointerGap,
+      padding: v.pointerMargin,
       height: v.pointerHeight,
       width: v.pointerWidth,
 

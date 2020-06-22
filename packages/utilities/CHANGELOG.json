@@ -2,6 +2,221 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/utilities_v7.21.1",
+      "version": "7.21.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add test util for react-test-renderer create with act wrapped",
+            "author": "xgao@microsoft.com",
+            "commit": "b0b4d703ec1178f2f3d80ead4d78a72e5fc64554",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/utilities_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Jun 2020 12:45:48 GMT",
+      "tag": "@uifabric/utilities_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add new Modalization utility",
+            "author": "phkuo@microsoft.com",
+            "commit": "4dd6a5e2364c96dde8d2034979cddd7e7e84fa4d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@uifabric/utilities_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing side effect code that was breaking webpack treeshaking.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d5ed2c3804a58cb774bec86160df899fd7a8cb5a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Removing side-effect code which was causing webpack to bail out of optimizations.",
+            "author": "dzearing@microsoft.com",
+            "commit": "8ea7b001f627900e4f85afc2bcbfad9e326d1f9a",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Fixed prototype pollution vulnerability.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8961cec412264cd6d30edc46df383c617adf83c4",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 May 2020 12:42:08 GMT",
+      "tag": "@uifabric/utilities_v7.20.2",
+      "version": "7.20.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add autoCapitalize property",
+            "author": "suprememilanfan@gmail.com",
+            "commit": "13bd77d6062dfbf0209043275a581536aa5cad56",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 May 2020 12:40:00 GMT",
+      "tag": "@uifabric/utilities_v7.20.1",
+      "version": "7.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selection: respect 0 as selected key",
+            "author": "elcraig@microsoft.com",
+            "commit": "08fa1c9b45c9c9938241740e71b9091a97067d0f",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/utilities_v7.20.0",
+      "version": "7.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "findIndex: add fromIndex parameter",
+            "author": "elcraig@microsoft.com",
+            "commit": "56db85a8a435bfafe0354bf5b74eb56be92e3a35",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 May 2020 12:37:35 GMT",
+      "tag": "@uifabric/utilities_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `getNativeElementProps` helper which takes the element tag name in + props and filters out unrecognized props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "bb3a1059eabff7a81c6666ec7319e66af5d74351",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/utilities_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix customizer doc comment formatting",
+            "author": "elcraig@microsoft.com",
+            "commit": "b00701979e60e1dd5e438f579086442bc0ddfc68",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add useCustomizationSettings hook",
+            "author": "xgao@microsoft.com",
+            "commit": "ecbfff23b83b795d51d73322a4938a2f6ed682bf",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 12:42:20 GMT",
+      "tag": "@uifabric/utilities_v7.17.2",
+      "version": "7.17.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selection added `items` to prop constructor options",
+            "author": "czearing@outlook.com",
+            "commit": "bb98a4971572bd9383d900cccb37650752329c8f",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 May 2020 12:34:32 GMT",
+      "tag": "@uifabric/utilities_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add utility to apply default props for function components",
+            "author": "miclo@microsoft.com",
+            "commit": "5a7901923692d45d70d9cb54fb127c108a5cd8e2",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@uifabric/utilities_v7.16.4",
+      "version": "7.16.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update styled and classNamesFunction to support scss base styles",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/utilities_v7.16.2",
+      "version": "7.16.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 May 2020 12:34:22 GMT",
       "tag": "@uifabric/utilities_v7.16.1",
       "version": "7.16.1",

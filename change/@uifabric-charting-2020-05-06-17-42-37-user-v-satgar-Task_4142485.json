@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Charting package: Expose prop for hide tooltips in charts",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-05-06T12:12:37.267Z"
-}

@@ -50,6 +50,8 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     // Do not add the disabled attribute to the button so that it is focusable
     delete buttonNativeProperties.disabled;
 
+    const itemRole = item.role || defaultRole;
+
     const itemButtonProperties = {
       className: classNames.root,
       onClick: this._onItemClick,
@@ -65,11 +67,13 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       'aria-haspopup': itemHasSubmenu || undefined,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : undefined,
       'aria-expanded': itemHasSubmenu ? item.key === expandedMenuItemKey : undefined,
-      'aria-checked': canCheck ? !!isChecked : undefined,
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': isItemDisabled(item),
-      role: item.role || defaultRole,
+      'aria-checked':
+        (itemRole === 'menuitemcheckbox' || itemRole === 'menuitemradio') && canCheck ? !!isChecked : undefined,
+      'aria-selected': itemRole === 'menuitem' && canCheck ? !!isChecked : undefined,
+      role: itemRole,
       // tslint:disable-next-line:deprecation
       style: item.style,
     };

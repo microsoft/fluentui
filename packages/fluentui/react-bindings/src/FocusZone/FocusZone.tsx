@@ -1,9 +1,13 @@
-import { FocusZoneDirection, FocusZoneTabbableElements, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
+import {
+  FocusZoneDirection,
+  FocusZoneTabbableElements,
+  IS_ENTER_DISABLED_ATTRIBUTE,
+  IS_FOCUSABLE_ATTRIBUTE,
+} from '@fluentui/accessibility';
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
@@ -13,6 +17,7 @@ import {
   getDocument,
   getParent,
   getWindow,
+  raiseClick,
   shouldWrapFocus,
 } from '@uifabric/utilities';
 
@@ -57,6 +62,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     defaultTabbableElement: PropTypes.func,
     shouldFocusOnMount: PropTypes.bool,
     shouldResetActiveElementWhenTabFromZone: PropTypes.bool,
+    shouldRaiseClicks: PropTypes.bool,
     shouldFocusInnerElementWhenReceivedFocus: PropTypes.bool,
     disabled: PropTypes.bool,
     as: PropTypes.elementType as PropTypes.Requireable<React.ElementType>,
@@ -79,6 +85,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     direction: FocusZoneDirection.bidirectional,
     as: 'div',
     preventDefaultWhenHandled: true,
+    shouldRaiseClicks: false,
   };
 
   static displayName = 'FocusZone';
@@ -164,6 +171,10 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
     // Assign initial tab indexes so that we can set initial focus as appropriate.
     this.updateTabIndexes();
+
+    if (this.props.defaultTabbableElement && typeof this.props.defaultTabbableElement === 'string') {
+      this._activeElement = this.getDocument().querySelector(this.props.defaultTabbableElement) as HTMLElement;
+    }
 
     if (this.props.shouldFocusOnMount) {
       this.focus();
@@ -390,7 +401,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       defaultTabbableElement,
     } = this.props;
 
-    let newActiveElement: HTMLElement | undefined;
+    let newActiveElement: HTMLElement | null | undefined;
     const isImmediateDescendant = this.isImmediateDescendantOfZone(ev.target as HTMLElement);
 
     if (isImmediateDescendant) {
@@ -409,7 +420,10 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
     // If an inner focusable element should be focused when FocusZone container receives focus
     if (shouldFocusInnerElementWhenReceivedFocus && ev.target === this._root.current) {
-      const maybeElementToFocus = defaultTabbableElement && defaultTabbableElement(this._root.current);
+      const maybeElementToFocus =
+        defaultTabbableElement &&
+        typeof defaultTabbableElement === 'function' &&
+        defaultTabbableElement(this._root.current);
 
       // try to focus defaultTabbable element
       if (maybeElementToFocus && isElementTabbable(maybeElementToFocus)) {
@@ -420,7 +434,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
         this.focus(true);
         if (this._activeElement) {
           // set to null as new active element was handled in method above
-          // @ts-ignore
+
           newActiveElement = null;
         }
       }
@@ -450,7 +464,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   _onKeyDownCapture = (ev: KeyboardEvent) => {
-    if (keyboardKey.getCode(ev) === keyboardKey.Tab) {
+    if (getCode(ev) === keyboardKey.Tab) {
       _outerZones.forEach(zone => zone.updateTabIndexes());
     }
   };
@@ -568,8 +582,8 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     } else if (ev.altKey) {
       return undefined;
     } else {
-      switch (keyboardKey.getCode(ev)) {
-        case keyboardKey.Spacebar:
+      switch (getCode(ev)) {
+        case SpacebarKey:
           // @ts-ignore
           if (this.tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
@@ -706,9 +720,36 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
   /**
    * Walk up the dom try to find a focusable element.
-   * TODO
    */
-  tryInvokeClickForFocusable(): boolean {
+  tryInvokeClickForFocusable(targetElement: HTMLElement): boolean {
+    let target = targetElement;
+
+    if (target === this._root.current || !this.props.shouldRaiseClicks) {
+      return false;
+    }
+
+    do {
+      if (
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA'
+      ) {
+        return false;
+      }
+
+      if (
+        this.isImmediateDescendantOfZone(target) &&
+        target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
+        target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
+      ) {
+        raiseClick(target);
+        return true;
+      }
+
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
+    } while (target !== this._root.current);
+
     return false;
   }
 
@@ -1143,9 +1184,12 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
   updateTabIndexes(onElement?: HTMLElement) {
     let element = onElement;
 
-    if (!this._activeElement && this.props.defaultTabbableElement) {
-      // @ts-ignore
-      this._activeElement = this.props.defaultTabbableElement(this._root.current);
+    if (
+      !this._activeElement &&
+      this.props.defaultTabbableElement &&
+      typeof this.props.defaultTabbableElement === 'function'
+    ) {
+      this._activeElement = this.props.defaultTabbableElement(this._root.current as HTMLElement);
     }
 
     if (!element && this._root.current) {
@@ -1264,5 +1308,9 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap',
   ): boolean {
     return !!this.props.checkForNoWrap ? shouldWrapFocus(element, noWrapDataAttribute) : true;
+  }
+
+  getDocument(): Document {
+    return getDocument(this._root.current)!;
   }
 }

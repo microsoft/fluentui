@@ -11,6 +11,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -90,21 +91,18 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
         {!hideTooltip && isCalloutVisible ? (
           <Callout
-            gapSpace={10}
+            gapSpace={15}
             isBeakVisible={false}
             target={this.state.refSelected}
             setInitialFocus={true}
             directionalHint={DirectionalHint.topRightEdge}
             id={this._calloutId}
           >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-              </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              </div>
-            </div>
+            <ChartHoverCard
+              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+              color={this.state.color}
+            />
           </Callout>
         ) : null}
       </div>
@@ -159,7 +157,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           }}
           data-is-focusable={true}
           focusable={'true'}
-          onFocus={this._onBarFocus.bind(this, point.legend!, pointData, color)}
+          onFocus={this._onBarFocus.bind(
+            this,
+            point.legend!,
+            pointData,
+            color,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
           onMouseOver={
@@ -397,6 +402,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
+
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)

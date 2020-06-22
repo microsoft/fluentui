@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Attachment, Button, Provider, themes } from '@fluentui/react-northstar';
+import { Attachment, Button, Provider, teamsTheme } from '@fluentui/react-northstar';
 
 type PortalWindowProps = {
   children: (externalDocument: Document) => React.ReactElement;
@@ -25,21 +25,22 @@ const PortalWindow: React.FunctionComponent<PortalWindowProps> = ({ children, on
     return () => {
       externalWindow.current.close();
     };
-  }, []);
+  }, [onClose]);
 
   return mounted && ReactDOM.createPortal(children(externalContainer.current.ownerDocument), externalContainer.current);
 };
 
 const ProviderExampleTarget = () => {
   const [open, setOpen] = React.useState(false);
+  const handleClose = React.useCallback(() => setOpen(false), []);
 
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open window!</Button>
       {open && (
-        <PortalWindow onClose={() => setOpen(false)}>
+        <PortalWindow onClose={handleClose}>
           {externalDocument => (
-            <Provider theme={themes.teams} target={externalDocument}>
+            <Provider theme={teamsTheme} target={externalDocument}>
               <Attachment header="Document.docx" />
             </Provider>
           )}

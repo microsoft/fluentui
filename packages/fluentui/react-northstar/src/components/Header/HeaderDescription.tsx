@@ -4,17 +4,17 @@ import * as React from 'react';
 import {
   childrenExist,
   createShorthandFactory,
-  UIComponent,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
   ColorComponentProps,
   rtlTextContainer,
-  ShorthandFactory,
 } from '../../utils';
-
-import { WithAsProp, withSafeTypeForAs } from '../../types';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
+import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
 
 export interface HeaderDescriptionProps
   extends UIComponentProps,
@@ -24,40 +24,66 @@ export interface HeaderDescriptionProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 }
 
 export const headerDescriptionClassName = 'ui-header__description';
+export type HeaderDescriptionStylesProps = Pick<HeaderDescriptionProps, 'color'>;
 
-class HeaderDescription extends UIComponent<WithAsProp<HeaderDescriptionProps>, any> {
-  static create: ShorthandFactory<HeaderDescriptionProps>;
+const HeaderDescription: React.FC<WithAsProp<HeaderDescriptionProps>> &
+  FluentComponentStaticProps<HeaderDescriptionProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(HeaderDescription.displayName, context.telemetry);
+  setStart();
+  const { children, content, color, className, design, styles, variables } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(HeaderDescription.handledProps, props);
 
-  static deprecated_className = headerDescriptionClassName;
+  const getA11yProps = useAccessibility<never>(props.accessibility, {
+    debugName: HeaderDescription.displayName,
+    rtl: context.rtl,
+  });
 
-  static displayName = 'HeaderDescription';
+  const { classes } = useStyles<HeaderDescriptionStylesProps>(HeaderDescription.displayName, {
+    className: headerDescriptionClassName,
+    mapPropsToStyles: () => ({
+      color,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({ color: true }),
-  };
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+      })}
+    >
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+  return element;
+};
 
-  static defaultProps = {
-    as: 'p',
-  };
+HeaderDescription.displayName = 'HeaderDescription';
 
-  renderComponent({ accessibility, ElementType, classes, unhandledProps }) {
-    const { children, content } = this.props;
-    return (
-      <ElementType
-        {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        className={classes.root}
-      >
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    );
-  }
-}
+HeaderDescription.propTypes = {
+  ...commonPropTypes.createCommon({ color: true }),
+};
+
+HeaderDescription.defaultProps = {
+  as: 'p',
+};
+
+HeaderDescription.handledProps = Object.keys(HeaderDescription.propTypes) as any;
 
 HeaderDescription.create = createShorthandFactory({
   Component: HeaderDescription,

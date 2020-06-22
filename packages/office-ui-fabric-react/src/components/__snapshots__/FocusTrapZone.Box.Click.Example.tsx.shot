@@ -238,9 +238,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -404,6 +402,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: auto;
             border-bottom: none;
           }
           &:active {

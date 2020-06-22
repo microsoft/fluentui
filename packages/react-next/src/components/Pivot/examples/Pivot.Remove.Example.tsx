@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from '@fluentui/react-next/lib/Pivot';
-import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { Label } from '@fluentui/react-next/lib/Label';
 import { useBoolean } from '@uifabric/react-hooks';
 
@@ -8,7 +8,7 @@ export const PivotRemoveExample = () => {
   const [showFirstItem, { toggle: toggleShowFirstItem }] = useBoolean(true);
   return (
     <div>
-      <Pivot aria-label="Remove Pivot Example" linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
+      <Pivot aria-label="Remove Pivot Example" linkSize="large" linkFormat="tabs">
         {showFirstItem && (
           <PivotItem headerText="Foo" itemKey="Foo" key="Foo">
             <Label>Click the button below to show/hide this pivot item.</Label>

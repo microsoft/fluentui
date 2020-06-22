@@ -1,11 +1,24 @@
-import * as React from 'react';
-import { styled } from '../../Utilities';
 import { CheckboxBase } from './Checkbox.base';
-import { getStyles } from './Checkbox.styles';
-import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
+import { compose, ComposeOptions } from '@fluentui/react-compose';
+import { useCheckboxClasses } from './useCheckboxClasses';
+import { ICheckboxProps } from './Checkbox.types';
+import { Icon } from '../../Icon';
 
-export const Checkbox: React.FunctionComponent<ICheckboxProps> = styled<
-  ICheckboxProps,
-  ICheckboxStyleProps,
-  ICheckboxStyles
->(CheckboxBase, getStyles, undefined, { scope: 'Checkbox' });
+const composeOptions: ComposeOptions = {
+  displayName: 'Checkbox',
+  classes: useCheckboxClasses,
+  slots: {
+    checkmark: Icon,
+  },
+  state: (parentState: ICheckboxProps) => {
+    return {
+      ...parentState,
+      checkmark: {
+        iconName: 'CheckMark',
+        ...parentState.checkmarkIconProps,
+      },
+    };
+  },
+};
+
+export const Checkbox = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(CheckboxBase, composeOptions);
