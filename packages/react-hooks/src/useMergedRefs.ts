@@ -1,19 +1,24 @@
-import * as React from 'react';
+import { useRef, useCallback, Ref, MutableRefObject } from 'react';
 
 /**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
  * updates all provided refs
  * @param refs- Refs to collectively update with one ref value.
  */
-export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void {
-  return React.useCallback((value: T) => {
-    refs.forEach(ref => {
+export function useMergedRefs<T>(...refs: Ref<T>[]): (instance: T) => void {
+  const state = useRef<(Ref<T> | undefined)[]>();
+
+  // Update refs list.
+  state.current = refs;
+
+  return useCallback((value: T) => {
+    for (const ref of state.current!) {
       if (typeof ref === 'function') {
         ref(value);
       } else if (ref) {
         // work around the immutability of the React.Ref type
-        ((ref as unknown) as React.MutableRefObject<T>).current = value;
+        ((ref as unknown) as MutableRefObject<T>).current = value;
       }
-    });
-  }, refs);
+    }
+  }, []);
 }

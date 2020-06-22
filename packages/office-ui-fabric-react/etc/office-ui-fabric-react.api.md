@@ -8026,16 +8026,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IKeytipDataProps & IRenderComponent<{}>): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderComponent<{}>>;
 
 // @public (undocumented)
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;
