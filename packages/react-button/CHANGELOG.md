@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.7)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.6..@fluentui/react-button_v0.3.7)
+
+### Patches
+
+- Button: Adding pointer-events: none to :after focus rectangle. ([PR #13696](https://github.com/microsoft/fluentui/pull/13696) by humbertomakotomorimoto@gmail.com)
 
 ## [0.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.6)
 

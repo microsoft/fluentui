@@ -1,8 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.2)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.1..@uifabric/charting_v2.3.2)
+
+### Patches
+
+- Vertical Bar chart code updated ([PR #13660](https://github.com/microsoft/fluentui/pull/13660) by v-jasha@microsoft.com)
+- doughnut chart target alignment updated ([PR #13703](https://github.com/microsoft/fluentui/pull/13703) by v-jasha@microsoft.com)
 
 ## [2.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.1)
 
