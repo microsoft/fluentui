@@ -23,7 +23,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Avatar` initials when the input only contains whitespace @rymeskar ([#13682](https://github.com/microsoft/fluentui/pull/13682))
 - Fix the order of callbacks in `Dropdown` @layershifter ([#13707](https://github.com/microsoft/fluentui/pull/13707))
 - Fix merging of `inputRef` on `searchInput` shorthand in `Dropdown` @layershifter ([#13711](https://github.com/microsoft/fluentui/pull/13711))
-- Fix call `onClick` from `Popup` trigger when `on` includes `hover` @assuncaocharles ([#13727](https://github.com/microsoft/fluentui/pull/13727))
+- Fix `onClick` call from `Popup` trigger when `on` includes `hover` @assuncaocharles ([#13727](https://github.com/microsoft/fluentui/pull/13727))
 
 ### Features
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))
