@@ -31,29 +31,36 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       return <slots.label {...slotProps.label} />;
     };
 
-    return (
-      <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {// tslint:disable-next-line:no-any
-        (keytipAttributes: any): JSX.Element => (
-          <slots.root {...slotProps.root}>
-            <slots.input
-              {...slotProps.input}
-              data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-              aria-describedby={mergeAriaAttributeValues(
-                slotProps.input['aria-describedby'],
-                keytipAttributes['aria-describedby'],
-              )}
-            />
-            <slots.container {...slotProps.container}>
-              <slots.checkbox {...slotProps.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
-                <slots.checkmark {...slotProps.checkmark} />
-              </slots.checkbox>
-              {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
-            </slots.container>
-          </slots.root>
-        )}
-      </KeytipData>
+    // tslint:disable-next-line:no-any
+    const renderContent = (keytipAttributes: any = {}) => (
+      <slots.root {...slotProps.root}>
+        <slots.input
+          {...slotProps.input}
+          data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+          aria-describedby={mergeAriaAttributeValues(
+            slotProps.input['aria-describedby'],
+            keytipAttributes['aria-describedby'],
+          )}
+        />
+        <slots.container {...slotProps.container}>
+          <slots.checkbox {...slotProps.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
+            <slots.checkmark {...slotProps.checkmark} />
+          </slots.checkbox>
+          {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
+        </slots.container>
+      </slots.root>
     );
+
+    if (keytipProps) {
+      return (
+        <KeytipData keytipProps={keytipProps} disabled={disabled}>
+          {// tslint:disable-next-line:no-any
+          (keytipAttributes: any): JSX.Element => renderContent(keytipAttributes)}
+        </KeytipData>
+      );
+    }
+
+    return renderContent();
   },
   {
     slots: defaultSlots,

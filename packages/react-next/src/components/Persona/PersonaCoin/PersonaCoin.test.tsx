@@ -1,6 +1,6 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 import { wrapPersona } from '../Persona.test';
@@ -22,31 +22,31 @@ describe('PersonaCoin', () => {
   });
 
   it('renders correctly', () => {
-    const component = renderer.create(<PersonaCoin />);
+    const component = create(<PersonaCoin />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with text', () => {
-    const component = renderer.create(<PersonaCoin text="Kat Larrson" />);
+    const component = create(<PersonaCoin text="Kat Larrson" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with provided initials', () => {
-    const component = renderer.create(<PersonaCoin imageInitials="JG" />);
+    const component = create(<PersonaCoin imageInitials="JG" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with image', () => {
-    const component = renderer.create(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} />);
+    const component = create(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders the initials before the image is loaded', () => {
-    const component = renderer.create(
+    const component = create(
       <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={true} />,
     );
     const tree = component.toJSON();
@@ -54,7 +54,7 @@ describe('PersonaCoin', () => {
   });
 
   it('does not render the initials when showInitialsUntilImageLoads is false', () => {
-    const component = renderer.create(
+    const component = create(
       <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={false} />,
     );
     const tree = component.toJSON();
@@ -62,7 +62,7 @@ describe('PersonaCoin', () => {
   });
 
   it('renders correctly with onRender callback', () => {
-    const component = renderer.create(
+    const component = create(
       <PersonaCoin {...coinProp} onRenderCoin={wrapPersona(coinProp)} onRenderInitials={wrapPersona(coinProp)} />,
     );
     const tree = component.toJSON();
