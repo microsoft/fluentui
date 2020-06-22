@@ -4,11 +4,11 @@
 
 ```ts
 
-import { IKeytipData } from 'office-ui-fabric-react';
+import { IKeytipData } from 'office-ui-fabric-react/lib/KeytipData';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import * as React from 'react';
 
-// @public (undocumented)
+// @public
 export function withKeytipData<TProps extends {
     keytipData?: IKeytipData;
 }>(Component: React.ComponentType<TProps>): React.ComponentType<TProps & {
