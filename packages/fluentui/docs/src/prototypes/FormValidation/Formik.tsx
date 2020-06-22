@@ -13,8 +13,14 @@ const FormValidateFormik = () => (
         firstName?: string;
         city?: string;
       } = {};
-      if (values.firstName.length < 4) {
+      if (!values.firstName) {
+        errors.firstName = 'Required';
+      }
+      if (values.firstName && values.firstName.length < 4) {
         errors.firstName = 'Too small';
+      }
+      if (!values.city.length) {
+        errors.city = 'Required';
       }
       return errors;
     }}
@@ -27,9 +33,7 @@ const FormValidateFormik = () => (
         {touched.firstName && values.firstName.length >= 4}
         <Form.Input
           errorMessage={touched.firstName && errors.firstName}
-          onBlur={() => {
-            setTouched({ city: true });
-          }}
+          onBlur={handleBlur}
           onChange={handleChange}
           showSuccessIndicator={Boolean(values.firstName.length >= 4)}
           label="First Name"
@@ -38,12 +42,15 @@ const FormValidateFormik = () => (
           required
         />
         <Form.Dropdown
-          onBlur={handleBlur}
+          onBlur={e => {
+            setTouched({ ...touched, city: true });
+          }}
           onChange={(e, props) => {
             setFieldValue('city', props.value);
           }}
           label="City"
           id="city"
+          errorMessage={touched.city && errors.city}
           items={['prague', 'new york']}
         />
         <Form.Button content="Submit" />
