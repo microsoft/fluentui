@@ -68,9 +68,11 @@ function useAnimateBackwards({ navigatedDate }: ICalendarDayGridProps): boolean 
 
 export const CalendarDayGridBase = React.forwardRef(
   (props: ICalendarDayGridProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const navigatedDayRef = React.useRef<HTMLButtonElement>(null);
+
     const animateBackwards = useAnimateBackwards(props);
 
-    return <CalendarDayGridBaseClass {...props} hoisted={{ animateBackwards }} />;
+    return <CalendarDayGridBaseClass {...props} hoisted={{ animateBackwards, navigatedDayRef }} />;
   },
 );
 CalendarDayGridBase.displayName = 'CalendarDayGridBase';
@@ -78,11 +80,11 @@ CalendarDayGridBase.displayName = 'CalendarDayGridBase';
 interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
   hoisted: {
     animateBackwards: boolean;
+    navigatedDayRef: React.RefObject<HTMLButtonElement>;
   };
 }
 
 class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProps, ICalendarDayGridState> {
-  private navigatedDay: HTMLElement | null;
   private days: { [key: string]: HTMLElement | null } = {};
   private classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
 
@@ -177,10 +179,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
   }
 
   public focus(): void {
-    if (this.navigatedDay) {
-      this.navigatedDay.tabIndex = 0;
-      this.navigatedDay.focus();
-    }
+    this.props.hoisted.navigatedDayRef.current?.focus();
   }
 
   private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>): JSX.Element => {
@@ -297,24 +296,19 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
           id={isNavigatedDate ? activeDescendantId : undefined}
           aria-selected={day.isInBounds ? day.isSelected : undefined}
           data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
-          ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
+          ref={isNavigatedDate ? this.props.hoisted.navigatedDayRef : undefined}
           disabled={!allFocusable && !day.isInBounds}
           aria-disabled={!ariaHidden && !day.isInBounds}
           type="button"
           role="gridcell" // create grid structure
           aria-readonly={true} // prevent grid from being "editable"
+          tabIndex={isNavigatedDate ? 0 : undefined}
         >
           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         </button>
       </td>
     );
   };
-
-  private _setDayRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
-    if (isNavigatedDate) {
-      this.navigatedDay = element;
-    }
-  }
 
   private _setDayCellRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
     this.days[day.key] = element;
