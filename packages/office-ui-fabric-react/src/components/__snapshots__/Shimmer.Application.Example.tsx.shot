@@ -196,7 +196,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               -webkit-overflow-scrolling: touch;
-              background: #ffffff;
               color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
@@ -266,11 +265,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
               onMouseDownCapture={[Function]}
               onMouseMove={[Function]}
               role="row"
-              style={
-                Object {
-                  "minWidth": 16,
-                }
-              }
             >
               <div
                 aria-colindex={1}
@@ -564,6 +558,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -875,6 +872,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -1184,6 +1184,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -1495,6 +1498,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -1804,6 +1810,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -2115,6 +2124,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -2424,6 +2436,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -2735,6 +2750,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -3045,6 +3063,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -3354,6 +3375,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {

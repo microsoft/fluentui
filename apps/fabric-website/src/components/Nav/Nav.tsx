@@ -85,7 +85,7 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <>
-        {searchablePageTitle && this._renderSearchBox(searchablePageTitle)}
+        {searchablePageTitle && pages && pages.length > 1 && this._renderSearchBox(searchablePageTitle)}
         <FocusZone>
           <nav className={styles.nav} role="navigation">
             {list}

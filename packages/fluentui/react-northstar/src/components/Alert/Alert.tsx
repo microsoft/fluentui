@@ -124,7 +124,7 @@ export const alertSlotClassNames: AlertSlotClassNames = {
   body: `${alertClassName}__body`,
 };
 
-export const Alert: React.FC<WithAsProp<AlertProps>> &
+const Alert: React.FC<WithAsProp<AlertProps>> &
   FluentComponentStaticProps<AlertProps> & {
     DismissAction: typeof AlertDismissAction;
   } = props => {
@@ -270,7 +270,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
     );
   };
 
-  const element = (
+  const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
@@ -279,7 +279,7 @@ export const Alert: React.FC<WithAsProp<AlertProps>> &
       })}
     >
       {childrenExist(children) ? children : renderContent()}
-    </ElementType>
+    </ElementType>,
   );
 
   setEnd();

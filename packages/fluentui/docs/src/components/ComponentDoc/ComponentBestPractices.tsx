@@ -30,6 +30,6 @@ export default class ComponentBestPractices extends React.Component<ComponentBes
       return null;
     }
 
-    return <ExampleSection title="Best Practices">{bestPracticesElement}</ExampleSection>;
+    return <ExampleSection title="Best practices">{bestPracticesElement}</ExampleSection>;
   }
 }

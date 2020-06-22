@@ -29,7 +29,7 @@ const useKeytips = (persistedKeytips: { [uniqueID: string]: IKeytipProps }, keyt
     Object.keys(persistedKeytips).forEach((key: string) => {
       const keytip = persistedKeytips[key];
       // The "any" cast is required as a workaround due to colliding types.
-      const uniqueID = keytipManager.register(keytip as any, true);
+      const uniqueID = keytipManager.register(keytip as IKeytipProps, true);
       // Update map
       persistedKeytips[uniqueID] = keytip;
       delete persistedKeytips[key];
@@ -38,7 +38,7 @@ const useKeytips = (persistedKeytips: { [uniqueID: string]: IKeytipProps }, keyt
       // Delete all persisted keytips saved
       Object.keys(persistedKeytips).forEach((uniqueID: string) => {
         // The "any" cast is required as a workaround due to colliding types.
-        keytipManager.unregister(persistedKeytips[uniqueID] as any, uniqueID, true);
+        keytipManager.unregister(persistedKeytips[uniqueID] as IKeytipProps, uniqueID, true);
       });
       persistedKeytips = {};
     };
@@ -126,12 +126,14 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
 
   const showOverflow = overflowItems && overflowItems.length > 0;
 
+  // tslint:disable-next-line:no-any
   const onRenderOverflowButtonWrapper = (itemsProp: any[]): JSX.Element => {
     const persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
       className: classNames.overflowButton,
     };
     const overflowKeytipSequences = props.keytipSequences;
+    // tslint:disable-next-line:no-any
     let newOverflowItems: any[] = [];
     if (overflowKeytipSequences) {
       itemsProp.forEach(overflowItem => {
@@ -185,6 +187,7 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
    * Gets the subMenu for an overflow item
    * Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
    */
+  // tslint:disable-next-line:no-any
   const getSubMenuForItem = (item: any): any[] | undefined => {
     if (props.itemSubMenuProvider) {
       return props.itemSubMenuProvider(item);

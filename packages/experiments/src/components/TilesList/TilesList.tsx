@@ -315,7 +315,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
   /**
    * Renders a single list page using a flexbox layout.
-   * By defualt, List provides no special formatting for a list page. For Tiles, the parent element
+   * By default, List provides no special formatting for a list page. For Tiles, the parent element
    * needs flexbox metadata and padding to support the alignment rules.
    */
   private _onRenderPage = (pageProps?: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element | null => {
@@ -474,7 +474,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           finalOnRenderRow({
             cellElements: currentRowCells,
             divProps: {
-              className: TilesListStyles.row,
+              className: css(TilesListStyles.row, {
+                [TilesListStyles.headerRow]: grid.mode === TilesGridMode.none,
+              }),
               role: 'presentation',
             },
           }),

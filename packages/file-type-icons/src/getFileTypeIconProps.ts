@@ -11,6 +11,9 @@ const LIST_ITEM = 'splist';
 const MULTIPLE_ITEMS = 'multiple';
 const NEWS = 'sponews';
 const STREAM = 'stream';
+const DESKTOP_FOLDER = 'desktopfolder';
+const DOCUMENTS_FOLDER = 'documentfolder';
+const PICTURES_FOLDER = 'picturesfolder';
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -76,6 +79,16 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
         break;
       case FileIconType.news:
         iconBaseName = NEWS;
+        break;
+      case FileIconType.desktopFolder:
+        iconBaseName = DESKTOP_FOLDER;
+        break;
+      case FileIconType.documentsFolder:
+        iconBaseName = DOCUMENTS_FOLDER;
+        break;
+      case FileIconType.picturesFolder:
+        iconBaseName = PICTURES_FOLDER;
+        break;
     }
   }
 

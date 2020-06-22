@@ -1,6 +1,5 @@
 import { KeyCombinations } from '@fluentui/accessibility';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { getCode } from '@fluentui/keyboard-key';
 import * as React from 'react';
 
 const isKeyModifiersMatch = (modifierValue: boolean, combinationValue?: boolean) => {
@@ -14,7 +13,7 @@ const isKeyModifiersMatch = (modifierValue: boolean, combinationValue?: boolean)
 const shouldHandleOnKeys = (event: React.KeyboardEvent, keysCombinations: KeyCombinations[]): boolean =>
   keysCombinations.some(
     keysCombination =>
-      keysCombination.keyCode === keyboardKey.getCode(event) &&
+      keysCombination.keyCode === getCode(event) &&
       isKeyModifiersMatch(event.altKey, keysCombination.altKey) &&
       isKeyModifiersMatch(event.shiftKey, keysCombination.shiftKey) &&
       isKeyModifiersMatch(event.metaKey, keysCombination.metaKey) &&

@@ -148,7 +148,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps = p
     vertical,
     disabled,
   } = props;
-  const inputRef = React.createRef<HTMLElement>();
+  const inputRef = React.useRef<HTMLElement>();
 
   const { state, actions } = useStateManager(createSliderManager, {
     mapPropsToInitialState: () => ({
@@ -217,14 +217,12 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps = p
         ...htmlInputProps,
         as: 'input',
         className: sliderSlotClassNames.input,
-        fluid,
         min: numericMin,
         max: numericMax,
         step,
         styles: resolvedStyles.input,
         type,
         value: numericValue,
-        vertical,
       }),
     overrideProps: handleInputOverrides,
   });

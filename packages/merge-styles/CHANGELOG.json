@@ -2,6 +2,66 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/merge-styles_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 20:33:16 GMT",
+      "tag": "@uifabric/merge-styles_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Addressing another typing issue found by TS 3.9.2 which is now catching scenarios which were shallow partials but should have been deep partials.",
+            "author": "dzearing@microsoft.com",
+            "commit": "3d95eeb9eeff0e8dba5e0c4dee322bbdfaac1e68",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/merge-styles_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Relaxing the input arguments in merge-styles to keep things building with typescript 3.9.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f74c4188938a23df4b6edbf60f3bc89d15885142",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@uifabric/merge-styles_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable repeating selector in css rules for higher specificity",
+            "author": "xgao@microsoft.com",
+            "commit": "1619b355712d83844b4b63283e9370b5ff6a17f5",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 May 2020 12:35:40 GMT",
       "tag": "@uifabric/merge-styles_v7.11.4",
       "version": "7.11.4",

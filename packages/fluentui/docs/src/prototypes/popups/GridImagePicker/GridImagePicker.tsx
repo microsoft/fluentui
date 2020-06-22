@@ -7,7 +7,7 @@ import GridImagePickerItem, { GridPickerItemProps } from './GridImagePickerItem'
 
 export interface GridPickerProps {
   items: GridPickerItemProps[];
-  gridColumns?: string | number;
+  gridColumns?: number;
   inputIcon?: ShorthandValue<BoxProps>;
   inputPlaceholder?: string;
 }

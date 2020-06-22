@@ -11,7 +11,7 @@ import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -41,6 +41,7 @@ import { createShorthandFactory } from '../../utils/factories';
 import createReferenceFromContextClick from './createReferenceFromContextClick';
 import isRightClick from '../../utils/isRightClick';
 import PortalInner from '../Portal/PortalInner';
+import Animation from '../Animation/Animation';
 
 export type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
 export type RestrictedClickEvents = 'click' | 'focus';
@@ -187,8 +188,14 @@ const Popup: React.FC<PopupProps> &
         e.preventDefault();
         setPopupOpen(true, e);
       },
+      click: e => {
+        _.invoke(triggerRef.current, 'click');
+      },
       preventScroll: e => {
         e.preventDefault();
+      },
+      stopPropagation: e => {
+        e.stopPropagation();
       },
     },
     mapPropsToBehavior: () => ({
@@ -214,8 +221,8 @@ const Popup: React.FC<PopupProps> &
   };
 
   const handleDocumentKeyDown = (getRefs: Function) => (e: KeyboardEvent) => {
-    const keyCode = keyboardKey.getCode(e);
-    const isMatchingKey = keyCode === keyboardKey.Enter || keyCode === keyboardKey.Spacebar;
+    const keyCode = getCode(e);
+    const isMatchingKey = keyCode === keyboardKey.Enter || keyCode === SpacebarKey;
 
     if (isMatchingKey && isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
       trySetOpen(false, e);
@@ -315,12 +322,10 @@ const Popup: React.FC<PopupProps> &
         setPopupOpen(false, e);
         _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
       };
-      if (!_.includes(normalizedOn, 'context')) {
-        triggerProps.onClick = (e, ...args) => {
-          setPopupOpen(true, e);
-          _.invoke(triggerElement, 'props.onClick', e, ...args);
-        };
-      }
+      triggerProps.onClick = (e, ...args) => {
+        setPopupOpen(true, e);
+        _.invoke(triggerElement, 'props.onClick', e, ...args);
+      };
       triggerProps.onBlur = (e, ...args) => {
         if (shouldBlurClose(e)) {
           trySetOpen(false, e);
@@ -381,7 +386,7 @@ const Popup: React.FC<PopupProps> &
     );
   };
 
-  const renderPopperChildren = ({ placement, scheduleUpdate }: PopperChildrenProps) => {
+  const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
     const content = renderContent ? renderContent(scheduleUpdate) : props.content;
     const popupContent = Popup.Content.create(content || {}, {
       defaultProps: () =>
@@ -392,6 +397,7 @@ const Popup: React.FC<PopupProps> &
           pointerRef: pointerTargetRef,
           trapFocus,
           autoFocus,
+          className: classes,
         }),
       overrideProps: getContentProps,
     });
@@ -486,6 +492,9 @@ const Popup: React.FC<PopupProps> &
   };
 
   if (process.env.NODE_ENV !== 'production') {
+    // This is fine to violate there conditional rule as environment variables will never change during component
+    // lifecycle
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       if (inline && trapFocus) {
         // eslint-disable-next-line no-console
@@ -510,20 +519,24 @@ const Popup: React.FC<PopupProps> &
   const triggerNode: React.ReactNode | null = childrenExist(children) ? children : trigger;
   const triggerProps = getTriggerProps(triggerNode);
 
-  const contentElement = open && (
-    <Popper
-      pointerTargetRef={pointerTargetRef}
-      align={align}
-      flipBoundary={flipBoundary}
-      position={position}
-      positionFixed={positionFixed}
-      offset={offset}
-      overflowBoundary={overflowBoundary}
-      rtl={context.rtl}
-      unstable_pinned={unstable_pinned}
-      targetRef={rightClickReferenceObject.current || target || triggerRef}
-      children={renderPopperChildren}
-    />
+  const contentElement = (
+    <Animation mountOnEnter unmountOnExit visible={open} name={open ? 'popup-show' : 'popup-hide'}>
+      {({ classes }) => (
+        <Popper
+          pointerTargetRef={pointerTargetRef}
+          align={align}
+          flipBoundary={flipBoundary}
+          position={position}
+          positionFixed={positionFixed}
+          offset={offset}
+          overflowBoundary={overflowBoundary}
+          rtl={context.rtl}
+          unstable_pinned={unstable_pinned}
+          targetRef={rightClickReferenceObject.current || target || triggerRef}
+          children={renderPopperChildren(classes)}
+        />
+      )}
+    </Animation>
   );
   const triggerElement = triggerNode && (
     <Ref innerRef={triggerRef}>
@@ -534,7 +547,7 @@ const Popup: React.FC<PopupProps> &
   const element = (
     <>
       {triggerElement}
-      {open && (inline ? contentElement : <PortalInner mountNode={mountNode}>{contentElement}</PortalInner>)}
+      {inline ? contentElement : <PortalInner mountNode={mountNode}>{contentElement}</PortalInner>}
     </>
   );
   setEnd();
@@ -601,5 +614,8 @@ Popup.handledProps = Object.keys(Popup.propTypes) as any;
 Popup.Content = PopupContent;
 
 Popup.create = createShorthandFactory({ Component: Popup, mappedProp: 'content' });
+Popup.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 export default Popup;

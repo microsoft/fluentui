@@ -2,6 +2,51 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react_v7.120.2",
+      "version": "7.120.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 May 2020 23:23:51 GMT",
+      "tag": "@fluentui/react_v7.113.0",
+      "version": "7.113.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Resolving tsconfig paths which were not correctly configured, causing re-exports to fail.",
+            "author": "dzearing@microsoft.com",
+            "commit": "34ad6f157872f1cb89dfd68aa276e09680bb6dbb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@fluentui/react_v7.111.1",
+      "version": "7.111.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating tsconfig with added paths.",
+            "author": "dzearing@microsoft.com",
+            "commit": "156c760b3320f32bae20f4955f97269536d10372",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@fluentui/react_v7.110.5",
       "version": "7.110.5",

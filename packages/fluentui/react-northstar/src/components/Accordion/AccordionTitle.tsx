@@ -89,7 +89,7 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
   content: boolean;
 };
 
-export const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
+const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
   FluentComponentStaticProps<AccordionTitleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);

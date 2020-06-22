@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { Accessibility } from '../../types';
 
 /**
@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
  *  Triggers 'nextItem' action with 'ArrowDown' or 'ArrowRight' on 'root'.
  *  Triggers 'prevItem' action with 'ArrowUp' or 'ArrowLeft' on 'root'.
  */
-const radioGroupBehavior: Accessibility = () => ({
+const radioGroupBehavior: Accessibility<RadioGroupBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'radiogroup',
@@ -27,5 +27,7 @@ const radioGroupBehavior: Accessibility = () => ({
     },
   },
 });
+
+export type RadioGroupBehaviorProps = never;
 
 export default radioGroupBehavior;

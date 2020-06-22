@@ -49,6 +49,8 @@ class UIComponent<P, S = {}> extends React.Component<P, S> {
     this.renderComponent = this.renderComponent.bind(this);
   }
 
+  isFirstRenderRef: React.MutableRefObject<boolean> = { current: true };
+
   renderComponent(config: RenderResultConfig<P>): React.ReactNode {
     throw new Error('renderComponent is not implemented.');
   }
@@ -64,6 +66,7 @@ class UIComponent<P, S = {}> extends React.Component<P, S> {
         actionHandlers: this.actionHandlers,
         render: this.renderComponent,
         saveDebug: updatedDebug => (this.fluentUIDebug = updatedDebug),
+        isFirstRenderRef: this.isFirstRenderRef,
       },
       this.context,
     );

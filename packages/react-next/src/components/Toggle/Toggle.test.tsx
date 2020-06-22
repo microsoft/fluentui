@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import * as sinon from 'sinon';
 import { resetIds } from '@uifabric/utilities';
 import { Toggle } from './Toggle';
@@ -21,31 +21,31 @@ describe('Toggle', () => {
   });
 
   it('renders toggle correctly', () => {
-    const component = renderer.create(<Toggle label="Label" />);
+    const component = create(<Toggle label="Label" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label (string)', () => {
-    const component = renderer.create(<Toggle label="Label" inlineLabel={true} />);
+    const component = create(<Toggle label="Label" inlineLabel={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label (JSX Element)', () => {
-    const component = renderer.create(<Toggle label={<p>Label</p>} inlineLabel={true} />);
+    const component = create(<Toggle label={<p>Label</p>} inlineLabel={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label and on/off text provided', () => {
-    const component = renderer.create(<Toggle label="Label" inlineLabel={true} onText="On" offText="Off" />);
+    const component = create(<Toggle label="Label" inlineLabel={true} onText="On" offText="Off" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders hidden toggle correctly', () => {
-    const component = renderer.create(<Toggle hidden />);
+    const component = create(<Toggle hidden />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -144,7 +144,7 @@ describe('Toggle', () => {
         />
       </form>,
     );
-    const button: any = wrapper.find('button');
+    const button = wrapper.find('button');
     // simulate to change toggle state
     button.simulate('click');
     expect(button.getDOMNode().getAttribute('aria-checked')).toEqual('true');

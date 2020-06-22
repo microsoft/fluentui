@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Slider } from '@fluentui/react-next/lib/Slider';
 import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 
 const stackStyles: Partial<IStackStyles> = { root: { height: 200 } };

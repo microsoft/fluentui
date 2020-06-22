@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 
 /**
  * {@docCategory GroupedList}
@@ -27,6 +27,18 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
 
   /** Defines an element's number or position in the current set of listitems or treeitems */
   ariaPosInSet?: number;
+
+  /**
+   * If provided, can be used to render a custom checkbox
+   */
+  onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
+
+  /**
+   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * but are still customizable via class names.
+   * @defaultvalue true
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -53,4 +65,12 @@ export interface IGroupHeaderStyles {
   expand: IStyle;
   expandIsCollapsed: IStyle;
   title: IStyle;
+}
+
+/**
+ * {@docCategory GroupedList}
+ */
+export interface IGroupHeaderCheckboxProps {
+  checked: boolean;
+  theme?: ITheme;
 }

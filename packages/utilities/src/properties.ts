@@ -210,6 +210,7 @@ export const buttonProperties = htmlElementProperties.concat([
 export const inputProperties = buttonProperties.concat([
   'accept', // input
   'alt', // area, img, input
+  'autoCapitalize', // input, textarea
   'autoComplete', // form, input
   'checked', // input
   'dirname', // input, textarea
@@ -239,6 +240,7 @@ export const inputProperties = buttonProperties.concat([
  * @public
  */
 export const textAreaProperties = buttonProperties.concat([
+  'autoCapitalize', // input, textarea
   'cols', // textarea
   'dirname', // input, textarea
   'form', // button, fieldset, input, label, meter, object, output, select, textarea

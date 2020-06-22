@@ -72,7 +72,7 @@ export const codes: { [code: string]: string | string[] } = {
   248: 'ExSel',
   249: 'EraseEof',
   250: 'Play',
-  251: 'ZoomOut'
+  251: 'ZoomOut',
 };
 
 // Function Keys (F1-24)

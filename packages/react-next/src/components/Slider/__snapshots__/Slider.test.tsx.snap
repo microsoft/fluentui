@@ -2,22 +2,14 @@
 
 exports[`Slider renders correctly 1`] = `
 <div
-  className=
-      ms-Slider
-      ms-Slider-enabled
-      ms-Slider-row
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        user-select: none;
-      }
+  className="ms-Slider ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
 >
   <label
     className=
         ms-Label
+        ms-Slider-enabled
+        ms-Slider-row
+        ms-Slider-showValue
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -33,10 +25,10 @@ exports[`Slider renders correctly 1`] = `
           margin-right: 0px;
           margin-top: 0px;
           overflow-wrap: break-word;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
           word-wrap: break-word;
         }
     htmlFor="Slider0"
@@ -44,13 +36,7 @@ exports[`Slider renders correctly 1`] = `
     I am a slider
   </label>
   <div
-    className=
-        ms-Slider-container
-        {
-          align-items: center;
-          display: flex;
-          flex-wrap: nowrap;
-        }
+    className="ms-Slider-container ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
   >
     <div
       aria-disabled={false}
@@ -59,88 +45,7 @@ exports[`Slider renders correctly 1`] = `
       aria-valuemin={0}
       aria-valuenow={0}
       aria-valuetext="0"
-      className=
-          ms-Slider-slideBox
-          ms-Slider-showValue
-          ms-Slider-showTransitions
-          {
-            align-items: center;
-            background: transparent;
-            border: none;
-            display: flex;
-            flex-grow: 1;
-            height: 28px;
-            line-height: 28px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 8px;
-            padding-top: 0;
-            position: relative;
-            width: auto;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 1px;
-            content: "";
-            left: 1px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 1px;
-            top: 1px;
-            z-index: 1;
-          }
-          &:active .ms-Slider-active {
-            background-color: #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
-            background-color: Highlight;
-          }
-          &:hover .ms-Slider-active {
-            background-color: #0078d4;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-active {
-            background-color: Highlight;
-          }
-          &:active .ms-Slider-inactive {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
-            border-color: Highlight;
-          }
-          &:hover .ms-Slider-inactive {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
-            border-color: Highlight;
-          }
-          &:active .ms-Slider-thumb {
-            border: 2px solid #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
-            border-color: Highlight;
-          }
-          &:hover .ms-Slider-thumb {
-            border: 2px solid #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
-            border-color: Highlight;
-          }
-          &:active .ms-Slider-zeroTick {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
-            background-color: Highlight;
-          }
-          &:hover .ms-Slider-zeroTick {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
-            background-color: Highlight;
-          }
+      className="ms-Slider-slideBox ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
       data-is-focusable={true}
       id="Slider0"
       onKeyDown={[Function]}
@@ -150,32 +55,10 @@ exports[`Slider renders correctly 1`] = `
       tabIndex={0}
     >
       <div
-        className=
-            ms-Slider-line
-            {
-              display: flex;
-              position: relative;
-              width: 100%;
-            }
+        className="ms-Slider-line ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
       >
         <span
-          className=
-              ms-Slider-thumb
-              {
-                background: #ffffff;
-                border-color: #605e5c;
-                border-radius: 10px;
-                border-style: solid;
-                border-width: 2px;
-                box-sizing: border-box;
-                display: block;
-                height: 16px;
-                position: absolute;
-                top: -6px;
-                transform: translateX(-50%);
-                transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                width: 16px;
-              }
+          className="ms-Slider-thumb ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
           style={
             Object {
               "left": "0%",
@@ -183,21 +66,7 @@ exports[`Slider renders correctly 1`] = `
           }
         />
         <span
-          className=
-              ms-Slider-active
-              {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
-                width: 100%;
-              }
-              {
-                background: #605e5c;
-                transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                background-color: WindowText;
-              }
+          className="ms-Slider-enabled ms-Slider-row ms-Slider-showValue ms-Slider-inactive ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
           style={
             Object {
               "width": "0%",
@@ -205,21 +74,15 @@ exports[`Slider renders correctly 1`] = `
           }
         />
         <span
-          className=
-              ms-Slider-inactive
-              {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
-                width: 100%;
-              }
-              {
-                background: #c8c6c4;
-                transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                border: 1px solid WindowText;
-              }
+          className="ms-Slider-enabled ms-Slider-row ms-Slider-showValue ms-Slider-active ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
+          style={
+            Object {
+              "width": "0%",
+            }
+          }
+        />
+        <span
+          className="ms-Slider-enabled ms-Slider-row ms-Slider-showValue ms-Slider-inactive ms-Slider-enabled ms-Slider-row ms-Slider-showValue"
           style={
             Object {
               "width": "100%",
@@ -232,6 +95,9 @@ exports[`Slider renders correctly 1`] = `
       className=
           ms-Label
           ms-Slider-value
+          ms-Slider-enabled
+          ms-Slider-row
+          ms-Slider-showValue
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -239,22 +105,18 @@ exports[`Slider renders correctly 1`] = `
             box-sizing: border-box;
             color: #323130;
             display: block;
-            flex-shrink: 1;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            line-height: 1;
-            margin-bottom: 0;
-            margin-left: 8px;
-            margin-right: 8px;
-            margin-top: 0;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             overflow-wrap: break-word;
             padding-bottom: 5px;
             padding-left: 0;
             padding-right: 0;
             padding-top: 5px;
-            white-space: nowrap;
-            width: 40px;
             word-wrap: break-word;
           }
     >

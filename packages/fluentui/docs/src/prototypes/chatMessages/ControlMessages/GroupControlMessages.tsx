@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 import { List, ChatMessageProps, Flex } from '@fluentui/react-northstar';
 import ControlMessage from './ControlMessage';
@@ -29,7 +29,7 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
   return (
     <Flex
       onKeyDown={e => {
-        const eventCode = keyboardKey.getCode(e);
+        const eventCode = getCode(e);
         if (eventCode === keyboardKey.Enter) {
           setExpanded(true);
         }

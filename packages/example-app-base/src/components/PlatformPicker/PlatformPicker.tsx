@@ -81,6 +81,7 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
     label: {
       textAlign: 'left',
       fontWeight: FontWeights.semibold,
+      // fontSize: 10,
       margin: 0,
     },
   });

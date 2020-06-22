@@ -1,14 +1,22 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import * as ReactDOM from 'react-dom';
+import { create } from '@uifabric/utilities/lib/test';
+import * as ReactTestUtils from 'react-dom/test-utils';
+import * as path from 'path';
 
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
+import { isConformant } from '@fluentui/react-conformance';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (wrapper) {
@@ -17,8 +25,15 @@ describe('Slider', () => {
     }
   });
 
+  isConformant({
+    componentPath: path.join(__dirname, 'Slider.tsx'),
+    Component: Slider,
+    displayName: 'Slider',
+    disabledTests: ['has-docblock'],
+  });
+
   it('renders correctly', () => {
-    const component = renderer.create(<Slider label="I am a slider" />);
+    const component = create(<Slider label="I am a slider" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -45,19 +60,17 @@ describe('Slider', () => {
       clientX: 0,
       clientY: 0,
     });
-
     // Default min is 0.
     expect(onChange.mock.calls.length).toEqual(1);
   });
 
-  it('can slide to min value', () => {
+  it('can slide to default min/max and execute onChange', () => {
     let changedValue;
-
-    const onChange = (val: any) => {
+    const onChange = (val: number) => {
       changedValue = val;
     };
 
-    wrapper = mount(<Slider onChange={onChange} defaultValue={5} />);
+    wrapper = mount(<Slider onChange={onChange} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
@@ -71,6 +84,14 @@ describe('Slider', () => {
         width: 100,
         height: 40,
       } as DOMRect);
+    sliderThumb.simulate('mousedown', {
+      type: 'mousedown',
+      clientX: 100,
+      clientY: 0,
+    });
+
+    // Default max is 10.
+    expect(changedValue).toEqual(10);
 
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
@@ -82,38 +103,6 @@ describe('Slider', () => {
     expect(changedValue).toEqual(0);
   });
 
-  it('can slide to max value', () => {
-    let changedValue;
-
-    const onChange = (val: any) => {
-      changedValue = val;
-    };
-
-    wrapper = mount(<Slider onChange={onChange} defaultValue={5} />);
-
-    const sliderLine = wrapper.find('.ms-Slider-line');
-    const sliderThumb = wrapper.find('.ms-Slider-slideBox');
-
-    sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
-
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 100,
-      clientY: 0,
-    });
-
-    // Default max is 10.
-    expect(changedValue).toEqual(10);
-  });
-
   it('has type=button on all buttons', () => {
     wrapper = mount(<Slider />);
 
@@ -122,7 +111,7 @@ describe('Slider', () => {
     });
   });
 
-  it('provides the current value', () => {
+  it('can provide the current value', () => {
     const slider = React.createRef<ISlider>();
 
     wrapper = mount(<Slider label="slider" defaultValue={12} min={0} max={100} componentRef={slider} />);
@@ -136,14 +125,14 @@ describe('Slider', () => {
     expect(sliderSlideBox.getDOMNode().id).toEqual('test_id');
   });
 
-  it('correctly handles zero default value', () => {
+  it('should be able to handler zero default value', () => {
     const slider = React.createRef<ISlider>();
 
     wrapper = mount(<Slider label="slider" defaultValue={0} min={-100} max={100} componentRef={slider} />);
     expect(slider.current!.value).toEqual(0);
   });
 
-  it('correctly handles zero value', () => {
+  it('should be able to handler zero value', () => {
     const slider = React.createRef<ISlider>();
 
     wrapper = mount(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
@@ -193,24 +182,23 @@ describe('Slider', () => {
     expect(onChange).toHaveBeenCalledTimes(5);
   });
 
-  it('correctly delays calling onChanged', () => {
+  it('calls onChanged after keyboard event', () => {
     jest.useFakeTimers();
-    const slider = React.createRef<ISlider>();
     const onChanged = jest.fn();
 
-    wrapper = mount(
-      <Slider label="slider" componentRef={slider} defaultValue={12} min={0} max={100} onChanged={onChanged} />,
-    );
+    const container = document.createElement('div');
+    document.body.appendChild(container);
 
-    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+    ReactDOM.render(<Slider label="slider" defaultValue={12} min={0} max={100} onChanged={onChanged} />, container);
+    const sliderSlideBox = container.querySelector('.ms-Slider-slideBox') as HTMLElement;
 
-    sliderSlideBox.simulate('keydown', { which: KeyCodes.down });
-    sliderSlideBox.simulate('keydown', { which: KeyCodes.down });
-    sliderSlideBox.simulate('keydown', { which: KeyCodes.down });
-    sliderSlideBox.simulate('keydown', { which: KeyCodes.up });
-    sliderSlideBox.simulate('keydown', { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.up });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
 
-    expect(slider.current?.value).toEqual(9);
+    expect(sliderSlideBox.getAttribute('aria-valuenow')).toEqual('9');
 
     // onChanged should only be called after a delay
     expect(onChanged).toHaveBeenCalledTimes(0);
@@ -282,6 +270,7 @@ describe('Slider', () => {
   });
 
   it('correctly changes value with decimal steps', () => {
+    const container = document.createElement('div');
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
     const step = 0.0000001;
@@ -302,5 +291,6 @@ describe('Slider', () => {
 
     sliderSlideBox.simulate('keydown', { which: KeyCodes.up });
     expect(slider.current?.value).toEqual(defaultValue + step);
+    ReactDOM.unmountComponentAtNode(container);
   });
 });
