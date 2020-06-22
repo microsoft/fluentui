@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Clean up dependencies and clarify version file placeholder comments",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-12T17:25:43.359Z"
-}

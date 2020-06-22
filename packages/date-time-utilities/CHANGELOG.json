@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/date-time-utilities",
+  "entries": [
+    {
+      "date": "Fri, 19 Jun 2020 12:38:09 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extract helper functions from date-time/Calendar",
+            "author": "pompomon@gmail.com",
+            "commit": "15dc5e8e782565c75bc5d637813cee8be2b8a384",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 12:37:16 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.0.1",
+      "version": "7.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Datetime utilities package",
+            "author": "pompomon@gmail.com",
+            "commit": "ae2604b53ac23c13faf40e8dd7de76e324a1c456",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -22,7 +22,7 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "@fluentui/react-northstar": "0.50gst.0",
+    "@fluentui/react-northstar": "0.50.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
