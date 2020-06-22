@@ -28,6 +28,7 @@ import {
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
+import { usePrevious } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarDayGridStyleProps, ICalendarDayGridStyles>();
 
@@ -49,18 +50,35 @@ export interface ICalendarDayGridState {
    * Weeks[1... weeks.length - 2] contains the actual visible data
    */
   weeks?: IDayInfo[][];
-  animateBackwards?: boolean;
+}
+
+/**
+ * Hook to determine whether to animate the CalendarDayGrid forwards or backwards
+ * @returns true if the grid should animate backwards; false otherwise
+ */
+function useAnimateBackwards({ navigatedDate }: ICalendarDayGridProps): boolean {
+  const previousNavigatedDate = usePrevious(navigatedDate);
+
+  if (!previousNavigatedDate || previousNavigatedDate <= navigatedDate) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 export const CalendarDayGridBase = React.forwardRef(
   (props: ICalendarDayGridProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    return <CalendarDayGridBaseClass {...props} hoisted={{}} />;
+    const animateBackwards = useAnimateBackwards(props);
+
+    return <CalendarDayGridBaseClass {...props} hoisted={{ animateBackwards }} />;
   },
 );
 CalendarDayGridBase.displayName = 'CalendarDayGridBase';
 
 interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
-  hoisted: {};
+  hoisted: {
+    animateBackwards: boolean;
+  };
 }
 
 class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProps, ICalendarDayGridState> {
@@ -83,27 +101,13 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
 
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayGridClassProps): void {
-    const weeks = this._getWeeks(nextProps);
-    let isBackwards = undefined;
-
-    if (this.state.weeks) {
-      const previousDate = this.state.weeks[0][0].originalDate;
-      const nextDate = weeks[0][0].originalDate;
-      if (previousDate < nextDate) {
-        isBackwards = false;
-      } else if (previousDate > nextDate) {
-        isBackwards = true;
-      }
-    }
-
     this.setState({
-      weeks: weeks,
-      animateBackwards: isBackwards,
+      weeks: this._getWeeks(nextProps),
     });
   }
 
   public render(): JSX.Element {
-    const { activeDescendantId, weeks, animateBackwards } = this.state;
+    const { activeDescendantId, weeks } = this.state;
     const {
       styles,
       theme,
@@ -113,6 +117,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
       labelledBy,
       lightenDaysOutsideNavigatedMonth,
       animationDirection,
+      hoisted: { animateBackwards },
     } = this.props;
 
     this.classNames = getClassNames(styles, {
