@@ -15,8 +15,8 @@ let GitHubApi = require('github');
 const EOL = '\n';
 
 const REPO_DETAILS = {
-  owner: "OfficeDev",
-  repo: "office-ui-fabric-react"
+  owner: "microsoft",
+  repo: "fluentui"
 };
 
 const SHOULD_PATCH = argv.patch;
