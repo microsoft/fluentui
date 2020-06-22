@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add Datetime utilities package",
-  "packageName": "office-ui-fabric-react",
-  "email": "pompomon@gmail.com",
-  "dependentChangeType": "none",
-  "date": "2020-06-15T17:02:43.465Z"
-}
