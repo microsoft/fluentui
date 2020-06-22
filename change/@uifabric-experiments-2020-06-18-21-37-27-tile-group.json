@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix width of header rows in TilesList",
-  "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-19T04:37:27.094Z"
-}
