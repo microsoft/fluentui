@@ -3,7 +3,6 @@
   "version": "0.50.0",
   "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
-  "typings": "src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

@@ -1,21 +1,4 @@
-import { Linter, Rule } from 'eslint';
-
-export declare const configs: {
-  node: Linter.Config;
-  'node--legacy': Linter.Config;
-  react: Linter.Config;
-  'react--legacy': Linter.Config;
-  'react-northstar': Linter.Config;
-};
-
-export declare const rules: {
-  'ban-imports': Rule.RuleModule;
-  'deprecated-keyboard-event-props': Rule.RuleModule;
-  'jsx-ban-props': Rule.RuleModule;
-  'no-visibility-modifiers': Rule.RuleModule;
-};
-
-export declare const configHelpers: {
+declare const configHelpers: {
   /** File extensions to lint (with leading .) */
   extensions: string[];
 
@@ -40,3 +23,5 @@ export declare const configHelpers: {
    */
   getTypeInfoRuleOverrides: (rules: Linter.RulesRecord, tsconfigPath?: string) => Linter.ConfigOverride[];
 };
+
+export = configHelpers;

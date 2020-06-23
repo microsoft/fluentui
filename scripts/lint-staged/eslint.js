@@ -6,7 +6,7 @@ const path = require('path');
 const { ESLint } = require('eslint');
 const { rollup: lernaAliases } = require('lerna-alias');
 const { default: PQueue } = require('p-queue');
-const { configHelpers } = require('@fluentui/eslint-plugin');
+const configHelpers = require('@fluentui/eslint-plugin/src/utils/configHelpers');
 
 // Paths to packages with an eslintrc (with any extension)
 const packagesWithEslint = Object.values(lernaAliases({ sourceDirectory: false })).filter(

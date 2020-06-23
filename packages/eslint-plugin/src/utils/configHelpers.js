@@ -18,7 +18,7 @@ const isLintStaged = /pre-commit|lint-staged/.test(process.argv[1]);
 
 // See the types file (or hover over members) for docs.
 // This helps ensure the docs stay in sync.
-/** @type {import("../index")["configHelpers"]} */
+/** @type {import("./configHelpers.d")} */
 module.exports = {
   extensions: ['.ts', '.tsx', '.js', '.jsx'],
 

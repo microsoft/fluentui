@@ -1,7 +1,7 @@
 // @ts-check
 
 const { eslintTask } = require('just-scripts');
-const { configHelpers } = require('@fluentui/eslint-plugin');
+const configHelpers = require('@fluentui/eslint-plugin/src/utils/configHelpers');
 const path = require('path');
 
 exports.eslint = eslintTask({

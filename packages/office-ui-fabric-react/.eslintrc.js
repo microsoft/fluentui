@@ -1,5 +1,5 @@
 // @ts-check
-const { configHelpers } = require('@fluentui/eslint-plugin');
+const configHelpers = require('@fluentui/eslint-plugin/src/utils/configHelpers');
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
