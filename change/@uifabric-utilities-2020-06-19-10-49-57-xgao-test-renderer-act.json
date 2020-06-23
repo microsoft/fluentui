@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add test util for react-test-renderer create with act wrapped",
-  "packageName": "@uifabric/utilities",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-19T17:49:57.052Z"
-}

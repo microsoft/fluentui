@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.45",
+  "version": "8.0.0-alpha.46",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -56,16 +56,16 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.3.6",
-    "@fluentui/react-compose": "^0.11.2",
-    "@fluentui/react-focus": "^7.12.9",
-    "@fluentui/react-theme-provider": "^0.2.1",
-    "@uifabric/icons": "^7.3.52",
+    "@fluentui/react-button": "^0.3.7",
+    "@fluentui/react-compose": "^0.11.3",
+    "@fluentui/react-focus": "^7.12.10",
+    "@fluentui/react-theme-provider": "^0.2.2",
+    "@uifabric/icons": "^7.3.53",
     "@uifabric/merge-styles": "^7.14.1",
-    "@uifabric/react-hooks": "^7.4.6",
+    "@uifabric/react-hooks": "^7.4.7",
     "@uifabric/set-version": "^7.0.13",
-    "@uifabric/utilities": "^7.21.0",
-    "office-ui-fabric-react": "^7.121.1",
+    "@uifabric/utilities": "^7.21.1",
+    "office-ui-fabric-react": "^7.121.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

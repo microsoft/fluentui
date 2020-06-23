@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@fluentui/react-button_v0.3.7",
+      "version": "0.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Adding pointer-events: none to :after focus rectangle.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "35f5aa25db089b737a8612740de3c378a2ed3f8e",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jun 2020 12:38:09 GMT",
       "tag": "@fluentui/react-button_v0.3.6",
       "version": "0.3.6",
