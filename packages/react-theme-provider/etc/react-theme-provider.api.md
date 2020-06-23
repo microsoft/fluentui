@@ -39,6 +39,9 @@ export type FontTokens = Partial<{
     fontWeight: string;
 }>;
 
+// @public (undocumented)
+export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorPlateSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+
 // @public
 export const mergeThemes: (...themes: (Theme | PartialTheme | undefined)[]) => Theme;
 
@@ -50,6 +53,20 @@ export interface PartialTheme extends RecursivePartial<Theme> {
 export type RecursivePartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
 };
+
+// @public (undocumented)
+export interface StyleOptions<TProps> {
+    // (undocumented)
+    slotProps: ((props: TProps) => Record<string, object>)[];
+}
+
+// @public
+export interface StyleProps<TTokens extends ColorPlateSet = ColorPlateSet> {
+    // (undocumented)
+    style?: React.CSSProperties;
+    // (undocumented)
+    tokens?: TTokens;
+}
 
 // @public
 export interface Theme {
@@ -82,9 +99,7 @@ export const tokensToStyleObject: (tokens?: {
     } | undefined;
 } | undefined, prefix?: string | undefined, style?: {
     [key: string]: string | number | undefined;
-}) => {
-    [key: string]: string | number | undefined;
-};
+}) => import("react").CSSProperties;
 
 // @public
 export const useTheme: () => Theme;
