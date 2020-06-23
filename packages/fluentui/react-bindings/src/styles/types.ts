@@ -84,7 +84,8 @@ export type ResolveStylesOptions = StylesContextValue & {
   className?: string;
   allDisplayNames: string[];
   primaryDisplayName: string;
-  props: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
+  componentProps: Record<string, any>;
+  stylesProps: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
   telemetry?: Telemetry;
   saveDebug: (debug: DebugData | null) => void;

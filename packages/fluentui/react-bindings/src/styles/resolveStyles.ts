@@ -49,7 +49,8 @@ const resolveStyles = (
     className: componentClassName,
     theme,
     primaryDisplayName,
-    props,
+    componentProps,
+    stylesProps,
     rtl,
     disableAnimations,
     renderer,
@@ -57,7 +58,7 @@ const resolveStyles = (
     telemetry,
   } = options;
 
-  const { className, design, styles, variables, ...stylesProps } = props;
+  const { className, design, styles, variables } = stylesProps;
   const noInlineStylesOverrides = !(design || styles);
 
   let noVariableOverrides = performanceFlags.enableBooleanVariablesCaching || !variables;
@@ -103,18 +104,20 @@ const resolveStyles = (
     } else {
       mergedStyles = { root: () => ({}) };
     }
+
+    mergedStyles = theme.componentStyles[primaryDisplayName];
   }
 
   if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
-      props.design && withDebugId({ root: props.design }, 'props.design'),
-      props.styles && withDebugId({ root: props.styles } as ComponentSlotStylesInput, 'props.styles'),
+      design && withDebugId({ root: design }, 'props.design'),
+      styles && withDebugId({ root: styles } as ComponentSlotStylesInput, 'props.styles'),
     );
   }
 
   const styleParam: ComponentStyleFunctionParam = {
-    props,
+    props: componentProps,
     variables: resolvedVariables,
     theme,
     rtl,
@@ -142,7 +145,7 @@ const resolveStyles = (
     }
   }
 
-  const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
+  const propsCacheKey = cacheEnabled ? JSON.stringify(componentProps) : '';
   const variablesCacheKey =
     cacheEnabled && performanceFlags.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
   const componentCacheKey = cacheEnabled

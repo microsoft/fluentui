@@ -37,9 +37,21 @@ const resolveVariables = (
     const handlingDisplayName = effectiveDisplayNames[effectiveDisplayNames.length - 1];
 
     if (!variablesThemeCache[handlingDisplayName]) {
-      variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
-        ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
-      )(theme.siteVariables);
+      if (effectiveDisplayNames.length === 1) {
+        const fn =
+          typeof theme.componentVariables[handlingDisplayName] === 'function'
+            ? theme.componentVariables[handlingDisplayName]
+            : () => theme.componentVariables[handlingDisplayName];
+
+        variablesThemeCache[handlingDisplayName] = fn(theme.siteVariables);
+      } else {
+        variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
+          ...effectiveDisplayNames.map(
+            displayName => variablesThemeCache[displayName] || theme.componentVariables[displayName],
+          ),
+        )(theme.siteVariables);
+      }
+
       variablesCache.set(theme, variablesThemeCache);
     }
 

@@ -68,7 +68,7 @@ export const mergeComponentStyles__PROD = (
       // no target means source doesn't need to merge onto anything
       // just ensure source is callable (prepared format)
       if (typeof originalTarget === 'undefined') {
-        partStylesPrepared[partName] = callable(originalSource);
+        partStylesPrepared[partName] = typeof originalSource === 'function' ? originalSource : callable(originalSource);
         return;
       }
 
@@ -151,10 +151,17 @@ export const mergeComponentStyles: (
 export const mergeComponentVariables__PROD = (...sources: ComponentVariablesInput[]): ComponentVariablesPrepared => {
   const initial = () => ({});
 
-  return sources.reduce<ComponentVariablesPrepared>((acc, next) => {
-    return (...args) => {
+  const a = sources.filter(Boolean);
+
+  if (a.length === 1) {
+    return typeof a[0] === 'function' ? a[0] : () => a[0];
+  }
+
+  return a.reduce<ComponentVariablesPrepared>((acc, next) => {
+    return function mergeComponentVariables(...args) {
       const accumulatedVariables = acc(...args);
-      const computedComponentVariables = callable(next)(...args);
+      const fn = typeof next === 'function' ? next : callable(next);
+      const computedComponentVariables = fn(...args);
 
       return deepmerge(accumulatedVariables, computedComponentVariables);
     };
