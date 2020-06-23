@@ -1,4 +1,5 @@
 {
   "packages": ["packages/react-button"],
-  "sandboxes": ["u0e3w"]
+  "sandboxes": ["u0e3w"],
+  "build": "build:min"
 }
