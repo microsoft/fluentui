@@ -1,6 +1,7 @@
 import { FontWeightProperty } from 'csstype';
 
 import { pxToRem } from '../../../../utils';
+
 export interface ButtonVariables {
   padding: string;
   height: string;
