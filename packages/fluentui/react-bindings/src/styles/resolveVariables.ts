@@ -37,18 +37,15 @@ const resolveVariables = (
     const handlingDisplayName = effectiveDisplayNames[effectiveDisplayNames.length - 1];
 
     if (!variablesThemeCache[handlingDisplayName]) {
+      // A short circle to avoid additional merging for non-composed components
       if (effectiveDisplayNames.length === 1) {
-        const fn =
+        variablesThemeCache[handlingDisplayName] =
           typeof theme.componentVariables[handlingDisplayName] === 'function'
-            ? theme.componentVariables[handlingDisplayName]
-            : () => theme.componentVariables[handlingDisplayName];
-
-        variablesThemeCache[handlingDisplayName] = fn(theme.siteVariables);
+            ? theme.componentVariables[handlingDisplayName](theme.siteVariables)
+            : theme.componentVariables[handlingDisplayName];
       } else {
         variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
-          ...effectiveDisplayNames.map(
-            displayName => variablesThemeCache[displayName] || theme.componentVariables[displayName],
-          ),
+          ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
         )(theme.siteVariables);
       }
 

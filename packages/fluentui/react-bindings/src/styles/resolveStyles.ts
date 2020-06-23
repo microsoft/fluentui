@@ -104,8 +104,6 @@ const resolveStyles = (
     } else {
       mergedStyles = { root: () => ({}) };
     }
-
-    mergedStyles = theme.componentStyles[primaryDisplayName];
   }
 
   if (!noInlineStylesOverrides) {
