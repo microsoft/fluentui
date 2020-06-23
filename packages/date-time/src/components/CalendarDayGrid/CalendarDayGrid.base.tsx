@@ -191,7 +191,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
           role="grid"
         >
           <tbody>
-            {this.renderMonthHeaderRow(classNames)}
+            <CalendarDayMonthHeaderRow {...this.props} classNames={classNames} />
             {this.renderRow(
               classNames,
               weeks![0],
@@ -220,45 +220,6 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
       </FocusZone>
     );
   }
-
-  private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>): JSX.Element => {
-    const {
-      showWeekNumbers,
-      strings,
-      firstDayOfWeek,
-      allFocusable,
-      weeksToShow,
-      hoisted: { weeks },
-    } = this.props;
-    const dayLabels = strings.shortDays.slice();
-    const firstOfMonthIndex = findIndex(weeks![1], (day: IDayInfo) => day.originalDate.getDate() === 1);
-    if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
-      // if we only show one week, replace the header with short month name
-      dayLabels[firstOfMonthIndex] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
-    }
-
-    return (
-      <tr>
-        {showWeekNumbers && <th className={classNames.dayCell} />}
-        {dayLabels.map((val: string, index: number) => {
-          const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
-          const label = index === firstOfMonthIndex ? strings.days[i] + ' ' + dayLabels[i] : strings.days[i];
-          return (
-            <th
-              className={css(classNames.dayCell, classNames.weekDayLabelCell)}
-              scope="col"
-              key={dayLabels[i] + ' ' + index}
-              title={label}
-              aria-label={label}
-              data-is-focusable={allFocusable ? true : undefined}
-            >
-              {dayLabels[i]}
-            </th>
-          );
-        })}
-      </tr>
-    );
-  };
 
   private renderRow = (
     classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
@@ -752,3 +713,45 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     return dateRangeType;
   };
 }
+
+const CalendarDayMonthHeaderRow = (
+  props: ICalendarDayGridClassProps & { classNames: IProcessedStyleSet<ICalendarDayGridStyles> },
+) => {
+  const {
+    showWeekNumbers,
+    strings,
+    firstDayOfWeek,
+    allFocusable,
+    weeksToShow,
+    hoisted: { weeks },
+    classNames,
+  } = props;
+  const dayLabels = strings.shortDays.slice();
+  const firstOfMonthIndex = findIndex(weeks![1], (day: IDayInfo) => day.originalDate.getDate() === 1);
+  if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
+    // if we only show one week, replace the header with short month name
+    dayLabels[firstOfMonthIndex] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
+  }
+
+  return (
+    <tr>
+      {showWeekNumbers && <th className={classNames.dayCell} />}
+      {dayLabels.map((val: string, index: number) => {
+        const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
+        const label = index === firstOfMonthIndex ? strings.days[i] + ' ' + dayLabels[i] : strings.days[i];
+        return (
+          <th
+            className={css(classNames.dayCell, classNames.weekDayLabelCell)}
+            scope="col"
+            key={dayLabels[i] + ' ' + index}
+            title={label}
+            aria-label={label}
+            data-is-focusable={allFocusable ? true : undefined}
+          >
+            {dayLabels[i]}
+          </th>
+        );
+      })}
+    </tr>
+  );
+};
