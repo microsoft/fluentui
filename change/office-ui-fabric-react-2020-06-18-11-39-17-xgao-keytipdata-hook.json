@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "KeytipData: convert to function component",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-18T18:39:17.965Z"
-}

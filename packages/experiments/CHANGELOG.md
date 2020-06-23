@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 17 Jun 2020 16:07:40 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.26.6](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.6)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.5..@uifabric/experiments_v7.26.6)
+
+### Patches
+
+- Fix width of header rows in TilesList ([PR #13697](https://github.com/microsoft/fluentui/pull/13697) by tmichon@microsoft.com)
 
 ## [7.26.5](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.5)
 

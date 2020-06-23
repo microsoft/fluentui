@@ -81,7 +81,7 @@ module.exports = function preset() {
     return argv().commonjs
       ? 'ts:commonjs-only'
       : parallel(
-          'ts:commonjs',
+          condition('ts:commonjs', () => !argv().min),
           'ts:esm',
           condition('ts:amd', () => !!argv().production),
         );
@@ -104,7 +104,16 @@ module.exports = function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
-  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor:verify')).cached();
+  task(
+    'build',
+    series(
+      'clean',
+      'copy',
+      'sass',
+      'ts',
+      condition('api-extractor:verify', () => !argv().min),
+    ),
+  ).cached();
 
   task(
     'bundle',
