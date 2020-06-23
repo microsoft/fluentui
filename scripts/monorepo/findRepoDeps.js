@@ -1,7 +1,6 @@
 // @ts-check
 
 const { readConfig } = require('../read-config');
-const path = require('path');
 const getAllPackageInfo = require('./getAllPackageInfo');
 
 /**
@@ -24,13 +23,13 @@ let cwdForRepoDeps;
  * @returns {import('./index').PackageInfo[]}
  */
 function findRepoDeps() {
-  if (repoDeps && cwdForRepoDeps === process.cwd()) {
+  const cwd = process.cwd();
+  if (repoDeps && cwdForRepoDeps === cwd) {
     return repoDeps;
   }
 
   const packageInfo = getAllPackageInfo();
-  const cwd = process.cwd();
-  const packageJson = readConfig(path.join(cwd, 'package.json'));
+  const packageJson = readConfig('package.json');
   const packageDeps = getDeps(packageJson);
   /** @type {Set<string>} */
   const result = new Set();

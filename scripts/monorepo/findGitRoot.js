@@ -7,11 +7,11 @@ let cwdForGitRoot;
 let gitRoot;
 
 function findGitRoot() {
-  if (gitRoot && cwdForGitRoot === process.cwd()) {
+  let cwd = process.cwd();
+
+  if (gitRoot && cwdForGitRoot === cwd) {
     return gitRoot;
   }
-
-  let cwd = process.cwd();
 
   const root = path.parse(cwd).root;
   let found = false;

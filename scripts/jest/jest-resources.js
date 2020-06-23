@@ -1,5 +1,6 @@
 // @ts-check
 
+const fs = require('fs-extra');
 const path = require('path');
 const merge = require('../tasks/merge');
 const resolve = require('resolve');
@@ -7,28 +8,29 @@ const { resolveCwd } = require('just-scripts');
 const { findRepoDeps } = require('../monorepo/index');
 const findConfig = require('../find-config');
 
-const packageRoot = path.dirname(findConfig('package.json'));
+const packageJsonPath = findConfig('package.json');
+const packageRoot = path.dirname(packageJsonPath);
 
 const jestAliases = () => {
-  // Get deps of the current package within the repo (will include the package itself)
+  // Get deps of the current package within the repo
   const packageDeps = findRepoDeps();
 
   const aliases = {};
 
-  for (const { packageJson, packagePath } of packageDeps) {
+  for (const { packageJson } of packageDeps) {
     const { name, main } = packageJson;
-    if (packagePath === process.cwd()) {
-      // Special aliases to look at src for the current package
-      aliases[`^${name}$`] = '<rootDir>/src/';
-      aliases[`^${name}/lib/(.*)$`] = '<rootDir>/src/$1';
-    } else if (main && main.includes('lib-commonjs')) {
+    if (main && main.includes('lib-commonjs')) {
       // Map package root and lib imports to the commonjs version
       const mainImportPath = `${name}/${main.replace('.js', '')}`;
       aliases[`^${name}$`] = mainImportPath;
       aliases[`^${name}/lib/(.*)$`] = mainImportPath.replace('index', '$1');
     }
   }
-  console.dir(aliases);
+
+  // Special aliases to look at src for the current package
+  const packageJson = fs.readJSONSync(packageJsonPath);
+  aliases[`^${packageJson.name}$`] = '<rootDir>/src/';
+  aliases[`^${packageJson.name}/lib/(.*)$`] = '<rootDir>/src/$1';
 
   return aliases;
 };
