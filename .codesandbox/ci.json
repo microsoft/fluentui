@@ -1,4 +1,5 @@
 {
+  "buildCommand": "build:min",
   "packages": [
     "packages/react-button",
     "@fluentui/react-northstar",
