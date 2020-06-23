@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PrimaryButton, IButtonStyles } from '@fluentui/react-next/lib/Button';
+import { PrimaryButton, IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import {
   IExtendedPersonaProps,
   SelectedPeopleList,
