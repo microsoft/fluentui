@@ -6,5 +6,5 @@
     "@fluentui/react-next",
     "@fluentui/react-icons"
   ],
-  "sandboxes": ["u0e3w", "/apps/codesandbox-react-template"],
+  "sandboxes": ["u0e3w", "/apps/codesandbox-react-template"]
 }
