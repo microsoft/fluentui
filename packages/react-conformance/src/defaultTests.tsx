@@ -73,7 +73,7 @@ export const defaultTests: TestObject = {
     });
   },
 
-  /** Ensures component is exported at top level allowing import { Component } from 'packageName' */
+  /** Ensures component is exported at top level allowing `import { Component } from 'packageName'` */
   'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (!testInfo.isInternal) {
       it(`is exported at top-level`, () => {
@@ -136,7 +136,7 @@ export const defaultTests: TestObject = {
       const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
 
       for (const propName of Object.keys(propNames)) {
-        if (!ignoreProps?.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
+        if (!ignoreProps.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
           const words = propName.slice(2).match(/[A-Z][a-z]+/g);
 
           if (words) {
