@@ -99,6 +99,8 @@ export type ButtonTokens = ColorPlateSet & {
   iconSize: string;
   borderRadius: string;
   borderWidth: string;
+  boxShadow: string;
+  width: string;
 
   size: {
     smallest: string;
