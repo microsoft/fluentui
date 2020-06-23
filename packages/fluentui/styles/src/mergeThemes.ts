@@ -151,13 +151,15 @@ export const mergeComponentStyles: (
 export const mergeComponentVariables__PROD = (...sources: ComponentVariablesInput[]): ComponentVariablesPrepared => {
   const initial = () => ({});
 
-  const a = sources.filter(Boolean);
+  // filtering is required as some arguments can be undefined
+  const filteredSources = sources.filter(Boolean);
 
-  if (a.length === 1) {
-    return typeof a[0] === 'function' ? a[0] : () => a[0];
+  // a short circle to avoid calls of deepmerge()
+  if (filteredSources.length === 1) {
+    return typeof filteredSources[0] === 'function' ? filteredSources[0] : callable(filteredSources[0]);
   }
 
-  return a.reduce<ComponentVariablesPrepared>((acc, next) => {
+  return filteredSources.reduce<ComponentVariablesPrepared>((acc, next) => {
     return function mergeComponentVariables(...args) {
       const accumulatedVariables = acc(...args);
       const fn = typeof next === 'function' ? next : callable(next);
