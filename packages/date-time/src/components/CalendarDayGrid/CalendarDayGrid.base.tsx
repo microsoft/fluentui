@@ -80,6 +80,145 @@ function useAnimateBackwards(weeks: IDayInfo[][]): boolean {
   }
 }
 
+function useWeekCornerStyles(props: ICalendarDayGridProps) {
+  /**
+   *
+   * Section for setting the rounded corner styles on individual day cells. Individual day cells need different
+   * corners to be rounded depending on which date range type and where the cell is located in the current grid.
+   * If we just round all of the corners, there isn't a good overlap and we get gaps between contiguous day boxes
+   * in Edge browser.
+   *
+   */
+  const getWeekCornerStyles = (
+    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+    initialWeeks: IDayInfo[][],
+  ): IWeekCorners => {
+    const weekCornersStyled: { [key: string]: string } = {};
+    /* need to handle setting all of the corners on arbitrarily shaped blobs
+          __
+       __|A |
+      |B |C |__
+      |D |E |F |
+
+      in this case, A needs top left rounded, top right rounded
+      B needs top left rounded
+      C doesn't need any rounding
+      D needs bottom left rounded
+      E doesn't need any rounding
+      F needs top right rounding
+    */
+
+    // cut off the animation transition weeks
+    const weeks = initialWeeks.slice(1, initialWeeks.length - 1);
+
+    // if there's an item above, lose both top corners. Item below, lose both bottom corners, etc.
+    weeks.forEach((week: IDayInfo[], weekIndex: number) => {
+      week.forEach((day: IDayInfo, dayIndex: number) => {
+        const above =
+          weeks[weekIndex - 1] &&
+          weeks[weekIndex - 1][dayIndex] &&
+          isInSameHoverRange(
+            weeks[weekIndex - 1][dayIndex].originalDate,
+            day.originalDate,
+            weeks[weekIndex - 1][dayIndex].isSelected,
+            day.isSelected,
+          );
+        const below =
+          weeks[weekIndex + 1] &&
+          weeks[weekIndex + 1][dayIndex] &&
+          isInSameHoverRange(
+            weeks[weekIndex + 1][dayIndex].originalDate,
+            day.originalDate,
+            weeks[weekIndex + 1][dayIndex].isSelected,
+            day.isSelected,
+          );
+        const left =
+          weeks[weekIndex][dayIndex - 1] &&
+          isInSameHoverRange(
+            weeks[weekIndex][dayIndex - 1].originalDate,
+            day.originalDate,
+            weeks[weekIndex][dayIndex - 1].isSelected,
+            day.isSelected,
+          );
+        const right =
+          weeks[weekIndex][dayIndex + 1] &&
+          isInSameHoverRange(
+            weeks[weekIndex][dayIndex + 1].originalDate,
+            day.originalDate,
+            weeks[weekIndex][dayIndex + 1].isSelected,
+            day.isSelected,
+          );
+
+        const style = calculateRoundedStyles(classNames, above, below, left, right);
+
+        weekCornersStyled[weekIndex + '_' + dayIndex] = style;
+      });
+    });
+
+    return weekCornersStyled;
+  };
+
+  const calculateRoundedStyles = (
+    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+    above: boolean,
+    below: boolean,
+    left: boolean,
+    right: boolean,
+  ): string => {
+    let style = '';
+    const roundedTopLeft = !above && !left;
+    const roundedTopRight = !above && !right;
+    const roundedBottomLeft = !below && !left;
+    const roundedBottomRight = !below && !right;
+
+    if (roundedTopLeft) {
+      style = getRTL()
+        ? style.concat(classNames.topRightCornerDate + ' ')
+        : style.concat(classNames.topLeftCornerDate + ' ');
+    }
+    if (roundedTopRight) {
+      style = getRTL()
+        ? style.concat(classNames.topLeftCornerDate + ' ')
+        : style.concat(classNames.topRightCornerDate + ' ');
+    }
+    if (roundedBottomLeft) {
+      style = getRTL()
+        ? style.concat(classNames.bottomRightCornerDate + ' ')
+        : style.concat(classNames.bottomLeftCornerDate + ' ');
+    }
+    if (roundedBottomRight) {
+      style = getRTL()
+        ? style.concat(classNames.bottomLeftCornerDate + ' ')
+        : style.concat(classNames.bottomRightCornerDate + ' ');
+    }
+
+    return style;
+  };
+
+  const isInSameHoverRange = (date1: Date, date2: Date, date1Selected: boolean, date2Selected: boolean): boolean => {
+    const { dateRangeType, firstDayOfWeek, workWeekDays } = props;
+
+    // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
+    const dateRangeHoverType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
+
+    // we do not pass daysToSelectInDayView because we handle setting those styles dyanamically in onMouseOver
+    const dateRange = getDateRangeArray(date1, dateRangeHoverType, firstDayOfWeek, workWeekDays);
+
+    if (date1Selected !== date2Selected) {
+      // if one is selected and the other is not, they can't be in the same range
+      return false;
+    } else if (date1Selected && date2Selected) {
+      // if they're both selected at the same time they must be in the same range
+      return true;
+    }
+
+    // otherwise, both must be unselected, so check the dateRange
+    return dateRange.filter((date: Date) => date.getTime() === date2.getTime()).length > 0;
+  };
+
+  return [getWeekCornerStyles, calculateRoundedStyles] as const;
+}
+
 export const CalendarDayGridBase = React.forwardRef(
   (props: ICalendarDayGridProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const navigatedDayRef = React.useRef<HTMLButtonElement>(null);
@@ -117,6 +256,7 @@ export const CalendarDayGridBase = React.forwardRef(
 
     const weeks = useWeeks(props, onSelectDate);
     const animateBackwards = useAnimateBackwards(weeks);
+    const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(props);
 
     React.useImperativeHandle(
       props.componentRef,
@@ -131,7 +271,15 @@ export const CalendarDayGridBase = React.forwardRef(
     return (
       <CalendarDayGridBaseClass
         {...props}
-        hoisted={{ animateBackwards, navigatedDayRef, weeks, onSelectDate, activeDescendantId }}
+        hoisted={{
+          animateBackwards,
+          navigatedDayRef,
+          weeks,
+          onSelectDate,
+          activeDescendantId,
+          getWeekCornerStyles,
+          calculateRoundedStyles,
+        }}
       />
     );
   },
@@ -145,6 +293,17 @@ interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
     weeks: IDayInfo[][];
     activeDescendantId: string;
     onSelectDate(date: Date): void;
+    getWeekCornerStyles(
+      classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+      initialWeeks: IDayInfo[][],
+    ): IWeekCorners;
+    calculateRoundedStyles(
+      classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+      above: boolean,
+      below: boolean,
+      left: boolean,
+      right: boolean,
+    ): string;
   };
 }
 
@@ -178,7 +337,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     const classNames = this.classNames;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
-    const weekCorners: IWeekCorners = this._getWeekCornerStyles(classNames, weeks!);
+    const weekCorners: IWeekCorners = this.props.hoisted.getWeekCornerStyles(classNames, weeks!);
 
     return (
       <FocusZone className={classNames.wrapper}>
@@ -403,142 +562,6 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     };
   };
 
-  /**
-   *
-   * Section for setting the rounded corner styles on individual day cells. Individual day cells need different
-   * corners to be rounded depending on which date range type and where the cell is located in the current grid.
-   * If we just round all of the corners, there isn't a good overlap and we get gaps between contiguous day boxes
-   * in Edge browser.
-   *
-   */
-
-  private _getWeekCornerStyles(
-    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
-    initialWeeks: IDayInfo[][],
-  ): IWeekCorners {
-    const weekCornersStyled: { [key: string]: string } = {};
-    /* need to handle setting all of the corners on arbitrarily shaped blobs
-          __
-       __|A |
-      |B |C |__
-      |D |E |F |
-
-      in this case, A needs top left rounded, top right rounded
-      B needs top left rounded
-      C doesn't need any rounding
-      D needs bottom left rounded
-      E doesn't need any rounding
-      F needs top right rounding
-    */
-
-    // cut off the animation transition weeks
-    const weeks = initialWeeks.slice(1, initialWeeks.length - 1);
-
-    // if there's an item above, lose both top corners. Item below, lose both bottom corners, etc.
-    weeks.forEach((week: IDayInfo[], weekIndex: number) => {
-      week.forEach((day: IDayInfo, dayIndex: number) => {
-        const above =
-          weeks[weekIndex - 1] &&
-          weeks[weekIndex - 1][dayIndex] &&
-          this.isInSameHoverRange(
-            weeks[weekIndex - 1][dayIndex].originalDate,
-            day.originalDate,
-            weeks[weekIndex - 1][dayIndex].isSelected,
-            day.isSelected,
-          );
-        const below =
-          weeks[weekIndex + 1] &&
-          weeks[weekIndex + 1][dayIndex] &&
-          this.isInSameHoverRange(
-            weeks[weekIndex + 1][dayIndex].originalDate,
-            day.originalDate,
-            weeks[weekIndex + 1][dayIndex].isSelected,
-            day.isSelected,
-          );
-        const left =
-          weeks[weekIndex][dayIndex - 1] &&
-          this.isInSameHoverRange(
-            weeks[weekIndex][dayIndex - 1].originalDate,
-            day.originalDate,
-            weeks[weekIndex][dayIndex - 1].isSelected,
-            day.isSelected,
-          );
-        const right =
-          weeks[weekIndex][dayIndex + 1] &&
-          this.isInSameHoverRange(
-            weeks[weekIndex][dayIndex + 1].originalDate,
-            day.originalDate,
-            weeks[weekIndex][dayIndex + 1].isSelected,
-            day.isSelected,
-          );
-
-        const style = this._calculateRoundedStyles(classNames, above, below, left, right);
-
-        weekCornersStyled[weekIndex + '_' + dayIndex] = style;
-      });
-    });
-
-    return weekCornersStyled;
-  }
-
-  private _calculateRoundedStyles(
-    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
-    above: boolean,
-    below: boolean,
-    left: boolean,
-    right: boolean,
-  ): string {
-    let style = '';
-    const roundedTopLeft = !above && !left;
-    const roundedTopRight = !above && !right;
-    const roundedBottomLeft = !below && !left;
-    const roundedBottomRight = !below && !right;
-
-    if (roundedTopLeft) {
-      style = getRTL()
-        ? style.concat(classNames.topRightCornerDate + ' ')
-        : style.concat(classNames.topLeftCornerDate + ' ');
-    }
-    if (roundedTopRight) {
-      style = getRTL()
-        ? style.concat(classNames.topLeftCornerDate + ' ')
-        : style.concat(classNames.topRightCornerDate + ' ');
-    }
-    if (roundedBottomLeft) {
-      style = getRTL()
-        ? style.concat(classNames.bottomRightCornerDate + ' ')
-        : style.concat(classNames.bottomLeftCornerDate + ' ');
-    }
-    if (roundedBottomRight) {
-      style = getRTL()
-        ? style.concat(classNames.bottomLeftCornerDate + ' ')
-        : style.concat(classNames.bottomRightCornerDate + ' ');
-    }
-
-    return style;
-  }
-
-  private isInSameHoverRange = (date1: Date, date2: Date, date1Selected: boolean, date2Selected: boolean): boolean => {
-    const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
-
-    // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
-    const dateRangeHoverType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
-
-    // we do not pass daysToSelectInDayView because we handle setting those styles dyanamically in onMouseOver
-    const dateRange = getDateRangeArray(date1, dateRangeHoverType, firstDayOfWeek, workWeekDays);
-
-    if (date1Selected !== date2Selected) {
-      // if one is selected and the other is not, they can't be in the same range
-      return false;
-    } else if (date1Selected && date2Selected) {
-      // if they're both selected at the same time they must be in the same range
-      return true;
-    }
-
-    // otherwise, both must be unselected, so check the dateRange
-    return dateRange.filter((date: Date) => date.getTime() === date2.getTime()).length > 0;
-  };
-
   private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number): string {
     const cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
     return cornerStyle;
@@ -614,13 +637,9 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
               this.classNames.topRightCornerDate!,
             );
 
-            const classNames = this._calculateRoundedStyles(
-              this.classNames,
-              false,
-              false,
-              index > 0,
-              index < dayRefs.length - 1,
-            ).trim();
+            const classNames = this.props.hoisted
+              .calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1)
+              .trim();
             if (classNames) {
               dayRef.classList.add(...classNames.split(' '));
             }
@@ -671,13 +690,9 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
             this.props.daysToSelectInDayView &&
             this.props.daysToSelectInDayView > 1
           ) {
-            const classNames = this._calculateRoundedStyles(
-              this.classNames,
-              false,
-              false,
-              index > 0,
-              index < dayRefs.length - 1,
-            ).trim();
+            const classNames = this.props.hoisted
+              .calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1)
+              .trim();
             if (classNames) {
               dayRef.classList.remove(...classNames.split(' '));
             }
