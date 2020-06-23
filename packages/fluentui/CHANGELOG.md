@@ -23,7 +23,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Avatar` initials when the input only contains whitespace @rymeskar ([#13682](https://github.com/microsoft/fluentui/pull/13682))
 - Fix the order of callbacks in `Dropdown` @layershifter ([#13707](https://github.com/microsoft/fluentui/pull/13707))
 - Fix merging of `inputRef` on `searchInput` shorthand in `Dropdown` @layershifter ([#13711](https://github.com/microsoft/fluentui/pull/13711))
-- Fix prevent `Tree` with item flaged as `expanded` to collapse that item @assuncaocharles ([#13724](https://github.com/microsoft/fluentui/pull/13724))
 - Fix `onClick` call from `Popup` trigger when `on` includes `hover` @assuncaocharles ([#13727](https://github.com/microsoft/fluentui/pull/13727))
 - Fix primary styles for `SplitButton` hover @assuncaocharles ([#13726](https://github.com/microsoft/fluentui/pull/13726))
 
