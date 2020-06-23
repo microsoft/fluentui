@@ -15,6 +15,7 @@ const getFontSizeValue = (size?: string | null): number | null => {
   return (size && parseFloat(size)) || null;
 };
 
+// A replacement for a Lodash's one, way more faster on our cases as handles specific scenario
 export const round = (n: number) => ((n * 10000 + (n > 0 ? 0.5 : -0.5)) << 0) / 10000;
 
 /**
