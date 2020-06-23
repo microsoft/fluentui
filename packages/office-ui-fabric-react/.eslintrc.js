@@ -8,7 +8,6 @@ module.exports = {
   root: true,
   rules: {
     '@fluentui/ban-imports': ['error', { pathRegex: '^(\\.\\./)+Styling$', names: ['FontSizes'] }],
-    '@fluentui/jsx-ban-props': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'import/no-extraneous-dependencies': [
       'error',

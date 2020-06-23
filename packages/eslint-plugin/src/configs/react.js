@@ -51,11 +51,6 @@ const config = {
     '**/*.scss.ts',
   ],
   rules: {
-    '@fluentui/jsx-ban-props': [
-      'error',
-      { name: 'style', message: 'Use className and provide CSS rules instead of using inline styles.' },
-    ],
-
     // tslint: function-name, variable-name
     '@typescript-eslint/naming-convention': [
       'error',

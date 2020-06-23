@@ -2,7 +2,6 @@
   "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
   "root": true,
   "rules": {
-    "deprecation/deprecation": "off",
-    "@fluentui/jsx-ban-props": "off"
+    "deprecation/deprecation": "off"
   }
 }

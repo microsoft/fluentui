@@ -43,25 +43,6 @@ Example:
 
 Prevent using deprecated `KeyboardEvent` props `which` and `keyCode`, and recommend using `@fluentui/keyboard-key` instead.
 
-### `jsx-ban-props`
-
-Ban using certain props on either components or DOM elements. Inspired by [`tslint-react`](https://github.com/palantir/tslint-react)'s rule with the same name. This differs from [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react)'s `react/forbid-component-props` because that rule only bans props on components.
-
-Requires one or more options objects:
-
-- `name` (`string`): Prop name to ban
-- `message` (`string`, optional): Custom message to show with errors
-
-Example:
-
-```
-"@fluentui/jsx-ban-props": [
-  "error",
-  { "name": "foo" },
-  { "name": "style", "message": "Use className and provide CSS rules instead of using inline styles." }
-]
-```
-
 ### `no-visibility-modifiers`
 
 Prevent visibility modifiers (`public`, `protected`, `private`) from being specified on class members/methods.
