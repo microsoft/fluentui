@@ -460,6 +460,16 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     _.invoke(this.props, 'onChange', e, { ...this.props, value: this.state.value });
   };
 
+  handleOnBlur = (e: React.SyntheticEvent) => {
+    // Dropdown component doesn't present any `input` component in markup, however all of our
+    // components should handle events transparently.
+    if (e.target !== this.buttonRef.current) {
+      _.invoke(this.props, 'onBlur', e, this.props);
+    }
+  };
+
+  rootRef = React.createRef<HTMLElement>();
+
   renderComponent({ ElementType, classes, styles, variables, unhandledProps, rtl }: RenderResultConfig<DropdownProps>) {
     const {
       clearable,
@@ -476,7 +486,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     const { highlightedIndex, open, searchQuery, value } = this.state;
 
     return (
-      <ElementType className={classes.root} onChange={this.handleChange} {...unhandledProps}>
+      <ElementType className={classes.root} onBlur={this.handleOnBlur} onChange={this.handleChange} {...unhandledProps}>
         <Downshift
           isOpen={open}
           inputValue={search ? searchQuery : null}
@@ -918,7 +928,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         if (state.isOpen && activeElement === this.listRef.current) {
           return {}; // won't change state in this case.
         }
-        _.invoke(this.props, 'onBlur', null);
 
       default:
         return changes;
@@ -1022,7 +1031,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         if (open) {
           newState.open = false;
           newState.highlightedIndex = null;
-          _.invoke(this.props, 'onBlur', null);
         }
 
         break;
