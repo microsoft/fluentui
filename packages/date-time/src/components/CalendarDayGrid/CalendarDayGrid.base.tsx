@@ -563,7 +563,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
   };
 
   private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number): string {
-    const cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
+    const cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ?? '';
     return cornerStyle;
   }
 
