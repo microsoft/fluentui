@@ -928,7 +928,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         if (state.isOpen && activeElement === this.listRef.current) {
           return {}; // won't change state in this case.
         }
-
+        _.invoke(this.props, 'onBlur', null);
       default:
         return changes;
     }
