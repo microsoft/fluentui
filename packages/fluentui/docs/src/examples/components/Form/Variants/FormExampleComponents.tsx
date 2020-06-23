@@ -27,8 +27,8 @@ const FormExampleComponents = () => (
   <Form>
     <Form.Input label="First name" name="firstName" id="first-name-inline" required />
     <Form.Dropdown label="City" id="cities-id" items={['prague', 'new york']} />
-    <Form.RadioGroup label="Pizza" vertical defaultCheckedValue="prosciutto" items={items} />
-    <Form.Slider />
+    <Form.RadioGroup label="Pizza" id="pizza-selection" vertical defaultCheckedValue="prosciutto" items={items} />
+    <Form.Slider label="Bid the price" id="price-slider" />
     <Form.Checkbox label="I agree to the Terms and Conditions" id="conditions-inline" />
     <Form.Button content="Submit" />
   </Form>
