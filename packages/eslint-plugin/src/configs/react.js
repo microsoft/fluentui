@@ -8,7 +8,7 @@ const camelOrPascalOrUpperCase = `(${camelOrPascalCase}|${upperCase})`;
 const builtins = '^(any|Number|number|String|string|Boolean|boolean|Undefined|undefined)$';
 
 /** @type {import("eslint").Linter.Config} */
-module.exports = {
+const config = {
   extends: [
     // Provides both rules and some parser options and other settings
     'airbnb',
@@ -271,95 +271,110 @@ module.exports = {
     'import/namespace': 'off',
     'import/no-named-as-default-member': 'off',
   },
-  overrides: [
-    // Enable rules requiring type info only for appropriate files/circumstances
-    ...configHelpers.getTypeInfoRuleOverrides({
-      'deprecation/deprecation': 'error',
-    }),
-    {
-      files: '**/*.{ts,tsx}',
-      // This turns off a few rules that don't work or are unnecessary for TS, and enables a few
-      // that make sense for TS: no-var, prefer-const, prefer-rest-params, prefer-spread
-      // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/eslint-recommended.ts
-      extends: ['plugin:@typescript-eslint/eslint-recommended'],
-      // and manually enable rules that only work on TS
-      rules: {
-        '@typescript-eslint/ban-ts-comment': 'error',
-        '@typescript-eslint/explicit-member-accessibility': [
-          'error',
-          {
-            accessibility: 'explicit',
-            overrides: { constructors: 'off' },
-          },
-        ],
-        '@typescript-eslint/member-ordering': [
-          'error',
-          {
-            default: [
-              'public-static-field',
-              'protected-static-field',
-              'private-static-field',
-              'public-instance-field',
-              'protected-instance-field',
-              'private-instance-field',
-              'public-static-method',
-              'protected-static-method',
-              'private-static-method',
-              'public-constructor',
-              'public-instance-method',
-              'protected-constructor',
-              'protected-instance-method',
-              'private-constructor',
-              'private-instance-method',
-            ],
-          },
-        ],
-
-        // permanently disable due to using other rules which do the same thing
-        camelcase: 'off', // redundant with @typescript-eslint/naming-convention
-
-        // permanently disable due to improper TS handling or unnecessary for TS
-        // (and not covered by plugin:@typescript-eslint/eslint-recommended)
-        'no-empty-function': 'off',
-        'no-unused-vars': 'off',
-        'react/jsx-filename-extension': 'off',
-      },
-    },
-    {
-      // Test overrides
-      files: [...configHelpers.testFiles],
-      rules: {
-        'no-console': 'off',
-        'react/jsx-no-bind': [
-          'error',
-          {
-            allowArrowFunctions: true, // inline lambdas ok in tests
-            allowFunctions: false,
-            allowBind: false,
-          },
-        ],
-      },
-    },
-    {
-      files: 'src/**/*.deprecated.test.{ts,tsx}',
-      rules: {
-        'deprecation/deprecation': 'off', // the purpose of these tests
-      },
-    },
-    {
-      // Example overrides
-      files: '**/*.Example.tsx',
-      rules: {
-        'no-alert': 'off',
-        'no-console': 'off',
-      },
-    },
-    {
-      // Docs overrides (excluding examples)
-      files: [...configHelpers.docsFiles],
-      rules: {
-        'import/no-webpack-loader-syntax': 'off', // this is ok in docs
-      },
-    },
-  ],
 };
+
+/**
+ * By default, any logic in this file will be run every time the plugin is loaded (even if this
+ * config is not used) due to it being included by necessity in the package index file.
+ * These overrides include some more complex logic which should only run when requested, since it's
+ * more costly and can cause build errors if run in a package it wasn't designed for.
+ * If ESLint supported exporting a function from a config file, that would be an easy solution.
+ * Since that's not supported, we work around it by defining overrides as a property with getter.
+ * @returns {import("eslint").Linter.ConfigOverride[]}
+ */
+const getOverrides = () => [
+  // Enable rules requiring type info only for appropriate files/circumstances
+  ...configHelpers.getTypeInfoRuleOverrides({
+    'deprecation/deprecation': 'error',
+  }),
+  {
+    files: '**/*.{ts,tsx}',
+    // This turns off a few rules that don't work or are unnecessary for TS, and enables a few
+    // that make sense for TS: no-var, prefer-const, prefer-rest-params, prefer-spread
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/eslint-recommended.ts
+    extends: ['plugin:@typescript-eslint/eslint-recommended'],
+    // and manually enable rules that only work on TS
+    rules: {
+      '@typescript-eslint/ban-ts-comment': 'error',
+      '@typescript-eslint/explicit-member-accessibility': [
+        'error',
+        {
+          accessibility: 'explicit',
+          overrides: { constructors: 'off' },
+        },
+      ],
+      '@typescript-eslint/member-ordering': [
+        'error',
+        {
+          default: [
+            'public-static-field',
+            'protected-static-field',
+            'private-static-field',
+            'public-instance-field',
+            'protected-instance-field',
+            'private-instance-field',
+            'public-static-method',
+            'protected-static-method',
+            'private-static-method',
+            'public-constructor',
+            'public-instance-method',
+            'protected-constructor',
+            'protected-instance-method',
+            'private-constructor',
+            'private-instance-method',
+          ],
+        },
+      ],
+
+      // permanently disable due to using other rules which do the same thing
+      camelcase: 'off', // redundant with @typescript-eslint/naming-convention
+
+      // permanently disable due to improper TS handling or unnecessary for TS
+      // (and not covered by plugin:@typescript-eslint/eslint-recommended)
+      'no-empty-function': 'off',
+      'no-unused-vars': 'off',
+      'react/jsx-filename-extension': 'off',
+    },
+  },
+  {
+    // Test overrides
+    files: [...configHelpers.testFiles],
+    rules: {
+      'no-console': 'off',
+      'react/jsx-no-bind': [
+        'error',
+        {
+          allowArrowFunctions: true, // inline lambdas ok in tests
+          allowFunctions: false,
+          allowBind: false,
+        },
+      ],
+    },
+  },
+  {
+    files: 'src/**/*.deprecated.test.{ts,tsx}',
+    rules: {
+      'deprecation/deprecation': 'off', // the purpose of these tests
+    },
+  },
+  {
+    // Example overrides
+    files: '**/*.Example.tsx',
+    rules: {
+      'no-alert': 'off',
+      'no-console': 'off',
+    },
+  },
+  {
+    // Docs overrides (excluding examples)
+    files: [...configHelpers.docsFiles],
+    rules: {
+      'import/no-webpack-loader-syntax': 'off', // this is ok in docs
+    },
+  },
+];
+
+Object.defineProperty(config, 'overrides', {
+  enumerable: true,
+  get: getOverrides,
+});
