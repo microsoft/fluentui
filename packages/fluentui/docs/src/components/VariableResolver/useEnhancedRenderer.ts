@@ -6,18 +6,6 @@ import * as React from 'react';
 
 export type UsedVariables = Record<string, Record<string, null>>;
 
-const variableRegex = /<<variable:(\w+)>>/g;
-const getAllVariables = (styleValue: string, matches: string[] = []): string[] => {
-  const match = variableRegex.exec(styleValue);
-
-  if (match) {
-    matches.push(match[1]);
-    getAllVariables(styleValue, matches);
-  }
-
-  return matches;
-};
-
 /** Enhances passed Fela or Emotion renderer to get actual variables. */
 const useEnhancedRenderer = (
   context: ProviderContextPrepared,
