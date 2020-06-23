@@ -49,8 +49,6 @@ module.exports = {
       } else if (tsconfig.compilerOptions && tsconfig.compilerOptions.rootDir) {
         tsFiles = [`${tsconfig.compilerOptions.rootDir}/${tsGlob}`];
       }
-    } else {
-      throw new Error(`tsconfig file not found at ${tsconfigPath}`);
     }
 
     return [

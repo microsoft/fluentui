@@ -373,3 +373,5 @@ Object.defineProperty(config, 'overrides', {
   enumerable: true,
   get: getOverrides,
 });
+
+module.exports = config;
