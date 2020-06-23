@@ -9,7 +9,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IAreaChartProps, IAreaChartStyleProps, IAreaChartStyles } from './AreaChart.types';
 
-import { IAreaChartPoints, IAreaChartDataPoint, IAreaChartDataSetPoint } from '../../types/index';
+import { IAreaChartDataSetPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/index';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 type numericAxis = D3Axis<number | { valueOf(): number }>;
@@ -22,7 +22,7 @@ export interface IAreaChartState {
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
-  private _points: IAreaChartPoints[];
+  private _points: ILineChartPoints[];
   private _classNames: IProcessedStyleSet<IAreaChartStyles>;
   private _reqID: number;
   // tslint:disable-next-line:no-any
@@ -151,7 +151,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   private _adjustProps(): void {
-    this._points = this.props.data.series ? this.props.data.series : [];
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._yAxisTickCount = this.props.yAxisTickCount || 4;
     this._showXAxisGridLines = this.props.showXAxisGridLines || false;
     this._showYAxisGridLines = this.props.showYAxisGridLines || false;
@@ -161,30 +161,30 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   private _createDataSet = () => {
-    let allChartPoints: IAreaChartDataPoint[] = [];
+    let allChartPoints: ILineChartDataPoint[] = [];
     const dataSet: IAreaChartDataSetPoint[] = [];
     this._points.length &&
-      this._points.map((singleChartPoint: IAreaChartPoints) => {
+      this._points.map((singleChartPoint: ILineChartPoints) => {
         allChartPoints = [...allChartPoints, ...singleChartPoint.data];
       });
 
     let tempArr = allChartPoints;
     while (tempArr.length) {
       const valToCheck = tempArr[0].x;
-      const filteredChartPoints: IAreaChartDataPoint[] = tempArr.filter(
-        (point: IAreaChartDataPoint) => point.x === valToCheck,
+      const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
+        (point: ILineChartDataPoint) => point.x === valToCheck,
       );
 
       // tslint:disable-next-line:no-any
       const singleDataset: any = {};
-      filteredChartPoints.map((singleDataPoint: IAreaChartDataPoint, index: number) => {
+      filteredChartPoints.map((singleDataPoint: ILineChartDataPoint, index: number) => {
         singleDataset.xVal = singleDataPoint.x;
         singleDataset[`chart${index}`] = singleDataPoint.y;
       });
       dataSet.push(singleDataset);
 
       const val = tempArr[0].x; // removing compared objects from array
-      tempArr = tempArr.filter((point: IAreaChartDataPoint) => point.x !== val);
+      tempArr = tempArr.filter((point: ILineChartDataPoint) => point.x !== val);
     }
     return dataSet;
   };
@@ -194,8 +194,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     let sDate = new Date();
     // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
     let lDate = new Date(-8640000000000000);
-    this._points.map((singleChartData: IAreaChartPoints) => {
-      singleChartData.data.map((point: IAreaChartDataPoint) => {
+    this._points.map((singleChartData: ILineChartPoints) => {
+      singleChartData.data.map((point: ILineChartDataPoint) => {
         xAxisData.push(point.x as Date);
         if (point.x < sDate) {
           sDate = point.x as Date;
@@ -260,14 +260,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _createNumericXAxis(): numericAxis {
-    const xMax = d3Max(this._points, (point: IAreaChartPoints) => {
-      return d3Max(point.data, (item: IAreaChartDataPoint) => {
+    const xMax = d3Max(this._points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => {
         return item.x as number;
       });
     })!;
 
-    const xMin = d3Min(this._points, (point: IAreaChartPoints) => {
-      return d3Min(point.data, (item: IAreaChartDataPoint) => item.x);
+    const xMin = d3Min(this._points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.x);
     })!;
 
     const xAxisScale = d3ScaleLinear()
@@ -290,7 +290,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   private _getColors = (): string[] => {
-    return this._points.map((singlePoint: IAreaChartPoints) => singlePoint.color);
+    return this._points.map((singlePoint: ILineChartPoints) => singlePoint.color);
   };
 
   private _createKeys = (): string[] => {
@@ -329,12 +329,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
     this._createYAxis(maxOfYVal); // Need max of Y value to build Y axis, So creating Y axis here
 
-    const xMax = d3Max(this._points, (point: IAreaChartPoints) => {
-      return d3Max(point.data, (item: IAreaChartDataPoint) => item.x as number);
+    const xMax = d3Max(this._points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => item.x as number);
     })!;
 
-    const xMin = d3Min(this._points, (point: IAreaChartPoints) => {
-      return d3Min(point.data, (item: IAreaChartDataPoint) => item.x);
+    const xMin = d3Min(this._points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.x);
     })!;
 
     const xScale = d3ScaleLinear()

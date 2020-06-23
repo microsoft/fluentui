@@ -2,7 +2,7 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { IAreaChartData } from '../../types/index';
+import { IChartProps } from '../../types/index';
 
 export interface IAreaChartProps {
   /**
@@ -13,7 +13,7 @@ export interface IAreaChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IAreaChartData;
+  data: IChartProps;
 
   /**
    * Width of the chart.

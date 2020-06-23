@@ -70,7 +70,8 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
     ];
 
     const chartData = {
-      series: chartPoints,
+      chartTtitle: 'Area chart styled example',
+      lineChartData: chartPoints,
     };
 
     const rootStyle: IRootStyles = { width: '650px', height: '400px' };

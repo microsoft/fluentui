@@ -295,61 +295,6 @@ export interface IGVForBarChart {
   [key: string]: IGVBarChartSeriesPoint;
 }
 
-export interface IAreaChartDataPoint {
-  /**
-   * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If data type on x is Date, then the data is spaced evenly by d3-scale
-   */
-  x: number | Date;
-
-  /**
-   * Dependent value of the data point, rendered along the y-axis.
-   */
-  y: number;
-
-  /**
-   * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
-   */
-  xAxisCalloutData?: string;
-
-  /**
-   * Callout data for y axis
-   * This is an optional prop, If haven't given data will take
-   */
-  yAxisCalloutData?: string;
-}
-
-export interface IAreaChartPoints {
-  /**
-   * Legend text for the datapoint in the chart
-   */
-  legend: string;
-
-  /**
-   * dataPoints for the line chart
-   */
-  data: IAreaChartDataPoint[];
-
-  /**
-   * color for the legend in the chart
-   */
-  color: string;
-
-  /**
-   * Defines the function that is executed on clicking this legend
-   */
-  onLegendClick?: (selectedLegend: string | null) => void; // need to check as call back or just string
-}
-
-export interface IAreaChartData {
-  /**
-   * data for the points in the chart
-   */
-  series: IAreaChartPoints[];
-}
-
 export interface IAreaChartAreaPoint {
   xVal: string | number;
   values: IAreaChartDataSetPoint;

@@ -82,7 +82,8 @@ export class AreaChartBasicExample extends React.Component<Readonly<{}>, {}> {
     ];
 
     const chartData = {
-      series: chartPoints,
+      chartTtitle: 'Area chart basic example',
+      lineChartData: chartPoints,
     };
 
     const rootStyle: IRootStyles = { width: '650px', height: '400px' };

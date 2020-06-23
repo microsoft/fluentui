@@ -159,7 +159,8 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
     ];
 
     const chartData = {
-      series: chartPoints,
+      chartTtitle: 'Area chart multiple example',
+      lineChartData: chartPoints,
     };
 
     const rootStyle: IRootStyles = { width: '650px', height: '400px' };
