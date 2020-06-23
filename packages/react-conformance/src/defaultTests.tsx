@@ -73,7 +73,7 @@ export const defaultTests: TestObject = {
     });
   },
 
-  /** Ensures component is exported at top level allowing import { Component } from 'packageName' */
+  /** Ensures component is exported at top level allowing `import { Component } from 'packageName'` */
   'exported-top-level': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (!testInfo.isInternal) {
       it(`is exported at top-level`, () => {
