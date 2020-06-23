@@ -43,50 +43,6 @@ describe('CommandBar', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('adds the correct aria-setsize and -posinset attributes to the command bar items.', () => {
-    const items: IContextualMenuItem[] = [
-      {
-        name: 'TestText 1',
-        key: 'TestKey1',
-        className: 'item1',
-        subMenuProps: {
-          items: [
-            {
-              name: 'SubmenuText 1',
-              key: 'SubmenuKey1',
-              className: 'SubMenuClass'
-            }
-          ]
-        }
-      },
-      {
-        name: 'TestText 2',
-        key: 'TestKey2',
-        className: 'item2',
-      },
-      {
-        name: 'TestText 3',
-        key: 'TestKey3',
-        className: 'item3',
-      },
-    ];
-
-    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
-      <CommandBar
-        items={ items }
-      />
-    ) as React.Component<CommandBar, {}>;
-    document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
-
-    const [item1, item2, item3] = ['.item1', '.item2', '.item3'].map(i => document.querySelector(i)!.children[0]);
-    expect(item1.getAttribute('aria-setsize')).toBe('3');
-    expect(item2.getAttribute('aria-setsize')).toBe('3');
-    expect(item3.getAttribute('aria-setsize')).toBe('3');
-    expect(item1.getAttribute('aria-posinset')).toBe('1');
-    expect(item2.getAttribute('aria-posinset')).toBe('2');
-    expect(item3.getAttribute('aria-posinset')).toBe('3');
-  });
-
   it('opens a menu with deprecated IContextualMenuItem.items property', () => {
     const items: IContextualMenuItem[] = [
       {
