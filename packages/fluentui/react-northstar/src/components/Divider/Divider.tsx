@@ -95,7 +95,7 @@ const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<D
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
     >
