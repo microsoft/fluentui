@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./lib",
+    "importHelpers": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": ["jest", "node"],
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "paths": {
+      "@uifabric/codemods/lib/*": ["./src/*"],
+      "@uifabric/codemods": ["./src"]
+    }
+  },
+  "include": ["src"]
+}

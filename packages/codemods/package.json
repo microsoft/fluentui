@@ -1,0 +1,39 @@
+{
+  "name": "@fluentui/codemods",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "bin": {
+    "migration": "./bin/upgrade.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "scripts": {
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "start": "just-scripts start",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
+    "change": "beachball change",
+    "gen": "plop"
+  },
+  "devDependencies": {
+    "beachball": "^1.12.1",
+    "just-scripts": "^0.27.0",
+    "just-stack-single-lib": "^1.0.0"
+  },
+  "dependencies": {
+    "@types/react": "*",
+    "@types/semver": "^7.1.0",
+    "@uifabric/build": "^7.0.0",
+    "acorn": "^6.4.1",
+    "minimist": "^1.2.2",
+    "office-ui-fabric-react": "^7.98.3",
+    "react": "^16.13.0",
+    "semver": "^7.3.2",
+    "ts-morph": "^7.0.0",
+    "glob": "^7.1.0"
+  }
+}
