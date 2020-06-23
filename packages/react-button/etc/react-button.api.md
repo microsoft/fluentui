@@ -6,6 +6,7 @@
 
 import { ColorPlateSet } from '@fluentui/react-theme-provider';
 import { ComposeOptions } from '@fluentui/react-compose';
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -124,7 +125,7 @@ export interface ToggleButtonState extends ToggleButtonProps {
 }
 
 // @public
-export const useButton: (props: ButtonProps) => ButtonState;
+export const useButton: (props: ButtonProps, ref: import("react").Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ButtonState;
 
 // Warning: (ae-forgotten-export) The symbol "ToggleProps" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "ToggleState" needs to be exported by the entry point index.d.ts
