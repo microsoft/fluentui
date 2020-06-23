@@ -1,7 +1,7 @@
 import {
   AccessibilityActionHandlers,
   ComponentSlotClasses,
-  FocusZone,
+  __INTERNAL__FocusZone as FocusZone,
   getElementType,
   deprecated_getTelemetry as getTelemetry,
   getUnhandledProps,

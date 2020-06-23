@@ -5,9 +5,9 @@ export * from '@fluentui/react-compose';
 
 export { default as AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
-export { default as FocusTrapZone } from './FocusZone/FocusTrapZone';
+export { default as __INTERNAL__FocusTrapZone } from './FocusZone/FocusTrapZone';
 export * from './FocusZone/FocusTrapZone.types';
-export { default as FocusZone } from './FocusZone/FocusZone';
+export { default as __INTERNAL__FocusZone } from './FocusZone/FocusZone';
 export * from './FocusZone/FocusZone.types';
 export * from './FocusZone/focusUtilities';
 

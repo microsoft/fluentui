@@ -1,4 +1,4 @@
-import { FocusZone, AutoFocusZone } from '@fluentui/react-bindings';
+import { __INTERNAL__FocusZone as FocusZone, AutoFocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 

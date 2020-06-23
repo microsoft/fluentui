@@ -1,13 +1,14 @@
 import { Accessibility, dialogBehavior, DialogBehaviorProps } from '@fluentui/accessibility';
 import {
-  FocusTrapZoneProps,
   useAutoControlled,
   useTelemetry,
   useAccessibility,
   useStyles,
   useUnhandledProps,
   getElementType,
+  FocusTrapZoneProps,
 } from '@fluentui/react-bindings';
+
 import { Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref } from '@fluentui/react-component-ref';

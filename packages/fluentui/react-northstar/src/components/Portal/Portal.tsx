@@ -1,7 +1,7 @@
 import { AccessibilityAttributes } from '@fluentui/accessibility';
 import {
   AccessibilityHandlerProps,
-  FocusTrapZone,
+  __INTERNAL__FocusTrapZone as FocusTrapZone,
   FocusTrapZoneProps,
   useTelemetry,
   useAutoControlled,
