@@ -21,7 +21,6 @@ exports[`Rating Renders Rating correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
     tabIndex={-1}
   >
     <button
