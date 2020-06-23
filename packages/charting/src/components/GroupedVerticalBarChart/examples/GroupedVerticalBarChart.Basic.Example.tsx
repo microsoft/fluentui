@@ -3,11 +3,6 @@ import { GroupedVerticalBarChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-interface IRootStyles {
-  height: string;
-  width: string;
-}
-
 export class GroupedVerticalBarChartBasicExample extends React.Component<Readonly<{}>, {}> {
   public render(): React.ReactNode {
     const data = [
@@ -148,10 +143,10 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
       },
     ];
 
-    const rootStyle: IRootStyles = { width: '650px', height: '400px' };
+    const rootStyle = mergeStyles({ width: '650px', height: '400px' });
 
     return (
-      <div className={mergeStyles(rootStyle)}>
+      <div className={rootStyle}>
         <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines />
       </div>
     );
