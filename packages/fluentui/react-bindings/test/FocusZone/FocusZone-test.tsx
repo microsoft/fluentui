@@ -1,5 +1,5 @@
 import { FocusZoneDirection, FocusZoneTabbableElements, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import FocusZone from '@fluentui/react-bindings/src/FocusZone/FocusZone';
+import { FocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
