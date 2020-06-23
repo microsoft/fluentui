@@ -32,6 +32,7 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'primary',
       'secondary',
       'size',
+      'tokens',
     ],
     slots: {
       icon: 'span',
