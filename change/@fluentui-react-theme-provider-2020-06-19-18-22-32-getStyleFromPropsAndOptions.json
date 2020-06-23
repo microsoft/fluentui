@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding getStylesFromOptionsAndProps method to calculate the correct value for the style prop.",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-20T01:22:32.548Z"
-}

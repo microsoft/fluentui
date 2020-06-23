@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jun 2020 12:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.47)
+
+Tue, 23 Jun 2020 12:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.46..@fluentui/react-next_v8.0.0-alpha.47)
+
+### Changes
+
+- Copy Persona component code to react-next project for migration ([PR #13510](https://github.com/microsoft/fluentui/pull/13510) by miclo@microsoft.com)
+- SelectedItemsList: Copy code to react-next to stage migration ([PR #13630](https://github.com/microsoft/fluentui/pull/13630) by miclo@microsoft.com)
+- Fix incorrect button imports ([PR #13747](https://github.com/microsoft/fluentui/pull/13747) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.46)
 
