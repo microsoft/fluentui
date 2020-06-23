@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react-next/lib/Persona';
+import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react-next';
 import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
 import { Label } from '@fluentui/react-next/lib/Label';
 import { Stack } from '@fluentui/react-next/lib/Stack';
