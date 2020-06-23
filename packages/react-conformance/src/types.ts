@@ -5,15 +5,15 @@ import { mount } from 'enzyme';
 
 export type Tests = keyof typeof defaultTests;
 
-export interface TestingOptions {
+/**
+ * Individual test options
+ */
+export interface TestOptions {
   'consistent-callback-names'?: {
     ignoreProps?: string[];
   };
 }
 
-/**
- * {@docCategory isConformant}
- */
 export interface IsConformantOptions<TProps = {}> {
   /**
    * Path to component file.
@@ -56,7 +56,7 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * Allows specific test options.
    */
-  testingOptions?: TestingOptions;
+  testOptions?: TestOptions;
 }
 
 export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => void;
