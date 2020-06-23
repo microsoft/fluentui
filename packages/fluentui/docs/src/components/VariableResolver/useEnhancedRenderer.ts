@@ -28,7 +28,7 @@ const useEnhancedRenderer = (
 
       return context.renderer.renderRule(styles, rendererParam);
     },
-    [context.renderer],
+    [context],
   );
 
   const enhancedContext: ProviderContextPrepared = React.useMemo(
@@ -36,7 +36,7 @@ const useEnhancedRenderer = (
       ...context,
       renderer: { ...context.renderer, renderRule },
     }),
-    [context],
+    [context, renderRule],
   );
 
   return [enhancedContext, resolvedVariables];
