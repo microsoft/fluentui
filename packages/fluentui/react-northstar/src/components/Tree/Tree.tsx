@@ -186,18 +186,11 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
-  const expandedItems = React.useMemo(
-    () =>
-      stableProps.current?.activeItemIds
-        ? stableProps.current?.activeItemIds
-        : expandedItemsGenerator(stableProps.current?.items),
-    [stableProps],
-  );
 
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
-    initialValue: expandedItems,
+    initialValue: expandedItemsGenerator(items),
   });
 
   const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled<string[]>({
@@ -284,10 +277,10 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
           }
           nextActiveItemsIds = [...nextActiveItemsIds, id];
         }
-        return [...nextActiveItemsIds, ...expandedItems];
+        return nextActiveItemsIds;
       });
     },
-    [stableProps, setActiveItemIds, exclusive, expandedItems],
+    [stableProps, setActiveItemIds, exclusive],
   );
 
   const onTitleClick = React.useCallback(
@@ -340,9 +333,9 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
 
   const isActiveItem = React.useCallback(
     (id: string): boolean => {
-      return [...activeItemIds, ...expandedItems].indexOf(id) > -1;
+      return activeItemIds.indexOf(id) > -1;
     },
-    [activeItemIds, expandedItems],
+    [activeItemIds],
   );
 
   const onSiblingsExpand = React.useCallback(
@@ -366,10 +359,10 @@ const Tree: React.FC<WithAsProp<TreeProps>> &
         if (hasSubtree(treeItemProps) && !isActiveItem(id)) {
           nextActiveItemsIds.push(id);
         }
-        return [...nextActiveItemsIds, ...expandedItems];
+        return nextActiveItemsIds;
       });
     },
-    [exclusive, stableProps, isActiveItem, setActiveItemIds, expandedItems],
+    [exclusive, stableProps, isActiveItem, setActiveItemIds],
   );
 
   const isIndeterminate = (item: TreeItemProps) => {
