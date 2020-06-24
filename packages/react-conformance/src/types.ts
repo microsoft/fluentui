@@ -57,6 +57,10 @@ export interface IsConformantOptions<TProps = {}> {
    * Allows specific test options.
    */
   testOptions?: TestOptions;
+  /**
+   * This component uses wrapper slot to wrap the 'meaningful' element.
+   */
+  wrapperComponent?: React.ElementType;
 }
 
 export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => void;

@@ -13,7 +13,9 @@ export function isConformant(testInfo: IsConformantOptions) {
     throw new Error(`Path ${componentPath} does not exist`);
   }
 
-  const parser = withCustomConfig(tsconfigPath, {});
+  const parser = withCustomConfig(tsconfigPath, {
+    propFilter: prop => !/@types[\\/]react[\\/]/.test(prop.parent?.fileName || ''),
+  });
   const components = parser.parse(componentPath);
   const mainComponents = components.filter(comp => comp.displayName === displayName);
 
