@@ -7,4 +7,4 @@ const ieRegexes = ieSteps.map(file => `(${file.replace(/\.steps\.ts/, '.tsx').re
 export const ieExcludeRegexes = ieExcludeSteps.map(
   file => new RegExp(file.replace(/\.steps\.ts/, '.tsx').replace(/.+\//, '')),
 );
-export default ieRegexes;
+export default [ieRegexes];
