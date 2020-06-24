@@ -1,8 +1,17 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2020 17:35:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.27](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.27)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.21..@uifabric/test-utilities_v7.0.27)
+
+### Patches
+
+- Adding missing peerDependencies ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
 
 ## [7.0.21](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.21)
 

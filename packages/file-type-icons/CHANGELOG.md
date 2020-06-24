@@ -1,8 +1,26 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 29 May 2020 12:35:34 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2020 12:37:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.7)
+
+Wed, 24 Jun 2020 12:37:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.5..@uifabric/file-type-icons_v7.3.7)
+
+### Patches
+
+- revving CDN url and adding .classifier type to the filetype list for icons ([PR #13743](https://github.com/microsoft/fluentui/pull/13743) by caperez@microsoft.com)
+
+## [7.3.5](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.5)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.4..@uifabric/file-type-icons_v7.3.5)
+
+### Patches
+
+- Add special folder icon names to FileTypeIconMap. Fix icon name for special documents folder. ([PR #13625](https://github.com/microsoft/fluentui/pull/13625) by taenri@microsoft.com)
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.0)
 

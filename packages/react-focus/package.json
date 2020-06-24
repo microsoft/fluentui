@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-focus",
-  "version": "7.12.7",
+  "version": "7.12.10",
   "description": "Focus helpers to be used in React applications.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,7 +29,6 @@
   "devDependencies": {
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
@@ -40,7 +39,6 @@
     "@uifabric/tslint-rules": "^7.2.1",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
@@ -50,8 +48,8 @@
     "@fluentui/keyboard-key": "^0.2.1",
     "@uifabric/merge-styles": "^7.14.1",
     "@uifabric/set-version": "^7.0.13",
-    "@uifabric/styling": "^7.12.17",
-    "@uifabric/utilities": "^7.20.3",
+    "@uifabric/styling": "^7.13.1",
+    "@uifabric/utilities": "^7.21.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

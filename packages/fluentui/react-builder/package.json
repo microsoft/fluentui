@@ -1,0 +1,48 @@
+{
+  "name": "@fluentui/react-builder",
+  "description": "A drag and drop UI builder.",
+  "version": "0.50.0",
+  "author": "Levi Thomason <me@levithomason.com>",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
+  "dependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@fluentui/docs-components": "^0.50.0",
+    "@fluentui/react-component-event-listener": "^0.50.0",
+    "@fluentui/react-icons-northstar": "^0.50.0",
+    "@fluentui/react-northstar": "^0.50.0",
+    "lodash": "^4.17.15",
+    "lz-string": "^1.4.4",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-frame-component": "^4.1.1",
+    "react-is": "^16.6.3"
+  },
+  "devDependencies": {
+    "@types/react-frame-component": "^4.1.1",
+    "@uifabric/build": "^7.0.0",
+    "lerna-alias": "^3.0.3-0"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-builder",
+  "jsnext:main": "dist/es/index.js",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "microsoft/fluentui.git",
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
+  },
+  "sideEffects": false,
+  "types": "dist/es/index.d.ts"
+}

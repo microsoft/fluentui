@@ -1,4 +1,4 @@
-import { Provider, ProviderContextPrepared } from '@fluentui/react-northstar';
+import { ProviderContextPrepared } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 // @ts-ignore
@@ -18,7 +18,7 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
   const latestVariables = React.useRef<UsedVariables>({});
 
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const [renderer, resolvedVariables] = useEnhancedRenderer(context.renderer);
+  const [enhancedContext, resolvedVariables] = useEnhancedRenderer(context);
 
   const onClassNamesChange = React.useCallback(() => {
     if (!_.isEqual(resolvedVariables.current, latestVariables.current)) {
@@ -34,9 +34,9 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
   useClassNamesListener(elementRef, onClassNamesChange);
 
   return (
-    <Provider renderer={renderer}>
+    <ThemeContext.Provider value={enhancedContext}>
       <div ref={elementRef}>{props.children}</div>
-    </Provider>
+    </ThemeContext.Provider>
   );
 };
 

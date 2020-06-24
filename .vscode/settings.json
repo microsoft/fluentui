@@ -48,6 +48,7 @@
   "tslint.autoFixOnSave": false,
   "tslint.exclude": "**/*.scss.ts",
   "files.associations": {
+    "**/*.json.hbs": "jsonc",
     "**/tslint.json": "jsonc",
     "**/tslint.*.json": "jsonc"
   },

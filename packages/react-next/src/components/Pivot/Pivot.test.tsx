@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount } from 'enzyme';
 import { resetIds } from '../../Utilities';
 import { Pivot, PivotItem, IPivot } from './index';
@@ -10,7 +10,7 @@ describe('Pivot', () => {
     resetIds();
   });
   it('renders link Pivot correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
@@ -47,7 +47,7 @@ describe('Pivot', () => {
   });
 
   it('supports JSX expressions', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot defaultSelectedKey="1">
         <PivotItem headerText="Test Link 1">
           <div>This is item 1</div>
@@ -62,7 +62,7 @@ describe('Pivot', () => {
     expect(tree).toMatchSnapshot();
   });
   it('renders large link Pivot correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot linkSize="large">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
@@ -72,7 +72,7 @@ describe('Pivot', () => {
     expect(tree).toMatchSnapshot();
   });
   it('renders tabbed Pivot correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot linkFormat="tabs">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
@@ -82,7 +82,7 @@ describe('Pivot', () => {
     expect(tree).toMatchSnapshot();
   });
   it('renders large tabbed Pivot correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot linkFormat="tabs" linkSize="large">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
@@ -92,7 +92,7 @@ describe('Pivot', () => {
     expect(tree).toMatchSnapshot();
   });
   it('renders Pivot correctly with custom className', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot className="specialClassName">
         <PivotItem headerText="Test Link 1" className="specialClassName" />
         <PivotItem headerText="Test Link 2" />
@@ -102,7 +102,7 @@ describe('Pivot', () => {
     expect(tree).toMatchSnapshot();
   });
   it('renders Pivot correctly with icon, text and count', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot>
         <PivotItem itemCount={12} />
         <PivotItem headerText="Test Link" itemCount={12} />
@@ -113,7 +113,7 @@ describe('Pivot', () => {
     expect(tree).toMatchSnapshot();
   });
   it('renders Pivot correctly when itemCount is a string', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot>
         <PivotItem headerText="test" />
         <PivotItem headerText="Test Link" itemCount="20+" />

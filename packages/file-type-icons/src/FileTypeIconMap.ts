@@ -253,10 +253,15 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vcf'],
   },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
+  classifier: {
+    extensions: ['classifier'],
+  },
   csv: {
     extensions: ['csv'],
   },
+  desktopfolder: {},
   docset: {},
+  documentfolder: {},
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -377,6 +382,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   photo360: {},
+  picturesfolder: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },

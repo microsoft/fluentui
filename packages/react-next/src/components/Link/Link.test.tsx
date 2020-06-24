@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { Customizer } from '../../Utilities';
 import { createTheme } from '../../Styling';
 
@@ -9,12 +9,12 @@ import { Link } from './Link';
 
 describe('Link', () => {
   it('renders Link correctly', () => {
-    const component = renderer.create(<Link href="#">I'm a link</Link>);
+    const component = create(<Link href="#">I'm a link</Link>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('renders disabled Link correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <Link href="#" disabled={true}>
         I'm a disabled link
       </Link>,
@@ -23,7 +23,7 @@ describe('Link', () => {
     expect(tree).toMatchSnapshot();
   });
   it('renders Link with no href as a button', () => {
-    const component = renderer.create(<Link>I'm a link as a button</Link>);
+    const component = create(<Link>I'm a link as a button</Link>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -36,12 +36,12 @@ describe('Link', () => {
   });
 
   it('renders disabled Link with no href as a button correctly', () => {
-    const component = renderer.create(<Link disabled={true}>I'm a link as a button</Link>);
+    const component = create(<Link disabled={true}>I'm a link as a button</Link>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('renders Link with a custom class name', () => {
-    const component = renderer.create(
+    const component = create(
       <Link href="#" className="customClassName">
         I'm a link
       </Link>,
@@ -51,7 +51,7 @@ describe('Link', () => {
   });
 
   it('renders Link with "as=div" a div element', () => {
-    const component = renderer.create(
+    const component = create(
       <Link as="div" className="customClassName">
         I'm a div
       </Link>,
@@ -61,9 +61,7 @@ describe('Link', () => {
   });
 
   it('supports non button/anchor html attributes when "as=" is used', () => {
-    const component = renderer.create(
-      <Link as="input" type="text" value={'This is an input.'} className="customClassName" />,
-    );
+    const component = create(<Link as="input" type="text" value={'This is an input.'} className="customClassName" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -75,7 +73,7 @@ describe('Link', () => {
       }
     }
 
-    const component = renderer.create(
+    const component = create(
       <Link as={Route} className="customClassName">
         I'm a Route
       </Link>,

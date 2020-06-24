@@ -11,7 +11,6 @@ const resolvePath = (packageName, entryFileName = 'index.js') =>
 
 // Create entries for all top level imports.
 const Entries = _buildEntries('office-ui-fabric-react');
-_buildEntries('@fluentui/react-button', Entries);
 _buildEntries('@fluentui/react-next', Entries);
 
 // Create entries for single top level import.

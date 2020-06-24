@@ -47,6 +47,7 @@ function basicPreset() {
 module.exports = function preset() {
   basicPreset();
 
+  task('no-op', () => {}).cached();
   task('clean', clean);
   task('copy', copy);
   task('jest', jestTask);
@@ -62,8 +63,8 @@ module.exports = function preset() {
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
-  task('api-extractor:verify', verifyApiExtractor);
-  task('api-extractor:update', updateApiExtractor);
+  task('api-extractor:verify', verifyApiExtractor());
+  task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('bundle-size-collect', bundleSizeCollect);
@@ -80,7 +81,7 @@ module.exports = function preset() {
     return argv().commonjs
       ? 'ts:commonjs-only'
       : parallel(
-          'ts:commonjs',
+          condition('ts:commonjs', () => !argv().min),
           'ts:esm',
           condition('ts:amd', () => !!argv().production),
         );
@@ -110,7 +111,7 @@ module.exports = function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json'))),
+      condition('api-extractor:verify', () => !argv().min),
     ),
   ).cached();
 
@@ -121,8 +122,6 @@ module.exports = function preset() {
       condition('storybook:build', () => !!resolveCwd('./.storybook/main.js')),
     ),
   );
-
-  task('no-op', () => {}).cached();
 };
 
 module.exports.basic = basicPreset;

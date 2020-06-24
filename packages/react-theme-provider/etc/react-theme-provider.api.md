@@ -6,35 +6,75 @@
 
 import * as React from 'react';
 
+// @public (undocumented)
+export type ColorPlateSet = ColorTokens & ColorTokenStates;
+
 // @public
-export const mergeThemes: (...themes: (ThemePrepared | Theme | undefined)[]) => ThemePrepared;
+export type ColorTokens = Partial<{
+    background: string;
+    contentColor: string;
+    subTextColor: string;
+    linkColor: string;
+    iconColor: string;
+    borderColor: string;
+    dividerColor: string;
+    focusColor: string;
+    focusInnerColor: string;
+}>;
+
+// @public
+export type ColorTokenStates = Partial<{
+    hovered: ColorTokens;
+    pressed: ColorTokens;
+    disabled: ColorTokens;
+    checked: ColorTokens;
+    checkedHovered: ColorTokens;
+    checkedPressed: ColorTokens;
+}>;
+
+// @public (undocumented)
+export type FontTokens = Partial<{
+    fontFamily: string;
+    fontSize: string;
+    fontWeight: string;
+}>;
+
+// @public (undocumented)
+export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorPlateSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+
+// @public
+export const mergeThemes: (...themes: (Theme | PartialTheme | undefined)[]) => Theme;
+
+// @public
+export interface PartialTheme extends RecursivePartial<Theme> {
+}
 
 // @public
 export type RecursivePartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
 };
 
-// @public
-export interface Theme extends RecursivePartial<ThemePrepared> {
+// @public (undocumented)
+export interface StyleOptions<TProps> {
+    // (undocumented)
+    slotProps: ((props: TProps) => Record<string, object>)[];
 }
 
 // @public
-export type ThemePlateSet = Partial<{
-    fill: ThemeStateSet;
-    text: ThemeStateSet;
-    subText: ThemeStateSet;
-    link: ThemeStateSet;
-    divider: ThemeStateSet;
-    [key: string]: ThemeStateSet;
-}>;
+export interface StyleProps<TTokens extends ColorPlateSet = ColorPlateSet> {
+    // (undocumented)
+    style?: React.CSSProperties;
+    // (undocumented)
+    tokens?: TTokens;
+}
 
 // @public
-export interface ThemePrepared {
+export interface Theme {
     // (undocumented)
     stylesheets: string[];
     // (undocumented)
     tokens: {
-        body: ThemePlateSet;
+        body: ColorPlateSet & TokenSetType;
         [key: string]: TokenSetType;
     };
 }
@@ -44,27 +84,25 @@ export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps &
 
 // @public
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
-    theme?: Theme;
+    theme?: PartialTheme | Theme;
 }
-
-// @public
-export type ThemeStateSet = Partial<{
-    default: string;
-    hovered: string;
-    pressed: string;
-    disabled: string;
-    checked: string;
-    checkedHovered: string;
-    checkedPressed: string;
-}> | string;
 
 // @public
 export type TokenSetType = string | {
     [key: string]: TokenSetType | undefined;
 };
 
+// @public (undocumented)
+export const tokensToStyleObject: (tokens?: {
+    [key: string]: string | {
+        [key: string]: string | any | undefined;
+    } | undefined;
+} | undefined, prefix?: string | undefined, style?: {
+    [key: string]: string | number | undefined;
+}) => import("react").CSSProperties;
+
 // @public
-export const useTheme: () => ThemePrepared;
+export const useTheme: () => Theme;
 
 
 // (No @packageDocumentation comment for this package)
