@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Grouped chart - second chart disappear issue fixed",
+  "comment": "Grouped veritcal bar chart - second chart disappear issue fixed",
   "packageName": "@uifabric/charting",
   "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
