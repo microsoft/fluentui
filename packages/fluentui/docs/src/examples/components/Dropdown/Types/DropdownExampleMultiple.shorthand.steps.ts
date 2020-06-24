@@ -23,7 +23,7 @@ const config: ScreenerTestsConfig = {
         .click(selectors.triggerButton)
         .snapshot('Opened dropdown with no items selected'),
   ],
-  browsers: ['ie11'],
+  // browsers: ['ie11'],
 };
 
 export default config;

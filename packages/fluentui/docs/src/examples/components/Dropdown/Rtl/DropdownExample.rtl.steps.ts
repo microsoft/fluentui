@@ -14,7 +14,7 @@ export const config: ScreenerTestsConfig = {
         .click(selectors.item(3))
         .snapshot('RTL: Selects an item'),
   ],
-  browsers: ['ie11'],
+  // browsers: ['ie11'],
 };
 
 export default config;

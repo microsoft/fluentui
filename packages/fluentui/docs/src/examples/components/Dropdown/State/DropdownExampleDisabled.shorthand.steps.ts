@@ -11,7 +11,7 @@ const config: ScreenerTestsConfig = {
     builder => builder.hover(selectors.triggerButton).snapshot('Mouse hover on trigger'),
     builder => builder.hover(selectors.input).snapshot('Mouse hover on input'),
   ],
-  browsers: ['ie11'],
+  // browsers: ['ie11'],
 };
 
 export default config;
