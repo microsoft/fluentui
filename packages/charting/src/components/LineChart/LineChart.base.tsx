@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { max as d3Max, min as d3Min } from 'd3-array';
-import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom } from 'd3-axis';
-import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import * as d3TimeFormat from 'd3-time-format';
 import { ILegend, Legends } from '../Legends/index';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
@@ -17,6 +13,7 @@ import {
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
+import { createNumericXAxis, createDateXAxis, createYAxis } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
@@ -141,9 +138,33 @@ export class LineChartBase extends React.Component<
     }
     let lines: JSX.Element[] = [];
     if (dataPresent) {
-      dataType ? this._createDateXAxis(tickValues, tickFormat) : this._createNumericXAxis();
+      const XAxisParams = {
+        margins: this.margins,
+        containerWidth: this.state.containerWidth,
+        xAxisElement: this.xAxisElement!,
+      };
+      const tickParams = {
+        tickValues: tickValues,
+        tickFormat: tickFormat,
+      };
+      dataType
+        ? (this._xAxisScale = createDateXAxis(this._points, XAxisParams, tickParams))
+        : (this._xAxisScale = createNumericXAxis(this._points, XAxisParams));
       const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
-      this._createYAxis(yAxisTickFormat);
+      const { yMaxValue = 0, yMinValue = 0 } = this.props;
+      const yAxisParams = {
+        margins: this.margins,
+        containerWidth: this.state.containerWidth,
+        containerHeight: this.state.containerHeight,
+        yAxisTickFormat: yAxisTickFormat,
+        yMaxValue: yMaxValue,
+        yMinValue: yMinValue,
+        yAxisElement: this.yAxisElement,
+        eventAnnotationProps: this.props.eventAnnotationProps,
+        eventLabelHeight: this.eventLabelHeight,
+      };
+
+      this._yAxisScale = createYAxis(this._points, yAxisParams);
       lines = this._createLines(strokeWidth);
     }
     const legendBars = this._createLegends(this._points!);
@@ -378,100 +399,6 @@ export class LineChartBase extends React.Component<
     );
     return legends;
   }
-
-  private _createNumericXAxis(): void {
-    const xMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => {
-        return item.x as number;
-      });
-    })!;
-    const xAxisScale = d3ScaleLinear()
-      .domain([0, xMax])
-      .range([this.margins.left, this.state.containerWidth - this.margins.right]);
-    this._xAxisScale = xAxisScale;
-    const xAxis = d3AxisBottom(xAxisScale)
-      .tickSize(10)
-      .tickPadding(12)
-      .ticks(7)
-      .tickSizeOuter(0);
-    if (this.xAxisElement) {
-      d3Select(this.xAxisElement)
-        .call(xAxis)
-        .selectAll('text');
-    }
-  }
-
-  private _prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
-    const val = Math.ceil((maxVal - minVal) / splitInto);
-    const dataPointsArray: number[] = [minVal, minVal + val];
-    while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
-      dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
-    }
-    return dataPointsArray;
-  }
-
-  private _createDateXAxis = (tickValues?: Date[] | number[], tickFormat?: string) => {
-    const xAxisData: Date[] = [];
-    let sDate = new Date();
-    // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
-    let lDate = new Date(-8640000000000000);
-    this._points.map((singleLineChartData: ILineChartPoints) => {
-      singleLineChartData.data.map((point: ILineChartDataPoint) => {
-        xAxisData.push(point.x as Date);
-        if (point.x < sDate) {
-          sDate = point.x as Date;
-        }
-        if (point.x > lDate) {
-          lDate = point.x as Date;
-        }
-      });
-    });
-    const xAxisScale = d3ScaleTime()
-      .domain([sDate, lDate])
-      .range([this.margins.left, this.state.containerWidth - this.margins.right]);
-    this._xAxisScale = xAxisScale;
-    const xAxis = d3AxisBottom(xAxisScale)
-      .tickSize(10)
-      .tickPadding(12);
-    tickValues ? xAxis.tickValues(tickValues) : '';
-    tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickFormat)) : '';
-    if (this.xAxisElement) {
-      d3Select(this.xAxisElement)
-        .call(xAxis)
-        .selectAll('text');
-    }
-  };
-
-  // tslint:disable-next-line: no-any
-  private _createYAxis = (yAxisTickFormat: any) => {
-    const { yMaxValue = 0, yMinValue = 0 } = this.props;
-    const yMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
-    })!;
-    const yMin = d3Min(this._points, (point: ILineChartPoints) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
-    })!;
-    const finalYmax = yMax > yMaxValue ? yMax : yMaxValue;
-    const finalYmin = yMin < yMinValue ? 0 : yMinValue;
-    const domainValues = this._prepareDatapoints(finalYmax, finalYmin, 4);
-    const yAxisScale = d3ScaleLinear()
-      .domain([finalYmin, domainValues[domainValues.length - 1]])
-      .range([
-        this.state.containerHeight - this.margins.bottom,
-        this.margins.top + (this.props.eventAnnotationProps ? this.eventLabelHeight : 0),
-      ]);
-    this._yAxisScale = yAxisScale;
-    const yAxis = d3AxisLeft(yAxisScale)
-      .tickSize(-(this.state.containerWidth - this.margins.left - this.margins.right))
-      .tickPadding(12)
-      .tickValues(domainValues)
-      .tickFormat(yAxisTickFormat);
-    this.yAxisElement
-      ? d3Select(this.yAxisElement)
-          .call(yAxis)
-          .selectAll('text')
-      : '';
-  };
 
   private _createLines(strokeWidth: number): JSX.Element[] {
     const lines = [];
