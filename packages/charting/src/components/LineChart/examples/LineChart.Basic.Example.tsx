@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import * as d3 from 'd3-format';
 
 interface IRootStyles {
   height: string;
@@ -129,7 +128,6 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             legendsOverflowText={'Overflow Items'}
             yMinValue={200}
             yMaxValue={301}
-            yAxisTickFormat={d3.format('$,')}
             height={this.state.height}
             width={this.state.width}
           />
