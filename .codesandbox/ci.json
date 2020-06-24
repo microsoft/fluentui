@@ -1,10 +1,11 @@
 {
+  "buildCommand": "build:min",
   "packages": [
     "packages/react-button",
     "@fluentui/react-northstar",
     "packages/office-ui-fabric-react",
     "@fluentui/react-next",
     "@fluentui/react-icons"
-  ],
+  ],  
   "sandboxes": ["u0e3w"]
 }
