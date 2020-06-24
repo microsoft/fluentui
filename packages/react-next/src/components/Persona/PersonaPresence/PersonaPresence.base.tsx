@@ -25,12 +25,8 @@ const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPre
  * PersonaPresence with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, {}> {
-  constructor(props: IPersonaPresenceProps) {
-    super(props);
-  }
-
-  public render(): JSX.Element | null {
+export const PersonaPresenceBase = React.forwardRef(
+  (props: IPersonaPresenceProps, forwarededRef: React.Ref<HTMLDivElement>) => {
     const {
       coinSize,
       isOutOfOffice,
@@ -39,8 +35,8 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
       theme,
       presenceTitle,
       presenceColors,
-    } = this.props;
-    const size = sizeBoolean(this.props.size as PersonaSize);
+    } = props;
+    const size = sizeBoolean(props.size as PersonaSize);
 
     // Render Presence Icon if Persona is above size 32.
     const renderIcon =
@@ -68,7 +64,7 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
     const classNames = getClassNames(styles, {
       theme: theme!,
       presence,
-      size: this.props.size,
+      size: props.size,
       isOutOfOffice,
       presenceColors,
     });
@@ -78,16 +74,25 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
     }
 
     return (
-      <div role="presentation" className={classNames.presence} style={coinSizeWithPresenceStyle} title={presenceTitle}>
-        {renderIcon && this._onRenderIcon(classNames.presenceIcon, coinSizeWithPresenceIconStyle)}
+      <div
+        role="presentation"
+        className={classNames.presence}
+        style={coinSizeWithPresenceStyle}
+        title={presenceTitle}
+        ref={forwarededRef}
+      >
+        {renderIcon && (
+          <Icon
+            className={classNames.presenceIcon}
+            iconName={determineIcon(props.presence, props.isOutOfOffice)}
+            style={coinSizeWithPresenceIconStyle}
+          />
+        )}
       </div>
     );
-  }
-
-  private _onRenderIcon = (className?: string, style?: React.CSSProperties): JSX.Element => (
-    <Icon className={className} iconName={determineIcon(this.props.presence, this.props.isOutOfOffice)} style={style} />
-  );
-}
+  },
+);
+PersonaPresenceBase.displayName = 'PersonaPresenceBase';
 
 function determineIcon(
   presence: PersonaPresenceEnum | undefined,

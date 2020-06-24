@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { CommandBarButton, IButtonStyles, IOverflowSetItemProps, OverflowSet, Checkbox } from '@fluentui/react-next';
+import { CommandBarButton, IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
+import { IOverflowSetItemProps, OverflowSet, Checkbox } from '@fluentui/react-next';
 
 const noOp = () => undefined;
 

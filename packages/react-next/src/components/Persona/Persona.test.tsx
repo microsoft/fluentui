@@ -1,8 +1,8 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { TestImages } from '@uifabric/example-data';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '@fluentui/react-next';
 import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
@@ -56,25 +56,25 @@ describe('Persona', () => {
   });
 
   it('renders Persona correctly with no props', () => {
-    const component = renderer.create(<Persona />);
+    const component = create(<Persona />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders Persona correctly with initials', () => {
-    const component = renderer.create(<Persona text="Kat Larrson" />);
+    const component = create(<Persona text="Kat Larrson" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders Persona correctly with image', () => {
-    const component = renderer.create(<Persona text="Kat Larrson" imageUrl={testImage1x1} />);
+    const component = create(<Persona text="Kat Larrson" imageUrl={testImage1x1} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders Persona correctly with UnknownPersona coin', () => {
-    const component = renderer.create(<Persona text="Kat Larrson" showUnknownPersonaCoin={true} />);
+    const component = create(<Persona text="Kat Larrson" showUnknownPersonaCoin={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -82,7 +82,7 @@ describe('Persona', () => {
   it('renders Persona which calls onRenderCoin callback without imageUrl', () => {
     // removing imageUrl prop from example
     const { imageUrl, ...exampleWithoutImage } = examplePersona;
-    const component = renderer.create(
+    const component = create(
       <Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />,
     );
     const tree = component.toJSON();
@@ -90,15 +90,13 @@ describe('Persona', () => {
   });
 
   it('renders Persona which calls onRenderPersonaCoin callback with custom render', () => {
-    const component = renderer.create(
-      <Persona {...examplePersona} onRenderPersonaCoin={customOnRenderPersonaFunction} />,
-    );
+    const component = create(<Persona {...examplePersona} onRenderPersonaCoin={customOnRenderPersonaFunction} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with onRender callback', () => {
-    const component = renderer.create(
+    const component = create(
       <Persona
         {...examplePersona}
         onRenderPrimaryText={wrapPersona(examplePersona)}
@@ -111,7 +109,7 @@ describe('Persona', () => {
   });
 
   it('renders Persona children correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <Persona text="Kat Larrson">
         <span>Persona Children</span>
       </Persona>,

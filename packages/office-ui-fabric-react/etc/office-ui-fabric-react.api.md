@@ -4,10 +4,10 @@
 
 ```ts
 
-import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
-import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
+import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { EventGroup } from '@uifabric/utilities';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/DateValues';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentAs } from '@uifabric/utilities';
@@ -8026,16 +8026,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IKeytipDataProps & IRenderComponent<{}>): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderComponent<{}>>;
 
 // @public (undocumented)
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;

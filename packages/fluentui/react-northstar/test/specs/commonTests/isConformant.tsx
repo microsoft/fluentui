@@ -7,7 +7,7 @@ import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactIs from 'react-is';
-import { ReactWrapper } from 'enzyme';
+import { ComponentType, ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
 
@@ -36,10 +36,12 @@ export interface Conformant {
   /** Does this component render a Portal powered component? */
   rendersPortal?: boolean;
   /** This component uses wrapper slot to wrap the 'meaningful' element. */
-  wrapperComponent?: React.ReactType;
+  wrapperComponent?: React.ElementType;
   handlesAsProp?: boolean;
   /** List of autocontrolled props for this component. */
   autoControlledProps?: string[];
+  /** Child component that will receive unhandledProps. */
+  passesUnhandledPropsTo?: ComponentType<any>;
 }
 
 /**
@@ -64,6 +66,7 @@ export default function isConformant(
     wrapperComponent = null,
     handlesAsProp = true,
     autoControlledProps = [],
+    passesUnhandledPropsTo,
   } = options;
   const { throwError } = helpers('isConformant', Component);
 
@@ -258,10 +261,16 @@ export default function isConformant(
       });
 
       test('passes extra props to the component it is renders as', () => {
-        const MyComponent = () => null;
-        const wrapper = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />);
+        if (passesUnhandledPropsTo) {
+          const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
 
-        expect(wrapper.find('MyComponent[data-extra-prop="foo"]').length).toBeGreaterThan(0);
+          expect(el.prop('data-extra-prop')).toBe('foo');
+        } else {
+          const MyComponent = () => null;
+          const el = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />).find(MyComponent);
+
+          expect(el.prop('data-extra-prop')).toBe('foo');
+        }
       });
     });
   }
@@ -326,7 +335,9 @@ export default function isConformant(
 
     if (!isClassComponent) {
       test('uses "useUnhandledProps" hook', () => {
-        const wrapper = mount(<Component {...requiredProps} />);
+        const wrapper = passesUnhandledPropsTo
+          ? mount(<Component {...requiredProps} />).find(passesUnhandledPropsTo)
+          : mount(<Component {...requiredProps} />);
         const element = getComponent(wrapper);
 
         expect(element.prop('data-uses-unhanded-props')).toBeTruthy();
@@ -359,7 +370,9 @@ export default function isConformant(
 
     test("client's attributes override the ones provided by Fluent UI", () => {
       const wrapperProps = { ...requiredProps, [IS_FOCUSABLE_ATTRIBUTE]: false };
-      const wrapper = mount(<Component {...wrapperProps} accessibility={noopBehavior} />);
+      const wrapper = passesUnhandledPropsTo
+        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(passesUnhandledPropsTo)
+        : mount(<Component {...wrapperProps} accessibility={noopBehavior} />);
       const element = getComponent(wrapper);
 
       expect(element.prop(IS_FOCUSABLE_ATTRIBUTE)).toBe(false);
@@ -411,6 +424,7 @@ export default function isConformant(
 
         const component = mount(<Component {...props} />);
         const eventTarget = getEventTargetComponent(component, listenerName, eventTargets);
+
         const customHandler: Function = eventTarget.prop(listenerName);
 
         if (customHandler) {
@@ -424,7 +438,7 @@ export default function isConformant(
             );
           }
 
-          // We are cheking only props handled by component
+          // We are checking only props handled by component
           return;
         }
 
@@ -466,7 +480,14 @@ export default function isConformant(
 
         // Components should return the event first, then any data
         try {
-          expect(handlerSpy).toHaveBeenLastCalledWith(...expectedArgs);
+          const lastHandlerCall = _.last(handlerSpy.mock.calls);
+
+          // We are using there a manual assert instead of `toHaveBeenLastCalledWith()` to
+          // run a comparison based on `expectedArgs` instead of comparing actual args from
+          // a function call.
+          expectedArgs.forEach((expectedArg, argI) => {
+            expect(lastHandlerCall[argI]).toEqual(expectedArg);
+          });
         } catch (err) {
           throw new Error(
             [

@@ -1,6 +1,7 @@
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
 import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ReactNode } from 'react';
 
 /**
  * {@docCategory Coachmark}
@@ -170,7 +171,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
   /**
    * Child nodes to render
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 /**

@@ -10,6 +10,7 @@ import {
   getRTL,
   warnDeprecations,
   EventGroup,
+  getPropsWithDefaults,
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
@@ -22,7 +23,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
-import { getPropsWithDefaults } from '../../Utilities';
 import { useAsync, useOnEvent } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
