@@ -233,7 +233,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       stackedData.push(currentStack);
     });
     const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
-    // this._createYAxis(maxOfYVal); // Need max of Y value to build Y axis, So creating Y axis here
 
     const xMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.x as number);
