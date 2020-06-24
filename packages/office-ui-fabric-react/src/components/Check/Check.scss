@@ -41,7 +41,8 @@ $checkBoxHeight: 18px;
   .checkHost:focus &,
   &:hover,
   &:focus,
-  &.rootIsChecked {
+  &.rootIsChecked,
+  &.hostShowCheck {
     .check {
       opacity: 1;
     }

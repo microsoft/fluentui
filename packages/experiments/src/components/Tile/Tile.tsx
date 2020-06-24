@@ -3,15 +3,9 @@ import { ITileProps, TileSize } from './Tile.types';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
 import { ISize, css, initializeComponentRef, getId, getNativeProps, divProperties, EventGroup } from '../../Utilities';
-import * as TileStylesModule from './Tile.scss';
-import * as SignalStylesModule from '../signals/Signal.scss';
-import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
-
-// tslint:disable:no-any
-const TileStyles: any = TileStylesModule;
-const SignalStyles: any = SignalStylesModule;
-const CheckStyles: any = CheckStylesModule;
-// tslint:enable:no-any
+import * as TileStyles from './Tile.scss';
+import * as SignalStyles from '../signals/Signal.scss';
+import * as CheckStyles from 'office-ui-fabric-react/lib/components/Check/Check.scss';
 
 export const TileLayoutValues = {
   nameplatePadding: 12 as 12,
@@ -151,6 +145,13 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       showForegroundFrame = false,
       hideBackground = false,
       hideForeground = false,
+      disableForeground = false,
+      disableBackground = false,
+      isDragging = false,
+      isDropping = false,
+      draggingClassName,
+      droppingClassName,
+      disabledClassName,
       itemName,
       itemActivity,
       componentRef,
@@ -180,7 +181,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const content = (
       <>
         {ariaLabel ? (
-          <span key="label" id={this._labelId} className={css('ms-Tile-label', TileStylesModule.label)}>
+          <span key="label" id={this._labelId} className={css('ms-Tile-label', TileStyles.label)}>
             {ariaLabelWithSelectState}
           </span>
         ) : null}
@@ -239,13 +240,17 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           [`ms-Tile--isSelected ${TileStyles.selected} ${SignalStyles.selected}`]: isSelected,
           [`ms-Tile--isSelectable ${TileStyles.selectable}`]: isSelectable,
           [`ms-Tile--hasBackground ${TileStyles.hasBackground}`]: !!background,
-          [SignalStyles.dark]: !!background && !hideBackground,
+          [`${SignalStyles.dark}`]: !!background && !hideBackground,
           [`ms-Tile--showBackground ${TileStyles.showBackground}`]: !hideBackground,
           [`ms-Tile--invokable ${TileStyles.invokable}`]: isInvokable,
           [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
-          [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
+          [`ms-Tile--isDisabled ${disabledClassName || ''}`]: !isSelectable && !isInvokable,
           [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
           [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling,
+          [`ms-Tile--disableForeground ${TileStyles.disableForeground}`]: disableForeground,
+          [`ms-Tile--disableBackground ${TileStyles.disableBackground}`]: disableBackground,
+          [`ms-Tile--isDragging ${draggingClassName || ''}`]: isDragging,
+          [`ms-Tile--isDropping ${droppingClassName || ''}`]: isDropping,
         })}
         data-is-focusable={true}
         data-is-sub-focuszone={true}
@@ -258,7 +263,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           <span
             key="description"
             id={this._descriptionId}
-            className={css('ms-Tile-description', TileStylesModule.description)}
+            className={css('ms-Tile-description', TileStyles.description)}
           >
             {descriptionAriaLabel}
           </span>
@@ -363,7 +368,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         role="checkbox"
         aria-label={toggleSelectionAriaLabel}
         className={css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
-          [CheckStyles.hostShowCheck]: this.state.isModal,
+          [CheckStyles.hostShowCheck]: !!this.state.isModal,
         })}
         data-selection-toggle={true}
         aria-checked={isSelected}

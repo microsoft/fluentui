@@ -35,6 +35,10 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    */
   isSelectable?: boolean;
   /**
+   * A class to apply if the tile can neither be selected nor invoked.
+   */
+  disabledClassName?: string;
+  /**
    * Selection controller for the item rendered in the tile.
    */
   selection?: ISelection;
@@ -64,6 +68,11 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    */
   hideBackground?: boolean;
   /**
+   * Whether or not to disable interactivity with the background.
+   * Set this to ensure smooth operation of drag/drop when dragging from the background.
+   */
+  disableBackground?: boolean;
+  /**
    * Content to render as the foreground of the tile, bounded by padding and the nameplate.
    */
   foreground?: React.ReactNode | ((foregroundProps: ITileForegroundProps) => JSX.Element);
@@ -76,6 +85,11 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    * Use this to control when the foreground "fades in" if the content needs to be loaded.
    */
   hideForeground?: boolean;
+  /**
+   * Whether or not to disable interactivity with the foreground.
+   * Set this to ensure smooth operation of drag/drop when dragging from the foreground.
+   */
+  disableForeground?: boolean;
   /**
    * The accessible label representing the tile and its content.
    */
@@ -108,4 +122,22 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    * Hide nameplate and activity until the tile is hovered or selected (applies only to media tiles)
    */
   nameplateOnlyOnHover?: boolean;
+
+  /**
+   * Whether or not a drag is being initiated from the tile.
+   */
+  isDragging?: boolean;
+  /**
+   * Whether or not the tile is currently and active drop target.
+   */
+  isDropping?: boolean;
+
+  /**
+   * A class to apply when the tile is the active drag source.
+   */
+  draggingClassName?: string;
+  /**
+   * A class to apply when the tile is the active drop target.
+   */
+  droppingClassName?: string;
 }

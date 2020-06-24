@@ -135,6 +135,10 @@
   opacity: 1;
   transition: opacity 0.2s linear;
 
+  .tile.disableForeground & > * {
+    pointer-events: none;
+  }
+
   .tile.invokable & {
     pointer-events: auto;
     cursor: pointer;
@@ -218,6 +222,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .tile.disableBackground & > * {
+    pointer-events: none;
+  }
 
   .tile.invokable & {
     cursor: pointer;
