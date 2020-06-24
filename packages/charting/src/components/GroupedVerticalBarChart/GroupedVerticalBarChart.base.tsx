@@ -347,11 +347,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
 
     // previous <g> - graph need to remove otherwise multile g elements will create
-    d3Select(`#firstGElementForBars_${this._uniqLineText}_${this._yMax}`).remove();
+    d3Select(`#firstGElementForBars_${this._yMax}_${this._uniqLineText}`).remove();
     const barContainer = d3Select(`#barGElement_${this._uniqLineText}`)
       .append('g')
       .attr('class', 'firstGElementForBars')
-      .attr('id', `#firstGElementForBars_${this._uniqLineText}_${this._yMax}`);
+      .attr('id', `firstGElementForBars_${this._yMax}_${this._uniqLineText}`);
     const seriesName = barContainer
       .selectAll('.name')
       .data(this._datasetForBars)
@@ -539,6 +539,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   }
 
   private _onLegendHover(customMessage: string): void {
+    console.log('legend hover');
     if (this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: true,
