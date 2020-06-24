@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
@@ -100,11 +100,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     };
     this._refArray = [];
     this._adjustProps();
-    this._uniqLineText =
-      '_GroupedBarChart_' +
-      Math.random()
-        .toString(36)
-        .substring(7);
+    this._uniqLineText = getId('GroupedVerticalChart_');
   }
 
   public componentDidMount(): void {
@@ -539,7 +535,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
   }
 
   private _onLegendHover(customMessage: string): void {
-    console.log('legend hover');
     if (this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: true,
