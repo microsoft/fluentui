@@ -86,6 +86,12 @@ export interface ChatMessageProps
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;
 
+  /** Timestamp of the message. */
+  edited?: ShorthandValue<TextProps>;
+
+  /** Timestamp of the message. */
+  translated?: ShorthandValue<BoxProps>;
+
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
 
@@ -167,6 +173,8 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     styles,
     variables,
     header,
+    edited,
+    translated,
     unstable_overflow: overflow,
   } = props;
 
@@ -323,12 +331,27 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     }),
   });
 
+  const editedElement = Text.create(edited, {
+    defaultProps: () => ({
+      size: 'small',
+      styles: resolvedStyles.edited,
+    }),
+  });
+
+  const translatedElement = Box.create(translated, {
+    defaultProps: () => ({
+      styles: resolvedStyles.translated,
+    }),
+  });
+
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({
       content: (
         <>
           {authorElement}
           {timestampElement}
+          {editedElement}
+          {translatedElement}
           {reactionGroupPosition === 'start' && reactionGroupElement}
         </>
       ),
