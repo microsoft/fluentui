@@ -61,7 +61,7 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Called when the item's siblings are about to be expanded. */
   onSiblingsExpand?: ComponentEventHandler<TreeItemProps>;
 
-  /** Whether or not the item is in the expanded state. Only makes sense if item has children items. */
+  /** Whether or not the item is in the expanded state. Only makes sense if item has children items. If set to true, item is initialy expanded. */
   expanded?: boolean;
 
   /** The id of the parent tree item, if any. */
