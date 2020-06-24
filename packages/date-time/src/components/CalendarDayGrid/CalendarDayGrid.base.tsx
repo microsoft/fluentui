@@ -28,9 +28,28 @@ interface IWeekCorners {
 
 export interface IDayInfo extends IDay {
   onSelected: () => void;
+  setRef(element: HTMLElement | null): void;
 }
 
-function useWeeks(props: ICalendarDayGridProps, onSelectDate: (date: Date) => void): IDayInfo[][] {
+function useDayRefs() {
+  const daysRef = React.useRef<Record<string, HTMLElement>>({});
+
+  const getSetRefCallback = (dayKey: string) => (element: HTMLElement | null) => {
+    if (element === null) {
+      delete daysRef.current[dayKey];
+    } else {
+      daysRef.current[dayKey] = element;
+    }
+  };
+
+  return [daysRef, getSetRefCallback] as const;
+}
+
+function useWeeks(
+  props: ICalendarDayGridProps,
+  onSelectDate: (date: Date) => void,
+  getSetRefCallback: (dayKey: string) => (element: HTMLElement | null) => void,
+): IDayInfo[][] {
   /**
    * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
    * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.
@@ -52,6 +71,7 @@ function useWeeks(props: ICalendarDayGridProps, onSelectDate: (date: Date) => vo
         const day = weeksGrid[weekIndex][dayIndex];
         const dayInfo: IDayInfo = {
           onSelected: () => onSelectDate(day.originalDate),
+          setRef: getSetRefCallback(day.key),
           ...day,
         };
 
@@ -254,7 +274,8 @@ export const CalendarDayGridBase = React.forwardRef(
       props.onNavigateDate?.(selectedDate, true);
     };
 
-    const weeks = useWeeks(props, onSelectDate);
+    const [daysRef, getSetRefCallback] = useDayRefs();
+    const weeks = useWeeks(props, onSelectDate, getSetRefCallback);
     const animateBackwards = useAnimateBackwards(weeks);
     const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(props);
 
@@ -279,6 +300,7 @@ export const CalendarDayGridBase = React.forwardRef(
           activeDescendantId,
           getWeekCornerStyles,
           calculateRoundedStyles,
+          days: daysRef.current,
         }}
       />
     );
@@ -292,6 +314,7 @@ interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
     navigatedDayRef: React.RefObject<HTMLButtonElement>;
     weeks: IDayInfo[][];
     activeDescendantId: string;
+    days: Readonly<Record<string, HTMLElement>>;
     onSelectDate(date: Date): void;
     getWeekCornerStyles(
       classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
@@ -308,8 +331,6 @@ interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
 }
 
 class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProps, {}> {
-  private days: { [key: string]: HTMLElement | null } = {};
-
   public render(): JSX.Element {
     const {
       styles,
@@ -426,17 +447,12 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
             weekIndex={weekIndex}
             weekCorners={weekCorners}
             ariaHidden={ariaHidden}
-            setDayCellRef={this._setDayCellRef}
             getDayInfosInRangeOfDay={this.getDayInfosInRangeOfDay}
             getRefsFromDayInfos={this.getRefsFromDayInfos}
           />
         ))}
       </tr>
     );
-  };
-
-  private _setDayCellRef = (element: HTMLElement | null, day: IDayInfo): void => {
-    this.days[day.key] = element;
   };
 
   /**
@@ -474,9 +490,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
 
   private getRefsFromDayInfos = (dayInfosInRange: IDayInfo[]): (HTMLElement | null)[] => {
     let dayRefs: (HTMLElement | null)[] = [];
-    if (this.days) {
-      dayRefs = dayInfosInRange.map((dayInfo: IDayInfo) => this.days[dayInfo.key]);
-    }
+    dayRefs = dayInfosInRange.map((dayInfo: IDayInfo) => this.props.hoisted.days[dayInfo.key]);
 
     return dayRefs;
   };
@@ -489,7 +503,6 @@ interface ICalendarDayGridDayCellProps extends ICalendarDayGridClassProps {
   weekIndex: number;
   weekCorners?: IWeekCorners;
   ariaHidden?: boolean;
-  setDayCellRef(element: HTMLElement | null, day: IDayInfo): void;
   getDayInfosInRangeOfDay(dayToCompare: IDayInfo): IDayInfo[];
   getRefsFromDayInfos(dayInfosInRange: IDayInfo[]): (HTMLElement | null)[];
 }
@@ -507,7 +520,6 @@ const CalendarGridDayCell = ({
   weekCorners,
   ariaHidden,
   customDayCellRef,
-  setDayCellRef,
   dateRangeType,
   daysToSelectInDayView,
   onSelectDate,
@@ -688,7 +700,7 @@ const CalendarGridDayCell = ({
       )}
       ref={(element: HTMLTableCellElement) => {
         customDayCellRef?.(element, day.originalDate, classNames);
-        setDayCellRef(element, day);
+        day.setRef(element);
       }}
       aria-hidden={ariaHidden}
       onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
