@@ -35,6 +35,7 @@ import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { SlotProp } from '@fluentui/react-compose';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
@@ -260,8 +261,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
     keytipProps?: IKeytipProps;
-    label?: string;
+    label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    // @deprecated
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
     // @deprecated
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;

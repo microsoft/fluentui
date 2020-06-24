@@ -151,3 +151,22 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
 } & {
   root: TRootProps;
 };
+
+//
+// Slot Prop / Shorthand types
+//
+
+export type SlotPropRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
+  children?: TProps['children'] | SlotPropRenderFunction<TProps>;
+};
+
+export type SlotProp<TProps> =
+  | React.ReactChild
+  | React.ReactNodeArray
+  | React.ReactPortal
+  | boolean
+  | null
+  | undefined
+  | ObjectSlotProp<TProps>;

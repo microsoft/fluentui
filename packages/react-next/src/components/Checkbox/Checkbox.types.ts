@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseSlots } from '@fluentui/react-compose';
+import { BaseSlots, SlotProp } from '@fluentui/react-compose';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
@@ -56,7 +56,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   /**
    * Label to display next to the checkbox.
    */
-  label?: string;
+  label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
 
   /**
    * Disabled state of the checkbox.
@@ -121,6 +121,8 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Custom render function for the label.
+   *
+   * @deprecated Use label prop instead.
    */
   onRenderLabel?: IRenderFunction<ICheckboxProps>;
 

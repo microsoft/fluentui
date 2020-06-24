@@ -112,6 +112,14 @@ export type MergePropsResult<TState extends GenericDictionary, TSlots = GenericD
     slotProps: TSlotProps;
 };
 
+// @public
+export function mergeSlotProp<TProps>(slotProp: SlotProp<TProps>, slotProps: TProps, mappedProp?: string): SlotProp<TProps>;
+
+// @public (undocumented)
+export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
+    children?: TProps['children'] | SlotPropRenderFunction<TProps>;
+};
+
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
@@ -124,6 +132,12 @@ export interface ShorthandConfig<TProps> {
     // (undocumented)
     mappedProp?: keyof TProps;
 }
+
+// @public (undocumented)
+export type SlotProp<TProps> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined | ObjectSlotProp<TProps>;
+
+// @public (undocumented)
+export type SlotPropRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
 
 // @public (undocumented)
 export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
