@@ -19,7 +19,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         author="John Doe"
         timestamp="Yesterday, 10:15 PM"
         edited="Edited"
-        translated={<TranslationIcon />}
+        translated={<TranslationIcon size="small" />}
       />
     ),
     key: 'message-id-1',
@@ -32,7 +32,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         content="Hi"
         author="Jane Doe"
         edited="Edited"
-        translated={<TranslationIcon />}
+        translated={<TranslationIcon size="small" />}
         timestamp="Yesterday, 10:15 PM"
         mine
       />
