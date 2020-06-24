@@ -73,18 +73,41 @@ export const getStyles = (props: IAreaChartStyleProps): IAreaChartStyles => {
         backgroundColor: theme.semanticColors.bodyBackground,
       },
     ],
+
+    calloutDateTimeContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+
+    calloutBlockContainer: {
+      ...fonts.mediumPlus,
+      marginTop: '13px',
+      paddingLeft: '8px',
+      lineHeight: '22px',
+      color: theme.semanticColors.bodyText,
+    },
+
+    calloutlegendText: {
+      ...fonts.small,
+      lineHeight: '16px',
+      color: theme.semanticColors.bodySubtext,
+    },
+
     calloutContentX: [
       {
-        ...fonts.medium,
-        lineHeight: '14px',
+        ...fonts.small,
+        lineHeight: '16px',
+        opacity: '0.8',
+        color: theme.semanticColors.bodySubtext,
       },
     ],
+
     calloutContentY: [
       {
-        color: theme.semanticColors.bodyText,
-        ...fonts.large,
+        ...fonts.mediumPlus,
         fontWeight: 'bold',
-        lineHeight: '31px',
+        lineHeight: '22px',
       },
     ],
   };
