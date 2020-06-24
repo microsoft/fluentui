@@ -81,7 +81,7 @@ const renderComponent = <P extends {}>(
     disableAnimations: context.disableAnimations || false,
     primaryDisplayName: displayName,
     componentProps: stateAndProps,
-    stylesProps: stateAndProps,
+    inlineStylesProps: stateAndProps,
     renderer: context.renderer || noopRenderer,
     rtl,
     saveDebug,

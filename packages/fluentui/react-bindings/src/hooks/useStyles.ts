@@ -117,7 +117,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(
       ...componentStylesProps,
       ...composeStylesProps,
     },
-    stylesProps: mapPropsToInlineStyles(),
+    inlineStylesProps: mapPropsToInlineStyles(),
 
     // Context values
     disableAnimations: context.disableAnimations,

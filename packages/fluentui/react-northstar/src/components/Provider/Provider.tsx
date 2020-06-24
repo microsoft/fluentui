@@ -136,7 +136,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     className: providerClassName,
     primaryDisplayName: Provider.displayName,
     componentProps: {},
-    stylesProps: {
+    inlineStylesProps: {
       className,
       design,
       styles,
