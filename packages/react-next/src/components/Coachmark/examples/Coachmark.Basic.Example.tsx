@@ -8,7 +8,7 @@ import {
   IStyle,
   TeachingBubbleContent,
 } from '@fluentui/react-next';
-import { DefaultButton, IButtonProps } from '../../../compat/Button';
+import { DefaultButton, IButtonProps } from '@fluentui/react-next/lib/compat/Button';
 
 export interface ICoachmarkBasicExampleState {
   isCoachmarkVisible?: boolean;
