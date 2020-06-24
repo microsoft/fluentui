@@ -153,6 +153,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
     return (
       <div className={mergeStyles(rootStyle)}>
         <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines />
+        <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines />
       </div>
     );
   }

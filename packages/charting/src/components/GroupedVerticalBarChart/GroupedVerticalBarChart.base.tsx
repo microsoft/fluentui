@@ -72,6 +72,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _xScale0: any;
   // tslint:disable-next-line:no-any
   private _xScale1: any;
+  private _uniqLineText: string;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
   private _isGraphDraw: boolean = true;
@@ -99,6 +100,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
     };
     this._refArray = [];
     this._adjustProps();
+    this._uniqLineText =
+      '_GroupedBarChart_' +
+      Math.random()
+        .toString(36)
+        .substring(7);
   }
 
   public componentDidMount(): void {
@@ -156,12 +162,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
     return (
       <div
-        id="d3GroupedChart"
+        id={`d3GroupedChart_${this._uniqLineText}`}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         className={this._classNames.root}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} id={this._uniqLineText}>
             <g
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, x0Axis)}
@@ -174,10 +180,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
               className={this._classNames.yAxis}
               transform={`translate(40, 0)`}
             />
-            <g id="barGElement" />
+            <g id={`barGElement_${this._uniqLineText}`} className="barGElement" />
           </svg>
         </FocusZone>
-        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+        <div
+          ref={(e: HTMLDivElement) => (this.legendContainer = e)}
+          id={this._uniqLineText}
+          className={this._classNames.legendContainer}
+        >
           {legends}
         </div>
         {!this.props.hideTooltip && this.state.isCalloutVisible ? (
@@ -337,10 +347,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
 
     // previous <g> - graph need to remove otherwise multile g elements will create
-    d3Select('#firstGElementForBars').remove();
-    const barContainer = d3Select('#barGElement')
+    d3Select(`#firstGElementForBars_${this._uniqLineText}_${this._yMax}`).remove();
+    const barContainer = d3Select(`#barGElement_${this._uniqLineText}`)
       .append('g')
-      .attr('id', 'firstGElementForBars');
+      .attr('class', 'firstGElementForBars')
+      .attr('id', `#firstGElementForBars_${this._uniqLineText}_${this._yMax}`);
     const seriesName = barContainer
       .selectAll('.name')
       .data(this._datasetForBars)
