@@ -3,26 +3,21 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import {
-  Coachmark,
-  DefaultButton,
-  DirectionalHint,
-  TeachingBubbleContent,
-  Fabric,
-} from 'office-ui-fabric-react';
+import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from '@fluentui/react-next';
 import { useId } from '@uifabric/react-hooks';
+import { DefaultButton } from 'office-ui-fabric-react';
 
 const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
   const targetId = useId();
   return (
     <>
       <div id={targetId}>
-        <DefaultButton />
+        <DefaultButton text="Click me!" />
       </div>
       <Coachmark
         target={`#${targetId}`}
         positioningContainerProps={{
-          directionalHint: DirectionalHint.bottomCenter,
+          directionalHint: DirectionalHint.rightTopEdge,
           doNotLayer: false,
         }}
         ariaAlertText="A Coachmark has appeared"
