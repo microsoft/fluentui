@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.135.6",
+      "tag": "office-ui-fabric-react_v5.135.6",
+      "date": "Wed, 24 Jun 2020 11:11:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Phoebe-0319 <60056296+Phoebe-0319@users.noreply.github.com>",
+            "commit": "f8488cf96d90139406d049b6d6b527804f7f41a5",
+            "comment": "Commandbar: remove invalid aria-posinset and aria-setsize attributes"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.135.5",
       "tag": "office-ui-fabric-react_v5.135.5",
       "date": "Wed, 05 Feb 2020 11:13:35 GMT",

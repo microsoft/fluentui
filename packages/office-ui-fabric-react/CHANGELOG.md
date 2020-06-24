@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 05 Feb 2020 11:13:35 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2020 11:11:31 GMT and should not be manually modified.
+
+## 5.135.6
+Wed, 24 Jun 2020 11:11:31 GMT
+
+### Patches
+
+- Commandbar: remove invalid aria-posinset and aria-setsize attributes
 
 ## 5.135.5
 Wed, 05 Feb 2020 11:13:35 GMT
