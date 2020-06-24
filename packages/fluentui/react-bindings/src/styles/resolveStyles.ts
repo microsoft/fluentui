@@ -50,7 +50,7 @@ const resolveStyles = (
     theme,
     primaryDisplayName,
     componentProps,
-    stylesProps,
+    inlineStylesProps,
     rtl,
     disableAnimations,
     renderer,
@@ -58,7 +58,7 @@ const resolveStyles = (
     telemetry,
   } = options;
 
-  const { className, design, styles, variables } = stylesProps;
+  const { className, design, styles, variables } = inlineStylesProps;
   const noInlineStylesOverrides = !(design || styles);
 
   let noVariableOverrides = performanceFlags.enableBooleanVariablesCaching || !variables;
