@@ -45,7 +45,7 @@ export default () => (
       {code('FocusTrapZone')}'s props which can be applied to {code('trapFocus')} prop (
       {link(
         'lookup for API on GitHub',
-        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/FocusTrapZone.types.tsx',
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.types.tsx',
       )}
       ):
     </p>
@@ -83,7 +83,7 @@ export default () => (
       {code('FocusTrapZone')} code on{' '}
       {link(
         'GitHub.',
-        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/FocusTrapZone.tsx',
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.tsx',
       )}
     </p>
   </DocPage>

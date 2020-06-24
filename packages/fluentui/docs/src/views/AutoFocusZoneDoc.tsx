@@ -36,7 +36,7 @@ export default () => (
       {code('AutoFocusZone')}'s props which can be applied to {code('autoFocus')} prop (
       {link(
         'lookup for API on GitHub',
-        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/AutoFocusZone.types.tsx',
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/AutoFocusZone.types.tsx',
       )}
       ):
     </p>
@@ -69,7 +69,7 @@ export default () => (
       {code('AutoFocusZone')} code on{' '}
       {link(
         'GitHub.',
-        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/AutoFocusZone.tsx',
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/AutoFocusZone.tsx',
       )}
     </p>
   </DocPage>
