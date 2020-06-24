@@ -19,7 +19,7 @@ const beforeAndAfter = (
 });
 
 const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVariables> = {
-  root: ({ props, variables, rtl }): ICSSInJSStyle => {
+  root: ({ props, variables }): ICSSInJSStyle => {
     const { color, fitted, size, important, hasContent, vertical } = props;
     const colors = variables.colorScheme[color];
     return {
