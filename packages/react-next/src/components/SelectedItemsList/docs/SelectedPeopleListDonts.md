@@ -1,0 +1,1 @@
+- Use for other items besides selected people.

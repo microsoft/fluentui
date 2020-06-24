@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Persona, PersonaInitialsColor, PersonaSize, IPersonaProps } from '@fluentui/react-next/lib/Persona';
+import { Persona, PersonaInitialsColor, PersonaSize, IPersonaProps } from '@fluentui/react-next';
 import { Stack } from '@fluentui/react-next/lib/Stack';
 
 const sharedPersonaProps: IPersonaProps = {
