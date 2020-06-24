@@ -370,90 +370,48 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
         >
           <tbody>
             <CalendarDayMonthHeaderRow {...this.props} classNames={classNames} />
-            {this.renderRow(
-              classNames,
-              weeks![0],
-              -1,
-              weekCorners,
-              classNames.firstTransitionWeek,
-              'presentation',
-              true /*aria-hidden*/,
-            )}
-            {weeks!
-              .slice(1, weeks!.length - 1)
-              .map((week: IDayInfo[], weekIndex: number) =>
-                this.renderRow(classNames, week, weekIndex, weekCorners, classNames.weekRow),
-              )}
-            {this.renderRow(
-              classNames,
-              weeks![weeks!.length - 1],
-              -2,
-              weekCorners,
-              classNames.lastTransitionWeek,
-              'presentation',
-              true /*aria-hidden*/,
-            )}
+            <CalendarDayGridRow
+              {...this.props}
+              classNames={classNames}
+              week={weeks[0]}
+              weekIndex={-1}
+              weekCorners={weekCorners}
+              rowClassName={classNames.firstTransitionWeek}
+              ariaRole="presentation"
+              ariaHidden={true}
+              getDayInfosInRangeOfDay={this.getDayInfosInRangeOfDay}
+              getRefsFromDayInfos={this.getRefsFromDayInfos}
+            />
+            {weeks!.slice(1, weeks!.length - 1).map((week: IDayInfo[], weekIndex: number) => (
+              <CalendarDayGridRow
+                {...this.props}
+                key={weekIndex}
+                classNames={classNames}
+                week={week}
+                weekIndex={weekIndex}
+                weekCorners={weekCorners}
+                rowClassName={classNames.weekRow}
+                getDayInfosInRangeOfDay={this.getDayInfosInRangeOfDay}
+                getRefsFromDayInfos={this.getRefsFromDayInfos}
+              />
+            ))}
+            <CalendarDayGridRow
+              {...this.props}
+              classNames={classNames}
+              week={weeks![weeks!.length - 1]}
+              weekIndex={-2}
+              weekCorners={weekCorners}
+              rowClassName={classNames.lastTransitionWeek}
+              ariaRole="presentation"
+              ariaHidden={true}
+              getDayInfosInRangeOfDay={this.getDayInfosInRangeOfDay}
+              getRefsFromDayInfos={this.getRefsFromDayInfos}
+            />
           </tbody>
         </table>
       </FocusZone>
     );
   }
-
-  private renderRow = (
-    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
-    week: IDayInfo[],
-    weekIndex: number,
-    weekCorners?: IWeekCorners,
-    rowClassName?: string,
-    ariaRole?: string,
-    ariaHidden?: boolean,
-  ): JSX.Element => {
-    const {
-      showWeekNumbers,
-      firstDayOfWeek,
-      firstWeekOfYear,
-      navigatedDate,
-      strings,
-      hoisted: { weeks },
-    } = this.props;
-    const weekNumbers = showWeekNumbers
-      ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
-      : null;
-
-    const titleString = weekNumbers
-      ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
-      : '';
-
-    return (
-      <tr role={ariaRole} className={rowClassName} key={weekIndex + '_' + week[0].key}>
-        {showWeekNumbers && weekNumbers && (
-          <th
-            className={classNames.weekNumberCell}
-            key={weekIndex}
-            title={titleString}
-            aria-label={titleString}
-            scope="row"
-          >
-            <span>{weekNumbers[weekIndex]}</span>
-          </th>
-        )}
-        {week.map((day: IDayInfo, dayIndex: number) => (
-          <CalendarGridDayCell
-            {...this.props}
-            key={day.key}
-            classNames={classNames}
-            day={day}
-            dayIndex={dayIndex}
-            weekIndex={weekIndex}
-            weekCorners={weekCorners}
-            ariaHidden={ariaHidden}
-            getDayInfosInRangeOfDay={this.getDayInfosInRangeOfDay}
-            getRefsFromDayInfos={this.getRefsFromDayInfos}
-          />
-        ))}
-      </tr>
-    );
-  };
 
   /**
    *
@@ -496,15 +454,63 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
   };
 }
 
-interface ICalendarDayGridDayCellProps extends ICalendarDayGridClassProps {
+interface ICalendarDayGridRowProps extends ICalendarDayGridClassProps {
   classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
-  day: IDayInfo;
-  dayIndex: number;
+  week: IDayInfo[];
   weekIndex: number;
   weekCorners?: IWeekCorners;
   ariaHidden?: boolean;
+  rowClassName?: string;
+  ariaRole?: string;
   getDayInfosInRangeOfDay(dayToCompare: IDayInfo): IDayInfo[];
   getRefsFromDayInfos(dayInfosInRange: IDayInfo[]): (HTMLElement | null)[];
+}
+
+const CalendarDayGridRow = (props: ICalendarDayGridRowProps): JSX.Element => {
+  const {
+    classNames,
+    week,
+    weekIndex,
+    rowClassName,
+    ariaRole,
+    showWeekNumbers,
+    firstDayOfWeek,
+    firstWeekOfYear,
+    navigatedDate,
+    strings,
+    hoisted: { weeks },
+  } = props;
+  const weekNumbers = showWeekNumbers
+    ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
+    : null;
+
+  const titleString = weekNumbers
+    ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
+    : '';
+
+  return (
+    <tr role={ariaRole} className={rowClassName} key={weekIndex + '_' + week[0].key}>
+      {showWeekNumbers && weekNumbers && (
+        <th
+          className={classNames.weekNumberCell}
+          key={weekIndex}
+          title={titleString}
+          aria-label={titleString}
+          scope="row"
+        >
+          <span>{weekNumbers[weekIndex]}</span>
+        </th>
+      )}
+      {week.map((day: IDayInfo, dayIndex: number) => (
+        <CalendarGridDayCell {...props} key={day.key} day={day} dayIndex={dayIndex} />
+      ))}
+    </tr>
+  );
+};
+
+interface ICalendarDayGridDayCellProps extends ICalendarDayGridRowProps {
+  day: IDayInfo;
+  dayIndex: number;
 }
 
 const CalendarGridDayCell = ({
