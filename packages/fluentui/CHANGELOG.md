@@ -73,6 +73,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Removed `variables` and `styles` props in `Animation` @mnajdova ([#13509](https://github.com/microsoft/fluentui/pull/13509))
 - Set `FormField` to show `successIndicator` by default when field is required and has value fulfilled or when `showSuccessIndicator` is set to true and add `showSuccessIndicator || required` to define if it `hasIcon`on styles @assuncaocharles ([#13568](https://github.com/microsoft/fluentui/pull/13568))
 - `renderer` prop on `Provider` was replaced with a custom React context @layershifter ([#13602](https://github.com/microsoft/fluentui/pull/13602))
+- Rename `FocusZone` and `FocusTrapZone` to have it only internally ([#13754](https://github.com/microsoft/fluentui/pull/13754))
 
 ### Fixes
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
