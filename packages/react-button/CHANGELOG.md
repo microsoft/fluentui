@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 18 Jun 2020 12:37:09 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jun 2020 12:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.4.0)
+
+Tue, 23 Jun 2020 12:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.7..@fluentui/react-button_v0.4.0)
+
+### Minor changes
+
+- Button: Mixing style coming from slotProps. ([PR #13723](https://github.com/microsoft/fluentui/pull/13723) by humbertomakotomorimoto@gmail.com)
+
+## [0.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.7)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.6..@fluentui/react-button_v0.3.7)
+
+### Patches
+
+- Button: Adding pointer-events: none to :after focus rectangle. ([PR #13696](https://github.com/microsoft/fluentui/pull/13696) by humbertomakotomorimoto@gmail.com)
+
+## [0.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.6)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.5..@fluentui/react-button_v0.3.6)
+
+### Patches
+
+- react-button: Adding api-extractor configuration. ([PR #13654](https://github.com/microsoft/fluentui/pull/13654) by humbertomakotomorimoto@gmail.com)
 
 ## [0.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.5)
 

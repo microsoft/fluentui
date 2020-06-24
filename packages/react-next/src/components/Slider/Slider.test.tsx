@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as path from 'path';
 
@@ -29,11 +29,11 @@ describe('Slider', () => {
     componentPath: path.join(__dirname, 'Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',
-    disabledTests: ['has-docblock'],
+    disabledTests: ['has-docblock', 'kebab-aria-attributes'],
   });
 
   it('renders correctly', () => {
-    const component = renderer.create(<Slider label="I am a slider" />);
+    const component = create(<Slider label="I am a slider" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

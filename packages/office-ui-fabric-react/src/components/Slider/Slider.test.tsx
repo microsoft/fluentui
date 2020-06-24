@@ -29,7 +29,7 @@ describe('Slider', () => {
     componentPath: path.join(__dirname, 'Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',
-    disabledTests: ['has-docblock'],
+    disabledTests: ['has-docblock', 'kebab-aria-attributes'],
   });
 
   it('renders correctly', () => {

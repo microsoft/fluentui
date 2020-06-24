@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { KeyCodes, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
-import { CommandButton } from '../../Button';
+import { CommandButton } from '../../compat/Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
