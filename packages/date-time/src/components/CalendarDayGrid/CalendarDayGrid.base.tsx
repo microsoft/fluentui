@@ -585,7 +585,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     } = this.props;
 
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
-    const dateRangeHoverType = this.getDateRangeTypeToUse(dateRangeType, workWeekDays);
+    const dateRangeHoverType = getDateRangeTypeToUse(dateRangeType, workWeekDays);
 
     // gets all the dates for the given date range type that are in the same date range as the given day
     const dateRange = getDateRangeArray(
@@ -701,32 +701,6 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
       });
     };
   };
-
-  /**
-   * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous
-   * work weeks, we'll just show week view instead.
-   */
-  private getDateRangeTypeToUse = (
-    dateRangeType: DateRangeType,
-    workWeekDays: DayOfWeek[] | undefined,
-  ): DateRangeType => {
-    if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
-      const sortedWWDays = workWeekDays.slice().sort();
-      let isContiguous = true;
-      for (let i = 1; i < sortedWWDays.length; i++) {
-        if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
-          isContiguous = false;
-          break;
-        }
-      }
-
-      if (!isContiguous || workWeekDays.length === 0) {
-        return DateRangeType.Week;
-      }
-    }
-
-    return dateRangeType;
-  };
 }
 
 const CalendarDayMonthHeaderRow = (
@@ -770,3 +744,26 @@ const CalendarDayMonthHeaderRow = (
     </tr>
   );
 };
+
+/**
+ * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous
+ * work weeks, we'll just show week view instead.
+ */
+function getDateRangeTypeToUse(dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined): DateRangeType {
+  if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
+    const sortedWWDays = workWeekDays.slice().sort();
+    let isContiguous = true;
+    for (let i = 1; i < sortedWWDays.length; i++) {
+      if (sortedWWDays[i] !== sortedWWDays[i - 1] + 1) {
+        isContiguous = false;
+        break;
+      }
+    }
+
+    if (!isContiguous || workWeekDays.length === 0) {
+      return DateRangeType.Week;
+    }
+  }
+
+  return dateRangeType;
+}
