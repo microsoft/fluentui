@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { ComposeStandardStatics } from '../../utils/tempTypes';
-import { ComposeOptions } from '@fluentui/react-compose';
+import { ComposeOptions, SlotProps } from '@fluentui/react-compose';
 import { ButtonProps, ButtonSlots } from '../Button/Button.types';
 
 export interface ToggleButtonProps extends ButtonProps {
