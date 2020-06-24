@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/docs": "^0.50.0",
-    "@uifabric/charting": "^2.3.2",
+    "@uifabric/charting": "^2.3.3",
     "@uifabric/date-time": "^7.9.1",
     "@uifabric/experiments": "^7.26.6",
     "@uifabric/fabric-website": "^7.10.73",
