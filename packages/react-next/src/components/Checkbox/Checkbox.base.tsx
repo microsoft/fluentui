@@ -15,15 +15,10 @@ const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
 
 export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
   (props, forwardedRef, composeOptions) => {
-    // TODO: improve typing for mergeProps
-    const { slotProps, slots, state } = mergeProps<ICheckboxProps, ICheckboxState>(
+    const { slotProps, slots, state } = mergeProps<ICheckboxProps, ICheckboxState, ICheckboxSlots, ICheckboxSlotProps>(
       composeOptions.state,
       composeOptions,
-    ) as {
-      state: ICheckboxState;
-      slots: ICheckboxSlots;
-      slotProps: ICheckboxSlotProps;
-    };
+    );
 
     const { disabled, keytipProps } = state;
 

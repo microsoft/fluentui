@@ -83,10 +83,15 @@ export type ComposeOptions<
   state?: (props: TState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 };
 
-export type MergePropsResult<TState extends GenericDictionary> = {
+export type MergePropsResult<
+  TState extends GenericDictionary,
+  TSlots = GenericDictionary,
+  // tslint:disable-next-line:no-any
+  TSlotProps = { [key in keyof TSlots]: any }
+> = {
   state: TState;
-  slots: GenericDictionary;
-  slotProps: GenericDictionary;
+  slots: TSlots;
+  slotProps: TSlotProps;
 };
 
 /**
@@ -130,4 +135,19 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
 
   resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;
+};
+
+//
+// Component types
+//
+
+export interface BaseSlots {
+  root: React.ElementType;
+}
+
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+  // tslint:disable-next-line:no-any
+  [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
+} & {
+  root: TRootProps;
 };
