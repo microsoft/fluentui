@@ -418,82 +418,114 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
             <span>{weekNumbers[weekIndex]}</span>
           </th>
         )}
-        {week.map((day: IDayInfo, dayIndex: number) =>
-          this.renderDayCells(classNames, day, dayIndex, weekIndex, weekCorners, ariaHidden),
-        )}
+        {week.map((day: IDayInfo, dayIndex: number) => (
+          <CalendarGridDayCell
+            {...this.props}
+            key={day.key}
+            classNames={classNames}
+            day={day}
+            dayIndex={dayIndex}
+            weekIndex={weekIndex}
+            weekCorners={weekCorners}
+            ariaHidden={ariaHidden}
+            setDayCellRef={this._setDayCellRef}
+            getDayInfosInRangeOfDay={this.getDayInfosInRangeOfDay}
+            getRefsFromDayInfos={this.getRefsFromDayInfos}
+          />
+        ))}
       </tr>
     );
   };
 
-  private renderDayCells = (
-    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
-    day: IDayInfo,
-    dayIndex: number,
-    weekIndex: number,
-    weekCorners?: IWeekCorners,
-    ariaHidden?: boolean,
-  ): JSX.Element => {
-    const {
-      navigatedDate,
-      dateTimeFormatter,
-      allFocusable,
-      strings,
-      hoisted: { activeDescendantId },
-    } = this.props;
-    const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
-
-    return (
-      <td
-        key={day.key}
-        className={css(
-          classNames.dayCell,
-          weekCorners && this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
-          day.isSelected && classNames.daySelected,
-          !day.isInBounds && classNames.dayOutsideBounds,
-          !day.isInMonth && classNames.dayOutsideNavigatedMonth,
-        )}
-        ref={(element: HTMLTableCellElement) => {
-          this.props.customDayCellRef && this.props.customDayCellRef(element, day.originalDate, classNames);
-          this._setDayCellRef(element, day);
-        }}
-        aria-hidden={ariaHidden}
-        onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
-        onMouseOver={!ariaHidden ? this.onMouseOverDay(day) : undefined}
-        onMouseDown={!ariaHidden ? this.onMouseDownDay(day) : undefined}
-        onMouseUp={!ariaHidden ? this.onMouseUpDay(day) : undefined}
-        onMouseOut={!ariaHidden ? this.onMouseOutDay(day) : undefined}
-      >
-        <button
-          key={day.key + 'button'}
-          aria-hidden={ariaHidden}
-          className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
-          onKeyDown={!ariaHidden ? this._onDayKeyDown(day.originalDate) : undefined}
-          aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
-          id={isNavigatedDate ? activeDescendantId : undefined}
-          aria-selected={day.isInBounds ? day.isSelected : undefined}
-          data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
-          ref={isNavigatedDate ? this.props.hoisted.navigatedDayRef : undefined}
-          disabled={!allFocusable && !day.isInBounds}
-          aria-disabled={!ariaHidden && !day.isInBounds}
-          type="button"
-          role="gridcell" // create grid structure
-          aria-readonly={true} // prevent grid from being "editable"
-          tabIndex={isNavigatedDate ? 0 : undefined}
-        >
-          <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
-        </button>
-      </td>
-    );
+  private _setDayCellRef = (element: HTMLElement | null, day: IDayInfo): void => {
+    this.days[day.key] = element;
   };
 
-  private _setDayCellRef(element: HTMLElement | null, day: IDayInfo): void {
-    this.days[day.key] = element;
-  }
+  /**
+   *
+   * Section for setting hover/pressed styles. Because we want arbitrary blobs of days to be selectable, to support
+   * highlighting every day in the month for month view, css :hover style isn't enough, so we need mouse callbacks
+   * to set classnames on all relevant child refs to apply the styling
+   *
+   */
+  private getDayInfosInRangeOfDay = (dayToCompare: IDayInfo): IDayInfo[] => {
+    // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
+    const dateRangeHoverType = getDateRangeTypeToUse(this.props.dateRangeType, this.props.workWeekDays);
 
-  private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date): void {
+    // gets all the dates for the given date range type that are in the same date range as the given day
+    const dateRange = getDateRangeArray(
+      dayToCompare.originalDate,
+      dateRangeHoverType,
+      this.props.firstDayOfWeek,
+      this.props.workWeekDays,
+      this.props.daysToSelectInDayView,
+    ).map((date: Date) => date.getTime());
+
+    // gets all the day refs for the given dates
+    const dayInfosInRange = this.props.hoisted.weeks!.reduce(
+      (accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {
+        return accumulatedValue.concat(
+          currentWeek.filter((weekDay: IDayInfo) => dateRange.indexOf(weekDay.originalDate.getTime()) !== -1),
+        );
+      },
+      [],
+    );
+
+    return dayInfosInRange;
+  };
+
+  private getRefsFromDayInfos = (dayInfosInRange: IDayInfo[]): (HTMLElement | null)[] => {
+    let dayRefs: (HTMLElement | null)[] = [];
+    if (this.days) {
+      dayRefs = dayInfosInRange.map((dayInfo: IDayInfo) => this.days[dayInfo.key]);
+    }
+
+    return dayRefs;
+  };
+}
+
+interface ICalendarDayGridDayCellProps extends ICalendarDayGridClassProps {
+  classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
+  day: IDayInfo;
+  dayIndex: number;
+  weekIndex: number;
+  weekCorners?: IWeekCorners;
+  ariaHidden?: boolean;
+  setDayCellRef(element: HTMLElement | null, day: IDayInfo): void;
+  getDayInfosInRangeOfDay(dayToCompare: IDayInfo): IDayInfo[];
+  getRefsFromDayInfos(dayInfosInRange: IDayInfo[]): (HTMLElement | null)[];
+}
+
+const CalendarGridDayCell = ({
+  navigatedDate,
+  dateTimeFormatter,
+  allFocusable,
+  strings,
+  hoisted: { activeDescendantId, navigatedDayRef, calculateRoundedStyles, weeks },
+  classNames,
+  day,
+  dayIndex,
+  weekIndex,
+  weekCorners,
+  ariaHidden,
+  customDayCellRef,
+  setDayCellRef,
+  dateRangeType,
+  daysToSelectInDayView,
+  onSelectDate,
+  restrictedDates,
+  minDate,
+  maxDate,
+  onNavigateDate,
+  getDayInfosInRangeOfDay,
+  getRefsFromDayInfos,
+}: ICalendarDayGridDayCellProps): JSX.Element => {
+  const cornerStyle = weekCorners?.[weekIndex + '_' + dayIndex] ?? '';
+  const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
+
+  const navigateMonthEdge = (ev: React.KeyboardEvent<HTMLElement>, date: Date): void => {
     let targetDate: Date | undefined = undefined;
     let direction = 1; // by default search forward
-    const { restrictedDates, minDate, maxDate } = this.props;
 
     if (ev.which === KeyCodes.up) {
       targetDate = addWeeks(date, -1);
@@ -534,11 +566,11 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
     // if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we
     // don't jump the view unnecessarily
     const isInCurrentView =
-      this.props.hoisted.weeks &&
+      weeks &&
       nextDate &&
-      this.props.hoisted.weeks.slice(1, this.props.hoisted.weeks.length - 1).some((week: IDayInfo[]) => {
-        return week.some((day: IDayInfo) => {
-          return compareDates(day.originalDate, nextDate!);
+      weeks.slice(1, weeks.length - 1).some((week: IDayInfo[]) => {
+        return week.some((dayToCompare: IDayInfo) => {
+          return compareDates(dayToCompare.originalDate, nextDate!);
         });
       });
     if (isInCurrentView) {
@@ -547,161 +579,148 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
 
     // else, fire navigation on the date to change the view to show it
     if (nextDate) {
-      this.props.onNavigateDate(nextDate, true);
+      onNavigateDate(nextDate, true);
       ev.preventDefault();
     }
-  }
+  };
 
-  private _onDayKeyDown = (originalDate: Date): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
-    return (ev: React.KeyboardEvent<HTMLElement>): void => {
-      if (ev.which === KeyCodes.enter) {
-        this.props.hoisted.onSelectDate(originalDate);
-      } else {
-        this._navigateMonthEdge(ev, originalDate);
+  const onMouseOverDay = (ev: React.MouseEvent<HTMLElement>) => {
+    const dayInfos = getDayInfosInRangeOfDay(day);
+    const dayRefs = getRefsFromDayInfos(dayInfos);
+
+    dayRefs.forEach((dayRef: HTMLElement, index: number) => {
+      if (dayRef) {
+        dayRef.classList.add('ms-CalendarDay-hoverStyle');
+        if (
+          !dayInfos[index].isSelected &&
+          dateRangeType === DateRangeType.Day &&
+          daysToSelectInDayView &&
+          daysToSelectInDayView > 1
+        ) {
+          // remove the static classes first to overwrite them
+          dayRef.classList.remove(
+            classNames.bottomLeftCornerDate!,
+            classNames.bottomRightCornerDate!,
+            classNames.topLeftCornerDate!,
+            classNames.topRightCornerDate!,
+          );
+
+          const classNamesToAdd = calculateRoundedStyles(
+            classNames,
+            false,
+            false,
+            index > 0,
+            index < dayRefs.length - 1,
+          ).trim();
+          if (classNamesToAdd) {
+            dayRef.classList.add(...classNamesToAdd.split(' '));
+          }
+        }
       }
-    };
+    });
   };
 
-  private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number): string {
-    const cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ?? '';
-    return cornerStyle;
-  }
+  const onMouseDownDay = (ev: React.MouseEvent<HTMLElement>) => {
+    const dayInfos = getDayInfosInRangeOfDay(day);
+    const dayRefs = getRefsFromDayInfos(dayInfos);
 
-  /**
-   *
-   * Section for setting hover/pressed styles. Because we want arbitrary blobs of days to be selectable, to support
-   * highlighting every day in the month for month view, css :hover style isn't enough, so we need mouse callbacks
-   * to set classnames on all relevant child refs to apply the styling
-   *
-   */
-
-  private getDayInfosInRangeOfDay = (day: IDayInfo): IDayInfo[] => {
-    const {
-      dateRangeType,
-      firstDayOfWeek,
-      workWeekDays,
-      daysToSelectInDayView,
-      hoisted: { weeks },
-    } = this.props;
-
-    // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
-    const dateRangeHoverType = getDateRangeTypeToUse(dateRangeType, workWeekDays);
-
-    // gets all the dates for the given date range type that are in the same date range as the given day
-    const dateRange = getDateRangeArray(
-      day.originalDate,
-      dateRangeHoverType,
-      firstDayOfWeek,
-      workWeekDays,
-      daysToSelectInDayView,
-    ).map((date: Date) => date.getTime());
-
-    // gets all the day refs for the given dates
-    const dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {
-      return accumulatedValue.concat(
-        currentWeek.filter((weekDay: IDayInfo) => dateRange.indexOf(weekDay.originalDate.getTime()) !== -1),
-      );
-    }, []);
-
-    return dayInfosInRange;
+    dayRefs.forEach((dayRef: HTMLElement) => {
+      if (dayRef) {
+        dayRef.classList.add('ms-CalendarDay-pressedStyle');
+      }
+    });
   };
 
-  private getRefsFromDayInfos = (dayInfosInRange: IDayInfo[]): (HTMLElement | null)[] => {
-    let dayRefs: (HTMLElement | null)[] = [];
-    if (this.days) {
-      dayRefs = dayInfosInRange.map((dayInfo: IDayInfo) => this.days[dayInfo.key]);
+  const onMouseUpDay = (ev: React.MouseEvent<HTMLElement>) => {
+    const dayInfos = getDayInfosInRangeOfDay(day);
+    const dayRefs = getRefsFromDayInfos(dayInfos);
+
+    dayRefs.forEach((dayRef: HTMLElement) => {
+      if (dayRef) {
+        dayRef.classList.remove('ms-CalendarDay-pressedStyle');
+      }
+    });
+  };
+
+  const onMouseOutDay = (ev: React.MouseEvent<HTMLElement>) => {
+    const dayInfos = getDayInfosInRangeOfDay(day);
+    const dayRefs = getRefsFromDayInfos(dayInfos);
+
+    dayRefs.forEach((dayRef: HTMLElement, index: number) => {
+      if (dayRef) {
+        dayRef.classList.remove('ms-CalendarDay-hoverStyle');
+        dayRef.classList.remove('ms-CalendarDay-pressedStyle');
+        if (
+          !dayInfos[index].isSelected &&
+          dateRangeType === DateRangeType.Day &&
+          daysToSelectInDayView &&
+          daysToSelectInDayView > 1
+        ) {
+          const classNamesToAdd = calculateRoundedStyles(
+            classNames,
+            false,
+            false,
+            index > 0,
+            index < dayRefs.length - 1,
+          ).trim();
+          if (classNamesToAdd) {
+            dayRef.classList.remove(...classNamesToAdd.split(' '));
+          }
+        }
+      }
+    });
+  };
+
+  const onDayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (ev.which === KeyCodes.enter) {
+      onSelectDate?.(day.originalDate);
+    } else {
+      navigateMonthEdge(ev, day.originalDate);
     }
-
-    return dayRefs;
   };
 
-  private onMouseOverDay = (day: IDayInfo) => {
-    return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayInfos = this.getDayInfosInRangeOfDay(day);
-      const dayRefs = this.getRefsFromDayInfos(dayInfos);
-
-      dayRefs.forEach((dayRef: HTMLElement, index: number) => {
-        if (dayRef) {
-          dayRef.classList.add('ms-CalendarDay-hoverStyle');
-          if (
-            !dayInfos[index].isSelected &&
-            this.props.dateRangeType === DateRangeType.Day &&
-            this.props.daysToSelectInDayView &&
-            this.props.daysToSelectInDayView > 1
-          ) {
-            // remove the static classes first to overwrite them
-            dayRef.classList.remove(
-              this.classNames.bottomLeftCornerDate!,
-              this.classNames.bottomRightCornerDate!,
-              this.classNames.topLeftCornerDate!,
-              this.classNames.topRightCornerDate!,
-            );
-
-            const classNames = this.props.hoisted
-              .calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1)
-              .trim();
-            if (classNames) {
-              dayRef.classList.add(...classNames.split(' '));
-            }
-          }
-        }
-      });
-    };
-  };
-
-  private onMouseDownDay = (day: IDayInfo) => {
-    return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayInfos = this.getDayInfosInRangeOfDay(day);
-      const dayRefs = this.getRefsFromDayInfos(dayInfos);
-
-      dayRefs.forEach((dayRef: HTMLElement) => {
-        if (dayRef) {
-          dayRef.classList.add('ms-CalendarDay-pressedStyle');
-        }
-      });
-    };
-  };
-
-  private onMouseUpDay = (day: IDayInfo) => {
-    return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayInfos = this.getDayInfosInRangeOfDay(day);
-      const dayRefs = this.getRefsFromDayInfos(dayInfos);
-
-      dayRefs.forEach((dayRef: HTMLElement) => {
-        if (dayRef) {
-          dayRef.classList.remove('ms-CalendarDay-pressedStyle');
-        }
-      });
-    };
-  };
-
-  private onMouseOutDay = (day: IDayInfo) => {
-    return (ev: React.MouseEvent<HTMLElement>) => {
-      const dayInfos = this.getDayInfosInRangeOfDay(day);
-      const dayRefs = this.getRefsFromDayInfos(dayInfos);
-
-      dayRefs.forEach((dayRef: HTMLElement, index: number) => {
-        if (dayRef) {
-          dayRef.classList.remove('ms-CalendarDay-hoverStyle');
-          dayRef.classList.remove('ms-CalendarDay-pressedStyle');
-          if (
-            !dayInfos[index].isSelected &&
-            this.props.dateRangeType === DateRangeType.Day &&
-            this.props.daysToSelectInDayView &&
-            this.props.daysToSelectInDayView > 1
-          ) {
-            const classNames = this.props.hoisted
-              .calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1)
-              .trim();
-            if (classNames) {
-              dayRef.classList.remove(...classNames.split(' '));
-            }
-          }
-        }
-      });
-    };
-  };
-}
+  return (
+    <td
+      className={css(
+        classNames.dayCell,
+        weekCorners && cornerStyle,
+        day.isSelected && classNames.daySelected,
+        !day.isInBounds && classNames.dayOutsideBounds,
+        !day.isInMonth && classNames.dayOutsideNavigatedMonth,
+      )}
+      ref={(element: HTMLTableCellElement) => {
+        customDayCellRef?.(element, day.originalDate, classNames);
+        setDayCellRef(element, day);
+      }}
+      aria-hidden={ariaHidden}
+      onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
+      onMouseOver={!ariaHidden ? onMouseOverDay : undefined}
+      onMouseDown={!ariaHidden ? onMouseDownDay : undefined}
+      onMouseUp={!ariaHidden ? onMouseUpDay : undefined}
+      onMouseOut={!ariaHidden ? onMouseOutDay : undefined}
+    >
+      <button
+        key={day.key + 'button'}
+        aria-hidden={ariaHidden}
+        className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
+        onKeyDown={!ariaHidden ? onDayKeyDown : undefined}
+        aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
+        id={isNavigatedDate ? activeDescendantId : undefined}
+        aria-selected={day.isInBounds ? day.isSelected : undefined}
+        data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
+        ref={isNavigatedDate ? navigatedDayRef : undefined}
+        disabled={!allFocusable && !day.isInBounds}
+        aria-disabled={!ariaHidden && !day.isInBounds}
+        type="button"
+        role="gridcell" // create grid structure
+        aria-readonly={true} // prevent grid from being "editable"
+        tabIndex={isNavigatedDate ? 0 : undefined}
+      >
+        <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
+      </button>
+    </td>
+  );
+};
 
 const CalendarDayMonthHeaderRow = (
   props: ICalendarDayGridClassProps & { classNames: IProcessedStyleSet<ICalendarDayGridStyles> },
