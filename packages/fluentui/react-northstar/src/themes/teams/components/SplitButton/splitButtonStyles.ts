@@ -50,7 +50,7 @@ const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesProps, Spl
       borderRadius: v.borderRadius,
       position: 'relative',
       display: 'flex',
-
+      flexWrap: 'nowrap',
       ':focus-within': {
         boxShadow: 'none',
         ...(p.isFromKeyboard && {
