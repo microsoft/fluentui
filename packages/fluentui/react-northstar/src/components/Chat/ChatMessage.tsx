@@ -86,10 +86,10 @@ export interface ChatMessageProps
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;
 
-  /** Timestamp of the message. */
+  /** Message edited status. */
   edited?: ShorthandValue<TextProps>;
 
-  /** Timestamp of the message. */
+  /** Message translated info slot. */
   translated?: ShorthandValue<BoxProps>;
 
   /** Badge attached to the message. */
