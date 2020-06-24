@@ -49,7 +49,7 @@ const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesProps, Spl
     return {
       borderRadius: v.borderRadius,
       position: 'relative',
-      display: 'inline-block',
+      display: 'flex',
 
       ':focus-within': {
         boxShadow: 'none',
