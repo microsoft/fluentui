@@ -48,6 +48,9 @@ export function useMergedRefs<T>(...refs: Ref<T>[]): (instance: T) => void;
 // @public
 export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
 
+// @public
+export function usePrevious<T>(value: T): T | undefined;
+
 
 // (No @packageDocumentation comment for this package)
 

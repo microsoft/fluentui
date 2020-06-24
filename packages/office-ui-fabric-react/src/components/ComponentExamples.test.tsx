@@ -229,7 +229,7 @@ describe('Component Examples', () => {
         throw e;
       }
 
-      const tree = component.toJSON();
+      const tree = component!.toJSON();
       (expect(tree) as any).toMatchSpecificSnapshot(exampleFile);
     });
   }

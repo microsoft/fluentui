@@ -18,7 +18,7 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
   const latestVariables = React.useRef<UsedVariables>({});
 
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const [, /* renderer */ resolvedVariables] = useEnhancedRenderer(context.renderer);
+  const [enhancedContext, resolvedVariables] = useEnhancedRenderer(context);
 
   const onClassNamesChange = React.useCallback(() => {
     if (!_.isEqual(resolvedVariables.current, latestVariables.current)) {
@@ -33,13 +33,11 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
 
   useClassNamesListener(elementRef, onClassNamesChange);
 
-  // TODO: fix this feature
-  return <div ref={elementRef}>{props.children}</div>;
-  // return (
-  //   <Provider renderer={renderer}>
-  //     <div ref={elementRef}>{props.children}</div>
-  //   </Provider>
-  // );
+  return (
+    <ThemeContext.Provider value={enhancedContext}>
+      <div ref={elementRef}>{props.children}</div>
+    </ThemeContext.Provider>
+  );
 };
 
 export default VariableResolver;

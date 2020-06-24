@@ -5,7 +5,7 @@ import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale
 import { select as d3Select } from 'd3-selection';
 import * as d3TimeFormat from 'd3-time-format';
 import { ILegend, Legends } from '../Legends/index';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import {
   ILineChartProps,
@@ -47,7 +47,7 @@ export class LineChartBase extends React.Component<
 > {
   private _points: ILineChartPoints[];
   // tslint:disable-next-line:no-any
-  private _calloutPoints: any;
+  private _calloutPoints: any[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
   private _reqID: number;
   private xAxisElement: SVGElement | null;
@@ -631,7 +631,7 @@ export class LineChartBase extends React.Component<
     circleId: string,
   ) => {
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedData);
+    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === formattedData);
     const _this = this;
     d3Select('#' + circleId)
       .attr('fill', '#fff')
@@ -670,7 +670,7 @@ export class LineChartBase extends React.Component<
     d3Select('.verticalLine')
       .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
       .attr('visibility', 'visibility');
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedData);
+    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === formattedData);
     this.setState({
       isCalloutVisible: true,
       refSelected: mouseEvent,

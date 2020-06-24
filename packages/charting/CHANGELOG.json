@@ -2,6 +2,48 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@uifabric/charting_v2.3.3",
+      "version": "2.3.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "LineChart: import find from office-ui-fabric-react/lib/Utilities to support IE11",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "3fb9b1b94b9e6704fba625f416b39722d56820c8",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "HorizontalBarChart: Add keyboard accessability",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "039cf12124d228f15af2d7a77470a843d9149478",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/charting_v2.3.2",
+      "version": "2.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Vertical Bar chart code updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "38ecac09b70b1aa96df20c9974af4adbf95d06eb",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "doughnut chart target alignment updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4768dd6fc3c44bbb9c8bf7442a2c8b1aacad867c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jun 2020 12:38:09 GMT",
       "tag": "@uifabric/charting_v2.3.1",
       "version": "2.3.1",
