@@ -66,9 +66,7 @@ export const useOverflow = (
     const minContainerWidth: number[] = [];
     let extraWidth = 0; // The accumulated width of items that don't move into the overflow
 
-    const updateOverflow = () => {
-      const containerWidth = container.clientWidth;
-
+    const updateOverflow = (containerWidth: number) => {
       // Iterate the items in reverse order until we find one that fits within the bounds of the container
       for (let i = items.length - 1; i >= 0; i--) {
         // Calculate the min container width for this item if we haven't done so yet
@@ -114,7 +112,9 @@ export const useOverflow = (
       }
     };
 
-    const disposeObserver = observeResize(container, updateOverflow);
+    const disposeObserver = observeResize(container, entries => {
+      updateOverflow(entries ? entries[0].contentRect.width : container.clientWidth);
+    });
 
     return () => {
       disposeObserver();

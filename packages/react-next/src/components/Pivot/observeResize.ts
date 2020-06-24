@@ -16,7 +16,7 @@ import { getWindow } from '../../Utilities';
  */
 export const observeResize = (
   target: Element | Element[],
-  onResize: (entries: ResizeObserverEntry[] | undefined) => void,
+  onResize: (entries: readonly ResizeObserverEntry[] | undefined) => void,
 ): (() => void) => {
   if (ResizeObserver) {
     const observer = new ResizeObserver(onResize);
@@ -50,7 +50,7 @@ export const observeResize = (
 
 /** Temporary type definition for ResizeObserver. Can be removed when official types are available. */
 type ResizeObserver = {
-  new (callback: (entries: ResizeObserverEntry[], observer: ResizeObserver) => void): ResizeObserver;
+  new (callback: (entries: readonly ResizeObserverEntry[], observer: ResizeObserver) => void): ResizeObserver;
   observe(target: Element, options?: { box: 'content-box' | 'border-box' }): void;
   unobserve(target: Element): void;
   disconnect(): void;
@@ -58,8 +58,8 @@ type ResizeObserver = {
 
 /** Temporary type definition for ResizeObserverEntry. Can be removed when official types are available. */
 type ResizeObserverEntry = {
-  contentRect: DOMRectReadOnly;
-  target: Element;
+  readonly contentRect: DOMRectReadOnly;
+  readonly target: Element;
 };
 
 /** Temporary definition for ResizeObserver. Can be removed when official types are available. */
