@@ -39,10 +39,9 @@ const resolveVariables = (
     if (!variablesThemeCache[handlingDisplayName]) {
       // A short circle to avoid additional merging for non-composed components
       if (effectiveDisplayNames.length === 1) {
-        variablesThemeCache[handlingDisplayName] =
-          typeof theme.componentVariables[handlingDisplayName] === 'function'
-            ? theme.componentVariables[handlingDisplayName](theme.siteVariables)
-            : theme.componentVariables[handlingDisplayName];
+        variablesThemeCache[handlingDisplayName] = callable(theme.componentVariables[handlingDisplayName])(
+          theme.siteVariables,
+        );
       } else {
         variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
           ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
