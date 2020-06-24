@@ -309,7 +309,6 @@ interface ICalendarDayGridClassProps extends ICalendarDayGridProps {
 
 class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProps, {}> {
   private days: { [key: string]: HTMLElement | null } = {};
-  private classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
 
   public render(): JSX.Element {
     const {
@@ -324,7 +323,7 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
       hoisted: { animateBackwards, weeks, activeDescendantId },
     } = this.props;
 
-    this.classNames = getClassNames(styles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
       dateRangeType: dateRangeType,
@@ -334,7 +333,6 @@ class CalendarDayGridBaseClass extends React.Component<ICalendarDayGridClassProp
       animationDirection: animationDirection,
       animateBackwards: animateBackwards,
     });
-    const classNames = this.classNames;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     const weekCorners: IWeekCorners = this.props.hoisted.getWeekCornerStyles(classNames, weeks!);
