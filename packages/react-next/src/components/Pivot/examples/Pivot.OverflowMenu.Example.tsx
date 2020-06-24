@@ -6,14 +6,22 @@ const onChange = (setValue: (val: boolean) => void) =>
 
 export const PivotOverflowMenuExample: React.FunctionComponent = () => {
   const [overflow, setOverflow] = React.useState<boolean>(true);
+  const [tabs, setTabs] = React.useState<boolean>(false);
   const [rtl, setRTL] = React.useState<boolean>(false);
 
   return (
     <>
-      <Toggle label="overflow" offText="none" onText="menu" checked={overflow} onChange={onChange(setOverflow)} />
-      <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={onChange(setRTL)} />
+      <div style={{ background: '#EEE' }}>
+        <Toggle label="overflow" offText="none" onText="menu" checked={overflow} onChange={onChange(setOverflow)} />
+        <Toggle label="linkFormat" offText="links" onText="tabs" checked={tabs} onChange={onChange(setTabs)} />
+        <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={onChange(setRTL)} />
+      </div>
       <Fabric dir={rtl ? 'rtl' : 'ltr'}>
-        <Pivot aria-label="Pivot Overflow Menu Example" linkFormat="tabs" headerOverflow={overflow ? 'menu' : 'none'}>
+        <Pivot
+          aria-label="Pivot Overflow Menu Example"
+          linkFormat={tabs ? 'tabs' : 'links'}
+          headerOverflow={overflow ? 'menu' : 'none'}
+        >
           <PivotItem headerText="1. This Pivot">
             <Label>Pivot #1</Label>
           </PivotItem>
