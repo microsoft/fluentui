@@ -11,11 +11,13 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  createShorthand,
 } from '../../utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { WithAsProp, withSafeTypeForAs, ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
 import { useTelemetry, useAccessibility, getElementType, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
+import Box from '../Box/Box';
 
 export interface DividerProps
   extends UIComponentProps,
@@ -58,7 +60,6 @@ const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<D
     fitted,
     size,
     important,
-    content,
     vertical,
     className,
     design,
@@ -72,10 +73,10 @@ const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<D
     debugName: Divider.displayName,
     rtl: context.rtl,
   });
-  const { classes } = useStyles<DividerStylesProps>(Divider.displayName, {
+  const { classes, styles: resolvedStyle } = useStyles<DividerStylesProps>(Divider.displayName, {
     className: dividerClassName,
     mapPropsToStyles: () => ({
-      hasContent: childrenExist(children) || !!content,
+      hasContent: childrenExist(children) || !!props.content,
       color,
       fitted,
       size,
@@ -89,6 +90,12 @@ const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<D
       variables,
     }),
     rtl: context.rtl,
+  });
+
+  const content = createShorthand(Box, props.content, {
+    defaultProps: () => ({
+      styles: resolvedStyle.content,
+    }),
   });
 
   const element = (

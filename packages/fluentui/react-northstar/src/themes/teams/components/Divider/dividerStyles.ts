@@ -40,13 +40,9 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
             lineHeight: variables.textLineHeight,
             '::before': {
               ...beforeAndAfter(size, variables, colors, props),
-              ...(!rtl && { marginRight: pxToRem(20) }),
-              marginInlineEnd: pxToRem(20),
             },
             '::after': {
               ...beforeAndAfter(size, variables, colors, props),
-              ...(!rtl && { marginLeft: pxToRem(20) }),
-              marginInlineStart: pxToRem(20),
             },
           }
         : {
@@ -56,6 +52,10 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
           }),
     };
   },
+  content: () => ({
+    marginLeft: pxToRem(20),
+    marginRight: pxToRem(20),
+  }),
 };
 
 export default dividerStyles;
