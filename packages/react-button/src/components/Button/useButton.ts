@@ -1,5 +1,6 @@
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
+import { useFocusRects } from 'office-ui-fabric-react';
 import { ButtonProps, ButtonState } from './Button.types';
 
 /**
@@ -11,6 +12,8 @@ export const useButton = (
   ref: React.Ref<HTMLElement>,
   options: ComposePreparedOptions,
 ): ButtonState => {
+  useFocusRects(ref as React.RefObject<HTMLElement>);
+
   return {
     ...props,
     style: getStyleFromPropsAndOptions(props, options, '--button'),
