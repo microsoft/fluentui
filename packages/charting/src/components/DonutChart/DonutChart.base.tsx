@@ -126,13 +126,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             </svg>
           </div>
         </FocusZone>
-        {!this.props.hideTooltip && this.state.showHover ? (
+        {
           <Callout
             target={this._currentHoverElement}
             alignTargetEdge={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
             gapSpace={15}
+            hidden={!(!this.props.hideTooltip && this.state.showHover)}
             id={this._calloutId}
             onDismiss={this._closeCallout}
             preventDismissOnLostFocus={true}
@@ -143,7 +144,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
               color={this.state.color}
             />
           </Callout>
-        ) : null}
+        }
         <div className={this._classNames.legendContainer}>{!hideLegend && legendBars}</div>
       </div>
     );

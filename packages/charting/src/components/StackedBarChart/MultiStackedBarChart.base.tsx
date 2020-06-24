@@ -89,12 +89,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       <div className={this._classNames.root}>
         {bars}
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        {!hideTooltip && isCalloutVisible ? (
+        {
           <Callout
             gapSpace={15}
             isBeakVisible={false}
             target={this.state.refSelected}
             setInitialFocus={true}
+            hidden={!(!hideTooltip && isCalloutVisible)}
             directionalHint={DirectionalHint.topRightEdge}
             id={this._calloutId}
           >
@@ -104,7 +105,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               color={this.state.color}
             />
           </Callout>
-        ) : null}
+        }
       </div>
     );
   }

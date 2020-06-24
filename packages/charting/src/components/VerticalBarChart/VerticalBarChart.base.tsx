@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -51,6 +51,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
   private _reqID: number;
+  private _calloutId: string;
   private legendContainer: HTMLDivElement;
   private chartContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
@@ -73,6 +74,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       _width: this.props.width || 600,
       _height: this.props.height || 350,
     };
+    this._calloutId = getId('callout');
     this._refArray = [];
   }
 
@@ -148,13 +150,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             {legends!}
           </div>
         )}
-        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
+        {
           <Callout
             gapSpace={10}
             isBeakVisible={false}
             target={this.state.refSelected}
             setInitialFocus={true}
+            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
             directionalHint={DirectionalHint.topRightEdge}
+            id={this._calloutId}
           >
             <ChartHoverCard
               XValue={this.state.xCalloutValue}
@@ -163,7 +167,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
               color={this.state.color}
             />
           </Callout>
-        ) : null}
+        }
       </div>
     );
   }
@@ -379,6 +383,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             point.xAxisCalloutData!,
             point.yAxisCalloutData!,
           )}
+          aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(
             this,
@@ -424,6 +429,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
           height={yBarScale(point.y)}
+          aria-labelledby={this._calloutId}
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend!,

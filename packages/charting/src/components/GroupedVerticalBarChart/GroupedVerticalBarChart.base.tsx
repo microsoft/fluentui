@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
@@ -65,6 +65,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _classNames: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
   private _reqID: number;
+  private _calloutId: string;
   private _yMax: number;
   // tslint:disable-next-line:no-any
   private _datasetForBars: any;
@@ -98,6 +99,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       _height: this.props.height || 350,
     };
     this._refArray = [];
+    this._calloutId = getId('callout');
     this._adjustProps();
   }
 
@@ -180,13 +182,15 @@ export class GroupedVerticalBarChartBase extends React.Component<
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {legends}
         </div>
-        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
+        {
           <Callout
             target={this.state.refSelected}
             gapSpace={10}
             isBeakVisible={false}
             setInitialFocus={true}
+            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
             directionalHint={DirectionalHint.topRightEdge}
+            id={this._calloutId}
           >
             <ChartHoverCard
               XValue={this.state.xCalloutValue}
@@ -195,7 +199,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
               color={this.state.color}
             />
           </Callout>
-        ) : null}
+        }
       </div>
     );
   }
@@ -371,6 +375,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('y', (d: IGVForBarChart) => {
           return this.state.containerHeight - this.margins.bottom - yBarScale(d[datasetKey].data);
         })
+        .attr('aria-labelledby', this._calloutId)
         .attr('width', widthOfBar)
         .attr('height', (d: IGVForBarChart) => {
           return yBarScale(d[datasetKey].data);

@@ -154,12 +154,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <div>
             <svg className={this._classNames.chart}>
               <g>{bars[0]}</g>
-              {!hideTooltip && isCalloutVisible ? (
+              {
                 <Callout
                   gapSpace={15}
                   isBeakVisible={false}
                   target={this.state.refSelected}
                   setInitialFocus={true}
+                  hidden={!(!hideTooltip && isCalloutVisible)}
                   directionalHint={DirectionalHint.topRightEdge}
                   id={this._calloutId}
                 >
@@ -169,7 +170,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                     color={this.state.color}
                   />
                 </Callout>
-              ) : null}
+              }
             </svg>
           </div>
         </FocusZone>

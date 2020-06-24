@@ -206,11 +206,12 @@ export class LineChartBase extends React.Component<
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {!hideLegend && legendBars}
         </div>
-        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
+        {
           <Callout
             target={this.state.refSelected}
             isBeakVisible={false}
             gapSpace={15}
+            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
             directionalHint={DirectionalHint.topAutoEdge}
             id={this._calloutId}
           >
@@ -247,7 +248,7 @@ export class LineChartBase extends React.Component<
               </div>
             </div>
           </Callout>
-        ) : null}
+        }
       </div>
     );
   }

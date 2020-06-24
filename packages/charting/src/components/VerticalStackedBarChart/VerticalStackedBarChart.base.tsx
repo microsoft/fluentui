@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -50,6 +50,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _barWidth: number;
   private _yAxisTickCount: number;
   private _colors: string[];
+  private _calloutId: string;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _refArray: IRefArrayData[];
 
@@ -68,6 +69,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     };
     this._onLegendLeave = this._onLegendLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
+    this._calloutId = getId('callout');
     this._refArray = [];
     this._adjustProps();
   }
@@ -104,13 +106,15 @@ export class VerticalStackedBarChartBase extends React.Component<
           </svg>
         </FocusZone>
         {<div className={this._classNames.legendContainer}>{legends}</div>}
-        {!this.props.hideTooltip && isCalloutVisible ? (
+        {
           <Callout
             gapSpace={15}
             isBeakVisible={false}
             target={this.state.refSelected}
             setInitialFocus={true}
+            hidden={!(!this.props.hideTooltip && isCalloutVisible)}
             directionalHint={DirectionalHint.topRightEdge}
+            id={this._calloutId}
           >
             <ChartHoverCard
               XValue={this.state.xCalloutValue}
@@ -119,7 +123,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               color={this.state.color}
             />
           </Callout>
-        ) : null}
+        }
       </div>
     );
   }
@@ -411,6 +415,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             point.xAxisCalloutData!,
             point.yAxisCalloutData!,
           )}
+          aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(
             this,

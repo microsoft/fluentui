@@ -133,12 +133,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
               </div>
             );
           })}
-          {!this.props.hideTooltip && this.state.isCalloutVisible ? (
+          {
             <Callout
               target={this.state.refSelected}
               coverTarget={true}
               isBeakVisible={false}
               gapSpace={30}
+              hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
               directionalHint={DirectionalHint.rightTopEdge}
               id={this._calloutId}
             >
@@ -148,7 +149,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 color={this.state.lineColor}
               />
             </Callout>
-          ) : null}
+          }
         </div>
       </FocusZone>
     );
