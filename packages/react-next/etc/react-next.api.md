@@ -481,9 +481,9 @@ export interface IEditingSelectedPeopleItemStylesProps {
 // @public
 export interface IEntityRect {
     // (undocumented)
-    height: number;
+    height?: number;
     // (undocumented)
-    width: number;
+    width?: number;
 }
 
 // @public (undocumented)
