@@ -33,8 +33,8 @@ export const COACHMARK_ATTRIBUTE_NAME = 'data-coachmarkid';
  * An interface for the cached dimensions of entity inner host.
  */
 export interface IEntityRect {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
 const DEFAULT_PROPS = {
@@ -387,16 +387,18 @@ function useAutoFocus({ preventFocusOnMount }: ICoachmarkProps) {
   return entityHost;
 }
 
-function useEntityHostMeasurements(entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
+function useEntityHostMeasurements(props: ICoachmarkProps, entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
   /**
    * Is the teaching bubble currently retreiving the
    * original dimensions of the hosted entity.
    */
-  const [isMeasuring, setIsMeasuring] = React.useState<boolean>(true);
+  const [isMeasuring, setIsMeasuring] = React.useState<boolean>(!!props.isCollapsed);
   /**
    * Cached width and height of _entityInnerHostElement
    */
-  const [entityInnerHostRect, setEntityInnerHostRect] = React.useState<IEntityRect>({ width: 0, height: 0 });
+  const [entityInnerHostRect, setEntityInnerHostRect] = React.useState<IEntityRect>(
+    props.isCollapsed ? { width: 0, height: 0 } : {},
+  );
   const async = useAsync();
 
   React.useEffect(() => {
@@ -438,7 +440,7 @@ export const CoachmarkBase = React.forwardRef(
     const [targetAlignment, targetPosition, onPositioned] = usePositionedData();
     const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
     const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
-    const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(entityInnerHostElementRef);
+    const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(props, entityInnerHostElementRef);
     const alertText = useAriaAlert(props);
     const entityHost = useAutoFocus(props);
 
@@ -481,14 +483,14 @@ export const CoachmarkBase = React.forwardRef(
       isMeasuring,
       color: defaultColor,
       transformOrigin,
-      entityHostHeight: `${entityInnerHostRect.height}px`,
-      entityHostWidth: `${entityInnerHostRect.width}px`,
+      entityHostHeight: entityInnerHostRect.height === undefined ? undefined : `${entityInnerHostRect.height}px`,
+      entityHostWidth: entityInnerHostRect.width === undefined ? undefined : `${entityInnerHostRect.width}px`,
       width: `${COACHMARK_WIDTH}px`,
       height: `${COACHMARK_HEIGHT}px`,
       delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`,
     });
 
-    const finalHeight: number = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
+    const finalHeight: number | undefined = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
 
     return (
       <PositioningContainer

@@ -258,9 +258,12 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
           },
         },
       },
+      !isMeasuring &&
+        isCollapsed && {
+          width: COACHMARK_WIDTH,
+          height: COACHMARK_HEIGHT,
+        },
       !isMeasuring && {
-        width: COACHMARK_WIDTH,
-        height: COACHMARK_HEIGHT,
         visibility: 'visible',
       },
       !isCollapsed && {
