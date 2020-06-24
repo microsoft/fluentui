@@ -129,8 +129,8 @@
   border-width: var(--button-borderWidth);
   box-shadow: var(--button-boxShadow);
 
-  width: var(--button-width, auto);
-  height: var(--button-height, auto);
+  width: var(--button-width);
+  height: var(--button-height);
   min-height: var(--button-minHeight);
 
   padding: var(--button-padding);
