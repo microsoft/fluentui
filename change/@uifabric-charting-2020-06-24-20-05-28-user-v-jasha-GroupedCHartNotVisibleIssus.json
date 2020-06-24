@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Grouped chart - second chart disappear issue fixed",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-06-24T14:35:28.103Z"
+}
