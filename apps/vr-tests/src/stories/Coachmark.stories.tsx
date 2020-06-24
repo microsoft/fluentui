@@ -58,7 +58,7 @@ storiesOf('Coachmark', module)
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
+        .snapshot('default', { cropTo: '.ms-PositioningContainer' })
         .end()}
     >
       {story()}
