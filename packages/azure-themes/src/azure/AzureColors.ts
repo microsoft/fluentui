@@ -214,7 +214,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     bodyHovered: BaseColors.GRAY_201F1E,
     value: BaseColors.GRAY_161616,
     icon: BaseColors.GRAY_161616,
-    label: BaseColors.GRAY_323130, //#323130
+    label: BaseColors.GRAY_323130,
     disabled: BaseColors.GRAY_A19F9D,
     hyperlink: BaseColors.BLUE_0078D4,
     hyperlinkHovered: BaseColors.BLUE_004578,
