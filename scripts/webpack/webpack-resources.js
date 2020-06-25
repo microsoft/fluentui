@@ -79,7 +79,7 @@ module.exports = {
    * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps
    * @returns {webpack.Configuration[]} array of configs
    */
-  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
+  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps, profile) {
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
@@ -128,7 +128,7 @@ module.exports = {
 
             module,
             devtool: excludeSourceMaps ? undefined : devtool,
-            plugins: getPlugins(packageName, true),
+            plugins: getPlugins(packageName, true, profile),
           },
           customConfig,
         ),
@@ -235,24 +235,18 @@ module.exports = {
   },
 };
 
-function getPlugins(bundleName, isProduction) {
+function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
   const plugins = [];
 
-  if (isProduction) {
+  if (isProduction && profile) {
     plugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: bundleName + '.stats.html',
         openAnalyzer: false,
-        generateStatsFile: true,
-        statsOptions: {
-          source: false,
-          reasons: false,
-          chunks: false,
-        },
-        statsFilename: bundleName + '.stats.json',
+        generateStatsFile: false,
         logLevel: 'warn',
       }),
     );
