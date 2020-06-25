@@ -29,6 +29,7 @@
     "typescript": "3.7.2"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.50.0",
     "@babel/core": "^7.8.3",
     "@storybook/addon-options": "^5.3.8",
     "@storybook/addons": "^5.3.8",
@@ -39,7 +40,6 @@
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/date-time": "^7.10.6",
-    "@uifabric/tslint-rules": "^7.2.2",
     "awesome-typescript-loader": "^3.2.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.5.3",

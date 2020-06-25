@@ -23,6 +23,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.50.0",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@types/react": "16.8.25",
@@ -30,7 +31,6 @@
     "@types/react-syntax-highlighter": "^10.2.1",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

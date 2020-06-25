@@ -18,6 +18,7 @@
     "lint": "just-scripts lint"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.50.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -27,7 +28,6 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/react-is": "^16.7.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2",
     "@fluentui/react-bindings": "^0.50.0",
     "@fluentui/react-component-ref": "^0.50.0",
     "enzyme": "~3.10.0",
