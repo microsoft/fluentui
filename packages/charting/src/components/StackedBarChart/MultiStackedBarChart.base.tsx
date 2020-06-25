@@ -89,23 +89,21 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       <div className={this._classNames.root}>
         {bars}
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        {
-          <Callout
-            gapSpace={15}
-            isBeakVisible={false}
-            target={this.state.refSelected}
-            setInitialFocus={true}
-            hidden={!(!hideTooltip && isCalloutVisible)}
-            directionalHint={DirectionalHint.topRightEdge}
-            id={this._calloutId}
-          >
-            <ChartHoverCard
-              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          </Callout>
-        }
+        <Callout
+          gapSpace={15}
+          isBeakVisible={false}
+          target={this.state.refSelected}
+          setInitialFocus={true}
+          hidden={!(!hideTooltip && isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }

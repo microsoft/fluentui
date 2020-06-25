@@ -206,49 +206,47 @@ export class LineChartBase extends React.Component<
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {!hideLegend && legendBars}
         </div>
-        {
-          <Callout
-            target={this.state.refSelected}
-            isBeakVisible={false}
-            gapSpace={15}
-            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-            directionalHint={DirectionalHint.topAutoEdge}
-            id={this._calloutId}
-          >
-            <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutDateTimeContainer}>
-                <div className={this._classNames.calloutContentX}>{this.state.hoverXValue} </div>
-                {/*TO DO  if we add time for callout then will use this */}
-                {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
-              </div>
-              <div className={this._classNames.calloutInfoContainer}>
-                {this.state.YValueHover &&
-                  this.state.YValueHover.map(
-                    (
-                      xValue: {
-                        legend?: string;
-                        y?: number;
-                        color?: string;
-                        yAxisCalloutData?: string;
-                      },
-                      index: number,
-                    ) => (
-                      <div
-                        className={mergeStyles(this._classNames.calloutBlockContainer, {
-                          borderLeft: `4px solid ${xValue.color}`,
-                        })}
-                      >
-                        <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
-                        <div className={this._classNames.calloutContentY}>
-                          {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
-                        </div>
-                      </div>
-                    ),
-                  )}
-              </div>
+        <Callout
+          target={this.state.refSelected}
+          isBeakVisible={false}
+          gapSpace={15}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.topAutoEdge}
+          id={this._calloutId}
+        >
+          <div className={this._classNames.calloutContentRoot}>
+            <div className={this._classNames.calloutDateTimeContainer}>
+              <div className={this._classNames.calloutContentX}>{this.state.hoverXValue} </div>
+              {/*TO DO  if we add time for callout then will use this */}
+              {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
             </div>
-          </Callout>
-        }
+            <div className={this._classNames.calloutInfoContainer}>
+              {this.state.YValueHover &&
+                this.state.YValueHover.map(
+                  (
+                    xValue: {
+                      legend?: string;
+                      y?: number;
+                      color?: string;
+                      yAxisCalloutData?: string;
+                    },
+                    index: number,
+                  ) => (
+                    <div
+                      className={mergeStyles(this._classNames.calloutBlockContainer, {
+                        borderLeft: `4px solid ${xValue.color}`,
+                      })}
+                    >
+                      <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
+                      <div className={this._classNames.calloutContentY}>
+                        {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+                      </div>
+                    </div>
+                  ),
+                )}
+            </div>
+          </div>
+        </Callout>
       </div>
     );
   }

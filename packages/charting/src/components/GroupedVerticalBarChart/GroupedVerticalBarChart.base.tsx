@@ -182,24 +182,22 @@ export class GroupedVerticalBarChartBase extends React.Component<
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {legends}
         </div>
-        {
-          <Callout
-            target={this.state.refSelected}
-            gapSpace={10}
-            isBeakVisible={false}
-            setInitialFocus={true}
-            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-            directionalHint={DirectionalHint.topRightEdge}
-            id={this._calloutId}
-          >
-            <ChartHoverCard
-              XValue={this.state.xCalloutValue}
-              Legend={this.state.titleForHoverCard}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          </Callout>
-        }
+        <Callout
+          target={this.state.refSelected}
+          gapSpace={10}
+          isBeakVisible={false}
+          setInitialFocus={true}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            XValue={this.state.xCalloutValue}
+            Legend={this.state.titleForHoverCard}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }

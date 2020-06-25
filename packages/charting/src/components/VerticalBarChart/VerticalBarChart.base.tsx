@@ -150,24 +150,22 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             {legends!}
           </div>
         )}
-        {
-          <Callout
-            gapSpace={10}
-            isBeakVisible={false}
-            target={this.state.refSelected}
-            setInitialFocus={true}
-            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-            directionalHint={DirectionalHint.topRightEdge}
-            id={this._calloutId}
-          >
-            <ChartHoverCard
-              XValue={this.state.xCalloutValue}
-              Legend={this.state.selectedLegendTitle}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          </Callout>
-        }
+        <Callout
+          gapSpace={10}
+          isBeakVisible={false}
+          target={this.state.refSelected}
+          setInitialFocus={true}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            XValue={this.state.xCalloutValue}
+            Legend={this.state.selectedLegendTitle}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }

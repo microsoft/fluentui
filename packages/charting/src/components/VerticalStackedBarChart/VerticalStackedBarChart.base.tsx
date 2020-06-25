@@ -106,24 +106,22 @@ export class VerticalStackedBarChartBase extends React.Component<
           </svg>
         </FocusZone>
         {<div className={this._classNames.legendContainer}>{legends}</div>}
-        {
-          <Callout
-            gapSpace={15}
-            isBeakVisible={false}
-            target={this.state.refSelected}
-            setInitialFocus={true}
-            hidden={!(!this.props.hideTooltip && isCalloutVisible)}
-            directionalHint={DirectionalHint.topRightEdge}
-            id={this._calloutId}
-          >
-            <ChartHoverCard
-              XValue={this.state.xCalloutValue}
-              Legend={this.state.selectedLegendTitle}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          </Callout>
-        }
+        <Callout
+          gapSpace={15}
+          isBeakVisible={false}
+          target={this.state.refSelected}
+          setInitialFocus={true}
+          hidden={!(!this.props.hideTooltip && isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            XValue={this.state.xCalloutValue}
+            Legend={this.state.selectedLegendTitle}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }
