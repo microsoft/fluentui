@@ -10,7 +10,7 @@ const config: ScreenerTestsConfig = {
         .keys(`.${toolbarMenuItemClassName}:nth-child(1)`, keys.rightArrow)
         .snapshot('Opens submenu'),
   ],
-  browsers: ['ie11'],
+  // browsers: ['ie11'],
 };
 
 export default config;
