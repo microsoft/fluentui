@@ -30,7 +30,6 @@ const FormValidateFormik = () => (
     }}
     render={({ handleSubmit, handleChange, errors, handleBlur, setTouched, touched, values, setFieldValue }) => (
       <Form onSubmit={handleSubmit}>
-        {touched.firstName && values.firstName.length >= 4}
         <Form.Input
           errorMessage={touched.firstName && errors.firstName}
           onBlur={handleBlur}
