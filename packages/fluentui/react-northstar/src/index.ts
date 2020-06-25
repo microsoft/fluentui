@@ -311,6 +311,8 @@ export * from './components/Card/CardColumn';
 export { default as CardColumn } from './components/Card/CardColumn';
 export * from './components/Card/CardExpandableBox';
 export { default as CardExpandableBox } from './components/Card/CardExpandableBox';
+export { default as Datepicker } from './components/Datepicker/Datepicker';
+export * from './components/Datepicker/Datepicker';
 //
 // Utilities
 //
