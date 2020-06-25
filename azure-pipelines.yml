@@ -11,11 +11,11 @@ variables:
 pool: 'Self Host Ubuntu'
 
 jobs:
-  - job: Build
+  - job: Validation
+    workspace:
+      clean: all
     steps:
       - template: azure-pipelines.tools.yml
-
-      # - template: azure-pipelines.cache.yml
 
       - script: |
           yarn
@@ -26,21 +26,24 @@ jobs:
         displayName: check change
 
       - script: |
-          yarn build
-        displayName: build
+          yarn lage lint
+        displayName: lint
 
-      - task: ArchiveFiles@2
-        inputs:
-          rootFolderOrFile: $(Build.Repository.LocalPath)
-          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
-          includeRootFolder: true
-          archiveType: 'tar'
-          tarCompression: 'gz'
-          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
-          replaceExistingArchive: true
+  - job: BuildTest
+    workspace:
+      clean: all
+    steps:
+      - template: azure-pipelines.tools.yml
 
-      - publish: $(Build.ArtifactStagingDirectory)
-        artifact: Build-PR-$(Build.BuildNumber)
+      - script: |
+          yarn
+        displayName: yarn
+
+      - template: .devops/templates/pr-target-branch.yml
+
+      - script: |
+          yarn lage build test --since $(target_branch)
+        displayName: build and test
 
       - script: |
           az --version
@@ -57,60 +60,17 @@ jobs:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Trigger Perf-Test and Screener jobs
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
-  - job: Validate
-    dependsOn: Build
-    pool: 'Self Host Ubuntu'
-    steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
-
-      - template: azure-pipelines.tools.yml
-
-      - script: |
-          yarn test
-        displayName: test
-
-      - script: |
-          yarn lint
-        displayName: lint
-
-      - script: |
-          yarn check-for-changed-files
-        displayName: check for changed files
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
   - job: ValidateFluent
-    dependsOn: Build
+    workspace:
+      clean: all
     steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
-
       - template: azure-pipelines.tools.yml
+
+      - script: |
+          yarn
+        displayName: yarn
+
+      - template: .devops/templates/pr-target-branch.yml
 
       - script: |
           if [ $BUILD_REASON == "PullRequest" ]; then
@@ -138,29 +98,22 @@ jobs:
           yarn check-for-changed-files
         displayName: check for changed files
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
   - job: Deploy
-    dependsOn: Build
+    workspace:
+      clean: all
     variables:
       PR_DEPLOY: 1
     steps:
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
-
       - template: azure-pipelines.tools.yml
 
       - script: |
-          NODE_ENV=production yarn build:fluentui:docs
-          yarn bundle
+          yarn
+        displayName: yarn
+
+      - template: .devops/templates/pr-target-branch.yml
+
+      - script: |
+          yarn lage bundle --since $(target_branch) --no-deps
         displayName: bundle
 
       - task: AzureUpload@1
@@ -172,19 +125,11 @@ jobs:
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
   - job: ScreenerFluent
     steps:
       - script: |
           yarn
         displayName: yarn
-
-      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.tools.yml
 
@@ -203,33 +148,24 @@ jobs:
         condition: always()
 
   - job: Screener
-    dependsOn: Build
-    # keeping this at microsoft hosted because this doesn't require builds
-    pool:
-      vmImage: 'Ubuntu 18.04'
+    workspace:
+      clean: all
     steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-
-      # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
+      - script: |
+          yarn
+        displayName: yarn
 
       - template: azure-pipelines.tools.yml
+
+      - template: .devops/templates/pr-target-branch.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
           git config --global user.name "Fabric Tactical"
-          yarn vrtest -- --debug
+        displayName: config git user and email
+
+      - script: |
+          yarn lage vrtest --debug --since $(target_branch) --no-deps
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()

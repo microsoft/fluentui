@@ -2,6 +2,7 @@ module.exports = {
   pipeline: {
     build: ['^build'],
     bundle: ['build'],
+    vrtest: ['build'],
     lint: [],
     clean: [],
     test: ['build'],
