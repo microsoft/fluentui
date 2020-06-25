@@ -17,7 +17,7 @@ import {
 import { ThemeContext } from 'react-fela';
 import { WithAsProp, withSafeTypeForAs, ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
 import { useTelemetry, useAccessibility, getElementType, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
-import Box from '../Box/Box';
+import DividerContent from './DividerContent';
 
 export interface DividerProps
   extends UIComponentProps,
@@ -50,7 +50,10 @@ export type DividerStylesProps = Required<
 
 export const dividerClassName = 'ui-divider';
 
-const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<DividerProps> = props => {
+const Divider: React.FC<WithAsProp<DividerProps>> &
+  FluentComponentStaticProps<DividerProps> & {
+    Content: typeof DividerContent;
+  } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
   setStart();
@@ -92,7 +95,7 @@ const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<D
     rtl: context.rtl,
   });
 
-  const content = createShorthand(Box, props.content, {
+  const content = createShorthand(DividerContent, props.content, {
     defaultProps: () => ({
       styles: resolvedStyle.content,
     }),
@@ -126,6 +129,8 @@ Divider.propTypes = {
 Divider.defaultProps = {
   size: 0,
 };
+
+Divider.Content = DividerContent;
 
 Divider.handledProps = Object.keys(Divider.propTypes) as any;
 
