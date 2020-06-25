@@ -29,6 +29,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix primary styles for `SplitButton` hover @assuncaocharles ([#13726](https://github.com/microsoft/fluentui/pull/13726))
 - Allow debugging composed components @miroslavstastny ([#13736](https://github.com/microsoft/fluentui/pull/13736))
 - Fix `SplitButton` displayed on two lines for small widths @assuncaocharles ([#13773](https://github.com/microsoft/fluentui/pull/13773))
+- Fix(form): fix narration of the label for other elements than input @kolaps33 ([#13765](https://github.com/microsoft/fluentui/pull/13765))
 
 ### Features
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))
