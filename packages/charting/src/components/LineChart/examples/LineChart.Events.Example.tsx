@@ -9,11 +9,6 @@ const calloutItemStyle = mergeStyles({
   padding: '3px',
 });
 
-interface IRootStyles {
-  height: string;
-  width: string;
-}
-
 interface ILineChartEventsExampleState {
   width: number;
   height: number;
@@ -121,12 +116,14 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
         },
       ],
     };
-    const rootStyle: IRootStyles = {
+
+    const rootStyle = {
       width: `${this.state.width}px`,
       height: `${this.state.height}px`,
     };
+
     return (
-      <div className={mergeStyles(rootStyle)}>
+      <div style={rootStyle}>
         <LineChart
           data={data}
           legendsOverflowText={'Overflow Items'}

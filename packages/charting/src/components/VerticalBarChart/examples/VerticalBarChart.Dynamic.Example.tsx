@@ -2,12 +2,6 @@ import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IDataPoint } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
-interface IRootStyles {
-  height: string;
-  width: string;
-}
 
 export interface IExampleState {
   dynamicData: IDataPoint[];
@@ -47,10 +41,8 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
   }
 
   public render(): JSX.Element {
-    const rootStyle: IRootStyles = { width: '650px', height: '400px' };
-
     return (
-      <div className={mergeStyles(rootStyle)}>
+      <div style={{ width: '650px', height: '400px' }}>
         <VerticalBarChart
           data={this.state.dynamicData}
           colors={this.state.colors}

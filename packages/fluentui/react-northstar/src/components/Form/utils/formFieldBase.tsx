@@ -30,9 +30,6 @@ export interface FormFieldBaseProps extends UIComponentProps {
   /** A control for the form field. */
   control?: ShorthandValue<BoxProps>;
 
-  /** The HTML input id. This will be set on the control element and will be use for linking it with the label for correct accessibility. */
-  id?: string;
-
   /** A label for the form field. */
   label?: ShorthandValue<FormLabelProps>;
 
@@ -55,7 +52,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { message, inline, errorMessage, id, control, label, className, design, styles, variables } = props;
+    const { message, inline, errorMessage, control, label, className, design, styles, variables } = props;
 
     const slotProps = composeOptions.resolveSlotProps<FormFieldBaseProps>(props);
     const ElementType = getElementType(props);
@@ -63,7 +60,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     const messageId = React.useRef<string>();
     messageId.current = getOrGenerateIdFromShorthand('error-message-', errorMessage || message, messageId.current);
     const labelId = React.useRef<string>();
-    labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
+    labelId.current = getOrGenerateIdFromShorthand('form-label-', label, labelId.current);
 
     const { classes } = useStyles<FormFieldBaseStylesProps>(_FormFieldBase.displayName, {
       className: composeOptions.className,
@@ -98,7 +95,6 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
         {createShorthand(composeOptions.slots.label, label, {
           defaultProps: () =>
             getA11yProps('label', {
-              htmlFor: id,
               id: labelId.current,
               inline,
               ...slotProps.label,
@@ -151,7 +147,6 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
 
 _FormFieldBase.propTypes = {
   ...commonPropTypes.createCommon({ children: false }),
-  id: PropTypes.string,
   inline: PropTypes.bool,
   message: customPropTypes.itemShorthand,
   errorMessage: customPropTypes.itemShorthand,

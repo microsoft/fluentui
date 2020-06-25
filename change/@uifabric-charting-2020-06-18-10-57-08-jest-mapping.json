@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Automatically configure jest moduleNameMapper",
+  "packageName": "@uifabric/charting",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-18T17:56:56.893Z"
+}

@@ -39,7 +39,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
         bottom: 0,
         left: 0,
         maxWidth: '100%',
-        height: pxToRem(v.progressHeight),
+        height: v.progressHeight,
         background: v.progressColor,
       },
 

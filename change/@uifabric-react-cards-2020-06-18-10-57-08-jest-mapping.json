@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Automatically configure jest moduleNameMapper",
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-18T17:57:02.309Z"
+}
