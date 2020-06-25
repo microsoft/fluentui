@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Fixing React-Next's Toggle.scss focus value",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-25T00:32:48.311Z"
+}

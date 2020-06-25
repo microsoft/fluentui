@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import * as d3 from 'd3-format';
-
-interface IRootStyles {
-  height: string;
-  width: string;
-}
 
 interface ILineChartBasicState {
   width: number;
@@ -116,14 +110,16 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
         },
       ],
     };
-    const rootStyle: IRootStyles = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+
     return (
       <>
         <label>change Width:</label>
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
-        <div className={mergeStyles(rootStyle)}>
+        <div style={rootStyle}>
           <LineChart
             data={data}
             legendsOverflowText={'Overflow Items'}

@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2020 12:37:46 GMT",
+      "tag": "office-ui-fabric-react_v7.121.2",
+      "version": "7.121.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
+            "author": "esteban.230@hotmail.com",
+            "commit": "1e9b0f1b3e1e79a56187a94d55127913d4370958",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jun 2020 12:42:16 GMT",
       "tag": "office-ui-fabric-react_v7.121.2",
       "version": "7.121.2",
