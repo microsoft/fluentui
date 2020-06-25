@@ -67,7 +67,8 @@ const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnim
     allDisplayNames: [displayName],
     className: animationClassName,
     primaryDisplayName: displayName,
-    props: {
+    componentProps: {},
+    inlineStylesProps: {
       styles: createAnimationStyles(animation, theme),
     },
 
