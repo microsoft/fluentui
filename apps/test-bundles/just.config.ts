@@ -5,5 +5,7 @@ const { run } = require('parallel-webpack');
 preset();
 
 task('bundle', done => {
-  run(resolveCwd('webpack.config.js'), {}, done);
+  run(resolveCwd('webpack.config.js'), {}, () => {
+    run(resolveCwd('webpack.nostats.config.js'), {}, done);
+  });
 });

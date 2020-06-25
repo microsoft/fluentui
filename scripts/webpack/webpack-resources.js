@@ -72,12 +72,13 @@ module.exports = {
   webpack,
 
   /**
-   * @param {string} packageName - name of the package
-   * @param {boolean} isProduction - whether it's a production build
-   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object
-   * @param {boolean} [onlyProduction] - whether to only generate the production config
-   * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps
-   * @returns {webpack.Configuration[]} array of configs
+   * @param {string} packageName - name of the package.
+   * @param {boolean} isProduction - whether it's a production build.
+   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object.
+   * @param {boolean} [onlyProduction] - whether to only generate the production config.
+   * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps.
+   * @param {boolean} [profile] - whether to profile the bundle using webpack-bundle-analyzer.
+   * @returns {webpack.Configuration[]} array of configs.
    */
   createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps, profile) {
     const module = {
