@@ -25,6 +25,9 @@ const ChatMessageDetails = compose<
   displayName: 'ChatMessageDetails',
   overrideStyles: true,
   handledProps: ['mine'],
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
   mapPropsToStylesProps: ({ mine }) => ({
     mine,
   }),

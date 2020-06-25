@@ -2,17 +2,10 @@ import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 import { AcceptIcon, TranslationIcon } from '@fluentui/react-icons-northstar';
 
-const [janeAvatar, johnAvatar] = ['public/images/avatar/small/ade.jpg', 'public/images/avatar/small/joe.jpg'].map(
-  src => ({
-    image: src,
-    status: { color: 'green', icon: <AcceptIcon /> },
-  }),
-);
-
 const items: ShorthandCollection<ChatItemProps> = [
   {
     contentPosition: 'start',
-    gutter: <Avatar {...johnAvatar} />,
+    gutter: <Avatar image="public/images/avatar/small/ade.jpg" status={{ color: 'green', icon: <AcceptIcon /> }} />,
     message: (
       <Chat.Message
         content="Hello"
@@ -29,7 +22,7 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     contentPosition: 'end',
-    gutter: <Avatar {...janeAvatar} />,
+    gutter: <Avatar image="public/images/avatar/small/joe.jpg" status={{ color: 'green', icon: <AcceptIcon /> }} />,
     message: (
       <Chat.Message
         content="Hi"

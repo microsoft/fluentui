@@ -51,7 +51,7 @@ import Reaction, { ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
 import ChatMessageHeader, { ChatMessageHeaderProps } from './ChatMessageHeader';
-import ChatMessageDetails from './ChatMessageDetails';
+import ChatMessageDetails, { ChatMessageDetailsProps } from './ChatMessageDetails';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -88,7 +88,7 @@ export interface ChatMessageProps
   timestamp?: ShorthandValue<TextProps>;
 
   /** Message details info slot for the header. */
-  details?: ShorthandValue<BoxProps>;
+  details?: ShorthandValue<ChatMessageDetailsProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -395,6 +395,7 @@ ChatMessage.propTypes = {
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
+  details: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
   header: customPropTypes.itemShorthand,
   mine: PropTypes.bool,
