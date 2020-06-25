@@ -14,7 +14,7 @@ export function isConformant(testInfo: IsConformantOptions) {
   }
 
   // Props need to be filtered since react-docgen shows all the props including props
-  // that aren't specified in the component.
+  // inherited native props or React built-in props.
   const parser = withCustomConfig(tsconfigPath, {
     propFilter: prop => !/@types[\\/]react[\\/]/.test(prop.parent?.fileName || ''),
   });
