@@ -10,22 +10,29 @@ interface ToggleProps {
 interface ToggleState extends ToggleProps {}
 
 /**
- * The useToggleButton hook processes the Button component props and returns state.
+ * The useToggleButton hook processes the ToggleButton component props and returns state.
  * @param props - ToggleButton props to derive state from.
  */
 export const useToggle = <TProps, TState extends TProps = TProps>(
   props: TProps & ToggleProps,
 ): TState & ToggleState => {
-  const { checked: controlledChecked, defaultChecked = false, onClick: onButtonClick } = props;
+  const { checked: controlledChecked, defaultChecked = false, onClick, ...rest } = props;
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked);
 
-  const onClick = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (onButtonClick) {
-      onButtonClick(ev);
-    }
+  const _onClick = React.useCallback(
+    (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      if (onClick) {
+        onClick(ev);
 
-    setChecked(!checked);
-  };
+        if (ev.defaultPrevented) {
+          return;
+        }
+      }
 
-  return { ...props, checked, onClick } as TState & ToggleState;
+      setChecked(!checked);
+    },
+    [checked, onClick],
+  );
+
+  return { ...rest, checked, onClick: _onClick } as TState & ToggleState;
 };

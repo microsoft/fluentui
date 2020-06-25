@@ -3,45 +3,43 @@ import { compose, mergeProps } from '@fluentui/react-compose';
 import { MenuButtonProps } from './MenuButton.types';
 import { useMenuButton } from './useMenuButton';
 
-export const ButtonBase = compose<'button', MenuButtonProps, MenuButtonProps, {}, {}>(
+export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps, {}, {}>(
   (props, ref, options) => {
     const { state } = options;
     const { slots, slotProps } = mergeProps(state, options);
 
+    const { children, expanded, iconOnly } = state;
+
     return (
-      <slots.root ref={ref} {...slotProps.root}>
-        {props.loading && <slots.loader {...slotProps.loader} />}
-        {props.icon && props.iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
-        {!props.iconOnly && props.content && <slots.content {...slotProps.content} />}
-        {props.icon && props.iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
-      </slots.root>
+      <>
+        <slots.root ref={ref} {...slotProps.root}>
+          {!iconOnly && children}
+          {expanded && <slots.menu {...slotProps.menu} />}
+        </slots.root>
+      </>
     );
   },
   {
-    displayName: 'ButtonBase',
+    displayName: 'MenuButtonBase',
     handledProps: [
       'circular',
-      'content',
       'disabled',
       'fluid',
       'iconOnly',
       'iconPosition',
       'inverted',
-      'loader',
       'loading',
       'primary',
       'secondary',
       'size',
     ],
     slots: {
-      icon: 'span',
-      content: 'span',
-      loader: 'span',
+      menu: 'span',
     },
-    state: useButton,
+    state: useMenuButton,
   },
 );
 
-ButtonBase.defaultProps = {
+MenuButtonBase.defaultProps = {
   as: 'button',
 };

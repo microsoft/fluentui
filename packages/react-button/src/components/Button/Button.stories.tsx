@@ -1,15 +1,23 @@
 import * as React from 'react';
+import { Stack, Text } from 'office-ui-fabric-react';
 import { Button } from './Button';
 import { ButtonProps } from './Button.types';
 import * as classes from './Button.stories.scss';
-import { Stack, Text } from 'office-ui-fabric-react';
 
 const ButtonVariants = (props: ButtonProps) => (
   <div className={classes.hStack}>
-    <Button {...props} content="Hello, world" icon="X" />
-    <Button {...props} primary content="Hello, world" icon="X" />
-    <Button {...props} disabled content="Hello, world" icon="X" />
-    <Button {...props} primary disabled content="Hello, world" icon="X" />
+    <Button {...props} icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} primary icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} disabled icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} primary disabled icon="X">
+      Hello, world
+    </Button>
   </div>
 );
 
@@ -23,10 +31,18 @@ export const ButtonCss = () => (
 
     <Text variant="xLarge">A button can fill the width of its container using the `fluid` prop.</Text>
     <div className={classes.vStack}>
-      <Button fluid content="Hello, world" icon="X" />
-      <Button fluid primary content="Hello, world" icon="X" />
-      <Button fluid disabled content="Hello, world" icon="X" />
-      <Button fluid primary disabled content="Hello, world" icon="X" />
+      <Button fluid icon="X">
+        Hello, world
+      </Button>
+      <Button fluid primary icon="X">
+        Hello, world
+      </Button>
+      <Button fluid disabled icon="X">
+        Hello, world
+      </Button>
+      <Button fluid primary disabled icon="X">
+        Hello, world
+      </Button>
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
@@ -87,8 +103,9 @@ export const ButtonTokens = () => (
             transform: 'none',
           },
         }}
-        content="Github: Open issue"
-      />
+      >
+        Github: Open issue
+      </Button>
       <Button
         tokens={{
           fontFamily: `"Amazon Ember", Arial, sans-serif`,
@@ -113,8 +130,9 @@ export const ButtonTokens = () => (
             borderColor: '#a88734 #9c7e31 #846a29',
           },
         }}
-        content="Amazon: Proceed to checkout"
-      />
+      >
+        Amazon: Proceed to checkout
+      </Button>
       <Button
         tokens={{
           borderWidth: '0px',
@@ -138,8 +156,9 @@ export const ButtonTokens = () => (
             borderColor: '#a88734 #9c7e31 #846a29',
           },
         }}
-        content="Netflix: Sign In"
-      />
+      >
+        Netflix: Sign In
+      </Button>
       <Button
         tokens={{
           height: '48px',
@@ -167,8 +186,9 @@ export const ButtonTokens = () => (
             borderColor: 'rgb(255, 255, 255)',
           },
         }}
-        content="Spotify: GET PREMIUM"
-      />
+      >
+        Spotify: GET PREMIUM
+      </Button>
       <Button
         tokens={{
           height: '52px',
@@ -182,8 +202,9 @@ export const ButtonTokens = () => (
           fontSize: '14px',
           fontWeight: '700',
         }}
-        content="Spotify: LEARN MORE"
-      />
+      >
+        Spotify: LEARN MORE
+      </Button>
     </div>
     <Text variant="xLarge">A tokenized button can be customized for any size or padding.</Text>
     <div className={classes.vStack}>

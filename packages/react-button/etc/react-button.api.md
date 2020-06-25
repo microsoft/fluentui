@@ -26,7 +26,6 @@ export interface ButtonOptions extends ComposeOptions<ButtonProps, ButtonSlots, 
 // @public (undocumented)
 export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
     circular?: boolean;
-    content?: ShorthandValue<{}>;
     disabled?: boolean;
     fluid?: boolean;
     // Warning: (ae-forgotten-export) The symbol "ShorthandValue" needs to be exported by the entry point index.d.ts
@@ -50,8 +49,6 @@ export type ButtonSlotProps = {
 
 // @public (undocumented)
 export interface ButtonSlots {
-    // (undocumented)
-    content: React.ElementType;
     // (undocumented)
     icon: React.ElementType;
     // (undocumented)

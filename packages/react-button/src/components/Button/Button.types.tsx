@@ -13,11 +13,6 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   icon?: ShorthandValue<{}>;
 
   /**
-   * Shorthand content within the button.
-   */
-  content?: ShorthandValue<{}>;
-
-  /**
    * Shorthand loader content within the button.
    */
   loader?: ShorthandValue<{}>;
@@ -77,7 +72,6 @@ export interface ButtonState extends ButtonProps {}
 
 export interface ButtonSlots {
   icon: React.ElementType;
-  content: React.ElementType;
   loader: React.ElementType;
 }
 

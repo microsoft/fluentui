@@ -1182,6 +1182,13 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/keyboard-key@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/keyboard-key/-/keyboard-key-0.2.2.tgz#bcf5883f72b17f8e625d626e4117a3075f072aea"
+  integrity sha512-lUacGG22XRuf8YJPMIrwOxYjdL3cGxSK/PjzCt+LMC4dE+Lc5hi1wWFgLc950/OQsF+V54aVTIWuAGhtpuZOqw==
+  dependencies:
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
