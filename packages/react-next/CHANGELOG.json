@@ -2,6 +2,48 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2020 12:37:46 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.47",
+      "version": "8.0.0-alpha.47",
+      "comments": {
+        "none": [
+          {
+            "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
+            "author": "esteban.230@hotmail.com",
+            "commit": "1e9b0f1b3e1e79a56187a94d55127913d4370958",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.47",
+      "version": "8.0.0-alpha.47",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copy Persona component code to react-next project for migration",
+            "author": "miclo@microsoft.com",
+            "commit": "b8b74099659fba313055bb2a4440c88a9ad59196",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "SelectedItemsList: Copy code to react-next to stage migration",
+            "author": "miclo@microsoft.com",
+            "commit": "893a8bdefcec5abc608f143b6eff31e66159893a",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Fix incorrect button imports",
+            "author": "xgao@microsoft.com",
+            "commit": "d58f1c2f8d9555a01e2a521f1d4542a301b31b97",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jun 2020 12:42:16 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.46",
       "version": "8.0.0-alpha.46",

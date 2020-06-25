@@ -1,8 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jun 2020 12:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.3)
+
+Tue, 23 Jun 2020 12:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.2..@uifabric/charting_v2.3.3)
+
+### Patches
+
+- LineChart: import find from office-ui-fabric-react/lib/Utilities to support IE11 ([PR #13683](https://github.com/microsoft/fluentui/pull/13683) by v-gorraj@microsoft.com)
+- HorizontalBarChart: Add keyboard accessability ([PR #13706](https://github.com/microsoft/fluentui/pull/13706) by v-gorraj@microsoft.com)
 
 ## [2.3.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.2)
 
