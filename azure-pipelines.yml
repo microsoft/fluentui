@@ -44,6 +44,9 @@ jobs:
       - script: |
           yarn lage build test --since $(target_branch)
         displayName: build and test
+        env:
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       - script: |
           az --version
@@ -115,6 +118,9 @@ jobs:
       - script: |
           yarn lage bundle --since $(target_branch) --no-deps
         displayName: bundle
+        env:
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       - task: AzureUpload@1
         displayName: Upload PR deploy site
@@ -169,3 +175,5 @@ jobs:
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
