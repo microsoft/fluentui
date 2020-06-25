@@ -11,7 +11,8 @@ const resolvePath = (packageName, entryFileName = 'index.js') =>
 
 // Create entries for all top level imports.
 const Entries = _buildEntries('office-ui-fabric-react');
-_buildEntries('@fluentui/react-next', Entries);
+// TODO: re-enable tests for react-next when tests are not timing out during CI.
+// _buildEntries('@fluentui/react-next', Entries);
 
 // Create entries for single top level import.
 Entries['react-compose'] = resolvePath('@fluentui/react-compose');

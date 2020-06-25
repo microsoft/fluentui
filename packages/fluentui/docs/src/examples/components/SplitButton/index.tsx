@@ -4,6 +4,7 @@ import Types from './Types';
 import States from './States';
 import Slots from './Slots';
 import Usage from './Usage';
+import Visual from './Visual';
 
 const SplitButtonExamples = () => (
   <>
@@ -11,6 +12,7 @@ const SplitButtonExamples = () => (
     <States />
     <Slots />
     <Usage />
+    <Visual />
   </>
 );
 
