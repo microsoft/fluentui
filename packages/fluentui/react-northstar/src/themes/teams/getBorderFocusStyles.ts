@@ -1,7 +1,7 @@
 import { ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
 import * as React from 'react';
 
-type CSSBorderStyles = Pick<React.CSSProperties, 'borderWidth' | 'borderRadius'>;
+type CSSBorderStyles = Pick<ICSSInJSStyle, 'borderWidth' | 'borderRadius'>;
 
 type BorderFocusStyles = CSSBorderStyles & {
   variables?:
@@ -19,22 +19,20 @@ type BorderFocusStyles = CSSBorderStyles & {
   borderPadding?: React.CSSProperties['padding'];
 };
 
-type BorderPseudoElementStyles = CSSBorderStyles & { borderEdgeValue: string };
-
 const defaultColor = 'transparent';
 
-const getPseudoElementStyles = (args: BorderPseudoElementStyles): ICSSInJSStyle => {
-  const { borderEdgeValue, ...styles } = args;
-
+const getPseudoElementStyles = (borderEdgeValue: string, styles: ICSSInJSStyle): ICSSInJSStyle => {
   return {
     content: '""',
     position: 'absolute',
     borderStyle: 'solid',
     pointerEvents: 'none',
+
     top: borderEdgeValue,
     right: borderEdgeValue,
     bottom: borderEdgeValue,
     left: borderEdgeValue,
+
     ...styles,
   };
 };
@@ -54,7 +52,9 @@ const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
     borderPadding,
   } = args;
 
-  const defaultBorderStyles: React.CSSProperties = { borderWidth, borderRadius };
+  const afterBorderEdgeValue =
+    borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPadding} - ${borderWidth})`;
+  const beforeBorderEdgeValue = borderPadding == null ? '0' : `-${borderPadding}`;
 
   return {
     ':focus': {
@@ -63,18 +63,18 @@ const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
     ':focus-visible': {
       borderColor: 'transparent',
 
-      ':before': getPseudoElementStyles({
+      ':before': getPseudoElementStyles(beforeBorderEdgeValue, {
         zIndex: sv.zIndexes.foreground,
-        borderEdgeValue: borderPadding == null ? '0' : `-${borderPadding}`,
         borderColor: focusInnerBorderColor,
-        ...defaultBorderStyles,
+        borderWidth,
+        borderRadius,
       }),
 
-      ':after': getPseudoElementStyles({
+      ':after': getPseudoElementStyles(afterBorderEdgeValue, {
         zIndex: sv.zIndexes.foreground,
-        borderEdgeValue: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPadding} - ${borderWidth})`,
         borderColor: focusOuterBorderColor,
-        ...defaultBorderStyles,
+        borderWidth,
+        borderRadius,
       }),
     },
   };
