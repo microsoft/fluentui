@@ -15,7 +15,7 @@ import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
-import { copyToClipboard } from '../SelectedItemsList/utils/copyToClipboard';
+import { copyToClipboard } from '../SelectedItemsList';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
