@@ -140,16 +140,18 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
   });
   const { classes, styles: resolvedStyles } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
     className: treeTitleClassName,
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables,
+    mapPropsToStyles: () => ({
       selected,
       selectableParent,
       disabled,
       selectable,
       indeterminate,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
     }),
     rtl: context.rtl,
   });
