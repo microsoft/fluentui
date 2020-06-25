@@ -22,7 +22,6 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
     handledProps: [
       'circular',
       'content',
-      'disabled',
       'fluid',
       'iconOnly',
       'iconPosition',
@@ -32,6 +31,7 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'primary',
       'secondary',
       'size',
+      'tokens',
     ],
     slots: {
       icon: 'span',
