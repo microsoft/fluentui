@@ -51,11 +51,20 @@ storiesOf('Checkbox Next', module)
       defaultChecked={true}
     />
   ))
-  .addStory('Custom render Checkbox', () => (
+  .addStory('Custom render Checkbox using onRenderLabel', () => (
     <Checkbox
       label="Persona Checkbox"
       onRenderLabel={(props: ICheckboxProps) => {
-        return <Persona text={props!.label} size={PersonaSize.size32} />;
+        return <Persona text={props!.label as string} size={PersonaSize.size32} />;
+      }}
+    />
+  ))
+  .addStory('Custom render Checkbox using label render prop', () => (
+    <Checkbox
+      label={{
+        children: () => {
+          return <Persona text="Persona Checkbox" size={PersonaSize.size32} />;
+        },
       }}
     />
   ));
