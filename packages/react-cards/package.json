@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-cards",
-  "version": "0.109.101",
+  "version": "0.109.102",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -48,7 +48,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/azure-themes": "^7.1.29",
-    "@uifabric/file-type-icons": "^7.3.6",
+    "@uifabric/file-type-icons": "^7.3.7",
     "@uifabric/foundation": "^7.7.27",
     "@uifabric/set-version": "^7.0.13",
     "@uifabric/styling": "^7.13.1",

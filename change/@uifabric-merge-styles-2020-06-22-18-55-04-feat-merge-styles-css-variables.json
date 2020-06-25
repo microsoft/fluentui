@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Loosening typings to allow for css variables. Removing kebab casing for css values which start with dashes.",
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-23T01:55:04.347Z"
+}
