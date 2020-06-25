@@ -2,7 +2,7 @@
   "buildCommand": "build:min",
   "packages": [
     "packages/react-button",
-    "@fluentui/react-northstar",
+    "packages/fluentui/react-northstar",
     "packages/office-ui-fabric-react",
     "@fluentui/react-next",
     "@fluentui/react-icons"

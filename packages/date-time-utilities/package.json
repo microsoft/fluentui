@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/date-time-utilities",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "description": "Date-time utilities",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,10 +27,10 @@
     "@types/jest": "~24.9.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.1"
+    "@uifabric/tslint-rules": "^7.2.2"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.13",
+    "@uifabric/set-version": "^7.0.14",
     "tslib": "^1.10.0"
   }
 }

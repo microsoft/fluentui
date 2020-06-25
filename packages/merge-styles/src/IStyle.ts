@@ -7,6 +7,8 @@ import { IRawStyleBase } from './IRawStyleBase';
  * {@docCategory IRawStyle}
  */
 export interface IRawStyle extends IRawStyleBase {
+  [key: string]: string | number | undefined | Record<string, IStyle>;
+
   /**
    * Display name for the style.
    */

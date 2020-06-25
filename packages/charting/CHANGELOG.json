@@ -2,6 +2,48 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@uifabric/charting_v2.3.4",
+      "version": "2.3.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing some unneeded mergeStyles usage in examples.",
+            "author": "dzearing@hotmail.com",
+            "commit": "76c53de7cb3a89796d29cee85e8779729a4635d5",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Grouped veritcal bar chart - second chart disappear issue fixed",
+            "author": "v-jasha@microsoft.com",
+            "commit": "0b357d2c9c1c9d7237d23682eb43a03573db6c96",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@uifabric/charting_v2.3.3",
+      "version": "2.3.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "LineChart: import find from office-ui-fabric-react/lib/Utilities to support IE11",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "3fb9b1b94b9e6704fba625f416b39722d56820c8",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "HorizontalBarChart: Add keyboard accessability",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "039cf12124d228f15af2d7a77470a843d9149478",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jun 2020 12:42:16 GMT",
       "tag": "@uifabric/charting_v2.3.2",
       "version": "2.3.2",

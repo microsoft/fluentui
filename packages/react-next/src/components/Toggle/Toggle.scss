@@ -56,7 +56,7 @@ $DEFAULT_THUMB_SIZE: 12px;
   transition: all 0.1s ease;
   width: $DEFAULT_PILL_WIDTH;
 
-  @include focus-border($padding: -2);
+  @include focus-border($padding: -2px);
 
   &:hover {
     border-color: var($semanticColorsInputBorderHovered);
