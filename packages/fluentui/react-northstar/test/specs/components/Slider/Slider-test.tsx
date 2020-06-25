@@ -5,7 +5,7 @@ import Slider from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
   newIsConformant({
-    componentPath: __filename.replace(/[/\\]test[/\\]specs/, '\\src').replace('-test.tsx', '.tsx'),
+    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
     Component: Slider,
     displayName: 'Slider',
     useDefaultExport: true,

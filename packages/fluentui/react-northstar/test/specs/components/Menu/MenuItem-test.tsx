@@ -27,7 +27,7 @@ describe('MenuItem', () => {
     Component: MenuItem,
     displayName: 'MenuItem',
     customMount: mount,
-    componentPath: __filename.replace(/[/\\]test[/\\]specs/, '\\src').replace('-test.tsx', '.tsx'),
+    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
     wrapperComponent: MenuItemWrapper,
     disabledTests: ['has-top-level-file'],
   });

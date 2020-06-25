@@ -10,7 +10,7 @@ describe('AccordionContent', () => {
 
   newIsConformant({
     Component: AccordionContent,
-    componentPath: __filename.replace(/[/\\]test[/\\]specs/, '\\src').replace('-test.tsx', '.tsx'),
+    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
     displayName: 'AccordionContent',
     useDefaultExport: true,
     customMount: mount,
