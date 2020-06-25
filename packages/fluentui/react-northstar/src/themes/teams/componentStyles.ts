@@ -28,6 +28,7 @@ export { default as Dialog } from './components/Dialog/dialogStyles';
 export { default as DialogFooter } from './components/Dialog/dialogFooterStyles';
 
 export { default as Divider } from './components/Divider/dividerStyles';
+export { default as DividerContent } from './components/Divider/dividerContentStyles';
 
 export { default as Dropdown } from './components/Dropdown/dropdownStyles';
 export { default as DropdownSearchInput } from './components/Dropdown/dropdownSearchInputStyles';
