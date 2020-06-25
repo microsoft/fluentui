@@ -10,7 +10,7 @@ Steps.prototype.resetExternalLayout = function resetExternalLayout() {
 };
 
 Steps.prototype.switchTheme = function switchTheme(themeName: ScreenerThemeName) {
-  return this.executeScript(`window.switchTheme("${themeName}")`);
+  return this.wait(10000).executeScript(`if(window.switchTheme){window.switchTheme("${themeName}")}`);
 };
 
 const getScreenerSteps = (pageUrl: string, stepsModulePath: string): any[] => {
