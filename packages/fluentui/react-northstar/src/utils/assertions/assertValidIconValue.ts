@@ -15,7 +15,7 @@ const assertValidIconValue = (iconShorthand: ShorthandValue<BoxProps>, propName 
         : name.length > 0
         ? `<${name[0].toUpperCase() + name.slice(1)}Icon />`
         : 'some icon component';
-      console.error(
+      console.warn(
         `FluentUI - you are using the icon shorthand in a wrong way. Please replace ${wrongUsage} with ${correctUsage} and move all properties except the name on the new component.`,
       );
     }
