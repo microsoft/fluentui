@@ -4,7 +4,8 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
-import { getComponent, consoleUtil } from './utils';
+import consoleUtil from './utils/consoleUtil';
+import { getComponent } from './utils/getComponent';
 
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
