@@ -11,6 +11,7 @@ import {
   DatePicker,
   SearchBox,
   Link,
+  Label,
 } from 'office-ui-fabric-react';
 import { AzureCustomizationsLight, AzureCustomizationsDark } from '../../index';
 import { ButtonCommandBarExample } from '../components/commandBarButton';
@@ -33,6 +34,7 @@ import { DetailsListBasicExample } from '../components/DetailsList';
 const Example = () => (
   // tslint:disable-next-line:jsx-ban-props
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 350 }}>
+    <Label>I'm a Label</Label>
     <DetailsListBasicExample />
     <DefaultButton text="DefaultButton" />
     <PrimaryButton text="PrimaryButton" />
