@@ -26,6 +26,7 @@ import {
   SizeValue,
   ShorthandFactory,
   createShorthand,
+  assertValidIconValue,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import Loader, { LoaderProps } from '../Loader/Loader';
@@ -188,6 +189,8 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
+
+    assertValidIconValue(icon);
 
     const renderIcon = () => {
       return createShorthand(composeOptions.slots.icon, icon, {

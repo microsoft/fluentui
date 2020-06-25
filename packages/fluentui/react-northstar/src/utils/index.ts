@@ -23,6 +23,8 @@ export { default as createComponent } from './createComponent';
 export { getKindProp } from './getKindProp';
 export * from './whatInput';
 
+export { default as assertValidIconValue } from './assertions/assertValidIconValue';
+
 export * from './commonPropInterfaces';
 export { screenReaderContainerStyles } from './accessibility/Styles/accessibilityStyles';
 // work around api-extractor limitation
