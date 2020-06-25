@@ -12,12 +12,14 @@
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
+    "lint": "just-scripts lint",
     "just": "just-scripts"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.50.0",
+    "@uifabric/build": "^7.0.0",
     "monaco-editor": "0.19.0",
-    "monaco-typescript": "3.6.1",
-    "@uifabric/build": "^7.0.0"
+    "monaco-typescript": "3.6.1"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",

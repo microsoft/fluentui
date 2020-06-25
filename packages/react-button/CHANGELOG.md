@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jun 2020 12:50:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.0)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.4.0..@fluentui/react-button_v0.5.0)
+
+### Minor changes
+
+- Button: updates to styles, adjusting width tokens. ([PR #13753](https://github.com/microsoft/fluentui/pull/13753) by dzearing@microsoft.com)
+
+### Patches
+
+- Update typings related to mergeProps typing ([PR #13571](https://github.com/microsoft/fluentui/pull/13571) by xgao@microsoft.com)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.4.0)
+
+Tue, 23 Jun 2020 12:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.3.7..@fluentui/react-button_v0.4.0)
+
+### Minor changes
+
+- Button: Mixing style coming from slotProps. ([PR #13723](https://github.com/microsoft/fluentui/pull/13723) by humbertomakotomorimoto@gmail.com)
 
 ## [0.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.3.7)
 

@@ -4,6 +4,7 @@
 
 ```ts
 
+import { BaseSlots } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
@@ -34,6 +35,7 @@ import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { SlotProp } from '@fluentui/react-compose';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
@@ -259,8 +261,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
     keytipProps?: IKeytipProps;
-    label?: string;
+    label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    // @deprecated
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
     // @deprecated
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
@@ -273,7 +276,7 @@ export type ICheckboxSlotProps = {
 };
 
 // @public (undocumented)
-export interface ICheckboxSlots {
+export interface ICheckboxSlots extends BaseSlots {
     // (undocumented)
     checkbox: React.ElementType;
     // (undocumented)
@@ -284,8 +287,6 @@ export interface ICheckboxSlots {
     input: React.ElementType;
     // (undocumented)
     label: React.ElementType;
-    // (undocumented)
-    root: React.ElementType;
 }
 
 // @public (undocumented)

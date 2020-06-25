@@ -66,12 +66,12 @@
       "sourceMaps": true
     },
     {
-      "name": "Debug build Production",
+      "name": "Debug build",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/just-scripts.js",
       "stopOnEntry": false,
-      "args": ["tslint"],
+      "args": ["build"],
       "cwd": "${workspaceRoot}/packages/styling",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
@@ -162,6 +162,22 @@
         "10"
       ],
       "runtimeArgs": ["--nolazy", "--debug", "-r", "${workspaceRoot}/scripts/ts-node-register"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug eslint",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/.bin/eslint",
+      "cwd": "${workspaceRoot}/packages/example-data",
+      "stopOnEntry": false,
+      "runtimeExecutable": null,
+      "args": ["--ext", ".ts,.tsx,.js,.jsx", "src"],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },

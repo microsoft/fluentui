@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2020 12:37:46 GMT",
+      "tag": "@uifabric/file-type-icons_v7.3.7",
+      "version": "7.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "revving CDN url and adding .classifier type to the filetype list for icons",
+            "author": "caperez@microsoft.com",
+            "commit": "785bb938355c341229996fcd3c6e51445de5d336",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jun 2020 16:07:40 GMT",
       "tag": "@uifabric/file-type-icons_v7.3.5",
       "version": "7.3.5",

@@ -2,6 +2,44 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@fluentui/react-button_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update typings related to mergeProps typing",
+            "author": "xgao@microsoft.com",
+            "commit": "457a25432c22a9d8bc18bbe8e4f40bc7f4fb4a1a",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: updates to styles, adjusting width tokens.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d14b3434cf47d8c1533472be5d0c0c6aafa3bf03",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@fluentui/react-button_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Mixing style coming from slotProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "01f6a1cb03f18e26d80c75998794dbeffbe326fc",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jun 2020 12:42:16 GMT",
       "tag": "@fluentui/react-button_v0.3.7",
       "version": "0.3.7",

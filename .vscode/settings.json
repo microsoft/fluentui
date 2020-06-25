@@ -15,7 +15,8 @@
     "**/.git": true,
     "**/.DS_Store": true,
     "**/coverage": true,
-    "**/*.scss.ts": true
+    "**/*.scss.ts": true,
+    "**/.eslintcache": true
   },
   "files.watcherExclude": {
     "**/.git": true,
@@ -41,6 +42,8 @@
   "editor.rulers": [120],
   "tslint.enable": true,
   "tslint.rulesDirectory": "./node_modules/tslint-microsoft-contrib",
+  // "eslint.enable": true,
+  // "eslint.workingDirectories": [{ "mode": "auto" }], // infer working directory based on .eslintrc/package.json location
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
   "typescript.preferences.quoteStyle": "single",

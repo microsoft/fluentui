@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update config files in preparation for enabling ESLint",
+  "packageName": "@uifabric/styling",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-19T00:07:02.581Z"
+}
