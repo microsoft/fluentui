@@ -24,6 +24,7 @@ import {
 } from '../../types';
 import ChatItem, { ChatItemProps } from './ChatItem';
 import ChatMessage from './ChatMessage';
+import ChatMessageDetails from './ChatMessageDetails';
 
 export interface ChatSlotClassNames {
   item: string;
@@ -47,6 +48,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
   FluentComponentStaticProps<ChatProps> & {
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
+    Details: typeof ChatMessageDetails;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
@@ -110,6 +112,7 @@ Chat.handledProps = Object.keys(Chat.propTypes) as any;
 
 Chat.Item = ChatItem;
 Chat.Message = ChatMessage;
+Chat.Details = ChatMessageDetails;
 
 Chat.create = createShorthandFactory({ Component: Chat });
 

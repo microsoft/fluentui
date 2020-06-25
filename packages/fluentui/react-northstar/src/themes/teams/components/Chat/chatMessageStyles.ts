@@ -125,36 +125,6 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       (screenReaderContainerStyles as ICSSInJSStyle)),
   }),
 
-  edited: ({ props: p, variables: v }) => ({
-    marginLeft: v.authorMarginRight,
-    color: v.editedColor,
-    ':hover': {
-      color: v.editedHoverColor,
-    },
-    ...(p.mine && {
-      color: v.editedColorMine,
-      ':hover': {
-        color: v.editedHoverColorMine,
-      },
-    }),
-  }),
-
-  translated: ({ props: p, variables: v }) => ({
-    marginLeft: v.authorMarginRight,
-    fontSize: v.translatedFontSize,
-    display: 'inline-block',
-    color: v.translatedColor,
-    ':hover': {
-      color: v.translatedHoverColor,
-    },
-    ...(p.mine && {
-      color: v.translatedColorMine,
-      ':hover': {
-        color: v.translatedHoverColorMine,
-      },
-    }),
-  }),
-
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({
     color: v.contentColor,
     display: 'block',

@@ -18,8 +18,11 @@ const items: ShorthandCollection<ChatItemProps> = [
         content="Hello"
         author="John Doe"
         timestamp="Yesterday, 10:15 PM"
-        edited="Edited"
-        translated={<TranslationIcon size="small" />}
+        details={
+          <>
+            Edited <TranslationIcon size="small" />
+          </>
+        }
       />
     ),
     key: 'message-id-1',
@@ -31,9 +34,12 @@ const items: ShorthandCollection<ChatItemProps> = [
       <Chat.Message
         content="Hi"
         author="Jane Doe"
-        edited="Edited"
-        translated={<TranslationIcon size="small" />}
         timestamp="Yesterday, 10:15 PM"
+        details={
+          <>
+            Edited <TranslationIcon size="small" />
+          </>
+        }
         mine
       />
     ),
@@ -41,6 +47,6 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
 ];
 
-const ChatExampleContentPosition = () => <Chat items={items} />;
+const ChatExampleDetails = () => <Chat items={items} />;
 
-export default ChatExampleContentPosition;
+export default ChatExampleDetails;

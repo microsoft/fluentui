@@ -51,6 +51,7 @@ import Reaction, { ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
 import ChatMessageHeader, { ChatMessageHeaderProps } from './ChatMessageHeader';
+import ChatMessageDetails from './ChatMessageDetails';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -86,11 +87,8 @@ export interface ChatMessageProps
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;
 
-  /** Message edited status. */
-  edited?: ShorthandValue<TextProps>;
-
-  /** Message translated info slot. */
-  translated?: ShorthandValue<BoxProps>;
+  /** Message details info slot for the header. */
+  details?: ShorthandValue<BoxProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -173,8 +171,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     styles,
     variables,
     header,
-    edited,
-    translated,
+    details,
     unstable_overflow: overflow,
   } = props;
 
@@ -331,17 +328,8 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     }),
   });
 
-  const editedElement = Text.create(edited, {
-    defaultProps: () => ({
-      size: 'small',
-      styles: resolvedStyles.edited,
-    }),
-  });
-
-  const translatedElement = Box.create(translated, {
-    defaultProps: () => ({
-      styles: resolvedStyles.translated,
-    }),
+  const detailsElement = createShorthand(ChatMessageDetails, details, {
+    defaultProps: () => ({ mine }),
   });
 
   const headerElement = createShorthand(ChatMessageHeader, header, {
@@ -350,8 +338,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
         <>
           {authorElement}
           {timestampElement}
-          {editedElement}
-          {translatedElement}
+          {detailsElement}
           {reactionGroupPosition === 'start' && reactionGroupElement}
         </>
       ),

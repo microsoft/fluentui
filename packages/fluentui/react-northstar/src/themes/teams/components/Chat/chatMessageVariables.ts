@@ -31,15 +31,6 @@ export interface ChatMessageVariables {
   timestampColorMine: string;
   zIndex: number;
   overlayZIndex: number;
-  editedColor: string;
-  editedHoverColor: string;
-  editedColorMine: string;
-  editedHoverColorMine: string;
-  translatedColor: string;
-  translatedHoverColor: string;
-  translatedColorMine: string;
-  translatedHoverColorMine: string;
-  translatedFontSize: string;
 }
 
 export default (siteVars): ChatMessageVariables => ({
@@ -73,13 +64,4 @@ export default (siteVars): ChatMessageVariables => ({
   timestampColorMine: siteVars.colors.grey[500],
   zIndex: siteVars.zIndexes.foreground,
   overlayZIndex: siteVars.zIndexes.overlay,
-  editedColor: siteVars.colors.grey[350],
-  editedHoverColor: siteVars.colors.grey[500],
-  editedColorMine: siteVars.colors.grey[500],
-  editedHoverColorMine: siteVars.colors.grey[500],
-  translatedColor: siteVars.colors.grey[350],
-  translatedHoverColor: siteVars.colors.grey[500],
-  translatedColorMine: siteVars.colors.grey[500],
-  translatedHoverColorMine: siteVars.colors.grey[500],
-  translatedFontSize: siteVars.fontSizes.small,
 });
