@@ -204,28 +204,24 @@ export const defaultTests: TestObject = {
     }
   },
 
-  /** If it has "as" prop: If the component does not render any DOM,
-   * ensure it passes the as value to the next component */
+  /** If it has "as" prop: Passes extra props to the component it renders as */
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
-      it(`renders as a functional component or passes "as" to the next component`, () => {
-        const { customMount = mount, Component, requiredProps, wrapperComponent } = testInfo;
-        const MyComponent = () => null;
+      it(`passes extra props to the component it is renders as`, () => {
+        const { customMount = mount, Component, requiredProps, passesUnhandledPropsTo } = testInfo;
 
-        // tslint:disable-next-line:no-any
-        const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, wrapperComponent);
+        if (passesUnhandledPropsTo) {
+          const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
 
-        try {
-          expect(component.type()).toEqual(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toEqual(Component);
-          expect(
-            component
-              .find('[as]')
-              .last()
-              .prop('as'),
-          ).toEqual(MyComponent);
+          expect(el.prop('data-extra-prop')).toBe('foo');
+        } else {
+          const MyComponent = () => null;
+          const el = customMount(
+            // tslint:disable-next-line:no-any
+            <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
+          ).find(MyComponent);
+
+          expect(el.prop('data-extra-prop')).toBe('foo');
         }
       });
     }

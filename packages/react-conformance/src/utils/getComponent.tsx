@@ -10,8 +10,10 @@ export const getDisplayName = (Component: React.ElementType) => {
   );
 };
 
-// tslint:disable-next-line:no-any
-export const toNextNonTrivialChild = (from: ReactWrapper, wrapperComponent: React.ElementType | undefined): any => {
+export const toNextNonTrivialChild = (
+  from: ReactWrapper,
+  wrapperComponent: React.ElementType | undefined,
+): ReactWrapper => {
   const current = from.childAt(0);
   const helperComponentNames = [...[Ref, RefFindNode], ...(wrapperComponent ? [wrapperComponent] : [])].map(
     getDisplayName,

@@ -1,6 +1,6 @@
-import { Accessibility, menuItemAsToolbarButtonBehavior, tabBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 
+import { Accessibility, menuItemAsToolbarButtonBehavior, tabBehavior } from '@fluentui/accessibility';
 import { isConformant as newIsConformant } from '@fluentui/react-conformance';
 import {
   isConformant,
@@ -27,7 +27,7 @@ describe('MenuItem', () => {
     Component: MenuItem,
     displayName: 'MenuItem',
     customMount: mount,
-    componentPath: __dirname.replace(/test.*/, 'src/components/Menu/MenuItem.tsx'),
+    componentPath: __filename.replace(/[/\\]test[/\\]specs/, '\\src').replace('-test.tsx', '.tsx'),
     wrapperComponent: MenuItemWrapper,
     disabledTests: ['has-top-level-file'],
   });

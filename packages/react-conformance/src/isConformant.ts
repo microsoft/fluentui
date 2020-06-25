@@ -13,6 +13,8 @@ export function isConformant(testInfo: IsConformantOptions) {
     throw new Error(`Path ${componentPath} does not exist`);
   }
 
+  // Props need to be filtered since react-docgen shows all the props including props
+  // that aren't specified in the component.
   const parser = withCustomConfig(tsconfigPath, {
     propFilter: prop => !/@types[\\/]react[\\/]/.test(prop.parent?.fileName || ''),
   });
