@@ -87,7 +87,7 @@ export namespace CommonSemanticColors {
     upsell: BaseColors.PURPLE_8A2DA5,
   };
   export const dividers = {
-    lineSeparator: BaseColors.GRAY_EDEBE9, // BaseColors.GRAY_6B849C_025,
+    lineSeparator: BaseColors.GRAY_EDEBE9,
     sectionDivider: BaseColors.GRAY_6B849C_035,
   };
   export const backgrounds = {
