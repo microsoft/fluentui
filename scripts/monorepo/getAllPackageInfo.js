@@ -3,6 +3,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const lernaAlias = require('lerna-alias');
+const findGitRoot = require('./findGitRoot');
 
 /** @type {import('./index').AllPackageInfo} */
 let packageInfo;
@@ -23,10 +24,13 @@ function getAllPackageInfo() {
 
   packageInfo = {};
   cwdForPackageInfo = process.cwd();
+  const gitRoot = findGitRoot();
 
   for (const [packageName, packagePath] of Object.entries(packagePaths)) {
-    const packageJson = fs.readJSONSync(path.join(packagePath, 'package.json'));
-    packageInfo[packageName] = { packagePath, packageJson };
+    packageInfo[packageName] = {
+      packagePath: path.relative(gitRoot, packagePath),
+      packageJson: fs.readJSONSync(path.join(packagePath, 'package.json')),
+    };
   }
 
   return packageInfo;
