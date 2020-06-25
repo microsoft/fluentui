@@ -23,7 +23,7 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
         top: -1,
         color: semanticColors.listBackground,
         backgroundColor: semanticColors.listBackground,
-        borderColor: semanticColors.checkBoxBorder, //semanticColors.controlOutline,
+        borderColor: semanticColors.checkBoxBorder,
         borderWidth: StyleConstants.borderWidth,
         borderStyle: StyleConstants.borderSolid,
       },
