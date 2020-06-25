@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removing some unneeded mergeStyles usage in examples.",
+  "packageName": "@uifabric/charting",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-23T01:54:34.621Z"
+}
