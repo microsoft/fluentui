@@ -2,7 +2,7 @@ import getScreenerSteps from '../commonScreenerSteps';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
-  browsers: ['ie11'],
+  // browsers: ['ie11'],
   steps: getScreenerSteps(),
 };
 
