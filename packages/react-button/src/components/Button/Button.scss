@@ -178,7 +178,7 @@
   }
 
   &._iconOnly {
-    width: var(--button-width, var(--button-height, var(--button-minHeight)));
+    --button-width: var(--button-height, var(--button-minHeight));
     --button-padding: 0;
   }
 
