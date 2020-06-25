@@ -12,10 +12,12 @@ const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBehaviorPr
   attributes: {
     root: {
       'aria-selected': true,
+      role: 'application',
       tabIndex: props.active ? 0 : -1,
+      'aria-label': `Remove ${props.header} from selection.`,
     },
     icon: {
-      'aria-label': `Remove ${props.header} from selection.`,
+      // 'aria-label': `Remove ${props.header} from selection.`,
     },
   },
 });
