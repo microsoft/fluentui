@@ -399,6 +399,9 @@ export default () => (
     </>
     `}
     />
+    <Header as="h3" content="Accessibility name computation" />
+    There are some ....
+    <Link to="button-name-computation"> Button name computation</Link>
     <Header as="h3" content="Live Regions" />
     <p>
       Out of scope for now. Can be used {link('react-aria-live', 'https://github.com/AlmeroSteyn/react-aria-live')}

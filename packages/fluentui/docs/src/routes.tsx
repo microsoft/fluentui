@@ -33,6 +33,7 @@ import IntegrateCustomComponents from './views/IntegrateCustomComponents';
 import AccessibilityBehaviors from './views/AccessibilityBehaviors';
 import FocusZone from './views/FocusZoneDoc';
 import FocusTrapZone from './views/FocusTrapZoneDoc';
+import ButtonNameComputation from './views/ButtonNameComputation';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
 import CustomToolbarPrototype from './prototypes/customToolbar';
 import ChatPanePrototype from './prototypes/chatPane';
@@ -98,6 +99,7 @@ const Routes = () => (
             <Route exact path="/faq" component={FAQ} />
             <Route exact path="/accessibility" component={Accessibility} />
             <Route exact path="/accessibility-behaviors" component={AccessibilityBehaviors} />
+            <Route exact path="/button-name-computation" component={ButtonNameComputation} />
             <Route exact path="/focus-zone" component={FocusZone} />
             <Route exact path="/focus-trap-zone" component={FocusTrapZone} />
             <Route exact path="/auto-focus-zone" component={AutoFocusZone} />
