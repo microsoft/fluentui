@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const resources = require('../../scripts/webpack/webpack-resources');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
@@ -11,8 +12,7 @@ const resolvePath = (packageName, entryFileName = 'index.js') =>
 
 // Create entries for all top level imports.
 const Entries = _buildEntries('office-ui-fabric-react');
-// TODO: re-enable tests for react-next when tests are not timing out during CI.
-// _buildEntries('@fluentui/react-next', Entries);
+_buildEntries('@fluentui/react-next', Entries);
 
 // Create entries for single top level import.
 Entries['react-compose'] = resolvePath('@fluentui/react-compose');
@@ -23,31 +23,53 @@ Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
 
 // Entries['experiments-Button'] = resolvePath('@uifabric/experiments', 'Button.js');
 
-module.exports = Object.keys(Entries).map(
-  entryName =>
-    resources.createConfig(
-      entryName,
-      true,
-      {
-        entry: {
-          [entryName]: Entries[entryName],
-        },
-        externals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
-        // plugins: [
-        //   {
-        //     apply: compiler => {
-        //       compiler.hooks.afterEmit.tap('AfterEmitPlugin', compilation => _copyStats('office-ui-fabric-react'));
-        //     }
-        //   }
-        // ]
+const webpackConfig = Object.keys(Entries).map(entryName => {
+  const config = resources.createConfig(
+    entryName,
+    true,
+    {
+      entry: {
+        [entryName]: Entries[entryName],
       },
-      true,
-      true,
-    )[0],
-);
+      externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
+      plugins: [
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'json',
+          generateStatsFile: true,
+          statsOptions: {
+            // https://webpack.js.org/configuration/stats
+            assets: true,
+            modules: true,
+
+            builtAt: false,
+            outputPath: false,
+            namedChunkGroups: false,
+            logging: false,
+            children: false,
+            source: false,
+            reasons: false,
+            chunks: false,
+            cached: false,
+            cachedAssets: false,
+            performance: false,
+            timings: false,
+          },
+          statsFilename: entryName + '.stats.json',
+          logLevel: 'warn',
+        }),
+      ],
+    },
+    true,
+    true,
+  )[0];
+
+  return config;
+});
+
+module.exports = webpackConfig;
 
 /**
  * Copy the stats file to dist folder the package the bundles were generated from.
