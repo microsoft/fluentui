@@ -9,6 +9,7 @@ const formFieldBehavior: Accessibility<FormFieldBehaviorProps> = props => {
       root: {},
       control: {
         ...(props.hasErrorMessage && { 'aria-invalid': true }),
+        'aria-labelledby': `${props.labelId}`,
         ...(props.messageId && { 'aria-labelledby': `${props.labelId} ${props.messageId}` }),
       },
       message: {

@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
-interface IRootStyles {
-  height: string;
-  width: string;
-}
 
 interface ILineChartMultipleExampleState {
   width: number;
@@ -102,7 +96,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       chartTitle: 'Line Chart',
       lineChartData: points,
     };
-    const rootStyle: IRootStyles = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     const timeFormat = '%m/%d';
     // Passing tick values is optional, for more control.
     // If you do not pass them the line chart will render them for you based on D3's standard.
@@ -115,7 +109,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       new Date('06-01-2018'),
     ];
     return (
-      <div className={mergeStyles(rootStyle)}>
+      <div style={rootStyle}>
         <LineChart
           data={data}
           strokeWidth={4}
