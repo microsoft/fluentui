@@ -128,7 +128,11 @@
   border-radius: var(--button-borderRadius);
   border-width: var(--button-borderWidth);
   box-shadow: var(--button-boxShadow);
+
+  width: var(--button-width);
+  height: var(--button-height);
   min-height: var(--button-minHeight);
+
   padding: var(--button-padding);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
@@ -174,13 +178,12 @@
   }
 
   &._iconOnly {
-    width: var(--button-minHeight);
+    --button-width: var(--button-height, var(--button-minHeight));
     --button-padding: 0;
   }
 
   &._circular {
     --button-borderRadius: 50000px;
-    --button-minWidth: var(--button-minHeight);
   }
 
   &._fluid {

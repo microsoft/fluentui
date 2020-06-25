@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Update typings related to mergeProps typing",
+  "packageName": "@fluentui/react-next",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-11T19:43:47.444Z"
+}
