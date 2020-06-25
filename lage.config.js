@@ -10,6 +10,8 @@ module.exports = {
     'update-snapshots': ['^update-snapshots'],
   },
 
+  ignore: ['change/**', 'README.md'],
+
   cacheOptions: {
     outputGlob: [
       'dist/**/*',
@@ -27,5 +29,8 @@ module.exports = {
       'lib-es2015/**/*',
       'coverage/**/*',
     ],
+
+    // These are relative to the git root
+    environmentGlob: ['.devops/**/*', '*.js', '*.json', '*.yml'],
   },
 };
