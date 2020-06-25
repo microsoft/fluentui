@@ -534,7 +534,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                     ref={this.selectedItemsRef}
                     className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}
                   >
-                    {multiple && this.renderSelectedItems(variables, rtl)}
+                    <div role="list" aria-label="selected users">
+                      {multiple && this.renderSelectedItems(variables, rtl)}
+                    </div>
                     {search
                       ? this.renderSearchInput(
                           accessibilityRootPropsRest,
