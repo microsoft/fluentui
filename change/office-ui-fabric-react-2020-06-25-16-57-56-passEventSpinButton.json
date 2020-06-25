@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "pass through event information if the user spins up or down",
+  "packageName": "office-ui-fabric-react",
+  "email": "makopch@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-25T23:57:56.349Z"
+}
