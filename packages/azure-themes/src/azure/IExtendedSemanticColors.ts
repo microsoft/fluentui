@@ -29,4 +29,6 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   checkBoxIndeterminateBackground: string;
   checkBoxCheckHover: string;
   bodyTextHovered: string;
+  listItemBackgroundCheckedHovered: string;
+  listItemBackgroundSelectedHovered: string;
 }

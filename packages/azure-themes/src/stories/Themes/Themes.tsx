@@ -12,6 +12,7 @@ import {
   SearchBox,
   Link,
 } from 'office-ui-fabric-react';
+//} from '@fluentui/react';
 import { AzureCustomizationsLight, AzureCustomizationsDark } from '../../index';
 import { ButtonCommandBarExample } from '../components/commandBarButton';
 import { ButtonSplitExample } from '../components/splitButton';
@@ -28,10 +29,12 @@ import { ColorPickerBasicExample } from '../components/colorpicker';
 import { ComboBoxBasicExample } from '../components/comboBox';
 import { ContextualMenuDefaultExample } from '../components/ContextMenu';
 import { DropdownBasicExample } from '../components/dropdown';
+import { DetailsListBasicExample } from '../components/DetailsList';
 
 const Example = () => (
   // tslint:disable-next-line:jsx-ban-props
-  <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 400 }}>
+  <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 350 }}>
+    <DetailsListBasicExample />
     <DefaultButton text="DefaultButton" />
     <PrimaryButton text="PrimaryButton" />
     <CompoundButton primary text="CompoundButton" />

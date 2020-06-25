@@ -8,6 +8,7 @@ import {
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
+import { BaseColors } from '../AzureColors';
 
 export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   const { theme, checked } = props;
@@ -19,23 +20,32 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
         fontSize: 0,
         paddingTop: 1,
         paddingLeft: 1,
+        top: -1,
         color: semanticColors.listBackground,
         backgroundColor: semanticColors.listBackground,
-        borderColor: semanticColors.controlOutline,
+        borderColor: semanticColors.checkBoxBorder, //semanticColors.controlOutline,
         borderWidth: StyleConstants.borderWidth,
         borderStyle: StyleConstants.borderSolid,
+      },
+      checked && {
+        backgroundColor: BaseColors.BLUE_0078D4,
+        borderColor: '#ffffff',
       },
     ],
     check: [
       {
-        left: 2.5,
-        top: 1.5,
-      },
-      checked && {
-        color: semanticColors.inputText,
+        left: 1,
+        top: -2,
+        fontSize: '20px',
+        borderRadius: 0,
       },
       !checked && {
         color: semanticColors.listBackground,
+        selectors: {
+          ':hover': {
+            color: '#605E5C',
+          },
+        },
       },
     ],
   };
@@ -53,7 +63,7 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
       selectors: {
         '.ms-DetailsHeader': {
           borderColor: semanticColors.variantBorder,
-          textTransform: 'uppercase',
+          fontSize: FontSizes.size13,
           borderTop: StyleConstants.borderNone,
           selectors: {
             '.ms-DetailsHeader-cellTitle': {
@@ -61,8 +71,8 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
               borderRightWidth: StyleConstants.borderWidth,
               borderRightStyle: StyleConstants.borderSolid,
               borderRightColor: semanticColors.listBackground,
-              fontSize: FontSizes.size10,
-              fontWeight: 700,
+              fontSize: FontSizes.size13,
+              fontWeight: 600,
             },
             ':hover .ms-DetailsHeader-cellTitle': {
               borderRightWidth: StyleConstants.borderWidth,
@@ -79,27 +89,27 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
 export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetailsRowStyles> => {
   const { theme, isSelected } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: [
       {
         borderColor: semanticColors.variantBorder,
         color: semanticColors.listText,
-        fontSize: FontSizes.size12,
+        fontSize: FontSizes.size13,
       },
       !isSelected && [
         {
           background: semanticColors.listBackground,
           color: semanticColors.listText,
+          lineHeight: '20px',
           selectors: {
             ':hover': {
               backgroundColor: semanticColors.listItemBackgroundHovered,
             },
             ':focus': {
-              backgroundColor: semanticColors.listItemBackgroundHovered,
-            },
-            ':focus:hover': {
-              backgroundColor: semanticColors.listItemBackgroundHovered,
+              backgroundColor: semanticColors.listItemBackgroundChecked,
+              // TODO: https://dev.azure.com/CloudDesignStudioMSFT/Design%20Engineering/_queries/edit/4832/?triage=true
             },
           },
         },
@@ -107,15 +117,17 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       isSelected && [
         {
           background: semanticColors.listItemBackgroundChecked,
+          lineHeight: '20px',
           selectors: {
             ':hover': {
-              background: semanticColors.listItemBackgroundHovered,
+              background: extendedSemanticColors.listItemBackgroundSelectedHovered,
             },
             ':focus': {
               background: semanticColors.listItemBackgroundChecked,
+              // TODO: https://dev.azure.com/CloudDesignStudioMSFT/Design%20Engineering/_queries/edit/4832/?triage=true
             },
             ':focus:hover': {
-              background: semanticColors.listItemBackgroundHovered,
+              background: extendedSemanticColors.listItemBackgroundSelectedHovered,
             },
           },
         },

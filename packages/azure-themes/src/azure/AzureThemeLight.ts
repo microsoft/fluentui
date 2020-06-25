@@ -46,6 +46,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   listItemBackgroundChecked: LightSemanticColors.item.select,
   listItemBackgroundCheckedHovered: LightSemanticColors.item.select,
   listItemBackgroundHovered: LightSemanticColors.item.hover,
+  listItemBackgroundSelectedHovered: LightSemanticColors.item.selectHovered,
   listText: LightSemanticColors.text.body,
   menuItemBackgroundHovered: LightSemanticColors.item.hover,
   menuItemBackgroundPressed: LightSemanticColors.item.select,
