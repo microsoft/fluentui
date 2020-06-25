@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
+import { mergeSlotProp } from '@fluentui/react-compose';
 import { useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
+import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
 import { useFocusRects, warnMutuallyExclusive } from '../../Utilities';
 
 export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>): ICheckboxState => {
@@ -68,11 +69,10 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
     container: {
       htmlFor: id,
     },
-    label: {
-      children: props.label,
+    label: mergeSlotProp(props.label, {
       title: props.title,
       'aria-hidden': 'true',
-    },
+    }),
   };
 
   return handledProps;
