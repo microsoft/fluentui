@@ -76,7 +76,7 @@ const Divider: React.FC<WithAsProp<DividerProps>> &
     debugName: Divider.displayName,
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyle } = useStyles<DividerStylesProps>(Divider.displayName, {
+  const { classes } = useStyles<DividerStylesProps>(Divider.displayName, {
     className: dividerClassName,
     mapPropsToStyles: () => ({
       hasContent: childrenExist(children) || !!props.content,
@@ -95,11 +95,7 @@ const Divider: React.FC<WithAsProp<DividerProps>> &
     rtl: context.rtl,
   });
 
-  const content = createShorthand(DividerContent, props.content, {
-    defaultProps: () => ({
-      styles: resolvedStyle.content,
-    }),
-  });
+  const content = createShorthand(DividerContent, props.content, {});
 
   const element = (
     <ElementType

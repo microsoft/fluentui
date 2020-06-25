@@ -52,10 +52,6 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
           }),
     };
   },
-  content: () => ({
-    marginLeft: pxToRem(20),
-    marginRight: pxToRem(20),
-  }),
 };
 
 export default dividerStyles;
