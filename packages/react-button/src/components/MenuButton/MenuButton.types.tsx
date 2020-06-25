@@ -3,11 +3,16 @@ import { ComposeOptions } from '@fluentui/react-compose';
 import { ComposeStandardStatics, ShorthandValue } from '../../utils/tempTypes';
 import { ButtonProps, ButtonTokens } from '../Button/Button.types';
 
-export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'loader'> {
+export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
   /**
    * Shorthand menu that is displayed when the button is pressed.
    */
   menu?: ShorthandValue<{}>;
+
+  /**
+   * Shorthand menu icon that is displayed when the button is pressed.
+   */
+  menuIcon?: ShorthandValue<{}>;
 
   /**
    * Defines the inital expanded state of the MenuButton. Use this if you want the MenuButton to maintain its own state.
@@ -38,6 +43,7 @@ export interface MenuButtonState extends MenuButtonProps {
 
 export interface MenuButtonSlots {
   menu: React.ElementType;
+  menuIcon: React.ElementType;
 }
 
 export type MenuButtonSlotProps = {

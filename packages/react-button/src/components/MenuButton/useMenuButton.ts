@@ -19,6 +19,7 @@ export const useMenuButton = (
     defaultExpanded = false,
     expanded: controlledExpanded,
     menu,
+    menuIcon,
     onClick,
     onKeyDown,
     onMenuDismiss,
@@ -82,6 +83,9 @@ export const useMenuButton = (
       onDismiss,
       target: buttonRef && buttonRef.current,
     },
+
+    // Menu icon slot props.
+    menuIcon: menuIcon ? menuIcon : { children: '˅' },
   };
 
   return useButton(state, ref, options) as MenuButtonState;

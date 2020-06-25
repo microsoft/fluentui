@@ -1,1 +1,5 @@
 @import '../Button/Button.scss';
+
+.menuIcon + * {
+  --button-contentGap: 0;
+}

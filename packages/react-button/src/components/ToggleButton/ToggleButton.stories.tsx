@@ -54,11 +54,6 @@ export const ToggleButtonCss = () => (
       <ToggleButtonVariants iconPosition="after" />
     </div>
 
-    <Text variant="xLarge">
-      A button can inherit its background and have a subtle appearance using the `inverted` prop.
-    </Text>
-    <ToggleButtonVariants inverted />
-
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
     <ToggleButtonVariants loading />
 

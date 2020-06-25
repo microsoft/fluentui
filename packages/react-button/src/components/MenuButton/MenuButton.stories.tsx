@@ -61,17 +61,6 @@ export const MenuButtonCss = () => (
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
     <MenuButtonVariants iconOnly />
 
-    <Text variant="xLarge">An icon button can format its Icon to appear before or after its content.</Text>
-    <div className={classes.vStack}>
-      <MenuButtonVariants iconPosition="before" />
-      <MenuButtonVariants iconPosition="after" />
-    </div>
-
-    <Text variant="xLarge">
-      A button can inherit its background and have a subtle appearance using the `inverted` prop.
-    </Text>
-    <MenuButtonVariants inverted />
-
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
     <MenuButtonVariants loading />
 

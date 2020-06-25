@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { compose, mergeProps } from '@fluentui/react-compose';
+import { ButtonBase } from '../Button/ButtonBase';
 import { MenuButtonProps } from './MenuButton.types';
 import { useMenuButton } from './useMenuButton';
 
@@ -13,7 +14,8 @@ export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps
     return (
       <>
         <slots.root ref={ref} {...slotProps.root}>
-          {!iconOnly && children}
+          {!iconOnly && <span>{children}</span>}
+          <slots.menuIcon {...slotProps.menuIcon} />
           {expanded && <slots.menu {...slotProps.menu} />}
         </slots.root>
       </>
@@ -26,15 +28,18 @@ export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps
       'disabled',
       'fluid',
       'iconOnly',
-      'iconPosition',
       'inverted',
       'loading',
+      'menu',
+      'menuIcon',
       'primary',
       'secondary',
       'size',
     ],
     slots: {
+      root: ButtonBase,
       menu: 'span',
+      menuIcon: 'span',
     },
     state: useMenuButton,
   },
