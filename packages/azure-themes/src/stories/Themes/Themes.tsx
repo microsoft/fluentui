@@ -12,7 +12,6 @@ import {
   SearchBox,
   Link,
 } from 'office-ui-fabric-react';
-//} from '@fluentui/react';
 import { AzureCustomizationsLight, AzureCustomizationsDark } from '../../index';
 import { ButtonCommandBarExample } from '../components/commandBarButton';
 import { ButtonSplitExample } from '../components/splitButton';

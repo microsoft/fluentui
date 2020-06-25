@@ -109,7 +109,6 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
             },
             ':focus': {
               backgroundColor: semanticColors.listItemBackgroundChecked,
-              // TODO: https://dev.azure.com/CloudDesignStudioMSFT/Design%20Engineering/_queries/edit/4832/?triage=true
             },
           },
         },
@@ -124,7 +123,6 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
             },
             ':focus': {
               background: semanticColors.listItemBackgroundChecked,
-              // TODO: https://dev.azure.com/CloudDesignStudioMSFT/Design%20Engineering/_queries/edit/4832/?triage=true
             },
             ':focus:hover': {
               background: extendedSemanticColors.listItemBackgroundSelectedHovered,
