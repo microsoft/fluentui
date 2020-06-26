@@ -1215,7 +1215,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       this.dismiss(ev, true);
 
       // This should be removed whenever possible.
-      // This ensures that the hidden dismissal behavior maintains the same.
+      // This ensures that the hidden dismissal action maintains the same behavior.
       // If the menu is being dismissed then the previously focused element should
       // get focused since the dismiss was triggered by a user click on an item
       // Rather than focus being lost.
