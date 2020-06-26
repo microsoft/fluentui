@@ -535,7 +535,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     readonly indeterminate: boolean;
     render(): JSX.Element;
-}
+    }
 
 // @public (undocumented)
 export enum CheckboxVisibility {
@@ -4998,6 +4998,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
     eventListenerTarget?: HTMLElement | string | null;
     expandedCardOpenDelay?: number;
     expandingCardProps?: IExpandingCardProps;
+    hostNativeProps?: React.HTMLAttributes<HTMLDivElement>;
     instantOpenOnClick?: boolean;
     onCardExpand?: () => void;
     onCardHide?: () => void;
@@ -8104,7 +8105,7 @@ export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
-}
+    }
 
 // @public
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
