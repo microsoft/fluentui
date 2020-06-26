@@ -26,7 +26,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   const resolvedVariables = resolveVariables(
     options.allDisplayNames,
     options.theme,
-    options.props.variables,
+    options.inlineStylesProps.variables,
     options.performance.enableVariablesCaching,
   );
 

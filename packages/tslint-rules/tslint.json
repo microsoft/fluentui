@@ -29,13 +29,6 @@
     "jsx-self-close": true,
     "jsx-no-multiline-js": false, // override tslint-react
     "jsx-no-string-ref": true,
-    "jsx-ban-props": [
-      true,
-      [
-        "style",
-        "Use className and provide css rules instead of using inline styles."
-      ]
-    ],
     "no-duplicate-variable": true,
     "use-isnan": true,
     "triple-equals": [

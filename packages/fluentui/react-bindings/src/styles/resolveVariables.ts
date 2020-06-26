@@ -37,9 +37,17 @@ const resolveVariables = (
     const handlingDisplayName = effectiveDisplayNames[effectiveDisplayNames.length - 1];
 
     if (!variablesThemeCache[handlingDisplayName]) {
-      variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
-        ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
-      )(theme.siteVariables);
+      // A short circle to avoid additional merging for non-composed components
+      if (effectiveDisplayNames.length === 1) {
+        variablesThemeCache[handlingDisplayName] = callable(theme.componentVariables[handlingDisplayName])(
+          theme.siteVariables,
+        );
+      } else {
+        variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
+          ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
+        )(theme.siteVariables);
+      }
+
       variablesCache.set(theme, variablesThemeCache);
     }
 
