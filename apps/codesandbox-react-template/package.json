@@ -1,6 +1,6 @@
 {
   "name": "codesandbox-react-template",
-  "description": "Template for creating codesandbox environment for @fluenui/react* packages.",
+  "description": "Template for creating codesandbox environment for @fluentui/react* packages.",
   "version": "7.0.0",
   "private": true,
   "scripts": {
