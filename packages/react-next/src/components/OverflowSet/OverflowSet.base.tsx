@@ -44,6 +44,7 @@ const useKeytips = (persistedKeytips: { [uniqueID: string]: IKeytipProps }, keyt
     };
   }, [persistedKeytips, keytipManager]);
 };
+
 const useComponentRef = (
   props: IOverflowSetProps,
   focusZone: React.RefObject<IFocusZone>,
@@ -85,10 +86,11 @@ const useComponentRef = (
   );
 };
 
-export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (props: IOverflowSetProps) => {
+export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwardedRef: React.Ref<HTMLDivElement>) => {
   const focusZone = React.useRef<IFocusZone>(null);
   const divContainer = React.useRef<HTMLDivElement>(null);
   const keytipManager: KeytipManager = KeytipManager.getInstance();
+
   const {
     items,
     overflowItems,
@@ -102,27 +104,8 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
     role,
     overflowSide = 'end',
   } = props;
+
   const classNames: IProcessedStyleSet<IOverflowSetStyles> = getClassNames(styles, { className, vertical });
-
-  warnMutuallyExclusive(COMPONENT_NAME, props, {
-    doNotContainWithinFocusZone: 'focusZoneProps',
-  });
-
-  if (doNotContainWithinFocusZone) {
-    Tag = 'div';
-    uniqueComponentProps = {
-      ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties),
-      ref: divContainer,
-    };
-  } else {
-    Tag = FocusZone;
-    uniqueComponentProps = {
-      ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties),
-      ...focusZoneProps,
-      componentRef: focusZone,
-      direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal,
-    };
-  }
 
   const showOverflow = overflowItems && overflowItems.length > 0;
 
@@ -183,12 +166,10 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
     return <div {...wrapperDivProps}>{props.onRenderOverflowButton(newOverflowItems)}</div>;
   };
 
-  /**
-   * Gets the subMenu for an overflow item
-   * Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
-   */
+  // Gets the subMenu for an overflow item
   // tslint:disable-next-line:no-any
   const getSubMenuForItem = (item: any): any[] | undefined => {
+    // Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
     if (props.itemSubMenuProvider) {
       return props.itemSubMenuProvider(item);
     }
@@ -197,6 +178,26 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
     }
     return undefined;
   };
+
+  if (doNotContainWithinFocusZone) {
+    Tag = 'div';
+    uniqueComponentProps = {
+      ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties),
+      ref: divContainer,
+    };
+  } else {
+    Tag = FocusZone;
+    uniqueComponentProps = {
+      ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties),
+      ...focusZoneProps,
+      componentRef: focusZone,
+      direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal,
+    };
+  }
+
+  warnMutuallyExclusive(COMPONENT_NAME, props, {
+    doNotContainWithinFocusZone: 'focusZoneProps',
+  });
 
   useComponentRef(props, focusZone, divContainer);
 
@@ -217,5 +218,5 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = (prop
       {overflowSide === 'end' && showOverflow && onRenderOverflowButtonWrapper(overflowItems!)}
     </Tag>
   );
-};
+});
 OverflowSetBase.displayName = COMPONENT_NAME;

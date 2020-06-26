@@ -1632,7 +1632,7 @@ export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps>;
+export const OverflowSetBase: React.ForwardRefExoticComponent<Pick<IOverflowSetProps, "vertical" | "key" | "items" | "styles" | "className" | "role" | "componentRef" | "focusZoneProps" | "onRenderItem" | "overflowSide" | "overflowItems" | "onRenderOverflowButton" | "doNotContainWithinFocusZone" | "keytipSequences" | "itemSubMenuProvider"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export const Persona: React.FunctionComponent<IPersonaProps>;
