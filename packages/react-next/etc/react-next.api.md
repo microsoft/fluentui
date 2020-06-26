@@ -28,6 +28,7 @@ import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { ISvgIconProps } from '@fluentui/react-icons';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
@@ -36,6 +37,7 @@ import * as React from 'react';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { SlotProp } from '@fluentui/react-compose';
+import { SlotProps } from '@fluentui/react-compose';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
@@ -252,7 +254,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     as?: React.ElementType;
     boxSide?: 'start' | 'end';
     checked?: boolean;
-    checkmarkIconProps?: IIconProps;
+    checkmark?: SlotProp<ISvgIconProps>;
     className?: string;
     componentRef?: IRefObject<ICheckbox>;
     defaultChecked?: boolean;
@@ -271,9 +273,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 }
 
 // @public (undocumented)
-export type ICheckboxSlotProps = {
-    [key in keyof ICheckboxSlots]: any;
-};
+export type ICheckboxSlotProps = SlotProps<ICheckboxSlots, ICheckboxProps, React.HTMLAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export interface ICheckboxSlots extends BaseSlots {
@@ -290,7 +290,7 @@ export interface ICheckboxSlots extends BaseSlots {
 }
 
 // @public (undocumented)
-export interface ICheckboxState extends Omit<ICheckboxProps, 'label'>, Partial<ICheckboxSlotProps> {
+export interface ICheckboxState extends Omit<ICheckboxProps, keyof ICheckboxSlotProps>, Partial<ICheckboxSlotProps> {
     // (undocumented)
     ref: React.Ref<HTMLElement>;
 }
