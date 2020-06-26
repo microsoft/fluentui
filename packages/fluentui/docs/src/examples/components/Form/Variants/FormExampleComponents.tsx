@@ -25,11 +25,11 @@ const items = [
 
 const FormExampleComponents = () => (
   <Form>
-    <Form.Input label="First name" name="firstName" id="first-name-inline" required />
-    <Form.Dropdown label="City" id="cities-id" items={['prague', 'new york']} />
+    <Form.Input label="First name" name="firstName" required />
+    <Form.Dropdown label="City" items={['prague', 'new york']} />
     <Form.RadioGroup label="Pizza" vertical defaultCheckedValue="prosciutto" items={items} />
-    <Form.Slider />
-    <Form.Checkbox label="I agree to the Terms and Conditions" id="conditions-inline" />
+    <Form.Slider label="Bid the price" />
+    <Form.Checkbox label="I agree to the Terms and Conditions" />
     <Form.Button content="Submit" />
   </Form>
 );

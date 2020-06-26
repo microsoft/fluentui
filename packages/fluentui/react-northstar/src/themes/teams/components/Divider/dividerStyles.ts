@@ -40,11 +40,9 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
             lineHeight: variables.textLineHeight,
             '::before': {
               ...beforeAndAfter(size, variables, colors, props),
-              marginRight: pxToRem(20),
             },
             '::after': {
               ...beforeAndAfter(size, variables, colors, props),
-              marginLeft: pxToRem(20),
             },
           }
         : {

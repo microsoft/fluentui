@@ -2,6 +2,27 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/react-hooks_v7.4.9",
+      "version": "7.4.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jun 2020 12:42:16 GMT",
       "tag": "@uifabric/react-hooks_v7.4.7",
       "version": "7.4.7",

@@ -1,37 +1,37 @@
-import { PluginObj, transformSync, types } from '@babel/core';
-import reactPreset from '@babel/preset-react';
-
+import { transform } from '@babel/standalone';
 import { getUUID } from './getUUID';
 import { JSONTreeElement } from '../components/types';
 
-const hackElementName = elementNode => {
-  if (types.isJSXIdentifier(elementNode.name)) {
-    elementNode.name.name = `hack_${elementNode.name.name}`;
-  } else if (types.isJSXMemberExpression(elementNode.name) && types.isJSXIdentifier(elementNode.name.object)) {
-    elementNode.name = types.jsxIdentifier(
-      `hack_${elementNode.name.object.name}_dot_${elementNode.name.property.name}`,
-    );
-  } else {
-    console.error('NOT SUPPORTED', elementNode);
-    // FIXME!
-  }
-};
+const prefixElementNamesPlugin = ({ types }) => {
+  const hackElementName = elementNode => {
+    if (types.isJSXIdentifier(elementNode.name)) {
+      elementNode.name.name = `hack_${elementNode.name.name}`;
+    } else if (types.isJSXMemberExpression(elementNode.name) && types.isJSXIdentifier(elementNode.name.object)) {
+      elementNode.name = types.jsxIdentifier(
+        `hack_${elementNode.name.object.name}_dot_${elementNode.name.property.name}`,
+      );
+    } else {
+      console.error('NOT SUPPORTED', elementNode);
+      // FIXME!
+    }
+  };
 
-const prefixElementNamesPlugin: PluginObj = {
-  visitor: {
-    JSXElement(path) {
-      hackElementName(path.node.openingElement);
-      if (path.node.closingElement) {
-        hackElementName(path.node.closingElement);
-      }
+  return {
+    visitor: {
+      JSXElement(path) {
+        hackElementName(path.node.openingElement);
+        if (path.node.closingElement) {
+          hackElementName(path.node.closingElement);
+        }
+      },
     },
-  },
+  };
 };
 
 export const codeToTree: (code: string) => JSONTreeElement = code => {
-  const compiled = transformSync(code, {
+  const compiled = transform(code, {
     plugins: [prefixElementNamesPlugin],
-    presets: [[reactPreset, { pragma: 'convert', pragmaFrag: '"hack_React_dot_Fragment"' }]],
+    presets: [['react', { pragma: 'convert', pragmaFrag: '"hack_React_dot_Fragment"' }]],
   });
 
   (window as any).convert = (name, props, ...children) => {
