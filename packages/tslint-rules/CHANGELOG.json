@@ -2,6 +2,21 @@
   "name": "@uifabric/tslint-rules",
   "entries": [
     {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@uifabric/tslint-rules_v7.2.2",
+      "version": "7.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing style prop ban.",
+            "author": "dzearing@hotmail.com",
+            "commit": "76c53de7cb3a89796d29cee85e8779729a4635d5",
+            "package": "@uifabric/tslint-rules"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 May 2020 12:35:40 GMT",
       "tag": "@uifabric/tslint-rules_v7.2.1",
       "version": "7.2.1",

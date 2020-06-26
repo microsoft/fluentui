@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "provide correct props to children function as slot",
-  "packageName": "@fluentui/react-compose",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-10T16:15:55.535Z"
-}
