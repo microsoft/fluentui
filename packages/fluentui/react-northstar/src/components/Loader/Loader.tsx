@@ -16,6 +16,7 @@ import {
   commonPropTypes,
   SizeValue,
   getOrGenerateIdFromShorthand,
+  assertValidIconValue,
 } from '../../utils';
 import {
   WithAsProp,
@@ -119,6 +120,8 @@ const Loader: React.FC<WithAsProp<LoaderProps>> &
     }),
     rtl: context.rtl,
   });
+
+  assertValidIconValue(indicator, 'indicator');
 
   React.useEffect(() => {
     if (delay > 0) {

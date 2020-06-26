@@ -15,7 +15,13 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { createShorthandFactory, ChildrenComponentProps, commonPropTypes, UIComponentProps } from '../../utils';
+import {
+  createShorthandFactory,
+  ChildrenComponentProps,
+  commonPropTypes,
+  UIComponentProps,
+  assertValidIconValue,
+} from '../../utils';
 import {
   ComponentEventHandler,
   WithAsProp,
@@ -136,6 +142,8 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> & FluentComponentStaticProps
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Checkbox.handledProps, props);
+
+  assertValidIconValue(indicator, 'indicator');
 
   const handleChange = (e: React.ChangeEvent) => {
     if (!disabled) {

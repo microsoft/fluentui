@@ -17,6 +17,7 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   rtlTextContainer,
+  assertValidIconValue,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -158,6 +159,9 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeTitle.handledProps, props);
+
+  assertValidIconValue(selectionIndicator, 'selectionIndicator');
+
   const handleClick = e => {
     _.invoke(props, 'onClick', e, props);
   };

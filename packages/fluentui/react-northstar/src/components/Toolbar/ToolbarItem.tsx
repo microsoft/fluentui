@@ -27,6 +27,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   childrenExist,
+  assertValidIconValue,
 } from '../../utils';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
@@ -139,6 +140,8 @@ const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, 
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
+
+    assertValidIconValue(icon);
 
     const { menuSlot } = (useContextSelectors(ToolbarMenuContext, {
       menuSlot: v => v.slots.menu,

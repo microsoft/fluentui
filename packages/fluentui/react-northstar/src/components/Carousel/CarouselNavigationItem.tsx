@@ -12,6 +12,7 @@ import {
   rtlTextContainer,
   ContentComponentProps,
   ChildrenComponentProps,
+  assertValidIconValue,
 } from '../../utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -104,6 +105,8 @@ const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemProps>> 
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CarouselNavigationItem.handledProps, props);
+
+  assertValidIconValue(indicator, 'indicator');
 
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CarouselNavigationItem.displayName,

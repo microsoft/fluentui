@@ -28,6 +28,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
+  assertValidIconValue,
 } from '../../utils';
 
 import { ComponentEventHandler, ShorthandCollection, ShorthandValue, ProviderContextPrepared } from '../../types';
@@ -90,6 +91,8 @@ const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
     const slotProps = composeOptions.resolveSlotProps<ToolbarMenuProps>(props);
+
+    assertValidIconValue(submenuIndicator, 'submenuIndicator');
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,

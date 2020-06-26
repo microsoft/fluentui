@@ -20,7 +20,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import { createShorthandFactory, commonPropTypes } from '../../utils';
+import { createShorthandFactory, commonPropTypes, assertValidIconValue } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
 import { useUnhandledProps, useStyles, useTelemetry, getElementType, useAccessibility } from '@fluentui/react-bindings';
@@ -128,6 +128,8 @@ const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
       rtl: context.rtl,
     },
   );
+
+  assertValidIconValue(icon);
 
   const handleClick = (e: React.SyntheticEvent) => {
     _.invoke(props, 'onClick', e, props);

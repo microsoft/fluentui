@@ -13,6 +13,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  assertValidIconValue,
 } from '../../utils';
 import {
   WithAsProp,
@@ -149,6 +150,8 @@ const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
     }),
     rtl: context.rtl,
   });
+
+  assertValidIconValue(indicator, 'indicator');
 
   const handleClick = (e: React.SyntheticEvent) => {
     if (!disabled) {

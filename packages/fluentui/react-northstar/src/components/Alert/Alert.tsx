@@ -11,6 +11,7 @@ import {
   commonPropTypes,
   childrenExist,
   createShorthandFactory,
+  assertValidIconValue,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -193,6 +194,8 @@ const Alert: React.FC<WithAsProp<AlertProps>> &
     }),
     rtl: context.rtl,
   });
+
+  assertValidIconValue(icon);
 
   const handleDismissOverrides = (predefinedProps: ButtonProps) => ({
     onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {

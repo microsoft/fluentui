@@ -27,6 +27,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
+  assertValidIconValue,
 } from '../../utils';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
@@ -227,6 +228,9 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       value: props.menuOpen,
       initialValue: false,
     });
+
+    assertValidIconValue(icon);
+    assertValidIconValue(indicator, 'indicator');
 
     const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
 

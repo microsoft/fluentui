@@ -17,7 +17,13 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
+import {
+  createShorthandFactory,
+  UIComponentProps,
+  commonPropTypes,
+  SizeValue,
+  assertValidIconValue,
+} from '../../utils';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -91,6 +97,8 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Avatar.handledProps, props);
+
+  assertValidIconValue(icon);
 
   const imageElement = Image.create(image, {
     defaultProps: () =>

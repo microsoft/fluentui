@@ -16,6 +16,7 @@ import {
   commonPropTypes,
   ColorComponentProps,
   rtlTextContainer,
+  assertValidIconValue,
 } from '../../utils';
 
 import Image, { ImageProps } from '../Image/Image';
@@ -107,6 +108,8 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Label.handledProps, props);
+
+  assertValidIconValue(icon);
 
   if (childrenExist(children)) {
     const element = (

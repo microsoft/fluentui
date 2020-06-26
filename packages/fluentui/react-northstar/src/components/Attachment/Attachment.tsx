@@ -24,6 +24,7 @@ import {
   ChildrenComponentProps,
   createShorthand,
   ShorthandFactory,
+  assertValidIconValue,
 } from '../../utils';
 import AttachmentAction, { AttachmentActionProps } from './AttachmentAction';
 import AttachmentBody, { AttachmentBodyProps } from './AttachmentBody';
@@ -130,6 +131,8 @@ const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}
 
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    assertValidIconValue(icon);
 
     const handleClick = (e: React.KeyboardEvent | React.MouseEvent) => {
       if (disabled) {

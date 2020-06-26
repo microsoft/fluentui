@@ -4,7 +4,13 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import { createShorthandFactory, UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
+import {
+  createShorthandFactory,
+  UIComponentProps,
+  ChildrenComponentProps,
+  commonPropTypes,
+  assertValidIconValue,
+} from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import {
   ComponentEventHandler,
@@ -113,6 +119,8 @@ const RadioGroupItem: React.FC<WithAsProp<RadioGroupItemProps>> &
   React.useEffect(() => {
     if (checked && shouldFocus) elementRef.current.focus();
   }, [checked, shouldFocus]);
+
+  assertValidIconValue(indicator, 'indicator');
 
   const { classes, styles: resolvedStyles } = useStyles<RadioGroupItemStylesProps>(RadioGroupItem.displayName, {
     className: radioGroupItemClassName,

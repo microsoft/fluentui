@@ -13,6 +13,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   createShorthandFactory,
+  assertValidIconValue,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import {
@@ -159,6 +160,10 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
     initialValue: '',
   });
   const hasValue: boolean = !!value && (value as string)?.length !== 0;
+
+  assertValidIconValue(icon);
+  assertValidIconValue(successIndicator, 'successIndicator');
+  assertValidIconValue(errorIndicator, 'errorIndicator');
 
   const isShowSuccessIndicatorUndefined = typeof showSuccessIndicator === 'undefined';
 

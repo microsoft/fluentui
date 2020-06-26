@@ -15,6 +15,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   rtlTextContainer,
+  assertValidIconValue,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -197,6 +198,8 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> & FluentComponentStaticProps
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
   });
+
+  assertValidIconValue(selectionIndicator, 'selectionIndicator');
 
   const handleSelection = e => {
     onTitleClick(e, props, true);

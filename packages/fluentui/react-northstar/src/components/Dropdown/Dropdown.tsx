@@ -34,6 +34,7 @@ import {
   UIComponentProps,
   isFromKeyboard,
   createShorthand,
+  assertValidIconValue,
 } from '../../utils';
 import List, { ListProps } from '../List/List';
 import DropdownItem, { DropdownItemProps } from './DropdownItem';
@@ -463,6 +464,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       headerMessage,
     } = this.props;
     const { highlightedIndex, open, searchQuery, value } = this.state;
+
+    assertValidIconValue(toggleIndicator, 'toggleIndicator');
+    assertValidIconValue(clearIndicator, 'toggleIndicator');
+    assertValidIconValue(props.checkableIndicator, 'checkableIndicator');
 
     return (
       <ElementType className={classes.root} onChange={this.handleChange} {...unhandledProps}>

@@ -10,6 +10,7 @@ import {
   rtlTextContainer,
   createShorthandFactory,
   ContentComponentProps,
+  assertValidIconValue,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
@@ -81,6 +82,8 @@ const Reaction: React.FC<WithAsProp<ReactionProps>> &
     }),
     rtl: context.rtl,
   });
+
+  assertValidIconValue(icon);
 
   const element = (
     <ElementType

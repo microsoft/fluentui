@@ -8,7 +8,7 @@ import { ThemeContext } from 'react-fela';
 import { getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import cx from 'classnames';
 
-import { createShorthandFactory, commonPropTypes } from '../../utils';
+import { createShorthandFactory, commonPropTypes, assertValidIconValue } from '../../utils';
 import {
   ShorthandValue,
   ComponentEventHandler,
@@ -116,6 +116,8 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DropdownItem.handledProps, props);
+
+  assertValidIconValue(checkableIndicator, 'checkableIndicator');
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     _.invoke(props, 'onClick', e, props);

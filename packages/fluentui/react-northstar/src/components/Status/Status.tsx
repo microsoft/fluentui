@@ -6,7 +6,13 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
+import {
+  createShorthandFactory,
+  UIComponentProps,
+  commonPropTypes,
+  SizeValue,
+  assertValidIconValue,
+} from '../../utils';
 import {
   WithAsProp,
   ShorthandValue,
@@ -63,6 +69,8 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
   });
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Status.handledProps, props);
+
+  assertValidIconValue(icon);
 
   const iconElement = Box.create(icon, {
     defaultProps: () =>

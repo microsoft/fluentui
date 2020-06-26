@@ -36,6 +36,7 @@ import {
   UIComponentProps,
   childrenExist,
   doesNodeContainClick,
+  assertValidIconValue,
 } from '../../utils';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
@@ -201,6 +202,10 @@ const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemS
       },
       rtl: context.rtl,
     });
+
+    assertValidIconValue(icon);
+    assertValidIconValue(activeIndicator, 'activeIndicator');
+    assertValidIconValue(submenuIndicator, 'submenuIndicator');
 
     const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuItemStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,

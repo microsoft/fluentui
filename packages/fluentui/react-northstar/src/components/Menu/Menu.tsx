@@ -29,6 +29,7 @@ import {
   getKindProp,
   rtlTextContainer,
   ShorthandFactory,
+  assertValidIconValue,
 } from '../../utils';
 import MenuItem, { MenuItemProps } from './MenuItem';
 import MenuDivider, { MenuDividerProps } from './MenuDivider';
@@ -184,6 +185,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
     const dividerProps = useSlotProps('divider', slotProps);
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    assertValidIconValue(props.indicator, 'indicator');
 
     const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
       debugName: composeOptions.displayName,
