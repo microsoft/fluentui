@@ -2,6 +2,21 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/fluent-theme_v7.1.100",
+      "version": "7.1.100",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/fluent-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@uifabric/fluent-theme_v7.1.96",
       "version": "7.1.96",

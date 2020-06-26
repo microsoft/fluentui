@@ -51,6 +51,7 @@ import Reaction, { ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
 import ChatMessageHeader, { ChatMessageHeaderProps } from './ChatMessageHeader';
+import ChatMessageDetails, { ChatMessageDetailsProps } from './ChatMessageDetails';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -85,6 +86,9 @@ export interface ChatMessageProps
 
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;
+
+  /** Message details info slot for the header. */
+  details?: ShorthandValue<ChatMessageDetailsProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -167,6 +171,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     styles,
     variables,
     header,
+    details,
     unstable_overflow: overflow,
   } = props;
 
@@ -323,12 +328,17 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     }),
   });
 
+  const detailsElement = createShorthand(ChatMessageDetails, details, {
+    defaultProps: () => ({ mine }),
+  });
+
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({
       content: (
         <>
           {authorElement}
           {timestampElement}
+          {detailsElement}
           {reactionGroupPosition === 'start' && reactionGroupElement}
         </>
       ),
@@ -385,6 +395,7 @@ ChatMessage.propTypes = {
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
+  details: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
   header: customPropTypes.itemShorthand,
   mine: PropTypes.bool,

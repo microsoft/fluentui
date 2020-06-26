@@ -1,0 +1,1 @@
+- Use them to represent list of selected people.
