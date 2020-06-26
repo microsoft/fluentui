@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update config files in preparation for enabling ESLint",
-  "packageName": "@fluentui/react-next",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-06-19T00:06:57.247Z"
-}

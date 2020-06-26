@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing unnecessary code from storybook/preview.js.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-25T18:56:18.656Z"
-}

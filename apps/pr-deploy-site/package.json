@@ -13,12 +13,12 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/docs": "^0.50.0",
-    "@uifabric/charting": "^2.3.4",
-    "@uifabric/date-time": "^7.9.2",
-    "@uifabric/experiments": "^7.26.8",
-    "@uifabric/fabric-website": "^7.10.75",
-    "@uifabric/fabric-website-resources": "^7.6.86",
-    "office-ui-fabric-react": "^7.121.3",
+    "@uifabric/charting": "^2.3.5",
+    "@uifabric/date-time": "^7.9.3",
+    "@uifabric/experiments": "^7.26.9",
+    "@uifabric/fabric-website": "^7.10.76",
+    "@uifabric/fabric-website-resources": "^7.6.87",
+    "office-ui-fabric-react": "^7.121.4",
     "perf-test": "^7.0.0",
     "theming-designer": "^7.0.0",
     "todo-app": "^7.0.0"
