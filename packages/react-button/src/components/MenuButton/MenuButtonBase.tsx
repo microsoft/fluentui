@@ -11,13 +11,11 @@ export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps
     const { children, expanded, iconOnly } = state;
 
     return (
-      <>
-        <slots.root ref={ref} {...slotProps.root}>
-          {!iconOnly && <span>{children}</span>}
-          <slots.menuIcon {...slotProps.menuIcon} />
-          {expanded && <slots.menu {...slotProps.menu} />}
-        </slots.root>
-      </>
+      <slots.root ref={ref} {...slotProps.root}>
+        {!iconOnly && children && <span>{children}</span>}
+        <slots.menuIcon {...slotProps.menuIcon} />
+        {expanded && <slots.menu {...slotProps.menu} />}
+      </slots.root>
     );
   },
   {

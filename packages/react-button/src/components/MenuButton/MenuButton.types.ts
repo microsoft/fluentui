@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { ComposeOptions } from '@fluentui/react-compose';
-import { ComposeStandardStatics, ShorthandValue } from '../../utils/tempTypes';
+import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
 import { ButtonProps, ButtonTokens } from '../Button/Button.types';
 
 export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
   /**
    * Shorthand menu that is displayed when the button is pressed.
    */
-  menu?: ShorthandValue<{}>;
+  // tslint:disable-next-line:no-any
+  menu?: SlotProp<any>;
 
   /**
    * Shorthand menu icon that is displayed when the button is pressed.
    */
-  menuIcon?: ShorthandValue<{}>;
+  menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
 
   /**
    * Defines the inital expanded state of the MenuButton. Use this if you want the MenuButton to maintain its own state.
@@ -41,16 +41,15 @@ export interface MenuButtonState extends MenuButtonProps {
   ref: (instance: HTMLElement) => void;
 }
 
-export interface MenuButtonSlots {
+export interface MenuButtonSlots extends BaseSlots {
   menu: React.ElementType;
   menuIcon: React.ElementType;
 }
 
-export type MenuButtonSlotProps = {
-  [key in keyof MenuButtonSlots]: MenuButtonProps[key];
-};
+export type MenuButtonSlotProps = SlotProps<
+  MenuButtonSlots,
+  MenuButtonProps,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>;
 
-export interface MenuButtonOptions
-  extends ComposeOptions<MenuButtonProps, MenuButtonSlots, MenuButtonSlotProps, ComposeStandardStatics> {}
-
-export type MenuButtonTokens = ButtonTokens & {};
+export type MenuButtonTokens = ButtonTokens;

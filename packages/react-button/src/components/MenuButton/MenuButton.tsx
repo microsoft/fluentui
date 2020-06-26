@@ -1,4 +1,5 @@
 import { compose, createClassResolver } from '@fluentui/react-compose';
+import { ChevronDownIcon } from '@fluentui/react-icons';
 import { ContextualMenu } from 'office-ui-fabric-react';
 import { MenuButtonBase } from './MenuButtonBase';
 import { MenuButtonProps } from './MenuButton.types';
@@ -9,5 +10,6 @@ export const MenuButton = compose<'button', MenuButtonProps, MenuButtonProps, {}
   displayName: 'MenuButton',
   slots: {
     menu: ContextualMenu,
+    menuIcon: ChevronDownIcon,
   },
 });

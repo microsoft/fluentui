@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { mergeSlotProp, ComposePreparedOptions } from '@fluentui/react-compose';
 import { useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
 import { DirectionalHint } from 'office-ui-fabric-react';
 import { useButton } from '../Button/useButton';
@@ -28,47 +28,41 @@ export const useMenuButton = (
   const [expanded, setExpanded] = useControllableValue(controlledExpanded, defaultExpanded);
   const buttonRef = React.useRef(null);
 
-  const _onClick = React.useCallback(
-    (ev: React.MouseEvent<HTMLButtonElement>) => {
-      if (onClick) {
-        onClick(ev);
+  const _onClick = (ev: React.MouseEvent<HTMLButtonElement>) => {
+    if (onClick) {
+      onClick(ev);
 
-        if (ev.defaultPrevented) {
-          return;
-        }
+      if (ev.defaultPrevented) {
+        return;
       }
+    }
 
-      setExpanded(!expanded);
-    },
-    [expanded, onClick],
-  );
+    setExpanded(!expanded);
+  };
 
-  const onDismiss = React.useCallback(() => {
+  const onDismiss = () => {
     if (onMenuDismiss) {
       onMenuDismiss();
     }
 
     setExpanded(false);
-  }, [onMenuDismiss]);
+  };
 
-  const _onKeyDown = React.useCallback(
-    (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-      if (onKeyDown) {
-        onKeyDown(ev);
+  const _onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (onKeyDown) {
+      onKeyDown(ev);
 
-        if (ev.defaultPrevented) {
-          return;
-        }
+      if (ev.defaultPrevented) {
+        return;
       }
+    }
 
-      if ((ev.altKey || ev.metaKey) && getCode(ev) === ArrowDownKey) {
-        setExpanded(true);
-      }
-    },
-    [expanded, onKeyDown],
-  );
+    if ((ev.altKey || ev.metaKey) && getCode(ev) === ArrowDownKey) {
+      setExpanded(true);
+    }
+  };
 
-  const state: MenuButtonState = {
+  const state = {
     ...rest,
     'aria-expanded': expanded,
     expanded,
@@ -77,15 +71,11 @@ export const useMenuButton = (
     ref: useMergedRefs(ref, buttonRef),
 
     // Menu slot props.
-    menu: {
-      ...(menu as object),
+    menu: mergeSlotProp(menu, {
       directionalHint: DirectionalHint.bottomRightEdge,
       onDismiss,
       target: buttonRef && buttonRef.current,
-    },
-
-    // Menu icon slot props.
-    menuIcon: menuIcon ? menuIcon : { children: '˅' },
+    }),
   };
 
   return useButton(state, ref, options) as MenuButtonState;
