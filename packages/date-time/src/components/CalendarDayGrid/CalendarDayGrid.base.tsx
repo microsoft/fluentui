@@ -86,10 +86,12 @@ function useWeeks(
  * Hook to determine whether to animate the CalendarDayGrid forwards or backwards
  * @returns true if the grid should animate backwards; false otherwise
  */
-function useAnimateBackwards(weeks: IDayInfo[][]): boolean {
+function useAnimateBackwards(weeks: IDayInfo[][]): boolean | undefined {
   const previousNavigatedDate = usePrevious(weeks[0][0].originalDate);
 
-  if (!previousNavigatedDate || previousNavigatedDate <= weeks[0][0].originalDate) {
+  if (!previousNavigatedDate || previousNavigatedDate.getTime() === weeks[0][0].originalDate.getTime()) {
+    return undefined;
+  } else if (previousNavigatedDate <= weeks[0][0].originalDate) {
     return false;
   } else {
     return true;
