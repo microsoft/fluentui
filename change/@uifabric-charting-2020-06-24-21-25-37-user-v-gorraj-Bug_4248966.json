@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix issue When the mouse is over the data point on the second chart, the vertical line appears on the first chart.",
+  "packageName": "@uifabric/charting",
+  "email": "v-gorraj@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-24T15:55:37.026Z"
+}
