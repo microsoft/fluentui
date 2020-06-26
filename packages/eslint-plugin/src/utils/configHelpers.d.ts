@@ -1,4 +1,6 @@
-declare const configHelpers: {
+import { Linter } from 'eslint';
+
+export type ConfigHelpers = {
   /** File extensions to lint (with leading .) */
   extensions: string[];
 
@@ -12,6 +14,14 @@ declare const configHelpers: {
   devDependenciesFiles: string[];
 
   /**
+   * Returns a rule configuration for [`@typescript-eslint/naming-convention`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md).
+   * This provides the ability to override *only* the interface rule without having to repeat or
+   * lose the rest of the (very complicated) config.
+   * @param prefixWithI - Whether to prefix interfaces with I
+   */
+  getNamingConventionRule: (prefixWithI: boolean) => Linter.RulesRecord;
+
+  /**
    * Rules requiring type information should be defined in the `overrides` section since they must
    * only run on TS files included in a tsconfig.json (generally those files under `src`), and they
    * require some extra configuration. They should be disabled entirely when running lint-staged
@@ -23,5 +33,7 @@ declare const configHelpers: {
    */
   getTypeInfoRuleOverrides: (rules: Linter.RulesRecord, tsconfigPath?: string) => Linter.ConfigOverride[];
 };
+
+declare const configHelpers: ConfigHelpers;
 
 export = configHelpers;
