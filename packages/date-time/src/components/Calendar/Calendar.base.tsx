@@ -83,14 +83,6 @@ const DEFAULT_PROPS: Partial<ICalendarProps> = {
   allFocusable: false,
 };
 
-export interface ICalendarState {
-  /** State used to show/hide month picker */
-  isMonthPickerVisible?: boolean;
-
-  /** State used to show/hide day picker */
-  isDayPickerVisible?: boolean;
-}
-
 function useDateState({ value, today = new Date(), onSelectDate }: ICalendarProps) {
   /** The currently focused date in the day picker, but not necessarily selected */
   const [navigatedDay = today, setNavigatedDay] = useControllableValue(value, today);
@@ -120,6 +112,26 @@ function useDateState({ value, today = new Date(), onSelectDate }: ICalendarProp
   return [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] as const;
 }
 
+function useVisibilityState(props: ICalendarProps) {
+  /** State used to show/hide month picker */
+  const [isMonthPickerVisible = true, setIsMonthPickerVisible] = useControllableValue(
+    props.showMonthPickerAsOverlay ? undefined : props.isMonthPickerVisible,
+    false,
+  );
+  /** State used to show/hide day picker */
+  const [isDayPickerVisible = true, setIsDayPickerVisible] = useControllableValue(
+    props.showMonthPickerAsOverlay ? undefined : props.isDayPickerVisible,
+    true,
+  );
+
+  const toggleDayMonthPickerVisibility = () => {
+    setIsMonthPickerVisible(!isMonthPickerVisible);
+    setIsDayPickerVisible(!isDayPickerVisible);
+  };
+
+  return [isMonthPickerVisible, isDayPickerVisible, toggleDayMonthPickerVisibility] as const;
+}
+
 export const CalendarBase = React.forwardRef(
   (propsWithoutDefaults: ICalendarProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -127,6 +139,8 @@ export const CalendarBase = React.forwardRef(
     const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState(
       props,
     );
+    const [isMonthPickerVisible, isDayPickerVisible, toggleDayMonthPickerVisibility] = useVisibilityState(props);
+
     return (
       <CalendarBaseClass
         {...props}
@@ -138,6 +152,9 @@ export const CalendarBase = React.forwardRef(
           onDateSelected,
           navigateDay,
           navigateMonth,
+          isMonthPickerVisible,
+          isDayPickerVisible,
+          toggleDayMonthPickerVisibility,
         }}
       />
     );
@@ -151,13 +168,16 @@ interface ICalendarBaseClassProps extends ICalendarProps {
     selectedDate: Date;
     navigatedDay: Date;
     navigatedMonth: Date;
+    isMonthPickerVisible: boolean;
+    isDayPickerVisible: boolean;
+    toggleDayMonthPickerVisibility(): void;
     onDateSelected(date: Date, selectedDateRangeArray?: Date[]): void;
     navigateDay(date: Date): void;
     navigateMonth(date: Date): void;
   };
 }
 
-class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, ICalendarState> implements ICalendar {
+class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, {}> implements ICalendar {
   private _dayPicker = React.createRef<ICalendarDay>();
   private _monthPicker = React.createRef<ICalendarMonth>();
 
@@ -167,13 +187,6 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, ICalend
     super(props);
 
     initializeComponentRef(this);
-
-    this.state = {
-      /** When showMonthPickerAsOverlay is active it overrides isMonthPickerVisible/isDayPickerVisible props
-       (These props permanently set the visibility of their respective calendars). */
-      isMonthPickerVisible: this.props.showMonthPickerAsOverlay ? false : this.props.isMonthPickerVisible,
-      isDayPickerVisible: this.props.showMonthPickerAsOverlay ? true : this.props.isDayPickerVisible,
-    };
 
     this._focusOnUpdate = false;
   }
@@ -209,9 +222,8 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, ICalend
       calendarMonthProps,
       dateTimeFormatter,
       today = new Date(),
-      hoisted: { selectedDate, navigatedDay, navigatedMonth, onDateSelected },
+      hoisted: { selectedDate, navigatedDay, navigatedMonth, onDateSelected, isMonthPickerVisible, isDayPickerVisible },
     } = this.props;
-    const { isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
@@ -308,9 +320,9 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, ICalend
   }
 
   public focus(): void {
-    if (this.state.isDayPickerVisible && this._dayPicker.current) {
+    if (this.props.hoisted.isDayPickerVisible && this._dayPicker.current) {
       focusAsync(this._dayPicker.current);
-    } else if (this.state.isMonthPickerVisible && this._monthPicker.current) {
+    } else if (this.props.hoisted.isMonthPickerVisible && this._monthPicker.current) {
       focusAsync(this._monthPicker.current);
     }
   }
@@ -370,11 +382,7 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, ICalend
   };
 
   private _onHeaderSelect = (): void => {
-    const { showMonthPickerAsOverlay } = this.props;
-    this.setState({
-      isDayPickerVisible: !(showMonthPickerAsOverlay && this.state.isDayPickerVisible),
-      isMonthPickerVisible: !(showMonthPickerAsOverlay && this.state.isMonthPickerVisible),
-    });
+    this.props.hoisted.toggleDayMonthPickerVisibility();
 
     this._focusOnUpdate = true;
   };
