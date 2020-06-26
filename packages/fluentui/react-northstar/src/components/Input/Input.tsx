@@ -270,6 +270,7 @@ const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<Input
                     as: 'input',
                     disabled,
                     type,
+                    required,
                     value: value || '',
                     className: inputSlotClassNames.input,
                     styles: resolvedStyles.input,

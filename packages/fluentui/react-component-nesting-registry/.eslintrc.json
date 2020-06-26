@@ -1,4 +1,4 @@
 {
-  "extends": ["../../../scripts/eslint/index"],
+  "extends": ["plugin:@fluentui/eslint-plugin/react-northstar"],
   "root": true
 }
