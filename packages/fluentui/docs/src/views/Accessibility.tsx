@@ -400,8 +400,11 @@ export default () => (
     `}
     />
     <Header as="h3" content="Accessibility name computation" />
-    There are some ....
-    <Link to="button-name-computation"> Button name computation</Link>
+    Recommendation how screen reader is computing accessibility name is mentioned in
+    {link(' Accessible Name and Description Computation 1.1', 'https://www.w3.org/TR/accname-1.1/')} page. The rules are
+    hard to read and understand immediately computed name from used attributes. Therefore we prepared the table how
+    different attributes are computed for the button element. Folow the page{' '}
+    <Link to="button-name-computation"> Button name computation</Link> to see the details.
     <Header as="h3" content="Live Regions" />
     <p>
       Out of scope for now. Can be used {link('react-aria-live', 'https://github.com/AlmeroSteyn/react-aria-live')}
