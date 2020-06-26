@@ -77,7 +77,18 @@ export interface ICalendarState {
   isDayPickerVisible?: boolean;
 }
 
-export class CalendarBase extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
+export const CalendarBase = React.forwardRef((props: ICalendarProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+  return <CalendarBaseClass {...props} hoisted={{ forwardedRef }} />;
+});
+CalendarBase.displayName = 'CalendarBase';
+
+interface ICalendarBaseClassProps extends ICalendarProps {
+  hoisted: {
+    forwardedRef: React.Ref<HTMLDivElement>;
+  };
+}
+
+class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, ICalendarState> implements ICalendar {
   public static defaultProps: ICalendarProps = {
     onSelectDate: undefined,
     onDismiss: undefined,
@@ -107,7 +118,7 @@ export class CalendarBase extends React.Component<ICalendarProps, ICalendarState
 
   private _focusOnUpdate: boolean;
 
-  constructor(props: ICalendarProps) {
+  constructor(props: ICalendarBaseClassProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -128,7 +139,7 @@ export class CalendarBase extends React.Component<ICalendarProps, ICalendarState
   }
 
   // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void {
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarBaseClassProps): void {
     const { value, today = new Date() } = nextProps;
 
     this.setState({
@@ -202,6 +213,7 @@ export class CalendarBase extends React.Component<ICalendarProps, ICalendarState
 
     return (
       <div
+        ref={this.props.hoisted.forwardedRef}
         aria-label={selectionAndTodayString}
         className={css(rootClass, classes.root, className, 'ms-slideDownIn10')}
         onKeyDown={this._onDatePickerPopupKeyDown}
