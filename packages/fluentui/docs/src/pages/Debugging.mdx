@@ -59,25 +59,32 @@ window.localStorage.fluentUIDebug = true
     - press Alt+Shift+D - that will start a selection mode (similar to DevTools), hover over the component and left click to show the debug panel.
     - if it is not possible to select the component using mouse, you can also select the component in React DevTools and run `openDebugPanel()` in DevTools console.
 
+*If custom theme is used, wrap the theme object using `withDebugId` to name the theme in Debug panel:*
+```jsx
+import { withDebugId } from '@Fluent UI/react-northstar';
+
+const theme = withDebugId(themeObject, 'themeName');
+```
+
 ## Measuring performance
 
-Both Browser and React DevTools provide developers with great tools to measure performance. FluentUI adds its own Telemetry popover to give developers
+Both Browser and React DevTools provide developers with great tools to measure performance. Fluent UI adds its own Telemetry popover to give developers
 a way to drill down into the pipeline internals:
 
 ![Telemetry popover](public/images/telemetry-popover.png)
 
 ### What you see in the table
 
-In the table you can see times spent rendering individual FluentUI components since the telemetry was enabled (or application loaded).
+In the table you can see times spent rendering individual Fluent UI components since the telemetry was enabled (or application loaded).
 
 For each component you can see the number of unique instances of the component (**Instances**) and total number of renders - including both first renders and rerenders (**Renders**).
 
-**Total** shows the total time in ms spent in FluentUI rendering the component. You can also expand this column to show minimum (**Min**), maximum (**Max**) and average (**Avg**) time of individual renders.
+**Total** shows the total time in ms spent in Fluent UI rendering the component. You can also expand this column to show minimum (**Min**), maximum (**Max**) and average (**Avg**) time of individual renders.
 
-Most expensive part of FluentUI is the styles computation - this time is in **Styles** column. As it was described in [How merging works](#how-merging-works),
+Most expensive part of Fluent UI is the styles computation - this time is in **Styles** column. As it was described in [How merging works](#how-merging-works),
 it consists of three significant parts - merging component variables (**Variables**), merging component styles (**Merge**) and CSSInJS (**CSS**) - you can expand Styles column to show the time split to these parts.
 
-To improve performance, FluentUI caches the styles and classes. **Cache hits** column shows how effective the cache is for individual component - for its root slot (**root**) as well as for the other slots (**slots**).
+To improve performance, Fluent UI caches the styles and classes. **Cache hits** column shows how effective the cache is for individual component - for its root slot (**root**) as well as for the other slots (**slots**).
 
 You can sort the table by any column or filter by component name. You can start/stop collecting the telemetry, tune performance flags.
 All the configuration is persisted to local storage so that you can refresh the page and measure initial application load.
