@@ -468,8 +468,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
   };
 
-  rootRef = React.createRef<HTMLElement>();
-
   renderComponent({ ElementType, classes, styles, variables, unhandledProps, rtl }: RenderResultConfig<DropdownProps>) {
     const {
       clearable,

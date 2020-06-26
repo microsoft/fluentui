@@ -9,8 +9,6 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Classnames from 'classnames';
-import * as Formik from 'formik';
-import * as ReactHookForm from 'react-hook-form';
 
 const accessibilityPackageJson = require('@fluentui/accessibility/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
@@ -67,16 +65,6 @@ export const imports: Record<string, CodeSandboxImport> = {
   classnames: {
     version: projectPackageJson.dependencies['classnames'],
     module: Classnames,
-    required: false,
-  },
-  formik: {
-    version: projectPackageJson.dependencies['formik'],
-    module: Formik,
-    required: false,
-  },
-  'react-hook-form': {
-    version: projectPackageJson.dependencies['react-hook-form'],
-    module: ReactHookForm,
     required: false,
   },
   lodash: {
