@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Correctly renders a button 1`] = `
+<button
+  style={Object {}}
+>
+  <span>
+    X
+  </span>
+  <span>
+    Hello, world
+  </span>
+</button>
+`;

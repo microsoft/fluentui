@@ -10,6 +10,6 @@ To import React Button components:
 import { Button } from '@fluentui/react-button';
 
 const App = () => {
-  return <Button content="hello, world!" />;
+  return <Button>Hello, world!</Button>;
 };
 ```

@@ -6,20 +6,15 @@ import { useButton } from './useButton';
 export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   (props, ref, options) => {
     const { state } = options;
+    const { children, icon, iconOnly, iconPosition, loading } = state;
     const { slots, slotProps } = mergeProps(state, options);
 
     return (
       <slots.root ref={ref} {...slotProps.root}>
-        {state.children ? (
-          state.children
-        ) : (
-          <>
-            {props.loading && <slots.loader {...slotProps.loader} />}
-            {props.icon && props.iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
-            {!props.iconOnly && props.content && <slots.content {...slotProps.content} />}
-            {props.icon && props.iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
-          </>
-        )}
+        {loading && <slots.loader {...slotProps.loader} />}
+        {icon && iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
+        {!iconOnly && children && <span>{children}</span>}
+        {icon && iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
       </slots.root>
     );
   },
@@ -27,7 +22,6 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
     displayName: 'ButtonBase',
     handledProps: [
       'circular',
-      'content',
       'disabled',
       'fluid',
       'iconOnly',
@@ -41,7 +35,6 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
     ],
     slots: {
       icon: 'span',
-      content: 'span',
       loader: 'span',
     },
     state: useButton,
