@@ -5,13 +5,12 @@ import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
-import { ISearchBoxState } from './SearchBox.base';
 
 // tslint:disable:jsx-no-lambda
 
 describe('SearchBox', () => {
   let component: ReactTestRenderer | undefined;
-  let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState> | undefined;
+  let wrapper: ReactWrapper<ISearchBoxProps> | undefined;
 
   beforeEach(() => {
     resetIds();

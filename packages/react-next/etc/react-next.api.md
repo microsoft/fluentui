@@ -1139,14 +1139,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 }
 
 // @public (undocumented)
-export interface ISearchBoxState {
-    // (undocumented)
-    hasFocus?: boolean;
-    // (undocumented)
-    value?: string;
-}
-
-// @public (undocumented)
 export interface ISearchBoxStyleProps {
     // (undocumented)
     className?: string;
@@ -1904,7 +1896,7 @@ export enum ResizeGroupDirection {
 export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export const SearchBoxBase: React.FunctionComponent;
+export const SearchBoxBase: React.ForwardRefExoticComponent<ISearchBoxProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {

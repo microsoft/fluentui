@@ -1,20 +1,16 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
 import { warnDeprecations, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
-import { useBoolean, useControllableValue, useId } from '@uifabric/react-hooks';
+import { useBoolean, useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
 import { IconButton } from '../../compat/Button';
 import { Icon } from '../../Icon';
 
-export interface ISearchBoxState {
-  value?: string;
-  hasFocus?: boolean;
-}
+const COMPONENT_NAME = 'SearchBox';
+const iconButtonStyles = { root: { height: 'auto' }, icon: { fontSize: '12px' } };
+const iconButtonProps = { iconName: 'Clear' };
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
-const COMPONENT_NAME = 'SearchBox';
-
 const useComponentRef = (
-  // tslint:disable-next-line:no-any
   componentRef: React.Ref<ISearchBox> | undefined,
   inputElementRef: React.RefObject<HTMLInputElement>,
   hasFocus: boolean,
@@ -23,20 +19,19 @@ const useComponentRef = (
     componentRef,
     () => ({
       focus: () => inputElementRef.current?.focus(),
-      hasFocus: () => hasFocus,      
+      hasFocus: () => hasFocus,
     }),
     [inputElementRef, hasFocus],
   );
 };
-const iconButtonStyles = { root: { height: 'auto' }, icon: { fontSize: '12px' } };
-const iconButtonProps = { iconName: 'Clear' };
 
-export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) => {
+export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
   const [hasFocus, { toggle: toggleHasFocus }] = useBoolean(false);
   // tslint:disable-next-line:prefer-const deprecation
   let [value, setValue] = useControllableValue(props.value, props.defaultValue, props.onChange);
   const rootElementRef = React.useRef<HTMLDivElement>(null);
   const inputElementRef = React.useRef<HTMLInputElement>(null);
+  const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
   const fallbackId = useId(COMPONENT_NAME);
 
   // Ensure value is always a string-friendly type.
@@ -59,7 +54,7 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     iconProps,
     id = fallbackId,
   } = props;
-  const placeholderValue = placeholder !== undefined ? placeholder : labelText;
+
   const classNames = getClassNames(styles!, {
     theme: theme!,
     className,
@@ -69,6 +64,7 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     hasInput: value!.length > 0,
     disableAnimation,
   });
+
   const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(props, inputProperties, [
     'className',
     'placeholder',
@@ -76,6 +72,8 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     'onBlur',
     'value',
   ]);
+
+  const placeholderValue = placeholder !== undefined ? placeholder : labelText;
 
   const onClear = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) => {
     props.onClear && props.onClear(ev);
@@ -87,10 +85,12 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     }
   };
 
-  const onClickFocus = () => {
-    if (inputElementRef.current) {
-      focus();
-      inputElementRef.current.selectionStart = inputElementRef.current.selectionEnd = 0;
+  const onClearClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+    if (clearButtonProps && clearButtonProps.onClick) {
+      clearButtonProps.onClick(ev);
+    }
+    if (!ev.defaultPrevented) {
+      onClear(ev);
     }
   };
 
@@ -101,12 +101,10 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
     }
   };
 
-  const onClearClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-    if (clearButtonProps && clearButtonProps.onClick) {
-      clearButtonProps.onClick(ev);
-    }
-    if (!ev.defaultPrevented) {
-      onClear(ev);
+  const onClickFocus = () => {
+    if (inputElementRef.current) {
+      focus();
+      inputElementRef.current.selectionStart = inputElementRef.current.selectionEnd = 0;
     }
   };
 
@@ -156,7 +154,7 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
-    <div role="search" ref={rootElementRef} className={classNames.root} onFocusCapture={onFocusCapture}>
+    <div role="search" ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
       <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
         <Icon iconName="Search" {...iconProps} className={classNames.icon} />
       </div>
@@ -188,5 +186,5 @@ export const SearchBoxBase: React.FunctionComponent = (props: ISearchBoxProps) =
       )}
     </div>
   );
-};
+});
 SearchBoxBase.displayName = COMPONENT_NAME;
