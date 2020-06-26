@@ -371,6 +371,11 @@ export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
   errorMessage: IStyle;
 
   /**
+   * Style for error message element.
+   */
+  errorMessageSuffix: IStyle;
+
+  /**
    * Styling for subcomponents.
    */
   subComponentStyles: ITextFieldSubComponentStyles;

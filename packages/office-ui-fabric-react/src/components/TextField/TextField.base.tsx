@@ -237,7 +237,9 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
               <div role="alert">
                 <DelayedRender>
                   <p className={this._classNames.errorMessage}>
-                    <span data-automation-id="error-message">{errorMessage}</span>
+                    <span className={this._classNames.errorMessageSuffix} data-automation-id="error-message">
+                      {errorMessage}
+                    </span>
                   </p>
                 </DelayedRender>
               </div>

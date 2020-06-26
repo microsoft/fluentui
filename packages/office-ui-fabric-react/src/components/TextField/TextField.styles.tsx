@@ -21,6 +21,7 @@ const globalClassNames = {
   prefix: 'ms-TextField-prefix',
   suffix: 'ms-TextField-suffix',
   wrapper: 'ms-TextField-wrapper',
+  errorMessageSuffix: 'ms-TextField_errorMessageSuffix',
 
   multiline: 'ms-TextField--multiline',
   borderless: 'ms-TextField--borderless',
@@ -383,6 +384,15 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         paddingTop: 5,
         display: 'flex',
         alignItems: 'center',
+      },
+    ],
+    errorMessageSuffix: [
+      classNames.errorMessageSuffix,
+      {
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+        width: '100%',
       },
     ],
     prefix: [classNames.prefix, fieldPrefixSuffix],
