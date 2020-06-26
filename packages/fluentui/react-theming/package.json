@@ -36,6 +36,7 @@
     "jss-preset-default": "^10.0.0"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.50.0",
     "@types/jss": "^9.5.8",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",

@@ -22,6 +22,7 @@
     "react-fela": "^10.6.1"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.50.0",
     "@types/classnames": "^2.2.9",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",

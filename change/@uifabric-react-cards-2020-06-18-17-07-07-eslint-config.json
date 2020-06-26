@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update config files in preparation for enabling ESLint",
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-06-19T00:06:49.903Z"
+}

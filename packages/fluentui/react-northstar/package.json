@@ -30,6 +30,7 @@
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.50.0",
     "@testing-library/jest-dom": "^5.1.1",
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",
