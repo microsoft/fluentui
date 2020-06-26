@@ -126,24 +126,23 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             </svg>
           </div>
         </FocusZone>
-        {!this.props.hideTooltip && this.state.showHover ? (
-          <Callout
-            target={this._currentHoverElement}
-            alignTargetEdge={true}
-            isBeakVisible={false}
-            directionalHint={DirectionalHint.bottomRightEdge}
-            gapSpace={15}
-            id={this._calloutId}
-            onDismiss={this._closeCallout}
-            preventDismissOnLostFocus={true}
-          >
-            <ChartHoverCard
-              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
-              color={this.state.color}
-            />
-          </Callout>
-        ) : null}
+        <Callout
+          target={this._currentHoverElement}
+          alignTargetEdge={true}
+          isBeakVisible={false}
+          directionalHint={DirectionalHint.bottomRightEdge}
+          gapSpace={15}
+          hidden={!(!this.props.hideTooltip && this.state.showHover)}
+          id={this._calloutId}
+          onDismiss={this._closeCallout}
+          preventDismissOnLostFocus={true}
+        >
+          <ChartHoverCard
+            Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
+            color={this.state.color}
+          />
+        </Callout>
         <div className={this._classNames.legendContainer}>{!hideLegend && legendBars}</div>
       </div>
     );

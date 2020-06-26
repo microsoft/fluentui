@@ -65,6 +65,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _classNames: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
   private _reqID: number;
+  private _calloutId: string;
   private _yMax: number;
   // tslint:disable-next-line:no-any
   private _datasetForBars: any;
@@ -99,6 +100,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       _height: this.props.height || 350,
     };
     this._refArray = [];
+    this._calloutId = getId('callout');
     this._adjustProps();
     this._uniqLineText = getId('GroupedVerticalChart_');
   }
@@ -186,22 +188,22 @@ export class GroupedVerticalBarChartBase extends React.Component<
         >
           {legends}
         </div>
-        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
-          <Callout
-            target={this.state.refSelected}
-            gapSpace={10}
-            isBeakVisible={false}
-            setInitialFocus={true}
-            directionalHint={DirectionalHint.topRightEdge}
-          >
-            <ChartHoverCard
-              XValue={this.state.xCalloutValue}
-              Legend={this.state.titleForHoverCard}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          </Callout>
-        ) : null}
+        <Callout
+          target={this.state.refSelected}
+          gapSpace={10}
+          isBeakVisible={false}
+          setInitialFocus={true}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            XValue={this.state.xCalloutValue}
+            Legend={this.state.titleForHoverCard}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }
@@ -378,6 +380,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('y', (d: IGVForBarChart) => {
           return this.state.containerHeight - this.margins.bottom - yBarScale(d[datasetKey].data);
         })
+        .attr('aria-labelledby', this._calloutId)
         .attr('width', widthOfBar)
         .attr('height', (d: IGVForBarChart) => {
           return yBarScale(d[datasetKey].data);
