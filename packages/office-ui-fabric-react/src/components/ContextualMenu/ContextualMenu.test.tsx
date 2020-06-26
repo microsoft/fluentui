@@ -1040,7 +1040,7 @@ describe('ContextualMenu', () => {
       expect(document.querySelector('.SubMenuClass')).toEqual(null);
     });
 
-    it('Menu should correctly return focus to button when dismissed', () => {
+    it('Menu should correctly return focus to previously focused element when dismissed', () => {
       const temp = ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
           <DefaultButton menuProps={{ items: menu }} text="but" id="btn" />
