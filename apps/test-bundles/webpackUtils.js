@@ -3,7 +3,7 @@ const fs = require('fs');
 const resources = require('@uifabric/build/webpack/webpack-resources');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-function createWebpackConfig(entries, includeStats = true) {
+function createWebpackConfig(entries) {
   return Object.keys(entries).map(entryName => {
     let anaylizerPluginOptions = {
       analyzerMode: 'static',
@@ -12,6 +12,8 @@ function createWebpackConfig(entries, includeStats = true) {
       generateStatsFile: false,
       logLevel: 'warn',
     };
+
+    const { entryPath, includeStats } = entries[entryName];
 
     if (includeStats) {
       anaylizerPluginOptions = {
@@ -39,12 +41,12 @@ function createWebpackConfig(entries, includeStats = true) {
       };
     }
 
-    const config = resources.createConfig(
+    return resources.createConfig(
       entryName,
       true,
       {
         entry: {
-          [entryName]: entries[entryName],
+          [entryName]: entryPath,
         },
         externals: {
           react: 'React',
@@ -55,8 +57,6 @@ function createWebpackConfig(entries, includeStats = true) {
       true,
       true,
     )[0];
-
-    return config;
   });
 }
 
@@ -65,8 +65,14 @@ const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'
 
 /**
  * Build webpack entries based on top level imports available in a package.
+ *
+ * @param {*} includeStats - Stats are generated and used by the size auditor report
+ * to check more details on what caused the bundle size change. Due to stats generation being slow,
+ * and therefore slowing down CI significantly, setting this to true to avoid stats generation.
+ * If bundle size is changed unexpectedly, developers can drill down deeper on the problem by
+ * locally running bundle tests.
  */
-function buildEntries(packageName, entries = {}) {
+function buildEntries(packageName, entries = {}, includeStats = true) {
   let packagePath = '';
 
   try {
@@ -87,14 +93,28 @@ function buildEntries(packageName, entries = {}) {
       // Replace commonjs paths with lib paths.
       const entryPath = path.join(packagePath, itemName);
 
-      entries[`${packageName.replace('@', '').replace('/', '-')}-${entryName}`] = entryPath;
+      entries[`${packageName.replace('@', '').replace('/', '-')}-${entryName}`] = {
+        entryPath,
+        includeStats,
+      };
     }
   });
 
   return entries;
 }
 
+/**
+ * Create entries for single top level import.
+ */
+function buildEntry(packageName, includeStats = true) {
+  return {
+    entryPath: path.join(path.dirname(require.resolve(packageName)).replace('lib-commonjs', 'lib'), 'index.js'),
+    includeStats,
+  };
+}
+
 module.exports = {
   createWebpackConfig,
   buildEntries,
+  buildEntry,
 };
