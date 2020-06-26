@@ -138,6 +138,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
       plainCardProps,
       trapFocus,
       setInitialFocus,
+      hostNativeProps,
     } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
@@ -167,6 +168,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
         ref={this._hoverCard}
         aria-describedby={setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined}
         data-is-focusable={!Boolean(this.props.target)}
+        {...(hostNativeProps && { ...getNativeProps(hostNativeProps!, divProperties) })}
       >
         {children}
         {isHoverCardVisible &&

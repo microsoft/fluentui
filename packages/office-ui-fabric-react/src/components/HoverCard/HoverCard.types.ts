@@ -98,6 +98,12 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   onCardExpand?: () => void;
 
   /**
+   * Optional Native props (s) for the host div of HoverCard
+   */
+
+  hostNativeProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  /**
    * Set to true to set focus on the first focusable element in the card. Works in pair with the 'trapFocus' prop.
    * @defaultvalue false
    */
