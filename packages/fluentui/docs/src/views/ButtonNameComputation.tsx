@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { Header, Table, AcceptIcon, CloseIcon, ArrowRightIcon } from '@fluentui/react-northstar';
+import { Header, Table, AcceptIcon, CloseIcon } from '@fluentui/react-northstar';
 import DocPage from '../components/DocPage';
 
 const acceptIconLabelled = <AcceptIcon alt="applied attribute" title="applied" />;
 const closeIconLabelled = <CloseIcon alt="not applied attribute" title="not applied" />;
-const styleForEmptyColumn = { display: 'contents' };
-const emptyCell = { styles: styleForEmptyColumn, 'aria-hidden': 'true' };
 
 const header = {
   items: [
@@ -14,7 +12,6 @@ const header = {
     'aria-label(AL)',
     'aria-labelledby (ALBY)',
     'aria-describedby (ADBY)',
-    { content: <ArrowRightIcon size="large" />, styles: styleForEmptyColumn, 'aria-hidden': 'true' },
     'NVDA',
     'JAWS',
     'VoiceOver',
@@ -29,7 +26,6 @@ const rows = [
       closeIconLabelled,
       closeIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[content] button',
       '[content] button',
       '[content] button ',
@@ -43,7 +39,6 @@ const rows = [
       closeIconLabelled,
       closeIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[content] button [title]',
       '[content] button [title]',
       '[content] button',
@@ -57,7 +52,6 @@ const rows = [
       acceptIconLabelled,
       closeIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[AL] button [title]',
       '[AL] button [title]',
       '[AL] button [title]',
@@ -71,7 +65,6 @@ const rows = [
       acceptIconLabelled,
       acceptIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[ALBY] button [title]',
       '[ALBY] button [title]',
       '[ALBY] button [title]',
@@ -85,7 +78,6 @@ const rows = [
       acceptIconLabelled,
       acceptIconLabelled,
       acceptIconLabelled,
-      emptyCell,
       '[ALBY]  button [ADBY]',
       '[ALBY]  button [ADBY]',
       '[ALBY]  button [ADBY]',
@@ -99,7 +91,6 @@ const rows = [
       acceptIconLabelled,
       closeIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[AL] button',
       '[AL] button',
       '[AL] button',
@@ -113,7 +104,6 @@ const rows = [
       acceptIconLabelled,
       acceptIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[ALBY] button',
       '[ALBY] button',
       '[ALBY] button',
@@ -127,7 +117,6 @@ const rows = [
       acceptIconLabelled,
       acceptIconLabelled,
       acceptIconLabelled,
-      emptyCell,
       '[ALBY]  button [ADBY]',
       '[ALBY]  button [ADBY]',
       '[ALBY]  button [ADBY]',
@@ -141,7 +130,6 @@ const rows = [
       closeIconLabelled,
       acceptIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[ALBY] button',
       '[ALBY] button',
       '[ALBY] button',
@@ -155,7 +143,6 @@ const rows = [
       closeIconLabelled,
       closeIconLabelled,
       acceptIconLabelled,
-      emptyCell,
       '[content] button [ADBY]',
       '[content] button [ADBY]',
       '[content] button [ADBY]',
@@ -169,7 +156,6 @@ const rows = [
       closeIconLabelled,
       closeIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[title] button',
       '[title] button',
       '[title] button',
@@ -183,7 +169,6 @@ const rows = [
       acceptIconLabelled,
       closeIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[AL] button [title]',
       '[AL] button [title]',
       '[AL] button [title]',
@@ -197,7 +182,6 @@ const rows = [
       acceptIconLabelled,
       acceptIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[ALBY] button [title]',
       '[ALBY] button [title]',
       '[ALBY] button [title]',
@@ -211,7 +195,6 @@ const rows = [
       acceptIconLabelled,
       acceptIconLabelled,
       acceptIconLabelled,
-      emptyCell,
       '[ALBY] button [ADBY]',
       '[ALBY] button [ADBY]',
       '[ALBY] button [ADBY]',
@@ -225,7 +208,6 @@ const rows = [
       acceptIconLabelled,
       acceptIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[ALBY] button',
       '[ALBY] button',
       '[ALBY] button',
@@ -239,7 +221,6 @@ const rows = [
       acceptIconLabelled,
       acceptIconLabelled,
       acceptIconLabelled,
-      emptyCell,
       '[ALBY] button [ADBY]',
       '[ALBY] button [ADBY]',
       '[ALBY] button [ADBY]',
@@ -253,7 +234,6 @@ const rows = [
       closeIconLabelled,
       acceptIconLabelled,
       closeIconLabelled,
-      emptyCell,
       '[ALBY] button [title]',
       '[ALBY] button [title]',
       '[ALBY] button [title]',
@@ -275,7 +255,10 @@ const TableExampleStaticShorthand = () => (
     <p>Be aware 'button' is the role which reader narrate.</p>
     {/* <Table header={headerVisual} aria-hidden="true" /> */}
     <Table
-      styles={{ '& .ui-table__row:nth-child(even)': { background: 'aliceblue' } }}
+      styles={{
+        '& .ui-table__row:nth-child(even)': { background: 'aliceblue' },
+        '& .ui-table__row :nth-child(6)': { borderLeft: '1px dashed grey' },
+      }}
       header={header}
       rows={rows}
       aria-label="Button accessibility name computation"
