@@ -1,6 +1,5 @@
 import { ReactWrapper } from 'enzyme';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
-// import { FocusZone } from '@fluentui/react-bindings';
 
 export const getDisplayName = (Component: React.ElementType) => {
   return (
