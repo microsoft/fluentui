@@ -12,7 +12,7 @@ export class CollapsibleSectionAccordionExample extends React.Component<{}, {}> 
           <Accordion>
             <Accordion.Item title="Title 1">Accordion Item 1!</Accordion.Item>
             <Accordion.Item title="Title 2">Accordion Item 2!</Accordion.Item>
-            <Accordion.Item title="Title 3">Accordion Item 4!</Accordion.Item>
+            <Accordion.Item title="Title 3">Accordion Item 3!</Accordion.Item>
             <Accordion.Item title="Title 4">Accordion Item 4!</Accordion.Item>
           </Accordion>
         </FocusZone>
