@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Fix issue where focus would not return to button. Also fix issue where error might occur if the previously focused element didn't have a focus method.",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-26T05:59:46.400Z"
+}
