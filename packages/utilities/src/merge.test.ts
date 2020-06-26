@@ -87,4 +87,23 @@ describe('merge', () => {
       foo: { bar: 'baz' },
     });
   });
+
+  it('can handle arrays', () => {
+    const obj1 = {
+      array1: [1, 2, 3, 4],
+      array2: ['1', '2', '3', '4'],
+      deepArray: { array3: [1, 2, 3, 4] },
+    };
+    const obj2 = {
+      array1: [5, 6, 7, 8],
+      array2: ['5', '6', '7', '8'],
+      deepArray: { array3: [5, 6, 7, 8] },
+    };
+
+    expect(merge(obj1, obj2)).toEqual({
+      array1: [1, 2, 3, 4, 5, 6, 7, 8],
+      array2: ['1', '2', '3', '4', '5', '6', '7', '8'],
+      deepArray: { array3: [1, 2, 3, 4, 5, 6, 7, 8] },
+    });
+  });
 });

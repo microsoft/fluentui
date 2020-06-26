@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { mergeCss } from '@uifabric/merge-styles';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { getRTL, memoizeFunction } from '@uifabric/utilities';
-import { assign } from './utilities';
+import { getRTL, memoizeFunction, merge } from '@uifabric/utilities';
 import { IFactoryOptions } from './IComponent';
 import {
   ISlottableReactType,
@@ -207,7 +206,7 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(
 
   for (const props of allProps) {
     classNames.push(props && props.className);
-    assign(finalProps, props);
+    merge<TProps>(finalProps, props);
   }
 
   finalProps.className = mergeCss([defaultStyles, classNames], { rtl: getRTL(theme) });

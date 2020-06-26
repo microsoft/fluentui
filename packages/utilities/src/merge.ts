@@ -25,7 +25,11 @@ function _merge<T extends Object>(target: T, source: T, circularReferences: any[
     if (source.hasOwnProperty(name)) {
       if (name !== '__proto__' && name !== 'constructor' && name !== 'prototype') {
         const value: T[Extract<keyof T, string>] = source[name];
-        if (typeof value === 'object' && value !== null) {
+        const targetValue = target[name];
+        // If both values are arrays, concat them
+        if (Array.isArray(value) && Array.isArray(targetValue)) {
+          target[name] = (targetValue.concat(value) as unknown) as T[Extract<keyof T, string>];
+        } else if (!Array.isArray(value) && typeof value === 'object' && value !== null) {
           const isCircularReference = circularReferences.indexOf(value) > -1;
           target[name] = (isCircularReference
             ? value
@@ -38,6 +42,5 @@ function _merge<T extends Object>(target: T, source: T, circularReferences: any[
   }
 
   circularReferences.pop();
-
   return target;
 }
