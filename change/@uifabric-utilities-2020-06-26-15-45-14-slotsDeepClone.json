@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updated merge to handle arrays",
+  "packageName": "@uifabric/utilities",
+  "email": "brandth@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-26T22:45:14.788Z"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixing item string in Accordian CollapsibleSection example",
+  "packageName": "@uifabric/experiments",
+  "email": "brandth@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-26T22:31:39.631Z"
+}

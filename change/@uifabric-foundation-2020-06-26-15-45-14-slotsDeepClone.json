@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating _constructFinalProps within slots.tsx to use merge instead of assign to deeply merge props",
+  "packageName": "@uifabric/foundation",
+  "email": "brandth@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-26T22:43:52.488Z"
+}
