@@ -3,7 +3,7 @@ import { Form } from '@fluentui/react-northstar';
 import { useForm } from 'react-hook-form';
 
 const FormValidateHooks = () => {
-  const { register, handleSubmit, errors, setValue, watch, triggerValidation } = useForm({
+  const { register, handleSubmit, errors, setValue, triggerValidation, formState } = useForm({
     mode: 'onBlur',
   });
 
@@ -11,8 +11,6 @@ const FormValidateHooks = () => {
     console.log('errors: ', errors);
     console.log('data: ', data);
   };
-
-  const firstNameWatched = watch('firstName');
 
   React.useEffect(() => {
     register(
@@ -26,6 +24,7 @@ const FormValidateHooks = () => {
   const handleMultiChange = selectedOption => {
     setValue('city', selectedOption);
   };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Input
@@ -33,13 +32,12 @@ const FormValidateHooks = () => {
         id="first-name-hooks"
         required
         name="firstName"
-        value={firstNameWatched}
         inputRef={register({
           required: { value: true, message: 'first name is required' },
           validate: val => (val.length <= 4 ? 'Too Short' : null),
         })}
         errorMessage={errors.firstName?.message}
-        showSuccessIndicator={!errors.firstName && firstNameWatched?.length >= 4}
+        showSuccessIndicator={!errors.firstName && formState.touched.firstName}
       />
       <Form.Dropdown
         onChange={(e, { value }) => {
