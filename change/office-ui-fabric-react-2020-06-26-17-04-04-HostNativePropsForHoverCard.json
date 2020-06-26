@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Expose Optional native props for the host div of HoverCard",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-gorraj@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-26T11:34:04.337Z"
+}
