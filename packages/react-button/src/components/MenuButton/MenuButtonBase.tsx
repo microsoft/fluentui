@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { compose, mergeProps } from '@fluentui/react-compose';
-import { MenuButtonProps } from './MenuButton.types';
+import { MenuButtonProps, MenuButtonSlots, MenuButtonSlotProps } from './MenuButton.types';
 import { useMenuButton } from './useMenuButton';
 
 export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps, {}, {}>(
   (props, ref, options) => {
     const { state } = options;
-    const { slots, slotProps } = mergeProps(state, options);
+    const { slots, slotProps } = mergeProps<MenuButtonProps, MenuButtonProps, MenuButtonSlots, MenuButtonSlotProps>(
+      state,
+      options,
+    );
 
     const { children, expanded, iconOnly } = state;
 
