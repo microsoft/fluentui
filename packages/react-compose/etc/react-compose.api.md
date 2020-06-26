@@ -6,6 +6,12 @@
 
 import * as React from 'react';
 
+// @public (undocumented)
+export interface BaseSlots {
+    // (undocumented)
+    root: React.ElementType;
+}
+
 // @public
 export type ClassDictionary = Record<string, string>;
 
@@ -93,13 +99,25 @@ export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps>
 };
 
 // @public
-export function mergeProps<TProps, TState = TProps>(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState>;
+export function mergeProps<TProps, TState = TProps, TSlots = GenericDictionary, TSlotProps = {
+    [key in keyof TSlots]: any;
+}>(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState, TSlots, TSlotProps>;
 
 // @public (undocumented)
-export type MergePropsResult<TState extends GenericDictionary> = {
+export type MergePropsResult<TState extends GenericDictionary, TSlots = GenericDictionary, TSlotProps = {
+    [key in keyof TSlots]: any;
+}> = {
     state: TState;
-    slots: GenericDictionary;
-    slotProps: GenericDictionary;
+    slots: TSlots;
+    slotProps: TSlotProps;
+};
+
+// @public
+export function mergeSlotProp<TProps>(slotProp: SlotProp<TProps>, slotProps: TProps, mappedProp?: string): SlotProp<TProps>;
+
+// @public (undocumented)
+export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
+    children?: TProps['children'] | SlotPropRenderFunction<TProps>;
 };
 
 // @public (undocumented)
@@ -114,6 +132,19 @@ export interface ShorthandConfig<TProps> {
     // (undocumented)
     mappedProp?: keyof TProps;
 }
+
+// @public (undocumented)
+export type SlotProp<TProps> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined | ObjectSlotProp<TProps>;
+
+// @public (undocumented)
+export type SlotPropRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+// @public (undocumented)
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+    [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
+} & {
+    root: TRootProps;
+};
 
 
 // (No @packageDocumentation comment for this package)

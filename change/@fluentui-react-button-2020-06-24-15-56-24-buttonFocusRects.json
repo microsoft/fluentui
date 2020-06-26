@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: Using correct focus borders from utilities.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-24T22:56:23.962Z"
+}

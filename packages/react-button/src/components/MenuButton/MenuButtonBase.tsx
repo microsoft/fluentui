@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { compose, mergeProps } from '@fluentui/react-compose';
-import { ButtonBase } from '../Button/ButtonBase';
 import { MenuButtonProps } from './MenuButton.types';
 import { useMenuButton } from './useMenuButton';
 
@@ -25,7 +24,6 @@ export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps
     displayName: 'MenuButtonBase',
     handledProps: [
       'circular',
-      'disabled',
       'fluid',
       'iconOnly',
       'inverted',
@@ -35,9 +33,9 @@ export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps
       'primary',
       'secondary',
       'size',
+      'tokens',
     ],
     slots: {
-      root: ButtonBase,
       menu: 'span',
       menuIcon: 'span',
     },
