@@ -4,9 +4,12 @@
 
 ```ts
 
+import { BaseSlots } from '@fluentui/react-compose';
 import { ColorPlateSet } from '@fluentui/react-theme-provider';
 import { ComposeOptions } from '@fluentui/react-compose';
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import * as React from 'react';
+import { SlotProps } from '@fluentui/react-compose';
 
 // @public (undocumented)
 export const Button: import("@fluentui/react-compose").ComponentWithAs<"button", ButtonProps>;
@@ -42,12 +45,10 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
 }
 
 // @public (undocumented)
-export type ButtonSlotProps = {
-    [key in keyof ButtonSlots]: ButtonProps[key];
-};
+export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
-export interface ButtonSlots {
+export interface ButtonSlots extends BaseSlots {
     // (undocumented)
     icon: React.ElementType;
     // (undocumented)
@@ -69,6 +70,8 @@ export type ButtonTokens = ColorPlateSet & {
     iconSize: string;
     borderRadius: string;
     borderWidth: string;
+    boxShadow: string;
+    width: string;
     size: {
         smallest: string;
         smaller: string;
@@ -108,9 +111,7 @@ export interface ToggleButtonProps extends ButtonProps {
 }
 
 // @public (undocumented)
-export type ToggleButtonSlotProps = {
-    [key in keyof ToggleButtonSlots]: ToggleButtonProps[key];
-};
+export type ToggleButtonSlotProps = SlotProps<ToggleButtonSlots, ToggleButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
 export interface ToggleButtonSlots extends ButtonSlots {
@@ -121,7 +122,7 @@ export interface ToggleButtonState extends ToggleButtonProps {
 }
 
 // @public
-export const useButton: (props: ButtonProps) => ButtonState;
+export const useButton: (props: ButtonProps, ref: import("react").Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ButtonState;
 
 // Warning: (ae-forgotten-export) The symbol "ToggleProps" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "ToggleState" needs to be exported by the entry point index.d.ts

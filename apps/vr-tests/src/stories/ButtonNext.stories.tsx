@@ -18,10 +18,14 @@ storiesOf('Button Next', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button content="Hello, world" />)
-  .addStory('Primary', () => <Button primary content="Hello, world" />)
-  .addStory('Disabled', () => <Button disabled content="Hello, world" />)
-  .addStory('Primary Disabled', () => <Button primary disabled content="Hello, world" />);
+  .addStory('Default', () => <Button>Hello, world</Button>)
+  .addStory('Primary', () => <Button primary>Hello, world</Button>)
+  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Primary Disabled', () => (
+    <Button primary disabled>
+      Hello, world
+    </Button>
+  ));
 
 storiesOf('Button Next - With icon before content', module)
   .addDecorator(story => (
@@ -37,10 +41,22 @@ storiesOf('Button Next - With icon before content', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button disabled content="Hello, world" icon="X" />)
-  .addStory('Primary Disabled', () => <Button primary disabled content="Hello, world" icon="X" />);
+  .addStory('Default', () => <Button icon="X">Hello, world</Button>)
+  .addStory('Primary', () => (
+    <Button primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button disabled icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary Disabled', () => (
+    <Button primary disabled icon="X">
+      Hello, world
+    </Button>
+  ));
 
 storiesOf('Button Next - With icon after content', module)
   .addDecorator(story => (
@@ -56,15 +72,25 @@ storiesOf('Button Next - With icon after content', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button content="Hello, world" icon="X" iconPosition="after" />)
+  .addStory('Default', () => (
+    <Button icon="X" iconPosition="after">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary', () => (
-    <Button primary content="Hello, world" icon="X" iconPosition="after" />
+    <Button primary icon="X" iconPosition="after">
+      Hello, world
+    </Button>
   ))
   .addStory('Disabled', () => (
-    <Button disabled content="Hello, world" icon="X" iconPosition="after" />
+    <Button disabled icon="X" iconPosition="after">
+      Hello, world
+    </Button>
   ))
   .addStory('Primary Disabled', () => (
-    <Button primary disabled content="Hello, world" icon="X" iconPosition="after" />
+    <Button primary disabled icon="X" iconPosition="after">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Circular', module)
@@ -81,11 +107,25 @@ storiesOf('Button Next - Circular', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button circular content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button circular primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button circular disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button circular icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button circular primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button circular disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button circular primary disabled content="Hello, world" icon="X" />
+    <Button circular primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Icon only', module)
@@ -102,11 +142,25 @@ storiesOf('Button Next - Icon only', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button iconOnly content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button iconOnly primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button iconOnly disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button iconOnly icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button iconOnly primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button iconOnly disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button iconOnly primary disabled content="Hello, world" icon="X" />
+    <Button iconOnly primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Fluid', module)
@@ -123,11 +177,25 @@ storiesOf('Button Next - Fluid', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button fluid content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button fluid primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button fluid disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button fluid icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button fluid primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button fluid disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button fluid primary disabled content="Hello, world" icon="X" />
+    <Button fluid primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Inverted', module)
@@ -144,11 +212,25 @@ storiesOf('Button Next - Inverted', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button inverted content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button inverted primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button inverted disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button inverted icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button inverted primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button inverted disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button inverted primary disabled content="Hello, world" icon="X" />
+    <Button inverted primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Loading', module)
@@ -165,11 +247,25 @@ storiesOf('Button Next - Loading', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button loading content="Hello, world" icon="X" />)
-  .addStory('Primary', () => <Button loading primary content="Hello, world" icon="X" />)
-  .addStory('Disabled', () => <Button loading disabled content="Hello, world" icon="X" />)
+  .addStory('Default', () => (
+    <Button loading icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button loading primary icon="X">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button loading disabled icon="X">
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
-    <Button loading primary disabled content="Hello, world" icon="X" />
+    <Button loading primary disabled icon="X">
+      Hello, world
+    </Button>
   ));
 
 storiesOf('Button Next - Sizes', module)
@@ -186,9 +282,33 @@ storiesOf('Button Next - Sizes', module)
       {story()}
     </Screener>
   ))
-  .addStory('Smallest', () => <Button content="Hello, world" icon="X" size="smallest" />)
-  .addStory('Smaller', () => <Button content="Hello, world" icon="X" size="smaller" />)
-  .addStory('Small', () => <Button content="Hello, world" icon="X" size="small" />)
-  .addStory('Large', () => <Button content="Hello, world" icon="X" size="large" />)
-  .addStory('Larger', () => <Button content="Hello, world" icon="X" size="larger" />)
-  .addStory('Largest', () => <Button content="Hello, world" icon="X" size="largest" />);
+  .addStory('Smallest', () => (
+    <Button icon="X" size="smallest">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Smaller', () => (
+    <Button icon="X" size="smaller">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Small', () => (
+    <Button icon="X" size="small">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Large', () => (
+    <Button icon="X" size="large">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Larger', () => (
+    <Button icon="X" size="larger">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Largest', () => (
+    <Button icon="X" size="largest">
+      Hello, world
+    </Button>
+  ));

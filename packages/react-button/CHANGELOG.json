@@ -2,6 +2,94 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-button_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Adding stories of a Button themed like Fluent using tokens.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "51b26a4f868cee2fde2bc28b6067f5503d2c3db7",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Using correct focus borders from utilities.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "900877a4c5455cc3c8df28131dfba8455302f7da",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@fluentui/react-button_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update typings related to mergeProps typing",
+            "author": "xgao@microsoft.com",
+            "commit": "457a25432c22a9d8bc18bbe8e4f40bc7f4fb4a1a",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: updates to styles, adjusting width tokens.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d14b3434cf47d8c1533472be5d0c0c6aafa3bf03",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@fluentui/react-button_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Mixing style coming from slotProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "01f6a1cb03f18e26d80c75998794dbeffbe326fc",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@fluentui/react-button_v0.3.7",
+      "version": "0.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Adding pointer-events: none to :after focus rectangle.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "35f5aa25db089b737a8612740de3c378a2ed3f8e",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jun 2020 12:38:09 GMT",
       "tag": "@fluentui/react-button_v0.3.6",
       "version": "0.3.6",

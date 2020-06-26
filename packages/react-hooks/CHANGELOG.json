@@ -2,6 +2,48 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/react-hooks_v7.4.9",
+      "version": "7.4.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/react-hooks_v7.4.7",
+      "version": "7.4.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add usePrevious hook",
+            "author": "xgao@microsoft.com",
+            "commit": "0ea5b852e9aa0a465d15924dcb1607e76db7d431",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "useMergedRefs: Merging refs should produce an immutable ref object.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2ad257284fddfc2c0115a787ce1aab593e764979",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@uifabric/react-hooks_v7.4.6",
       "version": "7.4.6",

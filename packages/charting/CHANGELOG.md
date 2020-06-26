@@ -1,8 +1,38 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jun 2020 12:50:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.4)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.3..@uifabric/charting_v2.3.4)
+
+### Patches
+
+- Removing some unneeded mergeStyles usage in examples. ([PR #13751](https://github.com/microsoft/fluentui/pull/13751) by dzearing@hotmail.com)
+- Grouped veritcal bar chart - second chart disappear issue fixed ([PR #13781](https://github.com/microsoft/fluentui/pull/13781) by v-jasha@microsoft.com)
+
+## [2.3.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.3)
+
+Tue, 23 Jun 2020 12:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.2..@uifabric/charting_v2.3.3)
+
+### Patches
+
+- LineChart: import find from office-ui-fabric-react/lib/Utilities to support IE11 ([PR #13683](https://github.com/microsoft/fluentui/pull/13683) by v-gorraj@microsoft.com)
+- HorizontalBarChart: Add keyboard accessability ([PR #13706](https://github.com/microsoft/fluentui/pull/13706) by v-gorraj@microsoft.com)
+
+## [2.3.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.2)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.1..@uifabric/charting_v2.3.2)
+
+### Patches
+
+- Vertical Bar chart code updated ([PR #13660](https://github.com/microsoft/fluentui/pull/13660) by v-jasha@microsoft.com)
+- doughnut chart target alignment updated ([PR #13703](https://github.com/microsoft/fluentui/pull/13703) by v-jasha@microsoft.com)
 
 ## [2.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.1)
 

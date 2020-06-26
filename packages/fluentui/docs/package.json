@@ -8,7 +8,7 @@
     "@fluentui/accessibility": "^0.50.0",
     "@fluentui/code-sandbox": "^0.50.0",
     "@fluentui/docs-components": "^0.50.0",
-    "@fluentui/keyboard-key": "^0.2.1",
+    "@fluentui/keyboard-key": "^0.2.3",
     "@fluentui/react-bindings": "^0.50.0",
     "@fluentui/react-builder": "^0.50.0",
     "@fluentui/react-component-event-listener": "^0.50.0",
@@ -26,7 +26,6 @@
     "copy-to-clipboard": "^3.2.0",
     "csstype": "^2.6.7",
     "faker": "^4.1.0",
-    "flat": "^4.1.0",
     "lodash": "^4.17.15",
     "moment": "^2.18.1",
     "prop-types": "^15.7.2",
@@ -45,6 +44,7 @@
     "react-vis": "^1.11.6"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/classnames": "^2.2.9",
     "@types/color": "^3.0.0",
     "@types/faker": "^4.1.3",

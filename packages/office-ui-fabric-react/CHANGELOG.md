@@ -1,8 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jun 2020 12:36:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.121.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.4)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.2..office-ui-fabric-react_v7.121.4)
+
+### Patches
+
+- PeoplePicker: Fix examples to properly remove duplicates ([PR #13366](https://github.com/microsoft/fluentui/pull/13366) by suprememilanfan@gmail.com)
+
+## [7.121.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.2)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.1..office-ui-fabric-react_v7.121.2)
+
+### Patches
+
+- KeytipData: convert to function component ([PR #13688](https://github.com/microsoft/fluentui/pull/13688) by xgao@microsoft.com)
 
 ## [7.121.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.1)
 

@@ -2,6 +2,42 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding getStylesFromOptionsAndProps method to calculate the correct value for the style prop.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "01f6a1cb03f18e26d80c75998794dbeffbe326fc",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@fluentui/react-theme-provider_v0.2.1",
       "version": "0.2.1",

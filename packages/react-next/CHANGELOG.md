@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jun 2020 12:36:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.49)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.48..@fluentui/react-next_v8.0.0-alpha.49)
+
+### Changes
+
+- Removing unnecessary code from storybook/preview.js. ([PR #13769](https://github.com/microsoft/fluentui/pull/13769) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.48)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.47..@fluentui/react-next_v8.0.0-alpha.48)
+
+### Changes
+
+- Checkbox: deprecate onRenderLabel and properly support label shorthand ([PR #13576](https://github.com/microsoft/fluentui/pull/13576) by xgao@microsoft.com)
+- Update typings related to mergeProps typing ([PR #13571](https://github.com/microsoft/fluentui/pull/13571) by xgao@microsoft.com)
+- Fixing React-Next's Toggle.scss focus value ([PR #13792](https://github.com/microsoft/fluentui/pull/13792) by czearing@outlook.com)
+
+## [8.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.47)
+
+Tue, 23 Jun 2020 12:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.46..@fluentui/react-next_v8.0.0-alpha.47)
+
+### Changes
+
+- Copy Persona component code to react-next project for migration ([PR #13510](https://github.com/microsoft/fluentui/pull/13510) by miclo@microsoft.com)
+- SelectedItemsList: Copy code to react-next to stage migration ([PR #13630](https://github.com/microsoft/fluentui/pull/13630) by miclo@microsoft.com)
+- Fix incorrect button imports ([PR #13747](https://github.com/microsoft/fluentui/pull/13747) by xgao@microsoft.com)
+
+## [8.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.46)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.45..@fluentui/react-next_v8.0.0-alpha.46)
+
+### Changes
+
+- Avoid rendering KeytipData when keytipProps are not passed ([PR #13688](https://github.com/microsoft/fluentui/pull/13688) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.45)
 

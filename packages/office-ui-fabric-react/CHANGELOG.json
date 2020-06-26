@@ -2,6 +2,73 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "office-ui-fabric-react_v7.121.4",
+      "version": "7.121.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "PeoplePicker: Fix examples to properly remove duplicates",
+            "author": "suprememilanfan@gmail.com",
+            "commit": "61386e22d37a3ec5e690b34bd90b1589e27ab116",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jun 2020 12:37:46 GMT",
+      "tag": "office-ui-fabric-react_v7.121.2",
+      "version": "7.121.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
+            "author": "esteban.230@hotmail.com",
+            "commit": "1e9b0f1b3e1e79a56187a94d55127913d4370958",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "office-ui-fabric-react_v7.121.2",
+      "version": "7.121.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "KeytipData: convert to function component",
+            "author": "xgao@microsoft.com",
+            "commit": "0ea5b852e9aa0a465d15924dcb1607e76db7d431",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "use create with act wrapped in test",
+            "author": "xgao@microsoft.com",
+            "commit": "b0b4d703ec1178f2f3d80ead4d78a72e5fc64554",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jun 2020 12:38:09 GMT",
       "tag": "office-ui-fabric-react_v7.121.1",
       "version": "7.121.1",
