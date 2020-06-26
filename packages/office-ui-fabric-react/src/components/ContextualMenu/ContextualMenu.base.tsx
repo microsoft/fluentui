@@ -427,6 +427,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       containsFocus: this._focusingPreviousElement,
       originalElement: this._previousActiveElement,
     });
+    this._focusingPreviousElement = false;
 
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
@@ -449,7 +450,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     originalElement: HTMLElement | Window | undefined;
   }) => {
     if (options && options.containsFocus && this._previousActiveElement) {
-      this._previousActiveElement && this._previousActiveElement.focus();
+      // Make sure that the focus method actually exists
+      // In some cases the object might exist but not be a real element.
+      if (this._previousActiveElement.focus) {
+        this._previousActiveElement && this._previousActiveElement.focus();
+      }
     }
   };
 
@@ -960,7 +965,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     let handled = false;
 
     if (shouldHandleKey(ev)) {
-      this._focusingPreviousElement = false;
+      this._focusingPreviousElement = true;
       this.dismiss(ev, dismissAllMenus);
       ev.preventDefault();
       ev.stopPropagation();
@@ -1205,7 +1210,16 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       dismiss = !!this.props.onItemClick(ev, item);
     }
 
-    (dismiss || !ev.defaultPrevented) && this.dismiss(ev, true);
+    if (dismiss || !ev.defaultPrevented) {
+      this.dismiss(ev, true);
+
+      // This should be removed whenever possible.
+      // This ensures that the hidden dismissal behavior maintains the same.
+      // If the menu is being dismissed then the previously focused element should
+      // get focused since the dismiss was triggered by a user click on an item
+      // Rather than focus being lost.
+      this._focusingPreviousElement = true;
+    }
   };
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {

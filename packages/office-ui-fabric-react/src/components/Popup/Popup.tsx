@@ -173,6 +173,10 @@ function defaultFocusRestorer(options: { originalElement?: HTMLElement | Window;
   const { originalElement, containsFocus } = options;
 
   if (originalElement && containsFocus && originalElement !== window) {
-    originalElement.focus();
+    // Make sure that the focus method actually exists
+    // In some cases the object might exist but not be a real element.
+    if (originalElement.focus) {
+      originalElement.focus();
+    }
   }
 }
