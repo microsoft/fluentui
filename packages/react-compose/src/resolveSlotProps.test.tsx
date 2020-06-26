@@ -66,7 +66,10 @@ describe('resolveSlotProps', () => {
         defaultOptionsWithSlots,
       ),
     ).toEqual({
-      ...getDefaultSlots(),
+      slots: {
+        ...getDefaultSlots().slots,
+        slot1: React.Fragment,
+      },
       state,
       slotProps: {
         root: {},
