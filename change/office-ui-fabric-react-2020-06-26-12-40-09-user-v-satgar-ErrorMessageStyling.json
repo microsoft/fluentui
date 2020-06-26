@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Added few styles and passed it into span using className",
+  "packageName": "office-ui-fabric-react",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-06-26T07:10:09.633Z"
+}
