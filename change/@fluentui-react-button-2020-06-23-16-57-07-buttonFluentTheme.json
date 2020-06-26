@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: Adding stories of a Button themed like Fluent using tokens.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-23T23:57:07.174Z"
+}
