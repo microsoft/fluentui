@@ -30,6 +30,7 @@ import {
   format,
   initializeComponentRef,
   FocusRects,
+  getPropsWithDefaults,
 } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DayPickerStrings } from './defaults';
@@ -59,6 +60,27 @@ export const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
   formatMonthYear,
   formatDay,
   formatYear,
+};
+
+const DEFAULT_PROPS: Partial<ICalendarProps> = {
+  isMonthPickerVisible: true,
+  isDayPickerVisible: true,
+  showMonthPickerAsOverlay: false,
+  today: new Date(),
+  firstDayOfWeek: DayOfWeek.Sunday,
+  dateRangeType: DateRangeType.Day,
+  showGoToToday: true,
+  strings: DayPickerStrings,
+  highlightCurrentMonth: false,
+  highlightSelectedMonth: false,
+  navigationIcons: defaultIconStrings,
+  showWeekNumbers: false,
+  firstWeekOfYear: FirstWeekOfYear.FirstDay,
+  dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+  showSixWeeksByDefault: false,
+  workWeekDays: defaultWorkWeekDays,
+  showCloseButton: false,
+  allFocusable: false,
 };
 
 export interface ICalendarState {
@@ -98,15 +120,29 @@ function useDateState({ value, today = new Date(), onSelectDate }: ICalendarProp
   return [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] as const;
 }
 
-export const CalendarBase = React.forwardRef((props: ICalendarProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-  const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState(props);
-  return (
-    <CalendarBaseClass
-      {...props}
-      hoisted={{ forwardedRef, selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth }}
-    />
-  );
-});
+export const CalendarBase = React.forwardRef(
+  (propsWithoutDefaults: ICalendarProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+
+    const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState(
+      props,
+    );
+    return (
+      <CalendarBaseClass
+        {...props}
+        hoisted={{
+          forwardedRef,
+          selectedDate,
+          navigatedDay,
+          navigatedMonth,
+          onDateSelected,
+          navigateDay,
+          navigateMonth,
+        }}
+      />
+    );
+  },
+);
 CalendarBase.displayName = 'CalendarBase';
 
 interface ICalendarBaseClassProps extends ICalendarProps {
@@ -122,30 +158,6 @@ interface ICalendarBaseClassProps extends ICalendarProps {
 }
 
 class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, ICalendarState> implements ICalendar {
-  public static defaultProps: ICalendarProps = {
-    onSelectDate: undefined,
-    onDismiss: undefined,
-    isMonthPickerVisible: true,
-    isDayPickerVisible: true,
-    showMonthPickerAsOverlay: false,
-    value: undefined,
-    today: new Date(),
-    firstDayOfWeek: DayOfWeek.Sunday,
-    dateRangeType: DateRangeType.Day,
-    showGoToToday: true,
-    strings: DayPickerStrings,
-    highlightCurrentMonth: false,
-    highlightSelectedMonth: false,
-    navigationIcons: defaultIconStrings,
-    showWeekNumbers: false,
-    firstWeekOfYear: FirstWeekOfYear.FirstDay,
-    dateTimeFormatter: defaultDateTimeFormatterCallbacks,
-    showSixWeeksByDefault: false,
-    workWeekDays: defaultWorkWeekDays,
-    showCloseButton: false,
-    allFocusable: false,
-  };
-
   private _dayPicker = React.createRef<ICalendarDay>();
   private _monthPicker = React.createRef<ICalendarMonth>();
 
