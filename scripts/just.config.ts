@@ -11,6 +11,7 @@ const { jest: jestTask, jestWatch } = require('./tasks/jest');
 const { sass } = require('./tasks/sass');
 const { ts } = require('./tasks/ts');
 const { tslint } = require('./tasks/tslint');
+const { eslint } = require('./tasks/eslint');
 const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
 const lintImports = require('./tasks/lint-imports');
@@ -60,6 +61,7 @@ module.exports = function preset() {
   task('ts:esm', ts.esm);
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('tslint', tslint);
+  task('eslint', eslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
@@ -81,7 +83,7 @@ module.exports = function preset() {
     return argv().commonjs
       ? 'ts:commonjs-only'
       : parallel(
-          'ts:commonjs',
+          condition('ts:commonjs', () => !argv().min),
           'ts:esm',
           condition('ts:amd', () => !!argv().production),
         );
@@ -96,7 +98,7 @@ module.exports = function preset() {
 
   task('lint', parallel('lint-imports', 'tslint'));
 
-  task('code-style', series('prettier', 'tslint'));
+  task('code-style', series('prettier', 'lint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
   task('dev:storybook', series('storybook:start'));
@@ -104,7 +106,16 @@ module.exports = function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
-  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor:verify')).cached();
+  task(
+    'build',
+    series(
+      'clean',
+      'copy',
+      'sass',
+      'ts',
+      condition('api-extractor:verify', () => !argv().min),
+    ),
+  ).cached();
 
   task(
     'bundle',

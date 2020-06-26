@@ -20,6 +20,7 @@ export { default as ButtonContent } from './components/Button/buttonContentVaria
 export { default as Chat } from './components/Chat/chatVariables';
 export { default as ChatItem } from './components/Chat/chatItemVariables';
 export { default as ChatMessage } from './components/Chat/chatMessageVariables';
+export { default as ChatMessageDetails } from './components/Chat/chatMessageDetailsVariables';
 
 export { default as Checkbox } from './components/Checkbox/checkboxVariables';
 
@@ -38,6 +39,7 @@ export { default as Flex } from './components/Flex/flexVariables';
 export { default as FlexItem } from './components/Flex/flexItemVariables';
 
 export { default as FormField } from './components/Form/formFieldVariables';
+export { default as FormFieldCustom } from './components/Form/formFieldVariables';
 export { default as FormMessage } from './components/Form/formMessageVariables';
 
 export { default as Grid } from './components/Grid/gridVariables';

@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2020 12:37:46 GMT",
+      "tag": "office-ui-fabric-react_v7.121.2",
+      "version": "7.121.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
+            "author": "esteban.230@hotmail.com",
+            "commit": "1e9b0f1b3e1e79a56187a94d55127913d4370958",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "office-ui-fabric-react_v7.121.2",
+      "version": "7.121.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "KeytipData: convert to function component",
+            "author": "xgao@microsoft.com",
+            "commit": "0ea5b852e9aa0a465d15924dcb1607e76db7d431",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "use create with act wrapped in test",
+            "author": "xgao@microsoft.com",
+            "commit": "b0b4d703ec1178f2f3d80ead4d78a72e5fc64554",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jun 2020 12:38:09 GMT",
       "tag": "office-ui-fabric-react_v7.121.1",
       "version": "7.121.1",

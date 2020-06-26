@@ -113,11 +113,11 @@ const useStyles = <StyleProps extends PrimitiveProps>(
     allDisplayNames: composeOptions?.displayNames || [displayName],
     className: composeOptions?.className || className,
     primaryDisplayName: composeOptions?.displayName || displayName,
-    props: {
+    componentProps: {
       ...componentStylesProps,
-      ...mapPropsToInlineStyles(),
       ...composeStylesProps,
     },
+    inlineStylesProps: mapPropsToInlineStyles(),
 
     // Context values
     disableAnimations: context.disableAnimations,

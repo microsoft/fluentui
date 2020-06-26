@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.45",
+  "version": "8.0.0-alpha.48",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -42,10 +42,10 @@
     "@types/webpack-env": "1.15.1",
     "@fluentui/react-conformance": "^0.1.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-data": "^7.0.15",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.26",
-    "@uifabric/test-utilities": "^7.0.27",
-    "@uifabric/tslint-rules": "^7.2.1",
+    "@uifabric/example-data": "^7.0.16",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.27",
+    "@uifabric/test-utilities": "^7.0.28",
+    "@uifabric/tslint-rules": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -56,16 +56,16 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.3.6",
-    "@fluentui/react-compose": "^0.11.2",
-    "@fluentui/react-focus": "^7.12.9",
-    "@fluentui/react-theme-provider": "^0.2.1",
-    "@uifabric/icons": "^7.3.52",
-    "@uifabric/merge-styles": "^7.14.1",
-    "@uifabric/react-hooks": "^7.4.6",
-    "@uifabric/set-version": "^7.0.13",
-    "@uifabric/utilities": "^7.21.0",
-    "office-ui-fabric-react": "^7.121.1",
+    "@fluentui/react-button": "^0.5.0",
+    "@fluentui/react-compose": "^0.11.4",
+    "@fluentui/react-focus": "^7.12.11",
+    "@fluentui/react-theme-provider": "^0.3.1",
+    "@uifabric/icons": "^7.3.54",
+    "@uifabric/merge-styles": "^7.15.0",
+    "@uifabric/react-hooks": "^7.4.8",
+    "@uifabric/set-version": "^7.0.14",
+    "@uifabric/utilities": "^7.21.2",
+    "office-ui-fabric-react": "^7.121.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

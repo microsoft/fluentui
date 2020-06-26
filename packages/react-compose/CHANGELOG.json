@@ -2,6 +2,27 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@fluentui/react-compose_v0.11.4",
+      "version": "0.11.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "provide correct props to children function as slot",
+            "author": "xgao@microsoft.com",
+            "commit": "e08d71e7149fdc0c9522cef9980fe0da569413fc",
+            "package": "@fluentui/react-compose"
+          },
+          {
+            "comment": "Include typings for slots and slotProps in mergeProps typing",
+            "author": "xgao@microsoft.com",
+            "commit": "457a25432c22a9d8bc18bbe8e4f40bc7f4fb4a1a",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@fluentui/react-compose_v0.11.2",
       "version": "0.11.2",
