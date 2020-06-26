@@ -15,15 +15,10 @@ const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
 
 export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
   (props, forwardedRef, composeOptions) => {
-    // TODO: improve typing for mergeProps
-    const { slotProps, slots, state } = mergeProps<ICheckboxProps, ICheckboxState>(
+    const { slotProps, slots, state } = mergeProps<ICheckboxProps, ICheckboxState, ICheckboxSlots, ICheckboxSlotProps>(
       composeOptions.state,
       composeOptions,
-    ) as {
-      state: ICheckboxState;
-      slots: ICheckboxSlots;
-      slotProps: ICheckboxSlotProps;
-    };
+    );
 
     const { disabled, keytipProps } = state;
 
@@ -46,7 +41,9 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
           <slots.checkbox {...slotProps.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
             <slots.checkmark {...slotProps.checkmark} />
           </slots.checkbox>
-          {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
+
+          {// tslint:disable-next-line:deprecation
+          (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
         </slots.container>
       </slots.root>
     );
@@ -73,6 +70,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       'defaultChecked',
       'boxSide',
       'label',
+      'checkmark',
       'disabled',
       'inputProps',
       'boxSide',
@@ -83,7 +81,6 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       'ariaSetSize',
       'styles',
       'onRenderLabel',
-      'checkmarkIconProps',
       'keytipProps',
       'indeterminate',
       'defaultIndeterminate',

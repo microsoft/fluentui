@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tslint-rules
 
-This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jun 2020 12:50:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.2](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.2.2)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tslint-rules_v7.2.1..@uifabric/tslint-rules_v7.2.2)
+
+### Patches
+
+- Removing style prop ban. ([PR #13751](https://github.com/microsoft/fluentui/pull/13751) by dzearing@hotmail.com)
 
 ## [7.2.1](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.2.1)
 
