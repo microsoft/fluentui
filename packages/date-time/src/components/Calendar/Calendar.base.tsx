@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  ICalendar,
   ICalendarProps,
   ICalendarIconStrings,
   ICalendarFormatDateCallbacks,
@@ -28,7 +27,6 @@ import {
   classNamesFunction,
   focusAsync,
   format,
-  initializeComponentRef,
   FocusRects,
   getPropsWithDefaults,
 } from '@uifabric/utilities';
@@ -132,6 +130,35 @@ function useVisibilityState(props: ICalendarProps) {
   return [isMonthPickerVisible, isDayPickerVisible, toggleDayMonthPickerVisibility] as const;
 }
 
+function useFocusLogic({ componentRef }: ICalendarProps, isDayPickerVisible: boolean, isMonthPickerVisible: boolean) {
+  const dayPicker = React.useRef<ICalendarDay>(null);
+  const monthPicker = React.useRef<ICalendarMonth>(null);
+  const focusOnUpdate = React.useRef(false);
+
+  const focus = () => {
+    if (isDayPickerVisible && dayPicker.current) {
+      focusAsync(dayPicker.current);
+    } else if (isMonthPickerVisible && monthPicker.current) {
+      focusAsync(monthPicker.current);
+    }
+  };
+
+  React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
+
+  React.useEffect(() => {
+    if (focusOnUpdate.current) {
+      focus();
+      focusOnUpdate.current = false;
+    }
+  });
+
+  const focusOnNextUpdate = () => {
+    focusOnUpdate.current = true;
+  };
+
+  return [dayPicker, monthPicker, focusOnNextUpdate] as const;
+}
+
 export const CalendarBase = React.forwardRef(
   (propsWithoutDefaults: ICalendarProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -140,6 +167,7 @@ export const CalendarBase = React.forwardRef(
       props,
     );
     const [isMonthPickerVisible, isDayPickerVisible, toggleDayMonthPickerVisibility] = useVisibilityState(props);
+    const [dayPicker, monthPicker, focusOnNextUpdate] = useFocusLogic(props, isDayPickerVisible, isMonthPickerVisible);
 
     return (
       <CalendarBaseClass
@@ -155,6 +183,9 @@ export const CalendarBase = React.forwardRef(
           isMonthPickerVisible,
           isDayPickerVisible,
           toggleDayMonthPickerVisibility,
+          dayPicker,
+          monthPicker,
+          focusOnNextUpdate,
         }}
       />
     );
@@ -170,6 +201,9 @@ interface ICalendarBaseClassProps extends ICalendarProps {
     navigatedMonth: Date;
     isMonthPickerVisible: boolean;
     isDayPickerVisible: boolean;
+    dayPicker: React.RefObject<ICalendarDay>;
+    monthPicker: React.RefObject<ICalendarMonth>;
+    focusOnNextUpdate(): void;
     toggleDayMonthPickerVisibility(): void;
     onDateSelected(date: Date, selectedDateRangeArray?: Date[]): void;
     navigateDay(date: Date): void;
@@ -177,27 +211,7 @@ interface ICalendarBaseClassProps extends ICalendarProps {
   };
 }
 
-class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, {}> implements ICalendar {
-  private _dayPicker = React.createRef<ICalendarDay>();
-  private _monthPicker = React.createRef<ICalendarMonth>();
-
-  private _focusOnUpdate: boolean;
-
-  constructor(props: ICalendarBaseClassProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    this._focusOnUpdate = false;
-  }
-
-  public componentDidUpdate(): void {
-    if (this._focusOnUpdate) {
-      this.focus();
-      this._focusOnUpdate = false;
-    }
-  }
-
+class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, {}> {
   public render(): JSX.Element {
     const rootClass = 'ms-DatePicker';
     const {
@@ -284,7 +298,7 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, {}> imp
             maxDate={maxDate}
             restrictedDates={restrictedDates}
             workWeekDays={this.props.workWeekDays}
-            componentRef={this._dayPicker}
+            componentRef={this.props.hoisted.dayPicker}
             showCloseButton={showCloseButton}
             allFocusable={allFocusable}
             {...calendarDayProps} // at end of list so consumer's custom functions take precedence
@@ -306,7 +320,7 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, {}> imp
               dateTimeFormatter={this.props.dateTimeFormatter!}
               minDate={minDate}
               maxDate={maxDate}
-              componentRef={this._monthPicker}
+              componentRef={this.props.hoisted.monthPicker}
               {...calendarMonthProps} // at end of list so consumer's custom functions take precedence
             />
             {this._renderGoToTodayButton(classes)}
@@ -317,14 +331,6 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, {}> imp
         <FocusRects />
       </div>
     );
-  }
-
-  public focus(): void {
-    if (this.props.hoisted.isDayPickerVisible && this._dayPicker.current) {
-      focusAsync(this._dayPicker.current);
-    } else if (this.props.hoisted.isMonthPickerVisible && this._monthPicker.current) {
-      focusAsync(this._monthPicker.current);
-    }
   }
 
   private _renderGoToTodayButton = (classes: IProcessedStyleSet<ICalendarStyles>) => {
@@ -361,11 +367,15 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, {}> imp
 
   private _onNavigateDayDate = (date: Date, focusOnNavigatedDay: boolean): void => {
     this.props.hoisted.navigateDay(date);
-    this._focusOnUpdate = focusOnNavigatedDay;
+    if (focusOnNavigatedDay) {
+      this.props.hoisted.focusOnNextUpdate();
+    }
   };
 
   private _onNavigateMonthDate = (date: Date, focusOnNavigatedDay: boolean): void => {
-    this._focusOnUpdate = focusOnNavigatedDay;
+    if (focusOnNavigatedDay) {
+      this.props.hoisted.focusOnNextUpdate();
+    }
 
     if (!focusOnNavigatedDay) {
       this.props.hoisted.navigateMonth(date);
@@ -384,13 +394,13 @@ class CalendarBaseClass extends React.Component<ICalendarBaseClassProps, {}> imp
   private _onHeaderSelect = (): void => {
     this.props.hoisted.toggleDayMonthPickerVisibility();
 
-    this._focusOnUpdate = true;
+    this.props.hoisted.focusOnNextUpdate();
   };
 
   private _onGotoToday = (): void => {
     const { today } = this.props;
     this.props.hoisted.navigateDay(today!);
-    this.focus();
+    this.props.hoisted.focusOnNextUpdate();
   };
 
   private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
