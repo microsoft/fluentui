@@ -42,7 +42,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
 
   /**
-   * Label to display next to the checkbox.
+   * Checkmark Icon to display when checkbox is checked.
    */
   checkmark?: SlotProp<ISvgIconProps>;
 
