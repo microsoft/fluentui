@@ -6,8 +6,8 @@ import { Calendar, ICalendarProps, DateRangeType, DayOfWeek, defaultDayPickerStr
 import * as styles from './Calendar.Example.scss';
 
 export interface ICalendarInlineExampleState {
-  selectedDate?: Date | null;
-  selectedDateRange?: Date[] | null;
+  selectedDate?: Date;
+  selectedDateRange?: Date[];
   daysToSelectInDayView?: number;
 }
 
@@ -21,8 +21,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     super(props);
 
     this.state = {
-      selectedDate: null,
-      selectedDateRange: null,
+      selectedDate: undefined,
+      selectedDateRange: undefined,
       daysToSelectInDayView: props.calendarDayProps ? props.calendarDayProps.daysToSelectInDayView : 1,
     };
 
@@ -77,7 +77,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           {...this.props}
           onSelectDate={this._onSelectDate}
           onDismiss={this._onDismiss}
-          value={this.state.selectedDate!}
+          value={this.state.selectedDate}
           firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}
           strings={defaultDayPickerStrings}
           calendarDayProps={{
