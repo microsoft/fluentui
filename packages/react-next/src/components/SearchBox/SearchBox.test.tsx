@@ -29,7 +29,7 @@ describe('SearchBox', () => {
 
   it('renders SearchBox correctly', () => {
     component = create(<SearchBox />);
-    const tree = component!.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -58,7 +58,7 @@ describe('SearchBox', () => {
 
   it('renders SearchBox without animation correctly', () => {
     component = create(<SearchBox disableAnimation={true} />);
-    const tree = component!.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -145,24 +145,9 @@ describe('SearchBox', () => {
     expect(wrapper.find('input').prop('value')).toBe('test');
   });
 
-  it('handles setting null value', () => {
-    // this is not allowed per typings, but users might do it anyway
-    // tslint:disable-next-line:no-any
-    wrapper = mount(<SearchBox value={null as any} />);
-    expect(wrapper.find('input').prop('value')).toBe('');
-  });
-
   it('handles updating value to empty string', () => {
     wrapper = mount(<SearchBox value="test" />);
     wrapper.setProps({ value: '' });
-    expect(wrapper.find('input').prop('value')).toBe('');
-  });
-
-  it('handles updating value to null', () => {
-    wrapper = mount(<SearchBox value="test" />);
-    // this is not allowed per typings, but users might do it anyway
-    // tslint:disable-next-line:no-any
-    wrapper.setProps({ value: null as any });
     expect(wrapper.find('input').prop('value')).toBe('');
   });
 

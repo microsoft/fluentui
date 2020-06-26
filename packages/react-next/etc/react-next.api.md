@@ -1119,7 +1119,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     className?: string;
     clearButtonProps?: IButtonProps;
     componentRef?: React.Ref<ISearchBox>;
-    // @deprecated
     defaultValue?: string;
     disableAnimation?: boolean;
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;

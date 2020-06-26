@@ -26,18 +26,12 @@ const useComponentRef = (
 };
 
 export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-  const [hasFocus, { toggle: toggleHasFocus }] = useBoolean(false);
-  // tslint:disable-next-line:prefer-const deprecation
-  let [value, setValue] = useControllableValue(props.value, props.defaultValue, props.onChange);
+  const [hasFocus, { setTrue: setHasFocusTrue, setFalse: setHasFocusFalse }] = useBoolean(false);
+  const [value = '', setValue] = useControllableValue(props.value, props.defaultValue, props.onChange);
   const rootElementRef = React.useRef<HTMLDivElement>(null);
   const inputElementRef = React.useRef<HTMLInputElement>(null);
   const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
   const fallbackId = useId(COMPONENT_NAME);
-
-  // Ensure value is always a string-friendly type.
-  if (value === null || value === undefined) {
-    value = '';
-  }
 
   const {
     ariaLabel,
@@ -95,7 +89,7 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
   };
 
   const onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
-    toggleHasFocus();
+    setHasFocusTrue();
     if (props.onFocus) {
       props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
@@ -109,7 +103,7 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
   };
 
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    toggleHasFocus();
+    setHasFocusFalse();
     if (props.onBlur) {
       props.onBlur(ev);
     }
@@ -148,7 +142,6 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
 
   warnDeprecations(COMPONENT_NAME, props, {
     labelText: 'placeholder',
-    defaultValue: 'value',
   });
 
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
