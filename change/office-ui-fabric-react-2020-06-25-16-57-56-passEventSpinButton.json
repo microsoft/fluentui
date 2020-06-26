@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "pass through event information if the user spins up or down",
+  "comment": "SpinButton: pass through event information if the user spins up or down",
   "packageName": "office-ui-fabric-react",
   "email": "makopch@microsoft.com",
   "dependentChangeType": "patch",
