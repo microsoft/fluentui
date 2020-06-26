@@ -1,5 +1,4 @@
 import { ReactWrapper } from 'enzyme';
-import { Ref, RefFindNode } from '@fluentui/react-component-ref';
 
 export const getDisplayName = (Component: React.ElementType) => {
   return (
@@ -9,28 +8,24 @@ export const getDisplayName = (Component: React.ElementType) => {
   );
 };
 
-export const toNextNonTrivialChild = (
-  from: ReactWrapper,
-  wrapperComponent: React.ElementType | undefined,
-): ReactWrapper => {
+export const toNextNonTrivialChild = (from: ReactWrapper, wrapperComponents: React.ElementType[]): ReactWrapper => {
   const current = from.childAt(0);
-  const helperComponentNames = [...[Ref, RefFindNode], ...(wrapperComponent ? [wrapperComponent] : [])].map(
-    getDisplayName,
-  );
 
   if (!current) {
     return current;
   }
 
+  const helperComponentNames = wrapperComponents.map(getDisplayName);
+
   return helperComponentNames.indexOf(current.name()) === -1
     ? current
-    : toNextNonTrivialChild(current, wrapperComponent);
+    : toNextNonTrivialChild(current, wrapperComponents);
 };
 
-export const getComponent = (wrapper: ReactWrapper, wrapperComponent: React.ElementType | undefined) => {
-  const componentElement = toNextNonTrivialChild(wrapper, wrapperComponent);
+export const getComponent = (wrapper: ReactWrapper, wrapperComponents: React.ElementType[]) => {
+  const componentElement = toNextNonTrivialChild(wrapper, wrapperComponents);
 
   // in that case 'topLevelChildElement' we've found so far is a wrapper's topmost child
   // thus, we should continue search
-  return wrapperComponent ? toNextNonTrivialChild(componentElement, wrapperComponent) : componentElement;
+  return wrapperComponents ? toNextNonTrivialChild(componentElement, wrapperComponents) : componentElement;
 };
