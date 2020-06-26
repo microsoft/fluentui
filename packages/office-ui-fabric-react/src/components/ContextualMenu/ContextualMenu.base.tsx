@@ -452,6 +452,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     if (options && options.containsFocus && this._previousActiveElement) {
       // Make sure that the focus method actually exists
       // In some cases the object might exist but not be a real element.
+      // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
       if (this._previousActiveElement.focus) {
         this._previousActiveElement && this._previousActiveElement.focus();
       }
