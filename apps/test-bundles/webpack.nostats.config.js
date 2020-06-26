@@ -1,9 +1,9 @@
 const { createWebpackConfig, buildEntries } = require('./webpackUtils');
 
 /**
- * Stats is generated and used in size auditor report for checking more details on what affected bundle size change.
- * Due to stats generation is slow and it slows down CI significantly, we recommend to configure experimental packages without stats generation.
- * If size is changed unexpectedly, devs can drill deep more locally.
+ * Stats are generated and used by the size auditor report to check more details on what caused the bundle size change.
+ * Due to stats generation being slow, and therefore slowing down CI significantly, we recommend to configure experimental packages without stats generation.
+ * If bundle size is changed unexpectedly, developers can drill down deeper on the problem by locally running bundle tests.
  */
 
 const entries = buildEntries('@fluentui/react-next');
