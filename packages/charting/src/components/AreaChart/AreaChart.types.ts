@@ -65,41 +65,11 @@ export interface IAreaChartProps {
   showYAxisGridLines?: boolean;
 
   /**
-   * This prop takes the boolean value and used for to display x-axis path or transparent.
-   * This is a optional prop and default value is false. It dont show X-Axis path as tranparent.
-   *@default false
-   */
-  showXAxisPath?: boolean;
-
-  /**
-   * This prop takes the boolean value and used for to display y-axis path or transparent.
-   * This is a optional prop and default value is false. It dont show X-Axis path as tranparent.
-   * @default false
-   */
-  showYAxisPath?: boolean;
-
-  /**
-   * This prop used for to check is given x axis date or numeric.
-   * @default false;
-   */
-  isXAxisDateType?: boolean;
-
-  /**
    * this prop takes values that you want the Area chart to render on x-axis
    * This is a optional parameter if not specified D3 will decide which values appear on the x-axis for you
    * Please look at https://github.com/d3/d3-scale for more information on how D3 decides what data to appear on the axis of chart
    */
   tickValues?: number[] | Date[];
-
-  /**
-   * minimum  data value point in y-axis
-   */
-  yMinValue?: number; // ?
-
-  /**
-   * maximum data value point in y-axis
-   */
-  yMaxValue?: number; // ?
 
   /**
    * the format in for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
@@ -173,16 +143,6 @@ export interface IAreaChartStyleProps {
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;
-
-  /**
-   * Prop to display or transparent of x-axis path
-   */
-  showXAxisPath?: boolean;
-
-  /**
-   * Prop to display or transparent of y-axis path
-   */
-  showYAxisPath?: boolean;
 }
 
 export interface IAreaChartStyles {
@@ -241,6 +201,9 @@ export interface IAreaChartStyles {
    */
   calloutContentY?: IStyle;
 
+  /**
+   * styles for circles of graph (dots)
+   */
   dot?: IStyle;
 
   /**

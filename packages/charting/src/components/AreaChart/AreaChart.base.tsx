@@ -3,22 +3,32 @@ import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { IAreaChartProps, IAreaChartStyleProps, IAreaChartStyles } from './AreaChart.types';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
-import { IAreaChartDataSetPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/index';
+import { ILineChartDataPoint, ILineChartPoints } from '../../types/index';
 
-import { createNumericXAxis, createDateXAxis, createYAxis } from '../../utilities/index';
+import { calloutData, createNumericXAxis, createDateXAxis } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
 export interface IRefArrayData {
   legendText?: string;
   refElement?: SVGGElement;
+}
+
+export interface IAreaChartAreaPoint {
+  xVal: string | number;
+  values: IAreaChartDataSetPoint;
+}
+
+export interface IAreaChartDataSetPoint {
+  [key: string]: number | string;
 }
 
 export interface IDPointType {
@@ -28,6 +38,8 @@ export interface IDPointType {
     xVal: number;
   };
 }
+
+type numericAxis = D3Axis<number | { valueOf(): number }>;
 
 export interface IAreaChartState {
   _width: number;
@@ -40,7 +52,6 @@ export interface IAreaChartState {
   isCalloutVisible: boolean;
   isLegendSelected: boolean;
   isLegendHovered: boolean;
-  titleForHoverCard: string;
   // tslint:disable-next-line:no-any
   refSelected: any;
   YValueHover: { legend?: string; y?: number; color?: string }[];
@@ -63,12 +74,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _refArray: IRefArrayData[];
   private _yAxisTickCount: number;
   private _isGraphDraw: boolean = true;
-  private _showXAxisPath: boolean;
-  private _showYAxisPath: boolean;
+  private _uniqueIdForGraph: string;
+  private _circleId: string;
+  private _verticalLineId: string;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
-  // tslint:disable-next-line:no-any
-  private _yAxisTickFormat: any;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
@@ -91,15 +101,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isLegendSelected: false,
       isLegendHovered: false,
       refSelected: null,
-      titleForHoverCard: '',
       YValueHover: [],
       xCalloutValue: '',
       yCalloutValue: '',
     };
     this._refArray = [];
-    this._calloutPoints = this.CalloutData(this.props.data.lineChartData!)
-      ? this.CalloutData(this.props.data.lineChartData!)
-      : [];
+    this._uniqueIdForGraph = getId('areaChart_');
+    this._verticalLineId = getId('verticalLine_');
+    this._circleId = getId('circle_');
+    this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
   }
 
   public componentDidMount(): void {
@@ -119,11 +129,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public componentWillUnmount(): void {
     cancelAnimationFrame(this._reqID);
-    d3Select('#firstGElementForChart').remove();
+    d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat, isXAxisDateType } = this.props;
+    const { theme, className, styles, tickValues, tickFormat } = this.props; // remove props isDate type from tyeps
 
     if (this.props.parentRef) {
       this._fitParentContainer();
@@ -131,18 +141,39 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     this._adjustProps();
     this.dataSet = this._createDataSet();
+
+    const xMax = d3Max(this._points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => item.x as number);
+    })!;
+
+    const xMin = d3Min(this._points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.x);
+    })!;
+
     const XAxisParams = {
       margins: this.margins,
       containerWidth: this.state.containerWidth,
       xAxisElement: this.xAxisElement!,
+      xMin,
+      xMax,
+      showRoundOffXTickValues: true,
     };
     const tickParams = {
       tickValues: tickValues,
       tickFormat: tickFormat,
     };
-    isXAxisDateType
-      ? createDateXAxis(this._points, XAxisParams, tickParams)
-      : createNumericXAxis(this._points, XAxisParams);
+
+    let isDateType = false;
+    if (this._points && this._points.length > 0) {
+      this._points.map((chartData: ILineChartPoints) => {
+        if (chartData.data.length > 0) {
+          isDateType = chartData.data[0].x instanceof Date;
+          return;
+        }
+      });
+    }
+
+    isDateType ? createDateXAxis(this._points, XAxisParams, tickParams) : createNumericXAxis(this._points, XAxisParams);
     this._keys = this._createKeys();
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette);
 
@@ -150,8 +181,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       theme: theme!,
       width: this.state._width,
       height: this.state._height,
-      showXAxisPath: this._showXAxisPath,
-      showYAxisPath: this._showYAxisPath,
       className,
     });
 
@@ -159,7 +188,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       width: this.state.containerWidth,
       height: this.state.containerHeight,
     };
-
     return (
       <div
         id="d3AreaChart"
@@ -184,7 +212,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               transform={`translate(40, 0)`}
               className={this._classNames.yAxis}
             />
-            <g id="graphGElement" />
+            <g id={`graphGElement_${this._uniqueIdForGraph}`} />
           </svg>
         </FocusZone>
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
@@ -234,66 +262,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     );
   }
 
-  private CalloutData = (values: ILineChartPoints[]) => {
-    let combinedResult: {
-      legend: string;
-      y: number;
-      x: number | Date | string;
-      color: string;
-      yAxisCalloutData?: string;
-    }[] = [];
-
-    values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
-      const elements = element.data.map((ele: ILineChartDataPoint) => {
-        return { legend: element.legend, ...ele, color: element.color };
-      });
-      combinedResult = combinedResult.concat(elements);
-    });
-
-    const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-    combinedResult.forEach(
-      (
-        e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
-        index: number,
-      ) => {
-        e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
-        const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
-        combinedResult
-          .slice(index + 1)
-          .forEach(
-            (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
-              e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
-              if (e1.x === e2.x) {
-                filteredValues.push({
-                  legend: e2.legend,
-                  y: e2.y,
-                  color: e2.color,
-                  yAxisCalloutData: e2.yAxisCalloutData,
-                });
-              }
-            },
-          );
-        result.push({ x: e1.x, values: filteredValues });
-      },
-    );
-    return this.getUnique(result, 'x');
-  };
-
-  private getUnique = (
-    arr: { x: number | Date | string; values: { legend: string; y: number }[] }[],
-    comp: string | number,
-  ) => {
-    const unique = arr
-      // tslint:disable-next-line:no-any
-      .map((e: { [x: string]: any }) => e[comp])
-      // store the keys of the unique objects
-      .map((e: string, i: number, final: string[]) => final.indexOf(e) === i && i)
-      // eliminate the dead keys & store unique objects
-      .filter((e: number) => arr[e])
-      .map((e: number) => arr[e]);
-    return unique;
-  };
-
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     const { hideLegend = false } = this.props;
@@ -325,9 +293,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _adjustProps(): void {
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._yAxisTickCount = this.props.yAxisTickCount || 4;
-    this._showXAxisPath = this.props.showXAxisPath || false;
-    this._showYAxisPath = this.props.showYAxisPath || false;
-    this._yAxisTickFormat = this.props.yAxisTickFormat;
   }
 
   private _createDataSet = () => {
@@ -340,9 +305,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     let tempArr = allChartPoints;
     while (tempArr.length) {
-      const valToCheck = tempArr[0].x;
+      const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
       const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
-        (point: ILineChartDataPoint) => point.x === valToCheck,
+        (point: ILineChartDataPoint) =>
+          (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) === valToCheck,
       );
 
       // tslint:disable-next-line:no-any
@@ -353,10 +319,47 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
       dataSet.push(singleDataset);
 
-      const val = tempArr[0].x; // removing compared objects from array
-      tempArr = tempArr.filter((point: ILineChartDataPoint) => point.x !== val);
+      // removing compared objects from array
+      const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
+      tempArr = tempArr.filter(
+        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) !== val,
+      );
     }
     return dataSet;
+  };
+
+  private _prepareDatapoints(maxVal: number, minVal: number): number[] {
+    const val = Math.ceil((maxVal - minVal) / this._yAxisTickCount);
+
+    const dataPointsArray: number[] = [minVal, minVal + val];
+    while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
+      dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
+    }
+    return dataPointsArray;
+  }
+
+  private createAreaChartYAxis = (maxOfYVal: number): numericAxis => {
+    const { showYAxisGridLines, yAxisTickCount, yAxisTickFormat } = this.props;
+    const domainValues = this._prepareDatapoints(maxOfYVal, 0);
+    const yAxisScale = d3ScaleLinear()
+      .domain([0, domainValues[domainValues.length - 1]])
+      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
+
+    const yAxis = d3AxisLeft(yAxisScale)
+      .tickPadding(10)
+      .tickValues(domainValues);
+
+    yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.ticks(yAxisTickCount ? yAxisTickCount : 4, 's');
+
+    showYAxisGridLines && yAxis.tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
+
+    if (this.yAxisElement) {
+      d3Select(this.yAxisElement)
+        .call(yAxis)
+        .selectAll('text');
+    }
+
+    return yAxis;
   };
 
   private _getColors = (): string[] => {
@@ -375,29 +378,29 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _onLegendClick(customMessage: string): void {
     if (this.state.isLegendSelected) {
-      if (this.state.titleForHoverCard === customMessage) {
+      if (this.state.activeLegend === customMessage) {
         this.setState({
           isLegendSelected: false,
-          titleForHoverCard: customMessage,
+          activeLegend: '',
         });
       } else {
         this.setState({
-          titleForHoverCard: customMessage,
+          activeLegend: customMessage,
         });
       }
     } else {
       this.setState({
-        isLegendSelected: true,
-        titleForHoverCard: customMessage,
+        activeLegend: customMessage,
       });
     }
+    this._isGraphDraw = true;
   }
 
   private _onLegendHover(customMessage: string): void {
     if (this.state.isLegendSelected === false) {
       this.setState({
+        activeLegend: customMessage,
         isLegendHovered: true,
-        titleForHoverCard: customMessage,
       });
       this._isGraphDraw = true;
     }
@@ -406,8 +409,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _onLegendLeave(isLegendFocused?: boolean): void {
     if (!!isLegendFocused || this.state.isLegendSelected === false) {
       this.setState({
+        activeLegend: '',
         isLegendHovered: false,
-        titleForHoverCard: '',
         isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
       });
       this._isGraphDraw = true;
@@ -420,7 +423,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const actions: ILegend[] = [];
 
     data.map((singleChartData: ILineChartPoints) => {
-      // singleChartData.series.map((point: IGVBarChartSeriesPoint) => {
       const color: string = singleChartData.color
         ? singleChartData.color
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
@@ -446,7 +448,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       };
 
       actions.push(legend);
-      // });
     });
     return (
       <Legends
@@ -458,68 +459,72 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     );
   };
 
-  private updateLineAndCircles = (xLineVal: number, visibilityStatus: string) => {
-    d3Select('#verticalLine').attr('x1', xLineVal);
-    d3Select('#verticalLine').attr('x2', xLineVal);
-    d3Select('#verticalLine').attr('visibility', visibilityStatus);
+  private updateVerticalLine = (xLineVal: number, visibilityStatus: string) => {
+    d3Select(`#${this._verticalLineId}`).attr('x1', xLineVal);
+    d3Select(`#${this._verticalLineId}`).attr('x2', xLineVal);
+    d3Select(`#${this._verticalLineId}`).attr('visibility', visibilityStatus);
   };
 
-  private onMouseHover = (target: SVGCircleElement, x: number | Date) => {
-    const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedDate);
-    const presetnData = found.values[0];
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.titleForHoverCard === presetnData.legend)
-    ) {
-      this.setState({
-        refSelected: target,
-        isCalloutVisible: true,
-        titleForHoverCard: presetnData.legend,
-        dataForHoverCard: presetnData.y,
-        hoverXValue: x instanceof Date ? x.toLocaleDateString() : x,
-        YValueHover: found.values,
-        color: presetnData.color,
-      });
-    }
-  };
-
-  private handleMouseAction = (xLineVal: number, x: number | Date, refArrayIndexNumber: number) => {
-    d3Select(`#dot${refArrayIndexNumber}`)
-      .attr('fill', '#fff')
-      .attr('r', 8);
-    this.updateLineAndCircles(xLineVal, 'visibility');
-    this.onMouseHover(d3Event.target, x);
-  };
-
-  private mouseOutAction = (refArrayIndexNumber: number, color: string) => {
-    this.updateLineAndCircles(0, 'hidden');
-    d3Select(`#dot${refArrayIndexNumber}`)
-      .attr('fill', color)
-      .attr('r', 0.01);
-
-    this.setState({
-      isCalloutVisible: false,
-    });
-  };
-
-  private onChartFocus = (target: SVGCircleElement, refArrayIndexNumber: number, x: number | Date) => {
+  private onMouseHover = (target: SVGCircleElement, x: number | Date, xAxisCalloutData: string) => {
     const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
     const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedDate);
     const presentData = found.values[0];
     if (
       this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.titleForHoverCard === presentData.legend)
+      (this.state.isLegendSelected && this.state.activeLegend === presentData.legend)
     ) {
-      this._refArray.map((obj: IRefArrayData, index: number) => {
-        if (obj.legendText === presentData.legend && refArrayIndexNumber === index) {
+      this.setState({
+        refSelected: target,
+        isCalloutVisible: true,
+        activeLegend: presentData.legend,
+        dataForHoverCard: presentData.y,
+        hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+        YValueHover: found.values,
+        color: presentData.color,
+      });
+    }
+  };
+
+  private handleMouseAction = (xLineVal: number, x: number | Date, refArrayIndex: string, xAxisCalloutData: string) => {
+    d3Select(`#dot${refArrayIndex}`)
+      .attr('fill', '#fff')
+      .attr('r', 8);
+    this.updateVerticalLine(xLineVal, 'visibility');
+    this.onMouseHover(d3Event.target, x, xAxisCalloutData);
+  };
+
+  private mouseOutAction = (refArrayIndex: string, color: string) => {
+    this.updateVerticalLine(0, 'hidden');
+    d3Select(`#dot${refArrayIndex}`)
+      .attr('fill', color)
+      .attr('r', 0.01);
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
+
+  private onChartFocus = (
+    target: SVGCircleElement,
+    refArrayIndex: string,
+    x: number | Date,
+    xAxisCalloutData: string,
+  ) => {
+    const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
+    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedDate);
+    const presentData = found.values[0];
+    if (
+      this.state.isLegendSelected === false ||
+      (this.state.isLegendSelected && this.state.activeLegend === presentData.legend)
+    ) {
+      this._refArray.map((obj: IRefArrayData) => {
+        if (obj.legendText === refArrayIndex) {
           this.setState({
             refSelected: obj.refElement,
             isCalloutVisible: true,
-            titleForHoverCard: presentData.legend,
+            activeLegend: presentData.legend,
             dataForHoverCard: presentData.y,
             color: presentData.color,
-            hoverXValue: x instanceof Date ? x.toLocaleDateString() : x, // change examples date type
+            hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
             YValueHover: found.values,
           });
         }
@@ -531,18 +536,19 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     xLineVal: number,
     x: number | Date,
     legendTitle: string,
-    refArrayIndexNumber: number,
+    refArrayIndex: string,
+    xAxisCalloutData: string,
   ) => {
-    this._refArray[refArrayIndexNumber] = { legendText: legendTitle, refElement: d3Event.target };
-    d3Select(`#dot${refArrayIndexNumber}`)
+    this._refArray.push({ legendText: refArrayIndex, refElement: d3Event.target });
+    d3Select(`#dot${refArrayIndex}`)
       .attr('fill', '#fff')
       .attr('r', 8);
-    this.updateLineAndCircles(xLineVal, 'visibility');
-    this.onChartFocus(d3Event.target, refArrayIndexNumber, x);
+    this.updateVerticalLine(xLineVal, 'visibility');
+    this.onChartFocus(d3Event.target, refArrayIndex, x, xAxisCalloutData);
   };
 
-  private onDataPointClick = (func: () => void, refArrayIndexNumber: number, color: string) => {
-    d3Select(`#dot${refArrayIndexNumber}`)
+  private onDataPointClick = (func: () => void, refArrayIndex: string, color: string) => {
+    d3Select(`#dot${refArrayIndex}`)
       .attr('fill', color)
       .attr('r', 8);
     if (!!func) {
@@ -550,12 +556,29 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   };
 
+  private _getOpacity = (selectedArea: string) => {
+    let shouldHighlight = true;
+    if (this.state.isLegendHovered || this.state.isLegendSelected) {
+      shouldHighlight = this.state.activeLegend === selectedArea;
+    }
+    return shouldHighlight ? '1' : '0.1';
+  };
+
+  private _getOpacityOfCircle = (selectedArea: string) => {
+    let shouldHighlight = true;
+    if (this.state.isLegendHovered || this.state.isLegendSelected) {
+      shouldHighlight = this.state.activeLegend === selectedArea;
+    }
+    this._isGraphDraw = true;
+    return shouldHighlight ? 'visibility' : 'hidden';
+  };
+
   private _drawGraph = (): void => {
-    d3Select('#firstGElementForChart').remove();
+    d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
     const that = this;
-    const chartContainer = d3Select('#graphGElement')
+    const chartContainer = d3Select(`#graphGElement_${this._uniqueIdForGraph}`)
       .append('g')
-      .attr('id', 'firstGElementForChart');
+      .attr('id', `firstGElementForChart123_${this._uniqueIdForGraph}`);
 
     this._colors = this._getColors();
     const stackedValues = d3Stack().keys(this._keys)(this.dataSet);
@@ -584,23 +607,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const xMin = d3Min(this._points, (point: ILineChartPoints) => {
       return d3Min(point.data, (item: ILineChartDataPoint) => item.x);
     })!;
-    const { yMaxValue = 0, yMinValue = 0 } = this.props;
-    const yAxisParams = {
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight,
-      yAxisTickFormat: this._yAxisTickFormat,
-      yMaxValue: yMaxValue,
-      yMinValue: yMinValue,
-      yAxisElement: this.yAxisElement,
-      yAxisTickCount: this._yAxisTickCount,
-    };
 
-    createYAxis(this._points, yAxisParams);
+    this.createAreaChartYAxis(maxOfYVal);
 
     const xScale = d3ScaleLinear()
       .range([this.margins.left, this.state.containerWidth - this.margins.right])
       .domain([xMin, xMax]);
+
+    this._points[0].data[0].x instanceof Date ? xScale : xScale.nice();
 
     const yScale = d3ScaleLinear()
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top])
@@ -624,7 +638,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .append('path')
       .style('fill', (d: string, i: number) => this._colors[i])
       .attr('stroke-width', 3)
-      .attr('d', area);
+      .attr('d', area)
+      .attr('fill-opacity', (d: IDPointType, index: number) => {
+        return that._getOpacity(this._points[index].legend);
+      });
 
     const points = chartContainer
       .selectAll('.dots')
@@ -648,7 +665,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .enter()
       .append('circle')
       .attr('class', 'dot')
-      .attr('id', (d: IDPointType, index: number) => `dot${d.index * stackedData[0].length + index}`)
+      .attr('id', (d: IDPointType, index: number) => `dot${d.index * stackedData[0].length + index}_${this._circleId}`)
       .attr('focusable', true)
       .attr('data-is-focusable', true)
       .attr('cx', (d: IDPointType) => xScale(d.point.xVal))
@@ -656,37 +673,52 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .attr('r', 0.01)
       .attr('stroke', (d: IDPointType, index: number) => this._points[d.index].color)
       .attr('stroke-width', 3)
+      .attr('visibility', (d: IDPointType, index: number) => {
+        return that._getOpacityOfCircle(this._points[d.index].legend);
+      })
       .attr('fill', (d: IDPointType, index: number) => this._points[d.index].color)
       .on('mouseover', (d: IDPointType, index: number) => {
-        return that.handleMouseAction(xScale(d.point.xVal), d.point.xVal, d.index * stackedData[0].length + index);
+        return that.handleMouseAction(
+          xScale(d.point.xVal),
+          d.point.xVal,
+          `${d.index * stackedData[0].length + index}_${this._circleId}`,
+          this._points[d.index].data[index].xAxisCalloutData!,
+        );
       })
       .on('mouseout', (d: IDPointType, index: number) =>
-        that.mouseOutAction(d.index * stackedData[0].length + index, this._points[d.index].color),
+        that.mouseOutAction(
+          `${d.index * stackedData[0].length + index}_${this._circleId}`,
+          this._points[d.index].color,
+        ),
       )
       .on('focus', (d: IDPointType, index: number) => {
-        const refArrayIndexNumber = d.index * stackedData[0].length + index;
+        const refArrayIndex = `${d.index * stackedData[0].length + index}_${this._circleId}`;
         return that.handleFocusAction(
           xScale(d.point.xVal),
           d.point.xVal,
           this._points[d.index].legend,
-          refArrayIndexNumber,
-          // xAxisCalloutData: 65 // add these
+          refArrayIndex,
+          this._points[d.index].data[index].xAxisCalloutData!,
         );
       })
       .on('blur', (d: IDPointType, index: number) =>
-        that.mouseOutAction(d.index * stackedData[0].length + index, this._points[d.index].color),
+        that.mouseOutAction(
+          `${d.index * stackedData[0].length + index}_${this._circleId}`,
+          this._points[d.index].color,
+        ),
       )
       .on('click', (d: IDPointType, index: number) =>
         that.onDataPointClick(
           this._points[d.index].data[index].onDataPointClick!,
-          d.index * stackedData[0].length + index,
+          `${d.index * stackedData[0].length + index}_${this._circleId}`,
           this._points[d.index].color,
         ),
       );
 
     chartContainer
       .append('line')
-      .attr('id', 'verticalLine')
+      .attr('class', 'verticalLine')
+      .attr('id', this._verticalLineId)
       .attr('x1', 0)
       .attr('x2', 0)
       .attr('y1', 0)
@@ -697,3 +729,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .attr('stroke-dasharray', '5,5');
   };
 }
+
+// date axis
+// check all the code
+// testing again
+// examples and types and styles
+// fitcontainer
+// update PR
+// raise UX PR
+// update resolved bugs
+// cross check another bug
+// prop valeu to x and y read issue

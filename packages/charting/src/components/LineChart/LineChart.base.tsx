@@ -3,17 +3,11 @@ import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { classNamesFunction, getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import {
-  ILineChartProps,
-  ILineChartStyleProps,
-  ILineChartStyles,
-  ILineChartDataPoint,
-  ILineChartPoints,
-} from './LineChart.types';
+import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, ILineChartPoints } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { createNumericXAxis, createDateXAxis, createYAxis } from '../../utilities/index';
+import { calloutData, createNumericXAxis, createDateXAxis, createYAxis } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
@@ -80,7 +74,7 @@ export class LineChartBase extends React.Component<
       selectedLegend: '',
     };
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
-    this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
+    this._calloutPoints = calloutData(this._points) ? calloutData(this._points) : [];
     this._calloutId = getId('callout');
     this._uniqLineText =
       '_line_' +
@@ -272,67 +266,6 @@ export class LineChartBase extends React.Component<
       </div>
     );
   }
-
-  private CalloutData = (values: ILineChartPoints[]) => {
-    let combinedResult: {
-      legend: string;
-      y: number;
-      x: number | Date | string;
-      color: string;
-      yAxisCalloutData?: string;
-    }[] = [];
-
-    values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
-      const elements = element.data.map((ele: ILineChartDataPoint) => {
-        return { legend: element.legend, ...ele, color: element.color };
-      });
-      combinedResult = combinedResult.concat(elements);
-    });
-
-    const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-    combinedResult.forEach(
-      (
-        e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
-        index: number,
-      ) => {
-        e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
-        const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
-        combinedResult
-          .slice(index + 1)
-          .forEach(
-            (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
-              e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
-              if (e1.x === e2.x) {
-                filteredValues.push({
-                  legend: e2.legend,
-                  y: e2.y,
-                  color: e2.color,
-                  yAxisCalloutData: e2.yAxisCalloutData,
-                });
-              }
-            },
-          );
-        result.push({ x: e1.x, values: filteredValues });
-      },
-    );
-    return this.getUnique(result, 'x');
-  };
-
-  private getUnique = (
-    arr: { x: number | Date | string; values: { legend: string; y: number }[] }[],
-    comp: string | number,
-  ) => {
-    const unique = arr
-      // tslint:disable-next-line:no-any
-      .map((e: { [x: string]: any }) => e[comp])
-      // store the keys of the unique objects
-      .map((e: string, i: number, final: string[]) => final.indexOf(e) === i && i)
-      // eliminate the dead keys & store unique objects
-      .filter((e: number) => arr[e])
-      .map((e: number) => arr[e]);
-
-    return unique;
-  };
 
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;

@@ -1,7 +1,7 @@
 import { IAreaChartStyleProps, IAreaChartStyles } from './AreaChart.types';
 
 export const getStyles = (props: IAreaChartStyleProps): IAreaChartStyles => {
-  const { className, theme, showXAxisPath, showYAxisPath } = props;
+  const { className, theme } = props;
   const { fonts } = theme!;
   return {
     root: [
@@ -25,7 +25,7 @@ export const getStyles = (props: IAreaChartStyleProps): IAreaChartStyles => {
           width: '1px',
         },
         path: {
-          display: showXAxisPath ? 'block' : 'none',
+          display: 'none',
         },
       },
     },
@@ -35,7 +35,7 @@ export const getStyles = (props: IAreaChartStyleProps): IAreaChartStyles => {
           ...fonts.small,
         },
         path: {
-          display: showYAxisPath ? 'block' : 'none',
+          display: 'none',
         },
         line: {
           opacity: 0.2,

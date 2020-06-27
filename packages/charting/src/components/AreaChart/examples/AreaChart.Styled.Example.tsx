@@ -12,46 +12,46 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
   public render(): React.ReactNode {
     const chart1Points = [
       {
-        x: 1590507549847,
+        x: new Date('2018/01/06'),
         y: 5,
       },
       {
-        x: 1591101349817,
+        x: new Date('2018/01/08'),
         y: 16,
       },
       {
-        x: 1591207249647,
+        x: new Date('2018/01/16'),
         y: 6,
       },
       {
-        x: 1591307141817,
+        x: new Date('2018/02/06'),
         y: 30,
       },
       {
-        x: 1591407549847,
+        x: new Date('2018/02/16'),
         y: 10,
       },
     ];
 
     const chart2Points = [
       {
-        x: 1590507549847,
+        x: new Date('2018/01/06'),
         y: 10,
       },
       {
-        x: 1591101349817,
+        x: new Date('2018/01/08'),
         y: 33,
       },
       {
-        x: 1591207249647,
+        x: new Date('2018/01/16'),
         y: 21,
       },
       {
-        x: 1591307141817,
+        x: new Date('2018/02/06'),
         y: 44,
       },
       {
-        x: 1591407549847,
+        x: new Date('2018/02/16'),
         y: 22,
       },
     ];
@@ -78,7 +78,7 @@ export class AreaChartStyledExample extends React.Component<Readonly<{}>, {}> {
 
     return (
       <div className={mergeStyles(rootStyle)}>
-        <AreaChart isXAxisDateType height={400} width={650} showYAxisGridLines={true} data={chartData} />
+        <AreaChart height={400} width={650} showYAxisGridLines={true} data={chartData} />
       </div>
     );
   }

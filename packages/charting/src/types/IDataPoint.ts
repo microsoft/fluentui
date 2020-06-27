@@ -294,12 +294,3 @@ export interface IGVForBarChart {
    */
   [key: string]: IGVBarChartSeriesPoint;
 }
-
-export interface IAreaChartAreaPoint {
-  xVal: string | number;
-  values: IAreaChartDataSetPoint;
-}
-
-export interface IAreaChartDataSetPoint {
-  [key: string]: number | string;
-}
