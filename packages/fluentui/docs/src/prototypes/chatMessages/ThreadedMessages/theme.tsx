@@ -4,7 +4,7 @@ import {
   inputSlotClassNames,
   svgIconClassName,
   buttonClassName,
-  pxToRem,  
+  pxToRem,
 } from '@fluentui/react-northstar';
 import classNames from './classNames';
 
