@@ -28,7 +28,7 @@ const FormValidateHooks = () => {
         id="first-name-hooks"
         required
         name="firstName"
-        inputRef={register({
+        ref={register({
           required: { value: true, message: 'first name is required' },
           validate: val => (val.length <= 4 ? 'Too Short' : null),
         })}

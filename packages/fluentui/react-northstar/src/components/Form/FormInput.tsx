@@ -16,7 +16,7 @@ export const formInputClassName = 'ui-form__input';
 /**
  * An FormInput renders a Input wrapped by FormField.
  */
-const FormInput = compose<'div', FormInputProps, FormInputStylesProps, SelectedFormFieldCustomProps, {}>(
+const FormInput = compose<'input', FormInputProps, FormInputStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
     className: formInputClassName,
