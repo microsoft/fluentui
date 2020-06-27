@@ -17,7 +17,7 @@ import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpi
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue } from '@uifabric/react-hooks';
-//
+
 export interface ISpinButtonState {
   inputId: string;
   labelId: string;
@@ -388,7 +388,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
                   ? Number(value)
                   : undefined
               }
-              aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
+              aria-valuetext={ariaValueText ? ariaValueText : !value || isNaN(Number(value)) ? value : undefined}
               aria-valuemin={min}
               aria-valuemax={max}
               aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}

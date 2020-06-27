@@ -90,7 +90,7 @@ describe('SpinButton', () => {
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
     expect(inputDOM.value).toBe('');
     expect(inputDOM.getAttribute('aria-valuenow')).toBe(null);
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
+    expect(inputDOM.getAttribute('aria-valuetext')).toBe('');
   });
 
   // This is probably a behavior we should get rid of in the future (replace with custom rendering
@@ -163,7 +163,7 @@ describe('SpinButton', () => {
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
     expect(inputDOM.value).toBe('');
     expect(inputDOM.getAttribute('aria-valuenow')).toBe(null);
-    expect(inputDOM.getAttribute('aria-valuetext')).toBe(null);
+    expect(inputDOM.getAttribute('aria-valuetext')).toBe('');
   });
 
   it('uses min as default if neither value nor defaultValue is provided', () => {
