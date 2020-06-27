@@ -4,8 +4,8 @@
     "packages/react-button",
     "packages/fluentui/react-northstar",
     "packages/office-ui-fabric-react",
-    "@fluentui/react-next",
-    "@fluentui/react-icons"
+    "packages/react-next",
+    "packages/react-icons"
   ],
   "sandboxes": ["u0e3w", "/apps/codesandbox-react-template"]
 }
