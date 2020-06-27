@@ -74,9 +74,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
   const returnMostRecentlyUsedWithLimit = (
     currentPersonas: IPersonaProps[],
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
-    setMostRecentlyUsed(removeDuplicates(mostRecentlyUsed, currentPersonas));
-    setMostRecentlyUsed(mostRecentlyUsed.slice(0, 3));
-    return filterPromise(mostRecentlyUsed);
+    return filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas).slice(0, 3));
   };
 
   const onRemoveSuggestion = (item: IPersonaProps): void => {

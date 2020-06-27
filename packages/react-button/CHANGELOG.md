@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 25 Jun 2020 12:50:17 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jun 2020 12:36:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.1)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.5.0..@fluentui/react-button_v0.5.1)
+
+### Patches
+
+- Button: Adding stories of a Button themed like Fluent using tokens. ([PR #13769](https://github.com/microsoft/fluentui/pull/13769) by humbertomakotomorimoto@gmail.com)
+- Button: Using correct focus borders from utilities. ([PR #13790](https://github.com/microsoft/fluentui/pull/13790) by humbertomakotomorimoto@gmail.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.0)
 
