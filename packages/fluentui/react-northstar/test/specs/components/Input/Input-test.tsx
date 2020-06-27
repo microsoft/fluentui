@@ -51,7 +51,6 @@ describe('Input', () => {
         consoleUtil.disableOnce();
 
         const wrapper = mount(<Input {...{ [attr]: testValue }} />).find('input');
-
         expect(wrapper.prop(attr)).toBe(testValue);
       });
     });
