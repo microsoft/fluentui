@@ -1,10 +1,10 @@
 import {
   ThemeInput,
   chatItemSlotClassNames,
+  inputSlotClassNames,
   svgIconClassName,
   buttonClassName,
-  pxToRem,
-  inputSlotClassNames,
+  pxToRem,  
 } from '@fluentui/react-northstar';
 import classNames from './classNames';
 
