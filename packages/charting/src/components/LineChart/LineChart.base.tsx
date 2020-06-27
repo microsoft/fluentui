@@ -51,8 +51,9 @@ export class LineChartBase extends React.Component<
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private _calloutId: string;
+  private _verticalLine: string;
   // These margins are necessary for d3Scales to appear without cutting off
-  private margins = { top: 20, right: 20, bottom: 35, left: 65 };
+  private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   private minLegendContainerHeight: number = 32;
   private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
@@ -76,6 +77,7 @@ export class LineChartBase extends React.Component<
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._calloutPoints = calloutData(this._points) ? calloutData(this._points) : [];
     this._calloutId = getId('callout');
+    this._verticalLine = getId('verticalLine');
     this._uniqLineText =
       '_line_' +
       Math.random()
@@ -192,7 +194,7 @@ export class LineChartBase extends React.Component<
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
               }}
-              transform={`translate(65, 0)`}
+              transform={`translate(${this.margins.left}, 0)`}
               className={this._classNames.yAxis}
             />
             <g>
@@ -202,7 +204,7 @@ export class LineChartBase extends React.Component<
                 x2={0}
                 y2={svgDimensions.height}
                 stroke={'steelblue'}
-                className={'verticalLine'}
+                id={this._verticalLine}
                 visibility={'hidden'}
                 strokeDasharray={'5,5'}
               />
@@ -221,48 +223,47 @@ export class LineChartBase extends React.Component<
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {!hideLegend && legendBars}
         </div>
-        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
-          <Callout
-            target={this.state.refSelected}
-            isBeakVisible={false}
-            gapSpace={15}
-            directionalHint={DirectionalHint.topAutoEdge}
-            id={this._calloutId}
-          >
-            <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutDateTimeContainer}>
-                <div className={this._classNames.calloutContentX}>{this.state.hoverXValue} </div>
-                {/*TO DO  if we add time for callout then will use this */}
-                {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
-              </div>
-              <div className={this._classNames.calloutInfoContainer}>
-                {this.state.YValueHover &&
-                  this.state.YValueHover.map(
-                    (
-                      xValue: {
-                        legend?: string;
-                        y?: number;
-                        color?: string;
-                        yAxisCalloutData?: string;
-                      },
-                      index: number,
-                    ) => (
-                      <div
-                        className={mergeStyles(this._classNames.calloutBlockContainer, {
-                          borderLeft: `4px solid ${xValue.color}`,
-                        })}
-                      >
-                        <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
-                        <div className={this._classNames.calloutContentY}>
-                          {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
-                        </div>
-                      </div>
-                    ),
-                  )}
-              </div>
+        <Callout
+          target={this.state.refSelected}
+          isBeakVisible={false}
+          gapSpace={15}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.topAutoEdge}
+          id={this._calloutId}
+        >
+          <div className={this._classNames.calloutContentRoot}>
+            <div className={this._classNames.calloutDateTimeContainer}>
+              <div className={this._classNames.calloutContentX}>{this.state.hoverXValue} </div>
+              {/*TO DO  if we add time for callout then will use this */}
+              {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
             </div>
-          </Callout>
-        ) : null}
+            <div className={this._classNames.calloutInfoContainer}>
+              {this.state.YValueHover &&
+                this.state.YValueHover.map(
+                  (
+                    xValue: {
+                      legend?: string;
+                      y?: number;
+                      color?: string;
+                      yAxisCalloutData?: string;
+                    },
+                    index: number,
+                  ) => (
+                    <div
+                      className={mergeStyles(this._classNames.calloutBlockContainer, {
+                        borderLeft: `4px solid ${xValue.color}`,
+                      })}
+                    >
+                      <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
+                      <div className={this._classNames.calloutContentY}>
+                        {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+                      </div>
+                    </div>
+                  ),
+                )}
+            </div>
+          </div>
+        </Callout>
       </div>
     );
   }
@@ -496,7 +497,7 @@ export class LineChartBase extends React.Component<
     d3Select('#' + circleId)
       .attr('fill', '#fff')
       .attr('r', 8);
-    d3Select('.verticalLine')
+    d3Select(`#${this._verticalLine}`)
       .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
       .attr('visibility', 'visibility');
     this.state.refArray.map((obj: IRefArrayData) => {
@@ -527,7 +528,7 @@ export class LineChartBase extends React.Component<
     d3Select('#' + keyVal)
       .attr('fill', '#fff')
       .attr('r', 8);
-    d3Select('.verticalLine')
+    d3Select(`#${this._verticalLine}`)
       .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
       .attr('visibility', 'visibility');
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === formattedData);
@@ -560,7 +561,7 @@ export class LineChartBase extends React.Component<
     d3Select('#' + keyVal)
       .attr('fill', lineColor)
       .attr('r', 0.2);
-    d3Select('.verticalLine').attr('visibility', 'hidden');
+    d3Select(`#${this._verticalLine}`).attr('visibility', 'hidden');
     this.setState({
       isCalloutVisible: false,
     });

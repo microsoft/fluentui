@@ -42,6 +42,8 @@ export interface Conformant {
   autoControlledProps?: string[];
   /** Child component that will receive unhandledProps. */
   passesUnhandledPropsTo?: ComponentType<any>;
+  /** Child component that will receive ref. */
+  forwardsRefTo?: string;
 }
 
 /**
@@ -67,6 +69,7 @@ export default function isConformant(
     handlesAsProp = true,
     autoControlledProps = [],
     passesUnhandledPropsTo,
+    forwardsRefTo,
   } = options;
   const { throwError } = helpers('isConformant', Component);
 
@@ -697,7 +700,9 @@ export default function isConformant(
         const ComposedComponent = compose(Component as ComposedComponent);
         const rootRef = jest.fn();
 
-        const wrapper = mount(<ComposedComponent {...requiredProps} ref={rootRef} />);
+        const wrapper = forwardsRefTo
+          ? mount(<ComposedComponent {...requiredProps} ref={rootRef} />).find(forwardsRefTo)
+          : mount(<ComposedComponent {...requiredProps} ref={rootRef} />);
         const element = getComponent(wrapper);
 
         expect(typeof element.type()).toBe('string');
