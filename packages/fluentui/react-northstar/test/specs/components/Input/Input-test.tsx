@@ -6,11 +6,9 @@ import * as React from 'react';
 
 import { htmlInputAttrs } from 'src/utils';
 import Box from 'src/components/Box/Box';
-import Input from 'src/components/Input/Input';
-import InputControl from 'src/components/Input/InputControl';
+import Input, { inputSlotClassNames } from 'src/components/Input/Input';
 import { consoleUtil, mountWithProvider as mount } from 'test/utils';
 import { isConformant, implementsShorthandProp, implementsWrapperProp } from 'test/specs/commonTests';
-import { inputIconClassName } from 'src/components/Input/InputIcon';
 
 const testValue = 'test value';
 
@@ -31,9 +29,9 @@ describe('Input', () => {
       onKeyUp: 'input',
     },
     autoControlledProps: ['value'],
-    forwardsRefTo: InputControl,
+    forwardsRefTo: `Box[className~="${inputSlotClassNames.input}"]`,
   });
-  implementsShorthandProp(Input)('input', InputControl, { mapsValueToProp: 'type' });
+  implementsShorthandProp(Input)('input', Box, { mapsValueToProp: 'type' });
 
   describe('wrapper', () => {
     implementsShorthandProp(Input)('wrapper', Box, { mapsValueToProp: 'children' });
@@ -64,7 +62,7 @@ describe('Input', () => {
       const onChange = jest.fn();
       const wrapper = mount(<Input clearable defaultValue={faker.lorem.word()} onChange={onChange} />);
       wrapper
-        .find(`.${inputIconClassName}`)
+        .find(`.${inputSlotClassNames.icon}`)
         .first()
         .simulate('click');
       expect(onChange).toBeCalledTimes(1);
@@ -119,12 +117,12 @@ describe('Input', () => {
       const inputComp = mount(<Input clearable />);
       const domNode = getInputDomNode(inputComp);
       setUserInputValue(inputComp, testValue); // user types into the input
-      const iconComp = inputComp.find(`.${inputIconClassName}`);
+      const iconComp = inputComp.find(`Box[className~="${inputSlotClassNames.icon}"]`);
       expect(domNode.value).toEqual(testValue); // input value is the one typed by the user
       expect(iconComp.length).toBeGreaterThan(0); // the 'x' icon appears
       iconComp.simulate('click'); // user clicks on 'x' icon
       expect(domNode.value).toEqual(''); // input value gets cleared
-      expect(inputComp.find(`.${inputIconClassName}`).length).toEqual(0); // the 'x' icon disappears
+      expect(inputComp.find(`Box[className~="${inputSlotClassNames.icon}"]`).length).toEqual(0); // the 'x' icon disappears
     });
   });
 

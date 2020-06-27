@@ -43,7 +43,7 @@ export interface Conformant {
   /** Child component that will receive unhandledProps. */
   passesUnhandledPropsTo?: ComponentType<any>;
   /** Child component that will receive ref. */
-  forwardsRefTo?: ComponentType<any>;
+  forwardsRefTo?: string;
 }
 
 /**

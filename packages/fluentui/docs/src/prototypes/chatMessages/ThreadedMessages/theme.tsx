@@ -4,7 +4,7 @@ import {
   svgIconClassName,
   buttonClassName,
   pxToRem,
-  inputControlClassName,
+  inputSlotClassNames,
 } from '@fluentui/react-northstar';
 import classNames from './classNames';
 
@@ -95,7 +95,7 @@ const customizedTheme: ThemeInput = {
     },
     Input: {
       root: ({ props: p, theme: { siteVariables } }) => ({
-        [`& .${inputControlClassName}`]: {
+        [`& .${inputSlotClassNames.input}`]: {
           height: pxToRem(50),
           backgroundColor: siteVariables.colorScheme.default.background,
         },

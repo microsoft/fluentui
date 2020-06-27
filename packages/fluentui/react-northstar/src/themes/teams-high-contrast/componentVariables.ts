@@ -7,7 +7,6 @@ export { default as Dialog } from './components/Dialog/dialogVariables';
 export { default as Divider } from './components/Divider/dividerVariables';
 export { default as Header } from './components/Header/headerVariables';
 export { default as Input } from './components/Input/inputVariables';
-export { default as InputControl } from './components/Input/inputControlVariables';
 export { default as Menu } from './components/Menu/menuVariables';
 export { default as MenuDivider } from './components/Menu/menuDividerVariables';
 export { default as MenuItem } from './components/Menu/menuItemVariables';

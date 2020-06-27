@@ -29,8 +29,6 @@ import {
   ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
-import InputControl from './InputControl';
-import InputIcon from './InputIcon';
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
   /**
@@ -101,6 +99,11 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   showSuccessIndicator?: boolean;
 }
 
+export interface InputSlotClassNames {
+  input: string;
+  icon: string;
+}
+
 export const inputClassName = 'ui-input';
 
 export type InputStylesProps = Required<
@@ -110,6 +113,11 @@ export type InputStylesProps = Required<
     requiredAndSuccessful: boolean;
   }
 >;
+
+export const inputSlotClassNames: InputSlotClassNames = {
+  input: `${inputClassName}__input`,
+  icon: `${inputClassName}__icon`,
+};
 
 const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
@@ -266,13 +274,9 @@ const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
                       type,
                       required,
                       value: value || '',
-                      inverted,
-                      fluid,
-                      inline,
-                      clearable,
-                      hasIcon,
-                      iconPosition,
                       ref,
+                      className: inputSlotClassNames.input,
+                      styles: resolvedStyles.input,
                       onChange: handleChange,
                     }),
                 })}
@@ -280,12 +284,8 @@ const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
               {createShorthand(composeOptions.slots.icon, computeIcon(), {
                 defaultProps: () =>
                   getA11yProps('icon', {
-                    clearable,
-                    disabled,
-                    error,
-                    hasValue,
-                    iconPosition,
-                    requiredAndSuccessful,
+                    className: inputSlotClassNames.icon,
+                    styles: resolvedStyles.icon,
                   }),
                 overrideProps: handleIconOverrides,
               })}
@@ -305,8 +305,8 @@ const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
     className: inputClassName,
     displayName: 'Input',
     slots: {
-      control: InputControl,
-      icon: InputIcon,
+      control: Box,
+      icon: Box,
     },
     handledProps: [
       'accessibility',
@@ -339,8 +339,6 @@ const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
   },
 ) as ComponentWithAs<'div', InputProps> & {
   create: ShorthandFactory<InputProps>;
-  Icon: typeof InputIcon;
-  Control: typeof InputControl;
 };
 
 Input.propTypes = {
@@ -376,9 +374,6 @@ Input.defaultProps = {
   errorIndicator: <ExclamationCircleIcon />,
   successIndicator: <PresenceAvailableIcon />,
 };
-
-Input.Icon = InputIcon;
-Input.Control = InputControl;
 
 Input.create = createShorthandFactory({ Component: Input });
 

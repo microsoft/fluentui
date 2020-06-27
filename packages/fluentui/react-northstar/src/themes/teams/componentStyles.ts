@@ -61,8 +61,6 @@ export { default as SvgIcon } from './components/SvgIcon/svgIconStyles';
 export { default as Image } from './components/Image/imageStyles';
 
 export { default as Input } from './components/Input/inputStyles';
-export { default as InputIcon } from './components/Input/inputIconStyles';
-export { default as InputControl } from './components/Input/inputControlStyles';
 
 export { default as Label } from './components/Label/labelStyles';
 
