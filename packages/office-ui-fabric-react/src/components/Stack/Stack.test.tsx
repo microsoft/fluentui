@@ -5,7 +5,6 @@ import { mount } from 'enzyme';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { isConformant } from '@fluentui/react-conformance';
-
 import { Stack } from './Stack';
 
 const sampleClass = mergeStyles({
