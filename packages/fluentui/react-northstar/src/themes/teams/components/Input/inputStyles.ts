@@ -14,6 +14,7 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
     ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
     ...(p.fluid && { width: '100%' }),
   }),
+
   input: ({ props: p, variables: v }): ICSSInJSStyle => ({
     backgroundColor: v.backgroundColor,
     ...(p.inverted && {
