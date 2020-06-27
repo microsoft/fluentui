@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "revving CDN url and adding .classifier type to the filetype list for icons",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-22T18:41:59.098Z"
-}
