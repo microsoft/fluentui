@@ -148,6 +148,10 @@ export { default as Image } from './components/Image/Image';
 
 export * from './components/Input/Input';
 export { default as Input } from './components/Input/Input';
+export * from './components/Input/InputIcon';
+export { default as InputIcon } from './components/Input/InputIcon';
+export * from './components/Input/InputControl';
+export { default as InputControl } from './components/Input/InputControl';
 
 export * from './components/ItemLayout/ItemLayout';
 export { default as ItemLayout } from './components/ItemLayout/ItemLayout';

@@ -339,6 +339,8 @@ const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
   },
 ) as ComponentWithAs<'div', InputProps> & {
   create: ShorthandFactory<InputProps>;
+  Icon: typeof InputIcon;
+  Control: typeof InputControl;
 };
 
 Input.propTypes = {
@@ -374,6 +376,9 @@ Input.defaultProps = {
   errorIndicator: <ExclamationCircleIcon />,
   successIndicator: <PresenceAvailableIcon />,
 };
+
+Input.Icon = InputIcon;
+Input.Control = InputControl;
 
 Input.create = createShorthandFactory({ Component: Input });
 
