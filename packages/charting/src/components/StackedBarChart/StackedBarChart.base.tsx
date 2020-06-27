@@ -154,22 +154,21 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <div>
             <svg className={this._classNames.chart}>
               <g>{bars[0]}</g>
-              {!hideTooltip && isCalloutVisible ? (
-                <Callout
-                  gapSpace={15}
-                  isBeakVisible={false}
-                  target={this.state.refSelected}
-                  setInitialFocus={true}
-                  directionalHint={DirectionalHint.topRightEdge}
-                  id={this._calloutId}
-                >
-                  <ChartHoverCard
-                    Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-                    YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-                    color={this.state.color}
-                  />
-                </Callout>
-              ) : null}
+              <Callout
+                gapSpace={15}
+                isBeakVisible={false}
+                target={this.state.refSelected}
+                setInitialFocus={true}
+                hidden={!(!hideTooltip && isCalloutVisible)}
+                directionalHint={DirectionalHint.topRightEdge}
+                id={this._calloutId}
+              >
+                <ChartHoverCard
+                  Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+                  YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                  color={this.state.color}
+                />
+              </Callout>
             </svg>
           </div>
         </FocusZone>
