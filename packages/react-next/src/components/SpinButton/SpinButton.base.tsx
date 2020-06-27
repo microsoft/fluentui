@@ -85,21 +85,15 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   } = props as ISpinButtonProps;
 
   const input = React.useRef<HTMLInputElement>(null);
-  // Is true when the control has focus
   const [isFocused, { setTrue: setTrueIsFocused, setFalse: setFalseIsFocused }] = useBoolean(false);
-  // The value of the spin button
-
+  const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
+  const safeSetTimeout = useSetTimeout();
   const [value, setValue] = useControllableValue(
     props.value,
     props.defaultValue !== undefined ? props.defaultValue : String(min || '0'),
   );
 
-  // keyboard spin direction, used to style the up or down button
-  // as active when up/down arrow is pressed
-  const [keyboardSpinDirection, setKeyboardSpinDirection] = React.useState(KeyboardSpinDirection.notSpinning);
-  //
-  const safeSetTimeout = useSetTimeout();
-
+  useComponentRef(props, input, value);
   const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
     const { precision = Math.max(calculatePrecision(calculatePrecisionProps.step!), 0) } = calculatePrecisionProps;
     return precision;
@@ -110,7 +104,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     initialValue = typeof min === 'number' ? String(min) : '0';
   }
 
-  const [state] = React.useState<ISpinButtonState>({
+  const { current: state } = React.useRef<ISpinButtonState>({
     inputId: getId('input'),
     labelId: getId('Label'),
     lastValidValue: initialValue,
@@ -345,8 +339,6 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   const onDecrementMouseDown = (): void => {
     updateValue(true /* shouldSpin */, state.initialStepDelay, onDecrement!);
   };
-
-  useComponentRef(props, input, value);
 
   return (
     <div className={classNames.root}>
