@@ -59,6 +59,7 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
   }),
+
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
     color: v.iconColor,
     outline: 0,
