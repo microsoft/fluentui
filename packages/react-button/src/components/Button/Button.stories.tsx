@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Button } from './Button';
 import { ButtonProps } from './Button.types';
 import * as classes from './Button.stories.scss';
-import { mergeThemes, ThemeProvider, Theme } from '@fluentui/react-theme-provider';
 
 /**
  * Temporary Stack until there's one in its own package.
@@ -13,6 +12,9 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
   return <div {...rest} className={horizontal ? classes.hStack : classes.vStack} />;
 };
 
+/**
+ * Temporary Text until there's one in its own package.
+ */
 const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={classes.text} />;
 
 const ButtonVariants = (props: ButtonProps) => (
@@ -221,105 +223,3 @@ export const ButtonTokens = () => (
     </Stack>
   </Stack>
 );
-
-const paletteAccent = 'var(--palette-accent)';
-const paletteSoftest = 'var(--palette-softest)';
-const paletteStrongest = 'var(--palette-strongest)';
-
-const getThemes = (accent: string) => {
-  const lightTheme = mergeThemes({
-    tokens: {
-      palette: {
-        accent: accent,
-        softest: 'white',
-        strongest: 'black',
-      },
-
-      body: {
-        background: 'white',
-        contentColor: 'black',
-      },
-
-      accent: {
-        background: paletteAccent,
-        contentColor: paletteSoftest,
-
-        hovered: {
-          background: paletteAccent,
-          contentColor: paletteSoftest,
-        },
-        pressed: {
-          background: paletteAccent,
-          contentColor: paletteSoftest,
-        },
-      },
-
-      button: {
-        background: '#ddd',
-      },
-    },
-    stylesheets: [],
-  });
-
-  const darkTheme = mergeThemes(lightTheme, {
-    tokens: {
-      palette: {
-        softest: 'black',
-        strongest: 'white',
-      },
-
-      body: {
-        background: '#333',
-        contentColor: paletteStrongest,
-      },
-
-      button: {
-        background: 'transparent',
-        contentColor: paletteStrongest,
-
-        hovered: {
-          background: '#555',
-          contentColor: paletteStrongest,
-        },
-      },
-
-      accent: {
-        background: 'blue',
-        contentColor: paletteStrongest,
-
-        hovered: {
-          background: '#555',
-          contentColor: paletteStrongest,
-        },
-      },
-    },
-  } as PartialTheme);
-
-  return { lightTheme, darkTheme };
-};
-
-const ExampleBox = ({ title, theme }: { title: string; theme: Theme }) => (
-  <ThemeProvider theme={theme} style={{ padding: 20 }}>
-    <Stack>
-      <Text variant="xLarge">{title}</Text>
-      <Button icon={<UploadIcon />} content="I am a button" />
-      <Button primary content="I am a primary button" />
-    </Stack>
-  </ThemeProvider>
-);
-
-export const ThemeExample = () => {
-  const [color, setColor] = React.useState<string>('#f00');
-  const { lightTheme, darkTheme } = getThemes(color);
-  const onColorChange = React.useCallback((ev: never, newColor: IColor) => setColor(newColor.str), []);
-
-  return (
-    <Stack gap={16}>
-      <Text variant="xLarge">Accent color</Text>
-      <ColorPicker color={color} onChange={onColorChange} />
-
-      <ExampleBox title="Light" theme={lightTheme} />
-      <ExampleBox title="Dark" theme={darkTheme} />
-    </Stack>
-  );
-};
