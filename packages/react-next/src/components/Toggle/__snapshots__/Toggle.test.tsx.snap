@@ -55,6 +55,12 @@ exports[`Toggle renders toggle correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
     htmlFor="id__0"
     id="id__0-label"
   >
@@ -109,6 +115,12 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
     htmlFor="id__0"
     id="id__0-label"
@@ -167,6 +179,12 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
     htmlFor="id__0"
     id="id__0-label"
   >
@@ -222,6 +240,12 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
     htmlFor="id__0"
     id="id__0-label"
   >
@@ -268,6 +292,12 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             padding-right: 0;
             padding-top: 5px;
             word-wrap: break-word;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: WindowText;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       htmlFor="id__0"
       id="id__0-stateText"
