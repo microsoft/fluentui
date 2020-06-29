@@ -13,23 +13,25 @@ export interface ShorthandConfig<TProps> {
 
 export type PropsOfElement<
   // tslint:disable-next-line:no-any
-  E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
-> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
+  E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs
+> = E extends { __props: any } ? E['__props'] : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 // tslint:disable-next-line:interface-name
-export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}>
-  extends React.FunctionComponent {
-  <TExtendedElementType extends React.ElementType = TElementType>(
-    props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
-  ): JSX.Element | null;
-  displayName?: string;
-
-  defaultProps?: Partial<TProps & { as: TElementType }>;
+export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<
+  TExtendedElementType extends React.ElementType = TElementType
+>(
+  props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
+) => JSX.Element) & {
   propTypes?: React.WeakValidationMap<TProps> & {
     // tslint:disable-next-line:no-any
     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
   };
-}
+  contextTypes?: React.ValidationMap<any>;
+  defaultProps?: Partial<TProps & { as: TElementType }>;
+  displayName?: string;
+
+  __props: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
+};
 
 //
 // Compose types
