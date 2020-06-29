@@ -58,6 +58,9 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         htmlFor="input1"
         id="Label0"
       >

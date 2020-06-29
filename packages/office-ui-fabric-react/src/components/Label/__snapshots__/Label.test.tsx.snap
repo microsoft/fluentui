@@ -25,6 +25,12 @@ exports[`Label renders label correctly 1`] = `
         padding-top: 5px;
         word-wrap: break-word;
       }
+      @media screen and (-ms-high-contrast: active){& {
+        color: WindowText;
+      }
+      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+        forced-color-adjust: none;
+      }
 >
   test
 </label>

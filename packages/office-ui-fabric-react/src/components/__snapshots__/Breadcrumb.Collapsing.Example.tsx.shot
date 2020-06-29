@@ -26,6 +26,12 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
         &:not(:first-child) {
           margin-top: 24px;
         }
@@ -989,6 +995,12 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
         &:not(:first-child) {
           margin-top: 24px;
         }
@@ -1662,6 +1674,12 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
         &:not(:first-child) {
           margin-top: 24px;

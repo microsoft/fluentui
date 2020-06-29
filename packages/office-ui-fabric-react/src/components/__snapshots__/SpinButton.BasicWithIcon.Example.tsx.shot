@@ -77,6 +77,12 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               pointer-events: none;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         htmlFor="input1"
         id="Label0"
       >

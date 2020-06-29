@@ -117,6 +117,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
             htmlFor="Slider0"
           >
             Number of items:
@@ -334,6 +340,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     white-space: nowrap;
                     width: 40px;
                     word-wrap: break-word;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               5
@@ -1080,6 +1092,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){& {
                   color: GrayText;
                 }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
             htmlFor="Slider5"
           >
             Container height:
@@ -1253,6 +1268,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               200
@@ -1528,6 +1546,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
+                }
             htmlFor="Slider7"
           >
             Vertical gap between items:
@@ -1746,6 +1770,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               0
             </label>
@@ -1815,6 +1845,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-right: 0;
                       padding-top: 5px;
                       word-wrap: break-word;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
                 id="Dropdown8-label"
               >
@@ -2040,6 +2076,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       padding-right: 0;
                       padding-top: 5px;
                       word-wrap: break-word;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
                 id="Dropdown9-label"
               >
@@ -2461,6 +2503,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         padding-top: 5px;
                         word-wrap: break-word;
                       }
+                      @media screen and (-ms-high-contrast: active){& {
+                        color: WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                   htmlFor="TextField11"
                   id="TextFieldLabel13"
                 >
@@ -2495,6 +2543,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
+                      }
+                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+                        forced-color-adjust: none;
                       }
                 >
                   <input
@@ -2540,6 +2591,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         &::-ms-clear {
                           display: none;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background: Window;
+                          color: WindowText;
+                        }
                         &::placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2548,6 +2603,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::placeholder {
+                          color: GrayText;
                         }
                         &:-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
@@ -2558,6 +2616,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           font-weight: 400;
                           opacity: 1;
                         }
+                        @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          color: GrayText;
+                        }
                         &::-ms-input-placeholder {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
@@ -2566,6 +2627,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           font-size: 14px;
                           font-weight: 400;
                           opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          color: GrayText;
                         }
                     id="TextField11"
                     onBlur={[Function]}
@@ -2655,6 +2719,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider14"
           >
@@ -2874,6 +2944,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               0
             </label>
@@ -2916,6 +2992,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider15"
           >
@@ -3135,6 +3217,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               0
             </label>
@@ -3215,6 +3303,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider16"
           >
@@ -3434,6 +3528,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     width: 40px;
                     word-wrap: break-word;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               0
             </label>
@@ -3476,6 +3576,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="Slider17"
           >
@@ -3694,6 +3800,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     white-space: nowrap;
                     width: 40px;
                     word-wrap: break-word;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
             >
               0

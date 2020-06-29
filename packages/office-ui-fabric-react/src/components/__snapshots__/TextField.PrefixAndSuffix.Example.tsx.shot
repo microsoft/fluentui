@@ -92,6 +92,12 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 5px;
                 word-wrap: break-word;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           htmlFor="TextField0"
           id="TextFieldLabel2"
         >
@@ -127,6 +133,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+                forced-color-adjust: none;
+              }
         >
           <div
             className=
@@ -143,6 +152,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   padding-right: 10px;
                   padding-top: 0;
                   white-space: nowrap;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
                 }
           >
             <span
@@ -199,6 +212,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 &::-ms-clear {
                   display: none;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
                 &::placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -207,6 +224,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::placeholder {
+                  color: GrayText;
                 }
                 &:-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
@@ -217,6 +237,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-weight: 400;
                   opacity: 1;
                 }
+                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  color: GrayText;
+                }
                 &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -225,6 +248,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  color: GrayText;
                 }
             id="TextField0"
             onBlur={[Function]}
@@ -290,6 +316,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 color: GrayText;
               }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           htmlFor="TextField3"
           id="TextFieldLabel5"
         >
@@ -323,6 +352,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 border-color: GrayText;
               }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
         >
           <div
             className=
@@ -339,6 +371,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   padding-right: 10px;
                   padding-top: 0;
                   white-space: nowrap;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: GrayText;
                 }
           >
             <span
@@ -396,6 +432,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 &::-ms-clear {
                   display: none;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: GrayText;
+                }
                 &::placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -404,6 +444,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::placeholder {
+                  color: GrayText;
                 }
                 &:-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
@@ -414,6 +457,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-weight: 400;
                   opacity: 1;
                 }
+                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  color: GrayText;
+                }
                 &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -422,6 +468,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  color: GrayText;
                 }
             disabled={true}
             id="TextField3"
@@ -506,6 +555,12 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 5px;
                 word-wrap: break-word;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           htmlFor="TextField6"
           id="TextFieldLabel8"
         >
@@ -540,6 +595,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+                forced-color-adjust: none;
               }
         >
           <input
@@ -586,6 +644,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 &::-ms-clear {
                   display: none;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
                 &::placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -594,6 +656,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::placeholder {
+                  color: GrayText;
                 }
                 &:-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
@@ -604,6 +669,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-weight: 400;
                   opacity: 1;
                 }
+                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  color: GrayText;
+                }
                 &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -612,6 +680,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  color: GrayText;
                 }
             id="TextField6"
             onBlur={[Function]}
@@ -636,6 +707,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   padding-right: 10px;
                   padding-top: 0;
                   white-space: nowrap;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
                 }
           >
             <span
@@ -700,6 +775,12 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 5px;
                 word-wrap: break-word;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           htmlFor="TextField9"
           id="TextFieldLabel11"
         >
@@ -735,6 +816,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+                forced-color-adjust: none;
+              }
         >
           <div
             className=
@@ -751,6 +835,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   padding-right: 10px;
                   padding-top: 0;
                   white-space: nowrap;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
                 }
           >
             <span
@@ -807,6 +895,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 &::-ms-clear {
                   display: none;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
                 &::placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -815,6 +907,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::placeholder {
+                  color: GrayText;
                 }
                 &:-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
@@ -825,6 +920,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-weight: 400;
                   opacity: 1;
                 }
+                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  color: GrayText;
+                }
                 &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -833,6 +931,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  color: GrayText;
                 }
             id="TextField9"
             onBlur={[Function]}
@@ -857,6 +958,10 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   padding-right: 10px;
                   padding-top: 0;
                   white-space: nowrap;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
                 }
           >
             <span

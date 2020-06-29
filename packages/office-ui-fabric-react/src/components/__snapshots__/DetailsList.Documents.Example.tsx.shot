@@ -72,6 +72,12 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               padding-top: 5px;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         htmlFor="Toggle0"
         id="Toggle0-label"
       >
@@ -185,6 +191,12 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
               && {
                 font-weight: 400;
                 margin-bottom: 0;
@@ -245,6 +257,12 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               padding-right: 0;
               padding-top: 5px;
               word-wrap: break-word;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         htmlFor="Toggle1"
         id="Toggle1-label"
@@ -359,6 +377,12 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
               && {
                 font-weight: 400;
                 margin-bottom: 0;
@@ -428,6 +452,12 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           htmlFor="TextField2"
           id="TextFieldLabel4"
         >
@@ -462,6 +492,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+                forced-color-adjust: none;
               }
         >
           <input
@@ -507,6 +540,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 &::-ms-clear {
                   display: none;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  background: Window;
+                  color: WindowText;
+                }
                 &::placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -515,6 +552,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::placeholder {
+                  color: GrayText;
                 }
                 &:-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
@@ -525,6 +565,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   font-weight: 400;
                   opacity: 1;
                 }
+                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  color: GrayText;
+                }
                 &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -533,6 +576,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                   opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  color: GrayText;
                 }
             id="TextField2"
             onBlur={[Function]}

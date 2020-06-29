@@ -77,6 +77,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-top: 5px;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         Online
       </label>
@@ -286,6 +292,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-right: 0;
               padding-top: 5px;
               word-wrap: break-word;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Online + Out of Office
@@ -538,6 +550,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-top: 5px;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         Away
       </label>
@@ -749,6 +767,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-right: 0;
               padding-top: 5px;
               word-wrap: break-word;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Away + Out of Office
@@ -1002,6 +1026,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-top: 5px;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         Busy
       </label>
@@ -1205,6 +1235,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-right: 0;
               padding-top: 5px;
               word-wrap: break-word;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Busy + Out of Office
@@ -1451,6 +1487,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-top: 5px;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         DnD
       </label>
@@ -1661,6 +1703,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-top: 5px;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         DnD + Out of Office
       </label>
@@ -1869,6 +1917,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
   >
     Blocked
@@ -2127,6 +2181,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-top: 5px;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         Offline
       </label>
@@ -2349,6 +2409,12 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               padding-right: 0;
               padding-top: 5px;
               word-wrap: break-word;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Offline + Out of Office

@@ -60,6 +60,12 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             padding-top: 0px;
             word-wrap: break-word;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            color: WindowText;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       htmlFor="Slider0"
     >
       Change the stack height to see how child items wrap onto multiple columns:
@@ -277,6 +283,12 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
               white-space: nowrap;
               width: 40px;
               word-wrap: break-word;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         420

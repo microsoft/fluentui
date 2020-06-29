@@ -217,6 +217,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
   >
     Size 8 Persona, with no presence
   </label>
@@ -447,6 +453,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
   >
     Size 8 Persona, with presence
@@ -702,6 +714,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
   >
     Size 24 Persona
@@ -1001,6 +1019,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
   >
     Size 32 Persona
   </label>
@@ -1298,6 +1322,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
   >
     Size 40 Persona
@@ -1623,6 +1653,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
   >
     Size 48 Persona (default) 
   </label>
@@ -1938,6 +1974,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
   >
     Size 56 Persona (default) 
@@ -2261,6 +2303,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
   >
     Size 72 Persona
   </label>
@@ -2582,6 +2630,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
   >
     Size 100 Persona
@@ -2931,6 +2985,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
   >
     Size 120 Persona

@@ -198,6 +198,12 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               padding-top: 5px;
               word-wrap: break-word;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         id="Dropdown1-label"
       >
         Directional hint

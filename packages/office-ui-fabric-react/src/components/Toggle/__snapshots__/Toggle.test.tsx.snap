@@ -140,6 +140,12 @@ exports[`Toggle renders toggle correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
     htmlFor="Toggle1"
     id="Toggle1-label"
   >
@@ -273,6 +279,12 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           padding-top: 5px;
           word-break: break-all;
           word-wrap: break-word;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
     htmlFor="Toggle3"
     id="Toggle3-label"
@@ -410,6 +422,12 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           word-break: break-all;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
     htmlFor="Toggle2"
     id="Toggle2-label"
   >
@@ -543,6 +561,12 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           word-break: break-all;
           word-wrap: break-word;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          color: WindowText;
+        }
+        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
     htmlFor="Toggle4"
     id="Toggle4-label"
   >
@@ -654,6 +678,12 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             padding-right: 0;
             padding-top: 5px;
             word-wrap: break-word;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: WindowText;
+          }
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
           && {
             font-weight: 400;
