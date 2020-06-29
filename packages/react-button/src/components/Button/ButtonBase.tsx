@@ -35,7 +35,8 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'secondary',
       'size',
       'tokens',
-    ],
+      // tslint:disable-next-line: no-any
+    ] as any,
     slots: {
       icon: 'span',
       content: 'span',
