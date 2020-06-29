@@ -80,10 +80,10 @@ class CalendarDayBaseClass extends React.Component<ICalendarDayClassProps, {}> {
             key={monthAndYear}
             id={monthAndYearId}
             className={classNames.monthAndYear}
-            onClick={this._onHeaderSelect}
+            onClick={this.props.onHeaderSelect}
             data-is-focusable={!!onHeaderSelect}
             tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
-            onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
+            onKeyDown={this._onButtonKeyDown(this.props.onHeaderSelect)}
             type="button"
           >
             {monthAndYear}
@@ -163,8 +163,8 @@ class CalendarDayBaseClass extends React.Component<ICalendarDayClassProps, {}> {
         {showCloseButton && (
           <button
             className={css(classNames.headerIconButton)}
-            onClick={this._onClose}
-            onKeyDown={this._onButtonKeyDown(this._onClose)}
+            onClick={this.props.onDismiss}
+            onKeyDown={this._onButtonKeyDown(this.props.onDismiss)}
             title={strings.closeButtonAriaLabel}
             type="button"
           >
@@ -183,23 +183,11 @@ class CalendarDayBaseClass extends React.Component<ICalendarDayClassProps, {}> {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
   };
 
-  private _onClose = (): void => {
-    if (this.props.onDismiss) {
-      this.props.onDismiss();
-    }
-  };
-
-  private _onHeaderSelect = (): void => {
-    if (this.props.onHeaderSelect) {
-      this.props.onHeaderSelect();
-    }
-  };
-
-  private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
+  private _onButtonKeyDown = (callback?: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       switch (ev.which) {
         case KeyCodes.enter:
-          callback();
+          callback?.();
           break;
       }
     };
