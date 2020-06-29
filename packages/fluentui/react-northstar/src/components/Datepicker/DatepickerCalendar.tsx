@@ -89,17 +89,21 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
               <Text align="center" content={localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK]} />
             ))}
             {_.map(grid, week =>
-              _.map(week, (day: IDay) => (
-                <Button
-                  key={day.key}
-                  content={day.date}
-                  aria-label={`Date ${day.originalDate.toString()}`}
-                  onClick={() => {
-                    onDaySelect(day);
-                  }}
-                  text
-                />
-              )),
+              _.map(week, (day: IDay) => {
+                const buttonStyles = day.isSelected ? { 'background-color': '#EDEBE9' } : {};
+                return (
+                  <Button
+                    key={day.key}
+                    content={day.date}
+                    aria-label={`Date ${day.originalDate.toString()}`}
+                    onClick={() => {
+                      onDaySelect(day);
+                    }}
+                    styles={buttonStyles}
+                    text
+                  />
+                );
+              }),
             )}
           </Grid>
         </ElementType>,

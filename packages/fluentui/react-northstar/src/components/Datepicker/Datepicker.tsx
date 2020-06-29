@@ -43,7 +43,7 @@ const DEFAULT_STRINGS: IDateGridStrings = {
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 };
 
-export interface DatepickerProps extends UIComponentProps {
+export interface DatepickerProps extends IDayGridOptions, UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 }
@@ -59,17 +59,18 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
   const datepickerRef = React.useRef<HTMLElement>();
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
-  const weeksToShow = 4;
   const valueFormatter = date => formatMonthDayYear(date, DEFAULT_STRINGS);
   const today = new Date();
+  const { firstDayOfWeek, firstWeekOfYear, dateRangeType, weeksToShow } = props;
   const calendarOptions: IDayGridOptions = {
     selectedDate: today,
     navigatedDate: today,
-    firstDayOfWeek: DayOfWeek.Sunday,
-    firstWeekOfYear: FirstWeekOfYear.FirstDay,
-    dateRangeType: DateRangeType.Day,
+    firstDayOfWeek: firstDayOfWeek,
+    firstWeekOfYear: firstWeekOfYear,
+    dateRangeType: dateRangeType,
     weeksToShow: weeksToShow,
   };
+
   const showCalendarGrid = () => {
     setOpen(true);
   };
@@ -112,6 +113,7 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
                 {...calendarOptions}
                 onDaySelect={day => {
                   setValue(valueFormatter(day.originalDate));
+                  day.isSelected = true;
                   setOpen(false);
                 }}
                 localizedStrings={DEFAULT_STRINGS}
@@ -137,6 +139,10 @@ Datepicker.propTypes = {
 
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
+  firstDayOfWeek: DayOfWeek.Monday,
+  firstWeekOfYear: FirstWeekOfYear.FirstDay,
+  dateRangeType: DateRangeType.Day,
+  weeksToShow: 4,
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
