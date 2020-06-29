@@ -14,6 +14,7 @@ export interface ShorthandConfig<TProps> {
 export type PropsOfElement<
   // tslint:disable-next-line:no-any
   E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs
+  // tslint:disable-next-line:no-any
 > = E extends { __PRIVATE_PROPS: any }
   ? E['__PRIVATE_PROPS']
   : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
@@ -28,6 +29,7 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
     // tslint:disable-next-line:no-any
     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
   };
+  // tslint:disable-next-line:no-any
   contextTypes?: React.ValidationMap<any>;
   defaultProps?: Partial<TProps & { as: TElementType }>;
   displayName?: string;
