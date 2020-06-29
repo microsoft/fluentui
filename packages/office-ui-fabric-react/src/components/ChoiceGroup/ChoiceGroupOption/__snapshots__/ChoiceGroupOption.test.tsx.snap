@@ -799,7 +799,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active){&:before {
+              background: Window;
               border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
+              forced-color-adjust: none;
             }
             &:after {
               border-color: #0078d4;
@@ -820,6 +824,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
             @media screen and (-ms-high-contrast: active){&:after {
               border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:after {
+              forced-color-adjust: none;
             }
       >
         <span
@@ -910,7 +917,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active){&:before {
-              color: GrayText;
+              background: Window;
+              border-color: GrayText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
+              forced-color-adjust: none;
             }
             &:after {
               border-radius: 50%;
@@ -928,8 +939,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             & .ms-ChoiceFieldLabel {
               color: #a19f9d;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active){& .ms-ChoiceFieldLabel {
               color: GrayText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& .ms-ChoiceFieldLabel {
+              forced-color-adjust: none;
             }
       >
         <span
@@ -1023,8 +1037,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active){&:before {
+              background: Window;
               border-color: Highlight;
-              color: GrayText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
+              forced-color-adjust: none;
             }
             &:after {
               border-color: #c8c6c4;
@@ -1046,11 +1063,17 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:after {
               border-color: Highlight;
             }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:after {
+              forced-color-adjust: none;
+            }
             & .ms-ChoiceFieldLabel {
               color: #a19f9d;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active){& .ms-ChoiceFieldLabel {
               color: GrayText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& .ms-ChoiceFieldLabel {
+              forced-color-adjust: none;
             }
       >
         <span
@@ -1617,7 +1640,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active){&:before {
+              background: Window;
               border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
+              forced-color-adjust: none;
             }
             &:after {
               border-color: #0078d4;
@@ -1638,6 +1665,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
             @media screen and (-ms-high-contrast: active){&:after {
               border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:after {
+              forced-color-adjust: none;
             }
       >
         <div
@@ -1811,7 +1841,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active){&:before {
-              color: GrayText;
+              background: Window;
+              border-color: GrayText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
+              forced-color-adjust: none;
             }
             &:after {
               border-radius: 50%;
@@ -1829,8 +1863,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             & .ms-ChoiceFieldLabel {
               color: #a19f9d;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active){& .ms-ChoiceFieldLabel {
               color: GrayText;
+            }
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& .ms-ChoiceFieldLabel {
+              forced-color-adjust: none;
             }
       >
         <div
