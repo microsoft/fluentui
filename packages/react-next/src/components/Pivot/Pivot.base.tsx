@@ -10,6 +10,7 @@ import { Icon } from '../../Icon';
 import { useId, useControllableValue } from '@uifabric/react-hooks';
 import { useOverflow, OverflowItemsChangedCallback } from './useOverflow';
 import { IContextualMenuProps } from '../../ContextualMenu';
+import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>({
   useStaticStyles: true,
@@ -215,7 +216,12 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
     };
 
     // The overflow menu starts empty and items[] is updated as the overflow items change
-    const overflowMenuProps: IContextualMenuProps = { items: [], alignTargetEdge: true, doNotLayer: true };
+    const overflowMenuProps: IContextualMenuProps = {
+      items: [],
+      doNotLayer: true,
+      alignTargetEdge: true,
+      directionalHint: DirectionalHint.bottomRightEdge,
+    };
     const onOverflowItemsChanged: OverflowItemsChangedCallback = (overflowIndex, elements) => {
       // Set data-is-overflowing on each item
       elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
