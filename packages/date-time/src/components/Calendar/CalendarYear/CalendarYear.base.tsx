@@ -138,20 +138,57 @@ const CalendarYearGridCell = React.forwardRef(
 );
 CalendarYearGridCell.displayName = 'CalendarYearGridCell';
 
-class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> implements ICalendarYearGrid {
-  private _selectedCellRef: ICalendarYearGridCell;
-  private _currentCellRef: ICalendarYearGridCell;
+const CalendarYearGrid = React.forwardRef(
+  (props: ICalendarYearGridProps, forwardedRef: React.Ref<HTMLButtonElement>) => {
+    const {
+      styles,
+      theme,
+      className,
+      fromYear,
+      toYear,
+      animationDirection,
+      animateBackwards,
+      minYear,
+      maxYear,
+      onSelectYear,
+      selectedYear,
+      componentRef,
+    } = props;
 
-  public focus(): void {
-    if (this._selectedCellRef) {
-      this._selectedCellRef.focus();
-    } else if (this._currentCellRef) {
-      this._currentCellRef.focus();
-    }
-  }
+    const selectedCellRef = React.useRef<ICalendarYearGridCell>(null);
+    const currentCellRef = React.useRef<ICalendarYearGridCell>(null);
 
-  public render(): JSX.Element {
-    const { styles, theme, className, fromYear, toYear, animationDirection, animateBackwards } = this.props;
+    React.useImperativeHandle(
+      componentRef,
+      () => ({
+        focus() {
+          (selectedCellRef.current || currentCellRef.current)?.focus?.();
+        },
+      }),
+      [],
+    );
+
+    const renderCell = (yearToRender: number): React.ReactNode => {
+      const selected = yearToRender === selectedYear;
+      const disabled =
+        (minYear !== undefined && yearToRender < minYear) || (maxYear !== undefined && yearToRender > maxYear);
+      const current = yearToRender === new Date().getFullYear();
+
+      return (
+        <CalendarYearGridCell
+          {...props}
+          key={yearToRender}
+          year={yearToRender}
+          selected={selected}
+          current={current}
+          disabled={disabled}
+          onSelectYear={onSelectYear}
+          componentRef={selected ? selectedCellRef : current ? currentCellRef : undefined}
+          ref={forwardedRef}
+          theme={theme}
+        />
+      );
+    };
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -166,7 +203,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
     for (let i = 0; i < (toYear - fromYear + 1) / CELLS_PER_ROW; i++) {
       cells.push([]);
       for (let j = 0; j < CELLS_PER_ROW; j++) {
-        cells[i].push(this._renderCell(year));
+        cells[i].push(renderCell(year));
         year++;
       }
     }
@@ -184,37 +221,9 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
         </div>
       </FocusZone>
     );
-  }
-
-  private _renderCell = (year: number): React.ReactNode => {
-    const { theme, minYear, maxYear, onSelectYear, selectedYear } = this.props;
-    const selected = year === selectedYear;
-    const disabled = (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
-    const current = year === new Date().getFullYear();
-
-    return (
-      <CalendarYearGridCell
-        {...this.props}
-        key={year}
-        year={year}
-        selected={selected}
-        current={current}
-        disabled={disabled}
-        onSelectYear={onSelectYear}
-        componentRef={selected ? this._onSelectedCellRef : current ? this._onCurrentCellRef : undefined}
-        theme={theme}
-      />
-    );
-  };
-
-  private _onSelectedCellRef = (ref: ICalendarYearGridCell) => {
-    this._selectedCellRef = ref;
-  };
-
-  private _onCurrentCellRef = (ref: ICalendarYearGridCell) => {
-    this._currentCellRef = ref;
-  };
-}
+  },
+);
+CalendarYearGrid.displayName = 'CalendarYearGrid';
 
 class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
@@ -460,7 +469,7 @@ class CalendarYearHeader extends React.Component<ICalendarYearHeaderProps, {}> {
 }
 
 export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
-  private _gridRef: CalendarYearGrid;
+  private _gridRef: ICalendarYearGrid;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<ICalendarYearProps>,
@@ -583,12 +592,12 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
         fromYear={this.state.fromYear}
         toYear={this.state.fromYear + CELL_COUNT - 1}
         animateBackwards={this.state.animateBackwards}
-        ref={this._onGridRef}
+        componentRef={this._onGridRef}
       />
     );
   };
 
-  private _onGridRef = (ref: CalendarYearGrid) => {
+  private _onGridRef = (ref: ICalendarYearGrid) => {
     this._gridRef = ref;
   };
 }
