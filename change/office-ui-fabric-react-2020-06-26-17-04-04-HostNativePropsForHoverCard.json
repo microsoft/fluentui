@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Expose Optional native props for the host div of HoverCard",
   "packageName": "office-ui-fabric-react",
   "email": "v-gorraj@microsoft.com",
