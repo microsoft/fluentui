@@ -64,7 +64,7 @@ const isPivotItem = (item: React.ReactNode): item is PivotItem => {
 
 export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
   (props: IPivotProps, ref: React.Ref<HTMLDivElement>) => {
-    const { componentRef, theme, linkSize, linkFormat, headerOverflow } = props;
+    const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
     const pivotId: string = useId('Pivot');
     let linkCollection = getLinkItems(props, pivotId);
     const focusZoneRef = React.useRef<IFocusZone>(null);
@@ -244,7 +244,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           role="tablist"
         >
           {items}
-          {headerOverflow === 'menu' && (
+          {overflowBehavior === 'menu' && (
             <CommandButton
               className={classNames.overflowMenuButton}
               ref={setOverflowMenuButtonRef}

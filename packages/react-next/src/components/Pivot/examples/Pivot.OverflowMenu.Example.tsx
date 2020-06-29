@@ -20,7 +20,7 @@ export const PivotOverflowMenuExample: React.FunctionComponent = () => {
         <Pivot
           aria-label="Pivot Overflow Menu Example"
           linkFormat={tabs ? 'tabs' : 'links'}
-          headerOverflow={overflow ? 'menu' : 'none'}
+          overflowBehavior={overflow ? 'menu' : 'none'}
         >
           <PivotItem headerText="My Files">
             <Label>Pivot #1</Label>

@@ -155,7 +155,7 @@ storiesOf('Pivot Next Overflow', module)
     </ThemeProvider>
   ))
   .addStory('Basic', () => (
-    <Pivot aria-label="Pivot Overflow Menu" headerOverflow="menu">
+    <Pivot aria-label="Pivot Overflow Menu" overflowBehavior="menu">
       <PivotItem headerText="My Files">
         <Label>Pivot #1</Label>
       </PivotItem>
@@ -182,7 +182,7 @@ storiesOf('Pivot Next Overflow', module)
   ))
   .addStory('Tabs - RTL', () => (
     <Fabric dir="rtl">
-      <Pivot aria-label="Pivot Overflow Menu" headerOverflow="menu" linkFormat="tabs">
+      <Pivot aria-label="Pivot Overflow Menu" overflowBehavior="menu" linkFormat="tabs">
         <PivotItem headerText="My Files">
           <Label>Pivot #1</Label>
         </PivotItem>

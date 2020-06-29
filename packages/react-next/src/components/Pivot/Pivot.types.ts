@@ -77,7 +77,7 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
    *
    * @default none
    */
-  headerOverflow?: PivotHeaderOverflowType;
+  overflowBehavior?: PivotOverflowBehaviorType;
 
   /**
    * Whether to skip rendering the tabpanel with the content of the selected tab.
@@ -142,7 +142,7 @@ export type PivotLinkSizeType = 'normal' | 'large';
  * {@docCategory Pivot}
  * Determines what happens when there is not enough room to display all of the pivot links/tabs
  */
-export type PivotHeaderOverflowType = 'none' | 'menu';
+export type PivotOverflowBehaviorType = 'none' | 'menu';
 
 /**
  * {@docCategory Pivot}
