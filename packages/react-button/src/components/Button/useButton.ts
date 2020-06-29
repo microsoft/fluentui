@@ -1,11 +1,21 @@
-import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
-import { mergeProps } from '../../utils/mergeProps';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
+import { useFocusRects } from 'office-ui-fabric-react';
+import { ButtonProps, ButtonState } from './Button.types';
 
 /**
- * The useButton hook processes the Button component props and returns
- * state, slots, and slotProps for consumption by the component.
- * @param props
+ * The useButton hook processes the Button component props and returns state.
+ * @param props - Button props to derive state from.
  */
-export const useButton = (props: ButtonProps, options: ComposePreparedOptions) =>
-  mergeProps<ButtonProps, ButtonSlots, ButtonSlotProps>(props, options);
+export const useButton = (
+  props: ButtonProps,
+  ref: React.Ref<HTMLElement>,
+  options: ComposePreparedOptions,
+): ButtonState => {
+  useFocusRects(ref as React.RefObject<HTMLElement>);
+
+  return {
+    ...props,
+    style: getStyleFromPropsAndOptions(props, options, '--button'),
+  };
+};

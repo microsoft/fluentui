@@ -2,6 +2,36 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.76",
+      "version": "7.10.76",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.71",
+      "version": "7.10.71",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clean up dependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 May 2020 12:37:35 GMT",
       "tag": "@uifabric/fabric-website_v7.10.58",
       "version": "7.10.58",

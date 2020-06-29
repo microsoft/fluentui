@@ -1,19 +1,17 @@
-import { ThemePrepared } from './types';
+import { Theme } from './types';
 
 /**
  * Creates a blank initial theme.
  */
-export const createDefaultTheme = (): ThemePrepared => ({
+export const createDefaultTheme = (): Theme => ({
   stylesheets: [],
   tokens: {
     body: {
-      fill: 'white',
-      text: 'black',
-      subText: '#333',
-      link: {
-        default: 'blue',
-      },
-      divider: '#eee',
+      background: 'white',
+      contentColor: 'black',
+      captionColor: '#333',
+      linkColor: 'blue',
+      dividerColor: '#eee',
     },
   },
 });

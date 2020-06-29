@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
-
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, updateItems] = React.useState(props.selectedItems || []);
+  const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
   const renderedItems = React.useMemo(() => items, [items]);
 
   React.useEffect(() => {

@@ -19,3 +19,7 @@ export { default as CodeSnippet } from './CodeSnippet/CodeSnippet';
 export * from './CodeSnippet/types';
 
 export { default as CopyToClipboard, useCopyToClipboard } from './CopyToClipboard';
+export { default as renderElementToJSX } from './renderElementToJSX';
+
+export { default as Editor } from './Editor';
+export * from './Editor';

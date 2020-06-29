@@ -3,7 +3,6 @@ import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import cx from 'classnames';
 import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -13,16 +12,11 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   createShorthandFactory,
+  ShorthandFactory,
+  createShorthand,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import {
-  WithAsProp,
-  ShorthandValue,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, ComponentEventHandler, withSafeTypeForAs, ProviderContextPrepared } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import {
   useAutoControlled,
@@ -31,12 +25,10 @@ import {
   useTelemetry,
   useStyles,
   useAccessibility,
+  compose,
+  ComponentWithAs,
 } from '@fluentui/react-bindings';
-
-export interface InputSlotClassNames {
-  input: string;
-  icon: string;
-}
+import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
   /**
@@ -82,7 +74,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   /** The HTML input type. */
   type?: string;
 
-  /** Ref for input DOM node. */
+  /** (DEPRECATED) Ref for input DOM node. */
   inputRef?: React.Ref<HTMLElement>;
 
   /** The value of the input. */
@@ -90,178 +82,264 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<BoxProps>;
+
+  /** Input can be required to be valid. */
+  required?: boolean;
+
+  /** Input can have error state */
+  error?: boolean;
+
+  /** Input can have error indicator when error is true */
+  errorIndicator?: ShorthandValue<BoxProps>;
+
+  /** Optional Icon to display inside the Input if required and fulfilled. */
+  successIndicator?: ShorthandValue<BoxProps>;
+
+  /** Indicates whether the successIndicator should be visible. */
+  showSuccessIndicator?: boolean;
+}
+
+export interface InputSlotClassNames {
+  input: string;
+  icon: string;
 }
 
 export const inputClassName = 'ui-input';
+
+export type InputStylesProps = Required<
+  Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error'> & {
+    hasIcon: boolean;
+    hasValue: boolean;
+    requiredAndSuccessful: boolean;
+  }
+>;
+
 export const inputSlotClassNames: InputSlotClassNames = {
   input: `${inputClassName}__input`,
   icon: `${inputClassName}__icon`,
 };
 
-export type InputStylesProps = Required<
-  Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition'> & {
-    hasIcon: boolean;
-    hasValue: boolean;
-  }
->;
-
-const Input: React.FC<WithAsProp<InputProps>> & FluentComponentStaticProps<InputProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(Input.displayName, context.telemetry);
-  setStart();
-  const {
-    className,
-    input,
-    type,
-    wrapper,
-    disabled,
-    fluid,
-    inverted,
-    inline,
-    clearable,
-    icon,
-    iconPosition,
-    design,
-    styles,
-    variables,
-  } = props;
-  const inputRef = React.useRef<HTMLInputElement>();
-
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(Input.handledProps, props);
-
-  const [htmlInputProps, restProps] = partitionHTMLProps(unhandledProps);
-  const [value, setValue] = useAutoControlled({
-    defaultValue: props.defaultValue,
-    value: props.value as string,
-    initialValue: '',
-  });
-  const hasValue: boolean = !!value && (value as string)?.length !== 0;
-
-  const { styles: resolvedStyles } = useStyles<InputStylesProps>(Input.displayName, {
-    className: inputClassName,
-    mapPropsToStyles: () => ({
+const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
+    const {
+      className,
+      input,
+      type,
+      wrapper,
+      disabled,
       fluid,
       inverted,
       inline,
-      disabled,
       clearable,
-      hasIcon: !!icon,
+      icon,
       iconPosition,
-      hasValue,
-    }),
-    mapPropsToInlineStyles: () => ({
-      className,
       design,
       styles,
       variables,
-    }),
-    rtl: context.rtl,
-  });
+      required,
+      successIndicator,
+      error,
+      errorIndicator,
+      showSuccessIndicator,
+    } = props;
+    const inputRef = React.useRef<HTMLInputElement>();
 
-  const getA11yProps = useAccessibility<InputBehaviorProps>(props.accessibility, {
-    debugName: Input.displayName,
-    actionHandlers: {
-      clear: e => {
-        if (clearable && value !== '') {
-          e.stopPropagation();
-          e.nativeEvent && e.nativeEvent.stopPropagation();
-          handleOnClear(e);
-        }
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    const [htmlInputProps, restProps] = partitionHTMLProps(unhandledProps);
+    const [value, setValue] = useAutoControlled({
+      defaultValue: props.defaultValue,
+      value: props.value as string,
+      initialValue: '',
+    });
+    const hasValue: boolean = !!value && (value as string)?.length !== 0;
+
+    const isShowSuccessIndicatorUndefined = typeof showSuccessIndicator === 'undefined';
+
+    const requiredAndSuccessful = isShowSuccessIndicatorUndefined
+      ? ((required && hasValue) || showSuccessIndicator) && !error
+      : showSuccessIndicator;
+
+    const hasIcon = !!icon || showSuccessIndicator || (required && isShowSuccessIndicatorUndefined) || !!error;
+
+    const { classes, styles: resolvedStyles } = useStyles<InputStylesProps>(composeOptions.displayName, {
+      className: inputClassName,
+      mapPropsToStyles: () => ({
+        fluid,
+        inverted,
+        inline,
+        disabled,
+        clearable,
+        hasIcon,
+        requiredAndSuccessful,
+        iconPosition,
+        hasValue,
+        error,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+      composeOptions,
+      unstable_props: props,
+    });
+
+    const getA11yProps = useAccessibility<InputBehaviorProps>(props.accessibility, {
+      debugName: composeOptions.displayName,
+      actionHandlers: {
+        clear: e => {
+          if (clearable && value !== '') {
+            e.stopPropagation();
+            e.nativeEvent && e.nativeEvent.stopPropagation();
+            handleOnClear(e);
+          }
+        },
       },
-    },
-    mapPropsToBehavior: () => ({
-      disabled,
-    }),
-    rtl: context.rtl,
-  });
+      mapPropsToBehavior: () => ({
+        disabled,
+        required,
+        error,
+      }),
+      rtl: context.rtl,
+    });
 
-  const handleIconOverrides = predefinedProps => ({
-    onClick: (e: React.MouseEvent) => {
-      if (!disabled) {
-        handleOnClear(e);
-        inputRef.current.focus();
+    const handleIconOverrides = predefinedProps => ({
+      onClick: (e: React.MouseEvent) => {
+        if (!disabled) {
+          handleOnClear(e);
+          inputRef.current.focus();
+        }
+
+        _.invoke(predefinedProps, 'onClick', e, props);
+      },
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (disabled) {
+        return;
       }
 
-      _.invoke(predefinedProps, 'onClick', e, props);
-    },
-  });
+      const newValue = _.get(e, 'target.value');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return;
-    }
+      _.invoke(props, 'onChange', e, { ...props, value: newValue });
 
-    const newValue = _.get(e, 'target.value');
+      setValue(newValue);
+    };
 
-    _.invoke(props, 'onChange', e, { ...props, value: newValue });
+    const handleOnClear = (e: React.MouseEvent | React.KeyboardEvent) => {
+      if (clearable) {
+        _.invoke(props, 'onChange', e, { ...props, value: '' });
+        setValue('');
+      }
+    };
 
-    setValue(newValue);
-  };
+    const computeIcon = (): ShorthandValue<BoxProps> => {
+      if (clearable && (value as string)?.length !== 0) {
+        return {};
+      }
+      if (requiredAndSuccessful) {
+        return successIndicator;
+      }
+      if (error) {
+        return errorIndicator;
+      }
+      return icon || null;
+    };
 
-  const handleOnClear = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (clearable) {
-      _.invoke(props, 'onChange', e, { ...props, value: '' });
-      setValue('');
-    }
-  };
-
-  const computeIcon = (): ShorthandValue<BoxProps> => {
-    if (clearable && (value as string)?.length !== 0) {
-      return {};
-    }
-
-    return icon || null;
-  };
-
-  const element = Box.create(wrapper, {
-    defaultProps: () =>
-      getA11yProps('root', {
-        className: cx(inputClassName, className),
-        children: (
-          <>
-            <Ref
-              innerRef={(inputElement: HTMLElement) => {
-                handleRef(inputRef, inputElement);
-                handleRef(props.inputRef, inputElement);
-              }}
-            >
-              {Box.create(input || type, {
+    const element = Box.create(wrapper, {
+      defaultProps: () =>
+        getA11yProps('root', {
+          className: classes.root,
+          children: (
+            <>
+              <Ref
+                innerRef={(inputElement: HTMLElement) => {
+                  handleRef(inputRef, inputElement);
+                  handleRef(props.inputRef, inputElement);
+                  handleRef(ref, inputElement);
+                }}
+              >
+                {createShorthand(composeOptions.slots.control, input || type, {
+                  defaultProps: () =>
+                    getA11yProps('input', {
+                      ...htmlInputProps,
+                      as: 'input',
+                      disabled,
+                      type,
+                      required,
+                      value: value || '',
+                      className: inputSlotClassNames.input,
+                      styles: resolvedStyles.input,
+                      onChange: handleChange,
+                    }),
+                })}
+              </Ref>
+              {createShorthand(composeOptions.slots.icon, computeIcon(), {
                 defaultProps: () =>
-                  getA11yProps('input', {
-                    ...htmlInputProps,
-                    as: 'input',
-                    disabled,
-                    type,
-                    value: value || '',
-                    className: inputSlotClassNames.input,
-                    styles: resolvedStyles.input,
-                    onChange: handleChange,
+                  getA11yProps('icon', {
+                    className: inputSlotClassNames.icon,
+                    styles: resolvedStyles.icon,
                   }),
+                overrideProps: handleIconOverrides,
               })}
-            </Ref>
-            {Box.create(computeIcon(), {
-              defaultProps: () =>
-                getA11yProps('icon', {
-                  className: inputSlotClassNames.icon,
-                  styles: resolvedStyles.icon,
-                }),
-              overrideProps: handleIconOverrides,
-            })}
-          </>
-        ),
-        styles: resolvedStyles.root,
-        ...restProps,
-      }),
-    overrideProps: {
-      as: (wrapper && (wrapper as any).as) || ElementType,
+            </>
+          ),
+          styles: resolvedStyles.root,
+          ...restProps,
+        }),
+      overrideProps: {
+        as: (wrapper && (wrapper as any).as) || ElementType,
+      },
+    });
+    setEnd();
+    return element;
+  },
+  {
+    className: inputClassName,
+    displayName: 'Input',
+    slots: {
+      control: Box,
+      icon: Box,
     },
-  });
-  setEnd();
-  return element;
+    handledProps: [
+      'accessibility',
+      'as',
+      'children',
+      'className',
+      'design',
+      'styles',
+      'variables',
+      'clearable',
+      'defaultValue',
+      'disabled',
+      'fluid',
+      'icon',
+      'iconPosition',
+      'input',
+      'inputRef',
+      'inline',
+      'inverted',
+      'onChange',
+      'type',
+      'value',
+      'wrapper',
+      'required',
+      'successIndicator',
+      'error',
+      'errorIndicator',
+      'showSuccessIndicator',
+    ],
+  },
+) as ComponentWithAs<'div', InputProps> & {
+  create: ShorthandFactory<InputProps>;
 };
-
-Input.displayName = 'Input';
 
 Input.propTypes = {
   ...commonPropTypes.createCommon({
@@ -281,6 +359,11 @@ Input.propTypes = {
   type: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   wrapper: customPropTypes.wrapperShorthand,
+  required: PropTypes.bool,
+  successIndicator: customPropTypes.shorthandAllowingChildren,
+  error: PropTypes.bool,
+  errorIndicator: customPropTypes.shorthandAllowingChildren,
+  showSuccessIndicator: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -288,13 +371,11 @@ Input.defaultProps = {
   type: 'text',
   wrapper: {},
   iconPosition: 'end',
+  errorIndicator: <ExclamationCircleIcon />,
+  successIndicator: <PresenceAvailableIcon />,
 };
 
-Input.handledProps = Object.keys(Input.propTypes) as any;
-
-Input.create = createShorthandFactory({
-  Component: Input,
-});
+Input.create = createShorthandFactory({ Component: Input });
 
 /**
  * An Input is a field used to elicit an input from a user.

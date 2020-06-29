@@ -11,6 +11,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -88,25 +89,21 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       <div className={this._classNames.root}>
         {bars}
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        {!hideTooltip && isCalloutVisible ? (
-          <Callout
-            gapSpace={10}
-            isBeakVisible={false}
-            target={this.state.refSelected}
-            setInitialFocus={true}
-            directionalHint={DirectionalHint.topRightEdge}
-            id={this._calloutId}
-          >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-              </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              </div>
-            </div>
-          </Callout>
-        ) : null}
+        <Callout
+          gapSpace={15}
+          isBeakVisible={false}
+          target={this.state.refSelected}
+          setInitialFocus={true}
+          hidden={!(!hideTooltip && isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton } from '../../Button';
+import { IconButton } from '../../compat/Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
@@ -193,7 +193,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
           </div>
         )}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {(keytipAttributes: any): JSX.Element => (
+          {// tslint:disable-next-line:no-any
+          (keytipAttributes: any): JSX.Element => (
             <div
               {...nativeProps}
               className={classNames.spinButtonWrapper}

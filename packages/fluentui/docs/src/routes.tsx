@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
+import Builder, { FullScreenPreview } from '@fluentui/react-builder';
+
 import ExternalExampleLayout from './components/ExternalExampleLayout';
 import DocsLayout from './components/DocsLayout';
 import DocsRoot from './components/DocsRoot';
@@ -53,12 +55,15 @@ import HexagonalAvatarPrototype from './prototypes/hexagonalAvatar';
 import TablePrototype from './prototypes/table';
 import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
 import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
+import FormValidationPrototype from './prototypes/FormValidation';
 
 const Routes = () => (
   // Remove trailing slash
   <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
     <Switch>
       <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
+      <Route exact path="/builder" component={Builder} />
+      <Route exact path="/builder/maximize" component={FullScreenPreview} />
       <DocsLayout>
         <PerfDataProvider>
           <Switch>
@@ -88,6 +93,7 @@ const Routes = () => (
             <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
             <Route exact path="/prototype-table" component={TablePrototype} />
             <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
+            <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
             <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
             <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
             <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />

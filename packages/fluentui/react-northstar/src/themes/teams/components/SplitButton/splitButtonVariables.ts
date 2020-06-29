@@ -33,6 +33,8 @@ export interface SplitButtonVariables {
   toggleButtonColorFocus: string;
 
   toggleButtonPrimaryColor: string;
+  toggleButtonPrimaryHoverBackgroundColor: string;
+  toggleButtonPrimaryHoverColor: string;
   toggleButtonPrimaryBackgroundColor: string;
   toggleButtonPrimaryBorderColor: string;
   toggleButtonPrimaryBoxShadow: string;
@@ -83,6 +85,8 @@ export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
     toggleButtonBorderColorFocus: undefined,
     toggleButtonColorFocus: undefined,
 
+    toggleButtonPrimaryHoverBackgroundColor: siteVars.colorScheme.brand.backgroundHover,
+    toggleButtonPrimaryHoverColor: siteVars.colorScheme.brand.foregroundHover1,
     toggleButtonPrimaryColor: siteVars.colorScheme.brand.foreground4,
     toggleButtonPrimaryBackgroundColor: siteVars.colorScheme.brand.background,
     toggleButtonPrimaryBorderColor: 'transparent',

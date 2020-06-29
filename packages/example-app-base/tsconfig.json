@@ -16,8 +16,8 @@
     "skipLibCheck": true,
     "noImplicitThis": true,
     "outDir": "lib",
-    "lib": ["es5", "dom"],
-    "types": ["webpack-env", "jest", "es6-promise"]
+    "lib": ["es5", "dom", "es2015.promise"],
+    "types": ["webpack-env", "jest"]
   },
   "include": ["src"]
 }

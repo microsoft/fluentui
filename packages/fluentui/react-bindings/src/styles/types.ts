@@ -1,5 +1,5 @@
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { DebugData, ICSSInJSStyle, PropsWithVarsAndStyles, ThemeInput, ThemePrepared } from '@fluentui/styles';
-import { IRenderer as FelaRenderer } from 'fela';
 
 import { Telemetry } from '../telemetry/types';
 
@@ -52,18 +52,6 @@ export type ComponentDesignProp = {
   maxHeight?: ICSSInJSStyle['maxHeight'];
 };
 
-export type RendererParam = {
-  theme: { direction: 'ltr' | 'rtl' };
-  disableAnimations: boolean;
-  displayName: string;
-  sanitizeCss: boolean;
-};
-
-export type RendererRenderRule = (rule: () => ICSSInJSStyle, param: RendererParam) => string;
-export type Renderer = Omit<FelaRenderer, 'renderRule'> & {
-  renderRule: RendererRenderRule;
-};
-
 export interface StylesContextPerformance {
   enableSanitizeCssPlugin: boolean;
   enableStylesCaching: boolean;
@@ -73,32 +61,31 @@ export interface StylesContextPerformance {
 
 export type StylesContextPerformanceInput = Partial<StylesContextPerformance>;
 
-export type StylesContextInputValue<R = Renderer> = {
+export type StylesContextInputValue = {
   rtl?: boolean;
   disableAnimations?: boolean;
   performance?: StylesContextPerformanceInput;
-  renderer?: R;
+  renderer?: Renderer;
   theme?: ThemeInput;
 };
 
-export type StylesContextValue<R = Renderer> = {
+export type StylesContextValue = {
   rtl: boolean;
   disableAnimations: boolean;
   performance: StylesContextPerformance;
-  renderer: R;
+  renderer: Renderer;
   theme: ThemePrepared;
   telemetry?: Telemetry;
 };
 
 export type PrimitiveProps = Record<string, boolean | number | string | undefined>;
 
-export type ResolveStylesOptions = StylesContextValue<{
-  renderRule: RendererRenderRule;
-}> & {
+export type ResolveStylesOptions = StylesContextValue & {
   className?: string;
   allDisplayNames: string[];
   primaryDisplayName: string;
-  props: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
+  componentProps: Record<string, any>;
+  inlineStylesProps: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
   telemetry?: Telemetry;
   saveDebug: (debug: DebugData | null) => void;

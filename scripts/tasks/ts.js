@@ -28,12 +28,8 @@ module.exports.ts = {
   },
   esm: () => {
     const extraOptions = getExtraTscParams(argv());
-    return tscTask({
-      ...extraOptions,
-      outDir: 'lib',
-      module: 'esnext',
-      ...(useTsBuildInfo && { tsBuildInfoFile: '.tsbuildinfo' }),
-    });
+    // Use default tsbuildinfo for this variant
+    return tscTask({ ...extraOptions, outDir: 'lib', module: 'esnext' });
   },
   amd: () => {
     const extraOptions = getExtraTscParams(argv());
@@ -46,6 +42,7 @@ module.exports.ts = {
   },
   commonjsOnly: () => {
     const extraOptions = getExtraTscParams(argv());
+    // Use default tsbuildinfo for this variant (since it's the only variant)
     return tscTask({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
   },
 };

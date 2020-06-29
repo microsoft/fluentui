@@ -1,8 +1,46 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 28 May 2020 12:42:08 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.21.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.4)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.21.3..@uifabric/utilities_v7.21.4)
+
+### Patches
+
+- Fix scroll position math for overscrolling (#13555) ([PR #13622](https://github.com/microsoft/fluentui/pull/13622) by kai@substantial.com)
+
+## [7.21.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.1)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.21.0..@uifabric/utilities_v7.21.1)
+
+### Patches
+
+- add test util for react-test-renderer create with act wrapped ([PR #13713](https://github.com/microsoft/fluentui/pull/13713) by xgao@microsoft.com)
+
+## [7.21.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.0)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.3..@uifabric/utilities_v7.21.0)
+
+### Minor changes
+
+- add new Modalization utility ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
+
+## [7.20.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.3)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.20.2..@uifabric/utilities_v7.20.3)
+
+### Patches
+
+- Removing side effect code that was breaking webpack treeshaking. ([PR #13360](https://github.com/microsoft/fluentui/pull/13360) by dzearing@microsoft.com)
+- Removing side-effect code which was causing webpack to bail out of optimizations. ([PR #13415](https://github.com/microsoft/fluentui/pull/13415) by dzearing@microsoft.com)
+- Fixed prototype pollution vulnerability. ([PR #13427](https://github.com/microsoft/fluentui/pull/13427) by esteban.230@hotmail.com)
 
 ## [7.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.20.2)
 

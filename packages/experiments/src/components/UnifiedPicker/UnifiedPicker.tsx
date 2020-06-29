@@ -15,7 +15,7 @@ import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
-import { copyToClipboard } from '@uifabric/experiments/src/components/SelectedItemsList/utils/copyToClipboard';
+import { copyToClipboard } from '../SelectedItemsList/index';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -35,10 +35,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectPreviousSuggestion,
     selectNextSuggestion,
   } = useFloatingSuggestionItems(suggestions, selectedSuggestionIndex, isSuggestionsVisible);
-  const { selectedItems, addItems, removeItems, removeItemAt, removeSelectedItems, unselectAll } = useSelectedItems(
-    selection,
-    props.selectedItemsListProps.selectedItems,
-  );
+
+  const {
+    selectedItems,
+    addItems,
+    removeItems,
+    removeItemAt,
+    removeSelectedItems,
+    unselectAll,
+    getSelectedItems,
+  } = useSelectedItems(selection, props.selectedItemsListProps.selectedItems);
 
   const _onSelectionChanged = () => {
     showPicker(false);
@@ -77,10 +83,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       ) {
         showPicker(false);
         ev.preventDefault();
+        if (props.selectedItemsListProps.onItemsRemoved) {
+          props.selectedItemsListProps.onItemsRemoved([selectedItems[selectedItems.length - 1]]);
+        }
         removeItemAt(selectedItems.length - 1);
       } else if (focusedItemIndices.length > 0) {
         showPicker(false);
         ev.preventDefault();
+        if (props.selectedItemsListProps.onItemsRemoved) {
+          props.selectedItemsListProps.onItemsRemoved(getSelectedItems());
+        }
         removeSelectedItems();
         input.current?.focus();
       }
@@ -150,6 +162,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       ev.preventDefault();
       // Pass current selected items
       props.onPaste(inputText, selectedItems);
+      addItems(selectedItems);
     }
   };
 
@@ -167,6 +180,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.floatingSuggestionProps.onFloatingSuggestionsDismiss();
     }
     showPicker(false);
+  };
+  const _onFloatingSuggestionRemoved = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
+    if (props.floatingSuggestionProps.onRemoveSuggestion) {
+      props.floatingSuggestionProps.onRemoveSuggestion(ev, item);
+    }
+    // We want to keep showing the picker to show the user that the entry has been removed from the list.
+    showPicker(true);
   };
   const _onSuggestionSelected = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
     if (props.floatingSuggestionProps.onSuggestionSelected) {
@@ -194,6 +214,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
       onSuggestionSelected: _onSuggestionSelected,
       onKeyDown: _onInputKeyDown,
+      onRemoveSuggestion: _onFloatingSuggestionRemoved,
     });
 
   return (

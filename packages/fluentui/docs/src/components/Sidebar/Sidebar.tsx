@@ -21,7 +21,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
-import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon } from '@fluentui/react-icons-northstar';
+import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
@@ -335,6 +335,11 @@ class Sidebar extends React.Component<any, any> {
         public: true,
       },
       {
+        key: 'form-validation',
+        title: { content: 'Form Validation', as: NavLink, to: '/prototype-form-validation' },
+        public: true,
+      },
+      {
         key: 'dropdowns',
         title: { content: 'Dropdowns', as: NavLink, to: '/prototype-dropdowns' },
         public: false,
@@ -558,6 +563,13 @@ class Sidebar extends React.Component<any, any> {
               <Image src="public/images/github.png" width="20px" height="20px" styles={{ float: 'right' }} />
             </Box>
           </a>
+          <NavLink to="/builder" exact style={topItemTheme} activeStyle={{ fontWeight: 'bold' }}>
+            <Box>
+              Builder
+              <span style={{ border: 'orange', color: 'orange', marginLeft: '0.5rem' }}>alpha</span>
+              <EditIcon styles={{ float: 'right' }} />
+            </Box>
+          </NavLink>
           <a href={changeLogUrl} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
             <Box>
               CHANGELOG

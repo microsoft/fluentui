@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { Checkbox } from './Checkbox';
@@ -24,7 +25,7 @@ const IndeterminateControlledCheckbox: React.FunctionComponent = () => {
 };
 
 describe('Checkbox', () => {
-  let renderedComponent: renderer.ReactTestRenderer | undefined;
+  let renderedComponent: ReactTestRenderer | undefined;
   let component: ReactWrapper | undefined;
 
   beforeEach(() => {
@@ -44,19 +45,19 @@ describe('Checkbox', () => {
   });
 
   it('renders unchecked correctly', () => {
-    renderedComponent = renderer.create(<Checkbox label="Standard checkbox" />);
+    renderedComponent = create(<Checkbox label="Standard checkbox" />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders checked correctly', () => {
-    renderedComponent = renderer.create(<Checkbox label="Standard checkbox" checked />);
+    renderedComponent = create(<Checkbox label="Standard checkbox" checked />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders indeterminate correctly', () => {
-    renderedComponent = renderer.create(<Checkbox label="Standard checkbox" indeterminate />);
+    renderedComponent = create(<Checkbox label="Standard checkbox" indeterminate />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -52,6 +52,7 @@ export * from './math';
 export * from './memoize';
 export * from './merge';
 export * from './mobileDetector';
+export * from './modalize';
 export { assign, filteredAssign, mapEnumByName, shallowCompare, values } from './object';
 export * from './osDetector';
 export * from './overflow';

@@ -11,11 +11,13 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  createShorthand,
 } from '../../utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { WithAsProp, withSafeTypeForAs, ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
 import { useTelemetry, useAccessibility, getElementType, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
+import DividerContent from './DividerContent';
 
 export interface DividerProps
   extends UIComponentProps,
@@ -48,7 +50,10 @@ export type DividerStylesProps = Required<
 
 export const dividerClassName = 'ui-divider';
 
-export const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<DividerProps> = props => {
+const Divider: React.FC<WithAsProp<DividerProps>> &
+  FluentComponentStaticProps<DividerProps> & {
+    Content: typeof DividerContent;
+  } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
   setStart();
@@ -58,7 +63,6 @@ export const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStatic
     fitted,
     size,
     important,
-    content,
     vertical,
     className,
     design,
@@ -75,7 +79,7 @@ export const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStatic
   const { classes } = useStyles<DividerStylesProps>(Divider.displayName, {
     className: dividerClassName,
     mapPropsToStyles: () => ({
-      hasContent: childrenExist(children) || !!content,
+      hasContent: childrenExist(children) || !!props.content,
       color,
       fitted,
       size,
@@ -91,11 +95,13 @@ export const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStatic
     rtl: context.rtl,
   });
 
+  const content = createShorthand(DividerContent, props.content, {});
+
   const element = (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
     >
@@ -119,6 +125,8 @@ Divider.propTypes = {
 Divider.defaultProps = {
   size: 0,
 };
+
+Divider.Content = DividerContent;
 
 Divider.handledProps = Object.keys(Divider.propTypes) as any;
 

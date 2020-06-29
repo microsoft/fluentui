@@ -2,6 +2,57 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.99",
+      "version": "0.11.99",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/tsx-editor"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 12:37:16 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.95",
+      "version": "0.11.95",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Datetime utilities package",
+            "author": "pompomon@gmail.com",
+            "commit": "ae2604b53ac23c13faf40e8dd7de76e324a1c456",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.94",
+      "version": "0.11.94",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing dep on example-data",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 May 2020 01:06:55 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.67",
       "version": "0.11.67",

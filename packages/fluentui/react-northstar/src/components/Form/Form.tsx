@@ -24,6 +24,15 @@ import FormField, { FormFieldProps } from './FormField';
 import { useTelemetry, getElementType, useUnhandledProps, useStyles, useAccessibility } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import FormLabel from './FormLabel';
+import FormMessage from './FormMessage';
+import FormInput from './FormInput';
+import FormCheckbox from './FormCheckbox';
+import FormDropdown from './FormDropdown';
+import FormButton from './FormButton';
+import FormRadioGroup from './FormRadioGroup';
+import FormSlider from './FormSlider';
+import FormFieldCustom from './FormFieldCustom';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -52,6 +61,15 @@ export type FormStylesProps = never;
 const Form: React.FC<WithAsProp<FormProps>> &
   FluentComponentStaticProps<FormProps> & {
     Field: typeof FormField;
+    Label: typeof FormLabel;
+    Message: typeof FormMessage;
+    Input: typeof FormInput;
+    Checkbox: typeof FormCheckbox;
+    Dropdown: typeof FormDropdown;
+    Button: typeof FormButton;
+    RadioGroup: typeof FormRadioGroup;
+    Slider: typeof FormSlider;
+    FieldCustom: typeof FormFieldCustom;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
@@ -129,6 +147,15 @@ Form.create = createShorthandFactory({
 });
 
 Form.Field = FormField;
+Form.FieldCustom = FormFieldCustom;
+Form.Label = FormLabel;
+Form.Message = FormMessage;
+Form.Input = FormInput;
+Form.Checkbox = FormCheckbox;
+Form.Dropdown = FormDropdown;
+Form.Button = FormButton;
+Form.RadioGroup = FormRadioGroup;
+Form.Slider = FormSlider;
 
 /**
  * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.

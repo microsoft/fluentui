@@ -40,6 +40,28 @@ exports[`Icon renders Icon correctly using iconName 1`] = `
 </i>
 `;
 
+exports[`Icon renders Icon with children correctly 1`] = `
+<i
+  aria-hidden={true}
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+>
+  <span>
+    This icon has children that are rendered inside of it
+  </span>
+</i>
+`;
+
 exports[`Icon renders Icon with custom styles 1`] = `
 <i
   aria-hidden={true}
@@ -79,4 +101,57 @@ exports[`Icon renders Icon with getStyles 1`] = `
 >
   
 </i>
+`;
+
+exports[`Icon renders Icon with imageProps correctly 1`] = `
+<span
+  aria-hidden={true}
+  className=
+      ms-Icon-imageContainer
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons-2";
+        font-style: normal;
+        font-weight: normal;
+        overflow: hidden;
+        speak: none;
+      }
+  data-icon-name="CompassNW"
+>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <img
+      className=
+          ms-Image-image
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            opacity: 0;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png"
+    />
+  </div>
+</span>
 `;

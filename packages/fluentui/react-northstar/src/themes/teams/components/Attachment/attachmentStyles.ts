@@ -39,7 +39,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
         bottom: 0,
         left: 0,
         maxWidth: '100%',
-        height: pxToRem(v.progressHeight),
+        height: v.progressHeight,
         background: v.progressColor,
       },
 
@@ -52,24 +52,24 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           color: v.focusColor,
 
           [`& .${attachmentActionClassName}`]: {
-            color: v.siblingsFocusColor,
+            color: v.focusColor,
           },
 
           [`& .${svgIconClassName}`]: {
-            color: v.siblingsFocusColor,
+            color: v.focusColor,
           },
         },
 
         ':hover': {
-          background: v.backgroundColorHover,
+          backgroundColor: v.backgroundColorHover,
           color: v.textColorHover,
 
           [`& .${attachmentActionClassName}`]: {
-            color: v.siblingsHoverColor,
+            color: v.textColorHover,
           },
 
           [`& .${svgIconClassName}`]: {
-            color: v.siblingsHoverColor,
+            color: v.textColorHover,
           },
         },
       }),

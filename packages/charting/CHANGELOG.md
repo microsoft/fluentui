@@ -1,8 +1,99 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 25 May 2020 12:38:22 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.6)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.5..@uifabric/charting_v2.3.6)
+
+### Patches
+
+- fix Invalid aria-attribute value for charts ([PR #13775](https://github.com/microsoft/fluentui/pull/13775) by v-gorraj@microsoft.com)
+- Fix issue When the mouse is over the data point on the second chart, the vertical line appears on the first chart. ([PR #13785](https://github.com/microsoft/fluentui/pull/13785) by v-gorraj@microsoft.com)
+
+## [2.3.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.4)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.3..@uifabric/charting_v2.3.4)
+
+### Patches
+
+- Removing some unneeded mergeStyles usage in examples. ([PR #13751](https://github.com/microsoft/fluentui/pull/13751) by dzearing@hotmail.com)
+- Grouped veritcal bar chart - second chart disappear issue fixed ([PR #13781](https://github.com/microsoft/fluentui/pull/13781) by v-jasha@microsoft.com)
+
+## [2.3.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.3)
+
+Tue, 23 Jun 2020 12:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.2..@uifabric/charting_v2.3.3)
+
+### Patches
+
+- LineChart: import find from office-ui-fabric-react/lib/Utilities to support IE11 ([PR #13683](https://github.com/microsoft/fluentui/pull/13683) by v-gorraj@microsoft.com)
+- HorizontalBarChart: Add keyboard accessability ([PR #13706](https://github.com/microsoft/fluentui/pull/13706) by v-gorraj@microsoft.com)
+
+## [2.3.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.2)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.1..@uifabric/charting_v2.3.2)
+
+### Patches
+
+- Vertical Bar chart code updated ([PR #13660](https://github.com/microsoft/fluentui/pull/13660) by v-jasha@microsoft.com)
+- doughnut chart target alignment updated ([PR #13703](https://github.com/microsoft/fluentui/pull/13703) by v-jasha@microsoft.com)
+
+## [2.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.1)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.0..@uifabric/charting_v2.3.1)
+
+### Patches
+
+- doughnut chart circualr accessibility issue resolved ([PR #13662](https://github.com/microsoft/fluentui/pull/13662) by v-jasha@microsoft.com)
+
+## [2.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.0)
+
+Thu, 18 Jun 2020 12:37:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.34..@uifabric/charting_v2.3.0)
+
+### Minor changes
+
+- adding focus border functionality to donut chart ([PR #13601](https://github.com/microsoft/fluentui/pull/13601) by v-sivsar@microsoft.com)
+
+### Patches
+
+- fontfamily inherited from fabric ([PR #13523](https://github.com/microsoft/fluentui/pull/13523) by v-jasha@microsoft.com)
+- Y axis ticks truncate issue resolved ([PR #13617](https://github.com/microsoft/fluentui/pull/13617) by v-jasha@microsoft.com)
+- adding css styles fixes, for both normal and high contrast mode ([PR #13639](https://github.com/microsoft/fluentui/pull/13639) by v-sivsar@microsoft.com)
+
+## [2.2.31](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.31)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.29..@uifabric/charting_v2.2.31)
+
+### Patches
+
+- removing resize event from chart and resizing the chart in CDU based on changes in height and width prop ([PR #13505](https://github.com/microsoft/fluentui/pull/13505) by v-sivsar@microsoft.com)
+
+## [2.2.29](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.29)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.27..@uifabric/charting_v2.2.29)
+
+### Patches
+
+- Charting: Change charts callout UI ([PR #13450](https://github.com/microsoft/fluentui/pull/13450) by v-satgar@microsoft.com)
+
+## [2.2.27](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.27)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.23..@uifabric/charting_v2.2.27)
+
+### Patches
+
+- LineChart: Add datapoints for each line and accessibility for it ([PR #13261](https://github.com/microsoft/fluentui/pull/13261) by v-satgar@microsoft.com)
 
 ## [2.2.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.23)
 

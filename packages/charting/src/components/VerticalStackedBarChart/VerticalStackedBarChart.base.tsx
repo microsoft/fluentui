@@ -3,11 +3,12 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
+import { ChartHoverCard } from '@uifabric/charting';
 
 import {
   IVerticalStackedBarChartProps,
@@ -49,6 +50,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _barWidth: number;
   private _yAxisTickCount: number;
   private _colors: string[];
+  private _calloutId: string;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _refArray: IRefArrayData[];
 
@@ -67,6 +69,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     };
     this._onLegendLeave = this._onLegendLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
+    this._calloutId = getId('callout');
     this._refArray = [];
     this._adjustProps();
   }
@@ -103,24 +106,22 @@ export class VerticalStackedBarChartBase extends React.Component<
           </svg>
         </FocusZone>
         {<div className={this._classNames.legendContainer}>{legends}</div>}
-        {!this.props.hideTooltip && isCalloutVisible ? (
-          <Callout
-            gapSpace={10}
-            isBeakVisible={false}
-            target={this.state.refSelected}
-            setInitialFocus={true}
-            directionalHint={DirectionalHint.topRightEdge}
-          >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>
-                {this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-              </div>
-              <div className={this._classNames.hoverCardDataStyles}>
-                {this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              </div>
-            </div>
-          </Callout>
-        ) : null}
+        <Callout
+          gapSpace={15}
+          isBeakVisible={false}
+          target={this.state.refSelected}
+          setInitialFocus={true}
+          hidden={!(!this.props.hideTooltip && isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            XValue={this.state.xCalloutValue}
+            Legend={this.state.selectedLegendTitle}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }
@@ -281,6 +282,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _onBarHover(
     customMessage: string,
+    xAxisPoint: string,
     pointData: number,
     color: string,
     xAxisCalloutData: string,
@@ -298,7 +300,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         selectedLegendTitle: customMessage,
         dataForHoverCard: pointData,
         color: color,
-        xCalloutValue: xAxisCalloutData,
+        xCalloutValue: xAxisCalloutData ? xAxisCalloutData : xAxisPoint,
         yCalloutValue: yAxisCalloutData,
       });
     }
@@ -306,6 +308,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _onBarFocus(
     legendText: string,
+    xAxisPoint: string,
     pointData: number,
     color: string,
     refArrayIndexNumber: number,
@@ -324,7 +327,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             selectedLegendTitle: legendText,
             dataForHoverCard: pointData,
             color: color,
-            xCalloutValue: xAxisCalloutData,
+            xCalloutValue: xAxisCalloutData ? xAxisCalloutData : xAxisPoint,
             yCalloutValue: yAxisCalloutData,
           });
         }
@@ -395,6 +398,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend,
+            singleChartData.xAxisPoint,
             point.data,
             color,
             point.xAxisCalloutData!,
@@ -403,15 +407,18 @@ export class VerticalStackedBarChartBase extends React.Component<
           onMouseMove={this._onBarHover.bind(
             this,
             point.legend,
+            singleChartData.xAxisPoint,
             point.data,
             color,
             point.xAxisCalloutData!,
             point.yAxisCalloutData!,
           )}
+          aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(
             this,
             point.legend,
+            singleChartData.xAxisPoint,
             point.data,
             color,
             refArrayIndexNumber,
