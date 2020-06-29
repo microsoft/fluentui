@@ -5,6 +5,7 @@ import Button from 'src/components/Button/Button';
 describe('FormButton', () => {
   isConformant(FormButton, {
     constructorName: 'FormButton',
+    forwardsRefTo: `Button`,
     passesUnhandledPropsTo: Button,
   });
 });
