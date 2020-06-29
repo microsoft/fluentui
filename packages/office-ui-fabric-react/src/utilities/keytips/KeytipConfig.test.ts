@@ -9,25 +9,25 @@ describe('KeytipConfig', () => {
           id: 'keytip1',
           content: 'A',
           optionalProps: {
-            onExecute: jest.fn()
+            onExecute: jest.fn(),
           },
           children: [
             {
               id: 'keytip2',
               content: 'B1',
               optionalProps: {
-                disabled: true
+                disabled: true,
               },
               children: [
                 {
                   id: 'keytip3',
-                  content: 'C'
-                }
-              ]
+                  content: 'C',
+                },
+              ],
             },
             {
               id: 'keytip4',
-              content: 'T2'
+              content: 'T2',
             },
             {
               id: 'keytip5',
@@ -37,8 +37,8 @@ describe('KeytipConfig', () => {
                   id: 'keytip6',
                   content: 'X0',
                   optionalProps: {
-                    onReturn: jest.fn()
-                  }
+                    onReturn: jest.fn(),
+                  },
                 },
                 {
                   id: 'keytip7',
@@ -46,15 +46,15 @@ describe('KeytipConfig', () => {
                   children: [
                     {
                       id: 'keytip8',
-                      content: 'R'
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                      content: 'R',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     };
 
     const keytipConfigMap = buildKeytipConfigMap(keytipConfig);

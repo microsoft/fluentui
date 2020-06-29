@@ -12,7 +12,7 @@ export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: R
   extendComponent(obj, {
     componentDidMount: _onMount,
     componentDidUpdate: _onUpdate,
-    componentWillUnmount: _onUnmount
+    componentWillUnmount: _onUnmount,
   });
 }
 

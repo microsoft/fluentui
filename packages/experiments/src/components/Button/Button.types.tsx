@@ -5,7 +5,13 @@ import { ITextSlot } from 'office-ui-fabric-react';
 import { IComponentStyles, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IFontIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
-import { IActionable, IActionableProps, IActionableSlots, IActionableTokens, IActionableViewProps } from './Actionable/Actionable.types';
+import {
+  IActionable,
+  IActionableProps,
+  IActionableSlots,
+  IActionableTokens,
+  IActionableViewProps,
+} from './Actionable/Actionable.types';
 
 /**
  * {@docCategory Button}
@@ -49,14 +55,20 @@ export interface IButtonSlots extends IActionableSlots {
  */
 export interface IButton extends IActionable {}
 
-export type INativeButtonProps = Omit<React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>, 'content'>;
+export type INativeButtonProps = Omit<
+  React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
+  'content'
+>;
 
 /**
  * {@docCategory Button}
  */
 export interface IButtonProps
   extends ISlottableProps<IButtonSlots>,
-    Pick<IActionableProps, 'href' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'>,
+    Pick<
+      IActionableProps,
+      'href' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'
+    >,
     IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
     IBaseProps<IButton>,
     INativeButtonProps {
@@ -104,7 +116,7 @@ export interface IButtonTokens extends IActionableTokens {
   borderWidthFocused?: number | string;
 
   /**
-   * Defines the padding of the Button, between the Button border and the Button contents, when the focus is on the Button.
+   * Defines the padding of the Button, between the Button border and contents, when the focus is on the Button.
    */
   contentPaddingFocused?: number | string;
 

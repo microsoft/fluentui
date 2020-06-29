@@ -8,7 +8,7 @@ import {
   getElementIndexPath,
   getFirstTabbable,
   getFocusableByIndexPath,
-  getLastTabbable
+  getLastTabbable,
 } from './focus';
 
 let _hiddenElement: HTMLElement | undefined;
@@ -25,17 +25,17 @@ function _initialize(): void {
   _hiddenElement = renderIntoDocument(
     <div data-is-visible={false}>
       <button />
-    </div>
+    </div>,
   ) as HTMLElement;
   _visibleElement = renderIntoDocument(
     <div data-is-visible={true}>
       <button />
-    </div>
+    </div>,
   ) as HTMLElement;
   _element = renderIntoDocument(
     <div>
       <button />
-    </div>
+    </div>,
   ) as HTMLElement;
   // tslint:disable-next-line:no-any
   (_element as any).isVisible = true;
@@ -93,6 +93,12 @@ describe('isElementTabbable', () => {
     expect(isElementTabbable(input)).toEqual(true);
   });
 
+  it('returns true on select elements', () => {
+    let select = document.createElement('select');
+
+    expect(isElementTabbable(select)).toEqual(true);
+  });
+
   it('returns true on textarea elements', () => {
     let textarea = document.createElement('textarea');
 
@@ -147,7 +153,7 @@ describe('focusAsync', () => {
         <button className="a">a</button>
         <button className="b">b</button>
         <button className="c">c</button>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
@@ -175,7 +181,7 @@ describe('focusAsync', () => {
     let calledFocus = false;
     const fakeComponent = {
       ownerDocument: {},
-      focus: () => (calledFocus = true)
+      focus: () => (calledFocus = true),
     };
 
     focusAsync(fakeComponent);
@@ -284,7 +290,7 @@ describe('getFirstTabbable', () => {
             c
           </button>
         </div>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
@@ -309,7 +315,7 @@ describe('getFirstTabbable', () => {
             c
           </button>
         </div>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
@@ -335,7 +341,7 @@ describe('getLastTabbable', () => {
             c
           </button>
         </div>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
@@ -360,7 +366,7 @@ describe('getLastTabbable', () => {
             c
           </button>
         </div>
-      </div>
+      </div>,
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;

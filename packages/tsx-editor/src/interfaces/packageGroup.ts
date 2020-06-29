@@ -7,8 +7,13 @@
 export interface IPackageGroup {
   /** Name of the global this group of packages' exports will be available from at runtime */
   globalName: string;
-  /** Load the module which will be made available under `globalName */
-  loadGlobal: () => Promise<any>; // tslint:disable-line:no-any
+
+  /**
+   * Load the module which will be made available under `globalName`.
+   * The loader function can either return a promise or take a callback.
+   */
+  loadGlobal: (() => Promise<any>) | ((cb: (globalResult: any) => void) => void); // tslint:disable-line:no-any
+
   /** Packages whose exports are available at runtime from `globalName` */
   packages: IPackage[];
 }

@@ -1,6 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { initializeComponentRef, EventGroup, IDisposable, css, shallowCompare, getNativeProps, divProperties } from '../../Utilities';
+import {
+  initializeComponentRef,
+  EventGroup,
+  IDisposable,
+  css,
+  shallowCompare,
+  getNativeProps,
+  divProperties,
+} from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
@@ -59,7 +67,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this.state = {
       selectionState: this._getSelectionState(props),
       columnMeasureInfo: undefined,
-      isDropping: false
+      isDropping: false,
     };
 
     this._droppingClassNames = '';
@@ -69,7 +77,11 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
-      this._dragDropSubscription = dragDropHelper.subscribe(this._root as HTMLElement, this._events, this._getRowDragDropOptions());
+      this._dragDropSubscription = dragDropHelper.subscribe(
+        this._root as HTMLElement,
+        this._events,
+        this._getRowDragDropOptions(),
+      );
     }
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -100,7 +112,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         this._dragDropSubscription = this.props.dragDropHelper.subscribe(
           this._root as HTMLElement,
           this._events,
-          this._getRowDragDropOptions()
+          this._getRowDragDropOptions(),
         );
       }
     }
@@ -111,7 +123,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       columnMeasureInfo.onMeasureDone(newWidth);
 
       this.setState({
-        columnMeasureInfo: undefined
+        columnMeasureInfo: undefined,
       });
     }
 
@@ -140,7 +152,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
     this.setState({
-      selectionState: this._getSelectionState(newProps)
+      selectionState: this._getSelectionState(newProps),
     });
   }
 
@@ -184,7 +196,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       styles,
       cellsByColumn,
       groupNestingDepth,
-      useFastIcons = true
+      useFastIcons = true,
+      cellStyleProps,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -208,8 +221,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         droppingClassName,
         className,
         compact,
-        enableUpdateAnimations
-      })
+        enableUpdateAnimations,
+        cellStyleProps,
+      }),
     };
 
     const rowClassNames: IDetailsRowFieldsProps['rowClassNames'] = {
@@ -219,12 +233,12 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       cellAnimation: this._classNames.cellAnimation,
       cellPadded: this._classNames.cellPadded,
       cellUnpadded: this._classNames.cellUnpadded,
-      fields: this._classNames.fields
+      fields: this._classNames.fields,
     };
 
     // Only re-assign rowClassNames when classNames have changed.
     // Otherwise, they will cause DetailsRowFields to unnecessarily
-    // re-render, see https://github.com/OfficeDev/office-ui-fabric-react/pull/8799.
+    // re-render, see https://github.com/microsoft/fluentui/pull/8799.
     // Refactor DetailsRowFields to generate own styles to remove need for this.
     if (!shallowCompare(this._rowClassNames || {}, rowClassNames)) {
       this._rowClassNames = rowClassNames;
@@ -241,6 +255,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         onRenderItemColumn={onRenderItemColumn}
         getCellValueKey={getCellValueKey}
         enableUpdateAnimations={enableUpdateAnimations}
+        cellStyleProps={cellStyleProps}
       />
     );
 
@@ -251,7 +266,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {...(typeof isDraggable === 'boolean'
           ? {
               'data-is-draggable': isDraggable, // This data attribute is used by some host applications.
-              draggable: isDraggable
+              draggable: isDraggable,
             }
           : {})}
         direction={FocusZoneDirection.horizontal}
@@ -262,6 +277,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
+        data-selection-touch-invoke={true}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
         data-automationid="DetailsRow"
@@ -281,7 +297,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
               theme,
               isVisible: checkboxVisibility === CheckboxVisibility.always,
               onRenderDetailsCheckbox: onRenderDetailsCheckbox,
-              useFastIcons
+              useFastIcons,
             })}
           </div>
         )}
@@ -293,7 +309,11 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
         {item && rowFields}
         {columnMeasureInfo && (
-          <span role="presentation" className={css(this._classNames.cellMeasurer, this._classNames.cell)} ref={this._cellMeasurer}>
+          <span
+            role="presentation"
+            className={css(this._classNames.cellMeasurer, this._classNames.cell)}
+            ref={this._cellMeasurer}
+          >
             <RowFields
               rowClassNames={this._rowClassNames}
               columns={[columnMeasureInfo.column]}
@@ -306,7 +326,12 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           </span>
         )}
 
-        <span role="checkbox" className={this._classNames.checkCover} aria-checked={isSelected} data-selection-toggle={true} />
+        <span
+          role="checkbox"
+          className={this._classNames.checkCover}
+          aria-checked={isSelected}
+          data-selection-toggle={true}
+        />
       </FocusZone>
     );
   }
@@ -330,8 +355,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       columnMeasureInfo: {
         index,
         column,
-        onMeasureDone
-      }
+        onMeasureDone,
+      },
     });
   }
 
@@ -348,7 +373,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     return {
       isSelected: !!selection && selection.isIndexSelected(itemIndex),
-      isSelectionModal: !!selection && !!selection.isModal && selection.isModal()
+      isSelectionModal: !!selection && !!selection.isModal && selection.isModal(),
     };
   }
 
@@ -357,14 +382,15 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
       this.setState({
-        selectionState: selectionState
+        selectionState: selectionState,
       });
     }
   };
 
   private _onRootRef = (focusZone: FocusZone): void => {
     if (focusZone) {
-      // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
+      // Need to resolve the actual DOM node, not the component.
+      // The element itself will be used for drag/drop and focusing.
       this._root = ReactDOM.findDOMNode(focusZone) as HTMLElement;
     } else {
       this._root = undefined;
@@ -382,7 +408,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       onDragStart: dragDropEvents!.onDragStart,
       updateDropState: this._updateDroppingState,
       onDrop: dragDropEvents!.onDrop,
-      onDragEnd: dragDropEvents!.onDragEnd
+      onDragEnd: dragDropEvents!.onDragEnd,
+      onDragOver: dragDropEvents!.onDragOver,
     };
 
     return options;

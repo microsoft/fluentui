@@ -1,5 +1,3 @@
-import { IRawStyle } from '@uifabric/merge-styles';
-
 /**
  * Experimental interface for decorative styling in a theme.
  * {@docCategory IEffects}
@@ -31,7 +29,21 @@ export interface IEffects {
   elevation64: string;
 
   /**
-   * How much corners should be rounded, for use with border-radius.
+   * Rounded corner value, for use with border-radius. Smaller values indicate less rounding.
+   * Smaller elements should get less rounding than larger elements.
+   * Used for: buttons
    */
   roundedCorner2: string;
+  /**
+   * Rounded corner value, for use with border-radius. Smaller values indicate less rounding.
+   * Smaller elements should get less rounding than larger elements.
+   * Used for: cards
+   */
+  roundedCorner4: string;
+  /**
+   * Rounded corner value, for use with border-radius. Smaller values indicate less rounding.
+   * Smaller elements should get less rounding than larger elements.
+   * Used for: surfaces
+   */
+  roundedCorner6: string;
 }

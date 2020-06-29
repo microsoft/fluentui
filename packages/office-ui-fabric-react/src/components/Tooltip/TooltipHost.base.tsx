@@ -10,9 +10,15 @@ import {
   hasOverflow,
   portalContainsElement,
   classNamesFunction,
-  KeyCodes
+  KeyCodes,
 } from '../../Utilities';
-import { ITooltipHostProps, TooltipOverflowMode, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
+import {
+  ITooltipHostProps,
+  TooltipOverflowMode,
+  ITooltipHostStyles,
+  ITooltipHostStyleProps,
+  ITooltipHost,
+} from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
 
@@ -25,7 +31,7 @@ const getClassNames = classNamesFunction<ITooltipHostStyleProps, ITooltipHostSty
 
 export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
   public static defaultProps = {
-    delay: TooltipDelay.medium
+    delay: TooltipDelay.medium,
   };
 
   private static _currentVisibleTooltip: ITooltipHost | undefined;
@@ -37,6 +43,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   private _async: Async;
   private _dismissTimerId: number;
   private _openTimerId: number;
+  private _defaultTooltipId = getId('tooltip');
 
   // Constructor
   constructor(props: ITooltipHostProps) {
@@ -46,7 +53,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
     this.state = {
       isAriaPlaceholderRendered: false,
-      isTooltipVisible: false
+      isTooltipVisible: false,
     };
 
     this._async = new Async(this);
@@ -65,17 +72,20 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       setAriaDescribedBy = true,
       tooltipProps,
       styles,
-      theme
+      theme,
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     const { isAriaPlaceholderRendered, isTooltipVisible } = this.state;
-    const tooltipId = id || getId('tooltip');
-    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
+    const tooltipId = id || this._defaultTooltipId;
+    const isContentPresent = !!(
+      content ||
+      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
+    );
     const showTooltip = isTooltipVisible && isContentPresent;
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
 
@@ -101,11 +111,10 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
             calloutProps={assign({}, calloutProps, {
               onDismiss: this._hideTooltip,
               onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave
+              onMouseLeave: this._onTooltipMouseLeave,
             })}
             onMouseEnter={this._onTooltipMouseEnter}
             onMouseLeave={this._onTooltipMouseLeave}
-            onWheel={this._hideTooltip}
             {...getNativeProps(this.props, divProperties)}
             {...tooltipProps}
           />
@@ -238,7 +247,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     if (this.state.isTooltipVisible !== isTooltipVisible) {
       this.setState(
         { isAriaPlaceholderRendered: false, isTooltipVisible },
-        () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible)
+        () => this.props.onTooltipToggle && this.props.onTooltipToggle(isTooltipVisible),
       );
     }
   };

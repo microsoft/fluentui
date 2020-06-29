@@ -85,7 +85,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The aria label of the SearchBox for the benefit of screen readers.
-   * @defaultvalue placeholder
    */
   ariaLabel?: string;
 

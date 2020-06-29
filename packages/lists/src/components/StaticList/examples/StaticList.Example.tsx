@@ -22,14 +22,14 @@ const listClassName = mergeStyles({
       background: '#ffffff',
       height: 25,
       lineHeight: 25,
-      paddingLeft: 27
+      paddingLeft: 27,
     },
     'li:nth-child(even)': {
       background: '#f3f2f1',
       height: 50,
-      lineHeight: 50
-    }
-  }
+      lineHeight: 50,
+    },
+  },
 });
 
 export const StaticListExample = () => {

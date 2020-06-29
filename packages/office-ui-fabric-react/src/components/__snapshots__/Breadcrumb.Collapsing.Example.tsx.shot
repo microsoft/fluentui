@@ -150,6 +150,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -310,6 +311,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -470,6 +472,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -630,6 +633,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -879,6 +883,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -1096,7 +1101,6 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: none;
-                        vertical-align: top;
                         white-space: nowrap;
                         width: auto;
                       }
@@ -1204,10 +1208,14 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                             margin-right: 4px;
                             margin-top: 0;
                             text-align: center;
-                            vertical-align: middle;
                           }
                       data-icon-name="More"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -1299,6 +1307,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -1548,6 +1557,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -1777,6 +1787,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -1925,7 +1936,6 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: none;
-                        vertical-align: top;
                         white-space: nowrap;
                         width: auto;
                       }
@@ -2033,10 +2043,14 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                             margin-right: 4px;
                             margin-top: 0;
                             text-align: center;
-                            vertical-align: middle;
                           }
                       data-icon-name="More"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -2129,6 +2143,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;

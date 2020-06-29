@@ -7,12 +7,12 @@ export const useActionableState: IActionableComponent['state'] = props => {
   useImperativeHandle(props.componentRef, () => ({
     focus: () => {
       buttonRef.current && buttonRef.current.focus();
-    }
+    },
   }));
 
   const viewProps: IActionableViewProps = {
     ...props,
-    buttonRef
+    buttonRef,
   };
 
   return viewProps;

@@ -18,7 +18,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     onChange,
     debounceTime = 1000,
     ariaLabel,
-    editorOptions
+    editorOptions,
   } = props;
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
@@ -34,7 +34,11 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
   const divRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const model = (modelRef.current = monaco.editor.createModel(code, language, filename ? monaco.Uri.parse(filename) : undefined));
+    const model = (modelRef.current = monaco.editor.createModel(
+      code,
+      language,
+      filename ? monaco.Uri.parse(filename) : undefined,
+    ));
     const editor = monaco.editor.create(divRef.current!, {
       minimap: { enabled: false },
       fontFamily: CODE_FONT_FAMILY,
@@ -42,7 +46,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       accessibilityHelpUrl: 'https://github.com/Microsoft/monaco-editor/wiki/Monaco-Editor-Accessibility-Guide',
       // add editorOptions default value here (NOT in main destructuring) to avoid re-calling the effect
       ...(editorOptions || {}),
-      model
+      model,
     });
 
     // Handle changes (debounced)

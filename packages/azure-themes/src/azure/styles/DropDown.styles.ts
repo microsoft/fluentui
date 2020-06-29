@@ -15,131 +15,137 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       boxShadow: Depths.depth8,
       selectors: {
         ['.ms-Callout-main']: {
+          // dropdown container
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth
-        }
-      }
+          borderWidth: '0',
+        },
+      },
     },
     caretDownWrapper: {
       right: 8,
       height: StyleConstants.inputControlHeightInner,
-      lineHeight: StyleConstants.inputControlHeight
+      lineHeight: StyleConstants.inputControlHeight,
     },
-    caretDown: {
-      color: semanticColors.inputText
-    },
+    caretDown: [
+      {
+        color: semanticColors.inputText,
+      },
+      disabled && {
+        color: semanticColors.disabledBodyText,
+      },
+    ],
     dropdown: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: FontSizes.size13,
         height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
+
         selectors: {
+          ':focus::after, :focus': {
+            borderColor: semanticColors.primaryButtonBackground,
+          },
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
           },
           ['&:hover .ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
-          }
-        }
+            borderColor: semanticColors.inputBorderHovered,
+          },
+        },
       },
       disabled && {
-        backgroundColor: semanticColors.disabledBackground,
-        borderColor: semanticColors.inputBorder,
-        borderStyle: 'solid',
-        borderWidth: '1px'
+        borderWidth: '0px',
       },
       !disabled && {
         selectors: {
           ['&:hover .ms-Dropdown-title']: {
             color: semanticColors.inputText,
-            borderColor: semanticColors.inputBorderHovered
+            borderColor: semanticColors.inputBorderHovered,
           },
           ['&:focus .ms-Dropdown-title']: {
             color: semanticColors.inputText,
-            borderColor: semanticColors.focusBorder
+            borderColor: semanticColors.focusBorder,
           },
           ['&:active .ms-Dropdown-title']: {
             color: semanticColors.inputText,
-            borderColor: semanticColors.inputBorder
+            borderColor: semanticColors.inputBorder,
           },
           // CaretDown states are the same for focus, hover, active.
           ['&:hover .ms-Dropdown-caretDown, &:focus .ms-Dropdown-caretDown, &:active .ms-Dropdown-caretDown']: {
-            color: semanticColors.inputText
-          }
-        }
-      }
+            color: semanticColors.inputText,
+          },
+        },
+      },
     ],
     dropdownDivider: {
-      backgroundColor: semanticColors.inputBorder
+      backgroundColor: semanticColors.inputBorder,
     },
     title: [
       {
         height: StyleConstants.inputControlHeight,
-        lineHeight: StyleConstants.inputControlHeight,
+        lineHeight: '21px',
         borderColor: semanticColors.inputBorder,
         selectors: {
           span: {
-            lineHeight: StyleConstants.inputControlHeightInner,
+            lineHeight: StyleConstants.inputControlHeight,
             position: 'absolute',
-            top: '1px'
-          }
-        }
+            top: '10px',
+          },
+        },
       },
       hasError && {
         borderColor: semanticColors.errorBackground,
-        borderWidth: StyleConstants.borderWidthError
+        borderWidth: StyleConstants.borderWidthError,
       },
       isOpen &&
         !hasError && {
-          borderColor: semanticColors.inputBorder
+          borderColor: semanticColors.inputBorder,
         },
       disabled && {
-        color: semanticColors.disabledBodyText
-      }
+        color: semanticColors.disabledBodyText,
+      },
     ],
     dropdownItemsWrapper: {
       backgroundColor: semanticColors.bodyBackground,
-      borderColor: semanticColors.inputBorder
+      borderColor: semanticColors.inputBorder,
     },
     dropdownItem: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       selectors: {
         // active: Mouse down on the item, then drag outside.
         '&:hover, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundHovered,
           borderColor: 'transparent',
-          color: semanticColors.bodyText
-        }
-      }
+          color: semanticColors.bodyText,
+        },
+      },
     },
     dropdownItemDisabled: {
       color: semanticColors.disabledBodyText,
-      fontSize: FontSizes.size12
+      fontSize: FontSizes.size13,
     },
     dropdownItemSelected: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
-      fontWeight: 'bold',
       selectors: {
         '&:hover, &:focus, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundChecked,
           borderColor: 'transparent',
-          color: semanticColors.bodyText
-        }
-      }
+          color: semanticColors.bodyText,
+        },
+      },
     },
     dropdownItemHeader: {
-      color: semanticColors.focusBorder
+      color: semanticColors.primaryButtonBackground,
+      fontWeight: '400',
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size12
-    }
+      fontSize: FontSizes.size13,
+    },
   };
 };

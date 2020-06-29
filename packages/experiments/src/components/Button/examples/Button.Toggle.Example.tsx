@@ -18,12 +18,17 @@ export class ButtonToggleExample extends React.Component<{}, IButtonToggleExampl
       defaultButtonToggled: false,
       primaryButtonToggled: false,
       defaultCircularButtonToggled: false,
-      primaryCircularButtonToggled: false
+      primaryCircularButtonToggled: false,
     };
   }
 
   public render(): JSX.Element {
-    const { defaultButtonToggled, primaryButtonToggled, defaultCircularButtonToggled, primaryCircularButtonToggled } = this.state;
+    const {
+      defaultButtonToggled,
+      primaryButtonToggled,
+      defaultCircularButtonToggled,
+      primaryCircularButtonToggled,
+    } = this.state;
 
     const buttonStackTokens: IStackTokens = { childrenGap: 12 };
 

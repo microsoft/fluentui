@@ -25,7 +25,7 @@ storiesOf('Icon', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => (
     <Fabric>
@@ -46,7 +46,7 @@ storiesOf('Icon', module)
         iconName={'None'}
         iconType={IconType.image}
         imageProps={{
-          src: TestImages.iconOne
+          src: TestImages.iconOne,
         }}
       />
     </Fabric>

@@ -1,7 +1,1221 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 18 Nov 2019 12:33:30 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.121.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.5)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.4..office-ui-fabric-react_v7.121.5)
+
+### Patches
+
+- SpinButton: pass through event information if the user spins up or down ([PR #13811](https://github.com/microsoft/fluentui/pull/13811) by makopch@microsoft.com)
+- ContextualMenu: Fixing issue where focus would not return to previously focused element and issue where error might occur if said previously focused element didn't have a focus method. ([PR #13813](https://github.com/microsoft/fluentui/pull/13813) by joschect@microsoft.com)
+- Convert KeytipTransitionModifier to type ([PR #13825](https://github.com/microsoft/fluentui/pull/13825) by KevinTCoughlin@users.noreply.github.com)
+
+## [7.121.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.4)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.2..office-ui-fabric-react_v7.121.4)
+
+### Patches
+
+- PeoplePicker: Fix examples to properly remove duplicates ([PR #13366](https://github.com/microsoft/fluentui/pull/13366) by suprememilanfan@gmail.com)
+
+## [7.121.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.2)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.1..office-ui-fabric-react_v7.121.2)
+
+### Patches
+
+- KeytipData: convert to function component ([PR #13688](https://github.com/microsoft/fluentui/pull/13688) by xgao@microsoft.com)
+
+## [7.121.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.1)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.0..office-ui-fabric-react_v7.121.1)
+
+### Patches
+
+- Keytip: add KeytipLayer storybook decorator and fix missing handled prop for link ([PR #13687](https://github.com/microsoft/fluentui/pull/13687) by xgao@microsoft.com)
+
+## [7.121.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.0)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.3..office-ui-fabric-react_v7.121.0)
+
+### Minor changes
+
+- Icon: Rendering children if passed down as props and adding snapshot tests for these scenarios. ([PR #13621](https://github.com/microsoft/fluentui/pull/13621) by ololubek@microsoft.com)
+- Add new rounded corners to theme ([PR #13635](https://github.com/microsoft/fluentui/pull/13635) by phkuo@microsoft.com)
+
+## [7.120.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.3)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.2..office-ui-fabric-react_v7.120.3)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [7.120.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.2)
+
+Tue, 16 Jun 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.1..office-ui-fabric-react_v7.120.2)
+
+### Patches
+
+- Prevent ContextualMenu from destroying existing menu items on every repaint ([PR #13357](https://github.com/microsoft/fluentui/pull/13357) by tmichon@microsoft.com)
+- fix height and width check in the image component ([PR #13544](https://github.com/microsoft/fluentui/pull/13544) by nif_tony@outlook.com)
+
+## [7.120.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.1)
+
+Mon, 15 Jun 2020 12:45:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.120.0..office-ui-fabric-react_v7.120.1)
+
+### Patches
+
+- modalization for FocusTrapZone ([PR #13281](https://github.com/microsoft/fluentui/pull/13281) by phkuo@microsoft.com)
+
+## [7.120.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.120.0)
+
+Fri, 12 Jun 2020 18:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.119.0..office-ui-fabric-react_v7.120.0)
+
+### Minor changes
+
+- PivotItem: Fixing typing error in headerButtonProps. ([PR #13550](https://github.com/microsoft/fluentui/pull/13550) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Update Details and Grouped list chevron to rotate in the correct direction for RTL. ([PR #13514](https://github.com/microsoft/fluentui/pull/13514) by bcoard@microsoft.com)
+- Combobox: Fix openOnKeyboard prop to work as expected ([PR #13520](https://github.com/microsoft/fluentui/pull/13520) by joschect@microsoft.com)
+- Fix some unnecessary DetailsList styles ([PR #13540](https://github.com/microsoft/fluentui/pull/13540) by phkuo@microsoft.com)
+
+## [7.119.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.119.0)
+
+Wed, 10 Jun 2020 12:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.1..office-ui-fabric-react_v7.119.0)
+
+### Minor changes
+
+- DocumentCard: add prop to open link in a new tab. ([PR #13076](https://github.com/microsoft/fluentui/pull/13076) by mahesh8488@gmail.com)
+- Add onGrowData to Breadcrumb ([PR #13447](https://github.com/microsoft/fluentui/pull/13447) by tmichon@microsoft.com)
+
+## [7.118.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.1)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.118.0..office-ui-fabric-react_v7.118.1)
+
+### Patches
+
+- Link: fix broken href in examples ([PR #13511](https://github.com/microsoft/fluentui/pull/13511) by ololubek@microsoft.com)
+
+## [7.118.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.118.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.4..office-ui-fabric-react_v7.118.0)
+
+### Minor changes
+
+- Dialog: min height for title to ensure subtext doesn't overlap 'close' button. ([PR #13492](https://github.com/microsoft/fluentui/pull/13492) by jdh@microsoft.com)
+
+### Patches
+
+- Dropdown and ContextualMenu doc comment clarifications ([PR #13471](https://github.com/microsoft/fluentui/pull/13471) by elcraig@microsoft.com)
+- Picker/PeoplePicker: Fix issue where default value wouldn't trigger suggestions ([PR #13480](https://github.com/microsoft/fluentui/pull/13480) by joschect@microsoft.com)
+- Deprecating defaultSelectedIndex props in Pivot.types.ts. ([PR #13479](https://github.com/microsoft/fluentui/pull/13479) by czearing@outlook.com)
+
+## [7.117.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.4)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.3..office-ui-fabric-react_v7.117.4)
+
+### Patches
+
+- Fixing GroupedList custom example aria error. ([PR #13457](https://github.com/microsoft/fluentui/pull/13457) by humbertomakotomorimoto@gmail.com)
+- Stack: Clarifying deprecated message of props replaced by tokens. ([PR #13476](https://github.com/microsoft/fluentui/pull/13476) by humbertomakotomorimoto@gmail.com)
+
+## [7.117.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.3)
+
+Thu, 04 Jun 2020 12:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.1..office-ui-fabric-react_v7.117.3)
+
+### Patches
+
+- CommandBar: Fixed caching to greatly improve performance for all users ([PR #13428](https://github.com/microsoft/fluentui/pull/13428) by mgodbolt@microsoft.com)
+- Pivot: replace onKeyPress with onKeyDown and ariaLabel with aria-label ([PR #13442](https://github.com/microsoft/fluentui/pull/13442) by behowell@microsoft.com)
+
+## [7.117.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.1)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.117.0..office-ui-fabric-react_v7.117.1)
+
+### Patches
+
+- Dialog: Fixing broken deprecated props and adding snapshot tests for them. ([PR #13425](https://github.com/microsoft/fluentui/pull/13425) by humbertomakotomorimoto@gmail.com)
+- Remove explicit blocking of Alt key ([PR #13389](https://github.com/microsoft/fluentui/pull/13389) by keyou@microsoft.com)
+- add aria-checked if the role is menuitemradio ([PR #13434](https://github.com/microsoft/fluentui/pull/13434) by makopch@microsoft.com)
+
+## [7.117.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.117.0)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.116.1..office-ui-fabric-react_v7.117.0)
+
+### Minor changes
+
+- Add dedicated touch invoke functionality to SelectionZone ([PR #13241](https://github.com/microsoft/fluentui/pull/13241) by sebastian.oettl@microsoft.com)
+
+### Patches
+
+- SpinButton: Reintroduce incorrect behavior of allowing updates when value is provided to prevent breaking partners. ([PR #13367](https://github.com/microsoft/fluentui/pull/13367) by elcraig@microsoft.com)
+- Changing storybook add-on panel position to default to be at the bottom of the page. ([PR #12906](https://github.com/microsoft/fluentui/pull/12906) by czearing@outlook.com)
+
+## [7.116.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.1)
+
+Thu, 28 May 2020 12:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.116.0..office-ui-fabric-react_v7.116.1)
+
+### Patches
+
+- SplitButton: Making imperative focus call on touch events. ([PR #13361](https://github.com/microsoft/fluentui/pull/13361) by humbertomakotomorimoto@gmail.com)
+
+## [7.116.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.116.0)
+
+Wed, 27 May 2020 12:40:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.2..office-ui-fabric-react_v7.116.0)
+
+### Minor changes
+
+- Pivot: Adding `alwaysRender` prop to `PivotItem` to allow for persistent `PivotItems` to control the amount of re-renders that happen. ([PR #12779](https://github.com/microsoft/fluentui/pull/12779) by herincon@microsoft.com)
+
+## [7.115.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.2)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.1..office-ui-fabric-react_v7.115.2)
+
+### Patches
+
+- MessageBar: Restore style overrides for Link inside MessageBar in high contrast; use dismissButtonAriaLabel as title too ([PR #13034](https://github.com/microsoft/fluentui/pull/13034) by elcraig@microsoft.com)
+- Prettier fix in Callout test. ([PR #12478](https://github.com/microsoft/fluentui/pull/12478) by humbertomakotomorimoto@gmail.com)
+
+## [7.115.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.1)
+
+Wed, 20 May 2020 12:31:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.115.0..office-ui-fabric-react_v7.115.1)
+
+### Patches
+
+- update MessageBarButtonBorder color ([PR #12932](https://github.com/microsoft/fluentui/pull/12932) by chrismo@microsoft.com)
+
+## [7.115.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.115.0)
+
+Mon, 18 May 2020 12:54:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.114.1..office-ui-fabric-react_v7.115.0)
+
+### Minor changes
+
+- Pass all relevant state to Nav group render override ([PR #12854](https://github.com/microsoft/fluentui/pull/12854) by tmichon@microsoft.com)
+
+### Patches
+
+- SpinButton: allow empty string as value, clean up docs and tests ([PR #13174](https://github.com/microsoft/fluentui/pull/13174) by elcraig@microsoft.com)
+- DetailsList: clarify IColumn.ariaLabel docs; other doc cleanup ([PR #13183](https://github.com/microsoft/fluentui/pull/13183) by elcraig@microsoft.com)
+
+## [7.114.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.1)
+
+Fri, 15 May 2020 12:42:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.114.0..office-ui-fabric-react_v7.114.1)
+
+### Patches
+
+- Updating List, Keytips, and Facepile examples to use function components ([PR #12829](https://github.com/microsoft/fluentui/pull/12829) by czearing@outlook.com)
+- updating Shimmer, Slider, SelectedPeopleList, MarqueeSelection, and SwatchColorPicker examples to FC ([PR #12849](https://github.com/microsoft/fluentui/pull/12849) by czearing@outlook.com)
+
+## [7.114.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.114.0)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.113.3..office-ui-fabric-react_v7.114.0)
+
+### Minor changes
+
+- PivotItem: Expanding types of headerButtonProps to include IButtonProps. ([PR #13128](https://github.com/microsoft/fluentui/pull/13128) by humbertomakotomorimoto@gmail.com)
+
+## [7.113.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.113.3)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.113.2..office-ui-fabric-react_v7.113.3)
+
+### Patches
+
+- Support custom checkbox for <GroupHeader>: added onRenderGroupHeaderCheckbox property ([PR #12105](https://github.com/microsoft/fluentui/pull/12105) by sebastian.mattar@gmail.com)
+- Updating examples for ProgressIndicator, FloatingPeoplePicker and ResizeGroupOverflowSetExample to use FC ([PR #12890](https://github.com/microsoft/fluentui/pull/12890) by czearing@outlook.com)
+
+## [7.113.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.113.2)
+
+Thu, 14 May 2020 12:34:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.112.0..office-ui-fabric-react_v7.113.2)
+
+### Patches
+
+- fix accessibility issue ([PR #12952](https://github.com/microsoft/fluentui/pull/12952) by xiameng@microsoft.com)
+- updating DocumentCard and GroupedList to FC ([PR #12851](https://github.com/microsoft/fluentui/pull/12851) by czearing@outlook.com)
+- Update Picker.CustomResult.Example.tsx ([PR #12795](https://github.com/microsoft/fluentui/pull/12795) by patrick@nubo.eu)
+- Updating examples to use `useId` instead of `getId` and converting `Dialog` examples to function components. ([PR #13054](https://github.com/microsoft/fluentui/pull/13054) by czearing@outlook.com)
+
+## [7.112.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.112.0)
+
+Tue, 12 May 2020 12:41:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.111.1..office-ui-fabric-react_v7.112.0)
+
+### Minor changes
+
+- Adding onDragOver method to IDragDropEvents ([PR #12859](https://github.com/microsoft/fluentui/pull/12859) by pawsing@microsoft.com)
+
+## [7.111.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.111.1)
+
+Mon, 11 May 2020 12:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.111.0..office-ui-fabric-react_v7.111.1)
+
+### Patches
+
+- Checkbox: remove unneeded text-align css on label ([PR #13014](https://github.com/microsoft/fluentui/pull/13014) by xgao@microsoft.com)
+- Shimmer: fix high contrast in new edge ([PR #13073](https://github.com/microsoft/fluentui/pull/13073) by xgao@microsoft.com)
+
+## [7.111.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.111.0)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.5..office-ui-fabric-react_v7.111.0)
+
+### Minor changes
+
+- Add custom expand icon support to Group Header ([PR #13011](https://github.com/microsoft/fluentui/pull/13011) by bcoard@microsoft.com)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+- Prettier fix on Callout test. ([PR #12339](https://github.com/microsoft/fluentui/pull/12339) by humbertomakotomorimoto@gmail.com)
+- Checkbox: fix high contrast styles in Edge Chromium ([PR #13035](https://github.com/microsoft/fluentui/pull/13035) by xgao@microsoft.com)
+- Cleaning up callout, announced, and calendar examples ([PR #13053](https://github.com/microsoft/fluentui/pull/13053) by czearing@outlook.com)
+
+## [7.110.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.5)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.4..office-ui-fabric-react_v7.110.5)
+
+### Patches
+
+- CommonJS paths were pointing to esm paths, now should correctly point to the right path. ([PR #13026](https://github.com/microsoft/fluentui/pull/13026) by dzearing@hotmail.com)
+
+## [7.110.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.4)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.3..office-ui-fabric-react_v7.110.4)
+
+### Patches
+
+- Dropdown: improve multi-select selected keys warnings ([PR #12989](https://github.com/microsoft/fluentui/pull/12989) by elcraig@microsoft.com)
+- ColorPicker: removing unneeded array spread. ([PR #12994](https://github.com/microsoft/fluentui/pull/12994) by dzearing@microsoft.com)
+
+## [7.110.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.3)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.2..office-ui-fabric-react_v7.110.3)
+
+### Patches
+
+- Adding missing changes due to move from IPoint to Point. ([PR #12993](https://github.com/microsoft/fluentui/pull/12993) by humbertomakotomorimoto@gmail.com)
+- Add logic to cap the number we show in the facepile descrtiptive overflow at 99 to prevent text overflow ([PR #12902](https://github.com/microsoft/fluentui/pull/12902) by tabrumle@microsoft.com)
+- Prettier fix in Callout test. ([PR #12448](https://github.com/microsoft/fluentui/pull/12448) by humbertomakotomorimoto@gmail.com)
+- MarqueeSelection: Fixing drag and drop functionality. ([PR #12991](https://github.com/microsoft/fluentui/pull/12991) by humbertomakotomorimoto@gmail.com)
+
+## [7.110.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.2)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.1..office-ui-fabric-react_v7.110.2)
+
+### Patches
+
+- Prettier Fix in Callout test. ([PR #12615](https://github.com/microsoft/fluentui/pull/12615) by humbertomakotomorimoto@gmail.com)
+
+## [7.110.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.1)
+
+Fri, 01 May 2020 12:28:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.110.0..office-ui-fabric-react_v7.110.1)
+
+### Patches
+
+- Theming: fix SASS slot autogenerator and run it ([PR #12949](https://github.com/microsoft/fluentui/pull/12949) by phkuo@microsoft.com)
+
+## [7.110.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.110.0)
+
+Fri, 01 May 2020 00:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.109.1..office-ui-fabric-react_v7.110.0)
+
+### Minor changes
+
+- Updating usage of FocusZone to use non-deprecated prop names. ([PR #12484](https://github.com/microsoft/fluentui/pull/12484) by humbertomakotomorimoto@gmail.com)
+
+## [7.109.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.1)
+
+Thu, 30 Apr 2020 12:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.109.0..office-ui-fabric-react_v7.109.1)
+
+### Patches
+
+- Example: update Callout example to use Text component ([PR #12423](https://github.com/microsoft/fluentui/pull/12423) by marygans@microsoft.com)
+
+## [7.109.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.109.0)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.108.0..office-ui-fabric-react_v7.109.0)
+
+### Minor changes
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
+
+### Patches
+
+- Updating FocusTrapZone, Overlay, and TextField to use function components ([PR #12774](https://github.com/microsoft/fluentui/pull/12774) by czearing@outlook.com)
+
+## [7.108.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.108.0)
+
+Tue, 28 Apr 2020 12:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.5..office-ui-fabric-react_v7.108.0)
+
+### Minor changes
+
+- Updating IPoint, x and y references to Point, left and top respectively. ([PR #12722](https://github.com/microsoft/fluentui/pull/12722) by humbertomakotomorimoto@gmail.com)
+- Popup: add onRestoreFocus method to replace shouldRestoreFocus ([PR #12806](https://github.com/microsoft/fluentui/pull/12806) by joschect@microsoft.com)
+
+### Patches
+
+- Change contextual menu renderMenuItem function to prevent prop mutation and unneeded rerenders ([PR #12750](https://github.com/microsoft/fluentui/pull/12750) by tabrumle@microsoft.com)
+- Updating examples for ScrollablePane and HoverCard to use FC ([PR #12871](https://github.com/microsoft/fluentui/pull/12871) by czearing@outlook.com)
+
+## [7.107.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.5)
+
+Fri, 24 Apr 2020 12:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.3..office-ui-fabric-react_v7.107.5)
+
+### Patches
+
+- Callout: Updating positioning logic to account for dual screen scenarios. ([PR #12785](https://github.com/microsoft/fluentui/pull/12785) by Humberto.Morimoto@microsoft.com)
+
+## [7.107.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.3)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.2..office-ui-fabric-react_v7.107.3)
+
+### Patches
+
+- Updating Announced, Callout, and Calendar examples to function components ([PR #12670](https://github.com/microsoft/fluentui/pull/12670) by czearing@outlook.com)
+- Fix SASS default values for theme.effects ([PR #12802](https://github.com/microsoft/fluentui/pull/12802) by phkuo@microsoft.com)
+
+## [7.107.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.2)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.1..office-ui-fabric-react_v7.107.2)
+
+### Patches
+
+- ContextualMenu: Improve perf by doing less merge styles ([PR #12752](https://github.com/microsoft/fluentui/pull/12752) by xgao@microsoft.com)
+- Update ColorRectangle and ColorSlider to handle native events when using the 'on' utility ([PR #12753](https://github.com/microsoft/fluentui/pull/12753) by behowell@microsoft.com)
+
+## [7.107.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.1)
+
+Sun, 19 Apr 2020 02:02:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.107.0..office-ui-fabric-react_v7.107.1)
+
+### Patches
+
+- Enable classnames caching for label and icon ([PR #12712](https://github.com/microsoft/fluentui/pull/12712) by xgao@microsoft.com)
+
+## [7.107.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.107.0)
+
+Fri, 17 Apr 2020 12:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.106.3..office-ui-fabric-react_v7.107.0)
+
+### Minor changes
+
+- Allow forwarding of FocusTrapZone props in TeachingBubble ([PR #12693](https://github.com/microsoft/fluentui/pull/12693) by mhensler@microsoft.com)
+- Pivot: componentRef now resolves correctly, unnecessary DOM element removed. ([PR #12748](https://github.com/microsoft/fluentui/pull/12748) by dzearing@microsoft.com)
+- added set of svg icons ([PR #12641](https://github.com/microsoft/fluentui/pull/12641) by mnajdova@gmail.com)
+
+## [7.106.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.106.3)
+
+Thu, 16 Apr 2020 12:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.106.1..office-ui-fabric-react_v7.106.3)
+
+### Patches
+
+- Replace uses of EventGroup with the 'on' function and _disposables pattern in ColorRectangle, ColorSlider, and Slider ([PR #12717](https://github.com/microsoft/fluentui/pull/12717) by behowell@microsoft.com)
+- changed svg factory example and added icon components tests ([PR #12675](https://github.com/microsoft/fluentui/pull/12675) by mnajdova@gmail.com)
+
+## [7.106.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.106.1)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.106.0..office-ui-fabric-react_v7.106.1)
+
+### Patches
+
+- Adding Stack snapshot test for RTL scenarios. ([PR #12649](https://github.com/microsoft/fluentui/pull/12649) by Humberto.Morimoto@microsoft.com)
+- Readme: Add migration info ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+- removing more references to wrong icon-ppt.png icon in wrong folder ([PR #12422](https://github.com/microsoft/fluentui/pull/12422) by caperez@microsoft.com)
+- Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component. ([PR #12602](https://github.com/microsoft/fluentui/pull/12602) by michaelmajgaard@outlook.com)
+- Panel: passing close button styles down using subComponentStyles ([PR #12630](https://github.com/microsoft/fluentui/pull/12630) by xgao@microsoft.com)
+- Examples: fix bad practice styles prop ([PR #12631](https://github.com/microsoft/fluentui/pull/12631) by xgao@microsoft.com)
+- Updated DatePicker and ComboBox examples to use function components ([PR #12637](https://github.com/microsoft/fluentui/pull/12637) by czearing@outlook.com)
+- Updating Rating, Text, OverflowSet, and Dropdown examples to use function components ([PR #12638](https://github.com/microsoft/fluentui/pull/12638) by czearing@outlook.com)
+- always return explicit Fabric dir ([PR #12647](https://github.com/microsoft/fluentui/pull/12647) by mgodbolt@microsoft.com)
+- Adding SVG icon examples ([PR #12608](https://github.com/microsoft/fluentui/pull/12608) by dzearing@microsoft.com)
+- Keyframes are calculated on access. This helps with SSR generation, as namespace will be respected. ([PR #12668](https://github.com/microsoft/fluentui/pull/12668) by dzearing@microsoft.com)
+- DetailsRow.base bug fix for cellStyleProps ([PR #12691](https://github.com/microsoft/fluentui/pull/12691) by SGonzalezBustos@Gmail.com)
+
+## 7.106.0
+Thu, 09 Apr 2020 12:24:31 GMT
+
+### Minor changes
+
+- Support List overrides for rendering root and surface elements (tmichon@microsoft.com)
+- ColorPicker: Add support for selecting transparency instead of alpha (elcraig@microsoft.com)
+### Patches
+
+- Combobox: Fix getActiveDescendantValue would sometimes return -listundefined. (joschect@microsoft.com)
+- DetailsList: add missing aria-label to example (joschect@microsoft.com)
+## 7.105.12
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- Fabric: cleanup dir logic, don't add 'dir' unless different from context (mgodbolt@microsoft.com)
+- CommandBar: prevent command button style mutation if possible (xgao@microsoft.com)
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
+## 7.105.11
+Tue, 07 Apr 2020 12:35:07 GMT
+
+### Patches
+
+- GroupedList: Only invoke range selection on header click when in multiple selection mode (KevinTCoughlin@users.noreply.github.com)
+- Updated search box and divider examples to functional components (czearing@outlook.com)
+## 7.105.10
+Mon, 06 Apr 2020 12:27:21 GMT
+
+### Patches
+
+- Updated search box and divider examples to functional components (czearing@outlook.com)
+- Updating Image and Persona examples to use function components. (czearing@outlook.com)
+## 7.105.9
+Fri, 03 Apr 2020 12:27:13 GMT
+
+### Patches
+
+- ChoiceGroup: fix bad cache key for getClassNames (xgao@microsoft.com)
+- Update Layer and Modal examples to use functional components (elcraig@microsoft.com)
+## 7.105.8
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Patches
+
+- ComboBox: borderColor should be applied properly in the case of error (aneeshak@microsoft.com)
+- Button: Add an example of an IconButton that has a Tooltip. (aneeshak@microsoft.com)
+- Pivot: fixing comment typo. (czearing@outlook.com)
+## 7.105.7
+Wed, 01 Apr 2020 12:29:21 GMT
+
+### Patches
+
+- Panel: closeButton should stick to the right even if header is removed (aneeshak@microsoft.com)
+- Combobox: Update docs to make onPendingValueChanged more clear (joschect@microsoft.com)
+- ComboBox: onResolveOptions and onPointerDown callbacks should not hit when disabled. (aneeshak@microsoft.com)
+## 7.105.6
+Tue, 31 Mar 2020 12:27:26 GMT
+
+### Patches
+
+- DetailsList: Fixes following issues with Groups: 1) Add draggable attribute if required 2) Call onDragEnter and onDragLeave with right parameters 3) Use the css class returned by onDragEnter (sachinma@microsoft.com)
+- update website banner and remove reference to fabric in context menu docs (mgodbolt@microsoft.com)
+## 7.105.5
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- Dialog/Panel: Change heading from 2 to 1 (joschect@microsoft.com)
+## 7.105.3
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+- Adding Text example for weights. (dzearing@microsoft.com)
+## 7.105.2
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.105.1
+Thu, 19 Mar 2020 12:29:37 GMT
+
+### Patches
+
+- Run prettier: 120 line length, trailing commas. And minor documentation updates prompted by line length changes. (elcraig@microsoft.com)
+## 7.105.0
+Tue, 17 Mar 2020 20:48:59 GMT
+
+### Minor changes
+
+- Pass default ContextualMenuItem renderer to onRenderMenuList (owcampbe@microsoft.com)
+- Added support for overriding persona presence colors (andreas.hage@microsoft.com)
+### Patches
+
+- Remove duplicated export (nakanaki@microsoft.com)
+## 7.104.1
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- Ensure ContextualMenu section header generates valid element ID (ermercer@microsoft.com)
+- Adding onClick callback to divider in SplitButtons that stops propagation so that clicking on the divider does not trigger action. (humbertomakotomorimoto@gmail.com)
+## 7.104.0
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Minor changes
+
+- BaseComponent: remove using BaseComponent from oufr package (xgao@microsoft.com)
+## 7.103.0
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Minor changes
+
+- KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips (chiechan@microsoft.com)
+## 7.102.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
+- withResponsiveMode: Add initializeResponsiveMode render performance optimization (KevinTCoughlin@users.noreply.github.com)
+## 7.101.0
+Tue, 10 Mar 2020 12:25:14 GMT
+
+### Minor changes
+
+- ITag: key can be number, in addition to string. (aneeshak@microsoft.com)
+### Patches
+
+- Fix the legacy items wrapper styles. (lijunle@gmail.com)
+- restore onRenderIcon prop for ContextualMenuSplitButton (kinhln@microsoft.com)
+## 7.100.0
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Minor changes
+
+- Adding isReversed prop to overflowSet so we can visually reverse the components and maintain consistent keyboarding navigation. (matejera@microsoft.com)
+- Export GroupedListSection (owcampbe@microsoft.com)
+### Patches
+
+- Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue. (humbertomakotomorimoto@gmail.com)
+- withViewport: cleaning up resize observer. (dzearing@microsoft.com)
+## 7.99.0
+Thu, 05 Mar 2020 12:27:53 GMT
+
+### Minor changes
+
+- Suggestions: Deprecating unused searchErrorText prop. (Humberto.Morimoto@microsoft.com)
+## 7.98.4
+Wed, 04 Mar 2020 12:27:02 GMT
+
+### Patches
+
+- Remove vertical-align flagged as unused (KevinTCoughlin@users.noreply.github.com)
+- MarqueeSelection: deleting html element references on unmount. (dzearing@microsoft.com)
+## 7.98.3
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Patches
+
+- Using tslint:disable-next-line instead of tslint:disable without a corresponding tslint:enable afterwards for all non-tests and non-data files. (Humberto.Morimoto@microsoft.com)
+- Link: Make focus work even when Link has block children. (humbertomakotomorimoto@gmail.com)
+- ScrollablePane example: fix strict function type errors (xgao@microsoft.com)
+## 7.98.2
+Mon, 02 Mar 2020 12:25:44 GMT
+
+### Patches
+
+- SpinButton: fix SpinButton content overlapping with border under certain resolutions (xgao@microsoft.com)
+- DetailsList Example: change drag drop behavior to be more intuitive, allow dragging to the last row (xgao@microsoft.com)
+## 7.98.1
+Fri, 28 Feb 2020 12:25:15 GMT
+
+### Patches
+
+- Updates the Nav component's links to use aria-current (sarah.higley@microsoft.com)
+- Panel: use align-items for vertical alignment (aneeshak@microsoft.com)
+- Dialog: fix isOpen deprecated prop no longer being honored (xgao@microsoft.com)
+## 7.98.0
+Thu, 27 Feb 2020 12:23:46 GMT
+
+### Minor changes
+
+- Toggle: allow menuitemcheckbox role (xgao@microsoft.com)
+### Patches
+
+- Slider: allow setting id on slider (xgao@microsoft.com)
+## 7.97.1
+Wed, 26 Feb 2020 12:28:12 GMT
+
+### Patches
+
+- Turning on 'deprecation' tslint rule. (Humberto.Morimoto@microsoft.com)
+## 7.97.0
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Minor changes
+
+- FocusZone: Re-exporting FocusZone from react-focus package and removing duplication in OUFR package. (humbertomakotomorimoto@gmail.com)
+### Patches
+
+- Delete PositioningContainer docs (elcraig@microsoft.com)
+## 7.96.0
+Mon, 24 Feb 2020 12:21:19 GMT
+
+### Minor changes
+
+- DetailsList: fix memory leak caused by incorrect component memoization (xgao@microsoft.com)
+### Patches
+
+- Adding pointer down support for dismissing the fabric base layer. (boalbe@microsoft.com)
+## 7.95.0
+Fri, 21 Feb 2020 12:20:14 GMT
+
+### Minor changes
+
+- Adds ignoreScrollingState to List, to avoid updates to scrolling state when it's not being used (chce@netcompany.com)
+### Patches
+
+- Link: text decoration should not show up even for buttons. (dzearing@microsoft.com)
+## 7.94.1
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- SearchBox: Use native input onBlur to fix blur getting called twice (mgodbolt@microsoft.com)
+- DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true. (Humberto.Morimoto@microsoft.com)
+- GroupedList: Adding checks for group and selection being undefined. (Humberto.Morimoto@microsoft.com)
+- FocusZone: fix memory leak caused by closure (xgao@microsoft.com)
+## 7.94.0
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Minor changes
+
+- Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
+- Set touchmove and touchend event handlers to get caught in the capture phase (catalina@microsoft.com)
+## 7.93.1
+Mon, 17 Feb 2020 17:06:50 GMT
+
+### Patches
+
+- List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking. (dzearing@microsoft.com)
+- Fix: Uncaught SyntaxError: Failed to execute 'querySelector' on 'Document'. (email not defined)
+- ShimmeredDetailsList: add aria-busy=true when shimmer is enabled (xgao@microsoft.com)
+## 7.93.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Re-export react-focus's FocusZone from OUFR (elcraig@microsoft.com)
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+- ContextualMenu: change role of category options to menuitemcheckbox (aneeshak@microsoft.com)
+### Patches
+
+- TextField example: fix onChange typing error when strictFunctionType is true (xgao@microsoft.com)
+## 7.92.0
+Tue, 11 Feb 2020 18:37:59 GMT
+
+### Minor changes
+
+- TagItem accepts title and defaults either children or item name (#11845) (yann.normand@gmail.com)
+### Patches
+
+- Tooltip: allow scrolling tooltip content (xgao@microsoft.com)
+- Dropdown: fix SubComponentStyles interfaces (xgao@microsoft.com)
+## 7.90.1
+Mon, 10 Feb 2020 12:39:35 GMT
+
+### Patches
+
+- Dropdown: fix item hover style (xgao@microsoft.com)
+- SpinButton: remove unneeded validation on tab key (xgao@microsoft.com)
+## 7.90.0
+Fri, 07 Feb 2020 12:41:31 GMT
+
+### Minor changes
+
+- GroupedList: Announcing position in set. (Humberto.Morimoto@microsoft.com)
+## 7.89.1
+Thu, 06 Feb 2020 12:37:34 GMT
+
+### Patches
+
+- ev.defaultPrevented is not a function, remove errant () (mahelles@microsoft.com)
+- DocumentCard: Updating DocumentCardLocations styles to latest Fluent specs. (Humberto.Morimoto@microsoft.com)
+- MaskedTextField: fix MaskedTextField captures focus on re-render on Edge (xgao@microsoft.com)
+- Dropdown: remove unnecessary focus calls (xgao@microsoft.com)
+## 7.89.0
+Wed, 05 Feb 2020 12:43:32 GMT
+
+### Minor changes
+
+- TeachingBubble: Fixing styling when TeachingBubble has close button but no headline. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- TeachingBubble: Applying Callout style-related props like calloutWidth and calloutMaxWidth. (Humberto.Morimoto@microsoft.com)
+- ChoiceGroup: fix option label text being cutoff (xgao@microsoft.com)
+- Pickers: remove input X button in Edge (xgao@microsoft.com)
+## 7.88.1
+Mon, 03 Feb 2020 20:04:10 GMT
+
+### Patches
+
+- Text: Updating docs and style logic to remove 'inherit' by default behavior. (Humberto.Morimoto@microsoft.com)
+- Dialog: Fix DialogContent titleProps (xgao@microsoft.com)
+## 7.88.0
+Fri, 31 Jan 2020 19:00:10 GMT
+
+### Minor changes
+
+- Providing drag drop support for GroupedListSection. Previously, GroupedListSection was non-draggable. (vishgup@microsoft.com)
+- Add ability to customize DetailsHeader tooltip based on column data (tmichon@microsoft.com)
+### Patches
+
+- Add styles file and type files for EditItem component (sanredd@microsoft.com)
+- FacePile: Use default semantic html instead of aria attributes and roles (mark@thedutchies.com)
+- ContextualMenu: Transforming examples to FunctionComponents and cleaning them up. (Humberto.Morimoto@microsoft.com)
+- Nav: Fixing regular expression used to determine if URL is protocol relative or not. (Humberto.Morimoto@microsoft.com)
+- Dropdown: Fixing various High Contrast issues. (Humberto.Morimoto@microsoft.com)
+- ContextualMenu: fix role for checkable split button menu item (xgao@microsoft.com)
+- GroupedList: Adding aria-expanded state to the focus target of groups so that the collapsed/expanded state of the group is announced. (Humberto.Morimoto@microsoft.com)
+- GroupedList: Adding aria-level to indicate nested level of groups. (Humberto.Morimoto@microsoft.com)
+## 7.86.1
+Wed, 29 Jan 2020 12:37:18 GMT
+
+### Patches
+
+- MessageBar: Fix High Contrast Mode issues. (Humberto.Morimoto@microsoft.com)
+- Panel: Calling onOpen on non-imperative scenarios like its description states. (Humberto.Morimoto@microsoft.com)
+- Dropdown: Fix issue where pressing key up can cause scrolling of the whole page. (jehawley@microsoft.com)
+## 7.86.0
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Minor changes
+
+- BaseFloatingPicker: pass custom props to inner Callout (rezha@microsoft.com)
+- Dialog/Panel: allow to set aria-level on header title (xgao@microsoft.com)
+### Patches
+
+- Semantic slot conversions for a few components: Persona, ContexualMenu, SplitButton, SpinButton, Tooltip, Dropdown, ComboBox, CommandBar, Suggestions (marygans@microsoft.com)
+- Fix a bug where a user pressing the down key without opening the dropdown causes the window to scroll. The dropdown should cycle through the options. This fix changes the index from being the last item in the options to being the starting index, which is 0. (jehawley@microsoft.com)
+- Support for dynamically updating keytips (keyou@microsoft.com)
+- Button: Adding support for onPointerDown and onPointerUp. (Humberto.Morimoto@microsoft.com)
+## 7.85.0
+Mon, 27 Jan 2020 03:59:43 GMT
+
+### Minor changes
+
+- GroupedList: Add role prop to groupProps (erabelle@microsoft.com)
+### Patches
+
+- add icon support to combobox (makopch@microsoft.com)
+- SpinButton: Making disabled SpinButtons non-focusable. (Humberto.Morimoto@microsoft.com)
+- SearchBox: Dispose of EventGroup on unmount (KevinTCoughlin@users.noreply.github.com)
+- PersonaCoin and related components: elliminating BaseComponent usage to reduce bundle size. (dzearing@hotmail.com)
+## 7.84.1
+Fri, 24 Jan 2020 12:30:27 GMT
+
+### Patches
+
+- Updating text field validation in date-time package to check new value rather than old one. (chce@netcompany.com)
+- DatePicker: Fixing issue with formatted dates. (Humberto.Morimoto@microsoft.com)
+## 7.84.0
+Wed, 22 Jan 2020 12:36:43 GMT
+
+### Minor changes
+
+- Panel: Restyled Panel's header and navigation sections (v-mare@microsoft.com)
+### Patches
+
+- TextField: fix focused bottom border mis-alignment when errorMessage is set (v-jajach@microsoft.com)
+## 7.83.2
+Mon, 20 Jan 2020 12:28:43 GMT
+
+### Patches
+
+- ContextualMenu: Hide checkmark in ContextualMenuItems if canCheck is false (huaxi@microsoft.com)
+- PeoplePicker: Splitting one example into multiple examples and converting to Function Components. (Humberto.Morimoto@microsoft.com)
+## 7.83.1
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.83.0
+Fri, 17 Jan 2020 01:24:12 GMT
+
+### Minor changes
+
+- OverflowSet: Don't assume role or orientation. Update CommandBar, examples and docs (mgodbolt@microsoft.com)
+### Patches
+
+- Theme Designer: adding secondary text to a11y panel, adding neutralSecondaryAlt to Fabric Palette slots table, fixing ThemeRulesStandards & ThemeGenerator producing color inaccuracies (aneeshak@microsoft.com)
+- DatePicker accessibility: day in calendar is announced with blank role (xgao@microsoft.com)
+- DatePicker: error message for required field is not cleared when date is selected from calendar (xgao@microsoft.com)
+- Basepicker/Suggestions: Fix an issue where hasSuggestedAction would return true incorrectly (joschect@microsoft.com)
+## 7.82.2
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+- Add aria role to multi-select dropdown  (xgao@microsoft.com)
+- CommandBar: Do not render empty div if farItems prop is empty array (xgao@microsoft.com)
+- ContextualMenu: Fix disabled item being focusable (xgao@microsoft.com)
+- Dropdown: fix exception when options change due to DropdownSizePosCache (xgao@microsoft.com)
+- Fixing click handling for colorrectangle for bug #11680 (anuku@microsoft.com)
+- Revert "ContextualMenu: Fix disabled item being focusable (#11693)" (xgao@microsoft.com)
+## 7.82.1
+Wed, 15 Jan 2020 00:21:25 GMT
+
+### Patches
+
+- ComboBox: Move autoComplete with no freeform key handling to onKeyUp to get access to key value vs key code to support non latin characters (mgodbolt@microsoft.com)
+- Text: Fixing children check so it can render {0} value. (Humberto.Morimoto@microsoft.com)
+- Reverting moving tablist to be a parent of tabpanel (chiechan@microsoft.com)
+## 7.82.0
+Tue, 14 Jan 2020 12:27:16 GMT
+
+### Minor changes
+
+- Fabric: Properly handle dir being passed into control (mgodbolt@microsoft.com)
+### Patches
+
+- FocusZone: remove keydown listener correctly to avoid a leak with inner zones. (dzearing@microsoft.com)
+## 7.81.0
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Minor changes
+
+- Change focus class behavior: Alternate between 'hidden' and 'visible' classes (paflakst@microsoft.com)
+### Patches
+
+- Consume compose functions where appropriate (tmichon@microsoft.com)
+- Popup: fix an issue where onBlur would not correctly update focus state (joschect@microsoft.com)
+- Dropdown: fix missing asterisk on focused dropdown (xgao@microsoft.com)
+## 7.80.0
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Minor changes
+
+- FocusZone:add page down/up feature (nasabek@microsoft.com)
+### Patches
+
+- Update snapshot test after fixing combobox styling (xgao@microsoft.com)
+- Remove onBlur from being excluded in grid (chiechan@microsoft.com)
+## 7.79.1
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Patches
+
+- Icon: update null/undefinedcached icons till the time non-null/undefined icons are available for the first time. Then cache the non-null/undefined icons. (vishgup@microsoft.com)
+- Popup: Fix disposables and element ref memory leaks (KevinTCoughlin@users.noreply.github.com)
+## 7.79.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- Button: Use aria-checked for checkbox and menuitemcheckbox roles (mgodbolt@microsoft.com)
+### Patches
+
+- Update focus border styles for SearchBox, BasePicker (xgao@microsoft.com)
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+- For API reference pages, show all property tables on page load (elcraig@microsoft.com)
+- Calendar: Fixing text color of 'today's day cell' when in High Contrast Mode. (Humberto.Morimoto@microsoft.com)
+## 7.78.3
+Tue, 07 Jan 2020 12:31:36 GMT
+
+### Patches
+
+- Pickers: fix multiple enter presses selecting same option many times (joschect@microsoft.com)
+- FocusTrapZone: Release event handlers and element references for garbage-collection (KevinTCoughlin@users.noreply.github.com)
+## 7.78.2
+Mon, 06 Jan 2020 12:29:10 GMT
+
+### Patches
+
+- Modal ignoreExternalFocusing prop should also affect Popup (elcraig@microsoft.com)
+- Combobox: Clicks to headers and scrollbars no longer cause onBlur (mgodbolt@microsoft.com)
+- FocusZone: Delete function references on unmount (KevinTCoughlin@users.noreply.github.com)
+## 7.78.1
+Fri, 03 Jan 2020 12:27:16 GMT
+
+### Patches
+
+- ChoiceGroup: update docs and examples (elcraig@microsoft.com)
+- Remove duplicate ChoiceGroupOption export (elcraig@microsoft.com)
+- TagPicker: Define `title` for TagItem in case text overflows. (jdh@microsoft.com)
+- update callout docs comment (joschect@microsoft.com)
+## 7.78.0
+Wed, 01 Jan 2020 12:30:43 GMT
+
+### Minor changes
+
+- Pass the original renderer to onRenderLabel in ChoiceGroupOption (#11575) (dagoltz@microsoft.com)
+## 7.77.0
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Minor changes
+
+- SwatchColorPicker: properly apply ID; doc updates (elcraig@microsoft.com)
+### Patches
+
+- Fabric control: listen for rtl in theme (mgodbolt@microsoft.com)
+- DetailsList: Update examples to work in strictFunctionTypes (mgodbolt@microsoft.com)
+- Combobox: Focus returns to input after item click (mgodbolt@microsoft.com)
+- Layer: add touch events to filtering to stop those that are bubbling up (aneeshak@microsoft.com)
+## 7.76.3
+Mon, 30 Dec 2019 12:25:00 GMT
+
+### Patches
+
+- add firstFocusableSelector to example FocusTrapZone to resolve Edge issue (mgodbolt@microsoft.com)
+## 7.76.2
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Patches
+
+- Ensure icon font family isn't overridden by Fabric Core (elcraig@microsoft.com)
+## 7.76.1
+Mon, 23 Dec 2019 12:34:01 GMT
+
+### Patches
+
+- Align color system in Tooltip (nif_tony@outlook.com)
+## 7.76.0
+Fri, 20 Dec 2019 12:32:45 GMT
+
+### Minor changes
+
+- Modal, Panel, Overlay: added optional prop allowTouchBodyScroll that allows body scroll on touch devices (dmitriy.ravdin@siemens.com)
+### Patches
+
+- ScrollablePane: Fixing tabbing navigation with Sticky headers. (Humberto.Morimoto@microsoft.com)
+## 7.75.0
+Thu, 19 Dec 2019 12:33:02 GMT
+
+### Minor changes
+
+- Update color picker to include aria labels for hue and alpha sliders (mgodbolt@microsoft.com)
+- Combobox: Fix multiselect options not being read by screen readers. (joschect@microsoft.com)
+- Sticky: Always render narrator readable content in place (mgodbolt@microsoft.com)
+- DocumentCard: Fixing focus styling on Links in DocumentCardPreview. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Combobox: Removed redundant htmlFor attribute as input already use aria-labelledby (mgodbolt@microsoft.com)
+- SearchBox: Don't duplicate placeholder text in aria-label (mgodbolt@microsoft.com)
+- DetailsList: Adding Announced section for # of filtered items in examples. (Humberto.Morimoto@microsoft.com)
+- DetailsList: Adding Announced section for examples that have '# of items selected' message in display. (Humberto.Morimoto@microsoft.com)
+## 7.74.2
+Wed, 18 Dec 2019 12:30:18 GMT
+
+### Patches
+
+- FocusZone: Adding tab handle for DomOrder direction. (Humberto.Morimoto@microsoft.com)
+## 7.74.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- ProgressIndicator: improve high contrast colors for progress bar (micahgodbolt@gmail.com)
+- PersonaCoin: make divs role presentation (micahgodbolt@gmail.com)
+## 7.74.0
+Sun, 15 Dec 2019 23:45:36 GMT
+
+### Minor changes
+
+- Persona: adding alt text to examples (aneeshak@microsoft.com)
+### Patches
+
+- DetailsList: Adding aria-readonly attribute so screen readers don't announce the cells as editable. (Humberto.Morimoto@microsoft.com)
+- getRTL uses RTL flag on theme if present. (jdh@microsoft.com)
+- Fix iteration of Sticky items in ScrollablePane (tmichon@microsoft.com)
+- Fix minor doc issues for TextField and pickers (elcraig@microsoft.com)
+- Move ARIA role to outer div where native props are assigned to allow for ARIA attributes such as aria-label. (jagore@microsoft.com)
+- ContextualMenu: Associate group with header to improve narrator (micahgodbolt@gmail.com)
+## 7.73.0
+Fri, 13 Dec 2019 12:30:51 GMT
+
+### Minor changes
+
+- Toggle: Change div inside button to be a span (mgodbolt@microsoft.com)
+### Patches
+
+- Tooltip: clarify examples and docs (elcraig@microsoft.com)
+- FocusZone: Escape readOnly input on arrow clicks (mgodbolt@microsoft.com)
+- Nav: Allow falsy values of title to be passed into items (mgodbolt@microsoft.com)
+- Panel: onLightDismissClick now properly prevents light dismiss (mgodbolt@microsoft.com)
+- ContextualMenu: Fix accessibility issue in example (mgodbolt@microsoft.com)
+## 7.72.0
+Thu, 12 Dec 2019 12:29:56 GMT
+
+### Minor changes
+
+- Callout: Add Non Focusable Callout example (mgodbolt@microsoft.com)
+### Patches
+
+- Ensure that navigating between selected items doesn't clear modal state (tmichon@microsoft.com)
+- Stack: Adding documentation about Stack Items in the Stack overview. (Humberto.Morimoto@microsoft.com)
+## 7.71.0
+Wed, 11 Dec 2019 12:30:26 GMT
+
+### Minor changes
+
+- Only update ExtendedPicker state on input events that are not mid-composition  (mahuangh@microsoft.com)
+- Dropdown: Render options with header in group so that narrator associates group with header (mgodbolt@microsoft.com)
+- Autocomplete: Allow value to be overriden (mgodbolt@microsoft.com)
+### Patches
+
+- Combobox: multi-select does not clear index on selection. Selected and checked properly supported (mgodbolt@microsoft.com)
+- fix contextual menu split button cannot be read by screen reader bug (xgao@microsoft.com)
+## 7.70.0
+Tue, 10 Dec 2019 12:34:47 GMT
+
+### Minor changes
+
+- DetailsList: Pass column styles to DetailsColumn (mgodbolt@microsoft.com)
+### Patches
+
+- Dialog: Use closeButtonAriaLabel for close button tooltip (v-ragor@microsoft.com)
+- Theme Designer: use createTheme and Customizations.applySettings instead of loadTheme (aneeshak@microsoft.com)
+- Screen Reader is reading wrong column header with associated cell value for single-select detail list (xgao@microsoft.com)
+- Button: fix size mismatch between primary and default buttons (xgao@microsoft.com)
+## 7.69.3
+Mon, 09 Dec 2019 12:29:23 GMT
+
+### Patches
+
+- OverflowSet: Vertical layout now uses menu instead of menubar (mgodbolt@microsoft.com)
+## 7.69.2
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Fixed after element misalignment (betrue@microsoft.com)
+- Dropdown: fix misalignment (betrue@microsoft.com)
+- DocumentCard: Adding explicit focus styles (mgodbolt@microsoft.com)
+- Slider: getAriaValueText should return value if ariaValueText isn't supplied (mgodbolt@microsoft.com)
+- updated snapshots (betrue@microsoft.com)
+- Correct SpinButton default max value in documentation (xgao@microsoft.com)
+## 7.69.1
+Thu, 05 Dec 2019 12:34:16 GMT
+
+### Patches
+
+- ComboBox: empty errorMessage shouldn't create white space (aneeshak@microsoft.com)
+- VirtualizedComboBox: Implement focus(shouldOpenOnFocus, asyncFocus) (aneeshak@microsoft.com)
+## 7.69.0
+Wed, 04 Dec 2019 12:32:13 GMT
+
+### Minor changes
+
+- Add calloutProps to HoverCard (anihan@microsoft.com)
+### Patches
+
+- Added a a field to Nav Group Props" (num@microsoft.com)
+## 7.68.0
+Tue, 03 Dec 2019 12:36:28 GMT
+
+### Minor changes
+
+- Pickers: Allow force resolve when no match found (joschect@microsoft.com)
+- DatePicker: Making styles accept functions and objects and not only functions. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- ComboBox: Fixing icon position when disabled. (humbertomakotomorimoto@gmail.com)
+- Removed persona cursor style as it was making non buttons look like clickable buttons (mgodbolt@microsoft.com)
+## 7.67.0
+Fri, 29 Nov 2019 12:34:49 GMT
+
+### Minor changes
+
+- TeachingBubble: add hasCloseButton and deprecate hasCloseIcon; prevent header text from overlapping with close button. (dzearing@microsoft.com)
+## 7.66.0
+Thu, 28 Nov 2019 12:32:23 GMT
+
+### Minor changes
+
+- Updated office-ui-fabric-core dependency (v-mare@microsoft.com)
+- Coachmark: Add prop to make beak persistent after opening (mgodbolt@microsoft.com)
+### Patches
+
+- Update Modal onKeyUp to also register in componentDidMount (sareiff@microsoft.com)
+- Update spinbutton check (sareiff@microsoft.com)
+## 7.65.1
+Wed, 27 Nov 2019 12:32:07 GMT
+
+### Patches
+
+- Combobox: Noop if selected item is disabled (mgodbolt@microsoft.com)
+- PeoplePicker: Fix selected + hover Persona text styling. (Humberto.Morimoto@microsoft.com)
+- ComboBox: Fixing options' custom styling not applying to multiselect ComboBoxes. (Humberto.Morimoto@microsoft.com)
+## 7.65.0
+Tue, 26 Nov 2019 12:32:11 GMT
+
+### Minor changes
+
+- Fabric component: adding `dir=rtl` support to affect both the `dir` attribute as well as affecting the styling generated within scope (by creating an rtl-versioned theme and exposing it via `Customizer`.) (dzearing@hotmail.com)
+## 7.64.2
+Mon, 25 Nov 2019 12:31:13 GMT
+
+### Patches
+
+- CommandBar: Removed unnecessary role={'presentation'} from OverflowSet (mgodbolt@microsoft.com)
+- fixing double selection in Calendar month picker (jolore@microsoft.com)
+- CommandBarButton: Fixed hidden CommandBarButton splitbuttonDivider (v-mare@microsoft.com)
+- test (cliff.koh@microsoft.com)
+- Revert label change (rezha@microsoft.com)
+## 7.64.1
+Fri, 22 Nov 2019 16:57:54 GMT
+
+### Patches
+
+- Modal: Updated styles to match toolkit. (v-mare@microsoft.com)
+- Removed SCSS from ResizeGroup. Added ResizeGroup.OverflowSet.Example.Style file. Added Codepen export support (pandasa123@gmail.com)
+- TeachingBubble: adding focus outline to close button for color contrast accessibility. Color contrast ratio should be more then 3:1. (marygans@microsoft.com)
+- Callout: Fixed bottom padding and button alignment to flex-end (v-mare@microsoft.com)
+## 7.64.0
+Thu, 21 Nov 2019 12:30:32 GMT
+
+### Minor changes
+
+- Fabric Component: add applyTheme and applyThemeToBody props. (aneeshak@microsoft.com)
+### Patches
+
+- Updated searchbox and textfield disabled borders in high contrast (mgodbolt@microsoft.com)
+## 7.63.0
+Wed, 20 Nov 2019 12:29:50 GMT
+
+### Minor changes
+
+- Add link to Nav props (srperias@microsoft.com)
+### Patches
+
+- Dropdown: do not count hidden items (kchau@microsoft.com)
 ## 7.62.0
 Mon, 18 Nov 2019 12:33:30 GMT
 
@@ -9112,4 +10326,3 @@ Mon, 05 Dec 2016 04:02:30 GMT
 ### Minor changes
 
 - Facepile: updating default behavior.
-

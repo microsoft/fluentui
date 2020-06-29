@@ -7,19 +7,21 @@ import { concatStyleSets } from '@uifabric/merge-styles';
 export function customizable(
   scope: string,
   fields: string[],
-  concatStyles?: boolean
+  concatStyles?: boolean,
   // tslint:disable-next-line:no-any
 ): <P>(ComposedComponent: React.ComponentType<P>) => any {
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P>(
     // tslint:disable-next-line:no-any
-    ComposedComponent: React.ComponentType<P>
+    ComposedComponent: React.ComponentType<P>,
     // tslint:disable-next-line:no-any
   ): any {
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
 
       // tslint:disable-next-line:no-any
+      private _styleCache: { default?: any; component?: any; merged?: any } = {};
+
       constructor(props: P) {
         super(props);
 
@@ -49,9 +51,18 @@ export function customizable(
               }
 
               // If concatStyles is true and custom styles have been defined compute those styles
-              if (concatStyles && (defaultProps.styles || componentProps.styles)) {
-                const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
-                return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
+              if (concatStyles && defaultProps.styles) {
+                if (
+                  this._styleCache.default !== defaultProps.styles ||
+                  this._styleCache.component !== componentProps.styles
+                ) {
+                  const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
+                  this._styleCache.default = defaultProps.styles;
+                  this._styleCache.component = componentProps.styles;
+                  this._styleCache.merged = mergedStyles;
+                }
+
+                return <ComposedComponent {...defaultProps} {...componentProps} styles={this._styleCache.merged} />;
               }
 
               return <ComposedComponent {...defaultProps} {...componentProps} />;

@@ -153,7 +153,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           role="switch"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Toggle-thumb
                 {
@@ -163,6 +163,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   border-style: solid;
                   border-width: .28em;
                   box-sizing: border-box;
+                  display: block;
                   height: 12px;
                   transition: all 0.1s ease;
                   width: 12px;
@@ -237,9 +238,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           }
     >
       <div
-        className=
-            ms-TextField-wrapper
-
+        className="ms-TextField-wrapper"
       >
         <label
           className=
@@ -277,7 +276,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 align-items: stretch;
                 background: #ffffff;
                 border-radius: 2px;
-                border: 1px solid #8a8886;
+                border: 1px solid #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -397,11 +396,13 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: auto;
             border-bottom: none;
           }
           &:active {

@@ -1,22 +1,6 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from '@uifabric/date-time';
+import { DatePicker, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
-
-const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  goToToday: 'Go to today',
-  weekNumberFormatString: 'Week number {0}',
-  prevMonthAriaLabel: 'Previous month',
-  nextMonthAriaLabel: 'Next month',
-  prevYearAriaLabel: 'Previous year',
-  nextYearAriaLabel: 'Next year',
-  prevYearRangeAriaLabel: 'Previous year range',
-  nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close'
-};
 
 export interface IDatePickerDisabledExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -27,7 +11,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
     };
   }
 
@@ -38,7 +22,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
       <div className="docs-DatePickerExample">
         <DatePicker
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
           disabled={true}
@@ -47,7 +31,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
         <DatePicker
           label="Disabled (with label)"
           firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
+          strings={defaultDayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
           disabled={true}

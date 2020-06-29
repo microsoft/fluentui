@@ -255,7 +255,7 @@ export class Async {
     options?: {
       leading?: boolean;
       trailing?: boolean;
-    }
+    },
   ): T | (() => void) {
     if (this._isDisposed) {
       return this._noop;
@@ -327,7 +327,7 @@ export class Async {
       leading?: boolean;
       maxWait?: number;
       trailing?: boolean;
-    }
+    },
   ): ICancelable<T> & (() => void) {
     if (this._isDisposed) {
       let noOpFunction: ICancelable<T> & (() => T) = (() => {

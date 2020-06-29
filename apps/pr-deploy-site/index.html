@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>PR Deployed Sites</title>
-    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/10.0.0/css/fabric.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/10.0.0/css/fabric.min.css"
+    />
     <style>
       html {
         box-sizing: border-box;
@@ -99,33 +102,54 @@
       <li class="Tile Tile--intro">
         <h1>Deployed sites for PR <a href="#" class="prLink"></a></h1>
         <p>
-          Use these test apps to verify that the changes introduced by the pull request work as intended and do not introduce any new
-          issues.
+          Use these test apps to verify that the changes introduced by the pull request work as intended and do not
+          introduce any new issues.
         </p>
       </li>
       <li class="Tile">
-        <a href="./fabric-website-resources/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--FavoriteStar"></i>Demo Site</a>
+        <a href="./fabric-website-resources/dist/index.html" class="Tile-link"
+          ><i class="ms-Icon ms-Icon--FavoriteStar"></i>Demo Site</a
+        >
       </li>
       <li class="Tile">
-        <a href="./fabric-website/dist/index.html?devhost" class="Tile-link"><i class="ms-Icon ms-Icon--Website"></i>Web Site</a>
+        <a href="./office-ui-fabric-react/dist-storybook/index.html" class="Tile-link"
+          ><i class="ms-Icon ms-Icon--FavoriteStar"></i>Fabric Storybook Site</a
+        >
       </li>
       <li class="Tile">
-        <a href="./experiments/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--TestBeaker"></i>Experiments</a>
+        <a href="./fabric-website/dist/index.html?devhost" class="Tile-link"
+          ><i class="ms-Icon ms-Icon--Website"></i>Website</a
+        >
+      </li>
+      <li class="Tile">
+        <a href="./react-northstar" class="Tile-link"><i class="ms-Icon ms-Icon--FavoriteStar"></i>react-northstar</a>
+      </li>
+      <li class="Tile">
+        <a href="./experiments/dist/index.html" class="Tile-link"
+          ><i class="ms-Icon ms-Icon--TestBeaker"></i>Experiments</a
+        >
       </li>
       <li class="Tile">
         <a href="./charting/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--BarChart4"></i>Charting</a>
       </li>
       <li class="Tile">
-        <a href="./date-time/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--PrimaryCalendar"></i>Date Time</a>
+        <a href="./date-time/dist/index.html" class="Tile-link"
+          ><i class="ms-Icon ms-Icon--PrimaryCalendar"></i>Date/Time</a
+        >
       </li>
+      <!--
+        TODO: temporarily disabling this for now until a new pipeline is created for PR Deploy Site builds
       <li class="Tile">
         <a href="./test-bundles/test-bundles.stats.html" class="Tile-link"><i class="ms-Icon ms-Icon--SpeedHigh"></i>Bundle Analyzer</a>
       </li>
+      -->
       <li class="Tile">
         <a href="./todo-app/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--CheckMark"></i>Todo Example</a>
       </li>
       <li class="Tile">
-        <a href="./theming-designer/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--CheckMark"></i>Theme Designer Example</a>
+        <a href="./theming-designer/index.html" class="Tile-link"
+          ><i class="ms-Icon ms-Icon--CheckMark"></i>Theme Designer Example</a
+        >
       </li>
       <li class="Tile">
         <a href="./perf-test/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--SpeedHigh"></i>Perf Tests</a>
@@ -139,7 +163,7 @@
         const link = document.getElementsByClassName('prLink')[0];
         const number = pathParts[pullRequestIndex];
         link.innerHTML = `#${number}`;
-        link.href = `https://github.com/OfficeDev/office-ui-fabric-react/pull/${number}`;
+        link.href = `https://github.com/microsoft/fluentui/pull/${number}`;
       }
     </script>
   </body>

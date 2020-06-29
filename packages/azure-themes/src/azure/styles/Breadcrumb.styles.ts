@@ -8,23 +8,23 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
 
   return {
     chevron: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     overflowButton: {
       selectors: {
         '&:hover': {
           backgroundColor: semanticColors.menuItemBackgroundHovered,
-          color: semanticColors.buttonTextHovered
+          color: semanticColors.buttonTextHovered,
         },
         ':focus': {
           backgroundColor: semanticColors.menuItemBackgroundHovered,
-          color: semanticColors.buttonTextPressed
+          color: semanticColors.buttonTextPressed,
         },
         ':hover:focus': {
           backgroundColor: semanticColors.menuItemBackgroundHovered,
-          color: semanticColors.buttonTextPressed
-        }
-      }
+          color: semanticColors.buttonTextPressed,
+        },
+      },
     },
     itemLink: {
       fontSize: FontSizes.size12,
@@ -35,19 +35,19 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
         ':hover': {
           backgroundColor: semanticColors.menuItemBackgroundHovered,
           color: semanticColors.linkHovered,
-          textDecoration: 'underline'
+          textDecoration: 'underline',
         },
         ':focus': {
           backgroundColor: semanticColors.menuItemBackgroundHovered,
           color: semanticColors.linkHovered,
-          textDecoration: 'underline'
+          textDecoration: 'underline',
         },
         ':hover:focus': {
           backgroundColor: semanticColors.menuItemBackgroundHovered,
           color: semanticColors.linkHovered,
-          textDecoration: 'underline'
-        }
-      }
-    }
+          textDecoration: 'underline',
+        },
+      },
+    },
   };
 };

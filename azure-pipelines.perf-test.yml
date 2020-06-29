@@ -1,0 +1,101 @@
+pr: none
+
+trigger: none
+
+variables:
+  - group: fabric-variables
+
+pool:
+  vmImage: 'Ubuntu 18.04'
+
+steps:
+  # No need for checkout since we're using build artifacts.
+  - checkout: none
+
+  - template: azure-pipelines.artifacts.yml
+    parameters:
+      artifact: $(artifact)
+      buildId: $(buildId)
+      # $BUILD_REASON for this pipeline will always be Manual. buildReason must be passed in
+      # from triggered pipeline so that this pipeline knows the originating build reason.
+      buildReason: $(buildReason)
+
+  - template: azure-pipelines.tools.yml
+
+  # Fluent perf-test must run before Fabric perf-test until they are consolidated.
+  - script: |
+      yarn perf:test:base
+    condition: ne(variables.buildReason, 'PullRequest')
+    workingDirectory: packages/fluentui/perf-test
+    displayName: Perf Test Base (Fluent)
+
+  - script: |
+      yarn perf:test
+    condition: eq(variables.buildReason, 'PullRequest')
+    workingDirectory: packages/fluentui/perf-test
+    displayName: Perf Test (Fluent)
+
+  - script: |
+      yarn just perf-test
+    workingDirectory: apps/perf-test
+    displayName: Perf Test
+
+  - task: AzureUpload@1
+    displayName: Upload Perf Test Result to PR deploy site (Fluent)
+    inputs:
+      SourcePath: 'packages/fluentui/perf-test/dist'
+      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      storage: fabricweb
+      ContainerName: '$web'
+      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test/fluentui'
+
+  - task: AzureUpload@1
+    displayName: Upload Perf Test Result to PR deploy site
+    inputs:
+      SourcePath: 'apps/perf-test/dist'
+      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      storage: fabricweb
+      ContainerName: '$web'
+      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test'
+
+  - task: GithubPRComment@0
+    displayName: 'Post Perf Results to Github Pull Request'
+    inputs:
+      githubOwner: microsoft
+      githubRepo: 'fluentui'
+      blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
+      status: '$(PerfCommentStatus)'
+      uniqueId: 'perfComment9423'
+
+  - task: GithubPRStatus@0
+    displayName: 'Update Github Pull Request Status'
+    inputs:
+      githubOwner: microsoft
+      githubRepo: 'fluentui'
+      githubContext: 'Pull Request Deployed Site'
+      githubDescription: 'Click "Details" to go to the Deployed Site'
+      githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+
+  - script: |
+      yarn stats:build
+    condition: ne(variables.buildReason, 'PullRequest')
+    displayName: Bundle Statistics (master only)
+
+  - script: |
+      yarn perf
+    condition: ne(variables.buildReason, 'PullRequest')
+    displayName: Performance Tests (master only)
+
+  # HEADS UP: also see tag-version-prefix in fluentui-publish.js
+  - script: |
+      yarn stats:save --tag=`git tag --points-at HEAD | grep -o 'northstar_v.*'`
+    condition: ne(variables.buildReason, 'PullRequest')
+    displayName: Save Statistics to DB (master only)
+    env:
+      STATS_URI: $(STATS_URI)
+
+  - task: DeleteFiles@1
+    inputs:
+      SourceFolder: $(Build.SourcesDirectory)
+      Contents: '**/*'
+    condition: always()

@@ -11,7 +11,12 @@ export enum FileIconType {
   genericFile = 3,
   listItem = 4,
   sharedFolder = 5,
-  multiple = 6
+  multiple = 6,
+  stream = 7,
+  news = 8,
+  desktopFolder = 9,
+  documentsFolder = 10,
+  picturesFolder = 11,
 }
 
-export type FileIconTypeInput = 1 | 2 | 3 | 4 | 5 | 6;
+export type FileIconTypeInput = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;

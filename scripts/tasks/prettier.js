@@ -1,7 +1,7 @@
 // @ts-check
 
-const { runPrettierForProject } = require('../prettier/prettier-helpers');
+const { runPrettierForFolder } = require('../prettier/prettier-helpers');
 
 module.exports = function() {
-  runPrettierForProject(process.cwd());
+  runPrettierForFolder(process.cwd(), true);
 };

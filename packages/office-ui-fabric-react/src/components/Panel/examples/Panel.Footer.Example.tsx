@@ -35,7 +35,7 @@ export const PanelFooterExample: React.FunctionComponent = () => {
         // at the bottom of the page
         isFooterAtBottom={true}
       >
-        <span>Content goes here.</span>
+        <p>Content goes here.</p>
       </Panel>
     </div>
   );

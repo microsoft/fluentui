@@ -5,7 +5,7 @@ import {
   contentPaddingXl,
   contentPaddingBottom,
   queryUhfMobileMin,
-  queryXLargeMin
+  queryXLargeMin,
 } from './constants';
 
 export function fullWidth(): IRawStyle {
@@ -16,13 +16,13 @@ export function fullWidth(): IRawStyle {
     selectors: {
       [queryUhfMobileMin]: {
         marginLeft: -contentPaddingLg,
-        marginRight: -contentPaddingLg
+        marginRight: -contentPaddingLg,
       },
       [queryXLargeMin]: {
         marginLeft: -contentPaddingXl,
-        marginRight: -contentPaddingXl
-      }
-    }
+        marginRight: -contentPaddingXl,
+      },
+    },
   };
 }
 
@@ -31,17 +31,20 @@ export function fullHeight(): IRawStyle {
   return { marginBottom: -contentPaddingBottom };
 }
 
-export function contentPadding(paddingTop: string = '0', paddingBottom: string = `${contentPaddingBottom}px`): IRawStyle {
+export function contentPadding(
+  paddingTop: string = '0',
+  paddingBottom: string = `${contentPaddingBottom}px`,
+): IRawStyle {
   // Apply content padding, based on device size
   return {
     padding: `${paddingTop} ${contentPaddingSmall} ${paddingBottom}`,
     selectors: {
       [queryUhfMobileMin]: {
-        padding: `${paddingTop} ${contentPaddingLg} ${paddingBottom}`
+        padding: `${paddingTop} ${contentPaddingLg} ${paddingBottom}`,
       },
       [queryXLargeMin]: {
-        padding: `${paddingTop} ${contentPaddingXl} ${paddingBottom}`
-      }
-    }
+        padding: `${paddingTop} ${contentPaddingXl} ${paddingBottom}`,
+      },
+    },
   };
 }

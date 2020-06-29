@@ -9,20 +9,20 @@ const BUNDLE_NAME = 'demo-app';
 module.exports = resources.createServeConfig(
   addMonacoWebpackConfig({
     entry: {
-      [BUNDLE_NAME]: './src/demo/index.tsx'
+      [BUNDLE_NAME]: './src/demo/index.tsx',
     },
 
     output: {
-      chunkFilename: `${BUNDLE_NAME}-[name].js`
+      chunkFilename: `${BUNDLE_NAME}-[name].js`,
     },
 
     devServer: {
-      writeToDisk: true // for debugging
+      writeToDisk: true, // for debugging
     },
 
     externals: {
       react: 'React',
-      'react-dom': 'ReactDOM'
+      'react-dom': 'ReactDOM',
     },
 
     plugins: [/** @type {any} */ (new BundleAnalyzerPlugin())],
@@ -34,8 +34,8 @@ module.exports = resources.createServeConfig(
         '@uifabric/tsx-editor/dist': path.join(__dirname, 'dist'),
         '@uifabric/tsx-editor': path.join(__dirname, 'lib'),
         'Props.ts.js': 'Props',
-        'Example.tsx.js': 'Example'
-      }
-    }
-  })
+        'Example.tsx.js': 'Example',
+      },
+    },
+  }),
 );

@@ -11,52 +11,61 @@ export interface IIconState {
 }
 
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>({
-  disableCaching: true
+  // Icon is used a lot by other components.
+  // It's likely to see expected cases which pass different className to the Icon.
+  // Therefore setting a larger cache size.
+  cacheSize: 100,
 });
 
 export class IconBase extends React.Component<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {
-      imageLoadError: false
+      imageLoadError: false,
     };
   }
 
   public render() {
-    const { className, styles, iconName, imageErrorAs, theme } = this.props;
+    const { children, className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
-    const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image || !!this.props.imageProps;
-    const { iconClassName, children } = getIconContent(iconName);
+    const isImage =
+      // tslint:disable-next-line:deprecation
+      !!this.props.imageProps || this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
+    const iconContent = getIconContent(iconName) || {};
+    const { iconClassName, children: iconContentChildren } = iconContent;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className,
       iconClassName,
       isImage,
-      isPlaceholder
+      isPlaceholder,
     });
 
-    const RootType = isImage ? 'div' : 'i';
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, ['aria-label']);
+    const RootType = isImage ? 'span' : 'i';
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, [
+      'aria-label',
+    ]);
     const { imageLoadError } = this.state;
     const imageProps: IImageProps = {
       ...this.props.imageProps,
-      onLoadingStateChange: this.onImageLoadingStateChange
+      onLoadingStateChange: this.onImageLoadingStateChange,
     };
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
-    const ariaLabel = this.props.ariaLabel || this.props['aria-label'];
+    // tslint:disable-next-line:deprecation
+    const ariaLabel = this.props['aria-label'] || this.props.ariaLabel;
     const containerProps = ariaLabel
       ? {
-          'aria-label': ariaLabel
+          'aria-label': ariaLabel,
         }
       : {
-          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
+          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true,
         };
 
     return (
       <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
-        {isImage ? <ImageType {...imageProps} /> : children}
+        {isImage ? <ImageType {...imageProps} /> : children || iconContentChildren}
       </RootType>
     );
   }

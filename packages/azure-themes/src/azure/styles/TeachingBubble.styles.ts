@@ -10,23 +10,23 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
   return {
     bodyContent: {
       color: semanticColors.bodyText,
-      border: `1px solid ${palette.themePrimary}`
+      border: `1px solid ${palette.themePrimary}`,
     },
     footer: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     header: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     headline: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     content: {
       backgroundColor: semanticColors.bodyBackground,
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     subText: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     subComponentStyles: {
       callout: {
@@ -34,9 +34,9 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
           borderWidth: StyleConstants.borderWidth,
-          boxShadow: Depths.depth8
-        }
-      }
+          boxShadow: Depths.depth8,
+        },
+      },
     },
     closeButton: {
       color: semanticColors.bodyText,
@@ -44,13 +44,13 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       selectors: {
         '&:hover': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: BaseColors.WHITE
+          color: BaseColors.WHITE,
         },
         '&:active': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: BaseColors.WHITE
-        }
-      }
-    }
+          color: BaseColors.WHITE,
+        },
+      },
+    },
   };
 };

@@ -10,65 +10,48 @@ const classNames = mergeStyleSets({
     height: 200,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
-
   textField: {
-    paddingRight: 200
-  }
+    paddingRight: 200,
+  },
 });
 
-interface IHoverCardExampleState {
-  target: HTMLElement | null;
-  eventListenerTarget: HTMLElement | null;
-}
+const onRenderPlainCard = (): JSX.Element => {
+  return <div className={classNames.plainCard}>plain card</div>;
+};
 
-export class HoverCardEventListenerTargetExample extends React.Component<{}, IHoverCardExampleState> {
-  public state = {
-    target: null,
-    eventListenerTarget: null
+export const HoverCardEventListenerTargetExample: React.FunctionComponent = () => {
+  const [target, setTarget] = React.useState();
+  const [eventListenerTarget, setEventListenerTarget] = React.useState();
+  const plainCardProps: IPlainCardProps = {
+    onRenderPlainCard: onRenderPlainCard,
+    directionalHint: DirectionalHint.rightTopEdge,
   };
-
-  public render() {
-    const plainCardProps: IPlainCardProps = {
-      onRenderPlainCard: this._onRenderPlainCard,
-      directionalHint: DirectionalHint.rightTopEdge
-    };
-    return (
-      <Fabric>
-        <p>
-          Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch the card only when
-          hovering over the text field, hovering over the icon doesn't trigger card open.
-        </p>
-        <span ref={this._setTarget}>
-          <span ref={this._setEventListenerTarget} className={classNames.textField}>
-            Hover Zone
-          </span>
-          <IconButton iconProps={{ iconName: 'Emoji2' }} title={'Emoji'} />
-          <HoverCard
-            plainCardProps={plainCardProps}
-            type={HoverCardType.plain}
-            target={this.state.target}
-            eventListenerTarget={this.state.eventListenerTarget}
-          />
+  const onSetTarget = (element: HTMLElement | null): void => {
+    setTarget(element);
+  };
+  const onSetEventListenerTarget = (element: HTMLElement | null): void => {
+    setEventListenerTarget(element);
+  };
+  return (
+    <Fabric>
+      <p>
+        Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch the
+        card only when hovering over the text field, hovering over the icon doesn't trigger card open.
+      </p>
+      <span ref={onSetTarget}>
+        <span ref={onSetEventListenerTarget} className={classNames.textField}>
+          Hover Zone
         </span>
-      </Fabric>
-    );
-  }
-
-  private _onRenderPlainCard = (): JSX.Element => {
-    return <div className={classNames.plainCard}>plain card</div>;
-  };
-
-  private _setTarget = (element: HTMLElement | null): void => {
-    this.setState({
-      target: element
-    });
-  };
-
-  private _setEventListenerTarget = (element: HTMLElement | null): void => {
-    this.setState({
-      eventListenerTarget: element
-    });
-  };
-}
+        <IconButton iconProps={{ iconName: 'Emoji2' }} title={'Emoji'} />
+        <HoverCard
+          plainCardProps={plainCardProps}
+          type={HoverCardType.plain}
+          target={target}
+          eventListenerTarget={eventListenerTarget}
+        />
+      </span>
+    </Fabric>
+  );
+};

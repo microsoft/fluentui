@@ -47,23 +47,30 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
   }
 
   private _renderPivotItemList(tasks: ITodoItem[], tabName: string): React.ReactElement<IPivotProps> {
-    // @todo #219004 make isInnerZoneKeystroke be rtl safe.
+    // @todo #219004 make shouldEnterInnerZone be rtl safe.
     return (
       <PivotItem headerText={`${tabName} (${tasks.length})`}>
-        <FocusZone direction={FocusZoneDirection.vertical} isInnerZoneKeystroke={this._isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.vertical} shouldEnterInnerZone={this._shouldEnterInnerZone}>
           <List className={styles.todoList} items={tasks} onRenderCell={this._onRenderTodoItem} />
         </FocusZone>
       </PivotItem>
     );
   }
 
-  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+  private _shouldEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     return ev.which === KeyCodes.right;
   };
 
   private _onRenderTodoItem(item?: ITodoItem): React.ReactElement<ITodoItemProps> | null {
     if (item) {
-      return <TodoItem key={item.id} item={item} onToggleComplete={this.props.onToggleComplete} onDeleteItem={this.props.onDeleteItem} />;
+      return (
+        <TodoItem
+          key={item.id}
+          item={item}
+          onToggleComplete={this.props.onToggleComplete}
+          onDeleteItem={this.props.onDeleteItem}
+        />
+      );
     }
     return null;
   }

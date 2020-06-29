@@ -22,7 +22,7 @@ const itemStyles: React.CSSProperties = {
   display: 'flex',
   height: 50,
   justifyContent: 'center',
-  width: 50
+  width: 50,
 };
 
 // Tokens definition
@@ -38,8 +38,8 @@ const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampl
     root: {
       background: DefaultPalette.themeTertiary,
       width: `${stackWidth}%`,
-      overflow
-    }
+      overflow,
+    },
   };
   const containerStyles: React.CSSProperties = { height: containerHeight };
 
@@ -78,7 +78,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
     containerHeight: 150,
     horizontalAlignment: 'start',
     verticalAlignment: 'start',
-    overflow: 'visible'
+    overflow: 'visible',
   };
   private _horizontalAlignmentOptions: IDropdownOption[] = [
     { key: 'start', text: 'Left' },
@@ -86,17 +86,17 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
     { key: 'end', text: 'Right' },
     { key: 'space-around', text: 'Space around' },
     { key: 'space-between', text: 'Space between' },
-    { key: 'space-evenly', text: 'Space evenly' }
+    { key: 'space-evenly', text: 'Space evenly' },
   ];
   private _verticalAlignmentOptions: IDropdownOption[] = [
     { key: 'start', text: 'Top' },
     { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Bottom' }
+    { key: 'end', text: 'Bottom' },
   ];
   private _overflowOptions: IDropdownOption[] = [
     { key: 'visible', text: 'Visible' },
     { key: 'auto', text: 'Auto' },
-    { key: 'hidden', text: 'Hidden' }
+    { key: 'hidden', text: 'Hidden' },
   ];
 
   public render(): JSX.Element {
@@ -106,7 +106,15 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
       <Stack tokens={sectionStackTokens}>
         <Stack horizontal>
           <Stack.Item grow>
-            <Slider label="Stack width:" min={1} max={100} step={1} defaultValue={100} showValue={true} onChange={this._onWidthChange} />
+            <Slider
+              label="Stack width:"
+              min={1}
+              max={100}
+              step={1}
+              defaultValue={100}
+              showValue={true}
+              onChange={this._onWidthChange}
+            />
           </Stack.Item>
           <Stack.Item grow>
             <Slider

@@ -9,15 +9,26 @@ import { IButtonComponent, IButtonViewProps } from './Button.types';
 export const ButtonSlots: IButtonComponent['slots'] = props => ({
   root: !!props.href ? 'a' : 'button',
   icon: FontIcon,
-  content: Text
+  content: Text,
 });
 
 export const ButtonView: IButtonComponent['view'] = (props, slots) => {
-  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+  const {
+    icon,
+    content,
+    children,
+    disabled,
+    onClick,
+    allowDisabledFocus,
+    ariaLabel,
+    keytipProps,
+    buttonRef,
+    ...rest
+  } = props;
 
   const { htmlType, propertiesType } = _deriveRootType(props);
 
-  const buttonProps = { ...getNativeProps(rest, propertiesType) };
+  const buttonProps = { ...getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(rest, propertiesType) };
 
   const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
     if (!disabled && onClick) {
@@ -63,5 +74,7 @@ interface IButtonRootType {
 }
 
 function _deriveRootType(props: IButtonViewProps): IButtonRootType {
-  return !!props.href ? { htmlType: 'link', propertiesType: anchorProperties } : { htmlType: 'button', propertiesType: buttonProperties };
+  return !!props.href
+    ? { htmlType: 'link', propertiesType: anchorProperties }
+    : { htmlType: 'button', propertiesType: buttonProperties };
 }

@@ -10,7 +10,7 @@ import {
   IColorCellProps,
   IColorPickerGridCellProps,
   IColorPickerGridCellStyleProps,
-  IColorPickerGridCellStyles
+  IColorPickerGridCellStyles,
 } from './ColorPickerGridCell.types';
 
 const getColorPickerGridCellButtonClassNames = memoizeFunction(
@@ -23,7 +23,7 @@ const getColorPickerGridCellButtonClassNames = memoizeFunction(
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined
+    isSplit: boolean | undefined,
   ): IButtonClassNames => {
     const styles = getActionButtonStyles(theme);
     return mergeStyleSets({
@@ -39,21 +39,21 @@ const getColorPickerGridCellButtonClassNames = memoizeFunction(
             selectors: {
               ':hover': styles.rootHovered,
               ':focus': styles.rootFocused,
-              ':active': styles.rootPressed
-            }
+              ':active': styles.rootPressed,
+            },
           },
         disabled && checked && [styles.rootCheckedDisabled],
         !disabled &&
           checked && {
             selectors: {
               ':hover': styles.rootCheckedHovered,
-              ':active': styles.rootCheckedPressed
-            }
-          }
+              ':active': styles.rootCheckedPressed,
+            },
+          },
       ],
-      flexContainer: ['ms-Button-flexContainer', styles.flexContainer]
+      flexContainer: ['ms-Button-flexContainer', styles.flexContainer],
     });
-  }
+  },
 );
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
@@ -61,18 +61,19 @@ const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorP
 class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {}
 
 export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
-  public static defaultProps = {
+  public static defaultProps: Partial<IColorPickerGridCellProps> = {
     circle: true,
     disabled: false,
-    selected: false
-  } as IColorPickerGridCellProps;
+    selected: false,
+  };
 
   private _classNames: { [key in keyof IColorPickerGridCellStyles]: string };
 
   public render(): JSX.Element {
     const {
       item,
-      id,
+      // tslint:disable-next-line:deprecation
+      idPrefix = this.props.id,
       selected,
       disabled,
       styles,
@@ -89,7 +90,7 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
       onKeyDown,
       height,
       width,
-      borderWidth
+      borderWidth,
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -100,13 +101,13 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
       isWhite: this._isWhiteCell(color),
       height,
       width,
-      borderWidth
+      borderWidth,
     });
 
     return (
       <ColorCell
         item={item}
-        id={`${id}-${item.id}-${item.index}`}
+        id={`${idPrefix}-${item.id}-${item.index}`}
         key={item.id}
         disabled={disabled}
         role={'gridcell'}
@@ -135,7 +136,11 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
   private _onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={this._classNames.svg} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color as string)!.str}>
+      <svg
+        className={this._classNames.svg}
+        viewBox="0 0 20 20"
+        fill={getColorFromString(colorOption.color as string)!.str}
+      >
         {this.props.circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );

@@ -6,8 +6,8 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 const stackStyles: IStackStyles = {
   root: {
     background: DefaultPalette.themeTertiary,
-    height: 250
-  }
+    height: 250,
+  },
 };
 const stackItemStyles: IStackItemStyles = {
   root: {
@@ -15,15 +15,15 @@ const stackItemStyles: IStackItemStyles = {
     background: DefaultPalette.themePrimary,
     color: DefaultPalette.white,
     display: 'flex',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 };
 
 // Tokens definition
 const outerStackTokens: IStackTokens = { childrenGap: 5 };
 const innerStackTokens: IStackTokens = {
   childrenGap: 5,
-  padding: 10
+  padding: 10,
 };
 
 export const VerticalStackGrowExample: React.FunctionComponent = () => {

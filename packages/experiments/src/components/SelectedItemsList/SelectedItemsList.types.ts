@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ISelectedItemsList<T> {
@@ -31,7 +30,7 @@ export interface ISelectedItemsList<T> {
 }
 
 export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
-  onCopyItem: () => void;
+  onCopyItem?: () => void;
   /**
    * Override onItemChange to support replacing an item with multiple items.
    */
@@ -51,7 +50,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * The selection
    */
-  selection?: Selection;
+  focusedItemIndices?: number[];
   /**
    * Gets the copy text that will be set in the item.
    */
@@ -59,7 +58,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * Function that specifies how the selected item will appear.
    */
-  onRenderItem: React.ComponentType<ISelectedItemProps<T>>;
+  onRenderItem?: React.ComponentType<ISelectedItemProps<T>>;
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */
@@ -73,8 +72,8 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a
-   * controlled component.
+   * The items that the base picker should currently display as selected. If this is provided then the picker will
+   * act as a controlled component.
    */
   selectedItems?: T[];
 
@@ -85,7 +84,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   removeButtonAriaLabel?: string;
 
   /**
-   * A callback when and item or items are removed
+   * A callback when an item or items are removed
    */
   onItemsRemoved?: (removedItems: T[]) => void;
 

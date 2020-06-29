@@ -28,7 +28,7 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
         onPageChange={this.onPageChange}
         styles={{
           previousNextPage: {
-            color: '#0078d4'
+            color: '#0078d4',
           },
           pageNumber: {
             width: '32px',
@@ -36,20 +36,20 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
             textAlign: 'center',
             selectors: {
               ':hover': {
-                borderRadius: '16px'
+                borderRadius: '16px',
               },
               '&[aria-selected=true]': {
                 backgroundColor: '#0078d4',
                 fontWeight: 'bold',
                 borderRadius: '16px',
-                color: 'white'
+                color: 'white',
               },
               '&:hover[aria-selected=true]': {
                 backgroundColor: '#0078d4',
-                color: 'white'
-              }
-            }
-          }
+                color: 'white',
+              },
+            },
+          },
         }}
       />
     );
@@ -57,7 +57,7 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
 
   private onPageChange = (index: number): void => {
     this.setState({
-      selectedPageIndex: index
+      selectedPageIndex: index,
     });
   };
 }

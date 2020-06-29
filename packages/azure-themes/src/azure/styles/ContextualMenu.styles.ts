@@ -2,7 +2,7 @@ import {
   IContextualMenuStyleProps,
   IContextualMenuStyles,
   IContextualMenuItemStyleProps,
-  IContextualMenuItemStyles
+  IContextualMenuItemStyles,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Depths } from '../AzureDepths';
 import { FontSizes } from '../AzureType';
@@ -23,37 +23,37 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           boxShadow: Depths.depth8,
           selectors: {
             '.ms-Callout-beak': {
-              backgroundColor: semanticColors.inputBackground
-            }
-          }
-        }
+              backgroundColor: semanticColors.inputBackground,
+            },
+          },
+        },
       },
       menuItem: (itemStyleProps: IContextualMenuItemStyleProps): Partial<IContextualMenuItemStyles> => {
         return {
           root: [
             {
-              fontSize: FontSizes.size12
-            }
+              fontSize: FontSizes.size13,
+            },
           ],
           splitPrimary: {
-            fontSize: FontSizes.size12
+            fontSize: FontSizes.size13,
           },
           divider: {
-            backgroundColor: semanticColors.inputBorder
+            backgroundColor: semanticColors.inputBorder,
           },
-          icon: {
-            color: semanticColors.focusBorder
+          iconColor: {
+            color: semanticColors.focusBorder,
           },
           item: {
             selectors: {
               '.is-expanded': {
                 backgroundColor: semanticColors.menuItemBackgroundHovered,
-                color: semanticColors.inputText
-              }
-            }
-          }
+                color: semanticColors.inputText,
+              },
+            },
+          },
         };
-      }
-    }
+      },
+    },
   };
 };

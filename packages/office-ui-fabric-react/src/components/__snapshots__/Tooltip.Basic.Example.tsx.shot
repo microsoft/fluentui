@@ -15,8 +15,8 @@ exports[`Component Examples renders Tooltip.Basic.Example.tsx correctly 1`] = `
     onMouseLeave={[Function]}
   >
     <button
-      aria-describedby="tooltipHost0"
-      aria-labelledby="id__1"
+      aria-describedby="tooltip0"
+      aria-labelledby="id__2"
       className=
           ms-Button
           ms-Button--default
@@ -44,7 +44,6 @@ exports[`Component Examples renders Tooltip.Basic.Example.tsx correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -126,9 +125,9 @@ exports[`Component Examples renders Tooltip.Basic.Example.tsx correctly 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__1"
+            id="id__2"
           >
-            Hover Over Me
+            Hover over me
           </span>
         </span>
       </span>

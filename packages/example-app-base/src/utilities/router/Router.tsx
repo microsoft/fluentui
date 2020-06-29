@@ -25,7 +25,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
     this._disposables = [];
     initializeComponentRef(this);
     this.state = {
-      path: this._getPath()
+      path: this._getPath(),
     };
   }
 
@@ -37,7 +37,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
         if (path !== this.state.path) {
           this.setState({ path });
         }
-      })
+      }),
     );
   }
 
@@ -76,8 +76,10 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
     const routes = React.Children.toArray(children) as React.ReactElement<IRouteProps>[];
 
     for (const route of routes) {
-      if (!route.props) {
-        continue; // probably some other child type, not a route
+      // If route.props is undefined, it's probably some other child type, not a route.
+      // If neither component nor getComponent is defined, it's an invalid route.
+      if (!route.props || !(route.props.component || route.props.getComponent)) {
+        continue;
       }
       // Use this route if it has no path, or if the path matches the current path (from the hash)
       const routePath = _normalizePath(route.props.path);
@@ -85,7 +87,8 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
         let { component } = route.props;
 
         // The loaded component is stored as a prop on the loader function...because obviously
-        const getComponent: Required<IRouteProps>['getComponent'] & { component?: React.ComponentType } = route.props.getComponent!;
+        const getComponent: Required<IRouteProps>['getComponent'] & { component?: React.ComponentType } = route.props
+          .getComponent!;
         if (getComponent) {
           let asynchronouslyResolved = false;
 
@@ -97,7 +100,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
                 throw new Error(
                   `Router: Calling getComponent for the route with path ${route.props.path} ` +
                     `returned ${resolved}, not a component. Check your getComponent implementation ` +
-                    `(including the name of the module member you're attempting to return).`
+                    `(including the name of the module member you're attempting to return).`,
                 );
               }
               component = getComponent.component = resolved;
@@ -114,7 +117,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
         if (component) {
           const componentChildren = this._resolveRoute(route.props.children || []);
           return React.createElement(component, { key: route.key! }, componentChildren);
-        } else if (getComponent) {
+        } else if (!!getComponent) {
           // We are asynchronously fetching this component.
           return null;
         }

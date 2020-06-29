@@ -1,7 +1,45 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.1.70](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.70)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.53..@uifabric/fluent-theme_v7.1.70)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.1.53](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.53)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.43..@uifabric/fluent-theme_v7.1.53)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.1.43
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.1.42
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.1.5
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 7.1.4
 Wed, 04 Sep 2019 04:09:58 GMT
 
@@ -395,4 +433,3 @@ Fri, 19 Oct 2018 12:29:20 GMT
 ### Patches
 
 - Create new package for housing Fluent customizations.
-

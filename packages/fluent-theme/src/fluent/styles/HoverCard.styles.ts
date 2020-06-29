@@ -2,7 +2,7 @@ import {
   IExpandingCardStyleProps,
   IExpandingCardStyles,
   IPlainCardStyleProps,
-  IPlainCardStyles
+  IPlainCardStyles,
 } from 'office-ui-fabric-react/lib/HoverCard';
 
 const commonCardStyles = (props: IExpandingCardStyleProps | IPlainCardStyleProps) => {
@@ -14,8 +14,8 @@ const commonCardStyles = (props: IExpandingCardStyleProps | IPlainCardStyleProps
     boxShadow: effects.elevation16,
     borderRadius: effects.roundedCorner2,
     selectors: {
-      '.ms-Callout-main': { borderRadius: effects.roundedCorner2 }
-    }
+      '.ms-Callout-main': { borderRadius: effects.roundedCorner2 },
+    },
   };
 };
 
@@ -23,20 +23,20 @@ export const ExpandingCardStyles = (props: IExpandingCardStyleProps): Partial<IE
   return {
     root: {
       ...commonCardStyles(props),
-      width: 320
+      width: 320,
     },
     expandedCard: {
       selectors: {
         ':before': {
-          width: 272 // needs to change due to above change
-        }
-      }
-    }
+          width: 272, // needs to change due to above change
+        },
+      },
+    },
   };
 };
 
 export const PlainCardStyles = (props: IPlainCardStyleProps): Partial<IPlainCardStyles> => {
   return {
-    root: { ...commonCardStyles(props) }
+    root: { ...commonCardStyles(props) },
   };
 };

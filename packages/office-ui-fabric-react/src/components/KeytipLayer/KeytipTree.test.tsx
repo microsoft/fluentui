@@ -79,7 +79,7 @@ function createKeytipProps(keySequences: string[]): IKeytipProps {
   return {
     keySequences,
     // Just add empty content since it's required in IKeytipProps, but not needed for these tests
-    content: ''
+    content: '',
   };
 }
 
@@ -168,7 +168,7 @@ describe('KeytipTree', () => {
     it('correctly adds node when overflowSetSequence is defined', () => {
       const keytipPropsEWithOverflow = {
         ...keytipPropsE,
-        overflowSetSequence: keytipSequenceC
+        overflowSetSequence: keytipSequenceC,
       };
       keytipTree.addNode(keytipPropsC, uniqueIdC);
       keytipTree.addNode(keytipPropsEWithOverflow, uniqueIdE);
@@ -184,7 +184,7 @@ describe('KeytipTree', () => {
       const updatedKeytipProps = {
         ...keytipPropsB,
         disabled: true,
-        hasDynamicChildren: true
+        hasDynamicChildren: true,
       };
       keytipTree.updateNode(updatedKeytipProps, uniqueIdC);
       const nodeB = keytipTree.getNode(keytipIdB)!;
@@ -204,6 +204,47 @@ describe('KeytipTree', () => {
       expect(updatedNode.id).toEqual(updatedKeytipId);
       expect(updatedNode.keySequences).toEqual(updatedKeytipSequence);
       expect(updatedNodeParent.children).toContain(updatedNode.id);
+    });
+
+    it('correctly updates when the keytips parent has changed', () => {
+      // Add all nodes to the tree
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      keytipTree.addNode(keytipPropsD, uniqueIdD);
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
+      verifySampleTree();
+
+      // Change node 'd' to have parent 'c' instead of parent 'e'
+      const updatedKeytipId = KTP_FULL_PREFIX + 'c' + KTP_SEPARATOR + 'd';
+      const updatedKeytipSequence = ['c', 'd'];
+      const updatedKeytipProps = createKeytipProps(updatedKeytipSequence);
+      keytipTree.updateNode(updatedKeytipProps, uniqueIdD);
+      const updatedNode = keytipTree.getNode(updatedKeytipId)!;
+      const updatedParent = keytipTree.getNode(keytipIdC)!;
+      const previousParent = keytipTree.getNode(keytipIdE)!;
+      // Validate updated node properties
+      expect(updatedNode.id).toEqual(updatedKeytipId);
+      expect(updatedNode.parent).toEqual(keytipIdC);
+      // Validate new parent properties
+      expect(updatedParent.children).toContain(updatedKeytipId);
+      // Validate old parent properties, shouldn't have it in children
+      expect(previousParent.children.indexOf(updatedKeytipId)).toEqual(-1);
+      expect(previousParent.children.indexOf(keytipIdD)).toEqual(-1);
+
+      // Revert, make node 'd' have parent 'e' again
+      keytipTree.updateNode(keytipPropsD, uniqueIdD);
+      const nodeD = keytipTree.getNode(keytipIdD)!;
+      const nodeC = keytipTree.getNode(keytipIdC)!;
+      const nodeE = keytipTree.getNode(keytipIdE)!;
+      // Node props are back to original
+      expect(nodeD.id).toEqual(keytipIdD);
+      expect(nodeD.parent).toEqual(keytipIdE);
+      // E has D as a child
+      expect(nodeE.children).toContain(keytipIdD);
+      // C does not have D as a child
+      expect(nodeC.children.indexOf(keytipIdD)).toEqual(-1);
+      expect(nodeC.children.indexOf(updatedKeytipId)).toEqual(-1);
     });
   });
 
@@ -266,7 +307,7 @@ describe('KeytipTree', () => {
     it('correctly removes a node when overflowSetSequence is defined', () => {
       const keytipPropsEWithOverflow = {
         ...keytipPropsE,
-        overflowSetSequence: keytipSequenceC
+        overflowSetSequence: keytipSequenceC,
       };
       keytipTree.addNode(keytipPropsC, uniqueIdC);
       keytipTree.addNode(keytipPropsEWithOverflow, uniqueIdE);
@@ -347,7 +388,7 @@ describe('KeytipTree', () => {
         // Disabled node Q
         const disabledQ = {
           ...keytipPropsQ,
-          disabled: true
+          disabled: true,
         };
         keytipTree.updateNode(disabledQ, uniqueIdQ);
         expect(keytipTree.getExactMatchedNode('q', keytipTree.root)).toBeUndefined();
@@ -377,7 +418,7 @@ describe('KeytipTree', () => {
         // Disabled node E1
         const disabledE1 = {
           ...keytipPropsE1,
-          disabled: true
+          disabled: true,
         };
         keytipTree.updateNode(disabledE1, uniqueIdE1);
         const matchedNodes = keytipTree.getPartiallyMatchedNodes('e', keytipTree.root);
@@ -449,11 +490,11 @@ describe('KeytipTree', () => {
     it('matches a keytip when both it and its parent have an overflowSetSequence', () => {
       const cWithOverflow = {
         ...keytipPropsC,
-        overflowSetSequence: ['x']
+        overflowSetSequence: ['x'],
       };
       const bWithOverflow = {
         ...keytipPropsB,
-        overflowSetSequence: ['x']
+        overflowSetSequence: ['x'],
       };
       keytipTree.addNode(cWithOverflow, uniqueIdC);
       keytipTree.currentKeytip = keytipTree.getNode('ktp-x-c');
@@ -463,7 +504,7 @@ describe('KeytipTree', () => {
     it('matches a keytip when the currentKeytip has an overflowSetSequence but the passed in one doesn`t', () => {
       const cWithOverflow = {
         ...keytipPropsC,
-        overflowSetSequence: ['x']
+        overflowSetSequence: ['x'],
       };
       keytipTree.addNode(cWithOverflow, uniqueIdC);
       keytipTree.currentKeytip = keytipTree.getNode('ktp-x-c');

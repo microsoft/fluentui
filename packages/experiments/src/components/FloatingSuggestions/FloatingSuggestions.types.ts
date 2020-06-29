@@ -60,7 +60,7 @@ export interface IFloatingSuggestionsProps<T> extends IBaseProps<IFloatingSugges
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
-   * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
+   * If used in conjunction with resolveDelay this will only kick off after the delay throttle.
    * Return null if using as a controlled component
    */
   onResolveSuggestions: (filter: string) => T[] | PromiseLike<T[]> | null;

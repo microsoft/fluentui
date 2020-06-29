@@ -84,7 +84,7 @@ export const baseElementEvents = [
   'onPointerOver',
   'onPointerUp',
   'onGotPointerCapture',
-  'onLostPointerCapture'
+  'onLostPointerCapture',
 ];
 
 /**
@@ -109,7 +109,7 @@ export const baseElementProperties = [
   'title', // global
   'translate', // global
   'spellCheck', // global
-  'name' // global
+  'name', // global
 ];
 
 /**
@@ -125,7 +125,7 @@ export const htmlElementProperties = baseElementProperties.concat(baseElementEve
  * @public
  */
 export const labelProperties = htmlElementProperties.concat([
-  'form' // button, fieldset, input, label, meter, object, output, select, textarea
+  'form', // button, fieldset, input, label, meter, object, output, select, textarea
 ]);
 
 /**
@@ -139,7 +139,7 @@ export const audioProperties = htmlElementProperties.concat([
   'muted', // audio, video
   'preload', // audio, video
   'src', // audio, embed, iframe, img, input, script, source, track, video
-  'width' // canvas, embed, iframe, img, input, object, video
+  'width', // canvas, embed, iframe, img, input, object, video
 ]);
 
 /**
@@ -148,7 +148,7 @@ export const audioProperties = htmlElementProperties.concat([
  * @public
  */
 export const videoProperties = audioProperties.concat([
-  'poster' // video
+  'poster', // video
 ]);
 
 /**
@@ -157,7 +157,7 @@ export const videoProperties = audioProperties.concat([
  * @public
  */
 export const olProperties = htmlElementProperties.concat([
-  'start' // ol
+  'start', // ol
 ]);
 
 /**
@@ -166,7 +166,7 @@ export const olProperties = htmlElementProperties.concat([
  * @public
  */
 export const liProperties = htmlElementProperties.concat([
-  'value' // button, input, li, option, meter, progress, param
+  'value', // button, input, li, option, meter, progress, param
 ]);
 
 /**
@@ -181,7 +181,7 @@ export const anchorProperties = htmlElementProperties.concat([
   'media', // a, area, link, source, style
   'rel', // a, area, link
   'target', // a, area, base, form
-  'type' // a, button, input, link, menu, object, script, source, style
+  'type', // a, button, input, link, menu, object, script, source, style
 ]);
 
 /**
@@ -199,7 +199,7 @@ export const buttonProperties = htmlElementProperties.concat([
   'formNoValidate', // input, button
   'formTarget', // input, button
   'type', // a, button, input, link, menu, object, script, source, style
-  'value' // button, input, li, option, meter, progress, param,
+  'value', // button, input, li, option, meter, progress, param,
 ]);
 
 /**
@@ -210,6 +210,7 @@ export const buttonProperties = htmlElementProperties.concat([
 export const inputProperties = buttonProperties.concat([
   'accept', // input
   'alt', // area, img, input
+  'autoCapitalize', // input, textarea
   'autoComplete', // form, input
   'checked', // input
   'dirname', // input, textarea
@@ -230,7 +231,7 @@ export const inputProperties = buttonProperties.concat([
   'size', // input
   'type', // a, button, input, link, menu, object, script, source, style
   'value', // button, input, li, option, meter, progress, param
-  'width' // canvas, embed, iframe, img, input, object, video
+  'width', // canvas, embed, iframe, img, input, object, video
 ]);
 
 /**
@@ -239,6 +240,7 @@ export const inputProperties = buttonProperties.concat([
  * @public
  */
 export const textAreaProperties = buttonProperties.concat([
+  'autoCapitalize', // input, textarea
   'cols', // textarea
   'dirname', // input, textarea
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
@@ -247,7 +249,7 @@ export const textAreaProperties = buttonProperties.concat([
   'readOnly', // input, textarea
   'required', // input, select, textarea
   'rows', // textarea
-  'wrap' // textarea
+  'wrap', // textarea
 ]);
 
 /**
@@ -258,12 +260,12 @@ export const textAreaProperties = buttonProperties.concat([
 export const selectProperties = buttonProperties.concat([
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
   'multiple', // input, select
-  'required' // input, select, textarea
+  'required', // input, select, textarea
 ]);
 
 export const optionProperties = htmlElementProperties.concat([
   'selected', // option
-  'value' // button, input, li, option, meter, progress, param
+  'value', // button, input, li, option, meter, progress, param
 ]);
 
 /**
@@ -273,7 +275,7 @@ export const optionProperties = htmlElementProperties.concat([
  */
 export const tableProperties = htmlElementProperties.concat([
   'cellPadding', // table
-  'cellSpacing' // table
+  'cellSpacing', // table
 ]);
 
 /**
@@ -290,7 +292,7 @@ export const trProperties = htmlElementProperties;
  */
 export const thProperties = htmlElementProperties.concat([
   'rowSpan', // td, th
-  'scope' // th
+  'scope', // th
 ]);
 
 /**
@@ -302,15 +304,15 @@ export const tdProperties = htmlElementProperties.concat([
   'colSpan', // td
   'headers', // td
   'rowSpan', // td, th
-  'scope' // th
+  'scope', // th
 ]);
 
 export const colGroupProperties = htmlElementProperties.concat([
-  'span' // col, colgroup
+  'span', // col, colgroup
 ]);
 
 export const colProperties = htmlElementProperties.concat([
-  'span' // col, colgroup
+  'span', // col, colgroup
 ]);
 
 /**
@@ -325,7 +327,7 @@ export const formProperties = htmlElementProperties.concat([
   'encType', // form
   'method', // form
   'noValidate', // form
-  'target' // form
+  'target', // form
 ]);
 
 /**
@@ -345,7 +347,7 @@ export const iframeProperties = htmlElementProperties.concat([
   'sandbox', // iframe
   'src', // audio, embed, iframe, img, input, script, source, track, video
   'srcDoc', // iframe
-  'width' // canvas, embed, iframe, img, input, object, video,
+  'width', // canvas, embed, iframe, img, input, object, video,
 ]);
 
 /**
@@ -360,7 +362,7 @@ export const imgProperties = htmlElementProperties.concat([
   'src', // audio, embed, iframe, img, input, script, source, track, video
   'srcSet', // img, source
   'useMap', // img, object,
-  'width' // canvas, embed, iframe, img, input, object, video
+  'width', // canvas, embed, iframe, img, input, object, video
 ]);
 
 /**
@@ -390,9 +392,10 @@ export const divProperties = htmlElementProperties;
  * @returns The filtered props
  */
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T {
-  // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for JSX attributes,
-  // but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
-  // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then return native props.
+  // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
+  // JSX attributes, but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
+  // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then
+  // return native props.
   // We should be able to do this once this PR is merged: https://github.com/microsoft/TypeScript/pull/26797
   return filteredAssign(
     (propName: string) => {
@@ -402,6 +405,6 @@ export function getNativeProps<T>(props: {}, allowedPropNames: string[], exclude
       );
     },
     {},
-    props
+    props,
   ) as T;
 }

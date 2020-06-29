@@ -3,42 +3,42 @@
 exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 1`] = `
 <div
   aria-label="Document Card with multiple items, commands and views. Marketing documents. 6 files were uploaded.
-        Created by Annie Lindqvist in February 23, 2016. 432 views."
+Created by Annie Lindqvist in February 23, 2016. 432 views."
   className=
       ms-DocumentCard
-      ms-DocumentCard--actionable
       {
         -webkit-font-smoothing: antialiased;
         background-color: #ffffff;
         border: 1px solid #edebe9;
-        box-sizing: border-box;
         max-width: 320px;
         min-width: 206px;
         position: relative;
         user-select: none;
       }
+      &:focus {
+        outline: 0px solid;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        border-color: #605e5c;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border-radius: 2px;
+        border: 2px solid #605e5c;
+        bottom: -1px;
+        content: '';
+        left: -1px;
+        pointer-events: none;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border-color: Highlight;
+      }
       & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
         padding-top: 4px;
       }
-      &:hover {
-        border-color: #c8c6c4;
-        cursor: pointer;
-      }
-      &:hover:after {
-        border: 1px solid #c8c6c4;
-        bottom: 0px;
-        content: " ";
-        left: 0px;
-        pointer-events: none;
-        position: absolute;
-        right: 0px;
-        top: 0px;
-      }
-  data-is-focusable={true}
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  role="button"
-  tabIndex={0}
+  data-is-focusable={false}
 >
   <div
     className=
@@ -75,17 +75,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               line-height: 16px;
               margin-bottom: 8px;
               overflow: hidden;
-              padding-left: 24px;
-              position: relative;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-            & a {
-              color: #201f1e;
-              text-decoration: none;
-            }
-            & a:hover {
-              color: #0078d4;
             }
       >
         <li>
@@ -95,13 +84,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  left: 0px;
+                  margin-right: 8px;
                   overflow: hidden;
-                  position: absolute;
-                  top: 0px;
                 }
             style={
               Object {
@@ -126,7 +114,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               onError={[Function]}
               onLoad={[Function]}
               role="presentation"
-              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
             />
           </div>
           <a
@@ -135,20 +123,29 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #0078d4;
+                  box-sizing: border-box;
+                  color: #201f1e;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: inherit;
                   font-weight: inherit;
-                  outline: none;
+                  outline: transparent;
+                  overflow: hidden;
+                  position: relative;
                   text-decoration: none;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  width: calc(100% - 24px);
                 }
                 .ms-Fabric--isFocusVisible &:focus {
                   box-shadow: 0 0 0 1px #605e5c inset;
+                  outline: 1px auto #605e5c;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                  outline: 1px solid WindowText;
+                  outline: none;
                 }
                 @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: auto;
                   border-bottom: none;
                 }
                 &:active {
@@ -156,7 +153,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-decoration: underline;
                 }
                 &:hover {
-                  color: #004578;
+                  color: #0078d4;
                   text-decoration: underline;
                 }
                 &:active:hover {
@@ -165,6 +162,24 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 }
                 &:focus {
                   color: #0078d4;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid WindowText;
+                  outline: none;
                 }
             href="http://bing.com"
             onClick={[Function]}
@@ -179,13 +194,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  left: 0px;
+                  margin-right: 8px;
                   overflow: hidden;
-                  position: absolute;
-                  top: 0px;
                 }
             style={
               Object {
@@ -210,7 +224,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               onError={[Function]}
               onLoad={[Function]}
               role="presentation"
-              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
             />
           </div>
           <a
@@ -219,20 +233,29 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #0078d4;
+                  box-sizing: border-box;
+                  color: #201f1e;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: inherit;
                   font-weight: inherit;
-                  outline: none;
+                  outline: transparent;
+                  overflow: hidden;
+                  position: relative;
                   text-decoration: none;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  width: calc(100% - 24px);
                 }
                 .ms-Fabric--isFocusVisible &:focus {
                   box-shadow: 0 0 0 1px #605e5c inset;
+                  outline: 1px auto #605e5c;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                  outline: 1px solid WindowText;
+                  outline: none;
                 }
                 @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: auto;
                   border-bottom: none;
                 }
                 &:active {
@@ -240,7 +263,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-decoration: underline;
                 }
                 &:hover {
-                  color: #004578;
+                  color: #0078d4;
                   text-decoration: underline;
                 }
                 &:active:hover {
@@ -249,6 +272,24 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 }
                 &:focus {
                   color: #0078d4;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid WindowText;
+                  outline: none;
                 }
             href="http://bing.com"
             onClick={[Function]}
@@ -263,13 +304,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  left: 0px;
+                  margin-right: 8px;
                   overflow: hidden;
-                  position: absolute;
-                  top: 0px;
                 }
             style={
               Object {
@@ -294,7 +334,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               onError={[Function]}
               onLoad={[Function]}
               role="presentation"
-              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+              src="https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png"
             />
           </div>
           <a
@@ -303,20 +343,29 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #0078d4;
+                  box-sizing: border-box;
+                  color: #201f1e;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: inherit;
                   font-weight: inherit;
-                  outline: none;
+                  outline: transparent;
+                  overflow: hidden;
+                  position: relative;
                   text-decoration: none;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  width: calc(100% - 24px);
                 }
                 .ms-Fabric--isFocusVisible &:focus {
                   box-shadow: 0 0 0 1px #605e5c inset;
+                  outline: 1px auto #605e5c;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                  outline: 1px solid WindowText;
+                  outline: none;
                 }
                 @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: auto;
                   border-bottom: none;
                 }
                 &:active {
@@ -324,7 +373,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-decoration: underline;
                 }
                 &:hover {
-                  color: #004578;
+                  color: #0078d4;
                   text-decoration: underline;
                 }
                 &:active:hover {
@@ -333,6 +382,24 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 }
                 &:focus {
                   color: #0078d4;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid WindowText;
+                  outline: none;
                 }
             href="http://bing.com"
             onClick={[Function]}
@@ -363,11 +430,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #323130;
+          color: #0078d4;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
-          font-weight: 400;
+          font-weight: 600;
           overflow: hidden;
           padding-bottom: 8px;
           padding-left: 16px;
@@ -474,6 +541,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-align: center;
                   width: 32px;
                 }
+            role="presentation"
           >
             <div
               className=
@@ -636,7 +704,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -725,10 +792,14 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Share"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -782,7 +853,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -871,10 +941,14 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Pin"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-0\\"",
+              }
+            }
           >
             
           </i>
@@ -928,7 +1002,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -1017,10 +1090,14 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Ringer"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-4\\"",
+              }
+            }
           >
             
           </i>

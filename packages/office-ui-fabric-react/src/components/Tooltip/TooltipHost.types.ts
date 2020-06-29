@@ -28,12 +28,16 @@ export enum TooltipOverflowMode {
   /** Only show tooltip if parent DOM element is overflowing */
   Parent,
 
-  /** Only show tooltip if tooltip host's content is overflowing */
-  Self
+  /**
+   * Only show tooltip if tooltip host's content is overflowing.
+   * Note that this does not check the children for overflow, only the TooltipHost root.
+   */
+  Self,
 }
 
 /**
- * Tooltip component props.
+ * TooltipHost props. Note that native props (such as `id`, `className`, and `aria-` props) are
+ * passed through to the Tooltip itself, rather than being used on the host element.
  * {@docCategory Tooltip}
  */
 export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
@@ -44,61 +48,79 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   componentRef?: IRefObject<ITooltipHost>;
 
   /**
-   * Additional properties to pass through for Callout, reference detail properties in ICalloutProps
+   * Additional properties to pass through for Callout.
    */
   calloutProps?: ICalloutProps;
 
   /**
-   * Optionally a number of milliseconds to delay closing the tooltip, so that
-   * the user has time to hover over the tooltip and interact with it. Hovering
-   * over the tooltip will count as hovering over the host, so that the tooltip
-   * will stay open if the user is actively interacting with it.
+   * Number of milliseconds to delay closing the tooltip, so that the user has time to hover over
+   * the tooltip and interact with it. Hovering over the tooltip will count as hovering over the
+   * host, so that the tooltip will stay open if the user is actively interacting with it.
    */
   closeDelay?: number;
 
   /**
-   *  Content to be passed to the tooltip
+   * Content to display in the Tooltip.
    */
   content?: string | JSX.Element | JSX.Element[];
 
   /**
-   * Length of delay
-   * @defaultvalue medium
+   * Length of delay before showing the tooltip on hover.
+   * @defaultvalue TooltipDelay.medium
    */
   delay?: TooltipDelay;
 
   /**
-   * Indicator of how the tooltip should be anchored to its targetElement.
+   * How the tooltip should be anchored to its `targetElement`.
+   * @defaultvalue DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
 
   /**
    * How the element should be positioned in RTL layouts.
-   * If not specified, a mirror of `directionalHint` will be used instead
+   * If not specified, a mirror of `directionalHint` will be used.
    */
   directionalHintForRTL?: DirectionalHint;
 
   /**
-   * Optional class name to apply to tooltip host.
+   * Class name to apply to tooltip host.
    */
   hostClassName?: string;
 
   /**
-   * Only show if there is overflow. If set, the tooltip hosts observes  and only shows the tooltip if this element has overflow.
-   * It also uses the parent as target element for the tooltip.
+   * Class name to apply to the *tooltip itself*, not the host.
+   * To apply a class to the host, use `hostClassName` or `styles.root`.
+   */
+  className?: string;
+
+  /**
+   * If this is unset (the default), the tooltip is always shown even if there's no overflow.
+   *
+   * If set, only show the tooltip if the specified element (`Self` or `Parent`) has overflow.
+   * When set to `Parent`, the parent element is also used as the tooltip's target element.
+   *
+   * Note that even with `Self` mode, the TooltipHost *does not* check whether any children have overflow.
    */
   overflowMode?: TooltipOverflowMode;
 
   /**
-   * Whether or not to mark the container as described by the tooltip.
-   * If not specified, the caller should mark as element as described by the tooltip id.
+   * Whether or not to mark the TooltipHost root element as described by the tooltip.
+   * If not specified, the caller should pass an `id` to the TooltipHost (to be passed through to
+   * the Tooltip) and mark the appropriate element as `aria-describedby` the `id`.
+   * @defaultvalue true
    */
   setAriaDescribedBy?: boolean;
 
   /**
-   * Additional properties to pass through for Tooltip, reference detail properties in ITooltipProps
+   * Additional properties to pass through for Tooltip.
    */
   tooltipProps?: ITooltipProps;
+
+  /**
+   * Optional ID to pass through to the tooltip (not used on the host itself).
+   * Auto-generated if not provided.
+   */
+  id?: string;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -106,7 +128,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   styles?: IStyleFunctionOrObject<ITooltipHostStyleProps, ITooltipHostStyles>;
 
   /**
-   * Theme provided by High-Order Component.
+   * Theme provided by higher-order component.
    */
   theme?: ITheme;
 
@@ -120,14 +142,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
  * {@docCategory Tooltip}
  */
 export interface ITooltipHostStyleProps {
-  /**
-   * Accept theme prop.
-   */
   theme: ITheme;
-
-  /**
-   * Accept optional classNames for the host wrapper
-   */
   className?: string;
 }
 

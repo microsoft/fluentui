@@ -7,7 +7,7 @@ let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
 
 const DisabledScrollClassName = mergeStyles({
-  overflow: 'hidden !important' as 'hidden'
+  overflow: 'hidden !important' as 'hidden',
 });
 
 /**
@@ -19,7 +19,15 @@ const DisabledScrollClassName = mergeStyles({
  */
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
-const _makeElementScrollAllower = () => {
+/**
+ * Allows the user to scroll within a element,
+ * while preventing the user from scrolling the body
+ */
+export const allowScrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
+  if (!element) {
+    return;
+  }
+
   let _previousClientY = 0;
   let _element: Element | null = null;
 
@@ -61,28 +69,29 @@ const _makeElementScrollAllower = () => {
 
     // if the element is scrolled to the bottom,
     // prevent the user from scrolling down
-    if (_element.scrollHeight - _element.scrollTop <= _element.clientHeight && clientY < 0) {
+    if (_element.scrollHeight - Math.ceil(_element.scrollTop) <= _element.clientHeight && clientY < 0) {
       event.preventDefault();
     }
   };
 
-  return (element: HTMLElement | null, events: EventGroup): void => {
-    if (!element) {
-      return;
-    }
+  events.on(element, 'touchstart', _saveClientY, { passive: false });
+  events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
 
-    events.on(element, 'touchstart', _saveClientY, { passive: false });
-    events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
-
-    _element = element;
-  };
+  _element = element;
 };
 
 /**
- * Allows the user to scroll within a element,
- * while preventing the user from scrolling the body
+ * Same as allowScrollOnElement but does not prevent overscrolling.
  */
-export const allowScrollOnElement = _makeElementScrollAllower();
+export const allowOverscrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
+  if (!element) {
+    return;
+  }
+  const _allowElementScroll = (event: TouchEvent) => {
+    event.stopPropagation();
+  };
+  events.on(element, 'touchmove', _allowElementScroll, { passive: false });
+};
 
 const _disableIosBodyScroll = (event: TouchEvent) => {
   event.preventDefault();

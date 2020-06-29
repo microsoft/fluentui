@@ -8,13 +8,14 @@ const LabelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 export const LabelPageProps: IDocPageProps = {
   title: 'Label',
   componentName: 'Label',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Label',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Label',
   examples: [
     {
       title: 'Label',
       code: LabelBasicExampleCode,
-      view: <LabelBasicExample />
-    }
+      view: <LabelBasicExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelOverview.md'),
   bestPractices: '',
@@ -22,5 +23,5 @@ export const LabelPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

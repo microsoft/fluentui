@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AppCustomizationsContext } from '../../utilities/customizations';
-import { classNamesFunction, css, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, css, styled, Customizer } from 'office-ui-fabric-react/lib/Utilities';
 import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getStyles } from './App.styles';
@@ -40,7 +40,11 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
 
     const onlyExamples = this._showOnlyExamples;
 
-    const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples: onlyExamples }));
+    const classNames = (this._classNames = getClassNames(styles, {
+      responsiveMode,
+      theme,
+      showOnlyExamples: onlyExamples,
+    }));
 
     const isLargeDown = responsiveMode <= ResponsiveMode.large;
 
@@ -53,7 +57,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
       />
     );
 
-    const app = (
+    let app = (
       <Fabric className={classNames.root}>
         {!onlyExamples && (
           <div className={classNames.headerContainer}>
@@ -92,7 +96,21 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
       </Fabric>
     );
 
-    return customizations ? <AppCustomizationsContext.Provider value={customizations}>{app}</AppCustomizationsContext.Provider> : app;
+    if (customizations) {
+      const { exampleCardCustomizations, hideSchemes, ...otherCustomizations } = customizations;
+
+      if (exampleCardCustomizations || typeof hideSchemes === 'boolean') {
+        app = (
+          <AppCustomizationsContext.Provider value={{ exampleCardCustomizations, hideSchemes }}>
+            {app}
+          </AppCustomizationsContext.Provider>
+        );
+      }
+      if (Object.keys(otherCustomizations).length) {
+        app = <Customizer {...otherCustomizations}>{app}</Customizer>;
+      }
+    }
+    return app;
   }
 
   private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {
@@ -119,7 +137,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
               classNames.linkFlair,
               link.status === ExampleStatus.started && classNames.linkFlairStarted,
               link.status === ExampleStatus.beta && classNames.linkFlairBeta,
-              link.status === ExampleStatus.release && classNames.linkFlairRelease
+              link.status === ExampleStatus.release && classNames.linkFlairRelease,
             )}
           >
             {ExampleStatus[link.status]}
@@ -130,6 +148,11 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
   };
 }
 
-export const App: React.StatelessComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(AppBase, getStyles, undefined, {
-  scope: 'App'
-});
+export const App: React.FunctionComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(
+  AppBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'App',
+  },
+);

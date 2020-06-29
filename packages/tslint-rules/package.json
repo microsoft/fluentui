@@ -1,18 +1,20 @@
 {
   "name": "@uifabric/tslint-rules",
-  "version": "7.0.5",
-  "description": "Shared TSLint rules for UI Fabric projects",
+  "version": "7.2.2",
+  "description": "Shared TSLint rules for Fluent UI projects",
   "main": "tslint.json",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "dependencies": {
-    "tslint-react": "^3.2.0"
+  "scripts": {
+    "build": "just-scripts build"
   },
-  "devDependencies": {
-    "@uifabric/prettier-rules": "^7.0.4"
+  "dependencies": {
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-microsoft-contrib": "^5.0.1",
+    "tslint-react": "^3.2.0"
   },
   "peerDependencies": {
     "tslint": "*"

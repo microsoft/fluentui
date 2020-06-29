@@ -28,7 +28,6 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -67,7 +66,6 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
           width: 150px;
         }
         &::-moz-focus-inner {
@@ -222,7 +220,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
               width: 0px;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background-color: WindowText;
+              background-color: highlight;
             }
         role="progressbar"
         style={

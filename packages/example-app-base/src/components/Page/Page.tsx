@@ -15,7 +15,7 @@ import {
   OverviewSection,
   IBestPracticesSectionProps,
   IExamplesSectionProps,
-  IImplementationSectionProps
+  IImplementationSectionProps,
 } from './sections/index';
 import { IPageProps, IPageSectionProps } from './Page.types';
 import * as styles from './Page.module.scss';
@@ -39,7 +39,7 @@ export interface IPageState {
 // export class Page<TPlatform extends string> extends React.Component<IPageProps<TPlatform>, IPageState> {
 export class Page extends React.Component<IPageProps, IPageState> {
   public static defaultProps: Partial<IPageProps> = {
-    showSideRail: true
+    showSideRail: true,
   };
 
   public state: IPageState = {};
@@ -85,7 +85,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
           styles.sectionWrapper,
           showSideRail && styles.showSideRail,
           isMountedOffset && styles.isMountedOffset,
-          sectionWrapperClassName
+          sectionWrapperClassName,
         )}
       >
         {// Map over array of section objects in order to add increasing transitionDelay to stagger load animation.
@@ -128,31 +128,38 @@ export class Page extends React.Component<IPageProps, IPageState> {
       jsonDocs,
       title,
       usage,
-      accessibility
+      accessibility,
     } = this.props;
 
     const sectionProps: IPageSectionProps = {
       fileNamePrefix,
       componentUrl,
       platform,
-      title
+      title,
     };
 
     const sections: IPageSectionProps[] = [];
 
-    overview && sections.push({ renderAs: OverviewSection, ...sectionProps, sectionName: 'Overview', content: overview });
+    overview &&
+      sections.push({ renderAs: OverviewSection, ...sectionProps, sectionName: 'Overview', content: overview });
 
     addlContent &&
-      sections.push({ renderAs: MarkdownSection, sectionName: addlContentTitle, ...sectionProps, content: addlContent, id: 'markdown' });
+      sections.push({
+        renderAs: MarkdownSection,
+        sectionName: addlContentTitle,
+        ...sectionProps,
+        content: addlContent,
+        id: 'markdown',
+      });
 
     if (bestPractices || (dos && donts)) {
       const bestPracticesProps: IBestPracticesSectionProps = {
         renderAs: BestPracticesSection,
         ...sectionProps,
-        sectionName: 'Best Practices',
+        sectionName: 'Best practices',
         bestPractices,
         dos,
-        donts
+        donts,
       };
       sections.push(bestPracticesProps);
     }
@@ -163,7 +170,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
         ...sectionProps,
         sectionName: 'Usage',
         readableSectionName: 'Usage Guidelines',
-        content: usage
+        content: usage,
       });
 
     design &&
@@ -172,7 +179,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
         ...sectionProps,
         sectionName: 'Design',
         readableSectionName: 'Design Guidelines',
-        content: design
+        content: design,
       });
 
     if (examples) {
@@ -181,7 +188,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
         ...sectionProps,
         sectionName: 'Usage',
         exampleKnobs,
-        examples
+        examples,
       };
       sections.push(examplesProps);
     }
@@ -196,7 +203,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
         allowNativePropsForComponentName,
         propertiesTablesSources,
         hideImplementationTitle,
-        jsonDocs
+        jsonDocs,
       };
       sections.push(propertiesTablesProps);
     }
@@ -206,8 +213,8 @@ export class Page extends React.Component<IPageProps, IPageState> {
         renderAs: MarkdownSection,
         ...sectionProps,
         sectionName: 'Accessibility',
-        readableSectionName: 'Accessibility Best Practices',
-        content: accessibility
+        readableSectionName: 'Accessibility best practices',
+        content: accessibility,
       });
 
     otherSections &&
@@ -215,11 +222,13 @@ export class Page extends React.Component<IPageProps, IPageState> {
         sections.push({
           renderAs: OtherPageSection,
           ...sectionProps,
-          ...section
-        })
+          ...section,
+        }),
       );
 
-    isFeedbackVisible && title && sections.push({ renderAs: FeedbackSection, ...sectionProps, sectionName: 'Feedback' });
+    isFeedbackVisible &&
+      title &&
+      sections.push({ renderAs: FeedbackSection, ...sectionProps, sectionName: 'Feedback' });
 
     // Ensure all the sections have an ID
     for (let i = 0; i < sections.length; i++) {
@@ -258,7 +267,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
         if (section.id!.indexOf(GENERIC_SECTION) === -1) {
           jumpLinks.push({
             text: (section.jumpLinkName || section.readableSectionName || section.sectionName)!,
-            url: section.id!
+            url: section.id!,
           });
           jumpLinks.push(...(section.jumpLinks || []));
         }
@@ -267,7 +276,12 @@ export class Page extends React.Component<IPageProps, IPageState> {
       return (
         <div className={css(styles.sideRailWrapper)}>
           <ScrollBars viewClassName={styles.sideRailScrollbarsView}>
-            <SideRail jumpLinks={jumpLinks} relatedLinks={processedRelated} contactLinks={processedContacts} observe={true} />
+            <SideRail
+              jumpLinks={jumpLinks}
+              relatedLinks={processedRelated}
+              contactLinks={processedContacts}
+              observe={true}
+            />
           </ScrollBars>
         </div>
       );

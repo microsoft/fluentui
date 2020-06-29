@@ -1,7 +1,123 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Mon, 28 Oct 2019 22:25:45 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [0.11.95](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.95)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.94..@uifabric/tsx-editor_v0.11.95)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [0.11.94](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.94)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.67..@uifabric/tsx-editor_v0.11.94)
+
+### Patches
+
+- Add missing dep on example-data ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [0.11.67](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.67)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.55..@uifabric/tsx-editor_v0.11.67)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [0.11.55](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.55)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.50..@uifabric/tsx-editor_v0.11.55)
+
+### Patches
+
+- Add useEditor=1 support to force editor on ([PR #12786](https://github.com/microsoft/fluentui/pull/12786) by elcraig@microsoft.com)
+
+## [0.11.50](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.50)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.49..@uifabric/tsx-editor_v0.11.50)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 0.11.41
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 0.11.40
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 0.11.20
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
+## 0.11.18
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Patches
+
+- Add react-focus support (elcraig@microsoft.com)
+## 0.11.8
+Wed, 29 Jan 2020 12:37:18 GMT
+
+### Patches
+
+- Fix DetailsList export to codepen/live code editing (xgao@microsoft.com)
+## 0.11.4
+Thu, 23 Jan 2020 12:32:26 GMT
+
+### Patches
+
+- Fix export to codepen for fabric 7 (#9450) (xgao@microsoft.com)
+## 0.11.3
+Wed, 22 Jan 2020 12:36:43 GMT
+
+### Patches
+
+- Forward supportedPackages from EditorWrapper to TsxEditor (jimkyndemeyer@gmail.com)
+## 0.11.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 0.11.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 0.11.0
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Minor changes
+
+- Switch dynamic imports in tsx-editor to require.ensure (elcraig@microsoft.com)
+### Patches
+
+- Update Monaco; fix worker loader in Chrome; fix bundling (elcraig@microsoft.com)
+## 0.10.4
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 0.10.3
 Mon, 28 Oct 2019 22:25:45 GMT
 
@@ -123,7 +239,3 @@ Fri, 02 Aug 2019 12:33:29 GMT
 ### Patches
 
 - Publish tsx-editor (elcraig@microsoft.com)
-
-# Change Log - @uifabric/tsx-editor
-
-This log was last generated on Wed, 19 Jun 2019 21:12:36 GMT and should not be manually modified.

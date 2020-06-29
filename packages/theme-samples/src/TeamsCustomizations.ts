@@ -26,7 +26,7 @@ export const TeamsCustomizations: ICustomizations = {
         neutralPrimary: '#282424',
         neutralDark: '#585151',
         black: '#403b3b',
-        white: '#fff'
+        white: '#fff',
       },
       semanticColors: {
         buttonBackground: 'transparent',
@@ -37,9 +37,9 @@ export const TeamsCustomizations: ICustomizations = {
         buttonTextPressed: '#252424',
         buttonTextHovered: '#252424',
 
-        buttonBorder: '#bdbdbd'
-      }
-    })
+        buttonBorder: '#bdbdbd',
+      },
+    }),
   },
 
   scopedSettings: {
@@ -50,23 +50,23 @@ export const TeamsCustomizations: ICustomizations = {
           {
             iconSize: 16,
             iconWeight: 700,
-            textWeight: 400
+            textWeight: 400,
           },
           !props.circular && {
             borderRadius: 3,
             borderWidth: 2,
-            contentPadding: '4px 32px'
+            contentPadding: '4px 32px',
           },
           props.circular && {
-            borderWidth: 1
+            borderWidth: 1,
           },
           !props.disabled && {
             iconColor: '#252424', // this hardcoding doesn't work well with variants
             borderColorHovered: 'transparent',
-            borderColorPressed: 'transparent'
+            borderColorPressed: 'transparent',
           },
           props.expanded && {
-            borderColor: 'transparent'
+            borderColor: 'transparent',
           },
           props.circular &&
             !props.disabled && {
@@ -75,16 +75,16 @@ export const TeamsCustomizations: ICustomizations = {
               textColorHovered: '#fff',
               textColorPressed: '#fff',
               iconColorHovered: '#fff',
-              iconColorPressed: '#fff'
+              iconColorPressed: '#fff',
             },
           props.primary &&
             !props.disabled && {
-              iconColor: 'white'
-            }
+              iconColor: 'white',
+            },
         ];
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 addVariants(TeamsCustomizations.settings.theme);

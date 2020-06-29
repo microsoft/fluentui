@@ -132,7 +132,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -142,6 +142,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;
@@ -304,7 +305,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -314,6 +315,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;
@@ -469,7 +471,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -479,6 +481,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;
@@ -635,7 +638,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -645,6 +648,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;
@@ -810,7 +814,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -820,6 +824,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;
@@ -975,7 +980,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -985,6 +990,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;
@@ -1151,7 +1157,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -1161,6 +1167,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;
@@ -1275,7 +1282,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="switch"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -1285,6 +1292,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;
@@ -1403,7 +1411,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         role="checkbox"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Toggle-thumb
               {
@@ -1413,6 +1421,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
+                display: block;
                 height: 12px;
                 transition: all 0.1s ease;
                 width: 12px;

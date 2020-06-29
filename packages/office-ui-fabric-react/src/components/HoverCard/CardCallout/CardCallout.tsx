@@ -1,10 +1,9 @@
 import * as React from 'react';
 
 import { divProperties, getNativeProps } from '../../../Utilities';
-import { Callout } from '../../../Callout';
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IBaseCardProps } from '../BaseCard.types';
-import { FocusTrapCallout, ICalloutProps } from '../../../Callout';
+import { Callout, FocusTrapCallout, ICalloutProps } from '../../../Callout';
 
 export interface ICardCalloutProps extends IBaseCardProps<{}, {}, {}> {
   finalHeight?: number;
@@ -22,10 +21,11 @@ export const CardCallout = (props: ICardCalloutProps) => {
     onLeave,
     className,
     finalHeight,
-    content
+    content,
+    calloutProps,
   } = props;
 
-  const calloutProps: ICalloutProps = {
+  const mergedCalloutProps: ICalloutProps = {
     ...getNativeProps(props, divProperties),
     className: className,
     target: targetElement,
@@ -35,24 +35,25 @@ export const CardCallout = (props: ICardCalloutProps) => {
     finalHeight: finalHeight,
     minPagePadding: 24,
     onDismiss: onLeave,
-    gapSpace: gapSpace
+    gapSpace: gapSpace,
+    ...calloutProps,
   };
 
   return (
     <React.Fragment>
       {trapFocus ? (
         <FocusTrapCallout
-          {...calloutProps}
+          {...mergedCalloutProps}
           focusTrapProps={{
             forceFocusInsideTrap: false,
             isClickableOutsideFocusTrap: true,
-            disableFirstFocus: !firstFocus
+            disableFirstFocus: !firstFocus,
           }}
         >
           {content}
         </FocusTrapCallout>
       ) : (
-        <Callout {...calloutProps}>{content}</Callout>
+        <Callout {...mergedCalloutProps}>{content}</Callout>
       )}
     </React.Fragment>
   );

@@ -47,7 +47,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         role="menubar"
       >
         <div
-          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -58,7 +57,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="presentation"
+          role="group"
         >
           <div
             className=
@@ -97,7 +96,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -201,10 +199,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -274,7 +276,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -378,10 +379,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -452,7 +457,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -556,10 +560,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Share"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -643,6 +651,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 onMouseOver={[Function]}
                 onMouseUp={[Function]}
                 onSubmit={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className=
@@ -896,6 +908,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             className=
                                                 ms-TeachingBubble-header
                                                 ms-TeachingBubble-header--large
+                                                {
+                                                  margin-right: 24px;
+                                                }
                                                 &:not(:last-child) {
                                                   margin-bottom: 14px;
                                                 }
@@ -977,7 +992,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                   text-decoration: none;
                                                   top: 0px;
                                                   user-select: none;
-                                                  vertical-align: top;
                                                   width: 32px;
                                                 }
                                                 &::-moz-focus-inner {
@@ -1015,6 +1029,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                 @media screen and (-ms-high-contrast: active){&:hover {
                                                   border-color: Highlight;
                                                   color: Highlight;
+                                                }
+                                                &:focus {
+                                                  border: 1px solid #edebe9;
                                                 }
                                                 &:active {
                                                   background-color: #edebe9;
@@ -1069,10 +1086,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                       margin-right: 4px;
                                                       margin-top: 0;
                                                       text-align: center;
-                                                      vertical-align: middle;
                                                     }
                                                 data-icon-name="Cancel"
                                                 role="presentation"
+                                                style={
+                                                  Object {
+                                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                                  }
+                                                }
                                               >
                                                 
                                               </i>
@@ -1153,7 +1174,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -1257,10 +1277,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Download"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>

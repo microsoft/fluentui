@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../../Utilities';
+import { classNamesFunction, memoizeFunction } from '../../../Utilities';
 import { IRawStyle } from '../../../Styling';
-import { IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
+import {
+  IShimmerElementsGroupProps,
+  IShimmerElementsGroupStyleProps,
+  IShimmerElementsGroupStyles,
+} from './ShimmerElementsGroup.types';
 import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
 import { IShimmerLineStyles } from '../ShimmerLine/ShimmerLine.types';
@@ -23,12 +27,12 @@ export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsG
     rowHeight = findMaxElementHeight(shimmerElements || []),
     flexWrap = false,
     theme,
-    backgroundColor
+    backgroundColor,
   } = props;
 
   const classNames = getClassNames(styles!, {
     theme: theme!,
-    flexWrap
+    flexWrap,
   });
 
   return (
@@ -38,20 +42,27 @@ export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsG
   );
 };
 
-function getRenderedElements(shimmerElements?: IShimmerElement[], backgroundColor?: string, rowHeight?: number): React.ReactNode {
+function getRenderedElements(
+  shimmerElements?: IShimmerElement[],
+  backgroundColor?: string,
+  rowHeight?: number,
+): React.ReactNode {
   const renderedElements: React.ReactNode = shimmerElements ? (
     shimmerElements.map(
       (element: IShimmerElement, index: number): JSX.Element => {
         const { type, ...filteredElem } = element;
+        const { verticalAlign, height } = filteredElem;
+        const styles = getElementStyles(verticalAlign, type, height, backgroundColor, rowHeight);
+
         switch (element.type) {
           case ShimmerElementType.circle:
-            return <ShimmerCircle key={index} {...filteredElem} styles={getElementStyles(element, backgroundColor, rowHeight)} />;
+            return <ShimmerCircle key={index} {...filteredElem} styles={styles} />;
           case ShimmerElementType.gap:
-            return <ShimmerGap key={index} {...filteredElem} styles={getElementStyles(element, backgroundColor, rowHeight)} />;
+            return <ShimmerGap key={index} {...filteredElem} styles={styles} />;
           case ShimmerElementType.line:
-            return <ShimmerLine key={index} {...filteredElem} styles={getElementStyles(element, backgroundColor, rowHeight)} />;
+            return <ShimmerLine key={index} {...filteredElem} styles={styles} />;
         }
-      }
+      },
     )
   ) : (
     <ShimmerLine height={ShimmerElementsDefaultHeights.line} />
@@ -60,59 +71,62 @@ function getRenderedElements(shimmerElements?: IShimmerElement[], backgroundColo
   return renderedElements;
 }
 
-function getElementStyles(
-  element: IShimmerElement,
-  backgroundColor?: string,
-  rowHeight?: number
-): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles {
-  const { verticalAlign, type, height: elementHeight } = element;
-  const dif: number = rowHeight && elementHeight ? rowHeight - elementHeight : 0;
+const getElementStyles = memoizeFunction(
+  (
+    verticalAlign: 'center' | 'bottom' | 'top' | undefined,
+    elementType: ShimmerElementType,
+    elementHeight: number | undefined,
+    backgroundColor?: string,
+    rowHeight?: number,
+  ): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
+    const dif: number = rowHeight && elementHeight ? rowHeight - elementHeight : 0;
 
-  let borderStyle: IRawStyle | undefined;
+    let borderStyle: IRawStyle | undefined;
 
-  if (!verticalAlign || verticalAlign === 'center') {
-    borderStyle = {
-      borderBottomWidth: `${dif ? Math.floor(dif / 2) : 0}px`,
-      borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`
-    };
-  } else if (verticalAlign && verticalAlign === 'top') {
-    borderStyle = {
-      borderBottomWidth: `${dif}px`,
-      borderTopWidth: `0px`
-    };
-  } else if (verticalAlign && verticalAlign === 'bottom') {
-    borderStyle = {
-      borderBottomWidth: `0px`,
-      borderTopWidth: `${dif}px`
-    };
-  }
-
-  if (backgroundColor) {
-    switch (type) {
-      case ShimmerElementType.circle:
-        return {
-          root: { ...borderStyle, borderColor: backgroundColor },
-          svg: { fill: backgroundColor }
-        };
-      case ShimmerElementType.gap:
-        return {
-          root: { ...borderStyle, borderColor: backgroundColor, backgroundColor: backgroundColor }
-        };
-      case ShimmerElementType.line:
-        return {
-          root: { ...borderStyle, borderColor: backgroundColor },
-          topLeftCorner: { fill: backgroundColor },
-          topRightCorner: { fill: backgroundColor },
-          bottomLeftCorner: { fill: backgroundColor },
-          bottomRightCorner: { fill: backgroundColor }
-        };
+    if (!verticalAlign || verticalAlign === 'center') {
+      borderStyle = {
+        borderBottomWidth: `${dif ? Math.floor(dif / 2) : 0}px`,
+        borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`,
+      };
+    } else if (verticalAlign && verticalAlign === 'top') {
+      borderStyle = {
+        borderBottomWidth: `${dif}px`,
+        borderTopWidth: `0px`,
+      };
+    } else if (verticalAlign && verticalAlign === 'bottom') {
+      borderStyle = {
+        borderBottomWidth: `0px`,
+        borderTopWidth: `${dif}px`,
+      };
     }
-  }
 
-  return {
-    root: borderStyle
-  };
-}
+    if (backgroundColor) {
+      switch (elementType) {
+        case ShimmerElementType.circle:
+          return {
+            root: { ...borderStyle, borderColor: backgroundColor },
+            svg: { fill: backgroundColor },
+          };
+        case ShimmerElementType.gap:
+          return {
+            root: { ...borderStyle, borderColor: backgroundColor, backgroundColor: backgroundColor },
+          };
+        case ShimmerElementType.line:
+          return {
+            root: { ...borderStyle, borderColor: backgroundColor },
+            topLeftCorner: { fill: backgroundColor },
+            topRightCorner: { fill: backgroundColor },
+            bottomLeftCorner: { fill: backgroundColor },
+            bottomRightCorner: { fill: backgroundColor },
+          };
+      }
+    }
+
+    return {
+      root: borderStyle,
+    };
+  },
+);
 
 /**
  * User should not worry to provide which of the elements is the highest so we do the calculation for him.
@@ -136,7 +150,7 @@ function findMaxElementHeight(shimmerElements: IShimmerElement[]): number {
           }
       }
       return element;
-    }
+    },
   );
 
   const rowHeight = shimmerElementsDefaulted.reduce((acc: number, next: IShimmerElement): number => {

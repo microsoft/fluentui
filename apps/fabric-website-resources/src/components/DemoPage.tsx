@@ -6,11 +6,11 @@ import {
   PropertiesTableSet,
   Markdown,
   FeedbackList,
-  IExampleCardProps
+  IExampleCardProps,
 } from '@uifabric/example-app-base';
 import * as React from 'react';
 
-export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps => {
+export const DemoPage: React.FunctionComponent<IDemoPageProps> = demoPageProps => {
   const {
     exampleKnobs,
     examples,
@@ -43,7 +43,12 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
         )
       }
       propertiesTables={
-        (componentPageProps.jsonDocs && <ApiReferencesTableSet jsonDocs={componentPageProps.jsonDocs} />) ||
+        (componentPageProps.jsonDocs && (
+          <ApiReferencesTableSet
+            jsonDocs={componentPageProps.jsonDocs}
+            showAll={componentPageProps.jsonDocs.group === 'References'}
+          />
+        )) ||
         (propertiesTablesSources && <PropertiesTableSet sources={propertiesTablesSources} />)
       }
       accessibility={accessibility ? <Markdown>{accessibility}</Markdown> : undefined}

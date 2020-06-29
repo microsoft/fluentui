@@ -98,7 +98,7 @@ describe('Layer', () => {
           // Debug code for figuring out which events are firing on test failures:
           // console.log(event);
           stopPropagationCount++;
-        }
+        },
       };
     };
 
@@ -134,7 +134,7 @@ describe('Layer', () => {
           // Debug code for figuring out which events are firing on test failures:
           // console.log(event);
           stopPropagationCount++;
-        }
+        },
       };
     };
 
@@ -163,7 +163,7 @@ describe('Layer', () => {
           // Debug code for figuring out which events are firing on test failures:
           // console.log(event);
           stopPropagationCount++;
-        }
+        },
       };
     };
 

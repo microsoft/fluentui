@@ -13,7 +13,7 @@ const _items: IFileExampleItem[] = [];
 
 const theme = getTheme();
 const dragEnterClass = mergeStyles({
-  backgroundColor: theme.palette.neutralLight
+  backgroundColor: theme.palette.neutralLight,
 });
 
 const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
@@ -24,7 +24,7 @@ const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map
     key: fieldName,
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true
+    isResizable: true,
   };
 });
 
@@ -35,7 +35,7 @@ const _names: string[] = [
   'Roko Kolar',
   'Christian Bergqvist',
   'Valentina Lovric',
-  'Makenzie Sharett'
+  'Makenzie Sharett',
 ];
 
 function getMockDateString(): string {
@@ -75,14 +75,14 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
           name: 'Item ' + i,
           modified: getMockDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
-          filesize: Math.floor(Math.random() * 30).toString() + ' MB'
+          filesize: Math.floor(Math.random() * 30).toString() + ' MB',
         });
       }
     }
 
     this.state = {
       items: _items,
-      numberOfItems: 0
+      numberOfItems: 0,
     };
   }
 
@@ -94,8 +94,8 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
       <Stack tokens={stackTokens}>
         <Text>Turn on Narrator and drag and drop the items.</Text>
         <Text>
-          Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully illustrative of the real
-          world scenario.
+          Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully
+          illustrative of the real world scenario.
         </Text>
         {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
@@ -119,7 +119,9 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
   private _renderAnnounced(): JSX.Element | undefined {
     const { numberOfItems } = this.state;
     if (numberOfItems > 0) {
-      return <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} aria-live={'assertive'} />;
+      return (
+        <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} aria-live={'assertive'} />
+      );
     }
   }
 
@@ -142,7 +144,7 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
       onDragEnd: () => {
         this._draggedItem = undefined;
         this._draggedIndex = -1;
-      }
+      },
     };
   }
 

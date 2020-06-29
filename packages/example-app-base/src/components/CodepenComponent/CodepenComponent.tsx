@@ -20,6 +20,7 @@ interface ICodepenPrefill {
   head: string;
   js: string;
   js_pre_processor: string;
+  css: string;
   css_pre_processor: string;
   // and other options--see https://blog.codepen.io/documentation/api/prefill/
 }
@@ -42,13 +43,17 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
       script('office-ui-fabric-react@7/dist/office-ui-fabric-react.js'),
       script('@uifabric/react-hooks@7/dist/react-hooks.js'),
       // load example data bundle only if used
-      jsContentStr.indexOf('window.FabricExampleData') !== -1 ? script('@uifabric/example-data@7/dist/example-data.js') : '',
-      `<div id="${CONTENT_ID}"></div>`
+      jsContentStr.indexOf('window.FabricExampleData') !== -1
+        ? script('@uifabric/example-data@7/dist/example-data.js')
+        : '',
+      `<div id="${CONTENT_ID}"></div>`,
     ]
       .filter(line => !!line)
       .join('\n');
 
-    const headContent = `${script('react@16.8.6/umd/react.development.js')}\n${script('react-dom@16.8.6/umd/react-dom.development.js')}`;
+    const headContent = `${script('react@16.8.6/umd/react.development.js')}\n${script(
+      'react-dom@16.8.6/umd/react-dom.development.js',
+    )}`;
 
     const valueData: ICodepenPrefill = {
       title: 'Fabric Example Pen',
@@ -56,7 +61,8 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
       head: headContent,
       js: jsContentStr,
       js_pre_processor: 'typescript',
-      css_pre_processor: 'scss'
+      css: '',
+      css_pre_processor: 'scss',
     };
 
     // reformat the JSON string to take out the quotes so it'll work with the Codepen API
@@ -82,9 +88,8 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
   );
 };
 
-export const CodepenComponent: React.StatelessComponent<ICodepenProps> = styled<ICodepenProps, ICodepenStyleProps, ICodepenStyles>(
-  CodepenComponentBase,
-  getStyles,
-  undefined,
-  { scope: 'CodepenComponent' }
-);
+export const CodepenComponent: React.FunctionComponent<ICodepenProps> = styled<
+  ICodepenProps,
+  ICodepenStyleProps,
+  ICodepenStyles
+>(CodepenComponentBase, getStyles, undefined, { scope: 'CodepenComponent' });

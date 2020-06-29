@@ -42,6 +42,6 @@ export function hsv2rgb(h: number, s: number, v: number): IRGB {
   return {
     r: Math.round(MAX_COLOR_RGB * (rgb[0] + m)),
     g: Math.round(MAX_COLOR_RGB * (rgb[1] + m)),
-    b: Math.round(MAX_COLOR_RGB * (rgb[2] + m))
+    b: Math.round(MAX_COLOR_RGB * (rgb[2] + m)),
   };
 }

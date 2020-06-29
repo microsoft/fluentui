@@ -64,6 +64,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -75,6 +76,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 24px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -284,6 +286,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -295,6 +298,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 24px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -504,6 +508,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -515,6 +520,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 32px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -724,6 +730,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -735,6 +742,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 32px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -944,6 +952,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -955,6 +964,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 40px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -1163,6 +1173,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -1174,6 +1185,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 40px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -1396,6 +1408,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -1407,6 +1420,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -1615,6 +1629,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -1626,6 +1641,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -1848,6 +1864,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -1859,6 +1876,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 56px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -2081,6 +2099,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -2092,6 +2111,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 56px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -2314,6 +2334,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -2325,6 +2346,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 72px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -2533,6 +2555,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -2544,6 +2567,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 100px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -2758,6 +2782,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -2769,6 +2794,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 150px;
             }
+        role="presentation"
         style={
           Object {
             "height": 150,

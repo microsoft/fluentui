@@ -11,7 +11,7 @@ import {
   IStylesFunctionOrObject,
   IToken,
   ITokenFunction,
-  IViewComponent
+  IViewComponent,
 } from './IComponent';
 import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 
@@ -24,9 +24,13 @@ import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
  * State component, if provided, is passed in props for processing. Props from state / user are automatically processed
  * and styled before finally being passed to view.
  *
- * State components should contain all stateful behavior and should not generate any JSX, but rather simply call the view prop.
+ * State components should contain all stateful behavior and should not generate any JSX, but rather simply call
+ * the view prop.
+ *
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
- * State component is optional. If state is not provided, created component is essentially a functional stateless component.
+ *
+ * State component is optional. If state is not provided, created component is essentially a functional
+ * stateless component.
  *
  * @param options - component Component options. See IComponentOptions for more detail.
  */
@@ -38,18 +42,18 @@ export function createComponent<
   TStatics = {}
 >(
   view: IViewComponent<TViewProps>,
-  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> = {}
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> = {},
 ): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {} } = options;
   const { defaultProp } = factoryOptions;
 
   const result: React.FunctionComponent<TComponentProps> = (
-    componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
+    componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>,
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
       options.displayName,
       React.useContext(CustomizerContext),
-      options.fields
+      options.fields,
     );
 
     const useState = options.state;
@@ -58,20 +62,28 @@ export function createComponent<
       // Don't assume state will return all props, so spread useState result over component props.
       componentProps = {
         ...componentProps,
-        ...useState(componentProps)
+        ...useState(componentProps),
       };
     }
 
     const theme = componentProps.theme || settings.theme;
 
     const tokens = _resolveTokens(componentProps, theme, options.tokens, settings.tokens, componentProps.tokens);
-    const styles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles, componentProps.styles);
+    const styles = _resolveStyles(
+      componentProps,
+      theme,
+      tokens,
+      options.styles,
+      settings.styles,
+      componentProps.styles,
+    );
 
     const viewProps = {
       ...componentProps,
       styles,
       tokens,
-      _defaultStyles: styles
+      _defaultStyles: styles,
+      theme,
     } as TViewProps & IDefaultSlotProps<any>;
 
     return view(viewProps);
@@ -103,8 +115,8 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
 ): ReturnType<typeof concatStyleSets> {
   return concatStyleSets(
     ...allStyles.map((styles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined) =>
-      typeof styles === 'function' ? styles(props, theme, tokens) : styles
-    )
+      typeof styles === 'function' ? styles(props, theme, tokens) : styles,
+    ),
   );
 }
 
@@ -122,13 +134,15 @@ function _resolveTokens<TViewProps, TTokens>(
     if (currentTokens) {
       // TODO: why is this cast needed? TS seems to think there is a (TToken | Function) union from somewhere.
       currentTokens =
-        typeof currentTokens === 'function' ? (currentTokens as ITokenFunction<TViewProps, TTokens>)(props, theme) : currentTokens;
+        typeof currentTokens === 'function'
+          ? (currentTokens as ITokenFunction<TViewProps, TTokens>)(props, theme)
+          : currentTokens;
 
       if (Array.isArray(currentTokens)) {
         currentTokens = _resolveTokens(props, theme, ...currentTokens);
       }
 
-      assign(tokens, ...(currentTokens as any));
+      assign(tokens, currentTokens);
     }
   }
 
@@ -145,7 +159,7 @@ function _resolveTokens<TViewProps, TTokens>(
 function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
   displayName: string | undefined,
   context: ICustomizerContext,
-  fields?: string[]
+  fields?: string[],
 ): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)

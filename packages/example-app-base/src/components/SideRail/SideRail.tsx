@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
+import {
+  css,
+  FocusZone,
+  FocusZoneDirection,
+  Link,
+  IProcessedStyleSet,
+  classNamesFunction,
+  styled,
+} from 'office-ui-fabric-react';
 import { isPageActive, removeAnchorLink, jumpToAnchor } from '../../utilities/index2';
 import { MarkdownHeader } from '../Markdown/index';
 import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';
@@ -21,7 +29,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
       const { observe, jumpLinks } = this.props;
       if (observe && jumpLinks) {
         this._observer = new IntersectionObserver(this._handleObserver, {
-          threshold: [0.5]
+          threshold: [0.5],
         });
 
         jumpLinks.forEach((jumpLink: ISideRailLink) => {
@@ -61,7 +69,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
       const { intersectionRatio, target } = entry;
       if (intersectionRatio > 0.5) {
         this.setState({
-          activeLink: target.id
+          activeLink: target.id,
         });
         break;
       }
@@ -82,7 +90,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
           href={this._getJumpLinkUrl(jumpLink.url)}
           onClick={this._onJumpLinkClick}
           styles={{
-            root: [classNames.jumpLink, activeLink === jumpLink.url && classNames.jumpLinkActive]
+            root: [classNames.jumpLink, activeLink === jumpLink.url && classNames.jumpLinkActive],
           }}
         >
           {jumpLink.text}
@@ -99,7 +107,10 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     );
   };
 
-  private _renderLinkList(linksFromProps: ISideRailLink[] | JSX.Element | undefined, title: string): JSX.Element | null {
+  private _renderLinkList(
+    linksFromProps: ISideRailLink[] | JSX.Element | undefined,
+    title: string,
+  ): JSX.Element | null {
     const classNames = this._classNames;
 
     let links: JSX.Element | undefined;
@@ -145,7 +156,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
 
   private _getJumpLinkUrl(anchor: string): string {
     // This makes sure that location hash changes don't append
-    return `${removeAnchorLink(location.hash)}#${anchor}`;
+    return typeof location !== 'undefined' ? `${removeAnchorLink(location.hash)}#${anchor}` : '';
   }
 }
 
@@ -154,9 +165,8 @@ function _isElement(x: any): x is JSX.Element {
   return !!(x && (x as JSX.Element).props && (x as JSX.Element).type);
 }
 
-export const SideRail: React.StatelessComponent<ISideRailProps> = styled<ISideRailProps, ISideRailStyleProps, ISideRailStyles>(
-  SideRailBase,
-  getStyles,
-  undefined,
-  { scope: 'SideRail' }
-);
+export const SideRail: React.FunctionComponent<ISideRailProps> = styled<
+  ISideRailProps,
+  ISideRailStyleProps,
+  ISideRailStyles
+>(SideRailBase, getStyles, undefined, { scope: 'SideRail' });

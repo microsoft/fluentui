@@ -14,7 +14,18 @@
   }
 
   &.inputFocused {
+    position: relative;
     border-color: $inputFocusBorderAltColor;
+    &:after {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      bottom: -1px;
+      right: -1px;
+      border: 2px solid $inputFocusBorderAltColor;
+    }
   }
 }
 
@@ -30,6 +41,7 @@
 .pickerItems {
   display: flex;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .screenReaderOnly {

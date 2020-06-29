@@ -11,12 +11,12 @@ module.exports = resources.createConfig(
     mode: 'production',
 
     entry: {
-      [BUNDLE_NAME]: './lib/index.js'
+      [BUNDLE_NAME]: './lib/index.js',
     },
     externals: {
       react: 'React',
-      'react-dom': 'ReactDOM'
-    }
+      'react-dom': 'ReactDOM',
+    },
   },
-  true
+  true,
 );

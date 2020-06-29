@@ -22,7 +22,7 @@ export function buildClassMap<T extends Object>(styles: T): { [key in keyof T]?:
           return className;
         },
         enumerable: true,
-        configurable: true
+        configurable: true,
       });
     }
   }

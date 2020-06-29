@@ -12,25 +12,27 @@ export interface IBestPracticesSectionProps extends IPageSectionPropsWithSection
   donts?: string;
 }
 
-export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectionProps> = props => {
+export const BestPracticesSection: React.FunctionComponent<IBestPracticesSectionProps> = props => {
   const {
     className,
     fileNamePrefix,
     componentUrl,
     platform,
     sectionName,
-    readableSectionName,
+    readableSectionName = sectionName,
     bestPractices,
     dos,
     donts,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
   const bestPracticesUrl = componentUrl
     ? getEditUrl({ name: fileNamePrefix || title, section: pascalize(sectionName!), baseUrl: componentUrl, platform })
     : undefined;
-  const dosUrl = componentUrl ? getEditUrl({ name: fileNamePrefix || title, section: 'Dos', baseUrl: componentUrl, platform }) : undefined;
+  const dosUrl = componentUrl
+    ? getEditUrl({ name: fileNamePrefix || title, section: 'Dos', baseUrl: componentUrl, platform })
+    : undefined;
   const dontsUrl = componentUrl
     ? getEditUrl({ name: fileNamePrefix || title, section: 'Donts', baseUrl: componentUrl, platform })
     : undefined;
@@ -39,11 +41,12 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
     <div className={className} style={style}>
       <div className={styles.subSection}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={id}>
-            {readableSectionName || sectionName}
+          {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+          <h2 className={styles.subHeading} id={id} tabIndex={-1}>
+            {readableSectionName}
           </h2>
           {!!(bestPractices && bestPracticesUrl) && (
-            <EditSection className={styles.edit} title={title} section="Best Practices" url={bestPracticesUrl} />
+            <EditSection className={styles.edit} title={title} section="Best practices" url={bestPracticesUrl} />
           )}
         </div>
         {bestPractices && (
@@ -72,7 +75,9 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
               <MarkdownHeader as="h3" className={css(styles.smallSubHeading)}>
                 Don&rsquo;t
               </MarkdownHeader>
-              {donts && dontsUrl && <EditSection className={styles.edit} title={title} section="Don'ts" url={dontsUrl} />}
+              {donts && dontsUrl && (
+                <EditSection className={styles.edit} title={title} section="Don'ts" url={dontsUrl} />
+              )}
             </div>
             {donts && (
               <div className={css(styles.content, styles.dontList)}>

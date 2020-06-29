@@ -3,7 +3,14 @@ import * as ReactDOM from 'react-dom';
 
 import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
-import { classNamesFunction, customizable, getDocument, setPortalAttribute, setVirtualParent, warnDeprecations } from '../../Utilities';
+import {
+  classNamesFunction,
+  customizable,
+  getDocument,
+  setPortalAttribute,
+  setVirtualParent,
+  warnDeprecations,
+} from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 
 export type ILayerBaseState = {
@@ -17,7 +24,7 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
-    onLayerWillUnmount: () => undefined
+    onLayerWillUnmount: () => undefined,
   };
 
   private _rootRef = React.createRef<HTMLSpanElement>();
@@ -29,7 +36,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
 
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Layer', props, {
-        onLayerMounted: 'onLayerDidMount'
+        onLayerMounted: 'onLayerDidMount',
       });
     }
   }
@@ -53,10 +60,10 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
       <span className="ms-layer" ref={this._rootRef}>
         {layerElement &&
           ReactDOM.createPortal(
-            <Fabric {...!eventBubblingEnabled && _getFilteredEvents()} className={classNames.content}>
+            <Fabric {...(!eventBubblingEnabled && _getFilteredEvents())} className={classNames.content}>
               {this.props.children}
             </Fabric>,
-            layerElement
+            layerElement,
           )}
       </span>
     );
@@ -102,9 +109,10 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     this.setState(
       {
         hostId,
-        layerElement
+        layerElement,
       },
       () => {
+        // tslint:disable-next-line:deprecation
         const { onLayerDidMount, onLayerMounted } = this.props;
         if (onLayerMounted) {
           onLayerMounted();
@@ -113,7 +121,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
         if (onLayerDidMount) {
           onLayerDidMount();
         }
-      }
+      },
     );
   };
 
@@ -138,7 +146,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isNotHost: !this.props.hostId
+      isNotHost: !this.props.hostId,
     });
 
     return classNames;
@@ -161,9 +169,16 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
 }
 
 const _onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
-  // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though mouseenter and
-  //    mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on event name rather than ev.bubble.
-  if (ev.eventPhase === Event.BUBBLING_PHASE && ev.type !== 'mouseenter' && ev.type !== 'mouseleave') {
+  // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though
+  // mouseenter and mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on
+  // event name rather than ev.bubble.
+  if (
+    ev.eventPhase === Event.BUBBLING_PHASE &&
+    ev.type !== 'mouseenter' &&
+    ev.type !== 'mouseleave' &&
+    ev.type !== 'touchstart' &&
+    ev.type !== 'touchend'
+  ) {
     ev.stopPropagation();
   }
 };
@@ -193,6 +208,10 @@ function _getFilteredEvents() {
       'onMouseOver',
       'onMouseOut',
       'onMouseUp',
+      'onTouchMove',
+      'onTouchStart',
+      'onTouchCancel',
+      'onTouchEnd',
       'onKeyDown',
       'onKeyPress',
       'onKeyUp',
@@ -201,7 +220,7 @@ function _getFilteredEvents() {
       'onChange',
       'onInput',
       'onInvalid',
-      'onSubmit'
+      'onSubmit',
     ].forEach(name => (_filteredEventProps[name] = _onFilterEvent));
   }
 

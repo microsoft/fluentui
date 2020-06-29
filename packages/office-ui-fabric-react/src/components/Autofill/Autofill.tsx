@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties, isIE11 } from '../../Utilities';
+import { KeyCodes, getNativeProps, inputProperties, isIE11, Async, initializeComponentRef } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -12,21 +12,26 @@ const SELECTION_BACKWARD = 'backward';
 /**
  * {@docCategory Autofill}
  */
-export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
+export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
-    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
+    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
   private _value: string;
   private _isComposing: boolean = false;
+  private _async: Async;
 
   constructor(props: IAutofillProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+
     this._value = props.defaultVisibleValue || '';
     this.state = {
-      displayValue: props.defaultVisibleValue || ''
+      displayValue: props.defaultVisibleValue || '',
     };
   }
 
@@ -90,7 +95,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
       return;
     }
 
-    if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
+    if (
+      this._autoFillEnabled &&
+      value &&
+      suggestedDisplayValue &&
+      this._doesTextStartWith(suggestedDisplayValue, value)
+    ) {
       let shouldSelectFullRange = false;
 
       if (shouldSelectFullInputValueInComponentDidUpdate) {
@@ -107,10 +117,18 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
           differenceIndex++;
         }
         if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+          this._inputElement.current.setSelectionRange(
+            differenceIndex,
+            suggestedDisplayValue.length,
+            SELECTION_BACKWARD,
+          );
         }
       }
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -119,11 +137,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     return (
       <input
+        autoCapitalize="off"
+        autoComplete="off"
+        aria-autocomplete={'both'}
         {...nativeProps}
         ref={this._inputElement}
         value={displayValue}
-        autoCapitalize={'off'}
-        autoComplete={'off'}
         onCompositionStart={this._onCompositionStart}
         onCompositionUpdate={this._onCompositionUpdate}
         onCompositionEnd={this._onCompositionEnd}
@@ -143,7 +162,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   public clear() {
     this._autoFillEnabled = true;
-    this._updateValue('');
+    this._updateValue('', false);
     this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);
   }
 
@@ -160,7 +179,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionUpdate = () => {
     if (isIE11()) {
-      this._updateValue(this._getCurrentInputValue());
+      this._updateValue(this._getCurrentInputValue(), true);
     }
   };
 
@@ -173,8 +192,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     this._isComposing = false;
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
-      // Call getCurrentInputValue here again since there can be a race condition where this value has changed during the async cal
-      this._updateValue(this._getCurrentInputValue());
+      // it's technically possible that the value of _isComposing is reset during this timeout,
+      // so explicitly trigger this with composing=true here, since it is supposed to be the
+      // update for composition end
+      this._updateValue(this._getCurrentInputValue(), false);
     }, 0);
   };
 
@@ -223,7 +244,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
     // If it is not IE11 and currently composing, update the value
     if (!(isIE11() && this._isComposing)) {
-      this._updateValue(value);
+      const nativeEventComposing = (ev.nativeEvent as any).isComposing;
+      const isComposing = nativeEventComposing === undefined ? this._isComposing : nativeEventComposing;
+      this._updateValue(value, isComposing);
     }
   };
 
@@ -267,9 +290,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  private _notifyInputChange(newValue: string): void {
+  private _notifyInputChange(newValue: string, composing: boolean): void {
     if (this.props.onInputValueChange) {
-      this.props.onInputValueChange(newValue);
+      this.props.onInputValueChange(newValue, composing);
     }
   }
 
@@ -277,18 +300,18 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Updates the current input value as well as getting a new display value.
    * @param newValue - The new value from the input
    */
-  private _updateValue = (newValue: string) => {
+  private _updateValue = (newValue: string, composing: boolean) => {
     // Only proceed if the value is nonempty and is different from the old value
     // This is to work around the fact that, in IE 11, inputs with a placeholder fire an onInput event on focus
     if (!newValue && newValue === this._value) {
       return;
     }
-    this._value = this.props.onInputChange ? this.props.onInputChange(newValue) : newValue;
+    this._value = this.props.onInputChange ? this.props.onInputChange(newValue, composing) : newValue;
     this.setState(
       {
-        displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue)
+        displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue),
       },
-      () => this._notifyInputChange(this._value)
+      () => this._notifyInputChange(this._value, composing),
     );
   };
 
@@ -301,7 +324,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    */
   private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
-    if (suggestedDisplayValue && inputValue && this._doesTextStartWith(suggestedDisplayValue, displayValue) && this._autoFillEnabled) {
+    if (
+      suggestedDisplayValue &&
+      inputValue &&
+      this._doesTextStartWith(suggestedDisplayValue, displayValue) &&
+      this._autoFillEnabled
+    ) {
       displayValue = suggestedDisplayValue;
     }
     return displayValue;

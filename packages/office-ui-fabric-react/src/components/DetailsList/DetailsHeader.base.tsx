@@ -1,7 +1,23 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, IClassNames } from '../../Utilities';
-import { IColumn, IDetailsHeaderBaseProps, IColumnDragDropDetails, ColumnDragEndLocation, CheckboxVisibility } from './DetailsList.types';
+import { IProcessedStyleSet } from '../../Styling';
+import {
+  initializeComponentRef,
+  EventGroup,
+  IDisposable,
+  css,
+  getRTL,
+  getId,
+  KeyCodes,
+  classNamesFunction,
+} from '../../Utilities';
+import {
+  IColumn,
+  IDetailsHeaderBaseProps,
+  IColumnDragDropDetails,
+  ColumnDragEndLocation,
+  CheckboxVisibility,
+} from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon, FontIcon } from '../../Icon';
 import { Layer } from '../../Layer';
@@ -12,9 +28,13 @@ import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
-import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
+import {
+  SelectAllVisibility,
+  IDropHintDetails,
+  IColumnReorderHeaderProps,
+  IDetailsHeaderState,
+} from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
-import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 
@@ -23,14 +43,15 @@ const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.butt
 
 const NO_COLUMNS: IColumn[] = [];
 
-export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
+export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState>
+  implements IDetailsHeader {
   public static defaultProps = {
     selectAllVisibility: SelectAllVisibility.visible,
     collapseAllVisibility: CollapseAllVisibility.visible,
-    useFastIcons: true
+    useFastIcons: true,
   };
 
-  private _classNames: IClassNames<IDetailsHeaderStyles>;
+  private _classNames: IProcessedStyleSet<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
   private _events: EventGroup;
   private _rootComponent = React.createRef<IFocusZone>();
@@ -54,12 +75,12 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     this.state = {
       columnResizeDetails: undefined,
       isAllCollapsed: this.props.isAllCollapsed,
-      isAllSelected: !!this.props.selection && this.props.selection.isAllSelected()
+      isAllSelected: !!this.props.selection && this.props.selection.isAllSelected(),
     };
 
     this._onDropIndexInfo = {
       sourceIndex: -1,
-      targetIndex: -1
+      targetIndex: -1,
     };
     this._id = getId('header');
     this._currentDropHintIndex = -1;
@@ -70,9 +91,9 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       selection: {
         getSelection: () => {
           return;
-        }
+        },
       } as ISelection,
-      minimumPixelsForDrag: this.props.minimumPixelsForDrag
+      minimumPixelsForDrag: this.props.minimumPixelsForDrag,
     });
   }
 
@@ -87,14 +108,22 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     this._events.on(this._rootElement!, 'keydown', this._onRootKeyDown);
 
     if (this._getColumnReorderProps()) {
-      this._subscriptionObject = this._dragDropHelper.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
+      this._subscriptionObject = this._dragDropHelper.subscribe(
+        this._rootElement!,
+        this._events,
+        this._getHeaderDragDropOptions(),
+      );
     }
   }
 
   public componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void {
     if (this._getColumnReorderProps()) {
       if (!this._subscriptionObject) {
-        this._subscriptionObject = this._dragDropHelper.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
+        this._subscriptionObject = this._dragDropHelper.subscribe(
+          this._rootElement!,
+          this._events,
+          this._getHeaderDragDropOptions(),
+        );
       }
     } else if (this._subscriptionObject) {
       this._subscriptionObject.dispose();
@@ -107,7 +136,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       if (previousColumns[this._onDropIndexInfo.sourceIndex].key === columns[this._onDropIndexInfo.targetIndex].key) {
         this._onDropIndexInfo = {
           sourceIndex: -1,
-          targetIndex: -1
+          targetIndex: -1,
         };
       }
     }
@@ -137,7 +166,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       selectAllVisibility,
       ariaLabelForSelectionColumn,
       indentWidth,
-      rowWidth = 0,
       onColumnClick,
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
@@ -148,7 +176,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       groupNestingDepth,
       useFastIcons,
       checkboxVisibility,
-      className
+      className,
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -157,9 +185,13 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
     const columnReorderProps = this._getColumnReorderProps();
     const frozenColumnCountFromStart =
-      columnReorderProps && columnReorderProps.frozenColumnCountFromStart ? columnReorderProps.frozenColumnCountFromStart : 0;
+      columnReorderProps && columnReorderProps.frozenColumnCountFromStart
+        ? columnReorderProps.frozenColumnCountFromStart
+        : 0;
     const frozenColumnCountFromEnd =
-      columnReorderProps && columnReorderProps.frozenColumnCountFromEnd ? columnReorderProps.frozenColumnCountFromEnd : 0;
+      columnReorderProps && columnReorderProps.frozenColumnCountFromEnd
+        ? columnReorderProps.frozenColumnCountFromEnd
+        : 0;
 
     this._classNames = getClassNames(styles, {
       theme: theme!,
@@ -169,13 +201,13 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       isSizing,
       isAllCollapsed,
       isCheckboxHidden,
-      className
+      className,
     });
 
     const classNames = this._classNames;
     const IconComponent = useFastIcons ? FontIcon : Icon;
 
-    const isRTL = getRTL();
+    const isRTL = getRTL(theme);
     return (
       <FocusZone
         role="row"
@@ -185,7 +217,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         ref={this._onRootRef}
         onMouseMove={this._onRootMouseMove}
         data-automationid="DetailsHeader"
-        style={{ minWidth: rowWidth }}
         direction={FocusZoneDirection.horizontal}
       >
         {showCheckbox
@@ -207,7 +238,11 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                     children: (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
-                        aria-label={selectionMode === SelectionMode.multiple ? ariaLabelForSelectAllCheckbox : ariaLabelForSelectionColumn}
+                        aria-label={
+                          selectionMode === SelectionMode.multiple
+                            ? ariaLabelForSelectAllCheckbox
+                            : ariaLabelForSelectionColumn
+                        }
                         aria-describedby={
                           !isCheckboxHidden
                             ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
@@ -227,22 +262,32 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                         useFastIcons={useFastIcons}
                         isVisible={isCheckboxAlwaysVisible}
                       />
-                    )
+                    ),
                   },
-                  this._onRenderColumnHeaderTooltip
+                  this._onRenderColumnHeaderTooltip,
                 )}
               </div>,
               !this.props.onRenderColumnHeaderTooltip ? (
                 ariaLabelForSelectAllCheckbox && !isCheckboxHidden ? (
-                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
+                  <label
+                    key="__checkboxLabel"
+                    id={`${this._id}-checkTooltip`}
+                    className={classNames.accessibleLabel}
+                    aria-hidden={true}
+                  >
                     {ariaLabelForSelectAllCheckbox}
                   </label>
                 ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
-                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
+                  <label
+                    key="__checkboxLabel"
+                    id={`${this._id}-checkTooltip`}
+                    className={classNames.accessibleLabel}
+                    aria-hidden={true}
+                  >
                     {ariaLabelForSelectionColumn}
                   </label>
                 ) : null
-              ) : null
+              ) : null,
             ]
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
@@ -254,7 +299,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             aria-expanded={!isAllCollapsed}
             role={ariaLabelForToggleAllGroupsButton ? 'button' : undefined}
           >
-            <IconComponent className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
+            <IconComponent
+              className={classNames.collapseButton}
+              iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'}
+            />
           </div>
         ) : null}
         <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
@@ -268,6 +316,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
               this._renderDropHint(columnIndex),
             <DetailsColumn
               column={column}
+              styles={column.styles}
               key={column.key}
               columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
               parentId={this._id}
@@ -282,13 +331,17 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
               cellStyleProps={this.props.cellStyleProps}
               useFastIcons={useFastIcons}
             />,
-            this._renderColumnDivider(columnIndex)
+            this._renderColumnDivider(columnIndex),
           ];
         })}
         {columnReorderProps && frozenColumnCountFromEnd === 0 && this._renderDropHint(columns.length)}
         {isSizing && (
           <Layer>
-            <div className={classNames.sizingOverlay} onMouseMove={this._onSizerMouseMove} onMouseUp={this._onSizerMouseUp} />
+            <div
+              className={classNames.sizingOverlay}
+              onMouseMove={this._onSizerMouseMove}
+              onMouseUp={this._onSizerMouseUp}
+            />
           </Layer>
         )}
       </FocusZone>
@@ -320,7 +373,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       updateDropState: this._updateDroppingState,
       onDrop: this._onDrop,
       onDragEnd: () => undefined,
-      onDragOver: this._onDragOver
+      onDragOver: this._onDragOver,
     };
     return options;
   }
@@ -349,7 +402,9 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     // Target index will not get changed if draggeditem is after target item.
     if (this._draggedColumnIndex >= 0 && event) {
       const targetIndex =
-        this._draggedColumnIndex > this._currentDropHintIndex ? this._currentDropHintIndex : this._currentDropHintIndex - 1;
+        this._draggedColumnIndex > this._currentDropHintIndex
+          ? this._currentDropHintIndex
+          : this._currentDropHintIndex - 1;
       const isValidDrop = this._isValidCurrentDropHintIndex();
       event.stopPropagation();
       if (isValidDrop) {
@@ -359,11 +414,13 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         if (columnReorderProps.onColumnDrop) {
           const dragDropDetails: IColumnDragDropDetails = {
             draggedIndex: this._draggedColumnIndex,
-            targetIndex: targetIndex
+            targetIndex: targetIndex,
           };
           columnReorderProps.onColumnDrop(dragDropDetails);
+          // tslint:disable:deprecation
         } else if (columnReorderProps.handleColumnReorder) {
           columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
+          // tslint:enable:deprecation
         }
       }
     }
@@ -440,7 +497,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
               originX: prevX,
               startX: prevMid!,
               endX: newMid,
-              dropHintElementRef: prevRef!
+              dropHintElementRef: prevRef!,
             };
             prevMid = newMid;
             prevRef = dropHintElement;
@@ -450,7 +507,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                 originX: prevX,
                 startX: prevMid!,
                 endX: dropHintElement.offsetLeft,
-                dropHintElementRef: prevRef
+                dropHintElementRef: prevRef,
               };
             }
           }
@@ -463,6 +520,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
    * Based on the given cursor position, finds the nearest drop hint and updates the state to make it visible
    */
   private _computeDropHintToBeShown = (clientX: number): void => {
+    const isRtl = getRTL(this.props.theme);
     if (this._rootElement) {
       const clientRect = this._rootElement.getBoundingClientRect();
       const headerOriginX = clientRect.left;
@@ -471,9 +529,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       if (this._isValidCurrentDropHintIndex()) {
         if (
           _liesBetween(
+            isRtl,
             eventXRelativePosition,
             this._dropHintDetails[currentDropHintIndex!].startX,
-            this._dropHintDetails[currentDropHintIndex!].endX
+            this._dropHintDetails[currentDropHintIndex!].endX,
           )
         ) {
           return;
@@ -488,26 +547,28 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       const currentIndex: number = frozenColumnCountFromStart;
       const lastValidColumn = columns.length - frozenColumnCountFromEnd;
       let indexToUpdate = -1;
-      if (_isBefore(eventXRelativePosition, this._dropHintDetails[currentIndex].endX)) {
+      if (_isBefore(isRtl, eventXRelativePosition, this._dropHintDetails[currentIndex].endX)) {
         indexToUpdate = currentIndex;
-      } else if (_isAfter(eventXRelativePosition, this._dropHintDetails[lastValidColumn].startX)) {
+      } else if (_isAfter(isRtl, eventXRelativePosition, this._dropHintDetails[lastValidColumn].startX)) {
         indexToUpdate = lastValidColumn;
       } else if (this._isValidCurrentDropHintIndex()) {
         if (
           this._dropHintDetails[currentDropHintIndex! + 1] &&
           _liesBetween(
+            isRtl,
             eventXRelativePosition,
             this._dropHintDetails[currentDropHintIndex! + 1].startX,
-            this._dropHintDetails[currentDropHintIndex! + 1].endX
+            this._dropHintDetails[currentDropHintIndex! + 1].endX,
           )
         ) {
           indexToUpdate = currentDropHintIndex! + 1;
         } else if (
           this._dropHintDetails[currentDropHintIndex! - 1] &&
           _liesBetween(
+            isRtl,
             eventXRelativePosition,
             this._dropHintDetails[currentDropHintIndex! - 1].startX,
-            this._dropHintDetails[currentDropHintIndex! - 1].endX
+            this._dropHintDetails[currentDropHintIndex! - 1].endX,
           )
         ) {
           indexToUpdate = currentDropHintIndex! - 1;
@@ -518,12 +579,19 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         let endIndex = lastValidColumn;
         while (startIndex < endIndex) {
           const middleIndex = Math.ceil((endIndex + startIndex!) / 2);
-          if (_liesBetween(eventXRelativePosition, this._dropHintDetails[middleIndex].startX, this._dropHintDetails[middleIndex].endX)) {
+          if (
+            _liesBetween(
+              isRtl,
+              eventXRelativePosition,
+              this._dropHintDetails[middleIndex].startX,
+              this._dropHintDetails[middleIndex].endX,
+            )
+          ) {
             indexToUpdate = middleIndex;
             break;
-          } else if (_isBefore(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
+          } else if (_isBefore(isRtl, eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
             endIndex = middleIndex;
-          } else if (_isAfter(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
+          } else if (_isAfter(isRtl, eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
             startIndex = middleIndex;
           }
         }
@@ -570,9 +638,13 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         onClick={_stopPropagation}
         data-sizer-index={columnIndex}
         onBlur={this._onSizerBlur}
-        className={css(classNames.cellSizer, columnIndex < columns.length - 1 ? classNames.cellSizerStart : classNames.cellSizerEnd, {
-          [classNames.cellIsResizing]: columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
-        })}
+        className={css(
+          classNames.cellSizer,
+          columnIndex < columns.length - 1 ? classNames.cellSizerStart : classNames.cellSizerEnd,
+          {
+            [classNames.cellIsResizing]: columnResizeDetails && columnResizeDetails.columnIndex === columnIndex,
+          },
+        )}
         onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}
       />
     ) : null;
@@ -654,8 +726,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       columnResizeDetails: {
         columnIndex: columnIndex,
         columnMinWidth: columns[columnIndex].calculatedWidth!,
-        originX: ev.clientX
-      }
+        originX: ev.clientX,
+      },
     });
 
     ev.preventDefault();
@@ -672,7 +744,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
   private _onRootRef = (focusZone: FocusZone): void => {
     if (focusZone) {
-      // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
+      // Need to resolve the actual DOM node, not the component.
+      // The element itself will be used for drag/drop and focusing.
       this._rootElement = findDOMNode(focusZone) as HTMLElement;
     } else {
       this._rootElement = undefined;
@@ -692,12 +765,13 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const columnIndex = Number(columnIndexAttr);
 
     if (!columnResizeDetails) {
+      // tslint:disable-next-line:deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: {
             columnIndex: columnIndex,
-            columnMinWidth: columns[columnIndex].calculatedWidth!
-          }
+            columnMinWidth: columns[columnIndex].calculatedWidth!,
+          },
         });
 
         ev.preventDefault();
@@ -706,17 +780,20 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     } else {
       let increment: number | undefined;
 
+      // tslint:disable-next-line:deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
-          columnResizeDetails: undefined
+          columnResizeDetails: undefined,
         });
 
         ev.preventDefault();
         ev.stopPropagation();
+        // tslint:disable-next-line:deprecation
       } else if (ev.which === KeyCodes.left) {
-        increment = getRTL() ? 1 : -1;
+        increment = getRTL(this.props.theme) ? 1 : -1;
+        // tslint:disable-next-line:deprecation
       } else if (ev.which === KeyCodes.right) {
-        increment = getRTL() ? -1 : 1;
+        increment = getRTL(this.props.theme) ? -1 : 1;
       }
 
       if (increment) {
@@ -727,8 +804,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         this.setState({
           columnResizeDetails: {
             ...columnResizeDetails,
-            columnMinWidth: columnResizeDetails.columnMinWidth + increment
-          }
+            columnMinWidth: columnResizeDetails.columnMinWidth + increment,
+          },
         });
 
         if (onColumnResized) {
@@ -751,7 +828,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const {
       // use buttons property here since ev.button in some edge case is not upding well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
-      buttons
+      buttons,
     } = ev;
     const { onColumnIsSizingChanged, onColumnResized, columns = NO_COLUMNS } = this.props;
     const { columnResizeDetails } = this.state;
@@ -771,14 +848,14 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     if (onColumnResized) {
       let movement = ev.clientX - columnResizeDetails!.originX!;
 
-      if (getRTL()) {
+      if (getRTL(this.props.theme)) {
         movement = -movement;
       }
 
       onColumnResized(
         columns[columnResizeDetails!.columnIndex],
         columnResizeDetails!.columnMinWidth + movement,
-        columnResizeDetails!.columnIndex
+        columnResizeDetails!.columnIndex,
       );
     }
   };
@@ -789,7 +866,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     if (columnResizeDetails) {
       this.setState({
         columnResizeDetails: undefined,
-        isSizing: false
+        isSizing: false,
       });
     }
   };
@@ -807,7 +884,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
     this.setState({
       columnResizeDetails: undefined,
-      isSizing: false
+      isSizing: false,
     });
 
     if (onColumnIsSizingChanged) {
@@ -820,7 +897,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
     if (this.state.isAllSelected !== isAllSelected) {
       this.setState({
-        isAllSelected: isAllSelected
+        isAllSelected: isAllSelected,
       });
     }
   }
@@ -829,7 +906,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const { onToggleCollapseAll } = this.props;
     const newCollapsed = !this.state.isAllCollapsed;
     this.setState({
-      isAllCollapsed: newCollapsed
+      isAllCollapsed: newCollapsed,
     });
     if (onToggleCollapseAll) {
       onToggleCollapseAll(newCollapsed);
@@ -837,14 +914,14 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
   };
 }
 
-function _liesBetween(target: number, left: number, right: number): boolean {
-  return getRTL() ? target <= left && target >= right : target >= left && target <= right;
+function _liesBetween(rtl: boolean, target: number, left: number, right: number): boolean {
+  return rtl ? target <= left && target >= right : target >= left && target <= right;
 }
-function _isBefore(a: number, b: number): boolean {
-  return getRTL() ? a >= b : a <= b;
+function _isBefore(rtl: boolean, a: number, b: number): boolean {
+  return rtl ? a >= b : a <= b;
 }
-function _isAfter(a: number, b: number): boolean {
-  return getRTL() ? a <= b : a >= b;
+function _isAfter(rtl: boolean, a: number, b: number): boolean {
+  return rtl ? a <= b : a >= b;
 }
 
 function _stopPropagation(ev: React.MouseEvent<HTMLElement>): void {

@@ -3,7 +3,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { KeytipsPageProps } from './KeytipsPage.doc';
 import { KeytipLayer } from 'office-ui-fabric-react/lib/KeytipLayer';
 
-export const KeytipsPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const KeytipsPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
     <div>
       <ControlsAreaPage {...props} {...KeytipsPageProps[props.platform]} />

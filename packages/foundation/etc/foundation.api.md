@@ -107,7 +107,7 @@ export type ISlotDefinition<TSlots> = {
 };
 
 // @public
-export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (componentProps: TProps & IProcessedSlotProps, userProps: ISlotProp<TProps, TShorthandProp>, slotOptions: ISlotOptions<TProps> | undefined, defaultStyles: IStyle) => ReturnType<React.FunctionComponent<TProps>>;
+export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (componentProps: TProps & IProcessedSlotProps, userProps: ISlotProp<TProps, TShorthandProp>, slotOptions: ISlotOptions<TProps> | undefined, defaultStyles: IStyle, theme?: ITheme) => ReturnType<React.FunctionComponent<TProps>>;
 
 // @public
 export interface ISlotOptions<TProps> {
@@ -204,7 +204,7 @@ export type ValidProps = object;
 export type ValidShorthand = string | number | boolean;
 
 // @public
-export function withSlots<P>(type: ISlot<P> | React.FunctionComponent<P> | string, props?: React.Attributes & P | null, ...children: React.ReactNode[]): ReturnType<React.FunctionComponent<P>>;
+export function withSlots<P>(type: ISlot<P> | React.FunctionComponent<P> | string, props?: (React.Attributes & P) | null, ...children: React.ReactNode[]): ReturnType<React.FunctionComponent<P>>;
 
 
 // (No @packageDocumentation comment for this package)

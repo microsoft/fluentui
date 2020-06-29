@@ -64,6 +64,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -75,6 +76,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-align: center;
               width: 40px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"
@@ -267,6 +269,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -278,6 +281,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-align: center;
               width: 72px;
             }
+        role="presentation"
       >
         <div
           aria-hidden="true"

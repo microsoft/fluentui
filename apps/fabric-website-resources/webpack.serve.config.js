@@ -7,16 +7,16 @@ const BUNDLE_NAME = 'demo-app';
 module.exports = resources.createServeConfig(
   addMonacoWebpackConfig({
     entry: {
-      [BUNDLE_NAME]: './src/index.tsx'
+      [BUNDLE_NAME]: './src/index.tsx',
     },
 
     externals: {
       react: 'React',
-      'react-dom': 'ReactDOM'
+      'react-dom': 'ReactDOM',
     },
 
     resolve: {
-      alias: getResolveAlias()
-    }
-  })
+      alias: getResolveAlias(),
+    },
+  }),
 );

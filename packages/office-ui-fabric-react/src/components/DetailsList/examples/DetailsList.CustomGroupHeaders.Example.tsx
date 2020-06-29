@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsHeader, DetailsList, IDetailsHeaderProps, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsHeader,
+  DetailsList,
+  IGroup,
+  IGroupDividerProps,
+  IDetailsListProps,
+  IDetailsGroupRenderProps,
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
@@ -20,20 +27,20 @@ const classNames = mergeStyleSets({
     background: theme.palette.neutralLighterAlt,
     // Overlay the sizer bars
     position: 'relative',
-    zIndex: 100
+    zIndex: 100,
   },
   headerTitle: [
     theme.fonts.xLarge,
     {
-      padding: '4px 0'
-    }
+      padding: '4px 0',
+    },
   ],
   headerLinkSet: {
-    margin: '4px -8px'
+    margin: '4px -8px',
   },
   headerLink: {
-    margin: '0 8px'
-  }
+    margin: '0 8px',
+  },
 });
 
 const ITEMS_PER_GROUP = 20;
@@ -57,7 +64,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         groups={this._groups}
         groupProps={{
           onRenderHeader: this._onRenderGroupHeader,
-          onRenderFooter: this._onRenderGroupFooter
+          onRenderFooter: this._onRenderGroupFooter,
         }}
         getGroupHeight={this._getGroupHeight}
         ariaLabelForSelectionColumn="Toggle selection"
@@ -68,32 +75,43 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
     );
   }
 
-  private _onRenderDetailsHeader(props: IDetailsHeaderProps) {
-    return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Toggle selection'} />;
-  }
-
-  private _onRenderGroupHeader = (props: IGroupDividerProps): JSX.Element => {
-    return (
-      <div className={classNames.headerAndFooter}>
-        <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
-        <div className={classNames.headerLinkSet}>
-          <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
-            {props.isSelected ? 'Remove selection' : 'Select group'}
-          </Link>
-          <Link className={classNames.headerLink} onClick={this._onToggleCollapse(props)}>
-            {props.group!.isCollapsed ? 'Expand group' : 'Collapse group'}
-          </Link>
-        </div>
-      </div>
-    );
+  private _onRenderDetailsHeader: IDetailsListProps['onRenderDetailsHeader'] = props => {
+    if (props) {
+      return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Toggle selection'} />;
+    }
+    return null;
   };
 
-  private _onRenderGroupFooter = (props: IGroupDividerProps): JSX.Element => {
-    return (
-      <div className={classNames.headerAndFooter}>
-        <em>{`Custom footer for ${props.group!.name}`}</em>
-      </div>
-    );
+  private _onRenderGroupHeader: IDetailsGroupRenderProps['onRenderHeader'] = props => {
+    if (props) {
+      return (
+        <div className={classNames.headerAndFooter}>
+          <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
+          <div className={classNames.headerLinkSet}>
+            <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
+              {props.selected ? 'Remove selection' : 'Select group'}
+            </Link>
+            <Link className={classNames.headerLink} onClick={this._onToggleCollapse(props)}>
+              {props.group!.isCollapsed ? 'Expand group' : 'Collapse group'}
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
+  private _onRenderGroupFooter: IDetailsGroupRenderProps['onRenderFooter'] = props => {
+    if (props) {
+      return (
+        <div className={classNames.headerAndFooter}>
+          <em>{`Custom footer for ${props.group!.name}`}</em>
+        </div>
+      );
+    }
+
+    return null;
   };
 
   private _getGroupTotalRowHeight = (group: IGroup): number => {

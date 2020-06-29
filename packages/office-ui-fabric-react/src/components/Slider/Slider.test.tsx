@@ -2,14 +2,36 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as path from 'path';
 
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
+import { isConformant } from '@fluentui/react-conformance';
 
 describe('Slider', () => {
+  let wrapper: ReactWrapper | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterEach(() => {
+    if (wrapper) {
+      wrapper.unmount();
+      wrapper = undefined;
+    }
+  });
+
+  isConformant({
+    componentPath: path.join(__dirname, 'Slider.tsx'),
+    Component: Slider,
+    displayName: 'Slider',
+    disabledTests: ['has-docblock', 'kebab-aria-attributes'],
+  });
+
   it('renders correctly', () => {
     const component = renderer.create(<Slider label="I am a slider" />);
     const tree = component.toJSON();
@@ -23,24 +45,25 @@ describe('Slider', () => {
       changedValue = val;
     };
 
-    const wrapper = mount(<Slider onChange={onChange} />);
+    wrapper = mount(<Slider onChange={onChange} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
-    sliderLine.getDOMNode().getBoundingClientRect = () => ({
-      left: 0,
-      top: 0,
-      right: 100,
-      bottom: 40,
-      width: 100,
-      height: 40
-    });
+    sliderLine.getDOMNode().getBoundingClientRect = () =>
+      ({
+        left: 0,
+        top: 0,
+        right: 100,
+        bottom: 40,
+        width: 100,
+        height: 40,
+      } as DOMRect);
 
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 100,
-      clientY: 0
+      clientY: 0,
     });
 
     // Default max is 10.
@@ -49,7 +72,7 @@ describe('Slider', () => {
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     // Default min is 0.
@@ -57,9 +80,9 @@ describe('Slider', () => {
   });
 
   it('has type=button on all buttons', () => {
-    const component = mount(<Slider />);
+    wrapper = mount(<Slider />);
 
-    component.find('button').forEach(button => {
+    wrapper.find('button').forEach(button => {
       expect(button.prop('type')).toEqual('button');
     });
   });
@@ -67,44 +90,52 @@ describe('Slider', () => {
   it('can provide the current value', () => {
     const slider = React.createRef<ISlider>();
 
-    mount(<Slider label="slider" defaultValue={12} min={0} max={100} componentRef={slider} />);
+    wrapper = mount(<Slider label="slider" defaultValue={12} min={0} max={100} componentRef={slider} />);
     expect(slider.current!.value).toEqual(12);
+  });
+
+  it('can set id on slider', () => {
+    wrapper = mount(<Slider buttonProps={{ id: 'test_id' }} />);
+
+    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+    expect(sliderSlideBox.getDOMNode().id).toEqual('test_id');
   });
 
   it('should be able to handler zero default value', () => {
     const slider = React.createRef<ISlider>();
 
-    mount(<Slider label="slider" defaultValue={0} min={-100} max={100} componentRef={slider} />);
+    wrapper = mount(<Slider label="slider" defaultValue={0} min={-100} max={100} componentRef={slider} />);
     expect(slider.current!.value).toEqual(0);
   });
 
   it('should be able to handler zero value', () => {
     const slider = React.createRef<ISlider>();
 
-    mount(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
+    wrapper = mount(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
     expect(slider.current!.value).toEqual(0);
   });
 
   it('renders correct aria-valuetext', () => {
-    let component = mount(<Slider />);
+    wrapper = mount(<Slider />);
 
-    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toBeUndefined();
+    expect(wrapper.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual('0');
 
     const values = ['small', 'medium', 'large'];
     const selected = 1;
     const getTextValue = (value: number) => values[value];
 
-    component = mount(<Slider value={selected} ariaValueText={getTextValue} />);
+    wrapper.unmount();
+    wrapper = mount(<Slider value={selected} ariaValueText={getTextValue} />);
 
-    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual(values[selected]);
+    expect(wrapper.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual(values[selected]);
   });
 
   it('formats the value when a format function is passed', () => {
     const value = 10;
     const valueFormat = (val: any) => `${val}%`;
-    const component = mount(<Slider value={value} min={0} max={100} showValue={true} valueFormat={valueFormat} />);
+    wrapper = mount(<Slider value={value} min={0} max={100} showValue={true} valueFormat={valueFormat} />);
 
-    expect(component.find('label.ms-Label.ms-Slider-value').text()).toEqual(valueFormat(value));
+    expect(wrapper.find('label.ms-Label.ms-Slider-value').text()).toEqual(valueFormat(value));
   });
 
   it('calls onChanged after keyboard event', () => {

@@ -14,38 +14,62 @@ export class Pie extends React.Component<IPieProps, {}> {
       .value((d: any) => {
         return d.data;
       })
+      .padAngle(0.02),
   };
+  // tslint:disable-next-line:no-any
+  private _pieForFocusRing: any;
   constructor(props: IPieProps) {
     super(props);
     this._hoverCallback = this._hoverCallback.bind(this);
+    this._pieForFocusRing = shape
+      .pie()
+      .sort(null)
+      // tslint:disable-next-line:no-any
+      .value((d: any) => d.data)
+      .padAngle(0);
   }
 
-  public arcGenerator = (d: IArcData, i: number, href?: string): JSX.Element => {
+  public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
     const color = d && d.data && d.data.color;
     return (
       <Arc
         key={i}
         data={d}
+        focusData={focusData}
         innerRadius={this.props.innerRadius}
         outerRadius={this.props.outerRadius}
         color={color!}
+        onFocusCallback={this._focusCallback}
         hoverOnCallback={this._hoverCallback}
+        onBlurCallback={this.props.onBlurCallback}
         hoverLeaveCallback={this.props.hoverLeaveCallback}
         uniqText={this.props.uniqText}
         activeArc={this.props.activeArc}
         href={href}
+        calloutId={this.props.calloutId}
+        valueInsideDonut={this.props.valueInsideDonut}
+        theme={this.props.theme!}
+        focusedArcId={this.props.focusedArcId}
       />
     );
   };
 
   public render(): JSX.Element {
     const { pie, data, width, height, href } = this.props;
-
+    const focusData = this._pieForFocusRing(data);
     const piechart = pie(data),
       translate = `translate(${width / 2}, ${height / 2})`;
-
-    return <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, href))}</g>;
+    return (
+      <g transform={translate}>
+        {piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, focusData[i], href))}
+      </g>
+    );
   }
+
+  private _focusCallback = (data: IChartDataPoint, id: string, e: SVGPathElement): void => {
+    this.props.onFocusCallback!(data, id, e);
+  };
+
   private _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
     this.props.hoverOnCallback!(data, e);
   }

@@ -16,24 +16,24 @@ const tableClassName = mergeStyles({
   width: '100%',
   selectors: {
     thead: {
-      textAlign: 'center'
+      textAlign: 'center',
     },
     tr: {
       padding: 80,
-      textAlign: 'left'
+      textAlign: 'left',
     },
     th: {
-      display: 'table-cell'
+      display: 'table-cell',
     },
     td: {
       padding: 10,
       textAlign: 'left',
-      display: 'table-cell'
-    }
-  }
+      display: 'table-cell',
+    },
+  },
 });
 
-export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (props: IFabricPaletteProps) => {
+export const FabricPalette: React.FunctionComponent<IFabricPaletteProps> = (props: IFabricPaletteProps) => {
   const { themeRules, onFabricPaletteColorChange } = props;
   return (
     <div className={MainPanelInnerContent}>

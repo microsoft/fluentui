@@ -11,6 +11,7 @@ export interface IMonacoConfig {
 }
 
 const globalObj = (typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {}) as Window & {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   MonacoEnvironment?: any;
   MonacoConfig?: IMonacoConfig;
   // TODO: remove once fabric-website homepage.htm is updated
@@ -25,7 +26,7 @@ const labelMap: { [key: string]: string } = {
   scss: 'css',
   less: 'css',
   html: 'html',
-  json: 'json'
+  json: 'json',
 };
 
 function getMonacoConfig(): IMonacoConfig | undefined {
@@ -37,7 +38,7 @@ function getMonacoConfig(): IMonacoConfig | undefined {
       ? {
           baseUrl: globalObj.appPath,
           useMinified: globalObj.jsSuffix === '.min.js',
-          crossDomain: globalObj.location.hostname.indexOf('microsoft.com') !== -1
+          crossDomain: globalObj.location.hostname.indexOf('microsoft.com') !== -1,
         }
       : undefined)
   );
@@ -68,18 +69,24 @@ export function configureEnvironment(config?: IMonacoConfig): void {
       const path = `${baseUrlNoSlash}/${workerName}.worker${minPart}.js`;
 
       if (crossDomain) {
-        // This is needed for cases where the JS files will be on a different domain (the CDN)
-        // instead of the domain the HTML is running on. Web worker scripts can't be directly
-        // loaded from a different domain, so we use this proxy. More info:
+        // If the JS files will be on a different domain (the CDN) instead of the domain the HTML
+        // is running on, we have to load the web worker scripts using a proxy. More info:
         // https://github.com/microsoft/monaco-editor/blob/master/docs/integrate-amd-cross.md
-        // Plot twist! The approach of manually building a data URI suggested by those docs
-        // didn't work in Edge, but this blob approach seems to work everywhere.
-        // https://benohead.com/cross-domain-cross-browser-web-workers/
-        const blob = new Blob([`importScripts("${path}")`], { type: 'application/javascript' });
-        return URL.createObjectURL(blob);
+
+        // Next part varies for Chrome/Firefox/new Edge old Edge (new Edge uses Edg/ in UA)
+        const isEdge = / Edge\//.test(navigator.userAgent);
+        if (!isEdge) {
+          // This approach (suggested in the docs) works in Chrome but not old Edge
+          return 'data:text/javascript;charset=utf-8,' + encodeURIComponent(`importScripts("${path}");`);
+        } else {
+          // This works in Edge but causes workers to run on the UI thread in Chrome
+          // https://benohead.com/cross-domain-cross-browser-web-workers/
+          const blob = new Blob([`importScripts("${path}")`], { type: 'application/javascript' });
+          return URL.createObjectURL(blob);
+        }
       }
       return path;
-    }
+    },
   };
 }
 

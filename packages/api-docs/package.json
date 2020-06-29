@@ -1,33 +1,36 @@
 {
   "name": "@uifabric/api-docs",
-  "version": "7.1.1",
+  "version": "7.3.6",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",
-    "@types/node": "^8.10.29",
+    "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/merge-styles": "^7.8.1",
-    "@uifabric/react-cards": "^0.109.1",
-    "@uifabric/styling": "^7.7.3",
-    "@uifabric/tslint-rules": "^7.0.5",
-    "@uifabric/utilities": "^7.6.0",
-    "office-ui-fabric-react": "^7.62.0"
+    "@uifabric/merge-styles": "^7.15.1",
+    "@uifabric/react-cards": "^0.109.105",
+    "@uifabric/styling": "^7.13.4",
+    "@uifabric/tslint-rules": "^7.2.2",
+    "@uifabric/utilities": "^7.21.4",
+    "office-ui-fabric-react": "^7.121.5"
   },
   "dependencies": {
-    "@microsoft/tsdoc": "0.12.12",
-    "@microsoft/api-extractor-model": "7.3.2",
+    "@microsoft/api-extractor-model": "7.7.1",
+    "@microsoft/tsdoc": "0.12.14",
     "fs-extra": "^8.1.0"
   }
 }

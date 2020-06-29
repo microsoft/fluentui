@@ -17,7 +17,6 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
   tabIndex={0}
 >
   <button
-    aria-hidden={true}
     className="splitPrimary"
     data-is-focusable={false}
   >

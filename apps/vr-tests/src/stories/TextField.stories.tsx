@@ -23,7 +23,7 @@ storiesOf('TextField', module)
   ))
   .addStory('Root', () => <TextField label="Standard" />)
   .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {
-    rtl: true
+    rtl: true,
   })
   .addStory('Disabled', () => <TextField label="Disabled" disabled />)
   .addStory('Required', () => <TextField label="Required" required />)
@@ -46,8 +46,8 @@ storiesOf('TextField', module)
       />
     ),
     {
-      rtl: true
-    }
+      rtl: true,
+    },
   )
   .addStory(
     'Prefix with Value, Disabled, and Prefix Style-Override',
@@ -61,16 +61,16 @@ storiesOf('TextField', module)
       />
     ),
     {
-      rtl: true
-    }
+      rtl: true,
+    },
   )
   .addStory(
     'Prefix with Value, Disabled',
     () => <TextField label="Prefix" prefix="https://" defaultValue="example.com" disabled />,
     {
-      rtl: true
-    }
+      rtl: true,
+    },
   )
   .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" />, {
-    rtl: true
+    rtl: true,
   });

@@ -1,0 +1,503 @@
+{
+  "name": "@fluentui/react-focus",
+  "entries": [
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-focus_v7.12.12",
+      "version": "7.12.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-focus_v7.12.8",
+      "version": "7.12.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@fluentui/react-focus_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding shouldRaiseClicks prop to allow for opt-in/opt-out way to invoke clicks on focusable elements.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "06d4f3a093cf6d531c8a9b40c596e4ff324b3090",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Defaulting to false for the preventDefaultWhenHandled prop to maintain old behavior.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b9d1f305e0d7235fa0b635816bfb4bb3795ab0d8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@fluentui/react-focus_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating build tool dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "291a31d412dc4871b9f9446915e7d2a64bc46ab5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 May 2020 12:33:48 GMT",
+      "tag": "@fluentui/react-focus_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding `@fluentui/keyboard-key` as a dependency.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c6063b9e659c491e3d34b9ee12457013a23b9d35",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@fluentui/react-focus_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Converging defaultTabbableElement/defaultActiveElement and bringing shouldFocusInnerElementWhenReceivedFocus to v7.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "edc643b525f1ee1607cdcaca0f91ff4b6c4ef877",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding keyboard-key to FocusZone.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce5c014aa4c23951afe4d1ca5e45ddb711e2f0fc",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@fluentui/react-focus_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2020 12:32:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix pagingSupportDisabled handling in FocusZone",
+            "author": "jukapsia@microsoft.com",
+            "commit": "5628dcfce4afc45bd66137522fa9b0fc3f27f53e",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 May 2020 12:34:22 GMT",
+      "tag": "@fluentui/react-focus_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding pagingSupportDisabled prop to provide a way to opt out of paging support via the Page Up and Page Down keys.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "6c055de8e22610b9f96d29e0667f019d669b7df1",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding missing changes due to move from IPoint to Point.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5b4b9b5feeac6f08f14125be35d7af1ffb7039cf",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@fluentui/react-focus_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing preventFocusRestoration functionality to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "ce067e65e8fee3fb56fcea401b920237e7879ff0",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2020 00:19:21 GMT",
+      "tag": "@fluentui/react-focus_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Using v0 prop names for props where names differed and deprecating old ones.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "91115267502dc233cd9d513133d52344cef2e1f8",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Apr 2020 12:34:09 GMT",
+      "tag": "@fluentui/react-focus_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating IPoint, x and y references to Point, left and top respectively.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "beb8886ffcbccd2bbef9c4e7a8afd742497289a5",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Apr 2020 12:33:11 GMT",
+      "tag": "@fluentui/react-focus_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Adding check to see if element has editable content in Home and End keystroke scenarios.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "bac880223a3c116f74707efcedc8552c472760cd",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing shouldResetActiveElementWhenTabFromZone to v7.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "27b38b5587696508bbb09969da7de886db947d39",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2020 12:32:40 GMT",
+      "tag": "@fluentui/react-focus_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding preventDefaultWhenHandled to v7 version.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2859bacd22e5a42dd4ba9128c4f61b792234c8f9",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Updating comment for preventDefaultWhenHandled prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a7de477cfecd904300a45c78cfad3f3a456de035",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 12:37:31 GMT",
+      "tag": "@fluentui/react-focus_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cbf3c8eaa552f7c60485968f18d5cdf373844492",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "FocusZone: Bringing shouldFocusOnMount prop from v0 to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "cbf3c8eaa552f7c60485968f18d5cdf373844492",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 05:06:13 GMT",
+      "tag": "@fluentui/react-focus_v7.3.1",
+      "version": "7.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Replacing use of 'on' helper with native eventing.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8a155ad45348707cd27bd524926485933ae3c377",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@fluentui/react-focus_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Adding focusLast imperative method to v7.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "030cf5bdc02f32cdc4b0549836d0c17aa3ee3772",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Updating comment of allowFocusRoot to be more descriptive of its functionality.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1cd43457876168890e024bc5222c8e0a39becb37",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@fluentui/react-focus_v7.1.13",
+      "version": "7.1.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@fluentui/react-focus_v7.1.12",
+      "version": "7.1.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix repository URL",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b176fb14a33703416889336d7a7d3cb691bb874"
+          },
+          {
+            "comment": "react-focus: Updating README to reflect package purpose.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "7e78b42ae69784b2d0f0039700e89f61c18305b2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@fluentui/react-focus_v7.1.10",
+      "version": "7.1.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@fluentui/react-focus_v7.1.8",
+      "version": "7.1.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@fluentui/react-focus_v7.1.3",
+      "version": "7.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Mar 2020 12:25:44 GMT",
+      "tag": "@fluentui/react-focus_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: When parking focus needs to be detected, IE11 returns `null` for `activeElement`, causing focus to not be restored. We now check for `null` to ensure the feature works correctly in this environment.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c0146e0beb2f04b485bd1c3aea57058c6733c53a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@fluentui/react-focus_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating deprecated ReactType to non-deprecated ElementType.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "98f285874162b07863e6c9d59816df44312ad35e"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Move examples to examples package",
+            "author": "elcraig@microsoft.com",
+            "commit": "10d0914fdfaeef69a41db83a57f1da1ee1404040"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@fluentui/react-focus_v0.0.6",
+      "version": "0.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "React-focus: Enabling storybook in new package.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9c46caf35247dfe4063301b81248d1fc6971c013"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@fluentui/react-focus_v0.0.4",
+      "version": "0.0.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Feb 2020 23:22:22 GMT",
+      "tag": "@fluentui/react-focus_v0.0.2",
+      "version": "0.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete new prettier rules references",
+            "author": "elcraig@microsoft.com",
+            "commit": "ab2a5a693a3846e78b11355e8af1943e63c826f6"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "react-focus package being added to move out focus utilities from the main package.",
+            "author": "dzearing@microsoft.com",
+            "commit": "11cd4d92381ce732d63ec48199a430dcf7c47a3d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Feb 2020 12:20:22 GMT",
+      "tag": "@fluentui/react-focus_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete new prettier rules references",
+            "author": "elcraig@microsoft.com",
+            "commit": "ab2a5a693a3846e78b11355e8af1943e63c826f6"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -4,9 +4,9 @@ import { ITextProps } from './Text.types';
 import { TextView } from './Text.view';
 import { TextStyles as styles } from './Text.styles';
 
-export const Text: React.StatelessComponent<ITextProps> = createComponent(TextView, {
+export const Text: React.FunctionComponent<ITextProps> = createComponent(TextView, {
   displayName: 'Text',
-  styles
+  styles,
 });
 
 export default Text;

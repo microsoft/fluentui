@@ -1,10 +1,11 @@
-import { getGlobalClassNames } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 import { IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './DocumentCardPreview.types';
 
 export const DocumentCardPreviewGlobalClassNames = {
   root: 'ms-DocumentCardPreview',
   icon: 'ms-DocumentCardPreview-icon',
-  iconContainer: 'ms-DocumentCardPreview-iconContainer'
+  iconContainer: 'ms-DocumentCardPreview-iconContainer',
 };
 
 export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardPreviewStyles => {
@@ -18,12 +19,12 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
       classNames.root,
       fonts.small,
       {
-        borderBottom: `1px solid ${palette.neutralLight}`,
-        position: 'relative',
         backgroundColor: isFileList ? palette.white : palette.neutralLighterAlt,
-        overflow: `hidden`
+        borderBottom: `1px solid ${palette.neutralLight}`,
+        overflow: `hidden`,
+        position: 'relative',
       },
-      className
+      className,
     ],
     previewIcon: [
       classNames.iconContainer,
@@ -31,16 +32,16 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100%'
-      }
+        height: '100%',
+      },
     ],
     icon: [
       classNames.icon,
       {
         left: '10px',
         bottom: '10px',
-        position: 'absolute'
-      }
+        position: 'absolute',
+      },
     ],
     fileList: {
       padding: '16px 16px 0 16px',
@@ -52,30 +53,46 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
           lineHeight: '16px',
           marginBottom: '8px',
           overflow: 'hidden',
-          paddingLeft: '24px',
-          position: 'relative',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap'
         },
-        a: {
-          textDecoration: 'none',
-          color: palette.neutralDark,
-          selectors: {
-            ':hover': {
-              color: palette.themePrimary
-            }
-          }
-        }
-      }
+      },
     },
     fileListIcon: {
-      left: 0,
-      position: 'absolute',
-      top: 0
+      display: 'inline-block',
+      marginRight: '8px',
     },
+    fileListLink: [
+      getFocusStyle(theme, {
+        highContrastStyle: {
+          border: '1px solid WindowText',
+          outline: 'none',
+        },
+      }),
+      {
+        boxSizing: 'border-box',
+        color: palette.neutralDark,
+        overflow: 'hidden',
+        display: 'inline-block',
+        textDecoration: 'none',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        width: 'calc(100% - 24px)',
+        selectors: {
+          ':hover': {
+            color: palette.themePrimary,
+          },
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            selectors: {
+              [HighContrastSelector]: {
+                outline: 'none',
+              },
+            },
+          },
+        },
+      },
+    ],
     fileListOverflowText: {
       padding: '0px 16px 8px 16px',
-      display: 'block'
-    }
+      display: 'block',
+    },
   };
 };

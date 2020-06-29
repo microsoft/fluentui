@@ -31,14 +31,18 @@ export const EditableItem = <T extends any>(editableItemProps: EditableItemProps
         selectedItemProps.onItemChange && selectedItemProps.onItemChange(newItem, selectedItemProps.index);
         setIsEditing(false);
       },
-      [selectedItemProps.onItemChange]
+      [selectedItemProps.onItemChange],
     );
 
     const ItemComponent = editableItemProps.itemComponent;
     const EditingItemComponent = editableItemProps.editingItemComponent;
 
     return isEditing ? (
-      <EditingItemComponent item={selectedItemProps.item} onEditingComplete={onItemEdited} onDismiss={setEditingFalse} />
+      <EditingItemComponent
+        item={selectedItemProps.item}
+        onEditingComplete={onItemEdited}
+        onDismiss={setEditingFalse}
+      />
     ) : (
       <ItemComponent {...selectedItemProps} onTrigger={setEditingTrue} />
     );

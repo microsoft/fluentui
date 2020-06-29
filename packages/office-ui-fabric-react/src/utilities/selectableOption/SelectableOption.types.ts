@@ -5,6 +5,11 @@ export interface ISelectableOption {
   key: string | number;
 
   /**
+   * ID attribute associated with this option
+   */
+  id?: string;
+
+  /**
    * Text to render for this option
    */
   text: string;
@@ -53,5 +58,5 @@ export interface ISelectableOption {
 export enum SelectableOptionMenuItemType {
   Normal = 0,
   Divider = 1,
-  Header = 2
+  Header = 2,
 }

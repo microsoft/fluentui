@@ -33,7 +33,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -121,10 +120,14 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"
+      style={
+        Object {
+          "fontFamily": "\\"FabricMDL2Icons\\"",
+        }
+      }
     >
       
     </i>
@@ -179,6 +182,10 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         onSubmit={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
       >
         <div
           className=
@@ -254,7 +261,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                     &:focus {
                       outline: 0px;
                     }
-                id="id__94-menu"
+                id="id__132-menu"
                 onFocusCapture={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -278,7 +285,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         font-weight: 400;
                         min-width: 180px;
                       }
-                  data-focuszone-id="FocusZone98"
+                  data-focuszone-id="FocusZone136"
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDownCapture={[Function]}

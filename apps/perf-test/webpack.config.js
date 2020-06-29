@@ -1,4 +1,3 @@
-const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 
 // The issue here is making readable Flamegraphs that don't have complicated paths like:
@@ -11,6 +10,6 @@ module.exports = resources.createServeConfig({
   entry: './src/index.scenarios.tsx',
   mode: 'production',
   output: {
-    filename: 'perf-test.js'
-  }
+    filename: 'perf-test.js',
+  },
 });

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
+import { TestImages } from '@uifabric/example-data';
 import { ImageFit } from '../Image/Image.types';
 import { DocumentCardImage } from './DocumentCardImage';
-import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 describe('DocumentCard', () => {
   it('renders DocumentCardImage correctly without an image provided', () => {
@@ -12,9 +12,9 @@ describe('DocumentCard', () => {
         height={150}
         iconProps={{
           iconName: 'OneNoteLogo',
-          styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } }
+          styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
         }}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -27,9 +27,9 @@ describe('DocumentCard', () => {
         imageSrc={'someinvalidurl'}
         iconProps={{
           iconName: 'OneNoteLogo',
-          styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } }
+          styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
         }}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('DocumentCard', () => {
         imageFit={ImageFit.cover}
         iconProps={{ iconName: 'OneNoteLogo', styles: { root: { color: '#813a7c' } } }}
         imageSrc={TestImages.documentPreviewTwo}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

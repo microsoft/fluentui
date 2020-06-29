@@ -75,13 +75,16 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   /**
    * Callback issued when either:
    * 1) the selected option changes
-   * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
-   *    (and hence only value would be true, the other parameter would be null in this case)
+   * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform
+   *    is also true (and hence only value would be true, the other parameter would be null in this case)
    */
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
-   * Callback issued when the user changes the pending value in ComboBox
+   * Callback issued when the user changes the pending value in ComboBox.
+   * This will be called any time the component is updated and there is a current
+   * pending value. Option, index, and value will all be undefined if no change
+   * has taken place and the previously entered pending value is still valid.
    */
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 
@@ -117,8 +120,9 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   allowFreeform?: boolean;
 
   /**
-   * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
-   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style.
+   * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from
+   * the list of options. If the combo box is expanded, this will also scroll to the suggested option, and give it a
+   * selected style.
    *
    * @defaultvalue "on"
    */
@@ -161,7 +165,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     focused: boolean,
     allowFreeForm: boolean,
     hasErrorMessage: boolean,
-    className?: string
+    className?: string,
   ) => IComboBoxClassNames;
 
   /**
@@ -208,9 +212,9 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   dropdownMaxWidth?: number;
 
   /**
-   * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element.
-   * This element is hidden by default because all functionality is handled by the input element and the arrow button is
-   * only meant to be decorative.
+   * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle
+   * the element. This element is hidden by default because all functionality is handled by the input element and
+   * the arrow button is only meant to be decorative.
    * @defaultvalue true
    */
   isButtonAriaHidden?: boolean;
@@ -246,6 +250,26 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
    * Optional iconButton props on combo box
    */
   iconButtonProps?: IButtonProps;
+
+  /**
+   * Custom render function for the label text.
+   */
+  onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
+}
+
+/**
+ * {@docCategory ComboBox}
+ */
+export interface IOnRenderComboBoxLabelProps {
+  /**
+   * Props to render the combobox.
+   */
+  props: IComboBoxProps;
+
+  /**
+   * Accessible text for label when combobox is multiselected.
+   */
+  multiselectAccessibleText?: string;
 }
 
 /**
@@ -347,6 +371,11 @@ export interface IComboBoxStyles {
    * Styles for a divider in the options.
    */
   divider: IStyle;
+
+  /**
+   * Styles for hidden screen reader text.
+   */
+  screenReaderText: IStyle;
 }
 
 /**

@@ -2,11 +2,25 @@
 
 exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] = `
 <div
-  style={
-    Object {
-      "width": "400px",
-    }
-  }
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: 400px;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
     className=
@@ -87,18 +101,29 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
       className=
 
           {
-            border-radius: 2px;
-            border: 1px solid #8a8886;
             box-sizing: border-box;
             display: flex;
             height: 32px;
             min-width: 86px;
             position: relative;
           }
-          &:hover {
+          &:after {
+            border-color: #605e5c;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+          &:hover:after {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
           }
     >
@@ -112,6 +137,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
         className=
             ms-spinButton-input
             {
+              background-color: #ffffff;
               border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
@@ -130,7 +156,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 8px;
+              padding-left: 9px;
               padding-right: 8px;
               padding-top: 0;
               text-overflow: ellipsis;
@@ -147,6 +173,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               color: HighlightText;
             }
         data-lpignore={true}
+        disabled={false}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -154,7 +181,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={false}
         role="spinbutton"
         type="text"
         value="0"
@@ -197,7 +223,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 23px;
               }
               &::-moz-focus-inner {
@@ -298,10 +323,14 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -336,7 +365,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 23px;
               }
               &::-moz-focus-inner {
@@ -437,10 +465,14 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>
@@ -506,18 +538,29 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
       className=
 
           {
-            border-radius: 2px;
-            border: 1px solid #8a8886;
             box-sizing: border-box;
             display: flex;
             height: 32px;
             min-width: 86px;
             position: relative;
           }
-          &:hover {
+          &:after {
+            border-color: #605e5c;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+          &:hover:after {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active){&:hover:after {
             border-color: Highlight;
           }
     >
@@ -531,6 +574,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
         className=
             ms-spinButton-input
             {
+              background-color: #ffffff;
               border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
@@ -549,7 +593,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 8px;
+              padding-left: 9px;
               padding-right: 8px;
               padding-top: 0;
               text-overflow: ellipsis;
@@ -566,6 +610,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
               color: HighlightText;
             }
         data-lpignore={true}
+        disabled={false}
         id="input9"
         onBlur={[Function]}
         onChange={[Function]}
@@ -573,7 +618,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={false}
         role="spinbutton"
         type="text"
         value="0"
@@ -616,7 +660,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 23px;
               }
               &::-moz-focus-inner {
@@ -717,10 +760,14 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                }
+              }
             >
               
             </i>
@@ -755,7 +802,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 23px;
               }
               &::-moz-focus-inner {
@@ -856,10 +902,14 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"
+              style={
+                Object {
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
+                }
+              }
             >
               
             </i>

@@ -4,7 +4,7 @@ import { ICalloutProps, ICalloutContentStyles, ICalloutContentStyleProps } from 
 import { CalloutContentBase } from './CalloutContent.base';
 import { getStyles } from './CalloutContent.styles';
 
-export const CalloutContent: React.StatelessComponent<ICalloutProps> = styled<
+export const CalloutContent: React.FunctionComponent<ICalloutProps> = styled<
   ICalloutProps,
   ICalloutContentStyleProps,
   ICalloutContentStyles

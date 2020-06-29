@@ -6,10 +6,10 @@ import { getStyles } from './DetailsList.styles';
 
 export { IDetailsListProps };
 
-export const DetailsList: React.StatelessComponent<IDetailsListProps> = styled<
+export const DetailsList: React.FunctionComponent<IDetailsListProps> = styled<
   IDetailsListProps,
   IDetailsListStyleProps,
   IDetailsListStyles
 >(DetailsListBase, getStyles, undefined, {
-  scope: 'DetailsList'
+  scope: 'DetailsList',
 });

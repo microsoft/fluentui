@@ -1,15 +1,21 @@
 import * as React from 'react';
 import { KeyCodes, createArray, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
 import { useConst } from '@uifabric/react-hooks';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsRow,
+  IDetailsRowStyles,
+  IColumn,
+  Selection,
+  SelectionMode,
+} from 'office-ui-fabric-react/lib/DetailsList';
 
 const ITEMS = createArray(10, index => ({
   key: index.toString(),
   name: 'Item-' + index,
-  url: 'http://placehold.it/100x' + (200 + index!)
+  url: 'http://placehold.it/100x' + (100 + index!),
 }));
 
 const COLUMNS: IColumn[] = [
@@ -17,23 +23,32 @@ const COLUMNS: IColumn[] = [
     key: 'name',
     name: 'Name',
     fieldName: 'name',
-    minWidth: 100
+    minWidth: 100,
   },
   {
     key: 'link',
     name: 'Link',
-    fieldName: 'url',
+    fieldName: '',
     minWidth: 100,
-    onRender: item => <Link href={item.url}>{item.url}</Link>
+    onRender: item => <Link href={item.url}>{item.url}</Link>,
   },
   {
-    key: 'defaultButton',
+    key: 'textfield',
     name: 'Link',
-    fieldName: 'url',
-    minWidth: 100,
-    onRender: item => <DefaultButton>{item.url}</DefaultButton>
-  }
+    fieldName: '',
+    minWidth: 130,
+    onRender: item => <TextField readOnly defaultValue={'ReadOnly ' + item.name} />,
+  },
+  {
+    key: 'textfield2',
+    name: 'Link2',
+    fieldName: '',
+    minWidth: 130,
+    onRender: item => <TextField defaultValue={item.name} />,
+  },
 ];
+
+const detailsRowStyles: Partial<IDetailsRowStyles> = { root: { display: 'block', width: '100%' } };
 
 export const FocusZoneListExample: React.FunctionComponent = () => {
   //  Initialize the selection when the component is first rendered (same instance will be reused)
@@ -44,7 +59,12 @@ export const FocusZoneListExample: React.FunctionComponent = () => {
   });
 
   return (
-    <FocusZone direction={FocusZoneDirection.vertical} isCircularNavigation={true} isInnerZoneKeystroke={_isInnerZoneKeystroke} role="grid">
+    <FocusZone
+      direction={FocusZoneDirection.vertical}
+      isCircularNavigation={true}
+      shouldEnterInnerZone={_shouldEnterInnerZone}
+      role="grid"
+    >
       {ITEMS.map((item, index) => (
         <DetailsRow
           key={item.name}
@@ -53,13 +73,13 @@ export const FocusZoneListExample: React.FunctionComponent = () => {
           columns={COLUMNS}
           selectionMode={SelectionMode.none}
           selection={selection}
-          styles={{ root: { display: 'block', width: '100%' } }}
+          styles={detailsRowStyles}
         />
       ))}
     </FocusZone>
   );
 };
 
-function _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+function _shouldEnterInnerZone(ev: React.KeyboardEvent<HTMLElement>): boolean {
   return ev.which === getRTLSafeKeyCode(KeyCodes.right);
 }

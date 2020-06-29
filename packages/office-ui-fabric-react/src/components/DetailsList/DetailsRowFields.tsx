@@ -34,7 +34,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
     onRenderItemColumn,
     getCellValueKey,
     cellsByColumn,
-    enableUpdateAnimations
+    enableUpdateAnimations,
   } = props;
 
   const cellValueKeysRef = React.useRef<{
@@ -74,12 +74,14 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
 
         cellValueKeys[column.key] = cellValueKey;
 
-        // generate a key that auto-dirties when content changes, to force the container to re-render, to trigger animation
+        // generate a key that auto-dirties when content changes, to force the container to re-render,
+        // to trigger animation
         const key = `${column.key}${cellValueKey !== undefined ? `-${cellValueKey}` : ''}`;
         return (
           <div
             key={key}
             role={column.isRowHeader ? 'rowheader' : 'gridcell'}
+            aria-readonly
             aria-colindex={columnIndex + columnStartIndex + 1}
             className={css(
               column.className,
@@ -87,7 +89,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
               column.isRowHeader && rowClassNames.isRowHeader,
               rowClassNames.cell,
               column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
-              showAnimation && rowClassNames.cellAnimation
+              showAnimation && rowClassNames.cellAnimation,
             )}
             style={{ width }}
             data-automationid="DetailsRowCell"

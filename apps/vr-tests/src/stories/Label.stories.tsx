@@ -15,7 +15,7 @@ storiesOf('Label', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => <Label>I'm a label</Label>, { rtl: true })
   .addStory('Disabled', () => <Label disabled>I'm a disabled label</Label>)

@@ -36,10 +36,10 @@ export class PaginationButtonsCustomizationExample extends React.Component<{}, I
             selectors: {
               ':hover': { backgroundColor: '#c8c8c8', borderRadius: '16px' },
               '&[aria-selected=true]': {
-                fontWeight: 'bold'
-              }
-            }
-          }
+                fontWeight: 'bold',
+              },
+            },
+          },
         }}
       />
     );
@@ -47,7 +47,7 @@ export class PaginationButtonsCustomizationExample extends React.Component<{}, I
 
   private onPageChange = (index: number): void => {
     this.setState({
-      selectedPageIndex: index
+      selectedPageIndex: index,
     });
   };
 }

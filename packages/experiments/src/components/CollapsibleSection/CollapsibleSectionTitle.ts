@@ -9,7 +9,7 @@ export const CollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSectio
     displayName: 'CollapsibleSectionTitle',
     styles,
     factoryOptions: {
-      defaultProp: 'text'
-    }
-  }
+      defaultProp: 'text',
+    },
+  },
 );

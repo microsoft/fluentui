@@ -1,6 +1,8 @@
 import { IChartProps } from './index';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 
 export interface IMultiStackedBarChartProps {
   /**
@@ -42,6 +44,13 @@ export interface IMultiStackedBarChartProps {
   hideLegend?: boolean;
 
   /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
@@ -55,6 +64,21 @@ export interface IMultiStackedBarChartProps {
    * If this value is set to true the denominator will not be shown for the ratio above the chart
    */
   hideDenominator?: boolean[];
+
+  /**
+   * overflow props for legend
+   */
+  legendsOverflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
+   * focus zone props in hover card for legends
+   */
+  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
 }
 
 export interface IMultiStackedBarChartStyleProps {
@@ -119,21 +143,6 @@ export interface IMultiStackedBarChartStyles {
    * Styling for chart title of the stacked bar chart
    */
   chartTitle: IStyle;
-
-  /**
-   * Style for the legend card title displayed in the hover card
-   */
-  hoverCardTextStyles: IStyle;
-
-  /**
-   * Style for the data displayed in the hover card
-   */
-  hoverCardDataStyles: IStyle;
-
-  /**
-   * Style for the root of the hover card
-   */
-  hoverCardRoot: IStyle;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

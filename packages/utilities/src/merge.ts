@@ -23,12 +23,16 @@ function _merge<T extends Object>(target: T, source: T, circularReferences: any[
 
   for (let name in source) {
     if (source.hasOwnProperty(name)) {
-      const value: T[Extract<keyof T, string>] = source[name];
-      if (typeof value === 'object') {
-        const isCircularReference = circularReferences.indexOf(value) > -1;
-        target[name] = (isCircularReference ? value : _merge(target[name] || {}, value, circularReferences)) as T[Extract<keyof T, string>];
-      } else {
-        target[name] = value;
+      if (name !== '__proto__' && name !== 'constructor' && name !== 'prototype') {
+        const value: T[Extract<keyof T, string>] = source[name];
+        if (typeof value === 'object' && value !== null) {
+          const isCircularReference = circularReferences.indexOf(value) > -1;
+          target[name] = (isCircularReference
+            ? value
+            : _merge(target[name] || {}, value, circularReferences)) as T[Extract<keyof T, string>];
+        } else {
+          target[name] = value;
+        }
       }
     }
   }

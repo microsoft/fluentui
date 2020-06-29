@@ -1,12 +1,18 @@
 import * as React from 'react';
-import { classNamesFunction, IClassNames, getRTL } from '../../Utilities';
+import { IProcessedStyleSet, ITheme } from '../../Styling';
+import { classNamesFunction, getRTL, composeRenderFunction } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderProps } from './GroupHeader.types';
+import {
+  IGroupHeaderStyleProps,
+  IGroupHeaderStyles,
+  IGroupHeaderProps,
+  IGroupHeaderCheckboxProps,
+} from './GroupHeader.types';
 
 const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 
@@ -17,17 +23,17 @@ export interface IGroupHeaderState {
 
 export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
   public static defaultProps: IGroupHeaderProps = {
-    expandButtonProps: { 'aria-label': 'expand collapse group' }
+    expandButtonProps: { 'aria-label': 'expand collapse group' },
   };
 
-  private _classNames: IClassNames<IGroupHeaderStyles>;
+  private _classNames: IProcessedStyleSet<IGroupHeaderStyles>;
 
   constructor(props: IGroupHeaderProps) {
     super(props);
 
     this.state = {
       isCollapsed: (this.props.group && this.props.group.isCollapsed) as boolean,
-      isLoadingVisible: false
+      isLoadingVisible: false,
     };
   }
 
@@ -40,7 +46,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
       this.setState({
         isCollapsed: newCollapsed || false,
-        isLoadingVisible: newLoadingVisible || false
+        isLoadingVisible: newLoadingVisible || false,
       });
     }
   }
@@ -52,34 +58,46 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       viewport,
       selectionMode,
       loadingText,
+      // tslint:disable-next-line:deprecation
       isSelected = false,
       selected = false,
       indentWidth,
       onRenderTitle = this._onRenderTitle,
+      onRenderGroupHeaderCheckbox,
       isCollapsedGroupSelectVisible = true,
       expandButtonProps,
+      expandButtonIcon,
       selectAllButtonProps,
       theme,
       styles,
       className,
       groupedListId,
-      compact
+      compact,
+      ariaPosInSet,
+      ariaSetSize,
+      useFastIcons,
     } = this.props;
+
+    const defaultCheckboxRender = useFastIcons ? this._fastDefaultCheckboxRender : this._defaultCheckboxRender;
+
+    const onRenderCheckbox = onRenderGroupHeaderCheckbox
+      ? composeRenderFunction(onRenderGroupHeaderCheckbox, defaultCheckboxRender)
+      : defaultCheckboxRender;
 
     const { isCollapsed, isLoadingVisible } = this.state;
 
     const canSelectGroup = selectionMode === SelectionMode.multiple;
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
-    const currentlySelected = isSelected || selected;
+    const currentlySelected = selected || isSelected;
 
-    const isRTL = getRTL();
+    const isRTL = getRTL(theme);
 
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
       selected: currentlySelected,
       isCollapsed,
-      compact
+      compact,
     });
 
     if (!group) {
@@ -90,7 +108,11 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         className={this._classNames.root}
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
+        aria-expanded={!group.isCollapsed}
         aria-label={group.ariaLabel || group.name}
+        aria-level={groupLevel !== undefined ? groupLevel + 1 : undefined}
+        aria-setsize={ariaSetSize}
+        aria-posinset={ariaPosInSet}
         data-is-focusable={true}
       >
         <FocusZone className={this._classNames.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
@@ -104,7 +126,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
               onClick={this._onToggleSelectGroupClick}
               {...selectAllButtonProps}
             >
-              <Check checked={currentlySelected} />
+              {onRenderCheckbox({ checked: currentlySelected, theme }, onRenderCheckbox)}
             </button>
           ) : (
             selectionMode !== SelectionMode.none && <GroupSpacer indentWidth={indentWidth} count={1} />
@@ -119,11 +141,14 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             type="button"
             className={this._classNames.expand}
             onClick={this._onToggleCollapse}
-            aria-expanded={group ? !group.isCollapsed : undefined}
+            aria-expanded={!group.isCollapsed}
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
             {...expandButtonProps}
           >
-            <Icon className={this._classNames.expandIsCollapsed} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
+            <Icon
+              className={this._classNames.expandIsCollapsed}
+              iconName={expandButtonIcon || (isRTL ? 'ChevronLeftMed' : 'ChevronRightMed')}
+            />
           </button>
 
           {onRenderTitle(this.props, this._onRenderTitle)}
@@ -143,7 +168,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
     this.setState({
       isCollapsed: newCollapsed,
-      isLoadingVisible: newLoadingVisible as boolean
+      isLoadingVisible: newLoadingVisible as boolean,
     });
     if (onToggleCollapse) {
       onToggleCollapse(group!);
@@ -174,6 +199,14 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     }
   };
 
+  private _defaultCheckboxRender(checkboxProps: IGroupHeaderCheckboxProps) {
+    return <Check checked={checkboxProps.checked} />;
+  }
+
+  private _fastDefaultCheckboxRender(checkboxProps: IGroupHeaderCheckboxProps) {
+    return <FastCheck theme={checkboxProps.theme} checked={checkboxProps.checked} />;
+  }
+
   private _onRenderTitle = (props: IGroupHeaderProps): JSX.Element | null => {
     const { group } = props;
 
@@ -198,3 +231,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     );
   };
 }
+
+const FastCheck = React.memo((props: { theme?: ITheme; checked?: boolean; className?: string }) => {
+  return <Check theme={props.theme} checked={props.checked} className={props.className} useFastIcons />;
+});

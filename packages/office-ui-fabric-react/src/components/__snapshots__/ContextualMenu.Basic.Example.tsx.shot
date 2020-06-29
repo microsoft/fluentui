@@ -2,7 +2,7 @@
 
 exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1`] = `
 <div>
-  This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining examples use ContextualMenu through Fabric Button components.
+  This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining examples use ContextualMenu through Fluent UI Button components.
   <p>
     <b>
       <a
@@ -63,6 +63,10 @@ exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       onSubmit={[Function]}
+      onTouchCancel={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
     >
       <div
         className=
@@ -160,7 +164,7 @@ exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1
                       font-weight: 400;
                       min-width: 180px;
                     }
-                data-focuszone-id="FocusZone1"
+                data-focuszone-id="FocusZone2"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseDownCapture={[Function]}

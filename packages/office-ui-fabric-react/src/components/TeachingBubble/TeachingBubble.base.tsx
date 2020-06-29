@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import {
   ITeachingBubbleProps,
   ITeachingBubbleStyleProps,
   ITeachingBubbleStyles,
-  ITeachingBubbleSubComponentStyles
+  ITeachingBubbleSubComponentStyles,
 } from './TeachingBubble.types';
 import { Callout, ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -16,7 +16,7 @@ export interface ITeachingBubbleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
   public static defaultProps = {
     /**
      * Default calloutProps is deprecated in favor of private `_defaultCalloutProps`.
@@ -28,8 +28,8 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
       gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false,
-      directionalHint: DirectionalHint.rightCenter
-    }
+      directionalHint: DirectionalHint.rightCenter,
+    },
   };
 
   public rootElement = React.createRef<HTMLDivElement>();
@@ -39,6 +39,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
+    initializeComponentRef(this);
     this.state = {};
 
     this._defaultCalloutProps = {
@@ -46,7 +47,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
       gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false,
-      directionalHint: DirectionalHint.rightCenter
+      directionalHint: DirectionalHint.rightCenter,
     };
   }
 
@@ -57,12 +58,25 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
   }
 
   public render(): JSX.Element {
-    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide, styles, theme, target } = this.props;
+    const {
+      calloutProps: setCalloutProps,
+      // tslint:disable-next-line:deprecation
+      targetElement,
+      onDismiss,
+      // Default to deprecated value if provided.
+      // tslint:disable-next-line:deprecation
+      hasCloseButton = this.props.hasCloseIcon,
+      isWide,
+      styles,
+      theme,
+      target,
+    } = this.props;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
     const stylesProps: ITeachingBubbleStyleProps = {
       theme: theme!,
       isWide,
-      calloutClassName: calloutProps ? calloutProps.className : undefined
+      calloutProps: { ...calloutProps, theme: calloutProps.theme! },
+      hasCloseButton,
     };
 
     const classNames = getClassNames(styles, stylesProps);

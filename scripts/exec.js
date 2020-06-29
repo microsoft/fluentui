@@ -23,7 +23,7 @@ function exec(cmd, displayName, cwd = process.cwd(), opts = {}) {
   const execOptions = {
     cwd,
     env: env,
-    encoding: 'utf8'
+    encoding: 'utf8',
   };
 
   return new Promise((resolve, reject) => {
@@ -32,12 +32,12 @@ function exec(cmd, displayName, cwd = process.cwd(), opts = {}) {
         ? reject({
             error,
             stdout: stdout,
-            stderr: stderr
+            stderr: stderr,
           })
         : resolve({
             stdout: stdout,
-            stderr: stderr
-          })
+            stderr: stderr,
+          }),
     );
 
     if (opts.stdout) {

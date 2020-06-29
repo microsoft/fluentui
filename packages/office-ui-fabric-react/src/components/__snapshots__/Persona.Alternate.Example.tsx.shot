@@ -64,6 +64,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -75,6 +76,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-align: center;
               width: 24px;
             }
+        role="presentation"
       >
         <div
           className=
@@ -105,7 +107,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           }
         >
           <img
-            alt=""
+            alt="Annie Ried, status is unknown"
             className=
                 ms-Image-image
                 ms-Image-image--cover
@@ -125,7 +127,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 }
             onError={[Function]}
             onLoad={[Function]}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
       </div>
@@ -275,7 +277,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
   <div
     className=
         ms-Persona
-        ms-Persona--size28
+        ms-Persona--size32
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -292,7 +294,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 28px;
+          min-width: 32px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -306,7 +308,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size28
+          ms-Persona--size32
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -314,17 +316,19 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 28px;
+              height: 32px;
               position: relative;
               text-align: center;
-              width: 28px;
+              width: 32px;
             }
+        role="presentation"
       >
         <div
           className=
@@ -338,24 +342,24 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 28px;
+                height: 32px;
                 left: 0px;
                 margin-right: 10px;
                 overflow: hidden;
                 perspective: 1px;
                 position: absolute;
                 top: 0px;
-                width: 28px;
+                width: 32px;
               }
           style={
             Object {
-              "height": 28,
-              "width": 28,
+              "height": 32,
+              "width": 32,
             }
           }
         >
           <img
-            alt=""
+            alt="Annie Ried, status is unknown"
             className=
                 ms-Image-image
                 ms-Image-image--cover
@@ -375,7 +379,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 }
             onError={[Function]}
             onLoad={[Function]}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
       </div>
@@ -565,6 +569,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -576,6 +581,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-align: center;
               width: 32px;
             }
+        role="presentation"
       >
         <div
           className=
@@ -606,7 +612,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           }
         >
           <img
-            alt=""
+            alt="Annie Ried, status is available at 4 PM"
             className=
                 ms-Image-image
                 ms-Image-image--cover
@@ -626,7 +632,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 }
             onError={[Function]}
             onLoad={[Function]}
-            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+            src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
         <div
@@ -651,6 +657,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 background-color: Highlight;
                 border-color: Window;
               }
+          role="presentation"
         />
       </div>
     </div>

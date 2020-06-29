@@ -40,8 +40,8 @@ In your jest.config.js (or appropriate config location) include a `snapshotSeria
 
 ```js
 module.exports = {
-  snapshotSerializers: [path.resolve(__dirname, 'jest-serializer-merge-styles')]
+  snapshotSerializers: [path.resolve(__dirname, 'jest-serializer-merge-styles')],
 };
 ```
 
-See [Testing](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Testing) for more detailed usage.
+See [Testing](https://github.com/microsoft/fluentui/wiki/Testing) for more detailed usage.

@@ -39,9 +39,9 @@ export interface ITransformExampleParams {
 }
 
 const win = getWindow() as
-  | Window & {
+  | (Window & {
       transformLogging?: boolean;
-    }
+    })
   | undefined;
 
 /**
@@ -79,7 +79,9 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     }
     const globalName = supportedPackagesToGlobals[imprt.packageName];
     identifiersByGlobal[globalName] = identifiersByGlobal[globalName] || [];
-    identifiersByGlobal[globalName].push(...imprt.identifiers.map(item => (item.as ? `${item.name}: ${item.as}` : item.name)));
+    identifiersByGlobal[globalName].push(
+      ...imprt.identifiers.map(item => (item.as ? `${item.name}: ${item.as}` : item.name)),
+    );
   }
 
   let lines = [code];

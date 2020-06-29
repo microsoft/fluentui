@@ -135,6 +135,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={30}
               aria-valuemin={1}
               aria-valuenow={5}
+              aria-valuetext="5"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -387,8 +388,14 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -428,7 +435,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -461,6 +467,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
               >
                 <i
@@ -497,6 +509,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       line-height: 20px;
                       margin-left: 4px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 Shadow around items
               </span>
@@ -529,8 +547,14 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -570,7 +594,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -603,6 +626,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
               >
                 <i
@@ -638,6 +667,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       font-size: 14px;
                       line-height: 20px;
                       margin-left: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
               >
                 Prevent item overflow
@@ -731,8 +766,14 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -772,7 +813,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -805,6 +845,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
               >
                 <i
@@ -841,6 +887,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       line-height: 20px;
                       margin-left: 4px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 Wrap items
               </span>
@@ -873,8 +925,14 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 &:hover .ms-Checkbox-text {
                   color: #201f1e;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+                  color: WindowText;
+                }
                 &:focus .ms-Checkbox-text {
                   color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+                  color: WindowText;
                 }
           >
             <input
@@ -914,7 +972,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 400;
                     position: relative;
-                    text-align: left;
                     user-select: none;
                   }
                   &::before {
@@ -947,6 +1004,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
               >
                 <i
@@ -982,6 +1045,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       font-size: 14px;
                       line-height: 20px;
                       margin-left: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      color: WindowText;
+                    }
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      forced-color-adjust: none;
                     }
               >
                 Shrink items
@@ -1060,6 +1129,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 aria-valuemax={100}
                 aria-valuemin={1}
                 aria-valuenow={100}
+                aria-valuetext="100"
                 className=
                     ms-Slider-slideBox
                     ms-Slider-showValue
@@ -1380,6 +1450,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -1640,6 +1711,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -1937,6 +2009,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -2197,6 +2270,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -2494,6 +2568,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -2754,6 +2829,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
+              aria-valuetext="0"
               className=
                   ms-Slider-slideBox
                   ms-Slider-showValue
@@ -2997,9 +3073,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           }
     >
       <div
-        className=
-            ms-Dropdown-container
-
+        className="ms-Dropdown-container"
       >
         <label
           className=
@@ -3066,19 +3140,26 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
-                border-width: 2px;
                 color: #201f1e;
-                left: -1px;
-                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                background-color: Highlight;
-                border-color: Highlight;
-                color: HighlightText;
+                color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                -ms-high-contrast-adjust: none;
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
@@ -3094,10 +3175,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {
                 color: #323130;
@@ -3140,7 +3218,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -3219,9 +3297,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           }
     >
       <div
-        className=
-            ms-Dropdown-container
-
+        className="ms-Dropdown-container"
       >
         <label
           className=
@@ -3288,19 +3364,26 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
-                border-width: 2px;
                 color: #201f1e;
-                left: -1px;
-                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                background-color: Highlight;
-                border-color: Highlight;
-                color: HighlightText;
+                color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                -ms-high-contrast-adjust: none;
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
@@ -3316,10 +3399,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {
                 color: #323130;
@@ -3362,7 +3442,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -3467,8 +3547,14 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              color: WindowText;
+            }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              color: WindowText;
             }
       >
         <input
@@ -3508,7 +3594,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 font-size: 14px;
                 font-weight: 400;
                 position: relative;
-                text-align: left;
                 user-select: none;
               }
               &::before {
@@ -3541,6 +3626,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   transition-property: background, border, border-color;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <i
@@ -3576,6 +3667,12 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   font-size: 14px;
                   line-height: 20px;
                   margin-left: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             Hide empty children
@@ -3620,9 +3717,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <label
             className=
@@ -3660,7 +3755,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   align-items: stretch;
                   background: #ffffff;
                   border-radius: 2px;
-                  border: 1px solid #8a8886;
+                  border: 1px solid #605e5c;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: text;

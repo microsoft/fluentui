@@ -115,6 +115,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             aria-valuemax={420}
             aria-valuemin={1}
             aria-valuenow={420}
+            aria-valuetext="420"
             className=
                 ms-Slider-slideBox
                 ms-Slider-showValue
@@ -391,6 +392,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             aria-valuemax={100}
             aria-valuemin={1}
             aria-valuenow={100}
+            aria-valuetext="100"
             className=
                 ms-Slider-slideBox
                 ms-Slider-showValue
@@ -633,9 +635,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           }
     >
       <div
-        className=
-            ms-Dropdown-container
-
+        className="ms-Dropdown-container"
       >
         <label
           className=
@@ -702,19 +702,26 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
-                border-width: 2px;
                 color: #201f1e;
-                left: -1px;
-                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                background-color: Highlight;
-                border-color: Highlight;
-                color: HighlightText;
+                color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                -ms-high-contrast-adjust: none;
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
@@ -730,10 +737,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {
                 color: #323130;
@@ -776,7 +780,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -856,9 +860,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           }
     >
       <div
-        className=
-            ms-Dropdown-container
-
+        className="ms-Dropdown-container"
       >
         <label
           className=
@@ -925,19 +927,26 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
-                border-width: 2px;
                 color: #201f1e;
-                left: -1px;
-                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                background-color: Highlight;
-                border-color: Highlight;
-                color: HighlightText;
+                color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                -ms-high-contrast-adjust: none;
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
@@ -953,10 +962,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {
                 color: #323130;
@@ -999,7 +1005,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -1079,9 +1085,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           }
     >
       <div
-        className=
-            ms-Dropdown-container
-
+        className="ms-Dropdown-container"
       >
         <label
           className=
@@ -1148,19 +1152,26 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
-                border-color: #0078d4;
-                border-width: 2px;
                 color: #201f1e;
-                left: -1px;
-                top: -1px;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-                background-color: Highlight;
-                border-color: Highlight;
-                color: HighlightText;
+                color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-                -ms-high-contrast-adjust: none;
+              &:focus:after {
+                border-radius: 2px;
+                border: 2px solid #0078d4;
+                box-sizing: border-box;
+                content: '';
+                height: 100%;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus:after {
+                border-color: Highlight;
+                color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
@@ -1176,10 +1187,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-                color: HighlightText;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-                -ms-high-contrast-adjust: none;
+                color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {
                 color: #323130;
@@ -1222,7 +1230,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #8a8886;
+                  border-color: #605e5c;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;

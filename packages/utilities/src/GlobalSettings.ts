@@ -71,7 +71,7 @@ export class GlobalSettings {
       let changeDescription = {
         oldValue,
         value,
-        key
+        key,
       };
 
       for (let id in callbacks) {
@@ -109,7 +109,7 @@ function _getGlobalSettings(): { [key: string]: any } {
 
   if (!globalObj[GLOBAL_SETTINGS_PROP_NAME]) {
     globalObj[GLOBAL_SETTINGS_PROP_NAME] = {
-      [CALLBACK_STATE_PROP_NAME]: {}
+      [CALLBACK_STATE_PROP_NAME]: {},
     };
   }
 

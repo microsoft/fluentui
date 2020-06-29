@@ -1,11 +1,10 @@
 import { find, KeyCodes } from '../../Utilities';
 
-export enum KeytipTransitionModifier {
-  shift = KeyCodes.shift,
-  ctrl = KeyCodes.ctrl,
-  alt = KeyCodes.alt,
-  meta = KeyCodes.leftWindow
-}
+export type KeytipTransitionModifier =
+  | typeof KeyCodes.shift
+  | typeof KeyCodes.ctrl
+  | typeof KeyCodes.alt
+  | typeof KeyCodes.leftWindow;
 
 export interface IKeytipTransitionKey {
   key: string;

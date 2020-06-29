@@ -3,7 +3,12 @@ import { ActionButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ApiReferencesTable, gapTokens } from './ApiReferencesTable';
-import { IApiReferencesTableProps, IApiInterfaceProperty, IMethod, IApiReferencesTableSetProps } from './ApiReferencesTableSet.types';
+import {
+  IApiReferencesTableProps,
+  IApiInterfaceProperty,
+  IMethod,
+  IApiReferencesTableSetProps,
+} from './ApiReferencesTableSet.types';
 import { ITableRowJson, IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 import { jumpToAnchor } from '../../utilities/index2';
@@ -16,12 +21,12 @@ export interface IApiReferencesTableSetState {
 const TITLE_LINE_HEIGHT = 31.5;
 const seeMoreButtonStyles: Partial<IButtonStyles> = {
   root: { paddingLeft: '0px' },
-  textContainer: { paddingLeft: '4px' }
+  textContainer: { paddingLeft: '4px' },
 };
 
 export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSetProps, IApiReferencesTableSetState> {
   public static defaultProps: Partial<IApiReferencesTableSetProps> = {
-    jumpToAnchors: true
+    jumpToAnchors: true,
   };
 
   private _tableProps: IApiReferencesTableProps[];
@@ -49,7 +54,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     const anchor = extractAnchorLink(window.location.hash);
 
-    if (anchor && !this.state.showSeeMore) {
+    if (anchor && !this._allVisible) {
       const section = this._tableProps.filter(x => x.name === anchor)[0];
       if (section) {
         this.setState({ showSeeMore: true });
@@ -67,6 +72,10 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     }
   }
 
+  private get _allVisible(): boolean {
+    return this.props.showAll || this.state.showSeeMore;
+  }
+
   private _renderFirst(): JSX.Element | undefined {
     if (this._tableProps.length >= 1) {
       const item = this._tableProps[0];
@@ -79,18 +88,20 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     if (this._tableProps.length > 1) {
       return (
         <Stack tokens={gapTokens.medium}>
-          <ActionButton
-            iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
-            onClick={this._onClickSeeMore}
-            onRenderText={this._onRenderText}
-            styles={seeMoreButtonStyles}
-          >
-            See more
-          </ActionButton>
-          {this.state.showSeeMore && (
+          {!this.props.showAll && (
+            <ActionButton
+              iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
+              onClick={this._onClickSeeMore}
+              onRenderText={this._onRenderText}
+              styles={seeMoreButtonStyles}
+            >
+              See more
+            </ActionButton>
+          )}
+          {this._allVisible && (
             <Stack tokens={gapTokens.large}>
               {this._tableProps.map((item: IApiReferencesTableProps, index: number) =>
-                index !== 0 ? <ApiReferencesTable key={item.name} {...item} /> : undefined
+                index !== 0 ? <ApiReferencesTable key={item.name} {...item} /> : undefined,
               )}
             </Stack>
           )}
@@ -101,13 +112,11 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _onHashChange = (): void => {
-    const { showSeeMore } = this.state;
-
     const anchor = extractAnchorLink(window.location.hash);
     if (anchor) {
       this.props.jumpToAnchors && jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
 
-      if (!showSeeMore) {
+      if (!this._allVisible) {
         const section = this._tableProps.filter(x => x.name === anchor)[0];
         if (section) {
           this.setState({ showSeeMore: true });
@@ -122,7 +131,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
   private _onClickSeeMore = (): void => {
     this.setState({
-      showSeeMore: !this.state.showSeeMore
+      showSeeMore: !this.state.showSeeMore,
     });
   };
 }
@@ -138,14 +147,15 @@ function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTab
   const results: IApiReferencesTableProps[] = [];
 
   for (const table of jsonDocs.tables) {
-    const { kind, name } = table;
+    const { kind, members, name, ...rest } = table;
 
     const tableProps: IApiReferencesTableProps = {
-      ...table,
+      ...rest,
+      name,
       title: kind !== 'typeAlias' ? name + ' ' + kind : name,
       renderAs: kind,
-      properties: table.members || [],
-      tokenResolver: tokenResolver
+      properties: members || [],
+      tokenResolver: tokenResolver,
     };
 
     if (kind === 'class') {
@@ -153,7 +163,7 @@ function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTab
       const classMembers: IApiInterfaceProperty[] = (tableProps.properties = []);
       const classMethods: IMethod[] = (tableProps.methods = []);
 
-      (tableProps.properties as ITableRowJson[]).forEach((member: ITableRowJson) => {
+      (members as ITableRowJson[]).forEach(member => {
         if (member.kind === 'method') {
           classMethods.push(member);
         } else {
@@ -162,8 +172,10 @@ function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTab
       });
     }
 
-    // to ensure that I{componentName}Props comes first
-    if (kind === 'interface' && propsName === table.name) {
+    if (jsonDocs.group === 'references' && jsonDocs.name === name) {
+      results.unshift(tableProps);
+    } else if (kind === 'interface' && propsName === name) {
+      // to ensure that I{componentName}Props comes first
       results.unshift(tableProps);
     } else {
       results.push(tableProps);

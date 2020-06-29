@@ -23,7 +23,13 @@ describe('Spinner', () => {
 
   it('uses specified properties when provided', () => {
     const component = mount(
-      <SpinnerBase size={SpinnerSize.large} ariaLive="assertive" labelPosition="top" label="Spinner label" ariaLabel="Aria spinner label" />
+      <SpinnerBase
+        size={SpinnerSize.large}
+        ariaLive="assertive"
+        labelPosition="top"
+        label="Spinner label"
+        ariaLabel="Aria spinner label"
+      />,
     );
 
     expect(component.prop('size')).toEqual(SpinnerSize.large);

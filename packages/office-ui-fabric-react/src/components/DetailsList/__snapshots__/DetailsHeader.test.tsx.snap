@@ -42,11 +42,6 @@ exports[`DetailsHeader can render 1`] = `
   onMouseDownCapture={[Function]}
   onMouseMove={[Function]}
   role="row"
-  style={
-    Object {
-      "minWidth": 0,
-    }
-  }
 >
   <div
     aria-colindex={1}
@@ -95,9 +90,7 @@ exports[`DetailsHeader can render 1`] = `
     role="columnheader"
   >
     <span
-      className=
-          ms-DetailsHeader-checkTooltip
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         aria-checked={false}
@@ -233,6 +226,11 @@ exports[`DetailsHeader can render 1`] = `
                 }
             data-icon-name="CircleRing"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -272,6 +270,11 @@ exports[`DetailsHeader can render 1`] = `
                 }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -625,6 +628,11 @@ exports[`DetailsHeader can render 1`] = `
               }
           data-icon-name="SortUp"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -843,6 +851,11 @@ exports[`DetailsHeader can render 1`] = `
               }
           data-icon-name="ChevronDown"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -943,9 +956,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
       & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
-      & .ms-DetailsHeader-cellIsCheck {
-        visibility: hidden;
-      }
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone3"
   onFocus={[Function]}
@@ -953,11 +963,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   onMouseDownCapture={[Function]}
   onMouseMove={[Function]}
   role="row"
-  style={
-    Object {
-      "minWidth": 0,
-    }
-  }
 >
   <div
     aria-colindex={1}
@@ -1005,9 +1010,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     role="columnheader"
   >
     <span
-      className=
-          ms-DetailsHeader-checkTooltip
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         className=
@@ -1415,6 +1418,11 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               }
           data-icon-name="SortUp"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -1633,6 +1641,11 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               }
           data-icon-name="ChevronDown"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -1740,11 +1753,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   onMouseDownCapture={[Function]}
   onMouseMove={[Function]}
   role="row"
-  style={
-    Object {
-      "minWidth": 0,
-    }
-  }
 >
   <div
     aria-colindex={1}
@@ -1793,9 +1801,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="columnheader"
   >
     <span
-      className=
-          ms-DetailsHeader-checkTooltip
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         aria-checked={false}
@@ -1931,6 +1937,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 }
             data-icon-name="CircleRing"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -1970,6 +1981,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons\\"",
+              }
+            }
           >
             
           </i>
@@ -2324,6 +2340,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               }
           data-icon-name="SortUp"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -2566,6 +2587,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               }
           data-icon-name="Filter"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>
@@ -2592,6 +2618,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               }
           data-icon-name="GroupedDescending"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-7\\"",
+            }
+          }
         >
           
         </i>
@@ -2619,6 +2650,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               }
           data-icon-name="ChevronDown"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons\\"",
+            }
+          }
         >
           
         </i>

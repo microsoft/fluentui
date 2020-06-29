@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { IProperty, PropertyType, parse } from '../../utilities/parser/index';
 import { PropertiesTable } from './PropertiesTable';
-import { IPropertiesTableSetProps, IPropertiesTableSetStyleProps, IPropertiesTableSetStyles } from './PropertiesTableSet.types';
+import {
+  IPropertiesTableSetProps,
+  IPropertiesTableSetStyleProps,
+  IPropertiesTableSetStyles,
+} from './PropertiesTableSet.types';
 import { getStyles } from './PropertiesTableSet.styles';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
 
-const PropertiesTableSetBase: React.StatelessComponent<IPropertiesTableSetProps> = props => {
+const PropertiesTableSetBase: React.FunctionComponent<IPropertiesTableSetProps> = props => {
   const { componentName, componentPath, sources } = props;
   let src: string;
   let properties: IProperty[] = [];
@@ -40,10 +44,10 @@ const PropertiesTableSetBase: React.StatelessComponent<IPropertiesTableSetProps>
   );
 };
 
-export const PropertiesTableSet: React.StatelessComponent<IPropertiesTableSetProps> = styled<
+export const PropertiesTableSet: React.FunctionComponent<IPropertiesTableSetProps> = styled<
   IPropertiesTableSetProps,
   IPropertiesTableSetStyleProps,
   IPropertiesTableSetStyles
 >(PropertiesTableSetBase, getStyles, undefined, {
-  scope: 'PropertiesTableSet'
+  scope: 'PropertiesTableSet',
 });

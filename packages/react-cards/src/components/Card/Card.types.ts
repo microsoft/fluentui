@@ -54,7 +54,12 @@ export interface ICardProps
   /**
    * Defines a callback that is called when the Card is clicked.
    */
-  onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
+
+  /**
+   * Defines a callback that is called when the Card is a key is pressed down while focus is on the Card.
+   */
+  onKeyDown?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**

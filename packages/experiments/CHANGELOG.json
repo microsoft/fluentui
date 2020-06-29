@@ -2,6 +2,862 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/experiments_v7.26.9",
+      "version": "7.26.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "UnifiedPicker: Fixing failing import file",
+            "author": "nebhatna@microsoft.com",
+            "commit": "b50a9dd54114ce918809a647a52aca7ed97b3eb4",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/experiments_v7.26.6",
+      "version": "7.26.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix width of header rows in TilesList",
+            "author": "tmichon@microsoft.com",
+            "commit": "ea8341faf77fe72fc91d8d6c66e6e0d3fbb6e8ad",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 16:07:40 GMT",
+      "tag": "@uifabric/experiments_v7.26.5",
+      "version": "7.26.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix icon names for DesktopSignal, DocumentsSignal, and PicturesSignal. Update example page.",
+            "author": "taenri@microsoft.com",
+            "commit": "f764406bbbf389aaaaf1edff36e84fc6f3fcbc4c",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/experiments_v7.26.4",
+      "version": "7.26.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "adding selecteditemslist unit tests",
+            "author": "nebhatna@microsoft.com",
+            "commit": "89a67f742f79b55154724743c1a2509ad7c2da38",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "UnifiedPicker: adding unit tests",
+            "author": "nebhatna@microsoft.com",
+            "commit": "7223e7607be6b3c2303eec9ac87078e963bfe2c2",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jun 2020 12:35:17 GMT",
+      "tag": "@uifabric/experiments_v7.26.1",
+      "version": "7.26.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "adding unit tests for floating suggestions composite",
+            "author": "nebhatna@microsoft.com",
+            "commit": "b8f95604f4dbd30395cf6368457950838f03a7b6",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jun 2020 12:34:34 GMT",
+      "tag": "@uifabric/experiments_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added missing functionalities in UnifiedPeoplePicker and Example",
+            "author": "nebhatna@microsoft.com",
+            "commit": "acf0790fc9d409b408c9d899b798ebd3318f9a85",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@uifabric/experiments_v7.25.3",
+      "version": "7.25.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adjusting Tile scss",
+            "author": "dzearing@microsoft.com",
+            "commit": "508bd36b17dd15b3d9651d75f9b27a35a864e38a",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 May 2020 12:35:34 GMT",
+      "tag": "@uifabric/experiments_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Tile border color declarations so they don't get elided",
+            "author": "tmichon@microsoft.com",
+            "commit": "972bb9584f4c1e0f08bbab6308a99e1e1516d53c",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Add dedicated touch invoke functionality to SelectionZone",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "557a96005568e03981f184a7d663e6dc490ceffc",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add special folder icon signals for Desktop, Documents, and Pictures.",
+            "author": "taenri@microsoft.com",
+            "commit": "cfcf5178fb8304109274a68121c7762a91f55d5b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/experiments_v7.24.8",
+      "version": "7.24.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed typos",
+            "author": "xia_tony@hotmail.com",
+            "commit": "1edf380e1d06a24c5f7f4dfb4f5d52e512d54315",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@uifabric/experiments_v7.24.6",
+      "version": "7.24.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unnecessary devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fccd9fec686c2c79cc654e6d857bf7945b5e363",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 05:52:46 GMT",
+      "tag": "@uifabric/experiments_v7.24.0",
+      "version": "7.24.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fixing removing of duplicate entries at once",
+            "author": "nebhatna@microsoft.com",
+            "commit": "d3753b80cae857dacaf0a42e5a5398f92d51a7cc",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 May 2020 12:35:40 GMT",
+      "tag": "@uifabric/experiments_v7.23.22",
+      "version": "7.23.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots for merge-styles change to not generate class with no styles",
+            "author": "pingj@microsoft.com",
+            "commit": "a5b44ed833a4614d1333fa161ffd8fd467d33446",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/experiments_v7.23.21",
+      "version": "7.23.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 May 2020 12:33:29 GMT",
+      "tag": "@uifabric/experiments_v7.23.18",
+      "version": "7.23.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove unused typescript-plugin-css-modules dep",
+            "author": "elcraig@microsoft.com",
+            "commit": "4039ef722c1c3ee5bf14eed0a49477eaf773cd08",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Apr 2020 12:33:04 GMT",
+      "tag": "@uifabric/experiments_v7.23.9",
+      "version": "7.23.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix incorrect aria-colindex values in TilesList",
+            "author": "tmichon@microsoft.com",
+            "commit": "8578ee792752b16633eca2194dc7f80e60112c55",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/experiments_v7.23.2",
+      "version": "7.23.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Remove graduation details; Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "removing more references to wrong filetype icons from a deprecated folder",
+            "author": "caperez@microsoft.com",
+            "commit": "c847450db51500f13847542b8f4c89dd277bb2bb",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Minor prettier changes.",
+            "author": "dzearing@microsoft.com",
+            "commit": "447b9dee90b3533e69416939bc841db3feef1e6f",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/experiments_v7.23.0",
+      "version": "7.23.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support TilesList overrides for altering list semantics for grid accessibility",
+            "author": "tmichon@microsoft.com",
+            "commit": "d8a2f14c09d6c8fe70b7308894f58b12ca2243fe"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Unified picker, work in progress",
+            "author": "sanredd@microsoft.com",
+            "commit": "296e5c243a78378ab639c2de1abe2c1c79848800"
+          },
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update experiments testing instructions",
+            "author": "elcraig@microsoft.com",
+            "commit": "487b511145d057e31c12bc570a41c27b39650629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Apr 2020 12:28:27 GMT",
+      "tag": "@uifabric/experiments_v7.22.16",
+      "version": "7.22.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: fix typings for asAsync & internal usages of React.Children.map",
+            "author": "olfedias@microsoft.com",
+            "commit": "5d5891f4757c292ad5a59a7522a00437ae7ac248"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "@uifabric/experiments_v7.22.12",
+      "version": "7.22.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding build tool dependency for type safety of scss modules.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ada208a94fa8033afa8049b7997636b96b5e7193"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/experiments_v7.22.8",
+      "version": "7.22.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/experiments_v7.22.7",
+      "version": "7.22.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/experiments_v7.22.6",
+      "version": "7.22.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "@uifabric/experiments_v7.22.3",
+      "version": "7.22.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove all usages of BaseComponent and initializeFocusRects",
+            "author": "xgao@microsoft.com",
+            "commit": "cb3fa154d4cfc66bc9f31942c3657581d1d814ad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/experiments_v7.22.0",
+      "version": "7.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "convert initializeFocusRects to hook",
+            "author": "xgao@microsoft.com",
+            "commit": "b0ce989570bbf0394bb14913017150357ebccee2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/experiments_v7.21.6",
+      "version": "7.21.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Mar 2020 12:27:02 GMT",
+      "tag": "@uifabric/experiments_v7.21.4",
+      "version": "7.21.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "3e9562ca49b5e9b3eeb5a789edcbf6c03b5eb885"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added demo page for FloatingSuggestionsComposite",
+            "author": "sanredd@microsoft.com",
+            "commit": "94bd7374b7a08e037f3b195e4997acde2027c51e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "@uifabric/experiments_v7.21.3",
+      "version": "7.21.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Turning on tslint 'deprecation' rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Feb 2020 12:23:46 GMT",
+      "tag": "@uifabric/experiments_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated Tile (in experiments) to pass some link-specific props (e.g. 'target', 'download') to its internal link so that users of Tile can customize the link behavior. The Tile link now also defaults to <span> (instead of <button>) when no href or onClick is passed. Updated Tile.Media.Example to include a linking demo showing the new functionality.",
+            "author": "Graham.Langston@microsoft.com",
+            "commit": "e6839e8b1e2e70aa08653ae936ecf828ca6ac597"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Feb 2020 12:28:12 GMT",
+      "tag": "@uifabric/experiments_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "New composite FloatingSuggestion component, to be used in UnifiedPicker",
+            "author": "sanredd@microsoft.com",
+            "commit": "222b78a9e29247dc74de795a4e1925ee53c545f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2020 12:20:14 GMT",
+      "tag": "@uifabric/experiments_v7.20.0",
+      "version": "7.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add signal for item scheduled",
+            "author": "amshan@microsoft.com",
+            "commit": "ae7312e56ec2c8e7d7424a758405700243f15035"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "update ItemScheduledSignal icon",
+            "author": "amshan@microsoft.com",
+            "commit": "da86508a3e5b1a8d9f66bc576142aa83d91a4ce4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "@uifabric/experiments_v7.19.3",
+      "version": "7.19.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/experiments_v7.19.2",
+      "version": "7.19.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
+      "tag": "@uifabric/experiments_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Replacing deprecated StatelessComponent references with FunctionComponent.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a2d743b178cecab012e4a7335c7e518d0c9b26c7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/experiments_v7.18.30",
+      "version": "7.18.30",
+      "comments": {
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/experiments_v7.18.27",
+      "version": "7.18.27",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "moved storybook config",
+            "author": "kchau@microsoft.com",
+            "commit": "5612f0eff3ea9ce3f6d367979b208f3c2489d330"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Feb 2020 20:04:10 GMT",
+      "tag": "@uifabric/experiments_v7.18.24",
+      "version": "7.18.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots in experiments package.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1be065b85f29c28ee7a316ab93a263f09e32f1db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/experiments_v7.18.23",
+      "version": "7.18.23",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix prettier error after upgrade prettier to 1.19.1",
+            "author": "xgao@microsoft.com",
+            "commit": "2242effd3e5226f313ef16f9c18ed3db87d548c4"
+          },
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/experiments_v7.18.20",
+      "version": "7.18.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "updates yarn start experience to storybook for packages that have examples",
+            "author": "kchau@microsoft.com",
+            "commit": "b907cd26f0ee1d1a52c68a624186d255deaa1893"
+          },
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/experiments_v7.18.15",
+      "version": "7.18.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 01:24:12 GMT",
+      "tag": "@uifabric/experiments_v7.18.14",
+      "version": "7.18.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update Snapshots",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "aff25f4bb13c197595a734b500cf9ecdea3e8348"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
+      "tag": "@uifabric/experiments_v7.18.14",
+      "version": "7.18.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrade repo to TS3.7.",
+            "author": "jagore@microsoft.com",
+            "commit": "e04fd44af0b978bc0c8c55658bf6b9d0ff3eac49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
+      "tag": "@uifabric/experiments_v7.18.13",
+      "version": "7.18.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tile: fix color of text over image in dark mode",
+            "author": "prchhaje@microsoft.com",
+            "commit": "964a018662ecadc2db4f6ee9cb049bc9543b1ec3"
+          },
+          {
+            "comment": "Consume compose functions where appropriate",
+            "author": "tmichon@microsoft.com",
+            "commit": "d9eaef588f46c10fe8c1791957571a8eb467d02e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jan 2020 12:31:47 GMT",
+      "tag": "@uifabric/experiments_v7.18.12",
+      "version": "7.18.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: fix chevron button and focus border styling",
+            "author": "xgao@microsoft.com",
+            "commit": "b1f23673efec6c713219c81d02be736f3dc7a373"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/experiments_v7.18.11",
+      "version": "7.18.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update snapshots from combobox style update",
+            "author": "xgao@microsoft.com",
+            "commit": "3d78a7b98fca4a03ed6116106628722f6c8c262e"
+          },
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Dec 2019 12:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.18.10",
+      "version": "7.18.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Snapshot updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "48c4125c20e70512140597cc94447991607237c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Dec 2019 12:29:42 GMT",
+      "tag": "@uifabric/experiments_v7.18.10",
+      "version": "7.18.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refining typography and signal icon on top of Folder Icon, filetype mapping updates",
+            "author": "caperez@microsoft.com",
+            "commit": "4d72a330013373ac60292c9cb3ef8787ad2fd408"
+          },
+          {
+            "comment": "PersonaCoin: make divs role presentation",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "f491aa022d50b489b2a9bd49ef29ee48870213ef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 15 Dec 2019 23:45:36 GMT",
+      "tag": "@uifabric/experiments_v7.18.9",
+      "version": "7.18.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix minor picker doc issue",
+            "author": "elcraig@microsoft.com",
+            "commit": "c97aedf3e01fceec41896005ed602d87dce9c3b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2019 12:33:21 GMT",
+      "tag": "@uifabric/experiments_v7.18.8",
+      "version": "7.18.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated snapshots",
+            "author": "betrue@microsoft.com",
+            "commit": "287bff63b4a7803d0c8ff21bc9f927777fc2ceb3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Dec 2019 12:34:16 GMT",
+      "tag": "@uifabric/experiments_v7.18.7",
+      "version": "7.18.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: empty errorMessage shouldn't create white space",
+            "author": "aneeshak@microsoft.com",
+            "commit": "55ccc0dac8e3e16b874492f5fa8f0527d1de9ea4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Nov 2019 12:31:13 GMT",
+      "tag": "@uifabric/experiments_v7.18.6",
+      "version": "7.18.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Experimental button: removed unnecessary test that was causing flickers",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "2ddcf0242d9daab050f5446b93ae6f34a67a9668"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2019 12:33:30 GMT",
       "tag": "@uifabric/experiments_v7.18.6",
       "version": "7.18.6",

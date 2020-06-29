@@ -1,6 +1,9 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IChartProps } from '../../types/IDataPoint';
+import { IEventAnnotation } from '../../types/IEventAnnotation';
 
 export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/IDataPoint';
 
@@ -50,6 +53,16 @@ export interface ILineChartProps {
   tickValues?: number[] | Date[];
 
   /**
+   * minimum  data value point in y-axis
+   */
+  yMinValue?: number;
+
+  /**
+   * maximum data value point in y-axis
+   */
+  yMaxValue?: number;
+
+  /**
    * the format in for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
    * Please look at https://www.npmjs.com/package/d3-time-format for all the formats supported
    */
@@ -64,6 +77,55 @@ export interface ILineChartProps {
    * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
    */
   enabledLegendsWrapLines?: boolean;
+
+  /**
+   * overflow props for the legends
+   */
+  legendsOverflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
+   * focus zone props in hover card for legends
+   */
+  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * the format in for the data on y-axis. For data object this can be specified to your requirement.
+   *  Eg: d3.format(".0%")(0.123),d3.format("+20")(42);
+   * Please look at https://github.com/d3/d3-format for all the formats supported
+   */
+  // tslint:disable-next-line: no-any
+  yAxisTickFormat?: any;
+
+  /** decides wether to show/hide legends
+   * @defaultvalue false
+   */
+  hideLegend?: boolean;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
+   * Show event annotation
+   */
+  eventAnnotationProps?: IEventsAnnotationProps;
+}
+
+export interface IEventsAnnotationProps {
+  events: IEventAnnotation[];
+  strokeColor: string;
+  labelColor: string;
+  labelHeight?: number;
+  labelWidth?: number;
+  mergedLabel: (count: number) => string;
 }
 
 export interface ILineChartStyleProps {
@@ -104,6 +166,27 @@ export interface ILineChartStyles {
    * styles for callout root-content
    */
   calloutContentRoot?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutDateTimeContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutInfoContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutBlockContainer?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutlegendText?: IStyle;
+
   /**
    * styles for callout x-content
    */

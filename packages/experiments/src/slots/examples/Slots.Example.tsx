@@ -17,13 +17,13 @@ export class SlotsExample extends React.Component<{}, {}> {
                 <TooltipHost content="This is the tooltip">
                   <DefaultComponent {...rootProps} />
                 </TooltipHost>
-              )
+              ),
             },
             content: {
               // TODO: add 'element' option with JSX?
               // element: <Spinner />
-              component: Spinner as any
-            }
+              component: Spinner as any,
+            },
           }}
           // Shorthand prop usage
           icon="share"

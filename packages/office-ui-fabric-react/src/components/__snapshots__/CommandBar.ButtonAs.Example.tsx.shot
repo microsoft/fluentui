@@ -47,7 +47,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
         role="menubar"
       >
         <div
-          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -58,7 +57,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="presentation"
+          role="group"
         >
           <div
             className=
@@ -101,7 +100,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -205,10 +203,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -232,6 +234,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
+                          white-space: nowrap;
                         }
                     id="id__1"
                   >
@@ -265,10 +268,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="ChevronDown"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -312,7 +319,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -368,7 +374,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     color: #323130;
                   }
               data-is-focusable={true}
-              href="https://dev.office.com/fabric"
+              href="https://developer.microsoft.com/en-us/fluentui"
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -416,10 +422,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -443,6 +453,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
+                          white-space: nowrap;
                         }
                     id="id__4"
                   >
@@ -489,7 +500,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -593,10 +603,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Share"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -620,6 +634,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
+                          white-space: nowrap;
                         }
                     id="id__7"
                   >
@@ -666,7 +681,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -770,10 +784,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Download"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -797,6 +815,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
+                          white-space: nowrap;
                         }
                     id="id__10"
                   >
@@ -847,7 +866,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -909,6 +927,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <span
@@ -950,10 +969,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         margin-right: 4px;
                         margin-top: 0;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="More"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -962,7 +985,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
           </div>
         </div>
         <div
-          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-secondaryCommand
@@ -973,7 +995,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="presentation"
+          role="group"
         >
           <div
             className=
@@ -1025,7 +1047,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1129,10 +1150,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Tiles"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -1190,7 +1215,6 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1294,10 +1318,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Info"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>

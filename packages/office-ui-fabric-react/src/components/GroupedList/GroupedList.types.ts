@@ -16,7 +16,7 @@ import { IGroupFooterProps } from './GroupFooter.types';
  */
 export enum CollapseAllVisibility {
   hidden = 0,
-  visible = 1
+  visible = 1,
 }
 
 /**
@@ -24,8 +24,8 @@ export enum CollapseAllVisibility {
  */
 export interface IGroupedList extends IList {
   /**
-   * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
-   * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can
+   * Ensures that the list content is updated. Call this in cases where the list props don't change, but the list still
+   * needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can
    * call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.
    */
   forceUpdate: () => void;
@@ -107,7 +107,8 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
-   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for
+   * smaller lists.
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
@@ -239,6 +240,11 @@ export interface IGroupRenderProps {
    * @defaultvalue false
    */
   showEmptyGroups?: boolean;
+
+  /**
+   * Override which allows the caller to provide a custom aria role
+   */
+  role?: string;
 }
 
 /**
@@ -265,7 +271,10 @@ export interface IGroupDividerProps {
   /** The indent level of the group. */
   groupLevel?: number;
 
-  /** Width corresponding to a single level. This is multiplied by the groupLevel to get the full spacer width for the group. */
+  /**
+   * Width corresponding to a single level.
+   * This is multiplied by the groupLevel to get the full spacer width for the group.
+   */
   indentWidth?: number;
 
   /** If all items in the group are selected. */

@@ -72,7 +72,7 @@ describe('FocusTrapZone', () => {
     element: HTMLElement,
     {
       clientRect,
-      isVisible = true
+      isVisible = true,
     }: {
       clientRect: {
         top: number;
@@ -81,16 +81,17 @@ describe('FocusTrapZone', () => {
         right: number;
       };
       isVisible?: boolean;
-    }
+    },
   ): void {
-    element.getBoundingClientRect = () => ({
-      top: clientRect.top,
-      left: clientRect.left,
-      bottom: clientRect.bottom,
-      right: clientRect.right,
-      width: clientRect.right - clientRect.left,
-      height: clientRect.bottom - clientRect.top
-    });
+    element.getBoundingClientRect = () =>
+      ({
+        top: clientRect.top,
+        left: clientRect.left,
+        bottom: clientRect.bottom,
+        right: clientRect.right,
+        width: clientRect.right - clientRect.left,
+        height: clientRect.bottom - clientRect.top,
+      } as DOMRect);
 
     element.setAttribute('data-is-visible', String(isVisible));
 
@@ -102,7 +103,7 @@ describe('FocusTrapZone', () => {
    * 'ftzClassname' on FTZ.
    */
   function getFtzBumpers(
-    element: HTMLElement
+    element: HTMLElement,
   ): {
     firstBumper: Element;
     lastBumper: Element;
@@ -166,7 +167,7 @@ describe('FocusTrapZone', () => {
               </div>
             </FocusZone>
           </FocusTrapZone>
-        </div>
+        </div>,
       ) as unknown) as HTMLElement;
 
       const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
@@ -220,7 +221,7 @@ describe('FocusTrapZone', () => {
               </div>
             </FocusZone>
           </FocusTrapZone>
-        </div>
+        </div>,
       ) as unknown) as HTMLElement;
 
       const buttonX = topLevelDiv.querySelector('.x') as HTMLElement;
@@ -271,7 +272,7 @@ describe('FocusTrapZone', () => {
             </FocusZone>
           </FocusTrapZone>
           <button className={'z2'}>z2</button>
-        </div>
+        </div>,
       ) as unknown) as HTMLElement;
 
       const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
@@ -334,7 +335,7 @@ describe('FocusTrapZone', () => {
             </button>
           </FocusTrapZone>
           <button className={'z2'}>z2</button>
-        </div>
+        </div>,
       ) as unknown) as HTMLElement;
 
       const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
@@ -403,7 +404,7 @@ describe('FocusTrapZone', () => {
         },
         stopPropagation: () => {
           /*noop*/
-        }
+        },
       });
       expect(lastFocusedElement).toBe(buttonA);
     });
@@ -424,7 +425,7 @@ describe('FocusTrapZone', () => {
         },
         stopPropagation: () => {
           /*noop*/
-        }
+        },
       });
       expect(lastFocusedElement).toBe(buttonB);
     });
@@ -451,7 +452,7 @@ describe('FocusTrapZone', () => {
             </FocusTrapZone>
             <button className={'z2'}>z2</button>
           </div>
-        </div>
+        </div>,
       ) as unknown) as HTMLElement;
 
       const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
@@ -488,7 +489,7 @@ describe('FocusTrapZone', () => {
         },
         stopPropagation: () => {
           /*noop*/
-        }
+        },
       });
       expect(lastFocusedElement).toBe(buttonA);
     });
@@ -498,8 +499,8 @@ describe('FocusTrapZone', () => {
 
       setupTest({ isClickableOutsideFocusTrap: true });
 
-      // FTZ doesn't register a window click listener when isClickableOutsideFocusTrap is true, so we can't simulate clicks directly.
-      // Therefore we test indirectly by making sure FTZ doesn't register a window click listener.
+      // FTZ doesn't register a window click listener when isClickableOutsideFocusTrap is true, so we can't simulate
+      // clicks directly. Therefore we test indirectly by making sure FTZ doesn't register a window click listener.
       expect(componentEventListeners.click).toBeUndefined();
     });
 
@@ -543,7 +544,7 @@ describe('FocusTrapZone', () => {
         },
         stopPropagation: () => {
           /*noop*/
-        }
+        },
       });
       expect(lastFocusedElement).toBe(buttonB);
     });
@@ -553,8 +554,8 @@ describe('FocusTrapZone', () => {
 
       setupTest({ forceFocusInsideTrap: false });
 
-      // FTZ doesn't register a window focus listener when isClickableOutsideFocusTrap is true, so we can't simulate focus directly.
-      // Therefore we test indirectly by making sure FTZ doesn't register a window focus listener.
+      // FTZ doesn't register a window focus listener when isClickableOutsideFocusTrap is true, so we can't simulate
+      // focus directly. Therefore we test indirectly by making sure FTZ doesn't register a window focus listener.
       expect(componentEventListeners.focus).toBeUndefined();
     });
 
@@ -635,7 +636,7 @@ describe('FocusTrapZone', () => {
             </FocusZone>
           </FocusTrapZone>
           <button className={'z'}>z</button>
-        </div>
+        </div>,
       ) as unknown) as HTMLElement;
 
       const buttonF = topLevelDiv.querySelector('.f') as HTMLElement;
@@ -713,7 +714,7 @@ describe('FocusTrapZone', () => {
       const topLevelDiv = (ReactTestUtils.renderIntoDocument(
         <div>
           <FocusTrapZoneTestComponent />
-        </div>
+        </div>,
       ) as unknown) as HTMLElement;
 
       const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;

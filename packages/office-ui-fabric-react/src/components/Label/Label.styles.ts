@@ -24,26 +24,26 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
         display: 'block',
         padding: '5px 0',
         wordWrap: 'break-word',
-        overflowWrap: 'break-word'
+        overflowWrap: 'break-word',
       },
       disabled && {
         color: labelDisabledColor,
         selectors: {
           [HighContrastSelector]: {
-            color: 'GrayText'
-          }
-        }
+            color: 'GrayText',
+          },
+        },
       },
       required && {
         selectors: {
           '::after': {
             content: `' *'`,
             color: labelRequiredStarColor,
-            paddingRight: 12
-          }
-        }
+            paddingRight: 12,
+          },
+        },
       },
-      className
-    ]
+      className,
+    ],
   };
 };

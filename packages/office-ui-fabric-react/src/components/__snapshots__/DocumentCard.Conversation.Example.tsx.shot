@@ -3,8 +3,7 @@
 exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correctly 1`] = `
 <div>
   <div
-    aria-label="Document Card with logo, text preview, and status. Conversation about annual report. Content preview. 3 attachments.
-        Sent by Annie Lindqvist and 2 others in March 13, 2018."
+    aria-label="Document Card with logo, text preview, and status. Conversation about annual report. Content preview. 3 attachments. Sent by Annie Lindqvist and 2 others in March 13, 2018."
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -12,7 +11,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border: 1px solid #edebe9;
-          box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
           max-width: 320px;
@@ -20,6 +18,26 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           position: relative;
           user-select: none;
           width: 320px;
+        }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
@@ -250,6 +268,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"
@@ -330,6 +349,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -435,8 +455,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
     </div>
   </div>
   <div
-    aria-label="Document Card with logo, text preview, and status. Further annual report conversation. Content preview. 3 attachments.
-        Sent by Christian Bergqvist and 2 others in March 13, 2018."
+    aria-label="Document Card with logo, text preview, and status. Further annual report conversation. Content preview. 3 attachments. Sent by Christian Bergqvist and 2 others in March 13, 2018."
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -444,7 +463,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border: 1px solid #edebe9;
-          box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
           max-width: 320px;
@@ -452,6 +470,26 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           position: relative;
           user-select: none;
           width: 320px;
+        }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
@@ -672,6 +710,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -776,6 +815,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"
@@ -857,8 +897,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
     </div>
   </div>
   <div
-    aria-label="Document Card with logo and text preview. Conversation about annual report. Content preview. Sent by Velatine Lourvric
-        and 1 other in March 13, 2018."
+    aria-label="Document Card with logo and text preview. Conversation about annual report. Content preview. Sent by Velatine Lourvric and 1 other in March 13, 2018."
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable
@@ -866,7 +905,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border: 1px solid #edebe9;
-          box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
           max-width: 320px;
@@ -874,6 +912,26 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           position: relative;
           user-select: none;
           width: 320px;
+        }
+        &:focus {
+          outline: 0px solid;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
           padding-top: 4px;
@@ -1063,6 +1121,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -1167,6 +1226,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"

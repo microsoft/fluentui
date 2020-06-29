@@ -74,6 +74,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             font-size: 14px;
             font-weight: 400;
           }
+      role="presentation"
     >
       <div
         className=
@@ -85,6 +86,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-align: center;
               width: 72px;
             }
+        role="presentation"
         style={
           Object {
             "height": 72,
@@ -93,7 +95,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         }
       >
         <img
-          alt="Custom Coin Image"
+          alt="Ted Randall, status is available at 4 PM"
           className=
 
               {
@@ -126,6 +128,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
                 background-color: Highlight;
                 border-color: Window;
               }
+          role="presentation"
           style={
             Object {
               "height": "24px",

@@ -8,39 +8,39 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
     fieldGroup: [
       {
         borderRadius: effects.roundedCorner2,
-        borderColor: palette.neutralSecondaryAlt
+        borderColor: palette.neutralSecondaryAlt,
       },
       hasErrorMessage && [
         {
           borderColor: palette.red,
           selectors: {
             '&:focus, &:hover': {
-              borderColor: palette.redDark
-            }
-          }
+              borderColor: palette.redDark,
+            },
+          },
         },
         focused && {
-          borderColor: palette.redDark
-        }
-      ]
+          borderColor: palette.redDark,
+        },
+      ],
     ],
     field: [
       !disabled && {
-        color: palette.neutralDark
+        color: palette.neutralDark,
       },
       {
         padding: !multiline ? '0 8px' : '6px 8px',
         selectors: {
           '::placeholder': [disabled && { color: palette.neutralTertiary }],
-          ':-ms-input-placeholder': [disabled && { color: palette.neutralTertiary }]
-        }
-      }
+          ':-ms-input-placeholder': [disabled && { color: palette.neutralTertiary }],
+        },
+      },
     ],
     wrapper: {
-      borderColor: palette.neutralSecondaryAlt // For underlined and borderless TextFields
+      borderColor: palette.neutralSecondaryAlt, // For underlined and borderless TextFields
     },
     errorMessage: {
-      color: palette.redDark
-    }
+      color: palette.redDark,
+    },
   };
 };

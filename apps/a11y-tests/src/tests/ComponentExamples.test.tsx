@@ -18,7 +18,7 @@ function dehydrateSarifReport(report: SarifLog): Result[] {
 async function testComponent(
   browserPromise: Promise<puppeteer.Browser>,
   /* tslint:disable-next-line:no-any */
-  component: { name: string; pageName: string; elem: React.ReactElement<any> }
+  component: { name: string; pageName: string; elem: React.ReactElement<any> },
 ) {
   it(`checks accessibility of ${component.name} (${component.pageName})`, async () => {
     const browser = await browserPromise;
@@ -27,9 +27,13 @@ async function testComponent(
 
     // Save the report into `dist/reports` folder (only when there're errors)
     if (errors.length > 0) {
-      fs.writeFileSync(path.resolve(__dirname, `../../dist/reports/${component.pageName}.sarif`), JSON.stringify(sarifReport), {
-        encoding: 'utf8'
-      });
+      fs.writeFileSync(
+        path.resolve(__dirname, `../../dist/reports/${component.pageName}.sarif`),
+        JSON.stringify(sarifReport),
+        {
+          encoding: 'utf8',
+        },
+      );
     }
 
     // Match the 'errors' section with snapshot
@@ -46,7 +50,7 @@ const excludedExampleFiles: string[] = ['Keytips.Basic.Example', 'List.Basic.Exa
 
 describe('a11y test', () => {
   const browserPromise = puppeteer.launch({
-    userDataDir: path.resolve(os.tmpdir(), 'oufr-a11y-test-profile')
+    userDataDir: path.resolve(os.tmpdir(), 'oufr-a11y-test-profile'),
   });
 
   beforeAll(() => {
@@ -83,7 +87,7 @@ describe('a11y test', () => {
           testComponent(browserPromise, {
             name: controlName,
             pageName: pageName,
-            elem: <ComponentUnderTest />
+            elem: <ComponentUnderTest />,
           });
         });
     });

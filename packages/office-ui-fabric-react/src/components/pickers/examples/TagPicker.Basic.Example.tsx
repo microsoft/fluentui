@@ -1,12 +1,14 @@
 import * as React from 'react';
 
 import { TagPicker, IBasePicker, ITag } from 'office-ui-fabric-react/lib/Pickers';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const rootClass = mergeStyles({
-  maxWidth: 500
+  maxWidth: 500,
 });
+
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
 
 const _testTags: ITag[] = [
   'black',
@@ -23,7 +25,7 @@ const _testTags: ITag[] = [
   'rose',
   'violet',
   'white',
-  'yellow'
+  'yellow',
 ].map(item => ({ key: item, name: item }));
 
 export interface ITagPickerDemoPageState {
@@ -37,7 +39,7 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
   constructor(props: {}) {
     super(props);
     this.state = {
-      isPickerDisabled: false
+      isPickerDisabled: false,
     };
   }
 
@@ -45,44 +47,46 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
     return (
       <div className={rootClass}>
         <Checkbox
-          styles={{ root: { margin: '10px 0' } }}
+          styles={checkboxStyles}
           label="Disable Tag Picker"
           checked={this.state.isPickerDisabled}
           onChange={this._onDisabledButtonClick}
         />
         Filter items in suggestions: This picker will filter added items from the search suggestions.
         <TagPicker
+          removeButtonAriaLabel="Remove"
           onResolveSuggestions={this._onFilterChanged}
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found'
+            noResultsFoundText: 'No Color Tags Found',
           }}
           itemLimit={2}
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-            'aria-label': 'Tag Picker'
+            'aria-label': 'Tag Picker',
           }}
         />
         <br />
         Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
         <TagPicker
+          removeButtonAriaLabel="Remove"
           componentRef={this._picker}
           onResolveSuggestions={this._onFilterChangedNoFilter}
           onItemSelected={this._onItemSelected}
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found'
+            noResultsFoundText: 'No Color Tags Found',
           }}
           itemLimit={2}
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-            'aria-label': 'Tag Picker'
+            'aria-label': 'Tag Picker',
           }}
         />
       </div>
@@ -95,7 +99,7 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
 
   private _onDisabledButtonClick = (): void => {
     this.setState({
-      isPickerDisabled: !this.state.isPickerDisabled
+      isPickerDisabled: !this.state.isPickerDisabled,
     });
   };
 

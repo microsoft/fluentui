@@ -10,5 +10,5 @@ export default migration(
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       return renameJsxProp('ComboBox', 'value', 'text')(node, modder);
     }).files;
-  }
+  },
 );

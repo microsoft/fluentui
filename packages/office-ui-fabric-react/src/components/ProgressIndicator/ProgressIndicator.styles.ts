@@ -1,5 +1,5 @@
 import { HighContrastSelector, keyframes, noWrap, getGlobalClassNames, IRawStyle } from '../../Styling';
-import { getRTL } from '../../Utilities';
+import { getRTL, memoizeFunction } from '../../Utilities';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
 const GlobalClassNames = {
@@ -8,28 +8,33 @@ const GlobalClassNames = {
   itemDescription: 'ms-ProgressIndicator-itemDescription',
   itemProgress: 'ms-ProgressIndicator-itemProgress',
   progressTrack: 'ms-ProgressIndicator-progressTrack',
-  progressBar: 'ms-ProgressIndicator-progressBar'
+  progressBar: 'ms-ProgressIndicator-progressBar',
 };
 
-const IndeterminateProgress = keyframes({
-  '0%': {
-    left: '-30%'
-  },
-  '100%': {
-    left: '100%'
-  }
-});
-const IndeterminateProgressRTL = keyframes({
-  '100%': {
-    right: '-30%'
-  },
-  '0%': {
-    right: '100%'
-  }
-});
+const IndeterminateProgress = memoizeFunction(() =>
+  keyframes({
+    '0%': {
+      left: '-30%',
+    },
+    '100%': {
+      left: '100%',
+    },
+  }),
+);
+
+const IndeterminateProgressRTL = memoizeFunction(() =>
+  keyframes({
+    '100%': {
+      right: '-30%',
+    },
+    '0%': {
+      right: '100%',
+    },
+  }),
+);
 
 export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicatorStyles => {
-  const isRTL = getRTL();
+  const isRTL = getRTL(props.theme);
   const { className, indeterminate, theme, barHeight = 2 } = props;
 
   const { palette, semanticColors, fonts } = theme;
@@ -48,8 +53,8 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
       {
         color: semanticColors.bodyText,
         paddingTop: marginBetweenText / 2,
-        lineHeight: textHeight + 2
-      }
+        lineHeight: textHeight + 2,
+      },
     ],
 
     itemDescription: [
@@ -57,8 +62,8 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
       {
         color: semanticColors.bodySubtext,
         fontSize: fonts.small.fontSize,
-        lineHeight: textHeight
-      }
+        lineHeight: textHeight,
+      },
     ],
 
     itemProgress: [
@@ -67,8 +72,8 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
         position: 'relative',
         overflow: 'hidden',
         height: barHeight,
-        padding: `${marginBetweenText}px 0`
-      }
+        padding: `${marginBetweenText}px 0`,
+      },
     ],
 
     progressTrack: [
@@ -81,10 +86,10 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
 
         selectors: {
           [HighContrastSelector]: {
-            borderBottom: '1px solid WindowText'
-          }
-        }
-      }
+            borderBottom: '1px solid WindowText',
+          },
+        },
+      },
     ],
 
     progressBar: [
@@ -97,22 +102,29 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
 
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
-          }
-        }
+            backgroundColor: 'highlight',
+          },
+        },
       },
 
       indeterminate
         ? ({
             position: 'absolute',
             minWidth: '33%',
-            background: `linear-gradient(to right, ${progressTrackColor} 0%, ${palette.themePrimary} 50%, ${progressTrackColor} 100%)`,
-            animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`
+            background:
+              `linear-gradient(to right, ${progressTrackColor} 0%, ` +
+              `${palette.themePrimary} 50%, ${progressTrackColor} 100%)`,
+            animation: `${isRTL ? IndeterminateProgressRTL() : IndeterminateProgress()} 3s infinite`,
+            selectors: {
+              [HighContrastSelector]: {
+                background: `highlight`,
+              },
+            },
           } as IRawStyle)
         : ({
-            transition: 'width .15s linear'
+            transition: 'width .15s linear',
           } as IRawStyle),
-      classNames.progressBar
-    ]
+      classNames.progressBar,
+    ],
   };
 };

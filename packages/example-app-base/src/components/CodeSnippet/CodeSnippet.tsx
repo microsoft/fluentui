@@ -29,12 +29,12 @@ SyntaxHighlighter.registerLanguage('html', xml);
 style.hljs = {
   ...baseCodeStyle,
   padding: 8,
-  overflowX: 'auto'
+  overflowX: 'auto',
 };
 // Darken comment color for accessibility
 style['hljs-comment'] = style['hljs-quote'] = {
   color: NeutralColors.gray120,
-  fontStyle: 'italic'
+  fontStyle: 'italic',
 };
 
 export interface ICodeSnippetProps {
@@ -60,22 +60,26 @@ const languageMapping: { [key: string]: string } = {
   jsx: 'typescript',
   shell: 'bash',
   md: 'markdown',
-  css: 'scss'
+  css: 'scss',
 };
 
-const CodeSnippetBase: React.StatelessComponent<ICodeSnippetProps> = props => {
+const CodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = props => {
   const classNames = getClassNames(props.styles, { className: props.className });
   return (
-    <SyntaxHighlighter language={languageMapping[props.language!] || props.language || 'text'} className={classNames.root} style={style}>
+    <SyntaxHighlighter
+      language={languageMapping[props.language!] || props.language || 'text'}
+      className={classNames.root}
+      style={style}
+    >
       {props.children}
     </SyntaxHighlighter>
   );
 };
 
-export const CodeSnippet: React.StatelessComponent<ICodeSnippetProps> = styled<
+export const CodeSnippet: React.FunctionComponent<ICodeSnippetProps> = styled<
   ICodeSnippetProps,
   ICodeSnippetStyleProps,
   ICodeSnippetStyles
 >(CodeSnippetBase, getStyles, undefined, {
-  scope: 'CodeSnippet'
+  scope: 'CodeSnippet',
 });

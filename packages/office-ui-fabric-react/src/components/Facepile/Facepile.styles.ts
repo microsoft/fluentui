@@ -10,7 +10,7 @@ const GlobalClassNames = {
   itemContainer: 'ms-Facepile-itemContainer',
   members: 'ms-Facepile-members',
   member: 'ms-Facepile-member',
-  overflowButton: 'ms-Facepile-overflowButton ms-Facepile-itemButton'
+  overflowButton: 'ms-Facepile-overflowButton ms-Facepile-itemButton',
 };
 
 export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
@@ -26,14 +26,13 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
     verticalAlign: 'top',
     display: 'inline',
     backgroundColor: 'transparent',
-    cursor: 'pointer',
     border: 'none',
     selectors: {
       '&::-moz-focus-inner': {
         padding: 0,
-        border: 0
-      }
-    }
+        border: 0,
+      },
+    },
   };
 
   return {
@@ -41,9 +40,9 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       classNames.root,
       theme.fonts.medium,
       {
-        width: 'auto'
+        width: 'auto',
       },
-      className
+      className,
     ],
 
     addButton: [
@@ -57,19 +56,19 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
         marginRight: spacingAroundItemButton * 2 + 'px',
         selectors: {
           '&:hover': {
-            backgroundColor: palette.themeDark
+            backgroundColor: palette.themeDark,
           },
           '&:focus': {
-            backgroundColor: palette.themeDark
+            backgroundColor: palette.themeDark,
           },
           '&:active': {
-            backgroundColor: palette.themeDarker
+            backgroundColor: palette.themeDarker,
           },
           '&:disabled': {
-            backgroundColor: palette.neutralTertiaryAlt
-          }
-        }
-      }
+            backgroundColor: palette.neutralTertiaryAlt,
+          },
+        },
+      },
     ],
 
     descriptiveOverflowButton: [
@@ -80,8 +79,8 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
         fontSize: fonts.small.fontSize,
         color: palette.neutralSecondary,
         backgroundColor: palette.neutralLighter,
-        marginLeft: `${spacingAroundItemButton * 2}px`
-      }
+        marginLeft: `${spacingAroundItemButton * 2}px`,
+      },
     ],
 
     itemButton: [classNames.itemButton, ItemButtonStyles],
@@ -89,8 +88,8 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
     itemContainer: [
       classNames.itemContainer,
       {
-        display: 'flex'
-      }
+        display: 'flex',
+      },
     ],
 
     members: [
@@ -100,8 +99,8 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
         overflow: 'hidden',
         listStyleType: 'none',
         padding: 0,
-        margin: `-${spacingAroundItemButton}px`
-      }
+        margin: `-${spacingAroundItemButton}px`,
+      },
     ],
 
     member: [
@@ -109,8 +108,8 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       {
         display: 'inline-flex',
         flex: '0 0 auto',
-        margin: `${spacingAroundItemButton}px`
-      }
+        margin: `${spacingAroundItemButton}px`,
+      },
     ],
 
     overflowButton: [
@@ -121,16 +120,16 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
         fontSize: fonts.medium.fontSize,
         color: palette.neutralSecondary,
         backgroundColor: palette.neutralLighter,
-        marginLeft: `${spacingAroundItemButton * 2}px`
-      }
+        marginLeft: `${spacingAroundItemButton * 2}px`,
+      },
     ],
 
     overflowInitialsIcon: [
       {
-        color: palette.neutralPrimary
-      }
+        color: palette.neutralPrimary,
+      },
     ],
 
-    screenReaderOnly: hiddenContentStyle
+    screenReaderOnly: hiddenContentStyle,
   };
 };

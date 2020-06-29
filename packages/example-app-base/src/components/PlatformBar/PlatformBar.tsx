@@ -4,10 +4,10 @@ import { PlatformBarBase } from './PlatformBar.base';
 import { IPlatformBarProps, IPlatformBarStyleProps, IPlatformBarStyles } from './PlatformBar.types';
 import { getStyles } from './PlatformBar.styles';
 
-export const PlatformBar: React.StatelessComponent<IPlatformBarProps> = styled<
+export const PlatformBar: React.FunctionComponent<IPlatformBarProps> = styled<
   IPlatformBarProps,
   IPlatformBarStyleProps,
   IPlatformBarStyles
 >(PlatformBarBase, getStyles, undefined, {
-  scope: 'PlatformBar'
+  scope: 'PlatformBar',
 });

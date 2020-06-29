@@ -1,0 +1,58 @@
+{
+  "name": "@fluentui/react-icons",
+  "version": "0.1.32",
+  "description": "React components for building web experiences.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev:storybook",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
+    "update-api": "just-scripts update-api",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/jest": "~24.9.0",
+    "@types/react": "16.8.25",
+    "@types/react-dom": "16.8.4",
+    "@types/react-is": "^16.7.1",
+    "@types/react-test-renderer": "^16.0.0",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/tslint-rules": "^7.2.2",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
+    "react-is": "^16.6.3",
+    "react-test-renderer": "^16.3.0"
+  },
+  "dependencies": {
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/set-version": "^7.0.15",
+    "@uifabric/utilities": "^7.21.4",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0"
+  }
+}

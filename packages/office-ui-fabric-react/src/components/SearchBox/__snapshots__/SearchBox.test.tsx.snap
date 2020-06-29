@@ -10,7 +10,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         align-items: stretch;
         background-color: #ffffff;
         border-radius: 2px;
-        border: 1px solid #8a8886;
+        border: 1px solid #605e5c;
         box-shadow: none;
         box-sizing: border-box;
         color: #323130;
@@ -31,7 +31,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         padding-top: 1px;
       }
       @media screen and (-ms-high-contrast: active){& {
-        border: 1px solid WindowText;
+        border-color: WindowText;
       }
       &:hover {
         border-color: #323130;
@@ -125,6 +125,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           display: none;
         }
     id="SearchBox0"
+    onBlur={[Function]}
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
@@ -144,7 +145,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         align-items: stretch;
         background-color: #ffffff;
         border-radius: 2px;
-        border: 1px solid #8a8886;
+        border: 1px solid #605e5c;
         box-shadow: none;
         box-sizing: border-box;
         color: #323130;
@@ -165,7 +166,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         padding-top: 1px;
       }
       @media screen and (-ms-high-contrast: active){& {
-        border: 1px solid WindowText;
+        border-color: WindowText;
       }
       &:hover {
         border-color: #323130;
@@ -257,6 +258,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           display: none;
         }
     id="SearchBox5"
+    onBlur={[Function]}
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}

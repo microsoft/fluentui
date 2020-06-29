@@ -1,7 +1,15 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { ActionButton, CommandBarButton, CompoundButton, DefaultButton, IconButton, MessageBarButton, PrimaryButton } from './index';
+import {
+  ActionButton,
+  CommandBarButton,
+  CompoundButton,
+  DefaultButton,
+  IconButton,
+  MessageBarButton,
+  PrimaryButton,
+} from './index';
 
 describe('Button Variants', () => {
   it('renders a DefaultButton correctly', () => {

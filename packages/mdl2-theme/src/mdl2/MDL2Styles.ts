@@ -36,129 +36,129 @@ import { ToggleStyles } from './styles/Toggle.styles';
 
 export const MDL2Styles = {
   Breadcrumb: {
-    styles: BreadcrumbStyles
+    styles: BreadcrumbStyles,
   },
   CalloutContent: {
-    styles: CalloutContentStyles
+    styles: CalloutContentStyles,
   },
   ColorPicker: {
-    styles: ColorPickerStyles
+    styles: ColorPickerStyles,
   },
   ColorRectangle: {
-    styles: ColorRectangleStyles
+    styles: ColorRectangleStyles,
   },
   ColorSlider: {
-    styles: ColorSliderStyles
+    styles: ColorSliderStyles,
   },
   CommandBar: {
-    styles: CommandBarStyles
+    styles: CommandBarStyles,
   },
   CommandBarButton: {
-    styles: CommandBarButtonStyles
+    styles: CommandBarButtonStyles,
   },
   CompoundButton: {
-    styles: CompoundButtonStyles
+    styles: CompoundButtonStyles,
   },
   Check: {
-    styles: CheckStyles
+    styles: CheckStyles,
   },
   Checkbox: {
-    styles: CheckboxStyles
+    styles: CheckboxStyles,
   },
   ChoiceGroupOption: {
-    styles: ChoiceGroupOptionStyles
+    styles: ChoiceGroupOptionStyles,
   },
   ComboBox: {
-    styles: ComboBoxStyles
+    styles: ComboBoxStyles,
   },
   ContextualMenu: {
-    styles: ContextualMenuStyles
+    styles: ContextualMenuStyles,
   },
   DefaultButton: {
-    styles: DefaultButtonStyles
+    styles: DefaultButtonStyles,
   },
   DetailsColumn: {
-    styles: DetailsColumnStyles
+    styles: DetailsColumnStyles,
   },
   DetailsHeader: {
-    styles: DetailsHeaderStyles
+    styles: DetailsHeaderStyles,
   },
   DetailsRow: {
-    styles: DetailsRowStyles
+    styles: DetailsRowStyles,
   },
   DetailsRowCheck: {
-    styles: DetailsRowCheckStyles
+    styles: DetailsRowCheckStyles,
   },
   DialogContent: {
-    styles: DialogContentStyles
+    styles: DialogContentStyles,
   },
   DialogFooter: {
-    styles: DialogFooterStyles
+    styles: DialogFooterStyles,
   },
   Dropdown: {
-    styles: DropdownStyles
+    styles: DropdownStyles,
   },
   ExpandingCard: {
-    styles: ExpandingCardStyles
+    styles: ExpandingCardStyles,
   },
   Facepile: {
-    styles: FacepileStyles
+    styles: FacepileStyles,
   },
   GroupHeader: {
-    styles: GroupHeaderStyles
+    styles: GroupHeaderStyles,
   },
   IconButton: {
-    styles: IconButtonStyles
+    styles: IconButtonStyles,
   },
   Label: {
-    styles: LabelStyles
+    styles: LabelStyles,
   },
   Link: {
-    styles: LinkStyles
+    styles: LinkStyles,
   },
   MessageBar: {
-    styles: MessageBarStyles
+    styles: MessageBarStyles,
   },
   MessageBarButton: {
-    styles: MessageBarButtonStyles
+    styles: MessageBarButtonStyles,
   },
   Nav: {
-    styles: NavStyles
+    styles: NavStyles,
   },
   Panel: {
-    styles: PanelStyles
+    styles: PanelStyles,
   },
   Persona: {
-    styles: PersonaStyles
+    styles: PersonaStyles,
   },
   PersonaCoin: {
-    styles: PersonaCoinStyles
+    styles: PersonaCoinStyles,
   },
   Pivot: {
-    styles: PivotStyles
+    styles: PivotStyles,
   },
   PlainCard: {
-    styles: PlainCardStyles
+    styles: PlainCardStyles,
   },
   PrimaryButton: {
-    styles: PrimaryButtonStyles
+    styles: PrimaryButtonStyles,
   },
   Slider: {
-    styles: SliderStyles
+    styles: SliderStyles,
   },
   SpinButton: {
-    styles: SpinButtonStyles
+    styles: SpinButtonStyles,
   },
   TeachingBubble: {
-    styles: TeachingBubbleStyles
+    styles: TeachingBubbleStyles,
   },
   TeachingBubbleContent: {
-    styles: TeachingBubbleStyles
+    styles: TeachingBubbleStyles,
   },
   TextField: {
-    styles: TextFieldStyles
+    styles: TextFieldStyles,
   },
   Toggle: {
-    styles: ToggleStyles
-  }
+    styles: ToggleStyles,
+  },
 };

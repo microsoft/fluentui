@@ -52,6 +52,10 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className=
@@ -215,6 +219,10 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className=

@@ -5,7 +5,7 @@ import { Markdown } from '../../Markdown/index';
 import { IPageSectionPropsWithSectionName } from '../Page.types';
 import * as styles from '../Page.module.scss';
 
-export const OverviewSection: React.StatelessComponent<IPageSectionPropsWithSectionName> = props => {
+export const OverviewSection: React.FunctionComponent<IPageSectionPropsWithSectionName> = props => {
   const {
     className,
     content: overview,
@@ -13,10 +13,10 @@ export const OverviewSection: React.StatelessComponent<IPageSectionPropsWithSect
     componentUrl,
     platform,
     sectionName,
-    readableSectionName,
+    readableSectionName = sectionName,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
   const editUrl = componentUrl
     ? getEditUrl({ name: fileNamePrefix || title, section: pascalize(sectionName!), baseUrl: componentUrl, platform })
@@ -25,8 +25,9 @@ export const OverviewSection: React.StatelessComponent<IPageSectionPropsWithSect
   return (
     <div className={className} style={style}>
       <div className={styles.sectionHeader}>
-        <h2 className={styles.subHeading} id={id}>
-          {readableSectionName || sectionName}
+        {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+        <h2 className={styles.subHeading} id={id} tabIndex={-1}>
+          {readableSectionName}
         </h2>
         {editUrl && <EditSection className={styles.edit} title={title} section={readableSectionName!} url={editUrl} />}
       </div>

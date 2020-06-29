@@ -11,7 +11,7 @@ exports[`Component Examples renders FocusZone.HorizontalMenu.Example.tsx correct
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="menu"
+  role="menubar"
 >
   <button
     className=
@@ -41,7 +41,6 @@ exports[`Component Examples renders FocusZone.HorizontalMenu.Example.tsx correct
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -159,7 +158,6 @@ exports[`Component Examples renders FocusZone.HorizontalMenu.Example.tsx correct
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -277,7 +275,6 @@ exports[`Component Examples renders FocusZone.HorizontalMenu.Example.tsx correct
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -395,7 +392,6 @@ exports[`Component Examples renders FocusZone.HorizontalMenu.Example.tsx correct
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -513,7 +509,6 @@ exports[`Component Examples renders FocusZone.HorizontalMenu.Example.tsx correct
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;

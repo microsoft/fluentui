@@ -13,29 +13,29 @@ export const SELECTION_CHANGE = 'change';
 export enum SelectionMode {
   none = 0,
   single = 1,
-  multiple = 2
+  multiple = 2,
 }
 
 /**
  * {@docCategory Selection}
  */
-export interface ISelection {
+export interface ISelection<TItem = IObjectWithKey> {
   count: number;
   mode: SelectionMode;
 
-  canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
+  canSelectItem: (item: TItem, index?: number) => boolean;
 
   // Obesrvable methods.
   setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
 
   // Initialization methods.
 
-  setItems(items: IObjectWithKey[], shouldClear: boolean): void;
-  getItems(): IObjectWithKey[];
+  setItems(items: TItem[], shouldClear: boolean): void;
+  getItems(): TItem[];
 
   // Read selection methods.
 
-  getSelection(): IObjectWithKey[];
+  getSelection(): TItem[];
   getSelectedIndices(): number[];
   getSelectedCount(): number;
   isRangeSelected(fromIndex: number, count: number): boolean;
@@ -72,5 +72,5 @@ export interface ISelection {
  */
 export enum SelectionDirection {
   horizontal = 0,
-  vertical = 1
+  vertical = 1,
 }

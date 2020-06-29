@@ -1,7 +1,165 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 14 Nov 2019 12:30:52 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 16:07:40 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.13.0)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.18..@uifabric/styling_v7.13.0)
+
+### Minor changes
+
+- Add new rounded corners to theme ([PR #13635](https://github.com/microsoft/fluentui/pull/13635) by phkuo@microsoft.com)
+
+## [7.12.17](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.17)
+
+Wed, 10 Jun 2020 12:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.16..@uifabric/styling_v7.12.17)
+
+### Patches
+
+- ensure theme.ts is already included when importing from styling package ([PR #13537](https://github.com/microsoft/fluentui/pull/13537) by xgao@microsoft.com)
+
+## [7.12.16](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.16)
+
+Tue, 09 Jun 2020 12:35:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.15..@uifabric/styling_v7.12.16)
+
+### Patches
+
+- getGlobalClassNames: correct return type ([PR #13496](https://github.com/microsoft/fluentui/pull/13496) by xgao@microsoft.com)
+
+## [7.12.15](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.15)
+
+Tue, 02 Jun 2020 12:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.10..@uifabric/styling_v7.12.15)
+
+### Patches
+
+- Update styling package sideEffects to only the ones needed ([PR #13422](https://github.com/microsoft/fluentui/pull/13422) by xgao@microsoft.com)
+
+## [7.12.4](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.4)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.3..@uifabric/styling_v7.12.4)
+
+### Patches
+
+- Add selector to turn off high contrast adjustment in (only) Edge Chromium browser ([PR #13035](https://github.com/microsoft/fluentui/pull/13035) by xgao@microsoft.com)
+
+## [7.12.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.3)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.2..@uifabric/styling_v7.12.3)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.12.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.2)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.0..@uifabric/styling_v7.12.2)
+
+### Patches
+
+- Styling tsconfig: adding noImplicitAny and noUnusedLocals. ([PR #12994](https://github.com/microsoft/fluentui/pull/12994) by dzearing@microsoft.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.0)
+
+Wed, 29 Apr 2020 12:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.8..@uifabric/styling_v7.12.0)
+
+### Minor changes
+
+- update MessageBar colors ([PR #12821](https://github.com/microsoft/fluentui/pull/12821) by chrismo@microsoft.com)
+
+## [7.11.8](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.8)
+
+Wed, 22 Apr 2020 12:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.3..@uifabric/styling_v7.11.8)
+
+### Patches
+
+- remove outdated comment ([PR #12802](https://github.com/microsoft/fluentui/pull/12802) by phkuo@microsoft.com)
+
+## [7.11.3](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.11.3)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.11.2..@uifabric/styling_v7.11.3)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.11.0
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Minor changes
+
+- Adding bold font weight definition (dzearing@microsoft.com)
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.10.22
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.10.15
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Patches
+
+- Turning on tslint 'deprecation' rule. (Humberto.Morimoto@microsoft.com)
+## 7.10.2
+Wed, 22 Jan 2020 12:36:43 GMT
+
+### Patches
+
+- TextField: fix focused bottom border mis-alignment when errorMessage is set (v-jajach@microsoft.com)
+## 7.10.1
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.10.0
+Fri, 10 Jan 2020 12:31:47 GMT
+
+### Minor changes
+
+- add borderPosition param to getInputFocusStyle (xgao@microsoft.com)
+## 7.9.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- add getInputFocusStyle function to build styles for text input on focus (xgao@microsoft.com)
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 7.8.1
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Patches
+
+- createTheme: Pass through RTL if specified (mgodbolt@microsoft.com)
+## 7.8.0
+Tue, 24 Dec 2019 12:33:51 GMT
+
+### Minor changes
+
+- Export IIconSubsetRecord (elcraig@microsoft.com)
+## 7.7.4
+Fri, 06 Dec 2019 12:33:21 GMT
+
+### Patches
+
+- Making rest state accessible (betrue@microsoft.com)
 ## 7.7.3
 Thu, 14 Nov 2019 12:30:52 GMT
 
@@ -1500,4 +1658,3 @@ Fri, 21 Apr 2017 06:23:54 GMT
 ### Patches
 
 - Adding the initial styling package. Initial checkin, not meant to be consumed until we release a 1.0.0.
-

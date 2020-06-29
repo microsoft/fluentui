@@ -1,13 +1,20 @@
 import * as React from 'react';
 
 import { getId, classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../Utilities';
-import { Persona, PersonaSize, IPersonaStyleProps, IPersonaStyles, IPersonaCoinStyleProps, IPersonaCoinStyles } from '../../../../Persona';
+import {
+  Persona,
+  PersonaSize,
+  IPersonaStyleProps,
+  IPersonaStyles,
+  IPersonaCoinStyleProps,
+  IPersonaCoinStyles,
+} from '../../../../Persona';
 import { IconButton } from '../../../../Button';
 import { ValidationState } from '../../BasePicker.types';
 import {
   IPeoplePickerItemSelectedProps,
   IPeoplePickerItemSelectedStyleProps,
-  IPeoplePickerItemSelectedStyles
+  IPeoplePickerItemSelectedStyles,
 } from './PeoplePickerItem.types';
 import { getStyles } from './PeoplePickerItem.styles';
 
@@ -23,7 +30,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
     className,
     selected,
     disabled,
-    invalid: item.ValidationState === ValidationState.warning
+    invalid: item.ValidationState === ValidationState.warning,
   });
 
   const personaStyles = classNames.subComponentStyles

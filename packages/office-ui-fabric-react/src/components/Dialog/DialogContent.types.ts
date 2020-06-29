@@ -53,7 +53,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   className?: string;
 
   /**
-   * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
+   * Callback for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
    */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
@@ -69,6 +69,8 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
 
   /**
    * The Id for title container
+   *
+   * @deprecated use the `id` attribute in `titleProps` instead.
    */
   titleId?: string;
 
@@ -76,6 +78,11 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
    * The title text to display at the top of the dialog.
    */
   title?: string | JSX.Element;
+
+  /**
+   * The props for title container.
+   */
+  titleProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * Responsive mode passed in from decorator.
@@ -109,7 +116,7 @@ export enum DialogType {
   /** Dialog with large header banner */
   largeHeader = 1,
   /** Dialog with an 'x' close button in the upper-right corner */
-  close = 2
+  close = 2,
 }
 
 /**

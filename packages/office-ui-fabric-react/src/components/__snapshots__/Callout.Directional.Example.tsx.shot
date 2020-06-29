@@ -31,10 +31,6 @@ Array [
             background: #005a9e;
             border-color: #005a9e;
           }
-          & .ms-Checkbox-checkbox {
-            background: #0078d4;
-            border-color: #0078d4;
-          }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
             background: Window;
             border-color: Highlight;
@@ -54,8 +50,14 @@ Array [
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            color: WindowText;
+          }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            color: WindowText;
           }
     >
       <input
@@ -76,7 +78,7 @@ Array [
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-0"
+        id="checkbox-2"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -95,7 +97,6 @@ Array [
               font-size: 14px;
               font-weight: 400;
               position: relative;
-              text-align: left;
               user-select: none;
             }
             &::before {
@@ -107,7 +108,7 @@ Array [
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-0"
+        htmlFor="checkbox-2"
       >
         <div
           className=
@@ -134,6 +135,9 @@ Array [
               @media screen and (-ms-high-contrast: active){& {
                 background: Highlight;
                 border-color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           <i
@@ -169,6 +173,12 @@ Array [
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
+              }
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
         >
           Show beak
@@ -213,7 +223,7 @@ Array [
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider1"
+        htmlFor="Slider3"
       >
         Gap Space
       </label>
@@ -232,6 +242,7 @@ Array [
           aria-valuemax={30}
           aria-valuemin={0}
           aria-valuenow={0}
+          aria-valuetext="0"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
@@ -315,7 +326,7 @@ Array [
                 background-color: Highlight;
               }
           data-is-focusable={true}
-          id="Slider1"
+          id="Slider3"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -473,7 +484,7 @@ Array [
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider2"
+        htmlFor="Slider4"
       >
         Beak Width
       </label>
@@ -492,6 +503,7 @@ Array [
           aria-valuemax={50}
           aria-valuemin={10}
           aria-valuenow={16}
+          aria-valuetext="16"
           className=
               ms-Slider-slideBox
               ms-Slider-showValue
@@ -575,7 +587,7 @@ Array [
                 background-color: Highlight;
               }
           data-is-focusable={true}
-          id="Slider2"
+          id="Slider4"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -696,9 +708,7 @@ Array [
       </div>
     </div>
     <div
-      className=
-          ms-Dropdown-container
-
+      className="ms-Dropdown-container"
     >
       <label
         className=
@@ -725,14 +735,14 @@ Array [
               padding-top: 5px;
               word-wrap: break-word;
             }
-        id="Dropdown3-label"
+        id="Dropdown5-label"
       >
         Directional hint
       </label>
       <div
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="Dropdown3-label Dropdown3-option"
+        aria-labelledby="Dropdown5-label Dropdown5-option"
         className=
             ms-Dropdown
             {
@@ -765,19 +775,26 @@ Array [
               border-color: Highlight;
             }
             &:focus .ms-Dropdown-title {
-              border-color: #0078d4;
-              border-width: 2px;
               color: #201f1e;
-              left: -1px;
-              top: -1px;
             }
             @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-              background-color: Highlight;
-              border-color: Highlight;
-              color: HighlightText;
+              color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-              -ms-high-contrast-adjust: none;
+            &:focus:after {
+              border-radius: 2px;
+              border: 2px solid #0078d4;
+              box-sizing: border-box;
+              content: '';
+              height: 100%;
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:after {
+              border-color: Highlight;
+              color: Highlight;
             }
             &:active .ms-Dropdown-title {
               border-color: #0078d4;
@@ -793,10 +810,7 @@ Array [
               color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-              color: HighlightText;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-              -ms-high-contrast-adjust: none;
+              color: Highlight;
             }
             &:active .ms-Dropdown-caretDown {
               color: #323130;
@@ -817,7 +831,7 @@ Array [
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown3"
+        id="Dropdown5"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -839,7 +853,7 @@ Array [
               ms-Dropdown-title
               {
                 background-color: #ffffff;
-                border-color: #8a8886;
+                border-color: #605e5c;
                 border-radius: 2px;
                 border-style: solid;
                 border-width: 1px;
@@ -862,7 +876,7 @@ Array [
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown3-option"
+          id="Dropdown5-option"
           role="option"
         >
           Bottom Left Edge
@@ -946,7 +960,6 @@ Array [
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: 100%;
           }
           &::-moz-focus-inner {
@@ -1029,7 +1042,7 @@ Array [
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__4"
+            id="id__6"
           >
             Show callout
           </span>

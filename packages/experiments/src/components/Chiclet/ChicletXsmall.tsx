@@ -4,10 +4,10 @@ import { IChicletCardProps } from './ChicletCard.types';
 import { getStyles } from './ChicletXsmall.styles';
 import { ChicletXsmallBase } from './ChicletXsmall.base';
 
-export const ChicletXsmall: React.StatelessComponent<IChicletCardProps> = styled<
+export const ChicletXsmall: React.FunctionComponent<IChicletCardProps> = styled<
   IChicletCardProps,
   IChicletCardStyleProps,
   IChicletCardStyles
 >(ChicletXsmallBase, getStyles, undefined, {
-  scope: 'ChicletXsmall'
+  scope: 'ChicletXsmall',
 });

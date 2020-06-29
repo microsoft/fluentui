@@ -1,4 +1,5 @@
-import { IKeytipTransitionKey, transitionKeysAreEqual, transitionKeysContain, KeytipTransitionModifier } from './IKeytipTransitionKey';
+import { IKeytipTransitionKey, transitionKeysAreEqual, transitionKeysContain } from './IKeytipTransitionKey';
+import { KeyCodes } from '@uifabric/utilities';
 
 describe('IKeytipTransitionKey', () => {
   describe('transitionKeysAreEqual', () => {
@@ -12,16 +13,16 @@ describe('IKeytipTransitionKey', () => {
     });
 
     it('key and modifier equality', () => {
-      const key1: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeytipTransitionModifier.alt] };
+      const key1: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeyCodes.alt] };
       const key2: IKeytipTransitionKey = { key: 'a' };
-      const key3: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeytipTransitionModifier.ctrl] };
+      const key3: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeyCodes.ctrl] };
       const key4: IKeytipTransitionKey = {
         key: 'a',
-        modifierKeys: [KeytipTransitionModifier.alt, KeytipTransitionModifier.shift]
+        modifierKeys: [KeyCodes.alt, KeyCodes.shift],
       };
       const key5: IKeytipTransitionKey = {
         key: 'a',
-        modifierKeys: [KeytipTransitionModifier.shift, KeytipTransitionModifier.alt]
+        modifierKeys: [KeyCodes.shift, KeyCodes.alt],
       };
 
       expect(transitionKeysAreEqual(key1, key2)).toEqual(false);
@@ -46,13 +47,13 @@ describe('IKeytipTransitionKey', () => {
     });
 
     it('key and modifier', () => {
-      const key1: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeytipTransitionModifier.alt] };
+      const key1: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeyCodes.alt] };
 
-      const keys1: IKeytipTransitionKey[] = [{ key: 'a', modifierKeys: [KeytipTransitionModifier.alt] }];
-      const keys2: IKeytipTransitionKey[] = [{ key: 'b', modifierKeys: [KeytipTransitionModifier.alt] }];
+      const keys1: IKeytipTransitionKey[] = [{ key: 'a', modifierKeys: [KeyCodes.alt] }];
+      const keys2: IKeytipTransitionKey[] = [{ key: 'b', modifierKeys: [KeyCodes.alt] }];
       const keys3: IKeytipTransitionKey[] = [
-        { key: 'a', modifierKeys: [KeytipTransitionModifier.alt, KeytipTransitionModifier.ctrl] },
-        { key: 'a', modifierKeys: [KeytipTransitionModifier.alt] }
+        { key: 'a', modifierKeys: [KeyCodes.alt, KeyCodes.ctrl] },
+        { key: 'a', modifierKeys: [KeyCodes.alt] },
       ];
 
       expect(transitionKeysContain(keys1, key1)).toEqual(true);

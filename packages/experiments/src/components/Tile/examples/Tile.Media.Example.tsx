@@ -8,7 +8,7 @@ import {
   MentionSignal,
   Tile,
   getTileLayout,
-  renderTileWithLayout
+  renderTileWithLayout,
 } from '@uifabric/experiments';
 import { lorem } from '@uifabric/example-data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
@@ -18,74 +18,82 @@ const ITEMS: { name: JSX.Element; activity: JSX.Element }[] = [
     name: <>{lorem(2)}</>,
     activity: (
       <>
-        <span className={TileExampleStylesModule.activityBlock}>267&#x205F;&times;&#x205F;200&ensp;&middot;&ensp;3.14&nbsp;MB</span>
+        <span className={TileExampleStylesModule.activityBlock}>
+          267&#x205F;&times;&#x205F;200&ensp;&middot;&ensp;3.14&nbsp;MB
+        </span>
         <SignalField
           before={[
             <Signal key={0}>
               <Icon iconName="play" />
             </Signal>,
-            <MentionSignal key={1} />
+            <MentionSignal key={1} />,
           ]}
         >
           {lorem(6)}
         </SignalField>
       </>
-    )
+    ),
   },
   {
     name: <>{lorem(2)}</>,
     activity: (
       <>
-        <span className={TileExampleStylesModule.activityBlock}>200&#x205F;&times;&#x205F;267&ensp;&middot;&ensp;3.14&nbsp;MB</span>
+        <span className={TileExampleStylesModule.activityBlock}>
+          200&#x205F;&times;&#x205F;267&ensp;&middot;&ensp;3.14&nbsp;MB
+        </span>
         <SignalField
           before={[
             <Signal key={0}>
               <Icon iconName="play" />
             </Signal>,
-            <SharedSignal key={1} />
+            <SharedSignal key={1} />,
           ]}
         >
           {lorem(6)}
         </SignalField>
       </>
-    )
+    ),
   },
   {
     name: <>{lorem(2)}</>,
     activity: (
       <>
-        <span className={TileExampleStylesModule.activityBlock}>200&#x205F;&times;&#x205F;200&ensp;&middot;&ensp;3.14&nbsp;MB</span>
+        <span className={TileExampleStylesModule.activityBlock}>
+          200&#x205F;&times;&#x205F;200&ensp;&middot;&ensp;3.14&nbsp;MB
+        </span>
         <SignalField
           before={[
             <Signal key={0}>
               <Icon iconName="play" />
             </Signal>,
-            <MentionSignal key={1} />
+            <MentionSignal key={1} />,
           ]}
         >
           {lorem(6)}
         </SignalField>
       </>
-    )
+    ),
   },
   {
     name: <>{lorem(2)}</>,
     activity: (
       <>
-        <span className={TileExampleStylesModule.activityBlock}>180&#x205F;&times;&#x205F;180&ensp;&middot;&ensp;3.14&nbsp;MB</span>
+        <span className={TileExampleStylesModule.activityBlock}>
+          180&#x205F;&times;&#x205F;180&ensp;&middot;&ensp;3.14&nbsp;MB
+        </span>
         <SignalField
           before={[
             <Signal key={0}>
               <Icon iconName="play" />
             </Signal>,
-            <SharedSignal key={1} />
+            <SharedSignal key={1} />,
           ]}
         >
           {lorem(6)}
         </SignalField>
       </>
-    )
-  }
+    ),
+  },
 ];
 
 // tslint:disable-next-line:no-any
@@ -96,10 +104,12 @@ interface IImageTileProps {
   originalImageSize: ISize;
   showBackground: boolean;
   nameplateOnlyOnHover: boolean;
+  linkHref?: string;
+  linkTarget?: string;
   item: typeof ITEMS[0];
 }
 
-const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileProps): JSX.Element => {
+const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTileProps): JSX.Element => {
   const tile = (
     <Tile
       contentSize={props.tileSize}
@@ -111,6 +121,8 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
       hideBackground={!props.showBackground}
       showBackgroundFrame={true}
       nameplateOnlyOnHover={props.nameplateOnlyOnHover}
+      href={props.linkHref}
+      target={props.linkTarget}
     />
   );
 
@@ -119,7 +131,7 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
   const imageSize = fitContentToBounds({
     contentSize: props.originalImageSize,
     boundsSize: backgroundSize || { width: 0, height: 0 },
-    mode: 'cover'
+    mode: 'cover',
   });
 
   return (
@@ -128,7 +140,7 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
       // tslint:disable-next-line:jsx-ban-props
       style={{
         width: `${props.tileSize.width}px`,
-        height: `${props.tileSize.height}px`
+        height: `${props.tileSize.height}px`,
       }}
     >
       {renderTileWithLayout(tile, {
@@ -137,7 +149,7 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
             className={css(TileExampleStyles.tileImage)}
             src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
           />
-        )
+        ),
       })}
     </div>
   );
@@ -146,6 +158,8 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
 export interface ITileMediaExampleState {
   imagesLoaded: boolean;
   nameplateOnlyOnHover: boolean;
+  generateLinks: boolean;
+  linkInNewTab: boolean;
 }
 
 export class TileMediaExample extends React.Component<{}, ITileMediaExampleState> {
@@ -154,58 +168,80 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
 
     this.state = {
       imagesLoaded: true,
-      nameplateOnlyOnHover: false
+      nameplateOnlyOnHover: false,
+      generateLinks: false,
+      linkInNewTab: false,
     };
   }
 
   public render(): JSX.Element {
-    const { imagesLoaded, nameplateOnlyOnHover } = this.state;
+    const { imagesLoaded, nameplateOnlyOnHover, generateLinks, linkInNewTab } = this.state;
+    const exampleUrl = 'http://www.contoso.com/';
+    const linkHref = generateLinks ? exampleUrl : undefined;
+    const linkTarget = generateLinks && linkInNewTab ? '_blank' : undefined;
 
     return (
       <div>
         <Checkbox label="Show images as loaded" checked={imagesLoaded} onChange={this._onImagesLoadedChanged} />
-        <Checkbox label="Show nameplate only on hover" checked={nameplateOnlyOnHover} onChange={this._onNameplateOnlyOnHoverChanged} />
+        <Checkbox
+          label="Show nameplate only on hover"
+          checked={nameplateOnlyOnHover}
+          onChange={this._onNameplateOnlyOnHoverChanged}
+        />
+        <Checkbox label="Generate links" checked={generateLinks} onChange={this._onGenerateLinksChanged} />
+        <Checkbox
+          label="Open links in new tab"
+          disabled={!generateLinks}
+          checked={linkInNewTab}
+          onChange={this._onLinkInNewTabChanged}
+        />
         <h3>Landscape</h3>
         <ImageTile
           tileSize={{
             width: 250,
-            height: 200
+            height: 200,
           }}
           item={ITEMS[0]}
           originalImageSize={{
             width: 400,
-            height: 300
+            height: 300,
           }}
           showBackground={imagesLoaded}
           nameplateOnlyOnHover={nameplateOnlyOnHover}
+          linkHref={linkHref}
+          linkTarget={linkTarget}
         />
         <h3>Portrait</h3>
         <ImageTile
           tileSize={{
             width: 200,
-            height: 250
+            height: 250,
           }}
           item={ITEMS[1]}
           originalImageSize={{
             width: 300,
-            height: 400
+            height: 400,
           }}
           showBackground={imagesLoaded}
           nameplateOnlyOnHover={nameplateOnlyOnHover}
+          linkHref={linkHref}
+          linkTarget={linkTarget}
         />
         <h3>Small Image</h3>
         <ImageTile
           tileSize={{
             width: 200,
-            height: 200
+            height: 200,
           }}
           item={ITEMS[2]}
           originalImageSize={{
             width: 16,
-            height: 16
+            height: 16,
           }}
           showBackground={imagesLoaded}
           nameplateOnlyOnHover={nameplateOnlyOnHover}
+          linkHref={linkHref}
+          linkTarget={linkTarget}
         />
         <h3>No preview</h3>
         <div className={css(TileExampleStyles.tile, TileExampleStyles.largeTile)}>
@@ -215,6 +251,8 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
             foreground={<Icon iconName="play" style={{ margin: '11px', fontSize: '40px' }} />}
             showBackgroundFrame={true}
             nameplateOnlyOnHover={this.state.nameplateOnlyOnHover}
+            href={linkHref}
+            target={linkTarget}
           />
         </div>
       </div>
@@ -223,13 +261,25 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
 
   private _onImagesLoadedChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
-      imagesLoaded: checked
+      imagesLoaded: checked,
     });
   };
 
   private _onNameplateOnlyOnHoverChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
-      nameplateOnlyOnHover: checked
+      nameplateOnlyOnHover: checked,
+    });
+  };
+
+  private _onGenerateLinksChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      generateLinks: checked,
+    });
+  };
+
+  private _onLinkInNewTabChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      linkInNewTab: checked,
     });
   };
 }

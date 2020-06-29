@@ -1,22 +1,6 @@
 import * as React from 'react';
 import { DefaultButton, FocusTrapZone, Callout, DirectionalHint } from 'office-ui-fabric-react';
-import { Calendar, DayOfWeek } from '@uifabric/date-time';
-
-const DayPickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  goToToday: 'Go to today',
-  weekNumberFormatString: 'Week number {0}',
-  prevMonthAriaLabel: 'Previous month',
-  nextMonthAriaLabel: 'Next month',
-  prevYearAriaLabel: 'Previous year',
-  nextYearAriaLabel: 'Next year',
-  prevYearRangeAriaLabel: 'Previous year range',
-  nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close'
-};
+import { Calendar, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
 
 export interface ICalendarButtonExampleState {
   showCalendar: boolean;
@@ -39,7 +23,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
     isDayPickerVisible: true,
     isMonthPickerVisible: true,
     showGoToToday: true,
-    buttonString: 'Click for Calendar'
+    buttonString: 'Click for Calendar',
   };
 
   private _calendarButtonElement: HTMLElement;
@@ -49,7 +33,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
 
     this.state = {
       showCalendar: false,
-      selectedDate: null
+      selectedDate: null,
     };
 
     this._onClick = this._onClick.bind(this);
@@ -84,7 +68,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
                 isMonthPickerVisible={this.props.isMonthPickerVisible}
                 value={this.state.selectedDate!}
                 firstDayOfWeek={DayOfWeek.Sunday}
-                strings={DayPickerStrings}
+                strings={defaultDayPickerStrings}
                 isDayPickerVisible={this.props.isDayPickerVisible}
                 highlightCurrentMonth={this.props.highlightCurrentMonth}
                 highlightSelectedMonth={this.props.highlightSelectedMonth}

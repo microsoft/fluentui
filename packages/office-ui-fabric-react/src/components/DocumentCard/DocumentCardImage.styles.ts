@@ -15,16 +15,16 @@ export const getStyles = (props: IDocumentCardImageStyleProps): IDocumentCardIma
         backgroundColor: palette.neutralLighterAlt,
         overflow: `hidden`,
         height: height && `${height}px`,
-        width: width && `${width}px`
+        width: width && `${width}px`,
       },
-      className
+      className,
     ],
     centeredIcon: [
       {
         height: centeredIconSize,
         width: centeredIconSize,
-        fontSize: centeredIconSize
-      }
+        fontSize: centeredIconSize,
+      },
     ],
     centeredIconWrapper: [
       {
@@ -35,8 +35,8 @@ export const getStyles = (props: IDocumentCardImageStyleProps): IDocumentCardIma
         width: '100%',
         position: 'absolute',
         top: 0,
-        left: 0
-      }
+        left: 0,
+      },
     ],
     cornerIcon: [
       {
@@ -46,8 +46,8 @@ export const getStyles = (props: IDocumentCardImageStyleProps): IDocumentCardIma
         width: cornerIconSize,
         fontSize: cornerIconSize,
         position: 'absolute',
-        overflow: 'visible'
-      }
-    ]
+        overflow: 'visible',
+      },
+    ],
   };
 };

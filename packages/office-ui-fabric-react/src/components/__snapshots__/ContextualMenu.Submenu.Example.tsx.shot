@@ -68,7 +68,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               align-items: stretch;
               background: #ffffff;
               border-radius: 2px;
-              border: 1px solid #8a8886;
+              border: 1px solid #605e5c;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -206,7 +206,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -319,10 +318,14 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               margin-right: 4px;
               margin-top: 0;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="ChevronDown"
         role="presentation"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons\\"",
+          }
+        }
       >
         
       </i>

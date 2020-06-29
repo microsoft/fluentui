@@ -11,15 +11,15 @@ const StackItemView: IStackItemComponent['view'] = props => {
   }
 
   const Slots = getSlots<IStackItemProps, IStackItemSlots>(props, {
-    root: 'div'
+    root: 'div',
   });
 
   return <Slots.root>{children}</Slots.root>;
 };
 
-export const StackItem: React.StatelessComponent<IStackItemProps> = createComponent(StackItemView, {
+export const StackItem: React.FunctionComponent<IStackItemProps> = createComponent(StackItemView, {
   displayName: 'StackItem',
-  styles
+  styles,
 });
 
 export default StackItem;

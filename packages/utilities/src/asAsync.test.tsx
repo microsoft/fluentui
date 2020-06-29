@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 
 describe('asAsync', () => {
   it('can async load exports', (done: () => undefined) => {
-    let _resolve: (result: React.ReactType<{}>) => void = () => undefined;
+    let _resolve: (result: React.ElementType<{}>) => void = () => undefined;
     let _loadCalled = false;
     // tslint:disable-next-line:no-any
     const loadThingPromise = new Promise<any>((resolve: any) => {
@@ -15,17 +15,18 @@ describe('asAsync', () => {
       load: () => {
         _loadCalled = true;
         return loadThingPromise;
-      }
+      },
     });
     const wrapper = mount(<AsyncThing />);
 
     expect(_loadCalled).toBe(true);
-    expect(wrapper.text()).toBeNull();
+    expect(wrapper.text()).toBeFalsy();
     expect(_resolve).toBeTruthy();
 
     _resolve(() => <div>thing</div>);
 
     process.nextTick(() => {
+      wrapper.update();
       expect(wrapper.text()).toEqual('thing');
       _loadCalled = false;
 
@@ -38,7 +39,7 @@ describe('asAsync', () => {
   });
 
   it('can async load with placeholder', (done: () => undefined) => {
-    let _resolve: (result: React.ReactType<{}>) => void = () => undefined;
+    let _resolve: (result: React.ElementType<{}>) => void = () => undefined;
     let _loadCalled = false;
     // tslint:disable-next-line:no-any
     const loadThingPromise = new Promise<any>((resolve: any) => {
@@ -49,7 +50,7 @@ describe('asAsync', () => {
       load: () => {
         _loadCalled = true;
         return loadThingPromise;
-      }
+      },
     });
     // tslint:disable:jsx-no-lambda
     const wrapper = mount(<AsyncThing asyncPlaceholder={() => <div>placeholder</div>} />);
@@ -61,6 +62,7 @@ describe('asAsync', () => {
     _resolve(() => <div>thing</div>);
 
     process.nextTick(() => {
+      wrapper.update();
       expect(wrapper.text()).toEqual('thing');
       done();
     });

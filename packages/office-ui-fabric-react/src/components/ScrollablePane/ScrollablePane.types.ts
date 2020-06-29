@@ -99,7 +99,7 @@ export interface IScrollablePaneStyles {
  */
 export const ScrollbarVisibility = {
   auto: 'auto' as 'auto',
-  always: 'always' as 'always'
+  always: 'always' as 'always',
 };
 
 /**

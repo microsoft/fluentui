@@ -18,6 +18,7 @@ exports[`Card Item renders correctly 1`] = `
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -33,6 +34,9 @@ exports[`Card Item renders correctly 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -80,6 +84,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -95,6 +100,9 @@ exports[`Card Item renders correctly when filling up the margins while being the
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -167,6 +175,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -182,6 +191,9 @@ exports[`Card Item renders correctly when filling up the margins while being the
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -254,6 +266,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -269,6 +282,9 @@ exports[`Card Item renders correctly when filling up the margins while being the
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -341,6 +357,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -356,6 +373,9 @@ exports[`Card Item renders correctly when filling up the margins while being the
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -428,6 +448,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -443,6 +464,9 @@ exports[`Card Item renders correctly when filling up the margins while being the
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -540,6 +564,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -555,6 +580,9 @@ exports[`Card Item renders correctly when filling up the margins while being the
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -652,6 +680,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -667,6 +696,9 @@ exports[`Card Item renders correctly when filling up the margins while being the
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -714,6 +746,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -729,6 +762,9 @@ exports[`Card Item renders correctly when filling up the margins while being the
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=
@@ -776,6 +812,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
         justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
+        outline: none;
         transition: box-shadow 0.5s ease;
         width: auto;
       }
@@ -791,6 +828,9 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={-1}
 >
   <div
     className=

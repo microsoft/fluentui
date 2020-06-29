@@ -6,8 +6,9 @@ import {
   IDetailsFooterProps,
   DetailsRow,
   SelectionMode,
-  IDetailsRowCheckProps,
-  DetailsRowCheck
+  DetailsRowCheck,
+  IDetailsRowBaseProps,
+  IDetailsRowCheckStyles,
 } from 'office-ui-fabric-react/lib/DetailsList';
 
 export interface IDetailsListCustomFooterExampleItem {
@@ -28,13 +29,13 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
       this._items.push({
         key: i,
         name: 'Item ' + i,
-        value: i
+        value: i,
       });
     }
 
     this._columns = [
       { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
-      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
     ];
   }
 
@@ -71,14 +72,19 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
   }
 }
 
-function _renderDetailsFooterItemColumn(item: IDetailsListCustomFooterExampleItem, index: number, column: IColumn) {
-  return (
-    <div>
-      <b>{column.name}</b>
-    </div>
-  );
-}
+const _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn'] = (item, index, column) => {
+  if (column) {
+    return (
+      <div>
+        <b>{column.name}</b>
+      </div>
+    );
+  }
+  return undefined;
+};
 
-function _onRenderCheckForFooterRow(props: IDetailsRowCheckProps): JSX.Element {
-  return <DetailsRowCheck {...props} styles={{ root: { visibility: 'hidden' } }} selected={true} />;
-}
+const detailsRowCheckStyles: Partial<IDetailsRowCheckStyles> = { root: { visibility: 'hidden' } };
+
+const _onRenderCheckForFooterRow: IDetailsRowBaseProps['onRenderCheck'] = (props): JSX.Element => {
+  return <DetailsRowCheck {...props} styles={detailsRowCheckStyles} selected={true} />;
+};

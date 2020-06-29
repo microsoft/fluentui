@@ -5,13 +5,13 @@ import { PivotItem, IPivotItemProps, Pivot } from 'office-ui-fabric-react/lib/Pi
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
-  root: { marginTop: 10 }
+  root: { marginTop: 10 },
 };
 
 export const PivotIconCountExample: React.FunctionComponent = () => {
   return (
     <div>
-      <Pivot>
+      <Pivot aria-label="Count and Icon Pivot Example">
         <PivotItem headerText="My Files" itemCount={42} itemIcon="Emoji2">
           <Label styles={labelStyles}>Pivot #1</Label>
         </PivotItem>

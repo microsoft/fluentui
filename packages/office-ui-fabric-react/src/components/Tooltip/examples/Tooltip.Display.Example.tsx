@@ -1,36 +1,46 @@
 import * as React from 'react';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { TooltipHost, ITooltipHostStyles } from 'office-ui-fabric-react/lib/Tooltip';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { useId } from '@uifabric/react-hooks';
 
-export class TooltipDisplayExample extends React.Component<any, any> {
-  // Use getId() to ensure that the IDs are unique on the page.
-  // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
-  private _host1Id: string = getId('tooltipHost1');
-  private _host2Id: string = getId('tooltipHost2');
+const theme = getTheme();
+const buttonStyle = { fontSize: theme.fonts.medium.fontSize, padding: 10 };
+const calloutProps = { gapSpace: 0 };
 
-  public render(): JSX.Element {
-    return (
-      <div>
-        <p>
-          In some cases when TooltipHost is wrapping inline-block or inline elements the positioning of the Tooltip may be off so it is
-          recommended to modify the display property of the TooltipHost as in the following example.
-        </p>
-        <TooltipHost content="Incorrect positioning" id={this._host1Id} calloutProps={{ gapSpace: 0 }}>
-          <button style={{ fontSize: '2em' }} aria-describedby={this._host1Id}>
-            Hover Over Me
-          </button>
-        </TooltipHost>{' '}
-        <TooltipHost
-          content="Correct positioning"
-          styles={{ root: { display: 'inline-block' } }}
-          id={this._host2Id}
-          calloutProps={{ gapSpace: 0 }}
-        >
-          <button style={{ fontSize: '2em' }} aria-describedby={this._host2Id}>
-            Hover Over Me
-          </button>
-        </TooltipHost>
-      </div>
-    );
-  }
-}
+// Important for correct positioning--see below
+const inlineBlockStyle: Partial<ITooltipHostStyles> = {
+  root: { display: 'inline-block' },
+};
+
+export const TooltipDisplayExample: React.FunctionComponent = () => {
+  // Use useId() to ensure that the ID is unique on the page.
+  // (It's also okay to use a plain string and manually ensure uniqueness.)
+  const tooltip1Id = useId('tooltip1');
+  const tooltip2Id = useId('tooltip2');
+
+  return (
+    <div>
+      In some cases when a TooltipHost is wrapping <code>inline-block</code> or <code>inline</code> elements, the
+      positioning of the Tooltip may be off. In these cases, it's recommended to set the TooltipHost's{' '}
+      <code>display</code> property to <code>inline-block</code>, as in the following example.
+      <br />
+      <br />
+      <TooltipHost content="Incorrect positioning" id={tooltip1Id} calloutProps={calloutProps}>
+        <button style={buttonStyle} aria-describedby={tooltip1Id}>
+          Hover for incorrect positioning
+        </button>
+      </TooltipHost>{' '}
+      <TooltipHost
+        content="Correct positioning"
+        // This is the important part!
+        styles={inlineBlockStyle}
+        id={tooltip2Id}
+        calloutProps={calloutProps}
+      >
+        <button style={buttonStyle} aria-describedby={tooltip2Id}>
+          Hover for correct positioning
+        </button>
+      </TooltipHost>
+    </div>
+  );
+};

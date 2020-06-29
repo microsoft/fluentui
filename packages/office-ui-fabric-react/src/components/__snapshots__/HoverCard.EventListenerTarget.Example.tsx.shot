@@ -62,7 +62,6 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: 32px;
           }
           &::-moz-focus-inner {
@@ -152,19 +151,21 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Emoji2"
           role="presentation"
+          style={
+            Object {
+              "fontFamily": "\\"FabricMDL2Icons-0\\"",
+            }
+          }
         >
           
         </i>
       </span>
     </button>
     <div
-      className=
-          ms-HoverCard-host
-
+      className="ms-HoverCard-host"
       data-is-focusable={true}
     />
   </span>

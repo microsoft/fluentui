@@ -1,35 +1,38 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { TooltipHost, TooltipDelay, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  TooltipHost,
+  TooltipDelay,
+  DirectionalHint,
+  ITooltipProps,
+  ITooltipHostStyles,
+} from 'office-ui-fabric-react/lib/Tooltip';
+import { useId } from '@uifabric/react-hooks';
 
-export class TooltipCustomExample extends React.Component<any, any> {
-  // Use getId() to ensure that the ID is unique on the page.
-  // (It's also okay to use a plain string without getId() and manually ensure uniqueness.)
-  private _hostId: string = getId('tooltipHost');
+const tooltipProps: ITooltipProps = {
+  onRenderContent: () => (
+    <ul style={{ margin: 10, padding: 0 }}>
+      <li>1. One</li>
+      <li>2. Two</li>
+    </ul>
+  ),
+};
+const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 
-  public render(): JSX.Element {
-    return (
-      <TooltipHost
-        tooltipProps={{
-          onRenderContent: () => {
-            return (
-              <div>
-                <ul style={{ margin: 0, padding: 0 }}>
-                  <li>1. One</li>
-                  <li>2. Two</li>
-                </ul>
-              </div>
-            );
-          }
-        }}
-        delay={TooltipDelay.zero}
-        id={this._hostId}
-        directionalHint={DirectionalHint.bottomCenter}
-        styles={{ root: { display: 'inline-block' } }}
-      >
-        <DefaultButton aria-describedby={this._hostId} text="Hover Over Me" />
-      </TooltipHost>
-    );
-  }
-}
+export const TooltipCustomExample: React.FunctionComponent = () => {
+  // Use useId() to ensure that the ID is unique on the page.
+  // (It's also okay to use a plain string and manually ensure uniqueness.)
+  const tooltipId = useId('tooltip');
+
+  return (
+    <TooltipHost
+      tooltipProps={tooltipProps}
+      delay={TooltipDelay.zero}
+      id={tooltipId}
+      directionalHint={DirectionalHint.bottomCenter}
+      styles={hostStyles}
+    >
+      <DefaultButton aria-describedby={tooltipId} text="Hover over me" />
+    </TooltipHost>
+  );
+};

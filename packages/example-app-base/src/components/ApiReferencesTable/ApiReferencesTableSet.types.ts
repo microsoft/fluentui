@@ -24,6 +24,9 @@ export interface IApiReferencesTableSetProps extends React.HTMLAttributes<HTMLEl
    * allows customizing the table to work on other sites too.
    */
   tokenResolver?: TokenResolver;
+
+  /** Show all tables on page load */
+  showAll?: boolean;
 }
 
 /**

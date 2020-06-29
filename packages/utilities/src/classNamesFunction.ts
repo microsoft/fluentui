@@ -1,8 +1,12 @@
 import { mergeCssSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { getRTL } from './rtl';
+import { getWindow } from './dom';
+import { StyleFunction } from './styled';
 
 const MAX_CACHE_COUNT = 50;
+const DEFAULT_SPECIFICITY_MULTIPLIER = 5;
+
 let _memoizedClassNames = 0;
 
 const stylesheet = Stylesheet.getInstance();
@@ -23,11 +27,23 @@ interface IRecursiveMemoNode extends Map<any, IRecursiveMemoNode> {
   [RetVal]?: string;
 }
 
+type AppWindow = (Window & { FabricConfig?: { enableClassNameCacheFullWarning?: boolean } }) | undefined;
+
 export interface IClassNamesFunctionOptions {
   /**
    * Disables class caching for scenarios where styleProp parts mutate frequently.
    */
   disableCaching?: boolean;
+
+  /**
+   * Size of the cache. It overwrites default cache size when defined.
+   */
+  cacheSize?: number;
+
+  /**
+   * Set to true if component base styles are implemented in scss instead of css-in-js.
+   */
+  useStaticStyles?: boolean;
 }
 
 /**
@@ -39,8 +55,11 @@ export interface IClassNamesFunctionOptions {
  * these will cause extra recalcs to occur.
  */
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(
-  options: IClassNamesFunctionOptions = {}
-): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet> {
+  options: IClassNamesFunctionOptions = {},
+): (
+  getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
+  styleProps?: TStyleProps,
+) => IProcessedStyleSet<TStyleSet> {
   // We build a trie where each node is a Map. The map entry key represents an argument
   // value, and the entry value is another node (Map). Each node has a `__retval__`
   // property which is used to hold the cached response.
@@ -49,16 +68,29 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   // exist in the trie. At the last node, if there is a `__retval__` we return that. Otherwise
   // we call the `getStyles` api to evaluate, cache on the property, and return that.
   let map: IRecursiveMemoNode = new Map();
-  let resultCount = 0;
+  let styleCalcCount = 0;
+  let getClassNamesCount = 0;
   let currentMemoizedClassNames = _memoizedClassNames;
 
   const getClassNames = (
     styleFunctionOrObject: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
-    styleProps: TStyleProps = {} as TStyleProps
+    styleProps: TStyleProps = {} as TStyleProps,
   ): IProcessedStyleSet<TStyleSet> => {
+    // If useStaticStyles is true, styleFunctionOrObject returns slot to classname mappings.
+    // If there is also no style overrides, we can skip merge styles completely and
+    // simply return the result from the style funcion.
+    if (
+      options.useStaticStyles &&
+      typeof styleFunctionOrObject === 'function' &&
+      (styleFunctionOrObject as StyleFunction<TStyleProps, TStyleSet>).__noStyleOverride__
+    ) {
+      return styleFunctionOrObject(styleProps) as IProcessedStyleSet<TStyleSet>;
+    }
+
+    getClassNamesCount++;
     let current: Map<any, any> = map;
     const { theme } = styleProps as any;
-    const rtl = (theme && theme.rtl) || getRTL();
+    const rtl = theme && theme.rtl !== undefined ? theme.rtl : getRTL();
 
     const disableCaching = options.disableCaching;
 
@@ -66,7 +98,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     if (currentMemoizedClassNames !== _memoizedClassNames) {
       currentMemoizedClassNames = _memoizedClassNames;
       map = new Map();
-      resultCount = 0;
+      styleCalcCount = 0;
     }
 
     if (!options.disableCaching) {
@@ -80,34 +112,34 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       } else {
         (current as any)[RetVal] = mergeCssSets(
           [
-            (typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject) as IStyleSet<
-              TStyleSet
-            >
+            (typeof styleFunctionOrObject === 'function'
+              ? styleFunctionOrObject(styleProps)
+              : styleFunctionOrObject) as IStyleSet<TStyleSet>,
           ],
-          { rtl: !!rtl }
+          { rtl: !!rtl, specificityMultiplier: options.useStaticStyles ? DEFAULT_SPECIFICITY_MULTIPLIER : undefined },
         );
       }
 
       if (!disableCaching) {
-        resultCount++;
+        styleCalcCount++;
       }
     }
 
-    if (resultCount > MAX_CACHE_COUNT) {
+    if (styleCalcCount > (options.cacheSize || MAX_CACHE_COUNT)) {
+      const win = getWindow() as AppWindow;
+      if (win?.FabricConfig?.enableClassNameCacheFullWarning) {
+        console.warn(
+          `Styles are being recalculated too frequently. Cache miss rate is ${styleCalcCount}/${getClassNamesCount}.`,
+        );
+        // tslint:disable-next-line:no-console
+        console.trace();
+      }
+
       map.clear();
-      resultCount = 0;
+      styleCalcCount = 0;
 
       // Mutate the options passed in, that's all we can do.
       options.disableCaching = true;
-
-      // Note: this code is great for debugging problems with styles being recaculated, but commenting it out
-      // to avoid confusing consumers.
-
-      // if (process.env.NODE_ENV !== 'production') {
-      //  console.log('Styles are being recalculated far too frequently. Something is mutating the class over and over.');
-      //  // tslint:disable-next-line:no-console
-      //  console.trace();
-      // }
     }
 
     // Note: the RetVal is an attached property on the Map; not a key in the Map. We use this attached property to
@@ -129,12 +161,17 @@ function _traverseEdge(current: Map<any, any>, value: any): Map<any, any> {
 }
 
 function _traverseMap(current: Map<any, any>, inputs: any[] | Object): Map<any, any> {
-  // The styled helper will generate the styles function and will attach the cached
-  // inputs (consisting of the default styles, customzied styles, and user provided styles.)
-  // These should be used as cache keys for deriving the memoized value.
-  if (typeof inputs === 'function' && (inputs as any).__cachedInputs__) {
-    for (const input of (inputs as any).__cachedInputs__) {
-      current = _traverseEdge(current, input);
+  if (typeof inputs === 'function') {
+    const cachedInputsFromStyled = (inputs as StyleFunction<any, any>).__cachedInputs__;
+    if (cachedInputsFromStyled) {
+      // The styled helper will generate the styles function and will attach the cached
+      // inputs (consisting of the default styles, customzied styles, and user provided styles.)
+      // These should be used as cache keys for deriving the memoized value.
+      for (const input of (inputs as any).__cachedInputs__) {
+        current = _traverseEdge(current, input);
+      }
+    } else {
+      current = _traverseEdge(current, inputs);
     }
   } else if (typeof inputs === 'object') {
     for (const propName in inputs) {

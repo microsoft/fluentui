@@ -16,7 +16,7 @@ export const getStyles = memoizeFunction(
         height: '32px',
         backgroundColor: 'transparent',
         border: 'none',
-        color: semanticColors.link
+        color: semanticColors.link,
       },
 
       rootHovered: {
@@ -25,40 +25,40 @@ export const getStyles = memoizeFunction(
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Highlight',
-            color: 'Highlight'
-          }
-        }
+            color: 'Highlight',
+          },
+        },
       },
 
       rootHasMenu: {
-        width: 'auto'
+        width: 'auto',
       },
 
       rootPressed: {
         color: palette.themeDark,
-        backgroundColor: palette.neutralLight
+        backgroundColor: palette.neutralLight,
       },
 
       rootExpanded: {
         color: palette.themeDark,
-        backgroundColor: palette.neutralLight
+        backgroundColor: palette.neutralLight,
       },
 
       rootChecked: {
         color: palette.themeDark,
-        backgroundColor: palette.neutralLight
+        backgroundColor: palette.neutralLight,
       },
 
       rootCheckedHovered: {
         color: palette.themeDark,
-        backgroundColor: palette.neutralQuaternaryAlt
+        backgroundColor: palette.neutralQuaternaryAlt,
       },
 
       rootDisabled: {
-        color: palette.neutralTertiaryAlt
-      }
+        color: palette.neutralTertiaryAlt,
+      },
     };
 
     return concatStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
-  }
+  },
 );

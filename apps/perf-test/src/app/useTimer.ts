@@ -34,6 +34,6 @@ export const useTimer = () => {
   return {
     duration,
     isVisible,
-    setIsRunning
+    setIsRunning,
   };
 };

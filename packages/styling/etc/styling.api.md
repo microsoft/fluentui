@@ -39,7 +39,7 @@ export function buildClassMap<T extends Object>(styles: T): {
 };
 
 // Warning: (ae-forgotten-export) The symbol "IColorClassNames" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export const ColorClassNames: IColorClassNames;
 
@@ -61,6 +61,9 @@ export const DefaultFontStyles: IFontStyles;
 
 // @public (undocumented)
 export const DefaultPalette: IPalette;
+
+// @public (undocumented)
+export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active) and (forced-colors: active)";
 
 // @public
 export function focusClear(): IRawStyle;
@@ -119,6 +122,11 @@ export namespace FontWeights {
 }
 
 // @public
+export function getEdgeChromiumNoHighContrastAdjustSelector(): {
+    [EdgeChromiumHighContrastSelector]: IRawStyle;
+};
+
+// @public
 export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
 
 // @public
@@ -131,13 +139,16 @@ export function getFocusStyle(theme: ITheme, options?: IGetFocusStylesOptions): 
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
 
 // @public
-export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): Partial<GlobalClassNames<T>>;
+export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): GlobalClassNames<T>;
 
 // @public
 export function getIcon(name?: string): IIconRecord | undefined;
 
 // @public
 export function getIconClassName(name: string): string;
+
+// @public
+export const getInputFocusStyle: (borderColor: string, borderRadius: string | number, borderType?: "border" | "borderBottom", borderPosition?: number) => IRawStyle;
 
 // @public
 export function getPlaceholderStyles(styles: IStyle): IStyle;
@@ -149,7 +160,7 @@ export function getScreenSelector(min: number, max: number): string;
 export function getTheme(depComments?: boolean): ITheme;
 
 // Warning: (ae-internal-missing-underscore) The name "getThemedContext" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
@@ -285,6 +296,8 @@ export interface IEffects {
     elevation64: string;
     elevation8: string;
     roundedCorner2: string;
+    roundedCorner4: string;
+    roundedCorner6: string;
 }
 
 export { IFontFace }
@@ -343,8 +356,6 @@ export interface IIconOptions {
 export interface IIconRecord {
     // (undocumented)
     code: string | undefined;
-    // Warning: (ae-forgotten-export) The symbol "IIconSubsetRecord" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     subset: IIconSubsetRecord;
 }
@@ -359,6 +370,14 @@ export interface IIconSubset {
     };
     // (undocumented)
     style?: IRawStyle;
+}
+
+// @public (undocumented)
+export interface IIconSubsetRecord extends IIconSubset {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    isRegistered?: boolean;
 }
 
 export { InjectionMode }
@@ -457,7 +476,7 @@ export interface IScheme {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "ISchemeNames" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 
@@ -465,6 +484,7 @@ export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 export interface ISemanticColors extends ISemanticTextColors {
     accentButtonBackground: string;
     blockingBackground: string;
+    blockingIcon: string;
     bodyBackground: string;
     bodyBackgroundChecked: string;
     bodyBackgroundHovered: string;
@@ -484,7 +504,10 @@ export interface ISemanticColors extends ISemanticTextColors {
     disabledBackground: string;
     disabledBorder: string;
     errorBackground: string;
+    errorIcon: string;
     focusBorder: string;
+    infoBackground: string;
+    infoIcon: string;
     inputBackground: string;
     inputBackgroundChecked: string;
     inputBackgroundCheckedHovered: string;
@@ -513,17 +536,24 @@ export interface ISemanticColors extends ISemanticTextColors {
     menuItemBackgroundPressed: string;
     menuItemText: string;
     menuItemTextHovered: string;
+    messageLink: string;
+    messageLinkHovered: string;
     primaryButtonBackground: string;
     primaryButtonBackgroundDisabled: string;
     primaryButtonBackgroundHovered: string;
     primaryButtonBackgroundPressed: string;
     primaryButtonBorder: string;
+    severeWarningBackground: string;
+    severeWarningIcon: string;
     smallInputBorder: string;
     successBackground: string;
+    successIcon: string;
     variantBorder: string;
     variantBorderHovered: string;
     warningBackground: string;
+    // @deprecated (undocumented)
     warningHighlight: string;
+    warningIcon: string;
 }
 
 // @public (undocumented)
@@ -553,16 +583,19 @@ export interface ISemanticTextColors {
     listText: string;
     // @deprecated (undocumented)
     listTextColor: string;
+    messageText: string;
     primaryButtonText: string;
     primaryButtonTextDisabled: string;
     primaryButtonTextHovered: string;
     primaryButtonTextPressed: string;
+    // @deprecated (undocumented)
     successText: string;
+    // @deprecated (undocumented)
     warningText: string;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "ISpacing" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface ISpacing {
     // (undocumented)
@@ -693,7 +726,7 @@ export namespace ZIndexes {
 
 
 // Warnings were encountered during analysis:
-// 
+//
 // lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
 // lib/interfaces/ITheme.d.ts:72:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:6:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationDouble" needs to be exported by the entry point index.d.ts

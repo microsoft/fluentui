@@ -33,6 +33,9 @@ steps:
       yarn buildto office-ui-fabric-react --production
     displayName: yarn build to OUFR (Create production build)
 
+  - script: yarn workspace office-ui-fabric-react bundle --production
+    displayName: yarn bundle OUFR
+
   - script: |
       npm pack
     displayName: 'Create tarball'

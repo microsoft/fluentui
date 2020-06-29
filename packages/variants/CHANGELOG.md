@@ -1,7 +1,51 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.1.59](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.1.59)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.1.42..@uifabric/variants_v7.1.59)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.1.42](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.1.42)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.1.34..@uifabric/variants_v7.1.42)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.1.34
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.1.33
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.1.0
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Minor changes
+
+- Updates to strong semantic slot for menu item and background hovered/pressed states. (marygans@microsoft.com)
+## 7.0.6
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 7.0.5
 Wed, 04 Sep 2019 04:09:58 GMT
 
@@ -307,4 +351,3 @@ Mon, 12 Mar 2018 06:29:20 GMT
 Fri, 23 Feb 2018 03:05:53 GMT
 
 *Initial release*
-

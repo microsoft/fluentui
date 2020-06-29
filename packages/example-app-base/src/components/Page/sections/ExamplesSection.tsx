@@ -10,15 +10,16 @@ export interface IExamplesSectionProps extends IPageSectionPropsWithSectionName 
   examples?: IExample[];
 }
 
-export const ExamplesSection: React.StatelessComponent<IExamplesSectionProps> = props => {
-  const { className, examples, exampleKnobs, sectionName, readableSectionName, style, id } = props;
+export const ExamplesSection: React.FunctionComponent<IExamplesSectionProps> = props => {
+  const { className, examples, exampleKnobs, readableSectionName = props.sectionName, style, id } = props;
   const [activeEditorTitle, setActiveEditorTitle] = React.useState('');
 
   return (
     <div className={className} style={style}>
       <div className={styles.sectionHeader}>
-        <h2 className={styles.subHeading} id={id}>
-          {readableSectionName || sectionName}
+        {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+        <h2 className={styles.subHeading} id={id} tabIndex={-1}>
+          {readableSectionName}
         </h2>
       </div>
       <div>

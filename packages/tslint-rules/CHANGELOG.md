@@ -1,7 +1,63 @@
 # Change Log - @uifabric/tslint-rules
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jun 2020 12:50:17 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.2.2](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.2.2)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tslint-rules_v7.2.1..@uifabric/tslint-rules_v7.2.2)
+
+### Patches
+
+- Removing style prop ban. ([PR #13751](https://github.com/microsoft/fluentui/pull/13751) by dzearing@hotmail.com)
+
+## [7.2.1](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.2.1)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tslint-rules_v7.2.0..@uifabric/tslint-rules_v7.2.1)
+
+### Patches
+
+- Creating custom lint rule to enforce use of keyboard-key library instead of deprecated keyboard event props. ([PR #12339](https://github.com/microsoft/fluentui/pull/12339) by humbertomakotomorimoto@gmail.com)
+
+## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.2.0)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tslint-rules_v7.1.3..@uifabric/tslint-rules_v7.2.0)
+
+### Minor changes
+
+- Remove unnecessary lint rule overrides ([PR #12711](https://github.com/microsoft/fluentui/pull/12711) by elcraig@microsoft.com)
+
+## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/tslint-rules_v7.1.3)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tslint-rules_v7.1.2..@uifabric/tslint-rules_v7.1.3)
+
+### Patches
+
+- Update ts-lint rules instructions and deps ([PR #12507](https://github.com/microsoft/fluentui/pull/12507) by elcraig@microsoft.com)
+
+## 7.1.2
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.1.1
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.1.0
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Minor changes
+
+- Add dep on tslint-config-prettier and remove redundant rules; disable typedef rule (elcraig@microsoft.com)
 ## 7.0.5
 Fri, 23 Aug 2019 12:35:28 GMT
 
@@ -51,4 +107,3 @@ Wed, 06 Mar 2019 13:27:18 GMT
 ### Patches
 
 - Make tslint-react a non-dev dependency
-

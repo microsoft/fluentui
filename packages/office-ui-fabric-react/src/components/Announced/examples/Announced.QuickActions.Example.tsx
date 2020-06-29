@@ -7,11 +7,11 @@ import {
   IColumn,
   IDetailsList,
   IDetailsRowProps,
-  DetailsRow
+  DetailsRow,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 
@@ -25,9 +25,11 @@ const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map
     key: fieldName,
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true
+    isResizable: true,
   };
 });
+
+const iconButtonStyles: Partial<IButtonStyles> = { root: { float: 'right', height: 'inherit' } };
 
 const _names: string[] = [
   'Annie Lindqvist',
@@ -36,7 +38,7 @@ const _names: string[] = [
   'Roko Kolar',
   'Christian Bergqvist',
   'Valentina Lovric',
-  'Makenzie Sharett'
+  'Makenzie Sharett',
 ];
 
 function getMockDateString(): string {
@@ -78,13 +80,13 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
           name: 'Item ' + i,
           modified: getMockDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
-          filesize: Math.floor(Math.random() * 30).toString() + ' MB'
+          filesize: Math.floor(Math.random() * 30).toString() + ' MB',
         });
       }
     }
 
     this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
+      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
     });
 
     this.state = {
@@ -92,7 +94,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       selectionDetails: this._getSelectionDetails(),
       renameDialogOpen: false,
       dialogContent: undefined,
-      announced: undefined
+      announced: undefined,
     };
   }
 
@@ -100,7 +102,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     if (prevState.announced !== this.state.announced && this.state.announced !== undefined) {
       this._async.setTimeout(() => {
         this.setState({
-          announced: undefined
+          announced: undefined,
         });
       }, 2000);
     }
@@ -154,20 +156,20 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
             role="button"
             aria-haspopup={true}
             aria-label="Show actions"
-            styles={{ root: { float: 'right', height: 'inherit' } }}
+            styles={iconButtonStyles}
             menuProps={{
               items: [
                 {
                   key: 'delete',
                   text: 'Delete',
-                  onClick: () => this._deleteItem(index)
+                  onClick: () => this._deleteItem(index),
                 },
                 {
                   key: 'rename',
                   text: 'Rename',
-                  onClick: () => this._renameItem(item, index)
-                }
-              ]
+                  onClick: () => this._renameItem(item, index),
+                },
+              ],
             }}
           />
         </div>
@@ -188,7 +190,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
 
     this.setState({
       items: [...items],
-      announced: <Announced message="Item deleted" aria-live="assertive" />
+      announced: <Announced message="Item deleted" aria-live="assertive" />,
     });
     return;
   };
@@ -203,7 +205,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
             <PrimaryButton onClick={this._updateItemName.bind(this, index)} text="Save" />
           </DialogFooter>
         </>
-      )
+      ),
     });
     return;
   }
@@ -215,7 +217,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       this.setState({
         renameDialogOpen: false,
         items: [...items],
-        announced: <Announced message="Item renamed" aria-live="assertive" />
+        announced: <Announced message="Item renamed" aria-live="assertive" />,
       });
     } else {
       return;
@@ -224,7 +226,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
 
   private _closeRenameDialog = (): void => {
     this.setState({
-      renameDialogOpen: false
+      renameDialogOpen: false,
     });
   };
 

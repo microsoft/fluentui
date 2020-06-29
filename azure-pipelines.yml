@@ -1,5 +1,6 @@
 pr:
   - master
+  - website-content
 
 trigger:
   - master
@@ -7,83 +8,228 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+pool: 'Self Host Ubuntu'
 
-steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+jobs:
+  - job: Build
+    steps:
+      - template: azure-pipelines.tools.yml
 
-  - script: |
-      yarn
-    displayName: yarn
+      # - template: azure-pipelines.cache.yml
 
-  - script: |
-      npm run checkchange
-    displayName: check change
+      - script: |
+          yarn
+        displayName: yarn
 
-  - script: |
-      npm run buildci
-    displayName: build ci
+      - script: |
+          yarn checkchange
+        displayName: check change
 
-  - task: AzureUpload@1
-    displayName: Upload PR deploy site
-    inputs:
-      SourcePath: 'apps/pr-deploy-site/dist'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-      storage: fabricweb
-      ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+      - script: |
+          yarn build
+        displayName: build
 
-  - script: |
-      npm run just perf-test
-    workingDirectory: apps/perf-test
-    displayName: Perf Test
+      - task: ArchiveFiles@2
+        inputs:
+          rootFolderOrFile: $(Build.Repository.LocalPath)
+          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
+          includeRootFolder: true
+          archiveType: 'tar'
+          tarCompression: 'gz'
+          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
+          replaceExistingArchive: true
 
-  - task: AzureUpload@1
-    displayName: Upload Perf Test Result to PR deploy site
-    inputs:
-      SourcePath: 'apps/perf-test/dist'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
-      storage: fabricweb
-      ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test'
+      - publish: $(Build.ArtifactStagingDirectory)
+        artifact: Build-PR-$(Build.BuildNumber)
 
-  - task: GithubPRComment@0
-    displayName: 'Post Perf Results to Github Pull Request'
-    inputs:
-      githubOwner: OfficeDev
-      githubRepo: 'office-ui-fabric-react'
-      blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
-      status: '$(PerfCommentStatus)'
-      uniqueId: 'perfComment9423'
+      - script: |
+          az --version
+          az extension add -n azure-devops
+          echo $(buildQueuePat) | az devops login --organization https://dev.azure.com/uifabric
+          az devops configure --defaults organization=https://dev.azure.com/uifabric project="fabricpublic" --use-git-aliases true
+        env:
+          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
+        displayName: Set up Azure CLI with DevOps
 
-  - task: GithubPRStatus@0
-    displayName: 'Update Github Pull Request Status'
-    inputs:
-      githubOwner: OfficeDev
-      githubRepo: 'office-ui-fabric-react'
-      githubContext: 'Pull Request Deployed Site'
-      githubDescription: 'Click "Details" to go to the Deployed Site'
-      githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+      - script: |
+          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
+        env:
+          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
+        displayName: Trigger Perf-Test and Screener jobs
 
-  # a11y-tests disabled until occasional local and CI timeout issue can be resolved.
-  #- task: PublishBuildArtifacts@1
-  #  inputs:
-  #    pathtoPublish: './apps/a11y-tests/dist/reports'
-  #    artifactName: 'CodeAnalysisLogs'
-  #  displayName: publish sarif a11y reports
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
 
-  - script: |
-      git config --global user.email "fabrictactical@microsoft.com"
-      git config --global user.name "Fabric Tactical"
-      npm run vrtest -- --debug
-    displayName: run VR Test
-    env:
-      SCREENER_API_KEY: $(screener.key)
+  - job: Validate
+    dependsOn: Build
+    pool: 'Self Host Ubuntu'
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
 
-  - script: |
-      npm run check-for-changed-files
-    displayName: check for change file
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          yarn test
+        displayName: test
+
+      - script: |
+          yarn lint
+        displayName: lint
+
+      - script: |
+          yarn check-for-changed-files
+        displayName: check for changed files
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: ValidateFluent
+    dependsOn: Build
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          if [ $BUILD_REASON == "PullRequest" ]; then
+            yarn danger ci
+          else
+            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
+          fi
+        displayName: danger
+        env:
+          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+
+      - script: |
+          yarn test:fluentui:e2e
+        displayName: E2E Tests
+
+      - script: |
+          yarn test:fluentui:projects
+        displayName: Project Tests
+
+      - script: |
+          yarn test:fluentui:circulars
+        displayName: Circular Dependencies Tests
+
+      - script: |
+          yarn check-for-changed-files
+        displayName: check for changed files
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: Deploy
+    dependsOn: Build
+    variables:
+      PR_DEPLOY: 1
+    steps:
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          NODE_ENV=production yarn build:fluentui:docs
+          yarn bundle
+        displayName: bundle
+
+      - task: AzureUpload@1
+        displayName: Upload PR deploy site
+        inputs:
+          SourcePath: 'apps/pr-deploy-site/dist'
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          storage: fabricweb
+          ContainerName: '$web'
+          BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: ScreenerFluent
+    steps:
+      - script: |
+          yarn
+        displayName: yarn
+
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn test:fluentui:visual
+        displayName: run FUI VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: Screener
+    dependsOn: Build
+    # keeping this at microsoft hosted because this doesn't require builds
+    pool:
+      vmImage: 'Ubuntu 18.04'
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn vrtest -- --debug
+        displayName: run VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()

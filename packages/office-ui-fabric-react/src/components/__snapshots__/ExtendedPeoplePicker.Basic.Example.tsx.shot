@@ -54,6 +54,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             To:
           </div>
           <input
+            aria-autocomplete="both"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"
@@ -90,7 +91,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
           border-radius: 2px;
-          border: none;
+          border: 1px solid #0078d4;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -109,7 +110,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -142,23 +142,28 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
         &:hover {
           background-color: #106ebe;
+          border: 1px solid #106ebe;
           color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           background-color: Highlight;
+          border-color: Highlight;
           color: Window;
         }
         &:active {
           background-color: #005a9e;
+          border: 1px solid #005a9e;
           color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
+          border-color: WindowText;
           color: Window;
         }
     data-is-focusable={true}

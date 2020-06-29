@@ -14,7 +14,7 @@ export const InjectionMode = {
   /**
    * Appends rules using appendChild.
    */
-  appendChild: 2 as 2
+  appendChild: 2 as 2,
 };
 
 export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
@@ -68,6 +68,11 @@ export interface IStyleSheetConfig {
    * Callback executed when a rule is inserted.
    */
   onInsertRule?: (rule: string) => void;
+
+  /**
+   * Initial value for classnames cache. Key is serialized css rules associated with a classname.
+   */
+  classNameCache?: { [key: string]: string };
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
@@ -114,7 +119,6 @@ export class Stylesheet {
    * Gets the singleton instance.
    */
   public static getInstance(): Stylesheet {
-    // tslint:disable-next-line:no-any
     _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
@@ -133,8 +137,10 @@ export class Stylesheet {
       defaultPrefix: 'css',
       namespace: undefined,
       cspSettings: undefined,
-      ...config
+      ...config,
     };
+
+    this._keyToClassName = this._config.classNameCache || {};
   }
 
   /**
@@ -143,7 +149,7 @@ export class Stylesheet {
   public setConfig(config?: IStyleSheetConfig): void {
     this._config = {
       ...this._config,
-      ...config
+      ...config,
     };
   }
 
@@ -176,7 +182,7 @@ export class Stylesheet {
     this._keyToClassName[key] = className;
     this._classNameToArgs[className] = {
       args,
-      rules
+      rules,
     };
   }
 
@@ -186,6 +192,13 @@ export class Stylesheet {
    */
   public classNameFromKey(key: string): string | undefined {
     return this._keyToClassName[key];
+  }
+
+  /**
+   * Gets all classnames cache with the stylesheet.
+   */
+  public getClassNameCache(): { [key: string]: string } {
+    return this._keyToClassName;
   }
 
   /**
@@ -252,7 +265,9 @@ export class Stylesheet {
    * using InsertionMode.none.
    */
   public getRules(includePreservedRules?: boolean): string {
-    return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('');
+    return (
+      (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('')
+    );
   }
 
   /**

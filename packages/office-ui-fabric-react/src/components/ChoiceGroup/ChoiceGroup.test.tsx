@@ -13,7 +13,7 @@ import { mountAttached } from '../../common/testUtilities';
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1', autoFocus: true } as IChoiceGroupOption,
   { key: '2', text: '2' },
-  { key: '3', text: '3' }
+  { key: '3', text: '3' },
 ];
 const CHOICE_QUERY_SELECTOR = '.ms-ChoiceField-input';
 
@@ -39,7 +39,9 @@ describe('ChoiceGroup', () => {
   });
 
   it('renders ChoiceGroup with label correctly', () => {
-    const component = renderer.create(<ChoiceGroup className="testClassName" label="test label" options={TEST_OPTIONS} required />);
+    const component = renderer.create(
+      <ChoiceGroup className="testClassName" label="test label" options={TEST_OPTIONS} required />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -55,7 +57,9 @@ describe('ChoiceGroup', () => {
   it('can change options', () => {
     choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} required={true} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceOptions.length).toBe(3);
 
@@ -88,7 +92,9 @@ describe('ChoiceGroup', () => {
 
     choiceGroup = mount(<ChoiceGroup label="testgroup" options={options} required={true} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceOptions[0].disabled).toEqual(true);
     expect(choiceOptions[1].disabled).toEqual(false);
@@ -98,7 +104,9 @@ describe('ChoiceGroup', () => {
   it('renders all choice options as disabled when disabled', () => {
     choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} required={true} disabled={true} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceOptions[0].disabled).toEqual(true);
     expect(choiceOptions[1].disabled).toEqual(true);
@@ -108,7 +116,9 @@ describe('ChoiceGroup', () => {
   it('can act as an uncontrolled component', () => {
     choiceGroup = mount(<ChoiceGroup defaultSelectedKey="1" options={TEST_OPTIONS} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceOptions[0].checked).toEqual(true);
 
@@ -119,13 +129,18 @@ describe('ChoiceGroup', () => {
 
   it('can render as a controlled component', () => {
     let _selectedItem;
-    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => {
+    const onChange = (
+      ev: React.FormEvent<HTMLElement | HTMLInputElement>,
+      item: IChoiceGroupOption | undefined,
+    ): void => {
       _selectedItem = item;
     };
 
     choiceGroup = mount(<ChoiceGroup selectedKey="1" options={TEST_OPTIONS} onChange={onChange} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceOptions[0].checked).toEqual(true);
 
@@ -138,11 +153,16 @@ describe('ChoiceGroup', () => {
   });
 
   it('uses extra <input> attributes in dom if specified', () => {
-    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
+    const onChange = (
+      ev: React.FormEvent<HTMLElement | HTMLInputElement>,
+      item: IChoiceGroupOption | undefined,
+    ): void => undefined;
 
     choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} onChange={onChange} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     const extraAttributeGetter: (index: number) => string | null = (index: number): string | null => {
       const input: HTMLInputElement = choiceOptions[index];
@@ -169,7 +189,9 @@ describe('ChoiceGroup', () => {
     const option4: IChoiceGroupOption[] = [{ key: '4', text: '4', ariaLabel: 'Custom aria label' }];
     choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS.concat(option4)} required={true} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceOptions.length).toBe(4);
 
@@ -183,7 +205,9 @@ describe('ChoiceGroup', () => {
     const choiceGroupRef = React.createRef<IChoiceGroup>();
     choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} componentRef={choiceGroupRef} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceGroupRef.current!.checkedOption).toBeUndefined();
     ReactTestUtils.Simulate.change(choiceOptions[0]);
@@ -194,7 +218,9 @@ describe('ChoiceGroup', () => {
     const choiceGroupRef = React.createRef<IChoiceGroup>();
     choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} defaultSelectedKey="1" componentRef={choiceGroupRef} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
     ReactTestUtils.Simulate.change(choiceOptions[1]);
@@ -205,7 +231,9 @@ describe('ChoiceGroup', () => {
     const choiceGroupRef = React.createRef<IChoiceGroup>();
     choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} selectedKey="1" componentRef={choiceGroupRef} />);
 
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<HTMLInputElement>;
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
+      HTMLInputElement
+    >;
 
     expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
     ReactTestUtils.Simulate.change(choiceOptions[1]);
@@ -221,7 +249,9 @@ describe('ChoiceGroup', () => {
   it('can focus the checked option', () => {
     // This test has to mount the element to the document since ChoiceGroup.focus() uses document.getElementById()
     const choiceGroupRef = React.createRef<IChoiceGroup>();
-    choiceGroup = mountAttached(<ChoiceGroup options={TEST_OPTIONS} defaultSelectedKey="1" componentRef={choiceGroupRef} />);
+    choiceGroup = mountAttached(
+      <ChoiceGroup options={TEST_OPTIONS} defaultSelectedKey="1" componentRef={choiceGroupRef} />,
+    );
 
     const option = choiceGroup.getDOMNode().querySelector(CHOICE_QUERY_SELECTOR) as HTMLInputElement;
     const focusSpy = jest.spyOn(option, 'focus');
@@ -233,7 +263,10 @@ describe('ChoiceGroup', () => {
   it('can focus the first enabled option', () => {
     const choiceGroupRef = React.createRef<IChoiceGroup>();
     choiceGroup = mountAttached(
-      <ChoiceGroup options={[{ key: '0', text: 'disabled', disabled: true }, ...TEST_OPTIONS]} componentRef={choiceGroupRef} />
+      <ChoiceGroup
+        options={[{ key: '0', text: 'disabled', disabled: true }, ...TEST_OPTIONS]}
+        componentRef={choiceGroupRef}
+      />,
     );
 
     const option = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR)![1] as HTMLInputElement;

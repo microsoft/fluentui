@@ -7,13 +7,15 @@ import { memoizeFunction, ITheme, concatStyleSets } from 'office-ui-fabric-react
 import { ISidebarStyles, SidebarStylingConstants } from './Sidebar.types';
 
 export const sidebarFonts = {
-  segoeUiSemibold: 'wf_segoe-ui_semibold, "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif',
-  segoeUiSemilight: 'wf_segoe-ui_semilight, "Segoe UI Light", "Segoe WP Light", "Segoe UI", "Segoe WP",Tahoma, Arial, sans-serif'
+  segoeUiSemibold:
+    'wf_segoe-ui_semibold, "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif',
+  segoeUiSemilight:
+    'wf_segoe-ui_semilight, "Segoe UI Light", "Segoe WP Light", "Segoe UI", "Segoe WP",Tahoma, Arial, sans-serif',
 };
 
 export enum SidebarColors {
   Dark,
-  Light
+  Light,
 }
 
 interface ISidebarColors {
@@ -27,14 +29,14 @@ const SidebarDarkColors: ISidebarColors = {
   background: '#212121',
   backgroundHovered: '#333',
   backgroundActive: '#3c3c3c',
-  buttonColor: '#f4f4f4'
+  buttonColor: '#f4f4f4',
 };
 
 const SidebarLightColors: ISidebarColors = {
   background: '#f4f4f4',
   backgroundHovered: '#c8c8c8',
   backgroundActive: '#eaeaea',
-  buttonColor: '#212121'
+  buttonColor: '#212121',
 };
 
 export const getSidebarStyles = memoizeFunction(
@@ -45,34 +47,34 @@ export const getSidebarStyles = memoizeFunction(
         height: '100%',
         backgroundColor: currentSidebarColors.background,
         width: SidebarStylingConstants.sidebarWidth,
-        position: 'relative'
+        position: 'relative',
       },
       rootCollapsed: {
         width: SidebarStylingConstants.sidebarCollapsedWidth,
         backgroundColor: currentSidebarColors.background,
         height: '100%',
-        position: 'relative'
+        position: 'relative',
       },
       content: {
         height: 'auto',
         width: '100%',
         backgroundColor: currentSidebarColors.background,
-        overflowX: 'hidden'
+        overflowX: 'hidden',
       },
       contentCollapsed: {
         backgroundColor: currentSidebarColors.background,
-        overflow: 'hidden'
+        overflow: 'hidden',
       },
       footer: {
         bottom: '0',
         position: 'absolute',
         width: '100%',
-        zIndex: 100
-      }
+        zIndex: 100,
+      },
     };
 
     return concatStyleSets(sidebarStyles, customStyles);
-  }
+  },
 );
 
 export const getButtonColoredStyles = memoizeFunction(
@@ -80,54 +82,54 @@ export const getButtonColoredStyles = memoizeFunction(
     const currentSidebarColors = sidebarColors === SidebarColors.Dark ? SidebarDarkColors : SidebarLightColors;
     const buttonStyles: IButtonStyles = {
       root: {
-        backgroundColor: currentSidebarColors.background
+        backgroundColor: currentSidebarColors.background,
       },
       rootExpanded: {
-        backgroundColor: currentSidebarColors.backgroundHovered
+        backgroundColor: currentSidebarColors.backgroundHovered,
       },
       rootDisabled: {
-        backgroundColor: currentSidebarColors.background
+        backgroundColor: currentSidebarColors.background,
       },
       rootHovered: {
-        backgroundColor: currentSidebarColors.backgroundHovered
+        backgroundColor: currentSidebarColors.backgroundHovered,
       },
       rootPressed: {
-        backgroundColor: currentSidebarColors.backgroundHovered
+        backgroundColor: currentSidebarColors.backgroundHovered,
       },
       rootChecked: {
-        backgroundColor: currentSidebarColors.backgroundActive
+        backgroundColor: currentSidebarColors.backgroundActive,
       },
       rootCheckedHovered: {
-        backgroundColor: currentSidebarColors.backgroundActive
+        backgroundColor: currentSidebarColors.backgroundActive,
       },
       rootCheckedPressed: {
-        backgroundColor: currentSidebarColors.backgroundActive
+        backgroundColor: currentSidebarColors.backgroundActive,
       },
       icon: {
         fill: currentSidebarColors.buttonColor,
-        color: currentSidebarColors.buttonColor
+        color: currentSidebarColors.buttonColor,
       },
       iconDisabled: {
-        color: currentSidebarColors.buttonColor
+        color: currentSidebarColors.buttonColor,
       },
       iconExpanded: {
         color: currentSidebarColors.buttonColor,
-        fill: currentSidebarColors.buttonColor
+        fill: currentSidebarColors.buttonColor,
       },
       labelDisabled: {
-        color: currentSidebarColors.buttonColor
+        color: currentSidebarColors.buttonColor,
       },
       label: {
-        color: currentSidebarColors.buttonColor
+        color: currentSidebarColors.buttonColor,
       },
       menuIcon: {
-        color: currentSidebarColors.buttonColor
+        color: currentSidebarColors.buttonColor,
       },
       menuIconDisabled: {
-        color: currentSidebarColors.buttonColor
-      }
+        color: currentSidebarColors.buttonColor,
+      },
     };
 
     return concatStyleSets(buttonStyles, customStyles);
-  }
+  },
 );

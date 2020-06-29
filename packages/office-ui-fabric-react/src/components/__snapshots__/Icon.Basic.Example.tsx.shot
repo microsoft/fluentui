@@ -28,6 +28,11 @@ exports[`Component Examples renders Icon.Basic.Example.tsx correctly 1`] = `
         }
     data-icon-name="CompassNW"
     role="presentation"
+    style={
+      Object {
+        "fontFamily": "\\"FabricMDL2Icons-2\\"",
+      }
+    }
   >
     
   </i>
@@ -57,6 +62,11 @@ exports[`Component Examples renders Icon.Basic.Example.tsx correctly 1`] = `
         }
     data-icon-name="Dictionary"
     role="presentation"
+    style={
+      Object {
+        "fontFamily": "\\"FabricMDL2Icons-1\\"",
+      }
+    }
   >
     
   </i>
@@ -86,6 +96,11 @@ exports[`Component Examples renders Icon.Basic.Example.tsx correctly 1`] = `
         }
     data-icon-name="TrainSolid"
     role="presentation"
+    style={
+      Object {
+        "fontFamily": "\\"FabricMDL2Icons-4\\"",
+      }
+    }
   >
     
   </i>

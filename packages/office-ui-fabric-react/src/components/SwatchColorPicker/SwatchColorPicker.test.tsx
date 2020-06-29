@@ -17,7 +17,7 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'k', label: 'black', color: '#000' },
   { id: 'l', label: 'grey', color: '#888' },
   { id: 'm', label: 'white', color: '#fff' },
-  { id: 'n', label: 'something', color: '#123' }
+  { id: 'n', label: 'something', color: '#123' },
 ];
 
 describe('SwatchColorPicker', () => {
@@ -51,14 +51,9 @@ describe('SwatchColorPicker', () => {
   });
 
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
-    let eventFireCounter = 0;
+    const onChange = jest.fn();
     const wrapper = mount(
-      <SwatchColorPicker
-        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
-        // tslint:disable-next-line:jsx-no-lambda
-        onColorChanged={color => eventFireCounter++}
-        columnCount={4}
-      />
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onColorChanged={onChange} columnCount={4} />,
     );
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
@@ -68,42 +63,32 @@ describe('SwatchColorPicker', () => {
       .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
       .at(1)
       .simulate('click');
-    expect(eventFireCounter).toEqual(1);
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('Can fire the hover event on a cell in non-collapsable swatch color picker ', () => {
-    let eventFireCounter = 0;
+    const onHover = jest.fn();
     const wrapper = mount(
-      <SwatchColorPicker
-        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
-        // tslint:disable-next-line:jsx-no-lambda
-        onCellHovered={color => eventFireCounter++}
-        columnCount={4}
-      />
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellHovered={onHover} columnCount={4} />,
     );
 
     wrapper
       .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
       .at(0)
       .simulate('mouseenter');
-    expect(eventFireCounter).toEqual(1);
+    expect(onHover).toHaveBeenCalledTimes(1);
   });
 
   it('Can fire the focus event on a cell in non-collapsable swatch color picker ', () => {
-    let eventFireCounter = 0;
+    const onFocus = jest.fn();
     const wrapper = mount(
-      <SwatchColorPicker
-        colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
-        // tslint:disable-next-line:jsx-no-lambda
-        onCellFocused={color => eventFireCounter++}
-        columnCount={4}
-      />
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellFocused={onFocus} columnCount={4} />,
     );
 
     wrapper
       .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
       .at(0)
       .simulate('focus');
-    expect(eventFireCounter).toEqual(1);
+    expect(onFocus).toHaveBeenCalledTimes(1);
   });
 });

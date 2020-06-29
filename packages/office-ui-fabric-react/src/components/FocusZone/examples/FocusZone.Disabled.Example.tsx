@@ -2,10 +2,12 @@ import * as React from 'react';
 
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export const FocusZoneDisabledExample: React.StatelessComponent = () => {
+const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 200 } };
+
+export const FocusZoneDisabledExample: React.FunctionComponent = () => {
   const tokens = { childrenGap: 20 };
   return (
     <Stack tokens={tokens} horizontalAlign="start">
@@ -14,7 +16,7 @@ export const FocusZoneDisabledExample: React.StatelessComponent = () => {
           <span>Enabled FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
-          <TextField placeholder="FocusZone TextField" styles={{ root: { width: 200 } }} ariaLabel="FocusZone TextField" />
+          <TextField placeholder="FocusZone TextField" styles={textFieldStyles} ariaLabel="FocusZone TextField" />
           <DefaultButton>Button 3</DefaultButton>
         </Stack>
       </FocusZone>

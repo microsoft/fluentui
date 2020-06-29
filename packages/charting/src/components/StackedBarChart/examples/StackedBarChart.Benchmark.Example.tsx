@@ -6,26 +6,26 @@ export class StackedBarChartBenchmarkExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
       { legend: 'first', data: 10, color: DefaultPalette.redDark },
-      { data: 90, color: DefaultPalette.neutralTertiaryAlt, placeHolder: true }
+      { data: 90, color: DefaultPalette.neutralTertiaryAlt, placeHolder: true },
     ];
 
     const data: IChartProps = {
-      chartData: points
+      chartData: points,
     };
 
     const benchmarkData1: IChartDataPoint = {
       legend: 'Benchmark',
-      data: 20
+      data: 20,
     };
 
     const benchmarkData2: IChartDataPoint = {
       legend: 'Benchmark',
-      data: 10
+      data: 10,
     };
 
     const targetData: IChartDataPoint = {
       legend: 'Your target',
-      data: 50
+      data: 50,
     };
 
     return (

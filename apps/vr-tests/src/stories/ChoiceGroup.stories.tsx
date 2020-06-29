@@ -9,17 +9,17 @@ import { TestImages } from '@uifabric/example-data';
 const options = [
   {
     key: 'A',
-    text: 'Selected'
+    text: 'Selected',
   },
   {
     key: 'B',
-    text: 'Unselected'
+    text: 'Unselected',
   },
   {
     key: 'C',
     text: 'Disabled',
-    disabled: true
-  }
+    disabled: true,
+  },
 ];
 
 storiesOf('ChoiceGroup', module)
@@ -45,7 +45,7 @@ storiesOf('ChoiceGroup', module)
     <ChoiceGroup
       options={ options }
       label="Pick one"
-    />
+    />,
   )
   .addStory('Required', () =>
     // prettier-ignore
@@ -53,7 +53,7 @@ storiesOf('ChoiceGroup', module)
       options={ options }
       label="Pick one"
       required
-    />
+    />,
   )
   .addStory(
     'With icons',
@@ -64,23 +64,23 @@ storiesOf('ChoiceGroup', module)
           {
             key: 'day',
             iconProps: { iconName: 'CalendarDay' },
-            text: 'Day'
+            text: 'Day',
           },
           {
             key: 'week',
             iconProps: { iconName: 'CalendarWeek' },
-            text: 'Week'
+            text: 'Week',
           },
           {
             key: 'month',
             iconProps: { iconName: 'Calendar' },
             text: 'Month',
-            disabled: true
-          }
+            disabled: true,
+          },
         ]}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('With default size images', () => (
     <ChoiceGroup
@@ -90,14 +90,14 @@ storiesOf('ChoiceGroup', module)
           key: 'bar',
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
-          text: 'Clustered bar chart'
+          text: 'Clustered bar chart',
         },
         {
           key: 'pie',
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
-          text: 'Pie chart'
-        }
+          text: 'Pie chart',
+        },
       ]}
     />
   ))
@@ -110,15 +110,15 @@ storiesOf('ChoiceGroup', module)
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
           imageSize: { width: 120, height: 120 },
-          text: 'Clustered bar chart'
+          text: 'Clustered bar chart',
         },
         {
           key: 'pie2',
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
           imageSize: { width: 120, height: 120 },
-          text: 'Pie chart'
-        }
+          text: 'Pie chart',
+        },
       ]}
     />
   ));

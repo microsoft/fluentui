@@ -8,16 +8,16 @@ export const PanelStyles = (props: IPanelStyleProps): Partial<IPanelStyles> => {
 
   return {
     main: {
-      boxShadow: effects.elevation64
+      boxShadow: effects.elevation64,
     },
     headerText: {
       fontSize: FontSizes.size20,
       fontWeight: FontWeights.semibold,
-      lineHeight: '27px'
+      lineHeight: '27px',
     },
     footerInner: {
       paddingBottom: 16,
-      paddingTop: 16
-    }
+      paddingTop: 16,
+    },
   };
 };

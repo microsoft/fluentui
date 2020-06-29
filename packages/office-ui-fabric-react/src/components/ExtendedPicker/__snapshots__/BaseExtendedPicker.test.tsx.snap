@@ -34,6 +34,7 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
         role="list"
       >
         <input
+          aria-autocomplete="both"
           aria-expanded={false}
           aria-haspopup="true"
           autoCapitalize="off"
@@ -103,6 +104,7 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
            
         </div>
         <input
+          aria-autocomplete="both"
           aria-expanded={false}
           aria-haspopup="true"
           autoCapitalize="off"

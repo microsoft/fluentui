@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
 import { IBeakStylesProps } from './Beak.types';
@@ -8,9 +8,11 @@ import { RectangleEdge } from '../../../utilities/positioning';
 export const BEAK_HEIGHT = 10;
 export const BEAK_WIDTH = 18;
 
-export class Beak extends BaseComponent<IBeakProps, {}> {
+export class Beak extends React.Component<IBeakProps, {}> {
   constructor(props: IBeakProps) {
     super(props);
+
+    initializeComponentRef(this);
   }
 
   public render(): JSX.Element {
@@ -69,7 +71,7 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
       height: `${svgHeight}px`,
       width: `${svgWidth}px`,
       transform: transform,
-      color
+      color,
     });
 
     return (

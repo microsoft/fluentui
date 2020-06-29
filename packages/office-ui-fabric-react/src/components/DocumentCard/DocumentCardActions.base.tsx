@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { IDocumentCardActionsProps, IDocumentCardActionsStyleProps, IDocumentCardActionsStyles } from './DocumentCardActions.types';
+import {
+  IDocumentCardActionsProps,
+  IDocumentCardActionsStyleProps,
+  IDocumentCardActionsStyles,
+} from './DocumentCardActions.types';
 import { IconButton } from '../../Button';
 import { IProcessedStyleSet } from '../../Styling';
 
@@ -10,15 +14,21 @@ const getClassNames = classNamesFunction<IDocumentCardActionsStyleProps, IDocume
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardActionsBase extends BaseComponent<IDocumentCardActionsProps, any> {
+export class DocumentCardActionsBase extends React.Component<IDocumentCardActionsProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardActionsStyles>;
+
+  constructor(props: IDocumentCardActionsProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const { actions, views, styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

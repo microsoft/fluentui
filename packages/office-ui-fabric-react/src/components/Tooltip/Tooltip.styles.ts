@@ -3,7 +3,7 @@ import { AnimationClassNames } from '../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   const { className, beakWidth = 16, gapSpace = 0, maxWidth, theme } = props;
-  const { palette, semanticColors, fonts, effects } = theme;
+  const { semanticColors, fonts, effects } = theme;
 
   // The math here is done to account for the 45 degree rotation of the beak
   const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace);
@@ -26,11 +26,11 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
             left: tooltipGapSpace,
             right: tooltipGapSpace,
             top: tooltipGapSpace,
-            zIndex: 0
-          }
-        }
+            zIndex: 0,
+          },
+        },
       },
-      className
+      className,
     ],
     content: [
       'ms-Tooltip-content',
@@ -38,11 +38,11 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
       {
         position: 'relative',
         zIndex: 1,
-        color: palette.neutralPrimary,
+        color: semanticColors.menuItemText,
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
-        overflow: 'hidden'
-      }
+        overflow: 'hidden',
+      },
     ],
     subText: [
       'ms-Tooltip-subtext',
@@ -51,8 +51,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         fontSize: 'inherit',
         fontWeight: 'inherit',
         color: 'inherit',
-        margin: 0
-      }
-    ]
+        margin: 0,
+      },
+    ],
   };
 };

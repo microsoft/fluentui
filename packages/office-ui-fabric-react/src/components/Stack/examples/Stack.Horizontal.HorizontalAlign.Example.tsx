@@ -4,8 +4,8 @@ import { DefaultPalette, Stack, IStackStyles, IStackTokens } from 'office-ui-fab
 // Styles definition
 const stackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.themeTertiary
-  }
+    background: DefaultPalette.themeTertiary,
+  },
 };
 const itemStyles: React.CSSProperties = {
   alignItems: 'center',
@@ -14,7 +14,7 @@ const itemStyles: React.CSSProperties = {
   display: 'flex',
   height: 50,
   justifyContent: 'center',
-  width: 50
+  width: 50,
 };
 
 // Tokens definition

@@ -3,8 +3,8 @@ import { VerticalPersonaStyles, VerticalPersonaTokens } from './VerticalPersona.
 import { IVerticalPersonaProps } from './VerticalPersona.types';
 import { createComponent } from '../../../Foundation';
 
-export const VerticalPersona: React.StatelessComponent<IVerticalPersonaProps> = createComponent(VerticalPersonaView, {
+export const VerticalPersona: React.FunctionComponent<IVerticalPersonaProps> = createComponent(VerticalPersonaView, {
   displayName: 'VerticalPersona',
   styles: VerticalPersonaStyles,
-  tokens: VerticalPersonaTokens
+  tokens: VerticalPersonaTokens,
 });

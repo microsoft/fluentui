@@ -5,11 +5,11 @@ import { MicroFeedbackStyles as styles, MicroFeedbackTokens as tokens } from './
 import { IMicroFeedbackProps } from './MicroFeedback.types';
 import { MicroFeedbackView } from './MicroFeedback.view';
 
-export const MicroFeedback: React.StatelessComponent<IMicroFeedbackProps> = createComponent(MicroFeedbackView, {
+export const MicroFeedback: React.FunctionComponent<IMicroFeedbackProps> = createComponent(MicroFeedbackView, {
   displayName: 'MicroFeedback',
   state,
   styles,
-  tokens
+  tokens,
 });
 
 export default MicroFeedback;

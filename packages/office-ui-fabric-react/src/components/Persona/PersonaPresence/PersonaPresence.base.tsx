@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { classNamesFunction } from '../../../Utilities';
 import { Icon } from '../../../Icon';
 import {
   IPersonaPresenceProps,
   IPersonaPresenceStyleProps,
   IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaSize
+  PersonaSize,
 } from '../Persona.types';
 import { sizeBoolean } from '../PersonaConsts';
 
@@ -15,13 +15,17 @@ const coinSizePresenceScaleFactor = 3;
 const presenceMaxSize = 40;
 const presenceFontMaxSize = 20;
 
-const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>();
+const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>({
+  // There can be many PersonaPresence rendered with different sizes.
+  // Therefore setting a larger cache size.
+  cacheSize: 100,
+});
 
 /**
  * PersonaPresence with no default styles.
- * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}> {
+export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, {}> {
   constructor(props: IPersonaPresenceProps) {
     super(props);
   }
@@ -33,7 +37,8 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
       styles, // Use getStyles from props.
       presence,
       theme,
-      presenceTitle
+      presenceTitle,
+      presenceColors,
     } = this.props;
     const size = sizeBoolean(this.props.size as PersonaSize);
 
@@ -52,15 +57,20 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
         ? coinSize / coinSizeFontScaleFactor + 'px'
         : presenceFontMaxSize + 'px'
       : '';
-    const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth } : undefined;
-    const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
+    const coinSizeWithPresenceIconStyle = coinSize
+      ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth }
+      : undefined;
+    const coinSizeWithPresenceStyle = coinSize
+      ? { width: presenceHeightWidth, height: presenceHeightWidth }
+      : undefined;
 
     // Use getStyles from props, or fall back to getStyles from styles file.
     const classNames = getClassNames(styles, {
       theme: theme!,
       presence,
       size: this.props.size,
-      isOutOfOffice
+      isOutOfOffice,
+      presenceColors,
     });
 
     if (presence === PersonaPresenceEnum.none) {
@@ -68,7 +78,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     }
 
     return (
-      <div className={classNames.presence} style={coinSizeWithPresenceStyle} title={presenceTitle}>
+      <div role="presentation" className={classNames.presence} style={coinSizeWithPresenceStyle} title={presenceTitle}>
         {renderIcon && this._onRenderIcon(classNames.presenceIcon, coinSizeWithPresenceIconStyle)}
       </div>
     );
@@ -79,7 +89,10 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   );
 }
 
-function determineIcon(presence: PersonaPresenceEnum | undefined, isOutOfOffice: boolean | undefined): string | undefined {
+function determineIcon(
+  presence: PersonaPresenceEnum | undefined,
+  isOutOfOffice: boolean | undefined,
+): string | undefined {
   if (!presence) {
     return undefined;
   }

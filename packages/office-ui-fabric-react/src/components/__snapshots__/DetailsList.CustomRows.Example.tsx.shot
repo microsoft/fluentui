@@ -18,7 +18,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -41,9 +40,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -88,11 +85,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 100,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -141,9 +133,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -279,6 +269,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -318,6 +313,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -518,9 +518,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -647,6 +645,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -712,7 +711,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -832,6 +830,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -871,6 +874,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -889,6 +897,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1041,6 +1050,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1106,7 +1116,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -1226,6 +1235,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1265,6 +1279,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1283,6 +1302,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1436,6 +1456,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1501,7 +1522,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -1621,6 +1641,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1660,6 +1685,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -1678,6 +1708,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1830,6 +1861,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1895,7 +1927,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2015,6 +2046,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2054,6 +2090,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2072,6 +2113,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2225,6 +2267,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2290,7 +2333,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2410,6 +2452,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2449,6 +2496,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2467,6 +2519,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2619,6 +2672,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={5}
                       data-selection-index={5}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2684,7 +2738,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -2804,6 +2857,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2843,6 +2901,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -2861,6 +2924,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -3014,6 +3078,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={6}
                       data-selection-index={6}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -3079,7 +3144,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -3199,6 +3263,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -3238,6 +3307,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -3256,6 +3330,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -3408,6 +3483,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={7}
                       data-selection-index={7}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -3473,7 +3549,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -3593,6 +3668,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -3632,6 +3712,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -3650,6 +3735,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -3803,6 +3889,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={8}
                       data-selection-index={8}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -3868,7 +3955,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -3988,6 +4074,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -4027,6 +4118,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -4045,6 +4141,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -4197,6 +4294,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       data-is-focusable={true}
                       data-item-index={9}
                       data-selection-index={9}
+                      data-selection-touch-invoke={true}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -4262,7 +4360,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
-
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
@@ -4382,6 +4479,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="CircleRing"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -4421,6 +4523,11 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
                             >
                               
                             </i>
@@ -4439,6 +4546,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {

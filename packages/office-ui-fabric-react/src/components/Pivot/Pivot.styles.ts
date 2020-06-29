@@ -1,5 +1,12 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
-import { AnimationVariables, getGlobalClassNames, HighContrastSelector, IStyle, normalize, FontWeights } from '../../Styling';
+import {
+  AnimationVariables,
+  getGlobalClassNames,
+  HighContrastSelector,
+  IStyle,
+  normalize,
+  FontWeights,
+} from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const globalClassNames = {
@@ -11,7 +18,7 @@ const globalClassNames = {
   root: 'ms-Pivot',
   rootIsLarge: 'ms-Pivot--large',
   rootIsTabs: 'ms-Pivot--tabs',
-  text: 'ms-Pivot-text'
+  text: 'ms-Pivot-text',
 };
 
 const linkStyles = (props: IPivotStyleProps): IStyle[] => {
@@ -41,7 +48,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           position: 'absolute',
           right: 8,
           transition: `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2},
-                      right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`
+                      right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`,
         },
         ':after': {
           color: 'transparent',
@@ -50,32 +57,32 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           fontWeight: FontWeights.bold,
           height: 1,
           overflow: 'hidden',
-          visibility: 'hidden'
+          visibility: 'hidden',
         },
         ':hover': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
           color: semanticColors.buttonTextHovered,
-          cursor: 'pointer'
+          cursor: 'pointer',
         },
         ':active': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
-          color: semanticColors.buttonTextHovered
+          color: semanticColors.buttonTextHovered,
         },
         ':focus': {
-          outline: 'none'
+          outline: 'none',
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
-          outline: `1px solid ${semanticColors.focusBorder}`
+          outline: `1px solid ${semanticColors.focusBorder}`,
         },
         [`.${IsFocusVisibleClassName} &:focus:after`]: {
           content: 'attr(data-content)',
           position: 'relative',
-          border: 0
-        }
-      }
+          border: 0,
+        },
+      },
     },
     rootIsLarge && {
-      fontSize: fonts.large.fontSize
+      fontSize: fonts.large.fontSize,
     },
     rootIsTabs && [
       {
@@ -87,16 +94,16 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         verticalAlign: 'top',
         selectors: {
           ':focus': {
-            outlineOffset: '-1px'
+            outlineOffset: '-1px',
           },
           [`.${IsFocusVisibleClassName} &:focus::before`]: {
             height: 'auto',
             background: 'transparent',
-            transition: 'none'
-          }
-        }
-      }
-    ]
+            transition: 'none',
+          },
+        },
+      },
+    ],
   ];
 };
 
@@ -114,26 +121,33 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       {
         position: 'relative',
         color: semanticColors.link,
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
       },
       rootIsLarge && classNames.rootIsLarge,
       rootIsTabs && classNames.rootIsTabs,
-      className
+      className,
     ],
+    itemContainer: {
+      selectors: {
+        '&[hidden]': {
+          display: 'none',
+        },
+      },
+    },
     link: [
       classNames.link,
       ...linkStyles(props),
       rootIsTabs && {
         selectors: {
           '&:hover, &:focus': {
-            color: semanticColors.buttonTextCheckedHovered
+            color: semanticColors.buttonTextCheckedHovered,
           },
           '&:active, &:hover': {
             color: semanticColors.primaryButtonText,
-            backgroundColor: semanticColors.primaryButtonBackground
-          }
-        }
-      }
+            backgroundColor: semanticColors.primaryButtonBackground,
+          },
+        },
+      },
     ],
     linkIsSelected: [
       classNames.link,
@@ -146,18 +160,18 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             backgroundColor: semanticColors.inputBackgroundChecked,
             selectors: {
               [HighContrastSelector]: {
-                backgroundColor: 'Highlight'
-              }
-            }
+                backgroundColor: 'Highlight',
+              },
+            },
           },
           ':hover::before': {
             left: 0,
-            right: 0
+            right: 0,
           },
           [HighContrastSelector]: {
-            color: 'Highlight'
-          }
-        }
+            color: 'Highlight',
+          },
+        },
       },
       rootIsTabs && {
         backgroundColor: semanticColors.primaryButtonBackground,
@@ -173,24 +187,24 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             right: 0,
             bottom: 0,
             content: '""',
-            height: 'auto'
+            height: 'auto',
           },
           ':hover': {
             backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-            color: semanticColors.primaryButtonText
+            color: semanticColors.primaryButtonText,
           },
           '&:active': {
             backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-            color: semanticColors.primaryButtonText
+            color: semanticColors.primaryButtonText,
           },
           [HighContrastSelector]: {
             fontWeight: FontWeights.semibold,
             color: 'HighlightText',
             background: 'Highlight',
-            MsHighContrastAdjust: 'none'
-          }
-        }
-      }
+            MsHighContrastAdjust: 'none',
+          },
+        },
+      },
     ],
     linkContent: [
       classNames.linkContent,
@@ -198,28 +212,28 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         flex: '0 1 100%',
         selectors: {
           '& > * ': {
-            marginLeft: 4
+            marginLeft: 4,
           },
           '& > *:first-child': {
-            marginLeft: 0
-          }
-        }
-      }
+            marginLeft: 0,
+          },
+        },
+      },
     ],
     text: [
       classNames.text,
       {
         display: 'inline-block',
-        verticalAlign: 'top'
-      }
+        verticalAlign: 'top',
+      },
     ],
     count: [
       classNames.count,
       {
         display: 'inline-block',
-        verticalAlign: 'top'
-      }
+        verticalAlign: 'top',
+      },
     ],
-    icon: classNames.icon
+    icon: classNames.icon,
   };
 };

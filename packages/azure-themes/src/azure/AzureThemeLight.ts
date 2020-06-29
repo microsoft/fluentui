@@ -7,6 +7,7 @@ import * as StyleConstants from './Constants';
 const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: LightSemanticColors.background,
   bodyText: LightSemanticColors.text.body,
+  bodyTextHovered: LightSemanticColors.text.bodyHovered,
   bodyDivider: CommonSemanticColors.dividers.lineSeparator,
   buttonBackground: LightSemanticColors.secondaryButton.rest.background,
   buttonBackgroundChecked: LightSemanticColors.secondaryButton.pressed.background,
@@ -14,12 +15,19 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   buttonBackgroundDisabled: LightSemanticColors.disabledButton.background,
   buttonBackgroundHovered: LightSemanticColors.secondaryButton.hover.background,
   buttonBackgroundPressed: LightSemanticColors.secondaryButton.pressed.background,
-  buttonText: LightSemanticColors.secondaryButton.rest.border,
+  buttonText: LightSemanticColors.secondaryButton.rest.text,
   buttonTextChecked: LightSemanticColors.secondaryButton.pressed.border,
   buttonTextCheckedHovered: LightSemanticColors.secondaryButton.hover.border,
   buttonTextDisabled: LightSemanticColors.disabledButton.text,
-  buttonTextHovered: LightSemanticColors.secondaryButton.hover.border,
-  buttonTextPressed: LightSemanticColors.secondaryButton.pressed.border,
+  buttonTextHovered: LightSemanticColors.secondaryButton.hover.color,
+  buttonTextPressed: LightSemanticColors.secondaryButton.pressed.text,
+  checkBoxBorder: LightSemanticColors.checkBox.rest.border,
+  checkBoxBorderChecked: LightSemanticColors.checkBox.checked.border,
+  checkBoxDisabled: LightSemanticColors.checkBox.disabled.border,
+  checkBoxCheckHover: LightSemanticColors.checkBox.rest.hover,
+  checkBoxCheckedFocus: LightSemanticColors.checkBox.rest.focus,
+  checkBoxIndeterminateBackground: LightSemanticColors.checkBox.checked.background,
+  checkBoxIndeterminateDefaultChecked: LightSemanticColors.checkBox.checked.default,
   disabledBackground: CommonSemanticColors.backgrounds.disabled,
   disabledBodyText: LightSemanticColors.text.disabled,
   errorBackground: LightSemanticColors.controlOutlines.error,
@@ -27,11 +35,12 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   focusBorder: LightSemanticColors.controlOutlines.accent,
   inputBackground: LightSemanticColors.background,
   inputText: LightSemanticColors.text.value,
-  inputBorder: CommonSemanticColors.textControlOutline.rest,
-  inputBorderHovered: CommonSemanticColors.textControlOutline.hover,
+  inputBorder: LightSemanticColors.secondaryButton.rest.border,
+  inputBorderHovered: LightSemanticColors.secondaryButton.hover.border,
+  inputBorderPressed: LightSemanticColors.secondaryButton.pressed.border,
   inputPlaceholderText: LightSemanticColors.text.placeholder,
   link: LightSemanticColors.text.hyperlink,
-  linkHovered: LightSemanticColors.text.hyperlink,
+  linkHovered: LightSemanticColors.text.hyperlinkHovered,
   listBackground: LightSemanticColors.background,
   listHeaderBackgroundPressed: LightSemanticColors.item.hover,
   listItemBackgroundChecked: LightSemanticColors.item.select,
@@ -48,6 +57,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   primaryButtonTextDisabled: LightSemanticColors.disabledButton.text,
   primaryButtonTextHovered: LightSemanticColors.primaryButton.hover.text,
   primaryButtonTextPressed: LightSemanticColors.primaryButton.pressed.text,
+  toggleDisabledBackground: LightSemanticColors.toggle.disabled.backrgound,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended
   controlAccent: LightSemanticColors.controlOutlines.accent,
@@ -66,14 +76,14 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   statusSuccessIcon: CommonSemanticColors.icons.okay,
   statusWarningBackground: LightSemanticColors.statusBar.warning,
   statusWarningText: LightSemanticColors.text.body,
-  statusWarningIcon: CommonSemanticColors.icons.warning
+  statusWarningIcon: CommonSemanticColors.icons.warning,
 };
 export const AzureThemeLight: ITheme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
-      fontSize: FontSizes.size12
-    }
+      fontSize: FontSizes.size12,
+    },
   },
   palette: {
     themePrimary: LightSemanticColors.controlOutlines.accent,
@@ -84,7 +94,7 @@ export const AzureThemeLight: ITheme = createTheme({
     neutralLighterAlt: LightSemanticColors.item.hover, // nav highlight
     neutralQuaternaryAlt: LightSemanticColors.item.select, // expand button on list controls
     neutralSecondary: LightSemanticColors.text.label, // persona
-    white: LightSemanticColors.background // shimmer elements
+    white: LightSemanticColors.background, // shimmer elements
   },
-  semanticColors: lightExtendedSemanticColors
+  semanticColors: lightExtendedSemanticColors,
 });

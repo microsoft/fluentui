@@ -1,6 +1,16 @@
 import { IButtonStyles } from './Button.types';
-import { ITheme, HighContrastSelector } from '../../Styling';
+import { ITheme, HighContrastSelector, IRawStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+
+const splitButtonDividerBaseStyles = (): IRawStyle => {
+  return {
+    position: 'absolute',
+    width: 1,
+    right: 31,
+    top: 8,
+    bottom: 8,
+  };
+};
 
 export function standardStyles(theme: ITheme): IButtonStyles {
   const { semanticColors: s, palette: p } = theme;
@@ -17,7 +27,7 @@ export function standardStyles(theme: ITheme): IButtonStyles {
   return {
     root: {
       backgroundColor: buttonBackground,
-      color: buttonText
+      color: buttonText,
     },
 
     rootHovered: {
@@ -26,29 +36,29 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Highlight',
-          color: 'Highlight'
-        }
-      }
+          color: 'Highlight',
+        },
+      },
     },
 
     rootPressed: {
       backgroundColor: buttonBackgroundPressed,
-      color: buttonTextChecked
+      color: buttonTextChecked,
     },
 
     rootExpanded: {
       backgroundColor: buttonBackgroundPressed,
-      color: buttonTextChecked
+      color: buttonTextChecked,
     },
 
     rootChecked: {
       backgroundColor: buttonBackgroundPressed,
-      color: buttonTextChecked
+      color: buttonTextChecked,
     },
 
     rootCheckedHovered: {
       backgroundColor: buttonBackgroundPressed,
-      color: buttonTextCheckedHovered
+      color: buttonTextCheckedHovered,
     },
 
     rootDisabled: {
@@ -56,18 +66,18 @@ export function standardStyles(theme: ITheme): IButtonStyles {
         [HighContrastSelector]: {
           color: 'GrayText',
           borderColor: 'GrayText',
-          backgroundColor: 'Window'
-        }
-      }
+          backgroundColor: 'Window',
+        },
+      },
     },
 
     // Split button styles
     splitButtonContainer: {
       selectors: {
         [HighContrastSelector]: {
-          border: 'none'
-        }
-      }
+          border: 'none',
+        },
+      },
     },
 
     splitButtonMenuButton: {
@@ -78,65 +88,61 @@ export function standardStyles(theme: ITheme): IButtonStyles {
           backgroundColor: p.neutralLight,
           selectors: {
             [HighContrastSelector]: {
-              color: 'Highlight'
-            }
-          }
-        }
-      }
+              color: 'Highlight',
+            },
+          },
+        },
+      },
     },
 
     splitButtonMenuButtonDisabled: {
       backgroundColor: s.buttonBackgroundDisabled,
       selectors: {
         ':hover': {
-          backgroundColor: s.buttonBackgroundDisabled
-        }
-      }
+          backgroundColor: s.buttonBackgroundDisabled,
+        },
+      },
     },
 
     splitButtonDivider: {
+      ...splitButtonDividerBaseStyles(),
       backgroundColor: p.neutralTertiaryAlt,
-      position: 'absolute',
-      width: 1,
-      right: 31,
-      top: 8,
-      bottom: 8,
       selectors: {
         [HighContrastSelector]: {
-          backgroundColor: 'WindowText'
-        }
-      }
+          backgroundColor: 'WindowText',
+        },
+      },
     },
 
     splitButtonDividerDisabled: {
-      backgroundColor: theme.palette.neutralTertiaryAlt
+      backgroundColor: theme.palette.neutralTertiaryAlt,
     },
 
     splitButtonMenuButtonChecked: {
       backgroundColor: p.neutralQuaternaryAlt,
       selectors: {
         ':hover': {
-          backgroundColor: p.neutralQuaternaryAlt
-        }
-      }
+          backgroundColor: p.neutralQuaternaryAlt,
+        },
+      },
     },
 
     splitButtonMenuButtonExpanded: {
       backgroundColor: p.neutralQuaternaryAlt,
       selectors: {
         ':hover': {
-          backgroundColor: p.neutralQuaternaryAlt
-        }
-      }
+          backgroundColor: p.neutralQuaternaryAlt,
+        },
+      },
     },
 
     splitButtonMenuIcon: {
-      color: s.buttonText
+      color: s.buttonText,
     },
 
     splitButtonMenuIconDisabled: {
-      color: s.buttonTextDisabled
-    }
+      color: s.buttonTextDisabled,
+    },
   };
 }
 
@@ -146,61 +152,66 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
   return {
     root: {
       backgroundColor: s.primaryButtonBackground,
+      border: `1px solid ${s.primaryButtonBackground}`,
       color: s.primaryButtonText,
-      border: 'none',
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
-          MsHighContrastAdjust: 'none'
+          borderColor: 'WindowText',
+          MsHighContrastAdjust: 'none',
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
           selectors: {
             ':after': {
               border: `none`,
-              outlineColor: p.white
-            }
-          }
-        }
-      }
+              outlineColor: p.white,
+            },
+          },
+        },
+      },
     },
 
     rootHovered: {
       backgroundColor: s.primaryButtonBackgroundHovered,
+      border: `1px solid ${s.primaryButtonBackgroundHovered}`,
       color: s.primaryButtonTextHovered,
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
-          backgroundColor: 'Highlight'
-        }
-      }
+          backgroundColor: 'Highlight',
+          borderColor: 'Highlight',
+        },
+      },
     },
 
     rootPressed: {
       backgroundColor: s.primaryButtonBackgroundPressed,
+      border: `1px solid ${s.primaryButtonBackgroundPressed}`,
       color: s.primaryButtonTextPressed,
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
-          MsHighContrastAdjust: 'none'
-        }
-      }
+          borderColor: 'WindowText',
+          MsHighContrastAdjust: 'none',
+        },
+      },
     },
 
     rootExpanded: {
       backgroundColor: s.primaryButtonBackgroundPressed,
-      color: s.primaryButtonTextPressed
+      color: s.primaryButtonTextPressed,
     },
 
     rootChecked: {
       backgroundColor: s.primaryButtonBackgroundPressed,
-      color: s.primaryButtonTextPressed
+      color: s.primaryButtonTextPressed,
     },
 
     rootCheckedHovered: {
       backgroundColor: s.primaryButtonBackgroundPressed,
-      color: s.primaryButtonTextPressed
+      color: s.primaryButtonTextPressed,
     },
 
     rootDisabled: {
@@ -208,32 +219,28 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
         [HighContrastSelector]: {
           color: 'GrayText',
           borderColor: 'GrayText',
-          backgroundColor: 'Window'
-        }
-      }
+          backgroundColor: 'Window',
+        },
+      },
     },
 
     // Split button styles
     splitButtonContainer: {
       selectors: {
         [HighContrastSelector]: {
-          border: 'none'
-        }
-      }
+          border: 'none',
+        },
+      },
     },
 
     splitButtonDivider: {
-      backgroundColor: p.neutralTertiaryAlt,
-      position: 'absolute',
-      width: 1,
-      right: 31,
-      top: 8,
-      bottom: 8,
+      ...splitButtonDividerBaseStyles(),
+      backgroundColor: p.white,
       selectors: {
         [HighContrastSelector]: {
-          backgroundColor: 'Window'
-        }
-      }
+          backgroundColor: 'Window',
+        },
+      },
     },
 
     splitButtonMenuButton: {
@@ -241,48 +248,48 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       color: s.primaryButtonText,
       selectors: {
         [HighContrastSelector]: {
-          backgroundColor: 'WindowText'
+          backgroundColor: 'WindowText',
         },
         ':hover': {
           backgroundColor: s.primaryButtonBackgroundHovered,
           selectors: {
             [HighContrastSelector]: {
-              color: 'Highlight'
-            }
-          }
-        }
-      }
+              color: 'Highlight',
+            },
+          },
+        },
+      },
     },
 
     splitButtonMenuButtonDisabled: {
       backgroundColor: s.primaryButtonBackgroundDisabled,
       selectors: {
         ':hover': {
-          backgroundColor: s.primaryButtonBackgroundDisabled
-        }
-      }
+          backgroundColor: s.primaryButtonBackgroundDisabled,
+        },
+      },
     },
 
     splitButtonMenuButtonChecked: {
       backgroundColor: s.primaryButtonBackgroundPressed,
       selectors: {
         ':hover': {
-          backgroundColor: s.primaryButtonBackgroundPressed
-        }
-      }
+          backgroundColor: s.primaryButtonBackgroundPressed,
+        },
+      },
     },
 
     splitButtonMenuButtonExpanded: {
       backgroundColor: s.primaryButtonBackgroundPressed,
       selectors: {
         ':hover': {
-          backgroundColor: s.primaryButtonBackgroundPressed
-        }
-      }
+          backgroundColor: s.primaryButtonBackgroundPressed,
+        },
+      },
     },
 
     splitButtonMenuIcon: {
-      color: s.primaryButtonText
+      color: s.primaryButtonText,
     },
 
     splitButtonMenuIconDisabled: {
@@ -290,9 +297,9 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
 
       selectors: {
         [HighContrastSelector]: {
-          color: 'GrayText'
-        }
-      }
-    }
+          color: 'GrayText',
+        },
+      },
+    },
   };
 }

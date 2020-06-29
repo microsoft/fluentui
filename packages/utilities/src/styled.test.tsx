@@ -2,7 +2,14 @@ import * as React from 'react';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
 import { Customizer } from './customizations/Customizer';
-import { IStyle, Stylesheet, InjectionMode, IStyleFunction, IStyleFunctionOrObject, mergeStyles } from '@uifabric/merge-styles';
+import {
+  IStyle,
+  Stylesheet,
+  InjectionMode,
+  IStyleFunction,
+  IStyleFunctionOrObject,
+  mergeStyles,
+} from '@uifabric/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@uifabric/test-utilities';
@@ -21,6 +28,7 @@ let _lastProps: ITestProps | undefined;
 let _renderCount: number;
 let _styleEval: number;
 let component: ReturnType<typeof mount> | undefined;
+let lastStylesInBaseComponent: IStyleFunctionOrObject<{}, ITestStyles> | undefined;
 
 const getClassNames = classNamesFunction<{}, ITestStyles>();
 
@@ -35,6 +43,7 @@ class TestBase extends React.Component<ITestProps> {
     _lastProps = this.props;
 
     const classNames = getClassNames(this.props.styles, { cool: this.props.cool });
+    lastStylesInBaseComponent = this.props.styles;
 
     return <div className={classNames.root}>{this.props.children}</div>;
   }
@@ -50,8 +59,8 @@ const TestStyles = (props: ITestProps): ITestStyles => {
   _styleEval++;
   return {
     root: {
-      background: props.cool ? 'blue' : 'red'
-    }
+      background: props.cool ? 'blue' : 'red',
+    },
   };
 };
 
@@ -64,7 +73,7 @@ describe('styled', () => {
     _styleEval = 0;
 
     Stylesheet.getInstance().setConfig({
-      injectionMode: InjectionMode.none
+      injectionMode: InjectionMode.none,
     });
     Stylesheet.getInstance().reset();
   });
@@ -74,6 +83,8 @@ describe('styled', () => {
       component.unmount();
       component = undefined;
     }
+
+    lastStylesInBaseComponent = undefined;
   });
 
   it('can create pure components', () => {
@@ -150,17 +161,17 @@ describe('styled', () => {
           Test: {
             styles: {
               root: {
-                background: 'yellow'
-              }
-            }
-          }
+                background: 'yellow',
+              },
+            },
+          },
         }}
       >
         <Test />
       </Customizer>,
       (wrapper: renderer.ReactTestRenderer) => {
         expect(wrapper.toJSON()).toMatchSnapshot();
-      }
+      },
     );
   });
 
@@ -171,17 +182,17 @@ describe('styled', () => {
           Test: {
             styles: {
               root: {
-                background: 'yellow'
-              }
-            }
-          }
+                background: 'yellow',
+              },
+            },
+          },
         }}
       >
         <Test styles={{ root: { color: 'red' } }} />
       </Customizer>,
       (wrapper: renderer.ReactTestRenderer) => {
         expect(wrapper.toJSON()).toMatchSnapshot();
-      }
+      },
     );
   });
 
@@ -201,7 +212,11 @@ describe('styled', () => {
 
   it('can wrap components and merge styling functions for all', () => {
     const TestInner = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { color: 'green' } }), undefined);
-    const TestOuter = styled<ITestProps, {}, ITestStyles>(TestInner, () => ({ root: { lineHeight: '29px' } }), undefined);
+    const TestOuter = styled<ITestProps, {}, ITestStyles>(
+      TestInner,
+      () => ({ root: { lineHeight: '29px' } }),
+      undefined,
+    );
     safeCreate(<TestOuter cool />, (wrapper: renderer.ReactTestRenderer) => {
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
@@ -223,27 +238,33 @@ describe('styled', () => {
 
   it('gives styles object user prop priority', () => {
     const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { background: 'grey' } }, undefined);
-    safeCreate(<TestWrapped cool styles={{ root: { background: 'purple' } }} />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    safeCreate(
+      <TestWrapped cool styles={{ root: { background: 'purple' } }} />,
+      (wrapper: renderer.ReactTestRenderer) => {
+        expect(wrapper.toJSON()).toMatchSnapshot();
+      },
+    );
   });
 
   it('gives styles function user prop priority', () => {
     const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { background: 'grey' } }), undefined);
-    safeCreate(<TestWrapped cool styles={{ root: { background: 'purple' } }} />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    safeCreate(
+      <TestWrapped cool styles={{ root: { background: 'purple' } }} />,
+      (wrapper: renderer.ReactTestRenderer) => {
+        expect(wrapper.toJSON()).toMatchSnapshot();
+      },
+    );
   });
 
   it('respects styles arg', () => {
     const defaultStyles = () =>
       mergeStyles({
-        backgroundColor: 'red'
+        backgroundColor: 'red',
       });
 
     const greenStyles = () =>
       mergeStyles({
-        backgroundColor: 'green'
+        backgroundColor: 'green',
       });
 
     const DefaultPanel = (props: ITestProps) => {
@@ -261,7 +282,7 @@ describe('styled', () => {
       </div>,
       (wrapper: renderer.ReactTestRenderer) => {
         expect(wrapper.toJSON()).toMatchSnapshot();
-      }
+      },
     );
   });
 
@@ -299,7 +320,7 @@ describe('styled', () => {
         expect(_renderCount).toEqual(3);
         Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         expect(_renderCount).toEqual(6);
-      }
+      },
     );
   });
 
@@ -312,7 +333,7 @@ describe('styled', () => {
         expect(_renderCount).toEqual(1);
         Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         expect(_renderCount).toEqual(2);
-      }
+      },
     );
   });
 
@@ -339,7 +360,18 @@ describe('styled', () => {
         expect(_renderCount).toEqual(2);
         Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         expect(_renderCount).toEqual(4);
-      }
+      },
     );
+  });
+
+  it('will not re-render if styles have not changed', () => {
+    component = mount(<Test styles={{ root: { background: 'red' } }} />);
+    expect(_renderCount).toEqual(1);
+    const stylesProp = lastStylesInBaseComponent;
+
+    component.setProps({ cool: true });
+
+    expect(_renderCount).toEqual(2);
+    expect(stylesProp).toBe(lastStylesInBaseComponent);
   });
 });

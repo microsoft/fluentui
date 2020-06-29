@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { Icon } from './index';
+import { TestImages } from '@uifabric/example-data';
 
 describe('Icon', () => {
   it('renders Icon correctly', () => {
@@ -16,8 +17,26 @@ describe('Icon', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders Icon with imageProps correctly', () => {
+    const component = renderer.create(<Icon iconName="CompassNW" imageProps={{ src: TestImages.iconOne }} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Icon with children correctly', () => {
+    const component = renderer.create(
+      <Icon iconName="Upload">
+        <span>This icon has children that are rendered inside of it</span>
+      </Icon>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders Icon with custom styles', () => {
-    const component = renderer.create(<Icon iconName="Upload" styles={{ root: 'root', imageContainer: 'imageContainer' }} />);
+    const component = renderer.create(
+      <Icon iconName="Upload" styles={{ root: 'root', imageContainer: 'imageContainer' }} />,
+    );
     expect(component.toJSON()).toMatchSnapshot();
   });
 

@@ -1,9 +1,5 @@
 @import '../../common/common';
 
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-//
-// Office UI Fabric
-// --------------------------------------------------
 // Calendar styles
 $Calendar-day: 28px;
 $Calendar-dayPicker-margin: 10px;
@@ -172,12 +168,6 @@ $Calendar-dayPicker-margin: 10px;
   background-color: $ms-color-neutralLighter;
   @include high-contrast {
     background-color: highlight;
-  }
-  span {
-    @include high-contrast {
-      -ms-high-contrast-adjust: none;
-      color: window;
-    }
   }
   &:hover {
     border-radius: 100%;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsRow, IDetailsRowStyles, IDetailsListProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 
@@ -14,16 +14,26 @@ export class DetailsListCustomRowsExample extends React.Component<{}, {}> {
   }
 
   public render() {
-    return <DetailsList items={this._items} setKey="set" onRenderRow={this._onRenderRow} checkButtonAriaLabel="Row checkbox" />;
+    return (
+      <DetailsList
+        items={this._items}
+        setKey="set"
+        onRenderRow={this._onRenderRow}
+        checkButtonAriaLabel="Row checkbox"
+      />
+    );
   }
 
-  private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {
+  private _onRenderRow: IDetailsListProps['onRenderRow'] = props => {
     const customStyles: Partial<IDetailsRowStyles> = {};
-    if (props.itemIndex % 2 === 0) {
-      // Every other row renders with a different background color
-      customStyles.root = { backgroundColor: theme.palette.themeLighterAlt };
-    }
+    if (props) {
+      if (props.itemIndex % 2 === 0) {
+        // Every other row renders with a different background color
+        customStyles.root = { backgroundColor: theme.palette.themeLighterAlt };
+      }
 
-    return <DetailsRow {...props} styles={customStyles} />;
+      return <DetailsRow {...props} styles={customStyles} />;
+    }
+    return null;
   };
 }

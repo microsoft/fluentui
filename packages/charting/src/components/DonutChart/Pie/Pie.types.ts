@@ -1,7 +1,11 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint } from '../index';
 
 export interface IPieProps {
+  /**
+   * Theme
+   */
+  theme: ITheme;
   /**
    * Width of the Pie.
    */
@@ -32,6 +36,14 @@ export interface IPieProps {
    */
   hoverOnCallback?: Function;
   /**
+   * Defines the function that is executed upon hovering over the legend
+   */
+  onFocusCallback?: Function;
+  /**
+   * Defines the function that is executed upon hovering Leave the legend
+   */
+  onBlurCallback?: Function;
+  /**
    * Defines the function that is executed upon hovering Leave the legend
    */
   hoverLeaveCallback?: Function;
@@ -45,9 +57,24 @@ export interface IPieProps {
   activeArc?: string;
 
   /**
+   * string for callout id
+   */
+  calloutId?: string;
+
+  /**
    * internal prop for href
    */
   href?: string;
+
+  /**
+   * props for inside donut value
+   */
+  valueInsideDonut?: string | number;
+
+  /**
+   * id of the focused arc
+   */
+  focusedArcId?: string;
 }
 
 export interface IPieStyles {

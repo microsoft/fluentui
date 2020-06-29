@@ -17,13 +17,13 @@ export const usePersonaCoinState: IPersonaCoinComponent['state'] = props => {
 
       setIsPictureLoaded(newImageLoadState === ImageLoadState.loaded);
     },
-    [onPhotoLoadingStateChange]
+    [onPhotoLoadingStateChange],
   );
 
   const viewProps: IPersonaCoinViewProps = {
     ...props,
     isPictureLoaded,
-    onPhotoLoadingStateChange: _onPhotoLoadingStateChange
+    onPhotoLoadingStateChange: _onPhotoLoadingStateChange,
   };
 
   return viewProps;

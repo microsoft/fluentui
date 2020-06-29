@@ -1,13 +1,17 @@
 import * as React from 'react';
 import {
-  BaseComponent,
+  Async,
+  EventGroup,
   KeyCodes,
   elementContains,
   findScrollableParent,
   getParent,
   getDocument,
   getWindow,
-  isElementTabbable
+  isElementTabbable,
+  css,
+  initializeComponentRef,
+  FocusRects,
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
 
@@ -30,6 +34,7 @@ const SELECTION_DISABLED_ATTRIBUTE_NAME = 'data-selection-disabled';
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
+const SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME = 'data-selection-touch-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
 
@@ -79,6 +84,13 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
    */
   enterModalOnTouch?: boolean;
   /**
+   * Determines whether elements with the attribute `data-selection-touch-invoke` should be used as invocation targets
+   * for an item if the user is using touch.
+   *
+   * @defaultvalue false
+   */
+  enableTouchInvocationTarget?: boolean;
+  /**
    * Determines if an item is selected on focus.
    *
    * @defaultvalue true
@@ -99,12 +111,21 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
 /**
  * {@docCategory Selection}
  */
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
+export interface ISelectionZoneState {
+  isModal: boolean | undefined;
+}
+
+/**
+ * {@docCategory Selection}
+ */
+export class SelectionZone extends React.Component<ISelectionZoneProps, ISelectionZoneState> {
   public static defaultProps = {
     isSelectedOnFocus: true,
-    selectionMode: SelectionMode.multiple
+    selectionMode: SelectionMode.multiple,
   };
 
+  private _async: Async;
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
@@ -115,6 +136,35 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isTouch: boolean;
   private _isTouchTimeoutId: number | undefined;
 
+  public static getDerivedStateFromProps(
+    nextProps: ISelectionZoneProps,
+    prevState: ISelectionZoneState,
+  ): ISelectionZoneState {
+    const isModal = nextProps.selection.isModal && nextProps.selection.isModal();
+
+    return {
+      ...prevState,
+      isModal,
+    };
+  }
+
+  constructor(props: ISelectionZoneProps) {
+    super(props);
+
+    this._events = new EventGroup(this);
+    this._async = new Async(this);
+    initializeComponentRef(this);
+
+    const { selection } = this.props;
+
+    // Reflect the initial modal state of selection into the state.
+    const isModal = selection.isModal && selection.isModal();
+
+    this.state = {
+      isModal,
+    };
+  }
+
   public componentDidMount(): void {
     const win = getWindow(this._root.current);
 
@@ -123,12 +173,19 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._events.on(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
     this._events.on(document.body, 'touchstart', this._onTouchStartCapture, true);
     this._events.on(document.body, 'touchend', this._onTouchStartCapture, true);
+
+    // Subscribe to the selection to keep modal state updated.
+    this._events.on(this.props.selection, 'change', this._onSelectionChange);
   }
 
   public render(): JSX.Element {
+    const { isModal } = this.state;
+
     return (
       <div
-        className="ms-SelectionZone"
+        className={css('ms-SelectionZone', {
+          'ms-SelectionZone--modal': !!isModal,
+        })}
         ref={this._root}
         onKeyDown={this._onKeyDown}
         onMouseDown={this._onMouseDown}
@@ -139,10 +196,27 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onContextMenu={this._onContextMenu}
         onMouseDownCapture={this._onMouseDownCapture}
         onFocusCapture={this._onFocus}
+        data-selection-is-modal={isModal ? true : undefined}
       >
         {this.props.children}
+        <FocusRects />
       </div>
     );
+  }
+
+  public componentDidUpdate(previousProps: ISelectionZoneProps): void {
+    const { selection } = this.props;
+
+    if (selection !== previousProps.selection) {
+      // Whenever selection changes, update the subscripton to keep modal state updated.
+      this._events.off(previousProps.selection);
+      this._events.on(selection, 'change', this._onSelectionChange);
+    }
+  }
+
+  public componentWillUnmount(): void {
+    this._events.dispose();
+    this._async.dispose();
   }
 
   /**
@@ -153,6 +227,16 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   public ignoreNextFocus = (): void => {
     this._handleNextFocus(false);
+  };
+
+  private _onSelectionChange = (): void => {
+    const { selection } = this.props;
+
+    const isModal = selection.isModal && selection.isModal();
+
+    this.setState({
+      isModal,
+    });
   };
 
   private _onMouseDownCapture = (ev: React.MouseEvent<HTMLElement>): void => {
@@ -258,6 +342,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { enableTouchInvocationTarget = false } = this.props;
+
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -283,7 +369,12 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
             }
           }
           break;
-        } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+        } else if (
+          (this._isTouch &&
+            enableTouchInvocationTarget &&
+            this._hasAttribute(target, SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME)) ||
+          this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
+        ) {
           // Items should be invokable even if selection is disabled.
           this._onInvokeClick(ev, index);
           break;
@@ -341,8 +432,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   /**
-   * In multi selection, if you double click within an item's root (but not within the invoke element or input elements),
-   * we should execute the invoke handler.
+   * In multi selection, if you double click within an item's root (but not within the invoke element or
+   * input elements), we should execute the invoke handler.
    */
   private _onDoubleClick = (ev: React.MouseEvent<HTMLElement>): void => {
     let target = ev.target as HTMLElement;
@@ -354,7 +445,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       const index = this._getItemIndex(itemRoot);
 
       while (target !== this._root.current) {
-        if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+        if (
+          this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) ||
+          this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
+        ) {
           break;
         } else if (target === itemRoot) {
           this._onInvokeClick(ev, index);
@@ -536,7 +630,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onInvokeMouseDown(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number): void {
+  private _onInvokeMouseDown(
+    ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    index: number,
+  ): void {
     const { selection } = this.props;
 
     // Only do work if item is not selected.
@@ -577,12 +674,17 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     const isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
 
     if (!isAlreadySingleSelected) {
+      const isModal = selection.isModal && selection.isModal();
       selection.setChangeEvents(false);
       selection.setAllSelected(false);
       selection.setIndexSelected(index, true, true);
-      if (this.props.enterModalOnTouch && this._isTouch && selection.setModal) {
-        selection.setModal(true);
-        this._setIsTouch(false);
+      if (isModal || (this.props.enterModalOnTouch && this._isTouch)) {
+        if (selection.setModal) {
+          selection.setModal(true);
+        }
+        if (this._isTouch) {
+          this._setIsTouch(false);
+        }
       }
       selection.setChangeEvents(true);
     }

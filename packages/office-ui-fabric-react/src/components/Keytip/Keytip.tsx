@@ -28,7 +28,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
       calloutProps = {
         ...calloutProps,
         coverTarget: true,
-        directionalHint: DirectionalHint.topLeftEdge
+        directionalHint: DirectionalHint.topLeftEdge,
       };
     }
 
@@ -36,7 +36,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
       // Default callout directional hint to BottomCenter
       calloutProps = {
         ...calloutProps,
-        directionalHint: DirectionalHint.bottomCenter
+        directionalHint: DirectionalHint.bottomCenter,
       };
     }
 

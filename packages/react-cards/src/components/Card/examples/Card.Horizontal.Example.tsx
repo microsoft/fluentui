@@ -12,32 +12,33 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
     const siteTextStyles: ITextStyles = {
       root: {
         color: '#025F52',
-        fontWeight: FontWeights.semibold
-      }
+        fontWeight: FontWeights.semibold,
+      },
     };
     const descriptionTextStyles: ITextStyles = {
       root: {
         color: '#333333',
-        fontWeight: FontWeights.regular
-      }
+        fontWeight: FontWeights.regular,
+      },
     };
     const helpfulTextStyles: ITextStyles = {
       root: {
         color: '#333333',
-        fontWeight: FontWeights.regular
-      }
+        fontWeight: FontWeights.regular,
+      },
     };
     const iconStyles: IIconStyles = {
       root: {
         color: '#0078D4',
         fontSize: 16,
-        fontWeight: FontWeights.regular
-      }
+        fontWeight: FontWeights.regular,
+      },
     };
     const footerCardSectionStyles: ICardSectionStyles = {
       root: {
-        borderLeft: '1px solid #F3F2F1'
-      }
+        alignSelf: 'stretch',
+        borderLeft: '1px solid #F3F2F1',
+      },
     };
 
     const sectionStackTokens: IStackTokens = { childrenGap: 20 };
@@ -46,13 +47,13 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
 
     return (
       <Stack tokens={sectionStackTokens}>
-        <Card horizontal tokens={cardTokens}>
+        <Card aria-label="Basic horizontal card" horizontal tokens={cardTokens}>
           <Card.Item>
             <Text>Basic horizontal card</Text>
           </Card.Item>
         </Card>
 
-        <Card horizontal onClick={alertClicked} tokens={cardTokens}>
+        <Card aria-label="Clickable horizontal card " horizontal onClick={alertClicked} tokens={cardTokens}>
           <Card.Item fill>
             <Image src="https://placehold.it/180x135" alt="Placeholder image." />
           </Card.Item>

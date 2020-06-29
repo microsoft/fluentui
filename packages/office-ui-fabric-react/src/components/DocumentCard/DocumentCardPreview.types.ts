@@ -153,5 +153,6 @@ export interface IDocumentCardPreviewStyles {
   icon: IStyle;
   fileList: IStyle;
   fileListIcon: IStyle;
+  fileListLink: IStyle;
   fileListOverflowText: IStyle;
 }

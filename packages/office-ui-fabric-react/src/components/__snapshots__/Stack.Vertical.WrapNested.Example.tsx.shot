@@ -79,6 +79,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         aria-valuemax={420}
         aria-valuemin={1}
         aria-valuenow={420}
+        aria-valuetext="420"
         className=
             ms-Slider-slideBox
             ms-Slider-showValue

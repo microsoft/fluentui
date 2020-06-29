@@ -52,6 +52,10 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       aria-modal={false}
@@ -97,7 +101,10 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
                 box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
                 box-sizing: border-box;
                 cursor: move;
-                max-height: 100%;
+                max-height: calc(100% - 32px);
+                max-width: calc(100% - 32px);
+                min-height: 176px;
+                min-width: 288px;
                 outline: 3px solid transparent;
                 overflow-y: auto;
                 position: relative;
@@ -213,6 +220,10 @@ exports[`Modal renders Modal correctly 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       aria-modal={true}
@@ -279,7 +290,10 @@ exports[`Modal renders Modal correctly 1`] = `
                 border-radius: 2px;
                 box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
                 box-sizing: border-box;
-                max-height: 100%;
+                max-height: calc(100% - 32px);
+                max-width: calc(100% - 32px);
+                min-height: 176px;
+                min-width: 288px;
                 outline: 3px solid transparent;
                 overflow-y: auto;
                 position: relative;
@@ -385,6 +399,10 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       aria-modal={false}
@@ -429,7 +447,10 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
                 border-radius: 2px;
                 box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
                 box-sizing: border-box;
-                max-height: 100%;
+                max-height: calc(100% - 32px);
+                max-width: calc(100% - 32px);
+                min-height: 176px;
+                min-width: 288px;
                 outline: 3px solid transparent;
                 overflow-y: auto;
                 position: relative;

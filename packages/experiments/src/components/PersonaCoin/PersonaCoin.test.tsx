@@ -12,7 +12,7 @@ const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {
   root: 'test-cn-root',
   image: 'test-cn-image',
   initials: 'test-cn-initials',
-  presence: 'test-cn-presence'
+  presence: 'test-cn-presence',
 };
 
 // Views are just pure functions with no statefulness, which means they can get full code coverage
@@ -49,7 +49,9 @@ describe('PersonaCoin', () => {
   });
 
   it('renders presence correctly when a very large coin is rendered', () => {
-    const tree = renderer.create(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} size={100} />).toJSON();
+    const tree = renderer
+      .create(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} size={100} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -88,7 +90,7 @@ describe('PersonaCoin', () => {
     wrapper = mount(<PersonaCoin text="+1 (555) 6789" styles={testPersonaCoinStyles} />);
     result = wrapper.find(Icon);
     expect(result).toHaveLength(1);
-    expect(result.props().iconName).toEqual('Contact');
+    expect((result.props() as any).iconName).toEqual('Contact');
     wrapper.unmount();
 
     wrapper = mount(<PersonaCoin text="+1 (555) 6789" allowPhoneInitials={true} styles={testPersonaCoinStyles} />);
@@ -126,6 +128,7 @@ describe('PersonaCoin', () => {
 
   describe('image', () => {
     const testImage1x1 =
+      // tslint:disable-next-line:max-line-length
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
     it('renders empty alt text by default', () => {
@@ -136,7 +139,9 @@ describe('PersonaCoin', () => {
     });
 
     it('renders its given alt text', () => {
-      const wrapper = mount(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" styles={testPersonaCoinStyles} />);
+      const wrapper = mount(
+        <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" styles={testPersonaCoinStyles} />,
+      );
       const image = wrapper.find(Image);
 
       expect(image.props().alt).toEqual('ALT TEXT');

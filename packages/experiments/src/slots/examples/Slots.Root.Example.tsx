@@ -9,7 +9,11 @@ export class SlotsRootExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack {...stackProps}>
-        <Button icon="share" href="https://developer.microsoft.com/en-us/fabric" content="Root: Implicit 'a' via href prop" />
+        <Button
+          icon="share"
+          href="https://developer.microsoft.com/en-us/fluentui"
+          content="Root: Implicit 'a' via href prop"
+        />
         <Button
           icon="share"
           content="Root: Function"

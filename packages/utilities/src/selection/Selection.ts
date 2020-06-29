@@ -4,26 +4,36 @@ import { EventGroup } from '../EventGroup';
 /**
  * {@docCategory Selection}
  */
-export interface ISelectionOptions {
+export interface ISelectionOptions<TItem = IObjectWithKey> {
   onSelectionChanged?: () => void;
-  getKey?: (item: IObjectWithKey, index?: number) => string | number;
-  canSelectItem?: (item: IObjectWithKey, index?: number) => boolean;
+  /** Custom logic to generate item keys. Required if `TItem` does not have a `key` property. */
+  getKey?: (item: TItem, index?: number) => string | number;
+  canSelectItem?: (item: TItem, index?: number) => boolean;
   selectionMode?: SelectionMode;
+  items?: TItem[];
 }
+
+/**
+ * Selection options with required `getKey` property.
+ * {@docCategory Selection}
+ */
+export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> &
+  Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
 
 /**
  * {@docCategory Selection}
  */
-export class Selection implements ISelection {
+export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
+  /** Number of items selected. Do not modify. */
   public count: number;
   public readonly mode: SelectionMode;
 
-  private _getKey: (item: IObjectWithKey, index?: number) => string | number;
-  private _canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
+  private _getKey: (item: TItem, index?: number) => string | number;
+  private _canSelectItem: (item: TItem, index?: number) => boolean;
 
   private _changeEventSuppressionCount: number;
-  private _items: IObjectWithKey[];
-  private _selectedItems: IObjectWithKey[] | null;
+  private _items: TItem[];
+  private _selectedItems: TItem[] | null;
   private _selectedIndices: number[] | undefined;
   private _isAllSelected: boolean;
   private _exemptedIndices: { [index: string]: boolean };
@@ -36,8 +46,18 @@ export class Selection implements ISelection {
   private _unselectableCount: number;
   private _isModal: boolean;
 
-  constructor(options: ISelectionOptions = {}) {
-    const { onSelectionChanged, getKey, canSelectItem = (item: IObjectWithKey) => true, selectionMode = SelectionMode.multiple } = options;
+  /**
+   * Create a new Selection. If `TItem` does not have a `key` property, you must provide an options
+   * object with a `getKey` implementation. Providing options is optional otherwise.
+   * (At most one `options` object is accepted.)
+   */
+  constructor(
+    ...options: TItem extends IObjectWithKey // If the item type has a built-in key...
+      ? [] | [ISelectionOptions<TItem>] // Then the arguments can be empty or have the options without `getKey`
+      : [ISelectionOptionsWithRequiredGetKey<TItem>] // Otherwise, arguments require options with `getKey`.
+  ) {
+    const { onSelectionChanged, getKey, canSelectItem = () => true, items, selectionMode = SelectionMode.multiple } =
+      options[0] || ({} as ISelectionOptions<TItem>);
 
     this.mode = selectionMode;
 
@@ -53,12 +73,12 @@ export class Selection implements ISelection {
 
     this._isModal = false;
 
-    this.setItems([], true);
+    this.setItems(items || [], true);
 
     this.count = this.getSelectedCount();
   }
 
-  public canSelectItem(item: IObjectWithKey, index?: number): boolean {
+  public canSelectItem(item: TItem, index?: number): boolean {
     if (typeof index === 'number' && index < 0) {
       return false;
     }
@@ -66,7 +86,7 @@ export class Selection implements ISelection {
     return this._canSelectItem(item, index);
   }
 
-  public getKey(item: IObjectWithKey, index?: number): string {
+  public getKey(item: TItem, index?: number): string {
     const key = this._getKey(item, index);
 
     return typeof key === 'number' || key ? `${key}` : '';
@@ -110,7 +130,7 @@ export class Selection implements ISelection {
    * Otherwise, shouldClear should be set to true, so that selection is
    * cleared.
    */
-  public setItems(items: IObjectWithKey[], shouldClear: boolean = true): void {
+  public setItems(items: TItem[], shouldClear: boolean = true): void {
     const newKeyToIndexMap: { [key: string]: number } = {};
     const newUnselectableIndices: { [key: string]: boolean } = {};
     let hasSelectionChanged = false;
@@ -185,11 +205,11 @@ export class Selection implements ISelection {
     this.setChangeEvents(true);
   }
 
-  public getItems(): IObjectWithKey[] {
+  public getItems(): TItem[] {
     return this._items;
   }
 
-  public getSelection(): IObjectWithKey[] {
+  public getSelection(): TItem[] {
     if (!this._selectedItems) {
       this._selectedItems = [];
 
@@ -208,7 +228,9 @@ export class Selection implements ISelection {
   }
 
   public getSelectedCount(): number {
-    return this._isAllSelected ? this._items.length - this._exemptedCount - this._unselectableCount : this._exemptedCount;
+    return this._isAllSelected
+      ? this._items.length - this._exemptedCount - this._unselectableCount
+      : this._exemptedCount;
   }
 
   public getSelectedIndices(): number[] {
@@ -254,7 +276,7 @@ export class Selection implements ISelection {
     }
 
     return (
-      (this.count > 0 && (this._isAllSelected && this._exemptedCount === 0)) ||
+      (this.count > 0 && this._isAllSelected && this._exemptedCount === 0) ||
       (!this._isAllSelected && this._exemptedCount === selectableCount && selectableCount > 0)
     );
   }
@@ -267,7 +289,7 @@ export class Selection implements ISelection {
 
   public isIndexSelected(index: number): boolean {
     return !!(
-      (this.count > 0 && (this._isAllSelected && !this._exemptedIndices[index] && !this._unselectableIndices[index])) ||
+      (this.count > 0 && this._isAllSelected && !this._exemptedIndices[index] && !this._unselectableIndices[index]) ||
       (!this._isAllSelected && this._exemptedIndices[index])
     );
   }
@@ -465,6 +487,8 @@ export class Selection implements ISelection {
   }
 }
 
-function defaultGetKey(item: IObjectWithKey, index?: number): string | number {
-  return item && item.key ? item.key : `${index}`;
+function defaultGetKey<TItem = IObjectWithKey>(item: TItem, index?: number): string | number {
+  // 0 may be used as a key
+  const { key = `${index}` } = (item || {}) as IObjectWithKey;
+  return key;
 }

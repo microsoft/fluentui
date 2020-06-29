@@ -4,14 +4,15 @@ import { css } from 'office-ui-fabric-react';
 import { IPageSectionPropsWithSectionName } from '../Page.types';
 import * as styles from '../Page.module.scss';
 
-export const FeedbackSection: React.StatelessComponent<IPageSectionPropsWithSectionName> = props => {
-  const { className, sectionName, readableSectionName, style, title, id } = props;
+export const FeedbackSection: React.FunctionComponent<IPageSectionPropsWithSectionName> = props => {
+  const { className, readableSectionName = props.sectionName, style, title, id } = props;
 
   return (
     <div className={css(styles.feedbackSection, className)} style={style}>
       <div className={styles.sectionHeader}>
-        <h2 className={styles.subHeading} id={id}>
-          {readableSectionName || sectionName}
+        {/* This heading must be programmatically focusable for simulating jumping to an anchor */}
+        <h2 className={styles.subHeading} id={id} tabIndex={-1}>
+          {readableSectionName}
         </h2>
       </div>
       <div className={styles.feedbackList}>

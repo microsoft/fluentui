@@ -4,7 +4,7 @@ import { SpinnerPageProps } from './SpinnerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
-export const SpinnerPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const SpinnerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage
@@ -23,18 +23,18 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl:
-            'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md') as string
-        }
+            'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md') as string,
+        },
       ];
     case 'android':
       return [
         {
           sectionName: 'Implementation',
           editUrl:
-            'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md') as string
-        }
+            'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md') as string,
+        },
       ];
   }
 }

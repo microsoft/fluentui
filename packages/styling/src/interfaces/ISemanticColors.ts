@@ -6,6 +6,12 @@ import { ISemanticTextColors } from './ISemanticTextColors';
  * The collection of all semantic slots for colors used in themes.
  *
  * Note: text colors are defined in ISemanticTextColors.ts.
+ * We plan to move completely to semantic slots and replace all usage of Fabric palette slots.
+ * We've been actively making some of these changes but still have a ways to go. At present,
+ * we're only adding slots if absolutely necessary because we are trying to avoid bloating
+ * the already sizeable offering. We're also working on a better solution for design tokens
+ * overall in our next iteration. We'll provide an update on this site when that's ready.
+ * Thank you for your patience.
  *
  * #### Naming Convention
  *
@@ -15,10 +21,10 @@ import { ISemanticTextColors } from './ISemanticTextColors';
  *
  * * `[category name]` – The “family” that this slot belongs to.
  * * `[element name]` – The name of the thing being targeted, such as the background or border.
- * * `[Checked]` – Whether the thing is checked. We assume things are unchecked by default, so no need to specify the unchecked state.
- * (We used “checked” to refer to anything that is on, selected, toggled, highlighted, emphasized, etc.)
- * * `[Hovered/Pressed/Disabled state]` – One of these states, if applicable. Each of these states are mutually exclusive.
- * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.
+ * * `[Checked]` – Whether the thing is checked. We assume things are unchecked by default, so no need to specify the
+ * unchecked state. (“Checked” refers to anything that is on, selected, toggled, highlighted, emphasized, etc.)
+ * * `[Hovered/Pressed/Disabled state]` – One of these states, if applicable. Each of these states are mutually
+ * exclusive. Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.
  *
  * #### Base Slots
  *
@@ -51,7 +57,9 @@ import { ISemanticTextColors } from './ISemanticTextColors';
  *
  * Lists differ from menus in that they are designed to show infinite amounts of items, often scroll,
  * and have a large and complex interaction surface.
- * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
+ * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList)
+ * or ones with a tiled layout.
+ *
  * {@docCategory ISemanticColors}
  */
 export interface ISemanticColors extends ISemanticTextColors {
@@ -86,7 +94,8 @@ export interface ISemanticColors extends ISemanticTextColors {
 
   /**
    * The color for chrome adjacent to an area with bodyBackground.
-   * This can be used to provide visual separation of zones when using stronger colors, when using a divider line is not desired.
+   * This can be used to provide visual separation of zones when using stronger colors, when using a divider line
+   * is not desired.
    * In most themes, this should match the color of bodyBackground.
    * See also: bodyFrameDivider
    */
@@ -138,6 +147,10 @@ export interface ISemanticColors extends ISemanticTextColors {
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
   /**
+   * Background for informational messages.
+   */
+  infoBackground: string;
+  /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
   errorBackground: string;
@@ -150,13 +163,45 @@ export interface ISemanticColors extends ISemanticTextColors {
    */
   warningBackground: string;
   /**
-   * Foreground color for warning highlights
+   * Background for severe warning messages.
    */
-  warningHighlight: string;
+  severeWarningBackground: string;
   /**
    * Background for success
    */
   successBackground: string;
+  /**
+   * Color for icons on infoBackground.
+   */
+  infoIcon: string;
+  /**
+   * Color for icons on errorBackground.
+   */
+  errorIcon: string;
+  /**
+   * Color for icons on blockingBackground.
+   */
+  blockingIcon: string;
+  /**
+   * Color for icons on warningBackground.
+   */
+  warningIcon: string;
+  /**
+   * Color for icons on severeWarningBackground.
+   */
+  severeWarningIcon: string;
+  /**
+   * Color for icons on successBackground.
+   */
+  successIcon: string;
+  /**
+   * Color of links within a message.
+   */
+  messageLink: string;
+  /**
+   * Color of links within a message when hovered.
+   */
+  messageLinkHovered: string;
 
   //// Input controls slots (text fields, checkboxes, radios...)
 
@@ -381,4 +426,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
    */
   menuItemBackgroundChecked: string;
+
+  /**
+   * @deprecated
+   * (no longer used)
+   * Foreground color for warning highlights
+   */
+  warningHighlight: string;
 }

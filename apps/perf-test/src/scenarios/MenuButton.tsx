@@ -6,16 +6,16 @@ const menuProps = {
     {
       key: 'emailMessage',
       text: 'Email message',
-      iconProps: { iconName: 'Mail' }
+      iconProps: { iconName: 'Mail' },
     },
     {
       key: 'calendarEvent',
       text: 'Calendar event',
-      iconProps: { iconName: 'Calendar' }
-    }
-  ]
+      iconProps: { iconName: 'Calendar' },
+    },
+  ],
 };
 
-const scenario = <DefaultButton text="I am a button" menuProps={menuProps} />;
+const Scenario = () => <DefaultButton text="I am a button" menuProps={menuProps} />;
 
-export default scenario;
+export default Scenario;

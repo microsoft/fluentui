@@ -17,7 +17,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone1"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -38,8 +38,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__1"
-      onBlur={[Function]}
+      id="swatchColorPicker0"
       role="grid"
     >
       <tbody>
@@ -87,7 +86,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -257,7 +255,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -427,7 +424,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -597,7 +593,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -767,7 +762,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -915,7 +909,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone20"
+    data-focuszone-id="FocusZone18"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -936,8 +930,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__19"
-      onBlur={[Function]}
+      id="swatchColorPicker17"
       role="grid"
     >
       <tbody>
@@ -985,7 +978,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -1058,7 +1050,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              id="swatchColorPicker18-a-0"
+              id="swatchColorPicker17-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1144,7 +1136,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -1217,7 +1208,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              id="swatchColorPicker18-b-1"
+              id="swatchColorPicker17-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1303,7 +1294,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -1376,7 +1366,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              id="swatchColorPicker18-c-2"
+              id="swatchColorPicker17-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1462,7 +1452,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -1535,7 +1524,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              id="swatchColorPicker18-d-3"
+              id="swatchColorPicker17-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1621,7 +1610,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -1694,7 +1682,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              id="swatchColorPicker18-e-4"
+              id="swatchColorPicker17-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1758,7 +1746,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone38"
+    data-focuszone-id="FocusZone35"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1779,8 +1767,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__37"
-      onBlur={[Function]}
+      id="swatchColorPicker34"
       role="grid"
     >
       <tbody>
@@ -1828,7 +1815,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -1901,7 +1887,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              id="swatchColorPicker36-a-0"
+              id="swatchColorPicker34-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1987,7 +1973,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -2060,7 +2045,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              id="swatchColorPicker36-b-1"
+              id="swatchColorPicker34-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2146,7 +2131,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -2219,7 +2203,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              id="swatchColorPicker36-c-2"
+              id="swatchColorPicker34-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2305,7 +2289,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -2378,7 +2361,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              id="swatchColorPicker36-d-3"
+              id="swatchColorPicker34-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2464,7 +2447,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -2537,7 +2519,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              id="swatchColorPicker36-e-4"
+              id="swatchColorPicker34-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2611,7 +2593,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone56"
+    data-focuszone-id="FocusZone52"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2632,8 +2614,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__55"
-      onBlur={[Function]}
+      id="swatchColorPicker51"
       role="grid"
     >
       <tbody>
@@ -2681,7 +2662,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -2763,7 +2743,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              id="swatchColorPicker54-a-0"
+              id="swatchColorPicker51-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2851,7 +2831,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -2933,7 +2912,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              id="swatchColorPicker54-b-1"
+              id="swatchColorPicker51-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3021,7 +3000,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -3103,7 +3081,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              id="swatchColorPicker54-c-2"
+              id="swatchColorPicker51-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3191,7 +3169,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -3273,7 +3250,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              id="swatchColorPicker54-d-3"
+              id="swatchColorPicker51-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3365,7 +3342,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -3447,7 +3423,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              id="swatchColorPicker54-e-4"
+              id="swatchColorPicker51-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3535,7 +3511,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -3617,7 +3592,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={5}
               data-is-focusable={true}
-              id="swatchColorPicker54-f-5"
+              id="swatchColorPicker51-f-5"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3705,7 +3680,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -3787,7 +3761,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={6}
               data-is-focusable={true}
-              id="swatchColorPicker54-g-6"
+              id="swatchColorPicker51-g-6"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3875,7 +3849,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -3957,7 +3930,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={7}
               data-is-focusable={true}
-              id="swatchColorPicker54-h-7"
+              id="swatchColorPicker51-h-7"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4049,7 +4022,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -4131,7 +4103,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={8}
               data-is-focusable={true}
-              id="swatchColorPicker54-i-8"
+              id="swatchColorPicker51-i-8"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4219,7 +4191,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -4301,7 +4272,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={9}
               data-is-focusable={true}
-              id="swatchColorPicker54-j-9"
+              id="swatchColorPicker51-j-9"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4389,7 +4360,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -4471,7 +4441,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={10}
               data-is-focusable={true}
-              id="swatchColorPicker54-k-10"
+              id="swatchColorPicker51-k-10"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4559,7 +4529,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 35px;
                   }
                   &::-moz-focus-inner {
@@ -4641,7 +4610,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={11}
               data-is-focusable={true}
-              id="swatchColorPicker54-l-11"
+              id="swatchColorPicker51-l-11"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4707,7 +4676,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone95"
+    data-focuszone-id="FocusZone90"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4728,8 +4697,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="id__94"
-      onBlur={[Function]}
+      id="swatchColorPicker89"
       role="grid"
     >
       <tbody>
@@ -4783,7 +4751,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -4866,7 +4833,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={0}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker93-a-0"
+              id="swatchColorPicker89-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4960,7 +4927,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -5043,7 +5009,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={1}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker93-b-1"
+              id="swatchColorPicker89-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5137,7 +5103,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -5220,7 +5185,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={2}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker93-c-2"
+              id="swatchColorPicker89-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5314,7 +5279,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -5397,7 +5361,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={3}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker93-d-3"
+              id="swatchColorPicker89-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5491,7 +5455,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 20px;
                   }
                   &::-moz-focus-inner {
@@ -5574,7 +5537,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={4}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker93-e-4"
+              id="swatchColorPicker89-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}

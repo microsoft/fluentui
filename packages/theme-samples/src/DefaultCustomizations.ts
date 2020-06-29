@@ -3,9 +3,9 @@ import { addVariants } from '@uifabric/variants';
 
 export const DefaultCustomizations: ICustomizations = {
   settings: {
-    theme: createTheme({})
+    theme: createTheme({}),
   },
-  scopedSettings: {}
+  scopedSettings: {},
 };
 
 addVariants(DefaultCustomizations.settings.theme);

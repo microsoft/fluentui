@@ -52,6 +52,10 @@ exports[`Layer renders Layer correctly 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     onSubmit={[Function]}
+    onTouchCancel={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     Content
   </div>

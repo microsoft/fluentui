@@ -9,7 +9,7 @@ const itemStyles: React.CSSProperties = {
   display: 'flex',
   height: 50,
   justifyContent: 'center',
-  width: 50
+  width: 50,
 };
 
 // Tokens definition
@@ -22,8 +22,8 @@ export const HorizontalStackWrapExample: React.FunctionComponent = () => {
   const stackStyles: IStackStyles = {
     root: {
       background: DefaultPalette.themeTertiary,
-      width: `${stackWidth}%`
-    }
+      width: `${stackWidth}%`,
+    },
   };
 
   return (

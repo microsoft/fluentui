@@ -1,4 +1,5 @@
-import { IsFocusVisibleClassName, initializeFocusRects } from './initializeFocusRects';
+import { initializeFocusRects } from './initializeFocusRects';
+import { IsFocusHiddenClassName, IsFocusVisibleClassName } from './setFocusVisibility';
 import { KeyCodes } from './KeyCodes';
 import { addDirectionalKeyCode } from './keyboard';
 
@@ -13,8 +14,8 @@ describe('initializeFocusRects', () => {
       body: {
         classList: {
           contains: (name: string) => classNames.indexOf(name) > -1,
-          add: (name: string) => classNames.push(name),
-          remove: (name: string) => classNames.splice(classNames.indexOf(name), 1),
+          add: (name: string) => classNames.indexOf(name) < 0 && classNames.push(name),
+          remove: (name: string) => classNames.indexOf(name) > -1 && classNames.splice(classNames.indexOf(name), 1),
           toggle: (name: string, val: boolean) => {
             const hasClass = classNames.indexOf(name) > -1;
             if (hasClass !== val) {
@@ -24,78 +25,93 @@ describe('initializeFocusRects', () => {
                 classNames.push(name);
               }
             }
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
   const mockTarget = {
     ownerDocument: {
-      defaultView: mockWindow
-    }
+      defaultView: mockWindow,
+    },
   };
 
   beforeEach(() => {
     classNames = [];
+    // tslint:disable-next-line:deprecation
     initializeFocusRects(mockWindow as Window);
   });
 
-  it('can show focus when you press a directional key', () => {
+  it('can hint to show focus when you press a directional key', () => {
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.up });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
 
     classNames = [];
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.down });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
 
     classNames = [];
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.left });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
 
     classNames = [];
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.right });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
 
     classNames = [];
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.tab });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
 
     classNames = [];
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.pageUp });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
 
     classNames = [];
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.pageDown });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
 
     classNames = [];
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.home });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
 
     classNames = [];
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.end });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
   });
 
   it('no-ops when you press a non-directional key', () => {
     mockWindow.keydown({ target: mockTarget, which: 127 });
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(false);
+    // don't care about the state of the "hidden" class in this case
   });
 
-  it('removes the class when you click the mouse', () => {
+  it('can hint to hide focus on mouse click', () => {
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.down });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
     mockWindow.mousedown({ target: mockTarget });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(true);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(false);
   });
 
-  it('can show focus when you press a custom directional key', () => {
+  it('can hint to show focus when you press a custom directional key', () => {
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.f6 });
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(false);
+    // don't care about the state of the "hidden" class in this case
 
     addDirectionalKeyCode(KeyCodes.f6);
 
     mockWindow.keydown({ target: mockTarget, which: KeyCodes.f6 });
+    expect(classNames.indexOf(IsFocusHiddenClassName) > -1).toEqual(false);
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
   });
 });

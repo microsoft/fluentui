@@ -102,7 +102,6 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -225,7 +224,6 @@ exports[`Button Variants renders a DefaultButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -350,7 +348,6 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -613,7 +610,6 @@ exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -891,7 +887,6 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -1014,7 +1009,6 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1133,7 +1127,6 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1262,7 +1255,6 @@ exports[`Button Variants renders a disabled DefaultButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -1387,7 +1379,6 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -1519,7 +1510,6 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -1799,7 +1789,6 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -2083,7 +2072,6 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -2204,7 +2192,6 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -2328,7 +2315,6 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;

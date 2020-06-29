@@ -9,20 +9,20 @@ export type GlobalClassNames<IStyles> = Record<keyof IStyles, string>;
  * disable boolean. These immutable values can be memoized.
  */
 const _getGlobalClassNames = memoizeFunction(
-  <T>(classNames: GlobalClassNames<T>, disableGlobalClassNames?: boolean): Partial<GlobalClassNames<T>> => {
+  <T>(classNames: GlobalClassNames<T>, disableGlobalClassNames?: boolean): GlobalClassNames<T> => {
     const styleSheet = Stylesheet.getInstance();
 
     if (disableGlobalClassNames) {
       // disable global classnames
-      return Object.keys(classNames).reduce((acc: {}, className: string) => {
+      return (Object.keys(classNames) as (keyof T)[]).reduce((acc, className) => {
         acc[className] = styleSheet.getClassName(classNames[className]);
         return acc;
-      }, {});
+      }, {} as GlobalClassNames<T>);
     }
 
     // use global classnames
     return classNames;
-  }
+  },
 );
 
 /**
@@ -37,7 +37,10 @@ const _getGlobalClassNames = memoizeFunction(
 export function getGlobalClassNames<T>(
   classNames: GlobalClassNames<T>,
   theme: ITheme,
-  disableGlobalClassNames?: boolean
-): Partial<GlobalClassNames<T>> {
-  return _getGlobalClassNames(classNames, disableGlobalClassNames !== undefined ? disableGlobalClassNames : theme.disableGlobalClassNames);
+  disableGlobalClassNames?: boolean,
+): GlobalClassNames<T> {
+  return _getGlobalClassNames(
+    classNames,
+    disableGlobalClassNames !== undefined ? disableGlobalClassNames : theme.disableGlobalClassNames,
+  );
 }

@@ -13,7 +13,7 @@ export const MenuButtonSlots: IMenuButtonComponent['slots'] = props => ({
   content: Text,
   menuArea: 'div',
   menu: ContextualMenu,
-  menuIcon: FontIcon
+  menuIcon: FontIcon,
 });
 
 export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
@@ -35,7 +35,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
   if (keytipProps && menu) {
     keytipProps = {
       ...keytipProps,
-      hasMenu: true
+      hasMenu: true,
     };
   }
 

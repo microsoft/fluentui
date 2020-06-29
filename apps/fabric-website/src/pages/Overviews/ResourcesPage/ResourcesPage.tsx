@@ -3,11 +3,12 @@ import { Markdown, PlatformContext, Page, IPageProps, IPageSectionProps } from '
 import { ResourcesPageProps } from './ResourcesPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/';
+const baseUrl =
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/';
 
 export interface IResourcesPageProps extends IPageProps<Platforms> {}
 
-const ResourcesPageBase: React.StatelessComponent<IResourcesPageProps> = props => {
+const ResourcesPageBase: React.FunctionComponent<IResourcesPageProps> = props => {
   return <Page {...props} {...ResourcesPageProps} otherSections={_otherSections()} />;
 };
 
@@ -22,7 +23,7 @@ function _otherSections(): IPageSectionProps[] {
             require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDesignResources.md') as string
           }
         </Markdown>
-      )
+      ),
     },
     {
       sectionName: 'Developer resources',
@@ -33,7 +34,7 @@ function _otherSections(): IPageSectionProps[] {
             require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDeveloperResources.md') as string
           }
         </Markdown>
-      )
+      ),
     },
     {
       sectionName: 'Contribution process',
@@ -44,11 +45,24 @@ function _otherSections(): IPageSectionProps[] {
             require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesContributionProcess.md') as string
           }
         </Markdown>
-      )
-    }
+      ),
+    },
+    {
+      sectionName: 'Microsoft employees',
+      editUrl: baseUrl + 'docs/default/MicrosoftEmployees.md',
+      content: (
+        <Markdown>
+          {
+            require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/MicrosoftEmployees.md') as string
+          }
+        </Markdown>
+      ),
+    },
   ];
 }
 
-export const ResourcesPage: React.StatelessComponent<IResourcesPageProps> = (props: IResourcesPageProps) => (
-  <PlatformContext.Consumer>{(platform: Platforms) => <ResourcesPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+export const ResourcesPage: React.FunctionComponent<IResourcesPageProps> = (props: IResourcesPageProps) => (
+  <PlatformContext.Consumer>
+    {(platform: Platforms) => <ResourcesPageBase platform={platform} {...props} />}
+  </PlatformContext.Consumer>
 );

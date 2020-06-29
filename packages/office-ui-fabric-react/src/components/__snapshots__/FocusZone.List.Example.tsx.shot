@@ -84,6 +84,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     data-is-focusable={true}
     data-item-index={0}
     data-selection-index={0}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -106,6 +107,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -162,6 +164,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -229,11 +232,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -251,14 +256,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x200"
+          href="http://placehold.it/100x100"
           onClick={[Function]}
         >
-          http://placehold.it/100x200
+          http://placehold.it/100x100
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -302,7 +308,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -311,123 +317,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__2"
-              >
-                http://placehold.it/100x200
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField2"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-0"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField5"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-0"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -513,10 +731,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone8"
     data-is-focusable={true}
     data-item-index={1}
     data-selection-index={1}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -539,6 +758,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -595,6 +815,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -662,11 +883,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -684,14 +907,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x201"
+          href="http://placehold.it/100x101"
           onClick={[Function]}
         >
-          http://placehold.it/100x201
+          http://placehold.it/100x101
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -735,7 +959,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -744,123 +968,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__6"
-              >
-                http://placehold.it/100x201
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField9"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField12"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-1"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -946,10 +1382,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone15"
     data-is-focusable={true}
     data-item-index={2}
     data-selection-index={2}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -972,6 +1409,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -1028,6 +1466,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -1095,11 +1534,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -1117,14 +1558,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x202"
+          href="http://placehold.it/100x102"
           onClick={[Function]}
         >
-          http://placehold.it/100x202
+          http://placehold.it/100x102
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -1168,7 +1610,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -1177,123 +1619,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__10"
-              >
-                http://placehold.it/100x202
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField16"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField19"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-2"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -1379,10 +2033,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone22"
     data-is-focusable={true}
     data-item-index={3}
     data-selection-index={3}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1405,6 +2060,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -1461,6 +2117,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -1528,11 +2185,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -1550,14 +2209,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x203"
+          href="http://placehold.it/100x103"
           onClick={[Function]}
         >
-          http://placehold.it/100x203
+          http://placehold.it/100x103
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -1601,7 +2261,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -1610,123 +2270,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__14"
-              >
-                http://placehold.it/100x203
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField23"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField26"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-3"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -1812,10 +2684,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone29"
     data-is-focusable={true}
     data-item-index={4}
     data-selection-index={4}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1838,6 +2711,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -1894,6 +2768,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -1961,11 +2836,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -1983,14 +2860,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x204"
+          href="http://placehold.it/100x104"
           onClick={[Function]}
         >
-          http://placehold.it/100x204
+          http://placehold.it/100x104
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -2034,7 +2912,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -2043,123 +2921,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__18"
-              >
-                http://placehold.it/100x204
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField30"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-4"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField33"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-4"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -2245,10 +3335,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone36"
     data-is-focusable={true}
     data-item-index={5}
     data-selection-index={5}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2271,6 +3362,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -2327,6 +3419,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -2394,11 +3487,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -2416,14 +3511,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x205"
+          href="http://placehold.it/100x105"
           onClick={[Function]}
         >
-          http://placehold.it/100x205
+          http://placehold.it/100x105
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -2467,7 +3563,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -2476,123 +3572,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__22"
-              >
-                http://placehold.it/100x205
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField37"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-5"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField40"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-5"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -2678,10 +3986,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone25"
+    data-focuszone-id="FocusZone43"
     data-is-focusable={true}
     data-item-index={6}
     data-selection-index={6}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2704,6 +4013,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -2760,6 +4070,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -2827,11 +4138,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -2849,14 +4162,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x206"
+          href="http://placehold.it/100x106"
           onClick={[Function]}
         >
-          http://placehold.it/100x206
+          http://placehold.it/100x106
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -2900,7 +4214,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -2909,123 +4223,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__26"
-              >
-                http://placehold.it/100x206
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField44"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-6"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField47"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-6"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -3111,10 +4637,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone29"
+    data-focuszone-id="FocusZone50"
     data-is-focusable={true}
     data-item-index={7}
     data-selection-index={7}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3137,6 +4664,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -3193,6 +4721,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -3260,11 +4789,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -3282,14 +4813,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x207"
+          href="http://placehold.it/100x107"
           onClick={[Function]}
         >
-          http://placehold.it/100x207
+          http://placehold.it/100x107
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -3333,7 +4865,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -3342,123 +4874,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__30"
-              >
-                http://placehold.it/100x207
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField51"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-7"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField54"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-7"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -3544,10 +5288,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone33"
+    data-focuszone-id="FocusZone57"
     data-is-focusable={true}
     data-item-index={8}
     data-selection-index={8}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3570,6 +5315,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -3626,6 +5372,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -3693,11 +5440,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -3715,14 +5464,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x208"
+          href="http://placehold.it/100x108"
           onClick={[Function]}
         >
-          http://placehold.it/100x208
+          http://placehold.it/100x108
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -3766,7 +5516,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -3775,123 +5525,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__34"
-              >
-                http://placehold.it/100x208
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField58"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-8"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField61"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-8"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span
@@ -3977,10 +5939,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone37"
+    data-focuszone-id="FocusZone64"
     data-is-focusable={true}
     data-item-index={9}
     data-selection-index={9}
+    data-selection-touch-invoke={true}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4003,6 +5966,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     >
       <div
         aria-colindex={1}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -4059,6 +6023,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       </div>
       <div
         aria-colindex={2}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -4126,11 +6091,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 box-shadow: 0 0 0 1px #605e5c inset;
+                outline: 1px auto #605e5c;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: auto;
                 border-bottom: none;
               }
               &:active {
@@ -4148,14 +6115,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               &:focus {
                 color: #0078d4;
               }
-          href="http://placehold.it/100x209"
+          href="http://placehold.it/100x109"
           onClick={[Function]}
         >
-          http://placehold.it/100x209
+          http://placehold.it/100x109
         </a>
       </div>
       <div
         aria-colindex={3}
+        aria-readonly={true}
         className=
             ms-DetailsRow-cell
             {
@@ -4199,7 +6167,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="defaultButton"
+        data-automation-key="textfield"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -4208,123 +6176,335 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           }
         }
       >
-        <button
+        <div
           className=
-              ms-Button
-              ms-Button--default
+              ms-TextField
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                border-radius: 2px;
-                border: 1px solid #8a8886;
+                box-shadow: none;
                 box-sizing: border-box;
-                color: #323130;
-                cursor: pointer;
-                display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #f3f2f1;
-                color: #201f1e;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #edebe9;
-                color: #201f1e;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
         >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
+          <div
+            className="ms-TextField-wrapper"
           >
-            <span
+            <div
               className=
-                  ms-Button-textContainer
+                  ms-TextField-fieldGroup
                   {
-                    display: block;
-                    flex-grow: 1;
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
                   }
             >
-              <span
+              <input
+                aria-invalid={false}
                 className=
-                    ms-Button-label
+                    ms-TextField-field
                     {
-                      display: block;
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
                     }
-                id="id__38"
-              >
-                http://placehold.it/100x209
-              </span>
-            </span>
-          </span>
-        </button>
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField65"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                readOnly={true}
+                type="text"
+                value="ReadOnly Item-9"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-colindex={4}
+        aria-readonly={true}
+        className=
+            ms-DetailsRow-cell
+            {
+              box-sizing: border-box;
+              display: inline-block;
+              min-height: 42px;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 11px;
+              padding-left: 12px;
+              padding-top: 11px;
+              position: relative;
+              text-overflow: ellipsis;
+              vertical-align: top;
+              white-space: nowrap;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #ffffff;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            & > button {
+              max-width: 100%;
+            }
+            & [data-is-focusable='true'] {
+              outline: transparent;
+              position: relative;
+            }
+            & [data-is-focusable='true']::-moz-focus-inner {
+              border: 0;
+            }
+            {
+              padding-right: 8px;
+            }
+        data-automation-key="textfield2"
+        data-automationid="DetailsRowCell"
+        role="gridcell"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      >
+        <div
+          className=
+              ms-TextField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                position: relative;
+              }
+        >
+          <div
+            className="ms-TextField-wrapper"
+          >
+            <div
+              className=
+                  ms-TextField-fieldGroup
+                  {
+                    align-items: stretch;
+                    background: #ffffff;
+                    border-radius: 2px;
+                    border: 1px solid #605e5c;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    cursor: text;
+                    display: flex;
+                    flex-direction: row;
+                    height: 32px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                  }
+                  &:hover {
+                    border-color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                  }
+            >
+              <input
+                aria-invalid={false}
+                className=
+                    ms-TextField-field
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      background: none;
+                      border-radius: 0px;
+                      border: none;
+                      box-shadow: none;
+                      box-sizing: border-box;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      min-width: 0px;
+                      outline: 0px;
+                      padding-bottom: 0;
+                      padding-left: 8px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      text-overflow: ellipsis;
+                      width: 100%;
+                    }
+                    &:active {
+                      outline: 0px;
+                    }
+                    &:focus {
+                      outline: 0px;
+                    }
+                    &:hover {
+                      outline: 0px;
+                    }
+                    &::-ms-clear {
+                      display: none;
+                    }
+                    &::placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &:-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                    &::-ms-input-placeholder {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      opacity: 1;
+                    }
+                id="TextField68"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                type="text"
+                value="Item-9"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <span

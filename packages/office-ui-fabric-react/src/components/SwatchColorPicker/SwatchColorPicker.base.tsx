@@ -6,13 +6,17 @@ import {
   KeyCodes,
   getId,
   warnMutuallyExclusive,
-  warnConditionallyRequiredProps
+  warnConditionallyRequiredProps,
 } from '../../Utilities';
-import { ISwatchColorPickerProps, ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
+import {
+  ISwatchColorPickerProps,
+  ISwatchColorPickerStyleProps,
+  ISwatchColorPickerStyles,
+} from './SwatchColorPicker.types';
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
-import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction, warnDeprecations } from '@uifabric/utilities';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -20,12 +24,14 @@ export interface ISwatchColorPickerState {
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
 
+const COMPONENT_NAME = 'SwatchColorPicker';
+
 export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
   public static defaultProps = {
     cellShape: 'circle',
     disabled: false,
     shouldFocusCircularNavigate: true,
-    cellMargin: 10
+    cellMargin: 10,
   } as ISwatchColorPickerProps;
 
   private _id: string;
@@ -49,17 +55,22 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     this._id = props.id || getId('swatchColorPicker');
 
     if (process.env.NODE_ENV !== 'production') {
-      warnMutuallyExclusive('SwatchColorPicker', this.props, {
-        focusOnHover: 'onHover'
+      warnMutuallyExclusive(COMPONENT_NAME, props, {
+        focusOnHover: 'onHover',
       });
 
       warnConditionallyRequiredProps(
-        'SwatchColorPicker',
-        this.props,
+        COMPONENT_NAME,
+        props,
         ['focusOnHover'],
         'mouseLeaveParentSelector',
-        !!this.props.mouseLeaveParentSelector
+        !!props.mouseLeaveParentSelector,
       );
+
+      warnDeprecations(COMPONENT_NAME, props, {
+        positionInSet: 'ariaPosInSet',
+        setSize: 'ariaSetSize',
+      });
     }
 
     this.isNavigationIdle = true;
@@ -71,7 +82,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     }
 
     this.state = {
-      selectedIndex
+      selectedIndex,
     };
   }
 
@@ -79,7 +90,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
   public UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
     if (newProps.selectedId !== undefined) {
       this.setState({
-        selectedIndex: this._getSelectedIndex(newProps.colorCells, newProps.selectedId)
+        selectedIndex: this._getSelectedIndex(newProps.colorCells, newProps.selectedId),
       });
     }
   }
@@ -89,25 +100,28 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       this._cellFocused = false;
       this.props.onCellFocused();
     }
+    this.async.dispose();
   }
 
   public render(): JSX.Element | null {
     const {
       colorCells,
       columnCount,
-      positionInSet,
-      setSize,
+      // tslint:disable:deprecation
+      ariaPosInSet = this.props.positionInSet,
+      ariaSetSize = this.props.setSize,
+      // tslint:enable:deprecation
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,
       styles,
-      cellMargin
+      cellMargin,
     } = this.props;
 
     const classNames = getClassNames(styles!, {
       theme: this.props.theme!,
       className,
-      cellMargin
+      cellMargin,
     });
 
     if (colorCells.length < 1 || columnCount < 1) {
@@ -116,21 +130,21 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     return (
       <Grid
         {...this.props}
+        id={this._id}
         items={this._getItemsWithIndex(colorCells)}
         columnCount={columnCount}
         onRenderItem={this._renderOption}
-        positionInSet={positionInSet && positionInSet}
-        setSize={setSize && setSize}
+        ariaPosInSet={ariaPosInSet}
+        ariaSetSize={ariaSetSize}
         shouldFocusCircularNavigate={shouldFocusCircularNavigate}
         doNotContainWithinFocusZone={doNotContainWithinFocusZone}
         onBlur={this._onSwatchColorPickerBlur}
         theme={this.props.theme!}
-        // tslint:disable-next-line:jsx-no-lambda
-        styles={props => ({
+        styles={{
           root: classNames.root,
           tableCell: classNames.tableCell,
-          focusedContainer: classNames.focusedContainer
-        })}
+          focusedContainer: classNames.focusedContainer,
+        }}
       />
     );
   }
@@ -163,29 +177,30 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    * @returns - Element representing the item
    */
   private _renderOption = (item: IColorCellProps): JSX.Element => {
+    const props = this.props;
     const id = this._id;
 
     return (
       <ColorPickerGridCell
         item={item}
-        id={id}
+        idPrefix={id}
         color={item.color}
-        styles={this.props.getColorGridCellStyles}
-        disabled={this.props.disabled}
+        styles={props.getColorGridCellStyles}
+        disabled={props.disabled}
         onClick={this._onCellClick}
         onHover={this._onGridCellHovered}
         onFocus={this._onGridCellFocused}
         selected={this.state.selectedIndex !== undefined && this.state.selectedIndex === item.index}
-        circle={this.props.cellShape === 'circle'}
+        circle={props.cellShape === 'circle'}
         label={item.label}
         onMouseEnter={this._onMouseEnter}
         onMouseMove={this._onMouseMove}
         onMouseLeave={this._onMouseLeave}
         onWheel={this._onWheel}
         onKeyDown={this._onKeyDown}
-        height={this.props.cellHeight}
-        width={this.props.cellWidth}
-        borderWidth={this.props.cellBorderWidth}
+        height={props.cellHeight}
+        width={props.cellWidth}
+        borderWidth={props.cellBorderWidth}
       />
     );
   };
@@ -195,11 +210,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    */
   private _onMouseEnter = (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
     if (!this.props.focusOnHover) {
-      if (!this.isNavigationIdle || this.props.disabled) {
-        return true;
-      }
-
-      return false;
+      return !this.isNavigationIdle || !!this.props.disabled;
     }
 
     if (this.isNavigationIdle && !this.props.disabled) {
@@ -214,11 +225,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    */
   private _onMouseMove = (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
     if (!this.props.focusOnHover) {
-      if (!this.isNavigationIdle || this.props.disabled) {
-        return true;
-      }
-
-      return false;
+      return !this.isNavigationIdle || !!this.props.disabled;
     }
 
     const targetElement = ev.currentTarget as HTMLElement;
@@ -279,7 +286,12 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    * Callback that
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>): void => {
-    if (ev.which === KeyCodes.up || ev.which === KeyCodes.down || ev.which === KeyCodes.left || ev.which === KeyCodes.right) {
+    if (
+      ev.which === KeyCodes.up ||
+      ev.which === KeyCodes.down ||
+      ev.which === KeyCodes.left ||
+      ev.which === KeyCodes.right
+    ) {
       this.setNavigationTimeout();
     }
   };
@@ -355,7 +367,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       // Update internal state only if the component is uncontrolled
       if (this.props.isControlled !== true) {
         this.setState({
-          selectedIndex: index
+          selectedIndex: index,
         });
       }
     }

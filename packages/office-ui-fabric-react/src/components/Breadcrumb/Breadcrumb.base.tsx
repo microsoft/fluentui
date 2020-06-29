@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { initializeComponentRef, getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
+import {
+  initializeComponentRef,
+  getRTL,
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties,
+} from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
@@ -15,7 +21,7 @@ import {
   IDividerAsProps,
   IBreadcrumbData,
   IBreadcrumbStyleProps,
-  IBreadcrumbStyles
+  IBreadcrumbStyles,
 } from './Breadcrumb.types';
 
 /** @deprecated Use IBreadcrumbData */
@@ -33,12 +39,12 @@ const nonActionableItemProps: Partial<IContextualMenuItemProps> = {
       root: {
         selectors: {
           '&.is-disabled': {
-            color: theme.semanticColors.bodyText
-          }
-        }
-      }
+            color: theme.semanticColors.bodyText,
+          },
+        },
+      },
     };
-  }
+  },
 };
 
 /**
@@ -48,7 +54,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
     maxDisplayedItems: 999,
-    overflowIndex: 0
+    overflowIndex: 0,
   };
 
   private _classNames: IProcessedStyleSet<IBreadcrumbStyles>;
@@ -73,46 +79,89 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   public render(): JSX.Element {
     this._validateProps(this.props);
 
-    const { onReduceData = this._onReduceData, overflowIndex, maxDisplayedItems, items, className, theme, styles } = this.props;
+    const {
+      onReduceData = this._onReduceData,
+      onGrowData = this._onGrowData,
+      overflowIndex,
+      maxDisplayedItems,
+      items,
+      className,
+      theme,
+      styles,
+    } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
     const breadcrumbData: IBreadcrumbData = {
       props: this.props,
       renderedItems,
-      renderedOverflowItems
+      renderedOverflowItems,
     };
 
     this._classNames = getClassNames(styles, {
       className,
-      theme: theme!
+      theme: theme!,
     });
 
-    return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadcrumbData} />;
+    return (
+      <ResizeGroup
+        onRenderData={this._onRenderBreadcrumb}
+        onReduceData={onReduceData}
+        onGrowData={onGrowData}
+        data={breadcrumbData}
+      />
+    );
   }
 
+  /**
+   * Remove the first rendered item past the overlow point and put it and the end the overflow set.
+   */
   private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
     let { renderedItems, renderedOverflowItems } = data;
     const { overflowIndex } = data.props;
 
     const movedItem = renderedItems[overflowIndex!];
+
+    if (!movedItem) {
+      return undefined;
+    }
+
     renderedItems = [...renderedItems];
     renderedItems.splice(overflowIndex!, 1);
 
     renderedOverflowItems = [...renderedOverflowItems, movedItem];
 
-    if (movedItem !== undefined) {
-      return { ...data, renderedItems, renderedOverflowItems };
+    return { ...data, renderedItems, renderedOverflowItems };
+  };
+
+  /**
+   * Remove the last item of the overflow set and insert the item as the start of the rendered set past the overflow
+   * point.
+   */
+  private _onGrowData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
+    let { renderedItems, renderedOverflowItems } = data;
+    const { overflowIndex, maxDisplayedItems } = data.props;
+
+    renderedOverflowItems = [...renderedOverflowItems];
+    const movedItem = renderedOverflowItems.pop();
+
+    if (!movedItem || renderedItems.length >= maxDisplayedItems!) {
+      return undefined;
     }
+
+    renderedItems = [...renderedItems];
+    renderedItems.splice(overflowIndex!, 0, movedItem);
+
+    return { ...data, renderedItems, renderedOverflowItems };
   };
 
   private _onRenderBreadcrumb = (data: IBreadcrumbData) => {
     const {
       ariaLabel,
-      dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
+      dividerAs: DividerType = Icon as React.ElementType<IDividerAsProps>,
       onRenderItem = this._onRenderItem,
       overflowAriaLabel,
       overflowIndex,
-      onRenderOverflowIcon
+      onRenderOverflowIcon,
     } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
@@ -125,9 +174,9 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
           href: item.href,
           disabled: !isActionable,
-          itemProps: isActionable ? undefined : nonActionableItemProps
+          itemProps: isActionable ? undefined : nonActionableItemProps,
         };
-      }
+      },
     );
 
     // Find index of last rendered item so the divider icon
@@ -139,7 +188,11 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       <li className={this._classNames.listItem} key={item.key || String(index)}>
         {onRenderItem(item, this._onRenderItem)}
         {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
-          <DividerType className={this._classNames.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} item={item} />
+          <DividerType
+            className={this._classNames.chevron}
+            iconName={getRTL(this.props.theme) ? 'ChevronLeft' : 'ChevronRight'}
+            item={item}
+          />
         )}
       </li>
     ));
@@ -161,25 +214,31 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
             onRenderMenuIcon={onRenderMenuIcon}
             menuProps={{
               items: contextualItems,
-              directionalHint: DirectionalHint.bottomLeftEdge
+              directionalHint: DirectionalHint.bottomLeftEdge,
             }}
           />
           {overflowIndex !== lastItemIndex + 1 && (
             <DividerType
               className={this._classNames.chevron}
-              iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'}
+              iconName={getRTL(this.props.theme) ? 'ChevronLeft' : 'ChevronRight'}
               item={renderedOverflowItems[renderedOverflowItems.length - 1]}
             />
           )}
-        </li>
+        </li>,
       );
     }
 
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, ['className']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, [
+      'className',
+    ]);
 
     return (
       <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
-        <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal} {...this.props.focusZoneProps}>
+        <FocusZone
+          componentRef={this._focusZone}
+          direction={FocusZoneDirection.horizontal}
+          {...this.props.focusZoneProps}
+        >
           <ol className={this._classNames.list}>{itemElements}</ol>
         </FocusZone>
       </div>

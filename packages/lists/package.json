@@ -11,35 +11,35 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev",
+    "start": "just-scripts dev:storybook",
     "start-test": "just-scripts jest-watch",
     "update-api": "just-scripts update-api",
     "update-snapshots": "just-scripts jest -u",
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@types/enzyme": "3.1.13",
+    "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/es6-promise": "0.0.32",
-    "@types/jest": "23.0.0",
-    "@types/react": "16.8.11",
+    "@types/jest": "~24.9.0",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/example-app-base": "^7.10.1",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.6",
-    "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
-    "enzyme": "~3.9.0",
-    "enzyme-adapter-react-16": "^1.2.0",
-    "es6-weak-map": "^2.0.2",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/example-app-base": "^7.12.84",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.28",
+    "@uifabric/tslint-rules": "^7.2.2",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
@@ -47,10 +47,10 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/set-version": "^7.0.2",
-    "office-ui-fabric-react": "^7.62.0",
-    "tslib": "^1.7.1"
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@uifabric/set-version": "^7.0.15",
+    "office-ui-fabric-react": "^7.121.5",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

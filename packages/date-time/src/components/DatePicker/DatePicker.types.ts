@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
-import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '@uifabric/utilities';
+import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@uifabric/utilities';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 
@@ -31,7 +31,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+  styles?: IStyleFunctionOrObject<IDatePickerStyleProps, IDatePickerStyles>;
 
   /**
    * Theme provided by High-Order Component.

@@ -1,0 +1,31 @@
+{
+  "name": "@fluentui/keyboard-key",
+  "version": "0.2.3",
+  "description": "A simple utility for determining the KeyboardEvent.key property from a keyboard event.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
+    "update-api": "just-scripts update-api"
+  },
+  "devDependencies": {
+    "@types/jest": "~24.9.0",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/tslint-rules": "^7.2.2"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
+}

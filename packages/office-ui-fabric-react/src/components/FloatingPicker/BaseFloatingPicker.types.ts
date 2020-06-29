@@ -4,6 +4,7 @@ import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import { ICalloutProps } from '../Callout/Callout.types';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -57,7 +58,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
-   * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
+   * If used in conjunction with resolveDelay this will only kick off after the delay throttle.
    * Return null if using as a controlled component
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
@@ -87,6 +88,12 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    * The properties that will get passed to the Suggestions component.
    */
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
+
+  /**
+   * The properties that will get passed to the Callout component.
+   */
+  pickerCalloutProps?: ICalloutProps;
+
   /**
    * A callback for when an item is removed from the suggestion list
    */
@@ -111,8 +118,8 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   showForceResolve?: () => boolean;
 
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled
-   * component.
+   * The items that the base picker should currently display as selected.
+   * If this is provided then the picker will act as a controlled component.
    */
   selectedItems?: T[];
 

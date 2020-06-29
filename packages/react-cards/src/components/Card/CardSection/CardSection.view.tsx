@@ -11,7 +11,7 @@ export const CardSectionView: ICardSectionComponent['view'] = props => {
   }
 
   const Slots = getSlots<ICardSectionProps, ICardSectionSlots>(props, {
-    root: Stack
+    root: Stack,
   });
 
   return <Slots.root {...rest}>{children}</Slots.root>;

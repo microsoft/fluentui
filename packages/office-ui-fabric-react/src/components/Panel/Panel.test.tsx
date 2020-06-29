@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
-import { PanelBase } from './Panel.base';
 import { Panel } from './Panel';
+import { PanelBase } from './Panel.base';
+import { IPanel } from './Panel.types';
 let div: HTMLElement;
 
 const ReactDOM = require('react-dom');
@@ -14,19 +16,27 @@ describe('Panel', () => {
 
   it('renders Panel correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
+    const originalCreatePortal = ReactDOM.createPortal;
     ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
 
     const component = renderer.create(
-      <Panel isOpen={true} headerText="Test Panel">
+      <Panel
+        isOpen={true}
+        headerText="Test Panel"
+        headerTextProps={{
+          className: 'panel_class',
+          'aria-level': 3,
+        }}
+      >
         <span>Content goes here</span>
-      </Panel>
+      </Panel>,
     );
 
     expect(component.toJSON()).toMatchSnapshot();
 
-    ReactDOM.createPortal.mockClear();
+    ReactDOM.createPortal = originalCreatePortal;
   });
 
   describe('open', () => {
@@ -38,7 +48,7 @@ describe('Panel', () => {
       ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('fires the correct events', () => {
+    it('fires the correct events on imperative scenarios', () => {
       let openedCalled = false;
       let openCalled = false;
       let dismissedCalled = false;
@@ -61,8 +71,13 @@ describe('Panel', () => {
       jest.useFakeTimers();
 
       const panel: PanelBase = ReactDOM.render(
-        <PanelBase onOpen={setOpenTrue} onOpened={setOpenedTrue} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
-        div
+        <PanelBase
+          onOpen={setOpenTrue}
+          onOpened={setOpenedTrue}
+          onDismiss={setDismissTrue}
+          onDismissed={setDismissedTrue}
+        />,
+        div,
       ) as any;
 
       panel.open();
@@ -88,6 +103,47 @@ describe('Panel', () => {
       jest.runOnlyPendingTimers();
 
       expect(dismissedCalled).toEqual(true);
+    });
+
+    it('fires the correct events on non-imperative scenarios', () => {
+      const panel = React.createRef<IPanel>();
+
+      const onOpen = jest.fn();
+      const onOpened = jest.fn();
+      const onDismiss = jest.fn();
+      const onDismissed = jest.fn();
+      jest.useFakeTimers();
+
+      const wrapper = mount(
+        <Panel
+          isOpen={false}
+          onOpen={onOpen}
+          onOpened={onOpened}
+          onDismiss={onDismiss}
+          onDismissed={onDismissed}
+          componentRef={panel}
+        />,
+      );
+
+      expect(onOpen).toHaveBeenCalledTimes(0);
+
+      wrapper.setProps({ isOpen: true });
+
+      expect(onOpen).toHaveBeenCalledTimes(1);
+      expect(onOpened).toHaveBeenCalledTimes(0);
+
+      jest.runOnlyPendingTimers();
+
+      expect(onOpened).toHaveBeenCalledTimes(1);
+      expect(onDismiss).toHaveBeenCalledTimes(0);
+
+      wrapper.setProps({ isOpen: false });
+
+      expect(onDismissed).toHaveBeenCalledTimes(0);
+
+      jest.runOnlyPendingTimers();
+
+      expect(onDismissed).toHaveBeenCalledTimes(1);
     });
   });
 
