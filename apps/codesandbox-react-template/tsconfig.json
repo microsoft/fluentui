@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "outDir": "lib",
     "module": "commonjs",
@@ -14,7 +15,11 @@
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"]
+    "types": ["webpack-env", "custom-global"],
+    "paths": {
+      "codesandbox-react-template/lib/*": ["./src/*"],
+      "codesandbox-react-template": ["./src"]
+    }
   },
   "include": ["src"]
 }
