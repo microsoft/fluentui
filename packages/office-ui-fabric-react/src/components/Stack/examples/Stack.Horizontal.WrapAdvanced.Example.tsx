@@ -25,6 +25,26 @@ const itemStyles: React.CSSProperties = {
   width: 50,
 };
 
+// Alignment options
+const horizontalAlignmentOptions: IDropdownOption[] = [
+  { key: 'start', text: 'Left' },
+  { key: 'center', text: 'Center' },
+  { key: 'end', text: 'Right' },
+  { key: 'space-around', text: 'Space around' },
+  { key: 'space-between', text: 'Space between' },
+  { key: 'space-evenly', text: 'Space evenly' },
+];
+const verticalAlignmentOptions: IDropdownOption[] = [
+  { key: 'start', text: 'Top' },
+  { key: 'center', text: 'Center' },
+  { key: 'end', text: 'Bottom' },
+];
+const overflowOptions: IDropdownOption[] = [
+  { key: 'visible', text: 'Visible' },
+  { key: 'auto', text: 'Auto' },
+  { key: 'hidden', text: 'Hidden' },
+];
+
 // Tokens definition
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
@@ -54,7 +74,7 @@ const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampl
         styles={stackStyles}
         tokens={wrapStackTokens}
       >
-        {_range(1, 10).map(n => (
+        {range(1, 10).map(n => (
           <span style={itemStyles} key={n}>
             {n}
           </span>
@@ -64,123 +84,101 @@ const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampl
   );
 };
 
-function _range(start: number, end: number): number[] {
+const range = (start: number, end: number): number[] => {
   const result = [];
   for (let i = start; i <= end; i++) {
     result.push(i);
   }
   return result;
-}
+};
 
-export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExampleOptions> {
-  public state: IExampleOptions = {
+export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () => {
+  const [state, setState] = React.useState<IExampleOptions>({
     stackWidth: 100,
     containerHeight: 150,
     horizontalAlignment: 'start',
     verticalAlignment: 'start',
     overflow: 'visible',
+  });
+
+  const onWidthChange = (value: number): void => {
+    setState({ ...state, stackWidth: value });
   };
-  private _horizontalAlignmentOptions: IDropdownOption[] = [
-    { key: 'start', text: 'Left' },
-    { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Right' },
-    { key: 'space-around', text: 'Space around' },
-    { key: 'space-between', text: 'Space between' },
-    { key: 'space-evenly', text: 'Space evenly' },
-  ];
-  private _verticalAlignmentOptions: IDropdownOption[] = [
-    { key: 'start', text: 'Top' },
-    { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Bottom' },
-  ];
-  private _overflowOptions: IDropdownOption[] = [
-    { key: 'visible', text: 'Visible' },
-    { key: 'auto', text: 'Auto' },
-    { key: 'hidden', text: 'Hidden' },
-  ];
 
-  public render(): JSX.Element {
-    const { overflow, horizontalAlignment, verticalAlignment } = this.state;
+  const onHeightChange = (value: number): void => {
+    setState({ ...state, containerHeight: value });
+  };
 
-    return (
-      <Stack tokens={sectionStackTokens}>
-        <Stack horizontal>
-          <Stack.Item grow>
-            <Slider
-              label="Stack width:"
-              min={1}
-              max={100}
-              step={1}
-              defaultValue={100}
-              showValue={true}
-              onChange={this._onWidthChange}
-            />
-          </Stack.Item>
-          <Stack.Item grow>
-            <Slider
-              label="Container height:"
-              min={1}
-              max={200}
-              step={1}
-              defaultValue={150}
-              showValue={true}
-              onChange={this._onHeightChange}
-            />
-          </Stack.Item>
-        </Stack>
+  const onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+    setState({ ...state, horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
+  };
 
-        <Stack horizontal tokens={configureStackTokens}>
-          <Stack.Item grow>
-            <Dropdown
-              selectedKey={horizontalAlignment}
-              placeholder="Select Horizontal Alignment"
-              label="Horizontal alignment:"
-              options={this._horizontalAlignmentOptions}
-              onChange={this._onHorizontalAlignChange}
-            />
-          </Stack.Item>
-          <Stack.Item grow>
-            <Dropdown
-              selectedKey={verticalAlignment}
-              placeholder="Select Vertical Alignment"
-              label="Vertical alignment:"
-              options={this._verticalAlignmentOptions}
-              onChange={this._onVerticalAlignChange}
-            />
-          </Stack.Item>
-          <Stack.Item grow>
-            <Dropdown
-              selectedKey={overflow}
-              placeholder="Select Overflow"
-              label="Overflow:"
-              options={this._overflowOptions}
-              onChange={this._onOverflowChange}
-            />
-          </Stack.Item>
-        </Stack>
+  const onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+    setState({ ...state, verticalAlignment: option.key as IStackProps['verticalAlign'] });
+  };
 
-        <HorizontalStackWrapAdvancedExampleContent {...this.state} />
+  const onOverflowChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+    setState({ ...state, overflow: option.key as Overflow });
+  };
+
+  return (
+    <Stack tokens={sectionStackTokens}>
+      <Stack horizontal>
+        <Stack.Item grow>
+          <Slider
+            label="Stack width:"
+            min={1}
+            max={100}
+            step={1}
+            defaultValue={100}
+            showValue
+            onChange={onWidthChange}
+          />
+        </Stack.Item>
+        <Stack.Item grow>
+          <Slider
+            label="Container height:"
+            min={1}
+            max={200}
+            step={1}
+            defaultValue={150}
+            showValue
+            onChange={onHeightChange}
+          />
+        </Stack.Item>
       </Stack>
-    );
-  }
 
-  private _onWidthChange = (value: number): void => {
-    this.setState({ stackWidth: value });
-  };
+      <Stack horizontal tokens={configureStackTokens}>
+        <Stack.Item grow>
+          <Dropdown
+            selectedKey={state.horizontalAlignment}
+            placeholder="Select Horizontal Alignment"
+            label="Horizontal alignment:"
+            options={horizontalAlignmentOptions}
+            onChange={onHorizontalAlignChange}
+          />
+        </Stack.Item>
+        <Stack.Item grow>
+          <Dropdown
+            selectedKey={state.verticalAlignment}
+            placeholder="Select Vertical Alignment"
+            label="Vertical alignment:"
+            options={verticalAlignmentOptions}
+            onChange={onVerticalAlignChange}
+          />
+        </Stack.Item>
+        <Stack.Item grow>
+          <Dropdown
+            selectedKey={state.overflow}
+            placeholder="Select Overflow"
+            label="Overflow:"
+            options={overflowOptions}
+            onChange={onOverflowChange}
+          />
+        </Stack.Item>
+      </Stack>
 
-  private _onHeightChange = (value: number): void => {
-    this.setState({ containerHeight: value });
-  };
-
-  private _onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
-  };
-
-  private _onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ verticalAlignment: option.key as IStackProps['verticalAlign'] });
-  };
-
-  private _onOverflowChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ overflow: option.key as Overflow });
-  };
-}
+      <HorizontalStackWrapAdvancedExampleContent {...state} />
+    </Stack>
+  );
+};

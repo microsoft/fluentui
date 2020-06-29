@@ -51,6 +51,9 @@ export function useOnEvent<TElement extends Element, TEvent extends Event>(eleme
 // @public
 export function usePrevious<T>(value: T): T | undefined;
 
+// @public
+export const useSetTimeout: () => (func: () => void, duration: number) => number;
+
 
 // (No @packageDocumentation comment for this package)
 
