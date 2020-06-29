@@ -307,23 +307,22 @@ const CalendarYearNavArrow = React.forwardRef(
 );
 CalendarYearNavArrow.displayName = 'CalendarYearNavArrow';
 
-class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
-  public render(): JSX.Element {
-    const { styles, theme, className } = this.props;
+const CalendarYearNav = React.forwardRef((props: ICalendarYearHeaderProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+  const { styles, theme, className } = props;
 
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      className: className,
-    });
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    className: className,
+  });
 
-    return (
-      <div className={classNames.navigationButtonsContainer}>
-        <CalendarYearNavArrow {...this.props} direction={CalendarYearNavDirection.Previous} />
-        <CalendarYearNavArrow {...this.props} direction={CalendarYearNavDirection.Next} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classNames.navigationButtonsContainer} ref={forwardedRef}>
+      <CalendarYearNavArrow {...props} direction={CalendarYearNavDirection.Previous} />
+      <CalendarYearNavArrow {...props} direction={CalendarYearNavDirection.Next} />
+    </div>
+  );
+});
+CalendarYearNav.displayName = 'CalendarYearNav';
 
 class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
