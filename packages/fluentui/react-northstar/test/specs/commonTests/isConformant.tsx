@@ -617,9 +617,12 @@ export default function isConformant(
     describe('compose', () => {
       describe('debug', () => {
         const displayName = 'ComposedComponent';
-        const ComposedComponent = compose(Component as ComposedComponent, {
-          displayName,
-        });
+        const ComposedComponent = compose<'div', { accessibility?: Accessibility }, {}, {}, {}>(
+          Component as ComposedComponent,
+          {
+            displayName,
+          },
+        );
 
         it('overrides default "displayName"', () => {
           expect(ComposedComponent.displayName).toBe(displayName);
@@ -697,7 +700,9 @@ export default function isConformant(
       });
 
       it('passes a ref to "root" element', () => {
-        const ComposedComponent = compose(Component as ComposedComponent);
+        const ComposedComponent = compose<'div', { accessibility?: Accessibility }, {}, {}, {}>(
+          Component as ComposedComponent,
+        );
         const rootRef = jest.fn();
 
         const wrapper = forwardsRefTo
