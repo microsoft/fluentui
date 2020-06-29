@@ -23,7 +23,12 @@ const getItemHighContrastStyles = memoizeFunction(
           backgroundColor: 'Highlight',
           borderColor: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none'
+          MsHighContrastAdjust: 'none',
+          selectors: {
+            '.ms-ContextualMenu-submenuIcon': {
+              color: 'HighlightText'
+            }
+          }
         }
       }
     };
