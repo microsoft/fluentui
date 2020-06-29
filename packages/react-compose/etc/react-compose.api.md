@@ -30,7 +30,7 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
         as: TElementType;
     }>;
     displayName?: string;
-    __props: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & {
+    __PRIVATE_PROPS: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & {
         as?: TElementType;
     } & TProps;
 };
@@ -121,8 +121,8 @@ export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
 
 // @public (undocumented)
 export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs> = E extends {
-    __props: any;
-} ? E['__props'] : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
+    __PRIVATE_PROPS: any;
+} ? E['__PRIVATE_PROPS'] : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 // @public (undocumented)
 export interface ShorthandConfig<TProps> {
