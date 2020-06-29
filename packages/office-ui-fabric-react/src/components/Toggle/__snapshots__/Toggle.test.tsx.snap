@@ -143,7 +143,7 @@ exports[`Toggle renders toggle correctly 1`] = `
         @media screen and (-ms-high-contrast: active){& {
           color: WindowText;
         }
-        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+        @media screen and (forced-colors: active){& {
           forced-color-adjust: none;
         }
     htmlFor="Toggle1"
@@ -283,7 +283,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
         @media screen and (-ms-high-contrast: active){& {
           color: WindowText;
         }
-        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+        @media screen and (forced-colors: active){& {
           forced-color-adjust: none;
         }
     htmlFor="Toggle3"
@@ -425,7 +425,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
         @media screen and (-ms-high-contrast: active){& {
           color: WindowText;
         }
-        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+        @media screen and (forced-colors: active){& {
           forced-color-adjust: none;
         }
     htmlFor="Toggle2"
@@ -564,7 +564,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
         @media screen and (-ms-high-contrast: active){& {
           color: WindowText;
         }
-        @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+        @media screen and (forced-colors: active){& {
           forced-color-adjust: none;
         }
     htmlFor="Toggle4"
@@ -682,7 +682,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           @media screen and (-ms-high-contrast: active){& {
             color: WindowText;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
           && {

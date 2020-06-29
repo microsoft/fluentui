@@ -120,7 +120,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){& {
                   color: WindowText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
             htmlFor="Slider0"
@@ -344,7 +344,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){& {
                     color: WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -484,7 +484,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       border-color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -525,7 +525,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -644,7 +644,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       border-color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -685,7 +685,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -804,7 +804,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       border-color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -845,7 +845,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -963,7 +963,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       border-color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -1004,7 +1004,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -1092,7 +1092,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){& {
                   color: GrayText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
             htmlFor="Slider5"
@@ -1269,7 +1269,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1399,7 +1399,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     background: Highlight;
                     border-color: Highlight;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1440,7 +1440,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){& {
                     color: WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1549,7 +1549,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){& {
                   color: WindowText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
             htmlFor="Slider7"
@@ -1773,7 +1773,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){& {
                     color: WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1849,7 +1849,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
                 id="Dropdown8-label"
@@ -2080,7 +2080,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
                 id="Dropdown9-label"
@@ -2389,7 +2389,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       @media screen and (-ms-high-contrast: active){& {
                         border-color: WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                 >
@@ -2430,7 +2430,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       @media screen and (-ms-high-contrast: active){& {
                         color: WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                 >
@@ -2506,7 +2506,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       @media screen and (-ms-high-contrast: active){& {
                         color: WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                   htmlFor="TextField11"
@@ -2544,7 +2544,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                       }
-                      @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+                      @media screen and (forced-colors: active){&:hover {
                         forced-color-adjust: none;
                       }
                 >
@@ -2723,7 +2723,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){& {
                   color: WindowText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
             htmlFor="Slider14"
@@ -2947,7 +2947,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){& {
                     color: WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2996,7 +2996,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){& {
                   color: WindowText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
             htmlFor="Slider15"
@@ -3220,7 +3220,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){& {
                     color: WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -3307,7 +3307,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){& {
                   color: WindowText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
             htmlFor="Slider16"
@@ -3531,7 +3531,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){& {
                     color: WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -3580,7 +3580,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 @media screen and (-ms-high-contrast: active){& {
                   color: WindowText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
             htmlFor="Slider17"
@@ -3804,7 +3804,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){& {
                     color: WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >

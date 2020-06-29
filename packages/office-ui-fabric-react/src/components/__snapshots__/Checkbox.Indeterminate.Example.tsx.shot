@@ -158,7 +158,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){& {
               border-color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -199,7 +199,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -340,7 +340,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){& {
               border-color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -381,7 +381,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -493,7 +493,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){& {
               border-color: GrayText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -534,7 +534,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -678,7 +678,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){& {
               border-color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -719,7 +719,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >

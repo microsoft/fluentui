@@ -3634,7 +3634,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="Toggle61"
@@ -3768,7 +3768,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="Toggle62"
@@ -3902,7 +3902,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="Toggle63"
@@ -4033,7 +4033,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           id="Dropdown64-label"

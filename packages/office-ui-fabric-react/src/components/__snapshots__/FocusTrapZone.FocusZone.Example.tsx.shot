@@ -85,7 +85,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="Toggle0"
@@ -204,7 +204,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               && {

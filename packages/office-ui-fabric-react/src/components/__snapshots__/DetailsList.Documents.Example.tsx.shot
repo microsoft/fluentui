@@ -75,7 +75,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="Toggle0"
@@ -194,7 +194,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               && {
@@ -261,7 +261,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="Toggle1"
@@ -380,7 +380,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               && {
@@ -455,7 +455,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           htmlFor="TextField2"
@@ -493,7 +493,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >

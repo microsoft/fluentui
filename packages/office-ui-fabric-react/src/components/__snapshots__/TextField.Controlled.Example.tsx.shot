@@ -74,7 +74,7 @@ exports[`Component Examples renders TextField.Controlled.Example.tsx correctly 1
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="TextField0"
@@ -113,7 +113,7 @@ exports[`Component Examples renders TextField.Controlled.Example.tsx correctly 1
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -263,7 +263,7 @@ exports[`Component Examples renders TextField.Controlled.Example.tsx correctly 1
             @media screen and (-ms-high-contrast: active){& {
               color: WindowText;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="TextField3"
@@ -302,7 +302,7 @@ exports[`Component Examples renders TextField.Controlled.Example.tsx correctly 1
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >

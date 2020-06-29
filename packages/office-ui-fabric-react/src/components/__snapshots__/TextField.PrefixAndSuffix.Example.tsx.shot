@@ -95,7 +95,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           htmlFor="TextField0"
@@ -133,7 +133,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
@@ -316,7 +316,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 color: GrayText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           htmlFor="TextField3"
@@ -352,7 +352,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 border-color: GrayText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -558,7 +558,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           htmlFor="TextField6"
@@ -596,7 +596,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
@@ -778,7 +778,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           htmlFor="TextField9"
@@ -816,7 +816,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
