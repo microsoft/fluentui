@@ -1,8 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 26 Jun 2020 12:36:28 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.121.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.5)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.4..office-ui-fabric-react_v7.121.5)
+
+### Patches
+
+- SpinButton: pass through event information if the user spins up or down ([PR #13811](https://github.com/microsoft/fluentui/pull/13811) by makopch@microsoft.com)
+- ContextualMenu: Fixing issue where focus would not return to previously focused element and issue where error might occur if said previously focused element didn't have a focus method. ([PR #13813](https://github.com/microsoft/fluentui/pull/13813) by joschect@microsoft.com)
+- Convert KeytipTransitionModifier to type ([PR #13825](https://github.com/microsoft/fluentui/pull/13825) by KevinTCoughlin@users.noreply.github.com)
 
 ## [7.121.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.4)
 

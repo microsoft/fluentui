@@ -205,6 +205,12 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
    */
   onChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
+  /**
+   * Called when the focus moves out from dropdown.
+   * @param event - React's original SyntheticEvent.
+   */
+  onBlur?: (event: React.MouseEvent | React.KeyboardEvent | null) => void;
+
   /** A dropdown's open state can be controlled. */
   open?: boolean;
 
@@ -248,6 +254,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
 
   /** Sets the dropdown's currently selected value(s) in controlled mode. */
   value?: ShorthandValue<DropdownItemProps> | ShorthandCollection<DropdownItemProps>;
+
+  /** Dropdown can have errors status  */
+  error?: boolean;
 }
 
 export interface DropdownState {
@@ -310,6 +319,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     defaultSearchQuery: PropTypes.string,
     defaultValue: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
     disabled: PropTypes.bool,
+    error: PropTypes.bool,
     fluid: PropTypes.bool,
     getA11ySelectionMessage: PropTypes.object,
     getA11yStatusMessage: PropTypes.func,
@@ -333,6 +343,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     ]),
     onOpenChange: PropTypes.func,
     onSearchQueryChange: PropTypes.func,
+    onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onActiveSelectedIndexChange: PropTypes.func,
     onHighlightedIndexChange: PropTypes.func,
@@ -449,6 +460,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     _.invoke(this.props, 'onChange', e, { ...this.props, value: this.state.value });
   };
 
+  handleOnBlur = (e: React.SyntheticEvent) => {
+    // Dropdown component doesn't present any `input` component in markup, however all of our
+    // components should handle events transparently.
+    if (e.target !== this.buttonRef.current) {
+      _.invoke(this.props, 'onBlur', e, this.props);
+    }
+  };
+
   renderComponent({ ElementType, classes, styles, variables, unhandledProps, rtl }: RenderResultConfig<DropdownProps>) {
     const {
       clearable,
@@ -465,7 +484,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     const { highlightedIndex, open, searchQuery, value } = this.state;
 
     return (
-      <ElementType className={classes.root} onChange={this.handleChange} {...unhandledProps}>
+      <ElementType className={classes.root} onBlur={this.handleOnBlur} onChange={this.handleChange} {...unhandledProps}>
         <Downshift
           isOpen={open}
           inputValue={search ? searchQuery : null}
@@ -907,6 +926,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         if (state.isOpen && activeElement === this.listRef.current) {
           return {}; // won't change state in this case.
         }
+        _.invoke(this.props, 'onBlur', null);
       default:
         return changes;
     }
