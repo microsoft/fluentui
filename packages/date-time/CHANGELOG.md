@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.0)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.9.3..@uifabric/date-time_v7.10.0)
+
+### Minor changes
+
+- CalendarDayGrid: migrate component to function component ([PR #13803](https://github.com/microsoft/fluentui/pull/13803) by miclo@microsoft.com)
 
 ## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.9.0)
 

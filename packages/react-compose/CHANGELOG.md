@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 25 Jun 2020 12:50:17 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.6)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.5..@fluentui/react-compose_v0.11.6)
+
+### Patches
+
+- resolveSlotProps: Making change so that if slot/shorthand prop has JSX element as children, slot is completely replaced by it. ([PR #13827](https://github.com/microsoft/fluentui/pull/13827) by xgao@microsoft.com)
 
 ## [0.11.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.4)
 
