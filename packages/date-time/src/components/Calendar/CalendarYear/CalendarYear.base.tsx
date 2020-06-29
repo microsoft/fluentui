@@ -16,6 +16,7 @@ import {
   css,
   format,
   initializeComponentRef,
+  IRefObject,
 } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
@@ -63,6 +64,7 @@ interface ICalendarYearGridCellProps extends ICalendarYearProps {
 interface ICalendarYearGridProps extends ICalendarYearProps, ICalendarYearRange {
   selectedYear?: number;
   animateBackwards?: boolean;
+  componentRef?: IRefObject<ICalendarYearGridCell>;
 }
 
 interface ICalendarYearGridCell {
