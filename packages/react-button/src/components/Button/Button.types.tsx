@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandValue, ComposeStandardStatics, RecursivePartial } from '../../utils/tempTypes';
-import { ComposeOptions } from '@fluentui/react-compose';
+import { BaseSlots, ComposeOptions, SlotProps } from '@fluentui/react-compose';
 import { ColorPlateSet } from '@fluentui/react-theme-provider';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
@@ -92,15 +92,13 @@ export interface ButtonState extends ButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
-export interface ButtonSlots {
+export interface ButtonSlots extends BaseSlots {
   icon: React.ElementType;
   content: React.ElementType;
   loader: React.ElementType;
 }
 
-export type ButtonSlotProps = {
-  [key in keyof ButtonSlots]: ButtonProps[key];
-};
+export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 export interface ButtonOptions
   extends ComposeOptions<ButtonProps, ButtonSlots, ButtonSlotProps, ComposeStandardStatics> {}
@@ -116,6 +114,8 @@ export type ButtonTokens = ColorPlateSet & {
   iconSize: string;
   borderRadius: string;
   borderWidth: string;
+  boxShadow: string;
+  width: string;
 
   size: {
     smallest: string;

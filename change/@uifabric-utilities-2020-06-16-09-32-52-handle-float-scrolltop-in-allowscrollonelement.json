@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix scroll position math for overscrolling (#13555)",
+  "packageName": "@uifabric/utilities",
+  "email": "kai@substantial.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-16T16:32:51.983Z"
+}

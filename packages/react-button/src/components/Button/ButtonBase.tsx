@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ButtonProps } from './Button.types';
+import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
 import { compose, mergeProps } from '@fluentui/react-compose';
 import { useButton } from './useButton';
 import { useMergedRefs } from '@uifabric/react-hooks';
@@ -7,7 +7,7 @@ import { useMergedRefs } from '@uifabric/react-hooks';
 export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   (props, ref, options) => {
     const { state } = options;
-    const { slots, slotProps } = mergeProps(state, options);
+    const { slots, slotProps } = mergeProps<ButtonProps, ButtonProps, ButtonSlots, ButtonSlotProps>(state, options);
 
     return (
       <slots.root ref={useMergedRefs(ref, state.buttonRef)} {...slotProps.root}>
@@ -25,7 +25,6 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'componentRef',
       'circular',
       'content',
-      'disabled',
       'fluid',
       'iconOnly',
       'iconPosition',
@@ -34,10 +33,9 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'loading',
       'primary',
       'secondary',
-      'tokens',
       'size',
-      // tslint:disable-next-line:no-any
-    ] as any,
+      'tokens',
+    ],
     slots: {
       icon: 'span',
       content: 'span',

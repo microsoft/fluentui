@@ -26,16 +26,17 @@
     "test": "just-scripts test"
   },
   "dependencies": {
-    "@fluentui/react-theme-provider": "^0.3.0",
+    "@fluentui/react-theme-provider": "^0.3.2",
     "@types/classnames": "^2.2.9",
     "@types/jss": "^9.5.8",
-    "@uifabric/merge-styles": "^7.14.1",
-    "@uifabric/utilities": "^7.21.1",
+    "@uifabric/merge-styles": "^7.15.1",
+    "@uifabric/utilities": "^7.21.3",
     "classnames": "^2.2.6",
     "jss": "^10.0.0",
     "jss-preset-default": "^10.0.0"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/jss": "^9.5.8",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
