@@ -14,7 +14,9 @@ export interface ShorthandConfig<TProps> {
 export type PropsOfElement<
   // tslint:disable-next-line:no-any
   E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs
-> = E extends { __props: any } ? E['__props'] : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
+> = E extends { __PRIVATE_PROPS: any }
+  ? E['__PRIVATE_PROPS']
+  : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 // tslint:disable-next-line:interface-name
 export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<
@@ -30,7 +32,7 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
   defaultProps?: Partial<TProps & { as: TElementType }>;
   displayName?: string;
 
-  __props: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
+  __PRIVATE_PROPS: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
 };
 
 //
