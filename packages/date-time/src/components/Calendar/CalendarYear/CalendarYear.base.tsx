@@ -225,9 +225,31 @@ const CalendarYearGrid = React.forwardRef(
 );
 CalendarYearGrid.displayName = 'CalendarYearGrid';
 
-class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> {
-  public render(): JSX.Element {
-    const { styles, theme, className, navigationIcons, strings, onSelectPrev, fromYear, toYear } = this.props;
+const enum CalendarYearNavDirection {
+  Previous,
+  Next,
+}
+
+interface ICalendarYearNavArrowProps extends ICalendarYearHeaderProps {
+  direction: CalendarYearNavDirection;
+}
+
+const CalendarYearNavArrow = React.forwardRef(
+  (props: ICalendarYearNavArrowProps, forwardedRef: React.Ref<HTMLButtonElement>) => {
+    const {
+      styles,
+      theme,
+      className,
+      navigationIcons,
+      strings,
+      direction,
+      onSelectPrev,
+      onSelectNext,
+      fromYear,
+      toYear,
+      maxYear,
+      minYear,
+    } = props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -236,102 +258,54 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
     const yearStrings = strings || DefaultCalendarYearStrings;
-    const prevRangeAriaLabel = yearStrings.prevRangeAriaLabel;
-    const prevRange = { fromYear: fromYear - CELL_COUNT, toYear: toYear - CELL_COUNT };
-    const prevAriaLabel = prevRangeAriaLabel
-      ? typeof prevRangeAriaLabel === 'string'
-        ? (prevRangeAriaLabel as string)
-        : (prevRangeAriaLabel as ICalendarYearRangeToString)(prevRange)
+    const ariaLabel =
+      direction === CalendarYearNavDirection.Previous ? yearStrings.prevRangeAriaLabel : yearStrings.nextRangeAriaLabel;
+    const newRangeOffset = direction === CalendarYearNavDirection.Previous ? -CELL_COUNT : CELL_COUNT;
+    const newRange = { fromYear: fromYear + newRangeOffset, toYear: toYear + newRangeOffset };
+    const ariaLabelString = ariaLabel
+      ? typeof ariaLabel === 'string'
+        ? (ariaLabel as string)
+        : (ariaLabel as ICalendarYearRangeToString)(newRange)
       : undefined;
-    const disabled = this.isDisabled;
+    const disabled =
+      direction === CalendarYearNavDirection.Previous
+        ? minYear !== undefined && fromYear < minYear
+        : maxYear !== undefined && props.fromYear + CELL_COUNT > maxYear;
+
+    const onNavigate = () => {
+      direction === CalendarYearNavDirection.Previous ? onSelectPrev?.() : onSelectNext?.();
+    };
+
+    const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+      if (ev.which === KeyCodes.enter) {
+        onNavigate();
+      }
+    };
 
     return (
       <button
         className={css(classNames.navigationButton, {
           [classNames.disabled]: disabled,
         })}
-        onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
-        onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
+        onClick={!disabled ? onNavigate : undefined}
+        onKeyDown={!disabled ? onKeyDown : undefined}
         type="button"
-        title={prevAriaLabel}
+        title={ariaLabelString}
         disabled={disabled}
+        ref={forwardedRef}
       >
-        <Icon iconName={getRTL() ? iconStrings.rightNavigation : iconStrings.leftNavigation} />
+        <Icon
+          iconName={
+            (direction === CalendarYearNavDirection.Previous) !== getRTL()
+              ? iconStrings.rightNavigation
+              : iconStrings.leftNavigation
+          }
+        />
       </button>
     );
-  }
-
-  get isDisabled(): boolean {
-    const { minYear } = this.props;
-    return minYear !== undefined && this.props.fromYear < minYear;
-  }
-
-  private _onSelectPrev = () => {
-    if (!this.isDisabled && this.props.onSelectPrev) {
-      this.props.onSelectPrev();
-    }
-  };
-
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    if (ev.which === KeyCodes.enter) {
-      this._onSelectPrev();
-    }
-  };
-}
-
-class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> {
-  public render(): JSX.Element {
-    const { styles, theme, className, navigationIcons, strings, onSelectNext, fromYear, toYear } = this.props;
-
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      className: className,
-    });
-
-    const iconStrings = navigationIcons || DefaultNavigationIcons;
-    const yearStrings = strings || DefaultCalendarYearStrings;
-    const nextRangeAriaLabel = yearStrings.nextRangeAriaLabel;
-    const nextRange = { fromYear: fromYear + CELL_COUNT, toYear: toYear + CELL_COUNT };
-    const nextAriaLabel = nextRangeAriaLabel
-      ? typeof nextRangeAriaLabel === 'string'
-        ? (nextRangeAriaLabel as string)
-        : (nextRangeAriaLabel as ICalendarYearRangeToString)(nextRange)
-      : undefined;
-    const disabled = this.isDisabled;
-
-    return (
-      <button
-        className={css(classNames.navigationButton, {
-          [classNames.disabled]: disabled,
-        })}
-        onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
-        onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
-        type="button"
-        title={nextAriaLabel}
-        disabled={this.isDisabled}
-      >
-        <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} />
-      </button>
-    );
-  }
-
-  get isDisabled(): boolean {
-    const { maxYear } = this.props;
-    return maxYear !== undefined && this.props.fromYear + CELL_COUNT > maxYear;
-  }
-
-  private _onSelectNext = () => {
-    if (!this.isDisabled && this.props.onSelectNext) {
-      this.props.onSelectNext();
-    }
-  };
-
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    if (ev.which === KeyCodes.enter) {
-      this._onSelectNext();
-    }
-  };
-}
+  },
+);
+CalendarYearNavArrow.displayName = 'CalendarYearNavArrow';
 
 class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
@@ -344,8 +318,8 @@ class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
 
     return (
       <div className={classNames.navigationButtonsContainer}>
-        <CalendarYearNavPrev {...this.props} />
-        <CalendarYearNavNext {...this.props} />
+        <CalendarYearNavArrow {...this.props} direction={CalendarYearNavDirection.Previous} />
+        <CalendarYearNavArrow {...this.props} direction={CalendarYearNavDirection.Next} />
       </div>
     );
   }
