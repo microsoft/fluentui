@@ -729,14 +729,3 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .attr('stroke-dasharray', '5,5');
   };
 }
-
-// date axis
-// check all the code
-// testing again
-// examples and types and styles
-// fitcontainer
-// update PR
-// raise UX PR
-// update resolved bugs
-// cross check another bug
-// prop valeu to x and y read issue
