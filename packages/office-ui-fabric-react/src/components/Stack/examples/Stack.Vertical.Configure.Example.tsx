@@ -27,6 +27,20 @@ export interface IExampleOptions {
 
 const checkboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 
+const verticalAlignmentOptions: IDropdownOption[] = [
+  { key: 'start', text: 'Top' },
+  { key: 'center', text: 'Center' },
+  { key: 'end', text: 'Bottom' },
+  { key: 'space-around', text: 'Space around' },
+  { key: 'space-between', text: 'Space between' },
+  { key: 'space-evenly', text: 'Space evenly' },
+];
+const horizontalAlignmentOptions: IDropdownOption[] = [
+  { key: 'start', text: 'Left' },
+  { key: 'center', text: 'Center' },
+  { key: 'end', text: 'Right' },
+];
+
 const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const {
     numItems,
@@ -74,21 +88,6 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
     },
   };
 
-  // Alignment options
-  const verticalAlignmentOptions: IDropdownOption[] = [
-    { key: 'start', text: 'Top' },
-    { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Bottom' },
-    { key: 'space-around', text: 'Space around' },
-    { key: 'space-between', text: 'Space between' },
-    { key: 'space-evenly', text: 'Space evenly' },
-  ];
-  const horizontalAlignmentOptions: IDropdownOption[] = [
-    { key: 'start', text: 'Left' },
-    { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Right' },
-  ];
-
   // Tokens definition
   const exampleStackTokens: IStackTokens = {
     childrenGap: childrenGap + ' ' + 0,
@@ -104,7 +103,7 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
       styles={stackStyles}
       tokens={exampleStackTokens}
     >
-      {_range(1, numItems).map((value: number, index: number) => {
+      {range(1, numItems).map((value: number, index: number) => {
         if (emptyChildren.indexOf(value.toString()) !== -1) {
           return hideEmptyChildren ? (
             <Stack.Item key={index} styles={stackItemStyles} />
@@ -123,7 +122,7 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
   );
 };
 
-function _range(start: number, end: number): number[] {
+function range(start: number, end: number): number[] {
   const result = [];
   for (let i = start; i <= end; i++) {
     result.push(i);
@@ -156,86 +155,70 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
   });
 
   const onNumItemsChange = (value: number): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ numItems: value });
+    setState({ ...state, numItems: value });
   };
 
   const onBoxShadowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ showBoxShadow: isChecked });
+    setState({ ...state, showBoxShadow: isChecked });
   };
 
   const onPreventOverflowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ preventOverflow: isChecked });
+    setState({ ...state, preventOverflow: isChecked });
   };
 
   const onShrinkItemsChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ disableShrink: !isChecked });
+    setState({ ...state, disableShrink: !isChecked });
   };
 
   const onWrapChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ wrap: isChecked });
+    setState({ ...state, wrap: isChecked });
   };
 
   const onStackHeightChange = (value: number): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ stackHeight: value });
+    setState({ ...state, stackHeight: value });
   };
 
   const onAutoHeightChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ autoHeight: isChecked });
+    setState({ ...state, autoHeight: isChecked });
   };
 
   const onGapChange = (value: number): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ childrenGap: value });
+    setState({ ...state, childrenGap: value });
   };
 
   const onPaddingLeftChange = (value: number): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ paddingLeft: value });
+    setState({ ...state, paddingLeft: value });
   };
 
   const onPaddingRightChange = (value: number): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ paddingRight: value });
+    setState({ ...state, paddingRight: value });
   };
 
   const onPaddingTopChange = (value: number): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ paddingTop: value });
+    setState({ ...state, paddingTop: value });
   };
 
   const onPaddingBottomChange = (value: number): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ paddingBottom: value });
+    setState({ ...state, paddingBottom: value });
   };
 
   const onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ verticalAlignment: option.key as IStackProps['verticalAlign'] });
+    setState({ ...state, verticalAlignment: option.key as IStackProps['verticalAlign'] });
   };
 
   const onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
+    setState({ ...state, horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
   };
 
   const onHideEmptyChildrenChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, stackWidth: value });
-    this.setState({ hideEmptyChildren: isChecked });
+    setState({ ...state, hideEmptyChildren: isChecked });
   };
 
   const onEmptyChildrenChange = (ev: React.FormEvent<HTMLInputElement>, value?: string): void => {
     if (value === undefined) {
       return;
     }
-    setState({ ...state, stackWidth: value });
-    this.setState({ emptyChildren: value.replace(/,/g, '').split(' ') });
+    setState({ ...state, emptyChildren: value.replace(/,/g, '').split(' ') });
   };
 
   return (
@@ -254,11 +237,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
             />
             <Stack horizontal>
               <Checkbox label="Shadow around items" onChange={onBoxShadowChange} styles={checkboxStyles} />
-              <Checkbox
-                label="Prevent item overflow"
-                onChange={onPreventOverflowChange}
-                styles={checkboxStyles}
-              />
+              <Checkbox label="Prevent item overflow" onChange={onPreventOverflowChange} styles={checkboxStyles} />
               <Checkbox label="Shrink items" onChange={onShrinkItemsChange} styles={checkboxStyles} />
               <Checkbox label="Wrap items" onChange={onWrapChange} />
             </Stack>
@@ -274,13 +253,9 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               defaultValue={200}
               showValue
               onChange={onStackHeightChange}
-              disabled={autoHeight}
+              disabled={state.autoHeight}
             />
-            <Checkbox
-              label="Automatic height (based on items)"
-              defaultChecked
-              onChange={onAutoHeightChange}
-            />
+            <Checkbox label="Automatic height (based on items)" defaultChecked onChange={onAutoHeightChange} />
           </Stack>
         </Stack.Item>
       </Stack>
@@ -294,13 +269,13 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               max={50}
               step={1}
               defaultValue={0}
-              showValue=
+              showValue
               onChange={onGapChange}
             />
             <Stack horizontal verticalAlign="end" tokens={configureStackTokens}>
               <Stack.Item grow>
                 <Dropdown
-                  selectedKey={verticalAlignment}
+                  selectedKey={state.verticalAlignment}
                   placeholder="Select Vertical Alignment"
                   label="Vertical alignment:"
                   options={verticalAlignmentOptions}
@@ -309,7 +284,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               </Stack.Item>
               <Stack.Item grow>
                 <Dropdown
-                  selectedKey={horizontalAlignment}
+                  selectedKey={state.horizontalAlignment}
                   placeholder="Select Horizontal Alignment"
                   label="Horizontal alignment:"
                   options={horizontalAlignmentOptions}

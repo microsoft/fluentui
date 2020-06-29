@@ -65,6 +65,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
   // const [columns, setColumns] = React.useState<IColumn[]>(buildShimmerColumns());
   const [items, setItems] = React.useState<IExampleItem[]>([]);
   const [isDataLoaded, setIsDataLoaded] = React.useState<boolean>(false);
+
   const { current: state } = React.useRef<IShimmerApplicationExampleState>({
     lastIntervalId: 0,
     lastIndexWithData: 0,
@@ -77,7 +78,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
       itemsCopy.splice(
         state.lastIndexWithData,
         randomQuantity,
-        ...items.slice(state.lastIndexWithData, state.lastIndexWithData + randomQuantity),
+        ...exampleItems.slice(state.lastIndexWithData, state.lastIndexWithData + randomQuantity),
       );
       state.lastIndexWithData += randomQuantity;
       setItems(itemsCopy);
