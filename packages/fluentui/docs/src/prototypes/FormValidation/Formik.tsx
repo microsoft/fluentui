@@ -38,7 +38,6 @@ const FormValidateFormik = () => (
           label="First Name"
           name="firstName"
           id="first-name-inline"
-          required
         />
         <Form.Dropdown
           onBlur={e => {
