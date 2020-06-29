@@ -14,50 +14,21 @@ import { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
-export interface ICalendarDayState {
-  previousNavigatedDate?: Date;
-  animateBackwards?: boolean;
+export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+  return <CalendarDayBaseClass {...props} hoisted={{ forwardedRef }} />;
+});
+CalendarDayBase.displayName = 'CalendarDayBase';
+
+interface ICalendarDayClassProps extends ICalendarDayProps {
+  hoisted: {
+    forwardedRef: React.Ref<HTMLDivElement>;
+  };
 }
 
-export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalendarDayState> {
+class CalendarDayBaseClass extends React.Component<ICalendarDayClassProps, {}> {
   private _dayGrid = React.createRef<ICalendarDayGrid>();
 
-  public static getDerivedStateFromProps(
-    nextProps: Readonly<ICalendarDayProps>,
-    prevState: Readonly<ICalendarDayState>,
-  ): Partial<ICalendarDayState> | null {
-    const { dateTimeFormatter, strings } = nextProps;
-
-    const previousDate = prevState && prevState.previousNavigatedDate;
-    const nextDate = nextProps.navigatedDate;
-    if (!previousDate) {
-      return {
-        previousNavigatedDate: nextProps.navigatedDate,
-      };
-    }
-
-    if (
-      dateTimeFormatter.formatMonthYear(previousDate, strings) !== dateTimeFormatter.formatMonthYear(nextDate, strings)
-    ) {
-      if (previousDate < nextDate) {
-        return {
-          animateBackwards: false,
-          previousNavigatedDate: nextProps.navigatedDate,
-        };
-      } else if (previousDate > nextDate) {
-        return {
-          animateBackwards: true,
-          previousNavigatedDate: nextProps.navigatedDate,
-        };
-      }
-    }
-
-    return {
-      previousNavigatedDate: nextProps.navigatedDate,
-    };
-  }
-
-  public constructor(props: ICalendarDayProps) {
+  public constructor(props: ICalendarDayClassProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -94,9 +65,10 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
       className: className,
       headerIsClickable: !!onHeaderSelect,
       showWeekNumbers: showWeekNumbers,
-      animateBackwards: this.state.animateBackwards,
       animationDirection: animationDirection,
     });
+
+    const monthAndYear = dateTimeFormatter.formatMonthYear(navigatedDate, strings);
 
     return (
       <div className={classNames.root} id={dayPickerId}>
@@ -105,6 +77,7 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
             // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
             aria-live="polite"
             aria-atomic="true"
+            key={monthAndYear}
             id={monthAndYearId}
             className={classNames.monthAndYear}
             onClick={this._onHeaderSelect}
@@ -113,7 +86,7 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
             type="button"
           >
-            {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
+            {monthAndYear}
           </button>
           {this.renderMonthNavigationButtons(classNames, dayPickerId)}
         </div>
