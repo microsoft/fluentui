@@ -275,7 +275,6 @@ const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
                       type,
                       required,
                       value: value || '',
-                      // ref,
                       className: inputSlotClassNames.input,
                       styles: resolvedStyles.input,
                       onChange: handleChange,
