@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyCodes, css, getId, classNamesFunction, initializeComponentRef } from '@uifabric/utilities';
+import { KeyCodes, css, getId, classNamesFunction } from '@uifabric/utilities';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import {
   addMonths,
@@ -15,30 +15,30 @@ import { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
 export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-  return <CalendarDayBaseClass {...props} hoisted={{ forwardedRef }} />;
+  const dayGrid = React.useRef<ICalendarDayGrid>(null);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      focus() {
+        dayGrid.current?.focus?.();
+      },
+    }),
+    [],
+  );
+
+  return <CalendarDayBaseClass {...props} hoisted={{ forwardedRef, dayGrid }} />;
 });
 CalendarDayBase.displayName = 'CalendarDayBase';
 
 interface ICalendarDayClassProps extends ICalendarDayProps {
   hoisted: {
     forwardedRef: React.Ref<HTMLDivElement>;
+    dayGrid: React.RefObject<ICalendarDayGrid>;
   };
 }
 
 class CalendarDayBaseClass extends React.Component<ICalendarDayClassProps, {}> {
-  private _dayGrid = React.createRef<ICalendarDayGrid>();
-
-  public constructor(props: ICalendarDayClassProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
-    this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
-
-    this.state = {};
-  }
-
   public render(): JSX.Element {
     const {
       strings,
@@ -93,7 +93,7 @@ class CalendarDayBaseClass extends React.Component<ICalendarDayClassProps, {}> {
         <CalendarDayGrid
           {...this.props}
           styles={styles}
-          componentRef={this._dayGrid}
+          componentRef={this.props.hoisted.dayGrid}
           strings={strings}
           navigatedDate={navigatedDate!}
           weeksToShow={showSixWeeksByDefault ? 6 : undefined}
@@ -107,12 +107,6 @@ class CalendarDayBaseClass extends React.Component<ICalendarDayClassProps, {}> {
         />
       </div>
     );
-  }
-
-  public focus(): void {
-    if (this._dayGrid && this._dayGrid.current) {
-      this._dayGrid.current.focus();
-    }
   }
 
   private renderMonthNavigationButtons = (
