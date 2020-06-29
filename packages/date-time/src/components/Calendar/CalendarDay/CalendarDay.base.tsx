@@ -59,7 +59,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
   const monthAndYear = dateTimeFormatter.formatMonthYear(navigatedDate, strings);
 
   return (
-    <div className={classNames.root} id={dayPickerId}>
+    <div className={classNames.root} id={dayPickerId} ref={forwardedRef}>
       <div className={classNames.header}>
         <button
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
