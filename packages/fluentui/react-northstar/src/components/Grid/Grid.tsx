@@ -12,7 +12,6 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-import { WithAsProp, withSafeTypeForAs } from '../../types';
 
 export interface GridProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -30,7 +29,10 @@ export interface GridProps extends UIComponentProps, ChildrenComponentProps, Con
 
 export const gridClassName = 'ui-grid';
 
-class Grid extends UIComponent<WithAsProp<GridProps>> {
+/**
+ * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
+ */
+class Grid extends UIComponent<GridProps> {
   static displayName = 'Grid';
 
   static deprecated_className = gridClassName;
@@ -45,10 +47,6 @@ class Grid extends UIComponent<WithAsProp<GridProps>> {
       PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
     ]),
     rows: PropTypes.number,
-  };
-
-  static defaultProps: WithAsProp<GridProps> = {
-    as: 'div',
   };
 
   renderComponent({ accessibility, ElementType, classes, unhandledProps }: RenderResultConfig<any>): React.ReactNode {
@@ -67,7 +65,4 @@ class Grid extends UIComponent<WithAsProp<GridProps>> {
   }
 }
 
-/**
- * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
- */
-export default withSafeTypeForAs<typeof Grid, GridProps>(Grid);
+export default Grid;

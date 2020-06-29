@@ -1,3 +1,4 @@
+import { ComponentWithAs } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { indicatorBehavior } from '@fluentui/accessibility';
@@ -8,14 +9,7 @@ import cx from 'classnames';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import computeScrollIntoView from 'compute-scroll-into-view';
 
-import {
-  DebounceResultFn,
-  ShorthandRenderFunction,
-  ShorthandValue,
-  ShorthandCollection,
-  WithAsProp,
-  withSafeTypeForAs,
-} from '../../types';
+import { DebounceResultFn, ShorthandRenderFunction, ShorthandValue, ShorthandCollection } from '../../types';
 import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/styles';
 import Downshift, {
   DownshiftState,
@@ -287,7 +281,7 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
   triggerButton: `${dropdownClassName}__trigger-button`,
 };
 
-class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, DropdownState> {
+class Dropdown extends AutoControlledComponent<DropdownProps, DropdownState> {
   buttonRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
   listRef = React.createRef<HTMLElement>();
@@ -363,7 +357,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
   static defaultProps = {
     align: 'start',
-    as: 'div',
     clearIndicator: {},
     itemToString: item => {
       if (!item || React.isValidElement(item)) {
@@ -1621,4 +1614,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
  * @accessibilityIssues
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
  */
-export default withSafeTypeForAs<typeof Dropdown, DropdownProps>(Dropdown);
+export default (Dropdown as unknown) as ComponentWithAs<'div', DropdownProps> & {
+  Item: typeof DropdownItem;
+  SelectedItem: typeof DropdownSelectedItem;
+
+  a11yStatusCleanupTime: number;
+  charKeyPressedCleanupTime: number;
+};
+/* ^ A temporary typing until Dropdown will not be converted to functional component. */

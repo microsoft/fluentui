@@ -1,9 +1,16 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 
 export interface CardTopControlsProps extends UIComponentProps, ChildrenComponentProps {
@@ -16,7 +23,10 @@ export interface CardTopControlsProps extends UIComponentProps, ChildrenComponen
 export type CardTopControlsStylesProps = never;
 export const cardTopControlsClassName = 'ui-card__topcontrols';
 
-const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
+/**
+ * A CardTopControls is used to render control elements in the top of a Card component.
+ */
+const CardTopControls: ComponentWithAs<'div', CardTopControlsProps> &
   FluentComponentStaticProps<CardTopControlsProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardTopControls.displayName, context.telemetry);
@@ -65,7 +75,4 @@ CardTopControls.handledProps = Object.keys(CardTopControls.propTypes) as any;
 
 CardTopControls.create = createShorthandFactory({ Component: CardTopControls });
 
-/**
- * A CardTopControls is used to render control elements in the top of a Card component.
- */
-export default withSafeTypeForAs<typeof CardTopControls, CardTopControlsProps, 'div'>(CardTopControls);
+export default CardTopControls;
