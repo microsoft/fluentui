@@ -324,35 +324,39 @@ const CalendarYearNav = React.forwardRef((props: ICalendarYearHeaderProps, forwa
 });
 CalendarYearNav.displayName = 'CalendarYearNav';
 
-class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
-  public render(): JSX.Element {
-    const {
-      styles,
-      theme,
-      className,
-      fromYear,
-      toYear,
-      onHeaderSelect,
-      strings,
-      animateBackwards,
-      animationDirection,
-    } = this.props;
+const CalendarYearTitle = React.forwardRef(
+  (props: ICalendarYearHeaderProps, forwardedRef: React.Ref<HTMLButtonElement | HTMLDivElement>) => {
+    const { styles, theme, className, fromYear, toYear, strings, animateBackwards, animationDirection } = props;
+
+    const onHeaderSelect = () => {
+      props.onHeaderSelect?.(true);
+    };
+
+    const onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+      if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+        onHeaderSelect();
+      }
+    };
+
+    const onRenderYear = (year: number) => {
+      return props.onRenderYear?.(year) ?? year;
+    };
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      hasHeaderClickCallback: !!this.props.onHeaderSelect,
+      hasHeaderClickCallback: !!props.onHeaderSelect,
       animateBackwards: animateBackwards,
       animationDirection: animationDirection,
     });
 
-    if (onHeaderSelect) {
+    if (props.onHeaderSelect) {
       const rangeAriaLabel = (strings || DefaultCalendarYearStrings).rangeAriaLabel;
       const headerAriaLabelFormatString = strings!.headerAriaLabelFormatString;
       const currentDateRange = rangeAriaLabel
         ? typeof rangeAriaLabel === 'string'
           ? (rangeAriaLabel as string)
-          : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
+          : (rangeAriaLabel as ICalendarYearRangeToString)(props)
         : undefined;
 
       const ariaLabel = headerAriaLabelFormatString
@@ -361,9 +365,10 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
 
       return (
         <button
+          ref={forwardedRef as React.Ref<HTMLButtonElement>}
           className={classNames.currentItemButton}
-          onClick={this._onHeaderSelect}
-          onKeyDown={this._onHeaderKeyDown}
+          onClick={onHeaderSelect}
+          onKeyDown={onHeaderKeyDown}
           aria-label={ariaLabel}
           role="button"
           type="button"
@@ -371,37 +376,19 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
           aria-live="polite"
         >
-          {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
+          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
         </button>
       );
     }
 
     return (
-      <div className={classNames.current}>
-        {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
+      <div ref={forwardedRef as React.Ref<HTMLDivElement>} className={classNames.current}>
+        {onRenderYear(fromYear)} - {onRenderYear(toYear)}
       </div>
     );
-  }
-
-  private _onHeaderSelect = () => {
-    if (this.props.onHeaderSelect) {
-      this.props.onHeaderSelect(true);
-    }
-  };
-
-  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    if (this.props.onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
-      this.props.onHeaderSelect(true);
-    }
-  };
-
-  private _onRenderYear = (year: number) => {
-    if (this.props.onRenderYear) {
-      return this.props.onRenderYear(year);
-    }
-    return year;
-  };
-}
+  },
+);
+CalendarYearTitle.displayName = 'CalendarYearTitle';
 
 class CalendarYearHeader extends React.Component<ICalendarYearHeaderProps, {}> {
   constructor(props: ICalendarYearHeaderProps) {
