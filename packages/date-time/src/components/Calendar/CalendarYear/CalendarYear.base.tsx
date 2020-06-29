@@ -390,43 +390,27 @@ const CalendarYearTitle = React.forwardRef(
 );
 CalendarYearTitle.displayName = 'CalendarYearTitle';
 
-class CalendarYearHeader extends React.Component<ICalendarYearHeaderProps, {}> {
-  constructor(props: ICalendarYearHeaderProps) {
-    super(props);
-
-    initializeComponentRef(this);
-  }
-
-  public render(): JSX.Element {
-    const { styles, theme, className, animateBackwards, animationDirection } = this.props;
+const CalendarYearHeader = React.forwardRef(
+  (props: ICalendarYearHeaderProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const { styles, theme, className, animateBackwards, animationDirection, onRenderTitle } = props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      hasHeaderClickCallback: !!this.props.onHeaderSelect,
+      hasHeaderClickCallback: !!props.onHeaderSelect,
       animateBackwards: animateBackwards,
       animationDirection: animationDirection,
     });
 
     return (
-      <div className={classNames.headerContainer}>
-        {this._onRenderTitle()}
-        {this._onRenderNav()}
+      <div className={classNames.headerContainer} ref={forwardedRef}>
+        {onRenderTitle?.(props) ?? <CalendarYearTitle {...props} />}
+        <CalendarYearNav {...props} />
       </div>
     );
-  }
-
-  private _onRenderTitle = () => {
-    if (this.props.onRenderTitle) {
-      return this.props.onRenderTitle(this.props);
-    }
-    return <CalendarYearTitle {...this.props} />;
-  };
-
-  private _onRenderNav = () => {
-    return <CalendarYearNav {...this.props} />;
-  };
-}
+  },
+);
+CalendarYearHeader.displayName = 'CalendarYearHeader';
 
 export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
   private _gridRef: ICalendarYearGrid;
