@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix(compose): update types to provide better infers",
+  "packageName": "@fluentui/react-compose",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-29T12:45:57.822Z"
+}
