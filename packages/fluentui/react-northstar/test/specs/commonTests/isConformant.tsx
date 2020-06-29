@@ -43,7 +43,7 @@ export interface Conformant {
   /** Child component that will receive unhandledProps. */
   passesUnhandledPropsTo?: ComponentType<any>;
   /** Child component that will receive ref. */
-  forwardsRefTo?: string;
+  forwardsRefTo?: string | boolean;
 }
 
 /**
@@ -695,19 +695,20 @@ export default function isConformant(
           expect(getComponent(wrapper).prop('className')).toContain('has-test');
         });
       });
+      if (forwardsRefTo !== false) {
+        it('passes a ref to "root" element', () => {
+          const ComposedComponent = compose(Component as ComposedComponent);
+          const rootRef = jest.fn();
 
-      it('passes a ref to "root" element', () => {
-        const ComposedComponent = compose(Component as ComposedComponent);
-        const rootRef = jest.fn();
+          const wrapper = forwardsRefTo
+            ? mount(<ComposedComponent {...requiredProps} ref={rootRef} />).find(forwardsRefTo as string)
+            : mount(<ComposedComponent {...requiredProps} ref={rootRef} />);
 
-        const wrapper = forwardsRefTo
-          ? mount(<ComposedComponent {...requiredProps} ref={rootRef} />).find(forwardsRefTo)
-          : mount(<ComposedComponent {...requiredProps} ref={rootRef} />);
-        const element = getComponent(wrapper);
-
-        expect(typeof element.type()).toBe('string');
-        expect(rootRef).toBeCalledWith(expect.objectContaining({ tagName: _.upperCase(element.type()) }));
-      });
+          const element = getComponent(wrapper);
+          expect(typeof element.type()).toBe('string');
+          expect(rootRef).toBeCalledWith(expect.objectContaining({ tagName: _.upperCase(element.type()) }));
+        });
+      }
     });
   }
 }
