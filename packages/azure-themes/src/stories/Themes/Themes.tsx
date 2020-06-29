@@ -30,10 +30,13 @@ import { ComboBoxBasicExample } from '../components/comboBox';
 import { ContextualMenuDefaultExample } from '../components/ContextMenu';
 import { DropdownBasicExample } from '../components/dropdown';
 import { DetailsListBasicExample } from '../components/DetailsList';
+import { DatePickerBoundedExample } from '../components/dateBoundary';
 
 const Example = () => (
   // tslint:disable-next-line:jsx-ban-props
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 350 }}>
+    <DatePickerBoundedExample />
+    <DatePicker />
     <Label>I'm a Label</Label>
     <DetailsListBasicExample />
     <DefaultButton text="DefaultButton" />

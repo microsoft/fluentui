@@ -14,7 +14,6 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     return {
       color: BaseColors.BLACK,
       backgroundColor: BaseColors.GRAY_F3F2F1,
-      // TODO: devops task to add mouse hover state https://dev.azure.com/CloudDesignStudioMSFT/Design%20Engineering/_workitems/edit/3853/
     };
   };
   const TodayAndSelectedDayStyle = () => {
@@ -22,6 +21,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       '.ms-DatePicker-day-button.ms-DatePicker-day--today': {
         backgroundColor: BaseColors.BLUE_0078D4,
         color: BaseColors.WHITE,
+        borderRadius: 2,
       },
       '.ms-DatePicker-day-button.ms-DatePicker-day--today:active': {
         backgroundColor: StyleConstants.transparent,
@@ -29,6 +29,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       },
       '.ms-DatePicker-day-button.ms-DatePicker-day--today:hover': {
         color: BaseColors.WHITE,
+        borderRadius: 0,
       },
       '.ms-DatePicker-day--highlighted': {
         backgroundColor: BaseColors.GRAY_EDEBE9,
@@ -38,6 +39,8 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       },
       '.ms-DatePicker-day--highlighted > .ms-DatePicker-day--today': {
         color: BaseColors.WHITE,
+        backgroundColor: BaseColors.BLUE_0078D4,
+        border: 0,
       },
     };
   };
@@ -75,9 +78,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       '.ms-DatePicker-nextYear:hover': {
         ...TextHoverStyle(),
       },
-      '.ms-DatePicker-goToday:hover': {
-        color: semanticColors.bodyText,
-      },
+      '.ms-DatePicker-goToday:hover': {},
       '.ms-DatePicker-yearOption:hover': {
         ...TextHoverStyle(),
       },
@@ -96,6 +97,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       color: semanticColors.bodyText,
       selectors: {
         '.ms-Callout-main': {
+          //entire dropdown
           backgroundColor: semanticColors.bodyBackground,
         },
         '.ms-DatePicker-table > thead > tr': {
@@ -120,18 +122,18 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         '.ms-DatePicker-nextYear': { color: semanticColors.bodyText },
         '.ms-DatePicker-prevDecade': { color: semanticColors.bodyText },
         '.ms-DatePicker-nextDecade': { color: semanticColors.bodyText },
-        '.ms-DatePicker-goToday': { color: semanticColors.bodyText },
+        '.ms-DatePicker-goToday': { color: semanticColors.bodyText, right: '10px' },
         '.ms-DatePicker-goToday[disabled]': { display: 'none' },
         '.ms-DatePicker-yearOption': { color: semanticColors.bodyText },
-        '.ms-DatePicker-yearOption--disabled': { color: semanticColors.bodyText },
-        '.ms-DatePicker-monthOption--disabled': { color: semanticColors.bodyText },
-        '.ms-DatePicker-day--disabled': { color: semanticColors.bodyText },
-        '.ms-DatePicker-nextDecade--disabled': { color: semanticColors.bodyText },
-        '.ms-DatePicker-prevDecade--disabled': { color: semanticColors.bodyText },
-        '.ms-DatePicker-prevYear--disabled': { color: semanticColors.bodyText },
-        '.ms-DatePicker-nextYear--disabled': { color: semanticColors.bodyText },
-        '.ms-DatePicker-prevMonth--disabled': { color: semanticColors.bodyText },
-        '.ms-DatePicker-nextMonth--disabled': { color: semanticColors.bodyText },
+        '.ms-DatePicker-yearOption--disabled': { color: semanticColors.disabledBodyText },
+        '.ms-DatePicker-monthOption--disabled': { color: semanticColors.disabledBodyText },
+        '.ms-DatePicker-day--disabled': { color: semanticColors.disabledBodyText },
+        '.ms-DatePicker-nextDecade--disabled': { color: semanticColors.disabledBodyText },
+        '.ms-DatePicker-prevDecade--disabled': { color: semanticColors.disabledBodyText },
+        '.ms-DatePicker-prevYear--disabled': { color: semanticColors.disabledBodyText },
+        '.ms-DatePicker-nextYear--disabled': { color: semanticColors.disabledBodyText },
+        '.ms-DatePicker-prevMonth--disabled': { color: semanticColors.disabledBodyText },
+        '.ms-DatePicker-nextMonth--disabled': { color: semanticColors.disabledBodyText },
         ...TodayAndSelectedDayStyle(),
         ...HoverStyles(),
       },
