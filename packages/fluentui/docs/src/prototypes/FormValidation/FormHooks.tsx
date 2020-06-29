@@ -26,7 +26,6 @@ const FormValidateHooks = () => {
       <Form.Input
         label="First Name"
         id="first-name-hooks"
-        required
         name="firstName"
         ref={register({
           required: { value: true, message: 'first name is required' },
