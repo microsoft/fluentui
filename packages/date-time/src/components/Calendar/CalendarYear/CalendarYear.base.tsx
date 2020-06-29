@@ -45,7 +45,6 @@ export interface ICalendarYearState {
   navigatedYear?: number;
   selectedYear?: number;
   animateBackwards?: boolean;
-  internalNavigate?: boolean;
 }
 
 interface ICalendarYearGrid {
@@ -414,21 +413,28 @@ const CalendarYearHeader = React.forwardRef(
 );
 CalendarYearHeader.displayName = 'CalendarYearHeader';
 
-export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
+export const CalendarYearBase = React.forwardRef(
+  (props: ICalendarYearProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    return <CalendarYearBaseClass {...props} hoisted={{ forwardedRef }} />;
+  },
+);
+CalendarYearBase.displayName = 'CalendarYearBase';
+
+interface ICalendarYearBaseClassProps extends ICalendarYearProps {
+  hoisted: {
+    forwardedRef: React.Ref<HTMLDivElement>;
+  };
+}
+
+class CalendarYearBaseClass extends React.Component<ICalendarYearBaseClassProps, ICalendarYearState>
+  implements ICalendarYear {
   private _gridRef: ICalendarYearGrid;
 
   public static getDerivedStateFromProps(
-    nextProps: Readonly<ICalendarYearProps>,
+    nextProps: Readonly<ICalendarYearBaseClassProps>,
     prevState: Readonly<ICalendarYearState>,
   ): Partial<ICalendarYearState> | null {
-    if (prevState && prevState.internalNavigate) {
-      return {
-        ...prevState,
-        internalNavigate: false,
-      };
-    }
-
-    const newState = CalendarYearBase._getState(nextProps);
+    const newState = CalendarYearBaseClass._getState(nextProps);
 
     return {
       ...newState,
@@ -440,7 +446,7 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
     };
   }
 
-  private static _getState = (props: ICalendarYearProps) => {
+  private static _getState = (props: ICalendarYearBaseClassProps) => {
     const { selectedYear, navigatedYear } = props;
     const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
     const fromYear = Math.floor(rangeYear / 10) * 10;
@@ -452,12 +458,12 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
     };
   };
 
-  constructor(props: ICalendarYearProps) {
+  constructor(props: ICalendarYearBaseClassProps) {
     super(props);
 
     initializeComponentRef(this);
 
-    this.state = CalendarYearBase._getState(props);
+    this.state = CalendarYearBaseClass._getState(props);
   }
 
   public focus(): void {
@@ -475,7 +481,7 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
     });
 
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} ref={this.props.hoisted.forwardedRef}>
         {this._renderHeader()}
         {this._renderGrid()}
       </div>
@@ -489,7 +495,6 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
       previousFromYear: previousFromYear,
       fromYear: nextFromYear,
       animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear),
-      internalNavigate: true,
     });
   };
 
@@ -500,7 +505,6 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
       previousFromYear: previousFromYear,
       fromYear: nextFromYear,
       animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear),
-      internalNavigate: true,
     });
   };
 
