@@ -168,7 +168,11 @@ storiesOf('Pivot Next Overflow', module)
       <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
         <Label>Pivot #4</Label>
       </PivotItem>
-      <PivotItem headerText="Custom Renderer" onRenderItemLink={_customRenderer}>
+      <PivotItem
+        headerText="Custom Renderer"
+        itemIcon="Airplane"
+        onRenderItemLink={_customRenderer}
+      >
         <Label>Pivot #5</Label>
       </PivotItem>
       <PivotItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
