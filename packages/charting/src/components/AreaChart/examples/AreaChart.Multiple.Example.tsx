@@ -4,11 +4,6 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import * as d3 from 'd3-format';
 
-interface IRootStyles {
-  height: string;
-  width: string;
-}
-
 export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> {
   public render(): React.ReactNode {
     const chart1Points = [
@@ -163,10 +158,10 @@ export class AreaChartMultipleExample extends React.Component<Readonly<{}>, {}> 
       lineChartData: chartPoints,
     };
 
-    const rootStyle: IRootStyles = { width: '650px', height: '400px' };
+    const rootStyle = mergeStyles({ width: '650px', height: '400px' });
 
     return (
-      <div className={mergeStyles(rootStyle)}>
+      <div className={rootStyle}>
         <AreaChart
           showYAxisGridLines={true}
           height={400}
