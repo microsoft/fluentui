@@ -16,10 +16,12 @@ import {
   css,
   format,
   initializeComponentRef,
+  IRefObject,
 } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarIconStrings } from '../Calendar.types';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarYearStyleProps, ICalendarYearStyles>();
 
@@ -62,22 +64,15 @@ interface ICalendarYearGridCellProps extends ICalendarYearProps {
 interface ICalendarYearGridProps extends ICalendarYearProps, ICalendarYearRange {
   selectedYear?: number;
   animateBackwards?: boolean;
+  componentRef?: IRefObject<ICalendarYearGridCell>;
 }
 
 interface ICalendarYearGridCell {
   focus(): void;
 }
 
-class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {}> implements ICalendarYearGridCell {
-  private _buttonRef: HTMLButtonElement;
-
-  public focus(): void {
-    if (this._buttonRef) {
-      this._buttonRef.focus();
-    }
-  }
-
-  public render(): JSX.Element {
+const CalendarYearGridCell = React.forwardRef(
+  (props: ICalendarYearGridCellProps, forwardedRef: React.Ref<HTMLButtonElement>) => {
     const {
       styles,
       theme,
@@ -87,8 +82,33 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
       year,
       selected,
       disabled,
+      componentRef,
       onSelectYear,
-    } = this.props;
+      onRenderYear,
+    } = props;
+
+    const buttonRef = React.useRef<HTMLButtonElement>(null);
+    const mergedRef = useMergedRefs(buttonRef, forwardedRef);
+
+    React.useImperativeHandle(
+      componentRef,
+      () => ({
+        focus() {
+          buttonRef.current?.focus?.();
+        },
+      }),
+      [],
+    );
+
+    const onClick = () => {
+      onSelectYear?.(year);
+    };
+
+    const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+      if (ev.which === KeyCodes.enter) {
+        onSelectYear?.(year);
+      }
+    };
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -105,47 +125,24 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
         })}
         type="button"
         role="gridcell"
-        onClick={!disabled && onSelectYear ? this._onClick : undefined}
-        onKeyDown={!disabled && onSelectYear ? this._onKeyDown : undefined}
+        onClick={!disabled ? onClick : undefined}
+        onKeyDown={!disabled ? onKeyDown : undefined}
         disabled={disabled}
         aria-label={String(year)}
         aria-selected={selected}
-        ref={this._onButtonRef}
+        ref={mergedRef}
         aria-readonly={true} // prevent grid from being "editable"
       >
-        {this._onRenderYear()}
+        {onRenderYear?.(year) ?? year}
       </button>
     );
-  }
-
-  private _onRenderYear = () => {
-    const { year, onRenderYear } = this.props;
-    if (onRenderYear) {
-      return onRenderYear(year);
-    }
-    return year;
-  };
-
-  private _onButtonRef = (ref: HTMLButtonElement) => {
-    this._buttonRef = ref;
-  };
-
-  private _onClick = () => {
-    if (this.props.onSelectYear) {
-      this.props.onSelectYear(this.props.year);
-    }
-  };
-
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    if (this.props.onSelectYear && ev.which === KeyCodes.enter) {
-      this.props.onSelectYear(this.props.year);
-    }
-  };
-}
+  },
+);
+CalendarYearGridCell.displayName = 'CalendarYearGridCell';
 
 class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> implements ICalendarYearGrid {
-  private _selectedCellRef: CalendarYearGridCell;
-  private _currentCellRef: CalendarYearGridCell;
+  private _selectedCellRef: ICalendarYearGridCell;
+  private _currentCellRef: ICalendarYearGridCell;
 
   public focus(): void {
     if (this._selectedCellRef) {
@@ -206,17 +203,17 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
         current={current}
         disabled={disabled}
         onSelectYear={onSelectYear}
-        ref={selected ? this._onSelectedCellRef : current ? this._onCurrentCellRef : undefined}
+        componentRef={selected ? this._onSelectedCellRef : current ? this._onCurrentCellRef : undefined}
         theme={theme}
       />
     );
   };
 
-  private _onSelectedCellRef = (ref: CalendarYearGridCell) => {
+  private _onSelectedCellRef = (ref: ICalendarYearGridCell) => {
     this._selectedCellRef = ref;
   };
 
-  private _onCurrentCellRef = (ref: CalendarYearGridCell) => {
+  private _onCurrentCellRef = (ref: ICalendarYearGridCell) => {
     this._currentCellRef = ref;
   };
 }
