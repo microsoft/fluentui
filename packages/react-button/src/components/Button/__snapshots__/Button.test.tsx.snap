@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button renders a default state 1`] = `
-<button>
+<button
+  style={Object {}}
+>
   <span>
     Default button
   </span>
