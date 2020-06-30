@@ -11,8 +11,8 @@
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "types": ["jest", "node"],
+    "lib": ["es5", "dom", "es2015.promise"],
+    "types": ["jest", "node", "custom-global", "webpack-env"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "paths": {
       "@uifabric/codemods/lib/*": ["./src/*"],

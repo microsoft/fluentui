@@ -30,7 +30,7 @@
     "@uifabric/build": "^7.0.0",
     "acorn": "^6.4.1",
     "minimist": "^1.2.2",
-    "office-ui-fabric-react": "^7.98.3",
+    "office-ui-fabric-react": "*",
     "react": "^16.13.0",
     "semver": "^7.3.2",
     "ts-morph": "^7.0.0",
