@@ -7,7 +7,6 @@ import {
   getGlobalClassNames,
   HighContrastSelector,
   FontWeights,
-  getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -122,7 +121,6 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
                 border: '1px solid WindowText',
               },
             },
-            ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },
       },

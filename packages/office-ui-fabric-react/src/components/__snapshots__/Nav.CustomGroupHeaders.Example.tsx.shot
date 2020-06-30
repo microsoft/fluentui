@@ -162,7 +162,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      @media screen and (-ms-high-contrast:  active) and (forced-colors;
                       border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
@@ -315,7 +314,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      @media screen and (-ms-high-contrast:  active) and (forced-colors;
                       border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
@@ -505,7 +503,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      @media screen and (-ms-high-contrast:  active) and (forced-colors;
                       border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
@@ -658,7 +655,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      @media screen and (-ms-high-contrast:  active) and (forced-colors;
                       border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
