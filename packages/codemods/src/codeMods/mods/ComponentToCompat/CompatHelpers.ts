@@ -1,5 +1,5 @@
 import { SourceFile, ImportSpecifierStructure } from 'ts-morph';
-import { getImportsByPath, AppendNamedImportIfNoExist, repathImport } from '../../utilities';
+import { getImportsByPath, appendOrCreateNamedImport, repathImport } from '../../utilities';
 
 export const getNamedExports = (obj: { [key: string]: any }) => {
   return Object.keys(obj);
@@ -33,7 +33,7 @@ const repathNamedImports = (file: SourceFile, hash: CompatHash, indexPath: strin
   imports.forEach(imp => {
     imp.getNamedImports().forEach(imp => {
       if (hash.namedExportsMatch[imp.getName()]) {
-        AppendNamedImportIfNoExist(file, hash.namedExportsMatch[imp.getName()], [imp.getStructure()]);
+        appendOrCreateNamedImport(file, hash.namedExportsMatch[imp.getName()], [imp.getStructure()]);
         imp.remove();
       }
     });

@@ -38,7 +38,7 @@ export function getImportsByPath(file: SourceFile, pathOrRegex: string | RegExp)
 
   return imps;
 }
-export function AppendNamedImportIfNoExist(
+export function appendOrCreateNamedImport(
   file: SourceFile,
   moduleSpecifier: string,
   namedImports: (string | ImportSpecifierStructure)[],

@@ -8,31 +8,10 @@ import {
   ts,
   Node,
 } from 'ts-morph';
-import { findJsxTag } from '../../utilities';
+import { findJsxTag, appendOrCreateNamedImport } from '../../utilities';
 import { ICodeMod } from '../../ICodeMod';
 
 const personaPath = 'office-ui-fabric-react/lib/Persona';
-
-export function AppendNamedImportIfNoExist(file: SourceFile, moduleSpecifier: string, namedImports: string[]) {
-  const found = file.getImportDeclaration(val => {
-    if (val.getModuleSpecifierValue() === moduleSpecifier) {
-      const currentNamedImports = val.getNamedImports();
-      namedImports.forEach(str => {
-        if (!currentNamedImports.some(cname => cname.getText() === str)) {
-          val.addNamedImport(str);
-        }
-      });
-      return true;
-    }
-    return false;
-  });
-  if (!found) {
-    file.addImportDeclaration({
-      moduleSpecifier,
-      namedImports,
-    });
-  }
-}
 
 export function renameProperty(
   elements: (JsxOpeningElement | JsxSelfClosingElement)[],
@@ -115,7 +94,7 @@ export function ReplacePersonaImport(file: SourceFile) {
     }
   });
   if (found) {
-    AppendNamedImportIfNoExist(file, 'office-ui-fabric-react/lib/Avatar', ['Avatar']);
+    appendOrCreateNamedImport(file, 'office-ui-fabric-react/lib/Avatar', ['Avatar']);
   }
 }
 
@@ -135,7 +114,7 @@ export function ReplaceIPersonaPropsImport(file: SourceFile) {
     }
   });
   if (found) {
-    AppendNamedImportIfNoExist(file, 'office-ui-fabric-react/lib/Avatar', ['AvatarProps']);
+    appendOrCreateNamedImport(file, 'office-ui-fabric-react/lib/Avatar', ['AvatarProps']);
   }
 }
 
@@ -153,7 +132,7 @@ export function ReplacePersonaSizeImport(file: SourceFile) {
     }
   });
   if (found) {
-    AppendNamedImportIfNoExist(file, 'office-ui-fabric-react/lib/Avatar', ['AvatarSize']);
+    appendOrCreateNamedImport(file, 'office-ui-fabric-react/lib/Avatar', ['AvatarSize']);
   }
 }
 
