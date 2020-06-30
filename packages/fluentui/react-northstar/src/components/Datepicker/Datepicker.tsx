@@ -86,7 +86,7 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
   const [open, setOpen] = React.useState(false);
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [selectedDate, setSelectedDate] = React.useState(props.today ?? new Date());
   const valueFormatter = date => formatMonthDayYear(date, DEFAULT_STRINGS);
   const { firstDayOfWeek, firstWeekOfYear, dateRangeType, weeksToShow } = props;
   const calendarOptions: IDayGridOptions = {
