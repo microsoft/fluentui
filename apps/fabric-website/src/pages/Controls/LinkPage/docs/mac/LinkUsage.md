@@ -23,7 +23,7 @@ link.showsUnderlineWhileMouseInside = true
 <img className="off" src="" />
 <img className="on" src="" />
 
-### Override Target/Action protocol
+### Setting Target and Action
 
 ```Swift
 // Because Link is a subclass of NSControl, we can override the target/action to perform a custom task
