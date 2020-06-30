@@ -463,7 +463,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >

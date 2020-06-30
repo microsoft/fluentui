@@ -186,11 +186,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active){&:before {
-                  background: Window;
                   border-color: Highlight;
-                }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
-                  forced-color-adjust: none;
                 }
                 &:after {
                   border-color: #0078d4;
@@ -211,9 +207,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                 }
                 @media screen and (-ms-high-contrast: active){&:after {
                   border-color: Highlight;
-                }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:after {
-                  forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-day"
           >
@@ -599,11 +592,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active){&:before {
-                  background: Window;
-                  border-color: GrayText;
-                }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
-                  forced-color-adjust: none;
+                  color: GrayText;
                 }
                 &:after {
                   border-radius: 50%;
@@ -621,11 +610,8 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                 & .ms-ChoiceFieldLabel {
                   color: #a19f9d;
                 }
-                @media screen and (-ms-high-contrast: active){& .ms-ChoiceFieldLabel {
+                @media screen and (-ms-high-contrast: active){& {
                   color: GrayText;
-                }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& .ms-ChoiceFieldLabel {
-                  forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-month"
           >

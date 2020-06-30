@@ -239,7 +239,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -482,7 +482,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -664,7 +664,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >

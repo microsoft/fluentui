@@ -86,7 +86,7 @@ exports[`TextField snapshots renders correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+          @media screen and (forced-colors: active){&:hover {
             forced-color-adjust: none;
           }
     >
@@ -225,7 +225,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
         }
-        @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+        @media screen and (forced-colors: active){&:hover {
           forced-color-adjust: none;
         }
   >
@@ -292,7 +292,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+          @media screen and (forced-colors: active){&:hover {
             forced-color-adjust: none;
           }
     >
@@ -501,7 +501,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
         }
-        @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+        @media screen and (forced-colors: active){&:hover {
           forced-color-adjust: none;
         }
   >
@@ -568,7 +568,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+          @media screen and (forced-colors: active){&:hover {
             forced-color-adjust: none;
           }
     >
@@ -826,7 +826,7 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+          @media screen and (forced-colors: active){&:hover {
             forced-color-adjust: none;
           }
     >
@@ -1016,7 +1016,7 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+          @media screen and (forced-colors: active){&:hover {
             forced-color-adjust: none;
           }
     >
@@ -1208,7 +1208,7 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+          @media screen and (forced-colors: active){&:hover {
             forced-color-adjust: none;
           }
     >
@@ -1351,7 +1351,7 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
         @media screen and (-ms-high-contrast: active){&:hover {
           border-bottom-color: Highlight;
         }
-        @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+        @media screen and (forced-colors: active){&:hover {
           forced-color-adjust: none;
         }
   >
@@ -1419,7 +1419,7 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
+          @media screen and (forced-colors: active){&:hover {
             forced-color-adjust: none;
           }
     >
