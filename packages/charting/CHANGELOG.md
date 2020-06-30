@@ -1,8 +1,28 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 23 Jun 2020 12:41:54 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.6)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.5..@uifabric/charting_v2.3.6)
+
+### Patches
+
+- fix Invalid aria-attribute value for charts ([PR #13775](https://github.com/microsoft/fluentui/pull/13775) by v-gorraj@microsoft.com)
+- Fix issue When the mouse is over the data point on the second chart, the vertical line appears on the first chart. ([PR #13785](https://github.com/microsoft/fluentui/pull/13785) by v-gorraj@microsoft.com)
+
+## [2.3.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.4)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.3..@uifabric/charting_v2.3.4)
+
+### Patches
+
+- Removing some unneeded mergeStyles usage in examples. ([PR #13751](https://github.com/microsoft/fluentui/pull/13751) by dzearing@hotmail.com)
+- Grouped veritcal bar chart - second chart disappear issue fixed ([PR #13781](https://github.com/microsoft/fluentui/pull/13781) by v-jasha@microsoft.com)
 
 ## [2.3.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.3)
 

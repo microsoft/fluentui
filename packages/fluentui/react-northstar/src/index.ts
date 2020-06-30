@@ -60,6 +60,8 @@ export * from './components/Chat/ChatItem';
 export { default as ChatItem } from './components/Chat/ChatItem';
 export * from './components/Chat/ChatMessage';
 export { default as ChatMessage } from './components/Chat/ChatMessage';
+export * from './components/Chat/ChatMessageDetails';
+export { default as ChatMessageDetails } from './components/Chat/ChatMessageDetails';
 
 export * from './components/Checkbox/Checkbox';
 export { default as Checkbox } from './components/Checkbox/Checkbox';

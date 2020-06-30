@@ -57,8 +57,7 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
   };
 
   const returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
-    setMostRecentlyUsed(removeDuplicates(mostRecentlyUsed, currentPersonas));
-    return filterPromise(mostRecentlyUsed);
+    return filterPromise(removeDuplicates(mostRecentlyUsed, currentPersonas));
   };
 
   const onRemoveSuggestion = (item: IPersonaProps): void => {

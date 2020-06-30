@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
 import { compose, mergeProps } from '@fluentui/react-compose';
 import { useButton } from './useButton';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   (props, ref, options) => {
@@ -9,7 +10,7 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
     const { slots, slotProps } = mergeProps<ButtonProps, ButtonProps, ButtonSlots, ButtonSlotProps>(state, options);
 
     return (
-      <slots.root ref={ref} {...slotProps.root}>
+      <slots.root ref={useMergedRefs(ref, state.buttonRef)} {...slotProps.root}>
         {props.loading && <slots.loader {...slotProps.loader} />}
         {props.icon && props.iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
         {!props.iconOnly && props.content && <slots.content {...slotProps.content} />}
@@ -20,6 +21,8 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   {
     displayName: 'ButtonBase',
     handledProps: [
+      'buttonRef',
+      'componentRef',
       'circular',
       'content',
       'fluid',
@@ -32,7 +35,8 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'secondary',
       'size',
       'tokens',
-    ],
+      // tslint:disable-next-line: no-any
+    ] as any,
     slots: {
       icon: 'span',
       content: 'span',

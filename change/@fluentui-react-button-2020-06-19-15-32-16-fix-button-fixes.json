@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Button: Adding componentRef, focus method, styling, and tests.",
+  "packageName": "@fluentui/react-button",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-19T22:32:16.380Z"
+}
