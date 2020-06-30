@@ -2,16 +2,17 @@ import * as React from 'react';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
-import { useSetTimeout } from '@uifabric/react-hooks';
+import { useSetInterval } from '@uifabric/react-hooks';
+import { isItemDisabled } from 'office-ui-fabric-react/lib/utilities/contextualMenu';
+
 export interface IShimmerApplicationExampleState {
   lastIntervalId: number;
-  lastIndexWithData: number;
+  visibleCount: number;
 }
 
 const ITEMS_COUNT = 200;
-const INTERVAL_DELAY = 2500;
-let exampleItems: IExampleItem[];
-const toggleStyling = { display: 'block', marginBottom: '20px' };
+const INTERVAL_DELAY = 1200;
+const toggleStyling = { marginBottom: '20px' };
 const shimmeredDetailsListProps = { renderedWindowsAhead: 0, renderedWindowsBehind: 0 };
 
 const fileIcons: { name: string }[] = [
@@ -41,10 +42,17 @@ const fileIcons: { name: string }[] = [
   { name: 'xsn' },
 ];
 
+const randomFileIcon = (): { docType: string; url: string } => {
+  const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+  return {
+    docType,
+    url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
+  };
+};
+
 const buildShimmerColumns = (): IColumn[] => {
   const currentItems = createListItems(1);
   const columns: IColumn[] = buildColumns(currentItems);
-
   for (const column of columns) {
     if (column.key === 'thumbnail') {
       column.name = 'FileType';
@@ -55,65 +63,40 @@ const buildShimmerColumns = (): IColumn[] => {
       break;
     }
   }
-
   return columns;
 };
 
+const columns: IColumn[] = buildShimmerColumns();
+const exampleItems: IExampleItem[] = createListItems(ITEMS_COUNT).map((item: IExampleItem) => {
+  const randomFileType = randomFileIcon();
+  return { ...item, thumbnail: randomFileType.url };
+});
+
 export const ShimmerApplicationExample: React.FunctionComponent = () => {
-  const safeSetTimeout = useSetTimeout();
-  const columns: IColumn[] = buildShimmerColumns();
-  // const [columns, setColumns] = React.useState<IColumn[]>(buildShimmerColumns());
-  const [items, setItems] = React.useState<IExampleItem[]>([]);
-  const [isDataLoaded, setIsDataLoaded] = React.useState<boolean>(false);
+  const safeSetInterval = useSetInterval();
+  const [items, setItems] = React.useState<IExampleItem[] | undefined>(undefined);
 
   const { current: state } = React.useRef<IShimmerApplicationExampleState>({
     lastIntervalId: 0,
-    lastIndexWithData: 0,
+    visibleCount: 0,
   });
 
-  const loadData = (): void => {
-    state.lastIntervalId = safeSetTimeout(() => {
-      const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
-      const itemsCopy = items!.slice(0);
-      itemsCopy.splice(
-        state.lastIndexWithData,
-        randomQuantity,
-        ...exampleItems.slice(state.lastIndexWithData, state.lastIndexWithData + randomQuantity),
-      );
-      state.lastIndexWithData += randomQuantity;
-      setItems(itemsCopy);
-    }, INTERVAL_DELAY);
-  };
+  const loadMoreItems = (): void => {
+    state.visibleCount = Math.min(exampleItems.length, state.visibleCount + 2);
 
-  const randomFileIcon = (): { docType: string; url: string } => {
-    const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
-    return {
-      docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
-    };
+    setItems(exampleItems.map((current, index) => (index < state.visibleCount ? current : null)) as IExampleItem[]);
   };
 
   const onLoadData = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
-    if (!exampleItems) {
-      exampleItems = createListItems(ITEMS_COUNT);
-      exampleItems.map((item: IExampleItem) => {
-        const randomFileType = randomFileIcon();
-        item.thumbnail = randomFileType.url;
-      });
-    }
-    let currentItems: IExampleItem[];
-    const randomQuantity: number = Math.floor(Math.random() * 10) + 1;
+    state.visibleCount = 0;
+
     if (checked) {
-      currentItems = exampleItems.slice(0, randomQuantity).concat(new Array(ITEMS_COUNT - randomQuantity));
-      state.lastIndexWithData = randomQuantity;
-      loadData();
+      loadMoreItems();
+      state.lastIntervalId = safeSetInterval(loadMoreItems, INTERVAL_DELAY);
     } else {
-      currentItems = [];
+      setItems(undefined);
       clearInterval(state.lastIntervalId);
-      // clearTimeout(state.lastIntervalId);
     }
-    setIsDataLoaded(checked);
-    setItems(currentItems);
   };
 
   const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string | number => {
@@ -128,7 +111,6 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
       <Toggle
         label="Toggle to load content"
         style={toggleStyling}
-        checked={isDataLoaded}
         onChange={onLoadData}
         onText="Content"
         offText="Shimmer"
@@ -136,11 +118,11 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
       <div>
         <ShimmeredDetailsList
           setKey="items"
-          items={items}
+          items={items || []}
           columns={columns}
           selectionMode={SelectionMode.none}
           onRenderItemColumn={onRenderItemColumn}
-          enableShimmer={!isDataLoaded}
+          enableShimmer={!items}
           ariaLabelForShimmer="Content is being fetched"
           ariaLabelForGrid="Item details"
           listProps={shimmeredDetailsListProps}
