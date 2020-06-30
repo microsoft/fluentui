@@ -102,7 +102,7 @@ export interface IRawFontStyle {
 
 // @public
 export interface IRawStyle extends IRawStyleBase {
-    [key: string]: string | number | undefined | Record<string, any>;
+    [key: string]: any;
     displayName?: string;
     selectors?: {
         [key: string]: IStyle;
