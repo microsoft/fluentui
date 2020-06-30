@@ -60,12 +60,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapNested.Example.tsx corr
             padding-top: 0px;
             word-wrap: break-word;
           }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
-          }
       htmlFor="Slider0"
     >
       Change the stack width to see how child items wrap onto multiple rows:
@@ -283,12 +277,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapNested.Example.tsx corr
               white-space: nowrap;
               width: 40px;
               word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
             }
       >
         100

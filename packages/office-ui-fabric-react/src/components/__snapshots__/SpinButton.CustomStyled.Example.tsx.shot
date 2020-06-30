@@ -49,12 +49,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               pointer-events: none;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
         htmlFor="input1"
         id="Label0"
       >

@@ -250,12 +250,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               width: 40px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
       >
         0
       </label>
@@ -298,12 +292,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
             word-wrap: break-word;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
           }
       htmlFor="Slider1"
     >
@@ -523,12 +511,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               width: 40px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
       >
         20
       </label>
@@ -575,7 +557,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
           }
-          @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       htmlFor="Slider2"
@@ -752,7 +734,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
-            @media screen and (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -797,12 +779,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
             word-wrap: break-word;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
           }
       htmlFor="Slider3"
     >
@@ -1022,12 +998,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               width: 40px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
       >
         0
       </label>
@@ -1070,12 +1040,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
             word-wrap: break-word;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
           }
       htmlFor="Slider4"
     >
@@ -1295,12 +1259,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               width: 40px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
       >
         0%
       </label>
@@ -1343,12 +1301,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
             word-wrap: break-word;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
           }
       htmlFor="Slider5"
     >
@@ -1608,12 +1560,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               white-space: nowrap;
               width: 40px;
               word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
             }
       >
         2

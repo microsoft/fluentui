@@ -31,12 +31,6 @@ exports[`Slider renders correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          color: WindowText;
-        }
-        @media screen and (forced-colors: active){& {
-          forced-color-adjust: none;
-        }
     htmlFor="Slider0"
   >
     I am a slider
@@ -124,12 +118,6 @@ exports[`Slider renders correctly 1`] = `
             padding-right: 0;
             padding-top: 5px;
             word-wrap: break-word;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
           }
     >
       0

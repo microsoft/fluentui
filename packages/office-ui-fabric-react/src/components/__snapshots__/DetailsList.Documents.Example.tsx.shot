@@ -72,12 +72,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               padding-top: 5px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
         htmlFor="Toggle0"
         id="Toggle0-label"
       >
@@ -191,12 +185,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
-              }
               && {
                 font-weight: 400;
                 margin-bottom: 0;
@@ -257,12 +245,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               padding-right: 0;
               padding-top: 5px;
               word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
             }
         htmlFor="Toggle1"
         id="Toggle1-label"
@@ -377,12 +359,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
-              }
               && {
                 font-weight: 400;
                 margin-bottom: 0;
@@ -452,12 +428,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
-              }
           htmlFor="TextField2"
           id="TextFieldLabel4"
         >
@@ -493,7 +463,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              @media screen and (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >

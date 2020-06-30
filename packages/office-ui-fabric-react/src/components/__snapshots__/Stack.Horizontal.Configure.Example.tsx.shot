@@ -116,12 +116,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
-                }
             htmlFor="Slider0"
           >
             Number of items:
@@ -340,12 +334,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 40px;
                     word-wrap: break-word;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
-                    forced-color-adjust: none;
-                  }
             >
               5
             </label>
@@ -483,7 +471,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){& {
                       border-color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -524,7 +512,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -642,7 +630,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){& {
                       border-color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -683,7 +671,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -861,7 +849,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){& {
                       border-color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -902,7 +890,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -1020,7 +1008,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){& {
                       border-color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -1061,7 +1049,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){& {
                       color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -1121,12 +1109,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     padding-right: 0px;
                     padding-top: 0px;
                     word-wrap: break-word;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
-                    forced-color-adjust: none;
                   }
               htmlFor="Slider5"
             >
@@ -1346,12 +1328,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       width: 40px;
                       word-wrap: break-word;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
-                      color: WindowText;
-                    }
-                    @media screen and (forced-colors: active){& {
-                      forced-color-adjust: none;
-                    }
               >
                 100
               </label>
@@ -1454,12 +1430,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
                 }
             htmlFor="Slider6"
           >
@@ -1679,12 +1649,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 40px;
                     word-wrap: break-word;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
-                    forced-color-adjust: none;
-                  }
             >
               0
             </label>
@@ -1727,12 +1691,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
                 }
             htmlFor="Slider7"
           >
@@ -1952,12 +1910,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 40px;
                     word-wrap: break-word;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
-                    forced-color-adjust: none;
-                  }
             >
               0
             </label>
@@ -2037,12 +1989,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
                 }
             htmlFor="Slider8"
           >
@@ -2262,12 +2208,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 40px;
                     word-wrap: break-word;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
-                    forced-color-adjust: none;
-                  }
             >
               0
             </label>
@@ -2310,12 +2250,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
                 }
             htmlFor="Slider9"
           >
@@ -2535,12 +2469,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 40px;
                     word-wrap: break-word;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
-                    forced-color-adjust: none;
-                  }
             >
               0
             </label>
@@ -2620,12 +2548,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
                 }
             htmlFor="Slider10"
           >
@@ -2845,12 +2767,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 40px;
                     word-wrap: break-word;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
-                    forced-color-adjust: none;
-                  }
             >
               0
             </label>
@@ -2893,12 +2809,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
                 }
             htmlFor="Slider11"
           >
@@ -3118,12 +3028,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 40px;
                     word-wrap: break-word;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
-                    forced-color-adjust: none;
-                  }
             >
               0
             </label>
@@ -3195,12 +3099,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-right: 0;
                 padding-top: 5px;
                 word-wrap: break-word;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
               }
           id="Dropdown12-label"
         >
@@ -3425,12 +3323,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-right: 0;
                 padding-top: 5px;
                 word-wrap: break-word;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
               }
           id="Dropdown13-label"
         >
@@ -3738,7 +3630,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 @media screen and (-ms-high-contrast: active){& {
                   border-color: WindowText;
                 }
-                @media screen and (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -3779,7 +3671,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 @media screen and (-ms-high-contrast: active){& {
                   color: WindowText;
                 }
-                @media screen and (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -3851,12 +3743,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 5px;
                   word-wrap: break-word;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
-                }
             htmlFor="TextField15"
             id="TextFieldLabel17"
           >
@@ -3892,7 +3778,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
-                @media screen and (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
                   forced-color-adjust: none;
                 }
           >

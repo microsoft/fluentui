@@ -239,7 +239,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
-            @media screen and (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -426,12 +426,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   padding-top: 5px;
                   word-wrap: break-word;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
-                  forced-color-adjust: none;
-                }
             htmlFor="TextField9"
             id="TextFieldLabel11"
           >
@@ -488,7 +482,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
-            @media screen and (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -635,12 +629,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               padding-top: 5px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
         htmlFor="TextField12"
         id="TextFieldLabel14"
       >
@@ -676,7 +664,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
-            @media screen and (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >

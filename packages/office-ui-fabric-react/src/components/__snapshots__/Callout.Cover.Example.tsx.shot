@@ -38,12 +38,6 @@ Array [
               padding-top: 5px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
         id="Dropdown0-label"
       >
         Directional hint

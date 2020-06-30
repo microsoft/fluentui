@@ -59,12 +59,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             padding-top: 5px;
             word-wrap: break-word;
           }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
-          }
       id="ComboBox0-label"
     >
       Custom styled ComboBox
@@ -455,12 +449,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             padding-right: 0;
             padding-top: 5px;
             word-wrap: break-word;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
           }
       id="ComboBox4-label"
     >

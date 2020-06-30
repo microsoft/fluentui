@@ -1,6 +1,5 @@
-import { HighContrastSelector, FontWeights } from '../../Styling';
+import { HighContrastSelector, FontWeights, getEdgeChromiumNoHighContrastAdjustSelector } from '../../Styling';
 import { ILabelStyleProps, ILabelStyles } from './Label.types';
-import { getEdgeChromiumNoHighContrastAdjustSelector } from '@uifabric/styling';
 
 export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
   const { theme, className, disabled, required } = props;
@@ -27,16 +26,14 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
       },
-      {
+      disabled && {
+        color: labelDisabledColor,
         selectors: {
           [HighContrastSelector]: {
-            color: disabled ? 'GrayText' : 'WindowText',
+            color: 'GrayText',
           },
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
-      },
-      disabled && {
-        color: labelDisabledColor,
       },
       required && {
         selectors: {
@@ -44,11 +41,6 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
             content: `' *'`,
             color: labelRequiredStarColor,
             paddingRight: 12,
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'WindowText',
-              },
-            },
           },
         },
       },

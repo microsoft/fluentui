@@ -82,12 +82,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               padding-top: 5px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
         htmlFor="Toggle0"
         id="Toggle0-label"
       >
@@ -201,12 +195,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
-              }
               && {
                 font-weight: 400;
                 margin-bottom: 0;
@@ -276,12 +264,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
-              }
           htmlFor="TextField1"
           id="TextFieldLabel3"
         >
@@ -317,7 +299,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              @media screen and (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >

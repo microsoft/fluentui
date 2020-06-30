@@ -136,7 +136,7 @@ Array [
                 background: Highlight;
                 border-color: Highlight;
               }
-              @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -177,7 +177,7 @@ Array [
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -222,12 +222,6 @@ Array [
               padding-right: 0px;
               padding-top: 0px;
               word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
             }
         htmlFor="Slider3"
       >
@@ -447,12 +441,6 @@ Array [
                 width: 40px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
-              }
         >
           0
         </label>
@@ -495,12 +483,6 @@ Array [
               padding-right: 0px;
               padding-top: 0px;
               word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
             }
         htmlFor="Slider4"
       >
@@ -720,12 +702,6 @@ Array [
                 width: 40px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
-              }
         >
           16
         </label>
@@ -758,12 +734,6 @@ Array [
               padding-right: 0;
               padding-top: 5px;
               word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
             }
         id="Dropdown5-label"
       >

@@ -3631,12 +3631,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               padding-top: 5px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
         htmlFor="Toggle61"
         id="Toggle61-label"
       >
@@ -3764,12 +3758,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               padding-right: 0;
               padding-top: 5px;
               word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
             }
         htmlFor="Toggle62"
         id="Toggle62-label"
@@ -3899,12 +3887,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               padding-top: 5px;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
         htmlFor="Toggle63"
         id="Toggle63-label"
       >
@@ -4029,12 +4011,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 padding-right: 0;
                 padding-top: 5px;
                 word-wrap: break-word;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
               }
           id="Dropdown64-label"
         >
