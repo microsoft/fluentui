@@ -7,12 +7,12 @@ const fileName = 'mockFunction.tsx';
 
 describe('JSX Utilities Test', () => {
   it('can find a regular jsx tag', () => {
-    const tag = utilities.findJsxTagInFile(project.getSourceFileOrThrow(fileName), 'JSXFunctionalNormalTag');
+    const tag = utilities.findJsxTag(project.getSourceFileOrThrow(fileName), 'JSXFunctionalNormalTag');
     expect(tag.length).toEqual(1);
   });
 
   it('can find a self closing jsx tag', () => {
-    const tag = utilities.findJsxTagInFile(project.getSourceFileOrThrow(fileName), 'JSXFunctionalSelfClosingTag');
+    const tag = utilities.findJsxTag(project.getSourceFileOrThrow(fileName), 'JSXFunctionalSelfClosingTag');
     expect(tag.length).toEqual(1);
   });
 

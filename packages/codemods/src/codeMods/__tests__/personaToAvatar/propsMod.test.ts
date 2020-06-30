@@ -26,7 +26,7 @@ describe('Persona props mod tests', () => {
   it('can replace jsx inline primaryText prop', () => {
     const file = project.getSourceFileOrThrow('mPersonaProps.tsx');
     RenamePrimaryTextProp(file);
-    const elements = utilities.findJsxTagInFile(file, 'Persona');
+    const elements = utilities.findJsxTag(file, 'Persona');
     elements.forEach(val => {
       expect(val.getAttribute('primaryText')).not.toBeTruthy();
     });
@@ -34,12 +34,12 @@ describe('Persona props mod tests', () => {
 
   it('can replace jsx inline primaryText without changing the value', () => {
     const file = project.getSourceFileOrThrow(personaPropsFile);
-    const values = utilities.findJsxTagInFile(file, 'Persona');
+    const values = utilities.findJsxTag(file, 'Persona');
     const attValues = values.map(val => {
       return (val.getAttribute('primaryText')?.getStructure() as JsxAttributeStructure)?.initializer;
     });
     RenamePrimaryTextProp(file);
-    const elements = utilities.findJsxTagInFile(file, 'Persona');
+    const elements = utilities.findJsxTag(file, 'Persona');
     elements.forEach((val, index) => {
       expect((val.getAttribute('text')?.getStructure() as JsxAttributeStructure)?.initializer).toEqual(
         attValues[index],
@@ -50,7 +50,7 @@ describe('Persona props mod tests', () => {
   it('can replace jsx spread primaryText', () => {
     const file = project.getSourceFileOrThrow(personaSpreadPropsFile);
     RenamePrimaryTextProp(file);
-    const els = utilities.findJsxTagInFile(file, 'Persona');
+    const els = utilities.findJsxTag(file, 'Persona');
     els.forEach(val => {
       val.getAttributes().forEach(att => {
         if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
@@ -71,7 +71,7 @@ describe('Persona props mod tests', () => {
   it('can replace personaCoin render', () => {
     const file = project.getSourceFileOrThrow(personaPropsFile);
     RenameRenderCoin(file);
-    const els = utilities.findJsxTagInFile(file, 'Persona');
+    const els = utilities.findJsxTag(file, 'Persona');
     els.forEach(val => {
       expect(val.getAttribute('onRenderCoin')).toBeFalsy();
     });

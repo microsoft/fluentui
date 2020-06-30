@@ -168,14 +168,14 @@ function getBlockContainer(node: Node<ts.Node>) {
 
 export function RenamePrimaryTextProp(file: SourceFile) {
   // Should this fix the naming if the Persona Component has already been renamed to Avatar
-  const elements = utilities.findJsxTagInFile(file, 'Persona');
+  const elements = utilities.findJsxTag(file, 'Persona');
   renameProperty(elements, 'primaryText', 'text');
 }
 
 export function RenameRenderCoin(file: SourceFile) {
   // Should this fix the naming if the Persona Component has already been renamed to Avatar
 
-  const elements = utilities.findJsxTagInFile(file, 'Persona');
+  const elements = utilities.findJsxTag(file, 'Persona');
   renameProperty(elements, 'onRenderCoin', 'onRenderAvatarCoin');
 }
 

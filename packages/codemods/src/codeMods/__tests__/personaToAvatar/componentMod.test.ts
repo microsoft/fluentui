@@ -22,7 +22,7 @@ describe('Persona component mod tests', () => {
       imp.getNamedImports().forEach(name => {
         expect(name.getText()).not.toEqual('Persona');
       });
-      expect(utilities.findJsxTagInFile(file, 'Persona').length).toBe(0);
+      expect(utilities.findJsxTag(file, 'Persona').length).toBe(0);
     });
   });
 
