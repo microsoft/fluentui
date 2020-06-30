@@ -5,7 +5,13 @@ import * as _ from 'lodash';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import {
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  WithAsProp,
+  withSafeTypeForAs,
+  ShorthandRenderFunction,
+} from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 // import DatepickerInput from './DatepickerInput';
 // import DatepickerCalendar from './DatepickerCalendar';
@@ -20,6 +26,7 @@ import {
   DateRangeType,
   IDateGridStrings,
   formatMonthDayYear,
+  IDateFormatting,
 } from '@fluentui/date-time-utilities';
 import DatepickerCalendar from './DatepickerCalendar';
 
@@ -43,9 +50,30 @@ const DEFAULT_STRINGS: IDateGridStrings = {
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 };
 
-export interface DatepickerProps extends IDayGridOptions, UIComponentProps {
+export interface DatepickerProps extends IDateGridStrings, IDayGridOptions, IDateFormatting, UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
+
+  /** Datepicker shows it is currently unable to be interacted with. */
+  disabled: boolean;
+
+  /** Datepicker shows it is currently unable to be interacted with. */
+  isRequired: boolean;
+
+  /** Provides the client with an option to react to change in selected date. */
+  onChange: (event: React.FormEvent<HTMLInputElement & HTMLTextAreaElement>, newValue?: string) => void;
+
+  /** String to render for button to direct the user to today's date. */
+  goToToday: string;
+
+  /** Text placeholder for the input field. */
+  placeholder: string;
+
+  /** A render function to customize how cells are rendered in the Calendar. */
+  renderCell: ShorthandRenderFunction<any>;
+
+  /** A render function to customize how cells are rendered in the Calendar.. */
+  renderHeaderCell: ShorthandRenderFunction<any>;
 }
 
 export type DatepickerStylesProps = never;
@@ -58,17 +86,16 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('');
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
   const valueFormatter = date => formatMonthDayYear(date, DEFAULT_STRINGS);
-  const today = new Date();
   const { firstDayOfWeek, firstWeekOfYear, dateRangeType, weeksToShow } = props;
   const calendarOptions: IDayGridOptions = {
-    selectedDate: today,
-    navigatedDate: today,
-    firstDayOfWeek: firstDayOfWeek,
-    firstWeekOfYear: firstWeekOfYear,
-    dateRangeType: dateRangeType,
-    weeksToShow: weeksToShow,
+    selectedDate,
+    navigatedDate: selectedDate,
+    firstDayOfWeek,
+    firstWeekOfYear,
+    dateRangeType,
+    weeksToShow,
   };
 
   const showCalendarGrid = () => {
@@ -104,7 +131,7 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
             ...unhandledProps,
           })}
         >
-          <Input readOnly onClick={showCalendarGrid} value={value} />
+          <Input readOnly onClick={showCalendarGrid} value={valueFormatter(selectedDate)} />
           <Popup
             open={open}
             onOpenChange={(e, { open }) => setOpen(open)}
@@ -112,8 +139,7 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
               <DatepickerCalendar
                 {...calendarOptions}
                 onDaySelect={day => {
-                  setValue(valueFormatter(day.originalDate));
-                  day.isSelected = true;
+                  setSelectedDate(day.originalDate);
                   setOpen(false);
                 }}
                 localizedStrings={DEFAULT_STRINGS}

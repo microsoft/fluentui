@@ -60,7 +60,7 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-    weeksToShow,
+    // weeksToShow,
   };
 
   const { classes } = useStyles<DatepickerCalendarStylesProps>(DatepickerCalendar.displayName, {
