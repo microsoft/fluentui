@@ -15,9 +15,9 @@ import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 
-const _items: IAnnouncedQuickActionsExampleItem[] = [];
+const exampleItems: IAnnouncedQuickActionsExampleItem[] = [];
 
-const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
+const columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
   const fieldName = name.replace(' ', '').toLowerCase();
   return {
     fieldName,
@@ -31,7 +31,7 @@ const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map
 
 const iconButtonStyles: Partial<IButtonStyles> = { root: { float: 'right', height: 'inherit' } };
 
-const _names: string[] = [
+const names: string[] = [
   'Annie Lindqvist',
   'Aaron Reid',
   'Alex Lundberg',
@@ -41,9 +41,9 @@ const _names: string[] = [
   'Makenzie Sharett',
 ];
 
-function getMockDateString(): string {
+const getMockDateString = (): string => {
   return 'Thu Jan 05 2017‌';
-}
+};
 
 export interface IAnnouncedQuickActionsExampleItem {
   key: number;
@@ -54,97 +54,28 @@ export interface IAnnouncedQuickActionsExampleItem {
 }
 
 export interface IAnnouncedQuickActionsExampleState {
-  items: IAnnouncedQuickActionsExampleItem[];
-  selectionDetails: {};
-  renameDialogOpen: boolean;
-  dialogContent: JSX.Element | undefined;
-  announced?: JSX.Element;
+  selection: Selection;
 }
 
-export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnouncedQuickActionsExampleState> {
-  private _selection: Selection;
-  private _detailsList = React.createRef<IDetailsList>();
-  private _textField = React.createRef<ITextField>();
-  private _async: Async;
+export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
+  const detailsList = React.useRef<IDetailsList>(null);
+  const textField = React.useRef<ITextField>(null);
+  const [items, setItems] = React.useState<IAnnouncedQuickActionsExampleItem[]>(exampleItems);
+  const [renameDialogOpen, setRenameDialogOpen] = React.useState<boolean>(false);
+  const [selectionDetails, setSelectionDetails] = React.useState(getSelectionDetails());
+  const [dialogContent, setDialogContent] = React.useState<JSX.Element | undefined>(undefined);
+  const [announced, setAnnounced] = React.useState(undefined);
+  const { current: state } = React.useRef<IAnnouncedQuickActionsExampleState>({
+    selection: new Selection({
+      onSelectionChanged: () => setSelectionDetails(getSelectionDetails()),
+    }),
+  });
 
-  constructor(props: {}) {
-    super(props);
-
-    this._async = new Async(this);
-
-    // Populate with items for demos.
-    if (_items.length === 0) {
-      for (let i = 0; i < 20; i++) {
-        _items.push({
-          key: i,
-          name: 'Item ' + i,
-          modified: getMockDateString(),
-          modifiedby: _names[Math.floor(Math.random() * _names.length)],
-          filesize: Math.floor(Math.random() * 30).toString() + ' MB',
-        });
-      }
-    }
-
-    this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
-    });
-
-    this.state = {
-      items: _items,
-      selectionDetails: this._getSelectionDetails(),
-      renameDialogOpen: false,
-      dialogContent: undefined,
-      announced: undefined,
-    };
-  }
-
-  public componentDidUpdate(prevState: IAnnouncedQuickActionsExampleState) {
-    if (prevState.announced !== this.state.announced && this.state.announced !== undefined) {
-      this._async.setTimeout(() => {
-        this.setState({
-          announced: undefined,
-        });
-      }, 2000);
-    }
-  }
-
-  public componentWillUnmount(): void {
-    this._async.dispose();
-  }
-
-  public render(): JSX.Element {
-    const { items, renameDialogOpen, dialogContent } = this.state;
-
-    return (
-      <>
-        {this._renderAnnounced()}
-        <MarqueeSelection selection={this._selection}>
-          <DetailsList
-            componentRef={this._detailsList}
-            items={items}
-            columns={_columns}
-            setKey="set"
-            layoutMode={DetailsListLayoutMode.fixedColumns}
-            selection={this._selection}
-            selectionPreservedOnEmptyClick={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            onRenderItemColumn={this._onRenderItemColumn}
-            onRenderRow={this._onRenderRow}
-          />
-          <Dialog hidden={!renameDialogOpen} onDismiss={this._closeRenameDialog} closeButtonAriaLabel="Close">
-            {dialogContent}
-          </Dialog>
-        </MarqueeSelection>
-      </>
-    );
-  }
-
-  private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {
+  const onRenderRow = (props: IDetailsRowProps): JSX.Element => {
     return <DetailsRow {...props} />;
   };
 
-  private _onRenderItemColumn = (item: IAnnouncedQuickActionsExampleItem, index: number, column: IColumn) => {
+  const onRenderItemColumn = (item: IAnnouncedQuickActionsExampleItem, index: number, column: IColumn) => {
     const fieldContent = item[column.fieldName as keyof IAnnouncedQuickActionsExampleItem];
 
     if (column.key === 'name') {
@@ -162,12 +93,12 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
                 {
                   key: 'delete',
                   text: 'Delete',
-                  onClick: () => this._deleteItem(index),
+                  onClick: () => deleteItem(index),
                 },
                 {
                   key: 'rename',
                   text: 'Rename',
-                  onClick: () => this._renameItem(item, index),
+                  onClick: () => renameItem(item, index),
                 },
               ],
             }}
@@ -179,67 +110,89 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     }
   };
 
-  private _renderAnnounced = (): JSX.Element | undefined => {
-    const { announced } = this.state;
-    return announced;
-  };
-
-  private _deleteItem = (index: number): void => {
-    const items = this.state.items;
-    items.splice(items.indexOf(items[index]), 1);
-
-    this.setState({
-      items: [...items],
-      announced: <Announced message="Item deleted" aria-live="assertive" />,
-    });
+  const deleteItem = (index: number): void => {
+    setItems(items.splice(items.indexOf(items[index]), 1));
+    setAnnounced(<Announced message="Item deleted" aria-live="assertive" />);
     return;
   };
 
-  private _renameItem(item: IAnnouncedQuickActionsExampleItem, index: number): void {
-    this.setState({
-      renameDialogOpen: true,
-      dialogContent: (
-        <>
-          <TextField componentRef={this._textField} label="Rename" defaultValue={item.name} />
-          <DialogFooter>
-            <PrimaryButton onClick={this._updateItemName.bind(this, index)} text="Save" />
-          </DialogFooter>
-        </>
-      ),
-    });
-    return;
-  }
+  const renameItem = (item: IAnnouncedQuickActionsExampleItem, index: number): void => {
+    setRenameDialogOpen(true);
+    setDialogContent(
+      <>
+        <TextField componentRef={textField} label="Rename" defaultValue={item.name} />
+        <DialogFooter>
+          <PrimaryButton onClick={updateItemName.bind(this, index)} text="Save" />
+        </DialogFooter>
+      </>,
+    );
 
-  private _updateItemName(index: number): void {
-    if (this._textField && this._textField.current) {
-      const items = this.state.items;
-      items[index].name = this._textField.current.value || items[index].name;
-      this.setState({
-        renameDialogOpen: false,
-        items: [...items],
-        announced: <Announced message="Item renamed" aria-live="assertive" />,
-      });
+    return;
+  };
+
+  const updateItemName = (index: number): void => {
+    if (textField && textField.current) {
+      items[index].name = textField.current.value || items[index].name;
+      setRenameDialogOpen(false);
+      setAnnounced(<Announced message="Item renamed" aria-live="assertive" />);
     } else {
       return;
     }
-  }
-
-  private _closeRenameDialog = (): void => {
-    this.setState({
-      renameDialogOpen: false,
-    });
   };
 
-  private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
+  const closeRenameDialog = (): void => {
+    setRenameDialogOpen(false);
+  };
+
+  const getSelectionDetails = (): string => {
+    const selectionCount = selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
+        return '1 item selected: ' + (selection.getSelection()[0] as any).name;
       default:
         return `${selectionCount} items selected`;
     }
-  }
-}
+  };
+
+  // Populate with items for demos.
+  React.useEffect(() => {
+    if (items.length === 0) {
+      for (let i = 0; i < 20; i++) {
+        items.push({
+          key: i,
+          name: 'Item ' + i,
+          modified: getMockDateString(),
+          modifiedby: names[Math.floor(Math.random() * names.length)],
+          filesize: Math.floor(Math.random() * 30).toString() + ' MB',
+        });
+      }
+    }
+  }, []);
+
+  return (
+    <>
+      {announced}
+      <MarqueeSelection selection={selection}>
+        <DetailsList
+          componentRef={detailsList}
+          items={items}
+          columns={columns}
+          setKey="set"
+          layoutMode={DetailsListLayoutMode.fixedColumns}
+          selection={selection}
+          selectionPreservedOnEmptyClick
+          ariaLabelForSelectionColumn="Toggle selection"
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          onRenderItemColumn={onRenderItemColumn}
+          onRenderRow={onRenderRow}
+        />
+        <Dialog hidden={!renameDialogOpen} onDismiss={closeRenameDialog} closeButtonAriaLabel="Close">
+          {dialogContent}
+        </Dialog>
+      </MarqueeSelection>
+    </>
+  );
+};
