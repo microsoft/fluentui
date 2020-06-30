@@ -29,7 +29,6 @@
     "@uifabric/build": "^7.0.0",
     "@uifabric/tslint-rules": "^7.2.2",
     "@fluentui/react-component-ref": "^0.50.0",
-    "office-ui-fabric-react": "^7.121.3",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "jest": "~24.9.0",
@@ -38,6 +37,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
+    "@fluentui/react-bindings": "^0.50.0",
     "tslib": "^1.10.0",
     "react-is": "^16.6.3",
     "lodash": "^4.17.15",
