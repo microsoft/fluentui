@@ -1,10 +1,6 @@
 import { SourceFile, ImportSpecifierStructure } from 'ts-morph';
 import { getImportsByPath, appendOrCreateNamedImport, repathImport } from '../../utilities';
 
-export const getNamedExports = (obj: { [key: string]: any }) => {
-  return Object.keys(obj);
-};
-
 export interface IComponentToCompat {
   // Old exact path
   oldPath: string;
@@ -28,7 +24,7 @@ export interface CompatHash {
   exactPathMatch: { [key: string]: string };
 }
 
-const repathNamedImports = (file: SourceFile, hash: CompatHash, indexPath: string) => {
+export function repathNamedImports(file: SourceFile, hash: CompatHash, indexPath: string) {
   let imports = getImportsByPath(file, indexPath);
   imports.forEach(imp => {
     imp.getNamedImports().forEach(imp => {
@@ -43,12 +39,16 @@ const repathNamedImports = (file: SourceFile, hash: CompatHash, indexPath: strin
       imp.remove();
     }
   });
-};
+}
 
-export const buildCompatHash = (
+export function getNamedExports(obj: { [key: string]: any }) {
+  return Object.keys(obj);
+}
+
+export function buildCompatHash(
   renameCompats: rawCompat[],
   getComponentToCompat: (comp: rawCompat) => IComponentToCompat,
-): CompatHash => {
+): CompatHash {
   return renameCompats.reduce(
     (acc: CompatHash, val) => {
       const paths = getComponentToCompat(val);
@@ -60,26 +60,18 @@ export const buildCompatHash = (
     },
     { namedExportsMatch: {}, exactPathMatch: {} },
   );
-};
+}
 
-export const repathPathedImports = (file: SourceFile, hash: CompatHash) => {
+export function repathPathedImports(file: SourceFile, hash: CompatHash) {
   file.getImportDeclarations().forEach(dec => {
     let str = dec.getModuleSpecifierValue();
     if (hash.exactPathMatch[str]) {
       repathImport(dec, hash.exactPathMatch[str]);
     }
   });
-};
+}
 
-export const runComponentToCompat = (file: SourceFile, hash: CompatHash, indexPath: string) => {
+export function runComponentToCompat(file: SourceFile, hash: CompatHash, indexPath: string) {
   repathPathedImports(file, hash);
   repathNamedImports(file, hash, indexPath);
-};
-
-export const __forTest = {
-  getNamedExports,
-  repathPathedImports,
-  runComponentToCompat,
-  buildHash: buildCompatHash,
-  repathNamedImports,
-};
+}

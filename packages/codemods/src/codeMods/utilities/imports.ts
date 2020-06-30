@@ -38,6 +38,7 @@ export function getImportsByPath(file: SourceFile, pathOrRegex: string | RegExp)
 
   return imps;
 }
+
 export function appendOrCreateNamedImport(
   file: SourceFile,
   moduleSpecifier: string,

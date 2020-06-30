@@ -11,16 +11,18 @@ const fabricindex = 'office-ui-fabric-react';
 const completePath = 'office-ui-fabric-react/lib/';
 const newPathStart = '@fluentui/react/lib/compat/';
 const exportMapping: rawCompat[] = [{ componentName: 'Button', namedExports: ButtonImports }];
-const getPath = (root: string, componentName: string) => {
+function getPath(root: string, componentName: string) {
   return `${root}${componentName}`;
-};
-export const createComponentToCompat = (comp: rawCompat): IComponentToCompat => {
+}
+
+export function createComponentToCompat(comp: rawCompat): IComponentToCompat {
   return {
     oldPath: getPath(completePath, comp.componentName),
     newComponentPath: getPath(newPathStart, comp.componentName),
     namedExports: getNamedExports(comp.namedExports),
   };
-};
+}
+
 const ComponentToCompat: ICodeMod = {
   run: (file: SourceFile) => {
     runComponentToCompat(file, buildCompatHash(exportMapping, createComponentToCompat), fabricindex);
@@ -30,4 +32,5 @@ const ComponentToCompat: ICodeMod = {
   version: '1.0.0',
   enabled: true,
 };
+
 export default ComponentToCompat;
