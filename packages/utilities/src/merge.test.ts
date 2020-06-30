@@ -92,7 +92,8 @@ describe('merge', () => {
     const obj1 = {
       array1: [1, 2, 3, 4],
       array2: ['1', '2', '3', '4'],
-      deepArray: { array3: [1, 2, 3, 4] },
+      dontTouch: 'awesome',
+      deepArray: { array3: [1, 2, 3, 4], array4: [5, 6, 7, 8] },
     };
     const obj2 = {
       array1: [5, 6, 7, 8],
@@ -100,10 +101,67 @@ describe('merge', () => {
       deepArray: { array3: [5, 6, 7, 8] },
     };
 
+    const flatObj = {
+      array1: 'string',
+      array2: 2,
+    };
+
+    const undefinedObjs = {
+      array1: undefined,
+      array2: undefined,
+      deepArray: undefined,
+    };
+
+    const objectReplace = {
+      array1: {},
+      array2: {},
+      deepArray: { array3: {}, array4: {} },
+    };
+
+    const valueObj = {
+      array1: [1],
+      array2: ['1'],
+      deepArray: { array3: [1], array4: [1] },
+    };
+
+    const arrayReplace = {
+      deepArray: [1, 2, 3, 4],
+    };
+
     expect(merge(obj1, obj2)).toEqual({
-      array1: [1, 2, 3, 4, 5, 6, 7, 8],
-      array2: ['1', '2', '3', '4', '5', '6', '7', '8'],
-      deepArray: { array3: [1, 2, 3, 4, 5, 6, 7, 8] },
+      array1: [5, 6, 7, 8],
+      array2: ['5', '6', '7', '8'],
+      dontTouch: 'awesome',
+      deepArray: { array3: [5, 6, 7, 8], array4: [5, 6, 7, 8] },
+    });
+
+    expect(merge(flatObj, undefinedObjs)).toEqual({
+      array1: undefined,
+      array2: undefined,
+      deepArray: undefined,
+    });
+
+    expect(merge(obj1, objectReplace)).toEqual({
+      array1: {},
+      array2: {},
+      dontTouch: 'awesome',
+      deepArray: { array3: {}, array4: {} },
+    });
+
+    expect(merge(obj1, valueObj)).toEqual({
+      array1: [1],
+      array2: ['1'],
+      dontTouch: 'awesome',
+      deepArray: { array3: [1], array4: [1] },
+    });
+
+    // escape ts so we can replace the type wholesale for testing
+    // @ts-ignore
+    expect(merge(obj1, arrayReplace)).toEqual({
+      array1: [1],
+      array2: ['1'],
+      dontTouch: 'awesome',
+      deepArray: [1, 2, 3, 4],
     });
   });
 });
