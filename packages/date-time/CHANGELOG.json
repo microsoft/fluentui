@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/date-time_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "CalendarDayGrid: migrate component to function component",
+            "author": "miclo@microsoft.com",
+            "commit": "30df63d7bf33234647171b8fc5fb5122154674e1",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/date-time_v7.9.3",
       "version": "7.9.3",

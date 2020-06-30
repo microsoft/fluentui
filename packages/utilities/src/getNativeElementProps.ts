@@ -24,7 +24,7 @@ import {
 } from './properties';
 import * as React from 'react';
 
-const nativeElementMap: Record<string, string[]> = {
+const nativeElementMap: Record<string, Record<string, number>> = {
   label: labelProperties,
   audio: audioProperties,
   video: videoProperties,
