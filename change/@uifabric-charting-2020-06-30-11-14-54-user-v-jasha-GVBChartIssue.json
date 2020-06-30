@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "prop check added in Grouped vertical bar chart",
+  "packageName": "@uifabric/charting",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-30T05:44:54.224Z"
+}
