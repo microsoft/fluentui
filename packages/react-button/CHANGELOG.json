@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@fluentui/react-button_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding componentRef, focus method, styling, and tests.",
+            "author": "dzearing@microsoft.com",
+            "commit": "4746eb1c2dd4846510353f839bc4079511a75e22",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@fluentui/react-button_v0.5.1",
       "version": "0.5.1",

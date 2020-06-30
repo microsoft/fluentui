@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Loosening typings in the `IStyle` interface.",
-  "packageName": "@uifabric/merge-styles",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-29T23:01:58.214Z"
-}

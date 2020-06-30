@@ -2,6 +2,21 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/merge-styles_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Loosening typings in the `IStyle` interface.",
+            "author": "dzearing@microsoft.com",
+            "commit": "0992ce1a42dcd1105ec055d655111288b54d3bcd",
+            "package": "@uifabric/merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/merge-styles_v7.15.1",
       "version": "7.15.1",
