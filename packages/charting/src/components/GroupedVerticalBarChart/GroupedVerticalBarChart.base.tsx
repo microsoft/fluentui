@@ -115,7 +115,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   }
 
   public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
-    if (this._isGraphDraw) {
+    if (this._isGraphDraw || prevProps.data !== this.props.data) {
       // drawing graph after first update only to avoid multile g tags
       this._drawGraph();
       this._isGraphDraw = false;
@@ -345,11 +345,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
 
     // previous <g> - graph need to remove otherwise multile g elements will create
-    d3Select(`#firstGElementForBars_${this._yMax}_${this._uniqLineText}`).remove();
+    d3Select(`#firstGElementForBars_${this._uniqLineText}`).remove();
     const barContainer = d3Select(`#barGElement_${this._uniqLineText}`)
       .append('g')
       .attr('class', 'firstGElementForBars')
-      .attr('id', `firstGElementForBars_${this._yMax}_${this._uniqLineText}`);
+      .attr('id', `firstGElementForBars_${this._uniqLineText}`);
     const seriesName = barContainer
       .selectAll('.name')
       .data(this._datasetForBars)
