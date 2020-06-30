@@ -448,38 +448,16 @@ export const CalendarYearBase = React.forwardRef(
   (props: ICalendarYearProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const animateBackwards = useAnimateBackwards(props);
     const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState(props);
-    return (
-      <CalendarYearBaseClass
-        {...props}
-        hoisted={{ forwardedRef, animateBackwards, fromYear, toYear, onNavNext, onNavPrevious }}
-      />
-    );
-  },
-);
-CalendarYearBase.displayName = 'CalendarYearBase';
 
-interface ICalendarYearBaseClassProps extends ICalendarYearProps {
-  hoisted: {
-    forwardedRef: React.Ref<HTMLDivElement>;
-    animateBackwards?: boolean;
-    fromYear: number;
-    toYear: number;
-    onNavNext(): void;
-    onNavPrevious(): void;
-  };
-}
+    const gridRef = React.useRef<ICalendarYearGrid>(null);
 
-class CalendarYearBaseClass extends React.Component<ICalendarYearBaseClassProps, {}> implements ICalendarYear {
-  private _gridRef: ICalendarYearGrid;
+    React.useImperativeHandle(props.componentRef, () => ({
+      focus() {
+        gridRef.current?.focus?.();
+      },
+    }));
 
-  public focus(): void {
-    if (this._gridRef) {
-      this._gridRef.focus();
-    }
-  }
-
-  public render(): JSX.Element {
-    const { styles, theme, className } = this.props;
+    const { styles, theme, className } = props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -487,39 +465,24 @@ class CalendarYearBaseClass extends React.Component<ICalendarYearBaseClassProps,
     });
 
     return (
-      <div className={classNames.root} ref={this.props.hoisted.forwardedRef}>
-        {this._renderHeader()}
-        {this._renderGrid()}
+      <div className={classNames.root} ref={forwardedRef}>
+        <CalendarYearHeader
+          {...props}
+          fromYear={fromYear}
+          toYear={toYear}
+          onSelectPrev={onNavPrevious}
+          onSelectNext={onNavNext}
+          animateBackwards={animateBackwards}
+        />
+        <CalendarYearGrid
+          {...props}
+          fromYear={fromYear}
+          toYear={toYear}
+          animateBackwards={animateBackwards}
+          componentRef={gridRef}
+        />
       </div>
     );
-  }
-
-  private _renderHeader = (): React.ReactNode => {
-    return (
-      <CalendarYearHeader
-        {...this.props}
-        fromYear={this.props.hoisted.fromYear}
-        toYear={this.props.hoisted.toYear}
-        onSelectPrev={this.props.hoisted.onNavPrevious}
-        onSelectNext={this.props.hoisted.onNavNext}
-        animateBackwards={this.props.hoisted.animateBackwards}
-      />
-    );
-  };
-
-  private _renderGrid = (): React.ReactNode => {
-    return (
-      <CalendarYearGrid
-        {...this.props}
-        fromYear={this.props.hoisted.fromYear}
-        toYear={this.props.hoisted.toYear}
-        animateBackwards={this.props.hoisted.animateBackwards}
-        componentRef={this._onGridRef}
-      />
-    );
-  };
-
-  private _onGridRef = (ref: ICalendarYearGrid) => {
-    this._gridRef = ref;
-  };
-}
+  },
+);
+CalendarYearBase.displayName = 'CalendarYearBase';
