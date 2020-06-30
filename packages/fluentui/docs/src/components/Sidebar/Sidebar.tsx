@@ -18,9 +18,8 @@ import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
+import { NavLink, NavLinkProps, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentMenuItem = { displayName: string; type: string };
@@ -36,13 +35,11 @@ interface SidebarState {
   activeCategoryIndex: number | number[];
 }
 
-class Sidebar extends React.Component<any, SidebarState> {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    style: PropTypes.object,
-  };
+interface SidebarProps {
+  width: number;
+  treeItemStyle: React.CSSProperties;
+}
+class Sidebar extends React.Component<SidebarProps & RouteComponentProps, SidebarState> {
   state = { query: '', activeCategoryIndex: 0 };
   searchInputRef = React.createRef<HTMLInputElement>();
 
