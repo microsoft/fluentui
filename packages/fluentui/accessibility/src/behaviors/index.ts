@@ -75,6 +75,7 @@ export { default as chatMessageBehavior } from './Chat/chatMessageBehavior';
 export * from './Chat/chatMessageBehavior';
 export { default as formFieldBehavior } from './Form/formFieldBehavior';
 export * from './Form/formFieldBehavior';
+export * from './Grid/gridBehavior';
 export { default as gridBehavior } from './Grid/gridBehavior';
 export { default as gridHorizontalBehavior } from './Grid/gridHorizontalBehavior';
 export { default as hierarchicalTreeBehavior } from './HierarchicalTree/hierarchicalTreeBehavior';

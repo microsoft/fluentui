@@ -2,6 +2,63 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/charting_v2.3.7",
+      "version": "2.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FIx Incorrect role is defined for lagend overflow items",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "50a3aaef8b7b967078b850656354594fee30bbbd",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/charting_v2.3.6",
+      "version": "2.3.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix Invalid aria-attribute value for charts",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "020bab6e761f50220d4b5827cc917a21ac930501",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Fix issue When the mouse is over the data point on the second chart, the vertical line appears on the first chart.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "3f3fc60bc4b564a7a6803400e436b4d27c50d9f9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/charting_v2.3.5",
+      "version": "2.3.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Jun 2020 12:50:17 GMT",
       "tag": "@uifabric/charting_v2.3.4",
       "version": "2.3.4",

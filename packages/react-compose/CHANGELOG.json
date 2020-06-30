@@ -2,6 +2,51 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@fluentui/react-compose_v0.11.7",
+      "version": "0.11.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(compose): update types to provide better infers",
+            "author": "olfedias@microsoft.com",
+            "commit": "97c2a145ae6c5478d17f1577bd2a21a31de860f0",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@fluentui/react-compose_v0.11.6",
+      "version": "0.11.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "resolveSlotProps: Making change so that if slot/shorthand prop has JSX element as children, slot is completely replaced by it.",
+            "author": "xgao@microsoft.com",
+            "commit": "c04c43b2107ef83473ab505bde653bc6bd3b6cb2",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-compose_v0.11.5",
+      "version": "0.11.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Jun 2020 12:50:17 GMT",
       "tag": "@fluentui/react-compose_v0.11.4",
       "version": "0.11.4",

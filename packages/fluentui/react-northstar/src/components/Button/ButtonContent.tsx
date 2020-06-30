@@ -1,4 +1,4 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { commonPropTypes, SizeValue } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
@@ -22,7 +22,10 @@ const ButtonContent = compose<'span', ButtonContentProps, ButtonContentStylesPro
   handledProps: ['size'],
 
   overrideStyles: true,
-}) as ComponentWithAs<'span', ButtonContentProps> & { shorthandConfig: ShorthandConfig<ButtonContentProps> };
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
+});
 
 ButtonContent.defaultProps = {
   as: 'span',
@@ -30,9 +33,6 @@ ButtonContent.defaultProps = {
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,
-};
-ButtonContent.shorthandConfig = {
-  mappedProp: 'content',
 };
 
 export default ButtonContent;
