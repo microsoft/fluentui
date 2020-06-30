@@ -21,14 +21,4 @@ describe('JSX Utilities Test', () => {
     utilities.renameImport(file, 'ToImport', 'Renamed');
     expect(file.getText().indexOf('ToImport')).toBe(-1);
   });
-
-  it('runs codemods on all files in a project', () => {
-    const mockCodemod = (file: SourceFile) => {
-      file.insertText(file.getEnd(), '123Modified123');
-    };
-    utilities.applyCodeMods(project.getSourceFiles(), mockCodemod);
-    project.getSourceFiles().forEach(file => {
-      expect(file.getText().indexOf('123Modified123')).toBeGreaterThan(-1);
-    });
-  });
 });
