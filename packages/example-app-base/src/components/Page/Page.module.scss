@@ -184,6 +184,10 @@ $usageListPadding: 24px;
   }
 }
 
+.hiddenContent {
+  @include hiddenContent();
+}
+
 .subHeading,
 .smallSubHeading {
   @include ms-fontColor-gray160;
