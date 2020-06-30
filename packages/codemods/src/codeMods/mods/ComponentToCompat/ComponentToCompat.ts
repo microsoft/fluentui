@@ -11,10 +11,6 @@ import * as Link from 'office-ui-fabric-react/lib/Link';
 import * as Slider from 'office-ui-fabric-react/lib/Slider';
 import * as Toggle from 'office-ui-fabric-react/lib/Toggle';
 
-//const defaultSearchRegex = /^office\-ui\-fabric\-react/;
-const fabricindex = 'office-ui-fabric-react';
-const completePath = 'office-ui-fabric-react/lib/';
-const newPathStart = '@fluentui/react/lib/compat/';
 const exportMapping: rawCompat[] = [
   { componentName: 'Button', namedExports: Button },
   { componentName: 'Pivot', namedExports: Pivot },
@@ -23,6 +19,12 @@ const exportMapping: rawCompat[] = [
   { componentName: 'Slider', namedExports: Slider },
   { componentName: 'Toggle', namedExports: Toggle },
 ];
+
+//const defaultSearchRegex = /^office\-ui\-fabric\-react/;
+const fabricindex = 'office-ui-fabric-react';
+const completePath = 'office-ui-fabric-react/lib/';
+const newPathStart = '@fluentui/react/lib/compat/';
+
 function getPath(root: string, componentName: string) {
   return `${root}${componentName}`;
 }
