@@ -4,16 +4,20 @@ ts-morphin-migration is a package created and managed with the `create-just` uti
 
 ## Next Steps
 
-Now that you have created this repository, go ahead and run the following to get started:
+Run
 
 ```sh
 yarn
 yarn start-test
 ```
 
-## Executing a codemod (Prototype)
+To start testing the codemods
 
-Add your codemods to the `./src/index.ts`
+## To add a codemod
+
+Add your codemods to the `./src/mods` folder with `.mod.ts|tsx` as the file type.
+
+## Test with the actual package:
 
 Run
 
@@ -21,17 +25,35 @@ Run
 yarn build
 ```
 
-To build the migration.js file
+To build the upgrade.js file
 
-In the command line, `cd` to the project that you want to change and run `npx <path to ts-morphin-migration>\bin\migration.js <source folder to run migrations on>`
+Run
+
+```sh
+npm pack
+```
+
+from the codemods root to create a tar file for testing. Move the created tar file to the package you want to test and run
+
+```sh
+npx <tarFileName>
+```
+
+## Executing a codemod (Prototype)
+
+Make sure that fluent is installed in your package.
+Run
+
+```
+npx @fluentui\codemods
+```
 
 ## Todos
 
-- Improve command line calling of the `migration.js` file.
-- Target the tsconfig.json file rather than having users enter their own path
 - Write a `flag` utility that will enable devs to note when a part of a file needs to be changed, but cannot be done via codemod.
 - Implement a command that will execute all listed codemods on a single file.
   - Will need to think of a way to specify the order. Maybe something like tasks in Just.
+  - This could be helpful when you want to run a set of codemods based on a single condition, like the presence of a specific import
 
 ## Notes
 

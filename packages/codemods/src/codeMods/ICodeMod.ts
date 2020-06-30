@@ -7,7 +7,8 @@ export interface CodeModResult {
 export interface ICodeMod<T = SourceFile> {
   /**
    * The version before which the codemod should run.
-   * Must be valid semver
+   * Must be valid semver.
+   * Currently has no impact. Maybe remove?
    */
   version: string;
   /**
@@ -19,6 +20,9 @@ export interface ICodeMod<T = SourceFile> {
    * TODO, is there a possibility of codemods that would need to execute over mutiple files?
    */
   run: (file: T) => CodeModResult;
-
+  /**
+   * If not enabled, then this mod will not be conisdered to run. Only enable it once it's ready for
+   * the real world.
+   */
   enabled?: boolean;
 }
