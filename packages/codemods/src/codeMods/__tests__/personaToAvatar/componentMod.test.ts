@@ -4,7 +4,7 @@ import {
   ReplaceIPersonaPropsImport,
   ReplacePersonaSizeImport,
 } from '../../mods/PersonaToAvatar/PersonaToAvatar.mod';
-import { utilities } from '../../utilities/utilities';
+import { findJsxTag } from '../../utilities';
 const personaPath = '/**/__tests__/mock/**/persona/**/*.tsx';
 
 describe('Persona component mod tests', () => {
@@ -22,7 +22,7 @@ describe('Persona component mod tests', () => {
       imp.getNamedImports().forEach(name => {
         expect(name.getText()).not.toEqual('Persona');
       });
-      expect(utilities.findJsxTag(file, 'Persona').length).toBe(0);
+      expect(findJsxTag(file, 'Persona').length).toBe(0);
     });
   });
 

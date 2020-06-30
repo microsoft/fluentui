@@ -1,5 +1,5 @@
 import { SourceFile, ImportSpecifierStructure } from 'ts-morph';
-import { utilities } from '../../utilities/utilities';
+import { getImportsByPath, AppendNamedImportIfNoExist, repathImport } from '../../utilities';
 
 export const getNamedExports = (obj: { [key: string]: any }) => {
   return Object.keys(obj);
@@ -28,33 +28,8 @@ export interface CompatHash {
   exactPathMatch: { [key: string]: string };
 }
 
-const AppendNamedImportIfNoExist = (
-  file: SourceFile,
-  moduleSpecifier: string,
-  namedImports: (string | ImportSpecifierStructure)[],
-) => {
-  const found = file.getImportDeclaration(val => {
-    if (val.getModuleSpecifierValue() === moduleSpecifier) {
-      const currentNamedImports = val.getNamedImports();
-      namedImports.forEach(str => {
-        if (!currentNamedImports.some(cname => cname.getText() === str)) {
-          val.addNamedImport(str);
-        }
-      });
-      return true;
-    }
-    return false;
-  });
-  if (!found) {
-    file.addImportDeclaration({
-      moduleSpecifier,
-      namedImports,
-    });
-  }
-};
-
 const repathNamedImports = (file: SourceFile, hash: CompatHash, indexPath: string) => {
-  let imports = utilities.getImportsByPath(file, indexPath);
+  let imports = getImportsByPath(file, indexPath);
   imports.forEach(imp => {
     imp.getNamedImports().forEach(imp => {
       if (hash.namedExportsMatch[imp.getName()]) {
@@ -91,7 +66,7 @@ export const repathPathedImports = (file: SourceFile, hash: CompatHash) => {
   file.getImportDeclarations().forEach(dec => {
     let str = dec.getModuleSpecifierValue();
     if (hash.exactPathMatch[str]) {
-      utilities.repathImport(dec, hash.exactPathMatch[str]);
+      repathImport(dec, hash.exactPathMatch[str]);
     }
   });
 };

@@ -1,4 +1,4 @@
-import { SourceFile, ImportDeclaration } from 'ts-morph';
+import { SourceFile, ImportDeclaration, ImportSpecifierStructure } from 'ts-morph';
 
 export function renameImport(file: SourceFile, originalImport: string, renamedImport: string) {
   const imps = file.getImportDeclarations().filter(cond => {
@@ -37,6 +37,30 @@ export function getImportsByPath(file: SourceFile, pathOrRegex: string | RegExp)
   }
 
   return imps;
+}
+export function AppendNamedImportIfNoExist(
+  file: SourceFile,
+  moduleSpecifier: string,
+  namedImports: (string | ImportSpecifierStructure)[],
+) {
+  const found = file.getImportDeclaration(val => {
+    if (val.getModuleSpecifierValue() === moduleSpecifier) {
+      const currentNamedImports = val.getNamedImports();
+      namedImports.forEach(str => {
+        if (!currentNamedImports.some(cname => cname.getText() === str)) {
+          val.addNamedImport(str);
+        }
+      });
+      return true;
+    }
+    return false;
+  });
+  if (!found) {
+    file.addImportDeclaration({
+      moduleSpecifier,
+      namedImports,
+    });
+  }
 }
 
 export function repathImport(imp: ImportDeclaration, replacementString: string, regex?: RegExp) {

@@ -8,7 +8,7 @@ import {
   JsxSpreadAttribute,
 } from 'ts-morph';
 import { RenamePrimaryTextProp, RenameRenderCoin } from '../../mods/PersonaToAvatar/PersonaToAvatar.mod';
-import { utilities } from '../../utilities/utilities';
+import { findJsxTag } from '../../utilities';
 const personaPath = '/**/__tests__/mock/**/persona/**/*.tsx';
 // @TODO ensure that props are not renamed for non fabric personas if they exist
 
@@ -26,7 +26,7 @@ describe('Persona props mod tests', () => {
   it('can replace jsx inline primaryText prop', () => {
     const file = project.getSourceFileOrThrow('mPersonaProps.tsx');
     RenamePrimaryTextProp(file);
-    const elements = utilities.findJsxTag(file, 'Persona');
+    const elements = findJsxTag(file, 'Persona');
     elements.forEach(val => {
       expect(val.getAttribute('primaryText')).not.toBeTruthy();
     });
@@ -34,12 +34,12 @@ describe('Persona props mod tests', () => {
 
   it('can replace jsx inline primaryText without changing the value', () => {
     const file = project.getSourceFileOrThrow(personaPropsFile);
-    const values = utilities.findJsxTag(file, 'Persona');
+    const values = findJsxTag(file, 'Persona');
     const attValues = values.map(val => {
       return (val.getAttribute('primaryText')?.getStructure() as JsxAttributeStructure)?.initializer;
     });
     RenamePrimaryTextProp(file);
-    const elements = utilities.findJsxTag(file, 'Persona');
+    const elements = findJsxTag(file, 'Persona');
     elements.forEach((val, index) => {
       expect((val.getAttribute('text')?.getStructure() as JsxAttributeStructure)?.initializer).toEqual(
         attValues[index],
@@ -50,7 +50,7 @@ describe('Persona props mod tests', () => {
   it('can replace jsx spread primaryText', () => {
     const file = project.getSourceFileOrThrow(personaSpreadPropsFile);
     RenamePrimaryTextProp(file);
-    const els = utilities.findJsxTag(file, 'Persona');
+    const els = findJsxTag(file, 'Persona');
     els.forEach(val => {
       val.getAttributes().forEach(att => {
         if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
@@ -71,7 +71,7 @@ describe('Persona props mod tests', () => {
   it('can replace personaCoin render', () => {
     const file = project.getSourceFileOrThrow(personaPropsFile);
     RenameRenderCoin(file);
-    const els = utilities.findJsxTag(file, 'Persona');
+    const els = findJsxTag(file, 'Persona');
     els.forEach(val => {
       expect(val.getAttribute('onRenderCoin')).toBeFalsy();
     });
