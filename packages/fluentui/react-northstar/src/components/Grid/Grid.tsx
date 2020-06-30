@@ -61,18 +61,16 @@ const Grid: React.FC<WithAsProp<GridProps>> & FluentComponentStaticProps<GridPro
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Grid.handledProps, props);
 
-  const element = (
-    <>
-      <ElementType
-        {...getA11yProps('root', {
-          className: classes.root,
-          ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-          ...unhandledProps,
-        })}
-      >
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    </>
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : content}
+    </ElementType>,
   );
   setEnd();
 
