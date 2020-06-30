@@ -8,7 +8,6 @@ import {
   useTelemetry,
   useStyles,
   useUnhandledProps,
-  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as PropTypes from 'prop-types';
