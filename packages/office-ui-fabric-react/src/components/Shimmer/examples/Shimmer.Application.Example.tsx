@@ -3,7 +3,6 @@ import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 import { useSetInterval } from '@uifabric/react-hooks';
-import { isItemDisabled } from 'office-ui-fabric-react/lib/utilities/contextualMenu';
 
 export interface IShimmerApplicationExampleState {
   lastIntervalId: number;
@@ -66,7 +65,7 @@ const buildShimmerColumns = (): IColumn[] => {
   return columns;
 };
 
-const columns: IColumn[] = buildShimmerColumns();
+const shimmerColumns: IColumn[] = buildShimmerColumns();
 const exampleItems: IExampleItem[] = createListItems(ITEMS_COUNT).map((item: IExampleItem) => {
   const randomFileType = randomFileIcon();
   return { ...item, thumbnail: randomFileType.url };
@@ -119,7 +118,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
         <ShimmeredDetailsList
           setKey="items"
           items={items || []}
-          columns={columns}
+          columns={shimmerColumns}
           selectionMode={SelectionMode.none}
           onRenderItemColumn={onRenderItemColumn}
           enableShimmer={!items}

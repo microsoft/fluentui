@@ -56,7 +56,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
       <button
         aria-checked={false}
         aria-labelledby="Toggle0-label"
-        checked={false}
         className=
             ms-Toggle-background
             {
@@ -111,7 +110,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         role="switch"
         style={
           Object {
-            "display": "block",
             "marginBottom": "20px",
           }
         }
