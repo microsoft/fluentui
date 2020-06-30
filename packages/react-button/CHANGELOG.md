@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 26 Jun 2020 12:36:28 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jun 2020 12:33:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.0)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.5.1..@fluentui/react-button_v0.6.0)
+
+### Minor changes
+
+- Button: Adding componentRef, focus method, styling, and tests. ([PR #13718](https://github.com/microsoft/fluentui/pull/13718) by dzearing@microsoft.com)
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.1)
 
