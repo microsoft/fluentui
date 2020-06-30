@@ -1,4 +1,4 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { indicatorBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 
@@ -50,7 +50,10 @@ const MenuItemIndicator = compose<'span', MenuItemIndicatorProps, MenuItemIndica
   handledProps: ['iconOnly', 'vertical', 'inSubmenu', 'active', 'primary', 'underlined'],
 
   overrideStyles: true,
-}) as ComponentWithAs<'span', MenuItemIndicatorProps> & { shorthandConfig: ShorthandConfig<MenuItemIndicatorProps> };
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
+});
 
 MenuItemIndicator.defaultProps = {
   as: 'span',
@@ -64,9 +67,6 @@ MenuItemIndicator.propTypes = {
   active: PropTypes.bool,
   primary: PropTypes.bool,
   underlined: PropTypes.bool,
-};
-MenuItemIndicator.shorthandConfig = {
-  mappedProp: 'content',
 };
 
 export default MenuItemIndicator;

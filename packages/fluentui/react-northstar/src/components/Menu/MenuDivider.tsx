@@ -153,10 +153,10 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       'secondary',
       'vertical',
     ],
+    shorthandConfig: { mappedProp: 'content' },
   },
 ) as ComponentWithAs<'li', MenuDividerProps> & {
   create: ShorthandFactory<MenuDividerProps>;
-  shorthandConfig: ShorthandConfig<MenuDividerProps>;
 };
 
 MenuDivider.defaultProps = {
@@ -173,6 +173,5 @@ MenuDivider.propTypes = {
 };
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
-MenuDivider.shorthandConfig = { mappedProp: 'content' };
 
 export default MenuDivider;

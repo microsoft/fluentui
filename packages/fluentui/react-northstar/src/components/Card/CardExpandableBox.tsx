@@ -1,4 +1,5 @@
-import { ComponentWithAs, compose, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
@@ -20,12 +21,12 @@ const CardExpandableBox = compose<
 >(Box, {
   className: cardExpandableBoxClassName,
   displayName: 'CardExpandableBox',
-}) as ComponentWithAs<'div', CardExpandableBoxProps> & { shorthandConfig: ShorthandConfig<CardExpandableBoxProps> };
+
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
+});
 
 CardExpandableBox.propTypes = commonPropTypes.createCommon();
-
-CardExpandableBox.shorthandConfig = {
-  mappedProp: 'content',
-};
 
 export default CardExpandableBox;
