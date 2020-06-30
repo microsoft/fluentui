@@ -287,7 +287,7 @@ describe('styled', () => {
   });
 
   it('respects styles type', (done: () => undefined) => {
-    const defaultStyles = { backgroundColor: 'red' };
+    const defaultStyles = { root: { backgroundColor: 'red' } };
 
     const Component = (props: ITestProps) => {
       expect((props.styles as IStyleFunction<{}, {}>)(props)).toEqual(defaultStyles);
@@ -305,7 +305,9 @@ describe('styled', () => {
   it('can re-render on customization mutations', () => {
     safeCreate(<Test />, () => {
       expect(_renderCount).toEqual(1);
-      Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+      renderer.act(() => {
+        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+      });
       expect(_renderCount).toEqual(2);
     });
   });
@@ -318,20 +320,24 @@ describe('styled', () => {
       </Test>,
       () => {
         expect(_renderCount).toEqual(3);
-        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        renderer.act(() => {
+          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        });
         expect(_renderCount).toEqual(6);
       },
     );
   });
 
-  it('can re-render the minimal times when nesting and in a Customizer', () => {
+  fit('can re-render the minimal times when nesting and in a Customizer', () => {
     safeCreate(
       <Customizer>
         <Test />
       </Customizer>,
       () => {
         expect(_renderCount).toEqual(1);
-        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        renderer.act(() => {
+          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        });
         expect(_renderCount).toEqual(2);
       },
     );
@@ -358,7 +364,9 @@ describe('styled', () => {
       </Customizer>,
       () => {
         expect(_renderCount).toEqual(2);
-        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        renderer.act(() => {
+          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        });
         expect(_renderCount).toEqual(4);
       },
     );
