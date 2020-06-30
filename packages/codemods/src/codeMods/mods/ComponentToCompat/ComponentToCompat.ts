@@ -20,7 +20,6 @@ const exportMapping: rawCompat[] = [
   { componentName: 'Toggle', namedExports: Toggle },
 ];
 
-//const defaultSearchRegex = /^office\-ui\-fabric\-react/;
 const fabricindex = 'office-ui-fabric-react';
 const completePath = 'office-ui-fabric-react/lib/';
 const newPathStart = '@fluentui/react/lib/compat/';
