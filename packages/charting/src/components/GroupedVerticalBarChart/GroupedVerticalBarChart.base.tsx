@@ -535,6 +535,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         titleForHoverCard: customMessage,
       });
     }
+    this._isGraphDraw = true;
   }
 
   private _onLegendHover(customMessage: string): void {
