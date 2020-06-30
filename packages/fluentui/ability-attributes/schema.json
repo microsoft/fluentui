@@ -27,7 +27,7 @@
     },
     "$isValidRadioGroup": {
       "xpath": "boolean(.//*[@role='radiogroup' and @aria-labelledby])",
-      "description": "Message should have identifier, role='alert' and combined with a `aria-invalid` input"
+      "description": "RadioGroup inside form should have aria-labelledby attribute"
     }
   },
   "parameters": {
