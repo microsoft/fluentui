@@ -99,9 +99,15 @@ const resolveStyles = (
   }
 
   if (!noInlineStylesOverrides) {
+    const designOverrides = props.design
+      ? Array.isArray(props.design)
+        ? props.design.map(d => withDebugId({ root: d }, 'props.design'))
+        : [withDebugId({ root: props.design }, 'props.design')]
+      : [];
+
     mergedStyles = mergeComponentStyles(
       mergedStyles,
-      props.design && withDebugId({ root: props.design }, 'props.design'),
+      ...designOverrides,
       props.styles && withDebugId({ root: props.styles } as ComponentSlotStylesInput, 'props.styles'),
     );
   }
@@ -220,9 +226,18 @@ const resolveStyles = (
       get(): string {
         let designClassName = '';
         if (slotName === 'root' && design) {
-          const serializedValue = serializeStyles([design as any], {}, styleParam);
+          const serializedValue = serializeStyles((Array.isArray(design) ? design : [design]) as any[], {}, styleParam);
           designClassName = `design-${serializedValue.name}`;
-          renderer.renderGlobal(serializedValue.styles, `.${componentClassName}.${designClassName}`);
+          // console.log('DESIGN', {
+          //   cacheEnabled,
+          //   lazyEvaluationKey,
+          //   slotCacheKey,
+          //   cacheHit:
+          //     (cacheEnabled && !!classesCache.get(theme)?.[slotCacheKey]) ||
+          //     classesCache.get(theme)?.[slotCacheKey] === '',
+          //   designClassName,
+          // });
+          (renderer as any).renderStatic(serializedValue.styles, `.${componentClassName}.${designClassName}`);
         }
 
         if (cacheEnabled && theme) {
