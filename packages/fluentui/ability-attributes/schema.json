@@ -23,7 +23,7 @@
     },
     "$hasIdentifiedMessage": {
       "xpath": "boolean(.//*[@aria-invalid] and .//*[@role='alert' and @id] and .//*[@aria-labelledby]) or not(.//*[@aria-invalid])",
-      "description": "Message should have identifier, role='alert' and combined with a `aria-invalid` input"
+      "description": "Message should have identifier, role='alert' and combined with a `aria-invalid` and `aria-labelledby` input"
     },
     "$isValidRadioGroup": {
       "xpath": "boolean(.//*[@role='radiogroup' and @aria-labelledby])",
