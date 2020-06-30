@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fitcontainer changed done in VS bar chart",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-06-30T10:40:17.125Z"
+}
