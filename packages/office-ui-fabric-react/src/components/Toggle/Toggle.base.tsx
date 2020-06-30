@@ -146,8 +146,8 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
         {(keytipAttributes: any): JSX.Element => renderPill(keytipAttributes)}
       </KeytipData>
     ) : (
-      renderPill()
-    );
+        renderPill()
+      );
 
     return (
       <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
