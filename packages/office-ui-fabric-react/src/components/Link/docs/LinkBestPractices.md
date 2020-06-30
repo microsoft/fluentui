@@ -8,4 +8,6 @@
 - Use descriptive, actionable link text when possible. Avoid using URLs as link text.
 - Don't use if the action is destructive or irreversible. Links aren't appropriate for commands with significant consequences.
 - Keep discrete links far enough apart that people can differentiate between them and easily select each one.
-- Don't use all-uppercase text. It's harder to read for everyone, but especially people with reading disabilities.
+- Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization] in the Microsoft Writing Style Guide.  
+
+[Capitalization]: https://docs.microsoft.com/style-guide/capitalization
