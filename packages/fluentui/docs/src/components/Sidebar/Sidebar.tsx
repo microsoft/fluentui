@@ -31,14 +31,19 @@ const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
 const componentsBlackList = ['Debug', 'Design'];
 
-class Sidebar extends React.Component<any, any> {
+interface SidebarState {
+  query: string;
+  activeCategoryIndex: number | number[];
+}
+
+class Sidebar extends React.Component<any, SidebarState> {
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     style: PropTypes.object,
   };
-  state: any = { query: '', activeCategoryIndex: 0 };
+  state = { query: '', activeCategoryIndex: 0 };
   searchInputRef = React.createRef<HTMLInputElement>();
 
   componentDidMount() {
