@@ -11,14 +11,10 @@ import { Accessibility } from '../../types';
 const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBehaviorProps> = props => ({
   attributes: {
     root: {
-      // 'aria-selected': true,
-      'aria-roledescription': 'user',
       role: 'option',
       tabIndex: props.active ? 0 : -1,
-      // 'aria-label': `Remove ${props.header} from selection.`,
     },
     icon: {
-      // 'aria-label': `Remove ${props.header} from selection.`,
       'aria-hidden': 'true',
     },
   },

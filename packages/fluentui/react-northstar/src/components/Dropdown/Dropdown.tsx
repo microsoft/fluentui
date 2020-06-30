@@ -534,7 +534,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                     ref={this.selectedItemsRef}
                     className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}
                   >
-                    <div role="listbox" aria-label="delete user by press DELETE key">
+                    <div role="listbox" aria-label="delete user by press DELETE key or backspace">
                       {multiple && this.renderSelectedItems(variables, rtl)}
                     </div>
                     {/* {multiple && this.renderSelectedItems(variables, rtl)} */}
