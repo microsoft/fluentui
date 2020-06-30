@@ -394,7 +394,7 @@ export default () => (
         aria-label="join call"
         aria-describedby="hidden-element-info-split1 hidden-element-info-split2"
       />
-      <div id="hidden-element-status-camera">camera is on</div>
+      <div id="hidden-element-status-camera">camera is off</div>
       <div id="hidden-element-status-microphone">microphone is on </div>
     </>
     `}
