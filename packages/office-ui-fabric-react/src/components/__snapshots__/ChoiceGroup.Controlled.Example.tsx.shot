@@ -287,7 +287,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                   background: Window;
                   border-color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
+                @media screen and (forced-colors: active){&:before {
                   forced-color-adjust: none;
                 }
                 &:after {
@@ -310,7 +310,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                 @media screen and (-ms-high-contrast: active){&:after {
                   border-color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:after {
+                @media screen and (forced-colors: active){&:after {
                   forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-B"
@@ -410,7 +410,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                   background: Window;
                   border-color: GrayText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
+                @media screen and (forced-colors: active){&:before {
                   forced-color-adjust: none;
                 }
                 &:after {
@@ -432,7 +432,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                 @media screen and (-ms-high-contrast: active){& .ms-ChoiceFieldLabel {
                   color: GrayText;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){& .ms-ChoiceFieldLabel {
+                @media screen and (forced-colors: active){& .ms-ChoiceFieldLabel {
                   forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-C"

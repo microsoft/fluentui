@@ -189,7 +189,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   background: Window;
                   border-color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:before {
+                @media screen and (forced-colors: active){&:before {
                   forced-color-adjust: none;
                 }
                 &:after {
@@ -212,7 +212,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                 @media screen and (-ms-high-contrast: active){&:after {
                   border-color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active) and (forced-colors: active){&:after {
+                @media screen and (forced-colors: active){&:after {
                   forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-bar"
