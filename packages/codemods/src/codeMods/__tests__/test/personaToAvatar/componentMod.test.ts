@@ -3,7 +3,7 @@ import {
   ReplacePersonaImport,
   ReplaceIPersonaPropsImport,
   ReplacePersonaSizeImport,
-} from '../../../mods/PersonaToAvatarMod';
+} from '../../../mods/PersonaToAvatar/PersonaToAvatar.mod';
 import { utilities } from '../../../utilities/utilities';
 const personaPath = '/**/__tests__/mock/**/persona/**/*.tsx';
 

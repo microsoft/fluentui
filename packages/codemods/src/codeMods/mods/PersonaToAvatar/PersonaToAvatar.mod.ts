@@ -8,8 +8,8 @@ import {
   ts,
   Node,
 } from 'ts-morph';
-import { utilities } from '../utilities/utilities';
-import { ICodeMod } from '../ICodeMod';
+import { utilities } from '../../utilities/utilities';
+import { ICodeMod } from '../../ICodeMod';
 
 const personaPath = 'office-ui-fabric-react/lib/Persona';
 

@@ -7,7 +7,7 @@ import {
   JsxAttributeStructure,
   JsxSpreadAttribute,
 } from 'ts-morph';
-import { RenamePrimaryTextProp, RenameRenderCoin } from '../../../mods/PersonaToAvatarMod';
+import { RenamePrimaryTextProp, RenameRenderCoin } from '../../../mods/PersonaToAvatar/PersonaToAvatar.mod';
 import { utilities } from '../../../utilities/utilities';
 const personaPath = '/**/__tests__/mock/**/persona/**/*.tsx';
 // @TODO ensure that props are not renamed for non fabric personas if they exist

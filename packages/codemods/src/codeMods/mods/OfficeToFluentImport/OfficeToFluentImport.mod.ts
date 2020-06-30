@@ -1,6 +1,6 @@
 import { SourceFile } from 'ts-morph';
-import { ICodeMod } from '../ICodeMod';
-import { utilities } from '../utilities/utilities';
+import { ICodeMod } from '../../ICodeMod';
+import { utilities } from '../../utilities/utilities';
 
 const searchString = /^office\-ui\-fabric\-react/;
 const newString = '@fluentui/react';

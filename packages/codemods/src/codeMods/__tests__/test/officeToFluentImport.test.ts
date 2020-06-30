@@ -1,5 +1,5 @@
 import { Project } from 'ts-morph';
-import RepathOfficeToFluentImports from '../../mods/OfficeToFluentImportMod';
+import RepathOfficeToFluentImports from '../../mods/OfficeToFluentImport/OfficeToFluentImport.mod';
 
 const basicFileName = 'mockImports.tsx';
 const edgeCaseFile = 'mockEdgeImports.tsx';
