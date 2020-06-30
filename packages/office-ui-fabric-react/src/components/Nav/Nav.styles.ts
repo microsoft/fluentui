@@ -7,6 +7,7 @@ import {
   getGlobalClassNames,
   HighContrastSelector,
   FontWeights,
+  getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -115,12 +116,13 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         color: semanticColors.bodyText,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'transparent',
+            border: 0,
             selectors: {
               ':focus': {
-                borderColor: 'WindowText',
+                border: '1px solid WindowText',
               },
             },
+            ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },
       },
