@@ -1,6 +1,6 @@
 ### Layout
 
-- Use radio buttons when there are two to seven options, if you have enough screen space, and the options are important enough to be a good use of that screen space.
+- Use radio buttons when there are two to seven options, you have enough screen space, and the options are important enough to be a good use of that screen space.
 - If there are more than seven options, use a drop-down menu instead.
 - To give people a way to select more than one option, use check boxes instead.
 - If a default option is recommended for most people in most situations, use a drop-down menu instead.
