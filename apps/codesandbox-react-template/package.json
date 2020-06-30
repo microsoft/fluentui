@@ -17,12 +17,12 @@
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
-    "@uifabric/tslint-rules": "^7.2.1",
+    "@uifabric/tslint-rules": "^7.2.2",
     "@uifabric/build": "^7.0.0",
     "typescript": "3.7.2"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.13",
+    "@uifabric/set-version": "^7.0.15",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/react": "7.121.4",
     "react": "16.8.6",
