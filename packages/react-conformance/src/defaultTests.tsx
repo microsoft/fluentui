@@ -63,7 +63,7 @@ export const defaultTests: TestObject = {
         displayName = displayName.replace(/^Styled/, '');
       }
 
-      expect(displayName).toEqual(testInfo.displayName);
+      expect(displayName).toMatch(new RegExp(`^(Customized|Styled)?${testInfo.displayName}(Base)?$`));
     });
   },
 
