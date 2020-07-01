@@ -1,5 +1,5 @@
 {
-  "type": "major",
+  "type": "patch",
   "comment": "removing benchmarkData and targetData props from the stackedbar chart",
   "packageName": "@uifabric/charting",
   "email": "v-sivsar@microsoft.com",
