@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.121.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.7)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.5..office-ui-fabric-react_v7.121.7)
+
+### Patches
+
+- Ensure ResizeGroup uses correct window for animation frame ([PR #13864](https://github.com/microsoft/fluentui/pull/13864) by tmichon@microsoft.com)
+- High contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: fix ChoiceGroup. ([PR #13846](https://github.com/microsoft/fluentui/pull/13846) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: fix Nav. ([PR #13850](https://github.com/microsoft/fluentui/pull/13850) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: Fix ContextualMenu. ([PR #13870](https://github.com/microsoft/fluentui/pull/13870) by xgao@microsoft.com)
 
 ## [7.121.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.5)
 

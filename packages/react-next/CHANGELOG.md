@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 29 Jun 2020 12:36:08 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.52)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.50..@fluentui/react-next_v8.0.0-alpha.52)
+
+### Changes
+
+- High contrast in Edge Chromium: fix TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.50)
 

@@ -8,8 +8,8 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { KeyCodes, resetIds } from '../../Utilities';
 import { isConformant } from '@fluentui/react-conformance';
+import { resetIds, KeyCodes } from '@uifabric/utilities';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
