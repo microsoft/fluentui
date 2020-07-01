@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "High Contrast in Edge Chromium: Fix ContextualMenu.",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-30T20:46:38.980Z"
+}
