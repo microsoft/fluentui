@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { DefaultCustomizations } from '@uifabric/theme-samples';
 import {
+  initializeIcons,
   Checkbox,
   Dropdown,
   DropdownMenuItemType,
@@ -14,6 +15,7 @@ import {
   Toggle,
 } from '@fluentui/react-next';
 
+initializeIcons();
 let _rootDiv: HTMLElement;
 let dropdownOptions = [
   {
@@ -65,13 +67,15 @@ function start(): void {
         <SearchBox placeholder="Search" />
         <SpinButton
           defaultValue="0"
+          label="Basic SpinButton"
           min={0}
           max={100}
           step={1}
           incrementButtonAriaLabel="Increase value by 1"
           decrementButtonAriaLabel="Decrease value by 1"
+          iconProps={{ iconName: 'IncreaseIndentLegacy' }}
         />
-        <TextField label="Standard" />
+        <TextField label="Standard TextField" />
         <Toggle label="Enabled and checked" defaultChecked={true} onText="On" offText="Off" />
         <Dropdown
           placeholder="Select an option"
