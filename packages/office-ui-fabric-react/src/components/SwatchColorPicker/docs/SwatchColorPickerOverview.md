@@ -1,1 +1,1 @@
-A SwatchColorPicker displays color options as a grid. It can be shown by itself, with a header and dividers, or as a button that expands to show the SwatchColorPicker.
+A swatch color picker (code name: SwatchColorPicker) displays color options as a grid. It can be shown by itself, with a header and dividers, or as a button that expands to show the swatch color picker.
