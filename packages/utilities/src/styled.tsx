@@ -94,7 +94,7 @@ export function styled<
 
     const [, reducer] = React.useReducer((state: number) => state + 1, 0);
 
-    React.useEffect(() => {
+    React.useEffect((): void | (() => void) => {
       const onUpdate = () => {
         reducer(null);
       };
