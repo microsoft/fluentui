@@ -30,6 +30,11 @@ export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyl
   __noStyleOverride__: boolean;
 };
 
+function useForceUpdate() {
+  const [, reducer] = React.useReducer((state: number) => state + 1, 0);
+  return () => reducer(null);
+}
+
 /**
  * The styled HOC wrapper allows you to create a functional wrapper around a given component which will resolve
  * getStyles functional props, and mix customized props passed in using concatStyleSets.
@@ -92,16 +97,13 @@ export function styled<
     const inCustomizerContext = React.useRef<boolean>(false);
     const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>();
 
-    const [, reducer] = React.useReducer((state: number) => state + 1, 0);
+    const forceUpdate = useForceUpdate();
 
     React.useEffect((): void | (() => void) => {
-      const onUpdate = () => {
-        reducer(null);
-      };
       if (!inCustomizerContext.current) {
-        Customizations.observe(onUpdate);
+        Customizations.observe(forceUpdate);
 
-        return () => Customizations.unobserve(onUpdate);
+        return () => Customizations.unobserve(forceUpdate);
       }
     }, []);
 
