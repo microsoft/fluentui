@@ -25,7 +25,9 @@ export const TogglePageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md'),
   isHeaderVisible: true,

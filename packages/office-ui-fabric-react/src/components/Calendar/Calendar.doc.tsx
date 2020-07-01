@@ -233,7 +233,9 @@ export const CalendarPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDonts.md'),
   isHeaderVisible: true,

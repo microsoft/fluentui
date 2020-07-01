@@ -31,7 +31,9 @@ export const FacepilePageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md'),
   isHeaderVisible: true,

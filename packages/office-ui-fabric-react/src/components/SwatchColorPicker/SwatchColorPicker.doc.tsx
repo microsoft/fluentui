@@ -20,7 +20,9 @@ export const SwatchColorPickerPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerBestPractices.md'),
   dos: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerDos.md'),

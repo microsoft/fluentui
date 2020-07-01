@@ -47,7 +47,7 @@ export const LinkPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkOverview.md'),
-  bestPractices: '',
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDonts.md'),
   isHeaderVisible: true,

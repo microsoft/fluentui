@@ -25,7 +25,9 @@ export const SliderPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md'),
   isHeaderVisible: true,

@@ -188,7 +188,7 @@ export const StackPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackOverview.md'),
-  bestPractices: '',
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackDonts.md'),
   isHeaderVisible: true,

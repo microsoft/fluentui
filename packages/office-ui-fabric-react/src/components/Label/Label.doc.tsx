@@ -18,7 +18,7 @@ export const LabelPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelOverview.md'),
-  bestPractices: '',
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDonts.md'),
   isHeaderVisible: true,

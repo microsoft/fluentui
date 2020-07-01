@@ -119,7 +119,9 @@ export const ContextualMenuPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDos.md'),
   donts: require<
     string

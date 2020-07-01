@@ -25,7 +25,9 @@ export const RatingPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md'),
   isHeaderVisible: true,
