@@ -9,9 +9,6 @@ The DatePicker uses the provided [`Calendar`](https://developer.apple.com/docume
 let link = Link(title: "Link", url: NSURL(string: "https://github.com/microsoft/fluentui-apple")!)
 ```
 
-<img className="off" src="" />
-<img className="on" src="" />
-
 ### Underline with mouse hover
 
 ```Swift
@@ -20,8 +17,8 @@ let link = Link(title: "Link  with hover effects", url: NSURL(string: "https://g
 link.showsUnderlineWhileMouseInside = true
 ```
 
-<img className="off" src="" />
-<img className="on" src="" />
+<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/Link/link_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/Link/link_dark.png?text=DarkMode" />
 
 ### Setting Target and Action
 
