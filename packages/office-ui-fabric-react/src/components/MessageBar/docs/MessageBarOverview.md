@@ -1,1 +1,1 @@
-A MessageBar is an area at the top of a primary view that displays relevant status information. You can use a MessageBar to tell the user about a situation that does not require their immediate attention and therefore does not need to block other activities.
+A message bar (code name: MessageBar) conveys information regarding the app or the file someone has open, such as when the file is in protected view or it failed to upload. It can also deliver non-app-specific messages about subscription renewal or expiration. 
