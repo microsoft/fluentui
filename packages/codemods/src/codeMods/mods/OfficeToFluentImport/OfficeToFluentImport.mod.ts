@@ -7,7 +7,7 @@ const newString = '@fluentui/react';
 
 const RepathOfficeToFluentImports: ICodeMod = {
   run: (file: SourceFile) => {
-    let imports = getImportsByPath(file, searchString);
+    const imports = getImportsByPath(file, searchString);
     imports.forEach(val => {
       repathImport(val, newString, searchString);
     });

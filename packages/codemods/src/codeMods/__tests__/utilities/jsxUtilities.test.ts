@@ -1,5 +1,5 @@
 import { findJsxTag, renameImport } from '../../utilities';
-import { Project, SourceFile } from 'ts-morph';
+import { Project } from 'ts-morph';
 
 const project = new Project();
 project.addSourceFilesAtPaths(`${process.cwd()}/**/__tests__/mock/**/*.tsx`);

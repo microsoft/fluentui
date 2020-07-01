@@ -1,4 +1,10 @@
-import { runComponentToCompat, buildCompatHash, rawCompat, IComponentToCompat, getNamedExports } from './CompatHelpers';
+import {
+  runComponentToCompat,
+  buildCompatHash,
+  IRawCompat,
+  IComponentToCompat,
+  getNamedExports,
+} from './CompatHelpers';
 import { ICodeMod } from '../../ICodeMod';
 import { SourceFile } from 'ts-morph';
 
@@ -12,7 +18,7 @@ import * as Link from 'office-ui-fabric-react/lib-commonjs/Link';
 import * as Slider from 'office-ui-fabric-react/lib-commonjs/Slider';
 import * as Toggle from 'office-ui-fabric-react/lib-commonjs/Toggle';
 
-const exportMapping: rawCompat[] = [
+const exportMapping: IRawCompat[] = [
   // { componentName: 'Button', namedExports: Button },
   // { componentName: 'Pivot', namedExports: Pivot },
   { componentName: 'Checkbox', namedExports: Checkbox },
@@ -29,7 +35,7 @@ function getPath(root: string, componentName: string) {
   return `${root}${componentName}`;
 }
 
-export function createComponentToCompat(comp: rawCompat): IComponentToCompat {
+export function createComponentToCompat(comp: IRawCompat): IComponentToCompat {
   return {
     oldPath: getPath(completePath, comp.componentName),
     newComponentPath: getPath(newPathStart, comp.componentName),

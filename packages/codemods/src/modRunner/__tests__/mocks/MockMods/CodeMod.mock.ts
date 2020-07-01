@@ -1,6 +1,6 @@
 import { ICodeMod } from '../../../../codeMods/ICodeMod';
 const CodeMod: ICodeMod<string> = {
-  run: test => {
+  run: () => {
     return {};
   },
   version: '1.0.0',

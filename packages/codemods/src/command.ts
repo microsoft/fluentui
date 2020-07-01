@@ -6,7 +6,7 @@ export class CommandParserResult {
 export class CommandParser {
   constructor(private logger = console.log) {}
 
-  parseArgs(argv: string[]) {
+  public parseArgs(argv: string[]) {
     if (argv.slice(2).indexOf('--help') >= 0) {
       this.logger(['Usage:', [argv[0], argv[1], '<path in project>'].join(' ')].join('\n'));
 

@@ -1,8 +1,10 @@
 {
-  "name": "@uifabric/codemods",
+  "name": "@fluentui/codemods",
   "version": "0.1.0",
-  "license": "MIT",
+  "description": "package to enable easy upgrades to new versions",
+  "private": true,
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "bin": {
     "upgrade": "./bin/upgrade.js"
   },
@@ -10,19 +12,25 @@
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
+  "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "start": "just-scripts start",
+    "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
-    "change": "beachball change",
-    "gen": "plop"
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0"
+    "@types/jest": "~24.9.0",
+    "@types/node": "^10.3.2",
+    "@uifabric/build": "^7.0.0",
+    "@uifabric/tslint-rules": "^7.2.2"
   },
   "dependencies": {
+    "tslib": "^1.10.0",
     "@types/react": "*",
     "@types/semver": "^7.1.0",
     "acorn": "^6.4.1",

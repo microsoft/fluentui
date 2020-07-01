@@ -1,4 +1,4 @@
-import { SourceFile, ImportSpecifierStructure } from 'ts-morph';
+import { SourceFile } from 'ts-morph';
 import { getImportsByPath, appendOrCreateNamedImport, repathImport } from '../../utilities';
 
 export interface IComponentToCompat {
@@ -14,23 +14,24 @@ export interface IComponentToCompat {
   namedExports: string[];
 }
 
-export interface rawCompat {
+export interface IRawCompat {
   componentName: string;
+  // tslint:disable-next-line: no-any
   namedExports: { [key: string]: any };
 }
 
-export interface CompatHash {
+export interface ICompatHash {
   namedExportsMatch: { [key: string]: string };
   exactPathMatch: { [key: string]: string };
 }
 
-export function repathNamedImports(file: SourceFile, hash: CompatHash, indexPath: string) {
-  let imports = getImportsByPath(file, indexPath);
+export function repathNamedImports(file: SourceFile, hash: ICompatHash, indexPath: string) {
+  const imports = getImportsByPath(file, indexPath);
   imports.forEach(imp => {
-    imp.getNamedImports().forEach(imp => {
-      if (hash.namedExportsMatch[imp.getName()]) {
-        appendOrCreateNamedImport(file, hash.namedExportsMatch[imp.getName()], [imp.getStructure()]);
-        imp.remove();
+    imp.getNamedImports().forEach(namedImp => {
+      if (hash.namedExportsMatch[namedImp.getName()]) {
+        appendOrCreateNamedImport(file, hash.namedExportsMatch[namedImp.getName()], [namedImp.getStructure()]);
+        namedImp.remove();
       }
     });
 
@@ -41,20 +42,21 @@ export function repathNamedImports(file: SourceFile, hash: CompatHash, indexPath
   });
 }
 
+// tslint:disable-next-line: no-any
 export function getNamedExports(obj: { [key: string]: any }) {
   return Object.keys(obj);
 }
 
 export function buildCompatHash(
-  renameCompats: rawCompat[],
-  getComponentToCompat: (comp: rawCompat) => IComponentToCompat,
-): CompatHash {
+  renameCompats: IRawCompat[],
+  getComponentToCompat: (comp: IRawCompat) => IComponentToCompat,
+): ICompatHash {
   return renameCompats.reduce(
-    (acc: CompatHash, val) => {
+    (acc: ICompatHash, val) => {
       const paths = getComponentToCompat(val);
       acc.exactPathMatch[paths.oldPath] = paths.newComponentPath;
-      paths.namedExports.forEach(val => {
-        acc.namedExportsMatch[val] = paths.newComponentPath;
+      paths.namedExports.forEach(path => {
+        acc.namedExportsMatch[path] = paths.newComponentPath;
       });
       return acc;
     },
@@ -62,16 +64,16 @@ export function buildCompatHash(
   );
 }
 
-export function repathPathedImports(file: SourceFile, hash: CompatHash) {
+export function repathPathedImports(file: SourceFile, hash: ICompatHash) {
   file.getImportDeclarations().forEach(dec => {
-    let str = dec.getModuleSpecifierValue();
+    const str = dec.getModuleSpecifierValue();
     if (hash.exactPathMatch[str]) {
       repathImport(dec, hash.exactPathMatch[str]);
     }
   });
 }
 
-export function runComponentToCompat(file: SourceFile, hash: CompatHash, indexPath: string) {
+export function runComponentToCompat(file: SourceFile, hash: ICompatHash, indexPath: string) {
   repathPathedImports(file, hash);
   repathNamedImports(file, hash, indexPath);
 }

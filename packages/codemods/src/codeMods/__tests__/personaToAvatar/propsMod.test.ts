@@ -1,12 +1,4 @@
-import {
-  Project,
-  SyntaxKind,
-  InterfaceDeclaration,
-  TypeReferenceNode,
-  PropertyAccessExpression,
-  JsxAttributeStructure,
-  JsxSpreadAttribute,
-} from 'ts-morph';
+import { Project, SyntaxKind, JsxAttributeStructure } from 'ts-morph';
 import { RenamePrimaryTextProp, RenameRenderCoin } from '../../mods/PersonaToAvatar/PersonaToAvatar.mod';
 import { findJsxTag } from '../../utilities';
 const personaPath = '/**/__tests__/mock/**/persona/**/*.tsx';

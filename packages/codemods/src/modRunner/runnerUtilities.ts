@@ -8,10 +8,10 @@ export function runMods<T>(
   sources: T[],
   loggingCallback: (result: { mod: ICodeMod<T>; file: T; error?: Error }) => void,
 ) {
-  for (let file of sources) {
+  for (const file of sources) {
     // Run every mod on each file?
     // I like that
-    for (let mod of codeMods) {
+    for (const mod of codeMods) {
       try {
         mod.run(file);
         loggingCallback({ mod, file });
@@ -63,7 +63,7 @@ export function getTsConfigs(root: string = process.cwd()) {
 // TODO this is a great place for maybe, this pattern will probably be a bunch of places.
 export function loadMod(path: string, errorCallback: (e: Error) => void): { success: boolean; mod?: ICodeMod } {
   try {
-    let mod = require(path).default;
+    const mod = require(path).default;
     if (mod) {
       return { success: true, mod };
     }
@@ -74,11 +74,13 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): { succ
   return { success: false };
 }
 
+// tslint:disable-next-line: no-any
 export function filterMods(codeMods: ICodeMod<any>[], semvarRange: Range) {
   return codeMods.filter(mod => shouldRunMod(mod, semvarRange));
 }
 
 // Defaults to allowing almost any version to run.
+// tslint:disable-next-line: no-any
 export function shouldRunMod(mod: ICodeMod<any>, semvarRange: Range = new Range('>0 <1000')) {
   return mod.enabled && semvarRange.test(mod.version);
 }

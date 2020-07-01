@@ -5,7 +5,7 @@ import { Range } from 'semver';
 
 describe('modRunner tests', () => {
   it('gets the appropriate path to mods based on current dir', () => {
-    let modPath = getModsRootPath();
+    const modPath = getModsRootPath();
     expect(modPath).toEqual(`${process.cwd()}/src/modRunner/../codeMods/mods`);
   });
   it('returns the right paths to run for mods', () => {
@@ -24,8 +24,8 @@ describe('modRunner tests', () => {
 
   it('gets a mod when given a path', () => {
     const path = './mocks/MockMods/CodeMod.mock.ts';
-    let mod: ICodeMod<string> = require(path).default;
-    let spy = jest.spyOn(mod, 'run');
+    const mod: ICodeMod<string> = require(path).default;
+    const spy = jest.spyOn(mod, 'run');
 
     mod.run('foo');
 
@@ -34,11 +34,11 @@ describe('modRunner tests', () => {
 
   it('runs all mods', () => {
     let runCount = 0;
-    let runcallBack = (foo: string): CodeModResult => {
+    const runcallBack = (foo: string): CodeModResult => {
       runCount = runCount + 1;
       return {};
     };
-    let mods: ICodeMod<string>[] = [
+    const mods: ICodeMod<string>[] = [
       {
         name: 'a',
         run: runcallBack,
@@ -60,11 +60,11 @@ describe('modRunner tests', () => {
   });
 
   it('filtersMods to version', () => {
-    let runcallBack = (foo: string): CodeModResult => {
+    const runcallBack = (foo: string): CodeModResult => {
       return {};
     };
 
-    let mods: ICodeMod<string>[] = [
+    const mods: ICodeMod<string>[] = [
       {
         name: 'a',
         run: runcallBack,
@@ -84,7 +84,7 @@ describe('modRunner tests', () => {
       },
     ];
 
-    let filtered = filterMods(mods, new Range('>1.0.0 <=3.0.0'));
+    const filtered = filterMods(mods, new Range('>1.0.0 <=3.0.0'));
     expect(filtered.length).toEqual(1);
   });
 });

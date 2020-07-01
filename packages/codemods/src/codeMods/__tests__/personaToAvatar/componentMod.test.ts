@@ -36,11 +36,11 @@ describe('Persona component mod tests', () => {
       file.forEachDescendant(val => {
         switch (val.getKind()) {
           case SyntaxKind.InterfaceDeclaration: {
-            let tVal = val as InterfaceDeclaration;
+            const tVal = val as InterfaceDeclaration;
             const struct = tVal.getStructure();
             expect(
-              (struct.extends as string[])?.some(val => {
-                return val === 'IPersonaProps';
+              (struct.extends as string[])?.some(str => {
+                return str === 'IPersonaProps';
               }),
             ).toBe(false);
             break;
@@ -62,12 +62,12 @@ describe('Persona component mod tests', () => {
       // can be used. If we find others, there are other case statements that should be added
       switch (val.getKind()) {
         case SyntaxKind.TypeReference: {
-          let tdesc = val as TypeReferenceNode;
+          const tdesc = val as TypeReferenceNode;
           expect(tdesc.getText()).not.toEqual('PersonaSize');
           break;
         }
         case SyntaxKind.PropertyAccessExpression: {
-          let tdesc = val as PropertyAccessExpression;
+          const tdesc = val as PropertyAccessExpression;
           expect(tdesc.getFirstChild()?.getText()).not.toEqual('PersonaSize');
           break;
         }

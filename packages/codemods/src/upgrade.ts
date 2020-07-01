@@ -3,7 +3,7 @@ import { Project } from 'ts-morph';
 
 // TODO actually do console logging, implement some nice callbacks.
 export function upgrade() {
-  let mods = getModsPaths()
+  const mods = getModsPaths()
     .filter(pth => pth.endsWith('.js'))
     .map(pth => {
       console.log('fetching codeMod at ', pth);
@@ -15,13 +15,13 @@ export function upgrade() {
     .map(mod => mod.mod!);
 
   console.log('getting configs');
-  let configs = getTsConfigs();
-  let projects: Project[] = configs.map(configString => new Project({ tsConfigFilePath: configString }));
+  const configs = getTsConfigs();
+  const projects: Project[] = configs.map(configString => new Project({ tsConfigFilePath: configString }));
 
   projects.forEach(project => {
     let error = false;
     try {
-      let files = project.getSourceFiles();
+      const files = project.getSourceFiles();
       runMods(mods, files, result => {
         if (result.error) {
           console.error(`Error running mod ${result.mod.name} on file ${result.file.getBaseName()}`, result.error);
