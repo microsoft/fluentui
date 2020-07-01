@@ -34,7 +34,7 @@ export function getModsPattern(includeTs: boolean = false) {
     return '/**/*.@(js|ts)';
   }
 
-  return '/**/*.js';
+  return '/**/*.mod.js';
 }
 
 export function getModsPaths(root: string = getModsRootPath(), modsPath: string = getModsPattern()) {
@@ -64,7 +64,9 @@ export function getTsConfigs(root: string = process.cwd()) {
 export function loadMod(path: string, errorCallback: (e: Error) => void): { success: boolean; mod?: ICodeMod } {
   try {
     let mod = require(path).default;
-    return { success: true, mod };
+    if (mod) {
+      return { success: true, mod };
+    }
   } catch (e) {
     errorCallback(e);
   }

@@ -4,16 +4,17 @@ import { SourceFile } from 'ts-morph';
 
 // Not sure if this the best way to get all the things exported from button. It's dependent on version
 // And other things. Ideally we'd be able to get it from within ts-morph.
-import * as Button from 'office-ui-fabric-react/lib/Button';
-import * as Pivot from 'office-ui-fabric-react/lib/Pivot';
-import * as Checkbox from 'office-ui-fabric-react/lib/Checkbox';
-import * as Link from 'office-ui-fabric-react/lib/Link';
-import * as Slider from 'office-ui-fabric-react/lib/Slider';
-import * as Toggle from 'office-ui-fabric-react/lib/Toggle';
+// For some reason button and pivot don't work, need to investigate why
+// import * as Button from 'office-ui-fabric-react/lib-commonjs/Button';
+// import * as Pivot from 'office-ui-fabric-react/lib-commonjs/Pivot';
+import * as Checkbox from 'office-ui-fabric-react/lib-commonjs/Checkbox';
+import * as Link from 'office-ui-fabric-react/lib-commonjs/Link';
+import * as Slider from 'office-ui-fabric-react/lib-commonjs/Slider';
+import * as Toggle from 'office-ui-fabric-react/lib-commonjs/Toggle';
 
 const exportMapping: rawCompat[] = [
-  { componentName: 'Button', namedExports: Button },
-  { componentName: 'Pivot', namedExports: Pivot },
+  // { componentName: 'Button', namedExports: Button },
+  // { componentName: 'Pivot', namedExports: Pivot },
   { componentName: 'Checkbox', namedExports: Checkbox },
   { componentName: 'Link', namedExports: Link },
   { componentName: 'Slider', namedExports: Slider },

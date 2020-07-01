@@ -15,6 +15,6 @@ const RepathOfficeToFluentImports: ICodeMod = {
   },
   name: 'RepathOfficeImportsToFluent',
   version: '1.0.0',
-  enabled: true,
+  enabled: false,
 };
 export default RepathOfficeToFluentImports;

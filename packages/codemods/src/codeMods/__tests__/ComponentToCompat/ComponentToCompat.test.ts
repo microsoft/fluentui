@@ -8,6 +8,7 @@ import {
   repathNamedImports,
   repathPathedImports,
 } from '../../mods/ComponentToCompat/CompatHelpers';
+import * as Button from 'office-ui-fabric-react/lib-commonjs/Button';
 
 const createComponentToCompat = (compat: rawCompat) => {
   return {
@@ -28,7 +29,14 @@ describe('Component to compat', () => {
     let file = project.getSourceFileOrThrow('ImportsStuff.tsx');
     let hash = buildHash([{ componentName: 'Button', namedExports: Root }], createComponentToCompat);
     repathPathedImports(file, hash);
+    console.log(file.getFullText());
     expect(file.getFullText()).toContain('compat/Button');
+  });
+
+  it('correctly gets maps imports from an external library', () => {
+    let buttonExports = getNamedExports(Button);
+    expect(buttonExports).toContain('DefaultButton');
+    expect(buttonExports).toContain('CommandButton');
   });
 
   it('correctly repaths from index', () => {
