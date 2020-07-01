@@ -5,7 +5,9 @@
  - Give columns ample default width to display information.
  
  ## Content
- - Make your column headers easier to read and translate, use sentence casing.
+ - Use sentence-style capitalization for column headers—only capitalize the first word. For more info, see [Capitalization] in the Microsoft Writing Style Guide. 
+ 
+ [Capitalization]: https://docs.microsoft.com/style-guide/capitalization
 
 
 
