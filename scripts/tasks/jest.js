@@ -7,6 +7,9 @@ exports.jest = () =>
   jestTask({
     ...(process.env.TF_BUILD && { runInBand: true }),
     ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined),
+    env: {
+      NODE_ENV: 'test',
+    },
   });
 
 exports.jestDom = () =>

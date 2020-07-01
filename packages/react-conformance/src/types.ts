@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { defaultTests } from './defaultTests';
-import { mount } from 'enzyme';
+import { mount, ComponentType } from 'enzyme';
 
 export type Tests = keyof typeof defaultTests;
 
@@ -57,6 +57,15 @@ export interface IsConformantOptions<TProps = {}> {
    * Allows specific test options.
    */
   testOptions?: TestOptions;
+  /**
+   * This component uses wrapper slot to wrap the 'meaningful' element.
+   */
+  wrapperComponent?: React.ElementType;
+  /**
+   * Child component that will receive unhandledProps
+   */
+  // tslint:disable-next-line:no-any
+  passesUnhandledPropsTo?: ComponentType<any>;
 }
 
 export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => void;
