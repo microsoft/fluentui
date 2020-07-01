@@ -109,7 +109,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
         labelledById = labelId;
       }
       if (stateText) {
-        labelledById = labelledById ? (labelledById += ' ' + stateTextId) : stateTextId;
+        labelledById = labelledById ? labelledById + ' ' + stateTextId : stateTextId;
       }
     }
 
