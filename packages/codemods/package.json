@@ -31,14 +31,14 @@
   },
   "dependencies": {
     "tslib": "^1.10.0",
-    "@types/react": "*",
-    "@types/semver": "^7.1.0",
+    "@types/react": "16.8.25",
+    "@types/semver": "^5.5.0",
     "acorn": "^6.4.1",
     "minimist": "^1.2.2",
-    "office-ui-fabric-react": "*",
-    "react": "^16.13.0",
-    "semver": "^7.3.2",
+    "office-ui-fabric-react": "^7.121.7",
+    "react": "16.8.6",
+    "semver": "^6.2.0",
     "ts-morph": "^7.0.0",
-    "glob": "^7.1.0"
+    "glob": "^7.1.2"
   }
 }
