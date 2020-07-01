@@ -20,7 +20,7 @@ describe('Button', () => {
     componentPath: path.join(__dirname, 'Button.tsx'),
     Component: Button,
     displayName: 'Button',
-    disabledTests: ['has-docblock'],
+    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
   });
 
   /**
