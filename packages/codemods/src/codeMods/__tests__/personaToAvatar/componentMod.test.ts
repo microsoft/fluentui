@@ -1,8 +1,8 @@
 import { Project, SyntaxKind, InterfaceDeclaration, TypeReferenceNode, PropertyAccessExpression } from 'ts-morph';
 import {
-  ReplacePersonaImport,
-  ReplaceIPersonaPropsImport,
-  ReplacePersonaSizeImport,
+  replacePersonaImport,
+  replaceIPersonaPropsImport,
+  replacePersonaSizeImport,
 } from '../../mods/PersonaToAvatar/PersonaToAvatar.mod';
 import { findJsxTag } from '../../utilities';
 const personaPath = '/**/__tests__/mock/**/persona/**/*.tsx';
@@ -17,7 +17,7 @@ describe('Persona component mod tests', () => {
 
   it('can replace persona with avatar', () => {
     const file = project.getSourceFileOrThrow('mFunction.tsx');
-    ReplacePersonaImport(file);
+    replacePersonaImport(file);
     file.getImportDeclarations().forEach(imp => {
       imp.getNamedImports().forEach(name => {
         expect(name.getText()).not.toEqual('Persona');
@@ -28,7 +28,7 @@ describe('Persona component mod tests', () => {
 
   it('can replace IPersonaProps with AvatarProps', () => {
     const file = project.getSourceFileOrThrow('mInterface.tsx');
-    ReplaceIPersonaPropsImport(file);
+    replaceIPersonaPropsImport(file);
     file.getImportDeclarations().forEach(imp => {
       imp.getNamedImports().forEach(name => {
         expect(name.getText()).not.toEqual('IPersonaProps');
@@ -55,7 +55,7 @@ describe('Persona component mod tests', () => {
 
   it('can replace PersonaSize with AvatarSize', () => {
     const file = project.getSourceFileOrThrow('mWithPersonaSize.tsx');
-    ReplacePersonaSizeImport(file);
+    replacePersonaSizeImport(file);
 
     file.forEachDescendant(val => {
       // I believe that these are really the only two cases that a reference to PersonaSize

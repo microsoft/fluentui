@@ -1,5 +1,5 @@
 import { getModsPaths, getTsConfigs, runMods, filterMods, getModsPattern, getModsRootPath } from '../runnerUtilities';
-import { ICodeMod, CodeModResult } from '../../codeMods/ICodeMod';
+import { ICodeMod, ICodeModResult } from '../../codeMods/ICodeMod';
 
 import { Range } from 'semver';
 
@@ -34,7 +34,7 @@ describe('modRunner tests', () => {
 
   it('runs all mods', () => {
     let runCount = 0;
-    const runcallBack = (foo: string): CodeModResult => {
+    const runcallBack = (foo: string): ICodeModResult => {
       runCount = runCount + 1;
       return {};
     };
@@ -60,7 +60,7 @@ describe('modRunner tests', () => {
   });
 
   it('filtersMods to version', () => {
-    const runcallBack = (foo: string): CodeModResult => {
+    const runcallBack = (foo: string): ICodeModResult => {
       return {};
     };
 

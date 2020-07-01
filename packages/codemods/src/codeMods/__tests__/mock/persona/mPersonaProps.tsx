@@ -7,6 +7,7 @@ const renderCoin: IRenderFunction<IPersonaSharedProps> = (props: IPersonaSharedP
   return <div>Foo</div>;
 };
 
+// tslint:disable-next-line: no-any
 export const RenderPersona = (props: any) => {
   return (
     <div>

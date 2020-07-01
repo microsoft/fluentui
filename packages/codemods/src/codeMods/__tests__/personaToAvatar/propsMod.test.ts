@@ -1,5 +1,5 @@
 import { Project, SyntaxKind, JsxAttributeStructure } from 'ts-morph';
-import { RenamePrimaryTextProp, RenameRenderCoin } from '../../mods/PersonaToAvatar/PersonaToAvatar.mod';
+import { renamePrimaryTextProp, renameRenderCoin } from '../../mods/PersonaToAvatar/PersonaToAvatar.mod';
 import { findJsxTag } from '../../utilities';
 const personaPath = '/**/__tests__/mock/**/persona/**/*.tsx';
 // @TODO ensure that props are not renamed for non fabric personas if they exist
@@ -17,7 +17,7 @@ describe('Persona props mod tests', () => {
 
   it('can replace jsx inline primaryText prop', () => {
     const file = project.getSourceFileOrThrow('mPersonaProps.tsx');
-    RenamePrimaryTextProp(file);
+    renamePrimaryTextProp(file);
     const elements = findJsxTag(file, 'Persona');
     elements.forEach(val => {
       expect(val.getAttribute('primaryText')).not.toBeTruthy();
@@ -30,7 +30,7 @@ describe('Persona props mod tests', () => {
     const attValues = values.map(val => {
       return (val.getAttribute('primaryText')?.getStructure() as JsxAttributeStructure)?.initializer;
     });
-    RenamePrimaryTextProp(file);
+    renamePrimaryTextProp(file);
     const elements = findJsxTag(file, 'Persona');
     elements.forEach((val, index) => {
       expect((val.getAttribute('text')?.getStructure() as JsxAttributeStructure)?.initializer).toEqual(
@@ -41,7 +41,7 @@ describe('Persona props mod tests', () => {
 
   it('can replace jsx spread primaryText', () => {
     const file = project.getSourceFileOrThrow(personaSpreadPropsFile);
-    RenamePrimaryTextProp(file);
+    renamePrimaryTextProp(file);
     const els = findJsxTag(file, 'Persona');
     els.forEach(val => {
       val.getAttributes().forEach(att => {
@@ -62,7 +62,7 @@ describe('Persona props mod tests', () => {
 
   it('can replace personaCoin render', () => {
     const file = project.getSourceFileOrThrow(personaPropsFile);
-    RenameRenderCoin(file);
+    renameRenderCoin(file);
     const els = findJsxTag(file, 'Persona');
     els.forEach(val => {
       expect(val.getAttribute('onRenderCoin')).toBeFalsy();

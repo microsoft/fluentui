@@ -1,6 +1,6 @@
 import { SourceFile } from 'ts-morph';
 
-export interface CodeModResult {
+export interface ICodeModResult {
   success?: boolean;
 }
 
@@ -19,7 +19,7 @@ export interface ICodeMod<T = SourceFile> {
    * The actual function that should be run on any given file
    * TODO, is there a possibility of codemods that would need to execute over mutiple files?
    */
-  run: (file: T) => CodeModResult;
+  run: (file: T) => ICodeModResult;
   /**
    * If not enabled, then this mod will not be conisdered to run. Only enable it once it's ready for
    * the real world.

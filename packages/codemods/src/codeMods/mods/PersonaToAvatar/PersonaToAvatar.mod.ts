@@ -8,7 +8,7 @@ import {
   ts,
   Node,
 } from 'ts-morph';
-import { findJsxTag, appendOrCreateNamedImport } from '../../utilities';
+import { findJsxTag, appendOrCreateNamedImport } from '../../utilities/index';
 import { ICodeMod } from '../../ICodeMod';
 
 const personaPath = 'office-ui-fabric-react/lib/Persona';
@@ -19,7 +19,7 @@ export function renameProperty(
   attributeReplacement: string,
 ) {
   elements.forEach(val => {
-    let att = val.getAttribute(attributeName);
+    const att = val.getAttribute(attributeName);
     if (att) {
       att.set({ name: attributeReplacement });
     } else {
@@ -80,7 +80,7 @@ export function renameProperty(
   });
 }
 
-export function ReplacePersonaImport(file: SourceFile) {
+export function replacePersonaImport(file: SourceFile) {
   let found = false;
   file.getImportDeclarations().forEach(imp => {
     if (imp.getModuleSpecifierValue() === personaPath) {
@@ -98,7 +98,7 @@ export function ReplacePersonaImport(file: SourceFile) {
   }
 }
 
-export function ReplaceIPersonaPropsImport(file: SourceFile) {
+export function replaceIPersonaPropsImport(file: SourceFile) {
   // Figure out if I should actually make this change
   // TODO need to test with a variety of things, maybe one that serves as a passthrough
   let found = false;
@@ -118,7 +118,7 @@ export function ReplaceIPersonaPropsImport(file: SourceFile) {
   }
 }
 
-export function ReplacePersonaSizeImport(file: SourceFile) {
+export function replacePersonaSizeImport(file: SourceFile) {
   let found = false;
   file.getImportDeclarations().forEach(imp => {
     if (imp.getModuleSpecifierValue() === personaPath) {
@@ -145,13 +145,13 @@ function getBlockContainer(node: Node<ts.Node>) {
   });
 }
 
-export function RenamePrimaryTextProp(file: SourceFile) {
+export function renamePrimaryTextProp(file: SourceFile) {
   // Should this fix the naming if the Persona Component has already been renamed to Avatar
   const elements = findJsxTag(file, 'Persona');
   renameProperty(elements, 'primaryText', 'text');
 }
 
-export function RenameRenderCoin(file: SourceFile) {
+export function renameRenderCoin(file: SourceFile) {
   // Should this fix the naming if the Persona Component has already been renamed to Avatar
 
   const elements = findJsxTag(file, 'Persona');
@@ -161,11 +161,11 @@ export function RenameRenderCoin(file: SourceFile) {
 const PersonaToAvatarMod: ICodeMod = {
   run: (file: SourceFile) => {
     try {
-      ReplacePersonaImport(file);
-      ReplaceIPersonaPropsImport(file);
-      ReplacePersonaSizeImport(file);
-      RenamePrimaryTextProp(file);
-      RenameRenderCoin(file);
+      replacePersonaImport(file);
+      replaceIPersonaPropsImport(file);
+      replacePersonaSizeImport(file);
+      renamePrimaryTextProp(file);
+      renameRenderCoin(file);
     } catch (e) {
       return { success: false };
     }

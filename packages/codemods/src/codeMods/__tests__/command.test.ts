@@ -31,7 +31,9 @@ describe('command parser', () => {
     let result: CommandParserResult;
 
     beforeAll(() => {
-      result = new CommandParser(() => {}).parseArgs(['node', 'foo', 'bar/baz']);
+      result = new CommandParser(() => {
+        return void 0;
+      }).parseArgs(['node', 'foo', 'bar/baz']);
     });
 
     it('returns the path when called with a single argument', () => {

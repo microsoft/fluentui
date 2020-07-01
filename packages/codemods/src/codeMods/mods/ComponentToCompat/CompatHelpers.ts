@@ -1,5 +1,5 @@
 import { SourceFile } from 'ts-morph';
-import { getImportsByPath, appendOrCreateNamedImport, repathImport } from '../../utilities';
+import { getImportsByPath, appendOrCreateNamedImport, repathImport } from '../../utilities/index';
 
 export interface IComponentToCompat {
   // Old exact path
