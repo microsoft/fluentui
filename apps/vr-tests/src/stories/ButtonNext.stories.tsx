@@ -3,6 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
+import { AddIcon } from '@fluentui/react-icons';
 import { FabricDecorator } from '../utilities';
 
 storiesOf('Button Next', module)
@@ -274,3 +275,33 @@ storiesOf('Button Next - Sizes', module)
   .addStory('Large', () => <Button content="Hello, world" icon="X" size="large" />)
   .addStory('Larger', () => <Button content="Hello, world" icon="X" size="larger" />)
   .addStory('Largest', () => <Button content="Hello, world" icon="X" size="largest" />);
+
+storiesOf('Button Next - With styled icon from react-icons via tokens', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Primary Disabled', () => (
+    <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ));
