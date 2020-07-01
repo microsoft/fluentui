@@ -7,7 +7,7 @@ const stackTokens: IStackTokens = { childrenGap: 10 };
 export const ToggleBasicExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={stackTokens}>
-      <Toggle label="Enabled and checked" defaultChecked onText="Foooey" offText="Not On" onChange={_onChange} />
+      <Toggle label="Enabled and checked" defaultChecked onText="On" offText="Off" onChange={_onChange} />
 
       <Toggle label="Enabled and unchecked" onText="On" offText="Off" onChange={_onChange} />
 
