@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FIx Incorrect role is defined for lagend overflow items",
-  "packageName": "@uifabric/charting",
-  "email": "v-gorraj@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-29T07:28:39.134Z"
-}

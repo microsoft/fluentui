@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "0.5.2",
+  "version": "0.6.1",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -38,20 +38,20 @@
     "@uifabric/tslint-rules": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
+    "office-ui-fabric-react": "^7.121.7",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.11.6",
-    "@fluentui/react-icons": "^0.1.32",
-    "@fluentui/react-theme-provider": "^0.3.3",
+    "@fluentui/react-compose": "^0.11.7",
+    "@fluentui/react-icons": "^0.1.33",
+    "@fluentui/react-theme-provider": "^0.3.4",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/react-hooks": "^7.4.10",
+    "@uifabric/react-hooks": "^7.4.11",
     "@uifabric/set-version": "^7.0.15",
-    "@uifabric/utilities": "^7.21.4",
-    "office-ui-fabric-react": "^7.121.5",
+    "@uifabric/utilities": "^7.22.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
