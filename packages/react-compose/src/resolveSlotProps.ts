@@ -40,15 +40,12 @@ export function resolveSlotProps<TProps, TState = TProps>(
         (slot && slot.shorthandConfig && slot.shorthandConfig.mappedProp) || defaultMappedProps[slot],
       );
 
-      const isChildrenFunction = typeof mergedSlotProp.children === 'function';
-      if (isChildrenFunction || React.isValidElement(mergedSlotProp.children)) {
+      if (typeof mergedSlotProp.children === 'function') {
         const { children, ...restProps } = slotProp;
-
+        // If the children is a function, replace the slot.
         slots[slotName] = React.Fragment;
         slotProps[slotName] = {
-          children: isChildrenFunction
-            ? mergedSlotProp.children(slot, { ...slotProps[slotName], ...restProps })
-            : mergedSlotProp.children,
+          children: slotProp.children(slot, { ...slotProps[slotName], ...restProps }),
         };
       } else {
         slotProps[slotName] = mergedSlotProp;
