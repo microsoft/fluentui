@@ -328,7 +328,7 @@ describe('styled', () => {
     );
   });
 
-  fit('can re-render the minimal times when nesting and in a Customizer', () => {
+  it('can re-render the minimal times when nesting and in a Customizer', () => {
     safeCreate(
       <Customizer>
         <Test />
