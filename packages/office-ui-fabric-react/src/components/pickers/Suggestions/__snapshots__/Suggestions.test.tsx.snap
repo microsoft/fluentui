@@ -2037,6 +2037,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           max-height: 300px;
           overflow-x: hidden;
           overflow-y: auto;
+          transform: translate3d(0,0,0);
         }
     role="listbox"
   >
