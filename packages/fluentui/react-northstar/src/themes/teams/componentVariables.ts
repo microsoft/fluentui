@@ -130,3 +130,5 @@ export { default as CardFooter } from './components/Card/cardFooterVariables';
 export { default as CardPreview } from './components/Card/cardPreviewVariables';
 export { default as CardTopControls } from './components/Card/cardTopControlsVariables';
 export { default as CardExpandableBox } from './components/Card/cardExpandableBoxVariables';
+
+export { default as datepickerVariables } from './components/Datepicker/datepickerVariables';

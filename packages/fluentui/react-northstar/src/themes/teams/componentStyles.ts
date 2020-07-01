@@ -142,3 +142,5 @@ export { default as CardFooter } from './components/Card/cardFooterStyles';
 export { default as CardPreview } from './components/Card/cardPreviewStyles';
 export { default as CardTopControls } from './components/Card/cardTopControlsStyles';
 export { default as CardExpandableBox } from './components/Card/cardExpandableBoxStyles';
+
+export { default as Datepicker } from './components/Datepicker/datepickerStyles';
