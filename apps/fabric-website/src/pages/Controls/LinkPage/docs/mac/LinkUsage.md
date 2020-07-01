@@ -1,6 +1,9 @@
-The DatePicker uses the provided [`Calendar`](https://developer.apple.com/documentation/foundation/calendar) instance as a data source. If no calendar is provided, it uses [`Calendar.current`](https://developer.apple.com/documentation/foundation/calendar/2293438-current), which is the system calendar.
+The Link control is implemented as a stylized NSButton, and thus inherits all of the properties of it's parent class, including the Target-Action pattern
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200701.001/fabric-website/images/controls/macos/Link/link_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200701.001/fabric-website/images/controls/macos/Link/link_dark.png?text=DarkMode" />
 
 ### Default configuration
 
@@ -16,9 +19,6 @@ let link = Link(title: "Link", url: NSURL(string: "https://github.com/microsoft/
 let link = Link(title: "Link  with hover effects", url: NSURL(string: "https://github.com/microsoft/fluentui-apple")!)
 link.showsUnderlineWhileMouseInside = true
 ```
-
-<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/Link/link_light.png?text=LightMode" />
-<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200504.001/fabric-website/images/controls/macos/Link/link_dark.png?text=DarkMode" />
 
 ### Setting Target and Action
 
