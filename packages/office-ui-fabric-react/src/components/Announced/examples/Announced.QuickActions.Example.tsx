@@ -85,7 +85,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
           <IconButton
             menuIconProps={{ iconName: 'MoreVertical' }}
             role="button"
-            aria-haspopup={true}
+            aria-haspopup
             aria-label="Show actions"
             styles={iconButtonStyles}
             menuProps={{
