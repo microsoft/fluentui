@@ -1,9 +1,12 @@
 import { TestObject, IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
+import { getComponent } from './utils/getComponent';
 import { mount } from 'enzyme';
+
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
+import consoleUtil from './utils/consoleUtil';
 
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
@@ -54,9 +57,10 @@ export const defaultTests: TestObject = {
       // This check is needed in case the Component is wrapped with the v7 styled() helper, which returns a wrapper
       // component with constructor name Wrapped, and adds a Styled prefix to the displayName. Components passed to
       // styled() typically have Base in their name, so remove that too.
+      displayName = displayName.replace(/Base$/, '');
+      displayName = displayName.replace(/^Customized/, '');
       if (constructorName === 'Wrapped') {
         displayName = displayName.replace(/^Styled/, '');
-        displayName = displayName.replace(/Base$/, '');
       }
 
       expect(displayName).toEqual(testInfo.displayName);
@@ -94,7 +98,7 @@ export const defaultTests: TestObject = {
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
         const topLevelFile = require(path.join(rootPath, 'src', displayName));
 
-        expect(topLevelFile.default || topLevelFile[displayName]).toBe(Component);
+        expect(topLevelFile[displayName]).toBe(Component);
       });
     }
   },
@@ -147,5 +151,105 @@ export const defaultTests: TestObject = {
         }
       }
     });
+  },
+
+  /** If it has "as" prop: Renders as functional component or passes as to the next component */
+  'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    if (componentInfo.props.as) {
+      it(`renders as a functional component or passes "as" to the next component`, () => {
+        const { requiredProps, Component, customMount = mount, wrapperComponent } = testInfo;
+        const MyComponent = () => null;
+
+        // tslint:disable-next-line:no-any
+        const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
+        const component = getComponent(wrapper, wrapperComponent);
+
+        try {
+          expect(component.type()).toEqual(MyComponent);
+        } catch (err) {
+          expect(component.type()).not.toEqual(Component);
+          expect(
+            component
+              .find('[as]')
+              .last()
+              .prop('as'),
+          ).toEqual(MyComponent);
+        }
+      });
+    }
+  },
+
+  /** If it has "as" prop: Renders as ReactClass or passes as to the next component */
+  'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    if (componentInfo.props.as) {
+      it(`renders as a ReactClass or passes "as" to the next component`, () => {
+        const { requiredProps, Component, customMount = mount, wrapperComponent } = testInfo;
+
+        class MyComponent extends React.Component {
+          public render() {
+            return <div data-my-react-class />;
+          }
+        }
+
+        // tslint:disable-next-line:no-any
+        const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
+        const component = getComponent(wrapper, wrapperComponent);
+
+        try {
+          expect(component.type()).toEqual(MyComponent);
+        } catch (err) {
+          expect(component.type()).not.toEqual(Component);
+          expect(component.prop('as')).toEqual(MyComponent);
+        }
+      });
+    }
+  },
+
+  /** If it has "as" prop: Passes extra props to the component it renders as */
+  'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    if (componentInfo.props.as) {
+      it(`passes extra props to the component it is renders as`, () => {
+        const { customMount = mount, Component, requiredProps, passesUnhandledPropsTo } = testInfo;
+
+        if (passesUnhandledPropsTo) {
+          const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
+
+          expect(el.prop('data-extra-prop')).toBe('foo');
+        } else {
+          const MyComponent = () => null;
+          const el = customMount(
+            // tslint:disable-next-line:no-any
+            <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
+          ).find(MyComponent);
+
+          expect(el.prop('data-extra-prop')).toBe('foo');
+        }
+      });
+    }
+  },
+
+  /** If it has "as" prop: Renders component as HTML tags */
+  'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    if (componentInfo.props.as) {
+      it(`renders component as HTML tags or passes "as" to the next component`, () => {
+        // silence element nesting warnings
+        consoleUtil.disableOnce();
+        const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
+        const { Component, customMount = mount, requiredProps, wrapperComponent } = testInfo;
+
+        tags.forEach(tag => {
+          // tslint:disable-next-line:no-any
+          const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
+          const component = getComponent(wrapper, wrapperComponent);
+
+          try {
+            expect(component.is(tag)).toEqual(true);
+          } catch (err) {
+            expect(component.type()).not.toEqual(Component);
+            expect(component.prop('as')).toEqual(tag);
+          }
+        });
+      });
+    }
   },
 };
