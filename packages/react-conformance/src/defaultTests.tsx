@@ -52,17 +52,11 @@ export const defaultTests: TestObject = {
 
     it(`has a displayName or constructor name`, () => {
       const constructorName = Component.prototype?.constructor.name;
-      let displayName = Component.displayName || constructorName;
+      const displayName = Component.displayName || constructorName;
 
       // This check is needed in case the Component is wrapped with the v7 styled() helper, which returns a wrapper
       // component with constructor name Wrapped, and adds a Styled prefix to the displayName. Components passed to
       // styled() typically have Base in their name, so remove that too.
-      displayName = displayName.replace(/Base$/, '');
-      displayName = displayName.replace(/^Customized/, '');
-      if (constructorName === 'Wrapped') {
-        displayName = displayName.replace(/^Styled/, '');
-      }
-
       expect(displayName).toMatch(new RegExp(`^(Customized|Styled)?${testInfo.displayName}(Base)?$`));
     });
   },
