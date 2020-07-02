@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Resolve side effects in keyboard-key/codes.ts",
+  "packageName": "@fluentui/keyboard-key",
+  "email": "connorjsmith101@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-21T19:52:50.267Z"
+}

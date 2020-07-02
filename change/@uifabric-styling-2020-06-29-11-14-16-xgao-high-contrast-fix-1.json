@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update high contrast Edge Chormium selector to remove unneeded condition.",
-  "packageName": "@uifabric/styling",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-29T18:14:16.415Z"
-}

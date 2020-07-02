@@ -15,14 +15,15 @@ import {
   SizeValue,
 } from '../../utils';
 
+import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import {
-  ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+  ComponentWithAs,
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -53,7 +54,14 @@ export interface SplitButtonToggleProps extends UIComponentProps, ContentCompone
 export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled' | 'size'>;
 export const splitButtonToggleClassName = 'ui-splitbutton__toggle';
 
-const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
+/**
+ * A SplitToggleButton allows users to customize the toggle button inside the SplitButton.
+ *
+ * @accessibility
+ * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
+ */
+
+const SplitButtonToggle: ComponentWithAs<'button', SplitButtonToggleProps> &
   FluentComponentStaticProps<SplitButtonToggleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(SplitButtonToggle.displayName, context.telemetry);
@@ -66,7 +74,7 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
   const getA11Props = useAccessibility(accessibility, {
     debugName: SplitButtonToggle.displayName,
     mapPropsToBehavior: () => ({
-      as,
+      as: String(as),
       disabled,
     }),
     actionHandlers: {
@@ -144,10 +152,4 @@ SplitButtonToggle.handledProps = Object.keys(SplitButtonToggle.propTypes) as any
 
 SplitButtonToggle.create = createShorthandFactory({ Component: SplitButtonToggle, mappedProp: 'content' });
 
-/**
- * A SplitToggleButton allows users to customize the toggle button inside the SplitButton.
- *
- * @accessibility
- * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
- */
-export default withSafeTypeForAs<typeof SplitButtonToggle, SplitButtonToggleProps, 'button'>(SplitButtonToggle);
+export default SplitButtonToggle;

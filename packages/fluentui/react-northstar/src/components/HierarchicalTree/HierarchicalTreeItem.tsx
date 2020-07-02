@@ -5,6 +5,7 @@ import {
   HierarchicalTreeItemBehaviorProps,
 } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getFirstFocusable,
   useTelemetry,
   getElementType,
@@ -30,10 +31,8 @@ import {
 } from '../../utils';
 import {
   ComponentEventHandler,
-  WithAsProp,
   ShorthandRenderFunction,
   ShorthandValue,
-  withSafeTypeForAs,
   ShorthandCollection,
   FluentComponentStaticProps,
   ProviderContextPrepared,
@@ -84,7 +83,14 @@ export const hierarchicalTreeItemSlotClassNames: HierarchicalTreeItemSlotClassNa
 };
 
 export type HierarchicalTreeItemStyles = never;
-const HierarchicalTreeItem: React.FC<WithAsProp<HierarchicalTreeItemProps>> &
+
+/**
+ * A TreeItem renders an item of a Tree.
+ *
+ * @accessibility
+ * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
+ */
+const HierarchicalTreeItem: ComponentWithAs<'li', HierarchicalTreeItemProps> &
   FluentComponentStaticProps<HierarchicalTreeItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(HierarchicalTreeItem.displayName, context.telemetry);
@@ -249,10 +255,4 @@ HierarchicalTreeItem.create = createShorthandFactory({
   mappedProp: 'title',
 });
 
-/**
- * A TreeItem renders an item of a Tree.
- *
- * @accessibility
- * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
- */
-export default withSafeTypeForAs<typeof HierarchicalTreeItem, HierarchicalTreeItemProps, 'li'>(HierarchicalTreeItem);
+export default HierarchicalTreeItem;
