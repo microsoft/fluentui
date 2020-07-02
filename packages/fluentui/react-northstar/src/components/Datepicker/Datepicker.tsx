@@ -1,8 +1,9 @@
 import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
 import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
-import * as _ from 'lodash';
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
+
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import {
@@ -13,15 +14,14 @@ import {
   ShorthandRenderFunction,
 } from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-// import DatepickerInput from './DatepickerInput';
-// import DatepickerCalendar from './DatepickerCalendar';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
 import Popup from '../Popup/Popup';
 import {
-  DayOfWeek,
   IRestrictedDatesOptions,
+  IDay,
+  DayOfWeek,
   FirstWeekOfYear,
   DateRangeType,
   IDateGridStrings,
@@ -104,7 +104,7 @@ export interface DatepickerProps extends IDateGridStrings, IDatepickerOptions, I
   isRequired: boolean;
 
   /** Provides the client with an option to react to change in selected date. */
-  onChange: (event: React.FormEvent<HTMLInputElement & HTMLTextAreaElement>, newValue?: string) => void;
+  onChange: (day: IDay) => void;
 
   /** String to render for button to direct the user to today's date. */
   goToToday: string;
@@ -183,6 +183,10 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
                 onDaySelect={day => {
                   setSelectedDate(day.originalDate);
                   setOpen(false);
+
+                  if (props.onChange) {
+                    props.onChange(day);
+                  }
                 }}
                 localizedStrings={DEFAULT_STRINGS}
               />
@@ -203,6 +207,34 @@ Datepicker.displayName = 'Datepicker';
 
 Datepicker.propTypes = {
   ...commonPropTypes.createCommon(),
+
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
+  restrictedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+
+  firstDayOfWeek: PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name])),
+  firstWeekOfYear: PropTypes.oneOf(Object.keys(FirstWeekOfYear).map(name => FirstWeekOfYear[name])),
+  dateRangeType: PropTypes.oneOf(Object.keys(DateRangeType).map(name => DateRangeType[name])),
+  daysToSelectInDayView: PropTypes.number,
+  today: PropTypes.instanceOf(Date),
+  showWeekNumbers: PropTypes.bool,
+  workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
+
+  months: PropTypes.arrayOf(PropTypes.string),
+  shortMonths: PropTypes.arrayOf(PropTypes.string),
+  days: PropTypes.arrayOf(PropTypes.string),
+  shortDays: PropTypes.arrayOf(PropTypes.string),
+
+  format: PropTypes.func,
+  parse: PropTypes.func,
+
+  disabled: PropTypes.bool,
+  isRequired: PropTypes.bool,
+  onChange: PropTypes.func,
+  goToToday: PropTypes.string,
+  placeholder: PropTypes.string,
+  renderCell: PropTypes.func,
+  renderHeaderCell: PropTypes.func,
 };
 
 Datepicker.defaultProps = {
@@ -210,6 +242,9 @@ Datepicker.defaultProps = {
   firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
+  as: undefined,
+  days: undefined,
+  daysToSelectInDayView: undefined,
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
