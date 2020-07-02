@@ -17,4 +17,6 @@ const gridBehavior: Accessibility = () => ({
   },
 });
 
+export type GridBehaviorProps = never;
+
 export default gridBehavior;

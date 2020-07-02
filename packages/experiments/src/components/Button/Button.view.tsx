@@ -70,7 +70,7 @@ export const ButtonView: IButtonComponent['view'] = (props, slots) => {
 
 interface IButtonRootType {
   htmlType: 'link' | 'button';
-  propertiesType: string[];
+  propertiesType: string[] | Record<string, number>;
 }
 
 function _deriveRootType(props: IButtonViewProps): IButtonRootType {

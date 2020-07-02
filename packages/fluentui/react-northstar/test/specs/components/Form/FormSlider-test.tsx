@@ -6,6 +6,8 @@ describe('FormSlider', () => {
   isConformant(FormSlider, {
     constructorName: 'FormSlider',
     passesUnhandledPropsTo: Slider,
+    // TODO: point to correct once Slider will be using compose
+    forwardsRefTo: false,
     eventTargets: {
       onChange: 'input',
       onKeyDown: 'input',

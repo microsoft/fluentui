@@ -35,7 +35,7 @@ export interface DropdownSearchInputProps extends UIComponentProps<DropdownSearc
   inline?: boolean;
 
   /** Ref for input DOM node. */
-  inputRef?: React.Ref<HTMLElement>;
+  inputRef?: React.Ref<HTMLInputElement>;
 
   /**
    * Called on input element focus.

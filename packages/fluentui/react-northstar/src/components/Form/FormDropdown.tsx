@@ -25,6 +25,11 @@ const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProps, Sele
     slots: {
       control: Dropdown,
     },
+    slotProps: ({ errorMessage }) => ({
+      message: {
+        error: !!errorMessage,
+      },
+    }),
   },
 );
 
