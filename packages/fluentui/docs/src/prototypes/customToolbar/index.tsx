@@ -77,6 +77,7 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
       },
       { instances: 0, msTotal: 0 },
     );
+
     /* eslint-disable no-console */
     console.log(`Rendered ${totals.instances} Fluent UI components in ${totals.msTotal} ms`);
     console.log(telemetry.performance);
