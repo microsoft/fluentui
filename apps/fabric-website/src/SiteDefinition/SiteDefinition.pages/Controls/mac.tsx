@@ -13,6 +13,19 @@ export const controlsPagesMac: INavPage[] = [
       ),
   },
   {
+    title: 'Basic Inputs',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Link',
+        url: '#/controls/mac/link',
+        component: () => <LoadingComponent title="Link" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/LinkPage/LinkPage').LinkPage)),
+      },
+    ],
+  },
+  {
     title: 'Pickers',
     isCategory: true,
     pages: [
