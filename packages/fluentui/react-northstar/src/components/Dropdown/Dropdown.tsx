@@ -1621,4 +1621,4 @@ export default (Dropdown as unknown) as ComponentWithAs<'div', DropdownProps> & 
   a11yStatusCleanupTime: number;
   charKeyPressedCleanupTime: number;
 };
-/* ^ A temporary typing until Dropdown will not be converted to functional component. */
+/* ^ A temporary typing until Dropdown is converted to functional component. */
