@@ -7,5 +7,10 @@
     "packages/react-next",
     "packages/react-icons"
   ],
-  "sandboxes": ["u0e3w", "/apps/codesandbox-react-template", "/apps/codesandbox-react-next-template"]
+  "sandboxes": [
+    "u0e3w",
+    "/apps/codesandbox-react-template",
+    "/apps/codesandbox-react-next-template",
+    "/apps/codesandbox-react-northstar-template"
+  ]
 }
