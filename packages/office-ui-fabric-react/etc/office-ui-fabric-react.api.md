@@ -3019,6 +3019,8 @@ export interface IContextualMenuListProps {
     // (undocumented)
     items: IContextualMenuItem[];
     // (undocumented)
+    role?: string;
+    // (undocumented)
     totalItemCount: number;
 }
 

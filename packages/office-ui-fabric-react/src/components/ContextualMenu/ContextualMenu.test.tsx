@@ -1279,6 +1279,7 @@ describe('ContextualMenu', () => {
 
       const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
 
+      expect(internalList).toBeTruthy();
       expect(internalList.getAttribute('role')).toEqual('menu');
     });
 
@@ -1291,7 +1292,9 @@ describe('ContextualMenu', () => {
       ];
 
       const onRenderMenuList: IRenderFunction<IContextualMenuListProps> = (props, defaultRender) => {
-        props?.role = 'grid';
+        if (props) {
+          props.role = 'grid';
+        }
         return defaultRender?.(props) ?? null;
       };
 
@@ -1301,6 +1304,7 @@ describe('ContextualMenu', () => {
 
       const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
 
+      expect(internalList).toBeTruthy();
       expect(internalList.getAttribute('role')).toEqual('grid');
     });
   });
