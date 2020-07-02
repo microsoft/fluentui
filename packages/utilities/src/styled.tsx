@@ -66,10 +66,10 @@ export function styled<
   pure?: boolean,
 ): React.FunctionComponent<TComponentProps>;
 export function styled<
-  TRef,
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
-  TStyleSet extends IStyleSet<TStyleSet>
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TRef = unknown
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
@@ -78,10 +78,10 @@ export function styled<
   pure?: boolean,
 ): React.ForwardRefExoticComponent<React.PropsWithoutRef<TComponentProps> & React.RefAttributes<TRef>>;
 export function styled<
-  TRef,
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
-  TStyleSet extends IStyleSet<TStyleSet>
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TRef = unknown
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
@@ -94,22 +94,18 @@ export function styled<
   const { scope, fields = DefaultFields } = customizable;
 
   const Wrapped = React.forwardRef((props: TComponentProps, forwardedRef: React.Ref<TRef>) => {
-    const inCustomizerContext = React.useRef<boolean>(false);
     const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>();
 
     const forceUpdate = useForceUpdate();
+    const context = React.useContext(CustomizerContext);
 
     React.useEffect((): void | (() => void) => {
-      if (!inCustomizerContext.current) {
+      if (!context.customizations.inCustomizerContext) {
         Customizations.observe(forceUpdate);
 
         return () => Customizations.unobserve(forceUpdate);
       }
     }, []);
-
-    const context = React.useContext(CustomizerContext);
-
-    inCustomizerContext.current = !!context.customizations.inCustomizerContext;
 
     const settings = Customizations.getSettings(fields, scope, context.customizations);
     const { styles: customizedStyles, dir, ...rest } = settings;
