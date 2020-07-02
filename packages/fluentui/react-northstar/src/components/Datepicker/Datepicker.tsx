@@ -51,7 +51,6 @@ const DEFAULT_STRINGS: IDateGridStrings = {
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 };
 
-// TODO: Merge with DayGridOptions
 export interface IDatepickerOptions extends IRestrictedDatesOptions {
   /**
    * The first day of the week for your locale.
@@ -88,19 +87,13 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
   showWeekNumbers?: boolean;
 
   /**
-   * How many weeks to show by default. If not provided, will show enough weeks to display the current
-   * month, between 4 and 6 depending
-   */
-  weeksToShow?: number;
-
-  /**
    * The days that are selectable when `dateRangeType` is WorkWeek.
    * If `dateRangeType` is not WorkWeek this property does nothing.
    */
   workWeekDays?: DayOfWeek[];
 }
 
-export interface DatepickerProps extends IDateGridStrings, IDayGridOptions, IDateFormatting, UIComponentProps {
+export interface DatepickerProps extends IDateGridStrings, IDatepickerOptions, IDateFormatting, UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
@@ -138,14 +131,13 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
   const [open, setOpen] = React.useState(false);
   const [selectedDate, setSelectedDate] = React.useState();
   const valueFormatter = date => (date ? formatMonthDayYear(date, DEFAULT_STRINGS) : '');
-  const { firstDayOfWeek, firstWeekOfYear, dateRangeType, weeksToShow } = props;
+  const { firstDayOfWeek, firstWeekOfYear, dateRangeType } = props;
   const calendarOptions: IDayGridOptions = {
     selectedDate: selectedDate ?? props.today ?? new Date(),
     navigatedDate: selectedDate ?? props.today ?? new Date(),
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-    weeksToShow,
   };
 
   const showCalendarGrid = () => {
@@ -218,7 +210,6 @@ Datepicker.defaultProps = {
   firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
-  weeksToShow: 4,
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;

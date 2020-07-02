@@ -13,8 +13,17 @@ import Grid from '../Grid/Grid';
 import { IDayGridOptions, getDayGrid, IDay, DAYS_IN_WEEK, IDateGridStrings } from '@fluentui/date-time-utilities';
 import Text from '../Text/Text';
 import Button from '../Button/Button';
+import { IDatepickerOptions } from './Datepicker';
 
-export interface DatepickerCalendarProps extends UIComponentProps, IDayGridOptions {
+export interface DatepickerCalendarProps extends UIComponentProps, IDatepickerOptions {
+  /**
+   * The currently selected date
+   */
+  selectedDate: Date;
+  /**
+   * The currently navigated date
+   */
+  navigatedDate: Date;
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarBehaviorProps>;
   /** Callback on date cell selection */
@@ -43,7 +52,6 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-    weeksToShow,
     onDaySelect,
     localizedStrings,
   } = props;
@@ -60,7 +68,6 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-    // weeksToShow,
   };
 
   const { classes } = useStyles<DatepickerCalendarStylesProps>(DatepickerCalendar.displayName, {
@@ -75,8 +82,9 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
   });
 
   let grid = getDayGrid(gridOptions);
-  // Slicing because grid contains extra 1 week up-front and up end.
+  // Slicing because grid contains extra 1 week in the front and in the back.
   grid = grid.slice(1, grid.length - 1);
+
   const element = (
     <Ref innerRef={datepickerCalendarRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
