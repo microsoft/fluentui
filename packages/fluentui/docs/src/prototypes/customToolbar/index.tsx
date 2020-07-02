@@ -68,7 +68,6 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
     }
 
     telemetry.enabled = false;
-    
     const totals = _.reduce(
       telemetry.performance,
       (acc, next) => {
