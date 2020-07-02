@@ -27,8 +27,21 @@ export interface ICalendarMonthState {
   previousNavigatedDate?: Date;
 }
 
-export class CalendarMonthBase extends React.Component<ICalendarMonthProps, ICalendarMonthState> {
-  public static defaultProps: Partial<ICalendarMonthProps> = {
+export const CalendarMonthBase = React.forwardRef(
+  (props: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    return <CalendarMonthBaseClass {...props} hoisted={{ forwardedRef }} />;
+  },
+);
+CalendarMonthBase.displayName = 'CalendarMonthBase';
+
+interface ICalendarMonthBaseClassProps extends ICalendarMonthProps {
+  hoisted: {
+    forwardedRef: React.Ref<HTMLDivElement>;
+  };
+}
+
+class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProps, ICalendarMonthState> {
+  public static defaultProps: Partial<ICalendarMonthBaseClassProps> = {
     styles: getStyles,
     strings: undefined,
     navigationIcons: defaultIconStrings,
@@ -41,7 +54,7 @@ export class CalendarMonthBase extends React.Component<ICalendarMonthProps, ICal
   private _focusOnUpdate: boolean;
 
   public static getDerivedStateFromProps(
-    nextProps: Readonly<ICalendarMonthProps>,
+    nextProps: Readonly<ICalendarMonthBaseClassProps>,
     prevState: Readonly<ICalendarMonthState>,
   ): Partial<ICalendarMonthState> | null {
     const previousYear = prevState.previousNavigatedDate ? prevState.previousNavigatedDate.getFullYear() : undefined;
@@ -65,7 +78,7 @@ export class CalendarMonthBase extends React.Component<ICalendarMonthProps, ICal
     return {};
   }
 
-  constructor(props: ICalendarMonthProps) {
+  constructor(props: ICalendarMonthBaseClassProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -127,6 +140,7 @@ export class CalendarMonthBase extends React.Component<ICalendarMonthProps, ICal
       // use navigated date for the year picker
       return (
         <CalendarYear
+          ref={this.props.hoisted.forwardedRef}
           key={'calendarYear'}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
@@ -163,7 +177,7 @@ export class CalendarMonthBase extends React.Component<ICalendarMonthProps, ICal
       : yearString;
 
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} ref={this.props.hoisted.forwardedRef}>
         <div className={classNames.headerContainer}>
           <button
             className={classNames.currentItemButton}

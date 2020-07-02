@@ -4,20 +4,11 @@ import {
   ICalendarYearProps,
   ICalendarYearRange,
   ICalendarYearRangeToString,
-  ICalendarYear,
   ICalendarYearHeaderProps,
   ICalendarYearStyleProps,
   ICalendarYearStyles,
 } from './CalendarYear.types';
-import {
-  KeyCodes,
-  getRTL,
-  classNamesFunction,
-  css,
-  format,
-  initializeComponentRef,
-  IRefObject,
-} from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes, getRTL, classNamesFunction, css, format, IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarIconStrings } from '../Calendar.types';
