@@ -3,11 +3,11 @@ export * from './accessibility/types';
 
 export * from '@fluentui/react-compose';
 
-export { AutoFocusZone } from './FocusZone/AutoFocusZone';
+export { default as AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
-export { FocusTrapZone } from './FocusZone/FocusTrapZone';
+export { default as FocusTrapZone } from './FocusZone/FocusTrapZone';
 export * from './FocusZone/FocusTrapZone.types';
-export { FocusZone } from './FocusZone/FocusZone';
+export { default as FocusZone } from './FocusZone/FocusZone';
 export * from './FocusZone/FocusZone.types';
 export * from './FocusZone/focusUtilities';
 
