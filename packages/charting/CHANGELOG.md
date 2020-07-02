@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.9)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.8..@uifabric/charting_v2.3.9)
+
+### Patches
+
+- removing benchmarkData and targetData props from the stackedbar chart ([PR #13816](https://github.com/microsoft/fluentui/pull/13816) by v-sivsar@microsoft.com)
 
 ## [2.3.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.8)
 

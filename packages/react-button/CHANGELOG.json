@@ -2,6 +2,29 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@fluentui/react-button_v0.6.2",
+      "version": "0.6.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disabling as test for isConformant test",
+            "author": "esteban.230@hotmail.com",
+            "commit": "29ea83a5b421019b4c6c71301bfcbda849a650ad",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding bundle task to react-button package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4d02c9112111b40532411757c37878124c581b38",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jun 2020 12:33:36 GMT",
       "tag": "@fluentui/react-button_v0.6.0",
       "version": "0.6.0",
