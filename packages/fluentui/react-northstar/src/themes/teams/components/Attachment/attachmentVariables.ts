@@ -17,7 +17,7 @@ export type AttachmentVariables = {
   focusColor: string;
 
   progressColor: string;
-  progressHeight: number;
+  progressHeight: string;
 
   headerFontSize: string;
   headerFontWeight: number;
@@ -56,7 +56,7 @@ export default (siteVariables: any): AttachmentVariables => ({
   focusColor: undefined,
 
   progressColor: siteVariables.colorScheme.green.background,
-  progressHeight: 4,
+  progressHeight: pxToRem(4),
 
   headerFontSize: siteVariables.fontSizes.medium,
   headerFontWeight: siteVariables.fontWeightSemibold,

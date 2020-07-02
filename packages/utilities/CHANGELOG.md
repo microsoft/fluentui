@@ -1,8 +1,26 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jun 2020 12:33:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.22.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.22.0)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.21.4..@uifabric/utilities_v7.22.0)
+
+### Minor changes
+
+- getNativeProps: changed to object lookups rather than array searching to determine native props. ([PR #13842](https://github.com/microsoft/fluentui/pull/13842) by dzearing@microsoft.com)
+
+## [7.21.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.4)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.21.3..@uifabric/utilities_v7.21.4)
+
+### Patches
+
+- Fix scroll position math for overscrolling (#13555) ([PR #13622](https://github.com/microsoft/fluentui/pull/13622) by kai@substantial.com)
 
 ## [7.21.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.21.1)
 

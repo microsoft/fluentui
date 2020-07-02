@@ -6,6 +6,6 @@
     "packages/office-ui-fabric-react",
     "packages/react-next",
     "packages/react-icons"
-  ],  
-  "sandboxes": ["u0e3w"]
+  ],
+  "sandboxes": ["u0e3w", "/apps/codesandbox-react-template"]
 }

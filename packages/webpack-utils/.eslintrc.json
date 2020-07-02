@@ -1,0 +1,9 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/node--legacy"],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "deprecation/deprecation": "off",
+    "prefer-arrow-callback": "off"
+  }
+}

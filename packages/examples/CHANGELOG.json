@@ -2,6 +2,21 @@
   "name": "@fluentui/examples",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/examples_v0.1.87",
+      "version": "0.1.87",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 May 2020 05:52:46 GMT",
       "tag": "@fluentui/examples_v0.1.59",
       "version": "0.1.59",

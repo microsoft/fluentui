@@ -2,6 +2,98 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.52",
+      "version": "8.0.0-alpha.52",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "High contrast in Edge Chromium: fix TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.50",
+      "version": "8.0.0-alpha.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating SearchBox to a function component inside React-Next",
+            "author": "czearing@outlook.com",
+            "commit": "4e4d3fe97c54313f53afdf613261a966fcb214a5",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Checkbox: use CheckMark icon from react-icons",
+            "author": "xgao@microsoft.com",
+            "commit": "b5f72ca6a173041996033792afeb64ef1343f51b",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.49",
+      "version": "8.0.0-alpha.49",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Removing unnecessary code from storybook/preview.js.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "51b26a4f868cee2fde2bc28b6067f5503d2c3db7",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Jun 2020 12:50:17 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.48",
+      "version": "8.0.0-alpha.48",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Checkbox: deprecate onRenderLabel and properly support label shorthand",
+            "author": "xgao@microsoft.com",
+            "commit": "e08d71e7149fdc0c9522cef9980fe0da569413fc",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update typings related to mergeProps typing",
+            "author": "xgao@microsoft.com",
+            "commit": "457a25432c22a9d8bc18bbe8e4f40bc7f4fb4a1a",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Fixing React-Next's Toggle.scss focus value",
+            "author": "czearing@outlook.com",
+            "commit": "376feb017194029b5951cc37714a67d5d1843a08",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2020 12:37:46 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.47",
       "version": "8.0.0-alpha.47",
