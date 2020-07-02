@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import NestingContext from '../NestingContext';
+import { NestingContext } from '../NestingContext';
 import { NestedContextProps } from '../types';
-import RefStack from '../utils/RefStack';
+import { RefStack } from '../utils/RefStack';
 import { UseNestingHookResult } from './types';
 
 const registrySet = new RefStack();

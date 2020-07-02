@@ -1,10 +1,10 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import handleRef from './handleRef';
+import { handleRef } from './handleRef';
 import { RefProps, refPropType } from './types';
 
-export default class RefForward extends React.Component<RefProps> {
+export class RefForward extends React.Component<RefProps> {
   static displayName = 'RefForward';
 
   // TODO: use Babel plugin for this

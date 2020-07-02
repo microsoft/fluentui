@@ -4,8 +4,8 @@ import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
-import getElementType from '../utils/getElementType';
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { getElementType } from '../utils/getElementType';
+import { getUnhandledProps } from '../utils/getUnhandledProps';
 import {
   getNextElement,
   getFirstTabbable,
@@ -20,7 +20,7 @@ import { FocusTrapZoneProps } from './FocusTrapZone.types';
 /** FocusTrapZone is used to trap the focus in any html element placed in body
  *  and hide other elements outside of Focus Trap Zone from accessibility tree.
  *  Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone. */
-export default class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
+export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
   static _focusStack: FocusTrapZone[] = [];
 
   _root: { current: HTMLElement | null } = { current: null };

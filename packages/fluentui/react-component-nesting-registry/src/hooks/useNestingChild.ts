@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import NestingContext from '../NestingContext';
+import { NestingContext } from '../NestingContext';
 import { NestingContextValue } from '../types';
 import { UseNestingHookResult } from './types';
 
