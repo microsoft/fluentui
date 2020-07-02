@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Revert \"resolveSlotProps: when slot/shorthand prop has JSX element as children, slot should be completely replaced by it (#13827)\"",
+  "packageName": "@fluentui/react-compose",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-01T17:08:42.245Z"
+}
