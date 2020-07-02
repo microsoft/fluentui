@@ -121,6 +121,12 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 }
 
 // @public (undocumented)
+export interface IDateFormatting {
+    format: (date: Date) => string;
+    parse: (date: string) => Date;
+}
+
+// @public (undocumented)
 export interface IDateGridStrings {
     days: string[];
     months: string[];

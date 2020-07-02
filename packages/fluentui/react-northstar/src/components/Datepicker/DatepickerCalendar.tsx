@@ -74,7 +74,9 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
     rtl: context.rtl,
   });
 
-  const grid = getDayGrid(gridOptions);
+  let grid = getDayGrid(gridOptions);
+  // Slicing because grid contains extra 1 week up-front and up end.
+  grid = grid.slice(1, grid.length - 1);
   const element = (
     <Ref innerRef={datepickerCalendarRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -84,13 +86,12 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
             ...unhandledProps,
           })}
         >
-          <Grid rows={weeksToShow + 1} columns={DAYS_IN_WEEK}>
+          <Grid rows={grid.length + 1} columns={grid[0].length}>
             {_.times(DAYS_IN_WEEK, dayNumber => (
               <Text align="center" content={localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK]} />
             ))}
             {_.map(grid, week =>
               _.map(week, (day: IDay) => {
-                const buttonStyles = day.isSelected ? { 'background-color': '#EDEBE9' } : {};
                 return (
                   <Button
                     key={day.key}
@@ -99,7 +100,8 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
                     onClick={() => {
                       onDaySelect(day);
                     }}
-                    styles={buttonStyles}
+                    primary={day.isSelected}
+                    disabled={!day.isInMonth}
                     text
                   />
                 );

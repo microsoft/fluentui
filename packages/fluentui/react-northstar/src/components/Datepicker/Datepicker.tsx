@@ -21,12 +21,13 @@ import { CalendarIcon } from '@fluentui/react-icons-northstar';
 import Popup from '../Popup/Popup';
 import {
   DayOfWeek,
-  IDayGridOptions,
+  IRestrictedDatesOptions,
   FirstWeekOfYear,
   DateRangeType,
   IDateGridStrings,
   formatMonthDayYear,
   IDateFormatting,
+  IDayGridOptions,
 } from '@fluentui/date-time-utilities';
 import DatepickerCalendar from './DatepickerCalendar';
 
@@ -49,6 +50,55 @@ const DEFAULT_STRINGS: IDateGridStrings = {
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 };
+
+// TODO: Merge with DayGridOptions
+export interface IDatepickerOptions extends IRestrictedDatesOptions {
+  /**
+   * The first day of the week for your locale.
+   */
+  firstDayOfWeek: DayOfWeek;
+
+  /**
+   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+   */
+  firstWeekOfYear: FirstWeekOfYear;
+
+  /**
+   * The date range type indicating how  many days should be selected as the user
+   * selects days
+   */
+  dateRangeType: DateRangeType;
+
+  /**
+   * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
+   * views.
+   * @defaultValue 1
+   */
+  daysToSelectInDayView?: number;
+
+  /**
+   * Value of today. If null, current time in client machine will be used.
+   */
+  today?: Date;
+
+  /**
+   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+   */
+  showWeekNumbers?: boolean;
+
+  /**
+   * How many weeks to show by default. If not provided, will show enough weeks to display the current
+   * month, between 4 and 6 depending
+   */
+  weeksToShow?: number;
+
+  /**
+   * The days that are selectable when `dateRangeType` is WorkWeek.
+   * If `dateRangeType` is not WorkWeek this property does nothing.
+   */
+  workWeekDays?: DayOfWeek[];
+}
 
 export interface DatepickerProps extends IDateGridStrings, IDayGridOptions, IDateFormatting, UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -86,12 +136,12 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
   const [open, setOpen] = React.useState(false);
-  const [selectedDate, setSelectedDate] = React.useState(props.today ?? new Date());
-  const valueFormatter = date => formatMonthDayYear(date, DEFAULT_STRINGS);
+  const [selectedDate, setSelectedDate] = React.useState();
+  const valueFormatter = date => (date ? formatMonthDayYear(date, DEFAULT_STRINGS) : '');
   const { firstDayOfWeek, firstWeekOfYear, dateRangeType, weeksToShow } = props;
   const calendarOptions: IDayGridOptions = {
-    selectedDate,
-    navigatedDate: selectedDate,
+    selectedDate: selectedDate ?? props.today ?? new Date(),
+    navigatedDate: selectedDate ?? props.today ?? new Date(),
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
