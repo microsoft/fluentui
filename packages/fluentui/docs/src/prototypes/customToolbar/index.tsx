@@ -66,9 +66,7 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
     if (!telemetryEnabled || !telemetry) {
       return;
     }
-
     telemetry.enabled = false;
-
     const totals = _.reduce(
       telemetry.performance,
       (acc, next) => {
@@ -78,10 +76,9 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
       },
       { instances: 0, msTotal: 0 },
     );
-
     /* eslint-disable no-console */
     console.log(`Rendered ${totals.instances} Fluent UI components in ${totals.msTotal} ms`);
-    console.table(telemetry.performance);
+    console.log(telemetry.performance);
     /* eslint-enable no-console */
   });
 
