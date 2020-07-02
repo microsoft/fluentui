@@ -55,7 +55,6 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
         [`> .${chatMessageSlotClassNames.actionMenu}`]: {
           opacity: 1,
           width: 'auto',
-          // we need higher zIndex for the action menu in order to be displayed above the focus border of the chat message
           zIndex: v.overlayZIndex,
           '[data-popper-escaped]': {
             opacity: 0,
@@ -86,7 +85,8 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     borderColor: v.reactionGroupBorderColor,
     borderRadius: v.borderRadius,
     boxShadow: v.actionMenuBoxShadow,
-    zIndex: -1,
+    // we need higher zIndex for the action menu in order to be displayed above the focus border of the chat message
+    zIndex: p.focused ? v.overlayZIndex : -1,
     ...(_.isNil(v.showActionMenu) && {
       overflow: p.focused ? 'visible' : 'hidden',
       // hide and squash actions menu to prevent accidental hovers over its invisible area
