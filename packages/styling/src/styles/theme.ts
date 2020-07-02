@@ -9,7 +9,7 @@ import { IRawStyle } from '@uifabric/merge-styles';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
-  semanticColors: _makeSemanticColors(DefaultPalette, false, false),
+  semanticColors: _makeSemanticColors(DefaultPalette, DefaultEffects, undefined, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
   disableGlobalClassNames: false,
@@ -302,7 +302,7 @@ function _makeSemanticColors(
     listTextColor: '',
     menuItemBackgroundChecked: p.neutralLight,
 
-    // mix in customized semantic slots
+    // mix in customized semantic slots for second pass
     ...s,
   };
 

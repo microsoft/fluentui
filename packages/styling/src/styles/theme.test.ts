@@ -97,13 +97,13 @@ describe('loadTheme', () => {
     it('does not overwrite customized semantic slots', () => {
       const userTheme = {
         semanticColors: {
-          cardShadowHovered: 'green',
+          cardShadowHovered: 'hello world',
         },
       };
       loadTheme(userTheme);
       const newTheme = getTheme();
 
-      expect(newTheme.semanticColors.cardShadowHovered).toEqual('green');
+      expect(newTheme.semanticColors.cardShadowHovered).toEqual('hello world');
     });
   });
 });
