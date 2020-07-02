@@ -29,6 +29,7 @@ describe('Input', () => {
       onKeyUp: 'input',
     },
     autoControlledProps: ['value'],
+    forwardsRefTo: `Box[className~="${inputSlotClassNames.input}"]`,
   });
   implementsShorthandProp(Input)('input', Box, { mapsValueToProp: 'type' });
 

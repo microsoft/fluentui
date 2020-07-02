@@ -55,7 +55,7 @@ export const ActionableView: IActionableComponent['view'] = (props, slots) => {
 
 interface IActionableRootType {
   htmlType: 'link' | 'button';
-  propertiesType: string[];
+  propertiesType: string[] | Record<string, number>;
 }
 
 function _deriveRootType(props: IActionableViewProps): IActionableRootType {

@@ -2,6 +2,36 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/date-time_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "High Contrast in Edge Chromium: fix Label and TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/date-time_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "CalendarDayGrid: migrate component to function component",
+            "author": "miclo@microsoft.com",
+            "commit": "30df63d7bf33234647171b8fc5fb5122154674e1",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/date-time_v7.9.3",
       "version": "7.9.3",
