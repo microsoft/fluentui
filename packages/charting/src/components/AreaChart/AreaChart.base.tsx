@@ -75,8 +75,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _yAxisTickCount: number;
   private _isGraphDraw: boolean = true;
   private _uniqueIdForGraph: string;
-  private _circleId: string;
   private _verticalLineId: string;
+  private _callOutId: string;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   private chartContainer: HTMLDivElement;
@@ -106,10 +106,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       yCalloutValue: '',
     };
     this._refArray = [];
+    this._adjustProps();
     this._uniqueIdForGraph = getId('areaChart_');
     this._verticalLineId = getId('verticalLine_');
-    this._circleId = getId('circle_');
     this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
+    this.dataSet = this._createDataSet();
   }
 
   public componentDidMount(): void {
@@ -117,13 +118,18 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public componentDidUpdate(prevProps: IAreaChartProps): void {
-    if (this._isGraphDraw) {
+    if (
+      prevProps.data !== this.props.data ||
+      prevProps.height !== this.props.height ||
+      prevProps.width !== this.props.width ||
+      this._isGraphDraw
+    ) {
+      this._fitParentContainer();
+      this._adjustProps();
+      this.dataSet = this._createDataSet();
+      this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
       this._drawGraph();
       this._isGraphDraw = false;
-    }
-    if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
-      this._fitParentContainer();
-      this._drawGraph();
     }
   }
 
@@ -133,14 +139,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat } = this.props; // remove props isDate type from tyeps
+    const { theme, className, styles, tickValues, tickFormat } = this.props;
 
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
-
-    this._adjustProps();
-    this.dataSet = this._createDataSet();
 
     const xMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.x as number);
@@ -192,6 +195,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       <div
         id="d3AreaChart"
         className={this._classNames.root}
+        role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -220,6 +224,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         </div>
         {!this.props.hideTooltip && this.state.isCalloutVisible ? (
           <Callout
+            id={this._callOutId}
             target={this.state.refSelected}
             gapSpace={15}
             isBeakVisible={false}
@@ -310,7 +315,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         (point: ILineChartDataPoint) =>
           (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) === valToCheck,
       );
-
       // tslint:disable-next-line:no-any
       const singleDataset: any = {};
       filteredChartPoints.map((singleDataPoint: ILineChartDataPoint, index: number) => {
@@ -318,7 +322,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         singleDataset[`chart${index}`] = singleDataPoint.y;
       });
       dataSet.push(singleDataset);
-
       // removing compared objects from array
       const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
       tempArr = tempArr.filter(
@@ -330,7 +333,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _prepareDatapoints(maxVal: number, minVal: number): number[] {
     const val = Math.ceil((maxVal - minVal) / this._yAxisTickCount);
-
     const dataPointsArray: number[] = [minVal, minVal + val];
     while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
       dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
@@ -358,7 +360,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         .call(yAxis)
         .selectAll('text');
     }
-
     return yAxis;
   };
 
@@ -489,6 +490,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     d3Select(`#dot${refArrayIndex}`)
       .attr('fill', '#fff')
       .attr('r', 8);
+    this._callOutId = refArrayIndex;
     this.updateVerticalLine(xLineVal, 'visibility');
     this.onMouseHover(d3Event.target, x, xAxisCalloutData);
   };
@@ -539,6 +541,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     refArrayIndex: string,
     xAxisCalloutData: string,
   ) => {
+    this._callOutId = refArrayIndex;
     this._refArray.push({ legendText: refArrayIndex, refElement: d3Event.target });
     d3Select(`#dot${refArrayIndex}`)
       .attr('fill', '#fff')
@@ -665,8 +668,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       .enter()
       .append('circle')
       .attr('class', 'dot')
-      .attr('id', (d: IDPointType, index: number) => `dot${d.index * stackedData[0].length + index}_${this._circleId}`)
+      .attr(
+        'id',
+        (d: IDPointType, index: number) => `dot${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
+      )
       .attr('focusable', true)
+      .attr(
+        'aria-labelledby',
+        (d: IDPointType, index: number) => `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
+      )
       .attr('data-is-focusable', true)
       .attr('cx', (d: IDPointType) => xScale(d.point.xVal))
       .attr('cy', (d: IDPointType) => yScale(d.point.values[1]))
@@ -681,18 +691,18 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         return that.handleMouseAction(
           xScale(d.point.xVal),
           d.point.xVal,
-          `${d.index * stackedData[0].length + index}_${this._circleId}`,
+          `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
           this._points[d.index].data[index].xAxisCalloutData!,
         );
       })
       .on('mouseout', (d: IDPointType, index: number) =>
         that.mouseOutAction(
-          `${d.index * stackedData[0].length + index}_${this._circleId}`,
+          `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
           this._points[d.index].color,
         ),
       )
       .on('focus', (d: IDPointType, index: number) => {
-        const refArrayIndex = `${d.index * stackedData[0].length + index}_${this._circleId}`;
+        const refArrayIndex = `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`;
         return that.handleFocusAction(
           xScale(d.point.xVal),
           d.point.xVal,
@@ -703,14 +713,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       })
       .on('blur', (d: IDPointType, index: number) =>
         that.mouseOutAction(
-          `${d.index * stackedData[0].length + index}_${this._circleId}`,
+          `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
           this._points[d.index].color,
         ),
       )
       .on('click', (d: IDPointType, index: number) =>
         that.onDataPointClick(
           this._points[d.index].data[index].onDataPointClick!,
-          `${d.index * stackedData[0].length + index}_${this._circleId}`,
+          `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
           this._points[d.index].color,
         ),
       );
