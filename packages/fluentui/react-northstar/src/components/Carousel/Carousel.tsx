@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Ref } from '@fluentui/react-component-ref';
-import Animation from '../Animation/Animation';
+import { Animation } from '../Animation/Animation';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import {
@@ -23,11 +23,11 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import CarouselItem, { CarouselItemProps } from './CarouselItem';
-import Text from '../Text/Text';
-import CarouselNavigation, { CarouselNavigationProps } from './CarouselNavigation';
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
-import CarouselPaddle, { CarouselPaddleProps } from './CarouselPaddle';
+import { CarouselItem, CarouselItemProps } from './CarouselItem';
+import { Text } from '../Text/Text';
+import { CarouselNavigation, CarouselNavigationProps } from './CarouselNavigation';
+import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
+import { CarouselPaddle, CarouselPaddleProps } from './CarouselPaddle';
 import {
   ComponentWithAs,
   getElementType,
@@ -135,7 +135,7 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
  * @accessibilityIssues
  * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
  */
-const Carousel: ComponentWithAs<'div', CarouselProps> &
+export const Carousel: ComponentWithAs<'div', CarouselProps> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;
@@ -515,5 +515,3 @@ Carousel.create = createShorthandFactory({
   Component: Carousel,
   mappedArrayProp: 'items',
 });
-
-export default Carousel;

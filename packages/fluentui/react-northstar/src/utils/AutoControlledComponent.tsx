@@ -25,7 +25,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import UIComponent from './UIComponent';
+import { UIComponent } from './UIComponent';
 
 const getDefaultPropName = prop => `default${prop[0].toUpperCase() + prop.slice(1)}`;
 
@@ -73,7 +73,7 @@ export const getAutoControlledStateValue = (
   // otherwise, undefined
 };
 
-export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent<P, S> {
+export class AutoControlledComponent<P = {}, S = {}> extends UIComponent<P, S> {
   constructor(props: P, ctx: any) {
     super(props, ctx);
 

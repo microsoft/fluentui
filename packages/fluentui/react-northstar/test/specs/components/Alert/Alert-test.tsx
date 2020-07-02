@@ -8,7 +8,7 @@ import {
 } from 'test/specs/commonTests';
 
 import Alert, { alertSlotClassNames } from 'src/components/Alert/Alert';
-import Box from 'src/components/Box/Box';
+import { Box } from 'src/components/Box/Box';
 import AlertDismissAction from 'src/components/Alert/AlertDismissAction';
 
 const alertImplementsShorthandProp = implementsShorthandProp(Alert);

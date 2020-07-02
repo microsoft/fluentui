@@ -29,14 +29,14 @@ import {
   isFromKeyboard,
   createShorthand,
 } from '../../utils';
-import List, { ListProps } from '../List/List';
-import DropdownItem, { DropdownItemProps } from './DropdownItem';
-import DropdownSelectedItem, { DropdownSelectedItemProps } from './DropdownSelectedItem';
-import DropdownSearchInput, { DropdownSearchInputProps } from './DropdownSearchInput';
-import Button, { ButtonProps } from '../Button/Button';
+import { List, ListProps } from '../List/List';
+import { DropdownItem, DropdownItemProps } from './DropdownItem';
+import { DropdownSelectedItem, DropdownSelectedItemProps } from './DropdownSelectedItem';
+import { DropdownSearchInput, DropdownSearchInputProps } from './DropdownSearchInput';
+import { Button, ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import Box, { BoxProps } from '../Box/Box';
-import Portal from '../Portal/Portal';
+import { Box, BoxProps } from '../Box/Box';
+import { Portal } from '../Portal/Portal';
 import {
   ALIGNMENTS,
   POSITIONS,
@@ -129,7 +129,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** A dropdown can have inverted colors. */
   inverted?: boolean;
 
-  /** Array of props for generating list options (Dropdown.Item[]) and selected item labels (Dropdown.SelectedItem[]), if it's a multiple selection. */
+  /** Array of props for generating list options (_Dropdown.Item[]) and selected item labels (_Dropdown.SelectedItem[]), if it's a multiple selection. */
   items?: ShorthandCollection<DropdownItemProps>;
 
   /**
@@ -200,7 +200,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   onChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
-   * Called when the focus moves out from dropdown.
+   * Called when the focus moves out from _Dropdown.
    * @param event - React's original SyntheticEvent.
    */
   onBlur?: (event: React.MouseEvent | React.KeyboardEvent | null) => void;
@@ -212,7 +212,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   placeholder?: string;
 
   /**
-   * A render function to customize how items are rendered in the dropdown.
+   * A render function to customize how items are rendered in the _Dropdown.
    *
    * @param Component - The computed component for this slot.
    * @param props - The computed props for this slot.
@@ -281,7 +281,7 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
   triggerButton: `${dropdownClassName}__trigger-button`,
 };
 
-class Dropdown extends AutoControlledComponent<DropdownProps, DropdownState> {
+class _Dropdown extends AutoControlledComponent<DropdownProps, DropdownState> {
   buttonRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
   listRef = React.createRef<HTMLElement>();
@@ -1598,11 +1598,11 @@ class Dropdown extends AutoControlledComponent<DropdownProps, DropdownState> {
 
   clearA11ySelectionMessage: DebounceResultFn<() => void> = _.debounce(() => {
     this.setState({ a11ySelectionStatus: '' });
-  }, Dropdown.a11yStatusCleanupTime);
+  }, _Dropdown.a11yStatusCleanupTime);
 
   clearStartingString: DebounceResultFn<() => void> = _.debounce(() => {
     this.setState({ startingString: '' });
-  }, Dropdown.charKeyPressedCleanupTime);
+  }, _Dropdown.charKeyPressedCleanupTime);
 }
 
 /**
@@ -1614,7 +1614,7 @@ class Dropdown extends AutoControlledComponent<DropdownProps, DropdownState> {
  * @accessibilityIssues
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
  */
-export default (Dropdown as unknown) as ComponentWithAs<'div', DropdownProps> & {
+export const Dropdown = (_Dropdown as unknown) as ComponentWithAs<'div', DropdownProps> & {
   Item: typeof DropdownItem;
   SelectedItem: typeof DropdownSelectedItem;
 

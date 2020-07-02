@@ -21,9 +21,9 @@ import {
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import SplitButtonToggle, { SplitButtonToggleProps } from './SplitButtonToggle';
-import Button, { ButtonProps } from '../Button/Button';
-import MenuButton, { MenuButtonProps } from '../MenuButton/MenuButton';
+import { SplitButtonToggle, SplitButtonToggleProps } from './SplitButtonToggle';
+import { Button, ButtonProps } from '../Button/Button';
+import { MenuButton, MenuButtonProps } from '../MenuButton/MenuButton';
 import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
@@ -109,7 +109,7 @@ export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & 
 /**
  * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
  */
-const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
+export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
   FluentComponentStaticProps<SplitButtonProps> & {
     Toggle: typeof SplitButtonToggle;
   } = props => {
@@ -319,5 +319,3 @@ SplitButton.handledProps = Object.keys(SplitButton.propTypes) as any;
 SplitButton.create = createShorthandFactory({
   Component: SplitButton,
 });
-
-export default SplitButton;

@@ -2,7 +2,7 @@ import { handlesAccessibility, implementsShorthandProp, isConformant } from 'tes
 
 import ChatMessage from 'src/components/Chat/ChatMessage';
 import Text from 'src/components/Text/Text';
-import Box from 'src/components/Box/Box';
+import { Box } from 'src/components/Box/Box';
 import Menu from 'src/components/Menu/Menu';
 import ChatMessageDetails from 'src/components/Chat/ChatMessageDetails';
 

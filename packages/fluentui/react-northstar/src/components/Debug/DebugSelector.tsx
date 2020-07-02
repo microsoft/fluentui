@@ -4,8 +4,8 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 
 import { isBrowser } from '../../utils';
 
-import FiberNavigator from './FiberNavigator';
-import DebugRect from './DebugRect';
+import { FiberNavigator } from './FiberNavigator';
+import { DebugRect } from './DebugRect';
 
 export type DebugSelectorProps = {
   /** Existing document the popup should add listeners. */
@@ -34,7 +34,7 @@ const INITIAL_STATE: DebugSelectorState = {
 //         - Make hotkey invocation generic, or take prop for active state
 //           since Debug uses ctrl + 'd' and DebugSelector uses ctrl + 'c' in react-builder
 //
-class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorState> {
+export class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorState> {
   state = INITIAL_STATE;
 
   static defaultProps = {
@@ -119,5 +119,3 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
     );
   }
 }
-
-export default DebugSelector;

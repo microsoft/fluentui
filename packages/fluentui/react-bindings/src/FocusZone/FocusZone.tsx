@@ -55,7 +55,7 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export default class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
+export class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
   static propTypes = {
     className: PropTypes.string,
     direction: PropTypes.number,

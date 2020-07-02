@@ -50,7 +50,7 @@ export interface Conformant {
  * Assert Component conforms to guidelines that are applicable to all components.
  * @param Component - A component that should conform.
  */
-export default function isConformant(
+export function isConformant(
   Component: React.ComponentType<any> & {
     handledProps?: string[];
     autoControlledProps?: string[];

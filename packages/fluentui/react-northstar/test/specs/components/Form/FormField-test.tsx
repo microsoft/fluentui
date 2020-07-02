@@ -7,7 +7,7 @@ import RadioGroup from 'src/components/RadioGroup/RadioGroup';
 import Input from 'src/components/Input/Input';
 import Text from 'src/components/Text/Text';
 import FormField, { formFieldMessageClassName } from 'src/components/Form/FormField';
-import Box from 'src/components/Box/Box';
+import { Box } from 'src/components/Box/Box';
 import { PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 
 const inputIconClassName = '.ui-input__icon';

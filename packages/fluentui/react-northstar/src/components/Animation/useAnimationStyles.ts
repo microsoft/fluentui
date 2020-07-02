@@ -20,7 +20,7 @@ type UseAnimationStylesResult = {
 const animationCache = new WeakMap<ThemePrepared, Record<string, UseAnimationStylesResult>>();
 export const animationClassName = 'ui-animation';
 
-const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
+export const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
   const { theme, rtl, disableAnimations, renderer, performance }: ProviderContextPrepared = React.useContext(
     ThemeContext,
   );
@@ -97,5 +97,3 @@ const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnim
   }
   return result;
 };
-
-export default useAnimationStyles;

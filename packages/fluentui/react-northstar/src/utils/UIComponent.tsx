@@ -5,10 +5,10 @@ import * as _ from 'lodash';
 import { ThemeContext } from 'react-fela';
 
 import { ProviderContextPrepared } from '../types';
-import renderComponent, { RenderResultConfig } from './renderComponent';
+import { renderComponent, RenderResultConfig } from './renderComponent';
 
 // TODO @Bugaa92: deprecated by createComponent.tsx
-class UIComponent<P, S = {}> extends React.Component<P, S> {
+export class UIComponent<P, S = {}> extends React.Component<P, S> {
   readonly childClass = this.constructor as typeof UIComponent;
   static defaultProps: { [key: string]: any };
   static displayName: string;
@@ -72,5 +72,3 @@ class UIComponent<P, S = {}> extends React.Component<P, S> {
     );
   }
 }
-
-export default UIComponent;

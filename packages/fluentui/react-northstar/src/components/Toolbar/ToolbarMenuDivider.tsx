@@ -30,7 +30,7 @@ export const toolbarMenuDividerClassName = 'ui-toolbar__menudivider';
 /**
  * A ToolbarMenuDivider adds non-actionable separator between items of ToolbarMenu.
  */
-const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps, {}, {}>(
+export const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -77,5 +77,3 @@ ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();
 ToolbarMenuDivider.defaultProps = {
   as: 'li',
 };
-
-export default ToolbarMenuDivider;

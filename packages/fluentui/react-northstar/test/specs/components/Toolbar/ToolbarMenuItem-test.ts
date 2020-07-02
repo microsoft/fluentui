@@ -1,6 +1,6 @@
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 
-import Box from 'src/components/Box/Box';
+import { Box } from 'src/components/Box/Box';
 import ToolbarMenu from 'src/components/Toolbar/ToolbarMenu';
 import ToolbarMenuItem from 'src/components/Toolbar/ToolbarMenuItem';
 

@@ -27,7 +27,7 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
+import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -76,7 +76,7 @@ export const carouselNavigationClassName = 'ui-carousel__navigation';
 /**
  * A Carousel navigation helps switching between Carousel items.
  */
-const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
+export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
   FluentComponentStaticProps<CarouselNavigationProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
@@ -192,5 +192,3 @@ CarouselNavigation.create = createShorthandFactory({
   Component: CarouselNavigation,
   mappedArrayProp: 'items',
 });
-
-export default CarouselNavigation;

@@ -7,7 +7,7 @@ import {
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -96,7 +96,7 @@ export const treeTitleSlotClassNames = {
 /**
  * A TreeTitle renders a title of TreeItem.
  */
-const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps> = props => {
+export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
@@ -233,5 +233,3 @@ TreeTitle.create = createShorthandFactory({
   Component: TreeTitle,
   mappedProp: 'content',
 });
-
-export default TreeTitle;

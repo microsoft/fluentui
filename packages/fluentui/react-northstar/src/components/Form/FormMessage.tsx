@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 interface FormMessageOwnProps {
   error?: boolean;
@@ -15,7 +15,7 @@ export const formMessageClassName = 'ui-form__message';
 /**
  * An FormMessage provides a slot for message in the FormField.
  */
-const FormMessage = compose<'span', FormMessageProps, FormMessageStylesProps, BoxProps, {}>(Box, {
+export const FormMessage = compose<'span', FormMessageProps, FormMessageStylesProps, BoxProps, {}>(Box, {
   className: formMessageClassName,
   displayName: 'FormMessage',
 
@@ -32,5 +32,3 @@ FormMessage.defaultProps = {
   as: 'span',
 };
 FormMessage.propTypes = commonPropTypes.createCommon();
-
-export default FormMessage;
