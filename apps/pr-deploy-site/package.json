@@ -13,6 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/docs": "^0.50.0",
+    "@fluentui/react-button": "^0.6.1",
+    "@fluentui/react-next": "^8.0.0-alpha.52",
     "@uifabric/charting": "^2.3.8",
     "@uifabric/date-time": "^7.10.2",
     "@uifabric/experiments": "^7.26.12",
