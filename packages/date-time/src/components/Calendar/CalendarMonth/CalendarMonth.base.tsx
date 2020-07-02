@@ -150,6 +150,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
     });
 
     if (this.props.hoisted.isYearPickerVisible) {
+      const [onRenderYear, yearStrings] = getYearStrings(this.props);
       // use navigated date for the year picker
       return (
         <CalendarYear
@@ -163,13 +164,8 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
           selectedYear={
             selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined
           }
-          onRenderYear={this._onRenderYear}
-          strings={{
-            rangeAriaLabel: this._yearRangeToString,
-            prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
-            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
-            headerAriaLabelFormatString: this.props.strings.yearPickerHeaderAriaLabel,
-          }}
+          onRenderYear={onRenderYear}
+          strings={yearStrings}
           componentRef={this.props.hoisted.calendarYearRef}
           styles={styles}
           highlightCurrentYear={highlightCurrentMonth}
@@ -367,13 +363,10 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
     this.props.hoisted.focusOnNextUpdate();
     this.props.hoisted.setIsYearPickerVisible(false);
   };
+}
 
-  private _onRenderYear = (year: number) => {
-    return this._yearToString(year);
-  };
-
-  private _yearToString = (year: number) => {
-    const { navigatedDate, dateTimeFormatter } = this.props;
+function getYearStrings({ strings, navigatedDate, dateTimeFormatter }: ICalendarMonthProps) {
+  const yearToString = (year: number) => {
     if (dateTimeFormatter) {
       // create a date based on the current nav date
       const yearFormattingDate = new Date(navigatedDate.getTime());
@@ -383,21 +376,25 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
     return String(year);
   };
 
-  private _yearRangeToString = (yearRange: ICalendarYearRange) => {
-    return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
+  const yearRangeToString = (yearRange: ICalendarYearRange) => {
+    return `${yearToString(yearRange.fromYear)} - ${yearToString(yearRange.toYear)}`;
   };
 
-  private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
-    const { strings } = this.props;
-    return strings.nextYearRangeAriaLabel
-      ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}`
-      : '';
+  const yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
+    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${yearRangeToString(yearRange)}` : '';
   };
 
-  private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
-    const { strings } = this.props;
-    return strings.prevYearRangeAriaLabel
-      ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}`
-      : '';
+  const yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
+    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${yearRangeToString(yearRange)}` : '';
   };
+
+  return [
+    yearToString,
+    {
+      rangeAriaLabel: yearRangeToString,
+      prevRangeAriaLabel: yearRangeToPrevDecadeLabel,
+      nextRangeAriaLabel: yearRangeToNextDecadeLabel,
+      headerAriaLabelFormatString: strings.yearPickerHeaderAriaLabel,
+    } as const,
+  ] as const;
 }
