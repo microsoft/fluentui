@@ -13,7 +13,15 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
-import { css, getRTL, classNamesFunction, KeyCodes, format, initializeComponentRef } from '@uifabric/utilities';
+import {
+  css,
+  getRTL,
+  classNamesFunction,
+  KeyCodes,
+  format,
+  initializeComponentRef,
+  getPropsWithDefaults,
+} from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 
@@ -27,8 +35,18 @@ export interface ICalendarMonthState {
   previousNavigatedDate?: Date;
 }
 
+const DEFAULT_PROPS = {
+  styles: getStyles,
+  strings: undefined,
+  navigationIcons: defaultIconStrings,
+  dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+  yearPickerHidden: false,
+} as const;
+
 export const CalendarMonthBase = React.forwardRef(
-  (props: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+  (propsWithoutDefaults: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+
     return <CalendarMonthBaseClass {...props} hoisted={{ forwardedRef }} />;
   },
 );
@@ -41,14 +59,6 @@ interface ICalendarMonthBaseClassProps extends ICalendarMonthProps {
 }
 
 class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProps, ICalendarMonthState> {
-  public static defaultProps: Partial<ICalendarMonthBaseClassProps> = {
-    styles: getStyles,
-    strings: undefined,
-    navigationIcons: defaultIconStrings,
-    dateTimeFormatter: defaultDateTimeFormatterCallbacks,
-    yearPickerHidden: false,
-  };
-
   private _navigatedMonth: HTMLButtonElement;
   private _calendarYearRef = React.createRef<ICalendarYear>();
   private _focusOnUpdate: boolean;
