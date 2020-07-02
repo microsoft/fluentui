@@ -9,12 +9,22 @@ import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 import Grid from '../Grid/Grid';
-import { IDayGridOptions, getDayGrid, IDay, DAYS_IN_WEEK, IDateGridStrings } from '@fluentui/date-time-utilities';
+import {
+  IDayGridOptions,
+  getDayGrid,
+  IDay,
+  DAYS_IN_WEEK,
+  IDateGridStrings,
+  IDateFormatting,
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType,
+} from '@fluentui/date-time-utilities';
 import Text from '../Text/Text';
 import Button from '../Button/Button';
 import { IDatepickerOptions } from './Datepicker';
 
-export interface DatepickerCalendarProps extends UIComponentProps, IDatepickerOptions {
+export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
   /**
    * The currently selected date
    */
@@ -129,6 +139,21 @@ DatepickerCalendar.propTypes = {
   ...commonPropTypes.createCommon(),
   onDaySelect: PropTypes.func,
   localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
+
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
+  restrictedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+
+  firstDayOfWeek: PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name])),
+  firstWeekOfYear: PropTypes.oneOf(Object.keys(FirstWeekOfYear).map(name => FirstWeekOfYear[name])),
+  dateRangeType: PropTypes.oneOf(Object.keys(DateRangeType).map(name => DateRangeType[name])),
+  daysToSelectInDayView: PropTypes.number,
+  today: PropTypes.instanceOf(Date),
+  showWeekNumbers: PropTypes.bool,
+  workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
+
+  format: PropTypes.func,
+  parse: PropTypes.func,
 };
 
 DatepickerCalendar.defaultProps = {

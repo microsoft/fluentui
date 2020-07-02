@@ -55,19 +55,19 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
   /**
    * The first day of the week for your locale.
    */
-  firstDayOfWeek: DayOfWeek;
+  firstDayOfWeek?: DayOfWeek;
 
   /**
    * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
    * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
    */
-  firstWeekOfYear: FirstWeekOfYear;
+  firstWeekOfYear?: FirstWeekOfYear;
 
   /**
    * The date range type indicating how  many days should be selected as the user
    * selects days
    */
-  dateRangeType: DateRangeType;
+  dateRangeType?: DateRangeType;
 
   /**
    * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
@@ -93,7 +93,7 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
   workWeekDays?: DayOfWeek[];
 }
 
-export interface DatepickerProps extends IDateGridStrings, IDatepickerOptions, IDateFormatting, UIComponentProps {
+export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
@@ -104,7 +104,7 @@ export interface DatepickerProps extends IDateGridStrings, IDatepickerOptions, I
   isRequired: boolean;
 
   /** Provides the client with an option to react to change in selected date. */
-  onChange: (day: IDay) => void;
+  onChange?: (day: IDay) => void;
 
   /** String to render for button to direct the user to today's date. */
   goToToday: string;
@@ -117,6 +117,9 @@ export interface DatepickerProps extends IDateGridStrings, IDatepickerOptions, I
 
   /** A render function to customize how cells are rendered in the Calendar.. */
   renderHeaderCell: ShorthandRenderFunction<any>;
+
+  /** Localized labels */
+  localizedStrings?: IDateGridStrings;
 }
 
 export type DatepickerStylesProps = never;
@@ -220,10 +223,7 @@ Datepicker.propTypes = {
   showWeekNumbers: PropTypes.bool,
   workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
 
-  months: PropTypes.arrayOf(PropTypes.string),
-  shortMonths: PropTypes.arrayOf(PropTypes.string),
-  days: PropTypes.arrayOf(PropTypes.string),
-  shortDays: PropTypes.arrayOf(PropTypes.string),
+  localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
 
   format: PropTypes.func,
   parse: PropTypes.func,
@@ -242,9 +242,6 @@ Datepicker.defaultProps = {
   firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
-  as: undefined,
-  days: undefined,
-  daysToSelectInDayView: undefined,
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
