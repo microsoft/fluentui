@@ -191,7 +191,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
           <button
             className={classNames.currentItemButton}
             onClick={this._onHeaderSelect}
-            onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
+            onKeyDown={onButtonKeyDown(this._onHeaderSelect)}
             aria-label={headerAriaLabel}
             data-is-focusable={!!onHeaderSelect || !yearPickerHidden}
             tabIndex={!!onHeaderSelect || !yearPickerHidden ? 0 : -1}
@@ -209,7 +209,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
               })}
               disabled={!allFocusable && !isPrevYearInBounds}
               onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
-              onKeyDown={isPrevYearInBounds ? this._onButtonKeyDown(this._onSelectPrevYear) : undefined}
+              onKeyDown={isPrevYearInBounds ? onButtonKeyDown(this._onSelectPrevYear) : undefined}
               title={
                 strings.prevYearAriaLabel
                   ? strings.prevYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, -1))
@@ -225,7 +225,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
               })}
               disabled={!allFocusable && !isNextYearInBounds}
               onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
-              onKeyDown={isNextYearInBounds ? this._onButtonKeyDown(this._onSelectNextYear) : undefined}
+              onKeyDown={isNextYearInBounds ? onButtonKeyDown(this._onSelectNextYear) : undefined}
               title={
                 strings.nextYearAriaLabel
                   ? strings.nextYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, 1))
@@ -270,9 +270,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
                         disabled={!allFocusable && !isInBounds}
                         key={monthIndex}
                         onClick={isInBounds ? this._selectMonthCallback(monthIndex) : undefined}
-                        onKeyDown={
-                          isInBounds ? this._onButtonKeyDown(this._selectMonthCallback(monthIndex)) : undefined
-                        }
+                        onKeyDown={isInBounds ? onButtonKeyDown(this._selectMonthCallback(monthIndex)) : undefined}
                         aria-label={dateFormatter.formatMonthYear(indexedMonth, strings)}
                         aria-selected={isNavigatedMonth}
                         data-is-focusable={isInBounds ? true : undefined}
@@ -291,16 +289,6 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
       </div>
     );
   }
-
-  private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
-    return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-      switch (ev.which) {
-        case KeyCodes.enter:
-          callback();
-          break;
-      }
-    };
-  };
 
   private _selectMonthCallback = (newMonth: number): (() => void) => {
     return () => this._onSelectMonth(newMonth);
@@ -397,4 +385,14 @@ function getYearStrings({ strings, navigatedDate, dateTimeFormatter }: ICalendar
 
 function isCurrentMonth(month: number, year: number, today: Date): boolean {
   return today.getFullYear() === year && today.getMonth() === month;
+}
+
+function onButtonKeyDown(callback: () => void): (ev: React.KeyboardEvent<HTMLButtonElement>) => void {
+  return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    switch (ev.which) {
+      case KeyCodes.enter:
+        callback();
+        break;
+    }
+  };
 }
