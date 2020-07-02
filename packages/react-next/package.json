@@ -62,6 +62,7 @@
     "@fluentui/react-focus": "^7.12.16",
     "@fluentui/react-icons": "^0.1.33",
     "@fluentui/react-theme-provider": "^0.3.4",
+    "@uifabric/date-time": "^7.10.3",
     "@uifabric/icons": "^7.3.58",
     "@uifabric/merge-styles": "^7.16.0",
     "@uifabric/react-hooks": "^7.4.11",
