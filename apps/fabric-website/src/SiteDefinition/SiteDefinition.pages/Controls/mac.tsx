@@ -60,4 +60,19 @@ export const controlsPagesMac: INavPage[] = [
       },
     ],
   },
+  {
+    title: 'Utilities',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Separator',
+        url: '#/controls/mac/separator',
+        component: () => <LoadingComponent title="Separator" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage),
+          ),
+      },
+    ],
+  },
 ];
