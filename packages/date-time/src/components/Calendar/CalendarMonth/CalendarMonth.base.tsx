@@ -13,15 +13,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
-import {
-  css,
-  getRTL,
-  classNamesFunction,
-  KeyCodes,
-  format,
-  initializeComponentRef,
-  getPropsWithDefaults,
-} from '@uifabric/utilities';
+import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { usePrevious } from '@uifabric/react-hooks';
@@ -29,10 +21,6 @@ import { usePrevious } from '@uifabric/react-hooks';
 const MONTHS_PER_ROW = 4;
 
 const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMonthStyles>();
-
-export interface ICalendarMonthState {
-  isYearPickerVisible?: boolean;
-}
 
 const DEFAULT_PROPS = {
   styles: getStyles,
@@ -86,13 +74,22 @@ export const CalendarMonthBase = React.forwardRef(
   (propsWithoutDefaults: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
     const [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] = useFocusLogic(props);
+    const [isYearPickerVisible, setIsYearPickerVisible] = React.useState(false);
 
     const animateBackwards = useAnimateBackwards(props);
 
     return (
       <CalendarMonthBaseClass
         {...props}
-        hoisted={{ forwardedRef, animateBackwards, navigatedMonthRef, calendarYearRef, focusOnNextUpdate }}
+        hoisted={{
+          forwardedRef,
+          animateBackwards,
+          navigatedMonthRef,
+          calendarYearRef,
+          focusOnNextUpdate,
+          isYearPickerVisible,
+          setIsYearPickerVisible,
+        }}
       />
     );
   },
@@ -105,21 +102,13 @@ interface ICalendarMonthBaseClassProps extends ICalendarMonthProps {
     animateBackwards?: boolean;
     navigatedMonthRef: React.RefObject<HTMLButtonElement>;
     calendarYearRef: React.RefObject<ICalendarYear>;
+    isYearPickerVisible: boolean;
+    setIsYearPickerVisible(value: boolean): void;
     focusOnNextUpdate(): void;
   };
 }
 
-class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProps, ICalendarMonthState> {
-  constructor(props: ICalendarMonthBaseClassProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    this.state = {
-      isYearPickerVisible: false,
-    };
-  }
-
+class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProps, {}> {
   public render(): JSX.Element {
     const {
       navigatedDate,
@@ -160,7 +149,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
       animationDirection: animationDirection,
     });
 
-    if (this.state.isYearPickerVisible) {
+    if (this.props.hoisted.isYearPickerVisible) {
       // use navigated date for the year picker
       return (
         <CalendarYear
@@ -349,7 +338,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
     const { onHeaderSelect, yearPickerHidden } = this.props;
     if (!yearPickerHidden) {
       this.props.hoisted.focusOnNextUpdate();
-      this.setState({ isYearPickerVisible: true });
+      this.props.hoisted.setIsYearPickerVisible(true);
     } else if (onHeaderSelect) {
       onHeaderSelect();
     }
@@ -371,12 +360,12 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
       }
       onNavigateDate(newNavigationDate, true);
     }
-    this.setState({ isYearPickerVisible: false });
+    this.props.hoisted.setIsYearPickerVisible(false);
   };
 
   private _onYearPickerHeaderSelect = (focus: boolean): void => {
     this.props.hoisted.focusOnNextUpdate();
-    this.setState({ isYearPickerVisible: false });
+    this.props.hoisted.setIsYearPickerVisible(false);
   };
 
   private _onRenderYear = (year: number) => {
