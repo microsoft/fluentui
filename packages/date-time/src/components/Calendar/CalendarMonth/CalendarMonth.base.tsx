@@ -53,13 +53,48 @@ function useAnimateBackwards({ navigatedDate }: ICalendarMonthProps) {
   }
 }
 
+function useFocusLogic({ componentRef }: ICalendarMonthProps) {
+  const navigatedMonthRef = React.useRef<HTMLButtonElement>(null);
+  const calendarYearRef = React.useRef<ICalendarYear>(null);
+  const focusOnUpdate = React.useRef(false);
+
+  const focus = () => {
+    if (calendarYearRef.current) {
+      calendarYearRef.current.focus();
+    } else if (navigatedMonthRef.current) {
+      navigatedMonthRef.current.focus();
+    }
+  };
+
+  React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
+
+  React.useEffect(() => {
+    if (focusOnUpdate.current) {
+      focus();
+      focusOnUpdate.current = false;
+    }
+  });
+
+  const focusOnNextUpdate = () => {
+    focusOnUpdate.current = true;
+  };
+
+  return [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] as const;
+}
+
 export const CalendarMonthBase = React.forwardRef(
   (propsWithoutDefaults: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+    const [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] = useFocusLogic(props);
 
     const animateBackwards = useAnimateBackwards(props);
 
-    return <CalendarMonthBaseClass {...props} hoisted={{ forwardedRef, animateBackwards }} />;
+    return (
+      <CalendarMonthBaseClass
+        {...props}
+        hoisted={{ forwardedRef, animateBackwards, navigatedMonthRef, calendarYearRef, focusOnNextUpdate }}
+      />
+    );
   },
 );
 CalendarMonthBase.displayName = 'CalendarMonthBase';
@@ -68,14 +103,13 @@ interface ICalendarMonthBaseClassProps extends ICalendarMonthProps {
   hoisted: {
     forwardedRef: React.Ref<HTMLDivElement>;
     animateBackwards?: boolean;
+    navigatedMonthRef: React.RefObject<HTMLButtonElement>;
+    calendarYearRef: React.RefObject<ICalendarYear>;
+    focusOnNextUpdate(): void;
   };
 }
 
 class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProps, ICalendarMonthState> {
-  private _navigatedMonth: HTMLButtonElement;
-  private _calendarYearRef = React.createRef<ICalendarYear>();
-  private _focusOnUpdate: boolean;
-
   constructor(props: ICalendarMonthBaseClassProps) {
     super(props);
 
@@ -84,13 +118,6 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
     this.state = {
       isYearPickerVisible: false,
     };
-  }
-
-  public componentDidUpdate(): void {
-    if (this._focusOnUpdate) {
-      this.focus();
-      this._focusOnUpdate = false;
-    }
   }
 
   public render(): JSX.Element {
@@ -154,7 +181,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
             nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
             headerAriaLabelFormatString: this.props.strings.yearPickerHeaderAriaLabel,
           }}
-          componentRef={this._calendarYearRef}
+          componentRef={this.props.hoisted.calendarYearRef}
           styles={styles}
           highlightCurrentYear={highlightCurrentMonth}
           highlightSelectedYear={highlightSelectedMonth}
@@ -248,7 +275,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
 
                     return (
                       <button
-                        ref={isNavigatedMonth ? this._setNavigatedMonthRef : undefined}
+                        ref={isNavigatedMonth ? this.props.hoisted.navigatedMonthRef : undefined}
                         role={'gridcell'}
                         className={css(classNames.itemButton, {
                           [classNames.current]: highlightCurrentMonth && isCurrentMonth!,
@@ -279,18 +306,6 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
       </div>
     );
   }
-
-  public focus = () => {
-    if (this._calendarYearRef.current) {
-      this._calendarYearRef.current.focus();
-    } else if (this._navigatedMonth) {
-      this._navigatedMonth.focus();
-    }
-  };
-
-  private _setNavigatedMonthRef = (element: HTMLButtonElement) => {
-    this._navigatedMonth = element;
-  };
 
   private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -333,7 +348,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
   private _onHeaderSelect = (): void => {
     const { onHeaderSelect, yearPickerHidden } = this.props;
     if (!yearPickerHidden) {
-      this._focusOnUpdate = true;
+      this.props.hoisted.focusOnNextUpdate();
       this.setState({ isYearPickerVisible: true });
     } else if (onHeaderSelect) {
       onHeaderSelect();
@@ -341,7 +356,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
   };
 
   private _onSelectYear = (selectedYear: number) => {
-    this._focusOnUpdate = true;
+    this.props.hoisted.focusOnNextUpdate();
     const { navigatedDate, onNavigateDate, maxDate, minDate } = this.props;
     const navYear = navigatedDate.getFullYear();
     if (navYear !== selectedYear) {
@@ -360,7 +375,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
   };
 
   private _onYearPickerHeaderSelect = (focus: boolean): void => {
-    this._focusOnUpdate = focus;
+    this.props.hoisted.focusOnNextUpdate();
     this.setState({ isYearPickerVisible: false });
   };
 
