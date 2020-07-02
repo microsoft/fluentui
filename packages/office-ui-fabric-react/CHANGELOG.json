@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "office-ui-fabric-react_v7.121.8",
+      "version": "7.121.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding 'as' prop tests to conformance tests and adding conformance tests to MenuItem and Stack.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "29ea83a5b421019b4c6c71301bfcbda849a650ad",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Jul 2020 12:35:23 GMT",
       "tag": "office-ui-fabric-react_v7.121.7",
       "version": "7.121.7",
