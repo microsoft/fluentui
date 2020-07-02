@@ -10,7 +10,7 @@ const registrySet = new RefStack();
 // These hooks are not used currently
 /* eslint-disable */
 
-const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
+export const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
   const [registry] = React.useState(registrySet);
   const parentRef = React.useRef<T>(null);
 
@@ -43,5 +43,3 @@ const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
     ref: parentRef,
   };
 };
-
-export default useNestingRoot;
