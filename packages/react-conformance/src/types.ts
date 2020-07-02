@@ -60,7 +60,7 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * This component uses wrapper slot to wrap the 'meaningful' element.
    */
-  wrapperComponent?: React.ElementType;
+  wrapperComponents?: React.ElementType[];
   /**
    * Child component that will receive unhandledProps
    */

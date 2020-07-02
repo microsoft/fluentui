@@ -1,6 +1,5 @@
 import { ReactWrapper } from 'enzyme';
 import { FocusZone } from '@fluentui/react-bindings';
-import { Ref, RefFindNode } from '@fluentui/react-component-ref';
 
 const getDisplayName = (Component: React.ElementType) => {
   return (
@@ -10,24 +9,22 @@ const getDisplayName = (Component: React.ElementType) => {
   );
 };
 
-const toNextNonTrivialChild = (from: ReactWrapper, wrapperComponent: React.ElementType | undefined): ReactWrapper => {
+const toNextNonTrivialChild = (from: ReactWrapper, wrapperComponents: React.ElementType[]): ReactWrapper => {
   const current = from.childAt(0);
 
   if (!current) {
     return current;
   }
 
-  const helperComponentNames = [...[Ref, RefFindNode], ...(wrapperComponent ? [wrapperComponent] : [])].map(
-    getDisplayName,
-  );
+  const helperComponentNames = wrapperComponents.map(getDisplayName);
 
   return helperComponentNames.indexOf(current.name()) === -1
     ? current
-    : toNextNonTrivialChild(current, wrapperComponent);
+    : toNextNonTrivialChild(current, wrapperComponents);
 };
 
-export const getComponent = (wrapper: ReactWrapper, wrapperComponent: React.ElementType | undefined) => {
-  let componentElement = toNextNonTrivialChild(wrapper, wrapperComponent);
+export const getComponent = (wrapper: ReactWrapper, wrapperComponents: React.ElementType[]) => {
+  let componentElement = toNextNonTrivialChild(wrapper, wrapperComponents);
   // passing through Focus Zone wrappers
   if (componentElement.type() === FocusZone) {
     // another HOC component is added: FocusZone
@@ -36,5 +33,5 @@ export const getComponent = (wrapper: ReactWrapper, wrapperComponent: React.Elem
 
   // in that case 'topLevelChildElement' we've found so far is a wrapper's topmost child
   // thus, we should continue search
-  return wrapperComponent ? toNextNonTrivialChild(componentElement, wrapperComponent) : componentElement;
+  return wrapperComponents.length > 0 ? toNextNonTrivialChild(componentElement, wrapperComponents) : componentElement;
 };

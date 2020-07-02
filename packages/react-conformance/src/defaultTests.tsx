@@ -157,12 +157,12 @@ export const defaultTests: TestObject = {
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`renders as a functional component or passes "as" to the next component`, () => {
-        const { requiredProps, Component, customMount = mount, wrapperComponent } = testInfo;
+        const { requiredProps, Component, customMount = mount, wrapperComponents = [] } = testInfo;
         const MyComponent = () => null;
 
         // tslint:disable-next-line:no-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, wrapperComponent);
+        const component = getComponent(wrapper, wrapperComponents);
 
         try {
           expect(component.type()).toEqual(MyComponent);
@@ -183,7 +183,7 @@ export const defaultTests: TestObject = {
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`renders as a ReactClass or passes "as" to the next component`, () => {
-        const { requiredProps, Component, customMount = mount, wrapperComponent } = testInfo;
+        const { requiredProps, Component, customMount = mount, wrapperComponents = [] } = testInfo;
 
         class MyComponent extends React.Component {
           public render() {
@@ -193,7 +193,7 @@ export const defaultTests: TestObject = {
 
         // tslint:disable-next-line:no-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, wrapperComponent);
+        const component = getComponent(wrapper, wrapperComponents);
 
         try {
           expect(component.type()).toEqual(MyComponent);
@@ -235,12 +235,12 @@ export const defaultTests: TestObject = {
         // silence element nesting warnings
         consoleUtil.disableOnce();
         const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
-        const { Component, customMount = mount, requiredProps, wrapperComponent } = testInfo;
+        const { Component, customMount = mount, requiredProps, wrapperComponents = [] } = testInfo;
 
         tags.forEach(tag => {
           // tslint:disable-next-line:no-any
           const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
-          const component = getComponent(wrapper, wrapperComponent);
+          const component = getComponent(wrapper, wrapperComponents);
 
           try {
             expect(component.is(tag)).toEqual(true);
