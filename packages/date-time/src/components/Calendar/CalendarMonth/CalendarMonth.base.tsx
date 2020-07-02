@@ -24,6 +24,7 @@ import {
 } from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
+import { usePrevious } from '@uifabric/react-hooks';
 
 const MONTHS_PER_ROW = 4;
 
@@ -31,8 +32,6 @@ const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMont
 
 export interface ICalendarMonthState {
   isYearPickerVisible?: boolean;
-  animateBackwards?: boolean;
-  previousNavigatedDate?: Date;
 }
 
 const DEFAULT_PROPS = {
@@ -43,11 +42,24 @@ const DEFAULT_PROPS = {
   yearPickerHidden: false,
 } as const;
 
+function useAnimateBackwards({ navigatedDate }: ICalendarMonthProps) {
+  const currentYear = navigatedDate.getFullYear();
+  const previousYear = usePrevious(currentYear);
+
+  if (previousYear === undefined || previousYear === currentYear) {
+    return undefined;
+  } else {
+    return previousYear > currentYear;
+  }
+}
+
 export const CalendarMonthBase = React.forwardRef(
   (propsWithoutDefaults: ICalendarMonthProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    return <CalendarMonthBaseClass {...props} hoisted={{ forwardedRef }} />;
+    const animateBackwards = useAnimateBackwards(props);
+
+    return <CalendarMonthBaseClass {...props} hoisted={{ forwardedRef, animateBackwards }} />;
   },
 );
 CalendarMonthBase.displayName = 'CalendarMonthBase';
@@ -55,6 +67,7 @@ CalendarMonthBase.displayName = 'CalendarMonthBase';
 interface ICalendarMonthBaseClassProps extends ICalendarMonthProps {
   hoisted: {
     forwardedRef: React.Ref<HTMLDivElement>;
+    animateBackwards?: boolean;
   };
 }
 
@@ -63,31 +76,6 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
   private _calendarYearRef = React.createRef<ICalendarYear>();
   private _focusOnUpdate: boolean;
 
-  public static getDerivedStateFromProps(
-    nextProps: Readonly<ICalendarMonthBaseClassProps>,
-    prevState: Readonly<ICalendarMonthState>,
-  ): Partial<ICalendarMonthState> | null {
-    const previousYear = prevState.previousNavigatedDate ? prevState.previousNavigatedDate.getFullYear() : undefined;
-    const nextYear = nextProps.navigatedDate.getFullYear();
-    if (!previousYear) {
-      return {};
-    }
-
-    if (previousYear < nextYear) {
-      return {
-        animateBackwards: false,
-        previousNavigatedDate: nextProps.navigatedDate,
-      };
-    } else if (previousYear > nextYear) {
-      return {
-        animateBackwards: true,
-        previousNavigatedDate: nextProps.navigatedDate,
-      };
-    }
-
-    return {};
-  }
-
   constructor(props: ICalendarMonthBaseClassProps) {
     super(props);
 
@@ -95,7 +83,6 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
 
     this.state = {
       isYearPickerVisible: false,
-      previousNavigatedDate: props.navigatedDate,
     };
   }
 
@@ -142,7 +129,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
       hasHeaderClickCallback: !!onHeaderSelect || !yearPickerHidden,
       highlightCurrent: highlightCurrentMonth,
       highlightSelected: highlightSelectedMonth,
-      animateBackwards: this.state.animateBackwards,
+      animateBackwards: this.props.hoisted.animateBackwards,
       animationDirection: animationDirection,
     });
 
