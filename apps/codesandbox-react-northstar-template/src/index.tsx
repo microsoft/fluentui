@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { DefaultCustomizations } from '@uifabric/theme-samples';
 import { Accordion, Button, Checkbox, Divider, Label, Provider, RadioGroup, Tree } from '@fluentui/react-northstar';
 import { Stack } from 'office-ui-fabric-react';
 
@@ -111,7 +110,7 @@ function start(): void {
         <Divider content="Some Text" />
         <Label content="This is a label" />
         <RadioGroup defaultCheckedValue="1" items={radioGroupItems} />
-        <Tree aria-aria-label="default" items={treeItems} />
+        <Tree aria-label="default" items={treeItems} />
       </Stack>
     </Provider>,
     _rootDiv,

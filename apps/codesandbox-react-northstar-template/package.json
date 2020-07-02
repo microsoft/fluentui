@@ -25,7 +25,6 @@
     "@uifabric/set-version": "^7.0.15",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/react-northstar": "^0.50.0",
-    "@uifabric/theme-samples": "^7.0.99",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
