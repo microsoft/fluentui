@@ -114,7 +114,7 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
       navigatedDate,
       selectedDate,
       strings,
-      today,
+      today = new Date(),
       navigationIcons,
       dateTimeFormatter,
       minDate,
@@ -250,7 +250,6 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
                   {monthsForRow.map((month: string, index: number) => {
                     const monthIndex = rowNum * MONTHS_PER_ROW + index;
                     const indexedMonth = setMonth(navigatedDate, monthIndex);
-                    const isCurrentMonth = this._isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today!);
                     const isNavigatedMonth = navigatedDate.getMonth() === monthIndex;
                     const isSelectedMonth = selectedDate.getMonth() === monthIndex;
                     const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
@@ -263,7 +262,8 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
                         ref={isNavigatedMonth ? this.props.hoisted.navigatedMonthRef : undefined}
                         role={'gridcell'}
                         className={css(classNames.itemButton, {
-                          [classNames.current]: highlightCurrentMonth && isCurrentMonth!,
+                          [classNames.current]:
+                            highlightCurrentMonth && isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today),
                           [classNames.selected]: highlightSelectedMonth && isSelectedMonth && isSelectedYear,
                           [classNames.disabled]: !isInBounds,
                         })}
@@ -304,10 +304,6 @@ class CalendarMonthBaseClass extends React.Component<ICalendarMonthBaseClassProp
 
   private _selectMonthCallback = (newMonth: number): (() => void) => {
     return () => this._onSelectMonth(newMonth);
-  };
-
-  private _isCurrentMonth = (month: number, year: number, today: Date): boolean => {
-    return today.getFullYear() === year && today.getMonth() === month;
   };
 
   private _onSelectNextYear = (): void => {
@@ -397,4 +393,8 @@ function getYearStrings({ strings, navigatedDate, dateTimeFormatter }: ICalendar
       headerAriaLabelFormatString: strings.yearPickerHeaderAriaLabel,
     } as const,
   ] as const;
+}
+
+function isCurrentMonth(month: number, year: number, today: Date): boolean {
+  return today.getFullYear() === year && today.getMonth() === month;
 }
