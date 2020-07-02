@@ -13,7 +13,7 @@ export interface HeaderDescriptionVariables {
   color: string;
 }
 
-export default (siteVariables: any): HeaderDescriptionVariables => ({
+export const headerDescriptionVariables = (siteVariables: any): HeaderDescriptionVariables => ({
   colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, headerDescriptionColorAreas),
   color: siteVariables.colors.grey[350],
 });
