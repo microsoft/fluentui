@@ -9,11 +9,11 @@ import {
   IDetailsRowProps,
   DetailsRow,
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
+import { useSetTimeout } from '@uifabric/react-hooks';
 
 const exampleItems: IAnnouncedQuickActionsExampleItem[] = [];
 
@@ -60,16 +60,31 @@ export interface IAnnouncedQuickActionsExampleState {
 export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const detailsList = React.useRef<IDetailsList>(null);
   const textField = React.useRef<ITextField>(null);
-  const [items, setItems] = React.useState<IAnnouncedQuickActionsExampleItem[]>(exampleItems);
-  const [renameDialogOpen, setRenameDialogOpen] = React.useState<boolean>(false);
-  const [selectionDetails, setSelectionDetails] = React.useState(getSelectionDetails());
-  const [dialogContent, setDialogContent] = React.useState<JSX.Element | undefined>(undefined);
-  const [announced, setAnnounced] = React.useState(undefined);
   const { current: state } = React.useRef<IAnnouncedQuickActionsExampleState>({
     selection: new Selection({
       onSelectionChanged: () => setSelectionDetails(getSelectionDetails()),
     }),
   });
+  const getSelectionDetails = (): string => {
+    const selectionCount = state.selection.getSelectedCount();
+    switch (selectionCount) {
+      case 0:
+        return 'No items selected';
+      case 1:
+        return '1 item selected: ' + (state.selection.getSelection()[0] as any).name;
+      default:
+        return `${selectionCount} items selected`;
+    }
+  };
+
+  const [items, setItems] = React.useState<IAnnouncedQuickActionsExampleItem[]>(exampleItems);
+  const [renameDialogOpen, setRenameDialogOpen] = React.useState<boolean>(false);
+  const [selectionDetails, setSelectionDetails] = React.useState<{}>(getSelectionDetails());
+  const [dialogContent, setDialogContent] = React.useState<JSX.Element | undefined>(undefined);
+  const [announced, setAnnounced] = React.useState<JSX.Element | undefined>(undefined);
+  const [previousAnnouncedValue, setPreviousAnnouncedValue] = React.useState<JSX.Element | undefined>(undefined);
+
+  const safeSetTimeout = useSetTimeout();
 
   const onRenderRow = (props: IDetailsRowProps): JSX.Element => {
     return <DetailsRow {...props} />;
@@ -111,8 +126,9 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   };
 
   const deleteItem = (index: number): void => {
-    setItems(items.splice(items.indexOf(items[index]), 1));
+    setItems(items.filter((item, i) => i !== index));
     setAnnounced(<Announced message="Item deleted" aria-live="assertive" />);
+    setPreviousAnnouncedValue(announced);
     return;
   };
 
@@ -126,35 +142,22 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
         </DialogFooter>
       </>,
     );
-
     return;
   };
 
   const updateItemName = (index: number): void => {
     if (textField && textField.current) {
-      items[index].name = textField.current.value || items[index].name;
+      const renamedItems = items;
+      renamedItems[index].name = textField.current.value || renamedItems[index].name;
+      setItems([...renamedItems]);
       setRenameDialogOpen(false);
       setAnnounced(<Announced message="Item renamed" aria-live="assertive" />);
-    } else {
-      return;
+      setPreviousAnnouncedValue(announced);
     }
   };
 
   const closeRenameDialog = (): void => {
     setRenameDialogOpen(false);
-  };
-
-  const getSelectionDetails = (): string => {
-    const selectionCount = selection.getSelectedCount();
-
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (selection.getSelection()[0] as any).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
   };
 
   // Populate with items for demos.
@@ -172,17 +175,27 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
     }
   }, []);
 
+  // componentDidUpdate
+  React.useEffect(() => {
+    if (previousAnnouncedValue !== announced && announced !== undefined) {
+      safeSetTimeout(() => {
+        setAnnounced(undefined);
+        setPreviousAnnouncedValue(announced);
+      }, 2000);
+    }
+  }, [announced]);
+
   return (
     <>
       {announced}
-      <MarqueeSelection selection={selection}>
+      <MarqueeSelection selection={state.selection}>
         <DetailsList
           componentRef={detailsList}
           items={items}
           columns={columns}
           setKey="set"
           layoutMode={DetailsListLayoutMode.fixedColumns}
-          selection={selection}
+          selection={state.selection}
           selectionPreservedOnEmptyClick
           ariaLabelForSelectionColumn="Toggle selection"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
