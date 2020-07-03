@@ -44,6 +44,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix required version of CSB package, improve dependency generation for exported CodeSandboxes @layershifter ([#13637](https://github.com/microsoft/fluentui/pull/13637))
 - Fix docsite not loading in IE 11 @miroslavstastny ([#13766](https://github.com/microsoft/fluentui/pull/13766))
 - Add *Debugging* page @miroslavstastny ([#13818](https://github.com/microsoft/fluentui/pull/13818))
+- Adding screen reader labeling examples @kolaps33 ([#13739](https://github.com/microsoft/fluentui/pull/13739))
 
 <!--------------------------------[ v0.50.0 ]------------------------------- -->
 ## [v0.50.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.50.0) (2020-06-16)
