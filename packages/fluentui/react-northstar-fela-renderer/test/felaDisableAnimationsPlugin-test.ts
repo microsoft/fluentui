@@ -1,5 +1,5 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import felaDisableAnimationsPlugin from '../src/felaDisableAnimationsPlugin';
+import { felaDisableAnimationsPlugin } from '../src/felaDisableAnimationsPlugin';
 
 const stylesWithAnimationShorthand: ICSSInJSStyle = {
   animation: 'k1',

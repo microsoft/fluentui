@@ -3,7 +3,7 @@ import { ComponentAnimationProp } from '../styles/types';
 
 // Notice:
 // This temporary lives here, will be remove once `animation` prop will be dropped
-const createAnimationStyles = (animation: ComponentAnimationProp, theme: ThemePrepared) => {
+export const createAnimationStyles = (animation: ComponentAnimationProp, theme: ThemePrepared) => {
   let animationCSSProp: ICSSInJSStyle = {};
   const { animations = {} } = theme;
 
@@ -82,5 +82,3 @@ const createAnimationStyles = (animation: ComponentAnimationProp, theme: ThemePr
   }
   return animationCSSProp;
 };
-
-export default createAnimationStyles;

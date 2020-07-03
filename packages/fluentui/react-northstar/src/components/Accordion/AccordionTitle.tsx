@@ -15,15 +15,20 @@ import {
   rtlTextContainer,
 } from '../../utils';
 import {
-  WithAsProp,
   ComponentEventHandler,
   ShorthandValue,
-  withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
-import { getElementType, useTelemetry, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useTelemetry,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -89,7 +94,10 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
   content: boolean;
 };
 
-const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
+/**
+ * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.
+ */
+const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
   FluentComponentStaticProps<AccordionTitleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
@@ -126,7 +134,7 @@ const AccordionTitle: React.FC<WithAsProp<AccordionTitleProps>> &
     mapPropsToBehavior: () => ({
       hasContent: !!content,
       canBeCollapsed,
-      as,
+      as: String(as),
       active,
       disabled,
       accordionContentId,
@@ -248,7 +256,4 @@ AccordionTitle.defaultProps = {
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
 
-/**
- * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.
- */
-export default withSafeTypeForAs<typeof AccordionTitle, AccordionTitleProps>(AccordionTitle);
+export default AccordionTitle;

@@ -16,7 +16,7 @@ import {
   createShorthand,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import { ShorthandValue, ComponentEventHandler, withSafeTypeForAs, ProviderContextPrepared } from '../../types';
+import { ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import {
   useAutoControlled,
@@ -119,7 +119,13 @@ export const inputSlotClassNames: InputSlotClassNames = {
   icon: `${inputClassName}__icon`,
 };
 
-const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
+/**
+ * An Input is a field used to elicit an input from a user.
+ *
+ * @accessibility
+ * For good screen reader experience set `aria-label` or `aria-labelledby` attribute for input.
+ */
+const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -377,10 +383,4 @@ Input.defaultProps = {
 
 Input.create = createShorthandFactory({ Component: Input });
 
-/**
- * An Input is a field used to elicit an input from a user.
- *
- * @accessibility
- * For good screen reader experience set `aria-label` or `aria-labelledby` attribute for input.
- */
-export default withSafeTypeForAs<typeof Input, InputProps, 'div'>(Input);
+export default Input;

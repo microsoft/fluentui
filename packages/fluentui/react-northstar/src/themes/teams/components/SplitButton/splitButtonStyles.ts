@@ -9,6 +9,7 @@ const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesProps, Spl
     borderBottomRightRadius: 0,
     borderRightWidth: 0,
     padding: v.padding,
+    minWidth: v.minWidth,
 
     ...(p.size === 'small' && {
       height: v.smallDimension,
