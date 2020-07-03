@@ -122,8 +122,6 @@ const themeOverrides = {
     MenuitemIndicatorSaturated: {
       root: {
         filter: 'saturate(8)',
-        height: '20px',
-        width: '20px',
       },
     },
     MenuItemWrapperDashed: {
