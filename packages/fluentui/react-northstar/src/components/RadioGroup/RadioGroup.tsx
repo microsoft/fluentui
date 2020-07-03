@@ -171,7 +171,7 @@ const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
         defaultProps: () =>
           getA11yProps('item', {
             vertical,
-            ...(index === 0 && isNoneValueSelected && { tabIndex: 0 }),
+            ...(+index === 0 && isNoneValueSelected && { tabIndex: 0 }),
           }),
         overrideProps: handleItemOverrides,
       }),

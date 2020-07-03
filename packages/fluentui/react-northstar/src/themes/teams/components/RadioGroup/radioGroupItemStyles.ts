@@ -63,22 +63,24 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemStylesProps, RadioG
 
   indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
     margin: `0 ${pxToRem(12)} 0 0`,
-    borderRadius: '50%',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: v.indicatorBorderColorDefault,
-    width: pxToRem(12),
-    height: pxToRem(12),
+    ...(!p.hasCustomIcon && {
+      borderRadius: '50%',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: v.indicatorBorderColorDefault,
+      width: pxToRem(12),
+      height: pxToRem(12),
 
-    ...(p.checked && {
-      background: v.indicatorBackgroundColorChecked,
-      borderColor: 'transparent',
-    }),
-
-    ...(p.disabled && {
-      borderColor: v.colorDisabled,
       ...(p.checked && {
-        background: v.colorDisabled,
+        background: v.indicatorBackgroundColorChecked,
+        borderColor: 'transparent',
+      }),
+
+      ...(p.disabled && {
+        borderColor: v.colorDisabled,
+        ...(p.checked && {
+          background: v.colorDisabled,
+        }),
       }),
     }),
   }),

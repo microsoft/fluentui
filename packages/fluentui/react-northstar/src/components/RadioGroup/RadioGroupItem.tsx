@@ -79,7 +79,9 @@ export const radioGroupItemSlotClassNames: RadioGroupItemSlotClassNames = {
   indicator: `${radioGroupItemClassName}__indicator`,
 };
 
-export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disabled' | 'vertical' | 'checked'>>;
+export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disabled' | 'vertical' | 'checked'>> & {
+  hasCustomIcon: boolean;
+};
 
 /**
  * A RadioGroupItem represents single input element within a RadioGroup.
@@ -121,6 +123,7 @@ const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
       vertical,
       disabled,
       checked,
+      hasCustomIcon: !!indicator,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -162,7 +165,7 @@ const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
           ...unhandledProps,
         })}
       >
-        {Box.create(indicator, {
+        {Box.create(indicator || {}, {
           defaultProps: () => ({
             className: radioGroupItemSlotClassNames.indicator,
             styles: resolvedStyles.indicator,
@@ -201,7 +204,6 @@ RadioGroupItem.propTypes = {
 
 RadioGroupItem.defaultProps = {
   accessibility: radioGroupItemBehavior,
-  indicator: {},
 };
 
 RadioGroupItem.handledProps = Object.keys(RadioGroupItem.propTypes) as any;
