@@ -6,7 +6,7 @@ import * as React from 'react';
  * @param ref - An ref object or function
  * @param node - A node that should be passed by ref
  */
-const handleRef = <N>(ref: React.Ref<N> | undefined, node: N) => {
+export const handleRef = <N>(ref: React.Ref<N> | undefined, node: N) => {
   if (process.env.NODE_ENV !== 'production') {
     if (typeof ref === 'string') {
       throw new Error(
@@ -26,5 +26,3 @@ const handleRef = <N>(ref: React.Ref<N> | undefined, node: N) => {
     (ref as React.MutableRefObject<N>).current = node;
   }
 };
-
-export default handleRef;

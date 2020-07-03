@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import Builder, { FullScreenPreview } from '@fluentui/react-builder';
+import { Builder, FullScreenPreview } from '@fluentui/react-builder';
 
 import ExternalExampleLayout from './components/ExternalExampleLayout';
 import DocsLayout from './components/DocsLayout';

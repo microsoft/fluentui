@@ -27,7 +27,7 @@ export type CanvasProps = {
   style?: React.CSSProperties;
 };
 
-const Canvas: React.FunctionComponent<CanvasProps> = ({
+export const Canvas: React.FunctionComponent<CanvasProps> = ({
   draggingElement,
   isExpanding,
   isSelecting,
@@ -309,5 +309,3 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
     </Frame>
   );
 };
-
-export default Canvas;
