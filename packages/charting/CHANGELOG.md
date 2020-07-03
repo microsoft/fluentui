@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Jul 2020 12:36:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.10)
+
+Fri, 03 Jul 2020 12:36:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.9..@uifabric/charting_v2.3.10)
+
+### Patches
+
+- Line chart: Remove Duplicate ID's for lines and circles ([PR #13897](https://github.com/microsoft/fluentui/pull/13897) by v-gorraj@microsoft.com)
 
 ## [2.3.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.9)
 
