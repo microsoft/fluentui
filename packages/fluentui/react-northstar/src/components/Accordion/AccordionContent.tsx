@@ -12,16 +12,17 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import {
-  WithAsProp,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { useTelemetry, getElementType, useAccessibility, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useAccessibility,
+  useUnhandledProps,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface AccordionContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -48,7 +49,10 @@ export const accordionContentClassName = 'ui-accordion__content';
 
 export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, 'active'>>;
 
-const AccordionContent: React.FC<WithAsProp<AccordionContentProps>> &
+/**
+ * An AccordionContent displays content hosted in an Accordion.
+ */
+const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
   FluentComponentStaticProps<AccordionContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);
@@ -126,7 +130,4 @@ AccordionContent.create = createShorthandFactory({
   mappedProp: 'content',
 });
 
-/**
- * An AccordionContent displays content hosted in an Accordion.
- */
-export default withSafeTypeForAs<typeof AccordionContent, AccordionContentProps>(AccordionContent);
+export default AccordionContent;

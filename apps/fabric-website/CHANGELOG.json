@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@uifabric/fabric-website_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "New macos link control documentation",
+            "author": "saadnajmi2@gmail.com",
+            "commit": "206da19b0bb45a8edca305b4d40aac8c1c4d9f38",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/fabric-website_v7.10.76",
       "version": "7.10.76",

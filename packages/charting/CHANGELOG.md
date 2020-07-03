@@ -1,8 +1,45 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 25 Jun 2020 12:50:17 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.9)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.8..@uifabric/charting_v2.3.9)
+
+### Patches
+
+- removing benchmarkData and targetData props from the stackedbar chart ([PR #13816](https://github.com/microsoft/fluentui/pull/13816) by v-sivsar@microsoft.com)
+
+## [2.3.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.8)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.7..@uifabric/charting_v2.3.8)
+
+### Patches
+
+- prop check added in Grouped vertical bar chart ([PR #13853](https://github.com/microsoft/fluentui/pull/13853) by v-jasha@microsoft.com)
+
+## [2.3.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.7)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.6..@uifabric/charting_v2.3.7)
+
+### Patches
+
+- FIx Incorrect role is defined for lagend overflow items ([PR #13837](https://github.com/microsoft/fluentui/pull/13837) by v-gorraj@microsoft.com)
+
+## [2.3.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.6)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.5..@uifabric/charting_v2.3.6)
+
+### Patches
+
+- fix Invalid aria-attribute value for charts ([PR #13775](https://github.com/microsoft/fluentui/pull/13775) by v-gorraj@microsoft.com)
+- Fix issue When the mouse is over the data point on the second chart, the vertical line appears on the first chart. ([PR #13785](https://github.com/microsoft/fluentui/pull/13785) by v-gorraj@microsoft.com)
 
 ## [2.3.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.4)
 

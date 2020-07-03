@@ -14,14 +14,19 @@ import {
 } from '../../utils';
 import {
   ComponentEventHandler,
-  WithAsProp,
   ShorthandCollection,
-  withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
 import FormField, { FormFieldProps } from './FormField';
-import { useTelemetry, getElementType, useUnhandledProps, useStyles, useAccessibility } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useStyles,
+  useAccessibility,
+} from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import FormLabel from './FormLabel';
@@ -58,7 +63,10 @@ export const formClassName = 'ui-form';
 
 export type FormStylesProps = never;
 
-const Form: React.FC<WithAsProp<FormProps>> &
+/**
+ * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
+ */
+const Form: ComponentWithAs<'form', FormProps> &
   FluentComponentStaticProps<FormProps> & {
     Field: typeof FormField;
     Label: typeof FormLabel;
@@ -157,7 +165,4 @@ Form.Button = FormButton;
 Form.RadioGroup = FormRadioGroup;
 Form.Slider = FormSlider;
 
-/**
- * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
- */
-export default withSafeTypeForAs<typeof Form, FormProps, 'form'>(Form);
+export default Form;

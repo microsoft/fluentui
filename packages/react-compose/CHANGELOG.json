@@ -2,6 +2,57 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@fluentui/react-compose_v0.11.8",
+      "version": "0.11.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make __PRIVATE_PROPS optional to avoid assignment requirement",
+            "author": "olfedias@microsoft.com",
+            "commit": "d8115b1bcee06dc0db694be124154b8d421bae84",
+            "package": "@fluentui/react-compose"
+          },
+          {
+            "comment": "Revert \"resolveSlotProps: when slot/shorthand prop has JSX element as children, slot should be completely replaced by it (#13827)\"",
+            "author": "xgao@microsoft.com",
+            "commit": "70ddd498cbc27f269cef66a5688c2ffc52c32b93",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@fluentui/react-compose_v0.11.7",
+      "version": "0.11.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(compose): update types to provide better infers",
+            "author": "olfedias@microsoft.com",
+            "commit": "97c2a145ae6c5478d17f1577bd2a21a31de860f0",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@fluentui/react-compose_v0.11.6",
+      "version": "0.11.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "resolveSlotProps: Making change so that if slot/shorthand prop has JSX element as children, slot is completely replaced by it.",
+            "author": "xgao@microsoft.com",
+            "commit": "c04c43b2107ef83473ab505bde653bc6bd3b6cb2",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@fluentui/react-compose_v0.11.5",
       "version": "0.11.5",

@@ -2,6 +2,87 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "office-ui-fabric-react_v7.121.8",
+      "version": "7.121.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding 'as' prop tests to conformance tests and adding conformance tests to MenuItem and Stack.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "29ea83a5b421019b4c6c71301bfcbda849a650ad",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "office-ui-fabric-react_v7.121.7",
+      "version": "7.121.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure ResizeGroup uses correct window for animation frame",
+            "author": "tmichon@microsoft.com",
+            "commit": "6870e7068a2cb7fbd36828c5c0e7bab198fa3efa",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "High contrast in Edge Chromium: fix Label and TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "High Contrast in Edge Chromium: fix ChoiceGroup.",
+            "author": "xgao@microsoft.com",
+            "commit": "74dc7d81cfb5a21f0ce0e73e2a6d0550dede4870",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "High Contrast in Edge Chromium: fix Nav.",
+            "author": "xgao@microsoft.com",
+            "commit": "1606d80c8d9964ca6f1cac4219ab9249b93b4428",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "High Contrast in Edge Chromium: Fix ContextualMenu.",
+            "author": "xgao@microsoft.com",
+            "commit": "e65e7742aec5c9c49787f20bd620e730506ee936",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "office-ui-fabric-react_v7.121.5",
+      "version": "7.121.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SpinButton: pass through event information if the user spins up or down",
+            "author": "makopch@microsoft.com",
+            "commit": "de1d9cd76ae3ebf50acc513414a21a007ba60ed7",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ContextualMenu: Fixing issue where focus would not return to previously focused element and issue where error might occur if said previously focused element didn't have a focus method.",
+            "author": "joschect@microsoft.com",
+            "commit": "fb9e9f54a7a5ef35e56bc9962c20e6f2dedebf86",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Convert KeytipTransitionModifier to type",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "796868d7faad91ca11150b9c8c5c3efb80e543ac",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "office-ui-fabric-react_v7.121.4",
       "version": "7.121.4",

@@ -19,7 +19,7 @@ const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
     : undefined;
 
   if (tabbableTriggerProps) {
-    tabbableTriggerProps['aria-haspopup'] = 'true';
+    tabbableTriggerProps['aria-haspopup'] = 'dialog';
 
     if (process.env.NODE_ENV !== 'production') {
       // Override the default trigger's accessibility schema class.

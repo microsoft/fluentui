@@ -5,7 +5,14 @@ import {
   menuAsToolbarBehavior,
   ChatMessageBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -34,10 +41,8 @@ import {
   createShorthand,
 } from '../../utils';
 import {
-  WithAsProp,
   ShorthandValue,
   ComponentEventHandler,
-  withSafeTypeForAs,
   ShorthandCollection,
   FluentComponentStaticProps,
   ProviderContextPrepared,
@@ -146,7 +151,10 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   reactionGroup: `${chatMessageClassName}__reactions`,
 };
 
-const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStaticProps<ChatMessageProps> = props => {
+/**
+ * A ChatMessage represents a single message in chat.
+ */
+const ChatMessage: ComponentWithAs<'div', ChatMessageProps> & FluentComponentStaticProps<ChatMessageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
@@ -413,7 +421,4 @@ ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
 
-/**
- * A ChatMessage represents a single message in chat.
- */
-export default withSafeTypeForAs<typeof ChatMessage, ChatMessageProps>(ChatMessage);
+export default ChatMessage;
