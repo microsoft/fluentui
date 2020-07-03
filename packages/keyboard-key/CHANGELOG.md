@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-key
 
-This log was last generated on Fri, 08 May 2020 12:35:40 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.4)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.2.3..@fluentui/keyboard-key_v0.2.4)
+
+### Patches
+
+- Resolve side effects in keyboard-key/codes.ts ([PR #13729](https://github.com/microsoft/fluentui/pull/13729) by connorjsmith101@gmail.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.0)
 

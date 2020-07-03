@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "New macos link control documentation",
-  "packageName": "@uifabric/fabric-website",
-  "email": "saadnajmi2@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-01T23:50:11.056Z"
-}

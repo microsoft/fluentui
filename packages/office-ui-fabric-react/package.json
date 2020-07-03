@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "7.121.7",
+  "version": "7.121.8",
   "description": "Reusable React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -66,7 +66,7 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^7.12.15",
+    "@fluentui/react-focus": "^7.12.16",
     "@fluentui/react-icons": "^0.1.33",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/date-time-utilities": "^7.1.2",

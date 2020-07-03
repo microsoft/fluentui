@@ -56,7 +56,6 @@ export class LineChartBase extends React.Component<
   private _xAxisScale: any = '';
   // tslint:disable-next-line:no-any
   private _yAxisScale: any = '';
-  private _uniqLineText: string;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private _calloutId: string;
@@ -87,11 +86,6 @@ export class LineChartBase extends React.Component<
     this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
     this._calloutId = getId('callout');
     this._verticalLine = getId('verticalLine');
-    this._uniqLineText =
-      '_line_' +
-      Math.random()
-        .toString(36)
-        .substring(7);
     this._fitParentContainer = this._fitParentContainer.bind(this);
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -480,12 +474,13 @@ export class LineChartBase extends React.Component<
       const legendVal: string = this._points[i].legend;
       const lineColor: string = this._points[i].color;
       if (this._points[i].data.length === 1) {
-        const keyVal = this._uniqLineText + i;
+        const keyVal = getId('line');
+        const circleId = getId('circle');
         const x1 = this._points[i].data[0].x;
         const y1 = this._points[i].data[0].y;
         lines.push(
           <circle
-            id={keyVal}
+            id={circleId}
             key={keyVal}
             r={3.5}
             cx={this._xAxisScale(x1)}
@@ -495,7 +490,8 @@ export class LineChartBase extends React.Component<
         );
       }
       for (let j = 1; j < this._points[i].data.length; j++) {
-        const keyVal = this._uniqLineText + i + '_' + j;
+        const keyVal = getId('line');
+        const circleId = getId('circle');
         const x1 = this._points[i].data[j - 1].x;
         const y1 = this._points[i].data[j - 1].y;
         const x2 = this._points[i].data[j].x;
@@ -522,7 +518,7 @@ export class LineChartBase extends React.Component<
           );
           lines.push(
             <circle
-              id={keyVal + 1}
+              id={circleId}
               key={keyVal + 1}
               r={0.2}
               cx={this._xAxisScale(x1)}
@@ -547,9 +543,10 @@ export class LineChartBase extends React.Component<
             />,
           );
           if (j + 1 === this._points[i].data.length) {
+            const lasrCircleId = getId('lastcircle');
             lines.push(
               <circle
-                id={keyVal + 2}
+                id={lasrCircleId}
                 key={keyVal + 2}
                 r={0.2}
                 cx={this._xAxisScale(x2)}
@@ -577,7 +574,7 @@ export class LineChartBase extends React.Component<
         } else {
           lines.push(
             <circle
-              id={keyVal + 1}
+              id={circleId}
               key={keyVal + 1}
               r={5}
               cx={this._xAxisScale(x1)}
@@ -603,7 +600,7 @@ export class LineChartBase extends React.Component<
           if (j + 1 === this._points[i].data.length) {
             lines.push(
               <circle
-                id={keyVal + 2}
+                id={circleId}
                 key={keyVal + 2}
                 r={5}
                 cx={this._xAxisScale(x2)}

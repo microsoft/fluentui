@@ -4,8 +4,8 @@ import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
-import getElementType from '../utils/getElementType';
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { getElementType } from '../utils/getElementType';
+import { getUnhandledProps } from '../utils/getUnhandledProps';
 import {
   getNextElement,
   getFirstTabbable,
