@@ -386,9 +386,11 @@ export default () => (
     <Header as="h3" content="Useful examples of labelling" />
     <Header as="h4" content="Aria-labelledby refers to itself " />
     <p>
-      In following example we want to get narrated from screen reader "delete Active members" button. Solution is
-      mentioned below, where `aria-labelledby` refers to the button `id` follows by heading element `id`. Screen reader
-      computes the accessible name in the order which is provided in `aria-labelledby`. The strategy was taken from the
+      There are cases, when you need to add names of other elements in the accessible name of an element. In the example
+      below, the button has accessible name composed of its own name (delete) and header name (Active members). Solution
+      is to refer to the element itself by its {code('id')} in the {code('aria-labelledby')} attribute. Screen reader
+      computes the accessible name in the order which is provided in {code('aria-labelledby')}. The strategy was taken
+      from the
       {link(' Accessible Name and Description Computation 1.1', 'https://www.w3.org/TR/accname-1.1/#terminology')} page.
     </p>
     <CodeSnippet
@@ -407,11 +409,12 @@ export default () => (
 
     <Header as="h3" content="Accessibility name computation" />
     <p>
-      Recommendation how screen reader is computing accessibility name is mentioned in
-      {link(' Accessible Name and Description Computation 1.1', 'https://www.w3.org/TR/accname-1.1/')} page. The rules
-      are hard to read and understand immediately computed name from used attributes. Therefore we prepared the table
-      how different attributes are computed for the button element. Folow the page{' '}
-      <Link to="button-name-computation"> Button name computation</Link> to see the details.
+      The way how screen readers compute name and description is described in{' '}
+      {link(' Accessible Name and Description Computation 1.1', 'https://www.w3.org/TR/accname-1.1/')} page. As the
+      rules are quite complex, follow the page Button name computation to see how these rules apply in concrete
+      examples.
+      <Link to="button-name-computation"> Button name computation</Link> to see how these rules apply in concrete
+      examples.
     </p>
 
     <Header as="h3" content="Live Regions" />
