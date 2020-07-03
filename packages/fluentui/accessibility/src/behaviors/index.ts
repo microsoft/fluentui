@@ -18,15 +18,12 @@ export * from './Menu/menuItemBehavior';
 export * from './Menu/menuDividerBehavior';
 export * from './Menu/submenuBehavior';
 
-export * from './List/listBehavior';
+export * from './List/basicListBehavior';
 export * from './List/basicListItemBehavior';
-
 export * from './List/listBehavior';
 export * from './List/listItemBehavior';
-
 export * from './List/navigableListBehavior';
 export * from './List/navigableListItemBehavior';
-
 export * from './List/selectableListBehavior';
 export * from './List/selectableListItemBehavior';
 
