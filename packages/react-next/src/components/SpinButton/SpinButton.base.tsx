@@ -18,7 +18,7 @@ import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
 import { useBoolean, useSetTimeout, useControllableValue } from '@uifabric/react-hooks';
 
-export interface ISpinButtonState {
+interface ISpinButtonState {
   inputId: string;
   labelId: string;
   lastValidValue: string;
@@ -104,7 +104,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     initialValue = typeof min === 'number' ? String(min) : '0';
   }
 
-  const { current: state } = React.useRef<ISpinButtonState>({
+  const { current: internalState } = React.useRef<ISpinButtonState>({
     inputId: getId('input'),
     labelId: getId('Label'),
     lastValidValue: initialValue,
@@ -117,10 +117,10 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   });
 
   if (props.value !== undefined) {
-    state.lastValidValue = props.value;
+    internalState.lastValidValue = props.value;
   }
 
-  state.precision = callCalculatePrecision(props as ISpinButtonProps);
+  internalState.precision = callCalculatePrecision(props as ISpinButtonProps);
 
   const classNames = getClassNames(styles, {
     theme: theme!,
@@ -140,7 +140,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   // Validate function to use if one is not passed in
   const defaultOnValidate = (valueProp: string) => {
     if (valueProp === null || valueProp.trim().length === 0 || isNaN(Number(valueProp))) {
-      return state.lastValidValue;
+      return internalState.lastValidValue;
     }
     const newValue = Math.min(max as number, Math.max(min as number, Number(valueProp)));
     return String(newValue);
@@ -149,28 +149,32 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   // Increment function to use if one is not passed in
   const defaultOnIncrement = (valueProp: string): string | void => {
     let newValue: number = Math.min(Number(valueProp) + Number(step), max);
-    newValue = precisionRound(newValue, state.precision);
+    newValue = precisionRound(newValue, internalState.precision);
     return String(newValue);
   };
 
   // Increment function to use if one is not passed in
   const defaultOnDecrement = (valueProp: string): string | void => {
     let newValue: number = Math.max(Number(valueProp) - Number(step), min);
-    newValue = precisionRound(newValue, state.precision);
+    newValue = precisionRound(newValue, internalState.precision);
     return String(newValue);
   };
 
   const validate = (ev: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
-    if (value !== undefined && state.valueToValidate !== undefined && state.valueToValidate !== state.lastValidValue) {
-      const newValue = onValidate!(state.valueToValidate, ev);
+    if (
+      value !== undefined &&
+      internalState.valueToValidate !== undefined &&
+      internalState.valueToValidate !== internalState.lastValidValue
+    ) {
+      const newValue = onValidate!(internalState.valueToValidate, ev);
       // Done validating this value, so clear it
-      state.valueToValidate = undefined;
+      internalState.valueToValidate = undefined;
       if (newValue !== undefined) {
-        state.lastValidValue = newValue;
+        internalState.lastValidValue = newValue;
         setValue(newValue);
       } else {
         // Value was invalid. Reset state to last valid value.
-        setValue(state.lastValidValue);
+        setValue(internalState.lastValidValue);
       }
     }
   };
@@ -216,7 +220,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   const onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const elementValue: string = element.value;
-    state.valueToValidate = elementValue;
+    internalState.valueToValidate = elementValue;
     setValue(elementValue);
   };
 
@@ -225,7 +229,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     if (!input.current) {
       return;
     }
-    if (state.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
+    if (internalState.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       stop();
     }
     input.current.select();
@@ -257,25 +261,25 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
       setValue(newValue);
     }
 
-    if (state.spinningByMouse !== shouldSpin) {
-      state.spinningByMouse = shouldSpin;
+    if (internalState.spinningByMouse !== shouldSpin) {
+      internalState.spinningByMouse = shouldSpin;
     }
 
     if (shouldSpin) {
-      state.currentStepFunctionHandle = safeSetTimeout(() => {
-        updateValue(shouldSpin, state.stepDelay, stepFunction);
+      internalState.currentStepFunctionHandle = safeSetTimeout(() => {
+        updateValue(shouldSpin, internalState.stepDelay, stepFunction);
       }, stepDelay);
     }
   };
 
   // Stop spinning (clear any currently pending update and set spinning to false)
   const stop = (): void => {
-    if (state.currentStepFunctionHandle >= 0) {
-      clearTimeout(state.currentStepFunctionHandle);
-      state.currentStepFunctionHandle = -1;
+    if (internalState.currentStepFunctionHandle >= 0) {
+      clearTimeout(internalState.currentStepFunctionHandle);
+      internalState.currentStepFunctionHandle = -1;
     }
-    if (state.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
-      state.spinningByMouse = false;
+    if (internalState.spinningByMouse || keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
+      internalState.spinningByMouse = false;
       setKeyboardSpinDirection(KeyboardSpinDirection.notSpinning);
     }
   };
@@ -299,18 +303,18 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     switch (ev.which) {
       case KeyCodes.up:
         spinDirection = KeyboardSpinDirection.up;
-        updateValue(false /* shouldSpin */, state.initialStepDelay, onIncrement!);
+        updateValue(false /* shouldSpin */, internalState.initialStepDelay, onIncrement!);
         break;
       case KeyCodes.down:
         spinDirection = KeyboardSpinDirection.down;
-        updateValue(false /* shouldSpin */, state.initialStepDelay, onDecrement!);
+        updateValue(false /* shouldSpin */, internalState.initialStepDelay, onDecrement!);
         break;
       case KeyCodes.enter:
         validate(ev);
         break;
       case KeyCodes.escape:
-        if (value !== state.lastValidValue) {
-          setValue(state.lastValidValue);
+        if (value !== internalState.lastValidValue) {
+          setValue(internalState.lastValidValue);
         }
         break;
       default:
@@ -333,11 +337,11 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   };
 
   const onIncrementMouseDown = (): void => {
-    updateValue(true /* shouldSpin */, state.initialStepDelay, onIncrement!);
+    updateValue(true /* shouldSpin */, internalState.initialStepDelay, onIncrement!);
   };
 
   const onDecrementMouseDown = (): void => {
-    updateValue(true /* shouldSpin */, state.initialStepDelay, onDecrement!);
+    updateValue(true /* shouldSpin */, internalState.initialStepDelay, onDecrement!);
   };
 
   return (
@@ -346,7 +350,12 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
         <div className={classNames.labelWrapper}>
           {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
           {label && (
-            <Label id={state.labelId} htmlFor={state.inputId} className={classNames.label} disabled={disabled}>
+            <Label
+              id={internalState.labelId}
+              htmlFor={internalState.inputId}
+              className={classNames.label}
+              disabled={disabled}
+            >
               {label}
             </Label>
           )}
@@ -365,14 +374,14 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
           >
             <input
               value={value}
-              id={state.inputId}
+              id={internalState.inputId}
               onChange={onChange}
               onInput={onInputChange}
               className={classNames.input}
               type="text"
               autoComplete="off"
               role="spinbutton"
-              aria-labelledby={label && state.labelId}
+              aria-labelledby={label && internalState.labelId}
               aria-valuenow={
                 typeof ariaValueNow === 'number'
                   ? ariaValueNow
@@ -432,7 +441,12 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
         <div className={classNames.labelWrapper}>
           {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
           {label && (
-            <Label id={state.labelId} htmlFor={state.inputId} className={classNames.label} disabled={disabled}>
+            <Label
+              id={internalState.labelId}
+              htmlFor={internalState.inputId}
+              className={classNames.label}
+              disabled={disabled}
+            >
               {label}
             </Label>
           )}

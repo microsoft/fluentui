@@ -164,19 +164,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   styles?: Partial<ISpinButtonStyles>;
 
   /**
-   * Custom function for providing the classNames for the control. Can be used to provide
-   * all styles for the component instead of applying them on top of the default styles.
-   */
-  // getClassNames?: (
-  //   theme: ITheme,
-  //   disabled: boolean,
-  //   isFocused: boolean,
-  //   keyboardSpinDirection: KeyboardSpinDirection,
-  //   labelPosition?: Position,
-  //   className?: string,
-  // ) => ISpinButtonClassNames;
-
-  /**
    * Custom styles for the up arrow button.
    *
    * Note: The buttons are in a checked state when arrow keys are used to incremenent/decrement
