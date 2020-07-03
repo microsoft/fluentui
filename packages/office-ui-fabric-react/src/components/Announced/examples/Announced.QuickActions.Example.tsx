@@ -61,25 +61,12 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const detailsList = React.useRef<IDetailsList>(null);
   const textField = React.useRef<ITextField>(null);
   const { current: state } = React.useRef<IAnnouncedQuickActionsExampleState>({
-    selection: new Selection({
-      onSelectionChanged: () => setSelectionDetails(getSelectionDetails()),
-    }),
+    selection: new Selection(),
   });
-  const getSelectionDetails = (): string => {
-    const selectionCount = state.selection.getSelectedCount();
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (state.selection.getSelection()[0] as any).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
-  };
 
   const [items, setItems] = React.useState<IAnnouncedQuickActionsExampleItem[]>(exampleItems);
   const [renameDialogOpen, setRenameDialogOpen] = React.useState<boolean>(false);
-  const [selectionDetails, setSelectionDetails] = React.useState<{}>(getSelectionDetails());
+
   const [dialogContent, setDialogContent] = React.useState<JSX.Element | undefined>(undefined);
   const [announced, setAnnounced] = React.useState<JSX.Element | undefined>(undefined);
   const [previousAnnouncedValue, setPreviousAnnouncedValue] = React.useState<JSX.Element | undefined>(undefined);

@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   GroupHeader,
   GroupedList,
-  IGroup,
   IGroupHeaderCheckboxProps,
   IGroupHeaderProps,
 } from 'office-ui-fabric-react/lib/GroupedList';
