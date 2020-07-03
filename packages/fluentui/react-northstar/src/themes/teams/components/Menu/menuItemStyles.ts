@@ -116,7 +116,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
 
     return {
       color: 'inherit',
-      display: 'flex',
+      display: 'block',
       cursor: 'pointer',
       whiteSpace: 'nowrap',
 
