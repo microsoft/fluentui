@@ -8,7 +8,7 @@ const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStyl
   root: ({ props: p, variables: v, rtl }) => {
     return {
       position: 'relative',
-      verticalAlign: 'top',
+      float: 'right',
       left: pxToRem(12),
       userSelect: 'none',
       marginRight: pxToRem(4),
@@ -24,10 +24,11 @@ const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStyl
         transform: `scaleX(-1)`,
       }),
       content: '" "',
-      display: 'inline-block',
+      display: 'block',
       overflow: 'hidden',
-      height: pxToRem(16),
+      height: pxToRem(14),
       width: pxToRem(16),
+      backgroundSize: pxToRem(16),
 
       backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical),
 

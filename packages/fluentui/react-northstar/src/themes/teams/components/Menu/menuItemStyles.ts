@@ -119,7 +119,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
       display: 'block',
       cursor: 'pointer',
       whiteSpace: 'nowrap',
-
+      overflow: 'hidden',
       ...(pointing &&
         vertical && {
           border: '1px solid transparent',
