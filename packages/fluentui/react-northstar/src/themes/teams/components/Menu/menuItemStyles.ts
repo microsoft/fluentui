@@ -140,6 +140,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        overflow: 'visible',
       }),
 
       // active styles
