@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Line Chart-callout and circle Id's udpated",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-07-03T13:05:08.175Z"
+}
