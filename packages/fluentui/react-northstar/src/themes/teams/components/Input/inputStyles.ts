@@ -59,7 +59,7 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
 
-    '::-ms-clear ': {
+    '::-ms-clear': {
       display: 'none',
     },
   }),
