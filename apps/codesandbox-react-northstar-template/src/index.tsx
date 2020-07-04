@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Accordion, Button, Checkbox, Divider, Label, Provider, RadioGroup, Tree } from '@fluentui/react-northstar';
-import { Stack } from 'office-ui-fabric-react';
+import { Accordion, Button, Checkbox, Divider, Label, Flex, RadioGroup, Tree } from '@fluentui/react-northstar';
+import { SandboxApp } from '@fluentui/code-sandbox';
 
 let _rootDiv: HTMLElement;
 
-const customTheme = { siteVariables: { brand: 'cornflowerblue' } };
 const panels = [
   {
     key: 'one',
@@ -102,8 +101,8 @@ function start(): void {
   }
 
   ReactDOM.render(
-    <Provider theme={customTheme}>
-      <Stack gap={8}>
+    <SandboxApp>
+      <Flex column gap="gap.smaller">
         <Accordion panels={panels} />
         <Button content="Click Here" />
         <Checkbox label="Unchecked checkbox (uncontrolled)" />
@@ -111,8 +110,8 @@ function start(): void {
         <Label content="This is a label" />
         <RadioGroup defaultCheckedValue="1" items={radioGroupItems} />
         <Tree aria-label="default" items={treeItems} />
-      </Stack>
-    </Provider>,
+      </Flex>
+    </SandboxApp>,
     _rootDiv,
   );
 }
