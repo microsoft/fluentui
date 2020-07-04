@@ -14,6 +14,7 @@ import {
   MenuItemProps,
   MenuItemStylesProps,
 } from '@fluentui/react-northstar';
+import { FloatProperty } from 'csstype';
 
 const MenuItemWrapperDashed = compose(MenuItemWrapper, {
   displayName: 'MenuItemWrapperDashed',
@@ -126,7 +127,7 @@ const themeOverrides = {
         backgroundSize: '20px',
         height: '20px',
         width: '20px',
-        float: 'right',
+        float: 'right' as FloatProperty,
       },
     },
     MenuItemWrapperDashed: {
