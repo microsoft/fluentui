@@ -111,9 +111,8 @@ const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVariables>
     flexGrow: 1,
   }),
 
-  content: ({ variables: v }): ICSSInJSStyle => ({
+  content: (): ICSSInJSStyle => ({
     flexGrow: 1,
-    lineHeight: v.minHeight,
   }),
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
