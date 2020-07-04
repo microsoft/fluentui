@@ -107,6 +107,7 @@ const themeOverrides = {
     MenuItemBlue: {
       root: {
         backgroundColor: 'lightblue',
+        overflow: 'visible',
       },
     },
     MenuItemIconGreen: {
@@ -123,6 +124,9 @@ const themeOverrides = {
       root: {
         filter: 'saturate(8)',
         backgroundSize: '20px',
+        height: '20px',
+        width: '20px',
+        float: 'right',
       },
     },
     MenuItemWrapperDashed: {
