@@ -20,14 +20,13 @@ import {
 import {
   ShorthandValue,
   ShorthandRenderFunction,
-  WithAsProp,
-  withSafeTypeForAs,
   ShorthandCollection,
   ComponentEventHandler,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
 import {
+  ComponentWithAs,
   useTelemetry,
   useAutoControlled,
   useUnhandledProps,
@@ -79,7 +78,13 @@ export const hierarchicalTreeClassName = 'ui-hierarchicaltree';
 
 export type HierarchicalTreeStylesProps = never;
 
-const HierarchicalTree: React.FC<WithAsProp<HierarchicalTreeProps>> &
+/**
+ * (DEPRECATED) A Tree displays data organised in tree hierarchy.
+ *
+ * @accessibility
+ * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
+ */
+const HierarchicalTree: ComponentWithAs<'ul', HierarchicalTreeProps> &
   FluentComponentStaticProps<HierarchicalTreeProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(HierarchicalTree.displayName, context.telemetry);
@@ -229,10 +234,4 @@ HierarchicalTree.create = createShorthandFactory({
   mappedArrayProp: 'items',
 });
 
-/**
- * (DEPRECATED) A Tree displays data organised in tree hierarchy.
- *
- * @accessibility
- * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
- */
-export default withSafeTypeForAs<typeof HierarchicalTree, HierarchicalTreeProps, 'ul'>(HierarchicalTree);
+export default HierarchicalTree;

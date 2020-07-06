@@ -13,7 +13,7 @@ const isUndefined = (value: any) => typeof value === 'undefined';
  * Returns a stateful value, and a function to update it. Mimics the `useState()` React Hook
  * signature.
  */
-const useAutoControlled = <Value>(
+export const useAutoControlled = <Value>(
   options: UseAutoControlledOptions<Value>,
 ): [Value, React.Dispatch<React.SetStateAction<Value>>] => {
   const { defaultValue, initialValue = undefined, value } = options;
@@ -21,5 +21,3 @@ const useAutoControlled = <Value>(
 
   return [isUndefined(value) ? state : value, setState];
 };
-
-export default useAutoControlled;

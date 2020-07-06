@@ -18,7 +18,7 @@ export type ToolbarProps = {
   style?: React.CSSProperties;
 };
 
-const Toolbar: React.FunctionComponent<ToolbarProps> = ({
+export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   isExpanding,
   isSelecting,
   onExpandLayoutChange,
@@ -113,5 +113,3 @@ const Toolbar: React.FunctionComponent<ToolbarProps> = ({
     </div>
   </div>
 );
-
-export default Toolbar;

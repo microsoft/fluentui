@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "@uifabric/charting_v2.3.10",
+      "version": "2.3.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line chart: Remove Duplicate ID's for lines and circles",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "d55eecf434dfe269ecbf6f412dcde73a13dace3e",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@uifabric/charting_v2.3.9",
+      "version": "2.3.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing benchmarkData and targetData props from the stackedbar chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "ec20514fdd2721e62194c6f1d4c3878fa9df2e39",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Jul 2020 12:35:23 GMT",
       "tag": "@uifabric/charting_v2.3.8",
       "version": "2.3.8",

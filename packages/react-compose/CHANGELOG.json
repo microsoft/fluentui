@@ -2,6 +2,27 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@fluentui/react-compose_v0.11.8",
+      "version": "0.11.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make __PRIVATE_PROPS optional to avoid assignment requirement",
+            "author": "olfedias@microsoft.com",
+            "commit": "d8115b1bcee06dc0db694be124154b8d421bae84",
+            "package": "@fluentui/react-compose"
+          },
+          {
+            "comment": "Revert \"resolveSlotProps: when slot/shorthand prop has JSX element as children, slot should be completely replaced by it (#13827)\"",
+            "author": "xgao@microsoft.com",
+            "commit": "70ddd498cbc27f269cef66a5688c2ffc52c32b93",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jun 2020 12:33:36 GMT",
       "tag": "@fluentui/react-compose_v0.11.7",
       "version": "0.11.7",
