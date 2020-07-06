@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { create } from '@uifabric/utilities/lib/test';
 import { ReactWrapper, mount } from 'enzyme';
-import { ISpinButtonState } from './SpinButton.base';
+
 import { SpinButton } from './SpinButton';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
@@ -10,7 +10,7 @@ import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
 
 describe('SpinButton', () => {
   let ref: React.RefObject<ISpinButton>;
-  let wrapper: ReactWrapper<ISpinButtonProps, ISpinButtonState> | undefined;
+  let wrapper: ReactWrapper<ISpinButtonProps> | undefined;
 
   beforeEach(() => {
     ref = React.createRef<ISpinButton>();
