@@ -23,12 +23,7 @@ import {
 } from 'office-ui-fabric-react/lib/Pickers';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
-export interface IPeoplePickerExampleState {
-  contextualMenuVisible?: boolean;
-  contextualMenuTarget?: HTMLElement;
-  isPickerDisabled?: boolean;
-}
+import { useBoolean } from '@uifabric/react-hooks';
 
 export interface IFullDocumentCardProps {
   documentCardProps?: IDocumentCardProps;
@@ -40,11 +35,27 @@ export interface IFullDocumentCardProps {
 
 export interface IDocumentPickerProps extends IBasePickerProps<IFullDocumentCardProps> {}
 
+class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
+
+const inputProps = {
+  onFocus: () => console.log('onFocus called'),
+  onBlur: () => console.log('onBlur called'),
+  'aria-label': 'Document Picker',
+};
+
+const pickerSuggestionsProps = {
+  suggestionsHeaderText: 'Suggested Documents',
+  noResultsFoundText: 'No Documents Found',
+};
+
 const rootClass = mergeStyles({
   maxWidth: 500,
 });
 
 const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
+
 const TestImages = {
   documentPreview: baseProductionCdnUrl + 'document-preview.png',
   documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
@@ -291,6 +302,8 @@ const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISugg
   );
 };
 
+const log = (text: string): (() => void) => (): void => console.log(text);
+
 const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
   documentProps: IPickerItemProps<IFullDocumentCardProps>,
 ) => {
@@ -307,7 +320,6 @@ const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardPr
       },
     });
   }
-  const log = (text: string): (() => void) => (): void => console.log(text);
 
   return (
     <DocumentCard onClick={log('You clicked the card.')}>
@@ -324,76 +336,14 @@ const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardPr
   );
 };
 
-class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+export const PickerCustomResultExample: React.FunctionComponent = () => {
+  const [isPickerDisabled, { toggle: toggleIsPickerDisabled }] = useBoolean(false);
 
-const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
-
-export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
-  constructor(props: {}) {
-    super(props);
-    this._onFilterChanged = this._onFilterChanged.bind(this);
-    this.state = {
-      isPickerDisabled: false,
-    };
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className={rootClass}>
-        <Checkbox
-          styles={checkboxStyles}
-          label="Disable Document Picker"
-          checked={this.state.isPickerDisabled}
-          onChange={this._onDisabledButtonClick}
-        />
-        <DocumentPicker
-          removeButtonAriaLabel="Remove"
-          onRenderSuggestionsItem={SuggestedBigItem as any}
-          onResolveSuggestions={this._onFilterChanged}
-          onRenderItem={SelectedDocumentItem}
-          getTextFromItem={this._getTextFromItem}
-          pickerSuggestionsProps={{
-            suggestionsHeaderText: 'Suggested Documents',
-            noResultsFoundText: 'No Documents Found',
-          }}
-          disabled={this.state.isPickerDisabled}
-          inputProps={{
-            onFocus: () => console.log('onFocus called'),
-            onBlur: () => console.log('onBlur called'),
-            'aria-label': 'Document Picker',
-          }}
-        />
-      </div>
-    );
-  }
-
-  private _getTextFromItem(props: any): any {
+  const getTextFromItem = (props: any): any => {
     return props.documentTitleProps.title;
-  }
-
-  private _onDisabledButtonClick = (): void => {
-    this.setState({
-      isPickerDisabled: !this.state.isPickerDisabled,
-    });
   };
 
-  private _onFilterChanged(filterText: string, items?: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
-    if (!items) {
-      return [];
-    }
-
-    return filterText
-      ? data
-          .filter(
-            item =>
-              item.documentTitleProps &&
-              item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0,
-          )
-          .filter(item => !this._listContainsDocument(item, items))
-      : [];
-  }
-
-  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean {
+  const listContainsDocument = (document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean => {
     if (!items || !items.length || items.length === 0) {
       return false;
     }
@@ -401,5 +351,41 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     return (
       items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0
     );
-  }
-}
+  };
+
+  const onFilterChanged = (filterText: string, items?: IFullDocumentCardProps[]): IFullDocumentCardProps[] => {
+    if (!items) {
+      return [];
+    }
+    return filterText
+      ? data
+          .filter(
+            item =>
+              item.documentTitleProps &&
+              item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0,
+          )
+          .filter(item => !listContainsDocument(item, items))
+      : [];
+  };
+
+  return (
+    <div className={rootClass}>
+      <Checkbox
+        styles={checkboxStyles}
+        label="Disable Document Picker"
+        checked={isPickerDisabled}
+        onChange={toggleIsPickerDisabled}
+      />
+      <DocumentPicker
+        removeButtonAriaLabel="Remove"
+        onRenderSuggestionsItem={SuggestedBigItem as any}
+        onResolveSuggestions={onFilterChanged}
+        onRenderItem={SelectedDocumentItem}
+        getTextFromItem={getTextFromItem}
+        pickerSuggestionsProps={pickerSuggestionsProps}
+        disabled={isPickerDisabled}
+        inputProps={inputProps}
+      />
+    </div>
+  );
+};
