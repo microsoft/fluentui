@@ -1,5 +1,12 @@
 import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -15,13 +22,7 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import {
-  WithAsProp,
-  withSafeTypeForAs,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandCollection, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import ChatItem, { ChatItemProps } from './ChatItem';
 import ChatMessage from './ChatMessage';
 import ChatMessageDetails from './ChatMessageDetails';
@@ -44,7 +45,10 @@ export const chatSlotClassNames: ChatSlotClassNames = {
   item: `${chatClassName}__item`,
 };
 
-const Chat: React.FC<WithAsProp<ChatProps>> &
+/**
+ * A Chat displays messages from a conversation between multiple users.
+ */
+const Chat: ComponentWithAs<'ul', ChatProps> &
   FluentComponentStaticProps<ChatProps> & {
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
@@ -116,7 +120,4 @@ Chat.MessageDetails = ChatMessageDetails;
 
 Chat.create = createShorthandFactory({ Component: Chat });
 
-/**
- * A Chat displays messages from a conversation between multiple users.
- */
-export default withSafeTypeForAs<typeof Chat, ChatProps, 'ul'>(Chat);
+export default Chat;

@@ -10,7 +10,7 @@ import { GridBehaviorProps } from './gridBehavior';
  * @specification
  * Provides arrow key navigation in bidirectionalDomOrder direction.
  */
-const gridHorizontalBehavior: Accessibility<GridBehaviorProps> = () => ({
+export const gridHorizontalBehavior: Accessibility<GridBehaviorProps> = () => ({
   attributes: {},
   focusZone: {
     props: {
@@ -18,5 +18,3 @@ const gridHorizontalBehavior: Accessibility<GridBehaviorProps> = () => ({
     },
   },
 });
-
-export default gridHorizontalBehavior;

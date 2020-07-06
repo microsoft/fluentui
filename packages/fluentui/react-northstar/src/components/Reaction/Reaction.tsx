@@ -13,16 +13,17 @@ import {
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
-import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import ReactionGroup from './ReactionGroup';
-import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface ReactionSlotClassNames {
   icon: string;
@@ -52,7 +53,11 @@ export const reactionSlotClassNames: ReactionSlotClassNames = {
   content: `${reactionClassName}__content`,
 };
 
-const Reaction: React.FC<WithAsProp<ReactionProps>> &
+/**
+ * A Reaction indicates user's emotion or perception.
+ * Used to display user's reaction for entity in Chat (e.g. message).
+ */
+const Reaction: ComponentWithAs<'span', ReactionProps> &
   FluentComponentStaticProps<ReactionProps> & {
     Group: typeof ReactionGroup;
   } = props => {
@@ -136,8 +141,4 @@ Reaction.Group = ReactionGroup;
 
 Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' });
 
-/**
- * A Reaction indicates user's emotion or perception.
- * Used to display user's reaction for entity in Chat (e.g. message).
- */
-export default withSafeTypeForAs<typeof Reaction, ReactionProps, 'span'>(Reaction);
+export default Reaction;

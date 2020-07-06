@@ -12,6 +12,22 @@
     "$existingIDs": {
       "js": "checkIdentifiers",
       "description": "Value must be space-separated list of existing element identifiers"
+    },
+    "$hasIdentifiedLabel": {
+      "xpath": ".//label[@id and boolean(normalize-space(.//text()) != '')] | .//button | .//*[@role='checkbox']",
+      "description": "Label should always have id and some text content"
+    },
+    "$hasIdentifiedInput": {
+      "xpath": ".//input[@aria-labelledby|@id] | .//button | .//*[@role='checkbox']",
+      "description": "Should have input containing either id or aria-labelledby"
+    },
+    "$hasIdentifiedMessage": {
+      "xpath": "boolean(.//*[@aria-invalid] and .//*[@role='alert' and @id] and .//*[@aria-labelledby]) or not(.//*[@aria-invalid])",
+      "description": "Message should have identifier, role='alert' and combined with a `aria-invalid` and `aria-labelledby` input"
+    },
+    "$isValidRadioGroup": {
+      "xpath": "boolean(.//*[@role='radiogroup' and @aria-labelledby|@aria-label])",
+      "description": "RadioGroup inside form should have aria-labelledby attribute"
     }
   },
   "parameters": {
@@ -811,6 +827,79 @@
               "name": "role",
               "value": "radio",
               "overrides": "role"
+            }
+          ]
+        }
+      }
+    },
+    "FormField": {
+      "constraints": [
+        {
+          "ref": "$hasIdentifiedLabel"
+        },
+        {
+          "ref": "$hasIdentifiedInput"
+        },
+        {
+          "ref": "$hasIdentifiedMessage"
+        }
+      ],
+      "tags": {
+        "<div>, <span>": {}
+      }
+    },
+    "FormInput": {
+      "inherits": "FormField"
+    },
+    "FormRadioGroup": {
+      "constraints": [
+        {
+          "ref": "$isValidRadioGroup"
+        },
+        {
+          "ref": "$hasIdentifiedLabel"
+        },
+        {
+          "ref": "$hasIdentifiedMessage"
+        }
+      ],
+      "tags": {
+        "<div>": {}
+      }
+    },
+    "FormDropdown": {
+      "inherits": "FormField"
+    },
+    "FormMessage": {
+      "constraints": [
+        {
+          "ref": "$hasTitleOrText"
+        },
+        {
+          "ref": "$atomic"
+        }
+      ],
+      "tags": {
+        "<span>, <div>": {}
+      }
+    },
+    "FormLabel": {
+      "constraints": [
+        {
+          "ref": "$hasTitleOrText"
+        },
+        {
+          "ref": "$atomic"
+        }
+      ],
+      "tags": {
+        "<label>": {
+          "constraints": [
+            {
+              "ref": "$atomic"
+            },
+            {
+              "ref": "$hasIdentifiedLabel"
             }
           ]
         }

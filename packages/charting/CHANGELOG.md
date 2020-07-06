@@ -1,8 +1,44 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 30 Jun 2020 12:33:36 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Jul 2020 12:32:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.11](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.11)
+
+Mon, 06 Jul 2020 12:32:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.10..@uifabric/charting_v2.3.11)
+
+### Patches
+
+- Line Chart-callout and circle Id's udpated ([PR #13920](https://github.com/microsoft/fluentui/pull/13920) by v-jasha@microsoft.com)
+
+## [2.3.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.10)
+
+Fri, 03 Jul 2020 12:36:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.9..@uifabric/charting_v2.3.10)
+
+### Patches
+
+- Line chart: Remove Duplicate ID's for lines and circles ([PR #13897](https://github.com/microsoft/fluentui/pull/13897) by v-gorraj@microsoft.com)
+
+## [2.3.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.9)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.8..@uifabric/charting_v2.3.9)
+
+### Patches
+
+- removing benchmarkData and targetData props from the stackedbar chart ([PR #13816](https://github.com/microsoft/fluentui/pull/13816) by v-sivsar@microsoft.com)
+
+## [2.3.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.8)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.7..@uifabric/charting_v2.3.8)
+
+### Patches
+
+- prop check added in Grouped vertical bar chart ([PR #13853](https://github.com/microsoft/fluentui/pull/13853) by v-jasha@microsoft.com)
 
 ## [2.3.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.7)
 

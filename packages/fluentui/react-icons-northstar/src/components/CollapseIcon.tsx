@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const CollapseIcon = createSvgIcon({
+export const CollapseIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg viewBox="8 8 16 16" role="presentation" className={classes.svg} focusable="false">
       <path
@@ -39,5 +39,3 @@ const CollapseIcon = createSvgIcon({
   ),
   displayName: 'CollapseIcon',
 });
-
-export default CollapseIcon;
