@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 06 Jul 2020 12:32:20 GMT",
+      "tag": "@uifabric/charting_v2.3.11",
+      "version": "2.3.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line Chart-callout and circle Id's udpated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "953592c7bdc750c2f1dbd9e2ca3863774a82c516",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Jul 2020 12:36:49 GMT",
       "tag": "@uifabric/charting_v2.3.10",
       "version": "2.3.10",
