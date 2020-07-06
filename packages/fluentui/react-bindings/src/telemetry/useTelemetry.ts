@@ -53,10 +53,8 @@ export const getTelemetry = (
   return { setStart, setEnd };
 };
 
-const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
+export const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
   const isFirstRenderRef = React.useRef<boolean>(true);
 
   return getTelemetry(displayName, telemetry, isFirstRenderRef);
 };
-
-export default useTelemetry;

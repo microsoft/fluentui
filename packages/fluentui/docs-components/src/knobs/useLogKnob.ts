@@ -5,7 +5,7 @@ import { LogFormatter } from './types';
 
 const defaultFormatter: LogFormatter = (name: string) => `${new Date().toLocaleTimeString()}: ${name}`;
 
-const useLogKnob = <T = (...args: any[]) => any>(
+export const useLogKnob = <T = (...args: any[]) => any>(
   name: string,
   callback?: T,
   formatter: LogFormatter = defaultFormatter,
@@ -27,5 +27,3 @@ const useLogKnob = <T = (...args: any[]) => any>(
 
   return proxy as T;
 };
-
-export default useLogKnob;

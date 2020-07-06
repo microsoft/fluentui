@@ -21,8 +21,8 @@ import {
   shouldWrapFocus,
 } from '@uifabric/utilities';
 
-import getElementType from '../utils/getElementType';
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { getElementType } from '../utils/getElementType';
+import { getUnhandledProps } from '../utils/getUnhandledProps';
 import { FocusZoneProps, IFocusZone } from './FocusZone.types';
 import {
   getNextElement,

@@ -73,7 +73,7 @@ function generateDeclarationReference(
 
 //
 
-export default function felaPerformanceEnhancer(renderer: FelaRenderer) {
+export function felaPerformanceEnhancer(renderer: FelaRenderer) {
   renderer._renderStyleToClassNames = function _renderStyleToClassNames(
     { _className, ...style }: ICSSInJSStyle & { _className: string },
     pseudo: string = '',
