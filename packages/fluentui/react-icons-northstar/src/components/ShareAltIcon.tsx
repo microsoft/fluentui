@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const ShareAltIcon = createSvgIcon({
+export const ShareAltIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg viewBox="0 0 32 32" role="presentation" className={classes.svg}>
       <g className={cx(iconClassNames.filled, classes.filledPart)}>
@@ -83,5 +83,3 @@ const ShareAltIcon = createSvgIcon({
   ),
   displayName: 'ShareAltIcon',
 });
-
-export default ShareAltIcon;

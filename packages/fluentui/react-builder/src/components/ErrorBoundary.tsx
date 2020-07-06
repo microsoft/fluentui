@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class ErrorBoundary extends React.Component<any, any> {
+export class ErrorBoundary extends React.Component<any, any> {
   state = {
     hasError: false,
     forCode: null,
@@ -28,5 +28,3 @@ class ErrorBoundary extends React.Component<any, any> {
     return <pre>{this.state.error.message}</pre>;
   }
 }
-
-export default ErrorBoundary;

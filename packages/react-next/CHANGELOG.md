@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.53)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.52..@fluentui/react-next_v8.0.0-alpha.53)
+
+### Changes
+
+- Adding pre-copy.json step. ([PR #13873](https://github.com/microsoft/fluentui/pull/13873) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.52)
 

@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Line chart:Expose chart  margins prop for line chart",
   "packageName": "@uifabric/charting",
   "email": "v-gorraj@microsoft.com",

@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import Designer from './components/Designer';
+import { Designer } from './components/Designer';
 
-export { default as FullScreenPreview } from './components/FullScreenPreview';
-
-export default () => <Designer />;
+export { FullScreenPreview } from './components/FullScreenPreview';
+export const Builder: React.FC = () => <Designer />;

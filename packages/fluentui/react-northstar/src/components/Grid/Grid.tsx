@@ -1,5 +1,12 @@
 import { Accessibility, GridBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -14,7 +21,7 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 
 export interface GridProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -34,7 +41,10 @@ export const gridClassName = 'ui-grid';
 
 export type GridStylesProps = Pick<GridProps, 'columns' | 'rows'>;
 
-const Grid: React.FC<WithAsProp<GridProps>> & FluentComponentStaticProps<GridProps> = props => {
+/**
+ * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
+ */
+const Grid: ComponentWithAs<'div', GridProps> & FluentComponentStaticProps<GridProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Grid.displayName, context.telemetry);
   setStart();
@@ -92,7 +102,4 @@ Grid.propTypes = {
 };
 Grid.handledProps = Object.keys(Grid.propTypes) as any;
 
-/**
- * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
- */
-export default withSafeTypeForAs<typeof Grid, GridProps>(Grid);
+export default Grid;
