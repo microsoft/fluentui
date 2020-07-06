@@ -101,14 +101,15 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
     // The following properties take priority for what Narrator should read:
     // 1. ariaLabel
     // 2. onAriaLabel (if checked) or offAriaLabel (if not checked)
-    // 3. label
-    // 4. onText (if checked) or offText (if not checked)
+    // 3. label AND stateText, if existent
+
     let labelledById: string | undefined = undefined;
     if (!ariaLabel && !badAriaLabel) {
       if (label) {
         labelledById = labelId;
-      } else if (stateText) {
-        labelledById = stateTextId;
+      }
+      if (stateText) {
+        labelledById = labelledById ? `${labelledById} ${stateTextId}` : stateTextId;
       }
     }
 
@@ -145,8 +146,8 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
         {(keytipAttributes: any): JSX.Element => renderPill(keytipAttributes)}
       </KeytipData>
     ) : (
-      renderPill()
-    );
+        renderPill()
+      );
 
     return (
       <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
@@ -159,6 +160,8 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
         <div className={classNames.container}>
           {pillContent}
           {stateText && (
+            // This second "htmlFor" property is needed to allow the
+            // toggle's stateText to also trigger a state change when clicked.
             <Label htmlFor={this._id} className={classNames.text} id={stateTextId}>
               {stateText}
             </Label>
