@@ -3,19 +3,15 @@ import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
-import { axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { IAreaChartProps, IAreaChartStyleProps, IAreaChartStyles } from './AreaChart.types';
+import { ILineChartProps, ILineChartStyleProps, ILineChartStyles } from '../LineChart/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-
 import { ILineChartDataPoint, ILineChartPoints } from '../../types/index';
-
-import { calloutData, createNumericXAxis, createDateXAxis } from '../../utilities/index';
-
-const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
+import { calloutData, createNumericXAxis, createDateXAxis, createYAxis, fitContainer } from '../../utilities/index';
+const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
 export interface IRefArrayData {
   legendText?: string;
@@ -39,7 +35,12 @@ export interface IDPointType {
   };
 }
 
-type numericAxis = D3Axis<number | { valueOf(): number }>;
+export interface IContainerValues {
+  width: number;
+  height: number;
+  shouldResize: boolean;
+  reqID: number;
+}
 
 export interface IAreaChartState {
   _width: number;
@@ -61,31 +62,29 @@ export interface IAreaChartState {
   yCalloutValue?: string;
 }
 
-export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
+export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartState> {
   // tslint:disable-next-line:no-any
   private _calloutPoints: any;
   private _points: ILineChartPoints[];
-  private _classNames: IProcessedStyleSet<IAreaChartStyles>;
-  private _reqID: number;
+  private _classNames: IProcessedStyleSet<ILineChartStyles>;
   // tslint:disable-next-line:no-any
   private dataSet: any;
   private _colors: string[];
   private _keys: string[];
   private _refArray: IRefArrayData[];
-  private _yAxisTickCount: number;
   private _isGraphDraw: boolean = true;
   private _uniqueIdForGraph: string;
   private _verticalLineId: string;
   private _callOutId: string;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
+  private containerParams: IContainerValues;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
-  private minLegendContainerHeight: number = 32;
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
 
-  public constructor(props: IAreaChartProps) {
+  public constructor(props: ILineChartProps) {
     super(props);
     this.state = {
       _width: this.props.width || 600,
@@ -106,7 +105,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       yCalloutValue: '',
     };
     this._refArray = [];
-    this._adjustProps();
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqueIdForGraph = getId('areaChart_');
     this._verticalLineId = getId('verticalLine_');
     this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
@@ -117,7 +116,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._fitParentContainer();
   }
 
-  public componentDidUpdate(prevProps: IAreaChartProps): void {
+  public componentDidUpdate(prevProps: ILineChartProps): void {
     if (
       prevProps.data !== this.props.data ||
       prevProps.height !== this.props.height ||
@@ -125,7 +124,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       this._isGraphDraw
     ) {
       this._fitParentContainer();
-      this._adjustProps();
+      this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
       this.dataSet = this._createDataSet();
       this._calloutPoints = this.props.data.lineChartData ? calloutData(this.props.data.lineChartData!) : [];
       this._drawGraph();
@@ -134,25 +133,21 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public componentWillUnmount(): void {
-    cancelAnimationFrame(this._reqID);
+    cancelAnimationFrame(this.containerParams.reqID);
     d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
   }
 
   public render(): JSX.Element {
     const { theme, className, styles, tickValues, tickFormat } = this.props;
-
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
-
     const xMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.x as number);
     })!;
-
     const xMin = d3Min(this._points, (point: ILineChartPoints) => {
       return d3Min(point.data, (item: ILineChartDataPoint) => item.x);
     })!;
-
     const XAxisParams = {
       margins: this.margins,
       containerWidth: this.state.containerWidth,
@@ -165,7 +160,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       tickValues: tickValues,
       tickFormat: tickFormat,
     };
-
     let isDateType = false;
     if (this._points && this._points.length > 0) {
       this._points.map((chartData: ILineChartPoints) => {
@@ -179,14 +173,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     isDateType ? createDateXAxis(this._points, XAxisParams, tickParams) : createNumericXAxis(this._points, XAxisParams);
     this._keys = this._createKeys();
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette);
-
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: this.state._width,
       height: this.state._height,
       className,
     });
-
     const svgDimensions = {
       width: this.state.containerWidth,
       height: this.state.containerHeight,
@@ -268,36 +260,20 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   private _fitParentContainer(): void {
-    const { containerWidth, containerHeight } = this.state;
-    const { hideLegend = false } = this.props;
-
-    this._reqID = requestAnimationFrame(() => {
-      const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
-      const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || (!hideLegend ? this.minLegendContainerHeight : 0)) +
-        parseFloat(legendContainerComputedStyles.marginTop || '0') +
-        parseFloat(legendContainerComputedStyles.marginBottom || '0');
-
-      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
-      const currentContainerHeight =
-        container.getBoundingClientRect().height > legendContainerHeight
-          ? container.getBoundingClientRect().height
-          : 350;
-      const shouldResize =
-        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
-      }
-    });
-  }
-
-  private _adjustProps(): void {
-    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
-    this._yAxisTickCount = this.props.yAxisTickCount || 4;
+    const reqParams = {
+      containerWidth: this.state.containerWidth,
+      containerHeight: this.state.containerHeight,
+      hideLegend: this.props.hideLegend!,
+      legendContainer: this.legendContainer,
+      container: this.props.parentRef ? this.props.parentRef : this.chartContainer,
+    };
+    this.containerParams = fitContainer(reqParams);
+    if (this.containerParams.shouldResize) {
+      this.setState({
+        containerWidth: this.containerParams.width,
+        containerHeight: this.containerParams.height,
+      });
+    }
   }
 
   private _createDataSet = () => {
@@ -329,38 +305,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       );
     }
     return dataSet;
-  };
-
-  private _prepareDatapoints(maxVal: number, minVal: number): number[] {
-    const val = Math.ceil((maxVal - minVal) / this._yAxisTickCount);
-    const dataPointsArray: number[] = [minVal, minVal + val];
-    while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
-      dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
-    }
-    return dataPointsArray;
-  }
-
-  private createAreaChartYAxis = (maxOfYVal: number): numericAxis => {
-    const { showYAxisGridLines, yAxisTickCount, yAxisTickFormat } = this.props;
-    const domainValues = this._prepareDatapoints(maxOfYVal, 0);
-    const yAxisScale = d3ScaleLinear()
-      .domain([0, domainValues[domainValues.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
-
-    const yAxis = d3AxisLeft(yAxisScale)
-      .tickPadding(10)
-      .tickValues(domainValues);
-
-    yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.ticks(yAxisTickCount ? yAxisTickCount : 4, 's');
-
-    showYAxisGridLines && yAxis.tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right));
-
-    if (this.yAxisElement) {
-      d3Select(this.yAxisElement)
-        .call(yAxis)
-        .selectAll('text');
-    }
-    return yAxis;
   };
 
   private _getColors = (): string[] => {
@@ -578,6 +522,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _drawGraph = (): void => {
     d3Select(`#firstGElementForChart123_${this._uniqueIdForGraph}`).remove();
+    const { showYAxisGridLines, yAxisTickCount, yAxisTickFormat } = this.props;
     const that = this;
     const chartContainer = d3Select(`#graphGElement_${this._uniqueIdForGraph}`)
       .append('g')
@@ -611,7 +556,19 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       return d3Min(point.data, (item: ILineChartDataPoint) => item.x);
     })!;
 
-    this.createAreaChartYAxis(maxOfYVal);
+    const yAxisParams = {
+      margins: this.margins,
+      containerWidth: this.state.containerWidth,
+      containerHeight: this.state.containerHeight,
+      yAxisElement: this.yAxisElement,
+      yAxisTickFormat: yAxisTickFormat!,
+      yAxisTickCount: yAxisTickCount ? yAxisTickCount : 4,
+      finalYMaxVal: maxOfYVal,
+      finalYMinVal: 0,
+      tickPadding: 10,
+      showYAxisGridLines: showYAxisGridLines!,
+    };
+    createYAxis(this._points, yAxisParams);
 
     const xScale = d3ScaleLinear()
       .range([this.margins.left, this.state.containerWidth - this.margins.right])

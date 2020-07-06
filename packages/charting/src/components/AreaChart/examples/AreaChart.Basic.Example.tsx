@@ -111,11 +111,11 @@ export class AreaChartBasicExample extends React.Component<Readonly<{}>, {}> {
       lineChartData: chartPoints,
     };
 
-    const rootStyle = mergeStyles({ width: '650px', height: '400px' });
+    const rootStyle = mergeStyles({ width: '550px', height: '200px' });
 
     return (
       <div className={rootStyle}>
-        <AreaChart height={400} width={650} showYAxisGridLines={true} data={chartData} />
+        <AreaChart height={200} width={550} showYAxisGridLines={true} data={chartData} />
       </div>
     );
   }

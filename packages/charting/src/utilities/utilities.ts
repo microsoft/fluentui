@@ -34,41 +34,68 @@ export interface IYAxisParams {
     left: number;
   };
   containerWidth: number;
+  containerHeight: number;
   yAxisElement?: SVGElement | null;
   // tslint:disable-next-line: no-any
-  yAxisTickFormat: any;
-  yAxisTickCount?: number;
-  yMaxValue: number;
-  yMinValue: number;
-  containerHeight: number;
+  yAxisTickFormat?: any;
+  yAxisTickCount: number;
+  finalYMaxVal?: number;
+  finalYMinVal?: number;
+  yMaxValue?: number;
+  yMinValue?: number;
+  tickPadding?: number;
+  showYAxisGridLines: boolean;
   eventAnnotationProps?: IEventsAnnotationProps;
   eventLabelHeight?: number;
 }
 
+export interface IContainerValues {
+  width: number;
+  height: number;
+  shouldResize: boolean;
+  reqID: number;
+}
+
+export interface IFitContainerParams {
+  containerWidth: number;
+  containerHeight: number;
+  hideLegend: boolean;
+  legendContainer: HTMLDivElement;
+  container: HTMLDivElement | null | HTMLElement;
+}
+
 export function createNumericXAxis(points: ILineChartPoints[], xAxisParams: IXAxisParams) {
-  const xMinVal = xAxisParams.xMin ? xAxisParams.xMin : 0;
-  const xMaxVal = xAxisParams.xMax
-    ? xAxisParams.xMax
+  const {
+    xMin,
+    xMax,
+    margins,
+    containerWidth,
+    showRoundOffXTickValues = false,
+    tickSize = 10,
+    tickPadding = 10,
+    xAxisCount = 10,
+    xAxisElement,
+  } = xAxisParams;
+  const xMinVal = xMin ? xMin : 0;
+  const xMaxVal = xMax
+    ? xMax
     : d3Max(points, (point: ILineChartPoints) => {
         return d3Max(point.data, (item: ILineChartDataPoint) => {
           return item.x as number;
         });
       })!;
-
   const xAxisScale = d3ScaleLinear()
     .domain([xMinVal, xMaxVal])
-    .range([xAxisParams.margins.left, xAxisParams.containerWidth - xAxisParams.margins.right]);
-
-  xAxisParams.showRoundOffXTickValues && xAxisScale.nice();
+    .range([margins.left, containerWidth - margins.right]);
+  showRoundOffXTickValues && xAxisScale.nice();
 
   const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(xAxisParams.tickSize ? xAxisParams.tickSize : 10)
-    .tickPadding(xAxisParams.tickPadding ? xAxisParams.tickPadding : 10)
-    .ticks(xAxisParams.xAxisCount ? xAxisParams.xAxisCount : 10)
+    .tickSize(tickSize)
+    .tickPadding(tickPadding)
+    .ticks(xAxisCount)
     .tickSizeOuter(0);
-
-  if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement)
+  if (xAxisElement) {
+    d3Select(xAxisElement)
       .call(xAxis)
       .selectAll('text');
   }
@@ -108,38 +135,6 @@ export function createDateXAxis(points: ILineChartPoints[], xAxisParams: IXAxisP
   return xAxisScale;
 }
 
-export function createYAxis(points: ILineChartPoints[], yAxisParams: IYAxisParams) {
-  const yMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
-  })!;
-  const yMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
-  })!;
-  const finalYmax = yMax > yAxisParams.yMaxValue ? yMax : yAxisParams.yMaxValue;
-  const finalYmin = yMin < yAxisParams.yMinValue ? 0 : yAxisParams.yMinValue;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, 4);
-  const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin, domainValues[domainValues.length - 1]])
-    .range([
-      yAxisParams.containerHeight - yAxisParams.margins.bottom,
-      yAxisParams.margins.top + (yAxisParams.eventAnnotationProps! ? yAxisParams.eventLabelHeight! : 0),
-    ]);
-  const yAxis = d3AxisLeft(yAxisScale)
-    .tickSize(-(yAxisParams.containerWidth - yAxisParams.margins.left - yAxisParams.margins.right))
-    .tickPadding(12)
-    .tickValues(domainValues);
-
-  yAxisParams.yAxisTickFormat
-    ? yAxis.tickFormat(yAxisParams.yAxisTickFormat)
-    : yAxis.ticks(yAxisParams.yAxisTickCount ? yAxisParams.yAxisTickCount : 4, 's');
-  yAxisParams.yAxisElement
-    ? d3Select(yAxisParams.yAxisElement)
-        .call(yAxis)
-        .selectAll('text')
-    : '';
-  return yAxisScale;
-}
-
 export function prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
   const val = Math.ceil((maxVal - minVal) / splitInto);
   const dataPointsArray: number[] = [minVal, minVal + val];
@@ -147,6 +142,56 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
   }
   return dataPointsArray;
+}
+
+export function createYAxis(points: ILineChartPoints[], yAxisParams: IYAxisParams) {
+  const {
+    finalYMaxVal = 0,
+    finalYMinVal = 0,
+    yAxisElement = null,
+    yMaxValue = 0,
+    yMinValue = 0,
+    showYAxisGridLines = false,
+    containerHeight,
+    containerWidth,
+    margins,
+    tickPadding = 12,
+    yAxisTickFormat,
+    yAxisTickCount = 4,
+    eventAnnotationProps,
+    eventLabelHeight,
+  } = yAxisParams;
+  let finalYmax: number;
+  let finalYmin: number;
+  if (finalYMaxVal || finalYMinVal) {
+    finalYmax = finalYMaxVal!;
+    finalYmin = finalYMinVal!;
+  } else {
+    const yMax = d3Max(points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
+    })!;
+    const yMin = d3Min(points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
+    })!;
+
+    finalYmax = yMax > yMaxValue! ? yMax : yMaxValue!;
+    finalYmin = yMin < yMinValue! ? 0 : yMinValue!;
+  }
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
+  const yAxisScale = d3ScaleLinear()
+    .domain([finalYmin, domainValues[domainValues.length - 1]])
+    .range([containerHeight - margins.bottom, margins.top + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+  const yAxis = d3AxisLeft(yAxisScale)
+    .tickPadding(tickPadding)
+    .tickValues(domainValues);
+  !!yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.ticks(yAxisTickCount, 's');
+  showYAxisGridLines && yAxis.tickSizeInner(-(containerWidth - margins.left - margins.right));
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(yAxis)
+        .selectAll('text')
+    : '';
+  return yAxisScale;
 }
 
 export function calloutData(values: ILineChartPoints[]) {
@@ -207,4 +252,27 @@ export function getUnique(
     .filter((e: number) => arr[e])
     .map((e: number) => arr[e]);
   return unique;
+}
+
+export function fitContainer(containerParams: IFitContainerParams) {
+  const { legendContainer, container, containerWidth, containerHeight, hideLegend = false } = containerParams;
+  // tslint:disable-next-line:no-empty
+  const animatedId = requestAnimationFrame(() => {});
+  const legendContainerComputedStyles = getComputedStyle(legendContainer);
+  const legendContainerHeight =
+    (legendContainer.getBoundingClientRect().height || (!hideLegend ? 32 : 0)) +
+    parseFloat(legendContainerComputedStyles.marginTop || '0') +
+    parseFloat(legendContainerComputedStyles.marginBottom || '0');
+
+  const currentContainerWidth = container!.getBoundingClientRect().width;
+  const currentContainerHeight =
+    container!.getBoundingClientRect().height > legendContainerHeight ? container!.getBoundingClientRect().height : 350;
+  const containerValues = {
+    width: currentContainerWidth!,
+    height: currentContainerHeight! - legendContainerHeight!,
+    shouldResize:
+      containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight,
+    reqID: animatedId,
+  };
+  return containerValues;
 }

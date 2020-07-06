@@ -7,13 +7,20 @@ import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, ILineChartPoin
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, createNumericXAxis, createDateXAxis, createYAxis } from '../../utilities/index';
+import { calloutData, createNumericXAxis, createDateXAxis, createYAxis, fitContainer } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
 export interface IRefArrayData {
   index?: string;
   refElement?: SVGGElement;
+}
+
+export interface IContainerValues {
+  width: number;
+  height: number;
+  shouldResize: boolean;
+  reqID: number;
 }
 
 export class LineChartBase extends React.Component<
@@ -40,7 +47,7 @@ export class LineChartBase extends React.Component<
   // tslint:disable-next-line:no-any
   private _calloutPoints: any[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
-  private _reqID: number;
+  private containerParams: IContainerValues;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   // tslint:disable-next-line:no-any
@@ -54,7 +61,6 @@ export class LineChartBase extends React.Component<
   private _uniqueCallOutID: string;
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
-  private minLegendContainerHeight: number = 32;
   private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
     super(props);
@@ -89,7 +95,7 @@ export class LineChartBase extends React.Component<
   }
 
   public componentWillUnmount(): void {
-    cancelAnimationFrame(this._reqID);
+    cancelAnimationFrame(this.containerParams.reqID);
   }
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
@@ -148,8 +154,10 @@ export class LineChartBase extends React.Component<
         containerWidth: this.state.containerWidth,
         containerHeight: this.state.containerHeight,
         yAxisTickFormat: yAxisTickFormat,
+        yAxisTickCount: 4,
         yMaxValue: yMaxValue,
         yMinValue: yMinValue,
+        showYAxisGridLines: true,
         yAxisElement: this.yAxisElement,
         eventAnnotationProps: this.props.eventAnnotationProps,
         eventLabelHeight: this.eventLabelHeight,
@@ -265,31 +273,20 @@ export class LineChartBase extends React.Component<
   }
 
   private _fitParentContainer(): void {
-    const { containerWidth, containerHeight } = this.state;
-    const { hideLegend = false } = this.props;
-
-    this._reqID = requestAnimationFrame(() => {
-      const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
-      const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || (!hideLegend ? this.minLegendContainerHeight : 0)) +
-        parseFloat(legendContainerComputedStyles.marginTop || '0') +
-        parseFloat(legendContainerComputedStyles.marginBottom || '0');
-
-      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
-      const currentContainerHeight =
-        container.getBoundingClientRect().height > legendContainerHeight
-          ? container.getBoundingClientRect().height
-          : 350;
-      const shouldResize =
-        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
-      }
-    });
+    const reqParams = {
+      containerWidth: this.state.containerWidth,
+      containerHeight: this.state.containerHeight,
+      hideLegend: this.props.hideLegend!,
+      legendContainer: this.legendContainer,
+      container: this.props.parentRef ? this.props.parentRef : this.chartContainer,
+    };
+    this.containerParams = fitContainer(reqParams);
+    if (this.containerParams.shouldResize) {
+      this.setState({
+        containerWidth: this.containerParams.width,
+        containerHeight: this.containerParams.height,
+      });
+    }
   }
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
