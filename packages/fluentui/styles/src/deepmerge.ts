@@ -4,7 +4,7 @@ const isValid = k => k !== '__proto__' && k !== 'prototype' && k !== 'constructo
 // Heads Up!
 // Changes here need to consider breaking all object references.
 // Merging should result in a themes that are non-mutated and have broken references.
-const deepmerge = (...sources) => {
+export const deepmerge = (...sources) => {
   const inner = (target, source) => {
     Object.keys(source).forEach(k => {
       if (isValid(k)) {
@@ -23,5 +23,3 @@ const deepmerge = (...sources) => {
   };
   return sources.filter(Boolean).reduce((acc, src) => inner(acc, src), {});
 };
-
-export default deepmerge;

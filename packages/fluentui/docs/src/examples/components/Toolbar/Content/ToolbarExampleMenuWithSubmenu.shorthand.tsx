@@ -30,6 +30,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
           title: 'Italic',
         },
         {
+          'aria-label': 'more options',
           icon: <MoreIcon />,
           key: 'more',
           active: menuOpen,

@@ -14,7 +14,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'focusCard' action with 'Escape' on 'root'.
  */
-const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
+export const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'group',
@@ -37,5 +37,3 @@ const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = props =>
     },
   },
 });
-
-export default cardChildrenFocusableBehavior;

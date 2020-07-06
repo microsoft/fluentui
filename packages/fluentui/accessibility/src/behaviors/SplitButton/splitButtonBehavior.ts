@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
-import menuButtonBehavior, { MenuButtonBehaviorProps } from '../MenuButton/menuButtonBehavior';
+import { menuButtonBehavior, MenuButtonBehaviorProps } from '../MenuButton/menuButtonBehavior';
 
 /**
  * @description
@@ -22,7 +22,7 @@ import menuButtonBehavior, { MenuButtonBehaviorProps } from '../MenuButton/menuB
  * Adds attribute 'aria-haspopup=true' to 'toggleButton' slot.
  * Adds attribute 'data-is-focusable=false' to 'toggleButton' slot.
  */
-const splitButtonBehavior: Accessibility = props => {
+export const splitButtonBehavior: Accessibility = props => {
   const splitButtonMenuButtonBehavior = () => {
     const menuButtonBehaviorData = menuButtonBehavior(props);
     menuButtonBehaviorData.attributes.trigger['aria-haspopup'] = undefined;
@@ -64,5 +64,3 @@ const splitButtonBehavior: Accessibility = props => {
 };
 
 export type SplitButtonBehaviorProps = Pick<MenuButtonBehaviorProps, 'open'>;
-
-export default splitButtonBehavior;

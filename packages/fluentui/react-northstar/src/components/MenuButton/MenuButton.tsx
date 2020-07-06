@@ -21,6 +21,7 @@ import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
 import { ALIGNMENTS, POSITIONS, PositioningProps } from '../../utils/positioner';
 import {
+  ComponentWithAs,
   useAccessibility,
   useTelemetry,
   getElementType,
@@ -113,7 +114,7 @@ export type MenuButtonStylesProps = never;
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps> = props => {
+const MenuButton: ComponentWithAs<'div', MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();

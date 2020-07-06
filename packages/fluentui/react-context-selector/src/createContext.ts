@@ -38,7 +38,7 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
   return Provider;
 };
 
-const createContext = <Value>(defaultValue: Value, options: CreateContextOptions = {}): Context<Value> => {
+export const createContext = <Value>(defaultValue: Value, options: CreateContextOptions = {}): Context<Value> => {
   const { strict = true } = options;
 
   const context = React.createContext<ContextValue<Value>>(
@@ -67,5 +67,3 @@ const createContext = <Value>(defaultValue: Value, options: CreateContextOptions
 
   return (context as unknown) as Context<Value>;
 };
-
-export default createContext;

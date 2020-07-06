@@ -1,13 +1,13 @@
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
-import treeTitleBehavior from './treeTitleBehavior';
+import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
 
 /**
  * @description
  * Adds role 'treeitem' if the title is a leaf node inside the tree.
  */
-const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehavior> = props => {
+export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
 
   const definition = _.merge(behavior, {
@@ -26,11 +26,4 @@ const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehavior> = props
   }
 
   return definition;
-};
-
-export default treeTitleAsListItemTitleBehavior;
-
-type TreeTitleBehavior = {
-  /** Indicates whether `TreeTitle` has a subtree. */
-  hasSubtree?: boolean;
 };
