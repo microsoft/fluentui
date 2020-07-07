@@ -26,7 +26,7 @@ export const createCommon = (config: CreateCommonConfig = {}) => {
       accessibility: customPropTypes.accessibility,
     }),
     ...(as && {
-      as: PropTypes.elementType,
+      as: PropTypes.oneOf([PropTypes.elementType, PropTypes.string]),
     }),
     ...(children && {
       children: children === 'element' ? PropTypes.element : PropTypes.node,
