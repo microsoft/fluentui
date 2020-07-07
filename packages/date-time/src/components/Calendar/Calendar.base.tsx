@@ -82,10 +82,10 @@ const DEFAULT_PROPS: Partial<ICalendarProps> = {
 
 function useDateState({ value, today = new Date(), onSelectDate }: ICalendarProps) {
   /** The currently focused date in the day picker, but not necessarily selected */
-  const [navigatedDay = today, setNavigatedDay] = useControllableValue(value, today);
+  const [navigatedDay = today, setNavigatedDay] = React.useState(value);
 
   /** The currently focused date in the month picker, but not necessarily selected */
-  const [navigatedMonth = today, setNavigatedMonth] = useControllableValue(value, today);
+  const [navigatedMonth = today, setNavigatedMonth] = React.useState(value);
 
   /** The currently selected date in the calendar */
   const [selectedDate = today, setSelectedDate] = useControllableValue(value, today);
