@@ -22,8 +22,6 @@ export const ColorPickerPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerBestPractices.md'),
-  dos: '',
-  donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
