@@ -12,7 +12,6 @@ import { mountWithProviderAndGetComponent } from 'test/utils';
 import MenuItem from 'src/components/Menu/MenuItem';
 import Menu from 'src/components/Menu/Menu';
 import MenuItemWrapper, { menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
-import { Ref, RefFindNode } from '@fluentui/react-component-ref';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
@@ -28,7 +27,7 @@ describe('MenuItem', () => {
     Component: MenuItem,
     displayName: 'MenuItem',
     componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
-    wrapperComponents: [MenuItemWrapper, Ref, RefFindNode],
+    wrapperComponents: [MenuItemWrapper],
   });
 
   implementsShorthandProp(MenuItem)('menu', Menu, {
