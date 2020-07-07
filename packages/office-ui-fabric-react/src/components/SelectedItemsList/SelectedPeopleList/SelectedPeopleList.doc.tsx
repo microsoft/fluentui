@@ -33,7 +33,7 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
   overview: '',
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedItemsListBestPractices.md'),
+  >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListBestPractices.md'),
   dos: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDos.md'),
