@@ -118,7 +118,11 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
         >
           <Grid rows={grid.length + 1} columns={DAYS_IN_WEEK}>
             {_.times(DAYS_IN_WEEK, dayNumber => (
-              <Text align="center" content={localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK]} />
+              <Text
+                key={`header ${dayNumber}`}
+                align="center"
+                content={localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK]}
+              />
             ))}
             {_.map(grid, week =>
               _.map(week, (day: IDay) => {
@@ -152,6 +156,8 @@ DatepickerCalendar.propTypes = {
   ...commonPropTypes.createCommon(),
   onDaySelect: PropTypes.func,
   localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
+  selectedDate: PropTypes.instanceOf(Date),
+  navigatedDate: PropTypes.instanceOf(Date),
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
