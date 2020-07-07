@@ -85,7 +85,6 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
   /**
    * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
    * views.
-   * @defaultValue 1
    */
   daysToSelectInDayView?: number;
 
@@ -111,10 +110,10 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
   /** Datepicker shows it is currently unable to be interacted with. */
-  disabled: boolean;
+  disabled?: boolean;
 
   /** Datepicker shows it is currently unable to be interacted with. */
-  isRequired: boolean;
+  isRequired?: boolean;
 
   /**
    * Called on change of the date.
@@ -125,16 +124,16 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
   onDayChange?: (e: React.MouseEvent<HTMLElement>, data: DatepickerProps & { value: IDay }) => void;
 
   /** String to render for button to direct the user to today's date. */
-  goToToday: string;
+  goToToday?: string;
 
   /** Text placeholder for the input field. */
-  placeholder: string;
+  placeholder?: string;
 
   /** A render function to customize how cells are rendered in the Calendar. */
-  renderCell: ShorthandRenderFunction<any>;
+  renderCell?: ShorthandRenderFunction<any>;
 
   /** A render function to customize how cells are rendered in the Calendar.. */
-  renderHeaderCell: ShorthandRenderFunction<any>;
+  renderHeaderCell?: ShorthandRenderFunction<any>;
 
   /** Localized labels */
   localizedStrings?: IDateGridStrings;
