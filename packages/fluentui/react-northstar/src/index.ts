@@ -60,6 +60,8 @@ export * from './components/Chat/ChatItem';
 export { default as ChatItem } from './components/Chat/ChatItem';
 export * from './components/Chat/ChatMessage';
 export { default as ChatMessage } from './components/Chat/ChatMessage';
+export * from './components/Chat/ChatMessageDetails';
+export { default as ChatMessageDetails } from './components/Chat/ChatMessageDetails';
 
 export * from './components/Checkbox/Checkbox';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
@@ -77,6 +79,8 @@ export { default as MenuButton } from './components/MenuButton/MenuButton';
 
 export * from './components/Divider/Divider';
 export { default as Divider } from './components/Divider/Divider';
+export * from './components/Divider/DividerContent';
+export { default as DividerContent } from './components/Divider/DividerContent';
 
 export * from './components/Dialog/Dialog';
 export { default as Dialog } from './components/Dialog/Dialog';

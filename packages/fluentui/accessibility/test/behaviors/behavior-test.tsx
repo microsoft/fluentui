@@ -93,7 +93,7 @@ import {
   datepickerBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
-import definitions from './testDefinitions';
+import { definitions } from './testDefinitions';
 
 const behaviorMenuItems = require('../../../docs/src/behaviorMenu');
 

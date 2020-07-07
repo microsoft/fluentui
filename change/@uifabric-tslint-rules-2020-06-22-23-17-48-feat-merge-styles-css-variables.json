@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removing style prop ban.",
-  "packageName": "@uifabric/tslint-rules",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-06-23T06:17:48.113Z"
-}

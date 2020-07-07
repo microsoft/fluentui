@@ -9,6 +9,7 @@ const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesProps, Spl
     borderBottomRightRadius: 0,
     borderRightWidth: 0,
     padding: v.padding,
+    minWidth: v.minWidth,
 
     ...(p.size === 'small' && {
       height: v.smallDimension,
@@ -49,8 +50,8 @@ const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesProps, Spl
     return {
       borderRadius: v.borderRadius,
       position: 'relative',
-      display: 'inline-block',
-
+      display: 'flex',
+      flexWrap: 'nowrap',
       ':focus-within': {
         boxShadow: 'none',
         ...(p.isFromKeyboard && {

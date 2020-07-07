@@ -2,7 +2,7 @@ import { KeyActions } from '@fluentui/accessibility';
 import { keyboardKey } from '@fluentui/keyboard-key';
 import * as React from 'react';
 
-import shouldHandleOnKeys from './shouldHandleOnKeys';
+import { shouldHandleOnKeys } from './shouldHandleOnKeys';
 import { AccessibilityActionHandlers, AccessibilityKeyHandlers } from './types';
 
 const rtlKeyMap: Record<number, number> = {
@@ -17,7 +17,7 @@ const rtlKeyMap: Record<number, number> = {
  * @param {KeyActions} behaviorActions Mappings of actions and keys defined in Accessibility behavior.
  * @param {boolean} isRtlEnabled Indicates if Left and Right arrow keys should be swapped in RTL mode.
  */
-const getKeyDownHandlers = (
+export const getKeyDownHandlers = (
   componentActionHandlers: AccessibilityActionHandlers,
   behaviorActions: KeyActions,
   isRtlEnabled?: boolean,
@@ -71,5 +71,3 @@ const getKeyDownHandlers = (
 
   return slotKeyHandlers;
 };
-
-export default getKeyDownHandlers;

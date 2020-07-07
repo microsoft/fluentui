@@ -1,5 +1,5 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import felaExpandCssShorthandsPlugin from '../src/felaExpandCssShorthandsPlugin';
+import { felaExpandCssShorthandsPlugin } from '../src/felaExpandCssShorthandsPlugin';
 
 describe('felaExpandCssShorthandsPlugin', () => {
   test('should expand margin prop', () => {

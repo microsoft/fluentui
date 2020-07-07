@@ -18,7 +18,7 @@ import {
   StylesContextPerformance,
   StylesContextValue,
 } from '../styles/types';
-import getStyles from '../styles/getStyles';
+import { getStyles } from '../styles/getStyles';
 
 type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   /** A classname that will be added by default to all instances of a component on the `root` slot. */
@@ -83,7 +83,7 @@ const defaultContext: StylesContextValue = {
   telemetry: undefined,
 };
 
-const useStyles = <StyleProps extends PrimitiveProps>(
+export const useStyles = <StyleProps extends PrimitiveProps>(
   displayName: string,
   options: UseStylesOptions<StyleProps>,
 ): UseStylesResult => {
@@ -113,11 +113,11 @@ const useStyles = <StyleProps extends PrimitiveProps>(
     allDisplayNames: composeOptions?.displayNames || [displayName],
     className: composeOptions?.className || className,
     primaryDisplayName: composeOptions?.displayName || displayName,
-    props: {
+    componentProps: {
       ...componentStylesProps,
-      ...mapPropsToInlineStyles(),
       ...composeStylesProps,
     },
+    inlineStylesProps: mapPropsToInlineStyles(),
 
     // Context values
     disableAnimations: context.disableAnimations,
@@ -131,5 +131,3 @@ const useStyles = <StyleProps extends PrimitiveProps>(
 
   return { classes, styles: resolvedStyles };
 };
-
-export default useStyles;

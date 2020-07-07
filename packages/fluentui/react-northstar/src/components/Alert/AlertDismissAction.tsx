@@ -15,13 +15,18 @@ import {
 
 import {
   ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
   ShorthandValue,
 } from '../../types';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import Box, { BoxProps } from '../Box/Box';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -72,7 +77,13 @@ export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames 
   content: `${alertDismissActionClassName}__content`,
 };
 
-const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
+/**
+ * A AlertDismissAction allows users to customize the dismissAction slot  inside the Alert component.
+ *
+ * @accessibility
+ * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
+ */
+const AlertDismissAction: ComponentWithAs<'button', AlertDismissActionProps> &
   FluentComponentStaticProps<AlertDismissActionProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
@@ -100,7 +111,7 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
   const getA11Props = useAccessibility(accessibility, {
     debugName: AlertDismissAction.displayName,
     mapPropsToBehavior: () => ({
-      as,
+      as: String(as),
       disabled,
     }),
     actionHandlers: {
@@ -193,10 +204,4 @@ AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as a
 
 AlertDismissAction.create = createShorthandFactory({ Component: AlertDismissAction, mappedProp: 'content' });
 
-/**
- * A AlertDismissAction allows users to customize the dismissAction slot  inside the Alert component.
- *
- * @accessibility
- * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
- */
-export default withSafeTypeForAs<typeof AlertDismissAction, AlertDismissActionProps, 'button'>(AlertDismissAction);
+export default AlertDismissAction;

@@ -147,3 +147,5 @@ rush.json
 
 # Copied monaco-editor files
 /packages/monaco-editor/esm
+
+.eslintcache

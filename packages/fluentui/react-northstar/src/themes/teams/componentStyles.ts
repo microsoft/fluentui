@@ -21,6 +21,7 @@ export { default as ButtonContent } from './components/Button/buttonContentStyle
 export { default as Chat } from './components/Chat/chatStyles';
 export { default as ChatItem } from './components/Chat/chatItemStyles';
 export { default as ChatMessage } from './components/Chat/chatMessageStyles';
+export { default as ChatMessageDetails } from './components/Chat/chatMessageDetailsStyles';
 
 export { default as Checkbox } from './components/Checkbox/checkboxStyles';
 
@@ -28,6 +29,7 @@ export { default as Dialog } from './components/Dialog/dialogStyles';
 export { default as DialogFooter } from './components/Dialog/dialogFooterStyles';
 
 export { default as Divider } from './components/Divider/dividerStyles';
+export { default as DividerContent } from './components/Divider/dividerContentStyles';
 
 export { default as Dropdown } from './components/Dropdown/dropdownStyles';
 export { default as DropdownSearchInput } from './components/Dropdown/dropdownSearchInputStyles';

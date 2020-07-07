@@ -95,7 +95,7 @@ export type BrowserWindowProps = {
   headerItems?: React.ReactNode | React.ReactNodeArray;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const BrowserWindow: React.FunctionComponent<BrowserWindowProps> = ({
+export const BrowserWindow: React.FunctionComponent<BrowserWindowProps> = ({
   children,
   style,
   showNavBar,
@@ -122,5 +122,3 @@ const BrowserWindow: React.FunctionComponent<BrowserWindowProps> = ({
 );
 
 BrowserWindow.defaultProps = { showNavBar: true };
-
-export default BrowserWindow;

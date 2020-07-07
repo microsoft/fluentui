@@ -3,7 +3,7 @@ import * as React from 'react';
 import { KnobContext } from './KnobContexts';
 import { KnobDefinition, UseKnobOptions } from './types';
 
-const useKnob = <T, O = unknown>(
+export const useKnob = <T, O = unknown>(
   options: UseKnobOptions<T> & { type: KnobDefinition['type'] } & O,
 ): [T, (newValue: T) => void] => {
   const { initialValue, name } = options;
@@ -30,5 +30,3 @@ const useKnob = <T, O = unknown>(
 
   return [value, setValue];
 };
-
-export default useKnob;

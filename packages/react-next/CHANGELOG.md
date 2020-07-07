@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 23 Jun 2020 12:41:54 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.53)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.52..@fluentui/react-next_v8.0.0-alpha.53)
+
+### Changes
+
+- Adding pre-copy.json step. ([PR #13873](https://github.com/microsoft/fluentui/pull/13873) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.52)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.50..@fluentui/react-next_v8.0.0-alpha.52)
+
+### Changes
+
+- High contrast in Edge Chromium: fix TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+
+## [8.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.50)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.49..@fluentui/react-next_v8.0.0-alpha.50)
+
+### Changes
+
+- Updating SearchBox to a function component inside React-Next ([PR #12995](https://github.com/microsoft/fluentui/pull/12995) by czearing@outlook.com)
+- Checkbox: use CheckMark icon from react-icons ([PR #13810](https://github.com/microsoft/fluentui/pull/13810) by xgao@microsoft.com)
+
+## [8.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.49)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.48..@fluentui/react-next_v8.0.0-alpha.49)
+
+### Changes
+
+- Removing unnecessary code from storybook/preview.js. ([PR #13769](https://github.com/microsoft/fluentui/pull/13769) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.48)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.47..@fluentui/react-next_v8.0.0-alpha.48)
+
+### Changes
+
+- Checkbox: deprecate onRenderLabel and properly support label shorthand ([PR #13576](https://github.com/microsoft/fluentui/pull/13576) by xgao@microsoft.com)
+- Update typings related to mergeProps typing ([PR #13571](https://github.com/microsoft/fluentui/pull/13571) by xgao@microsoft.com)
+- Fixing React-Next's Toggle.scss focus value ([PR #13792](https://github.com/microsoft/fluentui/pull/13792) by czearing@outlook.com)
 
 ## [8.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.47)
 

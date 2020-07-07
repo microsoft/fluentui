@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 23 Jun 2020 12:41:54 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.2)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.6.0..@fluentui/react-button_v0.6.2)
+
+### Patches
+
+- Adding bundle task to react-button package. ([PR #13873](https://github.com/microsoft/fluentui/pull/13873) by humbertomakotomorimoto@gmail.com)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.0)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.5.1..@fluentui/react-button_v0.6.0)
+
+### Minor changes
+
+- Button: Adding componentRef, focus method, styling, and tests. ([PR #13718](https://github.com/microsoft/fluentui/pull/13718) by dzearing@microsoft.com)
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.1)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.5.0..@fluentui/react-button_v0.5.1)
+
+### Patches
+
+- Button: Adding stories of a Button themed like Fluent using tokens. ([PR #13769](https://github.com/microsoft/fluentui/pull/13769) by humbertomakotomorimoto@gmail.com)
+- Button: Using correct focus borders from utilities. ([PR #13790](https://github.com/microsoft/fluentui/pull/13790) by humbertomakotomorimoto@gmail.com)
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.0)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.4.0..@fluentui/react-button_v0.5.0)
+
+### Minor changes
+
+- Button: updates to styles, adjusting width tokens. ([PR #13753](https://github.com/microsoft/fluentui/pull/13753) by dzearing@microsoft.com)
+
+### Patches
+
+- Update typings related to mergeProps typing ([PR #13571](https://github.com/microsoft/fluentui/pull/13571) by xgao@microsoft.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.4.0)
 
