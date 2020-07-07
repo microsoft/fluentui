@@ -35,6 +35,10 @@ export class E2EApi {
     return this.page.$eval(selector, (el, attribute) => el.getAttribute(attribute), attr);
   };
 
+  public getPropertyValue = async (selector: string, prop) => {
+    return this.page.$eval(selector, (el, prop) => el[prop], prop);
+  };
+
   public count = async (selector: string) => {
     return (await this.page.$$(selector)).length;
   };

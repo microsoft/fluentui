@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
@@ -65,6 +65,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _classNames: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
   private _reqID: number;
+  private _calloutId: string;
   private _yMax: number;
   // tslint:disable-next-line:no-any
   private _datasetForBars: any;
@@ -72,6 +73,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _xScale0: any;
   // tslint:disable-next-line:no-any
   private _xScale1: any;
+  private _uniqLineText: string;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
   private _isGraphDraw: boolean = true;
@@ -98,12 +100,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
       _height: this.props.height || 350,
     };
     this._refArray = [];
+    this._calloutId = getId('callout');
     this._adjustProps();
+    this._uniqLineText = getId('GroupedVerticalChart_');
   }
 
   public componentDidMount(): void {
     this._fitParentContainer();
-    window.addEventListener('resize', this._fitParentContainer);
   }
 
   public componentWillUnmount(): void {
@@ -111,15 +114,20 @@ export class GroupedVerticalBarChartBase extends React.Component<
     d3Select('#firstGElementForBars').remove();
   }
 
-  public componentDidUpdate(): void {
-    if (this._isGraphDraw) {
+  public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
+    if (this._isGraphDraw || prevProps.data !== this.props.data) {
       // drawing graph after first update only to avoid multile g tags
       this._drawGraph();
       this._isGraphDraw = false;
     }
+    if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
+      this._fitParentContainer();
+      this._drawGraph();
+    }
   }
 
   public render(): React.ReactNode {
+    this._adjustProps();
     const { theme, className, styles } = this.props;
 
     if (this.props.parentRef) {
@@ -152,12 +160,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
     return (
       <div
-        id="d3GroupedChart"
+        id={`d3GroupedChart_${this._uniqLineText}`}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         className={this._classNames.root}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
-          <svg width={svgDimensions.width} height={svgDimensions.height}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} id={this._uniqLineText}>
             <g
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, x0Axis)}
@@ -170,28 +178,32 @@ export class GroupedVerticalBarChartBase extends React.Component<
               className={this._classNames.yAxis}
               transform={`translate(40, 0)`}
             />
-            <g id="barGElement" />
+            <g id={`barGElement_${this._uniqLineText}`} className="barGElement" />
           </svg>
         </FocusZone>
-        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+        <div
+          ref={(e: HTMLDivElement) => (this.legendContainer = e)}
+          id={this._uniqLineText}
+          className={this._classNames.legendContainer}
+        >
           {legends}
         </div>
-        {!this.props.hideTooltip && this.state.isCalloutVisible ? (
-          <Callout
-            target={this.state.refSelected}
-            gapSpace={10}
-            isBeakVisible={false}
-            setInitialFocus={true}
-            directionalHint={DirectionalHint.topRightEdge}
-          >
-            <ChartHoverCard
-              XValue={this.state.xCalloutValue}
-              Legend={this.state.titleForHoverCard}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          </Callout>
-        ) : null}
+        <Callout
+          target={this.state.refSelected}
+          gapSpace={10}
+          isBeakVisible={false}
+          setInitialFocus={true}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            XValue={this.state.xCalloutValue}
+            Legend={this.state.titleForHoverCard}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }
@@ -333,10 +345,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
 
     // previous <g> - graph need to remove otherwise multile g elements will create
-    d3Select('#firstGElementForBars').remove();
-    const barContainer = d3Select('#barGElement')
+    d3Select(`#firstGElementForBars_${this._uniqLineText}`).remove();
+    const barContainer = d3Select(`#barGElement_${this._uniqLineText}`)
       .append('g')
-      .attr('id', 'firstGElementForBars');
+      .attr('class', 'firstGElementForBars')
+      .attr('id', `firstGElementForBars_${this._uniqLineText}`);
     const seriesName = barContainer
       .selectAll('.name')
       .data(this._datasetForBars)
@@ -367,6 +380,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('y', (d: IGVForBarChart) => {
           return this.state.containerHeight - this.margins.bottom - yBarScale(d[datasetKey].data);
         })
+        .attr('aria-labelledby', this._calloutId)
         .attr('width', widthOfBar)
         .attr('height', (d: IGVForBarChart) => {
           return yBarScale(d[datasetKey].data);
@@ -493,7 +507,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .domain([0, domains[domains.length - 1]])
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
     const yAxis = d3AxisLeft(yAxisScale)
-      .tickPadding(10)
+      .tickPadding(5)
+      .ticks(this._yAxisTickCount, 's')
       .tickValues(domains);
 
     this._showYAxisGridLines &&
@@ -520,6 +535,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         titleForHoverCard: customMessage,
       });
     }
+    this._isGraphDraw = true;
   }
 
   private _onLegendHover(customMessage: string): void {

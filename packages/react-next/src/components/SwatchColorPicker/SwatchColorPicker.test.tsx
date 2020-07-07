@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { IColorCellProps } from './ColorPickerGridCell.types';
@@ -27,7 +27,7 @@ describe('SwatchColorPicker', () => {
   });
 
   it('renders SwatchColorPicker correctly', () => {
-    const component = renderer.create(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
+    const component = create(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

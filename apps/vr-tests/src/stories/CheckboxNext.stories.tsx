@@ -9,6 +9,7 @@ import {
   Persona,
   PersonaSize,
   ThemeProvider,
+  Icon,
 } from '@fluentui/react-next';
 
 storiesOf('Checkbox Next', module)
@@ -51,12 +52,27 @@ storiesOf('Checkbox Next', module)
       defaultChecked={true}
     />
   ))
-  .addStory('Custom render Checkbox', () => (
+  .addStory('Custom render Checkbox using onRenderLabel', () => (
     <Checkbox
       label="Persona Checkbox"
       onRenderLabel={(props: ICheckboxProps) => {
-        return <Persona text={props!.label} size={PersonaSize.size32} />;
+        return <Persona text={props!.label as string} size={PersonaSize.size32} />;
       }}
+    />
+  ))
+  .addStory('Custom render Checkbox using label render prop', () => (
+    <Checkbox
+      label={{
+        children: () => {
+          return <Persona text="Persona Checkbox" size={PersonaSize.size32} />;
+        },
+      }}
+    />
+  ))
+  .addStory('Custom render CheckMark icon', () => (
+    <Checkbox
+      label="Checkbox with customized icon"
+      checkmark={{ children: () => <Icon iconName="CheckboxComposite" /> }}
     />
   ));
 

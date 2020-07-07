@@ -1,11 +1,11 @@
 import { UseKnobOptions } from './types';
-import useKnob from './useKnob';
+import { useKnob } from './useKnob';
 
 type UseSelectKnobOptions<T extends string> = UseKnobOptions<T> & {
   allowsNone?: boolean;
 };
 
-const useSelectKnob = <T extends string>(options: UseSelectKnobOptions<T>) => {
+export const useSelectKnob = <T extends string>(options: UseSelectKnobOptions<T>) => {
   const [value, setValue] = useKnob<T>({
     initialValue: '' as T,
     type: 'select',
@@ -15,5 +15,3 @@ const useSelectKnob = <T extends string>(options: UseSelectKnobOptions<T>) => {
 
   return [value === 'none' ? undefined : value, setValue] as [T, (newValue: T) => void];
 };
-
-export default useSelectKnob;

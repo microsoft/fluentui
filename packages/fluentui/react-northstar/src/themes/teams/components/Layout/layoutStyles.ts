@@ -4,7 +4,7 @@ import { LayoutStylesProps } from '../../../../components/Layout/Layout';
 
 const countTrue = items => items.filter(Boolean).length;
 
-const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
+export const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
   root: ({ props }): ICSSInJSStyle => {
     const {
       alignItems,
@@ -38,7 +38,7 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
         .join(' '),
       ...(vertical && {
         gridAutoFlow: 'row',
-        '-ms-grid-columns': '1fr',
+        msGridColumns: '1fr',
       }),
     };
   },
@@ -51,22 +51,20 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: 'inline-flex',
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: '1',
+    [p.vertical ? 'msGridRow' : 'msGridColumn']: '1',
   }),
 
   main: ({ props: p }): ICSSInJSStyle => ({
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: ['grid', '-ms-grid'],
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain]),
+    [p.vertical ? 'msGridRow' : 'msGridColumn']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain]),
   }),
 
   end: ({ props: p }): ICSSInJSStyle => ({
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: 'inline-flex',
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain && p.gap]),
+    [p.vertical ? 'msGridRow' : 'msGridColumn']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain && p.gap]),
   }),
 };
-
-export default layoutStyles;

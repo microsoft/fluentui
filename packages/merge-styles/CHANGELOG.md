@@ -1,8 +1,26 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 15 May 2020 20:33:16 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jun 2020 12:33:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.16.0)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.15.1..@uifabric/merge-styles_v7.16.0)
+
+### Minor changes
+
+- Loosening typings in the `IStyle` interface. ([PR #13847](https://github.com/microsoft/fluentui/pull/13847) by dzearing@microsoft.com)
+
+## [7.15.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.15.0)
+
+Thu, 25 Jun 2020 12:50:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/merge-styles_v7.14.1..@uifabric/merge-styles_v7.15.0)
+
+### Minor changes
+
+- Loosening typings to allow for css variables. Removing kebab casing for css values which start with dashes. ([PR #13751](https://github.com/microsoft/fluentui/pull/13751) by dzearing@hotmail.com)
 
 ## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/merge-styles_v7.14.0)
 

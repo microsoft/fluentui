@@ -21,7 +21,7 @@ const handledCssProps: Partial<Record<keyof CSS.Properties, true>> = {
   outline: true,
 };
 
-const felaExpandCssShorthandsPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
+export const felaExpandCssShorthandsPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
   return Object.keys(styles).reduce((acc: ICSSInJSStyle, cssPropertyName: keyof CSS.Properties) => {
     const cssPropertyValue = styles[cssPropertyName];
 
@@ -48,5 +48,3 @@ const felaExpandCssShorthandsPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => 
     return { ...acc, [cssPropertyName]: cssPropertyValue };
   }, {});
 };
-
-export default felaExpandCssShorthandsPlugin;

@@ -1,16 +1,16 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownVariables } from './dropdownVariables';
 import { DropdownItemProps, dropdownItemSlotClassNames } from '../../../../components/Dropdown/DropdownItem';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { pxToRem } from '../../../../utils';
-import checkableIndicatorUrl from './checkableIndicatorUrl';
+import { checkableIndicatorUrl } from './checkableIndicatorUrl';
 
 export type DropdownItemStylesProps = Pick<DropdownItemProps, 'selected' | 'active' | 'isFromKeyboard'> & {
   hasContent?: boolean;
   hasHeader?: boolean;
 };
 
-const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, DropdownVariables> = {
+export const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, DropdownVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     display: 'flex',
     alignItems: 'center',
@@ -90,5 +90,3 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     minWidth: 0, // needed for the truncate styles to work
   }),
 };
-
-export default dropdownItemStyles;

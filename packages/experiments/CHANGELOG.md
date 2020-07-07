@@ -1,8 +1,53 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 08 Jun 2020 12:34:34 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.26.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.12)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.11..@uifabric/experiments_v7.26.12)
+
+### Patches
+
+- High Contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+
+## [7.26.11](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.11)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.9..@uifabric/experiments_v7.26.11)
+
+### Patches
+
+- Updating some typings. ([PR #13842](https://github.com/microsoft/fluentui/pull/13842) by dzearing@microsoft.com)
+
+## [7.26.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.9)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.6..@uifabric/experiments_v7.26.9)
+
+### Patches
+
+- UnifiedPicker: Fixing failing import file ([PR #13806](https://github.com/microsoft/fluentui/pull/13806) by nebhatna@microsoft.com)
+
+## [7.26.6](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.6)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.5..@uifabric/experiments_v7.26.6)
+
+### Patches
+
+- Fix width of header rows in TilesList ([PR #13697](https://github.com/microsoft/fluentui/pull/13697) by tmichon@microsoft.com)
+
+## [7.26.5](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.5)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.4..@uifabric/experiments_v7.26.5)
+
+### Patches
+
+- Fix icon names for DesktopSignal, DocumentsSignal, and PicturesSignal. Update example page. ([PR #13625](https://github.com/microsoft/fluentui/pull/13625) by taenri@microsoft.com)
 
 ## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.0)
 

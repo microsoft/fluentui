@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 /**
  * A baseline set of color plates.
  */
@@ -82,3 +84,16 @@ export interface Theme {
  * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
  */
 export interface PartialTheme extends RecursivePartial<Theme> {}
+
+/**
+ * Typing containing the definition for the `style` and `tokens` props that will be extended for the calculation of the
+ * style prop.
+ */
+export interface StyleProps<TTokens extends ColorPlateSet = ColorPlateSet> {
+  style?: React.CSSProperties;
+  tokens?: TTokens;
+}
+
+export interface StyleOptions<TProps> {
+  slotProps: ((props: TProps) => Record<string, object>)[];
+}

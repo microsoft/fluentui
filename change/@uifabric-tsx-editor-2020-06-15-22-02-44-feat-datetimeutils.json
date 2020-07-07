@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add Datetime utilities package",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "pompomon@gmail.com",
-  "dependentChangeType": "none",
-  "date": "2020-06-15T20:02:44.929Z"
-}

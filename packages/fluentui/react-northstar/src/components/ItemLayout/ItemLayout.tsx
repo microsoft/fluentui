@@ -1,4 +1,10 @@
-import { ComponentSlotClasses, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  ComponentSlotClasses,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -12,7 +18,7 @@ import {
   rtlTextContainer,
 } from '../../utils';
 import Layout from '../Layout/Layout';
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -66,7 +72,10 @@ export const itemLayoutSlotClassNames: ItemLayoutSlotClassNames = {
 
 export type ItemLayoutStylesProps = never;
 
-const ItemLayout: React.FC<WithAsProp<ItemLayoutProps>> & FluentComponentStaticProps<ItemLayoutProps> = props => {
+/**
+ * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.
+ */
+const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> & FluentComponentStaticProps<ItemLayoutProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ItemLayout.displayName, context.telemetry);
   setStart();
@@ -107,7 +116,7 @@ const ItemLayout: React.FC<WithAsProp<ItemLayoutProps>> & FluentComponentStaticP
 
   const element = (
     <Layout
-      as={as}
+      as={as as React.ElementType}
       className={classes.root}
       styles={resolvedStyles.root}
       rootCSS={rootCSS}
@@ -239,7 +248,4 @@ ItemLayout.handledProps = Object.keys(ItemLayout.propTypes) as any;
 
 ItemLayout.create = createShorthandFactory({ Component: ItemLayout, mappedProp: 'content' });
 
-/**
- * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.
- */
-export default withSafeTypeForAs<typeof ItemLayout, ItemLayoutProps>(ItemLayout);
+export default ItemLayout;

@@ -1,5 +1,6 @@
 import { Accessibility, treeBehavior, TreeBehaviorProps } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getNextElement,
   useAutoControlled,
   useTelemetry,
@@ -25,8 +26,6 @@ import {
 } from '../../utils';
 import {
   ShorthandRenderFunction,
-  WithAsProp,
-  withSafeTypeForAs,
   ShorthandCollection,
   ComponentEventHandler,
   ObjectShorthandCollection,
@@ -161,7 +160,16 @@ const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = 
     acc,
   );
 
-const Tree: React.FC<WithAsProp<TreeProps>> &
+/**
+ * A Tree displays data organised in tree hierarchy.
+ *
+ * @accessibility
+ * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
+ * @accessibilityIssues
+ * [Treeview - JAWS doesn't narrate position for each tree item](https://github.com/FreedomScientific/VFO-standards-support/issues/338)
+ * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
+ */
+const Tree: ComponentWithAs<'div', TreeProps> &
   FluentComponentStaticProps<TreeProps> & {
     Item: typeof TreeItem;
     Title: typeof TreeTitle;
@@ -496,14 +504,4 @@ Tree.create = createShorthandFactory({
   mappedArrayProp: 'items',
 });
 
-/**
- * A Tree displays data organised in tree hierarchy.
- *
- * @accessibility
- * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
- * @accessibilityIssues
- * [Treeview - JAWS doesn't narrate position for each tree item](https://github.com/FreedomScientific/VFO-standards-support/issues/338)
- * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
- */
-
-export default withSafeTypeForAs<typeof Tree, TreeProps, 'ul'>(Tree);
+export default Tree;

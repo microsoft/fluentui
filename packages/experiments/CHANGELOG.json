@@ -2,6 +2,95 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/experiments_v7.26.12",
+      "version": "7.26.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "High Contrast in Edge Chromium: fix Label and TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/experiments_v7.26.11",
+      "version": "7.26.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating some typings.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7932ae5eef247af9b914e8f05efdaac0b64914f8",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/experiments_v7.26.9",
+      "version": "7.26.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "UnifiedPicker: Fixing failing import file",
+            "author": "nebhatna@microsoft.com",
+            "commit": "b50a9dd54114ce918809a647a52aca7ed97b3eb4",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jun 2020 12:42:16 GMT",
+      "tag": "@uifabric/experiments_v7.26.6",
+      "version": "7.26.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix width of header rows in TilesList",
+            "author": "tmichon@microsoft.com",
+            "commit": "ea8341faf77fe72fc91d8d6c66e6e0d3fbb6e8ad",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jun 2020 16:07:40 GMT",
+      "tag": "@uifabric/experiments_v7.26.5",
+      "version": "7.26.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix icon names for DesktopSignal, DocumentsSignal, and PicturesSignal. Update example page.",
+            "author": "taenri@microsoft.com",
+            "commit": "f764406bbbf389aaaaf1edff36e84fc6f3fcbc4c",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@uifabric/experiments_v7.26.4",
       "version": "7.26.4",

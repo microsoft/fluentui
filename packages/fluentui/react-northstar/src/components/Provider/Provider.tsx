@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 import {
+  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   StylesContextPerformanceInput,
@@ -25,7 +26,7 @@ import { ThemeProvider, ThemeContext } from 'react-fela';
 
 import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
 
-import { WithAsProp, ProviderContextInput, ProviderContextPrepared, withSafeTypeForAs } from '../../types';
+import { ProviderContextInput, ProviderContextPrepared } from '../../types';
 import mergeContexts from '../../utils/mergeProviderContexts';
 import ProviderConsumer from './ProviderConsumer';
 import usePortalBox, { PortalBoxContext } from './usePortalBox';
@@ -90,7 +91,7 @@ export const providerClassName = 'ui-provider';
 /**
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
-const Provider: React.FC<WithAsProp<ProviderProps>> & {
+const Provider: ComponentWithAs<'div', ProviderProps> & {
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
@@ -135,7 +136,8 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     allDisplayNames: [Provider.displayName],
     className: providerClassName,
     primaryDisplayName: Provider.displayName,
-    props: {
+    componentProps: {},
+    inlineStylesProps: {
       className,
       design,
       styles,
@@ -242,4 +244,4 @@ Provider.handledProps = Object.keys(Provider.propTypes) as any;
 
 Provider.Consumer = ProviderConsumer;
 
-export default withSafeTypeForAs<typeof Provider, ProviderProps>(Provider);
+export default Provider;

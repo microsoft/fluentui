@@ -73,21 +73,11 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     const {
       className,
       disabled,
-      inputProps,
-      name,
       boxSide,
       theme,
-      ariaLabel,
-      ariaLabelledBy,
-      ariaDescribedBy,
       styles,
       onRenderLabel = this._onRenderLabel,
-      checkmarkIconProps,
-      ariaPositionInSet,
-      ariaSetSize,
       keytipProps,
-      title,
-      label,
     } = this.props;
 
     const { isChecked, isIndeterminate } = this.state;
@@ -102,43 +92,15 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel,
     });
 
-    return (
-      <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {(keytipAttributes: any): JSX.Element => (
-          <div className={this._classNames.root} title={title}>
-            <FocusRects />
-            <input
-              type="checkbox"
-              {...inputProps}
-              data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-              checked={isChecked}
-              disabled={disabled}
-              className={this._classNames.input}
-              ref={this._checkBox}
-              name={name}
-              id={this._id}
-              title={title}
-              onChange={this._onChange}
-              onFocus={this._onFocus}
-              onBlur={this._onBlur}
-              aria-disabled={disabled}
-              aria-label={ariaLabel || label}
-              aria-labelledby={ariaLabelledBy}
-              aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
-              aria-posinset={ariaPositionInSet}
-              aria-setsize={ariaSetSize}
-              aria-checked={isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false'}
-            />
-            <label className={this._classNames.label} htmlFor={this._id}>
-              <div className={this._classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
-                <Icon iconName="CheckMark" {...checkmarkIconProps} className={this._classNames.checkmark} />
-              </div>
-              {onRenderLabel(this.props, this._onRenderLabel)}
-            </label>
-          </div>
-        )}
-      </KeytipData>
-    );
+    if (keytipProps) {
+      return (
+        <KeytipData keytipProps={keytipProps} disabled={disabled}>
+          {(keytipAttributes: any): JSX.Element => this._renderContent(isChecked, isIndeterminate, keytipAttributes)}
+        </KeytipData>
+      );
+    }
+
+    return this._renderContent(isChecked, isIndeterminate);
   }
 
   public get indeterminate(): boolean {
@@ -154,6 +116,61 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       this._checkBox.current.focus();
     }
   }
+
+  private _renderContent = (
+    checked: boolean | undefined,
+    indeterminate: boolean | undefined,
+    keytipAttributes: any = {},
+  ): JSX.Element => {
+    const {
+      disabled,
+      inputProps,
+      name,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaDescribedBy,
+      onRenderLabel = this._onRenderLabel,
+      checkmarkIconProps,
+      ariaPositionInSet,
+      ariaSetSize,
+      title,
+      label,
+    } = this.props;
+
+    return (
+      <div className={this._classNames.root} title={title}>
+        <FocusRects />
+        <input
+          type="checkbox"
+          {...inputProps}
+          data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+          checked={checked}
+          disabled={disabled}
+          className={this._classNames.input}
+          ref={this._checkBox}
+          name={name}
+          id={this._id}
+          title={title}
+          onChange={this._onChange}
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          aria-disabled={disabled}
+          aria-label={ariaLabel || label}
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
+          aria-posinset={ariaPositionInSet}
+          aria-setsize={ariaSetSize}
+          aria-checked={indeterminate ? 'mixed' : checked ? 'true' : 'false'}
+        />
+        <label className={this._classNames.label} htmlFor={this._id}>
+          <div className={this._classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
+            <Icon iconName="CheckMark" {...checkmarkIconProps} className={this._classNames.checkmark} />
+          </div>
+          {onRenderLabel(this.props, this._onRenderLabel)}
+        </label>
+      </div>
+    );
+  };
 
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const { inputProps } = this.props;

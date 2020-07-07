@@ -1,8 +1,26 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 10 Jun 2020 12:37:27 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.13.6)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.13.3..@uifabric/styling_v7.13.6)
+
+### Patches
+
+- Update high contrast Edge Chormium selector to remove unneeded condition. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.13.0)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.12.18..@uifabric/styling_v7.13.0)
+
+### Minor changes
+
+- Add new rounded corners to theme ([PR #13635](https://github.com/microsoft/fluentui/pull/13635) by phkuo@microsoft.com)
 
 ## [7.12.17](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.12.17)
 

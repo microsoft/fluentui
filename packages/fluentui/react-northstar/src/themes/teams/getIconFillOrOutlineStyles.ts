@@ -1,7 +1,7 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
 import { iconClassNames } from '@fluentui/react-icons-northstar';
 
-const getIconFillOrOutlineStyles = ({ outline }: { outline: boolean }): ICSSInJSStyle => ({
+export const getIconFillOrOutlineStyles = ({ outline }: { outline: boolean }): ICSSInJSStyle => ({
   [`& .${iconClassNames.filled}`]: {
     display: outline ? 'none' : 'block',
   },
@@ -10,5 +10,3 @@ const getIconFillOrOutlineStyles = ({ outline }: { outline: boolean }): ICSSInJS
     display: outline ? 'block' : 'none',
   },
 });
-
-export default getIconFillOrOutlineStyles;

@@ -63,7 +63,7 @@ export const DefaultFontStyles: IFontStyles;
 export const DefaultPalette: IPalette;
 
 // @public (undocumented)
-export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active) and (forced-colors: active)";
+export const EdgeChromiumHighContrastSelector = "@media screen and (forced-colors: active)";
 
 // @public
 export function focusClear(): IRawStyle;
@@ -296,6 +296,8 @@ export interface IEffects {
     elevation64: string;
     elevation8: string;
     roundedCorner2: string;
+    roundedCorner4: string;
+    roundedCorner6: string;
 }
 
 export { IFontFace }

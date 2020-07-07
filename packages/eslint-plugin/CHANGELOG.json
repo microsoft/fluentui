@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.51.0",
+      "version": "0.51.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add custom configs and rules",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Jun 2020 12:36:30 GMT",
       "tag": "@fluentui/eslint-plugin_v0.50.0",
       "version": "0.50.0",

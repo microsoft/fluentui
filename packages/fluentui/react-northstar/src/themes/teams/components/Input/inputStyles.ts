@@ -2,10 +2,10 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { InputStylesProps } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
 import { PositionProperty } from 'csstype';
-import clearIndicatorUrl from './clearIndicatorUrl';
+import { clearIndicatorUrl } from './clearIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
+export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     alignItems: 'center',
     display: 'inline-flex',
@@ -92,5 +92,3 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
       }),
   }),
 };
-
-export default inputStyles;
