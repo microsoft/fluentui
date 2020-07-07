@@ -13,7 +13,7 @@ export interface IDay {
   isToday: boolean;
   /** Is current date is selected */
   isSelected: boolean;
-  /** Is current date within restriction boundaries */
+  /** Is current date within restriction bboundaries */
   isInBounds: boolean;
 }
 
