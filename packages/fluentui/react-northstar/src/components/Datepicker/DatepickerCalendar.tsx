@@ -6,7 +6,13 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import {
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  WithAsProp,
+  withSafeTypeForAs,
+  ComponentEventHandler,
+} from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 import Grid from '../Grid/Grid';
 import {
@@ -48,8 +54,15 @@ export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormat
   navigatedDate: Date;
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarBehaviorProps>;
-  /** Callback on date cell selection */
-  onDaySelect?: (IDay) => void;
+
+  /**
+   * Called on change of the date.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onDaySelect?: (e: React.MouseEvent<HTMLElement>, data: DatepickerCalendarProps & { value: IDay }) => void;
+
   /** Localized labels */
   localizedStrings?: IDateGridStrings;
 }
@@ -74,7 +87,6 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-    onDaySelect,
     localizedStrings,
   } = props;
   const ElementType = getElementType(props);
@@ -131,8 +143,8 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
                     key={day.key}
                     content={day.date}
                     aria-label={`${formatMonthDayYear(day.originalDate, localizedStrings)}`}
-                    onClick={() => {
-                      onDaySelect(day);
+                    onClick={e => {
+                      _.invoke(props, 'onDaySelect', e, { ...props, value: day });
                     }}
                     primary={day.isSelected}
                     disabled={!day.isInMonth}

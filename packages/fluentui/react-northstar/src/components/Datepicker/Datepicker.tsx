@@ -3,6 +3,7 @@ import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandled
 import { Ref } from '@fluentui/react-component-ref';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import * as _ from 'lodash';
 
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -28,7 +29,7 @@ import {
   formatMonthDayYear,
   IDayGridOptions,
 } from '@fluentui/date-time-utilities';
-import DatepickerCalendar from './DatepickerCalendar';
+import { default as DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 
 const DEFAULT_STRINGS: IDateGridStrings = {
   months: [
@@ -115,8 +116,13 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
   /** Datepicker shows it is currently unable to be interacted with. */
   isRequired: boolean;
 
-  /** Provides the client with an option to react to change in selected date. */
-  onChange?: (day: IDay) => void;
+  /**
+   * Called on change of the date.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onDayChange?: (e: React.MouseEvent<HTMLElement>, data: DatepickerProps & { value: IDay }) => void;
 
   /** String to render for button to direct the user to today's date. */
   goToToday: string;
@@ -143,8 +149,8 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
-  const [open, setOpen] = React.useState(false);
-  const [selectedDate, setSelectedDate] = React.useState();
+  const [open, setOpen] = React.useState<boolean>(false);
+  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const valueFormatter = date => (date ? formatMonthDayYear(date, DEFAULT_STRINGS) : '');
   const { firstDayOfWeek, firstWeekOfYear, dateRangeType } = props;
   const calendarOptions: IDayGridOptions = {
@@ -179,6 +185,14 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
     rtl: context.rtl,
   });
 
+  const handleChange = (e: React.MouseEvent<HTMLElement>, data: DatepickerCalendarProps & { value: IDay }) => {
+    const targetDay = data.value;
+    setSelectedDate(targetDay.originalDate);
+    setOpen(false);
+
+    _.invoke(props, 'onDayChange', e, { ...props, value: targetDay });
+  };
+
   const element = (
     <Ref innerRef={datepickerRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -193,18 +207,7 @@ const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticP
             open={open}
             onOpenChange={(e, { open }) => setOpen(open)}
             content={
-              <DatepickerCalendar
-                {...calendarOptions}
-                onDaySelect={day => {
-                  setSelectedDate(day.originalDate);
-                  setOpen(false);
-
-                  if (props.onChange) {
-                    props.onChange(day);
-                  }
-                }}
-                localizedStrings={DEFAULT_STRINGS}
-              />
+              <DatepickerCalendar {...calendarOptions} onDaySelect={handleChange} localizedStrings={DEFAULT_STRINGS} />
             }
             trapFocus
           >
@@ -242,7 +245,7 @@ Datepicker.propTypes = {
 
   disabled: PropTypes.bool,
   isRequired: PropTypes.bool,
-  onChange: PropTypes.func,
+  onDayChange: PropTypes.func,
   goToToday: PropTypes.string,
   placeholder: PropTypes.string,
   renderCell: PropTypes.func,
