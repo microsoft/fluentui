@@ -3,7 +3,7 @@ import { ChatVariables } from './chatVariables';
 import { ChatStylesProps } from '../../../../components/Chat/Chat';
 import { pxToRem } from '../../../../utils';
 
-const chatStyles: ComponentSlotStylesPrepared<ChatStylesProps, ChatVariables> = {
+export const chatStyles: ComponentSlotStylesPrepared<ChatStylesProps, ChatVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
     backgroundColor: v.backgroundColor,
     border: `1px solid ${v.backgroundColor}`,
@@ -14,5 +14,3 @@ const chatStyles: ComponentSlotStylesPrepared<ChatStylesProps, ChatVariables> = 
     margin: 0,
   }),
 };
-
-export default chatStyles;

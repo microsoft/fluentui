@@ -21,6 +21,7 @@ export const ButtonBase: import("@fluentui/react-compose").ComponentWithAs<"butt
 // @public (undocumented)
 export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
     circular?: boolean;
+    componentRef?: React.RefObject<ButtonRef>;
     disabled?: boolean;
     fluid?: boolean;
     icon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
@@ -37,6 +38,11 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
 }
 
 // @public (undocumented)
+export interface ButtonRef {
+    focus: () => void;
+}
+
+// @public (undocumented)
 export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
@@ -49,6 +55,8 @@ export interface ButtonSlots extends BaseSlots {
 
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
+    // (undocumented)
+    buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
 // @public (undocumented)

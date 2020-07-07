@@ -1,9 +1,9 @@
 import * as PropTypes from 'prop-types';
 
-import useEventListener from './useEventListener';
+import { useEventListener } from './useEventListener';
 import { EventListenerOptions, EventTypes, Target, TargetRef } from './types';
 
-function EventListener<T extends EventTypes>(props: EventListenerOptions<T>) {
+export function EventListener<T extends EventTypes>(props: EventListenerOptions<T>) {
   useEventListener(props);
 
   return null;
@@ -26,5 +26,3 @@ EventListener.propTypes =
 EventListener.defaultProps = {
   capture: false,
 };
-
-export default EventListener;

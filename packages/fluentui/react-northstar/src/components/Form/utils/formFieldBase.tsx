@@ -89,7 +89,6 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
-          ref,
         })}
       >
         {createShorthand(composeOptions.slots.label, label, {
@@ -104,6 +103,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
           defaultProps: () =>
             getA11yProps('control', {
               error: !!errorMessage || null,
+              ref,
               ...unhandledProps,
               ...slotProps.control,
             }),

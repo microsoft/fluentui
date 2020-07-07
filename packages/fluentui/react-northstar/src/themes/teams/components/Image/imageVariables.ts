@@ -8,7 +8,7 @@ export type ImageVariables = {
   circularRadius: string;
 };
 
-export default (): ImageVariables => ({
+export const imageVariables = (): ImageVariables => ({
   width: undefined,
   height: undefined,
   avatarRadius: pxToRem(9999),

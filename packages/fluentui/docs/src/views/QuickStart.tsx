@@ -30,7 +30,7 @@ export default () => (
       value={`
         import React from 'react'
         import ReactDOM from 'react-dom'
-        import { Provider, themes } from '@fluentui/react-northstar'
+        import { Provider, teamsTheme } from '@fluentui/react-northstar'
 
         import App from './App'
 

@@ -4,7 +4,7 @@ import { FlexItemStylesProps } from '../../../../components/Flex/FlexItem';
 import { toFlexAlignment, toFlexItemSizeValues } from './utils';
 import { FlexItemVariables } from './flexItemVariables';
 
-const flexItemStyles: ComponentSlotStylesPrepared<FlexItemStylesProps, FlexItemVariables> = {
+export const flexItemStyles: ComponentSlotStylesPrepared<FlexItemStylesProps, FlexItemVariables> = {
   root: ({ props: p, variables: v }) => {
     return {
       ...(p.align && { alignSelf: toFlexAlignment(p.align) }),
@@ -21,5 +21,3 @@ const flexItemStyles: ComponentSlotStylesPrepared<FlexItemStylesProps, FlexItemV
     };
   },
 };
-
-export default flexItemStyles;

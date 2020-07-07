@@ -1,5 +1,6 @@
 import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   useTelemetry,
   mergeVariablesOverrides,
   getElementType,
@@ -21,8 +22,6 @@ import {
   rtlTextContainer,
 } from '../../utils';
 import {
-  withSafeTypeForAs,
-  WithAsProp,
   ShorthandCollection,
   ComponentEventHandler,
   FluentComponentStaticProps,
@@ -74,7 +73,10 @@ export type CarouselNavigationStylesProps = Required<
 
 export const carouselNavigationClassName = 'ui-carousel__navigation';
 
-const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
+/**
+ * A Carousel navigation helps switching between Carousel items.
+ */
+const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
   FluentComponentStaticProps<CarouselNavigationProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
@@ -191,7 +193,4 @@ CarouselNavigation.create = createShorthandFactory({
   mappedArrayProp: 'items',
 });
 
-/**
- * A Carousel navigation helps switching between Carousel items.
- */
-export default withSafeTypeForAs<typeof CarouselNavigation, CarouselNavigationProps, 'ul'>(CarouselNavigation);
+export default CarouselNavigation;

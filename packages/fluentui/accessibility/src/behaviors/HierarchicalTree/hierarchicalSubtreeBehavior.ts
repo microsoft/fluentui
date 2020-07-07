@@ -6,7 +6,7 @@ import { Accessibility } from '../../types';
  * Triggers 'expandSiblings' action with '*' on 'root'.
  * Adds role 'group' to 'root' slot.
  */
-const hierarchicalSubtreeBehavior: Accessibility = () => ({
+export const hierarchicalSubtreeBehavior: Accessibility = () => ({
   attributes: {
     root: {
       role: 'group',
@@ -20,5 +20,3 @@ const hierarchicalSubtreeBehavior: Accessibility = () => ({
     },
   },
 });
-
-export default hierarchicalSubtreeBehavior;

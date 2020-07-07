@@ -7,8 +7,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds attribute 'aria-selected=true' to 'root' slot.
  */
-
-const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBehaviorProps> = props => ({
+export const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-selected': true,
@@ -21,5 +20,3 @@ const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBehaviorPr
 });
 
 export type DropdownSelectedItemBehaviorProps = { header: string; active: boolean };
-
-export default dropdownSelectedItemBehavior;

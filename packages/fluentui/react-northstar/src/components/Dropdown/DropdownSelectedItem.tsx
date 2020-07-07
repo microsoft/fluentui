@@ -13,9 +13,7 @@ import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import {
   ComponentEventHandler,
   ShorthandValue,
-  WithAsProp,
   ComponentKeyboardEventHandler,
-  withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
@@ -23,7 +21,14 @@ import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
-import { useUnhandledProps, useStyles, useTelemetry, getElementType, useAccessibility } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  useUnhandledProps,
+  useStyles,
+  useTelemetry,
+  getElementType,
+  useAccessibility,
+} from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -85,7 +90,11 @@ export const dropdownSelectedItemSlotClassNames: DropdownSelectedItemSlotClassNa
 
 export type DropdownSelectedItemStylesProps = { hasImage: boolean };
 
-const DropdownSelectedItem: React.FC<WithAsProp<DropdownSelectedItemProps>> &
+/**
+ * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
+ */
+
+const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemProps> &
   FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
@@ -229,7 +238,4 @@ DropdownSelectedItem.create = createShorthandFactory({
   mappedProp: 'header',
 });
 
-/**
- * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
- */
-export default withSafeTypeForAs<typeof DropdownSelectedItem, DropdownSelectedItemProps>(DropdownSelectedItem);
+export default DropdownSelectedItem;

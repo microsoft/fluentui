@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { ButtonVariables } from './buttonVariables';
 import { ButtonContentStylesProps } from '../../../../components/Button/ButtonContent';
 
-const buttonContentStyles: ComponentSlotStylesPrepared<ButtonContentStylesProps, ButtonVariables> = {
+export const buttonContentStyles: ComponentSlotStylesPrepared<ButtonContentStylesProps, ButtonVariables> = {
   root: ({ props: p, variables: v }) => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -17,5 +17,3 @@ const buttonContentStyles: ComponentSlotStylesPrepared<ButtonContentStylesProps,
     }),
   }),
 };
-
-export default buttonContentStyles;

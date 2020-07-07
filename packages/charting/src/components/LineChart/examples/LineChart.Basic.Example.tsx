@@ -111,6 +111,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     };
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+    const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
     return (
       <>
@@ -126,6 +127,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             yMaxValue={301}
             height={this.state.height}
             width={this.state.width}
+            margins={margins}
           />
         </div>
       </>

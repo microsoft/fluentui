@@ -13,8 +13,11 @@ export function safeCreate<TProps>(
   content: React.ReactElement<TProps>,
   callback: (wrapper: renderer.ReactTestRenderer) => void,
 ): void {
-  const wrapper = renderer.create(content);
+  let wrapper: renderer.ReactTestRenderer;
+  renderer.act(() => {
+    wrapper = renderer.create(content);
+  });
 
-  callback(wrapper);
-  wrapper.unmount();
+  callback(wrapper!);
+  wrapper!.unmount();
 }

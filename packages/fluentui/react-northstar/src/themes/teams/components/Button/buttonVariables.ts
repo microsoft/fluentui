@@ -70,7 +70,7 @@ export interface ButtonVariables {
   sizeSmallLoaderSvgAnimationHeight: string;
 }
 
-export default (siteVars: any): ButtonVariables => ({
+export const buttonVariables = (siteVars: any): ButtonVariables => ({
   padding: `0 ${pxToRem(20)}`,
   height: pxToRem(32),
   minWidth: pxToRem(96),

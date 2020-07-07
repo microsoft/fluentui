@@ -14,9 +14,7 @@ import {
 } from '../../utils';
 import {
   ComponentEventHandler,
-  WithAsProp,
   ShorthandValue,
-  withSafeTypeForAs,
   ShorthandCollection,
   FluentComponentStaticProps,
   ProviderContextPrepared,
@@ -28,6 +26,7 @@ import Text, { TextProps } from '../Text/Text';
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
 import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
 import {
+  ComponentWithAs,
   useAccessibility,
   getElementType,
   useStyles,
@@ -124,7 +123,13 @@ export const alertSlotClassNames: AlertSlotClassNames = {
   body: `${alertClassName}__body`,
 };
 
-const Alert: React.FC<WithAsProp<AlertProps>> &
+/**
+ * An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
+ *
+ * @accessibility
+ * Implements [ARIA Alert](https://www.w3.org/TR/wai-aria-practices-1.1/#alert) design pattern.
+ */
+const Alert: ComponentWithAs<'div', AlertProps> &
   FluentComponentStaticProps<AlertProps> & {
     DismissAction: typeof AlertDismissAction;
   } = props => {
@@ -322,10 +327,5 @@ Alert.create = createShorthandFactory({
 });
 
 Alert.DismissAction = AlertDismissAction;
-/**
- * An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
- *
- * @accessibility
- * Implements [ARIA Alert](https://www.w3.org/TR/wai-aria-practices-1.1/#alert) design pattern.
- */
-export default withSafeTypeForAs<typeof Alert, AlertProps>(Alert);
+
+export default Alert;
