@@ -37,11 +37,9 @@ const classNames = mergeStyleSets({
 
 const ITEM_COUNT = 100;
 
-export interface ISelectionBasicExampleState {
+interface ISelectionBasicExampleState {
   items: IExampleItem[];
   selection: ISelection;
-  selectionMode: SelectionMode;
-  canSelect: 'all' | 'vowels';
 }
 
 interface ISelectionItemExampleProps {
@@ -51,9 +49,6 @@ interface ISelectionItemExampleProps {
   selectionMode?: SelectionMode;
 }
 
-/**
- * The SelectionItemExample controls and displays the selection state of a single item
- */
 const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> = (
   props: ISelectionItemExampleProps,
 ) => {
@@ -83,70 +78,79 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
 };
 
 export const SelectionBasicExample: React.FunctionComponent = () => {
-  const { current: items } = React.useRef<IExampleItem[]>(createListItems(ITEM_COUNT));
-  const [selection, setSelection] = React.useState<ISelection>(new Selection());
   const [canSelect, setCanSelect] = React.useState<'all' | 'vowels'>('all');
 
-  const getCommandItems = memoizeFunction((selectionModeProp: SelectionMode, canSelectProp: 'all' | 'vowels') => [
-    {
-      key: 'selectionMode',
-      text: 'Selection Mode',
-      items: [
-        {
-          key: SelectionMode[SelectionMode.none],
-          name: 'None',
-          canCheck: true,
-          checked: selectionModeProp === SelectionMode.none,
-          onClick: onSelectionModeChanged,
-          data: SelectionMode.none,
-        },
-        {
-          key: SelectionMode[SelectionMode.single],
-          name: 'Single select',
-          canCheck: true,
-          checked: selectionModeProp === SelectionMode.single,
-          onClick: onSelectionModeChanged,
-          data: SelectionMode.single,
-        },
-        {
-          key: SelectionMode[SelectionMode.multiple],
-          name: 'Multi select',
-          canCheck: true,
-          checked: selectionModeProp === SelectionMode.multiple,
-          onClick: onSelectionModeChanged,
-          data: SelectionMode.multiple,
-        },
-      ],
-    },
-    {
-      key: 'selectAll',
-      text: 'Select All',
-      iconProps: { iconName: 'CheckMark' },
-      onClick: selection.toggleAllSelected(),
-    },
-    {
-      key: 'allowCanSelect',
-      text: 'Choose selectable items',
-      items: [
-        {
-          key: 'all',
-          name: 'All items',
-          canCheck: true,
-          checked: canSelectProp === 'all',
-          onClick: onCanSelectChanged,
-          data: 'all',
-        },
-        {
-          key: 'a',
-          name: 'Names starting with vowels',
-          canCheck: true,
-          checked: canSelectProp === 'vowels',
-          onClick: onCanSelectChanged,
-          data: 'vowels',
-        },
-      ],
-    },
-  ]);
+  const { current: internalState } = React.useRef<ISelectionBasicExampleState>({
+    selection: new Selection(),
+    items: createListItems(ITEM_COUNT),
+  });
+
+  const onToggleSelectAll = (): void => {
+    internalState.selection.toggleAllSelected();
+  };
+
+  const getCommandItems = memoizeFunction(
+    (selectionModeProp: SelectionMode, canSelectProp: 'all' | 'vowels'): IContextualMenuItem[] => [
+      {
+        key: 'selectionMode',
+        text: 'Selection Mode',
+        items: [
+          {
+            key: SelectionMode[SelectionMode.none],
+            name: 'None',
+            canCheck: true,
+            checked: selectionModeProp === SelectionMode.none,
+            onClick: onSelectionModeChanged,
+            data: SelectionMode.none,
+          },
+          {
+            key: SelectionMode[SelectionMode.single],
+            name: 'Single select',
+            canCheck: true,
+            checked: selectionModeProp === SelectionMode.single,
+            onClick: onSelectionModeChanged,
+            data: SelectionMode.single,
+          },
+          {
+            key: SelectionMode[SelectionMode.multiple],
+            name: 'Multi select',
+            canCheck: true,
+            checked: selectionModeProp === SelectionMode.multiple,
+            onClick: onSelectionModeChanged,
+            data: SelectionMode.multiple,
+          },
+        ],
+      },
+      {
+        key: 'selectAll',
+        text: 'Select All',
+        iconProps: { iconName: 'CheckMark' },
+        onClick: onToggleSelectAll,
+      },
+      {
+        key: 'allowCanSelect',
+        text: 'Choose selectable items',
+        items: [
+          {
+            key: 'all',
+            name: 'All items',
+            canCheck: true,
+            checked: canSelectProp === 'all',
+            onClick: onCanSelectChanged,
+            data: 'all',
+          },
+          {
+            key: 'a',
+            name: 'Names starting with vowels',
+            canCheck: true,
+            checked: canSelectProp === 'vowels',
+            onClick: onCanSelectChanged,
+            data: 'vowels',
+          },
+        ],
+      },
+    ],
+  );
 
   const alertItem = (item: IExampleItem): void => {
     alert('item invoked: ' + item.name);
@@ -157,17 +161,17 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
       canSelectItem: canSelect === 'vowels' ? canSelectItem : undefined,
       selectionMode: menuItem.data,
     });
-    newSelection.setItems(items, false);
-    setSelection(newSelection);
+    newSelection.setItems(internalState.items, false);
+    internalState.selection = newSelection;
   };
 
   const onCanSelectChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     const newSelection = new Selection({
       canSelectItem: menuItem.data === 'vowels' ? canSelectItem : undefined,
-      selectionMode: selection.mode,
+      selectionMode: internalState.selection.mode,
     });
-    newSelection.setItems(items, false);
-    setSelection(newSelection);
+    newSelection.setItems(internalState.items, false);
+    internalState.selection = newSelection;
     setCanSelect(menuItem.data === 'vowels' ? 'vowels' : 'all');
   };
 
@@ -177,11 +181,14 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
 
   return (
     <div className="ms-SelectionBasicExample">
-      <CommandBar items={getCommandItems(selection.mode, canSelect)} />
-      <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
-        <SelectionZone selection={selection} onItemInvoked={alertItem}>
-          {items.map((item: IExampleItem, index: number) => (
-            <SelectionItemExample key={item.key} item={item} itemIndex={index} selection={selection} />
+      <CommandBar items={getCommandItems(internalState.selection.mode, canSelect)} />
+      <MarqueeSelection
+        selection={internalState.selection}
+        isEnabled={internalState.selection.mode === SelectionMode.multiple}
+      >
+        <SelectionZone selection={internalState.selection} onItemInvoked={alertItem}>
+          {internalState.items.map((item: IExampleItem, index: number) => (
+            <SelectionItemExample key={item.key} item={item} itemIndex={index} selection={internalState.selection} />
           ))}
         </SelectionZone>
       </MarqueeSelection>
