@@ -24,7 +24,7 @@ export interface InputVariables {
   colorError: string;
 }
 
-export default (siteVars): InputVariables => ({
+export const inputVariables = (siteVars): InputVariables => ({
   colorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
   colorError: siteVars.colorScheme.red.foreground,
   borderColorError: siteVars.colorScheme.red.background,

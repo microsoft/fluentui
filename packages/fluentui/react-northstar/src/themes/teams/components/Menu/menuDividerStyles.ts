@@ -5,7 +5,7 @@ import { getColorScheme } from '../../colors';
 import { verticalPillsBottomMargin, horizontalPillsRightMargin, verticalPointingBottomMargin } from './menuItemStyles';
 import { MenuVariables } from './menuVariables';
 
-const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerStylesProps, MenuVariables> = {
+export const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme, null, p.primary);
     const borderColor = p.primary ? v.primaryBorderColor : v.borderColor || colors.border;
@@ -41,5 +41,3 @@ const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerStylesProps, Men
     };
   },
 };
-
-export default menuDividerStyles;

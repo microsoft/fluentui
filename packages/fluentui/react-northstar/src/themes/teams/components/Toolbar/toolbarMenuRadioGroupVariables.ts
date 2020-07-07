@@ -1,3 +1,1 @@
-import toolbarVariables from './toolbarVariables';
-
-export default toolbarVariables;
+export { toolbarVariables as toolbarMenuRadioGroupVariables } from './toolbarVariables';

@@ -22,7 +22,7 @@ export const svgIconHandledProps: (keyof SvgIconProps)[] = [
   'xSpacing',
 ];
 
-const createSvgIcon = <TProps = {}>({ svg, displayName, handledProps = [] }: SvgIconCreateFnParams<TProps>) => {
+export const createSvgIcon = <TProps = {}>({ svg, displayName, handledProps = [] }: SvgIconCreateFnParams<TProps>) => {
   const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & SvgIconProps> & {
     handledProps: (keyof (TProps & SvgIconProps))[];
   } = props => {
@@ -79,5 +79,3 @@ const createSvgIcon = <TProps = {}>({ svg, displayName, handledProps = [] }: Svg
 
   return Component;
 };
-
-export default createSvgIcon;

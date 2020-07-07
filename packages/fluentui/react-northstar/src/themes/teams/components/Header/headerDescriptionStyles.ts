@@ -5,7 +5,10 @@ import { HeaderDescriptionStylesProps } from '../../../../components/Header/Head
 import { HeaderDescriptionVariables } from './headerDescriptionVariables';
 import { pxToRem } from '../../../../utils';
 
-const headerStyles: ComponentSlotStylesPrepared<HeaderDescriptionStylesProps, HeaderDescriptionVariables> = {
+export const headerDescriptionStyles: ComponentSlotStylesPrepared<
+  HeaderDescriptionStylesProps,
+  HeaderDescriptionVariables
+> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const colors = v.colorScheme[p.color];
     return {
@@ -16,5 +19,3 @@ const headerStyles: ComponentSlotStylesPrepared<HeaderDescriptionStylesProps, He
     };
   },
 };
-
-export default headerStyles;

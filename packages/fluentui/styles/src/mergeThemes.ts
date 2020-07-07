@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import callable from './callable';
+import { callable } from './callable';
 import {
   ComponentSlotStyle,
   ComponentSlotStylesInput,
@@ -21,10 +21,10 @@ import {
 } from './types';
 
 import { isEnabled as isDebugEnabled } from './debugEnabled';
-import deepmerge from './deepmerge';
-import objectKeyToValues from './objectKeysToValues';
-import toCompactArray from './toCompactArray';
-import withDebugId from './withDebugId';
+import { deepmerge } from './deepmerge';
+import { objectKeyToValues } from './objectKeysToValues';
+import { toCompactArray } from './toCompactArray';
+import { withDebugId } from './withDebugId';
 
 export const emptyTheme: ThemePrepared = {
   siteVariables: {
@@ -323,7 +323,7 @@ export const mergeStyles = (...sources: ComponentSlotStyle[]) => {
   };
 };
 
-const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
+export const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
   return themes.reduce<ThemePrepared>(
     (acc: ThemePrepared, next: ThemeInput) => {
       if (!next) return acc;
@@ -350,5 +350,3 @@ const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
     { ...emptyTheme },
   );
 };
-
-export default mergeThemes;

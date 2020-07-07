@@ -42,7 +42,7 @@ const isValidCssValue = (value: any) => {
 
 const cssPropertiesToSkip = ['content', 'keyframe'];
 
-const felaSanitizeCssPlugin = (
+export const felaSanitizeCssPlugin = (
   styles: ICSSInJSStyle,
   type: TRuleType,
   renderer: FelaRenderer,
@@ -81,5 +81,3 @@ const felaSanitizeCssPlugin = (
 
   return processedStyles;
 };
-
-export default felaSanitizeCssPlugin;

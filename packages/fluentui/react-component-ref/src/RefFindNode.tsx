@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import handleRef from './handleRef';
+import { handleRef } from './handleRef';
 import { RefProps, refPropType } from './types';
 
 export default class RefFindNode extends React.Component<RefProps> {

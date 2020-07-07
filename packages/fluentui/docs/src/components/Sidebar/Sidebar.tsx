@@ -263,6 +263,10 @@ class Sidebar extends React.Component<any, any> {
               to: '/performance',
             },
           },
+          {
+            key: 'debugging',
+            title: { content: 'Debugging', as: NavLink, activeClassName: 'active', to: '/debugging' },
+          },
         ],
       },
     ];

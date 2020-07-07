@@ -30,7 +30,7 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
         as: TElementType;
     }>;
     displayName?: string;
-    __PRIVATE_PROPS: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & {
+    readonly __PRIVATE_PROPS?: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & {
         as?: TElementType;
     } & TProps;
 };

@@ -46,7 +46,7 @@ const dataRecordToListItem = record => ({
 // ----------------------------------------
 // Prototype Search Page View
 // ----------------------------------------
-class SearchPage extends React.Component<SearchPageState, any> {
+class SearchPage extends React.Component<any, SearchPageState> {
   state = { loading: false, query: '', results: [] };
   searchTimer: any;
 
@@ -81,7 +81,6 @@ class SearchPage extends React.Component<SearchPageState, any> {
 
         <p>
           <Input
-            ref="input"
             value={query}
             placeholder={`Try "${_.sample(DATA_RECORDS).firstName}"`}
             icon={loading ? <Loader size="small" /> : <SearchIcon />}
