@@ -75,6 +75,13 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
         {
           fontSize: FontSizes.size20,
           marginBottom: '8px',
+          color: NeutralColors.gray130,
+        },
+      ],
+      props.as === 'h4' && [
+        {
+          fontSize: FontSizes.size16,
+          marginBottom: '6px',
           color: NeutralColors.gray160,
         },
       ],
