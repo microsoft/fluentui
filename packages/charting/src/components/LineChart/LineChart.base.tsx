@@ -105,8 +105,14 @@ export class LineChartBase extends React.Component<
     /** note that height and width are not used to resize or set as dimesions of the chart,
      * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
      */
-    if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
+    if (
+      prevProps.height !== this.props.height ||
+      prevProps.width !== this.props.width ||
+      prevProps.data !== this.props.data
+    ) {
       this._fitParentContainer();
+      this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
+      this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
     }
   }
 
@@ -230,6 +236,7 @@ export class LineChartBase extends React.Component<
                       index: number,
                     ) => (
                       <div
+                        id={`${index}_${xValue.y}`}
                         className={mergeStyles(this._classNames.calloutBlockContainer, {
                           borderLeft: `4px solid ${xValue.color}`,
                         })}
@@ -571,17 +578,6 @@ export class LineChartBase extends React.Component<
           }
         } else {
           lines.push(
-            <circle
-              id={circleId}
-              key={lineId + 1}
-              r={5}
-              cx={this._xAxisScale(x1)}
-              cy={this._yAxisScale(y1)}
-              opacity={0.1}
-              fill={lineColor}
-            />,
-          );
-          lines.push(
             <line
               id={lineId}
               key={lineId}
@@ -595,19 +591,6 @@ export class LineChartBase extends React.Component<
               opacity={0.1}
             />,
           );
-          if (j + 1 === this._points[i].data.length) {
-            lines.push(
-              <circle
-                id={circleId}
-                key={lineId + 2}
-                r={5}
-                cx={this._xAxisScale(x2)}
-                cy={this._yAxisScale(y2)}
-                fill={lineColor}
-                opacity={0.1}
-              />,
-            );
-          }
         }
       }
     }
