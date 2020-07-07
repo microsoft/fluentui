@@ -90,6 +90,7 @@ import {
   hiddenComponentBehavior,
   cardSelectableBehavior,
   dropdownSelectedItemBehavior,
+  datepickerBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import definitions from './testDefinitions';
@@ -184,5 +185,6 @@ testHelper.addBehavior('videoBehavior', videoBehavior);
 testHelper.addBehavior('hiddenComponentBehavior', hiddenComponentBehavior);
 testHelper.addBehavior('cardSelectableBehavior', cardSelectableBehavior);
 testHelper.addBehavior('dropdownSelectedItemBehavior', dropdownSelectedItemBehavior);
+testHelper.addBehavior('datepickerBehavior', datepickerBehavior);
 
 testHelper.run(behaviorMenuItems);

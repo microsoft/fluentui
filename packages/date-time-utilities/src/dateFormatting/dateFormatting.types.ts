@@ -23,16 +23,3 @@ export interface IDateGridStrings {
    */
   shortDays: string[];
 }
-
-export interface IDateFormatting {
-  /**
-   * Format the date according to specified function.
-   * Intended use case is localization.
-   */
-  format?: (date: Date) => string;
-
-  /**
-   * Parse date from string representation into Date type.
-   */
-  parse?: (date: string) => Date;
-}

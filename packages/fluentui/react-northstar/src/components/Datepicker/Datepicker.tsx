@@ -26,7 +26,6 @@ import {
   DateRangeType,
   IDateGridStrings,
   formatMonthDayYear,
-  IDateFormatting,
   IDayGridOptions,
 } from '@fluentui/date-time-utilities';
 import DatepickerCalendar from './DatepickerCalendar';
@@ -50,6 +49,19 @@ const DEFAULT_STRINGS: IDateGridStrings = {
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 };
+
+export interface IDateFormatting {
+  /**
+   * Format the date according to specified function.
+   * Intended use case is localization.
+   */
+  format?: (date: Date) => string;
+
+  /**
+   * Parse date from string representation into Date type.
+   */
+  parse?: (date: string) => Date;
+}
 
 export interface IDatepickerOptions extends IRestrictedDatesOptions {
   /**

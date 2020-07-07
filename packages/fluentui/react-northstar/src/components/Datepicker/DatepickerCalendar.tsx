@@ -15,7 +15,6 @@ import {
   IDay,
   DAYS_IN_WEEK,
   IDateGridStrings,
-  IDateFormatting,
   DayOfWeek,
   FirstWeekOfYear,
   DateRangeType,
@@ -23,6 +22,19 @@ import {
 import Text from '../Text/Text';
 import Button from '../Button/Button';
 import { IDatepickerOptions } from './Datepicker';
+
+export interface IDateFormatting {
+  /**
+   * Format the date according to specified function.
+   * Intended use case is localization.
+   */
+  format?: (date: Date) => string;
+
+  /**
+   * Parse date from string representation into Date type.
+   */
+  parse?: (date: string) => Date;
+}
 
 export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
   /**
@@ -103,7 +115,7 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
             ...unhandledProps,
           })}
         >
-          <Grid rows={grid.length + 1} columns={grid[0].length}>
+          <Grid rows={grid.length + 1} columns={DAYS_IN_WEEK}>
             {_.times(DAYS_IN_WEEK, dayNumber => (
               <Text align="center" content={localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK]} />
             ))}
