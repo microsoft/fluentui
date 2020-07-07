@@ -23,7 +23,7 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.50.0",
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {

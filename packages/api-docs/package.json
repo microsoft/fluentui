@@ -18,7 +18,7 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.50.0",
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/fs-extra": "^8.0.1",
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",

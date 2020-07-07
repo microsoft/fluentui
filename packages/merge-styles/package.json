@@ -25,7 +25,7 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.50.0",
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/jest": "~24.9.0",
     "@uifabric/build": "^7.0.0"
   },
