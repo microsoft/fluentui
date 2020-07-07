@@ -32,8 +32,6 @@ export const CheckboxPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxOverview.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDonts.md'),
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxBestPractices.md'),
