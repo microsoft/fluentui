@@ -36,8 +36,6 @@ export const ActivityItemPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
