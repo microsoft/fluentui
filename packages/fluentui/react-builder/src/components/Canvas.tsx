@@ -17,7 +17,6 @@ export type CanvasProps = {
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
-  onSelectorHover?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
@@ -36,7 +35,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onMouseMove,
   onMouseUp,
   onSelectComponent,
-  onSelectorHover,
   selectedComponent,
   onCloneComponent,
   onMoveComponent,
@@ -90,13 +88,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       onSelectComponent?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
     },
     [onSelectComponent, jsonTree],
-  );
-
-  const handleSelectorHover = React.useCallback(
-    (fiberNav: FiberNavigator) => {
-      onSelectorHover?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
-    },
-    [onSelectorHover, jsonTree],
   );
 
   const handleCloneComponent = React.useCallback(
@@ -276,7 +267,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               showElement={false}
               showCropMarks={false}
               onSelect={handleSelectComponent}
-              onHover={handleSelectorHover}
             />
             {selectedComponent && (
               <DebugFrame

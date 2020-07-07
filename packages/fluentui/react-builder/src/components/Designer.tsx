@@ -57,7 +57,6 @@ export type DesignerState = {
 };
 
 export class Designer extends React.Component<{}, DesignerState> {
-  potentialDropTarget: JSONTreeElement | null = null;
   dropIndex: number = -1;
   dropParent: JSONTreeElement | null = null;
   draggingPosition: { x: number; y: number } = { x: 0, y: 0 };
@@ -221,12 +220,6 @@ export class Designer extends React.Component<{}, DesignerState> {
         }),
       };
     });
-  };
-
-  handleSelectorHover = jsonTreeElement => {
-    // console.log('Designer:handleSelectorHover', jsonTreeElement);
-
-    this.potentialDropTarget = jsonTreeElement;
   };
 
   handleDropPositionChange = (dropParent, dropIndex) => {
@@ -533,7 +526,6 @@ export class Designer extends React.Component<{}, DesignerState> {
                     onMouseMove={this.handleDrag}
                     onMouseUp={this.handleCanvasMouseUp}
                     onSelectComponent={this.handleSelectComponent}
-                    onSelectorHover={this.handleSelectorHover}
                     onDropPositionChange={this.handleDropPositionChange}
                     jsonTree={jsonTree}
                     selectedComponent={selectedComponent}
