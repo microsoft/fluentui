@@ -1,3 +1,3 @@
 export interface DatepickerVariables {}
 
-export default (siteVariables): DatepickerVariables => ({});
+export const datepickerVariables = (siteVariables): DatepickerVariables => ({});

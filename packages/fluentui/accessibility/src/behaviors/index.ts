@@ -119,8 +119,6 @@ export * from './Video/videoBehavior';
 
 export { hiddenComponentBehavior } from './Common/hiddenComponentBehavior';
 
-export { default as datepickerBehavior } from './Datepicker/datepickerBehavior';
 export * from './Datepicker/datepickerBehavior';
 
-export { default as datepickerCalendarBehavior } from './Datepicker/datepickerCalendarBehavior';
 export * from './Datepicker/datepickerCalendarBehavior';

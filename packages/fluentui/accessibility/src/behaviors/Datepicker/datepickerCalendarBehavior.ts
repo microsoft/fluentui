@@ -5,7 +5,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role='group'.
  */
-const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps> = props => ({
+export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'group',
@@ -13,6 +13,5 @@ const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps>
   },
 });
 
-export default datepickerCalendarBehavior;
 
 export type DatepickerCalendarBehaviorProps = never;

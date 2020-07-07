@@ -185,7 +185,7 @@ const Datepicker: ComponentWithAs<'div', DatepickerProps> & FluentComponentStati
     rtl: context.rtl,
   });
 
-  const handleChange = (e: React.MouseEvent<HTMLElement>, data: DatepickerCalendarProps & { value: IDay }) => {
+  const handleChange: DatepicketCalendarProps['onDaySelect'] = (e, data) => {
     const targetDay = data.value;
     setSelectedDate(targetDay.originalDate);
     setOpen(false);
