@@ -15,7 +15,7 @@ import { Accessibility, AriaRole } from '../../types';
  * Adds attribute 'aria-level=1' based on the property 'level' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
  * Triggers 'performClick' action with 'Spacebar' on 'root'.
  */
-const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
+export const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const definition = {
     attributes: {
       root: {
@@ -46,8 +46,6 @@ const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
 
   return definition;
 };
-
-export default treeTitleBehavior;
 
 export type TreeTitleBehaviorProps = {
   /** Indicated if tree title has a subtree */
