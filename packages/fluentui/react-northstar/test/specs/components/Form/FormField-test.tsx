@@ -15,7 +15,7 @@ const inputIconClassName = '.ui-input__icon';
 const formFieldImplementsShorthandProp = implementsShorthandProp(FormField);
 
 const getFormField = (control: React.ComponentType<any> | string) =>
-  mountWithProvider(<FormField control={{ as: control }} name="firstName" />).find('FormField');
+  mountWithProvider(<FormField control={{ as: control as React.ElementType }} name="firstName" />).find('FormField');
 
 describe('FormField', () => {
   isConformant(FormField, { constructorName: 'FormField' });

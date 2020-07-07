@@ -110,7 +110,7 @@ const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarM
             createShorthand(ToolbarMenuItem, item, {
               defaultProps: () => ({
                 accessibility: toolbarMenuItemRadioBehavior,
-                as: 'li',
+                as: 'li' as const,
                 active: activeIndex === index,
                 index,
               }),

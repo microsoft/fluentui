@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
+import { Form, Button, Input, FormProps } from '@fluentui/react-northstar';
 
-const fields = [
+const fields: FormProps['fields'] = [
   {
     label: 'First name',
     name: 'firstName',

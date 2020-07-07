@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
+import { Form, Button, Input, FormProps } from '@fluentui/react-northstar';
 
-const fields = [
+const fields: FormProps['fields'] = [
   {
     label: 'First name',
     name: 'firstName',
@@ -26,7 +26,7 @@ const fields = [
   },
   {
     label: 'I agree to the Terms and Conditions',
-    control: { as: 'input' },
+    control: { as: 'input' as const },
     type: 'checkbox',
     id: 'conditions-shorthand',
     key: 'conditions',

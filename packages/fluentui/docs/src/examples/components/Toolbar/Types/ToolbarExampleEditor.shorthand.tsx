@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Input, Button, Form } from '@fluentui/react-northstar';
+import { Toolbar, Input, Button, Form, FormProps } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
 import {
   BoldIcon,
@@ -22,7 +22,7 @@ import {
   CodeSnippetIcon,
 } from '@fluentui/react-icons-northstar';
 
-const fields = [
+const fields: FormProps['fields'] = [
   {
     label: 'First name',
     name: 'firstName',

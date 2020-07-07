@@ -201,7 +201,7 @@ Provider.defaultProps = {
   theme: {},
 };
 Provider.propTypes = {
-  as: PropTypes.elementType,
+  as: PropTypes.elementType as PropTypes.Requireable<React.ElementType>,
   design: PropTypes.object,
   variables: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   styles: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
