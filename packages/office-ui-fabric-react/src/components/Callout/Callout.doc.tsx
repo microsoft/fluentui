@@ -51,8 +51,6 @@ export const CalloutPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
