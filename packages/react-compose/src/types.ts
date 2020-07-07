@@ -151,15 +151,12 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
 // Component types
 //
 
-export interface ComponentProps {
-  // Removing these props:
-  // design - use style or className instead
-
+export interface ComponentProps<TRootAttributes = React.HTMLAttributes<HTMLElement>> {
   as?: React.ElementType;
 
   className?: string;
 
-  root?: SlotProp<React.HTMLAttributes<HTMLElement>>;
+  root?: SlotProp<TRootAttributes>;
 }
 
 export interface BaseSlots {

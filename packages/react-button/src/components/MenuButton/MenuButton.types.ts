@@ -4,13 +4,13 @@ import { ButtonProps, ButtonTokens } from '../Button/Button.types';
 
 export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
   /**
-   * Shorthand menu that is displayed when the button is pressed.
+   * Menu that is displayed when the button is pressed.
    */
   // tslint:disable-next-line:no-any
   menu?: SlotProp<any>;
 
   /**
-   * Shorthand menu icon that is displayed when the button is pressed.
+   * Menu icon that indicates that this button has a menu that can be expanded.
    */
   menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
 
