@@ -39,7 +39,7 @@
     "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev",
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
-    "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
+    "rebuild": "node ./scripts/invalidate-just-cache.js && npm run build",
     "release:fluentui:minor": "yarn workspace @uifabric/build just fluentui:publish:minor",
     "release:fluentui:patch": "yarn workspace @uifabric/build just fluentui:publish:patch",
     "satisfied": "satisfied --skip-invalid",
