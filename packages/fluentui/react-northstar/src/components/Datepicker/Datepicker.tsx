@@ -1,5 +1,12 @@
 import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+  ComponentWithAs,
+} from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
@@ -7,13 +14,7 @@ import * as _ from 'lodash';
 
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import {
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  WithAsProp,
-  withSafeTypeForAs,
-  ShorthandRenderFunction,
-} from '../../types';
+import { FluentComponentStaticProps, ProviderContextPrepared, ShorthandRenderFunction } from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -143,7 +144,7 @@ export type DatepickerStylesProps = never;
 
 export const datepickerClassName = 'ui-datepicker';
 
-const Datepicker: React.FC<WithAsProp<DatepickerProps>> & FluentComponentStaticProps<DatepickerProps> = props => {
+const Datepicker: ComponentWithAs<'div', DatepickerProps> & FluentComponentStaticProps<DatepickerProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
@@ -265,4 +266,4 @@ Datepicker.create = createShorthandFactory({ Component: Datepicker });
 /**
  * A Datepicker is used to display dates.
  */
-export default withSafeTypeForAs<typeof Datepicker, DatepickerProps, 'div'>(Datepicker);
+export default Datepicker;

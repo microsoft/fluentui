@@ -7,7 +7,7 @@
       "docs/*": ["packages/fluentui/docs/*"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"],
-      "@fluentui/date-time-utilities": ["packages/date-time-utilities/src"]
+      "@fluentui/date-time-utilities": ["packages/date-time-utilities/src/*"]
     }
   },
   "include": ["src", "test"],
@@ -38,9 +38,6 @@
     },
     {
       "path": "../react-proptypes"
-    },
-    {
-      "path": "../../date-time-utilities"
     }
   ]
 }

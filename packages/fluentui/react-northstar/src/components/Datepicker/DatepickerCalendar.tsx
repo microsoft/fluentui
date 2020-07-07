@@ -1,12 +1,19 @@
 import { Accessibility, datepickerCalendarBehavior, DatepickerCalendarBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+  ComponentWithAs,
+} from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 import Grid from '../Grid/Grid';
 import {
@@ -65,7 +72,7 @@ export type DatepickerCalendarStylesProps = never;
 
 export const datepickerCalendarClassName = 'ui-datepickerCalendar';
 
-const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
+const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps> &
   FluentComponentStaticProps<DatepickerCalendarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DatepickerCalendar.displayName, context.telemetry);
@@ -192,4 +199,4 @@ DatepickerCalendar.create = createShorthandFactory({ Component: DatepickerCalend
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
-export default withSafeTypeForAs<typeof DatepickerCalendar, DatepickerCalendarProps, 'div'>(DatepickerCalendar);
+export default DatepickerCalendar;
