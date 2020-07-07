@@ -15,7 +15,7 @@ export interface UIComponentProps<P = any, V = any> extends StyledComponentProps
   /** Additional CSS class name(s) to apply.  */
   className?: string;
   design?: ComponentDesignProp;
-  as?: React.ReactNode;
+  as?: React.ElementType<any>;
 }
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
