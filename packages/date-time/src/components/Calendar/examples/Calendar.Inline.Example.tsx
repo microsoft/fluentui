@@ -21,7 +21,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     super(props);
 
     this.state = {
-      selectedDate: undefined,
+      selectedDate: new Date(),
       selectedDateRange: undefined,
       daysToSelectInDayView: props.calendarDayProps ? props.calendarDayProps.daysToSelectInDayView : 1,
     };
