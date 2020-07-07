@@ -18,6 +18,7 @@ import {
   DayOfWeek,
   FirstWeekOfYear,
   DateRangeType,
+  formatMonthDayYear,
 } from '@fluentui/date-time-utilities';
 import Text from '../Text/Text';
 import Button from '../Button/Button';
@@ -125,7 +126,7 @@ const DatepickerCalendar: React.FC<WithAsProp<DatepickerCalendarProps>> &
                   <Button
                     key={day.key}
                     content={day.date}
-                    aria-label={`Date ${day.originalDate.toString()}`}
+                    aria-label={`${formatMonthDayYear(day.originalDate, localizedStrings)}`}
                     onClick={() => {
                       onDaySelect(day);
                     }}
