@@ -5,12 +5,12 @@ import Slider from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
   newIsConformant({
-    componentPath: __dirname.replace(/test.*/, 'src/components/Slider/Slider.tsx'),
+    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
     Component: Slider,
     displayName: 'Slider',
     useDefaultExport: true,
     customMount: mount,
-    disabledTests: ['has-docblock'],
+    disabledTests: ['has-docblock', 'has-top-level-file'],
   });
 
   isConformant(Slider, {

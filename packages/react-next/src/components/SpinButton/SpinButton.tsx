@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton } from '../../Button';
+import { IconButton } from '../../compat/Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
@@ -15,7 +15,7 @@ import {
   getNativeProps,
   divProperties,
 } from '../../Utilities';
-import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
+import { ISpinButtonProps } from './SpinButton.types';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
@@ -57,7 +57,7 @@ export type DefaultProps = Required<
 type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
 
 @customizable('SpinButton', ['theme', 'styles'], true)
-export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
+export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> {
   public static defaultProps: DefaultProps = {
     step: 1,
     min: 0,

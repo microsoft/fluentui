@@ -21,7 +21,7 @@ const animationProps: (keyof ICSSInJSStyle)[] = [
  * Caution! Infinite recursion is possible in case if style object has links to self in the props
  * tree.
  */
-const felaDisableAnimationsPlugin = (
+export const felaDisableAnimationsPlugin = (
   styles: ICSSInJSStyle,
   type: string,
   renderer?: FelaRenderer,
@@ -47,5 +47,3 @@ const felaDisableAnimationsPlugin = (
   }
   return styles;
 };
-
-export default felaDisableAnimationsPlugin;

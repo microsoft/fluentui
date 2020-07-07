@@ -1,24 +1,32 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-import { TestingOptions } from './types';
+import { IsConformantOptions } from './types';
 import { withCustomConfig } from 'react-docgen-typescript';
 import { defaultTests } from './defaultTests';
 
-export function isConformant(testInfo: TestingOptions) {
-  const { componentPath, displayName, disabledTests = [], extraTests } = testInfo;
+export function isConformant(testInfo: IsConformantOptions) {
+  const { componentPath, displayName, disabledTests = [], extraTests, isInternal } = testInfo;
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
 
   if (!fs.existsSync(componentPath)) {
     throw new Error(`Path ${componentPath} does not exist`);
   }
 
-  const parser = withCustomConfig(tsconfigPath, {});
+  // Props need to be filtered since react-docgen shows all the props including props
+  // inherited native props or React built-in props.
+  const parser = withCustomConfig(tsconfigPath, {
+    propFilter: prop => !/@types[\\/]react[\\/]/.test(prop.parent?.fileName || ''),
+  });
   const components = parser.parse(componentPath);
   const mainComponents = components.filter(comp => comp.displayName === displayName);
 
   if (mainComponents.length === 1) {
     const componentInfo = mainComponents[0];
+
+    if (isInternal) {
+      disabledTests.push('exported-top-level');
+    }
 
     for (const test of Object.keys(defaultTests)) {
       if (!disabledTests.includes(test)) {

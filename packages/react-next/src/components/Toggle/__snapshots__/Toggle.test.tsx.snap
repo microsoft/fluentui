@@ -232,7 +232,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
   >
     <button
       aria-checked={false}
-      aria-labelledby="id__0-label"
+      aria-labelledby="id__0-label id__0-stateText"
       className="ms-Toggle-background"
       data-is-focusable={true}
       id="id__0"

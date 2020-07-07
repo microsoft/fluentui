@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import Builder, { FullScreenPreview } from '@fluentui/react-builder';
+import { Builder, FullScreenPreview } from '@fluentui/react-builder';
 
 import ExternalExampleLayout from './components/ExternalExampleLayout';
 import DocsLayout from './components/DocsLayout';
@@ -10,6 +10,7 @@ import DocsBehaviorRoot from './components/DocsBehaviorRoot';
 import MarkdownPage from './components/MarkdownPage';
 
 import * as Composition from './pages/Composition.mdx';
+import * as Debugging from './pages/Debugging.mdx';
 import * as Layout from './pages/Layout.mdx';
 import * as ComponentArchitecture from './pages/ComponentArchitecture.mdx';
 import Accessibility from './views/Accessibility';
@@ -55,6 +56,7 @@ import HexagonalAvatarPrototype from './prototypes/hexagonalAvatar';
 import TablePrototype from './prototypes/table';
 import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
 import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
+import FormValidationPrototype from './prototypes/FormValidation';
 
 const Routes = () => (
   // Remove trailing slash
@@ -74,6 +76,9 @@ const Routes = () => (
               render={routeProps => <Redirect to={`${routeProps.location.pathname}/definition`} />}
             />
             <Route exact path="/behaviors/:name" component={DocsBehaviorRoot} sidebar />
+            <Route exact path="/debugging">
+              <MarkdownPage page={Debugging} />
+            </Route>
             <Route exact path="/quick-start" component={QuickStart} />
             <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
             <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
@@ -92,6 +97,7 @@ const Routes = () => (
             <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
             <Route exact path="/prototype-table" component={TablePrototype} />
             <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
+            <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
             <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
             <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
             <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />

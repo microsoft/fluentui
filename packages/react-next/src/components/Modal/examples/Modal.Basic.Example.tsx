@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { useId, useBoolean } from '@uifabric/react-hooks';
+import { DefaultButton, IconButton } from '@fluentui/react-next/lib/compat/Button';
 import {
   getTheme,
   mergeStyleSets,
   FontWeights,
   ContextualMenu,
   Toggle,
-  DefaultButton,
   Modal,
   IDragOptions,
-  IconButton,
   IIconProps,
 } from '@fluentui/react-next';
 

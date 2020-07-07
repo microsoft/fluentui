@@ -1,5 +1,12 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -10,13 +17,7 @@ import Box, { BoxProps } from '../Box/Box';
 import Image, { ImageProps } from '../Image/Image';
 import Label, { LabelProps } from '../Label/Label';
 import Status, { StatusProps } from '../Status/Status';
-import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
 
 export interface AvatarProps extends UIComponentProps {
@@ -53,7 +54,10 @@ export interface AvatarProps extends UIComponentProps {
 export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
 export const avatarClassName = 'ui-avatar';
 
-const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<AvatarProps> = props => {
+/**
+ * An Avatar is a graphical representation of a user.
+ */
+const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -151,6 +155,7 @@ Avatar.defaultProps = {
     }
 
     const reducedName = name
+      .replace(/\s+/g, ' ')
       .replace(/\s*\(.*?\)\s*/g, ' ')
       .replace(/\s*{.*?}\s*/g, ' ')
       .replace(/\s*\[.*?]\s*/g, ' ');
@@ -159,7 +164,7 @@ Avatar.defaultProps = {
       .split(' ')
       .filter(item => item !== '')
       .map(item => item.charAt(0))
-      .reduce((accumulator, currentValue) => accumulator + currentValue);
+      .reduce((accumulator, currentValue) => accumulator + currentValue, '');
 
     if (initials.length > 2) {
       return initials.charAt(0) + initials.charAt(initials.length - 1);
@@ -186,7 +191,4 @@ Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 
 Avatar.create = createShorthandFactory({ Component: Avatar, mappedProp: 'name' });
 
-/**
- * An Avatar is a graphical representation of a user.
- */
-export default withSafeTypeForAs<typeof Avatar, AvatarProps>(Avatar);
+export default Avatar;

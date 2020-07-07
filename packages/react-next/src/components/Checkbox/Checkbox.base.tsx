@@ -15,15 +15,10 @@ const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
 
 export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
   (props, forwardedRef, composeOptions) => {
-    // TODO: improve typing for mergeProps
-    const { slotProps, slots, state } = mergeProps<ICheckboxProps, ICheckboxState>(
+    const { slotProps, slots, state } = mergeProps<ICheckboxProps, ICheckboxState, ICheckboxSlots, ICheckboxSlotProps>(
       composeOptions.state,
       composeOptions,
-    ) as {
-      state: ICheckboxState;
-      slots: ICheckboxSlots;
-      slotProps: ICheckboxSlotProps;
-    };
+    );
 
     const { disabled, keytipProps } = state;
 
@@ -31,29 +26,38 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       return <slots.label {...slotProps.label} />;
     };
 
-    return (
-      <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {// tslint:disable-next-line:no-any
-        (keytipAttributes: any): JSX.Element => (
-          <slots.root {...slotProps.root}>
-            <slots.input
-              {...slotProps.input}
-              data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-              aria-describedby={mergeAriaAttributeValues(
-                slotProps.input['aria-describedby'],
-                keytipAttributes['aria-describedby'],
-              )}
-            />
-            <slots.container {...slotProps.container}>
-              <slots.checkbox {...slotProps.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
-                <slots.checkmark {...slotProps.checkmark} />
-              </slots.checkbox>
-              {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
-            </slots.container>
-          </slots.root>
-        )}
-      </KeytipData>
+    // tslint:disable-next-line:no-any
+    const renderContent = (keytipAttributes: any = {}) => (
+      <slots.root {...slotProps.root}>
+        <slots.input
+          {...slotProps.input}
+          data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+          aria-describedby={mergeAriaAttributeValues(
+            slotProps.input['aria-describedby'],
+            keytipAttributes['aria-describedby'],
+          )}
+        />
+        <slots.container {...slotProps.container}>
+          <slots.checkbox {...slotProps.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
+            <slots.checkmark {...slotProps.checkmark} />
+          </slots.checkbox>
+
+          {// tslint:disable-next-line:deprecation
+          (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
+        </slots.container>
+      </slots.root>
     );
+
+    if (keytipProps) {
+      return (
+        <KeytipData keytipProps={keytipProps} disabled={disabled}>
+          {// tslint:disable-next-line:no-any
+          (keytipAttributes: any): JSX.Element => renderContent(keytipAttributes)}
+        </KeytipData>
+      );
+    }
+
+    return renderContent();
   },
   {
     slots: defaultSlots,
@@ -66,6 +70,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       'defaultChecked',
       'boxSide',
       'label',
+      'checkmark',
       'disabled',
       'inputProps',
       'boxSide',
@@ -76,7 +81,6 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       'ariaSetSize',
       'styles',
       'onRenderLabel',
-      'checkmarkIconProps',
       'keytipProps',
       'indeterminate',
       'defaultIndeterminate',

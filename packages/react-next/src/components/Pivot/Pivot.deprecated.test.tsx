@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { setWarningCallback, resetIds } from '@uifabric/utilities';
 
 import { Pivot, PivotItem } from './index';
@@ -22,7 +22,7 @@ describe('Pivot', () => {
   });
 
   it('renders link Pivot correctly', () => {
-    const component = renderer.create(
+    const component = create(
       <Pivot>
         <PivotItem linkText="Test Link 1" />
         <PivotItem linkText="" />

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const PauseIcon = createSvgIcon({
+export const PauseIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" className={classes.svg} viewBox="8 8 16 16">
       <g>
@@ -11,5 +11,3 @@ const PauseIcon = createSvgIcon({
   ),
   displayName: 'PauseIcon',
 });
-
-export default PauseIcon;

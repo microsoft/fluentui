@@ -1,9 +1,9 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TeamsTableVariables } from './tableVariables';
+import { TableVariables } from './tableVariables';
 import { TableCellStylesProps } from '../../../../components/Table/TableCell';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTableVariables> = {
+export const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TableVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
@@ -37,5 +37,3 @@ const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTa
     };
   },
 };
-
-export default tableCellStyles;

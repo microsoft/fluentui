@@ -53,7 +53,7 @@ export interface CarouselNavigationVariables {
   thumbnailWidth: number;
 }
 
-export default (siteVars: any): CarouselNavigationVariables => {
+export const carouselNavigationVariables = (siteVars: any): CarouselNavigationVariables => {
   return {
     width: 300,
     colorScheme: pickValuesFromColorScheme(
