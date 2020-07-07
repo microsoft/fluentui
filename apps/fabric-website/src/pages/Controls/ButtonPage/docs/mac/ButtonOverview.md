@@ -1,6 +1,4 @@
-Buttons are one of the core controls that make an app feel native to the platform it's on. It’s important to respect the platform's paradigms in order to help the user feel at home on macOS and keep the experience quality high.
-
-Buttons are a standard control that users can interact with to take actions within your application. The FluentUI button for macOS adds system appropriate hover effects when your mouse rests over it.
+Buttons give people a way to trigger an action. They're typically found in windows, alerts, and dialogs. Some buttons are specialized for particular tasks, such as navigation, repeated actions, or presenting menus. The FluentUI button for macOS adds system appropriate hover effects when your mouse rests over it.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 
