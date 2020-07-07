@@ -19,7 +19,7 @@ export const Button: import("@fluentui/react-compose").ComponentWithAs<"button",
 export const ButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", ButtonProps>;
 
 // @public (undocumented)
-export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ComponentProps<React.ButtonHTMLAttributes<HTMLButtonElement>>, React.HTMLAttributes<HTMLButtonElement> {
     circular?: boolean;
     componentRef?: React.RefObject<ButtonRef>;
     disabled?: boolean;
