@@ -2,9 +2,9 @@ import { pxToRem } from '../../../../utils';
 import { MenuVariables } from './menuVariables';
 import { MenuItemIndicatorStylesProps } from '../../../../components/Menu/MenuItemIndicator';
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import submenuIndicatorUrl from './submenuIndicatorUrl';
+import { submenuIndicatorUrl } from './submenuIndicatorUrl';
 
-const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStylesProps, MenuVariables> = {
+export const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v, rtl }) => {
     return {
       position: 'relative',
@@ -48,5 +48,3 @@ const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStyl
     };
   },
 };
-
-export default menuItemIndicatorStyles;

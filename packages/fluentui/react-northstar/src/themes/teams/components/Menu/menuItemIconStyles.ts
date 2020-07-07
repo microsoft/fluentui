@@ -3,7 +3,7 @@ import { MenuVariables } from './menuVariables';
 import { MenuItemIconStylesProps } from '../../../../components/Menu/MenuItemIcon';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-const menuItemIconStyles: ComponentSlotStylesPrepared<MenuItemIconStylesProps, MenuVariables> = {
+export const menuItemIconStyles: ComponentSlotStylesPrepared<MenuItemIconStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'inline-flex',
     alignItems: 'center',
@@ -31,5 +31,3 @@ const menuItemIconStyles: ComponentSlotStylesPrepared<MenuItemIconStylesProps, M
     }),
   }),
 };
-
-export default menuItemIconStyles;

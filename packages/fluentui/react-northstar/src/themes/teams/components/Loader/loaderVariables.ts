@@ -1,5 +1,5 @@
 import { pxToRem, SizeValue } from '../../../../utils';
-import svgContent from './loaderSvgDataUrl';
+import { loaderSvgDataUrl } from './loaderSvgDataUrl';
 
 export interface LoaderVariables {
   containerHeights: Record<SizeValue, string>;
@@ -11,7 +11,7 @@ export interface LoaderVariables {
   svgWidths: Record<SizeValue, string>;
 }
 
-export default (): LoaderVariables => ({
+export const loaderVariables = (): LoaderVariables => ({
   containerHeights: {
     smallest: pxToRem(24),
     smaller: pxToRem(24),
@@ -31,7 +31,7 @@ export default (): LoaderVariables => ({
     largest: pxToRem(72),
   },
 
-  svgContent,
+  svgContent: loaderSvgDataUrl,
   svgHeights: {
     smaller: pxToRem(1464),
     smallest: pxToRem(1464),

@@ -1,7 +1,7 @@
 import { decelerateMax, accelerateMax } from './timingFunctions';
 import { ultraFast, faster, fast, normal, slow, slower, ultraSlow } from './durations';
 
-const slideAnimations = {
+export const slideAnimations = {
   // Slide Down Animations
   // Slides object down to original position --ultrafast
   slideDownEnterUltraFast: {
@@ -1049,5 +1049,3 @@ const slideAnimations = {
     fillMode: 'forwards',
   },
 };
-
-export default slideAnimations;

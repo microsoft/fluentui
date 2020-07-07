@@ -23,7 +23,7 @@ export interface DialogVariables {
   headerActionMargin: string;
 }
 
-export default (siteVariables): Partial<DialogVariables> => ({
+export const dialogVariables = (siteVariables): Partial<DialogVariables> => ({
   border: 'none',
 
   rootBackground: siteVariables.colors.white,

@@ -6,7 +6,7 @@ type SizeValues = Record<FlexItemProps['size'], string>;
 
 export type FlexItemVariables = SizeValues;
 
-export default (): FlexItemVariables => ({
+export const flexItemVariables = (): FlexItemVariables => ({
   'size.half': '50%',
   'size.quarter': '25%',
 
