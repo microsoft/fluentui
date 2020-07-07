@@ -4,12 +4,12 @@ Buttons are a standard control that users can interact with to take actions with
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 
-### Primary Filled
+### Primary filled
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200701.001/fabric-website/images/controls/macos/Button/button_primaryfilled_light.png?text=LightMode" />
 <img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200701.001/fabric-website/images/controls/macos/Button/button_primaryfilled_dark.png?text=DarkMode" />
 
-### Primary Outlined
+### Primary outlined
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200701.001/fabric-website/images/controls/macos/Button/button_primaryoutlined_light.png?text=LightMode" />
 <img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200701.001/fabric-website/images/controls/macos/Button/button_primaryoutlined_dark.png?text=DarkMode" />
