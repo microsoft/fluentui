@@ -3,15 +3,12 @@ import { Header } from '@fluentui/react-northstar';
 import { ComponentInfo } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 
-export type ComponentDescriptionProps = {
+export type DescriptionProps = {
   selectedJSONTreeElement: JSONTreeElement;
   componentInfo: ComponentInfo;
 };
 
-const ComponentDescription: React.FunctionComponent<ComponentDescriptionProps> = ({
-  selectedJSONTreeElement,
-  componentInfo,
-}) => {
+export const Description: React.FunctionComponent<DescriptionProps> = ({ selectedJSONTreeElement, componentInfo }) => {
   if (!componentInfo) {
     return null;
   }
@@ -27,5 +24,3 @@ const ComponentDescription: React.FunctionComponent<ComponentDescriptionProps> =
     </div>
   );
 };
-
-export default ComponentDescription;

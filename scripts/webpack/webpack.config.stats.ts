@@ -5,6 +5,7 @@ import webpack from 'webpack';
 import config from '../config';
 import glob from 'glob';
 import * as _ from 'lodash';
+import TerserWebpackPlugin from 'terser-webpack-plugin';
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { paths } = config;
@@ -59,7 +60,22 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
     'react-dom': 'reactDOM',
   },
   optimization: {
-    concatenateModules: false,
+    minimizer: [
+      new TerserWebpackPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false,
+
+        terserOptions: {
+          mangle: false,
+          output: {
+            beautify: true,
+            comments: true,
+            preserve_annotations: true,
+          },
+        },
+      }),
+    ],
   },
   plugins: [
     new CleanWebpackPlugin([paths.base('stats')], {

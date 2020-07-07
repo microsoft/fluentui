@@ -33,7 +33,7 @@ export interface ChatMessageVariables {
   overlayZIndex: number;
 }
 
-export default (siteVars): ChatMessageVariables => ({
+export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   actionMenuBoxShadow: siteVars.shadowLevel1,
   actionMenuPositionRight: pxToRem(5),
   actionMenuPositionTop: pxToRem(-30),

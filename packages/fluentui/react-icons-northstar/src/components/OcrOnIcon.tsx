@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const OcrOnIcon = createSvgIcon({
+export const OcrOnIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg className={classes.svg} viewBox="8 8 16 16" role="presentation" focusable="false">
       <path
@@ -50,5 +50,3 @@ const OcrOnIcon = createSvgIcon({
   ),
   displayName: 'OcrOnIcon',
 });
-
-export default OcrOnIcon;

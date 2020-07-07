@@ -85,6 +85,9 @@ exports[`MaskedTextField renders correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){&:hover {
+            forced-color-adjust: none;
+          }
     >
       <input
         aria-invalid={false}
@@ -129,6 +132,10 @@ exports[`MaskedTextField renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Window;
+              color: WindowText;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -137,6 +144,9 @@ exports[`MaskedTextField renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::placeholder {
+              color: GrayText;
             }
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
@@ -147,6 +157,9 @@ exports[`MaskedTextField renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
+            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
             &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -155,6 +168,9 @@ exports[`MaskedTextField renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         id="TextField0"
         onBlur={[Function]}

@@ -1,8 +1,8 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
-interface AttachmentHeaderOwnProps {}
+export interface AttachmentHeaderOwnProps {}
 export interface AttachmentHeaderProps extends AttachmentHeaderOwnProps, BoxProps {}
 
 export type AttachmentHeaderStylesProps = never;
@@ -22,16 +22,14 @@ const AttachmentHeader = compose<
   displayName: 'AttachmentHeader',
 
   overrideStyles: true,
-}) as ComponentWithAs<'span', AttachmentHeaderProps> & {
-  shorthandConfig: ShorthandConfig<AttachmentHeaderProps>;
-};
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
+});
 
 AttachmentHeader.defaultProps = {
   as: 'span',
 };
 AttachmentHeader.propTypes = commonPropTypes.createCommon();
-AttachmentHeader.shorthandConfig = {
-  mappedProp: 'content',
-};
 
 export default AttachmentHeader;

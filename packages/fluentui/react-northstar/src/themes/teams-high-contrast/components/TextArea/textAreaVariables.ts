@@ -1,7 +1,7 @@
 import { pxToRem } from '../../../../utils';
 import { TextAreaVariables } from '../../../teams/components/TextArea/textAreaVariables';
 
-export default (siteVars: any): Partial<TextAreaVariables> => {
+export const textAreaVariables = (siteVars: any): Partial<TextAreaVariables> => {
   return {
     borderColor: siteVars.bodyColor,
     borderWidth: `${pxToRem(1)} ${pxToRem(1)} ${pxToRem(2)} ${pxToRem(1)}`,

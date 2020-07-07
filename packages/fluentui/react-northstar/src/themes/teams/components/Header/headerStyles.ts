@@ -2,9 +2,9 @@ import * as _ from 'lodash';
 import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { HeaderStylesProps } from '../../../../components/Header/Header';
 import { HeaderVariables } from './headerVariables';
-import translateAlignProp from '../../../../styles/translateAlignProp';
+import { translateAlignProp } from '../../../../styles/translateAlignProp';
 
-const headerStyles: ComponentSlotStylesPrepared<HeaderStylesProps, HeaderVariables> = {
+export const headerStyles: ComponentSlotStylesPrepared<HeaderStylesProps, HeaderVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const colors = v.colorScheme[p.color];
     return {
@@ -15,5 +15,3 @@ const headerStyles: ComponentSlotStylesPrepared<HeaderStylesProps, HeaderVariabl
     };
   },
 };
-
-export default headerStyles;

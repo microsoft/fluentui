@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update config files in preparation for enabling ESLint",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-06-19T00:06:59.436Z"
-}

@@ -11,6 +11,7 @@ export interface SplitButtonVariables {
   smallMinWidth: string;
   smallBoxShadow: string;
   padding: string;
+  minWidth: string;
 
   toggleButtonHeight: string;
 
@@ -53,7 +54,7 @@ export interface SplitButtonVariables {
   focusBorderZIndex: string;
 }
 
-export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
+export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
   return {
     borderRadius: siteVars.borderRadius,
     borderColor: siteVars.colorScheme.default.border,
@@ -63,7 +64,8 @@ export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
     smallPadding: `0 ${pxToRem(8)}`,
     smallMinWidth: '0',
     smallBoxShadow: 'none',
-    padding: `0 ${pxToRem(16)}`,
+    padding: `0 ${pxToRem(12)}`,
+    minWidth: '0',
 
     toggleButtonHeight: pxToRem(32),
 
