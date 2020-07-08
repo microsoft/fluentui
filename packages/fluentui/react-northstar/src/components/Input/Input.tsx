@@ -14,6 +14,7 @@ import {
   createShorthandFactory,
   ShorthandFactory,
   createShorthand,
+  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
@@ -29,7 +30,7 @@ import {
   ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
-import InputLabel, { InputLabelProps } from './InputLabel';
+import InputLabel, { InputLabelProps, LabelPosition } from './InputLabel';
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
   /**
@@ -85,7 +86,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   label?: ShorthandValue<InputLabelProps>;
 
   /** Poisition for the label */
-  labelPosition?: string;
+  labelPosition?: LabelPosition;
 
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<BoxProps>;
@@ -109,12 +110,16 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 export interface InputSlotClassNames {
   input: string;
   icon: string;
+  container: string;
 }
 
 export const inputClassName = 'ui-input';
 
 export type InputStylesProps = Required<
-  Pick<InputProps, 'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error'> & {
+  Pick<
+    InputProps,
+    'fluid' | 'inverted' | 'inline' | 'disabled' | 'clearable' | 'iconPosition' | 'error' | 'labelPosition'
+  > & {
     hasIcon: boolean;
     hasValue: boolean;
     requiredAndSuccessful: boolean;
@@ -124,6 +129,7 @@ export type InputStylesProps = Required<
 export const inputSlotClassNames: InputSlotClassNames = {
   input: `${inputClassName}__input`,
   icon: `${inputClassName}__icon`,
+  container: `${inputClassName}__container`,
 };
 
 /**
@@ -163,6 +169,9 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
 
     const inputRef = React.useRef<HTMLInputElement>();
 
+    const inputId = React.useRef<string>();
+    inputId.current = getOrGenerateIdFromShorthand('ui-input-', '', inputId.current);
+
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
@@ -173,6 +182,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       initialValue: '',
     });
     const hasValue: boolean = !!value && (value as string)?.length !== 0;
+    const id = props.id || inputId.current;
 
     const isShowSuccessIndicatorUndefined = typeof showSuccessIndicator === 'undefined';
 
@@ -194,6 +204,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         requiredAndSuccessful,
         iconPosition,
         hasValue,
+        labelPosition,
         error,
       }),
       mapPropsToInlineStyles: () => ({
@@ -274,6 +285,8 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         labelPosition,
         label,
         required,
+        inputValue: hasValue,
+        htmlFor: id,
       }),
     });
 
@@ -297,6 +310,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
                       as: 'input',
                       disabled,
                       type,
+                      id,
                       required,
                       value: value || '',
                       className: inputSlotClassNames.input,
@@ -327,6 +341,8 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       {},
       {
         defaultProps: () => ({
+          className: inputSlotClassNames.container,
+          styles: resolvedStyles.container,
           children: (
             <>
               {labelElement}
@@ -392,7 +408,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   label: customPropTypes.itemShorthand,
-  labelPosition: PropTypes.string,
+  labelPosition: PropTypes.oneOf<LabelPosition>(['internal', 'inline']),
   icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   input: customPropTypes.itemShorthand,

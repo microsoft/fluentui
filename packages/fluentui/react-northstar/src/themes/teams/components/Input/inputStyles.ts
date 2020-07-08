@@ -58,6 +58,9 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     ...(p.hasIcon && {
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
+    ...(p.labelPosition === 'internal' && {
+      paddingTop: pxToRem(14),
+    }),
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -90,5 +93,9 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
         height: '100%',
         width: pxToRem(16),
       }),
+  }),
+
+  container: (): ICSSInJSStyle => ({
+    position: 'relative',
   }),
 };

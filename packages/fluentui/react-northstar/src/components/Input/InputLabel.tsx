@@ -2,15 +2,16 @@ import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 
-type LabelPosition = 'inline' | 'above' | 'internal';
+export type LabelPosition = 'inline' | 'above' | 'internal';
 
 interface InputLabelOwnProps {
   labelPosition?: LabelPosition;
   required?: boolean;
+  inputValue?: boolean;
 }
 
 export interface InputLabelProps extends BoxProps, InputLabelOwnProps {}
-export type InputLabelStylesProps = Required<Pick<InputLabelOwnProps, 'labelPosition' | 'required'>>;
+export type InputLabelStylesProps = Required<Pick<InputLabelOwnProps, 'labelPosition' | 'required' | 'inputValue'>>;
 
 export const InputLabelClassName = 'ui-input__label';
 
@@ -21,11 +22,12 @@ const InputLabel = compose<'label', InputLabelProps, InputLabelStylesProps, BoxP
   className: InputLabelClassName,
   displayName: 'InputLabel',
   overrideStyles: true,
-  mapPropsToStylesProps: ({ labelPosition, required }) => ({
+  mapPropsToStylesProps: ({ labelPosition, required, inputValue }) => ({
     labelPosition,
     required,
+    inputValue,
   }),
-  handledProps: ['required', 'labelPosition'],
+  handledProps: ['required', 'labelPosition', 'inputValue'],
 });
 
 InputLabel.defaultProps = {
