@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Correct findScrollableParent return type",
+  "comment": "findScrollableParent: Adding missing `Window` and `undefined` return types.",
   "packageName": "@uifabric/utilities",
   "email": "KevinTCoughlin@users.noreply.github.com",
   "dependentChangeType": "patch",
