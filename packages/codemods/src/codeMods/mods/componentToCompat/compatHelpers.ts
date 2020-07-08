@@ -16,7 +16,7 @@ export interface ComponentToCompat {
 
 export interface RawCompat {
   componentName: string;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   namedExports: { [key: string]: any };
 }
 
@@ -42,7 +42,7 @@ export function repathNamedImports(file: SourceFile, namedImportMap: { [key: str
   });
 }
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getNamedExports(obj: { [key: string]: any }) {
   return Object.keys(obj).filter(key => key !== 'default');
 }

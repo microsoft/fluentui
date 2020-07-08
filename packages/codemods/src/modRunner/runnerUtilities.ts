@@ -74,13 +74,13 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): { succ
   return { success: false };
 }
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function filterMods(codeMods: Codemod<any>[], semvarRange: Range) {
   return codeMods.filter(mod => shouldRunMod(mod, semvarRange));
 }
 
 // Defaults to allowing almost any version to run.
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function shouldRunMod(mod: Codemod<any>, semvarRange: Range = new Range('>0 <1000')) {
   return mod.enabled && semvarRange.test(mod.version || '*');
 }
