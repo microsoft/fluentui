@@ -9,10 +9,12 @@ import {
   Node,
 } from 'ts-morph';
 import { findJsxTag, appendOrCreateNamedImport } from '../../utilities/index';
-import { ICodeMod } from '../../ICodeMod';
+import { Codemod } from '../../types';
 
 const personaPath = 'office-ui-fabric-react/lib/Persona';
 
+// This file was intended as a proof of concept and will stay around for now
+// Until such time that it will get turned into a more explicit and generic example
 export function renameProperty(
   elements: (JsxOpeningElement | JsxSelfClosingElement)[],
   attributeName: string,
@@ -158,7 +160,7 @@ export function renameRenderCoin(file: SourceFile) {
   renameProperty(elements, 'onRenderCoin', 'onRenderAvatarCoin');
 }
 
-const PersonaToAvatarMod: ICodeMod = {
+const PersonaToAvatarMod: Codemod = {
   run: (file: SourceFile) => {
     try {
       replacePersonaImport(file);

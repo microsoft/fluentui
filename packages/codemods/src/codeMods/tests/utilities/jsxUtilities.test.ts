@@ -2,7 +2,7 @@ import { findJsxTag, renameImport } from '../../utilities';
 import { Project } from 'ts-morph';
 
 const project = new Project();
-project.addSourceFilesAtPaths(`${process.cwd()}/**/__tests__/mock/**/*.tsx`);
+project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/**/*.tsx`);
 const fileName = 'mockFunction.tsx';
 
 describe('JSX Utilities Test', () => {

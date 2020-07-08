@@ -10,7 +10,7 @@ describe('Import Utilities test', () => {
 
   beforeEach(() => {
     project = new Project();
-    project.addSourceFilesAtPaths(`${process.cwd()}/**/__tests__/mock/utils/*.tsx`);
+    project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/utils/*.tsx`);
   });
 
   it('can find import based on exact string match', () => {

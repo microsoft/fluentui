@@ -1,16 +1,16 @@
 import { Project } from 'ts-morph';
 import * as Root from '../mock/compat/mockIndex';
 import {
-  IRawCompat,
+  RawCompat,
   runComponentToCompat,
   getNamedExports,
   buildCompatHash as buildHash,
   repathNamedImports,
   repathPathedImports,
-} from '../../mods/ComponentToCompat/CompatHelpers';
+} from '../../mods/componentToCompat/compatHelpers';
 import * as Button from 'office-ui-fabric-react/lib-commonjs/Button';
 
-const createComponentToCompat = (compat: IRawCompat) => {
+const createComponentToCompat = (compat: RawCompat) => {
   return {
     oldPath: './mockIndex',
     newComponentPath: 'compat/Button',
@@ -22,17 +22,18 @@ describe('Component to compat', () => {
   let project: Project;
   beforeEach(() => {
     project = new Project();
-    project.addSourceFilesAtPaths(`${process.cwd()}/**/__tests__/mock/compat/*.tsx`);
+    project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/compat/*.tsx`);
   });
 
   it('correctly repaths from exact known import', () => {
     const file = project.getSourceFileOrThrow('ImportsStuff.tsx');
     const hash = buildHash([{ componentName: 'Button', namedExports: Root }], createComponentToCompat);
-    repathPathedImports(file, hash);
-    expect(file.getFullText()).toContain('compat/Button');
+    repathPathedImports(file, hash.exactPathMatch);
+    const imps = file.getImportDeclarations();
+    expect(imps.some(dec => dec.getModuleSpecifierValue() === 'compat/Button')).toEqual(true);
   });
 
-  it('correctly gets maps imports from an external library', () => {
+  it('correctly gets named exports from a library', () => {
     const buttonExports = getNamedExports(Button);
     expect(buttonExports).toContain('DefaultButton');
     expect(buttonExports).toContain('CommandButton');
@@ -41,14 +42,14 @@ describe('Component to compat', () => {
   it('correctly repaths from index', () => {
     const file = project.getSourceFileOrThrow('ImportsStuff.tsx');
     const hash = buildHash([{ componentName: 'Button', namedExports: Root }], createComponentToCompat);
-    repathNamedImports(file, hash, './DefaultButton');
+    repathNamedImports(file, hash.namedExportsMatch, './DefaultButton');
     expect(file.getFullText()).toContain('compat/Button');
   });
 
   it('correctly moves all named imports from index', () => {
     const file = project.getSourceFileOrThrow('ImportsStuff.tsx');
     const hash = buildHash([{ componentName: 'Button', namedExports: Root }], createComponentToCompat);
-    repathNamedImports(file, hash, './Button');
+    repathNamedImports(file, hash.namedExportsMatch, './Button');
 
     const named = file.getImportDeclaration(d => d.getModuleSpecifierValue() === 'compat/Button')?.getNamedImports();
     named?.forEach(v => {
@@ -71,7 +72,7 @@ describe('Component to compat', () => {
   it('correctly removes index if no imports left', () => {
     const file = project.getSourceFileOrThrow('ImportsStuff.tsx');
     const hash = buildHash([{ componentName: 'Button', namedExports: Root }], createComponentToCompat);
-    repathNamedImports(file, hash, './DefaultButton');
+    repathNamedImports(file, hash.namedExportsMatch, './DefaultButton');
     expect(file.getFullText()).not.toContain('./DefaultButton');
   });
 

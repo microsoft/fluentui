@@ -16,7 +16,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "esModuleInterop": true,
-    "lib": ["es5", "dom", "es2015.promise", "es2017"],
+    "lib": ["dom", "es2015.promise", "es2017"],
     "types": ["jest", "node"]
   },
   "include": ["src"]

@@ -1,11 +1,5 @@
-import {
-  runComponentToCompat,
-  buildCompatHash,
-  IRawCompat,
-  IComponentToCompat,
-  getNamedExports,
-} from './CompatHelpers';
-import { ICodeMod } from '../../ICodeMod';
+import { runComponentToCompat, buildCompatHash, RawCompat, ComponentToCompat, getNamedExports } from './compatHelpers';
+import { Codemod } from '../../types';
 import { SourceFile } from 'ts-morph';
 
 // Not sure if this the best way to get all the things exported from button. It's dependent on version
@@ -18,7 +12,7 @@ import * as Link from 'office-ui-fabric-react/lib-commonjs/Link';
 import * as Slider from 'office-ui-fabric-react/lib-commonjs/Slider';
 import * as Toggle from 'office-ui-fabric-react/lib-commonjs/Toggle';
 
-const exportMapping: IRawCompat[] = [
+const exportMapping: RawCompat[] = [
   // { componentName: 'Button', namedExports: Button },
   // { componentName: 'Pivot', namedExports: Pivot },
   { componentName: 'Checkbox', namedExports: Checkbox },
@@ -35,7 +29,7 @@ function getPath(root: string, componentName: string) {
   return `${root}${componentName}`;
 }
 
-export function createComponentToCompat(comp: IRawCompat): IComponentToCompat {
+export function createComponentToCompat(comp: RawCompat): ComponentToCompat {
   return {
     oldPath: getPath(completePath, comp.componentName),
     newComponentPath: getPath(newPathStart, comp.componentName),
@@ -43,7 +37,7 @@ export function createComponentToCompat(comp: IRawCompat): IComponentToCompat {
   };
 }
 
-const ComponentToCompat: ICodeMod = {
+const ComponentToCompat: Codemod = {
   run: (file: SourceFile) => {
     runComponentToCompat(file, buildCompatHash(exportMapping, createComponentToCompat), fabricindex);
     return { success: true };

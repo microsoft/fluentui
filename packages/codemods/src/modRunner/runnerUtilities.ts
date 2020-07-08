@@ -1,12 +1,12 @@
-import { ICodeMod } from '../codeMods/ICodeMod';
+import { Codemod } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Range } from 'semver';
 
 // TODO ensure that async for all these utilities works
 export function runMods<T>(
-  codeMods: ICodeMod<T>[],
+  codeMods: Codemod<T>[],
   sources: T[],
-  loggingCallback: (result: { mod: ICodeMod<T>; file: T; error?: Error }) => void,
+  loggingCallback: (result: { mod: Codemod<T>; file: T; error?: Error }) => void,
 ) {
   for (const file of sources) {
     // Run every mod on each file?
@@ -61,7 +61,7 @@ export function getTsConfigs(root: string = process.cwd()) {
 }
 
 // TODO this is a great place for maybe, this pattern will probably be a bunch of places.
-export function loadMod(path: string, errorCallback: (e: Error) => void): { success: boolean; mod?: ICodeMod } {
+export function loadMod(path: string, errorCallback: (e: Error) => void): { success: boolean; mod?: Codemod } {
   try {
     const mod = require(path).default;
     if (mod) {
@@ -75,12 +75,12 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): { succ
 }
 
 // tslint:disable-next-line: no-any
-export function filterMods(codeMods: ICodeMod<any>[], semvarRange: Range) {
+export function filterMods(codeMods: Codemod<any>[], semvarRange: Range) {
   return codeMods.filter(mod => shouldRunMod(mod, semvarRange));
 }
 
 // Defaults to allowing almost any version to run.
 // tslint:disable-next-line: no-any
-export function shouldRunMod(mod: ICodeMod<any>, semvarRange: Range = new Range('>0 <1000')) {
-  return mod.enabled && semvarRange.test(mod.version);
+export function shouldRunMod(mod: Codemod<any>, semvarRange: Range = new Range('>0 <1000')) {
+  return mod.enabled && semvarRange.test(mod.version || '*');
 }

@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/codemods",
   "version": "0.1.0",
-  "description": "package to enable easy upgrades to new versions",
-  "private": true,
+  "description": "Tool enabling easy upgrades to new versions",
+  "private": false,
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "bin": {
@@ -20,25 +20,22 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "test": "just-scripts test"
   },
   "devDependencies": {
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2"
+    "@uifabric/tslint-rules": "^7.2.2",
+    "@types/react": "16.8.25",
+    "@types/semver": "^5.5.0"
   },
   "dependencies": {
     "tslib": "^1.10.0",
-    "@types/react": "16.8.25",
-    "@types/semver": "^5.5.0",
-    "acorn": "^6.4.1",
-    "minimist": "^1.2.2",
     "office-ui-fabric-react": "^7.121.7",
     "react": "16.8.6",
     "semver": "^6.2.0",
-    "ts-morph": "^7.0.0",
+    "ts-morph": "^6.0.0",
     "glob": "^7.1.2"
   }
 }

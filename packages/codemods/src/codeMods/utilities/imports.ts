@@ -22,18 +22,14 @@ export function renameImport(file: SourceFile, originalImport: string, renamedIm
  */
 export function getImportsByPath(file: SourceFile, pathOrRegex: string | RegExp): ImportDeclaration[] {
   let imps: ImportDeclaration[] = [];
-  try {
-    if (typeof pathOrRegex === 'string') {
-      imps = file.getImportDeclarations().filter(cond => {
-        return cond.getModuleSpecifierValue() === pathOrRegex;
-      });
-    } else {
-      imps = file.getImportDeclarations().filter(cond => {
-        return pathOrRegex.test(cond.getModuleSpecifierValue());
-      });
-    }
-  } catch (e) {
-    throw e;
+  if (typeof pathOrRegex === 'string') {
+    imps = file.getImportDeclarations().filter(cond => {
+      return cond.getModuleSpecifierValue() === pathOrRegex;
+    });
+  } else {
+    imps = file.getImportDeclarations().filter(cond => {
+      return pathOrRegex.test(cond.getModuleSpecifierValue());
+    });
   }
 
   return imps;

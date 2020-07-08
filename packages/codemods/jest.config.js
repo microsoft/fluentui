@@ -1,8 +1,5 @@
 const { createConfig } = require('@uifabric/build/jest/jest-resources');
 
-const config = createConfig({
-  testMatch: ['<rootDir>/src/**/__tests__/test/**/*.[jt]s?(x)', '<rootDir>/src/**/?(*.)+(spec|test).[tj]s?(x)'],
-  testRegex: undefined,
-});
+const config = createConfig({});
 
 module.exports = config;

@@ -1,5 +1,5 @@
 import { getModsPaths, getTsConfigs, runMods, filterMods, getModsPattern, getModsRootPath } from '../runnerUtilities';
-import { ICodeMod, ICodeModResult } from '../../codeMods/ICodeMod';
+import { Codemod, CodeModResult } from '../../codeMods/types';
 
 import { Range } from 'semver';
 
@@ -8,50 +8,41 @@ describe('modRunner tests', () => {
     const modPath = getModsRootPath();
     expect(modPath).toEqual(`${process.cwd()}/src/modRunner/../codeMods/mods`);
   });
+
   it('returns the right paths to run for mods', () => {
-    const gottenPaths = getModsPaths(`${process.cwd()}/src/modRunner/__tests__/mocks/MockMods`, getModsPattern(true));
+    const gottenPaths = getModsPaths(`${process.cwd()}/src/modRunner/tests/mocks/MockMods`, getModsPattern(true));
 
     expect(gottenPaths.length).toEqual(1);
     expect(gottenPaths[0]).toContain('CodeMod.mock.ts');
   });
 
   it('finds the right ts-config files', () => {
-    const files = getTsConfigs(`${process.cwd()}/src/modRunner/__tests__/mocks/MockProject`);
+    const files = getTsConfigs(`${process.cwd()}/src/modRunner/tests/mocks/MockProject`);
 
     expect(files.length).toEqual(2);
     expect(files[0]).toContain('tsconfig.json');
   });
 
-  it('gets a mod when given a path', () => {
-    const path = './mocks/MockMods/CodeMod.mock.ts';
-    const mod: ICodeMod<string> = require(path).default;
-    const spy = jest.spyOn(mod, 'run');
-
-    mod.run('foo');
-
-    expect(spy).toHaveBeenCalled();
-  });
-
   it('runs all mods', () => {
     let runCount = 0;
-    const runcallBack = (foo: string): ICodeModResult => {
+    const runCallBack = (foo: string): CodeModResult => {
       runCount = runCount + 1;
       return {};
     };
-    const mods: ICodeMod<string>[] = [
+    const mods: Codemod<string>[] = [
       {
         name: 'a',
-        run: runcallBack,
+        run: runCallBack,
         version: '1.1.1',
       },
       {
         name: 'b',
-        run: runcallBack,
+        run: runCallBack,
         version: '1.1.1',
       },
       {
         name: 'c',
-        run: runcallBack,
+        run: runCallBack,
         version: '1.1.1',
       },
     ];
@@ -60,11 +51,11 @@ describe('modRunner tests', () => {
   });
 
   it('filtersMods to version', () => {
-    const runcallBack = (foo: string): ICodeModResult => {
+    const runcallBack = (foo: string): CodeModResult => {
       return {};
     };
 
-    const mods: ICodeMod<string>[] = [
+    const mods: Codemod<string>[] = [
       {
         name: 'a',
         run: runcallBack,

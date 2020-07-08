@@ -3,11 +3,11 @@ import {
   replacePersonaImport,
   replaceIPersonaPropsImport,
   replacePersonaSizeImport,
-} from '../../mods/PersonaToAvatar/PersonaToAvatar.mod';
+} from '../../mods/personaToAvatar/personaToAvatar.mod';
 import { findJsxTag } from '../../utilities';
-const personaPath = '/**/__tests__/mock/**/persona/**/*.tsx';
+const personaPath = '/**/tests/mock/**/persona/**/*.tsx';
 
-describe('Persona component mod tests', () => {
+describe('Persona component mod', () => {
   let project: Project;
 
   beforeEach(() => {

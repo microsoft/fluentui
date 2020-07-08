@@ -1,11 +1,11 @@
 import { SourceFile } from 'ts-morph';
-import { ICodeMod } from '../../ICodeMod';
+import { Codemod } from '../../types';
 import { getImportsByPath, repathImport } from '../../utilities/index';
 
 const searchString = /^office\-ui\-fabric\-react/;
 const newString = '@fluentui/react';
 
-const RepathOfficeToFluentImports: ICodeMod = {
+const RepathOfficeToFluentImports: Codemod = {
   run: (file: SourceFile) => {
     const imports = getImportsByPath(file, searchString);
     imports.forEach(val => {

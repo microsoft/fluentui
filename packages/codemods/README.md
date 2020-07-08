@@ -1,6 +1,20 @@
-# ts-morphin-migration
+# @fluentui/codemods
 
-ts-morphin-migration is a package created and managed with the `create-just` utility.
+This is a utility package to assist with the upgrading of libraries and apps that rely on fluentui.
+
+## How it works
+
+If you have a typescript application or library that relies on fluentui then you can run `npx @fluentui/codemods` which will immediately begin an upgrade of your codebase so that you don't have to! It works by finding all the tsconfig files and then using those to find the relevant files to upgrade before running the updates on each of them!
+
+## Executing a codemod (Prototype)
+
+If your application relies on any package in fluentui simply run
+
+```
+npx @fluentui/codemods
+```
+
+and the upgrade will begin if there are any relevant codemods!
 
 ## Next Steps
 
@@ -25,7 +39,7 @@ Run
 yarn build
 ```
 
-To build the upgrade.js file
+To build
 
 Run
 
@@ -33,19 +47,10 @@ Run
 npm pack
 ```
 
-from the codemods root to create a tar file for testing. Move the created tar file to the package you want to test and run
+from the codemods package root to create a tar file for testing. Move the created tar file to the package you want to test and run
 
 ```sh
 npx <tarFileName>
-```
-
-## Executing a codemod (Prototype)
-
-Make sure that fluent is installed in your package.
-Run
-
-```
-npx @fluentui\codemods
 ```
 
 ## Todos

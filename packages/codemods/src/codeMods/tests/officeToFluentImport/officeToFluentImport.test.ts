@@ -1,5 +1,5 @@
 import { Project } from 'ts-morph';
-import RepathOfficeToFluentImports from '../../mods/OfficeToFluentImport/OfficeToFluentImport.mod';
+import RepathOfficeToFluentImports from '../../mods/officeToFluentImport/officeToFluentImport.mod';
 
 const basicFileName = 'mockImports.tsx';
 const edgeCaseFile = 'mockEdgeImports.tsx';
@@ -11,7 +11,7 @@ describe('Office to Fluent import repath tests', () => {
 
   beforeEach(() => {
     project = new Project();
-    project.addSourceFilesAtPaths(`${process.cwd()}/**/__tests__/mock/utils/*.tsx`);
+    project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/utils/*.tsx`);
   });
 
   it('Can remove all old paths in one file', () => {
