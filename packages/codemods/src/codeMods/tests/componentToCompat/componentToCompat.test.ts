@@ -43,7 +43,21 @@ describe('Component to compat', () => {
     const file = project.getSourceFileOrThrow('ImportsStuff.tsx');
     const hash = buildHash([{ componentName: 'Button', namedExports: Root }], createComponentToCompat);
     repathNamedImports(file, hash.namedExportsMatch, './DefaultButton');
-    expect(file.getFullText()).toContain('compat/Button');
+    const repathed = file.getImportDeclaration(d => d.getModuleSpecifierValue() === 'compat/Button');
+    expect(repathed).toBeTruthy();
+  });
+
+  it("correctly repaths and leaves named imports that don't match", () => {
+    const file = project.getSourceFileOrThrow('ImportsStuff.tsx');
+    const hash = buildHash([{ componentName: 'Button', namedExports: { Button: 'foo' } }], createComponentToCompat);
+    repathNamedImports(file, hash.namedExportsMatch, './Button');
+    const repathed = file.getImportDeclaration(d => d.getModuleSpecifierValue() === 'compat/Button');
+    expect(repathed).toBeTruthy();
+    const oldImport = file.getImportDeclaration(d => d.getModuleSpecifierValue() === './Button');
+    expect(oldImport).toBeTruthy();
+    const named = oldImport?.getNamedImports();
+    expect(named?.length).toEqual(1);
+    expect(named![0].getName()).toEqual('OtherButton');
   });
 
   it('correctly moves all named imports from index', () => {
