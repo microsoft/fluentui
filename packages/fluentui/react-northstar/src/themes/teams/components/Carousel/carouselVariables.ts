@@ -40,7 +40,7 @@ export interface CarouselVariables {
   focusBorderZIndex: string;
 }
 
-export default (siteVars): CarouselVariables => ({
+export const carouselVariables = (siteVars): CarouselVariables => ({
   width: 300,
   height: 300,
   paddlePreviousSize: 32,

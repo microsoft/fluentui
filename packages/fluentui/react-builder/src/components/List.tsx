@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Box, Menu, Input } from '@fluentui/react-northstar';
 import { SearchIcon } from '@fluentui/react-icons-northstar';
 import { ComponentInfo } from '../componentInfo/types';
-import componentInfoContext from '../componentInfo/componentInfoContext';
+import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { EXCLUDED_COMPONENTS } from '../config';
 
 export type ListDisplayModes = 'Display Name' | 'Rendered';
@@ -13,7 +13,7 @@ export type ListProps = {
   style?: React.CSSProperties;
 };
 
-const List: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
+export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
   const [displayMode, setDisplayMode] = React.useState<ListDisplayModes>('Display Name');
   const [filter, setFilter] = React.useState<string>('');
 
@@ -120,5 +120,3 @@ const List: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
     </div>
   );
 };
-
-export default List;

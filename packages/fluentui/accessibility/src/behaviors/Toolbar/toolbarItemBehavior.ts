@@ -1,7 +1,7 @@
 import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { Accessibility } from '../../types';
-import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior';
+import { buttonBehavior, ButtonBehaviorProps } from '../Button/buttonBehavior';
 
 /**
  * @specification
@@ -14,7 +14,7 @@ import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior';
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper', when toolbar button has submenu and it is opened.
  * Triggers 'doNotNavigateNextToolbarItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
  */
-const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
+export const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
   const behaviorData = buttonBehavior(props);
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,
@@ -40,8 +40,6 @@ const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
   };
   return behaviorData;
 };
-
-export default toolbarItemBehavior;
 
 export type ToolbarItemBehaviorProps = {
   /** Indicated if toolbar item has a menu. */

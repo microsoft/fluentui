@@ -1,7 +1,7 @@
 import { decelerateMax, accelerateMax } from './timingFunctions';
 import { ultraFast, faster, fast, normal, slow, slower, ultraSlow } from './durations';
 
-const scaleAnimations = {
+export const scaleAnimations = {
   // Scale in w/ fade- UltraFast
   scaleEnterUltraFast: {
     keyframe: ({ delta }) => ({
@@ -258,5 +258,3 @@ const scaleAnimations = {
     fillMode: 'both',
   },
 };
-
-export default scaleAnimations;

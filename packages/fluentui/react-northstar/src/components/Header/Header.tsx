@@ -17,14 +17,15 @@ import {
 import { ThemeContext } from 'react-fela';
 import HeaderDescription, { HeaderDescriptionProps } from './HeaderDescription';
 
+import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import { useTelemetry, useAccessibility, getElementType, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
+  ComponentWithAs,
+  useTelemetry,
+  useAccessibility,
+  getElementType,
+  useUnhandledProps,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface HeaderProps
   extends UIComponentProps,
@@ -46,7 +47,17 @@ export interface HeaderProps
 export const headerClassName = 'ui-header';
 export type HeaderStylesProps = Required<Pick<HeaderProps, 'align' | 'color'>> & { hasDescription: boolean };
 
-const Header: React.FC<WithAsProp<HeaderProps>> &
+/**
+ * A Header organises the content by declaring a content's topic.
+ *
+ * @accessibility
+ * Headings communicate the organization of the content on the page. Web browsers, plug-ins, and assistive technologies can use them to provide in-page navigation.
+ * Nest headings by their rank (or level). The most important heading has the rank 1 (<h1>), the least important heading rank 6 (<h6>). Headings with an equal or higher rank start a new section, headings with a lower rank start new subsections that are part of the higher ranked section.
+ *
+ * Other considerations:
+ *  - when the description property is used in header, readers will narrate both header content and description within the element. In addition to that, both will be displayed in the list of headings.
+ */
+const Header: ComponentWithAs<'h1', HeaderProps> &
   FluentComponentStaticProps<HeaderProps> & {
     Description: typeof HeaderDescription;
   } = props => {
@@ -122,14 +133,4 @@ Header.Description = HeaderDescription;
 
 Header.create = createShorthandFactory({ Component: Header, mappedProp: 'content' });
 
-/**
- * A Header organises the content by declaring a content's topic.
- *
- * @accessibility
- * Headings communicate the organization of the content on the page. Web browsers, plug-ins, and assistive technologies can use them to provide in-page navigation.
- * Nest headings by their rank (or level). The most important heading has the rank 1 (<h1>), the least important heading rank 6 (<h6>). Headings with an equal or higher rank start a new section, headings with a lower rank start new subsections that are part of the higher ranked section.
- *
- * Other considerations:
- *  - when the description property is used in header, readers will narrate both header content and description within the element. In addition to that, both will be displayed in the list of headings.
- */
-export default withSafeTypeForAs<typeof Header, HeaderProps, 'h1'>(Header);
+export default Header;

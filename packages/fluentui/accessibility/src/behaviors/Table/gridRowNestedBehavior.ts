@@ -2,7 +2,7 @@ import { Accessibility } from '../../types';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { FocusZoneDirection } from '../../focusZone/types';
 import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
-import gridCellBehavior from './gridCellBehavior';
+import { gridCellBehavior } from './gridCellBehavior';
 import { GridRowBehaviorProps } from './gridRowBehavior';
 
 /**
@@ -16,7 +16,7 @@ import { GridRowBehaviorProps } from './gridRowBehavior';
  * Triggers 'unsetRowTabbable' action using 'shiftKey' + 'Tab' key on 'root'.
  * Applies 'gridCellBehavior' for 'cell' child component.
  */
-const gridRowNestedBehavior: Accessibility<GridRowBehaviorProps> = props => ({
+export const gridRowNestedBehavior: Accessibility<GridRowBehaviorProps> = props => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
@@ -44,5 +44,3 @@ const gridRowNestedBehavior: Accessibility<GridRowBehaviorProps> = props => ({
     cell: gridCellBehavior,
   },
 });
-
-export default gridRowNestedBehavior;

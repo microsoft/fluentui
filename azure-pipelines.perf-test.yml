@@ -88,7 +88,7 @@ steps:
 
   # HEADS UP: also see tag-version-prefix in fluentui-publish.js
   - script: |
-      yarn stats:save --tag=`git tag --points-at HEAD | grep -o 'northstar_v.*'`
+      yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
     condition: ne(variables.buildReason, 'PullRequest')
     displayName: Save Statistics to DB (master only)
     env:

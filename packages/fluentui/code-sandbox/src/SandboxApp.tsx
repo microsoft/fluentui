@@ -14,8 +14,8 @@ import {
 import pkg from '@fluentui/react-northstar/package.json';
 import * as React from 'react';
 
-import KnobsSnippet from './KnobsSnippet';
-import knobComponents from './knobComponents';
+import { KnobsSnippet } from './KnobsSnippet';
+import { knobComponents } from './knobComponents';
 
 const items = [
   {
@@ -41,7 +41,7 @@ const themes = {
   teamsHighContrastTheme,
 };
 
-const SandboxApp: React.FunctionComponent = props => {
+export const SandboxApp: React.FunctionComponent = props => {
   const { children } = props;
   const [theme, setTheme] = React.useState(items[0].value);
 
@@ -91,5 +91,3 @@ const SandboxApp: React.FunctionComponent = props => {
     </Provider>
   );
 };
-
-export default SandboxApp;

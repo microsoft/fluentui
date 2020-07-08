@@ -18,9 +18,8 @@ import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
+import { NavLink, NavLinkProps, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentMenuItem = { displayName: string; type: string };
@@ -31,14 +30,17 @@ const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
 const componentsBlackList = ['Debug', 'Design'];
 
-class Sidebar extends React.Component<any, any> {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    style: PropTypes.object,
-  };
-  state: any = { query: '', activeCategoryIndex: 0 };
+interface SidebarState {
+  query: string;
+  activeCategoryIndex: number | number[];
+}
+
+interface SidebarProps {
+  width: number;
+  treeItemStyle: React.CSSProperties;
+}
+class Sidebar extends React.Component<SidebarProps & RouteComponentProps, SidebarState> {
+  state = { query: '', activeCategoryIndex: 0 };
   searchInputRef = React.createRef<HTMLInputElement>();
 
   componentDidMount() {
@@ -263,6 +265,10 @@ class Sidebar extends React.Component<any, any> {
               to: '/performance',
             },
           },
+          {
+            key: 'debugging',
+            title: { content: 'Debugging', as: NavLink, activeClassName: 'active', to: '/debugging' },
+          },
         ],
       },
     ];
@@ -332,6 +338,11 @@ class Sidebar extends React.Component<any, any> {
       {
         key: 'editor-toolbar',
         title: { content: 'Editor Toolbar', as: NavLink, to: '/prototype-editor-toolbar' },
+        public: true,
+      },
+      {
+        key: 'form-validation',
+        title: { content: 'Form Validation', as: NavLink, to: '/prototype-form-validation' },
         public: true,
       },
       {

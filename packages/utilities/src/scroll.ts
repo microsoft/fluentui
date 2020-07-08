@@ -69,7 +69,7 @@ export const allowScrollOnElement = (element: HTMLElement | null, events: EventG
 
     // if the element is scrolled to the bottom,
     // prevent the user from scrolling down
-    if (_element.scrollHeight - _element.scrollTop <= _element.clientHeight && clientY < 0) {
+    if (_element.scrollHeight - Math.ceil(_element.scrollTop) <= _element.clientHeight && clientY < 0) {
       event.preventDefault();
     }
   };

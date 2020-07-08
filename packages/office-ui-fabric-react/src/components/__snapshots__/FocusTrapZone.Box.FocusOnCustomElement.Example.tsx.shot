@@ -280,7 +280,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
         >
           <button
             aria-checked={false}
-            aria-labelledby="Toggle3-label"
+            aria-labelledby="Toggle3-label Toggle3-stateText"
             checked={false}
             className=
                 ms-Toggle-background
@@ -482,6 +482,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
+                @media screen and (forced-colors: active){&:hover {
+                  forced-color-adjust: none;
+                }
           >
             <input
               aria-invalid={false}
@@ -526,6 +529,10 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: WindowText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -534,6 +541,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -544,6 +554,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -552,6 +565,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               id="TextField4"
               onBlur={[Function]}

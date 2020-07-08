@@ -20,7 +20,7 @@ export interface SegmentVariables {
   padding: string;
 }
 
-export default (siteVariables): SegmentVariables => {
+export const segmentVariables = (siteVariables): SegmentVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, segmentColorAreas),
     color: siteVariables.bodyColor,
