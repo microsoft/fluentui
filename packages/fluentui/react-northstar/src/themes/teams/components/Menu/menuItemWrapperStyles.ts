@@ -5,7 +5,7 @@ import { menuItemClassName } from '../../../../components/Menu/MenuItem';
 import { menuItemIndicatorClassName } from '../../../../components/Menu/MenuItemIndicator';
 import { getColorScheme } from '../../colors';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import submenuIndicatorUrl from './submenuIndicatorUrl';
+import { submenuIndicatorUrl } from './submenuIndicatorUrl';
 import {
   horizontalPillsRightMargin,
   verticalPillsBottomMargin,
@@ -13,7 +13,7 @@ import {
   getFocusedStyles,
 } from './menuItemStyles';
 
-const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesProps, MenuVariables> = {
+export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesProps, MenuVariables> = {
   root: ({ props, variables: v }): ICSSInJSStyle => {
     const {
       active,
@@ -196,5 +196,3 @@ const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesPr
     };
   },
 };
-
-export default menuItemWrapperStyles;

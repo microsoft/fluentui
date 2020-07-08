@@ -65,7 +65,7 @@ export const getIntentColorsFromProps = (
   };
 };
 
-const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVariables> = {
+export const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     display: 'flex',
     alignItems: 'center',
@@ -134,5 +134,3 @@ const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVariables>
     margin: v.iconMargin,
   }),
 };
-
-export default alertStyles;

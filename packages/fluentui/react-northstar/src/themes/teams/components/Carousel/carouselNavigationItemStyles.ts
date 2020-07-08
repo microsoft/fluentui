@@ -6,9 +6,9 @@ import {
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { getColorScheme } from '../../colors';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 
-const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
+export const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
   CarouselNavigationItemStylesProps,
   CarouselNavigationVariables
 > = {
@@ -124,5 +124,3 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
     }),
   }),
 };
-
-export default carouselNavigationItemStyles;

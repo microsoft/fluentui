@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Jul 2020 12:34:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.121.10](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.10)
+
+Tue, 07 Jul 2020 12:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.9..office-ui-fabric-react_v7.121.10)
+
+### Patches
+
+- Combine labelId and StateTextId in labelledById and update tests ([PR #13886](https://github.com/microsoft/fluentui/pull/13886) by t-dama@microsoft.com)
 
 ## [7.121.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.7)
 

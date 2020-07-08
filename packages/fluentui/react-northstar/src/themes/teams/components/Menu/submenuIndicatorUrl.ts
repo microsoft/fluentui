@@ -1,4 +1,4 @@
-export default (color: string, vertical: boolean) => {
+export const submenuIndicatorUrl = (color: string, vertical: boolean) => {
   return vertical
     ? `url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' role='presentation' focusable='false' fill='${encodeURIComponent(
         color,

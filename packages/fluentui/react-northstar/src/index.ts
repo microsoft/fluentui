@@ -1,9 +1,9 @@
 //
 // Themes
 //
-export { default as teamsTheme } from './themes/teams';
-export { default as teamsDarkTheme } from './themes/teams-dark';
-export { default as teamsHighContrastTheme } from './themes/teams-high-contrast';
+export { teamsTheme } from './themes/teams';
+export { teamsDarkTheme } from './themes/teams-dark';
+export { teamsHighContrastTheme } from './themes/teams-high-contrast';
 
 export * from './themes/types';
 export * from './themes/colorUtils';

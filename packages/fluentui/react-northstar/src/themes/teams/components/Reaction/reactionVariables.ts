@@ -15,7 +15,7 @@ export interface ReactionVariables {
   boxShadowColor: string;
 }
 
-export default (siteVars): ReactionVariables => ({
+export const reactionVariables = (siteVars): ReactionVariables => ({
   meReactingColor: siteVars.colors.brand[600],
   meReactingColorHover: siteVars.colors.brand[800],
   otherReactingColor: siteVars.colors.grey[450],

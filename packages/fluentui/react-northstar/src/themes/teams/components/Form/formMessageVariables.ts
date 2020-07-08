@@ -11,6 +11,6 @@ export interface FormMessageVariables {
   colorScheme?: formMessageColorSchemeMapping;
 }
 
-export default (siteVariables: any): FormMessageVariables => ({
+export const formMessageVariables = (siteVariables: any): FormMessageVariables => ({
   colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, formMessageColorAreas),
 });
