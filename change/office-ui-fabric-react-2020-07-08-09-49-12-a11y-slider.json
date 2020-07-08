@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix slider styles",
+  "comment": "Slider: Fixing High Contrast styles.",
   "packageName": "office-ui-fabric-react",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
