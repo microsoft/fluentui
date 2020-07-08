@@ -229,8 +229,9 @@ export const ButtonTokens = () => (
 );
 
 export const ButtonAs = () => (
-  <Stack gap={20}>
+  <Stack>
     <ButtonVariants as="div" content="Button as a div" />
+    <ButtonVariants as="a" content="Button as an a" />
     <ButtonVariants as="span" content="Button as a span" />
   </Stack>
 );

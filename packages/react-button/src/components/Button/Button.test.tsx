@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as path from 'path';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { mount } from 'enzyme';
+import * as renderer from 'react-test-renderer';
+import { mount, ReactWrapper } from 'enzyme';
 import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { isConformant } from '@fluentui/react-conformance';
 import { Button } from './Button';
-import * as renderer from 'react-test-renderer';
 import { ButtonRef } from './Button.types';
-import { mount, ReactWrapper } from 'enzyme';
 
 describe('Button', () => {
   let wrapper: ReactWrapper | undefined;
@@ -30,7 +29,7 @@ describe('Button', () => {
    * Note: see more visual regression tests for Button in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<Button content="Default button" />);
+    const component = renderer.create(<Button>DefaultButton</Button>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -39,7 +38,11 @@ describe('Button', () => {
     const rootRef = React.createRef<HTMLButtonElement>();
     const componentRef = React.createRef<ButtonRef>();
 
-    wrapper = mount(<Button ref={rootRef} componentRef={componentRef} content="Focus me" />);
+    wrapper = mount(
+      <Button ref={rootRef} componentRef={componentRef}>
+        Focus me
+      </Button>,
+    );
 
     expect(typeof rootRef.current).toEqual('object');
     expect(document.activeElement).not.toEqual(rootRef.current);
@@ -52,7 +55,11 @@ describe('Button', () => {
   it('renders Button as a "div" with the correct accessibility props', () => {
     const onClick = jest.fn();
 
-    const component = mount(<Button as="div" content="Button" onClick={onClick} />);
+    const component = mount(
+      <Button as="div" onClick={onClick}>
+        Button
+      </Button>,
+    );
 
     const button = component.find('div');
 

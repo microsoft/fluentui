@@ -1,9 +1,9 @@
 import { useImperativeHandle, useRef } from 'react';
-import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
 import { useFocusRects } from '@uifabric/utilities';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { ButtonProps, ButtonState } from './Button.types';
+import { useButtonBehavior } from './useButtonBehavior';
 
 /**
  * The useButton hook processes the Button component props and returns state.
@@ -14,39 +14,17 @@ export const useButton = (
   ref: React.Ref<HTMLElement>,
   options: ComposePreparedOptions,
 ): ButtonState => {
-  const { as, onClick, onKeyDown: onButtonKeyDown } = props;
-
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   useImperativeHandle(props.componentRef, () => ({
     focus: () => buttonRef.current?.focus(),
   }));
   useFocusRects(ref as React.RefObject<HTMLElement>);
 
-  const onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement> & React.MouseEvent<HTMLButtonElement>) => {
-    if (onButtonKeyDown) {
-      onButtonKeyDown(ev);
-    }
-
-    if (onClick) {
-      const eventCode = getCode(ev);
-      if (eventCode === EnterKey || eventCode === SpacebarKey) {
-        onClick(ev);
-      }
-    }
-  };
-
-  const isButtonRootType = !as || as === 'button';
-  const rootTypeProps = isButtonRootType
-    ? {}
-    : {
-        onKeyDown,
-        role: 'button',
-        tabIndex: 0,
-      };
+  const buttonBehaviorProps = useButtonBehavior(props);
 
   return {
     ...props,
-    ...rootTypeProps,
+    ...buttonBehaviorProps,
     buttonRef,
     style: getStyleFromPropsAndOptions(props, options, '--button'),
   };
