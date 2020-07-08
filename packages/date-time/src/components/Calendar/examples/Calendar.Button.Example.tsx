@@ -4,7 +4,7 @@ import { Calendar, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-tim
 
 export interface ICalendarButtonExampleState {
   showCalendar: boolean;
-  selectedDate: Date | null;
+  selectedDate?: Date;
 }
 
 export interface ICalendarButtonExampleProps {
@@ -33,7 +33,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
 
     this.state = {
       showCalendar: false,
-      selectedDate: null,
+      selectedDate: undefined,
     };
 
     this._onClick = this._onClick.bind(this);
