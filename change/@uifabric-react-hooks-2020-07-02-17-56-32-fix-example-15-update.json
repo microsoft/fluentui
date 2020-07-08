@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Adding useSetInterval and useSetTimeout within react-hooks package.",
   "packageName": "@uifabric/react-hooks",
   "email": "czearing@outlook.com",
