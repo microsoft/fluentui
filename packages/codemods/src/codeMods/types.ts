@@ -8,9 +8,9 @@ export interface CodeModResult {
 // tslint:disable-next-line: interface-name
 export interface Codemod<T = SourceFile> {
   /**
-   * The version before which the codemod should run.
+   * Each type of codemod can have multiple versions which work on different versions of its targeted package. 
    * Must be valid semver.
-   * Currently has no impact. Maybe remove?
+   * TODO: Currently version is not being checked. Implement this fully or remove.
    */
   version?: string;
   /**

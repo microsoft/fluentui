@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Initial checkin for codemods",
+  "comment": "Codemods: Creating package and initial check-in.",
   "packageName": "@fluentui/codemods",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",

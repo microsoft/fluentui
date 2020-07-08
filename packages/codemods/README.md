@@ -4,17 +4,17 @@ This is a utility package to assist with the upgrading of libraries and apps tha
 
 ## How it works
 
-If you have a typescript application or library that relies on fluentui then you can run `npx @fluentui/codemods` which will immediately begin an upgrade of your codebase so that you don't have to! It works by finding all the tsconfig files and then using those to find the relevant files to upgrade before running the updates on each of them!
+If you have a typescript application or library that relies on a non-current version of Fluent UI then you can run `npx @fluentui/codemods` to immediately begin an upgrade of your codebase, saving you the trouble of doing so manually! This works by finding all the tsconfig files and then using those to find the relevant files to upgrade before running the updates on each of them!
 
 ## Executing a codemod (Prototype)
 
-If your application relies on any package in fluentui simply run
+If your application relies on any Fluent UI package simply run
 
 ```
 npx @fluentui/codemods
 ```
 
-and the upgrade will begin if there are any relevant codemods!
+and the upgrade will begin if there are any relevant codemods to apply to your codebase!
 
 ## Next Steps
 
@@ -67,7 +67,7 @@ ts-morph:
 - ts-morph does most of the heavy lifting. Don't be afraid to use it directly rather than trying to abstract into a utility.
 - One of the most useful types of the syntax tree to get is the `SyntaxKind.block` it is the equivalent of the `{ stuff }` that is located in a function declaration and is where a lot of code lives.
 - You can only access JSX props on syntax kinds of `SyntaxKind.JSXOpeningElement` and `SyntaxKind.JSXSelfClosingElement`
-- `getChildIndex` returns the child index respective to the immediate parent. It resets each level. So consider the following:
+- `getChildIndex` returns the child index respective to the immediate parent. It resets at each level. So consider the following:
   ```
        function foo() {
            const childIndex0 = "some other value";

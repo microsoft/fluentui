@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/codemods",
   "version": "0.1.0",
-  "description": "Tool enabling easy upgrades to new versions",
-  "private": false,
+  "description": "Tool enabling easy upgrades to new Fluent UI versions",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "bin": {
