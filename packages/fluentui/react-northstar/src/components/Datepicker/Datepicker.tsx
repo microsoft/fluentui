@@ -32,6 +32,7 @@ import {
 } from '@fluentui/date-time-utilities';
 import { default as DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 
+// TODO: extract to date-time-utilities
 const DEFAULT_STRINGS: IDateGridStrings = {
   months: [
     'January',
@@ -52,6 +53,7 @@ const DEFAULT_STRINGS: IDateGridStrings = {
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 };
 
+// TODO: extract to date-time-utilities
 export interface IDateFormatting {
   /**
    * Format the date according to specified function.
@@ -65,6 +67,7 @@ export interface IDateFormatting {
   parse?: (date: string) => Date;
 }
 
+// TODO: extract to date-time-utilities
 export interface IDatepickerOptions extends IRestrictedDatesOptions {
   /**
    * The first day of the week for your locale.

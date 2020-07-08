@@ -6,8 +6,7 @@
     "paths": {
       "docs/*": ["packages/fluentui/docs/*"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
-      "test/*": ["packages/fluentui/react-northstar/test/*"],
-      "@fluentui/date-time-utilities": ["packages/date-time-utilities/src/*"]
+      "test/*": ["packages/fluentui/react-northstar/test/*"]
     }
   },
   "include": ["src", "test"],
