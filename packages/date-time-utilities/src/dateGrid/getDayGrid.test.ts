@@ -1,39 +1,38 @@
 import { DateRangeType, DayOfWeek, FirstWeekOfYear } from '../dateValues/dateValues';
 import { IDayGridOptions } from './dateGrid.types';
 import * as DateGrid from './getDayGrid';
-
-enum Months {
-  Jan = 0,
-  Feb = 1,
-  Mar = 2,
-  Apr = 3,
-  May = 4,
-  Jun = 5,
-  Jul = 6,
-  Aug = 7,
-  Sep = 8,
-  Oct = 9,
-  Nov = 10,
-  Dec = 11,
-}
-
-describe('Timezones', () => {
-  it('should always be UTC', () => {
-    expect(new Date().getTimezoneOffset()).toBe(0);
-  });
-});
+import { IDay } from './dateGrid.types';
 
 describe('getDayGrid', () => {
+  const defaultDate = new Date('2016-04-01T00:00:00.000Z');
   const defaultOptions: IDayGridOptions = {
-    selectedDate: new Date(2016, Months.Apr, 1),
-    navigatedDate: new Date(2016, Months.Apr, 1),
+    selectedDate: defaultDate,
+    navigatedDate: defaultDate,
     firstDayOfWeek: DayOfWeek.Sunday,
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     dateRangeType: DateRangeType.Day,
   };
 
+  const normalizeDay = (day: IDay) => {
+    const date = day.originalDate;
+    const offset = day.originalDate.getTimezoneOffset();
+    date.setUTCMinutes(-offset);
+    date.setUTCSeconds(0);
+    date.setUTCMilliseconds(0);
+    return {
+      date: day.date,
+      isInBounds: day.isInBounds,
+      isInMonth: day.isInMonth,
+      isSelected: day.isSelected,
+      isToday: day.isToday,
+      key: date.toUTCString(),
+      originalDate: date,
+    };
+  };
+
   it('returns matrix with days', () => {
     const result = DateGrid.getDayGrid(defaultOptions);
-    expect(result).toMatchSnapshot();
+    const resultUTC = result.map(week => week.map(day => normalizeDay(day)));
+    expect(resultUTC).toMatchSnapshot();
   });
 });
