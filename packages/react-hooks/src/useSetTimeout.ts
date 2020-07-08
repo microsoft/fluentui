@@ -2,7 +2,7 @@ import { useConst } from './useConst';
 import { useEffect } from 'react';
 
 /**
- * Returns a self disposing setTimeout function.
+ * Returns a wrapper function for `setTimeout` which automatically handles disposal.
  */
 export const useSetTimeout = () => {
   const timeoutIds = useConst<number[]>([]);

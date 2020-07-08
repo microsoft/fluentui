@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
+import { useConst } from '@uifabric/react-hooks';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IDragDropEvents } from 'office-ui-fabric-react/lib/DetailsList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
@@ -9,7 +10,18 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
-const exampleItems: IFileExampleItem[] = [];
+export interface IFileExampleItem {
+  key: string;
+  name: string;
+  modified: string;
+  modifiedby: string;
+  filesize: string;
+}
+
+export interface IAnnouncedBulkOperationsExampleState {
+  draggedItem: IFileExampleItem | undefined;
+  draggedIndex: number;
+}
 
 const theme = getTheme();
 const dragEnterClass = mergeStyles({
@@ -42,24 +54,36 @@ const getMockDateString = (): string => {
   return 'Thu Jan 05 2017‌';
 };
 
+const onItemInvoked = (item: IFileExampleItem): void => {
+  alert(`Item invoked: ${item.name}`);
+};
+
+const onRenderItemColumn = (item: IFileExampleItem, index: number, column: IColumn): React.ReactNode => {
+  if (column.key === 'name') {
+    return <Link data-selection-invoke>{item[column.key]}</Link>;
+  }
+
+  return item[column.key as keyof IFileExampleItem];
+};
+
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
-export interface IFileExampleItem {
-  key: string;
-  name: string;
-  modified: string;
-  modifiedby: string;
-  filesize: string;
-}
-
-export interface IAnnouncedBulkOperationsExampleState {
-  selection: Selection;
-  dragDropEvents: IDragDropEvents;
-  draggedItem: IFileExampleItem | undefined;
-  draggedIndex: number;
-}
-
 export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
+  const selection = useConst(() => new Selection());
+  const exampleItems = useConst(() => {
+    const itemsList: IFileExampleItem[] = [];
+    for (let i = 0; i < 20; i++) {
+      itemsList.push({
+        key: 'item-' + i,
+        name: 'Item ' + i,
+        modified: getMockDateString(),
+        modifiedby: names[Math.floor(Math.random() * names.length)],
+        filesize: Math.floor(Math.random() * 30).toString() + ' MB',
+      });
+    }
+    return itemsList;
+  });
+
   const [items, setItems] = React.useState<IFileExampleItem[]>(exampleItems);
   const [numberOfItems, setNumberOfItems] = React.useState<number>(0);
 
@@ -71,52 +95,30 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
       onDragEnter: () => dragEnterClass,
       onDragLeave: () => undefined,
       onDrop: (item?: IFileExampleItem) => {
-        if (state.draggedItem && item) {
+        if (internalState.draggedItem && item) {
           insertBeforeItem(item);
         }
       },
       onDragStart: (item?: IFileExampleItem, itemIndex?: number) => {
-        state.draggedItem = item;
-        state.draggedIndex = itemIndex!;
+        internalState.draggedItem = item;
+        internalState.draggedIndex = itemIndex!;
       },
       onDragEnd: () => {
-        state.draggedItem = undefined;
-        state.draggedIndex = -1;
+        internalState.draggedItem = undefined;
+        internalState.draggedIndex = -1;
       },
     };
   };
 
-  const { current: state } = React.useRef<IAnnouncedBulkOperationsExampleState>({
-    selection: new Selection(),
-    dragDropEvents: getDragDropEvents(),
+  const { current: internalState } = React.useRef<IAnnouncedBulkOperationsExampleState>({
     draggedItem: undefined,
     draggedIndex: -1,
   });
 
-  const renderAnnounced = (): JSX.Element | undefined => {
-    if (numberOfItems > 0) {
-      return (
-        <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} aria-live={'assertive'} />
-      );
-    }
-  };
-
-  const onItemInvoked = (item: IFileExampleItem): void => {
-    alert(`Item invoked: ${item.name}`);
-  };
-
-  const onRenderItemColumn = (item: IFileExampleItem, index: number, column: IColumn): React.ReactNode => {
-    if (column.key === 'name') {
-      return <Link data-selection-invoke>{item[column.key]}</Link>;
-    }
-
-    return item[column.key as keyof IFileExampleItem];
-  };
-
   const insertBeforeItem = (item: IFileExampleItem): void => {
-    const draggedItems = state.selection.isIndexSelected(state.draggedIndex)
-      ? (state.selection.getSelection() as IFileExampleItem[])
-      : [state.draggedItem!];
+    const draggedItems = selection.isIndexSelected(internalState.draggedIndex)
+      ? (selection.getSelection() as IFileExampleItem[])
+      : [internalState.draggedItem!];
 
     const currentItems = items.filter(currentItem => draggedItems.indexOf(currentItem) === -1);
     let insertIndex = currentItems.indexOf(item);
@@ -131,18 +133,6 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
     setNumberOfItems(draggedItems.length);
   };
 
-  if (exampleItems.length === 0) {
-    for (let i = 0; i < 20; i++) {
-      exampleItems.push({
-        key: 'item-' + i,
-        name: 'Item ' + i,
-        modified: getMockDateString(),
-        modifiedby: names[Math.floor(Math.random() * names.length)],
-        filesize: Math.floor(Math.random() * 30).toString() + ' MB',
-      });
-    }
-  }
-
   return (
     <Stack tokens={stackTokens}>
       <Text>Turn on Narrator and drag and drop the items.</Text>
@@ -150,17 +140,19 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
         Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully
         illustrative of the real world scenario.
       </Text>
-      {renderAnnounced()}
-      <MarqueeSelection selection={state.selection}>
+      {numberOfItems > 0 && (
+        <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} aria-live={'assertive'} />
+      )}
+      <MarqueeSelection selection={selection}>
         <DetailsList
           setKey="items"
           items={items}
           columns={columns}
-          selection={state.selection}
+          selection={selection}
           selectionPreservedOnEmptyClick
           onItemInvoked={onItemInvoked}
           onRenderItemColumn={onRenderItemColumn}
-          dragDropEvents={state.dragDropEvents}
+          dragDropEvents={getDragDropEvents()}
           ariaLabelForSelectionColumn="Toggle selection"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         />
