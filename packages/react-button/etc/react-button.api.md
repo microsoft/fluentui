@@ -8,6 +8,7 @@ import { BaseSlots } from '@fluentui/react-compose';
 import { ColorPlateSet } from '@fluentui/react-theme-provider';
 import { ComponentProps } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { IContextualMenuProps } from 'office-ui-fabric-react';
 import * as React from 'react';
 import { SlotProp } from '@fluentui/react-compose';
 import { SlotProps } from '@fluentui/react-compose';
@@ -101,7 +102,7 @@ export const MenuButtonBase: import("@fluentui/react-compose").ComponentWithAs<"
 export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
     defaultExpanded?: boolean;
     expanded?: boolean;
-    menu?: SlotProp<any>;
+    menu?: SlotProp<Partial<IContextualMenuProps>>;
     menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     onMenuDismiss?: () => void;
 }
@@ -118,8 +119,7 @@ export interface MenuButtonSlots extends BaseSlots {
 }
 
 // @public (undocumented)
-export interface MenuButtonState extends MenuButtonProps {
-    ref: (instance: HTMLElement) => void;
+export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'icon' | 'iconPosition' | 'loader'> {
 }
 
 // @public (undocumented)
