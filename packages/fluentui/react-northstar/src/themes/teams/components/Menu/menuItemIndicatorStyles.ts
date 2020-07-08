@@ -26,7 +26,7 @@ const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStyl
       content: '" "',
       display: 'block',
       overflow: 'hidden',
-      height: pxToRem(14),
+      height: pxToRem(16),
       width: pxToRem(16),
       backgroundSize: pxToRem(16),
 
