@@ -84,6 +84,9 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   /** A label for the input. */
   label?: ShorthandValue<InputLabelProps>;
 
+  /** Poisition for the label */
+  labelPosition?: string;
+
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<BoxProps>;
 
@@ -155,7 +158,9 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       errorIndicator,
       showSuccessIndicator,
       label,
+      labelPosition,
     } = props;
+
     const inputRef = React.useRef<HTMLInputElement>();
 
     const ElementType = getElementType(props);
@@ -264,15 +269,20 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       return icon || null;
     };
 
-    const labelElement = createShorthand(composeOptions.slots.label, label);
+    const labelElement = createShorthand(composeOptions.slots.label, label, {
+      defaultProps: () => ({
+        labelPosition,
+        label,
+        required,
+      }),
+    });
 
-    const element = Box.create(wrapper, {
+    const inputElement = Box.create(wrapper, {
       defaultProps: () =>
         getA11yProps('root', {
           className: classes.root,
           children: (
             <>
-              {labelElement}
               <Ref
                 innerRef={(inputElement: HTMLElement) => {
                   handleRef(inputRef, inputElement);
@@ -312,6 +322,20 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         as: (wrapper && (wrapper as any).as) || ElementType,
       },
     });
+
+    const element = Box.create(
+      {},
+      {
+        defaultProps: () => ({
+          children: (
+            <>
+              {labelElement}
+              {inputElement}
+            </>
+          ),
+        }),
+      },
+    );
     setEnd();
     return element;
   },
@@ -350,6 +374,8 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       'error',
       'errorIndicator',
       'showSuccessIndicator',
+      'label',
+      'labelPosition',
     ],
   },
 ) as ComponentWithAs<'div', InputProps> & {
@@ -366,6 +392,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   label: customPropTypes.itemShorthand,
+  labelPosition: PropTypes.string,
   icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   input: customPropTypes.itemShorthand,
