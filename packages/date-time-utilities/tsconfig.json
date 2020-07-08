@@ -17,8 +17,7 @@
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "custom-global", "node"],
-    "composite": true
+    "types": ["jest", "custom-global", "node"]
   },
   "include": ["src"]
 }
