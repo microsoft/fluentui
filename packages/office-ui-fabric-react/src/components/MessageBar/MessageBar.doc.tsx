@@ -22,8 +22,6 @@ export const MessageBarPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
