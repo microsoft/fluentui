@@ -32,10 +32,6 @@ export const ScrollablePanePageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
