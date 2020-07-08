@@ -142,34 +142,20 @@ describe('Nav', () => {
   });
 
   it('uses location.href to determine link selected status if state/props is not set', () => {
-    const nav = mount<NavBase>(
-      <Nav
-        groups={[
-          {
-            links: [linkOne, linkTwo],
-          },
-        ]}
-      />,
-    );
+    const props = { groups: [{ links: [linkOne, linkTwo] }] };
+    const nav = mount<NavBase>(<Nav {...props} />);
     window.history.pushState({}, '', '/#/testing1');
-    nav.instance().forceUpdate();
+    nav.setProps(props);
 
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
   });
 
   it('prioritizes state over location.href to determine link selected status', () => {
-    const nav = mount<NavBase>(
-      <Nav
-        groups={[
-          {
-            links: [linkOne, linkTwo],
-          },
-        ]}
-      />,
-    );
+    const props = { groups: [{ links: [linkOne, linkTwo] }] };
+    const nav = mount<NavBase>(<Nav {...props} />);
     window.history.pushState({}, '', '/#/testing2');
-    nav.instance().forceUpdate();
+    nav.setProps(props);
 
     nav
       .find('.ms-Button')

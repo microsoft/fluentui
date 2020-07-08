@@ -4,7 +4,7 @@ import { LayoutStylesProps } from '../../../../components/Layout/Layout';
 
 const countTrue = items => items.filter(Boolean).length;
 
-const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
+export const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
   root: ({ props }): ICSSInJSStyle => {
     const {
       alignItems,
@@ -68,5 +68,3 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
     [p.vertical ? 'msGridRow' : 'msGridColumn']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain && p.gap]),
   }),
 };
-
-export default layoutStyles;

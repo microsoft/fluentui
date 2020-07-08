@@ -2,6 +2,36 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.31",
+      "version": "7.0.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Wrap renderer.create() in renderer.act() to trigger React hooks",
+            "author": "miclo@microsoft.com",
+            "commit": "017dc3372393a5e4b327e1c90134c1858ed9abfd",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.29",
+      "version": "7.0.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2020 17:35:36 GMT",
       "tag": "@uifabric/test-utilities_v7.0.27",
       "version": "7.0.27",

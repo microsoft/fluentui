@@ -7,6 +7,7 @@ import {
   normalize,
   getPlaceholderStyles,
   IconFontSizes,
+  getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
@@ -94,6 +95,12 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     lineHeight: 1,
     whiteSpace: 'nowrap',
     flexShrink: 0,
+    selectors: {
+      [HighContrastSelector]: {
+        background: 'Window',
+        color: disabled ? 'GrayText' : 'WindowText',
+      },
+    },
   };
 
   // placeholder style constants
@@ -102,11 +109,21 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     {
       color: semanticColors.inputPlaceholderText,
       opacity: 1,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+        },
+      },
     },
   ];
 
   const disabledPlaceholderStyles: IStyle = {
     color: semanticColors.disabledText,
+    selectors: {
+      [HighContrastSelector]: {
+        color: 'GrayText',
+      },
+    },
   };
 
   return {
@@ -140,6 +157,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             [HighContrastSelector]: {
               borderColor: 'GrayText',
             },
+            ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },
         !disabled && {
@@ -150,6 +168,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
                 [HighContrastSelector]: {
                   borderBottomColor: 'Highlight',
                 },
+                ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
           },
@@ -195,6 +214,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
                 [HighContrastSelector]: {
                   borderColor: 'Highlight',
                 },
+                ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
           },
@@ -212,6 +232,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           [HighContrastSelector]: {
             borderColor: 'GrayText',
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
 
         cursor: 'default',
@@ -260,6 +281,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             [HighContrastSelector]: {
               selectors: {
                 ':before': {
+                  color: 'WindowText',
                   right: -14, // moving the * 4 pixel to right to alleviate border clipping in HC mode.
                 },
               },
@@ -286,6 +308,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '&:active, &:focus, &:hover': { outline: 0 },
           '::-ms-clear': {
             display: 'none',
+          },
+          [HighContrastSelector]: {
+            background: 'Window',
+            color: disabled ? 'GrayText' : 'WindowText',
           },
         },
       },

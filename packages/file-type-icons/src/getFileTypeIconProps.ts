@@ -14,6 +14,7 @@ const STREAM = 'stream';
 const DESKTOP_FOLDER = 'desktopfolder';
 const DOCUMENTS_FOLDER = 'documentfolder';
 const PICTURES_FOLDER = 'picturesfolder';
+const LINKED_FOLDER = 'linkedfolder';
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -88,6 +89,9 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
         break;
       case FileIconType.picturesFolder:
         iconBaseName = PICTURES_FOLDER;
+        break;
+      case FileIconType.linkedFolder:
+        iconBaseName = LINKED_FOLDER;
         break;
     }
   }

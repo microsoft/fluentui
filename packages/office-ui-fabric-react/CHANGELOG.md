@@ -1,8 +1,59 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Jun 2020 12:42:16 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jul 2020 12:34:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.121.11](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.11)
+
+Wed, 08 Jul 2020 12:34:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.10..office-ui-fabric-react_v7.121.11)
+
+### Patches
+
+- Removing console.log from MarqueeSelection Example. ([PR #13941](https://github.com/microsoft/fluentui/pull/13941) by czearing@outlook.com)
+
+## [7.121.10](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.10)
+
+Tue, 07 Jul 2020 12:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.9..office-ui-fabric-react_v7.121.10)
+
+### Patches
+
+- Combine labelId and StateTextId in labelledById and update tests ([PR #13886](https://github.com/microsoft/fluentui/pull/13886) by t-dama@microsoft.com)
+
+## [7.121.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.7)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.5..office-ui-fabric-react_v7.121.7)
+
+### Patches
+
+- Ensure ResizeGroup uses correct window for animation frame ([PR #13864](https://github.com/microsoft/fluentui/pull/13864) by tmichon@microsoft.com)
+- High contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: fix ChoiceGroup. ([PR #13846](https://github.com/microsoft/fluentui/pull/13846) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: fix Nav. ([PR #13850](https://github.com/microsoft/fluentui/pull/13850) by xgao@microsoft.com)
+- High Contrast in Edge Chromium: Fix ContextualMenu. ([PR #13870](https://github.com/microsoft/fluentui/pull/13870) by xgao@microsoft.com)
+
+## [7.121.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.5)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.4..office-ui-fabric-react_v7.121.5)
+
+### Patches
+
+- SpinButton: pass through event information if the user spins up or down ([PR #13811](https://github.com/microsoft/fluentui/pull/13811) by makopch@microsoft.com)
+- ContextualMenu: Fixing issue where focus would not return to previously focused element and issue where error might occur if said previously focused element didn't have a focus method. ([PR #13813](https://github.com/microsoft/fluentui/pull/13813) by joschect@microsoft.com)
+- Convert KeytipTransitionModifier to type ([PR #13825](https://github.com/microsoft/fluentui/pull/13825) by KevinTCoughlin@users.noreply.github.com)
+
+## [7.121.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.4)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.2..office-ui-fabric-react_v7.121.4)
+
+### Patches
+
+- PeoplePicker: Fix examples to properly remove duplicates ([PR #13366](https://github.com/microsoft/fluentui/pull/13366) by suprememilanfan@gmail.com)
 
 ## [7.121.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.2)
 

@@ -13,7 +13,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  *  Triggers 'performClick' action with 'Spacebar' on 'root'.
  *  Implements roving tabIndex.
  */
-const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props => ({
+export const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'radio',
@@ -32,8 +32,6 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
     },
   },
 });
-
-export default radioGroupItemBehavior;
 
 export type RadioGroupItemBehaviorProps = {
   /** Indicates if radio item is selected. */

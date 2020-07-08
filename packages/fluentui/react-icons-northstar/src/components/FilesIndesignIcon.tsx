@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const FilesIndesignIcon = createSvgIcon({
+export const FilesIndesignIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <g>
@@ -12,5 +12,3 @@ const FilesIndesignIcon = createSvgIcon({
   ),
   displayName: 'FilesIndesignIcon',
 });
-
-export default FilesIndesignIcon;

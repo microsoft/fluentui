@@ -52,24 +52,18 @@ const mockProps: IDetailsListProps = {
 
 describe('DetailsRow', () => {
   it('renders details list row correctly', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(<DetailsList {...mockProps} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders details list row with multiple selections correctly', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(<DetailsList {...mockProps} selectionMode={SelectionMode.multiple} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders details list row with one row selected correctly', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const selection = new Selection();
     selection.setKeySelected('0', true, true);
 
@@ -81,8 +75,6 @@ describe('DetailsRow', () => {
   });
 
   it('renders details list row with all rows selected correctly', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const selection = new Selection();
     selection.setAllSelected(true);
 
