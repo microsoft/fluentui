@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Correct findScrollableParent return type",
+  "packageName": "@uifabric/utilities",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-08T17:41:40.586Z"
+}
