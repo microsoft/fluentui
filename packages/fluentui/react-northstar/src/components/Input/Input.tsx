@@ -110,7 +110,6 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 export interface InputSlotClassNames {
   input: string;
   icon: string;
-  container: string;
 }
 
 export const inputClassName = 'ui-input';
@@ -129,7 +128,6 @@ export type InputStylesProps = Required<
 export const inputSlotClassNames: InputSlotClassNames = {
   input: `${inputClassName}__input`,
   icon: `${inputClassName}__icon`,
-  container: `${inputClassName}__container`,
 };
 
 /**
