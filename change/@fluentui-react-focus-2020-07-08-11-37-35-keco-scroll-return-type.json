@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Additional HTMLElement assertions",
+  "comment": "Additional HTMLElement casts have been added in a few places for better typing. This should not impact the public API surface.",
   "packageName": "@fluentui/react-focus",
   "email": "KevinTCoughlin@users.noreply.github.com",
   "dependentChangeType": "patch",
