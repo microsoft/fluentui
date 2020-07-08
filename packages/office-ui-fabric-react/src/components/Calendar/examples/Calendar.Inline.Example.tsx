@@ -108,7 +108,7 @@ export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExamp
     <div style={divStyle}>
       {
         <div>
-          Selected date(s): <span>{!selectedDate ? 'Not set' : selectedDate.toLocaleString()}</span>
+          Selected 2date(s): <span>{!selectedDate ? 'Not set' : selectedDate.toLocaleString()}</span>
         </div>
       }
       <div>

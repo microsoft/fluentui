@@ -8,7 +8,7 @@ export interface ICalendarInlineExampleState {
   selectedDate?: Date;
 }
 
-export class CalendarInlineExample extends React.Component<{}, ICalendarInlineExampleState> {
+export class CalendarInlineWeekNumbersExample extends React.Component<{}, ICalendarInlineExampleState> {
   public constructor(props: {}) {
     super(props);
 
@@ -27,6 +27,7 @@ export class CalendarInlineExample extends React.Component<{}, ICalendarInlineEx
         <Calendar
           dateRangeType={DateRangeType.Day}
           showGoToToday={true}
+          showWeekNumbers={true}
           onSelectDate={this._onSelectDate}
           value={this.state.selectedDate}
           firstDayOfWeek={DayOfWeek.Sunday}

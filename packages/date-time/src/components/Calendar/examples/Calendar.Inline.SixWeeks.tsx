@@ -8,7 +8,7 @@ export interface ICalendarInlineExampleState {
   selectedDate?: Date;
 }
 
-export class CalendarInlineExample extends React.Component<{}, ICalendarInlineExampleState> {
+export class CalendarInlineSixWeeksExample extends React.Component<{}, ICalendarInlineExampleState> {
   public constructor(props: {}) {
     super(props);
 
@@ -25,6 +25,7 @@ export class CalendarInlineExample extends React.Component<{}, ICalendarInlineEx
           <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
         </div>
         <Calendar
+          showSixWeeksByDefault={true}
           dateRangeType={DateRangeType.Day}
           showGoToToday={true}
           onSelectDate={this._onSelectDate}
