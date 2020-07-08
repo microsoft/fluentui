@@ -13,6 +13,7 @@ import {
   ILineChartStyles,
   ILineChartDataPoint,
   ILineChartPoints,
+  IMargins,
 } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -62,7 +63,7 @@ export class LineChartBase extends React.Component<
   private _verticalLine: string;
   private _uniqueCallOutID: string;
   // These margins are necessary for d3Scales to appear without cutting off
-  private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private margins: IMargins;
   private minLegendContainerHeight: number = 32;
   private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
@@ -87,6 +88,12 @@ export class LineChartBase extends React.Component<
     this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
     this._circleId = getId('circle');
     this._verticalLine = getId('verticalLine');
+    this.margins = {
+      top: this.props.margins?.top || 20,
+      right: this.props.margins?.right || 20,
+      bottom: this.props.margins?.bottom || 35,
+      left: this.props.margins?.left || 35,
+    };
     this._fitParentContainer = this._fitParentContainer.bind(this);
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -167,7 +174,7 @@ export class LineChartBase extends React.Component<
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
               }}
-              transform={`translate(0, ${svgDimensions.height - 35})`}
+              transform={`translate(0, ${svgDimensions.height - this.margins.bottom!})`}
               className={this._classNames.xAxis}
             />
             <g
@@ -194,7 +201,7 @@ export class LineChartBase extends React.Component<
               <EventsAnnotation
                 {...eventAnnotationProps}
                 scale={this._xAxisScale}
-                chartYTop={this.margins.top + this.eventLabelHeight}
+                chartYTop={this.margins.top! + this.eventLabelHeight}
                 chartYBottom={svgDimensions.height - 35}
               />
             )}
@@ -384,7 +391,7 @@ export class LineChartBase extends React.Component<
     })!;
     const xAxisScale = d3ScaleLinear()
       .domain([0, xMax])
-      .range([this.margins.left, this.state.containerWidth - this.margins.right]);
+      .range([this.margins.left!, this.state.containerWidth - this.margins.right!]);
     this._xAxisScale = xAxisScale;
     const xAxis = d3AxisBottom(xAxisScale)
       .tickSize(10)
@@ -425,7 +432,7 @@ export class LineChartBase extends React.Component<
     });
     const xAxisScale = d3ScaleTime()
       .domain([sDate, lDate])
-      .range([this.margins.left, this.state.containerWidth - this.margins.right]);
+      .range([this.margins.left!, this.state.containerWidth - this.margins.right!]);
     this._xAxisScale = xAxisScale;
     const xAxis = d3AxisBottom(xAxisScale)
       .tickSize(10)
@@ -454,12 +461,12 @@ export class LineChartBase extends React.Component<
     const yAxisScale = d3ScaleLinear()
       .domain([finalYmin, domainValues[domainValues.length - 1]])
       .range([
-        this.state.containerHeight - this.margins.bottom,
-        this.margins.top + (this.props.eventAnnotationProps ? this.eventLabelHeight : 0),
+        this.state.containerHeight - this.margins.bottom!,
+        this.margins.top! + (this.props.eventAnnotationProps ? this.eventLabelHeight : 0),
       ]);
     this._yAxisScale = yAxisScale;
     const yAxis = d3AxisLeft(yAxisScale)
-      .tickSize(-(this.state.containerWidth - this.margins.left - this.margins.right))
+      .tickSize(-(this.state.containerWidth - this.margins.left! - this.margins.right!))
       .tickPadding(12)
       .tickValues(domainValues);
     yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.ticks(4, 's');
@@ -510,6 +517,9 @@ export class LineChartBase extends React.Component<
               ref={(e: SVGLineElement | null) => {
                 this._refCallback(e!, lineId);
               }}
+              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData, circleId)}
+              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData, circleId)}
+              onMouseOut={this._handleMouseOut.bind(this, circleId, lineColor)}
               stroke={lineColor}
               strokeLinecap={'round'}
               opacity={1}
@@ -665,8 +675,7 @@ export class LineChartBase extends React.Component<
     const _this = this;
     d3Select(`#${circleId}`)
       .attr('fill', '#fff')
-      .attr('r', 8)
-      .attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
+      .attr('r', 8);
     d3Select(`#${this._verticalLine}`)
       .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
       .attr('visibility', 'visibility');
