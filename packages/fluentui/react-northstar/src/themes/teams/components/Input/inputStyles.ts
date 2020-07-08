@@ -58,6 +58,10 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     ...(p.hasIcon && {
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
+
+    '::-ms-clear': {
+      display: 'none',
+    },
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -67,6 +71,8 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     alignItems: 'center',
     justifyContent: 'center',
     position: v.iconPosition as PositionProperty,
+    top: 0,
+    bottom: 0,
     ...(p.error && { color: v.colorError }),
     ...(p.requiredAndSuccessful && {
       color: v.successfulColor,
