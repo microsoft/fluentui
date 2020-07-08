@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
+import { IContextualMenuProps } from 'office-ui-fabric-react';
 import { ButtonProps, ButtonTokens } from '../Button/Button.types';
 
 export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
@@ -7,7 +8,7 @@ export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPositio
    * Menu that is displayed when the button is pressed.
    */
   // tslint:disable-next-line:no-any
-  menu?: SlotProp<any>;
+  menu?: SlotProp<IContextualMenuProps>;
 
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
