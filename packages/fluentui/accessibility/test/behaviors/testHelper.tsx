@@ -110,6 +110,8 @@ export class TestHelper {
   getBehavior(behaviorName: string): Accessibility {
     const baseBehaviorName = behaviorName.replace('.ts', '');
     const importedBehavior = this.behaviors.get(baseBehaviorName);
+    console.log(baseBehaviorName);
+    console.log(importedBehavior);
     if (!importedBehavior) {
       throw 'Accessibility behavior file was not found, probably was not imported. Import file and add behavior.';
     }

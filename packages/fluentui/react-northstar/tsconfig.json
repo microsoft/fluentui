@@ -38,6 +38,9 @@
     },
     {
       "path": "../react-proptypes"
+    },
+    {
+      "path": "../../date-time-utilities"
     }
   ]
 }
