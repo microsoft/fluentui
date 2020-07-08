@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Replace tslint with eslint and fix some violations",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-08T02:00:37.367Z"
+}
