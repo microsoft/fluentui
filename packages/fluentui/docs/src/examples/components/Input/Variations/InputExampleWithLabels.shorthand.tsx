@@ -15,7 +15,7 @@ const InputExampleWithLabels = () => (
 
     <div>
       <Text content="Internal Label:" size="large" style={{ display: 'block' }} />
-      <Input label="Search" labelPosition="internal" />
+      <Input label="Search" labelPosition="internal" id="internal-label" />
     </div>
   </Flex>
 );
