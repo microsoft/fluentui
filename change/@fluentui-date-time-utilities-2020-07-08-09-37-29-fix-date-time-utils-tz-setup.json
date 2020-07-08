@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Set timezone for tests via env variable",
+  "comment": "Normalize dates in tests instead of setting timezone in the config",
   "packageName": "@fluentui/date-time-utilities",
   "email": "pompomon@gmail.com",
   "dependentChangeType": "none",
