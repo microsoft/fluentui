@@ -3,9 +3,5 @@
 exports[`Button renders a default state 1`] = `
 <button
   style={Object {}}
->
-  <span>
-    Default button
-  </span>
-</button>
+/>
 `;
