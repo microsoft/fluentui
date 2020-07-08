@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Prettier",
+  "comment": "Applying cosmetic code updates from Prettier.",
   "packageName": "office-ui-fabric-react",
   "email": "KevinTCoughlin@users.noreply.github.com",
   "dependentChangeType": "patch",
