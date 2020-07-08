@@ -185,7 +185,7 @@ const Datepicker: ComponentWithAs<'div', DatepickerProps> & FluentComponentStati
     rtl: context.rtl,
   });
 
-  const handleChange: DatepicketCalendarProps['onDaySelect'] = (e, data) => {
+  const handleChange: DatepickerCalendarProps['onDaySelect'] = (e, data) => {
     const targetDay = data.value;
     setSelectedDate(targetDay.originalDate);
     setOpen(false);
