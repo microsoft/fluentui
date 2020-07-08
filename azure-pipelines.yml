@@ -186,7 +186,7 @@ jobs:
 
       # - template: azure-pipelines.cache.yml
 
-      - template: azure-pipelines.tools.yml
+      - template: azure-pipelines.artifacts.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
