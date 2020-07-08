@@ -1,5 +1,16 @@
 import * as React from 'react';
 
+export interface RefProps {
+  children: React.ReactElement;
+
+  /**
+   * Called when a child component will be mounted or updated.
+   *
+   * @param node - Referred node.
+   */
+  innerRef: React.Ref<HTMLElement>;
+}
+
 /**
  * The function that correctly handles passing refs.
  *
@@ -26,3 +37,8 @@ export const handleRef = <N>(ref: React.Ref<N> | undefined, node: N) => {
     (ref as React.MutableRefObject<N>).current = node;
   }
 };
+
+/** Checks that the passed object is a valid React ref object. */
+export const isRefObject = (ref: any): ref is React.RefObject<any> =>
+  // https://github.com/facebook/react/blob/v16.8.2/packages/react-reconciler/src/ReactFiberCommitWork.js#L665
+  ref !== null && typeof ref === 'object' && ref.hasOwnProperty('current');

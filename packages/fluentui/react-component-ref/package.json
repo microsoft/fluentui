@@ -6,7 +6,6 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "prop-types": "^15.7.2",
     "react-is": "^16.6.3"
   },
   "devDependencies": {

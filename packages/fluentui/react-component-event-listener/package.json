@@ -5,8 +5,7 @@
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.10.4",
-    "prop-types": "^15.7.2"
+    "@babel/runtime": "^7.10.4"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.51.0",
