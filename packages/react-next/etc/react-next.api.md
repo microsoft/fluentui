@@ -15,7 +15,6 @@ import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { IKeytipData } from 'office-ui-fabric-react/lib/KeytipData';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
@@ -98,7 +97,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
 }
 
 // @public (undocumented)
-export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public (undocumented)
 export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
@@ -263,7 +262,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     disabled?: boolean;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
-    keytipData?: IKeytipData;
     // @deprecated
     keytipProps?: IKeytipProps;
     label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
@@ -700,7 +698,6 @@ export interface ILinkOptions {
 export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
-    keytipData?: IKeytipData;
     // @deprecated
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
@@ -1517,7 +1514,6 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     defaultChecked?: boolean;
     disabled?: boolean;
     inlineLabel?: boolean;
-    keytipData?: IKeytipData;
     // @deprecated
     keytipProps?: IKeytipProps;
     label?: string | JSX.Element;
@@ -2010,7 +2006,7 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
 export { ThemeProviderProps }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps>;
+export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;

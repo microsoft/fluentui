@@ -8,7 +8,7 @@ import { SpinButton, ISpinButtonStyles } from '@fluentui/react-next/lib/SpinButt
 import { Toggle } from '@fluentui/react-next/lib/Toggle';
 import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 import { IStackTokens, Stack } from '@fluentui/react-next/lib/Stack';
-import { useKeytipData } from '@fluentui/react-next/lib/KeytipData';
+import { useKeytipRef } from '@fluentui/react-next/lib/KeytipData';
 
 const pivotItemStyle: React.CSSProperties = { width: 500, paddingTop: 20 };
 const stackTokens: IStackTokens = { childrenGap: 20 };
@@ -21,9 +21,9 @@ const sampleOptions = [
 ];
 
 export const KeytipsBasicExample: React.FunctionComponent = () => {
-  const checkboxKeytipData = useKeytipData({ keytipProps: keytipMap.CheckboxKeytip });
-  const linkKeytipData = useKeytipData({ keytipProps: keytipMap.LinkKeytip });
-  const toggleKeytipData = useKeytipData({ keytipProps: keytipMap.ToggleKeytip });
+  const checkboxRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.CheckboxKeytip });
+  const linkRef = useKeytipRef<HTMLAnchorElement>({ keytipProps: keytipMap.LinkKeytip });
+  const toggleRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.ToggleKeytip });
 
   return (
     <div>
@@ -35,10 +35,10 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
         <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
           <Stack tokens={stackTokens}>
             <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={spinButtonStyles} />
-            <Toggle onText="Yes" offText="No" keytipData={toggleKeytipData} />
+            <Toggle ref={toggleRef} onText="Yes" offText="No" />
             <span>
               Go to{' '}
-              <Link keytipData={linkKeytipData} href="http://www.bing.com" target="_blank">
+              <Link ref={linkRef} href="http://www.bing.com" target="_blank">
                 Bing
               </Link>
             </span>
@@ -47,7 +47,7 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
 
         <PivotItem headerText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={pivotItemStyle}>
           <Stack tokens={stackTokens}>
-            <Checkbox label="Checkbox" keytipData={checkboxKeytipData} />
+            <Checkbox label="Checkbox" ref={checkboxRef} />
             <Dropdown label="Dropdown" keytipProps={keytipMap.DropdownKeytip} options={sampleOptions} />
           </Stack>
         </PivotItem>

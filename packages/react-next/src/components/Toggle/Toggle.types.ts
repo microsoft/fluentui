@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
-import { IKeytipData } from '../../KeytipData';
 
 /**
  * {@docCategory Toggle}
@@ -106,14 +105,9 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional keytip.
    *
-   * @deprecated Use keytipData instead.
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
-
-  /**
-   * Optional keytip data.
-   */
-  keytipData?: IKeytipData;
 
   /**
    * (Optional) Specify whether to use the "switch" role (ARIA 1.1) or the checkbox role (ARIA 1.0).

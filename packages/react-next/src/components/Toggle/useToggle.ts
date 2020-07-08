@@ -8,7 +8,6 @@ import {
   useFocusRects,
   warnDeprecations,
   warnMutuallyExclusive,
-  mergeAriaAttributeValues,
 } from '../../Utilities';
 import { IToggle, IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
@@ -42,7 +41,6 @@ export const useToggle = (
     role,
     styles,
     theme,
-    keytipData,
   } = props;
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked, onChange);
 
@@ -130,11 +128,9 @@ export const useToggle = (
       'aria-checked': checked,
       'aria-label': ariaLabel ? ariaLabel : badAriaLabel,
       'aria-labelledby': labelledById,
-      'aria-describedby': mergeAriaAttributeValues(toggleNativeProps['aria-describedby'], keytipData?.ariaDescribedBy),
       className: classNames.pill,
       'data-is-focusable': true,
-      ...keytipData?.executeElementAttributes,
-      ...keytipData?.targetElementAttributes,
+      'data-ktp-target': true,
       disabled: disabled,
       id: id,
       onClick: onClick,

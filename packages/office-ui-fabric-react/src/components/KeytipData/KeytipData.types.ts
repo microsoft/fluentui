@@ -18,3 +18,11 @@ export interface IKeytipDataProps {
    */
   disabled?: boolean;
 }
+
+export type KeytipDataOptions = IKeytipDataProps;
+
+export interface IKeytipData {
+  ariaDescribedBy: string | undefined;
+  targetElementAttributes: { [key: string]: string | undefined };
+  executeElementAttributes: { [key: string]: string | undefined };
+}

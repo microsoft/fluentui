@@ -4,7 +4,6 @@ import { ISvgIconProps } from '@fluentui/react-icons';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
-import { IKeytipData } from '../../KeytipData';
 
 /**
  * Checkbox class interface.
@@ -135,14 +134,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   /**
    * Optional keytip.
    *
-   * @deprecated Use keytipData instead.
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
-
-  /**
-   * Optional keytip data.
-   */
-  keytipData?: IKeytipData;
 
   /**
    * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { classNamesFunction, useFocusRects, mergeAriaAttributeValues } from '../../Utilities';
+import { useMergedRefs } from '@uifabric/react-hooks';
+import { classNamesFunction, useFocusRects } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStaticStyles: true });
@@ -9,11 +10,13 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStat
  * state, slots and slotProps for consumption by the component.
  */
 // tslint:disable-next-line:no-any
-export const useLink = (props: ILinkProps): any => {
-  const { as, className, disabled, href, onClick, ref, styles, theme, keytipData } = props;
+export const useLink = (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>): any => {
+  const { as, className, disabled, href, onClick, styles, theme } = props;
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
 
-  useComponentRef(props, ref);
-  useFocusRects(ref);
+  useComponentRef(props, rootRef);
+  useFocusRects(rootRef);
 
   const classNames = getClassNames(styles!, {
     className,
@@ -37,13 +40,10 @@ export const useLink = (props: ILinkProps): any => {
   const slotProps = {
     root: {
       ...adjustPropsForRootType(rootType, props),
-      'aria-describedby': mergeAriaAttributeValues(props['aria-describedby'], keytipData?.ariaDescribedBy),
       'aria-disabled': disabled,
-      ...keytipData?.executeElementAttributes,
-      ...keytipData?.targetElementAttributes,
       className: classNames.root,
       onClick: _onClick,
-      ref: ref,
+      ref: mergedRootRefs,
     },
   };
 

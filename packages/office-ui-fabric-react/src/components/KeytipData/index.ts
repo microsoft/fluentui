@@ -1,2 +1,3 @@
 export * from './KeytipData';
-export * from './useKeytipData';
+export { KeytipDataOptions } from './KeytipData.types';
+export * from './useKeytipRef';

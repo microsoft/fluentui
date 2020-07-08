@@ -5174,20 +5174,6 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
 }
 
 // @public (undocumented)
-export interface IKeytipData {
-    // (undocumented)
-    ariaDescribedBy: string | undefined;
-    // (undocumented)
-    executeElementAttributes: {
-        [key: string]: string | undefined;
-    };
-    // (undocumented)
-    targetElementAttributes: {
-        [key: string]: string | undefined;
-    };
-}
-
-// @public (undocumented)
 export interface IKeytipLayer {
 }
 
@@ -9600,7 +9586,7 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 export function updateT(color: IColor, t: number): IColor;
 
 // @public
-export function useKeytipData(options: KeytipDataOptions): IKeytipData;
+export function useKeytipRef(options: KeytipDataOptions): React.Ref<HTMLElement>;
 
 // @public
 export enum ValidationState {
