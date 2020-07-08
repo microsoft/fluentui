@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 08 Jul 2020 12:34:21 GMT",
+      "tag": "@uifabric/charting_v2.4.0",
+      "version": "2.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Line chart:Expose chart  margins prop for line chart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "b6bd4bf7bd32cecad30625e4a95010aea34a20dc",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Jul 2020 12:32:20 GMT",
       "tag": "@uifabric/charting_v2.3.11",
       "version": "2.3.11",
