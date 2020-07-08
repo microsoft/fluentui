@@ -2012,7 +2012,7 @@ export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
 
 // @public
-export const useLink: (props: ILinkProps) => any;
+export const useLink: (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>) => any;
 
 export { useTheme }
 

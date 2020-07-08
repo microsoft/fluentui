@@ -9586,7 +9586,7 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 export function updateT(color: IColor, t: number): IColor;
 
 // @public
-export function useKeytipRef(options: KeytipDataOptions): React.Ref<HTMLElement>;
+export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
 // @public
 export enum ValidationState {

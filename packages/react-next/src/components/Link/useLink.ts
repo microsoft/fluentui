@@ -83,7 +83,6 @@ const adjustPropsForRootType = (
     componentRef,
     // tslint:disable-next-line:deprecation
     keytipProps,
-    keytipData,
     ...restProps
   } = props;
 
