@@ -13,6 +13,11 @@ describe('getDayGrid', () => {
     dateRangeType: DateRangeType.Day,
   };
 
+  /**
+   * Adding custom date normalization, since we need to ensure the consistency across different timezones and locales
+   * and setting timezone via TZ environment variable currently does not work
+   * on Windows (see https://github.com/nodejs/node/issues/4230 and https://github.com/nodejs/node/issues/31478)
+   * */
   const normalizeDay = (day: IDay) => {
     const date = day.originalDate;
     const offset = day.originalDate.getTimezoneOffset();
