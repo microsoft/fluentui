@@ -63,8 +63,6 @@ export const SpinButtonPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
