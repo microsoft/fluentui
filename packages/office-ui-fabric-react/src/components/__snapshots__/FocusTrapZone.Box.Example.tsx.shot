@@ -280,7 +280,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
         >
           <button
             aria-checked={false}
-            aria-labelledby="Toggle3-label"
+            aria-labelledby="Toggle3-label Toggle3-stateText"
             checked={false}
             className=
                 ms-Toggle-background

@@ -2,6 +2,51 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 08 Jul 2020 12:34:21 GMT",
+      "tag": "office-ui-fabric-react_v7.121.11",
+      "version": "7.121.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing console.log from MarqueeSelection Example.",
+            "author": "czearing@outlook.com",
+            "commit": "1d1f3f05a17a40f1af458c2569bcc0b11fc02823",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jul 2020 12:34:51 GMT",
+      "tag": "office-ui-fabric-react_v7.121.10",
+      "version": "7.121.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combine labelId and StateTextId in labelledById and update tests",
+            "author": "t-dama@microsoft.com",
+            "commit": "0154774e650c0a53b1a7e9fe056b6473bfc64948",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "office-ui-fabric-react_v7.121.9",
+      "version": "7.121.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update tests that made assumptions about styled components",
+            "author": "miclo@microsoft.com",
+            "commit": "017dc3372393a5e4b327e1c90134c1858ed9abfd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2020 12:42:11 GMT",
       "tag": "office-ui-fabric-react_v7.121.8",
       "version": "7.121.8",

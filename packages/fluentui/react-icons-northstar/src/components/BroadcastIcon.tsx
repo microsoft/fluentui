@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const BroadcastIcon = createSvgIcon({
+export const BroadcastIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 48 48" className={classes.svg}>
       <g>
@@ -20,5 +20,3 @@ const BroadcastIcon = createSvgIcon({
   ),
   displayName: 'BroadcastIcon',
 });
-
-export default BroadcastIcon;

@@ -1,3 +1,1 @@
-import carouselVariables from './carouselVariables';
-
-export default carouselVariables;
+export { carouselVariables as carouselPaddleVariables } from './carouselVariables';

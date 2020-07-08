@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 30 Jun 2020 12:33:36 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Jul 2020 12:36:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.23.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.23.0)
+
+Fri, 03 Jul 2020 12:36:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.22.0..@uifabric/utilities_v7.23.0)
+
+### Minor changes
+
+- Refactor styled to return a functional component (with optional ref attribute) ([PR #13891](https://github.com/microsoft/fluentui/pull/13891) by miclo@microsoft.com)
 
 ## [7.22.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.22.0)
 

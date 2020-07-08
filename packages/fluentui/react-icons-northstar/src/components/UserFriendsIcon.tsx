@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const UserFriendsIcon = createSvgIcon({
+export const UserFriendsIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg viewBox="8 8 16 16" role="presentation" focusable="false" className={classes.svg}>
       <path
@@ -65,5 +65,3 @@ const UserFriendsIcon = createSvgIcon({
   ),
   displayName: 'UserFriendsIcon',
 });
-
-export default UserFriendsIcon;
