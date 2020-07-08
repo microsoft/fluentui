@@ -29,7 +29,9 @@ const config = {
     browser: true,
     'jest/globals': true,
   },
-  reportUnusedDisableDirectives: true,
+  // We have to disable this when running lint-staged, or it will incorrectly flag eslint-disable
+  // directives for rules which are disabled only in that context.
+  reportUnusedDisableDirectives: !configHelpers.isLintStaged,
   // matched relative to cwd
   ignorePatterns: [
     'coverage',

@@ -14,6 +14,12 @@ export type ConfigHelpers = {
   devDependenciesFiles: string[];
 
   /**
+   * Whether linting is running in context of lint-staged (which should disable rules requiring
+   * type info due to their significant perf penalty).
+   */
+  isLintStaged: boolean;
+
+  /**
    * Returns a rule configuration for [`@typescript-eslint/naming-convention`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md).
    * This provides the ability to override *only* the interface rule without having to repeat or
    * lose the rest of the (very complicated) config.

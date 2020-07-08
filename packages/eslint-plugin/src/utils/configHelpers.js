@@ -35,6 +35,8 @@ module.exports = {
 
   devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles],
 
+  isLintStaged,
+
   getNamingConventionRule: prefixWithI => ({
     '@typescript-eslint/naming-convention': [
       'error',
