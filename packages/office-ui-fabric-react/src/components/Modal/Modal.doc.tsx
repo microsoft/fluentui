@@ -26,8 +26,6 @@ export const ModalPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md'),
   bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
