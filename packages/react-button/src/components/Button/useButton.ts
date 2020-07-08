@@ -1,13 +1,26 @@
+import { useImperativeHandle, useRef } from 'react';
 import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
-import { tokensToStyleObject } from '@fluentui/react-theme-provider';
+import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
+import { useFocusRects } from '@uifabric/utilities';
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { ButtonProps, ButtonState } from './Button.types';
 
 /**
  * The useButton hook processes the Button component props and returns state.
  * @param props - Button props to derive state from.
  */
-export const useButton = (props: ButtonProps): ButtonState => {
+export const useButton = (
+  props: ButtonProps,
+  ref: React.Ref<HTMLElement>,
+  options: ComposePreparedOptions,
+): ButtonState => {
   const { as, onClick, onKeyDown: onButtonKeyDown } = props;
+
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  useImperativeHandle(props.componentRef, () => ({
+    focus: () => buttonRef.current?.focus(),
+  }));
+  useFocusRects(ref as React.RefObject<HTMLElement>);
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement> & React.MouseEvent<HTMLButtonElement>) => {
     if (onButtonKeyDown) {
@@ -34,6 +47,7 @@ export const useButton = (props: ButtonProps): ButtonState => {
   return {
     ...props,
     ...rootTypeProps,
-    style: { ...props.style, ...tokensToStyleObject(props.tokens, '--button') },
+    buttonRef,
+    style: getStyleFromPropsAndOptions(props, options, '--button'),
   };
 };

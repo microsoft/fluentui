@@ -438,7 +438,7 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
       if (nextState) {
         this.setState(nextState);
       }
-    });
+    }, this._root.current);
   }
 
   private _onResize(): void {

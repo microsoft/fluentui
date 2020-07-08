@@ -1,14 +1,10 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
-import { TeamsTableVariables } from './tableVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { TableVariables } from './tableVariables';
 import { TableRowStylesProps } from '../../../../components/Table/TableRow';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-export default {
-  root: ({
-    props: { header, compact },
-    variables: v,
-    theme: { siteVariables },
-  }: ComponentStyleFunctionParam<TableRowStylesProps, TeamsTableVariables>): ICSSInJSStyle => {
+export const tableRowStyles: ComponentSlotStylesPrepared<TableRowStylesProps, TableVariables> = {
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
     });
@@ -34,14 +30,14 @@ export default {
         borderColor: v.rowBorderHoverColor,
       },
       ...borderFocusStyles,
-      ...(header && {
+      ...(p.header && {
         fontSize: v.headerFontSize,
         ':hover': {
           color: v.color,
           backgroundColor: v.backgroundColor,
         },
       }),
-      ...(compact && {
+      ...(p.compact && {
         height: v.compactRowHeight,
       }),
     };

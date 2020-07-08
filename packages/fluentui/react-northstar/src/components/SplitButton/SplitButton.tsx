@@ -5,8 +5,6 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { ALIGNMENTS, POSITIONS } from '../../utils/positioner';
 import {
-  WithAsProp,
-  withSafeTypeForAs,
   ComponentEventHandler,
   ShorthandValue,
   ShorthandCollection,
@@ -34,6 +32,7 @@ import { PositioningProps } from '../../utils/positioner/types';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import {
+  ComponentWithAs,
   useTelemetry,
   useAutoControlled,
   useAccessibility,
@@ -107,7 +106,10 @@ export const splitButtonClassName = 'ui-splitbutton';
 
 export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & { isFromKeyboard: boolean };
 
-const SplitButton: React.FC<WithAsProp<SplitButtonProps>> &
+/**
+ * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
+ */
+const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
   FluentComponentStaticProps<SplitButtonProps> & {
     Toggle: typeof SplitButtonToggle;
   } = props => {
@@ -318,7 +320,4 @@ SplitButton.create = createShorthandFactory({
   Component: SplitButton,
 });
 
-/**
- * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
- */
-export default withSafeTypeForAs<typeof SplitButton, SplitButtonProps>(SplitButton);
+export default SplitButton;

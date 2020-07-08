@@ -1,4 +1,11 @@
 {
-  "packages": ["packages/react-button"],
-  "sandboxes": ["u0e3w"]
+  "buildCommand": "build:min",
+  "packages": [
+    "packages/react-button",
+    "packages/fluentui/react-northstar",
+    "packages/office-ui-fabric-react",
+    "packages/react-next",
+    "packages/react-icons"
+  ],
+  "sandboxes": ["u0e3w", "/apps/codesandbox-react-template"]
 }

@@ -6,8 +6,7 @@ import { AlertBehaviorProps } from './alertBehavior';
  * Adds role 'alert' to 'body' slot.
  * Adds attribute 'aria-live=polite' to 'body' slot.
  */
-
-const alertWarningBehavior: Accessibility<AlertBehaviorProps> = props => ({
+export const alertWarningBehavior: Accessibility<AlertBehaviorProps> = props => ({
   attributes: {
     body: {
       role: 'alert',
@@ -18,5 +17,3 @@ const alertWarningBehavior: Accessibility<AlertBehaviorProps> = props => ({
     },
   },
 });
-
-export default alertWarningBehavior;

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { iconClassNames } from '../utils/iconClassNames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const NumberListIcon = createSvgIcon({
+export const NumberListIcon = createSvgIcon({
   svg: ({ classes, rtl }) => {
     return rtl ? (
       <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
@@ -76,5 +76,3 @@ const NumberListIcon = createSvgIcon({
   },
   displayName: 'NumberListIcon',
 });
-
-export default NumberListIcon;

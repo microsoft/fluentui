@@ -266,7 +266,6 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       icon: Box,
       loader: Loader,
     },
-
     slotProps: props => ({
       content: {
         size: props.size,
@@ -276,6 +275,9 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       },
     }),
 
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -338,10 +340,6 @@ Button.propTypes = {
 
 Button.Group = ButtonGroup;
 Button.Content = ButtonContent;
-
-Button.shorthandConfig = {
-  mappedProp: 'content',
-};
 
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
 

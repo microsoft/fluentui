@@ -25,11 +25,9 @@ describe('FormField', () => {
 
   it('renders the component control provided in the control shorthand prop', () => {
     const controls = [Button, Input, RadioGroup];
-
     controls.forEach(control => {
       const formField = getFormField(control);
       const controlElement = formField.find(control);
-
       expect(controlElement.length).toEqual(1);
     });
   });

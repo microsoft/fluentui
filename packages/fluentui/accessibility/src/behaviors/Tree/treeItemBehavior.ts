@@ -2,7 +2,7 @@ import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility, AriaRole } from '../../types';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
-import treeTitleBehavior from './treeTitleBehavior';
+import { treeTitleBehavior } from './treeTitleBehavior';
 
 /**
  * @description
@@ -22,7 +22,7 @@ import treeTitleBehavior from './treeTitleBehavior';
  * Triggers 'expand' action with 'ArrowRight' on 'root', when has a closed subtree.
  * Triggers 'focusFirstChild' action with 'ArrowRight' on 'root', when has an opened subtree.
  */
-const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
+export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
   const definition = {
     attributes: {
       root: {
@@ -106,5 +106,3 @@ const isSubtreeExpanded = (props: TreeItemBehaviorProps): boolean => {
   const { hasSubtree, expanded } = props;
   return !!(hasSubtree && expanded);
 };
-
-export default treeItemBehavior;

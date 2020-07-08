@@ -6,7 +6,7 @@ import {
 } from '@fluentui/styles';
 import * as _ from 'lodash';
 
-import resolveVariables from '../../src/styles/resolveVariables';
+import { resolveVariables } from '../../src/styles/resolveVariables';
 
 const siteVariables = {
   ...emptyTheme.siteVariables,

@@ -14,7 +14,7 @@ type UseSelectorRef<Value, SelectedValue> = {
  * It will only accept context created by `createContext`.
  * It will trigger re-render if only the selected value is referencially changed.
  */
-const useContextSelector = <Value, SelectedValue>(
+export const useContextSelector = <Value, SelectedValue>(
   context: Context<Value>,
   selector: ContextSelector<Value, SelectedValue>,
 ): SelectedValue => {
@@ -54,5 +54,3 @@ const useContextSelector = <Value, SelectedValue>(
 
   return selected;
 };
-
-export default useContextSelector;

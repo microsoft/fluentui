@@ -1,3 +1,1 @@
-import carouselNavigationVariables from './carouselNavigationVariables';
-
-export default carouselNavigationVariables;
+export { carouselNavigationVariables as carouselNavigationItemVariables } from './carouselNavigationVariables';

@@ -13,23 +13,33 @@ export interface ShorthandConfig<TProps> {
 
 export type PropsOfElement<
   // tslint:disable-next-line:no-any
-  E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
-> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
+  E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs
+  // tslint:disable-next-line:no-any
+> = E extends { __PRIVATE_PROPS: any }
+  ? E['__PRIVATE_PROPS']
+  : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 // tslint:disable-next-line:interface-name
-export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}>
-  extends React.FunctionComponent {
-  <TExtendedElementType extends React.ElementType = TElementType>(
-    props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
-  ): JSX.Element | null;
-  displayName?: string;
-
-  defaultProps?: Partial<TProps & { as: TElementType }>;
+export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<
+  TExtendedElementType extends React.ElementType = TElementType
+>(
+  props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
+) => JSX.Element) & {
   propTypes?: React.WeakValidationMap<TProps> & {
     // tslint:disable-next-line:no-any
     as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
   };
-}
+  // tslint:disable-next-line:no-any
+  contextTypes?: React.ValidationMap<any>;
+  defaultProps?: Partial<TProps & { as: TElementType }>;
+  displayName?: string;
+
+  /**
+   * A hack to simplify the resolution for ComponentWithAs.
+   * @see https://github.com/microsoft/fluentui/pull/13841
+   */
+  readonly __PRIVATE_PROPS?: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
+};
 
 //
 // Compose types
@@ -83,10 +93,15 @@ export type ComposeOptions<
   state?: (props: TState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 };
 
-export type MergePropsResult<TState extends GenericDictionary> = {
+export type MergePropsResult<
+  TState extends GenericDictionary,
+  TSlots = GenericDictionary,
+  // tslint:disable-next-line:no-any
+  TSlotProps = { [key in keyof TSlots]: any }
+> = {
   state: TState;
-  slots: GenericDictionary;
-  slotProps: GenericDictionary;
+  slots: TSlots;
+  slotProps: TSlotProps;
 };
 
 /**
@@ -131,3 +146,37 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
   resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;
 };
+
+//
+// Component types
+//
+
+export interface BaseSlots {
+  root: React.ElementType;
+}
+
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+  // tslint:disable-next-line:no-any
+  [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
+} & {
+  root: TRootProps;
+};
+
+//
+// Slot Prop / Shorthand types
+//
+
+export type SlotPropRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
+  children?: TProps['children'] | SlotPropRenderFunction<TProps>;
+};
+
+export type SlotProp<TProps> =
+  | React.ReactChild
+  | React.ReactNodeArray
+  | React.ReactPortal
+  | boolean
+  | null
+  | undefined
+  | ObjectSlotProp<TProps>;

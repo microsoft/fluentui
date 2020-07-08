@@ -23,6 +23,14 @@ export const LinkPage: React.FunctionComponent<IControlsPageProps> = props => {
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
   switch (platform) {
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/LinkImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LinkPage/docs/mac/LinkImplementation.md') as string,
+        },
+      ];
     case 'cross':
       return [
         {

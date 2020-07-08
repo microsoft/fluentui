@@ -1,4 +1,5 @@
 import { Accessibility } from '../../types';
+
 /**
  * @description
  * Behavior for a card component - semantic grouping of objects
@@ -6,7 +7,7 @@ import { Accessibility } from '../../types';
  * Adds role='group'.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'.
  */
-const cardBehavior: Accessibility<CardBehaviorProps> = props => ({
+export const cardBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'group',
@@ -14,8 +15,6 @@ const cardBehavior: Accessibility<CardBehaviorProps> = props => ({
     },
   },
 });
-
-export default cardBehavior;
 
 export type CardBehaviorProps = {
   /** A card can show it is currently unable to be interacted with. */
