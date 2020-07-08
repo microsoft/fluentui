@@ -88,8 +88,6 @@ export const PanelPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
   bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
