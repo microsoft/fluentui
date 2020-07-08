@@ -22,6 +22,9 @@ export const inputLabelStyles: ComponentSlotStylesPrepared<InputLabelStylesProps
         fontSize: pxToRem(12),
       }),
     }),
+    ...(p.labelPosition === 'inline' && {
+      paddingRight: pxToRem(10),
+    }),
     ...(p.required && {
       '::after': {
         content: '"*"',

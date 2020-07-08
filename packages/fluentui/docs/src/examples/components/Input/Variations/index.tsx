@@ -54,6 +54,11 @@ const Variations = () => (
       description="An input can handle both input and wrapper slots for targetting the input and wrapper elements, respectively."
       examplePath="components/Input/Variations/InputExampleTargeting"
     />
+    <ComponentExample
+      title="Input with Labels"
+      description="An input can have a label"
+      examplePath="components/Input/Variations/InputExampleWithLabels"
+    />
   </ExampleSection>
 );
 
