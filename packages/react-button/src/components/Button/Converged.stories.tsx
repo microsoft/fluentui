@@ -4,7 +4,6 @@ import { mergeThemes, ThemeProvider, Theme, PartialTheme } from '@fluentui/react
 import { UploadIcon } from '@fluentui/react-icons';
 import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
 
-// tslint:disable: jsx-ban-props
 const paletteAccent = 'var(--palette-accent)';
 const paletteSoftest = 'var(--palette-softest)';
 const paletteStrongest = 'var(--palette-strongest)';

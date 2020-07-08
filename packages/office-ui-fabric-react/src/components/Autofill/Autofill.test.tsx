@@ -258,7 +258,7 @@ describe('Autofill', () => {
 
   it('will call onInputValueChanged w/ composition events', () => {
     const onInputValueChange = jest.fn((a: string, b: boolean) => {
-      return void 0;
+      return undefined;
     });
 
     component = mount(

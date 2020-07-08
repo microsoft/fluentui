@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Markdown, ColorPalette, IColorSwatch, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, ColorPalette, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsSharedPageProps } from './SharedPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
+import * as sharedColors from '../../../data/colors-shared.json';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
-const sharedColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-shared.json');
 
 export const ColorsSharedPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;

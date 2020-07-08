@@ -26,7 +26,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       return <slots.label {...slotProps.label} />;
     };
 
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const renderContent = (keytipAttributes: any = {}) => (
       <slots.root {...slotProps.root}>
         <slots.input
@@ -42,7 +42,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
             <slots.checkmark {...slotProps.checkmark} />
           </slots.checkbox>
 
-          {// tslint:disable-next-line:deprecation
+          {// eslint-disable-next-line deprecation/deprecation
           (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
         </slots.container>
       </slots.root>
@@ -51,7 +51,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
     if (keytipProps) {
       return (
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {// tslint:disable-next-line:no-any
+          {// eslint-disable-next-line @typescript-eslint/no-explicit-any
           (keytipAttributes: any): JSX.Element => renderContent(keytipAttributes)}
         </KeytipData>
       );

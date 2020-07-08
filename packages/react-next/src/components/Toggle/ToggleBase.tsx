@@ -12,7 +12,7 @@ export const ToggleBase = compose<'div', IToggleProps, {}, IToggleProps, {}>(
     const { checked } = state;
     const { 'aria-describedby': ariaDescribedBy, disabled, keytipProps, label, offText, onText } = props;
 
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const renderPill = (keytipAttributes: any = {}) => {
       return (
         <slots.pill {...keytipAttributes} {...slotProps.pill}>
@@ -23,7 +23,7 @@ export const ToggleBase = compose<'div', IToggleProps, {}, IToggleProps, {}>(
 
     const pillContent = keytipProps ? (
       <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
-        {// tslint:disable-next-line:no-any
+        {// eslint-disable-next-line @typescript-eslint/no-explicit-any
         (keytipAttributes: any): JSX.Element => renderPill(keytipAttributes)}
       </KeytipData>
     ) : (

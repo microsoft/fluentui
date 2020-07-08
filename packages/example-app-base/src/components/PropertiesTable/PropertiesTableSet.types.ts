@@ -44,6 +44,6 @@ export interface IPropertiesTableSetStyles {
 
 export interface IPropertiesTableSetSubComponentStyles {
   // TODO: remove anys after TS 3 upgrade
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   list: IStyleFunctionOrObject<IDetailsListStyleProps, any>;
 }

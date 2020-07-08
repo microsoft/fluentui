@@ -65,7 +65,7 @@ class FooterComponent extends React.Component<IFooterComponent, {}> {
   }
 }
 
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   attachProps: IIconProps;

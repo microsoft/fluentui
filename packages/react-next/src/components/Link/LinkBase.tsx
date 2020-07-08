@@ -14,7 +14,7 @@ export const LinkBase = compose<'a', ILinkProps, ILinkProps, {}, {}>(
     if (keytipProps) {
       return (
         <KeytipData ariaDescribedBy={ariaDescribedBy} disabled={disabled} keytipProps={keytipProps}>
-          {// tslint:disable-next-line:no-any
+          {// eslint-disable-next-line @typescript-eslint/no-explicit-any
           (keytipAttributes: any): JSX.Element => <slots.root {...keytipAttributes} {...slotProps.root} />}
         </KeytipData>
       );

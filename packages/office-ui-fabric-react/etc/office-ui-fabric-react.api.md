@@ -3535,8 +3535,6 @@ export interface IDetailsListState {
     // (undocumented)
     isCollapsed?: boolean;
     // (undocumented)
-    isDropping?: boolean;
-    // (undocumented)
     isSizing?: boolean;
     // (undocumented)
     isSomeGroupExpanded?: boolean;
@@ -4849,8 +4847,6 @@ export interface IGroupedListState {
     groups?: IGroup[];
     // (undocumented)
     lastSelectionMode?: SelectionMode;
-    // (undocumented)
-    lastWidth?: number;
 }
 
 // @public (undocumented)
@@ -5578,8 +5574,6 @@ export interface IMessageBarState {
     expandSingleLine?: boolean;
     // (undocumented)
     labelId?: string;
-    // (undocumented)
-    showContent?: boolean;
 }
 
 // @public (undocumented)

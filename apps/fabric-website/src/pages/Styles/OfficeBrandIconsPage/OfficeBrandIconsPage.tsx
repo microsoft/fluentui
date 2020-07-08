@@ -5,14 +5,11 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { OfficeBrandIconsPageProps } from './OfficeBrandIconsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import * as styles from './OfficeBrandIconsPage.module.scss';
+import * as productIcons from '../../../data/brand-icons-products.json';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs';
 const fabricCDN = 'https://static2.sharepointonline.com/files/fabric-cdn-prod_20200430.002/assets';
-
-const productIcons = require('@uifabric/fabric-website/lib/data/brand-icons-products.json');
-const documentIcons = require('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
-const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-monochrome.json');
 
 export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -173,7 +170,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <ul className={styles.iconList}>
                 {productIcons.map((icon, iconIndex) => (
-                  <li key={iconIndex}>
+                  <li key={icon.icon}>
                     <Image
                       src={`${fabricCDN}/brand-icons/product/svg/${icon.icon}_48x1.svg`}
                       width="48"

@@ -1,4 +1,3 @@
-/* tslint:disable:no-switch-case-fall-through */
 import { BaseParser } from './BaseParser';
 import { IEnumProperty } from './interfaces';
 

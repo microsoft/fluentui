@@ -547,7 +547,7 @@ describe('ComboBox', () => {
       'input',
     ) as HTMLInputElement;
     if (input === null) {
-      throw 'ComboBox input element is null';
+      throw new Error('ComboBox input element is null');
     }
 
     // Simulate typing one character into the ComboBox input
@@ -586,15 +586,7 @@ describe('ComboBox', () => {
     });
     const initialOption = { key: '1', text: 'Text' };
 
-    wrapper = mount(
-      <ComboBox
-        options={[initialOption]}
-        autoComplete="on"
-        allowFreeform={true}
-        // tslint:disable-next-line:jsx-no-lambda
-        onChange={onChange}
-      />,
-    );
+    wrapper = mount(<ComboBox options={[initialOption]} autoComplete="on" allowFreeform={true} onChange={onChange} />);
     const inputElement: InputElementWrapper = wrapper.find('input');
     inputElement.simulate('input', { target: { value: 't' } });
     inputElement.simulate('input', { target: { value: 'e' } });
@@ -631,7 +623,6 @@ describe('ComboBox', () => {
         autoComplete="off"
         allowFreeform={true}
         text="hikari"
-        // tslint:disable-next-line:jsx-no-lambda
         onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}
@@ -654,7 +645,6 @@ describe('ComboBox', () => {
         options={DEFAULT_OPTIONS}
         autoComplete="off"
         allowFreeform={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}

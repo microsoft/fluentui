@@ -19,7 +19,7 @@ export const useToggle = (
   props: IToggleProps,
   ref: React.Ref<HTMLDivElement>,
   options: ComposePreparedOptions,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any => {
   const {
     ariaLabel,
@@ -30,10 +30,10 @@ export const useToggle = (
     id: toggleId,
     inlineLabel,
     label,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     offAriaLabel,
     offText,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     onAriaLabel,
     onChange,
     onClick: onToggleClick,
@@ -102,7 +102,7 @@ export const useToggle = (
 
   const slots = {
     ...options.slots,
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     root: props.as || ((options as any).defaultProps as any)?.as,
   };
 

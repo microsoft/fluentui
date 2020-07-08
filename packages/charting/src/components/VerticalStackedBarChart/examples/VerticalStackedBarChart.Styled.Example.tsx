@@ -61,6 +61,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
         data={data}
         yAxisTickCount={10}
         href={'www.google.com'}
+        // eslint-disable-next-line react/jsx-no-bind
         styles={customStyles}
         chartLabel="Card title"
       />
