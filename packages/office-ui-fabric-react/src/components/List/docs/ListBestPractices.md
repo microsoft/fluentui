@@ -15,12 +15,12 @@
 
 Add the data-is-scrollable="true" attribute to your scrollable element containing the List.
 
-By default, the list will use the <body> element as the scrollable element. If you contain the list within a scrollable <div> using overflow: auto or scroll, the list needs to listen for scroll events on that element instead. On initialization, the list will traverse up the DOM looking for the first element with the data-is-scrollable attribute to know which element to listen to for knowing when to re-evaulate the visible window.
+By default, the List will use the <body> element as the scrollable element. If you contain List within a scrollable <div> using overflow: auto or scroll, List needs to listen for scroll events on that element instead. On initialization, List will traverse up the DOM looking for the first element with the data-is-scrollable attribute to know which element to listen to for knowing when to re-evaulate the visible window.
 
 #### My list isn't re-rendering when I mutate its items, what should I do?
 
-To determine if the list should re-render its contents, the component performs a referential equality check on the items array in its shouldComponentUpdate method. This is done to minimize the performance overhead associating with re-rendering the virtualized list pages, as recommended by the React documentation.
-As a result of this implementation, the list will not determine it should re-render if values within the array are mutated. To avoid this problem, we recommend re-creating the items array using a method such as Array.prototype.concat or ES6 spread syntax shown below:
+To determine if List should re-render its contents, the component performs a referential equality check on the items array in its shouldComponentUpdate method. This is done to minimize the performance overhead associating with re-rendering the virtualized list pages, as recommended by the React documentation.
+As a result of this implementation, List will not determine it should re-render if values within the array are mutated. To avoid this problem, we recommend re-creating the items array using a method such as Array.prototype.concat or ES6 spread syntax shown below:
 
 ```
 public appendItems(): void {
