@@ -179,6 +179,7 @@ jobs:
         condition: always()
 
   - job: ScreenerFluent
+    dependsOn: Build
     steps:
       - script: |
           yarn
