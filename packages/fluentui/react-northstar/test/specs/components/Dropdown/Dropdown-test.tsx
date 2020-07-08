@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
-import Dropdown from 'src/components/Dropdown/Dropdown';
+import { Dropdown } from 'src/components/Dropdown/Dropdown';
 import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
-import List from 'src/components/List/List';
+import { List } from 'src/components/List/List';
 
 jest.dontMock('@fluentui/keyboard-key');
 jest.useFakeTimers();

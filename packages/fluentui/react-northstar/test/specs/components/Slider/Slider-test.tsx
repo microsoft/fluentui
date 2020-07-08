@@ -1,7 +1,7 @@
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { isConformant as newIsConformant } from '@fluentui/react-conformance';
 import { mountWithProvider as mount } from 'test/utils';
-import Slider from 'src/components/Slider/Slider';
+import { Slider } from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
   newIsConformant({

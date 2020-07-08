@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import { isConformant, implementsShorthandProp } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
-import Button from 'src/components/Button/Button';
-import RadioGroup from 'src/components/RadioGroup/RadioGroup';
-import Input from 'src/components/Input/Input';
-import Text from 'src/components/Text/Text';
-import FormField, { formFieldMessageClassName } from 'src/components/Form/FormField';
+import { Button } from 'src/components/Button/Button';
+import { RadioGroup } from 'src/components/RadioGroup/RadioGroup';
+import { Input } from 'src/components/Input/Input';
+import { Text } from 'src/components/Text/Text';
+import { FormField, formFieldMessageClassName } from 'src/components/Form/FormField';
 import { Box } from 'src/components/Box/Box';
 import { PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 

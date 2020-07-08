@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import AccordionContent from 'src/components/Accordion/AccordionContent';
+import { AccordionContent } from 'src/components/Accordion/AccordionContent';
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent, mountWithProvider as mount } from 'test/utils';
 import { isConformant as newIsConformant } from '@fluentui/react-conformance';

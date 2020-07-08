@@ -11,7 +11,7 @@ import { ComponentType, ReactWrapper } from 'enzyme';
 import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
 
-import isExportedAtTopLevel from './isExportedAtTopLevel';
+import { isExportedAtTopLevel } from './isExportedAtTopLevel';
 import {
   assertBodyContains,
   consoleUtil,
@@ -19,7 +19,7 @@ import {
   mountWithProvider as mount,
   syntheticEvent,
 } from 'test/utils';
-import helpers from './commonHelpers';
+import { helpers } from './commonHelpers';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';

@@ -1,8 +1,8 @@
 export * from './assertNodeContains';
-export { default as consoleUtil } from './consoleUtil';
-export { default as domEvent } from './domEvent';
-export { default as findIntrinsicElement } from './findIntrinsicElement';
-export { default as getDisplayName } from './getDisplayName';
-export { default as syntheticEvent } from './syntheticEvent';
-export { default as nextFrame } from './nextFrame';
+export { consoleUtil } from './consoleUtil';
+export { domEvent } from './domEvent';
+export { findIntrinsicElement } from './findIntrinsicElement';
+export { getDisplayName } from './getDisplayName';
+export { syntheticEvent } from './syntheticEvent';
+export { nextFrame } from './nextFrame';
 export { EmptyThemeProvider, mountWithProvider, mountWithProviderAndGetComponent } from './withProvider';

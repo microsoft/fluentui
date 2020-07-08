@@ -5,9 +5,9 @@ import { mount } from 'enzyme';
 import * as faker from 'faker';
 import * as React from 'react';
 
-import Provider from 'src/components/Provider/Provider';
-import ProviderConsumer from 'src/components/Provider/ProviderConsumer';
-import PortalInner from 'src/components/Portal/PortalInner';
+import { Provider } from 'src/components/Provider/Provider';
+import { ProviderConsumer } from 'src/components/Provider/ProviderConsumer';
+import { PortalInner } from 'src/components/Portal/PortalInner';
 
 const createDocumentMock = (): Document => {
   const externalDocument = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
