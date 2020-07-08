@@ -1116,7 +1116,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
 }
 
 // @public (undocumented)
-export const Fabric: React.FunctionComponent<IFabricProps>;
+export const Fabric: import("react").ForwardRefExoticComponent<IFabricProps & import("react").RefAttributes<FabricBase>>;
 
 // @public (undocumented)
 export class FabricBase extends React.Component<IFabricProps> {

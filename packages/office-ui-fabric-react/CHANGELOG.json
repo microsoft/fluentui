@@ -2,6 +2,105 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 08 Jul 2020 12:34:21 GMT",
+      "tag": "office-ui-fabric-react_v7.121.11",
+      "version": "7.121.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing console.log from MarqueeSelection Example.",
+            "author": "czearing@outlook.com",
+            "commit": "1d1f3f05a17a40f1af458c2569bcc0b11fc02823",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jul 2020 12:34:51 GMT",
+      "tag": "office-ui-fabric-react_v7.121.10",
+      "version": "7.121.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combine labelId and StateTextId in labelledById and update tests",
+            "author": "t-dama@microsoft.com",
+            "commit": "0154774e650c0a53b1a7e9fe056b6473bfc64948",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "office-ui-fabric-react_v7.121.9",
+      "version": "7.121.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update tests that made assumptions about styled components",
+            "author": "miclo@microsoft.com",
+            "commit": "017dc3372393a5e4b327e1c90134c1858ed9abfd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "office-ui-fabric-react_v7.121.8",
+      "version": "7.121.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding 'as' prop tests to conformance tests and adding conformance tests to MenuItem and Stack.",
+            "author": "esteban.230@hotmail.com",
+            "commit": "29ea83a5b421019b4c6c71301bfcbda849a650ad",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "office-ui-fabric-react_v7.121.7",
+      "version": "7.121.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure ResizeGroup uses correct window for animation frame",
+            "author": "tmichon@microsoft.com",
+            "commit": "6870e7068a2cb7fbd36828c5c0e7bab198fa3efa",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "High contrast in Edge Chromium: fix Label and TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "High Contrast in Edge Chromium: fix ChoiceGroup.",
+            "author": "xgao@microsoft.com",
+            "commit": "74dc7d81cfb5a21f0ce0e73e2a6d0550dede4870",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "High Contrast in Edge Chromium: fix Nav.",
+            "author": "xgao@microsoft.com",
+            "commit": "1606d80c8d9964ca6f1cac4219ab9249b93b4428",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "High Contrast in Edge Chromium: Fix ContextualMenu.",
+            "author": "xgao@microsoft.com",
+            "commit": "e65e7742aec5c9c49787f20bd620e730506ee936",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2020 12:36:08 GMT",
       "tag": "office-ui-fabric-react_v7.121.5",
       "version": "7.121.5",

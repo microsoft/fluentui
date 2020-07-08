@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 16 Jun 2020 17:35:36 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.11.0)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.76..@uifabric/fabric-website_v7.11.0)
+
+### Minor changes
+
+- New macos link control documentation ([PR #13892](https://github.com/microsoft/fluentui/pull/13892) by saadnajmi2@gmail.com)
 
 ## [7.10.71](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.71)
 

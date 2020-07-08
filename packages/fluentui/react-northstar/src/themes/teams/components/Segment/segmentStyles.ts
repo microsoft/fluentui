@@ -3,7 +3,7 @@ import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { SegmentVariables } from './segmentVariables';
 import { getColorScheme } from '../../colors';
 
-const segmentStyles: ComponentSlotStylesPrepared<SegmentStylesProps, SegmentVariables> = {
+export const segmentStyles: ComponentSlotStylesPrepared<SegmentStylesProps, SegmentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme, p.color);
 
@@ -34,5 +34,3 @@ const segmentStyles: ComponentSlotStylesPrepared<SegmentStylesProps, SegmentVari
     };
   },
 };
-
-export default segmentStyles;

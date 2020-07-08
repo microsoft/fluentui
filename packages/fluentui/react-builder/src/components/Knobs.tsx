@@ -66,7 +66,7 @@ type DesignKnobProps = {
   jsonTreeElement: JSONTreeElement;
 };
 
-const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
+export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
   return (
     <div>
       <Header as="h3">Props</Header>
@@ -136,5 +136,3 @@ const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, j
     </div>
   );
 };
-
-export default Knobs;

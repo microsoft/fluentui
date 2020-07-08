@@ -22,7 +22,7 @@ export interface TreeTitleVariables {
   disabledCheckedIndicatorColor: string;
 }
 
-export default (siteVars: any): TreeTitleVariables => {
+export const treeTitleVariables = (siteVars: any): TreeTitleVariables => {
   return {
     color: siteVars.colorScheme.default.foreground,
     padding: `${pxToRem(1)} 0`,

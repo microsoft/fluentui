@@ -9,6 +9,25 @@ export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '
 
 export interface ILineChart {}
 
+export interface IMargins {
+  /**
+   * left margin for the chart.
+   */
+  left?: number;
+  /**
+   * Right margin for the chart.
+   */
+  right?: number;
+  /**
+   * Top margin for the chart.
+   */
+  top?: number;
+  /**
+   * Bottom margin for the chart.
+   */
+  bottom?: number;
+}
+
 export interface ILineChartProps {
   /**
    * Data to render in the chart.
@@ -117,6 +136,11 @@ export interface ILineChartProps {
    * Show event annotation
    */
   eventAnnotationProps?: IEventsAnnotationProps;
+
+  /**
+   * Margins for the chart
+   */
+  margins?: IMargins;
 }
 
 export interface IEventsAnnotationProps {

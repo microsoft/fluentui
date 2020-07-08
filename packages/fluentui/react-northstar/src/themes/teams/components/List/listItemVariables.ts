@@ -31,7 +31,7 @@ export interface ListItemVariables {
   selectedBackgroundColor: string;
 }
 
-export default (siteVariables: any): ListItemVariables => {
+export const listItemVariables = (siteVariables: any): ListItemVariables => {
   return {
     minHeight: pxToRem(48),
     rootPadding: `0 ${pxToRem(18)} 0 ${pxToRem(20)}`,

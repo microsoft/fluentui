@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "@uifabric/utilities_v7.23.0",
+      "version": "7.23.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Refactor styled to return a functional component (with optional ref attribute)",
+            "author": "miclo@microsoft.com",
+            "commit": "017dc3372393a5e4b327e1c90134c1858ed9abfd",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jun 2020 12:33:36 GMT",
       "tag": "@uifabric/utilities_v7.22.0",
       "version": "7.22.0",
