@@ -1,14 +1,12 @@
 import { SourceFile } from 'ts-morph';
 
-// tslint:disable-next-line: interface-name
 export interface CodeModResult {
   success?: boolean;
 }
 
-// tslint:disable-next-line: interface-name
 export interface Codemod<T = SourceFile> {
   /**
-   * Each type of codemod can have multiple versions which work on different versions of its targeted package. 
+   * Each type of codemod can have multiple versions which work on different versions of its targeted package.
    * Must be valid semver.
    * TODO: Currently version is not being checked. Implement this fully or remove.
    */
