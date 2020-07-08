@@ -6,6 +6,7 @@ import { GridCell } from '../../Utilities/grid/GridCell';
 import { IGridCellProps } from '../../Utilities/grid/GridCell.types';
 import { getStyles as getActionButtonStyles } from 'office-ui-fabric-react/lib/components/Button/ActionButton/ActionButton.styles';
 import { IButtonClassNames } from 'office-ui-fabric-react/lib/components/Button/BaseButton.classNames';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,
@@ -56,11 +57,17 @@ const getColorPickerGridCellButtonClassNames = memoizeFunction(
   },
 );
 
+// Validate if the cell's color is white or not to apply whiteCell style
+const isWhiteCell = (inputColor: string | undefined): boolean => {
+  const currentColor = getColorFromString(inputColor!);
+  return currentColor!.hex === 'ffffff';
+};
+
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
 class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {}
 
-export const ColorPickerGridCellBase = (props: IColorPickerGridCellProps) => {
+export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps> = props => {
   const {
     item,
     // tslint:disable-next-line:deprecation
@@ -84,13 +91,7 @@ export const ColorPickerGridCellBase = (props: IColorPickerGridCellProps) => {
     borderWidth,
   } = props;
 
-  // Validate if the cell's color is white or not to apply whiteCell style
-  const isWhiteCell = (inputColor: string | undefined): boolean => {
-    const currentColor = getColorFromString(inputColor!);
-    return currentColor!.hex === 'ffffff';
-  };
-
-  const classNames: { [key in keyof IColorPickerGridCellStyles]: string } = getClassNames(styles!, {
+  const classNames: IProcessedStyleSet<IColorPickerGridCellStyles> = getClassNames(styles!, {
     theme: theme!,
     disabled,
     selected,
@@ -105,7 +106,7 @@ export const ColorPickerGridCellBase = (props: IColorPickerGridCellProps) => {
   const onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={classNames.svg} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color as string)!.str}>
+      <svg className={classNames.svg} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color!)!.str}>
         {props.circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );

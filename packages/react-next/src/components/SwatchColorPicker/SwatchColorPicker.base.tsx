@@ -1,34 +1,45 @@
 import * as React from 'react';
-import {
-  classNamesFunction,
-  findIndex,
-  getId,
-  warnMutuallyExclusive,
-  warnConditionallyRequiredProps,
-} from '../../Utilities';
+import { classNamesFunction, findIndex, warnMutuallyExclusive, warnConditionallyRequiredProps } from '../../Utilities';
 import {
   ISwatchColorPickerProps,
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles,
 } from './SwatchColorPicker.types';
-import { Grid } from 'office-ui-fabric-react/lib/utilities/grid/Grid';
+import { Grid } from '../../Utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { memoizeFunction, warnDeprecations } from '@uifabric/utilities';
+import { useId } from '@uifabric/react-hooks';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
 }
 
+/**
+ *  Add an index to each color cells. Memoizes this so that color cells do not re-render on every update.
+ */
+const getItemsWithIndex = memoizeFunction((items: IColorCellProps[]) => {
+  return items.map((item, index) => {
+    return { ...item, index: index };
+  });
+});
+
+/**
+ * Get the selected item's index
+ */
+const getSelectedIndex = (items: IColorCellProps[], selectedId: string): number | undefined => {
+  const foundSelectedIndex = findIndex(items, item => item.id === selectedId);
+  return foundSelectedIndex >= 0 ? foundSelectedIndex : undefined;
+};
+
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
 
 const COMPONENT_NAME = 'SwatchColorPicker';
 
-export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
-  const [selectedIndex, setSelectedIndex] = React.useState();
-  const id = props.id || getId('swatchColorPicker');
+export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorPickerProps>((props, ref) => {
+  const [selectedIndex, setSelectedIndex] = React.useState<number | undefined>();
+  const id = useId('swatchColorPicker', props.id);
   let cellFocused: boolean;
-  let currentSelectedIndex: number | undefined = undefined;
 
   const {
     colorCells,
@@ -52,13 +63,6 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
     cellMargin,
   });
 
-  // Add an index to each color cells. Memoizes this so that color cells do not re-render on every update.
-  const getItemsWithIndex = memoizeFunction((items: IColorCellProps[]) => {
-    return items.map((item, index) => {
-      return { ...item, index: index };
-    });
-  });
-
   /**
    * When the whole swatchColorPicker is blurred,
    * make sure to clear the pending focused stated
@@ -68,11 +72,6 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
       cellFocused = false;
       props.onCellFocused();
     }
-  };
-
-  const getSelectedIndex = (items: IColorCellProps[], selectedId: string): number | undefined => {
-    const foundSelectedIndex = findIndex(items, item => item.id === selectedId);
-    return foundSelectedIndex >= 0 ? foundSelectedIndex : undefined;
   };
 
   /**
@@ -97,7 +96,6 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
     }
     const targetElement = ev.currentTarget as HTMLElement;
     // If the targetElement is the focused element bail out
-    // if ((document && targetElement === (document.activeElement as HTMLElement))) {
     if (!(document && targetElement === (document.activeElement as HTMLElement))) {
       targetElement.focus();
     }
@@ -152,7 +150,10 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
     }
   };
 
-  // Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
+  /**
+   * Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
+   * NOTE: This will not be triggered if shouldFocusOnHover === true
+   */
   const onGridCellFocused = (item?: IColorCellProps): void => {
     const { onCellFocused } = props;
     if (onCellFocused) {
@@ -171,9 +172,7 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
     if (props.disabled) {
       return;
     }
-
     const index = item.index as number;
-
     // If we have a valid index and it is not already selected, select it.
     if (index >= 0 && index !== selectedIndex) {
       if (props.onCellFocused && cellFocused) {
@@ -192,7 +191,9 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
     }
   };
 
-  // Render a color cell
+  /**
+   * Render a color cell
+   */
   const renderOption = (item: IColorCellProps): JSX.Element => {
     return (
       <ColorPickerGridCell
@@ -221,36 +222,36 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
     return null;
   }
 
-  if (props.selectedId) {
-    currentSelectedIndex = getSelectedIndex(props.colorCells, props.selectedId);
-    setSelectedIndex(currentSelectedIndex);
-  }
-
-  if (props.selectedId !== undefined) {
-    setSelectedIndex(getSelectedIndex(props.colorCells, props.selectedId));
-  }
+  React.useEffect(() => {
+    if (props.selectedId !== undefined) {
+      setSelectedIndex(getSelectedIndex(props.colorCells, props.selectedId));
+    }
+  }, [props.selectedId]);
 
   if (process.env.NODE_ENV !== 'production') {
-    warnMutuallyExclusive(COMPONENT_NAME, props, {
-      focusOnHover: 'onHover',
-    });
+    React.useEffect(() => {
+      warnMutuallyExclusive(COMPONENT_NAME, props, {
+        focusOnHover: 'onHover',
+      });
 
-    warnConditionallyRequiredProps(
-      COMPONENT_NAME,
-      props,
-      ['focusOnHover'],
-      'mouseLeaveParentSelector',
-      !!props.mouseLeaveParentSelector,
-    );
+      warnConditionallyRequiredProps(
+        COMPONENT_NAME,
+        props,
+        ['focusOnHover'],
+        'mouseLeaveParentSelector',
+        !!props.mouseLeaveParentSelector,
+      );
 
-    warnDeprecations(COMPONENT_NAME, props, {
-      positionInSet: 'ariaPosInSet',
-      setSize: 'ariaSetSize',
-    });
+      warnDeprecations(COMPONENT_NAME, props, {
+        positionInSet: 'ariaPosInSet',
+        setSize: 'ariaSetSize',
+      });
+    }, []);
   }
 
   return (
     <Grid
+      // ref={ref}
       {...props}
       id={id}
       items={getItemsWithIndex(colorCells)}
@@ -269,5 +270,5 @@ export const SwatchColorPickerBase = (props: ISwatchColorPickerProps) => {
       }}
     />
   );
-};
+});
 SwatchColorPickerBase.displayName = COMPONENT_NAME;

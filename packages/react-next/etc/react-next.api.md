@@ -133,7 +133,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export const ColorPickerGridCellBase: (props: IColorPickerGridCellProps) => JSX.Element;
+export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public
 export const Customizer: React.FunctionComponent<ICustomizerProps>;
@@ -1946,10 +1946,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
-export const SwatchColorPickerBase: {
-    (props: ISwatchColorPickerProps): JSX.Element | null;
-    displayName: string;
-};
+export const SwatchColorPickerBase: React.ForwardRefExoticComponent<ISwatchColorPickerProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;
