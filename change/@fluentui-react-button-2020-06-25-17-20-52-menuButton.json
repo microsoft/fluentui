@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "MenuButton: Creating component using compose.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-06-26T00:20:52.898Z"
+}

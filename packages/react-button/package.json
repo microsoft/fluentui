@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@fluentui/react-compose": "^0.11.9",
+    "@fluentui/keyboard-key": "^0.2.4",
     "@fluentui/react-icons": "^0.1.34",
     "@fluentui/react-theme-provider": "^0.3.5",
     "@microsoft/load-themed-styles": "^1.10.26",

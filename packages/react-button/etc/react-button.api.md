@@ -6,9 +6,11 @@
 
 import { BaseSlots } from '@fluentui/react-compose';
 import { ColorPlateSet } from '@fluentui/react-theme-provider';
-import { ComposeOptions } from '@fluentui/react-compose';
+import { ComponentProps } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { IContextualMenuProps } from 'office-ui-fabric-react';
 import * as React from 'react';
+import { SlotProp } from '@fluentui/react-compose';
 import { SlotProps } from '@fluentui/react-compose';
 
 // @public (undocumented)
@@ -17,27 +19,17 @@ export const Button: import("@fluentui/react-compose").ComponentWithAs<"button",
 // @public (undocumented)
 export const ButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", ButtonProps>;
 
-// Warning: (ae-forgotten-export) The symbol "ComposeStandardStatics" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export interface ButtonOptions extends ComposeOptions<ButtonProps, ButtonSlots, ButtonSlotProps, ComposeStandardStatics> {
-}
-
-// Warning: (ae-forgotten-export) The symbol "ComponentProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
     circular?: boolean;
     componentRef?: React.RefObject<ButtonRef>;
-    content?: ShorthandValue<{}>;
     disabled?: boolean;
     fluid?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "ShorthandValue" needs to be exported by the entry point index.d.ts
-    icon?: ShorthandValue<{}>;
+    icon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     inverted?: boolean;
-    loader?: ShorthandValue<{}>;
+    loader?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     loading?: boolean;
     primary?: boolean;
     secondary?: boolean;
@@ -56,8 +48,6 @@ export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHT
 
 // @public (undocumented)
 export interface ButtonSlots extends BaseSlots {
-    // (undocumented)
-    content: React.ElementType;
     // (undocumented)
     icon: React.ElementType;
     // (undocumented)
@@ -103,6 +93,39 @@ export type ButtonTokens = ColorPlateSet & {
 };
 
 // @public (undocumented)
+export const MenuButton: import("@fluentui/react-compose").ComponentWithAs<"button", MenuButtonProps>;
+
+// @public (undocumented)
+export const MenuButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", MenuButtonProps>;
+
+// @public (undocumented)
+export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
+    defaultExpanded?: boolean;
+    expanded?: boolean;
+    menu?: SlotProp<IContextualMenuProps>;
+    menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
+    onMenuDismiss?: () => void;
+}
+
+// @public (undocumented)
+export type MenuButtonSlotProps = SlotProps<MenuButtonSlots, MenuButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+
+// @public (undocumented)
+export interface MenuButtonSlots extends BaseSlots {
+    // (undocumented)
+    menu: React.ElementType;
+    // (undocumented)
+    menuIcon: React.ElementType;
+}
+
+// @public (undocumented)
+export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'icon' | 'iconPosition' | 'loader'> {
+}
+
+// @public (undocumented)
+export type MenuButtonTokens = ButtonTokens;
+
+// @public (undocumented)
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public (undocumented)
@@ -110,10 +133,6 @@ export const ToggleButton: import("@fluentui/react-compose").ComponentWithAs<"bu
 
 // @public (undocumented)
 export const ToggleButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", ToggleButtonProps & ButtonProps>;
-
-// @public (undocumented)
-export interface ToggleButtonOptions extends ComposeOptions<ToggleButtonProps, ToggleButtonSlots, ToggleButtonSlotProps, ComposeStandardStatics> {
-}
 
 // @public (undocumented)
 export interface ToggleButtonProps extends ButtonProps {
@@ -132,12 +151,26 @@ export interface ToggleButtonSlots extends ButtonSlots {
 export interface ToggleButtonState extends ToggleButtonProps {
 }
 
+// @public (undocumented)
+export interface ToggleProps {
+    // (undocumented)
+    checked?: boolean;
+    // (undocumented)
+    defaultChecked?: boolean;
+    // (undocumented)
+    onClick?: React.DOMAttributes<HTMLElement>['onClick'];
+}
+
+// @public (undocumented)
+export interface ToggleState extends ToggleProps {
+}
+
 // @public
 export const useButton: (props: ButtonProps, ref: import("react").Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ButtonState;
 
-// Warning: (ae-forgotten-export) The symbol "ToggleProps" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ToggleState" needs to be exported by the entry point index.d.ts
-//
+// @public
+export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => MenuButtonState;
+
 // @public
 export const useToggle: <TProps, TState extends TProps = TProps>(props: TProps & ToggleProps) => TState & ToggleState;
 
