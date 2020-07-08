@@ -17,4 +17,8 @@ module.exports = {
   [`*.{${nonEslintPrettierExtensions.join(',')}}`]: 'prettier --write',
 
   'common/changes/*.json': 'node ./scripts/lint-staged/auto-convert-change-files',
+
+  '**/tslint.json': 'node ./scripts/lint-staged/no-tslint-json',
+
+  '**/package.json': 'node ./scripts/lint-staged/no-tslint-deps',
 };
