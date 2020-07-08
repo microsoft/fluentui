@@ -290,12 +290,13 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       }),
     });
 
-    const inputElement = Box.create(wrapper, {
+    const element = Box.create(wrapper, {
       defaultProps: () =>
         getA11yProps('root', {
           className: classes.root,
           children: (
             <>
+              {labelElement}
               <Ref
                 innerRef={(inputElement: HTMLElement) => {
                   handleRef(inputRef, inputElement);
@@ -336,22 +337,6 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         as: (wrapper && (wrapper as any).as) || ElementType,
       },
     });
-
-    const element = Box.create(
-      {},
-      {
-        defaultProps: () => ({
-          className: inputSlotClassNames.container,
-          styles: resolvedStyles.container,
-          children: (
-            <>
-              {labelElement}
-              {inputElement}
-            </>
-          ),
-        }),
-      },
-    );
     setEnd();
     return element;
   },

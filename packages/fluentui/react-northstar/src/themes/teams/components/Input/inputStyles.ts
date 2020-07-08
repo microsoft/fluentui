@@ -7,12 +7,18 @@ import { pxToRem } from '../../../../utils';
 
 export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
     display: 'inline-flex',
     position: 'relative',
     outline: 0,
+
     ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
     ...(p.fluid && { width: '100%' }),
+    ...(p.labelPosition === 'inline' && {
+      flexDirection: 'row',
+      alignItems: 'center',
+    }),
   }),
 
   input: ({ props: p, variables: v }): ICSSInJSStyle => ({
