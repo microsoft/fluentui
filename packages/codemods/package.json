@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "tslib": "^1.10.0",
-    "office-ui-fabric-react": "^7.121.7",
+    "office-ui-fabric-react": "^7.121.11",
     "react": "16.8.6",
     "semver": "^6.2.0",
     "ts-morph": "^6.0.0",
