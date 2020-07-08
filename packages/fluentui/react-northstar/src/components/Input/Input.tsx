@@ -29,6 +29,7 @@ import {
   ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
+import InputLabel, { InputLabelProps } from './InputLabel';
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
   /**
@@ -79,6 +80,9 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 
   /** The value of the input. */
   value?: string | number;
+
+  /** A label for the input. */
+  label?: ShorthandValue<InputLabelProps>;
 
   /** Shorthand for the wrapper component. */
   wrapper?: ShorthandValue<BoxProps>;
@@ -150,6 +154,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       error,
       errorIndicator,
       showSuccessIndicator,
+      label,
     } = props;
     const inputRef = React.useRef<HTMLInputElement>();
 
@@ -259,12 +264,15 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       return icon || null;
     };
 
+    const labelElement = createShorthand(composeOptions.slots.label, label);
+
     const element = Box.create(wrapper, {
       defaultProps: () =>
         getA11yProps('root', {
           className: classes.root,
           children: (
             <>
+              {labelElement}
               <Ref
                 innerRef={(inputElement: HTMLElement) => {
                   handleRef(inputRef, inputElement);
@@ -313,6 +321,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
     slots: {
       control: Box,
       icon: Box,
+      label: InputLabel,
     },
     handledProps: [
       'accessibility',
@@ -345,6 +354,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
   },
 ) as ComponentWithAs<'div', InputProps> & {
   create: ShorthandFactory<InputProps>;
+  Label: typeof InputLabel;
 };
 
 Input.propTypes = {
@@ -355,6 +365,7 @@ Input.propTypes = {
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
+  label: customPropTypes.itemShorthand,
   icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   input: customPropTypes.itemShorthand,
@@ -380,6 +391,8 @@ Input.defaultProps = {
   errorIndicator: <ExclamationCircleIcon />,
   successIndicator: <PresenceAvailableIcon />,
 };
+
+Input.Label = InputLabel;
 
 Input.create = createShorthandFactory({ Component: Input });
 
