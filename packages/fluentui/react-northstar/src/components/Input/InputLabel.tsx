@@ -13,13 +13,13 @@ interface InputLabelOwnProps {
 export interface InputLabelProps extends BoxProps, InputLabelOwnProps {}
 export type InputLabelStylesProps = Required<Pick<InputLabelOwnProps, 'labelPosition' | 'required' | 'inputValue'>>;
 
-export const InputLabelClassName = 'ui-input__label';
+export const inputLabelClassName = 'ui-input__label';
 
 /**
  * An InputLabel provides a slot for label in the Input.
  */
 const InputLabel = compose<'label', InputLabelProps, InputLabelStylesProps, BoxProps, {}>(Box, {
-  className: InputLabelClassName,
+  className: inputLabelClassName,
   displayName: 'InputLabel',
   overrideStyles: true,
   mapPropsToStylesProps: ({ labelPosition, required, inputValue }) => ({
