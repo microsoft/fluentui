@@ -7,4 +7,7 @@ const { checkPackageJsons } = require('../no-tslint');
 
 const packageInfos = process.argv.slice(2).map(packagePath => ({ packagePath, packageJson: readConfig(packagePath) }));
 
-checkPackageJsons(packageInfos);
+const hasError = checkPackageJsons(packageInfos);
+if (hasError) {
+  process.exit(1);
+}
