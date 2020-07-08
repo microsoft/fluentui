@@ -53,6 +53,9 @@ export const TooltipPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md'),
+    bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
