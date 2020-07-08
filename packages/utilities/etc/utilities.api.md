@@ -267,7 +267,7 @@ export function findElementRecursive(element: HTMLElement | null, matchFunction:
 export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex?: number): number;
 
 // @public
-export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null;
+export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | Window | undefined | null;
 
 // @public
 export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize;
