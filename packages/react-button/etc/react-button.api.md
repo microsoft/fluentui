@@ -20,7 +20,7 @@ export const Button: import("@fluentui/react-compose").ComponentWithAs<"button",
 export const ButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", ButtonProps>;
 
 // @public (undocumented)
-export interface ButtonProps extends ComponentProps<React.ButtonHTMLAttributes<HTMLButtonElement>>, React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
     circular?: boolean;
     componentRef?: React.RefObject<ButtonRef>;
     disabled?: boolean;
@@ -102,7 +102,7 @@ export const MenuButtonBase: import("@fluentui/react-compose").ComponentWithAs<"
 export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
     defaultExpanded?: boolean;
     expanded?: boolean;
-    menu?: SlotProp<Partial<IContextualMenuProps>>;
+    menu?: SlotProp<IContextualMenuProps>;
     menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     onMenuDismiss?: () => void;
 }

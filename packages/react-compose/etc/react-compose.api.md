@@ -19,13 +19,11 @@ export type ClassDictionary = Record<string, string>;
 export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
 
 // @public (undocumented)
-export interface ComponentProps<TRootAttributes = React.HTMLAttributes<HTMLElement>> {
+export interface ComponentProps {
     // (undocumented)
     as?: React.ElementType;
     // (undocumented)
     className?: string;
-    // (undocumented)
-    root?: SlotProp<TRootAttributes>;
 }
 
 // @public (undocumented)

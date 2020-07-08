@@ -7,8 +7,7 @@ export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPositio
   /**
    * Menu that is displayed when the button is pressed.
    */
-  // tslint:disable-next-line:no-any
-  menu?: SlotProp<Partial<IContextualMenuProps>>;
+  menu?: SlotProp<IContextualMenuProps>;
 
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.

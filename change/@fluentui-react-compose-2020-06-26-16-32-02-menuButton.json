@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Adding ComponentProps types which includes as, className and root.",
+  "comment": "Adding ComponentProps types which includes as and className.",
   "packageName": "@fluentui/react-compose",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",

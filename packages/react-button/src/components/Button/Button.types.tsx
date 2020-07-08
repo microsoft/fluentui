@@ -15,9 +15,7 @@ export interface ButtonRef {
   focus: () => void;
 }
 
-export interface ButtonProps
-  extends ComponentProps<React.ButtonHTMLAttributes<HTMLButtonElement>>,
-    React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
   /**
    * Access the imperative API of the Button.
    */

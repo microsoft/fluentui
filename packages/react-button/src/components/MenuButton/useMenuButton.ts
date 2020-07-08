@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
 import { mergeSlotProp, ComposePreparedOptions } from '@fluentui/react-compose';
 import { useControllableValue, useMergedRefs } from '@uifabric/react-hooks';
-import { DirectionalHint } from 'office-ui-fabric-react';
+import { DirectionalHint, IContextualMenuProps } from 'office-ui-fabric-react';
 import { useButton } from '../Button/useButton';
 import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
 
@@ -71,7 +71,7 @@ export const useMenuButton = (
     ref: useMergedRefs(ref, buttonRef),
 
     // Menu slot props.
-    menu: mergeSlotProp(menu, {
+    menu: mergeSlotProp<Partial<IContextualMenuProps>>(menu, {
       directionalHint: DirectionalHint.bottomRightEdge,
       onDismiss,
       target: buttonRef && buttonRef.current,
