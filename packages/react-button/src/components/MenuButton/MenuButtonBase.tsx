@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { compose, mergeProps } from '@fluentui/react-compose';
+import { useMergedRefs } from '@uifabric/react-hooks';
 import { MenuButtonProps, MenuButtonSlots, MenuButtonSlotProps } from './MenuButton.types';
 import { useMenuButton } from './useMenuButton';
 
@@ -10,11 +11,10 @@ export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps
       state,
       options,
     );
-
-    const { children, expanded, iconOnly } = state;
+    const { buttonRef, children, expanded, iconOnly } = state;
 
     return (
-      <slots.root ref={ref} {...slotProps.root}>
+      <slots.root ref={useMergedRefs(ref, buttonRef)} {...slotProps.root}>
         {!iconOnly && children && <span>{children}</span>}
         <slots.menuIcon {...slotProps.menuIcon} />
         {expanded && <slots.menu {...slotProps.menu} />}

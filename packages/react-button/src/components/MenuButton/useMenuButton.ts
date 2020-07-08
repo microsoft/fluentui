@@ -78,5 +78,5 @@ export const useMenuButton = (
     }),
   };
 
-  return useButton(state, ref, options) as MenuButtonState;
+  return useButton(state, ref, options);
 };
