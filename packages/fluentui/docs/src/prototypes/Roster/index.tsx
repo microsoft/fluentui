@@ -38,13 +38,13 @@ const RosterPrototype: React.FC = () => {
         <Provider theme={teamsDarkTheme}>
           <Provider theme={themeOverrides}>
             <Flex column variables={{ isContainer: true }}>
-              <Flex space="between" padding="padding.medium">
+              <Flex space="between" padding="padding.medium" variables={{ isCallingRosterSectionTitle: true }}>
                 <Header as="h3" content="Participants"></Header>
-                <Button variables={{ vAlignCenter: true }} icon={<CloseIcon />} title="Search" iconOnly text />
+                <Button variables={{ vAlignCenter: true }} icon={<CloseIcon />} title="Close" iconOnly text />
               </Flex>
-              <Flex padding="padding.medium" hAlign="center">
+              <Flex padding="padding.medium" hAlign="center" variables={{ isRosterSearch: true }}>
                 <Input fluid placeholder="Search..." />
-                <Button icon={<LinkIcon />} title="Search" iconOnly text />
+                <Button variables={{ isRosterButtonOutside: true }} icon={<LinkIcon />} title="Search" iconOnly text />
               </Flex>
               <Tree
                 items={treeItems}
