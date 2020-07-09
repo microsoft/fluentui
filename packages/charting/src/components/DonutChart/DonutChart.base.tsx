@@ -117,7 +117,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 uniqText={this._uniqText}
                 onBlurCallback={this._onBlur}
                 activeArc={this.state.activeLegend}
-                focusedArcId={this.state.focusedArcId || ''}
+                focusedArcId={this.state.focusedArcId || ''} //todo....i think this is something
                 href={href}
                 calloutId={this._calloutId}
                 valueInsideDonut={valueInsideDonut}
@@ -177,7 +177,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         // mapping data to the format Legends component needs
         const legend: ILegend = {
           title: point.legend!,
-          color: color,
+          color: this._colorLegend(point, color),
           action: () => {
             if (this.state.isLegendSelected) {
               if (this.state.activeLegend !== point.legend || this.state.activeLegend === '') {
@@ -239,6 +239,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       color: data.color!,
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
+      activeLegend: data.legend,
     });
   };
   private _onBlur = (): void => {
@@ -246,6 +247,21 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   };
 
   private _hoverLeave(): void {
-    this.setState({ showHover: false });
+    this.setState({
+      showHover: false,
+      activeLegend: '',
+    });
+  }
+
+  private _colorLegend(point: IChartDataPoint, color: string) {
+    if (this.state.showHover) {
+      if (this.state.activeLegend !== point.legend) {
+        return '#E5E5E5';
+      } else {
+        return color;
+      }
+    } else {
+      return color;
+    }
   }
 }
