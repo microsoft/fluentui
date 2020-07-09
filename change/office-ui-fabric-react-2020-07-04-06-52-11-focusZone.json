@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Apply focusZone props to ContextualMenu.",
+  "packageName": "office-ui-fabric-react",
+  "email": "kinhln@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-04T13:52:11.021Z"
+}
