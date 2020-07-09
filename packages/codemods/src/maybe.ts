@@ -51,6 +51,6 @@ export function orElse<T>(mb: Maybe<T>, mElse: T): T {
   return mb.just ? mb.value : mElse;
 }
 
-export function maybeOf<T>(value: T | undefined | null): Maybe<T> {
-  return !!value ? Just(value) : Nothing();
+export function maybe<T>(value: T | undefined | null): Maybe<T> {
+  return value !== undefined && value !== null ? Just(value) : Nothing();
 }

@@ -1,7 +1,7 @@
 import { CodeMod } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Range } from 'semver';
-import { Maybe, Just, Nothing } from '../maybe';
+import { Maybe, Nothing, maybe, Just } from '../maybe';
 
 // TODO ensure that async for all these utilities works
 export function runMods<T>(
@@ -64,9 +64,7 @@ export function getTsConfigs(root: string = process.cwd()) {
 export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<CodeMod> {
   try {
     const mod = require(path).default;
-    if (mod) {
-      return Just<CodeMod>(mod);
-    }
+    return maybe<CodeMod>(mod);
   } catch (e) {
     errorCallback(e);
   }
