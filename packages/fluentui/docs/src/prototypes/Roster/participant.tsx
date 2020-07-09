@@ -16,7 +16,7 @@ const Participant: React.FC<{
     <Flex fill gap="gap.small" space="between">
       {talking ? (
         <Animation name="talking">
-          <Avatar image={image} name={name} status={status} />
+          <Avatar variables={{ isTalking: true }} image={image} name={name} status={status} />
         </Animation>
       ) : (
         <Avatar image={image} name={name} status={status} />
@@ -24,7 +24,7 @@ const Participant: React.FC<{
 
       <Flex column>
         {talking ? <Text weight="bold" content={name} /> : <Text content={name} />}
-        <Text disabled content={role} size="smaller" />
+        <Text variables={{ isRoleText: true }} content={role} size="smaller" />
       </Flex>
 
       {muted ? (
