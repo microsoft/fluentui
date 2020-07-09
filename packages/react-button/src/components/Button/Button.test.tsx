@@ -29,7 +29,7 @@ describe('Button', () => {
    * Note: see more visual regression tests for Button in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<Button>DefaultButton</Button>);
+    const component = renderer.create(<Button>Default button</Button>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

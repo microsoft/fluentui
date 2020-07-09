@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "linechart-callout not visible in dense graph issue resolved",
+  "packageName": "@uifabric/charting",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-07T13:31:04.672Z"
+}
