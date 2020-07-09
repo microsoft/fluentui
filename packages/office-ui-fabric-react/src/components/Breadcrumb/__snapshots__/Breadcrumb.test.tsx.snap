@@ -70,6 +70,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                     display: flex;
                     position: relative;
                   }
+              role="listitem"
             >
               <button
                 aria-expanded={false}
@@ -1267,6 +1268,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                     display: flex;
                     position: relative;
                   }
+              role="listitem"
             >
               <button
                 aria-expanded={false}
@@ -1501,6 +1503,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                     display: flex;
                     position: relative;
                   }
+              role="listitem"
             >
               <button
                 aria-expanded={false}
@@ -1735,6 +1738,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                     display: flex;
                     position: relative;
                   }
+              role="listitem"
             >
               <button
                 aria-expanded={false}
@@ -2236,6 +2240,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                     display: flex;
                     position: relative;
                   }
+              role="listitem"
             >
               <button
                 aria-expanded={false}
