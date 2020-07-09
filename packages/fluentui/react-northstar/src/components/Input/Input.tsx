@@ -288,13 +288,12 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       }),
     });
 
-    const element = Box.create(wrapper, {
-      defaultProps: () =>
-        getA11yProps('root', {
-          className: classes.root,
+    const inputElement = Box.create(
+      {},
+      {
+        defaultProps: () => ({
           children: (
             <>
-              {labelElement}
               <Ref
                 innerRef={(inputElement: HTMLElement) => {
                   handleRef(inputRef, inputElement);
@@ -326,6 +325,21 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
                   }),
                 overrideProps: handleIconOverrides,
               })}
+            </>
+          ),
+          styles: resolvedStyles.inputContainer,
+        }),
+      },
+    );
+
+    const element = Box.create(wrapper, {
+      defaultProps: () =>
+        getA11yProps('root', {
+          className: classes.root,
+          children: (
+            <>
+              {labelElement}
+              {inputElement}
             </>
           ),
           styles: resolvedStyles.root,

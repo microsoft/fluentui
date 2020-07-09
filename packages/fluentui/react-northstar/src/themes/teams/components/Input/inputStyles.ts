@@ -13,7 +13,6 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     position: 'relative',
     outline: 0,
 
-    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
     ...(p.fluid && { width: '100%' }),
     ...(p.labelPosition === 'inline' && {
       flexDirection: 'row',
@@ -28,7 +27,6 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     }),
 
     lineHeight: 'unset',
-
     color: v.fontColor,
 
     borderColor: v.borderColor,
@@ -58,7 +56,7 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     },
 
     ':focus': {
-      borderColor: v.inputFocusBorderColor,
+      ...(!p.error && { borderColor: v.inputFocusBorderColor }),
     },
     ...(p.clearable && { padding: v.inputPaddingWithIconAtEnd }),
     ...(p.hasIcon && {
@@ -67,6 +65,7 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     ...(p.labelPosition === 'internal' && {
       paddingTop: pxToRem(14),
     }),
+    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
 
     '::-ms-clear': {
       display: 'none',
@@ -107,7 +106,7 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
       }),
   }),
 
-  container: (): ICSSInJSStyle => ({
+  inputContainer: (): ICSSInJSStyle => ({
     position: 'relative',
   }),
 };
