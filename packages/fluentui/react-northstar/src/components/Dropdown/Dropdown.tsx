@@ -329,17 +329,17 @@ function getFilteredValues(
         filteredItems: search(filteredItemsByValue, searchQuery),
         filteredItemStrings,
       };
-    } else {
-      return {
-        filteredItems: filteredItemsByValue.filter(
-          item =>
-            itemToString(item)
-              .toLowerCase()
-              .indexOf(searchQuery.toLowerCase()) !== -1,
-        ),
-        filteredItemStrings,
-      };
     }
+
+    return {
+      filteredItems: filteredItemsByValue.filter(
+        item =>
+          itemToString(item)
+            .toLowerCase()
+            .indexOf(searchQuery.toLowerCase()) !== -1,
+      ),
+      filteredItemStrings,
+    };
   }
 
   return {
@@ -511,7 +511,7 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
   const handleChange = (e: React.SyntheticEvent) => {
     // Dropdown component doesn't present any `input` component in markup, however all of our
     // components should handle events transparently.
-    _.invoke(props, 'onChange', e, { ...props, value: value });
+    _.invoke(props, 'onChange', e, { ...props, value });
   };
 
   const handleOnBlur = (e: React.SyntheticEvent) => {
@@ -1467,7 +1467,7 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
       clearStartingString.cancel();
       clearA11ySelectionMessage.cancel();
     };
-  }, []);
+  }, [clearA11ySelectionMessage, clearStartingString]);
 
   const element = (
     <ElementType
