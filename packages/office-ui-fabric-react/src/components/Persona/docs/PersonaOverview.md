@@ -4,4 +4,4 @@ A persona is used for a visual representation of a person across the products, t
 The complete control is comprised of an individual's avatar (an uploaded image or a composition of the person’s initials on a background color), their name or identification, and online status. 
  
  
-The persona control is used in the PeoplePicker and Facepile controls. 
+The persona control is used in the `PeoplePicker` and `Facepile` controls. 
