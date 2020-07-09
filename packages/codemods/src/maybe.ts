@@ -39,14 +39,18 @@ export const Nothing = <T>(): Nothing<T> => ({
 
 export const Just = <T>(value: T): Just<T> => ({ ..._makeMaybe<T>(), just: true, value });
 
-export function then<T, N>(maybe: Maybe<T>, fn: (v: T) => N): Maybe<N> {
-  return maybe.just ? Just(fn(maybe.value)) : Nothing();
+export function then<T, N>(mb: Maybe<T>, fn: (v: T) => N): Maybe<N> {
+  return mb.just ? Just(fn(mb.value)) : Nothing();
 }
 
-export function thenMaybe<T, N>(maybe: Maybe<T>, fn: (v: T) => Maybe<N>): Maybe<N> {
-  return maybe.just ? fn(maybe.value) : Nothing();
+export function thenMaybe<T, N>(mb: Maybe<T>, fn: (v: T) => Maybe<N>): Maybe<N> {
+  return mb.just ? fn(mb.value) : Nothing();
 }
 
-export function orElse<T>(maybe: Maybe<T>, mElse: T): T {
-  return maybe.just ? maybe.value : mElse;
+export function orElse<T>(mb: Maybe<T>, mElse: T): T {
+  return mb.just ? mb.value : mElse;
+}
+
+export function maybeOf<T>(value: T | undefined | null): Maybe<T> {
+  return !!value ? Just(value) : Nothing();
 }
