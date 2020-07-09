@@ -4,7 +4,7 @@ export interface CodeModResult {
   success?: boolean;
 }
 
-export interface Codemod<T = SourceFile> {
+export interface CodeMod<T = SourceFile> {
   /**
    * Each type of codemod can have multiple versions which work on different versions of its targeted package.
    * Must be valid semver.

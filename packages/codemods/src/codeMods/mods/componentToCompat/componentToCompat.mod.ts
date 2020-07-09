@@ -1,5 +1,5 @@
 import { runComponentToCompat, buildCompatHash, RawCompat, ComponentToCompat, getNamedExports } from './compatHelpers';
-import { Codemod } from '../../types';
+import { CodeMod } from '../../types';
 import { SourceFile } from 'ts-morph';
 
 // Not sure if this the best way to get all the things exported from button. It's dependent on version
@@ -37,7 +37,7 @@ export function createComponentToCompat(comp: RawCompat): ComponentToCompat {
   };
 }
 
-const ComponentToCompat: Codemod = {
+const ComponentToCompat: CodeMod = {
   run: (file: SourceFile) => {
     runComponentToCompat(file, buildCompatHash(exportMapping, createComponentToCompat), fabricindex);
     return { success: true };
