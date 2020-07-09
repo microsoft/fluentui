@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Calendar, DayOfWeek, defaultDayPickerStrings } from '@uifabric/date-time';
+import { Calendar, DayOfWeek, defaultDayPickerStrings, DateRangeType } from '@uifabric/date-time';
 
 import * as styles from './Calendar.Example.scss';
-import { DateRangeType } from '../../DatePicker';
 
 export interface ICalendarInlineExampleState {
   selectedDate?: Date;
