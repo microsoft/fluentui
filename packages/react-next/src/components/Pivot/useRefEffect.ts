@@ -10,33 +10,36 @@ import * as React from 'react';
  * @param callback - Called whenever the ref's value changes to non-null. Can optionally return a cleanup function.
  * @param initialValue - (Optional) The initial value for the ref.
  *
- * @returns A tuple of`[ref, setRef]`:
+ * @returns A tuple of `[ref, setRef]`:
  * * `ref` - Read-only view of the ref's current value
  * * `setRef` - A ref setter function that can be used to change the ref's current value.
  */
 export function useRefEffect<T>(
-  callback: (current: T) => (() => void) | void,
-  initialValue?: T | null,
-): [/*ref:*/ React.RefObject<T>, /*setRef:*/ (ele: T | null) => void] {
+  callback: (value: T) => (() => void) | void,
+  initialValue: T | null = null,
+): [/*ref:*/ React.RefObject<T>, /*setRef:*/ (value: T | null) => void] {
   type RefData = {
-    ref: React.MutableRefObject<T | null>;
-    setRef: (ele: T | null) => void;
+    readonly ref: React.MutableRefObject<T | null>;
+    readonly setRef: (value: T | null) => void;
+    currentCallback: (value: T) => (() => void) | void;
     cleanup?: (() => void) | void;
   };
 
   const data = React.useRef<RefData>({
-    ref: { current: initialValue !== undefined ? initialValue : null },
-    setRef: ele => {
-      if (data.ref.current !== ele) {
+    ref: { current: initialValue },
+    setRef: value => {
+      if (data.ref.current !== value) {
         if (data.cleanup) {
           data.cleanup();
-          data.cleanup = undefined;
         }
-        data.ref.current = ele;
-        data.cleanup = ele !== null ? callback(ele) : undefined;
+        data.ref.current = value;
+        data.cleanup = value !== null ? data.currentCallback(value) : undefined;
       }
     },
+    currentCallback: callback,
   }).current;
+
+  data.currentCallback = callback;
 
   return [data.ref, data.setRef];
 }
