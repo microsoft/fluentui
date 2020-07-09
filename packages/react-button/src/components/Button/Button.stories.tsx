@@ -20,10 +20,18 @@ const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={c
 
 const ButtonVariants = (props: ButtonProps) => (
   <Stack horizontal>
-    <Button content="Hello, world" icon="O" {...props} />
-    <Button primary content="Hello, world" icon="X" {...props} />
-    <Button disabled content="Hello, world" icon="X" {...props} />
-    <Button primary disabled content="Hello, world" icon="X" {...props} />
+    <Button {...props} icon="O">
+      Hello, world
+    </Button>
+    <Button {...props} primary icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} disabled icon="X">
+      Hello, world
+    </Button>
+    <Button {...props} primary disabled icon="X">
+      Hello, world
+    </Button>
   </Stack>
 );
 
@@ -37,10 +45,18 @@ export const ButtonCss = () => (
 
     <Text>A button can fill the width of its container using the `fluid` prop.</Text>
     <Stack horizontal>
-      <Button fluid content="Hello, world" icon="X" />
-      <Button fluid primary content="Hello, world" icon="X" />
-      <Button fluid disabled content="Hello, world" icon="X" />
-      <Button fluid primary disabled content="Hello, world" icon="X" />
+      <Button fluid icon="X">
+        Hello, world
+      </Button>
+      <Button fluid primary icon="X">
+        Hello, world
+      </Button>
+      <Button fluid disabled icon="X">
+        Hello, world
+      </Button>
+      <Button fluid primary disabled icon="X">
+        Hello, world
+      </Button>
     </Stack>
 
     <Text>A button can contain only an icon using the `iconOnly` prop.</Text>
@@ -101,8 +117,9 @@ export const ButtonTokens = () => (
             transform: 'none',
           },
         }}
-        content="Github: Open issue"
-      />
+      >
+        Github: Open issue
+      </Button>
       <Button
         tokens={{
           fontFamily: `"Amazon Ember", Arial, sans-serif`,
@@ -127,8 +144,9 @@ export const ButtonTokens = () => (
             borderColor: '#a88734 #9c7e31 #846a29',
           },
         }}
-        content="Amazon: Proceed to checkout"
-      />
+      >
+        Amazon: Proceed to checkout
+      </Button>
       <Button
         tokens={{
           borderWidth: '0px',
@@ -152,8 +170,9 @@ export const ButtonTokens = () => (
             borderColor: '#a88734 #9c7e31 #846a29',
           },
         }}
-        content="Netflix: Sign In"
-      />
+      >
+        Netflix: Sign In
+      </Button>
       <Button
         tokens={{
           height: '48px',
@@ -180,8 +199,9 @@ export const ButtonTokens = () => (
             borderColor: 'rgb(255, 255, 255)',
           },
         }}
-        content="Spotify: GET PREMIUM"
-      />
+      >
+        Spotify: GET PREMIUM
+      </Button>
       <Button
         tokens={{
           height: '52px',
@@ -195,13 +215,13 @@ export const ButtonTokens = () => (
           fontSize: '14px',
           fontWeight: '700',
         }}
-        content="Spotify: LEARN MORE"
-      />
+      >
+        Spotify: LEARN MORE
+      </Button>
     </Stack>
     <Text>A tokenized button can be customized for any size or padding.</Text>
     <Stack horizontal>
       <Button
-        content="I'm a small button with a large icon"
         icon="O"
         tokens={{
           height: '24px',
@@ -210,9 +230,10 @@ export const ButtonTokens = () => (
           padding: '0 8px',
           contentGap: '4px',
         }}
-      />
+      >
+        I'm a small button with a large icon
+      </Button>
       <Button
-        content="I'm a large button with a small icon"
         icon="O"
         tokens={{
           height: '70px',
@@ -220,7 +241,9 @@ export const ButtonTokens = () => (
           iconSize: '12px',
           padding: '0 40px',
         }}
-      />
+      >
+        I'm a large button with a small icon
+      </Button>
     </Stack>
   </Stack>
 );

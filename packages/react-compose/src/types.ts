@@ -149,6 +149,12 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
 // Component types
 //
 
+export interface ComponentProps {
+  as?: React.ElementType;
+
+  className?: string;
+}
+
 export interface BaseSlots {
   root: React.ElementType;
 }
