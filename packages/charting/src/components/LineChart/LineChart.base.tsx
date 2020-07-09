@@ -121,7 +121,7 @@ export class LineChartBase extends React.Component<
     ) {
       this._fitParentContainer();
       this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
-      this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
+      this._calloutPoints = this._calloutData(this._points) ? this._calloutData(this._points) : [];
     }
   }
 
