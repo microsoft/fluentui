@@ -78,6 +78,7 @@ export const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVar
     fontWeight: v.fontWeight,
     visibility: 'visible',
 
+    // It's necessary for the vertical alignment in a flex container with minHeight to work in IE11
     '::after': {
       content: '""',
       minHeight: 'inherit',
