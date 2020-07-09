@@ -1,3 +1,12 @@
+/**
+ * Maybe is a pattern that helps ensure that you don't need null checks everywhere.
+ * I endevoured to make it work the way promises do so it should feel familiar.
+ * Using Maybe.then means that you can chain many functions without needing to check for null/undefined
+ * constantly.
+ *
+ * CodeMods is an ideal place to use Maybe because there are numerous cases where something may or may
+ * not exist.
+ */
 export interface MB<T> {
   then: <N>(fn: (v: T) => N) => Maybe<N>;
   orElse: (mElse: T) => T;
