@@ -175,6 +175,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           href: item.href,
           disabled: !isActionable,
           itemProps: isActionable ? undefined : nonActionableItemProps,
+          role: item.role,
         };
       },
     );
@@ -204,11 +205,12 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     if (hasOverflowItems) {
       const iconProps = !onRenderOverflowIcon ? { iconName: 'More' } : {};
       const onRenderMenuIcon = onRenderOverflowIcon ? onRenderOverflowIcon : nullFunction;
+      const listItemRole = contextualItems[0].role ? contextualItems[0].role : 'listitem';
 
       itemElements.splice(
         overflowIndex!,
         0,
-        <li className={this._classNames.overflow} key={OVERFLOW_KEY}>
+        <li className={this._classNames.overflow} key={OVERFLOW_KEY} role={listItemRole}>
           <IconButton
             className={this._classNames.overflowButton}
             iconProps={iconProps}

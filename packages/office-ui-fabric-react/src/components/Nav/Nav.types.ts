@@ -127,10 +127,9 @@ export interface INavProps {
   selectedAriaLabel?: string;
 
   /**
-   * ARIA role for nav container. If not provided, the aria role will default to navigation.
-   * @defaultvalue navigation
+   * Optional override for the nav role. Defaults to `navigation`.
    */
-  role?: 'navigation' | 'presentation';
+  role?: string;
 }
 
 /**
@@ -278,9 +277,9 @@ export interface INavLink {
   collapseAriaLabel?: string;
 
   /**
-   * ARIA role for nav link. Defaults to listitem.
+   * Optional override for the item's role. Defaults to `listitem`.
    */
-  role?: 'listitem' | 'presentation';
+  role?: string;
 
   /**
    * (Optional) Any additional properties to apply to the rendered links.

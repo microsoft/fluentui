@@ -144,9 +144,9 @@ export interface IBreadcrumbItem {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
 
   /**
-   * Optional prop to specify the item aria role. Defaults to listitem
+   * Optional override for the item's role. Defaults to `listitem`.
    */
-  role?: 'listitem' | 'presentation';
+  role?: string;
 }
 
 /**
