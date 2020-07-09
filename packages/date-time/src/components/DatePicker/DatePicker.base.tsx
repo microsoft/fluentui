@@ -61,7 +61,18 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   weekNumberFormatString: 'Week number {0}',
 };
 
-export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
+export const DatePickerBase = React.forwardRef((props: IDatePickerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+  return <DatePickerBaseClass {...props} hoisted={{ forwardedRef }} />;
+});
+DatePickerBase.displayName = 'DatePickerBase';
+
+interface IDatePickerBaseClassProps extends IDatePickerProps {
+  hoisted: {
+    forwardedRef: React.Ref<HTMLDivElement>;
+  };
+}
+
+class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDatePickerState> implements IDatePicker {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
     formatDate: (date: Date) => {
@@ -106,7 +117,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
 
   private _async: Async;
 
-  constructor(props: IDatePickerProps) {
+  constructor(props: IDatePickerBaseClassProps) {
     super(props);
 
     this._async = new Async(this);
@@ -120,7 +131,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
   }
 
   // tslint:disable-next-line function-name
-  public UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void {
+  public UNSAFE_componentWillReceiveProps(nextProps: IDatePickerBaseClassProps): void {
     const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 
     if (
@@ -162,7 +173,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     }
   }
 
-  public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void {
+  public componentDidUpdate(prevProps: IDatePickerBaseClassProps, prevState: IDatePickerState): void {
     if (prevState.isDatePickerShown && !this.state.isDatePickerShown) {
       // In browsers like IE, textfield gets unfocused when datepicker is collapsed
       if (this.props.allowTextInput) {
@@ -222,7 +233,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     const iconProps = textFieldProps && textFieldProps.iconProps;
 
     return (
-      <div {...nativeProps} className={classNames.root}>
+      <div {...nativeProps} className={classNames.root} ref={this.props.hoisted.forwardedRef}>
         <div ref={this._datePickerDiv} aria-haspopup="true" aria-owns={isDatePickerShown ? calloutId : undefined}>
           <TextField
             role="combobox"
@@ -562,7 +573,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     }
   };
 
-  private _getDefaultState(props: IDatePickerProps = this.props): IDatePickerState {
+  private _getDefaultState(props: IDatePickerBaseClassProps = this.props): IDatePickerState {
     return {
       selectedDate: props.value || undefined,
       formattedDate: props.formatDate && props.value ? props.formatDate(props.value) : '',
