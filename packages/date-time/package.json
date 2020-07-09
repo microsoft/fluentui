@@ -22,6 +22,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev:storybook",
+    "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
     "update-snapshots": "just-scripts jest -u",
     "update-api": "just-scripts update-api"

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DayOfWeek, defaultDayPickerStrings, DateRangeType } from '@uifabric/date-time';
+import { Calendar, DayOfWeek, DateRangeType, defaultDayPickerStrings } from '@uifabric/date-time';
 
 import * as styles from './Calendar.Example.scss';
 
@@ -7,7 +7,7 @@ export interface ICalendarInlineExampleState {
   selectedDate?: Date;
 }
 
-export class CalendarInlineExample extends React.Component<{}, ICalendarInlineExampleState> {
+export class CalendarInlineOverlayedMonthExample extends React.Component<{}, ICalendarInlineExampleState> {
   public constructor(props: {}) {
     super(props);
 
@@ -24,8 +24,11 @@ export class CalendarInlineExample extends React.Component<{}, ICalendarInlineEx
           <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
         </div>
         <Calendar
+          showMonthPickerAsOverlay={true}
+          highlightCurrentMonth={false}
+          highlightSelectedMonth={true}
           dateRangeType={DateRangeType.Day}
-          showGoToToday={true}
+          showGoToToday={false}
           onSelectDate={this._onSelectDate}
           value={this.state.selectedDate}
           firstDayOfWeek={DayOfWeek.Sunday}
