@@ -5697,6 +5697,7 @@ export interface INavLink {
     links?: INavLink[];
     name: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
+    role?: 'listitem' | 'presentation';
     target?: string;
     title?: string;
     url: string;
@@ -5724,13 +5725,12 @@ export interface INavProps {
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
-    itemRole?: 'listitem' | 'presentation';
     linkAs?: IComponentAs<INavButtonProps>;
-    navRole?: 'list' | 'presentation';
     onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
+    role?: 'navigation' | 'presentation';
     // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;

@@ -125,6 +125,12 @@ export interface INavProps {
    * @deprecated Use ariaCurrent on links instead
    */
   selectedAriaLabel?: string;
+
+  /**
+   * ARIA role for nav container. If not provided, the aria role will default to navigation.
+   * @defaultvalue navigation
+   */
+  role?: 'navigation' | 'presentation';
 }
 
 /**
@@ -270,6 +276,11 @@ export interface INavLink {
    * ARIA label when group is collapsed and can be expanded.
    */
   collapseAriaLabel?: string;
+
+  /**
+   * ARIA role for nav link. Defaults to listitem.
+   */
+  role?: 'listitem' | 'presentation';
 
   /**
    * (Optional) Any additional properties to apply to the rendered links.

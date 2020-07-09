@@ -218,4 +218,39 @@ describe('Nav', () => {
     expect(links[2].getAttribute('rel')).toBe('noopener noreferrer');
     expect(links[3].getAttribute('rel')).toBe('noopener noreferrer');
   });
+
+  it('sets aria role for nav root element', () => {
+    const nav = mount<NavBase>(
+      <Nav
+        role="presentation"
+        groups={[
+          {
+            links: [linkOne, linkTwo],
+          },
+        ]}
+      />,
+    );
+
+    expect(nav.find('.ms-Nav').prop('role')).toEqual('presentation');
+  });
+
+  it('sets an aria role for each nav link', () => {
+    const nav = mount<NavBase>(
+      <Nav
+        role="presentation"
+        groups={[
+          {
+            links: [
+              {
+                name: 'foo',
+                url: 'http://example.com',
+                ['role']: 'presentation',
+              },
+            ],
+          },
+        ]}
+      />,
+    );
+    expect(nav.find('.ms-Nav-navItem').prop('role')).toEqual('presentation');
+  });
 });

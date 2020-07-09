@@ -63,10 +63,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const groupElements: React.ReactElement<{}>[] = groups.map(this._renderGroup);
 
     const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
-
+    const role = this.props.role ? this.props.role : 'navigation';
     return (
       <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone}>
-        <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
+        <nav role={role} className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>
       </FocusZone>
@@ -184,9 +184,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const { styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, { theme: theme!, groups });
+    const role = link.role ? link.role : 'listitem';
 
     return (
-      <li key={link.key || linkIndex} role="listitem" className={classNames.navItem}>
+      <li key={link.key || linkIndex} role={role} className={classNames.navItem}>
         {this._renderCompositeLink(link, linkIndex, nestingLevel)}
         {link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null}
       </li>
