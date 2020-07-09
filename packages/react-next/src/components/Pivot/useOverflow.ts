@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { getWindow } from '../../Utilities';
 import { observeResize } from './observeResize';
 import { useRefEffect } from './useRefEffect';
@@ -169,18 +168,5 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
     };
   });
 
-  return {
-    setMenuButtonRef: useDOMNodeRefCallback(setMenuButtonRef),
-  };
+  return { setMenuButtonRef };
 };
-
-// Allow the menu button to be hooked up to a React.Component, and find its DOM node
-function useDOMNodeRefCallback(setRef: (ele: HTMLElement | null) => void) {
-  return React.useCallback(
-    (arg: React.Component | HTMLElement | null) => {
-      const node = ReactDOM.findDOMNode(arg);
-      setRef(node instanceof HTMLElement ? node : null);
-    },
-    [setRef],
-  );
-}

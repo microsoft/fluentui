@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { KeyCodes, getNativeProps, divProperties, classNamesFunction, warn, css, getRTL } from '../../Utilities';
 import { CommandButton, IButton } from '../../compat/Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
@@ -7,7 +8,7 @@ import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { Icon } from '../../Icon';
 import { useId, useControllableValue } from '@uifabric/react-hooks';
-import { useOverflow, OverflowItemsChangedCallback } from './useOverflow';
+import { useOverflow } from './useOverflow';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -214,19 +215,30 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       alignTargetEdge: true,
       directionalHint: DirectionalHint.bottomRightEdge,
     };
-    const onOverflowItemsChanged: OverflowItemsChangedCallback = (overflowIndex, elements) => {
-      // Set data-is-overflowing on each item
-      elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
 
-      // Update the menu items
-      overflowMenuProps.items = linkCollection.links.slice(overflowIndex).map((link, index) => ({
-        key: link.itemKey || `${overflowIndex + index}`,
-        onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
-      }));
-    };
+    const overflow = useOverflow({
+      onOverflowItemsChanged: (overflowIndex, elements) => {
+        // Set data-is-overflowing on each item
+        elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
+
+        // Update the menu items
+        overflowMenuProps.items = linkCollection.links.slice(overflowIndex).map((link, index) => ({
+          key: link.itemKey || `${overflowIndex + index}`,
+          onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
+        }));
+      },
+      rtl: getRTL(theme),
+      pinnedIndex: renderedSelectedIndex,
+    });
 
     const overflowMenuButtonComponentRef = React.useRef<IButton>();
-    const overflow = useOverflow({ onOverflowItemsChanged, rtl: getRTL(theme), pinnedIndex: renderedSelectedIndex });
+    const setOverflowMenuButtonRef = React.useCallback(
+      (button: React.Component | null) => {
+        const node = ReactDOM.findDOMNode(button);
+        overflow.setMenuButtonRef(node instanceof HTMLElement ? node : null);
+      },
+      [overflow.setMenuButtonRef],
+    );
 
     return (
       <div role="toolbar" {...divProps} ref={ref}>
@@ -240,7 +252,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           {overflowBehavior === 'menu' && (
             <CommandButton
               className={classNames.overflowMenuButton}
-              ref={overflow.setMenuButtonRef}
+              ref={setOverflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef as React.RefObject<IButton>}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
