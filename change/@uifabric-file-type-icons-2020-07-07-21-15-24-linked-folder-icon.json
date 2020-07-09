@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add special folder icon support for LinkedFolder",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "hemanp@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-08T04:15:24.463Z"
+}
