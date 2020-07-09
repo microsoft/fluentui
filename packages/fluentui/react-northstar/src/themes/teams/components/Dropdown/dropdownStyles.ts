@@ -2,9 +2,9 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { dropdownSlotClassNames, DropdownStylesProps } from '../../../../components/Dropdown/Dropdown';
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import clearIndicatorUrl from './clearIndicatorUrl';
-import toggleIndicatorUrl from './toggleIndicatorUrl';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { clearIndicatorUrl } from './clearIndicatorUrl';
+import { toggleIndicatorUrl } from './toggleIndicatorUrl';
 
 const transparentColorStyle: ICSSInJSStyle = {
   backgroundColor: 'transparent',
@@ -34,7 +34,7 @@ const getWidth = (p: DropdownStylesProps, v: DropdownVariables): string => {
   return v.width;
 };
 
-const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, DropdownVariables> = {
+export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, DropdownVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({
     ...(p.inline && { display: 'inline-flex' }),
   }),
@@ -243,5 +243,3 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, DropdownV
     width: pxToRem(12),
   }),
 };
-
-export default dropdownStyles;

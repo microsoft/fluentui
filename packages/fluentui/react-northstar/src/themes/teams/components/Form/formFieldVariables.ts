@@ -11,6 +11,6 @@ export interface FormFieldVariables {
   colorScheme?: formFieldColorSchemeMapping;
 }
 
-export default (siteVariables: any): FormFieldVariables => ({
+export const formFieldVariables = (siteVariables: any): FormFieldVariables => ({
   colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, formFieldColorAreas),
 });

@@ -55,7 +55,6 @@ const styles = mergeStyleSets({
 
 const useForceUpdate = () => {
   const [, setCount] = React.useState(0);
-  console.log('update');
   return useConstCallback(() => setCount(current => current + 1));
 };
 

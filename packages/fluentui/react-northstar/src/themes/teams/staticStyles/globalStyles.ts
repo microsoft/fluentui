@@ -1,6 +1,6 @@
 import { StaticStyleFunction } from '@fluentui/styles';
 
-const globalStyles: StaticStyleFunction = siteVars => ({
+export const globalStyles: StaticStyleFunction = siteVars => ({
   body: {
     padding: siteVars.bodyPadding,
     margin: siteVars.bodyMargin,
@@ -18,5 +18,3 @@ const globalStyles: StaticStyleFunction = siteVars => ({
     boxSizing: 'border-box',
   },
 });
-
-export default globalStyles;

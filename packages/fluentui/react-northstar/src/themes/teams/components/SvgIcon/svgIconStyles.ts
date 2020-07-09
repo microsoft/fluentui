@@ -47,7 +47,7 @@ const getXSpacingStyles = (xSpacing: SvgIconXSpacing, horizontalSpace: string): 
   }
 };
 
-const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVariables> = {
+export const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     speak: 'none',
     verticalAlign: 'middle',
@@ -118,5 +118,3 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
     fill: v.redColor,
   }),
 };
-
-export default svgIconStyles;

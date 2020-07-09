@@ -1,8 +1,8 @@
 {
   "type": "none",
-  "comment": "Update tests that made assumptions about styled components",
+  "comment": "No change",
   "packageName": "office-ui-fabric-react",
   "email": "miclo@microsoft.com",
   "dependentChangeType": "none",
-  "date": "2020-07-01T23:26:30.198Z"
+  "date": "2020-07-08T18:15:48.607Z"
 }
