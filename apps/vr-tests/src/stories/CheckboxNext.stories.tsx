@@ -9,6 +9,7 @@ import {
   Persona,
   PersonaSize,
   ThemeProvider,
+  Icon,
 } from '@fluentui/react-next';
 
 storiesOf('Checkbox Next', module)
@@ -66,6 +67,12 @@ storiesOf('Checkbox Next', module)
           return <Persona text="Persona Checkbox" size={PersonaSize.size32} />;
         },
       }}
+    />
+  ))
+  .addStory('Custom render CheckMark icon', () => (
+    <Checkbox
+      label="Checkbox with customized icon"
+      checkmark={{ children: () => <Icon iconName="CheckboxComposite" /> }}
     />
   ));
 

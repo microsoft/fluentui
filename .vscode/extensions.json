@@ -4,6 +4,7 @@
   "recommendations": [
     // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
     "eg2.tslint", // remove after moving to ESLint
+    // "dbaeumer.vscode-eslint", // uncomment after moving to ESLint
     "asvetliakov.snapshot-tools",
     "esbenp.prettier-vscode"
   ]

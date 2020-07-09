@@ -143,7 +143,7 @@ describe('Toggle', () => {
       </form>,
     );
     const button: any = wrapper.find('button');
-    // simulate to change toggle state
+    // Simulate to change toggle state.
     button.simulate('click');
     expect((component as React.Component<any, any>).state.checked).toEqual(true);
     expect(onSubmit.called).toEqual(false);
@@ -186,8 +186,8 @@ describe('Toggle', () => {
       ).toBe('ToggleId-stateText');
     });
 
-    it('is labelled by the state text element if no aria labels are provided and no label is provided', () => {
-      const component = mount(<Toggle onText="On" offText="Off" id="ToggleId" />);
+    it('is labelled by the label AND state text elements if no aria labels are provided', () => {
+      const component = mount(<Toggle label="Label" onText="On" offText="Off" id="ToggleId" />);
 
       expect(
         component
@@ -195,7 +195,7 @@ describe('Toggle', () => {
           .first()
           .getDOMNode()
           .getAttribute('aria-labelledby'),
-      ).toBe('ToggleId-stateText');
+      ).toBe('ToggleId-label ToggleId-stateText');
     });
   });
 });

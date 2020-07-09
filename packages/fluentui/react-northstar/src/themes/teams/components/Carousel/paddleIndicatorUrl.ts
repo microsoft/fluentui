@@ -1,4 +1,4 @@
-export default (color: string, next: boolean) => {
+export const paddleIndicatorUrl = (color: string, next: boolean) => {
   return next
     ? `url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' role='presentation' focusable='false' viewBox='8 8 16 16'%3E%3Cg%3E%3Cpath fill='${encodeURIComponent(
         color,

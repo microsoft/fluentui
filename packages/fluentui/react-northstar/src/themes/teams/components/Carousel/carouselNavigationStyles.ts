@@ -4,7 +4,7 @@ import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { pxToRem } from '../../../../utils';
 import { getColorScheme } from '../../colors';
 
-const carouselNavigationStyles: ComponentSlotStylesPrepared<
+export const carouselNavigationStyles: ComponentSlotStylesPrepared<
   CarouselNavigationStylesProps,
   CarouselNavigationVariables
 > = {
@@ -49,5 +49,3 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<
     };
   },
 };
-
-export default carouselNavigationStyles;
