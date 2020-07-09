@@ -3,7 +3,7 @@ import { IBaseProps, ISize } from '../../Utilities';
 
 export type FolderCoverSize = 'small' | 'large';
 
-export type FolderCoverType = 'default' | 'media';
+export type FolderCoverType = 'default' | 'media' | 'linked';
 
 export interface IFolderCoverChildrenProps {
   contentSize: ISize;

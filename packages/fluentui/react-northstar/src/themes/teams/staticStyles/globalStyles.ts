@@ -17,4 +17,8 @@ export const globalStyles: StaticStyleFunction = siteVars => ({
   '*:after': {
     boxSizing: 'border-box',
   },
+  /* Adding priority for HTML `hidden` attribute to be applied correctly */
+  '[hidden]': {
+    display: 'none!important',
+  },
 });

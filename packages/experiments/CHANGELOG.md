@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.27.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.12..@uifabric/experiments_v7.27.0)
+
+### Minor changes
+
+- Support for linked folder in FolderCover component ([PR #13960](https://github.com/microsoft/fluentui/pull/13960) by hemanp@microsoft.com)
 
 ## [7.26.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.12)
 

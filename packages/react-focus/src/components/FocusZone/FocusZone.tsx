@@ -1111,7 +1111,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     let candidateElement = undefined;
     let targetTop = -1;
     let targetBottom = -1;
-    const pagesize = scrollableParent.clientHeight;
+    const pagesize = (scrollableParent as HTMLElement).clientHeight;
     const activeRect = element.getBoundingClientRect();
     do {
       element = isForward

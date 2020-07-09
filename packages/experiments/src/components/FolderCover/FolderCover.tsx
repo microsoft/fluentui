@@ -44,6 +44,10 @@ const ASSETS: {
       back: `folderCoverSmallDefaultBack`,
       front: `folderCoverSmallDefaultFront`,
     },
+    linked: {
+      back: `folderCoverSmallLinkedBack`,
+      front: `folderCoverSmallLinkedFront`,
+    },
     media: {
       back: `folderCoverSmallMediaBack`,
       front: `folderCoverSmallMediaFront`,
@@ -53,6 +57,10 @@ const ASSETS: {
     default: {
       back: `folderCoverLargeDefaultBack`,
       front: `folderCoverLargeDefaultFront`,
+    },
+    linked: {
+      back: `folderCoverLargeLinkedBack`,
+      front: `folderCoverLargeLinkedFront`,
     },
     media: {
       back: `folderCoverLargeMediaBack`,
@@ -88,6 +96,7 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           [`ms-FolderCover--isLarge ${FolderCoverStyles.isLarge}`]: size === 'large',
           [`ms-FolderCover--isDefault ${FolderCoverStyles.isDefault}`]: type === 'default',
           [`ms-FolderCover--isMedia ${FolderCoverStyles.isMedia}`]: type === 'media',
+          [`ms-FolderCover--isLinked ${FolderCoverStyles.isLinked}`]: type === 'linked',
           [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent,
           [`ms-FolderCover--isFluent ${FolderCoverStyles.isFluent}`]: true,
         })}

@@ -1,12 +1,13 @@
-import { Codemod } from '../codeMods/types';
+import { CodeMod } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Range } from 'semver';
+import { Maybe, Nothing, Just } from '../maybe';
 
 // TODO ensure that async for all these utilities works
 export function runMods<T>(
-  codeMods: Codemod<T>[],
+  codeMods: CodeMod<T>[],
   sources: T[],
-  loggingCallback: (result: { mod: Codemod<T>; file: T; error?: Error }) => void,
+  loggingCallback: (result: { mod: CodeMod<T>; file: T; error?: Error }) => void,
 ) {
   for (const file of sources) {
     // Run every mod on each file?
@@ -60,27 +61,29 @@ export function getTsConfigs(root: string = process.cwd()) {
   return glob.found;
 }
 
-// TODO this is a great place for maybe, this pattern will probably be a bunch of places.
-export function loadMod(path: string, errorCallback: (e: Error) => void): { success: boolean; mod?: Codemod } {
+export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<CodeMod> {
   try {
     const mod = require(path).default;
-    if (mod) {
-      return { success: true, mod };
-    }
+    return Maybe<CodeMod>(mod);
   } catch (e) {
     errorCallback(e);
   }
 
-  return { success: false };
+  return Nothing();
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function filterMods(codeMods: Codemod<any>[], semvarRange: Range) {
-  return codeMods.filter(mod => shouldRunMod(mod, semvarRange));
+export function filterMods(codeMods: CodeMod<any>[], semverRange: Range) {
+  return codeMods.filter(mod => shouldRunMod(mod, semverRange));
 }
 
 // Defaults to allowing almost any version to run.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function shouldRunMod(mod: Codemod<any>, semvarRange: Range = new Range('>0 <1000')) {
-  return mod.enabled && semvarRange.test(mod.version || '*');
+export function shouldRunMod(mod: CodeMod<any>, semverRange: Range = new Range('>0 <1000')) {
+  return mod.enabled && semverRange.test(mod.version || '*');
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function modEnabled(mod: Maybe<CodeMod<any>>): mod is Just<CodeMod<any>> {
+  return mod.then(v => !!v.enabled).orElse(false);
 }
