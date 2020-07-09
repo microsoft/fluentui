@@ -142,6 +142,11 @@ export interface IBreadcrumbItem {
    * This is not generally recommended because it may prevent activating the link using the keyboard.
    */
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
+
+  /**
+   * Optional prop to specify the item aria role. Defaults to listitem
+   */
+  role?: 'listitem' | 'presentation';
 }
 
 /**

@@ -535,7 +535,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     readonly indeterminate: boolean;
     render(): JSX.Element;
-}
+    }
 
 // @public (undocumented)
 export enum CheckboxVisibility {
@@ -1766,6 +1766,7 @@ export interface IBreadcrumbItem {
     isCurrentItem?: boolean;
     key: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    role?: 'listitem' | 'presentation';
     text: string;
 }
 
@@ -5723,7 +5724,9 @@ export interface INavProps {
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
+    itemRole?: 'listitem' | 'presentation';
     linkAs?: IComponentAs<INavButtonProps>;
+    navRole?: 'list' | 'presentation';
     onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
@@ -8104,7 +8107,7 @@ export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
-}
+    }
 
 // @public
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {

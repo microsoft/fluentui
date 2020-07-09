@@ -162,4 +162,14 @@ describe('Breadcrumb', () => {
     expect(overfowItems[0].textContent).toEqual('TestText1');
     expect(overfowItems[1].textContent).toEqual('TestText2');
   });
+
+  it('sets breadcrumb item role', () => {
+    const items3: IBreadcrumbItem[] = [
+      { text: 'Test1', key: 'Test1', role: 'presentation' },
+      { text: 'Test2', key: 'Test2', role: 'presentation' },
+      { text: 'Test3', key: 'Test3', role: 'presentation' },
+    ];
+    wrapper = mount(<Breadcrumb items={items3} />);
+    expect(wrapper.find('li[role="presentation"]').length).toEqual(3);
+  });
 });

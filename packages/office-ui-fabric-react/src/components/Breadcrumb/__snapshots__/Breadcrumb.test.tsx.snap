@@ -260,6 +260,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -348,6 +349,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -477,6 +479,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -565,6 +568,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -653,6 +657,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -741,6 +746,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -870,6 +876,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -932,6 +939,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -994,6 +1002,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -1056,6 +1065,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -1185,6 +1195,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -1934,6 +1945,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -2022,6 +2034,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -2151,6 +2164,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=
@@ -2432,6 +2446,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                     color: #323130;
                     font-weight: 600;
                   }
+              role="listitem"
             >
               <span
                 className=

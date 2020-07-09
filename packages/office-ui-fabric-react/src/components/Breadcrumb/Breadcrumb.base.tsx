@@ -185,7 +185,11 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     const hasOverflowItems = renderedOverflowItems && renderedOverflowItems.length !== 0;
 
     const itemElements: JSX.Element[] = renderedItems.map((item, index) => (
-      <li className={this._classNames.listItem} key={item.key || String(index)}>
+      <li
+        className={this._classNames.listItem}
+        key={item.key || String(index)}
+        role={item.role ? item.role : 'listitem'}
+      >
         {onRenderItem(item, this._onRenderItem)}
         {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
           <DividerType
