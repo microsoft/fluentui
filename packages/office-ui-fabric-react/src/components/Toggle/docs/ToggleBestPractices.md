@@ -1,6 +1,6 @@
 ### Layout
 
-- Alternatively, use a check box when people need to perform extra steps for changes to take effect. For example, if they must click a "Submit", "Next", or "OK" button to apply changes, use a check box.
+- When people need to perform extra steps for changes to take effect, use a check box instead. For example, if they must click a "Submit", "Next", or "OK" button to apply changes, use a check box.
 
 ### Content
 
