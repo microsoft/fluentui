@@ -8,7 +8,7 @@ const Types = () => (
     <ComponentExample
       title="Default"
       description="Default Datepicker"
-      examplePath="components/Datepicker/Usage/DatepickerExample"
+      examplePath="components/Datepicker/Types/DatepickerExample"
     />
   </ExampleSection>
 );
