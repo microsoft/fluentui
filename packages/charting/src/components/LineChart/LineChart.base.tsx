@@ -7,7 +7,14 @@ import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, ILineChartPoin
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, createNumericXAxis, createDateXAxis, createYAxis, fitContainer } from '../../utilities/index';
+import {
+  calloutData,
+  createNumericXAxis,
+  createDateXAxis,
+  createYAxis,
+  fitContainer,
+  IMargins,
+} from '../../utilities/index';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
@@ -60,7 +67,7 @@ export class LineChartBase extends React.Component<
   private _verticalLine: string;
   private _uniqueCallOutID: string;
   // These margins are necessary for d3Scales to appear without cutting off
-  private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private margins: IMargins;
   private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
     super(props);
@@ -84,6 +91,12 @@ export class LineChartBase extends React.Component<
     this._calloutPoints = calloutData(this._points) ? calloutData(this._points) : [];
     this._circleId = getId('circle');
     this._verticalLine = getId('verticalLine');
+    this.margins = {
+      top: this.props.margins?.top || 20,
+      right: this.props.margins?.right || 20,
+      bottom: this.props.margins?.bottom || 35,
+      left: this.props.margins?.left || 35,
+    };
     this._fitParentContainer = this._fitParentContainer.bind(this);
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -102,8 +115,14 @@ export class LineChartBase extends React.Component<
     /** note that height and width are not used to resize or set as dimesions of the chart,
      * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
      */
-    if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
+    if (
+      prevProps.height !== this.props.height ||
+      prevProps.width !== this.props.width ||
+      prevProps.data !== this.props.data
+    ) {
       this._fitParentContainer();
+      this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
+      this._calloutPoints = calloutData(this._points) ? calloutData(this._points) : [];
     }
   }
 
@@ -136,7 +155,7 @@ export class LineChartBase extends React.Component<
     let lines: JSX.Element[] = [];
     if (dataPresent) {
       const XAxisParams = {
-        margins: this.margins,
+        margins: this.margins as IMargins,
         containerWidth: this.state.containerWidth,
         xAxisElement: this.xAxisElement!,
       };
@@ -190,7 +209,7 @@ export class LineChartBase extends React.Component<
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
               }}
-              transform={`translate(0, ${svgDimensions.height - 35})`}
+              transform={`translate(0, ${svgDimensions.height - this.margins.bottom!})`}
               className={this._classNames.xAxis}
             />
             <g
@@ -217,7 +236,7 @@ export class LineChartBase extends React.Component<
               <EventsAnnotation
                 {...eventAnnotationProps}
                 scale={this._xAxisScale}
-                chartYTop={this.margins.top + this.eventLabelHeight}
+                chartYTop={this.margins.top! + this.eventLabelHeight}
                 chartYBottom={svgDimensions.height - 35}
               />
             )}
@@ -253,6 +272,7 @@ export class LineChartBase extends React.Component<
                       index: number,
                     ) => (
                       <div
+                        id={`${index}_${xValue.y}`}
                         className={mergeStyles(this._classNames.calloutBlockContainer, {
                           borderLeft: `4px solid ${xValue.color}`,
                         })}
@@ -367,6 +387,9 @@ export class LineChartBase extends React.Component<
               ref={(e: SVGLineElement | null) => {
                 this._refCallback(e!, lineId);
               }}
+              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData, circleId)}
+              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData, circleId)}
+              onMouseOut={this._handleMouseOut.bind(this, circleId, lineColor)}
               stroke={lineColor}
               strokeLinecap={'round'}
               opacity={1}
@@ -428,17 +451,6 @@ export class LineChartBase extends React.Component<
           }
         } else {
           lines.push(
-            <circle
-              id={circleId}
-              key={lineId + 1}
-              r={5}
-              cx={this._xAxisScale(x1)}
-              cy={this._yAxisScale(y1)}
-              opacity={0.1}
-              fill={lineColor}
-            />,
-          );
-          lines.push(
             <line
               id={lineId}
               key={lineId}
@@ -452,19 +464,6 @@ export class LineChartBase extends React.Component<
               opacity={0.1}
             />,
           );
-          if (j + 1 === this._points[i].data.length) {
-            lines.push(
-              <circle
-                id={circleId}
-                key={lineId + 2}
-                r={5}
-                cx={this._xAxisScale(x2)}
-                cy={this._yAxisScale(y2)}
-                fill={lineColor}
-                opacity={0.1}
-              />,
-            );
-          }
         }
       }
     }
@@ -522,8 +521,7 @@ export class LineChartBase extends React.Component<
     const _this = this;
     d3Select(`#${circleId}`)
       .attr('fill', '#fff')
-      .attr('r', 8)
-      .attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
+      .attr('r', 8);
     d3Select(`#${this._verticalLine}`)
       .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
       .attr('visibility', 'visibility');

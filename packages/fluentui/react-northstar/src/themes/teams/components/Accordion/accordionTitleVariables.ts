@@ -1,3 +1,1 @@
-import accordionVariables from './accordionVariables';
-
-export default accordionVariables;
+export { accordionVariables as accordionTitleVariables } from './accordionVariables';

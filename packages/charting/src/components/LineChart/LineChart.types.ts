@@ -4,7 +4,7 @@ import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IChartProps } from '../../types/IDataPoint';
 import { IEventAnnotation } from '../../types/IEventAnnotation';
-
+import { IMargins } from '../../utilities/index';
 export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/IDataPoint';
 
 export interface ILineChart {}
@@ -141,6 +141,11 @@ export interface ILineChartProps {
    * Show event annotation
    */
   eventAnnotationProps?: IEventsAnnotationProps;
+
+  /**
+   * Margins for the chart
+   */
+  margins?: IMargins;
 }
 
 export interface IEventsAnnotationProps {

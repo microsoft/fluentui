@@ -5,13 +5,27 @@ import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale
 import { select as d3Select } from 'd3-selection';
 import * as d3TimeFormat from 'd3-time-format';
 
+export interface IMargins {
+  /**
+   * left margin for the chart.
+   */
+  left?: number;
+  /**
+   * Right margin for the chart.
+   */
+  right?: number;
+  /**
+   * Top margin for the chart.
+   */
+  top?: number;
+  /**
+   * Bottom margin for the chart.
+   */
+  bottom?: number;
+}
+
 export interface IXAxisParams {
-  margins: {
-    top: number;
-    right: number;
-    bottom: number;
-    left: number;
-  };
+  margins: IMargins;
   containerWidth: number;
   xAxisElement?: SVGElement | null;
   xMin?: number | Date | null;
@@ -27,12 +41,7 @@ export interface ITickParams {
 }
 
 export interface IYAxisParams {
-  margins: {
-    top: number;
-    right: number;
-    bottom: number;
-    left: number;
-  };
+  margins: IMargins;
   containerWidth: number;
   containerHeight: number;
   yAxisElement?: SVGElement | null;
@@ -86,7 +95,7 @@ export function createNumericXAxis(points: ILineChartPoints[], xAxisParams: IXAx
       })!;
   const xAxisScale = d3ScaleLinear()
     .domain([xMinVal, xMaxVal])
-    .range([margins.left, containerWidth - margins.right]);
+    .range([margins.left!, containerWidth - margins.right!]);
   showRoundOffXTickValues && xAxisScale.nice();
 
   const xAxis = d3AxisBottom(xAxisScale)
@@ -121,7 +130,7 @@ export function createDateXAxis(points: ILineChartPoints[], xAxisParams: IXAxisP
 
   const xAxisScale = d3ScaleTime()
     .domain([sDate, lDate])
-    .range([xAxisParams.margins.left, xAxisParams.containerWidth - xAxisParams.margins.right]);
+    .range([xAxisParams.margins.left!, xAxisParams.containerWidth - xAxisParams.margins.right!]);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(10)
     .tickPadding(10);
@@ -180,12 +189,12 @@ export function createYAxis(points: ILineChartPoints[], yAxisParams: IYAxisParam
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
-    .range([containerHeight - margins.bottom, margins.top + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const yAxis = d3AxisLeft(yAxisScale)
     .tickPadding(tickPadding)
     .tickValues(domainValues);
   !!yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.ticks(yAxisTickCount, 's');
-  showYAxisGridLines && yAxis.tickSizeInner(-(containerWidth - margins.left - margins.right));
+  showYAxisGridLines && yAxis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisElement
     ? d3Select(yAxisElement)
         .call(yAxis)

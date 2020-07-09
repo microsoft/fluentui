@@ -3,7 +3,7 @@ export interface VideoVariables {
   height: string;
 }
 
-export default (): VideoVariables => ({
+export const videoVariables = (): VideoVariables => ({
   width: undefined,
   height: undefined,
 });

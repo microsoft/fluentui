@@ -1,8 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Jul 2020 12:35:23 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jul 2020 12:34:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.121.11](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.11)
+
+Wed, 08 Jul 2020 12:34:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.10..office-ui-fabric-react_v7.121.11)
+
+### Patches
+
+- Removing console.log from MarqueeSelection Example. ([PR #13941](https://github.com/microsoft/fluentui/pull/13941) by czearing@outlook.com)
+
+## [7.121.10](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.10)
+
+Tue, 07 Jul 2020 12:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.9..office-ui-fabric-react_v7.121.10)
+
+### Patches
+
+- Combine labelId and StateTextId in labelledById and update tests ([PR #13886](https://github.com/microsoft/fluentui/pull/13886) by t-dama@microsoft.com)
 
 ## [7.121.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.7)
 
