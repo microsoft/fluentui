@@ -180,6 +180,14 @@ storiesOf('Card', module)
         .hover('.ms-Card')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .end()
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
       }
     >
       {story()}
