@@ -9,12 +9,14 @@
  */
 export interface MB<T> {
   then: <N>(fn: (v: T) => N) => Maybe<N>;
+  thenMaybe: <N>(fn: (v: T) => Maybe<N>) => Maybe<N>;
   orElse: (mElse: T) => T;
 }
 
 function _makeMaybe<T>(): MB<T> {
   const mb: Partial<Maybe<T>> = {};
   mb.then = then.bind(null, mb);
+  mb.thenMaybe = thenMaybe.bind(null, mb);
   mb.orElse = orElse.bind(null, mb);
   return mb as MB<T>;
 }
@@ -39,6 +41,9 @@ export const Just = <T>(value: T): Just<T> => ({ ..._makeMaybe<T>(), just: true,
 
 export function then<T, N>(maybe: Maybe<T>, fn: (v: T) => N): Maybe<N> {
   return maybe.just ? Just(fn(maybe.value)) : Nothing();
+}
+export function thenMaybe<T, N>(maybe: Maybe<T>, fn: (v: T) => Maybe<N>): Maybe<N> {
+  return maybe.just ? fn(maybe.value) : Nothing();
 }
 
 export function orElse<T>(maybe: Maybe<T>, mElse: T): T {
