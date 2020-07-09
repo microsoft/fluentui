@@ -78,6 +78,13 @@ export const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVar
     fontWeight: v.fontWeight,
     visibility: 'visible',
 
+    '::after': {
+      content: '""',
+      minHeight: 'inherit',
+      fontSize: 0,
+      display: 'block',
+    },
+
     ...getIntentColorsFromProps(p, v, siteVariables),
 
     ...((p.attached === 'top' || p.attached === true) && {
