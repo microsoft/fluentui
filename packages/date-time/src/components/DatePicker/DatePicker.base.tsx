@@ -97,6 +97,16 @@ const DEFAULT_PROPS = {
   allFocusable: false,
 } as const;
 
+function useFocusLogic() {
+  const textFieldRef = React.useRef<ITextField>(null);
+
+  const focus = () => {
+    textFieldRef.current?.focus?.();
+  };
+
+  return [textFieldRef, focus] as const;
+}
+
 export const DatePickerBase = React.forwardRef(
   (propsWithoutDefaults: IDatePickerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -104,7 +114,9 @@ export const DatePickerBase = React.forwardRef(
     const id = useId('DatePicker', props.id);
     const calloutId = useId('DatePicker-Callout');
 
-    return <DatePickerBaseClass {...props} hoisted={{ forwardedRef, id, calloutId }} />;
+    const [textFieldRef, focus] = useFocusLogic();
+
+    return <DatePickerBaseClass {...props} hoisted={{ forwardedRef, id, calloutId, textFieldRef, focus }} />;
   },
 );
 DatePickerBase.displayName = 'DatePickerBase';
@@ -114,13 +126,14 @@ interface IDatePickerBaseClassProps extends IDatePickerProps {
     forwardedRef: React.Ref<HTMLDivElement>;
     id: string;
     calloutId: string;
+    textFieldRef: React.RefObject<ITextField>;
+    focus(): void;
   };
 }
 
 class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDatePickerState> implements IDatePicker {
   private _calendar = React.createRef<ICalendar>();
   private _datePickerDiv = React.createRef<HTMLDivElement>();
-  private _textField = React.createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
 
   private _async: Async;
@@ -254,7 +267,7 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDa
             placeholder={placeholder}
             borderless={borderless}
             value={formattedDate}
-            componentRef={this._textField}
+            componentRef={this.props.hoisted.textFieldRef}
             underlined={underlined}
             tabIndex={tabIndex}
             readOnly={!allowTextInput}
@@ -320,9 +333,7 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDa
   }
 
   public focus(): void {
-    if (this._textField.current) {
-      this._textField.current.focus();
-    }
+    this.props.hoisted.focus();
   }
 
   public reset(): void {
