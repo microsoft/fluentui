@@ -669,12 +669,12 @@ describe('Dropdown', () => {
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
 
-      jest.advanceTimersByTime(Dropdown.charKeyPressedCleanupTime / 2);
+      jest.advanceTimersByTime(500 /* charKeyPressedCleanupTime */ / 2);
       keyDownOnItemsList('L');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
 
-      jest.advanceTimersByTime(Dropdown.charKeyPressedCleanupTime / 2);
+      jest.advanceTimersByTime(500 /* charKeyPressedCleanupTime */ / 2);
       keyDownOnItemsList('E');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
