@@ -1,5 +1,4 @@
 import { runMods, getModsPaths, getTsConfigs, modEnabled, loadMod } from './modRunner/runnerUtilities';
-import { CodeMod } from './codeMods/types';
 import { Project } from 'ts-morph';
 
 // TODO actually do console logging, implement some nice callbacks.
@@ -12,12 +11,8 @@ export function upgrade() {
         console.error(e);
       });
     })
-    .reduce((acc: CodeMod[], c) => {
-      if (modEnabled(c)) {
-        acc.push(c.value);
-      }
-      return acc;
-    }, []);
+    .filter(modEnabled)
+    .map(v => v.value);
 
   console.log('getting configs');
   const configs = getTsConfigs();

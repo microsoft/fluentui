@@ -61,7 +61,6 @@ export function getTsConfigs(root: string = process.cwd()) {
   return glob.found;
 }
 
-// TODO this is a great place for maybe, this pattern will probably be a bunch of places.
 export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<CodeMod> {
   try {
     const mod = require(path).default;
@@ -76,14 +75,14 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<
 }
 
 // tslint:disable-next-line: no-any
-export function filterMods(codeMods: CodeMod<any>[], semvarRange: Range) {
-  return codeMods.filter(mod => shouldRunMod(mod, semvarRange));
+export function filterMods(codeMods: CodeMod<any>[], semverRange: Range) {
+  return codeMods.filter(mod => shouldRunMod(mod, semverRange));
 }
 
 // Defaults to allowing almost any version to run.
 // tslint:disable-next-line: no-any
-export function shouldRunMod(mod: CodeMod<any>, semvarRange: Range = new Range('>0 <1000')) {
-  return mod.enabled && semvarRange.test(mod.version || '*');
+export function shouldRunMod(mod: CodeMod<any>, semverRange: Range = new Range('>0 <1000')) {
+  return mod.enabled && semverRange.test(mod.version || '*');
 }
 
 // tslint:disable-next-line: no-any
