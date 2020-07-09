@@ -312,7 +312,9 @@ function normalizeValue(multiple: boolean, rawValue: DropdownProps['value']): Sh
  * their string equivalents, in order to be used throughout the component.
  */
 function getFilteredValues(
-  options: Pick<DropdownProps, 'multiple' | 'items' | 'itemToValue' | 'itemToString' | 'search' | 'searchQuery'> & {
+  options: Required<
+    Pick<DropdownProps, 'multiple' | 'items' | 'itemToValue' | 'itemToString' | 'search' | 'searchQuery'>
+  > & {
     value: ShorthandCollection<DropdownItemProps>;
   },
 ) {
@@ -428,7 +430,7 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
     value: props.activeSelectedIndex,
   });
   const [highlightedIndex, setHighlightedIndex] = useAutoControlled<number | null>({
-    defaultValue: props.defaultActiveSelectedIndex,
+    defaultValue: props.defaultHighlightedIndex,
     initialValue: highlightFirstItemOnOpen ? 0 : null,
     value: props.highlightedIndex,
   });
@@ -1144,11 +1146,9 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
   };
 
   const tryRemoveItemFromValue = () => {
-    const inputElement = inputRef.current;
-
     if (
       multiple &&
-      (searchQuery === '' || (inputElement.selectionStart === 0 && inputElement.selectionEnd === 0)) &&
+      (searchQuery === '' || (inputRef.current.selectionStart === 0 && inputRef.current.selectionEnd === 0)) &&
       value.length > 0
     ) {
       removeItemFromValue();
@@ -1292,7 +1292,7 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
     const newStartingString = `${startingString}${keyString.toLowerCase()}`;
     let newHighlightedIndex = -1;
 
-    setStartingString(startingString);
+    setStartingString(newStartingString);
     clearStartingString();
 
     if (_.isNumber(highlightedIndex)) {
@@ -1331,7 +1331,7 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
   const removeItemFromValue = (item?: ShorthandValue<DropdownItemProps>) => {
     let poppedItem = item;
-    let newValue = value;
+    let newValue = [...value];
 
     if (poppedItem) {
       newValue = newValue.filter(currentElement => currentElement !== item);
@@ -1470,7 +1470,13 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
   }, []);
 
   const element = (
-    <ElementType className={classes.root} onBlur={handleOnBlur} onChange={handleChange} {...unhandledProps}>
+    <ElementType
+      className={classes.root}
+      onBlur={handleOnBlur}
+      onChange={handleChange}
+      {...unhandledProps}
+      {...(process.env.NODE_ENV === 'test' && { 'data-test-focused': focused })}
+    >
       <Downshift
         isOpen={open}
         inputValue={search ? searchQuery : null}
