@@ -42,6 +42,7 @@ export const Just = <T>(value: T): Just<T> => ({ ..._makeMaybe<T>(), just: true,
 export function then<T, N>(maybe: Maybe<T>, fn: (v: T) => N): Maybe<N> {
   return maybe.just ? Just(fn(maybe.value)) : Nothing();
 }
+
 export function thenMaybe<T, N>(maybe: Maybe<T>, fn: (v: T) => Maybe<N>): Maybe<N> {
   return maybe.just ? fn(maybe.value) : Nothing();
 }
