@@ -13,13 +13,13 @@ export interface MB<T> {
   orElse: (mElse: T) => T;
 }
 
-function _makeMaybe<T>(): MB<T> {
+const _makeMaybe = <T>(): MB<T> => {
   const mb: Partial<Maybe<T>> = {};
   mb.then = then.bind(null, mb);
   mb.thenMaybe = thenMaybe.bind(null, mb);
   mb.orElse = orElse.bind(null, mb);
   return mb as MB<T>;
-}
+};
 
 export interface Just<T> extends MB<T> {
   value: T;
