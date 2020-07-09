@@ -1,1 +1,1 @@
-A face pile (code name: Facepile) shows a list of faces or initials in a horizontal lockup. Each circle represents a person. Often this control is used when sharing who has access to a specific view or file or when assigning someone a task within a workflow. 
+A face pile (`Facepile`) shows a list of faces or initials in a horizontal lockup. Each circle represents a person. Often this control is used when sharing who has access to a specific view or file or when assigning someone a task within a workflow. 
