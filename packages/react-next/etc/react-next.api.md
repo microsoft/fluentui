@@ -2018,11 +2018,12 @@ export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, op
 
 
 export * from "@fluentui/react-button/lib/Button";
+export * from "@uifabric/date-time/lib/Calendar";
+export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
 export * from "office-ui-fabric-react/lib/Breadcrumb";
-export * from "office-ui-fabric-react/lib/Calendar";
 export * from "office-ui-fabric-react/lib/Callout";
 export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
@@ -2031,7 +2032,6 @@ export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/ComboBox";
 export * from "office-ui-fabric-react/lib/CommandBar";
 export * from "office-ui-fabric-react/lib/ContextualMenu";
-export * from "office-ui-fabric-react/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";
 export * from "office-ui-fabric-react/lib/Divider";

@@ -28,6 +28,7 @@ export const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndica
       overflow: 'hidden',
       height: pxToRem(16),
       width: pxToRem(16),
+      backgroundSize: pxToRem(16),
 
       backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical),
 
