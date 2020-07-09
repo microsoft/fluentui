@@ -179,18 +179,12 @@ jobs:
         condition: always()
 
   - job: ScreenerFluent
-    dependsOn: Build
     steps:
       - script: |
           yarn
         displayName: yarn
 
       # - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
 
       - template: azure-pipelines.tools.yml
 
