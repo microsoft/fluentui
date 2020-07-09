@@ -13,7 +13,7 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { useSetTimeout } from '@uifabric/react-hooks';
+import { useSetTimeout, useConst } from '@uifabric/react-hooks';
 
 const exampleItems: IAnnouncedQuickActionsExampleItem[] = [];
 
@@ -60,10 +60,7 @@ export interface IAnnouncedQuickActionsExampleState {
 export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const detailsList = React.useRef<IDetailsList>(null);
   const textField = React.useRef<ITextField>(null);
-  const { current: state } = React.useRef<IAnnouncedQuickActionsExampleState>({
-    selection: new Selection(),
-  });
-
+  const selection = useConst(() => new Selection());
   const [items, setItems] = React.useState<IAnnouncedQuickActionsExampleItem[]>(exampleItems);
   const [renameDialogOpen, setRenameDialogOpen] = React.useState<boolean>(false);
 
@@ -125,7 +122,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
       <>
         <TextField componentRef={textField} label="Rename" defaultValue={item.name} />
         <DialogFooter>
-          <PrimaryButton onClick={updateItemName.bind(this, index)} text="Save" />
+          <PrimaryButton onClick={updateItemName.bind(index)} text="Save" />
         </DialogFooter>
       </>,
     );
@@ -175,14 +172,14 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   return (
     <>
       {announced}
-      <MarqueeSelection selection={state.selection}>
+      <MarqueeSelection selection={selection}>
         <DetailsList
           componentRef={detailsList}
           items={items}
           columns={columns}
           setKey="set"
           layoutMode={DetailsListLayoutMode.fixedColumns}
-          selection={state.selection}
+          selection={selection}
           selectionPreservedOnEmptyClick
           ariaLabelForSelectionColumn="Toggle selection"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"

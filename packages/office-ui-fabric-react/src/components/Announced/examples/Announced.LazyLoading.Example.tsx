@@ -8,7 +8,7 @@ import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/St
 import { DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean, useSetInterval } from '@uifabric/react-hooks';
+import { useBoolean, useSetInterval, useConst } from '@uifabric/react-hooks';
 
 const DELAY = 10;
 const PHOTO_COUNT = 30;
@@ -50,7 +50,7 @@ export const AnnouncedLazyLoadingExample = () => {
   const percentComplete = total / PHOTO_COUNT;
   const safeSetInterval = useSetInterval();
 
-  const createPhotos = (): IPhoto[] => {
+  const createPhotos: IPhoto[] = useConst(() => {
     const width = 100;
     const height = 100;
     const result = createArray(PHOTO_COUNT, () => {
@@ -61,25 +61,9 @@ export const AnnouncedLazyLoadingExample = () => {
       };
     });
     return result;
-  };
+  });
 
-  const photos: IPhoto[] = createPhotos();
-
-  const renderPhotos = (): JSX.Element[] => {
-    const result = photos.map((photo: IPhoto, index: number) => (
-      <li
-        key={index}
-        className={photoCellClass}
-        aria-posinset={index + 1}
-        aria-setsize={PHOTO_COUNT}
-        aria-label="Photo"
-        data-is-focusable
-      >
-        {total > index ? <Image src={photo.url} width={photo.width} height={photo.height} /> : <div />}
-      </li>
-    ));
-    return result;
-  };
+  const photos: IPhoto[] = createPhotos;
 
   React.useEffect(() => {
     if (loading) {
@@ -119,7 +103,7 @@ export const AnnouncedLazyLoadingExample = () => {
         Turn on Narrator and press the button to start loading photos. Announced should announce the number of photos
         loaded every 10 seconds, as that is the delay chosen for this example.
       </Text>
-      <DefaultButton text={loading ? 'Canel' : 'Load photos'} onClick={toggleLoading} styles={defaultButtonStyles} />
+      <DefaultButton text={loading ? 'Cancel' : 'Load photos'} onClick={toggleLoading} styles={defaultButtonStyles} />
       <ProgressIndicator
         label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'}
         percentComplete={percentComplete}
@@ -133,7 +117,18 @@ export const AnnouncedLazyLoadingExample = () => {
           styles={photoStackStyles}
           slots={{ inner: { component: 'ul' } }}
         >
-          {renderPhotos()}
+          {photos.map((photo: IPhoto, index: number) => (
+            <li
+              key={index}
+              className={photoCellClass}
+              aria-posinset={index + 1}
+              aria-setsize={PHOTO_COUNT}
+              aria-label="Photo"
+              data-is-focusable
+            >
+              {total > index ? <Image src={photo.url} width={photo.width} height={photo.height} /> : <div />}
+            </li>
+          ))}
         </Stack>
       </FocusZone>
     </Stack>
