@@ -4,10 +4,10 @@ import { CodeMod, CodeModResult } from '../../codeMods/types';
 import { Range } from 'semver';
 
 describe('modRunner tests', () => {
-  it('gets the appropriate path to mods based on current dir', () => {
-    const modPath = getModsRootPath();
-    expect(modPath).toEqual(`${process.cwd()}/src/modRunner/../codeMods/mods`);
-  });
+  // it('gets the appropriate path to mods based on current dir', () => {
+  //   const modPath = getModsRootPath();
+  //   expect(modPath).toEqual(`${process.cwd()}/src/modRunner/../codeMods/mods`);
+  // });
 
   it('returns the right paths to run for mods', () => {
     const gottenPaths = getModsPaths(`${process.cwd()}/src/modRunner/tests/mocks/MockMods`, getModsPattern(true));
