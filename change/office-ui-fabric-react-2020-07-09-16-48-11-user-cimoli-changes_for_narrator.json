@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add optional role prop for breadcrumb items, nav, and nav link items",
+  "packageName": "office-ui-fabric-react",
+  "email": "cimoli@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-09T23:48:11.490Z"
+}
