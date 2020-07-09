@@ -32,10 +32,7 @@ export interface Nothing<T> extends MB<T> {
 
 export type Maybe<T> = Just<T> | Nothing<T>;
 
-export const Nothing = <T>(): Nothing<T> => ({
-  ..._makeMaybe(),
-  just: false,
-});
+export const Nothing = <T>(): Nothing<T> => ({ ..._makeMaybe(), just: false });
 
 export const Just = <T>(value: T): Just<T> => ({ ..._makeMaybe<T>(), just: true, value });
 
