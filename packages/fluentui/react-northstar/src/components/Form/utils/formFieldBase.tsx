@@ -104,7 +104,7 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
             getA11yProps('control', {
               error: !!errorMessage || null,
               ref,
-              ...(labelId && { labelId: labelId.current }),
+              labelId: labelId.current,
               ...unhandledProps,
               ...slotProps.control,
             }),
