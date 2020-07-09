@@ -26,3 +26,7 @@ export interface Codemod<T = SourceFile> {
    */
   enabled?: boolean;
 }
+
+export interface EnumMap {
+  [key: string]: string;
+}
