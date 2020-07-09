@@ -45,6 +45,13 @@ export const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, Li
       display: 'flex',
       alignItems: 'center',
       minHeight: v.minHeight,
+      // It's necessary for the vertical alignment in a flex container with minHeight to work in IE11
+      '::after': {
+        content: '""',
+        minHeight: 'inherit',
+        fontSize: 0,
+        display: 'block',
+      },
       padding: v.rootPadding,
       ...((p.selectable || p.navigable) && {
         position: 'relative',
