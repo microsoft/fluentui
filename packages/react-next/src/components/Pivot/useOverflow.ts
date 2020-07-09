@@ -95,7 +95,7 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
 
     updateOverflowRef.current = () => {
       const containerWidth = containerWidthRef.current;
-      if (!containerWidth) {
+      if (containerWidth === undefined) {
         return;
       }
 
