@@ -1766,7 +1766,7 @@ export interface IBreadcrumbItem {
     isCurrentItem?: boolean;
     key: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
-    role?: 'listitem' | 'presentation';
+    role?: string;
     text: string;
 }
 
@@ -5697,7 +5697,7 @@ export interface INavLink {
     links?: INavLink[];
     name: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    role?: 'listitem' | 'presentation';
+    role?: string;
     target?: string;
     title?: string;
     url: string;
@@ -5730,7 +5730,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
-    role?: 'navigation' | 'presentation';
+    role?: string;
     // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
