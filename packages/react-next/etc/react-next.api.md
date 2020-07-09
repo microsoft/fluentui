@@ -977,7 +977,7 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
-    overflowBehavior?: PivotOverflowBehaviorType;
+    overflowBehavior?: 'none' | 'menu';
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
     theme?: ITheme;
@@ -1837,9 +1837,6 @@ export const enum PivotLinkSize {
 
 // @public
 export type PivotLinkSizeType = 'normal' | 'large';
-
-// @public
-export type PivotOverflowBehaviorType = 'none' | 'menu';
 
 // @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
