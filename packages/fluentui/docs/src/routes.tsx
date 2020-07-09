@@ -57,6 +57,7 @@ import TablePrototype from './prototypes/table';
 import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
 import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 import FormValidationPrototype from './prototypes/FormValidation';
+import RoasterPrototype from './prototypes/Roaster';
 
 const Routes = () => (
   // Remove trailing slash
@@ -80,6 +81,7 @@ const Routes = () => (
               <MarkdownPage page={Debugging} />
             </Route>
             <Route exact path="/quick-start" component={QuickStart} />
+            <Route exact path="/prototype-roaster" component={RoasterPrototype} />
             <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
             <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
             <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />

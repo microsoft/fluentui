@@ -314,6 +314,11 @@ class Sidebar extends React.Component<any, any> {
 
     const prototypesTreeItems: (ShorthandValue<{}> & { key: string; public: boolean })[] = [
       {
+        key: 'roaster',
+        title: { content: 'Roaster', as: NavLink, to: '/prototype-roaster' },
+        public: false,
+      },
+      {
         key: 'chatpane',
         title: { content: 'Chat Pane', as: NavLink, to: '/prototype-chat-pane' },
         public: false,
