@@ -12,11 +12,11 @@ const GlobalClassNames = {
   linkInMenu: 'ms-Pivot-linkInMenu',
   linkIsSelected: 'is-selected',
   linkContent: 'ms-Pivot-linkContent',
+  overflowMenuButton: 'ms-Pivot-overflowMenuButton',
   root: 'ms-Pivot',
   rootIsLarge: 'ms-Pivot--large',
   rootIsTabs: 'ms-Pivot--tabs',
   text: 'ms-Pivot-text',
-  overflowMenuButton: 'ms-Pivot-overflowMenuButton',
 };
 
 const getStaticStylesMemoized = memoizeFunction(
