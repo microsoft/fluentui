@@ -3,13 +3,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import {
-  WithAsProp,
-  withSafeTypeForAs,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandCollection, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,
   UIComponentProps,
@@ -21,7 +15,14 @@ import {
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 import Reaction, { ReactionProps } from './Reaction';
-import { getElementType, useUnhandledProps, useAccessibility, useTelemetry, useStyles } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useTelemetry,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface ReactionGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -37,7 +38,10 @@ export const reactionGroupClassName = 'ui-reactions';
 
 export type ReactionGroupStylesProps = never;
 
-const ReactionGroup: React.FC<WithAsProp<ReactionGroupProps>> &
+/**
+ * A ReactionGroup groups multiple Reaction elements.
+ */
+const ReactionGroup: ComponentWithAs<'div', ReactionGroupProps> &
   FluentComponentStaticProps<ReactionGroupProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ReactionGroup.displayName, context.telemetry);
@@ -104,7 +108,4 @@ ReactionGroup.create = createShorthandFactory({
   mappedArrayProp: 'items',
 });
 
-/**
- * A ReactionGroup groups multiple Reaction elements.
- */
-export default withSafeTypeForAs<typeof ReactionGroup, ReactionGroupProps>(ReactionGroup);
+export default ReactionGroup;

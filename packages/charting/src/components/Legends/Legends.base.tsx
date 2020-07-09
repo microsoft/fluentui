@@ -38,6 +38,7 @@ export interface ILegendState {
   isHoverCardVisible: boolean;
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
+  private _hoverCardRef: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
 
   public constructor(props: ILegendsProps) {
@@ -239,8 +240,16 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onCardVisible={this._hoverCardVisible}
         styles={classNames.subComponentStyles.hoverCardStyles}
         cardDismissDelay={300}
+        target={this._hoverCardRef}
       >
-        <div className={classNames.overflowIndicationTextStyle}>
+        <div
+          className={classNames.overflowIndicationTextStyle}
+          role={'combobox'}
+          ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
+          aria-expanded={this.state.isHoverCardVisible}
+          aria-label={`${items.length} ${overflowString}`}
+          data-is-focusable={true}
+        >
           {items.length} {overflowString}
         </div>
       </HoverCard>

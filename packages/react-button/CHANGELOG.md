@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 25 Jun 2020 12:50:17 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.6.2..@fluentui/react-button_v0.7.0)
+
+### Minor changes
+
+- MenuButton: Creating component using compose. ([PR #13812](https://github.com/microsoft/fluentui/pull/13812) by humbertomakotomorimoto@gmail.com)
+
+## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.2)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.6.0..@fluentui/react-button_v0.6.2)
+
+### Patches
+
+- Adding bundle task to react-button package. ([PR #13873](https://github.com/microsoft/fluentui/pull/13873) by humbertomakotomorimoto@gmail.com)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.0)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.5.1..@fluentui/react-button_v0.6.0)
+
+### Minor changes
+
+- Button: Adding componentRef, focus method, styling, and tests. ([PR #13718](https://github.com/microsoft/fluentui/pull/13718) by dzearing@microsoft.com)
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.1)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.5.0..@fluentui/react-button_v0.5.1)
+
+### Patches
+
+- Button: Adding stories of a Button themed like Fluent using tokens. ([PR #13769](https://github.com/microsoft/fluentui/pull/13769) by humbertomakotomorimoto@gmail.com)
+- Button: Using correct focus borders from utilities. ([PR #13790](https://github.com/microsoft/fluentui/pull/13790) by humbertomakotomorimoto@gmail.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.5.0)
 

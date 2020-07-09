@@ -133,22 +133,21 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
               </div>
             );
           })}
-          {!this.props.hideTooltip && this.state.isCalloutVisible ? (
-            <Callout
-              target={this.state.refSelected}
-              coverTarget={true}
-              isBeakVisible={false}
-              gapSpace={30}
-              directionalHint={DirectionalHint.rightTopEdge}
-              id={this._calloutId}
-            >
-              <ChartHoverCard
-                Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
-                YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
-                color={this.state.lineColor}
-              />
-            </Callout>
-          ) : null}
+          <Callout
+            target={this.state.refSelected}
+            coverTarget={true}
+            isBeakVisible={false}
+            gapSpace={30}
+            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+            directionalHint={DirectionalHint.rightTopEdge}
+            id={this._calloutId}
+          >
+            <ChartHoverCard
+              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
+              color={this.state.lineColor}
+            />
+          </Callout>
         </div>
       </FocusZone>
     );

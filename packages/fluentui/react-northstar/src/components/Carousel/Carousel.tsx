@@ -17,8 +17,6 @@ import {
   isFromKeyboard as isEventFromKeyboard,
 } from '../../utils';
 import {
-  WithAsProp,
-  withSafeTypeForAs,
   ShorthandCollection,
   ShorthandValue,
   ComponentEventHandler,
@@ -31,6 +29,7 @@ import CarouselNavigation, { CarouselNavigationProps } from './CarouselNavigatio
 import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
 import CarouselPaddle, { CarouselPaddleProps } from './CarouselPaddle';
 import {
+  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
@@ -128,7 +127,15 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
   navigation: `${carouselClassName}__navigation`,
 };
 
-const Carousel: React.FC<WithAsProp<CarouselProps>> &
+/**
+ * A Carousel displays data organised as a gallery.
+ *
+ * @accessibility
+ * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
+ * @accessibilityIssues
+ * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
+ */
+const Carousel: ComponentWithAs<'div', CarouselProps> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;
@@ -509,12 +516,4 @@ Carousel.create = createShorthandFactory({
   mappedArrayProp: 'items',
 });
 
-/**
- * A Carousel displays data organised as a gallery.
- *
- * @accessibility
- * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
- * @accessibilityIssues
- * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
- */
-export default withSafeTypeForAs<typeof Carousel, CarouselProps, 'div'>(Carousel);
+export default Carousel;
