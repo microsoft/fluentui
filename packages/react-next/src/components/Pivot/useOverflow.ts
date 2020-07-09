@@ -44,7 +44,7 @@ export type OverflowParams = {
  * @param rtl - True if the element containing overflowMenuButtonRef is in right-to-left order
  * @param pinnedIndex - Optional: Index of item that should never go into the overflow menu.
  *
- * @returns Ref setter function:
+ * @returns Object containing a ref setter function:
  * * `setMenuButtonRef` - Must be set as the ref of the button that will be used as the overflow menu button
  */
 export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: OverflowParams) => {
