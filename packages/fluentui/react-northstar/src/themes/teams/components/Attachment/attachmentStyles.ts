@@ -21,6 +21,13 @@ export const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps
       width: '100%',
       maxWidth: pxToRem(440),
       minHeight: pxToRem(48),
+      // It's necessary for the vertical alignment in a flex container with minHeight to work in IE11
+      '::after': {
+        content: '""',
+        minHeight: 'inherit',
+        fontSize: 0,
+        display: 'block',
+      },
       padding: v.padding,
       marginBottom: pxToRem(2),
       marginRight: pxToRem(2),
