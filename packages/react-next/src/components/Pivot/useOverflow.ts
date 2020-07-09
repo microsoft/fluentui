@@ -7,8 +7,8 @@ import { useRefEffect } from './useRefEffect';
  * Callback to notify the user that the items in the overflow have changed. This should ensure that the overflow menu
  * is visible, and contains all of the overflowing items.
  *
- * @param overflowIndex The index of the first item in the overflow, or items.length if nothing is overflowing.
- * @param items The list of all items in the container, and whether that particular item is in the overflow
+ * @param overflowIndex - The index of the first item in the overflow, or items.length if nothing is overflowing.
+ * @param items - The list of all items in the container, and whether that particular item is in the overflow
  */
 export type OverflowItemsChangedCallback = (
   overflowIndex: number,
@@ -17,9 +17,20 @@ export type OverflowItemsChangedCallback = (
 
 /** Parameters for {@see useOverflow} */
 export type OverflowParams = {
+  /** Callback to notify the user that the items in the overflow have changed. */
   onOverflowItemsChanged: OverflowItemsChangedCallback;
+
+  /** True if the element containing overflowMenuButtonRef is in right-to-left order */
   rtl: boolean;
+
+  /** Optional: Index of item that should never go into the overflow menu. */
   pinnedIndex?: number;
+};
+
+/** Return value for {@see useOverflow} */
+export type OverflowRefs = {
+  /** Set the overflow menu button's ref to this ref setter callback */
+  setMenuButtonRef: (ele: HTMLElement | null) => void;
 };
 
 /**
@@ -39,15 +50,8 @@ export type OverflowParams = {
  *  <Button ref={overflow.setMenuButtonRef} /> // Can be any React.Component or HTMLElement
  * </Container>
  * ```
- *
- * @param onOverflowItemsChanged - Callback to notify the user that the items in the overflow have changed.
- * @param rtl - True if the element containing overflowMenuButtonRef is in right-to-left order
- * @param pinnedIndex - Optional: Index of item that should never go into the overflow menu.
- *
- * @returns Object containing a ref setter function:
- * * `setMenuButtonRef` - Must be set as the ref of the button that will be used as the overflow menu button
  */
-export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: OverflowParams) => {
+export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: OverflowParams): OverflowRefs => {
   const updateOverflowRef = React.useRef<() => void>();
   const containerWidthRef = React.useRef<number>();
 
