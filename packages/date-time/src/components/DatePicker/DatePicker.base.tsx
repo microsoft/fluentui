@@ -15,6 +15,7 @@ import {
   css,
   initializeComponentRef,
   Async,
+  getPropsWithDefaults,
 } from '@uifabric/utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear, compareDates, compareDatePart } from '@fluentui/date-time-utilities';
@@ -61,9 +62,48 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   weekNumberFormatString: 'Week number {0}',
 };
 
-export const DatePickerBase = React.forwardRef((props: IDatePickerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-  return <DatePickerBaseClass {...props} hoisted={{ forwardedRef }} />;
-});
+const DEFAULT_PROPS = {
+  allowTextInput: false,
+  formatDate: (date: Date) => {
+    if (date) {
+      return date.toDateString();
+    }
+
+    return '';
+  },
+  parseDateFromString: (dateStr: string) => {
+    const date = Date.parse(dateStr);
+    if (date) {
+      return new Date(date);
+    }
+
+    return null;
+  },
+  firstDayOfWeek: DayOfWeek.Sunday,
+  initialPickerDate: new Date(),
+  isRequired: false,
+  isMonthPickerVisible: true,
+  showMonthPickerAsOverlay: false,
+  strings: DEFAULT_STRINGS,
+  highlightCurrentMonth: false,
+  highlightSelectedMonth: false,
+  borderless: false,
+  pickerAriaLabel: 'Calendar',
+  showWeekNumbers: false,
+  firstWeekOfYear: FirstWeekOfYear.FirstDay,
+  showGoToToday: true,
+  showCloseButton: false,
+  underlined: false,
+  allFocusable: false,
+} as const;
+
+export const DatePickerBase = React.forwardRef(
+  (propsWithoutDefaults: IDatePickerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+
+    return <DatePickerBaseClass {...props} hoisted={{ forwardedRef }} />;
+  },
+);
 DatePickerBase.displayName = 'DatePickerBase';
 
 interface IDatePickerBaseClassProps extends IDatePickerProps {
@@ -73,42 +113,6 @@ interface IDatePickerBaseClassProps extends IDatePickerProps {
 }
 
 class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDatePickerState> implements IDatePicker {
-  public static defaultProps: IDatePickerProps = {
-    allowTextInput: false,
-    formatDate: (date: Date) => {
-      if (date) {
-        return date.toDateString();
-      }
-
-      return '';
-    },
-    parseDateFromString: (dateStr: string) => {
-      const date = Date.parse(dateStr);
-      if (date) {
-        return new Date(date);
-      }
-
-      return null;
-    },
-    firstDayOfWeek: DayOfWeek.Sunday,
-    initialPickerDate: new Date(),
-    isRequired: false,
-    isMonthPickerVisible: true,
-    showMonthPickerAsOverlay: false,
-    strings: DEFAULT_STRINGS,
-    highlightCurrentMonth: false,
-    highlightSelectedMonth: false,
-    borderless: false,
-    pickerAriaLabel: 'Calendar',
-    showWeekNumbers: false,
-    firstWeekOfYear: FirstWeekOfYear.FirstDay,
-    showGoToToday: true,
-    dateTimeFormatter: undefined,
-    showCloseButton: false,
-    underlined: false,
-    allFocusable: false,
-  };
-
   private _calendar = React.createRef<ICalendar>();
   private _datePickerDiv = React.createRef<HTMLDivElement>();
   private _textField = React.createRef<ITextField>();
