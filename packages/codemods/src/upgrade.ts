@@ -1,4 +1,4 @@
-import { runMods, getModsPaths, getTsConfigs, shouldRunMod, loadMod } from './modRunner/runnerUtilities';
+import { runMods, getModsPaths, getTsConfigs, modEnabled, loadMod } from './modRunner/runnerUtilities';
 import { Project } from 'ts-morph';
 
 // TODO actually do console logging, implement some nice callbacks.
@@ -11,14 +11,15 @@ export function upgrade() {
         console.error(e);
       });
     })
-    .filter(result => result.success && shouldRunMod(result.mod!))
-    .map(mod => mod.mod!);
+    .filter(modEnabled)
+    .map(v => v.value);
 
   console.log('getting configs');
   const configs = getTsConfigs();
-  const projects: Project[] = configs.map(configString => new Project({ tsConfigFilePath: configString }));
 
-  projects.forEach(project => {
+  configs.forEach(configString => {
+    // Lazily create/load each project to help deal with large monorepos
+    const project = new Project({ tsConfigFilePath: configString });
     let error = false;
     try {
       const files = project.getSourceFiles();

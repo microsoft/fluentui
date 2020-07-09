@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/date-time_v7.10.7",
+      "version": "7.10.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Migrate Calendar components to function components",
+            "author": "miclo@microsoft.com",
+            "commit": "31047ace0c9dd27fc6f3d3fa4cf2acd4639e0ad9",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Jul 2020 12:35:23 GMT",
       "tag": "@uifabric/date-time_v7.10.2",
       "version": "7.10.2",

@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/codemods",
+  "entries": [
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/codemods_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Codemods: Creating package and initial check-in.",
+            "author": "joschect@microsoft.com",
+            "commit": "4099ffe49cb131ba7aab65e2a6950b443501c466",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "CodeMods: Add maybe to help eliminate null checks",
+            "author": "joschect@microsoft.com",
+            "commit": "d76d871328d581db267b9d2d90782b419e8b3068",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    }
+  ]
+}
