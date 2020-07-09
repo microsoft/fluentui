@@ -2,7 +2,7 @@ import * as React from 'react';
 import { registerIcons, IIconOptions } from '@uifabric/styling';
 
 const ASSET_CDN_BASE_URL =
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons';
+  'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20200708.002/office-ui-fabric-react-assets/foldericons';
 
 export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, options?: Partial<IIconOptions>): void {
   registerIcons(
