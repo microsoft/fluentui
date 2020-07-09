@@ -1,6 +1,8 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { getWindow } from '../../Utilities';
 import { observeResize } from './observeResize';
+import { useRefEffect } from './useRefEffect';
 
 /**
  * Callback to notify the user that the items in the overflow have changed. This should ensure that the overflow menu
@@ -14,40 +16,66 @@ export type OverflowItemsChangedCallback = (
   items: { ele: HTMLElement; isOverflowing: boolean }[],
 ) => void;
 
+/** Parameters for {@see useOverflow} */
+export type OverflowParams = {
+  onOverflowItemsChanged: OverflowItemsChangedCallback;
+  rtl: boolean;
+  pinnedIndex?: number;
+};
+
 /**
  * Track whether any items don't fit within their container, and move them to the overflow menu.
+ * Items are moved into the overflow menu from back to front, excluding pinned items.
  *
- * The overflow menu button must be the last sibling of all of the items that can be put into the overflow:
- *
+ * The overflow menu button must be the last sibling of all of the items that can be put into the overflow, and it
+ * must be hooked up to the `setMenuButtonRef` setter function that's returned by `useOverflow`:
+ * ```ts
+ * const overflow = useOverflow(...);
+ * ```
+ * ```jsx
  * <Container>
  *  <Item /> // Index 0
  *  <Item /> // Index 1
  *  ...
- *  <OverflowMenuButton />
+ *  <Button ref={overflow.setMenuButtonRef} /> // Can be any React.Component or HTMLElement
  * </Container>
- *
- * Items will be moved into the overflow menu from back to front, excluding pinned items.
- *
- * @param overflowMenuButtonRef - The button that will show the overflow menu. All items that will go into the overflow
- * menu should be direct siblings and come before this menu button.
+ * ```
  *
  * @param onOverflowItemsChanged - Callback to notify the user that the items in the overflow have changed.
- *
  * @param rtl - True if the element containing overflowMenuButtonRef is in right-to-left order
+ * @param pinnedIndex - Optional: Index of item that should never go into the overflow menu.
  *
- * @param pinnedIndexes - Optional: List of item indexes that should never go into the overflow menu.
+ * @returns Ref setter function:
+ * * `setMenuButtonRef` - Must be set as the ref of the button that will be used as the overflow menu button
  */
-export const useOverflow = (
-  overflowMenuButtonRef: React.RefObject<HTMLElement | undefined> | null | undefined,
-  onOverflowItemsChanged: OverflowItemsChangedCallback,
-  rtl: boolean,
-  pinnedIndexes?: readonly number[],
-) => {
+export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: OverflowParams) => {
+  const updateOverflowRef = React.useRef<() => void>();
+  const containerWidthRef = React.useRef<number>();
+
+  // Attach a resize observer to the container
+  const [containerRef, setContainerRef] = useRefEffect((container: HTMLElement) => {
+    const disposeObserver = observeResize(container, entries => {
+      containerWidthRef.current = entries ? entries[0].contentRect.width : container.clientWidth;
+      if (updateOverflowRef.current) {
+        updateOverflowRef.current();
+      }
+    });
+
+    return () => {
+      disposeObserver();
+      containerWidthRef.current = undefined;
+    };
+  });
+
+  const [menuButtonRef, setMenuButtonRef] = useRefEffect((menuButton: HTMLElement) => {
+    setContainerRef(menuButton.parentElement);
+    return () => setContainerRef(null);
+  });
+
   React.useLayoutEffect(() => {
-    const menuButton = overflowMenuButtonRef?.current;
-    const container = menuButton?.parentElement;
-    const win = container && getWindow(container);
-    if (!container || !menuButton || !win) {
+    const container = containerRef.current;
+    const menuButton = menuButtonRef.current;
+    if (!container || !menuButton) {
       return;
     }
 
@@ -66,7 +94,12 @@ export const useOverflow = (
     const minContainerWidth: number[] = [];
     let extraWidth = 0; // The accumulated width of items that don't move into the overflow
 
-    const updateOverflow = (containerWidth: number) => {
+    updateOverflowRef.current = () => {
+      const containerWidth = containerWidthRef.current;
+      if (!containerWidth) {
+        return;
+      }
+
       // Iterate the items in reverse order until we find one that fits within the bounds of the container
       for (let i = items.length - 1; i >= 0; i--) {
         // Calculate the min container width for this item if we haven't done so yet
@@ -74,7 +107,7 @@ export const useOverflow = (
           const itemOffsetEnd = rtl ? containerWidth - items[i].offsetLeft : items[i].offsetLeft + items[i].offsetWidth;
 
           // If the item after this one is pinned, reserve space for it
-          if (i + 1 < items.length && pinnedIndexes?.includes(i + 1)) {
+          if (i + 1 < items.length && i + 1 === pinnedIndex) {
             // Use distance between the end of the previous item and this one (rather than the
             // pinned item's offsetWidth), to account for any margin between the items.
             extraWidth = minContainerWidth[i + 1] - itemOffsetEnd;
@@ -106,22 +139,48 @@ export const useOverflow = (
           overflowIndex,
           items.map((ele, index) => ({
             ele,
-            isOverflowing: index >= overflowIndex && !pinnedIndexes?.includes(index),
+            isOverflowing: index >= overflowIndex && index !== pinnedIndex,
           })),
         );
       }
     };
 
-    const disposeObserver = observeResize(container, entries => {
-      updateOverflow(entries ? entries[0].contentRect.width : container.clientWidth);
-    });
+    let cancelAnimationFrame: (() => void) | undefined = undefined;
+
+    // If the container width is already known from a previous render, update the overflow with its width.
+    // Do this in an animation frame to avoid forcing layout to happen early.
+    if (containerWidthRef.current !== undefined) {
+      const win = getWindow(container);
+      if (win) {
+        const animationFrameId = win.requestAnimationFrame(updateOverflowRef.current);
+        cancelAnimationFrame = () => win.cancelAnimationFrame(animationFrameId);
+      }
+    }
 
     return () => {
-      disposeObserver();
+      if (cancelAnimationFrame) {
+        cancelAnimationFrame();
+      }
 
       // On cleanup, need to remove all items from the overflow
       // so they don't have stale properties on the next render
       setOverflowIndex(items.length);
+      updateOverflowRef.current = undefined;
     };
   });
+
+  return {
+    setMenuButtonRef: useDOMNodeRefCallback(setMenuButtonRef),
+  };
 };
+
+// Allow the menu button to be hooked up to a React.Component, and find its DOM node
+function useDOMNodeRefCallback(setRef: (ele: HTMLElement | null) => void) {
+  return React.useCallback(
+    (arg: React.Component | HTMLElement | null) => {
+      const node = ReactDOM.findDOMNode(arg);
+      setRef(node instanceof HTMLElement ? node : null);
+    },
+    [setRef],
+  );
+}

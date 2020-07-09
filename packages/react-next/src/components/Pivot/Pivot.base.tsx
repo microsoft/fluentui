@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { KeyCodes, getNativeProps, divProperties, classNamesFunction, warn, css, getRTL } from '../../Utilities';
-import { CommandButton, IButton, ActionButton } from '../../compat/Button';
+import { CommandButton, IButton } from '../../compat/Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
@@ -208,13 +207,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       renderPivotLink(linkCollection, l, renderedSelectedKey, classNames.link),
     );
 
-    const overflowMenuButtonComponentRef = React.useRef<IButton>();
-    const overflowMenuButtonRef = React.useRef<HTMLElement>();
-    const setOverflowMenuButtonRef = (button: ActionButton | null) => {
-      const node = ReactDOM.findDOMNode(button);
-      overflowMenuButtonRef.current = node instanceof HTMLElement ? node : undefined;
-    };
-
     // The overflow menu starts empty and items[] is updated as the overflow items change
     const overflowMenuProps: IContextualMenuProps = {
       items: [],
@@ -229,11 +221,12 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       // Update the menu items
       overflowMenuProps.items = linkCollection.links.slice(overflowIndex).map((link, index) => ({
         key: link.itemKey || `${overflowIndex + index}`,
-        onRender: renderPivotLink.bind(this, linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
+        onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
       }));
     };
 
-    useOverflow(overflowMenuButtonRef, onOverflowItemsChanged, getRTL(theme), [renderedSelectedIndex]);
+    const overflowMenuButtonComponentRef = React.useRef<IButton>();
+    const overflow = useOverflow({ onOverflowItemsChanged, rtl: getRTL(theme), pinnedIndex: renderedSelectedIndex });
 
     return (
       <div role="toolbar" {...divProps} ref={ref}>
@@ -247,7 +240,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           {overflowBehavior === 'menu' && (
             <CommandButton
               className={classNames.overflowMenuButton}
-              ref={setOverflowMenuButtonRef}
+              ref={overflow.setMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef as React.RefObject<IButton>}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
