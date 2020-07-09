@@ -140,3 +140,47 @@ const Example = React.forwardRef(function Example(props:{}, forwardedRef: React.
   return <div>Example</div>;
 })
 ```
+
+## useSetInterval
+
+`function useSetInterval()`
+
+Hook that returns a wrapper function for `setInterval` which automatically handles disposal.
+
+### Example
+
+```jsx
+import { useSetInterval } from '@uifabric/react-hooks';
+
+const MyComponent = buttonContent => {
+  const safeSetInterval = useSetInterval();
+
+  const intervalFunction = safeSetInterval(() => {
+    alert('Hello');
+  }, 1000);
+
+  return <button onClick={intervalFunction()}>{buttonContent}</button>;
+};
+```
+
+## useSetTimeout
+
+`function useSetTimeout()`
+
+Hook that returns a wrapper function for `setTimeout` which automatically handles disposal.
+
+### Example
+
+```jsx
+import { useSetTimeout } from '@uifabric/react-hooks';
+
+const MyComponent = buttonContent => {
+  const safeSetTimeout = useSetTimeout();
+
+  const timeoutFunction = safeSetTimeout(() => {
+    alert('Hello');
+  }, 1000);
+
+  return <button onClick={timeoutFunction()}>{buttonContent}</button>;
+};
+```
