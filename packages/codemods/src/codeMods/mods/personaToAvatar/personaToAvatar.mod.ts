@@ -9,7 +9,7 @@ import {
   Node,
 } from 'ts-morph';
 import { findJsxTag, appendOrCreateNamedImport } from '../../utilities/index';
-import { Codemod } from '../../types';
+import { CodeMod } from '../../types';
 
 const personaPath = 'office-ui-fabric-react/lib/Persona';
 
@@ -160,7 +160,7 @@ export function renameRenderCoin(file: SourceFile) {
   renameProperty(elements, 'onRenderCoin', 'onRenderAvatarCoin');
 }
 
-const PersonaToAvatarMod: Codemod = {
+const PersonaToAvatarMod: CodeMod = {
   run: (file: SourceFile) => {
     try {
       replacePersonaImport(file);
