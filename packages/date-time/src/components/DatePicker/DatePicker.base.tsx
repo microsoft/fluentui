@@ -137,7 +137,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     let errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
 
     if (!errorMessage && value) {
-      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate)
+      errorMessage = isDateOutOfBounds(value!, minDate, maxDate)
         ? strings!.isOutOfBoundsErrorMessage || ' '
         : undefined;
     }
@@ -517,7 +517,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
           });
         } else {
           // Check against optional date boundaries
-          if (this._isDateOutOfBounds(date, minDate, maxDate)) {
+          if (isDateOutOfBounds(date, minDate, maxDate)) {
             this.setState({
               errorMessage: strings!.isOutOfBoundsErrorMessage || ' ',
             });
@@ -571,14 +571,14 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     };
   }
 
-  private _isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
-    return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
-  }
-
   private _getErrorMessage(): string | undefined {
     if (this.state.isDatePickerShown) {
       return undefined;
     }
     return this.state.errorMessage;
   }
+}
+
+function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
+  return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
 }
