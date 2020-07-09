@@ -9,7 +9,6 @@ import {
 import {
   KeyCodes,
   classNamesFunction,
-  getId,
   getNativeProps,
   divProperties,
   css,
@@ -23,6 +22,7 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
+import { useId } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -101,7 +101,10 @@ export const DatePickerBase = React.forwardRef(
   (propsWithoutDefaults: IDatePickerProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    return <DatePickerBaseClass {...props} hoisted={{ forwardedRef }} />;
+    const id = useId('DatePicker', props.id);
+    const calloutId = useId('DatePicker-Callout');
+
+    return <DatePickerBaseClass {...props} hoisted={{ forwardedRef, id, calloutId }} />;
   },
 );
 DatePickerBase.displayName = 'DatePickerBase';
@@ -109,6 +112,8 @@ DatePickerBase.displayName = 'DatePickerBase';
 interface IDatePickerBaseClassProps extends IDatePickerProps {
   hoisted: {
     forwardedRef: React.Ref<HTMLDivElement>;
+    id: string;
+    calloutId: string;
   };
 }
 
@@ -117,7 +122,6 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDa
   private _datePickerDiv = React.createRef<HTMLDivElement>();
   private _textField = React.createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
-  private _id: string;
 
   private _async: Async;
 
@@ -128,8 +132,6 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDa
     initializeComponentRef(this);
 
     this.state = this._getDefaultState();
-
-    this._id = props.id || getId('DatePicker');
 
     this._preventFocusOpeningPicker = false;
   }
@@ -156,8 +158,6 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDa
         ? strings!.isOutOfBoundsErrorMessage || ' '
         : undefined;
     }
-
-    this._id = nextProps.id || this._id;
 
     // Set error message
     this.setState({
@@ -232,19 +232,22 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDa
       isDatePickerShown,
     });
 
-    const calloutId = getId('DatePicker-Callout');
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['value']);
     const iconProps = textFieldProps && textFieldProps.iconProps;
 
     return (
       <div {...nativeProps} className={classNames.root} ref={this.props.hoisted.forwardedRef}>
-        <div ref={this._datePickerDiv} aria-haspopup="true" aria-owns={isDatePickerShown ? calloutId : undefined}>
+        <div
+          ref={this._datePickerDiv}
+          aria-haspopup="true"
+          aria-owns={isDatePickerShown ? this.props.hoisted.calloutId : undefined}
+        >
           <TextField
             role="combobox"
             label={label}
             aria-expanded={isDatePickerShown}
             ariaLabel={ariaLabel}
-            aria-controls={isDatePickerShown ? calloutId : undefined}
+            aria-controls={isDatePickerShown ? this.props.hoisted.calloutId : undefined}
             required={isRequired}
             disabled={disabled}
             errorMessage={this._getErrorMessage()}
@@ -256,7 +259,7 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDa
             tabIndex={tabIndex}
             readOnly={!allowTextInput}
             {...textFieldProps}
-            id={this._id + '-label'}
+            id={this.props.hoisted.id + '-label'}
             className={css(classNames.textField, textFieldProps && textFieldProps.className)}
             iconProps={{
               iconName: 'Calendar',
@@ -273,7 +276,7 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, IDa
         </div>
         {isDatePickerShown && (
           <Callout
-            id={calloutId}
+            id={this.props.hoisted.calloutId}
             role="dialog"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
