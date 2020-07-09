@@ -12,7 +12,7 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     display: 'inline-flex',
     position: 'relative',
     outline: 0,
-
+    verticalAlign: 'middle',
     ...(p.fluid && { width: '100%' }),
     ...(p.labelPosition === 'inline' && {
       flexDirection: 'row',

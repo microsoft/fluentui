@@ -85,6 +85,9 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   /** A label for the input. */
   label?: ShorthandValue<InputLabelProps>;
 
+  /** An Id for the Label. */
+  labelId?: string;
+
   /** Poisition for the label */
   labelPosition?: LabelPosition;
 
@@ -167,8 +170,8 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
 
     const inputRef = React.useRef<HTMLInputElement>();
 
-    const inputId = React.useRef<string>();
-    inputId.current = getOrGenerateIdFromShorthand('ui-input-', '', inputId.current);
+    const labelId = React.useRef<string>();
+    labelId.current = getOrGenerateIdFromShorthand('ui-label-', props.labelId || '', labelId.current);
 
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
@@ -180,7 +183,6 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       initialValue: '',
     });
     const hasValue: boolean = !!value && (value as string)?.length !== 0;
-    const id = props.id || inputId.current;
 
     const isShowSuccessIndicatorUndefined = typeof showSuccessIndicator === 'undefined';
 
@@ -284,7 +286,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         label,
         required,
         inputValue: hasValue,
-        htmlFor: id,
+        id: labelId.current,
       }),
     });
 
@@ -308,7 +310,6 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
                       as: 'input',
                       disabled,
                       type,
-                      id,
                       required,
                       value: value || '',
                       className: inputSlotClassNames.input,
@@ -389,6 +390,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       'showSuccessIndicator',
       'label',
       'labelPosition',
+      'labelId',
     ],
   },
 ) as ComponentWithAs<'div', InputProps> & {
@@ -405,6 +407,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   label: customPropTypes.itemShorthand,
+  labelId: PropTypes.string,
   labelPosition: PropTypes.oneOf<LabelPosition>(['internal', 'inline']),
   icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
