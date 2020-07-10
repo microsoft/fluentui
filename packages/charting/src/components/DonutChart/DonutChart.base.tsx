@@ -223,6 +223,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       showHover: true,
       value: data.data!.toString(),
       legend: data.legend,
+      activeLegend: data.legend,
       color: data.color!,
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
@@ -239,13 +240,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       color: data.color!,
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
+      activeLegend: data.legend,
     });
   };
   private _onBlur = (): void => {
-    this.setState({ showHover: false, focusedArcId: '' });
+    this.setState({ showHover: false, focusedArcId: '', activeLegend: '' });
   };
 
   private _hoverLeave(): void {
-    this.setState({ showHover: false });
+    this.setState({ showHover: false, activeLegend: '' });
   }
 }
