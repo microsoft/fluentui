@@ -2,7 +2,7 @@
 
 - Use a multiline text field when long entries are expected.
 - Don't place a text field in the middle of a sentence, because the sentence structure might not make sense in all languages. For example, "Remind me in [textfield] weeks" should instead read, "Remind me in this many weeks [textfield]".
-- Whenever possible, format the text field for the expected entry. For example, four fields for a four-digit PIN, three fields for a phone number.
+- Format the text field for the expected entry. For example, when someone needs to enter a phone number, format the field to include the three sets of digits that should be entered.
 
 ### Content
 
