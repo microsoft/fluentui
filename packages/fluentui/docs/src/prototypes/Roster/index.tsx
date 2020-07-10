@@ -3,7 +3,17 @@ import participants from './participantData';
 import presenters from './presentersData';
 
 import themeOverrides from './styles';
-import { List, Provider, Tree, Flex, Button, Input, Text, Header, teamsDarkTheme } from '@fluentui/react-northstar';
+import {
+  List,
+  Provider,
+  Accordion,
+  Flex,
+  Button,
+  Input,
+  Text,
+  Header,
+  teamsDarkTheme,
+} from '@fluentui/react-northstar';
 import { TriangleDownIcon, TriangleEndIcon, CloseIcon, LinkIcon } from '@fluentui/react-icons-northstar';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 
@@ -22,12 +32,12 @@ const treeItems = [
   {
     id: 'participants',
     title: 'Currently in this meeting',
-    items: [<ParticipantsList />],
+    content: <ParticipantsList />,
   },
   {
     id: 'invite',
     title: 'Invite others from conversation (25)',
-    items: [<PresentersList />],
+    content: <PresentersList />,
   },
 ];
 
@@ -46,11 +56,7 @@ const RosterPrototype: React.FC = () => {
                 <Input fluid placeholder="Search..." />
                 <Button variables={{ isSearchButton: true }} icon={<LinkIcon />} title="Search" iconOnly text />
               </Flex>
-              <Tree
-                items={treeItems}
-                renderItemTitle={titleRenderer}
-                defaultActiveItemIds={['participants', 'invite']}
-              ></Tree>
+              <Accordion panels={treeItems} defaultActiveIndex={[0, 1]}></Accordion>
             </Flex>
           </Provider>
         </Provider>

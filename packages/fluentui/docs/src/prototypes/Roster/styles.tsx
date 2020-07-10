@@ -23,7 +23,7 @@ const themeOverrides = {
         ...(v.isCloseButton && {
           marginTop: 'auto',
           marginBottom: 'auto',
-          marginRight: '0.8rem',
+          marginRight: '1.5rem',
           ':focus': {
             color: siteVariables.colorScheme.brand.foregroundHover1,
           },
@@ -46,16 +46,17 @@ const themeOverrides = {
         }),
       }),
     },
-    TreeItem: {
+    Accordion: {
       root: {
-        marginBottom: '0.5rem',
-        paddingLeft: '0.5rem',
-        paddingRight: '0.8rem',
+        marginTop: '1.5rem',
+        paddingBottom: '1.5rem',
+        paddingLeft: '1.5rem',
+        marginRight: '0.8rem',
       },
     },
     ListItem: {
       root: ({ theme: { siteVariables } }) => ({
-        marginLeft: '0rem',
+        marginLeft: '0.2rem',
         marginRight: '1.5rem',
         padding: '0.2rem 0.3rem',
         ':hover': {
