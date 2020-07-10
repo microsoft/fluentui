@@ -4,35 +4,21 @@ import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IChartProps } from '../../types/IDataPoint';
 import { IEventAnnotation } from '../../types/IEventAnnotation';
-
+import { IMargins } from '../../utilities/index';
 export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/IDataPoint';
 
 export interface ILineChart {}
-
-export interface IMargins {
-  /**
-   * left margin for the chart.
-   */
-  left?: number;
-  /**
-   * Right margin for the chart.
-   */
-  right?: number;
-  /**
-   * Top margin for the chart.
-   */
-  top?: number;
-  /**
-   * Bottom margin for the chart.
-   */
-  bottom?: number;
-}
 
 export interface ILineChartProps {
   /**
    * Data to render in the chart.
    */
   data: IChartProps;
+
+  /**
+   * Chart title for title of the chart
+   */
+  chartTitle?: string;
 
   /**
    * Width of the chart.
@@ -45,7 +31,7 @@ export interface ILineChartProps {
   height?: number;
 
   /**
-   * Additional CSS class(es) to apply to the LineChart.
+   * Additional CSS class(es) to apply to the Chart.
    */
   className?: string;
 
@@ -63,6 +49,25 @@ export interface ILineChartProps {
    * Width of line stroke
    */
   strokeWidth?: number;
+
+  /**
+   * Number of ticks on the y-axis.
+   * This is a optional parameter and default value is 5.
+   * @default 4
+   */
+  yAxisTickCount?: number;
+
+  /**
+   * This prop used to draw X axis grid line on tha chart.
+   * @default false
+   */
+  showXAxisGridLines?: boolean;
+
+  /**
+   * This prop used to draw Y axis grid lines on the chart.
+   * @default false
+   */
+  showYAxisGridLines?: boolean;
 
   /**
    * this prop takes values that you want the line chart to render on x-axis
@@ -153,11 +158,30 @@ export interface IEventsAnnotationProps {
 }
 
 export interface ILineChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
   theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the Chart.
+   */
   className?: string;
-  width: number;
-  height: number;
-  color: string;
+
+  /**
+   * Width of the chart.
+   */
+  width?: number;
+
+  /**
+   * Height of the chart.
+   */
+  height?: number;
+
+  /**
+   * Color of the chart.
+   */
+  color?: string;
 }
 
 export interface ILineChartStyles {
@@ -192,6 +216,16 @@ export interface ILineChartStyles {
   calloutContentRoot?: IStyle;
 
   /**
+   * styles for callout x-content
+   */
+  calloutContentX?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutContentY?: IStyle;
+
+  /**
    * styles for callout Date time container
    */
   calloutDateTimeContainer?: IStyle;
@@ -210,13 +244,4 @@ export interface ILineChartStyles {
    * styles for callout y-content
    */
   calloutlegendText?: IStyle;
-
-  /**
-   * styles for callout x-content
-   */
-  calloutContentX?: IStyle;
-  /**
-   * styles for callout y-content
-   */
-  calloutContentY?: IStyle;
 }
