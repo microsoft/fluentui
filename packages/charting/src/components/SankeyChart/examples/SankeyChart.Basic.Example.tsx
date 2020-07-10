@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartProps, ISankeyChartProps, SankeyChart } from '../index';
+import { IChartProps, ISankeyChartProps, SankeyChart } from '@uifabric/charting';
 
 interface ILineChartBasicState {
   width: number;
