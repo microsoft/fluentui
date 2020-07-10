@@ -18,7 +18,7 @@ export interface InputVariables {
   inputPadding: string;
   inputFocusBorderColor: string;
   inputFocusBorderRadius: string;
-  inputInternalLabelPaddingTop: string;
+  inputInsideLabelPaddingTop: string;
   placeholderColor: string;
   successfulColor: string;
   borderColorError: string;
