@@ -311,7 +311,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     this.setState(this._getDefaultState());
   }
 
-  private showDatePickerPopup(): void {
+  public showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
       this.setState({
