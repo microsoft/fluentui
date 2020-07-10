@@ -57,7 +57,9 @@ export const useToggle = (
   const labelId = `${id}-label`;
   const stateTextId = `${id}-stateText`;
   const stateText = checked ? onText : offText;
-  const toggleNativeProps = getNativeProps<HTMLInputElement>(props, inputProperties, ['defaultChecked']);
+  const toggleNativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties, [
+    'defaultChecked',
+  ]);
 
   // The following properties take priority for what Narrator should read:
   // 1. ariaLabel
@@ -128,6 +130,7 @@ export const useToggle = (
       'aria-labelledby': labelledById,
       className: classNames.pill,
       'data-is-focusable': true,
+      'data-ktp-target': true,
       disabled: disabled,
       id: id,
       onClick: onClick,
