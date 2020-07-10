@@ -144,8 +144,8 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                     y2="-32.448"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stopColor="#4FE5FF" />
-                    <stop offset="1" stopColor="#69E56E" />
+                    <stop stop-color="#4FE5FF" />
+                    <stop offset="1" stop-color="#69E56E" />
                   </linearGradient>
                 </defs>
               </svg>

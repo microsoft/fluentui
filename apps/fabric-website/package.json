@@ -49,6 +49,7 @@
     "@uifabric/fluent-theme": "^7.1.108",
     "@uifabric/icons": "^7.3.60",
     "@uifabric/react-cards": "^0.109.112",
+    "@uifabric/react-hooks": "^7.4.13",
     "@uifabric/set-version": "^7.0.15",
     "@uifabric/theme-samples": "^7.0.103",
     "json-loader": "^0.5.7",
