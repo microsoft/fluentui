@@ -170,7 +170,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
 
     const { labelId } = React.useContext(FormFieldBaseContext);
     const inputId = React.useRef<string>();
-    inputId.current = getOrGenerateIdFromShorthand('ui-input-', props.id || '', inputId.current);
+    inputId.current = props.id || getOrGenerateIdFromShorthand('ui-input-', '', inputId.current);
 
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
