@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "enable datepicker callout open ",
+  "packageName": "@uifabric/date-time",
+  "email": "shrallap@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-10T05:36:12.334Z"
+}
