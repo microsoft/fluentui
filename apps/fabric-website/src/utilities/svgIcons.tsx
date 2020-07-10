@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
+import { useId } from '@uifabric/react-hooks';
 import * as styles from './svgIcons.module.scss';
 
 export interface ISVGIconProps {
@@ -13,6 +14,7 @@ export interface ISVGIconProps {
 
 export const AndroidLogo = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = useId('android');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -41,15 +43,15 @@ export const AndroidLogo = (props?: ISVGIconProps) => {
       <path d="M1 40.8001H65" stroke="white" strokeWidth="2" />
       <path
         d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65"
-        stroke="url('#paint0_angular')"
+        stroke={`url("${id}")`}
         strokeWidth="2"
       />
       <defs>
-        <radialGradient id="paint0_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stopColor="#4FE5FF" />
-          <stop offset="0.375" stopColor="#69E56E" />
-          <stop offset="0.625" stopColor="#CF8FFF" />
-          <stop offset="0.875" stopColor="#0078D4" />
+        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
+          <stop offset=".125" stop-color="#4FE5FF" />
+          <stop offset="0.375" stop-color="#69E56E" />
+          <stop offset="0.625" stop-color="#CF8FFF" />
+          <stop offset="0.875" stop-color="#0078D4" />
         </radialGradient>
       </defs>
     </svg>
@@ -58,6 +60,7 @@ export const AndroidLogo = (props?: ISVGIconProps) => {
 
 export const WindowsLogo = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = useId('windows');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -73,16 +76,16 @@ export const WindowsLogo = (props?: ISVGIconProps) => {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M1 10L65 2V66L1 58V10Z"
-        stroke="url(#paint1_angular)"
+        stroke={`url(${id})`}
         strokeWidth="2"
-        strokeLinecap="square"
+        stroke-linecap="square"
       />
       <defs>
-        <radialGradient id="paint1_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stopColor="#4FE5FF" />
-          <stop offset="0.375" stopColor="#69E56E" />
-          <stop offset="0.625" stopColor="#CF8FFF" />
-          <stop offset="0.875" stopColor="#0078D4" />
+        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
+          <stop offset=".125" stop-color="#4FE5FF" />
+          <stop offset="0.375" stop-color="#69E56E" />
+          <stop offset="0.625" stop-color="#CF8FFF" />
+          <stop offset="0.875" stop-color="#0078D4" />
         </radialGradient>
       </defs>
     </svg>
@@ -91,6 +94,7 @@ export const WindowsLogo = (props?: ISVGIconProps) => {
 
 export const MacLogo = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = useId('mac');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -106,16 +110,16 @@ export const MacLogo = (props?: ISVGIconProps) => {
       <path d="M53 41C49 45 41 49 33 49C25 49 17 45 13 41" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
       <path
         d="M49 65H17C8.15556 65 1 57.8444 1 49V17C1 8.15556 8.15556 1 17 1H49C57.8444 1 65 8.15556 65 17V49C65 57.8444 57.8444 65 49 65Z"
-        stroke="url(#paint2_angular)"
+        stroke={`url(${id})`}
         strokeWidth="2"
-        strokeLinecap="square"
+        stroke-linecap="square"
       />
       <defs>
-        <radialGradient id="paint2_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stopColor="#4FE5FF" />
-          <stop offset="0.375" stopColor="#69E56E" />
-          <stop offset="0.625" stopColor="#CF8FFF" />
-          <stop offset="0.875" stopColor="#0078D4" />
+        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
+          <stop offset=".125" stop-color="#4FE5FF" />
+          <stop offset="0.375" stop-color="#69E56E" />
+          <stop offset="0.625" stop-color="#CF8FFF" />
+          <stop offset="0.875" stop-color="#0078D4" />
         </radialGradient>
       </defs>
     </svg>
@@ -124,6 +128,7 @@ export const MacLogo = (props?: ISVGIconProps) => {
 
 export const AppleLogo = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = useId('apple');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -151,15 +156,15 @@ export const AppleLogo = (props?: ISVGIconProps) => {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M49.0022 65H16.9978C8.16222 65 1 57.8373 1 49.0022V16.9978C1 8.16267 8.16222 1 16.9978 1H49.0022C57.8378 1 65 8.16267 65 16.9978V49.0022C65 57.8373 57.8378 65 49.0022 65Z"
-        stroke="url(#paint3_angular)"
+        stroke={`url(${id})`}
         strokeWidth="2"
       />
       <defs>
-        <radialGradient id="paint3_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stopColor="#4FE5FF" />
-          <stop offset="0.375" stopColor="#69E56E" />
-          <stop offset="0.625" stopColor="#CF8FFF" />
-          <stop offset="0.875" stopColor="#0078D4" />
+        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
+          <stop offset=".125" stop-color="#4FE5FF" />
+          <stop offset="0.375" stop-color="#69E56E" />
+          <stop offset="0.625" stop-color="#CF8FFF" />
+          <stop offset="0.875" stop-color="#0078D4" />
         </radialGradient>
       </defs>
     </svg>
@@ -168,6 +173,7 @@ export const AppleLogo = (props?: ISVGIconProps) => {
 
 export const WebLogo = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = useId('web');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -191,16 +197,16 @@ export const WebLogo = (props?: ISVGIconProps) => {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M65 33C65 50.6733 50.6733 65 33 65C15.3267 65 1 50.6733 1 33C1 15.3267 15.3267 1 33 1C50.6733 1 65 15.3267 65 33Z"
-        stroke="url(#paint4_angular)"
+        stroke={`url(${id})`}
         strokeWidth="2"
-        strokeLinecap="square"
+        stroke-linecap="square"
       />
       <defs>
-        <radialGradient id="paint4_angular" cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stopColor="#4FE5FF" />
-          <stop offset="0.375" stopColor="#69E56E" />
-          <stop offset="0.625" stopColor="#CF8FFF" />
-          <stop offset="0.875" stopColor="#0078D4" />
+        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
+          <stop offset=".125" stop-color="#4FE5FF" />
+          <stop offset="0.375" stop-color="#69E56E" />
+          <stop offset="0.625" stop-color="#CF8FFF" />
+          <stop offset="0.875" stop-color="#0078D4" />
         </radialGradient>
       </defs>
     </svg>
@@ -209,6 +215,7 @@ export const WebLogo = (props?: ISVGIconProps) => {
 
 export const CrossPlatformLogo = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = useId('crossplat');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -220,15 +227,15 @@ export const CrossPlatformLogo = (props?: ISVGIconProps) => {
     >
       <path d="M25 57H49" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
       <path d="M33 49V57" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
-      <path d="M1 25V1H65V49H25" stroke="url(#paint0_angular)" strokeWidth="2" strokeLinecap="square" />
+      <path d="M1 25V1H65V49H25" stroke={`url(${id})`} strokeWidth="2" stroke-linecap="square" />
       <path d="M25 25H1V65H25V25Z" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
       <path d="M9 29H17" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
-      <path d="M9 57L57 9" stroke="white" strokeWidth="2" strokeLinecap="square" />
+      <path d="M9 57L57 9" stroke="white" strokeWidth="2" stroke-linecap="square" />
       <path d="M9 49V57H17" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
-      <path d="M57 17V9H49" stroke="white" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="square" />
+      <path d="M57 17V9H49" stroke="white" strokeWidth="2" strokeMiterlimit="10" stroke-linecap="square" />
       <defs>
         <radialGradient
-          id="paint0_angular"
+          id={id}
           cx="0"
           cy="0"
           r="1"
