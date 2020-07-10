@@ -3,7 +3,7 @@ const config: ScreenerTestsConfig = {
     builder =>
       builder
         .snapshot('Input: Labels')
-        .setValue(`#internal-label`, 'Some text...')
+        .setValue(`#inside-label`, 'Some text...')
         .snapshot('Input: Inside Label with Value'),
   ],
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
