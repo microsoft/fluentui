@@ -1,9 +1,9 @@
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
-import { isConformant as newIsConformant } from 'test/utils';
+import { sharedIsConformant } from 'test/utils';
 import Slider from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
-  newIsConformant({
+  sharedIsConformant({
     componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
     Component: Slider,
     displayName: 'Slider',

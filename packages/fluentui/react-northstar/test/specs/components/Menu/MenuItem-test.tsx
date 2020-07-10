@@ -1,14 +1,13 @@
 import * as React from 'react';
 
 import { Accessibility, menuItemAsToolbarButtonBehavior, tabBehavior } from '@fluentui/accessibility';
-import { isConformant as newIsConformant } from 'test/utils';
 import {
   isConformant,
   handlesAccessibility,
   getRenderedAttribute,
   implementsShorthandProp,
 } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent } from 'test/utils';
+import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils';
 import MenuItem from 'src/components/Menu/MenuItem';
 import Menu from 'src/components/Menu/Menu';
 import MenuItemWrapper, { menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
@@ -23,7 +22,7 @@ describe('MenuItem', () => {
     autoControlledProps: ['menuOpen'],
   });
 
-  newIsConformant({
+  sharedIsConformant({
     Component: MenuItem,
     displayName: 'MenuItem',
     componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),

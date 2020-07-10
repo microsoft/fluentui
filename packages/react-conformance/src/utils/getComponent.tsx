@@ -11,7 +11,7 @@ const getDisplayName = (Component: React.ElementType) => {
 const toNextNonTrivialChild = (from: ReactWrapper, helperComponentNames: string[]): ReactWrapper => {
   const current = from.childAt(0);
 
-  return current.length && helperComponentNames.includes(current.name())
+  return current && helperComponentNames.includes(current.name())
     ? toNextNonTrivialChild(current, helperComponentNames)
     : current;
 };

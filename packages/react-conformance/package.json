@@ -28,6 +28,7 @@
     "@types/react-is": "^16.7.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/tslint-rules": "^7.2.2",
+    "@uifabric/utilities": "^7.22.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "jest": "~24.9.0",
