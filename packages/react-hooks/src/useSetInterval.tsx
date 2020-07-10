@@ -1,30 +1,39 @@
+import * as React from 'react';
 import { useConst } from './useConst';
 import { useEffect } from 'react';
+
+export type UseSetIntervalReturnType = {
+  setInterval: (callback: () => void, duration: number) => number;
+  clearInterval: (id: number) => void;
+};
 
 /**
  *  Returns a wrapper function for `setInterval` which automatically handles disposal.
  */
-export const useSetInterval = () => {
-  const intervalIds = useConst<number[]>([]);
+export const useSetInterval = (): UseSetIntervalReturnType => {
+  const intervalIds = useConst<Record<number, number>>({});
 
   useEffect(
     () => () => {
-      for (const id of intervalIds) {
-        clearInterval(id);
+      for (const id of Object.keys(intervalIds)) {
+        clearInterval(id as any);
       }
-      intervalIds.splice(0);
     },
     [],
   );
 
-  return (func: () => void, duration: number) => {
-    const id = (setInterval(() => {
-      intervalIds.splice(intervalIds.indexOf(id), 1);
-      func();
-    }, duration) as unknown) as number;
+  return {
+    setInterval: React.useCallback((func: () => void, duration: number): number => {
+      const id = (setInterval(func, duration) as unknown) as number;
 
-    intervalIds.push(id);
+      intervalIds[id] = 1;
 
-    return id;
+      return id;
+    }, []),
+
+    clearInterval: React.useCallback((id: number): void => {
+      delete intervalIds[id];
+      clearInterval(id);
+    }, []),
   };
 };

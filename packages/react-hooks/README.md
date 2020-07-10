@@ -143,9 +143,9 @@ const Example = React.forwardRef(function Example(props:{}, forwardedRef: React.
 
 ## useSetInterval
 
-`function useSetInterval()`
+`useSetInterval: () => { setInterval, clearInterval }`
 
-Hook that returns a wrapper function for `setInterval` which automatically handles disposal.
+Hook which returns safe `setInterval` and `clearInterval` methods. Intervals set up using this hook will be automatically cleared when the component is unmounted.
 
 ### Example
 
@@ -153,34 +153,34 @@ Hook that returns a wrapper function for `setInterval` which automatically handl
 import { useSetInterval } from '@uifabric/react-hooks';
 
 const MyComponent = buttonContent => {
-  const safeSetInterval = useSetInterval();
+  const { setInterval, clearInterval } = useSetInterval();
 
-  const intervalFunction = safeSetInterval(() => {
-    alert('Hello');
-  }, 1000);
+  // Set an interval
+  const id = setInterval(() => console.log('test'), 500);
 
-  return <button onClick={intervalFunction()}>{buttonContent}</button>;
+  // If needed, clear an interval manually.
+  clearInterval(id);
 };
 ```
 
 ## useSetTimeout
 
-`function useSetTimeout()`
+`const useSetTimeout: () => { setTimeout, clearTimeout }`
 
-Hook that returns a wrapper function for `setTimeout` which automatically handles disposal.
+Hook which returns safe `setTimeout` and `clearTimeout` methods. Timeout callbacks set up using this hook will be automatically cleared when the component is unmounted.
 
 ### Example
 
 ```jsx
-import { useSetTimeout } from '@uifabric/react-hooks';
+import { useSetInterval } from '@uifabric/react-hooks';
 
 const MyComponent = buttonContent => {
-  const safeSetTimeout = useSetTimeout();
+  const { setTimeout, clearTimeout } = useSetTimeout();
 
-  const timeoutFunction = safeSetTimeout(() => {
-    alert('Hello');
-  }, 1000);
+  // Set a timeout
+  const id = setTimeout(() => console.log('test'), 500);
 
-  return <button onClick={timeoutFunction()}>{buttonContent}</button>;
+  // If needed, clear an timeout manually.
+  clearTimeout(id);
 };
 ```
