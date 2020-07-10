@@ -23,50 +23,46 @@ const Participant: React.FC<{
       )}
 
       <Flex column>
-        {talking ? (
-          <Text weight="bold" content={name} variables={{ isNameText: true }} />
-        ) : (
-          <Text content={name} variables={{ isNameText: true }} />
-        )}
+        <Text weight={talking && 'bold'} content={name} variables={{ isNameText: true }} />
         <Text variables={{ isRoleText: true }} content={role} />
       </Flex>
 
       {muted ? (
-        <FlexItem push>
-          <MicOffIcon />
-        </FlexItem>
-      ) : null}
-      {muted ? (
-        <MenuButton
-          position="above"
-          align="end"
-          trigger={<MoreIcon />}
-          menu={[
-            {
-              icon: (
-                <MicIcon
-                  onClick={() => {
-                    setMuted(false);
-                    setTalking(isTalking);
-                  }}
-                />
-              ),
-              content: (
-                <Text
-                  onClick={() => {
-                    setMuted(false);
-                    setTalking(isTalking);
-                  }}
-                  content="Unmute"
-                />
-              ),
-            },
-            {
-              icon: <ParticipantRemoveIcon />,
-              content: 'Remove',
-            },
-          ]}
-        />
+        <>
+          <FlexItem push>
+            <MicOffIcon />
+          </FlexItem>
+          <MenuButton
+            position="above"
+            align="end"
+            trigger={<MoreIcon />}
+            menu={[
+              {
+                icon: (
+                  <MicIcon
+                    onClick={() => {
+                      setMuted(false);
+                      setTalking(isTalking);
+                    }}
+                  />
+                ),
+                content: (
+                  <Text
+                    onClick={() => {
+                      setMuted(false);
+                      setTalking(isTalking);
+                    }}
+                    content="Unmute"
+                  />
+                ),
+              },
+              {
+                icon: <ParticipantRemoveIcon />,
+                content: 'Remove',
+              },
+            ]}
+          />
+        </>
       ) : (
         <FlexItem push>
           <MenuButton
