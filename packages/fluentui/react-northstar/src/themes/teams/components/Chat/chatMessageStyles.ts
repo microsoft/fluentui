@@ -88,7 +88,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     // we need higher zIndex for the action menu in order to be displayed above the focus border of the chat message
     zIndex: p.focused ? v.overlayZIndex : -1,
     ...(_.isNil(v.showActionMenu) && {
-      overflow: 'visible',
+      overflow: p.focused ? 'visible' : 'hidden',
       // hide and squash actions menu to prevent accidental hovers over its invisible area
       opacity: p.focused ? 1 : 0,
     }),
