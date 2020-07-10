@@ -26,4 +26,4 @@ Don’t use buttons when a subtler link will suffice. Reserve the use of a butto
 
 #### Close button
 
-Always offer a quick way for people to close a message bar. The exception is subscription expiration messages, which must remain open until the issue is resolved.
+Always offer a quick way for people to close a message bar, unless there is an issue that must be resolved immediately, such as an expired subscription.
