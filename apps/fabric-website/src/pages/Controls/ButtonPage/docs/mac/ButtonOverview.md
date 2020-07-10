@@ -1,4 +1,4 @@
-Buttons give people a way to trigger an action. They're typically found in windows, alerts, and dialogs. Some buttons are specialized for particular tasks, such as navigation, repeated actions, or presenting menus. The FluentUI button for macOS adds system appropriate hover effects when your mouse rests over it.
+Buttons give people a way to trigger an action. They're typically found in windows, alerts, and dialogs. Some buttons are specialized for particular tasks, such as navigation, repeated actions, or presenting menus. The Fluent UI button for macOS adds system-appropriate hover effects when the mouse rests over it.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 
