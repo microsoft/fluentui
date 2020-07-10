@@ -10,17 +10,17 @@ Message bars should include:
 
 #### Title
 
-Limit titles to 50 characters (including spaces) to leave room for text expansion when translated. Users should be able to scan the title to determine the purpose of the message.Capitalize only the first word of the title and any proper nouns.
+Limit titles to 50 characters (including spaces) to leave room for text expansion when translated. People should be able to scan the title to determine the purpose of the message. Capitalize only the first word of the title and any proper nouns.
 
 #### Body text
 
-Describe the information or error state concisely, ideally in a single sentence. Limit the message to fewer than 512 characters (including spaces) to leave room for text expansion when translated. Include end punctuation for complete sentences.
+Describe the information or error state concisely, ideally in a single sentence. Limit the message to fewer than 512 characters (including spaces) to leave room for text expansion when translated. Include end punctuation for complete sentences. 
 
 #### Action buttons (Optional)
 
-Offer one to two action buttons to help people solve any errors they’re receiving. Limit button text to fewer than 50 characters (including spaces) to leave room for translation. Action buttons can have any callback attached to them and should provide people with options to address the notification and dismiss the message bar.
+Offer one to two action buttons to help people solve any errors they're receiving. Limit button text to fewer than 50 charactesr (including spaces) to leave room for translation. Action buttons can have any callback attached to them and should provide people with options to address the notification and dismiss the message bar. 
 
-#### Link (Optional)<
+#### Link (Optional)
 
 Don’t use buttons when a subtler link will suffice. Reserve the use of a button for when the MessageBar has a single ”hero” action that is useful at that particular moment. Avoid using more than one button.
 
