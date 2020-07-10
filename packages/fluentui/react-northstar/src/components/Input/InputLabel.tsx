@@ -2,7 +2,7 @@ import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 
-export type LabelPosition = 'inline' | 'above' | 'internal';
+export type LabelPosition = 'inline' | 'above' | 'inside';
 
 interface InputLabelOwnProps {
   labelPosition?: LabelPosition;

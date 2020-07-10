@@ -62,8 +62,8 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     ...(p.hasIcon && {
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
-    ...(p.labelPosition === 'internal' && {
-      paddingTop: pxToRem(14),
+    ...(p.labelPosition === 'inside' && {
+      paddingTop: v.inputInternalLabelPaddingTop,
     }),
     ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
 

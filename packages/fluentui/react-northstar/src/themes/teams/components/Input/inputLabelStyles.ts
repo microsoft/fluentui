@@ -1,29 +1,29 @@
 import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { InputLabelStylesProps } from '../../../../components/Input/InputLabel';
-import { pxToRem } from '../../../../utils';
+import { InputLabelVariables } from './inputLabelVariables';
 
-export const inputLabelStyles: ComponentSlotStylesPrepared<InputLabelStylesProps> = {
-  root: ({ props: p }): ICSSInJSStyle => ({
+export const inputLabelStyles: ComponentSlotStylesPrepared<InputLabelStylesProps, InputLabelVariables> = {
+  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
     transition: 'all .2s',
 
-    ...(p.labelPosition === 'internal' && {
+    ...(p.labelPosition === 'inside' && {
+      bottom: v.insideLabelBottom,
       top: 0,
-      bottom: pxToRem(-8),
       left: 0,
       margin: 0,
       position: 'absolute',
       display: 'flex',
       alignItems: 'center',
       zIndex: 100,
-      paddingLeft: pxToRem(12),
+      paddingLeft: v.insideLabelPaddingLeft,
       ...(p.inputValue && {
         transform: 'translateY(-16px)',
-        fontSize: pxToRem(12),
+        fontSize: v.insideLabelActiveFontSize,
       }),
     }),
     ...(p.labelPosition === 'inline' && {
-      paddingRight: pxToRem(10),
+      paddingRight: v.inlineLabelPaddingRight,
     }),
     ...(p.required && {
       '::after': {
