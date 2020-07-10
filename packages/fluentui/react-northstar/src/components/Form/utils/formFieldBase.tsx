@@ -104,6 +104,11 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
               ...slotProps.label,
             }),
         })}
+        {/**
+         * When there's a message for the input the labelId and messageId should be consistent in the
+         * aria-labelledby attribute (aria-labelledby="labelID messageID") therefore we need to pass it down
+         * for components like input that are generating its own label internally
+         */}
         <FormFieldBaseProvider value={childProps}>
           {createShorthand(composeOptions.slots.control, control || {}, {
             defaultProps: () =>

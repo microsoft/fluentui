@@ -14,6 +14,7 @@ import {
   createShorthandFactory,
   ShorthandFactory,
   createShorthand,
+  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
@@ -168,6 +169,8 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
     const inputRef = React.useRef<HTMLInputElement>();
 
     const { labelId } = React.useContext(FormFieldBaseContext);
+    const inputId = React.useRef<string>();
+    inputId.current = getOrGenerateIdFromShorthand('ui-input-', props.id || '', inputId.current);
 
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
@@ -281,6 +284,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         labelPosition,
         label,
         required,
+        htmlFor: inputId.current,
         inputValue: hasValue,
         ...(labelId && { id: labelId }),
       }),
@@ -308,6 +312,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
                       type,
                       required,
                       value: value || '',
+                      id: inputId.current,
                       className: inputSlotClassNames.input,
                       styles: resolvedStyles.input,
                       onChange: handleChange,
