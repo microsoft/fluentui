@@ -58,7 +58,7 @@ import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
 import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 import FormValidationPrototype from './prototypes/FormValidation';
 import RosterPrototype from './prototypes/Roster';
-
+import PerformanceTests from './views/PerformanceTests';
 const Routes = () => (
   // Remove trailing slash
   <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
@@ -81,6 +81,7 @@ const Routes = () => (
               <MarkdownPage page={Debugging} />
             </Route>
             <Route exact path="/quick-start" component={QuickStart} />
+            <Route exact path="/perf-tests" component={PerformanceTests} />
             <Route exact path="/prototype-roster" component={RosterPrototype} />
             <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
             <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
