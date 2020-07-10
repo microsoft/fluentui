@@ -1,6 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
+import * as PropTypes from 'prop-types';
 
 export type LabelPosition = 'inline' | 'above' | 'inside';
 
@@ -34,6 +35,11 @@ InputLabel.defaultProps = {
   as: 'label',
 };
 
-InputLabel.propTypes = commonPropTypes.createCommon();
+InputLabel.propTypes = {
+  ...commonPropTypes.createCommon(),
+  labelPosition: PropTypes.oneOf<LabelPosition>(['inside', 'inline']),
+  required: PropTypes.bool,
+  inputValue: PropTypes.bool,
+};
 
 export default InputLabel;
