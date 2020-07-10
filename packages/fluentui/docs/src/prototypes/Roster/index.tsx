@@ -32,14 +32,14 @@ const RosterPrototype: React.FC = () => {
           <Provider theme={themeOverrides}>
             <Flex column variables={{ isContainer: true }}>
               <Flex space="between" padding="padding.medium" variables={{ isCallingRosterSectionTitle: true }}>
-                <Header as="h3" content="Participants"></Header>
+                <Header as="h3" content="Participants" />
                 <Button variables={{ isCloseButton: true }} icon={<CloseIcon />} title="Close" iconOnly text />
               </Flex>
               <Flex padding="padding.medium" hAlign="center" variables={{ isRosterSearch: true }}>
                 <Input fluid placeholder="Search..." />
                 <Button variables={{ isSearchButton: true }} icon={<LinkIcon />} title="Search" iconOnly text />
               </Flex>
-              <Accordion panels={treeItems} defaultActiveIndex={[0, 1]}></Accordion>
+              <Accordion panels={treeItems} defaultActiveIndex={[0, 1]} />
             </Flex>
           </Provider>
         </Provider>
