@@ -1,6 +1,16 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '@fluentui/react-focus';
+import { useConst } from '@uifabric/react-hooks';
+import { KeytipManager } from 'office-ui-fabric-react/lib/utilities/keytips/KeytipManager';
 import { IKeytipProps } from '../../Keytip';
+import { IProcessedStyleSet } from '../../Styling';
+import {
+  IOverflowSetItemProps,
+  IOverflowSetProps,
+  IOverflowSetStyles,
+  IOverflowSetStyleProps,
+  IOverflowSet,
+} from './OverflowSet.types';
 import {
   classNamesFunction,
   divProperties,
@@ -9,35 +19,25 @@ import {
   warnMutuallyExclusive,
   focusFirstChild,
 } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
-import { KeytipManager } from 'office-ui-fabric-react/lib/utilities/keytips/KeytipManager';
-import {
-  IOverflowSetItemProps,
-  IOverflowSetProps,
-  IOverflowSetStyles,
-  IOverflowSetStyleProps,
-  IOverflowSet,
-} from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 const COMPONENT_NAME = 'OverflowSet';
-let Tag;
-let uniqueComponentProps;
 
-const useKeytips = (persistedKeytips: { [uniqueID: string]: IKeytipProps }, keytipManager: KeytipManager) => {
+const useKeytipRegistrations = (
+  persistedKeytips: { [uniqueID: string]: IKeytipProps },
+  keytipManager: KeytipManager,
+) => {
   React.useEffect(() => {
-    Object.keys(persistedKeytips).forEach((key: string) => {
-      const keytip = persistedKeytips[key];
-      // The "any" cast is required as a workaround due to colliding types.
+    Object.keys(persistedKeytips).forEach((keytipId: string) => {
+      const keytip = persistedKeytips[keytipId];
       const uniqueID = keytipManager.register(keytip as IKeytipProps, true);
       // Update map
       persistedKeytips[uniqueID] = keytip;
-      delete persistedKeytips[key];
+      delete persistedKeytips[keytipId];
     });
     return () => {
       // Delete all persisted keytips saved
       Object.keys(persistedKeytips).forEach((uniqueID: string) => {
-        // The "any" cast is required as a workaround due to colliding types.
         keytipManager.unregister(persistedKeytips[uniqueID] as IKeytipProps, uniqueID, true);
       });
       persistedKeytips = {};
@@ -90,7 +90,6 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
   const focusZone = React.useRef<IFocusZone>(null);
   const divContainer = React.useRef<HTMLDivElement>(null);
   const keytipManager: KeytipManager = KeytipManager.getInstance();
-
   const {
     items,
     overflowItems,
@@ -104,6 +103,8 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
     role,
     overflowSide = 'end',
   } = props;
+  let Tag;
+  let uniqueComponentProps;
 
   const classNames: IProcessedStyleSet<IOverflowSetStyles> = getClassNames(styles, { className, vertical });
 
@@ -162,7 +163,7 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
       newOverflowItems = itemsProp;
     }
     // Set up the keytip effect here, after persistedKeytips
-    useKeytips(persistedKeytips, keytipManager);
+    useKeytipRegistrations(persistedKeytips, keytipManager);
     return <div {...wrapperDivProps}>{props.onRenderOverflowButton(newOverflowItems)}</div>;
   };
 
@@ -179,6 +180,12 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
     return undefined;
   };
 
+  useConst(() => {
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
+      doNotContainWithinFocusZone: 'focusZoneProps',
+    });
+  });
+
   if (doNotContainWithinFocusZone) {
     Tag = 'div';
     uniqueComponentProps = {
@@ -194,10 +201,6 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
       direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal,
     };
   }
-
-  warnMutuallyExclusive(COMPONENT_NAME, props, {
-    doNotContainWithinFocusZone: 'focusZoneProps',
-  });
 
   useComponentRef(props, focusZone, divContainer);
 
