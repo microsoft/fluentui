@@ -54,7 +54,6 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       ':hover': {
         [`> .${chatMessageSlotClassNames.actionMenu}`]: {
           opacity: 1,
-          width: 'auto',
           zIndex: v.overlayZIndex,
           '[data-popper-escaped]': {
             opacity: 0,
