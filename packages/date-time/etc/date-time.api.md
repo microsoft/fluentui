@@ -243,6 +243,7 @@ export interface ICalendarStyles {
 export interface IDatePicker {
     focus(): void;
     reset(): void;
+    showDatePickerPopup(): void;
 }
 
 // @public (undocumented)
