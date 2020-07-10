@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, getId } from 'office-ui-fabric-react';
+import { css } from 'office-ui-fabric-react';
 import * as styles from './svgIcons.module.scss';
 
 export interface ISVGIconProps {
@@ -11,9 +11,8 @@ export interface ISVGIconProps {
   iconColor?: string;
 }
 
-export const AndroidLogo = (props?: ISVGIconProps) => {
+export const androidLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = getId('android');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -40,26 +39,13 @@ export const AndroidLogo = (props?: ISVGIconProps) => {
       <path d="M17 13L9 1" stroke="white" stroke-width="2" />
       <path d="M49 13L57 1" stroke="white" stroke-width="2" />
       <path d="M1 40.8001H65" stroke="white" stroke-width="2" />
-      <path
-        d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65"
-        stroke={`url("${id}")`}
-        stroke-width="2"
-      />
-      <defs>
-        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
+      <path d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65" stroke-width="2" />
     </svg>
   );
 };
 
-export const WindowsLogo = (props?: ISVGIconProps) => {
+export const windowsLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = getId('windows');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -75,25 +61,15 @@ export const WindowsLogo = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M1 10L65 2V66L1 58V10Z"
-        stroke={`url(${id})`}
         stroke-width="2"
         stroke-linecap="square"
       />
-      <defs>
-        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
     </svg>
   );
 };
 
-export const MacLogo = (props?: ISVGIconProps) => {
+export const macLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = getId('mac');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -109,25 +85,15 @@ export const MacLogo = (props?: ISVGIconProps) => {
       <path d="M53 41C49 45 41 49 33 49C25 49 17 45 13 41" stroke="white" stroke-width="2" stroke-miterlimit="10" />
       <path
         d="M49 65H17C8.15556 65 1 57.8444 1 49V17C1 8.15556 8.15556 1 17 1H49C57.8444 1 65 8.15556 65 17V49C65 57.8444 57.8444 65 49 65Z"
-        stroke={`url(${id})`}
         stroke-width="2"
         stroke-linecap="square"
       />
-      <defs>
-        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
     </svg>
   );
 };
 
-export const AppleLogo = (props?: ISVGIconProps) => {
+export const appleLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = getId('apple');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -155,24 +121,14 @@ export const AppleLogo = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M49.0022 65H16.9978C8.16222 65 1 57.8373 1 49.0022V16.9978C1 8.16267 8.16222 1 16.9978 1H49.0022C57.8378 1 65 8.16267 65 16.9978V49.0022C65 57.8373 57.8378 65 49.0022 65Z"
-        stroke={`url(${id})`}
         stroke-width="2"
       />
-      <defs>
-        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
     </svg>
   );
 };
 
-export const WebLogo = (props?: ISVGIconProps) => {
+export const webLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = getId('web');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -196,25 +152,15 @@ export const WebLogo = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M65 33C65 50.6733 50.6733 65 33 65C15.3267 65 1 50.6733 1 33C1 15.3267 15.3267 1 33 1C50.6733 1 65 15.3267 65 33Z"
-        stroke={`url(${id})`}
         stroke-width="2"
         stroke-linecap="square"
       />
-      <defs>
-        <radialGradient id={id} cx="0" cy="0" r="100" gradientUnits="userSpaceOnUse">
-          <stop offset=".125" stop-color="#4FE5FF" />
-          <stop offset="0.375" stop-color="#69E56E" />
-          <stop offset="0.625" stop-color="#CF8FFF" />
-          <stop offset="0.875" stop-color="#0078D4" />
-        </radialGradient>
-      </defs>
     </svg>
   );
 };
 
-export const CrossPlatformLogo = (props?: ISVGIconProps) => {
+export const crossPlatformLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = getId('crossplat');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -226,27 +172,12 @@ export const CrossPlatformLogo = (props?: ISVGIconProps) => {
     >
       <path d="M25 57H49" stroke="white" stroke-width="2" stroke-miterlimit="10" />
       <path d="M33 49V57" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-      <path d="M1 25V1H65V49H25" stroke={`url(${id})`} stroke-width="2" stroke-linecap="square" />
+      <path d="M1 25V1H65V49H25" stroke-width="2" stroke-linecap="square" />
       <path d="M25 25H1V65H25V25Z" stroke="white" stroke-width="2" stroke-miterlimit="10" />
       <path d="M9 29H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
       <path d="M9 57L57 9" stroke="white" stroke-width="2" stroke-linecap="square" />
       <path d="M9 49V57H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
       <path d="M57 17V9H49" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" />
-      <defs>
-        <radialGradient
-          id={id}
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(33 25) scale(32 24)"
-        >
-          <stop offset="0.125191" stop-color="#CF8FFF" />
-          <stop offset="0.375179" stop-color="#0078D4" />
-          <stop offset="0.62518" stop-color="#4FE5FF" />
-          <stop offset="0.874595" stop-color="#69E56E" />
-        </radialGradient>
-      </defs>
     </svg>
   );
 };
