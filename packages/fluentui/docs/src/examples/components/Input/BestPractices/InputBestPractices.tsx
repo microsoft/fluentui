@@ -7,7 +7,7 @@ const doList = [
   'If input is search, then use `role="search"`.',
 ];
 
-const dontList = ['Do not use `placeholder` when using `label` with `labelPosition="internal"`'];
+const dontList = ['Do not use `placeholder` when using `label` with `labelPosition="inside"`'];
 
 const InputBestPractices = () => {
   return <ComponentBestPractices doList={doList} dontList={dontList} />;
