@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { compose, mergeProps } from '@fluentui/react-compose';
-import { mergeAriaAttributeValues } from '../../Utilities';
 import { ICheckboxProps, ICheckboxSlots, ICheckboxState, ICheckboxSlotProps } from './Checkbox.types';
-import { KeytipData } from '../../KeytipData';
 import { useCheckbox } from './useCheckbox';
 
 const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
@@ -15,30 +13,20 @@ const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
 
 export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
   (props, forwardedRef, composeOptions) => {
-    const { slotProps, slots, state } = mergeProps<ICheckboxProps, ICheckboxState, ICheckboxSlots, ICheckboxSlotProps>(
+    const { slotProps, slots } = mergeProps<ICheckboxProps, ICheckboxState, ICheckboxSlots, ICheckboxSlotProps>(
       composeOptions.state,
       composeOptions,
     );
-
-    const { disabled, keytipProps } = state;
 
     const onRenderLabel = (): JSX.Element => {
       return <slots.label {...slotProps.label} />;
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const renderContent = (keytipAttributes: any = {}) => (
+    return (
       <slots.root {...slotProps.root}>
-        <slots.input
-          {...slotProps.input}
-          data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-          aria-describedby={mergeAriaAttributeValues(
-            slotProps.input['aria-describedby'],
-            keytipAttributes['aria-describedby'],
-          )}
-        />
+        <slots.input {...slotProps.input} />
         <slots.container {...slotProps.container}>
-          <slots.checkbox {...slotProps.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
+          <slots.checkbox {...slotProps.checkbox}>
             <slots.checkmark {...slotProps.checkmark} />
           </slots.checkbox>
 
@@ -47,17 +35,6 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
         </slots.container>
       </slots.root>
     );
-
-    if (keytipProps) {
-      return (
-        <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {// eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (keytipAttributes: any): JSX.Element => renderContent(keytipAttributes)}
-        </KeytipData>
-      );
-    }
-
-    return renderContent();
   },
   {
     slots: defaultSlots,

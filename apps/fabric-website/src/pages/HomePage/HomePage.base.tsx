@@ -18,12 +18,12 @@ import {
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
 import {
-  AndroidLogoColor,
-  AppleLogoColor,
-  WebLogoColor,
-  WindowsLogoColor,
-  MacLogoColor,
-  CrossPlatformLogoColor,
+  androidLogoColor,
+  appleLogoColor,
+  webLogoColor,
+  windowsLogoColor,
+  macLogoColor,
+  crossPlatformLogoColor,
 } from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
@@ -33,12 +33,12 @@ const getClassNames = classNamesFunction<IHomePageStyleProps, IHomePageStyles>()
 
 registerIcons({
   icons: {
-    'AndroidLogo-homePage': AndroidLogoColor({ iconSize: 64 }),
-    'AppleLogo-homePage': AppleLogoColor({ iconSize: 64 }),
-    'WebLogo-homePage': WebLogoColor({ iconSize: 64 }),
-    'WindowsLogo-homePage': WindowsLogoColor({ iconSize: 64 }),
-    'MacLogo-homePage': MacLogoColor({ iconSize: 64 }),
-    'CrossPlatformLogo-homePage': CrossPlatformLogoColor({ iconSize: 64 }),
+    'AndroidLogo-homePage': androidLogoColor({ iconSize: 64 }),
+    'AppleLogo-homePage': appleLogoColor({ iconSize: 64 }),
+    'WebLogo-homePage': webLogoColor({ iconSize: 64 }),
+    'WindowsLogo-homePage': windowsLogoColor({ iconSize: 64 }),
+    'MacLogo-homePage': macLogoColor({ iconSize: 64 }),
+    'CrossPlatformLogo-homePage': crossPlatformLogoColor({ iconSize: 64 }),
   },
 });
 

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Fix high contrast style for submenu icon",
+  "packageName": "office-ui-fabric-react",
+  "email": "erabelle@microsoft.com",
+  "commit": "36f286f324208742ef2975e38fa6958f8eed146f",
+  "date": "2020-06-29T17:50:09.255Z"
+}

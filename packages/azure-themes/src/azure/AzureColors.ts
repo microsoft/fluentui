@@ -32,6 +32,7 @@ export namespace BaseColors {
   export const PURPLE_C87FDC = '#c87fdc';
   export const PURPLE_8A2DA5 = '#8a2da5';
   export const PURPLE_471754 = '#471754';
+  export const GRAY_CCCCCC = '#CCCCCC';
   export const GRAY_111111 = '#111111';
   export const GRAY_161616 = '#161616';
   export const GRAY_1B1A19 = '#1b1a19';
@@ -201,6 +202,9 @@ export const DarkSemanticColors: IAzureSemanticColors = {
       backrgound: BaseColors.GRAY_484644,
     },
   },
+  commandBar: {
+    border: BaseColors.GRAY_605E5C,
+  },
 };
 
 export const LightSemanticColors: IAzureSemanticColors = {
@@ -296,5 +300,8 @@ export const LightSemanticColors: IAzureSemanticColors = {
     disabled: {
       backrgound: BaseColors.WHITE,
     },
+  },
+  commandBar: {
+    border: BaseColors.GRAY_CCCCCC,
   },
 };

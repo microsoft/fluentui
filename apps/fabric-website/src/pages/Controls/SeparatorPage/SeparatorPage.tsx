@@ -43,6 +43,15 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
       ];
 
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/SeparatorImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/mac/SeparatorImplementation.md') as string,
+        },
+      ];
+
     case 'cross':
       return [
         {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useMergedRefs } from '@uifabric/react-hooks';
 import { classNamesFunction, useFocusRects } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
@@ -9,11 +10,13 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStat
  * state, slots and slotProps for consumption by the component.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useLink = (props: ILinkProps): any => {
-  const { as, className, disabled, href, onClick, ref, styles, theme } = props;
+export const useLink = (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>): any => {
+  const { as, className, disabled, href, onClick, styles, theme } = props;
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
 
-  useComponentRef(props, ref);
-  useFocusRects(ref);
+  useComponentRef(props, rootRef);
+  useFocusRects(rootRef);
 
   const classNames = getClassNames(styles!, {
     className,
@@ -40,7 +43,7 @@ export const useLink = (props: ILinkProps): any => {
       'aria-disabled': disabled,
       className: classNames.root,
       onClick: _onClick,
-      ref: ref,
+      ref: mergedRootRefs,
     },
   };
 
@@ -69,7 +72,7 @@ const adjustPropsForRootType = (
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`
   // as those will always be removed. We also take some props that are optional
   // based on the RootType.
-  const { as, disabled, target, href, theme, getStyles, styles, componentRef, keytipProps, ...restProps } = props;
+  const { as, disabled, target, href, theme, getStyles, styles, componentRef, ...restProps } = props;
 
   // RootType will be a string if we're dealing with an html component
   if (typeof RootType === 'string') {

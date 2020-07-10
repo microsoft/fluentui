@@ -72,7 +72,9 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
   theme?: ITheme;
 
   /**
-   * Optional keytip for this Link
+   * Optional keytip.
+   *
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
 }

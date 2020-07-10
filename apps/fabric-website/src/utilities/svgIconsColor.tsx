@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
+import { css, getId } from 'office-ui-fabric-react';
 import * as styles from './svgIcons.module.scss';
 import { ISVGIconProps } from './svgIcons';
 
-export const AndroidLogoColor = (props?: ISVGIconProps) => {
+export const androidLogoColor = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = getId('AndroidLogoColor');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -34,38 +35,38 @@ export const AndroidLogoColor = (props?: ISVGIconProps) => {
       <path d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65" stroke="black" stroke-width="2" />
       <path
         d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65"
-        stroke="url(#paint0_linear)"
+        stroke={`url(#${id}_0_linear)`}
         stroke-width="2"
       />
       <path
         d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65"
-        stroke="url(#paint1_linear)"
+        stroke={`url(#${id}_1_linear)`}
         stroke-width="2"
       />
       <path
         d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65"
-        stroke="url(#paint2_linear)"
+        stroke={`url(#${id}_2_linear)`}
         stroke-width="2"
       />
       <path
         d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65"
-        stroke="url(#paint3_linear)"
+        stroke={`url(#${id}_3_linear)`}
         stroke-width="2"
       />
       <defs>
-        <linearGradient id="paint0_linear" x1="12.5" y1="16.5" x2="33" y2="37" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_0_linear`} x1="12.5" y1="16.5" x2="33" y2="37" gradientUnits="userSpaceOnUse">
           <stop stop-color="#4FE5FF" />
           <stop offset="1" stop-color="#4FE5FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint1_linear" x1="53.5" y1="16.5" x2="33" y2="37" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_1_linear`} x1="53.5" y1="16.5" x2="33" y2="37" gradientUnits="userSpaceOnUse">
           <stop stop-color="#69E56E" />
           <stop offset="1" stop-color="#69E56E" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint2_linear" x1="61" y1="65" x2="33" y2="37" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_2_linear`} x1="61" y1="65" x2="33" y2="37" gradientUnits="userSpaceOnUse">
           <stop stop-color="#CF8FFF" />
           <stop offset="1" stop-color="#CF8FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint3_linear" x1="5" y1="65" x2="33" y2="37" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_3_linear`} x1="5" y1="65" x2="33" y2="37" gradientUnits="userSpaceOnUse">
           <stop stop-color="#0078D4" />
           <stop offset="1" stop-color="#0078D4" stop-opacity="0" />
         </linearGradient>
@@ -74,8 +75,9 @@ export const AndroidLogoColor = (props?: ISVGIconProps) => {
   );
 };
 
-export const CrossPlatformLogoColor = (props?: ISVGIconProps) => {
+export const crossPlatformLogoColor = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = getId('CrossPlatformLogoColor');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -85,31 +87,31 @@ export const CrossPlatformLogoColor = (props?: ISVGIconProps) => {
       viewBox="0 0 66 68"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M25 57H49" stroke="white" stroke-width="2" strokeMiterlimit="10" />
-      <path d="M33 49V57" stroke="white" stroke-width="2" strokeMiterlimit="10" />
-      <path d="M1 25V1H65V49H25" stroke="url(#paint0_linear)" stroke-width="2" stroke-linecap="square" />
-      <path d="M1 25V1H65V49H25" stroke="url(#paint1_linear)" stroke-width="2" stroke-linecap="square" />
-      <path d="M1 25V1H65V49H25" stroke="url(#paint2_linear)" stroke-width="2" stroke-linecap="square" />
-      <path d="M1 25V1H65V49H25" stroke="url(#paint3_linear)" stroke-width="2" stroke-linecap="square" />
-      <path d="M25 25H1V65H25V25Z" stroke="white" stroke-width="2" strokeMiterlimit="10" />
-      <path d="M9 29H17" stroke="white" stroke-width="2" strokeMiterlimit="10" />
+      <path d="M25 57H49" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M33 49V57" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M1 25V1H65V49H25" stroke={`url(#${id}_0_linear)`} stroke-width="2" stroke-linecap="square" />
+      <path d="M1 25V1H65V49H25" stroke={`url(#${id}_1_linear)`} stroke-width="2" stroke-linecap="square" />
+      <path d="M1 25V1H65V49H25" stroke={`url(#${id}_2_linear)`} stroke-width="2" stroke-linecap="square" />
+      <path d="M1 25V1H65V49H25" stroke={`url(#${id}_3_linear)`} stroke-width="2" stroke-linecap="square" />
+      <path d="M25 25H1V65H25V25Z" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <path d="M9 29H17" stroke="white" stroke-width="2" stroke-miterlimit="10" />
       <path d="M10 56L56 10" stroke="white" stroke-width="2" stroke-linecap="square" />
       <path d="M9 49V57H17" stroke="white" stroke-width="2" strokeMiterlimit="10" />
       <path d="M57 17V9H49" stroke="white" stroke-width="2" strokeMiterlimit="10" stroke-linecap="square" />
       <defs>
-        <linearGradient id="paint0_linear" x1="1" y1="1" x2="33" y2="25" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_0_linear`} x1="1" y1="1" x2="33" y2="25" gradientUnits="userSpaceOnUse">
           <stop stop-color="#4FE5FF" />
           <stop offset="1" stop-color="#4FE5FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint1_linear" x1="65" y1="1" x2="33" y2="25" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_1_linear`} x1="65" y1="1" x2="33" y2="25" gradientUnits="userSpaceOnUse">
           <stop stop-color="#69E56E" />
           <stop offset="1" stop-color="#69E56E" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint2_linear" x1="65" y1="49" x2="33" y2="25" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_2_linear`} x1="65" y1="49" x2="33" y2="25" gradientUnits="userSpaceOnUse">
           <stop stop-color="#CF8FFF" />
           <stop offset="1" stop-color="#CF8FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint3_linear" x1="0.999999" y1="49" x2="33" y2="25" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_3_linear`} x1="0.999999" y1="49" x2="33" y2="25" gradientUnits="userSpaceOnUse">
           <stop stop-color="#0078D4" />
           <stop offset="1" stop-color="#0078D4" stop-opacity="0" />
         </linearGradient>
@@ -118,8 +120,9 @@ export const CrossPlatformLogoColor = (props?: ISVGIconProps) => {
   );
 };
 
-export const WindowsLogoColor = (props?: ISVGIconProps) => {
+export const windowsLogoColor = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = getId('WindowsLogoColor');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -143,7 +146,7 @@ export const WindowsLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M1 10L65 2V66L1 58V10Z"
-        stroke="url(#paint0_linear)"
+        stroke={`url(#${id}_0_linear)`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -151,7 +154,7 @@ export const WindowsLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M1 10L65 2V66L1 58V10Z"
-        stroke="url(#paint1_linear)"
+        stroke={`url(#${id}_1_linear)`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -159,7 +162,7 @@ export const WindowsLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M1 10L65 2V66L1 58V10Z"
-        stroke="url(#paint2_linear)"
+        stroke={`url(#${id}_2_linear)`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -167,24 +170,24 @@ export const WindowsLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M1 10L65 2V66L1 58V10Z"
-        stroke="url(#paint3_linear)"
+        stroke={`url(#${id}_3_linear)`}
         stroke-width="2"
         stroke-linecap="square"
       />
       <defs>
-        <linearGradient id="paint0_linear" x1="8" y1="9" x2="33" y2="34" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_0_linear`} x1="8" y1="9" x2="33" y2="34" gradientUnits="userSpaceOnUse">
           <stop stop-color="#4FE5FF" />
           <stop offset="1" stop-color="#4FE5FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint1_linear" x1="65" y1="2" x2="33" y2="34" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_1_linear`} x1="65" y1="2" x2="33" y2="34" gradientUnits="userSpaceOnUse">
           <stop stop-color="#69E56E" />
           <stop offset="1" stop-color="#69E56E" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint2_linear" x1="65" y1="66" x2="33" y2="34" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_2_linear`} x1="65" y1="66" x2="33" y2="34" gradientUnits="userSpaceOnUse">
           <stop stop-color="#CF8FFF" />
           <stop offset="1" stop-color="#CF8FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint3_linear" x1="8" y1="59" x2="33" y2="34" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_3_linear`} x1="8" y1="59" x2="33" y2="34" gradientUnits="userSpaceOnUse">
           <stop stop-color="#0078D4" />
           <stop offset="1" stop-color="#0078D4" stop-opacity="0" />
         </linearGradient>
@@ -193,8 +196,9 @@ export const WindowsLogoColor = (props?: ISVGIconProps) => {
   );
 };
 
-export const AppleLogoColor = (props?: ISVGIconProps) => {
+export const appleLogoColor = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = getId('AppleLogoColor');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -229,44 +233,44 @@ export const AppleLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M49.0022 65H16.9978C8.16222 65 1 57.8373 1 49.0022V16.9978C1 8.16267 8.16222 1 16.9978 1H49.0022C57.8378 1 65 8.16267 65 16.9978V49.0022C65 57.8373 57.8378 65 49.0022 65Z"
-        stroke="url(#paint0_linear)"
+        stroke={`url(#${id}_0_linear)`}
         stroke-width="2"
       />
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M49.0022 65H16.9978C8.16222 65 1 57.8373 1 49.0022V16.9978C1 8.16267 8.16222 1 16.9978 1H49.0022C57.8378 1 65 8.16267 65 16.9978V49.0022C65 57.8373 57.8378 65 49.0022 65Z"
-        stroke="url(#paint1_linear)"
+        stroke={`url(#${id}_1_linear)`}
         stroke-width="2"
       />
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M49.0022 65H16.9978C8.16222 65 1 57.8373 1 49.0022V16.9978C1 8.16267 8.16222 1 16.9978 1H49.0022C57.8378 1 65 8.16267 65 16.9978V49.0022C65 57.8373 57.8378 65 49.0022 65Z"
-        stroke="url(#paint2_linear)"
+        stroke={`url(#${id}_2_linear)`}
         stroke-width="2"
       />
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M49.0022 65H16.9978C8.16222 65 1 57.8373 1 49.0022V16.9978C1 8.16267 8.16222 1 16.9978 1H49.0022C57.8378 1 65 8.16267 65 16.9978V49.0022C65 57.8373 57.8378 65 49.0022 65Z"
-        stroke="url(#paint3_linear)"
+        stroke={`url(#${id}_3_linear)`}
         stroke-width="2"
       />
       <defs>
-        <linearGradient id="paint0_linear" x1="6" y1="6" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_0_linear`} x1="6" y1="6" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#4FE5FF" />
           <stop offset="1" stop-color="#4FE5FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint1_linear" x1="60.5" y1="5.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_1_linear`} x1="60.5" y1="5.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#69E56E" />
           <stop offset="1" stop-color="#69E56E" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint2_linear" x1="60.5" y1="60.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_2_linear`} x1="60.5" y1="60.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#CF8FFF" />
           <stop offset="1" stop-color="#CF8FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint3_linear" x1="6" y1="60" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_3_linear`} x1="6" y1="60" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#0078D4" />
           <stop offset="1" stop-color="#0078D4" stop-opacity="0" />
         </linearGradient>
@@ -275,8 +279,9 @@ export const AppleLogoColor = (props?: ISVGIconProps) => {
   );
 };
 
-export const MacLogoColor = (props?: ISVGIconProps) => {
+export const macLogoColor = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = getId('MacLogoColor');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -297,38 +302,38 @@ export const MacLogoColor = (props?: ISVGIconProps) => {
       />
       <path
         d="M49 65H17C8.15556 65 1 57.8444 1 49V17C1 8.15556 8.15556 1 17 1H49C57.8444 1 65 8.15556 65 17V49C65 57.8444 57.8444 65 49 65Z"
-        stroke="url(#paint0_linear)"
+        stroke={`url(#${id}_0_linear)`}
         stroke-width="2"
       />
       <path
         d="M49 65H17C8.15556 65 1 57.8444 1 49V17C1 8.15556 8.15556 1 17 1H49C57.8444 1 65 8.15556 65 17V49C65 57.8444 57.8444 65 49 65Z"
-        stroke="url(#paint1_linear)"
+        stroke={`url(#${id}_1_linear)`}
         stroke-width="2"
       />
       <path
         d="M49 65H17C8.15556 65 1 57.8444 1 49V17C1 8.15556 8.15556 1 17 1H49C57.8444 1 65 8.15556 65 17V49C65 57.8444 57.8444 65 49 65Z"
-        stroke="url(#paint2_linear)"
+        stroke={`url(#${id}_2_linear)`}
         stroke-width="2"
       />
       <path
         d="M49 65H17C8.15556 65 1 57.8444 1 49V17C1 8.15556 8.15556 1 17 1H49C57.8444 1 65 8.15556 65 17V49C65 57.8444 57.8444 65 49 65Z"
-        stroke="url(#paint3_linear)"
+        stroke={`url(#${id}_3_linear)`}
         stroke-width="2"
       />
       <defs>
-        <linearGradient id="paint0_linear" x1="6" y1="6" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_0_linear`} x1="6" y1="6" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#4FE5FF" />
           <stop offset="1" stop-color="#4FE5FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint1_linear" x1="60.5" y1="5.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_1_linear`} x1="60.5" y1="5.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#69E56E" />
           <stop offset="1" stop-color="#69E56E" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint2_linear" x1="60.5" y1="60.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_2_linear`} x1="60.5" y1="60.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#CF8FFF" />
           <stop offset="1" stop-color="#CF8FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint3_linear" x1="6" y1="60" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_3_linear`} x1="6" y1="60" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#0078D4" />
           <stop offset="1" stop-color="#0078D4" stop-opacity="0" />
         </linearGradient>
@@ -337,8 +342,9 @@ export const MacLogoColor = (props?: ISVGIconProps) => {
   );
 };
 
-export const WebLogoColor = (props?: ISVGIconProps) => {
+export const webLogoColor = (props?: ISVGIconProps) => {
   props = props || {};
+  const id = getId('WebLogoColor');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -370,7 +376,7 @@ export const WebLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M65 33C65 50.6733 50.6733 65 33 65C15.3267 65 1 50.6733 1 33C1 15.3267 15.3267 1 33 1C50.6733 1 65 15.3267 65 33Z"
-        stroke="url(#paint0_linear)"
+        stroke={`url(#${id}_0_linear)`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -378,7 +384,7 @@ export const WebLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M65 33C65 50.6733 50.6733 65 33 65C15.3267 65 1 50.6733 1 33C1 15.3267 15.3267 1 33 1C50.6733 1 65 15.3267 65 33Z"
-        stroke="url(#paint1_linear)"
+        stroke={`url(#${id}_1_linear)`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -386,7 +392,7 @@ export const WebLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M65 33C65 50.6733 50.6733 65 33 65C15.3267 65 1 50.6733 1 33C1 15.3267 15.3267 1 33 1C50.6733 1 65 15.3267 65 33Z"
-        stroke="url(#paint2_linear)"
+        stroke={`url(#${id}_2_linear)`}
         stroke-width="2"
         stroke-linecap="square"
       />
@@ -394,24 +400,24 @@ export const WebLogoColor = (props?: ISVGIconProps) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M65 33C65 50.6733 50.6733 65 33 65C15.3267 65 1 50.6733 1 33C1 15.3267 15.3267 1 33 1C50.6733 1 65 15.3267 65 33Z"
-        stroke="url(#paint3_linear)"
+        stroke={`url(#${id}_3_linear)`}
         stroke-width="2"
         stroke-linecap="square"
       />
       <defs>
-        <linearGradient id="paint0_linear" x1="10.5" y1="10.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_0_linear`} x1="10.5" y1="10.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#4FE5FF" />
           <stop offset="1" stop-color="#4FE5FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint1_linear" x1="10.5" y1="55.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_1_linear`} x1="10.5" y1="55.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#0078D4" />
           <stop offset="1" stop-color="#0078D4" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint2_linear" x1="55.5" y1="55.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_2_linear`} x1="55.5" y1="55.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#CF8FFF" />
           <stop offset="1" stop-color="#CF8FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint3_linear" x1="55.5" y1="10.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+        <linearGradient id={`${id}_3_linear`} x1="55.5" y1="10.5" x2="33" y2="33" gradientUnits="userSpaceOnUse">
           <stop stop-color="#69E56E" />
           <stop offset="1" stop-color="#69E56E" stop-opacity="0" />
         </linearGradient>

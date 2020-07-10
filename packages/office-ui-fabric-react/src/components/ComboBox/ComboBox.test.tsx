@@ -733,6 +733,29 @@ describe('ComboBox', () => {
     expect((inputElement.instance() as any).value).toEqual(compare);
   });
 
+  it('in multiSelect mode, input has correct value when multiSelectDelimiter specified', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(
+      <ComboBox multiSelect multiSelectDelimiter="; " options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />,
+    );
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
+
+    ReactTestUtils.Simulate.change(buttons[0]);
+    ReactTestUtils.Simulate.change(buttons[2]);
+    const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].reduce((previous: string, current: IComboBoxOption) => {
+      if (previous !== '') {
+        return previous + '; ' + current.text;
+      }
+      return current.text;
+    }, '');
+
+    expect((inputElement.instance() as any).value).toEqual(compare);
+  });
+
   it('in multiSelect mode, optional onItemClick callback invoked per option select', () => {
     const onItemClickMock = jest.fn();
     wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);
