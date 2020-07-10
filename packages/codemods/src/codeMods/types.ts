@@ -30,3 +30,13 @@ export interface CodeMod<T = SourceFile> {
 export interface EnumMap {
   [key: string]: string;
 }
+
+/**
+ * Generic function provided by the utility caller that executes a
+ * transform for a prop's value.
+ * This function takes in an enum type, and returns a transformed version of the enum in string form.
+ * ex. SpinnerType.normal
+ * might return the string
+ * 'SpinnerSize.medium'
+ */
+export type propTransform<T> = (enumType: T) => string;

@@ -7,14 +7,14 @@ import {
   ts,
   Node,
 } from 'ts-morph';
-import { EnumMap } from '../types';
+import { propTransform } from '../types';
+//import { Maybe, Nothing, Just } from '../../';
 
-export function renameProp(
+export function renameProp<T>(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],
   toRename: string,
   replacementName: string,
-  valueName: string | undefined,
-  changeValueMap: EnumMap | undefined,
+  valueTransformFn?: propTransform<T>,
 ) {
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
@@ -23,21 +23,21 @@ export function renameProp(
     if (foundProp) {
       /* If found, do a simple name-replacementName. */
       foundProp.set({ name: replacementName });
-      if (valueName) {
-        if (changeValueMap) {
-          /* If both are true, we have an enum and might have to change enum name AND value. */
-          let enumValue = (foundProp as JsxAttribute)
-            .getFirstChildByKind(SyntaxKind.JsxExpression)
-            .getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-          let firstEnumElem = enumValue.getFirstChildByKind(SyntaxKind.Identifier);
-          let secondEnumElem = enumValue.getLastChildByKind(SyntaxKind.Identifier);
-          firstEnumElem.rename(valueName);
-          secondEnumElem.rename(changeValueMap[secondEnumElem.getText()]);
-        } else {
-          /* If we don't have an enum, but we do have a value, only change the value of the prop to valueName. */
-          foundProp.set({ initializer: valueName });
-        }
-      }
+      // if (valueName) {
+      //   if (changeValueMap) {
+      //     /* If both are true, we have an enum and might have to change enum name AND value. */
+      //     let enumValue = (foundProp as JsxAttribute)!
+      //       .getFirstChildByKind(SyntaxKind.JsxExpression)!
+      //       .getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
+      //     let firstEnumElem = enumValue.getFirstChildByKind(SyntaxKind.Identifier);
+      //     let secondEnumElem = enumValue.getLastChildByKind(SyntaxKind.Identifier);
+      //     firstEnumElem.rename(valueName);
+      //     secondEnumElem.rename(changeValueMap[secondEnumElem.getText()]);
+      //   } else {
+      //     /* If we don't have an enum, but we do have a value, only change the value of the prop to valueName. */
+      //     foundProp.set({ initializer: valueName });
+      //   }
+      // }
     } else {
       /* If the prop is not found, check to see if the prop is in a spread attribute. */
       renamePropInSpread(val, toRename, replacementName);
