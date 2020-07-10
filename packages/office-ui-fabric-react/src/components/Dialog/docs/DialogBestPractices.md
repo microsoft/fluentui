@@ -1,7 +1,7 @@
 ### Layout
 
 - When possible, try a non-blocking dialog box before resorting to a blocking dialog.
-- Don't provide people with more than 3 buttons.
+- Don't use more than three buttons.
 - Validate that people’s entries are acceptable before closing the dialog box. Show an inline validation error near the field they must correct.
 - Dialog boxes consist of a header, body, and footer.
 
