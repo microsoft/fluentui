@@ -1,4 +1,3 @@
-import { isConformant } from 'test/specs/commonTests';
 import Unstable_Datepicker from 'src/components/Datepicker/Datepicker';
 
 describe('Datepicker', () => {
