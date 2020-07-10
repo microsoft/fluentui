@@ -91,6 +91,14 @@ export class ButtonPage extends React.Component<
             editUrl: baseUrl + 'docs/windows/ButtonImplementation.md',
           },
         ];
+      case 'mac':
+        return [
+          {
+            sectionName: 'Implementation',
+            editUrl: baseUrl + 'docs/mac/ButtonImplementation.md',
+            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/mac/ButtonImplementation.md') as string,
+          },
+        ];
       case 'cross':
         return [
           {

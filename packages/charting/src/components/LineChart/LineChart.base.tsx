@@ -1,29 +1,33 @@
 import * as React from 'react';
-import { max as d3Max, min as d3Min } from 'd3-array';
-import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom } from 'd3-axis';
-import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import * as d3TimeFormat from 'd3-time-format';
 import { ILegend, Legends } from '../Legends/index';
 import { classNamesFunction, getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import {
-  ILineChartProps,
-  ILineChartStyleProps,
-  ILineChartStyles,
-  ILineChartDataPoint,
-  ILineChartPoints,
-  IMargins,
-} from './LineChart.types';
+import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, ILineChartPoints } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
+import {
+  calloutData,
+  createNumericXAxis,
+  createDateXAxis,
+  createYAxis,
+  fitContainer,
+  IMargins,
+} from '../../utilities/index';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
 export interface IRefArrayData {
   index?: string;
   refElement?: SVGGElement;
+}
+
+export interface IContainerValues {
+  width: number;
+  height: number;
+  shouldResize: boolean;
+  reqID: number;
 }
 
 export class LineChartBase extends React.Component<
@@ -50,7 +54,7 @@ export class LineChartBase extends React.Component<
   // tslint:disable-next-line:no-any
   private _calloutPoints: any[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
-  private _reqID: number;
+  private containerParams: IContainerValues;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   // tslint:disable-next-line:no-any
@@ -64,7 +68,6 @@ export class LineChartBase extends React.Component<
   private _uniqueCallOutID: string;
   // These margins are necessary for d3Scales to appear without cutting off
   private margins: IMargins;
-  private minLegendContainerHeight: number = 32;
   private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
     super(props);
@@ -85,7 +88,7 @@ export class LineChartBase extends React.Component<
       selectedLegend: '',
     };
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
-    this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
+    this._calloutPoints = calloutData(this._points) ? calloutData(this._points) : [];
     this._circleId = getId('circle');
     this._verticalLine = getId('verticalLine');
     this.margins = {
@@ -105,7 +108,7 @@ export class LineChartBase extends React.Component<
   }
 
   public componentWillUnmount(): void {
-    cancelAnimationFrame(this._reqID);
+    cancelAnimationFrame(this.containerParams.reqID);
   }
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
@@ -119,7 +122,7 @@ export class LineChartBase extends React.Component<
     ) {
       this._fitParentContainer();
       this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
-      this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
+      this._calloutPoints = calloutData(this._points) ? calloutData(this._points) : [];
     }
   }
 
@@ -151,9 +154,35 @@ export class LineChartBase extends React.Component<
     }
     let lines: JSX.Element[] = [];
     if (dataPresent) {
-      dataType ? this._createDateXAxis(tickValues, tickFormat) : this._createNumericXAxis();
+      const XAxisParams = {
+        margins: this.margins as IMargins,
+        containerWidth: this.state.containerWidth,
+        xAxisElement: this.xAxisElement!,
+      };
+      const tickParams = {
+        tickValues: tickValues,
+        tickFormat: tickFormat,
+      };
+      dataType
+        ? (this._xAxisScale = createDateXAxis(this._points, XAxisParams, tickParams))
+        : (this._xAxisScale = createNumericXAxis(this._points, XAxisParams));
       const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
-      this._createYAxis(yAxisTickFormat);
+      const { yMaxValue = 0, yMinValue = 0 } = this.props;
+      const yAxisParams = {
+        margins: this.margins,
+        containerWidth: this.state.containerWidth,
+        containerHeight: this.state.containerHeight,
+        yAxisTickFormat: yAxisTickFormat,
+        yAxisTickCount: 4,
+        yMaxValue: yMaxValue,
+        yMinValue: yMinValue,
+        showYAxisGridLines: true,
+        yAxisElement: this.yAxisElement,
+        eventAnnotationProps: this.props.eventAnnotationProps,
+        eventLabelHeight: this.eventLabelHeight,
+      };
+
+      this._yAxisScale = createYAxis(this._points, yAxisParams);
       lines = this._createLines(strokeWidth);
     }
     const legendBars = this._createLegends(this._points!);
@@ -263,93 +292,21 @@ export class LineChartBase extends React.Component<
     );
   }
 
-  private CalloutData = (values: ILineChartPoints[]) => {
-    let combinedResult: {
-      legend: string;
-      y: number;
-      x: number | Date | string;
-      color: string;
-      yAxisCalloutData?: string;
-    }[] = [];
-
-    values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
-      const elements = element.data.map((ele: ILineChartDataPoint) => {
-        return { legend: element.legend, ...ele, color: element.color };
-      });
-      combinedResult = combinedResult.concat(elements);
-    });
-
-    const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-    combinedResult.forEach(
-      (
-        e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
-        index: number,
-      ) => {
-        e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
-        const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
-        combinedResult
-          .slice(index + 1)
-          .forEach(
-            (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
-              e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
-              if (e1.x === e2.x) {
-                filteredValues.push({
-                  legend: e2.legend,
-                  y: e2.y,
-                  color: e2.color,
-                  yAxisCalloutData: e2.yAxisCalloutData,
-                });
-              }
-            },
-          );
-        result.push({ x: e1.x, values: filteredValues });
-      },
-    );
-    return this.getUnique(result, 'x');
-  };
-
-  private getUnique = (
-    arr: { x: number | Date | string; values: { legend: string; y: number }[] }[],
-    comp: string | number,
-  ) => {
-    const unique = arr
-      // tslint:disable-next-line:no-any
-      .map((e: { [x: string]: any }) => e[comp])
-      // store the keys of the unique objects
-      .map((e: string, i: number, final: string[]) => final.indexOf(e) === i && i)
-      // eliminate the dead keys & store unique objects
-      .filter((e: number) => arr[e])
-      .map((e: number) => arr[e]);
-
-    return unique;
-  };
-
   private _fitParentContainer(): void {
-    const { containerWidth, containerHeight } = this.state;
-    const { hideLegend = false } = this.props;
-
-    this._reqID = requestAnimationFrame(() => {
-      const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
-      const legendContainerHeight =
-        (this.legendContainer.getBoundingClientRect().height || (!hideLegend ? this.minLegendContainerHeight : 0)) +
-        parseFloat(legendContainerComputedStyles.marginTop || '0') +
-        parseFloat(legendContainerComputedStyles.marginBottom || '0');
-
-      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
-      const currentContainerHeight =
-        container.getBoundingClientRect().height > legendContainerHeight
-          ? container.getBoundingClientRect().height
-          : 350;
-      const shouldResize =
-        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
-      }
-    });
+    const reqParams = {
+      containerWidth: this.state.containerWidth,
+      containerHeight: this.state.containerHeight,
+      hideLegend: this.props.hideLegend!,
+      legendContainer: this.legendContainer,
+      container: this.props.parentRef ? this.props.parentRef : this.chartContainer,
+    };
+    this.containerParams = fitContainer(reqParams);
+    if (this.containerParams.shouldResize) {
+      this.setState({
+        containerWidth: this.containerParams.width,
+        containerHeight: this.containerParams.height,
+      });
+    }
   }
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
@@ -389,100 +346,6 @@ export class LineChartBase extends React.Component<
     );
     return legends;
   }
-
-  private _createNumericXAxis(): void {
-    const xMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => {
-        return item.x as number;
-      });
-    })!;
-    const xAxisScale = d3ScaleLinear()
-      .domain([0, xMax])
-      .range([this.margins.left!, this.state.containerWidth - this.margins.right!]);
-    this._xAxisScale = xAxisScale;
-    const xAxis = d3AxisBottom(xAxisScale)
-      .tickSize(10)
-      .tickPadding(12)
-      .ticks(7)
-      .tickSizeOuter(0);
-    if (this.xAxisElement) {
-      d3Select(this.xAxisElement)
-        .call(xAxis)
-        .selectAll('text');
-    }
-  }
-
-  private _prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
-    const val = Math.ceil((maxVal - minVal) / splitInto);
-    const dataPointsArray: number[] = [minVal, minVal + val];
-    while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
-      dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
-    }
-    return dataPointsArray;
-  }
-
-  private _createDateXAxis = (tickValues?: Date[] | number[], tickFormat?: string) => {
-    const xAxisData: Date[] = [];
-    let sDate = new Date();
-    // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
-    let lDate = new Date(-8640000000000000);
-    this._points.map((singleLineChartData: ILineChartPoints) => {
-      singleLineChartData.data.map((point: ILineChartDataPoint) => {
-        xAxisData.push(point.x as Date);
-        if (point.x < sDate) {
-          sDate = point.x as Date;
-        }
-        if (point.x > lDate) {
-          lDate = point.x as Date;
-        }
-      });
-    });
-    const xAxisScale = d3ScaleTime()
-      .domain([sDate, lDate])
-      .range([this.margins.left!, this.state.containerWidth - this.margins.right!]);
-    this._xAxisScale = xAxisScale;
-    const xAxis = d3AxisBottom(xAxisScale)
-      .tickSize(10)
-      .tickPadding(12);
-    tickValues ? xAxis.tickValues(tickValues) : '';
-    tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickFormat)) : '';
-    if (this.xAxisElement) {
-      d3Select(this.xAxisElement)
-        .call(xAxis)
-        .selectAll('text');
-    }
-  };
-
-  // tslint:disable-next-line: no-any
-  private _createYAxis = (yAxisTickFormat: any) => {
-    const { yMaxValue = 0, yMinValue = 0 } = this.props;
-    const yMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
-    })!;
-    const yMin = d3Min(this._points, (point: ILineChartPoints) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
-    })!;
-    const finalYmax = yMax > yMaxValue ? yMax : yMaxValue;
-    const finalYmin = yMin < yMinValue ? 0 : yMinValue;
-    const domainValues = this._prepareDatapoints(finalYmax, finalYmin, 4);
-    const yAxisScale = d3ScaleLinear()
-      .domain([finalYmin, domainValues[domainValues.length - 1]])
-      .range([
-        this.state.containerHeight - this.margins.bottom!,
-        this.margins.top! + (this.props.eventAnnotationProps ? this.eventLabelHeight : 0),
-      ]);
-    this._yAxisScale = yAxisScale;
-    const yAxis = d3AxisLeft(yAxisScale)
-      .tickSize(-(this.state.containerWidth - this.margins.left! - this.margins.right!))
-      .tickPadding(12)
-      .tickValues(domainValues);
-    yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.ticks(4, 's');
-    this.yAxisElement
-      ? d3Select(this.yAxisElement)
-          .call(yAxis)
-          .selectAll('text')
-      : '';
-  };
 
   private _createLines(strokeWidth: number): JSX.Element[] {
     const lines = [];

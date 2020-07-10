@@ -1,5 +1,5 @@
-import { Codemod } from '../../../../codeMods/types';
-const CodeMod: Codemod<string> = {
+import { CodeMod } from '../../../../codeMods/types';
+const CodeMod: CodeMod<string> = {
   run: () => {
     return {};
   },

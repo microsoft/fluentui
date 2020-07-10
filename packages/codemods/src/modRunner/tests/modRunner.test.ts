@@ -1,5 +1,5 @@
 import { getModsPaths, getTsConfigs, runMods, filterMods, getModsPattern, getModsRootPath } from '../runnerUtilities';
-import { Codemod, CodeModResult } from '../../codeMods/types';
+import { CodeMod, CodeModResult } from '../../codeMods/types';
 
 import { Range } from 'semver';
 
@@ -29,7 +29,7 @@ describe('modRunner tests', () => {
       runCount = runCount + 1;
       return {};
     };
-    const mods: Codemod<string>[] = [
+    const mods: CodeMod<string>[] = [
       {
         name: 'a',
         run: runCallBack,
@@ -55,7 +55,7 @@ describe('modRunner tests', () => {
       return {};
     };
 
-    const mods: Codemod<string>[] = [
+    const mods: CodeMod<string>[] = [
       {
         name: 'a',
         run: runcallBack,

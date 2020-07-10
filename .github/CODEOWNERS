@@ -69,6 +69,7 @@ packages/tslint-rules/ @ecraig12345
 packages/tsx-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
+packages/azure-themes/ @hyoshis @Jacqueline-ms
 
 ### Fabric
 # common/

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 21 May 2020 12:34:43 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.18)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.12.12..@fluentui/react-focus_v7.12.18)
+
+### Patches
+
+- Additional HTMLElement casts have been added in a few places for better typing. This should not impact the public API surface. ([PR #13953](https://github.com/microsoft/fluentui/pull/13953) by KevinTCoughlin@users.noreply.github.com)
 
 ## [7.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.0)
 

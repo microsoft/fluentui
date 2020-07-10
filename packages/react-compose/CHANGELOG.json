@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/react-compose_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding ComponentProps types which includes as and className.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "209102879028aa62a445ac6c041b79b9d203c8e1",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2020 12:42:11 GMT",
       "tag": "@fluentui/react-compose_v0.11.8",
       "version": "0.11.8",
