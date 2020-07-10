@@ -17,6 +17,7 @@ export const useSetTimeout = (): UseSetTimeoutReturnType => {
   useEffect(
     () => () => {
       for (const id of Object.keys(timeoutIds)) {
+        // tslint:disable-next-line:no-any
         clearTimeout(id as any);
       }
     },
