@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 10 Jul 2020 12:40:33 GMT",
+      "tag": "@uifabric/experiments_v7.27.1",
+      "version": "7.27.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing sample storyboard for icons to initialize properly and show different icons.",
+            "author": "caperez@microsoft.com",
+            "commit": "001de9e8c5294858c069f95e832f391532d414c6",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Jul 2020 21:59:04 GMT",
       "tag": "@uifabric/experiments_v7.27.0",
       "version": "7.27.0",
