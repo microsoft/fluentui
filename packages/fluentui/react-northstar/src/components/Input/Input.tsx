@@ -14,7 +14,6 @@ import {
   createShorthandFactory,
   ShorthandFactory,
   createShorthand,
-  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
@@ -31,6 +30,7 @@ import {
 } from '@fluentui/react-bindings';
 import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 import InputLabel, { InputLabelProps, LabelPosition } from './InputLabel';
+import { FormFieldBaseContext } from '../Form/utils/formFieldBaseContext';
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
   /**
@@ -84,9 +84,6 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 
   /** A label for the input. */
   label?: ShorthandValue<InputLabelProps>;
-
-  /** An Id for the Label. */
-  labelId?: string;
 
   /** Poisition for the label */
   labelPosition?: LabelPosition;
@@ -170,8 +167,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
 
     const inputRef = React.useRef<HTMLInputElement>();
 
-    const labelId = React.useRef<string>();
-    labelId.current = getOrGenerateIdFromShorthand('ui-label-', props.labelId || '', labelId.current);
+    const { labelId } = React.useContext(FormFieldBaseContext);
 
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
@@ -286,7 +282,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         label,
         required,
         inputValue: hasValue,
-        id: labelId.current,
+        ...(labelId && { id: labelId }),
       }),
     });
 
@@ -390,7 +386,6 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       'showSuccessIndicator',
       'label',
       'labelPosition',
-      'labelId',
     ],
   },
 ) as ComponentWithAs<'div', InputProps> & {
@@ -407,7 +402,6 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   label: customPropTypes.itemShorthand,
-  labelId: PropTypes.string,
   labelPosition: PropTypes.oneOf<LabelPosition>(['internal', 'inline']),
   icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),

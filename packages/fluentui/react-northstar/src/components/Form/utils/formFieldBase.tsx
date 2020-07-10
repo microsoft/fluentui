@@ -17,6 +17,7 @@ import FormLabel, { FormLabelProps } from '../FormLabel';
 import FormMessage, { FormMessageProps } from '../FormMessage';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { FormFieldBaseValue, FormFieldBaseProvider } from './formFieldBaseContext';
 
 export interface FormFieldBaseProps extends UIComponentProps {
   /**
@@ -85,6 +86,10 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       rtl: context.rtl,
     });
 
+    const childProps: FormFieldBaseValue = {
+      labelId: labelId.current,
+    };
+
     const element = (
       <ElementType
         {...getA11yProps('root', {
@@ -99,16 +104,17 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
               ...slotProps.label,
             }),
         })}
-        {createShorthand(composeOptions.slots.control, control || {}, {
-          defaultProps: () =>
-            getA11yProps('control', {
-              error: !!errorMessage || null,
-              ref,
-              labelId: labelId.current,
-              ...unhandledProps,
-              ...slotProps.control,
-            }),
-        })}
+        <FormFieldBaseProvider value={childProps}>
+          {createShorthand(composeOptions.slots.control, control || {}, {
+            defaultProps: () =>
+              getA11yProps('control', {
+                error: !!errorMessage || null,
+                ref,
+                ...unhandledProps,
+                ...slotProps.control,
+              }),
+          })}
+        </FormFieldBaseProvider>
         {createShorthand(composeOptions.slots.message, errorMessage || message, {
           defaultProps: () =>
             getA11yProps('message', {
