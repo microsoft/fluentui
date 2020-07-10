@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 
-export const RenderPersona = (props: any) => {
+export const RenderSpinner = (props: any) => {
   return (
     <div>
       {/* SpinnerType is a deprecated enum */}

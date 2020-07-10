@@ -27,9 +27,9 @@ export interface CodeMod<T = SourceFile> {
   enabled?: boolean;
 }
 
-export interface EnumMap {
-  [key: string]: string;
-}
+export type EnumMap<T> = {
+  [key: string]: T;
+};
 
 /**
  * Generic function provided by the utility caller that executes a
@@ -39,4 +39,4 @@ export interface EnumMap {
  * might return the string
  * 'SpinnerSize.medium'
  */
-export type propTransform<T> = (enumType: T) => string;
+export type propTransform<T = string> = (enumType: T) => string;

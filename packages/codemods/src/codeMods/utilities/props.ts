@@ -6,41 +6,35 @@ import {
   VariableDeclarationKind,
   ts,
   Node,
+  Identifier,
 } from 'ts-morph';
-import { propTransform } from '../types';
-//import { Maybe, Nothing, Just } from '../../';
+import { EnumMap } from '../types';
 
-export function renameProp<T>(
+export function renameProp(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],
   toRename: string,
   replacementName: string,
-  valueTransformFn?: propTransform<T>,
+  changeValueMap?: EnumMap<string>,
 ) {
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
-
     let foundProp = val.getAttribute(toRename);
     if (foundProp) {
       /* If found, do a simple name-replacementName. */
       foundProp.set({ name: replacementName });
-      // if (valueName) {
-      //   if (changeValueMap) {
-      //     /* If both are true, we have an enum and might have to change enum name AND value. */
-      //     let enumValue = (foundProp as JsxAttribute)!
-      //       .getFirstChildByKind(SyntaxKind.JsxExpression)!
-      //       .getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-      //     let firstEnumElem = enumValue.getFirstChildByKind(SyntaxKind.Identifier);
-      //     let secondEnumElem = enumValue.getLastChildByKind(SyntaxKind.Identifier);
-      //     firstEnumElem.rename(valueName);
-      //     secondEnumElem.rename(changeValueMap[secondEnumElem.getText()]);
-      //   } else {
-      //     /* If we don't have an enum, but we do have a value, only change the value of the prop to valueName. */
-      //     foundProp.set({ initializer: valueName });
-      //   }
-      // }
+
+      if (changeValueMap) {
+        /* Change the value of the enum via map conversion. */
+        let enumExp = (foundProp as JsxAttribute)
+          .getFirstChildByKind(SyntaxKind.JsxExpression)
+          .getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
+        const newEnumName = changeValueMap[enumExp.getText()];
+        enumExp.getFirstChildByKind(SyntaxKind.Identifier).rename(newEnumName.substring(0, newEnumName.indexOf('.')));
+        enumExp.getLastChildByKind(SyntaxKind.Identifier).rename(newEnumName.substring(newEnumName.indexOf('.') + 1));
+      }
     } else {
       /* If the prop is not found, check to see if the prop is in a spread attribute. */
-      renamePropInSpread(val, toRename, replacementName);
+      renamePropInSpread(val, toRename, replacementName, changeValueMap);
     }
   });
 }
@@ -50,6 +44,7 @@ function renamePropInSpread(
   element: JsxOpeningElement | JsxSelfClosingElement,
   toRename: string,
   replacementName: string,
+  changeValueMap?: EnumMap<string>,
 ) {
   let allAttributes = element.getAttributes();
   allAttributes.forEach(attribute => {
@@ -68,7 +63,7 @@ function renamePropInSpread(
         const propKind = spreadProp.getDefinitions();
         if (propKind.length === 1) {
           let newSpreadName = '__mig' + propKind[0].getName()[0].toUpperCase() + propKind[0].getName().substring(1);
-
+          let newMapName = '__migEnumMap';
           switch (propKind[0].getKind()) {
             case ts.ScriptElementKind.constElement:
             case ts.ScriptElementKind.letElement:
@@ -92,10 +87,21 @@ function renamePropInSpread(
                   ],
                 });
               }
+              if (changeValueMap && !parentContainer?.getVariableStatement(newMapName)) {
+                parentContainer?.insertVariableStatement(insertIndex, {
+                  declarationKind: VariableDeclarationKind.Const,
+                  declarations: [
+                    {
+                      name: newMapName,
+                      initializer: changeValueMap.toString(),
+                    },
+                  ],
+                });
+              }
               spreadProp.replaceWithText(newSpreadName);
               element.addAttribute({
                 name: replacementName,
-                initializer: `{${toRename}}`,
+                initializer: changeValueMap ? `{${newMapName}[${toRename}}` : `{${toRename}}`,
               });
               break;
             }
