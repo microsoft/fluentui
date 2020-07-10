@@ -14,12 +14,7 @@
     "strict": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"],
-    "paths": {
-      "codesandbox-react-northstar-template/lib/*": ["./src/*"],
-      "codesandbox-react-northstar-template": ["./src"]
-    }
+    "types": []
   },
   "include": ["src"]
 }

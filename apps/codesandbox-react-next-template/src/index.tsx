@@ -6,6 +6,7 @@ import {
   Checkbox,
   Dropdown,
   DropdownMenuItemType,
+  IDropdownOption,
   SearchBox,
   Slider,
   SpinButton,
@@ -17,7 +18,7 @@ import {
 
 initializeIcons();
 let _rootDiv: HTMLElement;
-let dropdownOptions = [
+const dropdownOptions: IDropdownOption[] = [
   {
     key: 'fruitsHeader',
     text: 'Fruits',
@@ -37,7 +38,7 @@ let dropdownOptions = [
   { key: 'carrot', text: 'Carrot' },
   { key: 'lettuce', text: 'Lettuce' },
 ];
-let dropdownStyles = {
+const dropdownStyles = {
   dropdown: { width: 300 },
 };
 

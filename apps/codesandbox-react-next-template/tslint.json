@@ -1,8 +1,8 @@
 {
   "extends": ["@uifabric/tslint-rules"],
   "rules": {
-    "deprecation": false,
-    "no-any": false,
-    "prefer-const": false
+    "deprecation": true,
+    "no-any": true,
+    "prefer-const": true
   }
 }

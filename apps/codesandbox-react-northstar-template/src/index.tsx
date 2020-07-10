@@ -1,32 +1,41 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Accordion, Button, Checkbox, Divider, Label, Flex, RadioGroup, Tree } from '@fluentui/react-northstar';
+import {
+  Accordion,
+  Button,
+  Checkbox,
+  Divider,
+  Label,
+  Flex,
+  RadioGroup,
+  Tree,
+  AccordionProps,
+  RadioGroupProps,
+  TreeProps,
+} from '@fluentui/react-northstar';
 import { SandboxApp } from '@fluentui/code-sandbox';
 
 let _rootDiv: HTMLElement;
 
-const panels = [
+const panels: AccordionProps['panels'] = [
   {
-    key: 'one',
     title: 'One',
     content: '2 3 4',
   },
   {
-    key: 'two',
     title: 'Five',
     content: '6 7 8 9',
   },
   {
-    key: 'three',
     title: "What's next?",
     content: '10',
   },
 ];
-const radioGroupItems = [
-  { key: '1', label: 'This radio comes pre-checked', value: '1' },
-  { key: '2', label: 'This radio is not pre-checked', value: '2' },
+const radioGroupItems: RadioGroupProps['items'] = [
+  { label: 'This radio comes pre-checked', value: '1' },
+  { label: 'This radio is not pre-checked', value: '2' },
 ];
-const treeItems = [
+const treeItems: TreeProps['items'] = [
   {
     id: 'tree-item-1',
     title: 'House Lannister',
