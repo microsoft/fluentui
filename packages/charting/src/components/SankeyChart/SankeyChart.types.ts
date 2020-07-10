@@ -44,6 +44,11 @@ export interface ISankeyChartProps {
    * should chart resize when parent resize.
    */
   shouldResize?: number;
+
+  /**
+   * Color for path
+   */
+  pathColor?: string;
 }
 
 export interface ISankeyChartStyleProps {
@@ -51,6 +56,7 @@ export interface ISankeyChartStyleProps {
   className?: string;
   width: number;
   height: number;
+  pathColor?: string;
 }
 
 export interface ISankeyChartStyles {

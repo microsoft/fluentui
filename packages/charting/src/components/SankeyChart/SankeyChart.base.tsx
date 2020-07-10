@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as d3Sankey from 'd3-sankey';
@@ -35,16 +35,20 @@ export class SankeyChartBase extends React.Component<
     cancelAnimationFrame(this._reqID);
   }
   public render(): JSX.Element {
-    const { theme, className, styles } = this.props;
+    const { theme, className, styles, pathColor } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: this.state.containerWidth,
       height: this.state.containerHeight,
+      pathColor: pathColor,
       className,
     });
     const margin = { top: 10, right: 0, bottom: 10, left: 0 };
     const width = this.state.containerWidth - margin.left - margin.right;
-    const height = this.state.containerHeight - margin.top - margin.bottom;
+    const height =
+      this.state.containerHeight - margin.top - margin.bottom > 0
+        ? this.state.containerHeight - margin.top - margin.bottom
+        : 0;
 
     const sankey = d3Sankey
       .sankey()
@@ -58,16 +62,15 @@ export class SankeyChartBase extends React.Component<
     sankey(this.props.data.SankeyChartData!);
     const nodeData = this._createNodes(width);
     const linkData = this._createLinks();
-    console.log(this.props.width);
     return (
       <div
         className={this._classNames.root}
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
-        <svg width={width} height={height} id="sankey">
+        <svg width={width} height={height} id={getId('sankeyChart')}>
           <g className={this._classNames.nodes}>{nodeData}</g>
-          <g className={this._classNames.links} fill={'none'} stroke={'#000'} strokeOpacity={0.2}>
+          <g className={this._classNames.links} strokeOpacity={0.2}>
             {linkData}
           </g>
         </svg>
@@ -80,11 +83,16 @@ export class SankeyChartBase extends React.Component<
     const links: JSX.Element[] = [];
     if (this.props.data.SankeyChartData) {
       // tslint:disable-next-line:no-any
-      this.props.data.SankeyChartData.links.map((singleLink: any) => {
+      this.props.data.SankeyChartData.links.map((singleLink: any, index: number) => {
         const path = d3Sankey.sankeyLinkHorizontal();
         const pathValue = path(singleLink);
         const link = (
-          <path d={pathValue ? pathValue : undefined} strokeWidth={Math.max(1, singleLink.width)}>
+          <path
+            key={index}
+            d={pathValue ? pathValue : undefined}
+            strokeWidth={Math.max(1, singleLink.width)}
+            id={getId('link')}
+          >
             <title>
               <text>{singleLink.source.name + ' → ' + singleLink.target.name + '\n' + singleLink.value}</text>
             </title>
@@ -100,15 +108,17 @@ export class SankeyChartBase extends React.Component<
     const nodes: JSX.Element[] = [];
     if (this.props.data.SankeyChartData) {
       // tslint:disable-next-line:no-any
-      this.props.data.SankeyChartData.nodes.map((singleNode: any) => {
+      this.props.data.SankeyChartData.nodes.map((singleNode: any, index: number) => {
+        const height = singleNode.y1 - singleNode.y0 > 0 ? singleNode.y1 - singleNode.y0 : 0;
         const node = (
-          <g id={'nodeGElement'}>
+          <g id={getId('nodeGElement')} key={index}>
             <rect
               x={singleNode.x0}
               y={singleNode.y0}
-              height={singleNode.y1 - singleNode.y0}
+              height={height}
               width={singleNode.x1 - singleNode.x0}
               fill={singleNode.color}
+              id={getId('nodeBar')}
             />
             <text
               x={singleNode.x0 < width / 2 ? singleNode.x1 + 6 : singleNode.x0 - 6}

@@ -1,7 +1,7 @@
 import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
-  const { className, theme } = props;
+  const { className, theme, pathColor } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -14,5 +14,9 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
       },
       className,
     ],
+    links: {
+      stroke: pathColor ? pathColor : '#000',
+      fill: 'none',
+    },
   };
 };
