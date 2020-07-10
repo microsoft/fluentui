@@ -54,7 +54,7 @@ packages/date-time @lorejoh12 @evlevy
 packages/eslint-plugin/ @ecraig12345
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
-packages/foundation/ @JasonGore
+packages/foundation/ @dzearing @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 packages/lists/ @dzearing @aditima
@@ -69,6 +69,7 @@ packages/tslint-rules/ @ecraig12345
 packages/tsx-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
+packages/azure-themes/ @hyoshis @Jacqueline-ms
 
 ### Fabric
 # common/

@@ -49,6 +49,8 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     // (undocumented)
     reset(): void;
     // (undocumented)
+    showDatePickerPopup(): void;
+    // (undocumented)
     UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void;
     }
 
@@ -241,6 +243,7 @@ export interface ICalendarStyles {
 export interface IDatePicker {
     focus(): void;
     reset(): void;
+    showDatePickerPopup(): void;
 }
 
 // @public (undocumented)

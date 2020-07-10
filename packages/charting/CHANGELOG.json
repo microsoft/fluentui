@@ -2,6 +2,35 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/charting_v2.5.0",
+      "version": "2.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Area chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "cde96919b4e9233996196c48e7ad8d4ac8326221",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fitcontainer changes done in VS bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "1f2048c1503558d5648bd0e72faf3ea62b00d2a0",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "linechart-callout not visible in dense graph issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "957978aa93b4192805a87c0c81f7f380e4cca6a5",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jul 2020 12:34:21 GMT",
       "tag": "@uifabric/charting_v2.4.0",
       "version": "2.4.0",

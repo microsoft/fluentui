@@ -706,14 +706,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           : this._normalizeToString(suggestedDisplayValue),
       );
     }
-    let displayString = '';
-    for (let idx = 0; idx < displayValues.length; idx++) {
-      if (idx > 0) {
-        displayString += ', ';
-      }
-      displayString += displayValues[idx];
-    }
-    return displayString;
+    const { multiSelectDelimiter = ', ' } = this.props;
+    return displayValues.join(multiSelectDelimiter);
   }
 
   /**
