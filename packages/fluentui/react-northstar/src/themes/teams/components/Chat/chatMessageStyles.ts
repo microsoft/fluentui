@@ -84,7 +84,6 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     borderColor: v.reactionGroupBorderColor,
     borderRadius: v.borderRadius,
     boxShadow: v.actionMenuBoxShadow,
-
     // we need higher zIndex for the action menu in order to be displayed above the focus border of the chat message
     zIndex: p.focused ? v.overlayZIndex : -1,
     ...(_.isNil(v.showActionMenu) && {
