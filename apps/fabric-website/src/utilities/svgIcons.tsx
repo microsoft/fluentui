@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
-import { useId } from '@uifabric/react-hooks';
+import { css, getId } from 'office-ui-fabric-react';
 import * as styles from './svgIcons.module.scss';
 
 export interface ISVGIconProps {
@@ -14,7 +13,7 @@ export interface ISVGIconProps {
 
 export const AndroidLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = useId('android');
+  const id = getId('android');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -60,7 +59,7 @@ export const AndroidLogo = (props?: ISVGIconProps) => {
 
 export const WindowsLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = useId('windows');
+  const id = getId('windows');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -94,7 +93,7 @@ export const WindowsLogo = (props?: ISVGIconProps) => {
 
 export const MacLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = useId('mac');
+  const id = getId('mac');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -128,7 +127,7 @@ export const MacLogo = (props?: ISVGIconProps) => {
 
 export const AppleLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = useId('apple');
+  const id = getId('apple');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -173,7 +172,7 @@ export const AppleLogo = (props?: ISVGIconProps) => {
 
 export const WebLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = useId('web');
+  const id = getId('web');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
@@ -215,7 +214,7 @@ export const WebLogo = (props?: ISVGIconProps) => {
 
 export const CrossPlatformLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const id = useId('crossplat');
+  const id = getId('crossplat');
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
