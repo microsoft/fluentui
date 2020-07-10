@@ -12,6 +12,7 @@ describe('AccordionContent', () => {
     Component: AccordionContent,
     componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
     displayName: 'AccordionContent',
+    useDefaultExport: true,
     customMount: mount,
     disabledTests: ['has-docblock', 'has-top-level-file'],
   });
