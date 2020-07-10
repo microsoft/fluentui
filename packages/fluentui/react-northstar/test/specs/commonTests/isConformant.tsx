@@ -19,7 +19,7 @@ import {
   mountWithProvider as mount,
   syntheticEvent,
 } from 'test/utils';
-import { helpers } from './commonHelpers';
+import { commonHelpers } from './commonHelpers';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
@@ -71,7 +71,7 @@ export function isConformant(
     passesUnhandledPropsTo,
     forwardsRefTo,
   } = options;
-  const { throwError } = helpers('isConformant', Component);
+  const { throwError } = commonHelpers('isConformant', Component);
 
   const componentType = typeof Component;
   // composed components store `handledProps` under config
