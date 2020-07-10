@@ -2,6 +2,146 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/charting_v2.5.0",
+      "version": "2.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Area chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "cde96919b4e9233996196c48e7ad8d4ac8326221",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fitcontainer changes done in VS bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "1f2048c1503558d5648bd0e72faf3ea62b00d2a0",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "linechart-callout not visible in dense graph issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "957978aa93b4192805a87c0c81f7f380e4cca6a5",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jul 2020 12:34:21 GMT",
+      "tag": "@uifabric/charting_v2.4.0",
+      "version": "2.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Line chart:Expose chart  margins prop for line chart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "b6bd4bf7bd32cecad30625e4a95010aea34a20dc",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Jul 2020 12:32:20 GMT",
+      "tag": "@uifabric/charting_v2.3.11",
+      "version": "2.3.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line Chart-callout and circle Id's udpated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "953592c7bdc750c2f1dbd9e2ca3863774a82c516",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jul 2020 12:36:49 GMT",
+      "tag": "@uifabric/charting_v2.3.10",
+      "version": "2.3.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line chart: Remove Duplicate ID's for lines and circles",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "d55eecf434dfe269ecbf6f412dcde73a13dace3e",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jul 2020 12:42:11 GMT",
+      "tag": "@uifabric/charting_v2.3.9",
+      "version": "2.3.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing benchmarkData and targetData props from the stackedbar chart",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "ec20514fdd2721e62194c6f1d4c3878fa9df2e39",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/charting_v2.3.8",
+      "version": "2.3.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "prop check added in Grouped vertical bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "ea1cb2f66589e09d46ad49843114fec282c1ed6c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/charting_v2.3.7",
+      "version": "2.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FIx Incorrect role is defined for lagend overflow items",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "50a3aaef8b7b967078b850656354594fee30bbbd",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2020 12:36:08 GMT",
+      "tag": "@uifabric/charting_v2.3.6",
+      "version": "2.3.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix Invalid aria-attribute value for charts",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "020bab6e761f50220d4b5827cc917a21ac930501",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Fix issue When the mouse is over the data point on the second chart, the vertical line appears on the first chart.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "3f3fc60bc4b564a7a6803400e436b4d27c50d9f9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/charting_v2.3.5",
       "version": "2.3.5",

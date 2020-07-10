@@ -1,8 +1,17 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Tue, 16 Jun 2020 17:35:36 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Jul 2020 12:36:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.31](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.31)
+
+Fri, 03 Jul 2020 12:36:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.0.29..@uifabric/test-utilities_v7.0.31)
+
+### Patches
+
+- Wrap renderer.create() in renderer.act() to trigger React hooks ([PR #13891](https://github.com/microsoft/fluentui/pull/13891) by miclo@microsoft.com)
 
 ## [7.0.27](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.0.27)
 

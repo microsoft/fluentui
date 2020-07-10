@@ -374,10 +374,10 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             {title && <div className={this._classNames.title}> {title} </div>}
             {items && items.length ? (
               <FocusZone
-                {...this._adjustedFocusZoneProps}
                 className={this._classNames.root}
                 isCircularNavigation={true}
                 handleTabKey={FocusZoneTabbableElements.all}
+                {...this._adjustedFocusZoneProps}
               >
                 {onRenderMenuList(
                   {
@@ -427,6 +427,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       containsFocus: this._focusingPreviousElement,
       originalElement: this._previousActiveElement,
     });
+    this._focusingPreviousElement = false;
 
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
@@ -449,7 +450,12 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     originalElement: HTMLElement | Window | undefined;
   }) => {
     if (options && options.containsFocus && this._previousActiveElement) {
-      this._previousActiveElement && this._previousActiveElement.focus();
+      // Make sure that the focus method actually exists
+      // In some cases the object might exist but not be a real element.
+      // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
+      if (this._previousActiveElement.focus) {
+        this._previousActiveElement.focus();
+      }
     }
   };
 
@@ -960,7 +966,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     let handled = false;
 
     if (shouldHandleKey(ev)) {
-      this._focusingPreviousElement = false;
+      this._focusingPreviousElement = true;
       this.dismiss(ev, dismissAllMenus);
       ev.preventDefault();
       ev.stopPropagation();
@@ -1205,7 +1211,16 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       dismiss = !!this.props.onItemClick(ev, item);
     }
 
-    (dismiss || !ev.defaultPrevented) && this.dismiss(ev, true);
+    if (dismiss || !ev.defaultPrevented) {
+      this.dismiss(ev, true);
+
+      // This should be removed whenever possible.
+      // This ensures that the hidden dismissal action maintains the same behavior.
+      // If the menu is being dismissed then the previously focused element should
+      // get focused since the dismiss was triggered by a user click on an item
+      // Rather than focus being lost.
+      this._focusingPreviousElement = true;
+    }
   };
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {

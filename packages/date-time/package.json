@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/date-time",
-  "version": "7.9.3",
+  "version": "7.10.8",
   "description": "Date and time related React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,6 +22,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev:storybook",
+    "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
     "update-snapshots": "just-scripts jest -u",
     "update-api": "just-scripts update-api"
@@ -36,8 +37,8 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.12.83",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.28",
+    "@uifabric/example-app-base": "^7.12.91",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.29",
     "@uifabric/tslint-rules": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -50,9 +51,9 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/date-time-utilities": "^7.1.2",
     "@uifabric/set-version": "^7.0.15",
-    "@uifabric/styling": "^7.13.3",
-    "@uifabric/utilities": "^7.21.3",
-    "office-ui-fabric-react": "^7.121.4",
+    "@uifabric/styling": "^7.14.0",
+    "@uifabric/utilities": "^7.24.0",
+    "office-ui-fabric-react": "^7.121.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

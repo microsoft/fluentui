@@ -1,8 +1,44 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 26 Jun 2020 12:36:28 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Jul 2020 12:40:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.27.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.1)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.0..@uifabric/experiments_v7.27.1)
+
+### Patches
+
+- Fixing sample storyboard for icons to initialize properly and show different icons. ([PR #13970](https://github.com/microsoft/fluentui/pull/13970) by caperez@microsoft.com)
+
+## [7.27.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.12..@uifabric/experiments_v7.27.0)
+
+### Minor changes
+
+- Support for linked folder in FolderCover component ([PR #13960](https://github.com/microsoft/fluentui/pull/13960) by hemanp@microsoft.com)
+
+## [7.26.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.12)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.11..@uifabric/experiments_v7.26.12)
+
+### Patches
+
+- High Contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+
+## [7.26.11](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.11)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.9..@uifabric/experiments_v7.26.11)
+
+### Patches
+
+- Updating some typings. ([PR #13842](https://github.com/microsoft/fluentui/pull/13842) by dzearing@microsoft.com)
 
 ## [7.26.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.9)
 

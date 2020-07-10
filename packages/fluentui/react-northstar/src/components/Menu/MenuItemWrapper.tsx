@@ -1,4 +1,4 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
@@ -90,7 +90,10 @@ const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStyle
   ],
 
   overrideStyles: true,
-}) as ComponentWithAs<'li', MenuItemWrapperProps> & { shorthandConfig: ShorthandConfig<MenuItemWrapperProps> };
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
+});
 
 MenuItemWrapper.defaultProps = {
   as: 'li',
@@ -107,9 +110,6 @@ MenuItemWrapper.propTypes = {
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   underlined: PropTypes.bool,
   vertical: PropTypes.bool,
-};
-MenuItemWrapper.shorthandConfig = {
-  mappedProp: 'content',
 };
 
 export default MenuItemWrapper;

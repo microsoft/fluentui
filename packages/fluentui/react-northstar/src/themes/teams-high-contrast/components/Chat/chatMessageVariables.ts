@@ -1,6 +1,6 @@
 import { ChatMessageVariables } from '../../../teams/components/Chat/chatMessageVariables';
 
-export default (siteVars: any): Partial<ChatMessageVariables> => {
+export const chatMessageVariables = (siteVars: any): Partial<ChatMessageVariables> => {
   return {
     backgroundColor: siteVars.colors.black,
     backgroundColorMine: siteVars.colors.black,

@@ -62,8 +62,6 @@ function customColumnDivider(
 
 describe('DetailsList', () => {
   it('renders List correctly with onRenderDivider props', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}
@@ -80,8 +78,6 @@ describe('DetailsList', () => {
   });
 
   it('renders List with custom icon as column divider', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}
@@ -98,8 +94,6 @@ describe('DetailsList', () => {
   });
 
   it('renders List correctly', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}
@@ -115,8 +109,6 @@ describe('DetailsList', () => {
   });
 
   it('renders List in fixed constrained layout correctly', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}
@@ -133,8 +125,6 @@ describe('DetailsList', () => {
   });
 
   it('renders List in compact mode correctly', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}
@@ -151,8 +141,6 @@ describe('DetailsList', () => {
   });
 
   it('renders List with hidden checkboxes correctly', () => {
-    DetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(
       <DetailsList
         items={mockData(5)}

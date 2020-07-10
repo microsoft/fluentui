@@ -1,8 +1,44 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 19 Jun 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Jul 2020 12:40:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.8](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.8)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.7..@uifabric/date-time_v7.10.8)
+
+### Patches
+
+- refactoring the date time examples into separate files to fix storybook. Also fixing bug in Calendar where externally controlled date does not navigate the calendar when the date changes ([PR #13956](https://github.com/microsoft/fluentui/pull/13956) by lorejoh12@gmail.com)
+
+## [7.10.7](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.7)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.2..@uifabric/date-time_v7.10.7)
+
+### Patches
+
+- Migrate Calendar components to function components ([PR #13904](https://github.com/microsoft/fluentui/pull/13904) by miclo@microsoft.com)
+
+## [7.10.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.2)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.0..@uifabric/date-time_v7.10.2)
+
+### Patches
+
+- High Contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+
+## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.0)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.9.3..@uifabric/date-time_v7.10.0)
+
+### Minor changes
+
+- CalendarDayGrid: migrate component to function component ([PR #13803](https://github.com/microsoft/fluentui/pull/13803) by miclo@microsoft.com)
 
 ## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.9.0)
 
