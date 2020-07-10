@@ -46,7 +46,6 @@ export * from './components/Button/ButtonContent';
 
 export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';
-export * from './components/Chat/ChatItem';
 export * from './components/Chat/ChatMessage';
 export * from './components/Chat/ChatMessageDetails';
 
