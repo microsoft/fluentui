@@ -6,6 +6,7 @@ const themeOverrides = {
       root: ({ variables: v }) => ({
         ...(v.isContainer && {
           maxWidth: '360px',
+          overflow: 'hidden',
         }),
         ...(v.isRosterSearch && {
           margin: '0rem 1rem',
@@ -18,22 +19,39 @@ const themeOverrides = {
       }),
     },
     Button: {
-      root: ({ variables: v }) => ({
-        ...(v.vAlignCenter && {
+      root: ({ variables: v, theme: { siteVariables } }) => ({
+        ...(v.isCloseButton && {
           marginTop: 'auto',
           marginBottom: 'auto',
+          marginRight: '0.8rem',
+          ':focus': {
+            color: siteVariables.colorScheme.brand.foregroundHover1,
+          },
+          ':hover': {
+            color: siteVariables.colorScheme.brand.foregroundHover1,
+          },
         }),
-        ...(v.isRosterButtonOutside && {
+        ...(v.isSearchButton && {
           marginRight: '.5rem',
           marginLeft: '-.8rem',
           maxWidth: '3.2rem',
           minWidth: '3.2rem',
           padding: 0,
+          ':focus': {
+            color: siteVariables.colorScheme.brand.foregroundHover1,
+          },
           ':hover': {
-            boxShadow: 'none',
+            color: siteVariables.colorScheme.brand.foregroundHover1,
           },
         }),
       }),
+    },
+    TreeItem: {
+      root: {
+        marginBottom: '0.5rem',
+        paddingLeft: '0.5rem',
+        paddingRight: '0.8rem',
+      },
     },
     ListItem: {
       root: ({ theme: { siteVariables } }) => ({
@@ -72,12 +90,30 @@ const themeOverrides = {
         borderColor: siteVariables.colorScheme.brand.border,
       }),
     },
+    MenuItem: {
+      root: ({ theme: { siteVariables } }) => ({
+        ':hover': {
+          color: siteVariables.colorScheme.brand.foregroundHover1,
+          background: siteVariables.colorScheme.brand.borderDisabled,
+        },
+      }),
+    },
     Text: {
       root: ({ variables: v, theme: { siteVariables } }) => ({
         color: siteVariables.colorScheme.brand.foreground4,
         ...(v.isRoleText && {
           color: siteVariables.colorScheme.brand.border,
+          fontSize: '0.75rem',
         }),
+        ...(v.isNameText && {
+          fontSize: '0.9rem',
+        }),
+      }),
+    },
+    Avatar: {
+      root: ({ theme: { siteVariables } }) => ({
+        borderRadius: '50%',
+        boxShadow: `0 0 0 0.2rem ${siteVariables.colorScheme.brand.background2}`,
       }),
     },
     MenuButton: {
@@ -85,6 +121,12 @@ const themeOverrides = {
         color: siteVariables.colorScheme.brand.border,
         marginTop: 'auto',
         marginBottom: 'auto',
+        ':focus': {
+          color: siteVariables.colorScheme.brand.foregroundHover1,
+        },
+        ':hover': {
+          color: siteVariables.colorScheme.brand.foregroundHover1,
+        },
       }),
     },
     FlexItem: {
@@ -98,6 +140,14 @@ const themeOverrides = {
       root: {
         marginTop: '2rem',
         marginLeft: '1rem',
+        paddingLeft: '0rem',
+        paddingRight: '0rem',
+      },
+    },
+    Input: {
+      root: {
+        padding: '0.1rem 0.2rem',
+        fontSize: '1.1rem',
       },
     },
   },

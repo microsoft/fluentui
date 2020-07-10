@@ -23,8 +23,12 @@ const Participant: React.FC<{
       )}
 
       <Flex column>
-        {talking ? <Text weight="bold" content={name} /> : <Text content={name} />}
-        <Text variables={{ isRoleText: true }} content={role} size="smaller" />
+        {talking ? (
+          <Text weight="bold" content={name} variables={{ isNameText: true }} />
+        ) : (
+          <Text content={name} variables={{ isNameText: true }} />
+        )}
+        <Text variables={{ isRoleText: true }} content={role} />
       </Flex>
 
       {muted ? (
