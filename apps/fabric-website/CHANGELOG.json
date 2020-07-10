@@ -2,6 +2,29 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 10 Jul 2020 12:40:33 GMT",
+      "tag": "@uifabric/fabric-website_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "new macOS Button and Separator control",
+            "author": "saadnajmi2@gmail.com",
+            "commit": "20be95a095c9296db1fa735b76ae58191f015171",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "give icons unique ids",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "559e91a35ec2bde8ae3a7431a8679b5637192ecb",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2020 12:42:11 GMT",
       "tag": "@uifabric/fabric-website_v7.11.0",
       "version": "7.11.0",
