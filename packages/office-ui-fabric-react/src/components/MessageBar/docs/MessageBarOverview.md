@@ -1,1 +1,1 @@
-A message bar (`MessageBar`) conveys information regarding the app or the file someone has open, such as when the file is in protected view or it failed to upload. It can also deliver non-app-specific messages about subscription renewal or expiration. 
+A banner (`MessageBar`) displays errors, warnings, or important information about an open app or file. For example, if a file failed to upload an error message bar should appear. 
