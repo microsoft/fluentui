@@ -124,7 +124,11 @@ export class VerticalStackedBarChartBase extends React.Component<
       height: this.state.containerHeight,
     };
     return (
-      <div className={this._classNames.root} ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}>
+      <div
+        className={this._classNames.root}
+        // eslint-disable-next-line react/jsx-no-bind
+        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+      >
         <FocusZone direction={FocusZoneDirection.vertical}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
@@ -143,7 +147,11 @@ export class VerticalStackedBarChartBase extends React.Component<
           </svg>
         </FocusZone>
         {
-          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+          <div
+            // eslint-disable-next-line react/jsx-no-bind
+            ref={(e: HTMLDivElement) => (this.legendContainer = e)}
+            className={this._classNames.legendContainer}
+          >
             {legends}
           </div>
         }
