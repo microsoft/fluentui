@@ -17,9 +17,8 @@ import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
+import { NavLink, NavLinkProps, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 import config from '../../config';
 
@@ -32,14 +31,17 @@ const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 const componentsBlackList = ['Debug', 'Design'];
 const typeOrder = ['component', 'behavior'];
 
-class Sidebar extends React.Component<any, any> {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    style: PropTypes.object,
-  };
-  state: any = { query: '', activeCategoryIndex: 0 };
+interface SidebarState {
+  query: string;
+  activeCategoryIndex: number | number[];
+}
+
+interface SidebarProps {
+  width: number;
+  treeItemStyle: React.CSSProperties;
+}
+class Sidebar extends React.Component<SidebarProps & RouteComponentProps, SidebarState> {
+  state = { query: '', activeCategoryIndex: 0 };
   searchInputRef = React.createRef<HTMLInputElement>();
 
   componentDidMount() {

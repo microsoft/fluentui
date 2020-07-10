@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.1.2",
+      "version": "7.1.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Normalize dates in tests instead of setting timezone in the config",
+            "author": "pompomon@gmail.com",
+            "commit": "b4adf81c515bd8fcee8264da0dd93d23f881f3cd",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jun 2020 12:38:09 GMT",
       "tag": "@fluentui/date-time-utilities_v7.1.0",
       "version": "7.1.0",
