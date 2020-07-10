@@ -3,30 +3,13 @@ import participants from './participantData';
 import presenters from './presentersData';
 
 import themeOverrides from './styles';
-import {
-  List,
-  Provider,
-  Accordion,
-  Flex,
-  Button,
-  Input,
-  Text,
-  Header,
-  teamsDarkTheme,
-} from '@fluentui/react-northstar';
-import { TriangleDownIcon, TriangleEndIcon, CloseIcon, LinkIcon } from '@fluentui/react-icons-northstar';
+import { List, Provider, Accordion, Flex, Button, Input, Header, teamsDarkTheme } from '@fluentui/react-northstar';
+import { CloseIcon, LinkIcon } from '@fluentui/react-icons-northstar';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 
 const ParticipantsList = () => <List navigable items={participants} />;
 
 const PresentersList = () => <List navigable items={presenters} />;
-
-const titleRenderer = (Component, { content, expanded, open, hasSubtree, ...restProps }) => (
-  <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
-    {expanded ? <TriangleDownIcon /> : hasSubtree ? <TriangleEndIcon /> : ''}
-    <Text size="small" content={content}></Text>
-  </Component>
-);
 
 const treeItems = [
   {
