@@ -176,6 +176,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
       <div className={css(rootClass, styles.root, className)} role="application">
         <div
           {...nativeProps}
+          onBlur={this._onBlur}
           className={css(
             'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
             styles.picker,
@@ -276,6 +277,10 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
       this._monthPicker.current.focus();
     }
   }
+
+  private _onBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+  };
 
   private _navigateDayPickerDay = (date: Date): void => {
     this.setState({
