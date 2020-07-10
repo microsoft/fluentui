@@ -22,6 +22,7 @@
     "@fluentui/code-sandbox": "^0.50.0",
     "@fluentui/react-bindings": "^0.50.0",
     "@fluentui/react-northstar": "^0.50.0",
+    "prettier": "~1.19.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0"
