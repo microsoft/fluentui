@@ -518,6 +518,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       } else if ((target as any).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target as MouseEvent;
+        // Same reason here
       } else if ((target as any).getBoundingClientRect) {
         const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;

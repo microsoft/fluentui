@@ -39,7 +39,6 @@
     "@uifabric/build": "^7.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "office-ui-fabric-react": "^7.121.12",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
@@ -54,6 +53,7 @@
     "@uifabric/react-hooks": "^7.4.13",
     "@uifabric/set-version": "^7.0.15",
     "@uifabric/utilities": "^7.24.0",
+    "office-ui-fabric-react": "^7.121.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

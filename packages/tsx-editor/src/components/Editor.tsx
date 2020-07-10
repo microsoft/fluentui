@@ -63,7 +63,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       }
 
       if (currDebounceTime) {
-        debounceTimeout = (setTimeout(() => currOnChange(model.getValue()), currDebounceTime) as unknown) as number;
+        debounceTimeout = window.setTimeout(() => currOnChange(model.getValue()), currDebounceTime);
       } else {
         currOnChange(model.getValue());
       }
