@@ -28,7 +28,7 @@ export class AutoScroll {
 
   constructor(element: HTMLElement) {
     this._events = new EventGroup(this);
-    this._scrollableParent = findScrollableParent(element);
+    this._scrollableParent = findScrollableParent(element) as HTMLElement;
 
     this._incrementScroll = this._incrementScroll.bind(this);
     this._scrollRect = getRect(this._scrollableParent);

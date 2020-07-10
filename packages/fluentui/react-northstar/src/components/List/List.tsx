@@ -1,5 +1,6 @@
 import { Accessibility, listBehavior, ListBehaviorProps } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -15,9 +16,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import {
-  WithAsProp,
   ComponentEventHandler,
-  withSafeTypeForAs,
   ShorthandCollection,
   ReactChildren,
   ProviderContextPrepared,
@@ -79,7 +78,15 @@ export interface ListProps extends UIComponentProps, ChildrenComponentProps {
 export type ListStylesProps = Pick<ListProps, 'debug' | 'horizontal'> & { isListTag: boolean };
 export const listClassName = 'ui-list';
 
-const List: React.FC<WithAsProp<ListProps>> &
+/**
+ * A List displays a group of related sequential items.
+ *
+ * @accessibility
+ * List may follow one of the following accessibility semantics:
+ * - Static non-navigable list. Implements [ARIA list](https://www.w3.org/TR/wai-aria-1.1/#list) role.
+ * - Selectable list: allows the user to select item from a list of choices. Implements [ARIA Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox) design pattern.
+ */
+const List: ComponentWithAs<'ul', ListProps> &
   FluentComponentStaticProps<ListProps> & {
     Item: typeof ListItem;
   } = props => {
@@ -205,12 +212,4 @@ List.Item = ListItem;
 
 List.create = createShorthandFactory({ Component: List, mappedArrayProp: 'items' });
 
-/**
- * A List displays a group of related sequential items.
- *
- * @accessibility
- * List may follow one of the following accessibility semantics:
- * - Static non-navigable list. Implements [ARIA list](https://www.w3.org/TR/wai-aria-1.1/#list) role.
- * - Selectable list: allows the user to select item from a list of choices. Implements [ARIA Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox) design pattern.
- */
-export default withSafeTypeForAs<typeof List, ListProps, 'ul'>(List);
+export default List;

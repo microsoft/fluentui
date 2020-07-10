@@ -69,7 +69,7 @@ class DocsLayout extends React.Component<any, any> {
 
   renderChildren() {
     const { children, render } = this.props;
-    const sidebarWidth = '270';
+    const sidebarWidth = 270;
 
     const treeSectionStyle = {
       fontWeight: 700,

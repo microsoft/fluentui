@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const RaiseHandColoredIcon = createSvgIcon({
+export const RaiseHandColoredIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <defs>
@@ -59,5 +59,3 @@ const RaiseHandColoredIcon = createSvgIcon({
   ),
   displayName: 'RaiseHandColoredIcon',
 });
-
-export default RaiseHandColoredIcon;

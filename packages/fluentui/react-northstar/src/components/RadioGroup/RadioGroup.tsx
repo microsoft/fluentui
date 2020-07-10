@@ -15,14 +15,13 @@ import {
 } from '../../utils';
 import RadioGroupItem, { RadioGroupItemProps } from './RadioGroupItem';
 import {
-  WithAsProp,
   ComponentEventHandler,
-  withSafeTypeForAs,
   ShorthandCollection,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
 import {
+  ComponentWithAs,
   useAutoControlled,
   useTelemetry,
   getElementType,
@@ -61,7 +60,13 @@ export const radioGroupClassName = 'ui-radiogroup';
 
 export type RadioGrouptStylesProps = never;
 
-const RadioGroup: React.FC<WithAsProp<RadioGroupProps>> &
+/**
+ * A RadioGroup allows user to select a value from a small set of mutually exclusive options.
+ *
+ * @accessibility
+ * Implements [ARIA Radio Group](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton) design pattern.
+ */
+const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
   FluentComponentStaticProps<RadioGroupProps> & {
     Item: typeof RadioGroupItem;
   } = props => {
@@ -230,10 +235,4 @@ RadioGroup.create = createShorthandFactory({
   Component: RadioGroup,
 });
 
-/**
- * A RadioGroup allows user to select a value from a small set of mutually exclusive options.
- *
- * @accessibility
- * Implements [ARIA Radio Group](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton) design pattern.
- */
-export default withSafeTypeForAs<typeof RadioGroup, RadioGroupProps>(RadioGroup);
+export default RadioGroup;

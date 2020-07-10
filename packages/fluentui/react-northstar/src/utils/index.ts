@@ -1,7 +1,5 @@
 export { default as applyAccessibilityKeyHandlers } from './applyAccessibilityKeyHandlers';
-export { default as AutoControlledComponent } from './AutoControlledComponent';
 export { default as childrenExist } from './childrenExist';
-export { default as UIComponent } from './UIComponent';
 export { default as rtlTextContainer } from './rtlTextContainer';
 export { default as stringLiteralsArray } from './stringLiteralsArray';
 export { default as getOrGenerateIdFromShorthand } from './getOrGenerateIdFromShorthand';

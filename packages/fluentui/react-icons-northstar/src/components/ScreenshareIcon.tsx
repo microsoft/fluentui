@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const ScreenshareIcon = createSvgIcon({
+export const ScreenshareIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 18 16" className={classes.svg}>
       <path
@@ -18,5 +18,3 @@ const ScreenshareIcon = createSvgIcon({
   ),
   displayName: 'ScreenshareIcon',
 });
-
-export default ScreenshareIcon;

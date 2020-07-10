@@ -1,9 +1,9 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import cx from 'classnames';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const BellSnoozeIcon = createSvgIcon({
+export const BellSnoozeIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <g>
@@ -20,5 +20,3 @@ const BellSnoozeIcon = createSvgIcon({
   ),
   displayName: 'BellSnoozeIcon',
 });
-
-export default BellSnoozeIcon;

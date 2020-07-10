@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { FormStylesProps } from '../../../../components/Form/Form';
 import { pxToRem } from '../../../../utils';
 
-const formStyles: ComponentSlotStylesPrepared<FormStylesProps, any> = {
+export const formStyles: ComponentSlotStylesPrepared<FormStylesProps, any> = {
   root: ({ props, variables }): ICSSInJSStyle => ({
     height: '100%',
     width: '100%',
@@ -15,5 +15,3 @@ const formStyles: ComponentSlotStylesPrepared<FormStylesProps, any> = {
     },
   }),
 };
-
-export default formStyles;

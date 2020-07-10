@@ -34,7 +34,11 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
   defaultProps?: Partial<TProps & { as: TElementType }>;
   displayName?: string;
 
-  __PRIVATE_PROPS: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
+  /**
+   * A hack to simplify the resolution for ComponentWithAs.
+   * @see https://github.com/microsoft/fluentui/pull/13841
+   */
+  readonly __PRIVATE_PROPS?: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
 };
 
 //
@@ -146,6 +150,12 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
 //
 // Component types
 //
+
+export interface ComponentProps {
+  as?: React.ElementType;
+
+  className?: string;
+}
 
 export interface BaseSlots {
   root: React.ElementType;

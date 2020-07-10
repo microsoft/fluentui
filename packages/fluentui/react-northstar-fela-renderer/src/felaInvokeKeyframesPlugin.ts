@@ -8,7 +8,7 @@ import * as _ from 'lodash';
  * Caution! Infinite recursion is possible in case if style object has links to self in the props
  * tree.
  */
-const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
+export const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
   return Object.keys(styles).reduce((acc, cssPropertyName) => {
     const cssPropertyValue = styles[cssPropertyName];
 
@@ -33,5 +33,3 @@ const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
     return { ...acc, [cssPropertyName]: styles[cssPropertyName] };
   }, {});
 };
-
-export default felaInvokeKeyframesPlugin;

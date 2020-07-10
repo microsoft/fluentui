@@ -267,7 +267,7 @@ export function findElementRecursive(element: HTMLElement | null, matchFunction:
 export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex?: number): number;
 
 // @public
-export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null;
+export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | Window | undefined | null;
 
 // @public
 export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize;
@@ -1170,6 +1170,9 @@ export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data
 
 // @public
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.FunctionComponent<TComponentProps>;
+
+// @public (undocumented)
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>, TRef = unknown>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.ForwardRefExoticComponent<React.PropsWithoutRef<TComponentProps> & React.RefAttributes<TRef>>;
 
 // @public (undocumented)
 export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {

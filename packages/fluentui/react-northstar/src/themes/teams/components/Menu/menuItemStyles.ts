@@ -3,7 +3,7 @@ import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
 import { MenuItemStylesProps } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 export const verticalPillsBottomMargin = pxToRem(5);
@@ -108,7 +108,7 @@ export const pointingBeak = ({
   };
 };
 
-const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVariables> = {
+export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const { active, iconOnly, isFromKeyboard, pointing, primary, underlined, vertical, disabled } = p;
 
@@ -119,7 +119,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
       display: 'block',
       cursor: 'pointer',
       whiteSpace: 'nowrap',
-
+      overflow: 'hidden',
       ...(pointing &&
         vertical && {
           border: '1px solid transparent',
@@ -140,6 +140,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        overflow: 'visible',
       }),
 
       // active styles
@@ -215,5 +216,3 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, MenuVaria
 
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
 };
-
-export default menuItemStyles;
