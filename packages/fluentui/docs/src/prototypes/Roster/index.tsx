@@ -40,11 +40,11 @@ const RosterPrototype: React.FC = () => {
             <Flex column variables={{ isContainer: true }}>
               <Flex space="between" padding="padding.medium" variables={{ isCallingRosterSectionTitle: true }}>
                 <Header as="h3" content="Participants"></Header>
-                <Button variables={{ vAlignCenter: true }} icon={<CloseIcon />} title="Close" iconOnly text />
+                <Button variables={{ isCloseButton: true }} icon={<CloseIcon />} title="Close" iconOnly text />
               </Flex>
               <Flex padding="padding.medium" hAlign="center" variables={{ isRosterSearch: true }}>
                 <Input fluid placeholder="Search..." />
-                <Button variables={{ isRosterButtonOutside: true }} icon={<LinkIcon />} title="Search" iconOnly text />
+                <Button variables={{ isSearchButton: true }} icon={<LinkIcon />} title="Search" iconOnly text />
               </Flex>
               <Tree
                 items={treeItems}
