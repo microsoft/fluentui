@@ -2,10 +2,10 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { InputStylesProps } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
 import { PositionProperty } from 'csstype';
-import clearIndicatorUrl from './clearIndicatorUrl';
+import { clearIndicatorUrl } from './clearIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
+export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     alignItems: 'center',
     display: 'inline-flex',
@@ -58,6 +58,10 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
     ...(p.hasIcon && {
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
+
+    '::-ms-clear': {
+      display: 'none',
+    },
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -67,6 +71,8 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
     alignItems: 'center',
     justifyContent: 'center',
     position: v.iconPosition as PositionProperty,
+    top: 0,
+    bottom: 0,
     ...(p.error && { color: v.colorError }),
     ...(p.requiredAndSuccessful && {
       color: v.successfulColor,
@@ -92,5 +98,3 @@ const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables>
       }),
   }),
 };
-
-export default inputStyles;

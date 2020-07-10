@@ -8,7 +8,6 @@ import { DateRangeType } from '@fluentui/date-time-utilities';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { IBaseProps } from '@uifabric/utilities';
-import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { ICalendarStrings as ICalendarStrings_2 } from '@uifabric/date-time';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from '@uifabric/utilities';
@@ -16,10 +15,8 @@ import { IDateGridStrings } from '@fluentui/date-time-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRefObject } from '@uifabric/utilities';
-import { IRefObject as IRefObject_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { ITheme } from '@uifabric/styling';
 import * as React from 'react';
@@ -31,10 +28,10 @@ export enum AnimationDirection {
 }
 
 // @public
-export const Calendar: React.FunctionComponent<ICalendarProps>;
+export const Calendar: import("react").FunctionComponent<import("./Calendar.types").ICalendarProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public
-export const DatePicker: React.FunctionComponent<IDatePickerProps>;
+export const DatePicker: import("react").FunctionComponent<import("./DatePicker.types").IDatePickerProps>;
 
 // @public (undocumented)
 export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
@@ -97,10 +94,10 @@ export interface ICalendarDayGridStyles {
 // Warning: (ae-forgotten-export) The symbol "ICalendarDayGridProps" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay>, ICalendarDayGridProps {
+export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDayGridProps {
     allFocusable?: boolean;
     className?: string;
-    componentRef?: IRefObject_2<ICalendarDay>;
+    componentRef?: IRefObject<ICalendarDay>;
     dateTimeFormatter: ICalendarFormatDateCallbacks;
     maxDate?: Date;
     minDate?: Date;
@@ -116,7 +113,7 @@ export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay>, ICalendar
     strings: ICalendarStrings;
     // Warning: (ae-forgotten-export) The symbol "ICalendarDayStyleProps" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICalendarDayStyles" needs to be exported by the entry point index.d.ts
-    styles?: IStyleFunctionOrObject_2<ICalendarDayStyleProps, ICalendarDayStyles>;
+    styles?: IStyleFunctionOrObject<ICalendarDayStyleProps, ICalendarDayStyles>;
     theme?: ITheme;
 }
 
@@ -138,11 +135,11 @@ export interface ICalendarIconStrings {
 // Warning: (ae-forgotten-export) The symbol "ICalendarMonth" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface ICalendarMonthProps extends IBaseProps_2<ICalendarMonth> {
+export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
     className?: string;
-    componentRef?: IRefObject_2<ICalendarMonth>;
+    componentRef?: IRefObject<ICalendarMonth>;
     dateTimeFormatter?: ICalendarFormatDateCallbacks;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
@@ -157,7 +154,7 @@ export interface ICalendarMonthProps extends IBaseProps_2<ICalendarMonth> {
     strings: ICalendarStrings;
     // Warning: (ae-forgotten-export) The symbol "ICalendarMonthStyleProps" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICalendarMonthStyles" needs to be exported by the entry point index.d.ts
-    styles?: IStyleFunctionOrObject_2<ICalendarMonthStyleProps, ICalendarMonthStyles>;
+    styles?: IStyleFunctionOrObject<ICalendarMonthStyleProps, ICalendarMonthStyles>;
     theme?: ITheme;
     today?: Date;
     yearPickerHidden?: boolean;
@@ -339,10 +336,10 @@ export interface IWeeklyDayPicker {
 }
 
 // @public (undocumented)
-export interface IWeeklyDayPickerProps extends IBaseProps_2<IWeeklyDayPicker> {
+export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
     animationDirection?: AnimationDirection;
     className?: string;
-    componentRef?: IRefObject_2<IWeeklyDayPicker>;
+    componentRef?: IRefObject<IWeeklyDayPicker>;
     dateTimeFormatter?: ICalendarFormatDateCallbacks;
     firstDayOfWeek?: DayOfWeek;
     initialDate?: Date;
@@ -354,7 +351,7 @@ export interface IWeeklyDayPickerProps extends IBaseProps_2<IWeeklyDayPicker> {
     restrictedDates?: Date[];
     showFullMonth?: boolean;
     strings: IWeeklyDayPickerStrings;
-    styles?: IStyleFunctionOrObject_2<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>;
+    styles?: IStyleFunctionOrObject<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>;
     theme?: ITheme;
     today?: Date;
     weeksToShow?: number;
@@ -382,7 +379,7 @@ export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> 
 }
 
 // @public
-export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps>;
+export const WeeklyDayPicker: import("react").FunctionComponent<import("./WeeklyDayPicker.types").IWeeklyDayPickerProps>;
 
 
 export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";

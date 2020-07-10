@@ -6,7 +6,7 @@ const getCSSTemplateValue = (template: number, gap: string = ''): string => {
   return Array.from({ length: template }, () => '1fr').join(` ${gap} `);
 };
 
-const gridStyles: ComponentSlotStylesPrepared<GridStylesProps, GridVariables> = {
+export const gridStyles: ComponentSlotStylesPrepared<GridStylesProps, GridVariables> = {
   root: ({ props, variables: { height, width, defaultColumnCount, gridGap, padding } }): ICSSInJSStyle => {
     const { rows, columns = !props.rows && defaultColumnCount } = props;
 
@@ -32,5 +32,3 @@ const gridStyles: ComponentSlotStylesPrepared<GridStylesProps, GridVariables> = 
     };
   },
 };
-
-export default gridStyles;

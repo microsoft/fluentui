@@ -54,7 +54,7 @@ export interface SplitButtonVariables {
   focusBorderZIndex: string;
 }
 
-export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
+export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
   return {
     borderRadius: siteVars.borderRadius,
     borderColor: siteVars.colorScheme.default.border,

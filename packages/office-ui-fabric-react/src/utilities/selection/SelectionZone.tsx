@@ -652,7 +652,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
    * so this is less likely to cause layout thrashing then doing it in mount.
    */
   private _findScrollParentAndTryClearOnEmptyClick(ev: MouseEvent) {
-    const scrollParent = findScrollableParent(this._root.current);
+    const scrollParent = findScrollableParent(this._root.current) as HTMLElement;
     // unbind this handler and replace binding with a binding on the actual scrollable parent
     this._events.off(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
     this._events.on(scrollParent, 'click', this._tryClearOnEmptyClick);

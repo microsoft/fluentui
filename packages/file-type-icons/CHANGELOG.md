@@ -1,8 +1,18 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 24 Jun 2020 12:37:46 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.3.9..@uifabric/file-type-icons_v7.4.0)
+
+### Minor changes
+
+- Add special folder icon support for LinkedFolder ([PR #13946](https://github.com/microsoft/fluentui/pull/13946) by hemanp@microsoft.com)
+- Introduce FolderCover for linked folders ([PR #13960](https://github.com/microsoft/fluentui/pull/13960) by hemanp@microsoft.com)
 
 ## [7.3.7](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.3.7)
 

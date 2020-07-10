@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.12.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.11.8..@fluentui/react-compose_v0.12.0)
+
+### Minor changes
+
+- Adding ComponentProps types which includes as and className. ([PR #13812](https://github.com/microsoft/fluentui/pull/13812) by humbertomakotomorimoto@gmail.com)
 
 ## [0.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.11.8)
 
