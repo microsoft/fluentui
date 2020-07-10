@@ -1,8 +1,7 @@
-export { default as applyAccessibilityKeyHandlers } from './applyAccessibilityKeyHandlers';
-export { default as childrenExist } from './childrenExist';
-export { default as rtlTextContainer } from './rtlTextContainer';
-export { default as stringLiteralsArray } from './stringLiteralsArray';
-export { default as getOrGenerateIdFromShorthand } from './getOrGenerateIdFromShorthand';
+export { childrenExist } from './childrenExist';
+export { rtlTextContainer } from './rtlTextContainer';
+export { stringLiteralsArray } from './stringLiteralsArray';
+export { getOrGenerateIdFromShorthand } from './getOrGenerateIdFromShorthand';
 
 export * from './factories';
 export { mergeProviderContexts } from './mergeProviderContexts';
