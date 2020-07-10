@@ -10,7 +10,7 @@ import { ListItemBehaviorProps } from './listItemBehavior';
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const navigableListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
+export const navigableListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'menuitem',
@@ -25,5 +25,3 @@ const navigableListItemBehavior: Accessibility<ListItemBehaviorProps> = props =>
     },
   },
 });
-
-export default navigableListItemBehavior;

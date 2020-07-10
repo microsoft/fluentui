@@ -3,16 +3,16 @@ import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Editor, renderElementToJSX } from '@fluentui/docs-components';
 
-import componentInfoContext from '../componentInfo/componentInfoContext';
+import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
 
 // import Anatomy from './Anatomy';
-import BrowserWindow from './BrowserWindow';
-import Canvas from './Canvas';
-import Description from './Description';
-import Knobs from './Knobs';
-import List from './List';
-import Toolbar from './Toolbar';
+import { BrowserWindow } from './BrowserWindow';
+import { Canvas } from './Canvas';
+import { Description } from './Description';
+import { Knobs } from './Knobs';
+import { List } from './List';
+import { Toolbar } from './Toolbar';
 
 import {
   jsonTreeCloneElement,
@@ -36,7 +36,7 @@ import { DesignerMode, JSONTreeElement } from './types';
 import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
 import { codeToTree } from '../utils/codeToTree';
-import ErrorBoundary from './ErrorBoundary';
+import { ErrorBoundary } from './ErrorBoundary';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -56,7 +56,7 @@ export type DesignerState = {
   showJSONTree: boolean;
 };
 
-class Designer extends React.Component<{}, DesignerState> {
+export class Designer extends React.Component<{}, DesignerState> {
   potentialDropTarget: JSONTreeElement | null = null;
   dropIndex: number = -1;
   dropParent: JSONTreeElement | null = null;
@@ -611,5 +611,3 @@ class Designer extends React.Component<{}, DesignerState> {
     );
   }
 }
-
-export default Designer;

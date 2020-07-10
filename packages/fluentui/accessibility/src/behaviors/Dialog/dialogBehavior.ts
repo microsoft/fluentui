@@ -1,5 +1,5 @@
 import { Accessibility, AccessibilityAttributes } from '../../types';
-import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
+import { popupBehavior, PopupBehaviorProps } from '../Popup/popupBehavior';
 
 /**
  * @description
@@ -13,7 +13,7 @@ import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'popup' slot.
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'popup' slot.
  */
-const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
+export const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
   const behaviorData = popupBehavior(props);
 
   const defaultAriaLabelledBy = getDefaultAriaLabelledBy(props);
@@ -57,8 +57,6 @@ const getDefaultAriaDescribedBy = (props: DialogBehaviorProps) => {
   }
   return props.contentId;
 };
-
-export default dialogBehavior;
 
 export type DialogBehaviorProps = {
   headerId?: string;

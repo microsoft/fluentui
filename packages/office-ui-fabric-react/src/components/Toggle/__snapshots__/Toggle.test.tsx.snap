@@ -558,7 +558,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
   >
     <button
       aria-checked={false}
-      aria-labelledby="Toggle4-label"
+      aria-labelledby="Toggle4-label Toggle4-stateText"
       className=
           ms-Toggle-background
           {

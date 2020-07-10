@@ -1,5 +1,6 @@
 import { Accessibility, tableRowBehavior, GridRowBehaviorProps } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getElementType,
   mergeVariablesOverrides,
   useAccessibility,
@@ -18,8 +19,6 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
   ShorthandCollection,
-  WithAsProp,
-  withSafeTypeForAs,
   ComponentEventHandler,
 } from '../../types';
 import { childrenExist, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
@@ -64,7 +63,10 @@ export const tableRowClassName = 'ui-table__row';
 
 export type TableRowStylesProps = Pick<TableRowProps, 'header' | 'compact'>;
 
-const TableRow: React.FC<WithAsProp<TableRowProps>> & FluentComponentStaticProps<TableRowProps> = props => {
+/**
+ * Component represents a single row in a tabular structure
+ */
+const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentStaticProps<TableRowProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TableRow.displayName, context.telemetry);
   setStart();
@@ -166,7 +168,4 @@ TableRow.defaultProps = {
 
 TableRow.create = createShorthandFactory({ Component: TableRow, mappedArrayProp: 'items' });
 
-/**
- * Component represents a single row in a tabular structure
- */
-export default withSafeTypeForAs<typeof TableRow, TableRowProps, 'div'>(TableRow);
+export default TableRow;

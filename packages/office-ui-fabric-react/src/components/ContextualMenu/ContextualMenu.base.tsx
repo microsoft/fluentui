@@ -374,10 +374,10 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             {title && <div className={this._classNames.title}> {title} </div>}
             {items && items.length ? (
               <FocusZone
-                {...this._adjustedFocusZoneProps}
                 className={this._classNames.root}
                 isCircularNavigation={true}
                 handleTabKey={FocusZoneTabbableElements.all}
+                {...this._adjustedFocusZoneProps}
               >
                 {onRenderMenuList(
                   {

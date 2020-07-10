@@ -7,6 +7,7 @@ import {
   getScreenSelector,
   ScreenWidthMaxMedium,
   IconFontSizes,
+  getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
 import { IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
@@ -78,6 +79,7 @@ export const getMenuItemStyles = memoizeFunction(
             color: 'GrayText',
             opacity: 1,
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       rootHovered: {

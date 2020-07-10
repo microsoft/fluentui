@@ -19,25 +19,32 @@ export type ClassDictionary = Record<string, string>;
 export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
 
 // @public (undocumented)
-export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}> extends React.FunctionComponent {
+export interface ComponentProps {
     // (undocumented)
-    <TExtendedElementType extends React.ElementType = TElementType>(props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & {
-        as?: TExtendedElementType;
-    } & TProps): JSX.Element | null;
+    as?: React.ElementType;
     // (undocumented)
-    defaultProps?: Partial<TProps & {
-        as: TElementType;
-    }>;
-    // (undocumented)
-    displayName?: string;
-    // (undocumented)
-    propTypes?: React.WeakValidationMap<TProps> & {
-        as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
-    };
+    className?: string;
 }
 
 // @public (undocumented)
-export function compose<TElementType extends React.ElementType, TInputProps, TInputStylesProps, TParentProps, TParentStylesProps>(input: Input<TElementType, TInputProps>, inputOptions?: ComposeOptions<TInputProps, TInputStylesProps, TParentProps, TParentStylesProps>): ComponentWithAs<TElementType, TInputProps & TParentProps>;
+export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<TExtendedElementType extends React.ElementType = TElementType>(props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & {
+    as?: TExtendedElementType;
+} & TProps) => JSX.Element) & {
+    propTypes?: React.WeakValidationMap<TProps> & {
+        as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
+    };
+    contextTypes?: React.ValidationMap<any>;
+    defaultProps?: Partial<TProps & {
+        as: TElementType;
+    }>;
+    displayName?: string;
+    readonly __PRIVATE_PROPS?: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & {
+        as?: TElementType;
+    } & TProps;
+};
+
+// @public (undocumented)
+export function compose<TElementType extends keyof JSX.IntrinsicElements, TInputProps, TInputStylesProps, TParentProps, TParentStylesProps>(input: Input<TElementType, TInputProps>, inputOptions?: ComposeOptions<TInputProps, TInputStylesProps, TParentProps, TParentStylesProps>): ComponentWithAs<TElementType, TInputProps & TParentProps>;
 
 // @public (undocumented)
 export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
@@ -121,7 +128,9 @@ export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
 };
 
 // @public (undocumented)
-export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
+export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs> = E extends {
+    __PRIVATE_PROPS: any;
+} ? E['__PRIVATE_PROPS'] : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 // @public (undocumented)
 export interface ShorthandConfig<TProps> {

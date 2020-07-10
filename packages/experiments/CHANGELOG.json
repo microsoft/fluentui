@@ -2,6 +2,66 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 10 Jul 2020 12:40:33 GMT",
+      "tag": "@uifabric/experiments_v7.27.1",
+      "version": "7.27.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing sample storyboard for icons to initialize properly and show different icons.",
+            "author": "caperez@microsoft.com",
+            "commit": "001de9e8c5294858c069f95e832f391532d414c6",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/experiments_v7.27.0",
+      "version": "7.27.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support for linked folder in FolderCover component",
+            "author": "hemanp@microsoft.com",
+            "commit": "e89e47f56fe69600efd52e0f9398a8e2679e7a19",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jul 2020 12:35:23 GMT",
+      "tag": "@uifabric/experiments_v7.26.12",
+      "version": "7.26.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "High Contrast in Edge Chromium: fix Label and TextField.",
+            "author": "xgao@microsoft.com",
+            "commit": "967a2d4d1879c1683f3c8bd9ea9cd4884944d396",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jun 2020 12:33:36 GMT",
+      "tag": "@uifabric/experiments_v7.26.11",
+      "version": "7.26.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating some typings.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7932ae5eef247af9b914e8f05efdaac0b64914f8",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/experiments_v7.26.9",
       "version": "7.26.9",

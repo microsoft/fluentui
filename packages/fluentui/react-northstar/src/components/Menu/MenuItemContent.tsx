@@ -1,4 +1,4 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
@@ -37,7 +37,10 @@ const MenuItemContent = compose<'span', MenuItemContentProps, MenuItemContentSty
   handledProps: ['hasMenu', 'hasIcon', 'vertical', 'inSubmenu'],
 
   overrideStyles: true,
-}) as ComponentWithAs<'span', MenuItemContentProps> & { shorthandConfig: ShorthandConfig<MenuItemContentProps> };
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
+});
 
 MenuItemContent.defaultProps = {
   as: 'span',
@@ -48,9 +51,6 @@ MenuItemContent.propTypes = {
   hasMenu: PropTypes.bool,
   vertical: PropTypes.bool,
   inSubmenu: PropTypes.bool,
-};
-MenuItemContent.shorthandConfig = {
-  mappedProp: 'content',
 };
 
 export default MenuItemContent;

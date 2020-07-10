@@ -18,7 +18,7 @@ const beforeAndAfter = (
   background: _.get(colors, 'foreground', variables.dividerColor),
 });
 
-const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVariables> = {
+export const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => {
     const { color, fitted, size, important, hasContent, vertical } = props;
     const colors = variables.colorScheme[color];
@@ -53,5 +53,3 @@ const dividerStyles: ComponentSlotStylesPrepared<DividerStylesProps, DividerVari
     };
   },
 };
-
-export default dividerStyles;

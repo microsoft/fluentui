@@ -12,7 +12,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
-import { WithAsProp, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,
   doesNodeContainClick,
@@ -79,14 +79,10 @@ export interface PortalProps extends ChildrenComponentProps, ContentComponentPro
   onOutsideClick?: (e: React.MouseEvent) => void;
 }
 
-export interface PortalState {
-  open?: boolean;
-}
-
 /**
  * A Portal allows to render children outside of their parent.
  */
-const Portal: React.FC<WithAsProp<PortalProps>> & FluentComponentStaticProps<PortalProps> = props => {
+const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Portal.displayName, context.telemetry);
   setStart();

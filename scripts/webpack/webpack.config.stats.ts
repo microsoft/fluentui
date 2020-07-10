@@ -5,6 +5,8 @@ import webpack from 'webpack';
 import config from '../config';
 import glob from 'glob';
 import * as _ from 'lodash';
+import { argv } from 'yargs';
+import TerserWebpackPlugin from 'terser-webpack-plugin';
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { paths } = config;
@@ -58,16 +60,32 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
     react: 'react',
     'react-dom': 'reactDOM',
   },
-  optimization: {
-    concatenateModules: false,
-  },
+  ...(argv.debug && {
+    optimization: {
+      minimizer: [
+        new TerserWebpackPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: false,
+
+          terserOptions: {
+            mangle: false,
+            output: {
+              beautify: true,
+              comments: true,
+              preserve_annotations: true,
+            },
+          },
+        }),
+      ],
+    },
+  }),
   plugins: [
     new CleanWebpackPlugin([paths.base('stats')], {
       root: paths.base(),
       verbose: false, // do not log
     }),
     new IgnoreNotFoundExportPlugin(),
-    new webpack.DefinePlugin(config.compiler_globals),
     // new BundleAnalyzerPlugin({
     //   reportFilename: `${name}.html`,
     //   analyzerMode: 'static',
