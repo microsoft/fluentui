@@ -43,6 +43,19 @@ Example:
 
 Prevent using deprecated `KeyboardEvent` props `which` and `keyCode`, and recommend using `@fluentui/keyboard-key` instead.
 
+### `max-len`
+
+Enforces max line length, more performantly than [ESLint's `max-len`](https://eslint.org/docs/rules/max-len).
+
+(The default max-len rule is surprisingly slow, which may be because it has options to detect and specially handle comments, and because it checks the ignore regex without even a preliminary length check first.)
+
+#### Options
+
+The rule requires an options object containing:
+
+- `max` (required): the maximum line length
+- `ignorePatterns` (optional): ignore the line if it matches any of these regular expressions
+
 ### `no-tslint-comments`
 
 Ban `tslint:disable` and `tslint:enable` comments.

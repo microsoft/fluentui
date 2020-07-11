@@ -47,6 +47,21 @@ const config = {
     '**/*.scss.ts',
   ],
   rules: {
+    '@fluentui/max-len': [
+      'error',
+      {
+        ignorePatterns: [
+          'require(<.*?>)?\\(',
+          'https?:\\/\\/',
+          '^(import|export) \\{ \\w+( as \\w+)? \\} from',
+          '^import \\* as',
+          '^\\s+(<path )?d=',
+          '!raw-loader!',
+          '\\bdata:image/',
+        ],
+        max: 120,
+      },
+    ],
     '@fluentui/no-tslint-comments': 'error',
 
     // tslint: function-name, variable-name
@@ -62,21 +77,6 @@ const config = {
     'guard-for-in': 'error',
     'import/no-extraneous-dependencies': ['error', { devDependencies: [...configHelpers.devDependenciesFiles] }],
     'jsx-a11y/tabindex-no-positive': 'error',
-    'max-len': [
-      'error',
-      {
-        ignorePattern: [
-          'require(<.*?>)?\\(',
-          'https?:\\/\\/',
-          '^(import|export) \\{ \\w+( as \\w+)? \\} from',
-          '^import \\* as',
-          '^\\s+(<path )?d=',
-          '!raw-loader!',
-          '\\bdata:image/',
-        ].join('|'),
-        code: 120,
-      },
-    ],
     'no-alert': 'error',
     'no-bitwise': 'error',
     'no-caller': 'error',
@@ -116,7 +116,6 @@ const config = {
     'default-case': 'off',
     'func-names': 'off',
     'global-require': 'off',
-    'import/export': 'off',
     'import/extensions': 'off',
     'import/first': 'off',
     'import/newline-after-import': 'off',
@@ -126,7 +125,6 @@ const config = {
     'import/no-unresolved': 'off',
     'import/no-useless-path-segments': 'off',
     'import/order': 'off',
-    'import/prefer-default-export': 'off',
     'jsx-a11y/alt-text': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/aria-activedescendant-has-tabindex': 'off',
@@ -203,10 +201,17 @@ const config = {
     'no-restricted-syntax': 'off',
 
     // permanently disable because we disagree with these rules
+    'import/prefer-default-export': 'off',
     'no-await-in-loop': 'off', // contrary to rule docs, awaited things often are NOT parallelizable
     'no-restricted-globals': 'off', // airbnb bans isNaN in favor of Number.isNaN which is unavailable in IE 11
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
+
+    // permanently disable due to redundancy with custom rules
+    'max-len': 'off',
+
+    // permanently disable due to being unnecessary or having limited benefit for TS
+    'import/export': 'off',
 
     // permanently disable due to perf problems and limited benefit
     // see here for perf testing (note that you must run eslint directly)
