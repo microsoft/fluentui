@@ -6,10 +6,12 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { FileTypeIconsPageProps } from './FileTypeIconsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import * as styles from './FileTypeIconsPage.module.scss';
-import * as documentIcons from '../../../data/brand-icons-documents.json';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/FileTypeIconsPage/docs';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+const documentIcons = require<{ name: string }[]>('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
 
 export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -138,8 +140,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <ul className={styles.iconList}>
-                {documentIcons.map(icon => (
-                  <li key={icon.name}>
+                {documentIcons.map((icon, iconIndex) => (
+                  <li key={iconIndex}>
                     <Icon
                       {...getFileTypeIconProps({ extension: icon.name, size: 48, imageFileType: 'svg' })}
                       className={styles.icon}

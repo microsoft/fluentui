@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Markdown, ColorPalette, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, ColorPalette, IPageSectionProps, IColorSwatch } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsNeutralsPageProps } from './NeutralsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
-import * as neutralColors from '../../../data/colors-neutral.json';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+// eslint-disable-next-line import/no-extraneous-dependencies
+const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-neutral.json');
 
 export const ColorsNeutralsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
