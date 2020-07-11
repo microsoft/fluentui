@@ -128,7 +128,9 @@ export const KeytipsOverflowExample: React.FunctionComponent = () => {
         items={items}
         overflowItems={overflowItems}
         keytipSequences={keytipMap.OverflowButton4.keySequences}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderOverflowButton={onRenderOverflowButton}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderItem={onRenderItem}
       />
 

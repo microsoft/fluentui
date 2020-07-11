@@ -22,10 +22,10 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2",
     "@types/react": "16.8.25",
     "@types/semver": "^5.5.0"
   },

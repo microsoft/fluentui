@@ -87,7 +87,7 @@ const onReduceData = (currentData: any): any => {
   }
   const overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
   const primary = currentData.primary.slice(0, -1);
-  return { primary, overflow, undefined };
+  return { primary, overflow };
 };
 
 export const ResizeGroupVerticalOverflowSetExample: React.FunctionComponent = () => (

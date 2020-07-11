@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react';
 
 class TextFieldExample extends React.Component<{}, {}> {

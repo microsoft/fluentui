@@ -6,8 +6,6 @@ import { SearchBox } from './SearchBox';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
 
-// tslint:disable:jsx-no-lambda
-
 describe('SearchBox', () => {
   let component: ReactTestRenderer | undefined;
   let wrapper: ReactWrapper<ISearchBoxProps> | undefined;
@@ -152,10 +150,9 @@ describe('SearchBox', () => {
   });
 
   it('handles rendering 0', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     wrapper = mount(<SearchBox value={0 as any} />);
     // this is not allowed per typings, but users might do it anyway
-    // tslint:disable-next-line:no-any
     expect(
       wrapper
         .find('input')

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DefaultButton, IIconProps } from 'office-ui-fabric-react';
+import { useBoolean } from '@uifabric/react-hooks';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -12,8 +13,7 @@ const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
 export const ButtonToggleExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
-  const [muted, setMuted] = React.useState<boolean>(false);
-  const onClick = () => setMuted(!muted);
+  const [muted, { toggle: setMuted }] = useBoolean(false);
 
   return (
     <DefaultButton
@@ -21,7 +21,7 @@ export const ButtonToggleExample: React.FunctionComponent<IButtonExampleProps> =
       checked={muted || checked}
       text={muted ? 'Volume muted' : 'Volume unmuted'}
       iconProps={muted ? volume0Icon : volume3Icon}
-      onClick={onClick}
+      onClick={setMuted}
       allowDisabledFocus
       disabled={disabled}
     />

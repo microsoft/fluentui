@@ -10,7 +10,7 @@ export const convertLegacyTheme = memoizeFunction(
       stylesheets: [],
 
       // TODO: convert theme once we know its shape.
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       tokens: legacyTheme as any,
     };
 

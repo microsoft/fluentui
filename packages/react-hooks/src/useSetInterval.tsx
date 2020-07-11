@@ -16,7 +16,7 @@ export const useSetInterval = (): UseSetIntervalReturnType => {
   useEffect(
     () => () => {
       for (const id of Object.keys(intervalIds)) {
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         clearInterval(id as any);
       }
     },

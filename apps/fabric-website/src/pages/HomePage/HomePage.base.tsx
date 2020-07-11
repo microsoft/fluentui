@@ -74,7 +74,6 @@ interface IRenderLinkOptions {
 }
 
 export interface IHomePageState {
-  isMounted: boolean;
   isMountedOffset: boolean;
 }
 
@@ -86,7 +85,6 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     super(props);
 
     this.state = {
-      isMounted: false,
       isMountedOffset: false,
     };
   }
@@ -94,7 +92,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   public componentDidMount(): void {
     // Delay adding section transition styles after page is mounted.
     this._async.setTimeout(() => {
-      this.setState({ isMounted: true }, () => {
+      this.forceUpdate(() => {
         this._async.setTimeout(() => {
           this.setState({ isMountedOffset: true });
         }, 10);
@@ -146,8 +144,8 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                     y2="-32.448"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#4FE5FF" />
-                    <stop offset="1" stop-color="#69E56E" />
+                    <stop stopColor="#4FE5FF" />
+                    <stop offset="1" stopColor="#69E56E" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -375,7 +373,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     );
   };
 
-  /**Renders a link with an icon */
+  /** Renders a link with an icon */
   private _renderLink = (url: string, text: React.ReactNode, options: IRenderLinkOptions = {}): JSX.Element => {
     const { disabled, isCTA, icon = 'Forward', dark = true } = options;
     return (
@@ -383,7 +381,6 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
         className={css(this._classNames.link, dark && this._classNames.linkDark)}
         href={url}
         disabled={!!disabled}
-        // tslint:disable-next-line jsx-no-lambda
         onClick={ev => (isCTA ? this._onCTAClick(ev) : this._onInternalLinkClick(ev, url))}
       >
         <Icon iconName={icon} className={this._classNames.linkIcon} />
