@@ -39,7 +39,13 @@ export const DialogTopOffsetFixedExample: React.FunctionComponent = () => {
     <>
       <DefaultButton secondaryText="Opens the Sample Dialog" onClick={toggleHideDialog} text="Open Dialog" />
       <Dialog hidden={hideDialog} onDismiss={toggleHideDialog} modalProps={modelProps}>
-        <ChoiceGroup label="Pick one icon" options={options} onChange={onChange} required />
+        <ChoiceGroup
+          label="Pick one icon"
+          options={options}
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={onChange}
+          required
+        />
         {optionSelected === 'A' && (
           <div>
             <h1>Description</h1>

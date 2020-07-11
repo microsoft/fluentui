@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "7.27.0",
+  "version": "7.27.1",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,6 +26,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/deep-assign": "^0.1.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -40,7 +41,6 @@
     "@uifabric/build": "^7.0.0",
     "@uifabric/example-app-base": "^7.12.91",
     "@uifabric/jest-serializer-merge-styles": "^7.0.29",
-    "@uifabric/tslint-rules": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -54,7 +54,7 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/azure-themes": "^7.1.39",
     "@uifabric/example-data": "^7.0.17",
-    "@uifabric/file-type-icons": "^7.4.0",
+    "@uifabric/file-type-icons": "^7.4.1",
     "@uifabric/fluent-theme": "^7.1.108",
     "@uifabric/foundation": "^7.7.34",
     "@uifabric/icons": "^7.3.60",

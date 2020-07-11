@@ -126,7 +126,6 @@ export class AnnouncedLazyLoadingExample extends React.Component<
             horizontal
             wrap
             // Render the inner content as a ul (there's not currently a less-verbose way to do this)
-            // tslint:disable-next-line:jsx-no-lambda
             tokens={photoStackTokens}
             styles={photoStackStyles}
             slots={{ inner: { component: 'ul' } }}

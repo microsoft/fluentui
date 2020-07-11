@@ -16,7 +16,7 @@ export interface ICalendarGridDayCellProps extends ICalendarGridRowProps {
   dayIndex: number;
 }
 
-export const CalendarGridDayCell = ({
+export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellProps> = ({
   navigatedDate,
   dateTimeFormatter,
   allFocusable,
@@ -41,7 +41,7 @@ export const CalendarGridDayCell = ({
   onNavigateDate,
   getDayInfosInRangeOfDay,
   getRefsFromDayInfos,
-}: ICalendarGridDayCellProps): JSX.Element => {
+}): JSX.Element => {
   const cornerStyle = weekCorners?.[weekIndex + '_' + dayIndex] ?? '';
   const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
 
@@ -210,6 +210,7 @@ export const CalendarGridDayCell = ({
         !day.isInBounds && classNames.dayOutsideBounds,
         !day.isInMonth && classNames.dayOutsideNavigatedMonth,
       )}
+      // eslint-disable-next-line react/jsx-no-bind
       ref={(element: HTMLTableCellElement) => {
         customDayCellRef?.(element, day.originalDate, classNames);
         day.setRef(element);

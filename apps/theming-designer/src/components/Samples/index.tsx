@@ -16,6 +16,8 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
+/* eslint-disable no-console */
+
 export interface ISamplesProps {
   backgroundColor: string;
   textColor: string;
@@ -142,7 +144,7 @@ const commandBarFarItems = [
 ];
 
 export class Samples extends React.Component<ISamplesProps, ISamplesState> {
-  constructor(props: any) {
+  constructor(props: ISamplesProps) {
     super(props);
     this.state = {
       learnMoreLinkDisabled: false,

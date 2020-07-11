@@ -11,7 +11,7 @@ export const StylesheetProvider = (props: React.PropsWithChildren<StylesheetProv
   const context = React.useContext(StylesheetContext);
   const mergedContext = React.useMemo<StylesheetContextType>(
     () => ({
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ...(context as any),
       ...props,
     }),

@@ -130,6 +130,7 @@ export const SemanticSlotsDetailsList: React.FunctionComponent<ISemanticSlotsDet
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         selectionMode={SelectionMode.none}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderRow={onRenderRow}
         groupProps={{
           showEmptyGroups: true,
