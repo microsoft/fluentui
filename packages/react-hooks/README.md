@@ -174,7 +174,7 @@ Hook which returns safe `setTimeout` and `clearTimeout` methods. Timeout callbac
 ```jsx
 import { useSetInterval } from '@uifabric/react-hooks';
 
-const MyComponent = buttonContent => {
+const MyComponent = () => {
   const { setTimeout, clearTimeout } = useSetTimeout();
 
   // Set a timeout
