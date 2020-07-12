@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fixing order of hooks",
+  "comment": "UnifiedPeoplePicker: Fixing order of hooks",
   "packageName": "@uifabric/experiments",
   "email": "nebhatna@microsoft.com",
   "dependentChangeType": "patch",
