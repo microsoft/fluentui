@@ -199,10 +199,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     showPicker(false);
   };
   const _onRemoveSelectedItems = (itemsToRemove: T[]) => {
+    removeItems(itemsToRemove);
     if (props.selectedItemsListProps.onItemsRemoved) {
       props.selectedItemsListProps.onItemsRemoved(itemsToRemove);
     }
-    removeItems(itemsToRemove);
   };
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({
