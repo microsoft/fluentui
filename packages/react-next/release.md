@@ -6,8 +6,8 @@
 
 - Removed `styles` prop.
 - Removed `checkmarkIconProps` prop.
-- Deprecated onRenderLabel.
-- Added label/checkmark slot props.
+- Deprecated `onRenderLabel`.
+- Added `label`/`checkmark` slot props.
 
 ### Pivot
 
