@@ -236,9 +236,9 @@ function useListeners(
     (e: KeyboardEvent) => {
       // Open coachmark if user presses ALT + C (arbitrary keypress for now)
       if (
-        // tslint:disable-next-line: deprecation
+        // eslint-disable-next-line deprecation/deprecation
         (e.altKey && e.which === KeyCodes.c) ||
-        // tslint:disable-next-line: deprecation
+        // eslint-disable-next-line deprecation/deprecation
         (e.which === KeyCodes.enter && translateAnimationContainer.current?.contains?.(e.target as Node))
       ) {
         openCoachmark();

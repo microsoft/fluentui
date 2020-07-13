@@ -15,7 +15,6 @@ import {
   getDocument,
   EventGroup,
   getPropsWithDefaults,
-  assign,
 } from '../../../Utilities';
 
 import {
@@ -71,13 +70,13 @@ function useTargets({ target }: IPositioningContainerProps, positionedHost: Reac
         const currentDoc: Document = getDocument()!;
         targetRef.current = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
         targetWindowRef.current = getWindow(currentElement)!;
-      } else if (!!(target as MouseEvent).stopPropagation) {
+      } else if ('stopPropagation' in target) {
         targetWindowRef.current = getWindow((target as MouseEvent).target as HTMLElement)!;
         targetRef.current = target;
       } else if (
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         ((target as Point).top !== undefined || (target as Point).y !== undefined)
       ) {
         targetWindowRef.current = getWindow(currentElement)!;
@@ -149,8 +148,7 @@ function usePositionState(
     const positioningContainerElement = contentHost.current;
 
     if (hostElement && positioningContainerElement) {
-      let currentProps: IPositionProps | undefined;
-      currentProps = assign(currentProps, props);
+      const currentProps: IPositionProps = { ...props } as IPositionProps;
       currentProps!.bounds = getCachedBounds();
       currentProps!.target = targetRef.current!;
       if (document.body.contains(currentProps!.target as Node)) {
@@ -393,7 +391,6 @@ export const PositioningContainer = React.forwardRef(
             directionalClassName,
             !!positioningContainerWidth && { width: positioningContainerWidth },
           )}
-          // tslint:disable-next-line:jsx-ban-props
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
