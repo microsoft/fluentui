@@ -66,6 +66,7 @@ export class SankeyChartBase extends React.Component<
       <div
         className={this._classNames.root}
         role={'presentation'}
+        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <svg width={width} height={height} id={getId('sankeyChart')}>
@@ -78,12 +79,11 @@ export class SankeyChartBase extends React.Component<
     );
   }
 
-  // tslint:disable-next-line:no-any
   private _createLinks(): JSX.Element[] | undefined {
     const links: JSX.Element[] = [];
     if (this.props.data.SankeyChartData) {
-      // tslint:disable-next-line:no-any
-      this.props.data.SankeyChartData.links.map((singleLink: any, index: number) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this.props.data.SankeyChartData.links.forEach((singleLink: any, index: number) => {
         const path = d3Sankey.sankeyLinkHorizontal();
         const pathValue = path(singleLink);
         const link = (
@@ -107,8 +107,8 @@ export class SankeyChartBase extends React.Component<
   private _createNodes(width: number): JSX.Element[] | undefined {
     const nodes: JSX.Element[] = [];
     if (this.props.data.SankeyChartData) {
-      // tslint:disable-next-line:no-any
-      this.props.data.SankeyChartData.nodes.map((singleNode: any, index: number) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this.props.data.SankeyChartData.nodes.forEach((singleNode: any, index: number) => {
         const height = singleNode.y1 - singleNode.y0 > 0 ? singleNode.y1 - singleNode.y0 : 0;
         const node = (
           <g id={getId('nodeGElement')} key={index}>
