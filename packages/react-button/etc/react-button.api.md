@@ -129,6 +129,39 @@ export type MenuButtonTokens = ButtonTokens;
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public (undocumented)
+export const SplitButton: import("@fluentui/react-compose").ComponentWithAs<"button", SplitButtonProps>;
+
+// @public (undocumented)
+export const SplitButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", SplitButtonProps>;
+
+// @public (undocumented)
+export interface SplitButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
+    defaultExpanded?: boolean;
+    expanded?: boolean;
+    menu?: SlotProp<IContextualMenuProps>;
+    menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
+    onMenuDismiss?: () => void;
+}
+
+// @public (undocumented)
+export type SplitButtonSlotProps = SlotProps<SplitButtonSlots, SplitButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+
+// @public (undocumented)
+export interface SplitButtonSlots extends BaseSlots {
+    // (undocumented)
+    menu: React.ElementType;
+    // (undocumented)
+    menuIcon: React.ElementType;
+}
+
+// @public (undocumented)
+export interface SplitButtonState extends SplitButtonProps, Omit<ButtonState, 'icon' | 'iconPosition' | 'loader'> {
+}
+
+// @public (undocumented)
+export type SplitButtonTokens = ButtonTokens;
+
+// @public (undocumented)
 export const ToggleButton: import("@fluentui/react-compose").ComponentWithAs<"button", ToggleButtonProps>;
 
 // @public (undocumented)
@@ -170,6 +203,9 @@ export const useButton: (props: ButtonProps, ref: import("react").Ref<HTMLElemen
 
 // @public
 export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => MenuButtonState;
+
+// @public
+export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => SplitButtonState;
 
 // @public
 export const useToggle: <TProps, TState extends TProps = TProps>(props: TProps & ToggleProps) => TState & ToggleState;
