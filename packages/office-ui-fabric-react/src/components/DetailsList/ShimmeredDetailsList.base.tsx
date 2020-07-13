@@ -103,7 +103,7 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
       );
     }
 
-    columns.map((column, columnIdx) => {
+    columns.forEach((column, columnIdx) => {
       const shimmerElements: IShimmerElement[] = [];
       const groupWidth: number =
         cellStyleProps.cellLeftPadding +

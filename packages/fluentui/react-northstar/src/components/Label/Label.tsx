@@ -25,8 +25,8 @@ import {
   rtlTextContainer,
 } from '../../utils';
 
-import Image, { ImageProps } from '../Image/Image';
-import Box, { BoxProps } from '../Box/Box';
+import { Image, ImageProps } from '../Image/Image';
+import { Box, BoxProps } from '../Box/Box';
 
 import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 
@@ -69,7 +69,7 @@ export const labelClassName = 'ui-label';
 /**
  * A Label allows user to classify content.
  */
-const Label: ComponentWithAs<'span', LabelProps> & FluentComponentStaticProps = props => {
+export const Label: ComponentWithAs<'span', LabelProps> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Label.displayName, context.telemetry);
   setStart();
@@ -189,5 +189,3 @@ Label.defaultProps = {
 };
 
 Label.create = createShorthandFactory({ Component: Label, mappedProp: 'content' });
-
-export default Label;

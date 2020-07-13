@@ -26,7 +26,8 @@ export const cardColumnClassName = 'ui-card__column';
 /**
  * A CardColumn is used to display content in card as column
  */
-const CardColumn: ComponentWithAs<'div', CardColumnProps> & FluentComponentStaticProps<CardColumnProps> = props => {
+export const CardColumn: ComponentWithAs<'div', CardColumnProps> &
+  FluentComponentStaticProps<CardColumnProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardColumn.displayName, context.telemetry);
   setStart();
@@ -73,5 +74,3 @@ CardColumn.propTypes = {
 CardColumn.handledProps = Object.keys(CardColumn.propTypes) as any;
 
 CardColumn.create = createShorthandFactory({ Component: CardColumn });
-
-export default CardColumn;

@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Replace tslint with eslint",
+  "packageName": "@fluentui/react-focus",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-07-08T01:57:32.815Z"
+}

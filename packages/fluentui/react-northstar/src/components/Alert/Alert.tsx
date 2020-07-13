@@ -19,12 +19,12 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { ButtonProps } from '../Button/Button';
-import Text, { TextProps } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 
-import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
-import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
+import { ButtonGroup, ButtonGroupProps } from '../Button/ButtonGroup';
+import { AlertDismissAction, AlertDismissActionProps } from './AlertDismissAction';
 import {
   ComponentWithAs,
   useAccessibility,
@@ -129,7 +129,7 @@ export const alertSlotClassNames: AlertSlotClassNames = {
  * @accessibility
  * Implements [ARIA Alert](https://www.w3.org/TR/wai-aria-practices-1.1/#alert) design pattern.
  */
-const Alert: ComponentWithAs<'div', AlertProps> &
+export const Alert: ComponentWithAs<'div', AlertProps> &
   FluentComponentStaticProps<AlertProps> & {
     DismissAction: typeof AlertDismissAction;
   } = props => {
@@ -327,5 +327,3 @@ Alert.create = createShorthandFactory({
 });
 
 Alert.DismissAction = AlertDismissAction;
-
-export default Alert;

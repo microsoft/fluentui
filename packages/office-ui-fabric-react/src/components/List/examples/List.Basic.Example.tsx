@@ -83,7 +83,11 @@ export const ListBasicExample: React.FunctionComponent = () => {
 
   return (
     <FocusZone direction={FocusZoneDirection.vertical}>
-      <TextField label={'Filter by name' + resultCountText} onChange={onFilterChanged} />
+      <TextField
+        label={'Filter by name' + resultCountText}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={onFilterChanged}
+      />
       <List items={items} onRenderCell={onRenderCell} />
     </FocusZone>
   );

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { getAccessibility } from '../accessibility/getAccessibility';
 import { AccessibilityActionHandlers, KeyboardEventHandler, ReactAccessibilityBehavior } from '../accessibility/types';
-import FocusZone from '../FocusZone/FocusZone';
+import { FocusZone } from '../FocusZone/FocusZone';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 type UseAccessibilityOptions<Props> = {

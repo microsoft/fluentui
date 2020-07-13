@@ -9,7 +9,7 @@ export interface ISliderVerticalExampleState {
   value: number;
 }
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export const SliderVerticalExample: React.FunctionComponent = () => {
   return (
     <Stack horizontal tokens={stackTokens} styles={stackStyles}>

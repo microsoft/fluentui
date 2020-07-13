@@ -1,6 +1,6 @@
 import { isConformant } from 'test/specs/commonTests';
-import FormInput from 'src/components/Form/FormInput';
-import Input, { inputSlotClassNames } from 'src/components/Input/Input';
+import { FormInput } from 'src/components/Form/FormInput';
+import { Input, inputSlotClassNames } from 'src/components/Input/Input';
 
 describe('FormInput', () => {
   isConformant(FormInput, {

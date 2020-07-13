@@ -13,10 +13,10 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import Box, { BoxProps } from '../Box/Box';
-import Image, { ImageProps } from '../Image/Image';
-import Label, { LabelProps } from '../Label/Label';
-import Status, { StatusProps } from '../Status/Status';
+import { Box, BoxProps } from '../Box/Box';
+import { Image, ImageProps } from '../Image/Image';
+import { Label, LabelProps } from '../Label/Label';
+import { Status, StatusProps } from '../Status/Status';
 import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
 
@@ -57,7 +57,7 @@ export const avatarClassName = 'ui-avatar';
 /**
  * An Avatar is a graphical representation of a user.
  */
-const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = props => {
+export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -190,5 +190,3 @@ Avatar.propTypes = {
 Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 
 Avatar.create = createShorthandFactory({ Component: Avatar, mappedProp: 'name' });
-
-export default Avatar;

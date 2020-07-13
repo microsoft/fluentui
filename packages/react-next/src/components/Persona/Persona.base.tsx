@@ -42,7 +42,7 @@ export const PersonaBase = React.forwardRef(
      * Deprecation helper for getting text.
      */
     const getText = (): string => {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       return props.text || props.primaryText || '';
     };
 
@@ -93,10 +93,10 @@ export const PersonaBase = React.forwardRef(
     };
 
     // wrapping default render behavior based on various props properties
-    const onInternalRenderPrimaryText = onRenderText(getText()),
-      onInternalRenderSecondaryText = onRenderText(props.secondaryText),
-      onInternalRenderTertiaryText = onRenderText(props.tertiaryText),
-      onInternalRenderOptionalText = onRenderText(props.optionalText);
+    const onInternalRenderPrimaryText = onRenderText(getText());
+    const onInternalRenderSecondaryText = onRenderText(props.secondaryText);
+    const onInternalRenderTertiaryText = onRenderText(props.tertiaryText);
+    const onInternalRenderOptionalText = onRenderText(props.optionalText);
 
     const {
       hidePersonaDetails,
@@ -124,7 +124,7 @@ export const PersonaBase = React.forwardRef(
       initialsColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onRenderCoin,
       onRenderInitials,
       presence,
@@ -184,13 +184,14 @@ export const PersonaBase = React.forwardRef(
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >
         {onRenderPersonaCoin(personaCoinProps, onRenderPersonaCoin)}
-        {// tslint:disable:deprecation
+        {/* eslint-disable deprecation/deprecation */
+
         (!hidePersonaDetails ||
           size === PersonaSize.size8 ||
           size === PersonaSize.size10 ||
           size === PersonaSize.tiny) &&
           personaDetails
-        // tslint:enable:deprecation
+        /* eslint-enable deprecation/deprecation */
         }
       </div>
     );

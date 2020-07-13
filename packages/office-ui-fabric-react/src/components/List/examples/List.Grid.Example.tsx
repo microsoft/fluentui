@@ -109,6 +109,7 @@ export const ListGridExample: React.FunctionComponent = () => {
         className={classNames.listGridExample}
         items={items}
         getItemCountForPage={getItemCountForPage}
+        // eslint-disable-next-line react/jsx-no-bind
         getPageHeight={getPageHeight}
         renderedWindowsAhead={4}
         onRenderCell={onRenderCell}

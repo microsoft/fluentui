@@ -24,7 +24,7 @@ import {
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
-import DividerContent from './DividerContent';
+import { DividerContent } from './DividerContent';
 
 export interface DividerProps
   extends UIComponentProps,
@@ -60,7 +60,7 @@ export const dividerClassName = 'ui-divider';
 /**
  * A Divider visually segments content.
  */
-const Divider: ComponentWithAs<'div', DividerProps> &
+export const Divider: ComponentWithAs<'div', DividerProps> &
   FluentComponentStaticProps<DividerProps> & {
     Content: typeof DividerContent;
   } = props => {
@@ -141,5 +141,3 @@ Divider.Content = DividerContent;
 Divider.handledProps = Object.keys(Divider.propTypes) as any;
 
 Divider.create = createShorthandFactory({ Component: Divider, mappedProp: 'content' });
-
-export default Divider;

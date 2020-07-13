@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import { createShorthandFactory, UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentEventHandler,
   ShorthandValue,
@@ -87,7 +87,7 @@ export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disa
  * @accessibility
  * Radio items need to be grouped to correctly handle accessibility.
  */
-const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
+export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
   FluentComponentStaticProps<RadioGroupItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
@@ -207,5 +207,3 @@ RadioGroupItem.defaultProps = {
 RadioGroupItem.handledProps = Object.keys(RadioGroupItem.propTypes) as any;
 
 RadioGroupItem.create = createShorthandFactory({ Component: RadioGroupItem, mappedProp: 'label' });
-
-export default RadioGroupItem;

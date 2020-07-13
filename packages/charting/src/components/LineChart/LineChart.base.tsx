@@ -44,22 +44,22 @@ export class LineChartBase extends React.Component<
     refArray: IRefArrayData[];
     activeLegend: string;
     lineColor: string;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     refSelected: any;
     hoveredLineColor: string;
     selectedLegend: string;
   }
 > {
   private _points: ILineChartPoints[];
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
   private containerParams: IContainerValues;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisScale: any = '';
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _yAxisScale: any = '';
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
@@ -77,6 +77,7 @@ export class LineChartBase extends React.Component<
       containerHeight: 0,
       containerWidth: 0,
       isCalloutVisible: false,
+      // eslint-disable-next-line react/no-unused-state
       hoverYValue: '',
       refArray: [],
       hoverXValue: '',
@@ -84,11 +85,12 @@ export class LineChartBase extends React.Component<
       YValueHover: [],
       lineColor: '',
       refSelected: '',
+      // eslint-disable-next-line react/no-unused-state
       hoveredLineColor: '',
       selectedLegend: '',
     };
-    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
-    this._calloutPoints = calloutData(this._points) ? calloutData(this._points) : [];
+    this._points = this.props.data.lineChartData || [];
+    this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
     this._verticalLine = getId('verticalLine');
     this.margins = {
@@ -121,8 +123,8 @@ export class LineChartBase extends React.Component<
       prevProps.data !== this.props.data
     ) {
       this._fitParentContainer();
-      this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
-      this._calloutPoints = calloutData(this._points) ? calloutData(this._points) : [];
+      this._points = this.props.data.lineChartData || [];
+      this._calloutPoints = calloutData(this._points) || [];
     }
   }
 
@@ -137,14 +139,14 @@ export class LineChartBase extends React.Component<
       hideLegend = false,
       eventAnnotationProps,
     } = this.props;
-    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
+    this._points = this.props.data.lineChartData || [];
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
     let dataPresent = false;
     let dataType = false;
     if (this._points && this._points.length > 0) {
-      this._points.map((chartData: ILineChartPoints) => {
+      this._points.forEach((chartData: ILineChartPoints) => {
         if (chartData.data.length > 0) {
           dataPresent = true;
           dataType = chartData.data[0].x instanceof Date;
@@ -199,6 +201,7 @@ export class LineChartBase extends React.Component<
     };
     return (
       <div
+        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         className={this._classNames.root}
         role={'presentation'}
@@ -206,6 +209,7 @@ export class LineChartBase extends React.Component<
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
+              // eslint-disable-next-line react/jsx-no-bind
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
               }}
@@ -213,6 +217,7 @@ export class LineChartBase extends React.Component<
               className={this._classNames.xAxis}
             />
             <g
+              // eslint-disable-next-line react/jsx-no-bind
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
               }}
@@ -242,7 +247,11 @@ export class LineChartBase extends React.Component<
             )}
           </svg>
         </FocusZone>
-        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+        <div
+          // eslint-disable-next-line react/jsx-no-bind
+          ref={(e: HTMLDivElement) => (this.legendContainer = e)}
+          className={this._classNames.legendContainer}
+        >
           {!hideLegend && legendBars}
         </div>
         {!this.props.hideTooltip && this.state.isCalloutVisible && (
@@ -272,6 +281,7 @@ export class LineChartBase extends React.Component<
                       index: number,
                     ) => (
                       <div
+                        key={index}
                         id={`${index}_${xValue.y}`}
                         className={mergeStyles(this._classNames.calloutBlockContainer, {
                           borderLeft: `4px solid ${xValue.color}`,
@@ -375,6 +385,7 @@ export class LineChartBase extends React.Component<
         const y2 = this._points[i].data[j].y;
         const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
+          /* eslint-disable react/jsx-no-bind */
           lines.push(
             <line
               id={lineId}
@@ -448,6 +459,7 @@ export class LineChartBase extends React.Component<
                 strokeWidth={3}
               />,
             );
+            /* eslint-enable react/jsx-no-bind */
           }
         } else {
           lines.push(
@@ -485,20 +497,20 @@ export class LineChartBase extends React.Component<
     this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === formattedData);
-    const _this = this;
     d3Select('#' + circleId)
       .attr('fill', '#fff')
       .attr('r', 8)
       .attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
     d3Select(`#${this._verticalLine}`)
-      .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
+      .attr('transform', () => `translate(${this._xAxisScale(x)}, 0)`)
       .attr('visibility', 'visibility');
-    this.state.refArray.map((obj: IRefArrayData) => {
+    this.state.refArray.forEach((obj: IRefArrayData) => {
       if (obj.index === lineId) {
         this.setState({
           isCalloutVisible: true,
           refSelected: obj.refElement,
           hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+          // eslint-disable-next-line react/no-unused-state
           hoverYValue: y,
           YValueHover: found.values,
           lineColor: lineColor,
@@ -530,6 +542,7 @@ export class LineChartBase extends React.Component<
       isCalloutVisible: true,
       refSelected: mouseEvent,
       hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+      // eslint-disable-next-line react/no-unused-state
       hoverYValue: y,
       YValueHover: found.values,
       lineColor: lineColor,
@@ -537,7 +550,7 @@ export class LineChartBase extends React.Component<
   };
 
   private _onLineClick = (func: () => void) => {
-    if (!!func) {
+    if (func) {
       func();
     }
   };
@@ -546,7 +559,7 @@ export class LineChartBase extends React.Component<
     d3Select('#' + circleId)
       .attr('fill', color)
       .attr('r', 8);
-    if (!!func) {
+    if (func) {
       func();
     }
   };

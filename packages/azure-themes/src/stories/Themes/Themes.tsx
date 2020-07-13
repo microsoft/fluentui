@@ -31,7 +31,6 @@ import { DropdownBasicExample } from '../components/dropdown';
 import { CommandBarBasicExample } from '../components/commandBar';
 
 const Example = () => (
-  // tslint:disable-next-line:jsx-ban-props
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <CommandBarBasicExample />
     <DefaultButton text="DefaultButton" />

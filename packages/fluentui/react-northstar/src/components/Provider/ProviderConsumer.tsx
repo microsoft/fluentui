@@ -16,7 +16,7 @@ export interface ProviderConsumerProps {
 /**
  * A ProviderConsumer is used to consume Fluent UI context from Provider.
  */
-const ProviderConsumer: React.FunctionComponent<ProviderConsumerProps> = ({ render }) => (
+export const ProviderConsumer: React.FunctionComponent<ProviderConsumerProps> = ({ render }) => (
   <FelaTheme>{(context: ProviderContextPrepared) => render(context.theme)}</FelaTheme>
 );
 
@@ -24,5 +24,3 @@ ProviderConsumer.displayName = 'ProviderConsumer';
 ProviderConsumer.propTypes = {
   render: PropTypes.func.isRequired,
 };
-
-export default ProviderConsumer;

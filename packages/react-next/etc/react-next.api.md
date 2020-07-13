@@ -262,6 +262,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     disabled?: boolean;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
+    // @deprecated
     keytipProps?: IKeytipProps;
     label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
@@ -697,6 +698,7 @@ export interface ILinkOptions {
 export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
+    // @deprecated
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
@@ -1517,6 +1519,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     defaultChecked?: boolean;
     disabled?: boolean;
     inlineLabel?: boolean;
+    // @deprecated
     keytipProps?: IKeytipProps;
     label?: string | JSX.Element;
     // @deprecated (undocumented)
@@ -2008,13 +2011,13 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
 export { ThemeProviderProps }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps>;
+export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
 
 // @public
-export const useLink: (props: ILinkProps) => any;
+export const useLink: (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>) => any;
 
 export { useTheme }
 

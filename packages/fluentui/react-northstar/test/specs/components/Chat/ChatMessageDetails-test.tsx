@@ -1,4 +1,4 @@
-import ChatMessageDetails from 'src/components/Chat/ChatMessageDetails';
+import { ChatMessageDetails } from 'src/components/Chat/ChatMessageDetails';
 import { isConformant } from 'test/specs/commonTests';
 
 describe('ChatMessage', () => {

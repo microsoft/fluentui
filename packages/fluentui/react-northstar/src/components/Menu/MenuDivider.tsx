@@ -51,7 +51,7 @@ export const menuDividerClassName = 'ui-menu__divider';
 /**
  * A MenuDivider is non-actionable element that visually segments items of Menu.
  */
-const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
+export const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
   (inputProps, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -172,5 +172,3 @@ MenuDivider.propTypes = {
 };
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
-
-export default MenuDivider;

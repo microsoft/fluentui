@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { isConformant } from 'test/specs/commonTests';
-import CarouselItem, { CarouselItemProps, carouselItemSlotClassNames } from 'src/components/Carousel/CarouselItem';
+import { CarouselItem, CarouselItemProps, carouselItemSlotClassNames } from 'src/components/Carousel/CarouselItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 

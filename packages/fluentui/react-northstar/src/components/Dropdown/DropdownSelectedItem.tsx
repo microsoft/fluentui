@@ -19,8 +19,8 @@ import {
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
-import Image, { ImageProps } from '../Image/Image';
-import Box, { BoxProps } from '../Box/Box';
+import { Image, ImageProps } from '../Image/Image';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   useUnhandledProps,
@@ -93,8 +93,7 @@ export type DropdownSelectedItemStylesProps = { hasImage: boolean };
 /**
  * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
  */
-
-const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemProps> &
+export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemProps> &
   FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
@@ -237,5 +236,3 @@ DropdownSelectedItem.create = createShorthandFactory({
   Component: DropdownSelectedItem,
   mappedProp: 'header',
 });
-
-export default DropdownSelectedItem;

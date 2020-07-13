@@ -29,7 +29,7 @@ export const toolbarDividerClassName = 'ui-toolbar__divider';
 /**
  * A ToolbarDivider is a non-actionable element that visually segments Toolbar items.
  */
-const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesProps, {}, {}>(
+export const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -75,5 +75,3 @@ const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDividerStylesP
 );
 
 ToolbarDivider.propTypes = commonPropTypes.createCommon();
-
-export default ToolbarDivider;

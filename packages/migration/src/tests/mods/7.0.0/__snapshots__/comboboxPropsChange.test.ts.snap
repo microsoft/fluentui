@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`comboboxPropsChange transforms value to text 1`] = `
-"import { ComboBox, Fabric } from 'office-ui-fabric-react';
+"import * as React from 'react';
+import { ComboBox, Fabric } from 'office-ui-fabric-react';
 
 class ComboBoxControlledExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
