@@ -68,6 +68,8 @@ const Example = () => (
     <ContextualMenuDefaultExample />
 
     <DatePicker />
+    <DatePicker disabled={true} />
+    <DatePicker label="Disabled (with label)" disabled={true} />
 
     <p>Checked components are not supported in the portal, listed below</p>
     <CompoundButton checked={true} primary text="CompoundButton" />

@@ -153,7 +153,6 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         fontSize: FontSizes.size13,
       },
       disabled && {
-        border: `${StyleConstants.borderWidth} solid ${semanticColors.disabledBodyText}`,
         color: semanticColors.disabledBodyText,
       },
     ],
