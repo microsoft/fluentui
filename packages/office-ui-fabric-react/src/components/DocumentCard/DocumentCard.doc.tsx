@@ -86,7 +86,9 @@ export const DocumentCardPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardOverview.md'),
-  bestPractices: '',
+    bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

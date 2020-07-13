@@ -62,8 +62,6 @@ export const DetailsListPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),
   isHeaderVisible: true,
 };
 

@@ -6,9 +6,9 @@
 ### Content
 
 - Separate two groups of check boxes with headings rather than positioning them one after the other.
-- Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization] in the Microsoft Writing Style Guide.
+- Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization](https://docs.microsoft.com/style-guide/capitalization) in the Microsoft Writing Style Guide.
 - Don't use end punctuation (unless the check box label absolutely requires multiple sentences).
 - Use a sentence fragment for the label, rather than a full sentence.
 - Make it easy for people to understand what will happen if they select or clear a check box.
 
-[Capitalization]: https://docs.microsoft.com/style-guide/capitalization
+

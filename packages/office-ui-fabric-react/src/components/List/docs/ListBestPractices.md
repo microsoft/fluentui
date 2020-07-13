@@ -7,7 +7,7 @@
 
 ### Content
 
-- Make your column headers easier to read and translate by writing in sentence case; capitalize only the first word and any proper nouns. 
+- Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization](https://docs.microsoft.com/style-guide/capitalization) in the Microsoft Writing Style Guide.  
 
 ### FAQ
 
