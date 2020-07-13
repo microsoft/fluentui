@@ -14,7 +14,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, ComponentEventHandler } from '../../types';
-import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
+import { commonPropTypes, UIComponentProps } from '../../utils';
 import { Grid } from '../Grid/Grid';
 import {
   IDayGridOptions,
