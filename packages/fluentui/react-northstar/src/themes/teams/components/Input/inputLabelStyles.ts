@@ -17,7 +17,7 @@ export const inputLabelStyles: ComponentSlotStylesPrepared<InputLabelStylesProps
       alignItems: 'center',
       zIndex: 100,
       paddingLeft: v.insideLabelPaddingLeft,
-      ...(p.inputValue && {
+      ...(p.hasValue && {
         transform: 'translateY(-16px)',
         fontSize: v.insideLabelActiveFontSize,
       }),

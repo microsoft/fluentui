@@ -58,6 +58,11 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     ':focus': {
       ...(!p.error && { borderColor: v.inputFocusBorderColor }),
     },
+
+    ':-webkit-autofill:focus': {
+      '-webkit-text-fill-color': p.hasValue ? v.fontColor : 'transparent',
+    },
+
     ...(p.clearable && { padding: v.inputPaddingWithIconAtEnd }),
     ...(p.hasIcon && {
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,

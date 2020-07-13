@@ -8,11 +8,11 @@ export type LabelPosition = 'inline' | 'above' | 'inside';
 interface InputLabelOwnProps {
   labelPosition?: LabelPosition;
   required?: boolean;
-  inputValue?: boolean;
+  hasValue?: boolean;
 }
 
 export interface InputLabelProps extends BoxProps, InputLabelOwnProps {}
-export type InputLabelStylesProps = Required<Pick<InputLabelOwnProps, 'labelPosition' | 'required' | 'inputValue'>>;
+export type InputLabelStylesProps = Required<Pick<InputLabelOwnProps, 'labelPosition' | 'required' | 'hasValue'>>;
 
 export const inputLabelClassName = 'ui-input__label';
 
@@ -23,12 +23,12 @@ const InputLabel = compose<'label', InputLabelProps, InputLabelStylesProps, BoxP
   className: inputLabelClassName,
   displayName: 'InputLabel',
   overrideStyles: true,
-  mapPropsToStylesProps: ({ labelPosition, required, inputValue }) => ({
+  mapPropsToStylesProps: ({ labelPosition, required, hasValue }) => ({
     labelPosition,
     required,
-    inputValue,
+    hasValue,
   }),
-  handledProps: ['required', 'labelPosition', 'inputValue'],
+  handledProps: ['required', 'labelPosition', 'hasValue'],
 });
 
 InputLabel.defaultProps = {
@@ -39,7 +39,7 @@ InputLabel.propTypes = {
   ...commonPropTypes.createCommon(),
   labelPosition: PropTypes.oneOf<LabelPosition>(['inside', 'inline']),
   required: PropTypes.bool,
-  inputValue: PropTypes.bool,
+  hasValue: PropTypes.bool,
 };
 
 export default InputLabel;
