@@ -86,9 +86,14 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       rtl: context.rtl,
     });
 
-    const childProps: FormFieldBaseValue = {
-      labelId: labelId.current,
-    };
+    const childProps: FormFieldBaseValue = React.useMemo(
+      () => ({
+        labelId: labelId.current,
+      }),
+      // TODO: create hooks for id to avoid disbaling esling for accessing the value of refs
+      // eslint-disable-next-line
+      [labelId.current],
+    );
 
     const element = (
       <ElementType
