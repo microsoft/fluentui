@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@babel/polyfill": "^7.10.4",
+    "@babel/polyfill": "^7.7.0",
     "@fluentui/docs": "^0.50.0",
     "@fluentui/eslint-plugin": "^0.51.0",
     "@fluentui/react-northstar": "^0.50.0",

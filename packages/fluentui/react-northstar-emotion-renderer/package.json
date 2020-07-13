@@ -4,7 +4,7 @@
   "version": "0.50.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.10.4",
+    "@babel/runtime": "^7.7.6",
     "@emotion/cache": "^10.0.29",
     "@emotion/serialize": "^0.11.16",
     "@emotion/sheet": "^0.9.4",
