@@ -47,21 +47,17 @@ const themeOverrides = {
       }),
     },
     TreeItem: {
-      root: {
-        marginBottom: '0.5rem',
-        paddingLeft: '0.5rem',
-        paddingRight: '1rem',
-      },
-    },
-    ListItem: {
       root: ({ theme: { siteVariables } }) => ({
-        marginLeft: '0rem',
+        marginLeft: '0.2rem',
         marginRight: '1.5rem',
         padding: '0.2rem 0.3rem',
         ':hover': {
           background: siteVariables.colorScheme.brand.background4,
         },
       }),
+      title: {
+        marginTop: '1rem',
+      },
     },
     Header: {
       root: ({ theme: { siteVariables } }) => ({

@@ -1,15 +1,10 @@
 import * as React from 'react';
 import participants from './participantData';
 import presenters from './presentersData';
-
 import themeOverrides from './styles';
-import { List, Provider, Tree, Text, Flex, Button, Input, Header, teamsDarkTheme } from '@fluentui/react-northstar';
+import { Provider, Tree, Text, Flex, Button, Input, Header, teamsDarkTheme } from '@fluentui/react-northstar';
 import { CloseIcon, LinkIcon, TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
-
-const ParticipantsList = () => <List navigable items={participants} />;
-
-const PresentersList = () => <List navigable items={presenters} />;
 
 const titleRenderer = (Component, { content, expanded, open, hasSubtree, ...restProps }) => (
   <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
@@ -22,12 +17,12 @@ const treeItems = [
   {
     id: 'participants',
     title: 'Currently in this meeting',
-    items: [<ParticipantsList />],
+    items: participants,
   },
   {
     id: 'invite',
-    title: 'Invite others from conversation (25)',
-    items: [<PresentersList />],
+    title: 'Invite others from conversation (10)',
+    items: presenters,
   },
 ];
 
