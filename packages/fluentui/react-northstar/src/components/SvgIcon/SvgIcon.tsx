@@ -20,7 +20,7 @@ export type SvgIconStylesProps = Required<
 /**
  * An SvgIcon displays a pictogram with semantic meaning.
  */
-const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }> & {
+export const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }> & {
   handledProps: (keyof (SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }))[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -86,5 +86,3 @@ SvgIcon.defaultProps = {
   size: 'medium',
   rotate: 0,
 };
-
-export default SvgIcon;

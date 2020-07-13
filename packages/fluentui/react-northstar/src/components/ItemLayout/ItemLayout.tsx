@@ -17,7 +17,7 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-import Layout from '../Layout/Layout';
+import { Layout } from '../Layout/Layout';
 import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -75,7 +75,8 @@ export type ItemLayoutStylesProps = never;
 /**
  * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.
  */
-const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> & FluentComponentStaticProps<ItemLayoutProps> = props => {
+export const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> &
+  FluentComponentStaticProps<ItemLayoutProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ItemLayout.displayName, context.telemetry);
   setStart();
@@ -247,5 +248,3 @@ ItemLayout.defaultProps = {
 ItemLayout.handledProps = Object.keys(ItemLayout.propTypes) as any;
 
 ItemLayout.create = createShorthandFactory({ Component: ItemLayout, mappedProp: 'content' });
-
-export default ItemLayout;

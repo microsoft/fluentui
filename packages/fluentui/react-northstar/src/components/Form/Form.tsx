@@ -18,7 +18,7 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import FormField, { FormFieldProps } from './FormField';
+import { FormField, FormFieldProps } from './FormField';
 import {
   ComponentWithAs,
   useTelemetry,
@@ -29,15 +29,15 @@ import {
 } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import FormLabel from './FormLabel';
-import FormMessage from './FormMessage';
-import FormInput from './FormInput';
-import FormCheckbox from './FormCheckbox';
-import FormDropdown from './FormDropdown';
-import FormButton from './FormButton';
-import FormRadioGroup from './FormRadioGroup';
-import FormSlider from './FormSlider';
-import FormFieldCustom from './FormFieldCustom';
+import { FormLabel } from './FormLabel';
+import { FormMessage } from './FormMessage';
+import { FormInput } from './FormInput';
+import { FormCheckbox } from './FormCheckbox';
+import { FormDropdown } from './FormDropdown';
+import { FormButton } from './FormButton';
+import { FormRadioGroup } from './FormRadioGroup';
+import { FormSlider } from './FormSlider';
+import { FormFieldCustom } from './FormFieldCustom';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -66,7 +66,7 @@ export type FormStylesProps = never;
 /**
  * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
  */
-const Form: ComponentWithAs<'form', FormProps> &
+export const Form: ComponentWithAs<'form', FormProps> &
   FluentComponentStaticProps<FormProps> & {
     Field: typeof FormField;
     Label: typeof FormLabel;
@@ -164,5 +164,3 @@ Form.Dropdown = FormDropdown;
 Form.Button = FormButton;
 Form.RadioGroup = FormRadioGroup;
 Form.Slider = FormSlider;
-
-export default Form;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import PortalInner, { PortalInnerProps } from 'src/components/Portal/PortalInner';
+import { PortalInner, PortalInnerProps } from 'src/components/Portal/PortalInner';
 import { mountWithProvider } from 'test/utils';
 
 const mountPortalInner = (props: PortalInnerProps) =>

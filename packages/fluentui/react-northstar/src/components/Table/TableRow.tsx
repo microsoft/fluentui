@@ -22,7 +22,7 @@ import {
   ComponentEventHandler,
 } from '../../types';
 import { childrenExist, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-import TableCell, { TableCellProps } from './TableCell';
+import { TableCell, TableCellProps } from './TableCell';
 
 export interface TableRowProps extends UIComponentProps {
   /**
@@ -66,7 +66,7 @@ export type TableRowStylesProps = Pick<TableRowProps, 'header' | 'compact'>;
 /**
  * Component represents a single row in a tabular structure
  */
-const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentStaticProps<TableRowProps> = props => {
+export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentStaticProps<TableRowProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TableRow.displayName, context.telemetry);
   setStart();
@@ -167,5 +167,3 @@ TableRow.defaultProps = {
 };
 
 TableRow.create = createShorthandFactory({ Component: TableRow, mappedArrayProp: 'items' });
-
-export default TableRow;

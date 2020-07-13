@@ -21,6 +21,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
 
+    'import/no-default-export': 'error',
+
     // False positive on arg types:
     // https://github.com/typescript-eslint/typescript-eslint/issues/46
     '@typescript-eslint/no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],
@@ -130,6 +132,12 @@ module.exports = {
       files: '**/test/**/*.{ts,tsx}',
       rules: {
         'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
+      files: '**/examples/**/*.{ts,tsx}',
+      rules: {
+        'import/no-default-export': 'off',
       },
     },
     {

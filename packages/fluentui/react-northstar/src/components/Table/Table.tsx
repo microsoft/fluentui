@@ -19,8 +19,8 @@ import {
   childrenExist,
   createShorthandFactory,
 } from '../../utils';
-import TableRow, { TableRowProps } from './TableRow';
-import TableCell from './TableCell';
+import { TableRow, TableRowProps } from './TableRow';
+import { TableCell } from './TableCell';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { ShorthandCollection, ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
@@ -75,7 +75,7 @@ export type TableStylesProps = never;
  * [VoiceOver not announcing rows correctly for a grid with presentation elements inside](https://bugs.chromium.org/p/chromium/issues/detail?id=1054424)
  * VoiceOver doesn't narrate aria-rowcount value in table or grid
  */
-const Table: ComponentWithAs<'div', TableProps> &
+export const Table: ComponentWithAs<'div', TableProps> &
   FluentComponentStaticProps<TableProps> & {
     Cell: typeof TableCell;
     Row: typeof TableRow;
@@ -179,5 +179,3 @@ Table.handledProps = Object.keys(Table.propTypes) as any;
 Table.defaultProps = {
   accessibility: tableBehavior,
 };
-
-export default Table;

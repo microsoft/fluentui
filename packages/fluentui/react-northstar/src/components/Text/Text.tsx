@@ -93,7 +93,7 @@ export const textClassName = 'ui-text';
 /**
  * A Text consistently styles and formats occurrences of text.
  */
-const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticProps<TextProps> = props => {
+export const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticProps<TextProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
   setStart();
@@ -191,5 +191,3 @@ Text.propTypes = {
 Text.handledProps = Object.keys(Text.propTypes) as any;
 
 Text.create = createShorthandFactory({ Component: Text, mappedProp: 'content' });
-
-export default Text;

@@ -26,7 +26,7 @@ export const cardTopControlsClassName = 'ui-card__topcontrols';
 /**
  * A CardTopControls is used to render control elements in the top of a Card component.
  */
-const CardTopControls: ComponentWithAs<'div', CardTopControlsProps> &
+export const CardTopControls: ComponentWithAs<'div', CardTopControlsProps> &
   FluentComponentStaticProps<CardTopControlsProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardTopControls.displayName, context.telemetry);
@@ -74,5 +74,3 @@ CardTopControls.propTypes = {
 CardTopControls.handledProps = Object.keys(CardTopControls.propTypes) as any;
 
 CardTopControls.create = createShorthandFactory({ Component: CardTopControls });
-
-export default CardTopControls;

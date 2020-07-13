@@ -7,7 +7,7 @@ import { ThemeContext } from 'react-fela';
 
 import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
 import { ProviderContextPrepared } from '../../types';
-import FlexItem from './FlexItem';
+import { FlexItem } from './FlexItem';
 
 export interface FlexProps extends UIComponentProps, ChildrenComponentProps {
   /** Defines if container should be inline element. */
@@ -50,7 +50,7 @@ export const flexClassName = 'ui-flex';
 /**
  * A Flex is a layout component that arranges group of items aligned towards common direction (either row or column).
  */
-const Flex: ComponentWithAs<'div', FlexProps> & {
+export const Flex: ComponentWithAs<'div', FlexProps> & {
   handledProps: (keyof FlexProps)[];
   Item: typeof FlexItem;
 } = props => {
@@ -150,5 +150,3 @@ Flex.propTypes = {
 Flex.handledProps = Object.keys(Flex.propTypes) as any;
 
 Flex.Item = FlexItem;
-
-export default Flex;

@@ -16,13 +16,13 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { commonPropTypes, createShorthandFactory, SizeValue, UIComponentProps } from '../../utils';
-import CardBody from './CardBody';
-import CardColumn from './CardColumn';
-import CardFooter from './CardFooter';
-import CardHeader from './CardHeader';
-import CardPreview from './CardPreview';
-import CardTopControls from './CardTopControls';
-import CardExpandableBox from './CardExpandableBox';
+import { CardBody } from './CardBody';
+import { CardColumn } from './CardColumn';
+import { CardFooter } from './CardFooter';
+import { CardHeader } from './CardHeader';
+import { CardPreview } from './CardPreview';
+import { CardTopControls } from './CardTopControls';
+import { CardExpandableBox } from './CardExpandableBox';
 
 export interface CardProps extends UIComponentProps {
   /**
@@ -102,7 +102,7 @@ export const cardClassName = 'ui-card';
  * When card contains actionable elements, use [cardChildrenFocusableBehavior](/components/card/accessibility#card-children-focusable).
  *
  */
-const Card: ComponentWithAs<'div', CardProps> &
+export const Card: ComponentWithAs<'div', CardProps> &
   FluentComponentStaticProps<CardProps> & {
     Header: typeof CardHeader;
     Body: typeof CardBody;
@@ -242,5 +242,3 @@ Card.Column = CardColumn;
 Card.ExpandableBox = CardExpandableBox;
 
 Card.create = createShorthandFactory({ Component: Card });
-
-export default Card;

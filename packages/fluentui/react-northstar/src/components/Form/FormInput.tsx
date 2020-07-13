@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
-import Input, { InputProps } from '../Input/Input';
-import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
+import { Input, InputProps } from '../Input/Input';
+import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 import { commonPropTypes } from '../../utils';
 
 interface FormInputOwnProps extends InputProps {}
@@ -16,7 +16,7 @@ export const formInputClassName = 'ui-form__input';
 /**
  * An FormInput renders a Input wrapped by FormField.
  */
-const FormInput = compose<'input', FormInputProps, FormInputStylesProps, SelectedFormFieldCustomProps, {}>(
+export const FormInput = compose<'input', FormInputProps, FormInputStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
     className: formInputClassName,
@@ -40,5 +40,3 @@ FormInput.propTypes = commonPropTypes.createCommon({
   children: false,
   content: false,
 });
-
-export default FormInput;

@@ -51,7 +51,7 @@ export const imageClassName = 'ui-image';
  *  - when image has role='presentation' then screen readers navigate to the element in scan/virtual mode. To avoid this, the attribute "aria-hidden='true'" is applied by the default image behavior.
  *  - when alt property is used in combination with aria-label, arialabbeledby or title, additional screen readers verification is needed as each screen reader handles this combination differently.
  */
-const Image: ComponentWithAs<'img', ImageProps> & FluentComponentStaticProps<ImageProps> = props => {
+export const Image: ComponentWithAs<'img', ImageProps> & FluentComponentStaticProps<ImageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Image.displayName, context.telemetry);
   setStart();
@@ -122,5 +122,3 @@ Image.propTypes = {
 Image.handledProps = Object.keys(Image.propTypes) as any;
 
 Image.create = createShorthandFactory({ Component: Image, mappedProp: 'src', allowsJSX: false });
-
-export default Image;

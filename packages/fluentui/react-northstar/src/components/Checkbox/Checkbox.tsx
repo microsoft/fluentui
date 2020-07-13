@@ -23,8 +23,8 @@ import {
   ProviderContextPrepared,
   FluentComponentStaticProps,
 } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Text, { TextProps } from '../Text/Text';
+import { Box, BoxProps } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 
 export interface CheckboxSlotClassNames {
@@ -85,7 +85,7 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
  * @accessibility
  * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
  */
-const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = props => {
+export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
@@ -223,5 +223,3 @@ Checkbox.create = createShorthandFactory({
   Component: Checkbox,
   mappedProp: 'label',
 });
-
-export default Checkbox;

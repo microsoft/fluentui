@@ -31,7 +31,7 @@ import {
   createShorthandFactory,
 } from '../../utils';
 import { ListContextProvider, ListContextValue } from './listContext';
-import ListItem, { ListItemProps } from './ListItem';
+import { ListItem, ListItemProps } from './ListItem';
 
 export interface ListProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -86,7 +86,7 @@ export const listClassName = 'ui-list';
  * - Static non-navigable list. Implements [ARIA list](https://www.w3.org/TR/wai-aria-1.1/#list) role.
  * - Selectable list: allows the user to select item from a list of choices. Implements [ARIA Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox) design pattern.
  */
-const List: ComponentWithAs<'ul', ListProps> &
+export const List: ComponentWithAs<'ul', ListProps> &
   FluentComponentStaticProps<ListProps> & {
     Item: typeof ListItem;
   } = props => {
@@ -211,5 +211,3 @@ List.handledProps = Object.keys(List.propTypes) as any;
 List.Item = ListItem;
 
 List.create = createShorthandFactory({ Component: List, mappedArrayProp: 'items' });
-
-export default List;

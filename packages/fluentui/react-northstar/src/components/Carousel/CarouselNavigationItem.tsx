@@ -21,7 +21,7 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   useTelemetry,
@@ -90,7 +90,7 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
 /**
  * A CarouselItem is an actionable item within a Carousel.
  */
-const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
+export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
   FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
@@ -218,5 +218,3 @@ CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,
   mappedArrayProp: 'content',
 });
-
-export default CarouselNavigationItem;

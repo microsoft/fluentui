@@ -19,8 +19,8 @@ import {
   getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Text, { TextProps } from '../Text/Text';
+import { Box, BoxProps } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -76,7 +76,7 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
  * @accessibility
  * Implements [ARIA progressbar](https://www.w3.org/TR/wai-aria-1.1/#progressbar) role.
  */
-const Loader: ComponentWithAs<'div', LoaderProps> &
+export const Loader: ComponentWithAs<'div', LoaderProps> &
   FluentComponentStaticProps<LoaderProps> & {
     shorthandConfig: ShorthandConfig<LoaderProps>;
   } = props => {
@@ -192,5 +192,3 @@ Loader.handledProps = Object.keys(Loader.propTypes) as any;
 Loader.create = createShorthandFactory({ Component: Loader, mappedProp: 'label' });
 
 Loader.shorthandConfig = { mappedProp: 'label' };
-
-export default Loader;

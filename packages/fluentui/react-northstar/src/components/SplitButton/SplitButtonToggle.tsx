@@ -61,7 +61,7 @@ export const splitButtonToggleClassName = 'ui-splitbutton__toggle';
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
 
-const SplitButtonToggle: ComponentWithAs<'button', SplitButtonToggleProps> &
+export const SplitButtonToggle: ComponentWithAs<'button', SplitButtonToggleProps> &
   FluentComponentStaticProps<SplitButtonToggleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(SplitButtonToggle.displayName, context.telemetry);
@@ -151,5 +151,3 @@ SplitButtonToggle.propTypes = {
 SplitButtonToggle.handledProps = Object.keys(SplitButtonToggle.propTypes) as any;
 
 SplitButtonToggle.create = createShorthandFactory({ Component: SplitButtonToggle, mappedProp: 'content' });
-
-export default SplitButtonToggle;
