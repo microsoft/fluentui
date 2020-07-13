@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from '@fluentui/react-next';
+import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from 'office-ui-fabric-react';
 import { useId } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react';
 
@@ -47,7 +47,7 @@ const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
   );
 };
 
-storiesOf('Coachmark Next', module)
+storiesOf('Coachmark', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore

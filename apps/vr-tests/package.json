@@ -20,6 +20,7 @@
     "@uifabric/example-data": "^7.0.17",
     "@uifabric/experiments": "^7.27.1",
     "@uifabric/react-cards": "^0.109.113",
+    "@uifabric/react-hooks": "^7.4.13",
     "@uifabric/set-version": "^7.0.15",
     "office-ui-fabric-react": "^7.121.12",
     "react": "16.8.6",
