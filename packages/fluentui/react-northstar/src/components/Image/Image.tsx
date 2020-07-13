@@ -4,16 +4,15 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 
 export interface ImageProps extends UIComponentProps, ImageBehaviorProps {
   /** Alternative text. */
@@ -52,7 +51,7 @@ export const imageClassName = 'ui-image';
  *  - when alt property is used in combination with aria-label, arialabbeledby or title, additional screen readers verification is needed as each screen reader handles this combination differently.
  */
 export const Image: ComponentWithAs<'img', ImageProps> & FluentComponentStaticProps<ImageProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Image.displayName, context.telemetry);
   setStart();
 

@@ -23,19 +23,17 @@ import {
   ShorthandCollection,
   ComponentEventHandler,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
 import {
   ComponentWithAs,
   useTelemetry,
+  useFluentContext,
   useAutoControlled,
   useUnhandledProps,
   getElementType,
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface HierarchicalTreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Index of the currently active subtree. */
@@ -86,7 +84,7 @@ export type HierarchicalTreeStylesProps = never;
  */
 export const HierarchicalTree: ComponentWithAs<'ul', HierarchicalTreeProps> &
   FluentComponentStaticProps<HierarchicalTreeProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HierarchicalTree.displayName, context.telemetry);
   setStart();
 

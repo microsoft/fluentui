@@ -5,6 +5,7 @@ import {
   mergeVariablesOverrides,
   useTelemetry,
   useAutoControlled,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -33,10 +34,9 @@ import { MenuItemIcon, MenuItemIconProps } from './MenuItemIcon';
 import { MenuItemContent, MenuItemContentProps } from './MenuItemContent';
 import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
 import { MenuItemWrapper, MenuItemWrapperProps } from './MenuItemWrapper';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 
@@ -177,7 +177,7 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
  */
 export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>(
   (inputProps, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

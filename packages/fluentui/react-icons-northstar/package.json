@@ -8,9 +8,7 @@
     "@fluentui/accessibility": "^0.50.0",
     "@fluentui/react-bindings": "^0.50.0",
     "@fluentui/styles": "^0.50.0",
-    "classnames": "^2.2.6",
-    "fela": "^10.6.1",
-    "react-fela": "^10.6.1"
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.51.0",

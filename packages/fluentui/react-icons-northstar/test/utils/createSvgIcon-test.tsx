@@ -2,8 +2,6 @@ import { createSvgIcon, svgIconClassName } from '@fluentui/react-icons-northstar
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 const testSvg = () => <svg />;
 

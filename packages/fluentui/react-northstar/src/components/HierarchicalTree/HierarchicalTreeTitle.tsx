@@ -16,13 +16,13 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useTelemetry,
   useAccessibility,
   useStyles,
@@ -56,7 +56,7 @@ export type HierarchicalTreeTitleStylesProps = never;
  */
 export const HierarchicalTreeTitle: ComponentWithAs<'a', HierarchicalTreeTitleProps> &
   FluentComponentStaticProps<HierarchicalTreeTitleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HierarchicalTreeTitle.displayName, context.telemetry);
   setStart();
 

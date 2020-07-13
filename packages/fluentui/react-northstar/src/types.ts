@@ -1,4 +1,4 @@
-import { StylesContextInputValue, StylesContextValue, Telemetry, ShorthandConfig } from '@fluentui/react-bindings';
+import { ShorthandConfig } from '@fluentui/react-bindings';
 import * as React from 'react';
 
 import { ShorthandFactory } from './utils/factories';
@@ -68,18 +68,3 @@ export type ObjectShorthandValue<P extends Props> = Props<P> & {
 };
 
 export type ObjectShorthandCollection<P, K = never> = ObjectShorthandValue<P & { kind?: K }>[];
-
-// ========================================================
-// Provider's context
-// ========================================================
-
-export interface ProviderContextInput extends StylesContextInputValue {
-  target?: Document;
-  telemetry?: Telemetry;
-}
-
-export interface ProviderContextPrepared extends StylesContextValue {
-  // `target` can be undefined for SSR
-  target: Document | undefined;
-  telemetry: Telemetry | undefined;
-}

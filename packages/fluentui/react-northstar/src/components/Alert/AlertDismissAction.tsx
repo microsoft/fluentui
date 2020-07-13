@@ -13,23 +13,17 @@ import {
   ContentComponentProps,
 } from '../../utils';
 
-import {
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandValue,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import {
   ComponentWithAs,
   getElementType,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { Box, BoxProps } from '../Box/Box';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface AlertDismissActionProps
   extends UIComponentProps,
@@ -85,7 +79,7 @@ export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames 
  */
 export const AlertDismissAction: ComponentWithAs<'button', AlertDismissActionProps> &
   FluentComponentStaticProps<AlertDismissActionProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
   setStart();
 

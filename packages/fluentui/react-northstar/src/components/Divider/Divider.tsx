@@ -3,6 +3,7 @@ import {
   useTelemetry,
   useAccessibility,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useStyles,
   ComponentWithAs,
@@ -21,9 +22,8 @@ import {
   rtlTextContainer,
   createShorthand,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
+
+import { FluentComponentStaticProps } from '../../types';
 import { DividerContent } from './DividerContent';
 
 export interface DividerProps
@@ -64,7 +64,7 @@ export const Divider: ComponentWithAs<'div', DividerProps> &
   FluentComponentStaticProps<DividerProps> & {
     Content: typeof DividerContent;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
   setStart();
   const {

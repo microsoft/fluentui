@@ -3,7 +3,6 @@ import { Renderer, noopRenderer } from '@fluentui/react-northstar-styles-rendere
 import { emptyTheme, ThemePrepared } from '@fluentui/styles';
 import { mount, MountRendererProps, ComponentType } from 'enzyme';
 import * as React from 'react';
-import { ThemeProvider } from 'react-fela';
 
 import { ProviderContextPrepared } from 'src/types';
 

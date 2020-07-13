@@ -12,12 +12,12 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+
 import {
   ComponentWithAs,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useAccessibility,
   useUnhandledProps,
@@ -54,7 +54,7 @@ export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, '
  */
 export const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
   FluentComponentStaticProps<AccordionContentProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);
 
   setStart();

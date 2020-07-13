@@ -4,6 +4,7 @@ import {
   ComponentWithAs,
   getElementType,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
   useUnhandledProps,
@@ -13,8 +14,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 import {
   childrenExist,
   createShorthandFactory,
@@ -29,7 +28,7 @@ import {
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
 import { Loader, LoaderProps } from '../Loader/Loader';
-import { ComponentEventHandler, ShorthandValue, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonContent, ButtonContentProps } from './ButtonContent';
 
@@ -111,7 +110,7 @@ export const buttonClassName = 'ui-button';
  */
 export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
