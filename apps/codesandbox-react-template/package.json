@@ -4,7 +4,7 @@
   "version": "7.0.0",
   "private": true,
   "scripts": {
-    "build": "tsc --noEmit",
+    "build": "just-scripts build",
     "lint": "just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",
