@@ -9,7 +9,7 @@ import {
   ThemePrepared,
 } from '@fluentui/styles';
 
-import resolveStyles from '../../src/styles/resolveStyles';
+import { resolveStyles } from '../../src/styles/resolveStyles';
 
 const testComponentStyles: ComponentSlotStylesPrepared<{}, { color: string }> = {
   root: ({ variables: v, rtl }): ICSSInJSStyle => ({

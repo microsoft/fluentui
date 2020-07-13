@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Replace tslint with eslint",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-07-08T01:48:41.482Z"
+}

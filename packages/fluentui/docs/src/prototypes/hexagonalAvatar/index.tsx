@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Flex, StatusProps, WithAsProp, Extendable, Text } from '@fluentui/react-northstar';
+import { Flex, StatusProps, Extendable, Text } from '@fluentui/react-northstar';
 import CustomAvatar from './CustomAvatar';
 import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const statusProps: Extendable<WithAsProp<StatusProps>> = {
+const statusProps: Extendable<StatusProps> = {
   icon: <AcceptIcon />,
   state: 'success',
   title: 'Available',

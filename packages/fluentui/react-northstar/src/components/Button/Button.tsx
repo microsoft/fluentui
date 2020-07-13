@@ -27,11 +27,11 @@ import {
   ShorthandFactory,
   createShorthand,
 } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
-import Loader, { LoaderProps } from '../Loader/Loader';
+import { Box, BoxProps } from '../Box/Box';
+import { Loader, LoaderProps } from '../Loader/Loader';
 import { ComponentEventHandler, ShorthandValue, ProviderContextPrepared } from '../../types';
-import ButtonGroup from './ButtonGroup';
-import ButtonContent, { ButtonContentProps } from './ButtonContent';
+import { ButtonGroup } from './ButtonGroup';
+import { ButtonContent, ButtonContentProps } from './ButtonContent';
 
 export interface ButtonProps
   extends UIComponentProps,
@@ -109,7 +109,7 @@ export const buttonClassName = 'ui-button';
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
+export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -266,7 +266,6 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       icon: Box,
       loader: Loader,
     },
-
     slotProps: props => ({
       content: {
         size: props.size,
@@ -276,6 +275,9 @@ const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       },
     }),
 
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -339,10 +341,4 @@ Button.propTypes = {
 Button.Group = ButtonGroup;
 Button.Content = ButtonContent;
 
-Button.shorthandConfig = {
-  mappedProp: 'content',
-};
-
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
-
-export default Button;

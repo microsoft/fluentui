@@ -21,8 +21,8 @@ import {
   shouldWrapFocus,
 } from '@uifabric/utilities';
 
-import getElementType from '../utils/getElementType';
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { getElementType } from '../utils/getElementType';
+import { getUnhandledProps } from '../utils/getUnhandledProps';
 import { FocusZoneProps, IFocusZone } from './FocusZone.types';
 import {
   getNextElement,
@@ -55,7 +55,7 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export default class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
+export class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
   static propTypes = {
     className: PropTypes.string,
     direction: PropTypes.number,
@@ -1075,7 +1075,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     let candidateElement = undefined;
     let targetTop = -1;
     let targetBottom = -1;
-    const pagesize = scrollableParent.clientHeight;
+    const pagesize = (scrollableParent as HTMLElement).clientHeight;
     const activeRect = element.getBoundingClientRect();
     do {
       element = isForward

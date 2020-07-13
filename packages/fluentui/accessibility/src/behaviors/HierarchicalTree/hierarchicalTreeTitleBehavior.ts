@@ -11,7 +11,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const hierarchicalTreeTitleBehavior: Accessibility<HierarchicalTreeTitleBehaviorProps> = props => ({
+export const hierarchicalTreeTitleBehavior: Accessibility<HierarchicalTreeTitleBehaviorProps> = props => ({
   attributes: {
     root: {
       ...(!props.hasSubtree && {
@@ -29,8 +29,6 @@ const hierarchicalTreeTitleBehavior: Accessibility<HierarchicalTreeTitleBehavior
     },
   },
 });
-
-export default hierarchicalTreeTitleBehavior;
 
 export type HierarchicalTreeTitleBehaviorProps = {
   /** Indicated if tree title has a subtree */

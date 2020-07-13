@@ -5,8 +5,6 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { ALIGNMENTS, POSITIONS } from '../../utils/positioner';
 import {
-  WithAsProp,
-  withSafeTypeForAs,
   ComponentEventHandler,
   ShorthandValue,
   ShorthandCollection,
@@ -23,9 +21,9 @@ import {
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import SplitButtonToggle, { SplitButtonToggleProps } from './SplitButtonToggle';
-import Button, { ButtonProps } from '../Button/Button';
-import MenuButton, { MenuButtonProps } from '../MenuButton/MenuButton';
+import { SplitButtonToggle, SplitButtonToggleProps } from './SplitButtonToggle';
+import { Button, ButtonProps } from '../Button/Button';
+import { MenuButton, MenuButtonProps } from '../MenuButton/MenuButton';
 import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
@@ -34,6 +32,7 @@ import { PositioningProps } from '../../utils/positioner/types';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import {
+  ComponentWithAs,
   useTelemetry,
   useAutoControlled,
   useAccessibility,
@@ -107,7 +106,10 @@ export const splitButtonClassName = 'ui-splitbutton';
 
 export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & { isFromKeyboard: boolean };
 
-const SplitButton: React.FC<WithAsProp<SplitButtonProps>> &
+/**
+ * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
+ */
+export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
   FluentComponentStaticProps<SplitButtonProps> & {
     Toggle: typeof SplitButtonToggle;
   } = props => {
@@ -317,8 +319,3 @@ SplitButton.handledProps = Object.keys(SplitButton.propTypes) as any;
 SplitButton.create = createShorthandFactory({
   Component: SplitButton,
 });
-
-/**
- * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
- */
-export default withSafeTypeForAs<typeof SplitButton, SplitButtonProps>(SplitButton);

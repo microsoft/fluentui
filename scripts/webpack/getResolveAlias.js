@@ -1,7 +1,6 @@
 const path = require('path');
 
-const findRepoDeps = require('../monorepo/findRepoDeps');
-const findGitRoot = require('../monorepo/findGitRoot');
+const { findRepoDeps, findGitRoot } = require('../monorepo/index');
 const { readConfig } = require('../read-config');
 
 function getOutputPath(packageJson) {
@@ -21,9 +20,9 @@ function getResolveAlias() {
 
   const alias = {};
   const excludedPackages = [
+    '@fluentui/eslint-rules',
     '@uifabric/api-docs',
     '@uifabric/build',
-    '@uifabric/tslint-rules',
     '@uifabric/webpack-utils',
     '@uifabric/jest-serializer-merge-styles',
   ];

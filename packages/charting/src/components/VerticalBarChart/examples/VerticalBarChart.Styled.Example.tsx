@@ -59,6 +59,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
           height={400}
           barWidth={20}
           yAxisTickCount={6}
+          // eslint-disable-next-line react/jsx-no-bind
           styles={customStyles}
           colors={customColors}
           hideLegend={true}

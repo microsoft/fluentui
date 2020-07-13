@@ -132,7 +132,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
   /**
    * Callback when the positioningContainer tries to close.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismiss?: (ev?: any) => void;
 
   /**

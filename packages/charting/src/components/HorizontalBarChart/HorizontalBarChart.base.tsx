@@ -9,7 +9,7 @@ import {
   IChartDataPoint,
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { ChartHoverCard } from '@uifabric/charting';
+import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
@@ -46,6 +46,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       legend: '',
       refArray: [],
       refSelected: null,
+      // eslint-disable-next-line react/no-unused-state
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
@@ -97,10 +98,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     <g
                       id={keyVal}
                       key={keyVal}
+                      // eslint-disable-next-line react/jsx-no-bind
                       ref={(e: SVGGElement) => {
                         this._refCallback(e, points!.chartData![0].legend);
                       }}
                       className={this._classNames.barWrapper}
+                      // eslint-disable-next-line react/jsx-no-bind
                       onMouseOver={this._hoverOn.bind(
                         this,
                         points!
@@ -111,6 +114,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                         points!.chartData![0].xAxisCalloutData!,
                         points!.chartData![0].yAxisCalloutData!,
                       )}
+                      // eslint-disable-next-line react/jsx-no-bind
                       onFocus={this._hoverOn.bind(
                         this,
                         points!
@@ -133,22 +137,21 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
               </div>
             );
           })}
-          {!this.props.hideTooltip && this.state.isCalloutVisible ? (
-            <Callout
-              target={this.state.refSelected}
-              coverTarget={true}
-              isBeakVisible={false}
-              gapSpace={30}
-              directionalHint={DirectionalHint.rightTopEdge}
-              id={this._calloutId}
-            >
-              <ChartHoverCard
-                Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
-                YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
-                color={this.state.lineColor}
-              />
-            </Callout>
-          ) : null}
+          <Callout
+            target={this.state.refSelected}
+            coverTarget={true}
+            isBeakVisible={false}
+            gapSpace={30}
+            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+            directionalHint={DirectionalHint.rightTopEdge}
+            id={this._calloutId}
+          >
+            <ChartHoverCard
+              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
+              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
+              color={this.state.lineColor}
+            />
+          </Callout>
         </div>
       </FocusZone>
     );
@@ -240,7 +243,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)',
     };
 
-    // tslint:disable-next-line:jsx-ban-props
     return <div className={this._classNames.triangle} style={benchmarkStyles} />;
   }
 
@@ -262,7 +264,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         prevPosition += value;
       }
       value = (pointData / total) * 100;
-      value >= 0 ? (value = value) : (value = 0);
+      if (value < 0) {
+        value = 0;
+      }
       startingPoint.push(prevPosition);
       return (
         <rect

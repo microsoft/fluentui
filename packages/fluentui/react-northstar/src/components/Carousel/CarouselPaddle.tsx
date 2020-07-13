@@ -16,14 +16,19 @@ import {
 
 import {
   ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
   ShorthandValue,
 } from '../../types';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
-import Box, { BoxProps } from '../Box/Box';
+import {
+  ComponentWithAs,
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
+import { Box, BoxProps } from '../Box/Box';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -64,7 +69,13 @@ export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
   content: `${carouselPaddleClassName}__content`,
 };
 
-const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
+/**
+ * A CarouselPaddle allows users to customize the paddles inside the Carousel component.
+ *
+ * @accessibility
+ * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
+ */
+export const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
   FluentComponentStaticProps<CarouselPaddleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
@@ -90,7 +101,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
   const getA11Props = useAccessibility(accessibility, {
     debugName: CarouselPaddle.displayName,
     mapPropsToBehavior: () => ({
-      as,
+      as: String(as),
       disabled,
     }),
     actionHandlers: {
@@ -180,11 +191,3 @@ CarouselPaddle.propTypes = {
 CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 
 CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
-
-/**
- * A CarouselPaddle allows users to customize the paddles inside the Carousel component.
- *
- * @accessibility
- * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
- */
-export default withSafeTypeForAs<typeof CarouselPaddle, CarouselPaddleProps, 'button'>(CarouselPaddle);

@@ -1,5 +1,11 @@
 import { ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle } from '../../Styling';
+import {
+  getGlobalClassNames,
+  HighContrastSelector,
+  AnimationVariables,
+  getFocusStyle,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../Styling';
 import { getRTL } from '@uifabric/utilities';
 
 const GlobalClassNames = {
@@ -141,6 +147,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           [`:hover .${classNames.thumb}`]: slideBoxActiveThumbStyles,
           [`:active .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
           [`:hover .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       vertical

@@ -15,12 +15,13 @@ import {
 } from '../../types';
 
 import { createShorthandFactory } from '../../utils/factories';
-import Popup, { PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
-import Menu, { MenuProps } from '../Menu/Menu';
+import { Popup, PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
+import { Menu, MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
 import { ALIGNMENTS, POSITIONS, PositioningProps } from '../../utils/positioner';
 import {
+  ComponentWithAs,
   useAccessibility,
   useTelemetry,
   getElementType,
@@ -113,7 +114,8 @@ export type MenuButtonStylesProps = never;
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps> = props => {
+export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
+  FluentComponentStaticProps<MenuButtonProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();
@@ -347,5 +349,3 @@ MenuButton.defaultProps = {
 MenuButton.handledProps = Object.keys(MenuButton.propTypes) as any;
 
 MenuButton.create = createShorthandFactory({ Component: MenuButton, mappedProp: 'menu' });
-
-export default MenuButton;

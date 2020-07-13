@@ -1,5 +1,6 @@
 import { Accessibility, checkboxBehavior, CheckboxBehaviorProps } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -18,14 +19,12 @@ import { ThemeContext } from 'react-fela';
 import { createShorthandFactory, ChildrenComponentProps, commonPropTypes, UIComponentProps } from '../../utils';
 import {
   ComponentEventHandler,
-  WithAsProp,
   ShorthandValue,
-  withSafeTypeForAs,
   ProviderContextPrepared,
   FluentComponentStaticProps,
 } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Text, { TextProps } from '../Text/Text';
+import { Box, BoxProps } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 
 export interface CheckboxSlotClassNames {
@@ -80,7 +79,13 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
   indicator: `${checkboxClassName}__indicator`,
 };
 
-const Checkbox: React.FC<WithAsProp<CheckboxProps>> & FluentComponentStaticProps<CheckboxProps> = props => {
+/**
+ * A Checkbox allows a user to make a choice between two mutually exclusive options.
+ *
+ * @accessibility
+ * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
+ */
+export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
@@ -218,11 +223,3 @@ Checkbox.create = createShorthandFactory({
   Component: Checkbox,
   mappedProp: 'label',
 });
-
-/**
- * A Checkbox allows a user to make a choice between two mutually exclusive options.
- *
- * @accessibility
- * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
- */
-export default withSafeTypeForAs<typeof Checkbox, CheckboxProps>(Checkbox);

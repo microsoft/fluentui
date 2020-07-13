@@ -13,7 +13,7 @@ import { Transition } from 'react-transition-group';
 
 import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../utils';
 import { ComponentEventHandler, ProviderContextPrepared } from '../../types';
-import useAnimationStyles from './useAnimationStyles';
+import { useAnimationStyles } from './useAnimationStyles';
 
 export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
 
@@ -139,7 +139,7 @@ export interface AnimationProps extends ChildrenComponentProps<AnimationChildren
 /**
  * An Animation provides animation effects to rendered elements.
  */
-const Animation: React.FC<AnimationProps> & {
+export const Animation: React.FC<AnimationProps> & {
   handledProps: (keyof AnimationProps)[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -235,5 +235,3 @@ Animation.propTypes = {
   onExited: PropTypes.func,
 };
 Animation.handledProps = Object.keys(Animation.propTypes) as any;
-
-export default Animation;

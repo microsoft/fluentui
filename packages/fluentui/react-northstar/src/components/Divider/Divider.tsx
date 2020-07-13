@@ -1,4 +1,12 @@
 import { Accessibility } from '@fluentui/accessibility';
+import {
+  useTelemetry,
+  useAccessibility,
+  getElementType,
+  useUnhandledProps,
+  useStyles,
+  ComponentWithAs,
+} from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
@@ -15,9 +23,8 @@ import {
 } from '../../utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { WithAsProp, withSafeTypeForAs, ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
-import { useTelemetry, useAccessibility, getElementType, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
-import DividerContent from './DividerContent';
+import { ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
+import { DividerContent } from './DividerContent';
 
 export interface DividerProps
   extends UIComponentProps,
@@ -50,7 +57,10 @@ export type DividerStylesProps = Required<
 
 export const dividerClassName = 'ui-divider';
 
-const Divider: React.FC<WithAsProp<DividerProps>> &
+/**
+ * A Divider visually segments content.
+ */
+export const Divider: ComponentWithAs<'div', DividerProps> &
   FluentComponentStaticProps<DividerProps> & {
     Content: typeof DividerContent;
   } = props => {
@@ -131,8 +141,3 @@ Divider.Content = DividerContent;
 Divider.handledProps = Object.keys(Divider.propTypes) as any;
 
 Divider.create = createShorthandFactory({ Component: Divider, mappedProp: 'content' });
-
-/**
- * A Divider visually segments content.
- */
-export default withSafeTypeForAs<typeof Divider, DividerProps>(Divider);

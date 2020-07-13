@@ -35,21 +35,21 @@ import {
   commonPropTypes,
   ColorComponentProps,
 } from '../../utils';
-import ToolbarCustomItem, { ToolbarCustomItemProps } from './ToolbarCustomItem';
-import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
-import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
-import ToolbarItemWrapper from './ToolbarItemWrapper';
-import ToolbarItemIcon from './ToolbarItemIcon';
-import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
-import ToolbarMenuDivider from './ToolbarMenuDivider';
-import ToolbarMenuItem from './ToolbarMenuItem';
-import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
-import ToolbarMenuRadioGroupWrapper from './ToolbarMenuRadioGroupWrapper';
-import ToolbarRadioGroup from './ToolbarRadioGroup';
+import { ToolbarCustomItem, ToolbarCustomItemProps } from './ToolbarCustomItem';
+import { ToolbarDivider, ToolbarDividerProps } from './ToolbarDivider';
+import { ToolbarItem, ToolbarItemProps } from './ToolbarItem';
+import { ToolbarItemWrapper } from './ToolbarItemWrapper';
+import { ToolbarItemIcon } from './ToolbarItemIcon';
+import { ToolbarMenu, ToolbarMenuProps } from './ToolbarMenu';
+import { ToolbarMenuDivider } from './ToolbarMenuDivider';
+import { ToolbarMenuItem } from './ToolbarMenuItem';
+import { ToolbarMenuRadioGroup, ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
+import { ToolbarMenuRadioGroupWrapper } from './ToolbarMenuRadioGroupWrapper';
+import { ToolbarRadioGroup } from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
-import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
-import ToolbarMenuItemIcon from './ToolbarMenuItemIcon';
-import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
+import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicator';
+import { ToolbarMenuItemIcon } from './ToolbarMenuItemIcon';
+import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarMenuContextProvider } from './toolbarMenuContext';
 
 export type ToolbarItemShorthandKinds = {
@@ -127,7 +127,7 @@ export const toolbarClassName = 'ui-toolbar';
  * @accessibilityIssues
  * [Issue 988424: VoiceOver narrates selected for button in toolbar](https://bugs.chromium.org/p/chromium/issues/detail?id=988424)
  */
-const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
+export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -208,7 +208,7 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
         return false;
       }
 
-      el.style.visibility = null;
+      el.style.visibility = '';
       const wasFocusable = el.getAttribute(WAS_FOCUSABLE_ATTRIBUTE);
       if (wasFocusable) {
         el.setAttribute(IS_FOCUSABLE_ATTRIBUTE, wasFocusable);
@@ -324,7 +324,8 @@ const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       if (context.rtl) {
         $overflowContainer.scrollTo(Number.MAX_SAFE_INTEGER, 0);
       } else {
-        $overflowContainer.scrollTo(0, 0);
+        $overflowContainer.scrollTop = 0;
+        $overflowContainer.scrollLeft = 0;
       }
 
       const $items = $overflowContainer.children;
@@ -633,5 +634,3 @@ Toolbar.MenuItemActiveIndicator = ToolbarMenuItemActiveIndicator;
 Toolbar.MenuRadioGroup = ToolbarMenuRadioGroup;
 Toolbar.MenuRadioGroupWrapper = ToolbarMenuRadioGroupWrapper;
 Toolbar.RadioGroup = ToolbarRadioGroup;
-
-export default Toolbar;

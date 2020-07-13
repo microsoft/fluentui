@@ -35,13 +35,13 @@ import {
   ShorthandValue,
 } from '../../types';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps, PopperChildrenProps } from '../../utils/positioner';
-import PopupContent, { PopupContentProps } from './PopupContent';
+import { PopupContent, PopupContentProps } from './PopupContent';
 
 import { createShorthandFactory } from '../../utils/factories';
-import createReferenceFromContextClick from './createReferenceFromContextClick';
-import isRightClick from '../../utils/isRightClick';
-import PortalInner from '../Portal/PortalInner';
-import Animation from '../Animation/Animation';
+import { createReferenceFromContextClick } from './createReferenceFromContextClick';
+import { isRightClick } from '../../utils/isRightClick';
+import { PortalInner } from '../Portal/PortalInner';
+import { Animation } from '../Animation/Animation';
 
 export type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
 export type RestrictedClickEvents = 'click' | 'focus';
@@ -122,7 +122,7 @@ export const popupClassName = 'ui-popup';
 /**
  * A Popup displays a non-modal, often rich content, on top of its target element.
  */
-const Popup: React.FC<PopupProps> &
+export const Popup: React.FC<PopupProps> &
   FluentComponentStaticProps<PopupProps> & {
     Content: typeof PopupContent;
   } = props => {
@@ -617,5 +617,3 @@ Popup.create = createShorthandFactory({ Component: Popup, mappedProp: 'content' 
 Popup.shorthandConfig = {
   mappedProp: 'content',
 };
-
-export default Popup;

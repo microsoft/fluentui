@@ -7,7 +7,7 @@ import { setRTL, KeyCodes } from '@uifabric/utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
 
-// tslint:disable:typedef jsx-no-lambda no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;

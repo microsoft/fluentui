@@ -49,8 +49,10 @@ export class EditorErrorBoundary extends React.Component<IEditorErrorBoundaryPro
     // Log the error to the console so people can see the full stack/etc if they want
     // (only in production, because React logs these errors itself in dev mode)
     if (process.env.NODE_ENV === 'production') {
+      /* eslint-disable no-console */
       console.error(error.stack || error);
       console.error('In component: ' + errorInfo.componentStack);
+      /* eslint-enable no-console */
     }
   }
 

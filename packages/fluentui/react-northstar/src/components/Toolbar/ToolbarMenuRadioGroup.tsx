@@ -28,8 +28,8 @@ import {
   commonPropTypes,
 } from '../../utils';
 import { ComponentEventHandler, ProviderContextPrepared, ShorthandCollection, ShorthandValue } from '../../types';
-import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
-import ToolbarMenuRadioGroupWrapper, { ToolbarMenuRadioGroupWrapperProps } from './ToolbarMenuRadioGroupWrapper';
+import { ToolbarMenuItem, ToolbarMenuItemProps } from './ToolbarMenuItem';
+import { ToolbarMenuRadioGroupWrapper, ToolbarMenuRadioGroupWrapperProps } from './ToolbarMenuRadioGroupWrapper';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export interface ToolbarMenuRadioGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -63,7 +63,13 @@ export const toolbarMenuRadioGroupClassName = 'ui-toolbars'; // FIXME: required 
 /**
  * A ToolbarMenuRadioGroup renders ToolbarMenuItem as a group of mutually exclusive options.
  */
-const ToolbarMenuRadioGroup = compose<'ul', ToolbarMenuRadioGroupProps, ToolbarMenuRadioGroupStylesProps, {}, {}>(
+export const ToolbarMenuRadioGroup = compose<
+  'ul',
+  ToolbarMenuRadioGroupProps,
+  ToolbarMenuRadioGroupStylesProps,
+  {},
+  {}
+>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -168,5 +174,3 @@ ToolbarMenuRadioGroup.defaultProps = {
   accessibility: toolbarMenuRadioGroupBehavior,
   wrapper: {},
 };
-
-export default ToolbarMenuRadioGroup;

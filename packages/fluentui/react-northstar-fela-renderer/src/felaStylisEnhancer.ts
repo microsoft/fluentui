@@ -18,7 +18,7 @@ const stylis = new Stylis({
   semicolon: false,
 });
 
-const felaStylisEnhancer = (renderer: FelaRenderer) => {
+export const felaStylisEnhancer = (renderer: FelaRenderer) => {
   const existingEmitChange = renderer._emitChange.bind(renderer);
 
   renderer._emitChange = (change: FelaRendererChange) => {
@@ -34,5 +34,3 @@ const felaStylisEnhancer = (renderer: FelaRenderer) => {
 
   return renderer;
 };
-
-export default felaStylisEnhancer;

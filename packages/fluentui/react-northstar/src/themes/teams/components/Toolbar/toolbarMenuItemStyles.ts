@@ -1,14 +1,14 @@
 import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { ToolbarMenuItemStylesProps } from '../../../../components/Toolbar/ToolbarMenuItem';
 import { ToolbarVariables } from './toolbarVariables';
-import submenuIndicatorUrl from './submenuIndicatorUrl';
-import activeIndicatorUrl from './activeIndicatorUrl';
+import { submenuIndicatorUrl } from './submenuIndicatorUrl';
+import { activeIndicatorUrl } from './activeIndicatorUrl';
 import { toolbarMenuItemSubmenuIndicatorClassName } from '../../../../components/Toolbar/ToolbarMenuItemSubmenuIndicator';
 import { toolbarMenuItemActiveIndicatorClassName } from '../../../../components/Toolbar/ToolbarMenuItemActiveIndicator';
 
-const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesProps, ToolbarVariables> = {
+export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesProps, ToolbarVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme);
     const borderFocusStyles = getBorderFocusStyles({
@@ -68,5 +68,3 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
     display: 'block',
   }),
 };
-
-export default toolbarMenuItemStyles;

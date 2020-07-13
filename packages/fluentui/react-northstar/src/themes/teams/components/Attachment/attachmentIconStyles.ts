@@ -4,7 +4,7 @@ import { svgIconClassName } from '@fluentui/react-icons-northstar';
 import { AttachmentIconStylesProps } from '../../../../components/Attachment/AttachmentIcon';
 import { AttachmentVariables } from './attachmentVariables';
 
-const attachmentIconStyles: ComponentSlotStylesPrepared<AttachmentIconStylesProps, AttachmentVariables> = {
+export const attachmentIconStyles: ComponentSlotStylesPrepared<AttachmentIconStylesProps, AttachmentVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
     height: v.iconSize,
     width: v.iconSize,
@@ -20,5 +20,3 @@ const attachmentIconStyles: ComponentSlotStylesPrepared<AttachmentIconStylesProp
     },
   }),
 };
-
-export default attachmentIconStyles;

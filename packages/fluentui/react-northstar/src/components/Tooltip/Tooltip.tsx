@@ -29,8 +29,8 @@ import {
   Alignment,
   Position,
 } from '../../utils/positioner';
-import PortalInner from '../Portal/PortalInner';
-import TooltipContent, { TooltipContentProps } from './TooltipContent';
+import { PortalInner } from '../Portal/PortalInner';
+import { TooltipContent, TooltipContentProps } from './TooltipContent';
 
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
@@ -87,7 +87,7 @@ export const tooltipClassName = 'ui-tooltip';
  * @accessibility
  * Implements [ARIA Tooltip](https://www.w3.org/TR/wai-aria-practices-1.1/#tooltip) design pattern.
  */
-const Tooltip: React.FC<TooltipProps> &
+export const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
   } = props => {
@@ -299,5 +299,3 @@ Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;
 Tooltip.Content = TooltipContent;
 
 Tooltip.create = createShorthandFactory({ Component: Tooltip, mappedProp: 'content' });
-
-export default Tooltip;

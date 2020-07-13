@@ -8,7 +8,6 @@ import { DirectionalHint } from '../../../common/DirectionalHint';
 import {
   Point,
   IRectangle,
-  assign,
   css,
   elementContains,
   focusFirstChild,
@@ -16,6 +15,7 @@ import {
   getDocument,
   EventGroup,
   getPropsWithDefaults,
+  assign,
 } from '../../../Utilities';
 
 import {

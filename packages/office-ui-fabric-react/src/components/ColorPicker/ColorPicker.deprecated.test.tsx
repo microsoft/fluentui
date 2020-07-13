@@ -7,8 +7,6 @@ import { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
 import { ColorSliderBase } from './ColorSlider/ColorSlider.base';
 import { setWarningCallback } from '../../Utilities';
 
-// tslint:disable:deprecation
-
 describe('ColorPicker', () => {
   let wrapper: ReactWrapper<IColorPickerProps, IColorPickerState, ColorPickerBase> | undefined;
 

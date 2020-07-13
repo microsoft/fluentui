@@ -132,7 +132,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
 
   constructor(props: IContextualMenuProps) {
@@ -175,7 +175,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void {
     if (newProps.target !== this.props.target) {
       const newTarget = newProps.target;
@@ -202,7 +201,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillMount() {
     const target = this.props.target;
     this._setTargetWindowAndElement(target!);
@@ -263,7 +261,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       onRenderSubMenu = this._onRenderSubMenu,
       onRenderMenuList = this._onRenderMenuList,
       focusZoneProps,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       getMenuClassNames,
     } = this.props;
 
@@ -278,7 +276,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
     function itemsHaveIcons(contextualMenuItems: IContextualMenuItem[]): boolean {
       for (const item of contextualMenuItems) {
-        if (!!item.iconProps) {
+        if (item.iconProps) {
           return true;
         }
 
@@ -363,6 +361,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
+            // eslint-disable-next-line react/jsx-no-bind
             ref={(host: HTMLDivElement) => (this._host = host)}
             id={id}
             className={this._classNames.container}
@@ -374,10 +373,10 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             {title && <div className={this._classNames.title}> {title} </div>}
             {items && items.length ? (
               <FocusZone
-                {...this._adjustedFocusZoneProps}
                 className={this._classNames.root}
                 isCircularNavigation={true}
                 handleTabKey={FocusZoneTabbableElements.all}
+                {...this._adjustedFocusZoneProps}
               >
                 {onRenderMenuList(
                   {
@@ -427,6 +426,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       containsFocus: this._focusingPreviousElement,
       originalElement: this._previousActiveElement,
     });
+    this._focusingPreviousElement = false;
 
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
@@ -449,7 +449,12 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     originalElement: HTMLElement | Window | undefined;
   }) => {
     if (options && options.containsFocus && this._previousActiveElement) {
-      this._previousActiveElement && this._previousActiveElement.focus();
+      // Make sure that the focus method actually exists
+      // In some cases the object might exist but not be a real element.
+      // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
+      if (this._previousActiveElement.focus) {
+        this._previousActiveElement.focus();
+      }
     }
   };
 
@@ -515,7 +520,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
     const {
-      getItemClassNames, // tslint:disable-line:deprecation
+      getItemClassNames, // eslint-disable-line deprecation/deprecation
       itemProps,
     } = item;
     const styles = itemProps ? itemProps.styles : undefined;
@@ -525,7 +530,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     let itemClassNames: IMenuItemClassNames;
 
     // IContextualMenuItem#getItemClassNames for backwards compatibility
@@ -567,7 +572,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       );
     }
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     if (item.text === '-' || item.name === '-') {
       item.itemType = ContextualMenuItemType.Divider;
     }
@@ -609,7 +614,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _renderSectionItem(
     sectionItem: IContextualMenuItem,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     menuClassNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
@@ -667,7 +672,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _renderListItem(
     content: React.ReactNode,
     key: string | number,
-    classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
+    classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
     title?: string,
   ) {
     return (
@@ -679,7 +684,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _renderSeparator(
     index: number,
-    classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
+    classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
     top?: boolean,
     fromSection?: boolean,
   ): React.ReactNode {
@@ -698,7 +703,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _renderNormalItem(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
+    classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,
@@ -748,7 +753,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _renderHeaderMenuItem(
     item: IContextualMenuItem,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
@@ -759,7 +764,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     const divHtmlProperties =
       itemProps && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(itemProps, divProperties);
     return (
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       <div id={id} className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
@@ -775,7 +780,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _renderAnchorMenuItem(
     item: IContextualMenuItem,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
@@ -813,7 +818,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _renderButtonItem(
     item: IContextualMenuItem,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
@@ -853,7 +858,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _renderSplitButton(
     item: IContextualMenuItem,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
@@ -960,7 +965,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     let handled = false;
 
     if (shouldHandleKey(ev)) {
-      this._focusingPreviousElement = false;
+      this._focusingPreviousElement = true;
       this.dismiss(ev, dismissAllMenus);
       ev.preventDefault();
       ev.stopPropagation();
@@ -1205,7 +1210,16 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       dismiss = !!this.props.onItemClick(ev, item);
     }
 
-    (dismiss || !ev.defaultPrevented) && this.dismiss(ev, true);
+    if (dismiss || !ev.defaultPrevented) {
+      this.dismiss(ev, true);
+
+      // This should be removed whenever possible.
+      // This ensures that the hidden dismissal action maintains the same behavior.
+      // If the menu is being dismissed then the previously focused element should
+      // get focused since the dismiss was triggered by a user click on an item
+      // Rather than focus being lost.
+      this._focusingPreviousElement = true;
+    }
   };
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
@@ -1323,13 +1337,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         const currentDoc: Document = getDocument(currentElement)!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
         this._targetWindow = getWindow(currentElement)!;
-      } else if (!!(target as MouseEvent).stopPropagation) {
+        // Cast to any prevents error about stopPropagation always existing
+      } else if ((target as any).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target as MouseEvent;
       } else if (
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         ((target as Point).top !== undefined || (target as Point).y !== undefined)
       ) {
         this._targetWindow = getWindow(currentElement)!;

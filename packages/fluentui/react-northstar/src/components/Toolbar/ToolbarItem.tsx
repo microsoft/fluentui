@@ -31,13 +31,13 @@ import {
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
-import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
-import Popup, { PopupProps } from '../Popup/Popup';
+import { ToolbarMenu, ToolbarMenuProps } from './ToolbarMenu';
+import { Popup, PopupProps } from '../Popup/Popup';
 import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
 import { ToolbarItemShorthandKinds } from './Toolbar';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
-import ToolbarItemWrapper, { ToolbarItemWrapperProps } from './ToolbarItemWrapper';
-import ToolbarItemIcon, { ToolbarItemIconProps } from './ToolbarItemIcon';
+import { ToolbarItemWrapper, ToolbarItemWrapperProps } from './ToolbarItemWrapper';
+import { ToolbarItemIcon, ToolbarItemIconProps } from './ToolbarItemIcon';
 import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 
 export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -112,7 +112,7 @@ export const toolbarItemClassName = 'ui-toolbar__item';
 /**
  * A ToolbarItem renders Toolbar item as a button with an icon.
  */
-const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, {}, {}>(
+export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -420,5 +420,3 @@ ToolbarItem.defaultProps = {
   accessibility: toolbarItemBehavior,
   wrapper: {},
 };
-
-export default ToolbarItem;

@@ -1,5 +1,12 @@
-import { Accessibility, statusBehavior } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { Accessibility, statusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -7,18 +14,12 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
-import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { ShorthandValue, ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface StatusProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<StatusBehaviorProps>;
 
   /** A custom color. */
   color?: string;
@@ -36,7 +37,13 @@ export interface StatusProps extends UIComponentProps {
 export type StatusStylesProps = Pick<StatusProps, 'color' | 'size' | 'state'>;
 export const statusClassName = 'ui-status';
 
-const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = props => {
+/**
+ * A Status represents someone's or something's state.
+ *
+ * @accessibility
+ * Implements [ARIA img](https://www.w3.org/TR/wai-aria-1.1/#img) role.
+ */
+export const Status: ComponentWithAs<'span', StatusProps> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Status.displayName, context.telemetry);
   setStart();
@@ -100,11 +107,3 @@ Status.defaultProps = {
 };
 
 Status.create = createShorthandFactory({ Component: Status, mappedProp: 'state' });
-
-/**
- * A Status represents someone's or something's state.
- *
- * @accessibility
- * Implements [ARIA img](https://www.w3.org/TR/wai-aria-1.1/#img) role.
- */
-export default withSafeTypeForAs<typeof Status, StatusProps, 'span'>(Status);
