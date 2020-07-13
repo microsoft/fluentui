@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-import Popup, { PopupEvents } from 'src/components/Popup/Popup';
+import { Popup, PopupEvents } from 'src/components/Popup/Popup';
 import { popupContentClassName } from 'src/components/Popup/PopupContent';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
 import { keyboardKey, KeyNames, SpacebarKey } from '@fluentui/keyboard-key';
 import { ReactWrapper } from 'enzyme';
-import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
+import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
 
 describe('Popup', () => {
   implementsPopperProps(Popup, {

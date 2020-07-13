@@ -61,10 +61,10 @@ const getComponentInfo = (tsConfigPath: string, filepath: string, ignoredParentI
   //
   // this 'require' instruction might break by producing partially initialized types - because of ts-node module's cache used during processing
   // - in that case we might consider to disable ts-node cache when running this command: https://github.com/ReactiveX/rxjs/commit/2f86b9ddccbf020b2e695dd8fe0b79194efa3f56
-  const Component = require(absPath).default;
+  const Component = require(absPath)[filenameWithoutExt];
 
   if (!Component) {
-    throw new Error(`Your file with component under "${absPath}" doesn't have a default export`);
+    throw new Error(`Your file with component under "${absPath}" doesn't have a matching export`);
   }
 
   const componentFile = Babel.parse(fs.readFileSync(absPath).toString(), {

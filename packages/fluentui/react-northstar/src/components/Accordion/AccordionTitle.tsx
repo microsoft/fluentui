@@ -20,7 +20,7 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   getElementType,
@@ -97,7 +97,7 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
 /**
  * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.
  */
-const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
+export const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
   FluentComponentStaticProps<AccordionTitleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
@@ -255,5 +255,3 @@ AccordionTitle.defaultProps = {
 };
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
-
-export default AccordionTitle;

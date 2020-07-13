@@ -1,8 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 07 Jul 2020 12:34:51 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.121.12](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.12)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.11..office-ui-fabric-react_v7.121.12)
+
+### Patches
+
+- Apply focusZone props to ContextualMenu. ([PR #13924](https://github.com/microsoft/fluentui/pull/13924) by kinhln@microsoft.com)
+- Prettier update. ([PR #13812](https://github.com/microsoft/fluentui/pull/13812) by humbertomakotomorimoto@gmail.com)
+- Slider: Fixing High Contrast styles. ([PR #13952](https://github.com/microsoft/fluentui/pull/13952) by ololubek@microsoft.com)
+- Applying cosmetic code updates from Prettier. ([PR #13953](https://github.com/microsoft/fluentui/pull/13953) by KevinTCoughlin@users.noreply.github.com)
+
+## [7.121.11](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.11)
+
+Wed, 08 Jul 2020 12:34:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.10..office-ui-fabric-react_v7.121.11)
+
+### Patches
+
+- Removing console.log from MarqueeSelection Example. ([PR #13941](https://github.com/microsoft/fluentui/pull/13941) by czearing@outlook.com)
 
 ## [7.121.10](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.10)
 

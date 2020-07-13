@@ -30,7 +30,8 @@ export const cardFooterClassName = 'ui-card__footer';
 /**
  * A CardFooter is used to display data in Card component footer
  */
-const CardFooter: ComponentWithAs<'div', CardFooterProps> & FluentComponentStaticProps<CardFooterProps> = props => {
+export const CardFooter: ComponentWithAs<'div', CardFooterProps> &
+  FluentComponentStaticProps<CardFooterProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardFooter.displayName, context.telemetry);
   setStart();
@@ -79,5 +80,3 @@ CardFooter.propTypes = {
 CardFooter.handledProps = Object.keys(CardFooter.propTypes) as any;
 
 CardFooter.create = createShorthandFactory({ Component: CardFooter });
-
-export default CardFooter;

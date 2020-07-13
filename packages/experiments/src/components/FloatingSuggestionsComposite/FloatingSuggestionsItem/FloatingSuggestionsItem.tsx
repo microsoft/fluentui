@@ -35,7 +35,11 @@ export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestion
 
   return (
     <div className={css(classNames.root, className ? className : '')} id={id}>
-      <CommandButton onClick={onClickItem} className={classNames.itemButton}>
+      <CommandButton
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClickItem}
+        className={classNames.itemButton}
+      >
         {onRenderSuggestion ? (
           onRenderSuggestion(props as IFloatingSuggestionOnRenderItemProps<T>)
         ) : (
@@ -47,6 +51,7 @@ export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestion
           iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
           title={removeButtonAriaLabel}
           ariaLabel={removeButtonAriaLabel}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={onRemove}
           className={classNames.closeButton}
         />

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { autobind } from 'random-npm-package';
 
 class Foo {

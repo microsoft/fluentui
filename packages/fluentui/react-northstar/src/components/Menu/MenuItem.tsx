@@ -28,11 +28,11 @@ import {
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
 } from '../../utils';
-import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
-import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
-import MenuItemContent, { MenuItemContentProps } from './MenuItemContent';
-import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
-import MenuItemWrapper, { MenuItemWrapperProps } from './MenuItemWrapper';
+import { Menu, MenuProps, MenuShorthandKinds } from './Menu';
+import { MenuItemIcon, MenuItemIconProps } from './MenuItemIcon';
+import { MenuItemContent, MenuItemContentProps } from './MenuItemContent';
+import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
+import { MenuItemWrapper, MenuItemWrapperProps } from './MenuItemWrapper';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 // @ts-ignore
@@ -618,5 +618,3 @@ MenuItem.defaultProps = {
   wrapper: {},
   indicator: {},
 };
-
-export default MenuItem;

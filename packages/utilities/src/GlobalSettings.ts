@@ -9,8 +9,6 @@ import { getWindow } from './dom/getWindow';
  * callers to get called back when it mutates.
  */
 
-// tslint:disable:no-any
-
 const GLOBAL_SETTINGS_PROP_NAME = '__globalSettings__';
 const CALLBACK_STATE_PROP_NAME = '__callbacks__';
 
@@ -24,9 +22,9 @@ let _counter = 0;
  */
 export interface IChangeDescription {
   key: string;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   oldValue: any;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: any;
 }
 
@@ -103,8 +101,10 @@ export class GlobalSettings {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function _getGlobalSettings(): { [key: string]: any } {
   const win = getWindow();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const globalObj: { [key: string]: any } = win || {};
 
   if (!globalObj[GLOBAL_SETTINGS_PROP_NAME]) {

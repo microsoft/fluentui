@@ -22,7 +22,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { ChatItemContextProvider } from './chatItemContext';
 
 export interface ChatItemSlotClassNames {
@@ -60,7 +60,7 @@ export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosit
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
  */
-const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentStaticProps<ChatItemProps> = props => {
+export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentStaticProps<ChatItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
@@ -158,5 +158,3 @@ ChatItem.propTypes = {
 ChatItem.handledProps = Object.keys(ChatItem.propTypes) as any;
 
 ChatItem.create = createShorthandFactory({ Component: ChatItem, mappedProp: 'message' });
-
-export default ChatItem;

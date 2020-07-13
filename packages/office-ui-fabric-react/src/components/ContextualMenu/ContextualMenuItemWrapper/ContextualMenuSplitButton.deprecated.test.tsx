@@ -4,8 +4,6 @@ import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
 
-// tslint:disable:deprecation
-
 describe('ContextualMenuSplitButton', () => {
   describe('creates a normal split button', () => {
     let menuItem: IContextualMenuItem;

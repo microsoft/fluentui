@@ -225,6 +225,9 @@ export const getMenuItemStyles = memoizeFunction(
           [MediumScreenSelector]: {
             fontSize: IconFontSizes.medium, // 16px
           },
+          [HighContrastSelector]: {
+            color: 'HighlightText',
+          },
         },
       },
       splitButtonFlexContainer: [

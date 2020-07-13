@@ -11,7 +11,6 @@ import {
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import * as stylesImport from './ContextualMenuExample.scss';
 
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export const ContextualMenuIconExample: React.FunctionComponent = () => {

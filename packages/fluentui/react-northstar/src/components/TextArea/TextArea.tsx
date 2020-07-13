@@ -61,7 +61,8 @@ export const textAreaClassName = 'ui-textarea';
  * [NVDA - No announcement of maxlength](https://github.com/nvaccess/nvda/issues/7910)
  * [JAWS - textarea - no announcement of maxlength](https://github.com/FreedomScientific/VFO-standards-support/issues/300)
  */
-const TextArea: ComponentWithAs<'textarea', TextAreaProps> & FluentComponentStaticProps<TextAreaProps> = props => {
+export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
+  FluentComponentStaticProps<TextAreaProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
 
@@ -148,5 +149,3 @@ TextArea.handledProps = Object.keys(TextArea.propTypes) as any;
 TextArea.create = createShorthandFactory({
   Component: TextArea,
 });
-
-export default TextArea;

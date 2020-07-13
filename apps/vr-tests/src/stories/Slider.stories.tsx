@@ -5,7 +5,6 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { Slider } from 'office-ui-fabric-react';
 
-// tslint:disable:jsx-ban-props
 storiesOf('Slider', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (

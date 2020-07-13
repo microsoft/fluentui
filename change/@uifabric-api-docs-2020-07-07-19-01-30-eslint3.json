@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove tslint references",
+  "packageName": "@uifabric/api-docs",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-07-08T01:46:14.456Z"
+}

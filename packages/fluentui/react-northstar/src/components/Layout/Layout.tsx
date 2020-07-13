@@ -74,7 +74,7 @@ export type LayoutStylesProps = Required<
 /**
  * (DEPRECATED) A layout is a utility for arranging the content of a component.
  */
-const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStaticProps<LayoutProps> = props => {
+export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStaticProps<LayoutProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Layout.displayName, context.telemetry);
   setStart();
@@ -293,5 +293,3 @@ Layout.handledProps = Object.keys(Layout.propTypes) as any;
 Layout.create = createShorthandFactory({
   Component: Layout,
 });
-
-export default Layout;

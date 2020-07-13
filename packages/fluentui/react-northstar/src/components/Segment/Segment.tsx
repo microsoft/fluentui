@@ -15,7 +15,7 @@ import { Accessibility } from '@fluentui/accessibility';
 import { ThemeContext } from 'react-fela';
 
 import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   useTelemetry,
@@ -49,7 +49,7 @@ export const segmentClassName = 'ui-segment';
 /**
  * A Segment visually groups related content.
  */
-const Segment: ComponentWithAs<'div', SegmentProps> & FluentComponentStaticProps<SegmentProps> = props => {
+export const Segment: ComponentWithAs<'div', SegmentProps> & FluentComponentStaticProps<SegmentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Segment.displayName, context.telemetry);
   setStart();
@@ -109,5 +109,3 @@ Segment.handledProps = Object.keys(Segment.propTypes) as any;
 Segment.create = createShorthandFactory({
   Component: Segment,
 });
-
-export default Segment;

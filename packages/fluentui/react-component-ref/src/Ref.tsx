@@ -2,11 +2,11 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as ReactIs from 'react-is';
 
-import RefFindNode from './RefFindNode';
-import RefForward from './RefForward';
+import { RefFindNode } from './RefFindNode';
+import { RefForward } from './RefForward';
 import { RefProps, refPropType } from './types';
 
-const Ref: React.FunctionComponent<RefProps> = props => {
+export const Ref: React.FunctionComponent<RefProps> = props => {
   const { children, innerRef, ...rest } = props;
 
   const child = React.Children.only(children);
@@ -24,5 +24,3 @@ if (process.env.NODE_ENV !== 'production') {
     innerRef: refPropType.isRequired,
   };
 }
-
-export default Ref;

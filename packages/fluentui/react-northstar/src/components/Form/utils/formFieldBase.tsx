@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { UIComponentProps, commonPropTypes, getOrGenerateIdFromShorthand, createShorthand } from '../../../utils';
 import { ShorthandValue, ProviderContextPrepared } from '../../../types';
-import Box, { BoxProps } from '../../Box/Box';
+import { Box, BoxProps } from '../../Box/Box';
 import {
   getElementType,
   useUnhandledProps,
@@ -13,8 +13,8 @@ import {
   compose,
   useStyles,
 } from '@fluentui/react-bindings';
-import FormLabel, { FormLabelProps } from '../FormLabel';
-import FormMessage, { FormMessageProps } from '../FormMessage';
+import { FormLabel, FormLabelProps } from '../FormLabel';
+import { FormMessage, FormMessageProps } from '../FormMessage';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -46,7 +46,7 @@ export type FormFieldBaseStylesProps = never;
 /**
  * A FormFiedBase represents a Form element containing a label and an input.
  */
-const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
+export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -155,5 +155,3 @@ _FormFieldBase.propTypes = {
 _FormFieldBase.defaultProps = {
   accessibility: formFieldBehavior,
 };
-
-export default _FormFieldBase;

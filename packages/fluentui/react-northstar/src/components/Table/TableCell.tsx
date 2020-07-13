@@ -22,7 +22,7 @@ import {
 } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 
 export interface TableCellProps
@@ -55,7 +55,7 @@ export const tableCellSlotClassNames: TableCellSlotClassNames = {
 /**
  * Component represents a table cell.
  */
-const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponentStaticProps<TableCellProps> = props => {
+export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponentStaticProps<TableCellProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
   setStart();
@@ -143,5 +143,3 @@ TableCell.defaultProps = {
 };
 
 TableCell.create = createShorthandFactory({ Component: TableCell, mappedProp: 'content' });
-
-export default TableCell;

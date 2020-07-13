@@ -4,7 +4,6 @@ import { mergeThemes, ThemeProvider, Theme, PartialTheme } from '@fluentui/react
 import { UploadIcon } from '@fluentui/react-icons';
 import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
 
-// tslint:disable: jsx-ban-props
 const paletteAccent = 'var(--palette-accent)';
 const paletteSoftest = 'var(--palette-softest)';
 const paletteStrongest = 'var(--palette-strongest)';
@@ -90,8 +89,8 @@ const ExampleBox = ({ title, theme }: { title: string; theme: Theme }) => (
       }}
     >
       <Text variant="xLarge">{title}</Text>
-      <Button icon={<UploadIcon />} content="I am a button" />
-      <Button primary content="I am a primary button" />
+      <Button icon={<UploadIcon />}>I am a button</Button>
+      <Button primary>I am a primary button</Button>
     </Stack>
   </ThemeProvider>
 );
