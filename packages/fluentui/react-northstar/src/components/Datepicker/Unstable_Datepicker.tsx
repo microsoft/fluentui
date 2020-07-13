@@ -21,10 +21,10 @@ import {
   ComponentEventHandler,
 } from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
+import { Input } from '../Input/Input';
+import { Button } from '../Button/Button';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
-import Popup from '../Popup/Popup';
+import { Popup } from '../Popup/Popup';
 import {
   IRestrictedDatesOptions,
   IDay,
@@ -35,7 +35,7 @@ import {
   formatMonthDayYear,
   IDayGridOptions,
 } from '@fluentui/date-time-utilities';
-import { default as DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
+import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 
 // TODO: extract to date-time-utilities
 const DEFAULT_STRINGS: IDateGridStrings = {
@@ -152,7 +152,10 @@ export type DatepickerStylesProps = never;
 
 export const datepickerClassName = 'ui-datepicker';
 
-const Unstable_Datepicker: ComponentWithAs<'div', DatepickerProps> &
+/**
+ * A Datepicker is used to display dates.
+ */
+export const Unstable_Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Unstable_Datepicker.displayName, context.telemetry);
@@ -271,8 +274,3 @@ Unstable_Datepicker.defaultProps = {
 Unstable_Datepicker.handledProps = Object.keys(Unstable_Datepicker.propTypes) as any;
 
 Unstable_Datepicker.create = createShorthandFactory({ Component: Unstable_Datepicker });
-
-/**
- * A Datepicker is used to display dates.
- */
-export default Unstable_Datepicker;

@@ -15,7 +15,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, ComponentEventHandler } from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-import Grid from '../Grid/Grid';
+import { Grid } from '../Grid/Grid';
 import {
   IDayGridOptions,
   getDayGrid,
@@ -27,8 +27,8 @@ import {
   DateRangeType,
   formatMonthDayYear,
 } from '@fluentui/date-time-utilities';
-import Text from '../Text/Text';
-import Button from '../Button/Button';
+import { Text } from '../Text/Text';
+import { Button } from '../Button/Button';
 import { IDatepickerOptions } from './Unstable_Datepicker';
 
 export interface IDateFormatting {
@@ -72,7 +72,10 @@ export type DatepickerCalendarStylesProps = never;
 
 export const datepickerCalendarClassName = 'ui-datepickerCalendar';
 
-const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps> &
+/**
+ * A DatepickerCalendar is used to display dates in sematically grouped way.
+ */
+export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps> &
   FluentComponentStaticProps<DatepickerCalendarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DatepickerCalendar.displayName, context.telemetry);
@@ -195,8 +198,3 @@ DatepickerCalendar.defaultProps = {
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;
 
 DatepickerCalendar.create = createShorthandFactory({ Component: DatepickerCalendar });
-
-/**
- * A DatepickerCalendar is used to display dates in sematically grouped way.
- */
-export default DatepickerCalendar;

@@ -1,4 +1,4 @@
-import Unstable_Datepicker from 'src/components/Datepicker/Unstable_Datepicker';
+import { Unstable_Datepicker } from 'src/components/Datepicker/Unstable_Datepicker';
 
 describe('Datepicker', () => {
   // Currently, we don't run the isConformant test as the component is exported as Unstable_.
