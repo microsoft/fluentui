@@ -50,7 +50,6 @@ export const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, Li
         content: '""',
         minHeight: 'inherit',
         fontSize: 0,
-        display: 'block',
       },
       padding: v.rootPadding,
       ...((p.selectable || p.navigable) && {
