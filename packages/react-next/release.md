@@ -17,10 +17,10 @@
 ### Others
 
 - Function component conversion.
-- ThemeProvider is required. (new)
-- Customizer. (shim)
-- KeytipData/keytipProps removed from Link/Toggle/Checkbox.
-- Button and Card are new components that break from their previous implementation.
+- `ThemeProvider` is required. (new)
+- `Customizer`. (shim)
+- `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
+- `Button` and `Card` are new components that break from their previous implementation.
 
 ## Minor changes
 
