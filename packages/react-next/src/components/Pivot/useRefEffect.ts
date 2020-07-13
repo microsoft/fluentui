@@ -2,7 +2,7 @@ import * as React from 'react';
 
 /**
  * Creates a ref, and calls a callback whenever the ref changes to a non-null value.
- * The callback can optionally return a cleanup function that'll be called before the value changes or is set to null.
+ * The callback can optionally return a cleanup function that'll be called before the value changes.
  *
  * This can be used to work around a limitation that useEffect cannot depend on `ref.current` (see
  * https://github.com/facebook/react/issues/14387#issuecomment-503616820).
@@ -11,7 +11,7 @@ import * as React from 'react';
  * @param initialValue - (Optional) The initial value for the ref.
  *
  * @returns A tuple of `[ref, setRef]`:
- * * `ref` - Read-only view of the ref's current value
+ * * `ref` - Read-only view of the ref's current value.
  * * `setRef` - A ref setter function that can be used to change the ref's current value.
  */
 export function useRefEffect<T>(
@@ -21,7 +21,7 @@ export function useRefEffect<T>(
   type RefData = {
     readonly ref: React.MutableRefObject<T | null>;
     readonly setRef: (value: T | null) => void;
-    currentCallback: (value: T) => (() => void) | void;
+    callback: (value: T) => (() => void) | void;
     cleanup?: (() => void) | void;
   };
 
@@ -31,15 +31,20 @@ export function useRefEffect<T>(
       if (data.ref.current !== value) {
         if (data.cleanup) {
           data.cleanup();
+          data.cleanup = undefined;
         }
+
         data.ref.current = value;
-        data.cleanup = value !== null ? data.currentCallback(value) : undefined;
+
+        if (value !== null) {
+          data.cleanup = data.callback(value);
+        }
       }
     },
-    currentCallback: callback,
+    callback,
   }).current;
 
-  data.currentCallback = callback;
+  data.callback = callback;
 
   return [data.ref, data.setRef];
 }
