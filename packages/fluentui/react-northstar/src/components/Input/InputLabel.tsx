@@ -29,6 +29,9 @@ export const InputLabel = compose<'label', InputLabelProps, InputLabelStylesProp
     hasValue,
   }),
   handledProps: ['required', 'labelPosition', 'hasValue'],
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
 });
 
 InputLabel.defaultProps = {
