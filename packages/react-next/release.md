@@ -26,7 +26,7 @@
 
 ### Pivot
 
-- Updated enums to string union type: PivotLinkFormat, PivotLinkSize. (#13370)
+- Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
 
 ## Changes worth callout
 
