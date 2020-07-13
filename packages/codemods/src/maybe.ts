@@ -35,8 +35,12 @@ export type Maybe<T> = Just<T> | Nothing<T>;
 // Need to use assign so that the object remains correctly bound to the methods.
 export const Nothing = <T>(): Nothing<T> => Object.assign<MB<T>, { just: false }>(_makeMaybe(), { just: false });
 
-export const Just = <T>(value: T): Just<T> =>
-  Object.assign<MB<T>, { just: true; value: T }>(_makeMaybe(), { just: true, value: value });
+export const Just = <T>(value: T): Just<T> => {
+  if (value === undefined || value === null) {
+    throw 'Maybe.Just cannot receive undefined value';
+  }
+  return Object.assign<MB<T>, { just: true; value: T }>(_makeMaybe(), { just: true, value: value });
+};
 
 export const Maybe = <T>(value: T | undefined | null): Maybe<T> => {
   return value !== undefined && value !== null ? Just(value) : Nothing();
