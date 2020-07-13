@@ -29,7 +29,7 @@ import {
 } from '@fluentui/date-time-utilities';
 import Text from '../Text/Text';
 import Button from '../Button/Button';
-import { IDatepickerOptions } from './Datepicker';
+import { IDatepickerOptions } from './Unstable_Datepicker';
 
 export interface IDateFormatting {
   /**

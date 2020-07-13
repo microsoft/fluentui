@@ -315,8 +315,8 @@ export * from './components/Card/CardColumn';
 export { default as CardColumn } from './components/Card/CardColumn';
 export * from './components/Card/CardExpandableBox';
 export { default as CardExpandableBox } from './components/Card/CardExpandableBox';
-export { default as Unstable_Datepicker } from './components/Datepicker/Datepicker';
-export * from './components/Datepicker/Datepicker';
+export { default as Unstable_Datepicker } from './components/Datepicker/Unstable_Datepicker';
+export * from './components/Datepicker/Unstable_Datepicker';
 //
 // Utilities
 //
