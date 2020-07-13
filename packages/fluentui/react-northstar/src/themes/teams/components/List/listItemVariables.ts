@@ -33,7 +33,7 @@ export interface ListItemVariables {
 
 export const listItemVariables = (siteVariables: any): ListItemVariables => {
   return {
-    minHeight: pxToRem(48),
+    minHeight: pxToRem(46),
     rootPadding: `0 ${pxToRem(18)} 0 ${pxToRem(20)}`,
     zIndex: siteVariables.zIndexes.foreground,
 
