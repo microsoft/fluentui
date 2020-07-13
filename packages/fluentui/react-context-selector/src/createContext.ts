@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import { Context, ContextListener, ContextValue, CreateContextOptions } from './types';
+import { useIsomorphicLayoutEffect } from './utils';
 
 // Stops React Context propagation
 // https://github.com/facebook/react/blob/95bd7aad7daa80c381faa3215c80b0906ab5ead5/packages/react-reconciler/src/ReactFiberBeginWork.js#L2656
@@ -9,11 +11,19 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
   const Provider: React.FC<React.ProviderProps<Value>> = props => {
     const listeners = React.useRef<ContextListener<Value>[]>([]);
 
-    // We call listeners in render intentionally. Listeners are not technically pure, but
-    // otherwise we can't get benefits from concurrent mode.
-    //
-    // We make sure to work with double or more invocation of listeners.
-    listeners.current.forEach(listener => listener(props.value));
+    if (process.env.NODE_ENV !== 'production') {
+      // We use layout effect to eliminate warnings, but this leads tearing with startTransition.
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useIsomorphicLayoutEffect(() => {
+        listeners.current.forEach(listener => listener(props.value));
+      });
+    } else {
+      // We call listeners in render intentionally. Listeners are not technically pure, but
+      // otherwise we can't get benefits from concurrent mode.
+      //
+      // We make sure to work with double or more invocation of listeners.
+      listeners.current.forEach(listener => listener(props.value));
+    }
 
     // Disables updates propogation for React Context as `value` is always shallow equal
     const subscribe = React.useCallback((listener: ContextListener<Value>) => {
