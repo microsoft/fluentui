@@ -24,6 +24,7 @@ interface IDonutChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   focusedArcId?: string;
+  selectedLegend: string;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -62,6 +63,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
+      selectedLegend: 'none',
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
@@ -220,6 +222,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        selectedLegend={this.state.selectedLegend}
       />
     );
     return legends;
@@ -233,6 +236,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       legend: data.legend,
       activeLegend: data.legend,
       color: data.color!,
+      selectedLegend: data.legend!,
       xCalloutValue: data.xAxisCalloutData!,
       yCalloutValue: data.yAxisCalloutData!,
       focusedArcId: id,
@@ -244,6 +248,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this.setState({
       showHover: true,
       value: data.data!.toString(),
+      selectedLegend: data.legend!,
       legend: data.legend,
       color: data.color!,
       xCalloutValue: data.xAxisCalloutData!,
@@ -252,10 +257,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
   };
   private _onBlur = (): void => {
-    this.setState({ showHover: false, focusedArcId: '', activeLegend: '' });
+    this.setState({ showHover: false, focusedArcId: '', activeLegend: '', selectedLegend: 'none' });
   };
 
   private _hoverLeave(): void {
-    this.setState({ showHover: false, activeLegend: '' });
+    this.setState({ showHover: false, activeLegend: '', selectedLegend: 'none', focusedArcId: '' });
   }
 }
