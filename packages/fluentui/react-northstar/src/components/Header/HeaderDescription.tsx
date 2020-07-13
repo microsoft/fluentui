@@ -40,7 +40,7 @@ export type HeaderDescriptionStylesProps = Pick<HeaderDescriptionProps, 'color'>
 /**
  * A HeaderDescription provides more detailed information about the Header.
  */
-const HeaderDescription: ComponentWithAs<'p', HeaderDescriptionProps> &
+export const HeaderDescription: ComponentWithAs<'p', HeaderDescriptionProps> &
   FluentComponentStaticProps<HeaderDescriptionProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(HeaderDescription.displayName, context.telemetry);
@@ -99,5 +99,3 @@ HeaderDescription.create = createShorthandFactory({
   Component: HeaderDescription,
   mappedProp: 'content',
 });
-
-export default HeaderDescription;

@@ -13,7 +13,7 @@ import {
   rtlTextContainer,
   createShorthandFactory,
 } from '../../utils';
-import RadioGroupItem, { RadioGroupItemProps } from './RadioGroupItem';
+import { RadioGroupItem, RadioGroupItemProps } from './RadioGroupItem';
 import {
   ComponentEventHandler,
   ShorthandCollection,
@@ -66,7 +66,7 @@ export type RadioGrouptStylesProps = never;
  * @accessibility
  * Implements [ARIA Radio Group](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton) design pattern.
  */
-const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
+export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
   FluentComponentStaticProps<RadioGroupProps> & {
     Item: typeof RadioGroupItem;
   } = props => {
@@ -234,5 +234,3 @@ RadioGroup.Item = RadioGroupItem;
 RadioGroup.create = createShorthandFactory({
   Component: RadioGroup,
 });
-
-export default RadioGroup;

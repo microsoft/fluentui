@@ -40,7 +40,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       imageSrc,
       imageSize,
       disabled,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       checked,
       id,
       styles,

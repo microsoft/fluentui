@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import renderComponent, { RenderResultConfig } from './renderComponent';
+import { renderComponent, RenderResultConfig } from './renderComponent';
 import { createShorthandFactory, ShorthandFactory } from './factories';
 import { ObjectOf, ProviderContextPrepared } from '../types';
 
@@ -24,7 +24,7 @@ export type CreateComponentReturnType<P> = React.FunctionComponent<P> & {
   create: ShorthandFactory<P>;
 };
 
-const createComponentInternal = <P extends ObjectOf<any> = any>({
+export const createComponentInternal = <P extends ObjectOf<any> = any>({
   displayName = 'FluentUIComponent',
   className = 'fluent-ui-component',
   shorthandPropName = 'children',
@@ -78,5 +78,3 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
 
   return FluentComponent;
 };
-
-export default createComponentInternal;

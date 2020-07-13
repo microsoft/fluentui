@@ -81,14 +81,22 @@ const DEFAULT_PROPS: Partial<ICalendarProps> = {
 };
 
 function useDateState({ value, today = new Date(), onSelectDate }: ICalendarProps) {
+  /** The currently selected date in the calendar */
+  const [selectedDate = today, setSelectedDate] = useControllableValue(value, today);
+
   /** The currently focused date in the day picker, but not necessarily selected */
   const [navigatedDay = today, setNavigatedDay] = React.useState(value);
 
   /** The currently focused date in the month picker, but not necessarily selected */
   const [navigatedMonth = today, setNavigatedMonth] = React.useState(value);
 
-  /** The currently selected date in the calendar */
-  const [selectedDate = today, setSelectedDate] = useControllableValue(value, today);
+  /** If using a controlled value, when that value changes, navigate to that date */
+  const [lastSelectedDate = today, setLastSelectedDate] = React.useState(value);
+  if (value && lastSelectedDate.valueOf() !== value.valueOf()) {
+    setNavigatedDay(value);
+    setNavigatedMonth(value);
+    setLastSelectedDate(value);
+  }
 
   const navigateMonth = (date: Date) => {
     setNavigatedMonth(date);
@@ -337,6 +345,7 @@ export const CalendarBase = React.forwardRef(
         ref={forwardedRef}
         aria-label={selectionAndTodayString}
         className={css(rootClass, classes.root, className, 'ms-slideDownIn10')}
+        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={onDatePickerPopupKeyDown}
       >
         <div className={classes.liveRegion} aria-live="polite" aria-atomic="true">
@@ -348,11 +357,13 @@ export const CalendarBase = React.forwardRef(
             navigatedDate={navigatedDay!}
             today={props.today}
             onSelectDate={onDateSelected}
+            // eslint-disable-next-line react/jsx-no-bind
             onNavigateDate={onNavigateDayDate}
             onDismiss={props.onDismiss}
             firstDayOfWeek={firstDayOfWeek!}
             dateRangeType={dateRangeType!}
             strings={strings!}
+            // eslint-disable-next-line react/jsx-no-bind
             onHeaderSelect={onHeaderSelect}
             navigationIcons={navigationIcons!}
             showWeekNumbers={props.showWeekNumbers}
@@ -376,10 +387,12 @@ export const CalendarBase = React.forwardRef(
               navigatedDate={navigatedMonth}
               selectedDate={navigatedDay}
               strings={strings!}
+              // eslint-disable-next-line react/jsx-no-bind
               onNavigateDate={onNavigateMonthDate}
               today={props.today}
               highlightCurrentMonth={highlightCurrentMonth!}
               highlightSelectedMonth={highlightSelectedMonth!}
+              // eslint-disable-next-line react/jsx-no-bind
               onHeaderSelect={onHeaderSelect}
               navigationIcons={navigationIcons!}
               dateTimeFormatter={props.dateTimeFormatter!}

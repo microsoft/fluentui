@@ -1,4 +1,4 @@
-import DropdownItem from 'src/components/Dropdown/DropdownItem';
+import { DropdownItem } from 'src/components/Dropdown/DropdownItem';
 import { isConformant } from 'test/specs/commonTests';
 
 describe('DropdownItem', () => {

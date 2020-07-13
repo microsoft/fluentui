@@ -1,4 +1,4 @@
-import mergeProviderContexts, { mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
+import { mergeProviderContexts, mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
 import { ProviderContextInput } from 'src/types';
 
 describe('getRenderer', () => {

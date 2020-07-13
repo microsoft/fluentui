@@ -8,7 +8,6 @@ import { DirectionalHint } from '../../../common/DirectionalHint';
 import {
   Point,
   IRectangle,
-  assign,
   css,
   elementContains,
   focusFirstChild,
@@ -113,7 +112,6 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     this._positionAttempts = 0;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillMount(): void {
     this._setTargetWindowAndElement(this._getTarget());
   }
@@ -127,7 +125,6 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     this._updateAsyncPosition();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
@@ -182,7 +179,6 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
             directionalClassName,
             !!positioningContainerWidth && { width: positioningContainerWidth },
           )}
-          // tslint:disable-next-line:jsx-ban-props
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
@@ -281,13 +277,12 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     const positioningContainerElement = this._contentHost.current;
 
     if (hostElement && positioningContainerElement) {
-      let currentProps: IPositionProps | undefined;
-      currentProps = assign(currentProps, this.props);
-      currentProps!.bounds = this._getBounds();
-      currentProps!.target = this._target!;
-      if (document.body.contains(currentProps!.target as Node)) {
-        currentProps!.gapSpace = offsetFromTarget;
-        const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
+      const currentProps: IPositionProps = { ...(this.props as any) };
+      currentProps.bounds = this._getBounds();
+      currentProps.target = this._target!;
+      if (document.body.contains(currentProps.target as Node)) {
+        currentProps.gapSpace = offsetFromTarget;
+        const newPositions: IPositionedData = positionElement(currentProps, hostElement, positioningContainerElement);
         // Set the new position only when the positions are not exists or one of the new positioningContainer positions
         // are different. The position should not change if the position is within 2 decimal places.
         if (
@@ -386,13 +381,14 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
         const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
         this._targetWindow = getWindow(currentElement)!;
-      } else if (!!(target as MouseEvent).stopPropagation) {
+        // Cast to any prevents error about stopPropagation always existing
+      } else if ((target as any).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).target as HTMLElement)!;
         this._target = target;
       } else if (
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         ((target as Point).top !== undefined || (target as Point).y !== undefined)
       ) {
         this._targetWindow = getWindow(currentElement)!;

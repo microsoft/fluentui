@@ -30,7 +30,8 @@ export const cardHeaderClassName = 'ui-card__header';
 /**
  * A CardHeader is used to display data in Card header.
  */
-const CardHeader: ComponentWithAs<'div', CardHeaderProps> & FluentComponentStaticProps<CardHeaderProps> = props => {
+export const CardHeader: ComponentWithAs<'div', CardHeaderProps> &
+  FluentComponentStaticProps<CardHeaderProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardHeader.displayName, context.telemetry);
   setStart();
@@ -79,5 +80,3 @@ CardHeader.propTypes = {
 CardHeader.handledProps = Object.keys(CardHeader.propTypes) as any;
 
 CardHeader.create = createShorthandFactory({ Component: CardHeader });
-
-export default CardHeader;

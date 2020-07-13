@@ -15,7 +15,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ShorthandValue,
   ComponentEventHandler,
@@ -97,7 +97,7 @@ export const listItemSlotClassNames: ListItemSlotClassNames = {
 /**
  * A ListItem contains a single piece of content within a List.
  */
-const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> &
+export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> &
   FluentComponentStaticProps<ListItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
@@ -288,5 +288,3 @@ ListItem.propTypes = {
 ListItem.handledProps = Object.keys(ListItem.propTypes) as any;
 
 ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' });
-
-export default ListItem;

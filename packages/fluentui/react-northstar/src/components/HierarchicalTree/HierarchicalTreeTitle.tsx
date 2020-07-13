@@ -54,7 +54,7 @@ export type HierarchicalTreeTitleStylesProps = never;
 /**
  * A TreeTitle renders a title of TreeItem.
  */
-const HierarchicalTreeTitle: ComponentWithAs<'a', HierarchicalTreeTitleProps> &
+export const HierarchicalTreeTitle: ComponentWithAs<'a', HierarchicalTreeTitleProps> &
   FluentComponentStaticProps<HierarchicalTreeTitleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(HierarchicalTreeTitle.displayName, context.telemetry);
@@ -131,5 +131,3 @@ HierarchicalTreeTitle.create = createShorthandFactory({
   Component: HierarchicalTreeTitle,
   mappedProp: 'content',
 });
-
-export default HierarchicalTreeTitle;

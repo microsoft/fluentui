@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix for the test-utility safeMount to check if wrapper should unmount.",
+  "packageName": "@uifabric/test-utilities",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-09T21:01:39.689Z"
+}

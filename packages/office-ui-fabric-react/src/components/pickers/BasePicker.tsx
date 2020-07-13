@@ -101,7 +101,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _async: Async;
@@ -138,7 +138,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     return this.state.items;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: P, newState: IBasePickerState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
@@ -150,7 +149,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
@@ -435,7 +433,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   protected onEmptyInputFocus() {
     const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
       ? this.props.onEmptyResolveSuggestions
-      : // tslint:disable-next-line:deprecation
+      : // eslint-disable-next-line deprecation/deprecation
         this.props.onEmptyInputFocus;
 
     // Only attempt to resolve suggestions if it exists

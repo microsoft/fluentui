@@ -5,9 +5,9 @@ import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
 import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
-import Image from '../Image/Image';
-import Video, { VideoProps } from '../Video/Video';
-import Box, { BoxProps } from '../Box/Box';
+import { Image } from '../Image/Image';
+import { Video, VideoProps } from '../Video/Video';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentEventHandler,
   ShorthandValue,
@@ -89,7 +89,7 @@ export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLo
  * A `placeholder` slot represents an [`Image`](/components/image/definition) component, please follow recommendations from its
  * accessibility section.
  */
-const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticProps<EmbedProps> = props => {
+export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticProps<EmbedProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Embed.displayName, context.telemetry);
   setStart();
@@ -252,5 +252,3 @@ Embed.defaultProps = {
 Embed.handledProps = Object.keys(Embed.propTypes) as any;
 
 Embed.create = createShorthandFactory({ Component: Embed });
-
-export default Embed;

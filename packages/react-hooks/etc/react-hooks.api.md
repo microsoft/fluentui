@@ -51,6 +51,24 @@ export function useOnEvent<TElement extends Element, TEvent extends Event>(eleme
 // @public
 export function usePrevious<T>(value: T): T | undefined;
 
+// @public
+export const useSetInterval: () => UseSetIntervalReturnType;
+
+// @public (undocumented)
+export type UseSetIntervalReturnType = {
+    setInterval: (callback: () => void, duration: number) => number;
+    clearInterval: (id: number) => void;
+};
+
+// @public
+export const useSetTimeout: () => UseSetTimeoutReturnType;
+
+// @public (undocumented)
+export type UseSetTimeoutReturnType = {
+    setTimeout: (callback: () => void, duration: number) => number;
+    clearTimeout: (id: number) => void;
+};
+
 
 // (No @packageDocumentation comment for this package)
 

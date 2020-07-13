@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
+import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface CardExpandableBoxOwnProps {}
 export interface CardExpandableBoxProps extends CardExpandableBoxOwnProps, BoxProps {}
@@ -11,7 +11,7 @@ export const cardExpandableBoxClassName = 'ui-card__expandablebox';
 /**
  * A CardExpandableBox is used to display data in which is partially hidden and shown on focus/hover.
  */
-const CardExpandableBox = compose<
+export const CardExpandableBox = compose<
   'div',
   CardExpandableBoxProps,
   CardExpandableBoxStylesProps,
@@ -27,5 +27,3 @@ const CardExpandableBox = compose<
 });
 
 CardExpandableBox.propTypes = commonPropTypes.createCommon();
-
-export default CardExpandableBox;

@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Replace tslint with eslint",
+  "packageName": "@fluentui/react-stylesheets",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-07-08T01:58:44.452Z"
+}

@@ -14,8 +14,8 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Ref } from '@fluentui/react-component-ref';
-import TreeItem, { TreeItemProps } from './TreeItem';
-import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { TreeItem, TreeItemProps } from './TreeItem';
+import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import {
   childrenExist,
   commonPropTypes,
@@ -169,7 +169,7 @@ const iterateItems = (items: TreeProps['items'] | TreeItemProps['items'], acc = 
  * [Treeview - JAWS doesn't narrate position for each tree item](https://github.com/FreedomScientific/VFO-standards-support/issues/338)
  * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
  */
-const Tree: ComponentWithAs<'div', TreeProps> &
+export const Tree: ComponentWithAs<'div', TreeProps> &
   FluentComponentStaticProps<TreeProps> & {
     Item: typeof TreeItem;
     Title: typeof TreeTitle;
@@ -503,5 +503,3 @@ Tree.create = createShorthandFactory({
   Component: Tree,
   mappedArrayProp: 'items',
 });
-
-export default Tree;

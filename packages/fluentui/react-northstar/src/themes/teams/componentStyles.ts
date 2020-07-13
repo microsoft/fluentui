@@ -61,6 +61,7 @@ export { svgIconStyles as SvgIcon } from './components/SvgIcon/svgIconStyles';
 export { imageStyles as Image } from './components/Image/imageStyles';
 
 export { inputStyles as Input } from './components/Input/inputStyles';
+export { inputLabelStyles as InputLabel } from './components/Input/inputLabelStyles';
 
 export { labelStyles as Label } from './components/Label/labelStyles';
 

@@ -23,12 +23,12 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2"
+    "@fluentui/eslint-plugin": "^0.51.0",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.15",
-    "office-ui-fabric-react": "^7.121.11",
+    "office-ui-fabric-react": "^7.121.12",
     "tslib": "^1.10.0"
   }
 }

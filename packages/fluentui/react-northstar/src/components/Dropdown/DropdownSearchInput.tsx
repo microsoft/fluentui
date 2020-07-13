@@ -7,7 +7,7 @@ import { ThemeContext } from 'react-fela';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import Input from '../Input/Input';
+import { Input } from '../Input/Input';
 import { ComponentWithAs, useTelemetry, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
 
 export interface DropdownSearchInputSlotClassNames {
@@ -79,7 +79,7 @@ export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputPr
  * A DropdownSearchInput represents item of 'search' Dropdown.
  * Used to display the search input field.
  */
-const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProps> &
+export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProps> &
   FluentComponentStaticProps<DropdownSearchInputProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DropdownSearchInput.displayName, context.telemetry);
@@ -173,5 +173,3 @@ DropdownSearchInput.propTypes = {
 DropdownSearchInput.handledProps = Object.keys(DropdownSearchInput.propTypes) as any;
 
 DropdownSearchInput.create = createShorthandFactory({ Component: DropdownSearchInput });
-
-export default DropdownSearchInput;

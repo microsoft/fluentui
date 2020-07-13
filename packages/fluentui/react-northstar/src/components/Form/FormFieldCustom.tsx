@@ -36,7 +36,8 @@ export type FormFieldCustomStylesProps = Required<Pick<FormFieldCustomProps, 'ty
 /**
  * A FormFieldCustom represents a Form element containing a label and an input.
  */
-const FormFieldCustom: React.FC<FormFieldCustomProps> & FluentComponentStaticProps<FormFieldCustomProps> = props => {
+export const FormFieldCustom: React.FC<FormFieldCustomProps> &
+  FluentComponentStaticProps<FormFieldCustomProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(FormFieldCustom.displayName, context.telemetry);
   setStart();
@@ -100,5 +101,3 @@ FormFieldCustom.handledProps = Object.keys(FormFieldCustom.propTypes) as any;
 FormFieldCustom.defaultProps = {
   accessibility: formFieldBehavior,
 };
-
-export default FormFieldCustom;

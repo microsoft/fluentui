@@ -22,7 +22,7 @@ import {
   rtlTextContainer,
   createShorthandFactory,
 } from '../../utils';
-import PortalInner from './PortalInner';
+import { PortalInner } from './PortalInner';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -82,7 +82,7 @@ export interface PortalProps extends ChildrenComponentProps, ContentComponentPro
 /**
  * A Portal allows to render children outside of their parent.
  */
-const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
+export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Portal.displayName, context.telemetry);
   setStart();
@@ -198,5 +198,3 @@ Portal.create = createShorthandFactory({
 Portal.defaultProps = {
   triggerAccessibility: {},
 };
-
-export default Portal;

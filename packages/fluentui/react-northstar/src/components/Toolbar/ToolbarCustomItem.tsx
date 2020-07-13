@@ -60,7 +60,7 @@ export const toolbarCustomItemClassName = 'ui-toolbar__customitem';
 /**
  * A ToolbarCustomItem renders Toolbar item as a non-actionable `div` with custom content inside.
  */
-const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarCustomItemStylesProps, {}, {}>(
+export const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarCustomItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -152,5 +152,3 @@ ToolbarCustomItem.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
 };
-
-export default ToolbarCustomItem;

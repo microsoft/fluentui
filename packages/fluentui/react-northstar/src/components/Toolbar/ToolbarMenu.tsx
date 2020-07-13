@@ -32,9 +32,9 @@ import {
 
 import { ComponentEventHandler, ShorthandCollection, ShorthandValue, ProviderContextPrepared } from '../../types';
 
-import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
-import ToolbarMenuDivider from './ToolbarMenuDivider';
-import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
+import { ToolbarMenuRadioGroup, ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
+import { ToolbarMenuDivider } from './ToolbarMenuDivider';
+import { ToolbarMenuItem, ToolbarMenuItemProps } from './ToolbarMenuItem';
 import { BoxProps } from '../Box/Box';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 import { ToolbarDividerProps } from './ToolbarDivider';
@@ -79,7 +79,7 @@ export const toolbarMenuClassName = 'ui-toolbar__menu';
  * @accessibility
  * Implements pop-up menu (submenu) behavior of [ARIA Menu](https://www.w3.org/TR/wai-aria-practices-1.1/#menu) design pattern.
  */
-const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, {}>(
+export const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -227,5 +227,3 @@ ToolbarMenu.defaultProps = {
   accessibility: toolbarMenuBehavior,
   as: 'ul',
 };
-
-export default ToolbarMenu;

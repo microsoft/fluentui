@@ -189,7 +189,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
         }
       }
     } else {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (!options.disableWarnings && options.warnOnMissingIcons) {
         warn(
           `The icon "${name}" was used but not registered. See https://github.com/microsoft/fluentui/wiki/Using-icons for more information.`,

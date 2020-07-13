@@ -89,7 +89,7 @@ function _onPointerDown(ev: PointerEvent): void {
 }
 
 function _onKeyDown(ev: KeyboardEvent): void {
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element);
   }

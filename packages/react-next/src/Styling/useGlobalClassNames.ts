@@ -5,7 +5,7 @@ export function useGlobalClassNames<T>(classNames: GlobalClassNames<T>): GlobalC
 
   return getGlobalClassNames(
     classNames,
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     theme as any,
   );
 }
