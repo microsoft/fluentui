@@ -4,6 +4,7 @@ import Rtl from './Rtl';
 import Types from './Types';
 import Variations from './Variations';
 import State from './State';
+import Slots from './Slots';
 
 const InputExamples = () => (
   <div>
@@ -11,6 +12,7 @@ const InputExamples = () => (
     <Variations />
     <State />
     <Rtl />
+    <Slots />
   </div>
 );
 
