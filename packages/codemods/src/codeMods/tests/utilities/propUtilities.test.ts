@@ -5,6 +5,7 @@ import { EnumMap } from '../../types';
 const personaPropsFile = 'mPersonaProps.tsx';
 const personaSpreadPropsFile = 'mPersonaSpreadProps.tsx';
 const spinnerPropsFile = 'mSpinnerProps.tsx';
+const spinnerSpreadPropsFile = 'mSpinnerSpreadProps.tsx';
 
 const deprecatedPropName = 'imageShouldFadeIn';
 const newPropName = 'imageShouldFadeInwootwoot';
@@ -67,7 +68,6 @@ describe('Props Utilities Test', () => {
     const file = project.getSourceFileOrThrow(spinnerPropsFile);
     const tags = findJsxTag(file, 'Spinner');
     let oldEnumValues: string[] = ['SpinnerType.large', 'SpinnerType.normal'];
-    const files = project.getSourceFiles();
     renameProp(tags, 'type', 'size', spinnerMap);
     tags.forEach(tag => {
       expect(tag.getAttribute('type')).toBeFalsy();
@@ -81,6 +81,25 @@ describe('Props Utilities Test', () => {
         newVal.substring(newVal.indexOf('.') + 1),
       );
       expect(inner.getFirstChildByKind(SyntaxKind.Identifier).getText()).toEqual('SpinnerSize');
+    });
+  });
+
+  it('can replace props with changed enum values in a spread attribute', () => {
+    const file = project.getSourceFileOrThrow(spinnerSpreadPropsFile);
+    const tags = findJsxTag(file, 'Spinner');
+    renameProp(tags, 'type', 'size', spinnerMap);
+    tags.forEach(val => {
+      val.getAttributes().forEach(att => {
+        if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
+          att
+            .getFirstChildByKind(SyntaxKind.Identifier)
+            ?.getType()
+            .getProperties()
+            .forEach(prop => {
+              expect(prop.getName()).not.toEqual('SpinnerType');
+            });
+        }
+      });
     });
   });
 });

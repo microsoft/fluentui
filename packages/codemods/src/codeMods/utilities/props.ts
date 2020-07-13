@@ -97,7 +97,7 @@ function renamePropInSpread(
                   declarations: [
                     {
                       name: newMapName,
-                      initializer: changeValueMap.toString(),
+                      initializer: JSON.stringify(changeValueMap),
                     },
                   ],
                 });
