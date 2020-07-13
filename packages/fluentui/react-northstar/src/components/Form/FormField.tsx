@@ -11,9 +11,9 @@ import {
   getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import Text, { TextProps } from '../Text/Text';
-import Input from '../Input/Input';
-import Box, { BoxProps } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
+import { Input } from '../Input/Input';
+import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   getElementType,
@@ -69,7 +69,7 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
 /**
  * A FormField represents a Form element containing a label and an input.
  */
-const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponentStaticProps<FormFieldProps> = props => {
+export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponentStaticProps<FormFieldProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
   setStart();
@@ -207,5 +207,3 @@ FormField.defaultProps = {
 };
 
 FormField.create = createShorthandFactory({ Component: FormField, mappedProp: 'label' });
-
-export default FormField;

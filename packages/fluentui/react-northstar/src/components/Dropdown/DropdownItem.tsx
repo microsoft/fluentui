@@ -16,8 +16,8 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import Image, { ImageProps } from '../Image/Image';
-import Box, { BoxProps } from '../Box/Box';
+import { Image, ImageProps } from '../Image/Image';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface DropdownItemSlotClassNames {
   content: string;
@@ -80,7 +80,7 @@ export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
  * A DropdownItem represents an option of Dropdown list.
  * Displays an item with optional rich media metadata.
  */
-const DropdownItem: ComponentWithAs<'li', DropdownItemProps> &
+export const DropdownItem: ComponentWithAs<'li', DropdownItemProps> &
   FluentComponentStaticProps<DropdownItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DropdownItem.displayName, context.telemetry);
@@ -207,5 +207,3 @@ DropdownItem.propTypes = {
 DropdownItem.handledProps = Object.keys(DropdownItem.propTypes) as any;
 
 DropdownItem.create = createShorthandFactory({ Component: DropdownItem, mappedProp: 'header' });
-
-export default DropdownItem;

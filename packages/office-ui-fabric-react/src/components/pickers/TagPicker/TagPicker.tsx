@@ -1,6 +1,4 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
 import { styled, initializeComponentRef } from '../../../Utilities';
 import { BasePicker } from '../BasePicker';
 import { IBasePickerStyleProps, IBasePickerStyles } from '../BasePicker.types';

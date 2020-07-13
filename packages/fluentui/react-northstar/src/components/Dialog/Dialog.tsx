@@ -35,13 +35,13 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import Button, { ButtonProps } from '../Button/Button';
-import ButtonGroup from '../Button/ButtonGroup';
-import Box, { BoxProps } from '../Box/Box';
-import Header, { HeaderProps } from '../Header/Header';
-import Portal, { TriggerAccessibility } from '../Portal/Portal';
-import Flex from '../Flex/Flex';
-import DialogFooter, { DialogFooterProps } from './DialogFooter';
+import { Button, ButtonProps } from '../Button/Button';
+import { ButtonGroup } from '../Button/ButtonGroup';
+import { Box, BoxProps } from '../Box/Box';
+import { Header, HeaderProps } from '../Header/Header';
+import { Portal, TriggerAccessibility } from '../Portal/Portal';
+import { Flex } from '../Flex/Flex';
+import { DialogFooter, DialogFooterProps } from './DialogFooter';
 
 export interface DialogSlotClassNames {
   header: string;
@@ -145,7 +145,7 @@ export type DialogStylesProps = Required<Pick<DialogProps, 'backdrop'>>;
  * [Jaws does not announce token values of aria-haspopup](https://github.com/FreedomScientific/VFO-standards-support/issues/33)
  * [Issue 989517: VoiceOver narrates dialog content and button twice](https://bugs.chromium.org/p/chromium/issues/detail?id=989517)
  */
-const Dialog: ComponentWithAs<'div', DialogProps> &
+export const Dialog: ComponentWithAs<'div', DialogProps> &
   FluentComponentStaticProps<DialogProps> & {
     Footer: typeof DialogFooter;
   } = props => {
@@ -448,5 +448,3 @@ Dialog.Footer = DialogFooter;
 Dialog.create = createShorthandFactory({
   Component: Dialog,
 });
-
-export default Dialog;

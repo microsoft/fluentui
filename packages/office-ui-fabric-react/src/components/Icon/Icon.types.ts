@@ -53,7 +53,7 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    * The type of icon to render (image or icon font).
    * @deprecated Inferred based on the presence of `imageProps`
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   iconType?: IconType;
 
   /**

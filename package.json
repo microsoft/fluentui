@@ -36,7 +36,7 @@
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
     "preinstall": "node ./scripts/use-yarn-please.js",
-    "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev",
+    "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev && node ./scripts/no-tslint.js",
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
     "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",

@@ -20,7 +20,13 @@ export const DisplayToggle = (props: IDisplayToggle) => {
 
   return (
     <RootType className={rootClass}>
-      <Toggle onText={onText} offText={offText} label={label} onChange={onToggle} />
+      <Toggle
+        onText={onText}
+        offText={offText}
+        label={label}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={onToggle}
+      />
       {children}
     </RootType>
   );

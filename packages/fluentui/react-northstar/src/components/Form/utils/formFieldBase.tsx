@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { UIComponentProps, commonPropTypes, getOrGenerateIdFromShorthand, createShorthand } from '../../../utils';
 import { ShorthandValue, ProviderContextPrepared } from '../../../types';
-import Box, { BoxProps } from '../../Box/Box';
+import { Box, BoxProps } from '../../Box/Box';
 import {
   getElementType,
   useUnhandledProps,
@@ -13,10 +13,11 @@ import {
   compose,
   useStyles,
 } from '@fluentui/react-bindings';
-import FormLabel, { FormLabelProps } from '../FormLabel';
-import FormMessage, { FormMessageProps } from '../FormMessage';
+import { FormLabel, FormLabelProps } from '../FormLabel';
+import { FormMessage, FormMessageProps } from '../FormMessage';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { FormFieldBaseValue, FormFieldBaseProvider } from './formFieldBaseContext';
 
 export interface FormFieldBaseProps extends UIComponentProps {
   /**
@@ -46,7 +47,7 @@ export type FormFieldBaseStylesProps = never;
 /**
  * A FormFiedBase represents a Form element containing a label and an input.
  */
-const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
+export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -85,6 +86,15 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       rtl: context.rtl,
     });
 
+    const childProps: FormFieldBaseValue = React.useMemo(
+      () => ({
+        labelId: labelId.current,
+      }),
+      // TODO: create hooks for id to avoid disbaling esling for accessing the value of refs
+      // eslint-disable-next-line
+      [labelId.current],
+    );
+
     const element = (
       <ElementType
         {...getA11yProps('root', {
@@ -99,15 +109,22 @@ const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
               ...slotProps.label,
             }),
         })}
-        {createShorthand(composeOptions.slots.control, control || {}, {
-          defaultProps: () =>
-            getA11yProps('control', {
-              error: !!errorMessage || null,
-              ref,
-              ...unhandledProps,
-              ...slotProps.control,
-            }),
-        })}
+        {/**
+         * When there's a message for the input the labelId and messageId should be consistent in the
+         * aria-labelledby attribute (aria-labelledby="labelID messageID") therefore we need to pass it down
+         * for components like input that are generating its own label internally
+         */}
+        <FormFieldBaseProvider value={childProps}>
+          {createShorthand(composeOptions.slots.control, control || {}, {
+            defaultProps: () =>
+              getA11yProps('control', {
+                error: !!errorMessage || null,
+                ref,
+                ...unhandledProps,
+                ...slotProps.control,
+              }),
+          })}
+        </FormFieldBaseProvider>
         {createShorthand(composeOptions.slots.message, errorMessage || message, {
           defaultProps: () =>
             getA11yProps('message', {
@@ -155,5 +172,3 @@ _FormFieldBase.propTypes = {
 _FormFieldBase.defaultProps = {
   accessibility: formFieldBehavior,
 };
-
-export default _FormFieldBase;

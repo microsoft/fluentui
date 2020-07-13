@@ -55,7 +55,7 @@ export const tooltipContentClassName = 'ui-tooltip__content';
 /**
  * A TooltipContent contains the content of a Tooltip component.
  */
-const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
+export const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
   FluentComponentStaticProps<TooltipContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TooltipContent.displayName, context.telemetry);
@@ -145,5 +145,3 @@ TooltipContent.propTypes = {
 TooltipContent.handledProps = Object.keys(TooltipContent.propTypes) as any;
 
 TooltipContent.create = createShorthandFactory({ Component: TooltipContent, mappedProp: 'content' });
-
-export default TooltipContent;

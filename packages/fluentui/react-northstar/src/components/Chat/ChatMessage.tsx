@@ -47,16 +47,16 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Label, { LabelProps } from '../Label/Label';
-import Menu, { MenuProps } from '../Menu/Menu';
+import { Box, BoxProps } from '../Box/Box';
+import { Label, LabelProps } from '../Label/Label';
+import { Menu, MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
-import Text, { TextProps } from '../Text/Text';
-import Reaction, { ReactionProps } from '../Reaction/Reaction';
+import { Text, TextProps } from '../Text/Text';
+import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
-import ChatMessageHeader, { ChatMessageHeaderProps } from './ChatMessageHeader';
-import ChatMessageDetails, { ChatMessageDetailsProps } from './ChatMessageDetails';
+import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
+import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -154,7 +154,8 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
 /**
  * A ChatMessage represents a single message in chat.
  */
-const ChatMessage: ComponentWithAs<'div', ChatMessageProps> & FluentComponentStaticProps<ChatMessageProps> = props => {
+export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
+  FluentComponentStaticProps<ChatMessageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
@@ -420,5 +421,3 @@ ChatMessage.propTypes = {
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
-
-export default ChatMessage;

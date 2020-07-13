@@ -33,7 +33,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 const processInputValues = (
   p: Pick<SliderProps, 'min' | 'max'> & { value: string },
@@ -132,7 +132,7 @@ export const sliderSlotClassNames: SliderSlotClassNames = {
  * [Slider - JAWS narrates slider value twice when using PageUp / PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/220)
  * [Slider - JAWS narrates current and new value in vertical slider](https://github.com/FreedomScientific/VFO-standards-support/issues/219)
  */
-const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStaticProps = props => {
+export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
   setStart();
@@ -293,5 +293,3 @@ Slider.propTypes = {
 Slider.handledProps = Object.keys(Slider.propTypes) as any;
 
 Slider.create = createShorthandFactory({ Component: Slider, mappedProp: 'value' });
-
-export default Slider;

@@ -21,6 +21,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/color-check": "0.0.0",
     "@types/jest": "~24.9.0",
     "@types/markdown-to-jsx": "6.9.0",
@@ -29,7 +30,6 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"

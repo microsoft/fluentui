@@ -101,6 +101,7 @@ describe('List', () => {
         </div>
       );
 
+      // eslint-disable-next-line no-sparse-arrays
       wrapper.setProps({ items: [, , 'foo', 'bar'], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
 
       const rows = wrapper.find('.cell');
@@ -117,6 +118,7 @@ describe('List', () => {
         </div>
       );
 
+      // eslint-disable-next-line no-sparse-arrays
       wrapper.setProps({ items: [, , , ,], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
 
       const rows = wrapper.find('.cell');

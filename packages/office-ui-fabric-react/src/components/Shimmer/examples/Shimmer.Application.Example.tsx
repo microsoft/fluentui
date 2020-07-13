@@ -2,15 +2,15 @@ import * as React from 'react';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
-import { useSetInterval } from '@uifabric/react-hooks';
+import { useSetInterval, useConst } from '@uifabric/react-hooks';
 
 export interface IShimmerApplicationExampleState {
   lastIntervalId: number;
   visibleCount: number;
 }
 
-const ITEMS_COUNT = 200;
-const INTERVAL_DELAY = 1200;
+const ITEMS_COUNT: number = 200;
+const INTERVAL_DELAY: number = 1200;
 const toggleStyling = { marginBottom: '20px' };
 const shimmeredDetailsListProps = { renderedWindowsAhead: 0, renderedWindowsBehind: 0 };
 
@@ -49,36 +49,43 @@ const randomFileIcon = (): { docType: string; url: string } => {
   };
 };
 
-const buildShimmerColumns = (): IColumn[] => {
-  const currentItems = createListItems(1);
-  const columns: IColumn[] = buildColumns(currentItems);
-  for (const column of columns) {
-    if (column.key === 'thumbnail') {
-      column.name = 'FileType';
-      column.minWidth = 16;
-      column.maxWidth = 16;
-      column.isIconOnly = true;
-      column.iconName = 'Page';
-      break;
-    }
+const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string | number => {
+  if (column.key === 'thumbnail') {
+    return <img src={item.thumbnail} />;
   }
-  return columns;
+  return item[column.key as keyof IExampleItem];
 };
 
-const shimmerColumns: IColumn[] = buildShimmerColumns();
 const exampleItems: IExampleItem[] = createListItems(ITEMS_COUNT).map((item: IExampleItem) => {
   const randomFileType = randomFileIcon();
   return { ...item, thumbnail: randomFileType.url };
 });
 
 export const ShimmerApplicationExample: React.FunctionComponent = () => {
-  const safeSetInterval = useSetInterval();
-  const [items, setItems] = React.useState<IExampleItem[] | undefined>(undefined);
-
   const { current: state } = React.useRef<IShimmerApplicationExampleState>({
     lastIntervalId: 0,
     visibleCount: 0,
   });
+
+  const [items, setItems] = React.useState<(IExampleItem | null)[] | undefined>(undefined);
+
+  const buildShimmerColumns: IColumn[] = useConst(() => {
+    const currentItems = createListItems(1);
+    const columns: IColumn[] = buildColumns(currentItems);
+    for (const column of columns) {
+      if (column.key === 'thumbnail') {
+        column.name = 'FileType';
+        column.minWidth = 16;
+        column.maxWidth = 16;
+        column.isIconOnly = true;
+        column.iconName = 'Page';
+        break;
+      }
+    }
+    return columns;
+  });
+
+  const { setInterval, clearInterval } = useSetInterval();
 
   const loadMoreItems = (): void => {
     state.visibleCount = Math.min(exampleItems.length, state.visibleCount + 2);
@@ -88,25 +95,17 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
 
   const onLoadData = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     state.visibleCount = 0;
-
     if (checked) {
       loadMoreItems();
-      state.lastIntervalId = safeSetInterval(loadMoreItems, INTERVAL_DELAY);
+      state.lastIntervalId = setInterval(loadMoreItems, INTERVAL_DELAY);
     } else {
       setItems(undefined);
       clearInterval(state.lastIntervalId);
     }
   };
 
-  const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string | number => {
-    if (column.key === 'thumbnail') {
-      return <img src={item.thumbnail} />;
-    }
-    return item[column.key as keyof IExampleItem];
-  };
-
   return (
-    <div>
+    <>
       <Toggle
         label="Toggle to load content"
         style={toggleStyling}
@@ -118,7 +117,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
         <ShimmeredDetailsList
           setKey="items"
           items={items || []}
-          columns={shimmerColumns}
+          columns={buildShimmerColumns}
           selectionMode={SelectionMode.none}
           onRenderItemColumn={onRenderItemColumn}
           enableShimmer={!items}
@@ -127,6 +126,6 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
           listProps={shimmeredDetailsListProps}
         />
       </div>
-    </div>
+    </>
   );
 };

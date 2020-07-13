@@ -36,7 +36,7 @@ export const boxClassName = 'ui-box';
  * A Box is a basic component, commonly used for slots in other Fluent UI components.
  * By default it just renders a `div`.
  */
-const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
+export const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -90,5 +90,3 @@ const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
 
 Box.propTypes = commonPropTypes.createCommon();
 Box.create = createShorthandFactory({ Component: Box });
-
-export default Box;

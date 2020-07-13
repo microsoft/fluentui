@@ -322,7 +322,6 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     );
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
@@ -436,9 +435,9 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
   private _onKeyDown = (e: KeyboardEvent): void => {
     // Open coachmark if user presses ALT + C (arbitrary keypress for now)
     if (
-      // tslint:disable-next-line: deprecation
+      // eslint-disable-next-line deprecation/deprecation
       (e.altKey && e.which === KeyCodes.c) ||
-      // tslint:disable-next-line: deprecation
+      // eslint-disable-next-line deprecation/deprecation
       (e.which === KeyCodes.enter &&
         this._translateAnimationContainer.current &&
         this._translateAnimationContainer.current.contains(e.target as Node))

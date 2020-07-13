@@ -3536,8 +3536,6 @@ export interface IDetailsListState {
     // (undocumented)
     isCollapsed?: boolean;
     // (undocumented)
-    isDropping?: boolean;
-    // (undocumented)
     isSizing?: boolean;
     // (undocumented)
     isSomeGroupExpanded?: boolean;
@@ -4850,8 +4848,6 @@ export interface IGroupedListState {
     groups?: IGroup[];
     // (undocumented)
     lastSelectionMode?: SelectionMode;
-    // (undocumented)
-    lastWidth?: number;
 }
 
 // @public (undocumented)

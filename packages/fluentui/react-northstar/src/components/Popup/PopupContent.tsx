@@ -82,7 +82,7 @@ export const popupContentSlotClassNames: PopupContentSlotClassNames = {
 /**
  * A PopupContent displays the content of a Popup component.
  */
-const PopupContent: ComponentWithAs<'div', PopupContentProps> &
+export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
   FluentComponentStaticProps<PopupContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
@@ -200,5 +200,3 @@ PopupContent.propTypes = {
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 
 PopupContent.create = createShorthandFactory({ Component: PopupContent, mappedProp: 'content' });
-
-export default PopupContent;

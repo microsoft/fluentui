@@ -34,7 +34,7 @@ export type DialogFooterStylesProps = never;
 /**
  * A DialogFooter represents footer content in Dialog, usually shows dialog actions.
  */
-const DialogFooter: ComponentWithAs<'div', DialogFooterProps> &
+export const DialogFooter: ComponentWithAs<'div', DialogFooterProps> &
   FluentComponentStaticProps<DialogFooterProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
@@ -74,5 +74,3 @@ DialogFooter.propTypes = {
 DialogFooter.handledProps = Object.keys(DialogFooter.propTypes) as any;
 
 DialogFooter.create = createShorthandFactory({ Component: DialogFooter, mappedProp: 'content' });
-
-export default DialogFooter;

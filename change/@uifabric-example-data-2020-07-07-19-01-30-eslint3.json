@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Replace tslint with eslint",
+  "packageName": "@uifabric/example-data",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-08T01:51:13.355Z"
+}

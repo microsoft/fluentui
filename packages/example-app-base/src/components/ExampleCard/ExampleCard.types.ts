@@ -66,9 +66,9 @@ export interface IExampleCardStyles {
 
 export interface IExampleCardSubComponentStyles {
   // TODO: replace with IDropdownStyles after TS 3 upgrade
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dropdowns: IStyleFunctionOrObject<IDropdownStyleProps, any>;
   // TODO: fix once button has full styling support
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   codeButtons: IStyleFunctionOrObject<any, any>;
 }

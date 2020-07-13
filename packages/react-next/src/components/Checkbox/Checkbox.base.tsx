@@ -30,7 +30,7 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
             <slots.checkmark {...slotProps.checkmark} />
           </slots.checkbox>
 
-          {// tslint:disable-next-line:deprecation
+          {// eslint-disable-next-line deprecation/deprecation
           (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
         </slots.container>
       </slots.root>

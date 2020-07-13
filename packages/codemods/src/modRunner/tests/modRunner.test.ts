@@ -46,7 +46,7 @@ describe('modRunner tests', () => {
         version: '1.1.1',
       },
     ];
-    runMods(mods, [''], () => void 0);
+    runMods(mods, [''], () => undefined);
     expect(runCount).toEqual(3);
   });
 
