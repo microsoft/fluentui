@@ -1,7 +1,7 @@
 import { ISemanticColors } from 'office-ui-fabric-react';
 
 export interface IExtendedSemanticColors extends ISemanticColors {
-  bodyTextHovered: string;
+  bodyTextHover: string;
   checkBoxBorder: string;
   checkBoxBorderChecked: string;
   checkBoxCheckHover: string;
@@ -16,6 +16,9 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   controlOutlineDisabled: string;
   controlOutlineHovered: string;
   controlAccent: string;
+  datePickerDisabledBorder: string;
+  listItemBackgroundCheckedHovered: string;
+  listItemBackgroundSelectedHovered: string;
   statusErrorBackground: string;
   statusErrorText: string;
   statusErrorIcon: string;
