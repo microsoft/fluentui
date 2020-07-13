@@ -82,7 +82,7 @@ export interface AlertVariables {
 }
 
 export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables => {
-  const minHeight = pxToRem(28);
+  const minHeight = pxToRem(26);
 
   return {
     borderStyle: 'solid',
