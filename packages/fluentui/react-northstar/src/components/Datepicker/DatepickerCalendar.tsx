@@ -14,7 +14,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, ComponentEventHandler } from '../../types';
-import { commonPropTypes, UIComponentProps } from '../../utils';
+import { commonPropTypes, UIComponentProps, createShorthandFactory } from '../../utils';
 import { Grid } from '../Grid/Grid';
 import {
   IDayGridOptions,
@@ -29,7 +29,7 @@ import {
 } from '@fluentui/date-time-utilities';
 import { Text } from '../Text/Text';
 import { Button } from '../Button/Button';
-import { IDatepickerOptions, IDateFormatting } from './Datepicker';
+import { IDatepickerOptions, IDateFormatting, DEFAULT_LOCALIZED_STRINGS } from './Datepicker';
 
 export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
   /**
@@ -57,7 +57,7 @@ export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormat
 
 export type DatepickerCalendarStylesProps = never;
 
-export const datepickerCalendarClassName = 'ui-datepickerCalendar';
+export const datepickerCalendarClassName = 'ui-datepicker__calendar';
 
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
@@ -68,6 +68,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const { setStart, setEnd } = useTelemetry(DatepickerCalendar.displayName, context.telemetry);
   setStart();
   const datepickerCalendarRef = React.useRef<HTMLElement>();
+
   const {
     className,
     design,
@@ -78,8 +79,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-    localizedStrings,
   } = props;
+
+  const localizedStrings = props.localizedStrings ?? DEFAULT_LOCALIZED_STRINGS;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DatepickerCalendar.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -88,8 +90,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     rtl: context.rtl,
   });
   const gridOptions: IDayGridOptions = {
-    selectedDate,
-    navigatedDate,
+    selectedDate: selectedDate ?? props.today ?? new Date(),
+    navigatedDate: navigatedDate ?? props.today ?? new Date(),
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
@@ -180,6 +182,9 @@ DatepickerCalendar.propTypes = {
 
 DatepickerCalendar.defaultProps = {
   accessibility: datepickerCalendarBehavior,
+  firstDayOfWeek: DayOfWeek.Monday,
+  firstWeekOfYear: FirstWeekOfYear.FirstDay,
+  dateRangeType: DateRangeType.Day,
 };
 
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;

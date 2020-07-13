@@ -38,7 +38,7 @@ import {
 import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 
 // TODO: extract to date-time-utilities
-const DEFAULT_STRINGS: IDateGridStrings = {
+export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
   months: [
     'January',
     'February',
@@ -157,14 +157,16 @@ export const datepickerClassName = 'ui-datepicker';
  * This component is currently UNSTABLE!
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
-  FluentComponentStaticProps<DatepickerProps> = props => {
+  FluentComponentStaticProps<DatepickerProps> & {
+    Calendar: typeof DatepickerCalendar;
+  } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
   const [open, setOpen] = React.useState<boolean>(false);
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
-  const valueFormatter = date => (date ? formatMonthDayYear(date, DEFAULT_STRINGS) : '');
+  const valueFormatter = date => (date ? formatMonthDayYear(date, DEFAULT_LOCALIZED_STRINGS) : '');
   const { firstDayOfWeek, firstWeekOfYear, dateRangeType } = props;
   const calendarOptions: IDayGridOptions = {
     selectedDate: selectedDate ?? props.today ?? new Date(),
@@ -220,7 +222,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             open={open}
             onOpenChange={(e, { open }) => setOpen(open)}
             content={
-              <DatepickerCalendar {...calendarOptions} onDateChange={handleChange} localizedStrings={DEFAULT_STRINGS} />
+              <DatepickerCalendar
+                {...calendarOptions}
+                onDateChange={handleChange}
+                localizedStrings={DEFAULT_LOCALIZED_STRINGS}
+              />
             }
             trapFocus
           >
@@ -275,3 +281,5 @@ Datepicker.defaultProps = {
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
 
 Datepicker.create = createShorthandFactory({ Component: Datepicker });
+
+Datepicker.Calendar = DatepickerCalendar;
