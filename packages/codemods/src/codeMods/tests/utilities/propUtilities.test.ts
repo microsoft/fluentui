@@ -1,9 +1,6 @@
 import { renameProp, findJsxTag } from '../../utilities';
-import { Project, SyntaxKind, JsxAttribute } from 'ts-morph';
+import { Project, SyntaxKind, JsxAttribute, EnumDeclaration } from 'ts-morph';
 import { EnumMap } from '../../types';
-
-const project = new Project();
-project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/**/*.tsx`);
 
 const personaPropsFile = 'mPersonaProps.tsx';
 const personaSpreadPropsFile = 'mPersonaSpreadProps.tsx';
@@ -19,7 +16,13 @@ const spinnerMap: EnumMap<string> = {
   'SpinnerType.large': 'SpinnerSize.large',
 };
 
-describe('Props Utilities Test (Persona)', () => {
+describe('Props Utilities Test', () => {
+  let project: Project;
+  beforeEach(() => {
+    project = new Project();
+    project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/**/*.tsx`);
+  });
+
   it('[SANITY] can ID the correct file and get the JSX elements', () => {
     const file = project.getSourceFileOrThrow(personaPropsFile);
     const tags = findJsxTag(file, 'Persona');
@@ -27,12 +30,6 @@ describe('Props Utilities Test (Persona)', () => {
   });
 
   it('can rename props in a primitive', () => {
-    let fn = (b: boolean) => {
-      if (b) console.log('twas true');
-      else console.log('twas false');
-      return 'no-op';
-    };
-
     const file = project.getSourceFileOrThrow(personaPropsFile);
     const tags = findJsxTag(file, 'Persona');
     renameProp(tags, deprecatedPropName, newPropName);
@@ -59,19 +56,18 @@ describe('Props Utilities Test (Persona)', () => {
       });
     });
   });
-});
 
-describe('Props Utilities Test (Spinner)', () => {
   it('[SANITY] can ID the correct file and get the JSX elements', () => {
     const file = project.getSourceFileOrThrow(spinnerPropsFile);
     const tags = findJsxTag(file, 'Spinner');
     expect(tags.length).toEqual(2);
   });
 
-  it('can replace props with changed values (enums)', () => {
+  it('can replace props with changed enum values', () => {
     const file = project.getSourceFileOrThrow(spinnerPropsFile);
     const tags = findJsxTag(file, 'Spinner');
-    let oldEnumValues: string[] = ['large', 'normal'];
+    let oldEnumValues: string[] = ['SpinnerType.large', 'SpinnerType.normal'];
+    const files = project.getSourceFiles();
     renameProp(tags, 'type', 'size', spinnerMap);
     tags.forEach(tag => {
       expect(tag.getAttribute('type')).toBeFalsy();
@@ -80,7 +76,10 @@ describe('Props Utilities Test (Spinner)', () => {
         .getFirstChildByKind(SyntaxKind.JsxExpression)
         .getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
       expect(inner).toBeTruthy();
-      expect(inner.getLastChildByKind(SyntaxKind.Identifier).getText()).toEqual(spinnerMap[currentEnumValue]);
+      const newVal = spinnerMap[currentEnumValue];
+      expect(inner.getLastChildByKind(SyntaxKind.Identifier).getText()).toEqual(
+        newVal.substring(newVal.indexOf('.') + 1),
+      );
       expect(inner.getFirstChildByKind(SyntaxKind.Identifier).getText()).toEqual('SpinnerSize');
     });
   });

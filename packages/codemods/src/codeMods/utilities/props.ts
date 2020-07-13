@@ -7,6 +7,7 @@ import {
   ts,
   Node,
   Identifier,
+  EnumDeclaration,
 } from 'ts-morph';
 import { EnumMap } from '../types';
 
@@ -22,15 +23,18 @@ export function renameProp(
     if (foundProp) {
       /* If found, do a simple name-replacementName. */
       foundProp.set({ name: replacementName });
-
       if (changeValueMap) {
         /* Change the value of the enum via map conversion. */
         let enumExp = (foundProp as JsxAttribute)
           .getFirstChildByKind(SyntaxKind.JsxExpression)
           .getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
         const newEnumName = changeValueMap[enumExp.getText()];
-        enumExp.getFirstChildByKind(SyntaxKind.Identifier).rename(newEnumName.substring(0, newEnumName.indexOf('.')));
-        enumExp.getLastChildByKind(SyntaxKind.Identifier).rename(newEnumName.substring(newEnumName.indexOf('.') + 1));
+        enumExp
+          .getFirstChildByKind(SyntaxKind.Identifier)
+          .replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
+        enumExp
+          .getLastChildByKind(SyntaxKind.Identifier)
+          .replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
       }
     } else {
       /* If the prop is not found, check to see if the prop is in a spread attribute. */
