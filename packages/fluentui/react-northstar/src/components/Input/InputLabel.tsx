@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import * as PropTypes from 'prop-types';
 
 export type LabelPosition = 'inline' | 'above' | 'inside';
@@ -19,7 +19,7 @@ export const inputLabelClassName = 'ui-input__label';
 /**
  * An InputLabel provides a slot for label in the Input.
  */
-const InputLabel = compose<'label', InputLabelProps, InputLabelStylesProps, BoxProps, {}>(Box, {
+export const InputLabel = compose<'label', InputLabelProps, InputLabelStylesProps, BoxProps, {}>(Box, {
   className: inputLabelClassName,
   displayName: 'InputLabel',
   overrideStyles: true,
@@ -41,5 +41,3 @@ InputLabel.propTypes = {
   required: PropTypes.bool,
   hasValue: PropTypes.bool,
 };
-
-export default InputLabel;

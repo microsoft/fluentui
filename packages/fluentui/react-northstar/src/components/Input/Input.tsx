@@ -30,7 +30,7 @@ import {
   ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
-import InputLabel, { InputLabelProps, LabelPosition } from './InputLabel';
+import { InputLabel, InputLabelProps, LabelPosition } from './InputLabel';
 import { FormFieldBaseContext } from '../Form/utils/formFieldBaseContext';
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
