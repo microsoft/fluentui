@@ -43,7 +43,7 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
       <div className={styles.todoPivot}>
         <Pivot linkSize={PivotLinkSize.large}>{pivotArray}</Pivot>
       </div>
-    ) : null; // tslint:disable-line:no-null-keyword
+    ) : null;
   }
 
   private _renderPivotItemList(tasks: ITodoItem[], tabName: string): React.ReactElement<IPivotProps> {

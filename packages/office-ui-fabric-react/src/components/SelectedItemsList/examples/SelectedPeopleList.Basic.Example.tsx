@@ -34,6 +34,7 @@ export const SelectedPeopleListBasicExample: React.FunctionComponent = () => {
     <div>
       <PrimaryButton
         text="Add another item"
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={onAddItemButtonClicked}
         disabled={nextPersonIndex >= people.length}
         styles={primaryButtonStyles}
@@ -45,6 +46,7 @@ export const SelectedPeopleListBasicExample: React.FunctionComponent = () => {
           defaultSelectedItems={[people[40]]}
           componentRef={selectionList}
           onCopyItems={onCopyItems}
+          // eslint-disable-next-line react/jsx-no-bind
           onExpandGroup={onExpandItem}
           copyMenuItemText="Copy"
           removeMenuItemText="Remove"

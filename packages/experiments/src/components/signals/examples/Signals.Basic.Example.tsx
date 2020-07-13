@@ -30,9 +30,7 @@ import { lorem } from '@uifabric/example-data';
 import * as SignalStylesModule from '../Signal.scss';
 import * as SignalsExampleStylesModule from './Signals.Example.scss';
 
-// tslint:disable-next-line:no-any
 const SignalStyles: any = SignalStylesModule;
-// tslint:disable-next-line:no-any
 const SignalsExampleStyles: any = SignalsExampleStylesModule;
 
 interface ISignalExampleProps {

@@ -25,7 +25,6 @@ export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSe
     // It is something to do with the use of Omit in IStyleSet.
     // It might not be necessary once  Omit becomes part of lib.d.ts (when we remove our own Omit and rely on
     // the official version).
-    // tslint:disable-next-line:no-any
     return concatStyleSets(...(result as any)) as any;
   }
 

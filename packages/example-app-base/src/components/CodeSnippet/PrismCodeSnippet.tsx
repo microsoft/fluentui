@@ -7,7 +7,7 @@ import { styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
 import { ICodeSnippetStyleProps, ICodeSnippetStyles, ICodeSnippetProps } from './CodeSnippet';
 import { getStyles, baseCodeStyle } from './CodeSnippet.styles';
 
-// tslint:disable no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/prism-light').default;
 
 // Import languages from SyntaxHighlighter
@@ -16,7 +16,7 @@ const scss = require<any>('react-syntax-highlighter/dist/esm/languages/prism/scs
 const md = require<any>('react-syntax-highlighter/dist/esm/languages/prism/markdown').default;
 const bash = require<any>('react-syntax-highlighter/dist/esm/languages/prism/bash').default;
 const markup = require<any>('react-syntax-highlighter/dist/esm/languages/prism/markup').default;
-// tslint:enable no-any
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Import SyntaxHighlighter styles
 const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/prism/prism').default;

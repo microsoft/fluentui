@@ -36,7 +36,14 @@ const onRenderHeader = (props: IGroupHeaderProps): JSX.Element => {
   return (
     <div className={classNames.header}>
       This is a custom header for {props.group!.name}
-      &nbsp; (<Link onClick={toggleCollapse}>{props.group!.isCollapsed ? 'Expand' : 'Collapse'}</Link>)
+      &nbsp; (
+      <Link
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={toggleCollapse}
+      >
+        {props.group!.isCollapsed ? 'Expand' : 'Collapse'}
+      </Link>
+      )
     </div>
   );
 };

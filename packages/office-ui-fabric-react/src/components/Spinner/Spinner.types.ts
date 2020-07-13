@@ -22,7 +22,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
    * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize` instead.
    * @deprecated Use `SpinnerSize` instead.
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   type?: SpinnerType;
 
   /**

@@ -63,7 +63,7 @@ const renderCell = (text: string) => {
 type PropertyName = keyof IInterfaceProperty | keyof IEnumProperty;
 
 const createRenderCell = (propertyName: PropertyName) => {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (item: IInterfaceProperty | IEnumProperty) => renderCell((item as any)[propertyName]);
 };
 

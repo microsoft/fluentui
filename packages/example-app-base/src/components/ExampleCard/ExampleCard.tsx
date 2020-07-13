@@ -174,7 +174,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   editorClassName={classNames.code}
                   editorAriaLabel={`Editor for the example "${title}". The example will be updated as you type.`}
                   modelRef={this._monacoModelRef}
-                  previewAs={(ExamplePreview as any) as React.FunctionComponent<{}>} // tslint:disable-line:no-any
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  previewAs={(ExamplePreview as any) as React.FunctionComponent<{}>}
                 >
                   {children}
                 </EditorWrapper>
@@ -208,7 +209,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
 
-  // tslint:disable-next-line:member-ordering
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   private _getPreviewComponent = memoizeFunction(
     (activeCustomizations: ICustomizations | undefined, schemeIndex: number): React.FunctionComponent => {
       // Generate a component which renders the children with the current
