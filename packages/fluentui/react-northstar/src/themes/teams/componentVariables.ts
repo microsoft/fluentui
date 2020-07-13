@@ -54,6 +54,7 @@ export { svgIconVariables as SvgIcon } from './components/SvgIcon/svgIconVariabl
 export { imageVariables as Image } from './components/Image/imageVariables';
 
 export { inputVariables as Input } from './components/Input/inputVariables';
+export { inputLabelVariables as InputLabel } from './components/Input/inputLabelVariables';
 
 export { labelVariables as Label } from './components/Label/labelVariables';
 

@@ -100,6 +100,9 @@ export * from './components/SvgIcon/SvgIcon';
 export * from './components/Image/Image';
 
 export * from './components/Input/Input';
+
+export * from './components/Input/InputLabel';
+
 // Ouch, @fluentui/react-compose already exports `Input` type :(
 export { Input } from './components/Input/Input';
 
