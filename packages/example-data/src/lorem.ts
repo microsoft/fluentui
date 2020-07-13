@@ -8,7 +8,7 @@ const LOREM_IPSUM = (
 
 /** @internal */
 export function lorem(wordCount: number): string {
-  return Array.apply(null, Array(wordCount))
+  return [...Array(wordCount)]
     .map((item: number, idx: number) => {
       return LOREM_IPSUM[idx % LOREM_IPSUM.length];
     })

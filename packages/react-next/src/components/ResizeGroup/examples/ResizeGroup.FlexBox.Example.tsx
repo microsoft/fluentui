@@ -74,7 +74,7 @@ export const FlexBoxResizeGroupExample: React.FunctionComponent<{}> = () => {
   return (
     <ResizeGroup
       data={data}
-      // tslint:disable-next-line:jsx-no-lambda
+      // eslint-disable-next-line react/jsx-no-bind
       onRenderData={(scaledData: ILeftRightBoxSetProps) => <LeftRightBoxSet {...scaledData} />}
       onReduceData={onReduceData}
     />

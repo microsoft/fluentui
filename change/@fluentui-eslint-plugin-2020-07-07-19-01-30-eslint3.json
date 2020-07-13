@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add no-tslint-comments rule; bug fixes",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-08T01:49:47.488Z"
+}

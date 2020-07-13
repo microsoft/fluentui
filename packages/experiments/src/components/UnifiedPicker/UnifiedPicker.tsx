@@ -221,8 +221,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     <div
       ref={rootRef}
       className={css('ms-BasePicker ms-BaseExtendedPicker', className ? className : '')}
+      /* eslint-disable react/jsx-no-bind */
       onKeyDown={_onBackspace}
       onCopy={_onCopy}
+      /* eslint-enable react/jsx-no-bind */
     >
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
         <MarqueeSelection selection={selection} isEnabled={true}>
@@ -235,17 +237,21 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   {...(inputProps as IInputProps)}
                   className={css('ms-BasePicker-input', classNames.pickerInput)}
                   ref={input}
+                  /* eslint-disable react/jsx-no-bind */
                   onFocus={_onInputFocus}
                   onClick={_onInputClick}
                   onInputValueChange={_onInputChange}
+                  /* eslint-enable react/jsx-no-bind */
                   aria-activedescendant={activeDescendant}
                   aria-owns={isExpanded ? 'suggestion-list' : undefined}
                   aria-expanded={isExpanded}
                   aria-haspopup="true"
                   role="combobox"
                   disabled={false}
+                  /* eslint-disable react/jsx-no-bind */
                   onPaste={_onPaste}
                   onKeyDown={_onInputKeyDown}
+                  /* eslint-enable react/jsx-no-bind */
                 />
               )}
             </div>

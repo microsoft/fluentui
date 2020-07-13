@@ -11,7 +11,6 @@ const marks = [
   { value: 100, label: '100' },
 ];
 
-// tslint:disable:jsx-ban-props
 storiesOf('Experimental Slider', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (

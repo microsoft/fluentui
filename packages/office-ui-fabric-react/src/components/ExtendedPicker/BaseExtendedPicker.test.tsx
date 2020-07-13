@@ -1,4 +1,3 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as ReactDOM from 'react-dom';

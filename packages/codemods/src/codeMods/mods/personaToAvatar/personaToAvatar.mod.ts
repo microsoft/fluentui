@@ -51,7 +51,7 @@ export function renameProperty(
                     const p = bl?.getParentIfKind(SyntaxKind.Block);
                     const insIndex = bl?.getChildIndex();
                     if (insIndex === undefined) {
-                      throw 'unable to find child index';
+                      throw new Error('unable to find child index');
                     }
                     if (!p?.getVariableStatement('__migPersonaProps')) {
                       p?.insertVariableStatement(insIndex, {

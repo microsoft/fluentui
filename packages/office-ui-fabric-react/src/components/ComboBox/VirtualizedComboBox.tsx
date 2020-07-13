@@ -62,6 +62,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
         componentRef={this._list}
         role="listbox"
         items={props.options}
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderCell={onRenderItem ? (item: ISelectableOption) => onRenderItem(item) : () => null}
       />
     );

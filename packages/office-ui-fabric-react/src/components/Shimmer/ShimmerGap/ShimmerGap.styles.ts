@@ -6,13 +6,13 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const { height, borderStyle, theme } = props;
 
   const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = borderStyle || {};
 
   return {
     root: [

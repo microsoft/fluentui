@@ -52,6 +52,7 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
     let fiberNav = FiberNavigator.fromDOMNode(domNode);
 
     if (!fiberNav) {
+      // eslint-disable-next-line no-console
       console.error('No fiber for dom node', domNode);
       return;
     }

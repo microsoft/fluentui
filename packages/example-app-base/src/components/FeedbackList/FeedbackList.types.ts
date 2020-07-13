@@ -27,6 +27,6 @@ export interface IFeedbackListStyles {
 
 export interface IFeedbackListSubComponentStyles {
   // TODO: remove any after TS 3 upgrade
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   pivot: IStyleFunctionOrObject<IPivotStyleProps, any>;
 }
