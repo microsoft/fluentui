@@ -200,7 +200,7 @@ export * from './components/Card/CardFooter';
 export * from './components/Card/CardColumn';
 export * from './components/Card/CardExpandableBox';
 
-export * from './components/Datepicker/Unstable_Datepicker';
+export * from './components/Datepicker/Datepicker';
 
 //
 // Utilities

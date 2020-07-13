@@ -155,10 +155,10 @@ export const datepickerClassName = 'ui-datepicker';
 /**
  * A Datepicker is used to display dates.
  */
-export const Unstable_Datepicker: ComponentWithAs<'div', DatepickerProps> &
+export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(Unstable_Datepicker.displayName, context.telemetry);
+  const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
   const [open, setOpen] = React.useState<boolean>(false);
@@ -179,14 +179,14 @@ export const Unstable_Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const { className, design, styles, variables } = props;
   const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(Unstable_Datepicker.handledProps, props);
+  const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
-    debugName: Unstable_Datepicker.displayName,
+    debugName: Datepicker.displayName,
     actionHandlers: {},
     rtl: context.rtl,
   });
 
-  const { classes } = useStyles<DatepickerStylesProps>(Unstable_Datepicker.displayName, {
+  const { classes } = useStyles<DatepickerStylesProps>(Datepicker.displayName, {
     className: datepickerClassName,
     mapPropsToInlineStyles: () => ({
       className,
@@ -233,9 +233,9 @@ export const Unstable_Datepicker: ComponentWithAs<'div', DatepickerProps> &
   return element;
 };
 
-Unstable_Datepicker.displayName = 'Datepicker';
+Datepicker.displayName = 'Datepicker';
 
-Unstable_Datepicker.propTypes = {
+Datepicker.propTypes = {
   ...commonPropTypes.createCommon(),
 
   minDate: PropTypes.instanceOf(Date),
@@ -264,13 +264,13 @@ Unstable_Datepicker.propTypes = {
   renderHeaderCell: PropTypes.func,
 };
 
-Unstable_Datepicker.defaultProps = {
+Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
   firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
 };
 
-Unstable_Datepicker.handledProps = Object.keys(Unstable_Datepicker.propTypes) as any;
+Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
 
-Unstable_Datepicker.create = createShorthandFactory({ Component: Unstable_Datepicker });
+Datepicker.create = createShorthandFactory({ Component: Datepicker });
