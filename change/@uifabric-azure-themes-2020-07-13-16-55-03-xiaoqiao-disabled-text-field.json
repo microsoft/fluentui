@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removed disabled TextField border",
+  "packageName": "@uifabric/azure-themes",
+  "email": "67673432+q-xg@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-13T08:55:03.028Z"
+}
