@@ -17,6 +17,7 @@ import { FormLabel, FormLabelProps } from '../FormLabel';
 import { FormMessage, FormMessageProps } from '../FormMessage';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { FormFieldBaseValue, FormFieldBaseProvider } from './formFieldBaseContext';
 
 export interface FormFieldBaseProps extends UIComponentProps {
   /**
@@ -85,6 +86,15 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       rtl: context.rtl,
     });
 
+    const childProps: FormFieldBaseValue = React.useMemo(
+      () => ({
+        labelId: labelId.current,
+      }),
+      // TODO: create hooks for id to avoid disbaling esling for accessing the value of refs
+      // eslint-disable-next-line
+      [labelId.current],
+    );
+
     const element = (
       <ElementType
         {...getA11yProps('root', {
@@ -99,15 +109,22 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
               ...slotProps.label,
             }),
         })}
-        {createShorthand(composeOptions.slots.control, control || {}, {
-          defaultProps: () =>
-            getA11yProps('control', {
-              error: !!errorMessage || null,
-              ref,
-              ...unhandledProps,
-              ...slotProps.control,
-            }),
-        })}
+        {/**
+         * When there's a message for the input the labelId and messageId should be consistent in the
+         * aria-labelledby attribute (aria-labelledby="labelID messageID") therefore we need to pass it down
+         * for components like input that are generating its own label internally
+         */}
+        <FormFieldBaseProvider value={childProps}>
+          {createShorthand(composeOptions.slots.control, control || {}, {
+            defaultProps: () =>
+              getA11yProps('control', {
+                error: !!errorMessage || null,
+                ref,
+                ...unhandledProps,
+                ...slotProps.control,
+              }),
+          })}
+        </FormFieldBaseProvider>
         {createShorthand(composeOptions.slots.message, errorMessage || message, {
           defaultProps: () =>
             getA11yProps('message', {
