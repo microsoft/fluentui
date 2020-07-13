@@ -59,6 +59,7 @@ import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 import FormValidationPrototype from './prototypes/FormValidation';
 import RosterPrototype from './prototypes/Roster';
 import PerformanceTests from './views/PerformanceTests';
+
 const Routes = () => (
   // Remove trailing slash
   <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>

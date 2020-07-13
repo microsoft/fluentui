@@ -46,17 +46,16 @@ const themeOverrides = {
         }),
       }),
     },
-    Accordion: {
+    TreeItem: {
       root: {
-        marginTop: '1.5rem',
-        paddingBottom: '1.5rem',
-        paddingLeft: '1.5rem',
-        marginRight: '0.8rem',
+        marginBottom: '0.5rem',
+        paddingLeft: '0.5rem',
+        paddingRight: '1rem',
       },
     },
     ListItem: {
       root: ({ theme: { siteVariables } }) => ({
-        marginLeft: '0.2rem',
+        marginLeft: '0rem',
         marginRight: '1.5rem',
         padding: '0.2rem 0.3rem',
         ':hover': {
