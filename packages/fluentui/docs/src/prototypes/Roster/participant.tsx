@@ -13,7 +13,7 @@ const Participant: React.FC<{
   const [muted, setMuted] = React.useState(isMuted);
   const [talking, setTalking] = React.useState(isTalking);
   return (
-    <Flex fill gap="gap.small" space="between">
+    <Flex fill gap="gap.small" space="between" variables={{ isRelative: true }}>
       {talking ? (
         <Animation name="talking">
           <Avatar variables={{ isTalking: true }} image={image} name={name} status={status} />
@@ -38,23 +38,12 @@ const Participant: React.FC<{
             trigger={<MoreIcon />}
             menu={[
               {
-                icon: (
-                  <MicIcon
-                    onClick={() => {
-                      setMuted(false);
-                      setTalking(isTalking);
-                    }}
-                  />
-                ),
-                content: (
-                  <Text
-                    onClick={() => {
-                      setMuted(false);
-                      setTalking(isTalking);
-                    }}
-                    content="Unmute"
-                  />
-                ),
+                icon: <MicIcon />,
+                content: 'Unmute',
+                onClick: () => {
+                  setMuted(false);
+                  setTalking(isTalking);
+                },
               },
               {
                 icon: <ParticipantRemoveIcon />,
@@ -71,23 +60,12 @@ const Participant: React.FC<{
             trigger={<MoreIcon />}
             menu={[
               {
-                icon: (
-                  <MicOffIcon
-                    onClick={() => {
-                      setTalking(false);
-                      setMuted(true);
-                    }}
-                  />
-                ),
-                content: (
-                  <Text
-                    onClick={() => {
-                      setTalking(false);
-                      setMuted(true);
-                    }}
-                    content="Mute"
-                  />
-                ),
+                icon: <MicOffIcon />,
+                content: 'Mute',
+                onClick: () => {
+                  setTalking(false);
+                  setMuted(true);
+                },
               },
               { icon: <ParticipantRemoveIcon />, content: 'Remove' },
             ]}
