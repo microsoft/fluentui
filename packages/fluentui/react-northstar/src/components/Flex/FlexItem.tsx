@@ -73,7 +73,7 @@ export const flexItemClassName = 'ui-flex__item';
 /**
  * A FlexItem is a layout component that customizes alignment of Flex child.
  */
-const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = props => {
+export const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
   setStart();
@@ -147,5 +147,3 @@ FlexItem.propTypes = {
 // However, there are  concerns related to browser compatibility if Symbols will be used.
 // Completely alternative approach - check class name of React element (and generalize this logic).
 FlexItem.__isFlexItem = true;
-
-export default FlexItem;

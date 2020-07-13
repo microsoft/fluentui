@@ -15,7 +15,7 @@ import {
   createShorthandFactory,
   createShorthand,
 } from '../../utils';
-import Button, { ButtonProps } from './Button';
+import { Button, ButtonProps } from './Button';
 import {
   ComponentWithAs,
   getElementType,
@@ -47,7 +47,8 @@ export const buttonGroupClassName = 'ui-buttons';
 /**
  * A ButtonGroup represents multiple related actions as a group.
  */
-const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> & FluentComponentStaticProps<ButtonGroupProps> = props => {
+export const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> &
+  FluentComponentStaticProps<ButtonGroupProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
   setStart();
@@ -138,5 +139,3 @@ ButtonGroup.create = createShorthandFactory({
   mappedProp: 'content',
   mappedArrayProp: 'buttons',
 });
-
-export default ButtonGroup;

@@ -18,7 +18,7 @@ import {
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import {
   useAutoControlled,
   getElementType,
@@ -137,7 +137,7 @@ export const inputSlotClassNames: InputSlotClassNames = {
  * @accessibility
  * For good screen reader experience set `aria-label` or `aria-labelledby` attribute for input.
  */
-const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
+export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -393,7 +393,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       'labelPosition',
     ],
   },
-) as ComponentWithAs<'div', InputProps> & {
+) as ComponentWithAs<'input', InputProps> & {
   create: ShorthandFactory<InputProps>;
   Label: typeof InputLabel;
 };
@@ -437,5 +437,3 @@ Input.defaultProps = {
 Input.Label = InputLabel;
 
 Input.create = createShorthandFactory({ Component: Input });
-
-export default Input;

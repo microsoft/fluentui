@@ -19,7 +19,7 @@ export type DesignProps = {
 /**
  * The Design component provides a theme safe subset of CSS for designing layouts.
  */
-function Design<DesignProps>({ config, children }) {
+export function Design<DesignProps>({ config, children }) {
   const context = React.useContext<ProviderContextPrepared>(ThemeContext);
   const getConfig = React.useCallback(() => config, [config]);
 
@@ -43,5 +43,3 @@ Design.propTypes = {
 
   config: customPropTypes.design.isRequired,
 };
-
-export default Design;

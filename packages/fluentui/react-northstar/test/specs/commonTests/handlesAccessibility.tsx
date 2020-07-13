@@ -26,7 +26,7 @@ const TestBehavior: Accessibility = (props: any) => ({
  * Assert Component handles accessibility attributes correctly.
  * @param Component - A component that should conform.
  */
-export default (
+export const handlesAccessibility = (
   Component: React.ComponentType<any>,
   options: {
     /** Props required to render Component without errors or warnings */

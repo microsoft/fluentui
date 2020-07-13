@@ -27,7 +27,7 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -83,7 +83,7 @@ export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames 
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-const AlertDismissAction: ComponentWithAs<'button', AlertDismissActionProps> &
+export const AlertDismissAction: ComponentWithAs<'button', AlertDismissActionProps> &
   FluentComponentStaticProps<AlertDismissActionProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
@@ -203,5 +203,3 @@ AlertDismissAction.propTypes = {
 AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as any;
 
 AlertDismissAction.create = createShorthandFactory({ Component: AlertDismissAction, mappedProp: 'content' });
-
-export default AlertDismissAction;

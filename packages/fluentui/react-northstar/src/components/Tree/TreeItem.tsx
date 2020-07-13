@@ -31,7 +31,7 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
 import { hasSubtree, TreeContext } from './utils';
 
@@ -112,7 +112,7 @@ export const treeItemClassName = 'ui-tree__item';
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = props => {
+export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
@@ -314,5 +314,3 @@ TreeItem.create = createShorthandFactory({
   Component: TreeItem,
   mappedProp: 'title',
 });
-
-export default TreeItem;

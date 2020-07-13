@@ -27,9 +27,9 @@ import { ThemeProvider, ThemeContext } from 'react-fela';
 import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
 
 import { ProviderContextInput, ProviderContextPrepared } from '../../types';
-import mergeContexts from '../../utils/mergeProviderContexts';
-import ProviderConsumer from './ProviderConsumer';
-import usePortalBox, { PortalBoxContext } from './usePortalBox';
+import { mergeProviderContexts } from '../../utils/mergeProviderContexts';
+import { ProviderConsumer } from './ProviderConsumer';
+import { usePortalBox, PortalBoxContext } from './usePortalBox';
 
 export interface ProviderProps extends ChildrenComponentProps, UIComponentProps {
   rtl?: boolean;
@@ -91,7 +91,7 @@ export const providerClassName = 'ui-provider';
 /**
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
-const Provider: ComponentWithAs<'div', ProviderProps> & {
+export const Provider: ComponentWithAs<'div', ProviderProps> & {
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
@@ -124,7 +124,7 @@ const Provider: ComponentWithAs<'div', ProviderProps> & {
   const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
   const createRenderer = React.useContext(RendererContext);
 
-  const outgoingContext = mergeContexts(createRenderer, incomingContext, inputContext);
+  const outgoingContext = mergeProviderContexts(createRenderer, incomingContext, inputContext);
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
   // only add dir attribute for top level provider or when direction changes from parent to child
@@ -243,5 +243,3 @@ Provider.propTypes = {
 Provider.handledProps = Object.keys(Provider.propTypes) as any;
 
 Provider.Consumer = ProviderConsumer;
-
-export default Provider;

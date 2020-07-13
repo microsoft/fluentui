@@ -41,14 +41,14 @@ import {
   isFromKeyboard as detectIsFromKeyboard,
   createShorthand,
 } from '../../utils';
-import List, { ListProps } from '../List/List';
-import DropdownItem, { DropdownItemProps } from './DropdownItem';
-import DropdownSelectedItem, { DropdownSelectedItemProps } from './DropdownSelectedItem';
-import DropdownSearchInput, { DropdownSearchInputProps } from './DropdownSearchInput';
-import Button, { ButtonProps } from '../Button/Button';
+import { List, ListProps } from '../List/List';
+import { DropdownItem, DropdownItemProps } from './DropdownItem';
+import { DropdownSelectedItem, DropdownSelectedItemProps } from './DropdownSelectedItem';
+import { DropdownSearchInput, DropdownSearchInputProps } from './DropdownSearchInput';
+import { Button, ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import Box, { BoxProps } from '../Box/Box';
-import Portal from '../Portal/Portal';
+import { Box, BoxProps } from '../Box/Box';
+import { Portal } from '../Portal/Portal';
 import {
   ALIGNMENTS,
   POSITIONS,
@@ -361,7 +361,7 @@ const isEmpty = prop => {
  * @accessibilityIssues
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
  */
-const Dropdown: ComponentWithAs<'div', DropdownProps> &
+export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   FluentComponentStaticProps<DropdownProps> & {
     Item: typeof DropdownItem;
     SearchInput: typeof DropdownSearchInput;
@@ -1701,5 +1701,3 @@ Dropdown.defaultProps = {
 Dropdown.Item = DropdownItem;
 Dropdown.SearchInput = DropdownSearchInput;
 Dropdown.SelectedItem = DropdownSelectedItem;
-
-export default Dropdown;

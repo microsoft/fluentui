@@ -14,7 +14,7 @@ import {
   createShorthandFactory,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
-import Reaction, { ReactionProps } from './Reaction';
+import { Reaction, ReactionProps } from './Reaction';
 import {
   ComponentWithAs,
   getElementType,
@@ -41,7 +41,7 @@ export type ReactionGroupStylesProps = never;
 /**
  * A ReactionGroup groups multiple Reaction elements.
  */
-const ReactionGroup: ComponentWithAs<'div', ReactionGroupProps> &
+export const ReactionGroup: ComponentWithAs<'div', ReactionGroupProps> &
   FluentComponentStaticProps<ReactionGroupProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ReactionGroup.displayName, context.telemetry);
@@ -107,5 +107,3 @@ ReactionGroup.create = createShorthandFactory({
   mappedProp: 'content',
   mappedArrayProp: 'items',
 });
-
-export default ReactionGroup;
