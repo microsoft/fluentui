@@ -20,7 +20,7 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         borderColor: semanticColors.focusBorder,
       },
       disabled && {
-        borderColor: semanticColors.disabledBodyText,
+        borderWidth: 0,
       },
       hasErrorMessage && [
         {
