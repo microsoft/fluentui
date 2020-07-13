@@ -11,7 +11,6 @@
 
 ### Pivot
 
-- Converted Pivot to a function component.
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
 
 ### Others
@@ -30,5 +29,5 @@
 
 ## Changes worth callout
 
-- `styles` prop backward compat solution.sss
+- `styles` prop backward compat solution.
 - css variables and IE 11 solution.
