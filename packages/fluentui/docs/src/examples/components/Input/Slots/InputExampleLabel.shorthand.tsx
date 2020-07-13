@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Input, Text, Flex } from '@fluentui/react-northstar';
 
-const InputExampleWithLabels = () => (
+const InputExampleLabelShorthand = () => (
   <Flex column gap="gap.small">
     <div>
       <Text content="Default Label:" size="large" style={{ display: 'block' }} />
@@ -20,4 +20,4 @@ const InputExampleWithLabels = () => (
   </Flex>
 );
 
-export default InputExampleWithLabels;
+export default InputExampleLabelShorthand;

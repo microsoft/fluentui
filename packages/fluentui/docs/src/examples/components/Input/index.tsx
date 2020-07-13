@@ -11,8 +11,8 @@ const InputExamples = () => (
     <Types />
     <Variations />
     <State />
-    <Rtl />
     <Slots />
+    <Rtl />
   </div>
 );
 

@@ -7,7 +7,7 @@ const Variations = () => (
     <ComponentExample
       title="Input with Labels"
       description="An input can have a label"
-      examplePath="components/Input/Slots/InputExampleWithLabels"
+      examplePath="components/Input/Slots/InputExampleLabel"
     />
   </ExampleSection>
 );
