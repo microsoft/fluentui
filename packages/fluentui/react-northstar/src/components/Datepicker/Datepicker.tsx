@@ -14,7 +14,12 @@ import * as _ from 'lodash';
 
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, ShorthandRenderFunction } from '../../types';
+import {
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  ShorthandRenderFunction,
+  ComponentEventHandler,
+} from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -125,7 +130,7 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
-  onDayChange?: (e: React.MouseEvent<HTMLElement>, data: DatepickerProps & { value: IDay }) => void;
+  onDayChange?: ComponentEventHandler<DatepickerProps & { value: IDay }>;
 
   /** String to render for button to direct the user to today's date. */
   goToToday?: string;

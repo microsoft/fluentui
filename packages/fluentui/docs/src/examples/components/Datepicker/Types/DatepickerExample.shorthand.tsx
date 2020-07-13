@@ -1,6 +1,6 @@
-import { Unstable_Datepicker } from '@fluentui/react-northstar';
+import { Unstable_Datepicker as Datepicker } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const DatepickerExample = () => <Unstable_Datepicker />;
+const DatepickerExample = () => <Datepicker />;
 
 export default DatepickerExample;

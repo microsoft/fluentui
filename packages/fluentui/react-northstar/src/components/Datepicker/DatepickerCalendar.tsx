@@ -13,7 +13,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps, ProviderContextPrepared, ComponentEventHandler } from '../../types';
 import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 import Grid from '../Grid/Grid';
 import {
@@ -62,7 +62,7 @@ export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormat
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
-  onDaySelect?: (e: React.MouseEvent<HTMLElement>, data: DatepickerCalendarProps & { value: IDay }) => void;
+  onDaySelect?: ComponentEventHandler<DatepickerCalendarProps & { value: IDay }>;
 
   /** Localized labels */
   localizedStrings?: IDateGridStrings;
