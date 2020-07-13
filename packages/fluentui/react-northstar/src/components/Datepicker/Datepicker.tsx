@@ -154,6 +154,7 @@ export const datepickerClassName = 'ui-datepicker';
 
 /**
  * A Datepicker is used to display dates.
+ * This component is currently UNSTABLE!
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> = props => {
