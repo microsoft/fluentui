@@ -12,7 +12,7 @@ import { getWindow } from '../../Utilities';
  *    Otherwise, the entries array will be undefined, and you'll need to find another way to get the element's size,
  *    (e.g. clientWidth/clientHeight or getBoundingClientRect).
  *
- * @returns A function to dispose the observer/listener.
+ * @returns A function to clean up the observer/listener.
  */
 export const observeResize = (
   target: Element | Element[],
@@ -34,7 +34,10 @@ export const observeResize = (
 
     const win = getWindow(Array.isArray(target) ? target[0] : target);
     if (!win) {
-      return () => {}; // tslint:disable-line: no-empty
+      // Can't listen for resize if we can't get the window object
+      return () => {
+        // Nothing to clean up
+      };
     }
 
     // Listen for the first animation frame, which will happen after layout is complete

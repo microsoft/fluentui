@@ -57,7 +57,7 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
 
   // Attach a resize observer to the container
   const [containerRef, setContainerRef] = useRefEffect((container: HTMLElement) => {
-    const disposeObserver = observeResize(container, entries => {
+    const cleanupObserver = observeResize(container, entries => {
       containerWidthRef.current = entries ? entries[0].contentRect.width : container.clientWidth;
       if (updateOverflowRef.current) {
         updateOverflowRef.current();
@@ -65,7 +65,7 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
     });
 
     return () => {
-      disposeObserver();
+      cleanupObserver();
       containerWidthRef.current = undefined;
     };
   });
