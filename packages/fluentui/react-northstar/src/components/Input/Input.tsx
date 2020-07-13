@@ -286,7 +286,7 @@ const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         required,
         htmlFor: inputId.current,
         inputValue: hasValue,
-        ...(labelId && { id: labelId }),
+        id: labelId,
       }),
     });
 
