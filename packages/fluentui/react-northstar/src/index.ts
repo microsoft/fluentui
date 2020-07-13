@@ -201,6 +201,7 @@ export * from './components/Card/CardColumn';
 export * from './components/Card/CardExpandableBox';
 
 export * from './components/Datepicker/Datepicker';
+export * from './components/Datepicker/DatepickerCalendar';
 
 //
 // Utilities

@@ -29,20 +29,7 @@ import {
 } from '@fluentui/date-time-utilities';
 import { Text } from '../Text/Text';
 import { Button } from '../Button/Button';
-import { IDatepickerOptions } from './Datepicker';
-
-export interface IDateFormatting {
-  /**
-   * Format the date according to specified function.
-   * Intended use case is localization.
-   */
-  format?: (date: Date) => string;
-
-  /**
-   * Parse date from string representation into Date type.
-   */
-  parse?: (date: string) => Date;
-}
+import { IDatepickerOptions, IDateFormatting } from './Datepicker';
 
 export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
   /**
@@ -196,5 +183,3 @@ DatepickerCalendar.defaultProps = {
 };
 
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;
-
-DatepickerCalendar.create = createShorthandFactory({ Component: DatepickerCalendar });
