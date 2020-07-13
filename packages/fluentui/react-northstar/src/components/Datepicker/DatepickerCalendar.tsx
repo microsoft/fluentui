@@ -62,7 +62,7 @@ export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormat
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
-  onDaySelect?: ComponentEventHandler<DatepickerCalendarProps & { value: IDay }>;
+  onDateChange?: ComponentEventHandler<DatepickerCalendarProps & { value: IDay }>;
 
   /** Localized labels */
   localizedStrings?: IDateGridStrings;
@@ -145,7 +145,7 @@ const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps> &
                     content={day.date}
                     aria-label={`${formatMonthDayYear(day.originalDate, localizedStrings)}`}
                     onClick={e => {
-                      _.invoke(props, 'onDaySelect', e, { ...props, value: day });
+                      _.invoke(props, 'onDateChange', e, { ...props, value: day });
                     }}
                     primary={day.isSelected}
                     disabled={!day.isInMonth}
@@ -167,7 +167,7 @@ DatepickerCalendar.displayName = 'DatepickerCalendar';
 
 DatepickerCalendar.propTypes = {
   ...commonPropTypes.createCommon(),
-  onDaySelect: PropTypes.func,
+  onDateChange: PropTypes.func,
   localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
   selectedDate: PropTypes.instanceOf(Date),
   navigatedDate: PropTypes.instanceOf(Date),

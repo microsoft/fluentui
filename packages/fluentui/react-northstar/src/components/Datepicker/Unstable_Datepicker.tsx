@@ -130,7 +130,7 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
-  onDayChange?: ComponentEventHandler<DatepickerProps & { value: IDay }>;
+  onDateChange?: ComponentEventHandler<DatepickerProps & { value: IDay }>;
 
   /** String to render for button to direct the user to today's date. */
   goToToday?: string;
@@ -194,12 +194,12 @@ const Unstable_Datepicker: ComponentWithAs<'div', DatepickerProps> &
     rtl: context.rtl,
   });
 
-  const handleChange: DatepickerCalendarProps['onDaySelect'] = (e, data) => {
+  const handleChange: DatepickerCalendarProps['onDateChange'] = (e, data) => {
     const targetDay = data.value;
     setSelectedDate(targetDay.originalDate);
     setOpen(false);
 
-    _.invoke(props, 'onDayChange', e, { ...props, value: targetDay });
+    _.invoke(props, 'onDateChange', e, { ...props, value: targetDay });
   };
 
   const element = (
@@ -216,7 +216,7 @@ const Unstable_Datepicker: ComponentWithAs<'div', DatepickerProps> &
             open={open}
             onOpenChange={(e, { open }) => setOpen(open)}
             content={
-              <DatepickerCalendar {...calendarOptions} onDaySelect={handleChange} localizedStrings={DEFAULT_STRINGS} />
+              <DatepickerCalendar {...calendarOptions} onDateChange={handleChange} localizedStrings={DEFAULT_STRINGS} />
             }
             trapFocus
           >
@@ -254,7 +254,7 @@ Unstable_Datepicker.propTypes = {
 
   disabled: PropTypes.bool,
   isRequired: PropTypes.bool,
-  onDayChange: PropTypes.func,
+  onDateChange: PropTypes.func,
   goToToday: PropTypes.string,
   placeholder: PropTypes.string,
   renderCell: PropTypes.func,
