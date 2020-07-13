@@ -12,7 +12,7 @@ export interface IExampleFacepilePersona {
   initialsColor?: number;
   personaName?: string;
   onClick?: (ev: unknown, persona?: IExampleFacepilePersona) => void;
-  data?: any; // tslint:disable-line:no-any
+  data?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**

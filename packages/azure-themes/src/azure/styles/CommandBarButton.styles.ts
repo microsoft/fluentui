@@ -18,6 +18,8 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
+      paddingLeft: 4,
+      paddingRight: 4,
     },
     rootExpanded: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,

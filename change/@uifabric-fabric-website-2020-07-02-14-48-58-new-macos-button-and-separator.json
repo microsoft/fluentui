@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "new macOS Button and Separator control",
-  "packageName": "@uifabric/fabric-website",
-  "email": "saadnajmi2@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-02T21:48:58.447Z"
-}

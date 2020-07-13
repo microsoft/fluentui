@@ -106,6 +106,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
 
     // Intentionally render the first 30 issues until pagination support is added for
     // https://github.com/microsoft/fluentui/issues/8284
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     return items.map((item: { created_at: string; title: string; number: number }) => {
       const dateCreated = new Date(item.created_at);
       const openedOn = relativeDates(dateCreated, new Date());

@@ -2,13 +2,13 @@ import * as React from 'react';
 import { IUnifiedPeoplePickerProps } from './UnifiedPeoplePicker.types';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { FloatingPeopleSuggestions } from '../../FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
+import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
+import { IFloatingPeopleSuggestionsProps } from '../../FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions.types';
 import {
   SelectedPeopleList,
   ISelectedPeopleListProps,
 } from '../../SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { UnifiedPicker } from '../UnifiedPicker';
-import { IFloatingSuggestionItemProps } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
-import { IFloatingPeopleSuggestionsProps } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
   // update the suggestion like componentWillReceiveProps

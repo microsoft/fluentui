@@ -117,7 +117,9 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           id={tabId}
           key={itemKey}
           className={css(classNames.link, isSelected && classNames.linkIsSelected)}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={onLinkClick.bind(this, itemKey)}
+          // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={onKeyDown.bind(this, itemKey)}
           aria-label={link.ariaLabel}
           role="tab"

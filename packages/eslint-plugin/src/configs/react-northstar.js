@@ -16,6 +16,8 @@ module.exports = {
   // matched relative to cwd
   ignorePatterns: ['coverage', 'dist', 'etc', 'lib', 'lib-commonjs', 'node_modules', 'temp'],
   rules: {
+    '@fluentui/no-tslint-comments': 'error',
+
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
 
@@ -25,8 +27,9 @@ module.exports = {
     // https://github.com/typescript-eslint/typescript-eslint/issues/46
     '@typescript-eslint/no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],
 
-    'import/no-unresolved': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.tsx'] }],
+
+    'import/no-unresolved': 'off',
     'no-shadow': 'off', // https://github.com/microsoft/fluent-ui-react/pull/1261#pullrequestreview-231005092
     'no-unused-vars': 'off', // we use @typescript-eslint/no-unused-vars instead
     // TODO: investigate and re-enable where appropriate

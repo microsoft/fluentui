@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Jul 2020 12:40:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.1)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.4.0..@uifabric/file-type-icons_v7.4.1)
+
+### Patches
+
+- Adding file icon mapping support for `osts` extension. ([PR #13970](https://github.com/microsoft/fluentui/pull/13970) by caperez@microsoft.com)
 
 ## [7.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.4.0)
 

@@ -70,7 +70,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
           className={classNames.monthAndYear}
           onClick={onHeaderSelect}
           data-is-focusable={!!onHeaderSelect}
-          tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
+          tabIndex={onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
         >

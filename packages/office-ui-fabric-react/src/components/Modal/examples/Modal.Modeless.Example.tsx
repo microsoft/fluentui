@@ -82,7 +82,7 @@ const contentStyles = mergeStyleSets({
     alignItems: 'stretch',
   },
   header: [
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     theme.fonts.xLargePlus,
     {
       flex: '1 1 auto',

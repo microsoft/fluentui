@@ -9,9 +9,6 @@ monaco-typescript.d.ts
 *.scss.ts
 _*.scss
 
-# messes up formatting
-packages/tslint-rules/tslint.json
-
 # folders of generated files
 lib
 lib-amd

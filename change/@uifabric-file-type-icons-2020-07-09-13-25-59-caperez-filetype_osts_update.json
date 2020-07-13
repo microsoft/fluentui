@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding file icon mapping support for `osts` extension.",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-09T20:25:28.147Z"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.57",
+  "version": "8.0.0-alpha.58",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -34,6 +34,7 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -46,7 +47,6 @@
     "@uifabric/example-data": "^7.0.17",
     "@uifabric/jest-serializer-merge-styles": "^7.0.29",
     "@uifabric/test-utilities": "^7.0.31",
-    "@uifabric/tslint-rules": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -62,7 +62,7 @@
     "@fluentui/react-focus": "^7.12.18",
     "@fluentui/react-icons": "^0.1.35",
     "@fluentui/react-theme-provider": "^0.3.6",
-    "@uifabric/date-time": "^7.10.7",
+    "@uifabric/date-time": "^7.10.8",
     "@uifabric/icons": "^7.3.60",
     "@uifabric/merge-styles": "^7.16.0",
     "@uifabric/react-hooks": "^7.4.13",

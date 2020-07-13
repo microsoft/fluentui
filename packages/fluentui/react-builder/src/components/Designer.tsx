@@ -137,6 +137,7 @@ export class Designer extends React.Component<{}, DesignerState> {
   }
 
   handleReset = () => {
+    // eslint-disable-next-line no-alert
     if (confirm('Lose your changes?')) {
       removeTreeFromStore();
       const defaultJsonTree = this.getDefaultJSONTree();

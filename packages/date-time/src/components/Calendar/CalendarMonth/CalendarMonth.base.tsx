@@ -176,8 +176,10 @@ export const CalendarMonthBase = React.forwardRef(
           key={'calendarYear'}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
+          // eslint-disable-next-line react/jsx-no-bind
           onSelectYear={onSelectYear}
           navigationIcons={navigationIcons}
+          // eslint-disable-next-line react/jsx-no-bind
           onHeaderSelect={onYearPickerHeaderSelect}
           selectedYear={
             selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined
@@ -208,6 +210,7 @@ export const CalendarMonthBase = React.forwardRef(
         <div className={classNames.headerContainer}>
           <button
             className={classNames.currentItemButton}
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={onHeaderSelect}
             onKeyDown={onButtonKeyDown(onHeaderSelect)}
             aria-label={headerAriaLabel}

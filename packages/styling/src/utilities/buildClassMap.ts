@@ -16,7 +16,7 @@ export function buildClassMap<T extends Object>(styles: T): { [key in keyof T]?:
       Object.defineProperty(classes, styleName, {
         get: (): string => {
           if (className === undefined) {
-            // tslint:disable-next-line:no-any
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             className = mergeStyles(styles[styleName] as any).toString();
           }
           return className;

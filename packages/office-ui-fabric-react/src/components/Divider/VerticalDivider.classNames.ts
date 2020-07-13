@@ -6,7 +6,7 @@ import { IVerticalDividerClassNames } from './VerticalDivider.types';
  * @deprecated use getStyles exported from VerticalDivider.styles.ts
  */
 export const getDividerClassNames = memoizeFunction(
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   (theme: ITheme): IVerticalDividerClassNames => {
     return mergeStyleSets({
       wrapper: {

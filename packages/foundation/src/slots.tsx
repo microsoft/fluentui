@@ -36,7 +36,6 @@ import {
 export function withSlots<P>(
   type: ISlot<P> | React.FunctionComponent<P> | string,
   props?: (React.Attributes & P) | null,
-  // tslint:disable-next-line:missing-optional-annotation
   ...children: React.ReactNode[]
 ): ReturnType<React.FunctionComponent<P>> {
   const slotType = type as ISlot<P>;
@@ -199,7 +198,6 @@ function _translateShorthand<TProps extends ValidProps, TShorthandProp extends V
 function _constructFinalProps<TProps extends IProcessedSlotProps>(
   defaultStyles: IStyle,
   theme?: ITheme,
-  // tslint:disable-next-line:missing-optional-annotation
   ...allProps: (TProps | undefined)[]
 ): TProps {
   const finalProps: TProps = {} as any;

@@ -122,7 +122,7 @@ export interface ILineChartProps {
    *  Eg: d3.format(".0%")(0.123),d3.format("+20")(42);
    * Please look at https://github.com/d3/d3-format for all the formats supported
    */
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisTickFormat?: any;
 
   /** decides wether to show/hide legends

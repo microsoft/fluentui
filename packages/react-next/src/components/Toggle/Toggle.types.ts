@@ -103,7 +103,9 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
 
   /**
-   * Optional keytip for this toggle
+   * Optional keytip.
+   *
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
 
