@@ -60,6 +60,7 @@ const Example = () => (
     <DropdownBasicExample />
     <SearchBox />
     <TextField placeholder="Hello" />
+    <TextField placeholder="Hello" disabled />
     <ActivityItemBasicExample />
     <ChoiceGroupBasicExample />
     <ToggleBasicExample />
