@@ -37,7 +37,7 @@ export const Nothing = <T>(): Nothing<T> => Object.assign<MB<T>, { just: false }
 
 export const Just = <T>(value: T): Just<T> => {
   if (value === undefined || value === null) {
-    throw 'Maybe.Just cannot receive undefined value';
+    throw new Error('Maybe.Just cannot be undefined or null');
   }
   return Object.assign<MB<T>, { just: true; value: T }>(_makeMaybe(), { just: true, value: value });
 };
