@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 
-enum foo {
-  ugh = 5,
-}
-
 export const RenderSpinner = (props: any) => {
   return (
     <div>
