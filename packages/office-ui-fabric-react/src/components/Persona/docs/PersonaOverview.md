@@ -1,4 +1,4 @@
-A persona is used for a visual representation of a person across the products, typically showcasing the image that a user has chosen to upload themselves. The control can also be used to show the online status of that person. 
+A persona is a visual representation of a person across products, typically showcasing the image that person has chosen to upload themselves. The control can also be used to show that person's online status. 
  
  
 The complete control inclues an individual's avatar (an uploaded image or a composition of the person’s initials on a background color), their name or identification, and online status. 
