@@ -1,4 +1,5 @@
 import { createSvgIcon, svgIconClassName } from '@fluentui/react-icons-northstar';
+import { Unstable_FluentContextProvider } from '@fluentui/react-bindings';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as React from 'react';
@@ -11,21 +12,6 @@ const createTheme = (): ThemeInput => ({
   },
   componentVariables: {},
 });
-
-const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
-  const { children, theme } = props;
-
-  return (
-    <ThemeContext.Provider
-      value={{
-        performance: {},
-        theme,
-      }}
-    >
-      {children}
-    </ThemeContext.Provider>
-  );
-};
 
 describe('createSvgIcon', () => {
   it('returns a valid React component', () => {
@@ -42,8 +28,8 @@ describe('createSvgIcon', () => {
     const TestIcon = createSvgIcon({ svg: testSvg, displayName: 'TestIcon' });
 
     const wrapper = mount(<TestIcon id="test-id" />, {
-      wrappingComponent: TestProvider,
-      wrappingComponentProps: { theme: createTheme() },
+      wrappingComponent: Unstable_FluentContextProvider,
+      wrappingComponentProps: { performance: {}, theme: createTheme() },
     });
     expect(wrapper.find(`.${svgIconClassName}`).props().id).toEqual('test-id');
   });
@@ -60,8 +46,8 @@ describe('createSvgIcon', () => {
     });
 
     const wrapper = mount(<BookIcon foo outline />, {
-      wrappingComponent: TestProvider,
-      wrappingComponentProps: { theme: createTheme() },
+      wrappingComponent: Unstable_FluentContextProvider,
+      wrappingComponentProps: { performance: {}, theme: createTheme() },
     });
 
     expect(wrapper.find('svg').prop('data-foo')).toEqual('true');

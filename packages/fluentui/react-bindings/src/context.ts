@@ -58,3 +58,5 @@ export function useFluentContext(): ProviderContextPrepared {
 }
 
 export const Unstable_FluentContextProvider = FluentContext.Provider;
+
+export const Unstable_FluentContextProvider = FluentContext.Provider;
