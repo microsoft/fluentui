@@ -37,7 +37,7 @@ const RosterPrototype: React.FC = () => {
                 <Header as="h3" content="Participants" />
                 <Button variables={{ isCloseButton: true }} icon={<CloseIcon />} title="Close" iconOnly text />
               </Flex>
-              <Flex padding="padding.medium" hAlign="center" variables={{ isRosterSearch: true }}>
+              <Flex padding="padding.medium" variables={{ isRosterSearch: true }}>
                 <Input fluid placeholder="Search..." />
                 <Button variables={{ isSearchButton: true }} icon={<LinkIcon />} title="Search" iconOnly text />
               </Flex>
