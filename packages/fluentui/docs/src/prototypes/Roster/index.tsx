@@ -3,24 +3,31 @@ import participants from './participantData';
 import presenters from './presentersData';
 
 import themeOverrides from './styles';
-import { List, Provider, Accordion, Flex, Button, Input, Header, teamsDarkTheme } from '@fluentui/react-northstar';
-import { CloseIcon, LinkIcon } from '@fluentui/react-icons-northstar';
+import { List, Provider, Tree, Text, Flex, Button, Input, Header, teamsDarkTheme } from '@fluentui/react-northstar';
+import { CloseIcon, LinkIcon, TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 
 const ParticipantsList = () => <List navigable items={participants} />;
 
 const PresentersList = () => <List navigable items={presenters} />;
 
+const titleRenderer = (Component, { content, expanded, open, hasSubtree, ...restProps }) => (
+  <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
+    {expanded ? <TriangleDownIcon /> : hasSubtree ? <TriangleEndIcon /> : ''}
+    <Text size="small" content={content}></Text>
+  </Component>
+);
+
 const treeItems = [
   {
     id: 'participants',
     title: 'Currently in this meeting',
-    content: <ParticipantsList />,
+    items: [<ParticipantsList />],
   },
   {
     id: 'invite',
     title: 'Invite others from conversation (25)',
-    content: <PresentersList />,
+    items: [<PresentersList />],
   },
 ];
 
@@ -39,7 +46,11 @@ const RosterPrototype: React.FC = () => {
                 <Input fluid placeholder="Search..." />
                 <Button variables={{ isSearchButton: true }} icon={<LinkIcon />} title="Search" iconOnly text />
               </Flex>
-              <Accordion panels={treeItems} defaultActiveIndex={[0, 1]} />
+              <Tree
+                items={treeItems}
+                renderItemTitle={titleRenderer}
+                defaultActiveItemIds={['participants', 'invite']}
+              ></Tree>
             </Flex>
           </Provider>
         </Provider>
