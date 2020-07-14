@@ -29,7 +29,7 @@ describe('createSvgIcon', () => {
 
     const wrapper = mount(<TestIcon id="test-id" />, {
       wrappingComponent: Unstable_FluentContextProvider,
-      wrappingComponentProps: { performance: {}, theme: createTheme() },
+      wrappingComponentProps: { value: { performance: {}, theme: createTheme() } },
     });
     expect(wrapper.find(`.${svgIconClassName}`).props().id).toEqual('test-id');
   });
@@ -47,7 +47,7 @@ describe('createSvgIcon', () => {
 
     const wrapper = mount(<BookIcon foo outline />, {
       wrappingComponent: Unstable_FluentContextProvider,
-      wrappingComponentProps: { performance: {}, theme: createTheme() },
+      wrappingComponentProps: { value: { performance: {}, theme: createTheme() } },
     });
 
     expect(wrapper.find('svg').prop('data-foo')).toEqual('true');

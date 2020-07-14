@@ -50,7 +50,7 @@ describe('useStyles', () => {
       const styles = jest.fn();
       mount(<TestComponent color="green" />, {
         wrappingComponent: Unstable_FluentContextProvider,
-        wrappingComponentProps: { performance: {}, theme: createTheme(styles) },
+        wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
       });
 
       expect(styles).toBeCalledWith(
