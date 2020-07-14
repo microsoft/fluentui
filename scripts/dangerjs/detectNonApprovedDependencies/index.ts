@@ -1,6 +1,6 @@
 import {
   getFailedPackageVersionConstraints,
-  getVersionConstrains,
+  getVersionConstraints,
   getRuntimeDependencies,
   getPackageName,
   FailedConstraintsExplanation,
@@ -23,7 +23,7 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
   const allFailedVersionConstraints: FailedConstraintsExplanation[] = [];
 
   const dependencyPackageIds = getRuntimeDependencies('react-northstar');
-  const versionConstraints = await getVersionConstrains(paths.packages('react-northstar', 'package.json'));
+  const versionConstraints = await getVersionConstraints(paths.packages('react-northstar', 'package.json'));
 
   dependencyPackageIds.forEach(packageId => {
     const failedPackageVersionConstraints = getFailedPackageVersionConstraints(
@@ -40,9 +40,9 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
     markdown(
       [
         '## Non-approved dependencies are detected.',
-        'The following package version constraints missing approved candidate:',
+        'The following package version constraints are missing an approved candidate:',
         '',
-        'failed constrains | approved candidates',
+        'failed constraints | approved candidates',
         '--- | --- ',
 
         allFailedVersionConstraints
@@ -51,7 +51,7 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
               `${explanation.failedConstraints.join(', ')} | ${
                 explanation.approvedPackages.length
                   ? explanation.approvedPackages.join(', ')
-                  : '_there are no any approved packages_'
+                  : '_there are not any approved packages_'
               }`,
           )
           .join('\n'),
@@ -59,7 +59,8 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
     );
 
     fail(
-      'Non-approved dependencies were detected. It is necessary to obtain approvals and register them in `approvedPackages` file before merge.',
+      'Non-approved dependencies were detected. It is necessary to obtain approvals and register them in the ' +
+        '`approvedPackages` file before merge.',
     );
   }
 };

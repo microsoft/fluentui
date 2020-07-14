@@ -50,7 +50,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           },
       );
 
-    sections.push(_otherControlsRequestSections(platform));
+    _otherControlsRequestSections(platform) !== undefined && sections.push(_otherControlsRequestSections(platform));
     return sections;
   }
 }
@@ -59,20 +59,31 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
   switch (platform) {
     case 'web':
       return {
-        sectionName: 'Need a control Fluent UI React doesn’t have?',
+        sectionName: "Need a control you don't see here?",
         content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string,
       };
     case 'ios':
       return {
-        sectionName: 'Need a control Fluent UI iOS doesn’t have?',
+        sectionName: "Need a control you don't see here?",
         content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string,
       };
     case 'android':
       return {
-        sectionName: 'Need a control Fluent UI Android doesn’t have?',
+        sectionName: "Need a control you don't see here?",
         content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
       };
+    case 'mac':
+      return {
+        sectionName: "Need a control you don't see here?",
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/mac/ControlsRequest.md') as string,
+      };
+    case 'cross':
+      return {
+        sectionName: "Need a control you don't see here?",
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/cross/ControlsRequest.md') as string,
+      };
   }
+  return undefined;
 }
 
 export const ControlsPage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (

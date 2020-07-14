@@ -3,7 +3,7 @@ import * as React from 'react';
 import { DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const CardExampleHorizontal = () => (
-  <Card compact horizontal>
+  <Card compact horizontal aria-roledescription="card with a preview image, text and action buttons">
     <Card.Preview horizontal>
       <Image style={{ height: '115px', width: '115px' }} src="public/images/wireframe/square-image.png" />
     </Card.Preview>

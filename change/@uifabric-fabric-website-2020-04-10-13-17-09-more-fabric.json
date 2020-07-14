@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update package description",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-10T20:17:01.245Z"
-}

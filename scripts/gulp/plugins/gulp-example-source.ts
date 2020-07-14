@@ -5,8 +5,7 @@ import prettier from 'prettier';
 import through from 'through2';
 import Vinyl from 'vinyl';
 
-// TODO (fui repo merge): this script package should not take a dependency through relative paths ideally; this should be inside docs
-import { ExampleSource } from '../../../packages/fluentui/docs/src/types';
+import { ExampleSource } from './util/docs-types';
 import transformStarImportPlugin from '../../babel/transform-star-import-plugin';
 import { getRelativePathToSourceFile } from './util';
 

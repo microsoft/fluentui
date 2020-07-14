@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { Accessibility, AccessibilityDefinition } from '../../types';
 
 /**
@@ -9,7 +9,7 @@ import { Accessibility, AccessibilityDefinition } from '../../types';
  * Adds attribute 'aria-disabled=true' based on the property 'loading'.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
+export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
   const definition: AccessibilityDefinition = {
     attributes: {
       root: {
@@ -25,7 +25,7 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
         ...(props.as !== 'button' &&
           props.as !== 'a' && {
             performClick: {
-              keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+              keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
             },
           }),
       },
@@ -39,8 +39,6 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
 
   return definition;
 };
-
-export default buttonBehavior;
 
 export type ButtonBehaviorProps = {
   /** Element type. */

@@ -61,15 +61,13 @@ class RadioGroupVerticalExample extends React.Component {
           </Text>
         ),
         value: 'custom',
-        checkedChanged: this.handleCustomCheckedChange,
         'aria-label': 'Press Tab to change flavour',
       },
     ];
   }
 
-  handleChange = (e, props) => this.setState({ selectedValue: props.value });
-
-  handleCustomCheckedChange = (e, props) => this.setState({ inputTabIndex: props.checked ? '0' : '-1' });
+  handleChange = (e, props) =>
+    this.setState({ selectedValue: props.value, inputTabIndex: props.value === 'custom' ? '0' : '-1' });
 }
 
 export default RadioGroupVerticalExample;

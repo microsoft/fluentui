@@ -34,6 +34,7 @@ describe('useBoolean', () => {
     // Callbacks should be the same
     expect(callbacks!.setTrue).toBe(result1.setTrue);
     expect(callbacks!.setFalse).toBe(result1.setFalse);
+    expect(callbacks!.toggle).toBe(result1.toggle);
   });
 
   it('updates the value', () => {
@@ -68,19 +69,14 @@ describe('useBoolean', () => {
     };
 
     mount(<TestComponent />);
-    // correct callback used
-    expect(callbacks!.toggle).toBe(callbacks!.setFalse);
 
     // Toggle the value
     act(() => callbacks.toggle());
     // correct new value
     expect(value!).toBe(false);
-    // correct new callback
-    expect(callbacks!.toggle).toBe(callbacks!.setTrue);
 
     // Toggle again
     act(() => callbacks.toggle());
     expect(value!).toBe(true);
-    expect(callbacks!.toggle).toBe(callbacks!.setFalse);
   });
 });

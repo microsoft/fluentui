@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, EventGroup, initializeComponentRef, KeyCodes, getId } from '../../../Utilities';
+import { classNamesFunction, on, initializeComponentRef, KeyCodes, getId } from '../../../Utilities';
 import {
   IColorRectangleProps,
   IColorRectangleStyleProps,
@@ -32,7 +32,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
   };
 
-  private _events: EventGroup;
+  private _disposables: (() => void)[] = [];
   private _root = React.createRef<HTMLDivElement>();
   private _isAdjustingSaturation: boolean = true;
   private _descriptionId = getId('ColorRectangle-description');
@@ -41,7 +41,6 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     super(props);
 
     initializeComponentRef(this);
-    this._events = new EventGroup(this);
 
     this.state = { color: props.color };
   }
@@ -62,7 +61,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
+    this._disposeListeners();
   }
 
   public render(): JSX.Element {
@@ -148,7 +147,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     this._updateColor(ev, updateSV(color, clamp(s, MAX_COLOR_SATURATION), clamp(v, MAX_COLOR_VALUE)));
   };
 
-  private _updateColor(ev: React.MouseEvent | React.KeyboardEvent, color: IColor): void {
+  private _updateColor(ev: MouseEvent | KeyboardEvent | React.MouseEvent | React.KeyboardEvent, color: IColor): void {
     const { onChange } = this.props;
 
     const oldColor = this.state.color;
@@ -157,7 +156,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     }
 
     if (onChange) {
-      onChange(ev, color);
+      onChange(ev as React.MouseEvent | React.KeyboardEvent, color);
     }
 
     if (!ev.defaultPrevented) {
@@ -167,13 +166,15 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
   }
 
   private _onMouseDown = (ev: React.MouseEvent): void => {
-    this._events.on(window, 'mousemove', this._onMouseMove, true);
-    this._events.on(window, 'mouseup', this._disableEvents, true);
+    this._disposables.push(
+      on(window, 'mousemove', this._onMouseMove as (ev: MouseEvent) => void, true),
+      on(window, 'mouseup', this._disposeListeners, true),
+    );
 
     this._onMouseMove(ev);
   };
 
-  private _onMouseMove = (ev: React.MouseEvent): void => {
+  private _onMouseMove = (ev: MouseEvent | React.MouseEvent): void => {
     if (!this._root.current) {
       return;
     }
@@ -181,9 +182,8 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     // Leaving the following commented code which is sometimes necessary for debugging:
     // If the primary button (1) isn't pressed, the user is no longer dragging, so turn off
     // the event handlers and exit.
-    // tslint:disable-next-line:no-bitwise
     // if (!(ev.buttons & 1)) {
-    //   this._disableEvents();
+    //   this._disposeListeners();
     //   return;
     // }
 
@@ -193,8 +193,9 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     }
   };
 
-  private _disableEvents = (): void => {
-    this._events.off();
+  private _disposeListeners = (): void => {
+    this._disposables.forEach(dispose => dispose());
+    this._disposables = [];
   };
 }
 
@@ -202,7 +203,11 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
  * Exported for testing only.
  * @internal
  */
-export function _getNewColor(ev: React.MouseEvent, prevColor: IColor, root: HTMLElement): IColor | undefined {
+export function _getNewColor(
+  ev: MouseEvent | React.MouseEvent,
+  prevColor: IColor,
+  root: HTMLElement,
+): IColor | undefined {
   const rectSize = root.getBoundingClientRect();
 
   const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;

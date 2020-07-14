@@ -1,11 +1,11 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
-import HierarchicalTree from 'src/components/HierarchicalTree/HierarchicalTree';
-import HierarchicalTreeTitle from 'src/components/HierarchicalTree/HierarchicalTreeTitle';
-import HierarchicalTreeItem from 'src/components/HierarchicalTree/HierarchicalTreeItem';
+import { HierarchicalTree } from 'src/components/HierarchicalTree/HierarchicalTree';
+import { hierarchicalTreeTitleClassName } from 'src/components/HierarchicalTree/HierarchicalTreeTitle';
+import { hierarchicalTreeItemClassName } from 'src/components/HierarchicalTree/HierarchicalTreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 
 const items = [
@@ -56,9 +56,9 @@ const items = [
 ];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${HierarchicalTreeTitle.deprecated_className}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${hierarchicalTreeTitleClassName}`).filterWhere(n => typeof n.type() === 'string');
 const getItems = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${HierarchicalTreeItem.deprecated_className}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${hierarchicalTreeItemClassName}`).filterWhere(n => typeof n.type() === 'string');
 
 const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
   const titles = getTitles(wrapper);
@@ -71,6 +71,7 @@ const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
 
 describe('HierarchialTree', () => {
   isConformant(HierarchicalTree, {
+    constructorName: 'HierarchicalTree',
     autoControlledProps: ['activeIndex'],
   });
 

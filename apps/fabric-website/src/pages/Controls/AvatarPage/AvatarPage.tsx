@@ -37,5 +37,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/AvatarPage/docs/android/AvatarImplementation.md') as string,
         },
       ];
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/AvatarImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/AvatarPage/docs/mac/AvatarImplementation.md') as string,
+        },
+      ];
   }
 }

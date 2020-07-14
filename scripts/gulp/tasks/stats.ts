@@ -131,7 +131,7 @@ task('stats', series(parallel('build:docs:component-info'), 'stats:build:bundle'
 
 function readSummaryPerfStats() {
   return _.chain(require(paths.perfDist('result.json')))
-    .mapKeys((value, key) => _.camelCase(key)) // mongodb does not allow dots in keys
+    .mapKeys((value, key) => _.camelCase(String(key))) // mongodb does not allow dots in keys
     .mapValues(result => ({
       actualTime: _.omit(result.actualTime, 'values'),
       renderComponentTime: {

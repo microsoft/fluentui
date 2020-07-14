@@ -1,6 +1,7 @@
 import gutil from 'gulp-util';
 import _ from 'lodash';
 import path from 'path';
+import { Transform } from 'stream';
 import through2 from 'through2';
 import Vinyl from 'vinyl';
 
@@ -36,7 +37,7 @@ export default () => {
     >
   > = {};
 
-  function bufferContents(file, enc, cb) {
+  function bufferContents(this: Transform, file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -76,7 +77,7 @@ export default () => {
     }
   }
 
-  function endStream(cb) {
+  function endStream(this: Transform, cb) {
     _.forEach(exampleFilesByDisplayName, (contents, displayName) => {
       const sortedContents = _.sortBy(contents, ['order', 'sectionName']).map(({ sectionName, examples }) => ({
         sectionName,

@@ -1,18 +1,19 @@
 import { pxToRem } from '../../../../utils';
-import CarouselNavigationItem, {
-  CarouselNavigationItemProps,
+import {
+  CarouselNavigationItemStylesProps,
+  carouselNavigationItemSlotClassNames,
 } from '../../../../components/Carousel/CarouselNavigationItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { getColorScheme } from '../../colors';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 
-const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
-  CarouselNavigationItemProps,
+export const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
+  CarouselNavigationItemStylesProps,
   CarouselNavigationVariables
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { active, iconOnly, primary, vertical } = p;
+    const { active, iconOnly, primary, vertical, thumbnails } = p;
 
     const colors = getColorScheme(v.colorScheme, null, primary);
 
@@ -51,6 +52,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       ':focus-visible': {
         ...(iconOnly && {
           borderRadius: '50%',
+          ...(thumbnails && { borderRadius: '0' }),
           borderColor: v.iconOnlyColorActive,
           ...getIconFillOrOutlineStyles({ outline: false }),
         }),
@@ -70,7 +72,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       ':hover': {
         color: 'inherit',
 
-        [`& .${CarouselNavigationItem.slotClassNames.indicator}`]: {
+        [`& .${carouselNavigationItemSlotClassNames.indicator}`]: {
           background: v.indicatorBackgroundColor,
         },
 
@@ -82,7 +84,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
   },
 
   content: ({ props: p }): ICSSInJSStyle => {
-    const widthAdjust = p.indicator ? 26 : 0;
+    const widthAdjust = p.hasIndicator ? 26 : 0;
 
     return {
       whiteSpace: 'normal',
@@ -90,6 +92,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       marginTop: pxToRem(-4),
       marginBottom: pxToRem(-4),
       display: 'inline-block',
+      ...(p.thumbnails && { width: pxToRem(60), ...(!p.active && { opacity: 0.4 }) }),
       ...(p.vertical && {
         width: 'max-content',
         minWidth: pxToRem(46 - widthAdjust),
@@ -109,7 +112,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       background: v.indicatorActiveBackgroundColor,
     }),
 
-    ...(p.content && {
+    ...(p.hasContent && {
       marginRight: pxToRem(10),
     }),
 
@@ -121,5 +124,3 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
     }),
   }),
 };
-
-export default carouselNavigationItemStyles;

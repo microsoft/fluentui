@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const CardExampleSize = () => (
   <Flex gap="gap.small">
-    <Card size="small">
+    <Card size="small" aria-roledescription="card with avatar, image and text">
       <Card.Header>
         <Flex gap="gap.small">
           <Avatar
@@ -26,7 +26,7 @@ const CardExampleSize = () => (
       </Card.Body>
     </Card>
 
-    <Card>
+    <Card aria-roledescription="card with avatar, image and text">
       <Card.Header>
         <Flex gap="gap.small">
           <Avatar
@@ -49,7 +49,7 @@ const CardExampleSize = () => (
       </Card.Body>
     </Card>
 
-    <Card size="large">
+    <Card size="large" aria-roledescription="card with avatar, image and text">
       <Card.Header>
         <Flex gap="gap.small">
           <Avatar

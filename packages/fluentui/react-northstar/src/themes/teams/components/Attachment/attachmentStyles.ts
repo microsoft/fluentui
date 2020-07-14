@@ -1,13 +1,13 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { svgIconClassName } from '@fluentui/react-icons-northstar';
 
 import { AttachmentStylesProps } from '../../../../components/Attachment/Attachment';
-import AttachmentAction from '../../../../components/Attachment/AttachmentAction';
+import { attachmentActionClassName } from '../../../../components/Attachment/AttachmentAction';
 import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
-import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
+export const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
@@ -39,7 +39,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
         bottom: 0,
         left: 0,
         maxWidth: '100%',
-        height: pxToRem(v.progressHeight),
+        height: v.progressHeight,
         background: v.progressColor,
       },
 
@@ -51,30 +51,28 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           backgroundColor: v.focusBackgroundColor,
           color: v.focusColor,
 
-          [`& .${AttachmentAction.deprecated_className}`]: {
-            color: v.siblingsFocusColor,
+          [`& .${attachmentActionClassName}`]: {
+            color: v.focusColor,
           },
 
-          [`& .${SvgIcon.deprecated_className}`]: {
-            color: v.siblingsFocusColor,
+          [`& .${svgIconClassName}`]: {
+            color: v.focusColor,
           },
         },
 
         ':hover': {
-          background: v.backgroundColorHover,
+          backgroundColor: v.backgroundColorHover,
           color: v.textColorHover,
 
-          [`& .${AttachmentAction.deprecated_className}`]: {
-            color: v.siblingsHoverColor,
+          [`& .${attachmentActionClassName}`]: {
+            color: v.textColorHover,
           },
 
-          [`& .${SvgIcon.deprecated_className}`]: {
-            color: v.siblingsHoverColor,
+          [`& .${svgIconClassName}`]: {
+            color: v.textColorHover,
           },
         },
       }),
     };
   },
 };
-
-export default attachmentStyles;

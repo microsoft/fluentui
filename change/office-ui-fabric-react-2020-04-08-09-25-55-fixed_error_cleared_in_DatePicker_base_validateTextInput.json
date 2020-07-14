@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed a bug in the DatePicker causing an existing validation error to be cleared when tabbing through the component.",
-  "packageName": "office-ui-fabric-react",
-  "email": "michaelmajgaard@outlook.com",
-  "commit": "38280f217ad6e05d9c8cfadaf31f3f5850319204",
-  "dependentChangeType": "patch",
-  "date": "2020-04-08T07:25:55.113Z"
-}

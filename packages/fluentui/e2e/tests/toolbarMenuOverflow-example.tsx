@@ -1,14 +1,22 @@
 import React from 'react';
 import _ from 'lodash';
-import { Toolbar, ToolbarItem, ToolbarMenu, Ref, Button } from '@fluentui/react-northstar';
+import {
+  Toolbar,
+  toolbarItemClassName,
+  toolbarMenuClassName,
+  Ref,
+  Button,
+  toolbarClassName,
+  toolbarItemWrapperClassName,
+} from '@fluentui/react-northstar';
 
 export const selectors = {
-  toolbarItem: ToolbarItem.deprecated_className,
-  toolbar: Toolbar.deprecated_className,
-  toolbarItemWrapper: ToolbarItem.slotClassNames.wrapper,
+  toolbarItem: toolbarItemClassName,
+  toolbar: toolbarClassName,
+  toolbarItemWrapper: toolbarItemWrapperClassName,
   menuTrigger: 'menu-trigger',
   itemButtonId: 'item-button',
-  toolbarMenu: ToolbarMenu.deprecated_className,
+  toolbarMenu: toolbarMenuClassName,
   afterToolbarId: 'after',
 };
 

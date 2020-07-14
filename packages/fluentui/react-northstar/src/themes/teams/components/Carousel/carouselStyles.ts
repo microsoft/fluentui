@@ -1,9 +1,9 @@
 import { pxToRem } from '../../../../utils';
-import { CarouselProps, CarouselState } from '../../../../components/Carousel/Carousel';
+import { CarouselStylesProps } from '../../../../components/Carousel/Carousel';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselVariables } from './carouselVariables';
 
-const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState, CarouselVariables> = {
+export const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselVariables> = {
   root: (): ICSSInJSStyle => ({
     display: 'inline-block',
   }),
@@ -12,7 +12,6 @@ const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState,
     width: pxToRem(v.width),
     overflowX: 'hidden',
     border: '1px solid transparent',
-
     ...(p.shouldFocusContainer &&
       p.isFromKeyboard && {
         border: `1px solid ${v.focusOuterBorderColor}`,
@@ -27,5 +26,3 @@ const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState,
     willChange: 'transform',
   }),
 };
-
-export default carouselStyles;

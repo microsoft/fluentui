@@ -1,20 +1,23 @@
-import { Accessibility, textAreaBehavior } from '@fluentui/accessibility';
-import { ComponentEventHandler, WithAsProp, withSafeTypeForAs } from '../../types';
+import { Accessibility, textAreaBehavior, TextAreaBehaviorProps } from '@fluentui/accessibility';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  RenderResultConfig,
-  AutoControlledComponent,
-  applyAccessibilityKeyHandlers,
-} from '../../utils';
+  ComponentWithAs,
+  useAutoControlled,
+  getElementType,
+  useTelemetry,
+  useUnhandledProps,
+  useFluentContext,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<TextAreaBehaviorProps>;
 
   /** The default value of the text area. */
   defaultValue?: string;
@@ -43,63 +46,9 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
   fluid?: boolean;
 }
 
-export interface TextAreaState {
-  value?: TextAreaProps['value'];
-}
+export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
 
-class TextArea extends AutoControlledComponent<WithAsProp<TextAreaProps>, TextAreaState> {
-  static deprecated_className = 'ui-textarea';
-
-  static displayName = 'TextArea';
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
-    }),
-    defaultValue: PropTypes.string,
-    onChange: PropTypes.func,
-    value: PropTypes.string,
-    disabled: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    as: 'textarea',
-    accessibility: textAreaBehavior,
-  };
-
-  static autoControlledProps = ['value'];
-
-  renderComponent({
-    ElementType,
-    classes,
-    accessibility,
-    variables,
-    styles,
-    unhandledProps,
-  }: RenderResultConfig<TextAreaProps>) {
-    const { disabled } = this.props;
-    const { value = '' } = this.state;
-
-    return (
-      <ElementType
-        value={value}
-        className={classes.root}
-        onChange={this.handleChange}
-        disabled={disabled}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      />
-    );
-  }
-
-  handleChange = (e: React.ChangeEvent | React.FormEvent) => {
-    const value = _.get(e, 'target.value');
-
-    _.invoke(this.props, 'onChange', e, { ...this.props, value });
-    this.setState({ value });
-  };
-}
+export const textAreaClassName = 'ui-textarea';
 
 /**
  * A TextArea is a multi-line plan-text editing control.
@@ -111,4 +60,91 @@ class TextArea extends AutoControlledComponent<WithAsProp<TextAreaProps>, TextAr
  * [NVDA - No announcement of maxlength](https://github.com/nvaccess/nvda/issues/7910)
  * [JAWS - textarea - no announcement of maxlength](https://github.com/FreedomScientific/VFO-standards-support/issues/300)
  */
-export default withSafeTypeForAs<typeof TextArea, TextAreaProps, 'textarea'>(TextArea);
+export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
+  FluentComponentStaticProps<TextAreaProps> = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
+
+  setStart();
+
+  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables } = props;
+
+  const [value, setValue] = useAutoControlled({
+    defaultValue: props.defaultValue,
+    value: props.value,
+    initialValue: '',
+  });
+
+  const unhandledProps = useUnhandledProps(TextArea.handledProps, props);
+
+  const getA11yProps = useAccessibility<TextAreaBehaviorProps>(accessibility, {
+    debugName: TextArea.displayName,
+    mapPropsToBehavior: () => ({
+      disabled,
+    }),
+    rtl: context.rtl,
+  });
+
+  const { classes } = useStyles<TextAreaStylesProps>(TextArea.displayName, {
+    className: textAreaClassName,
+    mapPropsToStyles: () => ({
+      inverted,
+      resize,
+      fluid,
+      disabled,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const ElementType = getElementType(props);
+
+  const handleChange = (e: React.ChangeEvent | React.FormEvent) => {
+    const newValue = _.get(e, 'target.value');
+
+    _.invoke(props, 'onChange', e, { ...props, value: newValue });
+    setValue(newValue);
+  };
+
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        value,
+        disabled,
+        onChange: handleChange,
+        ...unhandledProps,
+      })}
+    />
+  );
+  setEnd();
+  return element;
+};
+
+TextArea.displayName = 'TextArea';
+
+TextArea.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+TextArea.defaultProps = {
+  as: 'textarea',
+  accessibility: textAreaBehavior,
+};
+
+TextArea.handledProps = Object.keys(TextArea.propTypes) as any;
+
+TextArea.create = createShorthandFactory({
+  Component: TextArea,
+});

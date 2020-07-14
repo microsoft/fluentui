@@ -11,12 +11,14 @@ const actions = (
         iconOnly: true,
         text: true,
         title: 'Check',
+        key: 'check',
       },
       {
         icon: <CloseIcon />,
         iconOnly: true,
         text: true,
         title: 'Close',
+        key: 'close',
       },
     ]}
   />

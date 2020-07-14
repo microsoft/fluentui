@@ -4,6 +4,7 @@ import through2 from 'through2';
 import Vinyl from 'vinyl';
 import _ from 'lodash';
 import fs from 'fs';
+import { Transform } from 'stream';
 
 const pluginName = 'gulp-component-menu-behaviors';
 const extract = require('extract-comments');
@@ -26,7 +27,7 @@ const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
 
 export default () => {
   const result: BehaviorMenuItem[] = [];
-  function bufferContents(file, enc, cb) {
+  function bufferContents(this: Transform, file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -87,7 +88,7 @@ export default () => {
       .value();
   }
 
-  function endStream(cb) {
+  function endStream(this: Transform, cb) {
     const file = new Vinyl({
       path: './behaviorMenu.json',
       contents: Buffer.from(JSON.stringify(getParsedResults(), null, 2)),

@@ -1,8 +1,8 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import Checkbox, { CheckboxStylesProps } from '../../../../components/Checkbox/Checkbox';
+import { CheckboxStylesProps, checkboxSlotClassNames } from '../../../../components/Checkbox/Checkbox';
 import { CheckboxVariables } from './checkboxVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import checkboxIndicatorUrl from './checkboxIndicatorUrl';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { checkboxIndicatorUrl } from './checkboxIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
 const commonToggleBeforeStyles = v => ({
@@ -14,7 +14,7 @@ const commonToggleBeforeStyles = v => ({
   transition: 'margin .3s ease',
 });
 
-const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxVariables> = {
+export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxVariables> = {
   root: ({ props: p, variables: v, theme: t }): ICSSInJSStyle => ({
     position: 'relative',
 
@@ -41,7 +41,7 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     ':hover': {
       color: v.textColorHover,
 
-      [`& .${Checkbox.slotClassNames.indicator}`]: {
+      [`& .${checkboxSlotClassNames.indicator}`]: {
         ...(!p.toggle && {
           ...(p.checked && {
             borderColor: v.checkedBackgroundHover,
@@ -121,7 +121,7 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     }),
 
     ...(p.disabled && {
-      background: v.disabledBackground,
+      backgroundColor: v.disabledBackground,
       borderColor: v.disabledBorderColor,
     }),
 
@@ -201,5 +201,3 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     }),
   }),
 };
-
-export default checkboxStyles;

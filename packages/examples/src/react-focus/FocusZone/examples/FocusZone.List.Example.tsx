@@ -54,7 +54,7 @@ export const FocusZoneListExample: React.FunctionComponent = () => {
     <FocusZone
       direction={FocusZoneDirection.vertical}
       isCircularNavigation={true}
-      isInnerZoneKeystroke={_isInnerZoneKeystroke}
+      shouldEnterInnerZone={_shouldEnterInnerZone}
       role="grid"
     >
       {ITEMS.map((item, index) => (
@@ -72,6 +72,6 @@ export const FocusZoneListExample: React.FunctionComponent = () => {
   );
 };
 
-function _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+function _shouldEnterInnerZone(ev: React.KeyboardEvent<HTMLElement>): boolean {
   return ev.which === getRTLSafeKeyCode(KeyCodes.right);
 }

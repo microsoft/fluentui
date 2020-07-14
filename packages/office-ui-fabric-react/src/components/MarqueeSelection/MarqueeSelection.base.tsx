@@ -4,7 +4,7 @@ import {
   Async,
   EventGroup,
   AutoScroll,
-  IPoint,
+  Point,
   IRectangle,
   classNamesFunction,
   findScrollableParent,
@@ -19,7 +19,7 @@ import {} from '@uifabric/utilities';
 const getClassNames = classNamesFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>();
 
 export interface IMarqueeSelectionState {
-  dragOrigin?: IPoint;
+  dragOrigin?: Point;
   dragRect?: IRectangle;
 }
 
@@ -43,7 +43,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   private _async: Async;
   private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
-  private _dragOrigin: IPoint | undefined;
+  private _dragOrigin: Point | undefined;
   private _rootRect: IRectangle;
   private _lastMouseEvent: MouseEvent | undefined;
   private _autoScroll: AutoScroll | undefined;
@@ -223,7 +223,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
     }
 
     const rootRect = this._getRootRect();
-    const currentPoint = { x: ev.clientX - rootRect.left, y: ev.clientY - rootRect.top };
+    const currentPoint = { left: ev.clientX - rootRect.left, top: ev.clientY - rootRect.top };
 
     if (!this._dragOrigin) {
       this._dragOrigin = currentPoint;
@@ -246,19 +246,19 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
         // We need to constrain the current point to the rootRect boundaries.
         const constrainedPoint = this.props.isDraggingConstrainedToRoot
           ? {
-              x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent!.clientX - rootRect.left)),
-              y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top)),
+              left: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent!.clientX - rootRect.left)),
+              top: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top)),
             }
           : {
-              x: this._lastMouseEvent!.clientX - rootRect.left,
-              y: this._lastMouseEvent!.clientY - rootRect.top,
+              left: this._lastMouseEvent!.clientX - rootRect.left,
+              top: this._lastMouseEvent!.clientY - rootRect.top,
             };
 
         const dragRect = {
-          left: Math.min(this._dragOrigin.x, constrainedPoint.x),
-          top: Math.min(this._dragOrigin.y, constrainedPoint.y),
-          width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
-          height: Math.abs(constrainedPoint.y - this._dragOrigin.y),
+          left: Math.min(this._dragOrigin.left || 0, constrainedPoint.left),
+          top: Math.min(this._dragOrigin.top || 0, constrainedPoint.top),
+          width: Math.abs(constrainedPoint.left - (this._dragOrigin.left || 0)),
+          height: Math.abs(constrainedPoint.top - (this._dragOrigin.top || 0)),
         };
 
         this._evaluateSelection(dragRect, rootRect);
@@ -291,9 +291,14 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
     }
   }
 
-  private _isPointInRectangle(rectangle: IRectangle, point: IPoint): boolean {
+  private _isPointInRectangle(rectangle: IRectangle, point: Point): boolean {
     return (
-      rectangle.top < point.y && rectangle.bottom! > point.y && rectangle.left < point.x && rectangle.right! > point.x
+      !!point.top &&
+      rectangle.top < point.top &&
+      rectangle.bottom! > point.top &&
+      !!point.left &&
+      rectangle.left < point.left &&
+      rectangle.right! > point.left
     );
   }
 
@@ -313,7 +318,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
       const index = Number(element.getAttribute('data-selection-index'));
       if (selection.isIndexSelected(index)) {
         const itemRect = element.getBoundingClientRect();
-        if (this._isPointInRectangle(itemRect, { x: ev.clientX, y: ev.clientY })) {
+        if (this._isPointInRectangle(itemRect, { left: ev.clientX, top: ev.clientY })) {
           return true;
         }
       }

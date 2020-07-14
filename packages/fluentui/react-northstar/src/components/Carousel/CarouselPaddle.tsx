@@ -14,18 +14,17 @@ import {
   ContentComponentProps,
 } from '../../utils';
 
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import {
-  ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandValue,
-} from '../../types';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
-import Box, { BoxProps } from '../Box/Box';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+  ComponentWithAs,
+  getElementType,
+  useFluentContext,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface CarouselPaddleProps
   extends UIComponentProps,
@@ -59,10 +58,20 @@ export type CarouselPaddleSlotClassNames = {
 };
 
 export type CarouselPaddleStylesProps = Pick<CarouselPaddleProps, 'disabled' | 'next' | 'previous' | 'hidden'>;
+export const carouselPaddleClassName = 'ui-carousel__paddle';
+export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
+  content: `${carouselPaddleClassName}__content`,
+};
 
-const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
-  FluentComponentStaticProps<CarouselPaddleProps> & { slotClassNames: CarouselPaddleSlotClassNames } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A CarouselPaddle allows users to customize the paddles inside the Carousel component.
+ *
+ * @accessibility
+ * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
+ */
+export const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
+  FluentComponentStaticProps<CarouselPaddleProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
   setStart();
 
@@ -86,7 +95,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
   const getA11Props = useAccessibility(accessibility, {
     debugName: CarouselPaddle.displayName,
     mapPropsToBehavior: () => ({
-      as,
+      as: String(as),
       disabled,
     }),
     actionHandlers: {
@@ -98,7 +107,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<CarouselPaddleStylesProps>(CarouselPaddle.displayName, {
-    className: CarouselPaddle.deprecated_className,
+    className: carouselPaddleClassName,
     mapPropsToStyles: () => ({
       disabled,
       hidden,
@@ -142,7 +151,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
             defaultProps: () =>
               getA11Props('content', {
                 as: 'span',
-                className: CarouselPaddle.slotClassNames.content,
+                className: carouselPaddleSlotClassNames.content,
                 styles: resolvedStyles.content,
               }),
           })}
@@ -161,7 +170,6 @@ CarouselPaddle.defaultProps = {
 };
 
 CarouselPaddle.displayName = 'CarouselPaddle';
-CarouselPaddle.deprecated_className = 'ui-carousel__paddle';
 
 CarouselPaddle.propTypes = {
   ...commonPropTypes.createCommon({
@@ -177,15 +185,3 @@ CarouselPaddle.propTypes = {
 CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 
 CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
-
-CarouselPaddle.slotClassNames = {
-  content: `${CarouselPaddle.deprecated_className}__content`,
-};
-
-/**
- * A CarouselPaddle allows users to customize the paddles inside the Carousel component.
- *
- * @accessibility
- * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
- */
-export default withSafeTypeForAs<typeof CarouselPaddle, CarouselPaddleProps, 'button'>(CarouselPaddle);

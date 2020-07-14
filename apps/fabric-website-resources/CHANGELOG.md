@@ -1,6 +1,53 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2020 17:35:36 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.6.82](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.82)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.6.68..@uifabric/fabric-website-resources_v7.6.82)
+
+### Patches
+
+- Clean up dependencies and clarify verison file placeholder comments ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [7.6.62](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.62)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.6.61..@uifabric/fabric-website-resources_v7.6.62)
+
+### Patches
+
+- Updating build tool dependenencies. ([PR #13103](https://github.com/microsoft/fluentui/pull/13103) by dzearing@microsoft.com)
+
+## [7.6.61](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.61)
+
+Fri, 15 May 2020 00:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.6.54..@uifabric/fabric-website-resources_v7.6.61)
+
+### Patches
+
+- Removing jest config from website resources. Adjusting typings. ([PR #13165](https://github.com/microsoft/fluentui/pull/13165) by dzearing@microsoft.com)
+
+## [7.6.54](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.54)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.6.36..@uifabric/fabric-website-resources_v7.6.54)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.6.36](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.6.36)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.6.34..@uifabric/fabric-website-resources_v7.6.36)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.6.25
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -5230,4 +5277,3 @@ Mon, 05 Dec 2016 04:02:30 GMT
 ### Minor changes
 
 - Facepile: updating default behavior.
-

@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add Callout and Legends for vertical bar chart",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "commit": "e4240d19d623c27259bfa7b5a3c467dcb576c99e",
-  "dependentChangeType": "patch",
-  "date": "2020-04-09T12:16:57.860Z"
-}

@@ -1,11 +1,13 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   AutoFocusZone,
   AutoFocusZoneProps,
   FocusTrapZone,
   FocusTrapZoneProps,
   getElementType,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
   useUnhandledProps,
@@ -16,16 +18,8 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import {
-  WithAsProp,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   createShorthandFactory,
@@ -79,9 +73,17 @@ export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing
   basePlacement: PopperJs.BasePlacement;
 };
 
-const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
-  FluentComponentStaticProps<PopupContentProps> & { slotClassNames: PopupContentSlotClassNames } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const popupContentClassName = 'ui-popup__content';
+export const popupContentSlotClassNames: PopupContentSlotClassNames = {
+  content: `${popupContentClassName}__content`,
+};
+
+/**
+ * A PopupContent displays the content of a Popup component.
+ */
+export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
+  FluentComponentStaticProps<PopupContentProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
   setStart();
 
@@ -105,7 +107,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<PopupContentStylesProps>(PopupContent.displayName, {
-    className: PopupContent.deprecated_className,
+    className: popupContentClassName,
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       pointing,
@@ -135,7 +137,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
   const popupContent = (
     <>
       {pointing && <div className={classes.pointer} ref={pointerRef} />}
-      <div className={cx(PopupContent.slotClassNames.content, classes.content)}>
+      <div className={cx(popupContentSlotClassNames.content, classes.content)}>
         {childrenExist(children) ? children : content}
       </div>
     </>
@@ -167,7 +169,6 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
 };
 
 PopupContent.displayName = 'PopupContent';
-PopupContent.deprecated_className = 'ui-popup__content';
 
 PopupContent.propTypes = {
   ...commonPropTypes.createCommon(),
@@ -197,13 +198,4 @@ PopupContent.propTypes = {
 };
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 
-PopupContent.slotClassNames = {
-  content: `${PopupContent.deprecated_className}__content`,
-};
-
 PopupContent.create = createShorthandFactory({ Component: PopupContent, mappedProp: 'content' });
-
-/**
- * A PopupContent displays the content of a Popup component.
- */
-export default withSafeTypeForAs<typeof PopupContent, PopupContentProps>(PopupContent);

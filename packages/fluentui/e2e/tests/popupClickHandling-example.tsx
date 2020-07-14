@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Popup } from '@fluentui/react-northstar';
+import { Button, Popup, popupContentClassName } from '@fluentui/react-northstar';
 
 export const selectors = {
   triggerButtonId: 'trigger',
-  popupContentClass: Popup.slotClassNames.content,
+  popupContentClass: popupContentClassName,
   popupContentButtonId: 'content-button',
 };
 

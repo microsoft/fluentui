@@ -3,7 +3,7 @@ import * as React from 'react';
 import { StarIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const CardExampleCentered = () => (
-  <Card centered>
+  <Card centered aria-roledescription="card with avatar, image and action buttons">
     <Card.Header>
       <Flex gap="gap.small" column hAlign="center">
         <Avatar image="public/images/avatar/small/matt.jpg" label="Copy bandwidth" name="Evie yundt" status="unknown" />

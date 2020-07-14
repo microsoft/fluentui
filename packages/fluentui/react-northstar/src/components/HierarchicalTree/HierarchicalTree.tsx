@@ -1,41 +1,46 @@
-import { Accessibility, hierarchicalTreeBehavior } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  hierarchicalTreeBehavior,
+  HierarchicalTreeBehaviorBehaviorProps,
+} from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import HierarchicalTreeItem, { HierarchicalTreeItemProps } from './HierarchicalTreeItem';
+import { HierarchicalTreeItem, HierarchicalTreeItemProps } from './HierarchicalTreeItem';
 import { HierarchicalTreeTitleProps } from './HierarchicalTreeTitle';
 import {
-  AutoControlledComponent,
   childrenExist,
   commonPropTypes,
   createShorthandFactory,
   UIComponentProps,
   ChildrenComponentProps,
   rtlTextContainer,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory,
 } from '../../utils';
 import {
   ShorthandValue,
   ShorthandRenderFunction,
-  WithAsProp,
-  withSafeTypeForAs,
   ShorthandCollection,
   ComponentEventHandler,
+  FluentComponentStaticProps,
 } from '../../types';
-
-export interface HierarchicalTreeSlotClassNames {
-  item: string;
-}
+import {
+  ComponentWithAs,
+  useTelemetry,
+  useFluentContext,
+  useAutoControlled,
+  useUnhandledProps,
+  getElementType,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface HierarchicalTreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Index of the currently active subtree. */
   activeIndex?: number[] | number;
 
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<HierarchicalTreeBehaviorBehaviorProps>;
 
   /** Initial activeIndex value. */
   defaultActiveIndex?: number[] | number;
@@ -67,83 +72,85 @@ export interface HierarchicalTreeState {
   activeIndex: number[] | number;
 }
 
-class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTreeProps>, HierarchicalTreeState> {
-  static create: ShorthandFactory<HierarchicalTreeProps>;
+export const hierarchicalTreeClassName = 'ui-hierarchicaltree';
 
-  static displayName = 'HierarchicalTree';
+export type HierarchicalTreeStylesProps = never;
 
-  static deprecated_className = 'ui-hierarchicaltree';
+/**
+ * (DEPRECATED) A Tree displays data organised in tree hierarchy.
+ *
+ * @accessibility
+ * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
+ */
+export const HierarchicalTree: ComponentWithAs<'ul', HierarchicalTreeProps> &
+  FluentComponentStaticProps<HierarchicalTreeProps> = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(HierarchicalTree.displayName, context.telemetry);
+  setStart();
 
-  static slotClassNames: HierarchicalTreeSlotClassNames = {
-    item: `${HierarchicalTree.deprecated_className}__item`,
-  };
+  const { children, className, design, styles, variables, items, renderItemTitle, exclusive } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
-    }),
-    activeIndex: customPropTypes.every([
-      customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
-    ]),
-    defaultActiveIndex: customPropTypes.every([
-      customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
-    ]),
-    exclusive: PropTypes.bool,
-    items: customPropTypes.collectionShorthand,
-    renderItemTitle: PropTypes.func,
-    onActiveIndexChange: PropTypes.func,
-  };
+  const [activeIndex, setActiveIndex] = useAutoControlled({
+    defaultValue: props.defaultActiveIndex,
+    value: props.activeIndex,
+    initialValue: exclusive ? -1 : [],
+  });
 
-  static defaultProps = {
-    as: 'ul',
-    accessibility: hierarchicalTreeBehavior,
-  };
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(HierarchicalTree.handledProps, props);
 
-  static autoControlledProps = ['activeIndex'];
+  const getA11yProps = useAccessibility<HierarchicalTreeBehaviorBehaviorProps>(props.accessibility, {
+    debugName: HierarchicalTree.displayName,
+    actionHandlers: {
+      expandSiblings: e => {
+        e.preventDefault();
+        e.stopPropagation();
 
-  actionHandlers = {
-    expandSiblings: e => {
-      const { items, exclusive } = this.props;
-      e.preventDefault();
-      e.stopPropagation();
+        if (exclusive) {
+          return;
+        }
 
-      if (exclusive) {
-        return;
-      }
-      const activeIndex = items
-        ? items.reduce<number[]>((acc, item, index) => {
-            if (item['items']) {
-              return [...acc, index];
-            }
-            return acc;
-          }, [])
-        : [];
-      this.trySetActiveIndexAndTriggerEvent(e, activeIndex);
+        const activeIndex = items
+          ? items.reduce((acc: HierarchicalTreeItemProps[], item, index) => {
+              if (item['items']) {
+                return [...acc, index];
+              }
+              return acc;
+            }, [])
+          : [];
+        trySetActiveIndexAndTriggerEvent(e, activeIndex);
+      },
     },
+    mapPropsToBehavior: () => ({
+      'aria-labelledby': props['aria-labelledby'],
+    }),
+    rtl: context.rtl,
+  });
+
+  const { classes } = useStyles<HierarchicalTreeStylesProps>(HierarchicalTree.displayName, {
+    className: hierarchicalTreeClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const trySetActiveIndexAndTriggerEvent = (e, activeIndex) => {
+    setActiveIndex(activeIndex);
+    _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex });
   };
 
-  trySetActiveIndexAndTriggerEvent = (e, activeIndex) => {
-    this.setState({ activeIndex });
-    _.invoke(this.props, 'onActiveIndexChange', e, { ...this.props, activeIndex });
-  };
-
-  getInitialAutoControlledState({ exclusive }): HierarchicalTreeState {
-    return {
-      activeIndex: exclusive ? -1 : [],
-    };
-  }
-
-  getActiveIndexes(): number[] {
-    const { activeIndex } = this.state;
+  const getActiveIndexes = (): number[] => {
     return _.isArray(activeIndex) ? activeIndex : [activeIndex];
-  }
+  };
 
-  computeNewIndex = (treeItemProps: HierarchicalTreeItemProps) => {
+  const computeNewIndex = (treeItemProps: HierarchicalTreeItemProps) => {
     const { index, items } = treeItemProps;
-    const activeIndexes = this.getActiveIndexes();
-    const { exclusive } = this.props;
+    const activeIndexes = getActiveIndexes();
+    const { exclusive } = props;
     if (!items) {
       return activeIndexes;
     }
@@ -154,58 +161,73 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
     return _.includes(activeIndexes, index) ? _.without(activeIndexes, index) : [...activeIndexes, index];
   };
 
-  handleTreeItemOverrides = (predefinedProps: HierarchicalTreeItemProps) => ({
+  const handleTreeItemOverrides = (predefinedProps: HierarchicalTreeItemProps) => ({
     onTitleClick: (e: React.SyntheticEvent, treeItemProps: HierarchicalTreeItemProps) => {
-      this.trySetActiveIndexAndTriggerEvent(e, this.computeNewIndex(treeItemProps));
+      trySetActiveIndexAndTriggerEvent(e, computeNewIndex(treeItemProps));
       _.invoke(predefinedProps, 'onTitleClick', e, treeItemProps);
     },
   });
 
-  renderContent() {
-    const { items, renderItemTitle, exclusive } = this.props;
-    const { activeIndex } = this.state;
-    const activeIndexes = this.getActiveIndexes();
+  const renderContent = () => {
+    const activeIndexes = getActiveIndexes();
 
     return _.map(items, (item: ShorthandValue<HierarchicalTreeItemProps>, index: number) =>
       HierarchicalTreeItem.create(item, {
         defaultProps: () => ({
-          className: HierarchicalTree.slotClassNames.item,
           index,
           exclusive,
           renderItemTitle,
           open: exclusive ? index === activeIndex : _.includes(activeIndexes, index),
         }),
-        overrideProps: this.handleTreeItemOverrides,
+        overrideProps: handleTreeItemOverrides,
       }),
     );
-  }
+  };
 
-  renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, variables }) {
-    const { children } = this.props;
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
+        ...unhandledProps,
+      })}
+    >
+      {childrenExist(children) ? children : renderContent()}
+    </ElementType>
+  );
 
-    return (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {childrenExist(children) ? children : this.renderContent()}
-      </ElementType>
-    );
-  }
-}
+  setEnd();
+  return element;
+};
+
+HierarchicalTree.displayName = 'HierarchicalTree';
+
+HierarchicalTree.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  activeIndex: customPropTypes.every([
+    customPropTypes.disallow(['children']),
+    PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
+  ]),
+  defaultActiveIndex: customPropTypes.every([
+    customPropTypes.disallow(['children']),
+    PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
+  ]),
+  exclusive: PropTypes.bool,
+  items: customPropTypes.collectionShorthand,
+  renderItemTitle: PropTypes.func,
+  onActiveIndexChange: PropTypes.func,
+};
+
+HierarchicalTree.defaultProps = {
+  as: 'ul',
+  accessibility: hierarchicalTreeBehavior,
+};
+
+HierarchicalTree.handledProps = Object.keys(HierarchicalTree.propTypes) as any;
 
 HierarchicalTree.create = createShorthandFactory({
   Component: HierarchicalTree,
   mappedArrayProp: 'items',
 });
-
-/**
- * (DEPRECATED) A Tree displays data organised in tree hierarchy.
- *
- * @accessibility
- * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
- */
-export default withSafeTypeForAs<typeof HierarchicalTree, HierarchicalTreeProps, 'ul'>(HierarchicalTree);

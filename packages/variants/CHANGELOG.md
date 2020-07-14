@@ -1,6 +1,26 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.1.59](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.1.59)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.1.42..@uifabric/variants_v7.1.59)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.1.42](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.1.42)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.1.34..@uifabric/variants_v7.1.42)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.1.34
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -331,4 +351,3 @@ Mon, 12 Mar 2018 06:29:20 GMT
 Fri, 23 Feb 2018 03:05:53 GMT
 
 *Initial release*
-

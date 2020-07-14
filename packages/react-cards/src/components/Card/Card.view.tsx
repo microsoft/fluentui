@@ -95,6 +95,7 @@ export const CardView: ICardComponent['view'] = props => {
   return (
     <Slots.root
       onClick={onClick}
+      // eslint-disable-next-line react/jsx-no-bind
       onKeyDown={_onKeyDown}
       role={onClick ? 'button' : 'presentation'}
       tabIndex={onClick ? 0 : -1}

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Card: Removing unwanted outline when Cards are clicked.",
-  "packageName": "@uifabric/react-cards",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-13T22:09:26.594Z"
-}

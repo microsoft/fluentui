@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "FocusZone: Adding focusLast imperative method to v7.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "fa6380c1c04defba60cb0dde14759261bfbe21ce",
-  "dependentChangeType": "patch",
-  "date": "2020-04-08T00:46:06.411Z"
-}

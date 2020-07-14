@@ -1,6 +1,26 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 07 May 2020 01:06:55 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.3.36](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.3.36)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.3.26..@uifabric/icons_v7.3.36)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.3.26](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.3.26)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.3.22..@uifabric/icons_v7.3.26)
+
+### Patches
+
+- Readme: Clarify usage docs; Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.3.22
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -262,4 +282,3 @@ Wed, 27 Sep 2017 00:20:58 GMT
 ### Patches
 
 - Initial release of the icons package.
-

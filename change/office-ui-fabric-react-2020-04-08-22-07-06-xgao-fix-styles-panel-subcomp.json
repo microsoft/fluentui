@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Panel: passing close button styles down using subComponentStyles",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "60647bcf49d8896f183df0a615c5e11cfb5bba3c",
-  "dependentChangeType": "patch",
-  "date": "2020-04-09T05:07:06.045Z"
-}

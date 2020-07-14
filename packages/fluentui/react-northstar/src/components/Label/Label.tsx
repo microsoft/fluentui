@@ -1,11 +1,17 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -18,16 +24,10 @@ import {
   rtlTextContainer,
 } from '../../utils';
 
-import Image, { ImageProps } from '../Image/Image';
-import Box, { BoxProps } from '../Box/Box';
+import { Image, ImageProps } from '../Image/Image';
+import { Box, BoxProps } from '../Box/Box';
 
-import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface LabelProps
   extends UIComponentProps,
@@ -63,9 +63,13 @@ export type LabelStylesProps = Pick<LabelProps, 'circular' | 'color' | 'imagePos
   hasIcon: boolean;
   hasActionableIcon: boolean;
 };
+export const labelClassName = 'ui-label';
 
-const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A Label allows user to classify content.
+ */
+export const Label: ComponentWithAs<'span', LabelProps> & FluentComponentStaticProps = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Label.displayName, context.telemetry);
   setStart();
 
@@ -90,7 +94,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<LabelStylesProps>(Label.displayName, {
-    className: Label.deprecated_className,
+    className: labelClassName,
     mapPropsToStyles: () => ({
       hasActionableIcon: _.has(icon, 'onClick'),
       hasImage: !!image,
@@ -165,7 +169,6 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
 };
 
 Label.displayName = 'Label';
-Label.deprecated_className = 'ui-label';
 
 Label.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
@@ -185,8 +188,3 @@ Label.defaultProps = {
 };
 
 Label.create = createShorthandFactory({ Component: Label, mappedProp: 'content' });
-
-/**
- * A Label allows user to classify content.
- */
-export default withSafeTypeForAs<typeof Label, LabelProps, 'span'>(Label);

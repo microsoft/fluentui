@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Provide customization for line chart tooltip and Y Axis label",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "commit": "7210fa82ee41bc69bb1fbddfb061c16ad569d52e",
-  "dependentChangeType": "patch",
-  "date": "2020-04-09T07:32:20.678Z"
-}

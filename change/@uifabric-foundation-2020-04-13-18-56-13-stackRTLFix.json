@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Fixing rtl customizer scenarios in Foundation components.",
-  "packageName": "@uifabric/foundation",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-14T01:56:13.246Z"
-}

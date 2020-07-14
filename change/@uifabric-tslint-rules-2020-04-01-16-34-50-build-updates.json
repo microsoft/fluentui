@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update ts-lint rules instructions and deps",
-  "packageName": "@uifabric/tslint-rules",
-  "email": "elcraig@microsoft.com",
-  "commit": "4d748b4a9206bd9d6cb34d5caa896dc96702dbd5",
-  "dependentChangeType": "patch",
-  "date": "2020-04-01T23:34:50.758Z"
-}

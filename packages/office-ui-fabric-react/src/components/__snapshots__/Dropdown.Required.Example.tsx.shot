@@ -46,9 +46,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
         }
   >
     <div
-      className=
-          ms-Dropdown-container
-
+      className="ms-Dropdown-container"
     >
       <label
         className=
@@ -397,9 +395,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
     </button>
   </div>
   <div
-    className=
-        ms-Dropdown-container
-
+    className="ms-Dropdown-container"
   >
     <div
       aria-expanded="false"

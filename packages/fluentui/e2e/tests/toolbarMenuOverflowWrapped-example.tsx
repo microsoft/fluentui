@@ -1,11 +1,16 @@
 import React from 'react';
 import _ from 'lodash';
-import { Toolbar, ToolbarItem } from '@fluentui/react-northstar';
+import {
+  Toolbar,
+  toolbarItemWrapperClassName,
+  toolbarClassName,
+  toolbarItemClassName,
+} from '@fluentui/react-northstar';
 
 export const selectors = {
-  toolbarItem: ToolbarItem.deprecated_className,
-  toolbar: Toolbar.deprecated_className,
-  toolbarItemWrapper: ToolbarItem.slotClassNames.wrapper,
+  toolbarItem: toolbarItemClassName,
+  toolbar: toolbarClassName,
+  toolbarItemWrapper: toolbarItemWrapperClassName,
 };
 
 export const itemsCount = 20;

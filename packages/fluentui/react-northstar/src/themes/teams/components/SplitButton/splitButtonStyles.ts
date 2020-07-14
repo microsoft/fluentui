@@ -1,12 +1,15 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { SplitButtonStylesProps } from '../../../../components/SplitButton/SplitButton';
+import { SplitButtonVariables } from './splitButtonVariables';
 
-const splitButtonStyles = {
+export const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesProps, SplitButtonVariables> = {
   menuButton: ({ props: p, variables: v }): ICSSInJSStyle => ({
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
     borderRightWidth: 0,
     padding: v.padding,
+    minWidth: v.minWidth,
 
     ...(p.size === 'small' && {
       height: v.smallDimension,
@@ -47,8 +50,8 @@ const splitButtonStyles = {
     return {
       borderRadius: v.borderRadius,
       position: 'relative',
-      display: 'inline-block',
-
+      display: 'flex',
+      flexWrap: 'nowrap',
       ':focus-within': {
         boxShadow: 'none',
         ...(p.isFromKeyboard && {
@@ -60,5 +63,3 @@ const splitButtonStyles = {
     };
   },
 };
-
-export default splitButtonStyles;

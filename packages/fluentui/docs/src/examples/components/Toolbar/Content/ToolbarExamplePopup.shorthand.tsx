@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toolbar, Input, Button, Form } from '@fluentui/react-northstar';
-import { HighlightIcon, FontColorIcon, SearchIcon } from '@fluentui/react-icons-northstar';
+import { HighlightIcon, FontColorIcon, SearchIcon, ItalicIcon } from '@fluentui/react-icons-northstar';
 
 const HighlightPopup = ({ onConfirm }) => {
   return (
@@ -14,6 +14,10 @@ const HighlightPopup = ({ onConfirm }) => {
           key: 'first-name',
           required: true,
           inline: true,
+          control: {
+            as: Input,
+            showSuccessIndicator: false,
+          },
         },
         {
           control: {
@@ -64,6 +68,11 @@ const ToolbarExamplePopupShorthand = () => {
               setFontColorActive(!fontColorActive);
             },
           },
+        },
+        {
+          icon: <ItalicIcon outline />,
+          key: 'italic',
+          title: 'Italic',
         },
       ]}
     />

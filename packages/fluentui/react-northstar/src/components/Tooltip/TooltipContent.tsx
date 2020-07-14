@@ -1,11 +1,17 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -18,7 +24,7 @@ import {
 } from '../../utils';
 
 import { getBasePlacement, PopperChildrenProps } from '../../utils/positioner';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 
 export interface TooltipContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -43,9 +49,14 @@ export type TooltipContentStylesProps = Required<Pick<TooltipContentProps, 'poin
   basePlacement: PopperJs.BasePlacement;
 };
 
-const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
+export const tooltipContentClassName = 'ui-tooltip__content';
+
+/**
+ * A TooltipContent contains the content of a Tooltip component.
+ */
+export const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
   FluentComponentStaticProps<TooltipContentProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TooltipContent.displayName, context.telemetry);
   setStart();
 
@@ -68,7 +79,7 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<TooltipContentStylesProps>(TooltipContent.displayName, {
-    className: TooltipContent.deprecated_className,
+    className: tooltipContentClassName,
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       open,
@@ -107,7 +118,6 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
 };
 
 TooltipContent.displayName = 'TooltipContent';
-TooltipContent.deprecated_className = 'ui-tooltip__content';
 
 TooltipContent.propTypes = {
   ...commonPropTypes.createCommon(),
@@ -134,8 +144,3 @@ TooltipContent.propTypes = {
 TooltipContent.handledProps = Object.keys(TooltipContent.propTypes) as any;
 
 TooltipContent.create = createShorthandFactory({ Component: TooltipContent, mappedProp: 'content' });
-
-/**
- * A TooltipContent contains the content of a Tooltip component.
- */
-export default withSafeTypeForAs<typeof TooltipContent, TooltipContentProps>(TooltipContent);

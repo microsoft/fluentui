@@ -4,8 +4,6 @@
   <base href='<%= __BASENAME__ %>'>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/brands.css" integrity="sha384-1KLgFVb/gHrlDGLFPgMbeedi6tQBLcWvyNUN+YKXbD7ZFbjX6BLpMDf0PJ32XJfX" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href='<%= __BASENAME__ + (__PROD__ ? 'public/images/fluent-ui-logo.png' : 'public/images/fluent-ui-logo-dev.png') %>'/>
   <title>Fluent UI</title>
   <script>
@@ -23,6 +21,10 @@
         history.replaceState(null, null, redirect)
       }
     })()
+
+    var versions = {
+      babelStandalone: "<%= htmlWebpackPlugin.options.versions.babelStandalone %>",
+    };
   </script>
   <style>
     html {
@@ -48,8 +50,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@hot-loader/react-dom@<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom.development.js"></script>
     <%}%>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/<%= htmlWebpackPlugin.options.versions.reactDOM %>/umd/react-dom-server.browser<%= __PROD__ ? '.production.min' : '.development' %>.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@<%= htmlWebpackPlugin.options.versions.babelStandalone %>/babel.min.js"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/themes/prism-tomorrow.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-vis@<%= htmlWebpackPlugin.options.versions.reactVis %>/dist/style.min.css" />

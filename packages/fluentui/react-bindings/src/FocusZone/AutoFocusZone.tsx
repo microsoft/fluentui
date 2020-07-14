@@ -4,13 +4,13 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
-import getElementType from '../utils/getElementType';
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { getElementType } from '../utils/getElementType';
+import { getUnhandledProps } from '../utils/getUnhandledProps';
 import { AutoFocusZoneProps } from './AutoFocusZone.types';
 import { getNextElement, focusAsync } from './focusUtilities';
 
 /** AutoFocusZone is used to focus inner element on mount. */
-export default class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
+export class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
   root = React.createRef<HTMLElement>();
 
   static propTypes = {

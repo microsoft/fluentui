@@ -7,23 +7,23 @@ import {
   htmlIsAccessibilityCompliant,
 } from 'test/specs/commonTests';
 
-import Alert from 'src/components/Alert/Alert';
-import Box from 'src/components/Box/Box';
-import AlertDismissAction from 'src/components/Alert/AlertDismissAction';
+import { Alert, alertSlotClassNames } from 'src/components/Alert/Alert';
+import { Box } from 'src/components/Box/Box';
+import { AlertDismissAction } from 'src/components/Alert/AlertDismissAction';
 
 const alertImplementsShorthandProp = implementsShorthandProp(Alert);
 
 describe('Alert', () => {
-  isConformant(Alert, { autoControlledProps: ['visible'] });
+  isConformant(Alert, { constructorName: 'Alert', autoControlledProps: ['visible'] });
   handlesAccessibility(Alert, { defaultRootRole: undefined, requiredProps: { content: 'test' } });
   handlesAccessibility(Alert, {
     defaultRootRole: undefined,
-    partSelector: `.${Alert.slotClassNames.body}`,
+    partSelector: `.${alertSlotClassNames.body}`,
     requiredProps: { content: 'test' },
   });
   handlesAccessibility(Alert, {
     defaultRootRole: 'alert',
-    partSelector: `.${Alert.slotClassNames.body}`,
+    partSelector: `.${alertSlotClassNames.body}`,
     requiredProps: { content: 'test', warning: true },
   });
 

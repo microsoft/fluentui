@@ -8,7 +8,7 @@ import {
   warnMutuallyExclusive,
   initializeComponentRef,
   Async,
-  EventGroup,
+  on,
   FocusRects,
 } from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
@@ -37,7 +37,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   };
 
   private _async: Async;
-  private _events: EventGroup;
+  private _disposables: (() => void)[] = [];
   private _sliderLine = React.createRef<HTMLDivElement>();
   private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
@@ -47,7 +47,6 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     super(props);
 
     this._async = new Async(this);
-    this._events = new EventGroup(this);
     initializeComponentRef(this);
 
     warnMutuallyExclusive(COMPONENT_NAME, this.props, {
@@ -67,7 +66,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
   public componentWillUnmount() {
     this._async.dispose();
-    this._events.dispose();
+    this._disposeListeners();
   }
 
   public render(): React.ReactElement<{}> {
@@ -222,11 +221,15 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
   private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (event.type === 'mousedown') {
-      this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
-      this._events.on(window, 'mouseup', this._onMouseUpOrTouchEnd, true);
+      this._disposables.push(
+        on(window, 'mousemove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'mouseup', this._onMouseUpOrTouchEnd, true),
+      );
     } else if (event.type === 'touchstart') {
-      this._events.on(window, 'touchmove', this._onMouseMoveOrTouchMove, true);
-      this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
+      this._disposables.push(
+        on(window, 'touchmove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'touchend', this._onMouseUpOrTouchEnd, true),
+      );
     }
     this._onMouseMoveOrTouchMove(event, true);
   };
@@ -331,7 +334,12 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       this.props.onChanged(event, this.state.value as number);
     }
 
-    this._events.off();
+    this._disposeListeners();
+  };
+
+  private _disposeListeners = (): void => {
+    this._disposables.forEach(dispose => dispose());
+    this._disposables = [];
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
@@ -340,7 +348,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     let diff: number | undefined = 0;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left, this.props.theme):
       case KeyCodes.down:

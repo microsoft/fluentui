@@ -1,13 +1,13 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { pxToRem } from '../../../../utils';
-import Embed, { EmbedProps, EmbedState } from '../../../../components/Embed/Embed';
+import { EmbedStylesProps, embedSlotClassNames } from '../../../../components/Embed/Embed';
 import { EmbedVariables } from './embedVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import playIndicatorUrl from './playIndicatorUrl';
-import pauseIndicatorUrl from './pauseIndicatorUrl';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { playIndicatorUrl } from './playIndicatorUrl';
+import { pauseIndicatorUrl } from './pauseIndicatorUrl';
 
-export default {
-  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+export const embedStyles: ComponentSlotStylesPrepared<EmbedStylesProps, EmbedVariables> = {
+  root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
 
     return {
@@ -21,7 +21,7 @@ export default {
 
       ...borderFocusStyles[':focus'],
       ':focus-visible': {
-        [`& .${Embed.slotClassNames.control}`]: {
+        [`& .${embedSlotClassNames.control}`]: {
           borderColor: v.focusBorderColor,
           opacity: 1,
           ...borderFocusStyles[':focus-visible'],
@@ -29,7 +29,7 @@ export default {
       },
 
       ':hover': {
-        [`& .${Embed.slotClassNames.control}`]: {
+        [`& .${embedSlotClassNames.control}`]: {
           opacity: 1,
           zIndex: v.zIndex,
         },
@@ -67,4 +67,4 @@ export default {
     display: 'block',
     ...(!p.iframeLoaded && { display: 'none' }),
   }),
-} as ComponentSlotStylesPrepared<EmbedProps & EmbedState, EmbedVariables>;
+} as ComponentSlotStylesPrepared<EmbedStylesProps, EmbedVariables>;

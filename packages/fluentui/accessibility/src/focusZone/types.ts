@@ -1,3 +1,5 @@
+// This is a type-only import and this package depends on @types/react
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as React from 'react';
 
 export type FocusZoneDefinition = {
@@ -14,10 +16,12 @@ export interface FocusZoneProperties {
   direction?: FocusZoneDirection;
 
   /**
-   * Function which uses root element as parameter to return the intial tabbable element.
+   * Optionally defines the initial tabbable element inside the FocusZone.
+   * If a string is passed then it is treated as a selector for identifying the initial tabbable element.
+   * If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
    * For example, when there is a chat with a bottom-up approach, it is expected that the last chat message is tabbable (active), not the first default one.
    */
-  defaultTabbableElement?: (root: HTMLElement) => HTMLElement;
+  defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
 
   /**
    * If a default tabbable element should be force focused on FocusZone mount.
@@ -36,6 +40,12 @@ export interface FocusZoneProperties {
    * For example, when roving index is not desirable and focus should always reset to the default tabbable element.
    */
   shouldResetActiveElementWhenTabFromZone?: boolean;
+
+  /**
+   * Determines whether the FocusZone will walk up the DOM trying to invoke click callbacks on focusable elements on
+   * Enter and Space keydowns to ensure accessibility for tags that don't guarantee this behavior.
+   */
+  shouldRaiseClicks?: boolean;
 
   /**
    * If set, the FocusZone will not be tabbable and keyboard navigation will be disabled.
@@ -90,6 +100,12 @@ export interface FocusZoneProperties {
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
+   * Determines whether to disable the paging support for Page Up and Page Down keyboard scenarios.
+   * @defaultvalue false
+   */
+  pagingSupportDisabled?: boolean;
+
+  /**
    * If true, focus event propagation will be stopped.
    */
   stopFocusPropagation?: boolean;
@@ -100,9 +116,11 @@ export interface FocusZoneProperties {
   preventDefaultWhenHandled?: boolean;
 
   /**
-   * If focus is on root element after componentDidUpdate, will attempt to restore the focus to inner element
+   * If true, prevents the FocusZone from attempting to restore the focus to the inner element when the focus is on the
+   * root element after componentDidUpdate.
+   * @defaultvalue false
    */
-  restoreFocusFromRoot?: boolean;
+  preventFocusRestoration?: boolean;
 }
 
 export enum FocusZoneTabbableElements {

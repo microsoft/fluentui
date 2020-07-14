@@ -4,7 +4,10 @@
 
 ```ts
 
+import { DateRangeType } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { DayOfWeek } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { EventGroup } from '@uifabric/utilities';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentAs } from '@uifabric/utilities';
@@ -16,7 +19,6 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
-import { IPoint } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
@@ -35,6 +37,7 @@ import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
 import { Omit } from '@uifabric/utilities';
+import { Point } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -305,8 +308,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected input: React.RefObject<IAutofill>;
     // (undocumented)
-    protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
-    // (undocumented)
     readonly items: T[];
     // (undocumented)
     protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
@@ -315,7 +316,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected onChange(items?: T[]): void;
     protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
-    // (undocumented)
     protected onEmptyInputFocus(): void;
     // (undocumented)
     protected onGetMoreResults: () => void;
@@ -358,6 +358,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected selection: Selection;
     // (undocumented)
+    protected _shouldFocusZoneEnterInnerZone: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+    // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
     // @deprecated (undocumented)
     protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
@@ -373,7 +375,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string): void;
     // (undocumented)
     protected updateValue(updatedValue: string): void;
-}
+    }
 
 // @public (undocumented)
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
@@ -533,7 +535,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     readonly indeterminate: boolean;
     render(): JSX.Element;
-}
+    }
 
 // @public (undocumented)
 export enum CheckboxVisibility {
@@ -803,35 +805,9 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void;
     }
 
-// @public
-export enum DateRangeType {
-    // (undocumented)
-    Day = 0,
-    // (undocumented)
-    Month = 2,
-    // (undocumented)
-    Week = 1,
-    // (undocumented)
-    WorkWeek = 3
-}
+export { DateRangeType }
 
-// @public
-export enum DayOfWeek {
-    // (undocumented)
-    Friday = 5,
-    // (undocumented)
-    Monday = 1,
-    // (undocumented)
-    Saturday = 6,
-    // (undocumented)
-    Sunday = 0,
-    // (undocumented)
-    Thursday = 4,
-    // (undocumented)
-    Tuesday = 2,
-    // (undocumented)
-    Wednesday = 3
-}
+export { DayOfWeek }
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -1140,7 +1116,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
 }
 
 // @public (undocumented)
-export const Fabric: React.FunctionComponent<IFabricProps>;
+export const Fabric: import("react").ForwardRefExoticComponent<IFabricProps & import("react").RefAttributes<FabricBase>>;
 
 // @public (undocumented)
 export class FabricBase extends React.Component<IFabricProps> {
@@ -1214,15 +1190,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     render(): JSX.Element;
     }
 
-// @public
-export enum FirstWeekOfYear {
-    // (undocumented)
-    FirstDay = 0,
-    // (undocumented)
-    FirstFourDayWeek = 2,
-    // (undocumented)
-    FirstFullWeek = 1
-}
+export { FirstWeekOfYear }
 
 // @public (undocumented)
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
@@ -1810,6 +1778,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
+    onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
@@ -2104,12 +2073,17 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onDismiss?: (ev?: any) => void;
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     onScroll?: () => void;
     preventDismissOnLostFocus?: boolean;
     preventDismissOnResize?: boolean;
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    // @deprecated
     shouldRestoreFocus?: boolean;
     shouldUpdateWhenHidden?: boolean;
     style?: React.CSSProperties;
@@ -2780,6 +2754,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
+    multiSelectDelimiter?: string;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
@@ -2807,7 +2782,7 @@ export interface IComboBoxState {
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
-    focused?: boolean;
+    focusState?: 'none' | 'focused' | 'focusing';
     isOpen?: boolean;
     selectedIndices?: number[];
     suggestedDisplayValue?: string;
@@ -3561,8 +3536,6 @@ export interface IDetailsListState {
     // (undocumented)
     isCollapsed?: boolean;
     // (undocumented)
-    isDropping?: boolean;
-    // (undocumented)
     isSizing?: boolean;
     // (undocumented)
     isSomeGroupExpanded?: boolean;
@@ -4202,6 +4175,7 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
     componentRef?: IRefObject<IDocumentCard>;
     onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
     onClickHref?: string;
+    onClickTarget?: string;
     role?: string;
     styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;
     theme?: ITheme;
@@ -4295,6 +4269,7 @@ export interface IDragDropEvents {
     onDragEnd?: (item?: any, event?: DragEvent) => void;
     onDragEnter?: (item?: any, event?: DragEvent) => string;
     onDragLeave?: (item?: any, event?: DragEvent) => void;
+    onDragOver?: (item?: any, event?: DragEvent) => void;
     onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
     onDrop?: (item?: any, event?: DragEvent) => void;
 }
@@ -4654,6 +4629,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     disabled?: boolean;
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
+    enableAriaHiddenSiblings?: boolean;
     firstFocusableSelector?: string | (() => string);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
@@ -4872,8 +4848,6 @@ export interface IGroupedListState {
     groups?: IGroup[];
     // (undocumented)
     lastSelectionMode?: SelectionMode;
-    // (undocumented)
-    lastWidth?: number;
 }
 
 // @public (undocumented)
@@ -4909,13 +4883,24 @@ export interface IGroupFooterStyles {
 }
 
 // @public (undocumented)
+export interface IGroupHeaderCheckboxProps {
+    // (undocumented)
+    checked: boolean;
+    // (undocumented)
+    theme?: ITheme;
+}
+
+// @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
     ariaPosInSet?: number;
     ariaSetSize?: number;
+    expandButtonIcon?: string;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
+    onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
     selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -5230,7 +5215,7 @@ export interface IKeytipProps {
     hasDynamicChildren?: boolean;
     hasMenu?: boolean;
     keySequences: string[];
-    offset?: IPoint;
+    offset?: Point;
     onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
     onReturn?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
     overflowSetSequence?: string[];
@@ -5633,6 +5618,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
     dragOptions?: IDragOptions;
+    enableAriaHiddenSiblings?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;
@@ -5737,7 +5723,7 @@ export interface INavProps {
     linkAs?: IComponentAs<INavButtonProps>;
     onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+    onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
     // @deprecated
     selectedAriaLabel?: string;
@@ -6262,9 +6248,10 @@ export interface IPivot {
 
 // @public (undocumented)
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
-    headerButtonProps?: {
+    headerButtonProps?: IButtonProps | {
         [key: string]: string | number | boolean;
     };
     headerText?: string;
@@ -6281,6 +6268,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IPivot>;
+    // @deprecated
     defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
@@ -6353,7 +6341,12 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
     ariaLabelledBy?: string;
     className?: string;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     role?: string;
+    // @deprecated
     shouldRestoreFocus?: boolean;
 }
 
@@ -6393,9 +6386,9 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
-    target?: HTMLElement | string | MouseEvent | IPoint | null;
+    target?: HTMLElement | string | MouseEvent | Point | null;
     // @deprecated
-    targetPoint?: IPoint;
+    targetPoint?: Point;
     // @deprecated
     useTargetPoint?: boolean;
 }
@@ -6518,6 +6511,11 @@ export interface IRatingStyles {
     rootIsLarge: IStyle;
     // (undocumented)
     rootIsSmall: IStyle;
+}
+
+// @public (undocumented)
+export interface IRenderGroupHeaderProps extends INavLinkGroup {
+    isExpanded?: boolean;
 }
 
 // @public (undocumented)
@@ -6789,6 +6787,7 @@ export interface ISelectionZone {
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
+    enableTouchInvocationTarget?: boolean;
     enterModalOnTouch?: boolean;
     isSelectedOnFocus?: boolean;
     // @deprecated (undocumented)
@@ -7112,15 +7111,13 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     labelPosition?: Position;
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onDecrement?: (value: string) => string | void;
+    onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
-    onIncrement?: (value: string) => string | void;
+    onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
     precision?: number;
     step?: number;
@@ -7610,6 +7607,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
     footerContent?: string | JSX.Element;
     hasCloseButton?: boolean;
     // @deprecated (undocumented)
@@ -8025,16 +8023,10 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IKeytipDataProps & IRenderComponent<{}>): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderComponent<{}>>;
+
+// @public (undocumented)
+export type KeytipDataOptions = IKeytipDataProps;
 
 // @public (undocumented)
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;
@@ -8112,7 +8104,7 @@ export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
-}
+    }
 
 // @public
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
@@ -8250,8 +8242,6 @@ export enum MessageBarType {
     blocked = 2,
     error = 1,
     info = 0,
-    // @deprecated
-    remove = 90000,
     severeWarning = 3,
     success = 4,
     warning = 5
@@ -9409,7 +9399,7 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 }
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public (undocumented)
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
@@ -9591,6 +9581,9 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
 export function updateT(color: IColor, t: number): IColor;
+
+// @public
+export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
 // @public
 export enum ValidationState {

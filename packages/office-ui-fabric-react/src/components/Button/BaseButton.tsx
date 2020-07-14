@@ -115,7 +115,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       disabled,
       allowDisabledFocus,
       primaryDisabled,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       secondaryText = this.props.description,
       href,
       iconProps,
@@ -169,7 +169,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     const tag = renderAsAnchor ? 'a' : 'button';
 
     const nativeProps = getNativeProps(
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       assign(renderAsAnchor ? {} : { type: 'button' }, this.props.rootProps, this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
@@ -307,7 +307,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       onRenderIcon = this._onRenderIcon,
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon,
       disabled,
@@ -372,7 +372,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
    */
   private _shouldRenderMenu() {
     const { menuHidden } = this.state;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { persistMenu, renderPersistedMenuHiddenOnMount } = this.props;
 
     if (!menuHidden) {
@@ -415,7 +415,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     const {
       text,
       children,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       secondaryText = this.props.description,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription,
@@ -473,7 +473,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   };
 
   private _onRenderDescription = (props: IButtonProps) => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { secondaryText = this.props.description } = props;
 
     // ms-Button-description is only shown when the button type is compound.
@@ -676,6 +676,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       const onClick = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         ev.stopPropagation();
       };
+      // eslint-disable-next-line react/jsx-no-bind
       return <span className={classNames.divider} aria-hidden={true} onClick={onClick} />;
     }
     return null;
@@ -862,7 +863,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   private _handleTouchAndPointerEvent() {
     // If we already have an existing timeeout from a previous touch and pointer event
-    // cancel that timeout so we can set a nwe one.
+    // cancel that timeout so we can set a new one.
     if (this._lastTouchTimeoutId !== undefined) {
       this._async.clearTimeout(this._lastTouchTimeoutId);
       this._lastTouchTimeoutId = undefined;
@@ -872,6 +873,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
+
+      // Touch and pointer events don't focus the button naturally,
+      // so adding an imperative focus call to guarantee this behavior.
+      this.focus();
     }, TouchIdleDelay);
   }
 

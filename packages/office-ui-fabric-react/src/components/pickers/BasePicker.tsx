@@ -101,10 +101,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
-  private _requestSuggestionsOnClick = false;
   private _async: Async;
 
   constructor(basePickerProps: P) {
@@ -139,7 +138,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     return this.state.items;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: P, newState: IBasePickerState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
@@ -151,7 +149,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
@@ -223,7 +220,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       selectItemFunction();
     }
 
-    this._requestSuggestionsOnClick = false;
     this.setState({ suggestionsVisible: false });
   };
 
@@ -285,7 +281,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         <FocusZone
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
-          isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
+          shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
           role={'combobox'}
           aria-expanded={!!this.state.suggestionsVisible}
           aria-owns={suggestionsAvailable || undefined}
@@ -430,14 +426,28 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     this.forceUpdate();
   }
 
+  /**
+   * Only to be called when there is nothing in the input. Checks to see if the consumer has
+   * provided a function to resolve suggestions
+   */
   protected onEmptyInputFocus() {
     const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
       ? this.props.onEmptyResolveSuggestions
-      : // tslint:disable-next-line:deprecation
+      : // eslint-disable-next-line deprecation/deprecation
         this.props.onEmptyInputFocus;
 
-    const suggestions = emptyResolveSuggestions!(this.state.items);
-    this.updateSuggestionsList(suggestions);
+    // Only attempt to resolve suggestions if it exists
+    if (emptyResolveSuggestions) {
+      const suggestions = emptyResolveSuggestions(this.state.items);
+
+      this.updateSuggestionsList(suggestions);
+
+      this.setState({
+        isMostRecentlyUsedVisible: true,
+        suggestionsVisible: true,
+        moreSuggestionsAvailable: false,
+      });
+    }
   }
 
   protected updateValue(updatedValue: string) {
@@ -517,7 +527,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
   protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: any, index: number): void => {
     this.addItemByIndex(index);
-    this._requestSuggestionsOnClick = false;
   };
 
   protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
@@ -535,25 +544,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       this.setState({ isFocused: true });
       this.selection.setAllSelected(false);
 
-      if (
-        this.input.current &&
-        this.input.current.value === '' &&
-        // tslint:disable-next-line:deprecation
-        (this.props.onEmptyResolveSuggestions || this.props.onEmptyInputFocus) &&
-        !this._requestSuggestionsOnClick
-      ) {
-        this.onEmptyInputFocus();
-        this.setState({
-          isMostRecentlyUsedVisible: true,
-          moreSuggestionsAvailable: false,
-          suggestionsVisible: true,
-        });
-      } else if (this.input.current && this.input.current.value && !this._requestSuggestionsOnClick) {
-        this.setState({
-          isMostRecentlyUsedVisible: false,
-          suggestionsVisible: true,
-        });
-      }
+      this._userTriggeredSuggestions();
+
       if (this.props.inputProps && this.props.inputProps.onFocus) {
         this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
       }
@@ -597,29 +589,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
    * without shifting focus.
    */
   protected onClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
-    const input = this.input.current ? this.input.current.value : '';
-
     if (this.props.inputProps !== undefined && this.props.inputProps.onClick !== undefined) {
       this.props.inputProps.onClick(ev);
     }
 
     // Only primary (left) clicks show suggestions.
-    if (ev.button === 0 && !this.state.suggestionsVisible) {
-      const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
-        ? this.props.onEmptyResolveSuggestions
-        : // tslint:disable-next-line:deprecation
-          this.props.onEmptyInputFocus;
-
-      if (input === '') {
-        if (emptyResolveSuggestions) {
-          this.setState({ suggestionsVisible: true });
-          const suggestions = emptyResolveSuggestions!(this.state.items);
-          this.updateSuggestionsList(suggestions);
-        }
-      } else {
-        this._requestSuggestionsOnClick = true;
-        this._onResolveSuggestions(input);
-      }
+    if (ev.button === 0) {
+      this._userTriggeredSuggestions();
     }
   };
 
@@ -628,7 +604,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     switch (keyCode) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
-          this._requestSuggestionsOnClick = false;
           this.setState({ suggestionsVisible: false });
           ev.preventDefault();
           ev.stopPropagation();
@@ -859,7 +834,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     }
   }
 
-  protected _isFocusZoneInnerKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+  protected _shouldFocusZoneEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown const up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.state.suggestionsVisible) {
       switch (ev.which) {
@@ -947,7 +922,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       this.input.current !== undefined &&
       this.input.current !== null &&
       this.input.current.inputElement === document.activeElement &&
-      (this.input.current.value !== '' || this._requestSuggestionsOnClick);
+      this.input.current.value !== '';
 
     return areSuggestionsVisible;
   }
@@ -983,6 +958,28 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       return '';
     }
   }
+
+  /**
+   * This should be called when the user does something other than use text entry to trigger suggestions.
+   *
+   */
+  private _userTriggeredSuggestions = () => {
+    if (!this.state.suggestionsVisible) {
+      const input = this.input.current ? this.input.current.value : '';
+      if (!input) {
+        this.onEmptyInputFocus();
+      } else {
+        if (this.suggestionStore.suggestions.length === 0) {
+          this._onResolveSuggestions(input);
+        } else {
+          this.setState({
+            isMostRecentlyUsedVisible: false,
+            suggestionsVisible: true,
+          });
+        }
+      }
+    }
+  };
 }
 
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
@@ -1056,7 +1053,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
             isCircularNavigation={true}
             direction={FocusZoneDirection.bidirectional}
-            isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
+            shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
             id={this._ariaMap.selectedItems}
             role={'list'}
           >

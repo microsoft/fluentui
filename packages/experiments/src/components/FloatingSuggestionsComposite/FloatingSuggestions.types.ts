@@ -13,7 +13,7 @@ import { IRenderFunction, IRefObject } from '@uifabric/utilities';
  */
 export interface IBaseFloatingSuggestionsProps<T> {
   /**
-   * Component reference incase needed to focus FlaotingSuggestions
+   * Component reference in case needed to focus FloatingSuggestions
    */
   componentRef?: IRefObject<HTMLDivElement>;
   /**

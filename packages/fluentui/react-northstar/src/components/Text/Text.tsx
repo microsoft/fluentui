@@ -16,10 +16,16 @@ import {
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { FluentComponentStaticProps } from '../../types';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useFluentContext,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 
 export interface TextProps
   extends UIComponentProps,
@@ -81,8 +87,13 @@ export type TextStylesProps = Pick<
   | 'size'
 >;
 
-const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const textClassName = 'ui-text';
+
+/**
+ * A Text consistently styles and formats occurrences of text.
+ */
+export const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticProps<TextProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
   setStart();
 
@@ -113,7 +124,7 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
     rtl: context.rtl,
   });
   const { classes } = useStyles<TextStylesProps>(Text.displayName, {
-    className: Text.deprecated_className,
+    className: textClassName,
     mapPropsToStyles: () => ({
       atMention,
       color,
@@ -157,7 +168,6 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
   return element;
 };
 
-Text.deprecated_className = 'ui-text';
 Text.displayName = 'Text';
 
 Text.defaultProps = {
@@ -180,8 +190,3 @@ Text.propTypes = {
 Text.handledProps = Object.keys(Text.propTypes) as any;
 
 Text.create = createShorthandFactory({ Component: Text, mappedProp: 'content' });
-
-/**
- * A Text consistently styles and formats occurrences of text.
- */
-export default withSafeTypeForAs<typeof Text, TextProps, 'span'>(Text);

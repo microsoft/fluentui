@@ -1,7 +1,7 @@
 import * as t from '@babel/types';
 import _ from 'lodash';
 
-import { ComponentPropType } from 'docs/src/types';
+import { ComponentPropType } from './docs-types';
 
 const keywords: Record<string, Function> = {
   any: t.isTSAnyKeyword,

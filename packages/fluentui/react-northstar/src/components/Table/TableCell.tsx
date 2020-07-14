@@ -12,17 +12,18 @@ import {
   createShorthandFactory,
   UIComponentProps,
 } from '../../utils';
-import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import Box, { BoxProps } from '../Box/Box';
 import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+  ComponentWithAs,
+  useTelemetry,
+  useStyles,
+  useFluentContext,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+} from '@fluentui/react-bindings';
+
+import { Box, BoxProps } from '../Box/Box';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface TableCellProps
   extends UIComponentProps,
@@ -46,11 +47,16 @@ export interface TableCellSlotClassNames {
   content: string;
 }
 
-const TableCell: React.FC<WithAsProp<TableCellProps>> &
-  FluentComponentStaticProps<TableCellProps> & {
-    slotClassNames: TableCellSlotClassNames;
-  } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const tableCellClassName = 'ui-table__cell';
+export const tableCellSlotClassNames: TableCellSlotClassNames = {
+  content: `${tableCellClassName}__content`,
+};
+
+/**
+ * Component represents a table cell.
+ */
+export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponentStaticProps<TableCellProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
   setStart();
   const cellRef = React.useRef<HTMLElement>();
@@ -74,7 +80,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
   });
 
   const { classes, styles: resolvedStyles } = useStyles<TableCellStylesProps>(TableCell.displayName, {
-    className: TableCell.deprecated_className,
+    className: tableCellClassName,
     mapPropsToStyles: () => ({
       truncateContent,
     }),
@@ -107,7 +113,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
           {hasChildren
             ? children
             : Box.create(content, {
-                defaultProps: () => ({ styles: resolvedStyles.content }),
+                defaultProps: () => ({ className: tableCellSlotClassNames.content, styles: resolvedStyles.content }),
               })}
         </ElementType>,
       )}
@@ -118,12 +124,6 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
 };
 
 TableCell.displayName = 'TableCell';
-
-TableCell.deprecated_className = 'ui-table__cell';
-
-TableCell.slotClassNames = {
-  content: `${TableCell.deprecated_className}__content`,
-};
 
 TableCell.propTypes = {
   ...commonPropTypes.createCommon({
@@ -143,8 +143,3 @@ TableCell.defaultProps = {
 };
 
 TableCell.create = createShorthandFactory({ Component: TableCell, mappedProp: 'content' });
-
-/**
- * Component represents a table cell
- */
-export default withSafeTypeForAs<typeof TableCell, TableCellProps, 'div'>(TableCell);

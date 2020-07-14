@@ -58,7 +58,6 @@ export interface IDetailsListState {
   adjustedColumns: IColumn[];
   isCollapsed?: boolean;
   isSizing?: boolean;
-  isDropping?: boolean;
   isSomeGroupExpanded?: boolean;
   /**
    * A unique object used to force-update the List when it changes.
@@ -123,7 +122,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       lastWidth: 0,
       adjustedColumns: this._getAdjustedColumns(props),
       isSizing: false,
-      isDropping: false,
       isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
       isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed,
       version: {},
@@ -229,7 +227,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void {
     const {
       checkboxVisibility,
@@ -488,7 +485,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
               componentRef={this._focusZone}
               className={classNames.focusZone}
               direction={FocusZoneDirection.vertical}
-              isInnerZoneKeystroke={this.isRightArrow}
+              shouldEnterInnerZone={this._isRightArrow}
               onActiveElementChanged={this._onActiveRowChanged}
               onBlur={this._onBlur}
             >
@@ -900,7 +897,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsible || column.isCollapsable)) {
         const originalWidth = column.calculatedWidth!;
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
@@ -1138,7 +1135,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     };
   }
 
-  private isRightArrow = (event: React.KeyboardEvent<HTMLElement>) => {
+  private _isRightArrow = (event: React.KeyboardEvent<HTMLElement>) => {
     return event.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
   };
 }

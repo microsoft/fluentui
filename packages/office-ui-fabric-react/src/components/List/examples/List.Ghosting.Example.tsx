@@ -4,25 +4,11 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-
-export interface IListGhostingExampleProps {
-  items?: IExampleItem[];
-}
-
-interface IListGhostingExampleClassObject {
-  container: string;
-  itemCell: string;
-  itemImage: string;
-  itemContent: string;
-  itemName: string;
-  itemIndex: string;
-  chevron: string;
-}
+import { useConst } from '@uifabric/react-hooks';
 
 const theme: ITheme = getTheme();
 const { palette, semanticColors, fonts } = theme;
-
-const classNames: IListGhostingExampleClassObject = mergeStyleSets({
+const classNames = mergeStyleSets({
   container: {
     overflow: 'auto',
     maxHeight: 500,
@@ -70,38 +56,32 @@ const classNames: IListGhostingExampleClassObject = mergeStyleSets({
   },
 });
 
-export class ListGhostingExample extends React.Component<IListGhostingExampleProps> {
-  private _items: IExampleItem[];
-  constructor(props: IListGhostingExampleProps) {
-    super(props);
-    this._items = props.items || createListItems(5000);
-  }
-
-  public render(): JSX.Element {
-    return (
-      <FocusZone direction={FocusZoneDirection.vertical}>
-        <div className={classNames.container} data-is-scrollable={true}>
-          <List items={this._items} onRenderCell={this._onRenderCell} />
-        </div>
-      </FocusZone>
-    );
-  }
-
-  private _onRenderCell(item: IExampleItem, index: number, isScrolling: boolean): JSX.Element {
-    return (
-      <div className={classNames.itemCell} data-is-focusable={true}>
-        <Image
-          className={classNames.itemImage}
-          src={isScrolling ? undefined : item.thumbnail}
-          width={50}
-          height={50}
-          imageFit={ImageFit.cover}
-        />
-        <div className={classNames.itemContent}>
-          <div className={classNames.itemName}>{item.name}</div>
-          <div className={classNames.itemIndex}>{`Item ${index}`}</div>
-        </div>
+const onRenderCell = (item: IExampleItem, index: number, isScrolling: boolean): JSX.Element => {
+  return (
+    <div className={classNames.itemCell} data-is-focusable={true}>
+      <Image
+        className={classNames.itemImage}
+        src={isScrolling ? undefined : item.thumbnail}
+        width={50}
+        height={50}
+        imageFit={ImageFit.cover}
+      />
+      <div className={classNames.itemContent}>
+        <div className={classNames.itemName}>{item.name}</div>
+        <div className={classNames.itemIndex}>{`Item ${index}`}</div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export const ListGhostingExample: React.FunctionComponent = () => {
+  const items = useConst(() => createListItems(5000));
+
+  return (
+    <FocusZone direction={FocusZoneDirection.vertical}>
+      <div className={classNames.container} data-is-scrollable>
+        <List items={items} onRenderCell={onRenderCell} />
+      </div>
+    </FocusZone>
+  );
+};

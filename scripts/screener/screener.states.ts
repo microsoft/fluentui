@@ -43,6 +43,6 @@ const getStateForPath = (examplePath: string) => {
 const screenerStates = filteredPaths.reduce((states, examplePath) => {
   states.push(getStateForPath(examplePath));
   return states;
-}, []);
+}, [] as ReturnType<typeof getStateForPath>[]);
 
 export default screenerStates;

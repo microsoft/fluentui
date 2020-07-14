@@ -1,20 +1,22 @@
 import * as React from 'react';
+import { act } from 'react-dom/test-utils';
 
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
-import Dropdown from 'src/components/Dropdown/Dropdown';
-import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
+import { Dropdown } from 'src/components/Dropdown/Dropdown';
+import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
-import List from 'src/components/List/List';
+import { List } from 'src/components/List/List';
 
-jest.dontMock('keyboard-key');
+jest.dontMock('@fluentui/keyboard-key');
 jest.useFakeTimers();
 
 describe('Dropdown', () => {
   isConformant(Dropdown, {
     hasAccessibilityProp: false,
+    constructorName: 'Dropdown',
     autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],
   });
   implementsShorthandProp(Dropdown)('list', List, {
@@ -55,6 +57,27 @@ describe('Dropdown', () => {
           value: null,
         }),
       );
+    });
+
+    it('should have the indicator tabbable if not a search', () => {
+      const { getClearIndicatorNode } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+      });
+
+      expect(getClearIndicatorNode()).toHaveAttribute('tabindex', '0');
+      expect(getClearIndicatorNode()).toHaveAttribute('role', 'button');
+    });
+
+    it('should not have the indicator tabbable if a search', () => {
+      const { getClearIndicatorNode } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+        search: true,
+      });
+
+      expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
+      expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
     });
   });
 
@@ -266,7 +289,9 @@ describe('Dropdown', () => {
 
   describe('highlightedIndex', () => {
     afterEach(() => {
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
     });
 
     it('is null when opened by click', () => {
@@ -626,12 +651,16 @@ describe('Dropdown', () => {
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
 
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
       keyDownOnItemsList('A');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
 
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
       keyDownOnItemsList('A');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
@@ -648,15 +677,19 @@ describe('Dropdown', () => {
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
 
-      jest.advanceTimersByTime(Dropdown.charKeyPressedCleanupTime / 2);
+      jest.advanceTimersByTime(500 /* charKeyPressedCleanupTime */ / 2);
       keyDownOnItemsList('L');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
 
-      jest.advanceTimersByTime(Dropdown.charKeyPressedCleanupTime / 2);
+      jest.advanceTimersByTime(500 /* charKeyPressedCleanupTime */ / 2);
       keyDownOnItemsList('E');
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
+
+      act(() => {
+        jest.runAllTimers();
+      });
     });
 
     it('does not open with highlightedIndex after selecting item in multiple mode', () => {
@@ -762,6 +795,28 @@ describe('Dropdown', () => {
       );
     });
 
+    it('It shows no matches message when all iems are selected', () => {
+      // it will actually be the third, since one is already removed from the list due to defaultValue.
+      const noResultsMessage = 'no items';
+
+      const { clickOnItemAtIndex, clickOnToggleIndicator, itemsListNode } = renderDropdown({
+        items: ['item0', 'item1'],
+        open: true,
+        search: true,
+        multiple: true,
+        noResultsMessage,
+      });
+
+      // Select all
+      clickOnItemAtIndex(0);
+      clickOnItemAtIndex(0);
+
+      // open
+      clickOnToggleIndicator();
+
+      expect(itemsListNode.textContent).toBe(noResultsMessage);
+    });
+
     it('has onChange called with null value by hitting Escape in search input', () => {
       const onChange = jest.fn();
       const { keyDownOnSearchInput } = renderDropdown({
@@ -781,6 +836,22 @@ describe('Dropdown', () => {
           searchQuery: '',
         }),
       );
+    });
+
+    it('onChange is called after onSearchQueryChange', () => {
+      const onChange = jest.fn();
+      const onSearchQueryChange = jest.fn();
+
+      const { keyDownOnSearchInput } = renderDropdown({
+        defaultValue: items[2],
+        defaultSearchQuery: items[2],
+        onChange,
+        onSearchQueryChange,
+        search: true,
+      });
+
+      keyDownOnSearchInput('Escape');
+      expect(onChange.mock.invocationCallOrder[0]).toBeGreaterThan(onSearchQueryChange.mock.invocationCallOrder[0]);
     });
 
     it('is set by clicking on item', () => {
@@ -1075,12 +1146,35 @@ describe('Dropdown', () => {
         defaultValue: [items[0], items[1]],
       });
 
-      findIntrinsicElement(wrapper, `.${DropdownSelectedItem.slotClassNames.icon}`)
+      findIntrinsicElement(wrapper, `.${dropdownSelectedItemSlotClassNames.icon}`)
         .at(0)
         .simulate('click');
 
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[1]);
+    });
+
+    it('keeps selection when the same item is selected', () => {
+      const selectedItemIndex = 0;
+      const selectedItem = items[selectedItemIndex];
+      const { clickOnItemAtIndex, triggerButtonNode, clickOnTriggerButton, keyDownOnItemsList } = renderDropdown({
+        defaultValue: selectedItem,
+        defaultOpen: true,
+      });
+
+      clickOnItemAtIndex(selectedItemIndex);
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+
+      clickOnTriggerButton();
+      keyDownOnItemsList('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
+
+      clickOnTriggerButton();
+      keyDownOnItemsList('Tab');
+
+      expect(triggerButtonNode).toHaveTextContent(selectedItem);
     });
   });
 
@@ -1113,7 +1207,9 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent(`${items[itemToBeClickedIndex]} has been added`);
 
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
@@ -1131,7 +1227,9 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent(`${items[itemSelectedByDefaultIndex]} has been removed`);
 
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
@@ -1408,27 +1506,26 @@ describe('Dropdown', () => {
 
   describe('focused', () => {
     it('is "true" when focus is on trigger button', () => {
-      const { wrapper, focusTriggerButton } = renderDropdown();
+      const { rootNode, focusTriggerButton } = renderDropdown();
 
       focusTriggerButton();
 
-      expect(wrapper.find(Dropdown).state('focused')).toBe(true);
+      expect(rootNode).toHaveAttribute('data-test-focused', 'true');
     });
 
     it('is "true" when focus is on search input', () => {
-      const { wrapper, focusSearchInput } = renderDropdown({ search: true });
+      const { rootNode, focusSearchInput } = renderDropdown({ search: true });
 
       focusSearchInput();
 
-      expect(wrapper.find(Dropdown).state('focused')).toBe(true);
+      expect(rootNode).toHaveAttribute('data-test-focused', 'true');
     });
 
     it('is "true" when focus is on the list', () => {
-      const { wrapper, focusItemsList } = renderDropdown({ open: true });
-
+      const { rootNode, focusItemsList } = renderDropdown({ open: true });
       focusItemsList();
 
-      expect(wrapper.find(Dropdown).state('focused')).toBe(true);
+      expect(rootNode).toHaveAttribute('data-test-focused', 'true');
     });
   });
 
@@ -1479,7 +1576,6 @@ describe('Dropdown', () => {
       });
 
       keyDownOnSearchInput('Tab', { preventDefault });
-
       expect(preventDefault).toBeCalled();
     });
 
@@ -1641,6 +1737,24 @@ describe('Dropdown', () => {
       renderDropdown({ renderSelectedItem, multiple: true, value });
 
       expect(renderSelectedItem).toBeCalledTimes(value.length);
+    });
+  });
+
+  describe('searchInput', () => {
+    it("merges refs from user's input", () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+
+      const { keyDownOnSearchInput } = renderDropdown({
+        defaultSearchQuery: 'Foo',
+        multiple: true,
+        search: true,
+        searchInput: { inputRef },
+      });
+
+      keyDownOnSearchInput('Backspace');
+
+      // This test asserts also on internals that a condition that uses internal `inputRef` will pass.
+      expect(inputRef.current).toBeInstanceOf(HTMLInputElement);
     });
   });
 

@@ -1,23 +1,24 @@
 {
   "name": "@fluentui/react-icons-northstar",
   "description": "A set svg icons and utilities for creating custom ones.",
-  "version": "0.48.0",
+  "version": "0.50.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.7.6",
-    "@fluentui/accessibility": "^0.48.0",
-    "@fluentui/react-bindings": "^0.48.0",
-    "@fluentui/styles": "^0.48.0",
-    "classnames": "^2.2.6",
-    "fela": "^10.6.1",
-    "lodash": "^4.17.15"
+    "@babel/runtime": "^7.10.4",
+    "@fluentui/accessibility": "^0.50.0",
+    "@fluentui/react-bindings": "^0.50.0",
+    "@fluentui/styles": "^0.50.0",
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.52.0",
     "@types/classnames": "^2.2.9",
+    "@types/node": "^10.3.2",
     "@types/react": "16.8.25",
     "@types/react-is": "^16.7.1",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
+    "react": "16.8.6",
     "react-is": "^16.6.3"
   },
   "files": [
@@ -39,10 +40,8 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },

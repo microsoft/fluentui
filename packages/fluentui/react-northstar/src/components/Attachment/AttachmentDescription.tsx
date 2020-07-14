@@ -1,38 +1,33 @@
 import { compose } from '@fluentui/react-bindings';
-import * as React from 'react';
+import { commonPropTypes } from '../../utils';
+import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
-import { WithAsProp } from '../../types';
-import { commonPropTypes, createShorthandFactory, ShorthandFactory } from '../../utils';
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
-
-interface AttachmentDescriptionOwnProps {}
-export interface AttachmentDescriptionProps extends AttachmentDescriptionOwnProps, WithAsProp<BoxProps> {}
+export interface AttachmentDescriptionOwnProps {}
+export interface AttachmentDescriptionProps extends AttachmentDescriptionOwnProps, BoxProps {}
 
 export type AttachmentDescriptionStylesProps = never;
+export const attachmentDescriptionClassName = 'ui-attachment__description';
 
 /**
  * A AttachmentDescription provides more detailed information about the Attachment.
  */
-const AttachmentDescription = compose<
+export const AttachmentDescription = compose<
+  'span',
   AttachmentDescriptionOwnProps,
   AttachmentDescriptionStylesProps,
-  WithAsProp<BoxProps>,
+  BoxProps,
   BoxStylesProps
 >(Box, {
-  className: 'ui-attachment__description',
+  className: attachmentDescriptionClassName,
   displayName: 'AttachmentDescription',
 
   overrideStyles: true,
-}) as React.FC<AttachmentDescriptionProps> & {
-  create?: ShorthandFactory<AttachmentDescriptionProps>;
-  deprecated_className: string;
-};
+  shorthandConfig: {
+    mappedProp: 'content',
+  },
+});
 
 AttachmentDescription.defaultProps = {
   as: 'span',
 };
 AttachmentDescription.propTypes = commonPropTypes.createCommon();
-
-AttachmentDescription.create = createShorthandFactory({ Component: AttachmentDescription, mappedProp: 'content' });
-
-export default AttachmentDescription;

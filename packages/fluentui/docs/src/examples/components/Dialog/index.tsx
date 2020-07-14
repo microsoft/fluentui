@@ -6,8 +6,8 @@ import Rtl from './Rtl';
 import Variations from './Variations';
 import Usage from './Usage';
 
-import NonPublicSection from 'docs/src/components/ComponentDoc/NonPublicSection';
-import ComponentExample from 'docs/src/components/ComponentDoc/ComponentExample/ComponentExample';
+import NonPublicSection from '../../../components/ComponentDoc/NonPublicSection';
+import ComponentExample from '../../../components/ComponentDoc/ComponentExample/ComponentExample';
 
 const DialogExamples = () => (
   <>

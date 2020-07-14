@@ -21,48 +21,46 @@ const classNames = mergeStyleSets({
   },
 });
 
-export class HoverCardInstantDismissExample extends React.Component<{}, {}> {
-  private _hoverCard = React.createRef<IHoverCard>();
+const onCardHide = (): void => {
+  console.log('I am now hidden');
+};
 
-  public render() {
-    const plainCardProps: IPlainCardProps = {
-      onRenderPlainCard: this._onRenderPlainCard,
-    };
-
-    return (
-      <Fabric>
-        <p>
-          In cases where an instant dismiss of the card is needed, public method <i>dismiss()</i> can be used through
-          its <i>componentRef</i> prop.
-        </p>
-        <HoverCard
-          cardDismissDelay={2000}
-          type={HoverCardType.plain}
-          plainCardProps={plainCardProps}
-          componentRef={this._hoverCard}
-          onCardHide={this._onCardHide}
-        >
-          <span className={classNames.target}>Hover Over Me</span>
-        </HoverCard>
-      </Fabric>
-    );
-  }
-
-  private _onRenderPlainCard = (): JSX.Element => {
+export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
+  const hoverCard = React.useRef<IHoverCard>(null);
+  const instantDismissCard = (): void => {
+    if (hoverCard.current) {
+      hoverCard.current.dismiss();
+    }
+  };
+  const onRenderPlainCard = (): JSX.Element => {
     return (
       <div className={classNames.plainCard}>
-        <DefaultButton onClick={this._instantDismissCard} text="Instant Dismiss" />
+        <DefaultButton
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={instantDismissCard}
+          text="Instant Dismiss"
+        />
       </div>
     );
   };
-
-  private _instantDismissCard = (): void => {
-    if (this._hoverCard.current) {
-      this._hoverCard.current.dismiss();
-    }
+  const plainCardProps: IPlainCardProps = {
+    onRenderPlainCard: onRenderPlainCard,
   };
-
-  private _onCardHide = (): void => {
-    console.log('I am now hidden');
-  };
-}
+  return (
+    <Fabric>
+      <p>
+        In cases where an instant dismiss of the card is needed, public method
+        <i>dismiss()</i> can be used through its <i>componentRef</i> prop.
+      </p>
+      <HoverCard
+        cardDismissDelay={2000}
+        type={HoverCardType.plain}
+        plainCardProps={plainCardProps}
+        componentRef={hoverCard}
+        onCardHide={onCardHide}
+      >
+        <span className={classNames.target}>Hover Over Me</span>
+      </HoverCard>
+    </Fabric>
+  );
+};

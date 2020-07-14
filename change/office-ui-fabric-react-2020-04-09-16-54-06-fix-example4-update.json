@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated DatePicker and ComboBox examples to use function components",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-09T23:54:06.445Z"
-}

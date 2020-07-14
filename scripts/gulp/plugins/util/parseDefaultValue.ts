@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import * as React from 'react';
 
-import { ComponentPropType } from 'docs/src/types';
+import { ComponentPropType } from './docs-types';
 import { PropItem } from './docgen';
 
 const parseDefaultValue = (Component: React.ComponentType, propDef: PropItem, types: ComponentPropType[]) => {

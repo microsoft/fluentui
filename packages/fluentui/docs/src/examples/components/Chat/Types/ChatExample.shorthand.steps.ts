@@ -1,7 +1,7 @@
-import { ChatMessage } from '@fluentui/react-northstar';
+import { chatMessageClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  message: `.${ChatMessage.deprecated_className}`,
+  message: `.${chatMessageClassName}`,
 };
 
 const config: ScreenerTestsConfig = {

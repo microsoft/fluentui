@@ -1,6 +1,35 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.3.0)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.2.84..@uifabric/api-docs_v7.3.0)
+
+### Minor changes
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [7.2.68](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.2.68)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.2.50..@uifabric/api-docs_v7.2.68)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.2.50](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.2.50)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.2.40..@uifabric/api-docs_v7.2.50)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 7.2.40
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -134,4 +163,3 @@ Sat, 04 May 2019 00:01:53 GMT
 ### Patches
 
 - Updates for new website
-

@@ -1,6 +1,6 @@
 import { IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
-import { IStyleFunction, IPoint } from '../../Utilities';
+import { IStyleFunction, Point } from '../../Utilities';
 import { mergeStyleSets, HighContrastSelector } from '../../Styling';
 
 export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
@@ -63,14 +63,16 @@ export const getCalloutStyles = (props: ICalloutContentStyleProps): ICalloutCont
 };
 
 export const getCalloutOffsetStyles = (
-  offset: IPoint,
+  offset: Point,
 ): IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles> => {
   return (props: ICalloutContentStyleProps): ICalloutContentStyles => {
     return mergeStyleSets(getCalloutStyles(props), {
       root: [
         {
-          marginLeft: offset.x,
-          marginTop: offset.y,
+          // eslint-disable-next-line deprecation/deprecation
+          marginLeft: offset.left || offset.x,
+          // eslint-disable-next-line deprecation/deprecation
+          marginTop: offset.top || offset.y,
         },
       ],
     });

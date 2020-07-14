@@ -38,18 +38,17 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
   const { component: ExampleComponent } = transformResult;
 
   // Check if editing should be enabled
-  const canEdit = React.useMemo(() => {
-    if (typeof useEditor === 'boolean') {
-      return useEditor;
-    }
-    return isEditorSupported(code, supportedPackages);
-  }, [useEditor, code, supportedPackages]);
+  const canEdit = React.useMemo(() => isEditorSupported(code, supportedPackages, useEditor), [
+    useEditor,
+    code,
+    supportedPackages,
+  ]);
 
   const onTransformFinished = React.useCallback(
     (result: ITransformedExample) => {
       setTransformResult(result);
-      if (props.onTransformFinished) {
-        props.onTransformFinished(result);
+      if (onTransformFinishedFromProps) {
+        onTransformFinishedFromProps(result);
       }
     },
     [onTransformFinishedFromProps],

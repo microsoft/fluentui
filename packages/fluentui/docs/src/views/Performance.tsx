@@ -39,7 +39,7 @@ export default () => (
 
         function App() {
           return (
-            <Provider theme={themes.teams}>
+            <Provider theme={teamsTheme}>
               <h1>Fluent UI Menu with blocked rendering</h1>
               <hr />
               <Menu defaultActiveIndex={0} items={items} primary vertical />
@@ -49,7 +49,14 @@ export default () => (
       `}
       />
     </p>
+    <p>
+      To improve the performance you need to understand where the time is spent in your application.{' '}
+      {link('Debugging', '/debugging')} section documents the tools you can use to understand FluentUI performance.
+    </p>
 
-    <GuidesNavigationFooter previous={{ name: 'Integrate custom components', url: 'integrate-custom-components' }} />
+    <GuidesNavigationFooter
+      previous={{ name: 'Integrate custom components', url: 'integrate-custom-components' }}
+      next={{ name: 'Debugging', url: 'debugging' }}
+    />
   </DocPage>
 );

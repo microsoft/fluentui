@@ -1,13 +1,14 @@
 import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
-import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import { default as ToolbarMenuItem, ToolbarMenuItemStylesProps } from '../../../../components/Toolbar/ToolbarMenuItem';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { ToolbarMenuItemStylesProps } from '../../../../components/Toolbar/ToolbarMenuItem';
 import { ToolbarVariables } from './toolbarVariables';
-import submenuIndicatorUrl from './submenuIndicatorUrl';
-import activeIndicatorUrl from './activeIndicatorUrl';
+import { submenuIndicatorUrl } from './submenuIndicatorUrl';
+import { activeIndicatorUrl } from './activeIndicatorUrl';
+import { toolbarMenuItemSubmenuIndicatorClassName } from '../../../../components/Toolbar/ToolbarMenuItemSubmenuIndicator';
+import { toolbarMenuItemActiveIndicatorClassName } from '../../../../components/Toolbar/ToolbarMenuItemActiveIndicator';
 
-const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesProps, ToolbarVariables> = {
+export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesProps, ToolbarVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme);
     const borderFocusStyles = getBorderFocusStyles({
@@ -36,10 +37,10 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
       ':hover': {
         color: v.menuItemForegroundHover || colors.menuItemForegroundHover,
         backgroundColor: v.menuItemBackgroundHover || colors.menuItemBackgroundHover,
-        [`& .${ToolbarMenuItem.slotClassNames.submenuIndicator}`]: {
+        [`& .${toolbarMenuItemSubmenuIndicatorClassName}`]: {
           backgroundImage: submenuIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover),
         },
-        [`& .${ToolbarMenuItem.slotClassNames.activeIndicator}`]: {
+        [`& .${toolbarMenuItemActiveIndicatorClassName}`]: {
           backgroundImage: activeIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover),
         },
       },
@@ -50,10 +51,10 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
         cursor: 'default',
         color: v.menuItemForegroundDisabled || colors.foregroundDisabled1,
         backgroundColor: v.menuItemBackgroundDisabled,
-        [`& .${ToolbarMenuItem.slotClassNames.submenuIndicator}`]: {
+        [`& .${toolbarMenuItemSubmenuIndicatorClassName}`]: {
           backgroundImage: submenuIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1),
         },
-        [`& .${ToolbarMenuItem.slotClassNames.activeIndicator}`]: {
+        [`& .${toolbarMenuItemActiveIndicatorClassName}`]: {
           backgroundImage: activeIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1),
         },
         ':hover': {
@@ -63,44 +64,7 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
     };
   },
 
-  activeIndicator: ({ variables: v }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme);
-    return {
-      backgroundImage: activeIndicatorUrl(v.menuItemForeground || colors.foreground1),
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      width: pxToRem(24),
-      height: '100%',
-      position: 'absolute',
-      right: pxToRem(7),
-    };
-  },
-
-  submenuIndicator: ({ variables: v, rtl }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme);
-    return {
-      backgroundImage: submenuIndicatorUrl(v.menuItemForeground || colors.foreground1),
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      ...(rtl && {
-        transform: `scaleX(-1)`,
-      }),
-      width: pxToRem(16),
-      height: '100%',
-      position: 'absolute',
-      right: pxToRem(7),
-    };
-  },
-
   wrapper: () => ({
     display: 'block',
   }),
-
-  icon: ({ props: p }) => ({
-    ...(p.hasContent && {
-      marginRight: pxToRem(10),
-    }),
-  }),
 };
-
-export default toolbarMenuItemStyles;

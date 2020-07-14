@@ -1,10 +1,11 @@
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ButtonGroupProps } from '../../../../components/Button/ButtonGroup';
+import { ButtonGroupStylesProps } from '../../../../components/Button/ButtonGroup';
+import { ButtonVariables } from './buttonVariables';
 
 const commonButtonsStyles = (circular: boolean) => (circular ? { marginRight: pxToRem(8) } : { borderRadius: 0 });
 
-const buttonGroupStyles: ComponentSlotStylesPrepared<ButtonGroupProps, any> = {
+export const buttonGroupStyles: ComponentSlotStylesPrepared<ButtonGroupStylesProps, ButtonVariables> = {
   root: (): ICSSInJSStyle => ({}),
   middleButton: ({ props: p }) => ({
     ...commonButtonsStyles(p.circular),
@@ -24,5 +25,3 @@ const buttonGroupStyles: ComponentSlotStylesPrepared<ButtonGroupProps, any> = {
     }),
   }),
 };
-
-export default buttonGroupStyles;

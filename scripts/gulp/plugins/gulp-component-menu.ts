@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import through2 from 'through2';
 import Vinyl from 'vinyl';
+import { Transform } from 'stream';
 
 import config from '../../config';
 import getComponentInfo from './util/getComponentInfo';
@@ -15,10 +16,10 @@ type ComponentMenuItem = {
   type: string;
 };
 
-export default () => {
+export default (tsConfigPath: string) => {
   const result: ComponentMenuItem[] = [];
 
-  function bufferContents(file, enc, cb) {
+  function bufferContents(this: Transform, file, enc, cb) {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -40,7 +41,7 @@ export default () => {
         const jsonInfo = fs.readFileSync(infoFilePath);
         componentInfo = JSON.parse(jsonInfo.toString());
       } else {
-        componentInfo = getComponentInfo(file.path, []);
+        componentInfo = getComponentInfo(tsConfigPath, file.path, []);
       }
 
       if (componentInfo.isParent) {
@@ -62,7 +63,7 @@ export default () => {
     }
   }
 
-  function endStream(cb) {
+  function endStream(this: Transform, cb) {
     const file = new Vinyl({
       path: './componentMenu.json',
       contents: Buffer.from(JSON.stringify(_.sortBy(result, 'displayName'), null, 2)),

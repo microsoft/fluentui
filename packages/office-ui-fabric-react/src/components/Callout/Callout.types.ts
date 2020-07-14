@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { Point, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 
 /**
  * {@docCategory Callout}
  */
-export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 /**
  * {@docCategory Callout}
@@ -243,12 +243,21 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   shouldUpdateWhenHidden?: boolean;
 
   /**
-   * If specified, determines whether the underlying "Popup" component should try to restore
-   * focus when it is dismissed.  When set to false, the Popup won't try to restore focus to
-   * the last focused element.
-   * @defaultvalue true;
+   * If true, when this component is unmounted, focus will be restored to the element that had focus when the component
+   * first mounted.
+   * @defaultvalue true
+   * @deprecated use onRestoreFocus callback instead
    */
   shouldRestoreFocus?: boolean;
+
+  /**
+   * Called when the component is unmounting, and focus needs to be restored.
+   * Argument passed down contains two variables, the element that the underlying
+   * popup believes focus should go to * and whether or not the popup currently
+   * contains focus. If this is provided, focus will not be restored automatically,
+   * you'll need to call originalElement.focus()
+   */
+  onRestoreFocus?: (options: { originalElement?: HTMLElement | Window; containsFocus: boolean }) => void;
 }
 
 /**

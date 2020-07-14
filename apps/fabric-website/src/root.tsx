@@ -5,7 +5,7 @@ import * as platformPickerStyles from '@uifabric/example-app-base/lib/components
 import { SiteDefinition } from './SiteDefinition/index';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { AndroidLogo, AppleLogo, WebLogo } from './utilities/index';
+import { androidLogo, appleLogo, webLogo, macLogo, windowsLogo, crossPlatformLogo } from './utilities/index';
 
 // TODO: handle redirects
 
@@ -15,13 +15,22 @@ setRTL(false);
 
 registerIcons({
   icons: {
-    'AndroidLogo-platformPicker': AndroidLogo({
+    'AndroidLogo-platformPicker': androidLogo({
       className: platformPickerStyles.icon,
     }),
-    'AppleLogo-platformPicker': AppleLogo({
+    'AppleLogo-platformPicker': appleLogo({
       className: platformPickerStyles.icon,
     }),
-    'WebLogo-platformPicker': WebLogo({
+    'WebLogo-platformPicker': webLogo({
+      className: platformPickerStyles.icon,
+    }),
+    'MacLogo-platformPicker': macLogo({
+      className: platformPickerStyles.icon,
+    }),
+    'WinLogo-platformPicker': windowsLogo({
+      className: platformPickerStyles.icon,
+    }),
+    'CrossPlatformLogo-platformPicker': crossPlatformLogo({
       className: platformPickerStyles.icon,
     }),
   },

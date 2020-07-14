@@ -100,10 +100,17 @@ export interface IPosition {
   [key: string]: number | undefined;
 }
 
-export interface IPoint {
-  x: number;
-  y: number;
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export interface Point {
+  left?: number;
+  top?: number;
+  /** @deprecated Use `left` instead */
+  x?: number;
+  /** @deprecated Use `top` instead */
+  y?: number;
 }
+
+export interface IPoint extends Point {}
 
 export interface IPositionDirectionalHintData {
   targetEdge: RectangleEdge;

@@ -31,10 +31,10 @@ const items = [
   },
 ];
 
-const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
-  <Component open={open} hasSubtree={hasSubtree} {...restProps}>
-    {hasSubtree && open ? <TriangleDownIcon /> : <TriangleEndIcon />}
-    <span>{content}</span>
+const titleRenderer = (Component, { content, expanded, open, hasSubtree, ...restProps }) => (
+  <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
+    {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
+    {content}
   </Component>
 );
 

@@ -1,24 +1,31 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.48.0",
+  "version": "0.50.0",
   "private": true,
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/react-northstar": "^0.48.0",
+  "dependencies": {
+    "@fluentui/accessibility": "^0.50.0",
+    "@fluentui/eslint-plugin": "^0.52.0",
+    "@fluentui/react-icons-northstar": "^0.50.0",
+    "@fluentui/react-northstar": "^0.50.0",
+    "@types/node": "^10.3.2",
     "@types/puppeteer": "1.12.3",
     "@types/react": "16.8.25",
-    "@types/react-router-dom": "^4.3.4",
+    "@types/react-dom": "16.8.4",
+    "@types/react-router-dom": "^5.1.5",
     "@uifabric/build": "^7.0.0",
+    "lerna-alias": "^3.0.3-0",
+    "lodash": "^4.17.15",
     "puppeteer": "^1.13.0",
-    "react-router-dom": "^5.0.1"
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "^5.2.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p ."
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
   }
 }

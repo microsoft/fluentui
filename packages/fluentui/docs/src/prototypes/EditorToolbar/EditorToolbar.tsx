@@ -15,7 +15,7 @@ import {
   ToolbarMenuItemShorthandKinds,
 } from '@fluentui/react-northstar';
 import { useEventListener } from '@fluentui/react-component-event-listener';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -35,16 +35,17 @@ import {
   TableIcon,
   TrashCanIcon,
   UnderlineIcon,
+  ChevronDownIcon,
+  QnaIcon,
 } from '@fluentui/react-icons-northstar';
-import { ChevronDownIcon, QnaIcon } from '@fluentui/react-icons-northstar';
 
 type EditorToolbarProps = EditorToolbarState & {
   dispatch: React.Dispatch<EditorToolbarAction>;
   target?: Document;
 };
 
-type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>;
-type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: ToolbarMenuItemShorthandKinds }>;
+type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>;
+type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
 const EditorToolbar: React.FC<EditorToolbarProps> = props => {
   const overflowIndex = React.useRef<number>();
@@ -247,7 +248,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
 
   useEventListener({
     listener: (e: KeyboardEvent) => {
-      const code = keyboardKey.getCode(e);
+      const code = getCode(e);
 
       if (code === keyboardKey.K && e.ctrlKey) {
         // Ctrl+K is a browser hotkey, it's required to prevent defaults

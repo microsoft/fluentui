@@ -14,9 +14,9 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
 
   return {
     root: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.buttonBackground,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       selectors: {
         ...labelTextColor(semanticColors.buttonText),
         '&.ms-Button--compoundPrimary': {
@@ -30,7 +30,7 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     },
     rootHovered: {
       backgroundColor: semanticColors.buttonBackgroundHovered,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
       selectors: {
         '&.ms-Button--compound:hover': {
           selectors: {
@@ -49,7 +49,7 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     },
     rootPressed: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       selectors: {
         '&.ms-Button--compound:active': {
           selectors: {

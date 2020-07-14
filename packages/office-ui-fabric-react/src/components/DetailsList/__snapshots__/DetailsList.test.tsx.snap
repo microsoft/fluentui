@@ -18,7 +18,6 @@ exports[`DetailsList renders List correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -41,9 +40,7 @@ exports[`DetailsList renders List correctly 1`] = `
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -88,11 +85,6 @@ exports[`DetailsList renders List correctly 1`] = `
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 100,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -141,9 +133,7 @@ exports[`DetailsList renders List correctly 1`] = `
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -526,9 +516,7 @@ exports[`DetailsList renders List correctly 1`] = `
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -633,7 +621,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -656,9 +643,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -703,11 +688,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 500,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -756,9 +736,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -1736,9 +1714,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -1844,7 +1820,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -1867,9 +1842,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -1914,11 +1887,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 100,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -1967,9 +1935,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -2352,9 +2318,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2460,7 +2424,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -2483,9 +2446,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2530,11 +2491,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 900,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -2583,9 +2539,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -3348,9 +3302,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3455,7 +3407,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -3478,9 +3429,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3525,11 +3474,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 500,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -3578,9 +3522,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -4573,9 +4515,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4680,7 +4620,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -4703,9 +4642,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4750,11 +4687,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 100,
-            }
-          }
         >
           <div
             aria-expanded={true}
@@ -5033,9 +4965,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -5416,6 +5346,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-is-focusable={true}
                                   data-item-index={0}
                                   data-selection-index={0}
+                                  data-selection-touch-invoke={true}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -5600,6 +5531,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-is-focusable={true}
                                   data-item-index={1}
                                   data-selection-index={1}
+                                  data-selection-touch-invoke={true}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -6032,6 +5964,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-is-focusable={true}
                                   data-item-index={2}
                                   data-selection-index={2}
+                                  data-selection-touch-invoke={true}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -6216,6 +6149,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-is-focusable={true}
                                   data-item-index={3}
                                   data-selection-index={3}
+                                  data-selection-touch-invoke={true}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -6400,6 +6334,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-is-focusable={true}
                                   data-item-index={4}
                                   data-selection-index={4}
+                                  data-selection-touch-invoke={true}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}

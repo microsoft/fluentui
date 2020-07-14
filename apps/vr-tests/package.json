@@ -14,11 +14,14 @@
     "test": "just-scripts test"
   },
   "dependencies": {
-    "@uifabric/example-data": "^7.0.9",
-    "@uifabric/experiments": "^7.23.0",
-    "@uifabric/react-cards": "^0.109.53",
-    "@uifabric/set-version": "^7.0.9",
-    "office-ui-fabric-react": "^7.106.0",
+    "@fluentui/react-button": "^0.7.1",
+    "@fluentui/react-icons": "^0.1.36",
+    "@fluentui/react-next": "^8.0.0-alpha.59",
+    "@uifabric/example-data": "^7.0.18",
+    "@uifabric/experiments": "^7.27.2",
+    "@uifabric/react-cards": "^0.110.0",
+    "@uifabric/set-version": "^7.0.16",
+    "office-ui-fabric-react": "^7.122.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
@@ -26,7 +29,8 @@
     "typescript": "3.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
+    "@fluentui/eslint-plugin": "^0.52.0",
+    "@babel/core": "^7.10.4",
     "@storybook/addon-options": "^5.3.8",
     "@storybook/addons": "^5.3.8",
     "@storybook/channels": "^5.3.8",
@@ -35,18 +39,17 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/date-time": "^7.8.53",
-    "@uifabric/tslint-rules": "^7.1.2",
+    "@uifabric/date-time": "^7.11.0",
     "awesome-typescript-loader": "^3.2.3",
     "babel-loader": "^8.0.6",
-    "css-loader": "^0.28.7",
+    "css-loader": "^3.5.3",
     "csstype": "^2.6.7",
     "file-loader": "^0.11.1",
-    "postcss-loader": "^2.0.9",
+    "postcss-loader": "^3.0.0",
     "raw-loader": "^0.5.1",
     "screener-runner": "^0.10.43",
     "screener-storybook": "^0.18.6",
     "storybook-readme": "^3.3.0",
-    "style-loader": "^0.21.0"
+    "style-loader": "^1.2.1"
   }
 }

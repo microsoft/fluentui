@@ -19,8 +19,10 @@ interface ICodepenPrefill {
   html: string;
   head: string;
   js: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   js_pre_processor: string;
   css: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   css_pre_processor: string;
   // and other options--see https://blog.codepen.io/documentation/api/prefill/
 }
@@ -60,8 +62,10 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
       html: htmlContent,
       head: headContent,
       js: jsContentStr,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       js_pre_processor: 'typescript',
       css: '',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       css_pre_processor: 'scss',
     };
 

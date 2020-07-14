@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -16,23 +16,22 @@ import { Accessibility } from '../../types';
  * Triggers 'expand' action with 'ArrowRight' on 'root', when has a closed subtree.
  * Triggers 'focusSubtree' action with 'ArrowRight' on 'root', when has an opened subtree.
  */
-const hierarchicalTreeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
+export const hierarchicalTreeItemBehavior: Accessibility<HierarchicalTreeItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'none',
-      ...(props.items &&
-        props.items.length && {
-          'aria-expanded': props.open,
-          tabIndex: -1,
-          [IS_FOCUSABLE_ATTRIBUTE]: true,
-          role: 'treeitem',
-        }),
+      ...(props.hasItems && {
+        'aria-expanded': props.open,
+        tabIndex: -1,
+        [IS_FOCUSABLE_ATTRIBUTE]: true,
+        role: 'treeitem',
+      }),
     },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
       ...(isSubtreeOpen(props) && {
         receiveFocus: {
@@ -54,17 +53,15 @@ const hierarchicalTreeItemBehavior: Accessibility<TreeItemBehaviorProps> = props
   },
 });
 
-export type TreeItemBehaviorProps = {
+export type HierarchicalTreeItemBehaviorProps = {
   /** If item is a subtree, it contains items. */
-  items?: object[];
+  hasItems?: boolean;
   /** If item is a subtree, it indicates if it's open. */
   open?: boolean;
 };
 
 /** Checks if current tree item has a subtree and it is opened */
-const isSubtreeOpen = (props: TreeItemBehaviorProps): boolean => {
-  const { items, open } = props;
-  return !!(items && items.length && open);
+const isSubtreeOpen = (props: HierarchicalTreeItemBehaviorProps): boolean => {
+  const { hasItems, open } = props;
+  return !!(hasItems && open);
 };
-
-export default hierarchicalTreeItemBehavior;

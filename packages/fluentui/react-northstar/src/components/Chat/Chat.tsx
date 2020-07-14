@@ -1,11 +1,17 @@
 import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useFluentContext,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -15,15 +21,10 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import {
-  WithAsProp,
-  withSafeTypeForAs,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import ChatItem, { ChatItemProps } from './ChatItem';
-import ChatMessage from './ChatMessage';
+import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import { ChatItem, ChatItemProps } from './ChatItem';
+import { ChatMessage } from './ChatMessage';
+import { ChatMessageDetails } from './ChatMessageDetails';
 
 export interface ChatSlotClassNames {
   item: string;
@@ -38,14 +39,21 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
 }
 
 export type ChatStylesProps = {};
+export const chatClassName = 'ui-chat';
+export const chatSlotClassNames: ChatSlotClassNames = {
+  item: `${chatClassName}__item`,
+};
 
-const Chat: React.FC<WithAsProp<ChatProps>> &
+/**
+ * A Chat displays messages from a conversation between multiple users.
+ */
+export const Chat: ComponentWithAs<'ul', ChatProps> &
   FluentComponentStaticProps<ChatProps> & {
-    slotClassNames: ChatSlotClassNames;
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
+    MessageDetails: typeof ChatMessageDetails;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
 
@@ -56,7 +64,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
-    className: Chat.deprecated_className,
+    className: chatClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -81,7 +89,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
         ? children
         : _.map(items, item =>
             ChatItem.create(item, {
-              defaultProps: () => ({ className: Chat.slotClassNames.item }),
+              defaultProps: () => ({ className: chatSlotClassNames.item }),
             }),
           )}
     </ElementType>,
@@ -91,12 +99,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
   return element;
 };
 
-Chat.deprecated_className = 'ui-chat';
 Chat.displayName = 'Chat';
-
-Chat.slotClassNames = {
-  item: `${Chat.deprecated_className}__item`,
-};
 
 Chat.defaultProps = {
   accessibility: chatBehavior,
@@ -112,10 +115,6 @@ Chat.handledProps = Object.keys(Chat.propTypes) as any;
 
 Chat.Item = ChatItem;
 Chat.Message = ChatMessage;
+Chat.MessageDetails = ChatMessageDetails;
 
 Chat.create = createShorthandFactory({ Component: Chat });
-
-/**
- * A Chat displays messages from a conversation between multiple users.
- */
-export default withSafeTypeForAs<typeof Chat, ChatProps, 'ul'>(Chat);

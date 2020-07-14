@@ -32,11 +32,12 @@ export class Nav extends React.Component<INavProps, INavState> {
   public constructor(props: INavProps) {
     super(props);
 
-    this._localItems = !!window.localStorage
-      ? {
-          defaultSortState: NavSortType[localStorage.getItem('defaultSortState') as keyof typeof NavSortType],
-        }
-      : {};
+    this._localItems =
+      typeof window !== 'undefined' && window.localStorage
+        ? {
+            defaultSortState: NavSortType[localStorage.getItem('defaultSortState') as keyof typeof NavSortType],
+          }
+        : {};
 
     this.state = {
       defaultSortState: this._localItems.defaultSortState
@@ -84,7 +85,7 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <>
-        {searchablePageTitle && this._renderSearchBox(searchablePageTitle)}
+        {searchablePageTitle && pages && pages.length > 1 && this._renderSearchBox(searchablePageTitle)}
         <FocusZone>
           <nav className={styles.nav} role="navigation">
             {list}
@@ -127,7 +128,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     let linkText = <>{text}</>;
 
     // Highlight search query within link.
-    if (!!searchQuery) {
+    if (searchQuery) {
       const matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
       if (matchIndex >= 0) {
         const before = text.slice(0, matchIndex);

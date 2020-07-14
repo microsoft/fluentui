@@ -29,10 +29,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
     role="navigation"
   >
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <h3>
         Pages
@@ -165,10 +162,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -317,10 +314,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -373,10 +370,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
       </div>
     </div>
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <h3>
         More pages
@@ -509,10 +503,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -661,10 +655,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;

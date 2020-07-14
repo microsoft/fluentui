@@ -1,12 +1,15 @@
-import { CarouselNavigationProps } from '../../../../components/Carousel/CarouselNavigation';
+import { CarouselNavigationStylesProps } from '../../../../components/Carousel/CarouselNavigation';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { pxToRem } from '../../../../utils';
 import { getColorScheme } from '../../colors';
 
-const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationProps, CarouselNavigationVariables> = {
+export const carouselNavigationStyles: ComponentSlotStylesPrepared<
+  CarouselNavigationStylesProps,
+  CarouselNavigationVariables
+> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { iconOnly, primary, vertical } = p;
+    const { iconOnly, primary, vertical, thumbnails } = p;
     const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {
@@ -18,7 +21,12 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
       justifyContent: 'center',
-
+      ...(!vertical &&
+        thumbnails && {
+          justifyContent: 'start',
+          transform: `translateX(${pxToRem(v.width / 2 - v.thumbnailWidth / 2 - +p.activeIndex * v.thumbnailWidth)})`,
+          transition: 'transform .5s ease',
+        }),
       ...(iconOnly && { alignItems: 'center' }),
 
       ...(vertical && {
@@ -41,5 +49,3 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
     };
   },
 };
-
-export default carouselNavigationStyles;

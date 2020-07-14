@@ -4,10 +4,12 @@ const scenarioIterations = {
   CommandBar: 1000,
   Nav: 1000,
   Pivot: 1000,
+  PivotNext: 1000,
   Panel: 1000,
   Dialog: 1000,
   ComboBox: 1000,
   Persona: 1000,
+  ContextualMenu: 1000,
 };
 
 module.exports = scenarioIterations;

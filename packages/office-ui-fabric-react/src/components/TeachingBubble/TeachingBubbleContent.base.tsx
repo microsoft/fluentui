@@ -55,7 +55,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       secondaryButtonProps,
       headline,
       hasCondensedHeadline,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       hasCloseButton = this.props.hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,
@@ -66,6 +66,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       ariaDescribedBy,
       ariaLabelledBy,
       footerContent: customFooterContent,
+      focusTrapZoneProps,
     } = this.props;
 
     let imageContent;
@@ -152,7 +153,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
         data-is-focusable={true}
       >
         {imageContent}
-        <FocusTrapZone isClickableOutsideFocusTrap={true}>
+        <FocusTrapZone isClickableOutsideFocusTrap={true} {...focusTrapZoneProps}>
           <div className={classNames.bodyContent}>
             {headerContent}
             {bodyContent}

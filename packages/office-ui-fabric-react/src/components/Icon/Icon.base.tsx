@@ -11,7 +11,10 @@ export interface IIconState {
 }
 
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>({
-  disableCaching: true,
+  // Icon is used a lot by other components.
+  // It's likely to see expected cases which pass different className to the Icon.
+  // Therefore setting a larger cache size.
+  cacheSize: 100,
 });
 
 export class IconBase extends React.Component<IIconProps, IIconState> {
@@ -23,13 +26,13 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
   }
 
   public render() {
-    const { className, styles, iconName, imageErrorAs, theme } = this.props;
+    const { children, className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage =
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       !!this.props.imageProps || this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
     const iconContent = getIconContent(iconName) || {};
-    const { iconClassName, children } = iconContent;
+    const { iconClassName, children: iconContentChildren } = iconContent;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -44,11 +47,11 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const { imageLoadError } = this.state;
     const imageProps: IImageProps = {
       ...this.props.imageProps,
-      onLoadingStateChange: this.onImageLoadingStateChange,
+      onLoadingStateChange: this._onImageLoadingStateChange,
     };
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const accessibleName = imageProps.alt || this.props['aria-label'] || this.props.ariaLabel;
     const hasName = !!(accessibleName || this.props['aria-labelledby'] || imageProps['aria-labelledby']);
     const containerProps = hasName
@@ -62,12 +65,12 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 
     return (
       <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
-        {isImage ? <ImageType {...imageProps} alt={accessibleName} /> : children}
+        {isImage ? <ImageType {...imageProps} alt={accessibleName} /> : children || iconContentChildren}
       </RootType>
     );
   }
 
-  private onImageLoadingStateChange = (state: ImageLoadState): void => {
+  private _onImageLoadingStateChange = (state: ImageLoadState): void => {
     if (this.props.imageProps && this.props.imageProps.onLoadingStateChange) {
       this.props.imageProps.onLoadingStateChange(state);
     }

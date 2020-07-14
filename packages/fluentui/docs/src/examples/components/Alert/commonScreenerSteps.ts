@@ -1,7 +1,7 @@
-import { AlertDismissAction } from '@fluentui/react-northstar';
+import { alertDismissActionClassName } from '@fluentui/react-northstar';
 
 const selectors = {
-  dismissAction: `.${AlertDismissAction.deprecated_className}`,
+  dismissAction: `.${alertDismissActionClassName}`,
 };
 
 const focusDismissAction: ScreenerStep = (builder, keys) => builder.keys('body', keys.tab);

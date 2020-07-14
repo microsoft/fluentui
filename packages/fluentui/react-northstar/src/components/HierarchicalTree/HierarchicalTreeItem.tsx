@@ -1,41 +1,50 @@
-import { Accessibility, hierarchicalTreeItemBehavior, hierarchicalSubtreeBehavior } from '@fluentui/accessibility';
-import { getFirstFocusable } from '@fluentui/react-bindings';
+import {
+  Accessibility,
+  hierarchicalTreeItemBehavior,
+  hierarchicalSubtreeBehavior,
+  HierarchicalTreeItemBehaviorProps,
+} from '@fluentui/accessibility';
+import {
+  ComponentWithAs,
+  getFirstFocusable,
+  useTelemetry,
+  useFluentContext,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { Ref } from '@fluentui/react-component-ref';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import HierarchicalTree, { HierarchicalTreeProps } from './HierarchicalTree';
-import HierarchicalTreeTitle, { HierarchicalTreeTitleProps } from './HierarchicalTreeTitle';
+import { HierarchicalTree, HierarchicalTreeProps } from './HierarchicalTree';
+import { HierarchicalTreeTitle, HierarchicalTreeTitleProps } from './HierarchicalTreeTitle';
 import {
-  UIComponent,
   childrenExist,
   createShorthandFactory,
   commonPropTypes,
   UIComponentProps,
   ChildrenComponentProps,
   rtlTextContainer,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory,
 } from '../../utils';
 import {
   ComponentEventHandler,
-  WithAsProp,
   ShorthandRenderFunction,
   ShorthandValue,
-  withSafeTypeForAs,
   ShorthandCollection,
+  FluentComponentStaticProps,
 } from '../../types';
 
 export interface HierarchicalTreeItemSlotClassNames {
-  title: string;
   subtree: string;
 }
 
 export interface HierarchicalTreeItemProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<HierarchicalTreeItemBehaviorProps>;
 
   /** Only allow one subtree to be open at a time. */
   exclusive?: boolean;
@@ -66,151 +75,12 @@ export interface HierarchicalTreeItemProps extends UIComponentProps, ChildrenCom
   title?: ShorthandValue<HierarchicalTreeTitleProps>;
 }
 
-class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemProps>> {
-  static create: ShorthandFactory<HierarchicalTreeItemProps>;
+export const hierarchicalTreeItemClassName = 'ui-hierarchicaltree__item';
+export const hierarchicalTreeItemSlotClassNames: HierarchicalTreeItemSlotClassNames = {
+  subtree: `${hierarchicalTreeItemClassName}__subtree`,
+};
 
-  static displayName = 'HierarchicalTreeItem';
-
-  static deprecated_className = 'ui-hierarchicaltree__item';
-
-  static slotClassNames: HierarchicalTreeItemSlotClassNames = {
-    title: `${HierarchicalTreeItem.deprecated_className}__title`,
-    subtree: `${HierarchicalTreeItem.deprecated_className}__subtree`,
-  };
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
-    }),
-    items: customPropTypes.collectionShorthand,
-    index: PropTypes.number,
-    exclusive: PropTypes.bool,
-    onTitleClick: PropTypes.func,
-    open: PropTypes.bool,
-    renderItemTitle: PropTypes.func,
-    title: customPropTypes.itemShorthand,
-  };
-
-  static defaultProps = {
-    as: 'li',
-    accessibility: hierarchicalTreeItemBehavior,
-  };
-
-  itemRef = React.createRef<HTMLElement>();
-  treeRef = React.createRef<HTMLElement>();
-
-  actionHandlers = {
-    performClick: e => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      _.invoke(this.props, 'onTitleClick', e, this.props);
-    },
-    receiveFocus: e => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      // Focuses the title if the event comes from a child item.
-      if (this.eventComesFromChildItem(e)) {
-        this.itemRef.current.focus();
-      }
-    },
-    collapse: e => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      // Handle click on title if the keyboard event was dispatched on that title
-      if (!this.eventComesFromChildItem(e)) {
-        this.handleTitleClick(e);
-      }
-    },
-    expand: e => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      this.handleTitleClick(e);
-    },
-    focusSubtree: e => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const element = getFirstFocusable(this.treeRef.current, this.treeRef.current, true);
-      if (element) {
-        element.focus();
-      }
-    },
-  };
-
-  eventComesFromChildItem = e => {
-    return e.currentTarget !== e.target;
-  };
-
-  handleTitleClick = e => {
-    _.invoke(this.props, 'onTitleClick', e, this.props);
-  };
-
-  handleTitleOverrides = (predefinedProps: HierarchicalTreeTitleProps) => ({
-    onClick: (e, titleProps) => {
-      this.handleTitleClick(e);
-      _.invoke(predefinedProps, 'onClick', e, titleProps);
-    },
-  });
-
-  renderContent() {
-    const { items, title, renderItemTitle, open, exclusive } = this.props;
-    const hasSubtree = !_.isNil(items);
-
-    return (
-      <>
-        {HierarchicalTreeTitle.create(title, {
-          defaultProps: () => ({
-            className: HierarchicalTreeItem.slotClassNames.title,
-            open,
-            hasSubtree,
-            as: hasSubtree ? 'span' : 'a',
-          }),
-          render: renderItemTitle,
-          overrideProps: this.handleTitleOverrides,
-        })}
-        {hasSubtree && open && (
-          <Ref innerRef={this.treeRef}>
-            {HierarchicalTree.create(items, {
-              defaultProps: () => ({
-                accessibility: hierarchicalSubtreeBehavior,
-                className: HierarchicalTreeItem.slotClassNames.subtree,
-                exclusive,
-                renderItemTitle,
-              }),
-            })}
-          </Ref>
-        )}
-      </>
-    );
-  }
-
-  renderComponent({ ElementType, accessibility, classes, unhandledProps, styles, variables }) {
-    const { children } = this.props;
-
-    return (
-      <Ref innerRef={this.itemRef}>
-        <ElementType
-          className={classes.root}
-          {...accessibility.attributes.root}
-          {...rtlTextContainer.getAttributes({ forElements: [children] })}
-          {...unhandledProps}
-          {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-        >
-          {childrenExist(children) ? children : this.renderContent()}
-        </ElementType>
-      </Ref>
-    );
-  }
-}
-
-HierarchicalTreeItem.create = createShorthandFactory({
-  Component: HierarchicalTreeItem,
-  mappedProp: 'title',
-});
+export type HierarchicalTreeItemStyles = never;
 
 /**
  * A TreeItem renders an item of a Tree.
@@ -218,4 +88,167 @@ HierarchicalTreeItem.create = createShorthandFactory({
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-export default withSafeTypeForAs<typeof HierarchicalTreeItem, HierarchicalTreeItemProps, 'li'>(HierarchicalTreeItem);
+export const HierarchicalTreeItem: ComponentWithAs<'li', HierarchicalTreeItemProps> &
+  FluentComponentStaticProps<HierarchicalTreeItemProps> = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(HierarchicalTreeItem.displayName, context.telemetry);
+  setStart();
+  const { items, title, renderItemTitle, open, exclusive, children, className, design, styles, variables } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(HierarchicalTreeItem.handledProps, props);
+
+  const actionHandlers = {
+    performClick: e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      _.invoke(props, 'onTitleClick', e, props);
+    },
+    receiveFocus: e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Focuses the title if the event comes from a child item.
+      if (eventComesFromChildItem(e)) {
+        itemRef.current.focus();
+      }
+    },
+    collapse: e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Handle click on title if the keyboard event was dispatched on that title
+      if (!eventComesFromChildItem(e)) {
+        handleTitleClick(e);
+      }
+    },
+    expand: e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      handleTitleClick(e);
+    },
+    focusSubtree: e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const element = getFirstFocusable(treeRef.current, treeRef.current, true);
+      if (element) {
+        element.focus();
+      }
+    },
+  };
+  const getA11yProps = useAccessibility<HierarchicalTreeItemBehaviorProps>(props.accessibility, {
+    debugName: HierarchicalTreeItem.displayName,
+    actionHandlers,
+    mapPropsToBehavior: () => ({
+      hasItems: items && !!(items as HierarchicalTreeItemProps[]).length,
+      open,
+    }),
+    rtl: context.rtl,
+  });
+
+  const itemRef = React.useRef<HTMLElement>();
+  const treeRef = React.useRef<HTMLElement>();
+
+  const { classes } = useStyles<HierarchicalTreeItemStyles>(HierarchicalTreeItem.displayName, {
+    className: hierarchicalTreeItemClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const eventComesFromChildItem = e => {
+    return e.currentTarget !== e.target;
+  };
+
+  const handleTitleClick = e => {
+    _.invoke(props, 'onTitleClick', e, props);
+  };
+
+  const handleTitleOverrides = (predefinedProps: HierarchicalTreeTitleProps) => ({
+    onClick: (e, titleProps) => {
+      handleTitleClick(e);
+      _.invoke(predefinedProps, 'onClick', e, titleProps);
+    },
+  });
+
+  const renderContent = () => {
+    const hasSubtree = !_.isNil(items);
+
+    return (
+      <>
+        {HierarchicalTreeTitle.create(title, {
+          defaultProps: () => ({
+            open,
+            hasSubtree,
+            as: hasSubtree ? 'span' : 'a',
+          }),
+          render: renderItemTitle,
+          overrideProps: handleTitleOverrides,
+        })}
+        {hasSubtree && open && (
+          <Ref innerRef={treeRef}>
+            {HierarchicalTree.create(items, {
+              defaultProps: () =>
+                getA11yProps('item', {
+                  accessibility: hierarchicalSubtreeBehavior,
+                  className: hierarchicalTreeItemSlotClassNames.subtree,
+                  exclusive,
+                  renderItemTitle,
+                }),
+            })}
+          </Ref>
+        )}
+      </>
+    );
+  };
+
+  const element = (
+    <Ref innerRef={itemRef}>
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          ...unhandledProps,
+          ...rtlTextContainer.getAttributes({ forElements: [children] }),
+        })}
+      >
+        {childrenExist(children) ? children : renderContent()}
+      </ElementType>
+    </Ref>
+  );
+
+  setEnd();
+  return element;
+};
+
+HierarchicalTreeItem.displayName = 'HierarchicalTreeItem';
+
+HierarchicalTreeItem.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  items: customPropTypes.collectionShorthand,
+  index: PropTypes.number,
+  exclusive: PropTypes.bool,
+  onTitleClick: PropTypes.func,
+  open: PropTypes.bool,
+  renderItemTitle: PropTypes.func,
+  title: customPropTypes.itemShorthand,
+};
+
+HierarchicalTreeItem.defaultProps = {
+  as: 'li',
+  accessibility: hierarchicalTreeItemBehavior,
+};
+
+HierarchicalTreeItem.handledProps = Object.keys(HierarchicalTreeItem.propTypes) as any;
+
+HierarchicalTreeItem.create = createShorthandFactory({
+  Component: HierarchicalTreeItem,
+  mappedProp: 'title',
+});

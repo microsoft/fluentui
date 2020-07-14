@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix typing for subComponentStyles in StyleSet",
-  "packageName": "@uifabric/merge-styles",
-  "email": "xgao@microsoft.com",
-  "commit": "60647bcf49d8896f183df0a615c5e11cfb5bba3c",
-  "dependentChangeType": "patch",
-  "date": "2020-04-09T05:06:08.957Z"
-}

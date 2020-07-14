@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button, Dialog, Popup } from '@fluentui/react-northstar';
+import { Button, Dialog, Popup, dialogSlotClassNames } from '@fluentui/react-northstar';
 
 export const selectors = {
   dialogCancel: 'dialog-cancel',
-  dialogHeader: Dialog.slotClassNames.header,
-  dialogOverlay: Dialog.slotClassNames.overlay,
+  dialogHeader: dialogSlotClassNames.header,
+  dialogOverlay: dialogSlotClassNames.overlay,
   dialogTrigger: 'dialog-trigger',
   popupContent: 'popup-content',
   popupTrigger: 'popup-trigger',

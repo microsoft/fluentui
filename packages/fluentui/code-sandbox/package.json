@@ -1,14 +1,18 @@
 {
   "name": "@fluentui/code-sandbox",
   "description": "Fluent UI tools for CodeSandbox.",
-  "version": "0.48.0",
+  "version": "0.50.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/docs-components": "^0.48.0"
+    "@fluentui/docs-components": "^0.50.0",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/react-northstar": "^0.48.0"
+    "@fluentui/eslint-plugin": "^0.52.0",
+    "@fluentui/react-northstar": "^0.50.0",
+    "@uifabric/build": "^7.0.0",
+    "react": "16.8.6"
   },
   "files": [
     "dist"
@@ -19,7 +23,7 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "@fluentui/react-northstar": "0.47.0",
+    "@fluentui/react-northstar": "0.50.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
@@ -30,10 +34,8 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p ."
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts"

@@ -7,9 +7,10 @@ const handleChange = () => {
 
 const RadioGroupItemExample = () => (
   <RadioGroup
+    onCheckedValueChange={handleChange}
     items={[
-      { key: '1', label: 'Make your choice', value: '1', checkedChanged: handleChange },
-      { key: '2', label: 'Another option', value: '2', checkedChanged: handleChange },
+      { key: '1', label: 'Make your choice', value: '1' },
+      { key: '2', label: 'Another option', value: '2' },
     ]}
   />
 );

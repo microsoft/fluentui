@@ -1,7 +1,7 @@
-import { Slider } from '@fluentui/react-northstar';
+import { sliderSlotClassNames } from '@fluentui/react-northstar';
 
 const selectors = {
-  input: `.${Slider.slotClassNames.input}`,
+  input: `.${sliderSlotClassNames.input}`,
 };
 
 const focusSliderStep: ScreenerStep = (builder, keys) => builder.keys('body', keys.tab);

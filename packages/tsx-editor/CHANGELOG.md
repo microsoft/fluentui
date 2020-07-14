@@ -1,6 +1,62 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [0.11.108](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.108)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.99..@uifabric/tsx-editor_v0.11.108)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [0.11.95](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.95)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.94..@uifabric/tsx-editor_v0.11.95)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [0.11.94](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.94)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.67..@uifabric/tsx-editor_v0.11.94)
+
+### Patches
+
+- Add missing dep on example-data ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
+
+## [0.11.67](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.67)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.55..@uifabric/tsx-editor_v0.11.67)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [0.11.55](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.55)
+
+Tue, 21 Apr 2020 12:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.50..@uifabric/tsx-editor_v0.11.55)
+
+### Patches
+
+- Add useEditor=1 support to force editor on ([PR #12786](https://github.com/microsoft/fluentui/pull/12786) by elcraig@microsoft.com)
+
+## [0.11.50](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.50)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.49..@uifabric/tsx-editor_v0.11.50)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
 
 ## 0.11.41
 Wed, 25 Mar 2020 12:30:04 GMT

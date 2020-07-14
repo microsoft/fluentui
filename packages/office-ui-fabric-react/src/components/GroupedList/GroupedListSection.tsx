@@ -294,7 +294,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         }
       }
     } else {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation, react/no-string-refs
       const subGroup = this.refs['subGroup_' + String(0)] as GroupedListSection;
 
       if (subGroup) {
@@ -438,6 +438,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       onDragEnter: dragDropEvents!.onDragEnter,
       onDragLeave: dragDropEvents!.onDragLeave,
       onDragEnd: dragDropEvents!.onDragEnd,
+      onDragOver: dragDropEvents!.onDragOver,
     };
     return options as IDragDropOptions;
   };

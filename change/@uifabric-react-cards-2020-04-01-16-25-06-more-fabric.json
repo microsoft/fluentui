@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Readme: Remove graduation details; Fabric=>Fluent wording updates",
-  "packageName": "@uifabric/react-cards",
-  "email": "elcraig@microsoft.com",
-  "commit": "0aa8cea647b5c77acdc8858f9fb028d915ebea51",
-  "dependentChangeType": "patch",
-  "date": "2020-04-01T23:23:42.189Z"
-}

@@ -1,12 +1,10 @@
 import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fluentui/accessibility';
-import { useAccessibility, useAutoControlled, useTelemetry } from '@fluentui/react-bindings';
+import { useAccessibility, useAutoControlled, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -19,7 +17,7 @@ import {
   getOrGenerateIdFromShorthand,
   createShorthandFactory,
 } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
   ALIGNMENTS,
   POSITIONS,
@@ -29,12 +27,8 @@ import {
   Alignment,
   Position,
 } from '../../utils/positioner';
-import PortalInner from '../Portal/PortalInner';
-import TooltipContent, { TooltipContentProps } from './TooltipContent';
-
-export interface TooltipSlotClassNames {
-  content: string;
-}
+import { PortalInner } from '../Portal/PortalInner';
+import { TooltipContent, TooltipContentProps } from './TooltipContent';
 
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
@@ -82,6 +76,8 @@ export interface TooltipProps
   trigger?: JSX.Element;
 }
 
+export const tooltipClassName = 'ui-tooltip';
+
 /**
  * A Tooltip displays additional non-modal information on top of its target element.
  * Tooltip doesn't receive focus and cannot contain focusable elements.
@@ -89,12 +85,11 @@ export interface TooltipProps
  * @accessibility
  * Implements [ARIA Tooltip](https://www.w3.org/TR/wai-aria-practices-1.1/#tooltip) design pattern.
  */
-const Tooltip: React.FC<TooltipProps> &
+export const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
-    slotClassNames: TooltipSlotClassNames;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
   setStart();
 
@@ -254,12 +249,7 @@ const Tooltip: React.FC<TooltipProps> &
   return element;
 };
 
-Tooltip.deprecated_className = 'ui-tooltip';
 Tooltip.displayName = 'Tooltip';
-
-Tooltip.slotClassNames = {
-  content: `${Tooltip.deprecated_className}__content`,
-};
 
 Tooltip.defaultProps = {
   align: 'center',
@@ -307,5 +297,3 @@ Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;
 Tooltip.Content = TooltipContent;
 
 Tooltip.create = createShorthandFactory({ Component: Tooltip, mappedProp: 'content' });
-
-export default Tooltip;

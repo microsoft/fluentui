@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import tableRowBehavior from './tableRowBehavior';
+import { tableRowBehavior } from './tableRowBehavior';
 
 /**
  * @description
@@ -8,7 +8,7 @@ import tableRowBehavior from './tableRowBehavior';
  * Adds role='table'.
  * Applies 'tableRowBehavior' for 'row' child component.
  */
-const tableBehavior: Accessibility = props => ({
+export const tableBehavior: Accessibility<TableBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'table',
@@ -19,4 +19,4 @@ const tableBehavior: Accessibility = props => ({
   },
 });
 
-export default tableBehavior;
+export type TableBehaviorProps = never;

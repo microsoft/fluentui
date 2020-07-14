@@ -29,7 +29,7 @@ const ToolbarExampleShorthand = () => {
 
   return (
     <Toolbar
-      aria-label="Text editor"
+      aria-label="Default"
       items={[
         {
           icon: <BoldIcon {...{ outline: true }} />,

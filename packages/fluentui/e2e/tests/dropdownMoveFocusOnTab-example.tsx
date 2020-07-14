@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, DropdownItem } from '@fluentui/react-northstar';
+import { Dropdown, dropdownItemClassName, dropdownSlotClassNames } from '@fluentui/react-northstar';
 
 export const inputItems = [
   'Bruce Wayne',
@@ -16,8 +16,8 @@ export const inputItems = [
 export const selectors = {
   previousFocusableSibling: 'previous-focusable-sibling',
   nextFocusableSibling: 'next-focusable-sibling',
-  triggerButtonClass: Dropdown.slotClassNames.triggerButton,
-  listItem: DropdownItem.deprecated_className,
+  triggerButtonClass: dropdownSlotClassNames.triggerButton,
+  listItem: dropdownItemClassName,
 };
 
 const DropdownMoveFocusOnTabExample = () => (

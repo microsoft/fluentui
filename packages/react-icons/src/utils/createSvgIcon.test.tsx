@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { default as createSvgIcon } from './createSvgIcon';
+import createSvgIcon from './createSvgIcon';
 
 const testSvg = () => <svg />;
 
@@ -18,8 +18,27 @@ describe('createSvgIcon', () => {
   it('spreads unhandled props on the root element', () => {
     const TestIcon = createSvgIcon({ svg: testSvg, displayName: 'TestIcon' });
 
-    const wrapper = mount(<TestIcon id="test-id" />);
-    expect(wrapper.find('span').props().id).toEqual('test-id');
+    const wrapper = mount(<TestIcon id="test-id" data-bar="data-test-value" />);
+
+    expect(wrapper.find('span').props()).toEqual(
+      expect.objectContaining({
+        id: 'test-id',
+        'data-bar': 'data-test-value',
+      }),
+    );
+  });
+
+  it("merged user's className on the root element with the generated", () => {
+    const TestIcon = createSvgIcon({ svg: testSvg, displayName: 'TestIcon' });
+
+    const wrapper = mount(<TestIcon className="test-className" />);
+
+    expect(
+      wrapper
+        .find('span')
+        .props()
+        .className!.includes('test-className'),
+    ).toEqual(true);
   });
 
   it('provides all props on the svg function', () => {

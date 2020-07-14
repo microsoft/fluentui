@@ -2,13 +2,13 @@ import { ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { isConformant, implementsShorthandProp, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider, findIntrinsicElement } from 'test/utils';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
-import Attachment from 'src/components/Attachment/Attachment';
-import AttachmentAction from 'src/components/Attachment/AttachmentAction';
-import AttachmentDescription from 'src/components/Attachment/AttachmentDescription';
-import AttachmentHeader from 'src/components/Attachment/AttachmentHeader';
-import AttachmentIcon from 'src/components/Attachment/AttachmentIcon';
+import { Attachment, attachmentClassName } from 'src/components/Attachment/Attachment';
+import { AttachmentAction, attachmentActionClassName } from 'src/components/Attachment/AttachmentAction';
+import { AttachmentDescription } from 'src/components/Attachment/AttachmentDescription';
+import { AttachmentHeader } from 'src/components/Attachment/AttachmentHeader';
+import { AttachmentIcon } from 'src/components/Attachment/AttachmentIcon';
 
 const attachmentImplementsShorthandProp = implementsShorthandProp(Attachment);
 
@@ -42,7 +42,7 @@ describe('Attachment', () => {
       const onClickAttachment = jest.fn();
       const onClickButton = jest.fn();
       const attachment = getAttachment(onClickAttachment, onClickButton);
-      attachment.find(`.${Attachment.deprecated_className}`).simulate('keydown', { keyCode: keyboardKey.Enter });
+      attachment.find(`.${attachmentClassName}`).simulate('keydown', { keyCode: keyboardKey.Enter });
       expect(onClickAttachment).toHaveBeenCalledTimes(1);
     });
 
@@ -50,7 +50,7 @@ describe('Attachment', () => {
       const onClickAttachment = jest.fn();
       const onClickButton = jest.fn();
       const attachment = getAttachment(onClickAttachment, onClickButton);
-      findIntrinsicElement(attachment, `.${AttachmentAction.deprecated_className}`).simulate('keydown', {
+      findIntrinsicElement(attachment, `.${attachmentActionClassName}`).simulate('keydown', {
         keyCode: keyboardKey.Enter,
       });
       expect(onClickAttachment).not.toBeCalled();

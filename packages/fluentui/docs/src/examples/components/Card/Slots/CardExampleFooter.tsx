@@ -3,7 +3,7 @@ import * as React from 'react';
 import { StarIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const CardExampleFooter = () => (
-  <Card>
+  <Card aria-roledescription="card with action buttons">
     <Card.Footer fitted>
       <Flex space="between">
         <Button content="Action" />

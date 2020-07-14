@@ -162,6 +162,9 @@ exports[`Component Examples renders Stack.Horizontal.WrapNested.Example.tsx corr
             @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         data-is-focusable={true}
         id="Slider0"
         onKeyDown={[Function]}

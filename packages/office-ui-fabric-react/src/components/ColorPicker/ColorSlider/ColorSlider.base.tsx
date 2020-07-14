@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   classNamesFunction,
   initializeComponentRef,
-  EventGroup,
+  on,
   KeyCodes,
   getWindow,
   warnDeprecations,
@@ -26,14 +26,13 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     value: 0,
   };
 
-  private _events: EventGroup;
+  private _disposables: (() => void)[] = [];
   private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorSliderProps) {
     super(props);
 
     initializeComponentRef(this);
-    this._events = new EventGroup(this);
 
     warnDeprecations('ColorSlider', props, {
       thumbColor: 'styles.sliderThumb',
@@ -42,7 +41,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
       maxValue: 'type',
       minValue: 'type',
     });
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     if (this._type !== 'hue' && !(props.overlayColor || props.overlayStyle)) {
       warn(`ColorSlider: 'overlayColor' is required when 'type' is "alpha" or "transparency"`);
     }
@@ -65,14 +64,14 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
+    this._disposeListeners();
   }
 
   public render(): JSX.Element {
     const type = this._type;
     const maxValue = this._maxValue;
     const {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       overlayStyle,
       overlayColor,
       theme,
@@ -128,7 +127,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   private get _type(): IColorSliderProps['type'] {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { isAlpha, type = isAlpha ? 'alpha' : 'hue' } = this.props;
     return type;
   }
@@ -172,13 +171,17 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     const win = getWindow(this as any);
 
-    this._events.on(win, 'mousemove', this._onMouseMove, true);
-    this._events.on(win, 'mouseup', this._onMouseUp, true);
+    if (win) {
+      this._disposables.push(
+        on(win, 'mousemove', this._onMouseMove as (ev: MouseEvent) => void, true),
+        on(win, 'mouseup', this._disposeListeners, true),
+      );
+    }
 
     this._onMouseMove(ev);
   };
 
-  private _onMouseMove = (ev: React.MouseEvent): void => {
+  private _onMouseMove = (ev: MouseEvent | React.MouseEvent): void => {
     if (!this._root.current) {
       return;
     }
@@ -192,11 +195,12 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     this._updateValue(ev, newValue);
   };
 
-  private _onMouseUp = (): void => {
-    this._events.off();
+  private _disposeListeners = (): void => {
+    this._disposables.forEach(dispose => dispose());
+    this._disposables = [];
   };
 
-  private _updateValue(ev: React.MouseEvent | React.KeyboardEvent, newValue: number) {
+  private _updateValue(ev: MouseEvent | KeyboardEvent | React.MouseEvent | React.KeyboardEvent, newValue: number) {
     if (newValue === this.value) {
       return;
     }
@@ -204,7 +208,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const { onChange } = this.props;
 
     if (onChange) {
-      onChange(ev, newValue);
+      onChange(ev as React.MouseEvent | React.KeyboardEvent, newValue);
     }
 
     if (!ev.defaultPrevented) {

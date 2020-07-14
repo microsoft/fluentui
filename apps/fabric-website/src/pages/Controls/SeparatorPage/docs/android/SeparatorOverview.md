@@ -1,3 +1,8 @@
 A separator visually separates content into groups.
 
-<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/personalistview.png" alt="Example of a Separator on Android" style="width: 50%;" />
+<DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
+
+<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_separator_01_light.png?text=LightMode" />
+<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/updated/img_separator_01_dark.png?text=DarkMode" />
+
+</DisplayToggle>

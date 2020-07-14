@@ -42,11 +42,6 @@ exports[`DetailsHeader can render 1`] = `
   onMouseDownCapture={[Function]}
   onMouseMove={[Function]}
   role="row"
-  style={
-    Object {
-      "minWidth": 0,
-    }
-  }
 >
   <div
     aria-colindex={1}
@@ -95,9 +90,7 @@ exports[`DetailsHeader can render 1`] = `
     role="columnheader"
   >
     <span
-      className=
-          ms-DetailsHeader-checkTooltip
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         aria-checked={false}
@@ -966,11 +959,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   onMouseDownCapture={[Function]}
   onMouseMove={[Function]}
   role="row"
-  style={
-    Object {
-      "minWidth": 0,
-    }
-  }
 >
   <div
     aria-colindex={1}
@@ -1018,9 +1006,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     role="columnheader"
   >
     <span
-      className=
-          ms-DetailsHeader-checkTooltip
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         className=
@@ -1761,11 +1747,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   onMouseDownCapture={[Function]}
   onMouseMove={[Function]}
   role="row"
-  style={
-    Object {
-      "minWidth": 0,
-    }
-  }
 >
   <div
     aria-colindex={1}
@@ -1814,9 +1795,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="columnheader"
   >
     <span
-      className=
-          ms-DetailsHeader-checkTooltip
-
+      className="ms-DetailsHeader-checkTooltip"
     >
       <div
         aria-checked={false}

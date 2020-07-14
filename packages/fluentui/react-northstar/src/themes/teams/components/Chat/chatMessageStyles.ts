@@ -1,12 +1,12 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import * as _ from 'lodash';
-import { default as ChatMessage, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import { ChatMessageStylesProps, chatMessageSlotClassNames } from '../../../../components/Chat/ChatMessage';
 import { ChatMessageVariables } from './chatMessageVariables';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
+export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     display: 'inline-block',
     position: 'relative',
@@ -52,10 +52,9 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     // Otherwise, if the variable is not provided, the default appearance logic will be used for actions menu.
     ...(_.isNil(v.showActionMenu) && {
       ':hover': {
-        [`> .${ChatMessage.slotClassNames.actionMenu}`]: {
+        [`> .${chatMessageSlotClassNames.actionMenu}`]: {
           opacity: 1,
-          width: 'auto',
-
+          zIndex: v.overlayZIndex,
           '[data-popper-escaped]': {
             opacity: 0,
           },
@@ -86,13 +85,12 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     borderRadius: v.borderRadius,
     boxShadow: v.actionMenuBoxShadow,
     // we need higher zIndex for the action menu in order to be displayed above the focus border of the chat message
-    zIndex: v.overlayZIndex,
-
+    zIndex: p.focused ? v.overlayZIndex : -1,
     ...(_.isNil(v.showActionMenu) && {
       overflow: p.focused ? 'visible' : 'hidden',
       // hide and squash actions menu to prevent accidental hovers over its invisible area
       opacity: p.focused ? 1 : 0,
-      width: p.focused ? 'auto' : 0,
+      width: 'auto',
     }),
 
     ...(!_.isNil(v.showActionMenu) && {
@@ -169,5 +167,3 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     float: 'right',
   }),
 };
-
-export default chatMessageStyles;

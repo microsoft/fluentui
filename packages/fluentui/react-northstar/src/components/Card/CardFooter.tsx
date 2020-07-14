@@ -1,10 +1,16 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 
 export interface CardFooterProps extends UIComponentProps, ChildrenComponentProps {
@@ -18,9 +24,14 @@ export interface CardFooterProps extends UIComponentProps, ChildrenComponentProp
 }
 
 export type CardFooterStylesProps = Pick<CardFooterProps, 'fitted'>;
+export const cardFooterClassName = 'ui-card__footer';
 
-const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticProps<CardFooterProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A CardFooter is used to display data in Card component footer
+ */
+export const CardFooter: ComponentWithAs<'div', CardFooterProps> &
+  FluentComponentStaticProps<CardFooterProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardFooter.displayName, context.telemetry);
   setStart();
 
@@ -33,7 +44,7 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
   });
 
   const { classes } = useStyles<CardFooterStylesProps>(CardFooter.displayName, {
-    className: CardFooter.deprecated_className,
+    className: cardFooterClassName,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +70,6 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
 };
 
 CardFooter.displayName = 'CardFooter';
-CardFooter.deprecated_className = 'ui-card__footer';
 
 CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),
@@ -69,8 +79,3 @@ CardFooter.propTypes = {
 CardFooter.handledProps = Object.keys(CardFooter.propTypes) as any;
 
 CardFooter.create = createShorthandFactory({ Component: CardFooter });
-
-/**
- * A CardFooter is used to display data in Card component footer
- */
-export default withSafeTypeForAs<typeof CardFooter, CardFooterProps, 'div'>(CardFooter);

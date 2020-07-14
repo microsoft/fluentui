@@ -102,7 +102,7 @@ const SelectableTable = () => {
                     onClick={(event, props) =>
                       dispatch({ type: 'TOGGLE_ITEM', checked: props.checked, itemKey: row.key })
                     }
-                  ></Checkbox>
+                  />
                 }
               />
               {row.items.map(item => (

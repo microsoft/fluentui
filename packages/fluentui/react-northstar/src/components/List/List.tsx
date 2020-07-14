@@ -1,9 +1,11 @@
 import { Accessibility, listBehavior, ListBehaviorProps } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useAutoControlled,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -11,18 +13,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import {
-  WithAsProp,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  ShorthandCollection,
-  ReactChildren,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
+import { ComponentEventHandler, ShorthandCollection, ReactChildren, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   UIComponentProps,
@@ -32,7 +24,7 @@ import {
   createShorthandFactory,
 } from '../../utils';
 import { ListContextProvider, ListContextValue } from './listContext';
-import ListItem, { ListItemProps } from './ListItem';
+import { ListItem, ListItemProps } from './ListItem';
 
 export interface ListProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -77,12 +69,21 @@ export interface ListProps extends UIComponentProps, ChildrenComponentProps {
 }
 
 export type ListStylesProps = Pick<ListProps, 'debug' | 'horizontal'> & { isListTag: boolean };
+export const listClassName = 'ui-list';
 
-const List: React.FC<WithAsProp<ListProps>> &
+/**
+ * A List displays a group of related sequential items.
+ *
+ * @accessibility
+ * List may follow one of the following accessibility semantics:
+ * - Static non-navigable list. Implements [ARIA list](https://www.w3.org/TR/wai-aria-1.1/#list) role.
+ * - Selectable list: allows the user to select item from a list of choices. Implements [ARIA Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox) design pattern.
+ */
+export const List: ComponentWithAs<'ul', ListProps> &
   FluentComponentStaticProps<ListProps> & {
     Item: typeof ListItem;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(List.displayName, context.telemetry);
   setStart();
 
@@ -119,7 +120,7 @@ const List: React.FC<WithAsProp<ListProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ListStylesProps>(List.displayName, {
-    className: List.deprecated_className,
+    className: listClassName,
     mapPropsToStyles: () => ({ isListTag: as === 'ol' || as === 'ul', debug, horizontal }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -134,7 +135,7 @@ const List: React.FC<WithAsProp<ListProps>> &
   const hasContent = childrenExist(children) || (items && items.length > 0);
   const onItemClick = React.useCallback(
     (e, itemIndex) => {
-      if (selectable) {
+      if (latestProps.current.selectable) {
         setSelectedIndex(itemIndex);
         _.invoke(latestProps.current, 'onSelectedIndexChange', e, {
           ...latestProps.current,
@@ -175,7 +176,6 @@ const List: React.FC<WithAsProp<ListProps>> &
   return element;
 };
 
-List.deprecated_className = 'ui-list';
 List.displayName = 'List';
 
 List.defaultProps = {
@@ -204,13 +204,3 @@ List.handledProps = Object.keys(List.propTypes) as any;
 List.Item = ListItem;
 
 List.create = createShorthandFactory({ Component: List, mappedArrayProp: 'items' });
-
-/**
- * A List displays a group of related sequential items.
- *
- * @accessibility
- * List may follow one of the following accessibility semantics:
- * - Static non-navigable list. Implements [ARIA list](https://www.w3.org/TR/wai-aria-1.1/#list) role.
- * - Selectable list: allows the user to select item from a list of choices. Implements [ARIA Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox) design pattern.
- */
-export default withSafeTypeForAs<typeof List, ListProps, 'ul'>(List);

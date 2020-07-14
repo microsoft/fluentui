@@ -1,15 +1,16 @@
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
-import treeTitleBehavior from './treeTitleBehavior';
+import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
 
 /**
  * @description
  * Adds role 'treeitem' if the title is a leaf node inside the tree.
  */
-const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehavior> = props => {
+export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
-  return _.merge(behavior, {
+
+  const definition = _.merge(behavior, {
     attributes: {
       root: {
         ...(!props.hasSubtree && {
@@ -18,11 +19,11 @@ const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehavior> = props
       },
     },
   });
-};
 
-export default treeTitleAsListItemTitleBehavior;
+  if (process.env.NODE_ENV !== 'production' && props.hasSubtree) {
+    // Override the default trigger's accessibility schema class.
+    definition.attributes.root['data-aa-class'] = 'TreeTitleList';
+  }
 
-type TreeTitleBehavior = {
-  /** Indicates whether `TreeTitle` has a subtree. */
-  hasSubtree?: boolean;
+  return definition;
 };

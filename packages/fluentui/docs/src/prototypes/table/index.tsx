@@ -6,9 +6,8 @@ import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 import AdvancedTable, { stringCellComparator } from './AdvancedTable';
 import InteractiveTable from './InteractiveTable';
 import ResponsiveTableContainer from './ResponsiveTableContainer';
-import { MoreIcon } from '@fluentui/react-icons-northstar';
+import { MoreIcon, BookmarkIcon } from '@fluentui/react-icons-northstar';
 import SelectableTable from './SelectableTable';
-import { BookmarkIcon } from '@fluentui/react-icons-northstar';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);

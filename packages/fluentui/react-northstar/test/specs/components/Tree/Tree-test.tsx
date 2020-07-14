@@ -1,11 +1,11 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
-import Tree from 'src/components/Tree/Tree';
-import TreeTitle from 'src/components/Tree/TreeTitle';
-import TreeItem from 'src/components/Tree/TreeItem';
+import { Tree } from 'src/components/Tree/Tree';
+import { treeTitleClassName } from 'src/components/Tree/TreeTitle';
+import { treeItemClassName } from 'src/components/Tree/TreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 
 const items = [
@@ -56,12 +56,13 @@ const items = [
 ];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${TreeTitle.deprecated_className}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${treeTitleClassName}`).filterWhere(n => typeof n.type() === 'string');
 const getItems = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${TreeItem.deprecated_className}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${treeItemClassName}`).filterWhere(n => typeof n.type() === 'string');
 
 const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
   const titles = getTitles(wrapper);
+
   expect(titles.length).toEqual(expected.length);
 
   expected.forEach((expectedTitle, index) => {
@@ -70,7 +71,7 @@ const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
 };
 
 describe('Tree', () => {
-  isConformant(Tree, { autoControlledProps: ['activeItemIds'] });
+  isConformant(Tree, { constructorName: 'Tree', autoControlledProps: ['activeItemIds', 'selectedItemIds'] });
 
   describe('activeItemIds', () => {
     it('should contain index of item open at click', () => {
@@ -113,7 +114,7 @@ describe('Tree', () => {
     it('should contain index of item open by ArrowRight', () => {
       const wrapper = mountWithProvider(<Tree items={items} />);
 
-      getTitles(wrapper)
+      getItems(wrapper)
         .at(0) // title 1
         .simulate('keydown', { keyCode: keyboardKey.ArrowRight });
       checkOpenTitles(wrapper, ['1', '11', '12', '2', '3']);

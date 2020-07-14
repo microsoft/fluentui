@@ -92,6 +92,7 @@ export const DatePickerWeekNumbersExample: React.FC = () => {
           },
         ]}
         selectedKey={DayOfWeek[firstDayOfWeek!]}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onDropdownChange}
       />
     </div>

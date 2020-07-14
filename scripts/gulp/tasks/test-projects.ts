@@ -69,10 +69,16 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
     '@fluentui/perf',
     '@fluentui/perf-test',
   ];
+
+  // other local packages that we depend on, but are not inside packages/fluentui
+  const whitelistedPkgs = ['@fluentui/react-compose'];
+
   for (const [pkg, pkgPath] of Object.entries(projectPackages)) {
     // Don't pack fabric packages or dev tools
     if (path.basename(path.dirname(pkgPath)) !== 'fluentui' || excludedPkgs.includes(pkg)) {
-      delete projectPackages[pkg];
+      if (!whitelistedPkgs.includes(pkg)) {
+        delete projectPackages[pkg];
+      }
     }
   }
 
@@ -194,7 +200,7 @@ task('test:projects:rollup', async () => {
   logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
 
   const dependencies = [
-    'rollup',
+    'rollup@2.7.3',
     'rollup-plugin-replace',
     'rollup-plugin-commonjs',
     'rollup-plugin-node-resolve',
@@ -259,7 +265,9 @@ task('test:projects:typings', async () => {
 
   logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
 
-  const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', 'typescript'].join(' ');
+  // Install dependencies, ensuring we specify the same TS version as our projects use
+  const tsVersion = fs.readJSONSync(paths.base('scripts', 'package.json')).dependencies.typescript;
+  const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', `typescript@${tsVersion}`].join(' ');
   await sh(`yarn add ${dependencies}`, tmpDirectory);
   logger(`✔️ Dependencies were installed`);
 

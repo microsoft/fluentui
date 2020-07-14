@@ -1,8 +1,11 @@
+import { mergeStyles } from '@fluentui/styles';
+import { ComponentWithAs, ComposePreparedOptions, ShorthandConfig } from '@fluentui/react-bindings';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
+import * as ReactIs from 'react-is';
+
 import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../types';
-import { mergeStyles } from '@fluentui/styles';
 
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';
@@ -64,12 +67,12 @@ export function createShorthandFactory<TInstance extends React.Component, P>(con
   allowsJSX?: boolean;
 }): ShorthandFactory<P>;
 export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayProp, allowsJSX }) {
-  if (typeof Component !== 'function' && typeof Component !== 'string') {
+  if (!ReactIs.isValidElementType(Component)) {
     throw new Error('createShorthandFactory() Component must be a string or function.');
   }
 
   return (value, options: CreateShorthandOptions<P>) =>
-    createShorthand({
+    createShorthandInternal({
       allowsJSX,
       Component,
       mappedProp,
@@ -83,7 +86,7 @@ export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayPr
 // Factories
 // ============================================================
 
-export function createShorthand<P>({
+export function createShorthandInternal<P>({
   Component,
   mappedProp,
   mappedArrayProp,
@@ -98,9 +101,10 @@ export function createShorthand<P>({
   value?: ShorthandValue<P>;
   options?: CreateShorthandOptions<P>;
 }) {
-  if (typeof Component !== 'function' && typeof Component !== 'string') {
+  if (!ReactIs.isValidElementType(Component)) {
     throw new Error('createShorthand() Component must be a string or function.');
   }
+
   // short circuit noop values
   const valIsNoop = _.isNil(value) || typeof value === 'boolean';
   if (valIsNoop && !options.render) return null;
@@ -140,7 +144,7 @@ export function createShorthand<P>({
   // ----------------------------------------
   // Build up props
   // ----------------------------------------
-  const defaultProps = options.defaultProps ? options.defaultProps() : ({} as Props<P>);
+  const defaultProps = options.defaultProps ? options.defaultProps() || ({} as Props<P>) : ({} as Props<P>);
 
   // User's props
   const usersProps =
@@ -233,4 +237,50 @@ export function createShorthand<P>({
   }
 
   return null;
+}
+
+export function createShorthand<TFunctionComponent extends React.FunctionComponent>(
+  Component: TFunctionComponent & {
+    shorthandConfig?: ShorthandConfig<PropsOf<TFunctionComponent>>;
+    fluentComposeConfig?: ComposePreparedOptions<PropsOf<TFunctionComponent>>;
+  },
+  value?: ShorthandValue<PropsOf<TFunctionComponent>>,
+  options?: CreateShorthandOptions<PropsOf<TFunctionComponent>>,
+): React.ReactElement;
+export function createShorthand<TInstance extends React.Component>(
+  Component: { new (...args: any[]): TInstance } & {
+    shorthandConfig?: ShorthandConfig<PropsOf<TInstance>>;
+    fluentComposeConfig?: ComposePreparedOptions<PropsOf<TInstance>>;
+  },
+  value?: ShorthandValue<PropsOf<TInstance>>,
+  options?: CreateShorthandOptions<PropsOf<TInstance>>,
+): React.ReactElement;
+export function createShorthand<E extends keyof JSX.IntrinsicElements, P>(
+  Component: ComponentWithAs<E, P> & {
+    shorthandConfig?: ShorthandConfig<P>;
+    fluentComposeConfig?: ComposePreparedOptions<P>;
+  },
+  value?: ShorthandValue<P>,
+  options?: CreateShorthandOptions<P>,
+): React.ReactElement;
+export function createShorthand<TElementType extends React.ElementType>(
+  Component: TElementType & {
+    shorthandConfig?: ShorthandConfig<PropsOf<TElementType>>;
+    fluentComposeConfig?: ComposePreparedOptions<PropsOf<TElementType>>;
+  },
+  value?: ShorthandValue<PropsOf<TElementType>>,
+  options?: CreateShorthandOptions<PropsOf<TElementType>>,
+): React.ReactElement;
+export function createShorthand<P>(Component, value?, options?) {
+  const { mappedProp = 'children', allowsJSX = true, mappedArrayProp } =
+    Component.shorthandConfig || Component.fluentComposeConfig?.shorthandConfig || {};
+
+  return createShorthandInternal<P>({
+    Component,
+    mappedProp,
+    allowsJSX,
+    mappedArrayProp,
+    value,
+    options: options || {},
+  });
 }

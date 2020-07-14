@@ -1,14 +1,11 @@
-import { ComponentSlotClasses, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { ComponentSlotClasses, useStyles, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ComponentSlotStylesResolved, mergeStyles } from '@fluentui/styles';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
-import { ProviderContextPrepared } from '../../types';
 
 type ChildrenFunction = (params: { styles: ComponentSlotStylesPrepared; classes: string }) => React.ReactElement;
 
@@ -58,7 +55,7 @@ const applyStyles = (
   // if element is DOM element
   if (typeof element.type === 'string') {
     return React.cloneElement(element, {
-      className: cx(element.props.deprecated_className, classes.root),
+      className: cx(element.props.className, classes.root),
     });
   }
 
@@ -68,18 +65,20 @@ const applyStyles = (
   });
 };
 
+export const flexItemClassName = 'ui-flex__item';
+
 /**
  * A FlexItem is a layout component that customizes alignment of Flex child.
  */
-const FlexItem: React.FC<FlexItemProps> & { deprecated_className: string; __isFlexItem: boolean } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
   setStart();
 
   const { align, children, className, design, grow, flexDirection, push, shrink, size, styles, variables } = props;
 
   const { classes, styles: resolvedStyles } = useStyles<FlexItemStylesProps>(FlexItem.displayName, {
-    className: FlexItem.deprecated_className,
+    className: flexItemClassName,
     mapPropsToStyles: () => ({
       align,
       grow,
@@ -116,7 +115,6 @@ const FlexItem: React.FC<FlexItemProps> & { deprecated_className: string; __isFl
   return element;
 };
 
-FlexItem.deprecated_className = 'ui-flex__item';
 FlexItem.displayName = 'FlexItem';
 
 FlexItem.propTypes = {
@@ -146,5 +144,3 @@ FlexItem.propTypes = {
 // However, there are  concerns related to browser compatibility if Symbols will be used.
 // Completely alternative approach - check class name of React element (and generalize this logic).
 FlexItem.__isFlexItem = true;
-
-export default FlexItem;

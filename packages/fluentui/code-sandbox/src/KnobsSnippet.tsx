@@ -10,9 +10,11 @@ const knobsSnippetStyles = {
   padding: `5px 10px`,
 };
 
-const KnobsSnippet = createComponent({
+export const KnobsSnippet = createComponent({
   displayName: 'KnobsSnippet',
   render: ({ children, config }) => {
+    // createComponent() is not compatible with hooks rules
+    // eslint-disable-next-line
     const knobs = useKnobValues();
     const values = _.fromPairs(knobs.map(knob => [knob.name, knob.value]));
 
@@ -39,5 +41,3 @@ const KnobsSnippet = createComponent({
 KnobsSnippet.defaultProps = {
   styles: knobsSnippetStyles,
 };
-
-export default KnobsSnippet;

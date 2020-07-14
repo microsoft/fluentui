@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-
+import { mount } from 'enzyme';
 import { resetIds } from '../../Utilities';
 
-import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from './index';
+import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize, IPivot } from './index';
 
 describe('Pivot', () => {
   beforeEach(() => {
@@ -20,6 +20,30 @@ describe('Pivot', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('can be focused', () => {
+    const pivotRef = React.createRef<IPivot>();
+
+    mount(
+      <Pivot componentRef={pivotRef}>
+        <PivotItem headerText="Link 1" />
+        <PivotItem headerText="Link 2" />
+      </Pivot>,
+    );
+
+    // Instruct FocusZone to treat all elements as visible.
+    (HTMLElement.prototype as any).isVisible = true;
+
+    try {
+      expect(pivotRef.current).toBeTruthy();
+
+      pivotRef.current!.focus();
+      expect(document.activeElement).toBeTruthy();
+      expect(document.activeElement!.textContent?.trim()).toEqual('Link 1');
+    } finally {
+      delete (HTMLElement.prototype as any).isVisible;
+    }
   });
 
   it('supports JSX expressions', () => {

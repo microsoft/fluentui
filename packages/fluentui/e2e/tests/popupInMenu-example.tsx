@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { Menu, MenuItem, Popup, Button, ShorthandRenderFunction, MenuItemProps } from '@fluentui/react-northstar';
+import {
+  Menu,
+  MenuItem,
+  Popup,
+  Button,
+  ShorthandRenderFunction,
+  MenuItemProps,
+  popupContentClassName,
+} from '@fluentui/react-northstar';
 
 export const selectors = {
   menuId: 'menu',
   menuItemId: index => `menu-item-${index}`,
-  popupContentClass: Popup.slotClassNames.content,
+  popupContentClass: popupContentClassName,
   popupContentId: index => `popup-content-${index}`,
 };
 

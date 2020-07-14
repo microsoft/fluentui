@@ -2,6 +2,8 @@ import * as React from 'react';
 import PerfChartTooltip from './PerfChartTooltip';
 import { PerfData } from './PerfDataContext';
 import Chart, { ChartDataSeries } from './Chart';
+// This is a dependency of react-vis which we don't want to add separately
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { curveBundle } from 'd3-shape';
 
 export type PerfChartProps = { perfData: PerfData; filter: { extremes: boolean } };

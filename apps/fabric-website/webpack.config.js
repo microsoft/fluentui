@@ -52,6 +52,7 @@ module.exports = function(env, argv) {
         },
       },
     }),
-    /* only production */ isProductionArg,
+    // always build the dev bundle too
+    /* only production */ false,
   );
 };

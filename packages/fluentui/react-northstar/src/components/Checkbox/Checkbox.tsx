@@ -1,9 +1,11 @@
 import { Accessibility, checkboxBehavior, CheckboxBehaviorProps } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStateManager,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -12,20 +14,11 @@ import { createCheckboxManager } from '@fluentui/state';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { createShorthandFactory, ChildrenComponentProps, commonPropTypes, UIComponentProps } from '../../utils';
-import {
-  ComponentEventHandler,
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Text, { TextProps } from '../Text/Text';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 
 export interface CheckboxSlotClassNames {
@@ -74,12 +67,20 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
 }
 
 export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'>;
+export const checkboxClassName = 'ui-checkbox';
+export const checkboxSlotClassNames: CheckboxSlotClassNames = {
+  label: `${checkboxClassName}__label`,
+  indicator: `${checkboxClassName}__indicator`,
+};
 
-const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
-  FluentComponentStaticProps<CheckboxProps> & {
-    slotClassNames: CheckboxSlotClassNames;
-  } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A Checkbox allows a user to make a choice between two mutually exclusive options.
+ *
+ * @accessibility
+ * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
+ */
+export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
 
@@ -116,7 +117,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
-    className: Checkbox.deprecated_className,
+    className: checkboxClassName,
     mapPropsToStyles: () => ({
       checked: state.checked,
       disabled,
@@ -160,7 +161,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
     defaultProps: () =>
       getA11Props('label', {
         styles: resolvedStyles.label,
-        className: Checkbox.slotClassNames.label,
+        className: checkboxSlotClassNames.label,
       }),
   });
 
@@ -177,7 +178,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
       {Box.create(indicator, {
         defaultProps: () =>
           getA11Props('indicator', {
-            className: Checkbox.slotClassNames.indicator,
+            className: checkboxSlotClassNames.indicator,
             styles: toggle ? resolvedStyles.toggle : resolvedStyles.checkbox,
           }),
       })}
@@ -190,7 +191,6 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
 };
 
 Checkbox.displayName = 'Checkbox';
-Checkbox.deprecated_className = 'ui-checkbox';
 
 Checkbox.defaultProps = {
   accessibility: checkboxBehavior,
@@ -213,20 +213,7 @@ Checkbox.propTypes = {
 };
 Checkbox.handledProps = Object.keys(Checkbox.propTypes) as any;
 
-Checkbox.slotClassNames = {
-  label: `${Checkbox.deprecated_className}__label`,
-  indicator: `${Checkbox.deprecated_className}__indicator`,
-};
-
 Checkbox.create = createShorthandFactory({
   Component: Checkbox,
   mappedProp: 'label',
 });
-
-/**
- * A Checkbox allows a user to make a choice between two mutually exclusive options.
- *
- * @accessibility
- * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
- */
-export default withSafeTypeForAs<typeof Checkbox, CheckboxProps>(Checkbox);

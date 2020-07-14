@@ -31,7 +31,7 @@ export interface IDropdown {
  */
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
   /**
-   * Input placeholder text. Displayed until option is selected.
+   * Input placeholder text. Displayed until an option is selected.
    * @deprecated Use `placeholder`
    */
   placeHolder?: string;
@@ -43,7 +43,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   options: IDropdownOption[];
 
   /**
-   * Callback issued when the selected option changes.
+   * Callback for when the selected option changes.
    */
   onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
 
@@ -53,28 +53,28 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
-   * Custom render function for the label.
+   * Custom renderer for the label.
    */
   onRenderLabel?: IRenderFunction<IDropdownProps>;
 
   /**
-   * Optional custom renderer for placeholder text
+   * Custom renderer for placeholder text
    */
   onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
 
   /**
-   * Optional custom renderer for placeholder text
+   * Custom renderer for placeholder text
    * @deprecated Use `onRenderPlaceholder`
    */
   onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
 
   /**
-   * Optional custom renderer for selected option displayed in input
+   * Custom renderer for selected option displayed in input
    */
   onRenderTitle?: IRenderFunction<IDropdownOption[]>;
 
   /**
-   * Optional custom renderer for chevron icon
+   * Custom renderer for chevron icon
    */
   onRenderCaretDown?: IRenderFunction<IDropdownProps>;
 
@@ -85,37 +85,35 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   dropdownWidth?: number;
 
   /**
-   * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
-   * ResponsiveMode.Large would, for instance, disable the behavior where Dropdown options
-   * get rendered into a Panel while ResponsiveMode.Small would result in the Dropdown
-   * options always getting rendered in a Panel.
+   * By default, the dropdown will render the standard way for screen sizes `large` and above, or
+   * in a panel on `small` and `medium` screens. Manually set this prop to override this behavior.
    */
   responsiveMode?: ResponsiveMode;
 
   /**
-   * Keys that will be initially used to set selected items. This prop is used for `multiSelect`
-   * scenarios. In other cases, `defaultSelectedKey` should be used.
+   * Keys that will be initially used to set selected items. This prop is only used when `multiSelect`
+   * is true (use `defaultSelectedKey` for single select). Mutually exclusive with `selectedKeys`.
    */
   defaultSelectedKeys?: string[] | number[];
 
   /**
-   * Keys of the selected items. If you provide this, you must maintain selection
-   * state by observing onChange events and passing a new value in when changed.
-   * Passing null in will clear the selection.
+   * Keys of the selected items, only used when `multiSelect` is true (use `selectedKey` for single
+   * select). If you provide this, you must maintain selection state by observing onChange events
+   * and passing a new prop value in when changed. Passing null will clear the selection.
+   * Mutually exclusive with `defaultSelectedKeys`.
    */
   selectedKeys?: string[] | number[] | null;
 
   /**
-   * When multiple items are selected, this still will be used to separate values in
-   * the dropdown title.
+   * When multiple items are selected, this will be used to separate values in the dropdown input.
    *
    * @defaultvalue ", "
    */
   multiSelectDelimiter?: string;
 
   /**
-   * Optional preference to have onChanged still be called when an already selected item is
-   * clicked in single select mode.  Default to false
+   * If true, `onChange` will still be called when an already-selected item is clicked again in
+   * single select mode. (Normally it would not be called in this case.)
    */
   notifyOnReselect?: boolean;
 
@@ -174,24 +172,24 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
   isOpen: boolean;
 
   /**
-   * Whether the dropdown is presently rendering a placeholder.
+   * Whether the dropdown is currently rendering placeholder text instead of a selected option.
    */
   isRenderingPlaceholder: boolean;
 
   /**
-   * Optional custom className for the panel that displays in small viewports, hosting the Dropdown options.
+   * Custom className for the panel that displays in small viewports, hosting the Dropdown options.
    * This is primarily provided for backwards compatibility.
    */
   panelClassName?: string;
 
   /**
-   * Optional custom className for the callout that displays in larger viewports, hosting the Dropdown options.
+   * Custom className for the callout that displays in larger viewports, hosting the Dropdown options.
    * This is primarily provided for backwards compatibility.
    */
   calloutClassName?: string;
 
   /**
-   * Prop to notify on what edge the dropdown callout was positioned respective to the title.
+   * Which edge the dropdown callout was positioned on relative to the title.
    */
   calloutRenderEdge?: RectangleEdge;
 };

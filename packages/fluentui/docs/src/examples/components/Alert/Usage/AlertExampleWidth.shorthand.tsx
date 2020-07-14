@@ -15,7 +15,7 @@ const AlertExampleWidth = () => {
   return (
     <div style={{ width }}>
       <Alert
-        actions={[{ content: 'Join and add the room', primary: true }]}
+        actions={[{ content: 'Join and add the room', primary: true, key: 'content-1' }]}
         header="There is a conference room close to you."
         dismissible
         icon={<ScreencastIcon />}

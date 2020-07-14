@@ -18,11 +18,15 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         backgroundColor: extendedSemanticColors.controlAccent,
       },
       disabled && {
-        backgroundColor: extendedSemanticColors.controlOutlineDisabled,
+        backgroundColor: BaseColors.GRAY_C8C6C4,
       },
       !checked &&
         disabled && {
           backgroundColor: semanticColors.disabledBackground,
+        },
+      disabled &&
+        !checked && {
+          backgroundColor: extendedSemanticColors.toggleDisabledBackground,
         },
     ],
     // toggle circle
@@ -31,16 +35,23 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         backgroundColor: extendedSemanticColors.controlOutlineHovered,
       },
       disabled && {
-        backgroundColor: semanticColors.disabledBodyText,
+        backgroundColor: extendedSemanticColors.buttonBackgroundHovered,
+      },
+      !checked && {
+        backgroundColor: extendedSemanticColors.controlOutlineHovered,
       },
       checked &&
         !disabled && {
           backgroundColor: BaseColors.WHITE,
         },
+      disabled &&
+        !checked && {
+          backgroundColor: BaseColors.GRAY_C8C6C4,
+        },
     ],
     root: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: FontSizes.size13,
         selectors: {
           '.ms-Toggle-stateText': {
             color: semanticColors.bodyText,
