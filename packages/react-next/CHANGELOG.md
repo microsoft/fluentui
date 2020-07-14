@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.59)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.57..@fluentui/react-next_v8.0.0-alpha.59)
+
+### Changes
+
+- Pivot: Implementing overflow by moving tabs into a menu when they don't fit onscreen. ([PR #13631](https://github.com/microsoft/fluentui/pull/13631) by behowell@microsoft.com)
+- Remove KeytipData for Checkbox, Toggle, and Link. ([PR #13742](https://github.com/microsoft/fluentui/pull/13742) by xgao@microsoft.com)
+- Replace tslint with eslint ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
 
 ## [8.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.57)
 

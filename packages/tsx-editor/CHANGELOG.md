@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 17 Jun 2020 12:37:16 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.108](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.108)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.99..@uifabric/tsx-editor_v0.11.108)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
 
 ## [0.11.95](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.95)
 

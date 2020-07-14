@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.24.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.1)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.0..@uifabric/utilities_v7.24.1)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
 
 ## [7.24.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.0)
 
