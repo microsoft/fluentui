@@ -113,6 +113,8 @@ export type MenuButtonSlotProps = SlotProps<MenuButtonSlots, MenuButtonProps, Re
 // @public (undocumented)
 export interface MenuButtonSlots extends BaseSlots {
     // (undocumented)
+    loader: React.ElementType;
+    // (undocumented)
     menu: React.ElementType;
     // (undocumented)
     menuIcon: React.ElementType;
@@ -135,31 +137,33 @@ export const SplitButton: import("@fluentui/react-compose").ComponentWithAs<"but
 export const SplitButtonBase: import("@fluentui/react-compose").ComponentWithAs<"button", SplitButtonProps>;
 
 // @public (undocumented)
-export interface SplitButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
-    defaultExpanded?: boolean;
-    expanded?: boolean;
-    menu?: SlotProp<IContextualMenuProps>;
-    menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
-    onMenuDismiss?: () => void;
+export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
+    button?: SlotProp<React.HTMLAttributes<HTMLButtonElement>>;
+    divider?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
+    menuButton?: SlotProp<React.HTMLAttributes<HTMLButtonElement>>;
 }
 
 // @public (undocumented)
 export type SplitButtonSlotProps = SlotProps<SplitButtonSlots, SplitButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
-export interface SplitButtonSlots extends BaseSlots {
+export interface SplitButtonSlots extends ButtonSlots, MenuButtonSlots {
     // (undocumented)
-    menu: React.ElementType;
+    button: React.ElementType;
     // (undocumented)
-    menuIcon: React.ElementType;
+    divider: React.ElementType;
+    // (undocumented)
+    menuButton: React.ElementType;
 }
 
 // @public (undocumented)
-export interface SplitButtonState extends SplitButtonProps, Omit<ButtonState, 'icon' | 'iconPosition' | 'loader'> {
+export interface SplitButtonState extends SplitButtonProps, MenuButtonState {
+    // (undocumented)
+    menuButtonRef?: React.RefObject<HTMLButtonElement>;
 }
 
 // @public (undocumented)
-export type SplitButtonTokens = ButtonTokens;
+export type SplitButtonTokens = MenuButtonTokens;
 
 // @public (undocumented)
 export const ToggleButton: import("@fluentui/react-compose").ComponentWithAs<"button", ToggleButtonProps>;

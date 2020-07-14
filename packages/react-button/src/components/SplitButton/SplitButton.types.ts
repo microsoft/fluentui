@@ -1,44 +1,33 @@
 import * as React from 'react';
-import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
-import { IContextualMenuProps } from 'office-ui-fabric-react';
-import { ButtonProps, ButtonState, ButtonTokens } from '../Button/Button.types';
+import { SlotProp, SlotProps } from '@fluentui/react-compose';
+import { ButtonProps, ButtonSlots } from '../Button/Button.types';
+import { MenuButtonProps, MenuButtonSlots, MenuButtonState, MenuButtonTokens } from '../MenuButton/MenuButton.types';
 
-export interface SplitButtonProps extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'loader'> {
+export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
   /**
-   * Menu that is displayed when the button is pressed.
+   * Button to perform primary action in SplitButton.
    */
-  menu?: SlotProp<IContextualMenuProps>;
-
-  /**
-   * Menu icon that indicates that this button has a menu that can be expanded.
-   */
-  menuIcon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
+  button?: SlotProp<React.HTMLAttributes<HTMLButtonElement>>;
 
   /**
-   * Defines the inital expanded state of the SplitButton. Use this if you want the SplitButton to maintain its own
-   * state. Mutually exclusive with `expanded`.
-   * @defaultvalue false
+   * Divider that separates the primary action button and the menu button parts of the SplitButton
    */
-  defaultExpanded?: boolean;
+  divider?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
 
   /**
-   * Defines whether the SplitButton is in an expanded state. Use this if you wish to have the expanded state of the
-   * SplitButton be controlled. Mutually exclusive with `defaultExpanded`.
-   * @defaultvalue defaultExpanded
+   * Button that opens menu with secondary actions in SplitButton.
    */
-  expanded?: boolean;
-
-  /**
-   * Defines a callback that runs after the SplitButton's contextual menu has been dismissed.
-   */
-  onMenuDismiss?: () => void;
+  menuButton?: SlotProp<React.HTMLAttributes<HTMLButtonElement>>;
 }
 
-export interface SplitButtonState extends SplitButtonProps, Omit<ButtonState, 'icon' | 'iconPosition' | 'loader'> {}
+export interface SplitButtonState extends SplitButtonProps, MenuButtonState {
+  menuButtonRef?: React.RefObject<HTMLButtonElement>;
+}
 
-export interface SplitButtonSlots extends BaseSlots {
-  menu: React.ElementType;
-  menuIcon: React.ElementType;
+export interface SplitButtonSlots extends ButtonSlots, MenuButtonSlots {
+  button: React.ElementType;
+  divider: React.ElementType;
+  menuButton: React.ElementType;
 }
 
 export type SplitButtonSlotProps = SlotProps<
@@ -47,4 +36,4 @@ export type SplitButtonSlotProps = SlotProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >;
 
-export type SplitButtonTokens = ButtonTokens;
+export type SplitButtonTokens = MenuButtonTokens;

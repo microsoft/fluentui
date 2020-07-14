@@ -19,7 +19,6 @@ export const useMenuButton = (
     defaultExpanded = false,
     expanded: controlledExpanded,
     menu,
-    menuIcon,
     onClick,
     onKeyDown,
     onMenuDismiss,

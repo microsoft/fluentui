@@ -15,6 +15,7 @@ const FluentTheme = {
 
     accent: {
       background: 'var(--palette-accent)',
+      dividerColor: '#EAEAEA',
       disabled: {
         background: '#FAFAFA',
       },

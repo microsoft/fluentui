@@ -11,10 +11,11 @@ export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps
       state,
       options,
     );
-    const { buttonRef, children, expanded, iconOnly } = state;
+    const { buttonRef, children, expanded, iconOnly, loading } = state;
 
     return (
       <slots.root ref={useMergedRefs(ref, buttonRef)} {...slotProps.root}>
+        {loading && <slots.loader {...slotProps.loader} />}
         {!iconOnly && children && <span>{children}</span>}
         <slots.menuIcon {...slotProps.menuIcon} />
         {expanded && <slots.menu {...slotProps.menu} />}
@@ -37,6 +38,7 @@ export const MenuButtonBase = compose<'button', MenuButtonProps, MenuButtonProps
       'tokens',
     ],
     slots: {
+      loader: 'span',
       menu: 'span',
       menuIcon: 'span',
     },

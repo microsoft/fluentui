@@ -11,13 +11,21 @@ export const SplitButtonBase = compose<'button', SplitButtonProps, SplitButtonPr
       state,
       options,
     );
-    const { buttonRef, children, expanded, iconOnly } = state;
+    const { buttonRef, children, expanded, icon, iconOnly, iconPosition, loading, menuButtonRef } = state;
 
     return (
       <slots.root ref={useMergedRefs(ref, buttonRef)} {...slotProps.root}>
-        {!iconOnly && children && <span>{children}</span>}
-        <slots.menuIcon {...slotProps.menuIcon} />
-        {expanded && <slots.menu {...slotProps.menu} />}
+        <slots.button {...slotProps.button}>
+          {loading && <slots.loader {...slotProps.loader} />}
+          {icon && iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
+          {!iconOnly && children && <span>{children}</span>}
+          {icon && iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
+        </slots.button>
+        <slots.divider {...slotProps.divider} />
+        <slots.menuButton ref={menuButtonRef} {...slotProps.menuButton}>
+          <slots.menuIcon {...slotProps.menuIcon} />
+          {expanded && <slots.menu {...slotProps.menu} />}
+        </slots.menuButton>
       </slots.root>
     );
   },
@@ -37,7 +45,12 @@ export const SplitButtonBase = compose<'button', SplitButtonProps, SplitButtonPr
       'tokens',
     ],
     slots: {
+      button: 'button',
+      divider: 'span',
+      icon: 'span',
+      loader: 'span',
       menu: 'span',
+      menuButton: 'button',
       menuIcon: 'span',
     },
     state: useSplitButton,

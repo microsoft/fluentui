@@ -37,6 +37,7 @@ export interface MenuButtonProps extends Omit<ButtonProps, 'icon' | 'iconPositio
 export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'icon' | 'iconPosition' | 'loader'> {}
 
 export interface MenuButtonSlots extends BaseSlots {
+  loader: React.ElementType;
   menu: React.ElementType;
   menuIcon: React.ElementType;
 }

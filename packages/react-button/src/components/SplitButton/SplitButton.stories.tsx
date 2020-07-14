@@ -59,7 +59,7 @@ export const SplitButtonCss = () => (
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
-    <SplitButtonVariants iconOnly />
+    <SplitButtonVariants iconOnly icon="X" />
 
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
     <SplitButtonVariants loading />

@@ -135,6 +135,7 @@
   height: var(--button-height);
   min-height: var(--button-minHeight);
 
+  cursor: pointer;
   padding: var(--button-padding);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
