@@ -3,7 +3,7 @@
 - Don't use more than three buttons.
 - Dialog boxes consist of a header, body, and footer.
 - Validate that people’s entries are acceptable before closing the dialog box. Show an inline validation error near the field they must correct.
-- Blocking dialogs should be used very sparingly, only when it is critical that people make a choice or provide information before they can proceed. Blocking dialogs are generally used for irreversible or potentially destructive tasks.
+- Blocking dialogs should be used very sparingly, only when it is critical that people make a choice or provide information before they can proceed. Blocking dialogs are generally used for irreversible or potentially destructive tasks. They’re typically paired with an overlay without a light dismiss.
 
 #### Header
 
