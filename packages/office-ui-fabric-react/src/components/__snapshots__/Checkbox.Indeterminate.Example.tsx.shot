@@ -417,7 +417,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
-      disabled={true}
       id="checkbox-2"
       onBlur={[Function]}
       onChange={[Function]}

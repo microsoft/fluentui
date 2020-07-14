@@ -380,7 +380,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
-      disabled={true}
       id="checkbox-2"
       onBlur={[Function]}
       onChange={[Function]}
@@ -515,7 +514,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
-      disabled={true}
       id="checkbox-3"
       onBlur={[Function]}
       onChange={[Function]}

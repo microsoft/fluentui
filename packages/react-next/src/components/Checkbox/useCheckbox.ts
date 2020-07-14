@@ -53,7 +53,6 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
       ...inputProps,
       ref: inputRef,
       checked: !!isChecked,
-      disabled,
       name,
       id,
       title,
