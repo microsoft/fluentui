@@ -1,5 +1,5 @@
+import { ProviderContextInput } from '@fluentui/react-bindings';
 import { mergeProviderContexts, mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
-import { ProviderContextInput } from 'src/types';
 
 describe('getRenderer', () => {
   const createRenderer = jest.fn().mockImplementation(target => ({ target }));

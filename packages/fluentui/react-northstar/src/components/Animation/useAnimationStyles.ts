@@ -2,12 +2,10 @@ import {
   ComponentAnimationProp,
   unstable_getStyles as getStyles,
   unstable_createAnimationStyles as createAnimationStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
-import { ProviderContextPrepared } from '../../types';
 import { ThemePrepared } from '@fluentui/styles';
-import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import * as _ from 'lodash';
 import { AnimationProps } from './Animation';
 
@@ -21,9 +19,7 @@ const animationCache = new WeakMap<ThemePrepared, Record<string, UseAnimationSty
 export const animationClassName = 'ui-animation';
 
 export const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
-  const { theme, rtl, disableAnimations, renderer, performance }: ProviderContextPrepared = React.useContext(
-    ThemeContext,
-  );
+  const { theme, rtl, disableAnimations, renderer, performance } = useFluentContext();
 
   if (disableAnimations) {
     return {
@@ -83,6 +79,7 @@ export const useAnimationStyles = (displayName: string, props: AnimationProps): 
     },
     saveDebug: _.noop,
     theme,
+    telemetry: undefined,
   });
 
   const result = {

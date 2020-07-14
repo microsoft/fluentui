@@ -4,14 +4,13 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 
 export interface CardFooterProps extends UIComponentProps, ChildrenComponentProps {
@@ -32,7 +31,7 @@ export const cardFooterClassName = 'ui-card__footer';
  */
 export const CardFooter: ComponentWithAs<'div', CardFooterProps> &
   FluentComponentStaticProps<CardFooterProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardFooter.displayName, context.telemetry);
   setStart();
 

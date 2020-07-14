@@ -2,13 +2,18 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { createShorthandFactory, commonPropTypes } from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { Input } from '../Input/Input';
-import { ComponentWithAs, useTelemetry, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  useFluentContext,
+  useTelemetry,
+  useStyles,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 
 export interface DropdownSearchInputSlotClassNames {
   input: string;
@@ -81,7 +86,7 @@ export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputPr
  */
 export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProps> &
   FluentComponentStaticProps<DropdownSearchInputProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSearchInput.displayName, context.telemetry);
   setStart();
   const {

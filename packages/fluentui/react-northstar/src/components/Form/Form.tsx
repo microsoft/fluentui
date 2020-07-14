@@ -12,12 +12,7 @@ import {
   rtlTextContainer,
   createShorthandFactory,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { FormField, FormFieldProps } from './FormField';
 import {
   ComponentWithAs,
@@ -25,10 +20,10 @@ import {
   getElementType,
   useUnhandledProps,
   useStyles,
+  useFluentContext,
   useAccessibility,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { FormLabel } from './FormLabel';
 import { FormMessage } from './FormMessage';
 import { FormInput } from './FormInput';
@@ -79,7 +74,7 @@ export const Form: ComponentWithAs<'form', FormProps> &
     Slider: typeof FormSlider;
     FieldCustom: typeof FormFieldCustom;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
   setStart();
   const { className, design, styles, variables, action, children, accessibility } = props;

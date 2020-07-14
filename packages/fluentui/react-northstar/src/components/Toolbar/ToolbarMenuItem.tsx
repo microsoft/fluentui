@@ -19,12 +19,12 @@ import {
   useTelemetry,
   useStyles,
   useAutoControlled,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 
@@ -37,7 +37,7 @@ import {
   childrenExist,
   doesNodeContainClick,
 } from '../../utils';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import { Box, BoxProps } from '../Box/Box';
@@ -132,7 +132,7 @@ export const toolbarMenuItemSlotClassNames: ToolbarMenuItemSlotClassNames = {
  */
 export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

@@ -26,7 +26,6 @@
     "downshift": "5.0.5",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
-    "react-fela": "^10.6.1",
     "react-is": "^16.6.3",
     "react-transition-group": "^4.3.0"
   },

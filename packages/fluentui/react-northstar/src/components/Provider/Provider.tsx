@@ -5,9 +5,13 @@ import {
   useUnhandledProps,
   StylesContextPerformanceInput,
   RendererContext,
+  ProviderContextInput,
+  ProviderContextPrepared,
   Telemetry,
+  useFluentContext,
   unstable_getStyles,
   useIsomorphicLayoutEffect,
+  Unstable_FluentContextProvider,
 } from '@fluentui/react-bindings';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import {
@@ -21,12 +25,9 @@ import {
 } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeProvider, ThemeContext } from 'react-fela';
 
 import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
 
-import { ProviderContextInput, ProviderContextPrepared } from '../../types';
 import { mergeProviderContexts } from '../../utils/mergeProviderContexts';
 import { ProviderConsumer } from './ProviderConsumer';
 import { usePortalBox, PortalBoxContext } from './usePortalBox';
@@ -120,7 +121,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     theme: props.theme,
   };
 
-  const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
+  const consumedContext = useFluentContext();
   const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
   const createRenderer = React.useContext(RendererContext);
 
@@ -128,7 +129,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
   // only add dir attribute for top level provider or when direction changes from parent to child
-  if (!consumedContext || (consumedContext.rtl !== outgoingContext.rtl && _.isBoolean(outgoingContext.rtl))) {
+  if (consumedContext.rtl !== outgoingContext.rtl && _.isBoolean(outgoingContext.rtl)) {
     rtlProps.dir = outgoingContext.rtl ? 'rtl' : 'ltr';
   }
 
@@ -150,6 +151,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     rtl: outgoingContext.rtl,
     theme: outgoingContext.theme,
     saveDebug: _.noop,
+    telemetry: undefined,
   });
 
   const element = usePortalBox({
@@ -186,11 +188,11 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 
   return (
     <RenderProvider>
-      <ThemeProvider theme={outgoingContext} overwrite>
+      <Unstable_FluentContextProvider value={outgoingContext}>
         <PortalBoxContext.Provider value={element}>
           <ElementType {...elementProps}>{children}</ElementType>
         </PortalBoxContext.Provider>
-      </ThemeProvider>
+      </Unstable_FluentContextProvider>
     </RenderProvider>
   );
 };

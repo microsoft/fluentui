@@ -18,8 +18,7 @@
     "@uifabric/utilities": "^7.24.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
-    "prop-types": "^15.7.2",
-    "react-fela": "^10.6.1"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.52.0",

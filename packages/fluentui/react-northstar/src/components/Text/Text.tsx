@@ -16,17 +16,16 @@ import {
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface TextProps
   extends UIComponentProps,
@@ -94,7 +93,7 @@ export const textClassName = 'ui-text';
  * A Text consistently styles and formats occurrences of text.
  */
 export const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticProps<TextProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
   setStart();
 

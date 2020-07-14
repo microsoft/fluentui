@@ -4,17 +4,16 @@ import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import { UIComponentProps, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   useStyles,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useTelemetry,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface LayoutSlotClassNames {
   start: string;
@@ -75,7 +74,7 @@ export type LayoutStylesProps = Required<
  * (DEPRECATED) A layout is a utility for arranging the content of a component.
  */
 export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStaticProps<LayoutProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Layout.displayName, context.telemetry);
   setStart();
   const {

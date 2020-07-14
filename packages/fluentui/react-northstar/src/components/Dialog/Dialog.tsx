@@ -6,6 +6,7 @@ import {
   useTelemetry,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useUnhandledProps,
   getElementType,
 } from '@fluentui/react-bindings';
@@ -18,8 +19,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { lockBodyScroll, unlockBodyScroll } from './utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   UIComponentProps,
   commonPropTypes,
@@ -29,12 +29,7 @@ import {
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Button, ButtonProps } from '../Button/Button';
 import { ButtonGroup } from '../Button/ButtonGroup';
 import { Box, BoxProps } from '../Box/Box';
@@ -149,7 +144,7 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
   FluentComponentStaticProps<DialogProps> & {
     Footer: typeof DialogFooter;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dialog.displayName, context.telemetry);
   setStart();
 
