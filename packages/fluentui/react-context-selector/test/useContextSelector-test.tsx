@@ -1,6 +1,7 @@
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { mount } from 'enzyme';
 import * as React from 'react';
+import { act } from 'react-dom/test-utils';
 
 const TestContext = createContext<{ index: number }>({ index: -1 });
 
@@ -38,16 +39,19 @@ describe('useContextSelector', () => {
 
     // No match, (v.index: 2, p.index: 1)
     wrapper.setProps({ value: { index: 2 } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-active')).toBe(false);
     expect(onUpdate).toBeCalledTimes(1);
 
     // Match => update, (v.index: 1, p.index: 1)
     wrapper.setProps({ value: { index: 1 } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-active')).toBe(true);
     expect(onUpdate).toBeCalledTimes(2);
 
     // Match previous => no update, (v.index: 1, p.index: 1)
     wrapper.setProps({ value: { index: 1 } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-active')).toBe(true);
     expect(onUpdate).toBeCalledTimes(2);
   });
@@ -65,6 +69,7 @@ describe('useContextSelector', () => {
     );
 
     wrapper.setProps({ value: { index: 1 } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-active')).toBe(true);
     expect(onUpdate).toBeCalledTimes(2);
   });

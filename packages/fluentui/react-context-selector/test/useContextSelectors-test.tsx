@@ -46,29 +46,33 @@ describe('useContextSelectors', () => {
 
     // No match, (v.index: 2, p.index: 1)
     wrapper.setProps({ value: { index: 2, value: 'foo' } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-active')).toBe(false);
     expect(wrapper.find('div').prop('data-value')).toBe('foo');
     expect(onUpdate).toBeCalledTimes(1);
 
     // Match => update, (v.index: 1, p.index: 1)
     wrapper.setProps({ value: { index: 1, value: 'foo' } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-active')).toBe(true);
     expect(wrapper.find('div').prop('data-value')).toBe('foo');
     expect(onUpdate).toBeCalledTimes(2);
 
     // Match previous => no update, (v.index: 1, p.index: 1)
     wrapper.setProps({ value: { index: 1, value: 'foo' } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-active')).toBe(true);
     expect(wrapper.find('div').prop('data-value')).toBe('foo');
     expect(onUpdate).toBeCalledTimes(2);
 
     // Match => update, (v.value: 'bar')
     wrapper.setProps({ value: { index: 1, value: 'bar' } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-value')).toBe('bar');
     expect(onUpdate).toBeCalledTimes(3);
   });
 
-  it('updates are propogated inside React.memo()', () => {
+  it('updates are propagated inside React.memo()', () => {
     // https://reactjs.org/docs/react-api.html#reactmemo
     // Will never pass updates
     const MemoComponent = React.memo(TestComponent, () => true);
@@ -81,6 +85,7 @@ describe('useContextSelectors', () => {
     );
 
     wrapper.setProps({ value: { index: 1, value: 'foo' } });
+    wrapper.update();
     expect(wrapper.find('div').prop('data-active')).toBe(true);
     expect(onUpdate).toBeCalledTimes(2);
   });
