@@ -39,4 +39,4 @@ export type EnumMap<T> = {
  * might return the string
  * 'SpinnerSize.medium'
  */
-export type propTransform<T = string> = (enumType: T) => string;
+export type PropTransform<T = string> = (enumType: T) => string;

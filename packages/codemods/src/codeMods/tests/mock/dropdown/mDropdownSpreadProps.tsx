@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prefer-const */
 import * as React from 'react';
 import { Dropdown, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 
-// tslint:disable-next-line: no-any
 export const RenderDropdown = (props: any) => {
   const propsTest = { options: [], isDisabled: false };
   return (
@@ -13,9 +15,7 @@ export const RenderDropdown = (props: any) => {
   );
 };
 
-// tslint:disable-next-line: no-any
 export const RenderLetDropdown = (props: any) => {
-  // tslint:disable-next-line: prefer-const
   let propsTest = { options: [], isDisabled: false };
   return (
     <div>

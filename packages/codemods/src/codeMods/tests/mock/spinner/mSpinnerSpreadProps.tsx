@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable prefer-const */
+/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { Spinner, SpinnerType, ISpinnerProps } from 'office-ui-fabric-react/lib/Spinner';
 
-// tslint:disable-next-line: no-any
 export const RenderSpinner = (props: any) => {
   const propsTest = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
   return (
@@ -15,9 +18,7 @@ export const RenderSpinner = (props: any) => {
   );
 };
 
-// tslint:disable-next-line: no-any
 export const RenderLetSpinner = (props: any) => {
-  // tslint:disable-next-line: prefer-const
   let propsTest = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
   return (
     <div>
