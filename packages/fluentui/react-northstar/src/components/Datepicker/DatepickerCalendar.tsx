@@ -26,10 +26,87 @@ import {
   FirstWeekOfYear,
   DateRangeType,
   formatMonthDayYear,
+  IRestrictedDatesOptions,
 } from '@fluentui/date-time-utilities';
 import { Text } from '../Text/Text';
 import { Button } from '../Button/Button';
-import { IDatepickerOptions, IDateFormatting, DEFAULT_LOCALIZED_STRINGS } from './Datepicker';
+
+// TODO: extract to date-time-utilities
+export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+};
+
+// TODO: extract to date-time-utilities
+export interface IDateFormatting {
+  /**
+   * Format the date according to specified function.
+   * Intended use case is localization.
+   */
+  format?: (date: Date) => string;
+
+  /**
+   * Parse date from string representation into Date type.
+   */
+  parse?: (date: string) => Date;
+}
+
+// TODO: extract to date-time-utilities
+export interface IDatepickerOptions extends IRestrictedDatesOptions {
+  /**
+   * The first day of the week for your locale.
+   */
+  firstDayOfWeek?: DayOfWeek;
+
+  /**
+   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+   */
+  firstWeekOfYear?: FirstWeekOfYear;
+
+  /**
+   * The date range type indicating how  many days should be selected as the user
+   * selects days
+   */
+  dateRangeType?: DateRangeType;
+
+  /**
+   * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
+   * views.
+   */
+  daysToSelectInDayView?: number;
+
+  /**
+   * Value of today. If null, current time in client machine will be used.
+   */
+  today?: Date;
+
+  /**
+   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+   */
+  showWeekNumbers?: boolean;
+
+  /**
+   * The days that are selectable when `dateRangeType` is WorkWeek.
+   * If `dateRangeType` is not WorkWeek this property does nothing.
+   */
+  workWeekDays?: DayOfWeek[];
+}
 
 export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
   /**
