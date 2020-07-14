@@ -24,7 +24,7 @@ export type ProviderContextInput = {
 };
 
 export type ProviderContextPrepared = {
-  rtl: boolean;
+  rtl: boolean | undefined;
   disableAnimations: boolean;
   performance: StylesContextPerformance;
   renderer: Renderer;
@@ -42,7 +42,7 @@ export const defaultPerformanceFlags: StylesContextPerformance = {
 };
 
 const defaultContext: ProviderContextPrepared = {
-  rtl: false,
+  rtl: undefined,
   disableAnimations: false,
   performance: defaultPerformanceFlags,
   renderer: noopRenderer,

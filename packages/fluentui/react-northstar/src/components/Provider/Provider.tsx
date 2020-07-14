@@ -129,7 +129,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
   // only add dir attribute for top level provider or when direction changes from parent to child
-  if (!consumedContext || (consumedContext.rtl !== outgoingContext.rtl && _.isBoolean(outgoingContext.rtl))) {
+  if (consumedContext.rtl !== outgoingContext.rtl && _.isBoolean(outgoingContext.rtl)) {
     rtlProps.dir = outgoingContext.rtl ? 'rtl' : 'ltr';
   }
 
