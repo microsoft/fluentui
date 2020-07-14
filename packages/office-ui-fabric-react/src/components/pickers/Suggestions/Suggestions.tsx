@@ -381,8 +381,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
         {suggestions.map((suggestion, index) => (
           <div
             ref={suggestion.selected ? this._selectedElement : undefined}
-            // tslint:disable-next-line:no-string-literal
-            key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
+            key={(suggestion.item as any).key ? (suggestion.item as any).key : index}
             id={'sug-' + index}
             aria-selected={suggestion.selected}
             role="option"

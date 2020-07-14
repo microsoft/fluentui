@@ -4,6 +4,7 @@ import {
   getElementType,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
@@ -12,17 +13,15 @@ import * as CustomPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { commonPropTypes, createShorthandFactory, SizeValue, UIComponentProps } from '../../utils';
-import CardBody from './CardBody';
-import CardColumn from './CardColumn';
-import CardFooter from './CardFooter';
-import CardHeader from './CardHeader';
-import CardPreview from './CardPreview';
-import CardTopControls from './CardTopControls';
-import CardExpandableBox from './CardExpandableBox';
+import { CardBody } from './CardBody';
+import { CardColumn } from './CardColumn';
+import { CardFooter } from './CardFooter';
+import { CardHeader } from './CardHeader';
+import { CardPreview } from './CardPreview';
+import { CardTopControls } from './CardTopControls';
+import { CardExpandableBox } from './CardExpandableBox';
 
 export interface CardProps extends UIComponentProps {
   /**
@@ -102,7 +101,7 @@ export const cardClassName = 'ui-card';
  * When card contains actionable elements, use [cardChildrenFocusableBehavior](/components/card/accessibility#card-children-focusable).
  *
  */
-const Card: ComponentWithAs<'div', CardProps> &
+export const Card: ComponentWithAs<'div', CardProps> &
   FluentComponentStaticProps<CardProps> & {
     Header: typeof CardHeader;
     Body: typeof CardBody;
@@ -112,7 +111,7 @@ const Card: ComponentWithAs<'div', CardProps> &
     Column: typeof CardColumn;
     ExpandableBox: typeof CardExpandableBox;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
   const cardRef = React.useRef<HTMLElement>();
@@ -242,5 +241,3 @@ Card.Column = CardColumn;
 Card.ExpandableBox = CardExpandableBox;
 
 Card.create = createShorthandFactory({ Component: Card });
-
-export default Card;

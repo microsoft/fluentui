@@ -48,6 +48,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     initializeComponentRef(this);
     this.state = {
       isGroupCollapsed: {},
+      // TODO: consider removing
+      // eslint-disable-next-line react/no-unused-state
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey,
     };
@@ -124,6 +126,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         styles={buttonStyles}
         href={link.url || (link.forceAnchor ? '#' : undefined)}
         iconProps={link.iconProps || { iconName: link.icon }}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={
           link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)
         }
@@ -142,7 +145,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { expandButtonAriaLabel, styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -169,6 +172,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         {link.links && link.links.length > 0 ? (
           <button
             className={classNames.chevronButton}
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={this._onLinkExpandClicked.bind(this, link)}
             aria-label={finalExpandBtnAriaLabel}
             aria-expanded={link.isExpanded ? 'true' : 'false'}
@@ -245,7 +249,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _renderGroupHeader = (group: IRenderGroupHeaderProps): React.ReactElement<{}> => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { styles, groups, theme, expandButtonAriaLabel } = this.props;
 
     const { isExpanded } = group;
@@ -268,7 +272,13 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       : undefined;
 
     return (
-      <button className={classNames.chevronButton} onClick={onClick} aria-label={label} aria-expanded={isExpanded}>
+      <button
+        className={classNames.chevronButton}
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClick}
+        aria-label={label}
+        aria-expanded={isExpanded}
+      >
         <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
         {group.name}
       </button>
@@ -297,6 +307,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     if (!ev.defaultPrevented) {
       link.isExpanded = !link.isExpanded;
+      // eslint-disable-next-line react/no-unused-state
       this.setState({ isLinkExpandStateChanged: true });
     }
 

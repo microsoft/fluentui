@@ -13,7 +13,7 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
     return (
       <DefaultButton
         key={page}
-        onClick={this.onClick}
+        onClick={this._onClick}
         aria-selected={selected}
         aria-label={ariaLabel}
         styles={{ root: className }}
@@ -23,7 +23,7 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
     );
   }
 
-  private onClick = () => {
+  private _onClick = () => {
     this.props.onClick(this.props.page - 1);
   };
 }

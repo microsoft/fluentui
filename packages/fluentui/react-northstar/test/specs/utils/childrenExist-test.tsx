@@ -1,5 +1,5 @@
 import * as React from 'react';
-import childrenExist from 'src/utils/childrenExist';
+import { childrenExist } from 'src/utils/childrenExist';
 
 describe('childrenExist', () => {
   test('returns false when no children are passed', () => {

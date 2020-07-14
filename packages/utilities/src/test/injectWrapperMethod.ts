@@ -7,14 +7,14 @@ import { ReactWrapper } from 'enzyme';
  * @param fn - The function to run prior to the call of the original method
  */
 export function injectWrapperMethod(wrapper: ReactWrapper<{}, {}>, methodName: string, fn: () => void): void {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const originalMethod = (wrapper.instance() as any)[methodName];
 
   if (typeof originalMethod !== 'function') {
     throw new Error(`Tried to override the method ${methodName} on a ReactWrapper that does not have that function`);
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (wrapper.instance() as any)[methodName] = function(prevProps: any): void {
     fn();
     originalMethod.call(this, prevProps);

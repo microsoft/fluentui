@@ -38,6 +38,6 @@ export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTML
   /**
    * The children to pass into the content area of the folder cover.
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   children?: React.Props<{}>['children'] | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
 }

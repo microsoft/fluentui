@@ -79,7 +79,6 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
 
   private _keyHandled = false;
 
-  // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
 

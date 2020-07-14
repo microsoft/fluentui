@@ -320,7 +320,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
   return (
     element.offsetHeight !== 0 ||
     element.offsetParent !== null ||
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (element as any).isVisible === true
   ); // used as a workaround for testing.
 }

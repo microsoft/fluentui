@@ -60,6 +60,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
         <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
           <GroupedList
             items={items}
+            // eslint-disable-next-line react/jsx-no-bind
             onRenderCell={onRenderCell}
             selection={selection}
             selectionMode={SelectionMode.multiple}

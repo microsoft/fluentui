@@ -80,7 +80,6 @@ describe('ToggleState', () => {
     const wrapper = mount(
       <form
         action="#"
-        // tslint:disable-next-line:jsx-no-lambda
         onSubmit={e => {
           onSubmit();
           e.preventDefault();

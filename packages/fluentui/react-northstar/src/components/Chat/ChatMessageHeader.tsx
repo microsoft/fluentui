@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
+import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface ChatMessageHeaderOwnProps {
   attached?: boolean | 'top' | 'bottom';
@@ -14,7 +14,7 @@ export const ChatMessageHeaderClassName = `ui-chat__message__header`;
 /**
  * A ChatMessageHeader provides a slot for author/date/reactions for the ChatMessage.
  */
-const ChatMessageHeader = compose<
+export const ChatMessageHeader = compose<
   'div',
   ChatMessageHeaderOwnProps,
   ChatMessageHeaderStylesProps,
@@ -28,5 +28,3 @@ const ChatMessageHeader = compose<
 });
 
 ChatMessageHeader.propTypes = commonPropTypes.createCommon();
-
-export default ChatMessageHeader;

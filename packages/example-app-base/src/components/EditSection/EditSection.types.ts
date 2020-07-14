@@ -36,6 +36,6 @@ export interface IEditSectionStyles {
 
 export interface IEditSectionSubComponentStyles {
   // TODO: remove anys after TS 3 upgrade and full button styling support
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   button: IStyleFunctionOrObject<any, any>;
 }
