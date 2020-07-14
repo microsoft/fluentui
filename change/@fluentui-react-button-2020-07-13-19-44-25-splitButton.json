@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "SplitButton: Initial implementation.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-14T02:44:25.803Z"
+}
