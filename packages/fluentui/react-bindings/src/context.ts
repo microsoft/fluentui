@@ -24,7 +24,7 @@ export type ProviderContextInput = {
 };
 
 export type ProviderContextPrepared = {
-  rtl: boolean | undefined;
+  rtl: boolean;
   disableAnimations: boolean;
   performance: StylesContextPerformance;
   renderer: Renderer;
@@ -43,7 +43,7 @@ export const defaultPerformanceFlags: StylesContextPerformance = {
 
 const defaultContext: ProviderContextPrepared = {
   // A default value for `rtl` is undefined to let compute `Provider` a proper one
-  rtl: undefined,
+  rtl: undefined as any,
   disableAnimations: false,
   performance: defaultPerformanceFlags,
   renderer: noopRenderer,
