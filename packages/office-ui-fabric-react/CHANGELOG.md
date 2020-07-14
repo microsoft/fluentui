@@ -1,8 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.122.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.122.0)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.12..office-ui-fabric-react_v7.122.0)
+
+### Minor changes
+
+- Replace tslint with eslint; fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+- Add mutliSelectDelimiter property to ComboBox ([PR #13979](https://github.com/microsoft/fluentui/pull/13979) by cocahill@microsoft.com)
+
+### Patches
+
+- Keytip: add useKeytipRef hook. ([PR #13742](https://github.com/microsoft/fluentui/pull/13742) by xgao@microsoft.com)
+- ContextualMenu: Fix high contrast style for submenu icon ([PR #13843](https://github.com/microsoft/fluentui/pull/13843) by erabelle@microsoft.com)
 
 ## [7.121.12](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.12)
 

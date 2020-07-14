@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "revert to getId as svg is not a react component",
-  "packageName": "@uifabric/fabric-website",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-10T16:31:11.384Z"
-}

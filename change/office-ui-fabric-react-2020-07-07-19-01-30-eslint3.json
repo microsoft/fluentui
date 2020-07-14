@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Replace tslint with eslint; fix some violations",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-08T01:55:54.085Z"
-}
