@@ -60,6 +60,7 @@ export { CollapseIcon } from './components/CollapseIcon';
 export { CompanionIcon } from './components/CompanionIcon';
 export { ComposeIcon } from './components/ComposeIcon';
 export { ContactGroupCallIcon } from './components/ContactGroupCallIcon';
+export { ContactGroupIcon } from './components/ContactGroupIcon';
 export { ContentIcon } from './components/ContentIcon';
 export { CustomerHubIcon } from './components/CustomerHubIcon';
 export { DownloadIcon } from './components/DownloadIcon';
