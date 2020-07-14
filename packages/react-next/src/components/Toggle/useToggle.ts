@@ -19,7 +19,7 @@ export const useToggle = (
   props: IToggleProps,
   ref: React.Ref<HTMLDivElement>,
   options: ComposePreparedOptions,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any => {
   const {
     ariaLabel,
@@ -30,10 +30,10 @@ export const useToggle = (
     id: toggleId,
     inlineLabel,
     label,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     offAriaLabel,
     offText,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     onAriaLabel,
     onChange,
     onClick: onToggleClick,
@@ -57,19 +57,22 @@ export const useToggle = (
   const labelId = `${id}-label`;
   const stateTextId = `${id}-stateText`;
   const stateText = checked ? onText : offText;
-  const toggleNativeProps = getNativeProps<HTMLInputElement>(props, inputProperties, ['defaultChecked']);
+  const toggleNativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties, [
+    'defaultChecked',
+  ]);
 
   // The following properties take priority for what Narrator should read:
   // 1. ariaLabel
   // 2. onAriaLabel (if checked) or offAriaLabel (if not checked)
-  // 3. label
-  // 4. onText (if checked) or offText (if not checked)
+  // 3. label AND stateText, if existent
+
   let labelledById: string | undefined = undefined;
   if (!ariaLabel && !badAriaLabel) {
     if (label) {
       labelledById = labelId;
-    } else if (stateText) {
-      labelledById = stateTextId;
+    }
+    if (stateText) {
+      labelledById = labelledById ? `${labelledById} ${stateTextId}` : stateTextId;
     }
   }
 
@@ -101,7 +104,7 @@ export const useToggle = (
 
   const slots = {
     ...options.slots,
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     root: props.as || ((options as any).defaultProps as any)?.as,
   };
 
@@ -127,6 +130,7 @@ export const useToggle = (
       'aria-labelledby': labelledById,
       className: classNames.pill,
       'data-is-focusable': true,
+      'data-ktp-target': true,
       disabled: disabled,
       id: id,
       onClick: onClick,

@@ -1,4 +1,9 @@
-import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../../Styling';
+import {
+  HighContrastSelector,
+  IStyle,
+  getGlobalClassNames,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
@@ -178,8 +183,10 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       borderColor: circleDisabledBorderColor,
       selectors: {
         [HighContrastSelector]: {
-          color: 'GrayText',
+          borderColor: 'GrayText',
+          background: 'Window',
         },
+        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     checked && {
@@ -187,7 +194,9 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Highlight',
+          background: 'Window',
         },
+        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     (hasIcon || hasImage) && {
@@ -224,6 +233,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         [HighContrastSelector]: {
           borderColor: 'Highlight',
         },
+        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     checked &&
@@ -344,9 +354,12 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         selectors: {
           '.ms-ChoiceFieldLabel': {
             color: semanticColors.disabledBodyText,
-          },
-          [HighContrastSelector]: {
-            color: 'GrayText',
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'GrayText',
+              },
+              ...getEdgeChromiumNoHighContrastAdjustSelector(),
+            },
           },
         },
       },

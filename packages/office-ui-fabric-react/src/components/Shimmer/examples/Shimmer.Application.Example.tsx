@@ -112,7 +112,7 @@ export class ShimmerApplicationExample extends React.Component<{}, IShimmerAppli
   private _onLoadData = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     if (!_items) {
       _items = createListItems(ITEMS_COUNT);
-      _items.map((item: IExampleItem) => {
+      _items.forEach((item: IExampleItem) => {
         const randomFileType = this._randomFileIcon();
         item.thumbnail = randomFileType.url;
       });

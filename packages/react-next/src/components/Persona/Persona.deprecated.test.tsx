@@ -1,9 +1,8 @@
-/* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
 import { setRTL, setWarningCallback } from '@uifabric/utilities';
 import { Persona } from './Persona';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import { getIcon } from '../../Styling';
 
 const testImage1x1 =
@@ -111,14 +110,14 @@ describe('Persona', () => {
   describe('image', () => {
     it('renders empty alt text by default', () => {
       const wrapper = mount(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
-      const image: ReactWrapper<React.ImgHTMLAttributes<unknown>, unknown> = wrapper.find('ImageBase');
+      const image = wrapper.find('ImageBase');
 
       expect(image.props().alt).toEqual('');
     });
 
     it('renders its given alt text', () => {
       const wrapper = mount(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
-      const image: ReactWrapper<React.ImgHTMLAttributes<unknown>, unknown> = wrapper.find('ImageBase');
+      const image = wrapper.find('ImageBase');
 
       expect(image.props().alt).toEqual('ALT TEXT');
     });

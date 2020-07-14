@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import RefStack from './utils/RefStack';
-import NestingContext from './NestingContext';
+import { RefStack } from './utils/RefStack';
+import { NestingContext } from './NestingContext';
 import { NestingProps, NodeRef } from './types';
 
-class NestingRoot<T extends Node> extends React.Component<NestingProps> {
+export class NestingRoot<T extends Node> extends React.Component<NestingProps> {
   registry = new RefStack();
   parentRef = React.createRef<T>();
 
@@ -26,5 +26,3 @@ class NestingRoot<T extends Node> extends React.Component<NestingProps> {
     );
   }
 }
-
-export default NestingRoot;

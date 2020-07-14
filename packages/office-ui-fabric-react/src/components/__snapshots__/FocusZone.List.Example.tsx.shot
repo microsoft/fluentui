@@ -372,6 +372,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -415,6 +418,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -423,6 +430,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -433,6 +443,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -441,6 +454,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField2"
                 onBlur={[Function]}
@@ -565,6 +581,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -608,6 +627,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -616,6 +639,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -626,6 +652,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -634,6 +663,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField5"
                 onBlur={[Function]}
@@ -1023,6 +1055,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -1066,6 +1101,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1074,6 +1113,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -1084,6 +1126,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1092,6 +1137,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField9"
                 onBlur={[Function]}
@@ -1216,6 +1264,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -1259,6 +1310,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1267,6 +1322,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -1277,6 +1335,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1285,6 +1346,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField12"
                 onBlur={[Function]}
@@ -1674,6 +1738,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -1717,6 +1784,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1725,6 +1796,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -1735,6 +1809,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1743,6 +1820,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField16"
                 onBlur={[Function]}
@@ -1867,6 +1947,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -1910,6 +1993,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1918,6 +2005,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -1928,6 +2018,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1936,6 +2029,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField19"
                 onBlur={[Function]}
@@ -2325,6 +2421,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -2368,6 +2467,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -2376,6 +2479,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -2386,6 +2492,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -2394,6 +2503,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField23"
                 onBlur={[Function]}
@@ -2518,6 +2630,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -2561,6 +2676,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -2569,6 +2688,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -2579,6 +2701,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -2587,6 +2712,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField26"
                 onBlur={[Function]}
@@ -2976,6 +3104,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -3019,6 +3150,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -3027,6 +3162,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -3037,6 +3175,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -3045,6 +3186,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField30"
                 onBlur={[Function]}
@@ -3169,6 +3313,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -3212,6 +3359,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -3220,6 +3371,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -3230,6 +3384,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -3238,6 +3395,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField33"
                 onBlur={[Function]}
@@ -3627,6 +3787,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -3670,6 +3833,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -3678,6 +3845,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -3688,6 +3858,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -3696,6 +3869,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField37"
                 onBlur={[Function]}
@@ -3820,6 +3996,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -3863,6 +4042,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -3871,6 +4054,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -3881,6 +4067,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -3889,6 +4078,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField40"
                 onBlur={[Function]}
@@ -4278,6 +4470,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -4321,6 +4516,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -4329,6 +4528,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -4339,6 +4541,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -4347,6 +4552,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField44"
                 onBlur={[Function]}
@@ -4471,6 +4679,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -4514,6 +4725,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -4522,6 +4737,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -4532,6 +4750,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -4540,6 +4761,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField47"
                 onBlur={[Function]}
@@ -4929,6 +5153,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -4972,6 +5199,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -4980,6 +5211,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -4990,6 +5224,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -4998,6 +5235,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField51"
                 onBlur={[Function]}
@@ -5122,6 +5362,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -5165,6 +5408,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -5173,6 +5420,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -5183,6 +5433,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -5191,6 +5444,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField54"
                 onBlur={[Function]}
@@ -5580,6 +5836,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -5623,6 +5882,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -5631,6 +5894,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -5641,6 +5907,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -5649,6 +5918,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField58"
                 onBlur={[Function]}
@@ -5773,6 +6045,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -5816,6 +6091,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -5824,6 +6103,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -5834,6 +6116,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -5842,6 +6127,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField61"
                 onBlur={[Function]}
@@ -6231,6 +6519,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -6274,6 +6565,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -6282,6 +6577,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -6292,6 +6590,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -6300,6 +6601,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField65"
                 onBlur={[Function]}
@@ -6424,6 +6728,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){&:hover {
+                    forced-color-adjust: none;
+                  }
             >
               <input
                 aria-invalid={false}
@@ -6467,6 +6774,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     &::-ms-clear {
                       display: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background: Window;
+                      color: WindowText;
+                    }
                     &::placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -6475,6 +6786,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::placeholder {
+                      color: GrayText;
                     }
                     &:-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
@@ -6485,6 +6799,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       opacity: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                      color: GrayText;
+                    }
                     &::-ms-input-placeholder {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -6493,6 +6810,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                      color: GrayText;
                     }
                 id="TextField68"
                 onBlur={[Function]}

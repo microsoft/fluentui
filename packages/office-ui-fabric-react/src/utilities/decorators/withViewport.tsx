@@ -110,7 +110,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
         }
       }
 
-      if (!!newSkipViewportMeasures) {
+      if (newSkipViewportMeasures) {
         this._updateViewport();
       }
     }
@@ -164,7 +164,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _updateViewport = (withForceUpdate?: boolean) => {
       const { viewport } = this.state;
       const viewportElement = this._root.current;
-      const scrollElement = findScrollableParent(viewportElement);
+      const scrollElement = findScrollableParent(viewportElement) as HTMLElement;
       const scrollRect = getRect(scrollElement);
       const clientRect = getRect(viewportElement);
       const updateComponent = () => {

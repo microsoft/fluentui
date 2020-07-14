@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const { preset, just } = require('@uifabric/build');
+import fs from 'fs';
+import path from 'path';
+import { preset, just } from '@uifabric/build';
+import { findRepoDeps, findGitRoot } from '@uifabric/build/monorepo/index';
+
 const { task, copyInstructionsTask, copyInstructions } = just;
-const findRepoDeps = require('@uifabric/build/monorepo/findRepoDeps');
-const findGitRoot = require('@uifabric/build/monorepo/findGitRoot');
 
 const gitRoot = findGitRoot();
 let instructions = copyInstructions.copyFilesToDestinationDirectory(['index.html', 'chiclet-test.html'], 'dist');

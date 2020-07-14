@@ -6,7 +6,7 @@ type ComponentAnatomySlotProps = {
   name: string;
 };
 
-const ComponentAnatomy: React.FunctionComponent<{ componentInfo: ComponentInfo }> & {
+export const ComponentAnatomy: React.FunctionComponent<{ componentInfo: ComponentInfo }> & {
   Slot: React.FunctionComponent<ComponentAnatomySlotProps>;
 } = ({ componentInfo }) => {
   const shorthandProps = componentInfo.props.filter(propDef =>
@@ -48,5 +48,3 @@ const ComponentAnatomySlot: React.FunctionComponent<ComponentAnatomySlotProps> =
 );
 
 ComponentAnatomy.Slot = ComponentAnatomySlot;
-
-export default ComponentAnatomy;

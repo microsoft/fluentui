@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mergeStyleSets } from 'office-ui-fabric-react';
-import { default as CustomScrollBars } from 'react-custom-scrollbars';
+import CustomScrollBars from 'react-custom-scrollbars';
 import { IScrollBarsProps } from './ScrollBars.types';
 import { NeutralColors } from '@uifabric/fluent-theme';
 
@@ -46,7 +46,7 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
         renderThumbHorizontal={this._renderScrollThumb}
         renderTrackVertical={this._renderScrollTrackVertical}
         renderTrackHorizontal={this._renderScrollTrackHorizontal}
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         {...rest}
       >

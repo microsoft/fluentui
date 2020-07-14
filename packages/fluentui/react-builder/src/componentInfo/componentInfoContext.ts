@@ -12,7 +12,7 @@ const requireContext = require.context('../../../docs/src/componentInfo', true, 
 const keys: string[] = requireContext.keys();
 const infoObjects = keys.map(requireContext) as ComponentInfo[];
 
-const componentInfoContext: {
+export const componentInfoContext: {
   byDisplayName: { [componentName: string]: ComponentInfo };
   fromComponent: (Component: React.ComponentType) => ComponentInfo;
   parents: ComponentInfo[];
@@ -30,5 +30,3 @@ componentInfoContext.fromComponent = Component => {
 };
 
 componentInfoContext.parents = infoObjects.filter(({ isParent }) => isParent);
-
-export default componentInfoContext;

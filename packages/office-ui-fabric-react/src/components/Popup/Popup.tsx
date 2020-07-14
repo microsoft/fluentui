@@ -36,7 +36,6 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     this.state = { needsVerticalScrollBar: false };
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
@@ -67,7 +66,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   public componentWillUnmount(): void {
     this._disposables.forEach((dispose: () => void) => dispose());
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     if (this.props.shouldRestoreFocus) {
       const { onRestoreFocus = defaultFocusRestorer } = this.props;
       onRestoreFocus({ originalElement: this._originalFocusedElement, containsFocus: this._containsFocus });
@@ -173,6 +172,11 @@ function defaultFocusRestorer(options: { originalElement?: HTMLElement | Window;
   const { originalElement, containsFocus } = options;
 
   if (originalElement && containsFocus && originalElement !== window) {
-    originalElement.focus();
+    // Make sure that the focus method actually exists
+    // In some cases the object might exist but not be a real element.
+    // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
+    if (originalElement.focus) {
+      originalElement.focus();
+    }
   }
 }

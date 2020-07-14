@@ -3,12 +3,13 @@ import { Accessibility, AccessibilityDefinition } from '../../types';
 /**
  * @specification
  */
-const formFieldBehavior: Accessibility<FormFieldBehaviorProps> = props => {
+export const formFieldBehavior: Accessibility<FormFieldBehaviorProps> = props => {
   const definition: AccessibilityDefinition = {
     attributes: {
       root: {},
       control: {
         ...(props.hasErrorMessage && { 'aria-invalid': true }),
+        'aria-labelledby': `${props.labelId}`,
         ...(props.messageId && { 'aria-labelledby': `${props.labelId} ${props.messageId}` }),
       },
       message: {
@@ -19,8 +20,6 @@ const formFieldBehavior: Accessibility<FormFieldBehaviorProps> = props => {
 
   return definition;
 };
-
-export default formFieldBehavior;
 
 export type FormFieldBehaviorProps = {
   /** Field has error message */

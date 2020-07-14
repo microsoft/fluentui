@@ -143,7 +143,12 @@ export const ScrollablePaneDetailsListExample: React.FunctionComponent = () => {
     <div className={classNames.wrapper}>
       <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto}>
         <Sticky stickyPosition={StickyPositionType.Header}>
-          <TextField className={classNames.filter} label="Filter by name:" onChange={onFilterChange} />
+          <TextField
+            className={classNames.filter}
+            label="Filter by name:"
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={onFilterChange}
+          />
         </Sticky>
         <Sticky stickyPosition={StickyPositionType.Header}>
           <h1 className={classNames.header}>Item list</h1>

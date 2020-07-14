@@ -1,9 +1,9 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
-import { TeamsTableVariables } from './tableVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { TableVariables } from './tableVariables';
 import { TableStylesProps } from '../../../../components/Table/Table';
 
-export default {
-  root: ({ variables: v }: ComponentStyleFunctionParam<TableStylesProps, TeamsTableVariables>): ICSSInJSStyle => {
+export const tableStyles: ComponentSlotStylesPrepared<TableStylesProps, TableVariables> = {
+  root: ({ variables: v }): ICSSInJSStyle => {
     return {
       display: 'flex',
       flexDirection: 'column',

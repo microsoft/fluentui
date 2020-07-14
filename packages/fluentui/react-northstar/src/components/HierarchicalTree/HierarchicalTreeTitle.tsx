@@ -16,16 +16,17 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
-  ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import { getElementType, useUnhandledProps, useTelemetry, useAccessibility, useStyles } from '@fluentui/react-bindings';
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useFluentContext,
+  useTelemetry,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface HierarchicalTreeTitleProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -50,9 +51,12 @@ export const hierarchicalTreeTitleClassName = 'ui-hierarchicaltree__title';
 
 export type HierarchicalTreeTitleStylesProps = never;
 
-const HierarchicalTreeTitle: React.FC<WithAsProp<HierarchicalTreeTitleProps>> &
+/**
+ * A TreeTitle renders a title of TreeItem.
+ */
+export const HierarchicalTreeTitle: ComponentWithAs<'a', HierarchicalTreeTitleProps> &
   FluentComponentStaticProps<HierarchicalTreeTitleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HierarchicalTreeTitle.displayName, context.telemetry);
   setStart();
 
@@ -127,8 +131,3 @@ HierarchicalTreeTitle.create = createShorthandFactory({
   Component: HierarchicalTreeTitle,
   mappedProp: 'content',
 });
-
-/**
- * A TreeTitle renders a title of TreeItem.
- */
-export default withSafeTypeForAs<typeof HierarchicalTreeTitle, HierarchicalTreeTitleProps, 'a'>(HierarchicalTreeTitle);

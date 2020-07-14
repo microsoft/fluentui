@@ -8,8 +8,8 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { KeyCodes, resetIds } from '../../Utilities';
 import { isConformant } from '@fluentui/react-conformance';
+import { resetIds, KeyCodes } from '@uifabric/utilities';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
@@ -29,7 +29,7 @@ describe('Slider', () => {
     componentPath: path.join(__dirname, 'Slider.tsx'),
     Component: Slider,
     displayName: 'Slider',
-    disabledTests: ['has-docblock'],
+    disabledTests: ['has-docblock', 'kebab-aria-attributes'],
   });
 
   it('renders correctly', () => {

@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
-interface IRootStyles {
-  height: string;
-  width: string;
-}
 
 export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, {}> {
   constructor(props: IVerticalBarChartProps) {
@@ -82,10 +76,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       },
     ];
 
-    const rootStyle: IRootStyles = { width: '650px', height: '400px' };
-
     return (
-      <div className={mergeStyles(rootStyle)}>
+      <div style={{ width: '650px', height: '400px' }}>
         <VerticalBarChart data={points} width={650} height={400} chartLabel={'Basic Chart with Numeric Axes'} />
       </div>
     );

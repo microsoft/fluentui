@@ -132,16 +132,12 @@ describe('Toggle', () => {
     const wrapper = mount(
       <form
         action="#"
-        // tslint:disable-next-line:jsx-no-lambda
         onSubmit={e => {
           onSubmit();
           e.preventDefault();
         }}
       >
-        <Toggle
-          // tslint:disable-next-line:jsx-no-lambda
-          label="Label"
-        />
+        <Toggle label="Label" />
       </form>,
     );
     const button = wrapper.find('button');

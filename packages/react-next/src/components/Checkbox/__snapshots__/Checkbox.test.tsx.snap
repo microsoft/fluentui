@@ -8,6 +8,7 @@ exports[`Checkbox renders checked correctly 1`] = `
     aria-checked="true"
     aria-label="Standard checkbox"
     checked={true}
+    data-ktp-execute-target={true}
     id="checkbox-0"
     onChange={[Function]}
     type="checkbox"
@@ -18,24 +19,23 @@ exports[`Checkbox renders checked correctly 1`] = `
   >
     <div
       className="ms-Checkbox-checkbox"
+      data-ktp-target={true}
     >
-      <i
+      <span
         aria-hidden={true}
-        className=
-            ms-Checkbox-checkmark
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-style: normal;
-              font-weight: normal;
-              speak: none;
-            }
-        data-icon-name="CheckMark"
+        className="ms-Checkbox-checkmark"
+        role="presentation"
+        style={Object {}}
       >
-        
-      </i>
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+          />
+        </svg>
+      </span>
     </div>
     <span
       aria-hidden="true"
@@ -55,6 +55,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
     aria-checked="mixed"
     aria-label="Standard checkbox"
     checked={false}
+    data-ktp-execute-target={true}
     id="checkbox-0"
     onChange={[Function]}
     type="checkbox"
@@ -65,24 +66,23 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
   >
     <div
       className="ms-Checkbox-checkbox"
+      data-ktp-target={true}
     >
-      <i
+      <span
         aria-hidden={true}
-        className=
-            ms-Checkbox-checkmark
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-style: normal;
-              font-weight: normal;
-              speak: none;
-            }
-        data-icon-name="CheckMark"
+        className="ms-Checkbox-checkmark"
+        role="presentation"
+        style={Object {}}
       >
-        
-      </i>
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+          />
+        </svg>
+      </span>
     </div>
     <span
       aria-hidden="true"
@@ -102,6 +102,7 @@ exports[`Checkbox renders unchecked correctly 1`] = `
     aria-checked="false"
     aria-label="Standard checkbox"
     checked={false}
+    data-ktp-execute-target={true}
     id="checkbox-0"
     onChange={[Function]}
     type="checkbox"
@@ -112,24 +113,23 @@ exports[`Checkbox renders unchecked correctly 1`] = `
   >
     <div
       className="ms-Checkbox-checkbox"
+      data-ktp-target={true}
     >
-      <i
+      <span
         aria-hidden={true}
-        className=
-            ms-Checkbox-checkmark
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-style: normal;
-              font-weight: normal;
-              speak: none;
-            }
-        data-icon-name="CheckMark"
+        className="ms-Checkbox-checkmark"
+        role="presentation"
+        style={Object {}}
       >
-        
-      </i>
+        <svg
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+          />
+        </svg>
+      </span>
     </div>
     <span
       aria-hidden="true"

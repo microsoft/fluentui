@@ -9,7 +9,6 @@ import { IStyleOptions } from './IStyleOptions';
 
 const DISPLAY_NAME = 'displayName';
 
-// tslint:disable-next-line:no-any
 type IDictionary = { [key: string]: any };
 
 interface IRuleSet {
@@ -105,10 +104,8 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
     } else if (Array.isArray(arg)) {
       extractRules(arg, rules, currentSelector);
     } else {
-      // tslint:disable-next-line:no-any
       for (const prop in arg as any) {
         if (prop === 'selectors') {
-          // tslint:disable-next-line:no-any
           const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 
           for (let newSelector in selectors) {
@@ -134,10 +131,8 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
           if ((arg as any)[prop] !== undefined) {
             // Else, add the rule to the currentSelector.
             if (prop === 'margin' || prop === 'padding') {
-              // tslint:disable-next-line:no-any
               expandQuads(currentRules, prop, (arg as any)[prop]);
             } else {
-              // tslint:disable-next-line:no-any
               (currentRules as any)[prop] = (arg as any)[prop] as any;
             }
           }

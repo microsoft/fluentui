@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IButtonProps } from '@fluentui/react-next/lib/compat/Button';
 import { ITheme, IStyle } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
 /**
@@ -27,7 +27,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<ISearchBox>;
+  componentRef?: React.Ref<ISearchBox>;
 
   /**
    * Placeholder for the search box.
@@ -48,26 +48,26 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Callback executed when the user presses enter in the search box.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSearch?: (newValue: any) => void;
 
   /**
    * Callback executed when the user clears the search box by either clicking 'X' or hitting escape.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onClear?: (ev?: any) => void;
 
   /**
    * Callback executed when the user presses escape in the search box.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onEscape?: (ev?: any) => void;
 
   /**
    * Deprecated at v0.52.2, use `onChange` instead.
    * @deprecated Use `onChange` instead.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChanged?: (newValue: any) => void;
 
   /**
@@ -77,8 +77,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The default value of the text in the SearchBox, in the case of an uncontrolled component.
-   * This prop is being deprecated since so far, uncontrolled behavior has not been implemented.
-   * @deprecated Not implemented.
    */
   defaultValue?: string;
 

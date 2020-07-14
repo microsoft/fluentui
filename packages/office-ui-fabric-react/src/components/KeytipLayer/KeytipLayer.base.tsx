@@ -12,6 +12,7 @@ import {
   EventGroup,
   Async,
   initializeComponentRef,
+  KeyCodes,
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
@@ -38,7 +39,7 @@ export interface IKeytipLayerState {
 // Default sequence is Alt-Windows (Alt-Meta) in Windows, Option-Control (Alt-Control) in Mac
 const defaultStartSequence: IKeytipTransitionKey = {
   key: isMac() ? 'Control' : 'Meta',
-  modifierKeys: [KeytipTransitionModifier.alt],
+  modifierKeys: [KeyCodes.alt],
 };
 
 // Default exit sequence is the same as the start sequence
@@ -78,7 +79,6 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
 
   private _keyHandled = false;
 
-  // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
 
@@ -436,18 +436,18 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
    * @returns List of ModifierKeyCodes that were pressed
    */
   private _getModifierKey(key: string, ev: React.KeyboardEvent<HTMLElement>): KeytipTransitionModifier[] | undefined {
-    const modifierKeys = [];
+    const modifierKeys: KeytipTransitionModifier[] = [];
     if (ev.altKey && key !== 'Alt') {
-      modifierKeys.push(KeytipTransitionModifier.alt);
+      modifierKeys.push(KeyCodes.alt);
     }
     if (ev.ctrlKey && key !== 'Control') {
-      modifierKeys.push(KeytipTransitionModifier.ctrl);
+      modifierKeys.push(KeyCodes.ctrl);
     }
     if (ev.shiftKey && key !== 'Shift') {
-      modifierKeys.push(KeytipTransitionModifier.shift);
+      modifierKeys.push(KeyCodes.shift);
     }
     if (ev.metaKey && key !== 'Meta') {
-      modifierKeys.push(KeytipTransitionModifier.meta);
+      modifierKeys.push(KeyCodes.leftWindow);
     }
     return modifierKeys.length ? modifierKeys : undefined;
   }
@@ -470,7 +470,11 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
 
     // Add the keytip to the queue to show later
     if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
+      // Ensure existing children are still shown.
+      this._delayedKeytipQueue = this._delayedKeytipQueue.concat(this._keytipTree.currentKeytip?.children || []);
+
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
+
       // Ensure the child of currentKeytip is successfully added to currentKeytip's children and update it if not.
       // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node
       // in currentKeytip when that parent is the currentKeytip.

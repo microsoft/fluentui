@@ -1,10 +1,7 @@
-/* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
-import { shallow } from 'enzyme';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
-import { PersonaCoinBase } from './PersonaCoin.base';
 import { wrapPersona } from '../Persona.test';
 
 const testImage1x1 =
@@ -69,13 +66,5 @@ describe('PersonaCoin', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  it('sets isImageLoaded to false if imageUrl changes from valid to undefined', () => {
-    const component = shallow(<PersonaCoinBase imageUrl={testImage1x1} />);
-    component.setState({ isImageLoaded: true });
-    component.setProps({ imageUrl: undefined });
-    const isImageLoaded = component.state('isImageLoaded');
-    expect(isImageLoaded).toBe(false);
   });
 });

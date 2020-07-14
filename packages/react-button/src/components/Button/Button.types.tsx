@@ -1,26 +1,36 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandValue, ComposeStandardStatics, RecursivePartial } from '../../utils/tempTypes';
-import { ComposeOptions } from '@fluentui/react-compose';
+import { BaseSlots, ComponentProps, SlotProp, SlotProps } from '@fluentui/react-compose';
 import { ColorPlateSet } from '@fluentui/react-theme-provider';
+import { RecursivePartial } from '../../utils/tempTypes';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
+/**
+ * {@docCategory Button}
+ */
+export interface ButtonRef {
+  /**
+   * Sets focus to the button.
+   */
+  focus: () => void;
+}
+
 export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLButtonElement> {
+  /**
+   * Access the imperative API of the Button.
+   */
+  componentRef?: React.RefObject<ButtonRef>;
+
   /**
    * Shorthand icon. A shorthand prop can be a literal, object,
    * JSX, or function which takes render options.
    */
-  icon?: ShorthandValue<{}>;
-
-  /**
-   * Shorthand content within the button.
-   */
-  content?: ShorthandValue<{}>;
+  icon?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
 
   /**
    * Shorthand loader content within the button.
    */
-  loader?: ShorthandValue<{}>;
+  loader?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
 
   /** A button can appear circular. */
   circular?: boolean;
@@ -34,7 +44,7 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   /** A button can contain only an icon. */
   iconOnly?: boolean;
 
-  /** An icon button can format its Icon to appear before or after its content. */
+  /** An icon button can format its icon to appear before or after its content. */
   iconPosition?: 'before' | 'after';
 
   /** A button that inherits its background and has a subtle appearance. */
@@ -73,20 +83,16 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   tokens?: RecursivePartial<ButtonTokens>;
 }
 
-export interface ButtonState extends ButtonProps {}
+export interface ButtonState extends ButtonProps {
+  buttonRef?: React.RefObject<HTMLButtonElement>;
+}
 
-export interface ButtonSlots {
+export interface ButtonSlots extends BaseSlots {
   icon: React.ElementType;
-  content: React.ElementType;
   loader: React.ElementType;
 }
 
-export type ButtonSlotProps = {
-  [key in keyof ButtonSlots]: ButtonProps[key];
-};
-
-export interface ButtonOptions
-  extends ComposeOptions<ButtonProps, ButtonSlots, ButtonSlotProps, ComposeStandardStatics> {}
+export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 export type ButtonTokens = ColorPlateSet & {
   /* sizing */
@@ -99,6 +105,8 @@ export type ButtonTokens = ColorPlateSet & {
   iconSize: string;
   borderRadius: string;
   borderWidth: string;
+  boxShadow: string;
+  width: string;
 
   size: {
     smallest: string;

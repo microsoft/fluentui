@@ -6,30 +6,24 @@ import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
 import { commonPropTypes, StyledComponentProps, getOrGenerateIdFromShorthand } from '../../utils';
-import {
-  ShorthandValue,
-  ComponentEventHandler,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 
 import { createShorthandFactory } from '../../utils/factories';
-import Popup, { PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
-import Menu, { MenuProps } from '../Menu/Menu';
+import { Popup, PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
+import { Menu, MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
 import { ALIGNMENTS, POSITIONS, PositioningProps } from '../../utils/positioner';
 import {
+  ComponentWithAs,
   useAccessibility,
   useTelemetry,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAutoControlled,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface MenuButtonSlotClassNames {
   menu: string;
@@ -113,8 +107,9 @@ export type MenuButtonStylesProps = never;
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-const MenuButton: React.FC<MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
+  FluentComponentStaticProps<MenuButtonProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();
 
@@ -347,5 +342,3 @@ MenuButton.defaultProps = {
 MenuButton.handledProps = Object.keys(MenuButton.propTypes) as any;
 
 MenuButton.create = createShorthandFactory({ Component: MenuButton, mappedProp: 'menu' });
-
-export default MenuButton;

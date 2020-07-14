@@ -29,7 +29,7 @@ export interface IPieProps {
   /**
    * shape for pie.
    */
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   pie?: any;
 }
 

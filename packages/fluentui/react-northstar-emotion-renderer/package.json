@@ -4,7 +4,7 @@
   "version": "0.50.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.7.6",
+    "@babel/runtime": "^7.10.4",
     "@emotion/cache": "^10.0.29",
     "@emotion/serialize": "^0.11.16",
     "@emotion/sheet": "^0.9.4",
@@ -15,6 +15,7 @@
     "stylis-plugin-rtl": "^1.0.0"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.52.0",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",

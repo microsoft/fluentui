@@ -5,8 +5,6 @@
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/core": "^7.8.3",
-    "@babel/preset-react": "^7.8.3",
     "@fluentui/docs-components": "^0.50.0",
     "@fluentui/react-component-event-listener": "^0.50.0",
     "@fluentui/react-icons-northstar": "^0.50.0",
@@ -19,9 +17,13 @@
     "react-is": "^16.6.3"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.52.0",
     "@types/react-frame-component": "^4.1.1",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0"
+  },
+  "peerDependencies": {
+    "@babel/standalone": "^7.8.3"
   },
   "files": [
     "dist"

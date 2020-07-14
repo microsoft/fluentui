@@ -19,7 +19,7 @@ export interface PopupContentVariables {
   zIndex: number;
 }
 
-export default (siteVars: any): PopupContentVariables => {
+export const popupContentVariables = (siteVars: any): PopupContentVariables => {
   return {
     borderColor: siteVars.colorScheme.default.border2,
     borderRadius: pxToRem(3),

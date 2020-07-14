@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const FilesPdfIcon = createSvgIcon({
+export const FilesPdfIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" className={classes.svg} viewBox="8 8 16 16">
       <g>
@@ -11,5 +11,3 @@ const FilesPdfIcon = createSvgIcon({
   ),
   displayName: 'FilesPdfIcon',
 });
-
-export default FilesPdfIcon;

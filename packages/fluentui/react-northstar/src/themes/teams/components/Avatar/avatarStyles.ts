@@ -23,7 +23,7 @@ const iconSizeToPxValue: Record<SizeValue, number> = {
   largest: 40,
 };
 
-const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
+export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
   root: ({ props: { size } }): ICSSInJSStyle => {
     const sizeInRem = pxToRem(sizeToPxValue[size]);
 
@@ -99,5 +99,3 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
     boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
   }),
 };
-
-export default avatarStyles;

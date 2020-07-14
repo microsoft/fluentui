@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
+import { ISvgIconProps } from '@fluentui/react-icons';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
 import { IKeytipProps } from '../../Keytip';
 
 /**
@@ -36,6 +37,16 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   componentRef?: IRefObject<ICheckbox>;
 
   /**
+   * Label to display next to the checkbox.
+   */
+  label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
+
+  /**
+   * Checkmark Icon to display when checkbox is checked.
+   */
+  checkmark?: SlotProp<ISvgIconProps>;
+
+  /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
    */
   className?: string;
@@ -51,11 +62,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * want the Checkbox instance to maintain its own state.
    */
   defaultChecked?: boolean;
-
-  /**
-   * Label to display next to the checkbox.
-   */
-  label?: string;
 
   /**
    * Disabled state of the checkbox.
@@ -120,16 +126,15 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Custom render function for the label.
+   *
+   * @deprecated Use label prop instead.
    */
   onRenderLabel?: IRenderFunction<ICheckboxProps>;
 
   /**
-   * Custom icon props for the check mark rendered by the checkbox
-   */
-  checkmarkIconProps?: IIconProps;
-
-  /**
-   * Optional keytip for this checkbox
+   * Optional keytip.
+   *
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
 
@@ -203,8 +208,7 @@ export interface ICheckboxStyles {
 /**
  * {@docCategory Checkbox}
  */
-export interface ICheckboxSlots {
-  root: React.ElementType;
+export interface ICheckboxSlots extends BaseSlots {
   input: React.ElementType;
   container: React.ElementType;
   checkbox: React.ElementType;
@@ -220,11 +224,8 @@ export type ICheckboxClasses = { [key in keyof ICheckboxSlots]: string };
 /**
  * {@docCategory Checkbox}
  */
-export type ICheckboxSlotProps = {
-  // tslint:disable-next-line:no-any
-  [key in keyof ICheckboxSlots]: any;
-};
+export type ICheckboxSlotProps = SlotProps<ICheckboxSlots, ICheckboxProps, React.HTMLAttributes<HTMLDivElement>>;
 
-export interface ICheckboxState extends Omit<ICheckboxProps, 'label'>, Partial<ICheckboxSlotProps> {
+export interface ICheckboxState extends Omit<ICheckboxProps, keyof ICheckboxSlotProps>, Partial<ICheckboxSlotProps> {
   ref: React.Ref<HTMLElement>;
 }

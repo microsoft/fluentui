@@ -1,4 +1,4 @@
-import { ComposePreparedOptions, MergePropsResult } from './types';
+import { ComposePreparedOptions, MergePropsResult, GenericDictionary } from './types';
 import { resolveClasses } from './resolveClasses';
 import { resolveSlotProps } from './resolveSlotProps';
 
@@ -7,27 +7,30 @@ import { resolveSlotProps } from './resolveSlotProps';
  * It's expected that the component will call mergeProps(state, options) from within
  * render; after resolving state and before rendering slots and slotProps.
  */
-export function mergeProps<TProps, TState = TProps>(
-  state: TState,
-  options: ComposePreparedOptions<TProps, TState>,
-): MergePropsResult<TState> {
+export function mergeProps<
+  TProps,
+  TState = TProps,
+  TSlots = GenericDictionary,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  TSlotProps = { [key in keyof TSlots]: any }
+>(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState, TSlots, TSlotProps> {
   const result: MergePropsResult<TState> = {
     state: state,
     slots: {
       ...options.slots,
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       root: (state as any).as || options.slots.root || 'div',
     },
     slotProps: {},
   };
 
-  // Resolve slotProps/slots from state.
-  resolveSlotProps(result, options);
-
   // Resolve classes.
   resolveClasses(result, options.classes);
 
+  // Resolve slotProps/slots from state.
+  resolveSlotProps(result, options);
+
   // TODO: Resolve inline styles.
 
-  return result;
+  return result as MergePropsResult<TState, TSlots, TSlotProps>;
 }

@@ -9,7 +9,7 @@ import {
   ThemePrepared,
 } from '@fluentui/styles';
 
-import resolveStyles from '../../src/styles/resolveStyles';
+import { resolveStyles } from '../../src/styles/resolveStyles';
 
 const testComponentStyles: ComponentSlotStylesPrepared<{}, { color: string }> = {
   root: ({ variables: v, rtl }): ICSSInJSStyle => ({
@@ -33,12 +33,20 @@ const resolveStylesOptions = (options?: {
   displayNames?: ResolveStylesOptions['allDisplayNames'];
   componentStyles?: Record<string, ComponentSlotStylesPrepared>;
   performance?: Partial<ResolveStylesOptions['performance']>;
-  props?: ResolveStylesOptions['props'];
+  componentProps?: ResolveStylesOptions['componentProps'];
+  inlineStylesProps?: ResolveStylesOptions['inlineStylesProps'];
   rtl?: ResolveStylesOptions['rtl'];
   renderRule?: RendererRenderRule;
 }): ResolveStylesOptions => {
-  const { componentStyles, displayNames = ['Test'], performance, props = {}, renderRule = () => '', rtl = false } =
-    options || {};
+  const {
+    componentStyles,
+    displayNames = ['Test'],
+    performance,
+    componentProps = {},
+    inlineStylesProps = {},
+    renderRule = () => '',
+    rtl = false,
+  } = options || {};
 
   const theme: ThemePrepared = {
     ...emptyTheme,
@@ -51,7 +59,8 @@ const resolveStylesOptions = (options?: {
     theme,
     allDisplayNames: displayNames,
     primaryDisplayName: displayNames[0],
-    props,
+    componentProps,
+    inlineStylesProps,
     rtl,
     disableAnimations: false,
     renderer: {
@@ -60,6 +69,7 @@ const resolveStylesOptions = (options?: {
     },
     performance: { ...defaultPerformanceOptions, ...performance },
     saveDebug: () => {},
+    telemetry: undefined,
   };
 };
 
@@ -134,7 +144,7 @@ describe('resolveStyles', () => {
     spyOn(testComponentStyles, 'root').and.callThrough();
     const options = resolveStylesOptions({
       displayNames: ['Test2'],
-      props: { primary: true },
+      componentProps: { primary: true },
     });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
@@ -149,7 +159,7 @@ describe('resolveStyles', () => {
     const renderRule = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
       displayNames: ['Test3'],
-      props: { primary: true },
+      componentProps: { primary: true },
       renderRule,
     });
     const { classes } = resolveStyles(options, resolvedVariables);
@@ -182,11 +192,11 @@ describe('resolveStyles', () => {
     spyOn(testComponentStyles, 'root').and.callThrough();
     const options = resolveStylesOptions({
       displayNames: ['Test4'],
-      props: { primary: true },
+      componentProps: { primary: true },
     });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(
-      { ...options, props: { primary: false } },
+      { ...options, componentProps: { primary: false } },
       resolvedVariables,
     );
 
@@ -200,12 +210,12 @@ describe('resolveStyles', () => {
     const renderRule = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
       displayNames: ['Test5'],
-      props: { primary: true },
+      componentProps: { primary: true },
       renderRule,
     });
     const { classes } = resolveStyles(options, resolvedVariables);
 
-    options.props = { primary: false };
+    options.componentProps = { primary: false };
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables);
 
     expect(classes['root']).toBeDefined();
@@ -244,7 +254,7 @@ describe('resolveStyles', () => {
 
   test('does not cache styles if there are inline overrides', () => {
     spyOn(testComponentStyles, 'root').and.callThrough();
-    const propsInlineOverrides: ResolveStylesOptions['props'][] = [
+    const propsInlineOverrides: ResolveStylesOptions['inlineStylesProps'][] = [
       { styles: { fontSize: '10px' } },
       { design: { left: '10px' } },
       { variables: { backgroundColor: 'yellow' } },
@@ -258,9 +268,9 @@ describe('resolveStyles', () => {
 
     const propsInlineOverridesSize = propsInlineOverrides.length;
 
-    _.forEach(propsInlineOverrides, (props, idx) => {
+    _.forEach(propsInlineOverrides, (inlineStylesProps, idx) => {
       const options = resolveStylesOptions({
-        props,
+        inlineStylesProps,
         performance: { enableStylesCaching: false },
       });
 
@@ -277,7 +287,7 @@ describe('resolveStyles', () => {
 
   test('does not cache classes if there are inline overrides', () => {
     const renderRule = jest.fn().mockReturnValue('a');
-    const propsInlineOverrides: ResolveStylesOptions['props'][] = [
+    const propsInlineOverrides: ResolveStylesOptions['inlineStylesProps'][] = [
       { styles: { fontSize: '10px' } },
       { design: { left: '10px' } },
       { variables: { backgroundColor: 'yellow' } },
@@ -285,9 +295,9 @@ describe('resolveStyles', () => {
 
     const propsInlineOverridesSize = propsInlineOverrides.length;
 
-    _.forEach(propsInlineOverrides, props => {
+    _.forEach(propsInlineOverrides, inlineStylesProps => {
       const options = resolveStylesOptions({
-        props,
+        inlineStylesProps,
         performance: { enableStylesCaching: false },
         renderRule,
       });
@@ -323,7 +333,7 @@ describe('resolveStyles', () => {
     test('avoids "classes" computation when enabled', () => {
       const renderRule = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
-        props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
+        inlineStylesProps: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
         performance: { enableBooleanVariablesCaching: true },
         renderRule,
       });
@@ -348,7 +358,7 @@ describe('resolveStyles', () => {
     test('forces "classes" computation when disabled', () => {
       const renderRule = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
-        props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
+        inlineStylesProps: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
         performance: { enableBooleanVariablesCaching: false },
         renderRule,
       });
@@ -361,7 +371,7 @@ describe('resolveStyles', () => {
     test('avoids "styles" computation when enabled', () => {
       spyOn(testComponentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
-        props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
+        inlineStylesProps: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
         performance: { enableBooleanVariablesCaching: true },
       });
 
@@ -383,7 +393,7 @@ describe('resolveStyles', () => {
     test('when enabled only "variables" as plain objects can be cached', () => {
       spyOn(testComponentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
-        props: { variables: () => {} },
+        inlineStylesProps: { variables: () => {} },
         performance: { enableBooleanVariablesCaching: true },
       });
 
@@ -395,7 +405,7 @@ describe('resolveStyles', () => {
     test('when enabled only "variables" as boolean or nil properties can be cached', () => {
       spyOn(testComponentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
-        props: { variables: { foo: 'bar' } },
+        inlineStylesProps: { variables: { foo: 'bar' } },
         performance: { enableBooleanVariablesCaching: true },
       });
 

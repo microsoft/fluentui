@@ -1,1 +1,1 @@
-export { default } from './attachmentVariables';
+export { attachmentVariables as attachmentBodyVariables } from './attachmentVariables';

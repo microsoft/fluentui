@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react-next/lib/Persona';
+import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@fluentui/react-next';
 import { Checkbox } from '@fluentui/react-next/lib/Checkbox';
 import { Label } from '@fluentui/react-next/lib/Label';
 import { Stack } from '@fluentui/react-next/lib/Stack';
@@ -22,7 +22,12 @@ export const PersonaBasicExample: React.FunctionComponent = () => {
 
   return (
     <Stack tokens={{ childrenGap: 10 }}>
-      <Checkbox label="Include persona details" checked={renderDetails} onChange={onChange} />
+      <Checkbox
+        label="Include persona details"
+        checked={renderDetails}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={onChange}
+      />
 
       <Label>Size 8 Persona, with no presence</Label>
       <Persona
