@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Replace tslint with eslint",
-  "packageName": "@fluentui/examples",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-08T01:51:20.841Z"
-}

@@ -52,6 +52,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
   }
 
+  public componentDidUpdate(prevProps: ILegendsProps) {
+    if (prevProps.selectedLegend !== this.props.selectedLegend) {
+      this.setState({ selectedLegend: this.props.selectedLegend! });
+    }
+  }
+
   public render(): JSX.Element {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
