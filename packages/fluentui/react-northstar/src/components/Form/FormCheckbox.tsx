@@ -31,9 +31,12 @@ export const FormCheckbox = compose<
     label: () => null,
     control: Checkbox,
   },
-  slotProps: ({ label }) => ({
+  slotProps: ({ label, errorMessage }) => ({
     control: {
       label,
+    },
+    message: {
+      error: !!errorMessage,
     },
   }),
 });
