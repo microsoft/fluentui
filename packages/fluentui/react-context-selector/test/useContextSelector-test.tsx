@@ -1,7 +1,6 @@
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
 
 const TestContext = createContext<{ index: number }>({ index: -1 });
 
