@@ -15,8 +15,8 @@ import { ComponentInfo } from '../../types';
 import ComponentBestPractices from './ComponentBestPractices';
 import * as _ from 'lodash';
 
-const ComponentPlayground = React.lazy(
-  /* webpackChunkName: "playground" */ () => import('../ComponentPlayground/ComponentPlayground'),
+const ComponentPlayground = React.lazy(() =>
+  import(/* webpackChunkName: "playground" */ '../ComponentPlayground/ComponentPlayground'),
 );
 
 const exampleEndStyle: React.CSSProperties = {
