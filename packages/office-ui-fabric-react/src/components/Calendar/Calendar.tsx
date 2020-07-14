@@ -84,7 +84,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
 
   private _dayPicker = React.createRef<ICalendarDay>();
   private _monthPicker = React.createRef<ICalendarMonth>();
-  private isFocusInside = false;
+  private _hasFocus = false;
 
   private _focusOnUpdate: boolean;
 
