@@ -32,7 +32,7 @@ import { Text } from '../Text/Text';
 import { Button } from '../Button/Button';
 
 // TODO: extract to date-time-utilities
-export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
+export const DEFAULT_CALENDAR_LOCALIZED_STRINGS: IDateGridStrings = {
   months: [
     'January',
     'February',
@@ -53,7 +53,7 @@ export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
 };
 
 // TODO: extract to date-time-utilities
-export interface IDateFormatting {
+export interface IDateCalendarFormatting {
   /**
    * Format the date according to specified function.
    * Intended use case is localization.
@@ -67,7 +67,7 @@ export interface IDateFormatting {
 }
 
 // TODO: extract to date-time-utilities
-export interface IDatepickerOptions extends IRestrictedDatesOptions {
+export interface IDatepickerCalendarOptions extends IRestrictedDatesOptions {
   /**
    * The first day of the week for your locale.
    */
@@ -108,7 +108,7 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
   workWeekDays?: DayOfWeek[];
 }
 
-export interface DatepickerCalendarProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
+export interface DatepickerCalendarProps extends IDatepickerCalendarOptions, IDateCalendarFormatting, UIComponentProps {
   /**
    * The currently selected date
    */
@@ -158,7 +158,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     dateRangeType,
   } = props;
 
-  const localizedStrings = props.localizedStrings ?? DEFAULT_LOCALIZED_STRINGS;
+  const localizedStrings = props.localizedStrings ?? DEFAULT_CALENDAR_LOCALIZED_STRINGS;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DatepickerCalendar.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
