@@ -89,14 +89,32 @@ const DEFAULT_PROPS = {
   allFocusable: false,
 } as const;
 
-function useFocusLogic() {
+function useFocusLogic({ disableAutoFocus, allowTextInput }: IDatePickerProps) {
   const textFieldRef = React.useRef<ITextField>(null);
+  const preventFocusOpeningPicker = React.useRef(false);
 
   const focus = () => {
     textFieldRef.current?.focus?.();
   };
 
-  return [textFieldRef, focus] as const;
+  const onTextFieldFocus = (): void => {
+    if (disableAutoFocus) {
+      return;
+    }
+
+    if (!allowTextInput) {
+      if (!preventFocusOpeningPicker.current) {
+        this.showDatePickerPopup();
+      }
+      preventFocusOpeningPicker.current = false;
+    }
+  };
+
+  const preventNextFocusOpeningPicker = () => {
+    preventFocusOpeningPicker.current = true;
+  };
+
+  return [textFieldRef, focus, onTextFieldFocus, preventNextFocusOpeningPicker] as const;
 }
 
 function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: IDatePickerProps, focus: () => void) {
@@ -223,7 +241,7 @@ export const DatePickerBase = React.forwardRef(
     const id = useId('DatePicker', props.id);
     const calloutId = useId('DatePicker-Callout');
 
-    const [textFieldRef, focus] = useFocusLogic();
+    const [textFieldRef, focus, onTextFieldFocus, preventNextFocusOpeningPicker] = useFocusLogic(props);
     const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility(props, focus);
     const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate(props);
     const [errorMessage, validateTextInput] = useErrorMessage(
@@ -251,6 +269,8 @@ export const DatePickerBase = React.forwardRef(
           setFormattedDate,
           errorMessage,
           validateTextInput,
+          onTextFieldFocus,
+          preventNextFocusOpeningPicker,
         }}
       />
     );
@@ -268,6 +288,8 @@ interface IDatePickerBaseClassProps extends IDatePickerProps {
     selectedDate?: Date;
     formattedDate: string;
     errorMessage?: string;
+    onTextFieldFocus(): void;
+    preventNextFocusOpeningPicker(): void;
     validateTextInput(newValue?: string): void;
     setSelectedDate(newValue: Date | undefined): void;
     setFormattedDate(newValue: string): void;
@@ -279,14 +301,11 @@ interface IDatePickerBaseClassProps extends IDatePickerProps {
 class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, never> implements IDatePicker {
   private _calendar = React.createRef<ICalendar>();
   private _datePickerDiv = React.createRef<HTMLDivElement>();
-  private _preventFocusOpeningPicker: boolean;
 
   constructor(props: IDatePickerBaseClassProps) {
     super(props);
 
     initializeComponentRef(this);
-
-    this._preventFocusOpeningPicker = false;
   }
 
   public render(): JSX.Element {
@@ -362,7 +381,7 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, nev
               onClick: this._onIconClick,
             }}
             onKeyDown={this._onTextFieldKeyDown}
-            onFocus={this._onTextFieldFocus}
+            onFocus={this.props.hoisted.onTextFieldFocus}
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
             onChange={this._onTextFieldChanged}
@@ -429,7 +448,7 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, nev
 
   public showDatePickerPopup(): void {
     if (!this.props.hoisted.isCalendarShown) {
-      this._preventFocusOpeningPicker = true;
+      this.props.hoisted.preventNextFocusOpeningPicker();
       this.props.hoisted.setIsCalendarShown(true);
     }
   }
@@ -458,20 +477,6 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, nev
     }
     if (this._calendar.current && shouldFocus) {
       this._calendar.current.focus();
-    }
-  };
-
-  private _onTextFieldFocus = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (this.props.disableAutoFocus) {
-      return;
-    }
-
-    if (!this.props.allowTextInput) {
-      if (!this._preventFocusOpeningPicker) {
-        this.showDatePickerPopup();
-      } else {
-        this._preventFocusOpeningPicker = false;
-      }
     }
   };
 
@@ -558,7 +563,7 @@ class DatePickerBaseClass extends React.Component<IDatePickerBaseClassProps, nev
    * Callback for closing the calendar callout
    */
   private _calendarDismissed = (): void => {
-    this._preventFocusOpeningPicker = true;
+    this.props.hoisted.preventNextFocusOpeningPicker();
     this._dismissDatePickerPopup();
     // don't need to focus the text box, if necessary the focusTrapZone will do it
   };
