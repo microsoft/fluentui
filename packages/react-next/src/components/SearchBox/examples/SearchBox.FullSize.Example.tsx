@@ -4,7 +4,7 @@ import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
 const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export const SearchBoxFullSizeExample = () => {
   return (
     <Stack tokens={stackTokens}>

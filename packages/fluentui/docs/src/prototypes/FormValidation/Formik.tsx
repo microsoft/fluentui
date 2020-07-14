@@ -25,6 +25,7 @@ const FormValidateFormik = () => (
       return errors;
     }}
     onSubmit={(values, { setSubmitting }) => {
+      // eslint-disable-next-line no-console
       console.log(JSON.stringify(values, null, 2));
       setSubmitting(false);
     }}

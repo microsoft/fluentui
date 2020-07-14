@@ -11,17 +11,14 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       fontSize: FontSizes.size13,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       color: semanticColors.buttonText,
-      selectors: {
-        // standard button
-        '&.is-expanded': {
-          color: semanticColors.buttonText,
-        },
-      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.buttonBackgroundDisabled,
       color: semanticColors.buttonTextDisabled,
       border: `0px`,
+    },
+    rootExpanded: {
+      color: semanticColors.buttonText,
     },
     rootHovered: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,

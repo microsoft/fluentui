@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 interface MenuItemContentOwnProps {
   /** Indicates whether the parent menu item has menu. */
@@ -25,7 +25,7 @@ export const menuItemContentClassName = 'ui-menu__itemcontent';
 /**
  * A MenuItemContent allows a user to have a dedicated component that can be targeted from the theme.
  */
-const MenuItemContent = compose<'span', MenuItemContentProps, MenuItemContentStylesProps, BoxProps, {}>(Box, {
+export const MenuItemContent = compose<'span', MenuItemContentProps, MenuItemContentStylesProps, BoxProps, {}>(Box, {
   className: menuItemContentClassName,
   displayName: 'MenuItemContent',
   mapPropsToStylesProps: props => ({
@@ -52,5 +52,3 @@ MenuItemContent.propTypes = {
   vertical: PropTypes.bool,
   inSubmenu: PropTypes.bool,
 };
-
-export default MenuItemContent;

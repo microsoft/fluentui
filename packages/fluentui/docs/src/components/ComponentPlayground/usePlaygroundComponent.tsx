@@ -1,8 +1,6 @@
 import * as FluentUI from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { ComponentInfo } from '../../types';
 import componentInfoContext from '../../utils/componentInfoContext';
@@ -10,7 +8,7 @@ import componentInfoContext from '../../utils/componentInfoContext';
 import createHookGenerator from './createHookGenerator';
 
 const usePlaygroundComponent = (componentName: string): [React.ReactElement, string[]] => {
-  const context: FluentUI.ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = FluentUI.useFluentContext();
   const componentInfo: ComponentInfo = componentInfoContext.byDisplayName[componentName];
 
   if (process.env.NODE_ENV !== 'production') {

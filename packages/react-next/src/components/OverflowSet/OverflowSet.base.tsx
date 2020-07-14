@@ -44,11 +44,11 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
       items,
       overflowItems,
       className,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       focusZoneProps,
       styles,
       vertical,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       doNotContainWithinFocusZone,
       role,
       overflowSide = 'end',
@@ -100,7 +100,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
   public focus(forceIntoFirstElement?: boolean): boolean {
     let focusSucceeded = false;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     if (this.props.doNotContainWithinFocusZone) {
       if (this._divContainer.current) {
         focusSucceeded = focusFirstChild(this._divContainer.current);
@@ -124,7 +124,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
       return false;
     }
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     if (this.props.doNotContainWithinFocusZone) {
       if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
         childElement.focus();
@@ -146,7 +146,6 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
     this._unregisterPersistedKeytips();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate() {
     this._unregisterPersistedKeytips();
   }
@@ -245,7 +244,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
    * Gets the subMenu for an overflow item
    * Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getSubMenuForItem(item: IOverflowSetItemProps): any[] | undefined {
     if (this.props.itemSubMenuProvider) {
       return this.props.itemSubMenuProvider(item);

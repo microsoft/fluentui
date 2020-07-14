@@ -16,8 +16,6 @@ const defaultCalloutProps: ICalloutProps = {
   doNotLayer: false,
 };
 
-// tslint:disable:jsx-no-lambda
-
 describe('Tooltip', () => {
   it('renders default Tooltip correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.

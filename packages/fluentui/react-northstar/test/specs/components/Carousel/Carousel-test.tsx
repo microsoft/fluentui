@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import { isConformant } from 'test/specs/commonTests';
-import Carousel, { CarouselProps, carouselSlotClassNames } from 'src/components/Carousel/Carousel';
-import Button from 'src/components/Button/Button';
+import { Carousel, CarouselProps, carouselSlotClassNames } from 'src/components/Carousel/Carousel';
+import { Button } from 'src/components/Button/Button';
 import { carouselNavigationClassName } from 'src/components/Carousel/CarouselNavigation';
 import { carouselNavigationItemClassName } from 'src/components/Carousel/CarouselNavigationItem';
-import Text from 'src/components/Text/Text';
+import { Text } from 'src/components/Text/Text';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 

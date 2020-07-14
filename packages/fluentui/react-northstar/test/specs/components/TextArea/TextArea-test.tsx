@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mountWithProvider as mount } from 'test/utils';
-import TextArea from 'src/components/TextArea/TextArea';
+import { TextArea } from 'src/components/TextArea/TextArea';
 import { isConformant } from 'test/specs/commonTests';
 import * as faker from 'faker';
 

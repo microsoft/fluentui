@@ -11,10 +11,13 @@ import ComponentProps from './ComponentProps';
 import { ComponentDocAccessibility } from './ComponentDocAccessibility';
 import { ThemeContext } from '../../context/ThemeContext';
 import ExampleContext from '../../context/ExampleContext';
-import ComponentPlayground from '../ComponentPlayground/ComponentPlayground';
 import { ComponentInfo } from '../../types';
 import ComponentBestPractices from './ComponentBestPractices';
 import * as _ from 'lodash';
+
+const ComponentPlayground = React.lazy(() =>
+  import(/* webpackChunkName: "playground" */ '../ComponentPlayground/ComponentPlayground'),
+);
 
 const exampleEndStyle: React.CSSProperties = {
   textAlign: 'center',

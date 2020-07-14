@@ -1,9 +1,9 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
 import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { hierarchicalTreeTitleClassName } from '../../../../components/HierarchicalTree/HierarchicalTreeTitle';
 
-const hierarchicalTreeItemStyles = {
+export const hierarchicalTreeItemStyles = {
   root: ({ theme: { siteVariables } }): ICSSInJSStyle => ({
     listStyleType: 'none',
     padding: `0 0 0 ${pxToRem(1)}`,
@@ -16,5 +16,3 @@ const hierarchicalTreeItemStyles = {
     },
   }),
 };
-
-export default hierarchicalTreeItemStyles;

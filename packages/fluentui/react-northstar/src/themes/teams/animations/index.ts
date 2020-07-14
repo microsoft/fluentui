@@ -1,8 +1,8 @@
-import scaleAnimations from './scale';
-import fadeAnimations from './fade';
-import slideAnimations from './slide';
+import { scaleAnimations } from './scale';
+import { fadeInOutAnimations as fadeAnimations } from './fade';
+import { slideAnimations } from './slide';
 
-export default {
+export const animations = {
   ...fadeAnimations,
   ...scaleAnimations,
   ...slideAnimations,

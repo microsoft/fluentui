@@ -2,6 +2,86 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/charting_v2.5.1",
+      "version": "2.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint and fix some violations, including unnecessary map() usage and naming",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Donut chart: when hover/focus on arc the arc should be highlight and remaining arcs are disable",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "7f0a5206b61e4c059631010aa659e69cf99eb842",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@uifabric/charting_v2.5.0",
+      "version": "2.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Area chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "cde96919b4e9233996196c48e7ad8d4ac8326221",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fitcontainer changes done in VS bar chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "1f2048c1503558d5648bd0e72faf3ea62b00d2a0",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "linechart-callout not visible in dense graph issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "957978aa93b4192805a87c0c81f7f380e4cca6a5",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jul 2020 12:34:21 GMT",
+      "tag": "@uifabric/charting_v2.4.0",
+      "version": "2.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Line chart:Expose chart  margins prop for line chart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "b6bd4bf7bd32cecad30625e4a95010aea34a20dc",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Jul 2020 12:32:20 GMT",
+      "tag": "@uifabric/charting_v2.3.11",
+      "version": "2.3.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line Chart-callout and circle Id's udpated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "953592c7bdc750c2f1dbd9e2ca3863774a82c516",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Jul 2020 12:36:49 GMT",
       "tag": "@uifabric/charting_v2.3.10",
       "version": "2.3.10",

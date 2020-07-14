@@ -2,7 +2,7 @@ export interface HierarchicalTreeTitleVariables {
   defaultColor: string;
 }
 
-export default (siteVars: any): HierarchicalTreeTitleVariables => {
+export const hierarchicalTreeTitleVariables = (siteVars: any): HierarchicalTreeTitleVariables => {
   return {
     defaultColor: siteVars.colors.grey[750],
   };

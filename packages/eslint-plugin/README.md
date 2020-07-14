@@ -43,6 +43,10 @@ Example:
 
 Prevent using deprecated `KeyboardEvent` props `which` and `keyCode`, and recommend using `@fluentui/keyboard-key` instead.
 
+### `no-tslint-comments`
+
+Ban `tslint:disable` and `tslint:enable` comments.
+
 ### `no-visibility-modifiers`
 
 Prevent visibility modifiers (`public`, `protected`, `private`) from being specified on class members/methods.

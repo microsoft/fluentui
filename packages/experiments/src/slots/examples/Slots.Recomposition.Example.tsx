@@ -46,6 +46,7 @@ const IconAtEndButtonView: IButtonComponent['view'] = (props, slots) => {
     <slots.root
       type="button"
       role="button"
+      // eslint-disable-next-line react/jsx-no-bind
       onClick={_onClick}
       {...buttonProps}
       disabled={disabled && !allowDisabledFocus}
@@ -72,8 +73,6 @@ const SpinnerAtEndButton: React.FunctionComponent<IButtonProps> = composed<IButt
   },
 );
 
-// tslint:disable:jsx-no-lambda
-// tslint:disable:jsx-key
 export class SlotsRecompositionExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
