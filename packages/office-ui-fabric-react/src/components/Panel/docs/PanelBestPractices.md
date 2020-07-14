@@ -1,7 +1,7 @@
 ### Layout
 
 - Use for self-contained experiences where someone doesn’t need to interact with the app view to complete the task.
-- Consider how the panel and its contained contents will scale across Fabric’s responsive web breakpoints.
+- Consider how the panel and its contained contents will scale across responsive web breakpoints.
 
 #### Header
 
