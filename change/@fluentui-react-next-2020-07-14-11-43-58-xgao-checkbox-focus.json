@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Checkbox: allow focus when disabled.",
+  "packageName": "@fluentui/react-next",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-14T18:43:58.085Z"
+}
