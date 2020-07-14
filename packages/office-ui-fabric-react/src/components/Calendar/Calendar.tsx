@@ -84,6 +84,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
 
   private _dayPicker = React.createRef<ICalendarDay>();
   private _monthPicker = React.createRef<ICalendarMonth>();
+  private isFocusInside = false;
 
   private _focusOnUpdate: boolean;
 
@@ -156,7 +157,6 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
       today,
     } = this.props;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['value']);
-
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
@@ -177,6 +177,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
         <div
           {...nativeProps}
           onBlur={this._onBlur}
+          onFocus={this._onFocus}
           className={css(
             'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
             styles.picker,
@@ -278,8 +279,18 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
     }
   }
 
-  private _onBlur = (event: React.FocusEvent<HTMLDivElement>) => {
-    event.stopPropagation();
+  private _onBlur = (event: React.FocusEvent<HTMLElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      this.isFocusInside = false;
+      this.props.onBlur && this.props.onBlur(event);
+    }
+  };
+
+  private _onFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (!this.isFocusInside) {
+      this.isFocusInside = true;
+      this.props.onFocus && this.props.onFocus(event);
+    }
   };
 
   private _navigateDayPickerDay = (date: Date): void => {
