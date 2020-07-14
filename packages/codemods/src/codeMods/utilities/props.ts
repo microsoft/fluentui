@@ -19,27 +19,32 @@ export function renameProp(
 ) {
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
-    let foundProp = Maybe(val.getAttribute(toRename));
+    const foundProp = Maybe(val.getAttribute(toRename));
     if (foundProp.just) {
       /* If found, do a simple name-replacementName. */
       foundProp.value.set({ name: replacementName });
       if (changeValueMap) {
         /* Change the value of the enum via map conversion. */
-        let enumInJsx = Maybe((foundProp.value as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression));
-        let enumExp = enumInJsx.then(value => {
+        const enumInJsx = Maybe((foundProp.value as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression));
+        const enumExp = enumInJsx.then(value => {
           return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
         });
         if (enumExp.just) {
-          const newEnumName = changeValueMap[enumExp.value.getText()];
-          let firstEnumChild = enumExp.then(value => {
-            return value.getFirstChildByKind(SyntaxKind.Identifier);
+          const oldEnumName = enumExp.then(value => {
+            return value!.getText();
           });
-          let lastEnumChild = enumExp.then(value => {
-            return value.getLastChildByKind(SyntaxKind.Identifier);
-          });
-          if (firstEnumChild.just && lastEnumChild.just) {
-            firstEnumChild.value.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
-            lastEnumChild.value.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
+          if (oldEnumName.just) {
+            const newEnumName = changeValueMap[oldEnumName.value];
+            const firstEnumChild = enumExp.then(value => {
+              return value!.getFirstChildByKind(SyntaxKind.Identifier);
+            });
+            const lastEnumChild = enumExp.then(value => {
+              return value!.getLastChildByKind(SyntaxKind.Identifier);
+            });
+            if (firstEnumChild.just && lastEnumChild.just) {
+              firstEnumChild.value!.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
+              lastEnumChild.value!.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
+            }
           }
         }
       } else if (replacementValue) {
@@ -60,11 +65,11 @@ function renamePropInSpread(
   changeValueMap?: EnumMap<string>,
   replacementValue?: string,
 ) {
-  let allAttributes = element.getAttributes();
+  const allAttributes = element.getAttributes();
   allAttributes.forEach(attribute => {
-    if (attribute.getKind() == SyntaxKind.JsxSpreadAttribute) {
+    if (attribute.getKind() === SyntaxKind.JsxSpreadAttribute) {
       /* Get the name of the object that houses the prop. */
-      let spreadProp = attribute.getFirstChildByKind(SyntaxKind.Identifier);
+      const spreadProp = attribute.getFirstChildByKind(SyntaxKind.Identifier);
       if (
         spreadProp &&
         spreadProp
@@ -76,27 +81,31 @@ function renamePropInSpread(
           continue attempt to rename it. */
         const propKind = spreadProp.getDefinitions();
         if (propKind.length === 1) {
-          let newSpreadName = '__mig' + propKind[0].getName()[0].toUpperCase() + propKind[0].getName().substring(1);
-          let newMapName = '__migEnumMap';
+          const newSpreadName = '__mig' + propKind[0].getName()[0].toUpperCase() + propKind[0].getName().substring(1);
+          const newMapName = '__migEnumMap';
           switch (propKind[0].getKind()) {
             case ts.ScriptElementKind.constElement:
             case ts.ScriptElementKind.letElement:
             case ts.ScriptElementKind.variableElement:
             case ts.ScriptElementKind.parameterElement: {
               const propContainingObject = propKind[0];
-              const blockContainer = Maybe(getBlockContainer(element));
-              if (!blockContainer.just) throw 'unable to get block container from expression';
-              let bc = blockContainer.value;
-              const parentContainer = Maybe(bc.getParentIfKind(SyntaxKind.Block));
-              if (!parentContainer.just) throw 'unable to get parent container from block';
-              const insertIndexMaybe = Maybe(bc.getChildIndex());
-              if (!insertIndexMaybe.just) {
+              const blockContainer = getBlockContainer(element);
+              if (blockContainer === undefined) {
+                // eslint-disable-next-line no-throw-literal
+                throw 'unable to get block container from expression';
+              }
+              const parentContainer = blockContainer.getParentIfKind(SyntaxKind.Block);
+              if (parentContainer === undefined) {
+                // eslint-disable-next-line no-throw-literal
+                throw 'unable to get parent container from block';
+              }
+              const insertIndex = blockContainer.getChildIndex();
+              if (insertIndex === undefined) {
+                // eslint-disable-next-line no-throw-literal
                 throw 'unable to find child index';
               }
-              let pc = parentContainer.value;
-              const insertIndex = insertIndexMaybe.value;
-              if (!pc.getVariableStatement(newSpreadName)) {
-                pc.insertVariableStatement(insertIndex, {
+              if (!parentContainer.getVariableStatement(newSpreadName)) {
+                parentContainer.insertVariableStatement(insertIndex, {
                   declarationKind: VariableDeclarationKind.Const,
                   declarations: [
                     {
@@ -106,8 +115,8 @@ function renamePropInSpread(
                   ],
                 });
               }
-              if (changeValueMap && !pc.getVariableStatement(newMapName)) {
-                pc.insertVariableStatement(insertIndex, {
+              if (changeValueMap && !parentContainer.getVariableStatement(newMapName)) {
+                parentContainer.insertVariableStatement(insertIndex, {
                   declarationKind: VariableDeclarationKind.Const,
                   declarations: [
                     {

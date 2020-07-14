@@ -1,6 +1,7 @@
 import { renameProp, findJsxTag } from '../../utilities';
-import { Project, SyntaxKind, JsxAttribute, EnumDeclaration } from 'ts-morph';
+import { Project, SyntaxKind, JsxAttribute } from 'ts-morph';
 import { EnumMap } from '../../types';
+import { Maybe } from '../../../maybe';
 
 const personaPropsFile = 'mPersonaProps.tsx';
 const personaSpreadPropsFile = 'mPersonaSpreadProps.tsx';
@@ -74,8 +75,18 @@ describe('Props Utilities Test', () => {
       renameProp(tags, 'isDisabled', 'disabled', undefined, 'false');
       tags.forEach(tag => {
         expect(tag.getAttribute('isDisabled')).toBeFalsy();
-        let val = tag.getAttribute('disabled').getFirstChildByKind(SyntaxKind.JsxExpression);
-        expect(val.getText().substring(1, val.getText().length - 1)).toEqual('false');
+        const valMaybe = Maybe(tag.getAttribute('disabled'));
+        const val = valMaybe.then(value => {
+          return value.getFirstChildByKind(SyntaxKind.JsxExpression);
+        });
+        expect(val.just).toBeTruthy();
+        const propValueText = val.then(value => {
+          return value!.getText().substring(1, value!.getText().length - 1);
+        });
+        expect(propValueText.just).toBeTruthy();
+        if (propValueText.just) {
+          expect(propValueText.value).toEqual('false');
+        }
       });
     });
 
@@ -109,20 +120,36 @@ describe('Props Utilities Test', () => {
     it('can replace props with changed enum values', () => {
       const file = project.getSourceFileOrThrow(spinnerPropsFile);
       const tags = findJsxTag(file, 'Spinner');
-      let oldEnumValues: string[] = ['SpinnerType.large', 'SpinnerType.normal'];
+      const oldEnumValues: string[] = ['SpinnerType.large', 'SpinnerType.normal'];
       renameProp(tags, 'type', 'size', spinnerMap);
       tags.forEach(tag => {
         expect(tag.getAttribute('type')).toBeFalsy();
-        let currentEnumValue = oldEnumValues.pop();
-        let inner = (tag.getAttribute('size') as JsxAttribute)
-          .getFirstChildByKind(SyntaxKind.JsxExpression)
-          .getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-        expect(inner).toBeTruthy();
-        const newVal = spinnerMap[currentEnumValue];
-        expect(inner.getLastChildByKind(SyntaxKind.Identifier).getText()).toEqual(
-          newVal.substring(newVal.indexOf('.') + 1),
+        const currentEnumValue = Maybe(oldEnumValues.pop());
+        const innerMaybe = Maybe(
+          (tag.getAttribute('size') as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression),
         );
-        expect(inner.getFirstChildByKind(SyntaxKind.Identifier).getText()).toEqual('SpinnerSize');
+        if (innerMaybe.just && currentEnumValue.just) {
+          const inner = innerMaybe.then(value => {
+            return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
+          });
+
+          expect(inner.just).toBeTruthy();
+          expect(currentEnumValue.just).toBeTruthy();
+          const newVal = spinnerMap[currentEnumValue.value];
+          const firstInnerChild = inner.then(value => {
+            return value!.getFirstChildByKind(SyntaxKind.Identifier);
+          });
+          const LastInnerChild = inner.then(value => {
+            return value!.getLastChildByKind(SyntaxKind.Identifier);
+          });
+          expect(firstInnerChild.just).toBeTruthy();
+          expect(LastInnerChild.just).toBeTruthy();
+          if (firstInnerChild.just && LastInnerChild.just) {
+            /* Need this if statement to clear value on the next line. */
+            expect(firstInnerChild.value!.getText()).toEqual('SpinnerSize');
+            expect(LastInnerChild.value!.getText()).toEqual(newVal.substring(newVal.indexOf('.') + 1));
+          }
+        }
       });
     });
 

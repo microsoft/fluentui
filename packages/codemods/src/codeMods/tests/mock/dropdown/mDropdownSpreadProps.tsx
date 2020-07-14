@@ -6,9 +6,7 @@ export const RenderDropdown = (props: any) => {
   const propsTest = { options: [], isDisabled: false };
   return (
     <div>
-      <Dropdown options={[]} isDisabled={false}>
-        Dropdown!
-      </Dropdown>
+      <Dropdown {...propsTest}>Dropdown!</Dropdown>
       {/* include self closing Dropdown check */}
       <Dropdown options={[]} isDisabled={false} />
     </div>
@@ -19,14 +17,11 @@ export const RenderDropdown = (props: any) => {
 export const RenderLetDropdown = (props: any) => {
   // tslint:disable-next-line: prefer-const
   let propsTest = { options: [], isDisabled: false };
-
   return (
     <div>
-      <Dropdown options={[]} isDisabled={false}>
-        Dropdown!
-      </Dropdown>
+      <Dropdown {...propsTest}>Dropdown!</Dropdown>
       {/* include self closing Dropdown check */}
-      <Dropdown options={[]} isDisabled={false} />
+      <Dropdown {...propsTest} />
     </div>
   );
 };
