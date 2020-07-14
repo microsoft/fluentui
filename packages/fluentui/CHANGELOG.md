@@ -39,6 +39,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix cursor's behavior inside `DropdownSearchInput` @layershifter ([#13800](https://github.com/microsoft/fluentui/pull/13800))
 - Fix global styles to respect `hidden` HTML attribute @pompomon ([#13964](https://github.com/microsoft/fluentui/pull/13964))
 - Fix an issue with throwing errors when a component is rendered outside of `Provider` @layershifter ([#14010](https://github.com/microsoft/fluentui/pull/14010))
+- Start using own React context in `Datepicker` @rymeskar [#1](https://github.com/microsoft/fluentui/pull/1))
 
 ### Features
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))

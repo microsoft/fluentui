@@ -6,6 +6,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   ComponentWithAs,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as _ from 'lodash';
@@ -13,7 +14,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, ComponentEventHandler } from '../../types';
+import { FluentComponentStaticProps, ComponentEventHandler } from '../../types';
 import { commonPropTypes, UIComponentProps } from '../../utils';
 import { Grid } from '../Grid/Grid';
 import {
@@ -141,7 +142,7 @@ export const datepickerCalendarClassName = 'ui-datepicker__calendar';
  */
 export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps> &
   FluentComponentStaticProps<DatepickerCalendarProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DatepickerCalendar.displayName, context.telemetry);
   setStart();
   const datepickerCalendarRef = React.useRef<HTMLElement>();
