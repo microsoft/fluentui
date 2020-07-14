@@ -1,4 +1,12 @@
 import { Accessibility } from '@fluentui/accessibility';
+import {
+  useTelemetry,
+  useAccessibility,
+  getElementType,
+  useUnhandledProps,
+  useStyles,
+  ComponentWithAs,
+} from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
@@ -11,11 +19,12 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  createShorthand,
 } from '../../utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { WithAsProp, withSafeTypeForAs, ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
-import { useTelemetry, useAccessibility, getElementType, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
+import { ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
+import { DividerContent } from './DividerContent';
 
 export interface DividerProps
   extends UIComponentProps,
@@ -48,7 +57,13 @@ export type DividerStylesProps = Required<
 
 export const dividerClassName = 'ui-divider';
 
-const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<DividerProps> = props => {
+/**
+ * A Divider visually segments content.
+ */
+export const Divider: ComponentWithAs<'div', DividerProps> &
+  FluentComponentStaticProps<DividerProps> & {
+    Content: typeof DividerContent;
+  } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
   setStart();
@@ -58,7 +73,6 @@ const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<D
     fitted,
     size,
     important,
-    content,
     vertical,
     className,
     design,
@@ -75,7 +89,7 @@ const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<D
   const { classes } = useStyles<DividerStylesProps>(Divider.displayName, {
     className: dividerClassName,
     mapPropsToStyles: () => ({
-      hasContent: childrenExist(children) || !!content,
+      hasContent: childrenExist(children) || !!props.content,
       color,
       fitted,
       size,
@@ -91,11 +105,13 @@ const Divider: React.FC<WithAsProp<DividerProps>> & FluentComponentStaticProps<D
     rtl: context.rtl,
   });
 
+  const content = createShorthand(DividerContent, props.content, {});
+
   const element = (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
     >
@@ -120,11 +136,8 @@ Divider.defaultProps = {
   size: 0,
 };
 
+Divider.Content = DividerContent;
+
 Divider.handledProps = Object.keys(Divider.propTypes) as any;
 
 Divider.create = createShorthandFactory({ Component: Divider, mappedProp: 'content' });
-
-/**
- * A Divider visually segments content.
- */
-export default withSafeTypeForAs<typeof Divider, DividerProps>(Divider);

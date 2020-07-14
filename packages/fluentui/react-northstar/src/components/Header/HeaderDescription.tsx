@@ -13,8 +13,15 @@ import {
 } from '../../utils';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface HeaderDescriptionProps
   extends UIComponentProps,
@@ -30,7 +37,10 @@ export interface HeaderDescriptionProps
 export const headerDescriptionClassName = 'ui-header__description';
 export type HeaderDescriptionStylesProps = Pick<HeaderDescriptionProps, 'color'>;
 
-const HeaderDescription: React.FC<WithAsProp<HeaderDescriptionProps>> &
+/**
+ * A HeaderDescription provides more detailed information about the Header.
+ */
+export const HeaderDescription: ComponentWithAs<'p', HeaderDescriptionProps> &
   FluentComponentStaticProps<HeaderDescriptionProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(HeaderDescription.displayName, context.telemetry);
@@ -89,8 +99,3 @@ HeaderDescription.create = createShorthandFactory({
   Component: HeaderDescription,
   mappedProp: 'content',
 });
-
-/**
- * A HeaderDescription provides more detailed information about the Header.
- */
-export default withSafeTypeForAs<typeof HeaderDescription, HeaderDescriptionProps, 'p'>(HeaderDescription);

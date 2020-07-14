@@ -136,7 +136,7 @@ Array [
                 background: Highlight;
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -177,7 +177,7 @@ Array [
               @media screen and (-ms-high-contrast: active){& {
                 color: WindowText;
               }
-              @media screen and (-ms-high-contrast: active) and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -324,6 +324,9 @@ Array [
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           data-is-focusable={true}
           id="Slider3"
@@ -585,6 +588,9 @@ Array [
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           data-is-focusable={true}
           id="Slider4"

@@ -13,7 +13,11 @@ export function isConformant(testInfo: IsConformantOptions) {
     throw new Error(`Path ${componentPath} does not exist`);
   }
 
-  const parser = withCustomConfig(tsconfigPath, {});
+  // Props need to be filtered since react-docgen shows all the props including props
+  // inherited native props or React built-in props.
+  const parser = withCustomConfig(tsconfigPath, {
+    propFilter: prop => !/@types[\\/]react[\\/]/.test(prop.parent?.fileName || ''),
+  });
   const components = parser.parse(componentPath);
   const mainComponents = components.filter(comp => comp.displayName === displayName);
 

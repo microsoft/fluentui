@@ -22,7 +22,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 
 import { Props, ProviderContextPrepared } from '../types';
-import logProviderMissingWarning from './providerMissingHandler';
+import { logProviderMissingWarning } from './providerMissingHandler';
 
 export interface RenderResultConfig<P> {
   ElementType: React.ElementType<P>;
@@ -49,7 +49,7 @@ export interface RenderConfig<P> {
   isFirstRenderRef: React.MutableRefObject<boolean>;
 }
 
-const renderComponent = <P extends {}>(
+export const renderComponent = <P extends {}>(
   config: RenderConfig<P>,
   context?: ProviderContextPrepared,
 ): React.ReactElement<P> => {
@@ -80,7 +80,8 @@ const renderComponent = <P extends {}>(
     className,
     disableAnimations: context.disableAnimations || false,
     primaryDisplayName: displayName,
-    props: stateAndProps,
+    componentProps: stateAndProps,
+    inlineStylesProps: stateAndProps,
     renderer: context.renderer || noopRenderer,
     rtl,
     saveDebug,
@@ -122,5 +123,3 @@ const renderComponent = <P extends {}>(
 
   return element;
 };
-
-export default renderComponent;

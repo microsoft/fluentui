@@ -2,8 +2,8 @@ import { ComponentSlotStylesResolved, ComponentVariablesObject, isDebugEnabled }
 import * as _ from 'lodash';
 
 import { ComponentSlotClasses, ResolveStylesOptions, StylesContextValue } from '../styles/types';
-import resolveVariables from './resolveVariables';
-import resolveStyles from './resolveStyles';
+import { resolveVariables } from './resolveVariables';
+import { resolveStyles } from './resolveStyles';
 
 export type GetStylesResult = {
   classes: ComponentSlotClasses;
@@ -12,7 +12,7 @@ export type GetStylesResult = {
   theme: StylesContextValue['theme'];
 };
 
-const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
+export const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   const { primaryDisplayName, telemetry } = options;
 
   //
@@ -26,7 +26,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   const resolvedVariables = resolveVariables(
     options.allDisplayNames,
     options.theme,
-    options.props.variables,
+    options.inlineStylesProps.variables,
     options.performance.enableVariablesCaching,
   );
 
@@ -64,5 +64,3 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
     theme: options.theme,
   };
 };
-
-export default getStyles;

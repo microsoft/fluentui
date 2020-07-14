@@ -142,11 +142,11 @@ describe('styled', () => {
       // Validate that all functions and objects are the same instances as before.
       for (let propName in _firstProps) {
         if (_firstProps.hasOwnProperty(propName)) {
-          // tslint:disable-next-line:no-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const propValue = (_firstProps as any)[propName];
 
           if (typeof propValue === 'function' || typeof propValue === 'object') {
-            // tslint:disable-next-line:no-any
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             expect(propValue).toBe((_lastProps as any)[propName]);
           }
         }
@@ -287,7 +287,7 @@ describe('styled', () => {
   });
 
   it('respects styles type', (done: () => undefined) => {
-    const defaultStyles = { backgroundColor: 'red' };
+    const defaultStyles = { root: { backgroundColor: 'red' } };
 
     const Component = (props: ITestProps) => {
       expect((props.styles as IStyleFunction<{}, {}>)(props)).toEqual(defaultStyles);
@@ -305,7 +305,9 @@ describe('styled', () => {
   it('can re-render on customization mutations', () => {
     safeCreate(<Test />, () => {
       expect(_renderCount).toEqual(1);
-      Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+      renderer.act(() => {
+        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+      });
       expect(_renderCount).toEqual(2);
     });
   });
@@ -318,7 +320,9 @@ describe('styled', () => {
       </Test>,
       () => {
         expect(_renderCount).toEqual(3);
-        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        renderer.act(() => {
+          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        });
         expect(_renderCount).toEqual(6);
       },
     );
@@ -331,7 +335,9 @@ describe('styled', () => {
       </Customizer>,
       () => {
         expect(_renderCount).toEqual(1);
-        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        renderer.act(() => {
+          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        });
         expect(_renderCount).toEqual(2);
       },
     );
@@ -358,7 +364,9 @@ describe('styled', () => {
       </Customizer>,
       () => {
         expect(_renderCount).toEqual(2);
-        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        renderer.act(() => {
+          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        });
         expect(_renderCount).toEqual(4);
       },
     );

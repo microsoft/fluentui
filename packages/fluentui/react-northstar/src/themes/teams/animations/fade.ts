@@ -1,7 +1,7 @@
 import { linear } from './timingFunctions';
 import { ultraFast, faster, fast, normal, slow, slower, ultraSlow } from './durations';
 
-const fadeInOutAnimations = {
+export const fadeInOutAnimations = {
   // Fade Ins
   // Basic Fade In Animation -- Ultra Fast
   fadeEnterUltraFast: {
@@ -160,5 +160,3 @@ const fadeInOutAnimations = {
     fillMode: 'forwards',
   },
 };
-
-export default fadeInOutAnimations;

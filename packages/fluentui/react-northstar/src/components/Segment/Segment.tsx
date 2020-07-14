@@ -14,15 +14,16 @@ import { Accessibility } from '@fluentui/accessibility';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
+import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
 import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import { useTelemetry, getElementType, useAccessibility, useUnhandledProps, useStyles } from '@fluentui/react-bindings';
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useAccessibility,
+  useUnhandledProps,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface SegmentProps
   extends UIComponentProps<SegmentProps>,
@@ -45,7 +46,10 @@ export type SegmentStylesProps = Required<Pick<SegmentProps, 'color' | 'inverted
 
 export const segmentClassName = 'ui-segment';
 
-const Segment: React.FC<WithAsProp<SegmentProps>> & FluentComponentStaticProps<SegmentProps> = props => {
+/**
+ * A Segment visually groups related content.
+ */
+export const Segment: ComponentWithAs<'div', SegmentProps> & FluentComponentStaticProps<SegmentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Segment.displayName, context.telemetry);
   setStart();
@@ -105,8 +109,3 @@ Segment.handledProps = Object.keys(Segment.propTypes) as any;
 Segment.create = createShorthandFactory({
   Component: Segment,
 });
-
-/**
- * A Segment visually groups related content.
- */
-export default withSafeTypeForAs<typeof Segment, SegmentProps>(Segment);

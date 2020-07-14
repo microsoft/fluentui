@@ -10,8 +10,15 @@ import {
   childrenExist,
 } from '../../utils';
 
-import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 
 export interface DialogFooterProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -24,7 +31,11 @@ export const dialogFooterClassName = 'ui-dialog__footer';
 
 export type DialogFooterStylesProps = never;
 
-const DialogFooter: React.FC<WithAsProp<DialogFooterProps>> & FluentComponentStaticProps<DialogFooterProps> = props => {
+/**
+ * A DialogFooter represents footer content in Dialog, usually shows dialog actions.
+ */
+export const DialogFooter: ComponentWithAs<'div', DialogFooterProps> &
+  FluentComponentStaticProps<DialogFooterProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
   setStart();
@@ -63,8 +74,3 @@ DialogFooter.propTypes = {
 DialogFooter.handledProps = Object.keys(DialogFooter.propTypes) as any;
 
 DialogFooter.create = createShorthandFactory({ Component: DialogFooter, mappedProp: 'content' });
-
-/**
- * A DialogFooter represents footer content in Dialog, usually shows dialog actions.
- */
-export default withSafeTypeForAs<typeof DialogFooter, DialogFooterProps>(DialogFooter);

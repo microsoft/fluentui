@@ -9,6 +9,7 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.52.0",
     "@fluentui/react-northstar": "^0.50.0",
     "@uifabric/build": "^7.0.0",
     "react": "16.8.6"

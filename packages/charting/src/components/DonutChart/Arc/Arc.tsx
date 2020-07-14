@@ -40,14 +40,18 @@ export class Arc extends React.Component<IArcProps, IArcState> {
         <path
           id={id}
           d={arc(this.props.data)}
+          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
           data-is-focusable={true}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
           onBlur={this._onBlur}
           opacity={opacity}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._redirectToUrl.bind(this, href)}
           aria-labelledby={this.props.calloutId}
         />
@@ -59,9 +63,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   private _onFocus(data: IChartDataPoint, id: string): void {
-    if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
-      this.props.onFocusCallback!(data, id, this.currentRef.current);
-    }
+    this.props.onFocusCallback!(data, id, this.currentRef.current);
   }
 
   private _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {

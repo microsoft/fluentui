@@ -29,8 +29,6 @@ const getButtonStyles: IButtonComponent['styles'] = {
   content: ButtonTheme.scopedSettings.Text.styles.root,
 };
 
-// tslint:disable:jsx-no-lambda
-// tslint:disable:jsx-key
 export class SlotsStyledExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (

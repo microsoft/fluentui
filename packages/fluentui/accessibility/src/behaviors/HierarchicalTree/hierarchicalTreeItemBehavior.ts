@@ -16,7 +16,7 @@ import { Accessibility } from '../../types';
  * Triggers 'expand' action with 'ArrowRight' on 'root', when has a closed subtree.
  * Triggers 'focusSubtree' action with 'ArrowRight' on 'root', when has an opened subtree.
  */
-const hierarchicalTreeItemBehavior: Accessibility<HierarchicalTreeItemBehaviorProps> = props => ({
+export const hierarchicalTreeItemBehavior: Accessibility<HierarchicalTreeItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'none',
@@ -65,5 +65,3 @@ const isSubtreeOpen = (props: HierarchicalTreeItemBehaviorProps): boolean => {
   const { hasItems, open } = props;
   return !!(hasItems && open);
 };
-
-export default hierarchicalTreeItemBehavior;

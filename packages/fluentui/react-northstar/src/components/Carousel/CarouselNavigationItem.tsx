@@ -16,15 +16,20 @@ import {
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import {
-  withSafeTypeForAs,
-  WithAsProp,
   ShorthandValue,
   ComponentEventHandler,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
+import { Box, BoxProps } from '../Box/Box';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface CarouselNavigationItemSlotClassNames {
   indicator: string;
@@ -82,7 +87,10 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
   content: `${carouselNavigationItemClassName}__content`,
 };
 
-const CarouselNavigationItem: React.FC<WithAsProp<CarouselNavigationItemProps>> &
+/**
+ * A CarouselItem is an actionable item within a Carousel.
+ */
+export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
   FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
@@ -210,10 +218,3 @@ CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,
   mappedArrayProp: 'content',
 });
-
-/**
- * A CarouselItem is an actionable item within a Carousel.
- */
-export default withSafeTypeForAs<typeof CarouselNavigationItem, CarouselNavigationItemProps, 'li'>(
-  CarouselNavigationItem,
-);

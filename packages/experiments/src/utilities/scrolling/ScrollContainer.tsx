@@ -99,7 +99,6 @@ export class ScrollContainer extends React.Component<IScrollContainerProps> impl
 
   private _onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
     for (const entry of entries) {
-      // tslint:disable-next-line:no-any
       if ((entry as any).isIntersecting || entry.intersectionRatio > 0) {
         // Schedule callbacks on next frame
         this._async.requestAnimationFrame(() => {
@@ -146,7 +145,6 @@ export class ScrollContainer extends React.Component<IScrollContainerProps> impl
       // we don't need capture, we can pass it and have it ignored if not supported
       this._root.addEventListener('scroll', this._onScroll, {
         passive: true,
-        // tslint:disable-next-line:no-any
       } as any);
     }
   }

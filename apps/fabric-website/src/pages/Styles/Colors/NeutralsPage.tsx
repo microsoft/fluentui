@@ -6,6 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-neutral.json');
 
 export const ColorsNeutralsPage: React.FunctionComponent<IStylesPageProps> = props => {

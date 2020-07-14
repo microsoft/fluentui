@@ -13,20 +13,19 @@ import {
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import AccordionTitle, { AccordionTitleProps } from './AccordionTitle';
-import AccordionContent, { AccordionContentProps } from './AccordionContent';
+import { AccordionTitle, AccordionTitleProps } from './AccordionTitle';
+import { AccordionContent, AccordionContentProps } from './AccordionContent';
 
 import {
   ComponentEventHandler,
-  WithAsProp,
   ShorthandValue,
   ShorthandRenderFunction,
-  withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 import {
+  ComponentWithAs,
   useAutoControlled,
   useAccessibility,
   useTelemetry,
@@ -105,7 +104,13 @@ export const accordionSlotClassNames: AccordionSlotClassNames = {
   title: `${accordionClassName}__title`,
 };
 
-const Accordion: React.FC<WithAsProp<AccordionProps>> &
+/**
+ * An Accordion represents stacked set of content sections, with action elements to toggle the display of these sections.
+ *
+ * @accessibility
+ * Implements [ARIA Accordion](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) design pattern (keyboard navigation not yet supported).
+ */
+export const Accordion: ComponentWithAs<'dl', AccordionProps> &
   FluentComponentStaticProps<AccordionProps> & {
     Title: typeof AccordionTitle;
     Content: typeof AccordionContent;
@@ -351,11 +356,3 @@ Accordion.Content = AccordionContent;
 Accordion.create = createShorthandFactory({
   Component: Accordion,
 });
-
-/**
- * An Accordion represents stacked set of content sections, with action elements to toggle the display of these sections.
- *
- * @accessibility
- * Implements [ARIA Accordion](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) design pattern (keyboard navigation not yet supported).
- */
-export default withSafeTypeForAs<typeof Accordion, AccordionProps>(Accordion);

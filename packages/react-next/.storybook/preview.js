@@ -29,16 +29,6 @@ function loadStories() {
     generateStoriesFromExamples({ key, req, stories });
   });
 
-  // Wrap examples with ThemeProvider
-  for (let [key, story] of stories) {
-    Object.keys(story).forEach(exampleName => {
-      const example = story[exampleName];
-      if (typeof example === 'function') {
-        story[exampleName] = () => example();
-      }
-    });
-  }
-
   // convert stories Set to array
   return [...stories.values()];
 }

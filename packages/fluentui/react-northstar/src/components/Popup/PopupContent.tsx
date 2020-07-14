@@ -1,5 +1,6 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   AutoFocusZone,
   AutoFocusZoneProps,
   FocusTrapZone,
@@ -19,13 +20,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import {
-  WithAsProp,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import {
   childrenExist,
   createShorthandFactory,
@@ -84,7 +79,11 @@ export const popupContentSlotClassNames: PopupContentSlotClassNames = {
   content: `${popupContentClassName}__content`,
 };
 
-const PopupContent: React.FC<WithAsProp<PopupContentProps>> & FluentComponentStaticProps<PopupContentProps> = props => {
+/**
+ * A PopupContent displays the content of a Popup component.
+ */
+export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
+  FluentComponentStaticProps<PopupContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
   setStart();
@@ -201,8 +200,3 @@ PopupContent.propTypes = {
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 
 PopupContent.create = createShorthandFactory({ Component: PopupContent, mappedProp: 'content' });
-
-/**
- * A PopupContent displays the content of a Popup component.
- */
-export default withSafeTypeForAs<typeof PopupContent, PopupContentProps>(PopupContent);

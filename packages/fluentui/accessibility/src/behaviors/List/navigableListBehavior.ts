@@ -7,7 +7,7 @@ import { ListBehaviorProps } from './listBehavior';
  * Adds role='menu'.
  * Provides arrow key navigation in bidirectionalDomOrder direction.
  */
-const navigableListBehavior: Accessibility<ListBehaviorProps> = props => ({
+export const navigableListBehavior: Accessibility<ListBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'menu',
@@ -20,5 +20,3 @@ const navigableListBehavior: Accessibility<ListBehaviorProps> = props => ({
     },
   },
 });
-
-export default navigableListBehavior;

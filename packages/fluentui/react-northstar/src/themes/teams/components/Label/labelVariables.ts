@@ -17,7 +17,7 @@ export interface LabelVariables {
   height: string;
 }
 
-export default (siteVars: SiteVariablesPrepared): LabelVariables => {
+export const labelVariables = (siteVars: SiteVariablesPrepared): LabelVariables => {
   const colorScheme = extendColorScheme(siteVars.colorScheme, {
     default: {
       background: 'rgba(0, 0, 0, 0.6)',

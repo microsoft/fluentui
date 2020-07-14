@@ -28,7 +28,8 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
 
   public render(): JSX.Element {
     const { previewImages, styles, theme, className } = this.props;
-    let style, preview;
+    let style: React.CSSProperties | undefined;
+    let preview: React.ReactNode;
     const isFileList = previewImages.length > 1;
 
     this._classNames = getClassNames(styles!, {
@@ -45,13 +46,13 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
       preview = this._renderPreviewImage(previewImages[0]);
 
       // Override the border color if an accent color was provided
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       if (previewImages[0].accentColor) {
         style = {
           borderBottomColor: previewImages[0].accentColor,
         };
       }
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
     }
 
     return (
@@ -129,7 +130,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
         />
         <Link
           className={this._classNames.fileListLink}
-          // tslint:disable-next-line:deprecation
+          // eslint-disable-next-line deprecation/deprecation
           {...(file.linkProps, { href: (file.linkProps && file.linkProps.href) || file.url })}
         >
           {file.name}

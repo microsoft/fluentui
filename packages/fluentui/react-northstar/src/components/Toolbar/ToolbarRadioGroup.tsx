@@ -30,8 +30,8 @@ import {
   commonPropTypes,
 } from '../../utils';
 import { ProviderContextPrepared, ShorthandCollection } from '../../types';
-import ToolbarDivider, { ToolbarDividerProps } from './ToolbarDivider';
-import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
+import { ToolbarDivider, ToolbarDividerProps } from './ToolbarDivider';
+import { ToolbarItem, ToolbarItemProps } from './ToolbarItem';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export type ToolbarRadioGroupItemShorthandKinds = {
@@ -62,7 +62,7 @@ export const toolbarRadioGroupClassName = 'ui-toolbars'; // FIXME: required by g
  * @accessibility
  * Implements [ARIA RadioGroup](https://www.w3.org/TR/wai-aria-practices/#radiobutton) design pattern.
  */
-const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps, {}, {}>(
+export const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -213,5 +213,3 @@ ToolbarRadioGroup.propTypes = {
 ToolbarRadioGroup.defaultProps = {
   accessibility: toolbarRadioGroupBehavior,
 };
-
-export default ToolbarRadioGroup;

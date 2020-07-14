@@ -8,7 +8,6 @@ import {
   useTelemetry,
   useStyles,
   useUnhandledProps,
-  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as PropTypes from 'prop-types';
@@ -52,7 +51,7 @@ export const menuDividerClassName = 'ui-menu__divider';
 /**
  * A MenuDivider is non-actionable element that visually segments items of Menu.
  */
-const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
+export const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
   (inputProps, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -153,10 +152,10 @@ const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, 
       'secondary',
       'vertical',
     ],
+    shorthandConfig: { mappedProp: 'content' },
   },
 ) as ComponentWithAs<'li', MenuDividerProps> & {
   create: ShorthandFactory<MenuDividerProps>;
-  shorthandConfig: ShorthandConfig<MenuDividerProps>;
 };
 
 MenuDivider.defaultProps = {
@@ -173,6 +172,3 @@ MenuDivider.propTypes = {
 };
 
 MenuDivider.create = createShorthandFactory({ Component: MenuDivider, mappedProp: 'content' });
-MenuDivider.shorthandConfig = { mappedProp: 'content' };
-
-export default MenuDivider;

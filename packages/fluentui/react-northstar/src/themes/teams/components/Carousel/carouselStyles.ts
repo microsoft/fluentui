@@ -3,7 +3,7 @@ import { CarouselStylesProps } from '../../../../components/Carousel/Carousel';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselVariables } from './carouselVariables';
 
-const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselVariables> = {
+export const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselVariables> = {
   root: (): ICSSInJSStyle => ({
     display: 'inline-block',
   }),
@@ -26,5 +26,3 @@ const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselV
     willChange: 'transform',
   }),
 };
-
-export default carouselStyles;

@@ -41,7 +41,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
       maxValue: 'type',
       minValue: 'type',
     });
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     if (this._type !== 'hue' && !(props.overlayColor || props.overlayStyle)) {
       warn(`ColorSlider: 'overlayColor' is required when 'type' is "alpha" or "transparency"`);
     }
@@ -71,7 +71,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const type = this._type;
     const maxValue = this._maxValue;
     const {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       overlayStyle,
       overlayColor,
       theme,
@@ -127,7 +127,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   private get _type(): IColorSliderProps['type'] {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { isAlpha, type = isAlpha ? 'alpha' : 'hue' } = this.props;
     return type;
   }

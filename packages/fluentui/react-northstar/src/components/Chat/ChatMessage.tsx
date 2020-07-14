@@ -5,7 +5,14 @@ import {
   menuAsToolbarBehavior,
   ChatMessageBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -34,23 +41,22 @@ import {
   createShorthand,
 } from '../../utils';
 import {
-  WithAsProp,
   ShorthandValue,
   ComponentEventHandler,
-  withSafeTypeForAs,
   ShorthandCollection,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Label, { LabelProps } from '../Label/Label';
-import Menu, { MenuProps } from '../Menu/Menu';
+import { Box, BoxProps } from '../Box/Box';
+import { Label, LabelProps } from '../Label/Label';
+import { Menu, MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
-import Text, { TextProps } from '../Text/Text';
-import Reaction, { ReactionProps } from '../Reaction/Reaction';
+import { Text, TextProps } from '../Text/Text';
+import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
-import ChatMessageHeader, { ChatMessageHeaderProps } from './ChatMessageHeader';
+import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
+import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -85,6 +91,9 @@ export interface ChatMessageProps
 
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;
+
+  /** Message details info slot for the header. */
+  details?: ShorthandValue<ChatMessageDetailsProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -142,7 +151,11 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   reactionGroup: `${chatMessageClassName}__reactions`,
 };
 
-const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStaticProps<ChatMessageProps> = props => {
+/**
+ * A ChatMessage represents a single message in chat.
+ */
+export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
+  FluentComponentStaticProps<ChatMessageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
@@ -167,6 +180,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     styles,
     variables,
     header,
+    details,
     unstable_overflow: overflow,
   } = props;
 
@@ -323,12 +337,17 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> & FluentComponentStati
     }),
   });
 
+  const detailsElement = createShorthand(ChatMessageDetails, details, {
+    defaultProps: () => ({ mine }),
+  });
+
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({
       content: (
         <>
           {authorElement}
           {timestampElement}
+          {detailsElement}
           {reactionGroupPosition === 'start' && reactionGroupElement}
         </>
       ),
@@ -385,6 +404,7 @@ ChatMessage.propTypes = {
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
+  details: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
   header: customPropTypes.itemShorthand,
   mine: PropTypes.bool,
@@ -401,8 +421,3 @@ ChatMessage.propTypes = {
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
-
-/**
- * A ChatMessage represents a single message in chat.
- */
-export default withSafeTypeForAs<typeof ChatMessage, ChatMessageProps>(ChatMessage);

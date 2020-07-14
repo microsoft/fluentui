@@ -13,6 +13,26 @@ export const controlsPagesMac: INavPage[] = [
       ),
   },
   {
+    title: 'Basic Inputs',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Button',
+        url: '#/controls/mac/button',
+        component: () => <LoadingComponent title="Button" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage)),
+      },
+      {
+        title: 'Link',
+        url: '#/controls/mac/link',
+        component: () => <LoadingComponent title="Link" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/LinkPage/LinkPage').LinkPage)),
+      },
+    ],
+  },
+  {
     title: 'Pickers',
     isCategory: true,
     pages: [
@@ -37,6 +57,21 @@ export const controlsPagesMac: INavPage[] = [
         component: () => <LoadingComponent title="Avatar" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage)),
+      },
+    ],
+  },
+  {
+    title: 'Utilities',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Separator',
+        url: '#/controls/mac/separator',
+        component: () => <LoadingComponent title="Separator" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage),
+          ),
       },
     ],
   },

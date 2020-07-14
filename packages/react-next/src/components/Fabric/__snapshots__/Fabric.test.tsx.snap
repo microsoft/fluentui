@@ -57,6 +57,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-0"
         onChange={[Function]}
         type="checkbox"
@@ -67,24 +68,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -123,6 +123,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-1"
           onChange={[Function]}
           type="checkbox"
@@ -133,24 +134,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -189,6 +189,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-2"
             onChange={[Function]}
             type="checkbox"
@@ -199,24 +200,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -258,6 +258,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-3"
         onChange={[Function]}
         type="checkbox"
@@ -268,24 +269,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -324,6 +324,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-4"
           onChange={[Function]}
           type="checkbox"
@@ -334,24 +335,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -390,6 +390,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-5"
             onChange={[Function]}
             type="checkbox"
@@ -400,24 +401,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -464,6 +464,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-6"
         onChange={[Function]}
         type="checkbox"
@@ -474,24 +475,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -530,6 +530,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-7"
           onChange={[Function]}
           type="checkbox"
@@ -540,24 +541,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -596,6 +596,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-8"
             onChange={[Function]}
             type="checkbox"
@@ -606,24 +607,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -665,6 +665,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-9"
         onChange={[Function]}
         type="checkbox"
@@ -675,24 +676,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -731,6 +731,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-10"
           onChange={[Function]}
           type="checkbox"
@@ -741,24 +742,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -797,6 +797,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-11"
             onChange={[Function]}
             type="checkbox"
@@ -807,24 +808,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -871,6 +871,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-12"
         onChange={[Function]}
         type="checkbox"
@@ -881,24 +882,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -937,6 +937,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-13"
           onChange={[Function]}
           type="checkbox"
@@ -947,24 +948,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -1003,6 +1003,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-14"
             onChange={[Function]}
             type="checkbox"
@@ -1013,24 +1014,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
@@ -1072,6 +1072,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-15"
         onChange={[Function]}
         type="checkbox"
@@ -1082,24 +1083,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
@@ -1138,6 +1138,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-16"
           onChange={[Function]}
           type="checkbox"
@@ -1148,24 +1149,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    speak: none;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
@@ -1204,6 +1204,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-17"
             onChange={[Function]}
             type="checkbox"
@@ -1214,24 +1215,23 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"

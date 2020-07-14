@@ -10,7 +10,6 @@ import {
 } from '@fluentui/docs-components';
 import {
   ComponentVariablesInput,
-  constants,
   Flex,
   ICSSInJSStyle,
   Image,
@@ -36,6 +35,7 @@ import VariableResolver from '../../VariableResolver/VariableResolver';
 import ComponentExampleVariables from './ComponentExampleVariables';
 // TODO: find replacement
 import { ReplyIcon, AcceptIcon, EditIcon } from '@fluentui/react-icons-northstar';
+import config from '../../../config';
 
 const ERROR_COLOR = '#D34';
 
@@ -323,7 +323,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     const filename = pathParts[pathParts.length - 1];
 
     const ghEditHref = [
-      `${constants.repoURL}/edit/master/docs/src/examples/${currentCodePath}.tsx`,
+      `${config.repoURL}/edit/master/docs/src/examples/${currentCodePath}.tsx`,
       `?message=docs(${filename}): your description`,
     ].join('');
 

@@ -14,25 +14,30 @@ import {
 } from '../../utils';
 import {
   ComponentEventHandler,
-  WithAsProp,
   ShorthandCollection,
-  withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import FormField, { FormFieldProps } from './FormField';
-import { useTelemetry, getElementType, useUnhandledProps, useStyles, useAccessibility } from '@fluentui/react-bindings';
+import { FormField, FormFieldProps } from './FormField';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useStyles,
+  useAccessibility,
+} from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import FormLabel from './FormLabel';
-import FormMessage from './FormMessage';
-import FormInput from './FormInput';
-import FormCheckbox from './FormCheckbox';
-import FormDropdown from './FormDropdown';
-import FormButton from './FormButton';
-import FormRadioGroup from './FormRadioGroup';
-import FormSlider from './FormSlider';
-import FormFieldCustom from './FormFieldCustom';
+import { FormLabel } from './FormLabel';
+import { FormMessage } from './FormMessage';
+import { FormInput } from './FormInput';
+import { FormCheckbox } from './FormCheckbox';
+import { FormDropdown } from './FormDropdown';
+import { FormButton } from './FormButton';
+import { FormRadioGroup } from './FormRadioGroup';
+import { FormSlider } from './FormSlider';
+import { FormFieldCustom } from './FormFieldCustom';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -58,7 +63,10 @@ export const formClassName = 'ui-form';
 
 export type FormStylesProps = never;
 
-const Form: React.FC<WithAsProp<FormProps>> &
+/**
+ * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
+ */
+export const Form: ComponentWithAs<'form', FormProps> &
   FluentComponentStaticProps<FormProps> & {
     Field: typeof FormField;
     Label: typeof FormLabel;
@@ -156,8 +164,3 @@ Form.Dropdown = FormDropdown;
 Form.Button = FormButton;
 Form.RadioGroup = FormRadioGroup;
 Form.Slider = FormSlider;
-
-/**
- * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
- */
-export default withSafeTypeForAs<typeof Form, FormProps, 'form'>(Form);

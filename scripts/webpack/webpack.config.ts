@@ -115,6 +115,7 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       ...lernaAliases(),
       src: paths.packageSrc('react-northstar'),
+      'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
     },
   },
   optimization: {

@@ -1,2 +1,2 @@
-export { default as Builder } from './components/Designer';
-export { default as FullScreenPreview } from './components/FullScreenPreview';
+export { Designer as Builder } from './components/Designer';
+export { FullScreenPreview } from './components/FullScreenPreview';

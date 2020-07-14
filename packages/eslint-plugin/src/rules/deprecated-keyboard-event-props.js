@@ -1,6 +1,6 @@
 // @ts-check
 const createRule = require('../utils/createRule');
-const ts = require('typescript');
+const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
 
 module.exports = createRule({
   name: 'deprecated-keyboard-event-props',
@@ -19,10 +19,10 @@ module.exports = createRule({
   },
   defaultOptions: [],
   create: context => {
-    if (!(context.parserServices && context.parserServices.program && context.parserServices.esTreeNodeToTSNodeMap)) {
-      return {};
-    }
-    const { program, esTreeNodeToTSNodeMap } = context.parserServices;
+    // delay require to speed up load time
+    const ts = require('typescript');
+
+    const { program, esTreeNodeToTSNodeMap } = ESLintUtils.getParserServices(context);
     /** @type {import("typescript").TypeChecker | undefined} */
     let typeChecker;
 
@@ -34,7 +34,6 @@ module.exports = createRule({
           (identifier.name === 'which' || identifier.name === 'keyCode')
         ) {
           if (!typeChecker) {
-            // only get type checker if/when needed, to avoid the perf hit if unnecessary
             typeChecker = program.getTypeChecker();
           }
           const symbol = typeChecker.getSymbolAtLocation(tsNode);

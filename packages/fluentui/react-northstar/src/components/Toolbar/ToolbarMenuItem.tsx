@@ -40,13 +40,13 @@ import {
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
-import Box, { BoxProps } from '../Box/Box';
-import Popup, { PopupProps } from '../Popup/Popup';
-import ToolbarMenu, { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
-import ToolbarMenuItemIcon, { ToolbarMenuItemIconProps } from './ToolbarMenuItemIcon';
+import { Box, BoxProps } from '../Box/Box';
+import { Popup, PopupProps } from '../Popup/Popup';
+import { ToolbarMenu, ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
+import { ToolbarMenuItemIcon, ToolbarMenuItemIconProps } from './ToolbarMenuItemIcon';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
-import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
-import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
+import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicator';
+import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -130,7 +130,7 @@ export const toolbarMenuItemSlotClassNames: ToolbarMenuItemSlotClassNames = {
 /**
  * A ToolbarMenuItem renders ToolbarMenu item as button.
  */
-const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemStylesProps, {}, {}>(
+export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
@@ -519,5 +519,3 @@ ToolbarMenuItem.defaultProps = {
   submenuIndicator: {},
   wrapper: { as: 'li' },
 };
-
-export default ToolbarMenuItem;

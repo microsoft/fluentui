@@ -10,6 +10,7 @@ import MarkdownPage from './components/MarkdownPage';
 import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 
 import * as Composition from './pages/Composition.mdx';
+import * as Debugging from './pages/Debugging.mdx';
 import * as Layout from './pages/Layout.mdx';
 import * as ComponentArchitecture from './pages/ComponentArchitecture.mdx';
 import Accessibility from './views/Accessibility';
@@ -87,6 +88,9 @@ const TablePrototype = React.lazy(() => import(/* webpackChunkName: "prototypes"
 const VirtualizedTablePrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/VirtualizedTable'),
 );
+const FormValidationPrototype = React.lazy(() =>
+  import(/* webpackChunkName: "prototypes" */ './prototypes/FormValidationPrototype'),
+);
 
 const Routes = () => (
   <React.Suspense fallback="Loading...">
@@ -109,6 +113,9 @@ const Routes = () => (
                   render={routeProps => <Redirect to={`${routeProps.location.pathname}/definition`} />}
                 />
                 <Route exact path="/behaviors/:name" component={DocsBehaviorRoot} sidebar />
+                <Route exact path="/debugging">
+                  <MarkdownPage page={Debugging} />
+                </Route>
                 <Route exact path="/quick-start" component={QuickStart} />
 
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
@@ -128,9 +135,15 @@ const Routes = () => (
                 <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
                 <Route exact path="/prototype-table" component={TablePrototype} />
                 <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
+                <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
                 <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
+                <Route
+                  exact
+                  path="/unstable-datepicker"
+                  render={() => <Redirect to={`/components/datepicker/definition`} />}
+                />
 
                 <Route exact path="/faq" component={FAQ} />
                 <Route exact path="/accessibility" component={Accessibility} />

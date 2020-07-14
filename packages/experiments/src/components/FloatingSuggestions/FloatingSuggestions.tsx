@@ -123,7 +123,6 @@ export class FloatingSuggestions<TItem>
     this._async.dispose();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IFloatingSuggestionsProps<TItem>): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
@@ -250,7 +249,7 @@ export class FloatingSuggestions<TItem>
     ) {
       return;
     }
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:

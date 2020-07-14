@@ -90,9 +90,11 @@ import {
   hiddenComponentBehavior,
   cardSelectableBehavior,
   dropdownSelectedItemBehavior,
+  datepickerBehavior,
+  datepickerCalendarBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
-import definitions from './testDefinitions';
+import { definitions } from './testDefinitions';
 
 const behaviorMenuItems = require('../../../docs/src/behaviorMenu');
 
@@ -184,5 +186,7 @@ testHelper.addBehavior('videoBehavior', videoBehavior);
 testHelper.addBehavior('hiddenComponentBehavior', hiddenComponentBehavior);
 testHelper.addBehavior('cardSelectableBehavior', cardSelectableBehavior);
 testHelper.addBehavior('dropdownSelectedItemBehavior', dropdownSelectedItemBehavior);
+testHelper.addBehavior('datepickerBehavior', datepickerBehavior);
+testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior);
 
 testHelper.run(behaviorMenuItems);

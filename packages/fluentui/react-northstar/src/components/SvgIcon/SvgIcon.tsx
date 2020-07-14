@@ -1,4 +1,4 @@
-import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { ComponentWithAs, getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import {
   SvgIconProps,
   svgIconClassName,
@@ -11,13 +11,16 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import { ProviderContextPrepared } from '../../types';
 
 export type SvgIconStylesProps = Required<
   Pick<SvgIconProps, 'bordered' | 'circular' | 'disabled' | 'outline' | 'rotate' | 'size' | 'xSpacing'>
 >;
 
-const SvgIcon: React.FC<WithAsProp<SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }>> & {
+/**
+ * An SvgIcon displays a pictogram with semantic meaning.
+ */
+export const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }> & {
   handledProps: (keyof (SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }))[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -83,8 +86,3 @@ SvgIcon.defaultProps = {
   size: 'medium',
   rotate: 0,
 };
-
-/**
- * An SvgIcon displays a pictogram with semantic meaning.
- */
-export default withSafeTypeForAs<typeof SvgIcon, SvgIconProps, 'span'>(SvgIcon);
