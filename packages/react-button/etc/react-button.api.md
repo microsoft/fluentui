@@ -167,10 +167,10 @@ export interface ToggleState extends ToggleProps {
 }
 
 // @public
-export const useButton: (props: ButtonProps, ref: import("react").RefObject<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ButtonState;
+export const useButton: (props: ButtonProps, ref: import("react").Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ButtonState;
 
 // @public
-export const useMenuButton: (props: MenuButtonProps, ref: React.RefObject<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => MenuButtonState;
+export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => MenuButtonState;
 
 // @public
 export const useToggle: <TProps, TState extends TProps = TProps>(props: TProps & ToggleProps) => TState & ToggleState;

@@ -12,7 +12,7 @@ import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
  */
 export const useMenuButton = (
   props: MenuButtonProps,
-  ref: React.RefObject<HTMLElement>,
+  ref: React.Ref<HTMLElement>,
   options: ComposePreparedOptions,
 ): MenuButtonState => {
   const {
