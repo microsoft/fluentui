@@ -4,9 +4,11 @@ import * as fs from 'fs';
 import { IsConformantOptions } from './types';
 import { withCustomConfig } from 'react-docgen-typescript';
 import { defaultTests } from './defaultTests';
+import { merge } from './utils/merge';
 
-export function isConformant(testInfo: IsConformantOptions) {
-  const { componentPath, displayName, disabledTests = [], extraTests, isInternal } = testInfo;
+export function isConformant(...testInfo: (IsConformantOptions | Object)[]) {
+  const mergedOptions = merge<IsConformantOptions>(true, ...testInfo);
+  const { componentPath, displayName, disabledTests = [], extraTests, isInternal } = mergedOptions;
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
 
   if (!fs.existsSync(componentPath)) {
@@ -30,12 +32,12 @@ export function isConformant(testInfo: IsConformantOptions) {
 
     for (const test of Object.keys(defaultTests)) {
       if (!disabledTests.includes(test)) {
-        defaultTests[test](componentInfo, testInfo);
+        defaultTests[test](componentInfo, mergedOptions);
       }
     }
     if (extraTests) {
       for (const test of Object.keys(extraTests)) {
-        extraTests[test](componentInfo, testInfo);
+        extraTests[test](componentInfo, mergedOptions);
       }
     }
   } else {

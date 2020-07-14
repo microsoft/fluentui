@@ -25,7 +25,7 @@ describe('MenuItem', () => {
   sharedIsConformant({
     Component: MenuItem,
     displayName: 'MenuItem',
-    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
+    componentPath: __filename,
     wrapperComponents: [MenuItemWrapper],
   });
 

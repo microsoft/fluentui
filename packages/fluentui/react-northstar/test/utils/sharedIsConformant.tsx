@@ -1,15 +1,17 @@
 import { isConformant, IsConformantOptions } from '@fluentui/react-conformance';
-import { mountWithProvider as mount } from 'test/utils';
+import { mountWithProvider } from 'test/utils';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
-// import { FocusZone } from '@fluentui/react-bindings';
+import { FocusZone } from '@fluentui/react-bindings';
+import * as _ from 'lodash';
 
 export function sharedIsConformant(testInfo: IsConformantOptions) {
-  const { disabledTests = [], wrapperComponents = [] } = testInfo;
+  const { componentPath } = testInfo;
+  const defaultConfig = {
+    customMount: mountWithProvider,
+    componentPath: componentPath.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
+    disabledTests: ['has-docblock', 'has-top-level-file'],
+    wrapperComponents: [Ref, RefFindNode, FocusZone],
+  };
 
-  isConformant({
-    ...testInfo,
-    customMount: mount,
-    disabledTests: [...disabledTests.filter(test => test as string), 'has-docblock', 'has-top-level-file'],
-    wrapperComponents: [...wrapperComponents, Ref, RefFindNode], //, FocusZone],
-  });
+  isConformant(defaultConfig, testInfo);
 }

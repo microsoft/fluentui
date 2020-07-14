@@ -2,15 +2,14 @@ import * as React from 'react';
 import AccordionContent from 'src/components/Accordion/AccordionContent';
 
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent } from 'test/utils';
-import { sharedIsConformant } from 'test/utils';
+import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils';
 
 describe('AccordionContent', () => {
   isConformant(AccordionContent, { constructorName: 'AccordionContent' });
 
   sharedIsConformant({
     Component: AccordionContent,
-    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
+    componentPath: __filename,
     displayName: 'AccordionContent',
     useDefaultExport: true,
   });

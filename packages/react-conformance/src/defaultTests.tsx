@@ -162,12 +162,11 @@ export const defaultTests: TestObject = {
           expect(component.type()).toEqual(MyComponent);
         } catch (err) {
           expect(component.type()).not.toEqual(Component);
-          expect(
-            component
-              .find('[as]')
-              .last()
-              .prop('as'),
-          ).toEqual(MyComponent);
+          const comp = component
+            .find('[as]')
+            .last()
+            .prop('as');
+          expect(comp).toEqual(MyComponent);
         }
       });
     }
