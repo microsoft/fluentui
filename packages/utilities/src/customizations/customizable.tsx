@@ -8,18 +8,14 @@ export function customizable(
   scope: string,
   fields: string[],
   concatStyles?: boolean,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): <P>(ComposedComponent: React.ComponentType<P>) => any {
-  // tslint:disable-next-line:no-shadowed-variable
-  return function customizableFactory<P>(
-    // tslint:disable-next-line:no-any
-    ComposedComponent: React.ComponentType<P>,
-    // tslint:disable-next-line:no-any
-  ): any {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return function customizableFactory<P>(ComposedComponent: React.ComponentType<P>): any {
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
 
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       private _styleCache: { default?: any; component?: any; merged?: any } = {};
 
       constructor(props: P) {
@@ -42,7 +38,7 @@ export function customizable(
             {(context: ICustomizerContext) => {
               const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
-              // tslint:disable-next-line:no-any
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const componentProps = this.props as any;
 
               // If defaultProps.styles is a function, evaluate it before calling concatStyleSets

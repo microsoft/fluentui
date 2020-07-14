@@ -17,7 +17,6 @@ import { Actionable, Button as NewButton, MenuButton, SplitButton, Toggle as New
 
 const defaultTheme = createTheme({});
 
-// tslint:disable-next-line:typedef
 const Items = Array.from({ length: 10 }, (n, i) => ({
   key: `Item ${i}`,
   name: `Item ${i}`,
@@ -37,7 +36,7 @@ const selection = new Selection();
 selection.setItems(Items);
 
 const alertClicked = (): void => {
-  alert('Clicked');
+  console.log('Clicked');
 };
 const menuProps = {
   items: [

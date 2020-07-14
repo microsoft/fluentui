@@ -22,7 +22,7 @@ export interface IArcProps {
   /**
    * shape for  Arc.
    */
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   arc?: any;
 
   /**

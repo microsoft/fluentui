@@ -1,8 +1,32 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 08 Jul 2020 12:34:21 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.1)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.0..@uifabric/charting_v2.5.1)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations, including unnecessary map() usage and naming ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+- Donut chart: when hover/focus on arc the arc should be highlight and remaining arcs are disable ([PR #13980](https://github.com/microsoft/fluentui/pull/13980) by v-gorraj@microsoft.com)
+
+## [2.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.4.0..@uifabric/charting_v2.5.0)
+
+### Minor changes
+
+- Area chart ([PR #13579](https://github.com/microsoft/fluentui/pull/13579) by v-jasha@microsoft.com)
+
+### Patches
+
+- fitcontainer changes done in VS bar chart ([PR #13860](https://github.com/microsoft/fluentui/pull/13860) by v-jasha@microsoft.com)
+- linechart-callout not visible in dense graph issue resolved ([PR #13933](https://github.com/microsoft/fluentui/pull/13933) by v-jasha@microsoft.com)
 
 ## [2.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.4.0)
 

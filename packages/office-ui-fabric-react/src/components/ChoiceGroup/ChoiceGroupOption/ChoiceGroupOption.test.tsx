@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable jsx-no-lambda */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroupOption } from './ChoiceGroupOption';

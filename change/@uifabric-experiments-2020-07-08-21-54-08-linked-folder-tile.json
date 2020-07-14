@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support for linked folder in FolderCover component",
-  "packageName": "@uifabric/experiments",
-  "email": "hemanp@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-09T04:53:53.598Z"
-}

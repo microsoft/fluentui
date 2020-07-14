@@ -9,7 +9,7 @@ export function useAsync() {
   const asyncRef = useConst<Async>(() => new Async());
 
   // Function that returns a function in order to dispose the async instance on unmount
-  React.useEffect(() => () => asyncRef.dispose(), []);
+  React.useEffect(() => () => asyncRef.dispose(), [asyncRef]);
 
   return asyncRef;
 }

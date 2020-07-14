@@ -9,3 +9,5 @@ export * from './useAsync';
 export * from './useOnEvent';
 export * from './useForceUpdate';
 export * from './usePrevious';
+export * from './useSetInterval';
+export * from './useSetTimeout';

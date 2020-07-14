@@ -339,7 +339,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     delete this._scrollElement;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void {
     if (
       newProps.items !== this.props.items ||
@@ -766,6 +765,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
    */
   private _measurePage(page: IPage<T>): boolean {
     let hasChangedHeight = false;
+    // eslint-disable-next-line react/no-string-refs
     const pageElement = this.refs[page.key] as HTMLElement;
     const cachedHeight = this._cachedPageHeights[page.startIndex];
 

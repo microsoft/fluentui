@@ -28,10 +28,11 @@ import { ColorPickerBasicExample } from '../components/colorpicker';
 import { ComboBoxBasicExample } from '../components/comboBox';
 import { ContextualMenuDefaultExample } from '../components/ContextMenu';
 import { DropdownBasicExample } from '../components/dropdown';
+import { CommandBarBasicExample } from '../components/commandBar';
 
 const Example = () => (
-  // tslint:disable-next-line:jsx-ban-props
-  <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 400 }}>
+  <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
+    <CommandBarBasicExample />
     <DefaultButton text="DefaultButton" />
     <PrimaryButton text="PrimaryButton" />
     <CompoundButton primary text="CompoundButton" />

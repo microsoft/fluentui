@@ -32,6 +32,7 @@ export const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, 
   message: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
     display: 'block',
+    paddingLeft: v.messagePaddingLeft,
   }),
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
