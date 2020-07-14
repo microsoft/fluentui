@@ -5225,6 +5225,15 @@ babel-plugin-add-react-displayname@^0.0.5:
   resolved "https://registry.yarnpkg.com/babel-plugin-add-react-displayname/-/babel-plugin-add-react-displayname-0.0.5.tgz#339d4cddb7b65fd62d1df9db9fe04de134122bd5"
   integrity sha1-M51M3be2X9YtHfnbn+BN4TQSK9U=
 
+babel-plugin-annotate-pure-imports@^1.0.0-1:
+  version "1.0.0-1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-annotate-pure-imports/-/babel-plugin-annotate-pure-imports-1.0.0-1.tgz#b0b5c5c5040a81de2fffba2ca095384d80e6b40c"
+  integrity sha512-BJk9paXY1qh7amBLwWfhWbvxFWsUCmiz6NSnpTbP5T4EAM0PwvCr6U5bz+0NbCADphziPMVgbt/M+/06oV+1GA==
+  dependencies:
+    "@babel/core" "^7.10.4"
+    "@babel/helper-annotate-as-pure" "^7.10.4"
+    "@babel/types" "^7.10.4"
+
 babel-plugin-apply-mdx-type-prop@^1.5.5:
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/babel-plugin-apply-mdx-type-prop/-/babel-plugin-apply-mdx-type-prop-1.5.5.tgz#b5f6333b445f1ec189949225f9309d67c24cf167"
@@ -5262,6 +5271,15 @@ babel-plugin-extract-import-names@^1.5.5:
   integrity sha512-F9paxnUtO3vddyOX+vbRa8KrkuovJIFB8KmB/dEICqTUm2331LcGbjCKzZApOri4Igbk9MnYybm2fDsuPJC3vA==
   dependencies:
     "@babel/helper-plugin-utils" "7.8.0"
+
+babel-plugin-iife-wrap-react-components@^1.0.0-5:
+  version "1.0.0-5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-iife-wrap-react-components/-/babel-plugin-iife-wrap-react-components-1.0.0-5.tgz#bd0eceee22b889a3366dbf1058b455abfbbbf23c"
+  integrity sha512-N91+hcZ98cm7AhqqC9zTwRCwziqEcljgXNuZXWeHRicDKeFASbzbyG5TuSGdgiRYm4oO0TLEEXWx2dxMNoXzaw==
+  dependencies:
+    "@babel/core" "^7.10.4"
+    "@babel/helper-annotate-as-pure" "^7.10.4"
+    "@babel/types" "^7.10.4"
 
 babel-plugin-istanbul@^5.1.0:
   version "5.1.4"

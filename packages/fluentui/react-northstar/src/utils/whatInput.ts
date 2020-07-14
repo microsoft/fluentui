@@ -10,14 +10,6 @@ import { isBrowser } from './isBrowser';
 // last used input type
 let currentInput = 'initial';
 
-// check for sessionStorage support
-// then check for session variables and use if available
-try {
-  if (window.sessionStorage.getItem('what-input')) {
-    currentInput = window.sessionStorage.getItem('what-input');
-  }
-} catch (e) {}
-
 // event buffer timer
 let eventTimer = null;
 
@@ -130,11 +122,6 @@ const setInput = event => {
 
     if (currentInput !== value && shouldUpdate) {
       currentInput = value;
-
-      try {
-        window.sessionStorage.setItem('what-input', currentInput);
-      } catch (e) {}
-
       doUpdate(event.view.document);
     }
   }
