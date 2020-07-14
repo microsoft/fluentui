@@ -2,7 +2,7 @@
 
 - A message bar is most commonly found near the top of an app, underneath the app's main command bar. For example, the Microsoft Office message bar is positioned beneath the Ribbon, but above the document canvas.
 - Multiple message bars can appear at a time, but a given scenario or related set of scenarios should aim to only show one message bar at a time. Message bars are rarely shown in direct response to an action; rather, they should be shown when there’s something a person should know about the overall app or document.
-- Use one of the four icon options to indicate the message type: a blue “i” for informational messages, a yellow shield for security-related information, a yellow warning triangle for non-blocking errors, a red “x” for critical errors.
+- Use the icons options to indicate the message type: the Info icon for information messages; ShieldAlert icon for security-related messages; the Warning icon for non-blocking errors; ErrorBadge icon for critical errors; the Blocked icon for blocking messages; and the Completed icon for success messages. 
 
 ### Content
 
