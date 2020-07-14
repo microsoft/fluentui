@@ -10,10 +10,10 @@ export interface ToggleProps {
 export interface ToggleState extends ToggleProps {}
 
 /**
- * The useToggle hook processes adds the correct toggled state needed.
+ * The useToggleState hook processes adds the correct toggled state needed.
  * @param props - props to derive state from.
  */
-export const useToggle = <TProps, TState extends TProps = TProps>(
+export const useToggleState = <TProps, TState extends TProps = TProps>(
   props: TProps & ToggleProps,
 ): TState & ToggleState => {
   const { checked: controlledChecked, defaultChecked = false, onClick, ...rest } = props;

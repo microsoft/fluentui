@@ -212,7 +212,7 @@ export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>
 export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => SplitButtonState;
 
 // @public
-export const useToggle: <TProps, TState extends TProps = TProps>(props: TProps & ToggleProps) => TState & ToggleState;
+export const useToggleState: <TProps, TState extends TProps = TProps>(props: TProps & ToggleProps) => TState & ToggleState;
 
 
 // (No @packageDocumentation comment for this package)
