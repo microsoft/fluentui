@@ -54,11 +54,10 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
   loading?: boolean;
 
   /**
-   * Called after a user clicks the button.
+   * Callback that is called after a user clicks the button.
    * @param event - React's original SyntheticEvent.
-   * @param data - All props.
    */
-  // onClick?: ComponentEventHandler<ButtonProps>;
+  onClick?: (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) => void;
 
   /**
    * Called after a user focuses the button.

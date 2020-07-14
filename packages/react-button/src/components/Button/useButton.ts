@@ -21,10 +21,12 @@ export const useButton = (
   useFocusRects(ref as React.RefObject<HTMLElement>);
 
   const buttonBehaviorProps = useButtonBehavior(props);
+  const { onKeyDown } = buttonBehaviorProps;
 
   return {
-    ...props,
     ...buttonBehaviorProps,
+    ...props,
+    onKeyDown,
     buttonRef,
     style: getStyleFromPropsAndOptions(props, options, '--button'),
   };

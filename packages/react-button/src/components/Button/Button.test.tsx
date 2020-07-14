@@ -8,9 +8,86 @@ import { isConformant } from '@fluentui/react-conformance';
 import { Button } from './Button';
 import { ButtonRef } from './Button.types';
 
-describe('Button', () => {
-  let wrapper: ReactWrapper | undefined;
+let wrapper: ReactWrapper | undefined;
 
+describe('Button behavior', () => {
+  afterEach(() => {
+    if (wrapper) {
+      wrapper.unmount();
+      wrapper = undefined;
+    }
+  });
+
+  it('renders Button with the correct default accessibility props', () => {
+    const onClick = jest.fn();
+
+    wrapper = mount(<Button onClick={onClick}>Button</Button>);
+
+    const button = wrapper.find('button');
+
+    expect(button.getElements().length).toBe(1);
+    expect(button.props().role).toBe(undefined);
+    expect(button.props().tabIndex).toBe(undefined);
+  });
+
+  it('renders Button as a "div" with the correct accessibility props', () => {
+    const onClick = jest.fn();
+
+    wrapper = mount(
+      <Button as="div" onClick={onClick}>
+        Button
+      </Button>,
+    );
+
+    const button = wrapper.find('div');
+
+    expect(button.getElements().length).toBe(1);
+    expect(button.props().role).toBe('button');
+    expect(button.props().tabIndex).toBe(0);
+
+    ReactTestUtils.Simulate.keyDown(button.getDOMNode(), { keyCode: EnterKey });
+    ReactTestUtils.Simulate.keyDown(button.getDOMNode(), { keyCode: SpacebarKey });
+
+    expect(onClick).toHaveBeenCalledTimes(2);
+  });
+
+  it('renders Button as a "a" with the correct accessibility props', () => {
+    const onClick = jest.fn();
+
+    wrapper = mount(
+      <Button as="a" onClick={onClick}>
+        Button
+      </Button>,
+    );
+
+    const button = wrapper.find('a');
+
+    expect(button.getElements().length).toBe(1);
+    expect(button.props().role).toBe('button');
+    expect(button.props().tabIndex).toBe(0);
+
+    ReactTestUtils.Simulate.keyDown(button.getDOMNode(), { keyCode: EnterKey });
+    ReactTestUtils.Simulate.keyDown(button.getDOMNode(), { keyCode: SpacebarKey });
+
+    expect(onClick).toHaveBeenCalledTimes(0);
+  });
+
+  it('prefers user provided accessibility behavior over defaults', () => {
+    wrapper = mount(
+      <Button role="presentation" tabIndex={-1}>
+        This is a non-focusable button with a presentation role
+      </Button>,
+    );
+
+    const button = wrapper.find('button');
+
+    expect(button.getElements().length).toBe(1);
+    expect(button.props().role).toBe('presentation');
+    expect(button.props().tabIndex).toBe(-1);
+  });
+});
+
+describe('Button', () => {
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();
@@ -50,26 +127,5 @@ describe('Button', () => {
     componentRef.current?.focus();
 
     expect(document.activeElement).toEqual(rootRef.current);
-  });
-
-  it('renders Button as a "div" with the correct accessibility props', () => {
-    const onClick = jest.fn();
-
-    const component = mount(
-      <Button as="div" onClick={onClick}>
-        Button
-      </Button>,
-    );
-
-    const button = component.find('div');
-
-    expect(button.getElements().length).toBe(1);
-    expect(button.props().role).toBe('button');
-    expect(button.props().tabIndex).toBe(0);
-
-    ReactTestUtils.Simulate.keyDown(button.getDOMNode(), { keyCode: EnterKey });
-    ReactTestUtils.Simulate.keyDown(button.getDOMNode(), { keyCode: SpacebarKey });
-
-    expect(onClick).toHaveBeenCalledTimes(2);
   });
 });

@@ -11,7 +11,7 @@ export const useButtonBehavior = (props: ButtonProps): Partial<ButtonState> => {
 
   const keyCombinations = keyActions?.root?.performClick?.keyCombinations;
   if (keyCombinations) {
-    _onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement> & React.MouseEvent<HTMLButtonElement>) => {
+    _onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       if (onKeyDown) {
         onKeyDown(ev);
       }
