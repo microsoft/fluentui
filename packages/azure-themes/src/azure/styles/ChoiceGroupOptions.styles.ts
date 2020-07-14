@@ -9,13 +9,13 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       color: extendedSemanticColors.labelText,
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         '.ms-ChoiceFieldLabel': {
           color: semanticColors.bodyText,
-          fontSize: FontSizes.size12,
+          fontSize: FontSizes.size13,
           verticalAlign: 'middle',
         },
       },
@@ -27,6 +27,10 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           ':before': [
             {
               borderColor: extendedSemanticColors.controlOutline,
+            },
+            checked && {
+              backgroundColor: 'transparent',
+              borderColor: extendedSemanticColors.primaryButtonBackground,
             },
             disabled && {
               backgroundColor: semanticColors.bodyBackground,
@@ -41,7 +45,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The dot
           ':after': [
             {
-              borderColor: extendedSemanticColors.controlAccent,
+              borderColor: semanticColors.primaryButtonBackground,
             },
             checked &&
               disabled && {
@@ -55,13 +59,22 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
             !disabled && {
               selectors: {
                 '.ms-ChoiceFieldLabel': {
-                  color: extendedSemanticColors.controlOutlineHovered,
+                  color: extendedSemanticColors.bodyTextHovered,
                 },
                 ':before': {
                   borderColor: extendedSemanticColors.controlOutlineHovered,
                 },
               },
             },
+            !disabled &&
+              checked && {
+                selectors: {
+                  ':before': {
+                    // hover circle border
+                    borderColor: extendedSemanticColors.primaryButtonBackgroundPressed,
+                  },
+                },
+              },
           ],
         },
       },

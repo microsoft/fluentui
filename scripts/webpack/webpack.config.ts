@@ -10,7 +10,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import config from '../config';
 
 const { paths } = config;
-const { __DEV__, __PROD__ } = config.compiler_globals;
+const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
 
 const webpackConfig: webpack.Configuration = {
   name: 'client',
@@ -118,6 +118,7 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       ...lernaAliases(),
       src: paths.packageSrc('react-northstar'),
+      'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
     },
   },
   optimization: {
@@ -173,6 +174,10 @@ if (__PROD__) {
       },
     }),
   ];
+
+  if (__PERF__) {
+    webpackConfig.optimization.minimizer = [];
+  }
 }
 
 if (process.env.ANALYZE) {

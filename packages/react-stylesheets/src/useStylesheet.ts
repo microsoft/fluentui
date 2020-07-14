@@ -6,8 +6,8 @@ import { StylesheetContext } from './StylesheetContext';
  * or with the `StylesheetProvider` component to direct styles to be registered to a
  * different target such as a child window or as a string in SSR scenarios.
  */
-export const useStylesheet = (stylesheets: string | string[]) => {
+export const useStylesheet = (sheets: undefined | string | string[]) => {
   const context = React.useContext(StylesheetContext);
 
-  context.registerStyles(Array.isArray(stylesheets) ? stylesheets : [stylesheets], context);
+  context.registerStyles(sheets, context);
 };

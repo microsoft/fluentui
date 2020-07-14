@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { Accessibility } from '../../types';
 
 /**
@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
  *  Triggers 'nextItem' action with 'ArrowDown' on 'root'.
  *  Triggers 'prevItem' action with 'ArrowUp' on 'root'.
  */
-const toolbarRadioGroupBehavior: Accessibility<ToolbarRadioGroupBehaviorProps> = () => ({
+export const toolbarRadioGroupBehavior: Accessibility<ToolbarRadioGroupBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'radiogroup',
@@ -29,5 +29,3 @@ const toolbarRadioGroupBehavior: Accessibility<ToolbarRadioGroupBehaviorProps> =
 });
 
 export type ToolbarRadioGroupBehaviorProps = never;
-
-export default toolbarRadioGroupBehavior;

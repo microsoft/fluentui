@@ -3,15 +3,14 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 
 const stackStyles: Partial<IStackStyles> = { root: { height: 200 } };
+const stackTokens: IStackTokens = { childrenGap: 20 };
 
 export interface ISliderVerticalExampleState {
   value: number;
 }
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export const SliderVerticalExample: React.FunctionComponent = () => {
-  const stackTokens: IStackTokens = { childrenGap: 20 };
-
   return (
     <Stack horizontal tokens={stackTokens} styles={stackStyles}>
       <Slider // prettier-ignore

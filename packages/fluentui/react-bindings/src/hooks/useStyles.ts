@@ -1,23 +1,10 @@
 import { ComposePreparedOptions } from '@fluentui/react-compose';
-import {
-  ComponentSlotStyle,
-  ComponentSlotStylesResolved,
-  ComponentVariablesInput,
-  DebugData,
-  emptyTheme,
-} from '@fluentui/styles';
+import { ComponentSlotStyle, ComponentSlotStylesResolved, ComponentVariablesInput, DebugData } from '@fluentui/styles';
 import * as React from 'react';
-// @ts-ignore We have this export in package, but it is not present in typings
-import { ThemeContext } from 'react-fela';
 
-import {
-  ComponentDesignProp,
-  ComponentSlotClasses,
-  PrimitiveProps,
-  RendererRenderRule,
-  StylesContextValue,
-} from '../styles/types';
-import getStyles from '../styles/getStyles';
+import { useFluentContext } from '../context';
+import { ComponentDesignProp, ComponentSlotClasses, PrimitiveProps } from '../styles/types';
+import { getStyles } from '../styles/getStyles';
 
 type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   /** A classname that will be added by default to all instances of a component on the `root` slot. */
@@ -48,7 +35,7 @@ type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   rtl?: boolean;
 };
 
-type UseStylesResult = {
+export type UseStylesResult = {
   classes: ComponentSlotClasses;
   styles: ComponentSlotStylesResolved;
 };
@@ -66,25 +53,11 @@ type InlineStyleProps<StyleProps> = {
   variables?: ComponentVariablesInput;
 };
 
-const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
-  rtl: false,
-  disableAnimations: false,
-  performance: {
-    enableSanitizeCssPlugin: process.env.NODE_ENV !== 'production',
-    enableStylesCaching: true,
-    enableVariablesCaching: true,
-    enableBooleanVariablesCaching: false,
-  },
-  renderer: { renderRule: () => '' },
-  theme: emptyTheme,
-};
-
-const useStyles = <StyleProps extends PrimitiveProps>(
+export const useStyles = <StyleProps extends PrimitiveProps>(
   displayName: string,
   options: UseStylesOptions<StyleProps>,
 ): UseStylesResult => {
-  const context: StylesContextValue<{ renderRule: RendererRenderRule }> =
-    React.useContext(ThemeContext) || defaultContext;
+  const context = useFluentContext();
 
   const {
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
@@ -107,13 +80,14 @@ const useStyles = <StyleProps extends PrimitiveProps>(
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
   const { classes, styles: resolvedStyles } = getStyles({
     // Input values
+    allDisplayNames: composeOptions?.displayNames || [displayName],
     className: composeOptions?.className || className,
-    displayNames: composeOptions?.displayNames || [displayName],
-    props: {
+    primaryDisplayName: composeOptions?.displayName || displayName,
+    componentProps: {
       ...componentStylesProps,
-      ...mapPropsToInlineStyles(),
       ...composeStylesProps,
     },
+    inlineStylesProps: mapPropsToInlineStyles(),
 
     // Context values
     disableAnimations: context.disableAnimations,
@@ -122,9 +96,8 @@ const useStyles = <StyleProps extends PrimitiveProps>(
     saveDebug: fluentUIDebug => (debug.current = { fluentUIDebug }),
     theme: context.theme,
     performance: context.performance,
+    telemetry: context.telemetry,
   });
 
   return { classes, styles: resolvedStyles };
 };
-
-export default useStyles;

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Slider';
+export * from './components/Slider/index';

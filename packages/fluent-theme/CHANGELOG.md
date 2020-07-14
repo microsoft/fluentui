@@ -1,8 +1,26 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.1.109](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.109)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.100..@uifabric/fluent-theme_v7.1.109)
+
+### Patches
+
+- Replace tslint with eslint ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.1.70](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.70)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.1.53..@uifabric/fluent-theme_v7.1.70)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.1.53](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.1.53)
 

@@ -22,4 +22,10 @@ export const PersonaPageProps: TFabricPlatformPageProps = {
     related,
     componentUrl,
   },
+  cross: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/cross/PersonaOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/cross/PersonaUsage.md') as string,
+    related,
+    componentUrl,
+  },
 };

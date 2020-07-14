@@ -10,6 +10,11 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
     fieldGroup: [
       !multiline && {
         height: StyleConstants.inputControlHeight,
+        selectors: {
+          '::after': {
+            borderColor: semanticColors.primaryButtonBackground,
+          },
+        },
       },
       focused && {
         borderColor: semanticColors.focusBorder,
@@ -35,16 +40,16 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
       bottom: 2,
     },
     prefix: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
     suffix: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
     field: [
       {
         color: semanticColors.inputText,
         backgroundColor: semanticColors.inputBackground,
-        fontSize: FontSizes.size12,
+        fontSize: FontSizes.size13,
         selectors: {
           '::placeholder': {
             color: semanticColors.inputPlaceholderText,

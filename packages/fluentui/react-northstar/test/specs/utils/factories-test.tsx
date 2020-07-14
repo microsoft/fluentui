@@ -380,6 +380,10 @@ describe('factories', () => {
           { ...defaultPropsValue, children: 'foo' },
         );
       });
+
+      test('returns empty object if the result of the function is undefined', () => {
+        testCreateShorthand({ defaultProps: () => undefined, value: 'foo' }, { children: 'foo' });
+      });
     });
 
     describe('key', () => {

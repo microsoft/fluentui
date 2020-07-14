@@ -1,5 +1,6 @@
 pr:
   - master
+  - website-content
 
 trigger:
   - master
@@ -14,7 +15,7 @@ jobs:
     steps:
       - template: azure-pipelines.tools.yml
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - script: |
           yarn
@@ -69,7 +70,7 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -102,7 +103,7 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -145,8 +146,10 @@ jobs:
 
   - job: Deploy
     dependsOn: Build
+    variables:
+      PR_DEPLOY: 1
     steps:
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -156,6 +159,7 @@ jobs:
       - template: azure-pipelines.tools.yml
 
       - script: |
+          NODE_ENV=production yarn build:fluentui:docs
           yarn bundle
         displayName: bundle
 
@@ -180,7 +184,7 @@ jobs:
           yarn
         displayName: yarn
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.tools.yml
 
@@ -207,7 +211,7 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:

@@ -1,6 +1,6 @@
 import { Accessibility } from '../../types';
 import { CardBehaviorProps } from './cardBehavior';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
@@ -13,7 +13,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const cardFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
+export const cardFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'group',
@@ -25,10 +25,8 @@ const cardFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },
 });
-
-export default cardFocusableBehavior;

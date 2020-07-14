@@ -1,11 +1,12 @@
-import keyboardKey from './index';
+import { codes } from './codes';
+import { getCode, getKey, keyboardKey } from './index';
 
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('keyboardKey', () => {
   it('has a key/value for every value/key in codes', () => {
-    Object.keys(keyboardKey.codes).forEach(code => {
-      const name = keyboardKey.codes[Number(code)];
+    Object.keys(codes).forEach(code => {
+      const name = codes[Number(code)];
 
       if (Array.isArray(name)) {
         expect(String((keyboardKey as any)[name[0]])).toEqual(code);
@@ -18,39 +19,39 @@ describe('keyboardKey', () => {
 
   describe('getCode', () => {
     it('is a function', () => {
-      expect(keyboardKey.getCode).toBeInstanceOf(Function);
+      expect(getCode).toBeInstanceOf(Function);
     });
     it('returns the code for a given key name', () => {
-      expect(keyboardKey.getCode('Enter')).toEqual(13);
+      expect(getCode('Enter')).toEqual(13);
     });
     it('handles all key names in codes', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const _code = Number(code);
 
         if (Array.isArray(name)) {
-          expect(keyboardKey.getCode(name[0])).toEqual(_code);
-          expect(keyboardKey.getCode(name[1])).toEqual(_code);
+          expect(getCode(name[0])).toEqual(_code);
+          expect(getCode(name[1])).toEqual(_code);
         } else {
-          expect(keyboardKey.getCode(name)).toEqual(_code);
+          expect(getCode(name)).toEqual(_code);
         }
       });
     });
 
     it('handles event like objects with `key` prop', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const _code = Number(code);
 
         if (Array.isArray(name)) {
           const key0 = { key: name[0], which: _code, keyCode: _code, shiftKey: false };
           const key1 = { key: name[1], which: _code, keyCode: _code, shiftKey: false };
 
-          expect(keyboardKey.getCode(key0)).toEqual(_code);
-          expect(keyboardKey.getCode(key1)).toEqual(_code);
+          expect(getCode(key0)).toEqual(_code);
+          expect(getCode(key1)).toEqual(_code);
         } else {
           const key = { key: name, which: _code, keyCode: _code, shiftKey: false };
-          expect(keyboardKey.getCode(key)).toEqual(_code);
+          expect(getCode(key)).toEqual(_code);
         }
       });
     });
@@ -58,15 +59,15 @@ describe('keyboardKey', () => {
 
   describe('getKey', () => {
     it('is a function', () => {
-      expect(keyboardKey.getKey).toBeInstanceOf(Function);
+      expect(getKey).toBeInstanceOf(Function);
     });
     it('returns the code for a given key name', () => {
-      expect(keyboardKey.getKey(13)).toEqual('Enter');
+      expect(getKey(13)).toEqual('Enter');
     });
     it('handles all codes', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
-        const keyName = keyboardKey.getKey(Number(code));
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
+        const keyName = getKey(Number(code));
         if (Array.isArray(name)) {
           expect(keyName).toEqual(name[0]);
         } else {
@@ -75,10 +76,10 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like object: { keyCode: code, shiftKey: false }`', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const _code = Number(code);
-        const keyName = keyboardKey.getKey({ which: _code, keyCode: _code, shiftKey: false });
+        const keyName = getKey({ which: _code, keyCode: _code, shiftKey: false });
 
         if (Array.isArray(name)) {
           expect(keyName).toEqual(name[0]);
@@ -88,9 +89,9 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like object: { keyCode: code, shiftKey: true }`', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
-        const keyName = keyboardKey.getKey({ keyCode: Number(code), shiftKey: true });
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
+        const keyName = getKey({ keyCode: Number(code), shiftKey: true });
 
         if (Array.isArray(name)) {
           expect(keyName).toEqual(name[1]);
@@ -100,9 +101,9 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like object: { which: code, shiftKey: false }', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
-        const keyName = keyboardKey.getKey({ which: Number(code), shiftKey: false });
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
+        const keyName = getKey({ which: Number(code), shiftKey: false });
 
         if (Array.isArray(name)) {
           expect(keyName).toEqual(name[0]);
@@ -112,9 +113,9 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like object: { which: code, shiftKey: true }', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
-        const keyName = keyboardKey.getKey({ which: Number(code), shiftKey: true });
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
+        const keyName = getKey({ which: Number(code), shiftKey: true });
 
         if (Array.isArray(name)) {
           expect(keyName).toEqual(name[1]);
@@ -124,7 +125,7 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like objects with a `key` property', () => {
-      const keyName = keyboardKey.getKey({ key: '/' });
+      const keyName = getKey({ key: '/' });
       expect(keyName).toEqual('/');
     });
   });

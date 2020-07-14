@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Migrate Checkbox to functional component",
-  "packageName": "@fluentui/react-next",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-22T17:09:48.443Z"
-}

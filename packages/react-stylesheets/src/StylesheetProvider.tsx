@@ -11,7 +11,7 @@ export const StylesheetProvider = (props: React.PropsWithChildren<StylesheetProv
   const context = React.useContext(StylesheetContext);
   const mergedContext = React.useMemo<StylesheetContextType>(
     () => ({
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ...(context as any),
       ...props,
     }),
@@ -19,11 +19,6 @@ export const StylesheetProvider = (props: React.PropsWithChildren<StylesheetProv
     // be mutating dynamically for a provider, or may be doing so accidentally. Avoid recomputations.
     [context],
   );
-
-  React.useLayoutEffect(() => {
-    mergedContext.renderStyles(mergedContext.enqueuedSheets, mergedContext);
-    mergedContext.enqueuedSheets.splice(0);
-  }, [mergedContext]);
 
   return <StylesheetContext.Provider value={mergedContext}>{props.children}</StylesheetContext.Provider>;
 };

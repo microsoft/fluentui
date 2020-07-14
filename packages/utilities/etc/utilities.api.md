@@ -24,7 +24,7 @@ export const allowOverscrollOnElement: (element: HTMLElement | null, events: Eve
 export const allowScrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
 
 // @public
-export const anchorProperties: string[];
+export const anchorProperties: Record<string, number>;
 
 // @public
 export function appendFunction(parent: any, ...functions: any[]): () => void;
@@ -71,7 +71,7 @@ export class Async {
     }
 
 // @public
-export const audioProperties: string[];
+export const audioProperties: Record<string, number>;
 
 // @public
 export class AutoScroll {
@@ -102,13 +102,13 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
 }
 
 // @public
-export const baseElementEvents: string[];
+export const baseElementEvents: Record<string, number>;
 
 // @public
-export const baseElementProperties: string[];
+export const baseElementProperties: Record<string, number>;
 
 // @public
-export const buttonProperties: string[];
+export const buttonProperties: Record<string, number>;
 
 // @public
 export function calculatePrecision(value: number | string): number;
@@ -117,10 +117,10 @@ export function calculatePrecision(value: number | string): number;
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
-export const colGroupProperties: string[];
+export const colGroupProperties: Record<string, number>;
 
 // @public (undocumented)
-export const colProperties: string[];
+export const colProperties: Record<string, number>;
 
 // @public
 export function composeComponentAs<TProps>(outer: IComponentAs<TProps>, inner: IComponentAs<TProps>): IComponentAs<TProps>;
@@ -197,7 +197,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
 export function disableBodyScroll(): void;
 
 // @public
-export const divProperties: string[];
+export const divProperties: Record<string, number>;
 
 // @public
 export function doesElementContainFocus(element: HTMLElement): boolean;
@@ -221,12 +221,8 @@ export class EventGroup {
     // (undocumented)
     static isObserved(target: any, eventName: string): boolean;
     // (undocumented)
-    off(target?: any, // tslint:disable-line:no-any
-    eventName?: string, callback?: (args?: any) => void, // tslint:disable-line:no-any
-    options?: boolean | AddEventListenerOptions): void;
-    on(target: any, // tslint:disable-line:no-any
-    eventName: string, callback: (args?: any) => void, // tslint:disable-line:no-any
-    options?: boolean | AddEventListenerOptions): void;
+    off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+    on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
     onAll(target: any, events: {
         [key: string]: (args?: any) => void;
     }, useCapture?: boolean): void;
@@ -264,10 +260,10 @@ export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T 
 export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null;
 
 // @public
-export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number;
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex?: number): number;
 
 // @public
-export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null;
+export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | Window | undefined | null;
 
 // @public
 export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize;
@@ -295,7 +291,7 @@ export const FocusRects: React.FunctionComponent<{
 export function format(s: string, ...values: any[]): string;
 
 // @public
-export const formProperties: string[];
+export const formProperties: Record<string, number>;
 
 // @public
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
@@ -334,7 +330,10 @@ export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLE
 export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
-export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
+export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: keyof React.ReactHTML, props: {}, excludedPropNames?: string[]): TAttributes;
+
+// @public
+export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
 export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
@@ -344,6 +343,9 @@ export function getParent(child: HTMLElement, allowVirtualParents?: boolean): HT
 
 // @public
 export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+
+// @public
+export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TProps>, propsWithoutDefaults: TProps): TProps;
 
 // @public
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
@@ -398,7 +400,7 @@ export function hoistMethods(destination: any, source: any, exclusions?: string[
 export function hoistStatics<TSource extends Object, TDest>(source: TSource, dest: TDest): TDest;
 
 // @public
-export const htmlElementProperties: string[];
+export const htmlElementProperties: Record<string, number>;
 
 // @public (undocumented)
 export interface IAsAsyncOptions<TProps> {
@@ -447,6 +449,7 @@ export type IClassNames<T> = {
 export interface IClassNamesFunctionOptions {
     cacheSize?: number;
     disableCaching?: boolean;
+    useStaticStyles?: boolean;
 }
 
 // @public
@@ -496,7 +499,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
 
 // Warning: (ae-internal-missing-underscore) The name "IDeclaredEventsByName" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IDeclaredEventsByName {
     // (undocumented)
     [eventName: string]: boolean;
@@ -530,7 +533,7 @@ export interface IDisposable {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecord" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecord {
     // (undocumented)
     callback: (args?: any) => void;
@@ -550,7 +553,7 @@ export interface IEventRecord {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordList" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecordList {
     // (undocumented)
     [id: string]: IEventRecord[] | number;
@@ -560,7 +563,7 @@ export interface IEventRecordList {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordsByName" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecordsByName {
     // (undocumented)
     [eventName: string]: IEventRecordList;
@@ -575,13 +578,13 @@ export interface IFitContentToBoundsOptions {
 }
 
 // @public
-export const iframeProperties: string[];
+export const iframeProperties: Record<string, number>;
 
 // @public @deprecated (undocumented)
-export const imageProperties: string[];
+export const imageProperties: Record<string, number>;
 
 // @public
-export const imgProperties: string[];
+export const imgProperties: Record<string, number>;
 
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
@@ -590,7 +593,7 @@ export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: R
 export function initializeFocusRects(window?: Window): void;
 
 // @public
-export const inputProperties: string[];
+export const inputProperties: Record<string, number>;
 
 // @public (undocumented)
 export interface IObjectWithKey {
@@ -731,6 +734,8 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
     // (undocumented)
     canSelectItem?: (item: TItem, index?: number) => boolean;
     getKey?: (item: TItem, index?: number) => string | number;
+    // (undocumented)
+    items?: TItem[];
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
@@ -928,10 +933,10 @@ export const KeyCodes: {
 export type KeyCodes = number;
 
 // @public
-export const labelProperties: string[];
+export const labelProperties: Record<string, number>;
 
 // @public
-export const liProperties: string[];
+export const liProperties: Record<string, number>;
 
 // @public
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
@@ -943,7 +948,7 @@ export function memoize<T extends Function>(target: any, key: string, descriptor
 };
 
 // @public
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
+export function memoizeFunction<T extends (...args: any[]) => RetType, RetType>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
 
 // @public
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
@@ -961,10 +966,13 @@ export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISett
 export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
+export function modalize(target: HTMLElement): () => void;
+
+// @public
 export function nullRender(): JSX.Element | null;
 
 // @public
-export const olProperties: string[];
+export const olProperties: Record<string, number>;
 
 export { Omit }
 
@@ -972,7 +980,7 @@ export { Omit }
 export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public (undocumented)
-export const optionProperties: string[];
+export const optionProperties: Record<string, number>;
 
 // @public
 export interface Point {
@@ -1113,7 +1121,7 @@ export enum SelectionMode {
 }
 
 // @public
-export const selectProperties: string[];
+export const selectProperties: Record<string, number>;
 
 // @public
 export function setBaseUrl(baseUrl: string): void;
@@ -1159,26 +1167,38 @@ export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data
 // @public
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.FunctionComponent<TComponentProps>;
 
-// @public
-export const tableProperties: string[];
+// @public (undocumented)
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>, TRef = unknown>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.ForwardRefExoticComponent<React.PropsWithoutRef<TComponentProps> & React.RefAttributes<TRef>>;
+
+// @public (undocumented)
+export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
+    __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
+    __noStyleOverride__: boolean;
+};
 
 // @public
-export const tdProperties: string[];
+export const tableProperties: Record<string, number>;
 
 // @public
-export const textAreaProperties: string[];
+export const tdProperties: Record<string, number>;
 
 // @public
-export const thProperties: string[];
+export const textAreaProperties: Record<string, number>;
+
+// @public
+export const thProperties: Record<string, number>;
 
 // @public
 export function toMatrix<T>(items: T[], columnCount: number): T[][];
 
 // @public
-export const trProperties: string[];
+export const trProperties: Record<string, number>;
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export function useCustomizationSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): ISettings;
 
 // @public
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
@@ -1187,7 +1207,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
 export function values<T>(obj: any): T[];
 
 // @public
-export const videoProperties: string[];
+export const videoProperties: Record<string, number>;
 
 // @public
 export function warn(message: string): void;

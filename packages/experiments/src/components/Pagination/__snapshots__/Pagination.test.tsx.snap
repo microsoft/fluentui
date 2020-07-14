@@ -1102,9 +1102,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
 
 exports[`Pagination render comboBox Pagination correctly 1`] = `
 <div
-  className=
-      ms-Pagination-container
-
+  className="ms-Pagination-container"
 >
   <button
     aria-disabled={true}

@@ -4,7 +4,9 @@
 
 ```ts
 
+import { Async } from '@uifabric/utilities';
 import * as React from 'react';
+import { Ref } from 'react';
 
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React.FormEvent<TElement> | undefined, newValue: TValue | undefined) => void;
@@ -15,6 +17,9 @@ export interface IUseBooleanCallbacks {
     setTrue: () => void;
     toggle: () => void;
 }
+
+// @public
+export function useAsync(): Async;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];
@@ -32,10 +37,37 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
+export function useForceUpdate(): () => void;
+
+// @public
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public
-export function useMergedRefs<T>(...refs: React.Ref<T>[]): (instance: T) => void;
+export function useMergedRefs<T>(...refs: Ref<T>[]): (instance: T) => void;
+
+// @public
+export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
+
+// @public
+export function usePrevious<T>(value: T): T | undefined;
+
+// @public
+export const useSetInterval: () => UseSetIntervalReturnType;
+
+// @public (undocumented)
+export type UseSetIntervalReturnType = {
+    setInterval: (callback: () => void, duration: number) => number;
+    clearInterval: (id: number) => void;
+};
+
+// @public
+export const useSetTimeout: () => UseSetTimeoutReturnType;
+
+// @public (undocumented)
+export type UseSetTimeoutReturnType = {
+    setTimeout: (callback: () => void, duration: number) => number;
+    clearTimeout: (id: number) => void;
+};
 
 
 // (No @packageDocumentation comment for this package)

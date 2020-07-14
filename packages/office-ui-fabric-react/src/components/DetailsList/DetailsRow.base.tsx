@@ -149,7 +149,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this._events.dispose();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
     this.setState({
       selectionState: this._getSelectionState(newProps),
@@ -277,6 +276,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
+        data-selection-touch-invoke={true}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
         data-automationid="DetailsRow"
@@ -408,6 +408,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       updateDropState: this._updateDroppingState,
       onDrop: dragDropEvents!.onDrop,
       onDragEnd: dragDropEvents!.onDragEnd,
+      onDragOver: dragDropEvents!.onDragOver,
     };
 
     return options;

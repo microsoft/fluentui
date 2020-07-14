@@ -48,6 +48,13 @@ export interface IStackedBarChartProps {
   hideNumberDisplay?: boolean;
 
   /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;
@@ -185,21 +192,6 @@ export interface IStackedBarChartStyles {
    * Style for the legend container div
    */
   legendContainer: IStyle;
-
-  /**
-   * Style for the legend card title displayed in the hover card
-   */
-  hoverCardTextStyles: IStyle;
-
-  /**
-   * Style for the data displayed in the hover card
-   */
-  hoverCardDataStyles: IStyle;
-
-  /**
-   * Style for the root of the hover card
-   */
-  hoverCardRoot: IStyle;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

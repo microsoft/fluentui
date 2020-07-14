@@ -40,15 +40,11 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
   </span>
   <div
     aria-live="polite"
-    className=
-
-
+    className=""
     role="status"
   />
   <div
-    className=
-        ms-BasePicker
-
+    className="ms-BasePicker"
     onBlur={[Function]}
     onKeyDown={[Function]}
   >

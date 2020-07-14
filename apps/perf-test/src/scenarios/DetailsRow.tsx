@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react';
 
-// tslint:disable-next-line:typedef
 const Items = Array.from({ length: 10 }, (n, i) => ({
   key: `Item ${i}`,
   name: `Item ${i}`,
@@ -20,7 +19,7 @@ const Columns: IColumn[] = [
   { key: 'c', name: 'Size', fieldName: 'size', minWidth: 300, maxWidth: 300 },
 ];
 
-const scenario = (
+const Scenario = () => (
   <DetailsRow
     itemIndex={0}
     item={Items[0]}
@@ -30,4 +29,4 @@ const scenario = (
   />
 );
 
-export default scenario;
+export default Scenario;

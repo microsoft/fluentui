@@ -42,7 +42,7 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
                       iconName: icon,
                       className: iconClassName,
                     }}
-                    /* tslint:disable-next-line jsx-no-lambda */
+                    /* eslint-disable-next-line react/jsx-no-bind */
                     onClick={() => this._handlePlatformClick(platformKey)}
                     styles={{
                       ...this._platformButtonStyles(color),
@@ -81,6 +81,7 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
     label: {
       textAlign: 'left',
       fontWeight: FontWeights.semibold,
+      // fontSize: 10,
       margin: 0,
     },
   });

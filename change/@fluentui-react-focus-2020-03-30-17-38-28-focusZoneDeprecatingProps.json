@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "FocusZone: Using v0 prop names for props where names differed and deprecating old ones.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "98f000c1d3faa4bf9fa0906d98ef43f42c1f78c5",
-  "dependentChangeType": "patch",
-  "date": "2020-03-31T00:38:28.649Z"
-}

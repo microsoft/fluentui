@@ -2,6 +2,147 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.92",
+      "version": "7.12.92",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.83",
+      "version": "7.12.83",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@uifabric/example-app-base"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.79",
+      "version": "7.12.79",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Jun 2020 05:09:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.74",
+      "version": "7.12.74",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tweaks to css modules",
+            "author": "dzearing@microsoft.com",
+            "commit": "508bd36b17dd15b3d9651d75f9b27a35a864e38a",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 May 2020 12:38:22 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.68",
+      "version": "7.12.68",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed minor typos",
+            "author": "xia_tony@hotmail.com",
+            "commit": "8722f6c224ff811107129b41e8e62845e3106e78",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 May 2020 12:34:06 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.64",
+      "version": "7.12.64",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix example-app-base demo app",
+            "author": "elcraig@microsoft.com",
+            "commit": "b66a3351f9b643bc4845fe012e9a3afc42b1654f",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 May 2020 16:49:49 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.64",
+      "version": "7.12.64",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix demo app",
+            "author": "elcraig@microsoft.com",
+            "commit": "04b0e8f91c9e4079f60bbe3a6c88524a98f852b9",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 May 2020 00:07:39 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.59",
+      "version": "7.12.59",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cleaned up platform switcher, made room for windows button",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7a613256ef792c037702a47fa07713cecacbc755",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.52",
+      "version": "7.12.52",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Apr 2020 12:34:58 GMT",
       "tag": "@uifabric/example-app-base_v7.12.46",
       "version": "7.12.46",

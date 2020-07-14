@@ -91,15 +91,19 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       value: 'defaultValue',
     });
 
-    const value = props.value || props.defaultValue || String(props.min) || '0';
+    // Don't use || here because it won't handle empty strings properly
+    let { value = props.defaultValue } = props;
+    if (value === undefined) {
+      value = typeof props.min === 'number' ? String(props.min) : '0';
+    }
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
-    this._precision = this._calculatePrecision(this.props as ISpinButtonInternalProps);
+    this._precision = this._calculatePrecision(props as ISpinButtonInternalProps);
 
     this.state = {
       isFocused: false,
-      value: value,
+      value,
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
     };
 
@@ -118,18 +122,11 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   /**
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
-    this._lastValidValue = this.state.value;
-    let value: string = newProps.value !== undefined ? newProps.value : String(newProps.min);
-    if (newProps.defaultValue) {
-      value = String(Math.max(newProps.min as number, Math.min(newProps.max as number, Number(newProps.defaultValue))));
-    }
-
     if (newProps.value !== undefined) {
-      this.setState({
-        value: value,
-      });
+      // Value from props is considered pre-validated
+      this._lastValidValue = newProps.value;
+      this.setState({ value: newProps.value });
     }
     this._precision = this._calculatePrecision(newProps as ISpinButtonProps & DefaultProps);
   }
@@ -162,7 +159,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       iconButtonProps,
     } = this.props as ISpinButtonInternalProps;
 
-    const { isFocused, value, keyboardSpinDirection } = this.state;
+    const { isFocused, keyboardSpinDirection } = this.state;
+    const value = this.value;
 
     const classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, disabled, isFocused, keyboardSpinDirection, labelPosition, className)
@@ -214,9 +212,19 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
                 role="spinbutton"
                 aria-labelledby={label && this._labelId}
                 aria-valuenow={
-                  !isNaN(Number(ariaValueNow)) ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined
+                  typeof ariaValueNow === 'number'
+                    ? ariaValueNow
+                    : value && !isNaN(Number(value)) // Number('') is 0 which may not be desirable
+                    ? Number(value)
+                    : undefined
                 }
-                aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
+                aria-valuetext={
+                  typeof ariaValueText === 'string'
+                    ? ariaValueText
+                    : !value || isNaN(Number(value)) // Number('') is 0 which may not be desirable
+                    ? value
+                    : undefined
+                }
                 aria-valuemin={min}
                 aria-valuemax={max}
                 aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
@@ -284,6 +292,17 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     }
   }
 
+  /**
+   * Gets the value of the spin button.
+   */
+  public get value(): string | undefined {
+    // TODO (version 8): value from props should ALWAYS override value from state.
+    // In a class component the code should be:
+    // const { value = this.state.value } = this.props;
+    // return value;
+    return this.state.value;
+  }
+
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
     // We can't set focus on a non-existing element
     if (!this._input.current) {
@@ -311,13 +330,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     }
   };
 
-  /**
-   * Gets the value of the spin button.
-   */
-  public get value(): string | undefined {
-    return this.props.value === undefined ? this.state.value : this.props.value;
-  }
-
   private _onValidate = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
     if (this.props.onValidate) {
       return this.props.onValidate(value, event);
@@ -342,9 +354,12 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     return String(newValue);
   };
 
-  private _onIncrement = (value: string): string | void => {
+  private _onIncrement = (
+    value: string,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ): string | void => {
     if (this.props.onIncrement) {
-      return this.props.onIncrement(value);
+      return this.props.onIncrement(value, event);
     } else {
       return this._defaultOnIncrement(value);
     }
@@ -360,9 +375,12 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     return String(newValue);
   };
 
-  private _onDecrement = (value: string): string | void => {
+  private _onDecrement = (
+    value: string,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ): string | void => {
     if (this.props.onDecrement) {
-      return this.props.onDecrement(value);
+      return this.props.onDecrement(value, event);
     } else {
       return this._defaultOnDecrement(value);
     }
@@ -391,21 +409,26 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   }
 
   /**
-   * This is used when validating text entry
-   * in the input (not when changed via the buttons)
+   * This is used when validating text entry in the input on blur or when enter key is pressed
+   * (not when changed via the buttons).
    * @param event - the event that fired
    */
   private _validate = (event: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
     if (
-      this.state.value !== undefined &&
+      this.value !== undefined &&
       this._valueToValidate !== undefined &&
       this._valueToValidate !== this._lastValidValue
     ) {
       const newValue = this._onValidate!(this._valueToValidate, event);
-      if (newValue) {
+      // Done validating this value, so clear it
+      this._valueToValidate = undefined;
+
+      if (newValue !== undefined) {
         this._lastValidValue = newValue;
-        this._valueToValidate = undefined;
         this.setState({ value: newValue });
+      } else {
+        // Value was invalid. Reset state to last valid value.
+        this.setState({ value: this._lastValidValue });
       }
     }
   };
@@ -429,14 +452,19 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
    * @param shouldSpin - should we fire off another updateValue when we are done here? This should be true
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
+   * @param event - The event that triggered the updateValue
    */
   private _updateValue = (
     shouldSpin: boolean,
     stepDelay: number,
-    stepFunction: (value: string) => string | void,
+    stepFunction: (
+      value: string,
+      event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    ) => string | void,
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   ): void => {
-    const newValue: string | void = stepFunction(this.state.value);
-    if (newValue) {
+    const newValue: string | void = stepFunction(this.value || '', event);
+    if (newValue !== undefined) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
     }
@@ -447,7 +475,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 
     if (shouldSpin) {
       this._currentStepFunctionHandle = this._async.setTimeout(() => {
-        this._updateValue(shouldSpin, this._stepDelay, stepFunction);
+        this._updateValue(shouldSpin, this._stepDelay, stepFunction, event);
       }, stepDelay);
     }
   };
@@ -490,17 +518,17 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     switch (event.which) {
       case KeyCodes.up:
         spinDirection = KeyboardSpinDirection.up;
-        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
+        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!, event);
         break;
       case KeyCodes.down:
         spinDirection = KeyboardSpinDirection.down;
-        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
+        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!, event);
         break;
       case KeyCodes.enter:
         this._validate(event);
         break;
       case KeyCodes.escape:
-        if (this.state.value !== this._lastValidValue) {
+        if (this.value !== this._lastValidValue) {
           this.setState({ value: this._lastValidValue });
         }
         break;
@@ -527,11 +555,11 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     }
   };
 
-  private _onIncrementMouseDown = (): void => {
-    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
+  private _onIncrementMouseDown = (event: React.MouseEvent<HTMLElement>): void => {
+    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onIncrement!, event);
   };
 
-  private _onDecrementMouseDown = (): void => {
-    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
+  private _onDecrementMouseDown = (event: React.MouseEvent<HTMLElement>): void => {
+    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!, event);
   };
 }

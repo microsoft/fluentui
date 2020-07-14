@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
-import HierarchicalTree from 'src/components/HierarchicalTree/HierarchicalTree';
+import { HierarchicalTree } from 'src/components/HierarchicalTree/HierarchicalTree';
 import { hierarchicalTreeTitleClassName } from 'src/components/HierarchicalTree/HierarchicalTreeTitle';
 import { hierarchicalTreeItemClassName } from 'src/components/HierarchicalTree/HierarchicalTreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
@@ -71,6 +71,7 @@ const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
 
 describe('HierarchialTree', () => {
   isConformant(HierarchicalTree, {
+    constructorName: 'HierarchicalTree',
     autoControlledProps: ['activeIndex'],
   });
 

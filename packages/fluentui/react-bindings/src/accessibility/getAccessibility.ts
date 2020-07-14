@@ -5,7 +5,7 @@ import {
   AccessibilityDefinition,
 } from '@fluentui/accessibility';
 
-import getKeyDownHandlers from './getKeyDownHandlers';
+import { getKeyDownHandlers } from './getKeyDownHandlers';
 import { AccessibilityActionHandlers, ReactAccessibilityBehavior } from './types';
 
 const emptyBehavior: ReactAccessibilityBehavior = {
@@ -13,7 +13,7 @@ const emptyBehavior: ReactAccessibilityBehavior = {
   keyHandlers: {},
 };
 
-const getAccessibility = <Props extends Record<string, any>>(
+export const getAccessibility = <Props extends Record<string, any>>(
   displayName: string,
   behavior: Accessibility<Props>,
   behaviorProps: Props,
@@ -29,6 +29,14 @@ const getAccessibility = <Props extends Record<string, any>>(
     actionHandlers && definition.keyActions
       ? getKeyDownHandlers(actionHandlers, definition.keyActions, isRtlEnabled)
       : {};
+
+  if (definition.focusZone) {
+    definition.focusZone.props = {
+      // maintain behavior of focus zone in v7 behaviors
+      preventFocusRestoration: true,
+      ...definition.focusZone.props,
+    };
+  }
 
   if (process.env.NODE_ENV !== 'production') {
     // For the non-production builds we enable the runtime accessibility attributes validator.
@@ -55,5 +63,3 @@ const getAccessibility = <Props extends Record<string, any>>(
     keyHandlers,
   };
 };
-
-export default getAccessibility;

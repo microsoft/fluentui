@@ -94,6 +94,7 @@ const reactComponentSymbolNames = [
   'FunctionComponent',
 
   // magic for ComponentWithAs
+  'ComponentWithAs',
   '__type',
 ];
 
@@ -334,7 +335,7 @@ export class Parser {
 
       const propTypeString = this.checker.typeToString(propType);
 
-      // tslint:disable-next-line:no-bitwise
+      // eslint-disable-next-line no-bitwise
       const isOptional = (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
 
       const jsDocComment = this.findDocComment(prop);

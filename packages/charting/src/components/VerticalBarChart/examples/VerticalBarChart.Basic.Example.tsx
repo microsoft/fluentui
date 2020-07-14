@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting/lib/VerticalBarChart';
+import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, {}> {
   constructor(props: IVerticalBarChartProps) {
@@ -8,18 +9,77 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
   public render(): JSX.Element {
     const points = [
-      { x: 0, y: 10, legend: 'First', color: 'pink' },
-      { x: 6, y: 18, legend: 'Second', color: 'red' },
-      { x: 12, y: 36, legend: 'Third', color: 'blue' },
-      { x: 21, y: 20, legend: 'Fourth', color: 'green' },
-      { x: 29, y: 46, legend: 'Fifth', color: 'red' },
-      { x: 34, y: 25, legend: 'sixth', color: 'red' },
-      { x: 40, y: 13, legend: 'seventh', color: 'red' },
-      { x: 48, y: 43, legend: 'Eighith', color: 'red' },
-      { x: 57, y: 30, legend: 'Nighth', color: 'red' },
-      { x: 64, y: 45, legend: 'tenth', color: 'red' },
+      {
+        x: 0,
+        y: 10000,
+        legend: 'First',
+        color: DefaultPalette.accent,
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '10%',
+      },
+      {
+        x: 10000,
+        y: 50000,
+        legend: 'Second',
+        color: DefaultPalette.blueDark,
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '20%',
+      },
+      {
+        x: 25000,
+        y: 30000,
+        legend: 'Third',
+        color: DefaultPalette.blueMid,
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '37%',
+      },
+
+      {
+        x: 40000,
+        y: 13000,
+        legend: 'seventh',
+        color: DefaultPalette.blueLight,
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '88%',
+      },
+      {
+        x: 52000,
+        y: 43000,
+        legend: 'Eighith',
+        color: DefaultPalette.blue,
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '71%',
+      },
+      {
+        x: 68000,
+        y: 30000,
+        legend: 'Nighth',
+        color: DefaultPalette.blueDark,
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '40%',
+      },
+      {
+        x: 80000,
+        y: 20000,
+        legend: 'Fourth',
+        color: DefaultPalette.blue,
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '87%',
+      },
+      {
+        x: 92000,
+        y: 45000,
+        legend: 'tenth',
+        color: DefaultPalette.blueLight,
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '33%',
+      },
     ];
 
-    return <VerticalBarChart data={points} chartLabel={'Basic Chart with Numeric Axes'} />;
+    return (
+      <div style={{ width: '650px', height: '400px' }}>
+        <VerticalBarChart data={points} width={650} height={400} chartLabel={'Basic Chart with Numeric Axes'} />
+      </div>
+    );
   }
 }

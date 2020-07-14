@@ -4,7 +4,7 @@ import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IChartProps } from '../../types/IDataPoint';
 import { IEventAnnotation } from '../../types/IEventAnnotation';
-
+import { IMargins } from '../../utilities/index';
 export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/IDataPoint';
 
 export interface ILineChart {}
@@ -14,6 +14,11 @@ export interface ILineChartProps {
    * Data to render in the chart.
    */
   data: IChartProps;
+
+  /**
+   * Chart title for title of the chart
+   */
+  chartTitle?: string;
 
   /**
    * Width of the chart.
@@ -26,7 +31,7 @@ export interface ILineChartProps {
   height?: number;
 
   /**
-   * Additional CSS class(es) to apply to the LineChart.
+   * Additional CSS class(es) to apply to the Chart.
    */
   className?: string;
 
@@ -44,6 +49,25 @@ export interface ILineChartProps {
    * Width of line stroke
    */
   strokeWidth?: number;
+
+  /**
+   * Number of ticks on the y-axis.
+   * This is a optional parameter and default value is 5.
+   * @default 4
+   */
+  yAxisTickCount?: number;
+
+  /**
+   * This prop used to draw X axis grid line on tha chart.
+   * @default false
+   */
+  showXAxisGridLines?: boolean;
+
+  /**
+   * This prop used to draw Y axis grid lines on the chart.
+   * @default false
+   */
+  showYAxisGridLines?: boolean;
 
   /**
    * this prop takes values that you want the line chart to render on x-axis
@@ -98,7 +122,7 @@ export interface ILineChartProps {
    *  Eg: d3.format(".0%")(0.123),d3.format("+20")(42);
    * Please look at https://github.com/d3/d3-format for all the formats supported
    */
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisTickFormat?: any;
 
   /** decides wether to show/hide legends
@@ -107,9 +131,21 @@ export interface ILineChartProps {
   hideLegend?: boolean;
 
   /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
    * Show event annotation
    */
   eventAnnotationProps?: IEventsAnnotationProps;
+
+  /**
+   * Margins for the chart
+   */
+  margins?: IMargins;
 }
 
 export interface IEventsAnnotationProps {
@@ -122,11 +158,30 @@ export interface IEventsAnnotationProps {
 }
 
 export interface ILineChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
   theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the Chart.
+   */
   className?: string;
-  width: number;
-  height: number;
-  color: string;
+
+  /**
+   * Width of the chart.
+   */
+  width?: number;
+
+  /**
+   * Height of the chart.
+   */
+  height?: number;
+
+  /**
+   * Color of the chart.
+   */
+  color?: string;
 }
 
 export interface ILineChartStyles {
@@ -159,12 +214,34 @@ export interface ILineChartStyles {
    * styles for callout root-content
    */
   calloutContentRoot?: IStyle;
+
   /**
    * styles for callout x-content
    */
   calloutContentX?: IStyle;
+
   /**
    * styles for callout y-content
    */
   calloutContentY?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutDateTimeContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutInfoContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutBlockContainer?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutlegendText?: IStyle;
 }

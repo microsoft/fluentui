@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { PieChart, IPieChartProps } from '@uifabric/charting/lib/PieChart';
+import { IDataPoint, PieChart, IPieChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IDataPoint } from '@uifabric/charting/lib/types/IDataPoint';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IExampleState {

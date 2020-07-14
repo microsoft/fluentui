@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
-
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, updateItems] = React.useState(props.selectedItems || []);
+  const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
   const renderedItems = React.useMemo(() => items, [items]);
 
   React.useEffect(() => {
@@ -14,7 +13,14 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   }, [props.selectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
-    updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
+    // Intentionally not using .filter here as we want to only remove a specific
+    // item in case of duplicates of same item.
+    const updatedItems: TItem[] = [...items];
+    itemsToRemove.forEach(item => {
+      const index: number = updatedItems.indexOf(item);
+      updatedItems.splice(index, 1);
+    });
+    updateItems(updatedItems);
     props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
   };
 
@@ -47,7 +53,9 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
           <SelectedItem
             item={item}
             index={index}
-            key={item.key !== undefined ? item.key : index}
+            // To keep react from complaining for duplicate elements with the same key
+            // we will append the index to the key so that we have unique key for each item
+            key={item.key !== undefined ? item.key + '_' + index : index}
             selected={props.focusedItemIndices?.includes(index)}
             removeButtonAriaLabel={props.removeButtonAriaLabel}
             onRemoveItem={onRemoveItemCallbacks[index]}

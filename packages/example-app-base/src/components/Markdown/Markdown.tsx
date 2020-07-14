@@ -1,6 +1,7 @@
 import * as React from 'react';
 import MarkdownToJsx, { MarkdownProps } from 'markdown-to-jsx';
 import { DefaultButton, Image, IImageStyles, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
+import { DisplayToggle } from '../DisplayToggle/index';
 import * as MDTable from '../MarkdownTable/index';
 import { MarkdownCode } from './MarkdownCode';
 import { MarkdownHeader } from './MarkdownHeader';
@@ -106,6 +107,9 @@ function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles): Mark
         td: {
           component: MDTable.MarkdownCell,
           props: { as: 'td', styles: subComponentStyles.table },
+        },
+        DisplayToggle: {
+          component: DisplayToggle,
         },
       },
     },

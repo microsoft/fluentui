@@ -4,9 +4,9 @@ import * as PopperJs from '@popperjs/core';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import isBrowser from '../isBrowser';
-import getBoundary from './getBoundary';
-import getScrollParent from './getScrollParent';
+import { isBrowser } from '../isBrowser';
+import { getBoundary } from './getBoundary';
+import { getScrollParent } from './getScrollParent';
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
 import { PopperModifiers, PopperProps } from './types';
 
@@ -29,10 +29,33 @@ function useDeepMemo<TKey, TValue>(memoFn: () => TValue, key: TKey): TValue {
   return ref.current.value;
 }
 
+/** Checks if components was mounted the first time. */
+function useFirstMount(): boolean {
+  const isFirst = React.useRef(true);
+
+  if (isFirst.current) {
+    isFirst.current = false;
+    return true;
+  }
+
+  return isFirst.current;
+}
+
+/** Executes useIsomorphicLayoutEffect during only updates. */
+const useUpdateIsomorphicLayoutEffect: typeof React.useLayoutEffect = (effect, deps) => {
+  const isFirstMount = useFirstMount();
+
+  useIsomorphicLayoutEffect(() => {
+    if (!isFirstMount) {
+      return effect();
+    }
+  }, deps);
+};
+
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
  */
-const Popper: React.FunctionComponent<PopperProps> = props => {
+export const Popper: React.FunctionComponent<PopperProps> = props => {
   const {
     align,
     children,
@@ -163,7 +186,18 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     };
 
     popperRef.current = PopperJs.createPopper(reference, contentRef.current, options);
-  }, [contentRef, computedModifiers, enabled, pointerTargetRef, positionFixed, proposedPlacement, targetRef]);
+  }, [
+    contentRef,
+    computedModifiers,
+    enabled,
+    flipBoundary,
+    overflowBoundary,
+    pointerTargetRef,
+    positionFixed,
+    proposedPlacement,
+    targetRef,
+    unstable_pinned,
+  ]);
 
   const destroyInstance = React.useCallback(() => {
     if (popperRef.current) {
@@ -183,7 +217,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     return destroyInstance;
   }, [createInstance]);
 
-  React.useEffect(scheduleUpdate, [...positioningDependencies, computedPlacement]);
+  useUpdateIsomorphicLayoutEffect(scheduleUpdate, [...positioningDependencies, computedPlacement]);
 
   const child =
     typeof children === 'function'
@@ -199,5 +233,3 @@ Popper.defaultProps = {
   positionFixed: false,
   positioningDependencies: [],
 };
-
-export default Popper;

@@ -26,45 +26,63 @@ const ParentRenderingFoo = () => {
 describe('StylesheetProvider', () => {
   let result: string[] = [];
   let customContext: StylesheetContextType;
+  let lastContext: StylesheetContextType | undefined;
 
   const mountWithContext = (content: JSX.Element) =>
     mount(<StylesheetContext.Provider value={customContext}>{content}</StylesheetContext.Provider>);
 
   beforeEach(() => {
     result = [];
+    lastContext = undefined;
+
     customContext = {
       registerStyles,
       target: document,
       styleCache: new WeakMap(),
-      enqueuedSheets: [],
-      renderStyles: (sheets: string[]) => {
+      renderStyles: (sheets: string[], context: StylesheetContextType) => {
         result.push(...sheets);
+        lastContext = context;
       },
     };
   });
 
-  it('can render to a string', () => {
-    const allSheets: string[] = [];
-    const customRenderer = (sheets: string[]) => {
-      allSheets.push(...sheets);
-    };
+  it('can render without the provider', () => {
+    mountWithContext(<Foo />);
 
+    expect(result).toEqual([FooStylesheet]);
+  });
+
+  it('can render with the provider', () => {
     mountWithContext(
-      <StylesheetProvider renderStyles={customRenderer}>
+      <StylesheetProvider>
         <Foo />
         <Foo />
       </StylesheetProvider>,
     );
 
-    expect(allSheets).toEqual([FooStylesheet]);
+    expect(result).toEqual([FooStylesheet]);
   });
 
-  it('can register nested components in the correct order (leafs first)', () => {
+  it('can provide a custom target', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const customTarget: any = {};
+
+    mountWithContext(
+      <StylesheetProvider target={customTarget}>
+        <Foo />
+        <Foo />
+      </StylesheetProvider>,
+    );
+
+    expect(lastContext?.target).toBe(customTarget);
+  });
+
+  it('can register nested components', () => {
     mountWithContext(
       <StylesheetProvider>
         <ParentRenderingFoo />
       </StylesheetProvider>,
     );
-    expect(result).toEqual([FooStylesheet, ParentRenderingFooStylesheet]);
+    expect(result).toEqual([ParentRenderingFooStylesheet, FooStylesheet]);
   });
 });

@@ -1,6 +1,14 @@
-import { tabListBehavior } from '@fluentui/accessibility';
-import { ReactAccessibilityBehavior } from '@fluentui/react-bindings';
-import { ComponentVariablesObject, mergeComponentVariables } from '@fluentui/styles';
+import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  mergeVariablesOverrides,
+  getElementType,
+  useFluentContext,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -13,13 +21,16 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory,
-  UIComponent,
 } from '../../utils';
-import { withSafeTypeForAs, WithAsProp, ShorthandCollection, ComponentEventHandler } from '../../types';
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
+import { ShorthandCollection, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
 
 export interface CarouselNavigationProps extends UIComponentProps, ChildrenComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<never>;
+
   /** Index of the currently active item. */
   activeIndex?: number | string;
 
@@ -50,83 +61,128 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
   vertical?: boolean;
 }
 
+export type CarouselNavigationStylesProps = Required<
+  Pick<CarouselNavigationProps, 'activeIndex' | 'iconOnly' | 'primary' | 'vertical' | 'thumbnails'>
+>;
+
 export const carouselNavigationClassName = 'ui-carousel__navigation';
 
-class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>> {
-  static displayName = 'CarouselNavigation';
+/**
+ * A Carousel navigation helps switching between Carousel items.
+ */
+export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
+  FluentComponentStaticProps<CarouselNavigationProps> = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
+  setStart();
+  const {
+    accessibility,
+    variables,
+    children,
+    className,
+    design,
+    activeIndex,
+    iconOnly,
+    items,
+    primary,
+    secondary,
+    vertical,
+    thumbnails,
+    styles,
+  } = props;
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(CarouselNavigation.handledProps, props);
 
-  static deprecated_className = carouselNavigationClassName;
-
-  static create: ShorthandFactory<CarouselNavigationProps>;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      content: false,
-    }),
-    activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    iconOnly: PropTypes.bool,
-    thumbnails: PropTypes.bool,
-    items: customPropTypes.collectionShorthand,
-    onItemClick: PropTypes.func,
-    primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
-    secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-    vertical: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    accessibility: tabListBehavior,
-    as: 'ul',
-  };
-
-  handleItemOverrides = variables => predefinedProps => ({
-    onClick: (e, itemProps) => {
-      _.invoke(this.props, 'onItemClick', e, itemProps);
-      _.invoke(predefinedProps, 'onClick', e, itemProps);
-    },
-    variables: mergeComponentVariables(variables, predefinedProps.variables),
+  const getA11yProps = useAccessibility(accessibility, {
+    debugName: CarouselNavigation.displayName,
+    rtl: context.rtl,
   });
 
-  renderItems = (variables: ComponentVariablesObject, accessibility: ReactAccessibilityBehavior) => {
-    const { activeIndex, iconOnly, items, primary, secondary, vertical, thumbnails } = this.props;
+  const { classes } = useStyles<CarouselNavigationStylesProps>(CarouselNavigation.displayName, {
+    className: carouselNavigationClassName,
+    mapPropsToStyles: () => ({
+      activeIndex,
+      iconOnly,
+      primary,
+      vertical,
+      thumbnails,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
 
+  const handleItemOverrides = variables => predefinedProps => ({
+    onClick: (e, itemProps) => {
+      _.invoke(props, 'onItemClick', e, itemProps);
+      _.invoke(predefinedProps, 'onClick', e, itemProps);
+    },
+    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+  });
+
+  const renderItems = () => {
     return _.map(items, (item, index) =>
       CarouselNavigationItem.create(item, {
-        defaultProps: () => ({
-          active: index === activeIndex,
-          iconOnly,
-          index,
-          primary,
-          secondary,
-          vertical,
-          thumbnails,
-          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
-        }),
-        overrideProps: this.handleItemOverrides(variables),
+        defaultProps: () =>
+          getA11yProps('item', {
+            active: index === activeIndex,
+            iconOnly,
+            index,
+            primary,
+            secondary,
+            vertical,
+            thumbnails,
+          }),
+        overrideProps: handleItemOverrides(variables),
       }),
     );
   };
 
-  renderComponent({ ElementType, classes, accessibility, styles, variables, unhandledProps }) {
-    const { children } = this.props;
-    return (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...unhandledProps}
-      >
-        {childrenExist(children) ? children : this.renderItems(variables, accessibility)}
-      </ElementType>
-    );
-  }
-}
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+      {...rtlTextContainer.getAttributes({ forElements: [children] })}
+    >
+      {childrenExist(children) ? children : renderItems()}
+    </ElementType>,
+  );
+
+  setEnd();
+
+  return element;
+};
+
+CarouselNavigation.displayName = 'CarouselNavigation';
+
+CarouselNavigation.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  iconOnly: PropTypes.bool,
+  thumbnails: PropTypes.bool,
+  items: customPropTypes.collectionShorthand,
+  onItemClick: PropTypes.func,
+  primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
+  secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+  vertical: PropTypes.bool,
+};
+
+CarouselNavigation.defaultProps = {
+  accessibility: tabListBehavior,
+  as: 'ul',
+};
+
+CarouselNavigation.handledProps = Object.keys(CarouselNavigation.propTypes) as any;
 
 CarouselNavigation.create = createShorthandFactory({
   Component: CarouselNavigation,
   mappedArrayProp: 'items',
 });
-
-/**
- * A Carousel navigation helps switching between Carousel items.
- */
-export default withSafeTypeForAs<typeof CarouselNavigation, CarouselNavigationProps, 'ul'>(CarouselNavigation);

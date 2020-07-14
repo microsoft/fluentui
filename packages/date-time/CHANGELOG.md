@@ -1,8 +1,93 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 16 Apr 2020 04:01:45 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.11.0)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.8..@uifabric/date-time_v7.11.0)
+
+### Minor changes
+
+- enable datepicker callout open  ([PR #13981](https://github.com/microsoft/fluentui/pull/13981) by shrallap@microsoft.com)
+
+### Patches
+
+- Replace tslint with eslint; add missing explicit react-hooks dependency ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.10.8](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.8)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.7..@uifabric/date-time_v7.10.8)
+
+### Patches
+
+- refactoring the date time examples into separate files to fix storybook. Also fixing bug in Calendar where externally controlled date does not navigate the calendar when the date changes ([PR #13956](https://github.com/microsoft/fluentui/pull/13956) by lorejoh12@gmail.com)
+
+## [7.10.7](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.7)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.2..@uifabric/date-time_v7.10.7)
+
+### Patches
+
+- Migrate Calendar components to function components ([PR #13904](https://github.com/microsoft/fluentui/pull/13904) by miclo@microsoft.com)
+
+## [7.10.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.2)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.0..@uifabric/date-time_v7.10.2)
+
+### Patches
+
+- High Contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+
+## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.0)
+
+Mon, 29 Jun 2020 12:36:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.9.3..@uifabric/date-time_v7.10.0)
+
+### Minor changes
+
+- CalendarDayGrid: migrate component to function component ([PR #13803](https://github.com/microsoft/fluentui/pull/13803) by miclo@microsoft.com)
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.9.0)
+
+Fri, 19 Jun 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.101..@uifabric/date-time_v7.9.0)
+
+### Minor changes
+
+- Extract helper functions from date-time/Calendar ([PR #13640](https://github.com/microsoft/fluentui/pull/13640) by pompomon@gmail.com)
+
+## [7.8.101](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.101)
+
+Wed, 17 Jun 2020 12:37:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.100..@uifabric/date-time_v7.8.101)
+
+### Patches
+
+- Add Datetime utilities package ([PR #13605](https://github.com/microsoft/fluentui/pull/13605) by pompomon@gmail.com)
+
+## [7.8.74](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.74)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.73..@uifabric/date-time_v7.8.74)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+
+## [7.8.73](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.73)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.8.55..@uifabric/date-time_v7.8.73)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.8.55](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.8.55)
 

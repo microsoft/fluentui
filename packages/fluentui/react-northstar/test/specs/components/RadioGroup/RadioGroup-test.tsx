@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import { isConformant, handlesAccessibility, htmlIsAccessibilityCompliant } from 'test/specs/commonTests';
-import implementsCollectionShorthandProp from '../../commonTests/implementsCollectionShorthandProp';
+import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
 import { mountWithProvider } from 'test/utils';
 
-import RadioGroup from 'src/components/RadioGroup/RadioGroup';
-import RadioGroupItem from 'src/components/RadioGroup/RadioGroupItem';
+import { RadioGroup } from 'src/components/RadioGroup/RadioGroup';
+import { RadioGroupItem } from 'src/components/RadioGroup/RadioGroupItem';
 
 const radioGroupImplementsCollectionShorthandProp = implementsCollectionShorthandProp(RadioGroup);
 
@@ -38,7 +38,7 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
 ];
 
 describe('RadioGroup', () => {
-  isConformant(RadioGroup, { autoControlledProps: ['checkedValue'] });
+  isConformant(RadioGroup, { constructorName: 'RadioGroup', autoControlledProps: ['checkedValue'] });
 
   describe('accessibility', () => {
     handlesAccessibility(RadioGroup, {

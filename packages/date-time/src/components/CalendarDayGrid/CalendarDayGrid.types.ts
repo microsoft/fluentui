@@ -1,4 +1,4 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
 import {
   ICalendarStrings,
   DayOfWeek,
@@ -8,12 +8,13 @@ import {
   AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme, IProcessedStyleSet } from '@uifabric/styling';
+import { IDayGridOptions } from '@fluentui/date-time-utilities';
 
 export interface ICalendarDayGrid {
   focus(): void;
 }
 
-export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
+export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICalendarDayGrid> {
   /**
    * Optional callback to access the ICalendarDayGrid interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -2,9 +2,7 @@
 
 exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] = `
 <div
-  className=
-
-
+  className=""
 >
   <div
     aria-labelledby="ChoiceGroup0-label"
@@ -87,9 +85,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={true}
@@ -190,7 +186,11 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active){&:before {
+                  background: Window;
                   border-color: Highlight;
+                }
+                @media screen and (forced-colors: active){&:before {
+                  forced-color-adjust: none;
                 }
                 &:after {
                   border-color: #0078d4;
@@ -211,6 +211,9 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                 }
                 @media screen and (-ms-high-contrast: active){&:after {
                   border-color: Highlight;
+                }
+                @media screen and (forced-colors: active){&:after {
+                  forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-bar"
           >
@@ -399,9 +402,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
             }
       >
         <div
-          className=
-              ms-ChoiceField-wrapper
-
+          className="ms-ChoiceField-wrapper"
         >
           <input
             checked={false}

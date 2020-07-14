@@ -7,7 +7,7 @@ const isActionSupported = (
   method: 'addEventListener' | 'removeEventListener',
 ): element is Target => (element ? !!element[method] : false);
 
-const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>): void => {
+export const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>): void => {
   const { capture, listener, type, target, targetRef } = options;
 
   const latestListener = React.useRef<EventHandler<T>>(listener);
@@ -18,6 +18,9 @@ const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>
   }, []);
 
   if (process.env.NODE_ENV !== 'production') {
+    // This is fine to violate there conditional rule as environment variables will never change during component
+    // lifecycle
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       if (typeof target !== 'undefined' && typeof targetRef !== 'undefined') {
         throw new Error('`target` and `targetRef` props are mutually exclusive, please use one of them.');
@@ -49,7 +52,5 @@ const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>
         );
       }
     };
-  }, [capture, target, targetRef, type]);
+  }, [capture, eventHandler, target, targetRef, type]);
 };
-
-export default useEventListener;

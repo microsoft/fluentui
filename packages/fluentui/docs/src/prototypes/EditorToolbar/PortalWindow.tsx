@@ -35,7 +35,7 @@ const PortalWindow: React.FunctionComponent<PortalWindowProps> = ({ children, on
     return () => {
       externalWindow.current.close();
     };
-  }, []);
+  }, [onClose]);
 
   return mounted && ReactDOM.createPortal(children(externalContainer.current.ownerDocument), externalContainer.current);
 };

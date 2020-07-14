@@ -1,18 +1,14 @@
 import { Stylesheet } from '@uifabric/merge-styles';
 
-const stylesheet = Stylesheet.getInstance();
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-if (stylesheet && stylesheet.onReset) {
-  Stylesheet.getInstance().onReset(resetMemoizations);
-}
-
-// tslint:disable:no-any
 declare class WeakMap {
   public get(key: any): any;
   public set(key: any, value: any): void;
   public has(key: any): boolean;
 }
 
+let _initializedStylesheetResets = false;
 let _resetCounter = 0;
 const _emptyObject = { empty: true };
 const _dictionary: any = {};
@@ -85,7 +81,7 @@ export function memoize<T extends Function>(
  * not undefined/null for the first time, and then the non-undefined/null version gets cached.
  * @returns A memoized version of the function.
  */
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
+export function memoizeFunction<T extends (...args: any[]) => RetType, RetType>(
   cb: T,
   maxCacheSize: number = 100,
   ignoreNullOrUndefinedResult: boolean = false,
@@ -95,12 +91,20 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
     return cb;
   }
 
+  if (!_initializedStylesheetResets) {
+    const stylesheet = Stylesheet.getInstance();
+
+    if (stylesheet && stylesheet.onReset) {
+      Stylesheet.getInstance().onReset(resetMemoizations);
+    }
+    _initializedStylesheetResets = true;
+  }
+
   let rootNode: any;
   let cacheSize = 0;
   let localResetCounter = _resetCounter;
 
-  // tslint:disable-next-line:no-function-expression
-  return function memoizedFunction(...args: any[]): RET_TYPE {
+  return function memoizedFunction(...args: any[]): RetType {
     let currentNode: any = rootNode;
 
     if (
@@ -166,7 +170,6 @@ export function createMemoizer<F extends (input: any) => any>(getValue: F): F {
     }
 
     if (cache.has(input)) {
-      // tslint:disable-next-line:no-non-null-assertion
       return cache.get(input)!;
     }
 

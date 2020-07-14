@@ -6,6 +6,7 @@ import { log } from 'gulp-util';
 import fs from 'fs';
 import path from 'path';
 import del from 'del';
+import { Transform } from 'stream';
 import through2 from 'through2';
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
@@ -70,11 +71,15 @@ const examplesSrc = `${paths.posix.docsSrc()}/examples/*/*/*/!(*index|.knobs).ts
 const markdownSrc = ['packages/fluentui/!(CHANGELOG).md', 'specifications/*.md'];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
+/** Cache the task with gulp-cache except when running in CI */
+const cacheNonCi: (...args: Parameters<typeof cache>) => NodeJS.ReadWriteStream | Transform = (task, options) =>
+  process.env.TF_BUILD ? task : cache(task, options);
+
 task('build:docs:component-info', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
     .pipe(
-      cache(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
-        name: 'componentInfo-2',
+      cacheNonCi(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
+        name: 'componentInfo-2.2',
       }),
     )
     .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() })),
@@ -103,7 +108,7 @@ task('build:docs:example-menu', () =>
 task('build:docs:example-sources', () =>
   src(examplesSrc, { since: lastRun('build:docs:example-sources'), cwd: paths.base(), cwdbase: true })
     .pipe(
-      cache(gulpExampleSource(), {
+      cacheNonCi(gulpExampleSource(), {
         name: 'exampleSources',
       }),
     )
@@ -126,7 +131,7 @@ task('build:docs:images', () => src(`${paths.docsSrc()}/**/*.{png,jpg,gif}`).pip
 
 task('build:docs:toc', () =>
   src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(
-    cache(gulpDoctoc(), {
+    cacheNonCi(gulpDoctoc(), {
       name: 'md-docs',
     }),
   ),
@@ -180,21 +185,25 @@ task('serve:docs:hot', async () => {
   const webpackConfig = require('../../webpack/webpack.config').default;
   const compiler = webpack(webpackConfig);
 
-  server = await serve(paths.docsDist(), config.server_host, config.server_port, app =>
-    app
-      .use(
-        WebpackDevMiddleware(compiler, {
-          publicPath: webpackConfig.output.publicPath,
-          contentBase: paths.docsSrc(),
-          hot: true,
-          quiet: false,
-          noInfo: true, // must be quite for hot middleware to show overlay
-          lazy: false,
-          stats: config.compiler_stats,
-        } as WebpackDevMiddleware.Options),
-      )
-      .use(WebpackHotMiddleware(compiler)),
-  );
+  server = await serve(paths.docsDist(), config.server_host, config.server_port, app => {
+    app.use(
+      WebpackDevMiddleware(compiler, {
+        publicPath: webpackConfig.output.publicPath,
+        contentBase: paths.docsSrc(),
+        hot: process.env.NODE_ENV !== 'production',
+        quiet: false,
+        noInfo: true, // must be quite for hot middleware to show overlay
+        lazy: false,
+        stats: config.compiler_stats,
+      } as WebpackDevMiddleware.Options),
+    );
+
+    if (process.env.NODE_ENV !== 'production') {
+      app.use(WebpackHotMiddleware(compiler));
+    }
+
+    return app;
+  });
 });
 
 task('serve:docs:stop', () => forceClose(server));

@@ -28,12 +28,12 @@ export class AutoScroll {
 
   constructor(element: HTMLElement) {
     this._events = new EventGroup(this);
-    this._scrollableParent = findScrollableParent(element);
+    this._scrollableParent = findScrollableParent(element) as HTMLElement;
 
     this._incrementScroll = this._incrementScroll.bind(this);
     this._scrollRect = getRect(this._scrollableParent);
 
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (this._scrollableParent === (window as any)) {
       this._scrollableParent = document.body;
     }

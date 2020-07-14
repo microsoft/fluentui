@@ -1,18 +1,18 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
-import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-
 import {
-  ChildrenComponentProps,
-  ContentComponentProps,
-  createShorthandFactory,
-  UIComponentProps,
-  commonPropTypes,
-} from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+  getElementType,
+  mergeVariablesOverrides,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useFluentContext,
+  useTelemetry,
+  compose,
+  ComponentWithAs,
+} from '@fluentui/react-bindings';
+import * as React from 'react';
+
+import { ChildrenComponentProps, ContentComponentProps, UIComponentProps, commonPropTypes } from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
 export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -25,53 +25,53 @@ export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenCompo
 export type ToolbarMenuDividerStylesProps = never;
 export const toolbarMenuDividerClassName = 'ui-toolbar__menudivider';
 
-const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
-  FluentComponentStaticProps<ToolbarMenuDividerProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(ToolbarMenuDivider.displayName, context.telemetry);
-  setStart();
+/**
+ * A ToolbarMenuDivider adds non-actionable separator between items of ToolbarMenu.
+ */
+export const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
 
-  const { accessibility, className, design, styles, variables } = props;
-  const parentVariables = React.useContext(ToolbarVariablesContext);
+    const { accessibility, className, design, styles, variables } = props;
+    const parentVariables = React.useContext(ToolbarVariablesContext);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: ToolbarMenuDivider.displayName,
-    rtl: context.rtl,
-  });
-  const { classes } = useStyles<ToolbarMenuDividerStylesProps>(ToolbarMenuDivider.displayName, {
+    const getA11yProps = useAccessibility(accessibility, {
+      debugName: composeOptions.displayName,
+      rtl: context.rtl,
+    });
+    const { classes } = useStyles<ToolbarMenuDividerStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      composeOptions,
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables: mergeVariablesOverrides(parentVariables, variables),
+      }),
+      rtl: context.rtl,
+      unstable_props: props,
+    });
+
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    const element = <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root, ref })} />;
+    setEnd();
+
+    return element;
+  },
+  {
     className: toolbarMenuDividerClassName,
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables: mergeComponentVariables(parentVariables, variables),
-    }),
-    rtl: context.rtl,
-  });
+    displayName: 'ToolbarMenuDivider',
 
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(ToolbarMenuDivider.handledProps, props);
-
-  const element = <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })} />;
-  setEnd();
-
-  return element;
-};
-
-ToolbarMenuDivider.displayName = 'ToolbarMenuDivider';
+    shorthandConfig: { mappedProp: 'content' },
+    handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
+  },
+) as ComponentWithAs<'li', ToolbarMenuDividerProps>;
 
 ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();
 ToolbarMenuDivider.defaultProps = {
   as: 'li',
 };
-ToolbarMenuDivider.handledProps = Object.keys(ToolbarMenuDivider.propTypes) as any;
-
-ToolbarMenuDivider.create = createShorthandFactory({
-  Component: ToolbarMenuDivider,
-  mappedProp: 'content',
-});
-
-/**
- * A ToolbarMenuDivider adds non-actionable separator between items of ToolbarMenu.
- */
-export default withSafeTypeForAs<typeof ToolbarMenuDivider, ToolbarMenuDividerProps, 'li'>(ToolbarMenuDivider);

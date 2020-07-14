@@ -11,9 +11,7 @@ Array [
         }
   >
     <div
-      className=
-          ms-Dropdown-container
-
+      className="ms-Dropdown-container"
     >
       <label
         className=

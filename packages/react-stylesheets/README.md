@@ -7,14 +7,11 @@ A library for contextually rendering css stylesheets to a particular target as c
 Typically when you use traditional webpack loaders to load css stylesheets, they often register
 styles into the document on component mount. This creates a few problems:
 
-1. **Load styles into the page.** By default, the `useStylesheet` React hook will register styles into
-   the document.head.
+1. **Child window scenarios.** A child window is often rendered from the parent. When components render within the child window context, they need a contextual way to render their stylesheet within the parent.
 
-2. **Child window scenarios.** A child window is often rendered from the parent. When components render within the child window context, they need a contextual way to render their stylesheet within the parent.
+2. **Server side rendering.** A component hierarchy is dynamically rendered on the server in a node session. Only stylesheets which are needed for the scenario should return.
 
-3. **Server side rendering.** A component hierarchy is dynamically rendered on the server in a node session. Only stylesheets which are needed for the scenario should return.
-
-This package contains utilities for providing stylesheets to a given target using a contextual stylesheet provider.
+This package contains utilities for rendering stylesheets to a given target using a contextual stylesheet provider. This allows us to render on demand when needed.
 
 ## Usage
 
@@ -29,7 +26,7 @@ npm install @fluentui/react-stylesheets
 In a component, provide stylesheets:
 
 ```tsx
-// Use a tech which allows you to pull the stylesheet as a string.
+// Use a styling solution which allows you to pull the stylesheet as a string.
 const stylesheet = `
   .ms-Foo {
     background: red;

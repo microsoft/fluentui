@@ -1,22 +1,21 @@
 import { debugRoot, debugArea, debugGap } from '../../../../styles/debugStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { LayoutProps } from '../../../../components/Layout/Layout';
+import { LayoutStylesProps } from '../../../../components/Layout/Layout';
 
 const countTrue = items => items.filter(Boolean).length;
 
-const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
+export const layoutStyles: ComponentSlotStylesPrepared<LayoutStylesProps> = {
   root: ({ props }): ICSSInJSStyle => {
     const {
       alignItems,
       debug,
       gap,
       justifyItems,
-      main,
+      hasMain,
       mainSize,
-      end,
+      hasEnd,
       endSize,
-      rootCSS,
-      start,
+      hasStart,
       startSize,
       vertical,
     } = props;
@@ -29,19 +28,18 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
       [vertical ? 'gridTemplateRows' : 'gridTemplateColumns']: [
         // Heads up!
         // IE11 Doesn't support grid-gap, insert virtual columns instead
-        start && startSize,
-        gap && start && main && gap,
-        main && mainSize,
-        gap && (start || main) && end && gap,
-        end && endSize,
+        hasStart && startSize,
+        gap && hasStart && hasMain && gap,
+        hasMain && mainSize,
+        gap && (hasStart || hasMain) && hasEnd && gap,
+        hasEnd && endSize,
       ]
         .filter(Boolean)
         .join(' '),
       ...(vertical && {
         gridAutoFlow: 'row',
-        '-ms-grid-columns': '1fr',
+        msGridColumns: '1fr',
       }),
-      ...rootCSS,
     };
   },
 
@@ -53,31 +51,20 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: 'inline-flex',
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: '1',
-    ...p.startCSS,
+    [p.vertical ? 'msGridRow' : 'msGridColumn']: '1',
   }),
 
   main: ({ props: p }): ICSSInJSStyle => ({
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: ['grid', '-ms-grid'],
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.start, p.start && p.gap, p.main]),
-    ...p.mainCSS,
+    [p.vertical ? 'msGridRow' : 'msGridColumn']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain]),
   }),
 
   end: ({ props: p }): ICSSInJSStyle => ({
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: 'inline-flex',
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([
-      p.start,
-      p.start && p.gap,
-      p.main,
-      p.main && p.gap,
-      p.end,
-    ]),
-    ...p.endCSS,
+    [p.vertical ? 'msGridRow' : 'msGridColumn']: countTrue([p.hasStart, p.hasStart && p.gap, p.hasMain && p.gap]),
   }),
 };
-
-export default layoutStyles;

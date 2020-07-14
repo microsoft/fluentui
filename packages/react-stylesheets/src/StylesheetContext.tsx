@@ -3,19 +3,28 @@ export type HTMLDirection = 'rtl' | 'ltr' | 'auto';
 
 export interface StylesheetContextType {
   target: Document | undefined;
-  registerStyles: (stylesheets: string[], context: StylesheetContextType) => void;
+  registerStyles: (stylesheets: undefined | string | string[], context: StylesheetContextType) => void;
   styleCache: WeakMap<Document, Map<string, boolean>>;
-  enqueuedSheets: string[];
   renderStyles: (stylesheets: string[], context: StylesheetContextType) => void;
 }
 
 /**
- * Default registerStyles function for stylesheets.
+ * Register styles can be called with a single or multiple stylesheets. Each will be evaluated
+ * if they've been registered already, and then passed along to `renderStyles` if they're new
+ * to the given context.
  */
-export const registerStyles = (stylesheets: string[], context: StylesheetContextType) => {
+export const registerStyles = (sheets: undefined | string | string[], context: StylesheetContextType) => {
   const { styleCache, target } = context;
+  if (!sheets) {
+    return;
+  }
+
+  if (!Array.isArray(sheets)) {
+    sheets = [sheets];
+  }
 
   // Grab the style cache for the target document.
+  const sheetsToRender = [];
   let targetStylesheets = styleCache.get(target!);
 
   if (!targetStylesheets) {
@@ -23,18 +32,15 @@ export const registerStyles = (stylesheets: string[], context: StylesheetContext
     styleCache.set(target!, targetStylesheets);
   }
 
-  for (const stylesheet of stylesheets) {
-    if (!targetStylesheets.has(stylesheet)) {
-      context.enqueuedSheets.unshift(stylesheet);
-      targetStylesheets.set(stylesheet, true);
+  for (const sheet of sheets) {
+    if (!targetStylesheets.has(sheet)) {
+      sheetsToRender.push(sheet);
+      targetStylesheets.set(sheet, true);
     }
   }
 
-  // If there is no target, call renderStyles immediately, expecting that there is no.
-  const isSSR = !target;
-
-  if (isSSR) {
-    renderStyles(context.enqueuedSheets, context);
+  if (sheetsToRender.length) {
+    context.renderStyles(sheetsToRender, context);
   }
 };
 
@@ -59,5 +65,4 @@ export const StylesheetContext = React.createContext<StylesheetContextType>({
   renderStyles,
   target: typeof window === 'object' ? window.document : undefined,
   styleCache: new WeakMap<Document, Map<string, boolean>>(),
-  enqueuedSheets: [],
 });

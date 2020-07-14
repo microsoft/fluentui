@@ -12,6 +12,7 @@ const notAutoFocusToolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> =
 const ToolbarExampleVariables = () => {
   return (
     <Toolbar
+      aria-label="visual test only with expanded state"
       variables={{
         background: 'lightblue',
         dividerBorder: 'red',

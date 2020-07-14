@@ -78,13 +78,13 @@ export class PaginationBase extends React.Component<IPaginationProps> {
         <div className={this._classNames.root}>
           <IconButton
             iconProps={firstPageIconProps}
-            onClick={this.handleFirstPage}
+            onClick={this._handleFirstPage}
             disabled={!canFirst}
             aria-label={firstPageAriaLabel}
           />
           <IconButton
             iconProps={previousPageIconProps}
-            onClick={this.handlePreviousPage}
+            onClick={this._handlePreviousPage}
             disabled={!canPrevious}
             aria-label={previousPageAriaLabel}
           />
@@ -92,20 +92,20 @@ export class PaginationBase extends React.Component<IPaginationProps> {
             ariaLabel={comboBoxAriaLabel}
             selectedKey={`${selectedPageIndex}`}
             options={scaleOptions}
-            onChange={this.onComboBoxChange}
+            onChange={this._onComboBoxChange}
             styles={{
               container: this._classNames.comboBox,
             }}
           />
           <IconButton
             iconProps={nextPageIconProps}
-            onClick={this.handleNextPage}
+            onClick={this._handleNextPage}
             disabled={!canNext}
             aria-label={nextPageAriaLabel}
           />
           <IconButton
             iconProps={lastPageIconProps}
-            onClick={this.handleLastPage}
+            onClick={this._handleLastPage}
             disabled={!canLast}
             aria-label={lastPageAriaLabel}
           />
@@ -118,7 +118,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
         <div>
           <IconButton
             iconProps={this.props.firstPageIconProps}
-            onClick={this.handleFirstPage}
+            onClick={this._handleFirstPage}
             disabled={!canFirst}
             aria-label={firstPageAriaLabel}
             styles={{
@@ -128,7 +128,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
           />
           <IconButton
             iconProps={this.props.previousPageIconProps}
-            onClick={this.handlePreviousPage}
+            onClick={this._handlePreviousPage}
             disabled={!canPrevious}
             aria-label={previousPageAriaLabel}
             styles={{
@@ -139,7 +139,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
           {this._pageList()}
           <IconButton
             iconProps={this.props.nextPageIconProps}
-            onClick={this.handleNextPage}
+            onClick={this._handleNextPage}
             disabled={!canNext}
             aria-label={nextPageAriaLabel}
             styles={{
@@ -153,7 +153,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
           >
             <IconButton
               iconProps={this.props.lastPageIconProps}
-              onClick={this.handleLastPage}
+              onClick={this._handleLastPage}
               disabled={!canLast}
               aria-label={lastPageAriaLabel}
               styles={{
@@ -168,21 +168,21 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     );
   }
 
-  private handleFirstPage = () => {
-    this.handleSelectedPage(0);
+  private _handleFirstPage = () => {
+    this._handleSelectedPage(0);
   };
 
-  private handleLastPage = () => {
-    this.handleSelectedPage(this.props.pageCount - 1);
+  private _handleLastPage = () => {
+    this._handleSelectedPage(this.props.pageCount - 1);
   };
 
-  private onComboBoxChange = (event: React.FormEvent<IComboBox>, option: IComboBoxOption, index: number) => {
+  private _onComboBoxChange = (event: React.FormEvent<IComboBox>, option: IComboBoxOption, index: number) => {
     if (option !== undefined) {
-      this.handleSelectedPage(index);
+      this._handleSelectedPage(index);
     }
   };
 
-  private handleSelectedPage = (selected: number) => {
+  private _handleSelectedPage = (selected: number) => {
     const { selectedPageIndex, onPageChange } = this.props;
     if (selected === selectedPageIndex) {
       return; // same page, no action
@@ -192,12 +192,12 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     }
   };
 
-  private handlePreviousPage = () => {
-    this.handleSelectedPage(this.props.selectedPageIndex! - 1);
+  private _handlePreviousPage = () => {
+    this._handleSelectedPage(this.props.selectedPageIndex! - 1);
   };
 
-  private handleNextPage = () => {
-    this.handleSelectedPage(this.props.selectedPageIndex! + 1);
+  private _handleNextPage = () => {
+    this._handleSelectedPage(this.props.selectedPageIndex! + 1);
   };
 
   private _pageElement(index: number): JSX.Element {
@@ -215,7 +215,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
         page={index + 1}
         ariaLabel={ariaLabel}
         selected={isSelected}
-        onClick={this.handleSelectedPage}
+        onClick={this._handleSelectedPage}
         className={this._classNames.pageNumber}
       />
     );

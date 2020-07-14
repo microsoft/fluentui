@@ -165,9 +165,7 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
       </span>
     </button>
     <div
-      className=
-          ms-HoverCard-host
-
+      className="ms-HoverCard-host"
       data-is-focusable={true}
     />
   </span>

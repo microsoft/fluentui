@@ -4,13 +4,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import {
-  WithAsProp,
-  withSafeTypeForAs,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   UIComponentProps,
@@ -21,10 +15,16 @@ import {
   createShorthandFactory,
   createShorthand,
 } from '../../utils';
-import Button, { ButtonProps } from './Button';
-import { getElementType, useAccessibility, useUnhandledProps, useTelemetry, useStyles } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { Button, ButtonProps } from './Button';
+import {
+  ComponentWithAs,
+  getElementType,
+  useAccessibility,
+  useUnhandledProps,
+  useTelemetry,
+  useStyles,
+  useFluentContext,
+} from '@fluentui/react-bindings';
 
 export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -43,15 +43,18 @@ export type ButtonGroupStylesProps = Required<Pick<ButtonGroupProps, 'circular'>
 
 export const buttonGroupClassName = 'ui-buttons';
 
-export const ButtonGroup: React.FC<WithAsProp<ButtonGroupProps>> &
+/**
+ * A ButtonGroup represents multiple related actions as a group.
+ */
+export const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> &
   FluentComponentStaticProps<ButtonGroupProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
   setStart();
   const { children, buttons, circular, content, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(ButtonGroup.handledProps, props);
-  const { classes, styles: ResolvedStyles } = useStyles<ButtonGroupStylesProps>(ButtonGroup.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<ButtonGroupStylesProps>(ButtonGroup.displayName, {
     className: buttonGroupClassName,
     mapPropsToStyles: () => ({
       circular,
@@ -104,7 +107,7 @@ export const ButtonGroup: React.FC<WithAsProp<ButtonGroupProps>> &
             createShorthand(Button, button, {
               defaultProps: () => ({
                 circular,
-                styles: getStyleForButtonIndex(ResolvedStyles, idx === 0, idx === buttons.length - 1),
+                styles: getStyleForButtonIndex(resolvedStyles, idx === 0, idx === buttons.length - 1),
               }),
             }),
           )}
@@ -126,7 +129,6 @@ ButtonGroup.propTypes = {
 
 ButtonGroup.defaultProps = {
   accessibility: buttonGroupBehavior,
-  as: 'div',
 };
 
 ButtonGroup.handledProps = Object.keys(ButtonGroup.propTypes) as any;
@@ -136,8 +138,3 @@ ButtonGroup.create = createShorthandFactory({
   mappedProp: 'content',
   mappedArrayProp: 'buttons',
 });
-
-/**
- * A ButtonGroup represents multiple related actions as a group.
- */
-export default withSafeTypeForAs<typeof ButtonGroup, ButtonGroupProps>(ButtonGroup);

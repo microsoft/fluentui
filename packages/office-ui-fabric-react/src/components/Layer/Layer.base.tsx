@@ -112,7 +112,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
         layerElement,
       },
       () => {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         const { onLayerDidMount, onLayerMounted } = this.props;
         if (onLayerMounted) {
           onLayerMounted();

@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating usage of FocusZone to use non-deprecated prop names.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "98f000c1d3faa4bf9fa0906d98ef43f42c1f78c5",
-  "dependentChangeType": "minor",
-  "date": "2020-03-31T00:38:24.549Z"
-}

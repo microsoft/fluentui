@@ -34,7 +34,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
           border-color: #005a9e;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          border-color: Highlight;
+          border-color: WindowText;
         }
         &:focus .ms-Checkbox-checkbox {
           border-color: #005a9e;
@@ -49,11 +49,20 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         &:hover .ms-Checkbox-checkbox:after {
           border-color: #005a9e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox:after {
+          border-color: WindowText;
+        }
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
         }
   >
     <input
@@ -93,7 +102,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -144,6 +152,15 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
+            @media screen and (-ms-high-contrast: active){&:after {
+              border-color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         <i
           aria-hidden={true}
@@ -179,6 +196,12 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               line-height: 20px;
               margin-left: 4px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         Indeterminate checkbox (uncontrolled)
       </span>
@@ -196,8 +219,14 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         &:hover .ms-Checkbox-checkbox {
           border-color: #005a9e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          border-color: WindowText;
+        }
         &:hover .ms-Checkbox-checkbox:after {
           border-color: #005a9e;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox:after {
+          border-color: WindowText;
         }
         &:focus .ms-Checkbox-checkbox {
           border-color: #005a9e;
@@ -208,8 +237,14 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
         }
   >
     <input
@@ -249,7 +284,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -300,6 +334,15 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
+            @media screen and (-ms-high-contrast: active){&:after {
+              border-color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         <i
           aria-hidden={true}
@@ -334,6 +377,12 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               font-size: 14px;
               line-height: 20px;
               margin-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Indeterminate checkbox which defaults to true when clicked (uncontrolled)
@@ -388,7 +437,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -439,8 +487,14 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
+            @media screen and (-ms-high-contrast: active){&:after {
+              border-color: WindowText;
+            }
             @media screen and (-ms-high-contrast: active){& {
-              border-color: InactiveBorder;
+              border-color: GrayText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         <i
@@ -460,7 +514,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
-                color: InactiveBorder;
+                color: GrayText;
               }
           data-icon-name="CheckMark"
         >
@@ -478,7 +532,10 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               margin-left: 4px;
             }
             @media screen and (-ms-high-contrast: active){& {
-              color: InactiveBorder;
+              color: GrayText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Disabled indeterminate checkbox
@@ -497,7 +554,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
           border-color: #005a9e;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          border-color: Highlight;
+          border-color: WindowText;
         }
         &:focus .ms-Checkbox-checkbox {
           border-color: #005a9e;
@@ -512,11 +569,20 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         &:hover .ms-Checkbox-checkbox:after {
           border-color: #005a9e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox:after {
+          border-color: WindowText;
+        }
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
         }
   >
     <input
@@ -556,7 +622,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -607,6 +672,15 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
+            @media screen and (-ms-high-contrast: active){&:after {
+              border-color: WindowText;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         <i
           aria-hidden={true}
@@ -641,6 +715,12 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               font-size: 14px;
               line-height: 20px;
               margin-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Indeterminate checkbox (controlled)

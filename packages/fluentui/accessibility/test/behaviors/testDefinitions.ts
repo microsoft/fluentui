@@ -1,10 +1,15 @@
 import { FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/accessibility';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { TestDefinition, TestMethod, TestHelper } from './testHelper';
 
-const definitions: TestDefinition[] = [];
+export const definitions: TestDefinition[] = [];
 const testHelper = new TestHelper();
+
+const keysAndAliases = {
+  ...keyboardKey,
+  Spacebar: SpacebarKey,
+};
 
 // Example:  Adds attribute 'aria-pressed=true' based on the property 'active'
 definitions.push({
@@ -530,6 +535,14 @@ definitions.push({
 });
 
 definitions.push({
+  regexp: /Does not handle PageDown and PageUp/g,
+  testMethod: (parameters: TestMethod) => {
+    const actualFocusZoneHorizontal = parameters.behavior({}).focusZone;
+    expect(actualFocusZoneHorizontal.props.pagingSupportDisabled).toBeTruthy();
+  },
+});
+
+definitions.push({
   regexp: /Focus is moved within the focusable children of the component using TAB key/g,
   testMethod: (parameters: TestMethod) => {
     const actualFocusZoneHorizontal = parameters.behavior({}).focusZone;
@@ -564,8 +577,8 @@ definitions.push({
       .keyCombinations[0].keyCode;
     const expectedSecondKeyNumber = parameters.behavior(property).keyActions[elementToPerformAction][action]
       .keyCombinations[1].keyCode;
-    expect(expectedFirstKeyNumber).toBe(keyboardKey[firstKey]);
-    expect(expectedSecondKeyNumber).toBe(keyboardKey[secondKey]);
+    expect(expectedFirstKeyNumber).toBe(keysAndAliases[firstKey]);
+    expect(expectedSecondKeyNumber).toBe(keysAndAliases[secondKey]);
   },
 });
 
@@ -577,7 +590,7 @@ definitions.push({
     const property = {};
     const expectedKeyNumber = parameters.behavior(property).keyActions[elementToPerformAction][action]
       .keyCombinations[0].keyCode;
-    expect(expectedKeyNumber).toBe(keyboardKey[key]);
+    expect(expectedKeyNumber).toBe(keysAndAliases[key]);
   },
 });
 
@@ -589,7 +602,7 @@ definitions.push({
     const property = {};
     const keyCombinations = parameters.behavior(property).keyActions[elementToPerformAction][action].keyCombinations[0];
 
-    expect(keyCombinations.keyCode).toBe(keyboardKey[key]);
+    expect(keyCombinations.keyCode).toBe(keysAndAliases[key]);
     expect(keyCombinations[keyModifier]).toBe(true);
   },
 });
@@ -602,7 +615,7 @@ definitions.push({
     const property = {};
     const expectedKeyNumber = parameters.behavior(property).keyActions[elementToPerformAction][action]
       .keyCombinations[0].keyCode;
-    expect(expectedKeyNumber).toBe(keyboardKey[key]);
+    expect(expectedKeyNumber).toBe(keysAndAliases[key]);
   },
 });
 
@@ -614,7 +627,7 @@ definitions.push({
     const propertyVertical = { vertical: true };
     const expectedKeyNumberVertical = parameters.behavior(propertyVertical).keyActions[elementToPerformAction][action]
       .keyCombinations[0].keyCode;
-    expect(expectedKeyNumberVertical).toBe(keyboardKey[key]);
+    expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
 
@@ -626,7 +639,7 @@ definitions.push({
     const propertyHorizontal = { horizontal: true };
     const expectedKeyNumber = parameters.behavior(propertyHorizontal).keyActions[elementToPerformAction][action]
       .keyCombinations[0].keyCode;
-    expect(expectedKeyNumber).toBe(keyboardKey[key]);
+    expect(expectedKeyNumber).toBe(keysAndAliases[key]);
   },
 });
 
@@ -638,7 +651,7 @@ definitions.push({
     const propertyHorizontal = { horizontal: false };
     const expectedKeyNumberVertical = parameters.behavior(propertyHorizontal).keyActions[elementToPerformAction][action]
       .keyCombinations[0].keyCode;
-    expect(expectedKeyNumberVertical).toBe(keyboardKey[key]);
+    expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
 
@@ -650,14 +663,14 @@ definitions.push({
     const propertyOpenedSubtree = {
       open: true,
       expanded: true,
-      items: [{ a: 1 }],
+      hasItems: true,
       siblings: [],
       hasSubtree: true,
     };
     const expectedKeyNumberVertical = parameters.behavior(propertyOpenedSubtree).keyActions[elementToPerformAction][
       action
     ].keyCombinations[0].keyCode;
-    expect(expectedKeyNumberVertical).toBe(keyboardKey[key]);
+    expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
 
@@ -670,7 +683,7 @@ definitions.push({
     const expectedKeyNumberVertical = parameters.behavior(propertyClosedSubtree).keyActions[elementToPerformAction][
       action
     ].keyCombinations[0].keyCode;
-    expect(expectedKeyNumberVertical).toBe(keyboardKey[key]);
+    expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
 
@@ -682,7 +695,7 @@ definitions.push({
     const propertySubmenuOpened = { menu: { items: [] }, hasMenu: true, menuOpen: true };
     const expectedKeyNumber = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action]
       .keyCombinations[0].keyCode;
-    expect(expectedKeyNumber).toBe(keyboardKey[key]);
+    expect(expectedKeyNumber).toBe(keysAndAliases[key]);
 
     // when menuOpen == "false"
     propertySubmenuOpened.menuOpen = false;
@@ -704,8 +717,8 @@ definitions.push({
     const expectedSecondKeyNumber = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][
       action
     ].keyCombinations[1].keyCode;
-    expect(expectedFirstKeyNumber).toBe(keyboardKey[firstKey]);
-    expect(expectedSecondKeyNumber).toBe(keyboardKey[secondKey]);
+    expect(expectedFirstKeyNumber).toBe(keysAndAliases[firstKey]);
+    expect(expectedSecondKeyNumber).toBe(keysAndAliases[secondKey]);
 
     // when menuOpen == "false"
     propertySubmenuOpened.menuOpen = false;
@@ -726,5 +739,3 @@ definitions.push({
     expect(parameters.behavior(propertyNotChecked).attributes.root.tabIndex).toBe(-1);
   },
 });
-
-export default definitions;

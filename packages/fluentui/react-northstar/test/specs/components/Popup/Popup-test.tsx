@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-import Popup, { PopupEvents } from 'src/components/Popup/Popup';
+import { Popup, PopupEvents } from 'src/components/Popup/Popup';
 import { popupContentClassName } from 'src/components/Popup/PopupContent';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, KeyNames, SpacebarKey } from '@fluentui/keyboard-key';
 import { ReactWrapper } from 'enzyme';
-import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
+import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
 
 describe('Popup', () => {
   implementsPopperProps(Popup, {
@@ -21,7 +21,10 @@ describe('Popup', () => {
     return popup.find(`div#${contentId}`);
   };
 
-  type TriggerEvent = keyboardKey | { event: 'click' | 'contextmenu' };
+  type TriggerEvent = {
+    event?: 'click' | 'contextmenu' | 'keydown';
+    keyCode?: KeyNames[keyof KeyNames];
+  };
 
   type ExpectPopupToOpenAndCloseParams = {
     onProp: PopupEvents;
@@ -30,13 +33,13 @@ describe('Popup', () => {
   };
 
   const expectPopupToOpenAndClose = ({ onProp, eventToOpen, eventToClose }: ExpectPopupToOpenAndCloseParams) => {
-    const openEvent = {
+    const openEvent: TriggerEvent = {
       event: eventToOpen.event || 'keydown',
-      keyCode: eventToOpen.event ? undefined : eventToOpen,
+      keyCode: eventToOpen.event ? undefined : eventToOpen.keyCode,
     };
-    const closeEvent = {
+    const closeEvent: TriggerEvent = {
       event: eventToClose.event || 'keydown',
-      keyCode: eventToClose.event ? undefined : eventToClose,
+      keyCode: eventToClose.event ? undefined : eventToClose.keyCode,
     };
 
     const popup = mountWithProvider(
@@ -52,6 +55,21 @@ describe('Popup', () => {
     popupTriggerElement.simulate(closeEvent.event, { keyCode: closeEvent.keyCode });
     expect(getPopupContent(popup).exists()).toBe(false);
   };
+
+  describe('trigger', () => {
+    test('is called on click when on includes hover', () => {
+      const spy = jest.fn();
+
+      mountWithProvider(<Popup trigger={<button onClick={spy} />} content="Hi" on={['hover']} />)
+        .find('button')
+        .simulate('click');
+      expect(spy).toHaveBeenCalledTimes(1);
+      mountWithProvider(<Popup trigger={<button onClick={spy} />} content="Hi" on={['hover', 'focus']} />)
+        .find('button')
+        .simulate('click');
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
+  });
 
   describe('onOpenChange', () => {
     test('is called on click', () => {
@@ -106,7 +124,7 @@ describe('Popup', () => {
       expectPopupToOpenAndClose({
         onProp: 'context',
         eventToOpen: { event: 'contextmenu' },
-        eventToClose: keyboardKey.Escape,
+        eventToClose: { keyCode: keyboardKey.Escape },
       });
     });
 
@@ -136,29 +154,29 @@ describe('Popup', () => {
     test(`toggle popup with Enter key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'click',
-        eventToOpen: keyboardKey.Enter,
-        eventToClose: keyboardKey.Enter,
+        eventToOpen: { keyCode: keyboardKey.Enter },
+        eventToClose: { keyCode: keyboardKey.Enter },
       });
     });
     test(`toggle popup with Space key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'click',
-        eventToOpen: keyboardKey.Spacebar,
-        eventToClose: keyboardKey.Spacebar,
+        eventToOpen: { keyCode: SpacebarKey },
+        eventToClose: { keyCode: SpacebarKey },
       });
     });
     test(`open popup with Enter key and close it with escape key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'hover',
-        eventToOpen: keyboardKey.Enter,
-        eventToClose: keyboardKey.Escape,
+        eventToOpen: { keyCode: keyboardKey.Enter },
+        eventToClose: { keyCode: keyboardKey.Escape },
       });
     });
     test(`open popup with Space key and close it with escape key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'hover',
-        eventToOpen: keyboardKey.Spacebar,
-        eventToClose: keyboardKey.Escape,
+        eventToOpen: { keyCode: SpacebarKey },
+        eventToClose: { keyCode: keyboardKey.Escape },
       });
     });
     test(`close previous popup with Enter key`, () => {
@@ -171,7 +189,7 @@ describe('Popup', () => {
       ReactTestUtils.act(() => {
         ReactDOM.render(
           <EmptyThemeProvider>
-            <React.Fragment>
+            <>
               <Popup
                 trigger={<span id={triggerId}>text to trigger popup</span>}
                 content={{ id: contentId }}
@@ -182,7 +200,7 @@ describe('Popup', () => {
                 content={{ id: contentId2 }}
                 on="click"
               />
-            </React.Fragment>
+            </>
           </EmptyThemeProvider>,
           attachTo,
         );

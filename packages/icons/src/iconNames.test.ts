@@ -1,6 +1,6 @@
 import { IconNames, IconNamesInput } from './IconNames';
 
-// tslint:disable-next-line:deprecation
+// eslint-disable-next-line deprecation/deprecation
 declare const allIconNamesValues: IconNames;
 
 function validateIconNamesValues(allowedIconNamesValues: IconNamesInput): void {

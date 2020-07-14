@@ -1,34 +1,40 @@
-import { Renderer, StylesContextPerformance, StylesContextPerformanceInput } from '@fluentui/react-bindings';
+import {
+  ProviderContextPrepared,
+  ProviderContextInput,
+  StylesContextPerformance,
+  StylesContextPerformanceInput,
+} from '@fluentui/react-bindings';
+import { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { mergeThemes } from '@fluentui/styles';
 
-import { ProviderContextPrepared, ProviderContextInput } from '../types';
-import { createRenderer, felaRenderer } from './felaRenderer';
-import isBrowser from './isBrowser';
+import { isBrowser } from './isBrowser';
 
-const registeredRenderers = new WeakMap<Document, Renderer>();
+const defaultDocument = { document: 'document' };
+const registeredRenderers = new WeakMap<Document | typeof defaultDocument, Renderer>();
 
-export const mergeRenderers = (current: Renderer, next?: Renderer, target?: Document): Renderer => {
-  if (next) {
-    return next;
-  }
+export const getRenderer = (createRenderer: CreateRenderer, target?: Document): Renderer => {
+  let actualTarget: Document | typeof defaultDocument = target || defaultDocument;
 
   // A valid comparisons, default renderer will be used
   if (!isBrowser() || typeof target === 'undefined') {
-    return felaRenderer;
+    actualTarget = defaultDocument;
   }
 
   // SSR logic will be handled by condition above
   // eslint-disable-next-line no-undef
-  if (target === document) {
-    return felaRenderer;
+  if (isBrowser() && target === document) {
+    actualTarget = defaultDocument;
   }
 
-  if (registeredRenderers.has(target)) {
-    return registeredRenderers.get(target);
+  if (registeredRenderers.has(actualTarget)) {
+    return registeredRenderers.get(actualTarget);
   }
 
-  const createdRenderer = createRenderer();
-  registeredRenderers.set(target, createdRenderer);
+  // To avoid errors related to SSR as `document` may not exist we are using a fake object `defaultDocument`.
+  // When a value matches `defaultDocument` we will pass `undefined` to `createRenderer()` and it should handle it
+  // properly.
+  const createdRenderer = createRenderer(actualTarget === defaultDocument ? undefined : (actualTarget as Document));
+  registeredRenderers.set(actualTarget, createdRenderer);
 
   return createdRenderer;
 };
@@ -46,7 +52,8 @@ export const mergeBooleanValues = (target, ...sources) => {
   }, target);
 };
 
-const mergeProviderContexts = (
+export const mergeProviderContexts = (
+  createRenderer: CreateRenderer,
   ...contexts: (ProviderContextInput | ProviderContextPrepared)[]
 ): ProviderContextPrepared => {
   const emptyContext: ProviderContextPrepared = {
@@ -87,7 +94,7 @@ const mergeProviderContexts = (
 
       // Use provided renderer if it is defined
       acc.target = next.target || acc.target;
-      acc.renderer = mergeRenderers(acc.renderer, next.renderer, acc.target);
+      acc.renderer = getRenderer(createRenderer, acc.target);
 
       // Latest disableAnimations value wins
       const mergedDisableAnimations = mergeBooleanValues(acc.disableAnimations, next.disableAnimations);
@@ -104,5 +111,3 @@ const mergeProviderContexts = (
     emptyContext,
   );
 };
-
-export default mergeProviderContexts;

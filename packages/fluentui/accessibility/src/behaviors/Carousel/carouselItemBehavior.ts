@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 /**
  * @description
@@ -9,7 +9,7 @@ import * as keyboardKey from 'keyboard-key';
  * Adds attribute 'aria-hidden=false' to 'root' slot if 'active' property is true. Sets the attribute to 'true' otherwise.
  * Triggers 'arrowKeysNavigationStopPropagation' action with 'ArrowRight' or 'ArrowLeft' on 'root'.
  */
-const carouselItemBehavior: Accessibility<CarouselItemBehaviorProps> = props => ({
+export const carouselItemBehavior: Accessibility<CarouselItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: props.navigation ? 'tabpanel' : undefined,
@@ -26,8 +26,6 @@ const carouselItemBehavior: Accessibility<CarouselItemBehaviorProps> = props => 
     },
   },
 });
-
-export default carouselItemBehavior;
 
 export type CarouselItemBehaviorProps = {
   /** If item is visible in the carousel. */

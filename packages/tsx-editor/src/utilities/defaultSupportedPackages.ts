@@ -1,6 +1,5 @@
 import { IPackageGroup } from '../interfaces/index';
 
-// tslint:disable:no-any
 const fabricGroup: IPackageGroup = {
   globalName: 'Fabric',
   // Theoretically we could use import() here, but that pulls things into bundles when using
@@ -19,7 +18,6 @@ const exampleDataGroup: IPackageGroup = {
   loadGlobal: cb => require.ensure([], require => cb(require('@uifabric/example-data'))),
   packages: [],
 };
-// tslint:enable:no-any
 
 let typesContext: __WebpackModuleApi.RequireContext | undefined;
 try {
@@ -66,6 +64,7 @@ if (typesContext) {
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@uifabric/styling', loadTypes },
     { packageName: '@uifabric/utilities', loadTypes },
+    { packageName: '@fluentui/date-time-utilities', loadTypes },
   );
   hooksGroup.packages.push({ packageName: '@uifabric/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@uifabric/example-data', loadTypes });

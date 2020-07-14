@@ -69,9 +69,12 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
-          "width": 350,
+          "width": "350",
         }
       }
     >
@@ -537,9 +540,12 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                   0 0 / 90% 100%
                                   no-repeat;
           }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       style={
         Object {
-          "width": 550,
+          "width": "550",
         }
       }
     >
@@ -949,6 +955,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
       style={
         Object {

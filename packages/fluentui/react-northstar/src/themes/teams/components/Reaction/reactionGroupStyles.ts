@@ -1,8 +1,8 @@
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { ReactionProps } from '../../../../components/Reaction/Reaction';
+import { ReactionGroupStylesProps } from '../../../../components/Reaction/ReactionGroup';
 import { ReactionGroupVariables } from './reactionGroupVariables';
 
-const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionGroupVariables> = {
+export const reactionGroupStyles: ComponentSlotStylesPrepared<ReactionGroupStylesProps, ReactionGroupVariables> = {
   root: () => ({}),
   reaction: ({ variables: v }) => ({
     ':not(:last-child)': {
@@ -10,5 +10,3 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionGroupVa
     },
   }),
 };
-
-export default reactionStyles;

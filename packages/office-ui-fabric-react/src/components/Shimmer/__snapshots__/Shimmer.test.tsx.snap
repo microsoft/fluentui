@@ -37,6 +37,9 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
                                 0 0 / 90% 100%
                                 no-repeat;
         }
+        @media screen and (forced-colors: active){& {
+          forced-color-adjust: none;
+        }
     style={
       Object {
         "width": "50%",
@@ -297,6 +300,9 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                                   transparent 100%)
                                 0 0 / 90% 100%
                                 no-repeat;
+        }
+        @media screen and (forced-colors: active){& {
+          forced-color-adjust: none;
         }
     style={
       Object {

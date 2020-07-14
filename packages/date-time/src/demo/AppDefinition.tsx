@@ -1,4 +1,3 @@
-// tslint:disable:no-any
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
@@ -9,19 +8,19 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/Calendar/CalendarPage').CalendarPage,
+          component: require('../components/Calendar/CalendarPage').CalendarPage,
           key: 'Calendar',
           name: 'Calendar',
           url: '#/examples/calendar',
         },
         {
-          component: require<any>('../components/DatePicker/DatePickerPage').DatePickerPage,
+          component: require('../components/DatePicker/DatePickerPage').DatePickerPage,
           key: 'DatePicker',
           name: 'DatePicker',
           url: '#/examples/datepicker',
         },
         {
-          component: require<any>('../components/WeeklyDayPicker/WeeklyDayPickerPage').WeeklyDayPickerPage,
+          component: require('../components/WeeklyDayPicker/WeeklyDayPickerPage').WeeklyDayPickerPage,
           key: 'WeeklyDayPicker',
           name: 'WeeklyDayPicker',
           url: '#/examples/weeklydaypicker',

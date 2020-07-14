@@ -24,7 +24,7 @@ This is the new home for `@fluentui/react-northstar` and related packages which 
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING) for a step-by-step setup and development guide specific to `@fluentui/react-northstar`.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for a step-by-step setup and development guide specific to `@fluentui/react-northstar`.
 
 ## Issues
 

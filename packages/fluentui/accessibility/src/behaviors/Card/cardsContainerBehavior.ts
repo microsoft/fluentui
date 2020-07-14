@@ -1,6 +1,6 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import * as keyboardKey from 'keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 /**
  * @description
@@ -11,14 +11,14 @@ import * as keyboardKey from 'keyboard-key';
  * Provides arrow key navigation in bidirectional direction.
  * Focus can be moved inside a child component with embeded inner FocusZone by pressing a specified key.
  */
-const cardsContainerBehavior: Accessibility = () => ({
+export const cardsContainerBehavior: Accessibility<CardsContainerBehaviorProps> = () => ({
   attributes: {},
   focusZone: {
     props: {
-      shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Enter,
+      shouldEnterInnerZone: event => getCode(event) === keyboardKey.Enter,
       direction: FocusZoneDirection.bidirectional,
     },
   },
 });
 
-export default cardsContainerBehavior;
+export type CardsContainerBehaviorProps = never;

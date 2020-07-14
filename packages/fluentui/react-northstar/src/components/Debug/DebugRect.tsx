@@ -1,12 +1,29 @@
 import * as React from 'react';
-import FiberNavigator from './FiberNavigator';
+import { FiberNavigator } from './FiberNavigator';
 
 interface DebugRectProps {
+  showBackground?: boolean;
+  showClassName?: boolean;
+  showCropMarks?: boolean;
+  showElement?: boolean;
   fiberNav: FiberNavigator;
+  renderLabel?: (fiberNav: FiberNavigator) => string;
 }
 
-class DebugRect extends React.Component<DebugRectProps> {
+const cropMarkStyle: React.CSSProperties = {
+  position: 'absolute',
+  background: '#6495ed88',
+};
+
+export class DebugRect extends React.Component<DebugRectProps> {
   selectorRef = React.createRef<HTMLPreElement>();
+
+  static defaultProps = {
+    showBackground: true,
+    showClassName: true,
+    showElement: true,
+    renderLabel: fiberNav => `<${fiberNav.name} />`,
+  };
 
   componentDidMount() {
     this.setDebugSelectorPosition();
@@ -38,11 +55,13 @@ class DebugRect extends React.Component<DebugRectProps> {
   };
 
   render() {
-    const { fiberNav } = this.props;
+    const { fiberNav, showBackground, showClassName, showCropMarks, showElement, renderLabel } = this.props;
 
     if (!fiberNav) {
       return null;
     }
+
+    const label = renderLabel(fiberNav);
 
     return (
       <pre
@@ -51,27 +70,114 @@ class DebugRect extends React.Component<DebugRectProps> {
           position: 'fixed',
           padding: 0,
           margin: 0,
-          background: '#6495ed22',
-          border: '1px solid #6495edcc',
+          background: showBackground ? '#6495ed11' : 'none',
+          outline: '2px solid #6495edcc',
+          outlineOffset: '-1px',
           zIndex: 99999999,
           pointerEvents: 'none',
           userSelect: 'none',
         }}
       >
-        <div
-          style={{
-            position: 'absolute',
-            padding: '2px 4px',
-            margin: '-1px 0 0 -1px',
-            bottom: '100%',
-            left: 0,
-            color: '#fff',
-            background: '#6495ed',
-          }}
-        >
-          <span style={{ fontWeight: 'bold' }}>{`<${fiberNav.name} />`}</span>
-        </div>
-        {fiberNav.domNode && (
+        {label && (
+          <div
+            style={{
+              position: 'absolute',
+              padding: '2px 4px',
+              margin: '-1px 0 0 -1px',
+              bottom: '100%',
+              left: 0,
+              color: '#fff',
+              background: '#6495ed',
+              zIndex: 1, // above crop marks
+            }}
+          >
+            <span style={{ fontWeight: 'bold' }}>{renderLabel(fiberNav)}</span>
+          </div>
+        )}
+        {showCropMarks && (
+          <>
+            {/* Top Left */}
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '12px',
+                height: '1px',
+                top: '0',
+                left: '-20px',
+              }}
+            />
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '1px',
+                height: '12px',
+                top: '-20px',
+                left: '0',
+              }}
+            />
+
+            {/* Top Right */}
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '12px',
+                height: '1px',
+                top: '0',
+                right: '-20px',
+              }}
+            />
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '1px',
+                height: '12px',
+                top: '-20px',
+                right: '0',
+              }}
+            />
+
+            {/* Bottom Left */}
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '12px',
+                height: '1px',
+                bottom: '0',
+                left: '-20px',
+              }}
+            />
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '1px',
+                height: '12px',
+                bottom: '-20px',
+                left: '0',
+              }}
+            />
+
+            {/* Bottom Right */}
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '12px',
+                height: '1px',
+                bottom: '0',
+                right: '-20px',
+              }}
+            />
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '1px',
+                height: '12px',
+                bottom: '-20px',
+                right: '0',
+              }}
+            />
+          </>
+        )}
+        {fiberNav.domNode && (showElement || showClassName) && (
           <div
             style={{
               fontSize: '0.9em',
@@ -83,10 +189,13 @@ class DebugRect extends React.Component<DebugRectProps> {
               background: '#6495ed',
             }}
           >
-            <strong style={{ fontWeight: 'bold', color: 'hsl(160, 100%, 80%)' }}>
-              {fiberNav.domNode.tagName && fiberNav.domNode.tagName.toLowerCase()}
-            </strong>
-            {fiberNav.domNode.hasAttribute &&
+            {showElement && (
+              <strong style={{ fontWeight: 'bold', color: 'hsl(160, 100%, 80%)' }}>
+                {fiberNav.domNode.tagName && fiberNav.domNode.tagName.toLowerCase()}
+              </strong>
+            )}
+            {showClassName &&
+              fiberNav.domNode.hasAttribute &&
               typeof fiberNav.domNode.hasAttribute === 'function' &&
               fiberNav.domNode.hasAttribute('class') && (
                 <span style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
@@ -99,5 +208,3 @@ class DebugRect extends React.Component<DebugRectProps> {
     );
   }
 }
-
-export default DebugRect;
