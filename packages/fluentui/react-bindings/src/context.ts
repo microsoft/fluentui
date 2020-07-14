@@ -42,6 +42,7 @@ export const defaultPerformanceFlags: StylesContextPerformance = {
 };
 
 const defaultContext: ProviderContextPrepared = {
+  // A default value for `rtl` is undefined to let compute `Provider` a proper one
   rtl: undefined,
   disableAnimations: false,
   performance: defaultPerformanceFlags,
