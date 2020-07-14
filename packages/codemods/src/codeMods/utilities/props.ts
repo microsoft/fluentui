@@ -19,24 +19,31 @@ export function renameProp(
 ) {
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
-    let foundProp = val.getAttribute(toRename);
-    if (foundProp) {
+    let foundProp = Maybe(val.getAttribute(toRename));
+    if (foundProp.just) {
       /* If found, do a simple name-replacementName. */
-      foundProp.set({ name: replacementName });
+      foundProp.value.set({ name: replacementName });
       if (changeValueMap) {
         /* Change the value of the enum via map conversion. */
-        let enumExp = (foundProp as JsxAttribute)
-          .getFirstChildByKind(SyntaxKind.JsxExpression)
-          .getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-        const newEnumName = changeValueMap[enumExp.getText()];
-        enumExp
-          .getFirstChildByKind(SyntaxKind.Identifier)
-          .replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
-        enumExp
-          .getLastChildByKind(SyntaxKind.Identifier)
-          .replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
+        let enumInJsx = Maybe((foundProp.value as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression));
+        let enumExp = enumInJsx.then(value => {
+          return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
+        });
+        if (enumExp.just) {
+          const newEnumName = changeValueMap[enumExp.value.getText()];
+          let firstEnumChild = enumExp.then(value => {
+            return value.getFirstChildByKind(SyntaxKind.Identifier);
+          });
+          let lastEnumChild = enumExp.then(value => {
+            return value.getLastChildByKind(SyntaxKind.Identifier);
+          });
+          if (firstEnumChild.just && lastEnumChild.just) {
+            firstEnumChild.value.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
+            lastEnumChild.value.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
+          }
+        }
       } else if (replacementValue) {
-        foundProp.set({ initializer: `{${replacementValue}}` });
+        foundProp.value.set({ initializer: `{${replacementValue}}` });
       }
     } else {
       /* If the prop is not found, check to see if the prop is in a spread attribute. */
@@ -77,14 +84,19 @@ function renamePropInSpread(
             case ts.ScriptElementKind.variableElement:
             case ts.ScriptElementKind.parameterElement: {
               const propContainingObject = propKind[0];
-              const blockContainer = getBlockContainer(element);
-              const parentContainer = blockContainer?.getParentIfKind(SyntaxKind.Block);
-              const insertIndex = blockContainer?.getChildIndex();
-              if (insertIndex === undefined) {
+              const blockContainer = Maybe(getBlockContainer(element));
+              if (!blockContainer.just) throw 'unable to get block container from expression';
+              let bc = blockContainer.value;
+              const parentContainer = Maybe(bc.getParentIfKind(SyntaxKind.Block));
+              if (!parentContainer.just) throw 'unable to get parent container from block';
+              const insertIndexMaybe = Maybe(bc.getChildIndex());
+              if (!insertIndexMaybe.just) {
                 throw 'unable to find child index';
               }
-              if (!parentContainer?.getVariableStatement(newSpreadName)) {
-                parentContainer?.insertVariableStatement(insertIndex, {
+              let pc = parentContainer.value;
+              const insertIndex = insertIndexMaybe.value;
+              if (!pc.getVariableStatement(newSpreadName)) {
+                pc.insertVariableStatement(insertIndex, {
                   declarationKind: VariableDeclarationKind.Const,
                   declarations: [
                     {
@@ -94,8 +106,8 @@ function renamePropInSpread(
                   ],
                 });
               }
-              if (changeValueMap && !parentContainer?.getVariableStatement(newMapName)) {
-                parentContainer?.insertVariableStatement(insertIndex, {
+              if (changeValueMap && !pc.getVariableStatement(newMapName)) {
+                pc.insertVariableStatement(insertIndex, {
                   declarationKind: VariableDeclarationKind.Const,
                   declarations: [
                     {
