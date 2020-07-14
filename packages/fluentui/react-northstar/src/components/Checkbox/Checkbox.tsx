@@ -5,6 +5,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStateManager,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -13,16 +14,9 @@ import { createCheckboxManager } from '@fluentui/state';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { createShorthandFactory, ChildrenComponentProps, commonPropTypes, UIComponentProps } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
@@ -86,7 +80,7 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
  * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
  */
 export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
 

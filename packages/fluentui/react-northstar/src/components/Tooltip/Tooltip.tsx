@@ -1,12 +1,10 @@
 import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fluentui/accessibility';
-import { useAccessibility, useAutoControlled, useTelemetry } from '@fluentui/react-bindings';
+import { useAccessibility, useAutoControlled, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -19,7 +17,7 @@ import {
   getOrGenerateIdFromShorthand,
   createShorthandFactory,
 } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
   ALIGNMENTS,
   POSITIONS,
@@ -91,7 +89,7 @@ export const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
   setStart();
 

@@ -10,6 +10,7 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -20,8 +21,6 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   getScrollParent,
@@ -40,13 +39,7 @@ import {
   rtlTextContainer,
   createShorthand,
 } from '../../utils';
-import {
-  ShorthandValue,
-  ComponentEventHandler,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { Label, LabelProps } from '../Label/Label';
 import { Menu, MenuProps } from '../Menu/Menu';
@@ -156,7 +149,7 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
  */
 export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   FluentComponentStaticProps<ChatMessageProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 

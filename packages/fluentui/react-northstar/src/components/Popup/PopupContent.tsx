@@ -7,6 +7,7 @@ import {
   FocusTrapZoneProps,
   getElementType,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
   useUnhandledProps,
@@ -17,10 +18,8 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   createShorthandFactory,
@@ -84,7 +83,7 @@ export const popupContentSlotClassNames: PopupContentSlotClassNames = {
  */
 export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
   FluentComponentStaticProps<PopupContentProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
   setStart();
 

@@ -4,6 +4,7 @@ import {
   getElementType,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
@@ -12,9 +13,7 @@ import * as CustomPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { commonPropTypes, createShorthandFactory, SizeValue, UIComponentProps } from '../../utils';
 import { CardBody } from './CardBody';
 import { CardColumn } from './CardColumn';
@@ -112,7 +111,7 @@ export const Card: ComponentWithAs<'div', CardProps> &
     Column: typeof CardColumn;
     ExpandableBox: typeof CardExpandableBox;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
   const cardRef = React.useRef<HTMLElement>();

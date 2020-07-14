@@ -3,6 +3,7 @@ import {
   AccessibilityHandlerProps,
   FocusTrapZone,
   FocusTrapZoneProps,
+  useFluentContext,
   useTelemetry,
   useAutoControlled,
 } from '@fluentui/react-bindings';
@@ -12,7 +13,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   doesNodeContainClick,
@@ -23,8 +24,6 @@ import {
   createShorthandFactory,
 } from '../../utils';
 import { PortalInner } from './PortalInner';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export type TriggerAccessibility = {
   attributes?: AccessibilityAttributes;
@@ -83,7 +82,7 @@ export interface PortalProps extends ChildrenComponentProps, ContentComponentPro
  * A Portal allows to render children outside of their parent.
  */
 export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Portal.displayName, context.telemetry);
   setStart();
   const { children, content, trapFocus, trigger, triggerAccessibility } = props;

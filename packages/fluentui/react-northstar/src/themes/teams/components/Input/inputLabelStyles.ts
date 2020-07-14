@@ -6,6 +6,8 @@ export const inputLabelStyles: ComponentSlotStylesPrepared<InputLabelStylesProps
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
     transition: 'all .2s',
+    lineHeight: v.lineHeight,
+    marginBottom: v.marginBottom,
 
     ...(p.labelPosition === 'inside' && {
       bottom: v.insideLabelBottom,

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Replace tslint with eslint; add missing explicit react-hooks dependency",
-  "packageName": "@uifabric/date-time",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-08T01:48:58.626Z"
-}

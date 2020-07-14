@@ -15,7 +15,6 @@ import {
   ShorthandValue,
   ComponentKeyboardEventHandler,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
@@ -25,12 +24,11 @@ import {
   ComponentWithAs,
   useUnhandledProps,
   useStyles,
+  useFluentContext,
   useTelemetry,
   getElementType,
   useAccessibility,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface DropdownSelectedItemSlotClassNames {
   header: string;
@@ -95,7 +93,7 @@ export type DropdownSelectedItemStylesProps = { hasImage: boolean };
  */
 export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemProps> &
   FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
 

@@ -6,23 +6,17 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import { createShorthandFactory, UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   useAutoControlled,
   getElementType,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface RadioGroupItemSlotClassNames {
   indicator: string;
@@ -89,7 +83,7 @@ export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disa
  */
 export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
   FluentComponentStaticProps<RadioGroupItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
   setStart();
   const { label, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } = props;

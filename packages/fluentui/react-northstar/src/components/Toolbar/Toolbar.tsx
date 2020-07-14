@@ -10,6 +10,7 @@ import {
   compose,
   getElementType,
   getFirstFocusable,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
@@ -22,10 +23,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import { ComponentEventHandler, ProviderContextPrepared, ShorthandCollection, ShorthandValue } from '../../types';
+import { ComponentEventHandler, ShorthandCollection, ShorthandValue } from '../../types';
 import {
   childrenExist,
   createShorthand,
@@ -129,7 +128,7 @@ export const toolbarClassName = 'ui-toolbar';
  */
 export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

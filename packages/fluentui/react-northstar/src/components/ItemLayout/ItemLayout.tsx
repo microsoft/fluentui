@@ -2,6 +2,7 @@ import {
   ComponentWithAs,
   ComponentSlotClasses,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
@@ -18,9 +19,7 @@ import {
   rtlTextContainer,
 } from '../../utils';
 import { Layout } from '../Layout/Layout';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { FluentComponentStaticProps } from '../../types';
 
 export interface ItemLayoutSlotClassNames {
   header: string;
@@ -77,7 +76,7 @@ export type ItemLayoutStylesProps = never;
  */
 export const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> &
   FluentComponentStaticProps<ItemLayoutProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ItemLayout.displayName, context.telemetry);
   setStart();
   const {

@@ -11,14 +11,13 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   createShorthand,
@@ -27,7 +26,7 @@ import {
   UIComponentProps,
   commonPropTypes,
 } from '../../utils';
-import { ComponentEventHandler, ProviderContextPrepared, ShorthandCollection, ShorthandValue } from '../../types';
+import { ComponentEventHandler, ShorthandCollection, ShorthandValue } from '../../types';
 import { ToolbarMenuItem, ToolbarMenuItemProps } from './ToolbarMenuItem';
 import { ToolbarMenuRadioGroupWrapper, ToolbarMenuRadioGroupWrapperProps } from './ToolbarMenuRadioGroupWrapper';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -71,7 +70,7 @@ export const ToolbarMenuRadioGroup = compose<
   {}
 >(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

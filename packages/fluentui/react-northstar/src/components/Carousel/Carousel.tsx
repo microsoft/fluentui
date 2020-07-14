@@ -6,8 +6,7 @@ import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Ref } from '@fluentui/react-component-ref';
 import { Animation } from '../Animation/Animation';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   UIComponentProps,
   createShorthandFactory,
@@ -16,13 +15,7 @@ import {
   ChildrenComponentProps,
   isFromKeyboard as isEventFromKeyboard,
 } from '../../utils';
-import {
-  ShorthandCollection,
-  ShorthandValue,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandCollection, ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { CarouselItem, CarouselItemProps } from './CarouselItem';
 import { Text } from '../Text/Text';
 import { CarouselNavigation, CarouselNavigationProps } from './CarouselNavigation';
@@ -33,6 +26,7 @@ import {
   getElementType,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
   useStateManager,
@@ -142,7 +136,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     NavigationItem: typeof CarouselNavigationItem;
     Paddle: typeof CarouselPaddle;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
   setStart();
   const {

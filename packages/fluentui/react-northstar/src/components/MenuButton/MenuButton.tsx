@@ -6,13 +6,7 @@ import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
 import { commonPropTypes, StyledComponentProps, getOrGenerateIdFromShorthand } from '../../utils';
-import {
-  ShorthandValue,
-  ComponentEventHandler,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 
 import { createShorthandFactory } from '../../utils/factories';
 import { Popup, PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
@@ -26,11 +20,10 @@ import {
   useTelemetry,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAutoControlled,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface MenuButtonSlotClassNames {
   menu: string;
@@ -116,7 +109,7 @@ export type MenuButtonStylesProps = never;
  */
 export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
   FluentComponentStaticProps<MenuButtonProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();
 
