@@ -21,7 +21,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.109.114",
+    "@uifabric/react-cards": "^0.110.0",
     "@uifabric/merge-styles": "^7.16.1",
     "@uifabric/example-app-base": "^7.12.92",
     "@uifabric/variants": "^7.1.94",

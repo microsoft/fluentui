@@ -2,6 +2,21 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Tue, 14 Jul 2020 12:41:43 GMT",
+      "tag": "@uifabric/react-cards_v0.110.0",
+      "version": "0.110.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Fixing focus styling.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2769d9235175fdc71df7f86e9758eeab9be9a7e1",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/react-cards_v0.109.114",
       "version": "0.109.114",
