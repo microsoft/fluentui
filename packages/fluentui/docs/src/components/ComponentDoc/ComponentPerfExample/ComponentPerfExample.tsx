@@ -5,10 +5,13 @@ import ComponentExampleTitle from '../ComponentExample/ComponentExampleTitle';
 import { Accordion, Flex, Segment, Menu, Loader } from '@fluentui/react-northstar';
 import ComponentExample from '../ComponentExample';
 
-const ComponentPerfChart = React.lazy(() => import(/* webpackChunkName: "component-chart" */ './ComponentPerfChart'));
-const ComponentResourcesChart = React.lazy(() =>
-  import(/* webpackChunkName: "component-chart" */ './ComponentResourcesChart'),
-);
+const ComponentPerfChart = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "component-chart" */ './ComponentPerfChart')).ComponentPerfChart,
+}));
+const ComponentResourcesChart = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "component-chart" */ './ComponentResourcesChart'))
+    .ComponentResourcesChart,
+}));
 
 export interface ComponentPerfExampleProps {
   title: React.ReactNode;

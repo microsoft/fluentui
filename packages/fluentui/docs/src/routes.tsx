@@ -89,7 +89,7 @@ const VirtualizedTablePrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/VirtualizedTable'),
 );
 const FormValidationPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/FormValidationPrototype'),
+  import(/* webpackChunkName: "prototypes" */ './prototypes/FormValidation'),
 );
 
 const Routes = () => (

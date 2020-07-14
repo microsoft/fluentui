@@ -42,9 +42,7 @@ const Filter = React.memo<FilterProps>(({ onChange }) => {
   );
 });
 
-const ComponentResourcesChart = ({ perfTestName }) => {
+export const ComponentResourcesChart = ({ perfTestName }) => {
   const data = usePerfData(perfTestName);
   return <ComponentChart chartData={data} Chart={ResourcesChart} Filter={Filter} />;
 };
-
-export default ComponentResourcesChart;
