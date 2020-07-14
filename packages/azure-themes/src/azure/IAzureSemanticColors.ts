@@ -92,4 +92,7 @@ export interface IAzureSemanticColors {
       backrgound: string;
     };
   };
+  commandBar: {
+    border: string;
+  };
 }

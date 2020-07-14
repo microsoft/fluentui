@@ -457,7 +457,7 @@ describe('ContextualMenu', () => {
         key: 'TestKey1',
         split: true,
         onClick: () => {
-          alert('test');
+          console.log('test');
         },
         subMenuProps: {
           items: [

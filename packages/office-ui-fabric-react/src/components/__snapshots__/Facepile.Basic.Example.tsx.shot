@@ -764,6 +764,9 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
               }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
+              }
           data-is-focusable={true}
           id="Slider7"
           onKeyDown={[Function]}

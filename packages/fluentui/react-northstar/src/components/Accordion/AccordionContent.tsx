@@ -52,7 +52,7 @@ export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, '
 /**
  * An AccordionContent displays content hosted in an Accordion.
  */
-const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
+export const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
   FluentComponentStaticProps<AccordionContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);
@@ -129,5 +129,3 @@ AccordionContent.create = createShorthandFactory({
   Component: AccordionContent,
   mappedProp: 'content',
 });
-
-export default AccordionContent;

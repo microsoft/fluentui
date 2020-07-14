@@ -1,4 +1,4 @@
-import { Accessibility, statusBehavior } from '@fluentui/accessibility';
+import { Accessibility, statusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
   getElementType,
@@ -15,11 +15,11 @@ import { ThemeContext } from 'react-fela';
 
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
 import { ShorthandValue, ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface StatusProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<StatusBehaviorProps>;
 
   /** A custom color. */
   color?: string;
@@ -43,7 +43,7 @@ export const statusClassName = 'ui-status';
  * @accessibility
  * Implements [ARIA img](https://www.w3.org/TR/wai-aria-1.1/#img) role.
  */
-const Status: ComponentWithAs<'span', StatusProps> & FluentComponentStaticProps = props => {
+export const Status: ComponentWithAs<'span', StatusProps> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Status.displayName, context.telemetry);
   setStart();
@@ -107,5 +107,3 @@ Status.defaultProps = {
 };
 
 Status.create = createShorthandFactory({ Component: Status, mappedProp: 'state' });
-
-export default Status;

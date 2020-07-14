@@ -134,6 +134,9 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         data-is-focusable={true}
         id="Slider0"
         onKeyDown={[Function]}
@@ -395,6 +398,9 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         data-is-focusable={true}
         id="Slider1"
         onKeyDown={[Function]}
@@ -613,6 +619,9 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               right: 1px;
               top: 1px;
               z-index: 1;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         data-is-focusable={false}
         id="Slider2"
@@ -882,6 +891,9 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         data-is-focusable={true}
         id="Slider3"
         onKeyDown={[Function]}
@@ -1143,6 +1155,9 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         data-is-focusable={true}
         id="Slider4"
         onKeyDown={[Function]}
@@ -1403,6 +1418,9 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         data-is-focusable={true}
         id="Slider5"

@@ -47,7 +47,7 @@ const titleTextStyles: ICollapsibleSectionTitleProps['styles'] = (
 const titleTextRender: ISlotRender<ITextProps> = (props, DefaultComponent) => (
   <AsyncData
     data="done"
-    // tslint:disable-next-line:jsx-no-lambda
+    // eslint-disable-next-line react/jsx-no-bind
     render={data =>
       data ? <DefaultComponent {...props} /> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />
     }
@@ -57,7 +57,7 @@ const titleTextRender: ISlotRender<ITextProps> = (props, DefaultComponent) => (
 const bodyRender: ISlotRender<IHTMLSlot> = (props, DefaultComponent) => (
   <AsyncData
     data="done"
-    // tslint:disable-next-line:jsx-no-lambda
+    // eslint-disable-next-line react/jsx-no-bind
     render={data => (
       <div style={{ border: '1px solid black' }}>
         <DefaultComponent {...props}>

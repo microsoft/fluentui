@@ -3,7 +3,7 @@ import { FormFieldStylesProps } from '../../../../components/Form/FormField';
 import { pxToRem } from '../../../../utils';
 import { FormFieldVariables } from './formFieldVariables';
 
-const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
+export const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
@@ -37,5 +37,3 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFie
     ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
   }),
 };
-
-export default formFieldStyles;

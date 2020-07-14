@@ -108,7 +108,6 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
     this._focusOnUpdate = false;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void {
     const { autoNavigateOnSelection, value, today = new Date() } = nextProps;
 

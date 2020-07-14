@@ -48,7 +48,7 @@ export type VideoStylesProps = Required<Pick<VideoProps, 'variables'>>;
 /**
  * A Video provides ability to embed video content.
  */
-const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStaticProps<VideoProps> = props => {
+export const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStaticProps<VideoProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Video.displayName, context.telemetry);
   setStart();
@@ -121,5 +121,3 @@ Video.defaultProps = {
 };
 
 Video.handledProps = Object.keys(Video.propTypes) as any;
-
-export default Video;

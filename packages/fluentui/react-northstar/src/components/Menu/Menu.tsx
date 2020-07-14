@@ -30,12 +30,12 @@ import {
   rtlTextContainer,
   ShorthandFactory,
 } from '../../utils';
-import MenuItem, { MenuItemProps } from './MenuItem';
-import MenuDivider, { MenuDividerProps } from './MenuDivider';
-import MenuItemIcon from './MenuItemIcon';
-import MenuItemContent from './MenuItemContent';
-import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
-import MenuItemWrapper from './MenuItemWrapper';
+import { MenuItem, MenuItemProps } from './MenuItem';
+import { MenuDivider, MenuDividerProps } from './MenuDivider';
+import { MenuItemIcon } from './MenuItemIcon';
+import { MenuItemContent } from './MenuItemContent';
+import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
+import { MenuItemWrapper } from './MenuItemWrapper';
 import { MenuContextProvider, MenuContextValue } from './menuContext';
 
 export type MenuShorthandKinds = {
@@ -435,5 +435,3 @@ Menu.ItemIndicator = MenuItemIndicator;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });
-
-export default Menu;

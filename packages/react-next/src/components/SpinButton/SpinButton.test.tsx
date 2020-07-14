@@ -22,7 +22,7 @@ describe('SpinButton', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((setTimeout as any).mock) {
       jest.useRealTimers();
     }
@@ -369,7 +369,6 @@ describe('SpinButton', () => {
         min={exampleMinValue}
         max={exampleMaxValue}
         defaultValue="12"
-        // tslint:disable-next-line:jsx-no-lambda
         onValidate={(newValue: string): string | void => {
           const numberValue: number = +newValue;
           if (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) {
@@ -398,7 +397,6 @@ describe('SpinButton', () => {
         min={exampleMinValue}
         max={exampleMaxValue}
         defaultValue="12"
-        // tslint:disable-next-line:jsx-no-lambda
         onValidate={(newValue: string): string | void => {
           const numberValue: number = Number(newValue);
           if (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) {
@@ -423,7 +421,7 @@ describe('SpinButton', () => {
     wrapper = mount(<SpinButton defaultValue="12" />);
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const buttonDOM: any = wrapper.getDOMNode().querySelector('.ms-UpButton');
 
     expect(inputDOM.value).toBe('12');

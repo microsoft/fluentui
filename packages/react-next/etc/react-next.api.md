@@ -259,6 +259,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     disabled?: boolean;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
+    // @deprecated
     keytipProps?: IKeytipProps;
     label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
@@ -694,6 +695,7 @@ export interface ILinkOptions {
 export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
     componentRef?: IRefObject<ILink>;
     disabled?: boolean;
+    // @deprecated
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
@@ -974,6 +976,7 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    overflowBehavior?: 'none' | 'menu';
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
     theme?: ITheme;
@@ -997,7 +1000,11 @@ export interface IPivotStyles {
     // (undocumented)
     linkContent: IStyle;
     // (undocumented)
+    linkInMenu: IStyle;
+    // (undocumented)
     linkIsSelected: IStyle;
+    // (undocumented)
+    overflowMenuButton: IStyle;
     root: IStyle;
     // (undocumented)
     text: IStyle;
@@ -1502,6 +1509,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     defaultChecked?: boolean;
     disabled?: boolean;
     inlineLabel?: boolean;
+    // @deprecated
     keytipProps?: IKeytipProps;
     label?: string | JSX.Element;
     // @deprecated (undocumented)
@@ -1981,13 +1989,13 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
 export { ThemeProviderProps }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps>;
+export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
 
 // @public
-export const useLink: (props: ILinkProps) => any;
+export const useLink: (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>) => any;
 
 export { useTheme }
 
@@ -1996,11 +2004,12 @@ export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, op
 
 
 export * from "@fluentui/react-button/lib/Button";
+export * from "@uifabric/date-time/lib/Calendar";
+export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
 export * from "office-ui-fabric-react/lib/Announced";
 export * from "office-ui-fabric-react/lib/Autofill";
 export * from "office-ui-fabric-react/lib/Breadcrumb";
-export * from "office-ui-fabric-react/lib/Calendar";
 export * from "office-ui-fabric-react/lib/Callout";
 export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
@@ -2009,7 +2018,6 @@ export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/ComboBox";
 export * from "office-ui-fabric-react/lib/CommandBar";
 export * from "office-ui-fabric-react/lib/ContextualMenu";
-export * from "office-ui-fabric-react/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";
 export * from "office-ui-fabric-react/lib/Divider";

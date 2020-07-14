@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "@fluentui/react-button_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "MenuButton: Creating component using compose.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "209102879028aa62a445ac6c041b79b9d203c8e1",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2020 12:42:11 GMT",
       "tag": "@fluentui/react-button_v0.6.2",
       "version": "0.6.2",

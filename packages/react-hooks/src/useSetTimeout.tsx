@@ -1,30 +1,42 @@
+import * as React from 'react';
 import { useConst } from './useConst';
 import { useEffect } from 'react';
 
-/**
- * Returns a self disposing setTimeout function.
- */
-export const useSetTimeout = () => {
-  const timeoutIds = useConst<number[]>([]);
+export type UseSetTimeoutReturnType = {
+  setTimeout: (callback: () => void, duration: number) => number;
+  clearTimeout: (id: number) => void;
+};
 
+/**
+ *  Returns a wrapper function for `setTimeout` which automatically handles disposal.
+ */
+export const useSetTimeout = (): UseSetTimeoutReturnType => {
+  const timeoutIds = useConst<Record<number, number>>({});
+
+  // Cleanup function.
   useEffect(
     () => () => {
-      for (const id of timeoutIds) {
-        clearTimeout(id);
+      for (const id of Object.keys(timeoutIds)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        clearTimeout(id as any);
       }
-      timeoutIds.splice(0);
     },
     [],
   );
 
-  return (func: () => void, duration: number) => {
-    const id = (setTimeout(() => {
-      timeoutIds.splice(timeoutIds.indexOf(id), 1);
-      func();
-    }, duration) as unknown) as number;
+  // Return wrapper which will auto cleanup.
+  return {
+    setTimeout: React.useCallback((func: () => void, duration: number): number => {
+      const id = (setTimeout(func, duration) as unknown) as number;
 
-    timeoutIds.push(id);
+      timeoutIds[id] = 1;
 
-    return id;
+      return id;
+    }, []),
+
+    clearTimeout: React.useCallback((id: number): void => {
+      delete timeoutIds[id];
+      clearTimeout(id);
+    }, []),
   };
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
+import { DropdownSelectedItem } from 'src/components/Dropdown/DropdownSelectedItem';
 import { getRenderedAttribute } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 

@@ -63,7 +63,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
     initializeComponentRef(this);
 
     this._selectMonthCallbacks = [];
-    props.strings.shortMonths.map((month, index) => {
+    props.strings.shortMonths.forEach((month, index) => {
       this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
     });
 

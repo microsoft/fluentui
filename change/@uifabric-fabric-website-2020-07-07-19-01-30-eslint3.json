@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Remove tslint references and fix violations; add react peerDependencies",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-08T01:46:03.838Z"
+}

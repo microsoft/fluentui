@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-cards",
-  "version": "0.109.109",
+  "version": "0.109.113",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,6 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.51.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -35,9 +36,8 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.12.88",
+    "@uifabric/example-app-base": "^7.12.91",
     "@uifabric/jest-serializer-merge-styles": "^7.0.29",
-    "@uifabric/tslint-rules": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -47,14 +47,14 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/azure-themes": "^7.1.36",
-    "@uifabric/file-type-icons": "^7.3.13",
-    "@uifabric/foundation": "^7.7.33",
+    "@uifabric/azure-themes": "^7.1.39",
+    "@uifabric/file-type-icons": "^7.4.1",
+    "@uifabric/foundation": "^7.7.34",
     "@uifabric/set-version": "^7.0.15",
-    "@uifabric/styling": "^7.13.7",
-    "@uifabric/theme-samples": "^7.0.101",
-    "@uifabric/utilities": "^7.23.0",
-    "office-ui-fabric-react": "^7.121.9",
+    "@uifabric/styling": "^7.14.0",
+    "@uifabric/theme-samples": "^7.0.103",
+    "@uifabric/utilities": "^7.24.0",
+    "office-ui-fabric-react": "^7.121.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

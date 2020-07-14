@@ -10,3 +10,5 @@ export * from './useOnEvent';
 export * from './useForceUpdate';
 export * from './useSetTimeout';
 export * from './usePrevious';
+export * from './useSetInterval';
+export * from './useSetTimeout';

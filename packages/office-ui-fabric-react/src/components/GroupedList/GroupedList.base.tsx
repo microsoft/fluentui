@@ -20,7 +20,6 @@ const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListSty
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 
 export interface IGroupedListState {
-  lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   groups?: IGroup[];
 }
@@ -51,7 +50,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
-      lastWidth: 0,
       groups: props.groups,
     };
   }
@@ -66,7 +64,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     return this._list.current!.getStartItemIndexInView() || 0;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void {
     const { groups, selectionMode, compact } = this.props;
     let shouldForceUpdates = false;
@@ -315,6 +312,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
         }
       }
     } else {
+      // eslint-disable-next-line react/no-string-refs
       const group = this.refs['group_' + String(0)] as GroupedListSection;
       if (group) {
         group.forceListUpdate();

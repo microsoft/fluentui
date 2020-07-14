@@ -16,7 +16,7 @@ export interface StatusVariables {
   defaultTextColor: string;
 }
 
-export default siteVariables => ({
+export const statusVariables = (siteVariables): StatusVariables => ({
   borderColor: undefined,
   borderWidth: 2,
   iconSize: pxToRem(7),

@@ -2,6 +2,92 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 10 Jul 2020 12:40:33 GMT",
+      "tag": "office-ui-fabric-react_v7.121.12",
+      "version": "7.121.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactoring the date time examples into separate files to fix storybook. Also fixing bug in Calendar where externally controlled date does not navigate the calendar when the date changes",
+            "author": "lorejoh12@gmail.com",
+            "commit": "385517ff6b14786e1ea744f3de61d06a34be7822",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "office-ui-fabric-react_v7.121.12",
+      "version": "7.121.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Apply focusZone props to ContextualMenu.",
+            "author": "kinhln@microsoft.com",
+            "commit": "32cebffbae0075caada6ffae8efd41b5bb6927de",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier update.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "209102879028aa62a445ac6c041b79b9d203c8e1",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Slider: Fixing High Contrast styles.",
+            "author": "ololubek@microsoft.com",
+            "commit": "5622cd353f0dc368f8ffe4d59af2ee40c60f5053",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Applying cosmetic code updates from Prettier.",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ab11a59f02301dd0ba7226bcd5104c88fdbc2909",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "No change",
+            "author": "miclo@microsoft.com",
+            "commit": "31047ace0c9dd27fc6f3d3fa4cf2acd4639e0ad9",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jul 2020 12:34:21 GMT",
+      "tag": "office-ui-fabric-react_v7.121.11",
+      "version": "7.121.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing console.log from MarqueeSelection Example.",
+            "author": "czearing@outlook.com",
+            "commit": "1d1f3f05a17a40f1af458c2569bcc0b11fc02823",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jul 2020 12:34:51 GMT",
+      "tag": "office-ui-fabric-react_v7.121.10",
+      "version": "7.121.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combine labelId and StateTextId in labelledById and update tests",
+            "author": "t-dama@microsoft.com",
+            "commit": "0154774e650c0a53b1a7e9fe056b6473bfc64948",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Jul 2020 12:36:49 GMT",
       "tag": "office-ui-fabric-react_v7.121.9",
       "version": "7.121.9",
