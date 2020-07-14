@@ -1,6 +1,6 @@
 ### Layout
 - Don’t break the control apart.
-- Include up and down arrow and chevron to make the calendar control collapsible 
+- Include an up and down arrow for navigating between time ranges and a chevron to make the calendar collapsible.
 
 ### Content
 
