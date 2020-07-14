@@ -179,6 +179,8 @@ storiesOf('Card', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Card')
         .snapshot('hover', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-Card')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
         .end()
       }
     >

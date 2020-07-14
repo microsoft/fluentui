@@ -1,6 +1,7 @@
 import { Stylesheet } from '@uifabric/merge-styles';
 
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 declare class WeakMap {
   public get(key: any): any;
   public set(key: any, value: any): void;
@@ -80,7 +81,7 @@ export function memoize<T extends Function>(
  * not undefined/null for the first time, and then the non-undefined/null version gets cached.
  * @returns A memoized version of the function.
  */
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
+export function memoizeFunction<T extends (...args: any[]) => RetType, RetType>(
   cb: T,
   maxCacheSize: number = 100,
   ignoreNullOrUndefinedResult: boolean = false,
@@ -103,8 +104,7 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   let cacheSize = 0;
   let localResetCounter = _resetCounter;
 
-  // tslint:disable-next-line:no-function-expression
-  return function memoizedFunction(...args: any[]): RET_TYPE {
+  return function memoizedFunction(...args: any[]): RetType {
     let currentNode: any = rootNode;
 
     if (
@@ -170,7 +170,6 @@ export function createMemoizer<F extends (input: any) => any>(getValue: F): F {
     }
 
     if (cache.has(input)) {
-      // tslint:disable-next-line:no-non-null-assertion
       return cache.get(input)!;
     }
 

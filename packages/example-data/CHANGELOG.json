@@ -2,6 +2,21 @@
   "name": "@uifabric/example-data",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/example-data_v7.0.18",
+      "version": "7.0.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/example-data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/example-data_v7.0.17",
       "version": "7.0.17",

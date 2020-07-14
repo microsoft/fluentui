@@ -41,7 +41,6 @@ function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTou
       disableAutoSelectOnInputElements={true}
       enterModalOnTouch={true}
       enableTouchInvocationTarget={enableTouchInvocationTarget}
-      // tslint:disable-next-line:jsx-no-lambda
       onItemInvoked={(item: IObjectWithKey) => {
         _onItemInvokeCalled++;
         _lastItemInvoked = item;

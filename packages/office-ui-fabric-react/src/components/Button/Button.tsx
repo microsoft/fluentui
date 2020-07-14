@@ -26,7 +26,7 @@ export class Button extends React.Component<IButtonProps, {}> {
   public render(): JSX.Element {
     const props = this.props;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     switch (props.buttonType) {
       case ButtonType.command:
         return <ActionButton {...props} />;

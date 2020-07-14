@@ -8,9 +8,11 @@ import * as classes from './Pivot.scss';
 const GlobalClassNames = {
   count: 'ms-Pivot-count',
   icon: 'ms-Pivot-icon',
-  linkIsSelected: 'is-selected',
   link: 'ms-Pivot-link',
+  linkInMenu: 'ms-Pivot-linkInMenu',
+  linkIsSelected: 'is-selected',
   linkContent: 'ms-Pivot-linkContent',
+  overflowMenuButton: 'ms-Pivot-overflowMenuButton',
   root: 'ms-Pivot',
   rootIsLarge: 'ms-Pivot--large',
   rootIsTabs: 'ms-Pivot--tabs',
@@ -36,12 +38,15 @@ const getStaticStylesMemoized = memoizeFunction(
         ...modifierClasses,
       ),
       link: css(classes.link, globalClassNames.link, ...modifierClasses),
+      linkInMenu: css(classes.linkInMenu, globalClassNames.linkInMenu, ...modifierClasses),
+      // linkIsSelected should not include ...modifierClasses. It is itself a modifier class for link or linkInMenu
+      linkIsSelected: css(classes.linkIsSelected, globalClassNames.linkIsSelected),
       linkContent: css(classes.linkContent, globalClassNames.linkContent, ...modifierClasses),
-      linkIsSelected: css(classes.linkIsSelected, globalClassNames.linkIsSelected, ...modifierClasses),
       text: css(classes.text, globalClassNames.text, ...modifierClasses),
       count: css(classes.count, globalClassNames.count, ...modifierClasses),
       icon: css(globalClassNames.icon, ...modifierClasses),
       itemContainer: css(classes.itemContainer, ...modifierClasses),
+      overflowMenuButton: css(classes.overflowMenuButton, globalClassNames.overflowMenuButton, ...modifierClasses),
     };
   },
 );

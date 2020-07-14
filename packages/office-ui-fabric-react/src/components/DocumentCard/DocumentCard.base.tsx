@@ -41,7 +41,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   }
 
   public render(): JSX.Element {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
       'className',

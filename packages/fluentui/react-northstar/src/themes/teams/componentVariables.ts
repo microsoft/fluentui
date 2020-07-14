@@ -38,9 +38,11 @@ export { embedVariables as Embed } from './components/Embed/embedVariables';
 export { flexVariables as Flex } from './components/Flex/flexVariables';
 export { flexItemVariables as FlexItem } from './components/Flex/flexItemVariables';
 
+export { formVariables as Form } from './components/Form/formVariables';
 export { formFieldVariables as FormField } from './components/Form/formFieldVariables';
 export { formFieldVariables as FormFieldCustom } from './components/Form/formFieldVariables';
 export { formMessageVariables as FormMessage } from './components/Form/formMessageVariables';
+export { formLabelVariables as FormLabel } from './components/Form/formLabelVariables';
 
 export { gridVariables as Grid } from './components/Grid/gridVariables';
 
@@ -54,6 +56,7 @@ export { svgIconVariables as SvgIcon } from './components/SvgIcon/svgIconVariabl
 export { imageVariables as Image } from './components/Image/imageVariables';
 
 export { inputVariables as Input } from './components/Input/inputVariables';
+export { inputLabelVariables as InputLabel } from './components/Input/inputLabelVariables';
 
 export { labelVariables as Label } from './components/Label/labelVariables';
 
@@ -131,3 +134,5 @@ export { cardFooterVariables as CardFooter } from './components/Card/cardFooterV
 export { cardPreviewVariables as CardPreview } from './components/Card/cardPreviewVariables';
 export { cardTopControlsVariables as CardTopControls } from './components/Card/cardTopControlsVariables';
 export { cardExpandableBoxVariables as CardExpandableBox } from './components/Card/cardExpandableBoxVariables';
+
+export { datepickerVariables as Datepicker } from './components/Datepicker/datepickerVariables';

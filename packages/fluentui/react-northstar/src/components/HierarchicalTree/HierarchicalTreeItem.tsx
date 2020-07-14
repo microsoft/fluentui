@@ -8,6 +8,7 @@ import {
   ComponentWithAs,
   getFirstFocusable,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -19,8 +20,8 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import HierarchicalTree, { HierarchicalTreeProps } from './HierarchicalTree';
-import HierarchicalTreeTitle, { HierarchicalTreeTitleProps } from './HierarchicalTreeTitle';
+import { HierarchicalTree, HierarchicalTreeProps } from './HierarchicalTree';
+import { HierarchicalTreeTitle, HierarchicalTreeTitleProps } from './HierarchicalTreeTitle';
 import {
   childrenExist,
   createShorthandFactory,
@@ -35,10 +36,7 @@ import {
   ShorthandValue,
   ShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface HierarchicalTreeItemSlotClassNames {
   subtree: string;
@@ -90,9 +88,9 @@ export type HierarchicalTreeItemStyles = never;
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-const HierarchicalTreeItem: ComponentWithAs<'li', HierarchicalTreeItemProps> &
+export const HierarchicalTreeItem: ComponentWithAs<'li', HierarchicalTreeItemProps> &
   FluentComponentStaticProps<HierarchicalTreeItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HierarchicalTreeItem.displayName, context.telemetry);
   setStart();
   const { items, title, renderItemTitle, open, exclusive, children, className, design, styles, variables } = props;
@@ -254,5 +252,3 @@ HierarchicalTreeItem.create = createShorthandFactory({
   Component: HierarchicalTreeItem,
   mappedProp: 'title',
 });
-
-export default HierarchicalTreeItem;

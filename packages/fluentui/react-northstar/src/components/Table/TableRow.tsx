@@ -7,22 +7,17 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import {
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandCollection,
-  ComponentEventHandler,
-} from '../../types';
+import { FluentComponentStaticProps, ShorthandCollection, ComponentEventHandler } from '../../types';
 import { childrenExist, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-import TableCell, { TableCellProps } from './TableCell';
+import { TableCell, TableCellProps } from './TableCell';
 
 export interface TableRowProps extends UIComponentProps {
   /**
@@ -66,8 +61,8 @@ export type TableRowStylesProps = Pick<TableRowProps, 'header' | 'compact'>;
 /**
  * Component represents a single row in a tabular structure
  */
-const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentStaticProps<TableRowProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentStaticProps<TableRowProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableRow.displayName, context.telemetry);
   setStart();
   const rowRef = React.useRef<HTMLElement>();
@@ -167,5 +162,3 @@ TableRow.defaultProps = {
 };
 
 TableRow.create = createShorthandFactory({ Component: TableRow, mappedArrayProp: 'items' });
-
-export default TableRow;
