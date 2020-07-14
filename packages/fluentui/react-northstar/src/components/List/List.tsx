@@ -5,6 +5,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useAutoControlled,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -12,16 +13,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import {
-  ComponentEventHandler,
-  ShorthandCollection,
-  ReactChildren,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
+import { ComponentEventHandler, ShorthandCollection, ReactChildren, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   UIComponentProps,
@@ -31,7 +24,7 @@ import {
   createShorthandFactory,
 } from '../../utils';
 import { ListContextProvider, ListContextValue } from './listContext';
-import ListItem, { ListItemProps } from './ListItem';
+import { ListItem, ListItemProps } from './ListItem';
 
 export interface ListProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -86,11 +79,11 @@ export const listClassName = 'ui-list';
  * - Static non-navigable list. Implements [ARIA list](https://www.w3.org/TR/wai-aria-1.1/#list) role.
  * - Selectable list: allows the user to select item from a list of choices. Implements [ARIA Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox) design pattern.
  */
-const List: ComponentWithAs<'ul', ListProps> &
+export const List: ComponentWithAs<'ul', ListProps> &
   FluentComponentStaticProps<ListProps> & {
     Item: typeof ListItem;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(List.displayName, context.telemetry);
   setStart();
 
@@ -211,5 +204,3 @@ List.handledProps = Object.keys(List.propTypes) as any;
 List.Item = ListItem;
 
 List.create = createShorthandFactory({ Component: List, mappedArrayProp: 'items' });
-
-export default List;

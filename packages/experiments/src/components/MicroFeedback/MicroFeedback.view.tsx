@@ -64,7 +64,12 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       };
 
       return (
-        <Slots.followUpOption data-is-focusable={true} onClick={listOption} tokens={followUpOptionTokens}>
+        <Slots.followUpOption
+          data-is-focusable={true}
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={listOption}
+          tokens={followUpOptionTokens}
+        >
           <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
         </Slots.followUpOption>
       );
@@ -82,7 +87,11 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
           <Slots.followUpQuestion block variant="small">
             {followUp.question}
           </Slots.followUpQuestion>
-          <Slots.followUpOptionList items={followUp.options} onRenderCell={onRenderCalloutItem} />
+          <Slots.followUpOptionList
+            items={followUp.options}
+            // eslint-disable-next-line react/jsx-no-bind
+            onRenderCell={onRenderCalloutItem}
+          />
         </FocusZone>
       </Slots.followUpContainer>
     );
@@ -119,6 +128,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
             menuIconProps={{ iconName: likeIcon }}
             title={likeIconTitle}
             ariaLabel={likeIconAriaLabel}
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={likeVoteClick}
           />
         </div>
@@ -127,6 +137,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
             menuIconProps={{ iconName: dislikeIcon }}
             title={dislikeIconTitle}
             ariaLabel={dislikeIconAriaLabel}
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={dislikeVoteClick}
           />
         </div>

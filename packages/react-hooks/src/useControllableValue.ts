@@ -44,7 +44,7 @@ export function useControllableValue<
         setValue(newValue);
       }
     },
-    [onChange],
+    [onChange, isControlled],
   );
 
   return [isControlled ? controlledValue : value, setValueOrCallOnChange] as const;

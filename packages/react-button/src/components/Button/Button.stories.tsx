@@ -15,6 +15,7 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
 /**
  * Temporary Text until there's one in its own package.
  */
+// eslint-disable-next-line jsx-a11y/heading-has-content -- content passed via children
 const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={classes.text} />;
 
 const onClick = () => {

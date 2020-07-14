@@ -1,7 +1,7 @@
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 
-import ToolbarItem from 'src/components/Toolbar/ToolbarItem';
-import ToolbarMenu from 'src/components/Toolbar/ToolbarMenu';
+import { ToolbarItem } from 'src/components/Toolbar/ToolbarItem';
+import { ToolbarMenu } from 'src/components/Toolbar/ToolbarMenu';
 
 describe('ToolbarItem', () => {
   isConformant(ToolbarItem, {

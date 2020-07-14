@@ -61,8 +61,8 @@ let dateRangeString: string | null = null;
 export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExampleProps> = (
   props: ICalendarInlineExampleProps,
 ) => {
-  const [selectedDateRange, setSelectedDateRange] = React.useState();
-  const [selectedDate, setSelectedDate] = React.useState();
+  const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const onSelectDate = (date: Date, dateRangeArray: Date[]): void => {
     setSelectedDate(date);
@@ -94,7 +94,7 @@ export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExamp
     };
   };
 
-  const onDismiss = (): void => {
+  const onDismiss = () => {
     return selectedDate;
   };
 
@@ -137,7 +137,9 @@ export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExamp
         </div>
       )}
       <Calendar
+        // eslint-disable-next-line react/jsx-no-bind
         onSelectDate={onSelectDate}
+        // eslint-disable-next-line react/jsx-no-bind
         onDismiss={onDismiss}
         isMonthPickerVisible={props.isMonthPickerVisible}
         dateRangeType={props.dateRangeType}
@@ -159,8 +161,18 @@ export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExamp
       />
       {props.showNavigateButtons && (
         <div>
-          <DefaultButton style={buttonStyle} onClick={goPrevious} text="Previous" />
-          <DefaultButton style={buttonStyle} onClick={goNext} text="Next" />
+          <DefaultButton
+            style={buttonStyle}
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={goPrevious}
+            text="Previous"
+          />
+          <DefaultButton
+            style={buttonStyle}
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={goNext}
+            text="Next"
+          />
         </div>
       )}
     </div>

@@ -4,9 +4,9 @@ import * as PopperJs from '@popperjs/core';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import isBrowser from '../isBrowser';
-import getBoundary from './getBoundary';
-import getScrollParent from './getScrollParent';
+import { isBrowser } from '../isBrowser';
+import { getBoundary } from './getBoundary';
+import { getScrollParent } from './getScrollParent';
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
 import { PopperModifiers, PopperProps } from './types';
 
@@ -55,7 +55,7 @@ const useUpdateIsomorphicLayoutEffect: typeof React.useLayoutEffect = (effect, d
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
  */
-const Popper: React.FunctionComponent<PopperProps> = props => {
+export const Popper: React.FunctionComponent<PopperProps> = props => {
   const {
     align,
     children,
@@ -233,5 +233,3 @@ Popper.defaultProps = {
   positionFixed: false,
   positioningDependencies: [],
 };
-
-export default Popper;

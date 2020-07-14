@@ -41,7 +41,6 @@ const PatternTable = ({ rows }) => (
       },
     ]}
     rows={rows}
-    // tslint:disable-next-line jsx-no-lambda
     formatter={(column, row) => row[column.data]}
   />
 );
@@ -348,7 +347,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   react: 'MotionDurations.duration4',
                 },
               ]}
-              // tslint:disable-next-line jsx-no-lambda
               formatter={(column, row) => row[column.data]}
             />
           ),
@@ -402,7 +400,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   react: 'MotionTimings.decelerate',
                 },
               ]}
-              // tslint:disable-next-line jsx-no-lambda
               formatter={(column, row) => {
                 if (column.title === 'Example') {
                   return <AnimationExample animation={row.class} />;

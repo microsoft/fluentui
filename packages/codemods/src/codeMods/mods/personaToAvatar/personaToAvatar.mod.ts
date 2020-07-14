@@ -9,7 +9,7 @@ import {
   Node,
 } from 'ts-morph';
 import { findJsxTag, appendOrCreateNamedImport } from '../../utilities/index';
-import { Codemod } from '../../types';
+import { CodeMod } from '../../types';
 
 const personaPath = 'office-ui-fabric-react/lib/Persona';
 
@@ -51,7 +51,7 @@ export function renameProperty(
                     const p = bl?.getParentIfKind(SyntaxKind.Block);
                     const insIndex = bl?.getChildIndex();
                     if (insIndex === undefined) {
-                      throw 'unable to find child index';
+                      throw new Error('unable to find child index');
                     }
                     if (!p?.getVariableStatement('__migPersonaProps')) {
                       p?.insertVariableStatement(insIndex, {
@@ -160,7 +160,7 @@ export function renameRenderCoin(file: SourceFile) {
   renameProperty(elements, 'onRenderCoin', 'onRenderAvatarCoin');
 }
 
-const PersonaToAvatarMod: Codemod = {
+const PersonaToAvatarMod: CodeMod = {
   run: (file: SourceFile) => {
     try {
       replacePersonaImport(file);

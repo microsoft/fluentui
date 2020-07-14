@@ -164,9 +164,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       if (this.props.defaultTabbableElement && typeof this.props.defaultTabbableElement === 'string') {
         this._activeElement = this._getDocument().querySelector(this.props.defaultTabbableElement) as HTMLElement;
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
       } else if (this.props.defaultActiveElement) {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         this._activeElement = this._getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
       }
 
@@ -223,7 +223,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   public render(): React.ReactNode {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { as: tag, elementType, rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
@@ -245,7 +245,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           // root props has been deprecated and should get removed.
           // it needs to be marked as "any" since root props expects a div element, but really Tag can
           // be any native element so typescript rightly flags this as a problem.
-          // tslint:disable-next-line:no-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ...(rootProps as any)
         }
         // Once the getClassName correctly memoizes inputs this should
@@ -324,7 +324,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(element: HTMLElement): boolean {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { onBeforeFocus, shouldReceiveFocus } = this.props;
 
     if ((shouldReceiveFocus && !shouldReceiveFocus(element)) || (onBeforeFocus && !onBeforeFocus(element))) {
@@ -376,10 +376,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     const {
       onActiveElementChanged,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       doNotAllowFocusEventToPropagate,
       stopFocusPropagation,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onFocusNotification,
       onFocus,
       shouldFocusInnerElementWhenReceivedFocus,
@@ -491,7 +491,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    // tslint:disable-next-line:deprecation deprecated-keyboard-event-props
+    // eslint-disable-next-line deprecation/deprecation, @fluentui/deprecated-keyboard-event-props
     if (ev.which === KeyCodes.tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
@@ -566,7 +566,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       return;
     }
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { direction, disabled, isInnerZoneKeystroke, pagingSupportDisabled, shouldEnterInnerZone } = this.props;
 
     if (disabled) {
@@ -617,7 +617,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
-      // tslint:disable-next-line:deprecated-keyboard-event-props
+      // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props
       switch (ev.which) {
         case KeyCodes.space:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
@@ -673,7 +673,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.tab:
           if (
-            // tslint:disable-next-line:deprecation
+            // eslint-disable-next-line deprecation/deprecation
             this.props.allowTabKey ||
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
             (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly &&
@@ -896,7 +896,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusDown(): boolean {
     let targetTop = -1;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
@@ -938,7 +938,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _moveFocusUp(): boolean {
     let targetTop = -1;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
 
     if (
@@ -1067,7 +1067,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     activeRect: ClientRect,
     targetRect: ClientRect,
   ): number => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const leftAlignment = this._focusAlignment.left || this._focusAlignment.x || 0;
     // ClientRect values can be floats that differ by very small fractions of a decimal.
     // If the difference between top and bottom are within a pixel then we should treat
@@ -1111,7 +1111,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     let candidateElement = undefined;
     let targetTop = -1;
     let targetBottom = -1;
-    const pagesize = scrollableParent.clientHeight;
+    const pagesize = (scrollableParent as HTMLElement).clientHeight;
     const activeRect = element.getBoundingClientRect();
     do {
       element = isForward
@@ -1339,7 +1339,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     element: HTMLElement,
     noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap',
   ): boolean {
-    return !!this.props.checkForNoWrap ? shouldWrapFocus(element, noWrapDataAttribute) : true;
+    return this.props.checkForNoWrap ? shouldWrapFocus(element, noWrapDataAttribute) : true;
   }
 
   /**

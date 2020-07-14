@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Normalize dates in tests instead of setting timezone in the config",
-  "packageName": "@fluentui/date-time-utilities",
-  "email": "pompomon@gmail.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-08T07:37:29.758Z"
-}

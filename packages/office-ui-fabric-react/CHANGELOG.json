@@ -2,6 +2,97 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "office-ui-fabric-react_v7.122.0",
+      "version": "7.122.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Keytip: add useKeytipRef hook.",
+            "author": "xgao@microsoft.com",
+            "commit": "d07846f717c51a003c496c9fcac49e52fc55c8f1",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ContextualMenu: Fix high contrast style for submenu icon",
+            "author": "erabelle@microsoft.com",
+            "commit": "be5ada5f95814f7daa5485024050bc674865fcab",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Replace tslint with eslint; fix some violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add mutliSelectDelimiter property to ComboBox",
+            "author": "cocahill@microsoft.com",
+            "commit": "7370c100a267785a14c69ee18d8f1e128eaa64b6",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jul 2020 12:40:33 GMT",
+      "tag": "office-ui-fabric-react_v7.121.12",
+      "version": "7.121.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactoring the date time examples into separate files to fix storybook. Also fixing bug in Calendar where externally controlled date does not navigate the calendar when the date changes",
+            "author": "lorejoh12@gmail.com",
+            "commit": "385517ff6b14786e1ea744f3de61d06a34be7822",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jul 2020 21:59:04 GMT",
+      "tag": "office-ui-fabric-react_v7.121.12",
+      "version": "7.121.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Apply focusZone props to ContextualMenu.",
+            "author": "kinhln@microsoft.com",
+            "commit": "32cebffbae0075caada6ffae8efd41b5bb6927de",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier update.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "209102879028aa62a445ac6c041b79b9d203c8e1",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Slider: Fixing High Contrast styles.",
+            "author": "ololubek@microsoft.com",
+            "commit": "5622cd353f0dc368f8ffe4d59af2ee40c60f5053",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Applying cosmetic code updates from Prettier.",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "ab11a59f02301dd0ba7226bcd5104c88fdbc2909",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "No change",
+            "author": "miclo@microsoft.com",
+            "commit": "31047ace0c9dd27fc6f3d3fa4cf2acd4639e0ad9",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jul 2020 12:34:21 GMT",
       "tag": "office-ui-fabric-react_v7.121.11",
       "version": "7.121.11",
