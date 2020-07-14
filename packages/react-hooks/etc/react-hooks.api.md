@@ -5,6 +5,7 @@
 ```ts
 
 import { Async } from '@uifabric/utilities';
+import { KeyActions } from '@fluentui/accessibility';
 import * as React from 'react';
 import { Ref } from 'react';
 
@@ -20,6 +21,9 @@ export interface IUseBooleanCallbacks {
 
 // @public
 export function useAsync(): Async;
+
+// @public (undocumented)
+export const useBehaviorKeyActions: <TElement>(keyActions?: KeyActions | undefined, eventHandlers?: import("react").DOMAttributes<TElement> | undefined) => import("react").DOMAttributes<TElement>;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];

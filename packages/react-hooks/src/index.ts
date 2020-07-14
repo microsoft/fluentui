@@ -1,13 +1,14 @@
 import './version';
+export * from './useAsync';
+export * from './useBehaviorKeyActions';
 export * from './useBoolean';
 export * from './useConst';
 export * from './useConstCallback';
+export * from './useControllableValue';
+export * from './useForceUpdate';
 export * from './useId';
 export * from './useMergedRefs';
-export * from './useControllableValue';
-export * from './useAsync';
 export * from './useOnEvent';
-export * from './useForceUpdate';
 export * from './usePrevious';
 export * from './useSetInterval';
 export * from './useSetTimeout';
