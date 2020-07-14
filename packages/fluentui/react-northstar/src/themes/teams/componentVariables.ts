@@ -134,3 +134,5 @@ export { cardFooterVariables as CardFooter } from './components/Card/cardFooterV
 export { cardPreviewVariables as CardPreview } from './components/Card/cardPreviewVariables';
 export { cardTopControlsVariables as CardTopControls } from './components/Card/cardTopControlsVariables';
 export { cardExpandableBoxVariables as CardExpandableBox } from './components/Card/cardExpandableBoxVariables';
+
+export { datepickerVariables as Datepicker } from './components/Datepicker/datepickerVariables';
