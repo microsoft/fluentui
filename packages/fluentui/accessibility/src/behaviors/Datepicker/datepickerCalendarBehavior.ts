@@ -13,5 +13,4 @@ export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehavio
   },
 });
 
-
 export type DatepickerCalendarBehaviorProps = never;

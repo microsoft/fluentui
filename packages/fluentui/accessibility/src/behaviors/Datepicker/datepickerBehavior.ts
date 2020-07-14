@@ -13,5 +13,4 @@ export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props 
   },
 });
 
-
 export type DatepickerBehaviorProps = never;
