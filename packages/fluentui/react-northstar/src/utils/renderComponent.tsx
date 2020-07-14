@@ -8,6 +8,7 @@ import {
   ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
+  ProviderContextPrepared,
 } from '@fluentui/react-bindings';
 import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import {
@@ -21,7 +22,7 @@ import {
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import { Props, ProviderContextPrepared } from '../types';
+import { Props } from '../types';
 import { logProviderMissingWarning } from './providerMissingHandler';
 
 export interface RenderResultConfig<P> {

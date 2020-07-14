@@ -6,6 +6,7 @@ import {
   mergeVariablesOverrides,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
@@ -13,10 +14,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import { ComponentEventHandler, ProviderContextPrepared, ShorthandValue } from '../../types';
+import { ComponentEventHandler, ShorthandValue } from '../../types';
 import {
   createShorthandFactory,
   commonPropTypes,
@@ -75,7 +74,7 @@ export const attachmentClassName = 'ui-attachment';
  */
 export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

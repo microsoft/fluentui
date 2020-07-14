@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed primary button color on expand",
-  "packageName": "@uifabric/azure-themes",
-  "email": "67673432+q-xg@users.noreply.github.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-01T06:38:23.269Z"
-}

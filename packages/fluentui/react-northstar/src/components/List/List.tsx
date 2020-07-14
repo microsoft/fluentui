@@ -5,6 +5,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useAutoControlled,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -12,16 +13,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import {
-  ComponentEventHandler,
-  ShorthandCollection,
-  ReactChildren,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
+import { ComponentEventHandler, ShorthandCollection, ReactChildren, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   UIComponentProps,
@@ -90,7 +83,7 @@ export const List: ComponentWithAs<'ul', ListProps> &
   FluentComponentStaticProps<ListProps> & {
     Item: typeof ListItem;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(List.displayName, context.telemetry);
   setStart();
 

@@ -1,4 +1,4 @@
-import { RendererContext } from '@fluentui/react-bindings';
+import { useFluentContext, RendererContext } from '@fluentui/react-bindings';
 import { CreateRenderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
@@ -40,20 +40,20 @@ describe('Provider', () => {
     const innerTheme = { siteVariables: { secondary: 'yellow' } };
 
     test('do not overwrite by default', () => {
-      const wrapper = mount(
+      const getContext = jest.fn();
+      const Consumer: React.FC = () => {
+        getContext(useFluentContext());
+        return null;
+      };
+      mount(
         <Provider theme={outerTheme}>
           <Provider theme={innerTheme}>
-            <span />
+            <Consumer />
           </Provider>
         </Provider>,
       );
 
-      expect(
-        wrapper
-          .find('ThemeProvider')
-          .at(1)
-          .prop('theme'),
-      ).toEqual(
+      expect(getContext).toBeCalledWith(
         expect.objectContaining({
           theme: expect.objectContaining({
             siteVariables: {
@@ -67,20 +67,20 @@ describe('Provider', () => {
     });
 
     test('does overwrite when is true', () => {
-      const wrapper = mount(
+      const getContext = jest.fn();
+      const Consumer: React.FC = () => {
+        getContext(useFluentContext());
+        return null;
+      };
+      mount(
         <Provider theme={outerTheme}>
           <Provider overwrite theme={innerTheme}>
-            <span />
+            <Consumer />
           </Provider>
         </Provider>,
       );
 
-      expect(
-        wrapper
-          .find('ThemeProvider')
-          .at(1)
-          .prop('theme'),
-      ).toEqual(
+      expect(getContext).toBeCalledWith(
         expect.objectContaining({
           theme: expect.objectContaining({
             siteVariables: {

@@ -145,3 +145,5 @@ export { cardFooterStyles as CardFooter } from './components/Card/cardFooterStyl
 export { cardPreviewStyles as CardPreview } from './components/Card/cardPreviewStyles';
 export { cardTopControlsStyles as CardTopControls } from './components/Card/cardTopControlsStyles';
 export { cardExpandableBoxStyles as CardExpandableBox } from './components/Card/cardExpandableBoxStyles';
+
+export { datepickerStyles as Datepicker } from './components/Datepicker/datepickerStyles';

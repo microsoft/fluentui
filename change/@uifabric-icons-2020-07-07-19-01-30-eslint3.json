@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Replace tslint with eslint",
-  "packageName": "@uifabric/icons",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-08T01:53:45.120Z"
-}

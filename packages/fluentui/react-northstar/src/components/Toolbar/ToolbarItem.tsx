@@ -4,6 +4,7 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
@@ -16,8 +17,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   createShorthand,
@@ -28,7 +27,7 @@ import {
   commonPropTypes,
   childrenExist,
 } from '../../utils';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import { ToolbarMenu, ToolbarMenuProps } from './ToolbarMenu';
@@ -114,7 +113,7 @@ export const toolbarItemClassName = 'ui-toolbar__item';
  */
 export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

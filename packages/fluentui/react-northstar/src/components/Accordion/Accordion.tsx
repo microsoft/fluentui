@@ -21,7 +21,6 @@ import {
   ShorthandValue,
   ShorthandRenderFunction,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 import {
@@ -29,12 +28,11 @@ import {
   useAutoControlled,
   useAccessibility,
   useTelemetry,
+  useFluentContext,
   useUnhandledProps,
   getElementType,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface AccordionSlotClassNames {
   content: string;
@@ -115,7 +113,7 @@ export const Accordion: ComponentWithAs<'dl', AccordionProps> &
     Title: typeof AccordionTitle;
     Content: typeof AccordionContent;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Accordion.displayName, context.telemetry);
   setStart();
   const {

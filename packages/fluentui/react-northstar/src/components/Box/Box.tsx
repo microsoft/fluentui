@@ -6,11 +6,10 @@ import {
   useAccessibility,
   useStyles,
   useTelemetry,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -22,7 +21,6 @@ import {
   UIComponentProps,
   ShorthandFactory,
 } from '../../utils';
-import { ProviderContextPrepared } from '../../types';
 
 export interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -38,7 +36,7 @@ export const boxClassName = 'ui-box';
  */
 export const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

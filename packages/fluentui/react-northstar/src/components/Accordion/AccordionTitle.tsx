@@ -14,23 +14,17 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   getElementType,
   useTelemetry,
+  useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface AccordionTitleSlotClassNames {
   contentWrapper: string;
@@ -99,7 +93,7 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
  */
 export const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
   FluentComponentStaticProps<AccordionTitleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
   setStart();
   const {

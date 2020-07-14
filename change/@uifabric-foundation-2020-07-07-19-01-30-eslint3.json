@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Replace tslint with eslint",
-  "packageName": "@uifabric/foundation",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-08T01:53:26.480Z"
-}

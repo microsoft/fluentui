@@ -4,8 +4,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   partitionHTMLProps,
   UIComponentProps,
@@ -17,13 +16,14 @@ import {
   getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import { ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
+import { ShorthandValue, ComponentEventHandler } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
   useAutoControlled,
   getElementType,
   useUnhandledProps,
   useTelemetry,
+  useFluentContext,
   useStyles,
   useAccessibility,
   compose,
@@ -139,7 +139,7 @@ export const inputSlotClassNames: InputSlotClassNames = {
  */
 export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
     const {

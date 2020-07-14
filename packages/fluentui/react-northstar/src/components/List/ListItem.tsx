@@ -4,6 +4,7 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -12,16 +13,9 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { Box, BoxProps } from '../Box/Box';
-import {
-  ShorthandValue,
-  ComponentEventHandler,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
+import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, ContentComponentProps } from '../../utils';
 import { ListContext, ListContextSubscribedValue } from './listContext';
 
@@ -99,7 +93,7 @@ export const listItemSlotClassNames: ListItemSlotClassNames = {
  */
 export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> &
   FluentComponentStaticProps<ListItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
 
   setStart();

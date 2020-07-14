@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import { ShorthandCollection, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   UIComponentProps,
@@ -23,9 +23,8 @@ import {
   useUnhandledProps,
   useTelemetry,
   useStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -49,7 +48,7 @@ export const buttonGroupClassName = 'ui-buttons';
  */
 export const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> &
   FluentComponentStaticProps<ButtonGroupProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
   setStart();
   const { children, buttons, circular, content, className, design, styles, variables } = props;
