@@ -280,7 +280,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
   }
 
   private _onBlur = (event: React.FocusEvent<HTMLElement>) => {
-    if (!event.currentTarget.contains(event.relatedTarget)) {
+    if (!event.currentTarget.contains(event.relatedTarget as Node)) {
       this.isFocusInside = false;
       this.props.onBlur && this.props.onBlur(event);
     }
