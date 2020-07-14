@@ -33,6 +33,5 @@ export { getElementType } from './utils/getElementType';
 export { getUnhandledProps } from './utils/getUnhandledProps';
 export { mergeVariablesOverrides } from './utils/mergeVariablesOverrides';
 
-export * from './context';
 
 export * from './context';
