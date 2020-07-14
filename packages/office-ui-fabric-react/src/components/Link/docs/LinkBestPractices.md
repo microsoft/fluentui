@@ -1,6 +1,6 @@
 ### Layout
 
-- Links visually indicate that they can be clicked, typically by being displayed using the visited or unvisited link system colors. Traditionally, links are underlined as well, but that approach is often unnecessary and falling out of favor to reduce visual clutter.
+- Links visually indicate that they can be clicked, typically by being displayed using the visited or unvisited link system colors. Traditionally, links are underlined as well, but that approach is often reserved for body copy links within an article.
 
 ### Content
 
