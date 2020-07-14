@@ -462,12 +462,13 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
 
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
+   * HEADS UP: This must not an arrow function in order to be referentially equal among instances for ref counting to work correctly!
    */
-  _onKeyDownCapture = (ev: KeyboardEvent) => {
+  _onKeyDownCapture(ev: KeyboardEvent) {
     if (getCode(ev) === keyboardKey.Tab) {
       _outerZones.forEach(zone => zone.updateTabIndexes());
     }
-  };
+  }
 
   _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     const { disabled } = this.props;
