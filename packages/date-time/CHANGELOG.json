@@ -2,6 +2,29 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/date-time_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint; add missing explicit react-hooks dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/date-time"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "enable datepicker callout open ",
+            "author": "shrallap@microsoft.com",
+            "commit": "ec36a5c214cfc9a9262f8100013734f61952e95a",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Jul 2020 12:40:33 GMT",
       "tag": "@uifabric/date-time_v7.10.8",
       "version": "7.10.8",

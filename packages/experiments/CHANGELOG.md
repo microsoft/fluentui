@@ -1,8 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 10 Jul 2020 12:40:33 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.27.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.2)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.1..@uifabric/experiments_v7.27.2)
+
+### Patches
+
+- Replace tslint with eslint; fix some violations including naming ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+- UnifiedPeoplePicker: Fixing order of hooks ([PR #13998](https://github.com/microsoft/fluentui/pull/13998) by nebhatna@microsoft.com)
 
 ## [7.27.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.1)
 

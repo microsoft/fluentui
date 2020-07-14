@@ -2,6 +2,33 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.59",
+      "version": "8.0.0-alpha.59",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Pivot: Implementing overflow by moving tabs into a menu when they don't fit onscreen.",
+            "author": "behowell@microsoft.com",
+            "commit": "9d4b5bea6d1c80629325ab821ea5e81d214ec553",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Remove KeytipData for Checkbox, Toggle, and Link.",
+            "author": "xgao@microsoft.com",
+            "commit": "d07846f717c51a003c496c9fcac49e52fc55c8f1",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Jul 2020 21:59:04 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.57",
       "version": "8.0.0-alpha.57",
