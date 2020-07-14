@@ -11,16 +11,16 @@ import { useButtonBehavior } from './useButtonBehavior';
  */
 export const useButton = (
   props: ButtonProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.RefObject<HTMLElement>,
   options: ComposePreparedOptions,
 ): ButtonState => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   useImperativeHandle(props.componentRef, () => ({
     focus: () => buttonRef.current?.focus(),
   }));
-  useFocusRects(ref as React.RefObject<HTMLElement>);
+  useFocusRects(ref);
 
-  const buttonBehaviorProps = useButtonBehavior(props);
+  const buttonBehaviorProps = useButtonBehavior(props, ref);
   const { onKeyDown } = buttonBehaviorProps;
 
   return {

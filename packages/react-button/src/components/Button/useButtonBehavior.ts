@@ -2,10 +2,10 @@ import { buttonBehavior } from '@fluentui/accessibility';
 import { getCode } from '@fluentui/keyboard-key';
 import { ButtonProps, ButtonState } from './Button.types';
 
-export const useButtonBehavior = (props: ButtonProps): Partial<ButtonState> => {
-  const { as, disabled, loading, onClick, onKeyDown } = props;
+export const useButtonBehavior = (props: ButtonProps, ref: React.RefObject<HTMLElement>): Partial<ButtonState> => {
+  const { disabled, loading, onClick, onKeyDown } = props;
 
-  const { attributes, keyActions } = buttonBehavior({ as: as as string, disabled, loading });
+  const { attributes, keyActions } = buttonBehavior({ as: ref.current?.tagName || 'button', disabled, loading });
 
   let _onKeyDown = onKeyDown;
 
