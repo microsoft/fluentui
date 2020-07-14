@@ -7,6 +7,7 @@ import {
   ts,
   Node,
 } from 'ts-morph';
+import { Maybe } from '../../maybe';
 import { EnumMap } from '../types';
 
 export function renameProp(
