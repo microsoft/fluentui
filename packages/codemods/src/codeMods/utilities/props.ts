@@ -6,8 +6,6 @@ import {
   VariableDeclarationKind,
   ts,
   Node,
-  Identifier,
-  EnumDeclaration,
 } from 'ts-morph';
 import { EnumMap } from '../types';
 
@@ -16,6 +14,7 @@ export function renameProp(
   toRename: string,
   replacementName: string,
   changeValueMap?: EnumMap<string>,
+  replacementValue?: string,
 ) {
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
@@ -35,6 +34,8 @@ export function renameProp(
         enumExp
           .getLastChildByKind(SyntaxKind.Identifier)
           .replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
+      } else if (replacementValue) {
+        foundProp.set({ initializer: `{${replacementValue}}` });
       }
     } else {
       /* If the prop is not found, check to see if the prop is in a spread attribute. */
@@ -49,6 +50,7 @@ function renamePropInSpread(
   toRename: string,
   replacementName: string,
   changeValueMap?: EnumMap<string>,
+  replacementValue?: string,
 ) {
   let allAttributes = element.getAttributes();
   allAttributes.forEach(attribute => {
@@ -105,7 +107,11 @@ function renamePropInSpread(
               spreadProp.replaceWithText(newSpreadName);
               element.addAttribute({
                 name: replacementName,
-                initializer: changeValueMap ? `{${newMapName}[${toRename}}` : `{${toRename}}`,
+                initializer: changeValueMap
+                  ? `{${newMapName}[${toRename}}`
+                  : replacementValue
+                  ? `{${replacementValue}}`
+                  : `{${toRename}}`,
               });
               break;
             }
