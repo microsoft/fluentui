@@ -40,6 +40,7 @@
     "@uifabric/build": "^7.0.0",
     "@uifabric/example-app-base": "^7.12.92",
     "@uifabric/jest-serializer-merge-styles": "^7.0.30",
+    "@uifabric/test-utilities": "^7.0.32",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
