@@ -7,6 +7,7 @@ import {
   AnimationStyles,
   IRawStyle,
   keyframes,
+  HighContrastSelector,
 } from '@uifabric/styling';
 import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { AnimationDirection } from '../Calendar/Calendar.types';
@@ -104,12 +105,33 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       fontWeight: FontWeights.regular,
       color: palette.neutralPrimary,
       cursor: 'pointer',
+      position: 'relative',
       selectors: {
+        [HighContrastSelector]: {
+          color: 'WindowText!important',
+          backgroundColor: 'Window!important',
+          zIndex: 0,
+        },
         ['&.' + classNames.hoverStyle]: {
           backgroundColor: palette.neutralLighter,
+          selectors: {
+            [HighContrastSelector]: {
+              zIndex: 3,
+              overflow: 'visible',
+              outline: '1px solid Highlight!important',
+              MsHighContrastAdjust: 'none',
+            },
+          },
         },
         ['&.' + classNames.pressedStyle]: {
           backgroundColor: palette.neutralLight,
+          selectors: {
+            [HighContrastSelector]: {
+              borderColor: 'Highlight!important',
+              color: 'Highlight!important',
+              MsHighContrastAdjust: 'none',
+            },
+          },
         },
       },
     },
@@ -119,6 +141,18 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
             backgroundColor: palette.neutralLight + '!important',
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'HighlightText!important',
+                background: 'Highlight!important',
+              },
+            },
+          },
+          [HighContrastSelector]: {
+            background: 'Highlight!important',
+            color: 'HighlightText!important',
+            borderColor: 'Highlight!important',
+            MsHighContrastAdjust: 'none',
           },
         },
       },
@@ -171,6 +205,14 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       borderRadius: '100%',
       color: palette.white + '!important',
       fontWeight: (FontWeights.semibold + '!important') as 'initial',
+      selectors: {
+        [HighContrastSelector]: {
+          background: 'WindowText!important',
+          color: 'Window!important',
+          borderColor: 'WindowText!important',
+          MsHighContrastAdjust: 'none',
+        },
+      },
     },
     firstTransitionWeek: {
       position: 'absolute',
