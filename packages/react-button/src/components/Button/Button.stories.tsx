@@ -19,7 +19,7 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
 const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={classes.text} />;
 
 const onClick = () => {
-  alert('Clicked');
+  console.log('Clicked');
 };
 
 const ButtonVariants = (props: ButtonProps) => (

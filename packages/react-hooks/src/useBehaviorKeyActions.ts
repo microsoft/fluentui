@@ -20,6 +20,7 @@ export const useBehaviorKeyActions = <TElement>(
         const eventCode = getCode(ev);
         for (const keyCombination of keyCombinations) {
           if (eventCode === keyCombination.keyCode) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onClick(ev as any);
           }
         }
