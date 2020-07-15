@@ -7,6 +7,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
 >
   <div
     className="ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ms-DatePicker-monthPickerVisible undefined ms-DatePicker-calendarsInline undefined"
+    onBlur={[Function]}
+    onFocus={[Function]}
   >
     <div
       className="ms-DatePicker-holder ms-slideDownIn10"
