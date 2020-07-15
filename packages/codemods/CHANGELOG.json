@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@fluentui/codemods_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add value-changing",
+            "author": "t-dama@microsoft.com",
+            "commit": "f58148f1c36c6801903bd78a31dcd1e05cd103a3",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jul 2020 12:41:43 GMT",
       "tag": "@fluentui/codemods_v0.2.2",
       "version": "0.2.2",
