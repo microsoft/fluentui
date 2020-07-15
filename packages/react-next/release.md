@@ -9,6 +9,10 @@
 - Deprecated `onRenderLabel`.
 - Added `label`/`checkmark` slot props.
 
+### Coachmark
+
+- Removed `isBeaconAnimating` and `isMeasured` style props
+
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.

@@ -231,6 +231,7 @@ export interface ICoachmarkStyleProps {
 
   /**
    * Is the beacon currently animating.
+   * @deprecated
    */
   isBeaconAnimating: boolean;
 
@@ -241,6 +242,7 @@ export interface ICoachmarkStyleProps {
 
   /**
    * Is the Coachmark finished measuring the dimensions of innerHostElement
+   * @deprecated
    */
   isMeasured: boolean;
 
