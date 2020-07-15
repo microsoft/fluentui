@@ -1,21 +1,21 @@
 import * as _ from 'lodash';
 
-// tslint:disable-next-line:no-any
-const isObject = (o: any) => o !== null && typeof o === 'object' && !_.isArray(o);
+// eslint-disable @typescript-eslint/no-explicit-any
+const isObject = (o: any) => o !== null && typeof o === 'object' && !Array.isArray(o);
 
-// tslint:disable-next-line:no-any
+// eslint-disable @typescript-eslint/no-explicit-any
 const _merge = (obj1: any, obj2: any, mergeArrayPrimitive: boolean) => {
   const keys: string[] = Object.getOwnPropertyNames(obj2);
   keys.forEach(k => {
-    if (!_.has(obj1, k)) {
-      _.set(obj1, k, obj2[k]);
+    if (obj1 && !obj1.hasOwnProperty(k)) {
+      obj1[k] = obj2[k];
     } else if (isObject(obj2[k])) {
       _merge(obj1[k], obj2[k], mergeArrayPrimitive);
-    } else if (_.isArray(obj2[k])) {
+    } else if (Array.isArray(obj2[k])) {
       if (mergeArrayPrimitive) {
-        obj1[k] = obj2[k].concat(obj1[k]);
-      } else if (mergeArrayPrimitive && _.isArray(obj1[k])) {
-        obj1[k] = obj2[k].concat(obj1[k]);
+        obj1[k] = (Array.isArray(obj1[k]) ? obj1[k] : [obj1[k]]).concat(obj2[k]);
+      } else if (Array.isArray(obj1[k])) {
+        obj1[k] = obj1[k].concat(obj2[k]);
       }
     }
   });

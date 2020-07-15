@@ -15,6 +15,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
+    "test": "just-scripts test",
     "lint": "just-scripts lint"
   },
   "devDependencies": {
@@ -28,7 +29,6 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/react-is": "^16.7.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/utilities": "^7.22.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "jest": "~24.9.0",

@@ -4,10 +4,9 @@ import { Slider } from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
   sharedIsConformant({
-    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
+    componentPath: __filename,
     Component: Slider,
     displayName: 'Slider',
-    useDefaultExport: true,
   });
 
   isConformant(Slider, {

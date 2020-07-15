@@ -11,7 +11,6 @@ describe('AccordionContent', () => {
     Component: AccordionContent,
     componentPath: __filename,
     displayName: 'AccordionContent',
-    useDefaultExport: true,
   });
 
   describe('accessiblity', () => {
