@@ -111,17 +111,15 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
           color: 'WindowText',
           backgroundColor: 'Window',
           zIndex: 0,
+          MsHighContrastAdjust: 'none',
         },
         ['&.' + classNames.hoverStyle]: {
           backgroundColor: palette.neutralLighter,
           selectors: {
             [HighContrastSelector]: {
               zIndex: 3,
-              overflow: 'visible',
-              color: 'WindowText',
               backgroundColor: 'Window',
               outline: '1px solid Highlight',
-              MsHighContrastAdjust: 'none',
             },
           },
         },
@@ -132,17 +130,14 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
               borderColor: 'Highlight',
               color: 'Highlight',
               backgroundColor: 'Window',
-              MsHighContrastAdjust: 'none',
             },
           },
         },
         ['&.' + classNames.pressedStyle + '.' + classNames.hoverStyle]: {
           selectors: {
             [HighContrastSelector]: {
-              color: 'Highlight',
               backgroundColor: 'Window',
               outline: '1px solid Highlight',
-              MsHighContrastAdjust: 'none',
             },
           },
         },
