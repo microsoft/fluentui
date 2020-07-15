@@ -37,7 +37,7 @@ export interface IEntityRect {
   height?: number;
 }
 
-const DEFAULT_PROPS = {
+const DEFAULT_PROPS: Partial<ICoachmarkProps> = {
   isCollapsed: true,
   mouseProximityOffset: 10,
   delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
