@@ -328,7 +328,7 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
 
-    // eslint-disable-next-line max-len
+    // eslint-disable-next-line @fluentui/max-len
     it('sets resize direction to shrink when resizeDirection is grow, contents do not fit, and there is no onGrowData', () => {
       const dataToMeasure = { index: 8 };
       const resizeGroupProps = getRequiredResizeGroupProps();

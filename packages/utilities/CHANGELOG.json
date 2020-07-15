@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/utilities_v7.24.2",
+      "version": "7.24.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/utilities_v7.24.1",
       "version": "7.24.1",
