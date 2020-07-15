@@ -59,7 +59,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
             !disabled && {
               selectors: {
                 '.ms-ChoiceFieldLabel': {
-                  color: extendedSemanticColors.bodyTextHover,
+                  color: extendedSemanticColors.bodyTextHovered,
                 },
                 ':before': {
                   borderColor: extendedSemanticColors.controlOutlineHovered,

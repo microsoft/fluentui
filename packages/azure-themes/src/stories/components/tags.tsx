@@ -10,7 +10,7 @@ const rootClass = mergeStyles({
 
 const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
 
-const _testTags: ITag[] = [
+const testTags: ITag[] = [
   'black',
   'blue',
   'brown',
@@ -105,14 +105,14 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
 
   private _onFilterChanged = (filterText: string, tagList: ITag[]): ITag[] => {
     return filterText
-      ? _testTags
+      ? testTags
           .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
           .filter(tag => !this._listContainsDocument(tag, tagList))
       : [];
   };
 
   private _onFilterChangedNoFilter = (filterText: string, tagList: ITag[]): ITag[] => {
-    return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+    return filterText ? testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
   };
 
   private _onItemSelected = (item: ITag): ITag | null => {

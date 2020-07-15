@@ -8,7 +8,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   commandBarBorder: DarkSemanticColors.commandBar.border,
   bodyBackground: DarkSemanticColors.background,
   bodyText: DarkSemanticColors.text.body,
-  bodyTextHover: DarkSemanticColors.text.bodyHovered,
+  bodyTextHovered: DarkSemanticColors.text.bodyHovered,
   bodyDivider: CommonSemanticColors.dividers.lineSeparator,
   buttonBackground: DarkSemanticColors.secondaryButton.rest.background,
   buttonBackgroundChecked: DarkSemanticColors.secondaryButton.pressed.background,

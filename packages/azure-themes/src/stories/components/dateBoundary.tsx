@@ -22,24 +22,17 @@ const DayPickerStrings: IDatePickerStrings = {
     'November',
     'December',
   ],
-
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-
   goToToday: 'Go to today',
   prevMonthAriaLabel: 'Go to previous month',
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
   closeButtonAriaLabel: 'Close date picker',
-
   isRequiredErrorMessage: 'Field is required.',
-
   invalidInputErrorMessage: 'Invalid date format.',
-
   isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`,
 };
 
@@ -74,7 +67,6 @@ export const DatePickerBoundedExample: React.FC = () => (
       ariaLabel="Select a date"
       disabled={true}
     />
-
     <DatePicker
       className={controlClass.control}
       label="Disabled (with label)"
