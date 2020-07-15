@@ -201,7 +201,6 @@ export { ShareToIcon } from './components/ShareToIcon';
 export { Shift24hIcon } from './components/Shift24hIcon';
 export { ShiftActivityIcon } from './components/ShiftActivityIcon';
 export { SkypeLogoIcon } from './components/SkypeLogoIcon';
-export { SpeakerLouderIcon } from './components/SpeakerLouderIcon';
 export { SpeakerMuteIcon } from './components/SpeakerMuteIcon';
 export { SpeakerPersonIcon } from './components/SpeakerPersonIcon';
 export { SpotlightIcon } from './components/SpotlightIcon';
