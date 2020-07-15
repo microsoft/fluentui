@@ -271,6 +271,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         if (point.legend === this.state.activeLegend) {
           legendValue = point.data!;
         }
+        return;
       });
       return legendValue;
     } else {
