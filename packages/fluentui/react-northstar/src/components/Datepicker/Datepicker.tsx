@@ -26,12 +26,12 @@ import {
   DateRangeType,
   IDayGridOptions,
   IDateFormatting,
-  IDatepickerOptions,
   DEFAULT_DATE_FORMATTING,
 } from '@fluentui/date-time-utilities';
+
 import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 
-export interface DatepickerProps extends UIComponentProps {
+export interface DatepickerProps extends UIComponentProps, Partial<IDayGridOptions>, Partial<IDateFormatting> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
@@ -60,12 +60,6 @@ export interface DatepickerProps extends UIComponentProps {
 
   /** A render function to customize how cells are rendered in the Calendar. */
   renderHeaderCell?: ShorthandRenderFunction<any>;
-
-  /** Options to change how the daygrid looks like */
-  datePickerOptions?: IDatepickerOptions;
-
-  /** Opportunity to override how the dates are formatted. */
-  dateFormatting?: IDateFormatting;
 }
 
 export type DatepickerStylesProps = never;
@@ -91,16 +85,35 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     setOpen(true);
   };
 
-  const { className, design, styles, variables, datePickerOptions, dateFormatting } = props;
+  const { className, design, styles, variables, formatMonthDayYear } = props;
 
-  const valueFormatter = date => (date ? dateFormatting.formatMonthDayYear(date) : '');
+  const dayGridOptions = {
+    selectedDate: props.selectedDate ?? new Date(),
+    navigatedDate: props.selectedDate ?? new Date(),
+    weeksToShow: props.weeksToShow,
+    firstDayOfWeek: props.firstDayOfWeek,
+    firstWeekOfYear: props.firstWeekOfYear,
+    dateRangeType: props.dateRangeType,
+    daysToSelectInDayView: props.daysToSelectInDayView,
+    today: props.today,
+    showWeekNumbers: props.showWeekNumbers,
+    workWeekDays: props.workWeekDays,
+    minDate: props.minDate,
+    maxDate: props.maxDate,
+    restrictedDates: props.restrictedDates,
+  } as IDayGridOptions;
+
+  const dateFormatting = {
+    formatDay: props.formatDay,
+    formatYear: props.formatYear,
+    formatMonthDayYear: props.formatMonthDayYear,
+    formatMonthYear: props.formatMonthYear,
+    parse: props.parse,
+  };
+
+  const valueFormatter = date => (date ? formatMonthDayYear(date) : '');
 
   const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
-  const dayGridOptions: IDayGridOptions = {
-    ...datePickerOptions,
-    selectedDate: nonNullSelectedDate,
-    navigatedDate: nonNullSelectedDate,
-  };
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
@@ -145,8 +158,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             content={
               <DatepickerCalendar
                 onDateChange={handleChange}
-                dateFormatting={dateFormatting}
-                dayGridOptions={dayGridOptions}
+                {...dateFormatting}
+                {...dayGridOptions}
+                selectedDate={nonNullSelectedDate}
               />
             }
             trapFocus
@@ -174,20 +188,41 @@ Datepicker.propTypes = {
   renderCell: PropTypes.func,
   renderHeaderCell: PropTypes.func,
 
-  datePickerOptions: PropTypes.object as PropTypes.Validator<IDayGridOptions>,
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
+  restrictedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
 
-  dateFormatting: PropTypes.object as PropTypes.Validator<IDateFormatting>,
+  firstDayOfWeek: PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name])),
+  firstWeekOfYear: PropTypes.oneOf(Object.keys(FirstWeekOfYear).map(name => FirstWeekOfYear[name])),
+  dateRangeType: PropTypes.oneOf(Object.keys(DateRangeType).map(name => DateRangeType[name])),
+  daysToSelectInDayView: PropTypes.number,
+  today: PropTypes.instanceOf(Date),
+  showWeekNumbers: PropTypes.bool,
+  workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
+
+  formatDay: PropTypes.func,
+  formatYear: PropTypes.func,
+  formatMonthDayYear: PropTypes.func,
+  formatMonthYear: PropTypes.func,
+
+  parse: PropTypes.func,
+
+  months: PropTypes.arrayOf(PropTypes.string),
+  shortMonths: PropTypes.arrayOf(PropTypes.string),
+  days: PropTypes.arrayOf(PropTypes.string),
+  shortDays: PropTypes.arrayOf(PropTypes.string),
 };
 
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
-  datePickerOptions: {
-    firstDayOfWeek: DayOfWeek.Monday,
-    firstWeekOfYear: FirstWeekOfYear.FirstDay,
-    dateRangeType: DateRangeType.Day,
-  },
-  dateFormatting: DEFAULT_DATE_FORMATTING,
-};
+
+  // IDayGridOptions
+  firstDayOfWeek: DayOfWeek.Monday,
+  firstWeekOfYear: FirstWeekOfYear.FirstDay,
+  dateRangeType: DateRangeType.Day,
+
+  ...DEFAULT_DATE_FORMATTING,
+} as DatepickerProps;
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
 

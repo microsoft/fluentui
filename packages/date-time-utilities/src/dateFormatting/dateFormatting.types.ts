@@ -29,7 +29,7 @@ export interface IDateGridStrings {
   shortDays: string[];
 }
 
-export interface IDateFormatting {
+export interface IDateFormatting extends IDateGridStrings {
   /**
    * Format the day according to specified function.
    * Intended use case is localization.
@@ -58,11 +58,6 @@ export interface IDateFormatting {
    * Parse date from string representation into Date type.
    */
   parse: (date: string) => Date | null;
-
-  /**
-   * DateGrid strings that can be used for annotating different time information in different locales.
-   */
-  dateGridStrings: IDateGridStrings;
 }
 
 export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
@@ -98,5 +93,5 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
 
     return null;
   },
-  dateGridStrings: DEFAULT_LOCALIZED_STRINGS,
+  ...DEFAULT_LOCALIZED_STRINGS,
 };

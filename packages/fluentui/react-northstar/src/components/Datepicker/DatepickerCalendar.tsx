@@ -29,7 +29,7 @@ import {
 import { Text } from '../Text/Text';
 import { Button } from '../Button/Button';
 
-export interface DatepickerCalendarProps extends UIComponentProps {
+export interface DatepickerCalendarProps extends UIComponentProps, Partial<IDayGridOptions>, Partial<IDateFormatting> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarBehaviorProps>;
 
@@ -40,12 +40,6 @@ export interface DatepickerCalendarProps extends UIComponentProps {
    * @param data - All props and proposed value.
    */
   onDateChange?: ComponentEventHandler<DatepickerCalendarProps & { value: IDay }>;
-
-  /** Options to change how the daygrid looks like */
-  dayGridOptions?: IDayGridOptions;
-
-  /** Opportunity to override how the dates are formatted. */
-  dateFormatting?: IDateFormatting;
 }
 
 export type DatepickerCalendarStylesProps = never;
@@ -62,7 +56,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   setStart();
   const datepickerCalendarRef = React.useRef<HTMLElement>();
 
-  const { className, design, styles, variables, dayGridOptions, dateFormatting } = props;
+  const { className, design, styles, variables, formatMonthDayYear, shortDays, firstDayOfWeek } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DatepickerCalendar.handledProps, props);
@@ -83,6 +77,22 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     rtl: context.rtl,
   });
 
+  const dayGridOptions = {
+    selectedDate: props.selectedDate ?? new Date(),
+    navigatedDate: props.selectedDate ?? new Date(),
+    weeksToShow: props.weeksToShow,
+    firstDayOfWeek: props.firstDayOfWeek,
+    firstWeekOfYear: props.firstWeekOfYear,
+    dateRangeType: props.dateRangeType,
+    daysToSelectInDayView: props.daysToSelectInDayView,
+    today: props.today,
+    showWeekNumbers: props.showWeekNumbers,
+    workWeekDays: props.workWeekDays,
+    minDate: props.minDate,
+    maxDate: props.maxDate,
+    restrictedDates: props.restrictedDates,
+  } as IDayGridOptions;
+
   let grid = getDayGrid(dayGridOptions);
   // Slicing because grid contains extra 1 week in the front and in the back.
   grid = grid.slice(1, grid.length - 1);
@@ -101,9 +111,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
               <Text
                 key={`header ${dayNumber}`}
                 align="center"
-                content={
-                  dateFormatting.dateGridStrings.shortDays[(dayNumber + dayGridOptions.firstDayOfWeek) % DAYS_IN_WEEK]
-                }
+                content={shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK]}
               />
             ))}
             {_.map(grid, week =>
@@ -112,7 +120,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                   <Button
                     key={day.key}
                     content={day.date}
-                    aria-label={`${dateFormatting.formatMonthDayYear(day.originalDate)}`}
+                    aria-label={`${formatMonthDayYear(day.originalDate)}`}
                     onClick={e => {
                       _.invoke(props, 'onDateChange', e, { ...props, value: day });
                     }}
@@ -138,21 +146,43 @@ DatepickerCalendar.propTypes = {
   ...commonPropTypes.createCommon(),
   onDateChange: PropTypes.func,
 
-  dayGridOptions: PropTypes.object as PropTypes.Validator<IDayGridOptions>,
+  selectedDate: PropTypes.instanceOf(Date),
+  navigatedDate: PropTypes.instanceOf(Date),
 
-  dateFormatting: PropTypes.object as PropTypes.Validator<IDateFormatting>,
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
+  restrictedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+
+  firstDayOfWeek: PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name])),
+  firstWeekOfYear: PropTypes.oneOf(Object.keys(FirstWeekOfYear).map(name => FirstWeekOfYear[name])),
+  dateRangeType: PropTypes.oneOf(Object.keys(DateRangeType).map(name => DateRangeType[name])),
+  daysToSelectInDayView: PropTypes.number,
+  today: PropTypes.instanceOf(Date),
+  showWeekNumbers: PropTypes.bool,
+  workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
+
+  formatDay: PropTypes.func,
+  formatYear: PropTypes.func,
+  formatMonthDayYear: PropTypes.func,
+  formatMonthYear: PropTypes.func,
+
+  parse: PropTypes.func,
+
+  months: PropTypes.arrayOf(PropTypes.string),
+  shortMonths: PropTypes.arrayOf(PropTypes.string),
+  days: PropTypes.arrayOf(PropTypes.string),
+  shortDays: PropTypes.arrayOf(PropTypes.string),
 };
 
 DatepickerCalendar.defaultProps = {
   accessibility: datepickerCalendarBehavior,
-  dayGridOptions: {
-    firstDayOfWeek: DayOfWeek.Monday,
-    firstWeekOfYear: FirstWeekOfYear.FirstDay,
-    dateRangeType: DateRangeType.Day,
-    selectedDate: new Date(),
-    navigatedDate: new Date(),
-  },
-  dateFormatting: DEFAULT_DATE_FORMATTING,
-};
+
+  // IDayGridOptions
+  firstDayOfWeek: DayOfWeek.Monday,
+  firstWeekOfYear: FirstWeekOfYear.FirstDay,
+  dateRangeType: DateRangeType.Day,
+
+  ...DEFAULT_DATE_FORMATTING,
+} as DatepickerCalendarProps;
 
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;
