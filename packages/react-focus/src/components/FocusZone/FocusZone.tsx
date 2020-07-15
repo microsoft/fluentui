@@ -109,7 +109,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
-   * HEADS UP: This must not an arrow function in order to be referentially equal among instances
+   * HEADS UP: This must not be an arrow function in order to be referentially equal among instances
    * for ref counting to work correctly!
    */
   private static _onKeyDownCapture(ev: KeyboardEvent): void {
