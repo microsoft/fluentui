@@ -4,7 +4,7 @@ import { getStyles } from './Grid.styles';
 import { DefaultButton } from '../../compat/Button';
 import { shallow } from 'enzyme';
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DEFAULT_ITEMS: any[] = [
   { id: 'a', text: '0,0' },
   { id: 'b', text: '1,0' },
@@ -23,7 +23,6 @@ describe('Grid', () => {
         items={DEFAULT_ITEMS}
         columnCount={4}
         styles={getStyles}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={(item, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}
@@ -41,7 +40,6 @@ describe('Grid', () => {
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={(item, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}
@@ -59,7 +57,6 @@ describe('Grid', () => {
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={(item, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}

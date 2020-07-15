@@ -73,10 +73,10 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
       keytipProps,
       label,
       ariaLabel,
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       onAriaLabel,
       offAriaLabel,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
       offText,
       onText,
       styles,
@@ -179,7 +179,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { disabled, checked: checkedProp, onChange, onChanged, onClick } = this.props;
     const { checked } = this.state;
 

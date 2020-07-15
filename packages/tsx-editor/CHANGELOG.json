@@ -2,6 +2,36 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.109",
+      "version": "0.11.109",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.108",
+      "version": "0.11.108",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint and fix some violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.99",
       "version": "0.11.99",

@@ -61,6 +61,7 @@ describe('typings', () => {
     // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
     // https://github.com/Microsoft/TypeScript/issues/19139
     // Until then, pretend they're used:
+    // eslint-disable-next-line no-empty-pattern
     const [] = [p00, p01, p02, p03, p10, p11, p12, p13, p20, p21, p22];
   });
 
@@ -83,6 +84,7 @@ describe('typings', () => {
     // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
     // https://github.com/Microsoft/TypeScript/issues/19139
     // Until then, pretend they're used:
+    // eslint-disable-next-line no-empty-pattern
     const [] = [p00, p01, p02, p03, p10, p11, p12, p13, p20, p21, p22, p23];
   });
 
@@ -120,6 +122,7 @@ describe('typings', () => {
     // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
     // https://github.com/Microsoft/TypeScript/issues/19139
     // Until then, pretend they're used:
+    // eslint-disable-next-line no-empty-pattern
     const [] = [p0, p1, p2, p3, p4, p5, p6, p7];
   });
 
@@ -131,6 +134,7 @@ describe('typings', () => {
     // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
     // https://github.com/Microsoft/TypeScript/issues/19139
     // Until then, pretend they're used:
+    // eslint-disable-next-line no-empty-pattern
     const [] = [p0, p1, p2];
   });
 });

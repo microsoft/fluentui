@@ -9,11 +9,9 @@ import * as styles from './FileTypeIconsPage.module.scss';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/FileTypeIconsPage/docs';
-const fabricCDN = 'https://static2.sharepointonline.com/files/fabric/assets';
 
-const productIcons = require('@uifabric/fabric-website/lib/data/brand-icons-products.json');
-const documentIcons = require('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
-const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-monochrome.json');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const documentIcons = require<{ name: string }[]>('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
 
 export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;

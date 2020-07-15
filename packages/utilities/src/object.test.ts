@@ -34,7 +34,7 @@ describe('filteredAssign', () => {
 
 describe('mapEnumByName', () => {
   it('iterates over all the strings of an enum', () => {
-    enum foo {
+    enum Foo {
       first,
       second,
       third,
@@ -42,7 +42,7 @@ describe('mapEnumByName', () => {
     }
 
     let result: string[] = [];
-    mapEnumByName(foo, (name: string) => {
+    mapEnumByName(Foo, (name: string) => {
       if (name) {
         result.push(name);
       } else {

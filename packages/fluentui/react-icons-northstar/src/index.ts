@@ -60,6 +60,7 @@ export { CollapseIcon } from './components/CollapseIcon';
 export { CompanionIcon } from './components/CompanionIcon';
 export { ComposeIcon } from './components/ComposeIcon';
 export { ContactGroupCallIcon } from './components/ContactGroupCallIcon';
+export { ContactGroupIcon } from './components/ContactGroupIcon';
 export { ContentIcon } from './components/ContentIcon';
 export { CustomerHubIcon } from './components/CustomerHubIcon';
 export { DownloadIcon } from './components/DownloadIcon';
@@ -111,6 +112,7 @@ export { GeofenceArrivesOrLeavesIcon } from './components/GeofenceArrivesOrLeave
 export { GiphyIcon } from './components/GiphyIcon';
 export { GroupVideoCallGridIcon } from './components/GroupVideoCallGridIcon';
 export { HandIcon } from './components/HandIcon';
+export { HeadsetIcon } from './components/HeadsetIcon';
 export { HighlightIcon } from './components/HighlightIcon';
 export { HorizontalRuleIcon } from './components/HorizontalRuleIcon';
 export { ImageUnavailableIcon } from './components/ImageUnavailableIcon';

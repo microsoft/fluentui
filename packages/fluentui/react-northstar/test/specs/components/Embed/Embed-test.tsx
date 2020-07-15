@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Embed from 'src/components/Embed/Embed';
+import { Embed } from 'src/components/Embed/Embed';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 

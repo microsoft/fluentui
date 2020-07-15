@@ -5,7 +5,7 @@ import { CardView } from './Card.view';
 import { CardItem } from './CardItem/CardItem';
 
 const alertClicked = (): void => {
-  alert('Clicked');
+  console.log('Clicked');
 };
 
 describe('CardView', () => {

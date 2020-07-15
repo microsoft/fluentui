@@ -25,7 +25,7 @@ const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDeclaratio
  * @param node - DOM node.
  * @returns - the first scrollable parent.
  */
-const getScrollParent = (node: Document | HTMLElement): HTMLElement => {
+export const getScrollParent = (node: Document | HTMLElement): HTMLElement => {
   // Return body, `getScroll` will take care to get the correct `scrollTop` from it
   const parentNode = node && getParentNode(node as HTMLElement);
   // eslint-disable-next-line
@@ -45,5 +45,3 @@ const getScrollParent = (node: Document | HTMLElement): HTMLElement => {
 
   return getScrollParent(parentNode);
 };
-
-export default getScrollParent;

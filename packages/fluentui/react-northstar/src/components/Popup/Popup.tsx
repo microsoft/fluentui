@@ -5,6 +5,7 @@ import {
   useAccessibility,
   useAutoControlled,
   useTelemetry,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -15,8 +16,6 @@ import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -28,20 +27,15 @@ import {
   doesNodeContainClick,
   setWhatInputSource,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandValue,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps, PopperChildrenProps } from '../../utils/positioner';
-import PopupContent, { PopupContentProps } from './PopupContent';
+import { PopupContent, PopupContentProps } from './PopupContent';
 
 import { createShorthandFactory } from '../../utils/factories';
-import createReferenceFromContextClick from './createReferenceFromContextClick';
-import isRightClick from '../../utils/isRightClick';
-import PortalInner from '../Portal/PortalInner';
-import Animation from '../Animation/Animation';
+import { createReferenceFromContextClick } from './createReferenceFromContextClick';
+import { isRightClick } from '../../utils/isRightClick';
+import { PortalInner } from '../Portal/PortalInner';
+import { Animation } from '../Animation/Animation';
 
 export type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
 export type RestrictedClickEvents = 'click' | 'focus';
@@ -122,11 +116,11 @@ export const popupClassName = 'ui-popup';
 /**
  * A Popup displays a non-modal, often rich content, on top of its target element.
  */
-const Popup: React.FC<PopupProps> &
+export const Popup: React.FC<PopupProps> &
   FluentComponentStaticProps<PopupProps> & {
     Content: typeof PopupContent;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Popup.displayName, context.telemetry);
   setStart();
 
@@ -617,5 +611,3 @@ Popup.create = createShorthandFactory({ Component: Popup, mappedProp: 'content' 
 Popup.shorthandConfig = {
   mappedProp: 'content',
 };
-
-export default Popup;
