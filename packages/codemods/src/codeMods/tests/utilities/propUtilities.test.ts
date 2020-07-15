@@ -204,4 +204,46 @@ describe('Props Utilities Test', () => {
       });
     });
   });
+
+  describe('Edge Case Tests (transform function)', () => {
+    function spinnerTransform(spinnerEnum: string): string {
+      return spinnerMap[spinnerEnum]; // Function exists for pedagogical purposes.
+    }
+
+    it('can replace props with changed enum values', () => {
+      const file = project.getSourceFileOrThrow(spinnerPropsFile);
+      const tags = findJsxTag(file, 'Spinner');
+      const oldEnumValues: string[] = ['SpinnerType.large', 'SpinnerType.normal'];
+      renameProp(tags, 'type', 'size', spinnerMap);
+      tags.forEach(tag => {
+        expect(tag.getAttribute('type')).toBeFalsy();
+        const currentEnumValue = Maybe(oldEnumValues.pop());
+        const innerMaybe = Maybe(
+          (tag.getAttribute('size') as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression),
+        );
+        if (innerMaybe.just && currentEnumValue.just) {
+          const inner = innerMaybe.then(value => {
+            return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
+          });
+
+          expect(inner.just).toBeTruthy();
+          expect(currentEnumValue.just).toBeTruthy();
+          const newVal = spinnerMap[currentEnumValue.value];
+          const firstInnerChild = inner.then(value => {
+            return value!.getFirstChildByKind(SyntaxKind.Identifier);
+          });
+          const LastInnerChild = inner.then(value => {
+            return value!.getLastChildByKind(SyntaxKind.Identifier);
+          });
+          expect(firstInnerChild.just).toBeTruthy();
+          expect(LastInnerChild.just).toBeTruthy();
+          if (firstInnerChild.just && LastInnerChild.just) {
+            /* Need this if statement to clear value on the next line. */
+            expect(firstInnerChild.value!.getText()).toEqual('SpinnerSize');
+            expect(LastInnerChild.value!.getText()).toEqual(newVal.substring(newVal.indexOf('.') + 1));
+          }
+        }
+      });
+    });
+  });
 });
