@@ -129,8 +129,10 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
   output.output = lines.join('\n');
 
   if (win && win.transformLogging) {
+    /* eslint-disable no-console */
     console.log('TRANSFORMED:');
     console.log(output.output);
+    /* eslint-enable no-console */
   }
   return output;
 }

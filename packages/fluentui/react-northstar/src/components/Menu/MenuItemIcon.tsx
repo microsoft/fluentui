@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 interface MenuItemIconOwnProps {
   /** Indicates if the parent menu item may have just icons. */
@@ -19,7 +19,7 @@ export const menuItemIconClassName = 'ui-menu__itemicon';
 /**
  * A MenuItemIcon allows a user to have a dedicated component that can be targeted from the theme.
  */
-const MenuItemIcon = compose<'span', MenuItemIconProps, MenuItemIconStylesProps, BoxProps, {}>(Box, {
+export const MenuItemIcon = compose<'span', MenuItemIconProps, MenuItemIconStylesProps, BoxProps, {}>(Box, {
   className: menuItemIconClassName,
   displayName: 'MenuItemIcon',
   mapPropsToStylesProps: props => ({ hasContent: props.hasContent, iconOnly: props.iconOnly }),
@@ -39,5 +39,3 @@ MenuItemIcon.propTypes = {
   hasContent: PropTypes.bool,
   iconOnly: PropTypes.bool,
 };
-
-export default MenuItemIcon;

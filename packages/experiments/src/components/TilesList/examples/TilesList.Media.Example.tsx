@@ -23,7 +23,6 @@ import * as TilesListExampleStylesModule from './TilesList.Example.scss';
 import { lorem } from '@uifabric/example-data';
 import { SignalField, SharedSignal, CommentsSignal } from '@uifabric/experiments/lib/Signals';
 
-// tslint:disable-next-line:no-any
 const TilesListExampleStyles = TilesListExampleStylesModule as any;
 
 function createGroups(): IExampleGroup[] {
@@ -77,7 +76,6 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
 
   public render(): JSX.Element {
     return (
-      // tslint:disable-next-line:jsx-ban-props
       <div style={{ padding: '4px' }}>
         <Toggle
           label="Enable Modal Selection"

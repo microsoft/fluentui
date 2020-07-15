@@ -40,7 +40,6 @@ const ITEM_COUNT = 100;
 export interface ISelectionBasicExampleState {
   items: IExampleItem[];
   selection: ISelection;
-  selectionMode: SelectionMode;
   canSelect: 'all' | 'vowels';
 }
 
@@ -99,7 +98,6 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
     this.state = {
       items: createListItems(ITEM_COUNT),
       selection: new Selection({ onSelectionChanged: this._onSelectionChanged }),
-      selectionMode: SelectionMode.multiple,
       canSelect: 'all',
     };
     this.state.selection.setItems(this.state.items, false);

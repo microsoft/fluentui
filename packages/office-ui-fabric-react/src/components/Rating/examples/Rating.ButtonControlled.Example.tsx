@@ -21,10 +21,15 @@ export const RatingButtonControlledExample: React.FunctionComponent = () => {
         max={5}
         readOnly
         allowZeroStars
+        // eslint-disable-next-line react/jsx-no-bind
         getAriaLabel={getRatingAriaLabel}
         ariaLabelFormat={'Select {0} of {1} stars'}
       />
-      <PrimaryButton text={'Click to change rating to ' + (5 - currentRating)} onClick={currentRatingToggle} />
+      <PrimaryButton
+        text={'Click to change rating to ' + (5 - currentRating)}
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={currentRatingToggle}
+      />
     </div>
   );
 };

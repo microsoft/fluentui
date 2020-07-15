@@ -6,6 +6,7 @@ import {
   useTelemetry,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useUnhandledProps,
   getElementType,
 } from '@fluentui/react-bindings';
@@ -18,8 +19,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { lockBodyScroll, unlockBodyScroll } from './utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   UIComponentProps,
   commonPropTypes,
@@ -29,19 +29,14 @@ import {
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Button, { ButtonProps } from '../Button/Button';
-import ButtonGroup from '../Button/ButtonGroup';
-import Box, { BoxProps } from '../Box/Box';
-import Header, { HeaderProps } from '../Header/Header';
-import Portal, { TriggerAccessibility } from '../Portal/Portal';
-import Flex from '../Flex/Flex';
-import DialogFooter, { DialogFooterProps } from './DialogFooter';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Button, ButtonProps } from '../Button/Button';
+import { ButtonGroup } from '../Button/ButtonGroup';
+import { Box, BoxProps } from '../Box/Box';
+import { Header, HeaderProps } from '../Header/Header';
+import { Portal, TriggerAccessibility } from '../Portal/Portal';
+import { Flex } from '../Flex/Flex';
+import { DialogFooter, DialogFooterProps } from './DialogFooter';
 
 export interface DialogSlotClassNames {
   header: string;
@@ -145,11 +140,11 @@ export type DialogStylesProps = Required<Pick<DialogProps, 'backdrop'>>;
  * [Jaws does not announce token values of aria-haspopup](https://github.com/FreedomScientific/VFO-standards-support/issues/33)
  * [Issue 989517: VoiceOver narrates dialog content and button twice](https://bugs.chromium.org/p/chromium/issues/detail?id=989517)
  */
-const Dialog: ComponentWithAs<'div', DialogProps> &
+export const Dialog: ComponentWithAs<'div', DialogProps> &
   FluentComponentStaticProps<DialogProps> & {
     Footer: typeof DialogFooter;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dialog.displayName, context.telemetry);
   setStart();
 
@@ -448,5 +443,3 @@ Dialog.Footer = DialogFooter;
 Dialog.create = createShorthandFactory({
   Component: Dialog,
 });
-
-export default Dialog;

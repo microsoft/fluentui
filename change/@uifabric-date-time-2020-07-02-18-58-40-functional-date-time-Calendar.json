@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Migrate Calendar components to function components",
-  "packageName": "@uifabric/date-time",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-02T18:58:40.970Z"
-}

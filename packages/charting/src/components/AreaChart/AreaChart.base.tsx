@@ -53,7 +53,7 @@ export interface IAreaChartState {
   isCalloutVisible: boolean;
   isLegendSelected: boolean;
   isLegendHovered: boolean;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   YValueHover: { legend?: string; y?: number; color?: string }[];
   hoverYValue: string | number | null;
@@ -63,11 +63,11 @@ export interface IAreaChartState {
 }
 
 export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartState> {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
   private _points: ILineChartPoints[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private dataSet: any;
   private _colors: string[];
   private _keys: string[];
@@ -90,10 +90,13 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       _width: this.props.width || 600,
       _height: this.props.height || 350,
       activeLegend: '',
+      // eslint-disable-next-line react/no-unused-state
       color: '',
       containerHeight: 0,
       containerWidth: 0,
+      // eslint-disable-next-line react/no-unused-state
       dataForHoverCard: 0,
+      // eslint-disable-next-line react/no-unused-state
       hoverYValue: '',
       hoverXValue: '',
       isCalloutVisible: false,
@@ -101,7 +104,9 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       isLegendHovered: false,
       refSelected: null,
       YValueHover: [],
+      // eslint-disable-next-line react/no-unused-state
       xCalloutValue: '',
+      // eslint-disable-next-line react/no-unused-state
       yCalloutValue: '',
     };
     this._refArray = [];
@@ -162,7 +167,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     };
     let isDateType = false;
     if (this._points && this._points.length > 0) {
-      this._points.map((chartData: ILineChartPoints) => {
+      this._points.forEach((chartData: ILineChartPoints) => {
         if (chartData.data.length > 0) {
           isDateType = chartData.data[0].x instanceof Date;
           return;
@@ -188,11 +193,13 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         id="d3AreaChart"
         className={this._classNames.root}
         role={'presentation'}
+        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
+              // eslint-disable-next-line react/jsx-no-bind
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
               }}
@@ -201,6 +208,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
               className={this._classNames.xAxis}
             />
             <g
+              // eslint-disable-next-line react/jsx-no-bind
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
               }}
@@ -211,7 +219,11 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
             <g id={`graphGElement_${this._uniqueIdForGraph}`} />
           </svg>
         </FocusZone>
-        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+        <div
+          // eslint-disable-next-line react/jsx-no-bind
+          ref={(e: HTMLDivElement) => (this.legendContainer = e)}
+          className={this._classNames.legendContainer}
+        >
           {legends}
         </div>
         {!this.props.hideTooltip && this.state.isCalloutVisible ? (
@@ -243,6 +255,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
                         className={mergeStyles(this._classNames.calloutBlockContainer, {
                           borderLeft: `4px solid ${xValue.color}`,
                         })}
+                        key={index}
                       >
                         <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
                         <div className={this._classNames.calloutContentY}>
@@ -277,11 +290,11 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
   }
 
   private _createDataSet = () => {
-    let allChartPoints: ILineChartDataPoint[] = [];
+    const allChartPoints: ILineChartDataPoint[] = [];
     const dataSet: IAreaChartDataSetPoint[] = [];
     this._points.length &&
-      this._points.map((singleChartPoint: ILineChartPoints) => {
-        allChartPoints = [...allChartPoints, ...singleChartPoint.data];
+      this._points.forEach((singleChartPoint: ILineChartPoints) => {
+        allChartPoints.push(...singleChartPoint.data);
       });
 
     let tempArr = allChartPoints;
@@ -291,9 +304,9 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         (point: ILineChartDataPoint) =>
           (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) === valToCheck,
       );
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const singleDataset: any = {};
-      filteredChartPoints.map((singleDataPoint: ILineChartDataPoint, index: number) => {
+      filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
         singleDataset.xVal = singleDataPoint.x;
         singleDataset[`chart${index}`] = singleDataPoint.y;
       });
@@ -356,7 +369,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       this.setState({
         activeLegend: '',
         isLegendHovered: false,
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
       this._isGraphDraw = true;
     }
@@ -367,7 +380,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
 
-    data.map((singleChartData: ILineChartPoints) => {
+    data.forEach((singleChartData: ILineChartPoints) => {
       const color: string = singleChartData.color
         ? singleChartData.color
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
@@ -404,13 +417,13 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     );
   };
 
-  private updateVerticalLine = (xLineVal: number, visibilityStatus: string) => {
+  private _updateVerticalLine = (xLineVal: number, visibilityStatus: string) => {
     d3Select(`#${this._verticalLineId}`).attr('x1', xLineVal);
     d3Select(`#${this._verticalLineId}`).attr('x2', xLineVal);
     d3Select(`#${this._verticalLineId}`).attr('visibility', visibilityStatus);
   };
 
-  private onMouseHover = (target: SVGCircleElement, x: number | Date, xAxisCalloutData: string) => {
+  private _onMouseHover = (target: SVGCircleElement, x: number | Date, xAxisCalloutData: string) => {
     const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
     const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedDate);
     const presentData = found.values[0];
@@ -422,25 +435,32 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         refSelected: target,
         isCalloutVisible: true,
         activeLegend: presentData.legend,
+        // eslint-disable-next-line react/no-unused-state
         dataForHoverCard: presentData.y,
         hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
         YValueHover: found.values,
+        // eslint-disable-next-line react/no-unused-state
         color: presentData.color,
       });
     }
   };
 
-  private handleMouseAction = (xLineVal: number, x: number | Date, refArrayIndex: string, xAxisCalloutData: string) => {
+  private _handleMouseAction = (
+    xLineVal: number,
+    x: number | Date,
+    refArrayIndex: string,
+    xAxisCalloutData: string,
+  ) => {
     d3Select(`#dot${refArrayIndex}`)
       .attr('fill', '#fff')
       .attr('r', 8);
     this._callOutId = refArrayIndex;
-    this.updateVerticalLine(xLineVal, 'visibility');
-    this.onMouseHover(d3Event.target, x, xAxisCalloutData);
+    this._updateVerticalLine(xLineVal, 'visibility');
+    this._onMouseHover(d3Event.target, x, xAxisCalloutData);
   };
 
-  private mouseOutAction = (refArrayIndex: string, color: string) => {
-    this.updateVerticalLine(0, 'hidden');
+  private _mouseOutAction = (refArrayIndex: string, color: string) => {
+    this._updateVerticalLine(0, 'hidden');
     d3Select(`#dot${refArrayIndex}`)
       .attr('fill', color)
       .attr('r', 0.01);
@@ -449,7 +469,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     });
   };
 
-  private onChartFocus = (
+  private _onChartFocus = (
     target: SVGCircleElement,
     refArrayIndex: string,
     x: number | Date,
@@ -462,13 +482,15 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.activeLegend === presentData.legend)
     ) {
-      this._refArray.map((obj: IRefArrayData) => {
+      this._refArray.forEach((obj: IRefArrayData) => {
         if (obj.legendText === refArrayIndex) {
           this.setState({
             refSelected: obj.refElement,
             isCalloutVisible: true,
             activeLegend: presentData.legend,
+            // eslint-disable-next-line react/no-unused-state
             dataForHoverCard: presentData.y,
+            // eslint-disable-next-line react/no-unused-state
             color: presentData.color,
             hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
             YValueHover: found.values,
@@ -478,7 +500,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     }
   };
 
-  private handleFocusAction = (
+  private _handleFocusAction = (
     xLineVal: number,
     x: number | Date,
     legendTitle: string,
@@ -490,15 +512,15 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     d3Select(`#dot${refArrayIndex}`)
       .attr('fill', '#fff')
       .attr('r', 8);
-    this.updateVerticalLine(xLineVal, 'visibility');
-    this.onChartFocus(d3Event.target, refArrayIndex, x, xAxisCalloutData);
+    this._updateVerticalLine(xLineVal, 'visibility');
+    this._onChartFocus(d3Event.target, refArrayIndex, x, xAxisCalloutData);
   };
 
-  private onDataPointClick = (func: () => void, refArrayIndex: string, color: string) => {
+  private _onDataPointClick = (func: (() => void) | undefined, refArrayIndex: string, color: string) => {
     d3Select(`#dot${refArrayIndex}`)
       .attr('fill', color)
       .attr('r', 8);
-    if (!!func) {
+    if (func) {
       func();
     }
   };
@@ -531,12 +553,12 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     this._colors = this._getColors();
     const stackedValues = d3Stack().keys(this._keys)(this.dataSet);
 
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const stackedData: any[] = [];
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     stackedValues.forEach((layer: any) => {
       const currentStack: IAreaChartDataSetPoint[] = [];
-      // tslint:disable-next-line: no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       layer.forEach((d: any) => {
         currentStack.push({
           values: d,
@@ -581,11 +603,11 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       .domain([0, maxOfYVal]);
 
     const area = d3Area()
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y0((d: any) => yScale(d.values[0]))
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y1((d: any) => yScale(d.values[1]))
       .curve(d3CurveBasis);
 
@@ -615,12 +637,8 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     points
       .selectAll('.dot')
       .data((point: [], index: number) => {
-        // tslint:disable-next-line:no-any
-        const formatedArr: any = [];
-        point.map((subPoint: IDPointType) => {
-          formatedArr.push({ point: subPoint, index: index });
-        });
-        return formatedArr;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return point.map((subPoint: IDPointType): any => ({ point: subPoint, index: index }));
       })
       .enter()
       .append('circle')
@@ -645,7 +663,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       })
       .attr('fill', (d: IDPointType, index: number) => this._points[d.index].color)
       .on('mouseover', (d: IDPointType, index: number) => {
-        return that.handleMouseAction(
+        return that._handleMouseAction(
           xScale(d.point.xVal),
           d.point.xVal,
           `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
@@ -653,14 +671,14 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         );
       })
       .on('mouseout', (d: IDPointType, index: number) =>
-        that.mouseOutAction(
+        that._mouseOutAction(
           `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
           this._points[d.index].color,
         ),
       )
       .on('focus', (d: IDPointType, index: number) => {
         const refArrayIndex = `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`;
-        return that.handleFocusAction(
+        return that._handleFocusAction(
           xScale(d.point.xVal),
           d.point.xVal,
           this._points[d.index].legend,
@@ -669,13 +687,13 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         );
       })
       .on('blur', (d: IDPointType, index: number) =>
-        that.mouseOutAction(
+        that._mouseOutAction(
           `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
           this._points[d.index].color,
         ),
       )
       .on('click', (d: IDPointType, index: number) =>
-        that.onDataPointClick(
+        that._onDataPointClick(
           this._points[d.index].data[index].onDataPointClick!,
           `${d.index * stackedData[0].length + index}_${this._uniqueIdForGraph}`,
           this._points[d.index].color,

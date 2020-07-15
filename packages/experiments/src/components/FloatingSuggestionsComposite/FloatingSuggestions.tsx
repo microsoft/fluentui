@@ -47,6 +47,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
           isBeakVisible={false}
           gapSpace={5}
           target={targetElement}
+          // eslint-disable-next-line react/jsx-no-bind
           onDismiss={hidePicker}
           onKeyDown={onKeyDown}
           directionalHint={DirectionalHint.bottomLeftEdge}

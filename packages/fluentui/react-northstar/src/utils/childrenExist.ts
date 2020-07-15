@@ -5,7 +5,7 @@ import * as React from 'react';
  *
  * @param children - The children prop of a component.
  */
-const childrenExist = (children: React.ReactNode): boolean => {
+export const childrenExist = (children: React.ReactNode): boolean => {
   if (children === null || children === undefined) return false;
 
   if (typeof children === 'number') return !isNaN(children);
@@ -14,5 +14,3 @@ const childrenExist = (children: React.ReactNode): boolean => {
 
   return !!children;
 };
-
-export default childrenExist;

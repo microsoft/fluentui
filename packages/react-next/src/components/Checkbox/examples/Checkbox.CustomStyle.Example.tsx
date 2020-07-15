@@ -28,6 +28,7 @@ export const CheckboxCustomStyleExample: React.FunctionComponent = () => {
         <Checkbox label="With scoped styles" defaultChecked />
       </Customizer>
 
+      {/* eslint-disable-next-line react/jsx-no-bind */}
       <DefaultButton onClick={loadCustomizedTheme}>Test loadTheme</DefaultButton>
     </Stack>
   );

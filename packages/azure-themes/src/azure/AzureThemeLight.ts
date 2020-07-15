@@ -5,6 +5,7 @@ import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
 
 const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
+  commandBarBorder: LightSemanticColors.commandBar.border,
   bodyBackground: LightSemanticColors.background,
   bodyText: LightSemanticColors.text.body,
   bodyTextHovered: LightSemanticColors.text.bodyHovered,
