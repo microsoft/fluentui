@@ -8,6 +8,8 @@ import * as _ from 'lodash';
 import * as path from 'path';
 import consoleUtil from './utils/consoleUtil';
 
+/* eslint-disable @typescript-eslint/naming-convention */
+
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
@@ -154,7 +156,7 @@ export const defaultTests: TestObject = {
         const { requiredProps, Component, customMount = mount, wrapperComponents = [] } = testInfo;
         const MyComponent = () => null;
 
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
         const component = getComponent(wrapper, wrapperComponents);
 
@@ -184,7 +186,7 @@ export const defaultTests: TestObject = {
           }
         }
 
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
         const component = getComponent(wrapper, wrapperComponents);
 
@@ -211,7 +213,7 @@ export const defaultTests: TestObject = {
         } else {
           const MyComponent = () => null;
           const el = customMount(
-            // tslint:disable-next-line:no-any
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
           ).find(MyComponent);
 
@@ -231,7 +233,7 @@ export const defaultTests: TestObject = {
         const { Component, customMount = mount, requiredProps, wrapperComponents = [] } = testInfo;
 
         tags.forEach(tag => {
-          // tslint:disable-next-line:no-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
           const component = getComponent(wrapper, wrapperComponents);
 

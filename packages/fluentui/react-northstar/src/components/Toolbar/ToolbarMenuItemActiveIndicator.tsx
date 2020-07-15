@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
+import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface ToolbarMenuItemActiveIndicatorOwnProps {}
 export interface ToolbarMenuItemActiveIndicatorProps extends ToolbarMenuItemActiveIndicatorOwnProps, BoxProps {}
@@ -12,7 +12,7 @@ export const toolbarMenuItemActiveIndicatorClassName = 'ui-toolbar__menuitemacti
 /**
  * A ToolbarMenuItemActiveIndicator allows a user to have a dedicated component that can be targeted from the theme.
  */
-const ToolbarMenuItemActiveIndicator = compose<
+export const ToolbarMenuItemActiveIndicator = compose<
   'span',
   ToolbarMenuItemActiveIndicatorProps,
   ToolbarMenuItemActiveIndicatorStylesProps,
@@ -32,5 +32,3 @@ ToolbarMenuItemActiveIndicator.defaultProps = {
   as: 'span',
 };
 ToolbarMenuItemActiveIndicator.propTypes = commonPropTypes.createCommon();
-
-export default ToolbarMenuItemActiveIndicator;

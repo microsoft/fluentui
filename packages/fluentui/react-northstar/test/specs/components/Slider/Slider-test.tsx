@@ -1,6 +1,6 @@
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { sharedIsConformant } from 'test/utils';
-import Slider from 'src/components/Slider/Slider';
+import { Slider } from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
   sharedIsConformant({

@@ -15,6 +15,9 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       color: semanticColors.primaryButtonTextDisabled,
     },
+    rootExpanded: {
+      color: semanticColors.primaryButtonText,
+    },
     rootFocused: {
       color: semanticColors.primaryButtonText,
       borderColor: semanticColors.primaryButtonBorder,

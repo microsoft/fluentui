@@ -2,12 +2,12 @@ import { Provider, teamsTheme, teamsHighContrastTheme, teamsDarkTheme } from '@f
 import * as _ from 'lodash';
 import * as React from 'react';
 import { match } from 'react-router-dom';
-import SourceRender from 'react-source-render';
 import { KnobProvider } from '@fluentui/docs-components';
 
 import { ExampleSource } from '../types';
 import { exampleSourcesContext, exampleKebabNameToSourceFilename, parseExamplePath } from '../utils';
 import PageNotFound from '../views/PageNotFound';
+import { SourceRender } from './ComponentDoc/SourceRender';
 import { babelConfig, importResolver } from './Playground/renderConfig';
 
 const examplePaths = exampleSourcesContext.keys();

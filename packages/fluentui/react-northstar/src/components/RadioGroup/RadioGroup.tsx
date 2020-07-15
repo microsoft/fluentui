@@ -13,24 +13,18 @@ import {
   rtlTextContainer,
   createShorthandFactory,
 } from '../../utils';
-import RadioGroupItem, { RadioGroupItemProps } from './RadioGroupItem';
-import {
-  ComponentEventHandler,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { RadioGroupItem, RadioGroupItemProps } from './RadioGroupItem';
+import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   useAutoControlled,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -66,11 +60,11 @@ export type RadioGrouptStylesProps = never;
  * @accessibility
  * Implements [ARIA Radio Group](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton) design pattern.
  */
-const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
+export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
   FluentComponentStaticProps<RadioGroupProps> & {
     Item: typeof RadioGroupItem;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroup.displayName, context.telemetry);
   setStart();
 
@@ -234,5 +228,3 @@ RadioGroup.Item = RadioGroupItem;
 RadioGroup.create = createShorthandFactory({
   Component: RadioGroup,
 });
-
-export default RadioGroup;

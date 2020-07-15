@@ -7,10 +7,10 @@ import {
   getRenderedAttribute,
   implementsShorthandProp,
 } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils';
-import MenuItem from 'src/components/Menu/MenuItem';
-import Menu from 'src/components/Menu/Menu';
-import MenuItemWrapper, { menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
+import { mountWithProviderAndGetComponent } from 'test/utils';
+import { MenuItem } from 'src/components/Menu/MenuItem';
+import { Menu } from 'src/components/Menu/Menu';
+import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {

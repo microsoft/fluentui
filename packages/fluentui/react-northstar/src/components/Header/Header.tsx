@@ -13,15 +13,15 @@ import {
   rtlTextContainer,
   AlignValue,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import HeaderDescription, { HeaderDescriptionProps } from './HeaderDescription';
 
-import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { HeaderDescription, HeaderDescriptionProps } from './HeaderDescription';
+
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   useTelemetry,
   useAccessibility,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useStyles,
@@ -57,11 +57,11 @@ export type HeaderStylesProps = Required<Pick<HeaderProps, 'align' | 'color'>> &
  * Other considerations:
  *  - when the description property is used in header, readers will narrate both header content and description within the element. In addition to that, both will be displayed in the list of headings.
  */
-const Header: ComponentWithAs<'h1', HeaderProps> &
+export const Header: ComponentWithAs<'h1', HeaderProps> &
   FluentComponentStaticProps<HeaderProps> & {
     Description: typeof HeaderDescription;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Header.displayName, context.telemetry);
   setStart();
   const { children, content, variables, align, className, design, styles, description, color } = props;
@@ -132,5 +132,3 @@ Header.handledProps = Object.keys(Header.propTypes) as any;
 Header.Description = HeaderDescription;
 
 Header.create = createShorthandFactory({ Component: Header, mappedProp: 'content' });
-
-export default Header;

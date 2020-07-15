@@ -52,6 +52,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
   }
 
+  public componentDidUpdate(prevProps: ILegendsProps) {
+    if (prevProps.selectedLegend !== this.props.selectedLegend) {
+      this.setState({ selectedLegend: this.props.selectedLegend! });
+    }
+  }
+
   public render(): JSX.Element {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
@@ -76,9 +82,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _generateData(): ILegendOverflowData {
-    const dataItems: ILegend[] = [];
-    this.props.legends.map((legend: ILegend, index: number) => {
-      const legendItem: ILegendItem = {
+    const dataItems: ILegendItem[] = this.props.legends.map((legend: ILegend, index: number) => {
+      return {
         'aria-setsize': this.props.legends.length,
         'aria-posinset': index + 1,
         title: legend.title,
@@ -89,7 +94,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         shape: legend.shape,
         key: index,
       };
-      dataItems.push(legendItem);
     });
     const result: ILegendOverflowData = {
       primary: dataItems,
@@ -234,6 +238,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         type={HoverCardType.plain}
         plainCardProps={plainCardProps}
         instantOpenOnClick={true}
+        // eslint-disable-next-line react/jsx-no-bind
         onCardHide={onHoverCardHideHandler}
         setInitialFocus={true}
         trapFocus={true}
@@ -245,6 +250,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         <div
           className={classNames.overflowIndicationTextStyle}
           role={'combobox'}
+          // eslint-disable-next-line react/jsx-no-bind
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
           aria-expanded={this.state.isHoverCardVisible}
           aria-label={`${items.length} ${overflowString}`}
@@ -315,11 +321,13 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         aria-posinset={data['aria-posinset']}
         key={index}
         className={classNames.legend}
+        /* eslint-disable react/jsx-no-bind */
         onClick={onClickHandler}
         onMouseOver={onHoverHandler}
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
+        /* eslint-enable react/jsx-no-bind */
       >
         <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>

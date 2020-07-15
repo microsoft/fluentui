@@ -51,7 +51,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     };
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
@@ -71,7 +70,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       disabled,
       underlined,
       styles,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       labelText,
       theme,
       clearButtonProps,
@@ -249,7 +248,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   };
 
   private _callOnChange(ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void {
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.

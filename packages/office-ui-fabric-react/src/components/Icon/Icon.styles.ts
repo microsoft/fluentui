@@ -33,7 +33,7 @@ export const getStyles = (props: IIconStyleProps): IIconStyles => {
       iconClassName,
       className,
       styles && styles.root,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       styles && styles.imageContainer,
     ],
   };

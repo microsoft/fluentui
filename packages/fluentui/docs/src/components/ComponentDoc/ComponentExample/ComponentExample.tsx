@@ -10,7 +10,6 @@ import {
 } from '@fluentui/docs-components';
 import {
   ComponentVariablesInput,
-  constants,
   Flex,
   ICSSInJSStyle,
   Image,
@@ -24,11 +23,11 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as copyToClipboard from 'copy-to-clipboard';
 import qs from 'qs';
-import SourceRender from 'react-source-render';
 
 import { examplePathToHash, getFormattedHash, scrollToAnchor } from '../../../utils';
 import { babelConfig, importResolver } from '../../Playground/renderConfig';
 import ExampleContext, { ExampleContextValue } from '../../../context/ExampleContext';
+import { SourceRender } from '../SourceRender';
 import ComponentControls from '../ComponentControls';
 import ComponentExampleTitle from './ComponentExampleTitle';
 import ComponentSourceManager, { ComponentSourceManagerRenderProps } from '../ComponentSourceManager';
@@ -36,6 +35,7 @@ import VariableResolver from '../../VariableResolver/VariableResolver';
 import ComponentExampleVariables from './ComponentExampleVariables';
 // TODO: find replacement
 import { ReplyIcon, AcceptIcon, EditIcon } from '@fluentui/react-icons-northstar';
+import config from '../../../config';
 
 const ERROR_COLOR = '#D34';
 
@@ -323,7 +323,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     const filename = pathParts[pathParts.length - 1];
 
     const ghEditHref = [
-      `${constants.repoURL}/edit/master/docs/src/examples/${currentCodePath}.tsx`,
+      `${config.repoURL}/edit/master/docs/src/examples/${currentCodePath}.tsx`,
       `?message=docs(${filename}): your description`,
     ].join('');
 
