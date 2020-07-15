@@ -10,7 +10,7 @@ export const useButtonBehavior = (props: ButtonProps, ref: React.RefObject<HTMLE
     disabled,
     loading,
   });
-  const { onKeyDown } = useBehaviorKeyActions(keyActions, { onClick, onKeyDown: _onKeyDown });
+  const buttonActions = useBehaviorKeyActions(keyActions, { root: { onClick, onKeyDown: _onKeyDown } });
 
-  return { ...attributes?.root, onKeyDown };
+  return { ...attributes?.root, ...buttonActions };
 };

@@ -31,7 +31,6 @@ export interface ButtonProps extends ComponentProps, React.HTMLAttributes<HTMLBu
     inverted?: boolean;
     loader?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     loading?: boolean;
-    onClick?: (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) => void;
     primary?: boolean;
     secondary?: boolean;
     size?: SizeValue;

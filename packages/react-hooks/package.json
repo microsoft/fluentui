@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@fluentui/accessibility": "^0.50.0",
+    "@fluentui/react-compose": "^0.12.2",
     "@fluentui/keyboard-key": "^0.2.5",
     "@uifabric/set-version": "^7.0.16",
     "@uifabric/utilities": "^7.24.1",

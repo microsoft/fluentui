@@ -5,6 +5,7 @@
 ```ts
 
 import { Async } from '@uifabric/utilities';
+import { BaseSlots } from '@fluentui/react-compose';
 import { KeyActions } from '@fluentui/accessibility';
 import * as React from 'react';
 import { Ref } from 'react';
@@ -22,8 +23,10 @@ export interface IUseBooleanCallbacks {
 // @public
 export function useAsync(): Async;
 
+// Warning: (ae-forgotten-export) The symbol "BehaviorKeyActions" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export const useBehaviorKeyActions: <TElement>(keyActions?: KeyActions | undefined, eventHandlers?: React.DOMAttributes<TElement> | undefined) => React.DOMAttributes<TElement>;
+export const useBehaviorKeyActions: <TSlots extends BaseSlots, TElement>(keyActions?: KeyActions | undefined, slotEvents?: Record<keyof TSlots, React.DOMAttributes<TElement>> | undefined) => BehaviorKeyActions<Pick<TSlots, Exclude<keyof TSlots, "root">>, TElement>;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];

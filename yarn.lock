@@ -1277,6 +1277,17 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/react-compose@^0.12.2":
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-compose/-/react-compose-0.12.2.tgz#71b9f1f9863d617b6979eacc64da10523b5ca861"
+  integrity sha512-8w5xOl3LdoiIVZI8TuHmzQaJD5YbA46QCNCpAtBeoePvUa511EkyxjBxeL4QxDv7zWwb2i40nE+9sqpjY4YUng==
+  dependencies:
+    "@types/classnames" "^2.2.9"
+    "@uifabric/set-version" "^7.0.17"
+    "@uifabric/utilities" "^7.24.2"
+    classnames "^2.2.6"
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -4214,6 +4225,31 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
+
+"@uifabric/merge-styles@^7.16.2":
+  version "7.16.2"
+  resolved "https://registry.yarnpkg.com/@uifabric/merge-styles/-/merge-styles-7.16.2.tgz#0d76cf50f3a9eb64e374f938112d51efb454912e"
+  integrity sha512-Xcmzne0IzoRYShFyHL8rdJCplChdPHcD6NZWPWcbBI674K6+6twVrQh5l4KWSuAVb4M26hB5NU3AIi7ne2Tiyg==
+  dependencies:
+    "@uifabric/set-version" "^7.0.17"
+    tslib "^1.10.0"
+
+"@uifabric/set-version@^7.0.17":
+  version "7.0.17"
+  resolved "https://registry.yarnpkg.com/@uifabric/set-version/-/set-version-7.0.17.tgz#4b22e2d24126e7b39bc965aded641b23f4d02848"
+  integrity sha512-YRPfV8HgT2XfhhdIV4HWP3hSBkOmb3vrB/dKp+BYbcqjQ3XZJeTca8kQkiwxxeMWrOwYD7Psh89NnZzbr2jgTw==
+  dependencies:
+    tslib "^1.10.0"
+
+"@uifabric/utilities@^7.24.2":
+  version "7.24.2"
+  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-7.24.2.tgz#79af5078d9ffbad7d1c0ad17ca41b1d4c78a6969"
+  integrity sha512-Fup+J3RZs6HEH4CBUJZgWIxqXkN+YaO54twXvKwJKbGCjIWzcjTmWG3mx/VzgZiM4PW2QFAZfNQSI0kikJ3QIQ==
+  dependencies:
+    "@uifabric/merge-styles" "^7.16.2"
+    "@uifabric/set-version" "^7.0.17"
+    prop-types "^15.7.2"
+    tslib "^1.10.0"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
