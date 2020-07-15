@@ -107,6 +107,18 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return _outerZones.size;
   }
 
+  /**
+   * Handle global tab presses so that we can patch tabindexes on the fly.
+   * HEADS UP: This must not an arrow function in order to be referentially equal among instances
+   * for ref counting to work correctly!
+   */
+  private static _onKeyDownCapture(ev: KeyboardEvent): void {
+    // eslint-disable-next-line deprecation/deprecation, @fluentui/deprecated-keyboard-event-props
+    if (ev.which === KeyCodes.tab) {
+      _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
+    }
+  }
+
   constructor(props: IFocusZoneProps) {
     super(props);
     // Manage componentRef resolution.
@@ -153,7 +165,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         _outerZones.add(this);
 
         if (this._windowElement && _outerZones.size === 1) {
-          this._windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
+          this._windowElement.addEventListener('keydown', FocusZone._onKeyDownCapture, true);
         }
       }
 
@@ -210,7 +222,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       // If this is the last outer zone, remove the keydown listener.
       if (this._windowElement && _outerZones.size === 0) {
-        this._windowElement.removeEventListener('keydown', this._onKeyDownCapture, true);
+        this._windowElement.removeEventListener('keydown', FocusZone._onKeyDownCapture, true);
       }
     }
 
@@ -486,18 +498,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   private _onBlur = (): void => {
     this._setParkedFocus(false);
   };
-
-  /**
-   * Handle global tab presses so that we can patch tabindexes on the fly.
-   * HEADS UP: This must not an arrow function in order to be referentially equal among instances
-   * for ref counting to work correctly!
-   */
-  private _onKeyDownCapture(ev: KeyboardEvent): void {
-    // eslint-disable-next-line deprecation/deprecation, @fluentui/deprecated-keyboard-event-props
-    if (ev.which === KeyCodes.tab) {
-      _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
-    }
-  }
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     if (this._portalContainsElement(ev.target as HTMLElement)) {

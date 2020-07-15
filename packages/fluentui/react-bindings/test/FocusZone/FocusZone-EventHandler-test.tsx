@@ -1,22 +1,15 @@
+import * as _ from 'lodash';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { FocusZone } from '@fluentui/react-bindings';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-function _deepEquals(a: any, b: any) {
-  if (typeof a !== 'object' || typeof b !== 'object') {
-    return a === b;
-  }
-  if (Array.isArray(a) || Array.isArray(b)) {
-    // NO SUPPORT FOR ARRAYS
-    return false;
-  }
-  for (const key in a) {
-    if (!_deepEquals(a[key], b[key])) {
-      return false;
-    }
-  }
-  return true;
+type EventHandler = {
+  listener: EventListenerOrEventListenerObject;
+  options?: boolean | AddEventListenerOptions;
+};
+
+function handlersEqual(a: EventHandler, b: EventHandler) {
+  return a.listener === b.listener && _.isEqual(a.options, b.options);
 }
 
 // HEADS UP: this test is intentionally in a separate file aside from the rest of FocusZone tests
@@ -24,10 +17,7 @@ function _deepEquals(a: any, b: any) {
 // which use ReactTestUtils.renderIntoDocument() which renders FocusZone into a detached DOM node and never unmounts.
 describe('FocusZone keydown event handler', () => {
   let host: HTMLElement;
-  let keydownEventHandlers: {
-    listener: EventListenerOrEventListenerObject;
-    options?: boolean | AddEventListenerOptions;
-  }[];
+  let keydownEventHandlers: EventHandler[];
 
   beforeEach(() => {
     host = document.createElement('div');
@@ -36,7 +26,7 @@ describe('FocusZone keydown event handler', () => {
     window.addEventListener = jest.fn((type, listener, options) => {
       if (type === 'keydown') {
         const eventListener = { listener, options };
-        if (!keydownEventHandlers.some(item => _deepEquals(item, eventListener))) {
+        if (!keydownEventHandlers.some(item => handlersEqual(item, eventListener))) {
           keydownEventHandlers.push(eventListener);
         }
       }
@@ -45,7 +35,7 @@ describe('FocusZone keydown event handler', () => {
     window.removeEventListener = jest.fn((type, listener, options) => {
       if (type === 'keydown') {
         const eventListener = { listener, options };
-        const index = keydownEventHandlers.findIndex(item => _deepEquals(item, eventListener));
+        const index = keydownEventHandlers.findIndex(item => handlersEqual(item, eventListener));
         if (index >= 0) {
           keydownEventHandlers.splice(index, 1);
         }
