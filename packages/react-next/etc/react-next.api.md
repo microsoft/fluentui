@@ -1306,7 +1306,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
     precision?: number;
     step?: number;
-    styles?: Partial<ISpinButtonStyles>;
+    styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
     theme?: ITheme;
     title?: string;
     upArrowButtonStyles?: Partial<IButtonStyles>;

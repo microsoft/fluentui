@@ -4,7 +4,7 @@ import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
 import { IKeytipProps } from '../../Keytip';
-import { IRefObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 
 /**
@@ -161,7 +161,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styling for individual elements within the control.
    */
-  styles?: Partial<ISpinButtonStyles>;
+  styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
 
   /**
    * Custom styles for the up arrow button.
