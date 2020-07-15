@@ -7,7 +7,7 @@ import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
 import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-/* eslint-disable max-len */
+/* eslint-disable @fluentui/max-len */
 
 const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: '10px 0' },

@@ -84,8 +84,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _generateData(): ILegendOverflowData {
     const dataItems: ILegendItem[] = this.props.legends.map((legend: ILegend, index: number) => {
       return {
-        'aria-setsize': this.props.legends.length,
-        'aria-posinset': index + 1,
         title: legend.title,
         action: legend.action!,
         hoverAction: legend.hoverAction!,
@@ -106,7 +104,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const { overflowProps } = this.props;
     return (
       <OverflowSet
-        role={'listbox'}
         {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}
@@ -177,7 +174,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const hoverCardData = (
       <FocusZone
         direction={FocusZoneDirection.vertical}
-        role={'listbox'}
         {...this.props.focusZonePropsInHoverCard}
         className="hoverCardRoot"
       >
@@ -249,12 +245,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       >
         <div
           className={classNames.overflowIndicationTextStyle}
-          role={'combobox'}
           // eslint-disable-next-line react/jsx-no-bind
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
-          aria-expanded={this.state.isHoverCardVisible}
-          aria-label={`${items.length} ${overflowString}`}
-          data-is-focusable={true}
+          data-is-focusable={false}
         >
           {items.length} {overflowString}
         </div>
@@ -314,11 +307,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
     return (
       <button
-        aria-selected={this.state.selectedLegend === legend.title}
-        role={'option'}
-        aria-label={legend.title}
-        aria-setsize={data['aria-setsize']}
-        aria-posinset={data['aria-posinset']}
         key={index}
         className={classNames.legend}
         /* eslint-disable react/jsx-no-bind */
@@ -327,6 +315,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
+        data-is-focusable={false}
         /* eslint-enable react/jsx-no-bind */
       >
         <div className={this._getShapeClass(classNames, legend)} />

@@ -55,6 +55,15 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
+/**
+ * Handle global tab presses so that we can patch tabindexes on the fly.
+ */
+function _onKeyDownCapture(ev: KeyboardEvent) {
+  if (getCode(ev) === keyboardKey.Tab) {
+    _outerZones.forEach(zone => zone.updateTabIndexes());
+  }
+}
+
 export class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
   static propTypes = {
     className: PropTypes.string,
@@ -163,7 +172,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       _outerZones.add(this);
 
       if (this.windowElement && _outerZones.size === 1) {
-        this.windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
+        this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
       }
     }
 
@@ -216,7 +225,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       _outerZones.delete(this);
 
       if (this.windowElement && _outerZones.size === 0) {
-        this.windowElement.removeEventListener('keydown', this._onKeyDownCapture, true);
+        this.windowElement.removeEventListener('keydown', _onKeyDownCapture, true);
       }
     }
 
@@ -458,15 +467,6 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
 
     _.invoke(this.props, 'onFocus', ev);
-  };
-
-  /**
-   * Handle global tab presses so that we can patch tabindexes on the fly.
-   */
-  _onKeyDownCapture = (ev: KeyboardEvent) => {
-    if (getCode(ev) === keyboardKey.Tab) {
-      _outerZones.forEach(zone => zone.updateTabIndexes());
-    }
   };
 
   _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
