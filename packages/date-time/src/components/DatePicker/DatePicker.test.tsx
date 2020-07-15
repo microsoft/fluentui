@@ -99,26 +99,21 @@ describe('DatePicker', () => {
   });
 
   xit('should clear error message when required input has date text and allowTextInput is true', () => {
-    const domRef = React.createRef<HTMLDivElement>();
-    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} ref={domRef} />, datePicker => {
-      // const input = domRef.current?.querySelector('input');
-      const input = datePicker.root.find(node => node.type === 'input');
-      expect(input).toBeDefined();
+    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} />);
+    const textfield = datePicker.find(TextField);
+    const input = datePicker.find('input');
+    expect(input).toBeDefined();
+    expect(textfield.props().errorMessage).toBeUndefined();
 
-      const textField = datePicker.root.findByType(TextField)!;
-      expect(textField.props.errorMessage).toBeUndefined();
-
-      renderer.act(() => {
-        // open the datepicker then dismiss
-        input.props.onClick();
-        input.props.onClick();
-        expect(textField.props.errorMessage).toBe(' ');
-
-        input.props.onChange({ target: { value: 'Jan 1 2030' } });
-        input.props.onBlur();
-        expect(textField.props.errorMessage).toBeUndefined();
-      });
+    ReactTestUtils.act(() => {
+      input.simulate('click').simulate('click'); // open the datepicker then dismiss
+      datePicker.update();
+      expect(textfield.props().errorMessage).toBe(' ');
+      input.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
+      expect(textfield.props().errorMessage).toBeUndefined();
     });
+
+    datePicker.unmount();
   });
 
   xit('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
@@ -171,16 +166,13 @@ describe('DatePicker', () => {
     const onSelectDate = jest.fn();
     const datePicker = mount(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
 
-    datePicker.setState({ isDatePickerShown: true });
+    datePicker.find('i').simulate('click');
+
     ReactTestUtils.Simulate.click(
-      document.querySelector('[class^="dayIsToday"], [class*="dayIsToday"]') as HTMLButtonElement,
+      document.querySelector('[class^="daySelected"], [class*="daySelected"]') as HTMLButtonElement,
     );
 
     expect(onSelectDate).toHaveBeenCalledTimes(1);
-
-    datePicker.setState({ isDatePickerShown: false });
-
-    datePicker.unmount();
   });
 
   xit('should set "Calendar" as the Callout\'s aria-label', () => {
