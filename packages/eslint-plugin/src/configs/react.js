@@ -207,7 +207,7 @@ const config = {
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
 
-    // permanently disable due to redundancy with custom rules
+    // permanently disable due to performance issues (using custom rule `@fluentui/max-len` instead)
     'max-len': 'off',
 
     // permanently disable due to being unnecessary or having limited benefit for TS
