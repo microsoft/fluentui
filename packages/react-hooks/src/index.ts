@@ -12,3 +12,4 @@ export * from './useOnEvent';
 export * from './usePrevious';
 export * from './useSetInterval';
 export * from './useSetTimeout';
+export * from './useTagNameFromRef';

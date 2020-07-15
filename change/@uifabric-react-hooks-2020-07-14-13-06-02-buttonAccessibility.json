@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Adding useBehaviorKeyActions hook to process the key actions from component accessibility behaviors.",
+  "comment": "Adding useBehaviorKeyActions hook to process the key actions from component accessibility behaviors and useTagNameFromRef to derive the tagName to get correct behaviors from the components.",
   "packageName": "@uifabric/react-hooks",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch",

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { KeyActions } from '@fluentui/accessibility';
 import { getCode } from '@fluentui/keyboard-key';
 

@@ -23,7 +23,7 @@ export interface IUseBooleanCallbacks {
 export function useAsync(): Async;
 
 // @public (undocumented)
-export const useBehaviorKeyActions: <TElement>(keyActions?: KeyActions | undefined, eventHandlers?: import("react").DOMAttributes<TElement> | undefined) => import("react").DOMAttributes<TElement>;
+export const useBehaviorKeyActions: <TElement>(keyActions?: KeyActions | undefined, eventHandlers?: React.DOMAttributes<TElement> | undefined) => React.DOMAttributes<TElement>;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];
@@ -72,6 +72,9 @@ export type UseSetTimeoutReturnType = {
     setTimeout: (callback: () => void, duration: number) => number;
     clearTimeout: (id: number) => void;
 };
+
+// @public (undocumented)
+export const useTagNameFromRef: <TElement extends HTMLElement>(ref: React.RefObject<TElement>, defaultTag: string) => string;
 
 
 // (No @packageDocumentation comment for this package)

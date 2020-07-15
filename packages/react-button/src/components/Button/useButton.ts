@@ -20,7 +20,7 @@ export const useButton = (
   }));
   useFocusRects(ref as React.RefObject<HTMLElement>);
 
-  const buttonBehaviorProps = useButtonBehavior(props, ref);
+  const buttonBehaviorProps = useButtonBehavior(props, buttonRef);
   const { onKeyDown } = buttonBehaviorProps;
 
   return {
