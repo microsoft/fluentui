@@ -17,7 +17,7 @@
     "react-is": "^16.6.3"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.52.0",
+    "@fluentui/eslint-plugin": "^0.53.0",
     "@types/react-frame-component": "^4.1.1",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0"

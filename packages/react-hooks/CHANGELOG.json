@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix formatting in README",
+            "author": "olfedias@microsoft.com",
+            "commit": "3cc14fd0025a40c5ac6845439b0ab4b65b735cba",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/react-hooks_v7.5.0",
       "version": "7.5.0",
