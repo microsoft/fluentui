@@ -39,6 +39,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix cursor's behavior inside `DropdownSearchInput` @layershifter ([#13800](https://github.com/microsoft/fluentui/pull/13800))
 - Fix global styles to respect `hidden` HTML attribute @pompomon ([#13964](https://github.com/microsoft/fluentui/pull/13964))
 - Fix an issue with throwing errors when a component is rendered outside of `Provider` @layershifter ([#14010](https://github.com/microsoft/fluentui/pull/14010))
+- Fix for `TeamsIcon`. Renamed current `TeamsIcon` to `ContactGroupIcon`. `TeamsIcon` is now the colored app icon as per current naming standards for other icons in project. @TanelVari ([#13966](https://github.com/microsoft/fluentui/pull/13966))
 
 ### Features
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))
@@ -51,6 +52,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Documentation
 - Fix required version of CSB package, improve dependency generation for exported CodeSandboxes @layershifter ([#13637](https://github.com/microsoft/fluentui/pull/13637))
 - Fix docsite not loading in IE 11 @miroslavstastny ([#13766](https://github.com/microsoft/fluentui/pull/13766))
+- Fix `SplitButton` example for controlled menu open @pompomon ([#14023](https://github.com/microsoft/fluentui/pull/14023))
 - Add *Debugging* page @miroslavstastny ([#13818](https://github.com/microsoft/fluentui/pull/13818))
 
 <!--------------------------------[ v0.50.0 ]------------------------------- -->
