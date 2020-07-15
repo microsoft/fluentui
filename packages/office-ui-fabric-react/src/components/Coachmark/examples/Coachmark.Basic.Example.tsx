@@ -50,7 +50,7 @@ const buttonProps2: IButtonProps = {
   text: 'Try it again',
 };
 
-const dropdownOptions = [
+const IDropdownOption = [
   { key: 'A', text: 'Top Left Edge', data: DirectionalHint.topLeftEdge },
   { key: 'B', text: 'Top Center', data: DirectionalHint.topCenter },
   { key: 'C', text: 'Top Right Edge', data: DirectionalHint.topRightEdge },
@@ -69,9 +69,7 @@ const dropdownOptions = [
 
 export const CoachmarkBasicExample: React.FunctionComponent = () => {
   const targetButton = React.useRef<HTMLDivElement>(null);
-  const [isCoachmarkVisible, { setFalse: setFalseCoachmarkVisible, setTrue: setTrueCoachmarkVisible }] = useBoolean(
-    false,
-  );
+  const [isCoachmarkVisible, { setFalse: hideCoachmark, setTrue: showCoachmark }] = useBoolean(false);
   const [coachmarkPosition, setCoachmarkPosition] = React.useState<DirectionalHint>(DirectionalHint.bottomAutoEdge);
   const [dropdownSelectedOptionKey, setDropdownSelectedOptionKey] = React.useState<string | number>('H');
 
@@ -86,17 +84,14 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
         <Dropdown
           label="Coachmark position"
           selectedKey={dropdownSelectedOptionKey}
-          onFocus={setFalseCoachmarkVisible}
-          options={dropdownOptions}
+          onFocus={hideCoachmark}
+          options={IDropdownOption}
           onChange={onDropdownChange}
         />
       </div>
 
       <div className={classNames.buttonContainer} ref={targetButton}>
-        <DefaultButton
-          onClick={setTrueCoachmarkVisible}
-          text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'}
-        />
+        <DefaultButton onClick={showCoachmark} text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'} />
       </div>
       {isCoachmarkVisible && (
         <Coachmark
@@ -117,7 +112,7 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
             closeButtonAriaLabel="Close"
             primaryButtonProps={buttonProps}
             secondaryButtonProps={buttonProps2}
-            onDismiss={setFalseCoachmarkVisible}
+            onDismiss={hideCoachmark}
             ariaDescribedBy={'example-description1'}
             ariaLabelledBy={'example-label1'}
           >

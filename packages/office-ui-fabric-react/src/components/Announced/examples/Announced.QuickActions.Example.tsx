@@ -15,8 +15,6 @@ import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import { useSetTimeout, useConst } from '@uifabric/react-hooks';
 
-const exampleItems: IAnnouncedQuickActionsExampleItem[] = [];
-
 const columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
   const fieldName = name.replace(' ', '').toLowerCase();
   return {
@@ -61,6 +59,21 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const detailsList = React.useRef<IDetailsList>(null);
   const textField = React.useRef<ITextField>(null);
   const selection = useConst(() => new Selection());
+  // Populate with items for demos.
+  const exampleItems = useConst(() => {
+    const itemsList: IAnnouncedQuickActionsExampleItem[] = [];
+    for (let i = 0; i < 20; i++) {
+      itemsList.push({
+        key: i,
+        name: 'Item ' + i,
+        modified: getMockDateString(),
+        modifiedby: names[Math.floor(Math.random() * names.length)],
+        filesize: Math.floor(Math.random() * 30).toString() + ' MB',
+      });
+    }
+    return itemsList;
+  });
+
   const [items, setItems] = React.useState<IAnnouncedQuickActionsExampleItem[]>(exampleItems);
   const [renameDialogOpen, setRenameDialogOpen] = React.useState<boolean>(false);
 
@@ -68,7 +81,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const [announced, setAnnounced] = React.useState<JSX.Element | undefined>(undefined);
   const [previousAnnouncedValue, setPreviousAnnouncedValue] = React.useState<JSX.Element | undefined>(undefined);
 
-  const safeSetTimeout = useSetTimeout();
+  const { setTimeout } = useSetTimeout();
 
   const onRenderRow = (props: IDetailsRowProps): JSX.Element => {
     return <DetailsRow {...props} />;
@@ -144,25 +157,10 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
     setRenameDialogOpen(false);
   };
 
-  // Populate with items for demos.
-  React.useEffect(() => {
-    if (items.length === 0) {
-      for (let i = 0; i < 20; i++) {
-        items.push({
-          key: i,
-          name: 'Item ' + i,
-          modified: getMockDateString(),
-          modifiedby: names[Math.floor(Math.random() * names.length)],
-          filesize: Math.floor(Math.random() * 30).toString() + ' MB',
-        });
-      }
-    }
-  }, []);
-
   // componentDidUpdate
   React.useEffect(() => {
     if (previousAnnouncedValue !== announced && announced !== undefined) {
-      safeSetTimeout(() => {
+      setTimeout(() => {
         setAnnounced(undefined);
         setPreviousAnnouncedValue(announced);
       }, 2000);

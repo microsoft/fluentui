@@ -48,7 +48,7 @@ export const AnnouncedLazyLoadingExample = () => {
   const [timeSinceLastAnnounce, setTimeSinceLastAnnounce] = React.useState<number>(0);
   const [loading, { toggle: toggleLoading }] = useBoolean(false);
   const percentComplete = total / PHOTO_COUNT;
-  const safeSetInterval = useSetInterval();
+  const { setInterval, clearInterval } = useSetInterval();
 
   const createPhotos: IPhoto[] = useConst(() => {
     const width = 100;
@@ -68,7 +68,7 @@ export const AnnouncedLazyLoadingExample = () => {
   React.useEffect(() => {
     if (loading) {
       setTotal(0);
-      const itemIntervalId = safeSetInterval(() => {
+      const itemIntervalId = setInterval(() => {
         setTotal((t: number) => {
           if (t < PHOTO_COUNT) {
             return t + 1;
@@ -79,7 +79,7 @@ export const AnnouncedLazyLoadingExample = () => {
         });
       }, 500);
 
-      const announceIntervalId = safeSetInterval(() => {
+      const announceIntervalId = setInterval(() => {
         setTimeSinceLastAnnounce(timeSinceLastAnnounce + 1);
         if (timeSinceLastAnnounce === DELAY || total === PHOTO_COUNT) {
           setAnnounced(<Announced message={`${total} of ${PHOTO_COUNT} photos loaded`} />);

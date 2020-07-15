@@ -5,18 +5,13 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { SuggestionsStore, FloatingPeoplePicker } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { SelectedPeopleList, IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
-import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
+import { useConst } from '@uifabric/react-hooks';
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
   searchMoreAvailable: boolean;
-}
-interface IClassNames {
-  picker: IStyle;
-  headerItem: IStyle;
-  footerItem: IStyle;
-  to: IStyle;
 }
 
 const theme = getTheme();
@@ -24,7 +19,7 @@ const theme = getTheme();
 const startsWith = (text: string, filterText: string): boolean => {
   return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
 };
-const classNames: IProcessedStyleSet<IClassNames> = mergeStyleSets({
+const classNames = mergeStyleSets({
   picker: { maxWidth: 400, marginBottom: 15 },
   headerItem: {
     borderBottom: '1px solid ' + theme.palette.neutralLight,
@@ -49,47 +44,16 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
   const [mostRecentlyUsed, setMostRecentlyUsed] = React.useState<IPersonaProps[]>(mru);
   const [searchMoreAvailable, setSearchMoreAvailable] = React.useState<boolean>(true);
 
-  const renderExtendedPicker = (): JSX.Element => {
-    return (
-      <ExtendedPeoplePicker
-        floatingPickerProps={floatingPickerProps}
-        selectedItemsListProps={selectedItemsListProps}
-        onRenderFloatingPicker={FloatingPeoplePicker}
-        onRenderSelectedItems={SelectedPeopleList}
-        className={classNames.picker}
-        key="normal"
-        inputProps={{
-          onBlur: () => console.log('onBlur called'),
-          onFocus: () => console.log('onFocus called'),
-          'aria-label': 'People Picker',
-        }}
-        componentRef={picker}
-        headerComponent={renderHeader()}
-        focusZoneProps={focusZoneProps}
-      />
-    );
-  };
-
-  const renderHeader = (): JSX.Element => {
-    return (
-      <div className={classNames.to} data-is-focusable>
-        To:
-      </div>
-    );
-  };
-
   const getEditingItemText = (item: IExtendedPersonaProps): string => {
     return item.text as string;
   };
 
   const onSetFocusButtonClicked = (): void => {
-    if (picker.current) {
-      picker.current.focus();
-    }
+    picker.current?.focus();
   };
 
   const onExpandItem = (item: IExtendedPersonaProps): void => {
-    const selectedItemsList = picker.current && picker.current.selectedItemsList.current;
+    const selectedItemsList = picker.current?.selectedItemsList.current;
     if (selectedItemsList) {
       (selectedItemsList as SelectedPeopleList).replaceItem(item, getExpandedGroupItems(item));
     }
@@ -123,7 +87,7 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
 
   const returnMostRecentlyUsed = (): IPersonaProps[] | Promise<IPersonaProps[]> | null => {
     let currentMostRecentlyUsed = mostRecentlyUsed;
-    const items = (picker.current && picker.current.items) || [];
+    const items = picker.current?.items || [];
     currentMostRecentlyUsed = removeDuplicates(currentMostRecentlyUsed, items);
     return convertResultsToPromise(currentMostRecentlyUsed);
   };
@@ -138,7 +102,7 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
   };
 
   const shouldShowSuggestedContacts = (): boolean => {
-    return !!(picker.current && picker.current.inputElement) && picker.current.inputElement.value === '';
+    return picker.current?.inputElement?.value === '';
   };
 
   const listContainsPersona = (persona: IPersonaProps, personas?: IPersonaProps[]): boolean => {
@@ -165,24 +129,20 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
     return item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
   };
 
-  const suggestionProps = {
+  const suggestionProps = useConst({
     showRemoveButtons: true,
     headerItemsProps: [
       {
         renderItem: () => {
           return (
-            <div className={classNames.headerItem}>
-              Use this address: {picker.current && picker.current.inputElement ? picker.current.inputElement.value : ''}
-            </div>
+            <div className={classNames.headerItem}>Use this address: {picker.current?.inputElement?.value || ''}</div>
           );
         },
         shouldShow: () => {
-          return (
-            !!(picker.current && picker.current.inputElement) && picker.current.inputElement.value.indexOf('@') > -1
-          );
+          return !!picker.current?.inputElement && picker.current.inputElement.value.indexOf('@') > -1;
         },
         onExecute: () => {
-          const floatingPicker = picker.current && picker.current.floatingPicker.current;
+          const floatingPicker = picker.current?.floatingPicker.current;
           if (floatingPicker) {
             floatingPicker.forceResolveSuggestion();
           }
@@ -202,7 +162,7 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
           return <div className={classNames.footerItem}>No results</div>;
         },
         shouldShow: () => {
-          const floatingPicker = picker.current && picker.current.floatingPicker.current;
+          const floatingPicker = picker.current?.floatingPicker.current;
           return !!floatingPicker && floatingPicker.suggestions.length === 0;
         },
       },
@@ -222,7 +182,7 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
     shouldSelectFirstItem: () => {
       return !shouldShowSuggestedContacts();
     },
-  };
+  });
 
   const floatingPickerProps = {
     suggestionsStore: new SuggestionsStore<IPersonaProps>(),
@@ -256,7 +216,26 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      {renderExtendedPicker()}
+      <ExtendedPeoplePicker
+        floatingPickerProps={floatingPickerProps}
+        selectedItemsListProps={selectedItemsListProps}
+        onRenderFloatingPicker={FloatingPeoplePicker}
+        onRenderSelectedItems={SelectedPeopleList}
+        className={classNames.picker}
+        key="normal"
+        inputProps={{
+          onBlur: () => console.log('onBlur called'),
+          onFocus: () => console.log('onFocus called'),
+          'aria-label': 'People Picker',
+        }}
+        componentRef={picker}
+        headerComponent={
+          <div className={classNames.to} data-is-focusable>
+            To:
+          </div>
+        }
+        focusZoneProps={focusZoneProps}
+      />
       <PrimaryButton text="Set focus" onClick={onSetFocusButtonClicked} />
     </div>
   );
