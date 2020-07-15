@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-07-13T19:23:40.216Z"
+}

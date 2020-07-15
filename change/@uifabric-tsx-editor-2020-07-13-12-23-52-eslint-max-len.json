@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-07-13T19:23:50.775Z"
+}
