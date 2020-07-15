@@ -10,7 +10,7 @@ import {
 import { Maybe } from '../../maybe';
 import { EnumMap } from '../types';
 
-export function renameProp(
+export function renameProp<T>(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],
   toRename: string,
   replacementName: string,
