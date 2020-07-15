@@ -183,7 +183,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -195,9 +195,6 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     }
               >
                 <button
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={2}
                   className=
 
                       {
@@ -234,12 +231,12 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
+                  data-is-focusable={false}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -284,9 +281,6 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                     }
               >
                 <button
-                  aria-posinset={2}
-                  aria-selected={false}
-                  aria-setsize={2}
                   className=
 
                       {
@@ -323,12 +317,12 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
+                  data-is-focusable={false}
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
