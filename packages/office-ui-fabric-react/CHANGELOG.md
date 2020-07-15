@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2020 12:41:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.123.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.0)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.122.0..office-ui-fabric-react_v7.123.0)
+
+### Minor changes
+
+- Allow consumer of ContextualMenu control to override the role of internal list. ([PR #13908](https://github.com/microsoft/fluentui/pull/13908) by kinhln@microsoft.com)
+
+### Patches
+
+- Fix screen reader behavior on picker action buttons (#13291) ([PR #13627](https://github.com/microsoft/fluentui/pull/13627) by sarah.higley@microsoft.com)
 
 ## [7.122.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.122.0)
 
