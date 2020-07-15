@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2020 12:41:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.53.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.0)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.52.0..@fluentui/eslint-plugin_v0.53.0)
+
+### Minor changes
+
+- Add custom max-len rule ([PR #13994](https://github.com/microsoft/fluentui/pull/13994) by elcraig@microsoft.com)
 
 ## [0.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.52.0)
 
