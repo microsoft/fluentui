@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.53.0",
+      "version": "0.53.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add custom max-len rule",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@fluentui/eslint-plugin_v0.52.0",
       "version": "0.52.0",
