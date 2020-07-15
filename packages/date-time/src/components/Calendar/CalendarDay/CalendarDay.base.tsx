@@ -57,7 +57,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
   });
 
   const monthAndYear = dateTimeFormatter.formatMonthYear(navigatedDate, strings);
-  const HeaderButtonComponentType = !!onHeaderSelect ? 'button' : 'div';
+  const HeaderButtonComponentType = onHeaderSelect ? 'button' : 'div';
 
   return (
     <div className={classNames.root} id={dayPickerId} ref={forwardedRef}>

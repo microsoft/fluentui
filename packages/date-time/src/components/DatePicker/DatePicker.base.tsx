@@ -418,6 +418,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
         if (ev.altKey && !this.state.isDatePickerShown) {
           this.showDatePickerPopup();
         }
+        break;
       default:
         break;
     }
