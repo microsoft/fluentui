@@ -12,8 +12,19 @@ const Participant: React.FC<{
 }> = ({ image, name, status, role, isTalking, isMuted }) => {
   const [muted, setMuted] = React.useState(isMuted);
   const [talking, setTalking] = React.useState(isTalking);
+  const [openMenu, setOpenMenu] = React.useState(false);
+
   return (
-    <Flex fill gap="gap.small" space="between" variables={{ isRelative: true }}>
+    <Flex
+      fill
+      gap="gap.small"
+      space="between"
+      onContextMenu={e => {
+        setOpenMenu(!openMenu);
+        e.preventDefault();
+      }}
+      variables={{ isRelative: true }}
+    >
       {talking ? (
         <Animation name="talking">
           <Avatar variables={{ isTalking: true }} image={image} name={name} status={status} />
@@ -33,6 +44,8 @@ const Participant: React.FC<{
             <MicOffIcon />
           </FlexItem>
           <MenuButton
+            open={openMenu}
+            onClick={() => setOpenMenu(!openMenu)}
             position="above"
             align="end"
             trigger={<MoreIcon />}
@@ -55,6 +68,8 @@ const Participant: React.FC<{
       ) : (
         <FlexItem push>
           <MenuButton
+            open={openMenu}
+            onClick={() => setOpenMenu(!openMenu)}
             position="above"
             align="end"
             trigger={<MoreIcon />}
