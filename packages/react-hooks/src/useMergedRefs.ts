@@ -1,4 +1,4 @@
-import { useRef, useCallback, Ref, MutableRefObject } from 'react';
+import { Ref, MutableRefObject } from 'react';
 
 /**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
@@ -6,13 +6,8 @@ import { useRef, useCallback, Ref, MutableRefObject } from 'react';
  * @param refs- Refs to collectively update with one ref value.
  */
 export function useMergedRefs<T>(...refs: Ref<T>[]): (instance: T) => void {
-  const state = useRef<(Ref<T> | undefined)[]>();
-
-  // Update refs list.
-  state.current = refs;
-
-  return useCallback((value: T) => {
-    for (const ref of state.current!) {
+  return (value: T) => {
+    for (const ref of refs) {
       if (typeof ref === 'function') {
         ref(value);
       } else if (ref) {
@@ -20,5 +15,5 @@ export function useMergedRefs<T>(...refs: Ref<T>[]): (instance: T) => void {
         ((ref as unknown) as MutableRefObject<T>).current = value;
       }
     }
-  }, []);
+  };
 }

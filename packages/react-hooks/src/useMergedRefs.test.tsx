@@ -10,7 +10,7 @@ describe('useMergedRefs', () => {
     wrapper = undefined;
   });
 
-  it('always returns the same ref (refs should be immutable)', () => {
+  it('always returns the different ref instance', () => {
     let lastMergedRef;
 
     const TestComponent: React.FunctionComponent = () => {
@@ -23,7 +23,7 @@ describe('useMergedRefs', () => {
     wrapper.setProps({});
     const ref2 = lastMergedRef;
 
-    expect(ref1).toBe(ref2);
+    expect(ref1).not.toBe(ref2);
   });
 
   it('updates all provided refs', () => {
@@ -40,49 +40,27 @@ describe('useMergedRefs', () => {
     expect(refValue).toBe(true);
   });
 
-  it('reuses the same ref callback if refs remain stable', () => {
-    const refObject: React.RefObject<boolean> = React.createRef<boolean>();
+  it('refs are called when component re-renders', () => {
+    const refObject = React.createRef<HTMLElement>();
+    let refValue: HTMLElement | null = null;
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const refValueFunc = (val: boolean) => {};
+    const TestComponent = React.forwardRef((props: { content?: string }, ref) => {
+      const mergedRef = useMergedRefs(ref, (element: HTMLElement) => {
+        refValue = element;
+      });
+      return <div ref={mergedRef}>{props.content || 'content'}</div>;
+    });
 
-    let refCallback: Function | undefined = undefined;
-    const TestComponent: React.FunctionComponent = () => {
-      refCallback = useMergedRefs<boolean>(refObject, refValueFunc);
-      return null;
-    };
+    wrapper = mount(<TestComponent ref={refObject} />);
 
-    wrapper = mount(<TestComponent />);
+    expect(refObject.current).toBeDefined();
+    expect(refObject.current?.innerHTML).toBe('content');
+    expect(refValue).toBe(refObject.current);
 
-    const firstRefCallback = refCallback;
+    wrapper.setProps({ content: 'content2' });
 
-    // Re-render the component
-    wrapper.update();
-
-    expect(refCallback).toBe(firstRefCallback);
-  });
-
-  it('handles changing ref callbacks', () => {
-    const refObject: React.RefObject<boolean> = React.createRef<boolean>();
-
-    let firstRefValue: boolean | null = null;
-    let refValueFunc = (val: boolean) => (firstRefValue = val);
-
-    const TestComponent: React.FunctionComponent = () => {
-      const mergedRef = useMergedRefs<boolean>(refObject, refValueFunc);
-      mergedRef(true);
-      return null;
-    };
-
-    wrapper = mount(<TestComponent />);
-
-    let secondRefValue: boolean | null = null;
-    refValueFunc = (val: boolean) => (secondRefValue = val);
-
-    // Re-render the component
-    wrapper.setProps({});
-
-    expect(firstRefValue).toBe(true);
-    expect(secondRefValue).toBe(true);
+    expect(refObject.current).toBeDefined();
+    expect(refObject.current?.innerHTML).toBe('content2');
+    expect(refValue).toBe(refObject.current);
   });
 });
