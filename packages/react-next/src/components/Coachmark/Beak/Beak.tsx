@@ -11,8 +11,6 @@ export const BEAK_WIDTH = 18;
 export const Beak = React.forwardRef((props: IBeakProps, forwardedRef: React.Ref<HTMLDivElement>) => {
   const { left, top, bottom, right, color, direction = RectangleEdge.top } = props;
 
-  React.useImperativeHandle(props.componentRef, () => ({}), []);
-
   let svgHeight: number;
   let svgWidth: number;
 

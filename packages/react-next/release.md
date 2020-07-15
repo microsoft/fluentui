@@ -2,6 +2,11 @@
 
 ## Breaking changes
 
+### Beak
+
+- Removed empty `IBeak` interface
+- Removed `componentRef` prop
+
 ### Checkbox
 
 - Removed `styles` prop.
