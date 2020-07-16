@@ -2,6 +2,13 @@
 
 ## Breaking changes
 
+### SpinButton
+
+- Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with
+  other components.
+- Replaced `getClassNames` legacy prop with `styles` prop to bring component consistent to other components
+  and improve cachability of internal styles.
+
 ### Checkbox
 
 - Removed `styles` prop.
