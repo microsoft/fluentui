@@ -73,10 +73,13 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
   const [coachmarkPosition, setCoachmarkPosition] = React.useState<DirectionalHint>(DirectionalHint.bottomAutoEdge);
   const [dropdownSelectedOptionKey, setDropdownSelectedOptionKey] = React.useState<string | number>('H');
 
-  const onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setCoachmarkPosition(option.data);
-    setDropdownSelectedOptionKey(option.key);
-  };
+  const onDropdownChange = React.useCallback(
+    (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+      setCoachmarkPosition(option.data);
+      setDropdownSelectedOptionKey(option.key);
+    },
+    [],
+  );
 
   return (
     <div className={classNames.root}>

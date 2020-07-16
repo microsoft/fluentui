@@ -48,9 +48,9 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
     return item.text as string;
   };
 
-  const onSetFocusButtonClicked = (): void => {
+  const onSetFocusButtonClicked = React.useCallback((): void => {
     picker.current?.focus();
-  };
+  }, []);
 
   const onExpandItem = (item: IExtendedPersonaProps): void => {
     const selectedItemsList = picker.current?.selectedItemsList.current;
