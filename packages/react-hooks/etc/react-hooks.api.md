@@ -52,6 +52,9 @@ export function useOnEvent<TElement extends Element, TEvent extends Event>(eleme
 export function usePrevious<T>(value: T): T | undefined;
 
 // @public
+export function useRefEffect<T>(callback: (value: T) => (() => void) | void, initialValue?: T | null): [/*ref:*/ React.RefObject<T>, /*setRef:*/ (value: T | null) => void];
+
+// @public
 export const useSetInterval: () => UseSetIntervalReturnType;
 
 // @public (undocumented)

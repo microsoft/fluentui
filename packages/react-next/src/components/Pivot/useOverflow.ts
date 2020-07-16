@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { useRefEffect } from '@uifabric/react-hooks';
 import { getWindow } from '../../Utilities';
 import { observeResize } from './observeResize';
-import { useRefEffect } from './useRefEffect';
 
 /**
  * Callback to notify the user that the items in the overflow have changed. This should ensure that the overflow menu
