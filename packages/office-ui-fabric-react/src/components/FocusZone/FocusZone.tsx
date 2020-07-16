@@ -24,7 +24,7 @@ import {
   warnDeprecations,
   portalContainsElement,
   IPoint,
-  findScrollableParent
+  findScrollableParent,
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -48,9 +48,9 @@ function getRootClass(): string {
       {
         selectors: {
           ':focus': {
-            outline: 'none'
-          }
-        }
+            outline: 'none',
+          },
+        },
       },
       focusZoneClass
     );
@@ -70,7 +70,7 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
 export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
-    direction: FocusZoneDirection.bidirectional
+    direction: FocusZoneDirection.bidirectional,
   };
 
   private _disposables: Function[] = [];
@@ -105,6 +105,17 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return _outerZones.size;
   }
 
+  /**
+   * Handle global tab presses so that we can patch tabindexes on the fly.
+   * HEADS UP: This must not be an arrow function in order to be referentially equal among instances
+   * for ref counting to work correctly!
+   */
+  private static _onKeyDownCapture(ev: KeyboardEvent): void {
+    if (ev.which === KeyCodes.tab) {
+      _outerZones.forEach((zone) => zone._updateTabIndexes());
+    }
+  }
+
   constructor(props: IFocusZoneProps) {
     super(props);
     // Manage componentRef resolution.
@@ -116,7 +127,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         allowTabKey: 'handleTabKey',
         elementType: 'as',
         ariaDescribedBy: 'aria-describedby',
-        ariaLabelledBy: 'aria-labelledby'
+        ariaLabelledBy: 'aria-labelledby',
       });
     }
 
@@ -124,7 +135,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     this._focusAlignment = {
       x: 0,
-      y: 0
+      y: 0,
     };
 
     this._processingTabKey = false;
@@ -152,7 +163,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         _outerZones.add(this);
 
         if (windowElement && _outerZones.size === 1) {
-          this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true));
+          this._disposables.push(on(windowElement, 'keydown', FocusZone._onKeyDownCapture, true));
         }
       }
 
@@ -415,15 +426,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _onBlur = (): void => {
     this._setParkedFocus(false);
-  };
-
-  /**
-   * Handle global tab presses so that we can patch tabindexes on the fly.
-   */
-  private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    if (ev.which === KeyCodes.tab) {
-      _outerZones.forEach((zone) => zone._updateTabIndexes());
-    }
   };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
@@ -1040,7 +1042,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       if (!this._focusAlignment) {
         this._focusAlignment = {
           x: left,
-          y: top
+          y: top,
         };
       }
 

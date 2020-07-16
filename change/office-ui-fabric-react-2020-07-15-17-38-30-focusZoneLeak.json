@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: Fix onKeyDownCapture event listener leak.",
+  "packageName": "office-ui-fabric-react",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-15T17:38:30.269Z"
+}
