@@ -16,10 +16,10 @@
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"],
+    "types": ["webpack-env", "custom-global"],
     "paths": {
-      "{{{packageNpmName}}}/lib/*": ["./src/*"],
-      "{{{packageNpmName}}}": ["./src"]
+      "@fluentui/react-flex/lib/*": ["./src/*"],
+      "@fluentui/react-flex": ["./src"]
     }
   },
   "include": ["src"]
