@@ -26,6 +26,10 @@ const avatars = [
   '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',
 ];
 
+function getAvatar(id) {
+  return avatars[id % avatars.length];
+}
+
 const presenters = [
   {
     id: 40,
@@ -34,7 +38,7 @@ const presenters = [
         isMuted
         name="Ashton hoppe"
         role="Guest"
-        image={avatars[0]}
+        image={getAvatar(0)}
         status={{
           color: 'green',
           icon: <AcceptIcon />,
@@ -50,7 +54,7 @@ const presenters = [
         isMuted
         name="Corene macejkovic"
         role="Guest"
-        image={avatars[1]}
+        image={getAvatar(1)}
         status={{
           color: 'red',
           title: 'Away',
@@ -65,7 +69,7 @@ const presenters = [
         isMuted
         name="Mireya heathcote"
         role="Guest"
-        image={avatars[2]}
+        image={getAvatar(2)}
         status={{
           color: 'green',
           title: 'Available',
@@ -80,7 +84,7 @@ const presenters = [
         name="Kelly davis"
         isTalking
         role="Software Engineer"
-        image={avatars[3]}
+        image={getAvatar(3)}
         status={{
           color: 'green',
           title: 'Available',
@@ -95,7 +99,7 @@ const presenters = [
         isMuted
         name="Aurore gusikowski"
         role="Guest"
-        image={avatars[4]}
+        image={getAvatar(4)}
         status={{
           color: 'green',
           title: 'Available',
@@ -109,7 +113,7 @@ const presenters = [
       <Participant
         isMuted
         name="Corene macejkovic"
-        image={avatars[5]}
+        image={getAvatar(5)}
         role="Guest"
         status={{
           color: 'red',
@@ -125,7 +129,7 @@ const presenters = [
         isMuted
         name="Horace ritchie"
         role="Guest"
-        image={avatars[6]}
+        image={getAvatar(6)}
         status={{
           color: 'green',
           title: 'Available',
@@ -140,7 +144,7 @@ const presenters = [
         name="Bradly wiza"
         isTalking
         role="Software Engineer"
-        image={avatars[7]}
+        image={getAvatar(7)}
         status={{
           color: 'green',
           title: 'Available',
@@ -154,7 +158,7 @@ const presenters = [
       <Participant
         isMuted
         name="Malinda gulgowski"
-        image={avatars[8]}
+        image={getAvatar(8)}
         role="Manager"
         status={{
           color: 'green',
@@ -170,7 +174,7 @@ const presenters = [
         isMuted
         name="Immanuel anderson"
         role="Guest"
-        image={avatars[9]}
+        image={getAvatar(9)}
         status={{
           color: 'red',
           title: 'Away',
@@ -185,7 +189,7 @@ const presenters = [
         isMuted
         name="Moses harris"
         role="Guest"
-        image={avatars[10]}
+        image={getAvatar(10)}
         status={{
           color: 'green',
           title: 'Available',
