@@ -1,11 +1,14 @@
 import * as React from 'react';
 
-import ComponentPerfExample from '../../../components/ComponentDoc/ComponentPerfExample';
+import PrototypePerfExample from '../../../components/ComponentDoc/PrototypePerfExample';
 import ExampleSection from '../../../components/ComponentDoc/ExampleSection';
 
 const PerformanceTests = () => (
   <ExampleSection title="Roster Performance">
-    <ComponentPerfExample title="Roster" examplePath="components/PerformanceTests/Performance/Roster.perf" />
+    <PrototypePerfExample
+      title="Roster (containing 50 people)"
+      examplePath="components/PerformanceTests/Performance/Roster.perf"
+    />
   </ExampleSection>
 );
 
