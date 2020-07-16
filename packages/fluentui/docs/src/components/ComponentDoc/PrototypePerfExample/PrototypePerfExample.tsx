@@ -7,12 +7,13 @@ import { Accordion, Flex, Segment, Menu, Loader } from '@fluentui/react-northsta
 
 import PrototypeExampleControls from './PrototypePerfControls';
 
-const PerfChart = React.lazy(async () => ({
-  default: (await import(/* webpackChunkName: "component-chart" */ './PrototypePerfChart')).PrototypePerfChart,
+const ComponentPerfChart = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "component-chart" */ '../ComponentPerfExample/ComponentPerfChart'))
+    .ComponentPerfChart,
 }));
-const ResourcesChart = React.lazy(async () => ({
-  default: (await import(/* webpackChunkName: "component-chart" */ './PrototypeResourcesChart'))
-    .PrototypeResourcesChart,
+const ComponentResourcesChart = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "component-chart" */ '../ComponentPerfExample/ComponentResourcesChart'))
+    .ComponentResourcesChart,
 }));
 
 export interface PrototypePerfExampleProps {
@@ -56,9 +57,9 @@ const PrototypePerfExample: React.FC<PrototypePerfExampleProps> = props => {
           </Flex>
           <React.Suspense fallback={<Loader />}>
             {currentChart === 'perf' ? (
-              <PerfChart perfTestName={perfTestName} />
+              <ComponentPerfChart perfTestName={perfTestName} />
             ) : (
-              <ResourcesChart perfTestName={perfTestName} />
+              <ComponentResourcesChart perfTestName={perfTestName} />
             )}
           </React.Suspense>
         </Segment>
