@@ -93,33 +93,11 @@ const range = (start: number, end: number): number[] => {
 };
 
 export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () => {
-  const [state, setState] = React.useState<IExampleOptions>({
-    stackWidth: 100,
-    containerHeight: 150,
-    horizontalAlignment: 'start',
-    verticalAlignment: 'start',
-    overflow: 'visible',
-  });
-
-  const onWidthChange = (value: number): void => {
-    setState({ ...state, stackWidth: value });
-  };
-
-  const onHeightChange = (value: number): void => {
-    setState({ ...state, containerHeight: value });
-  };
-
-  const onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setState({ ...state, horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
-  };
-
-  const onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setState({ ...state, verticalAlignment: option.key as IStackProps['verticalAlign'] });
-  };
-
-  const onOverflowChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setState({ ...state, overflow: option.key as Overflow });
-  };
+  const [stackWidth, setStackWidth] = React.useState<number>(100);
+  const [containerHeight, setContainerHeight] = React.useState<number>(150);
+  const [horizontalAlignment, setHorizontalAlignment] = React.useState<IStackProps['horizontalAlign']>('start');
+  const [verticalAlignment, setVerticalAlignment] = React.useState<IStackProps['verticalAlign']>('start');
+  const [overflow, setOverflow] = React.useState<Overflow>('visible');
 
   return (
     <Stack tokens={sectionStackTokens}>
@@ -132,7 +110,8 @@ export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () =>
             step={1}
             defaultValue={100}
             showValue
-            onChange={onWidthChange}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(value: number): void => setStackWidth(value)}
           />
         </Stack.Item>
         <Stack.Item grow>
@@ -143,7 +122,8 @@ export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () =>
             step={1}
             defaultValue={150}
             showValue
-            onChange={onHeightChange}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(value: number): void => setContainerHeight(value)}
           />
         </Stack.Item>
       </Stack>
@@ -151,34 +131,45 @@ export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () =>
       <Stack horizontal tokens={configureStackTokens}>
         <Stack.Item grow>
           <Dropdown
-            selectedKey={state.horizontalAlignment}
+            selectedKey={horizontalAlignment}
             placeholder="Select Horizontal Alignment"
             label="Horizontal alignment:"
             options={horizontalAlignmentOptions}
-            onChange={onHorizontalAlignChange}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void =>
+              setHorizontalAlignment(option.key as IStackProps['horizontalAlign'])
+            }
           />
         </Stack.Item>
         <Stack.Item grow>
           <Dropdown
-            selectedKey={state.verticalAlignment}
+            selectedKey={verticalAlignment}
             placeholder="Select Vertical Alignment"
             label="Vertical alignment:"
             options={verticalAlignmentOptions}
-            onChange={onVerticalAlignChange}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void =>
+              setVerticalAlignment(option.key as IStackProps['verticalAlign'])
+            }
           />
         </Stack.Item>
         <Stack.Item grow>
           <Dropdown
-            selectedKey={state.overflow}
+            selectedKey={overflow}
             placeholder="Select Overflow"
             label="Overflow:"
             options={overflowOptions}
-            onChange={onOverflowChange}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void =>
+              setOverflow(option.key as Overflow)
+            }
           />
         </Stack.Item>
       </Stack>
 
-      <HorizontalStackWrapAdvancedExampleContent {...state} />
+      <HorizontalStackWrapAdvancedExampleContent
+        {...{ stackWidth, containerHeight, horizontalAlignment, verticalAlignment, overflow }}
+      />
     </Stack>
   );
 };

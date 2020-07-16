@@ -13,6 +13,7 @@ import {
   IStackProps,
   TextField,
 } from 'office-ui-fabric-react';
+import { useBoolean } from '@uifabric/react-hooks';
 
 export interface IExampleOptions {
   numItems: number;
@@ -51,11 +52,10 @@ const verticalAlignmentOptions: IDropdownOption[] = [
 // Tokens definition
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
-
 const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
 
-const range = (start: number, end: number): number[] => {
+const createNumberRange = (start: number, end: number): number[] => {
   const result = [];
   for (let i = start; i <= end; i++) {
     result.push(i);
@@ -82,6 +82,7 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
     hideEmptyChildren,
     emptyChildren,
   } = props;
+
   // Styles definition
   const stackStyles: IStackStyles = {
     root: [
@@ -100,6 +101,7 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
       overflow: preventOverflow ? 'hidden' : ('visible' as 'hidden' | 'visible'),
     },
   };
+
   const stackItemStyles: IStackItemStyles = {
     root: {
       alignItems: 'center',
@@ -129,7 +131,7 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
       styles={stackStyles}
       tokens={exampleStackTokens}
     >
-      {range(1, numItems).map((value: number, index: number) => {
+      {createNumberRange(1, numItems).map((value: number, index: number) => {
         if (emptyChildren.indexOf(value.toString()) !== -1) {
           return hideEmptyChildren ? (
             <Stack.Item key={index} styles={stackItemStyles} />
@@ -149,91 +151,22 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
 };
 
 export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
-  const [state, setState] = React.useState<IExampleOptions>({
-    numItems: 5,
-    showBoxShadow: false,
-    preventOverflow: false,
-    wrap: false,
-    wrapperWidth: 100,
-    disableShrink: true,
-    columnGap: 0,
-    rowGap: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0,
-    paddingBottom: 0,
-    horizontalAlignment: 'start',
-    verticalAlignment: 'start',
-    hideEmptyChildren: false,
-    emptyChildren: [],
-  });
-
-  const onNumItemsChange = (value: number): void => {
-    setState({ ...state, numItems: value });
-  };
-
-  const onBoxShadowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, showBoxShadow: isChecked });
-  };
-
-  const onPreventOverflowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, preventOverflow: isChecked });
-  };
-
-  const onWrapChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, wrap: isChecked });
-  };
-
-  const onShrinkChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, disableShrink: !isChecked });
-  };
-
-  const onWrapperWidthChange = (value: number): void => {
-    setState({ ...state, wrapperWidth: value });
-  };
-
-  const onGapChange = (value: number): void => {
-    setState({ ...state, columnGap: value });
-  };
-
-  const onVerticalGapChange = (value: number): void => {
-    setState({ ...state, rowGap: value });
-  };
-
-  const onPaddingLeftChange = (value: number): void => {
-    setState({ ...state, paddingLeft: value });
-  };
-
-  const onPaddingRightChange = (value: number): void => {
-    setState({ ...state, paddingRight: value });
-  };
-
-  const onPaddingTopChange = (value: number): void => {
-    setState({ ...state, paddingTop: value });
-  };
-
-  const onPaddingBottomChange = (value: number): void => {
-    setState({ ...state, paddingBottom: value });
-  };
-
-  const onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setState({ ...state, horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
-  };
-
-  const onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    setState({ ...state, verticalAlignment: option.key as IStackProps['verticalAlign'] });
-  };
-
-  const onHideEmptyChildrenChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    setState({ ...state, hideEmptyChildren: isChecked });
-  };
-
-  const onEmptyChildrenChange = (ev: React.FormEvent<HTMLInputElement>, value?: string): void => {
-    if (value === undefined) {
-      return;
-    }
-    setState({ ...state, emptyChildren: value.replace(/,/g, '').split(' ') });
-  };
+  const [numItems, setNumItems] = React.useState<number>(5);
+  const [showBoxShadow, { toggle: toggleShowBoxShadow }] = useBoolean(false);
+  const [wrap, { toggle: toggleWrap }] = useBoolean(false);
+  const [preventOverflow, { toggle: togglePreventOverflow }] = useBoolean(false);
+  const [disableShrink, { toggle: toggleDisableShrink }] = useBoolean(true);
+  const [wrapperWidth, setWrapperWidth] = React.useState<number>(100);
+  const [columnGap, setColumnGap] = React.useState<number>(0);
+  const [rowGap, setRowGap] = React.useState<number>(0);
+  const [paddingLeft, setPaddingLeft] = React.useState<number>(0);
+  const [paddingRight, setPaddingRight] = React.useState<number>(0);
+  const [paddingTop, setPaddingTop] = React.useState<number>(0);
+  const [paddingBottom, setPaddingBottom] = React.useState<number>(0);
+  const [horizontalAlignment, setHorizontalAlignment] = React.useState<IStackProps['horizontalAlign']>('start');
+  const [verticalAlignment, setVerticalAlignment] = React.useState<IStackProps['verticalAlign']>('start');
+  const [hideEmptyChildren, { toggle: toggleHideEmptyChildren }] = useBoolean(false);
+  const [emptyChildren, setEmptyChildren] = React.useState<string[]>([]);
 
   return (
     <Stack tokens={sectionStackTokens}>
@@ -247,19 +180,20 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={5}
               showValue
-              onChange={onNumItemsChange}
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={value => setNumItems(value)}
             />
             <Stack horizontal disableShrink>
-              <Checkbox label="Shadow around items" onChange={onBoxShadowChange} styles={shadowItemCheckboxStyles} />
-              <Checkbox label="Prevent item overflow" onChange={onPreventOverflowChange} />
+              <Checkbox label="Shadow around items" onChange={toggleShowBoxShadow} styles={shadowItemCheckboxStyles} />
+              <Checkbox label="Prevent item overflow" onChange={togglePreventOverflow} />
             </Stack>
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
           <Stack horizontal disableShrink tokens={configureStackTokens}>
             <Stack>
-              <Checkbox label="Wrap items" onChange={onWrapChange} styles={wrapItemCheckboxStyles} />
-              <Checkbox label="Shrink items" onChange={onShrinkChange} />
+              <Checkbox label="Wrap items" onChange={toggleWrap} styles={wrapItemCheckboxStyles} />
+              <Checkbox label="Shrink items" onChange={toggleDisableShrink} />
             </Stack>
             <Stack.Item grow>
               <Slider
@@ -269,7 +203,8 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
                 step={1}
                 defaultValue={100}
                 showValue
-                onChange={onWrapperWidthChange}
+                // eslint-disable-next-line react/jsx-no-bind
+                onChange={(value: number): void => setWrapperWidth(value)}
               />
             </Stack.Item>
           </Stack>
@@ -286,7 +221,8 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              onChange={onGapChange}
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(value: number): void => setColumnGap(value)}
             />
             <Slider
               label="Vertical gap between items:"
@@ -295,7 +231,8 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              onChange={onVerticalGapChange}
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(value: number): void => setRowGap(value)}
             />
           </Stack>
         </Stack.Item>
@@ -308,7 +245,8 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              onChange={onPaddingLeftChange}
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(value: number): void => setPaddingLeft(value)}
             />
             <Slider
               label="Right padding:"
@@ -317,7 +255,8 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              onChange={onPaddingRightChange}
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(value: number): void => setPaddingRight(value)}
             />
           </Stack>
         </Stack.Item>
@@ -330,7 +269,8 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              onChange={onPaddingTopChange}
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(value: number): void => setPaddingTop(value)}
             />
             <Slider
               label="Bottom padding:"
@@ -339,7 +279,8 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              onChange={onPaddingBottomChange}
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(value: number): void => setPaddingBottom(value)}
             />
           </Stack>
         </Stack.Item>
@@ -348,34 +289,65 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
       <Stack horizontal disableShrink verticalAlign="end" tokens={configureStackTokens}>
         <Stack.Item grow>
           <Dropdown
-            selectedKey={state.horizontalAlignment}
+            selectedKey={horizontalAlignment}
             placeholder="Select Horizontal Alignment"
             label="Horizontal alignment:"
             options={horizontalAlignmentOptions}
-            onChange={onHorizontalAlignChange}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void =>
+              setHorizontalAlignment(option.key as IStackProps['horizontalAlign'])
+            }
           />
         </Stack.Item>
         <Stack.Item grow>
           <Dropdown
-            selectedKey={state.verticalAlignment}
+            selectedKey={verticalAlignment}
             placeholder="Select Vertical Alignment"
             label="Vertical alignment:"
             options={verticalAlignmentOptions}
-            onChange={onVerticalAlignChange}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void =>
+              setVerticalAlignment(option.key as IStackProps['verticalAlign'])
+            }
           />
         </Stack.Item>
         <Stack.Item>
-          <Checkbox label="Hide empty children" onChange={onHideEmptyChildrenChange} />
+          <Checkbox label="Hide empty children" onChange={toggleHideEmptyChildren} />
         </Stack.Item>
         <Stack.Item grow>
           <TextField
             label="Enter a space-separated list of empty children (e.g. 1 2 3):"
-            onChange={onEmptyChildrenChange}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(ev: React.FormEvent<HTMLInputElement>, value?: string): void => {
+              if (value === undefined) {
+                return;
+              }
+              setEmptyChildren(value.replace(/,/g, '').split(' '));
+            }}
           />
         </Stack.Item>
       </Stack>
 
-      <HorizontalStackConfigureExampleContent {...state} />
+      <HorizontalStackConfigureExampleContent
+        {...{
+          numItems,
+          showBoxShadow,
+          preventOverflow,
+          wrap,
+          wrapperWidth,
+          disableShrink,
+          columnGap,
+          rowGap,
+          paddingLeft,
+          paddingRight,
+          paddingTop,
+          paddingBottom,
+          horizontalAlignment,
+          verticalAlignment,
+          hideEmptyChildren,
+          emptyChildren,
+        }}
+      />
     </Stack>
   );
 };

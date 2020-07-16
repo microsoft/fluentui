@@ -93,7 +93,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
     setItems(exampleItems.map((current, index) => (index < state.visibleCount ? current : null)) as IExampleItem[]);
   };
 
-  const onLoadData = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+  const onLoadData = React.useCallback((ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     state.visibleCount = 0;
     if (checked) {
       loadMoreItems();
@@ -102,7 +102,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
       setItems(undefined);
       clearInterval(state.lastIntervalId);
     }
-  };
+  }, []);
 
   return (
     <>
