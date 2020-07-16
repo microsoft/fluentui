@@ -90,7 +90,6 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const onRenderItemColumn = React.useCallback(
     (item: IAnnouncedQuickActionsExampleItem, index: number, column: IColumn) => {
       const fieldContent = item[column.fieldName as keyof IAnnouncedQuickActionsExampleItem];
-
       if (column.key === 'name') {
         return (
           <div>
@@ -122,7 +121,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
         return <span>{fieldContent}</span>;
       }
     },
-    [],
+    [items],
   );
 
   const deleteItem = (index: number): void => {
