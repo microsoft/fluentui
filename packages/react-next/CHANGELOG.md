@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.61)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.60..@fluentui/react-next_v8.0.0-alpha.61)
+
+### Changes
+
+- SpinButton: Updating to a function component within react-next. ([PR #12955](https://github.com/microsoft/fluentui/pull/12955) by czearing@outlook.com)
 
 ## [8.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.59)
 
