@@ -625,7 +625,8 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       let headerContextualMenuItem: IContextualMenuItem | undefined = undefined;
       let ariaLabellledby = '';
       if (typeof sectionProps.title === 'string') {
-        // Since title is a user-facing string, it needs to be stripped of whitespace in order to build a valid element ID
+        // Since title is a user-facing string, it needs to be stripped
+        // of whitespace in order to build a valid element ID
         const id = this._id + sectionProps.title.replace(/\s/g, '');
         headerContextualMenuItem = {
           key: `section-${sectionProps.title}-title`,
