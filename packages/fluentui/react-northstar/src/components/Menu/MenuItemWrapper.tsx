@@ -2,7 +2,7 @@ import { compose } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 interface MenuItemWrapperOwnProps {
   /** A menu item wrapper can be active. */
@@ -61,7 +61,7 @@ export const menuItemWrapperClassName = 'ui-menu__itemwrapper';
 /**
  * A MenuItemWrapper allows a user to have a dedicated component that can be targeted from the theme.
  */
-const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStylesProps, BoxProps, {}>(Box, {
+export const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStylesProps, BoxProps, {}>(Box, {
   className: menuItemWrapperClassName,
   displayName: 'MenuItemWrapper',
   mapPropsToStylesProps: props => ({
@@ -111,5 +111,3 @@ MenuItemWrapper.propTypes = {
   underlined: PropTypes.bool,
   vertical: PropTypes.bool,
 };
-
-export default MenuItemWrapper;

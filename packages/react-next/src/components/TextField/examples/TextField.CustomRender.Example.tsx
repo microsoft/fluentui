@@ -95,6 +95,7 @@ export const TextFieldCustomRenderExample: React.FunctionComponent = () => {
       <TextField
         aria-labelledby={labelId}
         label="Custom label rendering"
+        // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={onRenderLabel}
         description="Click the (i) icon!"
       />

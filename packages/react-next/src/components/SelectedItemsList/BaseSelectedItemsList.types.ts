@@ -16,7 +16,7 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 
 // Type T is the type of the item that is displayed
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
 

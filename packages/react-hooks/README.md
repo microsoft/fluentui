@@ -140,3 +140,47 @@ const Example = React.forwardRef(function Example(props:{}, forwardedRef: React.
   return <div>Example</div>;
 })
 ```
+
+## useSetInterval
+
+`useSetInterval: () => { setInterval, clearInterval }`
+
+Hook which returns safe `setInterval` and `clearInterval` methods. Intervals set up using this hook will be automatically cleared when the component is unmounted.
+
+### Example
+
+```jsx
+import { useSetInterval } from '@uifabric/react-hooks';
+
+const MyComponent = () => {
+  const { setInterval, clearInterval } = useSetInterval();
+
+  // Set an interval
+  const id = setInterval(() => console.log('test'), 500);
+
+  // If needed, clear an interval manually.
+  clearInterval(id);
+};
+```
+
+## useSetTimeout
+
+`const useSetTimeout: () => { setTimeout, clearTimeout }`
+
+Hook which returns safe `setTimeout` and `clearTimeout` methods. Timeout callbacks set up using this hook will be automatically cleared when the component is unmounted.
+
+### Example
+
+```jsx
+import { useSetInterval } from '@uifabric/react-hooks';
+
+const MyComponent = () => {
+  const { setTimeout, clearTimeout } = useSetTimeout();
+
+  // Set a timeout
+  const id = setTimeout(() => console.log('test'), 500);
+
+  // If needed, clear an timeout manually.
+  clearTimeout(id);
+};
+```

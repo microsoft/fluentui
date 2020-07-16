@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import Dropdown, { DropdownProps, dropdownSlotClassNames } from 'src/components/Dropdown/Dropdown';
+import { Dropdown, DropdownProps, dropdownSlotClassNames } from 'src/components/Dropdown/Dropdown';
 import { dropdownSearchInputSlotClassNames } from 'src/components/Dropdown/DropdownSearchInput';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 
@@ -22,6 +22,7 @@ const renderDropdown = (props: DropdownProps = {}) => {
   return {
     wrapper,
     rerender: props => wrapper.setProps(props),
+    rootNode: wrapper.getDOMNode<HTMLElement>(),
     triggerButtonNode: triggerButtonWrapper.length ? triggerButtonWrapper.getDOMNode<HTMLElement>() : null,
     toggleIndicatorNode: toggleIndicatorWrapper.length ? toggleIndicatorWrapper.getDOMNode<HTMLElement>() : null,
     itemsListNode: itemsListWrapper.getDOMNode<HTMLElement>(),

@@ -5,7 +5,7 @@ describe('monaco imports', () => {
 
   // These tests take advantage of the fact that Monaco's JS files use ES module format, which Jest
   // doesn't support--so it should throw an exception when importing anything besides types from Monaco.
-  // tslint:disable:max-line-length
+  /* eslint-disable @fluentui/max-len */
 
   it('test can detect monaco imports', () => {
     try {

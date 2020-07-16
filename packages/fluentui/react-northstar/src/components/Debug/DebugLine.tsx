@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const DebugLine: React.FC<{
+export const DebugLine: React.FC<{
   [key: string]: any;
   children: React.ReactNode;
   active?: boolean;
@@ -31,5 +31,3 @@ const DebugLine: React.FC<{
     {badge && <span style={{ padding: '0 4px', fontSize: 10, opacity: 0.75 }}>{badge}</span>}
   </a>
 );
-
-export default DebugLine;

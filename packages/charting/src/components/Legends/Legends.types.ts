@@ -141,6 +141,11 @@ export interface ILegendsProps {
    * text for overflow legends string
    */
   overflowText?: string;
+
+  /**
+   * Prop that takes the active legend
+   */
+  selectedLegend?: string;
 }
 
 /**

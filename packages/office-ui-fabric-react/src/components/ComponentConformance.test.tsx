@@ -81,6 +81,7 @@ const requiredProps: { [key: string]: any } = {
   },
   SuggestionsItem: {
     suggestionModel: { item: '', selected: false },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     RenderSuggestion: () => null,
   },
   SwatchColorPicker: {

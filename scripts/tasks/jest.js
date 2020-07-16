@@ -8,6 +8,7 @@ exports.jest = () =>
     ...(process.env.TF_BUILD && { runInBand: true }),
     ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined),
     env: {
+      ...process.env,
       NODE_ENV: 'test',
     },
   });

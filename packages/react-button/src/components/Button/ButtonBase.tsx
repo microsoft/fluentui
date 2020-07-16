@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
 import { compose, mergeProps } from '@fluentui/react-compose';
-import { useButton } from './useButton';
 import { useMergedRefs } from '@uifabric/react-hooks';
+import { ButtonProps, ButtonSlots, ButtonSlotProps } from './Button.types';
+import { useButton } from './useButton';
 
 export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
   (props, ref, options) => {
     const { state } = options;
     const { slots, slotProps } = mergeProps<ButtonProps, ButtonProps, ButtonSlots, ButtonSlotProps>(state, options);
 
+    const { buttonRef, children, icon, iconOnly, iconPosition, loading } = state;
+
     return (
-      <slots.root ref={useMergedRefs(ref, state.buttonRef)} {...slotProps.root}>
-        {props.loading && <slots.loader {...slotProps.loader} />}
-        {props.icon && props.iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
-        {!props.iconOnly && props.content && <slots.content {...slotProps.content} />}
-        {props.icon && props.iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
+      <slots.root ref={useMergedRefs(ref, buttonRef)} {...slotProps.root}>
+        {loading && <slots.loader {...slotProps.loader} />}
+        {icon && iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
+        {!iconOnly && children && <span>{children}</span>}
+        {icon && iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
       </slots.root>
     );
   },
@@ -24,7 +26,6 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'buttonRef',
       'componentRef',
       'circular',
-      'content',
       'fluid',
       'iconOnly',
       'iconPosition',
@@ -35,11 +36,10 @@ export const ButtonBase = compose<'button', ButtonProps, ButtonProps, {}, {}>(
       'secondary',
       'size',
       'tokens',
-      // tslint:disable-next-line: no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ] as any,
     slots: {
       icon: 'span',
-      content: 'span',
       loader: 'span',
     },
     state: useButton,

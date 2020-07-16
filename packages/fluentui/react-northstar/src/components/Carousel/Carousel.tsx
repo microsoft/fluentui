@@ -5,9 +5,8 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Ref } from '@fluentui/react-component-ref';
-import Animation from '../Animation/Animation';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { Animation } from '../Animation/Animation';
+
 import {
   UIComponentProps,
   createShorthandFactory,
@@ -16,23 +15,18 @@ import {
   ChildrenComponentProps,
   isFromKeyboard as isEventFromKeyboard,
 } from '../../utils';
-import {
-  ShorthandCollection,
-  ShorthandValue,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import CarouselItem, { CarouselItemProps } from './CarouselItem';
-import Text from '../Text/Text';
-import CarouselNavigation, { CarouselNavigationProps } from './CarouselNavigation';
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
-import CarouselPaddle, { CarouselPaddleProps } from './CarouselPaddle';
+import { ShorthandCollection, ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { CarouselItem, CarouselItemProps } from './CarouselItem';
+import { Text } from '../Text/Text';
+import { CarouselNavigation, CarouselNavigationProps } from './CarouselNavigation';
+import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
+import { CarouselPaddle, CarouselPaddleProps } from './CarouselPaddle';
 import {
   ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   useUnhandledProps,
   useStateManager,
@@ -135,14 +129,14 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
  * @accessibilityIssues
  * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
  */
-const Carousel: ComponentWithAs<'div', CarouselProps> &
+export const Carousel: ComponentWithAs<'div', CarouselProps> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;
     NavigationItem: typeof CarouselNavigationItem;
     Paddle: typeof CarouselPaddle;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
   setStart();
   const {
@@ -515,5 +509,3 @@ Carousel.create = createShorthandFactory({
   Component: Carousel,
   mappedArrayProp: 'items',
 });
-
-export default Carousel;

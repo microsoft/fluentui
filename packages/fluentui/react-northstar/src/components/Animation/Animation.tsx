@@ -1,19 +1,19 @@
 import {
   useUnhandledProps,
   unstable_calculateAnimationTimeout as calculateAnimationTimeout,
+  useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { Transition } from 'react-transition-group';
 
 import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../utils';
-import { ComponentEventHandler, ProviderContextPrepared } from '../../types';
-import useAnimationStyles from './useAnimationStyles';
+import { ComponentEventHandler } from '../../types';
+import { useAnimationStyles } from './useAnimationStyles';
 
 export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
 
@@ -139,10 +139,10 @@ export interface AnimationProps extends ChildrenComponentProps<AnimationChildren
 /**
  * An Animation provides animation effects to rendered elements.
  */
-const Animation: React.FC<AnimationProps> & {
+export const Animation: React.FC<AnimationProps> & {
   handledProps: (keyof AnimationProps)[];
 } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Animation.displayName, context.telemetry);
   setStart();
 
@@ -235,5 +235,3 @@ Animation.propTypes = {
   onExited: PropTypes.func,
 };
 Animation.handledProps = Object.keys(Animation.propTypes) as any;
-
-export default Animation;

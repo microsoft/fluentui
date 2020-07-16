@@ -4,7 +4,6 @@ import { Spinner, Stack, TooltipHost, IStackProps } from 'office-ui-fabric-react
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
-// tslint:disable:jsx-no-lambda
 export class SlotsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (

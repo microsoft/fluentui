@@ -49,6 +49,8 @@ function getRenderedElements(
 ): React.ReactNode {
   const renderedElements: React.ReactNode = shimmerElements ? (
     shimmerElements.map(
+      // false positive
+      // eslint-disable-next-line array-callback-return
       (element: IShimmerElement, index: number): JSX.Element => {
         const { type, ...filteredElem } = element;
         const { verticalAlign, height } = filteredElem;
@@ -140,14 +142,17 @@ function findMaxElementHeight(shimmerElements: IShimmerElement[]): number {
           if (!element.height) {
             element.height = ShimmerElementsDefaultHeights.circle;
           }
+          break;
         case ShimmerElementType.line:
           if (!element.height) {
             element.height = ShimmerElementsDefaultHeights.line;
           }
+          break;
         case ShimmerElementType.gap:
           if (!element.height) {
             element.height = ShimmerElementsDefaultHeights.gap;
           }
+          break;
       }
       return element;
     },

@@ -1,5 +1,10 @@
-import { mergeCssSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
-import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import {
+  mergeCssSets,
+  IStyleSet,
+  IProcessedStyleSet,
+  Stylesheet,
+  IStyleFunctionOrObject,
+} from '@uifabric/merge-styles';
 import { getRTL } from './rtl';
 import { getWindow } from './dom';
 import { StyleFunction } from './styled';
@@ -17,14 +22,14 @@ if (stylesheet && stylesheet.onReset) {
 
 // Note that because of the caching nature within the classNames memoization,
 // I've disabled this rule to simply be able to work with any types.
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // This represents a prop we attach to each Map to indicate the cached return value
 // associated with the graph node.
-const RetVal = '__retval__';
+const retVal = '__retval__';
 
 interface IRecursiveMemoNode extends Map<any, IRecursiveMemoNode> {
-  [RetVal]?: string;
+  [retVal]?: string;
 }
 
 type AppWindow = (Window & { FabricConfig?: { enableClassNameCacheFullWarning?: boolean } }) | undefined;
@@ -106,11 +111,11 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       current = _traverseMap(current, styleProps);
     }
 
-    if (disableCaching || !(current as any)[RetVal]) {
+    if (disableCaching || !(current as any)[retVal]) {
       if (styleFunctionOrObject === undefined) {
-        (current as any)[RetVal] = {} as IProcessedStyleSet<TStyleSet>;
+        (current as any)[retVal] = {} as IProcessedStyleSet<TStyleSet>;
       } else {
-        (current as any)[RetVal] = mergeCssSets(
+        (current as any)[retVal] = mergeCssSets(
           [
             (typeof styleFunctionOrObject === 'function'
               ? styleFunctionOrObject(styleProps)
@@ -128,10 +133,11 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     if (styleCalcCount > (options.cacheSize || MAX_CACHE_COUNT)) {
       const win = getWindow() as AppWindow;
       if (win?.FabricConfig?.enableClassNameCacheFullWarning) {
+        // eslint-disable-next-line no-console
         console.warn(
           `Styles are being recalculated too frequently. Cache miss rate is ${styleCalcCount}/${getClassNamesCount}.`,
         );
-        // tslint:disable-next-line:no-console
+        // eslint-disable-next-line no-console
         console.trace();
       }
 
@@ -142,9 +148,9 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       options.disableCaching = true;
     }
 
-    // Note: the RetVal is an attached property on the Map; not a key in the Map. We use this attached property to
+    // Note: the retVal is an attached property on the Map; not a key in the Map. We use this attached property to
     // cache the return value for this branch of the graph.
-    return (current as any)[RetVal];
+    return (current as any)[retVal];
   };
 
   return getClassNames;

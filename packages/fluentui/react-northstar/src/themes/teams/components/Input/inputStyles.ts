@@ -7,12 +7,17 @@ import { pxToRem } from '../../../../utils';
 
 export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
     display: 'inline-flex',
     position: 'relative',
     outline: 0,
-    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
+    verticalAlign: 'middle',
     ...(p.fluid && { width: '100%' }),
+    ...(p.labelPosition === 'inline' && {
+      flexDirection: 'row',
+      alignItems: 'center',
+    }),
   }),
 
   input: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -22,7 +27,6 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     }),
 
     lineHeight: 'unset',
-
     color: v.fontColor,
 
     borderColor: v.borderColor,
@@ -52,12 +56,27 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     },
 
     ':focus': {
-      borderColor: v.inputFocusBorderColor,
+      ...(!p.error && { borderColor: v.inputFocusBorderColor }),
     },
+
+    ...(!p.hasValue && {
+      ':-webkit-autofill:focus': {
+        '-webkit-text-fill-color': 'transparent',
+      },
+    }),
+
     ...(p.clearable && { padding: v.inputPaddingWithIconAtEnd }),
     ...(p.hasIcon && {
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
+    ...(p.labelPosition === 'inside' && {
+      paddingTop: v.inputInsideLabelPaddingTop,
+    }),
+    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
+
+    '::-ms-clear': {
+      display: 'none',
+    },
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -67,6 +86,8 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     alignItems: 'center',
     justifyContent: 'center',
     position: v.iconPosition as PositionProperty,
+    top: 0,
+    bottom: 0,
     ...(p.error && { color: v.colorError }),
     ...(p.requiredAndSuccessful && {
       color: v.successfulColor,
@@ -90,5 +111,9 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
         height: '100%',
         width: pxToRem(16),
       }),
+  }),
+
+  inputContainer: (): ICSSInJSStyle => ({
+    position: 'relative',
   }),
 };

@@ -9,7 +9,7 @@ describe('getNativeProps', () => {
       },
       divProperties,
     );
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect((result as any)['data-automation-id']).toEqual(1);
   });
 
@@ -20,7 +20,7 @@ describe('getNativeProps', () => {
       },
       divProperties,
     );
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect((result as any)['aria-label']).toEqual(1);
   });
 
@@ -41,8 +41,8 @@ describe('getNativeProps', () => {
     expect(result.className).toEqual('foo');
     expect(typeof result.onClick).toEqual('function');
 
-    // tslint:disable-next-line:no-string-literal no-any
-    expect(typeof (result as any)['onClickCapture']).toEqual('function');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(typeof (result as any).onClickCapture).toEqual('function');
   });
 
   it('can remove unexpected properties', () => {
@@ -55,12 +55,12 @@ describe('getNativeProps', () => {
     );
 
     expect(result.className).toEqual('hi');
-    // tslint:disable-next-line:no-any
-    expect((result as any)['foobar']).toEqual(undefined); // tslint:disable-line:no-string-literal
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect((result as any).foobar).toEqual(undefined);
   });
 
   it('can exclude properties', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let result = getNativeProps<any>({ a: 1, b: 2 }, ['a', 'b'], ['b']);
 
     expect(result.a).toBeDefined();
