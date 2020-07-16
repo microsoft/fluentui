@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix next and previous month/week aria labels in weekly day picker",
+  "packageName": "@uifabric/date-time",
+  "email": "lorejoh12@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-16T23:00:27.922Z"
+}
