@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add useRefEffect to hook to react-hooks package",
+  "comment": "Add useRefEffect to hook to the react-hooks package",
   "packageName": "@uifabric/react-hooks",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",

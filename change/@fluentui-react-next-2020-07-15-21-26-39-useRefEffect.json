@@ -1,5 +1,6 @@
 {
   "type": "prerelease",
+  "comment": "Move useRefEffect to hook to the react-hooks package",
   "packageName": "@fluentui/react-next",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
