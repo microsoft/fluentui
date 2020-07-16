@@ -2,6 +2,72 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "office-ui-fabric-react_v7.123.0",
+      "version": "7.123.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix screen reader behavior on picker action buttons (#13291)",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5d63c38662cc26c0518dbe5b7299b1039e0c02ad",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Allow consumer of ContextualMenu control to override the role of internal list.",
+            "author": "kinhln@microsoft.com",
+            "commit": "e94ddb76a22232c4f574f32d7f8972cfb48e3808",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "office-ui-fabric-react_v7.122.0",
+      "version": "7.122.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Keytip: add useKeytipRef hook.",
+            "author": "xgao@microsoft.com",
+            "commit": "d07846f717c51a003c496c9fcac49e52fc55c8f1",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ContextualMenu: Fix high contrast style for submenu icon",
+            "author": "erabelle@microsoft.com",
+            "commit": "be5ada5f95814f7daa5485024050bc674865fcab",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Replace tslint with eslint; fix some violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add mutliSelectDelimiter property to ComboBox",
+            "author": "cocahill@microsoft.com",
+            "commit": "7370c100a267785a14c69ee18d8f1e128eaa64b6",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Jul 2020 12:40:33 GMT",
       "tag": "office-ui-fabric-react_v7.121.12",
       "version": "7.121.12",

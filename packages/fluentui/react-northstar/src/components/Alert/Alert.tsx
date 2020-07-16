@@ -3,8 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   UIComponentProps,
   ContentComponentProps,
@@ -12,13 +11,7 @@ import {
   childrenExist,
   createShorthandFactory,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { ButtonProps } from '../Button/Button';
 import { Text, TextProps } from '../Text/Text';
@@ -31,6 +24,7 @@ import {
   getElementType,
   useStyles,
   useTelemetry,
+  useFluentContext,
   useUnhandledProps,
   useAutoControlled,
 } from '@fluentui/react-bindings';
@@ -133,7 +127,7 @@ export const Alert: ComponentWithAs<'div', AlertProps> &
   FluentComponentStaticProps<AlertProps> & {
     DismissAction: typeof AlertDismissAction;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
   setStart();
   const {

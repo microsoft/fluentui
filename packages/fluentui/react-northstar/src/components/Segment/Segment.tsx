@@ -11,16 +11,15 @@ import {
   createShorthandFactory,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   useTelemetry,
   getElementType,
   useAccessibility,
+  useFluentContext,
   useUnhandledProps,
   useStyles,
 } from '@fluentui/react-bindings';
@@ -50,7 +49,7 @@ export const segmentClassName = 'ui-segment';
  * A Segment visually groups related content.
  */
 export const Segment: ComponentWithAs<'div', SegmentProps> & FluentComponentStaticProps<SegmentProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Segment.displayName, context.telemetry);
   setStart();
   const { children, content, color, inverted, disabled, className, design, styles, variables } = props;

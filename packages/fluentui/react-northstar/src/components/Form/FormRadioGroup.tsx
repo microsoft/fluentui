@@ -29,6 +29,11 @@ export const FormRadioGroup = compose<
   slots: {
     control: RadioGroup,
   },
+  slotProps: ({ errorMessage }) => ({
+    message: {
+      error: !!errorMessage,
+    },
+  }),
 });
 
 FormRadioGroup.propTypes = commonPropTypes.createCommon({

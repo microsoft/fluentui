@@ -8,6 +8,7 @@ import {
   getElementType,
   useAccessibility,
   useStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -30,7 +31,6 @@ import {
   ComponentEventHandler,
   ObjectShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
 import {
   getAllSelectableChildrenId,
@@ -42,8 +42,6 @@ import {
   TreeRenderContextValue,
   processItemsForSelection,
 } from './utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -174,7 +172,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     Item: typeof TreeItem;
     Title: typeof TreeTitle;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tree.displayName, context.telemetry);
   setStart();
 

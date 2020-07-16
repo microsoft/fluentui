@@ -13,19 +13,14 @@ import {
   ContentComponentProps,
   ChildrenComponentProps,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import {
-  ShorthandValue,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+
+import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
   ComponentWithAs,
   useTelemetry,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
@@ -92,7 +87,7 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
  */
 export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
   FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
   setStart();
 

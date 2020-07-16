@@ -1,6 +1,5 @@
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   createShorthandFactory,
   UIComponentProps,
@@ -10,12 +9,13 @@ import {
   childrenExist,
 } from '../../utils';
 
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   useTelemetry,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
@@ -36,7 +36,7 @@ export type DialogFooterStylesProps = never;
  */
 export const DialogFooter: ComponentWithAs<'div', DialogFooterProps> &
   FluentComponentStaticProps<DialogFooterProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
   setStart();
   const { children, content, className, design, styles, variables, accessibility } = props;

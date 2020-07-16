@@ -2,10 +2,16 @@ import * as React from 'react';
 import * as _ from 'lodash';
 
 import ComponentExampleTitle from '../ComponentExample/ComponentExampleTitle';
-import { Accordion, Flex, Segment, Menu } from '@fluentui/react-northstar';
+import { Accordion, Flex, Segment, Menu, Loader } from '@fluentui/react-northstar';
 import ComponentExample from '../ComponentExample';
-import { ComponentPerfChart } from './ComponentPerfChart';
-import { ComponentResourcesChart } from './ComponentResourcesChart';
+
+const ComponentPerfChart = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "component-chart" */ './ComponentPerfChart')).ComponentPerfChart,
+}));
+const ComponentResourcesChart = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "component-chart" */ './ComponentResourcesChart'))
+    .ComponentResourcesChart,
+}));
 
 export interface ComponentPerfExampleProps {
   title: React.ReactNode;
@@ -45,11 +51,13 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
               ]}
             />
           </Flex>
-          {currentChart === 'perf' ? (
-            <ComponentPerfChart perfTestName={perfTestName} />
-          ) : (
-            <ComponentResourcesChart perfTestName={perfTestName} />
-          )}
+          <React.Suspense fallback={<Loader />}>
+            {currentChart === 'perf' ? (
+              <ComponentPerfChart perfTestName={perfTestName} />
+            ) : (
+              <ComponentResourcesChart perfTestName={perfTestName} />
+            )}
+          </React.Suspense>
         </Segment>
         <Accordion
           panels={

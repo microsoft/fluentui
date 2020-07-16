@@ -8,24 +8,18 @@ import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../..
 import { Image } from '../Image/Image';
 import { Video, VideoProps } from '../Video/Video';
 import { Box, BoxProps } from '../Box/Box';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Ref } from '@fluentui/react-component-ref';
 import {
   ComponentWithAs,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAutoControlled,
   useAccessibility,
   useTelemetry,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface EmbedSlotClassNames {
   control: string;
@@ -90,7 +84,7 @@ export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLo
  * accessibility section.
  */
 export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticProps<EmbedProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Embed.displayName, context.telemetry);
   setStart();
   const { alt, title, control, iframe, placeholder, video, variables, styles, className, design } = props;

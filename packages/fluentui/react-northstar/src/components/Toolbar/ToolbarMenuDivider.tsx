@@ -5,16 +5,14 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
   compose,
   ComponentWithAs,
 } from '@fluentui/react-bindings';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { ChildrenComponentProps, ContentComponentProps, UIComponentProps, commonPropTypes } from '../../utils';
-import { ProviderContextPrepared } from '../../types';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
 export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -32,7 +30,7 @@ export const toolbarMenuDividerClassName = 'ui-toolbar__menudivider';
  */
 export const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

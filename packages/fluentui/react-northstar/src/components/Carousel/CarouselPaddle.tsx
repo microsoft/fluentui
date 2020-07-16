@@ -14,23 +14,17 @@ import {
   ContentComponentProps,
 } from '../../utils';
 
-import {
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandValue,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import {
   ComponentWithAs,
   getElementType,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { Box, BoxProps } from '../Box/Box';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface CarouselPaddleProps
   extends UIComponentProps,
@@ -77,7 +71,7 @@ export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
  */
 export const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
   FluentComponentStaticProps<CarouselPaddleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
   setStart();
 

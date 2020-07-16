@@ -24,6 +24,11 @@ export const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps,
     slots: {
       control: Slider,
     },
+    slotProps: ({ errorMessage }) => ({
+      message: {
+        error: !!errorMessage,
+      },
+    }),
   },
 );
 

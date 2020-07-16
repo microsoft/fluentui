@@ -4,6 +4,7 @@ import {
   ComponentWithAs,
   ShorthandConfig,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useStyles,
@@ -18,11 +19,9 @@ import {
   SizeValue,
   getOrGenerateIdFromShorthand,
 } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface LoaderSlotClassNames {
   indicator: string;
@@ -80,7 +79,7 @@ export const Loader: ComponentWithAs<'div', LoaderProps> &
   FluentComponentStaticProps<LoaderProps> & {
     shorthandConfig: ShorthandConfig<LoaderProps>;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
   setStart();
   const { delay, label, indicator, svg, inline, labelPosition, className, design, styles, variables, size } = props;

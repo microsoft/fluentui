@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove tslint references",
-  "packageName": "@uifabric/fabric-website-resources",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-08T01:45:17.967Z"
-}

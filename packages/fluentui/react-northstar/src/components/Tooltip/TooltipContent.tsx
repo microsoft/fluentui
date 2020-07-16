@@ -4,6 +4,7 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -11,8 +12,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -25,7 +24,7 @@ import {
 } from '../../utils';
 
 import { getBasePlacement, PopperChildrenProps } from '../../utils/positioner';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 
 export interface TooltipContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -57,7 +56,7 @@ export const tooltipContentClassName = 'ui-tooltip__content';
  */
 export const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
   FluentComponentStaticProps<TooltipContentProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TooltipContent.displayName, context.telemetry);
   setStart();
 

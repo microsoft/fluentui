@@ -2,6 +2,50 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.2",
+      "version": "7.13.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove tslint references and fix violations; add react peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "revert to getId as svg is not a react component",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "c7b7480e6c59f4ccff7033364e0138bf5e8418de",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "docs: fix spelling mistake",
+            "author": "tyx1703@gmail.com",
+            "commit": "c3c2aa1b09b3faaab3ee96f08e7e5115f1e16f1c",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Jul 2020 12:40:33 GMT",
       "tag": "@uifabric/fabric-website_v7.12.0",
       "version": "7.12.0",

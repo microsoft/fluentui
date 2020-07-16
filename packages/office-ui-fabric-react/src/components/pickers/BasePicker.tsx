@@ -659,6 +659,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           ) {
             ev.preventDefault();
             ev.stopPropagation();
+            this.forceUpdate();
           } else {
             if (
               this.suggestionElement.current &&
@@ -689,6 +690,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           ) {
             ev.preventDefault();
             ev.stopPropagation();
+            this.forceUpdate();
           } else {
             if (
               this.suggestionElement.current &&
@@ -852,7 +854,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   };
 
   protected getActiveDescendant() {
+    if (this.state.suggestionsLoading) {
+      return undefined;
+    }
+
     const currentIndex = this.suggestionStore.currentIndex;
+    // if the suggestions element has actions and the currentIndex does not point to a suggestion, return the action id
+    if (currentIndex < 0 && this.suggestionElement.current && this.suggestionElement.current.hasSuggestedAction()) {
+      return 'sug-selectedAction';
+    }
+
     return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
   }
 

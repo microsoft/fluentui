@@ -1,8 +1,35 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2020 12:41:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.3.0)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.2.2..@fluentui/codemods_v0.3.0)
+
+### Minor changes
+
+- add value-changing ([PR #13993](https://github.com/microsoft/fluentui/pull/13993) by t-dama@microsoft.com)
+
+## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.2.2)
+
+Tue, 14 Jul 2020 12:41:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.2.1..@fluentui/codemods_v0.2.2)
+
+### Patches
+
+- CodeMods: Fix maybe binding to object ([PR #14015](https://github.com/microsoft/fluentui/pull/14015) by joschect@microsoft.com)
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.2.1)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.2.0..@fluentui/codemods_v0.2.1)
+
+### Patches
+
+- Replace tslint with eslint. ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by humbertomakotomorimoto@gmail.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.2.0)
 
