@@ -239,7 +239,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   onClick={_onInputClick}
                   onInputValueChange={_onInputChange}
                   /* eslint-enable react/jsx-no-bind */
-                  aria-activedescendant={isSuggestionsShown ? 'FloatingSuggestionsItemId-' + focusItemIndex : undefined}
+                  aria-activedescendant={
+                    isSuggestionsShown && focusItemIndex >= 0
+                      ? 'FloatingSuggestionsItemId-' + focusItemIndex
+                      : undefined
+                  }
                   aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
                   aria-expanded={isSuggestionsShown}
                   aria-haspopup="true"
