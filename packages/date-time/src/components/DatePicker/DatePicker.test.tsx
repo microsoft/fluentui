@@ -11,6 +11,7 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { safeCreate } from '@uifabric/test-utilities';
 import { TextField } from 'office-ui-fabric-react';
 import * as renderer from 'react-test-renderer';
+import * as ReactDOM from 'react-dom';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -98,22 +99,35 @@ describe('DatePicker', () => {
     expect(onSelectDate).toHaveBeenCalledTimes(2);
   });
 
-  xit('should clear error message when required input has date text and allowTextInput is true', () => {
-    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} />);
-    const textfield = datePicker.find(TextField);
-    const input = datePicker.find('input');
-    expect(input).toBeDefined();
-    expect(textfield.props().errorMessage).toBeUndefined();
+  it('should clear error message when required input has date text and allowTextInput is true', () => {
+    // See https://github.com/facebook/react/issues/11565
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
-    ReactTestUtils.act(() => {
-      input.simulate('click').simulate('click'); // open the datepicker then dismiss
-      datePicker.update();
-      expect(textfield.props().errorMessage).toBe(' ');
-      input.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
-      expect(textfield.props().errorMessage).toBeUndefined();
+    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, datePicker => {
+      const textfield = datePicker.root.findByType(TextField);
+      const input = datePicker.root.findByType('input');
+
+      expect(textfield.props.errorMessage).toBeUndefined();
+
+      // open the datepicker then dismiss
+      renderer.act(() => {
+        input.props.onClick();
+      });
+      renderer.act(() => {
+        input.props.onClick();
+      });
+
+      expect(textfield.props.errorMessage).toBe(' ');
+
+      renderer.act(() => {
+        input.props.onChange({ target: { value: 'Jan 1 2030' }, persist: jest.fn() });
+      });
+      renderer.act(() => {
+        input.props.onBlur();
+      });
+
+      expect(textfield.props.errorMessage).toBeUndefined();
     });
-
-    datePicker.unmount();
   });
 
   xit('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
