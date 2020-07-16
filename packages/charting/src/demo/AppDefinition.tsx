@@ -50,6 +50,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'StackedBarChart',
           url: '#/examples/stackedbarchart',
         },
+        {
+          component: require<any>('../components/SankeyChart/SankeyChartPage').SankeyChartPage,
+          key: 'SankeyChart',
+          name: 'SankeyChart',
+          url: '#/examples/sankeychart',
+        },
       ],
     },
   ],

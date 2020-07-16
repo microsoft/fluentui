@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Charting:Add New Sankey chart to charting package",
+  "packageName": "@uifabric/charting",
+  "email": "v-gorraj@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-10T06:24:33.752Z"
+}
