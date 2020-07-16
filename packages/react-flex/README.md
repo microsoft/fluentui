@@ -1,6 +1,6 @@
 # @fluentui/react-flex
 
-**React Flex components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Flexbox abstraction for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
 **This is a work in progress therefore this package is unstable**
 
