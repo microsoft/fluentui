@@ -5,7 +5,7 @@ import * as FluentUI from 'src/index';
 // Is exported or private
 // ----------------------------------------
 
-export default (constructorName: string, displayName: string) => {
+export const isExportedAtTopLevel = (constructorName: string, displayName: string) => {
   const isTopLevelAPIProp = _.has(FluentUI, constructorName);
 
   // require all components to be exported at the top level

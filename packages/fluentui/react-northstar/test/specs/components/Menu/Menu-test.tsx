@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import Menu from 'src/components/Menu/Menu';
+import { Menu } from 'src/components/Menu/Menu';
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
-import implementsCollectionShorthandProp from '../../commonTests/implementsCollectionShorthandProp';
-import MenuItem from 'src/components/Menu/MenuItem';
+import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
+import { MenuItem } from 'src/components/Menu/MenuItem';
 import { menuBehavior, menuAsToolbarBehavior, tabListBehavior, tabBehavior } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
 import { SpacebarKey } from '@fluentui/keyboard-key';

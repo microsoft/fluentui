@@ -152,7 +152,7 @@ Hook which returns safe `setInterval` and `clearInterval` methods. Intervals set
 ```jsx
 import { useSetInterval } from '@uifabric/react-hooks';
 
-const MyComponent =() => {
+const MyComponent = () => {
   const { setInterval, clearInterval } = useSetInterval();
 
   // Set an interval

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { keyboardKey } from '@fluentui/keyboard-key';
 
-import SplitButton from 'src/components/SplitButton/SplitButton';
+import { SplitButton } from 'src/components/SplitButton/SplitButton';
 import { splitButtonToggleClassName } from 'src/components/SplitButton/SplitButtonToggle';
 import { isConformant } from 'test/specs/commonTests';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
@@ -10,7 +10,7 @@ import { menuClassName } from 'src/components/Menu/Menu';
 import { menuItemClassName } from 'src/components/Menu/MenuItem';
 import { menuButtonClassName } from 'src/components/MenuButton/MenuButton';
 import { buttonClassName } from 'src/components/Button/Button';
-import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
+import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
 
 const mockMenu = { items: ['1', '2', '3'] };
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const rtlTextContainer = {
+export const rtlTextContainer = {
   getAttributes: ({ condition = true, forElements = [] }: { condition?: boolean; forElements: any[] }) => {
     return condition && forElements.some(child => child && typeof child === 'string') ? { dir: 'auto' } : {};
   },
@@ -11,5 +11,3 @@ const rtlTextContainer = {
     return element;
   },
 };
-
-export default rtlTextContainer;

@@ -17,7 +17,10 @@ export const positioningProps: Required<PositioningProps> = {
   unstable_pinned: true,
 };
 
-function implementsPopperProps<P>(Component: React.ComponentType<P>, options: ImplementsPopperPropsOptions<P> = {}) {
+export function implementsPopperProps<P>(
+  Component: React.ComponentType<P>,
+  options: ImplementsPopperPropsOptions<P> = {},
+) {
   describe('implements all positioning props for Popper', () => {
     Object.entries(positioningProps).forEach(([positioningProp, positioningValue]) => {
       test(`"${positioningProp}" is passed to a Popper component`, () => {
@@ -34,5 +37,3 @@ function implementsPopperProps<P>(Component: React.ComponentType<P>, options: Im
     });
   });
 }
-
-export default implementsPopperProps;
