@@ -105,13 +105,13 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   const _onPaste = (pastedValue: string, selectedItemsList: IPersonaProps[]): void => {
     // Find the suggestion corresponding to the specific text name
     // and update the selectedItemsList to re-render everything.
-    //const finalList: IPersonaProps[] = [];
     if (pastedValue !== null) {
       pastedValue.split(',').forEach(textValue => {
         if (textValue) {
           people.forEach(suggestionItem => {
             if (suggestionItem.text === textValue) {
               selectedItemsList.push(suggestionItem);
+              peopleSelectedItems.push(suggestionItem);
             }
           });
         }
@@ -160,20 +160,16 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {
+    selectedItems: [...peopleSelectedItems],
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
-  const selectedItemsProps = {
-    selectedItems: [...peopleSelectedItems],
-    ...selectedPeopleListProps,
-  };
-
   return (
     <>
       <UnifiedPeoplePicker
-        selectedItemsListProps={selectedItemsProps}
+        selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
         // eslint-disable-next-line react/jsx-no-bind
         onInputChange={_onInputChange}
