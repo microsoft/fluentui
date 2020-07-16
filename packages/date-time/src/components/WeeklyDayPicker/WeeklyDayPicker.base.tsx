@@ -180,7 +180,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
         onTouchMove={this._onTouchMove}
         aria-expanded={showFullMonth}
       >
-        {this.renderPreviousWeekNavigationButton(classNames)}
+        {this._renderPreviousWeekNavigationButton(classNames)}
         <CalendarDayGrid
           styles={styles}
           componentRef={this._dayGrid}
@@ -201,7 +201,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
           lightenDaysOutsideNavigatedMonth={showFullMonth}
           animationDirection={this.state.animationDirection}
         />
-        {this.renderNextWeekNavigationButton(classNames)}
+        {this._renderNextWeekNavigationButton(classNames)}
       </div>
     );
   }
@@ -240,7 +240,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     }
   };
 
-  private renderPreviousWeekNavigationButton = (
+  private _renderPreviousWeekNavigationButton = (
     classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>,
   ): JSX.Element => {
     const { minDate, firstDayOfWeek, strings, navigationIcons } = this.props;
@@ -273,7 +273,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     );
   };
 
-  private renderNextWeekNavigationButton = (classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>): JSX.Element => {
+  private _renderNextWeekNavigationButton = (classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>): JSX.Element => {
     const { maxDate, firstDayOfWeek, strings, navigationIcons } = this.props;
     const { navigatedDate } = this.state;
     const rightNavigationIcon = navigationIcons!.rightNavigation;

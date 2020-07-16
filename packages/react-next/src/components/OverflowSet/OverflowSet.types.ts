@@ -67,14 +67,14 @@ export interface IOverflowSetProps extends React.ClassAttributes<HTMLElement> {
   /**
    * Method to call when trying to render an item.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRenderItem: (item: IOverflowSetItemProps) => any;
 
   /**
    * Rendering method for overflow button and contextual menu. The argument to the function is
    * the overflowItems passed in as props to this function.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onRenderOverflowButton: IRenderFunction<any[]>;
 
   /**
@@ -110,7 +110,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<HTMLElement> {
    * If not provided, will use 'item.subMenuProps.items' by default.
    * This is only used if your overflow set has keytips.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
 
   /**
@@ -155,6 +155,6 @@ export interface IOverflowSetItemProps {
   /**
    * Any additional properties to use when custom rendering menu items.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propertyName: string]: any;
 }

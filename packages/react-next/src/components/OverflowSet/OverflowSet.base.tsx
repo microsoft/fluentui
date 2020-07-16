@@ -55,7 +55,7 @@ const useComponentRef = (
     (): IOverflowSet => ({
       focus: (forceIntoFirstElement?: boolean): boolean => {
         let focusSucceeded = false;
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         if (props.doNotContainWithinFocusZone) {
           if (divContainer.current) {
             focusSucceeded = focusFirstChild(divContainer.current);
@@ -70,7 +70,7 @@ const useComponentRef = (
         if (!childElement) {
           return false;
         }
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         if (props.doNotContainWithinFocusZone) {
           if (divContainer.current && elementContains(divContainer.current, childElement)) {
             childElement.focus();
@@ -94,11 +94,11 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
     items,
     overflowItems,
     className,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     focusZoneProps,
     styles,
     vertical,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     doNotContainWithinFocusZone,
     role,
     overflowSide = 'end',
@@ -110,14 +110,14 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
 
   const showOverflow = overflowItems && overflowItems.length > 0;
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onRenderOverflowButtonWrapper = (itemsProp: any[]): JSX.Element => {
     const persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
       className: classNames.overflowButton,
     };
     const overflowKeytipSequences = props.keytipSequences;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let newOverflowItems: any[] = [];
     if (overflowKeytipSequences) {
       itemsProp.forEach(overflowItem => {
@@ -168,7 +168,7 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
   };
 
   // Gets the subMenu for an overflow item
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getSubMenuForItem = (item: any): any[] | undefined => {
     // Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
     if (props.itemSubMenuProvider) {

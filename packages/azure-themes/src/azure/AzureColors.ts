@@ -1,6 +1,5 @@
 import { IAzureSemanticColors } from './IAzureSemanticColors';
 
-/* tslint:disable:no-any */
 export namespace BaseColors {
   export const BLUE_CCE1FF = '#cce1ff';
   export const BLUE_004578 = '#004578';

@@ -1,7 +1,7 @@
 import { isConformant, implementsShorthandProp } from 'test/specs/commonTests';
 
-import Label from 'src/components/Label/Label';
-import Image from 'src/components/Image/Image';
+import { Label } from 'src/components/Label/Label';
+import { Image } from 'src/components/Image/Image';
 
 const labelImplementsShorthandProp = implementsShorthandProp(Label);
 

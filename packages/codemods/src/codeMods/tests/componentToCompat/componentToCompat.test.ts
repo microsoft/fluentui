@@ -93,7 +93,6 @@ describe('Component to compat', () => {
   it('correctly builds a hash map', () => {
     const hash = buildHash([{ componentName: 'Button', namedExports: Root }], createComponentToCompat);
     expect(hash.exactPathMatch['./mockIndex']).toEqual('compat/Button');
-    // tslint:disable-next-line: no-string-literal
-    expect(hash.namedExportsMatch['DefaultButton']).toEqual('compat/Button');
+    expect(hash.namedExportsMatch.DefaultButton).toEqual('compat/Button');
   });
 });

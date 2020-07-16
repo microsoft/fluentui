@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,6 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.53.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -36,24 +37,23 @@
     "@types/webpack-env": "1.15.1",
     "@fluentui/react-conformance": "^0.1.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.2.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "office-ui-fabric-react": "^7.121.12",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.12.0",
-    "@fluentui/keyboard-key": "^0.2.4",
-    "@fluentui/react-icons": "^0.1.35",
-    "@fluentui/react-theme-provider": "^0.3.6",
+    "@fluentui/react-compose": "^0.12.2",
+    "@fluentui/keyboard-key": "^0.2.6",
+    "@fluentui/react-icons": "^0.1.37",
+    "@fluentui/react-theme-provider": "^0.3.8",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/react-hooks": "^7.4.13",
-    "@uifabric/set-version": "^7.0.15",
-    "@uifabric/utilities": "^7.24.0",
+    "@uifabric/react-hooks": "^7.5.1",
+    "@uifabric/set-version": "^7.0.17",
+    "@uifabric/utilities": "^7.24.2",
+    "office-ui-fabric-react": "^7.123.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

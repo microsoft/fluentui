@@ -32,7 +32,7 @@ describe('command parser', () => {
 
     beforeAll(() => {
       result = new CommandParser(() => {
-        return void 0;
+        return undefined;
       }).parseArgs(['node', 'foo', 'bar/baz']);
     });
 

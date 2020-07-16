@@ -9,9 +9,9 @@ import {
   implementsShorthandProp,
 } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent, mountWithProvider as mount } from 'test/utils';
-import MenuItem from 'src/components/Menu/MenuItem';
-import Menu from 'src/components/Menu/Menu';
-import MenuItemWrapper, { menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
+import { MenuItem } from 'src/components/Menu/MenuItem';
+import { Menu } from 'src/components/Menu/Menu';
+import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {

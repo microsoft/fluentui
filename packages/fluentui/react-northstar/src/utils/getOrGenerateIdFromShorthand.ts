@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { ShorthandValue } from '../types';
 
-const getOrGenerateIdFromShorthand = <P extends Record<string, any>>(
+export const getOrGenerateIdFromShorthand = <P extends Record<string, any>>(
   prefix: string,
   value: ShorthandValue<P>,
   currentValue?: string,
@@ -21,5 +21,3 @@ const getOrGenerateIdFromShorthand = <P extends Record<string, any>>(
 
   return result || currentValue || _.uniqueId(prefix);
 };
-
-export default getOrGenerateIdFromShorthand;

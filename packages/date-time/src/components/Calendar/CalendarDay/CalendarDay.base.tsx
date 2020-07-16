@@ -57,11 +57,12 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
   });
 
   const monthAndYear = dateTimeFormatter.formatMonthYear(navigatedDate, strings);
+  const HeaderButtonComponentType = onHeaderSelect ? 'button' : 'div';
 
   return (
     <div className={classNames.root} id={dayPickerId} ref={forwardedRef}>
       <div className={classNames.header}>
-        <button
+        <HeaderButtonComponentType
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
           aria-live="polite"
           aria-atomic="true"
@@ -70,12 +71,12 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
           className={classNames.monthAndYear}
           onClick={onHeaderSelect}
           data-is-focusable={!!onHeaderSelect}
-          tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
+          tabIndex={onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
         >
           {monthAndYear}
-        </button>
+        </HeaderButtonComponentType>
         <CalendarDayNavigationButtons {...props} classNames={classNames} dayPickerId={dayPickerId} />
       </div>
       <CalendarDayGrid
@@ -187,7 +188,9 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
 };
 CalendarDayNavigationButtons.displayName = 'CalendarDayNavigationButtons';
 
-const onButtonKeyDown = (callback?: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => (
+const onButtonKeyDown = (
+  callback?: () => void,
+): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) => (
   ev: React.KeyboardEvent<HTMLButtonElement>,
 ) => {
   switch (ev.which) {

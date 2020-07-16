@@ -5,9 +5,7 @@ import * as FolderCoverStylesModule from './FolderCover.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
-// tslint:disable-next-line:no-any
 const FolderCoverStyles = FolderCoverStylesModule as any;
-// tslint:disable-next-line:no-any
 const SignalStyles = SignalStylesModule as any;
 
 export interface IFolderCoverState {
@@ -114,10 +112,10 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           className={css('ms-FolderCover-front', FolderCoverStyles.front)}
           iconName={assets.front}
         />
-        <React.Fragment>
+        <>
           {metadataIcon}
           {signalIcon}
-        </React.Fragment>
+        </>
       </div>
     );
   }

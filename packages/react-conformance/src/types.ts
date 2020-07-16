@@ -64,7 +64,7 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * Child component that will receive unhandledProps
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   passesUnhandledPropsTo?: ComponentType<any>;
 }
 

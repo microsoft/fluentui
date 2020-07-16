@@ -20,14 +20,14 @@ export class Rectangle {
   /**
    * Calculated automatically by subtracting the right from left
    */
-  get width(): number {
+  public get width(): number {
     return this.right - this.left;
   }
 
   /**
    * Calculated automatically by subtracting the bottom from top.
    */
-  get height(): number {
+  public get height(): number {
     return this.bottom - this.top;
   }
 

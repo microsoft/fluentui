@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { isConformant } from 'test/specs/commonTests';
 
-import Animation from 'src/components/Animation/Animation';
+import { Animation } from 'src/components/Animation/Animation';
 import { mountWithProvider } from 'test/utils';
 
 describe('Animation', () => {
