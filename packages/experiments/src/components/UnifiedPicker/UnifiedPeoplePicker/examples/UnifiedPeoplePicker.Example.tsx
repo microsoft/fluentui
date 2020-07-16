@@ -64,8 +64,8 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     item: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
     _markSuggestionSelected(item);
-    peopleSelectedItems.push(item.item);
-    setPeopleSelectedItems(peopleSelectedItems);
+    // peopleSelectedItems.push(item.item);
+    setPeopleSelectedItems(peopleSelectedItems => [...peopleSelectedItems, item.item]);
   };
 
   const _onSuggestionRemoved = (
@@ -105,19 +105,21 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   const _onPaste = (pastedValue: string, selectedItemsList: IPersonaProps[]): void => {
     // Find the suggestion corresponding to the specific text name
     // and update the selectedItemsList to re-render everything.
+    const newList: IPersonaProps[] = [];
     if (pastedValue !== null) {
       pastedValue.split(',').forEach(textValue => {
         if (textValue) {
           people.forEach(suggestionItem => {
             if (suggestionItem.text === textValue) {
               selectedItemsList.push(suggestionItem);
-              peopleSelectedItems.push(suggestionItem);
+              newList.push(suggestionItem);
             }
           });
         }
       });
     }
-    setPeopleSelectedItems(selectedItemsList);
+
+    setPeopleSelectedItems(peopleSelectedItems => [...peopleSelectedItems, ...newList]);
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
