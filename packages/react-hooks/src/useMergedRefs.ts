@@ -1,4 +1,4 @@
-import { useRef, useCallback, Ref, MutableRefObject } from 'react';
+import { useCallback, Ref, MutableRefObject } from 'react';
 /**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
  * updates all provided refs
