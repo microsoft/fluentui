@@ -1,34 +1,39 @@
 import { Accessibility, datepickerCalendarBehavior, DatepickerCalendarBehaviorProps } from '@fluentui/accessibility';
 import {
+  addMonths,
+  DateRangeType,
+  DayOfWeek,
+  DAYS_IN_WEEK,
+  FirstWeekOfYear,
+  formatMonthDayYear,
+  formatMonthYear,
+  getDayGrid,
+  IDateGridStrings,
+  IDay,
+  IDayGridOptions,
+  IRestrictedDatesOptions,
+} from '@fluentui/date-time-utilities';
+import {
+  ComponentWithAs,
   getElementType,
   useAccessibility,
-  useStyles,
   useFluentContext,
+  useStyles,
   useTelemetry,
   useUnhandledProps,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
+import { ArrowRightIcon } from '@fluentui/react-icons-northstar';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { FluentComponentStaticProps, ComponentEventHandler } from '../../types';
-import { commonPropTypes, UIComponentProps } from '../../utils';
-import { Grid } from '../Grid/Grid';
-import {
-  IDayGridOptions,
-  getDayGrid,
-  IDay,
-  DAYS_IN_WEEK,
-  IDateGridStrings,
-  DayOfWeek,
-  FirstWeekOfYear,
-  DateRangeType,
-  formatMonthDayYear,
-  IRestrictedDatesOptions,
-} from '@fluentui/date-time-utilities';
-import { Text } from '../Text/Text';
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import { commonPropTypes, createShorthand, UIComponentProps } from '../../utils';
 import { Button } from '../Button/Button';
+import { Grid } from '../Grid/Grid';
+import { Text } from '../Text/Text';
+import { DatepickerCalendarHeader, DatepickerCalendarHeaderProps } from './DatepickerCalendarHeader';
 
 // TODO: extract to date-time-utilities
 export const DEFAULT_CALENDAR_LOCALIZED_STRINGS: IDateGridStrings = {
@@ -108,6 +113,8 @@ export interface IDatepickerCalendarOptions extends IRestrictedDatesOptions {
 }
 
 export interface DatepickerCalendarProps extends IDatepickerCalendarOptions, IDateCalendarFormatting, UIComponentProps {
+  /** Calendar can have header. */
+  header?: ShorthandValue<DatepickerCalendarHeaderProps>;
   /**
    * The currently selected date
    */
@@ -150,14 +157,16 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     design,
     styles,
     variables,
+    header,
     selectedDate,
     navigatedDate,
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
+    showWeekNumbers,
   } = props;
 
-  const localizedStrings = props.localizedStrings ?? DEFAULT_CALENDAR_LOCALIZED_STRINGS;
+  const localizedStrings = props.localizedStrings || DEFAULT_CALENDAR_LOCALIZED_STRINGS;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DatepickerCalendar.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -165,15 +174,16 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     actionHandlers: {},
     rtl: context.rtl,
   });
-  const gridOptions: IDayGridOptions = {
-    selectedDate: selectedDate ?? props.today ?? new Date(),
-    navigatedDate: navigatedDate ?? props.today ?? new Date(),
+
+  const [gridOptions, setGridOptions] = React.useState<IDayGridOptions>({
+    selectedDate: selectedDate || props.today || new Date(),
+    navigatedDate: navigatedDate || props.today || new Date(),
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-  };
+  });
 
-  const { classes } = useStyles<DatepickerCalendarStylesProps>(DatepickerCalendar.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<DatepickerCalendarStylesProps>(DatepickerCalendar.displayName, {
     className: datepickerCalendarClassName,
     mapPropsToInlineStyles: () => ({
       className,
@@ -184,9 +194,39 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     rtl: context.rtl,
   });
 
-  let grid = getDayGrid(gridOptions);
-  // Slicing because grid contains extra 1 week in the front and in the back.
-  grid = grid.slice(1, grid.length - 1);
+  const grid = React.useMemo(() => {
+    const grid = getDayGrid(gridOptions);
+    if (!showWeekNumbers) {
+      // Slicing because grid contains extra 1 week in the front and in the back.
+      return grid.slice(1, grid.length - 1);
+    }
+    return grid;
+  }, [gridOptions, showWeekNumbers]);
+
+  const renderHeader = () => {
+    return createShorthand(DatepickerCalendarHeader, header, {
+      defaultProps: () => ({
+        styles: resolvedStyles.header,
+        previousButton: { iconOnly: true, icon: <ArrowRightIcon />, onClick: onPreviousClick, title: 'Previous Month' },
+        nextButton: { iconOnly: true, icon: <ArrowRightIcon />, onClick: onNextClick, title: 'Next Month' },
+        content: formatMonthYear(gridOptions.navigatedDate, localizedStrings),
+      }),
+    });
+  };
+
+  const onPreviousClick = () => {
+    changeMonth(false);
+  };
+  const onNextClick = () => {
+    changeMonth(true);
+  };
+
+  const changeMonth = (nextMonth: boolean) => {
+    const updatedGridNavigatedDate = addMonths(gridOptions.navigatedDate, nextMonth ? 1 : -1);
+    const newGridOptions = { ...gridOptions };
+    newGridOptions.navigatedDate = updatedGridNavigatedDate;
+    setGridOptions(newGridOptions);
+  };
 
   const element = (
     <Ref innerRef={datepickerCalendarRef}>
@@ -197,6 +237,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             ...unhandledProps,
           })}
         >
+          {renderHeader()}
           <Grid rows={grid.length + 1} columns={DAYS_IN_WEEK}>
             {_.times(DAYS_IN_WEEK, dayNumber => (
               <Text
@@ -235,6 +276,7 @@ DatepickerCalendar.displayName = 'DatepickerCalendar';
 
 DatepickerCalendar.propTypes = {
   ...commonPropTypes.createCommon(),
+  header: customPropTypes.itemShorthand,
   onDateChange: PropTypes.func,
   localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
   selectedDate: PropTypes.instanceOf(Date),
@@ -261,6 +303,7 @@ DatepickerCalendar.defaultProps = {
   firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
+  header: {},
 };
 
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;
