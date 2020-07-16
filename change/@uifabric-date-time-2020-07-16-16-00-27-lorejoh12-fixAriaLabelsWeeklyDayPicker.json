@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix next and previous month/week aria labels in weekly day picker",
+  "type": "minor",
+  "comment": "fix next and previous month/week aria labels in weekly day picker, export new default strings",
   "packageName": "@uifabric/date-time",
   "email": "lorejoh12@gmail.com",
   "dependentChangeType": "patch",
