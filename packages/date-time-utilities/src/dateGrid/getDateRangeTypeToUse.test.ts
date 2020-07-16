@@ -26,4 +26,11 @@ describe('getDateRangeTypeToUse', () => {
     ]);
     expect(resultWorkWeek).toBe(DateRangeType.WorkWeek);
   });
+  it('returns WorkWeek range type if working days are contiguous from Saturday to Sunday and incoming type is WorkWeek', () => {
+    const resultWorkWeek = DateGrid.getDateRangeTypeToUse(DateRangeType.WorkWeek, [
+      DayOfWeek.Saturday,
+      DayOfWeek.Sunday,
+    ]);
+    expect(resultWorkWeek).toBe(DateRangeType.WorkWeek);
+  });
 });
