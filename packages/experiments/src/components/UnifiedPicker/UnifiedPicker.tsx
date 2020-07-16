@@ -64,8 +64,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
   } = props;
 
-  const activeDescendant = '';
-
   const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which !== KeyCodes.backspace) {
       return;
@@ -241,7 +239,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   onClick={_onInputClick}
                   onInputValueChange={_onInputChange}
                   /* eslint-enable react/jsx-no-bind */
-                  aria-activedescendant={activeDescendant}
+                  aria-activedescendant={isSuggestionsShown ? 'FloatingSuggestionsItemId-' + focusItemIndex : undefined}
                   aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
                   aria-expanded={isSuggestionsShown}
                   aria-haspopup="true"
