@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 May 2020 12:19:48 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jul 2020 12:20:50 GMT and should not be manually modified.
 
+## 6.214.1
+Thu, 16 Jul 2020 12:20:50 GMT
+
+### Patches
+
+- FocusZone: Fix onKeyDownCapture event listener leak. (makotom@microsoft.com)
 ## 6.214.0
 Thu, 14 May 2020 12:19:48 GMT
 

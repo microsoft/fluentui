@@ -47,7 +47,7 @@
     "es6-weak-map": "^2.0.2",
     "highlight.js": "^9.12.0",
     "office-ui-fabric-core": "^9.0.0",
-    "office-ui-fabric-react": "^6.214.0",
+    "office-ui-fabric-react": "^6.214.1",
     "react": "~16.6.3",
     "react-dom": "~16.6.3",
     "react-highlight": "0.10.0",

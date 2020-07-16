@@ -2,6 +2,19 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 16 Jul 2020 12:20:50 GMT",
+      "tag": "office-ui-fabric-react_v6.214.1",
+      "version": "6.214.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Fix onKeyDownCapture event listener leak.",
+            "author": "makotom@microsoft.com"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 May 2020 12:19:48 GMT",
       "tag": "office-ui-fabric-react_v6.214.0",
       "version": "6.214.0",

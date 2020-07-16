@@ -25,7 +25,7 @@
     "@uifabric/fabric-website-resources": "^6.19.2",
     "@uifabric/prettier-rules": "^1.0.2",
     "mocha": "^3.3.0",
-    "office-ui-fabric-react": "^6.214.0",
+    "office-ui-fabric-react": "^6.214.1",
     "raw-loader": "^0.5.1",
     "react": "~16.6.3",
     "react-dom": "~16.6.3",

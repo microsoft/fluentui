@@ -64,7 +64,7 @@
     "@uifabric/utilities": "^6.45.2",
     "@uifabric/variants": "^6.15.2",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": "^6.214.0",
+    "office-ui-fabric-react": "^6.214.1",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

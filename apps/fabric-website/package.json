@@ -55,7 +55,7 @@
     "@uifabric/theme-samples": "^0.1.10",
     "react-app-polyfill": "~1.0.1",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^6.214.0",
+    "office-ui-fabric-react": "^6.214.1",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }
