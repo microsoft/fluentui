@@ -4,6 +4,6 @@ import RosterPrototype from '../../../../prototypes/Roster';
 const RosterPerf = () => <RosterPrototype />;
 
 RosterPerf.iterations = 5000;
-RosterPerf.filename = 'roster.perf.tsx';
+RosterPerf.filename = 'Roster.perf.tsx';
 
 export default RosterPerf;

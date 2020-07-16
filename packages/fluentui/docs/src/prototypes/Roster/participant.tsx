@@ -27,10 +27,15 @@ const Participant: React.FC<{
     >
       {talking ? (
         <Animation name="talking">
-          <Avatar variables={{ isTalking: true }} image={image} name={name} status={status} />
+          <Avatar
+            variables={{ isTalking: true }}
+            image={`data:image/jpeg;base64,${image}`}
+            name={name}
+            status={status}
+          />
         </Animation>
       ) : (
-        <Avatar image={image} name={name} status={status} />
+        <Avatar image={`data:image/jpeg;base64,${image}`} name={name} status={status} />
       )}
 
       <Flex column>
