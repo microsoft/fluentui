@@ -31,19 +31,19 @@ export function renameProp<T>(
         });
         if (enumExp.just) {
           const oldEnumName = enumExp.then(value => {
-            return value!.getText();
+            return value.getText();
           });
           if (oldEnumName.just) {
             const newEnumName = changeValueMap[oldEnumName.value];
             const firstEnumChild = enumExp.then(value => {
-              return value!.getFirstChildByKind(SyntaxKind.Identifier);
+              return value.getFirstChildByKind(SyntaxKind.Identifier);
             });
             const lastEnumChild = enumExp.then(value => {
-              return value!.getLastChildByKind(SyntaxKind.Identifier);
+              return value.getLastChildByKind(SyntaxKind.Identifier);
             });
             if (firstEnumChild.just && lastEnumChild.just) {
-              firstEnumChild.value!.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
-              lastEnumChild.value!.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
+              firstEnumChild.value.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
+              lastEnumChild.value.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
             }
           }
         }

@@ -148,12 +148,14 @@ $Calendar-dayPicker-margin: 10px;
   &:hover,
   &:active {
     @include high-contrast {
-      outline: 1px solid highlight;
+      outline: 1px solid Highlight;
+      -ms-high-contrast-adjust: none;
     }
   }
   &:active {
     @include high-contrast {
-      color: highlight;
+      color: Highlight;
+      -ms-high-contrast-adjust: none;
     }
   }
 }
@@ -167,7 +169,8 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   background-color: $ms-color-neutralLighter;
   @include high-contrast {
-    background-color: highlight;
+    background-color: Highlight;
+    -ms-high-contrast-adjust: none;
   }
   &:hover {
     border-radius: 100%;
@@ -200,9 +203,10 @@ $Calendar-dayPicker-margin: 10px;
   background-color: $ms-color-neutralLight;
   border-radius: 2px;
   @include high-contrast {
-    border: 2px solid Highlight;
+    outline: 2px solid Highlight;
     :not(.dayIsToday) span {
       color: Highlight;
+      -ms-high-contrast-adjust: none;
     }
   }
 }
@@ -215,6 +219,7 @@ $Calendar-dayPicker-margin: 10px;
     span {
       @include high-contrast {
         color: Window;
+        -ms-high-contrast-adjust: none;
       }
     }
   }
@@ -285,6 +290,11 @@ $Calendar-dayPicker-margin: 10px;
   font-weight: $ms-font-weight-semibold;
   background: $ms-color-themePrimary;
   border-radius: 100%;
+  @include high-contrast {
+    background-color: Highlight;
+    color: HighlightText;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .showWeekNumbers {
@@ -743,7 +753,7 @@ $Calendar-dayPicker-margin: 10px;
     background-color: $ms-color-neutralLighter;
     color: $ms-color-neutralDark;
     @include high-contrast {
-      outline: 1px solid highlight;
+      outline: 1px solid Highlight;
     }
   }
   &:active {

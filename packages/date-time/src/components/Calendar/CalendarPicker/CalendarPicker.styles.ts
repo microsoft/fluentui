@@ -1,5 +1,13 @@
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from './CalendarPicker.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle, IRawStyle, AnimationStyles } from '@uifabric/styling';
+import {
+  normalize,
+  FontSizes,
+  FontWeights,
+  getFocusStyle,
+  IRawStyle,
+  AnimationStyles,
+  HighContrastSelector,
+} from '@uifabric/styling';
 import { AnimationDirection } from '../Calendar.types';
 
 export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyles => {
@@ -138,9 +146,24 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
             backgroundColor: palette.neutralLight,
             cursor: 'pointer',
             outline: '1px solid transparent',
+            selectors: {
+              [HighContrastSelector]: {
+                background: 'Window',
+                color: 'WindowText',
+                outline: '1px solid Highlight',
+                MsHighContrastAdjust: 'none',
+              },
+            },
           },
           '&:active': {
             backgroundColor: palette.themeLight,
+            selectors: {
+              [HighContrastSelector]: {
+                background: 'Window',
+                color: 'Highlight',
+                MsHighContrastAdjust: 'none',
+              },
+            },
           },
         },
       },
@@ -155,6 +178,18 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
             },
             '&:hover': {
               backgroundColor: palette.themePrimary,
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: 'WindowText',
+                  color: 'Window',
+                  MsHighContrastAdjust: 'none',
+                },
+              },
+            },
+            [HighContrastSelector]: {
+              backgroundColor: 'WindowText',
+              color: 'Window',
+              MsHighContrastAdjust: 'none',
             },
           },
         }
@@ -170,6 +205,18 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
             },
             '&:hover, &:active': {
               backgroundColor: palette.themeLight,
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'Window',
+                  background: 'Highlight',
+                  MsHighContrastAdjust: 'none',
+                },
+              },
+            },
+            [HighContrastSelector]: {
+              background: 'Highlight',
+              color: 'Window',
+              MsHighContrastAdjust: 'none',
             },
           },
         }
