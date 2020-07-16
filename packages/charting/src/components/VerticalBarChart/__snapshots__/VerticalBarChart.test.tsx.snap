@@ -76,12 +76,11 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               fill: rgb(179, 179, 179);
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
               width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black){& line {
-              opacity: 0.2;
               stroke: rgb(179, 179, 179);
             }
             & path {
