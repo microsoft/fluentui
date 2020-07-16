@@ -55,6 +55,12 @@ export enum DayOfWeek {
 // @public (undocumented)
 export const DAYS_IN_WEEK = 7;
 
+// @public (undocumented)
+export const DEFAULT_DATE_FORMATTING: IDateFormatting;
+
+// @public (undocumented)
+export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings;
+
 // @public
 export const findAvailableDate: (options: IAvailableDateOptions) => Date | undefined;
 
@@ -121,11 +127,31 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 }
 
 // @public (undocumented)
+export interface IDateFormatting extends IDateGridStrings {
+    formatDay: (date: Date) => string;
+    formatMonthDayYear: (date: Date) => string;
+    formatMonthYear: (date: Date) => string;
+    formatYear: (date: Date) => string;
+    parse: (date: string) => Date | null;
+}
+
+// @public (undocumented)
 export interface IDateGridStrings {
     days: string[];
     months: string[];
     shortDays: string[];
     shortMonths: string[];
+}
+
+// @public (undocumented)
+export interface IDatepickerOptions extends IRestrictedDatesOptions {
+    dateRangeType: DateRangeType;
+    daysToSelectInDayView?: number;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    showWeekNumbers?: boolean;
+    today?: Date;
+    workWeekDays?: DayOfWeek[];
 }
 
 // @public (undocumented)
@@ -140,17 +166,10 @@ export interface IDay {
 }
 
 // @public (undocumented)
-export interface IDayGridOptions extends IRestrictedDatesOptions {
-    dateRangeType: DateRangeType;
-    daysToSelectInDayView?: number;
-    firstDayOfWeek: DayOfWeek;
-    firstWeekOfYear: FirstWeekOfYear;
+export interface IDayGridOptions extends IDatepickerOptions {
     navigatedDate: Date;
     selectedDate: Date;
-    showWeekNumbers?: boolean;
-    today?: Date;
     weeksToShow?: number;
-    workWeekDays?: DayOfWeek[];
 }
 
 // @public (undocumented)
@@ -165,6 +184,9 @@ export const isAfterMaxDate: (date: Date, options: IRestrictedDatesOptions) => b
 
 // @public
 export const isBeforeMinDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
+
+// @public
+export const isContiguous: (days: DayOfWeek[]) => boolean;
 
 // @public
 export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;

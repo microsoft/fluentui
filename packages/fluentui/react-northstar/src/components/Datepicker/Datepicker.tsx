@@ -25,20 +25,21 @@ import {
   FirstWeekOfYear,
   DateRangeType,
   IDayGridOptions,
+  IDatepickerOptions,
   IDateFormatting,
   DEFAULT_DATE_FORMATTING,
 } from '@fluentui/date-time-utilities';
 
 import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 
-export interface DatepickerProps extends UIComponentProps, Partial<IDayGridOptions>, Partial<IDateFormatting> {
+export interface DatepickerProps extends UIComponentProps, Partial<IDateFormatting>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
   /** Datepicker shows it is currently unable to be interacted with. */
   disabled?: boolean;
 
-  /** Datepicker shows it is currently unable to be interacted with. */
+  /** Datepicker can show it's input is required to be filled. */
   isRequired?: boolean;
 
   /**
@@ -87,10 +88,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const { className, design, styles, variables, formatMonthDayYear } = props;
 
+  const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
+
   const dayGridOptions = {
-    selectedDate: props.selectedDate ?? new Date(),
-    navigatedDate: props.selectedDate ?? new Date(),
-    weeksToShow: props.weeksToShow,
+    selectedDate: nonNullSelectedDate,
+    navigatedDate: nonNullSelectedDate,
     firstDayOfWeek: props.firstDayOfWeek,
     firstWeekOfYear: props.firstWeekOfYear,
     dateRangeType: props.dateRangeType,
@@ -112,8 +114,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   };
 
   const valueFormatter = date => (date ? formatMonthDayYear(date) : '');
-
-  const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
@@ -155,14 +155,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           <Popup
             open={open}
             onOpenChange={(e, { open }) => setOpen(open)}
-            content={
-              <DatepickerCalendar
-                onDateChange={handleChange}
-                {...dateFormatting}
-                {...dayGridOptions}
-                selectedDate={nonNullSelectedDate}
-              />
-            }
+            content={<DatepickerCalendar onDateChange={handleChange} {...dateFormatting} {...dayGridOptions} />}
             trapFocus
           >
             <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />
@@ -216,13 +209,13 @@ Datepicker.propTypes = {
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
 
-  // IDayGridOptions
-  firstDayOfWeek: DayOfWeek.Monday,
+  // IDatepickerOptions
+  firstDayOfWeek: DayOfWeek.Sunday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
 
   ...DEFAULT_DATE_FORMATTING,
-} as DatepickerProps;
+};
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
 

@@ -148,6 +148,7 @@ DatepickerCalendar.propTypes = {
 
   selectedDate: PropTypes.instanceOf(Date),
   navigatedDate: PropTypes.instanceOf(Date),
+  weeksToShow: PropTypes.number,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -183,6 +184,6 @@ DatepickerCalendar.defaultProps = {
   dateRangeType: DateRangeType.Day,
 
   ...DEFAULT_DATE_FORMATTING,
-} as DatepickerCalendarProps;
+};
 
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;
