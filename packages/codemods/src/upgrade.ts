@@ -1,18 +1,11 @@
-import { runMods, getModsPaths, getTsConfigs, modEnabled, loadMod } from './modRunner/runnerUtilities';
+import { runMods, getTsConfigs, getEnabledMods } from './modRunner/runnerUtilities';
+import { getModFilter } from './modRunner/modFilter';
+import { CommandParserResult } from './command';
 import { Project } from 'ts-morph';
 
 // TODO actually do console logging, implement some nice callbacks.
-export function upgrade() {
-  const mods = getModsPaths()
-    .filter(pth => pth.endsWith('.js'))
-    .map(pth => {
-      console.log('fetching codeMod at ', pth);
-      return loadMod(pth, e => {
-        console.error(e);
-      });
-    })
-    .filter(modEnabled)
-    .map(v => v.value);
+export function upgrade(options: CommandParserResult) {
+  const mods = getEnabledMods().filter(getModFilter(options));
 
   console.log('getting configs');
   const configs = getTsConfigs();
