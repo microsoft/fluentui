@@ -24,9 +24,12 @@ export interface PrototypePerfExampleProps {
 
 const PrototypePerfExample: React.FC<PrototypePerfExampleProps> = props => {
   const { title, description, examplePath } = props;
+
   const Prototype = React.lazy(async () => ({
     default: (await import(/* webpackChunkName: "prototype-example" */ `../../../examples/${examplePath}`)).default,
   }));
+
+  const [renderPrototype, setRenderPrototype] = React.useState(false);
   const [currentChart, setCurrentChart] = React.useState<'perf' | 'resources'>('perf');
 
   const perfTestName = `${_.camelCase(_.last(examplePath.split('/')))}Tsx`;
@@ -64,6 +67,9 @@ const PrototypePerfExample: React.FC<PrototypePerfExampleProps> = props => {
           </React.Suspense>
         </Segment>
         <Accordion
+          onClick={() => {
+            setRenderPrototype(true);
+          }}
           panels={
             [
               {
@@ -81,7 +87,7 @@ const PrototypePerfExample: React.FC<PrototypePerfExampleProps> = props => {
                     <Flex padding="padding.medium" fill hAlign="end">
                       <PrototypeExampleControls examplePath={examplePath} />
                     </Flex>
-                    <Prototype />
+                    {renderPrototype ? <Prototype /> : ''}
                   </Flex>
                 ),
               },
