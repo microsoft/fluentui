@@ -3,12 +3,11 @@ import { ReactWrapper, mount } from 'enzyme';
 import { useRefEffect } from './useRefEffect';
 
 describe('useRefEffect', () => {
-  let ref: React.RefObject<HTMLElement>;
-
   // Use a jest.fn to log the calls to callback and cleanup
   const log = jest.fn((type: 'callback' | 'cleanup', as: 'div' | 'span', ele: HTMLElement) => {});
   afterEach(() => log.mockClear());
 
+  let ref: React.RefObject<HTMLElement>;
   const TestComponent: React.FunctionComponent<{ as: 'div' | 'span' }> = props => {
     let setRef;
     [ref, setRef] = useRefEffect<HTMLElement>(ele => {
@@ -24,7 +23,6 @@ describe('useRefEffect', () => {
     wrapper = mount(<TestComponent as="div" />);
 
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
-
     expect(log).toHaveBeenCalledTimes(1);
     expect(log).toHaveBeenCalledWith('callback', 'div', ref.current);
   });
@@ -37,25 +35,27 @@ describe('useRefEffect', () => {
 
     expect(ref.current).not.toBe(prevRef);
     expect(ref.current).toBeInstanceOf(HTMLSpanElement);
-
     expect(log).toHaveBeenCalledTimes(2);
     expect(log).toHaveBeenNthCalledWith(1, 'cleanup', 'div', prevRef);
     expect(log).toHaveBeenNthCalledWith(2, 'callback', 'span', ref.current);
   });
 
   it('does not call callback on render, if the ref has not changed', () => {
+    const prevRef = ref.current;
+
     // Re-render without changing the type
     wrapper.setProps({});
 
+    expect(ref.current).toBe(prevRef);
     expect(log).not.toHaveBeenCalled();
   });
 
   it('clears ref.current and calls cleanup when the component is unmounted', () => {
     const prevRef = ref.current;
+
     wrapper.unmount();
 
     expect(ref.current).toBeNull();
-
     expect(log).toHaveBeenCalledTimes(1);
     expect(log).toHaveBeenCalledWith('cleanup', 'span', prevRef);
   });
