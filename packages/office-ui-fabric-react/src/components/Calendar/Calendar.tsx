@@ -10,7 +10,15 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateV
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
-import { css, KeyCodes, getNativeProps, divProperties, initializeComponentRef, FocusRects } from '../../Utilities';
+import {
+  css,
+  elementContains,
+  KeyCodes,
+  getNativeProps,
+  divProperties,
+  initializeComponentRef,
+  FocusRects,
+} from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
@@ -84,6 +92,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
 
   private _dayPicker = React.createRef<ICalendarDay>();
   private _monthPicker = React.createRef<ICalendarMonth>();
+  private _hasFocus = false;
 
   private _focusOnUpdate: boolean;
 
@@ -155,7 +164,6 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
       today,
     } = this.props;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['value']);
-
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
@@ -175,6 +183,8 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
       <div className={css(rootClass, styles.root, className)} role="application">
         <div
           {...nativeProps}
+          onBlur={this._onBlur}
+          onFocus={this._onFocus}
           className={css(
             'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
             styles.picker,
@@ -275,6 +285,20 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
       this._monthPicker.current.focus();
     }
   }
+
+  private _onBlur = (event: React.FocusEvent<HTMLElement>) => {
+    if (!elementContains(event.currentTarget, event.relatedTarget as HTMLElement)) {
+      this._hasFocus = false;
+      this.props.onBlur && this.props.onBlur(event);
+    }
+  };
+
+  private _onFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (!this._hasFocus) {
+      this._hasFocus = true;
+      this.props.onFocus && this.props.onFocus(event);
+    }
+  };
 
   private _navigateDayPickerDay = (date: Date): void => {
     this.setState({

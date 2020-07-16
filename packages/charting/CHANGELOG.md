@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2020 12:41:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.2)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.1..@uifabric/charting_v2.5.2)
+
+### Patches
+
+- Legends:Skip all legends in data viz as it is confusing to non sighted users as they have just gone through the data viz. ([PR #14019](https://github.com/microsoft/fluentui/pull/14019) by v-gorraj@microsoft.com)
 
 ## [2.5.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.1)
 
