@@ -1,6 +1,6 @@
-import { renameProp, findJsxTag } from '../../utilities';
-import { Project, SyntaxKind, JsxAttribute, JsxExpression } from 'ts-morph';
-import { EnumMap, PropTransform } from '../../types';
+import { renameProp, findJsxTag, boolTransform } from '../../utilities';
+import { Project, SyntaxKind, JsxAttribute } from 'ts-morph';
+import { EnumMap } from '../../types';
 import { Maybe } from '../../../maybe';
 
 const personaPropsFile = 'mPersonaProps.tsx';
@@ -174,20 +174,11 @@ describe('Props Utilities Test', () => {
   });
 
   describe('Edge Case Tests (transform function)', () => {
-    function boolTransform(newValue: boolean): PropTransform {
-      return (element: JsxExpression) => {
-        const exp = Maybe(element.getFirstChildByKind(SyntaxKind.TrueKeyword));
-        if (exp.just) {
-          exp.value.replaceWithText(newValue.toString());
-        }
-      };
-    }
-
     it('can rename and replace the values of props (primitives)', () => {
       const file = project.getSourceFileOrThrow(DropdownPropsFile);
       const tags = findJsxTag(file, 'Dropdown');
       const func = boolTransform(false);
-      renameProp(tags, 'isDisabled', 'disabled', undefined, undefined, undefined);
+      renameProp(tags, 'isDisabled', 'disabled', undefined, undefined, func);
       tags.forEach(tag => {
         expect(tag.getAttribute('isDisabled')).toBeFalsy();
         const valMaybe = Maybe(tag.getAttribute('disabled'));
