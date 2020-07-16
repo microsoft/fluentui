@@ -9,7 +9,7 @@ import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 const titleRenderer = (Component, { content, expanded, open, hasSubtree, ...restProps }) => (
   <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
     {expanded ? <TriangleDownIcon /> : hasSubtree ? <TriangleEndIcon /> : ''}
-    <Text size="small" content={content}></Text>
+    <Text size="small" content={content} />
   </Component>
 );
 
@@ -45,7 +45,7 @@ const RosterPrototype: React.FC = () => {
                 items={treeItems}
                 renderItemTitle={titleRenderer}
                 defaultActiveItemIds={['participants', 'invite']}
-              ></Tree>
+              />
             </Flex>
           </Provider>
         </Provider>

@@ -5,7 +5,7 @@ import ExampleSection from '../../../components/ComponentDoc/ExampleSection';
 
 const PerformanceTests = () => (
   <ExampleSection title="Roster Performance">
-    <ComponentPerfExample title="Roster" examplePath="components/PerformanceTests/Performance/roster.perf" />
+    <ComponentPerfExample title="Roster" examplePath="components/PerformanceTests/Performance/Roster.perf" />
   </ExampleSection>
 );
 
