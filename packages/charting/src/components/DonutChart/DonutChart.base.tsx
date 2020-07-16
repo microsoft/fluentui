@@ -265,12 +265,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
-    if (valueInsideDonut != undefined && this.state.activeLegend != '' && !this.state.showHover) {
+    if (valueInsideDonut !== undefined && this.state.activeLegend !== '' && !this.state.showHover) {
       let legendValue = valueInsideDonut;
       data!.map((point: IChartDataPoint, index: number) => {
-        if (point.legend == this.state.activeLegend) {
+        if (point.legend === this.state.activeLegend) {
           legendValue = point.data!;
         }
+        return;
       });
       return legendValue;
     } else {
