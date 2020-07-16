@@ -4,7 +4,7 @@ import { useRefEffect } from './useRefEffect';
 
 describe('useRefEffect', () => {
   // Use a jest.fn to log the calls to callback and cleanup
-  const log = jest.fn((type: 'callback' | 'cleanup', as: 'div' | 'span', ele: HTMLElement) => {});
+  const log = jest.fn<void, [/*event:*/ 'callback' | 'cleanup', /*as:*/ 'div' | 'span', /*ele:*/ HTMLElement]>();
   afterEach(() => log.mockClear());
 
   let ref: React.RefObject<HTMLElement>;
