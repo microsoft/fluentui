@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
-  "packageName": "office-ui-fabric-react",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "none",
-  "date": "2020-06-23T15:20:22.020Z"
-}

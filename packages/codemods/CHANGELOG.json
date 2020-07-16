@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@fluentui/codemods_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix maybe to correctly wrap return value from then",
+            "author": "joschect@microsoft.com",
+            "commit": "a1f0ef7f1f03a6c0a5f66ae093bb2da22726c186",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@fluentui/codemods_v0.3.0",
       "version": "0.3.0",
