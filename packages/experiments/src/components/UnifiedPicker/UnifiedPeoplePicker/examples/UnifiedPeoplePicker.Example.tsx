@@ -105,19 +105,19 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
   const _onPaste = (pastedValue: string, selectedItemsList: IPersonaProps[]): void => {
     // Find the suggestion corresponding to the specific text name
     // and update the selectedItemsList to re-render everything.
-    const finalList: IPersonaProps[] = [];
+    //const finalList: IPersonaProps[] = [];
     if (pastedValue !== null) {
       pastedValue.split(',').forEach(textValue => {
         if (textValue) {
           people.forEach(suggestionItem => {
             if (suggestionItem.text === textValue) {
-              finalList.push(suggestionItem);
+              selectedItemsList.push(suggestionItem);
             }
           });
         }
       });
     }
-    setPeopleSelectedItems(selectedItemsList.concat(finalList));
+    setPeopleSelectedItems(selectedItemsList);
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
@@ -161,15 +161,19 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
 
   const selectedPeopleListProps = {
     removeButtonAriaLabel: 'Remove',
-    selectedItems: [...peopleSelectedItems],
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
+  const selectedItemsProps = {
+    selectedItems: [...peopleSelectedItems],
+    ...selectedPeopleListProps,
+  };
+
   return (
     <>
       <UnifiedPeoplePicker
-        selectedItemsListProps={selectedPeopleListProps}
+        selectedItemsListProps={selectedItemsProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
         // eslint-disable-next-line react/jsx-no-bind
         onInputChange={_onInputChange}
