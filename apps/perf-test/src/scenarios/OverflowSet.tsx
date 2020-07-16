@@ -7,7 +7,7 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   return <div>{item.name}</div>;
 };
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
   return <button> ... </button>;
 };
