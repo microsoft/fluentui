@@ -14,7 +14,7 @@ describe('Maybe', () => {
   it('just will error if you pass it undefined', () => {
     let error = false;
     try {
-      Just(undefined);
+      Just(undefined as unknown);
     } catch (_) {
       error = true;
     }
@@ -54,5 +54,12 @@ describe('Maybe', () => {
         .then(v => 'good')
         .orElse('bad'),
     ).toEqual('good');
+  });
+  it('then returns single maybe if maybe returned', () => {
+    expect(
+      Maybe('foo')
+        .then(v => Maybe('newValue'))
+        .orElse('bad'),
+    ).toEqual('newValue');
   });
 });
