@@ -4,9 +4,9 @@ import { ChatMessageStylesProps, chatMessageSlotClassNames } from '../../../../c
 import { ChatMessageVariables } from './chatMessageVariables';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
+export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     display: 'inline-block',
     position: 'relative',
@@ -54,7 +54,6 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       ':hover': {
         [`> .${chatMessageSlotClassNames.actionMenu}`]: {
           opacity: 1,
-          width: 'auto',
           zIndex: v.overlayZIndex,
           '[data-popper-escaped]': {
             opacity: 0,
@@ -168,5 +167,3 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
     float: 'right',
   }),
 };
-
-export default chatMessageStyles;

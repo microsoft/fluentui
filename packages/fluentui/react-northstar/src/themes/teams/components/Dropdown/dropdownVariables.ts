@@ -66,7 +66,7 @@ export interface DropdownVariables {
 
 const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v));
 
-export default (siteVars): DropdownVariables => ({
+export const dropdownVariables = (siteVars): DropdownVariables => ({
   backgroundColor: siteVars.colorScheme.default.background2,
   backgroundColorHover: siteVars.colorScheme.default.backgroundHover3,
   invertedBackgroundColor: siteVars.colorScheme.default.background,

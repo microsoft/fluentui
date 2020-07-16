@@ -87,6 +87,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
             hasCloseButton={false}
             // Use onDismissed (not onDismiss) to prevent _onIsMenuVisibleChanged being called twice
             // (once by the panel and once by the header button)
+            // eslint-disable-next-line react/jsx-no-bind
             onDismissed={this._onIsMenuVisibleChanged.bind(this, false)}
             styles={classNames.subComponentStyles.navPanel}
           >

@@ -11,8 +11,6 @@ import { TextField } from './TextField';
 import { TextFieldBase, ITextFieldState } from './TextField.base';
 import { ITextFieldProps, ITextFieldStyles, ITextField } from './TextField.types';
 
-// tslint:disable:jsx-no-lambda
-
 /**
  * The currently rendered ITextField.
  * ONLY set if `componentRef={textFieldRef}` is included in the TextField's props.

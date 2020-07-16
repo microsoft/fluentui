@@ -78,6 +78,7 @@ function getFontFormat(src: string): string {
       return fmt;
     }
 
+    // eslint-disable-next-line no-console
     console.warn(
       `A invalid base64 font was used. Please use one of the following mime type: ${Object.keys(base64Formats).join(
         ', ',
@@ -101,6 +102,7 @@ function getFontFormat(src: string): string {
       return fmt;
     }
 
+    // eslint-disable-next-line no-console
     console.warn(`A invalid font-format was used in "${src}". Use one of these: ${Object.keys(formats).join(', ')}.`);
   }
   return '';

@@ -16,6 +16,11 @@ export function safeMount<
 >(content: React.ReactElement<TProps>, callback: (wrapper: ReactWrapper<TProps, TState, TComponent>) => void): void {
   const wrapper = mount<TComponent, TProps, TState>(content);
 
-  callback(wrapper);
-  wrapper.unmount();
+  try {
+    callback(wrapper);
+  } finally {
+    if (wrapper.exists()) {
+      wrapper.unmount();
+    }
+  }
 }

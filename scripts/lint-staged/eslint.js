@@ -3,10 +3,11 @@
 const glob = require('glob');
 const os = require('os');
 const path = require('path');
-const { ESLint } = require('eslint');
 const { rollup: lernaAliases } = require('lerna-alias');
 const { default: PQueue } = require('p-queue');
-const configHelpers = require('@fluentui/eslint-plugin/src/utils/configHelpers');
+const exec = require('../exec');
+
+const eslintForPackageScript = path.join(__dirname, 'eslint-for-package.js');
 
 // Paths to packages with an eslintrc (with any extension)
 const packagesWithEslint = Object.values(lernaAliases({ sourceDirectory: false })).filter(
@@ -49,7 +50,6 @@ function groupFilesByPackage(files) {
 
 /**
  * Runs eslint for the staged files in the packages that require it.
- * Excludes all API extractor files.
  *
  * @param {{[packagePath: string]: string[]}} filesGroupedByPackage
  */
@@ -58,45 +58,22 @@ async function runEslintOnFilesGroupedPerPackage(filesGroupedByPackage) {
   console.log('');
 
   const queue = new PQueue({ concurrency: os.cpus().length / 2 });
-  const cwd = process.cwd();
   let hasError = false;
 
   await queue.addAll(
     Object.entries(filesGroupedByPackage).map(([packagePath, files]) => async () => {
       // We can't just run the eslint CLI on the filenames because directly passed filenames
       // override ignores configured elsewhere (so files that should be ignored would be linted).
-      // So manually filter out ignored files then run eslint via its API.
-      // https://www.npmjs.com/package/lint-staged#how-can-i-ignore-files-from-eslintignore-
-
-      // chdir is because some of the eslint config relies on process.cwd() to infer the package
-      process.chdir(packagePath);
-      const eslint = new ESLint({
-        cwd: packagePath,
-        extensions: configHelpers.extensions,
-        fix: true,
-        cache: true,
-      });
-      process.chdir(cwd);
-
-      // Filter out ignored files (2-step process due to isPathIgnored returning a promise)
-      const ignoreResults = await Promise.all(files.map(f => eslint.isPathIgnored(f)));
-      const filteredFiles = files.filter((f, i) => !ignoreResults[i]);
-
-      if (filteredFiles.length === 0) {
-        return;
-      }
-
-      // Lint files then fix all auto-fixable issues
-      const results = await eslint.lintFiles(filteredFiles);
-      await ESLint.outputFixes(results);
-
-      // Format results
-      const formatter = await eslint.loadFormatter();
-      const resultText = formatter.format(results);
-      if (resultText) {
+      // So manually filter out ignored files then run eslint via its API as described here:
+      //   https://www.npmjs.com/package/lint-staged#how-can-i-ignore-files-from-eslintignore-
+      // In our case, we also need to run it in a different subprocess per package because some
+      // of our eslint config relies on process.cwd() to infer info about the package.
+      return exec(`node ${eslintForPackageScript} ${files.join(' ')}`, undefined, packagePath, process).catch((
+        /** @type {import("../exec").ExecResult} */ err,
+      ) => {
+        // The subprocess should already have handled logging. Just mark that there was an error.
         hasError = true;
-        console.error(resultText);
-      }
+      });
     }),
   );
 

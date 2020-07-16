@@ -18,23 +18,25 @@ export interface InputVariables {
   inputPadding: string;
   inputFocusBorderColor: string;
   inputFocusBorderRadius: string;
+  inputInsideLabelPaddingTop: string;
   placeholderColor: string;
   successfulColor: string;
   borderColorError: string;
   colorError: string;
 }
 
-export default (siteVars): InputVariables => ({
+export const inputVariables = (siteVars): InputVariables => ({
   colorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
   colorError: siteVars.colorScheme.red.foreground,
   borderColorError: siteVars.colorScheme.red.background,
   iconPosition: 'absolute',
   iconRight: pxToRem(10),
   iconLeft: pxToRem(6),
+
   inputPaddingWithIconAtStart: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(5)} ${pxToRem(24)}`,
   inputPaddingWithIconAtEnd: `${pxToRem(5)} ${pxToRem(24)} ${pxToRem(5)} ${pxToRem(12)}`,
-
   inputPadding: `${pxToRem(5)} ${pxToRem(12)}`,
+  inputInsideLabelPaddingTop: pxToRem(14),
 
   borderColor: 'transparent',
   borderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,

@@ -22,7 +22,7 @@ import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
  * Triggers 'showNextSlideByPaddlePress' action with 'Enter' or 'Spacebar' on 'paddleNext'.
  * Triggers 'showPreviousSlideByPaddlePress' action with 'Enter' or 'Spacebar' on 'paddlePrevious'.
  */
-const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => ({
+export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => ({
   attributes: {
     root: {
       ...(!props.navigation && {
@@ -83,5 +83,3 @@ export type CarouselBehaviorProps = {
   ariaRoleDescription?: string;
   ariaLabel?: string;
 };
-
-export default carouselBehavior;

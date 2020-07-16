@@ -3,7 +3,7 @@ import { MenuVariables } from './menuVariables';
 import { MenuItemContentStylesProps } from '../../../../components/Menu/MenuItemContent';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-const menuItemContentStyles: ComponentSlotStylesPrepared<MenuItemContentStylesProps, MenuVariables> = {
+export const menuItemContentStyles: ComponentSlotStylesPrepared<MenuItemContentStylesProps, MenuVariables> = {
   root: ({ props: p }): ICSSInJSStyle => {
     const widthAdjust = (p.hasIcon ? 26 : 0) + (p.hasMenu ? 16 : 0);
     return {
@@ -21,5 +21,3 @@ const menuItemContentStyles: ComponentSlotStylesPrepared<MenuItemContentStylesPr
     };
   },
 };
-
-export default menuItemContentStyles;

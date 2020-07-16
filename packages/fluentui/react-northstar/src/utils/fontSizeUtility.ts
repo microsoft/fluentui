@@ -1,4 +1,4 @@
-import isBrowser from './isBrowser';
+import { isBrowser } from './isBrowser';
 
 const DEFAULT_REM_SIZE_IN_PX = 16;
 

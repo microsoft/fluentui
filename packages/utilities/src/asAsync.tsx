@@ -39,7 +39,7 @@ export interface IAsAsyncOptions<TProps> {
  */
 const _syncModuleCache =
   typeof WeakMap !== 'undefined'
-    ? // tslint:disable-next-line:no-any
+    ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
       new WeakMap<() => Promise<React.ElementType<any>>, React.ElementType<any> | undefined>()
     : undefined;
 
@@ -63,7 +63,7 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>) {
 
     public render(): JSX.Element | null {
       // Typescript issue: the rest can't be pulled without the any cast, as TypeScript fails with rest on generics.
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { forwardedRef, asyncPlaceholder: Placeholder, ...rest } = this.props as any;
       const { Component } = this.state;
       return Component ? (

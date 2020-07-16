@@ -6,8 +6,8 @@ import { FabricDecorator } from '../utilities';
 import { MessageBarButton, Link, MessageBar, MessageBarType } from 'office-ui-fabric-react';
 
 const noop = (): void => undefined;
-// tslint:disable:max-line-length
 const longText =
+  // eslint-disable-next-line @fluentui/max-len
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum tellus at malesuada vestibulum. Pellentesque eget mi sagittis, sagittis nisi a, tristique nisl. Sed sed consequat neque, et dignissim ipsum. Integer in neque vestibulum, aliquet erat nec, vestibulum ex. Nullam et imperdiet lectus. Cras tempus eu tortor a elementum. Proin non justo lacus. Donec tincidunt laoreet malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean augue nisl, lobortis ut sodales eu, convallis in metus.';
 const link = <Link href="www.bing.com">Visit our website</Link>;
 

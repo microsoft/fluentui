@@ -40,7 +40,7 @@ export type AttachmentVariables = {
   actionFocusBorderRadius: string;
 };
 
-export default (siteVariables: any): AttachmentVariables => ({
+export const attachmentVariables = (siteVariables: any): AttachmentVariables => ({
   padding: `${pxToRem(7)} ${pxToRem(3)} ${pxToRem(7)} ${pxToRem(11)}`, // padding set to 1px less to account for 1px border
   iconSpace: pxToRem(12),
   iconSize: pxToRem(32),

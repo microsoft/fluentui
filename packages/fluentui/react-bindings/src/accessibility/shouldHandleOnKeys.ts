@@ -10,7 +10,7 @@ const isKeyModifiersMatch = (modifierValue: boolean, combinationValue?: boolean)
   return modifierValue === combinationValue;
 };
 
-const shouldHandleOnKeys = (event: React.KeyboardEvent, keysCombinations: KeyCombinations[]): boolean =>
+export const shouldHandleOnKeys = (event: React.KeyboardEvent, keysCombinations: KeyCombinations[]): boolean =>
   keysCombinations.some(
     keysCombination =>
       keysCombination.keyCode === getCode(event) &&
@@ -19,5 +19,3 @@ const shouldHandleOnKeys = (event: React.KeyboardEvent, keysCombinations: KeyCom
       isKeyModifiersMatch(event.metaKey, keysCombination.metaKey) &&
       isKeyModifiersMatch(event.ctrlKey, keysCombination.ctrlKey),
   );
-
-export default shouldHandleOnKeys;

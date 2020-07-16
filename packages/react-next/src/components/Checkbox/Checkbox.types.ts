@@ -132,7 +132,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   onRenderLabel?: IRenderFunction<ICheckboxProps>;
 
   /**
-   * Optional keytip for this checkbox
+   * Optional keytip.
+   *
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
 

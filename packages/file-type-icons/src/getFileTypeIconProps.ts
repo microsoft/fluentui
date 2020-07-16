@@ -14,6 +14,7 @@ const STREAM = 'stream';
 const DESKTOP_FOLDER = 'desktopfolder';
 const DOCUMENTS_FOLDER = 'documentfolder';
 const PICTURES_FOLDER = 'picturesfolder';
+const LINKED_FOLDER = 'linkedfolder';
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -89,6 +90,9 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
       case FileIconType.picturesFolder:
         iconBaseName = PICTURES_FOLDER;
         break;
+      case FileIconType.linkedFolder:
+        iconBaseName = LINKED_FOLDER;
+        break;
     }
   }
 
@@ -129,21 +133,21 @@ function _getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFile
 
   // SVGs scale well, so you can generally use the default image.
   // 1.5x is a special case where SVGs need a different image.
-  if (imageFileType === 'svg' && 1 < devicePixelRatio && devicePixelRatio <= 1.5) {
+  if (imageFileType === 'svg' && devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
     // Currently missing 1.5x SVGs at size 20, snap to 1x for now
     if (size !== 20) {
       devicePixelRatioSuffix = '_1.5x';
     }
   } else if (imageFileType === 'png') {
     // To look good, PNGs should use a different image for higher device pixel ratios
-    if (1 < devicePixelRatio && devicePixelRatio <= 1.5) {
+    if (devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
       // Currently missing 1.5x icons for size 20, snap to 2x for now
       devicePixelRatioSuffix = size === 20 ? '_2x' : '_1.5x';
-    } else if (1.5 < devicePixelRatio && devicePixelRatio <= 2) {
+    } else if (devicePixelRatio > 1.5 && devicePixelRatio <= 2) {
       devicePixelRatioSuffix = '_2x';
-    } else if (2 < devicePixelRatio && devicePixelRatio <= 3) {
+    } else if (devicePixelRatio > 2 && devicePixelRatio <= 3) {
       devicePixelRatioSuffix = '_3x';
-    } else if (3 < devicePixelRatio) {
+    } else if (devicePixelRatio > 3) {
       devicePixelRatioSuffix = '_4x';
     }
   }

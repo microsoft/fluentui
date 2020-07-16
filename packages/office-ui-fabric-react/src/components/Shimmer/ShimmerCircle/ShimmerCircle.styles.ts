@@ -7,13 +7,13 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const { height, borderStyle, theme } = props;
 
   const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = borderStyle || {};
 
   return {
     root: [

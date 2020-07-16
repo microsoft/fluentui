@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const FilesAftereffectsIcon = createSvgIcon({
+export const FilesAftereffectsIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <g>
@@ -11,5 +11,3 @@ const FilesAftereffectsIcon = createSvgIcon({
   ),
   displayName: 'FilesAftereffectsIcon',
 });
-
-export default FilesAftereffectsIcon;

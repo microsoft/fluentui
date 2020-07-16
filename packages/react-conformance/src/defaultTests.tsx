@@ -8,6 +8,8 @@ import * as _ from 'lodash';
 import * as path from 'path';
 import consoleUtil from './utils/consoleUtil';
 
+/* eslint-disable @typescript-eslint/naming-convention */
+
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
@@ -52,18 +54,12 @@ export const defaultTests: TestObject = {
 
     it(`has a displayName or constructor name`, () => {
       const constructorName = Component.prototype?.constructor.name;
-      let displayName = Component.displayName || constructorName;
+      const displayName = Component.displayName || constructorName;
 
       // This check is needed in case the Component is wrapped with the v7 styled() helper, which returns a wrapper
       // component with constructor name Wrapped, and adds a Styled prefix to the displayName. Components passed to
       // styled() typically have Base in their name, so remove that too.
-      displayName = displayName.replace(/Base$/, '');
-      displayName = displayName.replace(/^Customized/, '');
-      if (constructorName === 'Wrapped') {
-        displayName = displayName.replace(/^Styled/, '');
-      }
-
-      expect(displayName).toEqual(testInfo.displayName);
+      expect(displayName).toMatch(new RegExp(`^(Customized|Styled)?${testInfo.displayName}(Base)?$`));
     });
   },
 
@@ -160,7 +156,7 @@ export const defaultTests: TestObject = {
         const { requiredProps, Component, customMount = mount, wrapperComponent } = testInfo;
         const MyComponent = () => null;
 
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
         const component = getComponent(wrapper, wrapperComponent);
 
@@ -191,7 +187,7 @@ export const defaultTests: TestObject = {
           }
         }
 
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
         const component = getComponent(wrapper, wrapperComponent);
 
@@ -218,7 +214,7 @@ export const defaultTests: TestObject = {
         } else {
           const MyComponent = () => null;
           const el = customMount(
-            // tslint:disable-next-line:no-any
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             <Component {...requiredProps} {...({ as: MyComponent } as any)} data-extra-prop="foo" />,
           ).find(MyComponent);
 
@@ -238,7 +234,7 @@ export const defaultTests: TestObject = {
         const { Component, customMount = mount, requiredProps, wrapperComponent } = testInfo;
 
         tags.forEach(tag => {
-          // tslint:disable-next-line:no-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
           const component = getComponent(wrapper, wrapperComponent);
 

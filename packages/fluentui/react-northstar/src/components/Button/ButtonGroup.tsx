@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import { ShorthandCollection, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   UIComponentProps,
@@ -15,7 +15,7 @@ import {
   createShorthandFactory,
   createShorthand,
 } from '../../utils';
-import Button, { ButtonProps } from './Button';
+import { Button, ButtonProps } from './Button';
 import {
   ComponentWithAs,
   getElementType,
@@ -23,9 +23,8 @@ import {
   useUnhandledProps,
   useTelemetry,
   useStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -47,8 +46,9 @@ export const buttonGroupClassName = 'ui-buttons';
 /**
  * A ButtonGroup represents multiple related actions as a group.
  */
-const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> & FluentComponentStaticProps<ButtonGroupProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> &
+  FluentComponentStaticProps<ButtonGroupProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
   setStart();
   const { children, buttons, circular, content, className, design, styles, variables } = props;
@@ -138,5 +138,3 @@ ButtonGroup.create = createShorthandFactory({
   mappedProp: 'content',
   mappedArrayProp: 'buttons',
 });
-
-export default ButtonGroup;

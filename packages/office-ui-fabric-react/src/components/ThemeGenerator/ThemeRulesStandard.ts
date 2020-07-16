@@ -88,10 +88,10 @@ export function themeRulesStandardCreator(): IThemeRules {
       slotRules[baseSlot + shadeName] = thisSlotRule;
       inherits.dependentRules.push(thisSlotRule);
 
-      return void 0;
+      return undefined;
     });
 
-    return void 0;
+    return undefined;
   });
 
   // set default colors for the base colors

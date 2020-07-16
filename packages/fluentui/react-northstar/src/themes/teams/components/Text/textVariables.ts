@@ -6,7 +6,7 @@ import { pickValuesFromColorScheme } from '../../../colorUtils';
 export const textColorAreas = stringLiteralsArray('foreground');
 export type TextColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof textColorAreas>>;
 
-export interface TeamsTextVariables {
+export interface TextVariables {
   colorScheme: TextColorSchemeMapping;
 
   importantColor: string;
@@ -45,7 +45,7 @@ export interface TeamsTextVariables {
   timestampHoverColor: string;
 }
 
-export default (siteVariables): Partial<TeamsTextVariables> => {
+export const textVariables = (siteVariables): TextVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, textColorAreas),
 

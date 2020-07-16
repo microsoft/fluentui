@@ -221,12 +221,8 @@ export class EventGroup {
     // (undocumented)
     static isObserved(target: any, eventName: string): boolean;
     // (undocumented)
-    off(target?: any, // tslint:disable-line:no-any
-    eventName?: string, callback?: (args?: any) => void, // tslint:disable-line:no-any
-    options?: boolean | AddEventListenerOptions): void;
-    on(target: any, // tslint:disable-line:no-any
-    eventName: string, callback: (args?: any) => void, // tslint:disable-line:no-any
-    options?: boolean | AddEventListenerOptions): void;
+    off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+    on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
     onAll(target: any, events: {
         [key: string]: (args?: any) => void;
     }, useCapture?: boolean): void;
@@ -267,7 +263,7 @@ export function findElementRecursive(element: HTMLElement | null, matchFunction:
 export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex?: number): number;
 
 // @public
-export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null;
+export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | Window | undefined | null;
 
 // @public
 export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize;
@@ -503,7 +499,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
 
 // Warning: (ae-internal-missing-underscore) The name "IDeclaredEventsByName" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IDeclaredEventsByName {
     // (undocumented)
     [eventName: string]: boolean;
@@ -537,7 +533,7 @@ export interface IDisposable {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecord" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecord {
     // (undocumented)
     callback: (args?: any) => void;
@@ -557,7 +553,7 @@ export interface IEventRecord {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordList" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecordList {
     // (undocumented)
     [id: string]: IEventRecord[] | number;
@@ -567,7 +563,7 @@ export interface IEventRecordList {
 
 // Warning: (ae-internal-missing-underscore) The name "IEventRecordsByName" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal (undocumented)
 export interface IEventRecordsByName {
     // (undocumented)
     [eventName: string]: IEventRecordList;
@@ -952,7 +948,7 @@ export function memoize<T extends Function>(target: any, key: string, descriptor
 };
 
 // @public
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
+export function memoizeFunction<T extends (...args: any[]) => RetType, RetType>(cb: T, maxCacheSize?: number, ignoreNullOrUndefinedResult?: boolean): T;
 
 // @public
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
@@ -1170,6 +1166,9 @@ export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data
 
 // @public
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.FunctionComponent<TComponentProps>;
+
+// @public (undocumented)
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>, TRef = unknown>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.ForwardRefExoticComponent<React.PropsWithoutRef<TComponentProps> & React.RefAttributes<TRef>>;
 
 // @public (undocumented)
 export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
