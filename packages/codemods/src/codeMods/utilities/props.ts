@@ -21,32 +21,9 @@ export function renameProp(
         foundProp.value.set({ initializer: `{${replacementValue}}` });
       } else {
         const enumInJsx = Maybe(foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression));
-        const enumExp = enumInJsx.then(value => {
-          return Maybe(value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression));
-        });
         if (enumInJsx.just) {
           if (transform) {
             transform(enumInJsx.value);
-          } else if (enumExp.just && changeValueMap) {
-            /* Change the value of the enum via map conversion. */
-            if (enumExp.just) {
-              const oldEnumName = enumExp.then(value => {
-                return value.getText();
-              });
-              if (oldEnumName.just) {
-                const newEnumName = changeValueMap[oldEnumName.value];
-                const firstEnumChild = enumExp.then(value => {
-                  return value.getFirstChildByKind(SyntaxKind.Identifier);
-                });
-                const lastEnumChild = enumExp.then(value => {
-                  return value.getLastChildByKind(SyntaxKind.Identifier);
-                });
-                if (firstEnumChild.just && lastEnumChild.just) {
-                  firstEnumChild.value.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
-                  lastEnumChild.value.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
-                }
-              }
-            }
           }
         }
       }
