@@ -34,7 +34,7 @@ export class SankeyChartBase extends React.Component<
   public componentWillUnmount(): void {
     cancelAnimationFrame(this._reqID);
   }
-  public render(): JSX.Element {
+  public render(): React.ReactNode {
     const { theme, className, styles, pathColor } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -79,8 +79,8 @@ export class SankeyChartBase extends React.Component<
     );
   }
 
-  private _createLinks(): JSX.Element[] | undefined {
-    const links: JSX.Element[] = [];
+  private _createLinks(): React.ReactNode[] | undefined {
+    const links: React.ReactNode[] = [];
     if (this.props.data.SankeyChartData) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.props.data.SankeyChartData.links.forEach((singleLink: any, index: number) => {
@@ -104,8 +104,8 @@ export class SankeyChartBase extends React.Component<
     return links;
   }
 
-  private _createNodes(width: number): JSX.Element[] | undefined {
-    const nodes: JSX.Element[] = [];
+  private _createNodes(width: number): React.ReactNode[] | undefined {
+    const nodes: React.ReactNode[] = [];
     if (this.props.data.SankeyChartData) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.props.data.SankeyChartData.nodes.forEach((singleNode: any, index: number) => {

@@ -15,7 +15,7 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
       className,
     ],
     links: {
-      stroke: pathColor ? pathColor : '#000',
+      stroke: pathColor ? pathColor : theme.palette.blue,
       fill: 'none',
     },
   };
