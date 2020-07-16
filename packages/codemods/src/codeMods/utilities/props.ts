@@ -8,14 +8,15 @@ import {
   Node,
 } from 'ts-morph';
 import { Maybe } from '../../maybe';
-import { EnumMap } from '../types';
+import { EnumMap, PropTransform } from '../types';
 
-export function renameProp<T>(
+export function renameProp(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],
   toRename: string,
   replacementName: string,
   changeValueMap?: EnumMap<string>,
   replacementValue?: string,
+  transform?: PropTransform,
 ) {
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
@@ -23,32 +24,43 @@ export function renameProp<T>(
     if (foundProp.just) {
       /* If found, do a simple name-replacementName. */
       foundProp.value.set({ name: replacementName });
-      if (changeValueMap) {
-        /* Change the value of the enum via map conversion. */
+      if (replacementValue) {
+        foundProp.value.set({ initializer: `{${replacementValue}}` });
+      } else {
         const enumInJsx = Maybe((foundProp.value as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression));
-        const enumExp = enumInJsx.then(value => {
-          return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-        });
-        if (enumExp.just) {
-          const oldEnumName = enumExp.then(value => {
-            return value!.getText();
+        if (enumInJsx.just) {
+          console.log(enumInJsx.value.getText());
+          const enumExp = enumInJsx.then(value => {
+            return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
           });
-          if (oldEnumName.just) {
-            const newEnumName = changeValueMap[oldEnumName.value];
-            const firstEnumChild = enumExp.then(value => {
-              return value!.getFirstChildByKind(SyntaxKind.Identifier);
-            });
-            const lastEnumChild = enumExp.then(value => {
-              return value!.getLastChildByKind(SyntaxKind.Identifier);
-            });
-            if (firstEnumChild.just && lastEnumChild.just) {
-              firstEnumChild.value!.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
-              lastEnumChild.value!.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
+          if (enumExp!.just && enumInJsx.just) {
+            // Verify that enumExp exists before trying to change value.
+            // if (transform) {
+            //   transform(enumInJsx.value!);
+            // }
+            if (changeValueMap) {
+              /* Change the value of the enum via map conversion. */
+              if (enumExp.just) {
+                const oldEnumName = enumExp.then(value => {
+                  return value!.getText();
+                });
+                if (oldEnumName.just) {
+                  const newEnumName = changeValueMap[oldEnumName.value];
+                  const firstEnumChild = enumExp.then(value => {
+                    return value!.getFirstChildByKind(SyntaxKind.Identifier);
+                  });
+                  const lastEnumChild = enumExp.then(value => {
+                    return value!.getLastChildByKind(SyntaxKind.Identifier);
+                  });
+                  if (firstEnumChild.just && lastEnumChild.just) {
+                    firstEnumChild.value!.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
+                    lastEnumChild.value!.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
+                  }
+                }
+              }
             }
           }
         }
-      } else if (replacementValue) {
-        foundProp.value.set({ initializer: `{${replacementValue}}` });
       }
     } else {
       /* If the prop is not found, check to see if the prop is in a spread attribute. */
