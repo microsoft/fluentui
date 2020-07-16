@@ -4,7 +4,7 @@ export interface CodeModResult {
   success?: boolean;
 }
 
-export interface Codemod<T = SourceFile> {
+export interface CodeMod<T = SourceFile> {
   /**
    * Each type of codemod can have multiple versions which work on different versions of its targeted package.
    * Must be valid semver.
@@ -26,3 +26,17 @@ export interface Codemod<T = SourceFile> {
    */
   enabled?: boolean;
 }
+
+export type EnumMap<T> = {
+  [key: string]: T;
+};
+
+/**
+ * Generic function provided by the utility caller that executes a
+ * transform for a prop's value.
+ * This function takes in an enum type, and returns a transformed version of the enum in string form.
+ * ex. SpinnerType.normal
+ * might return the string
+ * 'SpinnerSize.medium'
+ */
+export type PropTransform<T = string> = (enumType: T) => string;

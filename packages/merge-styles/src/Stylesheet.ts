@@ -82,7 +82,6 @@ const STYLESHEET_SETTING = '__stylesheet__';
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
-// tslint:disable-next-line:no-any
 let _global: { [key: string]: any } = {};
 
 // Grab window.
@@ -112,7 +111,6 @@ export class Stylesheet {
   private _keyToClassName: { [key: string]: string } = {};
   private _onResetCallbacks: (() => void)[] = [];
 
-  // tslint:disable-next-line:no-any
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
 
   /**
@@ -122,8 +120,7 @@ export class Stylesheet {
     _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
-      // tslint:disable-next-line:no-string-literal
-      const fabricConfig = (_global && _global['FabricConfig']) || {};
+      const fabricConfig = _global?.FabricConfig || {};
 
       _stylesheet = _global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
     }

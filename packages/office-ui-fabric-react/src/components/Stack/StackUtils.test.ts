@@ -85,7 +85,7 @@ describe('StackUtils', () => {
       });
     });
 
-    // tslint:disable-next-line:max-line-length
+    // eslint-disable-next-line @fluentui/max-len
     it('can parse a string with horizontal and vertical gap with one of them getting value from the theme when given a spacing key', () => {
       expect(parseGap('50px m', theme)).toEqual({
         rowGap: { value: 50, unit: 'px' },

@@ -12,12 +12,12 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+
 import {
   ComponentWithAs,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useAccessibility,
   useUnhandledProps,
@@ -52,9 +52,9 @@ export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, '
 /**
  * An AccordionContent displays content hosted in an Accordion.
  */
-const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
+export const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
   FluentComponentStaticProps<AccordionContentProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);
 
   setStart();
@@ -129,5 +129,3 @@ AccordionContent.create = createShorthandFactory({
   Component: AccordionContent,
   mappedProp: 'content',
 });
-
-export default AccordionContent;

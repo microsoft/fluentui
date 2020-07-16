@@ -18,9 +18,11 @@ const baseUrl =
   'https://onedrive.visualstudio.com/Design/_git/ui-fabric-website?path=/apps/fabric-website/src/pages/Styles/';
 
 // Color palettes
+/* eslint-disable import/no-extraneous-dependencies */
 const themeColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-slots.json');
 const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-neutrals.json');
 const accentColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-theme-accents.json');
+/* eslint-enable import/no-extraneous-dependencies */
 
 export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = props => {
   const { theme, styles, className } = props;

@@ -1,7 +1,7 @@
 import { ShorthandValue } from '../../types';
 import { PopperShorthandProps } from './types';
 
-function getPopperPropsFromShorthand<P>(
+export function getPopperPropsFromShorthand<P>(
   value: ShorthandValue<P & { popper?: PopperShorthandProps }>,
 ): PopperShorthandProps | undefined {
   if (typeof value === 'object' && value !== null) {
@@ -10,5 +10,3 @@ function getPopperPropsFromShorthand<P>(
 
   return undefined;
 }
-
-export default getPopperPropsFromShorthand;

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add new card semantic slots",
-  "packageName": "@uifabric/styling",
-  "email": "phkuo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-02T20:30:23.142Z"
-}

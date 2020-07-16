@@ -116,7 +116,6 @@ export class TilesListDocumentExample extends React.Component<
 
   public render(): JSX.Element {
     return (
-      // tslint:disable-next-line:jsx-ban-props
       <div style={{ padding: '4px' }}>
         <Toggle
           label="Enable Modal Selection"
@@ -265,7 +264,6 @@ export class TilesListDocumentExample extends React.Component<
       <div
         role="gridcell"
         aria-colindex={props.position.column + 1}
-        // tslint:disable-next-line:jsx-ban-props
         style={{
           padding: `${HEADER_VERTICAL_PADDING}px 0`,
           fontSize: `${HEADER_FONT_SIZE}px`,

@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 interface FormLabelOwnProps {
   inline?: boolean;
@@ -15,7 +15,7 @@ export const formLabelClassName = 'ui-form__label';
 /**
  * An FormLabel provides a slot for label in the FormField.
  */
-const FormLabel = compose<'label', FormLabelProps, FormLabelStylesProps, BoxProps, {}>(Box, {
+export const FormLabel = compose<'label', FormLabelProps, FormLabelStylesProps, BoxProps, {}>(Box, {
   className: formLabelClassName,
   displayName: 'FormLabel',
   overrideStyles: true,
@@ -31,5 +31,3 @@ FormLabel.defaultProps = {
 };
 
 FormLabel.propTypes = commonPropTypes.createCommon();
-
-export default FormLabel;

@@ -8,7 +8,7 @@ export interface ISliderBasicExampleState {
   value: number;
 }
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleState> {
   public state: ISliderBasicExampleState = { value: 0 };
 

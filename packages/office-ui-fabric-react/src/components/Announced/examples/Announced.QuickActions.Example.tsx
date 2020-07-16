@@ -10,7 +10,6 @@ import {
   DetailsRow,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
@@ -55,7 +54,6 @@ export interface IAnnouncedQuickActionsExampleItem {
 
 export interface IAnnouncedQuickActionsExampleState {
   items: IAnnouncedQuickActionsExampleItem[];
-  selectionDetails: {};
   renameDialogOpen: boolean;
   dialogContent: JSX.Element | undefined;
   announced?: JSX.Element;
@@ -85,13 +83,10 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       }
     }
 
-    this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
-    });
+    this._selection = new Selection({});
 
     this.state = {
       items: _items,
-      selectionDetails: this._getSelectionDetails(),
       renameDialogOpen: false,
       dialogContent: undefined,
       announced: undefined,
@@ -118,24 +113,22 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     return (
       <>
         {this._renderAnnounced()}
-        <MarqueeSelection selection={this._selection}>
-          <DetailsList
-            componentRef={this._detailsList}
-            items={items}
-            columns={_columns}
-            setKey="set"
-            layoutMode={DetailsListLayoutMode.fixedColumns}
-            selection={this._selection}
-            selectionPreservedOnEmptyClick={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            onRenderItemColumn={this._onRenderItemColumn}
-            onRenderRow={this._onRenderRow}
-          />
-          <Dialog hidden={!renameDialogOpen} onDismiss={this._closeRenameDialog} closeButtonAriaLabel="Close">
-            {dialogContent}
-          </Dialog>
-        </MarqueeSelection>
+        <DetailsList
+          componentRef={this._detailsList}
+          items={items}
+          columns={_columns}
+          setKey="set"
+          layoutMode={DetailsListLayoutMode.fixedColumns}
+          selection={this._selection}
+          selectionPreservedOnEmptyClick={true}
+          ariaLabelForSelectionColumn="Toggle selection"
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          onRenderItemColumn={this._onRenderItemColumn}
+          onRenderRow={this._onRenderRow}
+        />
+        <Dialog hidden={!renameDialogOpen} onDismiss={this._closeRenameDialog} closeButtonAriaLabel="Close">
+          {dialogContent}
+        </Dialog>
       </>
     );
   }
@@ -202,7 +195,11 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
         <>
           <TextField componentRef={this._textField} label="Rename" defaultValue={item.name} />
           <DialogFooter>
-            <PrimaryButton onClick={this._updateItemName.bind(this, index)} text="Save" />
+            <PrimaryButton
+              // eslint-disable-next-line react/jsx-no-bind
+              onClick={this._updateItemName.bind(this, index)}
+              text="Save"
+            />
           </DialogFooter>
         </>
       ),
@@ -229,17 +226,4 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       renameDialogOpen: false,
     });
   };
-
-  private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
-
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
-  }
 }

@@ -2,14 +2,15 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { create } from '@uifabric/utilities/lib/test';
 import { ReactWrapper, mount } from 'enzyme';
-import { SpinButton, ISpinButtonState } from './SpinButton';
+
+import { SpinButton } from './SpinButton';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
 
 describe('SpinButton', () => {
   let ref: React.RefObject<ISpinButton>;
-  let wrapper: ReactWrapper<ISpinButtonProps, ISpinButtonState, SpinButton> | undefined;
+  let wrapper: ReactWrapper<ISpinButtonProps> | undefined;
 
   beforeEach(() => {
     ref = React.createRef<ISpinButton>();
@@ -21,7 +22,7 @@ describe('SpinButton', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((setTimeout as any).mock) {
       jest.useRealTimers();
     }
@@ -57,8 +58,8 @@ describe('SpinButton', () => {
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
 
-    expect(inputDOM.getAttribute('aria-valuemin')).toBe(String(SpinButton.defaultProps.min));
-    expect(inputDOM.getAttribute('aria-valuemax')).toBe(String(SpinButton.defaultProps.max));
+    expect(inputDOM.getAttribute('aria-valuemin')).toBe('0');
+    expect(inputDOM.getAttribute('aria-valuemax')).toBe('100');
   });
 
   it('respects min and max in DOM', () => {
@@ -282,16 +283,32 @@ describe('SpinButton', () => {
     expect(ref.current!.value).toBe('1');
   });
 
-  it('accepts user-entered values', () => {
+  it('accepts user-entered values when uncontrolled', () => {
     wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
-
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
-    ReactTestUtils.Simulate.blur(inputDOM);
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
+      ReactTestUtils.Simulate.blur(inputDOM);
+    });
 
     expect(ref.current!.value).toBe('21');
     expect(inputDOM.value).toBe('21');
     expect(inputDOM.getAttribute('aria-valuenow')).toBe('21');
+  });
+
+  it('does not accept user-entered values when controlled', () => {
+    wrapper = mount(<SpinButton componentRef={ref} value="12" />);
+
+    const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('21'));
+      ReactTestUtils.Simulate.blur(inputDOM);
+    });
+
+    expect(ref.current!.value).toBe('12');
+    expect(inputDOM.value).toBe('12');
+    expect(inputDOM.getAttribute('aria-valuenow')).toBe('12');
   });
 
   it('resets value when user entry is invalid', () => {
@@ -352,7 +369,6 @@ describe('SpinButton', () => {
         min={exampleMinValue}
         max={exampleMaxValue}
         defaultValue="12"
-        // tslint:disable-next-line:jsx-no-lambda
         onValidate={(newValue: string): string | void => {
           const numberValue: number = +newValue;
           if (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) {
@@ -381,7 +397,6 @@ describe('SpinButton', () => {
         min={exampleMinValue}
         max={exampleMaxValue}
         defaultValue="12"
-        // tslint:disable-next-line:jsx-no-lambda
         onValidate={(newValue: string): string | void => {
           const numberValue: number = Number(newValue);
           if (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) {
@@ -406,19 +421,25 @@ describe('SpinButton', () => {
     wrapper = mount(<SpinButton defaultValue="12" />);
 
     const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-    const buttonDOM = wrapper.getDOMNode().getElementsByClassName('ms-UpButton')[0];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const buttonDOM: any = wrapper.getDOMNode().querySelector('.ms-UpButton');
 
+    expect(inputDOM.value).toBe('12');
     expect(buttonDOM).toBeTruthy();
 
     // start spinning
-    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-    // spin again
-    jest.runOnlyPendingTimers();
-    // spin again
-    jest.runOnlyPendingTimers();
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
 
-    ReactTestUtils.Simulate.focus(inputDOM);
-    jest.runAllTimers();
+      // spin again
+      jest.runOnlyPendingTimers();
+
+      // spin again
+      jest.runOnlyPendingTimers();
+
+      ReactTestUtils.Simulate.focus(inputDOM);
+      jest.runAllTimers();
+    });
 
     const currentValue = inputDOM.value;
     expect(currentValue).not.toBe('12');
@@ -462,8 +483,8 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.focus(inputDOM);
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('99'));
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
-    expect(keyCode).toBe(KeyCodes.enter);
     expect(onValidate).toBeCalled();
+    expect(keyCode).toBe(KeyCodes.enter);
     ReactTestUtils.Simulate.blur(inputDOM);
     expect(onValidate).toHaveBeenCalledTimes(1);
   });

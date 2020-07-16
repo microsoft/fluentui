@@ -417,10 +417,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             targetIndex: targetIndex,
           };
           columnReorderProps.onColumnDrop(dragDropDetails);
-          // tslint:disable:deprecation
+          /* eslint-disable deprecation/deprecation */
         } else if (columnReorderProps.handleColumnReorder) {
           columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
-          // tslint:enable:deprecation
+          /* eslint-enable deprecation/deprecation */
         }
       }
     }
@@ -645,6 +645,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             [classNames.cellIsResizing]: columnResizeDetails && columnResizeDetails.columnIndex === columnIndex,
           },
         )}
+        // eslint-disable-next-line react/jsx-no-bind
         onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}
       />
     ) : null;
@@ -765,7 +766,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const columnIndex = Number(columnIndexAttr);
 
     if (!columnResizeDetails) {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: {
@@ -780,7 +781,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     } else {
       let increment: number | undefined;
 
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: undefined,
@@ -788,10 +789,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
         ev.preventDefault();
         ev.stopPropagation();
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
       } else if (ev.which === KeyCodes.left) {
         increment = getRTL(this.props.theme) ? 1 : -1;
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
       } else if (ev.which === KeyCodes.right) {
         increment = getRTL(this.props.theme) ? -1 : 1;
       }

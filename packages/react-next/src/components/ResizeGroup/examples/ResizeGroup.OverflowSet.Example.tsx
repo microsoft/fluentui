@@ -93,13 +93,14 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
           data={dataToRender}
           onReduceData={this._onReduceData}
           onGrowData={onGrowDataEnabled ? this._onGrowData : undefined}
-          // tslint:disable-next-line:jsx-no-lambda
+          // eslint-disable-next-line react/jsx-no-bind
           onRenderData={data => {
             return (
               <OverflowSet
                 role="menubar"
                 items={data.primary}
                 overflowItems={data.overflow.length ? data.overflow : null}
+                // eslint-disable-next-line react/jsx-no-bind
                 onRenderItem={item => {
                   return (
                     <CommandBarButton
@@ -111,6 +112,7 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
                     />
                   );
                 }}
+                // eslint-disable-next-line react/jsx-no-bind
                 onRenderOverflowButton={overflowItems => {
                   return <CommandBarButton role="menuitem" menuProps={{ items: overflowItems! }} />;
                 }}
@@ -144,7 +146,7 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
     );
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onReduceData = (currentData: any): any => {
     if (currentData.primary.length === 0) {
       return undefined;
@@ -160,7 +162,7 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
     return { primary, overflow, cacheKey };
   };
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onGrowData = (currentData: any): any => {
     if (currentData.overflow.length === 0) {
       return undefined;

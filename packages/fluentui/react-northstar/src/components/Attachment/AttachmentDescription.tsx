@@ -1,6 +1,6 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
+import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 export interface AttachmentDescriptionOwnProps {}
 export interface AttachmentDescriptionProps extends AttachmentDescriptionOwnProps, BoxProps {}
@@ -11,7 +11,7 @@ export const attachmentDescriptionClassName = 'ui-attachment__description';
 /**
  * A AttachmentDescription provides more detailed information about the Attachment.
  */
-const AttachmentDescription = compose<
+export const AttachmentDescription = compose<
   'span',
   AttachmentDescriptionOwnProps,
   AttachmentDescriptionStylesProps,
@@ -31,5 +31,3 @@ AttachmentDescription.defaultProps = {
   as: 'span',
 };
 AttachmentDescription.propTypes = commonPropTypes.createCommon();
-
-export default AttachmentDescription;
