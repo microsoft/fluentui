@@ -56,7 +56,7 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
   const containerWidthRef = React.useRef<number>();
 
   // Attach a resize observer to the container
-  const [containerRef, setContainerRef] = useRefEffect((container: HTMLElement) => {
+  const containerRef = useRefEffect<HTMLElement>(container => {
     const cleanupObserver = observeResize(container, entries => {
       containerWidthRef.current = entries ? entries[0].contentRect.width : container.clientWidth;
       if (updateOverflowRef.current) {
@@ -70,9 +70,9 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
     };
   });
 
-  const [menuButtonRef, setMenuButtonRef] = useRefEffect((menuButton: HTMLElement) => {
-    setContainerRef(menuButton.parentElement);
-    return () => setContainerRef(null);
+  const menuButtonRef = useRefEffect<HTMLElement>(menuButton => {
+    containerRef(menuButton.parentElement);
+    return () => containerRef(null);
   });
 
   React.useLayoutEffect(() => {
@@ -172,5 +172,5 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
     };
   });
 
-  return { setMenuButtonRef };
+  return { setMenuButtonRef: menuButtonRef };
 };

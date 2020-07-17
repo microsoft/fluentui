@@ -1,20 +1,19 @@
 import * as React from 'react';
 import { ReactWrapper, mount } from 'enzyme';
-import { useRefEffect } from './useRefEffect';
+import { useRefEffect, RefCallback } from './useRefEffect';
 
 describe('useRefEffect', () => {
   // Use a jest.fn to log the calls to callback and cleanup
   const log = jest.fn<void, [/*event:*/ 'callback' | 'cleanup', /*as:*/ 'div' | 'span', /*ele:*/ HTMLElement]>();
   afterEach(() => log.mockClear());
 
-  let ref: React.RefObject<HTMLElement>;
+  let ref: RefCallback<HTMLElement>;
   const TestComponent: React.FunctionComponent<{ as: 'div' | 'span' }> = props => {
-    let setRef;
-    [ref, setRef] = useRefEffect<HTMLElement>(ele => {
+    ref = useRefEffect<HTMLElement>(ele => {
       log('callback', props.as, ele);
       return () => log('cleanup', props.as, ele);
     });
-    return <props.as ref={setRef} />;
+    return <props.as ref={ref} />;
   };
 
   let wrapper: ReactWrapper;
