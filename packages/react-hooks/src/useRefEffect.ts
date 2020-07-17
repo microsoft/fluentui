@@ -54,7 +54,6 @@ export function useRefEffect<T>(callback: (value: T) => (() => void) | void, ini
       },
       {
         current: initial,
-        set: (value: T | null) => data.ref(value),
       },
     ),
     callback,
