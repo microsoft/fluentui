@@ -1,34 +1,33 @@
 import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
 import {
-  getElementType,
-  useAccessibility,
-  useStyles,
-  useTelemetry,
-  useFluentContext,
-  useUnhandledProps,
-  ComponentWithAs,
-} from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import * as _ from 'lodash';
-
-import { FluentComponentStaticProps, ShorthandRenderFunction, ComponentEventHandler } from '../../types';
-import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-import { Input } from '../Input/Input';
-import { Button } from '../Button/Button';
-import { CalendarIcon } from '@fluentui/react-icons-northstar';
-import { Popup } from '../Popup/Popup';
-import {
-  IRestrictedDatesOptions,
-  IDay,
+  DateRangeType,
   DayOfWeek,
   FirstWeekOfYear,
-  DateRangeType,
-  IDateGridStrings,
   formatMonthDayYear,
+  IDateGridStrings,
+  IDay,
   IDayGridOptions,
+  IRestrictedDatesOptions,
 } from '@fluentui/date-time-utilities';
+import {
+  ComponentWithAs,
+  getElementType,
+  useAccessibility,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
+import { Ref } from '@fluentui/react-component-ref';
+import { CalendarIcon } from '@fluentui/react-icons-northstar';
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
+import { Button } from '../Button/Button';
+import { Input } from '../Input/Input';
+import { Popup } from '../Popup/Popup';
 import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 
 // TODO: extract to date-time-utilities
@@ -131,12 +130,6 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
 
   /** Text placeholder for the input field. */
   placeholder?: string;
-
-  /** A render function to customize how cells are rendered in the Calendar. */
-  renderCell?: ShorthandRenderFunction<any>;
-
-  /** A render function to customize how cells are rendered in the Calendar.. */
-  renderHeaderCell?: ShorthandRenderFunction<any>;
 
   /** Localized labels */
   localizedStrings?: IDateGridStrings;
@@ -261,8 +254,6 @@ Datepicker.propTypes = {
   onDateChange: PropTypes.func,
   goToToday: PropTypes.string,
   placeholder: PropTypes.string,
-  renderCell: PropTypes.func,
-  renderHeaderCell: PropTypes.func,
 };
 
 Datepicker.defaultProps = {

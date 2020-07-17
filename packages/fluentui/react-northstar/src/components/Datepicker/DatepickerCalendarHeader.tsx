@@ -13,11 +13,10 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-import { ArrowLeftIcon, ArrowRightIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { FluentComponentStaticProps, ShorthandValue } from '../../types';
+import { FluentComponentStaticProps, ShorthandValue, ComponentEventHandler } from '../../types';
 import {
   commonPropTypes,
   ContentComponentProps,
@@ -25,10 +24,8 @@ import {
   createShorthandFactory,
   UIComponentProps,
 } from '../../utils';
-import { ButtonProps } from '../Button/Button';
-import { Flex } from '../Flex/Flex';
 import { Text } from '../Text/Text';
-import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
+import { DatepickerCalendarHeaderAction, DatepickerCalendarHeaderActionProps } from './DatepickerCalendarHeaderAction';
 
 export interface DatepickerCalendarHeaderProps extends UIComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -37,14 +34,17 @@ export interface DatepickerCalendarHeaderProps extends UIComponentProps, Content
   /** Localized labels */
   localizedStrings?: IDateGridStrings;
 
-  onPreviousClick?: Function;
-  onNextClick?: Function;
+  /** Action to happen on click on the previous button */
+  onPreviousClick?: ComponentEventHandler<DatepickerCalendarHeaderActionProps>;
+
+  /** Action to happen on click on the next button */
+  onNextClick?: ComponentEventHandler<DatepickerCalendarHeaderActionProps>;
 
   /** Shorthand for the button that navigates to the previous calendar screen. */
-  previousButton?: ShorthandValue<ButtonProps>;
+  previousButton?: ShorthandValue<DatepickerCalendarHeaderActionProps>;
 
   /** Shorthand for the button that navigates to the next calendar screen. */
-  nextButton?: ShorthandValue<ButtonProps>;
+  nextButton?: ShorthandValue<DatepickerCalendarHeaderActionProps>;
 }
 
 export type DatepickerCalendarHeaderStylesProps = never;
@@ -98,29 +98,27 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         ...unhandledProps,
       })}
     >
-      <Flex fill space="between" vAlign="center">
-        <Text content={content} />
-        {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
-          defaultProps: () =>
-            getA11yProps('previousButton', {
-              className: datepickerCalendarHeaderClassName,
-              icon: <ArrowLeftIcon />,
-              title: 'Previous Month',
-              onClick: onPreviousClick,
-              type: 'previous',
-            }),
-        })}
-        {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
-          defaultProps: () =>
-            getA11yProps('nextButton', {
-              className: datepickerCalendarHeaderClassName,
-              icon: <ArrowRightIcon />,
-              title: 'Previous Month',
-              onClick: onNextClick,
-              type: 'next',
-            }),
-        })}
-      </Flex>
+      <Text content={content} />
+      {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
+        defaultProps: () =>
+          getA11yProps('previousButton', {
+            className: datepickerCalendarHeaderClassName,
+            icon: {},
+            title: 'Previous Month',
+            onClick: onPreviousClick,
+            direction: 'previous',
+          }),
+      })}
+      {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
+        defaultProps: () =>
+          getA11yProps('nextButton', {
+            className: datepickerCalendarHeaderClassName,
+            icon: {},
+            title: 'Previous Month',
+            onClick: onNextClick,
+            direction: 'next',
+          }),
+      })}
     </ElementType>
   );
   setEnd();
@@ -134,6 +132,8 @@ DatepickerCalendarHeader.propTypes = {
   localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
   nextButton: customPropTypes.itemShorthand,
   previousButton: customPropTypes.itemShorthand,
+  onPreviousClick: PropTypes.func,
+  onNextClick: PropTypes.func,
 };
 
 DatepickerCalendarHeader.defaultProps = {
