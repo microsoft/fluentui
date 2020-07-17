@@ -269,7 +269,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       let legendValue = valueInsideDonut;
       data!.map((point: IChartDataPoint, index: number) => {
         if (point.legend === this.state.activeLegend) {
-          legendValue = point.data!;
+          legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
         }
         return;
       });
