@@ -13,7 +13,7 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { useSetTimeout, useConst } from '@uifabric/react-hooks';
+import { useSetTimeout, useConst, useConstCallback } from '@uifabric/react-hooks';
 
 const columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
   const fieldName = name.replace(' ', '').toLowerCase();
@@ -59,8 +59,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const detailsList = React.useRef<IDetailsList>(null);
   const textField = React.useRef<ITextField>(null);
   const selection = useConst(() => new Selection());
-  // Populate with items for demos.
-  const exampleItems = useConst(() => {
+  const [items, setItems] = React.useState<IAnnouncedQuickActionsExampleItem[]>(() => {
     const itemsList: IAnnouncedQuickActionsExampleItem[] = [];
     for (let i = 0; i < 20; i++) {
       itemsList.push({
@@ -73,8 +72,6 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
     }
     return itemsList;
   });
-
-  const [items, setItems] = React.useState<IAnnouncedQuickActionsExampleItem[]>(exampleItems);
   const [renameDialogOpen, setRenameDialogOpen] = React.useState<boolean>(false);
 
   const [dialogContent, setDialogContent] = React.useState<JSX.Element | undefined>(undefined);
@@ -83,9 +80,11 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
 
   const { setTimeout } = useSetTimeout();
 
-  const onRenderRow = React.useCallback((props: IDetailsRowProps): JSX.Element => {
-    return <DetailsRow {...props} />;
-  }, []);
+  const onRenderRow = useConstCallback(
+    (props: IDetailsRowProps): JSX.Element => {
+      return <DetailsRow {...props} />;
+    },
+  );
 
   const onRenderItemColumn = React.useCallback(
     (item: IAnnouncedQuickActionsExampleItem, index: number, column: IColumn) => {
@@ -148,7 +147,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
     return;
   };
 
-  const updateItemName = React.useCallback((index: number) => {
+  const updateItemName = useConstCallback((index: number) => {
     if (textField && textField.current) {
       const renamedItems = items;
       renamedItems[index].name = textField.current.value || renamedItems[index].name;
@@ -157,11 +156,11 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
       setAnnounced(<Announced message="Item renamed" aria-live="assertive" />);
       setPreviousAnnouncedValue(announced);
     }
-  }, []);
+  });
 
-  const closeRenameDialog = React.useCallback((): void => {
+  const closeRenameDialog = useConstCallback((): void => {
     setRenameDialogOpen(false);
-  }, []);
+  });
 
   // Populate with items for demos.
   React.useEffect(() => {

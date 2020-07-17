@@ -22,9 +22,9 @@ const onRenderHeader = (props: IGroupHeaderProps): JSX.Element => (
 const onRenderGroupHeaderCheckbox = (props: IGroupHeaderCheckboxProps) => <Toggle checked={props.checked} />;
 
 export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
-  const items = useConst(createListItems(Math.pow(groupCount, groupDepth + 1)));
-  const groups = useConst(createGroups(groupCount, groupDepth, 0, groupCount));
-  const columns = useConst(
+  const items = useConst(() => createListItems(Math.pow(groupCount, groupDepth + 1)));
+  const groups = useConst(() => createGroups(groupCount, groupDepth, 0, groupCount));
+  const columns = useConst(() =>
     Object.keys(items[0])
       .slice(0, 3)
       .map(

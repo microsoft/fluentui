@@ -50,7 +50,7 @@ export const AnnouncedLazyLoadingExample = () => {
   const percentComplete = total / PHOTO_COUNT;
   const { setInterval, clearInterval } = useSetInterval();
 
-  const createPhotos: IPhoto[] = useConst(() => {
+  const photos: IPhoto[] = useConst(() => {
     const width = 100;
     const height = 100;
     const result = createArray(PHOTO_COUNT, () => {
@@ -62,8 +62,6 @@ export const AnnouncedLazyLoadingExample = () => {
     });
     return result;
   });
-
-  const photos: IPhoto[] = createPhotos;
 
   React.useEffect(() => {
     if (loading) {

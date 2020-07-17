@@ -10,7 +10,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IFileExampleItem {
+interface IFileExampleItem {
   key: string;
   name: string;
   modified: string;
@@ -18,7 +18,7 @@ export interface IFileExampleItem {
   filesize: string;
 }
 
-export interface IAnnouncedBulkOperationsExampleState {
+interface IDragState {
   draggedItem: IFileExampleItem | undefined;
   draggedIndex: number;
 }
@@ -85,7 +85,7 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
   });
 
   const [items, setItems] = React.useState<IFileExampleItem[]>(exampleItems);
-  const [numberOfItems, setNumberOfItems] = React.useState<number>(0);
+  const [numberOfMovedItems, setNumberOfMovedItems] = React.useState<number>(0);
 
   const getDragDropEvents = (): IDragDropEvents => {
     return {
@@ -95,30 +95,30 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
       onDragEnter: () => dragEnterClass,
       onDragLeave: () => undefined,
       onDrop: (item?: IFileExampleItem) => {
-        if (internalState.draggedItem && item) {
+        if (internalDragState.draggedItem && item) {
           insertBeforeItem(item);
         }
       },
       onDragStart: (item?: IFileExampleItem, itemIndex?: number) => {
-        internalState.draggedItem = item;
-        internalState.draggedIndex = itemIndex!;
+        internalDragState.draggedItem = item;
+        internalDragState.draggedIndex = itemIndex!;
       },
       onDragEnd: () => {
-        internalState.draggedItem = undefined;
-        internalState.draggedIndex = -1;
+        internalDragState.draggedItem = undefined;
+        internalDragState.draggedIndex = -1;
       },
     };
   };
 
-  const { current: internalState } = React.useRef<IAnnouncedBulkOperationsExampleState>({
+  const { current: internalDragState } = React.useRef<IDragState>({
     draggedItem: undefined,
     draggedIndex: -1,
   });
 
   const insertBeforeItem = (item: IFileExampleItem): void => {
-    const draggedItems = selection.isIndexSelected(internalState.draggedIndex)
+    const draggedItems = selection.isIndexSelected(internalDragState.draggedIndex)
       ? (selection.getSelection() as IFileExampleItem[])
-      : [internalState.draggedItem!];
+      : [internalDragState.draggedItem!];
 
     const currentItems = items.filter(currentItem => draggedItems.indexOf(currentItem) === -1);
     let insertIndex = currentItems.indexOf(item);
@@ -130,7 +130,7 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
 
     currentItems.splice(insertIndex, 0, ...draggedItems);
     setItems(currentItems);
-    setNumberOfItems(draggedItems.length);
+    setNumberOfMovedItems(draggedItems.length);
   };
 
   return (
@@ -140,8 +140,11 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
         Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully
         illustrative of the real world scenario.
       </Text>
-      {numberOfItems > 0 && (
-        <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} aria-live={'assertive'} />
+      {numberOfMovedItems > 0 && (
+        <Announced
+          message={`${numberOfMovedItems} item${numberOfMovedItems === 1 ? '' : 's'} moved`}
+          aria-live={'assertive'}
+        />
       )}
       <MarqueeSelection selection={selection}>
         <DetailsList

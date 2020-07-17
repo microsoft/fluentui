@@ -1,46 +1,25 @@
 import * as React from 'react';
 import {
-  classNamesFunction,
   Coachmark,
   DefaultButton,
   DirectionalHint,
   Dropdown,
   IButtonProps,
   IDropdownOption,
-  IStyle,
   TeachingBubbleContent,
+  mergeStyleSets,
 } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
 
-export interface ICoachmarkBasicExampleStyles {
-  /**
-   * Style for the root element in the default enabled/unchecked state.
-   */
-  root?: IStyle;
-
-  /**
-   * The example button container
-   */
-  buttonContainer: IStyle;
-
-  /**
-   * The dropdown component container
-   */
-  dropdownContainer: IStyle;
-}
-
-const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
-const classNames = getClassNames(() => {
-  return {
-    dropdownContainer: {
-      maxWidth: '400px',
-    },
-    buttonContainer: {
-      marginTop: '30px',
-      display: 'inline-block',
-    },
-  };
-}, {});
+const classNames = mergeStyleSets({
+  dropdownContainer: {
+    maxWidth: '400px',
+  },
+  buttonContainer: {
+    marginTop: '30px',
+    display: 'inline-block',
+  },
+});
 
 const buttonProps: IButtonProps = {
   text: 'Try it',
@@ -50,7 +29,7 @@ const buttonProps2: IButtonProps = {
   text: 'Try it again',
 };
 
-const IDropdownOption = [
+const dropdownOptions: IDropdownOption[] = [
   { key: 'A', text: 'Top Left Edge', data: DirectionalHint.topLeftEdge },
   { key: 'B', text: 'Top Center', data: DirectionalHint.topCenter },
   { key: 'C', text: 'Top Right Edge', data: DirectionalHint.topRightEdge },
@@ -82,13 +61,13 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
   );
 
   return (
-    <div className={classNames.root}>
+    <>
       <div className={classNames.dropdownContainer}>
         <Dropdown
           label="Coachmark position"
           selectedKey={dropdownSelectedOptionKey}
           onFocus={hideCoachmark}
-          options={IDropdownOption}
+          options={dropdownOptions}
           onChange={onDropdownChange}
         />
       </div>
@@ -123,6 +102,6 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
           </TeachingBubbleContent>
         </Coachmark>
       )}
-    </div>
+    </>
   );
 };

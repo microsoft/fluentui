@@ -8,17 +8,13 @@ import { FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone'
 import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
 import { useConst } from '@uifabric/react-hooks';
-export interface IPeoplePickerExampleState {
-  peopleList: IPersonaProps[];
-  mostRecentlyUsed: IPersonaProps[];
-  searchMoreAvailable: boolean;
-}
 
 const theme = getTheme();
 
 const startsWith = (text: string, filterText: string): boolean => {
   return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
 };
+
 const classNames = mergeStyleSets({
   picker: { maxWidth: 400, marginBottom: 15 },
   headerItem: {
@@ -62,18 +58,12 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
   const onRemoveSuggestion = (item: IPersonaProps): void => {
     const itemIndex = peopleList.indexOf(item);
     const itemMruIndex = mostRecentlyUsed.indexOf(item);
-    const stateUpdate = {} as IPeoplePickerExampleState;
-
     if (itemIndex >= 0) {
-      stateUpdate.peopleList = peopleList.slice(0, itemIndex).concat(peopleList.slice(itemIndex + 1));
+      setPeopleList(peopleList.slice(0, itemIndex).concat(peopleList.slice(itemIndex + 1)));
     }
     if (itemMruIndex >= 0) {
-      stateUpdate.mostRecentlyUsed = mostRecentlyUsed
-        .slice(0, itemMruIndex)
-        .concat(mostRecentlyUsed.slice(itemMruIndex + 1));
+      setMostRecentlyUsed(mostRecentlyUsed.slice(0, itemMruIndex).concat(mostRecentlyUsed.slice(itemMruIndex + 1)));
     }
-    setPeopleList(stateUpdate.peopleList);
-    setMostRecentlyUsed(stateUpdate.mostRecentlyUsed);
   };
 
   const onFilterChanged = (filterText: string, currentPersonas?: IPersonaProps[]): Promise<IPersonaProps[]> | null => {
