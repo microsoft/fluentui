@@ -77,6 +77,7 @@ export interface ICalendarDayGridStyles {
     dayButton?: IStyle;
     dayCell?: IStyle;
     dayIsToday?: IStyle;
+    dayMarker?: IStyle;
     dayOutsideBounds?: IStyle;
     dayOutsideNavigatedMonth?: IStyle;
     daySelected?: IStyle;
@@ -199,6 +200,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
 // @public (undocumented)
 export interface ICalendarStrings extends IDateGridStrings {
     closeButtonAriaLabel?: string;
+    dayMarkedAriaLabel?: string;
     goToToday: string;
     monthPickerHeaderAriaLabel?: string;
     nextMonthAriaLabel?: string;

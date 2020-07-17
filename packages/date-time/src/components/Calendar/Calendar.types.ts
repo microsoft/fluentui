@@ -255,7 +255,7 @@ export interface ICalendarStrings extends IDateGridStrings {
   /**
    * Aria-label for when a date is marked
    */
-  dayMarkedAriaLabel: string;
+  dayMarkedAriaLabel?: string;
 }
 
 export interface ICalendarIconStrings {
