@@ -25,6 +25,7 @@ interface IEditorErrorBoundaryState {
 export class EditorErrorBoundary extends React.Component<IEditorErrorBoundaryProps, IEditorErrorBoundaryState> {
   public state: IEditorErrorBoundaryState = {};
   private _lastGoodChildren: React.ReactNode;
+  private _lastErrorTime: number | undefined;
 
   public static getDerivedStateFromError(error: Error) {
     return { caughtError: `Error while rendering component: ${error.message || error}` };
@@ -35,7 +36,11 @@ export class EditorErrorBoundary extends React.Component<IEditorErrorBoundaryPro
     // remove the caught error state if:
     // - the error state is not new (present in both curr/prev state)
     // - we have an updated result to render
-    if (state.caughtError && prevState.caughtError && props.transformResult !== prevProps.transformResult) {
+    if (
+      state.caughtError &&
+      prevState.caughtError &&
+      props.transformResult.output !== prevProps.transformResult.output
+    ) {
       this.setState({ caughtError: undefined });
     }
 
@@ -54,6 +59,22 @@ export class EditorErrorBoundary extends React.Component<IEditorErrorBoundaryPro
       console.error('In component: ' + errorInfo.componentStack);
       /* eslint-enable no-console */
     }
+
+    // If there was another error within the past second, or if we're rendering a list example,
+    // get rid of the "last good children" because re-rendering them may cause an infinite loop
+    // (this definitely happens with list examples, probably for reasons related to measurement,
+    // and the cooldown time is meant to prevent similar errors from other cases)
+    const errorTime = Date.now();
+    const transformedCode = this.props.transformResult.output || '';
+    if (
+      (this._lastErrorTime && errorTime - this._lastErrorTime < 1000) ||
+      /^var (List|DetailsList|GroupedList)\w+Example =/m.test(transformedCode) ||
+      /\bcreateElement\((List|DetailsList|GroupedList)/.test(transformedCode)
+    ) {
+      this._lastGoodChildren = null;
+    }
+
+    this._lastErrorTime = errorTime;
   }
 
   public render() {
