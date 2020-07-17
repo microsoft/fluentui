@@ -1,4 +1,4 @@
-import { Provider, teamsTheme, Text, teamsHighContrastTheme, teamsDarkTheme } from '@fluentui/react-northstar';
+import { Provider, teamsTheme, teamsHighContrastTheme, teamsDarkTheme } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { match } from 'react-router-dom';
@@ -38,7 +38,6 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
   }, []);
 
   const exampleFilename = exampleKebabNameToSourceFilename(exampleName);
-
   const examplePath = _.find(examplePaths, path => exampleFilename === parseExamplePath(path).exampleName);
 
   if (!examplePath) return <PageNotFound />;
@@ -49,8 +48,6 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
   return (
     <Provider key={renderId} theme={theme} rtl={rtl === 'true'}>
       <KnobProvider>
-        <Text content={exampleSource.ts} />
-
         <SourceRender
           babelConfig={babelConfig}
           onRender={setError}
