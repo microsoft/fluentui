@@ -149,24 +149,21 @@ function useErrorMessage(
   }: IDatePickerProps,
   selectedDate: Date | undefined,
   setSelectedDate: (date: Date | undefined) => void,
-  formattedDate: string,
+  inputValue: string,
   isCalendarShown: boolean,
 ) {
   const [errorMessage, setErrorMessage] = React.useState<string | undefined>();
-  const isMounted = React.useRef(false);
 
-  const validateTextInput = (inputValue: string = formattedDate): void => {
+  const validateTextInput = (date: Date | null = null): void => {
     if (allowTextInput) {
-      let date = null;
-
-      if (inputValue) {
+      if (inputValue || date) {
         // Don't parse if the selected date has the same formatted string as what we're about to parse.
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
         if (selectedDate && !errorMessage && formatDate && formatDate(selectedDate) === inputValue) {
           return;
         }
-        date = parseDateFromString!(inputValue);
+        date = date || parseDateFromString!(inputValue);
 
         // Check if date is null, or date is Invalid Date
         if (!date || isNaN(date.getTime())) {
@@ -200,10 +197,13 @@ function useErrorMessage(
   };
 
   React.useEffect(() => {
-    if (isMounted.current) {
-      validateTextInput();
+    if (isRequired && !selectedDate) {
+      setErrorMessage(strings!.isRequiredErrorMessage || ' ');
+    } else if (selectedDate && isDateOutOfBounds(selectedDate, minDate, maxDate)) {
+      setErrorMessage(strings!.isOutOfBoundsErrorMessage || ' ');
+    } else {
+      setErrorMessage(undefined);
     }
-    isMounted.current = true;
   }, [
     minDate && getDatePartHashValue(minDate),
     maxDate && getDatePartHashValue(maxDate),
@@ -300,9 +300,7 @@ export const DatePickerBase = React.forwardRef(
         props.calendarProps.onSelectDate(date);
       }
 
-      setSelectedDate(date);
-
-      calendarDismissed();
+      calendarDismissed(date);
     };
 
     const onCalloutPositioned = (): void => {
@@ -384,20 +382,20 @@ export const DatePickerBase = React.forwardRef(
       }
     };
 
-    const dismissDatePickerPopup = (): void => {
+    const dismissDatePickerPopup = (newlySelectedDate?: Date): void => {
       if (isCalendarShown) {
         setIsCalendarShown(false);
 
-        validateTextInput();
+        validateTextInput(newlySelectedDate);
       }
     };
 
     /**
      * Callback for closing the calendar callout
      */
-    const calendarDismissed = (): void => {
+    const calendarDismissed = (newlySelectedDate?: Date): void => {
       preventNextFocusOpeningPicker();
-      dismissDatePickerPopup();
+      dismissDatePickerPopup(newlySelectedDate);
       // don't need to focus the text box, if necessary the focusTrapZone will do it
     };
 

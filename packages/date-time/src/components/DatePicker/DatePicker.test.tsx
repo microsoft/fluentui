@@ -12,6 +12,7 @@ import { safeCreate } from '@uifabric/test-utilities';
 import { TextField } from 'office-ui-fabric-react';
 import * as renderer from 'react-test-renderer';
 import * as ReactDOM from 'react-dom';
+import { CalendarDayGridBase } from '../CalendarDayGrid/CalendarDayGrid.base';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -107,8 +108,6 @@ describe('DatePicker', () => {
       const textfield = datePicker.root.findByType(TextField);
       const input = datePicker.root.findByType('input');
 
-      expect(textfield.props.errorMessage).toBeUndefined();
-
       // open the datepicker then dismiss
       renderer.act(() => {
         input.props.onClick();
@@ -130,63 +129,86 @@ describe('DatePicker', () => {
     });
   });
 
-  xit('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
-    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} />);
-    const textField = datePicker.find('input');
+  it('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
+    // See https://github.com/facebook/react/issues/11565
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
-    expect(textField).toBeDefined();
-    expect(datePicker.state('errorMessage')).toBeUndefined();
-    textField.simulate('click').simulate('click'); // open the datepicker then dismiss
-    expect(datePicker.state('errorMessage')).toBe(' ');
+    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, datePicker => {
+      const textfield = datePicker.root.findByType(TextField);
+      const input = datePicker.root.findByType('input');
 
-    // open calendar and select first day
-    textField.simulate('click');
-    const selectableDateInCalender = datePicker.find('.ms-DatePicker td button[data-is-focusable=true]').at(0);
-    selectableDateInCalender.simulate('click');
+      // open the datepicker then dismiss
+      renderer.act(() => {
+        input.props.onClick();
+      });
+      renderer.act(() => {
+        input.props.onClick();
+      });
 
-    expect(datePicker.state('errorMessage')).toBe('');
+      expect(textfield.props.errorMessage).toBe(' ');
 
-    datePicker.unmount();
+      renderer.act(() => {
+        input.props.onClick();
+      });
+      renderer.act(() => {
+        const date = new Date();
+        datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(date, [date]);
+      });
+
+      expect(textfield.props.errorMessage).toBeUndefined();
+    });
   });
 
-  xit('should not clear initial error when datepicker is opened', () => {
-    const datePicker = mount(
+  it('should not clear initial error when datepicker is opened', () => {
+    // See https://github.com/facebook/react/issues/11565
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
+    safeCreate(
       <DatePickerBase
         isRequired={true}
         allowTextInput={true}
         maxDate={new Date('2020-04-01')}
         value={new Date('2020-04-02')}
       />,
+      datePicker => {
+        const textfield = datePicker.root.findByType(TextField);
+        const input = datePicker.root.findByType('input');
+
+        expect(textfield.props.errorMessage).not.toBeUndefined();
+
+        // open the datepicker then dismiss
+        renderer.act(() => {
+          input.props.onClick();
+        });
+        renderer.act(() => {
+          input.props.onClick();
+        });
+
+        expect(textfield.props.errorMessage).not.toBeUndefined();
+      },
     );
-
-    // assert initial error exists
-    expect(datePicker.state('errorMessage')).not.toBe('');
-
-    const textField = datePicker.find('input');
-
-    expect(textField).toBeDefined();
-
-    // open the datepicker
-    textField.simulate('click').simulate('click');
-
-    // assert initial error remains
-    expect(datePicker.state('errorMessage')).not.toBe('');
-
-    datePicker.unmount();
   });
 
   // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
-  xit('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+  it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+    // See https://github.com/facebook/react/issues/11565
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
     const onSelectDate = jest.fn();
-    const datePicker = mount(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
 
-    datePicker.find('i').simulate('click');
+    safeCreate(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />, datePicker => {
+      const input = datePicker.root.findByType('input');
 
-    ReactTestUtils.Simulate.click(
-      document.querySelector('[class^="daySelected"], [class*="daySelected"]') as HTMLButtonElement,
-    );
+      // open the datepicker then dismiss
+      renderer.act(() => {
+        input.props.onClick();
+      });
+      renderer.act(() => {
+        const date = new Date();
+        datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(date, [date]);
+      });
 
-    expect(onSelectDate).toHaveBeenCalledTimes(1);
+      expect(onSelectDate).toHaveBeenCalledTimes(1);
+    });
   });
 
   xit('should set "Calendar" as the Callout\'s aria-label', () => {
@@ -387,7 +409,7 @@ describe('DatePicker', () => {
       goToToday: 'Go to today',
       isOutOfBoundsErrorMessage: 'out of bounds',
     };
-    let datePicker: ReactWrapper<IDatePickerProps, IDatePickerState>;
+    let datePicker: ReactWrapper<IDatePickerProps, unknown>;
 
     beforeEach(() => {
       datePicker = mount(
