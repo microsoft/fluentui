@@ -325,7 +325,7 @@ describe('DatePicker', () => {
     });
   });
 
-  xdescribe('when Calendar properties are specified', () => {
+  describe('when Calendar properties are specified', () => {
     const value = new Date(2017, 10, 1);
     const today = new Date(2017, 9, 31);
     const dateTimeFormatter = {
@@ -349,54 +349,56 @@ describe('DatePicker', () => {
         dateTimeFormatter={dateTimeFormatter}
       />,
     );
-    datePicker.setState({ isDatePickerShown: true });
+    datePicker
+      .find(TextField)
+      ?.props()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .onClick?.({} as any);
 
     const calendarProps = datePicker.find(Calendar).props();
 
-    xit('renders Calendar with same isMonthPickerVisible', () => {
+    it('renders Calendar with same isMonthPickerVisible', () => {
       expect(calendarProps.isMonthPickerVisible).toBe(false);
     });
 
-    xit('renders Calendar with same showMonthPickerAsOverlay', () => {
+    it('renders Calendar with same showMonthPickerAsOverlay', () => {
       expect(calendarProps.showMonthPickerAsOverlay).toBe(true);
     });
 
-    xit('renders Calendar with same value', () => {
+    it('renders Calendar with same value', () => {
       expect(calendarProps.value).toBe(value);
     });
 
-    xit('renders Calendar with same today', () => {
+    it('renders Calendar with same today', () => {
       expect(calendarProps.today).toBe(today);
     });
 
-    xit('renders Calendar with same firstDayOfWeek', () => {
+    it('renders Calendar with same firstDayOfWeek', () => {
       expect(calendarProps.firstDayOfWeek).toBe(2);
     });
 
-    xit('renders Calendar with same highlightCurrentMonth', () => {
+    it('renders Calendar with same highlightCurrentMonth', () => {
       expect(calendarProps.highlightCurrentMonth).toBe(true);
     });
 
-    xit('renders Calendar with same showWeekNumbers', () => {
+    it('renders Calendar with same showWeekNumbers', () => {
       expect(calendarProps.showWeekNumbers).toBe(true);
     });
 
-    xit('renders Calendar with same firstWeekOfYear', () => {
+    it('renders Calendar with same firstWeekOfYear', () => {
       expect(calendarProps.firstWeekOfYear).toBe(FirstWeekOfYear.FirstFullWeek);
     });
 
-    xit('renders Calendar with same showGoToToday', () => {
+    it('renders Calendar with same showGoToToday', () => {
       expect(calendarProps.showGoToToday).toBe(false);
     });
 
-    xit('renders Calendar with same dateTimeFormatter', () => {
+    it('renders Calendar with same dateTimeFormatter', () => {
       expect(calendarProps.dateTimeFormatter).toBe(dateTimeFormatter);
     });
-
-    datePicker.setState({ isDatePickerShown: false });
   });
 
-  xdescribe('when date boundaries are specified', () => {
+  describe('when date boundaries are specified', () => {
     const defaultDate = new Date('Dec 15 2017');
     const minDate = new Date('Jan 1 2017');
     const maxDate = new Date('Dec 31 2017');
@@ -421,7 +423,7 @@ describe('DatePicker', () => {
       goToToday: 'Go to today',
       isOutOfBoundsErrorMessage: 'out of bounds',
     };
-    let datePicker: ReactWrapper<IDatePickerProps, unknown>;
+    let datePicker: ReactWrapper<IDatePickerProps, never>;
 
     beforeEach(() => {
       datePicker = mount(
@@ -439,41 +441,44 @@ describe('DatePicker', () => {
       datePicker.unmount();
     });
 
-    xit('should throw validation error for date outside boundary', () => {
+    it('should throw validation error for date outside boundary', () => {
       // before minDate
       datePicker
         .find('input')
         .simulate('change', { target: { value: 'Jan 1 2010' } })
         .simulate('blur');
-      expect(datePicker.state('errorMessage')).toBe('out of bounds');
+      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
 
       // after maxDate
       datePicker
         .find('input')
         .simulate('change', { target: { value: 'Jan 1 2020' } })
         .simulate('blur');
-      expect(datePicker.state('errorMessage')).toBe('out of bounds');
+      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
     });
 
-    xit('should not throw validation error for date inside boundary', () => {
+    it('should not throw validation error for date inside boundary', () => {
       // in boundary
       datePicker
         .find('input')
         .simulate('change', { target: { value: 'Dec 16 2017' } })
         .simulate('blur');
-      expect(datePicker.state('errorMessage')).toBeFalsy();
+      expect(datePicker.find(TextField).props().errorMessage).toBeFalsy();
 
       // on boundary
       datePicker
         .find('input')
         .simulate('change', { target: { value: 'Jan 1 2017' } })
         .simulate('blur');
-      expect(datePicker.state('errorMessage')).toBeFalsy();
+      expect(datePicker.find(TextField).props().errorMessage).toBeFalsy();
     });
 
-    xit('should throw validation error if boundaries are moved to intersect selected date', () => {
+    it('should throw validation error if boundaries are moved to intersect selected date', () => {
+      // ReactTestUtils.act(() => {
       datePicker.setProps({ minDate: new Date('Dec 16 2017') });
-      expect(datePicker.state('errorMessage')).toBe('out of bounds');
+      datePicker.update();
+      // });
+      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
     });
   });
 });
