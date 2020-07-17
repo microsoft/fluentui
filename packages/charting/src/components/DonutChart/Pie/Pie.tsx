@@ -10,13 +10,11 @@ export class Pie extends React.Component<IPieProps, {}> {
     pie: shape
       .pie()
       .sort(null)
-      // tslint:disable:no-any
-      .value((d: any) => {
-        return d.data;
-      })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .value((d: any) => d.data)
       .padAngle(0.02),
   };
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _pieForFocusRing: any;
   constructor(props: IPieProps) {
     super(props);
@@ -24,7 +22,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     this._pieForFocusRing = shape
       .pie()
       .sort(null)
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .value((d: any) => d.data)
       .padAngle(0);
   }
@@ -57,8 +55,8 @@ export class Pie extends React.Component<IPieProps, {}> {
   public render(): JSX.Element {
     const { pie, data, width, height, href } = this.props;
     const focusData = this._pieForFocusRing(data);
-    const piechart = pie(data),
-      translate = `translate(${width / 2}, ${height / 2})`;
+    const piechart = pie(data);
+    const translate = `translate(${width / 2}, ${height / 2})`;
     return (
       <g transform={translate}>
         {piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, focusData[i], href))}

@@ -40,6 +40,10 @@ const ITEM_COUNT = 100;
 interface ISelectionBasicExampleState {
   items: IExampleItem[];
   selection: ISelection;
+<<<<<<< HEAD
+=======
+  canSelect: 'all' | 'vowels';
+>>>>>>> d1212a3808f0ba186dab8d5f714d35958cdc759a
 }
 
 interface ISelectionItemExampleProps {
@@ -77,8 +81,68 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
   );
 };
 
+<<<<<<< HEAD
 export const SelectionBasicExample: React.FunctionComponent = () => {
   const [canSelect, setCanSelect] = React.useState<'all' | 'vowels'>('all');
+=======
+/**
+ * The SelectionBasicExample controls the selection state of all items
+ */
+export class SelectionBasicExample extends React.Component<{}, ISelectionBasicExampleState> {
+  private _hasMounted: boolean;
+
+  constructor(props: {}) {
+    super(props);
+
+    this._hasMounted = false;
+    // Memoizing this means that given the same parameters, it will return the same array of command objects
+    // (performance optimization)
+    this._getCommandItems = memoizeFunction(this._getCommandItems);
+
+    this.state = {
+      items: createListItems(ITEM_COUNT),
+      selection: new Selection({ onSelectionChanged: this._onSelectionChanged }),
+      canSelect: 'all',
+    };
+    this.state.selection.setItems(this.state.items, false);
+  }
+
+  public componentDidMount(): void {
+    this._hasMounted = true;
+  }
+
+  public render(): JSX.Element {
+    const { items, selection, canSelect } = this.state;
+
+    return (
+      <div className="ms-SelectionBasicExample">
+        <CommandBar items={this._getCommandItems(selection.mode, canSelect)} />
+        <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
+          <SelectionZone selection={selection} onItemInvoked={this._alertItem}>
+            {items.map((item: IExampleItem, index: number) => (
+              <SelectionItemExample key={item.key} item={item} itemIndex={index} selection={selection} />
+            ))}
+          </SelectionZone>
+        </MarqueeSelection>
+      </div>
+    );
+  }
+
+  private _alertItem = (item: IExampleItem): void => {
+    alert('item invoked: ' + item.name);
+  };
+
+  private _onSelectionChanged = (): void => {
+    if (this._hasMounted) {
+      this.forceUpdate();
+    }
+  };
+
+  private _onToggleSelectAll = (): void => {
+    const { selection } = this.state;
+    selection.toggleAllSelected();
+  };
+>>>>>>> d1212a3808f0ba186dab8d5f714d35958cdc759a
 
   const { current: internalState } = React.useRef<ISelectionBasicExampleState>({
     selection: new Selection(),

@@ -20,7 +20,7 @@ export interface TooltipContentVariables {
   zIndex: number;
 }
 
-export default (siteVars: any): TooltipContentVariables => ({
+export const tooltipContentVariables = (siteVars: any): TooltipContentVariables => ({
   boxShadow: siteVars.shadowLevel2,
 
   borderRadius: pxToRem(3),

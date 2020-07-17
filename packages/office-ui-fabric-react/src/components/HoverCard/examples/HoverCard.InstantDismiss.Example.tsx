@@ -35,7 +35,11 @@ export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
   const onRenderPlainCard = (): JSX.Element => {
     return (
       <div className={classNames.plainCard}>
-        <DefaultButton onClick={instantDismissCard} text="Instant Dismiss" />
+        <DefaultButton
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={instantDismissCard}
+          text="Instant Dismiss"
+        />
       </div>
     );
   };

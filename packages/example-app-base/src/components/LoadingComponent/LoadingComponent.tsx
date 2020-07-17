@@ -123,7 +123,6 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
   private readonly _async: Async = new Async();
   private _otherSections: IPageSectionProps[];
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillMount(): void {
     this._otherSections = shimmerSections();
   }

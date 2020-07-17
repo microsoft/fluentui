@@ -5,6 +5,7 @@ import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
 
 const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
+  commandBarBorder: DarkSemanticColors.commandBar.border,
   bodyBackground: DarkSemanticColors.background,
   bodyText: DarkSemanticColors.text.body,
   bodyTextHovered: DarkSemanticColors.text.bodyHovered,
@@ -28,6 +29,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   checkBoxCheckedFocus: DarkSemanticColors.checkBox.rest.focus,
   checkBoxIndeterminateBackground: DarkSemanticColors.checkBox.checked.background,
   checkBoxIndeterminateDefaultChecked: DarkSemanticColors.checkBox.checked.default,
+  datePickerDisabledBorder: DarkSemanticColors.datePicker.disabled.border,
   disabledBackground: CommonSemanticColors.backgrounds.disabled,
   disabledBodyText: DarkSemanticColors.text.disabled,
   errorBackground: DarkSemanticColors.controlOutlines.error,
@@ -46,6 +48,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   listItemBackgroundChecked: DarkSemanticColors.item.select,
   listItemBackgroundCheckedHovered: DarkSemanticColors.item.select,
   listItemBackgroundHovered: DarkSemanticColors.item.hover,
+  listItemBackgroundSelectedHovered: DarkSemanticColors.item.selectHovered,
   listText: DarkSemanticColors.text.body,
   menuItemBackgroundHovered: DarkSemanticColors.item.hover,
   menuItemBackgroundPressed: DarkSemanticColors.item.select,

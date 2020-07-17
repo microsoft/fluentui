@@ -82,6 +82,7 @@ export interface IAzureSemanticColors {
   item: {
     hover: string;
     select: string;
+    selectHovered: string;
   };
   shimmer: {
     primary: string;
@@ -90,6 +91,14 @@ export interface IAzureSemanticColors {
   toggle: {
     disabled: {
       backrgound: string;
+    };
+  };
+  commandBar: {
+    border: string;
+  };
+  datePicker: {
+    disabled: {
+      border: string;
     };
   };
 }

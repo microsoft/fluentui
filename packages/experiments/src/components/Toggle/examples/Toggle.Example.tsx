@@ -6,7 +6,6 @@ export interface IToggleExampleState {
   checked: boolean;
 }
 
-// tslint:disable:jsx-no-lambda
 export class ToggleExample extends React.Component<{}, IToggleExampleState> {
   private _toggle = React.createRef<IToggle>();
 
@@ -51,6 +50,7 @@ export class ToggleExample extends React.Component<{}, IToggleExampleState> {
         <Toggle checked={checked} label="Controlled by Toggle above" onText="Checked" offText="Unchecked" />
         <DefaultButton
           text="Focus Toggle"
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={() => {
             this._toggle.current && this._toggle.current.focus();
           }}

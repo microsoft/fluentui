@@ -5,16 +5,15 @@ import {
   mergeVariablesOverrides,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import { ComponentEventHandler, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler } from '../../types';
 import {
   ChildrenComponentProps,
   ContentComponentProps,
@@ -60,9 +59,9 @@ export const toolbarCustomItemClassName = 'ui-toolbar__customitem';
 /**
  * A ToolbarCustomItem renders Toolbar item as a non-actionable `div` with custom content inside.
  */
-const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarCustomItemStylesProps, {}, {}>(
+export const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarCustomItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
@@ -152,5 +151,3 @@ ToolbarCustomItem.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
 };
-
-export default ToolbarCustomItem;

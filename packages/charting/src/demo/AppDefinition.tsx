@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
@@ -49,6 +49,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'StackedBarChart',
           name: 'StackedBarChart',
           url: '#/examples/stackedbarchart',
+        },
+        {
+          component: require<any>('../components/SankeyChart/SankeyChartPage').SankeyChartPage,
+          key: 'SankeyChart',
+          name: 'SankeyChart',
+          url: '#/examples/sankeychart',
         },
       ],
     },

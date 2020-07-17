@@ -10,7 +10,6 @@ const { copy } = require('./tasks/copy');
 const { jest: jestTask, jestWatch } = require('./tasks/jest');
 const { sass } = require('./tasks/sass');
 const { ts } = require('./tasks/ts');
-const { tslint } = require('./tasks/tslint');
 const { eslint } = require('./tasks/eslint');
 const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
@@ -60,7 +59,6 @@ module.exports = function preset() {
   task('ts:commonjs', series(ts.commonjs, 'postprocess:commonjs'));
   task('ts:esm', ts.esm);
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
-  task('tslint', tslint);
   task('eslint', eslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
@@ -96,7 +94,7 @@ module.exports = function preset() {
     condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))),
   );
 
-  task('lint', parallel('lint-imports', 'tslint'));
+  task('lint', parallel('lint-imports', 'eslint'));
 
   task('code-style', series('prettier', 'lint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));

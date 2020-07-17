@@ -5,9 +5,9 @@ import { AttachmentStylesProps } from '../../../../components/Attachment/Attachm
 import { attachmentActionClassName } from '../../../../components/Attachment/AttachmentAction';
 import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
+export const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
@@ -76,5 +76,3 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     };
   },
 };
-
-export default attachmentStyles;

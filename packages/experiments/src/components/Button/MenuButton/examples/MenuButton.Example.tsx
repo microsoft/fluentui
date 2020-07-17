@@ -37,7 +37,6 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// tslint:disable:jsx-no-lambda
 export class MenuButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (

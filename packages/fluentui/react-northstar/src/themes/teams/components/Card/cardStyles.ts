@@ -2,9 +2,9 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardStylesProps } from '../../../../components/Card/Card';
 import { cardExpandableBoxClassName } from '../../../../components/Card/CardExpandableBox';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
+export const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
 
@@ -157,5 +157,3 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
     };
   },
 };
-
-export default cardStyles;

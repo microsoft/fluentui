@@ -81,10 +81,10 @@ export const PersonaCoinBase = React.forwardRef(
       styles,
       imageUrl,
       isOutOfOffice,
-      // tslint:disable:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onRenderCoin = renderCoin,
+      // eslint-disable-next-line deprecation/deprecation
       onRenderPersonaCoin = onRenderCoin,
-      // tslint:enable:deprecation
       onRenderInitials = renderPersonaCoinInitials,
       presence,
       presenceTitle,
@@ -129,7 +129,7 @@ export const PersonaCoinBase = React.forwardRef(
     return (
       <div role="presentation" {...divProps} className={classNames.coin} ref={forwardedRef}>
         {// Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
@@ -202,7 +202,7 @@ const renderPersonaCoinInitials = ({
   allowPhoneInitials,
   showUnknownPersonaCoin,
   text,
-  // tslint:disable-next-line: deprecation
+  // eslint-disable-next-line deprecation/deprecation
   primaryText,
   theme,
 }: IPersonaCoinProps): JSX.Element => {
