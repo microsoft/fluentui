@@ -3,7 +3,7 @@ import { Calendar, DayOfWeek, defaultDayPickerStrings, DateRangeType } from '@ui
 
 import * as styles from './Calendar.Example.scss';
 
-export function CalendarInlineExample() {
+export function CalendarInlineMarkedDaysExample() {
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
 
   const onSelectDate = React.useCallback(
@@ -12,6 +12,10 @@ export function CalendarInlineExample() {
     },
     [selectedDate],
   );
+
+  const shouldMarkDay = React.useCallback((date: Date) => {
+    return date.getDay() === 1 || date.getDay() === 4;
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -25,6 +29,7 @@ export function CalendarInlineExample() {
         value={selectedDate}
         firstDayOfWeek={DayOfWeek.Sunday}
         strings={defaultDayPickerStrings}
+        calendarDayProps={{ shouldMarkDay }}
       />
     </div>
   );

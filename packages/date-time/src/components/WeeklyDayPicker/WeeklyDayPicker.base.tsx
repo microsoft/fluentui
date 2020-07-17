@@ -53,6 +53,7 @@ const DEFAULT_STRINGS = {
   weekNumberFormatString: 'Week number {0}',
   prevWeekAriaLabel: 'Go to previous week',
   nextWeekAriaLabel: 'Go to next week',
+  dayMarkedAriaLabel: 'marked',
 };
 
 export const defaultIconStrings: ICalendarIconStrings = {

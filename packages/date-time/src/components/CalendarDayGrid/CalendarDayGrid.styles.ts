@@ -241,6 +241,38 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       ...lastTransitionRowAnimationStyle,
       animationName: lastTransitionRowAnimationStyle.animationName + ',' + transitionRowDisappearance,
     },
+    dayMarker: {
+      width: 4,
+      height: 4,
+      backgroundColor: palette.neutralSecondary,
+      borderRadius: '100%',
+      bottom: 1,
+      left: 0,
+      right: 0,
+      position: 'absolute',
+      margin: 'auto',
+      selectors: {
+        '[class*=dayIsToday] &': {
+          backgroundColor: palette.white,
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Window!important',
+            },
+          },
+        },
+        '[class*=daySelected] &': {
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'HighlightText!important',
+            },
+          },
+        },
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText!important',
+          MsHighContrastAdjust: 'none',
+        },
+      },
+    },
     topRightCornerDate: {
       borderTopRightRadius: '2px',
     },

@@ -176,6 +176,11 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
    * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
    */
   animationDirection?: AnimationDirection;
+
+  /**
+   * Optional callback function to mark a date with a small symbol
+   */
+  shouldMarkDay?: (day: Date) => boolean;
 }
 
 export interface ICalendarDayGridStyleProps {
@@ -280,6 +285,11 @@ export interface ICalendarDayGridStyles {
    * The style applied to the last placeholder week used during transitions
    */
   lastTransitionWeek?: IStyle;
+
+  /**
+   * The style applied to the marker on days to mark as important
+   */
+  dayMarker?: IStyle;
 
   /**
    * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners
