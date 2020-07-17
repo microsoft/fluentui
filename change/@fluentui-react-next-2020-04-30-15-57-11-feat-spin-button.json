@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "SpinButton: Updating to a function component within react-next.",
-  "packageName": "@fluentui/react-next",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-30T22:57:11.130Z"
-}

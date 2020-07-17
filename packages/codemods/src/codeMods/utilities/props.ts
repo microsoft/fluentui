@@ -1,14 +1,6 @@
-import {
-  JsxAttribute,
-  JsxOpeningElement,
-  JsxSelfClosingElement,
-  SyntaxKind,
-  VariableDeclarationKind,
-  ts,
-  Node,
-} from 'ts-morph';
+import { JsxOpeningElement, JsxSelfClosingElement, SyntaxKind, VariableDeclarationKind, ts, Node } from 'ts-morph';
 import { Maybe } from '../../maybe';
-import { EnumMap } from '../types';
+import { EnumMap, PropTransform } from '../types';
 
 export function renameProp<T>(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],
@@ -16,39 +8,24 @@ export function renameProp<T>(
   replacementName: string,
   changeValueMap?: EnumMap<string>,
   replacementValue?: string,
+  transform?: PropTransform,
 ) {
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
     const foundProp = Maybe(val.getAttribute(toRename));
+
     if (foundProp.just) {
       /* If found, do a simple name-replacementName. */
       foundProp.value.set({ name: replacementName });
-      if (changeValueMap) {
-        /* Change the value of the enum via map conversion. */
-        const enumInJsx = Maybe((foundProp.value as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression));
-        const enumExp = enumInJsx.then(value => {
-          return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-        });
-        if (enumExp.just) {
-          const oldEnumName = enumExp.then(value => {
-            return value.getText();
-          });
-          if (oldEnumName.just) {
-            const newEnumName = changeValueMap[oldEnumName.value];
-            const firstEnumChild = enumExp.then(value => {
-              return value.getFirstChildByKind(SyntaxKind.Identifier);
-            });
-            const lastEnumChild = enumExp.then(value => {
-              return value.getLastChildByKind(SyntaxKind.Identifier);
-            });
-            if (firstEnumChild.just && lastEnumChild.just) {
-              firstEnumChild.value.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
-              lastEnumChild.value.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
-            }
+      if (replacementValue) {
+        foundProp.value.set({ initializer: `{${replacementValue}}` });
+      } else {
+        const enumInJsx = Maybe(foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression));
+        if (enumInJsx.just) {
+          if (transform) {
+            transform(enumInJsx.value);
           }
         }
-      } else if (replacementValue) {
-        foundProp.value.set({ initializer: `{${replacementValue}}` });
       }
     } else {
       /* If the prop is not found, check to see if the prop is in a spread attribute. */
