@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "removing unnecessary !important, fixing two linting errors, fixing high contrast bug in oufr calendar",
-  "packageName": "office-ui-fabric-react",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-15T19:29:29.887Z"
-}

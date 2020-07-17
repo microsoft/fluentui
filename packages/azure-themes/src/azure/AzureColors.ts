@@ -51,6 +51,7 @@ export namespace BaseColors {
   export const GRAY_A19F9D = '#A19F9D';
   export const GRAY_C8C6C4 = '#C8C6C4';
   export const GRAY_EDEBE9 = '#EDEBE9';
+  export const GRAY_E1DFDD = '#E1DFDD';
   export const GRAY_F3F2F1 = '#F3F2F1';
   export const GRAY_6B849C = '#6B849C';
   export const BLACK = '#000000';
@@ -116,7 +117,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     bodyHovered: BaseColors.WHITE,
     value: BaseColors.WHITE,
     icon: BaseColors.WHITE,
-    label: BaseColors.GRAY_808080,
+    label: BaseColors.WHITE,
     disabled: BaseColors.GRAY_A19F9D,
     hyperlink: BaseColors.BLUE_4894FE,
     hyperlinkHovered: BaseColors.BLUE_4894FE,
@@ -192,6 +193,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.GRAY_808080_015,
     select: BaseColors.GRAY_808080_025,
+    selectHovered: BaseColors.GRAY_808080_070,
   },
   shimmer: {
     primary: BaseColors.GRAY_808080,
@@ -205,6 +207,11 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   commandBar: {
     border: BaseColors.GRAY_605E5C,
   },
+  datePicker: {
+    disabled: {
+      border: BaseColors.GRAY_A19F9D,
+    },
+  },
 };
 
 export const LightSemanticColors: IAzureSemanticColors = {
@@ -215,7 +222,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     bodyHovered: BaseColors.GRAY_201F1E,
     value: BaseColors.GRAY_161616,
     icon: BaseColors.GRAY_161616,
-    label: BaseColors.GRAY_747474,
+    label: BaseColors.GRAY_323130,
     disabled: BaseColors.GRAY_A19F9D,
     hyperlink: BaseColors.BLUE_0078D4,
     hyperlinkHovered: BaseColors.BLUE_004578,
@@ -291,6 +298,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.GRAY_F3F2F1,
     select: BaseColors.GRAY_EDEBE9,
+    selectHovered: BaseColors.GRAY_E1DFDD,
   },
   shimmer: {
     primary: BaseColors.GRAY_F7F7F7,
@@ -303,5 +311,10 @@ export const LightSemanticColors: IAzureSemanticColors = {
   },
   commandBar: {
     border: BaseColors.GRAY_CCCCCC,
+  },
+  datePicker: {
+    disabled: {
+      border: BaseColors.GRAY_F3F2F1,
+    },
   },
 };

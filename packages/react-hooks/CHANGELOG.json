@@ -2,6 +2,35 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.3",
+      "version": "7.5.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding useSetTimeOut hook.",
+            "author": "czearing@outlook.com",
+            "commit": "bca273168c554d5a4fee1f7a809316b7dabe7007",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "useMergedRefs: now mutates the resulting ref if the merged refs mutate.",
+            "author": "dzearing@hotmail.com",
+            "commit": "8247d915e42b98aceeeaaf0061c1ce3773bd17fb",
+            "package": "@uifabric/react-hooks"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@uifabric/react-hooks_v7.5.1",
       "version": "7.5.1",

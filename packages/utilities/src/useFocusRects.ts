@@ -40,9 +40,9 @@ type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) |
  * @param rootRef - A Ref object. Focus rectangle can be applied on itself and all its children.
  */
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
-  const win = getWindow(rootRef?.current) as AppWindow;
-
   React.useEffect(() => {
+    const win = getWindow(rootRef?.current) as AppWindow;
+
     if (!win || win.FabricConfig?.disableFocusRects === true) {
       return undefined;
     }
@@ -66,7 +66,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
         win.removeEventListener('keydown', _onKeyDown, true);
       }
     };
-  }, [win]);
+  }, [rootRef]);
 }
 
 /**
