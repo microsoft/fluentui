@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jul 2020 12:38:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.3)
+
+Fri, 17 Jul 2020 12:38:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.7.1..@fluentui/react-button_v0.7.3)
+
+### Patches
+
+- fix: use a proper ref in useButton hook ([PR #14063](https://github.com/microsoft/fluentui/pull/14063) by olfedias@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.0)
 
