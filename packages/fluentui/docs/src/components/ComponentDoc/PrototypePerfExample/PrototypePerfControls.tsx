@@ -17,7 +17,7 @@ const PrototypeExampleControls: React.FC<PrototypeExampleControlsProps> = props 
         <Tooltip content="Popout" key="maximize" trigger={<Component {...props} />} />
       ),
       as: NavLink,
-      to: `/max/${_.kebabCase(
+      to: `/maximize/${_.kebabCase(
         props.examplePath
           .split('/')
           .slice(-1)
