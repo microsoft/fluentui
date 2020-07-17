@@ -124,4 +124,9 @@
       width: 125px;
     }
   }
+
+  // Hide youtube TOS on website: see https://github.com/microsoft/fluentui/issues/13500
+  [href="https://www.youtube.com/t/terms"] {
+    display: none;
+  }
 }
