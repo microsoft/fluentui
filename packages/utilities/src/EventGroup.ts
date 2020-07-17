@@ -307,10 +307,10 @@ export class EventGroup {
     return EventGroup.raise(this._parent, eventName, eventArgs, bubbleEvent);
   }
 
+  //see https://github.com/alangpierce/sucrase/issues/545
   /** Declare an event as being supported by this instance of EventGroup. */
-  public declare(event: string | string[]): void {
+  public ['declare'](event: string | string[]): void {
     let declaredEvents = (this._parent.__declaredEvents = this._parent.__declaredEvents || {});
-
     if (typeof event === 'string') {
       declaredEvents[event] = true;
     } else {
