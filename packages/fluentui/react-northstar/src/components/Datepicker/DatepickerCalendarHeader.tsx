@@ -13,36 +13,22 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
+import { ArrowLeftIcon, ArrowRightIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { commonPropTypes, ContentComponentProps, createShorthandFactory, UIComponentProps } from '../../utils';
-import { Button, ButtonProps } from '../Button/Button';
-import { carouselSlotClassNames } from '../Carousel/Carousel';
+import {
+  commonPropTypes,
+  ContentComponentProps,
+  createShorthand,
+  createShorthandFactory,
+  UIComponentProps,
+} from '../../utils';
+import { ButtonProps } from '../Button/Button';
 import { Flex } from '../Flex/Flex';
 import { Text } from '../Text/Text';
-
-// TODO: extract to date-time-utilities
-export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-};
+import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 
 export interface DatepickerCalendarHeaderProps extends UIComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -50,6 +36,9 @@ export interface DatepickerCalendarHeaderProps extends UIComponentProps, Content
 
   /** Localized labels */
   localizedStrings?: IDateGridStrings;
+
+  onPreviousClick?: Function;
+  onNextClick?: Function;
 
   /** Shorthand for the button that navigates to the previous calendar screen. */
   previousButton?: ShorthandValue<ButtonProps>;
@@ -72,7 +61,17 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
   const { setStart, setEnd } = useTelemetry(DatepickerCalendarHeader.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, content, nextButton, previousButton } = props;
+  const {
+    className,
+    design,
+    styles,
+    variables,
+    content,
+    nextButton,
+    previousButton,
+    onPreviousClick,
+    onNextClick,
+  } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DatepickerCalendarHeader.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -101,16 +100,24 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
     >
       <Flex fill space="between" vAlign="center">
         <Text content={content} />
-        {Button.create(previousButton, {
+        {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
           defaultProps: () =>
-            getA11yProps('paddleNext', {
-              className: carouselSlotClassNames.paddleNext,
+            getA11yProps('previousButton', {
+              className: datepickerCalendarHeaderClassName,
+              icon: <ArrowLeftIcon />,
+              title: 'Previous Month',
+              onClick: onPreviousClick,
+              type: 'previous',
             }),
         })}
-        {Button.create(nextButton, {
+        {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
           defaultProps: () =>
-            getA11yProps('paddleNext', {
-              className: carouselSlotClassNames.paddleNext,
+            getA11yProps('nextButton', {
+              className: datepickerCalendarHeaderClassName,
+              icon: <ArrowRightIcon />,
+              title: 'Previous Month',
+              onClick: onNextClick,
+              type: 'next',
             }),
         })}
       </Flex>

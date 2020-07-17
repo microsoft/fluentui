@@ -23,7 +23,6 @@ import {
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
-import { ArrowRightIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -207,10 +206,12 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     return createShorthand(DatepickerCalendarHeader, header, {
       defaultProps: () => ({
         styles: resolvedStyles.header,
-        previousButton: { iconOnly: true, icon: <ArrowRightIcon />, onClick: onPreviousClick, title: 'Previous Month' },
-        nextButton: { iconOnly: true, icon: <ArrowRightIcon />, onClick: onNextClick, title: 'Next Month' },
         content: formatMonthYear(gridOptions.navigatedDate, localizedStrings),
       }),
+      overrideProps: {
+        onPreviousClick,
+        onNextClick,
+      },
     });
   };
 
