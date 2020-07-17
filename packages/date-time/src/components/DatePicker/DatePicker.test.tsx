@@ -211,40 +211,49 @@ describe('DatePicker', () => {
     });
   });
 
-  xit('should set "Calendar" as the Callout\'s aria-label', () => {
-    const datePicker = shallow(<DatePickerBase />);
-    datePicker.setState({ isDatePickerShown: true });
-    const calloutProps = datePicker.find(Callout).props();
+  it('should set "Calendar" as the Callout\'s aria-label', () => {
+    // See https://github.com/facebook/react/issues/11565
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
-    expect(calloutProps.ariaLabel).toBe('Calendar');
+    safeCreate(<DatePickerBase />, datePicker => {
+      const input = datePicker.root.findByType('input');
 
-    datePicker.setState({ isDatePickerShown: false });
+      // open the datepicker then dismiss
+      renderer.act(() => {
+        input.props.onClick();
+      });
+
+      const calloutProps = datePicker.root.findByType(Callout).props;
+
+      expect(calloutProps.ariaLabel).toBe('Calendar');
+    });
   });
 
-  xit('should reflect the correct date in the input field when selecting a value', () => {
+  it('should reflect the correct date in the input field when selecting a value', () => {
     const today = new Date('January 15, 2020');
     const initiallySelectedDate = new Date('January 10, 2020');
     // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
     // that the datepicker opens on the correct month
-    const datePicker = mount(
+
+    // See https://github.com/facebook/react/issues/11565
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
+    safeCreate(
       <DatePickerBase allowTextInput={true} today={today} initialPickerDate={initiallySelectedDate} />,
+      datePicker => {
+        const input = datePicker.root.findByType('input');
+
+        // open the datepicker then dismiss
+        renderer.act(() => {
+          input.props.onClick();
+        });
+        renderer.act(() => {
+          datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(today, [today]);
+        });
+
+        expect(input.props.value).toBe('Wed Jan 15 2020');
+      },
     );
-
-    datePicker.setState({ isDatePickerShown: true });
-    const todayButton = document.querySelector('[class^="dayIsToday"], [class*="dayIsToday"]') as HTMLButtonElement;
-    ReactTestUtils.Simulate.click(todayButton);
-
-    const selectedDate = datePicker
-      .find('input')
-      .first()
-      .getDOMNode()
-      .getAttribute('value');
-
-    expect(selectedDate).toEqual('Wed Jan 15 2020');
-
-    datePicker.setState({ isDatePickerShown: false });
-
-    datePicker.unmount();
   });
 
   xit('reflects the correct date in the input field when selecting a value and a different format is given', () => {
@@ -255,62 +264,65 @@ describe('DatePicker', () => {
     };
     // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
     // that the datepicker opens on the correct month
-    const datePicker = mount(
+
+    // See https://github.com/facebook/react/issues/11565
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
+    safeCreate(
       <DatePickerBase
         allowTextInput={true}
         today={today}
         formatDate={onFormatDate}
         initialPickerDate={initiallySelectedDate}
       />,
+      datePicker => {
+        const input = datePicker.root.findByType('input');
+
+        // open the datepicker then dismiss
+        renderer.act(() => {
+          input.props.onClick();
+        });
+        renderer.act(() => {
+          datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(today, [today]);
+        });
+
+        expect(input.props.value).toBe('15/1/20');
+      },
     );
-
-    datePicker.setState({ isDatePickerShown: true });
-    const todayButton = document.querySelector('[class^="dayIsToday"], [class*="dayIsToday"]') as HTMLButtonElement;
-    ReactTestUtils.Simulate.click(todayButton);
-
-    const selectedDate = datePicker
-      .find('input')
-      .first()
-      .getDOMNode()
-      .getAttribute('value');
-
-    expect(selectedDate).toEqual('15/1/20');
-
-    datePicker.setState({ isDatePickerShown: false });
-
-    datePicker.unmount();
   });
 
-  xdescribe('when Calendar properties are not specified', () => {
+  describe('when Calendar properties are not specified', () => {
     const datePicker = shallow(<DatePickerBase />);
-    datePicker.setState({ isDatePickerShown: true });
+    datePicker
+      .find(TextField)
+      ?.props()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .onClick?.({} as any);
     const calendarProps = datePicker.find(Calendar).props();
 
-    xit('renders Calendar with isMonthPickerVisible as true by defaut', () => {
+    it('renders Calendar with isMonthPickerVisible as true by defaut', () => {
       expect(calendarProps.isMonthPickerVisible).toBe(true);
     });
 
-    xit('renders Calendar with showMonthPickerAsOverlay as false by defaut', () => {
+    it('renders Calendar with showMonthPickerAsOverlay as false by defaut', () => {
       expect(calendarProps.showMonthPickerAsOverlay).toBe(false);
     });
 
-    xit('renders Calendar with highlightCurrentMonth as false by defaut', () => {
+    it('renders Calendar with highlightCurrentMonth as false by defaut', () => {
       expect(calendarProps.highlightCurrentMonth).toBe(false);
     });
 
-    xit('renders Calendar with showWeekNumbers as false by defaut', () => {
+    it('renders Calendar with showWeekNumbers as false by defaut', () => {
       expect(calendarProps.showWeekNumbers).toBe(false);
     });
 
-    xit('renders Calendar with firstWeekOfYear as FirstWeekOfYear.FirstDay by defaut', () => {
+    it('renders Calendar with firstWeekOfYear as FirstWeekOfYear.FirstDay by defaut', () => {
       expect(calendarProps.firstWeekOfYear).toBe(FirstWeekOfYear.FirstDay);
     });
 
-    xit('renders Calendar with showGoToToday as true by defaut', () => {
+    it('renders Calendar with showGoToToday as true by defaut', () => {
       expect(calendarProps.showGoToToday).toBe(true);
     });
-
-    datePicker.setState({ isDatePickerShown: false });
   });
 
   xdescribe('when Calendar properties are specified', () => {
