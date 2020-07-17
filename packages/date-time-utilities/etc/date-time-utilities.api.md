@@ -93,7 +93,7 @@ export const getBoundedDateRange: (dateRange: Date[], minDate?: Date | undefined
 export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
 
 // @public
-export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined) => DateRangeType;
+export const getDateRangeTypeToUse: (dateRangeType: DateRangeType, workWeekDays: DayOfWeek[] | undefined, firstDayOfWeek: DayOfWeek) => DateRangeType;
 
 // @public
 export const getDayGrid: (options: IDayGridOptions) => IDay[][];
@@ -186,7 +186,7 @@ export const isAfterMaxDate: (date: Date, options: IRestrictedDatesOptions) => b
 export const isBeforeMinDate: (date: Date, options: IRestrictedDatesOptions) => boolean;
 
 // @public
-export const isContiguous: (days: DayOfWeek[]) => boolean;
+export const isContiguous: (days: DayOfWeek[], isSingleWeek: boolean, firstDayOfWeek: DayOfWeek) => boolean;
 
 // @public
 export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
