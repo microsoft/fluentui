@@ -49,10 +49,10 @@
     "@fluentui/react-compose": "^0.12.2",
     "@fluentui/react-theme-provider": "^0.3.8",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/react-hooks": "^7.5.1",
+    "@uifabric/react-hooks": "^7.5.3",
     "@uifabric/set-version": "^7.0.17",
     "object-fit-images": "^3.2.4",
-    "office-ui-fabric-react": "^7.123.0",
+    "office-ui-fabric-react": "^7.123.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
