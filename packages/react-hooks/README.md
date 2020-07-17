@@ -8,6 +8,7 @@ Helpful hooks not provided by React itself. These hooks were built for use in Fl
 - [useConstCallback](#useconstcallback) - Like `useConst` but for functions
 - [useId](#useid) - Get a globally unique ID
 - [useBoolean](#useboolean) - Return a boolean value and callbacks for setting it to true or false, or toggling
+- [useRefEffect](#userefeffect) - Call a function with cleanup when a ref changes. Like `useEffect` with a dependency on a ref.
 
 ## useConst
 
@@ -139,6 +140,36 @@ const Example = React.forwardRef(function Example(props:{}, forwardedRef: React.
 
   return <div>Example</div>;
 })
+```
+
+## useRefEffect
+
+`function useRefEffect<T>(callback: (value: T) => (() => void) | void, initial: T | null = null): RefCallback<T>;`
+
+Creates a ref, and calls a callback whenever the ref changes to a non-null value. The callback can optionally return a cleanup function that'll be called before the value changes, and when the ref is unmounted.
+
+The return value is a function that should be called to set the ref's value. The returned object also has a `.current` member that can be used to access the ref's value (like a normal `RefObject`). This can be hooked up to an element's `ref` property.
+
+`useRefEffect` can be used to work around a limitation that `useEffect` cannot depend on `[ref.current]` (see [https://github.com/facebook/react/issues/14387](https://github.com/facebook/react/issues/14387#issuecomment-503616820)).
+
+### Example
+
+```tsx
+import { useRefEffect } from '@uifabric/react-hooks';
+
+const MyComponent = () => {
+  const myDivRef = useRefEffect<HTMLElement>(myDiv => {
+    const observer = new ResizeObserver(entries => {
+      console.log(`myDiv is ${entries[0].contentRect.width} px wide`);
+    });
+    observer.observe(myDiv);
+
+    // Return a function to clean up the ResizeObserver when the ref is unmounted
+    return () => observer.disconnect();
+  });
+
+  return <div ref={myDivRef} />;
+};
 ```
 
 ## useSetInterval
