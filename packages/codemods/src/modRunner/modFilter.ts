@@ -2,9 +2,8 @@ import { CodeMod } from '../codeMods/types';
 import { Maybe } from '../maybe';
 
 export function getStringFilter(filter: string) {
-  const filterString = filter;
   return (modString: string) => {
-    return modString === filterString;
+    return modString === filter;
   };
 }
 
@@ -17,6 +16,7 @@ export function getRegexFilter(filter: string) {
 
 /**
  * Returns a function that will return true if the mod is found in the filters
+ * Default returns true for all mods
  */
 export function getModFilter<T>(filters: { stringFilter: Maybe<string[]>; regexFilter: Maybe<string[]> }) {
   let filts: ((modString: string) => boolean)[] = [];
@@ -30,4 +30,9 @@ export function getModFilter<T>(filters: { stringFilter: Maybe<string[]>; regexF
   return (mod: CodeMod<T>) => {
     return filts.some(v => v(mod.name));
   };
+}
+
+export function getModExcludeFilter<T>(filters: { stringFilter: Maybe<string[]>; regexFilter: Maybe<string[]> }) {
+  const filter = getModFilter(filters);
+  return (mod: CodeMod<T>) => !filter(mod);
 }
