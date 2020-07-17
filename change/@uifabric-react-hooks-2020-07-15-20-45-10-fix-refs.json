@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "useMergedRefs: now mutates the resulting ref if the merged refs mutate.",
-  "packageName": "@uifabric/react-hooks",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-16T03:45:10.716Z"
-}
