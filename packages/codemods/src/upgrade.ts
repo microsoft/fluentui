@@ -1,11 +1,10 @@
 import { runMods, getTsConfigs, getEnabledMods } from './modRunner/runnerUtilities';
-import { getModFilter } from './modRunner/modFilter';
 import { CommandParserResult } from './command';
 import { Project } from 'ts-morph';
 
 // TODO actually do console logging, implement some nice callbacks.
 export function upgrade(options: CommandParserResult) {
-  const mods = getEnabledMods().filter(getModFilter(options));
+  const mods = getEnabledMods().filter(options.modsFilter);
 
   console.log('getting configs');
   const configs = getTsConfigs();
