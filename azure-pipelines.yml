@@ -11,20 +11,6 @@ variables:
 pool: 'Self Host Ubuntu'
 
 jobs:
-  - job: Validation
-    workspace:
-      clean: all
-    steps:
-      - template: azure-pipelines.tools.yml
-
-      - script: |
-          yarn
-        displayName: yarn
-
-      - script: |
-          yarn checkchange
-        displayName: check change
-
   - job: BuildTest
     workspace:
       clean: all
@@ -36,6 +22,10 @@ jobs:
         displayName: yarn
 
       - template: .devops/templates/pr-target-branch.yml
+
+      - script: |
+          yarn checkchange
+        displayName: check change
 
       - script: |
           yarn lage build test lint --since $(target_branch) --verbose
