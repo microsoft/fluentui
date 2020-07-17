@@ -1,4 +1,4 @@
-import { Provider, teamsTheme, Text, teamsHighContrastTheme, teamsDarkTheme } from '@fluentui/react-northstar';
+import { Provider, teamsTheme, teamsHighContrastTheme, teamsDarkTheme } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { match } from 'react-router-dom';
