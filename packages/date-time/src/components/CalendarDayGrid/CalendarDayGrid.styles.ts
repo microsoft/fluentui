@@ -256,19 +256,19 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
           backgroundColor: palette.white,
           selectors: {
             [HighContrastSelector]: {
-              backgroundColor: 'Window!important',
+              backgroundColor: 'Window',
             },
           },
         },
         '[class*=daySelected] &': {
           selectors: {
             [HighContrastSelector]: {
-              backgroundColor: 'HighlightText!important',
+              backgroundColor: 'HighlightText',
             },
           },
         },
         [HighContrastSelector]: {
-          backgroundColor: 'WindowText!important',
+          backgroundColor: 'WindowText',
           MsHighContrastAdjust: 'none',
         },
       },
