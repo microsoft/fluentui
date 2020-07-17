@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 17 Jul 2020 12:38:41 GMT",
+      "tag": "@uifabric/utilities_v7.24.3",
+      "version": "7.24.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: useFocusRects should resolve window inside useEffect",
+            "author": "olfedias@microsoft.com",
+            "commit": "346cd61df2ce2268f4126eab1b31a173904ff4c2",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@uifabric/utilities_v7.24.2",
       "version": "7.24.2",

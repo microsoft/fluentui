@@ -166,7 +166,7 @@ export interface ToggleState extends ToggleProps {
 }
 
 // @public
-export const useButton: (props: ButtonProps, ref: import("react").Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ButtonState;
+export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ButtonState;
 
 // @public
 export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => MenuButtonState;

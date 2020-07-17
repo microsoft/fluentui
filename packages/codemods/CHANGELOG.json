@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Fri, 17 Jul 2020 12:38:41 GMT",
+      "tag": "@fluentui/codemods_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add new prop transform file",
+            "author": "t-dama@microsoft.com",
+            "commit": "1601f2c50737814a91a036df964b481f00b23efb",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jul 2020 21:33:40 GMT",
       "tag": "@fluentui/codemods_v0.3.1",
       "version": "0.3.1",
