@@ -132,7 +132,7 @@ export interface IDateFormatting extends IDateGridStrings {
     formatMonthDayYear: (date: Date) => string;
     formatMonthYear: (date: Date) => string;
     formatYear: (date: Date) => string;
-    parse: (date: string) => Date | null;
+    parseDate: (date: string) => Date | null;
 }
 
 // @public (undocumented)

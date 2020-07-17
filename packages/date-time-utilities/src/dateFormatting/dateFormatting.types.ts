@@ -57,7 +57,7 @@ export interface IDateFormatting extends IDateGridStrings {
   /**
    * Parse date from string representation into Date type.
    */
-  parse: (date: string) => Date | null;
+  parseDate: (date: string) => Date | null;
 }
 
 export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
@@ -85,7 +85,7 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
   formatYear: formatYear,
   formatMonthDayYear: date => formatMonthDayYear(date, DEFAULT_LOCALIZED_STRINGS),
   formatMonthYear: date => formatMonthYear(date, DEFAULT_LOCALIZED_STRINGS),
-  parse: (dateStr: string) => {
+  parseDate: (dateStr: string) => {
     const date = Date.parse(dateStr);
     if (date) {
       return new Date(date);

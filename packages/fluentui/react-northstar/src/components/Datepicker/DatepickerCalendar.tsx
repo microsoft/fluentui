@@ -167,7 +167,7 @@ DatepickerCalendar.propTypes = {
   formatMonthDayYear: PropTypes.func,
   formatMonthYear: PropTypes.func,
 
-  parse: PropTypes.func,
+  parseDate: PropTypes.func,
 
   months: PropTypes.arrayOf(PropTypes.string),
   shortMonths: PropTypes.arrayOf(PropTypes.string),

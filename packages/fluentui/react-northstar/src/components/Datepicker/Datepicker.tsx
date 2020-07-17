@@ -110,7 +110,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     formatYear: props.formatYear,
     formatMonthDayYear: props.formatMonthDayYear,
     formatMonthYear: props.formatMonthYear,
-    parse: props.parse,
+    parseDate: props.parseDate,
   };
 
   const valueFormatter = date => (date ? formatMonthDayYear(date) : '');
@@ -198,7 +198,7 @@ Datepicker.propTypes = {
   formatMonthDayYear: PropTypes.func,
   formatMonthYear: PropTypes.func,
 
-  parse: PropTypes.func,
+  parseDate: PropTypes.func,
 
   months: PropTypes.arrayOf(PropTypes.string),
   shortMonths: PropTypes.arrayOf(PropTypes.string),
