@@ -266,7 +266,7 @@ describe('Calendar', () => {
     });
 
     it('out-of-bounds days should not be part of selected range', () => {
-      let lastSelectedDateRange: Date[] = new Array();
+      let lastSelectedDateRange: Date[] = [];
       const defaultDate = new Date('Mar 16 2017');
       const minDate = new Date('Mar 6 2017');
       const maxDate = new Date('Mar 24 2017');

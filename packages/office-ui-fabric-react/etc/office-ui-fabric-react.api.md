@@ -3020,6 +3020,8 @@ export interface IContextualMenuListProps {
     // (undocumented)
     items: IContextualMenuItem[];
     // (undocumented)
+    role?: string;
+    // (undocumented)
     totalItemCount: number;
 }
 
@@ -3535,8 +3537,6 @@ export interface IDetailsListState {
     focusedItemIndex: number;
     // (undocumented)
     isCollapsed?: boolean;
-    // (undocumented)
-    isDropping?: boolean;
     // (undocumented)
     isSizing?: boolean;
     // (undocumented)
@@ -4850,8 +4850,6 @@ export interface IGroupedListState {
     groups?: IGroup[];
     // (undocumented)
     lastSelectionMode?: SelectionMode;
-    // (undocumented)
-    lastWidth?: number;
 }
 
 // @public (undocumented)

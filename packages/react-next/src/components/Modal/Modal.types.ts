@@ -82,13 +82,13 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   /**
    * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
    * A callback function which is called after the Modal is dismissed and the animation is complete.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDismissed?: () => any;
 
   /**
@@ -161,6 +161,13 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * @defaultvalue false
    */
   allowTouchBodyScroll?: boolean;
+
+  /**
+   * Puts aria-hidden=true on all non-ancestors of the current modal, for screen readers.
+   * This is an experimental feature that will be graduated to default behavior after testing.
+   * This flag will be removed with the next major release.
+   */
+  enableAriaHiddenSiblings?: boolean;
 }
 
 /**

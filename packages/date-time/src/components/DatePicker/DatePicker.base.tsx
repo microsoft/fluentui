@@ -119,7 +119,6 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     this._preventFocusOpeningPicker = false;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 
@@ -415,6 +414,11 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
         this._handleEscKey(ev);
         break;
 
+      case KeyCodes.down:
+        if (ev.altKey && !this.state.isDatePickerShown) {
+          this.showDatePickerPopup();
+        }
+        break;
       default:
         break;
     }

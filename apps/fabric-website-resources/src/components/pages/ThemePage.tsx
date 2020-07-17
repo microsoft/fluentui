@@ -84,6 +84,7 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
                 <div
                   className={classNames.colorSwatch}
                   data-is-focusable="true"
+                  // eslint-disable-next-line react/jsx-no-bind
                   onClick={this._onSwatchClicked.bind(this, item, index, list)}
                 >
                   <span className={classNames.swatch} style={{ backgroundColor: item.value }} />
@@ -109,6 +110,7 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
           >
             <ColorPicker
               color={colorPickerProps.value}
+              // eslint-disable-next-line react/jsx-no-bind
               onChange={this._onColorChanged.bind(this, colorPickerProps.index)}
             />
           </Callout>

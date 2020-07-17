@@ -37,8 +37,10 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
           } else {
             transpiledOutput.output = output.outputFiles[0].text;
             if (win && win.transpileLogging) {
+              /* eslint-disable no-console */
               console.log('TRANSPILED:');
               console.log(transpiledOutput.output);
+              /* eslint-enable no-console */
             }
           }
           return transpiledOutput;
@@ -47,6 +49,7 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
     })
     .catch(ex => {
       // Log the error to the console so people can see the full stack/etc if they want
+      // eslint-disable-next-line no-console
       console.error(ex);
       transpiledOutput.error = ex.message;
       return transpiledOutput;
@@ -76,7 +79,7 @@ export function transpileAndEval(
           return transpileOutput;
         }
 
-        // tslint:disable:no-eval
+        /* eslint-disable no-eval */
         const transformedExample = transformExample({
           tsCode: exampleTs,
           jsCode: transpileOutput.output,
@@ -97,6 +100,7 @@ export function transpileAndEval(
     .catch(
       (err: string | Error): ITransformedExample => {
         // Log the error to the console so people can see the full stack/etc if they want
+        // eslint-disable-next-line no-console
         console.error(err);
         return { error: typeof err === 'string' ? err : err.message };
       },

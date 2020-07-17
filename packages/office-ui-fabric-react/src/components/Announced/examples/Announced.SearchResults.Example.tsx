@@ -80,6 +80,7 @@ export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
       </Text>
       {renderAnnounced()}
       <TagPicker
+        // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}

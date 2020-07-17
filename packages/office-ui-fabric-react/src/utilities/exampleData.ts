@@ -1,10 +1,6 @@
-// Shared code for creating example data.
-// This file is not included in the main office-ui-fabric-react bundle.
-// If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
+/* eslint-disable deprecation/deprecation */
 
-// tslint:disable:deprecation
-
-import { IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { IGroup } from '../DetailsList';
 
 const LOREM_IPSUM = (
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ' +
@@ -35,7 +31,7 @@ export interface IExampleItem {
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
 export function createListItems(count: number, startIndex: number = 0): IExampleItem[] {
-  return Array.apply(null, Array(count)).map((item: number, index: number) => {
+  return [...Array(count)].map((item: number, index: number) => {
     const size = 150 + Math.round(Math.random() * 100);
 
     return {
@@ -66,7 +62,7 @@ export function createGroups(
     key = key + '-';
   }
   const count = Math.pow(itemsPerGroup, groupDepth);
-  return Array.apply(null, Array(groupCount)).map((value: number, index: number) => {
+  return [...Array(groupCount)].map((value: number, index: number) => {
     return {
       count: count,
       key: 'group' + key + index,
@@ -84,7 +80,7 @@ export function createGroups(
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
 export function lorem(wordCount: number): string {
-  return Array.apply(null, Array(wordCount))
+  return [...Array(wordCount)]
     .map((item: number, idx: number) => {
       return LOREM_IPSUM[idx % LOREM_IPSUM.length];
     })

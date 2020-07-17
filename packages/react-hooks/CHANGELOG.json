@@ -2,6 +2,73 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.3",
+      "version": "7.5.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding useSetTimeOut hook.",
+            "author": "czearing@outlook.com",
+            "commit": "bca273168c554d5a4fee1f7a809316b7dabe7007",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "useMergedRefs: now mutates the resulting ref if the merged refs mutate.",
+            "author": "dzearing@hotmail.com",
+            "commit": "8247d915e42b98aceeeaaf0061c1ce3773bd17fb",
+            "package": "@uifabric/react-hooks"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix formatting in README",
+            "author": "olfedias@microsoft.com",
+            "commit": "3cc14fd0025a40c5ac6845439b0ab4b65b735cba",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace tslint with eslint; fix some (false positive) violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/react-hooks"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding useSetInterval and useSetTimeout within react-hooks package.",
+            "author": "czearing@outlook.com",
+            "commit": "e105904735ba78f93b9a99862ff3e833248228a8",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/react-hooks_v7.4.9",
       "version": "7.4.9",

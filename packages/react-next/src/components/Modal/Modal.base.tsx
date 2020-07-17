@@ -10,15 +10,15 @@ import {
   Async,
   EventGroup,
 } from '../../Utilities';
-import { FocusTrapZone, IFocusTrapZone } from 'office-ui-fabric-react/src/components/FocusTrapZone/index';
+import { FocusTrapZone, IFocusTrapZone } from '@fluentui/react-next/lib/FocusTrapZone';
 import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
-import { Overlay } from '../../Overlay';
-import { ILayerProps, Layer } from '../../Layer';
-import { Popup } from '../Popup/index';
+import { Overlay } from '@fluentui/react-next/lib/Overlay';
+import { ILayerProps, Layer } from '@fluentui/react-next/lib/Layer';
+import { Popup } from '@fluentui/react-next/lib/Popup';
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { DirectionalHint } from 'office-ui-fabric-react/src/components/Callout/index';
-import { Icon } from 'office-ui-fabric-react/src/components/Icon/index';
+import { DirectionalHint } from '@fluentui/react-next/lib/Callout';
+import { Icon } from '@fluentui/react-next/lib/Icon';
 import { DraggableZone, IDragData } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { initializeComponentRef } from '@uifabric/utilities';
 
@@ -76,6 +76,8 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     });
 
     this.state = {
+      // TODO: investigate removing
+      // eslint-disable-next-line react/no-unused-state
       id: getId('Modal'),
       isOpen: props.isOpen,
       isVisible: props.isOpen,
@@ -91,7 +93,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     this._allowTouchBodyScroll = allowTouchBodyScroll;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IModalProps): void {
     clearTimeout(this._onModalCloseTimer);
 
@@ -178,7 +179,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       subtitleAriaId,
       theme,
       topOffsetFixed,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onLayerDidMount,
       isModeless,
       dragOptions,
@@ -271,7 +272,8 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
               {!isModeless && (
                 <Overlay
                   isDarkThemed={isDarkOverlay}
-                  onClick={isBlocking ? undefined : onDismiss}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  onClick={isBlocking ? undefined : (onDismiss as any)}
                   allowTouchBodyScroll={this._allowTouchBodyScroll}
                   {...overlay}
                 />
@@ -398,9 +400,12 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       const delta = this._getMoveDelta(event);
 
       switch (event.keyCode) {
+        /* eslint-disable no-fallthrough */
         case KeyCodes.escape:
           this.setState({ x: this._lastSetX, y: this._lastSetY });
         case KeyCodes.enter: {
+          // TODO: determine if fallthrough was intentional
+          /* eslint-enable no-fallthrough */
           this._lastSetX = 0;
           this._lastSetY = 0;
           this.setState({ isInKeyboardMoveMode: false });

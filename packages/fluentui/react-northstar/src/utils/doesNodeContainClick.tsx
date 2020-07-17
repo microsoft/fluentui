@@ -9,7 +9,7 @@ import * as _ from 'lodash';
  * @param e - A SyntheticEvent or DOM Event.
  * @param target - A target document.
  */
-const doesNodeContainClick = (
+export const doesNodeContainClick = (
   node: HTMLElement,
   e: MouseEvent,
   // eslint-disable-next-line no-undef
@@ -51,5 +51,3 @@ const doesNodeContainClick = (
   // don't add an whole pixel (1) as the event/node values may be decimal sensitive
   return _.inRange(clientY, top, bottom + 0.001) && _.inRange(clientX, left, right + 0.001);
 };
-
-export default doesNodeContainClick;
