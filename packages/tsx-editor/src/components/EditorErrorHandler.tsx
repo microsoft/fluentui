@@ -60,17 +60,11 @@ export class EditorErrorBoundary extends React.Component<IEditorErrorBoundaryPro
       /* eslint-enable no-console */
     }
 
-    // If there was another error within the past second, or if we're rendering a list example,
-    // get rid of the "last good children" because re-rendering them may cause an infinite loop
-    // (this definitely happens with list examples, probably for reasons related to measurement,
-    // and the cooldown time is meant to prevent similar errors from other cases)
+    // If there was another error within the past second, get rid of the "last good children"
+    // because re-rendering them may cause an infinite loop (has sometimes happened with list
+    // examples in the past)
     const errorTime = Date.now();
-    const transformedCode = this.props.transformResult.output || '';
-    if (
-      (this._lastErrorTime && errorTime - this._lastErrorTime < 1000) ||
-      /^var (List|DetailsList|GroupedList)\w+Example =/m.test(transformedCode) ||
-      /\bcreateElement\((List|DetailsList|GroupedList)/.test(transformedCode)
-    ) {
+    if (this._lastErrorTime && errorTime - this._lastErrorTime < 1000) {
       this._lastGoodChildren = null;
     }
 
