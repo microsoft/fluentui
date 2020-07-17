@@ -1,61 +1,57 @@
 import * as React from 'react';
-import { ReactWrapper, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { useRefEffect, RefCallback } from './useRefEffect';
 
 describe('useRefEffect', () => {
-  // Use a jest.fn to log the calls to callback and cleanup
-  const log = jest.fn<void, [/*event:*/ 'callback' | 'cleanup', /*as:*/ 'div' | 'span', /*ele:*/ HTMLElement]>();
-  afterEach(() => log.mockClear());
+  it('maintains ref.current and calls the callback and cleanup functions appropriately', () => {
+    // Use a jest.fn to log the calls to callback and cleanup
+    const log = jest.fn<void, [/*event:*/ 'callback' | 'cleanup', /*as:*/ 'div' | 'span', /*ele:*/ HTMLElement]>();
 
-  let ref: RefCallback<HTMLElement>;
-  const TestComponent: React.FunctionComponent<{ as: 'div' | 'span' }> = props => {
-    ref = useRefEffect<HTMLElement>(ele => {
-      log('callback', props.as, ele);
-      return () => log('cleanup', props.as, ele);
-    });
-    return <props.as ref={ref} />;
-  };
+    let ref: RefCallback<HTMLElement>;
+    const TestComponent: React.FunctionComponent<{ as: 'div' | 'span' }> = props => {
+      ref = useRefEffect<HTMLElement>(ele => {
+        log('callback', props.as, ele);
+        return () => log('cleanup', props.as, ele);
+      });
+      return <props.as ref={ref} />;
+    };
 
-  let wrapper: ReactWrapper;
+    // Mount the test component
+    // This should set ref.current to the <div />, and call the callback
+    const wrapper = mount(<TestComponent as="div" />);
+    const divEle = ref!.current;
 
-  it('sets ref.current and calls callback, when the component is mounted', () => {
-    wrapper = mount(<TestComponent as="div" />);
-
-    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+    expect(ref!.current).toBeInstanceOf(HTMLDivElement);
     expect(log).toHaveBeenCalledTimes(1);
-    expect(log).toHaveBeenCalledWith('callback', 'div', ref.current);
-  });
-
-  it('updates ref.current and calls cleanup and callback, when the ref changes', () => {
-    const prevRef = ref.current;
+    expect(log).toHaveBeenCalledWith('callback', 'div', divEle);
+    log.mockClear();
 
     // Re-render as a <span /> to cause the ref to change
+    // This should update ref.current, call cleanup for the old <div />, and callback for the new <span />
     wrapper.setProps({ as: 'span' });
+    const spanEle = ref!.current;
 
-    expect(ref.current).not.toBe(prevRef);
-    expect(ref.current).toBeInstanceOf(HTMLSpanElement);
+    expect(ref!.current).not.toBe(divEle);
+    expect(ref!.current).toBeInstanceOf(HTMLSpanElement);
     expect(log).toHaveBeenCalledTimes(2);
-    expect(log).toHaveBeenNthCalledWith(1, 'cleanup', 'div', prevRef);
-    expect(log).toHaveBeenNthCalledWith(2, 'callback', 'span', ref.current);
-  });
-
-  it('does not call callback on render, if the ref has not changed', () => {
-    const prevRef = ref.current;
+    expect(log).toHaveBeenNthCalledWith(1, 'cleanup', 'div', divEle);
+    expect(log).toHaveBeenNthCalledWith(2, 'callback', 'span', spanEle);
+    log.mockClear();
 
     // Re-render without changing the type
+    // This should not cause the ref to change, nor the callback to be called
     wrapper.setProps({});
 
-    expect(ref.current).toBe(prevRef);
+    expect(ref!.current).toBe(spanEle);
     expect(log).not.toHaveBeenCalled();
-  });
+    log.mockClear();
 
-  it('clears ref.current and calls cleanup when the component is unmounted', () => {
-    const prevRef = ref.current;
-
+    // Unmount the element
+    // This should set the ref to null, and call cleanup for the old <span />
     wrapper.unmount();
 
-    expect(ref.current).toBeNull();
+    expect(ref!.current).toBeNull();
     expect(log).toHaveBeenCalledTimes(1);
-    expect(log).toHaveBeenCalledWith('cleanup', 'span', prevRef);
+    expect(log).toHaveBeenCalledWith('cleanup', 'span', spanEle);
   });
 });
