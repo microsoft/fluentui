@@ -95,11 +95,22 @@ describe('getDayGrid', () => {
     expect(countDays(result, day => compareDates(today, day.originalDate) && day.isToday)).toBe(1);
   });
 
-  it('returns grid with proper amount of work week days', () => {
+  it('returns grid with proper amount of work week days when over multiple work weeks', () => {
     const result = DateGrid.getDayGrid({
       ...defaultOptions,
       workWeekDays: [DayOfWeek.Saturday, DayOfWeek.Sunday, DayOfWeek.Monday],
       dateRangeType: DateRangeType.WorkWeek,
+      firstDayOfWeek: DayOfWeek.Monday,
+    });
+    expect(countDays(result, day => day.isSelected)).toBe(7);
+  });
+
+  it('returns grid with proper amount of work week days when over single work weeks', () => {
+    const result = DateGrid.getDayGrid({
+      ...defaultOptions,
+      workWeekDays: [DayOfWeek.Saturday, DayOfWeek.Sunday, DayOfWeek.Monday],
+      dateRangeType: DateRangeType.WorkWeek,
+      firstDayOfWeek: DayOfWeek.Tuesday,
     });
     expect(countDays(result, day => day.isSelected)).toBe(3);
   });

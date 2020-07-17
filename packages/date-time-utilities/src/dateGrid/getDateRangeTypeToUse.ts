@@ -10,9 +10,10 @@ import { isContiguous } from './isContiguous';
 export const getDateRangeTypeToUse = (
   dateRangeType: DateRangeType,
   workWeekDays: DayOfWeek[] | undefined,
+  firstDayOfWeek: DayOfWeek,
 ): DateRangeType => {
   if (workWeekDays && dateRangeType === DateRangeType.WorkWeek) {
-    if (!isContiguous(workWeekDays) || workWeekDays.length === 0) {
+    if (!isContiguous(workWeekDays, true, firstDayOfWeek) || workWeekDays.length === 0) {
       return DateRangeType.Week;
     }
   }
