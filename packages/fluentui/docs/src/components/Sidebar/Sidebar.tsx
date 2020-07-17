@@ -287,7 +287,6 @@ class Sidebar extends React.Component<SidebarProps & RouteComponentProps, Sideba
       title: 'Prototypes',
       items: prototypes,
     };
-
     return currentSections.concat(prototypeTreeSection);
   }
 
