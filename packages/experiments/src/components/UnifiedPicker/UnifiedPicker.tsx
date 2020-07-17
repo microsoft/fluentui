@@ -230,30 +230,34 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
               {headerComponent}
               {_renderSelectedItemsList()}
               {_canAddItems() && (
-                <Autofill
-                  {...(inputProps as IInputProps)}
-                  className={css('ms-BasePicker-input', classNames.pickerInput)}
-                  ref={input}
-                  /* eslint-disable react/jsx-no-bind */
-                  onFocus={_onInputFocus}
-                  onClick={_onInputClick}
-                  onInputValueChange={_onInputChange}
-                  /* eslint-enable react/jsx-no-bind */
-                  aria-activedescendant={
-                    isSuggestionsShown && focusItemIndex >= 0
-                      ? 'FloatingSuggestionsItemId-' + focusItemIndex
-                      : undefined
-                  }
+                <div
                   aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
                   aria-expanded={isSuggestionsShown}
-                  aria-haspopup="true"
+                  aria-haspopup="listbox"
                   role="combobox"
-                  disabled={false}
-                  /* eslint-disable react/jsx-no-bind */
-                  onPaste={_onPaste}
-                  onKeyDown={_onInputKeyDown}
-                  /* eslint-enable react/jsx-no-bind */
-                />
+                >
+                  <Autofill
+                    {...(inputProps as IInputProps)}
+                    className={css('ms-BasePicker-input', classNames.pickerInput)}
+                    ref={input}
+                    /* eslint-disable react/jsx-no-bind */
+                    onFocus={_onInputFocus}
+                    onClick={_onInputClick}
+                    onInputValueChange={_onInputChange}
+                    /* eslint-enable react/jsx-no-bind */
+                    aria-autocomplete="list"
+                    aria-activedescendant={
+                      isSuggestionsShown && focusItemIndex >= 0
+                        ? 'FloatingSuggestionsItemId-' + focusItemIndex
+                        : undefined
+                    }
+                    disabled={false}
+                    /* eslint-disable react/jsx-no-bind */
+                    onPaste={_onPaste}
+                    onKeyDown={_onInputKeyDown}
+                    /* eslint-enable react/jsx-no-bind */
+                  />
+                </div>
               )}
             </div>
           </SelectionZone>

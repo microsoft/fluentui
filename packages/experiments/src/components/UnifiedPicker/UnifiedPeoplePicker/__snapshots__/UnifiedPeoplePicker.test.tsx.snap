@@ -58,46 +58,49 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
                 border-color: #c7e0f4;
               }
         >
-          <input
-            aria-autocomplete="both"
+          <div
             aria-expanded={false}
-            aria-haspopup="true"
-            autoCapitalize="off"
-            autoComplete="off"
-            className=
-                ms-BasePicker-input
-                ms-UnifiedPicker-input
-                {
-                  border: none;
-                  flex-grow: 1;
-                  height: 34px;
-                  margin-bottom: 1px;
-                  margin-left: 1px;
-                  margin-right: 1px;
-                  margin-top: 1px;
-                  outline: none;
-                  padding-bottom: 0px;
-                  padding-left: 6px;
-                  padding-right: 6px;
-                  padding-top: 0;
-                }
-                &::-ms-clear {
-                  display: none;
-                }
-            data-lpignore={true}
-            disabled={false}
-            onChange={[Function]}
-            onClick={[Function]}
-            onCompositionEnd={[Function]}
-            onCompositionStart={[Function]}
-            onCompositionUpdate={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            onPaste={[Function]}
+            aria-haspopup="listbox"
             role="combobox"
-            value=""
-          />
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="off"
+              autoComplete="off"
+              className=
+                  ms-BasePicker-input
+                  ms-UnifiedPicker-input
+                  {
+                    border: none;
+                    flex-grow: 1;
+                    height: 34px;
+                    margin-bottom: 1px;
+                    margin-left: 1px;
+                    margin-right: 1px;
+                    margin-top: 1px;
+                    outline: none;
+                    padding-bottom: 0px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 0;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+              data-lpignore={true}
+              disabled={false}
+              onChange={[Function]}
+              onClick={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              onPaste={[Function]}
+              value=""
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -775,46 +778,49 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
               </button>
             </div>
           </div>
-          <input
-            aria-autocomplete="both"
+          <div
             aria-expanded={false}
-            aria-haspopup="true"
-            autoCapitalize="off"
-            autoComplete="off"
-            className=
-                ms-BasePicker-input
-                ms-UnifiedPicker-input
-                {
-                  border: none;
-                  flex-grow: 1;
-                  height: 34px;
-                  margin-bottom: 1px;
-                  margin-left: 1px;
-                  margin-right: 1px;
-                  margin-top: 1px;
-                  outline: none;
-                  padding-bottom: 0px;
-                  padding-left: 6px;
-                  padding-right: 6px;
-                  padding-top: 0;
-                }
-                &::-ms-clear {
-                  display: none;
-                }
-            data-lpignore={true}
-            disabled={false}
-            onChange={[Function]}
-            onClick={[Function]}
-            onCompositionEnd={[Function]}
-            onCompositionStart={[Function]}
-            onCompositionUpdate={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            onPaste={[Function]}
+            aria-haspopup="listbox"
             role="combobox"
-            value=""
-          />
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="off"
+              autoComplete="off"
+              className=
+                  ms-BasePicker-input
+                  ms-UnifiedPicker-input
+                  {
+                    border: none;
+                    flex-grow: 1;
+                    height: 34px;
+                    margin-bottom: 1px;
+                    margin-left: 1px;
+                    margin-right: 1px;
+                    margin-top: 1px;
+                    outline: none;
+                    padding-bottom: 0px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 0;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+              data-lpignore={true}
+              disabled={false}
+              onChange={[Function]}
+              onClick={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              onPaste={[Function]}
+              value=""
+            />
+          </div>
         </div>
       </div>
     </div>
