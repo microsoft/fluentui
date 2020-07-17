@@ -287,6 +287,7 @@ class Sidebar extends React.Component<SidebarProps & RouteComponentProps, Sideba
       title: 'Prototypes',
       items: prototypes,
     };
+
     return currentSections.concat(prototypeTreeSection);
   }
 
@@ -613,6 +614,11 @@ class Sidebar extends React.Component<SidebarProps & RouteComponentProps, Sideba
           activeIndex={this.state.activeCategoryIndex}
           onActiveIndexChange={this.treeActiveIndexChanged}
         />
+        <Flex column>
+          <NavLink to="/perf-tests" exact style={topItemTheme}>
+            <Box>Performance Tests</Box>
+          </NavLink>
+        </Flex>
       </Segment>
     );
   }
