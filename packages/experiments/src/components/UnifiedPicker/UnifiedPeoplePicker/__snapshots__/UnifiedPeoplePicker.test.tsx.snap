@@ -57,14 +57,11 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
               &:hover {
                 border-color: #c7e0f4;
               }
-          role="list"
         >
           <input
-            aria-activedescendant=""
             aria-autocomplete="both"
-            aria-expanded={true}
+            aria-expanded={false}
             aria-haspopup="true"
-            aria-owns="suggestion-list"
             autoCapitalize="off"
             autoComplete="off"
             className=
@@ -172,7 +169,6 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
               &:hover {
                 border-color: #c7e0f4;
               }
-          role="list"
         >
           <div
             aria-labelledby="selectedItemPersona-id__3"
@@ -780,11 +776,9 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             </div>
           </div>
           <input
-            aria-activedescendant=""
             aria-autocomplete="both"
-            aria-expanded={true}
+            aria-expanded={false}
             aria-haspopup="true"
-            aria-owns="suggestion-list"
             autoCapitalize="off"
             autoComplete="off"
             className=
