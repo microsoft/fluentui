@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "When legend is hovered, center of donut chart updates to the value cooresponding to the legend.",
+  "packageName": "@uifabric/charting",
+  "email": "57419611+hki-237@users.noreply.github.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-15T00:46:29.551Z"
+}
