@@ -126,7 +126,7 @@
   }
 
   /* Hide the YouTube TOC link being shown incorrectly by the shared footer. */
-  [itemtype="http://schema.org/Organization"] a.c-hyperlink {
+  a[href="https://www.youtube.com/t/terms"] {
     display: none !important;
   }
 }
