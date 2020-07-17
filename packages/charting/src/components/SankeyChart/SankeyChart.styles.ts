@@ -20,9 +20,12 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     },
     nodes: {
       selectors: {
-        text: {
-          fill: theme.semanticColors.bodyText,
-        },
+        text: [
+          theme.fonts.small,
+          {
+            fill: theme.semanticColors.bodyText,
+          },
+        ],
       },
     },
   };
