@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRefEffect } from '@uifabric/react-hooks';
+import { useRefEffect, RefCallback } from '@uifabric/react-hooks';
 import { getWindow } from '../../Utilities';
 import { observeResize } from './observeResize';
 
@@ -29,8 +29,8 @@ export type OverflowParams = {
 
 /** Return value for {@see useOverflow} */
 export type OverflowRefs = {
-  /** Set the overflow menu button's ref to this ref setter callback */
-  setMenuButtonRef: (ele: HTMLElement | null) => void;
+  /** Set the overflow menu button's ref to this ref callback */
+  menuButtonRef: RefCallback<HTMLElement>;
 };
 
 /**
@@ -172,5 +172,5 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
     };
   });
 
-  return { setMenuButtonRef: menuButtonRef };
+  return { menuButtonRef };
 };
