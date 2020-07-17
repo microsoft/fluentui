@@ -55,7 +55,7 @@ const configureStackTokens: IStackTokens = { childrenGap: 20 };
 const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
 
-const createNumberRange = (start: number, end: number): number[] => {
+const range = (start: number, end: number): number[] => {
   const result = [];
   for (let i = start; i <= end; i++) {
     result.push(i);
@@ -131,7 +131,7 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
       styles={stackStyles}
       tokens={exampleStackTokens}
     >
-      {createNumberRange(1, numItems).map((value: number, index: number) => {
+      {range(1, numItems).map((value: number, index: number) => {
         if (emptyChildren.indexOf(value.toString()) !== -1) {
           return hideEmptyChildren ? (
             <Stack.Item key={index} styles={stackItemStyles} />

@@ -27,6 +27,7 @@ export interface IExampleOptions {
 
 const checkboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 
+// Alignment options
 const verticalAlignmentOptions: IDropdownOption[] = [
   { key: 'start', text: 'Top' },
   { key: 'center', text: 'Center' },
@@ -40,6 +41,18 @@ const horizontalAlignmentOptions: IDropdownOption[] = [
   { key: 'center', text: 'Center' },
   { key: 'end', text: 'Right' },
 ];
+
+// Non-mutating tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const configureStackTokens: IStackTokens = { childrenGap: 20 };
+
+const range = (start: number, end: number): number[] => {
+  const result = [];
+  for (let i = start; i <= end; i++) {
+    result.push(i);
+  }
+  return result;
+};
 
 const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const {
@@ -121,18 +134,6 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
     </Stack>
   );
 };
-
-function range(start: number, end: number): number[] {
-  const result = [];
-  for (let i = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
-}
-
-// Non-mutating tokens definition
-const sectionStackTokens: IStackTokens = { childrenGap: 10 };
-const configureStackTokens: IStackTokens = { childrenGap: 20 };
 
 export const VerticalStackConfigureExample: React.FunctionComponent = () => {
   const [numItems, setNumItems] = React.useState<number>(5);
