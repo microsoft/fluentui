@@ -38,7 +38,7 @@ steps:
     displayName: Upload docs site
     inputs:
       SourcePath: 'packages/fluentui/docs/dist'
-      azureSubscription: 'Azure: UI Fabric'
+      azureSubscription: 'UI Fabric (private)'
       storage: fluentsite
       ContainerName: '$web'
       BlobPrefix: ''

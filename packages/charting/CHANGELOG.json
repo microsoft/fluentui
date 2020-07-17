@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 17 Jul 2020 12:38:41 GMT",
+      "tag": "@uifabric/charting_v2.7.0",
+      "version": "2.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "When legend is hovered, center of donut chart updates to the value cooresponding to the legend.",
+            "author": "57419611+hki-237@users.noreply.github.com",
+            "commit": "bd32dc4495932971f783b6451a723c25d4dfb2b7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jul 2020 21:33:40 GMT",
       "tag": "@uifabric/charting_v2.6.0",
       "version": "2.6.0",
