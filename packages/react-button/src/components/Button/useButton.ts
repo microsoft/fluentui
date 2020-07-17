@@ -1,4 +1,4 @@
-import { useImperativeHandle, useRef } from 'react';
+import * as React from 'react';
 import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
 import { useFocusRects } from '@uifabric/utilities';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
@@ -13,12 +13,12 @@ export const useButton = (
   ref: React.Ref<HTMLElement>,
   options: ComposePreparedOptions,
 ): ButtonState => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const buttonRef = React.useRef<HTMLButtonElement | null>(null);
 
-  useImperativeHandle(props.componentRef, () => ({
+  React.useImperativeHandle(props.componentRef, () => ({
     focus: () => buttonRef.current?.focus(),
   }));
-  useFocusRects(ref as React.RefObject<HTMLElement>);
+  useFocusRects(buttonRef);
 
   return {
     ...props,

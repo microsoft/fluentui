@@ -16,6 +16,9 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   controlOutlineDisabled: string;
   controlOutlineHovered: string;
   controlAccent: string;
+  datePickerDisabledBorder: string;
+  listItemBackgroundCheckedHovered: string;
+  listItemBackgroundSelectedHovered: string;
   statusErrorBackground: string;
   statusErrorText: string;
   statusErrorIcon: string;
