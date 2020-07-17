@@ -2,6 +2,29 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.61",
+      "version": "8.0.0-alpha.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "SpinButton: Updating to a function component within react-next.",
+            "author": "czearing@outlook.com",
+            "commit": "c369780b48c8f1479d91a35f5dbea69ea84dd830",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
+            "author": "esteban.230@hotmail.com",
+            "commit": "1e9b0f1b3e1e79a56187a94d55127913d4370958",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.60",
       "version": "8.0.0-alpha.60",

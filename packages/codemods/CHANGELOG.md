@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Wed, 15 Jul 2020 12:41:19 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.3.1)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.3.0..@fluentui/codemods_v0.3.1)
+
+### Patches
+
+- fix maybe to correctly wrap return value from then ([PR #14045](https://github.com/microsoft/fluentui/pull/14045) by joschect@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.3.0)
 

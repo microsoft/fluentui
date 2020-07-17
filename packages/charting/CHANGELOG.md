@@ -1,8 +1,22 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 15 Jul 2020 12:41:19 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.6.0)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.2..@uifabric/charting_v2.6.0)
+
+### Minor changes
+
+- Charting:Add New Sankey chart to charting package ([PR #13982](https://github.com/microsoft/fluentui/pull/13982) by v-gorraj@microsoft.com)
+
+### Patches
+
+- lineChart & verticalCharts - y axis lines high contrast styles updated ([PR #14037](https://github.com/microsoft/fluentui/pull/14037) by v-jasha@microsoft.com)
+- wrapping chartHoverCard in styled component and deleting static Theme ([PR #14038](https://github.com/microsoft/fluentui/pull/14038) by v-sivsar@microsoft.com)
 
 ## [2.5.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.2)
 

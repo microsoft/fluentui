@@ -50,10 +50,10 @@
     "@fluentui/react-icons": "^0.1.37",
     "@fluentui/react-theme-provider": "^0.3.8",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/react-hooks": "^7.5.1",
+    "@uifabric/react-hooks": "^7.5.3",
     "@uifabric/set-version": "^7.0.17",
     "@uifabric/utilities": "^7.24.2",
-    "office-ui-fabric-react": "^7.123.0",
+    "office-ui-fabric-react": "^7.123.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

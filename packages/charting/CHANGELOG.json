@@ -2,6 +2,35 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@uifabric/charting_v2.6.0",
+      "version": "2.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Charting:Add New Sankey chart to charting package",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "a92d7dc1636d67b1bfe4de640d7d59566d05b4b4",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "lineChart & verticalCharts - y axis lines high contrast styles updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4fc60e6201e26e6b1d318628de1559b20be8f00e",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "wrapping chartHoverCard in styled component and deleting static Theme",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "2d5932ce602ab7c38bf8a6aead53cbd42e296c55",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@uifabric/charting_v2.5.2",
       "version": "2.5.2",
