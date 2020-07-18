@@ -105,9 +105,7 @@ export function styled<
 
         return () => Customizations.unobserve(forceUpdate);
       }
-      // TODO: check with @MLoughry about whether to add dep on
-      // context.customizations.inCustomizerContext
-    }, [forceUpdate]);
+    }, []);
 
     const settings = Customizations.getSettings(fields, scope, context.customizations);
     const { styles: customizedStyles, dir, ...rest } = settings;
