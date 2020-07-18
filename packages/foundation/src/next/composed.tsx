@@ -152,7 +152,14 @@ export function composed<
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
 
-  const result: IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = (
+  const ResultComponent: IFoundationComponent<
+    TComponentProps,
+    TTokens,
+    TStyleSet,
+    TViewProps,
+    TComponentSlots,
+    TStatics
+  > = (
     componentProps: TViewProps &
       IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode },
   ) => {
@@ -168,6 +175,7 @@ export function composed<
       // Don't assume state will return all props, so spread useState result over component props.
       componentProps = {
         ...componentProps,
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         ...useState(componentProps),
       };
     }
@@ -263,21 +271,28 @@ export function composed<
     return view ? view(viewProps, Slots) : null;
   };
 
-  result.displayName = options.displayName || (view && view.name);
+  ResultComponent.displayName = options.displayName || (view && view.name);
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
   //       Need to weigh creating default factories on component creation vs. memoizing them on use in slots.tsx.
   if (defaultProp) {
-    (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
+    (ResultComponent as ISlotCreator<TComponentProps, any>).create = createFactory(ResultComponent, { defaultProp });
   }
 
-  result.__options = options;
+  ResultComponent.__options = options;
 
-  assign(result, options.statics);
+  assign(ResultComponent, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> &
+  return ResultComponent as IFoundationComponent<
+    TComponentProps,
+    TTokens,
+    TStyleSet,
+    TViewProps,
+    TComponentSlots,
+    TStatics
+  > &
     TStatics;
 }
 
