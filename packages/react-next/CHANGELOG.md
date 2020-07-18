@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
+This log was last generated on Sat, 18 Jul 2020 00:04:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.63)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.61..@fluentui/react-next_v8.0.0-alpha.63)
+
+### Changes
+
+- Copying Modal to react-next, in preparation for converting to function component. ([PR #13234](https://github.com/microsoft/fluentui/pull/13234) by czearing@outlook.com)
 
 ## [8.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.61)
 

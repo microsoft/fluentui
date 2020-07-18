@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Resolving a typo for useSetTimeout within react-hooks's README.md.",
-  "packageName": "@uifabric/react-hooks",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-17T00:36:42.480Z"
-}
