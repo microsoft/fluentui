@@ -11,10 +11,13 @@ describe('useSetTimeout', () => {
     const { setTimeout, clearTimeout } = useSetTimeout();
     const { current: state } = React.useRef<{ id: number }>({ id: 0 });
 
-    // This should not have a dependency array because `clearInterval` will always be the same
-    React.useImperativeHandle(ref, () => ({
-      clearTimeout: () => clearTimeout(state.id),
-    }));
+    React.useImperativeHandle(
+      ref,
+      () => ({
+        clearTimeout: () => clearTimeout(state.id),
+      }),
+      [clearTimeout, state],
+    );
 
     state.id = setTimeout(() => {
       timesCalled++;
