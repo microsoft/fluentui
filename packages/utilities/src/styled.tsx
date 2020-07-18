@@ -105,9 +105,8 @@ export function styled<
 
         return () => Customizations.unobserve(forceUpdate);
       }
-      // TODO: check with @MLoughry about whether to add dep on
-      // context.customizations.inCustomizerContext
-    }, [forceUpdate]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
+    }, []);
 
     const settings = Customizations.getSettings(fields, scope, context.customizations);
     const { styles: customizedStyles, dir, ...rest } = settings;
