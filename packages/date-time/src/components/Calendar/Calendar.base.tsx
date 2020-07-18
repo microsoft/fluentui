@@ -142,13 +142,14 @@ function useFocusLogic({ componentRef }: ICalendarProps, isDayPickerVisible: boo
   const monthPicker = React.useRef<ICalendarMonth>(null);
   const focusOnUpdate = React.useRef(false);
 
-  const focus = () => {
+  // TODO: verify fix with @MLoughry
+  const focus = React.useCallback(() => {
     if (isDayPickerVisible && dayPicker.current) {
       focusAsync(dayPicker.current);
     } else if (isMonthPickerVisible && monthPicker.current) {
       focusAsync(monthPicker.current);
     }
-  };
+  }, [isDayPickerVisible, isMonthPickerVisible]);
 
   React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
 

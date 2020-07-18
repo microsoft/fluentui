@@ -12,7 +12,7 @@ import {
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
-import { usePrevious, useId } from '@uifabric/react-hooks';
+import { usePrevious, useId, useConstCallback } from '@uifabric/react-hooks';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
 
@@ -30,13 +30,13 @@ export interface IDayInfo extends IDay {
 function useDayRefs() {
   const daysRef = React.useRef<Record<string, HTMLElement>>({});
 
-  const getSetRefCallback = (dayKey: string) => (element: HTMLElement | null) => {
+  const getSetRefCallback = useConstCallback((dayKey: string) => (element: HTMLElement | null) => {
     if (element === null) {
       delete daysRef.current[dayKey];
     } else {
       daysRef.current[dayKey] = element;
     }
-  };
+  });
 
   return [daysRef, getSetRefCallback] as const;
 }
@@ -77,7 +77,11 @@ function useWeeks(
     }
 
     return returnValue;
-  }, [props]);
+    // TODO: check with @MLoughry -- this was missing deps on getSetRefCallback and onSelectDate.
+    // It was easy to prevent getSetRefCallback from changing every render, but onSelectDate is
+    // harder (and likely props will change a lot too). Should we ignore the violation, add a dep
+    // on onSelectDate, or fix it "properly"?
+  }, [props, getSetRefCallback]);
 
   return weeks;
 }
