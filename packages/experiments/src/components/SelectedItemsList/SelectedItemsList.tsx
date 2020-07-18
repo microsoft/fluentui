@@ -1,28 +1,34 @@
 import * as React from 'react';
 
 import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
+
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
+  // TODO: verify fixes with @nebhatna
+  const { onItemsRemoved } = props;
+  const [items, setItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
   const renderedItems = React.useMemo(() => items, [items]);
 
   React.useEffect(() => {
-    updateItems(props.selectedItems || []);
+    setItems(props.selectedItems || []);
   }, [props.selectedItems]);
 
-  const removeItems = (itemsToRemove: TItem[]): void => {
-    // Intentionally not using .filter here as we want to only remove a specific
-    // item in case of duplicates of same item.
-    const updatedItems: TItem[] = [...items];
-    itemsToRemove.forEach(item => {
-      const index: number = updatedItems.indexOf(item);
-      updatedItems.splice(index, 1);
-    });
-    updateItems(updatedItems);
-    props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
-  };
+  const removeItems = React.useCallback(
+    (itemsToRemove: TItem[]): void => {
+      // Intentionally not using .filter here as we want to only remove a specific
+      // item in case of duplicates of same item.
+      const updatedItems: TItem[] = [...items];
+      itemsToRemove.forEach(item => {
+        const index: number = updatedItems.indexOf(item);
+        updatedItems.splice(index, 1);
+      });
+      setItems(updatedItems);
+      onItemsRemoved?.(itemsToRemove);
+    },
+    [items, onItemsRemoved],
+  );
 
   const replaceItem = React.useCallback(
     (newItem: TItem | TItem[], index: number): void => {
@@ -31,10 +37,10 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       if (index >= 0) {
         const newItems: TItem[] = [...items];
         newItems.splice(index, 1, ...newItemsArray);
-        updateItems(newItems);
+        setItems(newItems);
       }
     },
-    [updateItems, items],
+    [items],
   );
 
   const onRemoveItemCallbacks = React.useMemo(
@@ -42,7 +48,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       // create callbacks ahead of time with memo.
       // (hooks have to be called in the same order)
       items.map((item: TItem) => () => removeItems([item])),
-    [items],
+    [items, removeItems],
   );
 
   const SelectedItem = props.onRenderItem;

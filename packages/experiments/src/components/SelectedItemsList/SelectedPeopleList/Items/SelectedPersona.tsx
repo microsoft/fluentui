@@ -75,7 +75,8 @@ const SelectedPersonaInner = React.memo(
           isValid: isValid ? isValid(item) : true,
           theme: theme!,
         }),
-      [selected, isValid, theme],
+      // TODO: verify fix with @nebhatna
+      [styles, selected, isValid, item, theme],
     );
 
     const coinProps = {};

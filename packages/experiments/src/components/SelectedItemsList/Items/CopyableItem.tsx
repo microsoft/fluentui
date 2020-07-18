@@ -36,6 +36,11 @@ export const CopyableItem = <T extends any>(
           document.body.removeChild(copyInput);
         }
       },
+      // TODO: check with @nebhatna about what to do here
+      //   "React Hook React.useCallback has an unnecessary dependency: 'copyableItemProps.getCopyItemText'.
+      //   Either exclude it or remove the dependency array. Outer scope values like
+      //   'copyableItemProps.getCopyItemText' aren't valid dependencies because mutating them
+      //   doesn't re-render the component."
       [copyableItemProps.getCopyItemText],
     );
 
