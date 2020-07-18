@@ -15,12 +15,15 @@ export interface IKeytipData {
  */
 export function useKeytipData(options: KeytipDataOptions): IKeytipData {
   const uniqueId = React.useRef<string>();
-  const keytipProps: IKeytipProps | undefined = options.keytipProps
-    ? {
-        disabled: options.disabled,
-        ...options.keytipProps,
-      }
-    : undefined;
+  // TODO: verify with @xugao whether this should ever change
+  const keytipProps: IKeytipProps | undefined = useConst(
+    options.keytipProps
+      ? {
+          disabled: options.disabled,
+          ...options.keytipProps,
+        }
+      : undefined,
+  );
 
   const keytipManager = useConst<KeytipManager>(KeytipManager.getInstance());
 
@@ -34,7 +37,7 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
       // Unregister Keytip in KeytipManager
       keytipProps && keytipManager.unregister(keytipProps, uniqueId.current!);
     };
-  }, []);
+  }, [keytipManager, keytipProps]);
 
   const prevOptions = usePrevious(options);
 
