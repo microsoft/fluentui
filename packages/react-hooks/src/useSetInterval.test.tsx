@@ -11,13 +11,10 @@ describe('useSetInterval', () => {
     const { setInterval, clearInterval } = useSetInterval();
     const { current: state } = React.useRef<{ id: number }>({ id: 0 });
 
-    React.useImperativeHandle(
-      ref,
-      () => ({
-        clearInterval: () => clearInterval(state.id),
-      }),
-      [clearInterval],
-    );
+    // This should not have a dependency array because `clearInterval` will always be the same
+    React.useImperativeHandle(ref, () => ({
+      clearInterval: () => clearInterval(state.id),
+    }));
 
     state.id = setInterval(() => {
       timesCalled++;
