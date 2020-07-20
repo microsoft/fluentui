@@ -29,6 +29,10 @@ import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import { Popup } from '../Popup/Popup';
 import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
+import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
+import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
+import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
+import { DatepickerCalendarCell } from './DatepickerCalendarCell';
 
 // TODO: extract to date-time-utilities
 export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
@@ -146,6 +150,10 @@ export const datepickerClassName = 'ui-datepicker';
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {
     Calendar: typeof DatepickerCalendar;
+    CalendarHeader: typeof DatepickerCalendarHeader;
+    CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
+    CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
+    CalendarCell: typeof DatepickerCalendarCell;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
@@ -268,3 +276,7 @@ Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
 Datepicker.create = createShorthandFactory({ Component: Datepicker });
 
 Datepicker.Calendar = DatepickerCalendar;
+Datepicker.CalendarHeader = DatepickerCalendarHeader;
+Datepicker.CalendarHeaderAction = DatepickerCalendarHeaderAction;
+Datepicker.CalendarHeaderCell = DatepickerCalendarHeaderCell;
+Datepicker.CalendarCell = DatepickerCalendarCell;

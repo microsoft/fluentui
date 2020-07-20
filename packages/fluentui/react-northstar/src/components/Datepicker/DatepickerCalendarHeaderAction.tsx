@@ -11,7 +11,12 @@ export type DatepickerCalendarHeaderActionProps = {
 
 export type DatepickerCalendarHeaderActionStylesProps = ButtonStylesProps;
 
-export const datepickerCalendarHeaderClassName = 'ui-datepicker__calendar-header-action';
+export const datepickerCalendarHeaderActionClassName = 'ui-datepicker__calendarheaderaction';
+
+/**
+ * A DatepickerCalendarHeaderAction is used to display action button for DatepickerCalendarHeader.
+ * This component is currently UNSTABLE!
+ */
 export const DatepickerCalendarHeaderAction = compose<
   'button',
   DatepickerCalendarHeaderActionProps,
@@ -19,7 +24,7 @@ export const DatepickerCalendarHeaderAction = compose<
   ButtonProps,
   {}
 >(Button, {
-  className: datepickerCalendarHeaderClassName,
+  className: datepickerCalendarHeaderActionClassName,
   displayName: 'DatepickerCalendarHeaderAction',
   handledProps: ['direction'],
   mapPropsToStylesProps: () => ({

@@ -49,10 +49,10 @@ export interface DatepickerCalendarHeaderProps extends UIComponentProps, Content
 
 export type DatepickerCalendarHeaderStylesProps = never;
 
-export const datepickerCalendarHeaderClassName = 'ui-datepicker__calendar-controls';
+export const datepickerCalendarHeaderClassName = 'ui-datepicker__calendarheader';
 
 /**
- * A Datepicker is used to display dates.
+ * A DatepickerCalendarHeader is used to display header block above calendar grid.
  * This component is currently UNSTABLE!
  */
 export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendarHeaderProps> &

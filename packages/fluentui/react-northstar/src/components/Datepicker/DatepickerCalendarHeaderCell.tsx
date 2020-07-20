@@ -6,7 +6,11 @@ export type DatepickerCalendarHeaderCellProps = {};
 
 export type DatepickerCalendarHeaderCellStylesProps = {};
 
-export const datepickerCalendarHeaderCellClassName = 'ui-datepicker__calendar-headercell';
+export const datepickerCalendarHeaderCellClassName = 'ui-datepicker__calendarheadercell';
+/**
+ * A DatepickerCalendarHeaderCell is used to display header cells in DatepickerCalendar grid.
+ * This component is currently UNSTABLE!
+ */
 export const DatepickerCalendarHeaderCell = compose<
   'span',
   DatepickerCalendarHeaderCellProps,
