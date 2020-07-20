@@ -26,7 +26,7 @@ export const EditableItem = <T extends any>(editableItemProps: EditableItemProps
     const onItemEdited = React.useCallback(
       (_oldItem: T, newItem: T) => {
         onItemChange && onItemChange(newItem, index);
-        setEditingFalse;
+        setEditingFalse();
       },
       [onItemChange, index, setEditingFalse],
     );
