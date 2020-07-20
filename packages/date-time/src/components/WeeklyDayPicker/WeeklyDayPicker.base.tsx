@@ -261,7 +261,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
         aria-disabled={!prevWeekInBounds}
         onClick={prevWeekInBounds ? this._onSelectPrevDateRange : undefined}
         onKeyDown={prevWeekInBounds ? this._onButtonKeyDown(this._onSelectPrevDateRange) : undefined}
-        title={this.createPreviousWeekAriaLabel()}
+        title={this._createPreviousWeekAriaLabel()}
         type="button"
       >
         <Icon iconName={leftNavigationIcon} />
@@ -288,7 +288,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
         aria-disabled={!nextWeekInBounds}
         onClick={nextWeekInBounds ? this._onSelectNextDateRange : undefined}
         onKeyDown={nextWeekInBounds ? this._onButtonKeyDown(this._onSelectNextDateRange) : undefined}
-        title={this.createNextWeekAriaLabel()}
+        title={this._createNextWeekAriaLabel()}
         type="button"
       >
         <Icon iconName={rightNavigationIcon} />
@@ -368,7 +368,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     }
   };
 
-  private createPreviousWeekAriaLabel = () => {
+  private _createPreviousWeekAriaLabel = () => {
     const { strings, showFullMonth, firstDayOfWeek } = this.props;
     const { navigatedDate } = this.state;
 
@@ -384,7 +384,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     return ariaLabel;
   };
 
-  private createNextWeekAriaLabel = () => {
+  private _createNextWeekAriaLabel = () => {
     const { strings, showFullMonth, firstDayOfWeek } = this.props;
     const { navigatedDate } = this.state;
 
