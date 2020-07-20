@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Copy Picker code and fix lint issues",
+  "packageName": "@fluentui/react-next",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-20T21:05:57.756Z"
+}
