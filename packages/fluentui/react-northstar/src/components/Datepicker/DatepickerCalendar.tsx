@@ -242,9 +242,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const changeMonth = (nextMonth: boolean) => {
     const updatedGridNavigatedDate = addMonths(gridOptions.navigatedDate, nextMonth ? 1 : -1);
-    const newGridOptions = { ...gridOptions };
-    newGridOptions.navigatedDate = updatedGridNavigatedDate;
-    setGridOptions(newGridOptions);
+    setGridOptions({ ...gridOptions, navigatedDate:  updatedGridNavigatedDate });
   };
 
   const element = (
