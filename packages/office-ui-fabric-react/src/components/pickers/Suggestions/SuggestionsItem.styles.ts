@@ -1,5 +1,6 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
+import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 
 export const SuggestionsItemGlobalClassNames = {
   root: 'ms-Suggestions-item',
@@ -67,8 +68,17 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
       suggested && [
         classNames.isSuggested,
         {
-          background: semanticColors.menuItemBackgroundPressed,
           selectors: {
+            ':after': {
+              content: '""',
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              bottom: 0,
+              right: 0,
+              border: `1px solid ${theme.palette.neutralSecondary}`,
+              zIndex: 1,
+            },
             ':hover': {
               background: semanticColors.menuDivider,
             },
