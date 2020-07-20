@@ -10,7 +10,6 @@ import {
 import { UnifiedPicker } from '../UnifiedPicker';
 
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
-  // TODO: verify fixes with @nebhatna
   const renderSelectedItems = React.useCallback(
     (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
       return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
