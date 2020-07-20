@@ -270,7 +270,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
           >
-            <div className={classNames.root}>
+            <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (
                 <Overlay
                   isDarkThemed={isDarkOverlay}
