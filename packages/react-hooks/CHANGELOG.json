@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.4",
+      "version": "7.5.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Resolving a typo for useSetTimeout within react-hooks's README.md.",
+            "author": "czearing@outlook.com",
+            "commit": "d1212a3808f0ba186dab8d5f714d35958cdc759a",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jul 2020 21:33:40 GMT",
       "tag": "@uifabric/react-hooks_v7.5.3",
       "version": "7.5.3",
