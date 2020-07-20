@@ -1,6 +1,5 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
-import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 
 export const SuggestionsItemGlobalClassNames = {
   root: 'ms-Suggestions-item',

@@ -46,7 +46,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                background: #edebe9;
                 border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
@@ -120,6 +119,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+              }
+              &:after {
+                border: 1px solid #605e5c;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2073,7 +2082,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                background: #edebe9;
                 border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
@@ -2147,6 +2155,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+              }
+              &:after {
+                border: 1px solid #605e5c;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -5154,7 +5172,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                background: #edebe9;
                 border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
@@ -5228,6 +5245,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+              }
+              &:after {
+                border: 1px solid #605e5c;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
               }
           data-is-focusable={true}
           onClick={[Function]}

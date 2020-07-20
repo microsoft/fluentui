@@ -233,8 +233,6 @@ exports[`a11y test checks accessibility of Button (Button.Default.Example) 1`] =
 
 exports[`a11y test checks accessibility of Button (Button.Icon.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Button (Button.Primary.Example) 1`] = `Array []`;
-
 exports[`a11y test checks accessibility of Button (Button.ScreenReader.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Button (Button.Split.Example) 1`] = `
@@ -2197,8 +2195,6 @@ exports[`a11y test checks accessibility of Callout (Callout.Directional.Example)
 
 exports[`a11y test checks accessibility of Callout (Callout.FocusTrap.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Callout (Callout.Nested.Example) 1`] = `Array []`;
-
 exports[`a11y test checks accessibility of Checkbox (Checkbox.Basic.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Checkbox (Checkbox.Other.Example) 1`] = `Array []`;
@@ -2214,8 +2210,6 @@ exports[`a11y test checks accessibility of ChoiceGroup (ChoiceGroup.Image.Exampl
 exports[`a11y test checks accessibility of ChoiceGroup (ChoiceGroup.Label.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Coachmark (Coachmark.Basic.Example) 1`] = `Array []`;
-
-exports[`a11y test checks accessibility of Coachmark/PositioningContainer (PositioningContainer.Basic.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of ColorPicker (ColorPicker.Basic.Example) 1`] = `Array []`;
 
@@ -4706,8 +4700,6 @@ Array [
 
 exports[`a11y test checks accessibility of MessageBar (MessageBar.Basic.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of MessageBar (MessageBar.Styled.Example) 1`] = `Array []`;
-
 exports[`a11y test checks accessibility of Modal (Modal.Basic.Example) 1`] = `
 Array [
   Object {
@@ -5133,117 +5125,6 @@ Array [
 ]
 `;
 
-exports[`a11y test checks accessibility of Panel (Panel.Custom.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
-exports[`a11y test checks accessibility of Panel (Panel.CustomLeft.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
-exports[`a11y test checks accessibility of Panel (Panel.ExtraLarge.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
 exports[`a11y test checks accessibility of Panel (Panel.Footer.Example) 1`] = `
 Array [
   Object {
@@ -5320,120 +5201,9 @@ Array [
 
 exports[`a11y test checks accessibility of Panel (Panel.HiddenOnDismiss.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Panel (Panel.Large.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
-exports[`a11y test checks accessibility of Panel (Panel.LargeFixed.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
 exports[`a11y test checks accessibility of Panel (Panel.LightDismiss.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Panel (Panel.LightDismissCustom.Example) 1`] = `Array []`;
-
-exports[`a11y test checks accessibility of Panel (Panel.Medium.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
 
 exports[`a11y test checks accessibility of Panel (Panel.Navigation.Example) 1`] = `
 Array [
@@ -5474,191 +5244,6 @@ Array [
 
 exports[`a11y test checks accessibility of Panel (Panel.NonModal.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Panel (Panel.PreventDefault.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
-exports[`a11y test checks accessibility of Panel (Panel.Scroll.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
-exports[`a11y test checks accessibility of Panel (Panel.SmallFluid.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
-exports[`a11y test checks accessibility of Panel (Panel.SmallLeft.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
-exports[`a11y test checks accessibility of Panel (Panel.SmallRight.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--default root-0\\" aria-labelledby=\\"id__0\\" aria-describedby=\\"id__1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"id__1\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
 exports[`a11y test checks accessibility of Persona (Persona.Alternate.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Persona (Persona.Basic.Example) 1`] = `Array []`;
@@ -5676,8 +5261,6 @@ exports[`a11y test checks accessibility of Persona (Persona.Presence.Example) 1`
 exports[`a11y test checks accessibility of Persona (Persona.UnknownPersona.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Pivot (Pivot.Basic.Example) 1`] = `Array []`;
-
-exports[`a11y test checks accessibility of Pivot (Pivot.Fabric.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Pivot (Pivot.IconCount.Example) 1`] = `
 Array [
@@ -5767,53 +5350,6 @@ Array [
     },
     "ruleId": "aria-roles",
     "ruleIndex": 10,
-  },
-]
-`;
-
-exports[`a11y test checks accessibility of Pivot (Pivot.SeparateNoSelectedKey.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": ".ms-Button--icon",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" class=\\"ms-Button ms-Button--icon root-15\\" data-is-focusable=\\"true\\"><div class=\\"ms-Button-flexContainer flexContainer-16\\"><i data-icon-name=\\"Settings\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon icon-21\\" style=\\"color:blue\\"></i></div></button>",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Element is in tab order and does not have accessible text.
-
-Fix any of the following:
-- Element has a value attribute and the value attribute is empty.
-- Element has no value attribute or the value attribute is empty.
-- Element does not have inner text that is visible to screen readers.
-- aria-label attribute does not exist or is empty.
-- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
-- Element's default semantics were not overridden with role=\\"presentation\\".
-- Element's default semantics were not overridden with role=\\"none\\".
-- Element has no title attribute or the title attribute is empty.",
-      "text": "Fix all of the following: Element is in tab order and does not have accessible text. Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
-    },
-    "ruleId": "button-name",
-    "ruleIndex": 15,
   },
 ]
 `;
@@ -8994,43 +8530,6 @@ exports[`a11y test checks accessibility of TextField (TextField.Styled.Example) 
 
 exports[`a11y test checks accessibility of Toggle (Toggle.Basic.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Tooltip (Tooltip.Absolute.Position.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "#targetButton1",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" id=\\"targetButton1\\" aria-labelledby=\\"tooltipHost0\\" style=\\"position:absolute;top:50px;left:200px\\" class=\\"ms-Button ms-Button--default root-1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-labelledby=\\"tooltipHost0\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-labelledby=\\"tooltipHost0\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
 exports[`a11y test checks accessibility of Tooltip (Tooltip.Basic.Example) 1`] = `
 Array [
   Object {
@@ -9211,45 +8710,6 @@ Array [
 ]
 `;
 
-exports[`a11y test checks accessibility of Tooltip (Tooltip.NoScroll.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" aria-labelledby=\\"text-tooltip0\\" class=\\"ms-Button ms-Button--default root-1\\" data-is-focusable=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-labelledby=\\"text-tooltip0\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-labelledby=\\"text-tooltip0\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
-  },
-]
-`;
-
 exports[`a11y test checks accessibility of Tooltip (Tooltip.Overflow.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of pickers (TagPicker.Basic.Example) 1`] = `Array []`;
-
-exports[`a11y test checks accessibility of pickers/PeoplePicker (PeoplePicker.Types.Example) 1`] = `Array []`;
