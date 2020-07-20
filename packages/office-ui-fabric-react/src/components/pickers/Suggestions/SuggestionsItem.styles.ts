@@ -75,8 +75,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
               top: 0,
               bottom: 0,
               right: 0,
-              border: `1px solid ${theme.palette.neutralSecondary}`,
-              zIndex: 1,
+              border: `1px solid ${theme.semanticColors.focusBorder}`,
             },
             ':hover': {
               background: semanticColors.menuDivider,
