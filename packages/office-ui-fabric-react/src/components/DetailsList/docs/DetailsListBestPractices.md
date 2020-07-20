@@ -21,8 +21,7 @@ By default, the List used within DetailsList will use the `body` element as the 
 
 #### My List is not re-rendering when I mutate its items. What should I do?
 
-To determine if the List within DetailsList should re-render its contents, the component performs a referential equality check within its `shouldComponentUpdate` method.
-This is done to minimize the performance overhead associated with re-rendering the virtualized List pages, as recommended by the [React documentation](https://reactjs.org/docs/optimizing-performance.html#the-power-of-not-mutating-data).
+To determine if the List within DetailsList should re-render its contents, the component performs a referential equality check within its `shouldComponentUpdate` method. This is done to minimize the performance overhead associated with re-rendering the virtualized List pages, as recommended by the [React documentation](https://reactjs.org/docs/optimizing-performance.html#the-power-of-not-mutating-data).
 
 As a result of this implementation, the inner List will not determine it should re-render if the array values are mutated.
 To avoid this problem, we recommend re-creating the items array backing the DetailsList by using a method such as `Array.prototype.concat` or ES6 spread syntax shown below:
@@ -43,4 +42,4 @@ public render(): JSX.Element {
 }
 ```
 
-By re-creating the items array without mutating the values, the inner List will correctly determine its contents have changed and that it should re-render the new values.
+By re-creating the items array without mutating the values, the inner List will correctly determine its contents have changed and it should then re-render with the new values.
