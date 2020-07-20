@@ -4,9 +4,9 @@ import { ISelectedItemProps } from '../SelectedItemsList.types';
 
 // `extends any` to trick the parser into parsing as a type decl instead of a jsx tag
 export const TriggerOnContextMenu = <T extends any>(ItemComponent: React.ComponentType<ISelectedItemProps<T>>) => {
-  // TODO: verify fix with @nebhatna
-  return React.memo((props: TriggerProps<T>) => {
+  return (props: TriggerProps<T>) => {
     const { onTrigger } = props;
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- this is a component
     const trigger = React.useCallback(
       e => {
         e.preventDefault();
@@ -16,5 +16,5 @@ export const TriggerOnContextMenu = <T extends any>(ItemComponent: React.Compone
       [onTrigger],
     );
     return <ItemComponent {...props} onContextMenu={trigger} />;
-  });
+  };
 };

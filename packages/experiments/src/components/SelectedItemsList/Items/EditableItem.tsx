@@ -20,14 +20,15 @@ export type EditableItemProps<T> = {
 // `extends any` to trick the parser into parsing as a type decl instead of a jsx tag
 export const EditableItem = <T extends any>(editableItemProps: EditableItemProps<T>): Item<T> => {
   return React.memo((selectedItemProps: ISelectedItemProps<T>) => {
+    const { onItemChange, index } = selectedItemProps;
     const [isEditing, { setTrue: setEditingTrue, setFalse: setEditingFalse }] = useBoolean(false);
 
     const onItemEdited = React.useCallback(
       (_oldItem: T, newItem: T) => {
-        selectedItemProps.onItemChange && selectedItemProps.onItemChange(newItem, selectedItemProps.index);
+        onItemChange && onItemChange(newItem, index);
         setEditingFalse;
       },
-      [selectedItemProps, setEditingFalse],
+      [onItemChange, index, setEditingFalse],
     );
 
     const ItemComponent = editableItemProps.itemComponent;

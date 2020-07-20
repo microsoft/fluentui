@@ -75,8 +75,9 @@ const SelectedPersonaInner = React.memo(
           isValid: isValid ? isValid(item) : true,
           theme: theme!,
         }),
-      // TODO: verify fix with @nebhatna
-      [styles, selected, isValid, item, theme],
+      // TODO: evaluate whether to add deps on `item` and `styles`
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [selected, isValid, theme],
     );
 
     const coinProps = {};
