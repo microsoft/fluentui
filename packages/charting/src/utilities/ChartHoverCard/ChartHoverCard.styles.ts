@@ -1,10 +1,7 @@
-import { getTheme, ITheme } from 'office-ui-fabric-react';
-import { IChartHoverCardStyles, IChartHoverCardProps } from './ChartHoverCard.types';
+import { IChartHoverCardStyles, IChartHoverCardStyleProps } from './ChartHoverCard.types';
 
-const theme: ITheme = getTheme();
-const { fonts } = theme;
-export const getChartHoverCardStyles = (props: IChartHoverCardProps): IChartHoverCardStyles => {
-  const { color, XValue } = props;
+export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChartHoverCardStyles => {
+  const { color, XValue, theme } = props;
   return {
     calloutContentRoot: [
       {
@@ -21,29 +18,33 @@ export const getChartHoverCardStyles = (props: IChartHoverCardProps): IChartHove
       justifyContent: 'space-between',
     },
     calloutContentX: [
+      theme.fonts.small,
       {
-        ...fonts.small,
         lineHeight: '16px',
         opacity: '0.8',
         color: theme.semanticColors.bodySubtext,
       },
     ],
-    calloutBlockContainer: {
-      ...fonts.xxLarge,
-      marginTop: XValue ? '13px' : 'unset',
-      paddingLeft: '8px',
-      lineHeight: '22px',
-      color: theme.semanticColors.bodyText,
-      borderLeft: `4px solid ${color}`,
-    },
-    calloutlegendText: {
-      ...fonts.small,
-      lineHeight: '16px',
-      color: theme.semanticColors.bodyText,
-    },
-    calloutContentY: [
+    calloutBlockContainer: [
+      theme.fonts.xxLarge,
       {
-        ...fonts.xxLarge,
+        marginTop: XValue ? '13px' : 'unset',
+        paddingLeft: '8px',
+        lineHeight: '22px',
+        color: theme.semanticColors.bodyText,
+        borderLeft: `4px solid ${color}`,
+      },
+    ],
+    calloutlegendText: [
+      theme.fonts.small,
+      {
+        lineHeight: '16px',
+        color: theme.semanticColors.bodyText,
+      },
+    ],
+    calloutContentY: [
+      theme.fonts.xxLarge,
+      {
         color: color ? color : theme.semanticColors.bodyText,
         fontWeight: 'bold',
         lineHeight: '36px',

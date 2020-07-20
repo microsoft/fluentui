@@ -1,9 +1,7 @@
-import { useStyles } from '@fluentui/react-bindings';
+import { useStyles, Unstable_FluentContextProvider } from '@fluentui/react-bindings';
 import { ComponentSlotStyle, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 type TestComponentProps = {
   className?: string;
@@ -32,21 +30,6 @@ const createTheme = (styles: jest.Mock): ThemeInput => ({
   componentVariables: {},
 });
 
-const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
-  const { children, theme } = props;
-
-  return (
-    <ThemeContext.Provider
-      value={{
-        performance: {},
-        theme,
-      }}
-    >
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
 describe('useStyles', () => {
   describe('className', () => {
     it('applies "className" from options', () => {
@@ -66,8 +49,8 @@ describe('useStyles', () => {
     it('passes props mapped via "mapPropsToStyles" to styles functions', () => {
       const styles = jest.fn();
       mount(<TestComponent color="green" />, {
-        wrappingComponent: TestProvider,
-        wrappingComponentProps: { theme: createTheme(styles) },
+        wrappingComponent: Unstable_FluentContextProvider,
+        wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
       });
 
       expect(styles).toBeCalledWith(

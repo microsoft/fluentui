@@ -189,20 +189,20 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     showPicker(true);
   };
   const _onSuggestionSelected = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
+    addItems([item.item]);
     if (props.floatingSuggestionProps.onSuggestionSelected) {
       props.floatingSuggestionProps.onSuggestionSelected(ev, item);
     }
-    addItems([item.item]);
     if (input.current) {
       input.current.clear();
     }
     showPicker(false);
   };
   const _onRemoveSelectedItems = (itemsToRemove: T[]) => {
+    removeItems(itemsToRemove);
     if (props.selectedItemsListProps.onItemsRemoved) {
       props.selectedItemsListProps.onItemsRemoved(itemsToRemove);
     }
-    removeItems(itemsToRemove);
   };
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({

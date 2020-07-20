@@ -2,6 +2,122 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "office-ui-fabric-react_v7.123.4",
+      "version": "7.123.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: pass missing event to onDismiss.",
+            "author": "xgao@microsoft.com",
+            "commit": "5874c5755ea454adb9bbea9a5273f1cae5203eda",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "office-ui-fabric-react_v7.123.2",
+      "version": "7.123.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
+            "author": "esteban.230@hotmail.com",
+            "commit": "1e9b0f1b3e1e79a56187a94d55127913d4370958",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix onBlur event firing on every calendar day component bug",
+            "author": "ololubek@microsoft.com",
+            "commit": "682f1db2c515d0d2f9db036e108fbe316ec09007",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "removing unnecessary !important, fixing two linting errors, fixing high contrast bug in oufr calendar",
+            "author": "lorejoh12@gmail.com",
+            "commit": "30fc4c9ad3b2b9236027b477e27eb742f8419cca",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "office-ui-fabric-react_v7.123.0",
+      "version": "7.123.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix screen reader behavior on picker action buttons (#13291)",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5d63c38662cc26c0518dbe5b7299b1039e0c02ad",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Allow consumer of ContextualMenu control to override the role of internal list.",
+            "author": "kinhln@microsoft.com",
+            "commit": "e94ddb76a22232c4f574f32d7f8972cfb48e3808",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "office-ui-fabric-react_v7.122.0",
+      "version": "7.122.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Keytip: add useKeytipRef hook.",
+            "author": "xgao@microsoft.com",
+            "commit": "d07846f717c51a003c496c9fcac49e52fc55c8f1",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ContextualMenu: Fix high contrast style for submenu icon",
+            "author": "erabelle@microsoft.com",
+            "commit": "be5ada5f95814f7daa5485024050bc674865fcab",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Replace tslint with eslint; fix some violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add mutliSelectDelimiter property to ComboBox",
+            "author": "cocahill@microsoft.com",
+            "commit": "7370c100a267785a14c69ee18d8f1e128eaa64b6",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Jul 2020 12:40:33 GMT",
       "tag": "office-ui-fabric-react_v7.121.12",
       "version": "7.121.12",

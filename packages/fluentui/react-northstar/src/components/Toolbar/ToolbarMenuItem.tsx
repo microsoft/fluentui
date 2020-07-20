@@ -19,12 +19,12 @@ import {
   useTelemetry,
   useStyles,
   useAutoControlled,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 
@@ -37,16 +37,16 @@ import {
   childrenExist,
   doesNodeContainClick,
 } from '../../utils';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
-import Box, { BoxProps } from '../Box/Box';
-import Popup, { PopupProps } from '../Popup/Popup';
-import ToolbarMenu, { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
-import ToolbarMenuItemIcon, { ToolbarMenuItemIconProps } from './ToolbarMenuItemIcon';
+import { Box, BoxProps } from '../Box/Box';
+import { Popup, PopupProps } from '../Popup/Popup';
+import { ToolbarMenu, ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
+import { ToolbarMenuItemIcon, ToolbarMenuItemIconProps } from './ToolbarMenuItemIcon';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
-import ToolbarMenuItemSubmenuIndicator from './ToolbarMenuItemSubmenuIndicator';
-import ToolbarMenuItemActiveIndicator from './ToolbarMenuItemActiveIndicator';
+import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicator';
+import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -130,9 +130,9 @@ export const toolbarMenuItemSlotClassNames: ToolbarMenuItemSlotClassNames = {
 /**
  * A ToolbarMenuItem renders ToolbarMenu item as button.
  */
-const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemStylesProps, {}, {}>(
+export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
@@ -519,5 +519,3 @@ ToolbarMenuItem.defaultProps = {
   submenuIndicator: {},
   wrapper: { as: 'li' },
 };
-
-export default ToolbarMenuItem;

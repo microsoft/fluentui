@@ -6,9 +6,9 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { isBrowser } from '../../utils';
 import { isDebugEnabled } from '@fluentui/styles';
 
-import DebugPanel from './DebugPanel';
-import FiberNavigator from './FiberNavigator';
-import DebugRect from './DebugRect';
+import { DebugPanel } from './DebugPanel';
+import { FiberNavigator } from './FiberNavigator';
+import { DebugRect } from './DebugRect';
 
 /* eslint-disable no-console */
 
@@ -30,7 +30,7 @@ const INITIAL_STATE: DebugState = {
   isSelecting: false,
 };
 
-class Debug extends React.Component<DebugProps, DebugState> {
+export class Debug extends React.Component<DebugProps, DebugState> {
   state = INITIAL_STATE;
 
   static defaultProps = {
@@ -178,5 +178,3 @@ class Debug extends React.Component<DebugProps, DebugState> {
     return null;
   }
 }
-
-export default Debug;

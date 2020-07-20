@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import Dropdown, { DropdownProps, dropdownSlotClassNames } from 'src/components/Dropdown/Dropdown';
+import { Dropdown, DropdownProps, dropdownSlotClassNames } from 'src/components/Dropdown/Dropdown';
 import { dropdownSearchInputSlotClassNames } from 'src/components/Dropdown/DropdownSearchInput';
 import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 

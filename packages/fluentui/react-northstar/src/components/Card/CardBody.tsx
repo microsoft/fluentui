@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
@@ -8,11 +8,10 @@ import {
   useStyles,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface CardBodyProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -30,8 +29,8 @@ export const cardBodyClassName = 'ui-card__body';
 /**
  * A CardBody is used to display data in Card body.
  */
-const CardBody: ComponentWithAs<'div', CardBodyProps> & FluentComponentStaticProps<CardBodyProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+export const CardBody: ComponentWithAs<'div', CardBodyProps> & FluentComponentStaticProps<CardBodyProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardBody.displayName, context.telemetry);
   setStart();
 
@@ -79,5 +78,3 @@ CardBody.propTypes = {
 CardBody.handledProps = Object.keys(CardBody.propTypes) as any;
 
 CardBody.create = createShorthandFactory({ Component: CardBody });
-
-export default CardBody;

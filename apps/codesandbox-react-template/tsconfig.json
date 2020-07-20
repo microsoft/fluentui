@@ -2,11 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "outDir": "lib",
+    "noEmit": true, // build output of this project doesn't matter
     "module": "commonjs",
     "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",

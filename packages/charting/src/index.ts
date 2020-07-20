@@ -9,5 +9,6 @@ export * from './VerticalStackedBarChart';
 export * from './GroupedVerticalBarChart';
 export * from './types';
 export * from './utilities/ChartHoverCard';
+export * from './SankeyChart';
 
 import './version';

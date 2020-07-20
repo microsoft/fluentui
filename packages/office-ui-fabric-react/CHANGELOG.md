@@ -1,8 +1,55 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Sat, 18 Jul 2020 00:04:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.123.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.4)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.2..office-ui-fabric-react_v7.123.4)
+
+### Patches
+
+- Panel: pass missing event to onDismiss. ([PR #14075](https://github.com/microsoft/fluentui/pull/14075) by xgao@microsoft.com)
+
+## [7.123.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.2)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.0..office-ui-fabric-react_v7.123.2)
+
+### Patches
+
+- Fix onBlur event firing on every calendar day component bug ([PR #13992](https://github.com/microsoft/fluentui/pull/13992) by ololubek@microsoft.com)
+- removing unnecessary !important, fixing two linting errors, fixing high contrast bug in oufr calendar ([PR #14032](https://github.com/microsoft/fluentui/pull/14032) by lorejoh12@gmail.com)
+
+## [7.123.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.0)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.122.0..office-ui-fabric-react_v7.123.0)
+
+### Minor changes
+
+- Allow consumer of ContextualMenu control to override the role of internal list. ([PR #13908](https://github.com/microsoft/fluentui/pull/13908) by kinhln@microsoft.com)
+
+### Patches
+
+- Fix screen reader behavior on picker action buttons (#13291) ([PR #13627](https://github.com/microsoft/fluentui/pull/13627) by sarah.higley@microsoft.com)
+
+## [7.122.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.122.0)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.121.12..office-ui-fabric-react_v7.122.0)
+
+### Minor changes
+
+- Replace tslint with eslint; fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+- Add mutliSelectDelimiter property to ComboBox ([PR #13979](https://github.com/microsoft/fluentui/pull/13979) by cocahill@microsoft.com)
+
+### Patches
+
+- Keytip: add useKeytipRef hook. ([PR #13742](https://github.com/microsoft/fluentui/pull/13742) by xgao@microsoft.com)
+- ContextualMenu: Fix high contrast style for submenu icon ([PR #13843](https://github.com/microsoft/fluentui/pull/13843) by erabelle@microsoft.com)
 
 ## [7.121.12](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.121.12)
 

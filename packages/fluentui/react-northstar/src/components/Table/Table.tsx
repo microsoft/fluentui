@@ -7,6 +7,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -19,11 +20,10 @@ import {
   childrenExist,
   createShorthandFactory,
 } from '../../utils';
-import TableRow, { TableRowProps } from './TableRow';
-import TableCell from './TableCell';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ShorthandCollection, ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { TableRow, TableRowProps } from './TableRow';
+import { TableCell } from './TableCell';
+
+import { ShorthandCollection, ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface TableSlotClassNames {
   header: string;
@@ -75,12 +75,12 @@ export type TableStylesProps = never;
  * [VoiceOver not announcing rows correctly for a grid with presentation elements inside](https://bugs.chromium.org/p/chromium/issues/detail?id=1054424)
  * VoiceOver doesn't narrate aria-rowcount value in table or grid
  */
-const Table: ComponentWithAs<'div', TableProps> &
+export const Table: ComponentWithAs<'div', TableProps> &
   FluentComponentStaticProps<TableProps> & {
     Cell: typeof TableCell;
     Row: typeof TableRow;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Table.displayName, context.telemetry);
   setStart();
   const { children, rows, header, compact, accessibility, className, design, styles, variables } = props;
@@ -179,5 +179,3 @@ Table.handledProps = Object.keys(Table.propTypes) as any;
 Table.defaultProps = {
   accessibility: tableBehavior,
 };
-
-export default Table;
