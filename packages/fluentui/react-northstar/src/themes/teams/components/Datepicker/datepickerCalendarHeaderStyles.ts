@@ -11,7 +11,6 @@ export const datepickerCalendarHeaderStyles: ComponentSlotStylesPrepared<
       display: 'grid',
       gridTemplateColumns: '1fr auto auto',
       msGridColumns: '1fr auto auto',
-      verticalAlign: 'middle',
     };
   },
 };
