@@ -169,14 +169,13 @@ export function composed<
       options.fields,
     );
 
-    const useState = options.state;
+    const stateReducer = options.state;
 
-    if (useState) {
+    if (stateReducer) {
       // Don't assume state will return all props, so spread useState result over component props.
       componentProps = {
         ...componentProps,
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        ...useState(componentProps),
+        ...stateReducer(componentProps),
       };
     }
 
