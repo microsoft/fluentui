@@ -1,7 +1,7 @@
 ### Content
 
 - Don’t use a tooltip to restate a button name that’s already shown in the UI.
-- When a control or UI element is unlabeled, use a simple, descriptive noun phrase. For example: “Highlighting pen.” Only capitalize the first word (unless a subsequent word is a proper noun), and don’t use a period.
+- When a control or UI element is unlabeled, use a simple, descriptive noun phrase. For example: “Highlighting pen”. Only capitalize the first word (unless a subsequent word is a proper noun), and don’t use a period.
 - For a disabled control that could use an explanation, provide a brief description of the state in which the control will be enabled. For example: “This feature is available for line charts.”
 - Only use periods for complete sentences.
 
