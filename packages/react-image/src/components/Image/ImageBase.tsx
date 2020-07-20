@@ -10,9 +10,9 @@ export const ImageBase = compose<'img', ImageProps, ImageProps, {}, {}>(
     const { state } = options;
     const { slots, slotProps } = mergeProps<ImageProps, ImageState, ImageSlots, ImageSlotProps>(state, options);
 
-    const { buttonRef } = state;
+    const { imageRef } = state;
 
-    return <slots.root ref={useMergedRefs(ref, buttonRef)} {...slotProps.root} />;
+    return <slots.root ref={useMergedRefs(ref, imageRef)} {...slotProps.root} />;
   },
   {
     displayName: 'ImageBase',
