@@ -5,8 +5,8 @@ import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
 
 export const PivotOverflowMenuExample: React.FunctionComponent = () => {
   const [overflow, { toggle: toggleOverflow }] = useBoolean(true);
-  const [tabs, { toggle: toggleTabs }] = useBoolean(true);
-  const [rtl, { toggle: toggleRtl }] = useBoolean(true);
+  const [tabs, { toggle: toggleTabs }] = useBoolean(false);
+  const [rtl, { toggle: toggleRtl }] = useBoolean(false);
 
   return (
     <>
