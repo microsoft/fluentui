@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 20 Jul 2020 12:44:29 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.95",
+      "version": "7.12.95",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Re-enable editor with improved error handling",
+            "author": "elcraig@microsoft.com",
+            "commit": "1752574599d581730c50ada120cf054952493afa",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@uifabric/example-app-base_v7.12.93",
       "version": "7.12.93",

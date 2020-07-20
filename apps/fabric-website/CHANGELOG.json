@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.4",
+      "version": "7.13.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hiding an unexpected link shown in the footer of the website.",
+            "author": "dzearing@hotmail.com",
+            "commit": "feb1bbcde7c250792e63a9cd5cb2ad1f7ef9268d",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@uifabric/fabric-website_v7.13.2",
       "version": "7.13.2",

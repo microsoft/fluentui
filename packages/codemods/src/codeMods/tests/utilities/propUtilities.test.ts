@@ -115,8 +115,9 @@ describe('Props Utilities Test', () => {
 
     it('can replace props with changed enum values in a spread attribute', () => {
       const file = project.getSourceFileOrThrow(spinnerSpreadPropsFile);
-      const tags = findJsxTag(file, 'Spinner');
+      let tags = findJsxTag(file, 'Spinner');
       renameProp(tags, 'type', 'size', spinnerMap);
+      tags = findJsxTag(file, 'Spinner');
       tags.forEach(val => {
         val.getAttributes().forEach(att => {
           if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
@@ -128,6 +129,11 @@ describe('Props Utilities Test', () => {
                 expect(prop.getName()).not.toEqual('SpinnerType');
               });
           }
+          /* Want to see these substrings somewhere in the Jsx element. */
+          expect(
+            val.getText().includes('{...__migProps}') || val.getText().includes('{...__migPropsTest}'),
+          ).toBeTruthy();
+          expect(val.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
         });
       });
     });

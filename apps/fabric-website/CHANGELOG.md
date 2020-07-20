@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Sat, 18 Jul 2020 00:04:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.4](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.4)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.2..@uifabric/fabric-website_v7.13.4)
+
+### Patches
+
+- Hiding an unexpected link shown in the footer of the website. ([PR #14092](https://github.com/microsoft/fluentui/pull/14092) by dzearing@hotmail.com)
 
 ## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.0)
 

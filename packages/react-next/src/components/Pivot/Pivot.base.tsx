@@ -237,9 +237,9 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
     const setOverflowMenuButtonRef = React.useCallback(
       (button: React.Component | null) => {
         const node = ReactDOM.findDOMNode(button);
-        overflow.setMenuButtonRef(node instanceof HTMLElement ? node : null);
+        overflow.menuButtonRef(node instanceof HTMLElement ? node : null);
       },
-      [overflow.setMenuButtonRef],
+      [overflow.menuButtonRef],
     );
 
     return (

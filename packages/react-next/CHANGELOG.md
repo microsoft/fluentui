@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Jul 2020 12:44:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.64)
+
+Mon, 20 Jul 2020 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.63..@fluentui/react-next_v8.0.0-alpha.64)
+
+### Changes
+
+- Move useRefEffect hook to the react-hooks package. ([PR #14054](https://github.com/microsoft/fluentui/pull/14054) by behowell@microsoft.com)
+
+## [8.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.63)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.61..@fluentui/react-next_v8.0.0-alpha.63)
+
+### Changes
+
+- Copying Modal to react-next, in preparation for converting to function component. ([PR #13234](https://github.com/microsoft/fluentui/pull/13234) by czearing@outlook.com)
 
 ## [8.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.61)
 
