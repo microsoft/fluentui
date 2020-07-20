@@ -3,7 +3,7 @@
 const { configure } = require('enzyme');
 const { initializeIcons } = require('@uifabric/icons');
 const Adapter = require('enzyme-adapter-react-16');
-const { resetIds } = require('@fluentui/react-next');
+const { resetIds } = require('@uifabric/utilities');
 
 // Initialize icons.
 initializeIcons('');
