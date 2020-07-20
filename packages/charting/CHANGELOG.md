@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jul 2020 12:38:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.0)
+
+Fri, 17 Jul 2020 12:38:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.6.0..@uifabric/charting_v2.7.0)
+
+### Minor changes
+
+- When legend is hovered, center of donut chart updates to the value cooresponding to the legend. ([PR #14055](https://github.com/microsoft/fluentui/pull/14055) by 57419611+hki-237@users.noreply.github.com)
 
 ## [2.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.6.0)
 
