@@ -34,10 +34,18 @@ import AccessibilityBehaviors from './views/AccessibilityBehaviors';
 import FocusZone from './views/FocusZoneDoc';
 import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
+import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 
-const Builder = React.lazy(async () => ({
+const _Builder = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).Builder,
 }));
+
+const Builder: React.FunctionComponent = () => (
+  <LazyWithBabel>
+    <_Builder />
+  </LazyWithBabel>
+);
+
 const FullScreenPreview = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).FullScreenPreview,
 }));
