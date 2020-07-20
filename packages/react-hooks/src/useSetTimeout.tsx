@@ -21,22 +21,28 @@ export const useSetTimeout = (): UseSetTimeoutReturnType => {
         clearTimeout(id as any);
       }
     },
-    [],
+    [timeoutIds],
   );
 
   // Return wrapper which will auto cleanup.
   return {
-    setTimeout: React.useCallback((func: () => void, duration: number): number => {
-      const id = (setTimeout(func, duration) as unknown) as number;
+    setTimeout: React.useCallback(
+      (func: () => void, duration: number): number => {
+        const id = (setTimeout(func, duration) as unknown) as number;
 
-      timeoutIds[id] = 1;
+        timeoutIds[id] = 1;
 
-      return id;
-    }, []),
+        return id;
+      },
+      [timeoutIds],
+    ),
 
-    clearTimeout: React.useCallback((id: number): void => {
-      delete timeoutIds[id];
-      clearTimeout(id);
-    }, []),
+    clearTimeout: React.useCallback(
+      (id: number): void => {
+        delete timeoutIds[id];
+        clearTimeout(id);
+      },
+      [timeoutIds],
+    ),
   };
 };

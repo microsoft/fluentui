@@ -16,17 +16,19 @@ export function useOnEvent<TElement extends Element, TEvent extends Event>(
 ) {
   // Use a ref for the callback to prevent repeatedly attaching/unattaching callbacks that are unstable across renders
   const callbackRef = React.useRef(callback);
-  callbackRef.current = callback;
 
   React.useEffect(() => {
-    if (element && 'current' in element) {
-      element = element.current;
-    }
-    if (!element) {
+    callbackRef.current = callback;
+  });
+
+  React.useEffect(() => {
+    const actualElement = element && 'current' in element ? element.current : element;
+
+    if (!actualElement) {
       return;
     }
 
-    const dispose = on(element, eventName, (ev: TEvent) => callbackRef.current(ev), useCapture);
+    const dispose = on(actualElement, eventName, (ev: TEvent) => callbackRef.current(ev), useCapture);
     return dispose;
   }, [element, eventName, useCapture]);
 }

@@ -20,21 +20,27 @@ export const useSetInterval = (): UseSetIntervalReturnType => {
         clearInterval(id as any);
       }
     },
-    [],
+    [intervalIds],
   );
 
   return {
-    setInterval: React.useCallback((func: () => void, duration: number): number => {
-      const id = (setInterval(func, duration) as unknown) as number;
+    setInterval: React.useCallback(
+      (func: () => void, duration: number): number => {
+        const id = (setInterval(func, duration) as unknown) as number;
 
-      intervalIds[id] = 1;
+        intervalIds[id] = 1;
 
-      return id;
-    }, []),
+        return id;
+      },
+      [intervalIds],
+    ),
 
-    clearInterval: React.useCallback((id: number): void => {
-      delete intervalIds[id];
-      clearInterval(id);
-    }, []),
+    clearInterval: React.useCallback(
+      (id: number): void => {
+        delete intervalIds[id];
+        clearInterval(id);
+      },
+      [intervalIds],
+    ),
   };
 };

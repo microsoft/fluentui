@@ -7,7 +7,7 @@ describe('useForceUpdate', () => {
     let renderCount = 0;
     const TestComponent: React.FunctionComponent = () => {
       const forceUpdate = useForceUpdate();
-      React.useEffect(() => forceUpdate(), []);
+      React.useEffect(() => forceUpdate(), [forceUpdate]);
 
       renderCount++;
       return <>Test Component</>;

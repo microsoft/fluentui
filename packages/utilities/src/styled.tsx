@@ -105,7 +105,7 @@ export function styled<
 
         return () => Customizations.unobserve(forceUpdate);
       }
-    }, []);
+    }, [context.customizations.inCustomizerContext, forceUpdate]);
 
     const settings = Customizations.getSettings(fields, scope, context.customizations);
     const { styles: customizedStyles, dir, ...rest } = settings;

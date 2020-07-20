@@ -158,17 +158,18 @@ export function composed<
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
       options.displayName,
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       React.useContext(CustomizerContext),
       options.fields,
     );
 
-    const useState = options.state;
+    const stateReducer = options.state;
 
-    if (useState) {
+    if (stateReducer) {
       // Don't assume state will return all props, so spread useState result over component props.
       componentProps = {
         ...componentProps,
-        ...useState(componentProps),
+        ...stateReducer(componentProps),
       };
     }
 

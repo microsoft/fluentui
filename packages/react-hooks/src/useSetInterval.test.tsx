@@ -16,7 +16,7 @@ describe('useSetInterval', () => {
       () => ({
         clearInterval: () => clearInterval(state.id),
       }),
-      [clearInterval],
+      [clearInterval, state.id],
     );
 
     state.id = setInterval(() => {
