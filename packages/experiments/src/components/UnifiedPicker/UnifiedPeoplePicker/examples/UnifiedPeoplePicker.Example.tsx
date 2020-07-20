@@ -64,7 +64,6 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     item: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
     _markSuggestionSelected(item);
-    // peopleSelectedItems.push(item.item);
     setPeopleSelectedItems(peopleSelectedItems => [...peopleSelectedItems, item.item]);
   };
 
