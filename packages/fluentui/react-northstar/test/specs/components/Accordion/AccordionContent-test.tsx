@@ -7,11 +7,14 @@ import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils
 describe('AccordionContent', () => {
   isConformant(AccordionContent, { constructorName: 'AccordionContent' });
 
-  sharedIsConformant({
-    Component: AccordionContent,
-    componentPath: __filename,
-    displayName: 'AccordionContent',
-  });
+  sharedIsConformant(
+    {
+      Component: AccordionContent,
+      componentPath: '',
+      displayName: 'AccordionContent',
+    },
+    __filename,
+  );
 
   describe('accessiblity', () => {
     handlesAccessibility(AccordionContent);

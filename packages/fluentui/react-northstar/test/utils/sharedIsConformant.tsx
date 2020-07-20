@@ -4,11 +4,10 @@ import { Ref, RefFindNode } from '@fluentui/react-component-ref';
 import { FocusZone } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 
-export function sharedIsConformant(testInfo: IsConformantOptions) {
-  const { componentPath } = testInfo;
+export function sharedIsConformant(testInfo: IsConformantOptions, testFilePath: string) {
   const defaultConfig = {
     customMount: mountWithProvider,
-    componentPath: componentPath.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
+    componentPath: testFilePath.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
     disabledTests: ['has-docblock', 'has-top-level-file'],
     wrapperComponents: [Ref, RefFindNode, FocusZone],
   };

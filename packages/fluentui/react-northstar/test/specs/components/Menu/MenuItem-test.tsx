@@ -22,12 +22,15 @@ describe('MenuItem', () => {
     autoControlledProps: ['menuOpen'],
   });
 
-  sharedIsConformant({
-    Component: MenuItem,
-    displayName: 'MenuItem',
-    componentPath: __filename,
-    wrapperComponents: [MenuItemWrapper],
-  });
+  sharedIsConformant(
+    {
+      Component: MenuItem,
+      displayName: 'MenuItem',
+      componentPath: '',
+      wrapperComponents: [MenuItemWrapper],
+    },
+    __filename,
+  );
 
   implementsShorthandProp(MenuItem)('menu', Menu, {
     implementsPopper: true,

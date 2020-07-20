@@ -3,11 +3,7 @@ import { sharedIsConformant } from 'test/utils';
 import { Slider } from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
-  sharedIsConformant({
-    componentPath: __filename,
-    Component: Slider,
-    displayName: 'Slider',
-  });
+  sharedIsConformant({ Component: Slider, componentPath: '', displayName: 'Slider' }, __filename);
 
   isConformant(Slider, {
     constructorName: 'Slider',
