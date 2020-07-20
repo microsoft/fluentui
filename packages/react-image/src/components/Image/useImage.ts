@@ -1,5 +1,5 @@
-import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore Typings require esModuleInterop
 import objectFitImages from 'object-fit-images';
