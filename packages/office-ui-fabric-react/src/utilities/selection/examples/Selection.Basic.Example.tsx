@@ -7,6 +7,14 @@ import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-f
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { useConst, useForceUpdate } from '@uifabric/react-hooks';
+
+interface ISelectionItemExampleProps {
+  item: IExampleItem;
+  itemIndex?: number;
+  selection?: ISelection;
+  selectionMode?: SelectionMode;
+}
 
 const commonStyles: IRawStyle = {
   display: 'inline-block',
@@ -37,22 +45,6 @@ const classNames = mergeStyleSets({
 
 const ITEM_COUNT = 100;
 
-interface ISelectionBasicExampleState {
-  items: IExampleItem[];
-  selection: ISelection;
-<<<<<<< HEAD
-=======
-  canSelect: 'all' | 'vowels';
->>>>>>> d1212a3808f0ba186dab8d5f714d35958cdc759a
-}
-
-interface ISelectionItemExampleProps {
-  item: IExampleItem;
-  itemIndex?: number;
-  selection?: ISelection;
-  selectionMode?: SelectionMode;
-}
-
 const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> = (
   props: ISelectionItemExampleProps,
 ) => {
@@ -81,76 +73,14 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
   );
 };
 
-<<<<<<< HEAD
 export const SelectionBasicExample: React.FunctionComponent = () => {
   const [canSelect, setCanSelect] = React.useState<'all' | 'vowels'>('all');
-=======
-/**
- * The SelectionBasicExample controls the selection state of all items
- */
-export class SelectionBasicExample extends React.Component<{}, ISelectionBasicExampleState> {
-  private _hasMounted: boolean;
-
-  constructor(props: {}) {
-    super(props);
-
-    this._hasMounted = false;
-    // Memoizing this means that given the same parameters, it will return the same array of command objects
-    // (performance optimization)
-    this._getCommandItems = memoizeFunction(this._getCommandItems);
-
-    this.state = {
-      items: createListItems(ITEM_COUNT),
-      selection: new Selection({ onSelectionChanged: this._onSelectionChanged }),
-      canSelect: 'all',
-    };
-    this.state.selection.setItems(this.state.items, false);
-  }
-
-  public componentDidMount(): void {
-    this._hasMounted = true;
-  }
-
-  public render(): JSX.Element {
-    const { items, selection, canSelect } = this.state;
-
-    return (
-      <div className="ms-SelectionBasicExample">
-        <CommandBar items={this._getCommandItems(selection.mode, canSelect)} />
-        <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
-          <SelectionZone selection={selection} onItemInvoked={this._alertItem}>
-            {items.map((item: IExampleItem, index: number) => (
-              <SelectionItemExample key={item.key} item={item} itemIndex={index} selection={selection} />
-            ))}
-          </SelectionZone>
-        </MarqueeSelection>
-      </div>
-    );
-  }
-
-  private _alertItem = (item: IExampleItem): void => {
-    alert('item invoked: ' + item.name);
-  };
-
-  private _onSelectionChanged = (): void => {
-    if (this._hasMounted) {
-      this.forceUpdate();
-    }
-  };
-
-  private _onToggleSelectAll = (): void => {
-    const { selection } = this.state;
-    selection.toggleAllSelected();
-  };
->>>>>>> d1212a3808f0ba186dab8d5f714d35958cdc759a
-
-  const { current: internalState } = React.useRef<ISelectionBasicExampleState>({
-    selection: new Selection(),
-    items: createListItems(ITEM_COUNT),
-  });
+  const forceUpdate = useForceUpdate();
+  const [selection, setSelection] = React.useState<Selection>(new Selection({ onSelectionChanged: forceUpdate }));
+  const items = useConst<IExampleItem[]>(() => createListItems(ITEM_COUNT));
 
   const onToggleSelectAll = (): void => {
-    internalState.selection.toggleAllSelected();
+    selection.toggleAllSelected();
   };
 
   const getCommandItems = memoizeFunction(
@@ -225,17 +155,17 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
       canSelectItem: canSelect === 'vowels' ? canSelectItem : undefined,
       selectionMode: menuItem.data,
     });
-    newSelection.setItems(internalState.items, false);
-    internalState.selection = newSelection;
+    newSelection.setItems(items, false);
+    setSelection(newSelection);
   };
 
   const onCanSelectChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     const newSelection = new Selection({
       canSelectItem: menuItem.data === 'vowels' ? canSelectItem : undefined,
-      selectionMode: internalState.selection.mode,
+      selectionMode: selection.mode,
     });
-    newSelection.setItems(internalState.items, false);
-    internalState.selection = newSelection;
+    newSelection.setItems(items, false);
+    setSelection(newSelection);
     setCanSelect(menuItem.data === 'vowels' ? 'vowels' : 'all');
   };
 
@@ -245,14 +175,11 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
 
   return (
     <div className="ms-SelectionBasicExample">
-      <CommandBar items={getCommandItems(internalState.selection.mode, canSelect)} />
-      <MarqueeSelection
-        selection={internalState.selection}
-        isEnabled={internalState.selection.mode === SelectionMode.multiple}
-      >
-        <SelectionZone selection={internalState.selection} onItemInvoked={alertItem}>
-          {internalState.items.map((item: IExampleItem, index: number) => (
-            <SelectionItemExample key={item.key} item={item} itemIndex={index} selection={internalState.selection} />
+      <CommandBar items={getCommandItems(selection.mode, canSelect)} />
+      <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
+        <SelectionZone selection={selection} onItemInvoked={alertItem}>
+          {items.map((item: IExampleItem, index: number) => (
+            <SelectionItemExample key={item.key} item={item} itemIndex={index} selection={selection} />
           ))}
         </SelectionZone>
       </MarqueeSelection>

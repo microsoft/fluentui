@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TagPicker, IBasePicker, ITag } from 'office-ui-fabric-react/lib/Pickers';
 import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useConstCallback } from '@uifabric/react-hooks';
 
 const rootClass = mergeStyles({
   maxWidth: 500,
@@ -52,24 +52,27 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
     return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
   };
 
-  const onFilterChanged = (filterText: string, tagList: ITag[]): ITag[] => {
+  const onFilterChanged = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
     return filterText
       ? testTags
           .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
           .filter(tag => !listContainsDocument(tag, tagList))
       : [];
-  };
+  });
 
-  const onFilterChangedNoFilter = (filterText: string, tagList: ITag[]): ITag[] => {
+  const onFilterChangedNoFilter = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
     return filterText ? testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
-  };
+  });
 
-  const onItemSelected = (item: ITag): ITag | null => {
-    if (picker.current && listContainsDocument(item, picker.current.items)) {
-      return null;
-    }
-    return item;
-  };
+  const onItemSelected = React.useCallback(
+    (item: ITag): ITag | null => {
+      if (picker.current && listContainsDocument(item, picker.current.items)) {
+        return null;
+      }
+      return item;
+    },
+    [picker.current, listContainsDocument],
+  );
 
   return (
     <div className={rootClass}>

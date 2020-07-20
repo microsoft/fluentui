@@ -23,7 +23,7 @@ import {
 } from 'office-ui-fabric-react/lib/Pickers';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean, useConstCallback } from '@uifabric/react-hooks';
 
 export interface IFullDocumentCardProps {
   documentCardProps?: IDocumentCardProps;
@@ -339,9 +339,9 @@ const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardPr
 export const PickerCustomResultExample: React.FunctionComponent = () => {
   const [isPickerDisabled, { toggle: toggleIsPickerDisabled }] = useBoolean(false);
 
-  const getTextFromItem = (props: any): any => {
+  const getTextFromItem = useConstCallback((props: any): any => {
     return props.documentTitleProps.title;
-  };
+  });
 
   const listContainsDocument = (document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean => {
     if (!items || !items.length || items.length === 0) {
@@ -353,20 +353,22 @@ export const PickerCustomResultExample: React.FunctionComponent = () => {
     );
   };
 
-  const onFilterChanged = (filterText: string, items?: IFullDocumentCardProps[]): IFullDocumentCardProps[] => {
-    if (!items) {
-      return [];
-    }
-    return filterText
-      ? data
-          .filter(
-            item =>
-              item.documentTitleProps &&
-              item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0,
-          )
-          .filter(item => !listContainsDocument(item, items))
-      : [];
-  };
+  const onFilterChanged = useConstCallback(
+    (filterText: string, items?: IFullDocumentCardProps[]): IFullDocumentCardProps[] => {
+      if (!items) {
+        return [];
+      }
+      return filterText
+        ? data
+            .filter(
+              item =>
+                item.documentTitleProps &&
+                item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0,
+            )
+            .filter(item => !listContainsDocument(item, items))
+        : [];
+    },
+  );
 
   return (
     <div className={rootClass}>
