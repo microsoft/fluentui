@@ -128,7 +128,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: absolute;
                 right: 0px;
                 top: 0px;
-                z-index: 1;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2164,7 +2163,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: absolute;
                 right: 0px;
                 top: 0px;
-                z-index: 1;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -5254,7 +5252,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: absolute;
                 right: 0px;
                 top: 0px;
-                z-index: 1;
               }
           data-is-focusable={true}
           onClick={[Function]}
