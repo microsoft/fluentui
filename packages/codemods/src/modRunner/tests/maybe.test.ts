@@ -1,4 +1,4 @@
-import { Maybe, Just, Nothing } from '../maybe';
+import { Maybe, Just, Nothing } from '../../maybe';
 
 describe('Maybe', () => {
   it('new just has correct just value', () => {
@@ -61,5 +61,13 @@ describe('Maybe', () => {
         .then(v => Maybe('newValue'))
         .orElse('bad'),
     ).toEqual('newValue');
+  });
+
+  it('wraps undefined in Maybe correctly', () => {
+    expect(
+      Maybe('foo')
+        .then<string>(v => (undefined as unknown) as string)
+        .orElse('defaultValue'),
+    ).toEqual('defaultValue');
   });
 });
