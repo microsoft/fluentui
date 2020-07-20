@@ -17,7 +17,7 @@
 
 Add the `data-is-scrollable="true"` attribute to your scrollable element containing the DetailsList.
 
-By default, the List used within DetailsList will use the `BODY` element as the scrollable element. If you contain the List within a scrollable `DIV` using `overflow: auto` or `scroll`, the List needs to listen for scroll events on that element instead. On initialization, the List will traverse up the DOM looking for the first element with the `data-is-scrollable` attribute to know when element to listen to for knowing when to re-evaulate the visible window.
+By default, the List used within DetailsList will use the `body` element as the scrollable element. If you contain the List within a scrollable `div` using `overflow: auto` or `scroll`, the List needs to listen for scroll events on that element instead. On initialization, the List will traverse up the DOM looking for the first element with the `data-is-scrollable` attribute to know which element to listen to for knowing when to re-evaulate the visible window.
 
 #### My List is not re-rendering when I mutate its items. What should I do?
 
