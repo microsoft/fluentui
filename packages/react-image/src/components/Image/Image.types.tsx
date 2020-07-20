@@ -25,7 +25,7 @@ export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTML
 }
 
 export interface ImageState extends ImageProps {
-  imageRef: React.RefObject<HTMLImageElement>;
+  imageRef: React.RefObject<HTMLElement>;
 }
 
 export interface ImageSlots extends BaseSlots {}

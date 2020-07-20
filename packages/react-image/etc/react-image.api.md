@@ -37,11 +37,11 @@ export interface ImageSlots extends BaseSlots {
 // @public (undocumented)
 export interface ImageState extends ImageProps {
     // (undocumented)
-    imageRef: React.RefObject<HTMLImageElement>;
+    imageRef: React.RefObject<HTMLElement>;
 }
 
 // @public
-export const useImage: (props: ImageProps, ref: React.Ref<HTMLImageElement>, options: ComposePreparedOptions<{}, any, {}>) => ImageState;
+export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => ImageState;
 
 
 // (No @packageDocumentation comment for this package)

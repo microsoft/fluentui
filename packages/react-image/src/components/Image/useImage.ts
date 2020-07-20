@@ -19,10 +19,10 @@ const isFitSupported = (function() {
  */
 export const useImage = (
   props: ImageProps,
-  ref: React.Ref<HTMLImageElement>,
+  ref: React.Ref<HTMLElement>,
   options: ComposePreparedOptions,
 ): ImageState => {
-  const imageRef = React.useRef<HTMLImageElement>(null);
+  const imageRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
     if (!isFitSupported) {
