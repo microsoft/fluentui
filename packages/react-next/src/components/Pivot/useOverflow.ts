@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { useRefEffect, RefCallback } from '@uifabric/react-hooks';
 import { getWindow } from '../../Utilities';
 import { observeResize } from './observeResize';
-import { useRefEffect } from './useRefEffect';
 
 /**
  * Callback to notify the user that the items in the overflow have changed. This should ensure that the overflow menu
@@ -29,8 +29,8 @@ export type OverflowParams = {
 
 /** Return value for {@see useOverflow} */
 export type OverflowRefs = {
-  /** Set the overflow menu button's ref to this ref setter callback */
-  setMenuButtonRef: (ele: HTMLElement | null) => void;
+  /** Set the overflow menu button's ref to this ref callback */
+  menuButtonRef: RefCallback<HTMLElement>;
 };
 
 /**
@@ -56,7 +56,7 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
   const containerWidthRef = React.useRef<number>();
 
   // Attach a resize observer to the container
-  const [containerRef, setContainerRef] = useRefEffect((container: HTMLElement) => {
+  const containerRef = useRefEffect<HTMLElement>(container => {
     const cleanupObserver = observeResize(container, entries => {
       containerWidthRef.current = entries ? entries[0].contentRect.width : container.clientWidth;
       if (updateOverflowRef.current) {
@@ -70,9 +70,9 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
     };
   });
 
-  const [menuButtonRef, setMenuButtonRef] = useRefEffect((menuButton: HTMLElement) => {
-    setContainerRef(menuButton.parentElement);
-    return () => setContainerRef(null);
+  const menuButtonRef = useRefEffect<HTMLElement>(menuButton => {
+    containerRef(menuButton.parentElement);
+    return () => containerRef(null);
   });
 
   React.useLayoutEffect(() => {
@@ -172,5 +172,5 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
     };
   });
 
-  return { setMenuButtonRef };
+  return { menuButtonRef };
 };
