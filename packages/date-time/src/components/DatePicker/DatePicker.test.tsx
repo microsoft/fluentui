@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
