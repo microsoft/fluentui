@@ -20,19 +20,20 @@ import {
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps } from '../../utils';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import { Popup } from '../Popup/Popup';
-import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
+import { DatepickerCalendar, datepickerCalendarClassName, DatepickerCalendarProps } from './DatepickerCalendar';
+import { DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
-import { DatepickerCalendarCell } from './DatepickerCalendarCell';
 
 // TODO: extract to date-time-utilities
 export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
@@ -115,6 +116,9 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
+  /** Shorthand for the datepicker calendar. */
+  calendar?: ShorthandValue<DatepickerCalendarProps>;
+
   /** Datepicker shows it is currently unable to be interacted with. */
   disabled?: boolean;
 
@@ -175,7 +179,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     setOpen(true);
   };
 
-  const { className, design, styles, variables } = props;
+  const { className, design, styles, variables, calendar } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -203,6 +207,18 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     _.invoke(props, 'onDateChange', e, { ...props, value: targetDay });
   };
 
+  const calendarElement = createShorthand(DatepickerCalendar, calendar, {
+    defaultProps: () =>
+      getA11yProps('calendar', {
+        className: datepickerCalendarClassName,
+        localizedStrings: DEFAULT_LOCALIZED_STRINGS,
+      }),
+    overrideProps: () => ({
+      ...calendarOptions,
+      onDateChange: handleChange,
+    }),
+  });
+
   const element = (
     <Ref innerRef={datepickerRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -213,18 +229,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           })}
         >
           <Input readOnly onClick={showCalendarGrid} value={valueFormatter(selectedDate)} />
-          <Popup
-            open={open}
-            onOpenChange={(e, { open }) => setOpen(open)}
-            content={
-              <DatepickerCalendar
-                {...calendarOptions}
-                onDateChange={handleChange}
-                localizedStrings={DEFAULT_LOCALIZED_STRINGS}
-              />
-            }
-            trapFocus
-          >
+          <Popup open={open} onOpenChange={(e, { open }) => setOpen(open)} content={calendarElement} trapFocus>
             <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />
           </Popup>
         </ElementType>,
@@ -239,6 +244,7 @@ Datepicker.displayName = 'Datepicker';
 
 Datepicker.propTypes = {
   ...commonPropTypes.createCommon(),
+  calendar: customPropTypes.itemShorthand,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -266,6 +272,7 @@ Datepicker.propTypes = {
 
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
+  calendar: {},
   firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,

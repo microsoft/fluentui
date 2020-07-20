@@ -132,11 +132,11 @@ export interface DatepickerCalendarProps extends IDatepickerCalendarOptions, IDa
   /**
    * The currently selected date
    */
-  selectedDate: Date;
+  selectedDate?: Date;
   /**
    * The currently navigated date
    */
-  navigatedDate: Date;
+  navigatedDate?: Date;
 
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarBehaviorProps>;
