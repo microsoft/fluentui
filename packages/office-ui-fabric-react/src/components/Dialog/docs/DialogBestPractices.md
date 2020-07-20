@@ -46,4 +46,4 @@
 #### Button labels
 
 - Write button labels that are specific responses to the main information in the title. The title “Delete this file?” could have buttons labeled “Delete” and “Cancel”.
-- Be concise. Limit labels to one or two words. Usually a single verb is best. Include a noun if there is any room for interpretation about what the verb means. For example, “Delete” or “Delete file.”
+- Be concise. Limit labels to one or two words. Usually a single verb is best. Include a noun if there is any room for interpretation about what the verb means. For example, “Delete” or “Delete file”.
