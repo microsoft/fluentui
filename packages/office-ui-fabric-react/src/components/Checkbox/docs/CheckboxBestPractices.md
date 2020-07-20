@@ -10,5 +10,3 @@
 - Don't use end punctuation (unless the check box label absolutely requires multiple sentences).
 - Use a sentence fragment for the label, rather than a full sentence.
 - Make it easy for people to understand what will happen if they select or clear a check box.
-
-
