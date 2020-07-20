@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { styled, memoizeFunction, css } from '../../Utilities';
+import { styled, memoizeFunction, css } from '@uifabric/utilities';
 import { IPivotProps, IPivotStyleProps, IPivotStyles, PivotLinkSizeType, PivotLinkFormatType } from './Pivot.types';
 import { PivotBase } from './Pivot.base';
-import { getGlobalClassNames, ITheme } from '../../Styling';
+import { getGlobalClassNames, ITheme } from '@uifabric/styling';
 import * as classes from './Pivot.scss';
 
 const GlobalClassNames = {

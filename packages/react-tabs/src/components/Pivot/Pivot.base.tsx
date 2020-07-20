@@ -1,16 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { KeyCodes, getNativeProps, divProperties, classNamesFunction, warn, css, getRTL } from '../../Utilities';
-import { CommandButton, IButton } from '../../compat/Button';
-import { IPivotProps, IPivotStyleProps, IPivotStyles, IPivot } from './Pivot.types';
-import { IPivotItemProps } from './PivotItem.types';
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
-import { PivotItem } from './PivotItem';
-import { Icon } from '../../Icon';
-import { useId, useControllableValue } from '@uifabric/react-hooks';
+import { useControllableValue, useId } from '@uifabric/react-hooks';
+import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@uifabric/utilities';
+import {
+  CommandButton,
+  DirectionalHint,
+  FocusZone,
+  FocusZoneDirection,
+  IButton,
+  Icon,
+  IContextualMenuProps,
+  IFocusZone,
+} from 'office-ui-fabric-react';
+import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
 import { useOverflow } from './useOverflow';
-import { IContextualMenuProps } from '../../ContextualMenu';
-import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>({
   useStaticStyles: true,
@@ -40,8 +43,9 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
     keyToTabIdMapping: {},
   };
 
-  React.Children.forEach(React.Children.toArray(props.children), (child: React.ReactChild, index: number) => {
+  React.Children.forEach(React.Children.toArray(props.children), (child: React.ReactNode, index: number) => {
     if (isPivotItem(child)) {
+      // eslint-disable-next-line deprecation/deprecation
       const { linkText, ...pivotItemProps } = child.props;
       const itemKey = child.props.itemKey || index.toString();
       result.links.push({
@@ -78,7 +82,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       },
     }));
 
-    const renderLinkContent = (link: IPivotItemProps): JSX.Element => {
+    const renderLinkContent = (link?: IPivotItemProps): JSX.Element | null => {
+      if (!link) {
+        return null;
+      }
+
       const { itemCount, itemIcon, headerText } = link;
       return (
         <span className={classNames.linkContent}>
@@ -121,9 +129,9 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
           key={itemKey}
           className={css(className, isSelected && classNames.linkIsSelected)}
           // eslint-disable-next-line react/jsx-no-bind
-          onClick={onLinkClick.bind(this, itemKey)}
+          onClick={(ev: React.MouseEvent<HTMLElement>) => onLinkClick(itemKey!, ev)}
           // eslint-disable-next-line react/jsx-no-bind
-          onKeyDown={onKeyDown.bind(this, itemKey)}
+          onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
           aria-label={link.ariaLabel}
           role="tab"
           aria-selected={isSelected}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
+import { Pivot, PivotItem } from '@fluentui/react-tabs';
 
 const getTabId = (itemKey: string) => {
   return `ShapeColorPivot_${itemKey}`;
@@ -8,8 +8,10 @@ const getTabId = (itemKey: string) => {
 export const PivotSeparateExample = () => {
   const [selectedKey, setSelectedKey] = React.useState('rectangleRed');
 
-  const handleLinkClick = (item: PivotItem) => {
-    setSelectedKey(item.props.itemKey!);
+  const handleLinkClick = (item?: PivotItem) => {
+    if (item) {
+      setSelectedKey(item.props.itemKey!);
+    }
   };
 
   return (

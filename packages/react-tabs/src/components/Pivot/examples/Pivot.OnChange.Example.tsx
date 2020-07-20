@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Pivot, IPivotItemProps, PivotItem } from '@fluentui/react-next/lib/Pivot';
-import { Label } from '@fluentui/react-next/lib/Label';
+import { Label } from 'office-ui-fabric-react';
+import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
 
 export const PivotOnChangeExample = () => {
   const [lastHeader, setLastHeader] = React.useState<{ props: IPivotItemProps } | undefined>(undefined);

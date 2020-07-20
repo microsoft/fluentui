@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { IButtonProps } from '@fluentui/react-next/lib/compat/Button';
-import { IRefObject, IRenderFunction } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IButtonProps, IKeytipProps } from 'office-ui-fabric-react';
+import { IRefObject, IRenderFunction } from '@uifabric/utilities';
 
 /**
  * {@docCategory Pivot}

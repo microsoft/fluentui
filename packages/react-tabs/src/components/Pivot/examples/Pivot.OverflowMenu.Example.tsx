@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { Pivot, PivotItem, IPivotItemProps, Label, Icon, Toggle, Fabric } from '@fluentui/react-next';
-
-const onChange = (setValue: (val: boolean) => void) =>
-  React.useCallback((_event: unknown, value: boolean) => setValue(value), []);
+import { Fabric, Icon, Label, Toggle } from 'office-ui-fabric-react';
+import { useBoolean } from '@uifabric/react-hooks';
+import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
 
 export const PivotOverflowMenuExample: React.FunctionComponent = () => {
-  const [overflow, setOverflow] = React.useState<boolean>(true);
-  const [tabs, setTabs] = React.useState<boolean>(false);
-  const [rtl, setRTL] = React.useState<boolean>(false);
+  const [overflow, { toggle: toggleOverflow }] = useBoolean(true);
+  const [tabs, { toggle: toggleTabs }] = useBoolean(true);
+  const [rtl, { toggle: toggleRtl }] = useBoolean(true);
 
   return (
     <>
       <div style={{ background: '#EEE' }}>
-        <Toggle label="overflow" offText="none" onText="menu" checked={overflow} onChange={onChange(setOverflow)} />
-        <Toggle label="linkFormat" offText="links" onText="tabs" checked={tabs} onChange={onChange(setTabs)} />
-        <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={onChange(setRTL)} />
+        <Toggle label="overflow" offText="none" onText="menu" checked={overflow} onChange={toggleOverflow} />
+        <Toggle label="linkFormat" offText="links" onText="tabs" checked={tabs} onChange={toggleTabs} />
+        <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={toggleRtl} />
       </div>
       <Fabric dir={rtl ? 'rtl' : 'ltr'}>
         <Pivot
@@ -52,7 +51,14 @@ export const PivotOverflowMenuExample: React.FunctionComponent = () => {
   );
 };
 
-function _customRenderer(link: IPivotItemProps, defaultRenderer: (link: IPivotItemProps) => JSX.Element): JSX.Element {
+function _customRenderer(
+  link?: IPivotItemProps,
+  defaultRenderer?: (link?: IPivotItemProps) => JSX.Element | null,
+): JSX.Element | null {
+  if (!link || !defaultRenderer) {
+    return null;
+  }
+
   return (
     <span style={{ flex: '0 1 100%' }}>
       {defaultRenderer({ ...link, itemIcon: undefined })}

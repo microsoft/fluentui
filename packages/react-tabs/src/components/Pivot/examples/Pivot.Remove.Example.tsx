@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
-import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
-import { Label } from '@fluentui/react-next/lib/Label';
+import { DefaultButton, Label } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
+import { Pivot, PivotItem } from '@fluentui/react-tabs';
 
 export const PivotRemoveExample = () => {
   const [showFirstItem, { toggle: toggleShowFirstItem }] = useBoolean(true);

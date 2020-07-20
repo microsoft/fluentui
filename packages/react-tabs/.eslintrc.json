@@ -1,4 +1,8 @@
 {
-  "extends": ["plugin:@fluentui/eslint-plugin/react"],
-  "root": true
+  // OUFR has some overrides this package needs to mirror
+  "extends": ["../office-ui-fabric-react/.eslintrc"],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error"
+  }
 }

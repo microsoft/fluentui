@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { PivotItem } from './PivotItem';
 
 /**

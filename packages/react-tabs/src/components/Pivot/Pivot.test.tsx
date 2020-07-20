@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { create } from '@uifabric/utilities/lib/test';
 import { mount } from 'enzyme';
-import { resetIds } from '../../Utilities';
+import { resetIds } from '@uifabric/utilities';
 import { Pivot, PivotItem, IPivot } from './index';
 
 describe('Pivot', () => {

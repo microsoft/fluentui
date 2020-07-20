@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { Label, ILabelStyles } from '@fluentui/react-next/lib/Label';
-import { Icon } from '@fluentui/react-next/lib/Icon';
-import { PivotItem, IPivotItemProps, Pivot } from '@fluentui/react-next/lib/Pivot';
-import { IStyleSet } from '@fluentui/react-next/lib/Styling';
+import { Icon, ILabelStyles, IStyleSet, Label } from 'office-ui-fabric-react';
+import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
   root: { marginTop: 10 },
@@ -32,11 +30,18 @@ export const PivotIconCountExample: React.FunctionComponent = () => {
   );
 };
 
-function _customRenderer(link: IPivotItemProps, defaultRenderer: (link: IPivotItemProps) => JSX.Element): JSX.Element {
+function _customRenderer(
+  link?: IPivotItemProps,
+  defaultRenderer?: (link?: IPivotItemProps) => JSX.Element | null,
+): JSX.Element | null {
+  if (!link || !defaultRenderer) {
+    return null;
+  }
+
   return (
-    <span>
-      {defaultRenderer(link)}
-      <Icon iconName="Airplane" style={{ color: 'red' }} />
+    <span style={{ flex: '0 1 100%' }}>
+      {defaultRenderer({ ...link, itemIcon: undefined })}
+      <Icon iconName={link.itemIcon} style={{ color: 'red' }} />
     </span>
   );
 }

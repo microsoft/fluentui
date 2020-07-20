@@ -1,4 +1,4 @@
-import { getWindow } from '../../Utilities';
+import { getWindow } from '@uifabric/utilities';
 
 /**
  * Wrapper for ResizeObserver, with fallback for browsers that don't support ResizeObserver.
