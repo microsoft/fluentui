@@ -1,3 +1,4 @@
+// Configuration documentation: https://microsoft.github.io/lage/guide/config.html
 module.exports = {
   pipeline: {
     build: ['^build'],
@@ -10,9 +11,12 @@ module.exports = {
     'update-snapshots': ['^update-snapshots'],
   },
 
+  // Ignores these minimatch patterns when considers what packages have changed for the --since flag
   ignore: ['change/**', 'README.md'],
 
+  // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md
   cacheOptions: {
+    // These are the subset of files in the package directories that will be saved into the cache
     outputGlob: [
       'dist/**/*',
       'lib/**/*',
@@ -31,7 +35,8 @@ module.exports = {
       'coverage/**/*',
     ],
 
-    // These are relative to the git root
+    // These are relative to the git root, and affects the hash of the cache
+    // Any of these file changes will invalidate cache
     environmentGlob: ['.devops/**/*', '*.js', '*.json', '*.yml'],
   },
 };
