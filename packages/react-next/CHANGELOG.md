@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Sat, 18 Jul 2020 00:04:51 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Jul 2020 12:44:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.64)
+
+Mon, 20 Jul 2020 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.63..@fluentui/react-next_v8.0.0-alpha.64)
+
+### Changes
+
+- Move useRefEffect hook to the react-hooks package. ([PR #14054](https://github.com/microsoft/fluentui/pull/14054) by behowell@microsoft.com)
 
 ## [8.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.63)
 

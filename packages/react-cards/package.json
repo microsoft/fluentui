@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-cards",
-  "version": "0.110.3",
+  "version": "0.110.4",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,7 +36,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.12.94",
+    "@uifabric/example-app-base": "^7.12.95",
     "@uifabric/jest-serializer-merge-styles": "^7.0.31",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -47,14 +47,14 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/azure-themes": "^7.1.43",
+    "@uifabric/azure-themes": "^7.1.44",
     "@uifabric/file-type-icons": "^7.4.4",
     "@uifabric/foundation": "^7.7.37",
     "@uifabric/set-version": "^7.0.17",
     "@uifabric/styling": "^7.14.3",
-    "@uifabric/theme-samples": "^7.0.106",
+    "@uifabric/theme-samples": "^7.0.107",
     "@uifabric/utilities": "^7.24.3",
-    "office-ui-fabric-react": "^7.123.4",
+    "office-ui-fabric-react": "^7.123.5",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

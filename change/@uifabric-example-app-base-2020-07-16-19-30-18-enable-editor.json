@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Re-enable editor with improved error handling",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-17T02:30:15.544Z"
-}

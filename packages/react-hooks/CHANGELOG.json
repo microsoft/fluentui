@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Mon, 20 Jul 2020 12:44:29 GMT",
+      "tag": "@uifabric/react-hooks_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add useRefEffect hook to the react-hooks package.",
+            "author": "behowell@microsoft.com",
+            "commit": "0894e3feb752839bc00231bac7965df6125ea5f1",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 18 Jul 2020 00:04:51 GMT",
       "tag": "@uifabric/react-hooks_v7.5.4",
       "version": "7.5.4",
