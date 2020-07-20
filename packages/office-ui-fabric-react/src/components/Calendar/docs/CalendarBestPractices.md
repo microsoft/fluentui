@@ -1,4 +1,5 @@
 ### Layout
+
 - Don’t break the control apart.
 - Include an up and down arrow for navigating between time ranges and a chevron to make the calendar collapsible.
 
