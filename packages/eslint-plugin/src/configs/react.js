@@ -193,9 +193,8 @@ const config = {
     'react/static-property-placement': 'off',
     'spaced-comment': 'off',
 
-    // Enable ASAP (not done in this PR to make resulting changes reviewable)
-    'react-hooks/exhaustive-deps': 'off',
-    'react-hooks/rules-of-hooks': 'off',
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
     // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
     // but this is a very powerful rule we may want to use in other ways
     'no-restricted-syntax': 'off',
