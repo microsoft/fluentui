@@ -24,4 +24,4 @@ public render(): JSX.Element {
 }
 ```
 
-By re-creating the items array without mutating the values, the inner List will correctly determine its contents have changed and that it should re-render the new values.
+By re-creating the items array without mutating the values, the inner List will correctly determine its contents have changed and then it should re-render with the new values.
