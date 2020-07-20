@@ -1,0 +1,617 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagPicker renders correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+>
+  <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="combobox"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className=
+            ms-BasePicker-text
+            {
+              align-items: center;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
+              box-sizing: border-box;
+              display: flex;
+              flex-wrap: wrap;
+              min-height: 30px;
+              min-width: 180px;
+              position: relative;
+            }
+            &:hover {
+              border-color: #323130;
+            }
+      >
+        <span
+          className=
+              ms-BasePicker-itemsWrapper
+              {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 100%;
+              }
+          id="selected-items-id__0"
+          role="list"
+        >
+          <div
+            className=
+                ms-TagItem
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background: #f3f2f1;
+                  border-radius: 2px;
+                  box-sizing: content-box;
+                  color: #323130;
+                  cursor: default;
+                  display: flex;
+                  flex-shrink: 1;
+                  flex-wrap: nowrap;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 26px;
+                  line-height: 26px;
+                  margin-bottom: 2px;
+                  margin-left: 2px;
+                  margin-right: 2px;
+                  margin-top: 2px;
+                  max-width: 300px;
+                  min-width: 0px;
+                  outline: transparent;
+                  position: relative;
+                  user-select: none;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #edebe9;
+                  color: #201f1e;
+                }
+                &:hover .ms-TagItem-close {
+                  color: #323130;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: 1px solid WindowText;
+                }
+            data-is-focusable={true}
+            data-selection-index={0}
+            role="listitem"
+          >
+            <span
+              aria-label="black"
+              className=
+                  ms-TagItem-text
+                  {
+                    margin-bottom: 0;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 0;
+                    min-width: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              title="black"
+            >
+              black
+            </span>
+            <button
+              className=
+                  ms-Button
+                  ms-Button--icon
+                  ms-TagItem-close
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 0 2px 2px 0;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #605e5c;
+                    cursor: pointer;
+                    display: inline-block;
+                    flex: 0 0 auto;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    width: 30px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 2px;
+                    content: "";
+                    left: 2px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 2px;
+                    top: 2px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  &:hover {
+                    background-color: #f3f2f1;
+                    background: #e1dfdd;
+                    color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #005a9e;
+                    color: #ffffff;
+                  }
+              data-is-focusable={true}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              type="button"
+            >
+              <span
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+                data-automationid="splitbuttonprimary"
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                      }
+                  data-icon-name="Cancel"
+                >
+                  
+                </i>
+              </span>
+            </button>
+          </div>
+        </span>
+        <input
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__0"
+          autoCapitalize="off"
+          autoComplete="off"
+          className=
+              ms-BasePicker-input
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-self: flex-end;
+                background-color: transparent;
+                border-radius: 2px;
+                border: none;
+                color: #323130;
+                flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 30px;
+                outline: none;
+                padding-bottom: 0;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 0;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+          data-lpignore={true}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          role="textbox"
+          spellCheck={false}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TagPicker renders picker with selected item correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+>
+  <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="combobox"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className=
+            ms-BasePicker-text
+            {
+              align-items: center;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
+              box-sizing: border-box;
+              display: flex;
+              flex-wrap: wrap;
+              min-height: 30px;
+              min-width: 180px;
+              position: relative;
+            }
+            &:hover {
+              border-color: #323130;
+            }
+      >
+        <span
+          className=
+              ms-BasePicker-itemsWrapper
+              {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 100%;
+              }
+          id="selected-items-id__0"
+          role="list"
+        >
+          <div
+            className=
+                ms-TagItem
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background: #f3f2f1;
+                  border-radius: 2px;
+                  box-sizing: content-box;
+                  color: #323130;
+                  cursor: default;
+                  display: flex;
+                  flex-shrink: 1;
+                  flex-wrap: nowrap;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 26px;
+                  line-height: 26px;
+                  margin-bottom: 2px;
+                  margin-left: 2px;
+                  margin-right: 2px;
+                  margin-top: 2px;
+                  max-width: 300px;
+                  min-width: 0px;
+                  outline: transparent;
+                  position: relative;
+                  user-select: none;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #edebe9;
+                  color: #201f1e;
+                }
+                &:hover .ms-TagItem-close {
+                  color: #323130;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: 1px solid WindowText;
+                }
+            data-is-focusable={true}
+            data-selection-index={0}
+            role="listitem"
+          >
+            <span
+              aria-label="text"
+              className=
+                  ms-TagItem-text
+                  {
+                    margin-bottom: 0;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 0;
+                    min-width: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              title="text"
+            >
+              text
+            </span>
+            <button
+              className=
+                  ms-Button
+                  ms-Button--icon
+                  ms-TagItem-close
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 0 2px 2px 0;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #605e5c;
+                    cursor: pointer;
+                    display: inline-block;
+                    flex: 0 0 auto;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    width: 30px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 2px;
+                    content: "";
+                    left: 2px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 2px;
+                    top: 2px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  &:hover {
+                    background-color: #f3f2f1;
+                    background: #e1dfdd;
+                    color: #323130;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #005a9e;
+                    color: #ffffff;
+                  }
+              data-is-focusable={true}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              type="button"
+            >
+              <span
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+                data-automationid="splitbuttonprimary"
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                      }
+                  data-icon-name="Cancel"
+                >
+                  
+                </i>
+              </span>
+            </button>
+          </div>
+        </span>
+        <input
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__0"
+          autoCapitalize="off"
+          autoComplete="off"
+          className=
+              ms-BasePicker-input
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-self: flex-end;
+                background-color: transparent;
+                border-radius: 2px;
+                border: none;
+                color: #323130;
+                flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 30px;
+                outline: none;
+                padding-bottom: 0;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 0;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+          data-lpignore={true}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          role="textbox"
+          spellCheck={false}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,49 @@
+@import '../../common/common';
+@import '../../common/semanticSlots';
+
+.pickerText {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid $ms-color-neutralTertiary;
+  min-width: 180px;
+  min-height: 30px;
+  &:hover {
+    border-color: $inputBorderHoveredColor;
+  }
+
+  &.inputFocused {
+    position: relative;
+    border-color: $inputFocusBorderAltColor;
+    &:after {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      bottom: -1px;
+      right: -1px;
+      border: 2px solid $inputFocusBorderAltColor;
+    }
+  }
+}
+
+.pickerInput {
+  height: 34px;
+  border: none;
+  flex-grow: 1;
+  outline: none;
+  padding: 0 6px 0px;
+  align-self: flex-end;
+}
+
+.pickerItems {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.screenReaderOnly {
+  @include ms-screenReaderOnly;
+}

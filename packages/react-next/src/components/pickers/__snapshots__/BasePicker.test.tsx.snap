@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasePicker renders correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+>
+  <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="combobox"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+      >
+        <input
+          aria-autocomplete="both"
+          aria-controls=" "
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input"
+          data-lpignore={true}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          role="textbox"
+          spellCheck={false}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+>
+  <div
+    aria-expanded={false}
+    aria-haspopup="dialog"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="combobox"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+      >
+        <input
+          aria-autocomplete="both"
+          aria-controls=" "
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input testclass "
+          data-lpignore={true}
+          id="pckSelectedUser"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Bitte einen Benutzer angeben..."
+          role="textbox"
+          spellCheck={false}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
