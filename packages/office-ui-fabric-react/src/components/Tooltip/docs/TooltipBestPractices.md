@@ -8,7 +8,7 @@
 For a UI label that needs some explanation:
 
 - Briefly describe what you can do with the UI element.
-- Use the imperative verb form. For example, "Find text in this file." (not "Finds text in this file").
+- Use the imperative verb form. For example, "Find text in this file" (not "Finds text in this file").
 - Don't include end punctuation unless there is at least one complete sentence.
 
 For a truncated label or a label that’s likely to truncate in some languages:
