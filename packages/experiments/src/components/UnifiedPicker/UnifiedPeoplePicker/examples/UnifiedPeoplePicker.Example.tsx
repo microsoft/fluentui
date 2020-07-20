@@ -64,7 +64,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     item: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
     _markSuggestionSelected(item);
-    setPeopleSelectedItems(peopleSelectedItems => [...peopleSelectedItems, item.item]);
+    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, item.item]);
   };
 
   const _onSuggestionRemoved = (
@@ -118,7 +118,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
       });
     }
 
-    setPeopleSelectedItems(peopleSelectedItems => [...peopleSelectedItems, ...newList]);
+    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, ...newList]);
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
