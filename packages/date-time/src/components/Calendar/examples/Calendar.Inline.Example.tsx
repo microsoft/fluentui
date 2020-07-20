@@ -3,7 +3,7 @@ import { Calendar, DayOfWeek, defaultDayPickerStrings, DateRangeType } from '@ui
 
 import * as styles from './Calendar.Example.scss';
 
-export function CalendarInlineExample() {
+export const CalendarInlineExample = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
 
   const onSelectDate = React.useCallback(
@@ -28,4 +28,4 @@ export function CalendarInlineExample() {
       />
     </div>
   );
-}
+};
