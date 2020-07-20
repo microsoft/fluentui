@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "UnifiedPicker and UnifiedPeoplePicker: minor accessibility fixes",
+  "comment": "UnifiedPicker and SelectedItemsList: minor accessibility fixes",
   "packageName": "@uifabric/experiments",
   "email": "elvonspa@microsoft.com",
   "dependentChangeType": "patch",
