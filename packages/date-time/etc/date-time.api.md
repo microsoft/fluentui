@@ -31,28 +31,10 @@ export enum AnimationDirection {
 export const Calendar: import("react").FunctionComponent<import("./Calendar.types").ICalendarProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public
-export const DatePicker: import("react").FunctionComponent<import("./DatePicker.types").IDatePickerProps>;
+export const DatePicker: import("react").FunctionComponent<import("./DatePicker.types").IDatePickerProps & import("react").RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
-    constructor(props: IDatePickerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IDatePickerProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    reset(): void;
-    // (undocumented)
-    showDatePickerPopup(): void;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void;
-    }
+export const DatePickerBase: React.ForwardRefExoticComponent<IDatePickerProps & React.RefAttributes<HTMLDivElement>>;
 
 export { DateRangeType }
 
@@ -288,18 +270,6 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     today?: Date;
     underlined?: boolean;
     value?: Date;
-}
-
-// @public (undocumented)
-export interface IDatePickerState {
-    // (undocumented)
-    errorMessage?: string;
-    // (undocumented)
-    formattedDate?: string;
-    // (undocumented)
-    isDatePickerShown?: boolean;
-    // (undocumented)
-    selectedDate?: Date;
 }
 
 // @public (undocumented)
