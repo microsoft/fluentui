@@ -286,21 +286,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                         disabled: !day.isInMonth,
                       }),
                   }),
-                // {
-                //   return (
-                //     <Button
-                //       key={day.key}
-                //       content={day.date}
-                //       aria-label={`${formatMonthDayYear(day.originalDate, localizedStrings)}`}
-                //       onClick={e => {
-                //         _.invoke(props, 'onDateChange', e, { ...props, value: day });
-                //       }}
-                //       primary={day.isSelected}
-                //       disabled={!day.isInMonth}
-                //       text
-                //     />
-                //   );
-                // }
               ),
             )}
           </Grid>
