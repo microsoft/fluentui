@@ -2,6 +2,36 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.43",
+      "version": "7.1.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "style updates per devops ",
+            "author": "jagaheri@microsoft.com",
+            "commit": "23029b1fa37aac673e664121001c6e15d46bca50",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.41",
+      "version": "7.1.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/azure-themes_v7.1.40",
       "version": "7.1.40",

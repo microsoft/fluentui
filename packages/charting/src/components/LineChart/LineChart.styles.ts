@@ -62,11 +62,11 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
           display: 'none',
         },
         line: {
-          opacity: 0.1,
-          fill: theme.semanticColors.bodyText,
+          opacity: 0.2,
+          width: '1px',
+          stroke: theme.semanticColors.bodyText,
           selectors: {
             [HighContrastSelectorBlack]: {
-              opacity: 0.1,
               stroke: 'rgb(179, 179, 179)',
             },
           },

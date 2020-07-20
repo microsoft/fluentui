@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Charting: Fix sankey chart dark mode text not visble properly",
+  "packageName": "@uifabric/charting",
+  "email": "v-gorraj@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-17T09:07:38.346Z"
+}

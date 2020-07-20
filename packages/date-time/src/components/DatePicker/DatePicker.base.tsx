@@ -358,6 +358,12 @@ export const DatePickerBase = React.forwardRef(
           handleEscKey(ev);
           break;
 
+        case KeyCodes.down:
+          if (ev.altKey && !isCalendarShown) {
+            showDatePickerPopup();
+          }
+          break;
+
         default:
           break;
       }
