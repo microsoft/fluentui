@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Jul 2020 12:44:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.111](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.111)
+
+Mon, 20 Jul 2020 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.11.109..@uifabric/tsx-editor_v0.11.111)
+
+### Patches
+
+- Prevent infinite render loops on error ([PR #14078](https://github.com/microsoft/fluentui/pull/14078) by elcraig@microsoft.com)
 
 ## [0.11.108](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.11.108)
 
