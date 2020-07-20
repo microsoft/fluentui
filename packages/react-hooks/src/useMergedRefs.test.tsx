@@ -15,8 +15,10 @@ describe('useMergedRefs', () => {
   it('always returns the same ref (refs should be immutable)', () => {
     let lastMergedRef;
     const refFunc = () => null;
+    const refObject = React.createRef<boolean>();
+
     const TestComponent: React.FunctionComponent = () => {
-      lastMergedRef = useMergedRefs<boolean>(refFunc);
+      lastMergedRef = useMergedRefs<boolean>(refFunc, refObject);
       return null;
     };
 
@@ -32,7 +34,7 @@ describe('useMergedRefs', () => {
     let lastMergedRef;
 
     const TestComponent: React.FunctionComponent = () => {
-      lastMergedRef = useMergedRefs<boolean>(() => ({}));
+      lastMergedRef = useMergedRefs<boolean>(() => ({}), React.createRef());
       return null;
     };
 
