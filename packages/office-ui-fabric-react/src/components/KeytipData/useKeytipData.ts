@@ -15,15 +15,12 @@ export interface IKeytipData {
  */
 export function useKeytipData(options: KeytipDataOptions): IKeytipData {
   const uniqueId = React.useRef<string>();
-  // TODO: verify with @xugao whether this should ever change
-  const keytipProps: IKeytipProps | undefined = useConst(
-    options.keytipProps
-      ? {
-          disabled: options.disabled,
-          ...options.keytipProps,
-        }
-      : undefined,
-  );
+  const keytipProps: IKeytipProps | undefined = options.keytipProps
+    ? {
+        disabled: options.disabled,
+        ...options.keytipProps,
+      }
+    : undefined;
 
   const keytipManager = useConst<KeytipManager>(KeytipManager.getInstance());
 
@@ -37,7 +34,9 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
       // Unregister Keytip in KeytipManager
       keytipProps && keytipManager.unregister(keytipProps, uniqueId.current!);
     };
-  }, [keytipManager, keytipProps]);
+    // this is meant to run only at mount, and updates are handled separately
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const prevOptions = usePrevious(options);
 
