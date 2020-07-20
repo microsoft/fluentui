@@ -1,8 +1,27 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Jul 2020 12:44:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.6.0)
+
+Mon, 20 Jul 2020 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.5.4..@uifabric/react-hooks_v7.6.0)
+
+### Minor changes
+
+- Add useRefEffect hook to the react-hooks package. ([PR #14054](https://github.com/microsoft/fluentui/pull/14054) by behowell@microsoft.com)
+
+## [7.5.3](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.5.3)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.5.1..@uifabric/react-hooks_v7.5.3)
+
+### Patches
+
+- Adding useSetTimeOut hook. ([PR #13689](https://github.com/microsoft/fluentui/pull/13689) by czearing@outlook.com)
+- useMergedRefs: now mutates the resulting ref if the merged refs mutate. ([PR #14053](https://github.com/microsoft/fluentui/pull/14053) by dzearing@hotmail.com)
 
 ## [7.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.5.0)
 
