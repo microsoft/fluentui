@@ -5,4 +5,4 @@
 - When there is a need to show the face pile expanded into a vertical list, include a downward chevron button. Selecting the chevron opens a standard list view of people. 
 - When the face pile exceeds a max number of 5 people, show a button at the end of the list indicating how many are not being shown. Clicking or tapping on the overflow would open a standard list view of people.
 - The component can include an "Add" button which can be used for quickly adding a person to the list. 
-- Allow a way for the people to understand who each person in the facepile is. Many common ways to do this are with a tooltip or adding the ability to open up a people card.
+- When hovering over a person in the facepile, include a tooltip or people card that offers more information about that person.
