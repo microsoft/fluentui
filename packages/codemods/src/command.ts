@@ -21,8 +21,8 @@ export const yargsParse = (passedArgs: string[]) => {
       array: true,
       description: 'A list of strings of mod names to run',
     })
-    .option('modNameRegexs', {
-      alias: 'nr',
+    .option('modPatterns', {
+      alias: 'r',
       type: 'string',
       array: true,
       description: 'A list of strings of mod names to exclude',
@@ -46,7 +46,7 @@ export class CommandParser {
     }
     const filts = {
       stringFilter: Maybe(parsed.modNames),
-      regexFilter: Maybe(parsed.modNameRegexs),
+      regexFilter: Maybe(parsed.modPatterns),
     };
 
     const filter = parsed.excludeMods ? getModExcludeFilter(filts) : getModFilter(filts);
