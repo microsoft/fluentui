@@ -86,6 +86,7 @@ export interface PopupProps
 
   /**
    * Function to render popup content.
+   * @deprecated Please use `popperRef` to get an imperative handle to Popper's APIs.
    * @param updatePosition - function to request popup position update.
    */
   renderContent?: (updatePosition: Function) => ShorthandValue<PopupContentProps>;
@@ -138,6 +139,7 @@ export const Popup: React.FC<PopupProps> &
     offset,
     overflowBoundary,
     pointing,
+    popperRef,
     position,
     positionFixed,
     renderContent,
@@ -520,6 +522,7 @@ export const Popup: React.FC<PopupProps> &
           pointerTargetRef={pointerTargetRef}
           align={align}
           flipBoundary={flipBoundary}
+          popperRef={popperRef}
           position={position}
           positionFixed={positionFixed}
           offset={offset}
@@ -527,8 +530,9 @@ export const Popup: React.FC<PopupProps> &
           rtl={context.rtl}
           unstable_pinned={unstable_pinned}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
-          children={renderPopperChildren(classes)}
-        />
+        >
+          {renderPopperChildren(classes)}
+        </Popper>
       )}
     </Animation>
   );
