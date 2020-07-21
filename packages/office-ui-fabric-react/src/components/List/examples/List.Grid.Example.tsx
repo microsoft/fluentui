@@ -4,7 +4,7 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { useConst } from '@uifabric/react-hooks';
+import { useConst, useConstCallback } from '@uifabric/react-hooks';
 
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;
@@ -68,39 +68,36 @@ export const ListGridExample: React.FunctionComponent = () => {
   const columnCount = React.useRef(0);
   const rowHeight = React.useRef(0);
 
-  const getItemCountForPage = React.useCallback((itemIndex: number, surfaceRect: IRectangle) => {
+  const getItemCountForPage = useConstCallback((itemIndex: number, surfaceRect: IRectangle) => {
     if (itemIndex === 0) {
       columnCount.current = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       rowHeight.current = Math.floor(surfaceRect.width / columnCount.current);
     }
     return columnCount.current * ROWS_PER_PAGE;
-  }, []);
+  });
 
-  const onRenderCell = React.useCallback(
-    (item: IExampleItem, index: number | undefined) => {
-      return (
-        <div
-          className={classNames.listGridExampleTile}
-          data-is-focusable
-          style={{
-            width: 100 / columnCount.current + '%',
-          }}
-        >
-          <div className={classNames.listGridExampleSizer}>
-            <div className={classNames.listGridExamplePadder}>
-              <img src={item.thumbnail} className={classNames.listGridExampleImage} />
-              <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
-            </div>
+  const onRenderCell = useConstCallback((item: IExampleItem, index: number | undefined) => {
+    return (
+      <div
+        className={classNames.listGridExampleTile}
+        data-is-focusable
+        style={{
+          width: 100 / columnCount.current + '%',
+        }}
+      >
+        <div className={classNames.listGridExampleSizer}>
+          <div className={classNames.listGridExamplePadder}>
+            <img src={item.thumbnail} className={classNames.listGridExampleImage} />
+            <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
           </div>
         </div>
-      );
-    },
-    [columnCount.current],
-  );
+      </div>
+    );
+  });
 
-  const getPageHeight = (): number => {
+  const getPageHeight = useConstCallback((): number => {
     return rowHeight.current * ROWS_PER_PAGE;
-  };
+  });
 
   const items = useConst(() => createListItems(5000));
   return (
@@ -109,7 +106,6 @@ export const ListGridExample: React.FunctionComponent = () => {
         className={classNames.listGridExample}
         items={items}
         getItemCountForPage={getItemCountForPage}
-        // eslint-disable-next-line react/jsx-no-bind
         getPageHeight={getPageHeight}
         renderedWindowsAhead={4}
         onRenderCell={onRenderCell}
