@@ -147,3 +147,6 @@ export { cardTopControlsStyles as CardTopControls } from './components/Card/card
 export { cardExpandableBoxStyles as CardExpandableBox } from './components/Card/cardExpandableBoxStyles';
 
 export { datepickerStyles as Datepicker } from './components/Datepicker/datepickerStyles';
+export { datepickerCalendarStyles as DatepickerCalendar } from './components/Datepicker/datepickerCalendarStyles';
+export { datepickerCalendarHeaderStyles as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderStyles';
+export { datepickerCalendarHeaderCellStyles as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellStyles';
