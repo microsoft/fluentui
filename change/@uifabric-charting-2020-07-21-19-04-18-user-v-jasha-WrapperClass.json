@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "Wrapper base - common component",
+  "comment": "Wrapper base common component",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-07-21T13:34:18.416Z"
 }
