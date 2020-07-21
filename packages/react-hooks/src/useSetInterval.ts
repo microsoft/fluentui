@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useConst } from './useConst';
-import { useEffect } from 'react';
 
 export type UseSetIntervalReturnType = {
   setInterval: (callback: () => void, duration: number) => number;
@@ -13,28 +12,29 @@ export type UseSetIntervalReturnType = {
 export const useSetInterval = (): UseSetIntervalReturnType => {
   const intervalIds = useConst<Record<number, number>>({});
 
-  useEffect(
+  React.useEffect(
     () => () => {
       for (const id of Object.keys(intervalIds)) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         clearInterval(id as any);
       }
     },
-    [],
+    // useConst ensures this will never change, but react-hooks/exhaustive-deps doesn't know that
+    [intervalIds],
   );
 
-  return {
-    setInterval: React.useCallback((func: () => void, duration: number): number => {
+  return useConst({
+    setInterval: (func: () => void, duration: number): number => {
       const id = (setInterval(func, duration) as unknown) as number;
 
       intervalIds[id] = 1;
 
       return id;
-    }, []),
+    },
 
-    clearInterval: React.useCallback((id: number): void => {
+    clearInterval: (id: number): void => {
       delete intervalIds[id];
       clearInterval(id);
-    }, []),
-  };
+    },
+  });
 };
