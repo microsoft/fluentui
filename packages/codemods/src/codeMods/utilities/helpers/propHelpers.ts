@@ -6,7 +6,6 @@ import {
   JsxSelfClosingElement,
   VariableDeclarationKind,
   CodeBlockWriter,
-  JsxSpreadAttribute,
   Identifier,
 } from 'ts-morph';
 import { ValueMap } from 'src/codeMods/types';
