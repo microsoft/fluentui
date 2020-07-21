@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Wrapper base - common component",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-07-21T13:34:18.416Z"
+}
