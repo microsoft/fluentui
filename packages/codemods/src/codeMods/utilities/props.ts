@@ -1,7 +1,7 @@
-import { JsxOpeningElement, JsxSelfClosingElement, SyntaxKind } from 'ts-morph';
-import { Maybe } from '../../maybe';
-import { PropTransform } from '../types';
 import { renamePropInSpread } from './helpers/propHelpers';
+import { JsxOpeningElement, JsxSelfClosingElement, SyntaxKind } from 'ts-morph';
+import { Maybe } from '../../helpers/maybe';
+import { PropTransform } from '../types';
 
 export function renameProp(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],
@@ -13,14 +13,15 @@ export function renameProp(
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
     const foundProp = Maybe(val.getAttribute(toRename));
-    if (foundProp.just) {
+
+    if (foundProp.something) {
       /* If found, do a simple name-replacementName. */
       foundProp.value.set({ name: replacementName });
       if (replacementValue) {
         foundProp.value.set({ initializer: `{${replacementValue}}` });
       } else {
         const enumInJsx = Maybe(foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression));
-        if (enumInJsx.just) {
+        if (enumInJsx.something) {
           if (transform) {
             transform(enumInJsx.value, toRename, replacementName);
           }

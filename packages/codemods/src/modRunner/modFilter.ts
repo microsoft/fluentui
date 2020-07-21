@@ -1,5 +1,5 @@
 import { CodeMod } from '../codeMods/types';
-import { Maybe } from '../maybe';
+import { Maybe } from '../helpers/maybe';
 
 export function getStringFilter(filter: string) {
   return (modString: string) => {

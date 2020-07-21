@@ -1,6 +1,6 @@
 import { CodeMod } from '../codeMods/types';
 import { Glob } from 'glob';
-import { Maybe, Nothing, Just } from '../maybe';
+import { Maybe, Nothing, Something } from '../helpers/maybe';
 
 // TODO ensure that async for all these utilities works
 export function runMods<T>(
@@ -83,6 +83,6 @@ export function getEnabledMods(getPaths = getModsPaths, loadM = loadMod) {
     .map(v => v.value);
 }
 
-export function modEnabled<T>(mod: Maybe<CodeMod<T>>): mod is Just<CodeMod<T>> {
+export function modEnabled<T>(mod: Maybe<CodeMod<T>>): mod is Something<CodeMod<T>> {
   return mod.then(v => !!v.enabled).orElse(false);
 }

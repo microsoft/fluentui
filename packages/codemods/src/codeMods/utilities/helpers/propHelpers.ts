@@ -9,7 +9,7 @@ import {
   Identifier,
 } from 'ts-morph';
 import { ValueMap } from 'src/codeMods/types';
-import { Maybe } from '../../../maybe';
+import { Maybe } from '../../../helpers/maybe';
 
 /* Helper function to rename a prop if in a spread operator.  */
 export function renamePropInSpread(
@@ -39,7 +39,7 @@ export function renamePropInSpread(
             let blockContainer = getBlockContainer(element);
             if (blockContainer === undefined) {
               const containerMaybe = propsArrowFunction(element);
-              if (containerMaybe.just) {
+              if (containerMaybe.something) {
                 blockContainer = containerMaybe.value;
                 newJSXFlag = true;
               } else {
@@ -89,7 +89,7 @@ export function renamePropInSpread(
                   elementType as SyntaxKind.JsxOpeningElement | SyntaxKind.JsxSelfClosingElement,
                 ),
               );
-              if (newSpreadProp.just && newJSXElem.just) {
+              if (newSpreadProp.something && newJSXElem.something) {
                 attrToRename = newSpreadProp.value;
                 element = newJSXElem.value;
               }
