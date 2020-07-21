@@ -48,7 +48,7 @@ import {
   Popper,
   PositioningProps,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
@@ -389,7 +389,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     headerMessage,
     moveFocusOnTab,
     noResultsMessage,
-    list,
     loading,
     loadingMessage,
     placeholder,
@@ -405,6 +404,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     unstable_pinned,
     variables,
   } = props;
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
 
   const buttonRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
@@ -638,7 +638,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
           targetRef={containerRef}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
-          {...getPopperPropsFromShorthand(list)}
+          {...positioningProps}
         >
           {List.create(list, {
             defaultProps: () => ({
