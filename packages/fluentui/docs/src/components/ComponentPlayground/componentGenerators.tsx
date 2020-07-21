@@ -14,6 +14,7 @@ import {
   CardHeader as _CardHeader,
   Flex as _Flex,
   Text as _Text,
+  DatepickerProps,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as faker from 'faker';
@@ -33,6 +34,10 @@ export const Avatar: KnobComponentGenerators<AvatarProps> = {
 export const Box: KnobComponentGenerators<BoxProps> = {
   // TODO: fix support for boxes
   children: () => null,
+};
+
+export const Datepicker: KnobComponentGenerators<DatepickerProps> = {
+  calendar: () => null,
 };
 
 export const Card: KnobComponentGenerators<CardProps> = {

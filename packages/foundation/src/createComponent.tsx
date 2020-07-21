@@ -47,7 +47,7 @@ export function createComponent<
   const { factoryOptions = {} } = options;
   const { defaultProp } = factoryOptions;
 
-  const result: React.FunctionComponent<TComponentProps> = (
+  const ResultComponent: React.FunctionComponent<TComponentProps> = (
     componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>,
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
@@ -56,13 +56,13 @@ export function createComponent<
       options.fields,
     );
 
-    const useState = options.state;
+    const stateReducer = options.state;
 
-    if (useState) {
+    if (stateReducer) {
       // Don't assume state will return all props, so spread useState result over component props.
       componentProps = {
         ...componentProps,
-        ...useState(componentProps),
+        ...stateReducer(componentProps),
       };
     }
 
@@ -89,19 +89,19 @@ export function createComponent<
     return view(viewProps);
   };
 
-  result.displayName = options.displayName || view.name;
+  ResultComponent.displayName = options.displayName || view.name;
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
   //       Need to weigh creating default factories on component creation vs. memoizing them on use in slots.tsx.
   if (defaultProp) {
-    (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
+    (ResultComponent as ISlotCreator<TComponentProps, any>).create = createFactory(ResultComponent, { defaultProp });
   }
 
-  assign(result, options.statics);
+  assign(ResultComponent, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as React.FunctionComponent<TComponentProps> & TStatics;
+  return ResultComponent as React.FunctionComponent<TComponentProps> & TStatics;
 }
 
 /**
