@@ -29,7 +29,7 @@ import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentPr
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import { Popup, PopupProps } from '../Popup/Popup';
-import { DatepickerCalendar, datepickerCalendarClassName, DatepickerCalendarProps } from './DatepickerCalendar';
+import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 import { DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
@@ -211,22 +211,18 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     rtl: context.rtl,
   });
 
-  const handleChange: DatepickerCalendarProps['onDateChange'] = (e, data) => {
-    const targetDay = data.value;
-    setSelectedDate(targetDay.originalDate);
-    setOpen(false);
-
-    _.invoke(props, 'onDateChange', e, { ...props, value: targetDay });
-  };
+  const overrideDatepickerCalendarProps = (predefinedProps: DatepickerCalendarProps): DatepickerCalendarProps => ({
+    ...calendarOptions,
+    onDateChange: (e, itemProps) => {
+      setSelectedDate(itemProps.value.originalDate);
+      setOpen(false);
+      _.invoke(predefinedProps, 'onDateChange', e, itemProps);
+    },
+  });
 
   const calendarElement = createShorthand(DatepickerCalendar, calendar, {
-    defaultProps: () =>
-      getA11yProps('calendar', {
-      }),
-    overrideProps: (predefinedProps) => ({
-      ...calendarOptions,
-      onDateChange: handleChange(predefinedProps),
-    }),
+    defaultProps: () => getA11yProps('calendar', {}),
+    overrideProps: overrideDatepickerCalendarProps,
   });
 
   const element = (
@@ -246,8 +242,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               trapFocus: true,
               trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />,
             }),
-            overrideProps: () => ({
-              onOpenChange: (e, { open }) => setOpen(open),
+            overrideProps: (predefinedProps: PopupProps): PopupProps => ({
+              onOpenChange: (e, { open }) => {
+                setOpen(open);
+                _.invoke(predefinedProps, 'onOpenChange', e, { open });
+              },
             }),
           })}
         </ElementType>,

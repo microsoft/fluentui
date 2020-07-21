@@ -4,7 +4,7 @@ import { compose } from '@fluentui/react-bindings';
 import { ChevronEndIcon, ChevronStartIcon } from '@fluentui/react-icons-northstar';
 import { Button, ButtonProps, ButtonStylesProps } from '../Button/Button';
 
-export type DatepickerCalendarHeaderActionProps = {
+export type DatepickerCalendarHeaderActionProps = ButtonProps & {
   /** What direction the action button should be pointing */
   direction?: 'previous' | 'next';
 };

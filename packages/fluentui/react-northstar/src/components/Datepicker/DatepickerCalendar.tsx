@@ -174,6 +174,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     weeksToShow,
     localizedStrings,
     today,
+    onDateChange,
   } = props;
 
   const ElementType = getElementType(props);
@@ -217,13 +218,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const grid = getSlicedGrid();
 
-  const onPreviousClick = () => {
-    changeMonth(false);
-  };
-  const onNextClick = () => {
-    changeMonth(true);
-  };
-
   const changeMonth = (nextMonth: boolean) => {
     const updatedGridNavigatedDate = addMonths(gridNavigatedDate, nextMonth ? 1 : -1);
     setGridNavigatedDate(updatedGridNavigatedDate);
@@ -242,9 +236,15 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             defaultProps: () => ({
               label: formatMonthYear(gridNavigatedDate, localizedStrings),
             }),
-            overrideProps: () => ({
-              onPreviousClick,
-              onNextClick,
+            overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
+              onPreviousClick: (e, data) => {
+                changeMonth(false);
+                _.invoke(predefinedProps, 'onPreviousClick', e, data);
+              },
+              onNextClick: (e, data) => {
+                changeMonth(true);
+                _.invoke(predefinedProps, 'onNextClick', e, data);
+              },
             }),
           })}
           <Grid rows={grid.length + 1} columns={DAYS_IN_WEEK}>
@@ -268,9 +268,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                       primary: day.isSelected,
                       disabled: !day.isInMonth,
                     }),
-                  overrideProps: () => ({
+                  overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
                     onClick: e => {
-                      _.invoke(props, 'onDateChange', e, { ...props, value: day });
+                      onDateChange(e, { ...predefinedProps, value: day });
+                      _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
                     },
                   }),
                 }),

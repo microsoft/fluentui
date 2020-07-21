@@ -1,3 +1,6 @@
+import * as _ from 'lodash';
+import * as React from 'react';
+
 import {
   Accessibility,
   datepickerCalendarHeaderBehavior,
@@ -15,7 +18,6 @@ import {
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
-import * as React from 'react';
 import { FluentComponentStaticProps, ShorthandValue, ComponentEventHandler } from '../../types';
 import {
   commonPropTypes,
@@ -111,8 +113,11 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
             title: 'Previous Month',
             direction: 'previous',
           }),
-        overrideProps: () => ({
-          onClick: onPreviousClick,
+        overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
+          onClick: (e, data) => {
+            onPreviousClick(e, data);
+            _.invoke(predefinedProps, 'onClick', e, data);
+          },
         }),
       })}
       {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
@@ -123,8 +128,11 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
             title: 'Next Month',
             direction: 'next',
           }),
-        overrideProps: () => ({
-          onClick: onNextClick,
+        overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
+          onClick: (e, data) => {
+            onNextClick(e, data);
+            _.invoke(predefinedProps, 'onClick', e, data);
+          },
         }),
       })}
     </ElementType>
