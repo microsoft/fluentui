@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix \"rules of hooks\" lint rule violations",
-  "packageName": "@fluentui/react-stylesheets",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-18T04:53:28.129Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Disable react-hooks lint rules for now",
-  "packageName": "@fluentui/react-next",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-18T04:53:18.328Z"
-}
