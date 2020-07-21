@@ -1,8 +1,48 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Tue, 14 Jul 2020 12:41:43 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.5.0)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.4.0..@fluentui/codemods_v0.5.0)
+
+### Minor changes
+
+- add support for components rendered without a function body ([PR #14095](https://github.com/microsoft/fluentui/pull/14095) by t-dama@microsoft.com)
+
+### Patches
+
+- Codemods: Add in filtering based on cmd line strings ([PR #14072](https://github.com/microsoft/fluentui/pull/14072) by joschect@microsoft.com)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.4.0)
+
+Fri, 17 Jul 2020 12:38:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.3.1..@fluentui/codemods_v0.4.0)
+
+### Minor changes
+
+- add new prop transform file ([PR #14067](https://github.com/microsoft/fluentui/pull/14067) by t-dama@microsoft.com)
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.3.1)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.3.0..@fluentui/codemods_v0.3.1)
+
+### Patches
+
+- fix maybe to correctly wrap return value from then ([PR #14045](https://github.com/microsoft/fluentui/pull/14045) by joschect@microsoft.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.3.0)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.2.2..@fluentui/codemods_v0.3.0)
+
+### Minor changes
+
+- add value-changing ([PR #13993](https://github.com/microsoft/fluentui/pull/13993) by t-dama@microsoft.com)
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.2.2)
 

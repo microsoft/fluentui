@@ -484,17 +484,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     defaultRender?: IRenderFunction<IContextualMenuListProps>,
   ): JSX.Element => {
     let indexCorrection = 0;
+    const { items, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
-        {menuListProps.items.map((item, index) => {
-          const menuItem = this._renderMenuItem(
-            item,
-            index,
-            indexCorrection,
-            menuListProps.totalItemCount,
-            menuListProps.hasCheckmarks,
-            menuListProps.hasIcons,
-          );
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={role ?? 'menu'}>
+        {items.map((item, index) => {
+          const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
             const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
             indexCorrection += indexIncrease;

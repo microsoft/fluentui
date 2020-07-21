@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useConstCallback } from '@uifabric/react-hooks';
+import { useConstCallback, useConst } from '@uifabric/react-hooks';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ISearchBoxStyles, SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
@@ -52,15 +52,12 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     },
   );
 
-  const menuProps = React.useMemo(
-    () => ({
-      onRenderMenuList: renderMenuList,
-      title: 'Actions',
-      shouldFocusOnMount: true,
-      items,
-    }),
-    [items],
-  );
+  const menuProps = useConst(() => ({
+    onRenderMenuList: renderMenuList,
+    title: 'Actions',
+    shouldFocusOnMount: true,
+    items,
+  }));
 
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };

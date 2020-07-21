@@ -6,7 +6,7 @@ import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
 import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-/* eslint-disable max-len */
+/* eslint-disable @fluentui/max-len */
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage/';
