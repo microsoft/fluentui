@@ -1,6 +1,6 @@
 import { renameProp, findJsxTag, boolTransform, enumTransform } from '../../utilities';
 import { Project, SyntaxKind, JsxAttribute } from 'ts-morph';
-import { EnumMap } from '../../types';
+import { ValueMap, PropTransform } from '../../types';
 import { Maybe } from '../../../maybe';
 
 const personaPropsFile = 'mPersonaProps.tsx';
@@ -15,7 +15,7 @@ const newPropName = 'imageShouldFadeInwootwoot';
 
 /* Developer will provide a mapping of Enum Values, if necessary. */
 // TODO it's not ideal that devs need to write the enum name before every token.
-const spinnerMap: EnumMap<string> = {
+const spinnerMap: ValueMap<string> = {
   'SpinnerType.normal': 'SpinnerSize.medium',
   'SpinnerType.large': 'SpinnerSize.large',
 };
@@ -68,11 +68,10 @@ describe('Props Utilities Test', () => {
       const tags = findJsxTag(file, 'Dropdown');
       expect(tags.length).toEqual(2);
     });
-
     it('can rename and replace the values of props (primitives)', () => {
       const file = project.getSourceFileOrThrow(DropdownPropsFile);
       const tags = findJsxTag(file, 'Dropdown');
-      renameProp(tags, 'isDisabled', 'disabled', undefined, 'false');
+      renameProp(tags, 'isDisabled', 'disabled', 'false');
       tags.forEach(tag => {
         expect(tag.getAttribute('isDisabled')).toBeFalsy();
         const valMaybe = Maybe(tag.getAttribute('disabled'));
@@ -89,7 +88,7 @@ describe('Props Utilities Test', () => {
     it('can replace props with changed values in a spread attribute', () => {
       const file = project.getSourceFileOrThrow(DropdownSpreadPropsFile);
       const tags = findJsxTag(file, 'Dropdown');
-      renameProp(tags, 'isDisabled', 'disabled', undefined, 'false');
+      renameProp(tags, 'isDisabled', 'disabled', 'false');
       tags.forEach(val => {
         val.getAttributes().forEach(att => {
           if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
@@ -106,45 +105,12 @@ describe('Props Utilities Test', () => {
     });
   });
 
-  describe('Edge Case Tests (enums)', () => {
-    it('[SANITY] can ID the correct file and get the JSX elements', () => {
-      const file = project.getSourceFileOrThrow(spinnerPropsFile);
-      const tags = findJsxTag(file, 'Spinner');
-      expect(tags.length).toEqual(2);
-    });
-
-    it('can replace props with changed enum values in a spread attribute', () => {
-      const file = project.getSourceFileOrThrow(spinnerSpreadPropsFile);
-      let tags = findJsxTag(file, 'Spinner');
-      renameProp(tags, 'type', 'size', spinnerMap);
-      tags = findJsxTag(file, 'Spinner');
-      tags.forEach(val => {
-        val.getAttributes().forEach(att => {
-          if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
-            att
-              .getFirstChildByKind(SyntaxKind.Identifier)
-              ?.getType()
-              .getProperties()
-              .forEach(prop => {
-                expect(prop.getName()).not.toEqual('SpinnerType');
-              });
-          }
-          /* Want to see these substrings somewhere in the Jsx element. */
-          expect(
-            val.getText().includes('{...__migProps}') || val.getText().includes('{...__migPropsTest}'),
-          ).toBeTruthy();
-          expect(val.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
-        });
-      });
-    });
-  });
-
-  describe('Edge Case Tests (transform function)', () => {
+  describe('Edge Case Tests (transform functions)', () => {
     it('can rename and replace the values of props (primitives)', () => {
       const file = project.getSourceFileOrThrow(DropdownPropsFile);
       const tags = findJsxTag(file, 'Dropdown');
       const func = boolTransform(false);
-      renameProp(tags, 'isDisabled', 'disabled', undefined, undefined, func);
+      renameProp(tags, 'isDisabled', 'disabled', undefined, func);
       tags.forEach(tag => {
         expect(tag.getAttribute('isDisabled')).toBeFalsy();
         const valMaybe = Maybe(tag.getAttribute('disabled'));
@@ -158,12 +124,12 @@ describe('Props Utilities Test', () => {
       });
     });
 
-    it('can replace props with changed enum values', () => {
+    it('can replace props with changed enum values in Spinner (spread)', () => {
       const file = project.getSourceFileOrThrow(spinnerPropsFile);
       const tags = findJsxTag(file, 'Spinner');
       const oldEnumValues: string[] = ['SpinnerType.large', 'SpinnerType.normal'];
       const enumFn = enumTransform(spinnerMap);
-      renameProp(tags, 'type', 'size', undefined, undefined, enumFn);
+      renameProp(tags, 'type', 'size', undefined, enumFn);
       tags.forEach(tag => {
         expect(tag.getAttribute('type')).toBeFalsy();
         const currentEnumValue = Maybe(oldEnumValues.pop());
@@ -174,7 +140,6 @@ describe('Props Utilities Test', () => {
           const inner = innerMaybe.then(value => {
             return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
           });
-
           expect(inner.just).toBeTruthy();
           expect(currentEnumValue.just).toBeTruthy();
           const newVal = spinnerMap[currentEnumValue.value];
@@ -188,6 +153,53 @@ describe('Props Utilities Test', () => {
             expect(LastInnerChild.value.getText()).toEqual(newVal.substring(newVal.indexOf('.') + 1));
           }
         }
+      });
+    });
+  });
+
+  it('can replace props with changed enum values in Dropdown (spread)', () => {
+    const file = project.getSourceFileOrThrow(DropdownSpreadPropsFile);
+    const tags = findJsxTag(file, 'Dropdown');
+    const transform: PropTransform = boolTransform(true, undefined);
+    renameProp(tags, 'isDisabled', 'disabled', undefined, transform);
+    tags.forEach(val => {
+      val.getAttributes().forEach(att => {
+        if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
+          att
+            .getFirstChildByKind(SyntaxKind.Identifier)
+            ?.getType()
+            .getProperties()
+            .forEach(prop => {
+              expect(prop.getName()).not.toEqual('isDisabled');
+            });
+        }
+        /* Want to see these substrings somewhere in the Jsx element. */
+        expect(val.getText().includes('{...__migProps}') || val.getText().includes('{...__migPropsTest}')).toBeTruthy();
+        expect(val.getText().includes('disabled={true}')).toBeTruthy();
+      });
+    });
+  });
+
+  it('can replace props with changed enum values in a spread attribute', () => {
+    const file = project.getSourceFileOrThrow(spinnerSpreadPropsFile);
+    let tags = findJsxTag(file, 'Spinner');
+    const transform = enumTransform(spinnerMap);
+    renameProp(tags, 'type', 'size', undefined, transform);
+    tags = findJsxTag(file, 'Spinner');
+    tags.forEach(val => {
+      val.getAttributes().forEach(att => {
+        if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
+          att
+            .getFirstChildByKind(SyntaxKind.Identifier)
+            ?.getType()
+            .getProperties()
+            .forEach(prop => {
+              expect(prop.getName()).not.toEqual('SpinnerType');
+            });
+        }
+        /* Want to see these substrings somewhere in the Jsx element. */
+        expect(val.getText().includes('{...__migProps}') || val.getText().includes('{...__migPropsTest}')).toBeTruthy();
+        expect(val.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
       });
     });
   });
