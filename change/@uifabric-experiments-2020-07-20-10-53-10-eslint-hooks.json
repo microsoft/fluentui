@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Disable react-hooks lint rules for now.",
+  "packageName": "@uifabric/experiments",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "none",
+  "date": "2020-07-20T17:53:10.538Z"
+}
