@@ -12,8 +12,8 @@ import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { DEFAULT_ROW_HEIGHTS } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow.styles';
-import { IGroupHeaderProps } from './GroupHeader';
-import { IGroupShowAllProps } from './GroupShowAll.styles';
+import { IGroupHeaderProps } from './GroupHeader.types';
+import { IGroupShowAllProps } from './GroupShowAll.types';
 import { IGroupFooterProps } from './GroupFooter.types';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();

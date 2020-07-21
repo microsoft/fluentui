@@ -6,6 +6,7 @@
 
 import { BaseSlots } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { DetailsRowGlobalClassNames } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow.styles';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from '@fluentui/react-next/lib/compat/Button';
@@ -14,17 +15,24 @@ import { IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
+import { IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
+import { IDragDropEvents } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
+import { IDragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { ILayerProps } from 'office-ui-fabric-react/lib/Layer';
+import { IList } from 'office-ui-fabric-react/lib/List';
+import { IListProps } from 'office-ui-fabric-react/lib/List';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ISelection } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { ISettings } from 'office-ui-fabric-react/lib/Utilities';
 import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
@@ -34,12 +42,15 @@ import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { ISvgIconProps } from '@fluentui/react-icons';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IViewport } from 'office-ui-fabric-react/lib/utilities/decorators/withViewport';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { SlotProp } from '@fluentui/react-compose';
 import { SlotProps } from '@fluentui/react-compose';
 import { ThemeProviderProps } from '@fluentui/react-theme-provider';
@@ -134,6 +145,14 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
 }
 
 // @public (undocumented)
+export enum CollapseAllVisibility {
+    // (undocumented)
+    hidden = 0,
+    // (undocumented)
+    visible = 1
+}
+
+// @public (undocumented)
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
@@ -149,6 +168,8 @@ export const Customizer: React.FunctionComponent<ICustomizerProps>;
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
+
+export { DetailsRowGlobalClassNames }
 
 // @public (undocumented)
 export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
@@ -200,6 +221,68 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
+// @public (undocumented)
+export const GroupedList: React.FunctionComponent<IGroupedListProps>;
+
+// @public (undocumented)
+export class GroupedListBase<T> extends React.Component<IGroupedListProps<T>, IGroupedListState> implements IGroupedList {
+    constructor(props: IGroupedListProps<T>);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    static defaultProps: {
+        selectionMode: SelectionMode;
+        isHeaderVisible: boolean;
+        groupProps: {};
+        compact: boolean;
+    };
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    getStartItemIndexInView(): number;
+    // (undocumented)
+    refs: {
+        [key: string]: React.ReactInstance;
+    };
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    // (undocumented)
+    toggleCollapseAll(allCollapsed: boolean): void;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps<T>): void;
+    }
+
+// @public (undocumented)
+export class GroupedListSection<T = unknown> extends React.Component<IGroupedListSectionProps<T>, IGroupedListSectionState> {
+    constructor(props: IGroupedListSectionProps<T>);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IGroupedListSectionProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    forceListUpdate(): void;
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
+export const GroupFooter: React.FunctionComponent<IGroupFooterProps>;
+
+// @public (undocumented)
+export const GroupHeader: React.FunctionComponent<IGroupHeaderProps>;
+
+// @public (undocumented)
+export const GroupShowAll: React.FunctionComponent<IGroupShowAllProps>;
+
+// @public (undocumented)
+export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
 
 // @public (undocumented)
 export interface IAccessiblePopupProps {
@@ -628,6 +711,267 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
+}
+
+// @public (undocumented)
+export interface IGroup {
+    ariaLabel?: string;
+    children?: IGroup[];
+    count: number;
+    data?: unknown;
+    hasMoreData?: boolean;
+    isCollapsed?: boolean;
+    isDropEnabled?: boolean;
+    // @deprecated
+    isSelected?: boolean;
+    isShowingAll?: boolean;
+    key: string;
+    level?: number;
+    name: string;
+    startIndex: number;
+}
+
+// @public (undocumented)
+export interface IGroupDividerProps {
+    className?: string;
+    compact?: boolean;
+    // (undocumented)
+    componentRef?: IRefObject<{}>;
+    // @deprecated
+    expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    footerText?: string;
+    group?: IGroup;
+    groupIndex?: number;
+    groupLevel?: number;
+    groups?: IGroup[];
+    indentWidth?: number;
+    isCollapsedGroupSelectVisible?: boolean;
+    isGroupLoading?: (group: IGroup) => boolean;
+    // @deprecated
+    isSelected?: boolean;
+    loadingText?: string;
+    onGroupHeaderClick?: (group: IGroup) => void;
+    onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
+    onToggleCollapse?: (group: IGroup) => void;
+    onToggleSelectGroup?: (group: IGroup) => void;
+    onToggleSummarize?: (group: IGroup) => void;
+    selected?: boolean;
+    selectionMode?: SelectionMode;
+    showAllLinkText?: string;
+    theme?: ITheme;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedList extends IList {
+    forceUpdate: () => void;
+    toggleCollapseAll: (allCollapsed: boolean) => void;
+}
+
+// @public (undocumented)
+export interface IGroupedListProps<T = unknown> {
+    className?: string;
+    compact?: boolean;
+    componentRef?: IRefObject<IGroupedList>;
+    dragDropEvents?: IDragDropEvents;
+    dragDropHelper?: IDragDropHelper;
+    eventsToRegister?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: unknown) => void;
+    }[];
+    getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+    groupProps?: IGroupRenderProps;
+    groups?: IGroup[];
+    items: T[];
+    listProps?: IListProps;
+    onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
+    onRenderCell: (nestingDepth?: number, item?: T, index?: number) => React.ReactNode;
+    onShouldVirtualize?: (props: IListProps) => boolean;
+    selection?: ISelection;
+    selectionMode?: SelectionMode;
+    styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;
+    theme?: ITheme;
+    usePageCache?: boolean;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionProps<T = unknown> {
+    compact?: boolean;
+    componentRef?: () => void;
+    dragDropEvents?: IDragDropEvents;
+    dragDropHelper?: IDragDropHelper;
+    eventsToRegister?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: unknown) => void;
+    }[];
+    footerProps?: IGroupFooterProps;
+    getGroupItemLimit?: (group: IGroup) => number;
+    group?: IGroup;
+    groupedListClassNames?: IProcessedStyleSet<IGroupedListStyles>;
+    groupIndex?: number;
+    groupNestingDepth?: number;
+    groupProps?: IGroupRenderProps;
+    groups?: IGroup[];
+    headerProps?: IGroupHeaderProps;
+    items: T[];
+    listProps?: IListProps;
+    onRenderCell: (nestingDepth?: number, item?: T, index?: number) => React.ReactNode;
+    onRenderGroupFooter?: IRenderFunction<IGroupFooterProps>;
+    onRenderGroupHeader?: IRenderFunction<IGroupHeaderProps>;
+    onRenderGroupShowAll?: IRenderFunction<IGroupShowAllProps>;
+    onShouldVirtualize?: (props: IListProps) => boolean;
+    selection?: ISelection;
+    selectionMode?: SelectionMode;
+    showAllProps?: IGroupShowAllProps;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionState {
+    // (undocumented)
+    isDropping?: boolean;
+    // (undocumented)
+    isSelected?: boolean;
+}
+
+// @public (undocumented)
+export interface IGroupedListState {
+    // (undocumented)
+    groups?: IGroup[];
+    // (undocumented)
+    lastSelectionMode?: SelectionMode;
+}
+
+// @public (undocumented)
+export type IGroupedListStyleProps = Required<Pick<IGroupedListProps<unknown>, 'theme'>> & Pick<IGroupedListProps<unknown>, 'className'> & {
+    isCollapsed?: boolean;
+    compact?: boolean;
+};
+
+// @public (undocumented)
+export interface IGroupedListStyles {
+    // (undocumented)
+    group: IStyle;
+    // (undocumented)
+    groupIsDropping: IStyle;
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupFooterProps extends IGroupDividerProps {
+    styles?: IStyleFunctionOrObject<IGroupFooterStyleProps, IGroupFooterStyles>;
+}
+
+// @public (undocumented)
+export type IGroupFooterStyleProps = Required<Pick<IGroupFooterProps, 'theme'>> & Pick<IGroupFooterProps, 'selected' | 'className'> & {
+    isCollapsed?: boolean;
+};
+
+// @public (undocumented)
+export interface IGroupFooterStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupHeaderCheckboxProps {
+    // (undocumented)
+    checked: boolean;
+    // (undocumented)
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IGroupHeaderProps extends IGroupDividerProps {
+    ariaPosInSet?: number;
+    ariaSetSize?: number;
+    expandButtonIcon?: string;
+    expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    groupedListId?: string;
+    onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
+    selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
+    useFastIcons?: boolean;
+}
+
+// @public (undocumented)
+export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> & Pick<IGroupHeaderProps, 'selected' | 'className'> & {
+    isCollapsed?: boolean;
+    compact?: boolean;
+};
+
+// @public (undocumented)
+export interface IGroupHeaderStyles {
+    // (undocumented)
+    check: IStyle;
+    // (undocumented)
+    dropIcon: IStyle;
+    // (undocumented)
+    expand: IStyle;
+    // (undocumented)
+    expandIsCollapsed: IStyle;
+    // (undocumented)
+    groupHeaderContainer: IStyle;
+    // (undocumented)
+    headerCount: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    title: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupRenderProps {
+    collapseAllVisibility?: CollapseAllVisibility;
+    footerProps?: IGroupFooterProps;
+    getGroupItemLimit?: (group: IGroup) => number;
+    headerProps?: IGroupHeaderProps;
+    isAllGroupsCollapsed?: boolean;
+    onRenderFooter?: IRenderFunction<IGroupFooterProps>;
+    onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
+    onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
+    onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
+    role?: string;
+    showAllProps?: IGroupShowAllProps;
+    showEmptyGroups?: boolean;
+}
+
+// @public (undocumented)
+export interface IGroupShowAllProps extends IGroupDividerProps {
+    showAllLinkText?: string;
+    styles?: IStyleFunctionOrObject<IGroupShowAllStyleProps, IGroupShowAllStyles>;
+}
+
+// @public (undocumented)
+export type IGroupShowAllStyleProps = Required<Pick<IGroupShowAllProps, 'theme'>>;
+
+// @public (undocumented)
+export interface IGroupShowAllStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupSpacerProps {
+    count: number;
+    indentWidth?: number;
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
+    // @deprecated
+    theme?: ITheme;
+}
+
+// @public @deprecated (undocumented)
+export type IGroupSpacerStyleProps = Required<Pick<IGroupSpacerProps, 'theme'>> & {
+    width?: number;
+};
+
+// @public @deprecated (undocumented)
+export interface IGroupSpacerStyles {
+    // (undocumented)
+    root: IStyle;
 }
 
 // @public (undocumented)
@@ -2144,7 +2488,6 @@ export * from "office-ui-fabric-react/lib/ColorPicker";
 export * from "office-ui-fabric-react/lib/ComboBox";
 export * from "office-ui-fabric-react/lib/CommandBar";
 export * from "office-ui-fabric-react/lib/ContextualMenu";
-export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";
 export * from "office-ui-fabric-react/lib/Divider";
 export * from "office-ui-fabric-react/lib/DocumentCard";
@@ -2154,7 +2497,6 @@ export * from "office-ui-fabric-react/lib/Facepile";
 export * from "office-ui-fabric-react/lib/FloatingPicker";
 export * from "office-ui-fabric-react/lib/FocusZone";
 export * from "office-ui-fabric-react/lib/Grid";
-export * from "office-ui-fabric-react/lib/GroupedList";
 export * from "office-ui-fabric-react/lib/HoverCard";
 export * from "office-ui-fabric-react/lib/Icon";
 export * from "office-ui-fabric-react/lib/Icons";
@@ -2187,6 +2529,22 @@ export * from "office-ui-fabric-react/lib/Text";
 export * from "office-ui-fabric-react/lib/ThemeGenerator";
 export * from "office-ui-fabric-react/lib/Tooltip";
 export * from "office-ui-fabric-react/lib/Utilities";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.base";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsFooter.types";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsHeader";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsHeader.base";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsHeader.types";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsList";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsList.base";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsList.types";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsRow";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsRow.base";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsRow.types";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsRowCheck";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsRowCheck.types";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsRowFields";
+export * from "office-ui-fabric-react/lib/components/DetailsList/DetailsRowFields.types";
 
 // (No @packageDocumentation comment for this package)
 

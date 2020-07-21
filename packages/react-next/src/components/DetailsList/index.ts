@@ -1,0 +1,17 @@
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader.base';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader.types';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.base';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.types';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow.base';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow.types';
+export { DetailsRowGlobalClassNames } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow.styles';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRowCheck';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRowCheck.types';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRowFields';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRowFields.types';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsFooter.types';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.base';
+export * from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types';
