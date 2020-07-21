@@ -3,7 +3,7 @@ import { JsxOpeningElement, JsxSelfClosingElement, SyntaxKind } from 'ts-morph';
 import { Maybe } from '../../helpers/maybe';
 import { PropTransform } from '../types';
 
-export function renameProp<T>(
+export function renameProp(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],
   toRename: string,
   replacementName: string,
