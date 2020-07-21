@@ -24,21 +24,21 @@ const _items: ICommandBarItemProps[] = [
     text: 'Add',
     cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
     iconProps: { iconName: 'Add' },
-    // subMenuProps: {
-    //   items: [
-    //     {
-    //       key: 'emailMessage',
-    //       text: 'Email message',
-    //       iconProps: { iconName: 'Mail' },
-    //       ['data-automation-id']: 'newEmailButton', // optional
-    //     },
-    //     {
-    //       key: 'calendarEvent',
-    //       text: 'Calendar event',
-    //       iconProps: { iconName: 'Calendar' },
-    //     },
-    //   ],
-    // },
+    subMenuProps: {
+      items: [
+        {
+          key: 'emailMessage',
+          text: 'Email message',
+          iconProps: { iconName: 'Mail' },
+          ['data-automation-id']: 'newEmailButton', // optional
+        },
+        {
+          key: 'calendarEvent',
+          text: 'Calendar event',
+          iconProps: { iconName: 'Calendar' },
+        },
+      ],
+    },
   },
   {
     key: 'upload',

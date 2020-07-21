@@ -59,9 +59,9 @@ export const DatePickerPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

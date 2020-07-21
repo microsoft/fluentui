@@ -1,0 +1,103 @@
+/**
+ * TODO: Once theming is updated, consider removing all of this.
+ *
+ * Note: All :root rules must be literals, OR references to variables
+ * defined as literals in the same scope. If you refer to variables,
+ * they will be resolved on the :root element only; not at usage time.
+**/
+:root {
+  --image-borderRadius: 0;
+
+  --image-bordered-borderColor: black;
+  --image-bordered-borderWidth: 2px;
+  --image-circular-borderRadius: 50%;
+  --image-rounded-borderRadius: 5px;
+}
+
+/**
+  * Slot definitions
+  *
+  * Slot definitions must align to the names of the slots themselves. They should:
+  *
+  * 1. Contain the actual css property definitions (E.g. background-color: {value})
+  * 2. Property definitions should map to tokens using the format: {component}-{property}
+  * 3. Avoid hard coding values unless there are absolutely no use cases to change
+  *    the property value.
+  * 4. Order hardcoded css values first, tokens based second. This way we can identify
+  *    what is hardcoded easily.
+  */
+
+.root {
+  border-radius: var(--image-borderRadius);
+  box-sizing: border-box;
+  display: inline-block;
+
+  /**
+   * Modifiers
+   *
+   * Modifiers must align to the props on the component. They should:
+   *
+   * 1. Redefine the values for {component}-{property} tokens.
+   * 2. Map property definitions to variables using the format: {component}-{property}
+   * 3. Avoid defining styles directly.
+   */
+  &._bordered {
+    border-color: var(--image-bordered-borderColor);
+    border-style: solid;
+    border-width: var(--image-bordered-borderWidth);
+  }
+
+  &._circular {
+    border-radius: var(--image-circular-borderRadius);
+  }
+
+  &._fit_none {
+    object-fit: none;
+    object-position: left top;
+
+    height: 100%;
+    width: 100%;
+
+    /* IE 11 */
+    font-family: 'object-fit: none; object-position: left top;';
+  }
+
+  &._fit_center {
+    object-fit: none;
+    object-position: center;
+
+    height: 100%;
+    width: 100%;
+
+    /* IE 11 */
+    font-family: 'object-fit: none; object-position: center;';
+  }
+
+  &._fit_contain {
+    object-fit: contain;
+    object-position: center;
+
+    height: 100%;
+    width: 100%;
+
+    /* IE 11 */
+    font-family: 'object-fit: contain; object-position: center;';
+  }
+
+  &._fit_cover {
+    object-fit: cover;
+    object-position: center;
+
+    height: 100%;
+    width: 100%;
+
+    /* IE 11 */
+    font-family: 'object-fit: cover; object-position: center;';
+  }
+
+  &._rounded {
+    border-radius: var(--image-rounded-borderRadius);
+  }
+}
+
+/* selectors */

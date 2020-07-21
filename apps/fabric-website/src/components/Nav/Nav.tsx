@@ -263,6 +263,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           onClick={this._onSearchBoxClick}
           underlined={true}
           styles={searchBoxStyles}
+          ariaLabel={`Search ${pageTitle}`}
         />
         <IconButton
           className={styles.filterButton}

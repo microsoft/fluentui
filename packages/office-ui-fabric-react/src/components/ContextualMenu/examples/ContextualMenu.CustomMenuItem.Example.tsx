@@ -6,16 +6,14 @@ import {
   IContextualMenuItemProps,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { useConst } from '@uifabric/react-hooks';
 
 export const ContextualMenuWithCustomMenuItemExample: React.FunctionComponent = () => {
-  const menuProps: IContextualMenuProps = React.useMemo(
-    () => ({
-      items: menuItems,
-      shouldFocusOnMount: true,
-      contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered {props.item.text}</div>,
-    }),
-    [menuItems],
-  );
+  const menuProps: IContextualMenuProps = useConst(() => ({
+    items: menuItems,
+    shouldFocusOnMount: true,
+    contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered {props.item.text}</div>,
+  }));
 
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };

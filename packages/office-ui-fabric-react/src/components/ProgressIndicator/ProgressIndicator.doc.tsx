@@ -27,7 +27,9 @@ export const ProgressIndicatorPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorBestPractices.md'),
   dos: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDos.md'),
