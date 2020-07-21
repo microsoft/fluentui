@@ -130,7 +130,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 focusedArcId={this.state.focusedArcId || ''}
                 href={href}
                 calloutId={this._calloutId}
-                valueInsideDonut={valueInsideDonut}
+                valueInsideDonut={this._valueInsideDonut(valueInsideDonut!, chartData!)}
                 theme={theme!}
               />
             </svg>
@@ -262,5 +262,20 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   private _hoverLeave(): void {
     this.setState({ showHover: false, activeLegend: '', selectedLegend: 'none', focusedArcId: '' });
+  }
+
+  private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
+    if (valueInsideDonut !== undefined && this.state.activeLegend !== '' && !this.state.showHover) {
+      let legendValue = valueInsideDonut;
+      data!.map((point: IChartDataPoint, index: number) => {
+        if (point.legend === this.state.activeLegend) {
+          legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
+        }
+        return;
+      });
+      return legendValue;
+    } else {
+      return valueInsideDonut;
+    }
   }
 }

@@ -1,54 +1,39 @@
 import {
-  JsxAttribute,
   JsxOpeningElement,
   JsxSelfClosingElement,
   SyntaxKind,
   VariableDeclarationKind,
   ts,
   Node,
+  CodeBlockWriter,
 } from 'ts-morph';
 import { Maybe } from '../../maybe';
-import { EnumMap } from '../types';
+import { EnumMap, PropTransform } from '../types';
 
-export function renameProp(
+export function renameProp<T>(
   instances: (JsxOpeningElement | JsxSelfClosingElement)[],
   toRename: string,
   replacementName: string,
   changeValueMap?: EnumMap<string>,
   replacementValue?: string,
+  transform?: PropTransform,
 ) {
   instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
     const foundProp = Maybe(val.getAttribute(toRename));
+
     if (foundProp.just) {
       /* If found, do a simple name-replacementName. */
       foundProp.value.set({ name: replacementName });
-      if (changeValueMap) {
-        /* Change the value of the enum via map conversion. */
-        const enumInJsx = Maybe((foundProp.value as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression));
-        const enumExp = enumInJsx.then(value => {
-          return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-        });
-        if (enumExp.just) {
-          const oldEnumName = enumExp.then(value => {
-            return value.getText();
-          });
-          if (oldEnumName.just) {
-            const newEnumName = changeValueMap[oldEnumName.value];
-            const firstEnumChild = enumExp.then(value => {
-              return value.getFirstChildByKind(SyntaxKind.Identifier);
-            });
-            const lastEnumChild = enumExp.then(value => {
-              return value.getLastChildByKind(SyntaxKind.Identifier);
-            });
-            if (firstEnumChild.just && lastEnumChild.just) {
-              firstEnumChild.value.replaceWithText(newEnumName.substring(0, newEnumName.indexOf('.')));
-              lastEnumChild.value.replaceWithText(newEnumName.substring(newEnumName.indexOf('.') + 1));
-            }
+      if (replacementValue) {
+        foundProp.value.set({ initializer: `{${replacementValue}}` });
+      } else {
+        const enumInJsx = Maybe(foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression));
+        if (enumInJsx.just) {
+          if (transform) {
+            transform(enumInJsx.value);
           }
         }
-      } else if (replacementValue) {
-        foundProp.value.set({ initializer: `{${replacementValue}}` });
       }
     } else {
       /* If the prop is not found, check to see if the prop is in a spread attribute. */
@@ -89,16 +74,24 @@ function renamePropInSpread(
             case ts.ScriptElementKind.variableElement:
             case ts.ScriptElementKind.parameterElement: {
               const propContainingObject = propKind[0];
-              const blockContainer = getBlockContainer(element);
+              let newJSXFlag = false;
+              const elementType = element.getKind();
+              /* Need these data because ELEMENT is invalid if we call propsArrowFunction */
+              let blockContainer = getBlockContainer(element);
               if (blockContainer === undefined) {
-                // eslint-disable-next-line no-throw-literal
-                throw 'unable to get block container from expression';
+                blockContainer = propsArrowFunction(element);
+                if (blockContainer === undefined) {
+                  // eslint-disable-next-line no-throw-literal
+                  throw 'Could not find block container.';
+                }
+                newJSXFlag = true;
               }
               const parentContainer = blockContainer.getParentIfKind(SyntaxKind.Block);
               if (parentContainer === undefined) {
                 // eslint-disable-next-line no-throw-literal
                 throw 'unable to get parent container from block';
               }
+              parentContainer.insertStatements;
               const insertIndex = blockContainer.getChildIndex();
               if (insertIndex === undefined) {
                 // eslint-disable-next-line no-throw-literal
@@ -126,15 +119,31 @@ function renamePropInSpread(
                   ],
                 });
               }
-              spreadProp.replaceWithText(newSpreadName);
+              let attrToRename = attribute;
+              /* attribute is an iterator variable in the forEach function. */
+              if (newJSXFlag) {
+                const newSpreadProp = Maybe(blockContainer.getFirstDescendantByKind(SyntaxKind.JsxSpreadAttribute));
+                const newJSXElem = Maybe(
+                  blockContainer.getFirstDescendantByKind(
+                    elementType as SyntaxKind.JsxOpeningElement | SyntaxKind.JsxSelfClosingElement,
+                  ),
+                );
+                if (newSpreadProp.just && newJSXElem.just) {
+                  attrToRename = newSpreadProp.value;
+                  element = newJSXElem.value;
+                }
+              }
+              /* Cannot use spreadProp because the node has been moved in the AST. */
+              attrToRename.replaceWithText(`{...${newSpreadName}}`);
               element.addAttribute({
                 name: replacementName,
                 initializer: changeValueMap
-                  ? `{${newMapName}[${toRename}}`
+                  ? `{${newMapName}[${toRename}]}`
                   : replacementValue
                   ? `{${replacementValue}}`
                   : `{${toRename}}`,
               });
+              //console.log(parentContainer.getText());
               break;
             }
           }
@@ -142,6 +151,35 @@ function renamePropInSpread(
       }
     }
   });
+}
+
+/* This function is called if no block container could be found,
+   meaning that the prop is in a function without a block for code,
+   indicating a big-arrow function with no body. We will insert that
+   block and then continue. */
+function propsArrowFunction(element: JsxOpeningElement | JsxSelfClosingElement) {
+  const firstAncestorInBlock = Maybe(
+    element.getFirstAncestor(ans => {
+      return ans.getKind() === SyntaxKind.ArrowFunction;
+    }),
+  );
+  if (firstAncestorInBlock.just) {
+    const oldBody = element.getText();
+    const writer = new CodeBlockWriter();
+    writer.block(() => {
+      writer.write('return ');
+      writer.write(oldBody);
+    });
+    element.replaceWithText(writer.toString());
+    /* Need to re-acquire ELEMENT because of AST changes. */
+    const newBlock = Maybe(firstAncestorInBlock.value.getFirstChildByKind(SyntaxKind.Block));
+    const newElem = newBlock.then(val =>
+      val.getFirstDescendant(child => {
+        return child.getKind() === SyntaxKind.ReturnStatement;
+      }),
+    );
+    return newElem.just ? newElem.value : undefined;
+  }
 }
 
 /* Gets the parent that is a direct descendant of a block

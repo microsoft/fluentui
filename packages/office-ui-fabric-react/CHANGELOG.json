@@ -2,6 +2,83 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "office-ui-fabric-react_v7.123.6",
+      "version": "7.123.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: fix exception in DetailsRow when selection is undefined.",
+            "author": "xgao@microsoft.com",
+            "commit": "3a9feb3725b79ed39a5c080906da8957e6f1aec0",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "add document role to child of modal to fix VoiceOver issue",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4a6bdec34f0858cec60de3701005ea0706f79d48",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "office-ui-fabric-react_v7.123.4",
+      "version": "7.123.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: pass missing event to onDismiss.",
+            "author": "xgao@microsoft.com",
+            "commit": "5874c5755ea454adb9bbea9a5273f1cae5203eda",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "office-ui-fabric-react_v7.123.2",
+      "version": "7.123.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "disabling kebab-cased aria test for now since oufr and react-next aren't following the rule",
+            "author": "esteban.230@hotmail.com",
+            "commit": "1e9b0f1b3e1e79a56187a94d55127913d4370958",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix onBlur event firing on every calendar day component bug",
+            "author": "ololubek@microsoft.com",
+            "commit": "682f1db2c515d0d2f9db036e108fbe316ec09007",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "removing unnecessary !important, fixing two linting errors, fixing high contrast bug in oufr calendar",
+            "author": "lorejoh12@gmail.com",
+            "commit": "30fc4c9ad3b2b9236027b477e27eb742f8419cca",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "office-ui-fabric-react_v7.123.0",
       "version": "7.123.0",

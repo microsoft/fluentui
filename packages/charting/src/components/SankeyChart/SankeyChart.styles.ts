@@ -18,5 +18,15 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
       stroke: pathColor ? pathColor : theme.palette.blue,
       fill: 'none',
     },
+    nodes: {
+      selectors: {
+        text: [
+          theme.fonts.small,
+          {
+            fill: theme.semanticColors.bodyText,
+          },
+        ],
+      },
+    },
   };
 };

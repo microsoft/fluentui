@@ -128,7 +128,7 @@ steps:
     displayName: Upload Package Manifest
     inputs:
       SourcePath: 'package-manifest.json'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      azureSubscription: 'UI Fabric (private)'
       storage: fabricweb
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest/latest'

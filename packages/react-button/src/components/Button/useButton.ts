@@ -1,7 +1,7 @@
-import { useImperativeHandle, useRef } from 'react';
+import * as React from 'react';
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
 import { useFocusRects } from '@uifabric/utilities';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { ButtonProps, ButtonState } from './Button.types';
 import { useButtonBehavior } from './useButtonBehavior';
 
@@ -14,19 +14,19 @@ export const useButton = (
   ref: React.Ref<HTMLElement>,
   options: ComposePreparedOptions,
 ): ButtonState => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  useImperativeHandle(props.componentRef, () => ({
+  const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+
+  React.useImperativeHandle(props.componentRef, () => ({
     focus: () => buttonRef.current?.focus(),
   }));
-  useFocusRects(ref as React.RefObject<HTMLElement>);
+  useFocusRects(buttonRef);
 
   const buttonBehaviorProps = useButtonBehavior(props, buttonRef);
-  const { onKeyDown } = buttonBehaviorProps;
+
+  console.log(buttonBehaviorProps);
 
   return {
     ...buttonBehaviorProps,
-    ...props,
-    onKeyDown,
     buttonRef,
     style: getStyleFromPropsAndOptions(props, options, '--button'),
   };

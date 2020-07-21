@@ -26,8 +26,8 @@ describe('Button behavior', () => {
     const button = wrapper.find('button');
 
     expect(button.getElements().length).toBe(1);
-    expect(button.props().role).toBe(undefined);
-    expect(button.props().tabIndex).toBe(undefined);
+    expect(button.prop('role')).toBe(undefined);
+    expect(button.prop('tabIndex')).toBe(undefined);
   });
 
   it('renders Button as a "div" with the correct accessibility props', () => {

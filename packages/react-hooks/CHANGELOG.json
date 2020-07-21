@@ -2,6 +2,80 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/react-hooks_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jul 2020 12:44:29 GMT",
+      "tag": "@uifabric/react-hooks_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add useRefEffect hook to the react-hooks package.",
+            "author": "behowell@microsoft.com",
+            "commit": "0894e3feb752839bc00231bac7965df6125ea5f1",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.4",
+      "version": "7.5.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Resolving a typo for useSetTimeout within react-hooks's README.md.",
+            "author": "czearing@outlook.com",
+            "commit": "d1212a3808f0ba186dab8d5f714d35958cdc759a",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jul 2020 21:33:40 GMT",
+      "tag": "@uifabric/react-hooks_v7.5.3",
+      "version": "7.5.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding useSetTimeOut hook.",
+            "author": "czearing@outlook.com",
+            "commit": "bca273168c554d5a4fee1f7a809316b7dabe7007",
+            "package": "@uifabric/react-hooks"
+          },
+          {
+            "comment": "useMergedRefs: now mutates the resulting ref if the merged refs mutate.",
+            "author": "dzearing@hotmail.com",
+            "commit": "8247d915e42b98aceeeaaf0061c1ce3773bd17fb",
+            "package": "@uifabric/react-hooks"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Sync with published versions",
+            "author": "xgao@microsoft.com",
+            "commit": "06b783216e8652f356324d10fb5bf8c50a7f44c3",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@uifabric/react-hooks_v7.5.1",
       "version": "7.5.1",

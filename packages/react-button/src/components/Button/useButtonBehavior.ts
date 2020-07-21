@@ -12,5 +12,7 @@ export const useButtonBehavior = (props: ButtonProps, ref: React.RefObject<HTMLE
   });
   const buttonActions = useBehaviorKeyActions(keyActions, { root: { onClick, onKeyDown: _onKeyDown } });
 
-  return { ...attributes?.root, ...buttonActions };
+  // We are already taking user input into consideration in useBehaviorKeyActions, so buttonActions should come after
+  // props.
+  return { ...attributes?.root, ...props, ...buttonActions };
 };

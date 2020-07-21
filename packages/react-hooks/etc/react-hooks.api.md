@@ -21,6 +21,9 @@ export interface IUseBooleanCallbacks {
 }
 
 // @public
+export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
+
+// @public
 export function useAsync(): Async;
 
 // Warning: (ae-forgotten-export) The symbol "BehaviorKeyActions" needs to be exported by the entry point index.d.ts
@@ -57,6 +60,9 @@ export function useOnEvent<TElement extends Element, TEvent extends Event>(eleme
 
 // @public
 export function usePrevious<T>(value: T): T | undefined;
+
+// @public
+export function useRefEffect<T>(callback: (value: T) => (() => void) | void, initial?: T | null): RefCallback<T>;
 
 // @public
 export const useSetInterval: () => UseSetIntervalReturnType;
