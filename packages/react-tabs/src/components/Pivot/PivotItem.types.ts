@@ -5,6 +5,7 @@ import { IRefObject, IRenderFunction } from '@uifabric/utilities';
 /**
  * {@docCategory Pivot}
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
