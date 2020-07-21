@@ -5,8 +5,8 @@ import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 export const RenderDropdown = (props: any) => {
   return (
     <div>
-      <Dropdown options={[]} isDisabled={true} />
-      <Dropdown options={[]} isDisabled={false}>
+      <Dropdown options={[]} placeHolder={'placeholder!'} isDisabled={true} />
+      <Dropdown options={[]} placeHolder={'placeholder!'} isDisabled={false}>
         {' '}
         Woo Hoo!{' '}
       </Dropdown>
