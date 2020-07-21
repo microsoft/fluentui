@@ -1,4 +1,4 @@
-# @fluentui/react Release Notes
+# @fluentui/react Version 8 Release Notes (draft)
 
 ## Breaking changes
 
