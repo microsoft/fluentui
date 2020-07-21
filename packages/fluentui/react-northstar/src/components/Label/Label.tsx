@@ -4,6 +4,7 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -11,8 +12,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -28,7 +27,7 @@ import {
 import { Image, ImageProps } from '../Image/Image';
 import { Box, BoxProps } from '../Box/Box';
 
-import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface LabelProps
   extends UIComponentProps,
@@ -70,7 +69,7 @@ export const labelClassName = 'ui-label';
  * A Label allows user to classify content.
  */
 export const Label: ComponentWithAs<'span', LabelProps> & FluentComponentStaticProps = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Label.displayName, context.telemetry);
   setStart();
 

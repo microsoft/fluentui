@@ -1,12 +1,10 @@
-import { AccessibilityActionHandlers } from '@fluentui/react-bindings';
+import { AccessibilityActionHandlers, useFluentContext } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { renderComponent, RenderResultConfig } from './renderComponent';
 import { createShorthandFactory, ShorthandFactory } from './factories';
-import { ObjectOf, ProviderContextPrepared } from '../types';
+import { ObjectOf } from '../types';
 
 export interface CreateComponentConfig<P> {
   displayName: string;
@@ -44,7 +42,7 @@ export const createComponentInternal = <P extends ObjectOf<any> = any>({
     // Note that this ref should go as the first one, to be discoverable by debug utils.
     const ref = React.useRef(null);
 
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const isFirstRenderRef = React.useRef<boolean>(true);
 
     return renderComponent(

@@ -5,6 +5,7 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useAccessibility,
+  useFluentContext,
   useAutoControlled,
   useStyles,
   useTelemetry,
@@ -16,9 +17,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ShorthandCollection, ShorthandValue, ComponentEventHandler, ProviderContextPrepared } from '../../types';
+
+import { ShorthandCollection, ShorthandValue, ComponentEventHandler } from '../../types';
 import {
   childrenExist,
   createShorthand,
@@ -154,7 +154,7 @@ function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
  */
 export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
     const {

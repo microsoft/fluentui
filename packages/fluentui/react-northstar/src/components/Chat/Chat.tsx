@@ -3,6 +3,7 @@ import {
   ComponentWithAs,
   getElementType,
   useUnhandledProps,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
@@ -11,8 +12,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -22,7 +21,7 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import { ShorthandCollection, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { ChatItem, ChatItemProps } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
@@ -54,7 +53,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
     Message: typeof ChatMessage;
     MessageDetails: typeof ChatMessageDetails;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
 

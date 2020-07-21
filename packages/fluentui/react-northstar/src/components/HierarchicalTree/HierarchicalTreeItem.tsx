@@ -8,6 +8,7 @@ import {
   ComponentWithAs,
   getFirstFocusable,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -35,10 +36,7 @@ import {
   ShorthandValue,
   ShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface HierarchicalTreeItemSlotClassNames {
   subtree: string;
@@ -92,7 +90,7 @@ export type HierarchicalTreeItemStyles = never;
  */
 export const HierarchicalTreeItem: ComponentWithAs<'li', HierarchicalTreeItemProps> &
   FluentComponentStaticProps<HierarchicalTreeItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HierarchicalTreeItem.displayName, context.telemetry);
   setStart();
   const { items, title, renderItemTitle, open, exclusive, children, className, design, styles, variables } = props;

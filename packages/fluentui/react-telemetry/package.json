@@ -9,11 +9,10 @@
     "@fluentui/react-bindings": "^0.50.0",
     "@fluentui/react-component-event-listener": "^0.50.0",
     "lodash": "^4.17.15",
-    "react-fela": "^10.6.1",
     "react-table": "^7.1.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.51.0",
+    "@fluentui/eslint-plugin": "^0.53.1",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-table": "^7.0.19",

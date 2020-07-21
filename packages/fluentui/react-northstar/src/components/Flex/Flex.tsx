@@ -1,12 +1,16 @@
-import { ComponentWithAs, getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
-import { ProviderContextPrepared } from '../../types';
 import { FlexItem } from './FlexItem';
 
 export interface FlexProps extends UIComponentProps, ChildrenComponentProps {
@@ -54,7 +58,7 @@ export const Flex: ComponentWithAs<'div', FlexProps> & {
   handledProps: (keyof FlexProps)[];
   Item: typeof FlexItem;
 } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Flex.displayName, context.telemetry);
   setStart();
 

@@ -10,6 +10,7 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -20,14 +21,12 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   getScrollParent,
   Popper,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
   PopperModifiers,
 } from '../../utils/positioner';
 import {
@@ -40,13 +39,7 @@ import {
   rtlTextContainer,
   createShorthand,
 } from '../../utils';
-import {
-  ShorthandValue,
-  ComponentEventHandler,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { Label, LabelProps } from '../Label/Label';
 import { Menu, MenuProps } from '../Menu/Menu';
@@ -156,14 +149,13 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
  */
 export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   FluentComponentStaticProps<ChatMessageProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
   const {
     accessibility,
-    actionMenu,
     attached = parentAttached,
     author,
     badge,
@@ -183,6 +175,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     details,
     unstable_overflow: overflow,
   } = props;
+  const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
 
   const [focused, setFocused] = React.useState<boolean>(false);
   const [messageNode, setMessageNode] = React.useState<HTMLElement | null>(null);
@@ -280,7 +273,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         position="above"
         positionFixed={overflow}
         targetRef={messageNode}
-        {...getPopperPropsFromShorthand(actionMenu)}
+        {...positioningProps}
       >
         {({ scheduleUpdate }) => {
           updateActionsMenuPosition.current = scheduleUpdate;

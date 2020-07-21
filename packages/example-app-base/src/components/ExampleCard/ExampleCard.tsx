@@ -168,7 +168,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               </div>
               {isCodeVisible ? (
                 <EditorWrapper
-                  useEditor={false}
                   code={latestCode}
                   supportedPackages={editorSupportedPackages}
                   editorClassName={classNames.code}

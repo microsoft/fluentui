@@ -7,6 +7,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -21,9 +22,8 @@ import {
 } from '../../utils';
 import { TableRow, TableRowProps } from './TableRow';
 import { TableCell } from './TableCell';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { ShorthandCollection, ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+
+import { ShorthandCollection, ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface TableSlotClassNames {
   header: string;
@@ -80,7 +80,7 @@ export const Table: ComponentWithAs<'div', TableProps> &
     Cell: typeof TableCell;
     Row: typeof TableRow;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Table.displayName, context.telemetry);
   setStart();
   const { children, rows, header, compact, accessibility, className, design, styles, variables } = props;

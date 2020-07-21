@@ -4,6 +4,7 @@ import {
   useStyles,
   useUnhandledProps,
   ComponentWithAs,
+  useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
@@ -15,16 +16,8 @@ import * as _ from 'lodash';
 import cx from 'classnames';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import computeScrollIntoView from 'compute-scroll-into-view';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import {
-  ShorthandRenderFunction,
-  ShorthandValue,
-  ShorthandCollection,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
+import { ShorthandRenderFunction, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import Downshift, {
   DownshiftState,
   StateChangeOptions,
@@ -55,7 +48,7 @@ import {
   Popper,
   PositioningProps,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
@@ -367,7 +360,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     SearchInput: typeof DropdownSearchInput;
     SelectedItem: typeof DropdownSelectedItem;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dropdown.displayName, context.telemetry);
 
   setStart();
@@ -396,7 +389,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     headerMessage,
     moveFocusOnTab,
     noResultsMessage,
-    list,
     loading,
     loadingMessage,
     placeholder,
@@ -412,6 +404,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     unstable_pinned,
     variables,
   } = props;
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
 
   const buttonRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
@@ -645,7 +638,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
           targetRef={containerRef}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
-          {...getPopperPropsFromShorthand(list)}
+          {...positioningProps}
         >
           {List.create(list, {
             defaultProps: () => ({

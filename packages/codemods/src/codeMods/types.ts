@@ -1,4 +1,4 @@
-import { SourceFile } from 'ts-morph';
+import { SourceFile, JsxExpression } from 'ts-morph';
 
 export interface CodeModResult {
   success?: boolean;
@@ -26,3 +26,16 @@ export interface CodeMod<T = SourceFile> {
    */
   enabled?: boolean;
 }
+
+export type EnumMap<T> = {
+  [key: string]: T;
+};
+
+/**
+ * Generic function provided by the utility caller that executes a
+ * transform for a prop's value. This transform takes a node in
+ * the AST and replaces it with a new node, giving the most control
+ * to the developer.
+ * TODO -- Can we limit the damage a dev can potentially do given a malformed transform?
+ */
+export type PropTransform = (node: JsxExpression) => void;

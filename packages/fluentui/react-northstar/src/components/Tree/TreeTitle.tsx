@@ -5,6 +5,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import { Box, BoxProps } from '../Box/Box';
@@ -13,8 +14,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -25,12 +24,7 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandValue,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -97,7 +91,7 @@ export const treeTitleSlotClassNames = {
  * A TreeTitle renders a title of TreeItem.
  */
 export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
 

@@ -1,7 +1,5 @@
-import { Renderer } from '@fluentui/react-northstar-styles-renderer';
-import { DebugData, ICSSInJSStyle, PropsWithVarsAndStyles, ThemeInput, ThemePrepared } from '@fluentui/styles';
-
-import { Telemetry } from '../telemetry/types';
+import { DebugData, ICSSInJSStyle, PropsWithVarsAndStyles } from '@fluentui/styles';
+import { ProviderContextPrepared } from '../context';
 
 // Notice:
 // This temporary lives here, will be remove once `animation` prop will be dropped
@@ -52,41 +50,14 @@ export type ComponentDesignProp = {
   maxHeight?: ICSSInJSStyle['maxHeight'];
 };
 
-export interface StylesContextPerformance {
-  enableSanitizeCssPlugin: boolean;
-  enableStylesCaching: boolean;
-  enableVariablesCaching: boolean;
-  enableBooleanVariablesCaching: boolean;
-}
-
-export type StylesContextPerformanceInput = Partial<StylesContextPerformance>;
-
-export type StylesContextInputValue = {
-  rtl?: boolean;
-  disableAnimations?: boolean;
-  performance?: StylesContextPerformanceInput;
-  renderer?: Renderer;
-  theme?: ThemeInput;
-};
-
-export type StylesContextValue = {
-  rtl: boolean;
-  disableAnimations: boolean;
-  performance: StylesContextPerformance;
-  renderer: Renderer;
-  theme: ThemePrepared;
-  telemetry?: Telemetry;
-};
-
 export type PrimitiveProps = Record<string, boolean | number | string | undefined>;
 
-export type ResolveStylesOptions = StylesContextValue & {
+export type ResolveStylesOptions = Omit<ProviderContextPrepared, 'target'> & {
   className?: string;
   allDisplayNames: string[];
   primaryDisplayName: string;
   componentProps: Record<string, any>;
   inlineStylesProps: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
-  telemetry?: Telemetry;
   saveDebug: (debug: DebugData | null) => void;
 };

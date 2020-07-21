@@ -11,12 +11,12 @@ import {
   ColorComponentProps,
   rtlTextContainer,
 } from '../../utils';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+
+import { FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -42,7 +42,7 @@ export type HeaderDescriptionStylesProps = Pick<HeaderDescriptionProps, 'color'>
  */
 export const HeaderDescription: ComponentWithAs<'p', HeaderDescriptionProps> &
   FluentComponentStaticProps<HeaderDescriptionProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HeaderDescription.displayName, context.telemetry);
   setStart();
   const { children, content, color, className, design, styles, variables } = props;

@@ -1,8 +1,30 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 10 Jul 2020 12:40:33 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.11.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.11.2)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.11.0..@uifabric/date-time_v7.11.2)
+
+### Patches
+
+- adding accessibility fixes for alt+tab to datepicker, turn button -> div if not clickable, and high contrast color selectors ([PR #14032](https://github.com/microsoft/fluentui/pull/14032) by lorejoh12@gmail.com)
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.11.0)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.10.8..@uifabric/date-time_v7.11.0)
+
+### Minor changes
+
+- enable datepicker callout open  ([PR #13981](https://github.com/microsoft/fluentui/pull/13981) by shrallap@microsoft.com)
+
+### Patches
+
+- Replace tslint with eslint; add missing explicit react-hooks dependency ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
 
 ## [7.10.8](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.10.8)
 

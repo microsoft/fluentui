@@ -3,20 +3,19 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { UIComponentProps, commonPropTypes, getOrGenerateIdFromShorthand, createShorthand } from '../../../utils';
-import { ShorthandValue, ProviderContextPrepared } from '../../../types';
+import { ShorthandValue } from '../../../types';
 import { Box, BoxProps } from '../../Box/Box';
 import {
   getElementType,
   useUnhandledProps,
   useTelemetry,
   useAccessibility,
+  useFluentContext,
   compose,
   useStyles,
 } from '@fluentui/react-bindings';
 import { FormLabel, FormLabelProps } from '../FormLabel';
 import { FormMessage, FormMessageProps } from '../FormMessage';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 import { FormFieldBaseValue, FormFieldBaseProvider } from './formFieldBaseContext';
 
 export interface FormFieldBaseProps extends UIComponentProps {
@@ -49,7 +48,7 @@ export type FormFieldBaseStylesProps = never;
  */
 export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
   (props, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 

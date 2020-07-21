@@ -1,11 +1,8 @@
-import { Telemetry } from '@fluentui/react-bindings';
+import { Telemetry, Unstable_FluentContextProvider, ProviderContextPrepared } from '@fluentui/react-bindings';
 import { Renderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { emptyTheme, ThemePrepared } from '@fluentui/styles';
 import { mount, MountRendererProps, ComponentType } from 'enzyme';
 import * as React from 'react';
-import { ThemeProvider } from 'react-fela';
-
-import { ProviderContextPrepared } from 'src/types';
 
 export const EmptyThemeProvider: React.FunctionComponent<{
   disableAnimations?: boolean;
@@ -24,7 +21,7 @@ export const EmptyThemeProvider: React.FunctionComponent<{
     performance: {} as any,
   };
 
-  return <ThemeProvider theme={value}>{children}</ThemeProvider>;
+  return <Unstable_FluentContextProvider value={value}>{children}</Unstable_FluentContextProvider>;
 };
 
 export const mountWithProvider = <C extends React.Component, P = C['props'], S = C['state']>(

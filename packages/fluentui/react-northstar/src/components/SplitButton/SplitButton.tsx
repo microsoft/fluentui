@@ -4,13 +4,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 import { ALIGNMENTS, POSITIONS } from '../../utils/positioner';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
   UIComponentProps,
   ChildrenComponentProps,
@@ -29,14 +23,14 @@ import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
 import { Ref } from '@fluentui/react-component-ref';
 import { PositioningProps } from '../../utils/positioner/types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   ComponentWithAs,
   useTelemetry,
   useAutoControlled,
   useAccessibility,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useStyles,
 } from '@fluentui/react-bindings';
@@ -113,7 +107,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
   FluentComponentStaticProps<SplitButtonProps> & {
     Toggle: typeof SplitButtonToggle;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(SplitButton.displayName, context.telemetry);
   setStart();
 
@@ -129,6 +123,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     align,
     flipBoundary,
     overflowBoundary,
+    popperRef,
     positionFixed,
     offset,
     unstable_pinned,
@@ -229,6 +224,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
                 align,
                 flipBoundary,
                 overflowBoundary,
+                popperRef,
                 positionFixed,
                 offset,
                 unstable_pinned,
@@ -284,6 +280,7 @@ SplitButton.propTypes = {
   onOpenChange: PropTypes.func,
   open: PropTypes.bool,
   size: customPropTypes.size,
+  popperRef: customPropTypes.ref,
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   toggleButton: customPropTypes.itemShorthand,

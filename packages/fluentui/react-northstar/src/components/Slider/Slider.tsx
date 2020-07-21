@@ -5,6 +5,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStateManager,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -15,8 +16,6 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   ChildrenComponentProps,
@@ -26,12 +25,7 @@ import {
   setWhatInputSource,
   createShorthandFactory,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { Box, BoxProps } from '../Box/Box';
 
@@ -133,7 +127,7 @@ export const sliderSlotClassNames: SliderSlotClassNames = {
  * [Slider - JAWS narrates current and new value in vertical slider](https://github.com/FreedomScientific/VFO-standards-support/issues/219)
  */
 export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStaticProps = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
   setStart();
 

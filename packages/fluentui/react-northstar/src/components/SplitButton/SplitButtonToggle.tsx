@@ -15,17 +15,16 @@ import {
   SizeValue,
 } from '../../utils';
 
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
   ComponentWithAs,
   getElementType,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface SplitButtonToggleProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -63,7 +62,7 @@ export const splitButtonToggleClassName = 'ui-splitbutton__toggle';
 
 export const SplitButtonToggle: ComponentWithAs<'button', SplitButtonToggleProps> &
   FluentComponentStaticProps<SplitButtonToggleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(SplitButtonToggle.displayName, context.telemetry);
   setStart();
 

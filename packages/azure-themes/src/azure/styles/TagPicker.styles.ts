@@ -12,7 +12,7 @@ export const TagPickerStyles = (props: IBasePickerStyleProps): Partial<IBasePick
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       border: `${StyleConstants.borderWidth} solid ${StyleConstants.transparent}`,
       backgroundColor: StyleConstants.transparent,
       selectors: {

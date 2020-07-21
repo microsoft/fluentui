@@ -9,7 +9,7 @@ export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps
   const { semanticColors } = theme;
   return {
     root: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
       selectors: {

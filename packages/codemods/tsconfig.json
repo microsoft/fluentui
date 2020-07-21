@@ -8,6 +8,7 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,

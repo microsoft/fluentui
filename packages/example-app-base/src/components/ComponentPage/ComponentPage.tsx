@@ -139,7 +139,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
       }
 
-      /* eslint-disable max-len */
+      /* eslint-disable @fluentui/max-len */
       return (
         <MessageBar>
           <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes
@@ -147,7 +147,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
           {componentNameJsx || 'this component'}.
         </MessageBar>
       );
-      /* eslint-enable max-len */
+      /* eslint-enable @fluentui/max-len */
     }
   }
 
