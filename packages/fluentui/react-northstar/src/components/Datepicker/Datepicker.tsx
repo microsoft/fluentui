@@ -28,7 +28,7 @@ import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } fro
 import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps } from '../../utils';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
-import { Popup } from '../Popup/Popup';
+import { Popup, PopupProps } from '../Popup/Popup';
 import { DatepickerCalendar, datepickerCalendarClassName, DatepickerCalendarProps } from './DatepickerCalendar';
 import { DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
@@ -119,6 +119,9 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
   /** Shorthand for the datepicker calendar. */
   calendar?: ShorthandValue<DatepickerCalendarProps>;
 
+  /** Shorthand for the datepicker popup. */
+  popup?: ShorthandValue<PopupProps>;
+
   /** Datepicker shows it is currently unable to be interacted with. */
   disabled?: boolean;
 
@@ -166,7 +169,17 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const [open, setOpen] = React.useState<boolean>(false);
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const valueFormatter = date => (date ? formatMonthDayYear(date, DEFAULT_LOCALIZED_STRINGS) : '');
-  const { firstDayOfWeek, firstWeekOfYear, dateRangeType } = props;
+  const {
+    firstDayOfWeek,
+    firstWeekOfYear,
+    dateRangeType,
+    calendar,
+    popup,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
   const calendarOptions: IDayGridOptions = {
     selectedDate: selectedDate ?? props.today ?? new Date(),
     navigatedDate: selectedDate ?? props.today ?? new Date(),
@@ -179,7 +192,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     setOpen(true);
   };
 
-  const { className, design, styles, variables, calendar } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -228,9 +240,17 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           })}
         >
           <Input readOnly onClick={showCalendarGrid} value={valueFormatter(selectedDate)} />
-          <Popup open={open} onOpenChange={(e, { open }) => setOpen(open)} content={calendarElement} trapFocus>
-            <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />
-          </Popup>
+          {createShorthand(Popup, popup, {
+            defaultProps: () => ({
+              open,
+              content: calendarElement,
+              trapFocus: true,
+              trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />,
+            }),
+            overrideProps: () => ({
+              onOpenChange: (e, { open }) => setOpen(open),
+            }),
+          })}
         </ElementType>,
       )}
     </Ref>
@@ -244,6 +264,7 @@ Datepicker.displayName = 'Datepicker';
 Datepicker.propTypes = {
   ...commonPropTypes.createCommon(),
   calendar: customPropTypes.itemShorthand,
+  popup: customPropTypes.itemShorthand,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -272,6 +293,7 @@ Datepicker.propTypes = {
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
   calendar: {},
+  popup: {},
   firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,

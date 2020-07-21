@@ -24,12 +24,15 @@ import {
   createShorthandFactory,
   UIComponentProps,
 } from '../../utils';
-import { Text } from '../Text/Text';
 import { DatepickerCalendarHeaderAction, DatepickerCalendarHeaderActionProps } from './DatepickerCalendarHeaderAction';
+import { Text, TextProps } from '../Text/Text';
 
 export interface DatepickerCalendarHeaderProps extends UIComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarHeaderBehaviorProps>;
+
+  /** Shorthand for text label. */
+  label?: ShorthandValue<TextProps>;
 
   /** Localized labels */
   localizedStrings?: IDateGridStrings;
@@ -66,7 +69,7 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
     design,
     styles,
     variables,
-    content,
+    label,
     nextButton,
     previousButton,
     onPreviousClick,
@@ -98,24 +101,31 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         ...unhandledProps,
       })}
     >
-      <Text content={content} />
+      {createShorthand(Text, label)}
+
       {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
         defaultProps: () =>
           getA11yProps('previousButton', {
             icon: {},
+            // TODO: use value from `localizationStrings` after #14058 implements needed values
             title: 'Previous Month',
-            onClick: onPreviousClick,
             direction: 'previous',
           }),
+        overrideProps: () => ({
+          onClick: onPreviousClick,
+        }),
       })}
       {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
         defaultProps: () =>
           getA11yProps('nextButton', {
             icon: {},
-            title: 'Previous Month',
-            onClick: onNextClick,
+            // TODO: use value from `localizationStrings` after #14058 implements needed values
+            title: 'Next Month',
             direction: 'next',
           }),
+        overrideProps: () => ({
+          onClick: onNextClick,
+        }),
       })}
     </ElementType>
   );
@@ -127,6 +137,7 @@ DatepickerCalendarHeader.displayName = 'DatepickerCalendarHeader';
 
 DatepickerCalendarHeader.propTypes = {
   ...commonPropTypes.createCommon(),
+  label: customPropTypes.itemShorthand,
   localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
   nextButton: customPropTypes.itemShorthand,
   previousButton: customPropTypes.itemShorthand,
@@ -138,6 +149,7 @@ DatepickerCalendarHeader.defaultProps = {
   accessibility: datepickerCalendarHeaderBehavior,
   nextButton: {},
   previousButton: {},
+  label: {},
 };
 
 DatepickerCalendarHeader.handledProps = Object.keys(DatepickerCalendarHeader.propTypes) as any;

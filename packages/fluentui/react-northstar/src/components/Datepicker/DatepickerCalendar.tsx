@@ -10,7 +10,6 @@ import {
   getDayGrid,
   IDateGridStrings,
   IDay,
-  IDayGridOptions,
   IRestrictedDatesOptions,
 } from '@fluentui/date-time-utilities';
 import {
@@ -31,16 +30,8 @@ import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } fro
 import { commonPropTypes, createShorthand, UIComponentProps } from '../../utils';
 import { Grid } from '../Grid/Grid';
 import { DatepickerCalendarHeader, DatepickerCalendarHeaderProps } from './DatepickerCalendarHeader';
-import {
-  DatepickerCalendarCellProps,
-  datepickerCalendarCellClassName,
-  DatepickerCalendarCell,
-} from './DatepickerCalendarCell';
-import {
-  DatepickerCalendarHeaderCellProps,
-  DatepickerCalendarHeaderCell,
-  datepickerCalendarHeaderCellClassName,
-} from './DatepickerCalendarHeaderCell';
+import { DatepickerCalendarCellProps, DatepickerCalendarCell } from './DatepickerCalendarCell';
+import { DatepickerCalendarHeaderCellProps, DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 
 // TODO: extract to date-time-utilities
 export const DEFAULT_CALENDAR_LOCALIZED_STRINGS: IDateGridStrings = {
@@ -180,7 +171,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-    showWeekNumbers,
+    weeksToShow,
+    localizedStrings,
+    today,
   } = props;
 
   const ElementType = getElementType(props);
@@ -190,16 +183,11 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     actionHandlers: {},
     rtl: context.rtl,
   });
+  const normalizedSelectedDate = selectedDate || today || new Date();
 
-  const [gridOptions, setGridOptions] = React.useState<IDayGridOptions>({
-    selectedDate: selectedDate || props.today || new Date(),
-    navigatedDate: navigatedDate || props.today || new Date(),
-    firstDayOfWeek,
-    firstWeekOfYear,
-    dateRangeType,
-  });
+  const [gridNavigatedDate, setGridNavigatedDate] = React.useState<Date>(navigatedDate || today || new Date());
 
-  const { classes, styles: resolvedStyles } = useStyles<DatepickerCalendarStylesProps>(DatepickerCalendar.displayName, {
+  const { classes } = useStyles<DatepickerCalendarStylesProps>(DatepickerCalendar.displayName, {
     className: datepickerCalendarClassName,
     mapPropsToInlineStyles: () => ({
       className,
@@ -210,26 +198,24 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     rtl: context.rtl,
   });
 
-  const grid = React.useMemo(() => {
+  /** Get days grid and slice it in case it contains additional weeks at the beginning and end. */
+  const getSlicedGrid = () => {
+    const gridOptions = {
+      selectedDate: normalizedSelectedDate,
+      navigatedDate: gridNavigatedDate,
+      firstDayOfWeek,
+      firstWeekOfYear,
+      dateRangeType,
+    };
     const grid = getDayGrid(gridOptions);
-    if (!showWeekNumbers) {
+    if (!weeksToShow) {
       // Slicing because grid contains extra 1 week in the front and in the back.
       return grid.slice(1, grid.length - 1);
     }
     return grid;
-  }, [gridOptions, showWeekNumbers]);
-
-  const renderHeader = () => {
-    return createShorthand(DatepickerCalendarHeader, header, {
-      defaultProps: () => ({
-        content: formatMonthYear(gridOptions.navigatedDate, localizedStrings),
-      }),
-      overrideProps: {
-        onPreviousClick,
-        onNextClick,
-      },
-    });
   };
+
+  const grid = getSlicedGrid();
 
   const onPreviousClick = () => {
     changeMonth(false);
@@ -239,8 +225,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   };
 
   const changeMonth = (nextMonth: boolean) => {
-    const updatedGridNavigatedDate = addMonths(gridOptions.navigatedDate, nextMonth ? 1 : -1);
-    setGridOptions({ ...gridOptions, navigatedDate:  updatedGridNavigatedDate });
+    const updatedGridNavigatedDate = addMonths(gridNavigatedDate, nextMonth ? 1 : -1);
+    setGridNavigatedDate(updatedGridNavigatedDate);
   };
 
   const element = (
@@ -252,7 +238,15 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             ...unhandledProps,
           })}
         >
-          {renderHeader()}
+          {createShorthand(DatepickerCalendarHeader, header, {
+            defaultProps: () => ({
+              label: formatMonthYear(gridNavigatedDate, localizedStrings),
+            }),
+            overrideProps: () => ({
+              onPreviousClick,
+              onNextClick,
+            }),
+          })}
           <Grid rows={grid.length + 1} columns={DAYS_IN_WEEK}>
             {_.times(DAYS_IN_WEEK, dayNumber =>
               createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
@@ -264,22 +258,22 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
               }),
             )}
             {_.map(grid, week =>
-              _.map(
-                week,
-                (day: IDay) =>
-                  createShorthand(DatepickerCalendarCell, calendarCell, {
-                    defaultProps: () =>
-                      getA11yProps('calendarCell', {
-                        content: day.date,
-                        key: day.key,
-                        'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
-                        onClick: e => {
-                          _.invoke(props, 'onDateChange', e, { ...props, value: day });
-                        },
-                        primary: day.isSelected,
-                        disabled: !day.isInMonth,
-                      }),
+              _.map(week, (day: IDay) =>
+                createShorthand(DatepickerCalendarCell, calendarCell, {
+                  defaultProps: () =>
+                    getA11yProps('calendarCell', {
+                      content: day.date,
+                      key: day.key,
+                      'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
+                      primary: day.isSelected,
+                      disabled: !day.isInMonth,
+                    }),
+                  overrideProps: () => ({
+                    onClick: e => {
+                      _.invoke(props, 'onDateChange', e, { ...props, value: day });
+                    },
                   }),
+                }),
               ),
             )}
           </Grid>
@@ -327,6 +321,7 @@ DatepickerCalendar.defaultProps = {
   header: {},
   calendarCell: {},
   calendarHeaderCell: {},
+  localizedStrings: DEFAULT_CALENDAR_LOCALIZED_STRINGS,
 };
 
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;
