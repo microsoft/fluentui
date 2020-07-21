@@ -1,8 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 18 Jul 2020 00:04:51 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.123.6](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.6)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.4..office-ui-fabric-react_v7.123.6)
+
+### Patches
+
+- DetailsList: fix exception in DetailsRow when selection is undefined. ([PR #14088](https://github.com/microsoft/fluentui/pull/14088) by xgao@microsoft.com)
+- add document role to child of modal to fix VoiceOver issue ([PR #14096](https://github.com/microsoft/fluentui/pull/14096) by sarah.higley@microsoft.com)
+- Fix "rules of hooks" lint rule violations ([PR #14097](https://github.com/microsoft/fluentui/pull/14097) by elcraig@microsoft.com)
 
 ## [7.123.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.4)
 

@@ -261,10 +261,17 @@ describe('Props Utilities Test', () => {
         const valMaybe = Maybe(tag.getAttribute('placeholder'));
         const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
         expect(val.just).toBeTruthy();
-        const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
-        expect(propValueText.just).toBeTruthy();
-        if (propValueText.just) {
-          expect(propValueText.value).toEqual('newPlaceholder');
+        if (val.just) {
+          const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
+          expect(propValueText.just).toBeTruthy();
+          if (propValueText.just) {
+            expect(propValueText.value).toEqual('newPlaceholder');
+          }
+          /* Want to see these substrings somewhere in the Jsx element. */
+          expect(
+            val.value.getText().includes('{...__migProps}') || val.value.getText().includes('{...__migPropsTest}'),
+          ).toBeTruthy();
+          expect(val.value.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
         }
       });
     });

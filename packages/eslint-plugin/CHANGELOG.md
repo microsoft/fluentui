@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 15 Jul 2020 12:41:19 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.53.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.1)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.0..@fluentui/eslint-plugin_v0.53.1)
+
+### Patches
+
+- Enable react-hooks lint rules ([PR #14097](https://github.com/microsoft/fluentui/pull/14097) by elcraig@microsoft.com)
 
 ## [0.53.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.0)
 
