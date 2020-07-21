@@ -44,6 +44,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     removeSelectedItems,
     unselectAll,
     getSelectedItems,
+    setSelectedItems,
   } = useSelectedItems(selection, props.selectedItemsListProps.selectedItems);
 
   const _onSelectionChanged = () => {
@@ -162,7 +163,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       ev.preventDefault();
       // Pass current selected items
       props.onPaste(inputText, selectedItems);
-      addItems(selectedItems);
+      setSelectedItems(selectedItems);
+      selection.setItems(selectedItems);
     }
   };
 

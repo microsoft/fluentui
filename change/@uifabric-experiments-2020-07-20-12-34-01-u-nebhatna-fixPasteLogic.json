@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "UnifiedPicker: Fixing paste logic",
+  "packageName": "@uifabric/experiments",
+  "email": "nebhatna@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-20T19:34:01.620Z"
+}
