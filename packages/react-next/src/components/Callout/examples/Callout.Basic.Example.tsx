@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Callout, Link, getTheme, FontWeights, mergeStyleSets, Text } from '@fluentui/react-next';
 import { useBoolean, useId } from '@uifabric/react-hooks';
-import { DefaultButton } from '@fluentui/react/lib/compat';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 
 const theme = getTheme();
 const styles = mergeStyleSets({

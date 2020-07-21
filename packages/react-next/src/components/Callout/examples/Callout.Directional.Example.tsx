@@ -13,7 +13,7 @@ import {
   Text,
 } from '@fluentui/react-next';
 import { useBoolean, useId } from '@uifabric/react-hooks';
-import { DefaultButton } from '@fluentui/react/lib/compat';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 
 const DIRECTION_OPTIONS = [
   { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
