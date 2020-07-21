@@ -102,7 +102,6 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
       {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
         defaultProps: () =>
           getA11yProps('previousButton', {
-            className: datepickerCalendarHeaderClassName,
             icon: {},
             title: 'Previous Month',
             onClick: onPreviousClick,
@@ -112,7 +111,6 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
       {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
         defaultProps: () =>
           getA11yProps('nextButton', {
-            className: datepickerCalendarHeaderClassName,
             icon: {},
             title: 'Previous Month',
             onClick: onNextClick,

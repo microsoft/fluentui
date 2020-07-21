@@ -211,7 +211,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     defaultProps: () =>
       getA11yProps('calendar', {
         className: datepickerCalendarClassName,
-        localizedStrings: DEFAULT_LOCALIZED_STRINGS,
       }),
     overrideProps: () => ({
       ...calendarOptions,

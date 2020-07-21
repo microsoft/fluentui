@@ -183,7 +183,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     showWeekNumbers,
   } = props;
 
-  const localizedStrings = props.localizedStrings || DEFAULT_CALENDAR_LOCALIZED_STRINGS;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DatepickerCalendar.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -223,7 +222,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const renderHeader = () => {
     return createShorthand(DatepickerCalendarHeader, header, {
       defaultProps: () => ({
-        styles: resolvedStyles.header,
         content: formatMonthYear(gridOptions.navigatedDate, localizedStrings),
       }),
       overrideProps: {
@@ -260,9 +258,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
               createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
                 defaultProps: () =>
                   getA11yProps('calendarHeaderCell', {
-                    className: datepickerCalendarHeaderCellClassName,
                     content: localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                    key: `header_${dayNumber}`,
+                    key: dayNumber,
                   }),
               }),
             )}
@@ -273,7 +270,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                   createShorthand(DatepickerCalendarCell, calendarCell, {
                     defaultProps: () =>
                       getA11yProps('calendarCell', {
-                        className: datepickerCalendarCellClassName,
                         content: day.date,
                         key: day.key,
                         'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
