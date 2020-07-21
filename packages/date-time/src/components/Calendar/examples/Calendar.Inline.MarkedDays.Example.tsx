@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Calendar, DayOfWeek, defaultDayPickerStrings, DateRangeType } from '@uifabric/date-time';
+import { addDays } from '@fluentui/date-time-utilities';
 
 import * as styles from './Calendar.Example.scss';
 
@@ -13,8 +14,8 @@ export const CalendarInlineMarkedDaysExample = () => {
     [selectedDate],
   );
 
-  const shouldMarkDay = React.useCallback((date: Date) => {
-    return date.getDay() === 1 || date.getDay() === 4;
+  const getMarkedDays = React.useCallback((startingDate: Date, endingDate): Date[] => {
+    return [addDays(startingDate, 3), addDays(startingDate, 4)];
   }, []);
 
   return (
@@ -29,7 +30,7 @@ export const CalendarInlineMarkedDaysExample = () => {
         value={selectedDate}
         firstDayOfWeek={DayOfWeek.Sunday}
         strings={defaultDayPickerStrings}
-        calendarDayProps={{ shouldMarkDay }}
+        calendarDayProps={{ getMarkedDays }}
       />
     </div>
   );

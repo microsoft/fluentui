@@ -325,6 +325,7 @@ export const CalendarDayGridBase = React.forwardRef(
       labelledBy,
       lightenDaysOutsideNavigatedMonth,
       animationDirection,
+      getMarkedDays,
     } = props;
 
     const classNames = getClassNames(styles, {
@@ -340,6 +341,9 @@ export const CalendarDayGridBase = React.forwardRef(
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     const weekCorners: IWeekCorners = getWeekCornerStyles(classNames, weeks!);
+    const firstVisibleDay = weeks[1][0].originalDate;
+    const lastVisibleDay = weeks[weeks.length - 1][6].originalDate;
+    const markedDays = getMarkedDays?.(firstVisibleDay, lastVisibleDay) || [];
     const partialWeekProps = {
       weeks,
       navigatedDayRef,
@@ -349,6 +353,7 @@ export const CalendarDayGridBase = React.forwardRef(
       weekCorners,
       getDayInfosInRangeOfDay,
       getRefsFromDayInfos,
+      markedDays,
     } as const;
 
     return (

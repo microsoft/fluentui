@@ -178,9 +178,11 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   animationDirection?: AnimationDirection;
 
   /**
-   * Optional callback function to mark a date with a small symbol
+   * Optional callback function to mark specific days with a small symbol. Fires when the date range changes,
+   * gives the starting and ending displayed dates and expects the list of which days in between should be
+   * marked.
    */
-  shouldMarkDay?: (day: Date) => boolean;
+  getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
 }
 
 export interface ICalendarDayGridStyleProps {

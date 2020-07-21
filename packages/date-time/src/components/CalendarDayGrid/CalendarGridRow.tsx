@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { format } from '@uifabric/utilities';
-import { getWeekNumbersInMonth } from '@fluentui/date-time-utilities';
+import { getWeekNumbersInMonth, compareDates } from '@fluentui/date-time-utilities';
 import { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { CalendarGridDayCell } from './CalendarGridDayCell';
@@ -26,6 +26,7 @@ export interface ICalendarGridRowProps extends ICalendarDayGridProps {
   ): string;
   getDayInfosInRangeOfDay(dayToCompare: IDayInfo): IDayInfo[];
   getRefsFromDayInfos(dayInfosInRange: IDayInfo[]): (HTMLElement | null)[];
+  markedDays: Date[];
 }
 
 export const CalendarGridRow = (props: ICalendarGridRowProps): JSX.Element => {
@@ -41,6 +42,7 @@ export const CalendarGridRow = (props: ICalendarGridRowProps): JSX.Element => {
     firstWeekOfYear,
     navigatedDate,
     strings,
+    markedDays,
   } = props;
   const weekNumbers = showWeekNumbers
     ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
@@ -64,7 +66,13 @@ export const CalendarGridRow = (props: ICalendarGridRowProps): JSX.Element => {
         </th>
       )}
       {week.map((day: IDayInfo, dayIndex: number) => (
-        <CalendarGridDayCell {...props} key={day.key} day={day} dayIndex={dayIndex} />
+        <CalendarGridDayCell
+          {...props}
+          key={day.key}
+          day={day}
+          dayIndex={dayIndex}
+          shouldMarkDay={markedDays.filter(markedDay => compareDates(day.originalDate, markedDay)).length > 0}
+        />
       ))}
     </tr>
   );
