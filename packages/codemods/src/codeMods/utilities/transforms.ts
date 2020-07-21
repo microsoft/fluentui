@@ -17,16 +17,15 @@ export function boolTransform(newValue?: boolean, map?: ValueMap<string>): PropT
     toRename: string,
     replacementName: string,
   ) => {
-    if (newValue === undefined && !map) {
-      return;
-    }
     switch (element.getKind()) {
       case SyntaxKind.JsxExpression:
         {
-          const toChange = Maybe(element.getFirstChildByKind(SyntaxKind.TrueKeyword));
+          const toChange = Maybe(element.getChildAtIndex(1)); // Child between {} operators.
           if (toChange.just) {
             const oldText = toChange.value.getText();
-            toChange.value.replaceWithText(map ? map[oldText] : newValue!.toString());
+            toChange.value.replaceWithText(
+              map ? map[oldText] : newValue !== undefined ? newValue.toString() : toRename,
+            );
           }
         }
         break;
@@ -38,6 +37,39 @@ export function boolTransform(newValue?: boolean, map?: ValueMap<string>): PropT
           replacementName,
           map,
           newValue?.toString(),
+        );
+        break;
+      }
+    }
+  };
+}
+
+/* Transform function used if the value to change is a STRING. Follows
+   the same contraints as the above function. */
+export function stringTransform(newValue?: string, map?: ValueMap<string>): PropTransform {
+  return (
+    element: JsxExpression | JsxOpeningElement | JsxSelfClosingElement,
+    toRename: string,
+    replacementName: string,
+  ) => {
+    switch (element.getKind()) {
+      case SyntaxKind.JsxExpression:
+        {
+          const toChange = Maybe(element.getFirstChildByKind(SyntaxKind.StringLiteral));
+          if (toChange.just) {
+            const oldText = toChange.value.getText();
+            toChange.value.replaceWithText(map ? `'${map[oldText]}'` : newValue ? newValue : toRename);
+          }
+        }
+        break;
+      case SyntaxKind.JsxOpeningElement:
+      case SyntaxKind.JsxSelfClosingElement: {
+        renamePropInSpread(
+          element as JsxOpeningElement | JsxSelfClosingElement,
+          toRename,
+          replacementName,
+          map,
+          newValue,
         );
         break;
       }
