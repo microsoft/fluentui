@@ -126,7 +126,7 @@ function useSelectedDate({ formatDate, value, onSelectDate }: IDatePickerProps) 
 
   const setSelectedDate = (newDate: Date | undefined) => {
     setSelectedDateState(newDate);
-    setFormattedDate(value && formatDate ? formatDate(value) : '');
+    setFormattedDate(newDate && formatDate ? formatDate(newDate) : '');
   };
 
   React.useEffect(() => {
