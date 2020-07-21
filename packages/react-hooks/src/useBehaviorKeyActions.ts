@@ -6,7 +6,7 @@ import { getCode } from '@fluentui/keyboard-key';
 type SlotEventsMap<TSlots, TElement> = Record<keyof TSlots, React.DOMAttributes<TElement>>;
 type BehaviorKeyActions<TSlots, TElement> = SlotEventsMap<TSlots, TElement> & React.DOMAttributes<TElement>;
 
-const useClickOnKeyCombinations = <TElement>(
+const getClickOnKeyCombinations = <TElement>(
   keyCombinations: KeyCombinations[],
   eventHandlers: React.DOMAttributes<TElement>,
 ) => {
@@ -42,7 +42,7 @@ export const useBehaviorKeyActions = <TSlots extends BaseSlots, TElement>(
 
       // For every slot check if there is a performClick directive and an associated onClick event.
       if (performClick && slotEventHandlers && slotEventHandlers.onClick) {
-        const clickOnKeyCombinations = useClickOnKeyCombinations<TElement>(
+        const clickOnKeyCombinations = getClickOnKeyCombinations<TElement>(
           performClick.keyCombinations,
           slotEventHandlers,
         );

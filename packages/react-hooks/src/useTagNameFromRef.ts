@@ -18,7 +18,7 @@ export const useTagNameFromRef = <TElement extends HTMLElement>(
     }
 
     setElementTag(element.tagName.toLowerCase());
-  });
+  }, [ref, defaultTag]);
 
   return elementTag;
 };
