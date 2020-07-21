@@ -27,7 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.0",
+    "@fluentui/eslint-plugin": "^0.53.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -46,11 +46,11 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.12.2",
-    "@fluentui/react-theme-provider": "^0.3.8",
+    "@fluentui/react-compose": "^0.12.4",
+    "@fluentui/react-theme-provider": "^0.3.10",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/react-hooks": "^7.5.3",
-    "@uifabric/set-version": "^7.0.17",
+    "@uifabric/react-hooks": "^7.6.1",
+    "@uifabric/set-version": "^7.0.18",
     "object-fit-images": "^3.2.4",
     "tslib": "^1.10.0"
   },
