@@ -1,1 +1,1 @@
-Ratings provide insight regarding others’ opinions and experiences with a product, helping users make more-informed purchasing decisions. Users can also rate products they’ve purchased.
+Ratings show people’s opinions of a product, helping others make more informed purchasing decisions. People can also rate products they’ve purchased.
