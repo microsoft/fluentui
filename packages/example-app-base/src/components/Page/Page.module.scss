@@ -157,6 +157,9 @@ $usageListPadding: 24px;
   &:focus-within {
     opacity: 1;
   }
+  @media (hover: none) {
+    opacity: 1;
+  }
 
   a:global(.ms-Button) {
     height: 20px;
@@ -182,6 +185,10 @@ $usageListPadding: 24px;
       opacity: 1;
     }
   }
+}
+
+.hiddenContent {
+  @include hiddenContent();
 }
 
 .subHeading,
