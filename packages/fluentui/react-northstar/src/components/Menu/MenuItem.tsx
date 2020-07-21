@@ -35,7 +35,7 @@ import { MenuItemContent, MenuItemContentProps } from './MenuItemContent';
 import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
 import { MenuItemWrapper, MenuItemWrapperProps } from './MenuItemWrapper';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
-import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
+import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
 import { useContextSelectors } from '@fluentui/react-context-selector';
@@ -204,7 +204,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       content,
       icon,
       wrapper,
-      menu,
       primary,
       secondary,
       active,
@@ -221,6 +220,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       styles,
       variables,
     } = props;
+    const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,
@@ -444,6 +444,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         </ElementType>
       </Ref>
     );
+
     const maybeSubmenu =
       menu && active && menuOpen ? (
         <>
@@ -452,7 +453,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
               align={vertical ? 'top' : context.rtl ? 'end' : 'start'}
               position={vertical ? (context.rtl ? 'before' : 'after') : 'below'}
               targetRef={itemRef}
-              {...getPopperPropsFromShorthand(menu)}
+              {...positioningProps}
             >
               {createShorthand(parentProps.menuSlot || composeOptions.slots.menu || Menu, menu, {
                 defaultProps: () => ({
