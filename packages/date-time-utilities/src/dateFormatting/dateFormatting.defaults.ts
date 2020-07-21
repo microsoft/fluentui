@@ -1,4 +1,4 @@
-import { IDateGridStrings, IDateFormatting } from './dateFormatting.types';
+import { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
 import { formatDay } from './formatDay';
 import { formatYear } from './formatYear';
 import { formatMonthDayYear } from './formatMonthDayYear';
@@ -38,4 +38,22 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
     return null;
   },
   ...DEFAULT_LOCALIZED_STRINGS,
+};
+
+export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
+  ...DEFAULT_DATE_FORMATTING,
+
+  goToToday: 'Go to today',
+  weekNumberFormatString: 'Week number {0}',
+  prevMonthAriaLabel: 'Previous month',
+  nextMonthAriaLabel: 'Next month',
+  prevYearAriaLabel: 'Previous year',
+  nextYearAriaLabel: 'Next year',
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close',
+  selectedDateFormatString: 'Selected date {0}',
+  todayDateFormatString: "Today's date {0}",
+  monthPickerHeaderAriaLabel: '{0}, select to change the year',
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 };
