@@ -8,6 +8,7 @@ export * from './VerticalBarChart';
 export * from './VerticalStackedBarChart';
 export * from './GroupedVerticalBarChart';
 export * from './types';
+export * from './Wrap';
 export * from './utilities/ChartHoverCard';
 export * from './SankeyChart';
 
