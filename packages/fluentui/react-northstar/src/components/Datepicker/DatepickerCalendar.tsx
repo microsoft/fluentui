@@ -247,37 +247,52 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
               },
             }),
           })}
-          <Grid rows={grid.length + 1} columns={DAYS_IN_WEEK}>
-            {_.times(DAYS_IN_WEEK, dayNumber =>
-              createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
-                defaultProps: () =>
-                  getA11yProps('calendarHeaderCell', {
-                    content: localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                    key: dayNumber,
-                  }),
-              }),
-            )}
-            {_.map(grid, week =>
-              _.map(week, (day: IDay) =>
-                createShorthand(DatepickerCalendarCell, calendarCell, {
-                  defaultProps: () =>
-                    getA11yProps('calendarCell', {
-                      content: day.date,
-                      key: day.key,
-                      'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
-                      primary: day.isSelected,
-                      disabled: !day.isInMonth,
-                    }),
-                  overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
-                    onClick: e => {
-                      onDateChange(e, { ...predefinedProps, value: day });
-                      _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
-                    },
-                  }),
+          {createShorthand(
+            Grid,
+            {},
+            {
+              defaultProps: () =>
+                getA11yProps('calendarGrid', {
+                  rows: grid.length + 1,
+                  columns: DAYS_IN_WEEK,
+                  content: (
+                    <>
+                      {_.times(DAYS_IN_WEEK, dayNumber =>
+                        createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
+                          defaultProps: () =>
+                            getA11yProps('calendarHeaderCell', {
+                              content: localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                              key: dayNumber,
+                            }),
+                        }),
+                      )}
+                      {_.map(grid, week =>
+                        _.map(week, (day: IDay) =>
+                          createShorthand(DatepickerCalendarCell, calendarCell, {
+                            defaultProps: () =>
+                              getA11yProps('calendarCell', {
+                                content: day.date,
+                                key: day.key,
+                                'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
+                                primary: day.isSelected,
+                                disabled: !day.isInMonth,
+                              }),
+                            overrideProps: (
+                              predefinedProps: DatepickerCalendarCellProps,
+                            ): DatepickerCalendarCellProps => ({
+                              onClick: e => {
+                                onDateChange(e, { ...predefinedProps, value: day });
+                                _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
+                              },
+                            }),
+                          }),
+                        ),
+                      )}
+                    </>
+                  ),
                 }),
-              ),
-            )}
-          </Grid>
+            },
+          )}
         </ElementType>,
       )}
     </Ref>
