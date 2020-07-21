@@ -2,6 +2,36 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.4",
+      "version": "7.13.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hiding an unexpected link shown in the footer of the website.",
+            "author": "dzearing@hotmail.com",
+            "commit": "feb1bbcde7c250792e63a9cd5cb2ad1f7ef9268d",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.2",
+      "version": "7.13.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: switch from `max-len` rule to `@fluentui/max-len`",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/fabric-website_v7.13.0",
       "version": "7.13.0",

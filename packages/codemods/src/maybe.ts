@@ -8,21 +8,20 @@
  * not exist.
  */
 export interface MB<T> {
-  then: <N>(fn: (v: T) => N) => Maybe<N>;
-  thenMaybe: <N>(fn: (v: T) => Maybe<N>) => Maybe<N>;
-  orElse: (mElse: T) => T;
+  then: <N>(fn: (v: NonNullable<T>) => N | Maybe<N>) => Maybe<N>;
+  orElse: (mElse: NonNullable<T>) => NonNullable<T>;
+  __maybe: true;
 }
 
 const _makeMaybe = <T>(): MB<T> => {
-  const mb: Partial<Maybe<T>> = {};
+  const mb: Partial<Maybe<T>> = { __maybe: true };
   mb.then = then.bind(null, mb);
-  mb.thenMaybe = thenMaybe.bind(null, mb);
   mb.orElse = orElse.bind(null, mb);
   return mb as MB<T>;
 };
 
 export interface Just<T> extends MB<T> {
-  value: T;
+  value: NonNullable<T>;
   just: true;
 }
 
@@ -35,23 +34,37 @@ export type Maybe<T> = Just<T> | Nothing<T>;
 // Need to use assign so that the object remains correctly bound to the methods.
 export const Nothing = <T>(): Nothing<T> => Object.assign<MB<T>, { just: false }>(_makeMaybe(), { just: false });
 
-export const Just = <T>(value: T): Just<T> => {
+export const Just = <T>(value: NonNullable<T>): Just<T> => {
   if (value === undefined || value === null) {
     throw new Error('Maybe.Just cannot be undefined or null');
   }
-  return Object.assign<MB<T>, { just: true; value: T }>(_makeMaybe(), { just: true, value: value });
+  return Object.assign<MB<T>, { just: true; value: NonNullable<T> }>(_makeMaybe(), { just: true, value: value });
 };
 
 export const Maybe = <T>(value: T | undefined | null): Maybe<T> => {
-  return value !== undefined && value !== null ? Just(value) : Nothing();
+  return value !== undefined && value !== null ? Just(value!) : Nothing();
 };
 
-export const then = <T, N>(mb: Maybe<T>, fn: (v: T) => N): Maybe<N> => {
-  return mb.just ? Just(fn(mb.value)) : Nothing();
-};
+/**
+ *
+ * Works like promises, it will wrap your value in a Maybe if you don't explicitly return one
+ *
+ */
+export const then = <T, N>(mb: Maybe<T>, fn: (v: T) => N | Maybe<N> | undefined): Maybe<N> => {
+  if (!mb.just) {
+    return Nothing();
+  }
 
-export const thenMaybe = <T, N>(mb: Maybe<T>, fn: (v: T) => Maybe<N>): Maybe<N> => {
-  return mb.just ? fn(mb.value) : Nothing();
+  const ret = fn(mb.value);
+
+  if (!ret) {
+    return Nothing();
+  }
+
+  if ((ret as Maybe<N>).__maybe) {
+    return ret as Maybe<N>;
+  }
+  return Just(ret as NonNullable<N>);
 };
 
 export const orElse = <T>(mb: Maybe<T>, mElse: T): T => {
