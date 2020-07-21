@@ -4,9 +4,9 @@ exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Basic.Exam
 
 exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Compact.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Compact.Example) 2`] = `Array []`;
-
 exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Persona.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of ActivityItem (ActivityItem.Persona.Example) 2`] = `Array []`;
 
 exports[`a11y test checks accessibility of Announced (Announced.BulkOperations.Example) 1`] = `Array []`;
 
