@@ -3,6 +3,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack, IStackProps, IStackStyles, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { range } from '@uifabric/example-data';
 
 export type Overflow = 'visible' | 'auto' | 'hidden';
 
@@ -84,14 +85,6 @@ const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampl
   );
 };
 
-const range = (start: number, end: number): number[] => {
-  const result = [];
-  for (let i = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
-};
-
 export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () => {
   const [stackWidth, setStackWidth] = React.useState<number>(100);
   const [containerHeight, setContainerHeight] = React.useState<number>(150);
@@ -110,8 +103,7 @@ export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () =>
             step={1}
             defaultValue={100}
             showValue
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(value: number): void => setStackWidth(value)}
+            onChange={setStackWidth}
           />
         </Stack.Item>
         <Stack.Item grow>
@@ -122,8 +114,7 @@ export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () =>
             step={1}
             defaultValue={150}
             showValue
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(value: number): void => setContainerHeight(value)}
+            onChange={setContainerHeight}
           />
         </Stack.Item>
       </Stack>

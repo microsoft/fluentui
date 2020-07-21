@@ -14,7 +14,7 @@ import {
   TextField,
 } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
-
+import { range } from '@uifabric/example-data';
 export interface IExampleOptions {
   numItems: number;
   showBoxShadow: boolean;
@@ -54,14 +54,6 @@ const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
-
-const range = (start: number, end: number): number[] => {
-  const result = [];
-  for (let i = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
-};
 
 const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const {
@@ -180,8 +172,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={5}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={value => setNumItems(value)}
+              onChange={setNumItems}
             />
             <Stack horizontal disableShrink>
               <Checkbox label="Shadow around items" onChange={toggleShowBoxShadow} styles={shadowItemCheckboxStyles} />
@@ -203,8 +194,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
                 step={1}
                 defaultValue={100}
                 showValue
-                // eslint-disable-next-line react/jsx-no-bind
-                onChange={(value: number): void => setWrapperWidth(value)}
+                onChange={setWrapperWidth}
               />
             </Stack.Item>
           </Stack>
@@ -221,8 +211,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setColumnGap(value)}
+              onChange={setColumnGap}
             />
             <Slider
               label="Vertical gap between items:"
@@ -231,8 +220,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setRowGap(value)}
+              onChange={setRowGap}
             />
           </Stack>
         </Stack.Item>
@@ -245,8 +233,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setPaddingLeft(value)}
+              onChange={setPaddingLeft}
             />
             <Slider
               label="Right padding:"
@@ -255,8 +242,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setPaddingRight(value)}
+              onChange={setPaddingRight}
             />
           </Stack>
         </Stack.Item>
@@ -269,8 +255,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setPaddingTop(value)}
+              onChange={setPaddingTop}
             />
             <Slider
               label="Bottom padding:"
@@ -279,8 +264,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setPaddingBottom(value)}
+              onChange={setPaddingBottom}
             />
           </Stack>
         </Stack.Item>

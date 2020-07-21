@@ -10,3 +10,4 @@ export * from './listItems';
 export * from './lorem';
 export * from './people';
 export * from './testImages';
+export * from './range';

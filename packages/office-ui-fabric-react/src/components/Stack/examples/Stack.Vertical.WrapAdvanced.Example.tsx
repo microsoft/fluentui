@@ -99,8 +99,7 @@ export const VerticalStackWrapAdvancedExample: React.FunctionComponent = () => {
             step={1}
             defaultValue={420}
             showValue
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(value: number): void => setContainerHeight(value)}
+            onChange={setContainerHeight}
           />
         </Stack.Item>
         <Stack.Item grow>
@@ -111,8 +110,7 @@ export const VerticalStackWrapAdvancedExample: React.FunctionComponent = () => {
             step={1}
             defaultValue={100}
             showValue
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(value: number): void => setStackWidth(value)}
+            onChange={setStackWidth}
           />
         </Stack.Item>
       </Stack>

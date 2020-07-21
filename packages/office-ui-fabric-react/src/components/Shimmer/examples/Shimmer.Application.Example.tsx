@@ -2,9 +2,9 @@ import * as React from 'react';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
-import { useSetInterval, useConst } from '@uifabric/react-hooks';
+import { useSetInterval, useConst, useConstCallback } from '@uifabric/react-hooks';
 
-export interface IShimmerApplicationExampleState {
+interface IShimmerApplicationExampleState {
   lastIntervalId: number;
   visibleCount: number;
 }
@@ -69,7 +69,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
 
   const [items, setItems] = React.useState<(IExampleItem | null)[] | undefined>(undefined);
 
-  const buildShimmerColumns: IColumn[] = useConst(() => {
+  const shimmerColumns: IColumn[] = useConst(() => {
     const currentItems = createListItems(1);
     const columns: IColumn[] = buildColumns(currentItems);
     for (const column of columns) {
@@ -93,7 +93,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
     setItems(exampleItems.map((current, index) => (index < state.visibleCount ? current : null)) as IExampleItem[]);
   };
 
-  const onLoadData = React.useCallback((ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+  const onLoadData = useConstCallback((ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     state.visibleCount = 0;
     if (checked) {
       loadMoreItems();
@@ -102,7 +102,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
       setItems(undefined);
       clearInterval(state.lastIntervalId);
     }
-  }, []);
+  });
 
   return (
     <>
@@ -117,7 +117,7 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
         <ShimmeredDetailsList
           setKey="items"
           items={items || []}
-          columns={buildShimmerColumns}
+          columns={shimmerColumns}
           selectionMode={SelectionMode.none}
           onRenderItemColumn={onRenderItemColumn}
           enableShimmer={!items}

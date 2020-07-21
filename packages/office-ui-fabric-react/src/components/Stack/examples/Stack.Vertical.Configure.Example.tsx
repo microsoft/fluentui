@@ -6,6 +6,7 @@ import { Stack, IStackStyles, IStackTokens, IStackItemStyles, IStackProps } from
 import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { useBoolean } from '@uifabric/react-hooks';
+import { range } from '@uifabric/example-data';
 export interface IExampleOptions {
   numItems: number;
   showBoxShadow: boolean;
@@ -45,14 +46,6 @@ const horizontalAlignmentOptions: IDropdownOption[] = [
 // Non-mutating tokens definition
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
-
-const range = (start: number, end: number): number[] => {
-  const result = [];
-  for (let i = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
-};
 
 const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const {
@@ -158,16 +151,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
       <Stack horizontal tokens={configureStackTokens}>
         <Stack.Item grow>
           <Stack>
-            <Slider
-              label="Number of items:"
-              min={1}
-              max={10}
-              step={1}
-              defaultValue={5}
-              showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setNumItems(value)}
-            />
+            <Slider label="Number of items:" min={1} max={10} step={1} defaultValue={5} onChange={setNumItems} />
             <Stack horizontal>
               <Checkbox label="Shadow around items" onChange={toggleShowBoxShadow} styles={checkboxStyles} />
               <Checkbox label="Prevent item overflow" onChange={togglePreventOverflow} styles={checkboxStyles} />
@@ -185,8 +169,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={200}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setStackHeight(value)}
+              onChange={setStackHeight}
               disabled={autoHeight}
             />
             <Checkbox label="Automatic height (based on items)" defaultChecked onChange={toggleAutoHeight} />
@@ -204,8 +187,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setChildrenGap(value)}
+              onChange={setChildrenGap}
             />
             <Stack horizontal verticalAlign="end" tokens={configureStackTokens}>
               <Stack.Item grow>
@@ -259,8 +241,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setPaddingLeft(value)}
+              onChange={setPaddingLeft}
             />
             <Slider
               label="Right padding:"
@@ -269,8 +250,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setPaddingRight(value)}
+              onChange={setPaddingRight}
             />
           </Stack>
         </Stack.Item>
@@ -283,8 +263,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setPaddingTop(value)}
+              onChange={setPaddingTop}
             />
             <Slider
               label="Bottom padding:"
@@ -293,8 +272,7 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
               step={1}
               defaultValue={0}
               showValue
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={(value: number): void => setPaddingBottom(value)}
+              onChange={setPaddingBottom}
             />
           </Stack>
         </Stack.Item>
