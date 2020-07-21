@@ -1,6 +1,5 @@
 import { CodeMod } from '../codeMods/types';
 import { Glob } from 'glob';
-import { Range } from 'semver';
 import { Maybe, Nothing, Just } from '../maybe';
 
 // TODO ensure that async for all these utilities works
@@ -72,18 +71,18 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<
   return Nothing();
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function filterMods(codeMods: CodeMod<any>[], semverRange: Range) {
-  return codeMods.filter(mod => shouldRunMod(mod, semverRange));
+export function getEnabledMods(getPaths = getModsPaths, loadM = loadMod) {
+  return getPaths()
+    .map(pth => {
+      console.log('fetching codeMod at ', pth);
+      return loadM(pth, e => {
+        console.error(e);
+      });
+    })
+    .filter(modEnabled)
+    .map(v => v.value);
 }
 
-// Defaults to allowing almost any version to run.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function shouldRunMod(mod: CodeMod<any>, semverRange: Range = new Range('>0 <1000')) {
-  return mod.enabled && semverRange.test(mod.version || '*');
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function modEnabled(mod: Maybe<CodeMod<any>>): mod is Just<CodeMod<any>> {
+export function modEnabled<T>(mod: Maybe<CodeMod<T>>): mod is Just<CodeMod<T>> {
   return mod.then(v => !!v.enabled).orElse(false);
 }

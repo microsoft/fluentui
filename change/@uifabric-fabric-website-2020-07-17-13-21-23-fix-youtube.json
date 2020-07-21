@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Hiding an unexpected link shown in the footer of the website.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-17T20:21:23.669Z"
-}
