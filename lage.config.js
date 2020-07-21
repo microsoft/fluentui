@@ -25,7 +25,6 @@ module.exports = {
       'esm/**/*',
       '**/*.source.json',
       '**/*.info.json',
-      '**/*.scss.ts',
       '**/dist.stats.json',
       'dist-storybook/**/*',
       '**/*.tar.gz',
