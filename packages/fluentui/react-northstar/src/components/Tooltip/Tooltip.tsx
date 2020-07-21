@@ -104,6 +104,7 @@ export const Tooltip: React.FC<TooltipProps> &
     offset,
     overflowBoundary,
     pointing,
+    popperRef,
     position,
     positionFixed,
     target,
@@ -233,6 +234,7 @@ export const Tooltip: React.FC<TooltipProps> &
           offset={offset}
           overflowBoundary={overflowBoundary}
           pointerTargetRef={pointerTargetRef}
+          popperRef={popperRef}
           position={position}
           positionFixed={positionFixed}
           enabled={open}
