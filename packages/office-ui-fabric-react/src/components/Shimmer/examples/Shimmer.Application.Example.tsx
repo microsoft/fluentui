@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
+import { IColumn, buildColumns, SelectionMode, Toggle, IListProps } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 import { useSetInterval, useConst, useConstCallback } from '@uifabric/react-hooks';
 
@@ -11,8 +11,13 @@ interface IShimmerApplicationExampleState {
 
 const ITEMS_COUNT: number = 200;
 const INTERVAL_DELAY: number = 1200;
-const toggleStyling = { marginBottom: '20px' };
-const shimmeredDetailsListProps = { renderedWindowsAhead: 0, renderedWindowsBehind: 0 };
+const toggleStyle: React.CSSProperties = {
+  marginBottom: '20px',
+};
+const shimmeredDetailsListProps: IListProps = {
+  renderedWindowsAhead: 0,
+  renderedWindowsBehind: 0,
+};
 
 const fileIcons: { name: string }[] = [
   { name: 'accdb' },
@@ -107,8 +112,8 @@ export const ShimmerApplicationExample: React.FunctionComponent = () => {
   return (
     <>
       <Toggle
+        style={toggleStyle}
         label="Toggle to load content"
-        style={toggleStyling}
         onChange={onLoadData}
         onText="Content"
         offText="Shimmer"
