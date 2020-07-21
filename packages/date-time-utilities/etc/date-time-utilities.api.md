@@ -56,6 +56,9 @@ export enum DayOfWeek {
 export const DAYS_IN_WEEK = 7;
 
 // @public (undocumented)
+export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings;
+
+// @public (undocumented)
 export const DEFAULT_DATE_FORMATTING: IDateFormatting;
 
 // @public (undocumented)
@@ -124,6 +127,26 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
     direction: number;
     initialDate: Date;
     targetDate: Date;
+}
+
+// @public (undocumented)
+export interface ICalendarStrings extends IDateFormatting {
+    closeButtonAriaLabel?: string;
+    goToToday: string;
+    invalidInputErrorMessage?: string;
+    isOutOfBoundsErrorMessage?: string;
+    isRequiredErrorMessage?: string;
+    monthPickerHeaderAriaLabel?: string;
+    nextMonthAriaLabel?: string;
+    nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
+    prevMonthAriaLabel?: string;
+    prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
+    selectedDateFormatString?: string;
+    todayDateFormatString?: string;
+    weekNumberFormatString?: string;
+    yearPickerHeaderAriaLabel?: string;
 }
 
 // @public (undocumented)
