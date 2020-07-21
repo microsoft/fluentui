@@ -6,7 +6,7 @@ import { Dropdown } from '@fluentui/react-next/lib/Dropdown';
 import { Link } from '@fluentui/react-next/lib/Link';
 import { SpinButton, ISpinButtonStyles } from '@fluentui/react-next/lib/SpinButton';
 import { Toggle } from '@fluentui/react-next/lib/Toggle';
-import { Pivot, PivotItem } from '@fluentui/react-tabs';
+import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 import { IStackTokens, Stack } from '@fluentui/react-next/lib/Stack';
 import { useKeytipRef } from '@fluentui/react-next/lib/KeytipData';
 
