@@ -226,7 +226,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
       directionalHint: DirectionalHint.bottomRightEdge,
     };
 
-    const overflow = useOverflow({
+    const { menuButtonRef: overflowMenuButtonRef } = useOverflow({
       onOverflowItemsChanged: (overflowIndex, elements) => {
         // Set data-is-overflowing on each item
         elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
@@ -245,9 +245,9 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef(
     const setOverflowMenuButtonRef = React.useCallback(
       (button: React.Component | null) => {
         const node = ReactDOM.findDOMNode(button);
-        overflow.menuButtonRef(node instanceof HTMLElement ? node : null);
+        overflowMenuButtonRef(node instanceof HTMLElement ? node : null);
       },
-      [overflow.menuButtonRef],
+      [overflowMenuButtonRef],
     );
 
     return (
