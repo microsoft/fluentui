@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Groped vertical bar chart calling in did mount",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-07-21T14:53:28.938Z"
+}
