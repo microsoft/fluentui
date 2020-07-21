@@ -1,4 +1,11 @@
-import { renameProp, findJsxTag, boolTransform, enumTransform, stringTransform } from '../../utilities';
+import {
+  renameProp,
+  findJsxTag,
+  boolTransform,
+  enumTransform,
+  stringTransform,
+  numberTransform,
+} from '../../utilities';
 import { Project, SyntaxKind, JsxAttribute } from 'ts-morph';
 import { ValueMap, PropTransform } from '../../types';
 import { Maybe } from '../../../maybe';
@@ -106,6 +113,24 @@ describe('Props Utilities Test', () => {
   });
 
   describe('Edge Case Tests (transform functions)', () => {
+    it('can replace only the values of a given prop (number)', () => {
+      const file = project.getSourceFileOrThrow(DropdownPropsFile);
+      const tags = findJsxTag(file, 'Dropdown');
+      const func = numberTransform(100);
+      renameProp(tags, 'dropdownWidth', 'dropdownWidth', undefined, func);
+      tags.forEach(tag => {
+        expect(tag.getAttribute('dropdownWidth')).toBeTruthy();
+        const valMaybe = Maybe(tag.getAttribute('dropdownWidth'));
+        const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
+        expect(val.just).toBeTruthy();
+        const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
+        expect(propValueText.just).toBeTruthy();
+        if (propValueText.just) {
+          expect(propValueText.value).toEqual('100');
+        }
+      });
+    });
+
     it('can rename and replace the values of props with a specified value', () => {
       const file = project.getSourceFileOrThrow(DropdownPropsFile);
       const tags = findJsxTag(file, 'Dropdown');
