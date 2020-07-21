@@ -23,8 +23,6 @@ export const useButton = (
 
   const buttonBehaviorProps = useButtonBehavior(props, buttonRef);
 
-  console.log(buttonBehaviorProps);
-
   return {
     ...buttonBehaviorProps,
     buttonRef,
