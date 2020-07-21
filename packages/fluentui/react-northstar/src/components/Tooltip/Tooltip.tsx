@@ -283,6 +283,7 @@ Tooltip.propTypes = {
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
   unstable_pinned: PropTypes.bool,
+  popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
     PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,

@@ -322,6 +322,7 @@ MenuButton.propTypes = {
   open: PropTypes.bool,
   onMenuItemClick: PropTypes.func,
   onOpenChange: PropTypes.func,
+  popperRef: customPropTypes.ref,
   position: PropTypes.oneOf(POSITIONS),
   positionFixed: PropTypes.bool,
   target: PropTypes.any,

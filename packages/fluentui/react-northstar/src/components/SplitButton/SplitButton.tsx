@@ -280,6 +280,7 @@ SplitButton.propTypes = {
   onOpenChange: PropTypes.func,
   open: PropTypes.bool,
   size: customPropTypes.size,
+  popperRef: customPropTypes.ref,
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   toggleButton: customPropTypes.itemShorthand,

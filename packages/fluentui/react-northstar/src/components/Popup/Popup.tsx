@@ -569,6 +569,7 @@ Popup.propTypes = {
     PropTypes.func,
     PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
   ]),
+  popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
     PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
