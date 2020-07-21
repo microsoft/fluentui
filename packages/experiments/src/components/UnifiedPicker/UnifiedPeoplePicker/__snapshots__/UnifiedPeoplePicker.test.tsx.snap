@@ -59,9 +59,6 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
               }
         >
           <div
-            role="list"
-          />
-          <div
             aria-expanded={false}
             aria-haspopup="listbox"
             role="combobox"

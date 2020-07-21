@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SelectedPeopleList renders nothing if nothing is provided 1`] = `
-<div
-  role="list"
-/>
-`;
+exports[`SelectedPeopleList renders nothing if nothing is provided 1`] = `null`;
 
 exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 <div
