@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ComponentProps } from '@fluentui/react-compose';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
@@ -14,11 +14,7 @@ export type Alignment =
   | 'baseline'
   | 'stretch';
 
-export interface FlexProps {
-  /**
-   * Defines how to render the Stack.
-   */
-  as?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
+export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
   /**
    * Defines if container should be inline element.
    */
@@ -26,10 +22,9 @@ export interface FlexProps {
   /**
    * Defines whether to render the children horizontally.
    */
-  horizontal: boolean;
+  column?: boolean;
   /**
-   * Defines whether the children should wrap onto multiple rows or columns when they are
-   * about to overflow the size of the container.
+   * Sets vertical flow direction.
    */
   wrap?: boolean;
   /**
@@ -60,4 +55,8 @@ export interface FlexProps {
    * Defines whether the container should take up 100% of the height of its parent.
    */
   fluid?: boolean;
+  /**
+   * Defines strategy for distributing remaining space between items.
+   */
+  space?: ['around', 'between', 'evenly'];
 }

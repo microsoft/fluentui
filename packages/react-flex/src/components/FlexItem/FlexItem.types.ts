@@ -1,4 +1,16 @@
-export interface FlexItemProps {
+import { ComponentProps } from '@fluentui/react-compose';
+
+export type Alignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'baseline'
+  | 'stretch';
+
+export interface FlexItemProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
   /**
    * Defines how much to grow the Flexitem in proportion to its siblings.
    */
@@ -10,7 +22,7 @@ export interface FlexItemProps {
   /**
    * Defines how to align the Flexitem.
    */
-  align: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
+  align?: Alignment;
   /**
    * Defines order of the Flexitem.
    */
@@ -19,4 +31,8 @@ export interface FlexItemProps {
    * Defines whether the Flexitem should take up 100% of the height of its parent.
    */
   fluid?: boolean;
+  /**
+   * Item can be pushed towards opposite side in the container’s direction.
+   */
+  push?: boolean;
 }
