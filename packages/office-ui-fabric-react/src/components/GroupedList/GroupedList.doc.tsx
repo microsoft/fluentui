@@ -34,7 +34,9 @@ export const GroupedListPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/GroupedList/docs/GroupedListOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/GroupedList/docs/GroupedListBestPractices.md'),
   dos: '',
   donts: '',
   isHeaderVisible: true,

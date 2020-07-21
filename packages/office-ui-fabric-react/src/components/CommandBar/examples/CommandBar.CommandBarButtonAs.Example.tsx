@@ -87,7 +87,7 @@ const IndividualCommandBarButtonAsExample: React.FunctionComponent<IIndividualCo
         onClick: () => console.log('Download'),
       },
     ];
-  }, [props.onDismissCoachmark, props.isCoachmarkVisible]);
+  }, [onDismissCoachmark, isCoachmarkVisible]);
 
   return (
     <CommandBar
