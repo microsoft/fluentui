@@ -6,10 +6,7 @@ import {
   JsxSelfClosingElement,
   VariableDeclarationKind,
   CodeBlockWriter,
-<<<<<<< HEAD
   Identifier,
-=======
->>>>>>> 4b5472a3a2... add general transforms that work with spread
 } from 'ts-morph';
 import { ValueMap } from 'src/codeMods/types';
 import { Maybe } from '../../../helpers/maybe';
