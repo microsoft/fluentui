@@ -28,7 +28,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.0",
+    "@fluentui/eslint-plugin": "^0.53.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -43,12 +43,12 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^0.1.38",
-    "@uifabric/react-hooks": "^7.6.0",
-    "@uifabric/set-version": "^7.0.17",
-    "@uifabric/styling": "^7.14.3",
-    "@uifabric/utilities": "^7.24.3",
-    "office-ui-fabric-react": "^7.123.5",
+    "@fluentui/react-icons": "^0.1.39",
+    "@uifabric/react-hooks": "^7.6.1",
+    "@uifabric/set-version": "^7.0.18",
+    "@uifabric/styling": "^7.14.4",
+    "@uifabric/utilities": "^7.24.4",
+    "office-ui-fabric-react": "^7.123.6",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
