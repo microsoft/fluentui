@@ -267,11 +267,6 @@ describe('Props Utilities Test', () => {
           if (propValueText.just) {
             expect(propValueText.value).toEqual('newPlaceholder');
           }
-          /* Want to see these substrings somewhere in the Jsx element. */
-          expect(
-            val.value.getText().includes('{...__migProps}') || val.value.getText().includes('{...__migPropsTest}'),
-          ).toBeTruthy();
-          expect(val.value.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
         }
       });
     });
