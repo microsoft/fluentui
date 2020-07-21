@@ -133,6 +133,7 @@ export interface IDay {
     date: string;
     isInBounds: boolean;
     isInMonth: boolean;
+    isMarked: boolean;
     isSelected: boolean;
     isToday: boolean;
     key: string;
@@ -145,6 +146,7 @@ export interface IDayGridOptions extends IRestrictedDatesOptions {
     daysToSelectInDayView?: number;
     firstDayOfWeek: DayOfWeek;
     firstWeekOfYear: FirstWeekOfYear;
+    markedDays?: Date[];
     navigatedDate: Date;
     selectedDate: Date;
     showWeekNumbers?: boolean;

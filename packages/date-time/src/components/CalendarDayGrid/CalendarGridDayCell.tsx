@@ -14,7 +14,6 @@ import { ICalendarGridRowProps } from './CalendarGridRow';
 export interface ICalendarGridDayCellProps extends ICalendarGridRowProps {
   day: IDayInfo;
   dayIndex: number;
-  shouldMarkDay: boolean;
 }
 
 export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellProps> = ({
@@ -42,7 +41,6 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
   onNavigateDate,
   getDayInfosInRangeOfDay,
   getRefsFromDayInfos,
-  shouldMarkDay,
 }): JSX.Element => {
   const cornerStyle = weekCorners?.[weekIndex + '_' + dayIndex] ?? '';
   const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
@@ -204,7 +202,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
   };
 
   let ariaLabel = dateTimeFormatter.formatMonthDayYear(day.originalDate, strings);
-  if (shouldMarkDay) {
+  if (day.isMarked) {
     ariaLabel = ariaLabel + ', ' + strings.dayMarkedAriaLabel;
   }
 
@@ -247,7 +245,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         tabIndex={isNavigatedDate ? 0 : undefined}
       >
         <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
-        {shouldMarkDay && <div aria-hidden="true" className={classNames.dayMarker} />}
+        {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}
       </button>
     </td>
   );
