@@ -222,11 +222,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const calendarElement = createShorthand(DatepickerCalendar, calendar, {
     defaultProps: () =>
       getA11yProps('calendar', {
-        className: datepickerCalendarClassName,
       }),
-    overrideProps: () => ({
+    overrideProps: (predefinedProps) => ({
       ...calendarOptions,
-      onDateChange: handleChange,
+      onDateChange: handleChange(predefinedProps),
     }),
   });
 
