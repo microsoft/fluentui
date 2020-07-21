@@ -87,18 +87,14 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
 
       return () => {
         if (scrollContainerRef.current) {
-          // TODO: check with @soettl on what to do in response to this warning:
-          //   "The ref value 'scrollContainerRef.current' will likely have changed by the time
-          //   this effect cleanup function runs. If this ref points to a node rendered by React,
-          //   copy 'scrollContainerRef.current' to a variable inside the effect, and use that
-          //   variable in the cleanup function.eslintreact-hooks/exhaustive-deps"
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           scrollContainerRef.current.removeEventListener('scroll', onScroll);
         }
 
         clearStoppedScrollingTimeout();
       };
     }
-    // TODO: check with @soettl about how to fix missing deps here
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const style: React.CSSProperties = {
