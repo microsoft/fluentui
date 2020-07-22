@@ -1,6 +1,6 @@
 import { PropTransform, ValueMap } from '../types';
 import { JsxExpression, SyntaxKind, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
-import { Maybe } from '../../maybe';
+import { Maybe } from '../../helpers/maybe';
 import { renamePropInSpread } from './helpers/propHelpers';
 
 // Used in the renameProp utility.
@@ -24,7 +24,7 @@ export function boolTransform(newValue?: boolean, map?: ValueMap<string>): PropT
       case SyntaxKind.JsxExpression:
         {
           const toChange = Maybe(element.getFirstChildByKind(SyntaxKind.TrueKeyword));
-          if (toChange.just) {
+          if (toChange.something) {
             const oldText = toChange.value.getText();
             toChange.value.replaceWithText(map ? map[oldText] : newValue!.toString());
           }
@@ -61,7 +61,7 @@ export function enumTransform(map: ValueMap<string>): PropTransform {
       case SyntaxKind.JsxExpression:
         {
           const toChange = Maybe(element.getFirstChildByKind(SyntaxKind.PropertyAccessExpression));
-          if (toChange.just) {
+          if (toChange.something) {
             const oldText = toChange.value.getText();
             toChange.value.replaceWithText(map[oldText]);
           }

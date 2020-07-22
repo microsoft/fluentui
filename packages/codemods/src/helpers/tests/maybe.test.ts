@@ -1,20 +1,20 @@
-import { Maybe, Just, Nothing } from '../../maybe';
+import { Maybe, Something, Nothing } from '../maybe';
 
 describe('Maybe', () => {
   it('new just has correct just value', () => {
-    expect(Just(1).just).toBe(true);
-    expect(Just('').just).toBe(true);
+    expect(Something(1).something).toBe(true);
+    expect(Something('').something).toBe(true);
   });
 
   it('new just has correct value', () => {
-    expect(Just(0).value).toBe(0);
-    expect(Just('').value).toBe('');
+    expect(Something(0).value).toBe(0);
+    expect(Something('').value).toBe('');
   });
 
   it('just will error if you pass it undefined', () => {
     let error = false;
     try {
-      Just(undefined as unknown);
+      Something(undefined as unknown);
     } catch (_) {
       error = true;
     }
@@ -22,30 +22,30 @@ describe('Maybe', () => {
   });
 
   it('new nothing has correct just value', () => {
-    expect(Nothing().just).toBe(false);
+    expect(Nothing().something).toBe(false);
   });
 
   it('maybe returns correct types', () => {
     const ma = Maybe(1);
-    expect(ma.just).toBe(true);
+    expect(ma.something).toBe(true);
     expect(ma.orElse(0)).toBe(1);
 
     const mb = Maybe(0);
-    expect(mb.just).toBe(true);
+    expect(mb.something).toBe(true);
     expect(mb.orElse(4)).toBe(0);
 
     const mc = Maybe('');
-    expect(mc.just).toBe(true);
+    expect(mc.something).toBe(true);
     expect(mc.orElse('error')).toBe('');
   });
 
   it('then returns another maybe', () => {
-    expect(Maybe(10).then(v => 'asd').just).toBeDefined();
-    expect(Maybe(undefined).then(v => 'asd').just).toBeDefined();
+    expect(Maybe(10).then(v => 'asd').something).toBeDefined();
+    expect(Maybe(undefined).then(v => 'asd').something).toBeDefined();
   });
 
   it('then returns nothing if undefined', () => {
-    expect(Maybe(undefined).then(v => 'asd').just).toEqual(false);
+    expect(Maybe(undefined).then(v => 'asd').something).toEqual(false);
   });
 
   it('then returns new maybe if it has a value', () => {
@@ -55,6 +55,7 @@ describe('Maybe', () => {
         .orElse('bad'),
     ).toEqual('good');
   });
+
   it('then returns single maybe if maybe returned', () => {
     expect(
       Maybe('foo')
@@ -69,5 +70,30 @@ describe('Maybe', () => {
         .then<string>(v => (undefined as unknown) as string)
         .orElse('defaultValue'),
     ).toEqual('defaultValue');
+  });
+
+  it('flattens a nested maybe correctly', () => {
+    expect(
+      Maybe(Maybe('foo'))
+        .flatten()
+        .orElse('newValue'),
+    ).toEqual('foo');
+  });
+
+  it('flattens a single maybe directly', () => {
+    expect(
+      Maybe('foo')
+        .flatten()
+        .orElse('newValue'),
+    ).toEqual('foo');
+  });
+
+  it('flattens a single maybe directly', () => {
+    expect(
+      Maybe(Maybe(Maybe('foo')))
+        .flatten()
+        .flatten()
+        .orElse('newValue'),
+    ).toEqual('foo');
   });
 });

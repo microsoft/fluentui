@@ -1,7 +1,7 @@
 import { renameProp, findJsxTag, boolTransform, enumTransform } from '../../utilities';
 import { Project, SyntaxKind, JsxAttribute } from 'ts-morph';
 import { ValueMap, PropTransform } from '../../types';
-import { Maybe } from '../../../maybe';
+import { Maybe } from '../../../helpers/maybe';
 
 const personaPropsFile = 'mPersonaProps.tsx';
 const personaSpreadPropsFile = 'mPersonaSpreadProps.tsx';
@@ -76,10 +76,10 @@ describe('Props Utilities Test', () => {
         expect(tag.getAttribute('isDisabled')).toBeFalsy();
         const valMaybe = Maybe(tag.getAttribute('disabled'));
         const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
-        expect(val.just).toBeTruthy();
+        expect(val.something).toBeTruthy();
         const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
-        expect(propValueText.just).toBeTruthy();
-        if (propValueText.just) {
+        expect(propValueText.something).toBeTruthy();
+        if (propValueText.something) {
           expect(propValueText.value).toEqual('false');
         }
       });
@@ -115,10 +115,10 @@ describe('Props Utilities Test', () => {
         expect(tag.getAttribute('isDisabled')).toBeFalsy();
         const valMaybe = Maybe(tag.getAttribute('disabled'));
         const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
-        expect(val.just).toBeTruthy();
+        expect(val.something).toBeTruthy();
         const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
-        expect(propValueText.just).toBeTruthy();
-        if (propValueText.just) {
+        expect(propValueText.something).toBeTruthy();
+        if (propValueText.something) {
           expect(propValueText.value).toEqual('false');
         }
       });
@@ -136,18 +136,19 @@ describe('Props Utilities Test', () => {
         const innerMaybe = Maybe(
           (tag.getAttribute('size') as JsxAttribute).getFirstChildByKind(SyntaxKind.JsxExpression),
         );
-        if (innerMaybe.just && currentEnumValue.just) {
+        if (innerMaybe.something && currentEnumValue.something) {
           const inner = innerMaybe.then(value => {
             return value.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
           });
-          expect(inner.just).toBeTruthy();
-          expect(currentEnumValue.just).toBeTruthy();
+
+          expect(inner.something).toBeTruthy();
+          expect(currentEnumValue.something).toBeTruthy();
           const newVal = spinnerMap[currentEnumValue.value];
           const firstInnerChild = inner.then(value => value.getFirstChildByKind(SyntaxKind.Identifier));
           const LastInnerChild = inner.then(value => value.getLastChildByKind(SyntaxKind.Identifier));
-          expect(firstInnerChild.just).toBeTruthy();
-          expect(LastInnerChild.just).toBeTruthy();
-          if (firstInnerChild.just && LastInnerChild.just) {
+          expect(firstInnerChild.something).toBeTruthy();
+          expect(LastInnerChild.something).toBeTruthy();
+          if (firstInnerChild.something && LastInnerChild.something) {
             /* Need this if statement to clear value on the next line. */
             expect(firstInnerChild.value.getText()).toEqual('SpinnerSize');
             expect(LastInnerChild.value.getText()).toEqual(newVal.substring(newVal.indexOf('.') + 1));
