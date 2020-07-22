@@ -276,23 +276,10 @@ export class LineChartBase extends React.Component<
                         legend?: string;
                         y?: number;
                         color?: string;
-                        yAxisCalloutData?: string;
+                        yAxisCalloutData?: string | { [id: string]: number };
                       },
                       index: number,
-                    ) => (
-                      <div
-                        key={index}
-                        id={`${index}_${xValue.y}`}
-                        className={mergeStyles(this._classNames.calloutBlockContainer, {
-                          borderLeft: `4px solid ${xValue.color}`,
-                        })}
-                      >
-                        <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
-                        <div className={this._classNames.calloutContentY}>
-                          {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
-                        </div>
-                      </div>
-                    ),
+                    ) => this._getCalloutContent(xValue, index),
                   )}
               </div>
             </div>
@@ -300,6 +287,46 @@ export class LineChartBase extends React.Component<
         )}
       </div>
     );
+  }
+
+  private _getCalloutContent(
+    xValue: {
+      legend?: string;
+      y?: number;
+      color?: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+    },
+    index: number,
+  ): React.ReactNode {
+    if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
+      return (
+        <div
+          id={`${index}_${xValue.y}`}
+          className={mergeStyles(this._classNames.calloutBlockContainer, {
+            borderLeft: `4px solid ${xValue.color}`,
+          })}
+        >
+          <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
+          <div className={this._classNames.calloutContentY}>
+            {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+          </div>
+        </div>
+      );
+    } else {
+      const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
+      return Object.keys(subcounts).map((subcountName: string) => {
+        return (
+          <div
+            className={mergeStyles(this._classNames.calloutBlockContainer, {
+              borderLeft: `4px solid ${xValue.color}`,
+            })}
+          >
+            <div className={this._classNames.calloutlegendText}> {subcountName}</div>
+            <div className={this._classNames.calloutContentY}>{subcounts[subcountName]}</div>
+          </div>
+        );
+      });
+    }
   }
 
   private _fitParentContainer(): void {
