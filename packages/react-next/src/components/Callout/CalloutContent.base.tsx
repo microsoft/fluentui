@@ -436,8 +436,6 @@ interface ICalloutClassProps extends ICalloutProps {
 }
 
 class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never> {
-  private _classNames: { [key in keyof ICalloutContentStyles]: string };
-
   public shouldComponentUpdate(newProps: ICalloutClassProps): boolean {
     if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
@@ -483,7 +481,7 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
     const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
-    this._classNames = getClassNames(styles!, {
+    const classNames = getClassNames(styles!, {
       theme: this.props.theme!,
       className,
       overflowYHidden: overflowYHidden,
@@ -503,27 +501,25 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
-      <div ref={this.props.hoisted.rootRef} className={this._classNames.container} style={visibilityStyle}>
+      <div ref={this.props.hoisted.rootRef} className={classNames.container} style={visibilityStyle}>
         <div
           {...getNativeProps(this.props, divProperties, ARIA_ROLE_ATTRIBUTES)}
-          className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
+          className={css(classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}
           ref={this.props.hoisted.calloutElement}
         >
-          {beakVisible && (
-            <div className={this._classNames.beak} style={getBeakPosition(this.props.hoisted.positions)} />
-          )}
-          {beakVisible && <div className={this._classNames.beakCurtain} />}
+          {beakVisible && <div className={classNames.beak} style={getBeakPosition(this.props.hoisted.positions)} />}
+          {beakVisible && <div className={classNames.beakCurtain} />}
           <Popup
             {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
             ariaLabel={ariaLabel}
             onRestoreFocus={this.props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabelledBy={ariaLabelledBy}
-            className={this._classNames.calloutMain}
+            className={classNames.calloutMain}
             onDismiss={this.dismiss}
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
