@@ -45,10 +45,6 @@ style['hljs-link'] = style['hljs-regexp'] = {
   color: SharedColors.green20,
 };
 
-console.log(SharedColors.green20);
-
-console.log(style);
-
 export interface ICodeSnippetProps {
   className?: string;
   language?: string;
