@@ -7,6 +7,7 @@ import {
   VariableDeclarationKind,
   CodeBlockWriter,
   Identifier,
+  JsxAttributeLike,
 } from 'ts-morph';
 import { ValueMap } from 'src/codeMods/types';
 import { Maybe } from '../../../helpers/maybe';
@@ -95,19 +96,36 @@ export function renamePropInSpread(
               }
             }
             /* Cannot use spreadProp because the node has been moved in the AST. */
-            attrToRename.replaceWithText(`{...${newSpreadName}}`);
-            element.addAttribute({
-              name: replacementName,
-              initializer: changeValueMap
-                ? `{${newMapName}[${toRename}]}`
-                : replacementValue
-                ? `{${replacementValue}}`
-                : `{${toRename}}`,
-            });
+            addNewAttributeToComponent(
+              attrToRename,
+              element,
+              replacementName,
+              toRename,
+              changeValueMap,
+              replacementValue,
+            );
           }
         }
       }
     }
+  });
+}
+function addNewAttributeToComponent(
+  attrToRename: JsxAttributeLike,
+  element: JsxOpeningElement | JsxSelfClosingElement,
+  replacementName: string,
+  toRename: string,
+  changeValueMap?: ValueMap<string>,
+  replacementValue?: string,
+) {
+  attrToRename.replaceWithText(`{...${newSpreadName}}`);
+  element.addAttribute({
+    name: replacementName,
+    initializer: changeValueMap
+      ? `{${newMapName}[${toRename}]}`
+      : replacementValue
+      ? `{${replacementValue}}`
+      : `{${toRename}}`,
   });
 }
 
