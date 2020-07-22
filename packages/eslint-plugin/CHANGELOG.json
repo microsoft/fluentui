@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.53.1",
+      "version": "0.53.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable react-hooks lint rules",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@fluentui/eslint-plugin_v0.53.0",
       "version": "0.53.0",

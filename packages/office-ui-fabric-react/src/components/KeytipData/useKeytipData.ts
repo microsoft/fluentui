@@ -34,6 +34,8 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
       // Unregister Keytip in KeytipManager
       keytipProps && keytipManager.unregister(keytipProps, uniqueId.current!);
     };
+    // this is meant to run only at mount, and updates are handled separately
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const prevOptions = usePrevious(options);

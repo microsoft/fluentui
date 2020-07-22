@@ -29,7 +29,7 @@ export const useToggleState: IToggleComponent['state'] = props => {
         }
       }
     },
-    [checked, disabled, onChange],
+    [checked, disabled, onChange, setChecked],
   );
 
   // TODO: can this be structured with helpers to reduce changes for bugs? (overriding controlled props in output, etc.)

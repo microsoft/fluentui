@@ -68,12 +68,6 @@ export const PeoplePickerPageProps: IDocPageProps = {
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md'),
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

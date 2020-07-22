@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating valueInsideDonut to be set to yAxisCalloutData if the value is defined",
-  "packageName": "@uifabric/charting",
-  "email": "57419611+hki-237@users.noreply.github.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-20T04:44:37.882Z"
-}

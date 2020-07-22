@@ -1,1 +1,1 @@
-export * from './components/Pivot/index';
+export * from '@fluentui/react-tabs/lib/Pivot';

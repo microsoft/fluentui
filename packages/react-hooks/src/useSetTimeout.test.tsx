@@ -16,7 +16,7 @@ describe('useSetTimeout', () => {
       () => ({
         clearTimeout: () => clearTimeout(state.id),
       }),
-      [clearTimeout],
+      [clearTimeout, state],
     );
 
     state.id = setTimeout(() => {
