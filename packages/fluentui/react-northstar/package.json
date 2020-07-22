@@ -13,7 +13,7 @@
     "@fluentui/react-component-event-listener": "^0.50.0",
     "@fluentui/react-component-nesting-registry": "^0.50.0",
     "@fluentui/react-component-ref": "^0.50.0",
-    "@fluentui/react-compose": "^0.12.4",
+    "@fluentui/react-compose": "^0.12.5",
     "@fluentui/react-context-selector": "^0.50.0",
     "@fluentui/react-icons-northstar": "^0.50.0",
     "@fluentui/react-northstar-styles-renderer": "^0.50.0",
