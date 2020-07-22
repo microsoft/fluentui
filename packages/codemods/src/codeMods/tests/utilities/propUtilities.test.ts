@@ -122,10 +122,10 @@ describe('Props Utilities Test', () => {
         expect(tag.getAttribute('dropdownWidth')).toBeTruthy();
         const valMaybe = Maybe(tag.getAttribute('dropdownWidth'));
         const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
-        expect(val.just).toBeTruthy();
+        expect(val.something).toBeTruthy();
         const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
-        expect(propValueText.just).toBeTruthy();
-        if (propValueText.just) {
+        expect(propValueText.something).toBeTruthy();
+        if (propValueText.something) {
           expect(propValueText.value).toEqual('100');
         }
       });
@@ -158,10 +158,10 @@ describe('Props Utilities Test', () => {
         expect(tag.getAttribute('isDisabled')).toBeFalsy();
         const valMaybe = Maybe(tag.getAttribute('disabled'));
         const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
-        expect(val.just).toBeTruthy();
+        expect(val.something).toBeTruthy();
         const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
-        expect(propValueText.just).toBeTruthy();
-        if (propValueText.just) {
+        expect(propValueText.something).toBeTruthy();
+        if (propValueText.something) {
           expect(propValueText.value).toEqual('isDisabled');
         }
       });
@@ -261,10 +261,10 @@ describe('Props Utilities Test', () => {
         expect(tag.getAttribute('placeHolder')).toBeFalsy();
         const valMaybe = Maybe(tag.getAttribute('placeholder'));
         const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
-        expect(val.just).toBeTruthy();
+        expect(val.something).toBeTruthy();
         const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
-        expect(propValueText.just).toBeTruthy();
-        if (propValueText.just) {
+        expect(propValueText.something).toBeTruthy();
+        if (propValueText.something) {
           expect(propValueText.value).toEqual('newPlaceholder');
         }
       });
@@ -328,10 +328,10 @@ describe('Props Utilities Test', () => {
       expect(tag.getAttribute('placeHolder')).toBeFalsy();
       const valMaybe = Maybe(tag.getAttribute('placeholder'));
       const val = valMaybe.then(value => value.getFirstChildByKind(SyntaxKind.JsxExpression));
-      expect(val.just).toBeTruthy();
+      expect(val.something).toBeTruthy();
       const propValueText = val.then(value => value.getText().substring(1, value.getText().length - 1));
-      expect(propValueText.just).toBeTruthy();
-      if (propValueText.just) {
+      expect(propValueText.something).toBeTruthy();
+      if (propValueText.something) {
         expect(propValueText.value).toEqual('newPlaceholder');
       }
     });

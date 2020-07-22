@@ -150,5 +150,5 @@ function elementNotInSpread(element: JsxExpression | JsxOpeningElement | JsxSelf
    developer can overwrite. */
 function getValueToChange(element: JsxExpression) {
   const toChange = Maybe(element.getChildAtIndex(1)); // Child between {} operators.
-  return toChange.just ? toChange.value : undefined;
+  return toChange.something ? toChange.value : undefined;
 }
