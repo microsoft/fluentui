@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
 
-// eslint-disable @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isObject = (o: any) => o !== null && typeof o === 'object' && !Array.isArray(o);
 
-// eslint-disable @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const _merge = (obj1: any, obj2: any) => {
   const keys: string[] = Object.getOwnPropertyNames(obj2);
   keys.forEach(k => {
@@ -22,7 +22,7 @@ const _merge = (obj1: any, obj2: any) => {
  * @param objs - objects to be merged
  */
 export function merge<T = Object>(...objs: Object[]): T {
-  const merged = Object.assign({}, objs[0]);
+  const merged = { ...objs[0] };
   objs = objs.slice(1);
 
   objs.forEach(option => {
