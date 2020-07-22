@@ -14,6 +14,7 @@ import {
   getWindow,
   on,
   shallowCompare,
+  getPropsWithDefaults,
 } from '../../Utilities';
 import {
   positionCallout,
@@ -28,6 +29,7 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -57,21 +59,39 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
-export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutState> {
-  public static defaultProps = {
-    preventDismissOnLostFocus: false,
-    preventDismissOnScroll: false,
-    preventDismissOnResize: false,
-    isBeakVisible: true,
-    beakWidth: 16,
-    gapSpace: 0,
-    minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomAutoEdge,
-  };
+const DEFAULT_PROPS = {
+  preventDismissOnLostFocus: false,
+  preventDismissOnScroll: false,
+  preventDismissOnResize: false,
+  isBeakVisible: true,
+  beakWidth: 16,
+  gapSpace: 0,
+  minPagePadding: 8,
+  directionalHint: DirectionalHint.bottomAutoEdge,
+} as const;
 
+export const CalloutContentBase = React.forwardRef(
+  (propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+
+    const hostElement = React.useRef<HTMLDivElement>(null);
+    const rootRef = useMergedRefs(hostElement, forwardedRef);
+
+    return <CalloutContentBaseClass {...props} hoisted={{ rootRef, hostElement }} />;
+  },
+);
+CalloutContentBase.displayName = 'CalloutContentBase';
+
+interface ICalloutClassProps extends ICalloutProps {
+  hoisted: {
+    rootRef: React.Ref<HTMLDivElement>;
+    hostElement: React.RefObject<HTMLDivElement>;
+  };
+}
+
+class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICalloutState> {
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
-  private _hostElement = React.createRef<HTMLDivElement>();
   private _calloutElement = React.createRef<HTMLDivElement>();
   private _targetWindow: Window;
   private _bounds: IRectangle | undefined;
@@ -86,7 +106,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _async: Async;
   private _disposables: (() => void)[] = [];
 
-  constructor(props: ICalloutProps) {
+  constructor(props: ICalloutClassProps) {
     super(props);
 
     this._async = new Async(this);
@@ -115,7 +135,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }
   }
 
-  public shouldComponentUpdate(newProps: ICalloutProps, newState: ICalloutState): boolean {
+  public shouldComponentUpdate(newProps: ICalloutClassProps, newState: ICalloutState): boolean {
     if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
@@ -133,7 +153,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._disposables.forEach((dispose: () => void) => dispose());
   }
 
-  public UNSAFE_componentWillUpdate(newProps: ICalloutProps): void {
+  public UNSAFE_componentWillUpdate(newProps: ICalloutClassProps): void {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element
     // because we do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
@@ -233,7 +253,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
-      <div ref={this._hostElement} className={this._classNames.container} style={visibilityStyle}>
+      <div ref={this.props.hoisted.rootRef} className={this._classNames.container} style={visibilityStyle}>
         <div
           {...getNativeProps(this.props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
@@ -326,7 +346,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _dismissOnClickOrScroll(ev: Event) {
     const target = ev.target as HTMLElement;
     const isEventTargetOutsideCallout =
-      this._hostElement.current && !elementContains(this._hostElement.current, target);
+      this.props.hoisted.hostElement.current && !elementContains(this.props.hoisted.hostElement.current, target);
 
     // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
     if (isEventTargetOutsideCallout && this._isMouseDownOnPopup) {
@@ -391,7 +411,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._setTargetWindowAndElement(this._getTarget());
 
     const { positions } = this.state;
-    const hostElement: HTMLElement | null = this._hostElement.current;
+    const hostElement: HTMLElement | null = this.props.hoisted.hostElement.current;
     const calloutElement: HTMLElement | null = this._calloutElement.current;
 
     // If we expect a target element to position against, we need to wait until `this._target` is resolved. Otherwise
@@ -561,13 +581,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   // Whether or not the current positions should be reset
-  private _didPositionPropsChange(newProps: ICalloutProps, oldProps: ICalloutProps): boolean {
+  private _didPositionPropsChange(newProps: ICalloutClassProps, oldProps: ICalloutClassProps): boolean {
     return (
       (!newProps.hidden && newProps.hidden !== oldProps.hidden) || newProps.directionalHint !== oldProps.directionalHint
     );
   }
 
-  private _getTarget(props: ICalloutProps = this.props): Target {
+  private _getTarget(props: ICalloutClassProps = this.props): Target {
     const { target } = props;
     return target!;
   }
