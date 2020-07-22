@@ -5,11 +5,11 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
+  const [items, setItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
   const renderedItems = React.useMemo(() => items, [items]);
 
   React.useEffect(() => {
-    updateItems(props.selectedItems || []);
+    setItems(props.selectedItems || []);
   }, [props.selectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
@@ -20,8 +20,8 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       const index: number = updatedItems.indexOf(item);
       updatedItems.splice(index, 1);
     });
-    updateItems(updatedItems);
-    props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
+    setItems(updatedItems);
+    props.onItemsRemoved?.(itemsToRemove);
   };
 
   const replaceItem = React.useCallback(
@@ -31,10 +31,10 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       if (index >= 0) {
         const newItems: TItem[] = [...items];
         newItems.splice(index, 1, ...newItemsArray);
-        updateItems(newItems);
+        setItems(newItems);
       }
     },
-    [updateItems, items],
+    [items],
   );
 
   const onRemoveItemCallbacks = React.useMemo(
@@ -42,6 +42,9 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       // create callbacks ahead of time with memo.
       // (hooks have to be called in the same order)
       items.map((item: TItem) => () => removeItems([item])),
+    // TODO: consider whether dependency on removeItems should be added
+    // (removeItems would likely need to be wrapped in useCallback)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [items],
   );
 
