@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 export function sharedIsConformant(testInfo: IsConformantOptions) {
   const defaultOptions = {
     disabledTests: ['has-docblock'],
-    wrapperComponents: [Ref],
+    helperComponents: [Ref],
   };
 
   isConformant(defaultOptions, testInfo);

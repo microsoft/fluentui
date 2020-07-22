@@ -16,10 +16,16 @@ const toNextNonTrivialChild = (from: ReactWrapper, helperComponentNames: string[
     : current;
 };
 
-export const getComponent = (wrapper: ReactWrapper, wrapperComponents: React.ElementType[]) => {
-  const helperComponentNames = wrapperComponents.map(getDisplayName);
-
+export const getComponent = (
+  wrapper: ReactWrapper,
+  helperComponents: React.ElementType[],
+  wrapperComponent?: React.ElementType,
+) => {
+  const helperComponentNames = [...helperComponents, ...(wrapperComponent ? [wrapperComponent] : [])].map(
+    getDisplayName,
+  );
+  const componentElement = toNextNonTrivialChild(wrapper, helperComponentNames);
   // in that case 'topLevelChildElement' we've found so far is a wrapper's topmost child
   // thus, we should continue search
-  return helperComponentNames.length > 0 ? toNextNonTrivialChild(wrapper, helperComponentNames) : wrapper;
+  return wrapperComponent ? toNextNonTrivialChild(componentElement, helperComponentNames) : componentElement;
 };

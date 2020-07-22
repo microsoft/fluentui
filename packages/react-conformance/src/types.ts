@@ -60,12 +60,15 @@ export interface IsConformantOptions<TProps = {}> {
   /**
    * This component uses wrapper slot to wrap the 'meaningful' element.
    */
-  wrapperComponents?: React.ElementType[];
+  wrapperComponent?: React.ElementType;
   /**
-   * Child component that will receive unhandledProps
+   * Helpers such as FocusZone and Ref which should be ignored when finding nontrivial children.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  passesUnhandledPropsTo?: ComponentType<any>;
+  helperComponents?: React.ElementType[];
+  /**
+   * Child component that will receive unhandledProps.
+   */
+  passesUnhandledPropsTo?: ComponentType<TProps>;
 }
 
 export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => void;

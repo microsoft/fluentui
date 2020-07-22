@@ -27,7 +27,7 @@ describe('MenuItem', () => {
       Component: MenuItem,
       displayName: 'MenuItem',
       componentPath: '',
-      wrapperComponents: [MenuItemWrapper],
+      wrapperComponent: MenuItemWrapper,
     },
     __filename,
   );

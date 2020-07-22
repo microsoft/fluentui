@@ -153,12 +153,12 @@ export const defaultTests: TestObject = {
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`renders as a functional component or passes "as" to the next component`, () => {
-        const { requiredProps, Component, customMount = mount, wrapperComponents = [] } = testInfo;
+        const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
         const MyComponent = () => null;
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, wrapperComponents);
+        const component = getComponent(wrapper, helperComponents, wrapperComponent);
 
         try {
           expect(component.type()).toEqual(MyComponent);
@@ -178,7 +178,7 @@ export const defaultTests: TestObject = {
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (componentInfo.props.as) {
       it(`renders as a ReactClass or passes "as" to the next component`, () => {
-        const { requiredProps, Component, customMount = mount, wrapperComponents = [] } = testInfo;
+        const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
 
         class MyComponent extends React.Component {
           public render() {
@@ -188,7 +188,7 @@ export const defaultTests: TestObject = {
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wrapper = customMount(<Component {...requiredProps} {...({ as: MyComponent } as any)} />);
-        const component = getComponent(wrapper, wrapperComponents);
+        const component = getComponent(wrapper, helperComponents, wrapperComponent);
 
         try {
           expect(component.type()).toEqual(MyComponent);
@@ -230,12 +230,12 @@ export const defaultTests: TestObject = {
         // silence element nesting warnings
         consoleUtil.disableOnce();
         const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
-        const { Component, customMount = mount, requiredProps, wrapperComponents = [] } = testInfo;
+        const { Component, customMount = mount, requiredProps, wrapperComponent, helperComponents = [] } = testInfo;
 
         tags.forEach(tag => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
-          const component = getComponent(wrapper, wrapperComponents);
+          const component = getComponent(wrapper, helperComponents, wrapperComponent);
 
           try {
             expect(component.is(tag)).toEqual(true);
