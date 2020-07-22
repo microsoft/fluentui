@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Create @fluentui/common-styles package, for styling files shared between components",
+  "comment": "Create @fluentui/common-styles package, for style definitions shared between components",
   "packageName": "@fluentui/common-styles",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",

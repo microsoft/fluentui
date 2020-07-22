@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/common-styles",
   "version": "0.1.0",
-  "description": "Common styling definitions for react components",
+  "description": "Common style definitions for react components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
