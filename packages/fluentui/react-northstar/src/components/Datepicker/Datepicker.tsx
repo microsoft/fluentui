@@ -70,6 +70,11 @@ export type DatepickerStylesProps = never;
 
 export const datepickerClassName = 'ui-datepicker';
 
+enum OpenState {
+  Open,
+  Closing,
+  Closed,
+}
 /**
  * A Datepicker is used to display dates.
  * This component is currently UNSTABLE!
@@ -86,7 +91,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = React.useState<OpenState>(OpenState.Closed);
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const [formattedDate, setFormattedDate] = React.useState<string>('');
   const [error, setError] = React.useState<string>(() =>
@@ -121,10 +126,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     parseDate: props.parseDate,
   };
 
-  const showCalendarGrid = () => {
-    setOpen(true);
-  };
-
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -150,7 +151,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     onDateChange: (e, itemProps) => {
       const targetDay = itemProps.value;
       setSelectedDate(targetDay.originalDate);
-      setOpen(false);
+      setOpen(OpenState.Closing);
       setError('');
       setFormattedDate(valueFormatter(targetDay.originalDate));
 
@@ -162,6 +163,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     defaultProps: () => getA11yProps('calendar', {}),
     overrideProps: overrideDatepickerCalendarProps,
   });
+
+  const openStateToKnob = (openState: OpenState): boolean => {
+    return openState === OpenState.Open;
+  };
 
   const element = (
     <Ref innerRef={datepickerRef}>
@@ -176,7 +181,18 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             disabled={props.disabled}
             error={!!error}
             readOnly={!props.allowTextInput}
-            onClick={showCalendarGrid}
+            onClick={() => {
+              if (open === OpenState.Closed) {
+                setOpen(OpenState.Open);
+              } else if (open === OpenState.Open || open === OpenState.Closing) {
+                // Keep popup open in case we can only enter the date through calendar.
+                if (props.allowTextInput) {
+                  setOpen(OpenState.Closed);
+                } else {
+                  setOpen(OpenState.Open);
+                }
+              }
+            }}
             value={formattedDate}
             onChange={(e, { value }) => {
               const parsedDate = props.parseDate(value);
@@ -188,7 +204,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
                 } else {
                   setError('');
                   setSelectedDate(parsedDate);
-                  // TODO: how to link to changes on selectedDate directly?
                   _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
                 }
               } else if (value) {
@@ -202,14 +217,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           />
           {createShorthand(Popup, popup, {
             defaultProps: () => ({
-              open: open && !props.disabled,
+              open: openStateToKnob(open) && !props.disabled,
               content: calendarElement,
               trapFocus: true,
               trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
-                setOpen(open);
+                setOpen(open ? OpenState.Open : OpenState.Closing);
                 _.invoke(predefinedProps, 'onOpenChange', e, { open });
               },
             }),
