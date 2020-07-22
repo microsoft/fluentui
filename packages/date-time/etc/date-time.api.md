@@ -19,6 +19,7 @@ import { IStyle } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { ITheme } from '@uifabric/styling';
+import { IWeeklyDayPickerStrings as IWeeklyDayPickerStrings_2 } from '@uifabric/date-time';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -60,6 +61,9 @@ export { DayOfWeek }
 
 // @public (undocumented)
 export const defaultDayPickerStrings: ICalendarStrings_2;
+
+// @public (undocumented)
+export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings_2;
 
 export { FirstWeekOfYear }
 

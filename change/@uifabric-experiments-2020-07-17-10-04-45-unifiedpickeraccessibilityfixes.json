@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "UnifiedPicker and SelectedItemsList: minor accessibility fixes",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-17T17:04:45.610Z"
+}

@@ -52,7 +52,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
   let isAllDaysOfWeekOutOfMonth = false;
 
   // in work week view if the days aren't contiguous we use week view instead
-  const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, workWeekDays);
+  const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, workWeekDays, firstDayOfWeek);
 
   let selectedDates = getDateRangeArray(
     selectedDate,

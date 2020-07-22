@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.97",
+      "version": "7.12.97",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Style tweaks for new doc content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "fe2f59ab230033eeaca58bc7c16d5096d922faf7",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Jul 2020 12:44:29 GMT",
       "tag": "@uifabric/example-app-base_v7.12.95",
       "version": "7.12.95",

@@ -60,7 +60,9 @@ export const FocusTrapZonePageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneBestPractices.md'),
   dos: '',
   donts: '',
   isHeaderVisible: true,

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/codemods",
-  "version": "0.4.1",
+  "version": "0.6.0",
   "description": "Tool enabling easy upgrades to new Fluent UI versions",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -22,7 +22,7 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.0",
+    "@fluentui/eslint-plugin": "^0.53.1",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0",
@@ -31,10 +31,11 @@
   },
   "dependencies": {
     "tslib": "^1.10.0",
-    "office-ui-fabric-react": "^7.123.5",
+    "office-ui-fabric-react": "^7.123.7",
     "react": "16.8.6",
     "semver": "^6.2.0",
     "ts-morph": "^6.0.0",
-    "glob": "^7.1.2"
+    "glob": "^7.1.2",
+    "yargs": "^13.2.4"
   }
 }

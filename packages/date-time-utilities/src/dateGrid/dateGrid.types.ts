@@ -45,17 +45,7 @@ export interface IRestrictedDatesOptions {
   restrictedDates?: Date[];
 }
 
-export interface IDayGridOptions extends IRestrictedDatesOptions {
-  /**
-   * The currently selected date
-   */
-  selectedDate: Date;
-
-  /**
-   * The currently navigated date
-   */
-  navigatedDate: Date;
-
+export interface IDatepickerOptions extends IRestrictedDatesOptions {
   /**
    * The first day of the week for your locale.
    */
@@ -76,7 +66,6 @@ export interface IDayGridOptions extends IRestrictedDatesOptions {
   /**
    * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
    * views.
-   * @defaultValue 1
    */
   daysToSelectInDayView?: number;
 
@@ -91,12 +80,6 @@ export interface IDayGridOptions extends IRestrictedDatesOptions {
   showWeekNumbers?: boolean;
 
   /**
-   * How many weeks to show by default. If not provided, will show enough weeks to display the current
-   * month, between 4 and 6 depending
-   */
-  weeksToShow?: number;
-
-  /**
    * The days that are selectable when `dateRangeType` is WorkWeek.
    * If `dateRangeType` is not WorkWeek this property does nothing.
    */
@@ -106,4 +89,22 @@ export interface IDayGridOptions extends IRestrictedDatesOptions {
    * Which days in the generated grid should be marked.
    */
   markedDays?: Date[];
+}
+
+export interface IDayGridOptions extends IDatepickerOptions {
+  /**
+   * The currently selected date
+   */
+  selectedDate: Date;
+
+  /**
+   * The currently navigated date
+   */
+  navigatedDate: Date;
+
+  /**
+   * How many weeks to show by default. If not provided, will show enough weeks to display the current
+   * month, between 4 and 6 depending
+   */
+  weeksToShow?: number;
 }
