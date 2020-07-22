@@ -1,6 +1,6 @@
-@import '../../common/themeCssVariables';
-@import '../../common/highContrast';
-@import '../../common/focusBorder';
+@import '~@fluentui/common-styles/src/themeCssVariables';
+@import '~@fluentui/common-styles/src/highContrast';
+@import '~@fluentui/common-styles/src/focusBorder';
 
 $checkboxSize: 20px;
 $checkboxTransitionDuration: 200ms;

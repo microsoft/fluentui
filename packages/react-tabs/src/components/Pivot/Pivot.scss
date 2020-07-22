@@ -1,8 +1,8 @@
-@import '../../common/themeCssVariables';
-@import '../../common/constants';
-@import '../../common/highContrast';
-@import '../../common/focusBorder';
-@import '../../common/common';
+@import '~@fluentui/common-styles/src/themeCssVariables';
+@import '~@fluentui/common-styles/src/constants';
+@import '~@fluentui/common-styles/src/highContrast';
+@import '~@fluentui/common-styles/src/focusBorder';
+@import '~@fluentui/common-styles/src/common';
 
 .root {
   @include fonts-medium;
