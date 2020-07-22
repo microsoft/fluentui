@@ -56,7 +56,6 @@ export interface ICalloutState {
   positions?: ICalloutPositionedInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
-  heightOffset?: number;
 }
 
 const DEFAULT_PROPS = {
@@ -180,6 +179,44 @@ function useMaxHeight(
   return maxHeight;
 }
 
+function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement>) {
+  const [heightOffset, setHeightOffset] = React.useState<number>(0);
+  const async = useAsync();
+  const setHeightOffsetTimer = React.useRef<number | undefined>();
+
+  const setHeightOffsetEveryFrame = (): void => {
+    if (calloutElement.current && finalHeight) {
+      setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
+        const calloutMainElem = calloutElement.current?.lastChild as HTMLElement;
+
+        if (!calloutMainElem) {
+          return;
+        }
+
+        const cardScrollHeight: number = calloutMainElem.scrollHeight;
+        const cardCurrHeight: number = calloutMainElem.offsetHeight;
+        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
+
+        setHeightOffset(currentHeightOffset => (currentHeightOffset = scrollDiff));
+
+        if (calloutMainElem.offsetHeight < finalHeight) {
+          setHeightOffsetEveryFrame();
+        } else {
+          async.cancelAnimationFrame(setHeightOffsetTimer.current!, calloutElement.current);
+        }
+      }, calloutElement.current);
+    }
+  };
+
+  React.useEffect(() => {
+    if (!hidden) {
+      setHeightOffsetEveryFrame();
+    }
+  }, [finalHeight, hidden]);
+
+  return heightOffset;
+}
+
 export const CalloutContentBase = React.forwardRef(
   (propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -191,11 +228,21 @@ export const CalloutContentBase = React.forwardRef(
     const [targetRef, targetWindowRef] = useTargets(props, calloutElement);
     const getBounds = useBounds(props, targetRef, targetWindowRef);
     const maxHeight = useMaxHeight(props, targetRef, getBounds);
+    const heightOffset = useHeightOffset(props, calloutElement);
 
     return (
       <CalloutContentBaseClass
         {...props}
-        hoisted={{ rootRef, hostElement, calloutElement, targetRef, targetWindowRef, getBounds, maxHeight }}
+        hoisted={{
+          rootRef,
+          hostElement,
+          calloutElement,
+          targetRef,
+          targetWindowRef,
+          getBounds,
+          maxHeight,
+          heightOffset,
+        }}
       />
     );
   },
@@ -210,6 +257,7 @@ interface ICalloutClassProps extends ICalloutProps {
     targetRef: React.RefObject<Element | MouseEvent | Point | null>;
     targetWindowRef: React.RefObject<Window | undefined>;
     maxHeight: number | undefined;
+    heightOffset: number;
     getBounds(): IRectangle | undefined;
   };
 }
@@ -218,7 +266,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _positionAttempts: number;
-  private _setHeightOffsetTimer: number;
   private _hasListeners = false;
   private _isMouseDownOnPopup: boolean;
 
@@ -235,7 +282,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       slideDirectionalClassName: undefined,
       // @TODO it looks like this is not even being used anymore.
       calloutElementRect: undefined,
-      heightOffset: 0,
     };
     this._positionAttempts = 0;
   }
@@ -269,10 +315,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
   }
 
   public UNSAFE_componentWillUpdate(newProps: ICalloutClassProps): void {
-    if (newProps.finalHeight !== this.props.finalHeight) {
-      this._setHeightOffsetEveryFrame();
-    }
-
     // Ensure positioning is recalculated when we are about to show a persisted menu.
     if (this._didPositionPropsChange(newProps, this.props)) {
       this.setState({
@@ -318,7 +360,7 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     target = this._getTarget();
     const { positions } = this.state;
 
-    const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + this.state.heightOffset! : undefined;
+    const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + this.props.hoisted.heightOffset : undefined;
     const contentMaxHeight: number | undefined =
       calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
         ? calloutMaxHeight!
@@ -433,7 +475,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     }
 
     this._updateAsyncPosition();
-    this._setHeightOffsetEveryFrame();
   };
 
   private _dismissOnClickOrScroll(ev: Event) {
@@ -578,34 +619,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       }
     }
     return true;
-  }
-
-  private _setHeightOffsetEveryFrame(): void {
-    if (this.props.hoisted.calloutElement.current && this.props.finalHeight) {
-      this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const calloutMainElem =
-          this.props.hoisted.calloutElement.current &&
-          (this.props.hoisted.calloutElement.current.lastChild as HTMLElement);
-
-        if (!calloutMainElem) {
-          return;
-        }
-
-        const cardScrollHeight: number = calloutMainElem.scrollHeight;
-        const cardCurrHeight: number = calloutMainElem.offsetHeight;
-        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
-
-        this.setState({
-          heightOffset: this.state.heightOffset! + scrollDiff,
-        });
-
-        if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
-          this._setHeightOffsetEveryFrame();
-        } else {
-          this._async.cancelAnimationFrame(this._setHeightOffsetTimer, this.props.hoisted.calloutElement.current);
-        }
-      }, this.props.hoisted.calloutElement.current);
-    }
   }
 
   // Whether or not the current positions should be reset
