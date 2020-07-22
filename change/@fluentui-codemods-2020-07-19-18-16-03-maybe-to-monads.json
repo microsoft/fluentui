@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Maybe: Improve chainability and readability.",
-  "packageName": "@fluentui/codemods",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-20T01:16:03.872Z"
-}
