@@ -1,6 +1,5 @@
 import { PropTransform, ValueMap } from '../types';
 import { JsxExpression, SyntaxKind, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
-import { Maybe } from '../../helpers/maybe';
 import { renamePropInSpread } from './helpers/propHelpers';
 
 /*
@@ -149,6 +148,5 @@ function elementNotInSpread(element: JsxExpression | JsxOpeningElement | JsxSelf
 /* Returns the piece of the AST that represents the value that the
    developer can overwrite. */
 function getValueToChange(element: JsxExpression) {
-  const toChange = Maybe(element.getChildAtIndex(1)); // Child between {} operators.
-  return toChange.something ? toChange.value : undefined;
+  return element.getChildAtIndex(1); // Child between {} operators.
 }
