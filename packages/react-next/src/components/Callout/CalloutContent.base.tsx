@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles, Target } from './Callout.types';
+import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
-  Async,
   Point,
   IRectangle,
   css,
@@ -468,7 +467,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     if (!this.props.hoisted.targetWindowRef.current) {
       return null;
     }
-    let { target } = this.props;
     const {
       styles,
       style,
@@ -489,8 +487,8 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       // eslint-disable-next-line deprecation/deprecation
       shouldRestoreFocus = true,
       hoisted: { maxHeight, positions },
+      target,
     } = this.props;
-    target = this._getTarget();
 
     const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + this.props.hoisted.heightOffset : undefined;
     const contentMaxHeight: number | undefined =
@@ -575,11 +573,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     }
 
     return beakPostionStyle;
-  }
-
-  private _getTarget(props: ICalloutClassProps = this.props): Target {
-    const { target } = props;
-    return target!;
   }
 }
 
