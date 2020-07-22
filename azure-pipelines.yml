@@ -72,7 +72,7 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn lage build --since $(target_branch) --scope @fluentui/* --no-deps --verbose --no-cache
+          yarn lage build --since $(target_branch) --scope @fluentui/* --no-deps --verbose
         displayName: build, test, lint
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
@@ -164,7 +164,7 @@ jobs:
         displayName: config git user and email
 
       - script: |
-          yarn lage vrtest --debug --since $(target_branch) --no-deps --verbose
+          yarn lage vrtest --debug --verbose
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
