@@ -51,11 +51,6 @@ const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
 // calloutMain (the Popup component within the callout)
 const ARIA_ROLE_ATTRIBUTES = ['role', 'aria-roledescription'];
 
-export interface ICalloutState {
-  slideDirectionalClassName?: string;
-  calloutElementRect?: ClientRect;
-}
-
 const DEFAULT_PROPS = {
   preventDismissOnLostFocus: false,
   preventDismissOnScroll: false,
@@ -440,26 +435,16 @@ interface ICalloutClassProps extends ICalloutProps {
   };
 }
 
-class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICalloutState> {
+class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never> {
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
 
-  constructor(props: ICalloutClassProps) {
-    super(props);
-
-    this.state = {
-      slideDirectionalClassName: undefined,
-      // @TODO it looks like this is not even being used anymore.
-      calloutElementRect: undefined,
-    };
-  }
-
-  public shouldComponentUpdate(newProps: ICalloutClassProps, newState: ICalloutState): boolean {
+  public shouldComponentUpdate(newProps: ICalloutClassProps): boolean {
     if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
     }
 
-    return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
+    return !shallowCompare(this.props, newProps);
   }
 
   public render(): JSX.Element | null {
