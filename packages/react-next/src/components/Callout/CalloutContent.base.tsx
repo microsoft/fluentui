@@ -368,8 +368,8 @@ function useDismissHandlers(
   return [mouseDownOnPopup, mouseUpOnPopup] as const;
 }
 
-export const CalloutContentBase = React.forwardRef(
-  (propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const CalloutContentBase = React.memo(
+  React.forwardRef((propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
     const hostElement = React.useRef<HTMLDivElement>(null);
@@ -415,6 +415,14 @@ export const CalloutContentBase = React.forwardRef(
         }}
       />
     );
+  }),
+  (previousProps: ICalloutProps, nextProps: ICalloutProps) => {
+    if (!nextProps.shouldUpdateWhenHidden && previousProps.hidden && nextProps.hidden) {
+      // Do not update when hidden.
+      return true;
+    }
+
+    return shallowCompare(previousProps, nextProps);
   },
 );
 CalloutContentBase.displayName = 'CalloutContentBase';
@@ -436,15 +444,6 @@ interface ICalloutClassProps extends ICalloutProps {
 }
 
 class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never> {
-  public shouldComponentUpdate(newProps: ICalloutClassProps): boolean {
-    if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
-      // Do not update when hidden.
-      return false;
-    }
-
-    return !shallowCompare(this.props, newProps);
-  }
-
   public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
     if (!this.props.hoisted.targetWindowRef.current) {
