@@ -273,6 +273,24 @@ function usePositions(
   return positions;
 }
 
+function useAutoFocus(
+  { hidden, setInitialFocus }: ICalloutProps,
+  positions: ICalloutPositionedInfo | undefined,
+  calloutElement: React.RefObject<HTMLDivElement>,
+) {
+  const async = useAsync();
+  React.useEffect(() => {
+    if (!hidden && setInitialFocus && positions && calloutElement.current) {
+      const timerId = async.requestAnimationFrame(
+        () => focusFirstChild(calloutElement.current!),
+        calloutElement.current,
+      );
+
+      return () => async.cancelAnimationFrame(timerId);
+    }
+  }, [hidden, !!positions]);
+}
+
 export const CalloutContentBase = React.forwardRef(
   (propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -286,6 +304,8 @@ export const CalloutContentBase = React.forwardRef(
     const maxHeight = useMaxHeight(props, targetRef, getBounds);
     const heightOffset = useHeightOffset(props, calloutElement);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
+
+    useAutoFocus(props, positions, calloutElement);
 
     return (
       <CalloutContentBaseClass
@@ -323,7 +343,6 @@ interface ICalloutClassProps extends ICalloutProps {
 
 class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICalloutState> {
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
-  private _didSetInitialFocus: boolean;
   private _hasListeners = false;
   private _isMouseDownOnPopup: boolean;
 
@@ -334,7 +353,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     super(props);
 
     this._async = new Async(this);
-    this._didSetInitialFocus = false;
     this.state = {
       slideDirectionalClassName: undefined,
       // @TODO it looks like this is not even being used anymore.
@@ -344,7 +362,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
 
   public componentDidUpdate() {
     if (!this.props.hidden) {
-      this._setInitialFocus();
       if (!this._hasListeners) {
         this._addListeners();
       }
@@ -367,13 +384,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
   public componentWillUnmount() {
     this._async.dispose();
     this._disposables.forEach((dispose: () => void) => dispose());
-  }
-
-  public UNSAFE_componentWillUpdate(newProps: ICalloutClassProps): void {
-    // Ensure positioning is recalculated when we are about to show a persisted menu.
-    if (this._didPositionPropsChange(newProps, this.props)) {
-      this._didSetInitialFocus = false;
-    }
   }
 
   public componentDidMount(): void {
@@ -503,21 +513,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     }
   };
 
-  protected _setInitialFocus = (): void => {
-    if (
-      this.props.setInitialFocus &&
-      !this._didSetInitialFocus &&
-      this.props.hoisted.positions &&
-      this.props.hoisted.calloutElement.current
-    ) {
-      this._didSetInitialFocus = true;
-      this._async.requestAnimationFrame(
-        () => focusFirstChild(this.props.hoisted.calloutElement.current!),
-        this.props.hoisted.calloutElement.current,
-      );
-    }
-  };
-
   protected _onComponentDidMount = (): void => {
     this._addListeners();
 
@@ -596,13 +591,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     }
 
     return beakPostionStyle;
-  }
-
-  // Whether or not the current positions should be reset
-  private _didPositionPropsChange(newProps: ICalloutClassProps, oldProps: ICalloutClassProps): boolean {
-    return (
-      (!newProps.hidden && newProps.hidden !== oldProps.hidden) || newProps.directionalHint !== oldProps.directionalHint
-    );
   }
 
   private _getTarget(props: ICalloutClassProps = this.props): Target {
