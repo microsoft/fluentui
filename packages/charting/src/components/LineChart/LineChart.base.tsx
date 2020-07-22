@@ -237,7 +237,7 @@ export class LineChartBase extends React.Component<
               />
             </g>
             <g>{lines}</g>
-            {eventAnnotationProps && (
+            {dataPresent && eventAnnotationProps && (
               <EventsAnnotation
                 {...eventAnnotationProps}
                 scale={this._xAxisScale}
