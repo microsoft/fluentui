@@ -444,12 +444,9 @@ interface ICalloutClassProps extends ICalloutProps {
 class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICalloutState> {
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
 
-  private _async: Async;
-
   constructor(props: ICalloutClassProps) {
     super(props);
 
-    this._async = new Async(this);
     this.state = {
       slideDirectionalClassName: undefined,
       // @TODO it looks like this is not even being used anymore.
@@ -464,10 +461,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     }
 
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
-  }
-
-  public componentWillUnmount() {
-    this._async.dispose();
   }
 
   public render(): JSX.Element | null {
