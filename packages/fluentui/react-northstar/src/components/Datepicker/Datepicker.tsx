@@ -90,12 +90,13 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
+  const dateSelectionErrorString = 'A date selection is required';
   const datepickerRef = React.useRef<HTMLElement>();
-  const [open, setOpen] = React.useState<OpenState>(OpenState.Closed);
+  const [openState, setOpenState] = React.useState<OpenState>(OpenState.Closed);
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const [formattedDate, setFormattedDate] = React.useState<string>('');
   const [error, setError] = React.useState<string>(() =>
-    props.isRequired && !selectedDate ? 'A date selection is required' : '',
+    props.isRequired && !selectedDate ? dateSelectionErrorString : '',
   );
 
   const { calendar, popup, className, design, styles, variables, formatMonthDayYear } = props;
@@ -151,7 +152,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     onDateChange: (e, itemProps) => {
       const targetDay = itemProps.value;
       setSelectedDate(targetDay.originalDate);
-      setOpen(OpenState.Closing);
+      setOpenState(OpenState.Closing);
       setError('');
       setFormattedDate(valueFormatter(targetDay.originalDate));
 
@@ -164,7 +165,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     overrideProps: overrideDatepickerCalendarProps,
   });
 
-  const openStateToKnob = (openState: OpenState): boolean => {
+  const openStateToBooleanKnob = (openState: OpenState): boolean => {
     return openState === OpenState.Open;
   };
 
@@ -182,14 +183,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             error={!!error}
             readOnly={!props.allowTextInput}
             onClick={() => {
-              if (open === OpenState.Closed) {
-                setOpen(OpenState.Open);
-              } else if (open === OpenState.Open || open === OpenState.Closing) {
+              if (openState === OpenState.Closed) {
+                setOpenState(OpenState.Open);
+              } else if (openState === OpenState.Open || openState === OpenState.Closing) {
                 // Keep popup open in case we can only enter the date through calendar.
                 if (props.allowTextInput) {
-                  setOpen(OpenState.Closed);
+                  setOpenState(OpenState.Closed);
                 } else {
-                  setOpen(OpenState.Open);
+                  setOpenState(OpenState.Open);
                 }
               }
             }}
@@ -209,7 +210,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               } else if (value) {
                 setError('Manually entered date is not in correct format.');
               } else if (props.isRequired && !selectedDate) {
-                setError('A date selection is required');
+                setError(dateSelectionErrorString);
               } else {
                 setError('');
               }
@@ -217,14 +218,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           />
           {createShorthand(Popup, popup, {
             defaultProps: () => ({
-              open: openStateToKnob(open) && !props.disabled,
+              open: openStateToBooleanKnob(openState) && !props.disabled,
               content: calendarElement,
               trapFocus: true,
               trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
-                setOpen(open ? OpenState.Open : OpenState.Closing);
+                setOpenState(open ? OpenState.Open : OpenState.Closing);
                 _.invoke(predefinedProps, 'onOpenChange', e, { open });
               },
             }),
