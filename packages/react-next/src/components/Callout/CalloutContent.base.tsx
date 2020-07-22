@@ -513,7 +513,9 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
           tabIndex={-1}
           ref={this.props.hoisted.calloutElement}
         >
-          {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
+          {beakVisible && (
+            <div className={this._classNames.beak} style={getBeakPosition(this.props.hoisted.positions)} />
+          )}
           {beakVisible && <div className={this._classNames.beakCurtain} />}
           <Popup
             {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
@@ -545,20 +547,19 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
       onDismiss(ev);
     }
   };
+}
 
-  private _getBeakPosition(): React.CSSProperties {
-    const { positions } = this.props.hoisted;
-    const beakPostionStyle: React.CSSProperties = {
-      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
-    };
+function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
+  const beakPostionStyle: React.CSSProperties = {
+    ...positions?.beakPosition?.elementPosition,
+  };
 
-    if (!beakPostionStyle.top && !beakPostionStyle.bottom && !beakPostionStyle.left && !beakPostionStyle.right) {
-      beakPostionStyle.left = BEAK_ORIGIN_POSITION.left;
-      beakPostionStyle.top = BEAK_ORIGIN_POSITION.top;
-    }
-
-    return beakPostionStyle;
+  if (!beakPostionStyle.top && !beakPostionStyle.bottom && !beakPostionStyle.left && !beakPostionStyle.right) {
+    beakPostionStyle.left = BEAK_ORIGIN_POSITION.left;
+    beakPostionStyle.top = BEAK_ORIGIN_POSITION.top;
   }
+
+  return beakPostionStyle;
 }
 
 function arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
