@@ -53,7 +53,6 @@ const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
 const ARIA_ROLE_ATTRIBUTES = ['role', 'aria-roledescription'];
 
 export interface ICalloutState {
-  positions?: ICalloutPositionedInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
 }
@@ -217,6 +216,63 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
   return heightOffset;
 }
 
+function usePositions(
+  this: unknown,
+  props: ICalloutProps,
+  hostElement: React.RefObject<HTMLDivElement>,
+  calloutElement: React.RefObject<HTMLDivElement>,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
+  getBounds: () => IRectangle | undefined,
+) {
+  const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
+  const positionAttempts = React.useRef(0);
+  const async = useAsync();
+  const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
+
+  React.useEffect(() => {
+    if (!hidden) {
+      const timerId = async.requestAnimationFrame(() => {
+        // If we expect a target element to position against, we need to wait until `targetRef.current`
+        // is resolved. Otherwise we can try to position.
+        const expectsTarget = !!target;
+
+        if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+          const currentProps: IPositionProps = {
+            ...props,
+            target: targetRef.current!,
+            bounds: getBounds(),
+          };
+          // If there is a finalHeight given then we assume that the user knows and will handle
+          // additional positioning adjustments so we should call positionCard
+          const newPositions: ICalloutPositionedInfo = finalHeight
+            ? positionCard(currentProps, hostElement.current, calloutElement.current, positions)
+            : positionCallout(currentProps, hostElement.current, calloutElement.current, positions);
+
+          // Set the new position only when the positions are not exists or one of the new callout positions
+          // are different. The position should not change if the position is within 2 decimal places.
+          if (
+            (!positions && newPositions) ||
+            (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+          ) {
+            // We should not reposition the callout more than a few times, if it is then the content is likely resizing
+            // and we should stop trying to reposition to prevent a stack overflow.
+            positionAttempts.current++;
+            setPositions(newPositions);
+          } else if (positionAttempts.current > 0) {
+            // Only call the onPositioned callback if the callout has been re-positioned at least once.
+            positionAttempts.current = 0;
+            onPositioned?.(positions);
+          }
+        }
+      }, calloutElement.current);
+
+      return () => async.cancelAnimationFrame(timerId);
+    }
+  }, [hidden, directionalHint]);
+
+  return positions;
+}
+
 export const CalloutContentBase = React.forwardRef(
   (propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -229,6 +285,7 @@ export const CalloutContentBase = React.forwardRef(
     const getBounds = useBounds(props, targetRef, targetWindowRef);
     const maxHeight = useMaxHeight(props, targetRef, getBounds);
     const heightOffset = useHeightOffset(props, calloutElement);
+    const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
 
     return (
       <CalloutContentBaseClass
@@ -242,6 +299,7 @@ export const CalloutContentBase = React.forwardRef(
           getBounds,
           maxHeight,
           heightOffset,
+          positions,
         }}
       />
     );
@@ -258,6 +316,7 @@ interface ICalloutClassProps extends ICalloutProps {
     targetWindowRef: React.RefObject<Window | undefined>;
     maxHeight: number | undefined;
     heightOffset: number;
+    positions?: ICalloutPositionedInfo;
     getBounds(): IRectangle | undefined;
   };
 }
@@ -265,7 +324,6 @@ interface ICalloutClassProps extends ICalloutProps {
 class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICalloutState> {
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
-  private _positionAttempts: number;
   private _hasListeners = false;
   private _isMouseDownOnPopup: boolean;
 
@@ -278,12 +336,10 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     this._async = new Async(this);
     this._didSetInitialFocus = false;
     this.state = {
-      positions: undefined,
       slideDirectionalClassName: undefined,
       // @TODO it looks like this is not even being used anymore.
       calloutElementRect: undefined,
     };
-    this._positionAttempts = 0;
   }
 
   public componentDidUpdate() {
@@ -292,7 +348,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       if (!this._hasListeners) {
         this._addListeners();
       }
-      this._updateAsyncPosition();
     } else {
       if (this._hasListeners) {
         this._removeListeners();
@@ -317,9 +372,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
   public UNSAFE_componentWillUpdate(newProps: ICalloutClassProps): void {
     // Ensure positioning is recalculated when we are about to show a persisted menu.
     if (this._didPositionPropsChange(newProps, this.props)) {
-      this.setState({
-        positions: undefined,
-      });
       this._didSetInitialFocus = false;
     }
   }
@@ -355,10 +407,9 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       onScroll,
       // eslint-disable-next-line deprecation/deprecation
       shouldRestoreFocus = true,
-      hoisted: { maxHeight },
+      hoisted: { maxHeight, positions },
     } = this.props;
     target = this._getTarget();
-    const { positions } = this.state;
 
     const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + this.props.hoisted.heightOffset : undefined;
     const contentMaxHeight: number | undefined =
@@ -433,7 +484,7 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
 
   protected _dismissOnScroll = (ev: Event) => {
     const { preventDismissOnScroll } = this.props;
-    if (this.state.positions && !preventDismissOnScroll) {
+    if (this.props.hoisted.positions && !preventDismissOnScroll) {
       this._dismissOnClickOrScroll(ev);
     }
   };
@@ -456,7 +507,7 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     if (
       this.props.setInitialFocus &&
       !this._didSetInitialFocus &&
-      this.state.positions &&
+      this.props.hoisted.positions &&
       this.props.hoisted.calloutElement.current
     ) {
       this._didSetInitialFocus = true;
@@ -473,8 +524,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
     }
-
-    this._updateAsyncPosition();
   };
 
   private _dismissOnClickOrScroll(ev: Event) {
@@ -535,12 +584,8 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     this._hasListeners = false;
   }
 
-  private _updateAsyncPosition(): void {
-    this._async.requestAnimationFrame(() => this._updatePosition(), this.props.hoisted.calloutElement.current);
-  }
-
   private _getBeakPosition(): React.CSSProperties {
-    const { positions } = this.state;
+    const { positions } = this.props.hoisted;
     const beakPostionStyle: React.CSSProperties = {
       ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
     };
@@ -551,74 +596,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     }
 
     return beakPostionStyle;
-  }
-
-  private _updatePosition(): void {
-    const { positions } = this.state;
-    const hostElement: HTMLElement | null = this.props.hoisted.hostElement.current;
-    const calloutElement: HTMLElement | null = this.props.hoisted.calloutElement.current;
-
-    // If we expect a target element to position against, we need to wait until `this.props.hoisted.targetRef.current`
-    // is resolved. Otherwise we can try to position.
-    const expectsTarget = !!this.props.target;
-
-    if (hostElement && calloutElement && (!expectsTarget || this.props.hoisted.targetRef.current)) {
-      const currentProps: IPositionProps = {
-        ...this.props,
-        target: this.props.hoisted.targetRef.current!,
-        bounds: this.props.hoisted.getBounds(),
-      };
-      // If there is a finalHeight given then we assume that the user knows and will handle
-      // additional positioning adjustments so we should call positionCard
-      const newPositions: ICalloutPositionedInfo = this.props.finalHeight
-        ? positionCard(currentProps, hostElement, calloutElement, positions)
-        : positionCallout(currentProps, hostElement, calloutElement, positions);
-
-      // Set the new position only when the positions are not exists or one of the new callout positions are different.
-      // The position should not change if the position is within 2 decimal places.
-      if (
-        (!positions && newPositions) ||
-        (positions && newPositions && !this._arePositionsEqual(positions, newPositions) && this._positionAttempts < 5)
-      ) {
-        // We should not reposition the callout more than a few times, if it is then the content is likely resizing
-        // and we should stop trying to reposition to prevent a stack overflow.
-        this._positionAttempts++;
-        this.setState({
-          positions: newPositions,
-        });
-      } else if (this._positionAttempts > 0) {
-        // Only call the onPositioned callback if the callout has been re-positioned at least once.
-        this._positionAttempts = 0;
-        if (this.props.onPositioned) {
-          this.props.onPositioned(this.state.positions);
-        }
-      }
-    }
-  }
-
-  private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
-    return (
-      this._comparePositions(positions.elementPosition, newPosition.elementPosition) &&
-      this._comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition)
-    );
-  }
-
-  private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
-    for (const key in newPositions) {
-      if (newPositions.hasOwnProperty(key)) {
-        const oldPositionEdge = oldPositions[key];
-        const newPositionEdge = newPositions[key];
-
-        if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
-          if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
-            return false;
-          }
-        } else {
-          return false;
-        }
-      }
-    }
-    return true;
   }
 
   // Whether or not the current positions should be reset
@@ -640,4 +617,29 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
   private _mouseUpOnPopup = () => {
     this._isMouseDownOnPopup = false;
   };
+}
+
+function arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
+  return (
+    comparePositions(positions.elementPosition, newPosition.elementPosition) &&
+    comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition)
+  );
+}
+
+function comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
+  for (const key in newPositions) {
+    if (newPositions.hasOwnProperty(key)) {
+      const oldPositionEdge = oldPositions[key];
+      const newPositionEdge = newPositions[key];
+
+      if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
+        if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+  }
+  return true;
 }
