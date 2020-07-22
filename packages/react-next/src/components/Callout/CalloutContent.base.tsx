@@ -307,6 +307,12 @@ export const CalloutContentBase = React.forwardRef(
 
     useAutoFocus(props, positions, calloutElement);
 
+    React.useEffect(() => {
+      if (!props.hidden) {
+        props.onLayerMounted?.();
+      }
+    }, [props.hidden]);
+
     return (
       <CalloutContentBaseClass
         {...props}
@@ -515,10 +521,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
 
   protected _onComponentDidMount = (): void => {
     this._addListeners();
-
-    if (this.props.onLayerMounted) {
-      this.props.onLayerMounted();
-    }
   };
 
   private _dismissOnClickOrScroll(ev: Event) {
