@@ -7,7 +7,7 @@ import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-f
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { useConst, useForceUpdate } from '@uifabric/react-hooks';
+import { useConst, useForceUpdate, useConstCallback } from '@uifabric/react-hooks';
 
 interface ISelectionItemExampleProps {
   item: IExampleItem;
@@ -39,6 +39,7 @@ const classNames = mergeStyleSets({
       overflow: 'hidden',
       height: 36,
       padding: 8,
+      userSelect: 'none',
     },
   ],
 });
@@ -76,8 +77,16 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
 export const SelectionBasicExample: React.FunctionComponent = () => {
   const [canSelect, setCanSelect] = React.useState<'all' | 'vowels'>('all');
   const forceUpdate = useForceUpdate();
-  const [selection, setSelection] = React.useState<Selection>(new Selection({ onSelectionChanged: forceUpdate }));
   const items = useConst<IExampleItem[]>(() => createListItems(ITEM_COUNT));
+  const [selection, setSelection] = React.useState<Selection>(() => {
+    const newSelection = new Selection({
+      onSelectionChanged: forceUpdate,
+    });
+
+    newSelection.setItems(items);
+
+    return newSelection;
+  });
 
   const onToggleSelectAll = (): void => {
     selection.toggleAllSelected();
@@ -88,32 +97,34 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
       {
         key: 'selectionMode',
         text: 'Selection Mode',
-        items: [
-          {
-            key: SelectionMode[SelectionMode.none],
-            name: 'None',
-            canCheck: true,
-            checked: selectionModeProp === SelectionMode.none,
-            onClick: onSelectionModeChanged,
-            data: SelectionMode.none,
-          },
-          {
-            key: SelectionMode[SelectionMode.single],
-            name: 'Single select',
-            canCheck: true,
-            checked: selectionModeProp === SelectionMode.single,
-            onClick: onSelectionModeChanged,
-            data: SelectionMode.single,
-          },
-          {
-            key: SelectionMode[SelectionMode.multiple],
-            name: 'Multi select',
-            canCheck: true,
-            checked: selectionModeProp === SelectionMode.multiple,
-            onClick: onSelectionModeChanged,
-            data: SelectionMode.multiple,
-          },
-        ],
+        subMenuProps: {
+          items: [
+            {
+              key: SelectionMode[SelectionMode.none],
+              name: 'None',
+              canCheck: true,
+              checked: selectionModeProp === SelectionMode.none,
+              onClick: onSelectionModeChanged,
+              data: SelectionMode.none,
+            },
+            {
+              key: SelectionMode[SelectionMode.single],
+              name: 'Single select',
+              canCheck: true,
+              checked: selectionModeProp === SelectionMode.single,
+              onClick: onSelectionModeChanged,
+              data: SelectionMode.single,
+            },
+            {
+              key: SelectionMode[SelectionMode.multiple],
+              name: 'Multi select',
+              canCheck: true,
+              checked: selectionModeProp === SelectionMode.multiple,
+              onClick: onSelectionModeChanged,
+              data: SelectionMode.multiple,
+            },
+          ],
+        },
       },
       {
         key: 'selectAll',
@@ -124,36 +135,39 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
       {
         key: 'allowCanSelect',
         text: 'Choose selectable items',
-        items: [
-          {
-            key: 'all',
-            name: 'All items',
-            canCheck: true,
-            checked: canSelectProp === 'all',
-            onClick: onCanSelectChanged,
-            data: 'all',
-          },
-          {
-            key: 'a',
-            name: 'Names starting with vowels',
-            canCheck: true,
-            checked: canSelectProp === 'vowels',
-            onClick: onCanSelectChanged,
-            data: 'vowels',
-          },
-        ],
+        subMenuProps: {
+          items: [
+            {
+              key: 'all',
+              name: 'All items',
+              canCheck: true,
+              checked: canSelectProp === 'all',
+              onClick: onCanSelectChanged,
+              data: 'all',
+            },
+            {
+              key: 'a',
+              name: 'Names starting with vowels',
+              canCheck: true,
+              checked: canSelectProp === 'vowels',
+              onClick: onCanSelectChanged,
+              data: 'vowels',
+            },
+          ],
+        },
       },
     ],
   );
 
-  const alertItem = (item: IExampleItem): void => {
+  const alertItem = useConstCallback((item: IExampleItem): void => {
     alert('item invoked: ' + item.name);
-  };
+  });
 
   const onSelectionModeChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     const newSelection = new Selection({
       canSelectItem: canSelect === 'vowels' ? canSelectItem : undefined,
       selectionMode: menuItem.data,
+      onSelectionChanged: forceUpdate,
     });
     newSelection.setItems(items, false);
     setSelection(newSelection);
@@ -163,6 +177,7 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
     const newSelection = new Selection({
       canSelectItem: menuItem.data === 'vowels' ? canSelectItem : undefined,
       selectionMode: selection.mode,
+      onSelectionChanged: forceUpdate,
     });
     newSelection.setItems(items, false);
     setSelection(newSelection);
