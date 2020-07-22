@@ -164,7 +164,7 @@ jobs:
         displayName: config git user and email
 
       - script: |
-          yarn lage vrtest --debug --verbose
+          yarn lage screener --scope vr-tests --debug --verbose --no-deps
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)

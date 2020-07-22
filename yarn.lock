@@ -2355,10 +2355,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/package-deps-hash/-/package-deps-hash-2.2.158.tgz#57a02d6ee62fd95390a477120ab24186767cb0fe"
   integrity sha512-gN0vkVrF38flbxbPJlEEGJi72Hxqn9JFYILCs0rOSL+LZOGuKUzaZYm3B7XbX7GF6LzPs2R3T5gmWx1EHxxQAQ==
 
-"@microsoft/task-scheduler@^2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.1.3.tgz#b57bd93c13bc8b2934b6d2930e730edadde72bf9"
-  integrity sha512-OB/SK0aPQo/xXbyTf94AFdKCgV4PhWO70+xZe5uTNEbJSLKeq5ToWWjJ7dXzqqUcjYwJV6iHf+OL11deGxJFyg==
+"@microsoft/task-scheduler@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.4.0.tgz#f53ca144036c5089ef1806834b1686ed4b6fc535"
+  integrity sha512-mHEYP45l1CJ6TKNkQqzJPM8UAVQcZkWJybIXIy4QfPAyt77/XvEkrxlYiuvaO4uLkW0a/E3juFYwcbgsZ9Xtww==
 
 "@microsoft/ts-command-line@4.3.6":
   version "4.3.6"
@@ -5922,17 +5922,17 @@ backfill-config@^6.0.0:
     fs-extra "^8.1.0"
     pkg-dir "^4.2.0"
 
-backfill-hasher@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/backfill-hasher/-/backfill-hasher-6.0.0.tgz#78c5aae1b0bdc1dfa2a3e410c1982f31b6bd8df6"
-  integrity sha512-5y3l1rS3CcUoAmh2kHEa6ClEPaCX2YCQMSDQq43ZqORX4wLGb3/BpFS7gUaun6Z4bFHy4vGsYNkLlnn/yjMpSA==
+backfill-hasher@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/backfill-hasher/-/backfill-hasher-6.0.1.tgz#c7896e44bc08293957e9a7613277e9365d03f224"
+  integrity sha512-ylJE1x72/1ZE4zyVsP6DLeXjv0DHBdDGT2HBwC5gwkcZIM2EIXsKAmsYiXIu5HQKZEoaUT/kg220PKp/3/3g8w==
   dependencies:
     "@rushstack/package-deps-hash" "^2.4.22"
     backfill-config "^6.0.0"
     backfill-logger "^5.0.0"
     find-up "^4.1.0"
     fs-extra "^8.1.0"
-    workspace-tools "^0.7.6"
+    workspace-tools "^0.9.0"
 
 backfill-logger@^5.0.0:
   version "5.0.0"
@@ -5951,15 +5951,15 @@ backfill-utils-dotenv@^5.0.0:
     dotenv "^8.1.0"
     find-up "^4.0.0"
 
-backfill@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/backfill/-/backfill-6.0.0.tgz#0f28fd68ace1f21c99183f928b121fd475b3c84a"
-  integrity sha512-BkS0F1Mt0Xw4a+WRFTvIJz9lj1C41hao2QlXe3hVu563fOMkYK/gelo6+SYz69SttOKNrNWbZNNaKUGJcpBdPQ==
+backfill@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/backfill/-/backfill-6.0.1.tgz#316ee8f13796683c9d3d05491fd0ddfdc1ee59c7"
+  integrity sha512-K49DGPZF7tI1vI/L8V2atH1gMFW5RuqSlNmipz+fW4zPK7ZMJifyaOMqVfOCvsH7pj0E9nEipCH/XSJOtD+0gA==
   dependencies:
     anymatch "^3.0.3"
     backfill-cache "^5.1.3"
     backfill-config "^6.0.0"
-    backfill-hasher "^6.0.0"
+    backfill-hasher "^6.0.1"
     backfill-logger "^5.0.0"
     backfill-utils-dotenv "^5.0.0"
     chokidar "^3.2.1"
@@ -13746,14 +13746,14 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@^0.13.3:
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.13.3.tgz#af4de0ce05a9d55cf38a25450ef322b1fdd1e53d"
-  integrity sha512-UKcWqvSyBmLYo8/NysVZBZ2b9QJI/8DR0UbVQLknX+t80xq1fuW1pmjVK1glFXE58Wf5ndHcqOzTbJIbSenjlw==
+lage@^0.15.4:
+  version "0.15.4"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.15.4.tgz#e3594fb64913d5362521de3e68aac43eb975e9a9"
+  integrity sha512-oe0BzpMxswgkft3hxBZGNpf/r6aFlqC6QGkw4lKN4WBd0/onQZC73G/WxL1/MeLYeoQ09BvPab2Dr5MEwbekYQ==
   dependencies:
-    "@microsoft/task-scheduler" "^2.1.3"
+    "@microsoft/task-scheduler" "^2.4.0"
     abort-controller "^3.0.0"
-    backfill "^6.0.0"
+    backfill "^6.0.1"
     backfill-config "^6.0.0"
     backfill-logger "^5.0.0"
     chalk "^4.0.0"
@@ -13762,8 +13762,7 @@ lage@^0.13.3:
     git-url-parse "^11.1.2"
     npmlog "^4.1.2"
     p-profiler "^0.1.2"
-    p-queue "^6.4.0"
-    workspace-tools "^0.8.0"
+    workspace-tools "^0.9.0"
     yargs-parser "^18.1.3"
 
 last-run@^1.1.0:
@@ -16284,14 +16283,6 @@ p-queue@^6.0.2:
   integrity sha512-KDmybfRp7PQXk6mRDCtbFWc1E6qUyIXLdmiCQbnKY8+DM0+PodWYLT4dPT/T4x4G+w4PHZXvMB3dZfLEI2vaFA==
   dependencies:
     eventemitter3 "^3.1.0"
-    p-timeout "^3.1.0"
-
-p-queue@^6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-6.4.0.tgz#5050b379393ea1814d6f9613a654f687d92c0466"
-  integrity sha512-X7ddxxiQ+bLR/CUt3/BVKrGcJDNxBr0pEEFKHHB6vTPWNUhgDv36GpIH18RmGM3YGPpBT+JWGjDDqsVGuF0ERw==
-  dependencies:
-    eventemitter3 "^4.0.0"
     p-timeout "^3.1.0"
 
 p-reduce@^1.0.0:
@@ -22225,28 +22216,10 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
-workspace-tools@^0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.7.6.tgz#4c3e9880d7f5afd6e650d9e58785f31389f68f74"
-  integrity sha512-iNGCMTr/fnZ7xWNDHro4B5Le7Tx8hywfxfjVZZSIsje5J3hjE76cxHdFRhd0VNJ1dMJ2Zqs3iOqg1scgIwCx+w==
-  dependencies:
-    "@pnpm/lockfile-file" "^3.0.7"
-    "@pnpm/logger" "^3.2.2"
-    "@yarnpkg/lockfile" "^1.1.0"
-    find-up "^4.1.0"
-    find-yarn-workspace-root "^1.2.1"
-    fs-extra "^9.0.0"
-    git-url-parse "^11.1.2"
-    globby "^11.0.0"
-    jju "^1.4.0"
-    matcher "^3.0.0"
-    multimatch "^4.0.0"
-    read-yaml-file "^2.0.0"
-
-workspace-tools@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.8.0.tgz#18711cb83391a471cf2e061bb5ea3c127a5d7a88"
-  integrity sha512-y5He+EzOhrLXSqYvsFhAD3IxX9QUgE8GR8pbxdAllkJPSSIy75HpA5NFT7j1FtULjTxsI6iCVA/6OLPyvPqStA==
+workspace-tools@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.9.0.tgz#5ce0680c9bf38544d1f6261d6b0e2834347e676e"
+  integrity sha512-ji9mOpdxyJ1LBnCzfFzAuLw7x0OuqQso/eJFpeyR/W0nXRK3Uhmn0dAaqrlDlrUEW5nOT5nSz0MpsaCmeSyiUA==
   dependencies:
     "@pnpm/lockfile-file" "^3.0.7"
     "@pnpm/logger" "^3.2.2"
