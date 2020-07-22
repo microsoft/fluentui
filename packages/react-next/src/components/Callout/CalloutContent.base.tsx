@@ -520,7 +520,7 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
             ariaDescribedBy={ariaDescribedBy}
             ariaLabelledBy={ariaLabelledBy}
             className={classNames.calloutMain}
-            onDismiss={this.dismiss}
+            onDismiss={this.props.onDismiss}
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
@@ -535,14 +535,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
 
     return content;
   }
-
-  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
-    const { onDismiss } = this.props;
-
-    if (onDismiss) {
-      onDismiss(ev);
-    }
-  };
 }
 
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
