@@ -291,6 +291,89 @@ function useAutoFocus(
   }, [hidden, !!positions]);
 }
 
+function useDismissHandlers(
+  this: unknown,
+  { hidden, onDismiss, preventDismissOnScroll, preventDismissOnResize, preventDismissOnLostFocus }: ICalloutProps,
+  positions: ICalloutPositionedInfo | undefined,
+  hostElement: React.RefObject<HTMLDivElement>,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
+  targetWindowRef: React.RefObject<Window | undefined>,
+) {
+  const isMouseDownOnPopup = React.useRef(false);
+  const async = useAsync();
+
+  const mouseDownOnPopup = () => {
+    isMouseDownOnPopup.current = true;
+  };
+
+  const mouseUpOnPopup = () => {
+    isMouseDownOnPopup.current = false;
+  };
+
+  const dismissOnScroll = (ev: Event) => {
+    if (positions && !preventDismissOnScroll) {
+      dismissOnClickOrScroll(ev);
+    }
+  };
+
+  const dismissOnResize = (ev: Event) => {
+    if (!preventDismissOnResize) {
+      onDismiss?.(ev);
+    }
+  };
+
+  const dismissOnLostFocus = (ev: Event) => {
+    if (!preventDismissOnLostFocus) {
+      dismissOnClickOrScroll(ev);
+    }
+  };
+
+  const dismissOnClickOrScroll = (ev: Event) => {
+    const target = ev.target as HTMLElement;
+    const isEventTargetOutsideCallout = hostElement.current && !elementContains(hostElement.current, target);
+
+    // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
+    if (isEventTargetOutsideCallout && isMouseDownOnPopup.current) {
+      isMouseDownOnPopup.current = false;
+      return;
+    }
+
+    if (
+      (!targetRef.current && isEventTargetOutsideCallout) ||
+      (ev.target !== targetWindowRef.current &&
+        isEventTargetOutsideCallout &&
+        (!targetRef.current ||
+          'stopPropagation' in targetRef.current ||
+          (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
+    ) {
+      onDismiss?.(ev);
+    }
+  };
+
+  React.useEffect(() => {
+    // This is added so the callout will dismiss when the window is scrolled
+    // but not when something inside the callout is scrolled. The delay seems
+    // to be required to avoid React firing an async focus event in IE from
+    // the target changing focus quickly prior to rendering the callout.
+    async.setTimeout(() => {
+      if (!hidden && targetWindowRef.current) {
+        const disposables = [
+          on(targetWindowRef.current, 'scroll', dismissOnScroll, true),
+          on(targetWindowRef.current, 'resize', dismissOnResize, true),
+          on(targetWindowRef.current.document.documentElement, 'focus', dismissOnLostFocus, true),
+          on(targetWindowRef.current.document.documentElement, 'click', dismissOnLostFocus, true),
+        ];
+
+        return () => {
+          disposables.forEach(dispose => dispose());
+        };
+      }
+    }, 0);
+  }, [hidden]);
+
+  return [mouseDownOnPopup, mouseUpOnPopup] as const;
+}
+
 export const CalloutContentBase = React.forwardRef(
   (propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -304,6 +387,13 @@ export const CalloutContentBase = React.forwardRef(
     const maxHeight = useMaxHeight(props, targetRef, getBounds);
     const heightOffset = useHeightOffset(props, calloutElement);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
+    const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
+      props,
+      positions,
+      hostElement,
+      targetRef,
+      targetWindowRef,
+    );
 
     useAutoFocus(props, positions, calloutElement);
 
@@ -326,6 +416,8 @@ export const CalloutContentBase = React.forwardRef(
           maxHeight,
           heightOffset,
           positions,
+          mouseDownOnPopup,
+          mouseUpOnPopup,
         }}
       />
     );
@@ -344,16 +436,15 @@ interface ICalloutClassProps extends ICalloutProps {
     heightOffset: number;
     positions?: ICalloutPositionedInfo;
     getBounds(): IRectangle | undefined;
+    mouseDownOnPopup(): void;
+    mouseUpOnPopup(): void;
   };
 }
 
 class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICalloutState> {
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
-  private _hasListeners = false;
-  private _isMouseDownOnPopup: boolean;
 
   private _async: Async;
-  private _disposables: (() => void)[] = [];
 
   constructor(props: ICalloutClassProps) {
     super(props);
@@ -364,18 +455,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       // @TODO it looks like this is not even being used anymore.
       calloutElementRect: undefined,
     };
-  }
-
-  public componentDidUpdate() {
-    if (!this.props.hidden) {
-      if (!this._hasListeners) {
-        this._addListeners();
-      }
-    } else {
-      if (this._hasListeners) {
-        this._removeListeners();
-      }
-    }
   }
 
   public shouldComponentUpdate(newProps: ICalloutClassProps, newState: ICalloutState): boolean {
@@ -389,13 +468,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
 
   public componentWillUnmount() {
     this._async.dispose();
-    this._disposables.forEach((dispose: () => void) => dispose());
-  }
-
-  public componentDidMount(): void {
-    if (!this.props.hidden) {
-      this._onComponentDidMount();
-    }
   }
 
   public render(): JSX.Element | null {
@@ -478,8 +550,8 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
-            onMouseDown={this._mouseDownOnPopup}
-            onMouseUp={this._mouseUpOnPopup}
+            onMouseDown={this.props.hoisted.mouseDownOnPopup}
+            onMouseUp={this.props.hoisted.mouseUpOnPopup}
           >
             {children}
           </Popup>
@@ -497,89 +569,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       onDismiss(ev);
     }
   };
-
-  protected _dismissOnScroll = (ev: Event) => {
-    const { preventDismissOnScroll } = this.props;
-    if (this.props.hoisted.positions && !preventDismissOnScroll) {
-      this._dismissOnClickOrScroll(ev);
-    }
-  };
-
-  protected _dismissOnResize = (ev: Event) => {
-    const { preventDismissOnResize } = this.props;
-    if (!preventDismissOnResize) {
-      this.dismiss(ev);
-    }
-  };
-
-  protected _dismissOnLostFocus = (ev: Event) => {
-    const { preventDismissOnLostFocus } = this.props;
-    if (!preventDismissOnLostFocus) {
-      this._dismissOnClickOrScroll(ev);
-    }
-  };
-
-  protected _onComponentDidMount = (): void => {
-    this._addListeners();
-  };
-
-  private _dismissOnClickOrScroll(ev: Event) {
-    const target = ev.target as HTMLElement;
-    const isEventTargetOutsideCallout =
-      this.props.hoisted.hostElement.current && !elementContains(this.props.hoisted.hostElement.current, target);
-
-    // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
-    if (isEventTargetOutsideCallout && this._isMouseDownOnPopup) {
-      this._isMouseDownOnPopup = false;
-      return;
-    }
-
-    if (
-      (!this.props.hoisted.targetRef.current && isEventTargetOutsideCallout) ||
-      (ev.target !== this.props.hoisted.targetWindowRef.current &&
-        isEventTargetOutsideCallout &&
-        ((this.props.hoisted.targetRef.current as MouseEvent).stopPropagation ||
-          !this.props.hoisted.targetRef.current ||
-          (target !== this.props.hoisted.targetRef.current &&
-            !elementContains(this.props.hoisted.targetRef.current as HTMLElement, target))))
-    ) {
-      this.dismiss(ev);
-    }
-  }
-
-  private _addListeners() {
-    // This is added so the callout will dismiss when the window is scrolled
-    // but not when something inside the callout is scrolled. The delay seems
-    // to be required to avoid React firing an async focus event in IE from
-    // the target changing focus quickly prior to rendering the callout.
-    this._async.setTimeout(() => {
-      if (this.props.hoisted.targetWindowRef.current) {
-        this._disposables.push(
-          on(this.props.hoisted.targetWindowRef.current, 'scroll', this._dismissOnScroll, true),
-          on(this.props.hoisted.targetWindowRef.current, 'resize', this._dismissOnResize, true),
-          on(
-            this.props.hoisted.targetWindowRef.current.document.documentElement,
-            'focus',
-            this._dismissOnLostFocus,
-            true,
-          ),
-          on(
-            this.props.hoisted.targetWindowRef.current.document.documentElement,
-            'click',
-            this._dismissOnLostFocus,
-            true,
-          ),
-        );
-      }
-      this._hasListeners = true;
-    }, 0);
-  }
-
-  private _removeListeners() {
-    this._disposables.forEach((dispose: () => void) => dispose());
-    this._disposables = [];
-    this._hasListeners = false;
-  }
 
   private _getBeakPosition(): React.CSSProperties {
     const { positions } = this.props.hoisted;
@@ -599,14 +588,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
     const { target } = props;
     return target!;
   }
-
-  private _mouseDownOnPopup = () => {
-    this._isMouseDownOnPopup = true;
-  };
-
-  private _mouseUpOnPopup = () => {
-    this._isMouseDownOnPopup = false;
-  };
 }
 
 function arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
