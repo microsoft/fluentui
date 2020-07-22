@@ -396,57 +396,8 @@ export const CalloutContentBase = React.memo(
         props.onLayerMounted?.();
       }
     }, [props.hidden]);
-
-    return (
-      <CalloutContentBaseClass
-        {...props}
-        hoisted={{
-          rootRef,
-          hostElement,
-          calloutElement,
-          targetRef,
-          targetWindowRef,
-          getBounds,
-          maxHeight,
-          heightOffset,
-          positions,
-          mouseDownOnPopup,
-          mouseUpOnPopup,
-        }}
-      />
-    );
-  }),
-  (previousProps: ICalloutProps, nextProps: ICalloutProps) => {
-    if (!nextProps.shouldUpdateWhenHidden && previousProps.hidden && nextProps.hidden) {
-      // Do not update when hidden.
-      return true;
-    }
-
-    return shallowCompare(previousProps, nextProps);
-  },
-);
-CalloutContentBase.displayName = 'CalloutContentBase';
-
-interface ICalloutClassProps extends ICalloutProps {
-  hoisted: {
-    rootRef: React.Ref<HTMLDivElement>;
-    hostElement: React.RefObject<HTMLDivElement>;
-    calloutElement: React.RefObject<HTMLDivElement>;
-    targetRef: React.RefObject<Element | MouseEvent | Point | null>;
-    targetWindowRef: React.RefObject<Window | undefined>;
-    maxHeight: number | undefined;
-    heightOffset: number;
-    positions?: ICalloutPositionedInfo;
-    getBounds(): IRectangle | undefined;
-    mouseDownOnPopup(): void;
-    mouseUpOnPopup(): void;
-  };
-}
-
-class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never> {
-  public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
-    if (!this.props.hoisted.targetWindowRef.current) {
+    if (!targetWindowRef.current) {
       return null;
     }
     const {
@@ -468,11 +419,10 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
       onScroll,
       // eslint-disable-next-line deprecation/deprecation
       shouldRestoreFocus = true,
-      hoisted: { maxHeight, positions },
       target,
-    } = this.props;
+    } = props;
 
-    const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + this.props.hoisted.heightOffset : undefined;
+    const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + heightOffset : undefined;
     const contentMaxHeight: number | undefined =
       calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
         ? calloutMaxHeight!
@@ -481,7 +431,7 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
 
     const beakVisible = isBeakVisible && !!target;
     const classNames = getClassNames(styles!, {
-      theme: this.props.theme!,
+      theme: props.theme!,
       className,
       overflowYHidden: overflowYHidden,
       calloutWidth,
@@ -497,34 +447,34 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
       ...(overflowYHidden && { overflowY: 'hidden' }),
     };
 
-    const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
+    const visibilityStyle: React.CSSProperties | undefined = props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
-      <div ref={this.props.hoisted.rootRef} className={classNames.container} style={visibilityStyle}>
+      <div ref={rootRef} className={classNames.container} style={visibilityStyle}>
         <div
-          {...getNativeProps(this.props, divProperties, ARIA_ROLE_ATTRIBUTES)}
+          {...getNativeProps(props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}
-          ref={this.props.hoisted.calloutElement}
+          ref={calloutElement}
         >
-          {beakVisible && <div className={classNames.beak} style={getBeakPosition(this.props.hoisted.positions)} />}
+          {beakVisible && <div className={classNames.beak} style={getBeakPosition(positions)} />}
           {beakVisible && <div className={classNames.beakCurtain} />}
           <Popup
-            {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
+            {...getNativeProps(props, ARIA_ROLE_ATTRIBUTES)}
             ariaLabel={ariaLabel}
-            onRestoreFocus={this.props.onRestoreFocus}
+            onRestoreFocus={props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabelledBy={ariaLabelledBy}
             className={classNames.calloutMain}
-            onDismiss={this.props.onDismiss}
+            onDismiss={props.onDismiss}
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
-            onMouseDown={this.props.hoisted.mouseDownOnPopup}
-            onMouseUp={this.props.hoisted.mouseUpOnPopup}
+            onMouseDown={mouseDownOnPopup}
+            onMouseUp={mouseUpOnPopup}
           >
             {children}
           </Popup>
@@ -533,8 +483,17 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, never>
     );
 
     return content;
-  }
-}
+  }),
+  (previousProps: ICalloutProps, nextProps: ICalloutProps) => {
+    if (!nextProps.shouldUpdateWhenHidden && previousProps.hidden && nextProps.hidden) {
+      // Do not update when hidden.
+      return true;
+    }
+
+    return shallowCompare(previousProps, nextProps);
+  },
+);
+CalloutContentBase.displayName = 'CalloutContentBase';
 
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
   const beakPostionStyle: React.CSSProperties = {
