@@ -1,17 +1,15 @@
 import * as React from 'react';
 import { Calendar, DayOfWeek, defaultDayPickerStrings, DateRangeType } from '@uifabric/date-time';
+import { mergeStyleSets } from '@uifabric/styling';
 
-import * as styles from './Calendar.Example.scss';
+const styles = mergeStyleSets({
+  wrapper: { height: 360 },
+  button: { margin: '17px 10px 0 0' },
+  dropdown: { width: 230 },
+});
 
 export const CalendarInlineExample = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
-
-  const onSelectDate = React.useCallback(
-    (date: Date) => {
-      setSelectedDate(date);
-    },
-    [selectedDate],
-  );
 
   return (
     <div className={styles.wrapper}>
@@ -21,7 +19,7 @@ export const CalendarInlineExample = () => {
       <Calendar
         dateRangeType={DateRangeType.Day}
         showGoToToday={true}
-        onSelectDate={onSelectDate}
+        onSelectDate={setSelectedDate}
         value={selectedDate}
         firstDayOfWeek={DayOfWeek.Sunday}
         strings={defaultDayPickerStrings}
