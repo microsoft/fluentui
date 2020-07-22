@@ -7,7 +7,7 @@ import { defaultTests } from './defaultTests';
 import { merge } from './utils/merge';
 
 export function isConformant(...testInfo: (IsConformantOptions | Object)[]) {
-  const mergedOptions = merge<IsConformantOptions>(true, ...testInfo);
+  const mergedOptions = merge<IsConformantOptions>(...testInfo);
   const { componentPath, displayName, disabledTests = [], extraTests, isInternal } = mergedOptions;
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
 
