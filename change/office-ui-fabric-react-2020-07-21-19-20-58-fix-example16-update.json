@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Updating Picker, TagPicker and Selection examples to use function components.",
+  "comment": "Updating Picker, TagPicker, and Selection examples to use function components.",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",

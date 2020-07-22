@@ -45,12 +45,12 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
   const picker = React.useRef<IBasePicker<ITag>>(null);
   const [isPickerDisabled, { toggle: toggleIsPickerDisabled }] = useBoolean(false);
 
-  const listContainsDocument = (tag: ITag, tagList?: ITag[]) => {
+  const listContainsDocument = useConstCallback((tag: ITag, tagList?: ITag[]) => {
     if (!tagList || !tagList.length || tagList.length === 0) {
       return false;
     }
     return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
-  };
+  });
 
   const onFilterChanged = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
     return filterText
@@ -71,7 +71,7 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
       }
       return item;
     },
-    [picker.current, listContainsDocument],
+    [listContainsDocument],
   );
 
   return (
