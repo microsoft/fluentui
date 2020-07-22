@@ -1,4 +1,4 @@
-import { SourceFile, JsxExpression } from 'ts-morph';
+import { SourceFile, JsxExpression, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
 
 export interface CodeModResult {
   success?: boolean;
@@ -27,7 +27,12 @@ export interface CodeMod<T = SourceFile> {
   enabled?: boolean;
 }
 
-export type EnumMap<T> = {
+/**
+ * Generic map used if developers need to convert values dynamically
+ * rather than statically -- if prop values have a well-defined domain
+ * of values, the developer can provide a mapping of old-to-new values to
+ * fine-tune upgradess. */
+export type ValueMap<T> = {
   [key: string]: T;
 };
 
@@ -38,4 +43,8 @@ export type EnumMap<T> = {
  * to the developer.
  * TODO -- Can we limit the damage a dev can potentially do given a malformed transform?
  */
-export type PropTransform = (node: JsxExpression) => void;
+export type PropTransform = (
+  node: JsxExpression | JsxOpeningElement | JsxSelfClosingElement,
+  toRename: string,
+  replacementName: string,
+) => void;
