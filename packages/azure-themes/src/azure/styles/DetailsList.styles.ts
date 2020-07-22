@@ -53,7 +53,6 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
       selectors: {
         '.ms-DetailsHeader': {
           borderColor: semanticColors.variantBorder,
-          textTransform: 'uppercase',
           borderTop: StyleConstants.borderNone,
           selectors: {
             '.ms-DetailsHeader-cellTitle': {
