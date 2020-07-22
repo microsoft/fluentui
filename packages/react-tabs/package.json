@@ -27,6 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/common-styles": "^0.1.0",
     "@fluentui/eslint-plugin": "^0.53.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -42,7 +43,6 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/common-styles": "^0.1.0",
     "@fluentui/react-icons": "^0.1.39",
     "@uifabric/react-hooks": "^7.6.1",
     "@uifabric/set-version": "^7.0.18",

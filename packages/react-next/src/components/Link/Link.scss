@@ -1,6 +1,6 @@
-@import '~@fluentui/common-styles/src/themeCssVariables';
-@import '~@fluentui/common-styles/src/highContrast';
-@import '~@fluentui/common-styles/src/focusBorder';
+@import '~@fluentui/common-styles/dist/sass/themeCssVariables';
+@import '~@fluentui/common-styles/dist/sass/highContrast';
+@import '~@fluentui/common-styles/dist/sass/focusBorder';
 
 .root {
   color: var($semanticColorsLink);
