@@ -254,7 +254,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       position: 'absolute',
       margin: 'auto',
       selectors: {
-        ['.' + GlobalClassNames.dayIsTodayStyle + ' &']: {
+        ['.' + classNames.dayIsTodayStyle + ' &']: {
           backgroundColor: palette.white,
           selectors: {
             [HighContrastSelector]: {
@@ -262,7 +262,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
             },
           },
         },
-        ['.' + GlobalClassNames.daySelectedStyle + ' &']: {
+        ['.' + classNames.daySelectedStyle + ' &']: {
           selectors: {
             [HighContrastSelector]: {
               backgroundColor: 'HighlightText',
