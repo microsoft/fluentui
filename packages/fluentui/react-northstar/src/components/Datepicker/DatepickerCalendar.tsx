@@ -11,6 +11,7 @@ import {
   IDateGridStrings,
   IDay,
   IRestrictedDatesOptions,
+  findAvailableDate,
 } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
@@ -181,7 +182,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const unhandledProps = useUnhandledProps(DatepickerCalendar.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: DatepickerCalendar.displayName,
-    actionHandlers: {},
     rtl: context.rtl,
   });
   const normalizedSelectedDate = selectedDate || today || new Date();
@@ -271,10 +271,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                           createShorthand(DatepickerCalendarCell, calendarCell, {
                             defaultProps: () =>
                               getA11yProps('calendarCell', {
-                                content: day.date,
+                                label: day.date,
                                 key: day.key,
                                 'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
-                                primary: day.isSelected,
+                                selected: day.isSelected,
                                 disabled: !day.isInMonth,
                               }),
                             overrideProps: (
@@ -283,6 +283,17 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                               onClick: e => {
                                 onDateChange(e, { ...predefinedProps, value: day });
                                 _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
+                              },
+                              onFocus: e => {
+                                if (!day.isInMonth) {
+                                  const newNavigateDate = findAvailableDate({
+                                    initialDate: gridNavigatedDate,
+                                    targetDate: day.originalDate,
+                                    direction: gridNavigatedDate > day.originalDate ? -1 : 1,
+                                  });
+                                  setGridNavigatedDate(newNavigateDate);
+                                }
+                                _.invoke(predefinedProps, 'onFocus', e, { ...predefinedProps, value: day });
                               },
                             }),
                           }),
