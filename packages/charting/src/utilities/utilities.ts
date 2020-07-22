@@ -209,7 +209,7 @@ export function calloutData(values: ILineChartPoints[]) {
     y: number;
     x: number | Date | string;
     color: string;
-    yAxisCalloutData?: string;
+    yAxisCalloutData?: string | { [id: string]: number };
   }[] = [];
 
   values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
