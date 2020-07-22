@@ -1134,73 +1134,6 @@ export interface IPersonaStyles {
 }
 
 // @public (undocumented)
-export interface IPivot {
-    focus(): void;
-}
-
-// @public (undocumented)
-export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
-    alwaysRender?: boolean;
-    ariaLabel?: string;
-    componentRef?: IRefObject<{}>;
-    headerButtonProps?: IButtonProps | {
-        [key: string]: string | number | boolean;
-    };
-    headerText?: string;
-    itemCount?: number | string;
-    itemIcon?: string;
-    itemKey?: string;
-    keytipProps?: IKeytipProps;
-    // @deprecated
-    linkText?: string;
-    onRenderItemLink?: IRenderFunction<IPivotItemProps>;
-}
-
-// @public (undocumented)
-export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement> {
-    className?: string;
-    componentRef?: React.RefObject<IPivot>;
-    defaultSelectedKey?: string;
-    getTabId?: (itemKey: string, index: number) => string;
-    headersOnly?: boolean;
-    linkFormat?: PivotLinkFormatType;
-    linkSize?: PivotLinkSizeType;
-    onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
-    overflowBehavior?: 'none' | 'menu';
-    selectedKey?: string | null;
-    styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & Pick<IPivotProps, 'linkSize'> & Pick<IPivotProps, 'linkFormat'> & {
-    linkIsSelected?: boolean;
-};
-
-// @public (undocumented)
-export interface IPivotStyles {
-    // (undocumented)
-    count: IStyle;
-    // (undocumented)
-    icon: IStyle;
-    // (undocumented)
-    itemContainer?: IStyle;
-    // (undocumented)
-    link: IStyle;
-    // (undocumented)
-    linkContent: IStyle;
-    // (undocumented)
-    linkInMenu: IStyle;
-    // (undocumented)
-    linkIsSelected: IStyle;
-    // (undocumented)
-    overflowMenuButton: IStyle;
-    root: IStyle;
-    // (undocumented)
-    text: IStyle;
-}
-
-// @public (undocumented)
 export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -2012,37 +1945,6 @@ export namespace personaSize {
 }
 
 // @public
-export const Pivot: React.FunctionComponent<IPivotProps>;
-
-// @public (undocumented)
-export const PivotBase: React.FunctionComponent<IPivotProps>;
-
-// @public (undocumented)
-export class PivotItem extends React.Component<IPivotItemProps, {}> {
-    constructor(props: IPivotItemProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public @deprecated (undocumented)
-export const enum PivotLinkFormat {
-    links = "links",
-    tabs = "tabs"
-}
-
-// @public
-export type PivotLinkFormatType = 'links' | 'tabs';
-
-// @public @deprecated (undocumented)
-export const enum PivotLinkSize {
-    large = "large",
-    normal = "normal"
-}
-
-// @public
-export type PivotLinkSizeType = 'normal' | 'large';
-
-// @public
 export const Popup: React.ForwardRefExoticComponent<IPopupProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -2218,6 +2120,7 @@ export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, op
 
 
 export * from "@fluentui/react-button/lib/Button";
+export * from "@fluentui/react-tabs/lib/Pivot";
 export * from "@uifabric/date-time/lib/Calendar";
 export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";

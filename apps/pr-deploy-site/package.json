@@ -15,6 +15,7 @@
     "@fluentui/docs": "^0.50.0",
     "@fluentui/react-button": "^0.7.5",
     "@fluentui/react-next": "^8.0.0-alpha.65",
+    "@fluentui/react-tabs": "^0.1.0",
     "@uifabric/charting": "^2.7.2",
     "@uifabric/date-time": "^7.11.5",
     "@uifabric/experiments": "^7.27.7",
