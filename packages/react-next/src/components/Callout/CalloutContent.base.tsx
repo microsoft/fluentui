@@ -29,7 +29,7 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync } from '@uifabric/react-hooks';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -115,6 +115,71 @@ function useTargets({ target }: ICalloutProps, calloutElement: React.RefObject<H
   return [targetRef, targetWindowRef] as const;
 }
 
+function useBounds(
+  { bounds, minPagePadding = DEFAULT_PROPS.minPagePadding, target }: ICalloutProps,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
+  targetWindowRef: React.RefObject<Window | undefined>,
+) {
+  const cachedBounds = React.useRef<IRectangle | undefined>();
+
+  const getBounds = React.useCallback((): IRectangle | undefined => {
+    if (!cachedBounds.current) {
+      let currentBounds =
+        typeof bounds === 'function'
+          ? targetWindowRef.current
+            ? bounds(target, targetWindowRef.current)
+            : undefined
+          : bounds;
+
+      if (!currentBounds && targetWindowRef.current) {
+        currentBounds = getBoundsFromTargetWindow(targetRef.current, targetWindowRef.current);
+        currentBounds = {
+          top: currentBounds.top + minPagePadding,
+          left: currentBounds.left + minPagePadding,
+          right: currentBounds.right! - minPagePadding,
+          bottom: currentBounds.bottom! - minPagePadding,
+          width: currentBounds.width - minPagePadding * 2,
+          height: currentBounds.height - minPagePadding * 2,
+        };
+      }
+      cachedBounds.current = currentBounds;
+    }
+    return cachedBounds.current;
+  }, [bounds, minPagePadding, target]);
+
+  return getBounds;
+}
+
+function useMaxHeight(
+  { beakWidth, coverTarget, directionalHint, directionalHintFixed, gapSpace, isBeakVisible, hidden }: ICalloutProps,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
+  getBounds: () => IRectangle | undefined,
+) {
+  const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
+  const async = useAsync();
+
+  React.useEffect(() => {
+    if (!maxHeight && !hidden) {
+      if (directionalHintFixed && targetRef.current) {
+        // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
+        // overlap with the target.
+        const totalGap: number = (gapSpace ?? 0) + (isBeakVisible && beakWidth ? beakWidth : 0);
+        async.requestAnimationFrame(() => {
+          if (targetRef.current) {
+            setMaxHeight(getMaxHeight(targetRef.current, directionalHint!, totalGap, getBounds(), coverTarget));
+          } else {
+            setMaxHeight(getBounds()?.height);
+          }
+        });
+      }
+    } else if (hidden) {
+      setMaxHeight(undefined);
+    }
+  }, [targetRef.current, gapSpace, beakWidth, directionalHint, getBounds, hidden]);
+
+  return maxHeight;
+}
+
 export const CalloutContentBase = React.forwardRef(
   (propsWithoutDefaults: ICalloutProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -124,11 +189,13 @@ export const CalloutContentBase = React.forwardRef(
     const rootRef = useMergedRefs(hostElement, forwardedRef);
 
     const [targetRef, targetWindowRef] = useTargets(props, calloutElement);
+    const getBounds = useBounds(props, targetRef, targetWindowRef);
+    const maxHeight = useMaxHeight(props, targetRef, getBounds);
 
     return (
       <CalloutContentBaseClass
         {...props}
-        hoisted={{ rootRef, hostElement, calloutElement, targetRef, targetWindowRef }}
+        hoisted={{ rootRef, hostElement, calloutElement, targetRef, targetWindowRef, getBounds, maxHeight }}
       />
     );
   },
@@ -142,18 +209,17 @@ interface ICalloutClassProps extends ICalloutProps {
     calloutElement: React.RefObject<HTMLDivElement>;
     targetRef: React.RefObject<Element | MouseEvent | Point | null>;
     targetWindowRef: React.RefObject<Window | undefined>;
+    maxHeight: number | undefined;
+    getBounds(): IRectangle | undefined;
   };
 }
 
 class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICalloutState> {
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
-  private _bounds: IRectangle | undefined;
   private _positionAttempts: number;
   private _setHeightOffsetTimer: number;
   private _hasListeners = false;
-  private _maxHeight: number | undefined;
-  private _blockResetHeight: boolean;
   private _isMouseDownOnPopup: boolean;
 
   private _async: Async;
@@ -203,35 +269,17 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
   }
 
   public UNSAFE_componentWillUpdate(newProps: ICalloutClassProps): void {
-    // If the target element changed, find the new one. If we are tracking target with class name, always find element
-    // because we do not know if fabric has rendered a new element and disposed the old element.
-    const newTarget = this._getTarget(newProps);
-    const oldTarget = this._getTarget();
-    if (
-      (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) &&
-      !this._blockResetHeight
-    ) {
-      this._maxHeight = undefined;
-    }
-    if (newProps.gapSpace !== this.props.gapSpace || this.props.beakWidth !== newProps.beakWidth) {
-      this._maxHeight = undefined;
-    }
-
     if (newProps.finalHeight !== this.props.finalHeight) {
       this._setHeightOffsetEveryFrame();
     }
 
     // Ensure positioning is recalculated when we are about to show a persisted menu.
     if (this._didPositionPropsChange(newProps, this.props)) {
-      this._maxHeight = undefined;
       this.setState({
         positions: undefined,
       });
       this._didSetInitialFocus = false;
-      this._bounds = undefined;
     }
-
-    this._blockResetHeight = false;
   }
 
   public componentDidMount(): void {
@@ -265,13 +313,12 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       onScroll,
       // eslint-disable-next-line deprecation/deprecation
       shouldRestoreFocus = true,
+      hoisted: { maxHeight },
     } = this.props;
     target = this._getTarget();
     const { positions } = this.state;
 
-    const getContentMaxHeight: number | undefined = this._getMaxHeight()
-      ? this._getMaxHeight()! + this.state.heightOffset!
-      : undefined;
+    const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + this.state.heightOffset! : undefined;
     const contentMaxHeight: number | undefined =
       calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
         ? calloutMaxHeight!
@@ -478,7 +525,7 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
       const currentProps: IPositionProps = {
         ...this.props,
         target: this.props.hoisted.targetRef.current!,
-        bounds: this._getBounds(),
+        bounds: this.props.hoisted.getBounds(),
       };
       // If there is a finalHeight given then we assume that the user knows and will handle
       // additional positioning adjustments so we should call positionCard
@@ -506,65 +553,6 @@ class CalloutContentBaseClass extends React.Component<ICalloutClassProps, ICallo
         }
       }
     }
-  }
-
-  private _getBounds(): IRectangle | undefined {
-    if (!this._bounds) {
-      const bounds = this.props.bounds;
-      let currentBounds =
-        typeof bounds === 'function'
-          ? this.props.hoisted.targetWindowRef.current
-            ? bounds(this.props.target, this.props.hoisted.targetWindowRef.current)
-            : undefined
-          : bounds;
-
-      if (!currentBounds && this.props.hoisted.targetWindowRef.current) {
-        currentBounds = getBoundsFromTargetWindow(
-          this.props.hoisted.targetRef.current,
-          this.props.hoisted.targetWindowRef.current,
-        );
-        currentBounds = {
-          top: currentBounds.top + this.props.minPagePadding!,
-          left: currentBounds.left + this.props.minPagePadding!,
-          right: currentBounds.right! - this.props.minPagePadding!,
-          bottom: currentBounds.bottom! - this.props.minPagePadding!,
-          width: currentBounds.width - this.props.minPagePadding! * 2,
-          height: currentBounds.height - this.props.minPagePadding! * 2,
-        };
-      }
-      this._bounds = currentBounds;
-    }
-    return this._bounds;
-  }
-
-  // Max height should remain as synchronous as possible, which is why it is not done using set state.
-  // It needs to be synchronous since it will impact the ultimate position of the callout.
-  private _getMaxHeight(): number | undefined {
-    if (!this._maxHeight) {
-      if (this.props.directionalHintFixed && this.props.hoisted.targetRef.current) {
-        const beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
-        const gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
-        // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
-        // overlap with the target.
-        const totalGap = gapSpace + beakWidth!;
-        this._async.requestAnimationFrame(() => {
-          if (this.props.hoisted.targetRef.current) {
-            this._maxHeight = getMaxHeight(
-              this.props.hoisted.targetRef.current,
-              this.props.directionalHint!,
-              totalGap,
-              this._getBounds(),
-              this.props.coverTarget,
-            );
-            this._blockResetHeight = true;
-            this.forceUpdate();
-          }
-        }, this.props.hoisted.targetRef.current as Element);
-      } else {
-        this._maxHeight = this._getBounds()?.height!;
-      }
-    }
-    return this._maxHeight!;
   }
 
   private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
