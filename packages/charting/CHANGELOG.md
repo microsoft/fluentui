@@ -1,8 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 17 Jul 2020 12:38:41 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.2)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.0..@uifabric/charting_v2.7.2)
+
+### Patches
+
+- Charting: Fix sankey chart dark mode text not visble properly ([PR #14082](https://github.com/microsoft/fluentui/pull/14082) by v-gorraj@microsoft.com)
+- Updating valueInsideDonut to be set to yAxisCalloutData if the value is defined ([PR #14093](https://github.com/microsoft/fluentui/pull/14093) by 57419611+hki-237@users.noreply.github.com)
 
 ## [2.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.0)
 

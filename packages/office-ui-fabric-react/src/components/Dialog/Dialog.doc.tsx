@@ -71,9 +71,9 @@ export const DialogPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

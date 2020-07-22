@@ -33,7 +33,7 @@ export const TextPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextOverview.md'),
-  bestPractices: '',
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextDonts.md'),
   isHeaderVisible: true,

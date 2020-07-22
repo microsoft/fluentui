@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Jul 2020 12:44:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.95](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.95)
+
+Mon, 20 Jul 2020 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.93..@uifabric/example-app-base_v7.12.95)
+
+### Patches
+
+- Re-enable editor with improved error handling ([PR #14078](https://github.com/microsoft/fluentui/pull/14078) by elcraig@microsoft.com)
 
 ## [7.12.92](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.92)
 

@@ -104,6 +104,7 @@ export const Tooltip: React.FC<TooltipProps> &
     offset,
     overflowBoundary,
     pointing,
+    popperRef,
     position,
     positionFixed,
     target,
@@ -233,6 +234,7 @@ export const Tooltip: React.FC<TooltipProps> &
           offset={offset}
           overflowBoundary={overflowBoundary}
           pointerTargetRef={pointerTargetRef}
+          popperRef={popperRef}
           position={position}
           positionFixed={positionFixed}
           enabled={open}
@@ -281,6 +283,7 @@ Tooltip.propTypes = {
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
   unstable_pinned: PropTypes.bool,
+  popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
     PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,

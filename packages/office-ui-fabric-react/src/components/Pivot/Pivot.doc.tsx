@@ -74,7 +74,7 @@ export const PivotPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
-  bestPractices: '',
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md'),
   isHeaderVisible: true,

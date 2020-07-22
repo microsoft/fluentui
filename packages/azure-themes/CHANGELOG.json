@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.43",
+      "version": "7.1.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "style updates per devops ",
+            "author": "jagaheri@microsoft.com",
+            "commit": "23029b1fa37aac673e664121001c6e15d46bca50",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2020 12:41:19 GMT",
       "tag": "@uifabric/azure-themes_v7.1.41",
       "version": "7.1.41",
