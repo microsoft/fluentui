@@ -103,6 +103,11 @@ export interface ILineChartProps {
   enabledLegendsWrapLines?: boolean;
 
   /**
+   * Enable showing total counts next to legend labels
+   */
+  enableLegendTotalCounts?: boolean;
+
+  /**
    * overflow props for the legends
    */
   legendsOverflowProps?: Partial<IOverflowSetProps>;

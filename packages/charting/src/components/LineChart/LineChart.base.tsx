@@ -320,11 +320,22 @@ export class LineChartBase extends React.Component<
   }
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
+    const { YValueHover } = this.state;
+    const { enableLegendTotalCounts } = this.props;
     const legendDataItems = data.map((point: ILineChartPoints, index: number) => {
       const color: string = point.color;
       // mapping data to the format Legends component needs
+      let title: string = `${point.legend!}`;
+      if (enableLegendTotalCounts && YValueHover && YValueHover.length > 0) {
+        YValueHover.forEach(yVal => {
+          if (yVal.legend == point.legend!) {
+            title += ` (${yVal.y})`;
+          }
+        });
+      }
+
       const legend: ILegend = {
-        title: point.legend!,
+        title: title,
         color: color,
         action: () => {
           if (this.state.selectedLegend === point.legend) {
