@@ -48,20 +48,24 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const SelectedItem = props.onRenderItem;
   return (
     <>
-      {SelectedItem &&
-        renderedItems.map((item: TItem, index: number) => (
-          <SelectedItem
-            item={item}
-            index={index}
-            // To keep react from complaining for duplicate elements with the same key
-            // we will append the index to the key so that we have unique key for each item
-            key={item.key !== undefined ? item.key + '_' + index : index}
-            selected={props.focusedItemIndices?.includes(index)}
-            removeButtonAriaLabel={props.removeButtonAriaLabel}
-            onRemoveItem={onRemoveItemCallbacks[index]}
-            onItemChange={replaceItem}
-          />
-        ))}
+      {items.length > 0 && (
+        <div role={'list'}>
+          {SelectedItem &&
+            renderedItems.map((item: TItem, index: number) => (
+              <SelectedItem
+                item={item}
+                index={index}
+                // To keep react from complaining for duplicate elements with the same key
+                // we will append the index to the key so that we have unique key for each item
+                key={item.key !== undefined ? item.key + '_' + index : index}
+                selected={props.focusedItemIndices?.includes(index)}
+                removeButtonAriaLabel={props.removeButtonAriaLabel}
+                onRemoveItem={onRemoveItemCallbacks[index]}
+                onItemChange={replaceItem}
+              />
+            ))}
+        </div>
+      )}
     </>
   );
 };
