@@ -3,11 +3,11 @@ import {
   DateRangeType,
   DayOfWeek,
   FirstWeekOfYear,
-  formatMonthDayYear,
-  IDateGridStrings,
-  IDay,
+  isRestrictedDate,
+  DEFAULT_CALENDAR_STRINGS,
   IDayGridOptions,
-  IRestrictedDatesOptions,
+  ICalendarStrings,
+  IDatepickerOptions,
 } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
@@ -35,84 +35,7 @@ import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 
-// TODO: extract to date-time-utilities
-export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-};
-
-// TODO: extract to date-time-utilities
-export interface IDateFormatting {
-  /**
-   * Format the date according to specified function.
-   * Intended use case is localization.
-   */
-  format?: (date: Date) => string;
-
-  /**
-   * Parse date from string representation into Date type.
-   */
-  parse?: (date: string) => Date;
-}
-
-// TODO: extract to date-time-utilities
-export interface IDatepickerOptions extends IRestrictedDatesOptions {
-  /**
-   * The first day of the week for your locale.
-   */
-  firstDayOfWeek?: DayOfWeek;
-
-  /**
-   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
-   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-   */
-  firstWeekOfYear?: FirstWeekOfYear;
-
-  /**
-   * The date range type indicating how  many days should be selected as the user
-   * selects days
-   */
-  dateRangeType?: DateRangeType;
-
-  /**
-   * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
-   * views.
-   */
-  daysToSelectInDayView?: number;
-
-  /**
-   * Value of today. If null, current time in client machine will be used.
-   */
-  today?: Date;
-
-  /**
-   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-   */
-  showWeekNumbers?: boolean;
-
-  /**
-   * The days that are selectable when `dateRangeType` is WorkWeek.
-   * If `dateRangeType` is not WorkWeek this property does nothing.
-   */
-  workWeekDays?: DayOfWeek[];
-}
-
-export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
+export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
 
@@ -134,16 +57,13 @@ export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UI
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
-  onDateChange?: ComponentEventHandler<DatepickerProps & { value: IDay }>;
-
-  /** String to render for button to direct the user to today's date. */
-  goToToday?: string;
+  onDateChange?: ComponentEventHandler<DatepickerProps & { value: Date }>;
 
   /** Text placeholder for the input field. */
   placeholder?: string;
 
-  /** Localized labels */
-  localizedStrings?: IDateGridStrings;
+  /** Target dates can be also entered through the input field. */
+  allowTextInput?: boolean;
 }
 
 export type DatepickerStylesProps = never;
@@ -168,24 +88,37 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const datepickerRef = React.useRef<HTMLElement>();
   const [open, setOpen] = React.useState<boolean>(false);
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
-  const valueFormatter = date => (date ? formatMonthDayYear(date, DEFAULT_LOCALIZED_STRINGS) : '');
-  const {
-    firstDayOfWeek,
-    firstWeekOfYear,
-    dateRangeType,
-    calendar,
-    popup,
-    className,
-    design,
-    styles,
-    variables,
-  } = props;
-  const calendarOptions: IDayGridOptions = {
-    selectedDate: selectedDate ?? props.today ?? new Date(),
-    navigatedDate: selectedDate ?? props.today ?? new Date(),
-    firstDayOfWeek,
-    firstWeekOfYear,
-    dateRangeType,
+  const [formattedDate, setFormattedDate] = React.useState<string>('');
+  const [error, setError] = React.useState<string>(() =>
+    props.isRequired && !selectedDate ? 'A date selection is required' : '',
+  );
+
+  const { calendar, popup, className, design, styles, variables, formatMonthDayYear } = props;
+  const valueFormatter = date => (date ? formatMonthDayYear(date) : '');
+
+  const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
+
+  const calendarOptions = {
+    selectedDate: nonNullSelectedDate,
+    navigatedDate: nonNullSelectedDate,
+    firstDayOfWeek: props.firstDayOfWeek,
+    firstWeekOfYear: props.firstWeekOfYear,
+    dateRangeType: props.dateRangeType,
+    daysToSelectInDayView: props.daysToSelectInDayView,
+    today: props.today,
+    showWeekNumbers: props.showWeekNumbers,
+    workWeekDays: props.workWeekDays,
+    minDate: props.minDate,
+    maxDate: props.maxDate,
+    restrictedDates: props.restrictedDates,
+  } as IDayGridOptions;
+
+  const dateFormatting = {
+    formatDay: props.formatDay,
+    formatYear: props.formatYear,
+    formatMonthDayYear: props.formatMonthDayYear,
+    formatMonthYear: props.formatMonthYear,
+    parseDate: props.parseDate,
   };
 
   const showCalendarGrid = () => {
@@ -213,10 +146,15 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const overrideDatepickerCalendarProps = (predefinedProps: DatepickerCalendarProps): DatepickerCalendarProps => ({
     ...calendarOptions,
+    ...dateFormatting,
     onDateChange: (e, itemProps) => {
-      setSelectedDate(itemProps.value.originalDate);
+      const targetDay = itemProps.value;
+      setSelectedDate(targetDay.originalDate);
       setOpen(false);
-      _.invoke(predefinedProps, 'onDateChange', e, itemProps);
+      setError('');
+      setFormattedDate(valueFormatter(targetDay.originalDate));
+
+      _.invoke(props, 'onDateChange', e, { ...props, value: targetDay.originalDate });
     },
   });
 
@@ -234,10 +172,37 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             ...unhandledProps,
           })}
         >
-          <Input readOnly onClick={showCalendarGrid} value={valueFormatter(selectedDate)} />
+          <Input
+            disabled={props.disabled}
+            error={!!error}
+            readOnly={!props.allowTextInput}
+            onClick={showCalendarGrid}
+            value={formattedDate}
+            onChange={(e, { value }) => {
+              const parsedDate = props.parseDate(value);
+
+              setFormattedDate(value);
+              if (parsedDate) {
+                if (isRestrictedDate(parsedDate, calendarOptions)) {
+                  setError('The selected date is from the restricted range.');
+                } else {
+                  setError('');
+                  setSelectedDate(parsedDate);
+                  // TODO: how to link to changes on selectedDate directly?
+                  _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
+                }
+              } else if (value) {
+                setError('Manually entered date is not in correct format.');
+              } else if (props.isRequired && !selectedDate) {
+                setError('A date selection is required');
+              } else {
+                setError('');
+              }
+            }}
+          />
           {createShorthand(Popup, popup, {
             defaultProps: () => ({
-              open,
+              open: open && !props.disabled,
               content: calendarElement,
               trapFocus: true,
               trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />,
@@ -264,6 +229,12 @@ Datepicker.propTypes = {
   calendar: customPropTypes.itemShorthand,
   popup: customPropTypes.itemShorthand,
 
+  disabled: PropTypes.bool,
+  isRequired: PropTypes.bool,
+  onDateChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  allowTextInput: PropTypes.bool,
+
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
   restrictedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
@@ -276,25 +247,48 @@ Datepicker.propTypes = {
   showWeekNumbers: PropTypes.bool,
   workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
 
-  localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
+  formatDay: PropTypes.func,
+  formatYear: PropTypes.func,
+  formatMonthDayYear: PropTypes.func,
+  formatMonthYear: PropTypes.func,
 
-  format: PropTypes.func,
-  parse: PropTypes.func,
+  parseDate: PropTypes.func,
 
-  disabled: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  onDateChange: PropTypes.func,
+  months: PropTypes.arrayOf(PropTypes.string),
+  shortMonths: PropTypes.arrayOf(PropTypes.string),
+  days: PropTypes.arrayOf(PropTypes.string),
+  shortDays: PropTypes.arrayOf(PropTypes.string),
+
+  isRequiredErrorMessage: PropTypes.string,
+  invalidInputErrorMessage: PropTypes.string,
+  isOutOfBoundsErrorMessage: PropTypes.string,
   goToToday: PropTypes.string,
-  placeholder: PropTypes.string,
+  prevMonthAriaLabel: PropTypes.string,
+  nextMonthAriaLabel: PropTypes.string,
+  prevYearAriaLabel: PropTypes.string,
+  nextYearAriaLabel: PropTypes.string,
+  prevYearRangeAriaLabel: PropTypes.string,
+  nextYearRangeAriaLabel: PropTypes.string,
+  monthPickerHeaderAriaLabel: PropTypes.string,
+  yearPickerHeaderAriaLabel: PropTypes.string,
+  closeButtonAriaLabel: PropTypes.string,
+  weekNumberFormatString: PropTypes.string,
+  selectedDateFormatString: PropTypes.string,
+  todayDateFormatString: PropTypes.string,
 };
 
 Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
   calendar: {},
   popup: {},
-  firstDayOfWeek: DayOfWeek.Monday,
+
+  firstDayOfWeek: DayOfWeek.Sunday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
+
+  allowTextInput: true,
+
+  ...DEFAULT_CALENDAR_STRINGS,
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
