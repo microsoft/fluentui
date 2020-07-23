@@ -61,7 +61,7 @@ export const UnifiedPeoplePickerDragDropExample = (): JSX.Element => {
 
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
 
-  const [draggedItem, setDraggedItem] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>>();
+  const [draggedItem, setDraggedItem] = React.useState<IPersonaProps>();
   const [draggedIndex, setDraggedIndex] = React.useState(-1);
 
   // pretty sure this isn't right
@@ -158,17 +158,16 @@ export const UnifiedPeoplePickerDragDropExample = (): JSX.Element => {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
 
-  const _insertBeforeItem = (item: IFloatingSuggestionItemProps<IPersonaProps>): void => {
-    const draggedItems = peopleSuggestions[draggedIndex].isSelected
-      ? (peopleSelectedItems as IFloatingSuggestionItemProps<IPersonaProps>[])
-      : [draggedItem!];
+  const _insertBeforeItem = (item: IPersonaProps): void => {
+    //const draggedItems = peopleSelectedItems[draggedIndex].isSelected ? (peopleSelectedItems as <IPersonaProps[]>) : [draggedItem!];
+    const draggedItems = [draggedItem!];
 
-    const insertIndex = peopleSuggestions.indexOf(item);
-    const items = peopleSuggestions.filter(itm => draggedItems.indexOf(itm) === -1);
+    const insertIndex = peopleSelectedItems.indexOf(item);
+    const items = peopleSelectedItems.filter(itm => draggedItems.indexOf(itm) === -1);
 
     items.splice(insertIndex, 0, ...draggedItems);
 
-    setPeopleSuggestions(items);
+    setPeopleSelectedItems(items);
   };
 
   const _onDragEnter = (item?: any, event?: DragEvent): string => {
@@ -185,6 +184,7 @@ export const UnifiedPeoplePickerDragDropExample = (): JSX.Element => {
   const _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
     setDraggedItem(item);
     setDraggedIndex(itemIndex!);
+    //console.log('onDragStart. item: ' + item + ' index: ' + itemIndex);
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
