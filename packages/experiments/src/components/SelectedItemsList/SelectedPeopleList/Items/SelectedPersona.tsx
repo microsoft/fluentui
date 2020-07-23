@@ -35,6 +35,8 @@ type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
   theme?: ITheme;
 };
 
+const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
+
 /**
  * A selected persona with support for item removal and expansion.
  *
@@ -63,6 +65,10 @@ const SelectedPersonaInner = React.memo(
     //const [isDropping, setIsDropping] = React.useState(false);
     const [root, setRoot] = React.useState<HTMLElement | undefined>();
     const [dragDropSubscription, setDragDropSubscription] = React.useState<IDisposable>();
+    const [isDropping, setIsDropping] = React.useState(false);
+    const [droppingClassNames, setDroppingClassNames] = React.useState('');
+    const [droppingClassName, setDroppingClassName] = React.useState('');
+    const [isDraggable, setIsDraggable] = React.useState<boolean | undefined>(false);
 
     const _events = new EventGroup(this);
 
@@ -81,13 +87,13 @@ const SelectedPersonaInner = React.memo(
         if (dragDropEvents!.onDragLeave) {
           dragDropEvents!.onDragLeave(item, event);
         }
-      } /*else if (dragDropEvents!.onDragEnter) {
-        this._droppingClassNames = dragDropEvents!.onDragEnter(item, event);
-      }*/
+      } else if (dragDropEvents!.onDragEnter) {
+        setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
+      }
 
-      /*if (isDropping !== newValue) {
+      if (isDropping !== newValue) {
         setIsDropping(newValue);
-      }*/
+      }
     };
 
     const dragDropOptions: IDragDropOptions = {
@@ -110,6 +116,14 @@ const SelectedPersonaInner = React.memo(
         setDragDropSubscription(undefined);
       };
     }, [dragDropHelper]);
+
+    React.useEffect(() => {
+      setIsDraggable(dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined);
+    }, [dragDropEvents]);
+
+    React.useEffect(() => {
+      setDroppingClassName(isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '');
+    }, [isDropping]);
 
     const onExpandClicked = React.useCallback(
       ev => {
@@ -137,6 +151,7 @@ const SelectedPersonaInner = React.memo(
           isSelected: selected || false,
           isValid: isValid ? isValid(item) : true,
           theme: theme!,
+          droppingClassName,
         }),
       // TODO: evaluate whether to add deps on `item` and `styles`
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -148,6 +163,12 @@ const SelectedPersonaInner = React.memo(
     return (
       <div
         ref={_onRootRef}
+        {...(typeof isDraggable === 'boolean'
+          ? {
+              'data-is-draggable': isDraggable, // This data attribute is used by some host applications.
+              draggable: isDraggable,
+            }
+          : {})}
         onContextMenu={props.onContextMenu}
         onClick={props.onClick}
         className={css('ms-PickerPersona-container', classNames.personaContainer)}

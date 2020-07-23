@@ -189,6 +189,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedItems: selectedItems,
       focusedItemIndices: focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems,
+      dragDropHelper: dragDropHelper,
+      dragDropEvents: dragDropEvents,
     });
   };
   const _canAddItems = () => true;
