@@ -459,7 +459,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           x={xPoint}
           y={this.state.containerHeight - this.margins.bottom - yBarScale(startingPointOfY)}
           width={this._barWidth}
-          height={yBarScale(point.data)}
+          height={yBarScale(point.data) > 0 ? yBarScale(point.data) : 0}
           fill={color}
           // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGRectElement) => {

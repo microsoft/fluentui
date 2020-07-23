@@ -11,6 +11,7 @@ import {
   HighContrastSelectorWhite,
   getScreenSelector,
   ScreenWidthMinMedium,
+  getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -307,7 +308,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         border: 'none',
         color: semanticColors.disabledText,
         cursor: 'default',
-        selectors: { [HighContrastSelector]: { border: '1px solid GrayText', color: 'GrayText' } },
+        selectors: {
+          [HighContrastSelector]: {
+            border: '1px solid GrayText',
+            color: 'GrayText',
+            backgroundColor: 'Window',
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
     ],
     caretDownWrapper: [
@@ -326,7 +334,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     caretDown: [
       globalClassnames.caretDown,
       { color: palette.neutralSecondary, fontSize: fonts.small.fontSize, pointerEvents: 'none' },
-      disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } },
+      disabled && {
+        color: semanticColors.disabledText,
+        selectors: { [HighContrastSelector]: { color: 'GrayText' }, ...getEdgeChromiumNoHighContrastAdjustSelector() },
+      },
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
     callout: [
