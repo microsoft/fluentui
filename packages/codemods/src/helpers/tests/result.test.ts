@@ -8,7 +8,7 @@ const getError = <T, Z>(okay: T, error: Z): Result<T, Z> => {
   return Err<T, Z>(error!);
 };
 
-describe('Maybe', () => {
+describe('Result', () => {
   it('chained Okay value is evaluated correctly', () => {
     expect(
       getOkay(3, '4')
