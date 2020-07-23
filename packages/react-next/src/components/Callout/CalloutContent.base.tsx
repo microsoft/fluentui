@@ -77,9 +77,8 @@ function useTargets({ target }: ICalloutProps, calloutElement: React.RefObject<H
   // If the target element changed, find the new one. If we are tracking
   // target with class name, always find element because we do not know if
   // fabric has rendered a new element and disposed the old element.
-  if (target !== previousTargetProp.current || typeof target === 'string') {
+  if (!target || target !== previousTargetProp.current || typeof target === 'string') {
     const currentElement = calloutElement.current;
-
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument(currentElement)!;
@@ -149,7 +148,6 @@ function useMaxHeight(
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const async = useAsync();
-
   React.useEffect(() => {
     if (!maxHeight && !hidden) {
       if (directionalHintFixed && targetRef.current) {
@@ -159,10 +157,10 @@ function useMaxHeight(
         async.requestAnimationFrame(() => {
           if (targetRef.current) {
             setMaxHeight(getMaxHeight(targetRef.current, directionalHint!, totalGap, getBounds(), coverTarget));
-          } else {
-            setMaxHeight(getBounds()?.height);
           }
         });
+      } else {
+        setMaxHeight(getBounds()?.height);
       }
     } else if (hidden) {
       setMaxHeight(undefined);
