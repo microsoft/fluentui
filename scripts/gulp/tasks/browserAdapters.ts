@@ -31,7 +31,7 @@ export async function createChrome(): Promise<Browser> {
         executeJavaScript: async code => {
           return page.evaluate(code);
         },
-        close: page.close,
+        close: async () => page.close(),
       };
     },
     close: async () => browser.close(),
