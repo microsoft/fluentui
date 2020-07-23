@@ -1,6 +1,6 @@
 import { SourceFile } from 'ts-morph';
-import { CodeMod } from 'src/codeMods/types';
-import { renameImport, renameProp, findJsxTag } from 'src/codeMods/utilities';
+import { CodeMod } from '../../types';
+import { renameImport, renameProp, findJsxTag } from '../../utilities';
 
 //const buttonPath = 'office-ui-fabric-react/lib/Button';
 
