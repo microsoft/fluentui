@@ -93,6 +93,7 @@ export const DatepickerCalendarCell = compose<
         },
       },
       mapPropsToBehavior: () => ({
+        selected,
         disabled,
       }),
       rtl: context.rtl,
