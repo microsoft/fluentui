@@ -1,5 +1,4 @@
 import { isConformant, IsConformantOptions } from '@fluentui/react-conformance';
-import * as _ from 'lodash';
 
 export function sharedIsConformant(testInfo: IsConformantOptions) {
   const defaultOptions = {
