@@ -94,18 +94,17 @@ const SelectedPersonaInner = React.memo(
       eventMap: eventsToRegister,
       selectionIndex: index,
       context: { data: item, index: index },
-      canDrag: dragDropEvents!.canDrag,
-      canDrop: dragDropEvents!.canDrop,
-      onDragStart: dragDropEvents!.onDragStart,
+      canDrag: dragDropEvents?.canDrag,
+      canDrop: dragDropEvents?.canDrop,
+      onDragStart: dragDropEvents?.onDragStart,
       updateDropState: _updateDroppingState,
-      onDrop: dragDropEvents!.onDrop,
-      onDragEnd: dragDropEvents!.onDragEnd,
-      onDragOver: dragDropEvents!.onDragOver,
+      onDrop: dragDropEvents?.onDrop,
+      onDragEnd: dragDropEvents?.onDragEnd,
+      onDragOver: dragDropEvents?.onDragOver,
     };
 
     React.useEffect(() => {
-      if (dragDropHelper)
-        setDragDropSubscription(dragDropHelper.subscribe(root as HTMLElement, _events, dragDropOptions));
+      setDragDropSubscription(dragDropHelper?.subscribe(root as HTMLElement, _events, dragDropOptions));
       return () => {
         dragDropSubscription?.dispose();
         setDragDropSubscription(undefined);
