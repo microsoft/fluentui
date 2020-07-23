@@ -1,8 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jul 2020 12:43:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.27.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.9)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.7..@uifabric/experiments_v7.27.9)
+
+### Patches
+
+- UnifiedPicker and SelectedItemsList: minor accessibility fixes ([PR #14090](https://github.com/microsoft/fluentui/pull/14090) by elvonspa@microsoft.com)
+- Fix "rules of hooks" lint rule violations ([PR #14100](https://github.com/microsoft/fluentui/pull/14100) by elcraig@microsoft.com)
 
 ## [7.27.7](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.7)
 

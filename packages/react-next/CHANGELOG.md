@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jul 2020 12:43:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.67)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.66..@fluentui/react-next_v8.0.0-alpha.67)
+
+### Changes
+
+- Move shared .scss files to @fluentui/common-styles ([PR #14155](https://github.com/microsoft/fluentui/pull/14155) by behowell@microsoft.com)
 
 ## [8.0.0-alpha.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.66)
 
