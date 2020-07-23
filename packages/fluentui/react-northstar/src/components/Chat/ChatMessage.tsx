@@ -26,7 +26,7 @@ import {
   getScrollParent,
   Popper,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
   PopperModifiers,
 } from '../../utils/positioner';
 import {
@@ -156,7 +156,6 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
   const {
     accessibility,
-    actionMenu,
     attached = parentAttached,
     author,
     badge,
@@ -176,6 +175,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     details,
     unstable_overflow: overflow,
   } = props;
+  const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
 
   const [focused, setFocused] = React.useState<boolean>(false);
   const [messageNode, setMessageNode] = React.useState<HTMLElement | null>(null);
@@ -273,7 +273,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         position="above"
         positionFixed={overflow}
         targetRef={messageNode}
-        {...getPopperPropsFromShorthand(actionMenu)}
+        {...positioningProps}
       >
         {({ scheduleUpdate }) => {
           updateActionsMenuPosition.current = scheduleUpdate;

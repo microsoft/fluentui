@@ -1,5 +1,5 @@
 import { getModFilter, getRegexFilter, getStringFilter } from '../modFilter';
-import { Maybe } from '../../maybe';
+import { Maybe } from '../../helpers/maybe';
 
 describe('modRunner tests', () => {
   it('gets a basic exact name match filter from string', () => {

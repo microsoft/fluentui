@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix \"rules of hooks\" lint rule violations",
+  "packageName": "@uifabric/experiments",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-18T06:30:30.482Z"
+}

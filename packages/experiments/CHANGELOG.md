@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.27.7](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.7)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.2..@uifabric/experiments_v7.27.7)
+
+### Patches
+
+- UnifiedPicker: Fixing paste logic ([PR #14121](https://github.com/microsoft/fluentui/pull/14121) by nebhatna@microsoft.com)
 
 ## [7.27.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.2)
 

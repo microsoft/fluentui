@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Move shared .scss files to @fluentui/common-styles",
+  "packageName": "@fluentui/react-tabs",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-22T01:01:09.350Z"
+}

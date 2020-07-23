@@ -2,6 +2,36 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@uifabric/utilities_v7.24.5",
+      "version": "7.24.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "7bea3a43f5f01a3aef8a36813b8d88484aa021bc",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/utilities_v7.24.4",
+      "version": "7.24.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jul 2020 12:38:41 GMT",
       "tag": "@uifabric/utilities_v7.24.3",
       "version": "7.24.3",

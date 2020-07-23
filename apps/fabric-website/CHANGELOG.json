@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.6",
+      "version": "7.13.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add aria label to searchbox",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "f7a19cab16e3d974f5eabd5a74a563dfc6c6e62d",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 18 Jul 2020 00:04:51 GMT",
       "tag": "@uifabric/fabric-website_v7.13.4",
       "version": "7.13.4",

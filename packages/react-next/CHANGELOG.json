@@ -2,6 +2,42 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.66",
+      "version": "8.0.0-alpha.66",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move Pivot to @fluentui/react-tabs package",
+            "author": "behowell@microsoft.com",
+            "commit": "1b833965d061b57d71cf621a006ed7ef13ccffd8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copy Callout code from OUFR to react-next",
+            "author": "miclo@microsoft.com",
+            "commit": "a8adc0333c14d3470e8c48567d30f0421c0977d4",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.65",
+      "version": "8.0.0-alpha.65",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Jul 2020 12:44:29 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.64",
       "version": "8.0.0-alpha.64",

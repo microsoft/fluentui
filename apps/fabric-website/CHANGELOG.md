@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Sat, 18 Jul 2020 00:04:51 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.6)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.4..@uifabric/fabric-website_v7.13.6)
+
+### Patches
+
+- add aria label to searchbox ([PR #14118](https://github.com/microsoft/fluentui/pull/14118) by mgodbolt@microsoft.com)
 
 ## [7.13.4](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.4)
 
