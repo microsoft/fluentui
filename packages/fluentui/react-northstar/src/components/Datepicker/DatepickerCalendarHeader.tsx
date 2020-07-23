@@ -6,7 +6,7 @@ import {
   datepickerCalendarHeaderBehavior,
   DatepickerCalendarHeaderBehaviorProps,
 } from '@fluentui/accessibility';
-import { ICalendarStrings } from '@fluentui/date-time-utilities';
+import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
   getElementType,
@@ -15,7 +15,6 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
-  DEFAULT_CALENDAR_STRINGS,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
