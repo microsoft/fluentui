@@ -150,6 +150,34 @@ describe('Popup', () => {
     });
   });
 
+  describe('controlled popup', () => {
+    test('should close the popup with close button inside content when on hover', () => {
+      const CustomPopup = () => {
+        const [open, setOpen] = React.useState(false);
+        return (
+          <Popup
+            trigger={<button id="open" />}
+            content={
+              <div id="content">
+                <button id="close" onClick={() => setOpen(false)} />
+              </div>
+            }
+            open={open}
+            onOpenChange={(e, { open }) => {
+              setOpen(open);
+            }}
+            on="hover"
+          />
+        );
+      };
+      const popup = mountWithProvider(<CustomPopup />);
+      popup.find('#open').simulate('click');
+      expect(popup.find('#content').length).toBe(1);
+      popup.find('#close').simulate('click');
+      expect(popup.find('#content').length).toBe(0);
+    });
+  });
+
   describe('open/close popup by keyboard', () => {
     test(`toggle popup with Enter key`, () => {
       expectPopupToOpenAndClose({
