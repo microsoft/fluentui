@@ -41,18 +41,10 @@ describe('Callout', () => {
       width: 100,
       height: 768,
     });
-    safeCreate(
-      <CalloutContent>Content</CalloutContent>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
-      {
-        createNodeMock() {
-          return realDom;
-        },
-      },
-    );
+    safeCreate(<CalloutContent>Content</CalloutContent>, component => {
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   it('target id strings does not throw exception', () => {

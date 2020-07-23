@@ -8,16 +8,14 @@ import * as renderer from 'react-test-renderer';
  *
  * @param content - JSX content to test.
  * @param callback - Function callback which receives the component to use.
- * @param options - Options to pass to the test renderer
  */
 export function safeCreate<TProps>(
   content: React.ReactElement<TProps>,
   callback: (wrapper: renderer.ReactTestRenderer) => void,
-  options?: renderer.TestRendererOptions,
 ): void {
   let wrapper: renderer.ReactTestRenderer;
   renderer.act(() => {
-    wrapper = renderer.create(content, options);
+    wrapper = renderer.create(content);
   });
 
   callback(wrapper!);
