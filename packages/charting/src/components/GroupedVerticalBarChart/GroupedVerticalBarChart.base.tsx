@@ -107,6 +107,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   public componentDidMount(): void {
     this._fitParentContainer();
+    this._drawGraph();
   }
 
   public componentWillUnmount(): void {
@@ -116,13 +117,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
     if (this._isGraphDraw || prevProps.data !== this.props.data) {
-      // drawing graph after first update only to avoid multile g tags
       this._drawGraph();
       this._isGraphDraw = false;
     }
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
       this._drawGraph();
+      this._isGraphDraw = false;
     }
   }
 
@@ -387,7 +388,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('aria-labelledby', this._calloutId)
         .attr('width', widthOfBar)
         .attr('height', (d: IGVForBarChart) => {
-          return yBarScale(d[datasetKey].data);
+          return yBarScale(d[datasetKey].data) > 0 ? yBarScale(d[datasetKey].data) : 0;
         })
         .on('mouseover', (d: IGVForBarChart) => {
           return that._mouseAction(
