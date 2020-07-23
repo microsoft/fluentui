@@ -375,7 +375,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
           data-is-focusable={true}
-          height={yBarScale(point.y)!}
+          height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
           // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!, refArrayIndexNumber);
@@ -436,7 +436,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           x={xBarScale(index)}
           y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
-          height={yBarScale(point.y)}
+          height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
           aria-labelledby={this._calloutId}
           // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(

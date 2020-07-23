@@ -3,7 +3,9 @@
 exports[`SelectedPeopleList renders nothing if nothing is provided 1`] = `null`;
 
 exports[`SelectedPeopleList renders personas that are passed in 1`] = `
-Array [
+<div
+  role="list"
+>
   <div
     aria-labelledby="selectedItemPersona-id__0"
     className=
@@ -512,7 +514,7 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
+  </div>
   <div
     aria-labelledby="selectedItemPersona-id__8"
     className=
@@ -1021,12 +1023,14 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`SelectedPeopleList renders personas that are passed in as default 1`] = `
-Array [
+<div
+  role="list"
+>
   <div
     aria-labelledby="selectedItemPersona-id__16"
     className=
@@ -1535,7 +1539,7 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
+  </div>
   <div
     aria-labelledby="selectedItemPersona-id__24"
     className=
@@ -2044,6 +2048,6 @@ Array [
         </span>
       </button>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;
