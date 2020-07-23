@@ -143,6 +143,34 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     return grid;
   };
 
+  const dateFormatting = {
+    formatDay: props.formatDay,
+    formatYear: props.formatYear,
+    formatMonthDayYear: props.formatMonthDayYear,
+    formatMonthYear: props.formatMonthYear,
+    parseDate: props.parseDate,
+    months: props.months,
+    shortMonths: props.shortMonths,
+    days: props.days,
+    shortDays: props.shortDays,
+    isRequiredErrorMessage: props.isRequiredErrorMessage,
+    invalidInputErrorMessage: props.invalidInputErrorMessage,
+    isOutOfBoundsErrorMessage: props.isOutOfBoundsErrorMessage,
+    goToToday: props.goToToday,
+    prevMonthAriaLabel: props.prevMonthAriaLabel,
+    nextMonthAriaLabel: props.nextMonthAriaLabel,
+    prevYearAriaLabel: props.prevYearAriaLabel,
+    nextYearAriaLabel: props.nextYearAriaLabel,
+    prevYearRangeAriaLabel: props.prevYearRangeAriaLabel,
+    nextYearRangeAriaLabel: props.nextYearRangeAriaLabel,
+    monthPickerHeaderAriaLabel: props.monthPickerHeaderAriaLabel,
+    yearPickerHeaderAriaLabel: props.yearPickerHeaderAriaLabel,
+    closeButtonAriaLabel: props.closeButtonAriaLabel,
+    weekNumberFormatString: props.weekNumberFormatString,
+    selectedDateFormatString: props.selectedDateFormatString,
+    todayDateFormatString: props.todayDateFormatString,
+  };
+
   const grid = getSlicedGrid();
 
   const changeMonth = (nextMonth: boolean) => {
@@ -172,6 +200,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                 changeMonth(true);
                 _.invoke(predefinedProps, 'onNextClick', e, data);
               },
+              ...dateFormatting,
             }),
           })}
           <Grid rows={grid.length + 1} columns={DAYS_IN_WEEK}>

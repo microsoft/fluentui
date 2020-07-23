@@ -15,6 +15,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  DEFAULT_CALENDAR_STRINGS,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -184,6 +185,8 @@ DatepickerCalendarHeader.defaultProps = {
   nextButton: {},
   previousButton: {},
   label: {},
+
+  ...DEFAULT_CALENDAR_STRINGS,
 };
 
 DatepickerCalendarHeader.handledProps = Object.keys(DatepickerCalendarHeader.propTypes) as any;
