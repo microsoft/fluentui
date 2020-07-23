@@ -32,6 +32,7 @@ module.exports = {
       '!node_modules',
       'lib-es2015/**/*',
       'coverage/**/*',
+      'src/**/*.scss.ts',
     ],
 
     // These are relative to the git root, and affects the hash of the cache
