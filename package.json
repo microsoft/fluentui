@@ -82,8 +82,8 @@
     ]
   },
   "resolutions": {
-    "webpack": "^4.35.0",
     "autoprefixer": "9.7.6",
-    "copy-to-clipboard": "3.2.0"
+    "copy-to-clipboard": "3.2.0",
+    "webpack": "^4.35.0"
   }
 }
