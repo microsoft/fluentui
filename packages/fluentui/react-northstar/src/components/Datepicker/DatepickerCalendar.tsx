@@ -308,7 +308,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     }
   }, [focusedDate, itemRefs]);
 
-  const renderWeekRow = (week, hideCells) =>
+  const renderWeekRow = week =>
     _.map(week, (day: IDay) =>
       createShorthand(DatepickerCalendarCell, calendarCell, {
         defaultProps: () =>
@@ -318,8 +318,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
             selected: day.isSelected,
             disabled: !day.isInMonth,
-            hidden: hideCells,
-            cellRef: itemRefs[day.key],
+            ref: itemRefs[day.key],
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
@@ -380,9 +379,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                             }),
                         }),
                       )}
-                      {renderWeekRow(grid[0], true)}
-                      {_.map(grid.slice(1, grid.length - 1), week => renderWeekRow(week, false))}
-                      {renderWeekRow(grid[grid.length - 1], true)}
+                      {/* {renderWeekRow(grid[0], true)} */}
+                      {_.map(grid.slice(1, grid.length - 1), week => renderWeekRow(week))}
+                      {/* {renderWeekRow(grid[grid.length - 1], true)} */}
                     </>
                   ),
                 }),
