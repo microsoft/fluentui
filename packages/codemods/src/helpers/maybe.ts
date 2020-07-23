@@ -3,7 +3,7 @@ import { Chainable, Flattened } from './chainable';
 interface MaybeChain<T> extends Chainable<T> {
   something?: boolean;
   __isMaybe: true;
-  fmap: <ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => NonNullable<ReturnType>) => Maybe<ReturnType>;
+  map: <ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => NonNullable<ReturnType>) => Maybe<ReturnType>;
   chain: <ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => Maybe<ReturnType>) => Maybe<ReturnType>;
   flatten: () => Flattened<T, Maybe<T>>;
   then: <ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => ReturnType | Maybe<ReturnType>) => Maybe<ReturnType>;
@@ -22,7 +22,7 @@ class MB<T> implements MaybeChain<T> {
   public value: T | undefined;
   public __isMaybe: true = true;
 
-  public fmap<ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => NonNullable<ReturnType>): Maybe<ReturnType> {
+  public map<ReturnType>(this: Maybe<T>, fn: (v: NonNullable<T>) => NonNullable<ReturnType>): Maybe<ReturnType> {
     return this.something ? Something(fn(this.value)) : Nothing();
   }
 
