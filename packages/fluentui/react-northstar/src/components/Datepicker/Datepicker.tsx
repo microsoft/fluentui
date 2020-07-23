@@ -169,6 +169,40 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     return openState === OpenState.Open;
   };
 
+  const onInputClick = (): void => {
+    if (openState === OpenState.Closed) {
+      setOpenState(OpenState.Open);
+    } else if (openState === OpenState.Open || openState === OpenState.Closing) {
+      // Keep popup open in case we can only enter the date through calendar.
+      if (props.allowTextInput) {
+        setOpenState(OpenState.Closed);
+      } else {
+        setOpenState(OpenState.Open);
+      }
+    }
+  };
+
+  const onInputChange = (e, target: { value: string }) => {
+    const parsedDate = props.parseDate(target.value);
+
+    setFormattedDate(target.value);
+    if (parsedDate) {
+      if (isRestrictedDate(parsedDate, calendarOptions)) {
+        setError('The selected date is from the restricted range.');
+      } else {
+        setError('');
+        setSelectedDate(parsedDate);
+        _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
+      }
+    } else if (target.value) {
+      setError('Manually entered date is not in correct format.');
+    } else if (props.isRequired && !selectedDate) {
+      setError(dateSelectionErrorString);
+    } else {
+      setError('');
+    }
+  };
+
   const element = (
     <Ref innerRef={datepickerRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -182,39 +216,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             disabled={props.disabled}
             error={!!error}
             readOnly={!props.allowTextInput}
-            onClick={() => {
-              if (openState === OpenState.Closed) {
-                setOpenState(OpenState.Open);
-              } else if (openState === OpenState.Open || openState === OpenState.Closing) {
-                // Keep popup open in case we can only enter the date through calendar.
-                if (props.allowTextInput) {
-                  setOpenState(OpenState.Closed);
-                } else {
-                  setOpenState(OpenState.Open);
-                }
-              }
-            }}
+            onClick={onInputClick}
             value={formattedDate}
-            onChange={(e, { value }) => {
-              const parsedDate = props.parseDate(value);
-
-              setFormattedDate(value);
-              if (parsedDate) {
-                if (isRestrictedDate(parsedDate, calendarOptions)) {
-                  setError('The selected date is from the restricted range.');
-                } else {
-                  setError('');
-                  setSelectedDate(parsedDate);
-                  _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
-                }
-              } else if (value) {
-                setError('Manually entered date is not in correct format.');
-              } else if (props.isRequired && !selectedDate) {
-                setError(dateSelectionErrorString);
-              } else {
-                setError('');
-              }
-            }}
+            onChange={onInputChange}
           />
           {createShorthand(Popup, popup, {
             defaultProps: () => ({
