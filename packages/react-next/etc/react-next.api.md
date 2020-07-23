@@ -101,13 +101,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     updateItems(items: T[], focusIndex?: number): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class Callout extends React.Component<ICalloutProps, ICalloutState> {
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const Callout: React.ForwardRefExoticComponent<ICalloutProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
