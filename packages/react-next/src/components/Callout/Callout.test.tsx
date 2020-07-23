@@ -22,7 +22,7 @@ describe('Callout', () => {
     jest.resetAllMocks();
   });
 
-  fit('renders Callout correctly', () => {
+  it('renders Callout correctly', () => {
     spyOn(Utilities, 'getWindow').and.returnValue({
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
@@ -115,7 +115,7 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
   });
 
-  xit('without target does not throw exception', () => {
+  it('without target does not throw exception', () => {
     let threwException = false;
     try {
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
@@ -131,7 +131,7 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
   });
 
-  xit('passes event to onDismiss prop', () => {
+  it('passes event to onDismiss prop', () => {
     jest.useFakeTimers();
     let threwException = false;
     let gotEvent = false;
@@ -166,8 +166,12 @@ describe('Callout', () => {
     const focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
 
     // Move focus
-    jest.runAllTimers();
-    focusTarget.focus();
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
+    ReactTestUtils.act(() => {
+      focusTarget.focus();
+    });
     expect(gotEvent).toEqual(true);
   });
 
@@ -212,10 +216,13 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
     const focusTarget = document.querySelector('#inner') as HTMLDivElement;
 
-    jest.runAllTimers();
-
-    // Make sure that focus is in the callout
-    focusTarget.focus();
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
+    ReactTestUtils.act(() => {
+      // Make sure that focus is in the callout
+      focusTarget.focus();
+    });
 
     // Unmounting everything is the same as dismissing the Callout. As
     // the tree is unmounted, popup will get unmounted first and the
