@@ -2,6 +2,7 @@ import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import { BaseDecorator } from './BaseDecorator';
 import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
+import { useConstCallback, useConst, useOnEvent } from '@uifabric/react-hooks';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -33,76 +34,11 @@ let _lastMode: ResponsiveMode | undefined;
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
  */
-export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void {
+export const setResponsiveMode = (responsiveMode: ResponsiveMode | undefined): void => {
   _defaultMode = responsiveMode;
-}
+};
 
-/**
- * Initializes the responsive mode to the current window size. This can be used to avoid
- * a re-render during first component mount since the window would otherwise not be measured
- * until after mounting.
- */
-export function initializeResponsiveMode(element?: HTMLElement): void {
-  if (typeof window !== 'undefined') {
-    const currentWindow = (element && getWindow(element)) || window;
-
-    getResponsiveMode(currentWindow);
-  }
-}
-
-export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
-  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
-): any {
-  const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
-    private _events: EventGroup;
-
-    constructor(props: TProps) {
-      super(props);
-      this._events = new EventGroup(this);
-      this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
-
-      this.state = {
-        responsiveMode: _defaultMode || _lastMode || ResponsiveMode.large,
-      };
-    }
-
-    public componentDidMount(): void {
-      this._events.on(window, 'resize', this._onResize);
-      this._onResize();
-    }
-
-    public componentWillUnmount(): void {
-      this._events.dispose();
-    }
-
-    public render(): JSX.Element | null {
-      const { responsiveMode } = this.state;
-
-      return responsiveMode === ResponsiveMode.unknown ? null : (
-        <ComposedComponent
-          ref={this._updateComposedComponentRef}
-          responsiveMode={responsiveMode}
-          {...(this.props as any)}
-        />
-      );
-    }
-
-    private _onResize = () => {
-      const element = findDOMNode(this) as Element;
-      const currentWindow = (element && getWindow(element)) || window;
-      const responsiveMode = getResponsiveMode(currentWindow);
-
-      if (responsiveMode !== this.state.responsiveMode) {
-        this.setState({
-          responsiveMode,
-        });
-      }
-    };
-  };
-  return hoistStatics(ComposedComponent, resultClass);
-}
-
-function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
+const getResponsiveMode = (currentWindow: Window | undefined): ResponsiveMode => {
   let responsiveMode = ResponsiveMode.small;
 
   if (currentWindow) {
@@ -130,4 +66,39 @@ function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
   }
 
   return responsiveMode;
-}
+};
+
+/**
+ * Initializes the responsive mode to the current window size. This can be used to avoid
+ * a re-render during first component mount since the window would otherwise not be measured
+ * until after mounting.
+ */
+export const initializeResponsiveMode = (element?: HTMLElement): void => {
+  if (typeof window !== 'undefined') {
+    const currentWindow = (element && getWindow(element)) || window;
+
+    getResponsiveMode(currentWindow);
+  }
+};
+
+export const useResponsiveMode = (...itemRef: any[]) => {
+  const ref = React.useRef(itemRef);
+  const [responsiveMode, setResponsiveModeState] = React.useState<ResponsiveMode>(
+    _defaultMode || _lastMode || ResponsiveMode.large,
+  );
+
+  const onResize = useConstCallback(() => {
+    const element = findDOMNode(ref) as Element;
+    const currentWindow = (ref && getWindow(element)) || window;
+    const currentResponsiveMode = getResponsiveMode(currentWindow);
+
+    if (currentResponsiveMode !== responsiveMode) {
+      setResponsiveModeState(currentResponsiveMode);
+    }
+  });
+
+  useOnEvent(window, 'resize', onResize as (ev: Event) => void);
+  onResize();
+
+  return responsiveMode === ResponsiveMode.unknown ? null : useResponsiveMode;
+};
