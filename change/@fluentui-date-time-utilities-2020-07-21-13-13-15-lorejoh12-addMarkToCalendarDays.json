@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "adding isMarked to API to mark days in grid",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "lorejoh12@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-21T20:13:15.958Z"
+}
