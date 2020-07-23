@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { ThemeProvider as ReactThemeProvider, ThemeProviderProps } from '@fluentui/react-theme-provider';
-import { useCustomizationSettings } from '../Utilities';
+import { ThemeProvider as ReactThemeProvider, ThemeProviderProps } from '../ThemeProvider';
+import { useCustomizationSettings } from '@uifabric/utilities';
 import { convertLegacyTheme } from './convertLegacyTheme';
-import { ITheme } from '../Styling';
+import { ITheme } from '@uifabric/styling';
 
-export { ThemeProviderProps, useTheme } from '@fluentui/react-theme-provider';
+export { ThemeProviderProps } from '../ThemeProvider';
+export { useTheme } from '../useTheme';
 
 /**
  * A wrapper of ThemeProvider from react-theme-provider package.
