@@ -34,7 +34,7 @@ export async function createChrome(): Promise<Browser> {
         close: page.close,
       };
     },
-    close: browser.close,
+    close: async () => browser.close(),
   };
 }
 
