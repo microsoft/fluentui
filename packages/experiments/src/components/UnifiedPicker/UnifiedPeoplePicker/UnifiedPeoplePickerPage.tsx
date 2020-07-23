@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { UnifiedPeoplePickerExample } from './examples/UnifiedPeoplePicker.Example';
 
+import { UnifiedPeoplePickerExample } from './examples/UnifiedPeoplePicker.Example';
 const UnifiedPeoplePickerExampleCode = require('!raw-loader!./examples/UnifiedPeoplePicker.Example') as string;
+
+import { UnifiedPeoplePickerDragDropExample } from './examples/UnifiedPeoplePicker.DragDrop.Example';
+const UnifiedPeoplePickerDragDropExampleCode = require('!raw-loader!./examples/UnifiedPeoplePicker.DragDrop.Example') as string;
 
 export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -14,6 +17,9 @@ export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageP
           <div>
             <ExampleCard title="Basic" isOptIn={true} code={UnifiedPeoplePickerExampleCode}>
               <UnifiedPeoplePickerExample />
+            </ExampleCard>
+            <ExampleCard title="DragDrop" isOptIn={true} code={UnifiedPeoplePickerDragDropExampleCode}>
+              <UnifiedPeoplePickerDragDropExample />
             </ExampleCard>
           </div>
         }

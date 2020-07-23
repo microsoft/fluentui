@@ -54,7 +54,7 @@ const _suggestions = [
   },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
-export const UnifiedPeoplePickerExample = (): JSX.Element => {
+export const UnifiedPeoplePickerDragDropExample = (): JSX.Element => {
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
     ..._suggestions,
   ]);
