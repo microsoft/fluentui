@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 17 Jul 2020 12:38:41 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.24.5](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.5)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.4..@uifabric/utilities_v7.24.5)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14099](https://github.com/microsoft/fluentui/pull/14099) by elcraig@microsoft.com)
 
 ## [7.24.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.3)
 

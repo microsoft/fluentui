@@ -3,5 +3,5 @@ export * from './types.internal';
 
 export { getBasePlacement } from './getBasePlacement';
 export { getScrollParent } from './getScrollParent';
-export { getPopperPropsFromShorthand } from './getPopperPropsFromShorthand';
+export { partitionPopperPropsFromShorthand } from './partitionPopperPropsFromShorthand';
 export { Popper } from './Popper';
