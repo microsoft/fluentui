@@ -7,7 +7,6 @@ import { renameImport, renameProp, findJsxTag } from '../../utilities';
 const oldToNewButton: CodeMod = {
   run: (file: SourceFile) => {
     try {
-      renameImport(file, 'toggled', 'checked');
       const tags = findJsxTag(file, 'Button');
       renameProp(tags, 'toggled', 'checked');
     } catch (e) {
