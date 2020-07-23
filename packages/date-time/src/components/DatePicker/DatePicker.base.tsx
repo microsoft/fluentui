@@ -113,6 +113,7 @@ function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: IDatePick
       onAfterMenuDismiss?.();
     }
     isMounted.current = true;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCalendarShown]);
 
   return [isCalendarShown, setIsCalendarShown] as const;
@@ -131,6 +132,8 @@ function useSelectedDate({ formatDate, value, onSelectDate }: IDatePickerProps) 
 
   React.useEffect(() => {
     setFormattedDate(value && formatDate ? formatDate(value) : '');
+    // setSelectedDate already updates the formatetd date if value changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formatDate]);
 
   return [selectedDate, formattedDate, setSelectedDate, setFormattedDate] as const;
@@ -204,9 +207,14 @@ function useErrorMessage(
     } else {
       setErrorMessage(undefined);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
+    // We don't want to compare the date itself, since two instances of date at the same time are not equal
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     minDate && getDatePartHashValue(minDate),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     maxDate && getDatePartHashValue(maxDate),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     selectedDate && getDatePartHashValue(selectedDate),
     isRequired,
   ]);
@@ -263,24 +271,26 @@ export const DatePickerBase = React.forwardRef(
       isCalendarShown,
     );
 
-    const reset = () => {
-      setIsCalendarShown(false);
-      setSelectedDate(undefined);
-      setErrorMessage(undefined);
-    };
-
-    const showDatePickerPopup = (): void => {
+    const showDatePickerPopup = React.useCallback((): void => {
       if (!isCalendarShown) {
         preventNextFocusOpeningPicker();
         setIsCalendarShown(true);
       }
-    };
+    }, [isCalendarShown, preventNextFocusOpeningPicker, setIsCalendarShown]);
 
-    React.useImperativeHandle(props.componentRef, () => ({ focus, reset, showDatePickerPopup }), [
-      focus,
-      reset,
-      showDatePickerPopup,
-    ]);
+    React.useImperativeHandle(
+      props.componentRef,
+      () => ({
+        focus,
+        reset() {
+          setIsCalendarShown(false);
+          setSelectedDate(undefined);
+          setErrorMessage(undefined);
+        },
+        showDatePickerPopup,
+      }),
+      [focus, setErrorMessage, setIsCalendarShown, setSelectedDate, showDatePickerPopup],
+    );
 
     const onTextFieldFocus = (): void => {
       if (disableAutoFocus) {
