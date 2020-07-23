@@ -126,11 +126,11 @@ jobs:
 
   - job: ScreenerFluent
     steps:
+      - template: azure-pipelines.tools.yml
+
       - script: |
           yarn
         displayName: yarn
-
-      - template: azure-pipelines.tools.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
@@ -150,11 +150,11 @@ jobs:
     workspace:
       clean: all
     steps:
+      - template: azure-pipelines.tools.yml
+
       - script: |
           yarn
         displayName: yarn
-
-      - template: azure-pipelines.tools.yml
 
       - template: .devops/templates/pr-target-branch.yml
 
