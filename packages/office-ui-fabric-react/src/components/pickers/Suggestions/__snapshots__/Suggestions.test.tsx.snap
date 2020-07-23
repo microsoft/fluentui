@@ -34,6 +34,16 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
       >
         <button
           className=
@@ -2060,6 +2070,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
+            }
+            &:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
             }
       >
         <button
@@ -5141,6 +5161,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
+            }
+            &:after {
+              border: 1px solid #605e5c;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
             }
       >
         <button

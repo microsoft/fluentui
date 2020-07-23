@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-tabs",
+  "entries": [
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@fluentui/react-tabs_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move Pivot to @fluentui/react-tabs package",
+            "author": "behowell@microsoft.com",
+            "commit": "1b833965d061b57d71cf621a006ed7ef13ccffd8",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    }
+  ]
+}

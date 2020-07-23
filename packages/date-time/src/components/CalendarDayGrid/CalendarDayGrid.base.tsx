@@ -77,6 +77,11 @@ function useWeeks(
     }
 
     return returnValue;
+    // TODO: this is missing deps on getSetRefCallback and onSelectDate (and depending on the entire
+    // props object may not be a good idea due to likely frequent mutation). It would be easy to
+    // fix getSetRefCallback to not mutate every render, but onSelectDate is passed down from
+    // Calendar and trying to fix it requires a huge cascade of changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
 
   return weeks;
