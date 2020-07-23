@@ -1,14 +1,5 @@
-import { ComponentProps } from '@fluentui/react-compose';
-
-export type Alignment =
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'baseline'
-  | 'stretch';
+import { ComponentProps, BaseSlots, SlotProps } from '@fluentui/react-compose';
+import { Alignment } from '../Flex';
 
 export interface FlexItemProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -35,4 +26,12 @@ export interface FlexItemProps extends ComponentProps, React.HTMLAttributes<HTML
    * Item can be pushed towards opposite side in the container’s direction.
    */
   push?: boolean;
+  /**
+   * Will be set by parent.
+   */
+  flexDirection?: boolean;
 }
+
+export interface FlexItemSlots extends BaseSlots {}
+
+export type FlexItemSlotProps = SlotProps<FlexItemSlots, FlexItemProps, React.HTMLAttributes<HTMLElement>>;

@@ -1,4 +1,4 @@
-import { ComponentProps } from '@fluentui/react-compose';
+import { ComponentProps, BaseSlots, SlotProps } from '@fluentui/react-compose';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
@@ -60,3 +60,7 @@ export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLDivE
    */
   space?: ['around', 'between', 'evenly'];
 }
+
+export interface FlexSlots extends BaseSlots {}
+
+export type FlexSlotProps = SlotProps<FlexSlots, FlexProps, React.HTMLAttributes<HTMLDivElement>>;

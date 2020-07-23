@@ -1,0 +1,19 @@
+:root {
+  --general-bc: rgb(163, 50, 255);
+  --flex-direction-inline: inline;
+  --flex-padding: 20px;
+}
+
+.root {
+  background-color: var(--general-bc);
+  display: var(--flex-direction);
+  padding: var(--flex-padding);
+
+  &._inline {
+    --flex-direction: inline;
+  }
+
+  &._block {
+    --flex-direction: block;
+  }
+}

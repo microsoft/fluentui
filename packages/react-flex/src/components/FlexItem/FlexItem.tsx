@@ -1,18 +1,31 @@
 import * as React from 'react';
-import { compose } from '@fluentui/react-compose';
-import { FlexItemProps } from './FlexItem.types';
+import { compose, createClassResolver, mergeProps } from '@fluentui/react-compose';
+import { FlexItemProps, FlexItemSlots, FlexItemSlotProps } from './FlexItem.types';
+import * as classes from './FlexItem.scss';
 
 export const FlexItem = compose<'div', FlexItemProps, FlexItemProps, {}, {}>(
   (props, ref, options) => {
     const { children } = props;
 
-    const element = children as React.ReactElement; // apply styles to element
-
-    return element;
+    const { state } = options;
+    const { slots, slotProps } = mergeProps<FlexItemProps, FlexItemProps, FlexItemSlots, FlexItemSlotProps>(
+      state,
+      options,
+    );
+    return <slots.root {...slotProps.root}>{children}</slots.root>;
   },
   {
     displayName: 'FlexItem',
-    handledProps: ['grow', 'shrink', 'align', 'order', 'fluid', 'push'],
+    classes: createClassResolver(classes),
+    handledProps: [
+      'grow',
+      'shrink',
+      'align',
+      'order',
+      'fluid',
+      'push',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ] as any,
   },
 );
 
