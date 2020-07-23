@@ -32,6 +32,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _yAxisScale: any = '';
   private _circleId: string;
+  private _lineId: string;
   private _verticalLine: string;
   private _uniqueCallOutID: string;
   private _refArray: IRefArrayData[];
@@ -53,6 +54,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._points = this.props.data.lineChartData || [];
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
+    this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
     this.margins = {
       top: this.props.margins?.top || 20,
@@ -216,7 +218,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         );
       }
       for (let j = 1; j < this._points[i].data.length; j++) {
-        const lineId = `${i}${j}`;
+        const lineId = `${this._lineId}${i}${j}`;
         const circleId = `${this._circleId}${i}${j}`;
         const x1 = this._points[i].data[j - 1].x;
         const y1 = this._points[i].data[j - 1].y;
