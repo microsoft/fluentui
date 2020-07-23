@@ -7,7 +7,7 @@ import { ILineChartProps, ILineChartPoints, IBasestate, IChildProps } from './Li
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { calloutData, IMargins } from '../../utilities/index';
-import { Base } from '../CommonComponents/Wrapper';
+import { ChartHelper } from '../CommonComponents/ChartHelper';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -34,6 +34,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _circleId: string;
   private _verticalLine: string;
   private _uniqueCallOutID: string;
+  private _refArray: IRefArrayData[];
   private margins: IMargins;
   private eventLabelHeight: number = 36;
   private lines: JSX.Element[];
@@ -47,8 +48,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       refSelected: '',
       selectedLegend: '',
       isCalloutVisible: false,
-      refArray: [],
     };
+    this._refArray = [];
     this._points = this.props.data.lineChartData || [];
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
@@ -107,7 +108,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       tickFormat: tickFormat,
     };
     return (
-      <Base
+      <ChartHelper
         {...this.props}
         points={this._points}
         getGraphData={this._getLinesData}
@@ -321,7 +322,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   private _refCallback(element: SVGGElement, legendTitle: string): void {
-    this.state.refArray!.push({ index: legendTitle, refElement: element });
+    this._refArray.push({ index: legendTitle, refElement: element });
   }
 
   private _handleFocus = (
@@ -343,7 +344,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     d3Select(`#${this._verticalLine}`)
       .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
       .attr('visibility', 'visibility');
-    this.state.refArray!.forEach((obj: IRefArrayData) => {
+    this._refArray.forEach((obj: IRefArrayData) => {
       if (obj.index === lineId) {
         this.setState({
           isCalloutVisible: true,

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { IWrapperStyleProps, IWrapperProps, IWrapperStyles } from './Wrapper.types';
+import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from './ChartHelper.types';
 
 import {
   createNumericXAxis,
@@ -15,7 +15,7 @@ import {
 } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
-const getClassNames = classNamesFunction<IWrapperStyleProps, IWrapperStyles>();
+const getClassNames = classNamesFunction<IChartHelperStyleProps, IChartHelperStyles>();
 export interface IContainerValues {
   width: number;
   height: number;
@@ -29,16 +29,17 @@ export interface IWrapperState {
   _height: number;
 }
 
-export class WrapperBase extends React.Component<IWrapperProps, IWrapperState> {
-  private _classNames: IProcessedStyleSet<IWrapperStyles>;
+export class ChartHelperBaseComponent extends React.Component<IChartHelperProps, IWrapperState> {
+  private _classNames: IProcessedStyleSet<IChartHelperStyles>;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private containerParams: IContainerValues;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   private margins: IMargins;
+  private idForGraph: string;
 
-  constructor(props: IWrapperProps) {
+  constructor(props: IChartHelperProps) {
     super(props);
     this.state = {
       containerHeight: 0,
@@ -46,6 +47,7 @@ export class WrapperBase extends React.Component<IWrapperProps, IWrapperState> {
       _width: this.props.width || 600,
       _height: this.props.height || 350,
     };
+    this.idForGraph = getId('chart_');
     this.margins = {
       top: this.props.margins?.top || 20,
       right: this.props.margins?.right || 20,
@@ -62,7 +64,7 @@ export class WrapperBase extends React.Component<IWrapperProps, IWrapperState> {
     cancelAnimationFrame(this.containerParams.reqID);
   }
 
-  public componentDidUpdate(prevProps: IWrapperProps): void {
+  public componentDidUpdate(prevProps: IChartHelperProps): void {
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
     }
@@ -116,7 +118,7 @@ export class WrapperBase extends React.Component<IWrapperProps, IWrapperState> {
     });
     return (
       <div
-        id="d3AreaChart"
+        id={this.idForGraph}
         className={this._classNames.root}
         role={'presentation'}
         // eslint-disable-next-line react/jsx-no-bind

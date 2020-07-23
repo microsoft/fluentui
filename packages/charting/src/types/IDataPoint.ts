@@ -20,7 +20,6 @@ export interface IBasestate {
   hoverXValue?: string | number | null;
   xCalloutValue?: string;
   yCalloutValue?: string;
-  refArray?: IRefArrayData[];
   lineColor?: string;
   hoveredLineColor?: string;
   selectedLegend?: string;

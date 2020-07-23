@@ -5,7 +5,7 @@ import { IChildProps } from '../../types/IDataPoint';
 import { ILineChartPoints } from '@uifabric/charting';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
-export interface IWrapperStyleProps {
+export interface IChartHelperStyleProps {
   /**
    * Theme (provided through customization.)
    */
@@ -32,7 +32,7 @@ export interface IWrapperStyleProps {
   color?: string;
 }
 
-export interface IWrapperStyles {
+export interface IChartHelperStyles {
   /**
    *  Style for the root element.
    */
@@ -94,7 +94,7 @@ export interface IWrapperStyles {
   calloutlegendText?: IStyle;
 }
 
-export interface IWrapperProps {
+export interface IChartHelperProps {
   /**
    * Data to render in the chart.
    */
@@ -153,7 +153,7 @@ export interface IWrapperProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IWrapperStyleProps, IWrapperStyles>;
+  styles?: IStyleFunctionOrObject<IChartHelperStyleProps, IChartHelperStyles>;
 
   /**
    * Margins for the chart

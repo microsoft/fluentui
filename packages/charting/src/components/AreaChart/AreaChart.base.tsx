@@ -10,7 +10,7 @@ import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILineChartDataPoint, ILineChartPoints } from '../../types/index';
 import { calloutData, createYAxis } from '../../utilities/index';
-import { Base } from '../CommonComponents/Wrapper';
+import { ChartHelper } from '../CommonComponents/ChartHelper';
 
 export interface IRefArrayData {
   legendText?: string;
@@ -127,7 +127,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       setInitialFocus: true,
     };
     return (
-      <Base
+      <ChartHelper
         {...this.props}
         points={this._points}
         tickParams={tickParams}

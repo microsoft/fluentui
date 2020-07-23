@@ -1,2 +1,2 @@
-export * from './Wrapper';
-export * from './Wrapper.types';
+export * from './ChartHelper';
+export * from './ChartHelper.types';

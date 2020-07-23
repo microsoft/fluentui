@@ -12,11 +12,11 @@ export {
   IBasestate,
   IChildProps,
 } from '../../types/IDataPoint';
-import { IWrapperStyles, IWrapperStyleProps } from '@uifabric/charting';
+import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from '@uifabric/charting';
 
 // export interface ILineChart {}
 
-export interface ILineChartProps {
+export interface ILineChartProps extends Partial<IChartHelperProps> {
   /**
    * Data to render in the chart.
    */
@@ -164,6 +164,6 @@ export interface IEventsAnnotationProps {
   mergedLabel: (count: number) => string;
 }
 
-export interface ILineChartStyles extends IWrapperStyles {}
+export interface ILineChartStyles extends IChartHelperStyles {}
 
-export interface ILineChartStyleProps extends IWrapperStyleProps {}
+export interface ILineChartStyleProps extends IChartHelperStyleProps {}
