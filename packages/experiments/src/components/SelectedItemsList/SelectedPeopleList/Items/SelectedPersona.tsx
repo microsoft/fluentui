@@ -1,11 +1,21 @@
 import * as React from 'react';
-import { getId, styled, classNamesFunction, IStyleFunctionOrObject, css } from 'office-ui-fabric-react/lib/Utilities';
+import * as ReactDOM from 'react-dom';
+import {
+  getId,
+  styled,
+  classNamesFunction,
+  IStyleFunctionOrObject,
+  css,
+  EventGroup,
+  IDisposable,
+} from 'office-ui-fabric-react/lib/Utilities';
 import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ISelectedItemProps } from '../../SelectedItemsList.types';
 import { getStyles } from './SelectedPersona.styles';
 import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
 import { ITheme, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IDragDropOptions } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 
 const getClassNames = classNamesFunction<ISelectedPersonaStyleProps, ISelectedPersonaStyles>();
 
@@ -45,8 +55,62 @@ const SelectedPersonaInner = React.memo(
       getExpandedItems,
       styles,
       theme,
+      dragDropHelper,
+      dragDropEvents,
+      eventsToRegister,
     } = props;
     const itemId = getId();
+    //const [isDropping, setIsDropping] = React.useState(false);
+    const [root, setRoot] = React.useState<HTMLElement | undefined>();
+    const [dragDropSubscription, setDragDropSubscription] = React.useState<IDisposable>();
+
+    const _events = new EventGroup(this);
+
+    const _onRootRef = (div: HTMLDivElement) => {
+      if (div) {
+        // Need to resolve the actual DOM node, not the component.
+        // The element itself will be used for drag/drop and focusing.
+        setRoot(ReactDOM.findDOMNode(div) as HTMLElement);
+      } else {
+        setRoot(undefined);
+      }
+    };
+
+    const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
+      if (!newValue) {
+        if (dragDropEvents!.onDragLeave) {
+          dragDropEvents!.onDragLeave(item, event);
+        }
+      } /*else if (dragDropEvents!.onDragEnter) {
+        this._droppingClassNames = dragDropEvents!.onDragEnter(item, event);
+      }*/
+
+      /*if (isDropping !== newValue) {
+        setIsDropping(newValue);
+      }*/
+    };
+
+    const dragDropOptions: IDragDropOptions = {
+      eventMap: eventsToRegister,
+      selectionIndex: index,
+      context: { data: item, index: index },
+      canDrag: dragDropEvents!.canDrag,
+      canDrop: dragDropEvents!.canDrop,
+      onDragStart: dragDropEvents!.onDragStart,
+      updateDropState: _updateDroppingState,
+      onDrop: dragDropEvents!.onDrop,
+      onDragEnd: dragDropEvents!.onDragEnd,
+      onDragOver: dragDropEvents!.onDragOver,
+    };
+
+    React.useEffect(() => {
+      if (dragDropHelper)
+        setDragDropSubscription(dragDropHelper.subscribe(root as HTMLElement, _events, dragDropOptions));
+      return () => {
+        dragDropSubscription?.dispose();
+        setDragDropSubscription(undefined);
+      };
+    }, [dragDropHelper]);
 
     const onExpandClicked = React.useCallback(
       ev => {
@@ -84,6 +148,7 @@ const SelectedPersonaInner = React.memo(
 
     return (
       <div
+        ref={_onRootRef}
         onContextMenu={props.onContextMenu}
         onClick={props.onClick}
         className={css('ms-PickerPersona-container', classNames.personaContainer)}

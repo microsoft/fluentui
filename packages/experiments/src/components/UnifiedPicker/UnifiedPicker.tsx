@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getStyles } from './UnifiedPicker.styles';
 import { classNamesFunction, css, SelectionMode, Selection, KeyCodes } from '../../Utilities';
+import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/DragDropHelper';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import {
   FocusZoneDirection,
@@ -27,6 +28,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
+  const [dragDropHelper, setDragDropHelper] = React.useState<DragDropHelper>();
+
   const {
     focusItemIndex,
     suggestionItems,
@@ -63,7 +66,22 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     floatingSuggestionProps,
     headerComponent,
     onInputChange,
+    dragDropEvents,
   } = props;
+
+  React.useEffect(() => {
+    if (dragDropEvents) {
+      setDragDropHelper(
+        new DragDropHelper({
+          selection: selection,
+          minimumPixelsForDrag: props.minimumPixelsForDrag,
+        }),
+      );
+    }
+    return () => {
+      dragDropHelper?.dispose();
+    };
+  }, [dragDropEvents]);
 
   const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which !== KeyCodes.backspace) {

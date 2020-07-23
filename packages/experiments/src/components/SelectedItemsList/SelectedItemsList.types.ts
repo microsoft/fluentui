@@ -1,6 +1,14 @@
 import * as React from 'react';
 import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  IDragDropEvents,
+  IDragDropContext,
+  IDragDropHelper,
+  IDragDropOptions,
+} from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
+
+export { IDragDropContext, IDragDropEvents, IDragDropHelper, IDragDropOptions };
 
 export interface ISelectedItemsList<T> {
   /**
@@ -35,11 +43,22 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
    * Override onItemChange to support replacing an item with multiple items.
    */
   onItemChange: (newItem: T | T[], index: number) => void;
-}
 
-export type BaseSelectedItem = {
-  key?: React.Key;
-};
+  /**
+   * Handling drag and drop events
+   */
+  dragDropEvents?: IDragDropEvents;
+
+  /**
+   * Helper for the drag and drop
+   */
+  dragDropHelper?: IDragDropHelper;
+
+  /**
+   * A list of events to register
+   */
+  eventsToRegister?: { eventName: string; callback: (item?: any, index?: number, event?: any) => void }[];
+}
 
 // Type T is the type of the item that is displayed
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
@@ -74,7 +93,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * The items that the base picker should currently display as selected. If this is provided then the picker will
    * act as a controlled component.
    */
-  selectedItems?: T[];
+  selectedItems?: T[]; // I think that I want to remove these and use the items on selection instead for al this stuff
 
   /**
    * Aria label for the 'X' button in the selected item component.
@@ -91,4 +110,15 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * A callback on whether this item can be removed
    */
   canRemoveItem?: (item: T) => boolean;
+
+  /** Map of callback functions related to row drag and drop functionality. */
+  dragDropEvents?: IDragDropEvents;
+
+  /**
+   * Helper for the drag and drop
+   */
+  dragDropHelper?: IDragDropHelper;
+
+  /** Event names and corresponding callbacks that will be registered to rendered selected items. */
+  selectedItemEventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 }
