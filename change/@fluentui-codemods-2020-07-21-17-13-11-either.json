@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Either: add in an either helper to assit in the creation of codemods",
+  "comment": "Result: add in an result helper to assit in the creation of codemods",
   "packageName": "@fluentui/codemods",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch",
