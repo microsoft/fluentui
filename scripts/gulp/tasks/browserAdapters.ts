@@ -47,16 +47,22 @@ export async function createElectron(electronPath: string = DEFAULT_ELECTRON_PAT
 
   return {
     openPage: async url => {
-      const { pid } = spawn(electronPath, ['--remote-debugging-port=9222']);
+      const electronProcess = spawn(electronPath, ['--remote-debugging-port=9222']);
+      let cdp;
 
-      const cdp = await CDP();
+      try {
+        cdp = await CDP();
 
-      await cdp.Network.enable();
-      await cdp.Page.enable();
-      await cdp.Runtime.enable();
+        await cdp.Network.enable();
+        await cdp.Page.enable();
+        await cdp.Runtime.enable();
 
-      await cdp.Page.navigate({ url });
-      await cdp.Page.loadEventFired();
+        await cdp.Page.navigate({ url });
+        await cdp.Page.loadEventFired();
+      } catch (e) {
+        electronProcess.kill('SIGKILL');
+        throw e;
+      }
 
       return {
         executeJavaScript: async code => {
@@ -65,7 +71,7 @@ export async function createElectron(electronPath: string = DEFAULT_ELECTRON_PAT
           return result.value;
         },
         close: async () => {
-          process.kill(pid);
+          electronProcess.kill('SIGKILL');
           await cdp.close();
         },
       };
