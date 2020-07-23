@@ -17,6 +17,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  useAutoControlled,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
@@ -64,6 +65,9 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
 
   /** Target dates can be also entered through the input field. */
   allowTextInput?: boolean;
+
+  /** Should calendar be initially opened or closed. */
+  defaultCalendarOpenState?: boolean;
 }
 
 export type DatepickerStylesProps = never;
@@ -92,7 +96,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   setStart();
   const dateSelectionErrorString = 'A date selection is required';
   const datepickerRef = React.useRef<HTMLElement>();
-  const [openState, setOpenState] = React.useState<OpenState>(OpenState.Closed);
+  const [openState, setOpenState] = useAutoControlled<OpenState>({
+    defaultValue: props.defaultCalendarOpenState ? OpenState.Open : OpenState.Closed,
+    value: undefined,
+    initialValue: OpenState.Closed,
+  });
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const [formattedDate, setFormattedDate] = React.useState<string>('');
   const [error, setError] = React.useState<string>(() =>
@@ -254,6 +262,7 @@ Datepicker.propTypes = {
   onDateChange: PropTypes.func,
   placeholder: PropTypes.string,
   allowTextInput: PropTypes.bool,
+  defaultCalendarOpenState: PropTypes.bool,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -307,6 +316,7 @@ Datepicker.defaultProps = {
   dateRangeType: DateRangeType.Day,
 
   allowTextInput: true,
+  defaultCalendarOpenState: false,
 
   ...DEFAULT_CALENDAR_STRINGS,
 };
