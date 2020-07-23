@@ -28,7 +28,7 @@ jobs:
         displayName: check change
 
       - script: |
-          yarn lage build test lint --since $(target_branch) --verbose
+          yarn lage build test lint --verbose --no-cache
         displayName: build, test, lint
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
@@ -72,7 +72,7 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn lage build --since $(target_branch) --scope @fluentui/* --no-deps --verbose
+          yarn lage build --since $(target_branch) --scope @fluentui/* --no-deps --verbose --no-cache
         displayName: build, test, lint
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
@@ -109,7 +109,7 @@ jobs:
       - template: .devops/templates/pr-target-branch.yml
 
       - script: |
-          yarn lage bundle --since $(target_branch) --no-deps --verbose
+          yarn lage bundle --since $(target_branch) --no-deps --verbose --no-cache
         displayName: bundle
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
@@ -164,7 +164,7 @@ jobs:
         displayName: config git user and email
 
       - script: |
-          yarn lage screener --scope vr-tests --debug --verbose --no-deps
+          yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
