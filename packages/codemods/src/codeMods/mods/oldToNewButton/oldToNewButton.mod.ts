@@ -2,13 +2,12 @@ import { SourceFile } from 'ts-morph';
 import { CodeMod } from '../../types';
 import { renameProp, findJsxTag } from '../../utilities';
 
-//const buttonPath = 'office-ui-fabric-react/lib/Button';
-
 const oldToNewButton: CodeMod = {
   run: (file: SourceFile) => {
     try {
-      const tags = findJsxTag(file, 'Button');
-      renameProp(tags, 'toggled', 'checked');
+      const tags = findJsxTag(file, 'DefaultButton');
+      renameProp(tags, 'actionBarOverflowButtonAriaLabel', 'actionBarOverflowButtonAriaLabel', 'newLabel!');
+      //renameProp(tags, 'toggled', 'checked');
     } catch (e) {
       return { success: false };
     }
