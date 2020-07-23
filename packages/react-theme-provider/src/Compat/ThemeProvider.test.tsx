@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { Theme } from '../types';
-import { useTheme } from '../useTheme';
-import { mergeThemes } from '../mergeThemes';
+import { Theme, useTheme, mergeThemes } from '../index';
 import { Customizations } from '@uifabric/utilities';
 import { FontWeights } from '@uifabric/styling';
 import { convertLegacyTheme } from './convertLegacyTheme';

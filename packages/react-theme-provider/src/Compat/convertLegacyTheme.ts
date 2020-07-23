@@ -1,4 +1,4 @@
-import { Theme } from '../types';
+import { Theme } from '../index';
 import { memoizeFunction } from '@uifabric/utilities';
 import { IPartialTheme } from '@uifabric/styling';
 
