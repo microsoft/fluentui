@@ -1,5 +1,4 @@
 import { Accessibility } from '../../types';
-// import { keyboardKey } from '@fluentui/keyboard-key';
 
 /**
  * @description
@@ -12,4 +11,5 @@ export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCel
 
 export type DatepickerCalendarCellBehaviorProps = {
   disabled: boolean;
+  hidden: boolean;
 };

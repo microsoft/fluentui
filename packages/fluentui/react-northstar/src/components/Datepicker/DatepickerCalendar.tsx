@@ -12,6 +12,9 @@ import {
   IDay,
   IRestrictedDatesOptions,
   findAvailableDate,
+  compareDates,
+  addDays,
+  addWeeks,
 } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
@@ -33,6 +36,7 @@ import { Grid } from '../Grid/Grid';
 import { DatepickerCalendarHeader, DatepickerCalendarHeaderProps } from './DatepickerCalendarHeader';
 import { DatepickerCalendarCellProps, DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarHeaderCellProps, DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 // TODO: extract to date-time-utilities
 export const DEFAULT_CALENDAR_LOCALIZED_STRINGS: IDateGridStrings = {
@@ -149,6 +153,10 @@ export type DatepickerCalendarStylesProps = never;
 
 export const datepickerCalendarClassName = 'ui-datepicker__calendar';
 
+const dayInGrid = (grid: IDay[][], findDate: Date) => {
+  return _.flatten(grid).some(day => compareDates(day.originalDate, findDate));
+};
+
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
@@ -172,7 +180,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     firstDayOfWeek,
     firstWeekOfYear,
     dateRangeType,
-    weeksToShow,
     localizedStrings,
     today,
     onDateChange,
@@ -184,7 +191,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     debugName: DatepickerCalendar.displayName,
     rtl: context.rtl,
   });
-  const normalizedSelectedDate = selectedDate || today || new Date();
 
   const [gridNavigatedDate, setGridNavigatedDate] = React.useState<Date>(navigatedDate || today || new Date());
 
@@ -199,29 +205,137 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     rtl: context.rtl,
   });
 
-  /** Get days grid and slice it in case it contains additional weeks at the beginning and end. */
-  const getSlicedGrid = () => {
-    const gridOptions = {
-      selectedDate: normalizedSelectedDate,
-      navigatedDate: gridNavigatedDate,
-      firstDayOfWeek,
-      firstWeekOfYear,
-      dateRangeType,
-    };
-    const grid = getDayGrid(gridOptions);
-    if (!weeksToShow) {
-      // Slicing because grid contains extra 1 week in the front and in the back.
-      return grid.slice(1, grid.length - 1);
-    }
-    return grid;
+  // /** Get days grid and slice it in case it contains additional weeks at the beginning and end. */
+  // const getSlicedGrid = () => {
+  //   const grid = getDayGrid(gridOptions);
+  //   if (!weeksToShow) {
+  //     // Slicing because grid contains extra 1 week in the front and in the back.
+  //     return grid.slice(1, grid.length - 1);
+  //   }
+  //   return grid;
+  // };
+
+  const gridOptions = {
+    selectedDate,
+    navigatedDate: gridNavigatedDate,
+    firstDayOfWeek,
+    firstWeekOfYear,
+    dateRangeType,
   };
 
-  const grid = getSlicedGrid();
+  const grid = getDayGrid(gridOptions); // getSlicedGrid();
+  const getInitialFocusDate = () => {
+    if (selectedDate) {
+      const normalizedSelectedDate = new Date(selectedDate.toString());
+      normalizedSelectedDate.setHours(0);
+      normalizedSelectedDate.setMinutes(0);
+      normalizedSelectedDate.setSeconds(0);
+      normalizedSelectedDate.setMilliseconds(0);
+      return normalizedSelectedDate;
+    }
+    const todayDate = _.flatten(grid).find(day => day.isToday);
+    return todayDate.originalDate;
+  };
+  const [focusedDate, setFocusedDate] = React.useState<Date>(getInitialFocusDate());
 
   const changeMonth = (nextMonth: boolean) => {
     const updatedGridNavigatedDate = addMonths(gridNavigatedDate, nextMonth ? 1 : -1);
     setGridNavigatedDate(updatedGridNavigatedDate);
+    setFocusedDate(updatedGridNavigatedDate);
   };
+
+  const itemRefs = React.useMemo<Map<string, React.RefObject<HTMLElement>>>(() => {
+    const refs = new Map<string, React.RefObject<HTMLElement>>();
+    _.map(grid, week => _.map(week, (day: IDay) => (refs[day.key] = React.createRef())));
+    return refs;
+  }, [grid]);
+
+  // const handleFocus = (day: IDay, hiddenCell: boolean): void => {
+  //   console.log(day, hiddenCell);
+  // };
+
+  const handleKeyDown = (e, day) => {
+    const keyCode = getCode(e);
+    const initialDate = day.originalDate;
+    let targetDate: Date | null = null;
+    let direction = 1; // by default search forward
+
+    switch (keyCode) {
+      case keyboardKey.ArrowDown: {
+        targetDate = addWeeks(initialDate, 1);
+        break;
+      }
+      case keyboardKey.ArrowUp: {
+        targetDate = addWeeks(initialDate, -1);
+        direction = -1;
+        break;
+      }
+      case keyboardKey.ArrowLeft: {
+        direction = -1;
+        targetDate = addDays(initialDate, -1);
+        break;
+      }
+      case keyboardKey.ArrowRight: {
+        targetDate = addDays(initialDate, 1);
+        break;
+      }
+      default:
+        break;
+    }
+
+    if (!targetDate) {
+      // if we couldn't find a target date at all, do nothing
+      return;
+    }
+    const newNavigateDate = findAvailableDate({
+      initialDate,
+      targetDate,
+      direction,
+    });
+    if (!dayInGrid(grid.slice(1, grid.length - 1), newNavigateDate)) {
+      setGridNavigatedDate(newNavigateDate);
+      setFocusedDate(newNavigateDate);
+      e.preventDefault();
+    }
+  };
+
+  React.useEffect(() => {
+    if (focusedDate) {
+      const cellToFocus = itemRefs[focusedDate.toString()];
+      if (cellToFocus?.current) {
+        cellToFocus.current.focus();
+      }
+    }
+  }, [focusedDate, itemRefs]);
+
+  const renderWeekRow = (week, hideCells) =>
+    _.map(week, (day: IDay) =>
+      createShorthand(DatepickerCalendarCell, calendarCell, {
+        defaultProps: () =>
+          getA11yProps('calendarCell', {
+            label: day.date,
+            key: day.key,
+            'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
+            selected: day.isSelected,
+            disabled: !day.isInMonth,
+            hidden: hideCells,
+            cellRef: itemRefs[day.key],
+          }),
+        overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
+          onClick: e => {
+            onDateChange(e, { ...predefinedProps, value: day });
+            _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
+          },
+          onFocus: e => {
+            _.invoke(predefinedProps, 'onFocus', e, { ...predefinedProps, value: day });
+          },
+          onKeyDown: e => {
+            handleKeyDown(e, day);
+            _.invoke(predefinedProps, 'onKeyDown', e, { ...predefinedProps, value: day });
+          },
+        }),
+      }),
+    );
 
   const element = (
     <Ref innerRef={datepickerCalendarRef}>
@@ -253,7 +367,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             {
               defaultProps: () =>
                 getA11yProps('calendarGrid', {
-                  rows: grid.length + 1,
+                  rows: grid.length - 1,
                   columns: DAYS_IN_WEEK,
                   content: (
                     <>
@@ -266,39 +380,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                             }),
                         }),
                       )}
-                      {_.map(grid, week =>
-                        _.map(week, (day: IDay) =>
-                          createShorthand(DatepickerCalendarCell, calendarCell, {
-                            defaultProps: () =>
-                              getA11yProps('calendarCell', {
-                                label: day.date,
-                                key: day.key,
-                                'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
-                                selected: day.isSelected,
-                                disabled: !day.isInMonth,
-                              }),
-                            overrideProps: (
-                              predefinedProps: DatepickerCalendarCellProps,
-                            ): DatepickerCalendarCellProps => ({
-                              onClick: e => {
-                                onDateChange(e, { ...predefinedProps, value: day });
-                                _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
-                              },
-                              onFocus: e => {
-                                if (!day.isInMonth) {
-                                  const newNavigateDate = findAvailableDate({
-                                    initialDate: gridNavigatedDate,
-                                    targetDate: day.originalDate,
-                                    direction: gridNavigatedDate > day.originalDate ? -1 : 1,
-                                  });
-                                  setGridNavigatedDate(newNavigateDate);
-                                }
-                                _.invoke(predefinedProps, 'onFocus', e, { ...predefinedProps, value: day });
-                              },
-                            }),
-                          }),
-                        ),
-                      )}
+                      {renderWeekRow(grid[0], true)}
+                      {_.map(grid.slice(1, grid.length - 1), week => renderWeekRow(week, false))}
+                      {renderWeekRow(grid[grid.length - 1], true)}
                     </>
                   ),
                 }),
