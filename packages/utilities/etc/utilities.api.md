@@ -416,8 +416,8 @@ export interface IBaseProps<T = any> {
 }
 
 // @public (undocumented)
-export type ICancelable<T> = {
-    flush: () => T;
+export type ICancelable<T extends (...args: any[]) => any> = {
+    flush: () => ReturnType<T>;
     cancel: () => void;
     pending: () => boolean;
 };

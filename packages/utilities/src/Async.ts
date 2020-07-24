@@ -327,7 +327,7 @@ export class Async {
       noOpFunction.cancel = () => {
         return;
       };
-      noOpFunction.flush = ((() => null) as unknown) as () => T;
+      noOpFunction.flush = ((() => null) as unknown) as () => ReturnType<T>;
       noOpFunction.pending = () => false;
 
       return noOpFunction;
@@ -339,7 +339,7 @@ export class Async {
     let maxWait: number | null = null;
     let lastCallTime = 0;
     let lastExecuteTime = new Date().getTime();
-    let lastResult: T;
+    let lastResult: ReturnType<T>;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let lastArgs: any[];
     let timeoutId: number | null = null;
@@ -412,7 +412,7 @@ export class Async {
       }
     };
 
-    let flush = (): T => {
+    let flush = () => {
       if (pending()) {
         invokeFunction(new Date().getTime());
       }
@@ -482,8 +482,9 @@ export class Async {
   }
 }
 
-export type ICancelable<T> = {
-  flush: () => T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ICancelable<T extends (...args: any[]) => any> = {
+  flush: () => ReturnType<T>;
   cancel: () => void;
   pending: () => boolean;
 };
