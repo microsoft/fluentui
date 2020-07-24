@@ -20,8 +20,6 @@ describe('Datepicker', () => {
     await e2e.focusOn(datepickerButton);
     await e2e.pressKey('Enter'); // open calendar
     expect(await e2e.exists(datepickerCalendar)).toBe(true);
-    await e2e.pressKey('Tab'); // TAB to go to the second navigation arrow
-    await e2e.pressKey('Tab'); // TAB to go to the cell
     expect(await e2e.isFocused(datepickerCalendarCell(32))).toBe(true); //32 is a magic number
     expect(await e2e.textOf(datepickerCalendarCell(32))).toBe('23'); //which represents July 23, 2020, cell focused by default
     await e2e.focusOn(datepickerCalendarCell(8)); // 8 is a magic number
@@ -35,8 +33,6 @@ describe('Datepicker', () => {
     await e2e.focusOn(datepickerButton);
     await e2e.pressKey('Enter'); // open calendar
     expect(await e2e.exists(datepickerCalendar)).toBe(true);
-    await e2e.pressKey('Tab'); // TAB to go to the second navigation arrow
-    await e2e.pressKey('Tab'); // TAB to go to the cell
     expect(await e2e.isFocused(datepickerCalendarCell(32))).toBe(true); //32 is a magic number
     expect(await e2e.textOf(datepickerCalendarCell(32))).toBe('23'); // which represents July 23, 2020, cell focused by default
     await e2e.focusOn(datepickerCalendarCell(42)); // 42 is a magic number

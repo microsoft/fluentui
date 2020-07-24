@@ -239,7 +239,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             defaultProps: () => ({
               open,
               content: calendarElement,
-              trapFocus: true,
+              trapFocus: {
+                disableFirstFocus: true,
+              },
               trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({

@@ -338,57 +338,53 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const element = (
     <Ref innerRef={datepickerCalendarRef}>
-      {getA11yProps.unstable_wrapWithFocusZone(
-        <ElementType
-          {...getA11yProps('root', {
-            className: classes.root,
-            ...unhandledProps,
-          })}
-        >
-          {createShorthand(DatepickerCalendarHeader, header, {
-            defaultProps: () => ({
-              label: formatMonthYear(gridNavigatedDate, localizedStrings),
-            }),
-            overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
-              onPreviousClick: (e, data) => {
-                changeMonth(false);
-                _.invoke(predefinedProps, 'onPreviousClick', e, data);
-              },
-              onNextClick: (e, data) => {
-                changeMonth(true);
-                _.invoke(predefinedProps, 'onNextClick', e, data);
-              },
-            }),
-          })}
-          {createShorthand(
-            Grid,
-            {},
-            {
-              defaultProps: () =>
-                getA11yProps('calendarGrid', {
-                  rows: grid.length - 1,
-                  columns: DAYS_IN_WEEK,
-                  content: (
-                    <>
-                      {_.times(DAYS_IN_WEEK, dayNumber =>
-                        createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
-                          defaultProps: () =>
-                            getA11yProps('calendarHeaderCell', {
-                              content: localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                              key: dayNumber,
-                            }),
-                        }),
-                      )}
-                      {/* {renderWeekRow(grid[0], true)} */}
-                      {_.map(grid.slice(1, grid.length - 1), week => renderWeekRow(week))}
-                      {/* {renderWeekRow(grid[grid.length - 1], true)} */}
-                    </>
-                  ),
-                }),
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          ...unhandledProps,
+        })}
+      >
+        {createShorthand(DatepickerCalendarHeader, header, {
+          defaultProps: () => ({
+            label: formatMonthYear(gridNavigatedDate, localizedStrings),
+          }),
+          overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
+            onPreviousClick: (e, data) => {
+              changeMonth(false);
+              _.invoke(predefinedProps, 'onPreviousClick', e, data);
             },
-          )}
-        </ElementType>,
-      )}
+            onNextClick: (e, data) => {
+              changeMonth(true);
+              _.invoke(predefinedProps, 'onNextClick', e, data);
+            },
+          }),
+        })}
+        {createShorthand(
+          Grid,
+          {},
+          {
+            defaultProps: () =>
+              getA11yProps('calendarGrid', {
+                rows: grid.length - 1,
+                columns: DAYS_IN_WEEK,
+                content: (
+                  <>
+                    {_.times(DAYS_IN_WEEK, dayNumber =>
+                      createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
+                        defaultProps: () =>
+                          getA11yProps('calendarHeaderCell', {
+                            content: localizedStrings.shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                            key: dayNumber,
+                          }),
+                      }),
+                    )}
+                    {_.map(grid.slice(1, grid.length - 1), week => renderWeekRow(week))}
+                  </>
+                ),
+              }),
+          },
+        )}
+      </ElementType>
     </Ref>
   );
   setEnd();
