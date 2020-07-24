@@ -3,6 +3,7 @@ import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities'
 import { ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as d3Sankey from 'd3-sankey';
+import { select as d3Select } from 'd3-selection';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
@@ -97,9 +98,7 @@ export class SankeyChartBase extends React.Component<
         <FocusZone direction={FocusZoneDirection.bidirectional}>
           <svg width={width} height={height} id={getId('sankeyChart')}>
             <g className={this._classNames.nodes}>{nodeData}</g>
-            <g className={this._classNames.links} strokeOpacity={0.2}>
-              {linkData}
-            </g>
+            {linkData}
           </svg>
         </FocusZone>
         <Callout
@@ -158,14 +157,18 @@ export class SankeyChartBase extends React.Component<
               strokeWidth={Math.max(1, singleLink.width)}
               id={linkId}
               // eslint-disable-next-line react/jsx-no-bind
-              onMouseOver={this._handleHover.bind(this, singleLink)}
+              onMouseOver={this._handleHover.bind(this, singleLink, linkId)}
               // eslint-disable-next-line react/jsx-no-bind
-              onMouseMove={this._handleHover.bind(this, singleLink)}
+              onMouseMove={this._handleHover.bind(this, singleLink, linkId)}
               // eslint-disable-next-line react/jsx-no-bind
               onFocus={this._handleFocus.bind(this, singleLink, linkId)}
-              onMouseLeave={this._hoverLeave}
+              // eslint-disable-next-line react/jsx-no-bind
+              onBlur={this._hoverLeave.bind(this, linkId)}
+              // eslint-disable-next-line react/jsx-no-bind
+              onMouseLeave={this._hoverLeave.bind(this, linkId)}
               data-is-focusable={true}
-              className={this._classNames.path}
+              className={this._classNames.links}
+              strokeOpacity={0.2}
             />
           </g>
         );
@@ -181,6 +184,7 @@ export class SankeyChartBase extends React.Component<
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _handleFocus = (link: any, linkId: string) => {
+    d3Select(`#${linkId}`).attr('stroke-opacity', 0.3);
     this._refArray.forEach((obj: IRefArrayData) => {
       if (obj.index === linkId) {
         this.setState({
@@ -196,8 +200,9 @@ export class SankeyChartBase extends React.Component<
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _handleHover = (link: any, mouseEvent: React.MouseEvent<SVGPathElement>) => {
+  private _handleHover = (link: any, linkId: string, mouseEvent: React.MouseEvent<SVGPathElement>) => {
     mouseEvent.persist();
+    d3Select(`#${linkId}`).attr('stroke-opacity', 0.5);
     this.setState({
       calloutSourceData: link.source.name,
       calloutDestinationData: link.target.name,
@@ -208,7 +213,8 @@ export class SankeyChartBase extends React.Component<
     });
   };
 
-  private _hoverLeave = () => {
+  private _hoverLeave = (linkId: string) => {
+    d3Select(`#${linkId}`).attr('stroke-opacity', 0.2);
     this.setState({ showHover: false });
   };
 
