@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { setResponsiveMode, withResponsiveMode, ResponsiveMode } from './withResponsiveMode';
+import { withResponsiveMode } from './withResponsiveMode';
+import { setResponsiveMode } from './useResponsiveMode';
+import { ResponsiveMode } from './withResponsiveMode.types';
 import { setSSR } from '../../Utilities';
 
 @withResponsiveMode
