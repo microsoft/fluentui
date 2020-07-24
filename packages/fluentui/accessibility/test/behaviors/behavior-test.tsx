@@ -90,7 +90,6 @@ import {
   hiddenComponentBehavior,
   cardSelectableBehavior,
   dropdownSelectedItemBehavior,
-  datepickerBehavior,
   datepickerCalendarBehavior,
   datepickerCalendarHeaderBehavior,
   datepickerCalendarGridBehavior,
@@ -189,7 +188,6 @@ testHelper.addBehavior('videoBehavior', videoBehavior);
 testHelper.addBehavior('hiddenComponentBehavior', hiddenComponentBehavior);
 testHelper.addBehavior('cardSelectableBehavior', cardSelectableBehavior);
 testHelper.addBehavior('dropdownSelectedItemBehavior', dropdownSelectedItemBehavior);
-testHelper.addBehavior('datepickerBehavior', datepickerBehavior);
 testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior);
 testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHeaderBehavior);
 testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);

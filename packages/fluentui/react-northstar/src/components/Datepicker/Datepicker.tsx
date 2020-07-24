@@ -1,4 +1,4 @@
-import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import {
   DateRangeType,
   DayOfWeek,
@@ -114,7 +114,7 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
 
 export interface DatepickerProps extends IDatepickerOptions, IDateFormatting, UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<DatepickerBehaviorProps>;
+  accessibility?: Accessibility<never>;
 
   /** Shorthand for the datepicker calendar. */
   calendar?: ShorthandValue<DatepickerCalendarProps>;
@@ -291,7 +291,6 @@ Datepicker.propTypes = {
 };
 
 Datepicker.defaultProps = {
-  accessibility: datepickerBehavior,
   calendar: {},
   popup: {},
   firstDayOfWeek: DayOfWeek.Monday,
