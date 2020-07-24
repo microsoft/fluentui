@@ -27,15 +27,18 @@ export interface CardProps extends ComponentProps, React.HTMLAttributes<HTMLDivE
   expandable?: boolean;
 
   /** A card can have elevation styles. */
-  elevated?: boolean;
+  // TODO: Should we remove? It's not accounted for in design spec and a card is elevated by default.
+  // elevated?: boolean;
 
   /** A card can have inverted background styles. */
   inverted?: boolean;
 
   /** A card can have quiet styles. */
+  // TODO: Is this the correct name? Appears as ghost in design spec.
   quiet?: boolean;
 
   /** A card can show that it is currently selected or not. */
+  // TODO: This should probably have a `defaultSelected` property at the same time.
   selected?: boolean;
 }
 

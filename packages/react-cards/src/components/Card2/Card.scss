@@ -56,6 +56,8 @@
   --card-borderColor: transparent;
   --card-borderWidth: 1px;
   --card-boxShadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.1);
+  --card-minHeight: 32px;
+  --card-minWidth: 100px;
 
   --card-borderRadius: var(--card-size-medium-borderRadius);
   --card-height: var(--card-size-medium-height);
@@ -91,6 +93,9 @@
   --card-clickable-pressed-borderWidth: 2px;
   --card-clickable-pressed-boxShadow: var(--card-boxShadow);
 
+  /* compact cards */
+  --card-compact-padding: 0;
+
   /* disabled cards */
   --card-disabled-backgroundColor: #f0f0f0;
   --card-disabled-borderColor: var(--card-borderColor);
@@ -108,7 +113,9 @@
   --card-selected-boxShadow: var(--card-boxShadow);
 }
 
+/* slots */
 .root {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -118,9 +125,10 @@
   border-radius: var(--card-borderRadius);
   border-width: var(--card-borderWidth);
   box-shadow: var(--card-boxShadow);
-  box-sizing: border-box;
   height: var(--card-height);
   margin: var(--card-margin);
+  min-height: var(--card-minHeight);
+  min-width: var(--card-minWidth);
   padding: var(--card-padding);
   width: var(--card-width);
 
@@ -237,6 +245,11 @@
     --card-pressed-borderWidth: var(--card-clickable-pressed-borderWidth);
     --card-pressed-boxShadow: var(--card-clickable-pressed-boxShadow);
   }
+}
+
+/* compact cards */
+.root._compact {
+  --card-padding: var(--card-compact-padding);
 }
 
 /* disabled cards */

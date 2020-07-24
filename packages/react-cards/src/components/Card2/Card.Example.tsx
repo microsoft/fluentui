@@ -31,6 +31,14 @@ export const ClickableCard = () => (
   </Card>
 );
 
+export const CompactCard = () => (
+  <Card compact onClick={onClick}>
+    <span>This is a card</span>
+    <span>This is a card</span>
+    <span>This is a card</span>
+  </Card>
+);
+
 export const DisabledCard = () => (
   <Card disabled onClick={onClick}>
     <span>This is a card</span>
