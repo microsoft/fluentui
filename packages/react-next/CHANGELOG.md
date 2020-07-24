@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 23 Jul 2020 12:43:51 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.68)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.67..@fluentui/react-next_v8.0.0-alpha.68)
+
+### Changes
+
+- Add high contrast adjust selector to dropdown styles ([PR #14176](https://github.com/microsoft/fluentui/pull/14176) by ololubek@microsoft.com)
 
 ## [8.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.67)
 
