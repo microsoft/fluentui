@@ -54,6 +54,9 @@ export type RecursivePartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
 };
 
+// @public
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
 // @public (undocumented)
 export interface StyleOptions<TProps> {
     // (undocumented)

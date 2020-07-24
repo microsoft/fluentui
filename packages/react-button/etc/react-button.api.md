@@ -10,6 +10,7 @@ import { ComponentProps } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IContextualMenuProps } from 'office-ui-fabric-react';
 import * as React from 'react';
+import { SizeValue } from '@fluentui/react-theme-provider';
 import { SlotProp } from '@fluentui/react-compose';
 import { SlotProps } from '@fluentui/react-compose';
 
@@ -124,9 +125,6 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokens;
-
-// @public (undocumented)
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public (undocumented)
 export const ToggleButton: import("@fluentui/react-compose").ComponentWithAs<"button", ToggleButtonProps>;

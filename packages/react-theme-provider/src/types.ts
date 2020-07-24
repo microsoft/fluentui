@@ -1,6 +1,11 @@
 import * as React from 'react';
 
 /**
+ * A ramp of size values.
+ */
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
+/**
  * A baseline set of color plates.
  */
 export type ColorTokens = Partial<{

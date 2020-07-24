@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { BaseSlots, ComponentProps, SlotProp, SlotProps } from '@fluentui/react-compose';
-import { ColorPlateSet } from '@fluentui/react-theme-provider';
+import { ColorPlateSet, SizeValue } from '@fluentui/react-theme-provider';
 import { RecursivePartial } from '../../utils/tempTypes';
-
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 /**
  * {@docCategory Button}
