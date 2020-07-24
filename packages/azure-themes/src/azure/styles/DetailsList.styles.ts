@@ -115,10 +115,10 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       isSelected && [
         {
           backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
+          textDecoration: extendedSemanticColors.listUnderline,
           selectors: {
             ':hover': {
               background: semanticColors.listItemBackgroundHovered,
-
               selectors: {
                 '.ms-DetailsRow-cell': {
                   color: semanticColors.buttonTextHovered,
