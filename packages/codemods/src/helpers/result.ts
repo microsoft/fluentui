@@ -38,7 +38,7 @@ class ResultInternal<R, E> implements Chainable<R> {
    * Works just like chain, but is only called if this Result is an error.
    * This returns a new Result with type Result<R, NewType>
    */
-  public orChain<T>(this: Result<R, E>, fn: (v: E) => Result<R, T>): Result<R, T> {
+  public errChain<T>(this: Result<R, E>, fn: (v: E) => Result<R, T>): Result<R, T> {
     if (!this.ok) {
       return fn(this.value);
     }
@@ -72,9 +72,9 @@ class ResultInternal<R, E> implements Chainable<R> {
    * Works just like then, but is only called if this Result is an error.
    * This returns a new Result with type Result<R, NewType>
    */
-  public orThen<F>(this: Result<R, E>, fnErr: (v: E) => F | Result<R, F>): Result<R, F> {
+  public errThen<F>(this: Result<R, E>, fnErr: (v: E) => F | Result<R, F>): Result<R, F> {
     if (!this.ok) {
-      return Ok(fnErr(this.value)).flatten() as Result<R, F>;
+      return Err(fnErr(this.value)).flatten() as Result<R, F>;
     }
 
     return Ok(this.value);
@@ -87,7 +87,7 @@ class ResultInternal<R, E> implements Chainable<R> {
     return okElse;
   }
 
-  public errorOrElse(this: Result<R, E>, errElse: E): E {
+  public errOrElse(this: Result<R, E>, errElse: E): E {
     if (!this.ok) {
       return this.value;
     }

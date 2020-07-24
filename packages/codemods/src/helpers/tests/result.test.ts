@@ -1,38 +1,58 @@
 import { Err, Ok, Result } from '../result';
 
-const getOkay = <T, Z>(okay: T, left: Z): Result<T, Z> => {
-  return Ok<T, Z>(okay!);
+const getOk = <T, Z>(ok: T, err: Z): Result<T, Z> => {
+  return Ok<T, Z>(ok!);
 };
 
-const getError = <T, Z>(okay: T, error: Z): Result<T, Z> => {
-  return Err<T, Z>(error!);
+const getErr = <T, Z>(okay: T, err: Z): Result<T, Z> => {
+  return Err<T, Z>(err!);
 };
 
 describe('Result', () => {
   it('chained Okay value is evaluated correctly', () => {
     expect(
-      getOkay(3, '4')
+      getOk(3, '4')
         .chain(v => Ok(v + 3))
         .okOrElse(100),
     ).toBe(6);
   });
 
+  it('errChained Err value is evaluated correctly', () => {
+    expect(
+      getErr(3, '4')
+        .errChain(v => Err(7))
+        .errOrElse(100),
+    ).toBe(7);
+  });
+
   it('chained Err value is evaluated correctly', () => {
     expect(
-      getError(3, '4')
+      getErr(3, '4')
         .chain(v => Ok(1))
         .okOrElse(100),
     ).toBe(100);
   });
 
+  it('chained Err value is evaluated correctly', () => {
+    expect(
+      getErr(3, '4')
+        .errChain(v => Ok(1))
+        .okOrElse(100),
+    ).toBe(1);
+  });
+
   it('chain returning a Err returns a Err correctly', () => {
-    expect(getOkay(3, '4').chain(v => Err('Error')).ok).toBe(false);
+    expect(getOk(3, '4').chain(v => Err('Error')).ok).toBe(false);
+  });
+
+  it('errChain returning an Ok returns an Ok correctly', () => {
+    expect(getOk(3, '4').chain(v => Ok('Error')).ok).toBe(true);
   });
 
   it('flattens correctly', () => {
     expect(
-      getOkay(3, '4')
-        .map(v => getOkay(9, 4))
+      getOk(3, '4')
+        .map(v => getOk(9, 4))
         .flatten()
         .okOrElse(100),
     ).toBe(9);
@@ -40,32 +60,32 @@ describe('Result', () => {
 
   it('flattens correctly', () => {
     expect(
-      getOkay(3, '4')
-        .map(v => getError(9, 'good'))
+      getOk(3, '4')
+        .map(v => getErr(9, 'good'))
         .flatten()
-        .errorOrElse('bad'),
+        .errOrElse('bad'),
     ).toBe('good');
   });
 
-  it('fMaps correctly on Okay', () => {
+  it('Maps correctly on Ok', () => {
     expect(
-      getOkay(3, '4')
+      getOk(3, '4')
         .map(v => 'Good')
         .okOrElse('Bad'),
     ).toBe('Good');
   });
 
-  it('fMaps correctly on Err', () => {
+  it('Maps correctly on Err', () => {
     expect(
-      getError(3, '4')
+      getErr(3, '4')
         .map(v => 'Good')
         .okOrElse('Bad'),
     ).toBe('Bad');
   });
 
-  it('Thens correctly on Okay', () => {
+  it('Thens correctly on Ok', () => {
     expect(
-      getOkay(3, '4')
+      getOk(3, '4')
         .then(v => 30)
         .then(v => v.toString())
         .okOrElse('Bad'),
@@ -74,33 +94,51 @@ describe('Result', () => {
 
   it('Thens correctly on Err', () => {
     expect(
-      getError(3, '4')
+      getErr(3, '4')
         .then(v => 30)
         .then(v => v.toString())
         .okOrElse('Bad'),
     ).toBe('Bad');
   });
 
-  it('DoEither calls Okay function with Okay object value', () => {
+  it('orThens correctly on Err', () => {
+    expect(
+      getErr(3, '4')
+        .errThen(v => 30)
+        .errThen(v => v.toString())
+        .errOrElse('Bad'),
+    ).toBe('30');
+  });
+
+  it('orThens correctly on Ok', () => {
+    expect(
+      getOk(3, '4')
+        .errThen(v => 30)
+        .errThen(v => v.toString())
+        .errOrElse('Bad'),
+    ).toBe('Bad');
+  });
+
+  it('resolve calls Ok function with Ok object value', () => {
     const spyLeft = jest.fn();
     const spyRight = jest.fn();
-    getOkay(3, '4').resolve(spyRight, spyLeft);
+    getOk(3, '4').resolve(spyRight, spyLeft);
     expect(spyRight).toHaveBeenCalled();
     expect(spyRight).toHaveBeenCalledWith(3);
   });
 
-  it('DoEither calls Err function with Err object value', () => {
+  it('resolve calls Err function with Err object value', () => {
     const spyLeft = jest.fn();
     const spyRight = jest.fn();
-    getError(3, '4').resolve(spyRight, spyLeft);
+    getErr(3, '4').resolve(spyRight, spyLeft);
     expect(spyLeft).toHaveBeenCalled();
     expect(spyLeft).toHaveBeenCalledWith('4');
   });
 
-  it('DoEither calls Err function with Err object value after then', () => {
+  it('resolve calls Err function with Err object value after then', () => {
     const spyLeft = jest.fn();
     const spyRight = jest.fn();
-    getError(3, '4')
+    getErr(3, '4')
       .then(v => 10)
       .resolve(spyRight, spyLeft);
     expect(spyLeft).toHaveBeenCalled();
