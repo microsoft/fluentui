@@ -10,5 +10,6 @@ export * from './useMergedRefs';
 export * from './useOnEvent';
 export * from './usePrevious';
 export * from './useRefEffect';
+export * from './useResponsiveMode';
 export * from './useSetInterval';
 export * from './useSetTimeout';

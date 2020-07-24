@@ -2,7 +2,7 @@ import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import { BaseDecorator } from './BaseDecorator';
 import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
-import { useConstCallback, useConst, useOnEvent } from '@uifabric/react-hooks';
+import { useResponsiveMode } from '@uifabric/react-hooks';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -34,68 +34,35 @@ let _lastMode: ResponsiveMode | undefined;
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
  */
-export const setResponsiveMode = (responsiveMode: ResponsiveMode | undefined): void => {
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void {
   _defaultMode = responsiveMode;
-};
-
-const getResponsiveMode = (currentWindow: Window | undefined): ResponsiveMode => {
-  let responsiveMode = ResponsiveMode.small;
-
-  if (currentWindow) {
-    try {
-      while (currentWindow.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
-        responsiveMode++;
-      }
-    } catch (e) {
-      // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
-      responsiveMode = _defaultMode || _lastMode || ResponsiveMode.large;
-    }
-
-    // Tracking last mode just gives us a better default in future renders,
-    // which avoids starting with the wrong value if we've measured once.
-    _lastMode = responsiveMode;
-  } else {
-    if (_defaultMode !== undefined) {
-      responsiveMode = _defaultMode;
-    } else {
-      throw new Error(
-        'Content was rendered in a server environment without providing a default responsive mode. ' +
-          'Call setResponsiveMode to define what the responsive mode is.',
-      );
-    }
-  }
-
-  return responsiveMode;
-};
+}
 
 /**
  * Initializes the responsive mode to the current window size. This can be used to avoid
  * a re-render during first component mount since the window would otherwise not be measured
  * until after mounting.
  */
-export const initializeResponsiveMode = (element?: HTMLElement): void => {
+export function initializeResponsiveMode(element?: HTMLElement): void {
   if (typeof window !== 'undefined') {
     const currentWindow = (element && getWindow(element)) || window;
 
     getResponsiveMode(currentWindow);
   }
-};
+}
 
-export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null>) => {
-  const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(
-    _defaultMode || _lastMode || ResponsiveMode.large,
-  );
+export const withResponsiveMode = <TProps extends { responsiveMode?: ResponsiveMode }>(
+  ComposedComponent: React.ComponentClass | React.FunctionComponent<TProps>,
+  props: TProps,
+) => {
+  const Component = () => {
+    const ref = React.useRef(null);
+    const responsiveMode = useResponsiveMode(ref);
 
-  const onResize = useConstCallback(() => {
-    // Setting the same value should not cause a re-render.
-    setLastResponsiveMode(getResponsiveMode(getWindow(elementRef.current)));
-  });
+    return <ComposedComponent ref={ref} responsiveMode={responsiveMode} {...props} />;
+  };
 
-  useOnEvent(window, 'resize', onResize as (ev: Event) => void);
+  Component.displayName = ComposedComponent.displayName;
 
-  React.useEffect(() => {
-    onResize();
-  }, [onResize]);
-
-  return lastResponsiveMode === ResponsiveMode.unknown ? null : useResponsiveMode;
+  return Component;
 };
