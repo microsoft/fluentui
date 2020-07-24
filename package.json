@@ -81,6 +81,12 @@
       "packages/fluentui/*"
     ]
   },
+  "nohoist": [
+    "packages/web-components/typescript",
+    "packages/web-components/tsconfig-path",
+    "packages/web-components/ts-loader",
+    "packages/web-components/ts-node"
+  ],
   "resolutions": {
     "webpack": "^4.35.0",
     "autoprefixer": "9.7.6",
