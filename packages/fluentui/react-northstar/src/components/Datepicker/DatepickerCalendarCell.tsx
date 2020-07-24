@@ -4,7 +4,6 @@ import {
   DatepickerCalendarCellBehaviorProps,
 } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
@@ -80,7 +79,7 @@ export const DatepickerCalendarCell = compose<
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { className, design, styles, variables, onClick, disabled, selected, label } = props;
+    const { className, design, styles, variables, onClick, disabled, selected, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
@@ -145,7 +144,7 @@ export const DatepickerCalendarCell = compose<
           ...unhandledProps,
         })}
       >
-        {label}
+        {content}
       </ElementType>
     );
     setEnd();
@@ -159,9 +158,9 @@ export const DatepickerCalendarCell = compose<
       'accessibility',
       'as',
       'className',
+      'content',
       'design',
       'disabled',
-      'label',
       'onClick',
       'onFocus',
       'selected',
@@ -172,8 +171,7 @@ export const DatepickerCalendarCell = compose<
 );
 
 DatepickerCalendarCell.propTypes = {
-  ...commonPropTypes.createCommon({ children: false, content: false }),
-  label: PropTypes.string,
+  ...commonPropTypes.createCommon({ children: false }),
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
   disabled: PropTypes.bool,
