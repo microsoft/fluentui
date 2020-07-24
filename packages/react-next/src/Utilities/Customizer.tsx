@@ -7,7 +7,7 @@ import {
   mergeCustomizations,
   ICustomizerContext,
 } from 'office-ui-fabric-react/lib/Utilities';
-import { convertLegacyTheme } from '../Styling/convertLegacyTheme';
+import { convertLegacyTheme } from '../Styling';
 import { ICustomizerProps } from '../Utilities';
 
 /**
