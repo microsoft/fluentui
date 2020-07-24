@@ -104,7 +104,6 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
               },
             },
             ':focus': {
-              //jg border has bug
               backgroundColor: semanticColors.listItemBackgroundHovered,
             },
             ':focus:hover': {

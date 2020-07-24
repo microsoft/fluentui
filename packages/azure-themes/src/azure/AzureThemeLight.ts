@@ -74,6 +74,14 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   primaryButtonTextHovered: LightSemanticColors.primaryButton.hover.text,
   primaryButtonTextPressed: LightSemanticColors.primaryButton.pressed.text,
   primaryCompoundButtonBorder: LightSemanticColors.primaryButton.rest.background,
+  radioButtonPillBorderDisabled: LightSemanticColors.radioButton.circle.borderDisabled,
+  radioButtonPillCheckedHover: LightSemanticColors.radioButton.pill.checkedHover,
+  radioButtonPillUncheckedDisabled: LightSemanticColors.radioButton.pill.uncheckedDisabled,
+  radioButtonPillUncheckedHover: LightSemanticColors.radioButton.pill.uncheckedHover,
+  radioButtonPillDisabled: LightSemanticColors.radioButton.pill.disabled,
+  radioButtonThumbUnchecked: LightSemanticColors.radioButton.circle.uncheckedRest,
+  radioButtonThumbUncheckedDisabled: LightSemanticColors.radioButton.pill.disabled,
+  radioButtonThumbCheckedDisabled: LightSemanticColors.radioButton.circle.checkedDisabled,
   rowBorder: LightSemanticColors.detailsRow.border,
   toggleDisabledBackground: LightSemanticColors.toggle.disabled.backrgound,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
@@ -104,6 +112,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   choiceGroupContainerBorder: '0px',
   choiceGroupContainerBorderStyle: 'solid',
   listUnderline: 'none',
+  linkBorderStyle: 'dashed',
 };
 
 export const AzureThemeLight: ITheme = createTheme({

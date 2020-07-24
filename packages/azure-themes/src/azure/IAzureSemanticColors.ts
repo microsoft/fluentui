@@ -128,4 +128,17 @@ export interface IAzureSemanticColors {
   detailsRow: {
     border: string;
   };
+  radioButton: {
+    circle: {
+      uncheckedRest: string;
+      checkedDisabled: string;
+      borderDisabled: string;
+    };
+    pill: {
+      disabled: string;
+      uncheckedDisabled: string;
+      checkedHover: string;
+      uncheckedHover: string;
+    };
+  };
 }

@@ -41,7 +41,6 @@ import { DatePickerBoundedExample } from '../components/dateBoundary';
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
-      <DropdownBasicExample />
       <Label>Buttons</Label>
       <DefaultButton text="DefaultButton" />
       <PrimaryButton text="PrimaryButton" />
@@ -95,12 +94,6 @@ const Example = () => (
       <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked />
       <Checkbox label="Disabled checkbox" disabled />
       <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
-      <Checkbox label="Indeterminate checkbox (uncontrolled)" defaultIndeterminate />
-      <Checkbox
-        label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
-        defaultIndeterminate
-        defaultChecked={true}
-      />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>

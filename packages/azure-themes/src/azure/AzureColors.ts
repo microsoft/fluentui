@@ -251,6 +251,19 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   detailsRow: {
     border: BaseColors.GRAY_414141,
   },
+  radioButton: {
+    circle: {
+      uncheckedRest: BaseColors.WHITE,
+      checkedDisabled: BaseColors.BLACK,
+      borderDisabled: BaseColors.GRAY_F3F2F1,
+    },
+    pill: {
+      disabled: BaseColors.GRAY_C8C6C4,
+      uncheckedDisabled: BaseColors.BLACK,
+      checkedHover: BaseColors.BLUE_3AA0F3,
+      uncheckedHover: BaseColors.BLACK,
+    },
+  },
 };
 
 export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
@@ -345,7 +358,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     rest: BaseColors.WHITE,
     disabled: BaseColors.GRAY_808080_070,
     hover: BaseColors.WHITE,
-    accent: BaseColors.BLUE_106EBE,
+    accent: BaseColors.BLUE_00FFFF,
     error: BaseColors.RED_F63747,
     dirty: BaseColors.PURPLE_C87FDC,
   },
@@ -382,6 +395,19 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   detailsRow: {
     border: BaseColors.WHITE,
+  },
+  radioButton: {
+    circle: {
+      uncheckedRest: BaseColors.WHITE,
+      checkedDisabled: BaseColors.WHITE,
+      borderDisabled: BaseColors.GREEN_00FF00,
+    },
+    pill: {
+      disabled: BaseColors.GREEN_00FF00,
+      uncheckedDisabled: BaseColors.GREEN_00FF00,
+      checkedHover: BaseColors.BLUE_6CA9FE,
+      uncheckedHover: BaseColors.BLUE_00FFFF,
+    },
   },
 };
 
@@ -467,7 +493,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
       background: BaseColors.BLUE_0078D4,
       default: BaseColors.BLUE_106EBE,
       hoverBackground: BaseColors.BLUE_005A9E,
-      hoverBorder: '',
+      hoverBorder: BaseColors.BLUE_005A9E,
     },
     disabled: {
       border: BaseColors.GRAY_C8C6C4,
@@ -515,6 +541,19 @@ export const LightSemanticColors: IAzureSemanticColors = {
   detailsRow: {
     border: BaseColors.GRAY_F3F2F1,
   },
+  radioButton: {
+    circle: {
+      uncheckedRest: BaseColors.GRAY_605E5C,
+      checkedDisabled: BaseColors.GRAY_F3F2F1,
+      borderDisabled: BaseColors.GRAY_F3F2F1,
+    },
+    pill: {
+      disabled: BaseColors.GRAY_C8C6C4,
+      uncheckedDisabled: BaseColors.WHITE,
+      checkedHover: BaseColors.BLUE_005A9E,
+      uncheckedHover: BaseColors.WHITE,
+    },
+  },
 };
 
 export const HighContrastLightSemanticColors: IAzureSemanticColors = {
@@ -557,7 +596,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       text: BaseColors.WHITE,
     },
     disabled: {
-      background: '',
+      background: BaseColors.GRAY_F3F2F1,
       border: BaseColors.RED_800002,
       text: BaseColors.RED_800002,
     },
@@ -591,7 +630,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       border: BaseColors.GRAY_323130,
       background: BaseColors.BLUE_0078D4,
       hover: BaseColors.GRAY_323130,
-      focus: '',
+      focus: BaseColors.GRAY_323130,
       check: BaseColors.WHITE,
     },
     checked: {
@@ -599,7 +638,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       background: BaseColors.BLUE_0078D4,
       default: BaseColors.BLUE_106EBE,
       hoverBackground: BaseColors.BLUE_005A9E,
-      hoverBorder: '',
+      hoverBorder: BaseColors.BLUE_005A9E,
     },
     disabled: {
       border: BaseColors.GRAY_C8C6C4,
@@ -609,7 +648,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     rest: BaseColors.BLACK,
     disabled: BaseColors.GRAY_C8C6C4,
     hover: BaseColors.GRAY_605E5C,
-    accent: BaseColors.BLUE_0078D4,
+    accent: BaseColors.PURPLE_800080,
     error: BaseColors.RED_E00B1C,
     dirty: BaseColors.PURPLE_8A2DA5,
   },
@@ -646,5 +685,18 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   detailsRow: {
     border: BaseColors.BLACK,
+  },
+  radioButton: {
+    circle: {
+      uncheckedRest: BaseColors.BLACK,
+      checkedDisabled: BaseColors.BLACK,
+      borderDisabled: BaseColors.RED_800002,
+    },
+    pill: {
+      disabled: BaseColors.RED_800002,
+      uncheckedDisabled: BaseColors.RED_800002,
+      checkedHover: BaseColors.BLUE_0078D4,
+      uncheckedHover: BaseColors.PURPLE_800080,
+    },
   },
 };

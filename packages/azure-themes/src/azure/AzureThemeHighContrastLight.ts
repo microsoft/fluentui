@@ -74,7 +74,15 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   primaryButtonTextHovered: HighContrastLightSemanticColors.primaryButton.hover.text,
   primaryButtonTextPressed: HighContrastLightSemanticColors.primaryButton.pressed.text,
   primaryCompoundButtonBorder: HighContrastLightSemanticColors.primaryButton.rest.border,
-  rowBorder: HighContrastLightSemanticColors.detailsRow.border,
+  radioButtonPillBorderDisabled: HighContrastLightSemanticColors.radioButton.circle.borderDisabled,
+  radioButtonPillCheckedHover: HighContrastLightSemanticColors.radioButton.pill.checkedHover,
+  radioButtonPillUncheckedDisabled: HighContrastLightSemanticColors.radioButton.pill.uncheckedDisabled,
+  radioButtonPillUncheckedHover: HighContrastLightSemanticColors.radioButton.pill.uncheckedHover,
+  radioButtonPillDisabled: HighContrastLightSemanticColors.radioButton.pill.disabled,
+  radioButtonThumbUnchecked: HighContrastLightSemanticColors.radioButton.circle.uncheckedRest,
+  radioButtonThumbUncheckedDisabled: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
+  radioButtonThumbCheckedDisabled: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
+  rowBorder: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
   toggleDisabledBackground: HighContrastLightSemanticColors.toggle.disabled.backrgound,
   variantBorder: HighContrastLightSemanticColors.controlOutlines.rest,
   // extended
@@ -105,6 +113,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   choiceGroupContainerBorder: '1px',
   choiceGroupContainerBorderStyle: 'dashed',
   listUnderline: 'underline',
+  linkBorderStyle: 'dashed',
 };
 
 export const AzureThemeHighContrastLight: ITheme = createTheme({

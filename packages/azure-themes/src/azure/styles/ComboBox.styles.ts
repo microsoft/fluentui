@@ -3,9 +3,11 @@ import { Depths } from '../AzureDepths';
 import { IComboBoxStyles } from 'office-ui-fabric-react/lib/ComboBox';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: {
@@ -20,7 +22,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
         },
         '.ms-Button:hover': {
           backgroundColor: semanticColors.bodyBackground,
-          color: semanticColors.primaryButtonTextHovered,
+          color: extendedSemanticColors.primaryButtonTextHovered,
         },
         '&.is-open': {
           borderColor: semanticColors.focusBorder,
@@ -88,7 +90,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       verticalAlign: 'middle',
       selectors: {
         '.ms-ComboBox-header': {
-          color: semanticColors.focusBorder,
+          color: semanticColors.inputText,
           fontSize: FontSizes.size13,
         },
         '.ms-ComboBox-option': {
@@ -98,7 +100,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
             ':hover': {
               backgroundColor: semanticColors.menuItemBackgroundHovered,
               border: '1px solid transparent',
-              color: semanticColors.bodyText,
+              color: extendedSemanticColors.buttonTextHovered,
             },
           },
         },

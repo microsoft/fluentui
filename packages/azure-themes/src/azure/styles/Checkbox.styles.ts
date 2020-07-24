@@ -50,7 +50,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
         },
       },
       disabled && {
-        color: extendedSemanticColors.primaryButtonText,
+        color: extendedSemanticColors.checkBoxCheck,
       },
     ],
     root: [

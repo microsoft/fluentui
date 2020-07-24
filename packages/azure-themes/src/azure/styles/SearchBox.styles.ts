@@ -39,7 +39,6 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
               color: semanticColors.inputText,
             },
             ':active': {
-              backgroundColor: 'red',
               color: semanticColors.inputText,
             },
           },

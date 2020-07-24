@@ -10,6 +10,8 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   return {
     root: {
       backgroundColor: semanticColors.primaryButtonBackground,
+      height: StyleConstants.inputControlHeight,
+      padding: '0px 16px',
       color: semanticColors.primaryButtonText,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
     },
