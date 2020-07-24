@@ -15,6 +15,8 @@ import { AnimationDirection } from '../Calendar/Calendar.types';
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',
   pressedStyle: 'ms-CalendarDay-pressedStyle',
+  dayIsTodayStyle: 'ms-CalendarDay-dayIsToday',
+  daySelectedStyle: 'ms-CalendarDay-daySelected',
 };
 
 const transitionRowDisappearance = keyframes({
@@ -240,6 +242,38 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       marginTop: -28,
       ...lastTransitionRowAnimationStyle,
       animationName: lastTransitionRowAnimationStyle.animationName + ',' + transitionRowDisappearance,
+    },
+    dayMarker: {
+      width: 4,
+      height: 4,
+      backgroundColor: palette.neutralSecondary,
+      borderRadius: '100%',
+      bottom: 1,
+      left: 0,
+      right: 0,
+      position: 'absolute',
+      margin: 'auto',
+      selectors: {
+        ['.' + classNames.dayIsTodayStyle + ' &']: {
+          backgroundColor: palette.white,
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Window',
+            },
+          },
+        },
+        ['.' + classNames.daySelectedStyle + ' &']: {
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'HighlightText',
+            },
+          },
+        },
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none',
+        },
+      },
     },
     topRightCornerDate: {
       borderTopRightRadius: '2px',
