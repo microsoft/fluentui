@@ -10,7 +10,7 @@ export const RenderDropdown = (props: any) => {
     <div>
       <Dropdown {...propsTest}>Dropdown!</Dropdown>
       {/* include self closing Dropdown check */}
-      <Dropdown options={[]} isDisabled={false} />
+      <Dropdown {...propsTest} />
     </div>
   );
 };

@@ -2,6 +2,44 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/codemods_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix conflicts with new maybe",
+            "author": "t-dama@microsoft.com",
+            "commit": "a9f932261132ead0df90ac81614068e9b0951824",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@fluentui/codemods_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Maybe: Improve chainability and readability.",
+            "author": "joschect@microsoft.com",
+            "commit": "a70f15f2724d572e515bfe7f97cda751f8bc69a7",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add general transforms that work with spread",
+            "author": "t-dama@microsoft.com",
+            "commit": "f7feb25732b3c959b6da4abd5a6c1dcb020c16a3",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Jul 2020 12:43:08 GMT",
       "tag": "@fluentui/codemods_v0.5.0",
       "version": "0.5.0",

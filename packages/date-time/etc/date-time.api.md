@@ -19,6 +19,7 @@ import { IStyle } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { ITheme } from '@uifabric/styling';
+import { IWeeklyDayPickerStrings as IWeeklyDayPickerStrings_2 } from '@uifabric/date-time';
 import * as React from 'react';
 
 // @public (undocumented)
@@ -61,6 +62,9 @@ export { DayOfWeek }
 // @public (undocumented)
 export const defaultDayPickerStrings: ICalendarStrings_2;
 
+// @public (undocumented)
+export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings_2;
+
 export { FirstWeekOfYear }
 
 // @public (undocumented)
@@ -77,6 +81,7 @@ export interface ICalendarDayGridStyles {
     dayButton?: IStyle;
     dayCell?: IStyle;
     dayIsToday?: IStyle;
+    dayMarker?: IStyle;
     dayOutsideBounds?: IStyle;
     dayOutsideNavigatedMonth?: IStyle;
     daySelected?: IStyle;
@@ -199,6 +204,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
 // @public (undocumented)
 export interface ICalendarStrings extends IDateGridStrings {
     closeButtonAriaLabel?: string;
+    dayMarkedAriaLabel?: string;
     goToToday: string;
     monthPickerHeaderAriaLabel?: string;
     nextMonthAriaLabel?: string;
