@@ -159,8 +159,9 @@ export const DatepickerCalendarCell = compose<
       'accessibility',
       'as',
       'className',
-      'label',
+      'design',
       'disabled',
+      'label',
       'onClick',
       'onFocus',
       'selected',
@@ -171,7 +172,8 @@ export const DatepickerCalendarCell = compose<
 ) as ComponentWithAs<'button', DatepickerCalendarCellProps>;
 
 DatepickerCalendarCell.propTypes = {
-  ...commonPropTypes.createCommon(),
+  ...commonPropTypes.createCommon({ children: false, content: false }),
+  label: PropTypes.string,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
   disabled: PropTypes.bool,
