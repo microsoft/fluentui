@@ -87,12 +87,14 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
 
       return () => {
         if (scrollContainerRef.current) {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           scrollContainerRef.current.removeEventListener('scroll', onScroll);
         }
 
         clearStoppedScrollingTimeout();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const style: React.CSSProperties = {

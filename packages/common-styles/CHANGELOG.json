@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/common-styles",
+  "entries": [
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/common-styles_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Create @fluentui/common-styles package, for style definitions shared between components",
+            "author": "behowell@microsoft.com",
+            "commit": "940524c755d5cf60ca3f80b705e30fca61b2d5ba",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    }
+  ]
+}

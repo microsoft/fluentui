@@ -2,6 +2,48 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "office-ui-fabric-react_v7.123.9",
+      "version": "7.123.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ScrollablePane: fix pointer events on sticky'd elements",
+            "author": "edwl@microsoft.com",
+            "commit": "89ef7eab4d2f574977bf83256bde78d65e6f92da",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add high contrast adjust selector to dropdown styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ba783ab53821e4a70f61f823e87ca240a9665a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "office-ui-fabric-react_v7.123.7",
+      "version": "7.123.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated doc content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "fe2f59ab230033eeaca58bc7c16d5096d922faf7",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add :after styles to fix ratio of suggested items in PeoplePicker on keyboard focus",
+            "author": "ololubek@microsoft.com",
+            "commit": "4dac03be0750dc8f25b336c5b506ee923eaf5ee5",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Jul 2020 12:43:08 GMT",
       "tag": "office-ui-fabric-react_v7.123.6",
       "version": "7.123.6",

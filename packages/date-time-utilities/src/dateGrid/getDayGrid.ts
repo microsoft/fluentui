@@ -23,6 +23,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
     workWeekDays,
     daysToSelectInDayView,
     restrictedDates,
+    markedDays,
   } = options;
   const restrictedDateOptions = { minDate, maxDate, restrictedDates };
 
@@ -51,7 +52,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
   let isAllDaysOfWeekOutOfMonth = false;
 
   // in work week view if the days aren't contiguous we use week view instead
-  const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, workWeekDays);
+  const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, workWeekDays, firstDayOfWeek);
 
   let selectedDates = getDateRangeArray(
     selectedDate,
@@ -79,6 +80,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
         isToday: compareDates(todaysDate, date),
         isSelected: isInDateRangeArray(date, selectedDates),
         isInBounds: !isRestrictedDate(date, restrictedDateOptions),
+        isMarked: markedDays?.some(markedDay => compareDates(originalDate, markedDay)) || false,
       };
 
       week.push(dayInfo);

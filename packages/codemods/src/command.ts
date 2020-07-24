@@ -1,5 +1,5 @@
 import yarr from 'yargs';
-import { Maybe } from './maybe';
+import { Maybe } from './helpers/maybe';
 import { CodeMod } from './codeMods/types';
 import { getModFilter, getModExcludeFilter } from './modRunner/modFilter';
 export interface CommandParserResult<T = CodeMod> {

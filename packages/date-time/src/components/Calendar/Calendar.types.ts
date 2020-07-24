@@ -251,6 +251,11 @@ export interface ICalendarStrings extends IDateGridStrings {
    * Aria-label format string for today's date. Should have 1 string param, e.g. "Today's date `{0}`"
    */
   todayDateFormatString?: string;
+
+  /**
+   * Aria-label for when a date is marked
+   */
+  dayMarkedAriaLabel?: string;
 }
 
 export interface ICalendarIconStrings {

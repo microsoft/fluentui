@@ -33,7 +33,20 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
           },
         },
       },
-
+      suggested && {
+        selectors: {
+          ':after': {
+            pointerEvents: 'none',
+            content: '""',
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            right: 0,
+            border: `1px solid ${theme.semanticColors.focusBorder}`,
+          },
+        },
+      },
       className,
     ],
     itemButton: [

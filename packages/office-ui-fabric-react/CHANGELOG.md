@@ -1,8 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.123.9](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.9)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.7..office-ui-fabric-react_v7.123.9)
+
+### Patches
+
+- ScrollablePane: fix pointer events on sticky'd elements ([PR #13744](https://github.com/microsoft/fluentui/pull/13744) by edwl@microsoft.com)
+- Add high contrast adjust selector to dropdown styles ([PR #14176](https://github.com/microsoft/fluentui/pull/14176) by ololubek@microsoft.com)
+
+## [7.123.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.7)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.6..office-ui-fabric-react_v7.123.7)
+
+### Patches
+
+- Updated doc content ([PR #13887](https://github.com/microsoft/fluentui/pull/13887) by mgodbolt@microsoft.com)
+- Add :after styles to fix ratio of suggested items in PeoplePicker on keyboard focus ([PR #14124](https://github.com/microsoft/fluentui/pull/14124) by ololubek@microsoft.com)
 
 ## [7.123.6](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.6)
 
