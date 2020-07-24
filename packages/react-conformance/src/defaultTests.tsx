@@ -2,6 +2,7 @@ import { TestObject, IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
 import { mount } from 'enzyme';
+import { parseDocblock } from './utils';
 
 import * as React from 'react';
 import * as _ from 'lodash';
@@ -18,8 +19,10 @@ export const defaultTests: TestObject = {
 
     // No need to check if the description is undefined, ComponentDoc.description is a "string" not "string | undefined"
     it(`has a docblock with ${minWords} to ${maxWords} words`, () => {
-      expect(_.words(componentInfo.description).length).toBeGreaterThanOrEqual(minWords);
-      expect(_.words(componentInfo.description).length).toBeLessThanOrEqual(maxWords);
+      const docblock = parseDocblock(componentInfo.description);
+
+      expect(_.words(docblock.description).length).toBeGreaterThanOrEqual(minWords);
+      expect(_.words(docblock.description).length).toBeLessThanOrEqual(maxWords);
     });
   },
 

@@ -19,6 +19,7 @@
     "lint": "just-scripts lint"
   },
   "devDependencies": {
+    "@types/doctrine": "0.0.3",
     "@fluentui/eslint-plugin": "^0.53.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -37,10 +38,11 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "tslib": "^1.10.0",
-    "react-is": "^16.6.3",
+    "doctrine": "^2.0.0",
     "lodash": "^4.17.15",
-    "react-docgen-typescript": "^1.16.6"
+    "react-docgen-typescript": "^1.16.6",
+    "react-is": "^16.6.3",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
