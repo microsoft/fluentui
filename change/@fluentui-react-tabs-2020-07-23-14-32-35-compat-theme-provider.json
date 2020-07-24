@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "Update README to mention the Compat ThemeProvider that's required for styling",
+  "type": "minor",
+  "comment": "Export ThemeProvider, and update README to mention the ThemeProvider that's required for proper styling",
   "packageName": "@fluentui/react-tabs",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
