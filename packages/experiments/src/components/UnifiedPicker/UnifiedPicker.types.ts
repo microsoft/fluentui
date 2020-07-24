@@ -3,7 +3,6 @@ import { IRefObject } from '@uifabric/utilities';
 import { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite/FloatingSuggestions.types';
 import { ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
 import { IFocusZoneProps, IInputProps, Autofill } from 'office-ui-fabric-react';
-import { IDragDropEvents } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
 
 export interface IUnifiedPickerProps<T> {
   /**
@@ -89,7 +88,4 @@ export interface IUnifiedPickerProps<T> {
    * @defaultvalue 5
    */
   minimumPixelsForDrag?: number;
-
-  /** Map of callback functions related to row drag and drop functionality. */
-  dragDropEvents?: IDragDropEvents;
 }

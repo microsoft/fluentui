@@ -17,6 +17,8 @@ import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 import { copyToClipboard } from '../SelectedItemsList/index';
+import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IDragDropEvents } from 'office-ui-fabric-react';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -28,7 +30,17 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
-  const [dragDropHelper, setDragDropHelper] = React.useState<DragDropHelper>();
+  const [draggedItem, setDraggedItem] = React.useState<T>();
+  const [draggedIndex, setDraggedIndex] = React.useState(-1);
+  const dragDropHelper = new DragDropHelper({
+    selection: selection,
+    minimumPixelsForDrag: props.minimumPixelsForDrag,
+  });
+
+  const theme = getTheme();
+  const dragEnterClass = mergeStyles({
+    backgroundColor: theme.palette.neutralLight,
+  });
 
   const {
     focusItemIndex,
@@ -66,22 +78,51 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     floatingSuggestionProps,
     headerComponent,
     onInputChange,
-    dragDropEvents,
   } = props;
 
-  React.useEffect(() => {
-    if (dragDropEvents) {
-      setDragDropHelper(
-        new DragDropHelper({
-          selection: selection,
-          minimumPixelsForDrag: props.minimumPixelsForDrag,
-        }),
-      );
+  const _insertBeforeItem = (item: T): void => {
+    const draggedItems = selection.isIndexSelected(draggedIndex) ? (getSelectedItems() as T[]) : [draggedItem!];
+
+    const insertIndex = selectedItems.indexOf(item);
+    const items = selectedItems.filter(itm => draggedItems.indexOf(itm) === -1);
+
+    items.splice(insertIndex, 0, ...draggedItems);
+
+    setSelectedItems(items);
+    unselectAll();
+  };
+
+  const _onDragEnter = (item?: any, event?: DragEvent): string => {
+    // return string is the css classes that will be added to the entering element.
+    return dragEnterClass;
+  };
+
+  const _onDrop = (item?: any, event?: DragEvent): void => {
+    if (draggedItem) {
+      _insertBeforeItem(item);
     }
-    return () => {
-      dragDropHelper?.dispose();
-    };
-  }, [dragDropEvents]);
+  };
+
+  const _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
+    setDraggedItem(item);
+    setDraggedIndex(itemIndex!);
+    //console.log('onDragStart. item: ' + item + ' index: ' + itemIndex);
+  };
+
+  const _onDragEnd = (item?: any, event?: DragEvent): void => {
+    setDraggedItem(undefined);
+    setDraggedIndex(-1);
+  };
+
+  const dragDropEvents: IDragDropEvents = {
+    canDrop: () => true,
+    canDrag: () => true,
+    onDragEnter: _onDragEnter,
+    onDragLeave: () => undefined,
+    onDrop: _onDrop,
+    onDragStart: _onDragStart,
+    onDragEnd: _onDragEnd,
+  };
 
   const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which !== KeyCodes.backspace) {

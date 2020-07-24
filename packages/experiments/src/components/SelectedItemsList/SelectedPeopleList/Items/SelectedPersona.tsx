@@ -62,7 +62,6 @@ const SelectedPersonaInner = React.memo(
       eventsToRegister,
     } = props;
     const itemId = getId();
-    //const [isDropping, setIsDropping] = React.useState(false);
     const [root, setRoot] = React.useState<HTMLElement | undefined>();
     const [dragDropSubscription, setDragDropSubscription] = React.useState<IDisposable>();
     const [isDropping, setIsDropping] = React.useState(false);
