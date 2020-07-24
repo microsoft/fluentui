@@ -9,7 +9,7 @@ These are not production-ready components and **should never be used in product*
 To import React Tabs components:
 
 ```jsx
-import { ThemeProvider } from '@fluentui/react-theme-provider/lib/Compat';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat';
 import { Tabs, TabItem } from '@fluentui/react-tabs';
 
 const App = () => {

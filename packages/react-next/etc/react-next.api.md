@@ -2110,7 +2110,7 @@ export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, op
 
 export * from "@fluentui/react-button/lib/Button";
 export * from "@fluentui/react-tabs/lib/Pivot";
-export * from "@fluentui/react-theme-provider/lib/Compat";
+export * from "@fluentui/react-theme-provider/lib/compat";
 export * from "@uifabric/date-time/lib/Calendar";
 export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";

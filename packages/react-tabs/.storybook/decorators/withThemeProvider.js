@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from '@fluentui/react-theme-provider/lib/Compat';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat';
 import { useCustomizationOptions } from '../knobs/theme';
 
 export const withThemeProvider = storyFn => {
