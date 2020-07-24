@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Calling grouped vertical bar chart method in did mount and updated height proprty as if negtiva values apper, then need to sent 0 to eliminate unwanted console warnings.",
-  "packageName": "@uifabric/charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-21T14:53:28.938Z"
-}

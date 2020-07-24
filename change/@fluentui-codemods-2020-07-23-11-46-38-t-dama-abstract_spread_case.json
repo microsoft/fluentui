@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "fix conflicts with new maybe",
+  "comment": "fix documentation",
   "packageName": "@fluentui/codemods",
   "email": "t-dama@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-07-22T16:48:03.011Z"
+  "date": "2020-07-23T15:46:38.128Z"
 }

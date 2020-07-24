@@ -23,6 +23,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
     workWeekDays,
     daysToSelectInDayView,
     restrictedDates,
+    markedDays,
   } = options;
   const restrictedDateOptions = { minDate, maxDate, restrictedDates };
 
@@ -79,6 +80,7 @@ export const getDayGrid = (options: IDayGridOptions): IDay[][] => {
         isToday: compareDates(todaysDate, date),
         isSelected: isInDateRangeArray(date, selectedDates),
         isInBounds: !isRestrictedDate(date, restrictedDateOptions),
+        isMarked: markedDays?.some(markedDay => compareDates(originalDate, markedDay)) || false,
       };
 
       week.push(dayInfo);
