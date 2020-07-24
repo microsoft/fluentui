@@ -10,7 +10,6 @@ describe('AccordionContent', () => {
   sharedIsConformant(
     {
       Component: AccordionContent,
-      componentPath: '',
       displayName: 'AccordionContent',
     },
     __filename,

@@ -1,5 +1,3 @@
-import * as _ from 'lodash';
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isObject = (o: any) => o !== null && typeof o === 'object' && !Array.isArray(o);
 

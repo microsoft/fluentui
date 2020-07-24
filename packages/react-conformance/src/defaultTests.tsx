@@ -2,7 +2,7 @@ import { TestObject, IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
 import { mount } from 'enzyme';
-import { parseDocblock } from './utils';
+import parseDocblock from './utils/parseDocblock';
 
 import * as React from 'react';
 import * as _ from 'lodash';

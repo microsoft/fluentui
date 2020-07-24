@@ -6,7 +6,7 @@ import { withCustomConfig } from 'react-docgen-typescript';
 import { defaultTests } from './defaultTests';
 import { merge } from './utils/merge';
 
-export function isConformant(...testInfo: (IsConformantOptions | Object)[]) {
+export function isConformant(...testInfo: Partial<IsConformantOptions>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);
   const { componentPath, displayName, disabledTests = [], extraTests, isInternal } = mergedOptions;
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
