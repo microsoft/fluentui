@@ -223,7 +223,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     dateRangeType,
   };
 
-  const grid = getDayGrid(gridOptions); // getSlicedGrid();
+  const grid = getDayGrid(gridOptions);
   const getInitialFocusDate = () => {
     if (selectedDate) {
       const normalizedSelectedDate = new Date(selectedDate.toString());
@@ -250,9 +250,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     return refs;
   }, [grid]);
 
-  // const handleFocus = (day: IDay, hiddenCell: boolean): void => {
-  //   console.log(day, hiddenCell);
-  // };
 
   const handleKeyDown = (e, day) => {
     const keyCode = getCode(e);

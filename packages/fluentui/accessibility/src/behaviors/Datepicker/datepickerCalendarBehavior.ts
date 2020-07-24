@@ -7,7 +7,6 @@ import { datepickerCalendarGridBehavior } from './datepickerCalendarGridBehavior
  * Applies 'datepickerCalendarGridBehavior' for 'calendarGrid' child component.
  */
 export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps> = props => ({
-  attributes: {},
   childBehaviors: {
     calendarGrid: datepickerCalendarGridBehavior,
   },

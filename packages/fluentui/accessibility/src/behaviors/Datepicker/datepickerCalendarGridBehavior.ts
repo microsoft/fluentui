@@ -7,7 +7,6 @@ import { FocusZoneDirection } from '../../focusZone/types';
  * Provides arrow key navigation in bidirectional direction.
  */
 export const datepickerCalendarGridBehavior: Accessibility<DatepickerCalendarGridBehaviorProps> = props => ({
-  attributes: {},
   focusZone: {
     props: {
       direction: FocusZoneDirection.bidirectional,

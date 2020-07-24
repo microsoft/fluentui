@@ -26,7 +26,7 @@ export interface DatepickerCalendarCellProps extends UIComponentProps {
   accessibility?: Accessibility<DatepickerCalendarCellBehaviorProps>;
 
   /** Cell's primary content. */
-  label?: string;
+  content?: string;
 
   /**
    * Called on click.
@@ -169,7 +169,7 @@ export const DatepickerCalendarCell = compose<
       'variables',
     ],
   },
-) as ComponentWithAs<'button', DatepickerCalendarCellProps>;
+);
 
 DatepickerCalendarCell.propTypes = {
   ...commonPropTypes.createCommon({ children: false, content: false }),
