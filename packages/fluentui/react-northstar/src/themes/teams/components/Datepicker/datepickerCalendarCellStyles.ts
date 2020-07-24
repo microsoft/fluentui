@@ -9,9 +9,6 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
   root: ({ props: p }): ICSSInJSStyle => {
     return {
       textAlign: 'center',
-      ...(p.hidden && {
-        display: 'none',
-      }),
     };
   },
 };
