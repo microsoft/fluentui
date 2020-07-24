@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Charting: Fix Line chart render with empty array of data + a event annotation, the chart throws a strange formatting exception.",
-  "packageName": "@uifabric/charting",
-  "email": "v-gorraj@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-22T07:47:45.757Z"
-}
