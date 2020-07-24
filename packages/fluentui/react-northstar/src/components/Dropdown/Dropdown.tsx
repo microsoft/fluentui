@@ -1037,7 +1037,9 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
           case keyboardKey.Escape:
             // If dropdown list is open ESC should close it and not propagate to the parent
             // otherwise event should propagate
-            open && e.stopPropagation();
+            if (open) {
+              e.stopPropagation();
+            }
           default:
             break;
         }
