@@ -81,24 +81,21 @@ export const initializeResponsiveMode = (element?: HTMLElement): void => {
   }
 };
 
-export const useResponsiveMode = (...itemRef: any[]) => {
-  const ref = React.useRef(itemRef);
-  const [responsiveMode, setResponsiveModeState] = React.useState<ResponsiveMode>(
+export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null>) => {
+  const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(
     _defaultMode || _lastMode || ResponsiveMode.large,
   );
 
   const onResize = useConstCallback(() => {
-    const element = findDOMNode(ref) as Element;
-    const currentWindow = (ref && getWindow(element)) || window;
-    const currentResponsiveMode = getResponsiveMode(currentWindow);
-
-    if (currentResponsiveMode !== responsiveMode) {
-      setResponsiveModeState(currentResponsiveMode);
-    }
+    // Setting the same value should not cause a re-render.
+    setLastResponsiveMode(getResponsiveMode(getWindow(elementRef.current)));
   });
 
   useOnEvent(window, 'resize', onResize as (ev: Event) => void);
-  onResize();
 
-  return responsiveMode === ResponsiveMode.unknown ? null : useResponsiveMode;
+  React.useEffect(() => {
+    onResize();
+  }, [onResize]);
+
+  return lastResponsiveMode === ResponsiveMode.unknown ? null : useResponsiveMode;
 };
