@@ -1035,7 +1035,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
             tryRemoveItemFromValue();
             break;
           case keyboardKey.Escape:
-            e.stopPropagation();
+            // If dropdown list is open ESC should close it and not propagate to the parent
+            // otherwise event should propagate
+            if (open) {
+              e.stopPropagation();
+            }
           default:
             break;
         }

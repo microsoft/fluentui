@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Grid` component which are passed to styles functions @layershifter ([#13863](https://github.com/microsoft/fluentui/pull/13863))
 - Restricted prop sets in the `Dropdown` component which are passed to styles functions @layershifter ([#13962](https://github.com/microsoft/fluentui/pull/13962))
 - `UIComponent` and `AutoControlledComponent` are removed @layershifter ([#13962](https://github.com/microsoft/fluentui/pull/13962))
+- Set `Dropdown` to only stop `ESC` keydown propagation if `Dropdown` is open @assuncaocharles ([#14184](https://github.com/microsoft/fluentui/pull/14184))
 
 ### Fixes
 - Fix `Tooltip` layouting when it is closed @fealkhou ([#13237](https://github.com/microsoft/fluentui/pull/13237))
@@ -41,6 +42,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix an issue with throwing errors when a component is rendered outside of `Provider` @layershifter ([#14010](https://github.com/microsoft/fluentui/pull/14010))
 - Fix for `TeamsIcon`. Renamed current `TeamsIcon` to `ContactGroupIcon`. `TeamsIcon` is now the colored app icon as per current naming standards for other icons in project. @TanelVari ([#13966](https://github.com/microsoft/fluentui/pull/13966))
 - Fix memory leak in `FocusZone` @miroslavstastny ([#14031](https://github.com/microsoft/fluentui/pull/14031))
+- Fix `Popup` with `on="hover"` and controled close inside the content @assuncaocharles ([#14179](https://github.com/microsoft/fluentui/pull/14179))
 
 ### Features
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))

@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@uifabric/date-time_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding ability to mark calendar days with a callback function",
+            "author": "lorejoh12@gmail.com",
+            "commit": "4f6d22e0094842f600d122cc6eba05075919ed5b",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jul 2020 12:43:51 GMT",
       "tag": "@uifabric/date-time_v7.12.0",
       "version": "7.12.0",
