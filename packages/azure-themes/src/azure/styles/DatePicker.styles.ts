@@ -20,8 +20,8 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
   const TodayAndSelectedDayStyle = () => {
     return {
       '.ms-DatePicker-day-button.ms-DatePicker-day--today': {
-        backgroundColor: BaseColors.BLUE_0078D4,
-        color: BaseColors.WHITE,
+        backgroundColor: semanticColors.datePickerSelectionBackground,
+        color: semanticColors.datePickerSelectionText,
         borderRadius: 2,
       },
       '.ms-DatePicker-day-button.ms-DatePicker-day--today:active': {
@@ -39,8 +39,8 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         color: BaseColors.BLACK,
       },
       '.ms-DatePicker-day--highlighted > .ms-DatePicker-day--today': {
-        color: BaseColors.WHITE,
-        backgroundColor: BaseColors.BLUE_0078D4,
+        color: semanticColors.datePickerSelectionText,
+        backgroundColor: semanticColors.datePickerSelectionBackground, //BaseColors.BLUE_0078D4,
         border: '0px',
       },
     };
@@ -92,6 +92,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     };
   };
   return {
+    //placeholder : inputPlaceholderText
     callout: {
       fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
@@ -156,6 +157,11 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         selectors: {
           '.ms-TextField-field': {
             lineHeight: 22,
+            selectors: {
+              '::placeholder': {
+                color: semanticColors.inputPlaceholderText,
+              },
+            },
           },
         },
       },
@@ -166,6 +172,14 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
           '.ms-TextField-fieldGroup': {
             borderColor: semanticColors.datePickerDisabledBorder,
             borderRadius: 2,
+          },
+          '.ms-TextField-field': {
+            lineHeight: 22,
+            selectors: {
+              '::placeholder': {
+                color: semanticColors.disabledBodyText,
+              },
+            },
           },
         },
       },

@@ -20,7 +20,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
         },
         '.ms-Button:hover': {
           backgroundColor: semanticColors.bodyBackground,
-          color: semanticColors.inputText,
+          color: semanticColors.primaryButtonTextHovered,
         },
         '&.is-open': {
           borderColor: semanticColors.focusBorder,

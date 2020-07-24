@@ -12,7 +12,12 @@ import {
   Link,
   Label,
 } from 'office-ui-fabric-react';
-import { AzureCustomizationsLight, AzureCustomizationsDark } from '../../index';
+import {
+  AzureCustomizationsLight,
+  AzureCustomizationsDark,
+  AzureCustomizationsHighContrastLight,
+  AzureCustomizationsHighContrastDark,
+} from '../../index';
 import { ButtonCommandBarExample } from '../components/commandBarButton';
 import { ButtonSplitExample } from '../components/splitButton';
 import { ButtonIconExample } from '../components/iconButton';
@@ -36,22 +41,39 @@ import { DatePickerBoundedExample } from '../components/dateBoundary';
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
+      <DropdownBasicExample />
       <Label>Buttons</Label>
       <DefaultButton text="DefaultButton" />
       <PrimaryButton text="PrimaryButton" />
       <CompoundButton primary text="CompoundButton" />
       <CompoundButton secondaryText="secondary text." text="CompoundButton" />
+
+      <Label>Disabled Buttons</Label>
+      <DefaultButton disabled text="DefaultButton disabled" />
+      <PrimaryButton disabled text="PrimaryButton disabled" />
+      <PrimaryButton disabled text="PrimaryButton disabled" />
+      <CompoundButton disabled primary text="CompoundButton primary disabled" />
+
+      <Label>Icon Buttons</Label>
       <ButtonIconExample checked={false} />
       <ButtonCommandBarExample />
       <ButtonIconWithTooltipExample />
       <ButtonContextualMenuExample />
       <ButtonActionExample />
+
+      <Label>Toggle button</Label>
       <ButtonToggleExample />
       <ButtonSplitExample checked={false} />
       <CalloutBasicExample />
       <DefaultButton text="WIP: default button > primary" primary />
       <DefaultButton text="WIP: Primary button" primary />
     </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>DetailsList / Grid</Label>
+      <DetailsListCompactExample />
+    </Stack>
+
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label className="section">DatePicker</Label>
       <DatePickerBoundedExample />
@@ -65,11 +87,6 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>CommandBar</Label>
       <CommandBarBasicExample />
-    </Stack>
-
-    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
-      <Label>DetailsList / Grid</Label>
-      <DetailsListCompactExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
@@ -104,6 +121,8 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>Search / input fields</Label>
       <SearchBox />
+      <TextField disabled placeholder="disabled placeholder" />
+      <TextField disabled value="disabled text" />
       <TextField placeholder="Hello" />
     </Stack>
 
@@ -128,6 +147,22 @@ export const Light = () => (
 
 export const Dark = () => (
   <Customizer {...AzureCustomizationsDark}>
+    <Fabric applyThemeToBody>
+      <Example />
+    </Fabric>
+  </Customizer>
+);
+
+export const HighContrastLight = () => (
+  <Customizer {...AzureCustomizationsHighContrastLight}>
+    <Fabric applyThemeToBody>
+      <Example />
+    </Fabric>
+  </Customizer>
+);
+
+export const HighContrastDark = () => (
+  <Customizer {...AzureCustomizationsHighContrastDark}>
     <Fabric applyThemeToBody>
       <Example />
     </Fabric>

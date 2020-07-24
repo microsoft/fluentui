@@ -44,6 +44,7 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
 export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetailsListStyles> => {
   const { theme } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: {
@@ -52,8 +53,7 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
     headerWrapper: {
       selectors: {
         '.ms-DetailsHeader': {
-          borderColor: semanticColors.variantBorder,
-          textTransform: 'uppercase',
+          borderColor: extendedSemanticColors.rowBorder,
           borderTop: StyleConstants.borderNone,
           selectors: {
             '.ms-DetailsHeader-cellTitle': {
@@ -79,23 +79,32 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
 export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetailsRowStyles> => {
   const { theme, isSelected } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: [
       {
-        borderColor: semanticColors.variantBorder,
+        borderColor: extendedSemanticColors.rowBorder,
         color: semanticColors.listText,
-        fontSize: FontSizes.size12,
+        fontSize: FontSizes.size13,
       },
       !isSelected && [
         {
           background: semanticColors.listBackground,
           color: semanticColors.listText,
+          textDecoration: extendedSemanticColors.listUnderline,
           selectors: {
             ':hover': {
               backgroundColor: semanticColors.listItemBackgroundHovered,
+              textDecorationColor: semanticColors.buttonTextHovered,
+              selectors: {
+                '.ms-DetailsRow-cell': {
+                  color: semanticColors.buttonTextHovered,
+                },
+              },
             },
             ':focus': {
+              //jg border has bug
               backgroundColor: semanticColors.listItemBackgroundHovered,
             },
             ':focus:hover': {
@@ -106,13 +115,19 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       ],
       isSelected && [
         {
-          background: semanticColors.listItemBackgroundChecked,
+          backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
           selectors: {
             ':hover': {
               background: semanticColors.listItemBackgroundHovered,
+
+              selectors: {
+                '.ms-DetailsRow-cell': {
+                  color: semanticColors.buttonTextHovered,
+                },
+              },
             },
             ':focus': {
-              background: semanticColors.listItemBackgroundChecked,
+              backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
             },
             ':focus:hover': {
               background: semanticColors.listItemBackgroundHovered,
