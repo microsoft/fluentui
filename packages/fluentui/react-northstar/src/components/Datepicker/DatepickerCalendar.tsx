@@ -300,7 +300,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       createShorthand(DatepickerCalendarCell, calendarCell, {
         defaultProps: () =>
           getA11yProps('calendarCell', {
-            label: day.date,
+            content: day.date,
             key: day.key,
             'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
             selected: day.isSelected,
