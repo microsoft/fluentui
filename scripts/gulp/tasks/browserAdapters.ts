@@ -101,7 +101,6 @@ export async function createElectron(electronPath: string = DEFAULT_ELECTRON_PAT
         await waitUntilDevtoolsAvailable('localhost', devtoolsPort);
         cdp = await CDP({ port: devtoolsPort });
 
-        await cdp.Network.enable();
         await cdp.Page.enable();
         await cdp.Runtime.enable();
 

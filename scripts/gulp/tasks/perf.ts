@@ -159,7 +159,7 @@ task('perf:build', cb => {
 });
 
 task('perf:run', async () => {
-  const filter = argv.filter as string;
+  const filter = (argv.filter as string) || '';
   const browserName: 'chrome' | 'electron' = (argv.browser as 'chrome' | 'electron') || 'chrome';
   const mode = (argv.mode as string) || 'new-page';
   const times = (argv.times as number) || DEFAULT_RUN_TIMES;
