@@ -58,9 +58,7 @@ export interface DatepickerCalendarCellProps extends UIComponentProps {
   onKeyDown?: ComponentKeyboardEventHandler<DatepickerCalendarCellProps>;
 }
 
-export type DatepickerCalendarCellStylesProps = Pick<DatepickerCalendarCellProps, 'disabled' | 'selected'> & {
-  actionable: boolean;
-};
+export type DatepickerCalendarCellStylesProps = Pick<DatepickerCalendarCellProps, 'disabled' | 'selected'>;
 
 export const datepickerCalendarCellClassName = 'ui-datepicker__calendarcell';
 /**
@@ -79,7 +77,7 @@ export const DatepickerCalendarCell = compose<
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { className, design, styles, variables, onClick, disabled, selected, content } = props;
+    const { className, design, styles, variables, disabled, selected, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
@@ -101,7 +99,6 @@ export const DatepickerCalendarCell = compose<
     const { classes } = useStyles<DatepickerCalendarCellStylesProps>(DatepickerCalendarCell.displayName, {
       className: composeOptions.className,
       mapPropsToStyles: () => ({
-        actionable: !!onClick,
         disabled,
         selected,
       }),
