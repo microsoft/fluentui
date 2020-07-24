@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Update focus-border to include $radius parameter",
+  "comment": "Update focus-border to include $radius parameter and add focus-box-shadow and after-box-shadow.",
   "packageName": "@fluentui/common-styles",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
