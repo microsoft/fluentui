@@ -40,7 +40,7 @@ describe('Dialog scroll', () => {
     await e2e.pressKey('ArrowDown'); // open list
     expect(await e2e.exists(dropdownList)).toBe(true);
     await e2e.pressKey('Escape'); // closes list
-    await e2e.pressKey('Escape');
+    await e2e.pressKey('Escape'); // closes dialog
     expect(await e2e.exists(dropdownSelector)).toBe(false);
   });
 });
