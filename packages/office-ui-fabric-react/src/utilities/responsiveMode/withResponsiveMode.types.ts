@@ -1,3 +1,7 @@
+export interface IWithResponsiveModeState {
+  responsiveMode?: ResponsiveMode;
+}
+
 export enum ResponsiveMode {
   small = 0,
   medium = 1,

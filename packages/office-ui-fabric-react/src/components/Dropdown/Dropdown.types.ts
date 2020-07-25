@@ -3,7 +3,7 @@ import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
-import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { ResponsiveMode } from '../../utilities/responsiveMode/index';
 import { IKeytipProps } from '../../Keytip';
 import { RectangleEdge } from '../../utilities/positioning';
 import { ICheckboxStyleProps, ICheckboxStyles } from '../Checkbox/Checkbox.types';

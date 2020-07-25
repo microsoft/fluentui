@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ModalBase } from './Modal.base';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '../../utilities/responsiveMode/index';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';

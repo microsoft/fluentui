@@ -3,7 +3,7 @@ import { IModalProps } from '../../Modal';
 import { DialogBase } from './Dialog.base';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { IButtonProps } from '../Button/Button.types';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '../../utilities/responsiveMode/index';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';

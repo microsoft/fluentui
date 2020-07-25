@@ -16,13 +16,6 @@ let _defaultMode: ResponsiveMode | undefined;
  */
 let _lastMode: ResponsiveMode | undefined;
 
-/**
- * Allows a server rendered scenario to provide a default responsive mode.
- */
-export const setResponsiveMode = (responsiveMode: ResponsiveMode | undefined): void => {
-  _defaultMode = responsiveMode;
-};
-
 const getResponsiveMode = (currentWindow: Window | undefined): ResponsiveMode => {
   let responsiveMode = ResponsiveMode.small;
 
@@ -51,19 +44,6 @@ const getResponsiveMode = (currentWindow: Window | undefined): ResponsiveMode =>
   }
 
   return responsiveMode;
-};
-
-/**
- * Initializes the responsive mode to the current window size. This can be used to avoid
- * a re-render during first component mount since the window would otherwise not be measured
- * until after mounting.
- */
-export const initializeResponsiveMode = (element?: HTMLElement): void => {
-  if (typeof window !== 'undefined') {
-    const currentWindow = (element && getWindow(element)) || window;
-
-    getResponsiveMode(currentWindow);
-  }
 };
 
 export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null>) => {

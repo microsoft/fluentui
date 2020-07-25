@@ -16,7 +16,7 @@ import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.typ
 import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
-import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { withResponsiveMode, ResponsiveMode } from '../../utilities/responsiveMode/index';
 import { DirectionalHint } from '../Callout/index';
 import { Icon } from '../Icon/index';
 import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
