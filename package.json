@@ -36,7 +36,7 @@
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
     "preinstall": "node ./scripts/use-yarn-please.js",
-    "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev && node ./scripts/no-tslint.js",
+    "prelint": "yarn satisfied && yarn syncpack:list-mismatches && node ./scripts/no-tslint.js",
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
     "rebuild": "node ./scripts/invalidate-just-cache.js && npm run build",
@@ -49,7 +49,8 @@
     "start-exp": "yarn workspace @uifabric/experiments start",
     "stats:build": "gulp stats",
     "stats:save": "gulp stats:save",
-    "syncpack:fix": "syncpack fix-mismatches --prod --dev",
+    "syncpack:list-mismatches": "syncpack list-mismatches --prod --dev --source \"{apps/*,packages/!(web-components),packages/fluentui/*,scripts,.}/package.json\"",
+    "syncpack:fix": "syncpack fix-mismatches --prod --dev --source \"{apps/*,packages/!(web-components),packages/fluentui/*,scripts,.}/package.json\"",
     "test": "lerna run test --stream",
     "test:fluentui:circulars": "gulp test:circulars:run",
     "test:fluentui:e2e": "gulp test:e2e",
@@ -69,8 +70,7 @@
     "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
-    "syncpack": "^4.5.4",
-    "tsconfig-paths": "^3.7.0"
+    "syncpack": "^4.5.4"
   },
   "license": "MIT",
   "workspaces": {
@@ -88,6 +88,7 @@
     "packages/web-components/ts-node"
   ],
   "resolutions": {
+    "eslint": "^7.1.0",
     "webpack": "^4.35.0",
     "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"

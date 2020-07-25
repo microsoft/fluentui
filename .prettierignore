@@ -6,6 +6,7 @@ version.ts
 dndSim.js
 monaco-typescript.d.ts
 *.api.md
+api-report.md
 *.scss.ts
 _*.scss
 
