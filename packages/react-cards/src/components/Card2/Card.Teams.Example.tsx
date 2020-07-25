@@ -14,7 +14,6 @@ import { Card } from './Card';
 import { CardBody } from './CardBody/CardBody';
 import { CardFooter } from './CardFooter/CardFooter';
 import { CardHeader } from './CardHeader/CardHeader';
-import { CardPreview } from './CardPreview/CardPreview';
 
 function onClick() {
   alert('Card was clicked');
