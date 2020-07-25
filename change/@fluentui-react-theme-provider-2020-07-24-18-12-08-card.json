@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Moving SizeValue const from react-button to react-theme-provider package.",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-25T01:12:07.950Z"
+}
