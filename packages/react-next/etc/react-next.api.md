@@ -43,8 +43,6 @@ import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning'
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { SlotProp } from '@fluentui/react-compose';
 import { SlotProps } from '@fluentui/react-compose';
-import { ThemeProviderProps } from '@fluentui/react-theme-provider';
-import { useTheme } from '@fluentui/react-theme-provider';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 
 // @public (undocumented)
@@ -2097,13 +2095,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     readonly value: string | undefined;
     }
 
-// @public
-export const ThemeProvider: React.FunctionComponent<ThemeProviderProps & {
-    ref?: React.Ref<HTMLDivElement>;
-}>;
-
-export { ThemeProviderProps }
-
 // @public (undocumented)
 export const Toggle: React.FunctionComponent<IToggleProps & React.RefAttributes<HTMLDivElement>>;
 
@@ -2113,14 +2104,13 @@ export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div"
 // @public
 export const useLink: (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>) => any;
 
-export { useTheme }
-
 // @public (undocumented)
 export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
 export * from "@fluentui/react-button/lib/Button";
 export * from "@fluentui/react-tabs/lib/Pivot";
+export * from "@fluentui/react-theme-provider/lib/compat";
 export * from "@uifabric/date-time/lib/Calendar";
 export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";
