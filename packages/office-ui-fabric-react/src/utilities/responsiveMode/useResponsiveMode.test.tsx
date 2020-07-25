@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
-import { useResponsiveMode, setResponsiveMode, ResponsiveMode } from './index';
-import { setSSR } from '../../Utilities';
+import { useResponsiveMode, ResponsiveMode } from './index';
 
 const resizeTo = (width: number, height: number = 100) => {
   ReactTestUtils.act(() => {
@@ -14,50 +13,57 @@ const resizeTo = (width: number, height: number = 100) => {
   });
 };
 
-let lastResponsiveMode: any = undefined;
-let renderCount = 0;
-let wrapper: ReactWrapper | undefined;
-
-const TestComponent: React.FunctionComponent = () => {
-  const ref = React.useRef(null);
-  lastResponsiveMode = useResponsiveMode(ref);
-  renderCount++;
-  return null;
-};
-
 describe('useResponsiveMode', () => {
-  afterEach(() => {
+  let responsiveModes: ResponsiveMode[] = [];
+  let wrapper: ReactWrapper | undefined;
+
+  const TestComponent: React.FunctionComponent = () => {
+    const ref = React.useRef(null);
+
+    responsiveModes.push(useResponsiveMode(ref));
+
+    return null;
+  };
+
+  const cleanup = () => {
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;
-      renderCount = 0;
+      responsiveModes = [];
     }
-  });
+  };
+
+  afterEach(cleanup);
 
   it('can return the correct value', () => {
+    // Set initial window size.
+    resizeTo(400);
+
+    // Mount with initial value.
     wrapper = mount(<TestComponent />);
+    expect(responsiveModes).toEqual([ResponsiveMode.large, ResponsiveMode.small]);
 
-    expect(lastResponsiveMode).toBe(wrapper);
-  });
+    // Set to max small constraint, should not re-render.
+    resizeTo(479);
+    expect(responsiveModes).toEqual([ResponsiveMode.large, ResponsiveMode.small]);
 
-  it('can re-render on window resize', () => {
-    wrapper = mount(<TestComponent />);
+    // Go one over.
+    resizeTo(480);
+    expect(responsiveModes).toEqual([ResponsiveMode.large, ResponsiveMode.small, ResponsiveMode.medium]);
 
+    // Back to large.
     resizeTo(1000);
+    expect(responsiveModes).toEqual([
+      ResponsiveMode.large,
+      ResponsiveMode.small,
+      ResponsiveMode.medium,
+      ResponsiveMode.large,
+    ]);
 
-    expect(renderCount).toBe(1);
+    cleanup();
 
-    resizeTo(500);
-
-    expect(renderCount).toBe(2);
-  });
-
-  it('can be used in a server scenario', () => {
-    setSSR(true);
-
-    setResponsiveMode(ResponsiveMode.large);
-    expect(() => ReactTestUtils.renderIntoDocument(<TestComponent />)).toBeDefined();
-
-    setSSR(false);
+    // Expect only one render as the size has not changed.
+    wrapper = mount(<TestComponent />);
+    expect(responsiveModes).toEqual([ResponsiveMode.large]);
   });
 });

@@ -51,16 +51,22 @@ export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null
     _defaultMode || _lastMode || ResponsiveMode.large,
   );
 
-  const onResize = useConstCallback(() => {
+  const onResize = React.useCallback(() => {
     // Setting the same value should not cause a re-render.
-    setLastResponsiveMode(getResponsiveMode(getWindow(elementRef.current)));
-  });
+    const newResponsiveMode = getResponsiveMode(getWindow(elementRef.current));
+
+    if (lastResponsiveMode !== newResponsiveMode) {
+      setLastResponsiveMode(newResponsiveMode);
+    }
+  }, [elementRef, lastResponsiveMode]);
 
   useOnEvent(window, 'resize', onResize as (ev: Event) => void);
 
+  // Call resize function initially on mount.
   React.useEffect(() => {
     onResize();
-  }, [onResize]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return lastResponsiveMode === ResponsiveMode.unknown ? null : useResponsiveMode;
+  return lastResponsiveMode;
 };
