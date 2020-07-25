@@ -19,7 +19,7 @@ export const CardBase = compose<'div', CardProps, CardProps, {}, {}>(
   },
   {
     displayName: 'CardBase',
-    handledProps: [],
+    handledProps: ['cardRef'] as any,
     state: useCard,
   },
 );

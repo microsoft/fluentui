@@ -52,6 +52,7 @@
     "@fluentui/react-theme-provider": "^0.3.9",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/azure-themes": "^7.1.47",
+    "@uifabric/example-data": "^7.0.19",
     "@uifabric/file-type-icons": "^7.4.6",
     "@uifabric/foundation": "^7.7.39",
     "@uifabric/react-hooks": "^7.5.4",

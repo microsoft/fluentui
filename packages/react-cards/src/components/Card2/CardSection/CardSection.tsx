@@ -20,6 +20,7 @@ export const CardSection = compose<'div', CardSectionProps, CardSectionProps, {}
   },
   {
     displayName: 'CardSection',
+    handledProps: ['fitted'],
   },
 );
 
