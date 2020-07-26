@@ -218,7 +218,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree]);
 
   return (
     <Frame
