@@ -53,7 +53,7 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
         selectionMode={SelectionMode.multiple}
       />
     ),
-    [],
+    [columns, selection],
   );
 
   return (

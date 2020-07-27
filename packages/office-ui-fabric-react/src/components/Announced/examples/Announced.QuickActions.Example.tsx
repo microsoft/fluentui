@@ -86,6 +86,30 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
     },
   );
 
+  const deleteItem = useConstCallback((index: number): void => {
+    setItems(items.filter((item, i) => i !== index));
+    setAnnounced(<Announced message="Item deleted" aria-live="assertive" />);
+    setPreviousAnnouncedValue(announced);
+    return;
+  });
+
+  const renameItem = useConstCallback((item: IAnnouncedQuickActionsExampleItem, index: number): void => {
+    setRenameDialogOpen(true);
+    setDialogContent(
+      <>
+        <TextField componentRef={textField} label="Rename" defaultValue={item.name} />
+        <DialogFooter>
+          <PrimaryButton
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={() => updateItemName(index)}
+            text="Save"
+          />
+        </DialogFooter>
+      </>,
+    );
+    return;
+  });
+
   const onRenderItemColumn = React.useCallback(
     (item: IAnnouncedQuickActionsExampleItem, index: number, column: IColumn) => {
       const fieldContent = item[column.fieldName as keyof IAnnouncedQuickActionsExampleItem];
@@ -120,32 +144,8 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
         return <span>{fieldContent}</span>;
       }
     },
-    [items],
+    [deleteItem, renameItem],
   );
-
-  const deleteItem = (index: number): void => {
-    setItems(items.filter((item, i) => i !== index));
-    setAnnounced(<Announced message="Item deleted" aria-live="assertive" />);
-    setPreviousAnnouncedValue(announced);
-    return;
-  };
-
-  const renameItem = (item: IAnnouncedQuickActionsExampleItem, index: number): void => {
-    setRenameDialogOpen(true);
-    setDialogContent(
-      <>
-        <TextField componentRef={textField} label="Rename" defaultValue={item.name} />
-        <DialogFooter>
-          <PrimaryButton
-            // eslint-disable-next-line react/jsx-no-bind
-            onClick={() => updateItemName(index)}
-            text="Save"
-          />
-        </DialogFooter>
-      </>,
-    );
-    return;
-  };
 
   const updateItemName = useConstCallback((index: number) => {
     if (textField && textField.current) {
@@ -175,7 +175,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
         });
       }
     }
-  }, []);
+  }, [items]);
 
   // componentDidUpdate
   React.useEffect(() => {
@@ -185,7 +185,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
         setPreviousAnnouncedValue(announced);
       }, 2000);
     }
-  }, [announced]);
+  }, [announced, previousAnnouncedValue, setTimeout]);
 
   return (
     <>

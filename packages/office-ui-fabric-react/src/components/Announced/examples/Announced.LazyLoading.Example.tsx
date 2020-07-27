@@ -93,7 +93,7 @@ export const AnnouncedLazyLoadingExample = () => {
         clearInterval(announceIntervalId);
       };
     }
-  }, [loading]);
+  }, [clearInterval, setInterval, timeSinceLastAnnounce, loading, total]);
 
   return (
     <Stack tokens={stackTokens}>

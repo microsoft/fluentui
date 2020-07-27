@@ -87,7 +87,7 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
   };
 
   const shouldShowForceResolve = (): boolean => {
-    const floatingPicker = picker.current && picker.current.floatingPicker.current;
+    const floatingPicker = picker.current?.floatingPicker.current;
     return !!floatingPicker && validateInput(floatingPicker.inputText) && floatingPicker.suggestions.length === 0;
   };
 
