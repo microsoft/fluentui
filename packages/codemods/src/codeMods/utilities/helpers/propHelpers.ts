@@ -23,13 +23,21 @@ export function renamePropInSpread(
   /* Step 1: Figure out which attribute contains the spread prop. */
   const allAttributes = element.getAttributes();
   allAttributes.forEach(attribute => {
+    console.log('trying it');
     if (attribute.getKind() === SyntaxKind.JsxSpreadAttribute) {
-      const spreadProp = attribute.getFirstChildByKind(SyntaxKind.Identifier);
+      console.log(attribute.getText());
+      //const p = attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
+      //console.log(p?.getType().getProperties().length);
+      const spreadProp = attribute.getFirstDescendantByKind(SyntaxKind.Identifier);
       /* Verify this attribute contains the name of our desired prop. */
       if (spreadContains(toRename, spreadProp)) {
+        console.log('spread contains!');
+
         /* Step 2: Verify that the spread prop is legitimately defined as a variable.  */
         const propDefinitions = spreadProp!.getDefinitions();
         if (verifyVariableDefinition(propDefinitions)) {
+          console.log('definition works!');
+
           /* Step 3: Create names for your new potential objects. */
           const propSpreadName = propDefinitions[0].getName();
           const newSpreadName = '__mig' + propSpreadName[0].toUpperCase() + propSpreadName.substring(1);
@@ -111,6 +119,7 @@ export function renamePropInSpread(
               : `{${toRename}}`,
           }); // Add the updated prop name and set its value.
         }
+        console.log(element.getText()); // first case doesn't get this far :0
       }
     }
   });
@@ -148,13 +157,26 @@ function createDeconstructedProp(newSpreadPropName: string, toRename: string, ol
 /* Helper function that returns TRUE if the supplied spread object
    contains the prop we're looking for. Else returns FALSE. */
 function spreadContains(oldPropName: string, spreadProp?: Identifier): boolean {
-  return (
-    spreadProp !== undefined &&
-    spreadProp
-      .getType()
-      .getProperties()
-      .some(name => name.getName() === oldPropName)
-  );
+  console.log(spreadProp?.getType().getText()); // should not print "any"
+  // const classDec = spreadProp?.getFirstAncestorByKind(SyntaxKind.ClassDeclaration);
+  // //console.log(classDec?.getText());
+  // const heritage = classDec?.getFirstChildByKind(SyntaxKind.HeritageClause);
+  //console.log(heritage?.getText());
+  // // const propName = heritage?.getFirstDescendantByKind(SyntaxKind.TypeReference);
+  // const p = propName?.getFirstChildByKind(SyntaxKind.Identifier);
+  // console.log(p?.getText());
+
+  return false;
+  // return (
+  //   spreadProp !== undefined &&
+  //   spreadProp
+  //     .getType()
+  //     .getProperties()
+  //     .some(name => {
+  //       console.log(name.getName());
+  //       return name.getName() === oldPropName;
+  //     })
+  // );
 }
 
 /* Verifies that the spread object supplied is a variable

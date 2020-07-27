@@ -5,8 +5,8 @@ import { renameProp, findJsxTag } from '../../utilities';
 const oldToNewButton: CodeMod = {
   run: (file: SourceFile) => {
     try {
-      const tags = findJsxTag(file, 'DefaultButton');
-      renameProp(tags, 'actionBarOverflowButtonAriaLabel', 'actionBarOverflowButtonAriaLabel', 'newLabel!');
+      const tags = findJsxTag(file, 'CompoundButton');
+      renameProp(tags, 'description', 'description', 'newDesc!');
       //renameProp(tags, 'toggled', 'checked');
     } catch (e) {
       return { success: false };

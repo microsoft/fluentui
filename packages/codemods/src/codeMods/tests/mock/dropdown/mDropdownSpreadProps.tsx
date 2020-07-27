@@ -15,26 +15,26 @@ export const RenderDropdown = (props: any) => {
   );
 };
 
-export const RenderLetDropdown = (props: any) => {
-  let propsTest = { options: [], isDisabled: false };
-  return (
-    <div>
-      <Dropdown {...propsTest}>Dropdown!</Dropdown>
-      {/* include self closing Dropdown check */}
-      <Dropdown {...propsTest} />
-    </div>
-  );
-};
+// export const RenderLetDropdown = (props: any) => {
+//   let propsTest = { options: [], isDisabled: false };
+//   return (
+//     <div>
+//       <Dropdown {...propsTest}>Dropdown!</Dropdown>
+//       {/* include self closing Dropdown check */}
+//       <Dropdown {...propsTest} />
+//     </div>
+//   );
+// };
 
-export const RenderDropdownProps = (props: IDropdownProps) => {
-  return (
-    <div>
-      <Dropdown {...props}>Dropdown!</Dropdown>
-      {/* include self closing Dropdown check */}
-      <Dropdown {...props} />
-    </div>
-  );
-};
+// export const RenderDropdownProps = (props: IDropdownProps) => {
+//   return (
+//     <div>
+//       <Dropdown {...props}>Dropdown!</Dropdown>
+//       {/* include self closing Dropdown check */}
+//       <Dropdown {...props} />
+//     </div>
+//   );
+// };
 
 export function RenderDropdownPropsFunc(props: IDropdownProps) {
   return (
