@@ -645,7 +645,7 @@ export class LineChartBase extends React.Component<
       .attr('r', 0.2);
     d3Select(`#${this._verticalLine}`).attr('visibility', 'hidden');
     this.setState({
-      // isCalloutVisible: false,
+      isCalloutVisible: false,
     });
   };
 
