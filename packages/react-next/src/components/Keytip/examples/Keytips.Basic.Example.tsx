@@ -20,42 +20,36 @@ const sampleOptions = [
   { key: 'C', text: 'Option 3' },
 ];
 
-export const KeytipsBasicExample: React.FunctionComponent = () => {
-  const checkboxRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.CheckboxKeytip });
-  const linkRef = useKeytipRef<HTMLAnchorElement>({ keytipProps: keytipMap.LinkKeytip });
-  const toggleRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.ToggleKeytip });
+export const KeytipsBasicExample: React.FunctionComponent = () => (
+  <div>
+    <p>
+      For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content
+      are shown.
+    </p>
+    <Pivot>
+      <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
+        <Stack tokens={stackTokens}>
+          <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={spinButtonStyles} />
+          <Toggle onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
+          <span>
+            Go to{' '}
+            <Link keytipProps={keytipMap.LinkKeytip} href="http://www.bing.com" target="_blank">
+              Bing
+            </Link>
+          </span>
+        </Stack>
+      </PivotItem>
 
-  return (
-    <div>
-      <p>
-        For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content
-        are shown.
-      </p>
-      <Pivot>
-        <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
-          <Stack tokens={stackTokens}>
-            <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={spinButtonStyles} />
-            <Toggle ref={toggleRef} onText="Yes" offText="No" />
-            <span>
-              Go to{' '}
-              <Link ref={linkRef} href="http://www.bing.com" target="_blank">
-                Bing
-              </Link>
-            </span>
-          </Stack>
-        </PivotItem>
+      <PivotItem headerText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={pivotItemStyle}>
+        <Stack tokens={stackTokens}>
+          <Checkbox label="Checkbox" keytipProps={keytipMap.CheckboxKeytip} />
+          <Dropdown label="Dropdown" keytipProps={keytipMap.DropdownKeytip} options={sampleOptions} />
+        </Stack>
+      </PivotItem>
 
-        <PivotItem headerText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={pivotItemStyle}>
-          <Stack tokens={stackTokens}>
-            <Checkbox label="Checkbox" ref={checkboxRef} />
-            <Dropdown label="Dropdown" keytipProps={keytipMap.DropdownKeytip} options={sampleOptions} />
-          </Stack>
-        </PivotItem>
-
-        <PivotItem headerText="Pivot 3" keytipProps={keytipMap.Pivot3Keytip} style={pivotItemStyle}>
-          <ComboBox label="Combo Box" keytipProps={keytipMap.ComboBoxKeytip} options={sampleOptions} />
-        </PivotItem>
-      </Pivot>
-    </div>
-  );
-};
+      <PivotItem headerText="Pivot 3" keytipProps={keytipMap.Pivot3Keytip} style={pivotItemStyle}>
+        <ComboBox label="Combo Box" keytipProps={keytipMap.ComboBoxKeytip} options={sampleOptions} />
+      </PivotItem>
+    </Pivot>
+  </div>
+);
