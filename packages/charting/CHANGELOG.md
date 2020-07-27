@@ -1,8 +1,27 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.6)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.4..@uifabric/charting_v2.7.6)
+
+### Patches
+
+- Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers. ([PR #14195](https://github.com/microsoft/fluentui/pull/14195) by v-gorraj@microsoft.com)
+
+## [2.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.4)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.2..@uifabric/charting_v2.7.4)
+
+### Patches
+
+- Calling grouped vertical bar chart method in did mount and updated height proprty as if negtiva values apper, then need to sent 0 to eliminate unwanted console warnings. ([PR #14137](https://github.com/microsoft/fluentui/pull/14137) by v-jasha@microsoft.com)
+- Charting: Fix Line chart render with empty array of data + a event annotation, the chart throws a strange formatting exception. ([PR #14161](https://github.com/microsoft/fluentui/pull/14161) by v-gorraj@microsoft.com)
 
 ## [2.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.2)
 

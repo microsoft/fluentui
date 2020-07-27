@@ -172,6 +172,7 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
     daysToSelectInDayView?: number;
     firstDayOfWeek: DayOfWeek;
     firstWeekOfYear: FirstWeekOfYear;
+    markedDays?: Date[];
     showWeekNumbers?: boolean;
     today?: Date;
     workWeekDays?: DayOfWeek[];
@@ -182,6 +183,7 @@ export interface IDay {
     date: string;
     isInBounds: boolean;
     isInMonth: boolean;
+    isMarked: boolean;
     isSelected: boolean;
     isToday: boolean;
     key: string;
