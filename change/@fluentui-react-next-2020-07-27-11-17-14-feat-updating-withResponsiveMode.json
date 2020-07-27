@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating modal imports for withResponsiveMode decorator.",
+  "packageName": "@fluentui/react-next",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-27T18:17:14.759Z"
+}
