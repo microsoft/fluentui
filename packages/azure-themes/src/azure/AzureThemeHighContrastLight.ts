@@ -83,7 +83,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   radioButtonThumbUncheckedDisabled: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
   radioButtonThumbCheckedDisabled: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
   rowBorder: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
-  toggleDisabledBackground: HighContrastLightSemanticColors.toggle.disabled.backrgound,
+  tabHover: HighContrastLightSemanticColors.tabs.hover,
   variantBorder: HighContrastLightSemanticColors.controlOutlines.rest,
   // extended
   controlAccent: HighContrastLightSemanticColors.controlOutlines.accent,

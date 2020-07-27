@@ -75,13 +75,13 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   primaryButtonTextPressed: HighContrastDarkSemanticColors.primaryButton.pressed.text,
   radioButtonPillBorderDisabled: HighContrastDarkSemanticColors.radioButton.circle.borderDisabled,
   radioButtonPillCheckedHover: HighContrastDarkSemanticColors.radioButton.pill.checkedHover,
-
   radioButtonPillUncheckedDisabled: HighContrastDarkSemanticColors.radioButton.pill.uncheckedDisabled,
   radioButtonPillUncheckedHover: HighContrastDarkSemanticColors.radioButton.pill.uncheckedHover,
   radioButtonPillDisabled: HighContrastDarkSemanticColors.radioButton.pill.disabled,
   radioButtonThumbUnchecked: HighContrastDarkSemanticColors.radioButton.circle.uncheckedRest,
   radioButtonThumbUncheckedDisabled: HighContrastDarkSemanticColors.radioButton.circle.checkedDisabled,
   radioButtonThumbCheckedDisabled: HighContrastDarkSemanticColors.radioButton.circle.checkedDisabled,
+  tabHover: HighContrastDarkSemanticColors.tabs.hover,
   rowBorder: HighContrastDarkSemanticColors.detailsRow.border,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended

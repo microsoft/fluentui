@@ -105,6 +105,6 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   statusWarningText: string;
   textFieldBackgroundDisabled: string;
   textFieldBorderDisabled: string;
-  toggleDisabledBackground: string;
+  tabHover: string;
   variantBorder: string;
 }

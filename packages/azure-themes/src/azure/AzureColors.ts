@@ -264,6 +264,9 @@ export const DarkSemanticColors: IAzureSemanticColors = {
       uncheckedHover: BaseColors.BLACK,
     },
   },
+  tabs: {
+    hover: BaseColors.GRAY_252423,
+  },
 };
 
 export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
@@ -408,6 +411,9 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       checkedHover: BaseColors.BLUE_6CA9FE,
       uncheckedHover: BaseColors.BLUE_00FFFF,
     },
+  },
+  tabs: {
+    hover: BaseColors.GRAY_252423,
   },
 };
 
@@ -554,6 +560,9 @@ export const LightSemanticColors: IAzureSemanticColors = {
       uncheckedHover: BaseColors.WHITE,
     },
   },
+  tabs: {
+    hover: BaseColors.GRAY_F3F2F1,
+  },
 };
 
 export const HighContrastLightSemanticColors: IAzureSemanticColors = {
@@ -698,5 +707,8 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       checkedHover: BaseColors.BLUE_0078D4,
       uncheckedHover: BaseColors.PURPLE_800080,
     },
+  },
+  tabs: {
+    hover: BaseColors.GRAY_F3F2F1,
   },
 };

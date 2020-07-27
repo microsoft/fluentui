@@ -79,11 +79,10 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   radioButtonPillUncheckedDisabled: LightSemanticColors.radioButton.pill.uncheckedDisabled,
   radioButtonPillUncheckedHover: LightSemanticColors.radioButton.pill.uncheckedHover,
   radioButtonPillDisabled: LightSemanticColors.radioButton.pill.disabled,
-  radioButtonThumbUnchecked: LightSemanticColors.radioButton.circle.uncheckedRest,
   radioButtonThumbUncheckedDisabled: LightSemanticColors.radioButton.pill.disabled,
   radioButtonThumbCheckedDisabled: LightSemanticColors.radioButton.circle.checkedDisabled,
   rowBorder: LightSemanticColors.detailsRow.border,
-  toggleDisabledBackground: LightSemanticColors.toggle.disabled.backrgound,
+  tabHover: LightSemanticColors.tabs.hover,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended
   controlAccent: LightSemanticColors.controlOutlines.accent,

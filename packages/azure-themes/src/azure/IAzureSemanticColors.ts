@@ -141,4 +141,7 @@ export interface IAzureSemanticColors {
       uncheckedHover: string;
     };
   };
+  tabs: {
+    hover: string;
+  };
 }
