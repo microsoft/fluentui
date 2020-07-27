@@ -8,7 +8,6 @@ import { SpinButton, ISpinButtonStyles } from '@fluentui/react-next/lib/SpinButt
 import { Toggle } from '@fluentui/react-next/lib/Toggle';
 import { Pivot, PivotItem } from '@fluentui/react-next/lib/Pivot';
 import { IStackTokens, Stack } from '@fluentui/react-next/lib/Stack';
-import { useKeytipRef } from '@fluentui/react-next/lib/KeytipData';
 
 const pivotItemStyle: React.CSSProperties = { width: 500, paddingTop: 20 };
 const stackTokens: IStackTokens = { childrenGap: 20 };
