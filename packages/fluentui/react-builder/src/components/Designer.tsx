@@ -64,6 +64,9 @@ type DesignerStateF = {
   jsonTreeOrigin: JSONTreeOrigin;
   selectedComponentInfo: ComponentInfo; // FIXME: should be computed in render?
   selectedJSONTreeElementUuid: JSONTreeElement['uuid'];
+  showCode: boolean;
+  code: string | null; // only valid if showCode is set to true
+  codeError: string | null;
 };
 
 type DesignerAction =
@@ -77,10 +80,14 @@ type DesignerAction =
   | { type: 'DELETE_SELECTED_COMPONENT' }
   | { type: 'PROP_CHANGE'; component: JSONTreeElement; propName: string; propValue: any }
   | { type: 'SWITCH_TO_STORE' }
-  | { type: 'RESET_STORE' };
+  | { type: 'RESET_STORE' }
+  | { type: 'SHOW_CODE'; show: boolean }
+  | { type: 'SOURCE_CODE_CHANGE'; code: string };
 
 const stateReducer: Reducer<DesignerStateF, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
+  let treeChanged = false;
+
   switch (action.type) {
     case 'DRAG_START':
       draftState.draggingElement = action.component;
@@ -94,6 +101,7 @@ const stateReducer: Reducer<DesignerStateF, DesignerAction> = (draftState, actio
       if (action.dropParent) {
         const dropParent = jsonTreeFindElement(draftState.jsonTree, action.dropParent.uuid);
         resolveDrop(draftState.draggingElement, dropParent, action.dropIndex);
+        treeChanged = true;
       }
 
       const addedComponent = jsonTreeFindElement(draftState.jsonTree, draftState.draggingElement.uuid);
@@ -104,7 +112,6 @@ const stateReducer: Reducer<DesignerStateF, DesignerAction> = (draftState, actio
         draftState.selectedComponentInfo = componentInfoContext.byDisplayName[addedComponent.displayName];
       }
 
-      // TODO: code
       break;
 
     case 'DRAG_CLONE':
@@ -120,6 +127,7 @@ const stateReducer: Reducer<DesignerStateF, DesignerAction> = (draftState, actio
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
       );
       jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
+      treeChanged = true;
       break;
 
     case 'SELECT_COMPONENT':
@@ -145,6 +153,7 @@ const stateReducer: Reducer<DesignerStateF, DesignerAction> = (draftState, actio
         jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
         draftState.selectedJSONTreeElementUuid = null;
         draftState.selectedComponentInfo = null;
+        treeChanged = true;
       }
       break;
 
@@ -155,22 +164,50 @@ const stateReducer: Reducer<DesignerStateF, DesignerAction> = (draftState, actio
           editedComponent.props = {};
         }
         editedComponent.props[action.propName] = action.propValue;
-        console.log('Edited', JSON.parse(JSON.stringify(editedComponent.props)));
+        treeChanged = true;
       }
       break;
 
     case 'SWITCH_TO_STORE':
       draftState.jsonTree = readTreeFromStore() || getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
+      treeChanged = true;
       break;
 
     case 'RESET_STORE':
       draftState.jsonTree = getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
+      treeChanged = true;
+      break;
+
+    case 'SHOW_CODE':
+      try {
+        draftState.showCode = action.show;
+        draftState.code = action.show ? renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree)) : null;
+      } catch (e) {
+        console.error('Failed to convert tree to code.', e.toString());
+      }
+      break;
+
+    case 'SOURCE_CODE_CHANGE':
+      draftState.code = action.code;
+      draftState.selectedJSONTreeElementUuid = null;
+      draftState.selectedComponentInfo = null;
+      try {
+        draftState.jsonTree = codeToTree(action.code);
+      } catch (e) {
+        draftState.codeError = e.message;
+      }
+
       break;
 
     default:
       throw new Error(`Invalid action ${action}`);
+  }
+
+  if (treeChanged && draftState.showCode) {
+    draftState.code = renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree));
+    draftState.codeError = null;
   }
 };
 
@@ -208,6 +245,9 @@ export const Designer: React.FunctionComponent = () => {
       jsonTreeOrigin,
       selectedComponentInfo: null,
       selectedJSONTreeElementUuid: null,
+      showCode: false,
+      code: null,
+      codeError: null,
     };
   });
 
@@ -220,42 +260,48 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.jsonTree, state.jsonTreeOrigin]);
 
-  const { draggingElement, jsonTree, jsonTreeOrigin, /*selectedComponentInfo,*/ selectedJSONTreeElementUuid } = state;
+  const {
+    draggingElement,
+    jsonTree,
+    jsonTreeOrigin,
+    /* selectedComponentInfo, */
+    selectedJSONTreeElementUuid,
+    showCode,
+    code,
+    codeError,
+  } = state;
+
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
     ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
     : null;
 
   const handleReset = React.useCallback(() => {
+    /* eslint-disable-next-line no-alert */
     if (confirm('Lose your changes?')) {
       dispatch({ type: 'RESET_STORE' });
       // FIXME: what if I am viewing tree from URL?
     }
-  }, []);
+  }, [dispatch]);
 
-  // handleShowCodeChange = showCode => {
-  //   this.setState(({ jsonTree }) => {
-  //     try {
-  //       return { showCode, code: showCode ? renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)) : null };
-  //     } catch (e) {
-  //       console.error('Failed to convert tree to code.', e.toString());
-  //       return null;
-  //     }
-  //   });
-  // };
+  const handleShowCodeChange = React.useCallback(
+    showCode => {
+      dispatch({ type: 'SHOW_CODE', show: showCode });
+    },
+    [dispatch],
+  );
 
-  // handleShowJSONTreeChange = showJSONTree => {
-  //   this.setState({ showJSONTree });
-  // };
-
-  const handleDragStart = React.useCallback((info, e) => {
-    dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
-    dispatch({ type: 'DRAG_START', component: resolveDraggingElement(info.displayName) });
-  }, []);
+  const handleDragStart = React.useCallback(
+    (info, e) => {
+      dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
+      dispatch({ type: 'DRAG_START', component: resolveDraggingElement(info.displayName) });
+    },
+    [dispatch],
+  );
 
   const handleDragAbort = React.useCallback(() => {
     dispatch({ type: 'DRAG_ABORT' });
-  }, []);
+  }, [dispatch]);
 
   const handleDrag = React.useCallback((e: MouseEvent) => {
     dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
@@ -271,7 +317,7 @@ export const Designer: React.FunctionComponent = () => {
       dropParent: dragAndDropData.current.dropParent,
       dropIndex: dragAndDropData.current.dropIndex,
     });
-  }, []);
+  }, [dispatch]);
 
   const handleDropPositionChange = React.useCallback((dropParent, dropIndex) => {
     debug('handleDropPositionChange', { dropIndex, dropParent });
@@ -280,59 +326,58 @@ export const Designer: React.FunctionComponent = () => {
     dragAndDropData.current.dropIndex = dropIndex;
   }, []);
 
-  const handleSelectComponent = React.useCallback(jsonTreeElement => {
-    dispatch({
-      type: 'SELECT_COMPONENT',
-      component: jsonTreeElement,
-    });
-  }, []);
+  const handleSelectComponent = React.useCallback(
+    jsonTreeElement => {
+      dispatch({
+        type: 'SELECT_COMPONENT',
+        component: jsonTreeElement,
+      });
+    },
+    [dispatch],
+  );
 
-  const handlePropChange = React.useCallback(({ jsonTreeElement, name, value }) => {
-    dispatch({
-      type: 'PROP_CHANGE',
-      component: jsonTreeElement,
-      propName: name,
-      propValue: value,
-    });
-  }, []);
+  const handlePropChange = React.useCallback(
+    ({ jsonTreeElement, name, value }) => {
+      dispatch({
+        type: 'PROP_CHANGE',
+        component: jsonTreeElement,
+        propName: name,
+        propValue: value,
+      });
+    },
+    [dispatch],
+  );
 
-  const handleCloneComponent = React.useCallback((e: MouseEvent) => {
-    dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
-    dispatch({ type: 'DRAG_CLONE' });
-  }, []);
+  const handleCloneComponent = React.useCallback(
+    (e: MouseEvent) => {
+      dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
+      dispatch({ type: 'DRAG_CLONE' });
+    },
+    [dispatch],
+  );
 
-  const handleMoveComponent = React.useCallback((e: MouseEvent) => {
-    dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
-    dispatch({ type: 'DRAG_MOVE' });
-  }, []);
+  const handleMoveComponent = React.useCallback(
+    (e: MouseEvent) => {
+      dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
+      dispatch({ type: 'DRAG_MOVE' });
+    },
+    [dispatch],
+  );
 
   const handleDeleteComponent = React.useCallback(() => {
     dispatch({ type: 'DELETE_SELECTED_COMPONENT' });
-  }, []);
+  }, [dispatch]);
 
   const handleGoToParentComponent = React.useCallback(() => {
     dispatch({ type: 'SELECT_PARENT' });
-  }, []);
+  }, [dispatch]);
 
-  // handleSourceCodeChange = code => {
-  //   try {
-  //     const modifiedTree = codeToTree(code);
-  //     this.setState({
-  //       jsonTree: modifiedTree,
-  //       code,
-  //       codeError: null,
-  //       selectedJSONTreeElement: null,
-  //       selectedComponentInfo: null,
-  //     });
-  //   } catch (e) {
-  //     this.setState({
-  //       code,
-  //       codeError: e.message,
-  //       selectedJSONTreeElement: null,
-  //       selectedComponentInfo: null,
-  //     });
-  //   }
-  // };
+  const handleSourceCodeChange = React.useCallback(
+    code => {
+      dispatch({ type: 'SOURCE_CODE_CHANGE', code });
+    },
+    [dispatch],
+  );
 
   const getShareableLink = React.useCallback(() => {
     return writeTreeToURL(jsonTree, window.location.href);
@@ -341,56 +386,7 @@ export const Designer: React.FunctionComponent = () => {
   const switchToStore = React.useCallback(() => {
     dispatch({ type: 'SWITCH_TO_STORE' });
     // FIXME: remove tree_lz from current URL
-  }, []);
-
-  // D&D
-  //const draggingElement = null;
-  // const handleDrag = () => {};
-  // const handleDragAbort = () => {};
-  // const handleDragStart = () => {};
-
-  // TOOLBAR
-  // const isExpanding = true;
-  // const isSelecting = true;
-  // const mode: DesignerMode = 'build';
-  // const handleIsExpandingChange = () => {};
-  const handleShowCodeChange = () => {};
-  // const handleShowJSONTreeChange = () => {};
-  // const handleReset = () => {};
-  // const handleModeChange = () => {};
-  const showCode = false;
-  // const showJSONTree = false;
-
-  // MAIN
-  // const jsonTree = readTreeFromStore();
-  // const selectedJSONTreeElement = null;
-  // const jsonTreeOrigin: JSONTreeOrigin = 'store';
-  const code = null;
-  // const handleSelectComponent = () => {};
-  // const handleCloneComponent = () => {};
-  // const handleMoveComponent = () => {};
-  // const handleDeleteComponent = () => {};
-
-  // const switchToStore = () => {};
-  // const getShareableLink = () => 'not implemented';
-
-  // CANVAS
-  // const handleDrag = () => {};
-  // const handleCanvasMouseUp = () => {};
-  // const handleSelectComponent = () => {};
-  // const handleDropPositionChange = () => {};
-  // const handleCloneComponent = () => {};
-  // const handleMoveComponent = () => {};
-  // const handleDeleteComponent = () => {};
-  // const handleGoToParentComponent = () => {};
-
-  // CODE EDITOR
-  const codeError = null;
-  const handleSourceCodeChange = () => {};
-
-  // PROPS EDITOR
-  // const selectedComponentInfo = undefined;
-  // const handlePropChange = () => {};
+  }, [dispatch]);
 
   const selectedComponent =
     !draggingElement &&
