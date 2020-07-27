@@ -12,6 +12,63 @@ type FiberNavigator = FUI.FiberNavigator;
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
+export const COMPONENT_GROUPS = [
+  'Surfaces',
+  'Content',
+  'Layout',
+  'Forms',
+  'Actionable',
+  'Containers',
+  'Utilities',
+  'Other',
+];
+
+export const GET_COMPONENT_GROUP_INDEX = {
+  Popup: 0,
+  Dialog: 0,
+  Portal: 0,
+  Text: 1,
+  Image: 1,
+  Avatar: 1,
+  Header: 1,
+  Divider: 1,
+  Embed: 1,
+  Alert: 1,
+  Label: 1,
+  Loader: 1,
+  Reaction: 1,
+  Chat: 1,
+  SvgIcon: 1,
+  Status: 1,
+  Tooltip: 1,
+  Video: 1,
+  Box: 2,
+  Flex: 2,
+  Grid: 2,
+  Layout: 2,
+  Input: 3,
+  Dropdown: 3,
+  Form: 3,
+  Checkbox: 3,
+  RadioGroup: 3,
+  Slider: 3,
+  TextArea: 3,
+  Button: 4,
+  MenuButton: 4,
+  SplitButton: 4,
+  Menu: 4,
+  Toolbar: 4,
+  Card: 5,
+  Carousel: 5,
+  Accordion: 5,
+  Segment: 5,
+  List: 5,
+  Tree: 5,
+  HierarchicalTree: 5,
+  Debug: 6,
+  Ref: 6,
+};
+
 export const DRAGGING_ELEMENTS = {
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
