@@ -1,5 +1,11 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../../Styling';
+import {
+  ITheme,
+  concatStyleSets,
+  getFocusStyle,
+  HighContrastSelector,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
@@ -119,7 +125,17 @@ export const getStyles = memoizeFunction(
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: semanticColors.disabledBodySubtext,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'GrayText',
+              },
+            },
           },
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            backgroundColor: 'Window',
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
 
@@ -209,6 +225,9 @@ export const getStyles = memoizeFunction(
 
       menuIcon: {
         color: p.neutralSecondary,
+        [HighContrastSelector]: {
+          color: 'GrayText',
+        },
       },
     };
 

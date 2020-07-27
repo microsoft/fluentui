@@ -75,20 +75,26 @@ export const getStyles = memoizeFunction(
           selectors: {
             ':hover': noOutline,
             ':focus': noOutline,
-            [HighContrastSelector]: {
-              color: 'grayText',
-              borderColor: 'grayText',
-            },
           },
         },
       ],
 
       iconDisabled: {
         color: disabledText,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+          },
+        },
       },
 
       menuIconDisabled: {
         color: disabledText,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+          },
+        },
       },
 
       flexContainer: {

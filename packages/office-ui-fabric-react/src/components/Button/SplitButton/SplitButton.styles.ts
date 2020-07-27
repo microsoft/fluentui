@@ -1,5 +1,12 @@
 import { IButtonStyles } from '../Button.types';
-import { HighContrastSelector, ITheme, concatStyleSets, getFocusStyle, IStyle } from '../../../Styling';
+import {
+  HighContrastSelector,
+  ITheme,
+  concatStyleSets,
+  getFocusStyle,
+  IStyle,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
 export const getStyles = memoizeFunction(
@@ -44,6 +51,7 @@ export const getStyles = memoizeFunction(
                   backgroundColor: 'WindowText',
                   MsHighContrastAdjust: 'none',
                 },
+                ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
             '.ms-Button--primary + .ms-Button': {
@@ -158,11 +166,19 @@ export const getStyles = memoizeFunction(
               },
             },
           },
+          '.ms-Button-menuIcon': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'GrayText',
+              },
+              ...getEdgeChromiumNoHighContrastAdjustSelector(),
+            },
+          },
           [HighContrastSelector]: {
-            border: `1px solid GrayText`,
             color: 'GrayText',
             backgroundColor: 'Window',
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
 
