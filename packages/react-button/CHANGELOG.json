@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/react-button_v0.7.9",
+      "version": "0.7.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update react-button to use common-styles",
+            "author": "behowell@microsoft.com",
+            "commit": "639c468815c9e389eb3002fa54acc159b3fae048",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jul 2020 12:38:41 GMT",
       "tag": "@fluentui/react-button_v0.7.3",
       "version": "0.7.3",

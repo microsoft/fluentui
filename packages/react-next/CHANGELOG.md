@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.69)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.68..@fluentui/react-next_v8.0.0-alpha.69)
+
+### Changes
+
+- Move ThemeProvider from react-next to react-theme-provider's Compat folder ([PR #14187](https://github.com/microsoft/fluentui/pull/14187) by behowell@microsoft.com)
 
 ## [8.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.68)
 
