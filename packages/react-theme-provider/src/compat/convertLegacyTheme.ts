@@ -1,5 +1,6 @@
-import { Theme } from '@fluentui/react-theme-provider';
-import { memoizeFunction, IPartialTheme } from 'office-ui-fabric-react';
+import { Theme } from '../index';
+import { memoizeFunction } from '@uifabric/utilities';
+import { IPartialTheme } from '@uifabric/styling';
 
 /**
  * Convert legacy ITheme to new Theme.

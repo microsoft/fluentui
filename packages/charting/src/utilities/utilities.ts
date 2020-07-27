@@ -225,13 +225,13 @@ export function calloutData(values: ILineChartPoints[]) {
       e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
       index: number,
     ) => {
-      e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
+      e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
       const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
       combinedResult
         .slice(index + 1)
         .forEach(
           (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
-            e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
+            e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
             if (e1.x === e2.x) {
               filteredValues.push({
                 legend: e2.legend,

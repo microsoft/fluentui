@@ -13,8 +13,10 @@ export interface IDay {
   isToday: boolean;
   /** Is current date is selected */
   isSelected: boolean;
-  /** Is current date within restriction bboundaries */
+  /** Is current date within restriction boundaries */
   isInBounds: boolean;
+  /** Is current date marked */
+  isMarked: boolean;
 }
 
 export interface IAvailableDateOptions extends IRestrictedDatesOptions {
@@ -82,6 +84,11 @@ export interface IDatepickerOptions extends IRestrictedDatesOptions {
    * If `dateRangeType` is not WorkWeek this property does nothing.
    */
   workWeekDays?: DayOfWeek[];
+
+  /**
+   * Which days in the generated grid should be marked.
+   */
+  markedDays?: Date[];
 }
 
 export interface IDayGridOptions extends IDatepickerOptions {
