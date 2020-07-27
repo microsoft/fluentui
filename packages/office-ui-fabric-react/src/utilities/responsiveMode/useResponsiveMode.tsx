@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getWindow } from '@uifabric/utilities';
-import { useConstCallback, useOnEvent } from '@uifabric/react-hooks';
+import { useOnEvent } from '@uifabric/react-hooks';
 import { ResponsiveMode } from './withResponsiveMode.types';
 
 const RESPONSIVE_MAX_CONSTRAINT = [479, 639, 1023, 1365, 1919, 99999999];
