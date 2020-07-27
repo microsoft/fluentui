@@ -16,10 +16,13 @@ describe('Async', () => {
     beforeEach(() => {
       jest.useFakeTimers();
 
-      callCount = 0;
       async = new Async();
-      fn.mockClear();
       debouncedFn = async.debounce(fn, 100);
+    });
+
+    afterEach(() => {
+      callCount = 0;
+      fn.mockClear();
     });
 
     it('should debounce multiple calls', () => {
