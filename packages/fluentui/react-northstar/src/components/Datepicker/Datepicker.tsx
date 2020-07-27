@@ -94,7 +94,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
-  const dateSelectionErrorString = 'A date selection is required';
   const datepickerRef = React.useRef<HTMLElement>();
   const [openState, setOpenState] = useAutoControlled<OpenState>({
     defaultValue: props.defaultCalendarOpenState ? OpenState.Open : OpenState.Closed,
@@ -104,7 +103,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const [formattedDate, setFormattedDate] = React.useState<string>('');
   const [error, setError] = React.useState<string>(() =>
-    props.required && !selectedDate ? dateSelectionErrorString : '',
+    props.required && !selectedDate ? props.isRequiredErrorMessage : '',
   );
 
   const { calendar, popup, className, design, styles, variables, formatMonthDayYear } = props;
@@ -216,16 +215,16 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     setFormattedDate(target.value);
     if (parsedDate) {
       if (isRestrictedDate(parsedDate, calendarOptions)) {
-        setError('The selected date is from the restricted range.');
+        setError(props.isOutOfBoundsErrorMessage);
       } else {
         setError('');
         setSelectedDate(parsedDate);
         _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
       }
     } else if (target.value) {
-      setError('Manually entered date is not in correct format.');
+      setError(props.invalidInputErrorMessage);
     } else if (props.required && !selectedDate) {
-      setError(dateSelectionErrorString);
+      setError(props.isRequiredErrorMessage);
     } else {
       setError('');
     }
@@ -340,6 +339,11 @@ Datepicker.defaultProps = {
   required: false,
 
   ...DEFAULT_CALENDAR_STRINGS,
+
+  // TODO: move defaults to date-time-utilities
+  isRequiredErrorMessage: 'A date selection is required',
+  invalidInputErrorMessage: 'Manually entered date is not in correct format.',
+  isOutOfBoundsErrorMessage: 'The selected date is from the restricted range.',
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;
