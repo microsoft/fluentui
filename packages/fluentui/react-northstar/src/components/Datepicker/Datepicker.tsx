@@ -67,7 +67,7 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   placeholder?: string;
 
   /** Target dates can be also entered through the input field. */
-  allowTextInput?: boolean;
+  allowManualInput?: boolean;
 
   /** Should calendar be initially opened or closed. */
   defaultCalendarOpenState?: boolean;
@@ -205,7 +205,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       setOpenState(OpenState.Open);
     } else if (openState === OpenState.Open || openState === OpenState.Closing) {
       // Keep popup open in case we can only enter the date through calendar.
-      if (props.allowTextInput) {
+      if (props.allowManualInput) {
         setOpenState(OpenState.Closed);
       } else {
         setOpenState(OpenState.Open);
@@ -245,7 +245,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         >
           {createShorthand(Input, input, {
             defaultProps: () => ({
-              disabled: props.disabled || !props.allowTextInput,
+              disabled: props.disabled || !props.allowManualInput,
               error: !!error,
               value: formattedDate,
             }),
@@ -288,7 +288,7 @@ Datepicker.propTypes = {
   required: PropTypes.bool,
   onDateChange: PropTypes.func,
   placeholder: PropTypes.string,
-  allowTextInput: PropTypes.bool,
+  allowManualInput: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
 
   minDate: PropTypes.instanceOf(Date),
@@ -343,7 +343,7 @@ Datepicker.defaultProps = {
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
 
-  allowTextInput: true,
+  allowManualInput: true,
   defaultCalendarOpenState: false,
   required: false,
 
