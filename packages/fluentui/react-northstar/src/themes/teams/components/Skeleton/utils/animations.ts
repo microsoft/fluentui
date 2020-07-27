@@ -10,23 +10,17 @@ export const getAnimations = (backgroundColor: string): Record<string, ICSSInJSS
     },
   },
   wave: {
-    position: 'relative',
-    overflow: 'hidden',
-    '::after': {
-      animationName: wave,
+    '> span': {
+      position: 'static',
+      overflow: 'hidden',
       animationDuration: '2s',
-      clipPat: 'contents',
-      animationDelay: '0.5s',
-      animationTimingFunction: 'linear',
+      animationName: wave,
       animationIterationCount: 'infinite',
-      background: `linear-gradient(280deg, transparent, ${backgroundColor}, transparent)`,
-      content: '""',
-      position: 'absolute',
-      transform: 'translateX(-100%)',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      top: 0,
+      backgroundColor: '#FFFFFF',
+      backgroundImage:
+        'linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%)',
+      backgroundSize: '1200px 100%',
+      maxWidth: '30rem',
     },
   },
 

@@ -14,6 +14,8 @@ export const skeletonLineStyles: ComponentSlotStylesPrepared<SkeletonLineStylesP
       display: 'block',
       width: p.width,
       height: p.height,
+      marginTop: v.marginLineTop,
+      marginBottom: v.marginLineBottom,
       backgroundColor: colorScheme.default.background4,
     };
   },
