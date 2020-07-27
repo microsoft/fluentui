@@ -116,7 +116,7 @@ const A11YPROPS: ComponentProp[] = [
     types: [{ name: 'string' }],
   },
   {
-    name: 'tabindex',
+    name: 'tabIndex',
     required: false,
     defaultValue: 0,
     tags: [],
