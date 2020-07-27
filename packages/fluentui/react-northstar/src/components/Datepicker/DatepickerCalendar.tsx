@@ -192,6 +192,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     rtl: context.rtl,
   });
 
+  // TODO: make new date instances, so they are less mutable
   const [gridNavigatedDate, setGridNavigatedDate] = React.useState<Date>(navigatedDate || today || new Date());
 
   const { classes } = useStyles<DatepickerCalendarStylesProps>(DatepickerCalendar.displayName, {
@@ -215,31 +216,12 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const grid = getDayGrid(gridOptions);
   const visibledGrid = grid.slice(1, grid.length - 1); // slicing off first and last weeks, cause we don't use them for transitions
-  const getInitialFocusDate = () => {
-    if (selectedDate) {
-      const normalizedSelectedDate = new Date(selectedDate.toString());
-      normalizedSelectedDate.setHours(0);
-      normalizedSelectedDate.setMinutes(0);
-      normalizedSelectedDate.setSeconds(0);
-      normalizedSelectedDate.setMilliseconds(0);
-      return normalizedSelectedDate;
-    }
-    const todayDate = _.flatten(visibledGrid).find(day => day.isToday);
-    return todayDate.originalDate;
-  };
-  const [focusedDate, setFocusedDate] = React.useState<Date>(getInitialFocusDate());
+  const focusDateRef = React.useRef(null);
 
   const changeMonth = (nextMonth: boolean) => {
     const updatedGridNavigatedDate = addMonths(gridNavigatedDate, nextMonth ? 1 : -1);
     setGridNavigatedDate(updatedGridNavigatedDate);
-    setFocusedDate(updatedGridNavigatedDate);
   };
-
-  const itemRefs = React.useMemo<Map<string, React.RefObject<HTMLElement>>>(() => {
-    const refs = new Map<string, React.RefObject<HTMLElement>>();
-    _.map(visibledGrid, week => _.map(week, (day: IDay) => (refs[day.key] = React.createRef())));
-    return refs;
-  }, [visibledGrid]);
 
   const handleKeyDown = (e, day) => {
     const keyCode = getCode(e);
@@ -281,19 +263,15 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     });
     if (!dayInGrid(visibledGrid, newNavigateDate)) {
       setGridNavigatedDate(newNavigateDate);
-      setFocusedDate(newNavigateDate);
       e.preventDefault();
     }
   };
 
   React.useEffect(() => {
-    if (focusedDate) {
-      const cellToFocus = itemRefs[focusedDate.toString()];
-      if (cellToFocus?.current) {
-        cellToFocus.current.focus();
-      }
+    if (focusDateRef.current) {
+      focusDateRef.current.focus();
     }
-  }, [focusedDate, itemRefs]);
+  }, [grid]);
 
   const renderWeekRow = week =>
     _.map(week, (day: IDay) =>
@@ -305,7 +283,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             'aria-label': formatMonthDayYear(day.originalDate, localizedStrings),
             selected: day.isSelected,
             disabled: !day.isInMonth,
-            ref: itemRefs[day.key],
+            ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
