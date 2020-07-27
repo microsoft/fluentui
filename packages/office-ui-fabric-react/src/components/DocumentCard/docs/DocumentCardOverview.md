@@ -1,1 +1,1 @@
-A DocumentCard is a card representation of a file. This is usually richer than just seeing the file in a grid view, as the card can contain additional metadata or actions.
+A document card (`DocumentCard`) represents a file, and contains additional metadata or actions. This offers people a richer view into a file than the typical grid view.

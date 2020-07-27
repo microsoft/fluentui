@@ -2,6 +2,105 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "office-ui-fabric-react_v7.123.10",
+      "version": "7.123.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding wrapper for isConformant package",
+            "author": "esteban.230@hotmail.com",
+            "commit": "fdc095fd93f528381650e1215bcf2bfe1ff9acf6",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "office-ui-fabric-react_v7.123.9",
+      "version": "7.123.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ScrollablePane: fix pointer events on sticky'd elements",
+            "author": "edwl@microsoft.com",
+            "commit": "89ef7eab4d2f574977bf83256bde78d65e6f92da",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add high contrast adjust selector to dropdown styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ba783ab53821e4a70f61f823e87ca240a9665a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "office-ui-fabric-react_v7.123.7",
+      "version": "7.123.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated doc content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "fe2f59ab230033eeaca58bc7c16d5096d922faf7",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add :after styles to fix ratio of suggested items in PeoplePicker on keyboard focus",
+            "author": "ololubek@microsoft.com",
+            "commit": "4dac03be0750dc8f25b336c5b506ee923eaf5ee5",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "office-ui-fabric-react_v7.123.6",
+      "version": "7.123.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: fix exception in DetailsRow when selection is undefined.",
+            "author": "xgao@microsoft.com",
+            "commit": "3a9feb3725b79ed39a5c080906da8957e6f1aec0",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "add document role to child of modal to fix VoiceOver issue",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4a6bdec34f0858cec60de3701005ea0706f79d48",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Jul 2020 00:04:51 GMT",
+      "tag": "office-ui-fabric-react_v7.123.4",
+      "version": "7.123.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: pass missing event to onDismiss.",
+            "author": "xgao@microsoft.com",
+            "commit": "5874c5755ea454adb9bbea9a5273f1cae5203eda",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jul 2020 21:33:40 GMT",
       "tag": "office-ui-fabric-react_v7.123.2",
       "version": "7.123.2",

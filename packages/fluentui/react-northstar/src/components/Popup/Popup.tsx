@@ -86,6 +86,7 @@ export interface PopupProps
 
   /**
    * Function to render popup content.
+   * @deprecated Please use `popperRef` to get an imperative handle to Popper's APIs.
    * @param updatePosition - function to request popup position update.
    */
   renderContent?: (updatePosition: Function) => ShorthandValue<PopupContentProps>;
@@ -138,6 +139,7 @@ export const Popup: React.FC<PopupProps> &
     offset,
     overflowBoundary,
     pointing,
+    popperRef,
     position,
     positionFixed,
     renderContent,
@@ -352,7 +354,7 @@ export const Popup: React.FC<PopupProps> &
     }
 
     /**
-     * The hover is adding the mouseEnter, mouseLeave and click event (always opening on click)
+     * The hover is adding the mouseEnter, mouseLeave
      */
     if (_.includes(normalizedOn, 'hover')) {
       contentHandlerProps.onMouseEnter = (e, contentProps) => {
@@ -362,10 +364,6 @@ export const Popup: React.FC<PopupProps> &
       contentHandlerProps.onMouseLeave = (e, contentProps) => {
         setPopupOpen(false, e);
         predefinedProps && _.invoke(predefinedProps, 'onMouseLeave', e, contentProps);
-      };
-      contentHandlerProps.onClick = (e, contentProps) => {
-        setPopupOpen(true, e);
-        predefinedProps && _.invoke(predefinedProps, 'onClick', e, contentProps);
       };
     }
 
@@ -520,6 +518,7 @@ export const Popup: React.FC<PopupProps> &
           pointerTargetRef={pointerTargetRef}
           align={align}
           flipBoundary={flipBoundary}
+          popperRef={popperRef}
           position={position}
           positionFixed={positionFixed}
           offset={offset}
@@ -527,8 +526,9 @@ export const Popup: React.FC<PopupProps> &
           rtl={context.rtl}
           unstable_pinned={unstable_pinned}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
-          children={renderPopperChildren(classes)}
-        />
+        >
+          {renderPopperChildren(classes)}
+        </Popper>
       )}
     </Animation>
   );
@@ -565,6 +565,7 @@ Popup.propTypes = {
     PropTypes.func,
     PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
   ]),
+  popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
     PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,

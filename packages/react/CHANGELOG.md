@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 12 May 2020 23:23:51 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.123.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.123.9)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.122.0..@fluentui/react_v7.123.9)
+
+### Patches
+
+- Add missing dist/sass and dist/css content. ([PR #14202](https://github.com/microsoft/fluentui/pull/14202) by xgao@microsoft.com)
 
 ## [7.113.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.113.0)
 

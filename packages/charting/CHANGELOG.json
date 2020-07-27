@@ -2,6 +2,63 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@uifabric/charting_v2.7.6",
+      "version": "2.7.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "63dfc9eb7a361002f8d7eb123272f1957e718340",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@uifabric/charting_v2.7.4",
+      "version": "2.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calling grouped vertical bar chart method in did mount and updated height proprty as if negtiva values apper, then need to sent 0 to eliminate unwanted console warnings.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "68f77ba470b728bc947d37c4f2d3754d82f5bb3a",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Fix Line chart render with empty array of data + a event annotation, the chart throws a strange formatting exception.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "f8def98981f2eba795fb88afd3887fedc0b56a9c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/charting_v2.7.2",
+      "version": "2.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting: Fix sankey chart dark mode text not visble properly",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "7485a3728d69f54dfdc2e1778811065938ddbd20",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Updating valueInsideDonut to be set to yAxisCalloutData if the value is defined",
+            "author": "57419611+hki-237@users.noreply.github.com",
+            "commit": "1c3012b212603f34a8bd7b72f43c66176ab27c23",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jul 2020 12:38:41 GMT",
       "tag": "@uifabric/charting_v2.7.0",
       "version": "2.7.0",

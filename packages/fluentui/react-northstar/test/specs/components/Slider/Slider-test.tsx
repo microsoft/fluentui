@@ -1,16 +1,9 @@
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
-import { isConformant as newIsConformant } from '@fluentui/react-conformance';
-import { mountWithProvider as mount } from 'test/utils';
+import { sharedIsConformant } from 'test/utils';
 import { Slider } from 'src/components/Slider/Slider';
 
 describe('Slider', () => {
-  newIsConformant({
-    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
-    Component: Slider,
-    displayName: 'Slider',
-    customMount: mount,
-    disabledTests: ['has-docblock', 'has-top-level-file'],
-  });
+  sharedIsConformant({ Component: Slider, displayName: 'Slider' }, __filename);
 
   isConformant(Slider, {
     constructorName: 'Slider',

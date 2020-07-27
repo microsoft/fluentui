@@ -119,7 +119,7 @@ exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
               }
           data-is-focusable={true}
           fill="rgb(0, 32, 80)"
-          height={-55}
+          height={0}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseLeave={[Function]}

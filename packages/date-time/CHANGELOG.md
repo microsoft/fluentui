@@ -1,8 +1,30 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.0)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.12.0..@uifabric/date-time_v7.13.0)
+
+### Minor changes
+
+- adding ability to mark calendar days with a callback function ([PR #14074](https://github.com/microsoft/fluentui/pull/14074) by lorejoh12@gmail.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.12.0)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.11.5..@uifabric/date-time_v7.12.0)
+
+### Minor changes
+
+- fix next and previous month/week aria labels in weekly day picker, export new default strings ([PR #14073](https://github.com/microsoft/fluentui/pull/14073) by lorejoh12@gmail.com)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14098](https://github.com/microsoft/fluentui/pull/14098) by elcraig@microsoft.com)
 
 ## [7.11.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.11.2)
 

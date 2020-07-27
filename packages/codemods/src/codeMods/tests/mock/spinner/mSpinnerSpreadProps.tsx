@@ -23,9 +23,8 @@ export const RenderLetSpinner = (props: any) => {
   return (
     <div>
       <Spinner {...propsTest} id="l">
-        Yoo hoo!
+        Woo hoo!
       </Spinner>
-      {/* include self closing spinner check */}
       <Spinner {...propsTest} />
     </div>
   );
@@ -37,7 +36,6 @@ export const RenderSpinnerProps = (props: ISpinnerProps) => {
       <Spinner {...props} id="pl">
         Spinner
       </Spinner>
-      {/* include self closing Spinner check */}
       <Spinner {...props} />
     </div>
   );
@@ -49,8 +47,9 @@ export function RenderSpinnerPropsFunc(props: ISpinnerProps) {
       <Spinner {...props} id="pf">
         Spinner
       </Spinner>
-      {/* include self closing Spinner check */}
       <Spinner {...props} />
     </div>
   );
 }
+
+export const RenderSpinnerPropsArrow = (props: ISpinnerProps): any => <Spinner {...props} />;

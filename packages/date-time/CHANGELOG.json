@@ -2,6 +2,59 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@uifabric/date-time_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding ability to mark calendar days with a callback function",
+            "author": "lorejoh12@gmail.com",
+            "commit": "4f6d22e0094842f600d122cc6eba05075919ed5b",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@uifabric/date-time_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix next and previous month/week aria labels in weekly day picker, export new default strings",
+            "author": "lorejoh12@gmail.com",
+            "commit": "44b99ab5e98f0c80e10b0d141a54903a328be450",
+            "package": "@uifabric/date-time"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "2534fd78ec65b88a5049c7d2d9e54d1103159852",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@uifabric/date-time_v7.11.5",
+      "version": "7.11.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable react-hooks lint rules for now",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jul 2020 21:33:40 GMT",
       "tag": "@uifabric/date-time_v7.11.2",
       "version": "7.11.2",

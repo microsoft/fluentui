@@ -1,8 +1,26 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.6.2)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.6.1..@uifabric/react-hooks_v7.6.2)
+
+### Patches
+
+- Fix rules of hooks issues, make useForceUpdate always return the same value, and update docs ([PR #14099](https://github.com/microsoft/fluentui/pull/14099) by elcraig@microsoft.com)
+
+## [7.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.6.0)
+
+Mon, 20 Jul 2020 12:44:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.5.4..@uifabric/react-hooks_v7.6.0)
+
+### Minor changes
+
+- Add useRefEffect hook to the react-hooks package. ([PR #14054](https://github.com/microsoft/fluentui/pull/14054) by behowell@microsoft.com)
 
 ## [7.5.3](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.5.3)
 

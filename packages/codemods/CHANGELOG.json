@@ -2,6 +2,82 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@fluentui/codemods_v0.6.2",
+      "version": "0.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix documentation",
+            "author": "t-dama@microsoft.com",
+            "commit": "9f24389e2d1ec68a2555df860518273330e0e62a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/codemods_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix conflicts with new maybe",
+            "author": "t-dama@microsoft.com",
+            "commit": "a9f932261132ead0df90ac81614068e9b0951824",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@fluentui/codemods_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Maybe: Improve chainability and readability.",
+            "author": "joschect@microsoft.com",
+            "commit": "a70f15f2724d572e515bfe7f97cda751f8bc69a7",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add general transforms that work with spread",
+            "author": "t-dama@microsoft.com",
+            "commit": "f7feb25732b3c959b6da4abd5a6c1dcb020c16a3",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@fluentui/codemods_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Codemods: Add in filtering based on cmd line strings",
+            "author": "joschect@microsoft.com",
+            "commit": "817557b56584d665e7a697d5d81d3b581815241d",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add support for components rendered without a function body",
+            "author": "t-dama@microsoft.com",
+            "commit": "dd5f32f6b039d1426a73ad686bf87750cfbc4aaa",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jul 2020 12:38:41 GMT",
       "tag": "@fluentui/codemods_v0.4.0",
       "version": "0.4.0",

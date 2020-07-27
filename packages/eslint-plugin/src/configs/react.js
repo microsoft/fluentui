@@ -108,6 +108,8 @@ const config = {
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
 
     // airbnb or other config overrides (some temporary)
     // TODO: determine which rules we want to enable, and make needed changes (separate PR)
@@ -193,9 +195,6 @@ const config = {
     'react/static-property-placement': 'off',
     'spaced-comment': 'off',
 
-    // Enable ASAP (not done in this PR to make resulting changes reviewable)
-    'react-hooks/exhaustive-deps': 'off',
-    'react-hooks/rules-of-hooks': 'off',
     // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
     // but this is a very powerful rule we may want to use in other ways
     'no-restricted-syntax': 'off',
