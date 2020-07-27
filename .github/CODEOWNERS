@@ -25,9 +25,8 @@ jest.config.js @ecraig12345
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
 LICENSE @ecraig12345
-azure-pipelines.yml @ecraig12345
-azure-pipelines.*.yml @ecraig12345
-.appveyor.yml @ecraig12345
+*.yml @ecraig12345
+.eslintrc.* @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
 sizeauditor.json @aftab-hassan

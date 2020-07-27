@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Thu, 23 Jul 2020 12:43:51 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.3.0)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.2.0..@fluentui/date-time-utilities_v7.3.0)
+
+### Minor changes
+
+- adding isMarked to API to mark days in grid ([PR #14074](https://github.com/microsoft/fluentui/pull/14074) by lorejoh12@gmail.com)
 
 ## [7.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.2.0)
 

@@ -35,7 +35,7 @@
   }
 }
 
-@mixin focus-border($padding: 0, $color: $focusBorderColor, $thickness: 1px, $onFocus: true, $position: relative) {
+@mixin focus-border($padding: 0, $color: $focusBorderColor, $thickness: 1px, $radius: 0, $onFocus: true, $position: relative) {
   @include focus-clear();
 
   & {
@@ -45,13 +45,14 @@
 
   @include focus($onFocus) {
     &:after {
-      @include after-outline($padding, $color, $thickness);
+      @include after-outline($padding, $color, $thickness, $radius);
     }
   }
 }
 
 // When focus is set using the keyboard, apply an outline.
-@mixin after-outline ($padding: 0, $color: $focusBorderColor, $thickness: 1px) {
+@mixin after-outline ($padding: 0, $color: $focusBorderColor, $thickness: 1px, $radius: 0) {
+    box-sizing: border-box;
     content: '';
     position: absolute;
     top: $padding;
@@ -62,10 +63,35 @@
     // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
     pointer-events: none;
 
-    // Add focus border with $color
+    // Add focus border with $color and border-radius with $radius
     border: $thickness solid $color;
+    border-radius: $radius;
 }
 
+@mixin focus-box-shadow($hOffset: 0, $vOffset: 0, $blur: 0, $thickness: 1px, $color: $focusBorderColor, $onFocus: true, $position: relative) {
+  & {
+    position: $position;
+  }
+
+  @include focus($onFocus) {
+    &:after {
+      @include after-box-shadow($hOffset, $vOffset, $blur, $thickness, $color)
+    }
+  }
+}
+
+// When focus is set using the keyboard, apply a boxShadow.
+@mixin after-box-shadow ($hOffset: 0, $vOffset:0, $blur: 0, $thickness: 1px, $color: $focusBorderColor) {
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+
+  // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
+  pointer-events: none;
+
+  // Add focus border with $color
+  box-shadow: $hOffset $vOffset $blur $thickness $color inset;
+}
 
 // When focus is set using the keyboard, apply an outline.
 @mixin focus-outline {
