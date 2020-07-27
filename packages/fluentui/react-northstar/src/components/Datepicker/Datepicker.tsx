@@ -50,7 +50,7 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   disabled?: boolean;
 
   /** Datepicker shows it is currently unable to be interacted with. */
-  isRequired?: boolean;
+  required?: boolean;
 
   /**
    * Called on change of the date.
@@ -104,7 +104,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const [formattedDate, setFormattedDate] = React.useState<string>('');
   const [error, setError] = React.useState<string>(() =>
-    props.isRequired && !selectedDate ? dateSelectionErrorString : '',
+    props.required && !selectedDate ? dateSelectionErrorString : '',
   );
 
   const { calendar, popup, className, design, styles, variables, formatMonthDayYear } = props;
@@ -224,7 +224,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       }
     } else if (target.value) {
       setError('Manually entered date is not in correct format.');
-    } else if (props.isRequired && !selectedDate) {
+    } else if (props.required && !selectedDate) {
       setError(dateSelectionErrorString);
     } else {
       setError('');
@@ -278,7 +278,7 @@ Datepicker.propTypes = {
   popup: customPropTypes.itemShorthand,
 
   disabled: PropTypes.bool,
-  isRequired: PropTypes.bool,
+  required: PropTypes.bool,
   onDateChange: PropTypes.func,
   placeholder: PropTypes.string,
   allowTextInput: PropTypes.bool,
@@ -337,6 +337,7 @@ Datepicker.defaultProps = {
 
   allowTextInput: true,
   defaultCalendarOpenState: false,
+  required: false,
 
   ...DEFAULT_CALENDAR_STRINGS,
 };
