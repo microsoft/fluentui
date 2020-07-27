@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { Theme, useTheme, mergeThemes } from '@fluentui/react-theme-provider';
-import { Customizations } from '../Utilities';
-import { FontWeights } from '../Styling';
+import { Theme, useTheme, mergeThemes } from '../index';
+import { Customizations } from '@uifabric/utilities';
+import { FontWeights } from '@uifabric/styling';
 import { convertLegacyTheme } from './convertLegacyTheme';
 import { ThemeProvider } from './ThemeProvider';
 

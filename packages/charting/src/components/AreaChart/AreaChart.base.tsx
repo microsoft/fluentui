@@ -288,7 +288,8 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
 
   private _onMouseHover = (target: SVGCircleElement, x: number | Date, xAxisCalloutData: string) => {
     const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedDate);
+    const xVal = x instanceof Date ? x.getTime() : x;
+    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === xVal);
     const presentData = found.values[0];
     if (
       this.state.isLegendSelected === false ||
@@ -331,7 +332,8 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
     xAxisCalloutData: string,
   ) => {
     const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedDate);
+    const xVal = x instanceof Date ? x.getTime() : x;
+    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === xVal);
     const presentData = found.values[0];
     if (
       this.state.isLegendSelected === false ||

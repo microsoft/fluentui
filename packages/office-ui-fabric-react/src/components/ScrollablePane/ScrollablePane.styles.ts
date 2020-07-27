@@ -13,7 +13,7 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
-    pointerEvents: 'auto',
+    pointerEvents: 'none',
   };
 
   const positioningStyle: IStyle = {

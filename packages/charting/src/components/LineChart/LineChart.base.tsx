@@ -337,7 +337,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   ) => {
     this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
-    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === formattedData);
+    const xVal = x instanceof Date ? x.getTime() : x;
+    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     const _this = this;
     d3Select('#' + circleId)
       .attr('fill', '#fff')
@@ -369,6 +370,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     mouseEvent.persist();
     this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
+    const xVal = x instanceof Date ? x.getTime() : x;
     const _this = this;
     d3Select(`#${circleId}`)
       .attr('fill', '#fff')
@@ -376,7 +378,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     d3Select(`#${this._verticalLine}`)
       .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
       .attr('visibility', 'visibility');
-    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === formattedData);
+    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     this.setState({
       isCalloutVisible: true,
       refSelected: mouseEvent,

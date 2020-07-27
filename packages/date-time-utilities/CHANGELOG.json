@@ -2,6 +2,36 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding isMarked to API to mark days in grid",
+            "author": "lorejoh12@gmail.com",
+            "commit": "4f6d22e0094842f600d122cc6eba05075919ed5b",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extracting isContiguous days method into a separate file. Adding default localization strings.",
+            "author": "karymes@microsoft.com",
+            "commit": "581a489a857033dfa862e0ba782aba2006f607ac",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@fluentui/date-time-utilities_v7.1.3",
       "version": "7.1.3",

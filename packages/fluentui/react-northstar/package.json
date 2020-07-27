@@ -7,7 +7,7 @@
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/accessibility": "^0.50.0",
-    "@fluentui/date-time-utilities": "^7.1.5",
+    "@fluentui/date-time-utilities": "^7.3.0",
     "@fluentui/keyboard-key": "^0.2.7",
     "@fluentui/react-bindings": "^0.50.0",
     "@fluentui/react-component-event-listener": "^0.50.0",
