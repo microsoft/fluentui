@@ -77,6 +77,9 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
           background-color: WindowText;
           color: Window;
         }
+        @media screen and (forced-colors: active){& .ms-Button--primary {
+          forced-color-adjust: none;
+        }
         & .ms-Button--primary + .ms-Button {
           border: none;
         }

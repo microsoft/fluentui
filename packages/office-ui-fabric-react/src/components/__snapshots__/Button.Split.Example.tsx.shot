@@ -91,6 +91,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             background-color: WindowText;
             color: Window;
           }
+          @media screen and (forced-colors: active){& .ms-Button--primary {
+            forced-color-adjust: none;
+          }
           & .ms-Button--primary + .ms-Button {
             border: none;
           }
@@ -424,6 +427,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
             color: Window;
+          }
+          @media screen and (forced-colors: active){& .ms-Button--primary {
+            forced-color-adjust: none;
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
@@ -778,6 +784,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             background-color: WindowText;
             color: Window;
           }
+          @media screen and (forced-colors: active){& .ms-Button--primary {
+            forced-color-adjust: none;
+          }
           & .ms-Button--primary + .ms-Button {
             border: none;
           }
@@ -1120,6 +1129,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             background-color: WindowText;
             color: Window;
           }
+          @media screen and (forced-colors: active){& .ms-Button--primary {
+            forced-color-adjust: none;
+          }
           & .ms-Button--primary + .ms-Button {
             border: none;
           }
@@ -1307,10 +1319,18 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 border-color: GrayText;
                 color: GrayText;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-menuIcon {
+                color: GrayText;
+              }
+              @media screen and (forced-colors: active){& .ms-Button-menuIcon {
+                forced-color-adjust: none;
+              }
               @media screen and (-ms-high-contrast: active){& {
                 background-color: Window;
-                border: 1px solid GrayText;
                 color: GrayText;
+              }
+              @media screen and (forced-colors: active){& {
+                forced-color-adjust: none;
               }
           data-is-focusable={false}
           disabled={false}
