@@ -34,22 +34,6 @@ import { ErrorBoundary } from './ErrorBoundary';
 
 const HEADER_HEIGHT = '3rem';
 
-export type JSONTreeOrigin = 'store' | 'url';
-export type DesignerState = {
-  draggingElement: JSONTreeElement;
-  isExpanding: boolean;
-  isSelecting: boolean;
-  jsonTree: JSONTreeElement;
-  jsonTreeOrigin: JSONTreeOrigin;
-  mode: DesignerMode;
-  selectedComponentInfo: ComponentInfo;
-  selectedJSONTreeElement: any;
-  showCode: boolean;
-  code: string | null; // only valid if showCode is set to true
-  codeError: string | null;
-  showJSONTree: boolean;
-};
-
 function debug(...args) {
   console.log('--Designer', ...args);
 }
@@ -58,7 +42,9 @@ function getDefaultJSONTree(): JSONTreeElement {
   return { uuid: 'builder-root', type: 'div' };
 }
 
-type DesignerStateF = {
+type JSONTreeOrigin = 'store' | 'url';
+
+type DesignerState = {
   draggingElement: JSONTreeElement;
   jsonTree: JSONTreeElement;
   jsonTreeOrigin: JSONTreeOrigin;
@@ -84,7 +70,7 @@ type DesignerAction =
   | { type: 'SHOW_CODE'; show: boolean }
   | { type: 'SOURCE_CODE_CHANGE'; code: string };
 
-const stateReducer: Reducer<DesignerStateF, DesignerAction> = (draftState, action) => {
+const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
   let treeChanged = false;
 
@@ -220,7 +206,6 @@ function useMode(): [{ mode: DesignerMode; isExpanding: boolean; isSelecting: bo
   return [{ mode, isExpanding, isSelecting }, setMode];
 }
 
-// export class Designer extends React.Component<{}, DesignerState> {
 export const Designer: React.FunctionComponent = () => {
   debug('render');
 
