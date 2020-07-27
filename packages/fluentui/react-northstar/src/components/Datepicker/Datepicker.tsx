@@ -28,7 +28,7 @@ import * as React from 'react';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps } from '../../utils';
 import { Button } from '../Button/Button';
-import { Input } from '../Input/Input';
+import { Input, InputProps } from '../Input/Input';
 import { Popup, PopupProps } from '../Popup/Popup';
 import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 import { DatepickerCalendarCell } from './DatepickerCalendarCell';
@@ -45,6 +45,9 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
 
   /** Shorthand for the datepicker popup. */
   popup?: ShorthandValue<PopupProps>;
+
+  /** Shorthand for the date text input. */
+  input?: ShorthandValue<InputProps>;
 
   /** Datepicker shows it is currently unable to be interacted with. */
   disabled?: boolean;
@@ -90,6 +93,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
     CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
     CalendarCell: typeof DatepickerCalendarCell;
+    Input: typeof Input;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
@@ -106,7 +110,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     props.required && !selectedDate ? props.isRequiredErrorMessage : '',
   );
 
-  const { calendar, popup, className, design, styles, variables, formatMonthDayYear } = props;
+  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear } = props;
   const valueFormatter = date => (date ? formatMonthDayYear(date) : '');
 
   const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
@@ -239,14 +243,17 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             ...unhandledProps,
           })}
         >
-          <Input
-            disabled={props.disabled}
-            error={!!error}
-            readOnly={!props.allowTextInput}
-            onClick={onInputClick}
-            value={formattedDate}
-            onChange={onInputChange}
-          />
+          {createShorthand(Input, input, {
+            defaultProps: () => ({
+              disabled: props.disabled || !props.allowTextInput,
+              error: !!error,
+              value: formattedDate,
+            }),
+            overrideProps: (predefinedProps: InputProps): InputProps => ({
+              onClick: onInputClick,
+              onChange: onInputChange,
+            }),
+          })}
           {createShorthand(Popup, popup, {
             defaultProps: () => ({
               open: openStateToBooleanKnob(openState) && !props.disabled,
@@ -275,6 +282,7 @@ Datepicker.propTypes = {
   ...commonPropTypes.createCommon(),
   calendar: customPropTypes.itemShorthand,
   popup: customPropTypes.itemShorthand,
+  input: customPropTypes.itemShorthand,
 
   disabled: PropTypes.bool,
   required: PropTypes.bool,
@@ -329,6 +337,7 @@ Datepicker.defaultProps = {
   accessibility: datepickerBehavior,
   calendar: {},
   popup: {},
+  input: {},
 
   firstDayOfWeek: DayOfWeek.Sunday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
@@ -355,3 +364,4 @@ Datepicker.CalendarHeader = DatepickerCalendarHeader;
 Datepicker.CalendarHeaderAction = DatepickerCalendarHeaderAction;
 Datepicker.CalendarHeaderCell = DatepickerCalendarHeaderCell;
 Datepicker.CalendarCell = DatepickerCalendarCell;
+Datepicker.Input = Input;
