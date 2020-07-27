@@ -112,7 +112,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
 
-  const calendarOptions = {
+  const calendarOptions: IDayGridOptions = {
     selectedDate: nonNullSelectedDate,
     navigatedDate: nonNullSelectedDate,
     firstDayOfWeek: props.firstDayOfWeek,
@@ -125,9 +125,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     minDate: props.minDate,
     maxDate: props.maxDate,
     restrictedDates: props.restrictedDates,
-  } as IDayGridOptions;
+  };
 
-  const dateFormatting = {
+  const dateFormatting: ICalendarStrings = {
     formatDay: props.formatDay,
     formatYear: props.formatYear,
     formatMonthDayYear: props.formatMonthDayYear,
