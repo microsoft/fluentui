@@ -195,6 +195,7 @@ const stateReducer: Reducer<DesignerStateF, DesignerAction> = (draftState, actio
       draftState.selectedComponentInfo = null;
       try {
         draftState.jsonTree = codeToTree(action.code);
+        draftState.codeError = null;
       } catch (e) {
         draftState.codeError = e.message;
       }
