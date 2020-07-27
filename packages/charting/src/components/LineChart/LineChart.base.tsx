@@ -199,6 +199,7 @@ export class LineChartBase extends React.Component<
       width: this.state.containerWidth,
       height: this.state.containerHeight,
     };
+    const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists();
     return (
       <div
         // eslint-disable-next-line react/jsx-no-bind
@@ -263,12 +264,15 @@ export class LineChartBase extends React.Component<
             id={`toolTip${this._uniqueCallOutID}`}
           >
             <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutDateTimeContainer}>
+              <div className={this._classNames.calloutDateTimeContainer} style={{ marginBottom: '5px' }}>
                 <div className={this._classNames.calloutContentX}>{this.state.hoverXValue} </div>
                 {/*TO DO  if we add time for callout then will use this */}
                 {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
               </div>
-              <div className={this._classNames.calloutInfoContainer}>
+              <div
+                className={this._classNames.calloutInfoContainer}
+                style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
+              >
                 {this.state.YValueHover &&
                   this.state.YValueHover.map(
                     (
@@ -279,7 +283,11 @@ export class LineChartBase extends React.Component<
                         yAxisCalloutData?: string | { [id: string]: number };
                       },
                       index: number,
-                    ) => this._getCalloutContent(xValue, index),
+                    ) => (
+                      <div style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}>
+                        {this._getCalloutContent(xValue, index, yValueHoverSubCountsExists)}
+                      </div>
+                    ),
                   )}
               </div>
             </div>
@@ -287,6 +295,21 @@ export class LineChartBase extends React.Component<
         )}
       </div>
     );
+  }
+
+  private _yValueHoverSubCountsExists() {
+    const { YValueHover } = this.state;
+    if (YValueHover) {
+      return YValueHover.some(
+        (yValue: {
+          legend?: string;
+          y?: number;
+          color?: string;
+          yAxisCalloutData?: string | { [id: string]: number };
+        }) => yValue.yAxisCalloutData && typeof yValue.yAxisCalloutData !== 'string',
+      );
+    }
+    return false;
   }
 
   private _getCalloutContent(
@@ -297,35 +320,55 @@ export class LineChartBase extends React.Component<
       yAxisCalloutData?: string | { [id: string]: number };
     },
     index: number,
+    yValueHoverSubCountsExists: boolean,
   ): React.ReactNode {
+    const commonStyle: React.CSSProperties = {
+      marginRight: '10px',
+    };
+
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
-        <div
-          id={`${index}_${xValue.y}`}
-          className={mergeStyles(this._classNames.calloutBlockContainer, {
-            borderLeft: `4px solid ${xValue.color}`,
-          })}
-        >
-          <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
-          <div className={this._classNames.calloutContentY}>
-            {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+        <div style={yValueHoverSubCountsExists ? commonStyle : {}}>
+          {yValueHoverSubCountsExists && (
+            <div className={this._classNames.calloutContentY}>
+              {xValue.legend!} ({xValue.y})
+            </div>
+          )}
+          <div
+            id={`${index}_${xValue.y}`}
+            className={mergeStyles(this._classNames.calloutBlockContainer, {
+              borderLeft: `4px solid ${xValue.color}`,
+            })}
+          >
+            <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
+            <div className={this._classNames.calloutContentY}>
+              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+            </div>
           </div>
         </div>
       );
     } else {
       const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
-      return Object.keys(subcounts).map((subcountName: string) => {
-        return (
-          <div
-            className={mergeStyles(this._classNames.calloutBlockContainer, {
-              borderLeft: `4px solid ${xValue.color}`,
-            })}
-          >
-            <div className={this._classNames.calloutlegendText}> {subcountName}</div>
-            <div className={this._classNames.calloutContentY}>{subcounts[subcountName]}</div>
+      return (
+        <div style={commonStyle}>
+          <div className={this._classNames.calloutContentY}>
+            {xValue.legend!} ({xValue.y})
           </div>
-        );
-      });
+          {Object.keys(subcounts).map((subcountName: string) => {
+            return (
+              <div
+                key={subcountName}
+                className={mergeStyles(this._classNames.calloutBlockContainer, {
+                  borderLeft: `4px solid ${xValue.color}`,
+                })}
+              >
+                <div className={this._classNames.calloutlegendText}> {subcountName}</div>
+                <div className={this._classNames.calloutContentY}>{subcounts[subcountName]}</div>
+              </div>
+            );
+          })}
+        </div>
+      );
     }
   }
 
@@ -355,7 +398,7 @@ export class LineChartBase extends React.Component<
       let title: string = `${point.legend!}`;
       if (enableLegendTotalCounts && YValueHover && YValueHover.length > 0) {
         YValueHover.forEach(yVal => {
-          if (yVal.legend == point.legend!) {
+          if (yVal.legend === point.legend!) {
             title += ` (${yVal.y})`;
           }
         });
