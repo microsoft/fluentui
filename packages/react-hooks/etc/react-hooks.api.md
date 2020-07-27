@@ -12,44 +12,14 @@ import { Ref } from 'react';
 export type ChangeCallback<TElement extends HTMLElement, TValue> = (ev: React.FormEvent<TElement> | undefined, newValue: TValue | undefined) => void;
 
 // @public
-export const initializeResponsiveMode: (element?: HTMLElement | undefined) => void;
-
-// @public
 export interface IUseBooleanCallbacks {
     setFalse: () => void;
     setTrue: () => void;
     toggle: () => void;
 }
 
-// @public (undocumented)
-export interface IWithResponsiveModeState {
-    // (undocumented)
-    responsiveMode?: ResponsiveMode;
-}
-
 // @public
 export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
-
-// @public (undocumented)
-export enum ResponsiveMode {
-    // (undocumented)
-    large = 2,
-    // (undocumented)
-    medium = 1,
-    // (undocumented)
-    small = 0,
-    // (undocumented)
-    unknown = 999,
-    // (undocumented)
-    xLarge = 3,
-    // (undocumented)
-    xxLarge = 4,
-    // (undocumented)
-    xxxLarge = 5
-}
-
-// @public
-export const setResponsiveMode: (responsiveMode: ResponsiveMode | undefined) => void;
 
 // @public
 export function useAsync(): Async;
@@ -86,9 +56,6 @@ export function usePrevious<T>(value: T): T | undefined;
 
 // @public
 export function useRefEffect<T>(callback: (value: T) => (() => void) | void, initial?: T | null): RefCallback<T>;
-
-// @public (undocumented)
-export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>) => any | null;
 
 // @public
 export const useSetInterval: () => UseSetIntervalReturnType;
