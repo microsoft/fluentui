@@ -29,7 +29,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
       ev.preventDefault();
       ev.stopPropagation();
     },
-    [collapsed],
+    [collapsed, setCollapsed],
   );
 
   const _onKeyDown = useCallback(
@@ -47,7 +47,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
         ev.stopPropagation();
       }
     },
-    [collapsed],
+    [collapsed, setCollapsed],
   );
 
   const _onRootKeyDown = useCallback((ev: React.KeyboardEvent<Element>) => {

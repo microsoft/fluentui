@@ -31,4 +31,5 @@ export const DayPickerStrings: ICalendarStrings = {
   todayDateFormatString: "Today's date {0}",
   monthPickerHeaderAriaLabel: '{0}, select to change the year',
   yearPickerHeaderAriaLabel: '{0}, select to change the month',
+  dayMarkedAriaLabel: 'marked',
 };

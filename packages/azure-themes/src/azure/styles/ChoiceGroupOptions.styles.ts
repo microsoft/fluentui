@@ -14,7 +14,6 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         '.ms-ChoiceFieldLabel': {
-          color: semanticColors.bodyText,
           fontSize: FontSizes.size13,
           verticalAlign: 'middle',
         },
@@ -76,6 +75,9 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                 },
               },
           ],
+          '.ms-ChoiceFieldLabel': {
+            color: disabled ? semanticColors.disabledBodyText : semanticColors.bodyText,
+          },
         },
       },
       (hasIcon || hasImage) &&
@@ -90,13 +92,6 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
       (hasIcon || hasImage) && {
         borderWidth: StyleConstants.borderWidth,
         borderColor: checked ? extendedSemanticColors.controlOutline : semanticColors.bodyBackground,
-      },
-      disabled && {
-        selectors: {
-          '.ms-ChoiceFieldLabel': {
-            color: semanticColors.disabledBodyText,
-          },
-        },
       },
       checked &&
         disabled && {

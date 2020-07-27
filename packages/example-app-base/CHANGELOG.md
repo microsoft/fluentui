@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 20 Jul 2020 12:44:29 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.97](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.97)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.95..@uifabric/example-app-base_v7.12.97)
+
+### Patches
+
+- Style tweaks for new doc content ([PR #13887](https://github.com/microsoft/fluentui/pull/13887) by mgodbolt@microsoft.com)
 
 ## [7.12.95](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.95)
 

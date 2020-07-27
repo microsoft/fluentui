@@ -9,14 +9,16 @@ These are not production-ready components and **should never be used in product*
 To import React Tabs components:
 
 ```jsx
-import { Tabs, TabItem } from '@fluentui/react-tabs';
+import { ThemeProvider, Tabs, TabItem } from '@fluentui/react-tabs';
 
 const App = () => {
   return (
-    <Tabs>
-      <TabItem headerText="Hello">Hello</TabItem>
-      <TabItem headerText="World">World</TabItem>
-    </Tabs>
+    <ThemeProvider>
+      <Tabs>
+        <TabItem headerText="Hello">Hello</TabItem>
+        <TabItem headerText="World">World</TabItem>
+      </Tabs>
+    </ThemeProvider>
   );
 };
 ```
