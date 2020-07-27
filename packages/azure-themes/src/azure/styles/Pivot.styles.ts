@@ -71,7 +71,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         marginBottom: '-1px',
         selectors: {
           ':hover': {
-            backgroundColor: emanticColors.listItemBackgroundHovered,
+            backgroundColor: semanticColors.listItemBackgroundHovered,
             border: StyleConstants.borderNone,
             borderBottom: `1px solid ${semanticColors.inputBorder}`,
             transition: 'background-color .2s ease-out',
@@ -96,7 +96,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         selectors: {
           ':hover': {
             backgroundColor: extendedSemanticColors.tabHover,
-            color: semanticColors.bodyTextHovered,
+            color: extendedSemanticColors.bodyTextHovered,
             border: StyleConstants.borderNone,
           },
           ':active': {
