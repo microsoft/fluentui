@@ -36,10 +36,13 @@ import { ICalloutPositionedInfo, RectangleEdge } from 'office-ui-fabric-react/li
 import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import {
+  ResponsiveMode,
+  withResponsiveMode,
+  IWithResponsiveModeState,
+} from 'office-ui-fabric-react/lib/utilities/responsiveMode/index';
 import {
   SelectableOptionMenuItemType,
   getAllSelectedOptions,

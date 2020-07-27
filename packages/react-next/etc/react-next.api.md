@@ -35,7 +35,7 @@ import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { ISvgIconProps } from '@fluentui/react-icons';
 import { ITeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/responsiveMode/withResponsiveMode.types';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import * as React from 'react';
