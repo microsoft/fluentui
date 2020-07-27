@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 17 Jul 2020 12:38:41 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.9)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.7.3..@fluentui/react-button_v0.7.9)
+
+### Patches
+
+- Update react-button to use common-styles ([PR #14189](https://github.com/microsoft/fluentui/pull/14189) by behowell@microsoft.com)
 
 ## [0.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.3)
 

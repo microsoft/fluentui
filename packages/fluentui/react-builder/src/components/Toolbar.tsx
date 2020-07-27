@@ -6,12 +6,10 @@ import { OpenOutsideIcon, TrashCanIcon } from '@fluentui/react-icons-northstar';
 export type ToolbarProps = {
   isExpanding: boolean;
   isSelecting: boolean;
-  onExpandLayoutChange: (isExpanding: boolean) => void;
   onModeChange: (mode: DesignerMode) => void;
   onReset: () => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
-  onSelectingChange: (isSelecting: boolean) => void;
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
@@ -21,12 +19,10 @@ export type ToolbarProps = {
 export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   isExpanding,
   isSelecting,
-  onExpandLayoutChange,
   onModeChange,
   onReset,
   onShowCodeChange,
   onShowJSONTreeChange,
-  onSelectingChange,
   mode,
   showCode,
   showJSONTree,
@@ -84,22 +80,6 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
       }}
     />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-      {/*
-      <Checkbox
-        toggle
-        label="Expand Layout"
-        checked={!!isExpanding}
-        onChange={(e, data) => onExpandLayoutChange(data.checked)}
-      />
-      &emsp;
-      <Checkbox
-        toggle
-        label="Select Components"
-        checked={!!isSelecting}
-        onChange={(e, data) => onSelectingChange(data.checked)}
-      />
-      &emsp;
-      */}
       <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
       &emsp;
       <Checkbox
