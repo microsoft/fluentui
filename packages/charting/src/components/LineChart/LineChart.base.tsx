@@ -283,11 +283,15 @@ export class LineChartBase extends React.Component<
                         yAxisCalloutData?: string | { [id: string]: number };
                       },
                       index: number,
-                    ) => (
-                      <div style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}>
-                        {this._getCalloutContent(xValue, index, yValueHoverSubCountsExists)}
-                      </div>
-                    ),
+                      yValues: any[],
+                    ) => {
+                      const isLast: boolean = index + 1 === yValues.length;
+                      return (
+                        <div style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}>
+                          {this._getCalloutContent(xValue, index, yValueHoverSubCountsExists, isLast)}
+                        </div>
+                      );
+                    },
                   )}
               </div>
             </div>
@@ -321,14 +325,13 @@ export class LineChartBase extends React.Component<
     },
     index: number,
     yValueHoverSubCountsExists: boolean,
+    isLast: boolean,
   ): React.ReactNode {
-    const commonStyle: React.CSSProperties = {
-      marginRight: '10px',
-    };
+    const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
 
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
-        <div style={yValueHoverSubCountsExists ? commonStyle : {}}>
+        <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
           {yValueHoverSubCountsExists && (
             <div className={this._classNames.calloutContentY}>
               {xValue.legend!} ({xValue.y})
@@ -350,7 +353,7 @@ export class LineChartBase extends React.Component<
     } else {
       const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
       return (
-        <div style={commonStyle}>
+        <div style={marginStyle}>
           <div className={this._classNames.calloutContentY}>
             {xValue.legend!} ({xValue.y})
           </div>
@@ -390,22 +393,11 @@ export class LineChartBase extends React.Component<
   }
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
-    const { YValueHover } = this.state;
-    const { enableLegendTotalCounts } = this.props;
     const legendDataItems = data.map((point: ILineChartPoints, index: number) => {
       const color: string = point.color;
       // mapping data to the format Legends component needs
-      let title: string = `${point.legend!}`;
-      if (enableLegendTotalCounts && YValueHover && YValueHover.length > 0) {
-        YValueHover.forEach(yVal => {
-          if (yVal.legend === point.legend!) {
-            title += ` (${yVal.y})`;
-          }
-        });
-      }
-
       const legend: ILegend = {
-        title: title,
+        title: point.legend!,
         color: color,
         action: () => {
           if (this.state.selectedLegend === point.legend) {
@@ -653,7 +645,7 @@ export class LineChartBase extends React.Component<
       .attr('r', 0.2);
     d3Select(`#${this._verticalLine}`).attr('visibility', 'hidden');
     this.setState({
-      isCalloutVisible: false,
+      // isCalloutVisible: false,
     });
   };
 
