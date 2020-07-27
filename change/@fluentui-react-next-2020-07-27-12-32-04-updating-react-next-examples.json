@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Updating existing react-next examples to use newest examples inside of OUFR.",
+  "comment": "Updating existing react-next examples to use the newest ones found inside of office-ui-fabric-react.",
   "packageName": "@fluentui/react-next",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
