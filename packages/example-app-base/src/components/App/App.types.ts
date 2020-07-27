@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject, ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
-import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/responsiveMode/index';
 import { INavLink, INavLinkGroup, INavStyleProps } from 'office-ui-fabric-react/lib/Nav';
 import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
 import { IAppCustomizations } from '../../utilities/customizations';

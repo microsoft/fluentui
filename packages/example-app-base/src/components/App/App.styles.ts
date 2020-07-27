@@ -1,7 +1,7 @@
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IAppStyleProps, IAppStyles } from './App.types';
-import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/responsiveMode/index';
 
 const globalClassNames = {
   root: 'ms-App',
