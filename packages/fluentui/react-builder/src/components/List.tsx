@@ -4,7 +4,7 @@ import { Box, Menu, Input, Tree } from '@fluentui/react-northstar';
 import { SearchIcon, TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 import { ComponentInfo } from '../componentInfo/types';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
-import { EXCLUDED_COMPONENTS, COMPONENT_GROUPS, GET_COMPONENT_GROUP_INDEX } from '../config';
+import { EXCLUDED_COMPONENTS, COMPONENT_GROUP } from '../config';
 
 export type ListDisplayModes = 'Display Name' | 'Rendered';
 
@@ -44,12 +44,8 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     </Component>
   );
 
-  function addComponentToGroup(info) {
-    const index =
-      GET_COMPONENT_GROUP_INDEX[info.displayName] !== undefined
-        ? GET_COMPONENT_GROUP_INDEX[info.displayName]
-        : COMPONENT_GROUPS.length - 1;
-    componentGroupItems[index].push({
+  function addComponentToGroup(info, property) {
+    componentGroupItems[property].push({
       id: info.displayName,
       title: (
         <Box
@@ -81,17 +77,37 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     });
   }
 
-  const componentGroupItems = Array(COMPONENT_GROUPS.length);
-  for (let i = 0; i < COMPONENT_GROUPS.length; i++) {
-    componentGroupItems[i] = [];
-  }
-  supportedComponents.filter(info => info.displayName.match(filterRegexp)).map(info => addComponentToGroup(info));
+  const componentGroupItems = {};
+  const componentTreeItems = [];
+  for (const property in COMPONENT_GROUP) {
+    componentGroupItems[property] = [];
+    COMPONENT_GROUP[property].forEach(item =>
+      addComponentToGroup(
+        supportedComponents.find((o, index) => {
+          if (o && o.displayName === item) {
+            delete supportedComponents[index];
+            return true;
+          }
+          return false;
+        }),
+        property,
+      ),
+    );
 
-  const componentTreeItems = COMPONENT_GROUPS.map((name, index) => ({
-    id: String(index),
-    title: name,
-    items: componentGroupItems[index],
-  }));
+    componentTreeItems.push({
+      id: property,
+      title: property,
+      items: componentGroupItems[property],
+    });
+  }
+
+  componentGroupItems['Others'] = [];
+  supportedComponents.forEach(item => addComponentToGroup(item, 'Others'));
+  componentTreeItems.push({
+    id: 'others',
+    title: 'Others',
+    items: componentGroupItems['Others'],
+  });
 
   return (
     <div
