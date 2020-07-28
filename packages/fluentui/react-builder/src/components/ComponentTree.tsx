@@ -46,7 +46,6 @@ const jsonTreeToTreeItems: (
       },
     },
     ...(selectedComponentId === tree.uuid && {
-      expanded: true,
       renderItemTitle: (C, { content, ...props }) => {
         return (
           <C {...props}>
@@ -58,7 +57,7 @@ const jsonTreeToTreeItems: (
         );
       },
     }),
-    expanded: false,
+    expanded: true,
     items: tree.props?.children?.map(item =>
       jsonTreeToTreeItems(item, selectedComponentId, handleSelectedComponent, handleClone, handleMove, handleDelete),
     ),
