@@ -280,7 +280,6 @@ export const Designer: React.FunctionComponent = () => {
 
   const handleUpload = React.useCallback(
     jsonTree => {
-      console.log('jsonTree: ', jsonTree);
       dispatch({ type: 'UPLOAD_TREE', jsonTree });
     },
     [dispatch],
