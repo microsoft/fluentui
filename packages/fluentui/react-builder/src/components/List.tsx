@@ -30,80 +30,71 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     setFilter(value);
   }, []);
 
-  const [supportedComponents, unsupportedComponents] = _.partition(
-    _.values(componentInfoContext.byDisplayName),
-    ({ displayName }) => {
-      return !EXCLUDED_COMPONENTS.some(name => name === displayName);
-    },
+  const [supportedComponents, unsupportedComponents] = React.useMemo(
+    () =>
+      _.partition(_.values(componentInfoContext.byDisplayName), ({ displayName }) => {
+        return !EXCLUDED_COMPONENTS.some(name => name === displayName);
+      }),
+    [],
   );
 
-  const titleRenderer = (Component, { content, expanded, open, hasSubtree, ...restProps }) => (
-    <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
-      {hasSubtree ? expanded ? <TriangleDownIcon /> : <TriangleEndIcon /> : null}
-      {content}
-    </Component>
-  );
-
-  const componentGroupItems = {};
-  const addComponentToGroup = (info, property) => {
-    componentGroupItems[property].push({
-      id: info.displayName,
-      title: (
-        <Box
-          key={info.displayName}
-          onMouseDown={handleMouseDown(info)}
-          styles={{
-            padding: '0.25em 0.75em',
-            cursor: 'pointer',
-            ':hover': {
-              background: '#ddd',
-              borderLeft: '2px solid #000',
-            },
-            borderLeft: '2px solid transparent',
-            marginLeft: '2px',
-          }}
-        >
-          {displayMode === 'Rendered' && (
-            <div style={{ position: 'relative' }}>
-              <div style={{ fontWeight: 'bold', opacity: 0.5 }}>{info.displayName}</div>
-              <div style={{ padding: '0.5rem', pointerEvents: 'none' }}>
-                {/* FIXME {React.createElement(resolveComponent(info.displayName), resolveDraggingProps(info.displayName))} */}
-              </div>
-            </div>
-          )}
-
-          {displayMode === 'Display Name' && info.displayName}
-        </Box>
-      ),
-    });
+  const titleComponent = (Component, { content, expanded, ...rest }) => {
+    return (
+      <div {...rest}>
+        {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
+        {content}
+      </div>
+    );
   };
 
-  const componentTreeItems = [];
-  for (const property in COMPONENT_GROUP) {
-    componentGroupItems[property] = [];
-    COMPONENT_GROUP[property].forEach(item =>
-      supportedComponents.forEach((o, index) => {
-        if (o.displayName === item || (o.isChild && o.parentDisplayName === item)) {
-          delete supportedComponents[index];
-          addComponentToGroup(o, property);
-        }
-      }),
-    );
+  const treeobj = React.useMemo(
+    () =>
+      Object.keys(COMPONENT_GROUP).reduce((acc, key) => {
+        return {
+          ...acc,
+          [key]: {
+            id: key,
+            title: {
+              children: titleComponent,
+              content: key,
+            },
+            items: supportedComponents
+              .filter(info => COMPONENT_GROUP[key].includes(info.isChild ? info.parentDisplayName : info.displayName))
+              .map(info => ({
+                id: info.displayName,
+                title: (
+                  <Box
+                    key={info.displayName}
+                    onMouseDown={handleMouseDown(info)}
+                    styles={{
+                      padding: '0.25em 0.75em',
+                      cursor: 'pointer',
+                      ':hover': {
+                        background: '#ddd',
+                        borderLeft: '2px solid #000',
+                      },
+                      borderLeft: '2px solid transparent',
+                      marginLeft: '2px',
+                    }}
+                  >
+                    {displayMode === 'Rendered' && (
+                      <div style={{ position: 'relative' }}>
+                        <div style={{ fontWeight: 'bold', opacity: 0.5 }}>{info.displayName}</div>
+                        <div style={{ padding: '0.5rem', pointerEvents: 'none' }}>
+                          {/* FIXME {React.createElement(resolveComponent(info.displayName), resolveDraggingProps(info.displayName))} */}
+                        </div>
+                      </div>
+                    )}
 
-    componentTreeItems.push({
-      id: property,
-      title: property,
-      items: componentGroupItems[property],
-    });
-  }
-
-  componentGroupItems['Others'] = [];
-  supportedComponents.forEach(item => addComponentToGroup(item, 'Others'));
-  componentTreeItems.push({
-    id: 'others',
-    title: 'Others',
-    items: componentGroupItems['Others'],
-  });
+                    {displayMode === 'Display Name' && info.displayName}
+                  </Box>
+                ),
+              })),
+          },
+        };
+      }, {}),
+    [displayMode, handleMouseDown, supportedComponents],
+  );
 
   return (
     <div
@@ -142,7 +133,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
         onChange={handleFilterChange}
         value={filter}
       />
-      <Tree items={componentTreeItems} renderItemTitle={titleRenderer} />
+      <Tree items={Object.values(treeobj)} />
       {unsupportedComponents
         .filter(info => info.displayName.match(filterRegexp))
         .map(info => (
