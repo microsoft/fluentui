@@ -31,6 +31,7 @@ import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
 import { codeToTree } from '../utils/codeToTree';
 import { ErrorBoundary } from './ErrorBoundary';
+import { DownloadIcon } from '@fluentui/react-icons-northstar';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -68,7 +69,8 @@ type DesignerAction =
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
-  | { type: 'SOURCE_CODE_CHANGE'; code: string };
+  | { type: 'SOURCE_CODE_CHANGE'; code: string }
+  | { type: 'UPLOAD_TREE'; jsonTree: JSONTreeElement };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -162,6 +164,12 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
 
     case 'RESET_STORE':
       draftState.jsonTree = getDefaultJSONTree();
+      draftState.jsonTreeOrigin = 'store';
+      treeChanged = true;
+      break;
+
+    case 'UPLOAD_TREE':
+      draftState.jsonTree = action.jsonTree;
       draftState.jsonTreeOrigin = 'store';
       treeChanged = true;
       break;
@@ -269,6 +277,13 @@ export const Designer: React.FunctionComponent = () => {
       // FIXME: what if I am viewing tree from URL?
     }
   }, [dispatch]);
+
+  const handleUpload = React.useCallback(
+    jsonTree => {
+      dispatch({ type: 'UPLOAD_TREE', jsonTree });
+    },
+    [dispatch],
+  );
 
   const handleShowCodeChange = React.useCallback(
     showCode => {
@@ -429,6 +444,7 @@ export const Designer: React.FunctionComponent = () => {
         onShowCodeChange={handleShowCodeChange}
         onShowJSONTreeChange={handleShowJSONTreeChange}
         onReset={handleReset}
+        onUpload={handleUpload}
         onModeChange={setMode}
         showCode={showCode}
         showJSONTree={showJSONTree}
@@ -487,7 +503,19 @@ export const Designer: React.FunctionComponent = () => {
                       </Button>
                     </>
                   )}
-                  {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                  <Button.Group>
+                    {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                    &emsp;
+                    {jsonTreeOrigin === 'store' && (
+                      <Button
+                        content="Download"
+                        icon={<DownloadIcon />}
+                        as="a"
+                        href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(jsonTree))}`}
+                        download="jsonTree.json"
+                      />
+                    )}
+                  </Button.Group>
                 </div>,
               ]}
               style={{
