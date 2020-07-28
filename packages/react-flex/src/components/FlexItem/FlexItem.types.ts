@@ -26,10 +26,6 @@ export interface FlexItemProps extends ComponentProps, React.HTMLAttributes<HTML
    * Item can be pushed towards opposite side in the container’s direction.
    */
   push?: boolean;
-  /**
-   * Will be set by parent.
-   */
-  flexDirection?: boolean;
 }
 
 export interface FlexItemSlots extends BaseSlots {}

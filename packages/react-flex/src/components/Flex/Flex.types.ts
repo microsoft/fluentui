@@ -4,17 +4,9 @@ import { ComponentProps, BaseSlots, SlotProps } from '@fluentui/react-compose';
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
  * properties can take.
  */
-export type Alignment =
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'baseline'
-  | 'stretch';
+export type Alignment = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'baseline' | 'stretch';
 
-export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
+export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Defines if container should be inline element.
    */
@@ -61,6 +53,14 @@ export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLDivE
   space?: ['around', 'between', 'evenly'];
 }
 
+export type RecursivePartial<T> = {
+  [P in keyof T]?: T[P] extends (infer U)[]
+    ? RecursivePartial<U>[]
+    : T[P] extends object
+    ? RecursivePartial<T[P]>
+    : T[P];
+};
+
 export interface FlexSlots extends BaseSlots {}
 
-export type FlexSlotProps = SlotProps<FlexSlots, FlexProps, React.HTMLAttributes<HTMLDivElement>>;
+export type FlexSlotProps = SlotProps<FlexSlots, FlexProps, React.HTMLAttributes<HTMLElement>>;

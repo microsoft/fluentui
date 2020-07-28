@@ -1,7 +1,29 @@
-:root {
-  --general-bc: rgb(136, 255, 152);
-}
-
 .root {
-  background-color: var(--general-bc);
+  align-self: var(--flexItem-align);
+  flex-shrink: 0;
+
+  &._align_start {
+    --flexItem-align: flex-start;
+  }
+
+  &._align_end {
+    --flexItem-align: flex-end;
+  }
+
+  &._align_center {
+    --flexItem-align: center;
+  }
+
+  &._align_baseline {
+    --flexItem-align: baseline;
+  }
+
+  &._align_stretch {
+    --flexItem-align: stretch;
+  }
+
+  &._fluid {
+    height: 100%;
+    max-height: 100%;
+  }
 }

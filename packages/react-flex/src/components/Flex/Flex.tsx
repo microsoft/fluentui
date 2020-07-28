@@ -6,20 +6,19 @@ import { FlexItem } from '../FlexItem';
 
 export const Flex = compose<'div', FlexProps, FlexProps, {}, {}>(
   (props, ref, options) => {
-    const { children, column } = props;
+    const { children } = props;
 
     const { state } = options;
     const { slots, slotProps } = mergeProps<FlexProps, FlexProps, FlexSlots, FlexSlotProps>(state, options);
 
-    const flexChildren = React.Children.map(children, child =>
-      isFlexItemElement(child)
-        ? React.cloneElement((child as unknown) as React.ReactElement, {
-            flexDirection: column,
-          })
-        : child,
-    );
+    const { flexChildren, generalChildren } = separateFlexChildren(children);
 
-    return <slots.root {...slotProps.root}>{flexChildren}</slots.root>;
+    return (
+      <slots.root {...slotProps.root}>
+        {flexChildren}
+        {generalChildren}
+      </slots.root>
+    );
   },
   {
     displayName: 'Flex',
@@ -40,6 +39,20 @@ export const Flex = compose<'div', FlexProps, FlexProps, {}, {}>(
     ] as any,
   },
 );
+const separateFlexChildren = (children: React.ReactNode) => {
+  const flexChildren: React.ReactNode[] = [];
+  const generalChildren: React.ReactNode[] = [];
+
+  React.Children.forEach(children, child => {
+    if (isFlexItemElement(child)) {
+      flexChildren.push(child);
+    } else {
+      generalChildren.push(child);
+    }
+  });
+
+  return { flexChildren, generalChildren };
+};
 
 const isFlexItemElement = (item: React.ReactNode): item is typeof FlexItem => {
   return (

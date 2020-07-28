@@ -1,19 +1,72 @@
 :root {
-  --general-bc: rgb(163, 50, 255);
-  --flex-direction-inline: inline;
-  --flex-padding: 20px;
+  --flex-display: flex;
 }
 
 .root {
-  background-color: var(--general-bc);
-  display: var(--flex-direction);
-  padding: var(--flex-padding);
+  display: var(--flex-display);
+  flex-wrap: var(--flex-wrap);
+  align-items: var(--flex-verticalAlign);
+  flex-direction: var(--flex-direction);
+  justify-content: var(--flex-horizontalAlign);
 
-  &._inline {
-    --flex-direction: inline;
+  &._column {
+    --flex-direction: column;
   }
 
-  &._block {
-    --flex-direction: block;
+  &._inline {
+    --flex-display: inline-flex;
+  }
+
+  &._fluid {
+    height: 100%;
+    max-height: 100%;
+  }
+
+  &._wrap {
+    --flex-wrap: wrap;
+  }
+
+  &._horizontalAlign_start {
+    --flex-horizontalAlign: flex-start;
+  }
+
+  &._horizontalAlign_end {
+    --flex-horizontalAlign: flex-end;
+  }
+
+  &._horizontalAlign_center {
+    --flex-horizontalAlign: center;
+  }
+
+  &._horizontalAlign_between {
+    --flex-horizontalAlign: space-between;
+  }
+
+  &._horizontalAlign_around {
+    --flex-horizontalAlign: space-around;
+  }
+
+  &._horizontalAlign_evenly {
+    --flex-horizontalAlign: space-evenly;
+  }
+
+  &._verticalAlign_start {
+    --flex-verticalAlign: flex-start;
+  }
+
+  &._verticalAlign_end {
+    --flex-verticalAlign: flex-end;
+  }
+
+  &._verticalAlign_center {
+    --flex-verticalAlign: center;
+  }
+
+  &._verticalAlign_stretch {
+    --flex-verticalAlign: stretch;
+  }
+
+  &._verticalAlign_baseline {
+    --flex-verticalAlign: baseline;
   }
 }

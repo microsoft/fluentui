@@ -3,7 +3,7 @@ import { compose, createClassResolver, mergeProps } from '@fluentui/react-compos
 import { FlexItemProps, FlexItemSlots, FlexItemSlotProps } from './FlexItem.types';
 import * as classes from './FlexItem.scss';
 
-export const FlexItem = compose<'div', FlexItemProps, FlexItemProps, {}, {}>(
+export const FlexItem = compose<'span', FlexItemProps, FlexItemProps, {}, {}>(
   (props, ref, options) => {
     const { children } = props;
 
@@ -12,6 +12,7 @@ export const FlexItem = compose<'div', FlexItemProps, FlexItemProps, {}, {}>(
       state,
       options,
     );
+
     return <slots.root {...slotProps.root}>{children}</slots.root>;
   },
   {
@@ -30,5 +31,5 @@ export const FlexItem = compose<'div', FlexItemProps, FlexItemProps, {}, {}>(
 );
 
 FlexItem.defaultProps = {
-  as: 'div',
+  as: 'span',
 };
