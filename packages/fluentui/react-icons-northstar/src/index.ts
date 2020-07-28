@@ -41,7 +41,6 @@ export { CallEndIcon } from './components/CallEndIcon';
 export { CallIcon } from './components/CallIcon';
 export { CallPstnIcon } from './components/CallPstnIcon';
 export { CallRecordingIcon } from './components/CallRecordingIcon';
-export { CallTransferredIcon } from './components/CallTransferredIcon';
 export { CallVideoIcon } from './components/CallVideoIcon';
 export { CallVideoOffIcon } from './components/CallVideoOffIcon';
 export { CameraIcon } from './components/CameraIcon';
