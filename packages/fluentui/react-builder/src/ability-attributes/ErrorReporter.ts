@@ -12,9 +12,6 @@ import {
   WindowWithDevEnv,
 } from './DevEnvTypes';
 
-// Will be replaced with ErrorReporter.css by utils/babel-plugin-error-reporter-css.js.
-declare function getErrorReporterCSS(): string;
-
 interface ErrorMetadata {
   id: string;
   element: ValidatedHTMLElement;
@@ -138,8 +135,6 @@ export class ErrorReporter extends ErrorReporterBase {
   private _initUI(append: boolean): void {
     if (!this._styles) {
       this._styles = document.createElement('style');
-
-      this._styles.appendChild(document.createTextNode(getErrorReporterCSS()));
 
       this._container = document.createElement('div');
       this._expanded = document.createElement('div');
