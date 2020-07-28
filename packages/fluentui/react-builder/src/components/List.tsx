@@ -44,7 +44,8 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     </Component>
   );
 
-  function addComponentToGroup(info, property) {
+  const componentGroupItems = {};
+  const addComponentToGroup = (info, property) => {
     componentGroupItems[property].push({
       id: info.displayName,
       title: (
@@ -75,9 +76,8 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
         </Box>
       ),
     });
-  }
+  };
 
-  const componentGroupItems = {};
   const componentTreeItems = [];
   for (const property in COMPONENT_GROUP) {
     componentGroupItems[property] = [];
