@@ -86,7 +86,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
 
   /**
    * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
-   * ResponsiveMode.Large would, for instance, disable the behavior where Dropdown options
+   * ResponsiveMode.large would, for instance, disable the behavior where Dropdown options
    * get rendered into a Panel while ResponsiveMode.Small would result in the Dropdown
    * options always getting rendered in a Panel.
    */
