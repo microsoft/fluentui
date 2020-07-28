@@ -264,7 +264,10 @@ export class LineChartBase extends React.Component<
             id={`toolTip${this._uniqueCallOutID}`}
           >
             <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutDateTimeContainer} style={{ marginBottom: '5px' }}>
+              <div
+                className={this._classNames.calloutDateTimeContainer}
+                style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
+              >
                 <div className={this._classNames.calloutContentX}>{this.state.hoverXValue} </div>
                 {/*TO DO  if we add time for callout then will use this */}
                 {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
