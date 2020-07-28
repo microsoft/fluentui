@@ -17,7 +17,7 @@ library.setSSR(true);
 library.setRTL(false);
 
 // Assume a large screen.
-let responsiveLib = require('office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode');
+let responsiveLib = require('office-ui-fabric-react/lib/utilities/responsiveMode');
 responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 
 // Initialize icons.
