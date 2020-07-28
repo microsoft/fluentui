@@ -14,7 +14,7 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
       const t = ref.current.ownerDocument.querySelector(selector)?.textContent;
       setText(t);
     }
-  }, [setText, ref, selector]);
+  }, [setText, ref.current, selector]);
 
   if (!selector) {
     return null;
