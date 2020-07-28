@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { TreeItemProps, Tree, MenuButton, treeBehavior, treeAsListBehavior } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
-import { TreeItemProps, Tree, MenuButton } from '@fluentui/react-northstar';
 import { jsonTreeFindElement } from '../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
 
@@ -11,8 +11,24 @@ export type ComponentTreeProps = {
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onDeleteComponent?: () => void;
-  onAddComponent?: (uuid: string, where: 'before' | 'after' | 'child') => void;
+  onAddComponent?: (uuid: string, where: string) => void;
 };
+
+const isMac = navigator.userAgent.indexOf('Mac OS X') !== -1;
+const behavior = isMac ? treeAsListBehavior : treeBehavior;
+
+const macKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  const keyCode = e.keyCode || e.which;
+  if (e.shiftKey && keyCode === 121) {
+    const activeElement = document.activeElement;
+    if (activeElement) {
+      const event = new MouseEvent('contextmenu', { bubbles: true });
+      activeElement.dispatchEvent(event);
+    }
+  }
+};
+
+const treeKeyDown = isMac ? macKeyDown : undefined;
 
 const menu = (uuid, handleAddComponent, handleDeleteComponent) => [
   { content: 'Add after', onClick: () => handleAddComponent(uuid, 'after') },
@@ -64,26 +80,27 @@ const jsonTreeToTreeItems: (
         }),
       },
     },
+    children: (C, p) => (
+      <MenuButton
+        contextMenu
+        trigger={<C {...p} />}
+        menu={menu(tree.uuid, handleAddComponent, handleDeleteComponent)}
+      />
+    ),
     renderItemTitle: (C, { content, ...props }) => {
       return (
-        <MenuButton
-          contextMenu
-          trigger={
-            <C {...props}>
+        <C {...props}>
+          <>
+            <span style={{ flex: 1 }}>{content}</span>
+            {selectedComponentId === tree.uuid && (
               <>
-                <span style={{ flex: 1 }}>{content}</span>
-                {selectedComponentId === tree.uuid && (
-                  <>
-                    <MoveDebugButton onClick={handleMove} />
-                    <CloneDebugButton onClick={handleClone} />
-                    <TrashDebugButton onClick={handleDelete} />
-                  </>
-                )}
+                <MoveDebugButton onClick={handleMove} />
+                <CloneDebugButton onClick={handleClone} />
+                <TrashDebugButton onClick={handleDelete} />
               </>
-            </C>
-          }
-          menu={menu(tree.uuid, handleAddComponent, handleDeleteComponent)}
-        />
+            )}
+          </>
+        </C>
       );
     },
     expanded: true,
@@ -176,5 +193,5 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
         handleDeleteComponent,
       ),
     ) ?? [];
-  return <Tree items={items} />;
+  return <Tree accessibility={behavior} onKeyDown={treeKeyDown} items={items} />;
 };

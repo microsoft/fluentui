@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Dialog, Dropdown } from '@fluentui/react-northstar';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
-import { resolveDraggingElement, resolveDrop, jsonTreeFindElement } from '../config';
 
-export const InsertComponent = ({ parent, index = 0, onComponentAdded, onDismiss }) => {
+export const InsertComponent = ({ onComponentAdded, onDismiss }) => {
   const [selectedComponent, setSelectedComponent] = React.useState('');
-  const confirm = () => {
-    const element = resolveDraggingElement(selectedComponent);
-    resolveDrop(element, parent, index);
-    const addedComponent = jsonTreeFindElement(parent, element.uuid);
-    onComponentAdded && onComponentAdded(addedComponent);
-  };
+  const confirm = React.useCallback(() => {
+    onComponentAdded && onComponentAdded(selectedComponent);
+  }, [onComponentAdded, selectedComponent]);
+
+  const dismiss = React.useCallback(() => {
+    onDismiss && onDismiss();
+  }, [onDismiss]);
 
   const items = Object.keys(componentInfoContext.byDisplayName);
 
@@ -28,7 +28,7 @@ export const InsertComponent = ({ parent, index = 0, onComponentAdded, onDismiss
         />
       }
       onConfirm={confirm}
-      onCancel={onDismiss}
+      onCancel={dismiss}
     />
   );
 };

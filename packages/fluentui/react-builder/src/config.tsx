@@ -426,6 +426,7 @@ export const resolveDraggingElement: (displayName: string, draggingElements?) =>
     $$typeof: 'Symbol(react.element)',
     type: displayName,
     displayName,
+    props: { children: [] },
     ...jsonTreeElement,
   };
 };

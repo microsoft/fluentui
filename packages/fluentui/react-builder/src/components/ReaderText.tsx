@@ -7,14 +7,14 @@ export type ReaderTextProps = {
 
 export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector }) => {
   const ref = React.createRef<HTMLElement>();
-  const [delayedText, setDelayedText] = React.useState('');
+  const [text, setText] = React.useState('');
 
   React.useEffect(() => {
     if (ref.current) {
       const t = ref.current.ownerDocument.querySelector(selector)?.textContent;
-      setTimeout(() => setDelayedText(t), 3000);
+      setText(t);
     }
-  });
+  }, [setText, ref, selector]);
 
   if (!selector) {
     return null;
@@ -22,7 +22,7 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
 
   return (
     <Ref innerRef={ref}>
-      <Alert warning content={delayedText} />
+      <Alert warning content={text} />
     </Ref>
   );
 };
