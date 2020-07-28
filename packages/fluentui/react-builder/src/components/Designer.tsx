@@ -467,7 +467,6 @@ export const Designer: React.FunctionComponent = () => {
         <InsertComponent
           onDismiss={handleCloseAddComponentDialog}
           onComponentAdded={handleAddComponent}
-          // setTimeout(() => focusTreeTitle(addedComponent.uuid));
         />
       )}
       {draggingElement && (
