@@ -333,7 +333,7 @@ export const DRAGGING_ELEMENTS = {
   },
 
   Reaction: {
-    props: { icon: <FUIIcons.LikeIcon /> } as FUI.ReactionProps,
+    props: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
   },
 
   Segment: {
