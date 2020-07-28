@@ -4,18 +4,8 @@
  */
 
 import * as DevEnv from './DevEnv';
-import { AccessibilityAttributes, AccessibleElements, HTMLElementAttributes } from './HTML';
+import { AccessibilityAttributes, AccessibleElements } from './HTML';
 import * as Schema from './Schema';
 import { hasAccessibilityAttribute, isAccessibleElement } from './Utils';
 
-export {
-    AccessibilityAttributes,
-    AccessibleElements,
-    HTMLElementAttributes,
-
-    isAccessibleElement,
-    hasAccessibilityAttribute,
-
-    DevEnv,
-    Schema
-};
+export { AccessibilityAttributes, AccessibleElements, isAccessibleElement, hasAccessibilityAttribute, DevEnv, Schema };
