@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 23 Jul 2020 12:43:51 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.6)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.4..@uifabric/charting_v2.7.6)
+
+### Patches
+
+- Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers. ([PR #14195](https://github.com/microsoft/fluentui/pull/14195) by v-gorraj@microsoft.com)
 
 ## [2.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.4)
 

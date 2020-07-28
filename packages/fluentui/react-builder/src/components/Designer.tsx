@@ -137,14 +137,14 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       }
       break;
 
-    case 'SELECT_PARENT': {
+    case 'SELECT_PARENT':
       const parent = jsonTreeFindParent(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
       if (parent) {
         draftState.selectedJSONTreeElementUuid = parent.uuid;
         draftState.selectedComponentInfo = componentInfoContext.byDisplayName[parent.displayName];
       }
       break;
-    }
+
     case 'DELETE_SELECTED_COMPONENT':
       if (draftState.selectedJSONTreeElementUuid) {
         jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
@@ -153,47 +153,6 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
         treeChanged = true;
       }
       break;
-
-    case 'OPEN_ADD_DIALOG': {
-      const parent = jsonTreeFindParent(draftState.jsonTree, action.uuid);
-      draftState.insertComponent = { where: action.where, uuid: action.uuid, parentUuid: `${parent?.uuid}` };
-      break;
-    }
-
-    case 'CLOSE_ADD_DIALOG':
-      draftState.insertComponent = null;
-      break;
-
-    case 'ADD_COMPONENT': {
-      const element = resolveDraggingElement(action.component);
-
-      let parent: JSONTreeElement = undefined;
-      let index = 0;
-      const { where, uuid, parentUuid } = draftState.insertComponent;
-      draftState.insertComponent = null;
-
-      if (where === 'first') {
-        parent = draftState.jsonTree;
-      } else if (where === 'child') {
-        parent = jsonTreeFindElement(draftState.jsonTree, uuid);
-      } else {
-        parent = jsonTreeFindElement(draftState.jsonTree, parentUuid);
-        index = parent.props.children.findIndex(c => c['uuid'] === uuid);
-        if (index === -1) {
-          index = 0;
-        } else {
-          where === 'after' && index++;
-        }
-      }
-
-      resolveDrop(element, parent, index);
-
-      draftState.selectedJSONTreeElementUuid = element.uuid;
-      draftState.selectedComponentInfo = componentInfoContext.byDisplayName[element.displayName];
-      treeChanged = true;
-      setTimeout(() => focusTreeTitle(element.uuid));
-      break;
-    }
 
     case 'PROP_CHANGE':
       const editedComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
@@ -237,8 +196,48 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       } catch (e) {
         draftState.codeError = e.message;
       }
-
       break;
+
+    case 'OPEN_ADD_DIALOG': {
+      const parent = jsonTreeFindParent(draftState.jsonTree, action.uuid);
+      draftState.insertComponent = { where: action.where, uuid: action.uuid, parentUuid: `${parent?.uuid}` };
+      break;
+    }
+
+    case 'CLOSE_ADD_DIALOG':
+      draftState.insertComponent = null;
+      break;
+
+    case 'ADD_COMPONENT': {
+      const element = resolveDraggingElement(action.component);
+
+      let parent: JSONTreeElement = undefined;
+      let index = 0;
+      const { where, uuid, parentUuid } = draftState.insertComponent;
+      draftState.insertComponent = null;
+
+      if (where === 'first') {
+        parent = draftState.jsonTree;
+      } else if (where === 'child') {
+        parent = jsonTreeFindElement(draftState.jsonTree, uuid);
+      } else {
+        parent = jsonTreeFindElement(draftState.jsonTree, parentUuid);
+        index = parent.props.children.findIndex(c => c['uuid'] === uuid);
+        if (index === -1) {
+          index = 0;
+        } else {
+          where === 'after' && index++;
+        }
+      }
+
+      resolveDrop(element, parent, index);
+
+      draftState.selectedJSONTreeElementUuid = element.uuid;
+      draftState.selectedComponentInfo = componentInfoContext.byDisplayName[element.displayName];
+      treeChanged = true;
+      setTimeout(() => focusTreeTitle(element.uuid));
+      break;
+    }
 
     default:
       throw new Error(`Invalid action ${action}`);
@@ -408,24 +407,6 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'DELETE_SELECTED_COMPONENT' });
   }, [dispatch]);
 
-  const handleOpenAddComponentDialog = React.useCallback(
-    (uuid: string, where: string) => {
-      dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
-    },
-    [dispatch],
-  );
-
-  const handleCloseAddComponentDialog = React.useCallback(() => {
-    dispatch({ type: 'CLOSE_ADD_DIALOG' });
-  }, [dispatch]);
-
-  const handleAddComponent = React.useCallback(
-    (component: string) => {
-      dispatch({ type: 'ADD_COMPONENT', component });
-    },
-    [dispatch],
-  );
-
   const handleGoToParentComponent = React.useCallback(() => {
     dispatch({ type: 'SELECT_PARENT' });
   }, [dispatch]);
@@ -445,6 +426,24 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'SWITCH_TO_STORE' });
     // FIXME: remove tree_lz from current URL
   }, [dispatch]);
+
+  const handleOpenAddComponentDialog = React.useCallback(
+    (uuid: string, where: string) => {
+      dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
+    },
+    [dispatch],
+  );
+
+  const handleCloseAddComponentDialog = React.useCallback(() => {
+    dispatch({ type: 'CLOSE_ADD_DIALOG' });
+  }, [dispatch]);
+
+  const handleAddComponent = React.useCallback(
+    (component: string) => {
+      dispatch({ type: 'ADD_COMPONENT', component });
+    },
+    [dispatch],
+  );
 
   const selectedComponent =
     !draggingElement &&
