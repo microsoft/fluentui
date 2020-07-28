@@ -83,7 +83,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     componentGroupItems[property] = [];
     COMPONENT_GROUP[property].forEach(item =>
       supportedComponents.forEach((o, index) => {
-        if (o && (o.displayName === item || (o.isChild && o.parentDisplayName === item))) {
+        if (o.displayName === item || (o.isChild && o.parentDisplayName === item)) {
           delete supportedComponents[index];
           addComponentToGroup(o, property);
         }
