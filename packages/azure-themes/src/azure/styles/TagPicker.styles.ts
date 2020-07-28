@@ -12,28 +12,28 @@ export const TagPickerStyles = (props: IBasePickerStyleProps): Partial<IBasePick
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       border: `${StyleConstants.borderWidth} solid ${StyleConstants.transparent}`,
       backgroundColor: StyleConstants.transparent,
       selectors: {
         '[disabled]': {
           backgroundColor: semanticColors.buttonBackgroundDisabled,
-          color: semanticColors.buttonTextDisabled
-        }
-      }
+          color: semanticColors.buttonTextDisabled,
+        },
+      },
     },
     input: {
       color: extendedSemanticColors.inputText,
       backgroundColor: StyleConstants.transparent,
-      border: 'none'
+      border: 'none',
     },
     itemsWrapper: {
       color: semanticColors.bodyText,
       border: 'none',
-      backgroundColor: StyleConstants.transparent
+      backgroundColor: StyleConstants.transparent,
     },
     text: {
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.controlOutline}`
-    }
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.controlOutline}`,
+    },
   };
 };

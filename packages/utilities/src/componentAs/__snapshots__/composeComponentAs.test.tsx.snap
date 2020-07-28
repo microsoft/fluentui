@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`composeComponentAs passes Base as defaultRender to DecoratorB through DecoratorA 1`] = `
+<div
+  data-a="a"
+>
+  <div
+    data-b="b"
+  >
+    <div
+      data-value="test"
+    />
+  </div>
+</div>
+`;
+
+exports[`composeComponentAs passes Base to DecoratorA 1`] = `
+<div
+  data-a="a"
+>
+  <div
+    data-value="test"
+  />
+</div>
+`;
+
+exports[`composeComponentAs passes Base to DecoratorB through DecoratorA 1`] = `
+<div
+  data-a="a"
+>
+  <div
+    data-b="b"
+  >
+    <div
+      data-value="test"
+    />
+  </div>
+</div>
+`;
+
+exports[`composeComponentAs renders without defaultRender 1`] = `
+<div
+  data-a="a"
+>
+  <div
+    data-b="b"
+  />
+</div>
+`;

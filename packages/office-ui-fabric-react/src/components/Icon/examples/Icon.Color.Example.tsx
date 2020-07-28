@@ -6,12 +6,12 @@ const iconClass = mergeStyles({
   fontSize: 50,
   height: 50,
   width: 50,
-  margin: '0 25px'
+  margin: '0 25px',
 });
 const classNames = mergeStyleSets({
   deepSkyBlue: [{ color: 'deepskyblue' }, iconClass],
   greenYellow: [{ color: 'greenyellow' }, iconClass],
-  salmon: [{ color: 'salmon' }, iconClass]
+  salmon: [{ color: 'salmon' }, iconClass],
 });
 
 export const IconColorExample: React.FunctionComponent = () => {

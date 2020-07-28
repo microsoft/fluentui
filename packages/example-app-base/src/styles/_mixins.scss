@@ -16,7 +16,7 @@
 
   // When the element that uses this mixin is in a :focus state, add a pseudo-element to
   // create a border. Only do this when it's a child of ms-Fabric in a focusVisible state.
-  :global(.ms-Fabric.is-focusVisible) &:focus:after {
+  :global(.ms-Fabric--isFocusVisible) &:focus:after {
     content: '';
     position: absolute;
     top: $inset + 1px;
@@ -41,4 +41,14 @@
   @media screen and (-ms-high-contrast: active) {
     @content;
   }
+}
+
+@mixin hiddenContent {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: 'hidden';
 }

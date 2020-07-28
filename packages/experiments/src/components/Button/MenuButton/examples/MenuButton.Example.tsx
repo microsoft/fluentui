@@ -6,29 +6,29 @@ const menuProps: IMenuButtonProps['menu'] = {
   items: [
     {
       key: 'a',
-      name: 'Item a'
+      name: 'Item a',
     },
     {
       key: 'b',
-      name: 'Item b'
-    }
-  ]
+      name: 'Item b',
+    },
+  ],
 };
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   headingStack: {
     childrenGap: 16,
-    padding: 8
+    padding: 8,
   },
   buttonStack: {
-    childrenGap: 12
+    childrenGap: 12,
   },
   multilineButtonStack: {
-    padding: '8px 0px'
-  }
+    padding: '8px 0px',
+  },
 };
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
@@ -37,7 +37,6 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// tslint:disable:jsx-no-lambda
 export class MenuButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (

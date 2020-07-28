@@ -4,10 +4,15 @@ import { IBaseProps } from '../../Utilities';
 import { IButtonSlot } from '../Button/Button.types';
 import { IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 
-export type IMicroFeedbackComponent = IComponent<IMicroFeedbackProps, IMicroFeedbackTokens, IMicroFeedbackStyles, IMicroFeedbackViewProps>;
+export type IMicroFeedbackComponent = IComponent<
+  IMicroFeedbackProps,
+  IMicroFeedbackTokens,
+  IMicroFeedbackStyles,
+  IMicroFeedbackViewProps
+>;
 
-// These types are redundant with IMicroFeedbackComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// These types are redundant with IMicroFeedbackComponent but are needed until TS function return widening issue
+// is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 export type IMicroFeedbackTokenReturnType = ReturnType<Extract<IMicroFeedbackComponent['tokens'], Function>>;
 export type IMicroFeedbackStylesReturnType = ReturnType<Extract<IMicroFeedbackComponent['styles'], Function>>;

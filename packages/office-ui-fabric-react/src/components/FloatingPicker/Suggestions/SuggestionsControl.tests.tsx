@@ -17,22 +17,22 @@ describe('Pickers', () => {
             {
               className: 'header-item-wrapper',
               renderItem: () => <div className="header-item-inner" />,
-              shouldShow: () => true
-            }
+              shouldShow: () => true,
+            },
           ]}
           footerItemsProps={[
             {
               className: 'footer-item-wrapper',
               renderItem: () => <div className="footer-item-inner" />,
-              shouldShow: () => true
-            }
+              shouldShow: () => true,
+            },
           ]}
           completeSuggestion={doNothing}
           suggestions={[]}
           shouldLoopSelection={true}
           onSuggestionClick={doNothing}
         />,
-        root
+        root,
       );
 
       expect(root.querySelector('.header-item-wrapper .header-item-inner')).not.toBe(null);

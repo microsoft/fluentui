@@ -10,7 +10,7 @@ export function getPlaceholderStyles(styles: IStyle): IStyle {
     selectors: {
       '::placeholder': styles, // Chrome, Safari, Opera, Firefox
       ':-ms-input-placeholder': styles, // IE 10+
-      '::-ms-input-placeholder': styles // Edge
-    }
+      '::-ms-input-placeholder': styles, // Edge
+    },
   };
 }

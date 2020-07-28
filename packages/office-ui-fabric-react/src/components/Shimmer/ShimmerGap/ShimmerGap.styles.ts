@@ -2,16 +2,17 @@ import { IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
 import { IRawStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-ShimmerGap-root'
+  root: 'ms-ShimmerGap-root',
 };
 
 export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
+  // eslint-disable-next-line deprecation/deprecation
   const { height, borderStyle, theme } = props;
 
   const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = borderStyle || {};
 
   return {
     root: [
@@ -27,11 +28,11 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'Window',
-            borderColor: 'Window'
-          }
-        }
+            borderColor: 'Window',
+          },
+        },
       },
-      borderStyles
-    ]
+      borderStyles,
+    ],
   };
 }

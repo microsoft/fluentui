@@ -4,15 +4,15 @@ export const DetailsColumnStyles = (props: IDetailsColumnStyleProps): Partial<ID
   const { theme } = props;
   return {
     root: {
-      height: 32
+      height: 32,
     },
     cellName: {
       fontWeight: theme.fonts.small.fontWeight,
-      fontSize: theme.fonts.small.fontSize
+      fontSize: theme.fonts.small.fontSize,
     },
     filterChevron: {
       fontSize: theme.fonts.small.fontSize,
-      paddingLeft: 4
-    }
+      paddingLeft: 4,
+    },
   };
 };

@@ -2,7 +2,7 @@ import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './HorizontalBarChart.types';
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
-  const { className, theme, width, color } = props;
+  const { className, theme, width } = props;
   const { palette } = theme!;
 
   return {
@@ -10,51 +10,34 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       {
         display: 'flex',
         flexDirection: 'column',
-        width: width ? width : '100%'
+        width: width ? width : '100%',
       },
-      className
+      className,
     ],
     items: {
       height: '32px',
-      marginTop: '5px'
+      marginTop: '5px',
     },
     chart: {
       width: '100%',
       height: '8px',
-      marginBottom: '11px'
+      marginBottom: '11px',
     },
     barWrapper: {
       stroke: theme.palette.white,
-      strokeWidth: 2
+      strokeWidth: 2,
     },
     chartTitle: {
+      ...theme.fonts.small,
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: '12px'
     },
     chartDataText: {
-      fontWeight: FontWeights.bold
+      fontWeight: FontWeights.bold,
     },
     chartDataTextDenominator: {
-      fontWeight: FontWeights.semibold
-    },
-    hoverCardTextStyles: {
-      ...theme.fonts.medium,
-      lineHeight: '14px'
-    },
-    hoverCardDataStyles: {
-      color: color !== '' ? `${color}` : palette.black,
-      fontSize: '28px',
-      fontFamily: 'Segoe UI',
-      fontWeight: FontWeights.bold,
-      lineHeight: '31px'
-    },
-    hoverCardRoot: {
-      paddingLeft: '16px',
-      paddingRight: '22px',
-      paddingTop: '15px',
-      paddingBottom: '8px'
+      fontWeight: FontWeights.semibold,
     },
     triangle: {
       width: '0',
@@ -63,7 +46,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       borderRight: '4px solid transparent',
       borderTop: '8px solid',
       borderTopColor: palette.blue,
-      marginBottom: '4px'
-    }
+      marginBottom: '4px',
+    },
   };
 };

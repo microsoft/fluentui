@@ -8,66 +8,68 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
 
   return {
     icon: {
-      color: semanticColors.focusBorder
+      color: semanticColors.primaryButtonBackground,
     },
     menuIcon: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     root: {
       ...getFocusStyle(theme, { inset: 2 }),
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
+      paddingLeft: 4,
+      paddingRight: 4,
     },
     rootExpanded: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     rootHovered: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     rootPressed: {
       backgroundColor: semanticColors.menuItemBackgroundPressed,
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     rootChecked: {
       backgroundColor: semanticColors.listItemBackgroundChecked,
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     rootDisabled: {
       backgroundColor: semanticColors.bodyBackground,
-      color: semanticColors.disabledBodyText
+      color: semanticColors.disabledBodyText,
     },
     splitButtonMenuButton: {
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         ':hover': {
-          backgroundColor: semanticColors.menuItemBackgroundHovered
-        }
-      }
+          backgroundColor: semanticColors.menuItemBackgroundHovered,
+        },
+      },
     },
     splitButtonMenuButtonChecked: {
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         ':hover': {
-          backgroundColor: semanticColors.menuItemBackgroundHovered
-        }
-      }
+          backgroundColor: semanticColors.menuItemBackgroundHovered,
+        },
+      },
     },
     splitButtonMenuButtonDisabled: {
-      backgroundColor: semanticColors.bodyBackground
+      backgroundColor: semanticColors.bodyBackground,
     },
     splitButtonMenuButtonExpanded: {
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         ':hover': {
-          backgroundColor: semanticColors.menuItemBackgroundHovered
-        }
-      }
+          backgroundColor: semanticColors.menuItemBackgroundHovered,
+        },
+      },
     },
     splitButtonMenuIcon: {
-      color: semanticColors.bodyText
-    }
+      color: semanticColors.bodyText,
+    },
   };
 };

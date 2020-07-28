@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { getFileTypeIconProps, FileIconType } from '@uifabric/file-type-icons';
+import { getFileTypeIconProps, FileIconType, initializeFileTypeIcons } from '@uifabric/file-type-icons';
+
+initializeFileTypeIcons(undefined);
 
 export class FileTypeIconBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -23,11 +25,11 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <h3>Size 16 dotx icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ extension: 'dot', size: 16, imageFileType: 'svg' })} />
         <h3>Size 20 email icon as .svg</h3>
-        <Icon {...getFileTypeIconProps({ extension: '.msg', size: 20, imageFileType: 'svg' })} />
+        <Icon {...getFileTypeIconProps({ extension: 'msg', size: 20, imageFileType: 'svg' })} />
         <h3>Size 32 exe icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ extension: 'msi', size: 32 })} />
-        <h3>Size 40 font icon as .svg</h3>
-        <Icon {...getFileTypeIconProps({ extension: '.woff', size: 40 })} />
+        <h3>Size 40 script icon as .svg</h3>
+        <Icon {...getFileTypeIconProps({ extension: 'osts', size: 40 })} />
         <h3>Size 48 html icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ extension: 'html', size: 48 })} />
         <h3>Size 64 mpp icon as .svg</h3>
@@ -44,6 +46,8 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <Icon {...getFileTypeIconProps({ type: FileIconType.listItem, size: 48, imageFileType: 'svg' })} />
         <h3>Size 64 sharedfolder icon as .png</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.sharedFolder, size: 64, imageFileType: 'png' })} />
+        <h3>Size 64 linkedfolder icon as .png</h3>
+        <Icon {...getFileTypeIconProps({ type: FileIconType.linkedFolder, size: 64, imageFileType: 'png' })} />
       </div>
     );
   }

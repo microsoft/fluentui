@@ -1,8 +1,7 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { IPersonaProps, IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people } from '@uifabric/example-data';
 import {
   SelectedPeopleList,
@@ -10,21 +9,22 @@ import {
   SelectedPersona,
   ItemWithContextMenu,
   TriggerOnContextMenu,
-  copyToClipboard
+  copyToClipboard,
 } from '@uifabric/experiments/lib/SelectedItemsList';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];
-  controlledComponent: boolean;
 }
 
-export class SelectedPeopleListWithContextMenuExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
+export class SelectedPeopleListWithContextMenuExample extends React.Component<
+  {},
+  IPeopleSelectedItemsListExampleState
+> {
   private _selectionList: ISelectedPeopleList;
-  private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   /**
    * Build a custom selected item capable of being edited with a dropdown and
-   * capable of eidting
+   * capable of editing
    */
   private SelectedItem = ItemWithContextMenu({
     menuItems: item => [
@@ -33,16 +33,24 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<{}
         text: 'Remove',
         onClick: () => {
           this._selectionList.removeItems([item]);
-        }
+        },
       },
       {
         key: 'copy',
         text: 'Copy',
-        onClick: () => copyToClipboard(this._getCopyItemsText([item]))
-      }
+        onClick: () => copyToClipboard(this._getCopyItemsText([item])),
+      },
     ],
-    itemComponent: TriggerOnContextMenu(SelectedPersona)
+    itemComponent: TriggerOnContextMenu(SelectedPersona),
   });
+
+  constructor(props: {}) {
+    super(props);
+
+    this.state = {
+      currentSelectedItems: [people[40]],
+    };
+  }
 
   public render(): JSX.Element {
     return (
@@ -60,27 +68,27 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<{}
         <SelectedPeopleList
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
-          defaultSelectedItems={[people[40]]}
-          ref={this._setComponentRef}
-          selection={this.selection}
+          selectedItems={[...this.state.currentSelectedItems]}
           onRenderItem={this.SelectedItem}
+          onItemsRemoved={this._onItemsRemoved}
         />
       </div>
     );
   }
 
-  private _setComponentRef = (component: ISelectedPeopleList): void => {
-    this._selectionList = component;
-  };
-
   private _onAddItemButtonClicked = (): void => {
     const randomPerson = people[Math.floor(Math.random() * (people.length - 1))];
-    this._selectionList.addItems([randomPerson]);
+    this.setState({ currentSelectedItems: [...this.state.currentSelectedItems, randomPerson] });
   };
 
-  private _onSelectionChange(): void {
-    this.forceUpdate();
-  }
+  private _onItemsRemoved = (items: IPersona[]): void => {
+    const currentSelectedItemsCopy = [...this.state.currentSelectedItems];
+    items.forEach(item => {
+      const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+      currentSelectedItemsCopy.splice(indexToRemove, 1);
+      this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
+    });
+  };
 
   private _getCopyItemsText(items: IPersonaProps[]): string {
     let copyText = '';

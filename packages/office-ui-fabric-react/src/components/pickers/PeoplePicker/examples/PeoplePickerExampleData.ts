@@ -1,5 +1,8 @@
 import { IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TestImages } from '@uifabric/example-data';
+
+/* eslint-disable deprecation/deprecation */
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
 export const people: (IPersonaProps & { key: string | number })[] = [
@@ -11,7 +14,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 2,
@@ -21,7 +24,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 3,
@@ -31,7 +34,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 4,
@@ -41,7 +44,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 5,
@@ -51,7 +54,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Sr. Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 6,
@@ -61,7 +64,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 7,
@@ -71,7 +74,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 8,
@@ -81,7 +84,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 9,
@@ -91,7 +94,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 10,
@@ -101,7 +104,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 11,
@@ -111,7 +114,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.none
+    presence: PersonaPresence.none,
   },
   {
     key: 12,
@@ -121,7 +124,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Sr. Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 13,
@@ -131,7 +134,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 14,
@@ -141,7 +144,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 15,
@@ -151,7 +154,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'SDE',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 16,
@@ -161,7 +164,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'SE',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 17,
@@ -171,7 +174,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'SDET',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 18,
@@ -181,7 +184,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Senior Manager of SDET',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 19,
@@ -191,7 +194,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Junior Manager of Software',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 20,
@@ -201,7 +204,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 21,
@@ -211,7 +214,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 22,
@@ -221,7 +224,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 23,
@@ -231,7 +234,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 24,
@@ -241,7 +244,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 25,
@@ -251,7 +254,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 3:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 26,
@@ -261,7 +264,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 3:00pm',
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 27,
@@ -271,7 +274,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 28,
@@ -281,7 +284,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 29,
@@ -291,7 +294,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 30,
@@ -301,7 +304,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 31,
@@ -311,7 +314,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 32,
@@ -321,7 +324,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 33,
@@ -331,7 +334,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 34,
@@ -341,7 +344,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 35,
@@ -351,7 +354,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 36,
@@ -361,7 +364,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 37,
@@ -371,7 +374,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 38,
@@ -381,7 +384,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 39,
@@ -391,7 +394,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 40,
@@ -401,8 +404,8 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
-  }
+    presence: PersonaPresence.online,
+  },
 ];
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */

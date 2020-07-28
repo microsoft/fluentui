@@ -24,7 +24,7 @@ function onResolveSuggestions(text: string): ITag[] {
     'rose',
     'violet',
     'white',
-    'yellow'
+    'yellow',
   ]
     .filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
     .map(item => ({ key: item, name: item }));
@@ -37,7 +37,7 @@ describe('TagPicker', () => {
 
   it('renders correctly', () => {
     const component = renderer.create(
-      <TagPicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={onResolveSuggestions('black')} />
+      <TagPicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={onResolveSuggestions('black')} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -45,13 +45,14 @@ describe('TagPicker', () => {
 
   it('renders picker with selected item correctly', () => {
     const component = renderer.create(
-      <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[{ key: 'test', name: 'text' }]} />
+      <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[{ key: 'test', name: 'text' }]} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('can search for and select tags', () => {
+    jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);
 
@@ -64,6 +65,7 @@ describe('TagPicker', () => {
     input.value = 'bl';
 
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
@@ -81,18 +83,23 @@ describe('TagPicker', () => {
   });
 
   it('can be a controlled component', () => {
+    jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);
 
     const pickerBeforeUpdate = React.createRef<IBasePicker<ITag>>();
     const pickerAfterUpdate = React.createRef<IBasePicker<ITag>>();
 
-    ReactDOM.render(<TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} componentRef={pickerBeforeUpdate} />, root);
+    ReactDOM.render(
+      <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} componentRef={pickerBeforeUpdate} />,
+      root,
+    );
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
 
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
@@ -107,7 +114,7 @@ describe('TagPicker', () => {
         selectedItems={[{ key: 'testColor', name: 'testColor' }]}
         componentRef={pickerAfterUpdate}
       />,
-      root
+      root,
     );
 
     const updatedPicker = pickerAfterUpdate.current!.items;
@@ -118,6 +125,7 @@ describe('TagPicker', () => {
   });
 
   it('fires change events correctly for controlled components', done => {
+    jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);
     const onChange = (items: ITag[] | undefined): void => {
@@ -126,12 +134,16 @@ describe('TagPicker', () => {
       done();
     };
 
-    ReactDOM.render(<TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} onChange={onChange} />, root);
+    ReactDOM.render(
+      <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} onChange={onChange} />,
+      root,
+    );
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
 
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 

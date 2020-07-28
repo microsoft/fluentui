@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IVirtualizedListProps } from './VirtualizedList.types';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
-import { BaseComponent, getParent, css } from 'office-ui-fabric-react/lib/Utilities';
+import { getParent, css, initializeComponentRef, EventGroup } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IRange {
   /** Start of range */
@@ -22,7 +22,10 @@ export interface IVirtualizedListState {
   items: React.ReactNode[];
 }
 
-export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent<IVirtualizedListProps<TItem>, IVirtualizedListState> {
+export class VirtualizedList<TItem extends IObjectWithKey> extends React.Component<
+  IVirtualizedListProps<TItem>,
+  IVirtualizedListState
+> {
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
@@ -32,18 +35,24 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
 
   private _focusedIndex: number;
 
+  private _events: EventGroup;
+
   constructor(props: IVirtualizedListProps<TItem>, context: IScrollContainerContext) {
     super(props, context);
+
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
 
     this._focusedIndex = -1;
 
     const {
-      initialViewportHeight = window.innerHeight // Start with the window height if not passed in props, this does not cause layout
+      // Start with the window height if not passed in props, this does not cause layout
+      initialViewportHeight = window.innerHeight,
     } = this.props;
 
     this.state = {
       viewportHeight: initialViewportHeight,
-      items: this._renderItems(0, initialViewportHeight)
+      items: this._renderItems(0, initialViewportHeight),
     };
   }
 
@@ -63,7 +72,10 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     this._updateObservedElements();
   }
 
-  // tslint:disable-next-line function-name
+  public componentWillUnmount(): void {
+    this._events.dispose();
+  }
+
   public UNSAFE_componentWillUpdate(): void {
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
@@ -83,8 +95,8 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   }
 
   private _updateObservedElements(): void {
-    // (Re-)register with the observer after every update, so we'll get an intersection event immediately if one of the spacer
-    // elements is visible right now.
+    // (Re-)register with the observer after every update, so we'll get an intersection event immediately if one of
+    // the spacer elements is visible right now.
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
       this.context.scrollContainer.observe(ref);
@@ -102,7 +114,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
 
     const visibleRange = {
       start: startIndex,
-      end: endIndex
+      end: endIndex,
     };
 
     ranges.push(visibleRange);
@@ -111,7 +123,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     if (this._focusedIndex !== -1 && !isInRange(visibleRange, this._focusedIndex)) {
       const focusRange: IRange = {
         start: this._focusedIndex,
-        end: this._focusedIndex + 1
+        end: this._focusedIndex + 1,
       };
 
       if (this._focusedIndex < visibleRange.start) {
@@ -176,7 +188,6 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
       key = `spacer-item-${index + numberOfItems}`;
     }
 
-    // tslint:disable-next-line:jsx-ban-props
     return React.createElement(ItemTag, { ref: this._spacerRef.bind(this, key), key, style: { height: spacerHeight } });
   }
 
@@ -192,7 +203,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     scrollTop = Math.floor(scrollTop);
 
     this.setState({
-      items: this._renderItems(scrollTop, this.state.viewportHeight)
+      items: this._renderItems(scrollTop, this.state.viewportHeight),
     });
   }
 

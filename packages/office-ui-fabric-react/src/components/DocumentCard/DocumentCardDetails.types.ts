@@ -11,6 +11,7 @@ export interface IDocumentCardDetails {}
 /**
  * {@docCategory DocumentCard}
  */
+// eslint-disable-next-line deprecation/deprecation
 export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
   /**
    * Gets the component ref.

@@ -13,34 +13,34 @@ const NavCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-r
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',
   componentName: 'Nav',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Nav',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Nav',
   examples: [
     {
       title: 'Basic nav with sample links',
       code: NavBasicExampleCode,
-      view: <NavBasicExample />
+      view: <NavBasicExample />,
     },
     {
       title: 'Nav similar to the one in this demo app',
       code: NavFabricDemoAppExampleCode,
-      view: <NavFabricDemoAppExample />
+      view: <NavFabricDemoAppExample />,
     },
     {
       title: 'Nav with nested links',
       code: NavNestedExampleCode,
-      view: <NavNestedExample />
+      view: <NavNestedExample />,
     },
     {
       title: 'Nav with custom group header',
       code: NavCustomGroupHeadersExampleCode,
-      view: <NavCustomGroupHeadersExample />
-    }
+      view: <NavCustomGroupHeadersExample />,
+    },
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md'),
-  bestPractices: '',
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { IScrollContainerProps } from './ScrollContainer.types';
-import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, Async, initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
 
 import * as ScrollContainerStyles from './ScrollContainer.scss';
 
@@ -22,10 +22,10 @@ export interface IScrollContainerContext {
 }
 
 export const ScrollContainerContextTypes = {
-  scrollContainer: PropTypes.object.isRequired
+  scrollContainer: PropTypes.object.isRequired,
 };
 
-export class ScrollContainer extends BaseComponent<IScrollContainerProps> implements IScrollContainer {
+export class ScrollContainer extends React.Component<IScrollContainerProps> implements IScrollContainer {
   public static childContextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
 
   private _observer: IntersectionObserver;
@@ -35,9 +35,18 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
   private _callbacks: IVisibleCallback[] = [];
   private _pendingElements: Element[] = [];
 
+  private _async: Async;
+
+  constructor(props: IScrollContainerProps) {
+    super(props);
+
+    this._async = new Async(this);
+    initializeComponentRef(this);
+  }
+
   public getChildContext(): IScrollContainerContext {
     return {
-      scrollContainer: this
+      scrollContainer: this,
     };
   }
 
@@ -63,7 +72,11 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     const { children, className } = this.props;
 
     return (
-      <div className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)} data-is-scrollable={true} ref={this._resolveRoot}>
+      <div
+        className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)}
+        data-is-scrollable={true}
+        ref={this._resolveRoot}
+      >
         {children as JSX.Element}
       </div>
     );
@@ -73,6 +86,8 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     if (this._observer) {
       this._observer.disconnect();
     }
+
+    this._async.dispose();
   }
 
   private _resolveRoot = (element: HTMLDivElement): void => {
@@ -84,7 +99,6 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
 
   private _onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
     for (const entry of entries) {
-      // tslint:disable-next-line:no-any
       if ((entry as any).isIntersecting || entry.intersectionRatio > 0) {
         // Schedule callbacks on next frame
         this._async.requestAnimationFrame(() => {
@@ -111,8 +125,8 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
         this._onIntersection as IntersectionObserverCallback,
         {
           root: this._root,
-          threshold
-        } as IntersectionObserverInit
+          threshold,
+        } as IntersectionObserverInit,
       );
 
       // If there were attempts to observe elements before the observer was ready, add them now
@@ -130,8 +144,7 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
       // No intersection observer, rely on scroll event. Note: not all browsers support options, but since
       // we don't need capture, we can pass it and have it ignored if not supported
       this._root.addEventListener('scroll', this._onScroll, {
-        passive: true
-        // tslint:disable-next-line:no-any
+        passive: true,
       } as any);
     }
   }

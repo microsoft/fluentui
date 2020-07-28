@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   Checkbox,
+  ICheckboxStyles,
   DefaultPalette,
   Dropdown,
   IDropdownOption,
@@ -10,7 +11,7 @@ import {
   IStackItemStyles,
   IStackTokens,
   IStackProps,
-  TextField
+  TextField,
 } from 'office-ui-fabric-react';
 
 export interface IExampleOptions {
@@ -49,7 +50,7 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
     horizontalAlignment,
     verticalAlignment,
     hideEmptyChildren,
-    emptyChildren
+    emptyChildren,
   } = props;
   // Styles definition
   const stackStyles: IStackStyles = {
@@ -59,15 +60,15 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
         marginLeft: 10,
         marginRight: 10,
         minHeight: 100,
-        width: `calc(${wrapperWidth}% - 20px)`
+        width: `calc(${wrapperWidth}% - 20px)`,
       },
       preventOverflow && {
-        overflow: 'hidden' as 'hidden'
-      }
+        overflow: 'hidden' as 'hidden',
+      },
     ],
     inner: {
-      overflow: preventOverflow ? 'hidden' : ('visible' as 'hidden' | 'visible')
-    }
+      overflow: preventOverflow ? 'hidden' : ('visible' as 'hidden' | 'visible'),
+    },
   };
   const stackItemStyles: IStackItemStyles = {
     root: {
@@ -78,14 +79,14 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
       display: 'flex',
       height: 50,
       justifyContent: 'center',
-      width: 50
-    }
+      width: 50,
+    },
   };
 
   // Tokens definition
   const exampleStackTokens: IStackTokens = {
     childrenGap: rowGap + ' ' + columnGap,
-    padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`
+    padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`,
   };
 
   return (
@@ -129,6 +130,9 @@ function _range(start: number, end: number): number[] {
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 
+const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
+const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
+
 export class HorizontalStackConfigureExample extends React.Component<{}, IExampleOptions> {
   public state: IExampleOptions = {
     numItems: 5,
@@ -146,7 +150,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
     horizontalAlignment: 'start',
     verticalAlignment: 'start',
     hideEmptyChildren: false,
-    emptyChildren: []
+    emptyChildren: [],
   };
   private _horizontalAlignmentOptions: IDropdownOption[] = [
     { key: 'start', text: 'Left' },
@@ -154,12 +158,12 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
     { key: 'end', text: 'Right' },
     { key: 'space-around', text: 'Space around' },
     { key: 'space-between', text: 'Space between' },
-    { key: 'space-evenly', text: 'Space evenly' }
+    { key: 'space-evenly', text: 'Space evenly' },
   ];
   private _verticalAlignmentOptions: IDropdownOption[] = [
     { key: 'start', text: 'Top' },
     { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Bottom' }
+    { key: 'end', text: 'Bottom' },
   ];
 
   public render(): JSX.Element {
@@ -180,7 +184,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
                 onChange={this._onNumItemsChange}
               />
               <Stack horizontal disableShrink>
-                <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
+                <Checkbox
+                  label="Shadow around items"
+                  onChange={this._onBoxShadowChange}
+                  styles={shadowItemCheckboxStyles}
+                />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} />
               </Stack>
             </Stack>
@@ -188,7 +196,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           <Stack.Item grow>
             <Stack horizontal disableShrink tokens={configureStackTokens}>
               <Stack>
-                <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={{ root: { marginBottom: 10 } }} />
+                <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={wrapItemCheckboxStyles} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkChange} />
               </Stack>
               <Stack.Item grow>
@@ -298,7 +306,10 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
             <Checkbox label="Hide empty children" onChange={this._onHideEmptyChildrenChange} />
           </Stack.Item>
           <Stack.Item grow>
-            <TextField label="Enter a space-separated list of empty children (e.g. 1 2 3):" onChange={this._onEmptyChildrenChange} />
+            <TextField
+              label="Enter a space-separated list of empty children (e.g. 1 2 3):"
+              onChange={this._onEmptyChildrenChange}
+            />
           </Stack.Item>
         </Stack>
 

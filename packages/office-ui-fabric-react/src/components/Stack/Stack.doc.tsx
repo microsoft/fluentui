@@ -73,124 +73,125 @@ const HorizontalStackConfigureExampleCode = require('!raw-loader!office-ui-fabri
 export const StackPageProps: IDocPageProps = {
   title: 'Stack',
   componentName: 'Stack',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Stack',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Stack',
   examples: [
     {
       title: 'Basic Vertical Stack',
       code: VerticalStackBasicExampleCode,
-      view: <VerticalStackBasicExample />
+      view: <VerticalStackBasicExample />,
     },
     {
       title: 'Reversed Basic Vertical Stack',
       code: VerticalStackReversedExampleCode,
-      view: <VerticalStackReversedExample />
+      view: <VerticalStackReversedExample />,
     },
     {
       title: 'Vertical Stack - Gap and Padding Sizes',
       code: VerticalStackSpacingExampleCode,
-      view: <VerticalStackSpacingExample />
+      view: <VerticalStackSpacingExample />,
     },
     {
       title: 'Vertical Stack - Growing Items',
       code: VerticalStackGrowExampleCode,
-      view: <VerticalStackGrowExample />
+      view: <VerticalStackGrowExample />,
     },
     {
       title: 'Vertical Stack - Shrinking Items',
       code: VerticalStackShrinkExampleCode,
-      view: <VerticalStackShrinkExample />
+      view: <VerticalStackShrinkExample />,
     },
     {
       title: 'Vertical Stack - Wrapping - Basic',
       code: VerticalStackWrapExampleCode,
-      view: <VerticalStackWrapExample />
+      view: <VerticalStackWrapExample />,
     },
     {
       title: 'Vertical Stack - Wrapping - Advanced',
       code: VerticalStackWrapAdvancedExampleCode,
-      view: <VerticalStackWrapAdvancedExample />
+      view: <VerticalStackWrapAdvancedExample />,
     },
     {
       title: 'Vertical Stack - Wrapping - Nested',
       code: VerticalStackWrapNestedExampleCode,
-      view: <VerticalStackWrapNestedExample />
+      view: <VerticalStackWrapNestedExample />,
     },
     {
       title: 'Vertical Stack - Vertical Alignments',
       code: VerticalStackVerticalAlignExampleCode,
-      view: <VerticalStackVerticalAlignExample />
+      view: <VerticalStackVerticalAlignExample />,
     },
     {
       title: 'Vertical Stack - Horizontal Alignments',
       code: VerticalStackHorizontalAlignExampleCode,
-      view: <VerticalStackHorizontalAlignExample />
+      view: <VerticalStackHorizontalAlignExample />,
     },
     {
       title: 'Vertical Stack - Configure Properties',
       code: VerticalStackConfigureExampleCode,
-      view: <VerticalStackConfigureExample />
+      view: <VerticalStackConfigureExample />,
     },
     {
       title: 'Basic Horizontal Stack',
       code: HorizontalStackBasicExampleCode,
-      view: <HorizontalStackBasicExample />
+      view: <HorizontalStackBasicExample />,
     },
     {
       title: 'Reversed Basic Horizontal Stack',
       code: HorizontalStackReversedExampleCode,
-      view: <HorizontalStackReversedExample />
+      view: <HorizontalStackReversedExample />,
     },
     {
       title: 'Horizontal Stack - Gap and Padding Sizes',
       code: HorizontalStackSpacingExampleCode,
-      view: <HorizontalStackSpacingExample />
+      view: <HorizontalStackSpacingExample />,
     },
     {
       title: 'Horizontal Stack - Growing Items',
       code: HorizontalStackGrowExampleCode,
-      view: <HorizontalStackGrowExample />
+      view: <HorizontalStackGrowExample />,
     },
     {
       title: 'Horizontal Stack - Shrinking Items',
       code: HorizontalStackShrinkExampleCode,
-      view: <HorizontalStackShrinkExample />
+      view: <HorizontalStackShrinkExample />,
     },
     {
       title: 'Horizontal Stack - Wrapping - Basic',
       code: HorizontalStackWrapExampleCode,
-      view: <HorizontalStackWrapExample />
+      view: <HorizontalStackWrapExample />,
     },
     {
       title: 'Horizontal Stack - Wrapping - Advanced',
       code: HorizontalStackWrapAdvancedExampleCode,
-      view: <HorizontalStackWrapAdvancedExample />
+      view: <HorizontalStackWrapAdvancedExample />,
     },
     {
       title: 'Horizontal Stack - Wrapping - Nested',
       code: HorizontalStackWrapNestedExampleCode,
-      view: <HorizontalStackWrapNestedExample />
+      view: <HorizontalStackWrapNestedExample />,
     },
     {
       title: 'Horizontal Stack - Horizontal Alignments',
       code: HorizontalStackHorizontalAlignExampleCode,
-      view: <HorizontalStackHorizontalAlignExample />
+      view: <HorizontalStackHorizontalAlignExample />,
     },
     {
       title: 'Horizontal Stack - Vertical Alignments',
       code: HorizontalStackVerticalAlignExampleCode,
-      view: <HorizontalStackVerticalAlignExample />
+      view: <HorizontalStackVerticalAlignExample />,
     },
     {
       title: 'Horizontal Stack - Configure Properties',
       code: HorizontalStackConfigureExampleCode,
-      view: <HorizontalStackConfigureExample />
-    }
+      view: <HorizontalStackConfigureExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackOverview.md'),
-  bestPractices: '',
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

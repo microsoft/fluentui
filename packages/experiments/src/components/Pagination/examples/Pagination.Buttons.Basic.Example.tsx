@@ -25,14 +25,14 @@ export class PaginationButtonsBasicExample extends React.Component<{}, IPaginati
         lastPageAriaLabel={'last page'}
         pageAriaLabel={'page'}
         selectedAriaLabel={'selected'}
-        onPageChange={this.onPageChange}
+        onPageChange={this._onPageChange}
       />
     );
   }
 
-  private onPageChange = (index: number): void => {
+  private _onPageChange = (index: number): void => {
     this.setState({
-      selectedPageIndex: index
+      selectedPageIndex: index,
     });
   };
 }

@@ -6,13 +6,13 @@ export class MicroFeedbackStackExample extends React.Component<{}, {}> {
     const followUpOnDislike: IMicroFeedbackQuestion = {
       options: ['Translation is incorrect', 'Context is incorrect', 'Language can be better'],
       question: 'Please help us improve',
-      id: 'dislike'
+      id: 'dislike',
     };
 
     const followUpOnLike: IMicroFeedbackQuestion = {
       options: ['Translation is great', 'Context is great'],
       question: 'Please help us improve',
-      id: 'like'
+      id: 'like',
     };
 
     const sendFeedbackCallback = (vote: VoteType) => {
@@ -32,8 +32,10 @@ export class MicroFeedbackStackExample extends React.Component<{}, {}> {
         likeQuestion={followUpOnLike}
         likeIconTitle="Like"
         dislikeIconTitle="Dislike"
+        /* eslint-disable react/jsx-no-bind */
         sendFeedback={sendFeedbackCallback}
         sendFollowUpIndex={sendFollowupIndexCallback}
+        /* eslint-enable react/jsx-no-bind */
         thanksText="Thank you!"
         tokens={{ followUpBackgroundColor: 'lightgrey' }}
       />

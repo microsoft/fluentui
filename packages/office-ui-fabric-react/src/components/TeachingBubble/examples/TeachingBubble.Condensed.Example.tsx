@@ -1,62 +1,44 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface ITeachingBubbleCondensedExampleState {
-  isTeachingBubbleVisible?: boolean;
-}
+const examplePrimaryButtonProps: IButtonProps = {
+  children: 'Try it out',
+};
 
-export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachingBubbleCondensedExampleState> {
-  public constructor(props: {}) {
-    super(props);
+export const TeachingBubbleCondensedExample: React.FunctionComponent = () => {
+  const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 
-    this._onDismiss = this._onDismiss.bind(this);
-    this._onShow = this._onShow.bind(this);
+  const exampleSecondaryButtonProps: IButtonProps = React.useMemo(
+    () => ({
+      children: 'Maybe later',
+      onClick: toggleTeachingBubbleVisible,
+    }),
+    [toggleTeachingBubbleVisible],
+  );
 
-    this.state = {
-      isTeachingBubbleVisible: false
-    };
-  }
+  return (
+    <div>
+      <DefaultButton
+        id="targetButton"
+        onClick={toggleTeachingBubbleVisible}
+        text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+      />
 
-  public render(): JSX.Element {
-    const { isTeachingBubbleVisible } = this.state;
-
-    return (
-      <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea">
-          <DefaultButton
-            onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
-            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
-            id={'buttonId'}
-          />
-        </span>
-        {isTeachingBubbleVisible ? (
-          <div>
-            <TeachingBubble
-              target={'#buttonId'}
-              hasCondensedHeadline={true}
-              onDismiss={this._onDismiss}
-              hasCloseButton={true}
-              closeButtonAriaLabel="Close"
-              headline="Discover what’s trending around you"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
-            </TeachingBubble>
-          </div>
-        ) : null}
-      </div>
-    );
-  }
-
-  private _onDismiss(ev: any): void {
-    this.setState({
-      isTeachingBubbleVisible: false
-    });
-  }
-
-  private _onShow(ev: any): void {
-    this.setState({
-      isTeachingBubbleVisible: true
-    });
-  }
-}
+      {teachingBubbleVisible && (
+        <TeachingBubble
+          target="#targetButton"
+          hasCondensedHeadline={true}
+          primaryButtonProps={examplePrimaryButtonProps}
+          secondaryButtonProps={exampleSecondaryButtonProps}
+          onDismiss={toggleTeachingBubbleVisible}
+          headline="Discover what’s trending around you"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni
+          harum non?
+        </TeachingBubble>
+      )}
+    </div>
+  );
+};

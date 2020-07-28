@@ -5,7 +5,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IExampleState {
   dynamicData: IChartProps;
-  colors: string[];
 }
 
 export class StackedBarChartDynamicExample extends React.Component<{}, IExampleState> {
@@ -16,7 +15,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       DefaultPalette.blueLight,
       DefaultPalette.tealDark,
       DefaultPalette.teal,
-      DefaultPalette.tealLight
+      DefaultPalette.tealLight,
     ],
     [
       DefaultPalette.redDark,
@@ -25,7 +24,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       DefaultPalette.orangeLight,
       DefaultPalette.orangeLighter,
       DefaultPalette.yellow,
-      DefaultPalette.yellowLight
+      DefaultPalette.yellowLight,
     ],
     [
       DefaultPalette.greenDark,
@@ -33,7 +32,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       DefaultPalette.greenLight,
       DefaultPalette.neutralPrimary,
       DefaultPalette.neutralSecondary,
-      DefaultPalette.neutralTertiary
+      DefaultPalette.neutralTertiary,
     ],
     [
       DefaultPalette.purpleDark,
@@ -41,8 +40,8 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       DefaultPalette.purpleLight,
       DefaultPalette.magentaDark,
       DefaultPalette.magenta,
-      DefaultPalette.magentaLight
-    ]
+      DefaultPalette.magentaLight,
+    ],
   ];
 
   constructor(props: IStackedBarChartProps) {
@@ -54,10 +53,9 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
           { legend: 'first', data: 40, color: DefaultPalette.blueLight },
           { legend: 'second', data: 23, color: DefaultPalette.yellow },
           { legend: 'third', data: 35, color: DefaultPalette.neutralSecondary },
-          { legend: 'fourth', data: 87, color: DefaultPalette.greenLight }
-        ]
+          { legend: 'fourth', data: 87, color: DefaultPalette.greenLight },
+        ],
       },
-      colors: [DefaultPalette.blueLight, DefaultPalette.yellow, DefaultPalette.neutralSecondary, DefaultPalette.greenLight]
     };
 
     this._changeData = this._changeData.bind(this);
@@ -82,9 +80,9 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
           { legend: 'first', data: this._randomY() },
           { legend: 'second', data: this._randomY() },
           { legend: 'third', data: this._randomY() },
-          { legend: 'fourth', data: this._randomY() }
-        ]
-      }
+          { legend: 'fourth', data: this._randomY() },
+        ],
+      },
     });
   }
 
@@ -96,9 +94,9 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
           { legend: 'first', data: 40, color: this._randomColor(0) },
           { legend: 'second', data: 23, color: this._randomColor(1) },
           { legend: 'third', data: 35, color: this._randomColor(2) },
-          { legend: 'fourth', data: 87, color: this._randomColor(3) }
-        ]
-      }
+          { legend: 'fourth', data: 87, color: this._randomColor(3) },
+        ],
+      },
     });
   }
 

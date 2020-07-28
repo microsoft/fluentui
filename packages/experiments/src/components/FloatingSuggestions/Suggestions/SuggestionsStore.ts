@@ -42,8 +42,7 @@ export class SuggestionsStore<T> {
       return {
         item: suggestion,
         selected: false,
-        // tslint:disable-next-line:no-any
-        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText
+        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText,
       } as ISuggestionModel<T>;
     }
   };

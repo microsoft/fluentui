@@ -4,25 +4,25 @@ import { createTheme, Stack } from 'office-ui-fabric-react';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   buttonStack: {
-    childrenGap: 8
-  }
+    childrenGap: 8,
+  },
 };
 
 const testTheme = createTheme({
   semanticColors: {
-    buttonText: '#E20000'
+    buttonText: '#E20000',
   },
   fonts: {
     small: {
-      color: 'purple'
-    }
-  }
+      color: 'purple',
+    },
+  },
 });
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export class ButtonTokensExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
@@ -38,7 +38,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
               color: 'white',
               colorHovered: '#595959',
               iconColor: 'white',
-              iconColorHovered: '#595959'
+              iconColorHovered: '#595959',
             }
           }
         />
@@ -47,7 +47,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
           content="Token Function: Red Icon (via theme), Purple Text"
           theme={testTheme}
           tokens={(props, theme) => ({
-            color: theme.fonts.small.color
+            color: theme.fonts.small.color,
           })}
         />
       </Stack>

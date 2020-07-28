@@ -8,6 +8,7 @@ import { ContextualMenuAnchor } from './ContextualMenuAnchor';
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;
+    // eslint-disable-next-line deprecation/deprecation
     let menuClassNames: IMenuItemClassNames;
 
     beforeEach(() => {
@@ -17,7 +18,13 @@ describe('ContextualMenuButton', () => {
 
     it('renders the contextual menu split button correctly', () => {
       const component = renderer.create(
-        <ContextualMenuAnchor item={menuItem} classNames={menuClassNames} index={0} focusableElementIndex={0} totalItemCount={1} />
+        <ContextualMenuAnchor
+          item={menuItem}
+          classNames={menuClassNames}
+          index={0}
+          focusableElementIndex={0}
+          totalItemCount={1}
+        />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -35,7 +42,7 @@ describe('ContextualMenuButton', () => {
           totalItemCount={1}
           hasCheckmarks={true}
           onItemClick={onClickMock}
-        />
+        />,
       );
       component.find('a').simulate('click', mockEvent);
       expect(onClickMock).toHaveBeenCalledTimes(1);
@@ -54,7 +61,7 @@ describe('ContextualMenuButton', () => {
           totalItemCount={1}
           hasCheckmarks={true}
           onItemClick={onClickMock}
-        />
+        />,
       );
 
       component
@@ -73,6 +80,7 @@ describe('ContextualMenuButton', () => {
   });
 });
 
+// eslint-disable-next-line deprecation/deprecation
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',
@@ -87,6 +95,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu'
+    linkContentMenu: 'linkContentMenu',
   };
 }

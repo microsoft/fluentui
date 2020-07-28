@@ -3,19 +3,20 @@ import glob from 'glob';
 import mockfs from 'mock-fs';
 import path from 'path';
 import { promisify } from 'util';
-import { IMigration } from '@uifabric/migration/lib/migration';
+import { IMigration } from '../../../migration';
 
 const globAsync = promisify(glob);
 const readFileAsync = promisify(fs.readFile);
 const fixturesRoot = path.join(__dirname, '..', '..', '..', '..', 'fixtures');
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const fileSystem: any = {};
 
 async function recordFile(filename: string): Promise<void> {
   const contents = await readFileAsync(filename);
   const trimmedName = filename.substring(fixturesRoot.length);
-  const parts = path.dirname(trimmedName).split(path.sep);
+  // Intentionally not using path.sep, as node is giving '/' for separator instead of os-correct version.
+  const parts = path.dirname(trimmedName).split('/');
   parts[0] = '_root';
   let current = fileSystem;
   parts.forEach(p => {

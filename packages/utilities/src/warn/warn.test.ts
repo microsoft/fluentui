@@ -19,13 +19,13 @@ describe('warnDeprecations', () => {
   afterEach(sharedAfterEach);
 
   it('does not warn when unnecessary', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     warnDeprecations('Foo', { bar: 1 }, { foo: null } as any);
     expect(warningCallback).not.toHaveBeenCalled();
   });
 
   it('can warn on a deprecated prop', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     warnDeprecations('Foo', { foo: 1 }, { foo: null } as any);
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' was used but has been deprecated.`);
@@ -34,7 +34,9 @@ describe('warnDeprecations', () => {
   it('can warn on a deprecated prop with replacement', () => {
     warnDeprecations('Foo', { foo: 1 }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' was used but has been deprecated. Use 'bar' instead.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' was used but has been deprecated. Use 'bar' instead.`,
+    );
   });
 });
 
@@ -63,7 +65,7 @@ describe('warnMutuallyExclusive', () => {
   });
 
   it('does not warn unnecessarily when the key of the exclusive map is implicitly undefined', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     warnMutuallyExclusive('Foo', { bar: 1 }, { foo: 'bar' } as any);
     expect(warningCallback).not.toHaveBeenCalled();
   });
@@ -81,25 +83,33 @@ describe('warnMutuallyExclusive', () => {
   it('can warn on mutual exclusive props', () => {
     warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`,
+    );
   });
 
   it('can warn if the exclusive props with the key in the map is null', () => {
     warnMutuallyExclusive('Foo', { foo: null, bar: 1 }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`,
+    );
   });
 
   it('can warn if the matching key in exclusive map is null', () => {
     warnMutuallyExclusive('Foo', { foo: 1, bar: null }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`,
+    );
   });
 
   it('can warn if both of the props are null', () => {
     warnMutuallyExclusive('Foo', { foo: null, bar: null }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`,
+    );
   });
 });
 
@@ -108,13 +118,13 @@ describe('warnConditionallyRequiredProps', () => {
   afterEach(sharedAfterEach);
 
   it('does not warn when unnecessary', () => {
-    warnConditionallyRequiredProps('Foo', { Foo: 1, Bar: 1 }, ['Foo', 'Bar'], 'Foo', 'foo' === 'foo');
+    warnConditionallyRequiredProps('Foo', { foo: 1, bar: 1 }, ['foo', 'bar'], 'foo', true);
     expect(warningCallback).not.toHaveBeenCalled();
   });
 
   it('can warn on required props', () => {
-    warnConditionallyRequiredProps('Foo', { Foo: 1, bar: 1 }, ['Foo', 'Bar'], 'Foo', 'foo' === 'foo');
+    warnConditionallyRequiredProps('Foo', { foo: 1 }, ['foo', 'bar'], 'foo', true);
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'Bar' is required when 'Foo' is used.'`);
+    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'bar' is required when 'foo' is used.'`);
   });
 });

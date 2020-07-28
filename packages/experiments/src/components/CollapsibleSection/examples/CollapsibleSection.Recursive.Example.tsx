@@ -14,28 +14,29 @@ const _fileItems: IFileItem[] = [];
 
 const fileIcons: { name: string }[] = [
   { name: 'accdb' },
+  { name: 'audio' },
+  { name: 'code' },
   { name: 'csv' },
   { name: 'docx' },
   { name: 'dotx' },
-  { name: 'mpp' },
   { name: 'mpt' },
-  { name: 'odp' },
-  { name: 'ods' },
-  { name: 'odt' },
+  { name: 'model' },
   { name: 'one' },
-  { name: 'onepkg' },
   { name: 'onetoc' },
-  { name: 'potx' },
-  { name: 'ppsx' },
+  { name: 'pdf' },
+  { name: 'photo' },
   { name: 'pptx' },
+  { name: 'presentation' },
+  { name: 'potx' },
   { name: 'pub' },
+  { name: 'rtf' },
+  { name: 'spreadsheet' },
+  { name: 'txt' },
+  { name: 'vector' },
   { name: 'vsdx' },
-  { name: 'vssx' },
-  { name: 'vstx' },
-  { name: 'xls' },
   { name: 'xlsx' },
   { name: 'xltx' },
-  { name: 'xsn' }
+  { name: 'xsn' },
 ];
 
 /**
@@ -47,10 +48,12 @@ interface IExampleFileProps {
   indent: number;
 }
 
-/* tslint:disable:jsx-ban-props */
 const ExampleFile = (props: IExampleFileProps) => {
   return (
-    <div data-is-focusable="true" style={{ display: 'flex', alignItems: 'center', height: 24, paddingLeft: 4 + props.indent * 18 }}>
+    <div
+      data-is-focusable="true"
+      style={{ display: 'flex', alignItems: 'center', height: 24, paddingLeft: 4 + props.indent * 18 }}
+    >
       <img src={props.iconSource} style={{ maxWidth: 16, padding: 6 }} />
       <Text variant="small">{props.filename}</Text>
     </div>
@@ -79,7 +82,7 @@ class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> 
           key={i}
           iconSource={_fileItems[randomFile].iconName}
           filename={_fileItems[randomFile].name}
-        />
+        />,
       );
     }
 
@@ -87,10 +90,15 @@ class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> 
     for (let i = 0; i < randomFolderCount; i++) {
       const randomFolder = Math.floor(Math.random() * _folderItems.length);
       this._folders.push(
-        <CollapsibleSection key={i} defaultCollapsed={true} title={_folderItems[randomFolder]} indent={this.props.indent}>
+        <CollapsibleSection
+          key={i}
+          defaultCollapsed={true}
+          title={_folderItems[randomFolder]}
+          indent={this.props.indent}
+        >
           <CollapsibleSectionFolder indent={(this.props.indent || 0) + 1} />
           {this._files}
-        </CollapsibleSection>
+        </CollapsibleSection>,
       );
     }
   }
@@ -113,7 +121,8 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
 
         const randomFileType = this._randomFileIcon();
         let randomFileName: string = lorem(2).replace(/\W/g, '');
-        randomFileName = randomFileName.charAt(0).toUpperCase() + randomFileName.slice(1).concat(`.${randomFileType.docType}`);
+        randomFileName =
+          randomFileName.charAt(0).toUpperCase() + randomFileName.slice(1).concat(`.${randomFileType.docType}`);
         _fileItems.push({ name: randomFileName, iconName: randomFileType.url });
       }
     }
@@ -133,7 +142,7 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+      url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
     };
   }
 }

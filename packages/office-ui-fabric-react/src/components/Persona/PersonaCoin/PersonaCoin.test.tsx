@@ -1,4 +1,3 @@
-/* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
@@ -7,14 +6,15 @@ import { PersonaCoin } from './PersonaCoin';
 import { PersonaCoinBase } from './PersonaCoin.base';
 import { wrapPersona } from 'office-ui-fabric-react/lib/components/Persona/Persona.test';
 
-const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+const testImage1x1 =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
 const coinProp = {
   text: 'Swapnil Vaibhav',
   secondaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm',
-  size: 15
+  size: 15,
 };
 
 describe('PersonaCoin', () => {
@@ -47,20 +47,24 @@ describe('PersonaCoin', () => {
   });
 
   it('renders the initials before the image is loaded', () => {
-    const component = renderer.create(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={true} />);
+    const component = renderer.create(
+      <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={true} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('does not render the initials when showInitialsUntilImageLoads is false', () => {
-    const component = renderer.create(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={false} />);
+    const component = renderer.create(
+      <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={false} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with onRender callback', () => {
     const component = renderer.create(
-      <PersonaCoin {...coinProp} onRenderCoin={wrapPersona(coinProp)} onRenderInitials={wrapPersona(coinProp)} />
+      <PersonaCoin {...coinProp} onRenderCoin={wrapPersona(coinProp)} onRenderInitials={wrapPersona(coinProp)} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

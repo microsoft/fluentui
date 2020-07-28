@@ -25,7 +25,10 @@ export class SlotsPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="Slots"
         overview={
           <div>
-            <p>Slots are a method of combining all of the various ways that subcomponents can be interacted into one prop.</p>
+            <p>
+              Slots are a method of combining all of the various ways that subcomponents can be interacted into one
+              prop.
+            </p>
           </div>
         }
         exampleCards={

@@ -16,13 +16,13 @@ import {
   IMenuButtonProps,
   MessageBarButton,
   PrimaryButton,
-  SplitButton
+  SplitButton,
 } from '@uifabric/experiments';
 import { Stack, Text } from 'office-ui-fabric-react';
 
 const baseProps: IButtonProps = {
   icon: 'AddFriend',
-  content: 'Button'
+  content: 'Button',
 };
 
 const menuProps: IMenuButtonProps = {
@@ -31,14 +31,14 @@ const menuProps: IMenuButtonProps = {
     items: [
       {
         key: 'a',
-        name: 'Item a'
+        name: 'Item a',
       },
       {
         key: 'b',
-        name: 'Item b'
-      }
-    ]
-  }
+        name: 'Item b',
+      },
+    ],
+  },
 };
 
 storiesOf('Button', module)
@@ -70,7 +70,7 @@ storiesOf('Button', module)
         </Stack>
       </Button>
     ),
-    { rtl: true }
+    { rtl: true },
   );
 
 storiesOf('Button - Circular', module)
@@ -244,11 +244,11 @@ storiesOf('CompoundButton', module)
     </Screener>
   ))
   .addStory('Default', () => <CompoundButton content="Button" secondaryText="Caption" />, {
-    rtl: true
+    rtl: true,
   })
   .addStory('Disabled', () => <CompoundButton disabled content="Button" secondaryText="Caption" />)
   .addStory('Primary', () => <CompoundButton primary content="Button" secondaryText="Caption" />, {
-    rtl: true
+    rtl: true,
   })
   .addStory('Primary Disabled', () => (
     <CompoundButton primary disabled content="Button" secondaryText="Caption" />

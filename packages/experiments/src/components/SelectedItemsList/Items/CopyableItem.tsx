@@ -12,7 +12,9 @@ export type CopyableItemProps<T> = {
 };
 
 // `extends any` to trick the parser into parsing as a type decl instead of a jsx tag
-export const CopyableItem = <T extends any>(copyableItemProps: CopyableItemProps<T>): CopyableItemWrappedComponent<T> => {
+export const CopyableItem = <T extends any>(
+  copyableItemProps: CopyableItemProps<T>,
+): CopyableItemWrappedComponent<T> => {
   return React.memo((selectedItemProps: ISelectedItemProps<T>) => {
     const onCopy = React.useCallback(
       item => {
@@ -34,7 +36,13 @@ export const CopyableItem = <T extends any>(copyableItemProps: CopyableItemProps
           document.body.removeChild(copyInput);
         }
       },
-      [copyableItemProps.getCopyItemText]
+      // TODO: evaluate whether anything should be changed here based on warning:
+      //   "React Hook React.useCallback has an unnecessary dependency: 'copyableItemProps.getCopyItemText'.
+      //   Either exclude it or remove the dependency array. Outer scope values like
+      //   'copyableItemProps.getCopyItemText' aren't valid dependencies because mutating them
+      //   doesn't re-render the component."
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [copyableItemProps.getCopyItemText],
     );
 
     const ItemComponent = copyableItemProps.itemComponent;

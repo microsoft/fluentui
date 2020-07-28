@@ -6,12 +6,12 @@ export const defaultPalette = Object.keys(defaultTheme.palette).map(variableName
   key: variableName,
   name: variableName,
   value: (defaultTheme.palette as any)[variableName],
-  description: ''
+  description: '',
 }));
 
 export const defaultSemanticColors = Object.keys(defaultTheme.semanticColors).map(variableName => ({
   key: variableName,
   name: variableName,
   value: (defaultTheme.semanticColors as any)[variableName],
-  description: (defaultTheme.semanticColors as any)[variableName].indexOf('@deprecated') >= 0 ? 'Deprecated' : ''
+  description: (defaultTheme.semanticColors as any)[variableName].indexOf('@deprecated') >= 0 ? 'Deprecated' : '',
 }));

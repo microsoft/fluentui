@@ -10,11 +10,13 @@ export interface IAzureSemanticColors {
   text: {
     heading: string;
     body: string;
+    bodyHovered: string;
     value: string;
     icon: string;
     label: string;
     disabled: string;
     hyperlink: string;
+    hyperlinkHovered: string;
     success: string;
     error: string;
     placeholder: string;
@@ -41,13 +43,31 @@ export interface IAzureSemanticColors {
     rest: {
       background: string;
       border: string;
+      text: string;
     };
     hover: {
       background: string;
+      color: string;
       border: string;
     };
     pressed: {
+      text: string;
       background: string;
+      border: string;
+    };
+  };
+  checkBox: {
+    rest: {
+      border: string;
+      hover: string;
+      focus: string;
+    };
+    checked: {
+      border: string;
+      background: string;
+      default: string;
+    };
+    disabled: {
       border: string;
     };
   };
@@ -62,9 +82,23 @@ export interface IAzureSemanticColors {
   item: {
     hover: string;
     select: string;
+    selectHovered: string;
   };
   shimmer: {
     primary: string;
     secondary: string;
+  };
+  toggle: {
+    disabled: {
+      backrgound: string;
+    };
+  };
+  commandBar: {
+    border: string;
+  };
+  datePicker: {
+    disabled: {
+      border: string;
+    };
   };
 }

@@ -18,32 +18,33 @@ const DropdownRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
   componentName: 'Dropdown',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Dropdown',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Dropdown',
   examples: [
     {
       title: 'Basic Dropdowns',
       code: DropdownBasicExampleCode,
-      view: <DropdownBasicExample />
+      view: <DropdownBasicExample />,
     },
     {
       title: 'Controlled single-select Dropdown',
       code: DropdownControlledExampleCode,
-      view: <DropdownControlledExample />
+      view: <DropdownControlledExample />,
     },
     {
       title: 'Controlled multi-select Dropdown',
       code: DropdownControlledMultiExampleCode,
-      view: <DropdownControlledMultiExample />
+      view: <DropdownControlledMultiExample />,
     },
     {
       title: 'Customized Dropdown',
       code: DropdownCustomExampleCode,
-      view: <DropdownCustomExample />
+      view: <DropdownCustomExample />,
     },
     {
       title: 'Dropdown with error message',
       code: DropdownErrorExampleCode,
-      view: <DropdownErrorExample />
+      view: <DropdownErrorExample />,
     },
     {
       title: 'Required Dropdown',
@@ -53,14 +54,14 @@ export const DropdownPageProps: IDocPageProps = {
           <p>This example also demonstrates how to programmatically set focus on and open a Dropdown.</p>
           <DropdownRequiredExample />
         </>
-      )
-    }
+      ),
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

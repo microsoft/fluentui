@@ -4,7 +4,10 @@ import { classNamesFunction } from '../../Utilities';
 import { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
 
 const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>({
-  disableCaching: true
+  // Label is used a lot by other components.
+  // It's likely to see expected cases which pass different className to the Label.
+  // Therefore setting a larger cache size.
+  cacheSize: 100,
 });
 
 export class LabelBase extends React.Component<ILabelProps, {}> {
@@ -14,7 +17,7 @@ export class LabelBase extends React.Component<ILabelProps, {}> {
       className,
       disabled,
       required,
-      theme: theme!
+      theme: theme!,
     });
     return (
       <RootType {...getNativeProps(this.props, divProperties)} className={classNames.root}>

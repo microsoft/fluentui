@@ -7,7 +7,7 @@ import { CardSectionView } from './CardSection.view';
 export const CardSection: React.FunctionComponent<ICardSectionProps> = createComponent(CardSectionView, {
   displayName: 'CardSection',
   styles,
-  tokens
+  tokens,
 });
 
 export default CardSection;

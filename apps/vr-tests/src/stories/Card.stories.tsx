@@ -11,7 +11,7 @@ import {
   ICardItemStyles,
   ICardItemTokens,
   ICardSectionStyles,
-  ICardSectionTokens
+  ICardSectionTokens,
 } from '@uifabric/react-cards';
 import {
   ActionButton,
@@ -23,7 +23,7 @@ import {
   Persona,
   Stack,
   Text,
-  ITextStyles
+  ITextStyles,
 } from 'office-ui-fabric-react';
 
 const cardClicked = (): void => {
@@ -34,51 +34,51 @@ const cardClicked = (): void => {
 const siteTextStyles: ITextStyles = {
   root: {
     color: '#025F52',
-    fontWeight: FontWeights.semibold
-  }
+    fontWeight: FontWeights.semibold,
+  },
 };
 const descriptionTextStyles: ITextStyles = {
   root: {
     color: '#333333',
-    fontWeight: FontWeights.semibold
-  }
+    fontWeight: FontWeights.semibold,
+  },
 };
 const helpfulTextStyles: ITextStyles = {
   root: {
     color: '#333333',
-    fontWeight: FontWeights.regular
-  }
+    fontWeight: FontWeights.regular,
+  },
 };
 const iconStyles: IIconStyles = {
   root: {
     color: '#0078D4',
     fontSize: 16,
-    fontWeight: FontWeights.regular
-  }
+    fontWeight: FontWeights.regular,
+  },
 };
 const footerCardSectionStyles: ICardSectionStyles = {
   root: {
-    borderTop: '1px solid #F3F2F1'
-  }
+    borderTop: '1px solid #F3F2F1',
+  },
 };
 const backgroundImageCardSectionStyles: ICardSectionStyles = {
   root: {
     backgroundImage: 'url(https://placehold.it/256x144)',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
-    height: 144
-  }
+    height: 144,
+  },
 };
 const dateTextStyles: ITextStyles = {
   root: {
     color: '#505050',
-    fontWeight: 600
-  }
+    fontWeight: 600,
+  },
 };
 const subduedTextStyles: ITextStyles = {
   root: {
-    color: '#666666'
-  }
+    color: '#666666',
+  },
 };
 const actionButtonStyles: IButtonStyles = {
   root: {
@@ -91,51 +91,51 @@ const actionButtonStyles: IButtonStyles = {
 
     selectors: {
       ':hover': {
-        color: '#0078D4'
-      }
-    }
+        color: '#0078D4',
+      },
+    },
   },
   content: {
     fontSize: 12,
-    fontWeight: FontWeights.semibold
-  }
+    fontWeight: FontWeights.semibold,
+  },
 };
 const footerHorizontalCardSectionStyles: ICardSectionStyles = {
   root: {
-    borderLeft: '1px solid #F3F2F1'
-  }
+    borderLeft: '1px solid #F3F2F1',
+  },
 };
 const cardStyles: ICardStyles = {
   root: {
-    backgroundColor: '#D8F6FF'
-  }
+    backgroundColor: '#D8F6FF',
+  },
 };
 const cardSectionOrItemStyles: ICardSectionStyles | ICardItemStyles = {
   root: {
     borderStyle: 'dashed',
-    borderWidth: '2px'
-  }
+    borderWidth: '2px',
+  },
 };
 const firstCardSectionStyles: ICardSectionStyles = {
   root: {
     backgroundColor: '#B0DEFF',
     borderColor: '#2566CA',
-    ...(cardSectionOrItemStyles.root as object)
-  }
+    ...(cardSectionOrItemStyles.root as object),
+  },
 };
 const secondCardSectionStyles: ICardSectionStyles = {
   root: {
     backgroundColor: '#ABFFEF',
     borderColor: '#0F7A67',
-    ...(cardSectionOrItemStyles.root as object)
-  }
+    ...(cardSectionOrItemStyles.root as object),
+  },
 };
 const thirdCardSectionStyles: ICardSectionStyles = {
   root: {
     backgroundColor: '#E8D4FF',
     borderColor: '#7742B3',
-    ...(cardSectionOrItemStyles.root as object)
-  }
+    ...(cardSectionOrItemStyles.root as object),
+  },
 };
 
 // Tokens used in story examples.
@@ -146,7 +146,7 @@ const agendaCardSectionTokens: ICardSectionTokens = { childrenGap: 0 };
 const attendantsCardSectionTokens: ICardSectionTokens = { childrenGap: 6 };
 const footerCardItemTokens: ICardItemTokens = {
   margin: '12px 12px 6px',
-  padding: '6px 0px 0px'
+  padding: '6px 0px 0px',
 };
 const addEventButtonTokens: IButtonTokens = {
   backgroundColor: 'transparent',
@@ -162,12 +162,12 @@ const addEventButtonTokens: IButtonTokens = {
   iconColorHovered: '#0078D4',
   iconColorPressed: '#0078D4',
   textSize: 12,
-  textWeight: FontWeights.regular
+  textWeight: FontWeights.regular,
 };
 const footerHorizontalCardSectionTokens: ICardSectionTokens = { padding: '0px 0px 0px 12px' };
 const cardSectionTokens: ICardSectionTokens = {
   childrenGap: 6,
-  padding: 6
+  padding: 6,
 };
 
 storiesOf('Card', module)
@@ -179,11 +179,13 @@ storiesOf('Card', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Card')
         .snapshot('hover', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-Card')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
         .end()
       }
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Vertical Card - Basic - Non hoverable', () => (
     <Fabric>

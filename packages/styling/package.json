@@ -1,15 +1,18 @@
 {
   "name": "@uifabric/styling",
-  "version": "7.9.0",
-  "description": "Styling helpers for Office UI Fabric.",
+  "version": "7.14.5",
+  "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": true,
+  "sideEffects": [
+    "lib/version.js",
+    "lib/index.js"
+  ],
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
@@ -24,19 +27,16 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@types/jest": "23.0.0",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
-    "es6-map": "^0.1.5",
-    "es6-weak-map": "^2.0.2",
+    "@fluentui/eslint-plugin": "^0.53.1",
+    "@types/jest": "~24.9.0",
+    "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/merge-styles": "^7.8.1",
-    "@uifabric/set-version": "^7.0.2",
-    "@uifabric/utilities": "^7.10.0",
-    "tslib": "^1.7.1"
+    "@uifabric/merge-styles": "^7.16.3",
+    "@uifabric/set-version": "^7.0.18",
+    "@uifabric/utilities": "^7.24.5",
+    "tslib": "^1.10.0"
   }
 }

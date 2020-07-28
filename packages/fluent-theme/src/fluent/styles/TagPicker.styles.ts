@@ -6,11 +6,11 @@ export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles
 
   return {
     root: {
-      borderRadius: effects.roundedCorner2
+      borderRadius: effects.roundedCorner2,
     },
     close: {
       background: 'transparent',
-      borderRadius: `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`
-    }
+      borderRadius: `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
+    },
   };
 };

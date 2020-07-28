@@ -43,149 +43,149 @@ import { ToggleStyles } from './styles/Toggle.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const AzureStyleSettings = (theme: ITheme): any => {
   return {
     ActionButton: {
-      styles: ActionButtonStyles(theme)
+      styles: ActionButtonStyles(theme),
     },
     Breadcrumb: {
-      styles: BreadcrumbStyles
+      styles: BreadcrumbStyles,
     },
     CalloutContent: {
-      styles: CalloutContentStyles
+      styles: CalloutContentStyles,
     },
     ColorPicker: {
-      styles: ColorPickerStyles
+      styles: ColorPickerStyles,
     },
     ColorRectangle: {
-      styles: ColorRectangleStyles
+      styles: ColorRectangleStyles,
     },
     ColorSlider: {
-      styles: ColorSliderStyles
+      styles: ColorSliderStyles,
     },
     CommandBar: {
-      styles: CommandBarStyles
+      styles: CommandBarStyles,
     },
     CommandBarButton: {
-      styles: CommandBarButtonStyles(theme)
+      styles: CommandBarButtonStyles(theme),
     },
     CompoundButton: {
-      styles: CompoundButtonStyles(theme)
+      styles: CompoundButtonStyles(theme),
     },
     Check: {
-      styles: CheckStyles
+      styles: CheckStyles,
     },
     Checkbox: {
-      styles: CheckboxStyles
+      styles: CheckboxStyles,
     },
     ChoiceGroupOption: {
-      styles: ChoiceGroupOptionStyles
+      styles: ChoiceGroupOptionStyles,
     },
     ColorPickerGridCell: {
-      styles: ColorPickerGridCellStyles
+      styles: ColorPickerGridCellStyles,
     },
     ComboBox: {
-      styles: ComboBoxStyles(theme)
+      styles: ComboBoxStyles(theme),
     },
     ContextualMenu: {
-      styles: ContextualMenuStyles
+      styles: ContextualMenuStyles,
     },
     DatePicker: {
-      styles: DatePickerStyles
+      styles: DatePickerStyles,
     },
     DefaultButton: {
-      styles: DefaultButtonStyles(theme)
+      styles: DefaultButtonStyles(theme),
     },
     DetailsList: {
-      styles: DetailsListStyles
+      styles: DetailsListStyles,
     },
     DetailsRow: {
-      styles: DetailsRowStyles
+      styles: DetailsRowStyles,
     },
     DialogContent: {
-      styles: DialogContentStyles
+      styles: DialogContentStyles,
     },
     DialogFooter: {
-      styles: DialogFooterStyles
+      styles: DialogFooterStyles,
     },
     DocumentCard: {
-      styles: DocumentCardStyles
+      styles: DocumentCardStyles,
     },
     Dropdown: {
-      styles: DropdownStyles
+      styles: DropdownStyles,
     },
     ExpandingCard: {
-      styles: ExpandingCardStyles
+      styles: ExpandingCardStyles,
     },
     IconButton: {
-      styles: IconButtonStyles(theme)
+      styles: IconButtonStyles(theme),
     },
     Label: {
-      styles: LabelStyles
+      styles: LabelStyles,
     },
     Link: {
-      styles: LinkStyles
+      styles: LinkStyles,
     },
     MessageBar: {
-      styles: MessageBarStyles
+      styles: MessageBarStyles,
     },
     Modal: {
-      styles: ModalStyles
+      styles: ModalStyles,
     },
     Overlay: {
-      styles: OverlayStyles
+      styles: OverlayStyles,
     },
     Nav: {
-      styles: NavStyles
+      styles: NavStyles,
     },
     Pivot: {
-      styles: PivotStyles
+      styles: PivotStyles,
     },
     PlainCard: {
-      styles: PlainCardStyles
+      styles: PlainCardStyles,
     },
     Panel: {
-      styles: PanelStyles
+      styles: PanelStyles,
     },
     PrimaryButton: {
-      styles: PrimaryButtonStyles(theme)
+      styles: PrimaryButtonStyles(theme),
     },
     ProgressIndicator: {
-      styles: ProgressIndicatorStyles
+      styles: ProgressIndicatorStyles,
     },
     Rating: {
-      styles: RatingStyles
+      styles: RatingStyles,
     },
     Slider: {
-      styles: SliderStyles
+      styles: SliderStyles,
     },
     SearchBox: {
-      styles: SearchBoxStyles
+      styles: SearchBoxStyles,
     },
     SpinButton: {
-      styles: SpinButtonStyles(theme)
+      styles: SpinButtonStyles(theme),
     },
     TagPicker: {
-      styles: TagPickerStyles
+      styles: TagPickerStyles,
     },
     TagItem: {
-      styles: TagItemStyles
+      styles: TagItemStyles,
     },
     SuggestionItem: {
-      styles: SuggestionItemStyles
+      styles: SuggestionItemStyles,
     },
     Suggestions: {
-      styles: SuggestionsStyles
+      styles: SuggestionsStyles,
     },
     TeachingBubble: {
-      styles: TeachingBubbleStyles
+      styles: TeachingBubbleStyles,
     },
     TextField: {
-      styles: TextFieldStyles
+      styles: TextFieldStyles,
     },
     Toggle: {
-      styles: ToggleStyles
-    }
+      styles: ToggleStyles,
+    },
   };
 };

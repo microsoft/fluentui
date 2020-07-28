@@ -1,28 +1,39 @@
-const { spawnSync } = require('child_process');
-const { readConfig } = require('../read-config');
+// @ts-check
+
+const fs = require('fs-extra');
 const path = require('path');
+const lernaAlias = require('lerna-alias');
 const findGitRoot = require('./findGitRoot');
 
-module.exports = function getAllPackageInfo() {
+/** @type {import('./index').AllPackageInfo} */
+let packageInfo;
+let cwdForPackageInfo;
+
+/**
+ * @returns {import('./index').AllPackageInfo}
+ */
+function getAllPackageInfo() {
+  if (packageInfo && cwdForPackageInfo === process.cwd()) {
+    return packageInfo;
+  }
+
+  // Get mapping from package name to package path
+  // (rollup helper happens to be good for getting basic package name/path pairs)
+  const packagePaths = lernaAlias.rollup({ sourceDirectory: false });
+  delete packagePaths['@fluentui/noop']; // not a real package
+
+  packageInfo = {};
+  cwdForPackageInfo = process.cwd();
   const gitRoot = findGitRoot();
-  const results = spawnSync('git', ['ls-tree', '-r', '--name-only', '--full-tree', 'HEAD']);
-  const packageInfo = {};
 
-  results.stdout
-    .toString()
-    .split('\n')
-    .map(line => line.trim())
-    .filter(line => line.endsWith('package.json'))
-    .forEach(packageJsonFile => {
-      const packageJson = readConfig(path.join(gitRoot, packageJsonFile));
-
-      if (packageJson) {
-        packageInfo[packageJson.name] = {
-          packagePath: path.dirname(packageJsonFile),
-          packageJson
-        };
-      }
-    });
+  for (const [packageName, packagePath] of Object.entries(packagePaths)) {
+    packageInfo[packageName] = {
+      packagePath: path.relative(gitRoot, packagePath),
+      packageJson: fs.readJSONSync(path.join(packagePath, 'package.json')),
+    };
+  }
 
   return packageInfo;
-};
+}
+
+module.exports = getAllPackageInfo;

@@ -3,16 +3,17 @@ import { getGlobalClassNames, HighContrastSelector, IRawStyle } from '../../../S
 
 const GlobalClassNames = {
   root: 'ms-ShimmerCircle-root',
-  svg: 'ms-ShimmerCircle-svg'
+  svg: 'ms-ShimmerCircle-svg',
 };
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
+  // eslint-disable-next-line deprecation/deprecation
   const { height, borderStyle, theme } = props;
 
   const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = borderStyle || {};
 
   return {
     root: [
@@ -28,11 +29,11 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
         borderColor: semanticColors.bodyBackground,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Window'
-          }
-        }
+            borderColor: 'Window',
+          },
+        },
       },
-      borderStyles
+      borderStyles,
     ],
     svg: [
       globalClassNames.svg,
@@ -41,10 +42,10 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
         fill: semanticColors.bodyBackground,
         selectors: {
           [HighContrastSelector]: {
-            fill: 'Window'
-          }
-        }
-      }
-    ]
+            fill: 'Window',
+          },
+        },
+      },
+    ],
   };
 }

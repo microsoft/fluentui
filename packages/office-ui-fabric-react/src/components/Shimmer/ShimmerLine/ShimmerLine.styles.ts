@@ -6,20 +6,21 @@ const GlobalClassNames = {
   topLeftCorner: 'ms-ShimmerLine-topLeftCorner',
   topRightCorner: 'ms-ShimmerLine-topRightCorner',
   bottomLeftCorner: 'ms-ShimmerLine-bottomLeftCorner',
-  bottomRightCorner: 'ms-ShimmerLine-bottomRightCorner'
+  bottomRightCorner: 'ms-ShimmerLine-bottomRightCorner',
 };
 
 export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
+  // eslint-disable-next-line deprecation/deprecation
   const { height, borderStyle, theme } = props;
 
   const { semanticColors } = theme;
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const borderStyles: IRawStyle = !!borderStyle ? borderStyle : {};
+  const borderStyles: IRawStyle = borderStyle || {};
 
   const sharedCornerStyles: IRawStyle = {
     position: 'absolute',
-    fill: semanticColors.bodyBackground
+    fill: semanticColors.bodyBackground,
   };
 
   return {
@@ -39,45 +40,45 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
             borderColor: 'Window',
             selectors: {
               '> *': {
-                fill: 'Window'
-              }
-            }
-          }
-        }
+                fill: 'Window',
+              },
+            },
+          },
+        },
       },
-      borderStyles
+      borderStyles,
     ],
     topLeftCorner: [
       globalClassNames.topLeftCorner,
       {
         top: '0',
-        left: '0'
+        left: '0',
       },
-      sharedCornerStyles
+      sharedCornerStyles,
     ],
     topRightCorner: [
       globalClassNames.topRightCorner,
       {
         top: '0',
-        right: '0'
+        right: '0',
       },
-      sharedCornerStyles
+      sharedCornerStyles,
     ],
     bottomRightCorner: [
       globalClassNames.bottomRightCorner,
       {
         bottom: '0',
-        right: '0'
+        right: '0',
       },
-      sharedCornerStyles
+      sharedCornerStyles,
     ],
     bottomLeftCorner: [
       globalClassNames.bottomLeftCorner,
       {
         bottom: '0',
-        left: '0'
+        left: '0',
       },
-      sharedCornerStyles
-    ]
+      sharedCornerStyles,
+    ],
   };
 }

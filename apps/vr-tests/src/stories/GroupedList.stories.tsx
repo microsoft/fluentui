@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { GroupedList } from 'office-ui-fabric-react';
 
-// tslint:disable:max-line-length
+/* eslint-disable @fluentui/max-len */
 const items = [
   {
     thumbnail: '//placehold.it/175x175',
@@ -17,7 +17,7 @@ const items = [
     shape: 'circle',
     location: 'Los Angeles',
     width: 175,
-    height: 175
+    height: 175,
   },
   {
     thumbnail: '//placehold.it/229x229',
@@ -29,7 +29,7 @@ const items = [
     shape: 'circle',
     location: 'Seattle',
     width: 229,
-    height: 229
+    height: 229,
   },
   {
     thumbnail: '//placehold.it/195x195',
@@ -41,7 +41,7 @@ const items = [
     shape: 'square',
     location: 'New York',
     width: 195,
-    height: 195
+    height: 195,
   },
   {
     thumbnail: '//placehold.it/208x208',
@@ -53,10 +53,10 @@ const items = [
     shape: 'triangle',
     location: 'Los Angeles',
     width: 208,
-    height: 208
-  }
+    height: 208,
+  },
 ];
-// tslint:disable-next-line:max-line-length
+
 const groups = [
   {
     count: 4,
@@ -66,8 +66,8 @@ const groups = [
     level: 0,
     children: [
       { count: 2, key: 'group0-0', name: 'group 0-0', startIndex: 0, level: 1, children: [] },
-      { count: 2, key: 'group0-1', name: 'group 0-1', startIndex: 2, level: 1, children: [] }
-    ]
+      { count: 2, key: 'group0-1', name: 'group 0-1', startIndex: 2, level: 1, children: [] },
+    ],
   },
   {
     count: 4,
@@ -77,9 +77,9 @@ const groups = [
     level: 0,
     children: [
       { count: 2, key: 'group1-0', name: 'group 1-0', startIndex: 4, level: 1, children: [] },
-      { count: 2, key: 'group1-1', name: 'group 1-1', startIndex: 6, level: 1, children: [] }
-    ]
-  }
+      { count: 2, key: 'group1-1', name: 'group 1-1', startIndex: 6, level: 1, children: [] },
+    ],
+  },
 ];
 
 const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
@@ -112,5 +112,5 @@ storiesOf('GroupedList', module)
         styles={{ root: { color: '#333333' } }}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   );

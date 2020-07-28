@@ -13,7 +13,7 @@ export interface IThemeSlotsProps {
   onFabricPaletteColorChange: (newColor: IColor | undefined, fabricSlot: FabricSlots) => void;
 }
 
-export const ThemeSlots: React.StatelessComponent<IThemeSlotsProps> = (props: IThemeSlotsProps) => {
+export const ThemeSlots: React.FunctionComponent<IThemeSlotsProps> = (props: IThemeSlotsProps) => {
   return (
     <div className={MainPanelInnerContent}>
       <TitleText>Theme slots</TitleText>

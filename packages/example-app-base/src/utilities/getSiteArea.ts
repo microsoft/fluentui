@@ -15,7 +15,7 @@ export function getSiteArea(pages?: INavPage[], hash: string = location.hash): s
   if (pages) {
     for (const page of pages) {
       // Test if the page url starts with '#/' + the topLevel string
-      if (urlRegex.test(page.url)) {
+      if (page.url && urlRegex.test(page.url)) {
         area = page.title;
         break;
       }

@@ -19,7 +19,7 @@ export const GroupShowAllBase: React.FunctionComponent<IGroupShowAllProps> = pro
       ev.stopPropagation();
       ev.preventDefault();
     },
-    [onToggleSummarize, group]
+    [onToggleSummarize, group],
   );
 
   if (group) {

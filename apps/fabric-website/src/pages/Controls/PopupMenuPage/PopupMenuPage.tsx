@@ -4,9 +4,10 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { PopupMenuPageProps } from './PopupMenuPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/PopupMenuPage/';
+const baseUrl =
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PopupMenuPage/';
 
-export const PopupMenuPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const PopupMenuPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage
@@ -25,16 +26,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/PopupMenuImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuImplementation.md') as string,
+        },
       ];
     case 'android':
       return [
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/PopupMenuImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/android/PopupMenuImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/android/PopupMenuImplementation.md') as string,
+        },
       ];
   }
 }

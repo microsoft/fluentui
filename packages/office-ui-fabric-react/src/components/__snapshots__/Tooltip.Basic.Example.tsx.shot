@@ -44,7 +44,6 @@ exports[`Component Examples renders Tooltip.Basic.Example.tsx correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;

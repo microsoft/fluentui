@@ -17,7 +17,7 @@ export class PaginationComboBoxExample extends React.Component<{}, IPaginationBa
       <Pagination
         selectedPageIndex={this.state.selectedPageIndex}
         pageCount={pageCount}
-        onPageChange={this.onPageChange}
+        onPageChange={this._onPageChange}
         format={'comboBox'}
         comboBoxAriaLabel={`${pageCount} pages available`}
         previousPageAriaLabel={'previous page'}
@@ -33,9 +33,9 @@ export class PaginationComboBoxExample extends React.Component<{}, IPaginationBa
     );
   }
 
-  private onPageChange = (index: number): void => {
+  private _onPageChange = (index: number): void => {
     this.setState({
-      selectedPageIndex: index
+      selectedPageIndex: index,
     });
   };
 }

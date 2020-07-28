@@ -5,7 +5,7 @@ import { GroupShowAllBase } from './GroupShowAll.base';
 import { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 export { IGroupShowAllProps };
 
-export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps> = styled<
+export const GroupShowAll: React.FunctionComponent<IGroupShowAllProps> = styled<
   IGroupShowAllProps,
   IGroupShowAllStyleProps,
   IGroupShowAllStyles

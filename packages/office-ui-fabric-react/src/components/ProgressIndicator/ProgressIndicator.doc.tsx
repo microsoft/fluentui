@@ -11,23 +11,31 @@ export const ProgressIndicatorPageProps: IDocPageProps = {
   title: 'ProgressIndicator',
   componentName: 'ProgressIndicator',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ProgressIndicator',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ProgressIndicator',
   examples: [
     {
       title: 'Default ProgressIndicator',
       code: ProgressIndicatorBasicExampleCode,
-      view: <ProgressIndicatorBasicExample />
+      view: <ProgressIndicatorBasicExample />,
     },
     {
       title: 'Indeterminate ProgressIndicator',
       code: ProgressIndicatorIndeterminateExampleCode,
-      view: <ProgressIndicatorIndeterminateExample />
-    }
+      view: <ProgressIndicatorIndeterminateExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorBestPractices.md'),
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

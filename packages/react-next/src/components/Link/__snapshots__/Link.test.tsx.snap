@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link renders Link correctly 1`] = `
+<a
+  className="ms-Link"
+  href="#"
+  onClick={[Function]}
+>
+  I'm a link
+</a>
+`;
+
+exports[`Link renders Link with "as=div" a div element 1`] = `
+<div
+  className="customClassName ms-Link"
+  onClick={[Function]}
+>
+  I'm a div
+</div>
+`;
+
+exports[`Link renders Link with a custom class name 1`] = `
+<a
+  className="customClassName ms-Link"
+  href="#"
+  onClick={[Function]}
+>
+  I'm a link
+</a>
+`;
+
+exports[`Link renders Link with no href as a button 1`] = `
+<button
+  className="ms-Link"
+  onClick={[Function]}
+  type="button"
+>
+  I'm a link as a button
+</button>
+`;
+
+exports[`Link renders disabled Link correctly 1`] = `
+<a
+  aria-disabled={true}
+  className="ms-Link is-disabled"
+  onClick={[Function]}
+>
+  I'm a disabled link
+</a>
+`;
+
+exports[`Link renders disabled Link with no href as a button correctly 1`] = `
+<button
+  aria-disabled={true}
+  className="ms-Link is-disabled"
+  disabled={true}
+  onClick={[Function]}
+  type="button"
+>
+  I'm a link as a button
+</button>
+`;
+
+exports[`Link supports non button/anchor html attributes when "as=" is used 1`] = `
+<input
+  className="customClassName ms-Link"
+  onClick={[Function]}
+  type="text"
+  value="This is an input."
+/>
+`;

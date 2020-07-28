@@ -7,9 +7,13 @@ import {
   SuggestionsStore,
   FloatingPeoplePicker,
   IBaseFloatingPickerProps,
-  IBaseFloatingPickerSuggestionProps
+  IBaseFloatingPickerSuggestionProps,
 } from 'office-ui-fabric-react/lib/FloatingPicker';
-import { ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
+import {
+  ISelectedPeopleProps,
+  SelectedPeopleList,
+  IExtendedPersonaProps,
+} from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { IFocusZoneProps, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
 import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { people, mru, groupOne, groupTwo } from '@uifabric/example-data';
@@ -41,7 +45,7 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     this.state = {
       peopleList: people,
       mostRecentlyUsed: mru,
-      searchMoreAvailable: true
+      searchMoreAvailable: true,
     };
 
     this._suggestionProps = {
@@ -67,14 +71,14 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
               floatingPicker.forceResolveSuggestion();
             }
           },
-          ariaLabel: 'Use the typed address'
+          ariaLabel: 'Use the typed address',
         },
         {
           renderItem: () => {
             return <div className={this._classNames.headerItem}>Suggested Contacts</div>;
           },
-          shouldShow: this._shouldShowSuggestedContacts
-        }
+          shouldShow: this._shouldShowSuggestedContacts,
+        },
       ],
       footerItemsProps: [
         {
@@ -85,7 +89,7 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
             const picker = this._picker.current;
             const floatingPicker = picker && picker.floatingPicker.current;
             return !!floatingPicker && floatingPicker.suggestions.length === 0;
-          }
+          },
         },
         {
           renderItem: () => {
@@ -97,12 +101,12 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
           shouldShow: () => {
             return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts();
           },
-          ariaLabel: 'Search more'
-        }
+          ariaLabel: 'Search more',
+        },
       ],
       shouldSelectFirstItem: () => {
         return !this._shouldShowSuggestedContacts();
-      }
+      },
     };
 
     this._floatingPickerProps = {
@@ -121,7 +125,7 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
       },
       onSuggestionsShown: () => {
         console.log('FLOATINGPICKER: shown');
-      }
+      },
     };
 
     this._selectedItemsListProps = {
@@ -132,12 +136,12 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
       editMenuItemText: 'Edit',
       getEditingItemText: this._getEditingItemText,
       onRenderFloatingPicker: FloatingPeoplePicker,
-      floatingPickerProps: this._floatingPickerProps
+      floatingPickerProps: this._floatingPickerProps,
     };
 
     this._focusZoneProps = {
       shouldInputLoseFocusOnArrowKey: () => true,
-      handleTabKey: FocusZoneTabbableElements.all
+      handleTabKey: FocusZoneTabbableElements.all,
     };
   }
 
@@ -147,14 +151,14 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
       picker: { maxWidth: 400, marginBottom: 15 },
       headerItem: {
         borderBottom: '1px solid ' + theme.palette.neutralLight,
-        padding: '8px 12px'
+        padding: '8px 12px',
       },
       footerItem: {
         borderBottom: '1px solid ' + theme.palette.neutralLight,
         height: 60,
-        paddingLeft: 12
+        paddingLeft: 12,
       },
-      to: { padding: '0 10px' }
+      to: { padding: '0 10px' },
     });
 
     return (
@@ -177,7 +181,7 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
         inputProps={{
           onBlur: () => console.log('onBlur called'),
           onFocus: () => console.log('onFocus called'),
-          'aria-label': 'People Picker'
+          'aria-label': 'People Picker',
         }}
         componentRef={this._picker}
         headerComponent={this._renderHeader()}
@@ -208,7 +212,6 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     const picker = this._picker.current;
     const selectedItemsList = picker && picker.selectedItemsList.current;
     if (selectedItemsList) {
-      // tslint:disable-next-line:no-any
       (selectedItemsList as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item));
     }
   };
@@ -228,10 +231,15 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     this.setState(stateUpdate);
   };
 
-  private _onFilterChanged = (filterText: string, currentPersonas?: IPersonaProps[]): Promise<IPersonaProps[]> | null => {
+  private _onFilterChanged = (
+    filterText: string,
+    currentPersonas?: IPersonaProps[],
+  ): Promise<IPersonaProps[]> | null => {
     let filteredPersonas: IPersonaProps[] = [];
     if (filterText) {
-      filteredPersonas = this.state.peopleList.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
+      filteredPersonas = this.state.peopleList.filter((item: IPersonaProps) =>
+        _startsWith(item.text || '', filterText),
+      );
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
     }
 

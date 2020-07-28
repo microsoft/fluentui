@@ -1,7 +1,11 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from '../../CalendarDayGrid/CalendarDayGrid.types';
+import {
+  ICalendarDayGridProps,
+  ICalendarDayGridStyleProps,
+  ICalendarDayGridStyles,
+} from '../../CalendarDayGrid/CalendarDayGrid.types';
 
 export { ICalendarDayGridStyles };
 

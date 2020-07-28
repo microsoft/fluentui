@@ -24,7 +24,7 @@ export class PaginationButtonsCustomizationExample extends React.Component<{}, I
         lastPageAriaLabel={'last page'}
         pageAriaLabel={'page'}
         selectedAriaLabel={'selected'}
-        onPageChange={this.onPageChange}
+        onPageChange={this._onPageChange}
         firstPageIconProps={{ iconName: 'ChevronLeftEnd6' }}
         previousPageIconProps={{ iconName: 'ChevronLeftSmall' }}
         nextPageIconProps={{ iconName: 'ChevronRightSmall' }}
@@ -36,18 +36,18 @@ export class PaginationButtonsCustomizationExample extends React.Component<{}, I
             selectors: {
               ':hover': { backgroundColor: '#c8c8c8', borderRadius: '16px' },
               '&[aria-selected=true]': {
-                fontWeight: 'bold'
-              }
-            }
-          }
+                fontWeight: 'bold',
+              },
+            },
+          },
         }}
       />
     );
   }
 
-  private onPageChange = (index: number): void => {
+  private _onPageChange = (index: number): void => {
     this.setState({
-      selectedPageIndex: index
+      selectedPageIndex: index,
     });
   };
 }

@@ -4,7 +4,7 @@ import { IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } f
 import { DialogContentBase } from './DialogContent.base';
 import { getStyles } from './DialogContent.styles';
 
-export const DialogContent: React.StatelessComponent<IDialogContentProps> = styled<
+export const DialogContent: React.FunctionComponent<IDialogContentProps> = styled<
   IDialogContentProps,
   IDialogContentStyleProps,
   IDialogContentStyles

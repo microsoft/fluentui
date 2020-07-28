@@ -1,4 +1,6 @@
 import { ISearchBoxStyleProps, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
+import * as StyleConstants from '../Constants';
+import { FontSizes } from '../AzureType';
 
 export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBoxStyles> => {
   const { theme, hasFocus } = props;
@@ -6,17 +8,25 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
 
   return {
     root: [
+      {
+        height: StyleConstants.inputControlHeight,
+        selectors: {
+          '::after': {
+            borderColor: semanticColors.primaryButtonBackground,
+          },
+        },
+      },
       hasFocus && {
-        borderColor: semanticColors.focusBorder
+        borderColor: semanticColors.focusBorder,
       },
       !hasFocus && {
         borderColor: semanticColors.inputBorder,
         selectors: {
           '&:hover': {
-            borderColor: semanticColors.inputBorderHovered
-          }
-        }
-      }
+            borderColor: semanticColors.inputBorderHovered,
+          },
+        },
+      },
     ],
     clearButton: {
       selectors: {
@@ -24,20 +34,22 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
           color: semanticColors.inputText,
           selectors: {
             ':hover': {
-              color: semanticColors.inputText
+              color: semanticColors.inputText,
             },
             ':active': {
-              color: semanticColors.inputText
-            }
-          }
-        }
-      }
+              color: semanticColors.inputText,
+            },
+          },
+        },
+      },
     },
     field: {
-      color: semanticColors.inputText
+      color: semanticColors.inputText,
     },
     icon: {
-      color: semanticColors.focusBorder
-    }
+      color: semanticColors.focusBorder,
+      width: '20px',
+      fontSize: FontSizes.size13,
+    },
   };
 };

@@ -22,14 +22,15 @@ export const TagItemBase = (props: ITagItemProps) => {
     className,
     index,
     onRemoveItem,
-    removeButtonAriaLabel
+    removeButtonAriaLabel,
+    title = typeof props.children === 'string' ? props.children : props.item.name,
   } = props;
 
   const classNames = getClassNames(styles, {
     theme: theme!,
     className,
     selected,
-    disabled
+    disabled,
   });
 
   return (
@@ -40,7 +41,7 @@ export const TagItemBase = (props: ITagItemProps) => {
       data-selection-index={index}
       data-is-focusable={(enableTagFocusInDisabledPicker || !disabled) && true}
     >
-      <span className={classNames.text} aria-label={children as string} title={children as string}>
+      <span className={classNames.text} aria-label={title} title={title}>
         {children}
       </span>
       <IconButton
@@ -54,4 +55,6 @@ export const TagItemBase = (props: ITagItemProps) => {
   );
 };
 
-export const TagItem = styled<ITagItemProps, ITagItemStyleProps, ITagItemStyles>(TagItemBase, getStyles, undefined, { scope: 'TagItem' });
+export const TagItem = styled<ITagItemProps, ITagItemStyleProps, ITagItemStyles>(TagItemBase, getStyles, undefined, {
+  scope: 'TagItem',
+});

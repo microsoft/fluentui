@@ -1,4 +1,4 @@
-### Fabric React (JavaScript variables)
+### Fluent UI React (JavaScript variables)
 
 ```jsx
 import { Depths } from '@uifabric/fluent-theme/lib/fluent/FluentDepths';

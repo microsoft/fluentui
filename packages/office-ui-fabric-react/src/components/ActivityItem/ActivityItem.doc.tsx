@@ -12,28 +12,30 @@ export const ActivityItemPageProps: IDocPageProps = {
   title: 'ActivityItem',
   componentName: 'ActivityItem',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem',
   examples: [
     {
       title: 'Activity Items with Icons',
       code: ActivityItemBasicExampleCode,
-      view: <ActivityItemBasicExample />
+      view: <ActivityItemBasicExample />,
     },
     {
       title: 'Activity Items with Personas',
       code: ActivityItemPersonaExampleCode,
-      view: <ActivityItemPersonaExample />
+      view: <ActivityItemPersonaExample />,
     },
     {
       title: 'Compact Activity Items',
       code: ActivityItemCompactExampleCode,
-      view: <ActivityItemCompactExample />
-    }
+      view: <ActivityItemCompactExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemBestPractices.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

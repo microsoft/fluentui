@@ -6,13 +6,13 @@ import { SplitButtonStyles as styles, SplitButtonTokens as tokens } from './Spli
 import { ISplitButtonProps } from './SplitButton.types';
 import { SplitButtonSlots as slots, SplitButtonView as view } from './SplitButton.view';
 
-export const SplitButton: React.StatelessComponent<ISplitButtonProps> = composed({
+export const SplitButton: React.FunctionComponent<ISplitButtonProps> = composed({
   displayName: 'SplitButton',
   slots,
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default SplitButton;

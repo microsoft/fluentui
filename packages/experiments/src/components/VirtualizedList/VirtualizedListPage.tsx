@@ -25,7 +25,11 @@ export class VirtualizedListPage extends React.Component<IComponentDemoPageProps
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/VirtualizedList/VirtualizedList.types.ts')]}
+            sources={[
+              require<
+                string
+              >('!raw-loader!@uifabric/experiments/src/components/VirtualizedList/VirtualizedList.types.ts'),
+            ]}
           />
         }
         overview={<div />}

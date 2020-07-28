@@ -44,11 +44,11 @@ describe('GroupedListUtility', () => {
             // 1
             G([G()]), // 2
             G([G(), G(), G()]), // 4
-            G([G(), G(), G()]) // 4
-          ])
+            G([G(), G(), G()]), // 4
+          ]),
         ]),
         G([G(), G()]), // 3
-        G() // 1
+        G(), // 1
       ];
       expect(GetGroupCount(groups)).toEqual(20);
     });

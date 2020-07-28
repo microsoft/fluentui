@@ -5,11 +5,18 @@ const GlobalClassNames = {
   root: 'ms-ExpandingCard-root',
   compactCard: 'ms-ExpandingCard-compactCard',
   expandedCard: 'ms-ExpandingCard-expandedCard',
-  expandedCardScroll: 'ms-ExpandingCard-expandedCardScrollRegion'
+  expandedCardScroll: 'ms-ExpandingCard-expandedCardScrollRegion',
 };
 
 export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles {
-  const { theme, needsScroll, expandedCardFirstFrameRendered, compactCardHeight, expandedCardHeight, className } = props;
+  const {
+    theme,
+    needsScroll,
+    expandedCardFirstFrameRendered,
+    compactCardHeight,
+    expandedCardHeight,
+    className,
+  } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -22,19 +29,19 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
         pointerEvents: 'none',
         selectors: {
           [HighContrastSelector]: {
-            border: '1px solid WindowText'
-          }
-        }
+            border: '1px solid WindowText',
+          },
+        },
       },
-      className
+      className,
     ],
     compactCard: [
       classNames.compactCard,
       {
         pointerEvents: 'auto',
         position: 'relative',
-        height: compactCardHeight
-      }
+        height: compactCardHeight,
+      },
     ],
     expandedCard: [
       classNames.expandedCard,
@@ -52,21 +59,21 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
             left: 24,
             width: 272,
             height: 1,
-            backgroundColor: palette.neutralLighter
-          }
-        }
+            backgroundColor: palette.neutralLighter,
+          },
+        },
       },
       expandedCardFirstFrameRendered && {
-        height: expandedCardHeight
-      }
+        height: expandedCardHeight,
+      },
     ],
     expandedCardScroll: [
       classNames.expandedCardScroll,
       needsScroll && {
         height: '100%',
         boxSizing: 'border-box',
-        overflowY: 'auto'
-      }
-    ]
+        overflowY: 'auto',
+      },
+    ],
   };
 }

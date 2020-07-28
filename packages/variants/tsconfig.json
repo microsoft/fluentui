@@ -13,8 +13,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "types": ["jest"]
+    "preserveConstEnums": true
   },
   "include": ["src"]
 }

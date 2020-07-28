@@ -7,7 +7,7 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { concatStyleSets, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { BaseComponent, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes, initializeComponentRef, FocusRects } from 'office-ui-fabric-react/lib/Utilities';
 import * as React from 'react';
 import { Accordion } from '../BAFAccordion/Accordion';
 import { getSidebarClassNames, ISidebarClassNames } from './Sidebar.classNames';
@@ -21,7 +21,7 @@ export interface ISidebarState {
   isCollapsed: boolean;
 }
 
-export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> implements ISidebar {
+export class Sidebar extends React.Component<ISidebarProps, ISidebarState> implements ISidebar {
   private _theme: ITheme;
   private _classNames: ISidebarClassNames;
   private _colors: SidebarColors;
@@ -30,8 +30,9 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
   constructor(props: ISidebarProps) {
     super(props);
 
+    initializeComponentRef(this);
     this.state = {
-      isCollapsed: false
+      isCollapsed: false,
     };
   }
 
@@ -50,24 +51,42 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
   }
 
   public render(): JSX.Element {
-    const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } = this.props;
+    const {
+      theme,
+      styles,
+      collapseButtonStyles,
+      className,
+      collapseButtonAriaLabel,
+      footerItems,
+      id,
+      items,
+    } = this.props;
 
     this._theme = theme!;
     this._colors = this.props.colors !== undefined ? this.props.colors : SidebarColors.Light;
     this._buttonStyles = getButtonColoredStyles(theme!, this._colors, this.props.buttonStyles);
 
-    this._classNames = getSidebarClassNames(getSidebarStyles(theme!, this._colors, styles), className, this.state.isCollapsed);
+    this._classNames = getSidebarClassNames(
+      getSidebarStyles(theme!, this._colors, styles),
+      className,
+      this.state.isCollapsed,
+    );
 
     const ButtonAs = this._getButtonAs();
 
     return (
-      <div className={this._classNames.root} role="menu" aria-orientation={'vertical'} aria-expanded={!this.state.isCollapsed}>
+      <div
+        className={this._classNames.root}
+        role="menu"
+        aria-orientation={'vertical'}
+        aria-expanded={!this.state.isCollapsed}
+      >
         <ScrollablePane
           className={this._classNames.content}
           styles={{
             contentContainer: {
-              overflowX: 'hidden'
-            }
+              overflowX: 'hidden',
+            },
           }}
         >
           {this.props.collapsible && (
@@ -86,10 +105,15 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
           </FocusZone>
         </ScrollablePane>
         {footerItems && (
-          <FocusZone direction={FocusZoneDirection.vertical} className={this._classNames.footer} key={`baSidebarFooter${id}`}>
+          <FocusZone
+            direction={FocusZoneDirection.vertical}
+            className={this._classNames.footer}
+            key={`baSidebarFooter${id}`}
+          >
             {footerItems.map((item: ISidebarItemProps) => this._renderItemInSidebar(item))}
           </FocusZone>
         )}
+        <FocusRects />
       </div>
     );
   }
@@ -136,17 +160,19 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     }
 
     const ButtonAs = this._getButtonAs(item);
+    // eslint-disable-next-line deprecation/deprecation
+    const name = item.text || item.name;
 
     return (
       <div key={item.key}>
         <ButtonAs
-          text={this.state.isCollapsed && !overrideCollapse ? null : item.name}
+          text={this.state.isCollapsed && !overrideCollapse ? null : name}
           iconProps={item.iconProps ? item.iconProps : { iconName: '' }}
           menuIconProps={this.state.isCollapsed ? null : item.subMenuIconProps}
           className={this._getClassNames('ba-SidebarButton', item)}
           role="menuitem"
-          ariaLabel={item.name}
-          title={item.title ? item.title : item.name}
+          ariaLabel={name}
+          title={item.title ? item.title : name}
           styles={concatStyleSets(this._buttonStyles, item.styles)}
           theme={this._theme}
           checked={item.active}
@@ -184,30 +210,32 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     }
 
     const ButtonAs = this._getButtonAs(item);
+    // eslint-disable-next-line deprecation/deprecation
+    const name = item.text || item.name;
 
     return (
       <div className={this._getClassNames('ba-SidebarAccordion', item)} key={item.key}>
         <Accordion
-          text={item.name}
+          text={name}
           iconProps={item.iconProps}
           menuIconProps={item.subMenuIconProps}
           role={'menuitem'}
-          ariaLabel={item.name}
+          ariaLabel={name}
           title={item.tooltip}
           styles={concatStyleSets(this._buttonStyles, item.styles as IButtonStyles)}
           theme={this._theme}
           checked={numActiveChildren > 0 ? true : false}
           aria-current={numActiveChildren > 0 ? true : false}
           buttonAs={ButtonAs}
-          /*tslint:disable:jsx-no-lambda*/
+          // eslint-disable-next-line react/jsx-no-bind
           onRenderContent={() => {
             return this._renderAccordionItems(item.items);
           }}
-          /*tslint:disable:jsx-no-lambda*/
+          // eslint-disable-next-line react/jsx-no-bind
           onOpen={() => {
             this.componentDidMount();
           }}
-          /*tslint:disable:jsx-no-lambda*/
+          // eslint-disable-next-line react/jsx-no-bind
           onClose={() => {
             this.componentDidMount();
           }}
@@ -246,10 +274,13 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
       return child;
     });
 
-    if (item.name) {
+    // eslint-disable-next-line deprecation/deprecation
+    const name = item.text || item.name;
+
+    if (name) {
       children.unshift({
-        key: item.name + '-header',
-        name: item.name,
+        key: name + '-header',
+        name: name,
         iconProps: { iconName: '' },
         className: 'ba-SidebarContextualMenuButton-header ',
         disabled: true,
@@ -257,14 +288,14 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
           root: {
             borderBottomWidth: '1px',
             borderBottomStyle: 'solid',
-            borderBottomColor: this._theme.semanticColors.bodyDivider
+            borderBottomColor: this._theme.semanticColors.bodyDivider,
           },
           icon: {
             width: '0',
-            marginRight: '0'
-          }
+            marginRight: '0',
+          },
         }),
-        onRender: this._renderSidebarButtonMenuItem
+        onRender: this._renderSidebarButtonMenuItem,
       });
     }
 
@@ -274,26 +305,26 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
       <div key={item.key}>
         <ButtonAs
           key={item.key}
-          text={this.state.isCollapsed ? '' : item.name}
+          text={this.state.isCollapsed ? '' : name}
           iconProps={item.iconProps}
           menuIconProps={this.state.isCollapsed ? { iconName: '' } : item.subMenuIconProps}
           menuProps={{
             items: children,
             directionalHint: DirectionalHint.rightTopEdge,
-            ariaLabel: item.name,
+            ariaLabel: name,
             calloutProps: {
               styles: {
                 root: {
-                  borderWidth: '0'
-                }
-              }
-            }
+                  borderWidth: '0',
+                },
+              },
+            },
           }}
           menuTriggerKeyCode={KeyCodes.right}
           className={this._getClassNames('ba-SidebarContextualMenuButton', item)}
           role="menuitem"
-          ariaLabel={item.name}
-          title={item.title ? item.title : item.name}
+          ariaLabel={name}
+          title={item.title ? item.title : name}
           styles={concatStyleSets(this._buttonStyles, item.styles)}
           theme={this._theme}
           checked={numActiveChildren > 0 ? true : false}
@@ -317,7 +348,6 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     };
   }
 
-  // tslint:disable-next-line:no-any
   private _getButtonAs(item?: ISidebarItemProps): any {
     if (item && item.buttonAs) {
       return item.buttonAs;
@@ -334,7 +364,6 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     return className;
   }
 
-  // tslint:disable-next-line:no-any
   private _renderSidebarButtonMenuItem = (item: any, dismissMenu: () => void): JSX.Element | null => {
     return this._renderSidebarButton(item, true);
   };

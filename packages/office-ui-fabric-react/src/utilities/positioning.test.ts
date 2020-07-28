@@ -1,5 +1,5 @@
-import { Rectangle } from '../Utilities';
-import { __positioningTestPackage, RectangleEdge, IElementPosition } from './positioning';
+import { Point, Rectangle } from '../Utilities';
+import { __positioningTestPackage, getBoundsFromTargetWindow, RectangleEdge, IElementPosition } from './positioning';
 import { DirectionalHint } from '../common/DirectionalHint';
 interface ITestValidation {
   callout: Rectangle;
@@ -21,7 +21,7 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
     target,
     bounds,
     __positioningTestPackage._getPositionData(alignment),
-    gap
+    gap,
   );
 
   const beak = __positioningTestPackage._positionBeak(beakWidth, { ...result, targetRectangle: target });
@@ -45,7 +45,7 @@ function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint,
     target,
     bounds,
     __positioningTestPackage._getPositionData(alignment),
-    beakWidth
+    beakWidth,
   );
 
   expect(result.elementRectangle).toEqual(validate.callout);
@@ -57,22 +57,22 @@ describe('Callout Positioning', () => {
       callout: new Rectangle(0, 300, 0, 300),
       target: new Rectangle(400, 800, 400, 800),
       bounds: new Rectangle(0, 1600, 0, 1600),
-      beakWidth: 0
+      beakWidth: 0,
     };
 
     const validateNoBeakBottomLeft: ITestValidation = {
       callout: new Rectangle(400, 700, 800, 1100),
-      beak: null
+      beak: null,
     };
 
     const validateNoBeakLeft: ITestValidation = {
       callout: new Rectangle(100, 400, 400, 700),
-      beak: null
+      beak: null,
     };
 
     const validateNoBeakTop: ITestValidation = {
       callout: new Rectangle(400, 700, 100, 400),
-      beak: null
+      beak: null,
     };
 
     validateNoBeakTest(noBeakTestCase, DirectionalHint.bottomLeftEdge, validateNoBeakBottomLeft);
@@ -87,7 +87,7 @@ describe('Callout Positioning', () => {
       callout: new Rectangle(0, 300, 0, 300),
       target: new Rectangle(400, 800, 400, 800),
       bounds: new Rectangle(0, 1600, 0, 1600),
-      beakWidth: 16
+      beakWidth: 16,
     };
 
     const validateBottomLeft: ITestValidation = {
@@ -95,9 +95,9 @@ describe('Callout Positioning', () => {
         400,
         700,
         800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
       ),
-      beak: new Rectangle(192, 208, -8, 8)
+      beak: new Rectangle(192, 208, -8, 8),
     };
 
     const validateBottomCenter: ITestValidation = {
@@ -105,9 +105,9 @@ describe('Callout Positioning', () => {
         450,
         750,
         800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
       ),
-      beak: new Rectangle(142, 158, -8, 8)
+      beak: new Rectangle(142, 158, -8, 8),
     };
 
     const validateBottomRight: ITestValidation = {
@@ -115,9 +115,9 @@ describe('Callout Positioning', () => {
         500,
         800,
         800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
       ),
-      beak: new Rectangle(92, 108, -8, 8)
+      beak: new Rectangle(92, 108, -8, 8),
     };
 
     positionCalloutTest(basicTestCase, DirectionalHint.bottomLeftEdge, validateBottomLeft);
@@ -132,17 +132,17 @@ describe('Callout Positioning', () => {
       callout: new Rectangle(0, 200, 0, 200),
       target: new Rectangle(150, 160, 150, 160),
       bounds: new Rectangle(8, 300, 8, 300),
-      beakWidth: 0
+      beakWidth: 0,
     };
 
     const validateBottomLeft: ITestValidation = {
       callout: new Rectangle(8, 208, 100, 300),
-      beak: null
+      beak: null,
     };
 
     const validateTopRight: ITestValidation = {
       callout: new Rectangle(8, 208, 8, 208),
-      beak: null
+      beak: null,
     };
 
     validateNoBeakTest(basicTestCase, DirectionalHint.bottomLeftEdge, validateBottomLeft);
@@ -207,16 +207,16 @@ describe('Callout Positioning', () => {
           left: 0,
           right: 0,
           width: 0,
-          height: 0
+          height: 0,
         };
-      }
+      },
     };
     // create a dummy beak
     const beakPos = new Rectangle(8, -8, 8, -8);
     const pos: IElementPosition = {
       elementRectangle: new Rectangle(400, 500, 400, 500),
       targetEdge: RectangleEdge.top,
-      alignmentEdge: RectangleEdge.left
+      alignmentEdge: RectangleEdge.left,
     };
     const bounds = new Rectangle(0, 500, 0, 500);
 
@@ -257,5 +257,405 @@ describe('Callout Positioning', () => {
     expect(finalizedBeakPosition.elementPosition.right).toBeDefined();
     expect(finalizedBeakPosition.elementPosition.bottom).toBeDefined();
     expect(finalizedBeakPosition.elementPosition.left).toBeUndefined();
+  });
+});
+
+describe('getBoundingRectangle', () => {
+  /**
+   * Window with typings for experimental features regarding Dual Screen devices.
+   */
+  interface IWindowWithSegments extends Window {
+    getWindowSegments?: () => DOMRect[];
+  }
+
+  const __INNER_HEIGHT = 1080;
+  const __INNER_WIDTH = 1920;
+
+  it('Gets correct bounds in single screen scenarios where getWindowSegments call is not present', () => {
+    const target: Point = { left: 0, top: 0 };
+    const targetWindow: Partial<IWindowWithSegments> = {
+      innerHeight: __INNER_HEIGHT,
+      innerWidth: __INNER_WIDTH,
+    };
+
+    const validateBounds = {
+      top: 0,
+      left: 0,
+      right: __INNER_WIDTH,
+      bottom: __INNER_HEIGHT,
+      width: __INNER_WIDTH,
+      height: __INNER_HEIGHT,
+    };
+
+    expect(getBoundsFromTargetWindow(target, targetWindow as IWindowWithSegments)).toStrictEqual(validateBounds);
+  });
+
+  it('Gets correct bounds in single screen scenarios where getWindowSegments call is present', () => {
+    const target: Point = { left: 0, top: 0 };
+    const targetWindow: Partial<IWindowWithSegments> = {
+      innerHeight: __INNER_HEIGHT,
+      innerWidth: __INNER_WIDTH,
+      getWindowSegments: () => {
+        return [
+          {
+            x: 0,
+            y: 0,
+            top: 0,
+            left: 0,
+            right: __INNER_WIDTH,
+            bottom: __INNER_HEIGHT,
+            width: __INNER_WIDTH,
+            height: __INNER_HEIGHT,
+          },
+        ] as DOMRect[];
+      },
+    };
+
+    const validateBounds = {
+      top: 0,
+      left: 0,
+      right: __INNER_WIDTH,
+      bottom: __INNER_HEIGHT,
+      width: __INNER_WIDTH,
+      height: __INNER_HEIGHT,
+    };
+
+    expect(getBoundsFromTargetWindow(target, targetWindow as IWindowWithSegments)).toStrictEqual(validateBounds);
+  });
+
+  describe('Horizontal fold dual screen scenarios', () => {
+    const leftRightDualScreenTargetWindow: IWindowWithSegments = {
+      innerHeight: __INNER_HEIGHT,
+      innerWidth: __INNER_WIDTH,
+      getWindowSegments: () => {
+        return [
+          {
+            x: 0,
+            y: 0,
+            left: 0,
+            top: 0,
+            right: __INNER_WIDTH / 3,
+            bottom: __INNER_HEIGHT,
+            width: __INNER_WIDTH / 3,
+            height: __INNER_HEIGHT,
+          },
+          {
+            x: __INNER_WIDTH / 3,
+            y: 0,
+            left: __INNER_WIDTH / 3,
+            top: 0,
+            right: __INNER_WIDTH,
+            bottom: __INNER_HEIGHT,
+            width: (__INNER_WIDTH * 2) / 3,
+            height: __INNER_HEIGHT,
+          },
+        ] as DOMRect[];
+      },
+    } as IWindowWithSegments;
+    const validateBoundsLeftScreen = {
+      top: 0,
+      left: 0,
+      right: __INNER_WIDTH / 3,
+      bottom: __INNER_HEIGHT,
+      width: __INNER_WIDTH / 3,
+      height: __INNER_HEIGHT,
+    };
+    const validateBoundsRightScreen = {
+      top: 0,
+      left: __INNER_WIDTH / 3,
+      right: __INNER_WIDTH,
+      bottom: __INNER_HEIGHT,
+      width: (__INNER_WIDTH * 2) / 3,
+      height: __INNER_HEIGHT,
+    };
+
+    it('Gets the 0 values as bounds in horizontal fold dual screen scenarios when null is passed as the target', () => {
+      const target = null;
+
+      const validateBounds = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: 0,
+        height: 0,
+      };
+
+      expect(getBoundsFromTargetWindow(target, leftRightDualScreenTargetWindow)).toStrictEqual(validateBounds);
+    });
+
+    it('Gets correct bounds in horizontal fold dual screen scenarios when Elements are passed as targets', () => {
+      const targetWithinLeftScreen = {
+        getBoundingClientRect: () =>
+          ({
+            x: 100,
+            y: 100,
+            left: 100,
+            top: 100,
+            right: 300,
+            bottom: 300,
+            width: 200,
+            height: 200,
+          } as DOMRect),
+      } as Element;
+      expect(getBoundsFromTargetWindow(targetWithinLeftScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsLeftScreen,
+      );
+
+      const targetWithinRightScreen = {
+        getBoundingClientRect: () =>
+          ({
+            x: 1000,
+            y: 100,
+            left: 1000,
+            top: 100,
+            right: 1300,
+            bottom: 300,
+            width: 300,
+            height: 200,
+          } as DOMRect),
+      } as Element;
+      expect(getBoundsFromTargetWindow(targetWithinRightScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsRightScreen,
+      );
+
+      const targetCrossingScreensWithCenterOnLeftScreen = {
+        getBoundingClientRect: () =>
+          ({
+            x: 500,
+            y: 100,
+            left: 500,
+            top: 100,
+            right: 700,
+            bottom: 300,
+            width: 200,
+            height: 200,
+          } as DOMRect),
+      } as Element;
+      expect(
+        getBoundsFromTargetWindow(targetCrossingScreensWithCenterOnLeftScreen, leftRightDualScreenTargetWindow),
+      ).toStrictEqual(validateBoundsLeftScreen);
+
+      const targetCrossingScreensWithCenterOnRightScreen = {
+        getBoundingClientRect: () =>
+          ({
+            x: 600,
+            y: 100,
+            left: 600,
+            top: 100,
+            right: 800,
+            bottom: 300,
+            width: 200,
+            height: 200,
+          } as DOMRect),
+      } as Element;
+      expect(
+        getBoundsFromTargetWindow(targetCrossingScreensWithCenterOnRightScreen, leftRightDualScreenTargetWindow),
+      ).toStrictEqual(validateBoundsRightScreen);
+    });
+
+    it('Gets correct bounds in horizontal fold dual screen scenarios when MouseEvents are passed as targets', () => {
+      const targetWithinLeftScreen = {
+        x: 150,
+        y: 150,
+      } as MouseEvent;
+      expect(getBoundsFromTargetWindow(targetWithinLeftScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsLeftScreen,
+      );
+
+      const targetWithinRightScreen = {
+        x: 1000,
+        y: 1000,
+      } as MouseEvent;
+      expect(getBoundsFromTargetWindow(targetWithinRightScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsRightScreen,
+      );
+    });
+
+    it('Gets correct bounds in horizontal fold dual screen scenarios when Points are passed as targets', () => {
+      const targetWithinLeftScreen: Point = {
+        left: 150,
+        top: 150,
+      };
+      expect(getBoundsFromTargetWindow(targetWithinLeftScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsLeftScreen,
+      );
+
+      const targetWithinRightScreen: Point = {
+        left: 1000,
+        top: 1000,
+      };
+      expect(getBoundsFromTargetWindow(targetWithinRightScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsRightScreen,
+      );
+    });
+  });
+
+  describe('Vertical fold dual screen scenarios', () => {
+    const topBottomDualScreenTargetWindow: IWindowWithSegments = {
+      innerHeight: __INNER_HEIGHT,
+      innerWidth: __INNER_WIDTH,
+      getWindowSegments: () => {
+        return [
+          {
+            x: 0,
+            y: 0,
+            left: 0,
+            top: 0,
+            right: __INNER_WIDTH,
+            bottom: __INNER_HEIGHT / 3,
+            width: __INNER_WIDTH,
+            height: __INNER_HEIGHT / 3,
+          },
+          {
+            x: 0,
+            y: __INNER_HEIGHT / 3,
+            left: 0,
+            top: __INNER_HEIGHT / 3,
+            right: __INNER_WIDTH,
+            bottom: __INNER_HEIGHT,
+            width: __INNER_WIDTH,
+            height: (__INNER_HEIGHT * 2) / 3,
+          },
+        ] as DOMRect[];
+      },
+    } as IWindowWithSegments;
+    const validateBoundsTopScreen = {
+      left: 0,
+      top: 0,
+      right: __INNER_WIDTH,
+      bottom: __INNER_HEIGHT / 3,
+      width: __INNER_WIDTH,
+      height: __INNER_HEIGHT / 3,
+    };
+    const validateBoundsBottomScreen = {
+      left: 0,
+      top: __INNER_HEIGHT / 3,
+      right: __INNER_WIDTH,
+      bottom: __INNER_HEIGHT,
+      width: __INNER_WIDTH,
+      height: (__INNER_HEIGHT * 2) / 3,
+    };
+
+    it('Gets the 0 values as bounds in vertical fold dual screen scenarios when null is passed as the target', () => {
+      const target = null;
+
+      const validateBounds = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: 0,
+        height: 0,
+      };
+
+      expect(getBoundsFromTargetWindow(target, topBottomDualScreenTargetWindow)).toStrictEqual(validateBounds);
+    });
+
+    it('Gets correct bounds in vertical fold dual screen scenarios when Elements are passed as targets', () => {
+      const targetWithinTopScreen = {
+        getBoundingClientRect: () =>
+          ({
+            x: 100,
+            y: 100,
+            left: 100,
+            top: 100,
+            right: 300,
+            bottom: 300,
+            width: 200,
+            height: 200,
+          } as DOMRect),
+      } as Element;
+      expect(getBoundsFromTargetWindow(targetWithinTopScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsTopScreen,
+      );
+
+      const targetWithinBottomScreen = {
+        getBoundingClientRect: () =>
+          ({
+            x: 100,
+            y: 800,
+            left: 100,
+            top: 800,
+            right: 300,
+            bottom: 1000,
+            width: 200,
+            height: 200,
+          } as DOMRect),
+      } as Element;
+      expect(getBoundsFromTargetWindow(targetWithinBottomScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsBottomScreen,
+      );
+
+      const targetCrossingScreensWithCenterOnTopScreen = {
+        getBoundingClientRect: () =>
+          ({
+            x: 500,
+            y: 200,
+            left: 500,
+            top: 200,
+            right: 700,
+            bottom: 400,
+            width: 200,
+            height: 200,
+          } as DOMRect),
+      } as Element;
+      expect(
+        getBoundsFromTargetWindow(targetCrossingScreensWithCenterOnTopScreen, topBottomDualScreenTargetWindow),
+      ).toStrictEqual(validateBoundsTopScreen);
+
+      const targetCrossingScreensWithCenterOnBottomScreen = {
+        getBoundingClientRect: () =>
+          ({
+            x: 600,
+            y: 300,
+            left: 600,
+            top: 300,
+            right: 800,
+            bottom: 500,
+            width: 200,
+            height: 200,
+          } as DOMRect),
+      } as Element;
+      expect(
+        getBoundsFromTargetWindow(targetCrossingScreensWithCenterOnBottomScreen, topBottomDualScreenTargetWindow),
+      ).toStrictEqual(validateBoundsBottomScreen);
+    });
+
+    it('Gets correct bounds in vertical fold dual screen scenarios when MouseEvents are passed as targets', () => {
+      const targetWithinTopScreen = {
+        x: 150,
+        y: 150,
+      } as MouseEvent;
+      expect(getBoundsFromTargetWindow(targetWithinTopScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsTopScreen,
+      );
+
+      const targetWithinBottomScreen = {
+        x: 1000,
+        y: 1000,
+      } as MouseEvent;
+      expect(getBoundsFromTargetWindow(targetWithinBottomScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsBottomScreen,
+      );
+    });
+
+    it('Gets correct bounds in vertical fold dual screen scenarios when Points are passed as targets', () => {
+      const targetWithinTopScreen: Point = {
+        left: 150,
+        top: 150,
+      };
+      expect(getBoundsFromTargetWindow(targetWithinTopScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsTopScreen,
+      );
+
+      const targetWithinBottomScreen: Point = {
+        left: 1000,
+        top: 1000,
+      };
+      expect(getBoundsFromTargetWindow(targetWithinBottomScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
+        validateBoundsBottomScreen,
+      );
+    });
   });
 });

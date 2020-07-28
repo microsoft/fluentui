@@ -9,7 +9,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
 
   return {
     root: {
-      ...getFocusStyle(theme, { inset: 2 })
-    }
+      ...getFocusStyle(theme, { inset: 2 }),
+    },
   };
 };

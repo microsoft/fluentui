@@ -4,17 +4,16 @@ import {
   Spinner,
   Toggle,
   Checkbox,
-  TextField,
   PrimaryButton,
   ProgressIndicator,
   ChoiceGroup,
   DefaultButton,
-  PersonaCoin
+  PersonaCoin,
 } from 'office-ui-fabric-react';
 
 const ToggleStrings = {
   onText: 'On',
-  offText: 'Off'
+  offText: 'Off',
 };
 
 const TodoApp = () => {
@@ -29,7 +28,12 @@ const TodoApp = () => {
       <Checkbox label="I am a Checkbox" />
       <Checkbox label="I am a Checkbox" disabled />
       <Checkbox label="I am a Checkbox" checked />
-      <ChoiceGroup options={[{ key: '1', text: 'ChoiceGroup option 1' }, { key: '2', text: 'ChoiceGroup option 2', checked: true }]} />
+      <ChoiceGroup
+        options={[
+          { key: '1', text: 'ChoiceGroup option 1' },
+          { key: '2', text: 'ChoiceGroup option 2', checked: true },
+        ]}
+      />
       <ProgressIndicator percentComplete={0.5} />
       <PersonaCoin text="David Zearing" />
     </div>

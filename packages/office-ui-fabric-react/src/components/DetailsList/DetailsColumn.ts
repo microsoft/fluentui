@@ -6,7 +6,7 @@ import { getStyles } from './DetailsColumn.styles';
 
 export { IDetailsColumnProps };
 
-export const DetailsColumn: React.StatelessComponent<IDetailsColumnProps> = styled<
+export const DetailsColumn: React.FunctionComponent<IDetailsColumnProps> = styled<
   IDetailsColumnProps,
   IDetailsColumnStyleProps,
   IDetailsColumnStyles

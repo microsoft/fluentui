@@ -9,12 +9,26 @@ import { Spinner, Stack, IStackProps } from 'office-ui-fabric-react';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
-const SpinnerButton: React.StatelessComponent<IButtonProps> = composed<IButtonProps, IButtonTokens, IButtonStyles>(Button, {
-  slots: { icon: Spinner }
-});
+const SpinnerButton: React.FunctionComponent<IButtonProps> = composed<IButtonProps, IButtonTokens, IButtonStyles>(
+  Button,
+  {
+    slots: { icon: Spinner },
+  },
+);
 
 const IconAtEndButtonView: IButtonComponent['view'] = (props, slots) => {
-  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+  const {
+    icon,
+    content,
+    children,
+    disabled,
+    onClick,
+    allowDisabledFocus,
+    ariaLabel,
+    keytipProps,
+    buttonRef,
+    ...rest
+  } = props;
 
   const buttonProps = getNativeProps<React.HTMLAttributes<HTMLButtonElement>>(rest, buttonProperties);
 
@@ -32,6 +46,7 @@ const IconAtEndButtonView: IButtonComponent['view'] = (props, slots) => {
     <slots.root
       type="button"
       role="button"
+      // eslint-disable-next-line react/jsx-no-bind
       onClick={_onClick}
       {...buttonProps}
       disabled={disabled && !allowDisabledFocus}
@@ -47,16 +62,17 @@ const IconAtEndButtonView: IButtonComponent['view'] = (props, slots) => {
   );
 };
 
-const IconAtEndButton: React.StatelessComponent<IButtonProps> = composed(Button, {
-  view: IconAtEndButtonView
+const IconAtEndButton: React.FunctionComponent<IButtonProps> = composed(Button, {
+  view: IconAtEndButtonView,
 });
 
-const SpinnerAtEndButton: React.StatelessComponent<IButtonProps> = composed<IButtonProps, IButtonTokens, IButtonStyles>(IconAtEndButton, {
-  slots: { icon: Spinner }
-});
+const SpinnerAtEndButton: React.FunctionComponent<IButtonProps> = composed<IButtonProps, IButtonTokens, IButtonStyles>(
+  IconAtEndButton,
+  {
+    slots: { icon: Spinner },
+  },
+);
 
-// tslint:disable:jsx-no-lambda
-// tslint:disable:jsx-key
 export class SlotsRecompositionExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (

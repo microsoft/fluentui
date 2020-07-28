@@ -10,8 +10,8 @@ exports.transformDtsTask = function() {
   for (let dtsFile of dtsFiles) {
     let content = fs.readFileSync(dtsFile, 'utf-8');
 
-    // Remove ambient get accessors, added in TS > 3.5 and incompatible with earlier versions.
-    content = content.replace(/^    get (\w+)\(\)/gm, '    readonly $1');
+    // Remove readonly parameters (added in TS 3.4)
+    content = content.replace(/: readonly /gm, ': ');
 
     const dtsDirname = path.dirname(dtsFile).replace(/\\/g, '/');
     if (dtsDirname.endsWith('/language/typescript') && content.includes(' monaco.')) {

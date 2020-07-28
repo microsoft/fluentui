@@ -3,7 +3,7 @@ import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling
 
 const GlobalClassNames = {
   root: 'ms-ScrollablePane',
-  contentContainer: 'ms-ScrollablePane--contentContainer'
+  contentContainer: 'ms-ScrollablePane--contentContainer',
 };
 
 export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyles => {
@@ -13,7 +13,7 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
-    pointerEvents: 'auto'
+    pointerEvents: 'none',
   };
 
   const positioningStyle: IStyle = {
@@ -22,7 +22,7 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
     right: 0,
     bottom: 0,
     left: 0,
-    WebkitOverflowScrolling: 'touch'
+    WebkitOverflowScrolling: 'touch',
   };
 
   return {
@@ -30,9 +30,9 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
     contentContainer: [
       classNames.contentContainer,
       {
-        overflowY: props.scrollbarVisibility === 'always' ? 'scroll' : 'auto'
+        overflowY: props.scrollbarVisibility === 'always' ? 'scroll' : 'auto',
       },
-      positioningStyle
+      positioningStyle,
     ],
     stickyAbove: [
       {
@@ -40,31 +40,31 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
         zIndex: 1,
         selectors: {
           [HighContrastSelector]: {
-            borderBottom: '1px solid WindowText'
-          }
-        }
+            borderBottom: '1px solid WindowText',
+          },
+        },
       },
-      AboveAndBelowStyles
+      AboveAndBelowStyles,
     ],
     stickyBelow: [
       {
         bottom: 0,
         selectors: {
           [HighContrastSelector]: {
-            borderTop: '1px solid WindowText'
-          }
-        }
+            borderTop: '1px solid WindowText',
+          },
+        },
       },
-      AboveAndBelowStyles
+      AboveAndBelowStyles,
     ],
     stickyBelowItems: [
       {
-        bottom: 0
+        bottom: 0,
       },
       AboveAndBelowStyles,
       {
-        width: '100%'
-      }
-    ]
+        width: '100%',
+      },
+    ],
   };
 };

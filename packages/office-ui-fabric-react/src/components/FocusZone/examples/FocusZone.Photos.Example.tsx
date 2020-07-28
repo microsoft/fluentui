@@ -12,7 +12,7 @@ const classNames = mergeStyleSets({
     border: '1px solid ' + theme.palette.neutralTertiary,
     padding: 10,
     lineHeight: 0,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   photoCell: {
     position: 'relative',
@@ -21,7 +21,7 @@ const classNames = mergeStyleSets({
     boxSizing: 'border-box',
     selectors: {
       '&:focus': {
-        outline: 'none'
+        outline: 'none',
       },
       '&:focus:after': {
         content: '""',
@@ -31,10 +31,10 @@ const classNames = mergeStyleSets({
         top: 4,
         bottom: 4,
         border: '1px solid ' + theme.palette.white,
-        outline: '2px solid ' + theme.palette.themePrimary
-      }
-    }
-  }
+        outline: '2px solid ' + theme.palette.themePrimary,
+      },
+    },
+  },
 });
 
 const MAX_COUNT = 20;
@@ -46,28 +46,7 @@ interface IPhoto {
   height: number;
 }
 
-export const FocusZonePhotosExample: React.FunctionComponent = () => {
-  //  Initialize the items when the component is first rendered (same array will be reused)
-  const items = useConst(_getItems);
-  return (
-    <FocusZone as="ul" className={classNames.photoList}>
-      {items.map((item: IPhoto, index: number) => (
-        <li
-          key={item.id}
-          className={classNames.photoCell}
-          aria-posinset={index + 1}
-          aria-setsize={items.length}
-          aria-label="Photo"
-          data-is-focusable={true}
-        >
-          <Image src={item.url} width={item.width} height={item.height} alt={`${item.width} by ${item.height} placeholder image`} />
-        </li>
-      ))}
-    </FocusZone>
-  );
-};
-
-function _getItems(): IPhoto[] {
+const getItems = (): IPhoto[] => {
   const items: IPhoto[] = [];
 
   for (let i = 0; i < MAX_COUNT; i++) {
@@ -77,9 +56,34 @@ function _getItems(): IPhoto[] {
       id: getId('photo'),
       url: `http://placehold.it/${randomWidth}x100`,
       width: randomWidth,
-      height: 100
+      height: 100,
     });
   }
-
   return items;
-}
+};
+
+export const FocusZonePhotosExample: React.FunctionComponent = () => {
+  //  Initialize the items when the component is first rendered (same array will be reused)
+  const items = useConst(getItems);
+  return (
+    <FocusZone as="ul" className={classNames.photoList}>
+      {items.map((item: IPhoto, index: number) => (
+        <li
+          key={item.id}
+          className={classNames.photoCell}
+          aria-posinset={index + 1}
+          aria-setsize={items.length}
+          aria-label="Photo"
+          data-is-focusable
+        >
+          <Image
+            src={item.url}
+            width={item.width}
+            height={item.height}
+            alt={`${item.width} by ${item.height} placeholder image`}
+          />
+        </li>
+      ))}
+    </FocusZone>
+  );
+};

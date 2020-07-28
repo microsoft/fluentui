@@ -12,7 +12,7 @@ const DEFAULT_ITEMS: any[] = [
   { id: 'e', text: '0,1' },
   { id: 'f', text: '1,1' },
   { id: 'g', text: '2,1' },
-  { id: 'h', text: '3,1' }
+  { id: 'h', text: '3,1' },
 ];
 
 describe('Grid', () => {
@@ -22,11 +22,10 @@ describe('Grid', () => {
         items={DEFAULT_ITEMS}
         columnCount={4}
         styles={getStyles}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={(item: any, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}
-      />
+      />,
     );
     expect(wrapper.find('table[role="grid"]').length).toEqual(1);
     expect(wrapper.find('tr[role="row"]').length).toEqual(2);
@@ -40,11 +39,10 @@ describe('Grid', () => {
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={(item: any, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}
-      />
+      />,
     );
     expect(wrapper.find('table[role="grid"]').length).toEqual(1);
     expect(wrapper.find('tr[role="row"]').length).toEqual(4);
@@ -58,13 +56,12 @@ describe('Grid', () => {
         items={DEFAULT_ITEMS}
         columnCount={2}
         styles={getStyles}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={(item: any, index: number) => {
           return <DefaultButton role="gridcell">item.text</DefaultButton>;
         }}
         positionInSet={1}
         setSize={2}
-      />
+      />,
     );
     expect(wrapper.find('table[role="grid"]').length).toEqual(1);
     expect(wrapper.find('tr[role="row"]').length).toEqual(4);

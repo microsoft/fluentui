@@ -1,6 +1,13 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
 import { IButtonStyles } from '../../Button';
-import { AnimationClassNames, getFocusStyle, ZIndexes, getGlobalClassNames, HighContrastSelector, FontWeights } from '../../Styling';
+import {
+  AnimationClassNames,
+  getFocusStyle,
+  ZIndexes,
+  getGlobalClassNames,
+  HighContrastSelector,
+  FontWeights,
+} from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -12,18 +19,18 @@ const GlobalClassNames = {
   navItem: 'ms-Nav-navItem',
   navItems: 'ms-Nav-navItems',
   group: 'ms-Nav-group',
-  groupContent: 'ms-Nav-groupContent'
+  groupContent: 'ms-Nav-groupContent',
 };
 
 export const buttonStyles: IButtonStyles = {
   textContainer: {
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   label: {
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    overflow: 'hidden'
-  }
+    overflow: 'hidden',
+  },
 };
 
 export const getStyles = (props: INavStyleProps): INavStyles => {
@@ -41,7 +48,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     position,
     leftPadding = 20,
     leftPaddingExpanded = 28,
-    rightPadding = 20
+    rightPadding = 20,
   } = props;
 
   const { palette, semanticColors, fonts } = theme;
@@ -56,14 +63,14 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       {
         overflowY: 'auto',
         userSelect: 'none',
-        WebkitOverflowScrolling: 'touch'
+        WebkitOverflowScrolling: 'touch',
       },
       isOnTop && [
         {
-          position: 'absolute'
+          position: 'absolute',
         },
-        AnimationClassNames.slideRightIn40
-      ]
+        AnimationClassNames.slideRightIn40,
+      ],
     ],
     linkText: [
       classNames.linkText,
@@ -72,22 +79,22 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         overflow: 'hidden',
         verticalAlign: 'middle',
         textAlign: 'left',
-        textOverflow: 'ellipsis'
-      }
+        textOverflow: 'ellipsis',
+      },
     ],
     compositeLink: [
       classNames.compositeLink,
       {
         display: 'block',
         position: 'relative',
-        color: semanticColors.bodyText
+        color: semanticColors.bodyText,
       },
       isExpanded && 'is-expanded',
       isSelected && 'is-selected',
       isDisabled && 'is-disabled',
       isDisabled && {
-        color: semanticColors.disabledText
-      }
+        color: semanticColors.disabledText,
+      },
     ],
     link: [
       classNames.link,
@@ -108,21 +115,21 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         color: semanticColors.bodyText,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'transparent',
+            border: 0,
             selectors: {
               ':focus': {
-                borderColor: 'WindowText'
-              }
-            }
-          }
-        }
+                border: '1px solid WindowText',
+              },
+            },
+          },
+        },
       },
       !isDisabled && {
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: semanticColors.bodyBackgroundHovered
-          }
-        }
+            backgroundColor: semanticColors.bodyBackgroundHovered,
+          },
+        },
       },
       isSelected && {
         color: semanticColors.bodyTextChecked,
@@ -137,16 +144,16 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
             right: 0,
             bottom: 0,
             left: 0,
-            pointerEvents: 'none'
-          }
-        }
+            pointerEvents: 'none',
+          },
+        },
       },
       isDisabled && {
-        color: semanticColors.disabledText
+        color: semanticColors.disabledText,
       },
       isButtonEntry && {
-        color: palette.themePrimary
-      }
+        color: palette.themePrimary,
+      },
     ],
     chevronButton: [
       classNames.chevronButton,
@@ -167,15 +174,15 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         backgroundColor: 'transparent',
         selectors: {
           '&:visited': {
-            color: semanticColors.bodyText
-          }
-        }
+            color: semanticColors.bodyText,
+          },
+        },
       },
       isGroup && {
         fontSize: fonts.large.fontSize,
         width: '100%',
         height: navHeight,
-        borderBottom: `1px solid ${semanticColors.bodyDivider}`
+        borderBottom: `1px solid ${semanticColors.bodyDivider}`,
       },
       isLink && {
         display: 'block',
@@ -186,7 +193,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         left: `${position}px`,
         zIndex: ZIndexes.Nav,
         padding: 0,
-        margin: 0
+        margin: 0,
       },
       isSelected && {
         color: palette.themePrimary,
@@ -200,10 +207,10 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
             right: 0,
             bottom: 0,
             left: 0,
-            pointerEvents: 'none'
-          }
-        }
-      }
+            pointerEvents: 'none',
+          },
+        },
+      },
     ],
     chevronIcon: [
       classNames.chevronIcon,
@@ -213,40 +220,40 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         height: navHeight,
         lineHeight: `${navHeight}px`,
         fontSize: fonts.small.fontSize,
-        transition: 'transform .1s linear'
+        transition: 'transform .1s linear',
       },
       isExpanded && {
-        transform: 'rotate(-180deg)'
+        transform: 'rotate(-180deg)',
       },
       isLink && {
-        top: 0
-      }
+        top: 0,
+      },
     ],
     navItem: [
       classNames.navItem,
       {
-        padding: 0
-      }
+        padding: 0,
+      },
     ],
     navItems: [
       classNames.navItems,
       {
         listStyleType: 'none',
         padding: 0,
-        margin: 0 // remove default <UL> styles
-      }
+        margin: 0, // remove default <UL> styles
+      },
     ],
     group: [classNames.group, isExpanded && 'is-expanded'],
     groupContent: [
       classNames.groupContent,
       {
         display: 'none',
-        marginBottom: '40px'
+        marginBottom: '40px',
       },
       AnimationClassNames.slideDownIn20,
       isExpanded && {
-        display: 'block'
-      }
-    ]
+        display: 'block',
+      },
+    ],
   };
 };

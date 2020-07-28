@@ -1,8 +1,8 @@
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames, FontWeights } from '../../Styling';
 import { IDocumentCardLocationStyleProps, IDocumentCardLocationStyles } from './DocumentCardLocation.types';
 
 export const DocumentCardLocationGlobalClassNames = {
-  root: 'ms-DocumentCardLocation'
+  root: 'ms-DocumentCardLocation',
 };
 
 export const getStyles = (props: IDocumentCardLocationStyleProps): IDocumentCardLocationStyles => {
@@ -16,23 +16,24 @@ export const getStyles = (props: IDocumentCardLocationStyleProps): IDocumentCard
       classNames.root,
       fonts.small,
       {
-        color: palette.neutralPrimary,
+        color: palette.themePrimary,
         display: 'block',
+        fontWeight: FontWeights.semibold,
+        overflow: 'hidden',
         padding: '8px 16px',
         position: 'relative',
         textDecoration: 'none',
-        overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
 
         selectors: {
           ':hover': {
             color: palette.themePrimary,
-            cursor: 'pointer'
-          }
-        }
+            cursor: 'pointer',
+          },
+        },
       },
-      className
-    ]
+      className,
+    ],
   };
 };

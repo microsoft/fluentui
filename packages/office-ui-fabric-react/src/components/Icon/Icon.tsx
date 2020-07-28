@@ -9,12 +9,12 @@ import { getStyles } from './Icon.styles';
  * or `ImageIcon` instead, especially in scenarios where rendering performance is important.
  * {@docCategory Icon}
  */
-export const Icon: React.StatelessComponent<IIconProps> = styled<IIconProps, IIconStyleProps, IIconStyles>(
+export const Icon: React.FunctionComponent<IIconProps> = styled<IIconProps, IIconStyleProps, IIconStyles>(
   IconBase,
   getStyles,
   undefined,
   {
-    scope: 'Icon'
+    scope: 'Icon',
   },
-  true
+  true,
 );

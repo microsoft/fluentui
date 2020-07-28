@@ -10,23 +10,24 @@ const SliderVerticalExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
   componentName: 'Slider',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/undefined',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/undefined',
   examples: [
     {
       title: 'Horizontal sliders',
       code: SliderBasicExampleCode,
-      view: <SliderBasicExample />
+      view: <SliderBasicExample />,
     },
     {
       title: 'Vertical sliders',
       code: SliderVerticalExampleCode,
-      view: <SliderVerticalExample />
-    }
+      view: <SliderVerticalExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderBestPractices.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

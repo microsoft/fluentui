@@ -1,7 +1,6 @@
 // Utilities
 import * as React from 'react';
 import {
-  BaseComponent,
   classNamesFunction,
   elementContains,
   focusFirstChild,
@@ -9,7 +8,11 @@ import {
   IRectangle,
   KeyCodes,
   shallowCompare,
-  getRTL
+  getRTL,
+  warnDeprecations,
+  EventGroup,
+  Async,
+  initializeComponentRef,
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -110,7 +113,9 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+const COMPONENT_NAME = 'Coachmark';
+
+export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
     mouseProximityOffset: 10,
@@ -118,9 +123,12 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     delayBeforeCoachmarkAnimation: 0,
     isPositionForced: true,
     positioningContainerProps: {
-      directionalHint: DirectionalHint.bottomAutoEdge
-    }
+      directionalHint: DirectionalHint.bottomAutoEdge,
+    },
   };
+
+  private _async: Async;
+  private _events: EventGroup;
 
   /**
    * The cached HTMLElement reference to the Entity Inner Host
@@ -142,13 +150,17 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
   constructor(props: ICoachmarkProps) {
     super(props);
 
-    this._warnDeprecations({
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+
+    warnDeprecations(COMPONENT_NAME, props, {
       teachingBubbleRef: undefined,
       collapsed: 'isCollapsed',
       beakWidth: undefined,
       beakHeight: undefined,
       width: undefined,
-      height: undefined
+      height: undefined,
     });
 
     // Set defaults for state
@@ -158,10 +170,10 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       isMeasuring: true,
       entityInnerHostRect: {
         width: 0,
-        height: 0
+        height: 0,
       },
       isMouseInProximity: false,
-      isMeasured: false
+      isMeasured: false,
     };
   }
 
@@ -191,7 +203,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       styles,
       theme,
       className,
-      persistentBeak
+      persistentBeak,
     } = this.props;
 
     const {
@@ -205,7 +217,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       entityInnerHostRect,
       transformOrigin,
       alertText,
-      isMeasured
+      isMeasured,
     } = this.state;
 
     // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
@@ -229,7 +241,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       entityHostWidth: `${entityInnerHostRect.width}px`,
       width: `${COACHMARK_WIDTH}px`,
       height: `${COACHMARK_HEIGHT}px`,
-      delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`
+      delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`,
     });
 
     const finalHeight: number = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
@@ -246,7 +258,12 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       >
         <div className={classNames.root}>
           {ariaAlertText && (
-            <div className={classNames.ariaContainer} role="alert" ref={this._ariaAlertContainer} aria-hidden={!isCollapsed}>
+            <div
+              className={classNames.ariaContainer}
+              role="alert"
+              ref={this._ariaAlertContainer}
+              aria-hidden={!isCollapsed}
+            >
               {alertText}
             </div>
           )}
@@ -283,11 +300,15 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
                       <p id={ariaDescribedBy} key={1} className={classNames.ariaContainer}>
                         {ariaDescribedByText}
                       </p>
-                    )
+                    ),
                   ]}
                   <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
                     <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
-                      <div className={classNames.childrenContainer} ref={this._childrenContainer} aria-hidden={isCollapsed}>
+                      <div
+                        className={classNames.childrenContainer}
+                        ref={this._childrenContainer}
+                        aria-hidden={isCollapsed}
+                      >
                         {children}
                       </div>
                     </div>
@@ -301,7 +322,6 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     );
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
@@ -314,7 +334,10 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
   }
 
   public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
-    if (prevState.targetAlignment !== this.state.targetAlignment || prevState.targetPosition !== this.state.targetPosition) {
+    if (
+      prevState.targetAlignment !== this.state.targetAlignment ||
+      prevState.targetPosition !== this.state.targetPosition
+    ) {
       this._setBeakPosition();
     }
     if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
@@ -323,48 +346,54 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
   }
 
   public componentDidMount(): void {
-    this._async.requestAnimationFrame(
-      (): void => {
-        if (this._entityInnerHostElement.current && this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0) {
-          this.setState({
-            isMeasuring: false,
-            entityInnerHostRect: {
-              width: this._entityInnerHostElement.current.offsetWidth,
-              height: this._entityInnerHostElement.current.offsetHeight
-            },
-            isMeasured: true
-          });
-          this._setBeakPosition();
-          this.forceUpdate();
-        }
-
-        this._addListeners();
-
-        // We don't want to the user to immediately trigger the Coachmark when it's opened
-        this._async.setTimeout(() => {
-          this._addProximityHandler(this.props.mouseProximityOffset);
-        }, this.props.delayBeforeMouseOpen!);
-
-        // Need to add setTimeout to have narrator read change in alert container
-        if (this.props.ariaAlertText) {
-          this._async.setTimeout(() => {
-            if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
-              this.setState({
-                alertText: this.props.ariaAlertText
-              });
-            }
-          }, 0);
-        }
-
-        if (!this.props.preventFocusOnMount) {
-          this._async.setTimeout(() => {
-            if (this._entityHost.current) {
-              this._entityHost.current.focus();
-            }
-          }, 1000);
-        }
+    this._async.requestAnimationFrame((): void => {
+      if (
+        this._entityInnerHostElement.current &&
+        this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0
+      ) {
+        this.setState({
+          isMeasuring: false,
+          entityInnerHostRect: {
+            width: this._entityInnerHostElement.current.offsetWidth,
+            height: this._entityInnerHostElement.current.offsetHeight,
+          },
+          isMeasured: true,
+        });
+        this._setBeakPosition();
+        this.forceUpdate();
       }
-    );
+
+      this._addListeners();
+
+      // We don't want to the user to immediately trigger the Coachmark when it's opened
+      this._async.setTimeout(() => {
+        this._addProximityHandler(this.props.mouseProximityOffset);
+      }, this.props.delayBeforeMouseOpen!);
+
+      // Need to add setTimeout to have narrator read change in alert container
+      if (this.props.ariaAlertText) {
+        this._async.setTimeout(() => {
+          if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
+            this.setState({
+              alertText: this.props.ariaAlertText,
+            });
+          }
+        }, 0);
+      }
+
+      if (!this.props.preventFocusOnMount) {
+        this._async.setTimeout(() => {
+          if (this._entityHost.current) {
+            this._entityHost.current.focus();
+          }
+        }, 1000);
+      }
+    });
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
@@ -394,7 +423,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
   private _dismissOnLostFocus(ev: Event) {
     const clickTarget = ev.target as HTMLElement;
     const clickedOutsideCallout =
-      this._translateAnimationContainer.current && !elementContains(this._translateAnimationContainer.current, clickTarget);
+      this._translateAnimationContainer.current &&
+      !elementContains(this._translateAnimationContainer.current, clickTarget);
     const { target } = this.props;
 
     if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
@@ -421,14 +451,12 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
   };
 
   private _onPositioned = (positionData: IPositionedData): void => {
-    this._async.requestAnimationFrame(
-      (): void => {
-        this.setState({
-          targetAlignment: positionData.alignmentEdge,
-          targetPosition: positionData.targetEdge
-        });
-      }
-    );
+    this._async.requestAnimationFrame((): void => {
+      this.setState({
+        targetAlignment: positionData.alignmentEdge,
+        targetPosition: positionData.targetEdge,
+      });
+    });
   };
 
   private _getBounds(): IRectangle | undefined {
@@ -447,7 +475,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
           bottom: Infinity,
           right: window.innerWidth,
           width: window.innerWidth,
-          height: Infinity
+          height: Infinity,
         };
       } else {
         return {
@@ -456,7 +484,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
           bottom: Infinity,
           right: Infinity,
           width: Infinity,
-          height: Infinity
+          height: Infinity,
         };
       }
     } else {
@@ -545,13 +573,13 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       beakRight: beakRight,
       beakBottom: beakBottom,
       beakTop: beakTop,
-      transformOrigin: `${transformOriginX} ${transformOriginY}`
+      transformOrigin: `${transformOriginX} ${transformOriginY}`,
     });
   };
 
   private _openCoachmark = (): void => {
     this.setState({
-      isCollapsed: false
+      isCollapsed: false,
     });
 
     if (this.props.onAnimationOpenStart) {
@@ -559,21 +587,18 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     }
 
     this._entityInnerHostElement.current &&
-      this._entityInnerHostElement.current.addEventListener(
-        'transitionend',
-        (): void => {
-          // Need setTimeout to trigger narrator
-          this._async.setTimeout(() => {
-            if (this._entityInnerHostElement.current) {
-              focusFirstChild(this._entityInnerHostElement.current);
-            }
-          }, 1000);
-
-          if (this.props.onAnimationOpenEnd) {
-            this.props.onAnimationOpenEnd();
+      this._entityInnerHostElement.current.addEventListener('transitionend', (): void => {
+        // Need setTimeout to trigger narrator
+        this._async.setTimeout(() => {
+          if (this._entityInnerHostElement.current) {
+            focusFirstChild(this._entityInnerHostElement.current);
           }
+        }, 1000);
+
+        if (this.props.onAnimationOpenEnd) {
+          this.props.onAnimationOpenEnd();
         }
-      );
+      });
   };
 
   private _addProximityHandler(mouseProximityOffset: number = 0): void {
@@ -593,23 +618,17 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       // Every time the event is triggered we want to
       // setTimeout and then clear any previous instances
       // of setTimeout.
-      this._events.on(
-        window,
-        'resize',
-        (): void => {
-          timeoutIds.forEach(
-            (value: number): void => {
-              clearInterval(value);
-            }
-          );
+      this._events.on(window, 'resize', (): void => {
+        timeoutIds.forEach((value: number): void => {
+          clearInterval(value);
+        });
 
-          timeoutIds.push(
-            this._async.setTimeout((): void => {
-              this._setTargetElementRect();
-            }, 100)
-          );
-        }
-      );
+        timeoutIds.push(
+          this._async.setTimeout((): void => {
+            this._setTargetElementRect();
+          }, 100),
+        );
+      });
     }, 10);
 
     // Every time the document's mouse move is triggered

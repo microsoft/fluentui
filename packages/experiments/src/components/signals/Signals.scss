@@ -67,6 +67,14 @@ settings used by the parent control.
   }
 }
 
+.folder {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
 .lock {
   color: $ms-color-neutralSecondary;
 
@@ -179,4 +187,8 @@ i.emailed {
 
 .needsRepublishing {
   color: $ms-color-yellowDark;
+}
+
+.itemScheduled {
+  color: $ms-color-neutralSecondary;
 }

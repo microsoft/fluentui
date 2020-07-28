@@ -1,33 +1,43 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import { keyframes, getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
-import { getRTL } from '../../Utilities';
+import {
+  keyframes,
+  getGlobalClassNames,
+  hiddenContentStyle,
+  HighContrastSelector,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../Styling';
+import { getRTL, memoizeFunction } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Shimmer-container',
   shimmerWrapper: 'ms-Shimmer-shimmerWrapper',
   shimmerGradient: 'ms-Shimmer-shimmerGradient',
-  dataWrapper: 'ms-Shimmer-dataWrapper'
+  dataWrapper: 'ms-Shimmer-dataWrapper',
 };
 
 const BACKGROUND_OFF_SCREEN_POSITION = '100%';
 
-const shimmerAnimation: string = keyframes({
-  '0%': {
-    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`
-  },
-  '100%': {
-    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`
-  }
-});
+const shimmerAnimation = memoizeFunction(() =>
+  keyframes({
+    '0%': {
+      transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
+    },
+    '100%': {
+      transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
+    },
+  }),
+);
 
-const shimmerAnimationRTL: string = keyframes({
-  '100%': {
-    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`
-  },
-  '0%': {
-    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`
-  }
-});
+const shimmerAnimationRTL = memoizeFunction(() =>
+  keyframes({
+    '100%': {
+      transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
+    },
+    '0%': {
+      transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
+    },
+  }),
+);
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const { isDataLoaded, className, theme, transitionAnimationInterval, shimmerColor, shimmerWaveColor } = props;
@@ -43,9 +53,9 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       theme.fonts.medium,
       {
         position: 'relative',
-        height: 'auto'
+        height: 'auto',
       },
-      className
+      className,
     ],
     shimmerWrapper: [
       classNames.shimmerWrapper,
@@ -57,7 +67,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         transition: `opacity ${transitionAnimationInterval}ms`,
         selectors: {
           '> *': {
-            transform: 'translateZ(0)'
+            transform: 'translateZ(0)',
           },
           [HighContrastSelector]: {
             background: `WindowText
@@ -67,9 +77,10 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                           Window 50%,
                           transparent 100%)
                         0 0 / 90% 100%
-                        no-repeat`
-          }
-        }
+                        no-repeat`,
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
       isDataLoaded && {
         opacity: '0',
@@ -77,8 +88,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         top: '0',
         bottom: '0',
         left: '0',
-        right: '0'
-      }
+        right: '0',
+      },
     ],
     shimmerGradient: [
       classNames.shimmerGradient,
@@ -101,8 +112,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationTimingFunction: 'ease-in-out',
         animationDirection: 'normal',
         animationIterationCount: 'infinite',
-        animationName: isRTL ? shimmerAnimationRTL : shimmerAnimation
-      }
+        animationName: isRTL ? shimmerAnimationRTL() : shimmerAnimation(),
+      },
     ],
     dataWrapper: [
       classNames.dataWrapper,
@@ -116,13 +127,13 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
-        transition: `opacity ${transitionAnimationInterval}ms`
+        transition: `opacity ${transitionAnimationInterval}ms`,
       },
       isDataLoaded && {
         opacity: '1',
-        position: 'static'
-      }
+        position: 'static',
+      },
     ],
-    screenReaderText: hiddenContentStyle
+    screenReaderText: hiddenContentStyle,
   };
 }

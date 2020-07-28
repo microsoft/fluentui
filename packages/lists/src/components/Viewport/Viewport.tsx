@@ -41,7 +41,7 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
   const [viewportState, setViewportState] = useState<IViewportState>({
     isScrolling: false,
     scrollDistance: SCROLL_DISTANCE_ORIGIN,
-    scrollDirection: NO_SCROLL_DIRECTION
+    scrollDirection: NO_SCROLL_DIRECTION,
   });
   const prevViewportState = usePreviousValue(viewportState);
 
@@ -50,7 +50,7 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
       return {
         isScrolling: false,
         scrollDistance: currentViewportState.scrollDistance,
-        scrollDirection: NO_SCROLL_DIRECTION
+        scrollDirection: NO_SCROLL_DIRECTION,
       };
     });
   }, STOPPED_SCROLLING_TIMEOUT_IN_MILLISECONDS);
@@ -58,39 +58,43 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
   useEffect(() => {
     if (scrollContainerRef.current) {
       const onScroll = (event: Event) => {
-        // tslint:disable-next-line:no-any
-        const { scrollLeft: scrollX, scrollTop: scrollY } = ((event as any) as React.UIEvent<HTMLDivElement>).currentTarget;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const { scrollLeft: scrollX, scrollTop: scrollY } = ((event as any) as React.UIEvent<
+          HTMLDivElement
+        >).currentTarget;
 
         const scrollDirectionX = getScrollDirection(
           scrollX,
-          (prevViewportState && prevViewportState.scrollDistance[Axis.X]) || SCROLL_DISTANCE_ORIGIN[Axis.X]
+          (prevViewportState && prevViewportState.scrollDistance[Axis.X]) || SCROLL_DISTANCE_ORIGIN[Axis.X],
         );
         const scrollDirectionY = getScrollDirection(
           scrollY,
-          (prevViewportState && prevViewportState.scrollDistance[Axis.Y]) || SCROLL_DISTANCE_ORIGIN[Axis.Y]
+          (prevViewportState && prevViewportState.scrollDistance[Axis.Y]) || SCROLL_DISTANCE_ORIGIN[Axis.Y],
         );
 
         setViewportState({
           isScrolling: true,
           scrollDistance: [scrollX, scrollY],
-          scrollDirection: [scrollDirectionX, scrollDirectionY]
+          scrollDirection: [scrollDirectionX, scrollDirectionY],
         });
 
         scheduleStoppedScrollingTimeout();
       };
 
       scrollContainerRef.current.addEventListener<'scroll'>('scroll', onScroll, {
-        passive: true // https://developers.google.com/web/updates/2016/06/passive-event-listeners
+        passive: true, // https://developers.google.com/web/updates/2016/06/passive-event-listeners
       });
 
       return () => {
         if (scrollContainerRef.current) {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           scrollContainerRef.current.removeEventListener('scroll', onScroll);
         }
 
         clearStoppedScrollingTimeout();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const style: React.CSSProperties = {
@@ -100,14 +104,15 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
     overflow: 'auto',
 
     // Enable momentum-based scrolling for iOS browsers
-    WebkitOverflowScrolling: 'touch'
+    WebkitOverflowScrolling: 'touch',
   };
 
   return (
     <div
       ref={scrollContainerRef}
-      data-is-scrollable={true} // some Fabric components need this to detect their parent scroll container more efficiently
-      style={style} // tslint:disable-line:jsx-ban-props
+      // some Fabric components need this to detect their parent scroll container more efficiently
+      data-is-scrollable={true}
+      style={style}
     >
       {children(viewportState)}
     </div>

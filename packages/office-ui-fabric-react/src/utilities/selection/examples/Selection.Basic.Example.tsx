@@ -15,13 +15,13 @@ const commonStyles: IRawStyle = {
   verticalAlign: 'top',
   background: 'none',
   backgroundColor: 'transparent',
-  border: 'none'
+  border: 'none',
 };
 const classNames = mergeStyleSets({
   item: {
     selectors: {
-      '&:hover': { background: '#eee' }
-    }
+      '&:hover': { background: '#eee' },
+    },
   },
   // Overwrites the default style for Button
   check: [commonStyles, { padding: '11px 8px' }],
@@ -30,9 +30,9 @@ const classNames = mergeStyleSets({
     {
       overflow: 'hidden',
       height: 36,
-      padding: 8
-    }
-  ]
+      padding: 8,
+    },
+  ],
 });
 
 const ITEM_COUNT = 100;
@@ -40,7 +40,6 @@ const ITEM_COUNT = 100;
 export interface ISelectionBasicExampleState {
   items: IExampleItem[];
   selection: ISelection;
-  selectionMode: SelectionMode;
   canSelect: 'all' | 'vowels';
 }
 
@@ -54,7 +53,9 @@ interface ISelectionItemExampleProps {
 /**
  * The SelectionItemExample controls and displays the selection state of a single item
  */
-const SelectionItemExample: React.StatelessComponent<ISelectionItemExampleProps> = (props: ISelectionItemExampleProps) => {
+const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> = (
+  props: ISelectionItemExampleProps,
+) => {
   const { item, itemIndex, selection } = props;
   let isSelected = false;
 
@@ -97,8 +98,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
     this.state = {
       items: createListItems(ITEM_COUNT),
       selection: new Selection({ onSelectionChanged: this._onSelectionChanged }),
-      selectionMode: SelectionMode.multiple,
-      canSelect: 'all'
+      canSelect: 'all',
     };
     this.state.selection.setItems(this.state.items, false);
   }
@@ -144,12 +144,12 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
       const newSelection = new Selection({
         onSelectionChanged: this._onSelectionChanged,
         canSelectItem: previousState.canSelect === 'vowels' ? this._canSelectItem : undefined,
-        selectionMode: menuItem.data
+        selectionMode: menuItem.data,
       });
       newSelection.setItems(previousState.items, false);
 
       return {
-        selection: newSelection
+        selection: newSelection,
       };
     });
   };
@@ -161,12 +161,12 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
       const newSelection = new Selection({
         onSelectionChanged: this._onSelectionChanged,
         canSelectItem: canSelectItem,
-        selectionMode: previousState.selection.mode
+        selectionMode: previousState.selection.mode,
       });
       newSelection.setItems(previousState.items, false);
       return {
         selection: newSelection,
-        canSelect: menuItem.data === 'vowels' ? 'vowels' : 'all'
+        canSelect: menuItem.data === 'vowels' ? 'vowels' : 'all',
       };
     });
   };
@@ -187,7 +187,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
             canCheck: true,
             checked: selectionMode === SelectionMode.none,
             onClick: this._onSelectionModeChanged,
-            data: SelectionMode.none
+            data: SelectionMode.none,
           },
           {
             key: SelectionMode[SelectionMode.single],
@@ -195,7 +195,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
             canCheck: true,
             checked: selectionMode === SelectionMode.single,
             onClick: this._onSelectionModeChanged,
-            data: SelectionMode.single
+            data: SelectionMode.single,
           },
           {
             key: SelectionMode[SelectionMode.multiple],
@@ -203,15 +203,15 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
             canCheck: true,
             checked: selectionMode === SelectionMode.multiple,
             onClick: this._onSelectionModeChanged,
-            data: SelectionMode.multiple
-          }
-        ]
+            data: SelectionMode.multiple,
+          },
+        ],
       },
       {
         key: 'selectAll',
         text: 'Select All',
         iconProps: { iconName: 'CheckMark' },
-        onClick: this._onToggleSelectAll
+        onClick: this._onToggleSelectAll,
       },
       {
         key: 'allowCanSelect',
@@ -223,7 +223,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
             canCheck: true,
             checked: canSelect === 'all',
             onClick: this._onCanSelectChanged,
-            data: 'all'
+            data: 'all',
           },
           {
             key: 'a',
@@ -231,10 +231,10 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
             canCheck: true,
             checked: canSelect === 'vowels',
             onClick: this._onCanSelectChanged,
-            data: 'vowels'
-          }
-        ]
-      }
+            data: 'vowels',
+          },
+        ],
+      },
     ];
   };
 }

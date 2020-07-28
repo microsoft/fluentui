@@ -28,7 +28,8 @@ export default migration(
             const propName = prop.name.getText();
             if (propName === onChanged) {
               opts.warn(
-                `${prefix} - ${onChanged} is removed; please use onChange instead (NOTE: DOM event is now passed as first argument).`
+                `${prefix} - ${onChanged} is removed; please use onChange instead ` +
+                  `(NOTE: DOM event is now passed as first argument).`,
               );
             } else if (propName === onBeforeChange) {
               opts.warn(`${prefix} = ${onBeforeChange} is removed; please use onChange instead.`);
@@ -41,5 +42,5 @@ export default migration(
 
       return undefined;
     }).files;
-  }
+  },
 );

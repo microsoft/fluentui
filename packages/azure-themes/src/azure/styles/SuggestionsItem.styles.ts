@@ -9,14 +9,14 @@ export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps
   const { semanticColors } = theme;
   return {
     root: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
       selectors: {
         ':hover': {
-          backgroundColor: semanticColors.listItemBackgroundHovered
-        }
-      }
+          backgroundColor: semanticColors.listItemBackgroundHovered,
+        },
+      },
     },
     itemButton: {
       border: 'none',
@@ -26,14 +26,14 @@ export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps
       selectors: {
         ':hover': {
           backgroundColor: semanticColors.listItemBackgroundHovered,
-          border: 'none'
+          border: 'none',
         },
         ':active': {
           border: 'none',
           color: semanticColors.bodyText,
-          background: semanticColors.listItemBackgroundChecked
-        }
-      }
-    }
+          background: semanticColors.listItemBackgroundChecked,
+        },
+      },
+    },
   };
 };

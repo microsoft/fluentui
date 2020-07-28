@@ -18,7 +18,9 @@ export interface IContrastRatioPair {
   colorPair: string;
 }
 
-export const AccessibilityChecker: React.StatelessComponent<IAccessibilityCheckerProps> = (props: IAccessibilityCheckerProps) => {
+export const AccessibilityChecker: React.FunctionComponent<IAccessibilityCheckerProps> = (
+  props: IAccessibilityCheckerProps,
+) => {
   let nonAccessiblePairs: IContrastRatioPair[] = [];
   let accessiblePairs: IContrastRatioPair[] = [];
 
@@ -36,13 +38,13 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
         nonAccessiblePairs.push({
           contrastRatioValue: contrastRatioString,
           contrastRatioPair: currContrastRatioPair,
-          colorPair: colorPairString
+          colorPair: colorPairString,
         });
       } else {
         accessiblePairs.push({
           contrastRatioValue: contrastRatioString,
           contrastRatioPair: currContrastRatioPair,
-          colorPair: colorPairString
+          colorPair: colorPairString,
         });
       }
     }
@@ -51,13 +53,18 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
   const loadAllContrastRatioPairsList = () => {
     calculateContrastRatio(FabricSlots.themePrimary, FabricSlots.white, 'Primary color on Background color');
     calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.white, 'Text color on Background color');
+    calculateContrastRatio(FabricSlots.neutralSecondary, FabricSlots.white, 'Secondary text color on Background color');
   };
 
   loadAllContrastRatioPairsList();
   return (
     <div className={MainPanelInnerContent}>
       <TitleText>Accessibility checker</TitleText>
-      <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
+      <AccessibilityDetailsList
+        theme={props.theme!}
+        accessiblePairs={accessiblePairs}
+        nonAccessiblePairs={nonAccessiblePairs}
+      />
     </div>
   );
 };

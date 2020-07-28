@@ -12,15 +12,18 @@ function start(): void {
       iconProps={{ iconName: 'Snow' }}
       text="hi"
       menuProps={{
-        items: [{ key: 'a', name: 'Item a' }, { key: 'c', name: 'Item b' }, { key: 'b', name: 'Item c' }]
+        items: [
+          { key: 'a', name: 'Item a' },
+          { key: 'c', name: 'Item b' },
+          { key: 'b', name: 'Item c' },
+        ],
       }}
     />,
-    div
+    div,
   );
 }
 
-// tslint:disable-next-line:no-string-literal
-if (document && document['body']) {
+if (document?.body) {
   start();
 } else {
   window.onload = start;

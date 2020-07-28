@@ -34,7 +34,7 @@ storiesOf('DatePicker', module)
         <DatePicker value={date} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Placeholder', () => (
     <Fabric>

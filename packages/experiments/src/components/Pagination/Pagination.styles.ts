@@ -3,7 +3,7 @@ import { getGlobalClassNames, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Pagination-container',
-  pageNumber: 'ms-Pagination-pageNumber'
+  pageNumber: 'ms-Pagination-pageNumber',
 };
 
 export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
@@ -13,29 +13,29 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
   const buttonStyles: IStyle = {
     cursor: 'pointer',
     border: 'none',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   };
 
   return {
     root: [
       classNames.root,
-      'buttons' === format && {
+      format === 'buttons' && {
         listStyle: 'none',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
-      }
+        alignItems: 'center',
+      },
     ],
     previousNextPage: [
       {
-        color: palette.themePrimary
-      }
+        color: palette.themePrimary,
+      },
     ],
     previousNextPageDisabled: [
       {
         cursor: 'default',
-        backgroundColor: 'transparent'
-      }
+        backgroundColor: 'transparent',
+      },
     ],
     pageNumber: [
       classNames.pageNumber,
@@ -50,27 +50,27 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
             color: palette.blue,
             cursor: 'default',
             fontWeight: 'bold',
-            textDecoration: 'underline'
+            textDecoration: 'underline',
           },
           '&:hover[aria-selected=true]': {
             color: palette.blue,
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
           },
           ':active': {
-            backgroundColor: 'transparent'
-          }
-        }
-      }
+            backgroundColor: 'transparent',
+          },
+        },
+      },
     ],
     visibleItemLabel: [
       {
-        color: palette.neutralSecondary
-      }
+        color: palette.neutralSecondary,
+      },
     ],
     comboBox: {
       maxWidth: '70px',
       display: 'inline-block',
-      verticalAlign: 'middle'
-    }
+      verticalAlign: 'middle',
+    },
   };
 }

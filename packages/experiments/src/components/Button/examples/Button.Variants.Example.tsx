@@ -11,16 +11,16 @@ import {
   Actionable,
   MenuButton,
   SplitButton,
-  ISplitButtonProps
+  ISplitButtonProps,
 } from '@uifabric/experiments';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   buttonStack: {
-    childrenGap: 12
-  }
+    childrenGap: 12,
+  },
 };
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
@@ -29,20 +29,19 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// tslint:disable:jsx-no-lambda
 export class ButtonVariantsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const menuProps: ISplitButtonProps['menu'] = {
       items: [
         {
           key: 'a',
-          name: 'Item a'
+          name: 'Item a',
         },
         {
           key: 'b',
-          name: 'Item b'
-        }
-      ]
+          name: 'Item b',
+        },
+      ],
     };
 
     return (

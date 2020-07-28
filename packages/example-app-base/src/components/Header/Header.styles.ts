@@ -7,7 +7,7 @@ const globalClassNames = {
   root: 'Header',
   title: 'Header-title',
   button: 'Header-button',
-  buttons: 'Header-buttons'
+  buttons: 'Header-buttons',
 };
 
 export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props => {
@@ -17,7 +17,7 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
     display: 'inline-block',
     verticalAlign: 'top',
     color: theme.palette.white,
-    borderRadius: 0
+    borderRadius: 0,
   };
 
   const iconStyles: IIconStyles = { root: { fontSize: 18 } };
@@ -32,17 +32,17 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
         overflow: 'hidden',
         whiteSpace: 'no-wrap',
         userSelect: 'none',
-        color: 'white'
+        color: 'white',
       },
-      globalClassNames.root
+      globalClassNames.root,
     ],
     title: [
       commonStyles,
       theme.fonts.medium,
       {
-        lineHeight: 48
+        lineHeight: 48,
       },
-      globalClassNames.title
+      globalClassNames.title,
     ],
     button: [
       commonStyles,
@@ -63,21 +63,21 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
         boxSizing: 'border-box',
         selectors: {
           '&:hover': {
-            background: isLargeDown ? 'inherit' : theme.palette.themePrimary
-          }
-        }
+            background: isLargeDown ? 'inherit' : theme.palette.themePrimary,
+          },
+        },
       },
-      globalClassNames.button
+      globalClassNames.button,
     ],
     buttons: [
       commonStyles,
       {
-        float: 'right'
+        float: 'right',
       },
-      globalClassNames.buttons
+      globalClassNames.buttons,
     ],
     subComponentStyles: {
-      icons: iconStyles
-    }
+      icons: iconStyles,
+    },
   };
 };

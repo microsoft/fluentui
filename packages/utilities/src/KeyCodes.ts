@@ -64,6 +64,7 @@ export const KeyCodes = {
   leftWindow: 91 as 91,
   rightWindow: 92 as 92,
   select: 93 as 93,
+  /* eslint-disable @typescript-eslint/naming-convention */
   zero_numpad: 96 as 96,
   one_numpad: 97 as 97,
   two_numpad: 98 as 98,
@@ -74,6 +75,7 @@ export const KeyCodes = {
   seven_numpad: 103 as 103,
   eight_numpad: 104 as 104,
   nine_numpad: 105 as 105,
+  /* eslint-enable @typescript-eslint/naming-convention */
   multiply: 106 as 106,
   add: 107 as 107,
   subtract: 109 as 109,
@@ -103,6 +105,6 @@ export const KeyCodes = {
   openBracket: 219 as 219,
   backSlash: 220 as 220,
   closeBracket: 221 as 221,
-  singleQuote: 222 as 222
+  singleQuote: 222 as 222,
 };
 export type KeyCodes = number;

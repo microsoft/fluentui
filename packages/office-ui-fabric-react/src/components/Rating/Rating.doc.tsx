@@ -10,23 +10,24 @@ const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-
 export const RatingPageProps: IDocPageProps = {
   title: 'Rating',
   componentName: 'Rating',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Rating',
   examples: [
     {
       title: 'Rating',
       code: RatingBasicExampleCode,
-      view: <RatingBasicExample />
+      view: <RatingBasicExample />,
     },
     {
       title: 'Button Controlled Rating',
       code: RatingButtonControlledExampleCode,
-      view: <RatingButtonControlledExample />
-    }
+      view: <RatingButtonControlledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingBestPractices.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

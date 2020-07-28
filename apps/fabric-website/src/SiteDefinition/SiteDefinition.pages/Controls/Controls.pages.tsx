@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { INavPage, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
-import { controlsPagesWeb, controlsPagesIos, controlsPagesAndroid } from './index';
+import {
+  controlsPagesWeb,
+  controlsPagesIos,
+  controlsPagesAndroid,
+  controlsPagesMac,
+  controlsPagesWindows,
+  controlsPagesCrossPlatform,
+} from './index';
 
 export const ControlsPages: INavPage = {
   title: 'Controls',
@@ -10,10 +17,14 @@ export const ControlsPages: INavPage = {
   hasPlatformPicker: true,
   isSearchable: true,
   component: () => <LoadingComponent title="Controls" />,
-  getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage)),
+  getComponent: cb =>
+    require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage)),
   platforms: {
     web: controlsPagesWeb,
     ios: controlsPagesIos,
-    android: controlsPagesAndroid
-  }
+    android: controlsPagesAndroid,
+    mac: controlsPagesMac,
+    windows: controlsPagesWindows,
+    cross: controlsPagesCrossPlatform,
+  },
 };

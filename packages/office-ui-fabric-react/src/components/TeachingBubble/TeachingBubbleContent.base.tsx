@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction, KeyCodes } from '../../Utilities';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
@@ -9,15 +9,15 @@ import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
-export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
   // Specify default props values
   public static defaultProps = {
     hasCondensedHeadline: false,
     imageProps: {
       imageFit: ImageFit.cover,
       width: 364,
-      height: 130
-    }
+      height: 130,
+    },
   };
 
   public rootElement = React.createRef<HTMLDivElement>();
@@ -25,6 +25,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
+    initializeComponentRef(this);
     this.state = {};
   }
 
@@ -54,6 +55,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       secondaryButtonProps,
       headline,
       hasCondensedHeadline,
+      // eslint-disable-next-line deprecation/deprecation
       hasCloseButton = this.props.hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,
@@ -63,7 +65,8 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       theme,
       ariaDescribedBy,
       ariaLabelledBy,
-      footerContent: customFooterContent
+      footerContent: customFooterContent,
+      focusTrapZoneProps,
     } = this.props;
 
     let imageContent;
@@ -77,15 +80,16 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       hasCondensedHeadline,
       hasSmallHeadline,
       hasCloseButton,
+      hasHeadline: !!headline,
       isWide,
       primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
-      secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined
+      secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined,
     });
 
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
         <div className={classNames.imageContent}>
-          <Image {...illustrationImage as any} />
+          <Image {...(illustrationImage as any)} />
         </div>
       );
     }
@@ -149,7 +153,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
         data-is-focusable={true}
       >
         {imageContent}
-        <FocusTrapZone isClickableOutsideFocusTrap={true}>
+        <FocusTrapZone isClickableOutsideFocusTrap={true} {...focusTrapZoneProps}>
           <div className={classNames.bodyContent}>
             {headerContent}
             {bodyContent}

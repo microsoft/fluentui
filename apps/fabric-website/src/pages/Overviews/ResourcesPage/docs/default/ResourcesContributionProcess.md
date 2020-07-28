@@ -1,17 +1,21 @@
-Reference these step-by-step processes for contributing to UI Fabric.
+Reference these step-by-step processes for contributing to Fluent UI.
 
-### Fabric for web
+### Web
 
 <ul class="md-list--flex">
-  <li class="mdut--full">[Implement a Fabric React control](https://github.com/OfficeDev/office-ui-fabric-react/wiki/New-Components)</li>
-  <li class="mdut--full">[Give feedback on a control by filing an issue on GitHub](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Reporting-Issues)</li>
-  <li class="mdut--full">[View current GitHub issues for all Fabric React controls](https://github.com/OfficeDev/office-ui-fabric-react/issues)</li>
+  <li class="mdut--full">[Implement a Fluent UI React control](https://github.com/microsoft/fluentui/wiki/New-Components)</li>
+  <li class="mdut--full">[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui/wiki/Reporting-Issues)</li>
+  <li class="mdut--full">[View current GitHub issues for all Fluent UI React controls](https://github.com/microsoft/fluentui/issues)</li>
 </ul>
 
-### Fabric for iOS
+### Cross-platform
 
-[Give feedback on a control by filing an issue on GitHub](https://github.com/OfficeDev/ui-fabric-ios/issues)
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-react-native/issues)
 
-### Fabric for Android
+### iOS and macOS
 
-[Give feedback on a control by filing an issue on GitHub](https://github.com/OfficeDev/ui-fabric-android/issues)
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-apple/issues)
+
+### Android
+
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-android/issues)

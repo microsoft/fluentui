@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
-import { IPageSectionProps, Markdown, Table, ITableRowProps, ITableColumnProps } from '@uifabric/example-app-base/lib/index2';
+import {
+  IPageSectionProps,
+  Markdown,
+  Table,
+  ITableRowProps,
+  ITableColumnProps,
+} from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { TypographyPageProps, sizeUsage, weightUsage } from './TypographyPage.doc';
 import * as styles from './TypographyPage.module.scss';
@@ -9,11 +15,18 @@ import { Platforms } from '../../../interfaces/Platforms';
 const typeSizes = require('office-ui-fabric-core/src/data/type-sizes.json');
 const typeWeights = require('office-ui-fabric-core/src/data/type-weights.json');
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/TypographyPage/docs';
+const baseUrl =
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/TypographyPage/docs';
 
-export const TypographyPage: React.StatelessComponent<IStylesPageProps> = props => {
+export const TypographyPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...TypographyPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
+  return (
+    <StylesAreaPage
+      {...props}
+      {...TypographyPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -26,11 +39,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <Markdown>
-                {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyWeights.md') as string}
+                {
+                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyWeights.md') as string
+                }
               </Markdown>
               {_renderWeightsTable(typeWeights)}
             </>
-          )
+          ),
         },
         {
           sectionName: 'Sizes',
@@ -38,11 +53,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <Markdown>
-                {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographySizes.md') as string}
+                {
+                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographySizes.md') as string
+                }
               </Markdown>
               {_renderSizesTable(typeSizes)}
             </>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
@@ -53,7 +70,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string
               }
             </Markdown>
-          )
+          ),
         },
         {
           sectionName: 'Customization',
@@ -64,8 +81,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }
@@ -76,28 +93,27 @@ function _renderWeightsTable(weights: ITableRowProps[]) {
       columns={[
         {
           title: 'Weight',
-          percentWidth: 10
+          percentWidth: 10,
         },
         {
           title: 'Example',
-          data: 'example'
+          data: 'example',
         },
         {
           title: 'Usage',
-          percentWidth: 20
+          percentWidth: 20,
         },
         {
           title: 'Core class',
-          percentWidth: 15
+          percentWidth: 15,
         },
         {
           title: 'React variable',
           percentWidth: 20,
-          overflowX: 'auto'
-        }
+          overflowX: 'auto',
+        },
       ]}
       rows={weights}
-      // tslint:disable-next-line jsx-no-lambda
       formatter={(column, row) => {
         const content = row[column.data];
         switch (column.title) {
@@ -108,7 +124,11 @@ function _renderWeightsTable(weights: ITableRowProps[]) {
           case 'React variable':
             return `FontWeights.${row.name.toLowerCase()}`;
           case 'Example':
-            return <span className={`ms-fontWeight-${row.name.toLowerCase()}`}>The quick brown fox jumps over the lazy dog</span>;
+            return (
+              <span className={`ms-fontWeight-${row.name.toLowerCase()}`}>
+                The quick brown fox jumps over the lazy dog
+              </span>
+            );
           case 'Usage':
             return weightUsage.filter(x => x.name === row.name)[0].usage;
           default:
@@ -126,29 +146,28 @@ function _renderSizesTable(sizes: ITableColumnProps[]) {
         {
           title: 'Size',
           data: 'size',
-          percentWidth: 10
+          percentWidth: 10,
         },
         {
           title: 'Example',
           data: 'example',
-          overflowX: 'auto'
+          overflowX: 'auto',
         },
         {
           title: 'Usage',
-          percentWidth: 20
+          percentWidth: 20,
         },
         {
           title: 'Core class',
-          percentWidth: 15
+          percentWidth: 15,
         },
         {
           title: 'React variable',
           percentWidth: 20,
-          overflowX: 'auto'
-        }
+          overflowX: 'auto',
+        },
       ]}
       rows={sizes}
-      // tslint:disable-next-line jsx-no-lambda
       formatter={(column, row) => {
         const content = row[column.data];
         switch (column.title) {
@@ -159,7 +178,11 @@ function _renderSizesTable(sizes: ITableColumnProps[]) {
           case 'Size':
             return `${row.size}px`;
           case 'Example':
-            return <div className={css(styles.example, `ms-fontSize-${row.size}`)}>The quick brown fox jumps over the lazy dog</div>;
+            return (
+              <div className={css(styles.example, `ms-fontSize-${row.size}`)}>
+                The quick brown fox jumps over the lazy dog
+              </div>
+            );
           case 'Usage':
             return sizeUsage.filter(x => x.size === row.size)[0].usage;
           default:

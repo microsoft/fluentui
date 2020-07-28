@@ -33,7 +33,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -121,7 +120,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"
@@ -475,6 +473,9 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                 }
                                 @media only screen and (min-width: 0px) and (max-width: 639px){& {
                                   font-size: 16px;
+                                }
+                                @media screen and (-ms-high-contrast: active){& {
+                                  color: HighlightText;
                                 }
                             data-icon-name="ChevronRight"
                           >

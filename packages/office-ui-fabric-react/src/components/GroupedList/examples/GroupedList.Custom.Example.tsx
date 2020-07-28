@@ -9,7 +9,7 @@ const headerAndFooterStyles: IRawStyle = {
   minWidth: 300,
   minHeight: 40,
   lineHeight: 40,
-  paddingLeft: 16
+  paddingLeft: 16,
 };
 const classNames = mergeStyleSets({
   header: [headerAndFooterStyles, theme.fonts.xLarge],
@@ -25,50 +25,50 @@ const classNames = mergeStyleSets({
     background: 'none',
     backgroundColor: 'transparent',
     border: 'none',
-    paddingLeft: 32
-  }
+    paddingLeft: 32,
+  },
 });
 
-export class GroupedListCustomExample extends React.Component {
-  private _items: IExampleItem[] = createListItems(20);
-  private _groups: IGroup[] = createGroups(4, 0, 0, 5);
+const onRenderHeader = (props: IGroupHeaderProps): JSX.Element => {
+  const toggleCollapse = (): void => {
+    props.onToggleCollapse!(props.group!);
+  };
+  return (
+    <div className={classNames.header}>
+      This is a custom header for {props.group!.name}
+      &nbsp; (
+      <Link
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={toggleCollapse}
+      >
+        {props.group!.isCollapsed ? 'Expand' : 'Collapse'}
+      </Link>
+      )
+    </div>
+  );
+};
 
-  public render(): JSX.Element {
-    return (
-      <GroupedList
-        items={this._items}
-        onRenderCell={this._onRenderCell}
-        groupProps={{
-          onRenderHeader: this._onRenderHeader,
-          onRenderFooter: this._onRenderFooter
-        }}
-        groups={this._groups}
-      />
-    );
-  }
+const onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
+  return (
+    <div role="row" data-selection-index={itemIndex}>
+      <span role="cell" className={classNames.name}>
+        {item.name}
+      </span>
+    </div>
+  );
+};
 
-  private _onRenderCell(nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element {
-    return (
-      <div data-selection-index={itemIndex}>
-        <span className={classNames.name}>{item.name}</span>
-      </div>
-    );
-  }
+const onRenderFooter = (props: IGroupFooterProps): JSX.Element => {
+  return <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div>;
+};
 
-  private _onRenderHeader(props: IGroupHeaderProps): JSX.Element {
-    const toggleCollapse = (): void => {
-      props.onToggleCollapse!(props.group!);
-    };
+const groupedListProps = {
+  onRenderHeader,
+  onRenderFooter,
+};
+const items: IExampleItem[] = createListItems(20);
+const groups: IGroup[] = createGroups(4, 0, 0, 5);
 
-    return (
-      <div className={classNames.header}>
-        This is a custom header for {props.group!.name}
-        &nbsp; (<Link onClick={toggleCollapse}>{props.group!.isCollapsed ? 'Expand' : 'Collapse'}</Link>)
-      </div>
-    );
-  }
-
-  private _onRenderFooter(props: IGroupFooterProps): JSX.Element {
-    return <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div>;
-  }
-}
+export const GroupedListCustomExample: React.FunctionComponent = () => (
+  <GroupedList items={items} onRenderCell={onRenderCell} groupProps={groupedListProps} groups={groups} />
+);

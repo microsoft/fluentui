@@ -1,19 +1,25 @@
 import * as React from 'react';
-import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+import {
+  IPersonaProps,
+  IPersonaSharedProps,
+  Persona,
+  PersonaSize,
+  PersonaPresence,
+} from 'office-ui-fabric-react/lib/Persona';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const customCoinClass = mergeStyles({
   borderRadius: 20,
-  display: 'block'
+  display: 'block',
 });
 
 const examplePersona: IPersonaSharedProps = {
   imageInitials: 'TR',
   text: 'Ted Randall',
   secondaryText: 'Project Manager',
-  optionalText: 'Available at 4:00pm'
+  optionalText: 'Available at 4:00pm',
 };
 
 export const PersonaCustomCoinRenderExample: React.FunctionComponent = () => {

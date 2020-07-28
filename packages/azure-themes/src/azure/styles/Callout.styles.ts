@@ -12,11 +12,11 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
       borderColor: semanticColors.inputBorder,
       borderStyle: StyleConstants.borderSolid,
       borderWidth: StyleConstants.borderWidth,
-      boxShadow: Depths.depth8
+      boxShadow: Depths.depth8,
     },
     calloutMain: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12
-    }
+      fontSize: FontSizes.size13,
+    },
   };
 };

@@ -48,7 +48,6 @@ exports[`CommandBar renders commands correctly 1`] = `
         role="menubar"
       >
         <div
-          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -59,7 +58,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="menubar"
+          role="group"
         >
           <div
             className=
@@ -98,7 +97,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -242,7 +240,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                   }
                   &::-moz-focus-inner {
                     border: 0;

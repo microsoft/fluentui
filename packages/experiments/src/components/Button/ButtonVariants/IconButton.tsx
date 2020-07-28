@@ -42,7 +42,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     outlineColor: 'transparent',
     textFamily: 'inherit',
     textSize: 14,
-    textWeight: FontWeights.semibold
+    textWeight: FontWeights.semibold,
   };
 };
 
@@ -62,20 +62,20 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     highContrastIconColorPressed: 'GrayText',
     iconColor: semanticColors.disabledText,
     iconColorHovered: semanticColors.disabledText,
-    iconColorPressed: semanticColors.disabledText
+    iconColorPressed: semanticColors.disabledText,
   };
 };
 
 const IconButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
-  props.disabled && disabledTokens
+  props.disabled && disabledTokens,
 ];
 
-export const IconButton: React.StatelessComponent<IButtonProps> = composed({
+export const IconButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'IconButton',
   slots,
   state,
   styles,
   tokens: IconButtonTokens,
-  view
+  view,
 });

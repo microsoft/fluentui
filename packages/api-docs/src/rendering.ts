@@ -11,7 +11,7 @@ import {
   DocLinkTag,
   DocNodeContainer,
   DocCodeSpan,
-  DocBlock
+  DocBlock,
 } from '@microsoft/tsdoc';
 import { ApiItem, ApiModel, ExcerptToken, IExcerptTokenRange } from '@microsoft/api-extractor-model';
 import { ILinkToken } from './types';
@@ -82,7 +82,7 @@ export function getTokenHyperlinks(
   collectedData: ICollectedData,
   excerptTokens: ReadonlyArray<ExcerptToken>,
   excerptTokenRange: Readonly<IExcerptTokenRange>,
-  isTypeAlias?: boolean
+  isTypeAlias?: boolean,
 ): ILinkToken[] {
   const initialTokens = getTokensInRange(excerptTokens, excerptTokenRange).map((token: ExcerptToken) => {
     const result: ILinkToken = { text: token.text };
@@ -157,14 +157,19 @@ export function findInlineTagByName(tagName: string, docComment: DocComment): Do
  * Gets the block tag by name
  */
 export function getBlockTagByName(tagName: string, docComment: DocComment): DocSection | undefined {
-  const tag = docComment.customBlocks.find((customBlock: DocBlock) => customBlock.blockTag.tagName === tagName.toLowerCase());
+  const tag = docComment.customBlocks.find(
+    (customBlock: DocBlock) => customBlock.blockTag.tagName === tagName.toLowerCase(),
+  );
   return tag && tag.content;
 }
 
 /**
  * Convert a range of tokens to a string.
  */
-export function renderTokens(excerptTokens: ReadonlyArray<ExcerptToken>, excerptTokenRange: Readonly<IExcerptTokenRange>): string {
+export function renderTokens(
+  excerptTokens: ReadonlyArray<ExcerptToken>,
+  excerptTokenRange: Readonly<IExcerptTokenRange>,
+): string {
   return getTokensInRange(excerptTokens, excerptTokenRange)
     .map((token: ExcerptToken) => token.text)
     .join('');
@@ -172,7 +177,7 @@ export function renderTokens(excerptTokens: ReadonlyArray<ExcerptToken>, excerpt
 
 function getTokensInRange(
   excerptTokens: ReadonlyArray<ExcerptToken>,
-  excerptTokenRange: Readonly<IExcerptTokenRange>
+  excerptTokenRange: Readonly<IExcerptTokenRange>,
 ): ReadonlyArray<ExcerptToken> {
   return excerptTokens.slice(excerptTokenRange.startIndex, excerptTokenRange.endIndex);
 }

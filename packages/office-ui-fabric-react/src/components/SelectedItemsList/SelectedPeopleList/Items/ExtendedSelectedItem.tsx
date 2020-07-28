@@ -1,23 +1,23 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
-import { BaseComponent, css, getId } from '../../../../Utilities';
+import { css, getId, initializeComponentRef } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from '../../../../Button';
 import * as stylesImport from './ExtendedSelectedItem.scss';
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
-export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
+export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
   protected persona = React.createRef<HTMLDivElement>();
 
   constructor(props: ISelectedPeopleItemProps) {
     super(props);
+
+    initializeComponentRef(this);
+    // eslint-disable-next-line react/no-unused-state
     this.state = { contextualMenuVisible: false };
   }
 
@@ -31,7 +31,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           'ms-PickerPersona-container',
           styles.personaContainer,
           { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-          { ['is-invalid ' + styles.validationError]: !item.isValid }
+          { ['is-invalid ' + styles.validationError]: !item.isValid },
         )}
         data-is-focusable={true}
         data-is-sub-focuszone={true}
@@ -67,7 +67,9 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
     );
   }
 
-  private _onClickIconButton(action: (() => void) | undefined): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
+  private _onClickIconButton(
+    action: (() => void) | undefined,
+  ): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void => {
       ev.stopPropagation();
       ev.preventDefault();

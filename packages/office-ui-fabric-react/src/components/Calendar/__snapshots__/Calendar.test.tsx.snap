@@ -7,6 +7,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
 >
   <div
     className="ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ms-DatePicker-monthPickerVisible undefined ms-DatePicker-calendarsInline undefined"
+    onBlur={[Function]}
+    onFocus={[Function]}
   >
     <div
       className="ms-DatePicker-holder ms-slideDownIn10"
@@ -205,7 +207,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -230,7 +231,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -256,7 +256,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id="DatePickerDay-active0"
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -281,7 +280,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -306,7 +304,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -331,7 +328,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -356,7 +352,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -383,7 +378,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -408,7 +402,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -433,7 +426,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -458,7 +450,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -483,7 +474,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -508,7 +498,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -533,7 +522,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -560,7 +548,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -585,7 +572,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -610,7 +596,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -635,7 +620,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -660,7 +644,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -685,7 +668,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -710,7 +692,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -737,7 +718,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -762,7 +742,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -787,7 +766,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -812,7 +790,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -837,7 +814,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -862,7 +838,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -887,7 +862,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -914,7 +888,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -939,7 +912,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -964,7 +936,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -989,7 +960,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -1014,7 +984,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -1039,7 +1008,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -1064,7 +1032,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
                         type="button"
                       >
                         <span

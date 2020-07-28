@@ -14,28 +14,24 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@types/es6-promise": "0.0.32",
-    "@types/react": "16.8.11",
+    "@fluentui/eslint-plugin": "^0.53.1",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
+    "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.109.3",
-    "@uifabric/merge-styles": "^7.8.1",
-    "@uifabric/example-app-base": "^7.11.0",
-    "@uifabric/variants": "^7.0.5",
-    "@uifabric/set-version": "^7.0.2",
-    "@uifabric/icons": "^7.3.0",
+    "@uifabric/react-cards": "^0.110.9",
+    "@uifabric/merge-styles": "^7.16.3",
+    "@uifabric/example-app-base": "^7.12.100",
+    "@uifabric/variants": "^7.1.102",
+    "@uifabric/set-version": "^7.0.18",
+    "@uifabric/icons": "^7.3.65",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "es6-promise": "^4.1.0",
-    "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.79.1",
+    "office-ui-fabric-react": "^7.123.10",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "tslib": "^1.7.1"
+    "tslib": "^1.10.0"
   }
 }

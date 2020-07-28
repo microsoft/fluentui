@@ -21,11 +21,13 @@ export interface IColorSliderProps {
 
   /**
    * Minimum value of the slider.
+   * @deprecated Will always be 0
    */
   minValue?: number;
 
   /**
    * Maximum value of the slider.
+   * @deprecated Will be 100 for alpha or transparency sliders, or 359 for hue sliders.
    */
   maxValue?: number;
 
@@ -40,14 +42,21 @@ export interface IColorSliderProps {
   ariaLabel?: string;
 
   /**
+   * Type of slider to display.
+   * @defaultvalue 'hue'
+   */
+  type?: 'hue' | 'alpha' | 'transparency';
+
+  /**
    * If true, the slider represents an alpha slider and will display a gray checkered pattern
    * in the background. Otherwise, the slider represents a hue slider.
    * @defaultvalue false
+   * @deprecated Use `type`
    */
   isAlpha?: boolean;
 
   /**
-   * Hex color to use when rendering an alpha slider's overlay.
+   * Hex color to use when rendering an alpha or transparency slider's overlay, *without* the `#`.
    */
   overlayColor?: string;
 
@@ -87,7 +96,13 @@ export interface IColorSliderProps {
 /**
  * {@docCategory ColorPicker}
  */
-export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'isAlpha'>;
+export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> &
+  Pick<IColorSliderProps, 'className' | 'type'> & {
+    /**
+     * @deprecated Use `type`
+     */
+    isAlpha?: boolean;
+  };
 
 /**
  * {@docCategory ColorPicker}

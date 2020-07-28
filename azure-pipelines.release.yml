@@ -8,8 +8,7 @@ name: 'v7_$(Date:yyyyMMdd)$(Rev:.r)'
 variables:
   - group: 'Github and NPM secrets'
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+pool: 'Self Host Ubuntu'
 
 schedules:
   # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
@@ -27,9 +26,9 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      git config user.name "UI Fabric Build"
-      git config user.email "fabrictactical@service.microsoft.com"
-      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/OfficeDev/office-ui-fabric-react.git
+      git config user.name "Fluent UI Build"
+      git config user.email "fluentui-internal@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
 
   - script: |
@@ -80,10 +79,12 @@ steps:
 
   - script: |
       npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+    env:
+      GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
-      node scripts/updateReleaseNotes/index.js --token=$(githubPAT) --apply --debug
+      node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
     displayName: 'Update github release notes'
 
   - script: |
@@ -127,7 +128,7 @@ steps:
     displayName: Upload Package Manifest
     inputs:
       SourcePath: 'package-manifest.json'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      azureSubscription: 'UI Fabric (private)'
       storage: fabricweb
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest/latest'

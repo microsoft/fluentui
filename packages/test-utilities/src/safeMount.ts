@@ -9,12 +9,18 @@ import { mount, ReactWrapper } from 'enzyme';
  * @param content - JSX content to test.
  * @param callback - Function callback which receives the component to use.
  */
-export function safeMount<TComponent extends React.Component, TProps = TComponent['props'], TState = TComponent['state']>(
-  content: React.ReactElement<TProps>,
-  callback: (wrapper: ReactWrapper<TProps, TState, TComponent>) => void
-): void {
+export function safeMount<
+  TComponent extends React.Component,
+  TProps = TComponent['props'],
+  TState = TComponent['state']
+>(content: React.ReactElement<TProps>, callback: (wrapper: ReactWrapper<TProps, TState, TComponent>) => void): void {
   const wrapper = mount<TComponent, TProps, TState>(content);
 
-  callback(wrapper);
-  wrapper.unmount();
+  try {
+    callback(wrapper);
+  } finally {
+    if (wrapper.exists()) {
+      wrapper.unmount();
+    }
+  }
 }

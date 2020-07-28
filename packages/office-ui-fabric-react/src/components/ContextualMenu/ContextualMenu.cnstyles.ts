@@ -6,7 +6,8 @@ import {
   ITheme,
   getScreenSelector,
   ScreenWidthMaxMedium,
-  IconFontSizes
+  IconFontSizes,
+  getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
 import { IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
@@ -23,11 +24,11 @@ const getItemHighContrastStyles = memoizeFunction(
           backgroundColor: 'Highlight',
           borderColor: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none'
-        }
-      }
+          MsHighContrastAdjust: 'none',
+        },
+      },
     };
-  }
+  },
 );
 
 export const getMenuItemStyles = memoizeFunction(
@@ -44,14 +45,14 @@ export const getMenuItemStyles = memoizeFunction(
         {
           color: semanticColors.bodyText,
           position: 'relative',
-          boxSizing: 'border-box'
-        }
+          boxSizing: 'border-box',
+        },
       ],
       divider: {
         display: 'block',
         height: '1px',
         backgroundColor: ContextualMenuItemDividerColor,
-        position: 'relative'
+        position: 'relative',
       },
       root: [
         getFocusStyle(theme),
@@ -66,8 +67,8 @@ export const getMenuItemStyles = memoizeFunction(
           display: 'block',
           cursor: 'pointer',
           padding: '0px 8px 0 4px', // inner elements have a margin of 4px (4 + 4 = 8px as on right side)
-          textAlign: 'left'
-        }
+          textAlign: 'left',
+        },
       ],
       rootDisabled: {
         color: semanticColors.disabledBodyText,
@@ -76,58 +77,59 @@ export const getMenuItemStyles = memoizeFunction(
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText',
-            opacity: 1
-          }
-        }
+            opacity: 1,
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
       rootHovered: {
         backgroundColor: ContextualMenuItemBackgroundHoverColor,
         color: ContextualMenuItemTextHoverColor,
         selectors: {
           '.ms-ContextualMenu-icon': {
-            color: palette.themeDarkAlt
+            color: palette.themeDarkAlt,
           },
           '.ms-ContextualMenu-submenuIcon': {
-            color: palette.neutralPrimary
-          }
+            color: palette.neutralPrimary,
+          },
         },
-        ...getItemHighContrastStyles()
+        ...getItemHighContrastStyles(),
       },
       rootFocused: {
         backgroundColor: palette.white,
-        ...getItemHighContrastStyles()
+        ...getItemHighContrastStyles(),
       },
       rootChecked: {
         selectors: {
           '.ms-ContextualMenu-checkmarkIcon': {
-            color: palette.neutralPrimary
-          }
+            color: palette.neutralPrimary,
+          },
         },
-        ...getItemHighContrastStyles()
+        ...getItemHighContrastStyles(),
       },
       rootPressed: {
         backgroundColor: ContextualMenuItemBackgroundSelectedColor,
         selectors: {
           '.ms-ContextualMenu-icon': {
-            color: palette.themeDark
+            color: palette.themeDark,
           },
           '.ms-ContextualMenu-submenuIcon': {
-            color: palette.neutralPrimary
-          }
+            color: palette.neutralPrimary,
+          },
         },
-        ...getItemHighContrastStyles()
+        ...getItemHighContrastStyles(),
       },
       rootExpanded: {
         backgroundColor: ContextualMenuItemBackgroundSelectedColor,
         color: semanticColors.bodyTextChecked,
-        ...getItemHighContrastStyles()
+        ...getItemHighContrastStyles(),
       },
       linkContent: {
         whiteSpace: 'nowrap',
         height: 'inherit',
         display: 'flex',
         alignItems: 'center',
-        maxWidth: '100%'
+        maxWidth: '100%',
       },
       anchorLink: {
         padding: '0px 8px 0 4px', // inner elements have a margin of 4px (4 + 4 = 8px as on right side)
@@ -139,7 +141,7 @@ export const getMenuItemStyles = memoizeFunction(
         textIndent: '0px',
         textShadow: 'none',
         textDecoration: 'none',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       },
       label: {
         margin: '0 4px',
@@ -148,12 +150,12 @@ export const getMenuItemStyles = memoizeFunction(
         flexGrow: '1',
         textOverflow: 'ellipsis',
         overflow: 'hidden',
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
       },
       secondaryText: {
         color: theme.palette.neutralSecondary,
         paddingLeft: '20px',
-        textAlign: 'right'
+        textAlign: 'right',
       },
       icon: {
         display: 'inline-block',
@@ -167,42 +169,42 @@ export const getMenuItemStyles = memoizeFunction(
         selectors: {
           [MediumScreenSelector]: {
             fontSize: IconFontSizes.large,
-            width: IconFontSizes.large
-          }
-        }
+            width: IconFontSizes.large,
+          },
+        },
       },
       iconColor: {
         color: semanticColors.menuIcon,
         selectors: {
           [HighContrastSelector]: {
-            color: 'inherit'
+            color: 'inherit',
           },
           ['$root:hover &']: {
             selectors: {
               [HighContrastSelector]: {
-                color: 'HighlightText'
-              }
-            }
+                color: 'HighlightText',
+              },
+            },
           },
           ['$root:focus &']: {
             selectors: {
               [HighContrastSelector]: {
-                color: 'HighlightText'
-              }
-            }
-          }
-        }
+                color: 'HighlightText',
+              },
+            },
+          },
+        },
       },
       iconDisabled: {
-        color: semanticColors.disabledBodyText
+        color: semanticColors.disabledBodyText,
       },
       checkmarkIcon: {
         color: semanticColors.bodySubtext,
         selectors: {
           [HighContrastSelector]: {
-            color: 'HighlightText'
-          }
-        }
+            color: 'HighlightText',
+          },
+        },
       },
       subMenuIcon: {
         height: CONTEXTUAL_MENU_ITEM_HEIGHT,
@@ -215,15 +217,18 @@ export const getMenuItemStyles = memoizeFunction(
         fontSize: IconFontSizes.small, // 12px
         selectors: {
           ':hover': {
-            color: palette.neutralPrimary
+            color: palette.neutralPrimary,
           },
           ':active': {
-            color: palette.neutralPrimary
+            color: palette.neutralPrimary,
           },
           [MediumScreenSelector]: {
-            fontSize: IconFontSizes.medium // 16px
-          }
-        }
+            fontSize: IconFontSizes.medium, // 16px
+          },
+          [HighContrastSelector]: {
+            color: 'HighlightText',
+          },
+        },
       },
       splitButtonFlexContainer: [
         getFocusStyle(theme),
@@ -232,11 +237,11 @@ export const getMenuItemStyles = memoizeFunction(
           height: CONTEXTUAL_MENU_ITEM_HEIGHT,
           flexWrap: 'nowrap',
           justifyContent: 'center',
-          alignItems: 'flex-start'
-        }
-      ]
+          alignItems: 'flex-start',
+        },
+      ],
     };
 
     return concatStyleSets(menuItemStyles);
-  }
+  },
 );

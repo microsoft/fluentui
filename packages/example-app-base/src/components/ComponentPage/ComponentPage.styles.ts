@@ -25,7 +25,7 @@ const globalClassNames = {
   dosDontsSection: 'ComponentPage-doSection',
   dosDontsHeading: 'ComponentPage-doSectionHeader',
   dosDontsLine: 'ComponentPage-doSectionLine',
-  dontsSection: 'ComponentPage-doSection--dont'
+  dontsSection: 'ComponentPage-doSection--dont',
 };
 
 const componentPageColor = '#0f8387';
@@ -39,27 +39,27 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     root: [
       {
         backgroundColor: theme.palette.white,
-        overflow: 'hidden'
+        overflow: 'hidden',
       },
-      globalClassNames.root
+      globalClassNames.root,
     ],
     header: [
       {
         backgroundColor: componentPageColor,
         minHeight: 245,
         padding: componentPagePadding,
-        paddingBottom: 0
+        paddingBottom: 0,
       },
-      globalClassNames.header
+      globalClassNames.header,
     ],
     headerLink: [
       theme.fonts.medium,
       {
         color: theme.palette.white,
         textDecoration: 'none',
-        selectors: { '&:hover': { color: theme.palette.neutralLight } }
+        selectors: { '&:hover': { color: theme.palette.neutralLight } },
       },
-      globalClassNames.headerLink
+      globalClassNames.headerLink,
     ],
     title: [
       theme.fonts.xLarge,
@@ -70,9 +70,9 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
         display: 'inline-block',
         width: '100%',
         marginTop: componentPagePadding,
-        marginBottom: componentPagePadding
+        marginBottom: componentPagePadding,
       },
-      globalClassNames.title
+      globalClassNames.title,
     ],
     navigation: globalClassNames.navigation,
     subHeading: [
@@ -83,19 +83,19 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
         marginBottom: 24,
         selectors: {
           // Set font here to be more specific
-          h2: [theme.fonts.xLarge, { fontSize: 36, margin: 0 }]
-        }
+          h2: [theme.fonts.xLarge, { fontSize: 36, margin: 0 }],
+        },
       },
-      globalClassNames.subHeading
+      globalClassNames.subHeading,
     ],
     section: {
-      padding: componentPagePadding
+      padding: componentPagePadding,
     },
     overviewSection: [
       {
-        maxWidth: '60em'
+        maxWidth: '60em',
       },
-      globalClassNames.overviewSection
+      globalClassNames.overviewSection,
     ],
     overviewText: [
       {
@@ -106,37 +106,37 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
         selectors: {
           p: {
             margin: 0,
-            padding: '16px 0'
+            padding: '16px 0',
           },
           ul: { paddingLeft: ulLeftPadding },
           li: [
             theme.fonts.small,
             {
-              marginBottom: 16
-            }
+              marginBottom: 16,
+            },
           ],
-          'ul li': { listStyle: 'disc' }
-        }
+          'ul li': { listStyle: 'disc' },
+        },
       },
-      globalClassNames.overviewText
+      globalClassNames.overviewText,
     ],
     overviewHeading: [
       {
         selectors: {
           [`&.${globalClassNames.subHeading}`]: {
-            marginTop: 0
-          }
-        }
+            marginTop: 0,
+          },
+        },
       },
-      globalClassNames.overviewHeading
+      globalClassNames.overviewHeading,
     ],
-    // These are for the actual "Best Practices" heading/text (rarely shown).
+    // These are for the actual "Best practices" heading/text (rarely shown).
     // The wrapper for this section plus dos/don'ts is bestPracticesSection.
     usageSection: [
       {
-        marginBottom: 16
+        marginBottom: 16,
       },
-      globalClassNames.usageSection
+      globalClassNames.usageSection,
     ],
     usageHeading: globalClassNames.usageHeading,
     variantsSection: globalClassNames.variantsSection,
@@ -145,18 +145,18 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       {
         paddingLeft: ulLeftPadding,
         selectors: {
-          li: { listStyle: 'disc' }
-        }
+          li: { listStyle: 'disc' },
+        },
       },
-      globalClassNames.variantsList
+      globalClassNames.variantsList,
     ],
     implementationSection: globalClassNames.implementationSection,
     feedbackSection: globalClassNames.feedbackSection,
     bestPracticesSection: [
       {
-        backgroundColor: theme.palette.neutralLighterAlt
+        backgroundColor: theme.palette.neutralLighterAlt,
       },
-      globalClassNames.bestPracticesSection
+      globalClassNames.bestPracticesSection,
     ],
     doSections: globalClassNames.doSections,
     dosDontsSection: [
@@ -174,26 +174,26 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
             selectors: {
               'ul li': {
                 listStyle: 'circle',
-                marginBottom: 0
-              }
-            }
+                marginBottom: 0,
+              },
+            },
           },
           '&:first-child': { marginRight: 120 },
           [`@media screen and (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
             marginBottom: -10, // Trim last list item
-            width: 'calc(50% - 60px)'
-          }
-        }
+            width: 'calc(50% - 60px)',
+          },
+        },
       },
-      globalClassNames.dosDontsSection
+      globalClassNames.dosDontsSection,
     ],
     dosDontsHeading: [
       {
         selectors: {
-          h3: [theme.fonts.mediumPlus, { margin: 0 }]
-        }
+          h3: [theme.fonts.mediumPlus, { margin: 0 }],
+        },
       },
-      globalClassNames.dosDontsHeading
+      globalClassNames.dosDontsHeading,
     ],
     dosDontsLine: [
       {
@@ -201,16 +201,16 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
         display: 'block',
         height: 8,
         margin: '12px 0 40px',
-        border: 0
+        border: 0,
       },
-      globalClassNames.dosDontsLine
+      globalClassNames.dosDontsLine,
     ],
     dosLine: {
-      backgroundColor: '#a4cf0c'
+      backgroundColor: '#a4cf0c',
     },
     dontsLine: {
-      backgroundColor: '#e74856'
+      backgroundColor: '#e74856',
     },
-    dontsSection: globalClassNames.dontsSection
+    dontsSection: globalClassNames.dontsSection,
   };
 };

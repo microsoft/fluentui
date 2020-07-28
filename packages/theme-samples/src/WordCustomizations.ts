@@ -6,21 +6,21 @@ export const WordCustomizations: ICustomizations = {
     theme: createTheme({
       palette: {
         themePrimary: '#2b579a',
-        themeSecondary: '#366ec2'
+        themeSecondary: '#366ec2',
       },
       semanticColors: {
         buttonBackground: 'white',
         buttonBackgroundHovered: 'rgb(240, 240, 240)',
         buttonBackgroundPressed: 'rgb(240, 240, 240)',
         buttonText: 'rgb(43, 87, 154)',
-        buttonBorder: 'rgb(237, 235, 233)'
-      }
-    })
+        buttonBorder: 'rgb(237, 235, 233)',
+      },
+    }),
   },
 
   scopedSettings: {
     Button: {
-      // tslint:disable:no-any
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       tokens: (props: any) => {
         return [
           {
@@ -28,15 +28,15 @@ export const WordCustomizations: ICustomizations = {
             textSize: 13.5,
             textWeight: 600,
             iconSize: 12,
-            contentPadding: '0px 6px'
+            contentPadding: '0px 6px',
           },
           !props.circular && {
-            minHeight: 26
-          }
+            minHeight: 26,
+          },
         ];
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 addVariants(WordCustomizations.settings.theme);

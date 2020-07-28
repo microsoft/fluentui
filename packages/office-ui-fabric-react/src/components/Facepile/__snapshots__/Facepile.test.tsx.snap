@@ -36,10 +36,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-      role="listbox"
     >
       <li
-        aria-label="Annie Lindqvist"
         className=
             ms-Facepile-member
             {
@@ -50,10 +48,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
-        role="option"
       >
         <div
-          aria-hidden={true}
           className=
               ms-Facepile-itemButton
               ms-Facepile-person
@@ -163,7 +159,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
         </div>
       </li>
       <li
-        aria-label="Aaron Reid"
         className=
             ms-Facepile-member
             {
@@ -174,10 +169,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
-        role="option"
       >
         <div
-          aria-hidden={true}
           className=
               ms-Facepile-itemButton
               ms-Facepile-person
@@ -287,7 +280,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
         </div>
       </li>
       <li
-        aria-label="Alex Lundberg"
         className=
             ms-Facepile-member
             {
@@ -298,10 +290,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
-        role="option"
       >
         <button
-          aria-hidden={true}
           className=
               ms-Button
               ms-Facepile-itemButton

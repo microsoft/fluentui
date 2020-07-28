@@ -21,43 +21,43 @@ const _getDropHintDetails = (component: any) => {
     {
       originX: 40,
       startX: 40,
-      endX: 150
+      endX: 150,
     } as IDropHintDetails,
     {
       originX: 260,
       startX: 150,
       endX: 370,
-      dropHintElementRef: component.find('#columnDropHint_1').getDOMNode() as HTMLElement
+      dropHintElementRef: component.find('#columnDropHint_1').getDOMNode() as HTMLElement,
     } as IDropHintDetails,
     {
       originX: 480,
       startX: 370,
       endX: 590,
-      dropHintElementRef: component.find('#columnDropHint_2').getDOMNode() as HTMLElement
+      dropHintElementRef: component.find('#columnDropHint_2').getDOMNode() as HTMLElement,
     } as IDropHintDetails,
     {
       originX: 700,
       startX: 590,
       endX: 810,
-      dropHintElementRef: component.find('#columnDropHint_3').getDOMNode() as HTMLElement
+      dropHintElementRef: component.find('#columnDropHint_3').getDOMNode() as HTMLElement,
     } as IDropHintDetails,
     {
       originX: 920,
       startX: 810,
       endX: 1030,
-      dropHintElementRef: component.find('#columnDropHint_4').getDOMNode() as HTMLElement
+      dropHintElementRef: component.find('#columnDropHint_4').getDOMNode() as HTMLElement,
     } as IDropHintDetails,
     {
       originX: 1140,
       startX: 1030,
       endX: 1155,
-      dropHintElementRef: component.find('#columnDropHint_5').getDOMNode() as HTMLElement
+      dropHintElementRef: component.find('#columnDropHint_5').getDOMNode() as HTMLElement,
     } as IDropHintDetails,
     {
       originX: 1170,
       startX: 1155,
-      endX: 1170
-    } as IDropHintDetails
+      endX: 1170,
+    } as IDropHintDetails,
   ];
 
   return _dropHintDetails;
@@ -69,9 +69,9 @@ const _RaiseEvent = (target: any, _eventName: string, _clientX: number) => {
     _eventName,
     {
       clientX: _clientX,
-      button: 0
+      button: 0,
     } as DragEvent,
-    true
+    true,
   );
 };
 
@@ -85,7 +85,7 @@ const _columns: IColumn[] = [
     maxWidth: 400,
     calculatedWidth: 200,
     isResizable: true,
-    isSorted: true
+    isSorted: true,
   },
   {
     key: 'c',
@@ -96,8 +96,8 @@ const _columns: IColumn[] = [
     calculatedWidth: 10,
     isResizable: true,
     columnActionsMode: ColumnActionsMode.hasDropdown,
-    isIconOnly: false
-  }
+    isIconOnly: false,
+  },
 ];
 
 const columns: IColumn[] = [
@@ -113,7 +113,7 @@ const columns: IColumn[] = [
     isSorted: true,
     sortAscendingAriaLabel: 'Sorted up.',
     sortDescendingAriaLabel: 'Sorted down.',
-    ariaLabel: 'Click to sort.'
+    ariaLabel: 'Click to sort.',
   },
   {
     key: 'c',
@@ -129,8 +129,8 @@ const columns: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
-  }
+    ariaLabel: 'Click to sort, filter, or group.',
+  },
 ];
 
 const columns1: IColumn[] = [
@@ -146,7 +146,7 @@ const columns1: IColumn[] = [
     isSorted: true,
     sortAscendingAriaLabel: 'Sorted up.',
     sortDescendingAriaLabel: 'Sorted down.',
-    ariaLabel: 'Click to sort.'
+    ariaLabel: 'Click to sort.',
   },
   {
     key: 'c',
@@ -162,7 +162,7 @@ const columns1: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
+    ariaLabel: 'Click to sort, filter, or group.',
   },
   {
     key: 'd',
@@ -178,7 +178,7 @@ const columns1: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
+    ariaLabel: 'Click to sort, filter, or group.',
   },
   {
     key: 'e',
@@ -194,7 +194,7 @@ const columns1: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
+    ariaLabel: 'Click to sort, filter, or group.',
   },
   {
     key: 'f',
@@ -210,17 +210,17 @@ const columns1: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
-  }
+    ariaLabel: 'Click to sort, filter, or group.',
+  },
 ];
 
 const _columnReorderProps = {
-  frozenColumnCountFromStart: 1
+  frozenColumnCountFromStart: 1,
 };
 
 const _columnReorderProps2 = {
   frozenColumnCountFromStart: 1,
-  frozenColumnCountFromEnd: 1
+  frozenColumnCountFromEnd: 1,
 };
 
 _selection.setItems(_items);
@@ -241,7 +241,7 @@ describe('DetailsHeader', () => {
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={_columns}
-      />
+      />,
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
@@ -254,7 +254,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         selectAllVisibility={SelectAllVisibility.hidden}
         columns={_columns}
-      />
+      />,
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
@@ -275,7 +275,7 @@ describe('DetailsHeader', () => {
         columns={_columns}
         onColumnResized={onColumnResized}
         columnReorderProps={_columnReorderProps}
-      />
+      />,
     );
 
     const sizerElement = wrapper.find('[data-sizer-index=0]').getDOMNode();
@@ -286,9 +286,9 @@ describe('DetailsHeader', () => {
       'mousedown',
       {
         clientX: 0,
-        button: 0
+        button: 0,
       },
-      true
+      true,
     );
     // Validate we go into resize mode.
     expect(sizerElement.classList.contains('is-resizing')).toBe(true);
@@ -318,7 +318,7 @@ describe('DetailsHeader', () => {
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns}
-      />
+      />,
     );
 
     expect(component.toJSON()).toMatchSnapshot();
@@ -333,7 +333,7 @@ describe('DetailsHeader', () => {
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns}
-      />
+      />,
     );
 
     const selectAllCheckBoxAriaLabelledBy = component
@@ -346,7 +346,7 @@ describe('DetailsHeader', () => {
         .find(`#${selectAllCheckBoxAriaLabelledBy}`)
         .first()
         .getDOMNode()
-        .hasAttribute('aria-describedby')
+        .hasAttribute('aria-describedby'),
     ).toBe(false);
 
     expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(0);
@@ -363,7 +363,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns}
         ariaLabelForSelectAllCheckbox={'Toggle selection for all items'}
-      />
+      />,
     );
 
     const selectAllCheckBoxAriaLabelledBy = component
@@ -376,7 +376,7 @@ describe('DetailsHeader', () => {
         .find(`#${selectAllCheckBoxAriaLabelledBy}`)
         .first()
         .getDOMNode()
-        .getAttribute('aria-describedby')!
+        .getAttribute('aria-describedby')!,
     ).toEqual(`${selectAllCheckBoxAriaLabelledBy}Tooltip`);
 
     expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(1);
@@ -393,7 +393,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns1}
         columnReorderProps={_columnReorderProps2}
-      />
+      />,
     );
 
     const detailsColNotDraggable = component.find('[draggable=false]').getElements();
@@ -426,7 +426,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns1}
         columnReorderProps={_columnReorderProps2}
-      />
+      />,
     );
 
     const detailsColSourceA = component.find('[aria-colindex=2]').getDOMNode();
@@ -462,7 +462,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns1}
         columnReorderProps={_columnReorderProps2}
-      />
+      />,
     );
 
     const detailsColSourceB = component.find('[aria-colindex=3]').getDOMNode();
@@ -499,7 +499,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns1}
         columnReorderProps={_columnReorderProps2}
-      />
+      />,
     );
 
     // moving column c and dragover from a to f
@@ -606,7 +606,7 @@ describe('DetailsHeader', () => {
     const _columnReorderPropsForDrop = {
       frozenColumnCountFromStart: 1,
       frozenColumnCountFromEnd: 1,
-      handleColumnReorder: _handleColumnReorder
+      handleColumnReorder: _handleColumnReorder,
     };
 
     const component = mount(
@@ -617,7 +617,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns1}
         columnReorderProps={_columnReorderPropsForDrop}
-      />
+      />,
     );
 
     // moving column e to between a and b (abcdef -> aebcdf)
@@ -707,7 +707,7 @@ describe('DetailsHeader', () => {
       maxWidth: 400,
       calculatedWidth: 200,
       isResizable: true,
-      headerClassName
+      headerClassName,
     };
 
     const component = mount(
@@ -716,7 +716,7 @@ describe('DetailsHeader', () => {
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={[column]}
-      />
+      />,
     );
 
     expect(component.find(`.${headerClassName}`).exists()).toBe(true);
@@ -732,7 +732,7 @@ describe('DetailsHeader', () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         onRenderDetailsCheckbox={onRenderCheckboxMock}
         checkboxVisibility={CheckboxVisibility.always}
-      />
+      />,
     );
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);

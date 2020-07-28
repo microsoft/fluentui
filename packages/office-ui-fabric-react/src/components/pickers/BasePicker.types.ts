@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { Autofill } from '../../Autofill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
@@ -36,6 +36,7 @@ export interface IBasePicker<T> {
  * displaying persona's then type T could either be of Persona or IPersona props
  * {@docCategory Pickers}
  */
+// eslint-disable-next-line deprecation/deprecation
 export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
@@ -96,12 +97,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback for when the user put focus on the picker
    * @deprecated Use `inputProps.onFocus` instead
    */
-  onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
 
   /**
    * A callback for when the user moves the focus away from the picker
    */
-  onBlur?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
 
   /**
    * A callback to get text from an item. Used to autofill text in the pickers.
@@ -195,9 +196,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   onDismiss?: (ev?: any, selectedItem?: T) => void;
 
   /**
-   * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below, as it
-   * enables proper screen reader behavior for each suggestion (since aria-activedescendant does not work with IE11).
-   * It should not be set for modern browsers (Edge, Chrome).
+   * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below,
+   * as it enables proper screen reader behavior for each suggestion (since aria-activedescendant does not work
+   * with IE11). It should not be set for modern browsers (Edge, Chrome).
    * @defaultvalue false
    */
   enableSelectedSuggestionAlert?: boolean;
@@ -253,7 +254,7 @@ export enum ValidationState {
   warning,
 
   /** User input is invalid. */
-  invalid
+  invalid,
 }
 
 /**
@@ -294,13 +295,16 @@ export interface IBasePickerStyles {
   /** Root element of any picker extending from BasePicker (wraps all the elements). */
   root: IStyle;
 
-  /** Refers to the elements already selected(picked) wrapped by `itemsWrapper` along with the input to type new selection. */
+  /**
+   * Refers to the elements already selected (picked) wrapped by `itemsWrapper` along with the input to type
+   * a new selection.
+   */
   text: IStyle;
 
-  /** Refers to the items already selected(picked). */
+  /** Refers to the items already selected (picked). */
   itemsWrapper: IStyle;
 
-  /** Refers to the input were to type new selections(picks). */
+  /** Refers to the input were to type new selections (picks). */
   input: IStyle;
 
   /** Refers to helper element used for accessibility tools (hidden from view on screen). */

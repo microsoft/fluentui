@@ -8,11 +8,11 @@ export const SpinButtonStyles = (theme: ITheme): Partial<ISpinButtonStyles> => {
     input: {
       backgroundColor: semanticColors.inputBackground,
       color: semanticColors.inputText,
-      fontSize: FontSizes.size12
+      fontSize: FontSizes.size13,
     },
     inputTextSelected: {
       color: semanticColors.inputText,
-      fontSize: FontSizes.size12
-    }
+      fontSize: FontSizes.size13,
+    },
   };
 };

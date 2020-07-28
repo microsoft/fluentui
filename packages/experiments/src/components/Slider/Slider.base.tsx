@@ -1,19 +1,30 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
+import {
+  initializeComponentRef,
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode,
+  warnMutuallyExclusive,
+} from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarks } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { Async, EventGroup, FocusRects } from '@uifabric/utilities';
 export interface ISliderState {
   value?: number;
   renderedValue?: number;
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
+const COMPONENT_NAME = 'Slider';
+
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
-// tslint:disable:jsx-ban-props
-export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
+
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
     min: 0,
@@ -22,7 +33,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     disabled: false,
     vertical: false,
     buttonProps: {},
-    originFromZero: false
+    originFromZero: false,
   };
 
   private _sliderLine = React.createRef<HTMLDivElement>();
@@ -32,21 +43,33 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _hostId: string = getId('tooltipHost');
   private _buttonId: string = getId('targetButton');
 
+  private _async: Async;
+  private _events: EventGroup;
+
   constructor(props: ISliderProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
-      value: 'defaultValue'
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
+      value: 'defaultValue',
     });
 
     this._id = getId('Slider');
 
-    const value = props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
+    const value =
+      props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
     this.state = {
       value: value,
-      renderedValue: undefined
+      renderedValue: undefined,
     };
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public render(): React.ReactElement<{}> {
@@ -64,7 +87,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme,
       originFromZero,
       marks,
-      showThumbTooltip
+      showThumbTooltip,
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -80,9 +103,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       vertical,
       showTransitions: renderedValue === value,
       showValue,
-      theme: theme!
+      theme: theme!,
     });
-    const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
+    const divButtonProps = buttonProps
+      ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
+      : undefined;
     const thumbButton = (
       <span
         ref={this._thumb}
@@ -119,7 +144,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
           >
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
-                <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+                <span
+                  className={classNames.zeroTick}
+                  style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)}
+                />
               )}
               {marks && this._addTickmarks(classNames.regularTick)}
               {Array.isArray(marks) ? (
@@ -143,7 +171,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     gapSpace: 5,
                     beakWidth: 8,
                     target: `#${this._buttonId}`,
-                    directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter
+                    directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter,
                   }}
                 >
                   {thumbButton}
@@ -182,6 +210,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
           </div>
         </div>
         <div />
+        <FocusRects />
       </div>
     ) as React.ReactElement<{}>;
   }
@@ -213,7 +242,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return null;
   }
   private get renderedValue(): number | undefined {
-    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`.
+    // Fall back to `value`.
     const { renderedValue = this.value } = this.state;
     return renderedValue;
   }
@@ -227,7 +257,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
     return {
-      [direction]: thumbOffsetPercent + '%'
+      [direction]: thumbOffsetPercent + '%',
     };
   }
 
@@ -295,7 +325,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         break;
       case 'touchstart':
       case 'touchmove':
-        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        currentPosition = !vertical
+          ? (event as TouchEvent).touches[0].clientX
+          : (event as TouchEvent).touches[0].clientY;
         break;
     }
     return currentPosition;
@@ -348,7 +380,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             this._getStyleUsingOffsetPercent(vertical, i)
           }
           key={i}
-        />
+        />,
       );
     }
     return ticks;
@@ -375,20 +407,20 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     this.setState(
       {
         value: roundedValue,
-        renderedValue
+        renderedValue,
       },
       () => {
         if (valueChanged && this.props.onChange) {
           this.props.onChange(this.state.value as number);
         }
-      }
+      },
     );
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     // Disable renderedValue override.
     this.setState({
-      renderedValue: undefined
+      renderedValue: undefined,
     });
 
     if (this.props.onChanged) {
@@ -404,6 +436,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     let diff: number | undefined = 0;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left):
       case KeyCodes.down:

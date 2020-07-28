@@ -19,7 +19,7 @@ export const PanelBasicExample: React.FunctionComponent = () => {
         // You MUST provide this prop! Otherwise screen readers will just say "button" with no label.
         closeButtonAriaLabel="Close"
       >
-        <span>Content goes here.</span>
+        <p>Content goes here.</p>
       </Panel>
     </div>
   );

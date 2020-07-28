@@ -33,10 +33,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
     role="navigation"
   >
     <div
-      className=
-          ms-Nav-group
-          is-expanded
-
+      className="ms-Nav-group is-expanded"
     >
       <div
         className=
@@ -202,7 +199,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -250,10 +246,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -368,7 +364,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           text-decoration: none;
                           text-overflow: ellipsis;
                           user-select: none;
-                          vertical-align: top;
                           white-space: nowrap;
                           width: 100%;
                         }
@@ -416,10 +411,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           color: #004578;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          border-color: transparent;
+                          border: 0px;
                         }
                         @media screen and (-ms-high-contrast: active){&:focus {
-                          border-color: WindowText;
+                          border: 1px solid WindowText;
                         }
                         .ms-Nav-compositeLink:hover & {
                           background-color: #f3f2f1;
@@ -432,6 +427,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                     onKeyUp={[Function]}
                     onMouseDown={[Function]}
                     onMouseUp={[Function]}
+                    rel="noopener noreferrer"
                     target="_blank"
                     title="Activity"
                   >
@@ -525,7 +521,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           text-decoration: none;
                           text-overflow: ellipsis;
                           user-select: none;
-                          vertical-align: top;
                           white-space: nowrap;
                           width: 100%;
                         }
@@ -563,11 +558,12 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           outline: 0px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          border-color: transparent;
+                          border-color: grayText;
+                          border: 0px;
                           color: grayText;
                         }
                         @media screen and (-ms-high-contrast: active){&:focus {
-                          border-color: WindowText;
+                          border: 1px solid WindowText;
                         }
                     data-is-focusable={false}
                     disabled={true}
@@ -638,7 +634,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               name="Documents"
             >
               <a
-                aria-label="Selected"
+                aria-current="page"
                 className=
                     ms-Button
                     ms-Button--action
@@ -670,7 +666,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -718,10 +713,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -744,6 +739,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
                 target="_blank"
                 title="Documents"
               >
@@ -832,7 +828,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -880,10 +875,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -896,6 +891,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
                 target="_blank"
                 title="Pages"
               >
@@ -989,7 +985,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -1027,11 +1022,12 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       outline: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border-color: grayText;
+                      border: 0px;
                       color: grayText;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                 data-is-focusable={false}
                 disabled={true}
@@ -1129,7 +1125,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -1177,10 +1172,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -1193,6 +1188,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
                 target="_blank"
                 title="Communication and Media"
               >
@@ -1281,7 +1277,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -1329,10 +1324,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     @media screen and (-ms-high-contrast: active){& {
-                      border-color: transparent;
+                      border: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus {
-                      border-color: WindowText;
+                      border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f3f2f1;
@@ -1345,6 +1340,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
                 target="_blank"
                 title="News"
               >
@@ -1387,7 +1383,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="News"
                     role="presentation"

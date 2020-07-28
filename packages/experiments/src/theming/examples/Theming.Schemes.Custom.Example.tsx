@@ -19,10 +19,9 @@ import {
   PrimaryButton,
   Stack,
   Toggle,
-  Text
+  Text,
 } from 'office-ui-fabric-react';
 
-// tslint:disable:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 
 import { ThemeProvider } from '@uifabric/foundation';
@@ -30,8 +29,8 @@ import { ThemeProvider } from '@uifabric/foundation';
 const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({
   root: {
     backgroundColor: theme.semanticColors.bodyBackground,
-    color: theme.semanticColors.bodyText
-  }
+    color: theme.semanticColors.bodyText,
+  },
 });
 
 const invertedPrimaryPalette: IPalette = {
@@ -86,7 +85,7 @@ const invertedPrimaryPalette: IPalette = {
   tealLight: '#00b294',
   greenDark: '#004b1c',
   green: '#107c10',
-  greenLight: '#bad80a'
+  greenLight: '#bad80a',
 };
 
 const invertedDefaultPalette: IPalette = {
@@ -139,7 +138,7 @@ const invertedDefaultPalette: IPalette = {
   tealLight: '#00b294',
   greenDark: '#004b1c',
   green: '#107c10',
-  greenLight: '#bad80a'
+  greenLight: '#bad80a',
 };
 
 const defaultTheme: ITheme = getTheme(true);
@@ -148,16 +147,16 @@ const invertedDefaultTheme: ITheme = createTheme({
   palette: invertedDefaultPalette,
   semanticColors: {
     bodyText: defaultTheme.palette.white,
-    bodyBackground: defaultTheme.palette.neutralPrimary
-  }
+    bodyBackground: defaultTheme.palette.neutralPrimary,
+  },
 });
 
 const invertedPrimaryTheme: ITheme = createTheme({
   palette: invertedPrimaryPalette,
   semanticColors: {
     bodyText: defaultTheme.palette.white,
-    bodyBackground: defaultTheme.palette.themePrimary
-  }
+    bodyBackground: defaultTheme.palette.themePrimary,
+  },
 });
 
 const schemeThemeCustom: ITheme = {
@@ -166,8 +165,8 @@ const schemeThemeCustom: ITheme = {
     default: defaultTheme,
     neutral: defaultTheme,
     soft: invertedPrimaryTheme,
-    strong: invertedDefaultTheme
-  }
+    strong: invertedDefaultTheme,
+  },
 };
 
 export interface IThemingExampleState {
@@ -180,7 +179,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
   public state: IThemingExampleState = {
     bodyToggle: false,
     sideToggle: false,
-    topToggle: false
+    topToggle: false,
   };
 
   public render(): JSX.Element {
@@ -208,7 +207,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
           <ThemeProvider scheme={sideScheme}>
             <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
               <Text>{sideCaption}</Text>
-              <Toggle offText={sideCaption} onText={sideCaption} onChange={this.toggleSide} />
+              <Toggle offText={sideCaption} onText={sideCaption} onChange={this._toggleSide} />
               <CollapsibleSectionRecursiveExample />
             </Stack>
           </ThemeProvider>
@@ -219,7 +218,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
               <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{topCaption}</Text>
-                  <Toggle offText={topCaption} onText={topCaption} onChange={this.toggleTop} />
+                  <Toggle offText={topCaption} onText={topCaption} onChange={this._toggleTop} />
                 </Stack>
                 <CommandBar items={items} overflowItems={overflowItems} farItems={farItems} />
               </Stack>
@@ -228,7 +227,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
               <Stack styles={regionStyles} verticalFill={true} padding={5}>
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{bodyCaption}</Text>
-                  <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this.toggleBody} />
+                  <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this._toggleBody} />
                 </Stack>
                 <ThemeProvider scheme="default">
                   <Stack.Item>
@@ -254,20 +253,21 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
     );
   }
 
-  private toggleBody = () => {
+  private _toggleBody = () => {
     this.setState((state: IThemingExampleState) => this.setState({ bodyToggle: !state.bodyToggle }));
   };
 
-  private toggleSide = () => {
+  private _toggleSide = () => {
     this.setState((state: IThemingExampleState) => this.setState({ sideToggle: !state.sideToggle }));
   };
 
-  private toggleTop = () => {
+  private _toggleTop = () => {
     this.setState((state: IThemingExampleState) => this.setState({ topToggle: !state.topToggle }));
   };
 }
 
-const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && item.name);
+// eslint-disable-next-line deprecation/deprecation
+const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && (item.text || item.name));
 const items: ICommandBarItemProps[] = [
   {
     key: 'newItem',
@@ -277,25 +277,45 @@ const items: ICommandBarItemProps[] = [
     subMenuProps: {
       items: [
         { key: 'emailMessage', name: 'Email message', iconProps: { iconName: 'Mail' } },
-        { key: 'calendarEvent', name: 'Calendar event', iconProps: { iconName: 'Calendar' } }
-      ]
-    }
+        { key: 'calendarEvent', name: 'Calendar event', iconProps: { iconName: 'Calendar' } },
+      ],
+    },
   },
-  { key: 'upload', name: 'Upload', iconProps: { iconName: 'Upload' }, href: 'https://dev.office.com/fabric', target: '_blank' },
+  {
+    key: 'upload',
+    name: 'Upload',
+    iconProps: { iconName: 'Upload' },
+    href: 'https://developer.microsoft.com/en-us/fluentui',
+    target: '_blank',
+  },
   { key: 'share', name: 'Share', iconProps: { iconName: 'Share' }, onClick: onCommandClick },
-  { key: 'download', name: 'Download', iconProps: { iconName: 'Download' }, onClick: onCommandClick }
+  { key: 'download', name: 'Download', iconProps: { iconName: 'Download' }, onClick: onCommandClick },
 ];
 
 const overflowItems: ICommandBarItemProps[] = [
   { key: 'move', name: 'Move to...', iconProps: { iconName: 'MoveToFolder' } },
   { key: 'copy', name: 'Copy to...', iconProps: { iconName: 'Copy' } },
-  { key: 'rename', name: 'Rename...', iconProps: { iconName: 'Edit' } }
+  { key: 'rename', name: 'Rename...', iconProps: { iconName: 'Edit' } },
 ];
 
 const farItems: ICommandBarItemProps[] = [
   { key: 'sort', name: 'Sort', ariaLabel: 'Sort', iconProps: { iconName: 'SortLines' }, onClick: onCommandClick },
-  { key: 'tile', name: 'Grid view', ariaLabel: 'Grid view', iconProps: { iconName: 'Tiles' }, iconOnly: true, onClick: onCommandClick },
-  { key: 'info', name: 'Info', ariaLabel: 'Info', iconProps: { iconName: 'Info' }, iconOnly: true, onClick: onCommandClick }
+  {
+    key: 'tile',
+    name: 'Grid view',
+    ariaLabel: 'Grid view',
+    iconProps: { iconName: 'Tiles' },
+    iconOnly: true,
+    onClick: onCommandClick,
+  },
+  {
+    key: 'info',
+    name: 'Info',
+    ariaLabel: 'Info',
+    iconProps: { iconName: 'Info' },
+    iconOnly: true,
+    onClick: onCommandClick,
+  },
 ];
 
 interface IDialogExampleProps {
@@ -308,32 +328,38 @@ interface IDialogExampleState {
 
 class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleState> {
   public state: IDialogExampleState = {
-    hideDialog: true
+    hideDialog: true,
   };
 
   public render(): JSX.Element {
     return (
       <div>
         <br />
-        <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text={this.props.buttonText} />
+        <DefaultButton
+          secondaryText="Opens the Sample Dialog"
+          onClick={this._showDialog}
+          text={this.props.buttonText}
+        />
         <Dialog
           hidden={this.state.hideDialog}
           onDismiss={this._closeDialog}
           dialogContentProps={{
             type: DialogType.largeHeader,
             title: 'All emails together',
-            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+            subText:
+              'Your Inbox has changed. No longer does it include favorites, ' +
+              'it is a singular destination for your emails.',
           }}
           modalProps={{
             isBlocking: false,
-            styles: { main: { maxWidth: 450 } }
+            styles: { main: { maxWidth: 450 } },
           }}
         >
           <ChoiceGroup
             options={[
               { key: 'A', text: 'Option A' },
               { key: 'B', text: 'Option B', checked: true },
-              { key: 'C', text: 'Option C', disabled: true }
+              { key: 'C', text: 'Option C', disabled: true },
             ]}
           />
           <DialogFooter>

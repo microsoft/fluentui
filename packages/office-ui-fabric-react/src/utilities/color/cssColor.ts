@@ -88,7 +88,7 @@ function _rgba(str?: string | null): IRGB | undefined {
         r: parts[0],
         g: parts[1],
         b: parts[2],
-        a: hasAlpha ? parts[3] * 100 : MAX_COLOR_ALPHA
+        a: hasAlpha ? parts[3] * 100 : MAX_COLOR_ALPHA,
       };
     }
   }
@@ -118,12 +118,12 @@ function _hsla(str: string): IRGB | undefined {
  * Otherwise returns undefined.
  */
 function _hex6(str: string): IRGB | undefined {
-  if ('#' === str[0] && 7 === str.length && /^#[\da-fA-F]{6}$/.test(str)) {
+  if (str[0] === '#' && str.length === 7 && /^#[\da-fA-F]{6}$/.test(str)) {
     return {
       r: parseInt(str.slice(1, 3), 16),
       g: parseInt(str.slice(3, 5), 16),
       b: parseInt(str.slice(5, 7), 16),
-      a: MAX_COLOR_ALPHA
+      a: MAX_COLOR_ALPHA,
     };
   }
 }
@@ -133,12 +133,12 @@ function _hex6(str: string): IRGB | undefined {
  * Otherwise returns undefined.
  */
 function _hex3(str: string): IRGB | undefined {
-  if ('#' === str[0] && 4 === str.length && /^#[\da-fA-F]{3}$/.test(str)) {
+  if (str[0] === '#' && str.length === 4 && /^#[\da-fA-F]{3}$/.test(str)) {
     return {
       r: parseInt(str[1] + str[1], 16),
       g: parseInt(str[2] + str[2], 16),
       b: parseInt(str[3] + str[3], 16),
-      a: MAX_COLOR_ALPHA
+      a: MAX_COLOR_ALPHA,
     };
   }
 }

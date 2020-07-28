@@ -12,28 +12,29 @@ const CheckboxIndeterminateExampleCode = require('!raw-loader!office-ui-fabric-r
 export const CheckboxPageProps: IDocPageProps = {
   title: 'Checkbox',
   componentName: 'Checkbox',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Checkbox',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Checkbox',
   examples: [
     {
       title: 'Basic Checkboxes',
       code: CheckboxBasicExampleCode,
-      view: <CheckboxBasicExample />
+      view: <CheckboxBasicExample />,
     },
     {
       title: 'Other Implementation Examples',
       code: CheckboxOtherExampleCode,
-      view: <CheckboxOtherExample />
+      view: <CheckboxOtherExample />,
     },
     {
       title: 'Indeterminate Checkboxes',
       code: CheckboxIndeterminateExampleCode,
-      view: <CheckboxIndeterminateExample />
-    }
+      view: <CheckboxIndeterminateExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxBestPractices.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

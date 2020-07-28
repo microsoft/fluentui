@@ -6,8 +6,6 @@ import { KeyCodes } from '../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
 import { ISearchBoxState, SearchBoxBase } from './SearchBox.base';
 
-// tslint:disable:jsx-no-lambda
-
 describe('SearchBox', () => {
   let component: renderer.ReactTestRenderer | undefined;
   let wrapper: ReactWrapper<ISearchBoxProps, ISearchBoxState, SearchBoxBase> | undefined;
@@ -34,9 +32,9 @@ describe('SearchBox', () => {
     wrapper = mount(
       <SearchBox
         clearButtonProps={{
-          onClick: () => (clickExecuted = true)
+          onClick: () => (clickExecuted = true),
         }}
-      />
+      />,
     );
 
     expect(wrapper.find('input').prop('value')).toEqual('');
@@ -76,9 +74,9 @@ describe('SearchBox', () => {
     wrapper = mount(
       <SearchBox
         iconProps={{
-          iconName: 'Filter'
+          iconName: 'Filter',
         }}
-      />
+      />,
     );
 
     const filterIcon = '';

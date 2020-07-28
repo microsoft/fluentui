@@ -10,7 +10,7 @@ export const TestImages = {
   documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
   documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
   iconOne: baseProductionCdnUrl + 'icon-one.png',
-  iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
+  iconPpt: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png',
   personaFemale: baseProductionCdnUrl + 'persona-female.png',
-  personaMale: baseProductionCdnUrl + 'persona-male.png'
+  personaMale: baseProductionCdnUrl + 'persona-male.png',
 };

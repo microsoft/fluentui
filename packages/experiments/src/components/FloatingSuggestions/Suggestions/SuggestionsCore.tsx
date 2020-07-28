@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { SuggestionsItem } from './SuggestionsItem';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
-// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 /**
@@ -22,13 +21,15 @@ function hasKey<T>(i: T): i is T & { key: string | number } {
 /**
  * Class when used with SuggestionsStore, renders a basic suggestions control
  */
-export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, {}> {
+export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>, {}> {
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T> | undefined;
-  protected _selectedElement: HTMLDivElement;
+  protected _selectedElement = React.createRef<HTMLDivElement>();
 
   constructor(suggestionsProps: ISuggestionsCoreProps<T>) {
     super(suggestionsProps);
+
+    initializeComponentRef(this);
     this.currentIndex = -1;
   }
 
@@ -77,7 +78,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
   }
 
   public get selectedElement(): HTMLDivElement | undefined {
-    return this._selectedElement;
+    return this._selectedElement.current || undefined;
   }
 
   public getCurrentItem(): ISuggestionModel<T> {
@@ -134,7 +135,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel
+      suggestionsContainerAriaLabel,
     } = this.props;
     let { suggestions } = this.props;
 
@@ -151,7 +152,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       >
         {suggestions.map((suggestion: ISuggestionModel<T>, index: number) => (
           <div
-            ref={this._resolveRef(suggestion.selected || index === this.currentIndex ? '_selectedElement' : '')}
+            ref={suggestion.selected || index === this.currentIndex ? this._selectedElement : undefined}
             key={hasKey(suggestion.item) ? suggestion.item.key : index}
             id={'sug-' + index}
             role="listitem"
@@ -175,8 +176,8 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
 
   // TODO get the element to scroll into view properly regardless of direction.
   public scrollSelected(): void {
-    if (this._selectedElement && this._selectedElement.scrollIntoView !== undefined) {
-      this._selectedElement.scrollIntoView(false);
+    if (this._selectedElement.current?.scrollIntoView !== undefined) {
+      this._selectedElement.current.scrollIntoView(false);
     }
   }
 

@@ -11,7 +11,7 @@ describe('memoizeFunction', () => {
 
   it('can return a cached result with a 2 arg function', () => {
     let _timesCalled = 0;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let combine = memoizeFunction((obj1: any, obj2: any) => obj1.val + obj2.val + ++_timesCalled);
     let objA = { val: 'a' };
     let objB = { val: 'b' };
@@ -49,8 +49,8 @@ describe('memoizeFunction', () => {
   it('can return a cached result with falsy args', () => {
     let _timesCalled = 0;
     let combine = memoizeFunction(
-      // tslint:disable-next-line:no-any
-      (obj1: any, obj2: any) => (obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (obj1: any, obj2: any) => (obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled,
     );
     let objA = { val: 'a' };
     let objB = { val: 'b' };

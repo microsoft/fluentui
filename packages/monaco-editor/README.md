@@ -51,12 +51,12 @@ This lightweight helper sets up the global `MonacoEnvironment` required for Mona
 
 #### Option B: Automatic using global
 
-Somewhere in a root file for your project (the Fabric projects do this in `index.html`), define a global variable `MonacoConfig` with the properties described above. Basic example:
+Somewhere in a root file for your project (the Fluent UI React projects do this in `index.html`), define a global variable `MonacoConfig` with the properties described above. Basic example:
 
 ```js
 window.MonacoConfig = {
   baseUrl: '.',
-  useMinified: false
+  useMinified: false,
 };
 ```
 

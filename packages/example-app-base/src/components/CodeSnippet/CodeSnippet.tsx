@@ -3,7 +3,7 @@ import { IStyleFunctionOrObject, ITheme, IStyle, styled, classNamesFunction, IRa
 import { NeutralColors } from '@uifabric/fluent-theme';
 import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 
-// tslint:disable no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/light').default;
 
 // Import languages from SyntaxHighlighter
@@ -12,7 +12,7 @@ const scss = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/scss
 const md = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/markdown').default;
 const bash = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/bash').default;
 const xml = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/xml').default;
-// tslint:enable no-any
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Import SyntaxHighlighter styles
 const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/hljs/github').default;
@@ -29,12 +29,12 @@ SyntaxHighlighter.registerLanguage('html', xml);
 style.hljs = {
   ...baseCodeStyle,
   padding: 8,
-  overflowX: 'auto'
+  overflowX: 'auto',
 };
 // Darken comment color for accessibility
 style['hljs-comment'] = style['hljs-quote'] = {
   color: NeutralColors.gray120,
-  fontStyle: 'italic'
+  fontStyle: 'italic',
 };
 
 export interface ICodeSnippetProps {
@@ -60,22 +60,26 @@ const languageMapping: { [key: string]: string } = {
   jsx: 'typescript',
   shell: 'bash',
   md: 'markdown',
-  css: 'scss'
+  css: 'scss',
 };
 
-const CodeSnippetBase: React.StatelessComponent<ICodeSnippetProps> = props => {
+const CodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = props => {
   const classNames = getClassNames(props.styles, { className: props.className });
   return (
-    <SyntaxHighlighter language={languageMapping[props.language!] || props.language || 'text'} className={classNames.root} style={style}>
+    <SyntaxHighlighter
+      language={languageMapping[props.language!] || props.language || 'text'}
+      className={classNames.root}
+      style={style}
+    >
       {props.children}
     </SyntaxHighlighter>
   );
 };
 
-export const CodeSnippet: React.StatelessComponent<ICodeSnippetProps> = styled<
+export const CodeSnippet: React.FunctionComponent<ICodeSnippetProps> = styled<
   ICodeSnippetProps,
   ICodeSnippetStyleProps,
   ICodeSnippetStyles
 >(CodeSnippetBase, getStyles, undefined, {
-  scope: 'CodeSnippet'
+  scope: 'CodeSnippet',
 });

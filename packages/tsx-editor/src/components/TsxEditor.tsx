@@ -53,7 +53,7 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
     if (hasLoadedTypes && modelRef.current) {
       onChangeRef.current!(modelRef.current.getValue());
     }
-  }, [onChangeRef, hasLoadedTypes, modelRef.current]);
+  }, [onChangeRef, hasLoadedTypes, modelRef]);
 
   return (
     <Editor
@@ -71,7 +71,8 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
   React.useEffect(() => {
     setHasLoadedGlobals(false);
 
-    const win = getWindow() as Window & { [key: string]: any }; // tslint:disable-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const win = getWindow() as Window & { [key: string]: any };
     if (!win.React) {
       win.React = React;
     }
@@ -81,7 +82,7 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
     Promise.all(
       supportedPackages.map(group => {
         if (!win[group.globalName]) {
-          // tslint:disable:no-any
+          /* eslint-disable @typescript-eslint/no-explicit-any */
           return new Promise<any>(resolve => {
             // handle either promise or callback function
             const globalResult = group.loadGlobal(resolve);
@@ -89,9 +90,11 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
               globalResult.then(resolve);
             }
           }).then((globalModule: any) => (win[group.globalName] = globalModule));
-          // tslint:enable:no-any
+          /* eslint-enable @typescript-eslint/no-explicit-any */
+        } else {
+          return undefined;
         }
-      })
+      }),
     ).then(() => setHasLoadedGlobals(true));
   }, [supportedPackages]);
   return hasLoadedGlobals;
@@ -115,7 +118,7 @@ function _useCompilerOptions(compilerOptions: ICompilerOptions | undefined): voi
       module: typescript.ModuleKind.ESNext,
       baseUrl: filePrefix,
       // This is updated after types are loaded, so preserve the old setting
-      paths: oldCompilerOptions.paths
+      paths: oldCompilerOptions.paths,
     });
   }, [compilerOptions]);
 }
@@ -152,10 +155,13 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
         // raw-loader 0.x exports a single string, and later versions export a default.
         // The package.json specifies 0.x, but handle either just in case.
         const result: string | { default: string } = require('!raw-loader!@types/react/index.d.ts');
-        typescriptDefaults.addExtraLib(typeof result === 'string' ? result : result.default, `${typesPrefix}/react/index.d.ts`);
+        typescriptDefaults.addExtraLib(
+          typeof result === 'string' ? result : result.default,
+          `${typesPrefix}/react/index.d.ts`,
+        );
         resolve();
-      })
-    )
+      }),
+    ),
   );
 
   // Load each package and add it to TS (and save path mappings to add to TS later)
@@ -179,7 +185,7 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
           // api-extractor rollups don't do this, but other packages' typings might)
           // https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping
           pathMappings[packageName + '/lib/*'] = ['*', indexPath];
-        })
+        }),
       );
     }
   }
@@ -188,7 +194,7 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
     // Add the path mappings
     typescriptDefaults.setCompilerOptions({
       ...typescriptDefaults.getCompilerOptions(),
-      paths: pathMappings
+      paths: pathMappings,
     });
   });
 }

@@ -7,7 +7,7 @@ const GlobalClassNames = {
   itemContent: 'ms-PickerItem-content',
   removeButton: 'ms-PickerItem-removeButton',
   isSelected: 'is-selected',
-  isInvalid: 'is-invalid'
+  isInvalid: 'is-invalid',
 };
 
 const REMOVE_BUTTON_SIZE = 24;
@@ -26,12 +26,12 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         color: palette.white,
         selectors: {
           ':hover': {
-            color: palette.white
+            color: palette.white,
           },
           [HighContrastSelector]: {
-            color: 'HighlightText'
-          }
-        }
+            color: 'HighlightText',
+          },
+        },
       },
     ((invalid && !selected) || (invalid && selected && disabled)) && {
       color: palette.redDark,
@@ -39,29 +39,29 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       selectors: {
         [`.${classNames.root}:hover &`]: {
           // override Persona root:hover selector
-          color: palette.redDark
-        }
-      }
+          color: palette.redDark,
+        },
+      },
     },
     invalid &&
       selected &&
       !disabled && {
         color: palette.white,
-        borderBottom: `2px dotted ${palette.white}`
+        borderBottom: `2px dotted ${palette.white}`,
       },
     disabled && {
       selectors: {
         [HighContrastSelector]: {
-          color: 'GrayText'
-        }
-      }
-    }
+          color: 'GrayText',
+        },
+      },
+    },
   ];
 
   const personaCoinInitialsStyles: IStyle = [
     invalid && {
-      fontSize: fonts.xLarge.fontSize
-    }
+      fontSize: fonts.xLarge.fontSize,
+    },
   ];
 
   return {
@@ -81,10 +81,10 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         minWidth: 0,
         selectors: {
           ':hover': {
-            background: !selected && !disabled ? palette.neutralLight : ''
+            background: !selected && !disabled ? palette.neutralLight : '',
           },
-          [HighContrastSelector]: [{ border: '1px solid WindowText' }, disabled && { borderColor: 'GrayText' }]
-        }
+          [HighContrastSelector]: [{ border: '1px solid WindowText' }, disabled && { borderColor: 'GrayText' }],
+        },
       },
       selected &&
         !disabled && [
@@ -95,18 +95,18 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
               [HighContrastSelector]: {
                 borderColor: 'HighLight',
                 background: 'Highlight',
-                MsHighContrastAdjust: 'none'
-              }
-            }
-          }
+                MsHighContrastAdjust: 'none',
+              },
+            },
+          },
         ],
       invalid && [classNames.isInvalid],
       invalid &&
         selected &&
         !disabled && {
-          background: palette.redDark
+          background: palette.redDark,
         },
-      className
+      className,
     ],
     itemContent: [
       classNames.itemContent,
@@ -116,8 +116,8 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         // CSS below is needed for IE 11 to properly truncate long persona names in the picker
         // and to clip the presence indicator (in all browsers)
         maxWidth: '100%',
-        overflow: 'hidden'
-      }
+        overflow: 'hidden',
+      },
     ],
     removeButton: [
       classNames.removeButton,
@@ -130,9 +130,9 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         selectors: {
           ':hover': {
             background: palette.neutralTertiaryAlt,
-            color: palette.neutralDark
-          }
-        }
+            color: palette.neutralDark,
+          },
+        },
       },
       selected && [
         {
@@ -140,43 +140,43 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
           selectors: {
             ':hover': {
               color: palette.white,
-              background: palette.themeDark
+              background: palette.themeDark,
             },
             ':active': {
               color: palette.white,
-              background: palette.themeDarker
+              background: palette.themeDarker,
             },
             [HighContrastSelector]: {
-              color: 'HighlightText'
-            }
-          }
+              color: 'HighlightText',
+            },
+          },
         },
         invalid && {
           selectors: {
             ':hover': {
-              background: palette.red
+              background: palette.red,
             },
             ':active': {
-              background: palette.redDark
-            }
-          }
-        }
+              background: palette.redDark,
+            },
+          },
+        },
       ],
       disabled && {
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: semanticColors.buttonText
-          }
-        }
-      }
+            color: semanticColors.buttonText,
+          },
+        },
+      },
     ],
     subComponentStyles: {
       persona: {
-        primaryText: personaPrimaryTextStyles
+        primaryText: personaPrimaryTextStyles,
       },
       personaCoin: {
-        initials: personaCoinInitialsStyles
-      }
-    }
+        initials: personaCoinInitialsStyles,
+      },
+    },
   };
 }

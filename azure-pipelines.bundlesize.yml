@@ -15,11 +15,8 @@ jobs:
       - script: yarn buildto test-bundles
         displayName: yarn build to test-bundles
 
-      - script: yarn workspace test-bundles bundle
+      - script: yarn workspace test-bundles bundle:size
         displayName: yarn bundle test-bundles
-
-      - script: yarn workspace office-ui-fabric-react just webpack
-        displayName: yarn bundle OUFR
 
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
@@ -30,30 +27,18 @@ jobs:
           PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact ActivityItem stats.json file for comparing performance'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist/office-ui-fabric-react-ActivityItem.stats.json'
-          ArtifactName: activityitemstatsdrop
-
-      - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact dist folder upon build for debug'
         inputs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop
 
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact office-ui-fabric-react.js from dist folder'
+  - job: lightrail
+    pool: server
+    dependsOn: build
+    steps:
+      - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
+        displayName: 'Size Auditor Check on LightRail'
         inputs:
-          PathtoPublish: 'packages/office-ui-fabric-react/dist/office-ui-fabric-react.js'
-          ArtifactName: oufrdrop
-
-  # - job: lightrail
-  #   pool: server
-  #   dependsOn: build
-  #   steps:
-  #     - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
-  #       displayName: 'Size Auditor Check on LightRail'
-  #       inputs:
-  #         connectedServiceName: lowimpact
-  #         sourceVersionMessage: '$(Build.SourceVersionMessage)'
-  #         sourceRepositoryUrl: 'https://github.com/OfficeDev/office-ui-fabric-react'
+          connectedServiceName: lowimpact
+          sourceVersionMessage: '$(Build.SourceVersionMessage)'
+          sourceRepositoryUrl: 'https://github.com/microsoft/fluentui'

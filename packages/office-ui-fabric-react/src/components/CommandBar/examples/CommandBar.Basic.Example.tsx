@@ -30,40 +30,40 @@ const _items: ICommandBarItemProps[] = [
           key: 'emailMessage',
           text: 'Email message',
           iconProps: { iconName: 'Mail' },
-          ['data-automation-id']: 'newEmailButton' // optional
+          ['data-automation-id']: 'newEmailButton', // optional
         },
         {
           key: 'calendarEvent',
           text: 'Calendar event',
-          iconProps: { iconName: 'Calendar' }
-        }
-      ]
-    }
+          iconProps: { iconName: 'Calendar' },
+        },
+      ],
+    },
   },
   {
     key: 'upload',
     text: 'Upload',
     iconProps: { iconName: 'Upload' },
-    href: 'https://dev.office.com/fabric'
+    href: 'https://developer.microsoft.com/en-us/fluentui',
   },
   {
     key: 'share',
     text: 'Share',
     iconProps: { iconName: 'Share' },
-    onClick: () => console.log('Share')
+    onClick: () => console.log('Share'),
   },
   {
     key: 'download',
     text: 'Download',
     iconProps: { iconName: 'Download' },
-    onClick: () => console.log('Download')
-  }
+    onClick: () => console.log('Download'),
+  },
 ];
 
 const _overflowItems: ICommandBarItemProps[] = [
   { key: 'move', text: 'Move to...', onClick: () => console.log('Move to'), iconProps: { iconName: 'MoveToFolder' } },
   { key: 'copy', text: 'Copy to...', onClick: () => console.log('Copy to'), iconProps: { iconName: 'Copy' } },
-  { key: 'rename', text: 'Rename...', onClick: () => console.log('Rename'), iconProps: { iconName: 'Edit' } }
+  { key: 'rename', text: 'Rename...', onClick: () => console.log('Rename'), iconProps: { iconName: 'Edit' } },
 ];
 
 const _farItems: ICommandBarItemProps[] = [
@@ -74,7 +74,7 @@ const _farItems: ICommandBarItemProps[] = [
     ariaLabel: 'Grid view',
     iconOnly: true,
     iconProps: { iconName: 'Tiles' },
-    onClick: () => console.log('Tiles')
+    onClick: () => console.log('Tiles'),
   },
   {
     key: 'info',
@@ -83,6 +83,6 @@ const _farItems: ICommandBarItemProps[] = [
     ariaLabel: 'Info',
     iconOnly: true,
     iconProps: { iconName: 'Info' },
-    onClick: () => console.log('Info')
-  }
+    onClick: () => console.log('Info'),
+  },
 ];

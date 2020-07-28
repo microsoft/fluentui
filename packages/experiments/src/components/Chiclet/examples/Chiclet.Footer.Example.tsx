@@ -21,19 +21,19 @@ const footerStyle = mergeStyles({
   justifyContent: 'flex-start',
   height: 36,
   width: '100%',
-  bottom: 0
+  bottom: 0,
 });
 
 const activitiesStyle = mergeStyles({
   paddingLeft: 16,
   paddingBottom: 8,
-  fontWeight: FontWeights.semibold
+  fontWeight: FontWeights.semibold,
 });
 
 const actionsStyle = mergeStyles({
   display: 'flex',
   fontSize: 16,
-  marginLeft: 'auto'
+  marginLeft: 'auto',
 });
 
 const actionStyle = mergeStyles({
@@ -41,21 +41,21 @@ const actionStyle = mergeStyles({
   width: 32,
   height: 36,
   backgroundColor: 'white',
-  color: '#0078d7'
+  color: '#0078d7',
 });
 
 export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
   const footerButtonProps: IButtonProps[] = [
     { iconProps: { iconName: 'More' } },
     { iconProps: { iconName: 'Save' } },
-    { iconProps: { iconName: 'Share' } }
+    { iconProps: { iconName: 'Share' } },
   ];
   const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
   return (
     <Chiclet
       url={SAMPLE_URL}
-      image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
+      image="https://static2.sharepointonline.com/files/fabric/assets/item-types/96/docx.svg"
       title="Quarterly Results.docx"
       size={ChicletSize.medium}
       footer={footer}
@@ -63,6 +63,7 @@ export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
   );
 };
 
+// eslint-disable-next-line deprecation/deprecation
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;

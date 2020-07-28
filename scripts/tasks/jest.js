@@ -6,13 +6,17 @@ const path = require('path');
 exports.jest = () =>
   jestTask({
     ...(process.env.TF_BUILD && { runInBand: true }),
-    ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined)
+    ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined),
+    env: {
+      ...process.env,
+      NODE_ENV: 'test',
+    },
   });
 
 exports.jestDom = () =>
   jestTask({
     runInBand: true,
-    config: path.join(process.cwd(), 'jest.dom.config.js')
+    config: path.join(process.cwd(), 'jest.dom.config.js'),
   });
 
 exports.jestWatch = () => {
@@ -21,12 +25,12 @@ exports.jestWatch = () => {
     ...(process.env.TF_BUILD && { runInBand: true }),
     ...(args.u || args.updateSnapshot ? { updateSnapshot: true } : undefined),
     watch: true,
-    _: ['-i', ...(args._ || []).filter(arg => arg !== 'jest-watch')]
+    _: ['-i', ...(args._ || []).filter(arg => arg !== 'jest-watch')],
   });
 };
 
 exports.jestDom = () =>
   jestTask({
     runInBand: true,
-    config: path.join(process.cwd(), 'jest.dom.config.js')
+    config: path.join(process.cwd(), 'jest.dom.config.js'),
   });

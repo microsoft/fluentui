@@ -15,7 +15,7 @@ storiesOf('Pivot', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => (
     <Pivot>
@@ -38,7 +38,7 @@ storiesOf('Pivot', module)
         <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1} />
       </Pivot>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Large', () => (
     <Pivot linkSize={PivotLinkSize.large}>
@@ -57,7 +57,7 @@ storiesOf('Pivot', module)
         <PivotItem headerText="Biz" />
       </Pivot>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Tabs large', () => (
     <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>

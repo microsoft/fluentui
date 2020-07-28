@@ -9,6 +9,8 @@ import { SelectionMode, IObjectWithKey } from './interfaces';
 
 import { KeyCodes, EventGroup } from '../../Utilities';
 
+const SELECTABLE_ITEMS = [{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }, { key: 'e' }];
+
 let _selection: Selection;
 let _selectionZone: any;
 let _componentElement: Element;
@@ -22,20 +24,23 @@ let _noSelect1: Element;
 let _select1: Element;
 let _toggle2: Element;
 let _surface3: Element;
+let _invoke4: Element;
 
 let _onItemInvokeCalled: number;
 let _lastItemInvoked: any;
 
-function _initializeSelection(selectionMode = SelectionMode.multiple): void {
+function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTouchInvocationTarget?: boolean }): void {
+  const { selectionMode = SelectionMode.multiple, enableTouchInvocationTarget = false } = props || {};
+
   _selection = new Selection();
-  _selection.setItems([{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
+  _selection.setItems(SELECTABLE_ITEMS);
   _selectionZone = ReactTestUtils.renderIntoDocument(
     <SelectionZone
       selection={_selection}
       selectionMode={selectionMode}
       disableAutoSelectOnInputElements={true}
       enterModalOnTouch={true}
-      // tslint:disable-next-line:jsx-no-lambda
+      enableTouchInvocationTarget={enableTouchInvocationTarget}
       onItemInvoked={(item: IObjectWithKey) => {
         _onItemInvokeCalled++;
         _lastItemInvoked = item;
@@ -54,7 +59,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple): void {
         </button>
       </div>
 
-      <div id="surface1" data-selection-index="1">
+      <div id="surface1" data-selection-index="1" data-selection-touch-invoke={true}>
         <button id="toggle1" data-selection-toggle={true}>
           Toggle
         </button>
@@ -74,7 +79,11 @@ function _initializeSelection(selectionMode = SelectionMode.multiple): void {
       </div>
 
       <div id="surface3" data-selection-index="3" />
-    </SelectionZone>
+
+      <div id="invoke4" data-selection-index="4" data-selection-touch-invoke={true}>
+        Touch Invoke
+      </div>
+    </SelectionZone>,
   );
 
   _componentElement = ReactDOM.findDOMNode(_selectionZone) as Element;
@@ -88,12 +97,13 @@ function _initializeSelection(selectionMode = SelectionMode.multiple): void {
   _select1 = _componentElement.querySelector('#select1')!;
   _toggle2 = _componentElement.querySelector('#toggle2')!;
   _surface3 = _componentElement.querySelector('#surface3')!;
+  _invoke4 = _componentElement.querySelector('#invoke4')!;
 
   _onItemInvokeCalled = 0;
   _lastItemInvoked = undefined;
 }
 
-describe('SelectionZone', () => {
+describe('SelectionZone - disabled touch targets', () => {
   beforeEach(() => _initializeSelection());
 
   it('toggles an item on click of toggle element', () => {
@@ -129,6 +139,7 @@ describe('SelectionZone', () => {
   it('does nothing with mousedown of invoke when item is selected already', () => {
     // Mousedown on an item that's already selected should do nothing.
     _selection.setAllSelected(true);
+
     ReactTestUtils.Simulate.mouseDown(_invoke0);
     expect(_selection.isAllSelected()).toEqual(true);
   });
@@ -163,14 +174,16 @@ describe('SelectionZone', () => {
   });
 
   it('toggles all on toggle-all clicks', () => {
+    const selectableItemsCount = SELECTABLE_ITEMS.length;
+
     _simulateClick(_toggleAll);
-    expect(_selection.getSelectedCount()).toEqual(4);
+    expect(_selection.getSelectedCount()).toEqual(selectableItemsCount);
 
     _simulateClick(_toggle1);
-    expect(_selection.getSelectedCount()).toEqual(3);
+    expect(_selection.getSelectedCount()).toEqual(selectableItemsCount - 1);
 
     _simulateClick(_toggleAll);
-    expect(_selection.getSelectedCount()).toEqual(4);
+    expect(_selection.getSelectedCount()).toEqual(selectableItemsCount);
 
     _simulateClick(_toggleAll);
     expect(_selection.getSelectedCount()).toEqual(0);
@@ -188,13 +201,15 @@ describe('SelectionZone', () => {
   });
 
   it('toggles by ctrl clicking a surface', () => {
+    const selectableItemsCount = SELECTABLE_ITEMS.length;
+
     _simulateClick(_toggleAll);
-    expect(_selection.getSelectedCount()).toEqual(4);
+    expect(_selection.getSelectedCount()).toEqual(selectableItemsCount);
 
     _simulateClick(_surface1, {
-      ctrlKey: true
+      ctrlKey: true,
     });
-    expect(_selection.getSelectedCount()).toEqual(3);
+    expect(_selection.getSelectedCount()).toEqual(selectableItemsCount - 1);
   });
 
   it('selects all on ctrl-a', () => {
@@ -317,10 +332,30 @@ describe('SelectionZone', () => {
     expect(_selection.isIndexSelected(0)).toEqual(true);
     expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
   });
+
+  describe('does not invoke touch targets', () => {
+    it('when touch target wraps generic target', () => {
+      EventGroup.raise(document.body, 'touchstart', {}, true);
+
+      ReactTestUtils.Simulate.click(_surface1);
+      expect(_onItemInvokeCalled).toEqual(0);
+    });
+
+    it('when touch target does not wrap generic target', () => {
+      EventGroup.raise(document.body, 'touchstart', {}, true);
+
+      ReactTestUtils.Simulate.click(_invoke4);
+      expect(_onItemInvokeCalled).toEqual(0);
+    });
+  });
 });
 
 describe('SelectionZone - SelectionMode.none', () => {
-  beforeEach(() => _initializeSelection(SelectionMode.none));
+  beforeEach(() =>
+    _initializeSelection({
+      selectionMode: SelectionMode.none,
+    }),
+  );
 
   it('does not select an item when selection mode is SelectionMode.none', () => {
     ReactTestUtils.Simulate.mouseDown(_surface0);
@@ -338,6 +373,58 @@ describe('SelectionZone - SelectionMode.none', () => {
     ReactTestUtils.Simulate.doubleClick(_surface0);
     expect(_onItemInvokeCalled).toEqual(1);
     expect(_lastItemInvoked.key).toEqual('a');
+  });
+});
+
+describe('SelectionZone - enabled touch targets', () => {
+  beforeEach(() =>
+    _initializeSelection({
+      enableTouchInvocationTarget: true,
+    }),
+  );
+
+  it('still invokes generic targets on non-touch click', () => {
+    _simulateClick(_invoke0);
+    expect(_onItemInvokeCalled).toEqual(1);
+    expect(_lastItemInvoked.key).toEqual('a');
+  });
+
+  it('invokes generic targets on touch click', () => {
+    EventGroup.raise(document.body, 'touchstart', {}, true);
+
+    ReactTestUtils.Simulate.click(_invoke0);
+    expect(_onItemInvokeCalled).toEqual(1);
+    expect(_lastItemInvoked.key).toEqual('a');
+  });
+
+  describe('does not invoke touch targets when not using touch', () => {
+    it('when touch target wraps generic target', () => {
+      ReactTestUtils.Simulate.click(_surface1);
+      expect(_onItemInvokeCalled).toEqual(0);
+    });
+
+    it('when touch target does not wrap generic target', () => {
+      ReactTestUtils.Simulate.click(_invoke4);
+      expect(_onItemInvokeCalled).toEqual(0);
+    });
+  });
+
+  describe('does invoke touch targets', () => {
+    it('when touch target wraps generic target', () => {
+      EventGroup.raise(document.body, 'touchstart', {}, true);
+
+      ReactTestUtils.Simulate.click(_surface1);
+      expect(_onItemInvokeCalled).toEqual(1);
+      expect(_lastItemInvoked.key).toEqual('b');
+    });
+
+    it('when touch target does not wrap generic target', () => {
+      EventGroup.raise(document.body, 'touchstart', {}, true);
+
+      ReactTestUtils.Simulate.click(_invoke4);
+      expect(_onItemInvokeCalled).toEqual(1);
+      expect(_lastItemInvoked.key).toEqual('e');
+    });
   });
 });
 

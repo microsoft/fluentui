@@ -11,7 +11,7 @@ const REACT_LIFECYCLE_EXCLUSIONS = [
   'getSnapshotBeforeUpdate',
   'UNSAFE_componentWillUpdate',
   'componentDidUpdate',
-  'componentWillUnmount'
+  'componentWillUnmount',
 ];
 
 /**
@@ -24,11 +24,11 @@ const REACT_LIFECYCLE_EXCLUSIONS = [
  * @returns An array of names of methods that were hoisted.
  */
 export function hoistMethods(
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   destination: any,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   source: any,
-  exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS
+  exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS,
 ): string[] {
   let hoisted: string[] = [];
   for (let methodName in source) {
@@ -38,11 +38,10 @@ export function hoistMethods(
       (!exclusions || exclusions.indexOf(methodName) === -1)
     ) {
       hoisted.push(methodName);
-      /* tslint:disable:no-function-expression */
-      destination[methodName] = function(): void {
-        source[methodName].apply(source, arguments);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      destination[methodName] = function(...args: any[]): void {
+        source[methodName](...args);
       };
-      /* tslint:enable */
     }
   }
 
@@ -56,7 +55,7 @@ export function hoistMethods(
  * @param source - The source object upon which methods were hoisted.
  * @param methodNames - An array of method names to unhoist.
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function unhoistMethods(source: any, methodNames: string[]): void {
   methodNames.forEach((methodName: string) => delete source[methodName]);
 }

@@ -1,6 +1,13 @@
-import { IVerticalPersonaComponent, IVerticalPersonaStylesReturnType, IVerticalPersonaTokenReturnType } from './VerticalPersona.types';
+import {
+  IVerticalPersonaComponent,
+  IVerticalPersonaStylesReturnType,
+  IVerticalPersonaTokenReturnType,
+} from './VerticalPersona.types';
 
-export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props, theme): IVerticalPersonaTokenReturnType => {
+export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (
+  props,
+  theme,
+): IVerticalPersonaTokenReturnType => {
   return {
     verticalPersonaWidth: 122,
     // TODO: typing exposed this error, ask Mark what it should be?
@@ -11,11 +18,15 @@ export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props
     primaryTextFontWeight: 600,
     secondaryTextPaddingTop: '6px',
     secondaryTextFontSize: '12px',
-    secondaryTextFontWeight: 300
+    secondaryTextFontWeight: 300,
   };
 };
 
-export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props, theme, tokens): IVerticalPersonaStylesReturnType => {
+export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (
+  props,
+  theme,
+  tokens,
+): IVerticalPersonaStylesReturnType => {
   return {
     root: {
       display: 'flex',
@@ -24,7 +35,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       justifyContent: 'flex-start',
       width: `${tokens.verticalPersonaWidth}px`,
       padding: `0 ${tokens.horizontalTextPadding}px`,
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
     },
     primaryText: {
       width: '100%',
@@ -36,7 +47,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       textAlign: 'center',
       whiteSpace: 'initial',
       wordBreak: 'break-word',
-      wordWrap: 'break-word'
+      wordWrap: 'break-word',
     },
     secondaryText: {
       width: '100%',
@@ -48,7 +59,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       whiteSpace: 'initial',
       color: theme.palette.neutralSecondary,
       wordBreak: 'break-word',
-      wordWrap: 'break-word'
-    }
+      wordWrap: 'break-word',
+    },
   };
 };

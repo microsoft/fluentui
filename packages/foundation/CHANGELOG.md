@@ -1,7 +1,64 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 07 Nov 2019 12:26:32 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [7.7.38](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.38)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.7.35..@uifabric/foundation_v7.7.38)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14097](https://github.com/microsoft/fluentui/pull/14097) by elcraig@microsoft.com)
+
+## [7.7.10](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.10)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.7.0..@uifabric/foundation_v7.7.10)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.7.0)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.5.25..@uifabric/foundation_v7.7.0)
+
+### Minor changes
+
+- Fixing rtl customizer scenarios in Foundation components. ([PR #12649](https://github.com/microsoft/fluentui/pull/12649) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.5.23
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.5.22
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.5.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.5.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
 ## 7.5.0
 Thu, 07 Nov 2019 12:26:32 GMT
 
@@ -312,4 +369,3 @@ Mon, 09 Jul 2018 18:08:32 GMT
 ### Patches
 
 - Improve typing consistency.
-

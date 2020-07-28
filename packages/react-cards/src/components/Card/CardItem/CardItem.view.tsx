@@ -5,7 +5,7 @@ import { ICardItemComponent, ICardItemProps, ICardItemSlots } from './CardItem.t
 
 export const CardItemView: ICardItemComponent['view'] = props => {
   const Slots = getSlots<ICardItemProps, ICardItemSlots>(props, {
-    root: Stack.Item
+    root: Stack.Item,
   });
 
   return <Slots.root {...props} />;

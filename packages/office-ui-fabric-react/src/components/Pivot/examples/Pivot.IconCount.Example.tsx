@@ -5,7 +5,7 @@ import { PivotItem, IPivotItemProps, Pivot } from 'office-ui-fabric-react/lib/Pi
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
-  root: { marginTop: 10 }
+  root: { marginTop: 10 },
 };
 
 export const PivotIconCountExample: React.FunctionComponent = () => {

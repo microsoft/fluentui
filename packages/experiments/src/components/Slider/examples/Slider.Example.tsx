@@ -6,27 +6,27 @@ export interface ISliderBasicExampleState {
   value: number;
 }
 const stackTokens: IStackTokens = { childrenGap: 30 };
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export class SliderExample extends React.Component<{}, ISliderBasicExampleState> {
   public state: ISliderBasicExampleState = { value: 0 };
   public render(): JSX.Element {
     const marks = [
       {
         value: 0,
-        label: '0°C'
+        label: '0°C',
       },
       {
         value: 30,
-        label: '30°C'
+        label: '30°C',
       },
       {
         value: 80,
-        label: '80°C'
+        label: '80°C',
       },
       {
         value: 100,
-        label: '100°C'
-      }
+        label: '100°C',
+      },
     ];
     return (
       <Stack tokens={stackTokens} styles={{ root: { maxWidth: 300 } }}>
@@ -68,7 +68,12 @@ export class SliderExample extends React.Component<{}, ISliderBasicExampleState>
           onChange={(value: number) => this.setState({ value })}
           showValue={true}
         />
-        <Slider label="Example with formatted value" max={100} valueFormat={(value: number) => `${value}%`} showValue={true} />
+        <Slider
+          label="Example with formatted value"
+          max={100}
+          valueFormat={(value: number) => `${value}%`}
+          showValue={true}
+        />
         <Slider label="Origin from zero" min={-5} max={5} step={1} defaultValue={2} showValue originFromZero />
       </Stack>
     );

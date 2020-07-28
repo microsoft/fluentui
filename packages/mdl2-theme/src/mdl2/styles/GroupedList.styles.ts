@@ -8,18 +8,18 @@ export const GroupHeaderStyles = (props: IGroupHeaderStyleProps): Partial<IGroup
 
   return {
     groupHeaderContainer: {
-      height: finalHeight
+      height: finalHeight,
     },
     check: {
-      height: finalHeight
+      height: finalHeight,
     },
     expand: {
       height: finalHeight,
-      fontSize: compact ? fonts.medium.fontSize : 18
+      fontSize: compact ? fonts.medium.fontSize : 18,
     },
     title: {
       fontSize: compact ? fonts.large.fontSize : fonts.xLarge.fontSize,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   };
 };

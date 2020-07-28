@@ -81,6 +81,9 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
         htmlFor="input1"
         id="Label0"
       >
@@ -92,9 +95,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
 
           {
             background-color: #f3f2f1;
-            border-color: #f3f2f1;
-            border-radius: 2px;
-            border: 1px solid #605e5c;
             box-sizing: border-box;
             color: #a19f9d;
             cursor: default;
@@ -103,6 +103,19 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             min-width: 86px;
             pointer-events: none;
             position: relative;
+          }
+          &:after {
+            border-color: #f3f2f1;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
           }
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
@@ -119,7 +132,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             ms-spinButton-input
             {
               background-color: #f3f2f1;
-              border-color: #f3f2f1;
               border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
@@ -138,7 +150,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 8px;
+              padding-left: 9px;
               padding-right: 8px;
               padding-top: 0;
               pointer-events: none;
@@ -146,10 +158,14 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               user-select: text;
               white-space: nowrap;
             }
+            &:after {
+              border-color: #f3f2f1;
+            }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
         data-lpignore={true}
+        disabled={true}
         id="input1"
         onBlur={[Function]}
         onChange={[Function]}
@@ -157,7 +173,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
         onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        readOnly={true}
         role="spinbutton"
         type="text"
         value="0"
@@ -167,12 +182,14 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
 
             {
               background-color: #f3f2f1;
-              border-color: #f3f2f1;
               color: #a19f9d;
               cursor: default;
               display: block;
               height: 100%;
               pointer-events: none;
+            }
+            &:after {
+              border-color: #f3f2f1;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -212,7 +229,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 23px;
               }
               &::-moz-focus-inner {
@@ -310,7 +326,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
@@ -358,7 +373,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 23px;
               }
               &::-moz-focus-inner {
@@ -456,7 +470,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"

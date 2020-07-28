@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/icons",
-  "version": "7.3.0",
-  "description": "Office UI Fabric icon set.",
+  "version": "7.3.65",
+  "description": "Fluent UI React icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [
@@ -10,7 +10,7 @@
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -24,13 +24,12 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
+    "@fluentui/eslint-plugin": "^0.53.1",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.2",
-    "@uifabric/styling": "^7.9.0",
-    "tslib": "^1.7.1"
+    "@uifabric/set-version": "^7.0.18",
+    "@uifabric/styling": "^7.14.5",
+    "tslib": "^1.10.0"
   }
 }

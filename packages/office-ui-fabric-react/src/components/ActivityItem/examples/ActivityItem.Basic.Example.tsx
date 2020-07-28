@@ -3,15 +3,15 @@ import { ActivityItem, Icon, Link, mergeStyleSets } from 'office-ui-fabric-react
 
 const classNames = mergeStyleSets({
   exampleRoot: {
-    marginTop: '20px'
+    marginTop: '20px',
   },
   nameText: {
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 export const ActivityItemBasicExample: React.FunctionComponent = () => {
-  // tslint:disable:jsx-no-lambda
+  /* eslint-disable react/jsx-no-bind */
   const activityItemExamples = [
     {
       key: 1,
@@ -25,7 +25,7 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
         >
           Philippe Lampros
         </Link>,
-        <span key={2}> commented</span>
+        <span key={2}> commented</span>,
       ],
       activityIcon: <Icon iconName={'Message'} />,
       comments: [
@@ -39,9 +39,9 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
         >
           @Anđela Debeljak
         </Link>,
-        <span key={3}> in the text of the comment.</span>
+        <span key={3}> in the text of the comment.</span>,
       ],
-      timeStamp: 'Just now'
+      timeStamp: 'Just now',
     },
     {
       key: 2,
@@ -58,10 +58,10 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
         <span key={2}> deleted </span>,
         <span key={3} className={classNames.nameText}>
           DocumentTitle.docx
-        </span>
+        </span>,
       ],
       activityIcon: <Icon iconName={'Trash'} />,
-      timeStamp: '2 hours ago'
+      timeStamp: '2 hours ago',
     },
     {
       key: 3,
@@ -94,11 +94,11 @@ export const ActivityItemBasicExample: React.FunctionComponent = () => {
           }}
         >
           Destination Folder
-        </Link>
+        </Link>,
       ],
       activityIcon: <Icon iconName={'FabricMovetoFolder'} />,
-      timeStamp: 'Yesterday'
-    }
+      timeStamp: 'Yesterday',
+    },
   ];
 
   return (

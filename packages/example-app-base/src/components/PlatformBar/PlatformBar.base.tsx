@@ -6,7 +6,9 @@ import { INavPage } from '../Nav/index';
 
 const getClassNames = classNamesFunction<IPlatformBarStyleProps, IPlatformBarStyles>();
 
-export class PlatformBarBase<TPlatforms extends string = string> extends React.PureComponent<IPlatformBarProps<TPlatforms>> {
+export class PlatformBarBase<TPlatforms extends string = string> extends React.PureComponent<
+  IPlatformBarProps<TPlatforms>
+> {
   private _classNames: { [key in keyof IPlatformBarStyles]: string };
 
   public render(): JSX.Element {
@@ -14,7 +16,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
 
     this._classNames = getClassNames(styles, {
       theme: theme!,
-      innerWidth
+      innerWidth,
     });
 
     return (
@@ -57,7 +59,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
           href={pages && this._getFirstPageUrl(pages)}
           className={classNames.platformButton}
           aria-label={name}
-          /* tslint:disable-next-line jsx-no-lambda */
+          /* eslint-disable-next-line react/jsx-no-bind */
           onClick={() => this._handlePlatformClick(platformKey)}
           disabled={disabled}
         >

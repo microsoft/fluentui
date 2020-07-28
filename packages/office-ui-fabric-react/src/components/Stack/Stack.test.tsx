@@ -1,15 +1,24 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
+import * as path from 'path';
+import { mount } from 'enzyme';
 import { mergeStyles } from '@uifabric/merge-styles';
-
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { sharedIsConformant } from '../../common/sharedIsConformant';
 import { Stack } from './Stack';
 
 const sampleClass = mergeStyles({
-  background: 'red'
+  background: 'red',
 });
 
 describe('Stack', () => {
+  sharedIsConformant({
+    Component: Stack,
+    componentPath: path.join(__dirname, 'Stack.tsx'),
+    displayName: 'Stack',
+    useDefaultExport: true,
+  });
+
   it('can handle having no children in vertical Stack', () => {
     const createEmptyStack = () => {
       mount(<Stack />);
@@ -31,7 +40,7 @@ describe('Stack', () => {
       <Stack>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -42,7 +51,7 @@ describe('Stack', () => {
       <Stack reversed>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -53,7 +62,7 @@ describe('Stack', () => {
       <Stack horizontal>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -64,7 +73,7 @@ describe('Stack', () => {
       <Stack horizontal reversed>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -75,7 +84,7 @@ describe('Stack', () => {
       <Stack horizontalAlign="start" verticalAlign="end">
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -86,7 +95,7 @@ describe('Stack', () => {
       <Stack horizontal horizontalAlign="start" verticalAlign="end">
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -97,7 +106,7 @@ describe('Stack', () => {
       <Stack verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -108,7 +117,7 @@ describe('Stack', () => {
       <Stack horizontal verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -120,7 +129,7 @@ describe('Stack', () => {
         <Stack grow={5}>Item 1</Stack>
         <Stack grow={2}>Item 2</Stack>
         <Stack grow>Item 3</Stack>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -138,7 +147,7 @@ describe('Stack', () => {
         <Stack horizontal grow>
           Item 3
         </Stack>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -149,7 +158,7 @@ describe('Stack', () => {
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -160,7 +169,7 @@ describe('Stack', () => {
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -171,7 +180,7 @@ describe('Stack', () => {
       <Stack tokens={{ childrenGap: 10 }}>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -182,7 +191,20 @@ describe('Stack', () => {
       <Stack horizontal tokens={{ childrenGap: 10 }}>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders horizontal Stack with a gap in rtl context correctly', () => {
+    const component = renderer.create(
+      <Fabric dir="rtl">
+        <Stack horizontal tokens={{ childrenGap: 10 }}>
+          <Stack.Item>Item 1</Stack.Item>
+          <Stack.Item>Item 2</Stack.Item>
+        </Stack>
+      </Fabric>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -193,7 +215,7 @@ describe('Stack', () => {
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -204,7 +226,7 @@ describe('Stack', () => {
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -215,7 +237,7 @@ describe('Stack', () => {
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item disableShrink>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -226,7 +248,7 @@ describe('Stack', () => {
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item disableShrink>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -241,7 +263,7 @@ describe('Stack', () => {
         <Stack.Item align="start">Start</Stack.Item>
         <Stack.Item align="center">Center</Stack.Item>
         <Stack.Item align="end">End</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -256,7 +278,7 @@ describe('Stack', () => {
         <Stack.Item align="start">Start</Stack.Item>
         <Stack.Item align="center">Center</Stack.Item>
         <Stack.Item align="end">End</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -268,7 +290,7 @@ describe('Stack', () => {
         <Stack.Item>1</Stack.Item>
         <Stack.Item>2</Stack.Item>
         <Stack.Item>3</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -279,7 +301,7 @@ describe('Stack', () => {
       <Stack>
         <Stack.Item className={sampleClass}>Item 1</Stack.Item>
         <div className={sampleClass}>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

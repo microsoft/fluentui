@@ -14,7 +14,7 @@ export interface ITag {
   name: string;
 
   /** Unique key for the item. */
-  key: string;
+  key: string | number;
 }
 
 /**
@@ -37,6 +37,12 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
    */
   enableTagFocusInDisabledPicker?: boolean;
 
+  /**
+   * The title (and aria-label) attribute used by the TagItem text element.
+   * @defaultvalue children if of type string or item.name
+   */
+  title?: string;
+
   /** Call to provide customized styling that will layer on top of the variant rules. */
   styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
 
@@ -48,7 +54,8 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
  * The props needed to construct TagItem styles.
  * {@docCategory TagPicker}
  */
-export type ITagItemStyleProps = Required<Pick<ITagItemProps, 'theme'>> & Pick<ITagItemProps, 'className' | 'selected' | 'disabled'> & {};
+export type ITagItemStyleProps = Required<Pick<ITagItemProps, 'theme'>> &
+  Pick<ITagItemProps, 'className' | 'selected' | 'disabled'> & {};
 
 /**
  * Represents the stylable areas of the TagItem.

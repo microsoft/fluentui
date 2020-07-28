@@ -35,8 +35,8 @@ export interface IKeytipTreeNode {
   parent: string;
 
   /**
-   * Whether or not this keytip will have children keytips that are dynamically created (DOM is generated on keytip activation)
-   * Common cases are keytips in a menu or modal
+   * Whether or not this keytip will have children keytips that are dynamically created (DOM is generated on
+   * keytip activation). Common cases are keytips in a menu or modal.
    */
   hasDynamicChildren?: boolean;
 

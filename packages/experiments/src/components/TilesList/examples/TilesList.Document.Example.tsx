@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { TilesList, ITilesGridItem, ITilesGridSegment } from '@uifabric/experiments/lib/TilesList';
+import {
+  TilesList,
+  ITilesGridItem,
+  ITilesGridSegment,
+  ITilesGridItemCellProps,
+} from '@uifabric/experiments/lib/TilesList';
 import { Tile, ShimmerTile } from '@uifabric/experiments/lib/Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
@@ -10,10 +15,11 @@ import {
   IExampleItem,
   createGroup,
   createDocumentItems,
-  getTileCells,
-  createShimmerGroups
+  getExampleTilesListCells,
+  createShimmerGroups,
+  onRenderTilesListExampleRoot,
+  onRenderTilesListExampleRow,
 } from '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers';
-import { ISize } from '@uifabric/experiments/lib/Utilities';
 import { ShimmerElementType, ShimmerElementsGroup } from 'office-ui-fabric-react/lib/Shimmer';
 
 const HEADER_VERTICAL_PADDING = 13;
@@ -41,10 +47,6 @@ const SHIMMER_GROUPS = createShimmerGroups('document', 0);
 
 const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[] }) => group.items));
 
-declare class TilesListClass extends TilesList<IExampleItem> {}
-
-const TilesListType: typeof TilesListClass = TilesList;
-
 export interface ITilesListDocumentExampleState {
   isModalSelection: boolean;
   isDataLoaded: boolean;
@@ -56,7 +58,10 @@ export interface ITilesListDocumentExampleProps {
   tileSize: 'large' | 'small';
 }
 
-export class TilesListDocumentExample extends React.Component<ITilesListDocumentExampleProps, ITilesListDocumentExampleState> {
+export class TilesListDocumentExample extends React.Component<
+  ITilesListDocumentExampleProps,
+  ITilesListDocumentExampleState
+> {
   private _selection: Selection;
 
   constructor(props: ITilesListDocumentExampleProps) {
@@ -64,7 +69,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,
-      onSelectionChanged: this._onSelectionChange
+      onSelectionChanged: this._onSelectionChange,
     });
 
     this._selection.setItems(ITEMS);
@@ -73,34 +78,37 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
       isModalSelection: this._selection.isModal(),
       isDataLoaded: false,
       isFluentStyling: false,
-      cells: getTileCells(SHIMMER_GROUPS, {
+      cells: getExampleTilesListCells(SHIMMER_GROUPS, {
         onRenderCell: this._onRenderShimmerCell,
         onRenderHeader: this._onRenderShimmerHeader,
         size: props.tileSize,
-        shimmerMode: true
-      })
+        shimmerMode: true,
+      }),
     };
   }
 
-  public componentDidUpdate(previousProps: ITilesListDocumentExampleProps, prevState: ITilesListDocumentExampleState): void {
+  public componentDidUpdate(
+    previousProps: ITilesListDocumentExampleProps,
+    prevState: ITilesListDocumentExampleState,
+  ): void {
     const { isDataLoaded } = this.state;
     if (this.props.tileSize !== previousProps.tileSize || this.state.isFluentStyling !== prevState.isFluentStyling) {
       if (!isDataLoaded) {
         this.setState({
-          cells: getTileCells(SHIMMER_GROUPS, {
+          cells: getExampleTilesListCells(SHIMMER_GROUPS, {
             onRenderCell: this._onRenderShimmerCell,
             onRenderHeader: this._onRenderShimmerHeader,
             size: this.props.tileSize,
-            shimmerMode: true
-          })
+            shimmerMode: true,
+          }),
         });
       } else {
         this.setState({
-          cells: getTileCells(GROUPS, {
+          cells: getExampleTilesListCells(GROUPS, {
             onRenderCell: this._onRenderDocumentCell,
             onRenderHeader: this._onRenderHeader,
-            size: this.props.tileSize
-          })
+            size: this.props.tileSize,
+          }),
         });
       }
     }
@@ -108,7 +116,6 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
 
   public render(): JSX.Element {
     return (
-      // tslint:disable-next-line:jsx-ban-props
       <div style={{ padding: '4px' }}>
         <Toggle
           label="Enable Modal Selection"
@@ -133,7 +140,12 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
         />
         <MarqueeSelection selection={this._selection}>
           <SelectionZone selection={this._selection} onItemInvoked={this._onItemInvoked} enterModalOnTouch={true}>
-            <TilesListType role="list" items={this.state.cells} />
+            <TilesList<IExampleItem>
+              items={this.state.cells}
+              role="grid"
+              onRenderRoot={onRenderTilesListExampleRoot}
+              onRenderRow={onRenderTilesListExampleRow}
+            />
           </SelectionZone>
         </MarqueeSelection>
       </div>
@@ -150,40 +162,40 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     let { cells } = this.state;
 
     if (cells.length && !cells[0].isPlaceholder) {
-      cells = getTileCells(SHIMMER_GROUPS, {
+      cells = getExampleTilesListCells(SHIMMER_GROUPS, {
         onRenderCell: this._onRenderShimmerCell,
         onRenderHeader: this._onRenderShimmerHeader,
         shimmerMode: true,
-        size: tileSize
+        size: tileSize,
       });
     } else {
-      cells = getTileCells(GROUPS, {
+      cells = getExampleTilesListCells(GROUPS, {
         onRenderCell: this._onRenderDocumentCell,
         onRenderHeader: this._onRenderHeader,
-        size: tileSize
+        size: tileSize,
       });
     }
 
     this.setState({
       isDataLoaded: !isDataLoaded,
-      cells: cells
+      cells: cells,
     });
   };
 
   private _onToggleIsFluentStyling = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState(
       {
-        isFluentStyling: checked
+        isFluentStyling: checked,
       },
       () => {
         console.log(this.state);
-      }
+      },
     );
   };
 
   private _onSelectionChange = (): void => {
     this.setState({
-      isModalSelection: this._selection.isModal()
+      isModalSelection: this._selection.isModal(),
     });
   };
 
@@ -194,15 +206,16 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     alert(`Invoked item '${item.name}'`);
   };
 
-  private _onRenderDocumentCell = (item: IExampleItem): JSX.Element => {
+  private _onRenderDocumentCell = (props: ITilesGridItemCellProps<IExampleItem>): JSX.Element => {
+    const { item } = props;
+
     const { tileSize } = this.props;
     const imgSize = tileSize === 'large' ? 64 : 48;
 
     return (
       <Tile
-        role="listitem"
-        aria-setsize={ITEMS.length}
-        aria-posinset={item.index}
+        role="gridcell"
+        aria-colindex={props.position.column + 1}
         className={AnimationClassNames.fadeIn400}
         selection={this._selection}
         selectionIndex={item.index}
@@ -215,7 +228,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
               display: 'block',
               width: `${imgSize}px`,
               height: `${imgSize}px`,
-              margin: tileSize === 'large' ? '16px' : '7px'
+              margin: tileSize === 'large' ? '16px' : '7px',
             }}
           />
         }
@@ -227,22 +240,35 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     );
   };
 
-  private _onRenderShimmerCell = (item: IExampleItem, finalSize: ISize): JSX.Element => {
+  private _onRenderShimmerCell = (props: ITilesGridItemCellProps<IExampleItem>): JSX.Element => {
+    const { finalSize } = props;
+
     const { tileSize } = this.props;
 
-    return <ShimmerTile contentSize={finalSize} itemName={true} itemActivity={true} itemThumbnail={true} tileSize={tileSize} />;
+    return (
+      <ShimmerTile
+        role="presentation"
+        contentSize={finalSize}
+        itemName={true}
+        itemActivity={true}
+        itemThumbnail={true}
+        tileSize={tileSize}
+      />
+    );
   };
 
-  private _onRenderHeader = (item: IExampleItem): JSX.Element => {
+  private _onRenderHeader = (props: ITilesGridItemCellProps<IExampleItem>): JSX.Element => {
+    const { item } = props;
+
     return (
       <div
-        role="presentation"
-        // tslint:disable-next-line:jsx-ban-props
+        role="gridcell"
+        aria-colindex={props.position.column + 1}
         style={{
           padding: `${HEADER_VERTICAL_PADDING}px 0`,
           fontSize: `${HEADER_FONT_SIZE}px`,
           fontWeight: 700,
-          lineHeight: `${HEADER_FONT_SIZE}px`
+          lineHeight: `${HEADER_FONT_SIZE}px`,
         }}
       >
         {item.name}
@@ -250,12 +276,12 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     );
   };
 
-  private _onRenderShimmerHeader = (item: IExampleItem): JSX.Element => {
+  private _onRenderShimmerHeader = (props: ITilesGridItemCellProps<IExampleItem>): JSX.Element => {
     return (
       <ShimmerElementsGroup
         shimmerElements={[
           { type: ShimmerElementType.line, height: HEADER_FONT_SIZE, width: '100%' }, // gap is given to maintain height
-          { type: ShimmerElementType.gap, height: HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE, width: 0 }
+          { type: ShimmerElementType.gap, height: HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE, width: 0 },
         ]}
       />
     );

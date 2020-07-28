@@ -10,8 +10,8 @@ export class MicroFeedbackExample extends React.Component<{}, {}> {
 
     const microfeedbackStyles: IMicroFeedbackStyles = {
       root: {
-        float: 'left'
-      }
+        float: 'left',
+      },
     };
     return (
       <div>
@@ -20,6 +20,7 @@ export class MicroFeedbackExample extends React.Component<{}, {}> {
           likeIconTitle="Like"
           dislikeIconTitle="Dislike"
           thanksText="Thank you!"
+          // eslint-disable-next-line react/jsx-no-bind
           sendFeedback={sendFeedbackCallback}
         />
       </div>

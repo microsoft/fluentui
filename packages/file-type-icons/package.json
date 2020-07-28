@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/file-type-icons",
-  "version": "7.2.2",
-  "description": "Office UI Fabric file type icon set.",
+  "version": "7.4.6",
+  "description": "Fluent UI React file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [
@@ -10,7 +10,7 @@
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -23,20 +23,19 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@types/react": "16.8.11",
+    "@fluentui/eslint-plugin": "^0.53.1",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/build": "^7.0.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "@uifabric/build": "^7.0.0"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/styling": "^7.9.0",
-    "@uifabric/set-version": "^7.0.2",
-    "tslib": "^1.7.1"
+    "@uifabric/set-version": "^7.0.18",
+    "@uifabric/styling": "^7.14.5",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

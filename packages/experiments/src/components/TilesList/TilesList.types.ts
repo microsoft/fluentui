@@ -3,6 +3,30 @@ import { IRefObject, IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilit
 import { TilesList } from './TilesList';
 import { IFocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { IListProps } from 'office-ui-fabric-react/lib/List';
+import { IRenderFunction } from '@uifabric/utilities';
+
+export interface ITilesGridItemCellProps<TItem> {
+  item: TItem;
+  finalSize: {
+    width: number;
+    height: number;
+  };
+  position: {
+    column: number;
+  };
+}
+
+export interface ITilesListRowProps<TItem> {
+  cellElements: JSX.Element[];
+  divProps: React.HTMLAttributes<HTMLDivElement>;
+}
+
+export interface ITilesListRootProps<TItem> {
+  surfaceElement: JSX.Element | null;
+  divProps: React.HTMLAttributes<HTMLDivElement>;
+  rowCount: number;
+  columnCount: number;
+}
 
 export interface ITilesGridItem<TItem> {
   /**
@@ -26,8 +50,15 @@ export interface ITilesGridItem<TItem> {
   /**
    * Invoked to render the virtual DOM for the item.
    * This content will be rendered inside the cell allocated for the item.
+   * This is invoked if present, and only if `onRenderCell` is not provided.
    */
-  onRender: (content: TItem, finalSize?: ISize) => React.ReactNode;
+  onRender?: (content: TItem, finalSize?: ISize) => React.ReactNode;
+  /**
+   * Invoked to render the virtual DOM for the item in its positioned cell.
+   * Provided positioning and sizing information in addition to the item.
+   * Preferred over `onRender`.
+   */
+  onRenderCell?: (props: ITilesGridItemCellProps<TItem>) => JSX.Element | null;
 }
 
 export const enum TilesGridMode {
@@ -46,7 +77,7 @@ export const enum TilesGridMode {
   /**
    * Items in the row are stretched horizontally only if necessary to fill the row.
    */
-  fillHorizontal
+  fillHorizontal,
 }
 
 export interface ITilesGridSegment<TItem> {
@@ -104,7 +135,10 @@ export interface ITilesGridSegment<TItem> {
 
 export { ISize as ITileSize };
 
-export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
+export interface ITilesListProps<TItem>
+  extends IBaseProps,
+    React.Props<TilesList<TItem>>, // eslint-disable-line deprecation/deprecation
+    React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.
    * This should be complete and not contain any holes.
@@ -128,4 +162,14 @@ export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesLis
    * props to pass through to the underlying List
    */
   listProps?: Partial<IListProps>;
+  /**
+   * Override to render a 'row' of tiles in the list.
+   * Use this to append accessibility semantics based on the tiles in a row.
+   */
+  onRenderRow?: IRenderFunction<ITilesListRowProps<TItem>>;
+  /**
+   * Override to render the 'root' element of the list.
+   * Use this to append accessibility semantics based on the final layout of the list.
+   */
+  onRenderRoot?: IRenderFunction<ITilesListRootProps<TItem>>;
 }

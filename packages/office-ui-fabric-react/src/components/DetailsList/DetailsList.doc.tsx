@@ -48,19 +48,21 @@ export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
   examples: [
     {
       title: 'DetailsList with 500 documents, sorting, filtering, marquee selection, justified columns',
       code: DetailsListDocumentsExampleCode,
-      view: <DetailsListDocumentsExample />
-    }
+      view: <DetailsListDocumentsExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),
-  isHeaderVisible: true
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListBestPractices.md'),
+  isHeaderVisible: true,
 };
 
 function generateProps(example: IExample): IDocPageProps {
@@ -68,87 +70,87 @@ function generateProps(example: IExample): IDocPageProps {
     title: example.title,
     componentName: 'DetailsList',
     componentUrl:
-      'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
+      'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
     examples: [example],
     isHeaderVisible: false,
-    isFeedbackVisible: true
+    isFeedbackVisible: true,
   };
 }
 
 export const DetailsListBasicPageProps: IDocPageProps = generateProps({
   title: 'Simple DetailsList with filtering and marquee selection',
   code: DetailsListBasicExampleCode,
-  view: <DetailsListBasicExample />
+  view: <DetailsListBasicExample />,
 });
 
 export const DetailsListAnimationPageProps: IDocPageProps = generateProps({
   title: 'DetailsList with Row animation when cell content changed',
   code: DetailsListAnimationExampleCode,
-  view: <DetailsListAnimationExample />
+  view: <DetailsListAnimationExample />,
 });
 
 export const DetailsListCompactPageProps: IDocPageProps = generateProps({
   title: 'Compact DetailsList with filtering and marquee selection',
   code: DetailsListCompactExampleCode,
-  view: <DetailsListCompactExample />
+  view: <DetailsListCompactExample />,
 });
 
 export const DetailsListSimpleGroupedPageProps: IDocPageProps = generateProps({
   title: 'Simple grouped DetailsList',
   code: DetailsListGroupedExampleCode,
-  view: <DetailsListGroupedExample />
+  view: <DetailsListGroupedExample />,
 });
 
 export const DetailsListLargeGroupedPageProps: IDocPageProps = generateProps({
   title: 'Large grouped DetailsList',
   code: DetailsListGroupedLargeExampleCode,
-  view: <DetailsListGroupedLargeExample />
+  view: <DetailsListGroupedLargeExample />,
 });
 
 export const DetailsListCustomColumnsPageProps: IDocPageProps = generateProps({
   title: 'Rendering custom item columns with sorting',
   code: DetailsListCustomColumnsExampleCode,
-  view: <DetailsListCustomColumnsExample />
+  view: <DetailsListCustomColumnsExample />,
 });
 
 export const DetailsListCustomRowsPageProps: IDocPageProps = generateProps({
   title: 'Rendering custom item rows',
   code: DetailsListCustomRowsExampleCode,
-  view: <DetailsListCustomRowsExample />
+  view: <DetailsListCustomRowsExample />,
 });
 
 export const DetailsListCustomGroupHeadersPageProps: IDocPageProps = generateProps({
   title: 'Rendering custom group headers',
   code: DetailsListCustomGroupHeadersExampleCode,
-  view: <DetailsListCustomGroupHeadersExample />
+  view: <DetailsListCustomGroupHeadersExample />,
 });
 
 export const DetailsListAdvancedPageProps: IDocPageProps = generateProps({
   title: 'Advanced DetailsList of 5000 items with variable row heights',
   code: DetailsListAdvancedExampleCode,
-  view: <DetailsListAdvancedExample />
+  view: <DetailsListAdvancedExample />,
 });
 
 export const DetailsListDragDropPageProps: IDocPageProps = generateProps({
   title: 'DetailsList supporting drag and drop',
   code: DetailsListDragDropExampleCode,
-  view: <DetailsListDragDropExample />
+  view: <DetailsListDragDropExample />,
 });
 
 export const DetailsListNavigatingFocusPageProps: IDocPageProps = generateProps({
   title: 'Navigating to new content while preserving keyboard focus',
   code: DetailsListNavigatingFocusExampleCode,
-  view: <DetailsListNavigatingFocusExample />
+  view: <DetailsListNavigatingFocusExample />,
 });
 
 export const DetailsListShimmerPageProps: IDocPageProps = generateProps({
   title: 'Shimmered DetailsList - usually shown while retrieving data',
   code: DetailsListShimmerExampleCode,
-  view: <DetailsListShimmerExample />
+  view: <DetailsListShimmerExample />,
 });
 
 export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
   title: 'Rendering custom DetailsList footer',
   code: DetailsListCustomFooterExampleCode,
-  view: <DetailsListCustomFooterExample />
+  view: <DetailsListCustomFooterExample />,
 });

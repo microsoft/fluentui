@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable jsx-no-lambda */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroupOption } from './ChoiceGroupOption';
@@ -19,7 +17,7 @@ describe('ChoiceGroupOption', () => {
         <ChoiceGroupOption iconProps={{ iconName: 'CalendarWeek' }} key="G" text="Option G" focused />
         <ChoiceGroupOption iconProps={{ iconName: 'CalendarDay' }} key="H" text="Option H" checked />
         <ChoiceGroupOption iconProps={{ iconName: 'CalendarWeek' }} key="I" text="Option I" disabled />
-      </div>
+      </div>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -39,7 +37,7 @@ describe('ChoiceGroupOption', () => {
           text="Option B"
           onRenderLabel={(
             option: IChoiceGroupOptionProps,
-            defaultRender: (props?: IChoiceGroupOptionProps) => JSX.Element
+            defaultRender: (props?: IChoiceGroupOptionProps) => JSX.Element,
           ): JSX.Element => {
             return defaultRender(option);
           }}
@@ -49,12 +47,12 @@ describe('ChoiceGroupOption', () => {
           text="Option C"
           onRenderLabel={(
             option: IChoiceGroupOptionProps,
-            defaultRender: (props?: IChoiceGroupOptionProps) => JSX.Element
+            defaultRender: (props?: IChoiceGroupOptionProps) => JSX.Element,
           ): JSX.Element => {
             return <div className="customWrapper">{defaultRender(option)}</div>;
           }}
         />
-      </div>
+      </div>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

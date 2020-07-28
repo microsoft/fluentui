@@ -13,7 +13,8 @@
     "strict": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "types": ["webpack-env"]
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

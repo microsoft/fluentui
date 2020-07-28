@@ -1,6 +1,4 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
 import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
 import { IPersonaProps } from '../../../Persona';
@@ -54,18 +52,15 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
  * Standard People Picker.
  */
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
-  // tslint:disable-next-line:no-any
   public static defaultProps: any = {
-    onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />
+    onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
   };
 
   protected renderItems = (): JSX.Element[] => {
     const { items } = this.state;
-    // tslint:disable-next-line:no-any
     return items.map((item: IExtendedPersonaProps, index: number) => this._renderItem(item, index));
   };
 
-  // tslint:disable-next-line:no-any
   private _renderItem(item: IExtendedPersonaProps, index: number): JSX.Element {
     const { removeButtonAriaLabel } = this.props;
     const expandGroup = this.props.onExpandGroup;
@@ -79,7 +74,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: IExtendedPersonaProps) => this.copyItems([itemToCopy]),
       onExpandItem: expandGroup ? () => expandGroup(item) : undefined,
-      menuItems: this._createMenuItems(item)
+      menuItems: this._createMenuItems(item),
     };
 
     const hasContextMenu = props.menuItems.length > 0;
@@ -119,13 +114,11 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     this.forceUpdate();
   };
 
-  // tslint:disable-next-line:no-any
   private _completeEditing = (oldItem: any, newItem: any): void => {
     oldItem.isEditing = false;
     this.replaceItem(oldItem, newItem);
   };
 
-  // tslint:disable-next-line:no-any
   private _createMenuItems(item: any): IContextualMenuItem[] {
     const menuItems: IContextualMenuItem[] = [];
 
@@ -136,7 +129,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
           this._beginEditing(menuItem.data);
         },
-        data: item
+        data: item,
       });
     }
 
@@ -147,7 +140,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
           this.removeItem(menuItem.data as IExtendedPersonaProps);
         },
-        data: item
+        data: item,
       });
     }
 
@@ -160,7 +153,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
             (this.copyItems as (items: IExtendedPersonaProps[]) => void)([menuItem.data] as IExtendedPersonaProps[]);
           }
         },
-        data: item
+        data: item,
       });
     }
 

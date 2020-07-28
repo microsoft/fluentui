@@ -1,8 +1,8 @@
-// tslint:disable:no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'UI Fabric - Lists',
+  appTitle: 'Fluent UI React - Lists',
 
   testPages: [],
   examplePages: [
@@ -11,23 +11,23 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('./pages/StaticListPage').StaticListPage,
           name: 'StaticList',
-          url: '#/StaticList'
-        }
-      ]
-    }
+          url: '#/StaticList',
+        },
+      ],
+    },
   ],
   headerLinks: [
     {
       name: 'Getting started',
-      url: '#/'
+      url: '#/',
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric'
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/OfficeDev/office-ui-fabric-react'
-    }
-  ]
+      url: 'https://github.com/microsoft/fluentui',
+    },
+  ],
 };

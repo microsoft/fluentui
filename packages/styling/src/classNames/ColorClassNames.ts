@@ -323,15 +323,21 @@ for (const colorName in DefaultPalette) {
 /**
  * Defines a getter for the given class configuration.
  */
-function _defineGetter(obj: IColorClassNames, colorName: string, suffix: string, isHover: boolean, cssProperty: string): void {
+function _defineGetter(
+  obj: IColorClassNames,
+  colorName: string,
+  suffix: string,
+  isHover: boolean,
+  cssProperty: string,
+): void {
   Object.defineProperty(obj, colorName + suffix, {
     get: (): string => {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const style: IRawStyle = { [cssProperty]: (getTheme().palette as any)[colorName] };
 
       return mergeStyles(isHover ? { selectors: { ':hover': style } } : style).toString();
     },
     enumerable: true,
-    configurable: true
+    configurable: true,
   });
 }

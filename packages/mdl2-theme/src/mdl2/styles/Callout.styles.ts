@@ -6,7 +6,7 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
 
   return {
     root: {
-      border: `1px solid ${palette.neutralLight}`
-    }
+      border: `1px solid ${palette.neutralLight}`,
+    },
   };
 };

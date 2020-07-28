@@ -4,6 +4,7 @@ import { ILayerProps } from '../../Layer';
 import { IOverlayProps } from '../../Overlay';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonStyles } from '../Button/Button.types';
 import { PanelBase } from './Panel.base';
 
 /**
@@ -76,6 +77,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * @defaultvalue ""
    */
   headerText?: string;
+
+  /**
+   * The props for header text container.
+   */
+  headerTextProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * A callback function for when the Panel is opened, before the animation completes.
@@ -307,7 +313,8 @@ export enum PanelType {
   large = 4,
 
   /**
-   * Renders the Panel in `large` size, anchored to the far side (right in LTR mode), with a fixed width at XX-Large breakpoint.
+   * Renders the Panel in `large` size, anchored to the far side (right in LTR mode), with a fixed width at
+   * XX-Large breakpoint.
    * - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint
    * - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint
    * - Large (640-1023): adapts to `PanelType.medium` at this breakpoint
@@ -341,7 +348,7 @@ export enum PanelType {
    * - When screen width reaches the `customWidth` value it will behave like a fluid width Panel
    * taking up 100% of the viewport width
    */
-  customNear = 8
+  customNear = 8,
 }
 
 /**
@@ -407,17 +414,20 @@ export interface IPanelStyleProps {
    * Optional parameter to provider the class name for header text
    */
   headerClassName?: string;
+
+  /**
+   * Determines where the header is rendered based on whether the user
+   * has passed in a custom onRenderNavigation or onRenderNavigationContent render callback
+   */
+  hasCustomNavigation?: boolean;
 }
 
-// TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-// export interface IPanelSubComponentStyles {
-//   /**
-//    * Styling for Icon child component.
-//    */
-//   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
-//   // button: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>;
-//   button: IStyleFunctionOrObject<any, any>;
-// }
+export interface IPanelSubComponentStyles {
+  /**
+   * Styling for close button child component.
+   */
+  closeButton: Partial<IButtonStyles>;
+}
 
 /**
  * {@docCategory Panel}
@@ -465,8 +475,9 @@ export interface IPanelStyles {
 
   /**
    * Style for the close button IconButton element.
+   * @deprecated Use `subComponentStyles.closeButton` instead.
    */
-  closeButton: IStyle;
+  closeButton?: IStyle;
 
   /**
    * Style for the header container div element.
@@ -474,7 +485,7 @@ export interface IPanelStyles {
   header: IStyle;
 
   /**
-   * Style for the header inner p element.
+   * Style for the header text div element.
    */
   headerText: IStyle;
 
@@ -493,9 +504,8 @@ export interface IPanelStyles {
    */
   footerInner: IStyle;
 
-  // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
   /**
    * Styling for subcomponents.
    */
-  // subComponentStyles: IPanelSubComponentStyles;
+  subComponentStyles: IPanelSubComponentStyles;
 }

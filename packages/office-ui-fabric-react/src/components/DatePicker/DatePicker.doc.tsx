@@ -19,48 +19,49 @@ const DatePickerBoundedExampleCode = require('!raw-loader!office-ui-fabric-react
 export const DatePickerPageProps: IDocPageProps = {
   title: 'DatePicker',
   componentName: 'DatePicker',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DatePicker',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/DatePicker',
   examples: [
     {
       title: 'Default DatePicker',
       code: DatePickerBasicExampleCode,
-      view: <DatePickerBasicExample />
+      view: <DatePickerBasicExample />,
     },
     {
       title: 'Disabled DatePicker',
       code: DatePickerDisabledExampleCode,
-      view: <DatePickerDisabledExample />
+      view: <DatePickerDisabledExample />,
     },
     {
       title: 'DatePicker with week numbers',
       code: DatePickerWeekNumbersExampleCode,
-      view: <DatePickerWeekNumbersExample />
+      view: <DatePickerWeekNumbersExample />,
     },
     {
       title: 'DatePicker with required field',
       code: DatePickerRequiredExampleCode,
-      view: <DatePickerRequiredExample />
+      view: <DatePickerRequiredExample />,
     },
     {
       title: 'DatePicker allows input date string',
       code: DatePickerInputExampleCode,
-      view: <DatePickerInputExample />
+      view: <DatePickerInputExample />,
     },
     {
       title: 'DatePicker allows dates to be formatted',
       code: DatePickerFormatExampleCode,
-      view: <DatePickerFormatExample />
+      view: <DatePickerFormatExample />,
     },
     {
       title: 'DatePicker with date boundary (minDate, maxDate)',
       code: DatePickerBoundedExampleCode,
-      view: <DatePickerBoundedExample />
-    }
+      view: <DatePickerBoundedExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerBestPractices.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

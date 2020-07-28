@@ -11,7 +11,7 @@ export class MarkdownTableBase extends React.PureComponent<IMarkdownTableProps> 
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className
+      className,
     });
 
     return (
@@ -28,5 +28,5 @@ export const MarkdownTable = styled<IMarkdownTableProps, IMarkdownTableStyleProp
   MarkdownTableBase,
   getStyles,
   undefined,
-  { scope: 'MarkdownTable' }
+  { scope: 'MarkdownTable' },
 );

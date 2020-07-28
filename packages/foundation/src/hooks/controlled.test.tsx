@@ -19,14 +19,18 @@ describe('useControlledState', () => {
 
   test('should use defaultPropName', () => {
     const { result } = renderHook(() =>
-      useControlledState({ defaultTestProp: 'defaultNameValue' } as ITestProps, 'testProp', { defaultPropName: 'defaultTestProp' })
+      useControlledState({ defaultTestProp: 'defaultNameValue' } as ITestProps, 'testProp', {
+        defaultPropName: 'defaultTestProp',
+      }),
     );
     expect(result.current[0]).toBe('defaultNameValue');
   });
 
   test('should use defaultPropValue', () => {
     const { result } = renderHook(() =>
-      useControlledState({ defaultTestProp: 'defaultNameValue' } as ITestProps, 'testProp', { defaultPropValue: 'defaultPropValue' })
+      useControlledState({ defaultTestProp: 'defaultNameValue' } as ITestProps, 'testProp', {
+        defaultPropValue: 'defaultPropValue',
+      }),
     );
     expect(result.current[0]).toBe('defaultPropValue');
   });
@@ -35,8 +39,8 @@ describe('useControlledState', () => {
     const { result } = renderHook(() =>
       useControlledState({ defaultTestProp: 'defaultNameValue' } as ITestProps, 'testProp', {
         defaultPropValue: 'defaultPropValue',
-        defaultPropName: 'defaultTestProp'
-      })
+        defaultPropName: 'defaultTestProp',
+      }),
     );
     expect(result.current[0]).toBe('defaultNameValue');
   });
@@ -45,8 +49,8 @@ describe('useControlledState', () => {
     const { result } = renderHook(() =>
       useControlledState({ testProp: 'testPropValue', defaultTestProp: 'defaultTestPropValue' }, 'testProp', {
         defaultPropValue: 'defaultValue',
-        defaultPropName: 'defaultTestProp'
-      })
+        defaultPropName: 'defaultTestProp',
+      }),
     );
     expect(result.current[0]).toBe('testPropValue');
   });
@@ -61,8 +65,8 @@ describe('useControlledState', () => {
     const { result } = renderHook(() =>
       useControlledState({ defaultTestProp: 'defaultTestPropValue' } as ITestProps, 'testProp', {
         defaultPropValue: 'defaultValue',
-        defaultPropName: 'defaultTestProp'
-      })
+        defaultPropName: 'defaultTestProp',
+      }),
     );
     expect(result.current[0]).toBe('defaultTestPropValue');
     act(() => result.current[1]('stateValue'));

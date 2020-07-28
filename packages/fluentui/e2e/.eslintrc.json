@@ -1,0 +1,7 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react-northstar"],
+  "root": true,
+  "rules": {
+    "import/no-default-export": "off"
+  }
+}

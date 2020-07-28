@@ -3,9 +3,8 @@ import { IPaginationProps, IPaginationStyleProps, IPaginationStyles } from './Pa
 import { getStyles } from './Pagination.styles';
 import { PaginationBase } from './Pagination.base';
 
-export const Pagination: React.StatelessComponent<IPaginationProps> = styled<IPaginationProps, IPaginationStyleProps, IPaginationStyles>(
-  PaginationBase,
-  getStyles,
-  undefined,
-  { scope: 'Pagination' }
-);
+export const Pagination: React.FunctionComponent<IPaginationProps> = styled<
+  IPaginationProps,
+  IPaginationStyleProps,
+  IPaginationStyles
+>(PaginationBase, getStyles, undefined, { scope: 'Pagination' });

@@ -55,9 +55,9 @@ const ICON_SETTING_NAME = 'icons';
 const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
   __options: {
     disableWarnings: false,
-    warnOnMissingIcons: true
+    warnOnMissingIcons: true,
   },
-  __remapped: {}
+  __remapped: {},
 });
 
 // Reset icon registration on stylesheet resets.
@@ -91,7 +91,7 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
   let subset = {
     ...iconSubset,
     isRegistered: false,
-    className: undefined
+    className: undefined,
   };
   let { icons } = iconSubset;
 
@@ -108,7 +108,7 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
       } else {
         _iconSettings[normalizedIconName] = {
           code,
-          subset
+          subset,
         } as IIconRecord;
       }
     }
@@ -184,13 +184,16 @@ export function getIcon(name?: string): IIconRecord | undefined {
           subset.className = mergeStyles(subset.style, {
             fontFamily: subset.fontFace.fontFamily,
             fontWeight: subset.fontFace.fontWeight || 'normal',
-            fontStyle: subset.fontFace.fontStyle || 'normal'
+            fontStyle: subset.fontFace.fontStyle || 'normal',
           });
         }
       }
     } else {
+      // eslint-disable-next-line deprecation/deprecation
       if (!options.disableWarnings && options.warnOnMissingIcons) {
-        warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
+        warn(
+          `The icon "${name}" was used but not registered. See https://github.com/microsoft/fluentui/wiki/Using-icons for more information.`,
+        );
       }
     }
   }
@@ -206,7 +209,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
 export function setIconOptions(options: Partial<IIconOptions>): void {
   _iconSettings.__options = {
     ..._iconSettings.__options,
-    ...options
+    ...options,
   };
 }
 
@@ -227,7 +230,7 @@ function _warnDuplicateIcon(iconName: string): void {
             `icon once. Redefining what an icon is may have unintended consequences. Duplicates ` +
             `include: \n` +
             _missingIcons.slice(0, maxIconsInMessage).join(', ') +
-            (_missingIcons.length > maxIconsInMessage ? ` (+ ${_missingIcons.length - maxIconsInMessage} more)` : '')
+            (_missingIcons.length > maxIconsInMessage ? ` (+ ${_missingIcons.length - maxIconsInMessage} more)` : ''),
         );
         _missingIconsTimer = undefined;
         _missingIcons = [];

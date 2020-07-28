@@ -18,7 +18,7 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: '4', text: '4' },
   { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
   { key: '5', text: '5' },
-  { key: '6', text: '6' }
+  { key: '6', text: '6' },
 ];
 
 describe('Dropdown', () => {
@@ -91,7 +91,15 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2' }]} />);
+      wrapper = mount(
+        <Dropdown
+          label="testgroup"
+          options={[
+            { key: '1', text: '1', selected: true },
+            { key: '2', text: '2' },
+          ]}
+        />,
+      );
       const titleElement = wrapper.find('.ms-Dropdown-title');
 
       expect(titleElement.text()).toEqual('1');
@@ -158,7 +166,9 @@ describe('Dropdown', () => {
     it('calls onChange when the selected item is different', () => {
       const onChangeSpy = jest.fn();
 
-      wrapper = mount(<Dropdown id="foo" label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />);
+      wrapper = mount(
+        <Dropdown id="foo" label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
+      );
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
@@ -173,7 +183,13 @@ describe('Dropdown', () => {
       const onChangeSpy = jest.fn();
 
       wrapper = mount(
-        <Dropdown label="testgroup" defaultSelectedKey="3" onChange={onChangeSpy} options={DEFAULT_OPTIONS} notifyOnReselect={true} />
+        <Dropdown
+          label="testgroup"
+          defaultSelectedKey="3"
+          onChange={onChangeSpy}
+          options={DEFAULT_OPTIONS}
+          notifyOnReselect={true}
+        />,
       );
 
       wrapper.find('.ms-Dropdown').simulate('click');
@@ -187,7 +203,9 @@ describe('Dropdown', () => {
     it('calls onDismiss when dismissing options callout', () => {
       const onDismissSpy = jest.fn();
 
-      wrapper = mount(<Dropdown label="testgroup" defaultSelectedKey="1" onDismiss={onDismissSpy} options={DEFAULT_OPTIONS} />);
+      wrapper = mount(
+        <Dropdown label="testgroup" defaultSelectedKey="1" onDismiss={onDismissSpy} options={DEFAULT_OPTIONS} />,
+      );
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
@@ -198,7 +216,10 @@ describe('Dropdown', () => {
     });
 
     it('sets the selected item even when key is number 0', () => {
-      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const options = [
+        { key: 0, text: 'item1' },
+        { key: 1, text: 'item2' },
+      ];
       const selectedKey = 0;
       const dropdown = React.createRef<IDropdown>();
 
@@ -215,7 +236,10 @@ describe('Dropdown', () => {
     });
 
     it('selectedIndices should not contains -1 even when selectedKey is not in options', () => {
-      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const options = [
+        { key: 0, text: 'item1' },
+        { key: 1, text: 'item2' },
+      ];
       let selectedKey = 0;
       const dropdown = React.createRef<IDropdown>();
 
@@ -234,7 +258,9 @@ describe('Dropdown', () => {
 
     it('does not call onChange when the selected item is not different', () => {
       const onChangeSpy = jest.fn();
-      wrapper = mount(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />);
+      wrapper = mount(
+        <Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
+      );
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
@@ -283,15 +309,18 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('1');
     });
 
-    it('is possible to programatically focus on Dropdown when it has tabIndex of `-1, and it will select the first valid item`', () => {
+    it('can be programmatically focused when tabIndex=-1, and will select the first valid item', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');
       document.body.appendChild(container);
 
-      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div being focused.
-      // Utilize JSDOM instead.
-      ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />, container);
+      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div
+      // being focused. Utilize JSDOM instead.
+      ReactDOM.render(
+        <Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />,
+        container,
+      );
 
       dropdown.current!.focus(false);
 
@@ -300,7 +329,7 @@ describe('Dropdown', () => {
       expect(titleElement.innerHTML).toEqual('1');
     });
 
-    it('calling programatic focus() with `true` opens up the Dropdown and focuses/selects on first selectable option`', () => {
+    it('opens and focuses/selects first selectable option when focus(true) is called', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');
@@ -419,6 +448,19 @@ describe('Dropdown', () => {
       expect(tree).toMatchSnapshot();
     });
 
+    it('Renders multiselect Dropdown correctly when options change', () => {
+      wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} multiSelect defaultSelectedKeys={['1', '4']} />);
+      const titleElement = wrapper.find('.ms-Dropdown-title');
+
+      expect(titleElement.text()).toEqual('1, 4');
+
+      wrapper.setProps({ options: DEFAULT_OPTIONS.slice(2) });
+
+      wrapper.find('.ms-Dropdown').simulate('click');
+      const options = document.querySelectorAll('.ms-Dropdown-item');
+      expect(options.length).toEqual(5);
+    });
+
     it('Renders no selected item in default case', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />);
 
@@ -428,7 +470,14 @@ describe('Dropdown', () => {
 
     it('Renders a selected item if option specifies selected', () => {
       wrapper = mount(
-        <Dropdown label="testgroup" options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2' }]} multiSelect />
+        <Dropdown
+          label="testgroup"
+          options={[
+            { key: '1', text: '1', selected: true },
+            { key: '2', text: '2' },
+          ]}
+          multiSelect
+        />,
       );
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
@@ -436,7 +485,10 @@ describe('Dropdown', () => {
     });
 
     it('sets the selected items even when key is number 0', () => {
-      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const options = [
+        { key: 0, text: 'item1' },
+        { key: 1, text: 'item2' },
+      ];
       const selectedKeys = [0, 1];
       const dropdown = React.createRef<IDropdown>();
       wrapper = mount(<Dropdown multiSelect componentRef={dropdown} options={options} />);
@@ -450,7 +502,10 @@ describe('Dropdown', () => {
     });
 
     it('selectedIndices should not contains -1 even when selectedKeys item is not in options', () => {
-      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const options = [
+        { key: 0, text: 'item1' },
+        { key: 1, text: 'item2' },
+      ];
       let selectedKeys = [0];
       const dropdown = React.createRef<IDropdown>();
 
@@ -471,9 +526,12 @@ describe('Dropdown', () => {
       wrapper = mount(
         <Dropdown
           label="testgroup"
-          options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2', selected: true }]}
+          options={[
+            { key: '1', text: '1', selected: true },
+            { key: '2', text: '2', selected: true },
+          ]}
           multiSelect
-        />
+        />,
       );
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
@@ -481,14 +539,18 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item in uncontrolled case', () => {
-      wrapper = mount(<Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />);
+      wrapper = mount(
+        <Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />,
+      );
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
       expect(titleElement.text()).toEqual('1, 2');
     });
 
     it('does not change the selected items when defaultSelectedKeys changes', () => {
-      wrapper = mount(<Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />);
+      wrapper = mount(
+        <Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />,
+      );
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
       expect(titleElement.text()).toEqual('1, 2');
@@ -529,11 +591,15 @@ describe('Dropdown', () => {
     });
 
     it('Can change items in uncontrolled case', () => {
-      wrapper = mount(<Dropdown label="testgroup" defaultSelectedKeys={['1']} multiSelect id="test" options={DEFAULT_OPTIONS} />);
+      wrapper = mount(
+        <Dropdown label="testgroup" defaultSelectedKeys={['1']} multiSelect id="test" options={DEFAULT_OPTIONS} />,
+      );
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const secondItemElement = document.querySelectorAll('.ms-Dropdown-item > input[type="checkbox"]')[1] as HTMLElement;
+      const secondItemElement = document.querySelectorAll(
+        '.ms-Dropdown-item > input[type="checkbox"]',
+      )[1] as HTMLElement;
       ReactTestUtils.Simulate.change(secondItemElement);
 
       expect(wrapper.find('.ms-Dropdown-title').text()).toEqual('1, 2');
@@ -541,11 +607,15 @@ describe('Dropdown', () => {
 
     it('calls onChange when selecting an item', () => {
       const onChangeSpy = jest.fn();
-      wrapper = mount(<Dropdown defaultSelectedKeys={['1']} multiSelect onChange={onChangeSpy} options={DEFAULT_OPTIONS} />);
+      wrapper = mount(
+        <Dropdown defaultSelectedKeys={['1']} multiSelect onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
+      );
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const secondItemElement = document.querySelectorAll('.ms-Dropdown-item > input[type="checkbox"]')[1] as HTMLElement;
+      const secondItemElement = document.querySelectorAll(
+        '.ms-Dropdown-item > input[type="checkbox"]',
+      )[1] as HTMLElement;
       ReactTestUtils.Simulate.change(secondItemElement);
 
       expect(onChangeSpy).toHaveBeenCalled();
@@ -556,11 +626,15 @@ describe('Dropdown', () => {
 
     it('calls onChange when unselecting an item', () => {
       const onChangeSpy = jest.fn();
-      wrapper = mount(<Dropdown defaultSelectedKeys={['1']} multiSelect onChange={onChangeSpy} options={DEFAULT_OPTIONS} />);
+      wrapper = mount(
+        <Dropdown defaultSelectedKeys={['1']} multiSelect onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
+      );
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const firstItemElement = document.querySelectorAll('.ms-Dropdown-item > input[type="checkbox"]')[0] as HTMLElement;
+      const firstItemElement = document.querySelectorAll(
+        '.ms-Dropdown-item > input[type="checkbox"]',
+      )[0] as HTMLElement;
       ReactTestUtils.Simulate.change(firstItemElement);
 
       expect(onChangeSpy).toHaveBeenCalled();
@@ -595,7 +669,11 @@ describe('Dropdown', () => {
     });
 
     it('Will skip disabled items on keydown', () => {
-      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+      const options = [
+        { key: 0, text: '1' },
+        { key: 1, text: '2', disabled: true },
+        { key: 2, text: '3' },
+      ];
 
       wrapper = mount(<Dropdown label="testgroup" options={options} />);
       const dropdownRoot = wrapper.find('.ms-Dropdown');
@@ -611,7 +689,11 @@ describe('Dropdown', () => {
 
   describe('Aria attributes', () => {
     it('does not apply aria-labelledby if no label is provided', () => {
-      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+      const options = [
+        { key: 0, text: '1' },
+        { key: 1, text: '2', disabled: true },
+        { key: 2, text: '3' },
+      ];
 
       wrapper = mount(<Dropdown options={options} />);
       const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
@@ -620,7 +702,11 @@ describe('Dropdown', () => {
     });
 
     it('does not apply aria-labelledby if an empty label is provided', () => {
-      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+      const options = [
+        { key: 0, text: '1' },
+        { key: 1, text: '2', disabled: true },
+        { key: 2, text: '3' },
+      ];
 
       wrapper = mount(<Dropdown label="" options={options} />);
       const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
@@ -629,7 +715,11 @@ describe('Dropdown', () => {
     });
 
     it('applies aria-labelledby if a non-empty label is provided', () => {
-      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+      const options = [
+        { key: 0, text: '1' },
+        { key: 1, text: '2', disabled: true },
+        { key: 2, text: '3' },
+      ];
 
       wrapper = mount(<Dropdown label="Test label" options={options} />);
       const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
@@ -638,17 +728,19 @@ describe('Dropdown', () => {
     });
 
     it('sets role=error on included error message', () => {
-      wrapper = mount(<Dropdown label="Test label" options={[]} id="sample-dropdown" errorMessage="This is an example error." />);
+      wrapper = mount(
+        <Dropdown label="Test label" options={[]} id="sample-dropdown" errorMessage="This is an example error." />,
+      );
       const errorMessage = wrapper.getDOMNode().querySelector('#sample-dropdown-errorMessage') as HTMLElement;
       expect(errorMessage.getAttribute('role')).toEqual('alert');
     });
   });
 
   describe('with simulated async loaded options', () => {
-    /** See https://github.com/OfficeDev/office-ui-fabric-react/issues/7315 */
+    /** See https://github.com/microsoft/fluentui/issues/7315 */
     class DropdownWithChangingProps extends React.Component<{ multi: boolean }, { options?: IDropdownOption[] }> {
       public state = {
-        options: undefined
+        options: undefined,
       };
 
       public componentDidMount() {
@@ -659,7 +751,12 @@ describe('Dropdown', () => {
         return (
           <div className="docs-DropdownExample">
             {this.props.multi ? (
-              <Dropdown label="Basic uncontrolled example:" defaultSelectedKeys={['B', 'D']} options={this.state.options!} multiSelect />
+              <Dropdown
+                label="Basic uncontrolled example:"
+                defaultSelectedKeys={['B', 'D']}
+                options={this.state.options!}
+                multiSelect
+              />
             ) : (
               <Dropdown label="Basic uncontrolled example:" defaultSelectedKey={'B'} options={this.state.options!} />
             )}
@@ -674,8 +771,8 @@ describe('Dropdown', () => {
             { key: 'B', text: 'Option b' },
             { key: 'C', text: 'Option c', disabled: true },
             { key: 'D', text: 'Option d' },
-            { key: 'E', text: 'Option e' }
-          ]
+            { key: 'E', text: 'Option e' },
+          ],
         });
       }
     }

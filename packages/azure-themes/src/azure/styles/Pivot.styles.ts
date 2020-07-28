@@ -11,39 +11,39 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       {
         borderBottomColor: semanticColors.inputBorder,
         borderBottomStyle: StyleConstants.borderSolid,
-        borderBottomWidth: StyleConstants.borderWidth
+        borderBottomWidth: StyleConstants.borderWidth,
       },
       !rootIsTabs && {
         selectors: {
           '.is-selected::before': {
-            borderColor: semanticColors.bodyText
-          }
-        }
+            borderColor: semanticColors.bodyText,
+          },
+        },
       },
       rootIsTabs && {
         selectors: {
           // remove bottom highlight
           '.is-selected::before': {
-            border: StyleConstants.borderNone
+            border: StyleConstants.borderNone,
           },
           '.ms-Pivot-link:hover': {
-            color: semanticColors.bodyText
+            color: semanticColors.bodyText,
           },
           '.ms-Pivot-link:active': {
-            color: semanticColors.bodyText
+            color: semanticColors.bodyText,
           },
           '.ms-Pivot-link:focus': {
-            color: semanticColors.bodyText
-          }
-        }
-      }
+            color: semanticColors.bodyText,
+          },
+        },
+      },
     ],
     link: [
       {
-        color: semanticColors.buttonText
+        color: semanticColors.buttonText,
       },
       !rootIsLarge && {
-        fontSize: FontSizes.size14
+        fontSize: FontSizes.size14,
       },
       !rootIsTabs && {
         selectors: {
@@ -51,14 +51,14 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
             backgroundColor: semanticColors.listItemBackgroundHovered,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
-            transition: 'background-color .2s ease-out'
+            transition: 'background-color .2s ease-out',
           },
           ':active': {
             backgroundColor: semanticColors.listItemBackgroundCheckedHovered,
             border: StyleConstants.borderNone,
-            color: semanticColors.bodyText
-          }
-        }
+            color: semanticColors.bodyText,
+          },
+        },
       },
       rootIsTabs && {
         backgroundColor: semanticColors.bodyBackground,
@@ -70,32 +70,32 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
             backgroundColor: semanticColors.listItemBackgroundHovered,
             border: StyleConstants.borderNone,
             borderBottom: `1px solid ${semanticColors.inputBorder}`,
-            transition: 'background-color .2s ease-out'
+            transition: 'background-color .2s ease-out',
           },
           ':active': {
             backgroundColor: semanticColors.listItemBackgroundHovered,
             border: StyleConstants.borderNone,
             borderBottom: `1px solid ${semanticColors.inputBorder}`,
-            transition: 'background-color .2s ease-out'
-          }
-        }
-      }
+            transition: 'background-color .2s ease-out',
+          },
+        },
+      },
     ],
     linkIsSelected: [
       !rootIsLarge && {
-        fontSize: FontSizes.size14
+        fontSize: FontSizes.size14,
       },
       !rootIsTabs && {
         color: semanticColors.bodyText,
         paddingBottom: '1px',
         selectors: {
           ':hover': {
-            border: StyleConstants.borderNone
+            border: StyleConstants.borderNone,
           },
           ':active': {
-            border: StyleConstants.borderNone
-          }
-        }
+            border: StyleConstants.borderNone,
+          },
+        },
       },
       rootIsTabs && {
         backgroundColor: semanticColors.bodyBackground,
@@ -109,15 +109,15 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
           ':hover': {
             backgroundColor: semanticColors.bodyBackground,
             borderColor: semanticColors.inputBorder,
-            borderBottomColor: semanticColors.bodyDivider
+            borderBottomColor: semanticColors.bodyDivider,
           },
           ':active': {
             backgroundColor: semanticColors.bodyBackground,
             borderColor: semanticColors.inputBorder,
-            borderBottomColor: semanticColors.bodyDivider
-          }
-        }
-      }
-    ]
+            borderBottomColor: semanticColors.bodyDivider,
+          },
+        },
+      },
+    ],
   };
 };

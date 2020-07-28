@@ -4,6 +4,7 @@ import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import { ICalloutProps } from '../Callout/Callout.types';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -21,7 +22,6 @@ export interface IBaseFloatingPicker {
   showPicker: (updateValue?: boolean) => void;
 
   /** Gets the suggestions */
-  // tslint:disable-next-line:no-any
   suggestions: any[];
 
   /** Gets the input text */
@@ -31,7 +31,6 @@ export interface IBaseFloatingPicker {
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
-// tslint:disable-next-line:no-any
 export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<IBaseFloatingPicker>;
 
@@ -87,6 +86,12 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    * The properties that will get passed to the Suggestions component.
    */
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
+
+  /**
+   * The properties that will get passed to the Callout component.
+   */
+  pickerCalloutProps?: ICalloutProps;
+
   /**
    * A callback for when an item is removed from the suggestion list
    */
@@ -111,8 +116,8 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   showForceResolve?: () => boolean;
 
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled
-   * component.
+   * The items that the base picker should currently display as selected.
+   * If this is provided then the picker will act as a controlled component.
    */
   selectedItems?: T[];
 

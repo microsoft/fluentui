@@ -14,23 +14,23 @@ import * as fs from 'fs';
  * Any conditions that Fabric components should fulfill can be added to this test suite.
  */
 
-// Common props required by List-based components in order for tests to pass
+/** Common props required by List-based components in order for tests to pass */
 const listProps = {
   items: [],
   skipViewportMeasures: true,
-  onShouldVirtualize: () => false
+  onShouldVirtualize: () => false,
 };
 
-// Props required by certain components in order for tests to pass
+/** Props required by certain components in order for tests to pass */
 const requiredProps: { [key: string]: any } = {
   PlainCard: {
-    onRenderPlainCard: () => null
+    onRenderPlainCard: () => null,
   },
   Announced: {
-    message: 'TestMessage'
+    message: 'TestMessage',
   },
   ColorPicker: {
-    color: '#ffffff'
+    color: '#ffffff',
   },
   Calendar: {
     strings: {
@@ -38,62 +38,65 @@ const requiredProps: { [key: string]: any } = {
       shortMonths: [],
       days: [],
       shortDays: [],
-      goToToday: ''
-    }
+      goToToday: '',
+    },
   },
   ContextualMenu: {
-    items: [{ text: 'TestText', key: 'TestKey', canCheck: true, isChecked: true }]
+    items: [{ text: 'TestText', key: 'TestKey', canCheck: true, isChecked: true }],
   },
   DetailsList: listProps,
   ExpandingCard: {
     onRenderCompactCard: () => null,
-    onRenderExpandedCard: () => null
+    onRenderExpandedCard: () => null,
   },
   GroupedList: {
     ...listProps,
-    groups: []
+    groups: [],
   },
   HoverCard: {
-    target: { __events__: {} }
+    target: { __events__: {} },
   },
   List: listProps,
   Modal: {
-    isOpen: true
+    isOpen: true,
   },
   Nav: {
-    groups: []
+    groups: [],
   },
   Panel: {
-    isOpen: true
+    isOpen: true,
   },
   ResizeGroup: {
-    onRenderData: () => null
+    onRenderData: () => null,
   },
   SelectedPeopleList: {
     onRenderItem: () => <div key="TestItem" />,
-    selectedItems: ['TestItem']
+    selectedItems: ['TestItem'],
   },
   StackItem: {
-    children: ['TestItem']
+    children: ['TestItem'],
   },
   Suggestions: {
-    suggestions: []
+    suggestions: [],
   },
   SuggestionsItem: {
     suggestionModel: { item: '', selected: false },
-    RenderSuggestion: () => null
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    RenderSuggestion: () => null,
   },
   SwatchColorPicker: {
     colorCells: [{ id: 'TestId', color: '#ffffff' }],
-    columnCount: 1
+    columnCount: 1,
   },
   Text: {
-    children: 'TestText'
-  }
+    children: 'TestText',
+  },
 };
 
-// Some components inject the className prop on a child DOM element rather than the root,
-// so the test needs to look for className on the child props object that has the given class name
+/**
+ * Some components inject the className prop on a child DOM element rather than the root,
+ * so the test needs to look for className on the child props object that has the given class name
+ */
 const classNameSelectors: { [key: string]: string } = {
   Breadcrumb: 'ms-Breadcrumb',
   Callout: 'ms-Callout',
@@ -105,7 +108,7 @@ const classNameSelectors: { [key: string]: string } = {
   Panel: 'ms-Panel',
   PlainCard: 'ms-Callout',
   Tooltip: 'ms-Tooltip',
-  MessageBar: 'ms-MessageBar'
+  MessageBar: 'ms-MessageBar',
 };
 
 // NOTE: Please consider modifying your component to work with this test instead
@@ -134,11 +137,16 @@ const excludedComponents: string[] = [
   'SpinButton', // className is not injected
   'Sticky', // accepts stickyClassName instead of className
   'TeachingBubble', // does not accept className
-  'ThemeGenerator' // not intended to be tested
+  'ThemeGenerator', // not intended to be tested
 ];
 
-// Some components require nodes to be mocked when creating the test component (e.g. components that use refs)
+/** Some components require nodes to be mocked when creating the test component (e.g. components that use refs) */
 const mockNodeComponents = ['ScrollablePane'];
+
+/** Map from component name to alternative package name from which it should import a version file */
+const componentPackageMap: { [componentName: string]: string } = {
+  FocusZone: '@fluentui/react-focus',
+};
 
 /**
  * Automatically consume and test any components that are exported
@@ -168,7 +176,7 @@ describe('Component File Conformance', () => {
       return {
         Layer: jest.fn().mockImplementation(props => {
           return props.children;
-        })
+        }),
       };
     });
   });
@@ -194,7 +202,7 @@ describe('Component File Conformance', () => {
         const testClass = 'testClass';
         const props = {
           ...requiredProps[componentName],
-          className: testClass
+          className: testClass,
         };
 
         let component;
@@ -204,7 +212,7 @@ describe('Component File Conformance', () => {
           component = renderer.create(<Component {...props} />, {
             createNodeMock: () => {
               return { __events__: {} };
-            }
+            },
           });
         }
 
@@ -217,7 +225,10 @@ describe('Component File Conformance', () => {
         let componentProps = json.props;
         if (classNameSelectors[componentName]) {
           const instanceHasClassName = (instance: renderer.ReactTestInstance) => {
-            return instance.props.className && instance.props.className.split(' ').indexOf(classNameSelectors[componentName]) !== -1;
+            return (
+              instance.props.className &&
+              instance.props.className.split(' ').indexOf(classNameSelectors[componentName]) !== -1
+            );
           };
           componentProps = component.root.find(instanceHasClassName).props;
         }
@@ -230,7 +241,7 @@ describe('Component File Conformance', () => {
             ', TEST NOTE: Failure with ' +
             componentName +
             '. ' +
-            'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
+            'Have you recently added a component? If so, please see notes in Conformance.test.tsx.',
         );
       }
     });
@@ -271,7 +282,7 @@ describe('Top Level Component File Conformance', () => {
     it(`${componentName} has a corresponding top level component file`, () => {
       expect(
         fs.existsSync(path.resolve(__dirname, `../${componentName}.ts`)) ||
-          fs.existsSync(path.resolve(__dirname, `../${componentName}.tsx`))
+          fs.existsSync(path.resolve(__dirname, `../${componentName}.tsx`)),
       ).toBeTruthy();
     });
   });
@@ -279,11 +290,12 @@ describe('Top Level Component File Conformance', () => {
   // make sure that there is a version import in each corresponding top level component file
   topLevelComponentFiles.forEach(file => {
     const componentName = path.basename(file).split('.')[0];
+    const packageName = componentPackageMap[componentName] || 'office-ui-fabric-react';
 
-    it(componentName + ' imports the OUFR version file', () => {
+    it(`${componentName} imports the ${packageName} version file`, () => {
       (window as any).__packages__ = null;
       require(file);
-      expect((window as any).__packages__['office-ui-fabric-react']).not.toBeUndefined();
+      expect((window as any).__packages__[packageName]).not.toBeUndefined();
     });
   });
 });

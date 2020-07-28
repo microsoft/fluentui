@@ -71,10 +71,9 @@ describe('customizable', () => {
     const wrapper = mount(
       <Customizer>
         <ConcatStyles styles={{ root: componentStyles }} />
-      </Customizer>
+      </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
-
     expect((component.props() as IComponentProps).styles).toEqual({ root: [globalStyles, componentStyles] });
   });
 
@@ -86,7 +85,7 @@ describe('customizable', () => {
     const wrapper = mount(
       <Customizer>
         <ConcatStyles styles={{ root: componentStyles }} />
-      </Customizer>
+      </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
 
@@ -101,7 +100,7 @@ describe('customizable', () => {
     const wrapper = mount(
       <Customizer>
         <OverrideStyles styles={{ root: componentStyles }} />
-      </Customizer>
+      </Customizer>,
     );
     const component = wrapper.find('OverrideStyles');
 
@@ -116,10 +115,81 @@ describe('customizable', () => {
     const wrapper = mount(
       <Customizer>
         <OverrideStyles styles={{ root: componentStyles }} />
-      </Customizer>
+      </Customizer>,
     );
     const component = wrapper.find('OverrideStyles');
 
     expect((component.props() as IComponentProps).styles).toEqual({ root: componentStyles });
+  });
+
+  it('should not mutate styles if no change to component and global styles', () => {
+    const globalRootStyles = { color: 'red', background: 'red' };
+    const componentRootStyles = { color: 'blue' };
+    const componentStyles = { root: componentRootStyles };
+
+    Customizations.applySettings({ styles: { root: globalRootStyles } });
+    const wrapper = mount(
+      <Customizer>
+        <ConcatStyles styles={componentStyles} />
+      </Customizer>,
+    );
+    const component = wrapper.find('ConcatStyles');
+    const finalStyles = (component.props() as IComponentProps).styles;
+    expect(finalStyles).toEqual({ root: [globalRootStyles, componentRootStyles] });
+
+    wrapper.setProps({});
+
+    const updatedComponent = wrapper.find('ConcatStyles');
+    const finalStylesAfterRerender = (updatedComponent.props() as IComponentProps).styles;
+    expect(finalStylesAfterRerender).toBe(finalStyles);
+    expect(finalStylesAfterRerender).toEqual(finalStyles);
+  });
+
+  it('should not mutate styles if no change to component styles without global styles', () => {
+    const componentStyles = { root: { color: 'blue' } };
+
+    const wrapper = mount(
+      <Customizer>
+        <ConcatStyles styles={componentStyles} />
+      </Customizer>,
+    );
+    const component = wrapper.find('ConcatStyles');
+    const finalStyles = (component.props() as IComponentProps).styles;
+    expect(finalStyles).toEqual(componentStyles);
+
+    wrapper.setProps({});
+
+    const updatedComponent = wrapper.find('ConcatStyles');
+    const finalStylesAfterRerender = (updatedComponent.props() as IComponentProps).styles;
+    expect(finalStylesAfterRerender).toBe(finalStyles);
+    expect(finalStylesAfterRerender).toEqual(finalStyles);
+  });
+
+  it('should update styles if component styles changed', () => {
+    const globalRootStyles = { color: 'red', background: 'red' };
+    const componentRootStyles = { color: 'blue' };
+    const componentStyles = { root: componentRootStyles };
+
+    Customizations.applySettings({ styles: { root: globalRootStyles } });
+    const wrapper = mount(
+      <Customizer>
+        <ConcatStyles styles={componentStyles} />
+      </Customizer>,
+    );
+    const component = wrapper.find('ConcatStyles');
+    const finalStyles = (component.props() as IComponentProps).styles;
+    expect(finalStyles).toEqual({ root: [globalRootStyles, componentRootStyles] });
+
+    const newComponentRootStyles = { color: 'red' };
+    const newComponentStyles = { root: newComponentRootStyles };
+
+    // re-render ConcatStyles with new styles
+    wrapper.setProps({
+      children: React.cloneElement(wrapper.props().children, { styles: newComponentStyles }),
+    });
+
+    const updatedComponent = wrapper.find('ConcatStyles');
+    const finalStylesAfterRerender = (updatedComponent.props() as IComponentProps).styles;
+    expect(finalStylesAfterRerender).toEqual({ root: [globalRootStyles, newComponentRootStyles] });
   });
 });

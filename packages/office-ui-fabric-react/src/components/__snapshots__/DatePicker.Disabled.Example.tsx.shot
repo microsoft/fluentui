@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`] = `
-<div
-  className="docs-DatePickerExample"
->
+<div>
   <div
     className=
         ms-DatePicker
@@ -59,9 +57,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <div
             className=
@@ -90,6 +86,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border-color: GrayText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <input
@@ -137,6 +136,10 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: GrayText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -145,6 +148,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -155,6 +161,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -163,6 +172,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               disabled={true}
               id="DatePicker0-label"
@@ -268,9 +280,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
             }
       >
         <div
-          className=
-              ms-TextField-wrapper
-
+          className="ms-TextField-wrapper"
         >
           <label
             className=
@@ -298,6 +308,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   color: GrayText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
             htmlFor="DatePicker5-label"
             id="TextFieldLabel9"
@@ -331,6 +344,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border-color: GrayText;
+                }
+                @media screen and (forced-colors: active){& {
+                  forced-color-adjust: none;
                 }
           >
             <input
@@ -379,6 +395,10 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   &::-ms-clear {
                     display: none;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background: Window;
+                    color: GrayText;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -387,6 +407,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                    color: GrayText;
                   }
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
@@ -397,6 +420,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-weight: 400;
                     opacity: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                    color: GrayText;
+                  }
                   &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -405,6 +431,9 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                    color: GrayText;
                   }
               disabled={true}
               id="DatePicker5-label"

@@ -1,10 +1,8 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import { CalloutContentBase } from './CalloutContent.base';
 import { mount } from 'enzyme';
-import { Rectangle } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { Rectangle } from '../../utilities/positioning';
 
 describe('CalloutContentBase', () => {
   it('Ensure callout content updates when needed', () => {
@@ -15,13 +13,13 @@ describe('CalloutContentBase', () => {
     document.body.appendChild(targetElement2);
     const props = {
       target: targetElement1,
-      hidden: true
+      hidden: true,
     };
 
     const callout = mount(
       <CalloutContentBase {...props}>
         <div>Content</div>
-      </CalloutContentBase>
+      </CalloutContentBase>,
     );
 
     expect(renderMock).toHaveBeenCalled();
@@ -40,7 +38,7 @@ describe('CalloutContentBase', () => {
 
     callout.setProps({
       target: targetElement2,
-      hidden: true
+      hidden: true,
     });
 
     // Updating content should trigger a render update.
@@ -48,7 +46,7 @@ describe('CalloutContentBase', () => {
     callout.setProps({
       target: targetElement1,
       hidden: true,
-      shouldUpdateWhenHidden: true
+      shouldUpdateWhenHidden: true,
     });
     expect(renderMock).toHaveBeenCalled();
     renderMock.mockClear();
@@ -64,13 +62,13 @@ describe('CalloutContentBase', () => {
       bounds: new Rectangle(0, 0, 0, 0),
       onLayerMounted: () => {
         return;
-      }
+      },
     };
 
     const callout = mount(
       <CalloutContentBase {...props}>
         <div>Content</div>
-      </CalloutContentBase>
+      </CalloutContentBase>,
     );
 
     expect(renderMock).toHaveBeenCalled();
@@ -92,13 +90,13 @@ describe('CalloutContentBase', () => {
       bounds: new Rectangle(0, 0, 0, 0),
       onLayerMounted: () => {
         return;
-      }
+      },
     };
 
     const callout = mount(
       <CalloutContentBase {...props}>
         <div>Content</div>
-      </CalloutContentBase>
+      </CalloutContentBase>,
     );
 
     expect(renderMock).toHaveBeenCalled();

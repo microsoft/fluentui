@@ -11,6 +11,7 @@ export interface IDialogFooter {}
 /**
  * {@docCategory Dialog}
  */
+// eslint-disable-next-line deprecation/deprecation
 export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   /**
    * Gets the component ref.

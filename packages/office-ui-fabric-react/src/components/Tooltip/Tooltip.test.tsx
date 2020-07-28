@@ -13,10 +13,8 @@ const defaultCalloutProps: ICalloutProps = {
   beakWidth: 16,
   gapSpace: 0,
   setInitialFocus: true,
-  doNotLayer: false
+  doNotLayer: false,
 };
-
-// tslint:disable:jsx-no-lambda
 
 describe('Tooltip', () => {
   it('renders default Tooltip correctly', () => {
@@ -48,7 +46,7 @@ describe('Tooltip', () => {
       beakWidth: 0,
       gapSpace: 10,
       setInitialFocus: false,
-      doNotLayer: true
+      doNotLayer: true,
     };
 
     const directionalHint = DirectionalHint.bottomLeftEdge;
@@ -67,7 +65,7 @@ describe('Tooltip', () => {
           return null;
         }}
         targetElement={targetElement}
-      />
+      />,
     );
 
     expect(onRenderCalled).toEqual(true);

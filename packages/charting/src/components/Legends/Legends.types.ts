@@ -1,10 +1,17 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
 
   overflow?: ILegend[];
+}
+
+export interface ILegendSubComponentStyles {
+  hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 }
 
 export interface ILegendsStyles {
@@ -42,9 +49,14 @@ export interface ILegendsStyles {
    * Style for the text that indicates the no.of legends that are in hovercard due to lack of space
    */
   overflowIndicationTextStyle: IStyle;
+
+  /**
+   * sub component styles
+   */
+  subComponentStyles: ILegendSubComponentStyles;
 }
 
-export interface ILegend {
+export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Defines the title of the legend
    */
@@ -63,7 +75,7 @@ export interface ILegend {
   /**
    * Defines the function that is executed upon moving the mouse away from the legend
    */
-  onMouseOutAction?: VoidFunction;
+  onMouseOutAction?: (isLegendFocused?: boolean) => void;
 
   /**
    * The color for the legend
@@ -114,6 +126,26 @@ export interface ILegendsProps {
    * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
    */
   enabledWrapLines?: boolean;
+
+  /**
+   * props for the overflow set component
+   */
+  overflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * focus zone props in hover card
+   */
+  focusZonePropsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * text for overflow legends string
+   */
+  overflowText?: string;
+
+  /**
+   * Prop that takes the active legend
+   */
+  selectedLegend?: string;
 }
 
 /**

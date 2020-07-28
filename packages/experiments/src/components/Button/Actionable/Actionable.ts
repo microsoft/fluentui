@@ -5,13 +5,13 @@ import { IActionableProps } from './Actionable.types';
 import { useActionableState as state } from './Actionable.state';
 import { ActionableSlots as slots, ActionableView as view } from './Actionable.view';
 
-export const Actionable: React.StatelessComponent<IActionableProps> = composed({
+export const Actionable: React.FunctionComponent<IActionableProps> = composed({
   displayName: 'Actionable',
   slots,
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default Actionable;

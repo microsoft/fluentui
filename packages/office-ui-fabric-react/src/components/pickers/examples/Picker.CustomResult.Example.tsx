@@ -10,12 +10,17 @@ import {
   DocumentCardActivity,
   DocumentCardLocation,
   DocumentCardPreview,
-  DocumentCardTitle
+  DocumentCardTitle,
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IBasePickerProps, BasePickerListBelow, IPickerItemProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
+import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import {
+  IBasePickerProps,
+  BasePickerListBelow,
+  IPickerItemProps,
+  ISuggestionItemProps,
+} from 'office-ui-fabric-react/lib/Pickers';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
@@ -36,7 +41,7 @@ export interface IFullDocumentCardProps {
 export interface IDocumentPickerProps extends IBasePickerProps<IFullDocumentCardProps> {}
 
 const rootClass = mergeStyles({
-  maxWidth: 500
+  maxWidth: 500,
 });
 
 const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
@@ -44,8 +49,8 @@ const TestImages = {
   documentPreview: baseProductionCdnUrl + 'document-preview.png',
   documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
   documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
-  iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
-  personaFemale: baseProductionCdnUrl + 'persona-female.png'
+  iconPpt: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png',
+  personaFemale: baseProductionCdnUrl + 'persona-female.png',
 };
 
 const data: IFullDocumentCardProps[] = [
@@ -58,9 +63,9 @@ const data: IFullDocumentCardProps[] = [
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
-          accentColor: '#ce4b1f'
-        }
-      ]
+          accentColor: '#ce4b1f',
+        },
+      ],
     },
     documentCardProps: {},
     documentActionsProps: {
@@ -71,7 +76,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Pin' },
@@ -79,7 +84,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Ringer' },
@@ -87,22 +92,22 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
-        }
-      ] as IButtonProps[]
+          },
+        },
+      ] as IButtonProps[],
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people: [
         { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale },
+      ],
     },
     documentTitleProps: {
       title: 'Document1',
-      shouldTruncate: true
-    }
+      shouldTruncate: true,
+    },
   },
   {
     documentPreviewProps: {
@@ -113,9 +118,9 @@ const data: IFullDocumentCardProps[] = [
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
-          accentColor: '#ce4b1f'
-        }
-      ]
+          accentColor: '#ce4b1f',
+        },
+      ],
     },
     documentCardProps: {},
     documentActionsProps: {
@@ -126,7 +131,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Pin' },
@@ -134,7 +139,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Ringer' },
@@ -142,22 +147,22 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people: [
         { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale },
+      ],
     },
     documentTitleProps: {
       title: 'Document2',
-      shouldTruncate: true
-    }
+      shouldTruncate: true,
+    },
   },
   {
     documentPreviewProps: {
@@ -168,9 +173,9 @@ const data: IFullDocumentCardProps[] = [
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
-          accentColor: '#ce4b1f'
-        }
-      ]
+          accentColor: '#ce4b1f',
+        },
+      ],
     },
     documentCardProps: {},
     documentActionsProps: {
@@ -181,7 +186,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Pin' },
@@ -189,7 +194,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Ringer' },
@@ -197,22 +202,22 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people: [
         { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale },
+      ],
     },
     documentTitleProps: {
       title: 'Document3',
-      shouldTruncate: true
-    }
+      shouldTruncate: true,
+    },
   },
   {
     documentPreviewProps: {
@@ -223,9 +228,9 @@ const data: IFullDocumentCardProps[] = [
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
-          accentColor: '#ce4b1f'
-        }
-      ]
+          accentColor: '#ce4b1f',
+        },
+      ],
     },
     documentCardProps: {},
     documentActionsProps: {
@@ -236,7 +241,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Pin' },
@@ -244,7 +249,7 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
+          },
         },
         {
           iconProps: { iconName: 'Ringer' },
@@ -252,28 +257,28 @@ const data: IFullDocumentCardProps[] = [
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people: [
         { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale },
+      ],
     },
     documentTitleProps: {
       title: 'Document4',
-      shouldTruncate: true
-    }
-  }
+      shouldTruncate: true,
+    },
+  },
 ];
 
 const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
   documentProps: IFullDocumentCardProps,
-  itemProps: ISuggestionItemProps<any>
+  itemProps: ISuggestionItemProps<any>,
 ) => {
   const { documentPreviewProps, documentTitleProps } = documentProps;
 
@@ -287,7 +292,7 @@ const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISugg
 };
 
 const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
-  documentProps: IPickerItemProps<IFullDocumentCardProps>
+  documentProps: IPickerItemProps<IFullDocumentCardProps>,
 ) => {
   const { documentActionsProps, documentPreviewProps, documentActivityProps, documentTitleProps } = documentProps.item;
   const actions: IButtonProps[] = [];
@@ -299,17 +304,21 @@ const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardPr
         if (documentProps.onRemoveItem) {
           documentProps.onRemoveItem();
         }
-      }
+      },
     });
   }
   const log = (text: string): (() => void) => (): void => console.log(text);
 
   return (
     <DocumentCard onClick={log('You clicked the card.')}>
-      <DocumentCardPreview {...documentPreviewProps as IDocumentCardPreviewProps} />
-      <DocumentCardLocation location="Marketing Documents" locationHref="http://microsoft.com" ariaLabel="Location, Marketing Documents" />
-      <DocumentCardTitle {...documentTitleProps as IDocumentCardTitleProps} />
-      <DocumentCardActivity {...documentActivityProps as IDocumentCardActivityProps} />
+      <DocumentCardPreview {...(documentPreviewProps as IDocumentCardPreviewProps)} />
+      <DocumentCardLocation
+        location="Marketing Documents"
+        locationHref="http://microsoft.com"
+        ariaLabel="Location, Marketing Documents"
+      />
+      <DocumentCardTitle {...(documentTitleProps as IDocumentCardTitleProps)} />
+      <DocumentCardActivity {...(documentActivityProps as IDocumentCardActivityProps)} />
       <DocumentCardActions actions={actions} />
     </DocumentCard>
   );
@@ -317,12 +326,14 @@ const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardPr
 
 class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
 
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
+
 export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
   constructor(props: {}) {
     super(props);
     this._onFilterChanged = this._onFilterChanged.bind(this);
     this.state = {
-      isPickerDisabled: false
+      isPickerDisabled: false,
     };
   }
 
@@ -330,7 +341,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     return (
       <div className={rootClass}>
         <Checkbox
-          styles={{ root: { margin: '10px 0' } }}
+          styles={checkboxStyles}
           label="Disable Document Picker"
           checked={this.state.isPickerDisabled}
           onChange={this._onDisabledButtonClick}
@@ -343,13 +354,13 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Documents',
-            noResultsFoundText: 'No Documents Found'
+            noResultsFoundText: 'No Documents Found',
           }}
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onFocus: () => console.log('onFocus called'),
             onBlur: () => console.log('onBlur called'),
-            'aria-label': 'Document Picker'
+            'aria-label': 'Document Picker',
           }}
         />
       </div>
@@ -362,14 +373,22 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
 
   private _onDisabledButtonClick = (): void => {
     this.setState({
-      isPickerDisabled: !this.state.isPickerDisabled
+      isPickerDisabled: !this.state.isPickerDisabled,
     });
   };
 
-  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
+  private _onFilterChanged(filterText: string, items?: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
+    if (!items) {
+      return [];
+    }
+
     return filterText
       ? data
-          .filter(item => item.documentTitleProps && item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+          .filter(
+            item =>
+              item.documentTitleProps &&
+              item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0,
+          )
           .filter(item => !this._listContainsDocument(item, items))
       : [];
   }
@@ -379,6 +398,8 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
       return false;
     }
     const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
-    return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
+    return (
+      items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0
+    );
   }
 }

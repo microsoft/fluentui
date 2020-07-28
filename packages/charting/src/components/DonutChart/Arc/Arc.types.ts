@@ -1,15 +1,28 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint } from '../index';
 export interface IArcProps {
+  /**
+   * Theme
+   */
+  theme: ITheme;
   /**
    * Data to render in the Arc.
    */
   data?: IArcData;
 
   /**
+   * Data to render focused Arc
+   */
+  focusData?: IArcData;
+
+  /**
+   * id of the focused arc
+   */
+  focusedArcId?: string;
+  /**
    * shape for  Arc.
    */
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   arc?: any;
 
   /**
@@ -33,6 +46,16 @@ export interface IArcProps {
   hoverOnCallback?: Function;
 
   /**
+   * Defines the function that is executed upon hovering over the legend
+   */
+  onFocusCallback?: Function;
+
+  /**
+   * Defines the function that is executed upon hovering Leave the legend
+   */
+  onBlurCallback?: Function;
+
+  /**
    * Defines the function that is executed upon hovering Leave the legend
    */
   hoverLeaveCallback?: Function;
@@ -41,6 +64,12 @@ export interface IArcProps {
    * Uniq string for chart
    */
   uniqText?: string;
+
+  /**
+   * string for callout id
+   */
+  calloutId?: string;
+
   /**
    * Active Arc for chart
    */
@@ -50,6 +79,11 @@ export interface IArcProps {
    * internal prop for href
    */
   href?: string;
+
+  /**
+   * props for inside donut value
+   */
+  valueInsideDonut?: string | number;
 }
 
 export interface IArcData {
@@ -84,4 +118,14 @@ export interface IArcStyles {
    * Style set for the card header component root
    */
   root: IStyle;
+
+  /**
+   * Style set for the inside donut string
+   */
+  insideDonutString: IStyle;
+
+  /**
+   * styles for the focus
+   */
+  focusRing: IStyle;
 }

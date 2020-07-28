@@ -11,28 +11,29 @@ const FacepileOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/
 export const FacepilePageProps: IDocPageProps = {
   title: 'Facepile',
   componentName: 'Facepile',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Facepile',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Facepile',
   examples: [
     {
       title: 'Facepile with size, presence, and fade in options',
       code: FacepileBasicExampleCode,
-      view: <FacepileBasicExample />
+      view: <FacepileBasicExample />,
     },
     {
       title: 'Facepile with overflow buttons',
       code: FacepileOverflowExampleCode,
-      view: <FacepileOverflowExample />
+      view: <FacepileOverflowExample />,
     },
     {
       title: 'Facepile with face adding functionality',
       code: FacepileAddFaceExampleCode,
-      view: <FacepileAddFaceExample />
-    }
+      view: <FacepileAddFaceExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileBestPractices.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

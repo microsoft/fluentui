@@ -4,10 +4,10 @@ import { getStyles } from './VerticalDivider.styles';
 import { VerticalDividerBase } from './VerticalDivider.base';
 import { styled } from '../../Utilities';
 
-export const VerticalDivider: React.StatelessComponent<IVerticalDividerProps> = styled<
+export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps> = styled<
   IVerticalDividerProps,
   IVerticalDividerPropsStyles,
   IVerticalDividerStyles
 >(VerticalDividerBase, getStyles, undefined, {
-  scope: 'VerticalDivider'
+  scope: 'VerticalDivider',
 });

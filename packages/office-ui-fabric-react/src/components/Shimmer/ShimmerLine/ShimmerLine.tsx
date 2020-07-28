@@ -4,10 +4,10 @@ import { IShimmerLineProps, IShimmerLineStyleProps, IShimmerLineStyles } from '.
 import { ShimmerLineBase } from './ShimmerLine.base';
 import { getStyles } from './ShimmerLine.styles';
 
-export const ShimmerLine: React.StatelessComponent<IShimmerLineProps> = styled<
+export const ShimmerLine: React.FunctionComponent<IShimmerLineProps> = styled<
   IShimmerLineProps,
   IShimmerLineStyleProps,
   IShimmerLineStyles
 >(ShimmerLineBase, getStyles, undefined, {
-  scope: 'ShimmerLine'
+  scope: 'ShimmerLine',
 });

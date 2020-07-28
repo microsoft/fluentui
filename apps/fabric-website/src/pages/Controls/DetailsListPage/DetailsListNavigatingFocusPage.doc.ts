@@ -8,6 +8,6 @@ export const DetailsListNavigatingFocusPageProps: TFabricPlatformPageProps = {
     ...(ExternalProps as any),
     title: 'DetailsList - Inner Navigation',
     isFeedbackVisible: false,
-    related
-  }
+    related,
+  },
 };

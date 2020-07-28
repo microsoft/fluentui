@@ -17,7 +17,10 @@ export interface IDialog {}
 /**
  * {@docCategory Dialog}
  */
-export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IDialogProps
+  extends React.ClassAttributes<DialogBase>,
+    IWithResponsiveModeState,
+    IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

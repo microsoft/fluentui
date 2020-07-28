@@ -11,7 +11,7 @@ const SAMPLE_URL = 'https://contoso.sharepoint.com';
 const chevronStyle = mergeStyles({
   fontSize: 8,
   paddingLeft: 3,
-  paddingRight: 3
+  paddingRight: 3,
 });
 
 const descriptionStyle = mergeStyles({
@@ -22,8 +22,10 @@ const descriptionStyle = mergeStyles({
   color: '#797671',
   maxWidth: '100%',
   whiteSpace: 'nowrap',
-  textOverflow: 'ellipsis'
+  textOverflow: 'ellipsis',
 });
+
+const Divider = () => <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRightSmall'} className={chevronStyle} />;
 
 export class ChicletBreadcrumbExample extends React.Component {
   constructor(props: {}) {
@@ -31,18 +33,17 @@ export class ChicletBreadcrumbExample extends React.Component {
   }
 
   public render(): JSX.Element {
-    const divider = () => <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRightSmall'} className={chevronStyle} />;
     const breadcrumb = (
       <Breadcrumb
         items={[
           { text: 'Files', key: 'Files' },
           { text: 'OneDrive Design', key: 'OneDrive Design' },
           { text: 'Emails', key: 'Emails' },
-          { text: 'Campaigns', key: 'Campaigns' }
+          { text: 'Campaigns', key: 'Campaigns' },
         ]}
         className={descriptionStyle}
         onRenderItem={this._onRenderItem}
-        dividerAs={divider}
+        dividerAs={Divider}
       />
     );
 
@@ -50,7 +51,7 @@ export class ChicletBreadcrumbExample extends React.Component {
       <Chiclet
         url={SAMPLE_URL}
         title="Quarterly Results.docx"
-        image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
+        image="https://static2.sharepointonline.com/files/fabric/assets/item-types/96/docx.svg"
         size={ChicletSize.medium}
         description={breadcrumb}
       />

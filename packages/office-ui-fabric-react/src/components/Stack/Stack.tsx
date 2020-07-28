@@ -14,10 +14,10 @@ const StackView: IStackComponent['view'] = props => {
     gap: 'tokens.childrenGap',
     maxHeight: 'tokens.maxHeight',
     maxWidth: 'tokens.maxWidth',
-    padding: 'tokens.padding'
+    padding: 'tokens.padding',
   });
 
-  const stackChildren: (React.ReactChild | null)[] = React.Children.map(
+  const stackChildren: (React.ReactChild | null)[] | null | undefined = React.Children.map(
     props.children,
     (child: React.ReactElement<IStackItemProps>, index: number) => {
       if (!child) {
@@ -26,24 +26,24 @@ const StackView: IStackComponent['view'] = props => {
 
       if (_isStackItem(child)) {
         const defaultItemProps: IStackItemProps = {
-          shrink: !disableShrink
+          shrink: !disableShrink,
         };
 
         return React.cloneElement(child, {
           ...defaultItemProps,
-          ...child.props
+          ...child.props,
         });
       }
 
       return child;
-    }
+    },
   );
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
   const Slots = getSlots<IStackProps, IStackSlots>(props, {
     root: RootType,
-    inner: 'div'
+    inner: 'div',
   });
 
   if (wrap) {
@@ -59,7 +59,7 @@ const StackView: IStackComponent['view'] = props => {
 
 function _isStackItem(item: React.ReactNode): item is typeof StackItem {
   // In theory, we should be able to just check item.type === StackItem.
-  // However, under certain unclear circumstances (see https://github.com/OfficeDev/office-ui-fabric-react/issues/10785),
+  // However, under certain unclear circumstances (see https://github.com/microsoft/fluentui/issues/10785),
   // the object identity is different despite the function implementation being the same.
   return (
     !!item &&
@@ -71,15 +71,15 @@ function _isStackItem(item: React.ReactNode): item is typeof StackItem {
 }
 
 const StackStatics = {
-  Item: StackItem
+  Item: StackItem,
 };
 
-export const Stack: React.StatelessComponent<IStackProps> & {
-  Item: React.StatelessComponent<IStackItemProps>;
+export const Stack: React.FunctionComponent<IStackProps> & {
+  Item: React.FunctionComponent<IStackItemProps>;
 } = createComponent(StackView, {
   displayName: 'Stack',
   styles,
-  statics: StackStatics
+  statics: StackStatics,
 });
 
 export default Stack;

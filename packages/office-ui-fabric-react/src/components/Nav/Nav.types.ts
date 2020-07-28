@@ -5,6 +5,16 @@ import { IIconProps } from '../Icon/Icon.types';
 import { IButtonProps } from '../Button/Button.types';
 
 /**
+ * {@doccategory Nav}
+ */
+export interface IRenderGroupHeaderProps extends INavLinkGroup {
+  /**
+   * Whether or not the group is presently expanded.
+   */
+  isExpanded?: boolean;
+}
+
+/**
  * {@docCategory Nav}
  */
 export interface INav {
@@ -59,7 +69,7 @@ export interface INavProps {
    * Used to customize how content inside the group header is rendered
    * @defaultvalue Default group header rendering
    */
-  onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+  onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
 
   /**
    * Render a custom link in place of the normal one.
@@ -111,7 +121,8 @@ export interface INavProps {
    */
   expandButtonAriaLabel?: string;
   /**
-   * (Optional) The nav link selected state aria label.
+   * (Deprecated) Use ariaCurrent on links instead
+   * @deprecated Use ariaCurrent on links instead
    */
   selectedAriaLabel?: string;
 }
@@ -217,6 +228,11 @@ export interface INavLink {
    * Whether or not the link is in an expanded state
    */
   isExpanded?: boolean;
+
+  /**
+   * Aria-current token for active nav links. Must be a valid token value, and defaults to 'page'.
+   */
+  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true';
 
   /**
    * Aria label for nav link. Ignored if `collapseAriaLabel` or `expandAriaLabel` is provided.

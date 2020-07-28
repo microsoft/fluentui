@@ -29,7 +29,9 @@ export function delay(millisecond: number): Promise<void> {
  * Mounts the element attached to a child of document.body. This is primarily for tests involving
  * event handlers (which don't work right unless the element is attached).
  */
-export function mountAttached<C extends Component, P = C['props'], S = C['state']>(element: React.ReactElement<P>): ReactWrapper<P, S, C> {
+export function mountAttached<C extends Component, P = C['props'], S = C['state']>(
+  element: React.ReactElement<P>,
+): ReactWrapper<P, S, C> {
   const parent = document.createElement('div');
   document.body.appendChild(parent);
   return mount(element, { attachTo: parent });
