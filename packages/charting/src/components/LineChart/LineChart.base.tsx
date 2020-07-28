@@ -30,6 +30,12 @@ export interface IContainerValues {
   reqID: number;
 }
 
+interface YValueHover {
+  legend?: string;
+  y?: number;
+  color?: string;
+}
+
 export class LineChartBase extends React.Component<
   ILineChartProps,
   {
@@ -38,7 +44,7 @@ export class LineChartBase extends React.Component<
     containerWidth: number;
     containerHeight: number;
     isCalloutVisible: boolean;
-    YValueHover: { legend?: string; y?: number; color?: string }[];
+    YValueHover: YValueHover[];
     hoverYValue: string | number | null;
     hoverXValue: string | number | null;
     refArray: IRefArrayData[];
@@ -277,25 +283,17 @@ export class LineChartBase extends React.Component<
                 style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
               >
                 {this.state.YValueHover &&
-                  this.state.YValueHover.map(
-                    (
-                      xValue: {
-                        legend?: string;
-                        y?: number;
-                        color?: string;
-                        yAxisCalloutData?: string | { [id: string]: number };
-                      },
-                      index: number,
-                      yValues: any[],
-                    ) => {
-                      const isLast: boolean = index + 1 === yValues.length;
-                      return (
-                        <div style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}>
-                          {this._getCalloutContent(xValue, index, yValueHoverSubCountsExists, isLast)}
-                        </div>
-                      );
-                    },
-                  )}
+                  this.state.YValueHover.map((yValue: YValueHover, index: number, yValues: YValueHover[]) => {
+                    const isLast: boolean = index + 1 === yValues.length;
+                    return (
+                      <div
+                        key={`callout-content-${index}`}
+                        style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
+                      >
+                        {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </Callout>
@@ -336,7 +334,7 @@ export class LineChartBase extends React.Component<
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
           {yValueHoverSubCountsExists && (
-            <div className={this._classNames.calloutContentY}>
+            <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
               {xValue.legend!} ({xValue.y})
             </div>
           )}
@@ -357,7 +355,7 @@ export class LineChartBase extends React.Component<
       const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
       return (
         <div style={marginStyle}>
-          <div className={this._classNames.calloutContentY}>
+          <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
             {xValue.legend!} ({xValue.y})
           </div>
           {Object.keys(subcounts).map((subcountName: string) => {
