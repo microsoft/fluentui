@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { Editor, renderElementToJSX } from '@fluentui/docs-components';
+import { Editor as _Editor, renderElementToJSX } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -29,7 +29,6 @@ import { readTreeFromStore, readTreeFromURL, writeTreeToStore, writeTreeToURL } 
 import { DesignerMode, JSONTreeElement } from './types';
 import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
-import { codeToTree } from '../utils/codeToTree';
 import { ErrorBoundary } from './ErrorBoundary';
 
 const HEADER_HEIGHT = '3rem';
@@ -37,6 +36,14 @@ const HEADER_HEIGHT = '3rem';
 function debug(...args) {
   console.log('--Designer', ...args);
 }
+
+// Lazy load codeToTree - it depenends on babel which is not loaded in Fullscreen mode.
+let codeToTree: (code: string) => JSONTreeElement = null;
+
+const Editor = React.lazy(async () => {
+  codeToTree = (await import(/* webpackChunkName: "codetotree" */ '../utils/codeToTree')).codeToTree;
+  return { default: _Editor };
+});
 
 function getDefaultJSONTree(): JSONTreeElement {
   return { uuid: 'builder-root', type: 'div' };
