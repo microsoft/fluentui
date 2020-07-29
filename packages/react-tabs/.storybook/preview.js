@@ -4,7 +4,7 @@ import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withPerformance } from 'storybook-addon-performance';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withThemeProvider } from './decorators';
+import { withThemeProvider } from '@fluentui/storybook/decorators';
 
 addDecorator(withA11y());
 addDecorator(withPerformance);
