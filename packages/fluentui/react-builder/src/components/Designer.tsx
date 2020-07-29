@@ -31,6 +31,7 @@ import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
 import { codeToTree } from '../utils/codeToTree';
 import { ErrorBoundary } from './ErrorBoundary';
+import { InsertComponent } from './InsertComponent';
 import { DownloadIcon } from '@fluentui/react-icons-northstar';
 
 const HEADER_HEIGHT = '3rem';
@@ -43,6 +44,12 @@ function getDefaultJSONTree(): JSONTreeElement {
   return { uuid: 'builder-root', type: 'div' };
 }
 
+const focusTreeTitle = uuid => {
+  // TODO: use refs
+  const element = document.querySelector(`#${uuid} [data-is-focusable]`) as HTMLElement;
+  element && element.focus();
+};
+
 type JSONTreeOrigin = 'store' | 'url';
 
 type DesignerState = {
@@ -54,6 +61,7 @@ type DesignerState = {
   showCode: boolean;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
+  insertComponent: { uuid: string; where: string; parentUuid?: string };
 };
 
 type DesignerAction =
@@ -70,6 +78,9 @@ type DesignerAction =
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
   | { type: 'SOURCE_CODE_CHANGE'; code: string }
+  | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
+  | { type: 'CLOSE_ADD_DIALOG' }
+  | { type: 'ADD_COMPONENT'; component: string }
   | { type: 'UPLOAD_TREE'; jsonTree: JSONTreeElement };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
@@ -193,8 +204,48 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       } catch (e) {
         draftState.codeError = e.message;
       }
-
       break;
+
+    case 'OPEN_ADD_DIALOG': {
+      const parent = jsonTreeFindParent(draftState.jsonTree, action.uuid);
+      draftState.insertComponent = { where: action.where, uuid: action.uuid, parentUuid: `${parent?.uuid}` };
+      break;
+    }
+
+    case 'CLOSE_ADD_DIALOG':
+      draftState.insertComponent = null;
+      break;
+
+    case 'ADD_COMPONENT': {
+      const element = resolveDraggingElement(action.component);
+
+      let parent: JSONTreeElement = undefined;
+      let index = 0;
+      const { where, uuid, parentUuid } = draftState.insertComponent;
+      draftState.insertComponent = null;
+
+      if (where === 'first') {
+        parent = draftState.jsonTree;
+      } else if (where === 'child') {
+        parent = jsonTreeFindElement(draftState.jsonTree, uuid);
+      } else {
+        parent = jsonTreeFindElement(draftState.jsonTree, parentUuid);
+        index = parent.props.children.findIndex(c => c['uuid'] === uuid);
+        if (index === -1) {
+          index = 0;
+        } else {
+          where === 'after' && index++;
+        }
+      }
+
+      resolveDrop(element, parent, index);
+
+      draftState.selectedJSONTreeElementUuid = element.uuid;
+      draftState.selectedComponentInfo = componentInfoContext.byDisplayName[element.displayName];
+      treeChanged = true;
+      setTimeout(() => focusTreeTitle(element.uuid));
+      break;
+    }
 
     default:
       throw new Error(`Invalid action ${action}`);
@@ -242,6 +293,7 @@ export const Designer: React.FunctionComponent = () => {
       showCode: false,
       code: null,
       codeError: null,
+      insertComponent: null,
     };
   });
 
@@ -263,6 +315,7 @@ export const Designer: React.FunctionComponent = () => {
     showCode,
     code,
     codeError,
+    insertComponent,
   } = state;
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
@@ -389,6 +442,24 @@ export const Designer: React.FunctionComponent = () => {
     // FIXME: remove tree_lz from current URL
   }, [dispatch]);
 
+  const handleOpenAddComponentDialog = React.useCallback(
+    (uuid: string, where: string) => {
+      dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
+    },
+    [dispatch],
+  );
+
+  const handleCloseAddComponentDialog = React.useCallback(() => {
+    dispatch({ type: 'CLOSE_ADD_DIALOG' });
+  }, [dispatch]);
+
+  const handleAddComponent = React.useCallback(
+    (component: string) => {
+      dispatch({ type: 'ADD_COMPONENT', component });
+    },
+    [dispatch],
+  );
+
   const selectedComponent =
     !draggingElement &&
     mode !== 'use' &&
@@ -407,6 +478,9 @@ export const Designer: React.FunctionComponent = () => {
         overflow: 'hidden',
       }}
     >
+      {insertComponent && (
+        <InsertComponent onDismiss={handleCloseAddComponentDialog} onComponentAdded={handleAddComponent} />
+      )}
       {draggingElement && (
         <>
           <EventListener type="mousemove" listener={handleDrag} target={document} />
@@ -465,14 +539,26 @@ export const Designer: React.FunctionComponent = () => {
           }}
         >
           <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
-          <ComponentTree
-            tree={jsonTree}
-            selectedComponent={selectedComponent}
-            onSelectComponent={handleSelectComponent}
-            onCloneComponent={handleCloneComponent}
-            onMoveComponent={handleMoveComponent}
-            onDeleteComponent={handleDeleteComponent}
-          />
+          <div role="complementary" aria-label="Component tree">
+            {jsonTree?.props?.children?.length > 0 ? (
+              <ComponentTree
+                tree={jsonTree}
+                selectedComponent={selectedComponent}
+                onSelectComponent={handleSelectComponent}
+                onCloneComponent={handleCloneComponent}
+                onMoveComponent={handleMoveComponent}
+                onDeleteComponent={handleDeleteComponent}
+                onAddComponent={handleOpenAddComponentDialog}
+              />
+            ) : (
+              <Button
+                text
+                content="Insert first component"
+                fluid
+                onClick={() => handleOpenAddComponentDialog('', 'first')}
+              />
+            )}
+          </div>
         </div>
 
         <div
@@ -541,6 +627,7 @@ export const Designer: React.FunctionComponent = () => {
                   onMoveComponent={handleMoveComponent}
                   onDeleteComponent={handleDeleteComponent}
                   onGoToParentComponent={handleGoToParentComponent}
+                  role="main"
                 />
               </ErrorBoundary>
             </BrowserWindow>
@@ -548,7 +635,7 @@ export const Designer: React.FunctionComponent = () => {
             {(showCode || showJSONTree) && (
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
-                  <div>
+                  <div role="complementary" aria-label="Code editor">
                     <Editor mode="jsx" height="auto" value={code} onChange={handleSourceCodeChange} />
                     {codeError && (
                       <pre
@@ -572,7 +659,11 @@ export const Designer: React.FunctionComponent = () => {
                   </div>
                 )}
                 {showJSONTree && (
-                  <div style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}>
+                  <div
+                    role="complementary"
+                    aria-label="JSON tree"
+                    style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}
+                  >
                     <h3 style={{ margin: 0 }}>JSON Tree</h3>
                     <pre>{JSON.stringify(jsonTree, null, 2)}</pre>
                   </div>
@@ -584,6 +675,8 @@ export const Designer: React.FunctionComponent = () => {
 
         {selectedComponentInfo && (
           <div
+            role="complementary"
+            aria-label="Component properties"
             style={{
               width: '20rem',
               padding: '1rem',

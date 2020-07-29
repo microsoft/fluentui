@@ -47,9 +47,10 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>
       </div>
       <div>
-        <strong>Mode:</strong>
+        <strong id="editor-mode-label">Mode:</strong>
         &emsp;
         <RadioGroup
+          aria-labelledby="editor-mode-label"
           style={{ display: 'inline-block' }}
           checkedValue={mode}
           onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {

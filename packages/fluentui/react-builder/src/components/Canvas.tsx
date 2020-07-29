@@ -7,6 +7,7 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
+import { ReaderText } from './ReaderText';
 
 export type CanvasProps = {
   draggingElement: JSONTreeElement;
@@ -25,6 +26,7 @@ export type CanvasProps = {
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
   mode?: 'build' | 'design' | 'use';
+  role?: string;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -44,6 +46,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   renderJSONTreeElement,
   mode,
   style,
+  role,
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -119,6 +122,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       return () => null;
     }
 
+    role && iframe.setAttribute('role', role);
+
     // We need to wait one frame in the iframe in order to find the DOM nodes we're looking for
     const animationFrame = iframe.contentWindow.setTimeout(() => {
       // console.log('Canvas:effect');
@@ -129,7 +134,40 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       setFocusableElements(
         Array.from(
           iframeDocument.querySelectorAll(
-            'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])',
+            [
+              'a',
+              'button',
+              'checkbox',
+              'dialog',
+              'gridcell',
+              'link',
+              'log',
+              'marquee',
+              'menuitem',
+              'menuitemcheckbox',
+              'menuitemradio',
+              'option',
+              'progressbar',
+              'radio',
+              'scrollbar',
+              'slider',
+              'spinbutton',
+              'status',
+              'tab',
+              'tabpanel',
+              'textbox',
+              'timer',
+              'tooltip',
+              'treeitem',
+              'switch',
+              'input',
+              'textarea',
+              'select',
+              'details',
+              '[tabindex]',
+            ]
+              .map(selector => `*:not([aria-hidden]) >  ${selector}`)
+              .join(','),
           ),
         ),
       );
@@ -206,7 +244,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           `
           [data-builder-id="builder-root"] {
             ${isExpanding ? `padding: ${debugSize};` : ''}
-            min-height: 100vh;
+            min-height: calc(100vh - 1.5rem);
           }
           `,
         isExpanding &&
@@ -237,7 +275,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree, mode]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree, role, mode]);
 
   return (
     <Frame
@@ -339,6 +377,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 />
               )}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
           </>
         )}
