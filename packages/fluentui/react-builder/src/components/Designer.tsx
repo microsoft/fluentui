@@ -542,6 +542,7 @@ export class Designer extends React.Component<{}, DesignerState> {
                     onMoveComponent={this.handleMoveComponent}
                     onDeleteComponent={this.handleDeleteComponent}
                     onGoToParentComponent={this.handleGoToParentComponent}
+                    mode={mode}
                   />
                 </ErrorBoundary>
               </BrowserWindow>

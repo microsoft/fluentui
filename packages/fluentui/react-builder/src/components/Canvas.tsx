@@ -2,7 +2,7 @@ import * as React from 'react';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { JSONTreeElement } from './types';
+import { JSONTreeElement, DesignerMode } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
@@ -25,6 +25,7 @@ export type CanvasProps = {
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
+  mode: DesignerMode;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -44,6 +45,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onGoToParentComponent,
   renderJSONTreeElement,
   style,
+  mode,
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -52,6 +54,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         .slice(2)}`,
     [],
   );
+
+  const iframeRef = React.useRef<HTMLIFrameElement>();
 
   const iframeCoordinatesToWindowCoordinates = React.useCallback(
     (e: MouseEvent) => {
@@ -85,6 +89,30 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [onMouseUp],
   );
 
+  const handleFocus = React.useCallback(
+    (ev: FocusEvent) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+
+      const document = iframeRef.current?.contentDocument;
+      const fiberNav = FiberNavigator.fromDOMNode(ev.target);
+      const parent = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
+
+      document?.body.focus();
+
+      // when the selected element was not created by the user, the focus is in the body
+      // therefore we need to warn the user because, in this case, the reader can read the entire document
+      if (document && !parent?.props?.['data-builder-id']) {
+        document.body.style.outline = '4px dashed red';
+        document.body.style.outlineOffset = '-4px';
+      } else {
+        document.body.style.outline = '';
+        document.body.style.outlineOffset = '';
+      }
+    },
+    [jsonTree, iframeRef],
+  );
+
   const handleSelectComponent = React.useCallback(
     (fiberNav: FiberNavigator) => {
       onSelectComponent?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
@@ -116,7 +144,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   const debugSize = '8px';
 
   React.useEffect(() => {
-    const iframe = document.getElementById(iframeId) as HTMLIFrameElement;
+    iframeRef.current = document.getElementById(iframeId) as HTMLIFrameElement;
+    const iframe = iframeRef.current;
 
     if (!iframe) {
       // console.log('Canvas:effect !iframe, stop');
@@ -135,6 +164,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       if (!style) {
         style = iframeDocument.createElement('style');
         style.id = 'builder-style';
+
         // console.log('Canvas:effect created style', style);
 
         iframeDocument.body.appendChild(style);
@@ -227,7 +257,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting]);
+  }, [iframeId, isExpanding, isSelecting, mode]);
 
   return (
     <Frame
@@ -298,9 +328,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               />
             )}
 
-            <Provider theme={teamsTheme} target={document}>
+            <Provider theme={teamsTheme} target={document} tabIndex={0} style={{ outline: 'none' }}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+              {mode === 'use' && <EventListener capture type="focus" listener={handleFocus} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
             </Provider>
           </>
