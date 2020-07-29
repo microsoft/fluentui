@@ -24,6 +24,7 @@ export type CanvasProps = {
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
+  mode?: 'build' | 'design' | 'use';
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -41,6 +42,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onDeleteComponent,
   onGoToParentComponent,
   renderJSONTreeElement,
+  mode,
   style,
 }) => {
   const iframeId = React.useMemo(
@@ -50,6 +52,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         .slice(2)}`,
     [],
   );
+
+  const [focusableElements, setFocusableElements] = React.useState([]);
+  const [currentIndex, setIndex] = React.useState(0);
 
   const iframeCoordinatesToWindowCoordinates = React.useCallback(
     (e: MouseEvent) => {
@@ -120,6 +125,14 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       const iframeDocument = iframe.contentDocument;
       const iframeWindow = iframe.contentWindow;
+
+      setFocusableElements(
+        Array.from(
+          iframeDocument.querySelectorAll(
+            'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])',
+          ),
+        ),
+      );
 
       let style = iframeDocument.getElementById('builder-style');
 
@@ -203,6 +216,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             outline-offset: -1px;
           }
           `,
+        mode === 'use' &&
+          `
+            .virtual-focused {
+              border: 2px dashed black;
+            }
+          `,
         elementStyles,
       ]
         .filter(Boolean)
@@ -218,7 +237,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree, mode]);
 
   return (
     <Frame
@@ -291,6 +310,34 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+              {mode === 'use' && (
+                <EventListener
+                  type="keydown"
+                  listener={e => {
+                    if (e.keyCode === 40 || e.keyCode === 38) {
+                      focusableElements[currentIndex].classList.remove('virtual-focused');
+                      setIndex(idx => {
+                        const modifier = e.keyCode === 40 ? 1 : -1;
+                        const nextIndex = idx + modifier;
+                        // if nextIndex is bigger than number of elements move it to 0
+                        // if nextIndex is smaller than 0 move it to the lastElement
+                        // otherwise move to the nextIndex
+                        const newIndex =
+                          nextIndex >= focusableElements.length
+                            ? 0
+                            : nextIndex < 0
+                            ? focusableElements.length - 1
+                            : nextIndex;
+                        focusableElements[newIndex].classList.add('virtual-focused');
+                        return newIndex;
+                      });
+                    } else {
+                      focusableElements[currentIndex].focus();
+                    }
+                  }}
+                  target={document}
+                />
+              )}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
             </Provider>
           </>

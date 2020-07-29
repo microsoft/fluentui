@@ -527,6 +527,7 @@ export const Designer: React.FunctionComponent = () => {
             >
               <ErrorBoundary code={code} jsonTree={jsonTree}>
                 <Canvas
+                  mode={mode}
                   draggingElement={draggingElement}
                   isExpanding={isExpanding}
                   isSelecting={isSelecting || !!draggingElement}
