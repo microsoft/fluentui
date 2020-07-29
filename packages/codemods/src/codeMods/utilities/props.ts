@@ -32,7 +32,6 @@ export function renameProp(
       if (transform) {
         transform(val, toRename, replacementName);
       } else {
-        console.log('time for spread!');
         renamePropInSpread(val, toRename, replacementName);
       }
     }

@@ -12,35 +12,31 @@ describe('Persona props mod tests', () => {
     project.addSourceFilesAtPaths(`${process.cwd()}${dropDownPath}`);
   });
 
-  // it('can rename the toggled feature in Button', () => {
-  //   const file = project.getSourceFileOrThrow('mButtonProps.tsx');
-  //   const tags = findJsxTag(file, 'Button');
-  //   renameProp(tags, 'toggled', 'checked');
-  //   tags.forEach(val => {
-  //     expect(val.getAttribute('toggled')).not.toBeTruthy();
-  //   });
-  // });
+  it('can rename the toggled feature in Button', () => {
+    const file = project.getSourceFileOrThrow('mButtonProps.tsx');
+    const tags = findJsxTag(file, 'Button');
+    renameProp(tags, 'toggled', 'checked');
+    tags.forEach(val => {
+      expect(val.getAttribute('toggled')).not.toBeTruthy();
+    });
+  });
 
-  // it('can work on the dropdown example', () => {
-  //   const file = project.getSourceFileOrThrow('mDropdownSpreadProps.tsx');
-  //   const tags = findJsxTag(file, 'Dropdown');
-  //   renameProp(tags, 'isDisabled', 'disabled');
-  //   tags.forEach(val => {
-  //     expect(val.getText().includes('isDisabled')).toBeFalsy();
-  //     //console.log(val);
-  //   });
-  // });
+  it('can work on the dropdown example', () => {
+    const file = project.getSourceFileOrThrow('mDropdownSpreadProps.tsx');
+    const tags = findJsxTag(file, 'Dropdown');
+    renameProp(tags, 'isDisabled', 'disabled');
+    tags.forEach(val => {
+      expect(val.getText().includes('disabled={isDisabled}')).toBeTruthy();
+    });
+  });
 
   it('can rename a prop in a spread operator with complex spread examples', () => {
     const file = project.getSourceFileOrThrow('mCompoundButtonProps.tsx');
-    project.getSourceFiles().forEach(f => {
-      console.log(f.getFilePath());
-    });
     const tags = findJsxTag(file, 'CompoundButton');
     renameProp(tags, 'toggled', 'checked');
     tags.forEach(val => {
-      //console.log(val);
-      //expect(val.getText().includes('toggled')).toBeFalsy();
+      expect(val.getText().includes('checked={toggled}')).toBeTruthy();
     });
+    console.log(file);
   });
 });
