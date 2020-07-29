@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update Release Notes with comment about ref changes in function components",
-  "packageName": "@fluentui/react-next",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-21T21:40:07.601Z"
-}

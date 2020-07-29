@@ -14,7 +14,7 @@
   "dependencies": {
     "@fluentui/docs": "^0.51.0",
     "@fluentui/react-button": "^0.7.9",
-    "@fluentui/react-next": "^8.0.0-alpha.69",
+    "@fluentui/react-next": "^8.0.0-alpha.70",
     "@fluentui/react-tabs": "^0.2.0",
     "@uifabric/charting": "^2.7.6",
     "@uifabric/date-time": "^7.13.1",
