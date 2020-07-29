@@ -9438,15 +9438,6 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    static defaultProps: {
-        hasCondensedHeadline: boolean;
-        imageProps: {
-            imageFit: ImageFit;
-            width: number;
-            height: number;
-        };
-    };
-    // (undocumented)
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
