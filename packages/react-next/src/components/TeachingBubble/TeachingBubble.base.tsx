@@ -62,7 +62,6 @@ export const TeachingBubbleBase = React.forwardRef(
     };
 
     const classNames = getClassNames(styles, stylesProps);
-
     const calloutStyles = classNames.subComponentStyles
       ? (classNames.subComponentStyles as ITeachingBubbleSubComponentStyles).callout
       : undefined;
