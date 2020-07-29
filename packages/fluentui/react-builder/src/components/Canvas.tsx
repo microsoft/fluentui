@@ -26,6 +26,7 @@ export type CanvasProps = {
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
   mode: DesignerMode;
+  onMessage: (string) => void;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -46,6 +47,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   renderJSONTreeElement,
   style,
   mode,
+  onMessage,
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -105,12 +107,14 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       if (document && !parent?.props?.['data-builder-id']) {
         document.body.style.outline = '4px dashed red';
         document.body.style.outlineOffset = '-4px';
+        onMessage('Be careful: focus on body!');
       } else {
         document.body.style.outline = '';
         document.body.style.outlineOffset = '';
+        onMessage('');
       }
     },
-    [jsonTree, iframeRef],
+    [jsonTree, iframeRef, onMessage],
   );
 
   const handleSelectComponent = React.useCallback(

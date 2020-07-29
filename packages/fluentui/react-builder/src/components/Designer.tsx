@@ -54,6 +54,7 @@ export type DesignerState = {
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
   showJSONTree: boolean;
+  canvasMessage?: string;
 };
 
 export class Designer extends React.Component<{}, DesignerState> {
@@ -352,6 +353,8 @@ export class Designer extends React.Component<{}, DesignerState> {
     });
   };
 
+  handleCanvasMessage = (canvasMessage: string) => this.setState({ canvasMessage });
+
   handleSourceCodeChange = code => {
     try {
       const modifiedTree = codeToTree(code);
@@ -399,6 +402,7 @@ export class Designer extends React.Component<{}, DesignerState> {
       code,
       codeError,
       showJSONTree,
+      canvasMessage,
     } = this.state;
 
     const selectedComponent =
@@ -507,6 +511,7 @@ export class Designer extends React.Component<{}, DesignerState> {
               <BrowserWindow
                 showNavBar={false}
                 headerItems={[
+                  <div style={{ marginLeft: 10 }}>{mode === 'use' && <Text error>{canvasMessage}</Text>}</div>,
                   <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                     {jsonTreeOrigin === 'url' && (
                       <>
@@ -542,6 +547,7 @@ export class Designer extends React.Component<{}, DesignerState> {
                     onMoveComponent={this.handleMoveComponent}
                     onDeleteComponent={this.handleDeleteComponent}
                     onGoToParentComponent={this.handleGoToParentComponent}
+                    onMessage={this.handleCanvasMessage}
                     mode={mode}
                   />
                 </ErrorBoundary>
