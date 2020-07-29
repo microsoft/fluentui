@@ -138,32 +138,32 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               'a',
               'button',
               'checkbox',
-              'dialog',
-              'gridcell',
-              'link',
-              'log',
               'marquee',
-              'menuitem',
-              'menuitemcheckbox',
-              'menuitemradio',
               'option',
-              'progressbar',
               'radio',
-              'scrollbar',
-              'slider',
-              'spinbutton',
-              'status',
-              'tab',
-              'tabpanel',
-              'textbox',
-              'timer',
-              'tooltip',
-              'treeitem',
-              'switch',
               'input',
               'textarea',
               'select',
-              'details',
+              '[role="dialog"]',
+              '[role="gridcell"]',
+              '[role="link"]',
+              '[role="log"]',
+              '[role="menuitem"]',
+              '[role="menuitemcheckbox"]',
+              '[role="menuitemradio"]',
+              '[role="progressbar"]',
+              '[role="scrollbar"]',
+              '[role="slider"]',
+              '[role="spinbutton"]',
+              '[role="status"]',
+              '[role="tab"]',
+              '[role="tabpanel"]',
+              '[role="textbox"]',
+              '[role="timer"]',
+              '[role="tooltip"]',
+              '[role="treeitem"]',
+              '[role="switch"]',
+              '[role="details"]',
               '[tabindex]',
             ]
               .map(selector => `*:not([aria-hidden]) >  ${selector}`)
@@ -345,7 +345,18 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               />
             )}
 
-            <Provider theme={teamsTheme} target={document}>
+            <Provider
+              theme={teamsTheme}
+              target={document}
+              styles={{
+                '::after': {
+                  content: 'asdijhaoijdoi',
+                  position: 'absolute',
+                  top: 0,
+                  fontSize: 24,
+                },
+              }}
+            >
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {mode === 'use' && (
