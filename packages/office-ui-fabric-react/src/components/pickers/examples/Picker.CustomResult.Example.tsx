@@ -339,8 +339,8 @@ const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardPr
 export const PickerCustomResultExample: React.FunctionComponent = () => {
   const [isPickerDisabled, { toggle: toggleIsPickerDisabled }] = useBoolean(false);
 
-  const getTextFromItem = useConstCallback((props: any): any => {
-    return props.documentTitleProps.title;
+  const getTextFromItem = useConstCallback((props: IFullDocumentCardProps): string => {
+    return props.documentTitleProps!.title;
   });
 
   const listContainsDocument = (document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean => {
@@ -348,9 +348,7 @@ export const PickerCustomResultExample: React.FunctionComponent = () => {
       return false;
     }
     const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
-    return (
-      items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0
-    );
+    return items.some(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle);
   };
 
   const onFilterChanged = useConstCallback(

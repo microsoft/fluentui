@@ -6,8 +6,7 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { useConst, useForceUpdate, useConstCallback } from '@uifabric/react-hooks';
+import { useConst, useForceUpdate } from '@uifabric/react-hooks';
 
 interface ISelectionItemExampleProps {
   item: IExampleItem;
@@ -44,6 +43,14 @@ const classNames = mergeStyleSets({
   ],
 });
 
+const alertItem = (item: IExampleItem): void => {
+  alert('item invoked: ' + item.name);
+};
+
+const canSelectItem = (item: IExampleItem): boolean => {
+  return /^[aeiou]/.test(item.name || '');
+};
+
 const ITEM_COUNT = 100;
 
 const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> = (
@@ -78,22 +85,48 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
   const [canSelect, setCanSelect] = React.useState<'all' | 'vowels'>('all');
   const forceUpdate = useForceUpdate();
   const items = useConst<IExampleItem[]>(() => createListItems(ITEM_COUNT));
-  const [selection, setSelection] = React.useState<Selection>(() => {
-    const newSelection = new Selection({
-      onSelectionChanged: forceUpdate,
-    });
+  const [selection, setSelection] = React.useState<Selection>(
+    () =>
+      new Selection({
+        onSelectionChanged: forceUpdate,
+        items,
+      }),
+  );
 
-    newSelection.setItems(items);
-
-    return newSelection;
-  });
-
-  const onToggleSelectAll = (): void => {
+  const onToggleSelectAll = React.useCallback((): void => {
     selection.toggleAllSelected();
-  };
+  }, [selection]);
 
-  const getCommandItems = memoizeFunction(
-    (selectionModeProp: SelectionMode, canSelectProp: 'all' | 'vowels'): IContextualMenuItem[] => [
+  const onSelectionModeChanged = React.useCallback(
+    (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
+      const newSelection = new Selection({
+        canSelectItem: canSelect === 'vowels' ? canSelectItem : undefined,
+        selectionMode: menuItem.data,
+        onSelectionChanged: forceUpdate,
+      });
+      newSelection.setItems(items, false);
+      setSelection(newSelection);
+    },
+    [canSelect, forceUpdate, items],
+  );
+
+  const onCanSelectChanged = React.useCallback(
+    (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
+      const newSelection = new Selection({
+        canSelectItem: menuItem.data === 'vowels' ? canSelectItem : undefined,
+        selectionMode: selection.mode,
+        onSelectionChanged: forceUpdate,
+        items,
+      });
+      newSelection.setItems(items, false);
+      setSelection(newSelection);
+      setCanSelect(menuItem.data === 'vowels' ? 'vowels' : 'all');
+    },
+    [selection, forceUpdate, items],
+  );
+
+  const getCommandItems = React.useMemo(
+    () => [
       {
         key: 'selectionMode',
         text: 'Selection Mode',
@@ -103,7 +136,7 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
               key: SelectionMode[SelectionMode.none],
               name: 'None',
               canCheck: true,
-              checked: selectionModeProp === SelectionMode.none,
+              checked: selection.mode === SelectionMode.none,
               onClick: onSelectionModeChanged,
               data: SelectionMode.none,
             },
@@ -111,7 +144,7 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
               key: SelectionMode[SelectionMode.single],
               name: 'Single select',
               canCheck: true,
-              checked: selectionModeProp === SelectionMode.single,
+              checked: selection.mode === SelectionMode.single,
               onClick: onSelectionModeChanged,
               data: SelectionMode.single,
             },
@@ -119,7 +152,7 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
               key: SelectionMode[SelectionMode.multiple],
               name: 'Multi select',
               canCheck: true,
-              checked: selectionModeProp === SelectionMode.multiple,
+              checked: selection.mode === SelectionMode.multiple,
               onClick: onSelectionModeChanged,
               data: SelectionMode.multiple,
             },
@@ -141,7 +174,7 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
               key: 'all',
               name: 'All items',
               canCheck: true,
-              checked: canSelectProp === 'all',
+              checked: canSelect === 'all',
               onClick: onCanSelectChanged,
               data: 'all',
             },
@@ -149,7 +182,7 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
               key: 'a',
               name: 'Names starting with vowels',
               canCheck: true,
-              checked: canSelectProp === 'vowels',
+              checked: canSelect === 'vowels',
               onClick: onCanSelectChanged,
               data: 'vowels',
             },
@@ -157,40 +190,12 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
         },
       },
     ],
+    [selection.mode, canSelect, onCanSelectChanged, onToggleSelectAll, onSelectionModeChanged],
   );
-
-  const alertItem = useConstCallback((item: IExampleItem): void => {
-    alert('item invoked: ' + item.name);
-  });
-
-  const onSelectionModeChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-    const newSelection = new Selection({
-      canSelectItem: canSelect === 'vowels' ? canSelectItem : undefined,
-      selectionMode: menuItem.data,
-      onSelectionChanged: forceUpdate,
-    });
-    newSelection.setItems(items, false);
-    setSelection(newSelection);
-  };
-
-  const onCanSelectChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-    const newSelection = new Selection({
-      canSelectItem: menuItem.data === 'vowels' ? canSelectItem : undefined,
-      selectionMode: selection.mode,
-      onSelectionChanged: forceUpdate,
-    });
-    newSelection.setItems(items, false);
-    setSelection(newSelection);
-    setCanSelect(menuItem.data === 'vowels' ? 'vowels' : 'all');
-  };
-
-  const canSelectItem = (item: IExampleItem): boolean => {
-    return /^[aeiou]/.test(item.name || '');
-  };
 
   return (
     <div className="ms-SelectionBasicExample">
-      <CommandBar items={getCommandItems(selection.mode, canSelect)} />
+      <CommandBar items={getCommandItems} />
       <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
         <SelectionZone selection={selection} onItemInvoked={alertItem}>
           {items.map((item: IExampleItem, index: number) => (

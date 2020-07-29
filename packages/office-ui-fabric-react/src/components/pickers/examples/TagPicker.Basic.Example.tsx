@@ -43,53 +43,45 @@ const testTags: ITag[] = [
 export const TagPickerBasicExample: React.FunctionComponent = () => {
   // All pickers extend from BasePicker specifying the item type.
   const picker = React.useRef<IBasePicker<ITag>>(null);
-  const [isPickerDisabled, { toggle: toggleIsPickerDisabled }] = useBoolean(false);
+  const [tagPicker, { toggle: toggleTagPicker }] = useBoolean(false);
 
   const listContainsDocument = useConstCallback((tag: ITag, tagList?: ITag[]) => {
     if (!tagList || !tagList.length || tagList.length === 0) {
       return false;
     }
-    return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
+    return tagList.some(compareTag => compareTag.key === tag.key);
   });
 
-  const onFilterChanged = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
+  const filterSuggestedTags = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
     return filterText
-      ? testTags
-          .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-          .filter(tag => !listContainsDocument(tag, tagList))
+      ? testTags.filter(
+          tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0 && !listContainsDocument(tag, tagList),
+        )
       : [];
   });
 
-  const onFilterChangedNoFilter = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
+  const filterSelectedTags = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
     return filterText ? testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
   });
 
-  const onItemSelected = React.useCallback(
-    (item: ITag): ITag | null => {
-      if (picker.current && listContainsDocument(item, picker.current.items)) {
-        return null;
-      }
-      return item;
-    },
-    [listContainsDocument],
-  );
+  const onItemSelected = useConstCallback((item: ITag): ITag | null => {
+    if (picker.current && listContainsDocument(item, picker.current.items)) {
+      return null;
+    }
+    return item;
+  });
 
   return (
     <div className={rootClass}>
-      <Checkbox
-        styles={checkboxStyles}
-        label="Disable Tag Picker"
-        checked={isPickerDisabled}
-        onChange={toggleIsPickerDisabled}
-      />
+      <Checkbox styles={checkboxStyles} label="Disable Tag Picker" checked={tagPicker} onChange={toggleTagPicker} />
       Filter items in suggestions: This picker will filter added items from the search suggestions.
       <TagPicker
         removeButtonAriaLabel="Remove"
-        onResolveSuggestions={onFilterChanged}
+        onResolveSuggestions={filterSuggestedTags}
         getTextFromItem={name}
         pickerSuggestionsProps={pickerSuggestionsProps}
         itemLimit={2}
-        disabled={isPickerDisabled}
+        disabled={tagPicker}
         inputProps={inputProps}
       />
       <br />
@@ -97,12 +89,12 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
       <TagPicker
         removeButtonAriaLabel="Remove"
         componentRef={picker}
-        onResolveSuggestions={onFilterChangedNoFilter}
+        onResolveSuggestions={filterSelectedTags}
         onItemSelected={onItemSelected}
         getTextFromItem={name}
         pickerSuggestionsProps={pickerSuggestionsProps}
         itemLimit={2}
-        disabled={isPickerDisabled}
+        disabled={tagPicker}
         inputProps={inputProps}
       />
     </div>
