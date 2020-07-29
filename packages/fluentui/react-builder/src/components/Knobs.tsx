@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import { Header /* Slider */ } from '@fluentui/react-northstar';
-import { ComponentInfo } from '../componentInfo/types';
+import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from '../config';
 
@@ -66,11 +66,79 @@ type DesignKnobProps = {
   jsonTreeElement: JSONTreeElement;
 };
 
+const A11YPROPS: ComponentProp[] = [
+  {
+    name: 'aria-label',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'define a string that labels the current element',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'role',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'describes the role of an element',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'aria-hidden',
+    required: false,
+    defaultValue: false,
+    tags: [],
+    description: 'removes the element and all of its children from the accessibility tree',
+    types: [{ name: 'boolean' }],
+  },
+  {
+    name: 'aria-labelledby',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'establishes relationships between objects and their label(s)',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'aria-describedby',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'indicates the IDs of the elements that describe the object',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'title',
+    required: false,
+    defaultValue: '',
+    tags: [],
+    description: 'specifies extra information about an element',
+    types: [{ name: 'string' }],
+  },
+  {
+    name: 'tabIndex',
+    required: false,
+    defaultValue: 0,
+    tags: [],
+    description:
+      'indicates that its element can be focused, and where it participates in sequential keyboard navigation',
+    types: [{ name: 'number' }],
+  },
+  {
+    name: 'data-is-focusable',
+    required: false,
+    defaultValue: false,
+    tags: [],
+    description: 'define if data is focusable',
+    types: [{ name: 'boolean' }],
+  },
+];
+
 export const Knobs: React.FunctionComponent<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
   return (
     <div>
       <Header as="h3">Props</Header>
-      {info.props
+      {[...info.props, ...A11YPROPS]
         // only allow knobs for regular props, not default props
         .filter(prop => !/default[A-Z]/.test(prop.name))
         .map(prop => {
