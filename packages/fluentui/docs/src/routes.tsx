@@ -99,6 +99,7 @@ const VirtualizedTablePrototype = React.lazy(() =>
 const FormValidationPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/FormValidation'),
 );
+const CallsPrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/Calls'));
 
 const Routes = () => (
   <React.Suspense fallback="Loading...">
@@ -126,6 +127,7 @@ const Routes = () => (
                 </Route>
                 <Route exact path="/quick-start" component={QuickStart} />
 
+                <Route exact path="/prototype-calls" component={CallsPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
