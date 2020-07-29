@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@uifabric/charting_v2.7.6",
+      "version": "2.7.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "63dfc9eb7a361002f8d7eb123272f1957e718340",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jul 2020 12:43:51 GMT",
       "tag": "@uifabric/charting_v2.7.4",
       "version": "2.7.4",

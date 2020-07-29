@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@uifabric/azure-themes_v7.1.49",
+      "version": "7.1.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix choicegroup's disabled style for Azure theme",
+            "author": "hyoshi@microsoft.com",
+            "commit": "455be87d6ce147b967dec8c1a4ddeae2526e6559",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 18 Jul 2020 00:04:51 GMT",
       "tag": "@uifabric/azure-themes_v7.1.43",
       "version": "7.1.43",
