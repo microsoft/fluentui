@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { BaseDecorator } from './BaseDecorator';
+import { BaseDecorator } from '../decorators/BaseDecorator';
 import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
 
 export interface IWithResponsiveModeState {
@@ -102,7 +102,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   return hoistStatics(ComposedComponent, resultClass);
 }
 
-function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
+export const getResponsiveMode = (currentWindow: Window | undefined): ResponsiveMode => {
   let responsiveMode = ResponsiveMode.small;
 
   if (currentWindow) {
@@ -130,4 +130,4 @@ function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
   }
 
   return responsiveMode;
-}
+};
