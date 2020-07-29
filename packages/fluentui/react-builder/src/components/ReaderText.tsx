@@ -2,22 +2,24 @@ import * as React from 'react';
 import { Alert, Ref } from '@fluentui/react-northstar';
 
 export type ReaderTextProps = {
-  selector: string;
+  selector?: string;
+  node?: HTMLElement;
 };
 
-export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector }) => {
+export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector, node }) => {
   const ref = React.createRef<HTMLElement>();
   const [text, setText] = React.useState('');
 
   React.useEffect(() => {
     if (ref.current) {
-      const t = ref.current.ownerDocument.querySelector(selector)?.textContent;
+      const element = node || ref.current.ownerDocument.querySelector(selector);
+      const t = element?.getAttribute('aria-label') || element?.textContent;
       setText(t);
     }
     // eslint-disable-next-line
-  }, [setText, ref.current, selector]);
+  }, [setText, ref.current, selector, node]);
 
-  if (!selector) {
+  if (!selector && !node) {
     return null;
   }
 

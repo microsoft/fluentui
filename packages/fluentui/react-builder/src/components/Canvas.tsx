@@ -58,6 +58,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
   const [focusableElements, setFocusableElements] = React.useState([]);
   const [currentIndex, setIndex] = React.useState(0);
+  const [currentFocusedNode, setCurrentFocusedNode] = React.useState(null);
 
   const iframeCoordinatesToWindowCoordinates = React.useCallback(
     (e: MouseEvent) => {
@@ -96,7 +97,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       switch (e.keyCode) {
         case 40:
         case 38:
-          console.log('arrows');
           focusableElements[currentIndex].classList.remove('virtual-focused');
           setIndex(idx => {
             const modifier = e.keyCode === 40 ? 1 : -1;
@@ -107,6 +107,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             const newIndex =
               nextIndex >= focusableElements.length ? 0 : nextIndex < 0 ? focusableElements.length - 1 : nextIndex;
             focusableElements[newIndex].classList.add('virtual-focused');
+            setCurrentFocusedNode(focusableElements[newIndex]);
             return newIndex;
           });
           break;
@@ -396,8 +397,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             >
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-              {mode === 'use' && <EventListener type="keydown" listener={handleKeyDown} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              {mode === 'use' && (
+                <>
+                  <EventListener type="keydown" listener={handleKeyDown} target={document} />
+                  <ReaderText node={currentFocusedNode} />
+                </>
+              )}
               {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
           </>
