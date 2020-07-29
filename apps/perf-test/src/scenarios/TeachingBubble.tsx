@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ThemeProvider } from 'office-ui-fabric-react';
+import { TeachingBubble } from 'office-ui-fabric-react';
 
-const Scenario = () => <ThemeProvider />;
+const Scenario = () => <TeachingBubble />;
 
 export default Scenario;
