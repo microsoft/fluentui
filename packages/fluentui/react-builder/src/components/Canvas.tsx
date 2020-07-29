@@ -24,6 +24,7 @@ export type CanvasProps = {
   onDeleteComponent?: () => void;
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
+  enabledVirtualCursor?: boolean;
   style?: React.CSSProperties;
   mode?: 'build' | 'design' | 'use';
   role?: string;
@@ -44,6 +45,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onDeleteComponent,
   onGoToParentComponent,
   renderJSONTreeElement,
+  enabledVirtualCursor,
   mode,
   style,
   role,
@@ -398,7 +400,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-              {mode === 'use' && (
+              {mode === 'use' && enabledVirtualCursor && (
                 <>
                   <EventListener type="keydown" listener={handleKeyDown} target={document} />
                   <ReaderText node={currentFocusedNode} />
