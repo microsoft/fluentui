@@ -36,7 +36,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
           webkit-font-smoothing: antialiased;
         }
   >
-    Turn on Narrator and press the button to start loading photos. Announced should announce the number of photos loaded every 10 seconds, as that is the delay chosen for this example.
+    Turn on Narrator and press the button to start loading photos. The number of photos loaded will be announced every 10 seconds.
   </span>
   <button
     className=
