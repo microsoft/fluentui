@@ -38,11 +38,11 @@ import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
+import { withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import {
   ResponsiveMode,
-  withResponsiveMode,
   IWithResponsiveModeState,
-} from 'office-ui-fabric-react/lib/utilities/responsiveMode/index';
+} from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode.types';
 import {
   SelectableOptionMenuItemType,
   getAllSelectedOptions,

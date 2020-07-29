@@ -89,7 +89,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   return hoistStatics(ComposedComponent, resultClass);
 }
 
-function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
+export const getResponsiveMode = (currentWindow: Window | undefined): ResponsiveMode => {
   let responsiveMode = ResponsiveMode.small;
 
   if (currentWindow) {
@@ -117,4 +117,4 @@ function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
   }
 
   return responsiveMode;
-}
+};

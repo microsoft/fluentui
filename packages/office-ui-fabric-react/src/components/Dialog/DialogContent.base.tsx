@@ -4,7 +4,7 @@ import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogConte
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { IDialogFooterProps } from './DialogFooter.types';
-import { withResponsiveMode } from '../../utilities/responsiveMode/index';
+import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 

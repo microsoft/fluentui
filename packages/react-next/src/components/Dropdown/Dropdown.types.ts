@@ -3,7 +3,7 @@ import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableDroppableText.types';
-import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/responsiveMode/index';
+import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode.types';
 import { IKeytipProps } from '../../Keytip';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ICheckboxStyleProps, ICheckboxStyles } from '../Checkbox/Checkbox.types';

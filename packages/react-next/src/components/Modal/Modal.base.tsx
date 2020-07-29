@@ -16,12 +16,11 @@ import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.typ
 import { Overlay } from '@fluentui/react-next/lib/Overlay';
 import { ILayerProps, Layer } from '@fluentui/react-next/lib/Layer';
 import { Popup } from '@fluentui/react-next/lib/Popup';
-import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/responsiveMode/index';
+import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { DirectionalHint } from '@fluentui/react-next';
 import { Icon } from '@fluentui/react-next/lib/Icon';
 import { DraggableZone, IDragData } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { initializeComponentRef } from '@uifabric/utilities';
-
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
 const DefaultLayerProps: ILayerProps = {

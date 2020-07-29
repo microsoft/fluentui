@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
-import { useResponsiveMode, ResponsiveMode } from './index';
+import { useResponsiveMode } from './useResponsiveMode';
+import { ResponsiveMode } from '../decorators/withResponsiveMode';
 
 const resizeTo = (width: number, height: number = 100) => {
   ReactTestUtils.act(() => {

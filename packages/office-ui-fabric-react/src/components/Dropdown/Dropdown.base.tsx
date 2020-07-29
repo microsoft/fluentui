@@ -39,9 +39,10 @@ import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioni
 import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
-import { IWithResponsiveModeState, ResponsiveMode, withResponsiveMode } from '../../utilities/responsiveMode/index';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
+import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import {
   SelectableOptionMenuItemType,
   getAllSelectedOptions,
