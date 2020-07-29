@@ -12,7 +12,6 @@ import {
 } from 'ts-morph';
 import { ValueMap } from 'src/codeMods/types';
 import { Maybe } from '../../../helpers/maybe';
-import { getParent } from 'office-ui-fabric-react/lib/Utilities';
 
 /* Helper function to rename a prop if in a spread operator.  */
 export function renamePropInSpread(
@@ -34,10 +33,15 @@ export function renamePropInSpread(
       const spreadIsIdentifier = firstIdentifier !== undefined;
       /* Verify this attribute contains the name of our desired prop. */
       if (spreadContains(toRename, spreadIsIdentifier, attribute)) {
+        console.log('contains, holy cow');
+        console.log(attribute.getText());
+        const elemmm = spreadIsIdentifier
+          ? attribute.getFirstChildByKind(SyntaxKind.Identifier)
+          : attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
+        console.log(elemmm?.getContextualType());
         /* Step 3: Create names for your new potential objects. */
-
         const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
-        let newSpreadName = '__mig' + propSpreadName[0].toUpperCase() + propSpreadName.substring(1);
+        let newSpreadName = '__migProps';
         const newMapName = '__migEnumMap';
         /* Metadata in case we need to reacquire the current element (AST modification). */
         let newJSXFlag = false;
@@ -102,12 +106,6 @@ export function renamePropInSpread(
             tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
           }
         } else {
-          console.log(
-            'writing a new container for new spread name: ' +
-              newSpreadName +
-              ', with propSpreadName: ' +
-              propSpreadName,
-          );
           /* If we could not find a variable statement with our spread prop in it, make one. */
           parentContainer.insertVariableStatement(
             insertIndex,
@@ -166,8 +164,6 @@ export function renamePropInSpread(
               ? `{${replacementValue}}`
               : `{${toRename}}`,
           }); // Add the updated prop name and set its value.
-        } else {
-          console.log('caught attempted repeat');
         }
       }
     }
