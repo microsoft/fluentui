@@ -30,7 +30,7 @@ export interface IContainerValues {
   reqID: number;
 }
 
-interface YValueHover {
+interface IYValueHover {
   legend?: string;
   y?: number;
   color?: string;
@@ -44,7 +44,7 @@ export class LineChartBase extends React.Component<
     containerWidth: number;
     containerHeight: number;
     isCalloutVisible: boolean;
-    YValueHover: YValueHover[];
+    YValueHover: IYValueHover[];
     hoverYValue: string | number | null;
     hoverXValue: string | number | null;
     refArray: IRefArrayData[];
@@ -283,7 +283,7 @@ export class LineChartBase extends React.Component<
                 style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
               >
                 {this.state.YValueHover &&
-                  this.state.YValueHover.map((yValue: YValueHover, index: number, yValues: YValueHover[]) => {
+                  this.state.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
                     const isLast: boolean = index + 1 === yValues.length;
                     return (
                       <div
