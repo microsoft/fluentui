@@ -106,7 +106,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       if (document && !parent?.props?.['data-builder-id']) {
         document.body.style.outline = '4px dashed red';
         document.body.style.outlineOffset = '-4px';
-        onMessage('Warning: Focus on body');
+        onMessage('Warning: Focus on body. Developer might need to handle it and focus relevant element instead.');
       } else {
         document.body.style.outline = '';
         document.body.style.outlineOffset = '';
