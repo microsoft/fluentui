@@ -91,6 +91,43 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [onMouseUp],
   );
 
+  const handleKeyDown = React.useCallback(
+    e => {
+      switch (e.keyCode) {
+        case 40:
+        case 38:
+          console.log('arrows');
+          focusableElements[currentIndex].classList.remove('virtual-focused');
+          setIndex(idx => {
+            const modifier = e.keyCode === 40 ? 1 : -1;
+            const nextIndex = idx + modifier;
+            // if nextIndex is bigger than number of elements move it to 0
+            // if nextIndex is smaller than 0 move it to the lastElement
+            // otherwise move to the nextIndex
+            const newIndex =
+              nextIndex >= focusableElements.length ? 0 : nextIndex < 0 ? focusableElements.length - 1 : nextIndex;
+            focusableElements[newIndex].classList.add('virtual-focused');
+            return newIndex;
+          });
+          break;
+        case 13:
+          focusableElements[currentIndex].click();
+          return;
+        case 121:
+          if (e.shiftKey) {
+            const eve = document.createEvent('MouseEvents');
+            eve.initMouseEvent('contextmenu', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 2, null);
+            focusableElements[currentIndex].dispatchEvent(eve);
+            return;
+          }
+        default:
+          focusableElements[currentIndex].focus();
+          break;
+      }
+    },
+    [currentIndex, focusableElements],
+  );
+
   const handleSelectComponent = React.useCallback(
     (fiberNav: FiberNavigator) => {
       onSelectComponent?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
@@ -359,34 +396,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             >
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-              {mode === 'use' && (
-                <EventListener
-                  type="keydown"
-                  listener={e => {
-                    if (e.keyCode === 40 || e.keyCode === 38) {
-                      focusableElements[currentIndex].classList.remove('virtual-focused');
-                      setIndex(idx => {
-                        const modifier = e.keyCode === 40 ? 1 : -1;
-                        const nextIndex = idx + modifier;
-                        // if nextIndex is bigger than number of elements move it to 0
-                        // if nextIndex is smaller than 0 move it to the lastElement
-                        // otherwise move to the nextIndex
-                        const newIndex =
-                          nextIndex >= focusableElements.length
-                            ? 0
-                            : nextIndex < 0
-                            ? focusableElements.length - 1
-                            : nextIndex;
-                        focusableElements[newIndex].classList.add('virtual-focused');
-                        return newIndex;
-                      });
-                    } else {
-                      focusableElements[currentIndex].focus();
-                    }
-                  }}
-                  target={document}
-                />
-              )}
+              {mode === 'use' && <EventListener type="keydown" listener={handleKeyDown} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
               {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
