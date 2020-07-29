@@ -1,11 +1,4 @@
-import {
-  renameProp,
-  findJsxTag,
-  boolTransform,
-  enumTransform,
-  stringTransform,
-  numberTransform,
-} from '../../utilities';
+import { renameProp, findJsxTag, boolTransform, enumTransform, numberTransform } from '../../utilities';
 import { Project, SyntaxKind, JsxAttribute } from 'ts-morph';
 import { ValueMap, PropTransform } from '../../types';
 import { Maybe } from '../../../helpers/maybe';
@@ -259,5 +252,6 @@ describe('Props Utilities Test', () => {
         expect(val.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
       });
     });
+    console.log(file);
   });
 });

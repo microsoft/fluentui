@@ -80,7 +80,9 @@ export function renamePropInSpread(
             const elem = declaration.getFirstDescendantByKind(SyntaxKind.VariableDeclaration);
             return (
               elem !== undefined &&
-              (elem.getText().includes(`...${propSpreadName}`) || elem.getText().includes(`...${newSpreadName}`))
+              (elem.getText().includes(`...${propSpreadName}`) ||
+                elem.getText().includes(`...${newSpreadName}`) ||
+                elem.getText().includes(propSpreadName))
             );
           },
         );
@@ -100,13 +102,18 @@ export function renamePropInSpread(
             tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
           }
         } else {
+          console.log(
+            'writing a new container for new spread name: ' +
+              newSpreadName +
+              ', with propSpreadName: ' +
+              propSpreadName,
+          );
           /* If we could not find a variable statement with our spread prop in it, make one. */
           parentContainer.insertVariableStatement(
             insertIndex,
             createDeconstructedProp(newSpreadName, toRename, propSpreadName),
           );
         }
-
         /* Step 8: Declare other auxiliary objects if necessary (i.e. value mapping case). */
         if (changeValueMap && !parentContainer.getVariableStatement(newMapName)) {
           parentContainer.insertVariableStatement(
@@ -132,15 +139,36 @@ export function renamePropInSpread(
         }
 
         /* Step 10: Replace the props in the component with your new ones! */
-        attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
-        element.addAttribute({
-          name: replacementName,
-          initializer: changeValueMap
-            ? `{${newMapName}[${toRename}]}`
-            : replacementValue
-            ? `{${replacementValue}}`
-            : `{${toRename}}`,
-        }); // Add the updated prop name and set its value.
+        //console.log(newSpreadName);
+        if (
+          element.getAttributes().some(attr => {
+            if (attr.getKind() === SyntaxKind.JsxSpreadAttribute) {
+              const child = attr.getChildAtIndex(2);
+              if (child) {
+                return child.getText() === newSpreadName;
+              }
+            }
+            return false;
+          })
+        ) {
+          if (attrToRename.getChildAtIndex(2)!.getText() !== newSpreadName) {
+            attrToRename.remove(); // Replace old spread name.
+          }
+        } else {
+          attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
+        }
+        if (!element.getAttribute(replacementName)) {
+          element.addAttribute({
+            name: replacementName,
+            initializer: changeValueMap
+              ? `{${newMapName}[${toRename}]}`
+              : replacementValue
+              ? `{${replacementValue}}`
+              : `{${toRename}}`,
+          }); // Add the updated prop name and set its value.
+        } else {
+          console.log('caught attempted repeat');
+        }
       }
     }
   });
@@ -161,14 +189,18 @@ function propAlreadyExists(parentContainer: Block, toRename: string): boolean {
   }
 }
 
-/* Attempts to insert the desired prop into the provided spread prop decomposition. */
+/* Looks to see if the spread prop in question already exists, and if so
+   attempts to insert the desired prop into its decomposition. Returns TRUE
+   if it successfully inserts OLDPROP into the spread deconstruction, false if otherwise. */
 function tryInsertExistingDecomposedProp(oldProp: string, statement: VariableStatement) {
   const decompObject = statement.getFirstDescendantByKind(SyntaxKind.ObjectBindingPattern);
   if (decompObject) {
     let objectText = decompObject.getText();
     objectText = objectText.substr(0, 1) + ` ${oldProp},` + objectText.substr(1);
     decompObject.replaceWithText(objectText);
+    return true;
   }
+  return false;
 }
 
 /* Creates and returns a variable statement to the user's specification. KIND determines how

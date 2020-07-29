@@ -7,8 +7,7 @@ export class RenderButton extends React.Component<ButtonProps> {
     const { id, ...restProps } = this.props;
     return (
       <div>
-        <CompoundButton {...this.props} />
-        <CompoundButton {...restProps} id={'d2'}>
+        <CompoundButton {...this.props} {...restProps} id={'d2'}>
           Button!
         </CompoundButton>
       </div>
