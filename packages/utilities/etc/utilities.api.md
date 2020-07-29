@@ -977,7 +977,7 @@ export const olProperties: Record<string, number>;
 export { Omit }
 
 // @public (undocumented)
-export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
+export function on(element: Element | Window | Document, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;

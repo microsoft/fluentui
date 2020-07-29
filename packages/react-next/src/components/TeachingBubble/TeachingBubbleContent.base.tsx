@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { initializeComponentRef, classNamesFunction, KeyCodes } from '../../Utilities';
+import { classNamesFunction, KeyCodes } from '../../Utilities';
 import {
   ITeachingBubbleProps,
   ITeachingBubbleStyleProps,
@@ -7,13 +7,11 @@ import {
   ITeachingBubble,
 } from './TeachingBubble.types';
 import { PrimaryButton, DefaultButton, IconButton } from '../../compat/Button';
-import { Image, ImageFit } from '../../Image';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
-import { useConstCallback, useOnEvent, useMergedRefs } from '@uifabric/react-hooks';
+import { Image } from '../../Image';
+import { useOnEvent, useMergedRefs } from '@uifabric/react-hooks';
 import { getDocument } from '../../Utilities';
-import { getWindow } from '../../Utilities';
-import { TeachingBubbleContent } from './TeachingBubbleContent';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
@@ -30,18 +28,17 @@ const useComponentRef = (
   );
 };
 
-export const TeachingBubbleBase = React.forwardRef(
-  (props: ITeachingBubbleProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps> = React.forwardRef(
+  (props, forwardedRef: React.Ref<HTMLDivElement>) => {
     const rootElementRef = React.useRef<HTMLDivElement>(null);
     const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
 
     const {
-      children,
       illustrationImage,
       primaryButtonProps,
       secondaryButtonProps,
       headline,
-      hasCondensedHeadline = false,
+      hasCondensedHeadline,
       // eslint-disable-next-line deprecation/deprecation
       hasCloseButton = props.hasCloseIcon,
       onDismiss,
@@ -79,7 +76,7 @@ export const TeachingBubbleBase = React.forwardRef(
       [props.onDismiss],
     );
 
-    useOnEvent(getWindow(rootElementRef.current), 'keydown', onKeyDown as (ev: Event) => void);
+    useOnEvent(getDocument(rootElementRef.current), 'keydown', onKeyDown as (ev: Event) => void);
 
     let imageContent;
     let headerContent;
@@ -89,18 +86,20 @@ export const TeachingBubbleBase = React.forwardRef(
 
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
-        <IconButton
-          className={classNames.closeButton}
-          iconProps={{ iconName: 'Cancel' }}
-          title={closeButtonAriaLabel}
-          ariaLabel={closeButtonAriaLabel}
-          onClick={onDismiss}
-        />
+        <div className={classNames.imageContent}>
+          <Image
+            {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              ...(illustrationImage as any)
+            }
+          />
+        </div>
       );
     }
 
     if (headline) {
       const HeaderWrapperAs = typeof headline === 'string' ? 'p' : 'div';
+
       headerContent = (
         <div className={classNames.header}>
           <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
@@ -110,12 +109,13 @@ export const TeachingBubbleBase = React.forwardRef(
       );
     }
 
-    if (children) {
-      const BodyContentWrapperAs = typeof children === 'string' ? 'p' : 'div';
+    if (props.children) {
+      const BodyContentWrapperAs = typeof props.children === 'string' ? 'p' : 'div';
+
       bodyContent = (
         <div className={classNames.body}>
           <BodyContentWrapperAs className={classNames.subText} id={ariaDescribedBy}>
-            {children}
+            {props.children}
           </BodyContentWrapperAs>
         </div>
       );
@@ -158,7 +158,7 @@ export const TeachingBubbleBase = React.forwardRef(
         data-is-focusable
       >
         {imageContent}
-        <FocusTrapZone isClickableOutsideFocusTrap {...focusTrapZoneProps} onKeyDown={onKeyDown}>
+        <FocusTrapZone isClickableOutsideFocusTrap {...focusTrapZoneProps}>
           <div className={classNames.bodyContent}>
             {headerContent}
             {bodyContent}
@@ -170,10 +170,3 @@ export const TeachingBubbleBase = React.forwardRef(
     );
   },
 );
-TeachingBubbleContent.defaultProps = {
-  imageProps = {
-    imageFit: ImageFit.cover,
-    width: 364,
-    height: 130,
-  },
-};
