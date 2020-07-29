@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as _ from 'lodash';
 import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -31,6 +32,7 @@ import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
 import { codeToTree } from '../utils/codeToTree';
 import { ErrorBoundary } from './ErrorBoundary';
+import { ErrorIcon } from './ErrorFrame';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -240,6 +242,8 @@ export const Designer: React.FunctionComponent = () => {
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
 
+  const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
+
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
       writeTreeToStore(state.jsonTree);
@@ -374,6 +378,11 @@ export const Designer: React.FunctionComponent = () => {
     // FIXME: remove tree_lz from current URL
   }, [dispatch]);
 
+  const handleAccessibilityErrors = React.useCallback(errors => {
+    setAccessibilityErrors(errors);
+    debug('handleAccessibilityErrors', errors);
+  }, []);
+
   const selectedComponent =
     !draggingElement &&
     mode !== 'use' &&
@@ -456,6 +465,7 @@ export const Designer: React.FunctionComponent = () => {
             onCloneComponent={handleCloneComponent}
             onMoveComponent={handleMoveComponent}
             onDeleteComponent={handleDeleteComponent}
+            accessibilityErrors={accessibilityErrors}
           />
         </div>
 
@@ -512,10 +522,11 @@ export const Designer: React.FunctionComponent = () => {
                   onMoveComponent={handleMoveComponent}
                   onDeleteComponent={handleDeleteComponent}
                   onGoToParentComponent={handleGoToParentComponent}
+                  accessibilityErrors={accessibilityErrors}
+                  onAccessibilityErrorsChanged={handleAccessibilityErrors}
                 />
               </ErrorBoundary>
             </BrowserWindow>
-
             {(showCode || showJSONTree) && (
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
@@ -567,7 +578,25 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-            <pre>{JSON.stringify(selectedJSONTreeElement.props, null, 2)}</pre>
+
+            {accessibilityErrors[selectedComponent.uuid] && (
+              <div
+                style={{
+                  background: '#e3404022',
+                }}
+              >
+                <h4>
+                  <ErrorIcon style={{ width: '1em', height: '1em' }} />{' '}
+                  {_.keys(accessibilityErrors[selectedComponent.uuid]).length} accessibility errors
+                </h4>
+                <ul>
+                  {_.keys(accessibilityErrors[selectedComponent.uuid]).map(errorId => (
+                    <li>{accessibilityErrors[selectedComponent.uuid][errorId]}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
             {selectedJSONTreeElement && (
               <Knobs

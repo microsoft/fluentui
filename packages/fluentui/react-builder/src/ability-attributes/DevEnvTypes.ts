@@ -61,4 +61,5 @@ export interface DevEnvSettings {
   enforceClasses?: boolean;
   ignoreUnknownClasses?: boolean;
   window?: Window;
+  errorReporter?: ErrorReporter;
 }

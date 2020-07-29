@@ -1,13 +1,16 @@
 import * as React from 'react';
+import * as _ from 'lodash';
+
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { setup } from '../ability-attributes/DevEnv';
 import { JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
+import { AbilityAttributesValidator, AccessibilityErrors } from './AbilityAttributesValidator';
+import { ErrorFrame } from './ErrorFrame';
 
 export type CanvasProps = {
   draggingElement: JSONTreeElement;
@@ -25,6 +28,8 @@ export type CanvasProps = {
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
+  accessibilityErrors: AccessibilityErrors;
+  onAccessibilityErrorsChanged: (errors: AccessibilityErrors) => void;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -43,6 +48,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onGoToParentComponent,
   renderJSONTreeElement,
   style,
+  accessibilityErrors,
+  onAccessibilityErrorsChanged,
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -232,73 +239,78 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       id={iframeId}
     >
       <FrameContextConsumer>
-        {({ document, window }) => {
-          setup({ enforceClasses: false, ignoreUnknownClasses: true, window });
-          return (
-            <>
-              {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
-                <div
-                  style={{
-                    padding: '8rem',
-                    textAlign: 'center',
-                    position: 'absolute',
-                    pointerEvents: 'none',
-                    width: '100%',
-                  }}
-                >
-                  <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
-                    👈
-                  </span>
-                  <div style={{ fontSize: '1.2rem', opacity: 0.5 }}>Drag n' Drop some components</div>
-                </div>
-              )}
-
-              <DebugSelector
-                active={isSelecting}
-                key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}
-                filter={fiberNav => {
-                  const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
-                  if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
-                    return null;
-                  }
-                  return owner;
+        {({ document, window }) => (
+          <>
+            <AbilityAttributesValidator window={window} onErrorsChanged={onAccessibilityErrorsChanged} />
+            {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
+              <div
+                style={{
+                  padding: '8rem',
+                  textAlign: 'center',
+                  position: 'absolute',
+                  pointerEvents: 'none',
+                  width: '100%',
                 }}
-                mountDocument={document}
-                renderLabel={fiberNav => fiberNav.name}
-                showBackground={false}
-                showClassName={false}
-                showElement={false}
-                showCropMarks={false}
-                onSelect={handleSelectComponent}
-              />
-              {selectedComponent && (
-                <DebugFrame
-                  target={document}
-                  selector={`[data-builder-id="${selectedComponent.uuid}"]`}
-                  componentName={selectedComponent.displayName}
-                  onClone={handleCloneComponent}
-                  onMove={handleMoveComponent}
-                  onDelete={onDeleteComponent}
-                  onGoToParent={onGoToParentComponent}
-                />
-              )}
-              {draggingElement && (
-                <DropSelector
-                  filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
-                  jsonTree={jsonTree}
-                  mountDocument={document}
-                  onDropPositionChange={onDropPositionChange}
-                />
-              )}
+              >
+                <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
+                  👈
+                </span>
+                <div style={{ fontSize: '1.2rem', opacity: 0.5 }}>Drag n' Drop some components</div>
+              </div>
+            )}
 
-              <Provider theme={teamsTheme} target={document}>
-                {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
-                {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-                {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-              </Provider>
-            </>
-          );
-        }}
+            <DebugSelector
+              active={isSelecting}
+              key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}
+              filter={fiberNav => {
+                const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
+                if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
+                  return null;
+                }
+                return owner;
+              }}
+              mountDocument={document}
+              renderLabel={fiberNav => fiberNav.name}
+              showBackground={false}
+              showClassName={false}
+              showElement={false}
+              showCropMarks={false}
+              onSelect={handleSelectComponent}
+            />
+            {selectedComponent && (
+              <DebugFrame
+                target={document}
+                selector={`[data-builder-id="${selectedComponent.uuid}"]`}
+                componentName={selectedComponent.displayName}
+                onClone={handleCloneComponent}
+                onMove={handleMoveComponent}
+                onDelete={onDeleteComponent}
+                onGoToParent={onGoToParentComponent}
+              />
+            )}
+            {_.keys(accessibilityErrors).map(uuid => (
+              <ErrorFrame
+                target={document}
+                selector={`[data-builder-id="${uuid}"]`}
+                errors={_.keys(accessibilityErrors[uuid]).length}
+              />
+            ))}
+            {draggingElement && (
+              <DropSelector
+                filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
+                jsonTree={jsonTree}
+                mountDocument={document}
+                onDropPositionChange={onDropPositionChange}
+              />
+            )}
+
+            <Provider theme={teamsTheme} target={document}>
+              {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
+              {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+              {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+            </Provider>
+          </>
+        )}
       </FrameContextConsumer>
     </Frame>
   );

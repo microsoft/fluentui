@@ -36,7 +36,7 @@ export function setup(settings?: DevEnvSettings): void {
 
   if (!w.__abilityAttributesDev) {
     w.__abilityAttributesDev = {
-      error: new ErrorReporter(w),
+      error: settings?.errorReporter ?? new ErrorReporter(w),
       jsConstraints: {},
     };
 
