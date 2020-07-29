@@ -4,9 +4,11 @@
 
 ## Addons
 
-Learn more about storybook addons [here](https://storybook.js.org/docs/addons/introduction/).
+_Learn more about storybook addons [here](https://storybook.js.org/docs/addons/introduction/)._
 
-To import ThemeProvider decorator which allows you to select theme and provided to stories using `ThemeProvider` wrapper:
+### Decorator: withThemeProvider
+
+This adds Theme knob which allows selecting different theme to provide to components via `ThemeProvider`.
 
 ```js
 import { addDecorator } from '@storybook/react';

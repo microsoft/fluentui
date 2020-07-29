@@ -4,7 +4,14 @@ import { useTheme } from '../knobs/useTheme';
 
 export const withThemeProvider = (storyFn: () => React.ReactNode) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { theme } = useTheme();
+  const { theme, isDark } = useTheme();
+  const style = {
+    background: isDark ? 'black' : undefined,
+  };
 
-  return <ThemeProvider theme={theme}>{storyFn()}</ThemeProvider>;
+  return (
+    <ThemeProvider style={style} theme={theme}>
+      {storyFn()}
+    </ThemeProvider>
+  );
 };
