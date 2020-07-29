@@ -38,7 +38,7 @@ export function renamePropInSpread(
         const elemmm = spreadIsIdentifier
           ? attribute.getFirstChildByKind(SyntaxKind.Identifier)
           : attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-        console.log(elemmm?.getContextualType());
+        console.log(elemmm?.getContextualType()?.getText());
         /* Step 3: Create names for your new potential objects. */
         const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
         let newSpreadName = '__migProps';
