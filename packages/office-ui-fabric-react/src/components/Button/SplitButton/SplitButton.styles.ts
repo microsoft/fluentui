@@ -47,15 +47,17 @@ export const getStyles = memoizeFunction(
 
               selectors: {
                 [HighContrastSelector]: {
-                  color: 'Window',
-                  backgroundColor: 'WindowText',
+                  color: 'WindowText',
+                  backgroundColor: 'Window',
+                  border: '1px solid WindowText',
+                  borderRightWidth: '0',
                   MsHighContrastAdjust: 'none',
                 },
                 ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
             '.ms-Button--primary + .ms-Button': {
-              border: 'none',
+              border: '1px solid WindowText',
             },
           },
         },
@@ -171,11 +173,11 @@ export const getStyles = memoizeFunction(
               [HighContrastSelector]: {
                 color: 'GrayText',
               },
-              ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },
           [HighContrastSelector]: {
             color: 'GrayText',
+            border: '1px solid GrayText',
             backgroundColor: 'Window',
           },
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
@@ -199,6 +201,7 @@ export const getStyles = memoizeFunction(
             borderColor: 'GrayText',
             backgroundColor: 'Window',
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
     };

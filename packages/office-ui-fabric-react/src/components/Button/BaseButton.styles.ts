@@ -34,7 +34,6 @@ export const getStyles = memoizeFunction(
       top: -2,
       bottom: -2,
       right: -2,
-      border: 'none',
       outlineColor: 'ButtonText',
     };
 
