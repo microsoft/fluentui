@@ -51,3 +51,14 @@ export type ComponentPropType = {
   parameters?: ComponentPropType[];
   value?: string;
 };
+
+declare global {
+  interface ComputedAccessibleNode {
+    role?: string;
+    name?: string;
+  }
+
+  interface Window {
+    getComputedAccessibleNode: (HTMLElement) => Promise<ComputedAccessibleNode>;
+  }
+}
