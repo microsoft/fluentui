@@ -101,14 +101,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       const fiberNav = FiberNavigator.fromDOMNode(ev.target);
       const parent = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
 
-      document?.body.focus();
-
       // when the selected element was not created by the user, the focus is in the body
       // therefore we need to warn the user because, in this case, the reader can read the entire document
       if (document && !parent?.props?.['data-builder-id']) {
         document.body.style.outline = '4px dashed red';
         document.body.style.outlineOffset = '-4px';
-        onMessage('Be careful: focus on body!');
+        onMessage('Warning: Focus on body');
       } else {
         document.body.style.outline = '';
         document.body.style.outlineOffset = '';
