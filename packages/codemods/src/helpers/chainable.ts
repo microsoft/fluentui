@@ -1,7 +1,5 @@
-import { Mappable } from './mappable';
-
 export type Flattened<T, V> = T extends Chainable<unknown> ? T : V;
-export interface Chainable<T> extends Mappable<T> {
+export interface Chainable<T> {
   /**
    * If this Chainables's T is an instance of Chainable,
    * then it will flatten it so now Chainable now contains

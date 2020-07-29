@@ -19,14 +19,6 @@ class ResultInternal<R, E> implements Chainable<R> {
     this.value = options.value;
   }
 
-  public map<T>(this: Result<R, E>, fn: (v: R) => T): Result<T, E> {
-    if (this.ok) {
-      return Ok(fn(this.value));
-    }
-
-    return Err(this.value);
-  }
-
   public chain<T>(this: Result<R, E>, fn: (v: R) => Result<T, E>): Result<T, E> {
     if (this.ok) {
       return fn(this.value);

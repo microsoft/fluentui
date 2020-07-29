@@ -49,40 +49,6 @@ describe('Result', () => {
     expect(getOk(3, '4').chain(v => Ok('Error')).ok).toBe(true);
   });
 
-  it('flattens correctly', () => {
-    expect(
-      getOk(3, '4')
-        .map(v => getOk(9, 4))
-        .flatten()
-        .okOrElse(100),
-    ).toBe(9);
-  });
-
-  it('flattens correctly', () => {
-    expect(
-      getOk(3, '4')
-        .map(v => getErr(9, 'good'))
-        .flatten()
-        .errOrElse('bad'),
-    ).toBe('good');
-  });
-
-  it('Maps correctly on Ok', () => {
-    expect(
-      getOk(3, '4')
-        .map(v => 'Good')
-        .okOrElse('Bad'),
-    ).toBe('Good');
-  });
-
-  it('Maps correctly on Err', () => {
-    expect(
-      getErr(3, '4')
-        .map(v => 'Good')
-        .okOrElse('Bad'),
-    ).toBe('Bad');
-  });
-
   it('Thens correctly on Ok', () => {
     expect(
       getOk(3, '4')
