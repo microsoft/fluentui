@@ -95,7 +95,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -231,7 +230,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -364,7 +362,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -497,7 +494,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -630,7 +626,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -763,7 +758,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -896,7 +890,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1029,7 +1022,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1162,7 +1154,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1295,7 +1286,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1428,7 +1418,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1561,7 +1550,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1694,7 +1682,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1827,7 +1814,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1960,7 +1946,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2132,7 +2117,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2268,7 +2252,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2401,7 +2384,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2534,7 +2516,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2667,7 +2648,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2800,7 +2780,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2933,7 +2912,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3066,7 +3044,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3199,7 +3176,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3332,7 +3308,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3465,7 +3440,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3598,7 +3572,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3731,7 +3704,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3864,7 +3836,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3997,7 +3968,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4147,7 +4117,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4280,7 +4249,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4413,7 +4381,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4546,7 +4513,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4679,7 +4645,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4812,7 +4777,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4945,7 +4909,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5078,7 +5041,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5223,7 +5185,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5359,7 +5320,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5492,7 +5452,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5625,7 +5584,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5758,7 +5716,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5891,7 +5848,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -6024,7 +5980,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;

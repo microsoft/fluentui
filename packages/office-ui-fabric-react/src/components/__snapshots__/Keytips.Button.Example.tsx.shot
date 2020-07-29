@@ -71,7 +71,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -193,7 +192,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -346,7 +344,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -505,14 +502,16 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
             -ms-high-contrast-adjust: none;
-            background-color: WindowText;
-            color: Window;
+            background-color: Window;
+            border-right-width: 0;
+            border: 1px solid WindowText;
+            color: WindowText;
           }
           @media screen and (forced-colors: active){& .ms-Button--primary {
             forced-color-adjust: none;
           }
           & .ms-Button--primary + .ms-Button {
-            border: none;
+            border: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -590,7 +589,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -839,7 +837,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -961,7 +958,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1228,7 +1224,6 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;

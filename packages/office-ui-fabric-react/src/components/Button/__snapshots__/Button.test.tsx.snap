@@ -45,7 +45,6 @@ exports[`Button renders ActionButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -383,7 +382,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -532,7 +530,6 @@ exports[`Button renders DefaultButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -652,7 +649,6 @@ exports[`Button renders IconButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -785,7 +781,6 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-        border: none;
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
