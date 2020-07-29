@@ -85,7 +85,8 @@
     "packages/web-components/typescript",
     "packages/web-components/tsconfig-path",
     "packages/web-components/ts-loader",
-    "packages/web-components/ts-node"
+    "packages/web-components/ts-node",
+    "packages/web-components/mocha/*"
   ],
   "resolutions": {
     "eslint": "^7.1.0",
