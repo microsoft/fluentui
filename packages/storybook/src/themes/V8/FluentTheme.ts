@@ -1,8 +1,6 @@
-import { select } from '@storybook/addon-knobs';
+import { Theme } from '@fluentui/react-theme-provider';
 
-const themeSelectorLabel = 'Theme';
-
-const FluentTheme = {
+export const FluentTheme: Theme = {
   tokens: {
     palette: {
       accent: '#0078D4',
@@ -41,11 +39,3 @@ const FluentTheme = {
   },
   stylesheets: [],
 };
-
-const themeOptions = [
-  { label: 'Teams', theme: undefined },
-  { label: 'Fluent', theme: FluentTheme },
-];
-const defaultThemeOption = themeOptions[0];
-
-export const useTheme = () => select(themeSelectorLabel, themeOptions, defaultThemeOption);

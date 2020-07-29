@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "lib",
+    // "target": "es2019",
+    // "module": "esnext",
+    // "lib": ["esnext"],
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es5", "esnext", "dom"],
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "types": ["jest", "react", "react-dom"],
+    "esModuleInterop": true
+  },
+  "include": ["src"]
+}
