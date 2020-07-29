@@ -1,18 +1,7 @@
 import * as React from 'react';
 import { getWindow } from '@uifabric/utilities';
 import { useOnEvent } from '@uifabric/react-hooks';
-import { ResponsiveMode, getResponsiveMode } from '../decorators/withResponsiveMode';
-
-/**
- * User specified mode to default to, useful for server side rendering scenarios.
- */
-let _defaultMode: ResponsiveMode | undefined;
-
-/**
- * Tracking the last mode we successfully rendered, which allows us to
- * paint initial renders with the correct size.
- */
-let _lastMode: ResponsiveMode | undefined;
+import { ResponsiveMode, getResponsiveMode, _defaultMode, _lastMode } from '../decorators/withResponsiveMode';
 
 export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null>) => {
   const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(

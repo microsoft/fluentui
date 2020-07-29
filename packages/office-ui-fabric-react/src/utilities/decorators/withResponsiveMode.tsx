@@ -22,13 +22,13 @@ const RESPONSIVE_MAX_CONSTRAINT = [479, 639, 1023, 1365, 1919, 99999999];
 /**
  * User specified mode to default to, useful for server side rendering scenarios.
  */
-let _defaultMode: ResponsiveMode | undefined;
+export let _defaultMode: ResponsiveMode | undefined;
 
 /**
  * Tracking the last mode we successfully rendered, which allows us to
  * paint initial renders with the correct size.
  */
-let _lastMode: ResponsiveMode | undefined;
+export let _lastMode: ResponsiveMode | undefined;
 
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
