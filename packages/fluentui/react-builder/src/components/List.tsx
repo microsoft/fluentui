@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Box, Menu, Input } from '@fluentui/react-northstar';
+import { Box, Menu, Input, tabListBehavior } from '@fluentui/react-northstar';
 import { SearchIcon } from '@fluentui/react-icons-northstar';
 import { ComponentInfo } from '../componentInfo/types';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
@@ -39,6 +39,8 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
 
   return (
     <div
+      role="complementary"
+      aria-label="Available components"
       style={{
         ...style,
         boxShadow: '1px 0px 3px rgba(0, 0, 0, 0.2)',
@@ -46,6 +48,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
       }}
     >
       <Menu
+        accessibility={tabListBehavior}
         underlined
         fluid
         styles={{ padding: '0.5em 0.5em 0 0.5em' }}
