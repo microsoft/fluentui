@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Microsoft/fluentui.git"
+    "url": "https://github.com/microsoft/fluentui/tree/master/packages/web-components"
   },
   "bugs": {
     "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
