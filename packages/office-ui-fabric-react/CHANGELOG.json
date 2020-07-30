@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "office-ui-fabric-react_v7.124.0",
+      "version": "7.124.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add noop transform to force gpu on mobile",
+            "author": "miles@substantial.com",
+            "commit": "b42ae30fb2bf82da9dac0acec4e7c61431c59652",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "updated grouped list to be a11y compliant",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7fb345ceb101cf5b5ad6d046cf95a58195155d17",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jul 2020 12:42:21 GMT",
       "tag": "office-ui-fabric-react_v7.123.10",
       "version": "7.123.10",

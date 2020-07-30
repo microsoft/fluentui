@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jul 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.124.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.0)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.10..office-ui-fabric-react_v7.124.0)
+
+### Minor changes
+
+- updated grouped list to be a11y compliant ([PR #11494](https://github.com/microsoft/fluentui/pull/11494) by mgodbolt@microsoft.com)
+
+### Patches
+
+- Add noop transform to force gpu on mobile ([PR #13875](https://github.com/microsoft/fluentui/pull/13875) by miles@substantial.com)
 
 ## [7.123.9](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.9)
 

@@ -8,6 +8,7 @@ export interface IAzureSemanticColors {
     upsell: string;
   };
   text: {
+    list: string;
     heading: string;
     body: string;
     bodyHovered: string;
@@ -17,6 +18,7 @@ export interface IAzureSemanticColors {
     disabled: string;
     hyperlink: string;
     hyperlinkHovered: string;
+    hyperlinkBackgroundHovered: string;
     success: string;
     error: string;
     placeholder: string;
@@ -25,6 +27,7 @@ export interface IAzureSemanticColors {
     rest: {
       background: string;
       text: string;
+      border: string;
     };
     hover: {
       background: string;
@@ -32,6 +35,14 @@ export interface IAzureSemanticColors {
     };
     pressed: {
       background: string;
+      text: string;
+    };
+    disabled: {
+      background: string;
+      border: string;
+      text: string;
+    };
+    focus: {
       text: string;
     };
   };
@@ -59,13 +70,17 @@ export interface IAzureSemanticColors {
   checkBox: {
     rest: {
       border: string;
+      background: string;
       hover: string;
       focus: string;
+      check: string;
     };
     checked: {
       border: string;
       background: string;
       default: string;
+      hoverBackground: string;
+      hoverBorder: string;
     };
     disabled: {
       border: string;
@@ -78,6 +93,11 @@ export interface IAzureSemanticColors {
     accent: string; // button in radio, check, et. al.
     error: string;
     dirty: string;
+  };
+  choiceGroup: {
+    circle: {
+      hover: string;
+    };
   };
   item: {
     hover: string;
@@ -97,8 +117,31 @@ export interface IAzureSemanticColors {
     border: string;
   };
   datePicker: {
+    rest: {
+      selected: string;
+      text: string;
+    };
     disabled: {
       border: string;
     };
+  };
+  detailsRow: {
+    border: string;
+  };
+  radioButton: {
+    circle: {
+      uncheckedRest: string;
+      checkedDisabled: string;
+      borderDisabled: string;
+    };
+    pill: {
+      disabled: string;
+      uncheckedDisabled: string;
+      checkedHover: string;
+      uncheckedHover: string;
+    };
+  };
+  tabs: {
+    hover: string;
   };
 }
