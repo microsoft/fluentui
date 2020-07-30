@@ -29,7 +29,8 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector,
 
       setShowAOMWarning(!aomEnabled);
     }
-  }, [setShowAOMWarning, setText, ref, selector, node]);
+  // eslint-disable-next-line
+  }, [setShowAOMWarning, setText, ref.current, selector, node]);
 
   return (
     (selector || node) && (
