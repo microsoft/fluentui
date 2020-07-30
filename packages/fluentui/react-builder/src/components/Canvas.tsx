@@ -385,18 +385,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               />
             )}
 
-            <Provider
-              theme={teamsTheme}
-              target={document}
-              styles={{
-                '::after': {
-                  content: 'asdijhaoijdoi',
-                  position: 'absolute',
-                  top: 0,
-                  fontSize: 24,
-                },
-              }}
-            >
+            <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
