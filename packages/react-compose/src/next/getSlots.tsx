@@ -14,7 +14,7 @@ import { nullRender } from './nullRender';
  * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-export const getSlots = (state: GenericDictionary, slotNames: string[] | undefined) => {
+export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefined) => {
   const slots: GenericDictionary = {
     root: state.as || nullRender,
   };
@@ -22,22 +22,24 @@ export const getSlots = (state: GenericDictionary, slotNames: string[] | undefin
     root: getNativeElementProps(state.as, state),
   };
 
-  for (const name of slotNames!) {
-    const slotDefinition = state[name];
-    const { as: slotAs, children, ...rest } = slotDefinition;
+  if (slotNames) {
+    for (const name of slotNames!) {
+      const slotDefinition = state[name];
+      const { as: slotAs, children, ...rest } = slotDefinition;
 
-    const slot = (slots[name] = slotAs || slotDefinition.children ? slotAs : nullRender);
+      const slot = (slots[name] = slotDefinition.children || typeof slotAs !== 'string' ? slotAs : nullRender);
 
-    if (slots[name] !== nullRender) {
-      slotProps[name] =
-        typeof slot === 'string'
-          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            getNativeElementProps(slot as any, slotDefinition)
-          : { ...rest, children };
+      if (slots[name] !== nullRender) {
+        slotProps[name] =
+          typeof slot === 'string'
+            ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              getNativeElementProps(slot as any, slotDefinition)
+            : { ...rest, children };
 
-      if (children === 'function') {
-        slotProps[name].children = children(slots[name], rest);
-        slots[name] = React.Fragment;
+        if (children === 'function') {
+          slotProps[name].children = children(slots[name], rest);
+          slots[name] = React.Fragment;
+        }
       }
     }
   }

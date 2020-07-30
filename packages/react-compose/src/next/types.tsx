@@ -1,5 +1,3 @@
-export const OPTIONS_NAME = '__options';
-
 /**
  * Generic name to any dictionary.
  */
@@ -13,10 +11,7 @@ export interface ComponentProps extends GenericDictionary {
   className?: string;
 }
 
-//
-// Slot Prop / Shorthand types
-//
-
+// Shorthand types
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
 
 export type ShorthandProps<TProps extends ComponentProps = {}> =
