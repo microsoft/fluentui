@@ -59,6 +59,7 @@ type DesignerState = {
   selectedComponentInfo: ComponentInfo; // FIXME: should be computed in render?
   selectedJSONTreeElementUuid: JSONTreeElement['uuid'];
   showCode: boolean;
+  enabledVirtualCursor: boolean;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
@@ -77,6 +78,7 @@ type DesignerAction =
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
+  | { type: 'ENABLE_VIRTUAL_CURSROR'; enabledVirtualCursor: boolean }
   | { type: 'SOURCE_CODE_CHANGE'; code: string }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
@@ -193,6 +195,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
         console.error('Failed to convert tree to code.', e.toString());
       }
       break;
+    case 'ENABLE_VIRTUAL_CURSROR':
+      draftState.enabledVirtualCursor = action.enabledVirtualCursor;
+      break;
 
     case 'SOURCE_CODE_CHANGE':
       draftState.code = action.code;
@@ -291,6 +296,7 @@ export const Designer: React.FunctionComponent = () => {
       selectedComponentInfo: null,
       selectedJSONTreeElementUuid: null,
       showCode: false,
+      enabledVirtualCursor: false,
       code: null,
       codeError: null,
       insertComponent: null,
@@ -313,6 +319,7 @@ export const Designer: React.FunctionComponent = () => {
     /* selectedComponentInfo, */
     selectedJSONTreeElementUuid,
     showCode,
+    enabledVirtualCursor,
     code,
     codeError,
     insertComponent,
@@ -341,6 +348,13 @@ export const Designer: React.FunctionComponent = () => {
   const handleShowCodeChange = React.useCallback(
     showCode => {
       dispatch({ type: 'SHOW_CODE', show: showCode });
+    },
+    [dispatch],
+  );
+
+  const handleEnableVirtualCursorChange = React.useCallback(
+    enableVirtualCursor => {
+      dispatch({ type: 'ENABLE_VIRTUAL_CURSROR', enabledVirtualCursor: enableVirtualCursor });
     },
     [dispatch],
   );
@@ -515,6 +529,8 @@ export const Designer: React.FunctionComponent = () => {
         isExpanding={isExpanding}
         isSelecting={isSelecting}
         mode={mode}
+        onEnableVirtualCursor={handleEnableVirtualCursorChange}
+        eenabledVirtualCursor={enabledVirtualCursor}
         onShowCodeChange={handleShowCodeChange}
         onShowJSONTreeChange={handleShowJSONTreeChange}
         onReset={handleReset}
@@ -613,6 +629,8 @@ export const Designer: React.FunctionComponent = () => {
             >
               <ErrorBoundary code={code} jsonTree={jsonTree}>
                 <Canvas
+                  mode={mode}
+                  enabledVirtualCursor={enabledVirtualCursor}
                   draggingElement={draggingElement}
                   isExpanding={isExpanding}
                   isSelecting={isSelecting || !!draggingElement}
