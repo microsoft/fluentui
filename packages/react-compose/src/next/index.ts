@@ -1,3 +1,4 @@
 export * from './types';
-export * from './compose';
 export * from './getSlots';
+export * from './mergeProps';
+export * from './simplifyShorthand';

@@ -9,307 +9,220 @@ Components are comprised of:
 - Styling hooks which provide class names for the parts of a component.
 - Render function: function which consumes the final state and styling and returns markup.
 
-The `compose` helper is a simple utility which lets us glue these parts together in a way that allows them to be easily extended.
+The `react-compose` library includes simple utilities to help glue these parts together.
 
-## How compose works
+## A basic component walkthrough
 
-Example usage:
+Building a reusable component requires that we build it from reusable layers. The layers can be used as building blocks to scaffold or rescaffold components.
+
+A component should consist of the following:
+
+- Render function - a function which takes in final state and returns JSX. (e.g. `renderButton`)
+- State hooks - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
+- Factory function - a create\* function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of teh component as needed.
+- One ore more components - components can now use the factory function to create variations of the component easily.
+
+### Simple example
+
+A render function:
 
 ```jsx
-// compose a Foo component.
-const Foo = compose(
-  (state) => {
-    return <foo/>;
-  }, {
-  // Component has a name.
-  displayName: 'Foo',
+const renderButton = state => {
+  return <button {...state} />;
+};
+```
 
-  // Component manages some state, behaviors, styling.
-  useHooks: [ (draftState) => newState | undefined ],
+A hook which can manipulate the state (defining accessibility and behaviors):
 
-  // Component has some default props.
-  defaultProps: { ... }
+```jsx
+const useButton = state => {
+  // If the button is rendered as something besides a button or anchor, make it focusable.
+  if (state.as !== 'button' && state.as !== 'a') {
+    state.tabIndex = 0;
+  }
+};
+```
+
+A factory function sets up the state and render function:
+
+```jsx
+const createButton = (userProps, ref, defaultProps) => {
+  const state = _.merge({}, defaultProps, userProps);
+
+  // Apply button behaviors.
+  useButton(state);
+
+  return { state, render };
+};
+```
+
+A button can now be easily scaffolded, along with your choice of styling systems:
+
+```jsx
+import * as styles from './Button.scss';
+
+const useStyles = makeStyles(styles);
+
+const Button = React.forwardRef((props, ref) => {
+  const { state, render } = createButton(props, ref);
+
+  // Inject classNames as needed.
+  useStyles(state);
+
+  return render(state);
 });
 ```
 
-Compose handles these concerns:
+### Details
 
-1. draftState is created based on defaultProps and user input. Draft state allows you to directly manipulate a copy of the state without worrying about immutability mistakes or performance overhead of object spreading.
-2. Each hook is executed with draft state.
-3. Final state is passed to render function and result is returned.
+#### Creating mutable state with `mergeProps`
 
-Additionally it allows the result to be extended through an attached `extend` helper:
+In the simple example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and using that to construct state simplifies hook development and usage; rather than trying to re-clone objects unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self contained hooks, which can ensure they are used correctly, avoid accidents like stomping on existing event handlers by blind object assigning the results.
 
-```jsx
-const AnotherComponent = MyComponent.extend({
-  useHooks: [ ...more hooks ],
-  defaultProps: { ...new defaults }
-})
-```
+However, deep merge overlooks many edge cases for component props:
 
-The extend call creates a new component with new settings merged on top of the base settings. Doing this avoids extra wrapper component layers, while still reusing the component.
+- Deep merging classnames should append them, not replace
+- Deep merging JSX or arrays should replace, not recurse
+- Deep merging an object on a string should replace
 
-### But why is extend important?
+...which introduces the first utility: `mergeProps`. Merge props works like a deep merge, but takes care of classnames, JSX, arrays, and object edge cases.
 
-Fluent UI components should have 2 separate layers; base components which are unstyled, and styled versions of those components. This gives developers 2 layers to use; use the styled component when building M365 experiences. Extend the unstyled component (e.g. `ButtonBase`) to use a different styling approach, or build a new, slightly augmented component extending the styled version (e.g. `Button`).
+#### Supporting the `as` prop with `getSlots`
 
-## Getting started writing components
+Fluent UI components take a common `as` prop. This allows the root element to be rendered with something other than the default.
 
-### Write and review a spec
-
-Know what you're building. Do the research on the following:
-
-- What is the right component name? Consult guidance in Open UI.
-- What props are accepted? Are there standards in Open UI
-- What slots should be configurable?
-- How does customized styling work?
-
-### Build a base component
-
-A base component defines the render dom heirarchy, state management, and accessible behaviors. It does not provide styling. It does not attach dependencies. These are done in a separate layer, so that customers can always fall back to extending the base, should they wish to provide their own styling or subcomponent dependencies.
-
-Use `compose` to create the extendable base component. It takes in a render function and options:
+To support the `as` prop, the render function might look like this:
 
 ```jsx
-const MyComponentBase = compose<TProps, TState>(
-  (state, options) => {
-    return <div />;
-  }, {
-    displayName: 'MyComponentBase',
-    // ...
-  });
+const renderButton = state => {
+  const root = state.as;
+
+  return <root {...state} />;
+};
 ```
 
-## Supporting component slots
+Additionally, you will need to filter out native properties which apply to the root; otherwise you will end up mixing any unexpected props into the element. To do this, we have a `getNativeElementProps` helper, which can be used for this purpose:
 
-The root element should always be configurable by the customer using the `as` prop.
+```jsx
+const renderButton = state => {
+  const root = state.as;
+  const rootProps = getNativeElementProps(root, state);
 
-Additionally components often have more than a root element; these additional subcomponents should be configurable by the customer as well. We customize these using slot props.
-
-Use the `getSlots` helper to parse out `as` prop, slots and native props. By default, it will return a `root` slot for you.
-
+  return <root {...rootProps} />;
+};
 ```
-const MyComponentBase = compose((state, options) => {
-  const { slots, slotProps } = getSlots(state, options);
+
+This step has been abstracted in the `getSlots` helper:
+
+```jsx
+const renderButton = state => {
+  const { slots, slotProps } = getSlots(state);
 
   return <slots.root {...slotProps.root} />;
-}, {
-  displayName: 'MyComponentBase',
-  defaultProps: {
-    as: 'div',
-    icon: { as: FooComponent }
-  }
-]});
+};
 ```
 
-Add an `icon` slot:
+#### Supporting shorthand props
+
+Fluent UI components almost always contain sub parts, and these sub parts should be configurable. We allows them to be configured through "shorthand props", which let's the caller pass in a variety of inputs for a given slot. Take a Button's "icon" slot:
 
 ```jsx
-const MyComponentBase = compose(
-  (state, options) => {
-    const { slots, slotProps } = getSlots(state, options);
+// The icon can be a string
+<Button icon="X" />
 
-    return (
-      <slots.root {...slotProps.root}>
-        <slots.icon {...slotProps.icon} />
-      </slots.root>
-    );
-  },
-  {
-    // Instruct merging on which props are shorthand.
-    shorthandProps: ['icon'],
+// The icon can be JSX
+<Button icon={ <FooIcon/> }/>
 
-    defaultProps: {
-      // Define the default props for the icon.
-      icon: { as: 'span' },
-    },
-  },
-);
+// The icon can be an object
+<Button icon={{ as: 'i', children: getCode('Add') } } />
+
+// The icon can be a children function (which receives the original slot and props)
+<Button icon={{ children: (C, p) => <C {...p} otherThings /> }} />
 ```
 
-Note: the `shorthandProps` array option is required for compose to apply shorthand normalization logic for proper default props merging. (Because a shorthand prop can be a string, object, or JSX, you need to apply custom merge logic for these.)
+Supporting this dynamic props input requires some helpers:
 
-## Adding state hooks
+1. A helper `simplifyShorthand` to simplify the user's input into an object for props merging
+2. The `getSlots` helper to parse the slots out
 
-The `compose` options can provide a `useHooks` array to provide a way for components to inject hooks to preprocess state after receiving user props and before rendering the component.
+Here's how this looks:
 
-A draft state object will be created from userProps, allowing hooks to directly manipulate state without worrying about immutability and avoiding the overhead in recreating state objects.
+The factory function, which deep clones the props, would need to simplify the shorthand first:
 
-![](https://i.imgur.com/cSiEAIV.png)
+```jsx
+const createButton = (userProps, ref, defaultProps) => {
+  const state = mergeProps(
+    {
+      // default props
+      as: 'button',
+      ref,
+      icon: { as: 'span' },
+    },
+    defaultProps, // optional default props from the caller
+    simplifyShorthand(userProps, ['icon']), // simplify the user's props
+  );
+
+  // Apply button behaviors.
+  useButton(state);
+
+  return { state, render };
+};
+```
+
+...and the render function now can manage rendering the slot using getSlots:
+
+```jsx
+const renderButton = state => {
+  const { slots, slotProps } = getSlots(state, ['icon']);
+
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.icon {...slotProps.icon} />
+      {state.children}
+    </slots.root>
+  );
+};
+```
+
+## API reference
+
+### mergeProps(target, ...rest)
+
+The `mergeProps` function takes in state and compose options, and resolves slots and slotProps.
+It's expected that the component will call mergeProps(state, options) from within
+render; after resolving state and before rendering slots and slotProps.
 
 Example:
 
-A hook which uses an interval to inject value:
-
 ```jsx
-const useIncrementingValue = draftState => {
-  const { step = 1 } = draftState; // get step from user.
-  const setInterval = useSetInterval();
-  const [value, setValue] = React.useState(0);
-
-  setInterval(
-    React.useCallback(() => {
-      setValue(v => v + step);
-    }, [step]),
-    1000,
-  );
-
-  // Plumb the managed value into draft state.
-  draftState.value = value;
-};
+mergeProps(props, { ...etc }, { ...etc });
 ```
 
-Can be added to the base component:
+### getSlots(state: Record<string, any>, slotNames: string[])
+
+The `getSlots` function returns
+
+### simplifyShorthand<TState>(state: TState, slotNames: string[]): TState
+
+Ensures that the given slots are represented using object syntax. This ensures that
+the object can be merged along with other objects.
+
+Example:
 
 ```jsx
-const MyComponentBase = compose(
-  (state, options) => { ... },
-  {
-    useHooks: [
-      useIncrementingValue
-    ]
-  }
-});
+const foo = simplifyShorthand(
+  { a: <JSX/>, b: 'string', c: { ... }, d: 'unchanged' },
+  [ 'a', 'b', 'c' ]
+);
 ```
 
-Or as an example of extensibility, a user can also extend the component with the behavior without creating additional HOC layers:
+Results in bojects which can be merged correctly:
 
 ```jsx
-const MyComponent = MyComponentBase.extend({
-  useHooks: [useIncrementingValue],
-});
-```
-
-Some hooks should be created by a factory function so that inputs can be cached. For example, say the prop name and default incrementing step should be provided to a factory creating the hook. We use the `make` prefix to indicate a hook factory:
-
-```jsx
-const MyComponent = MyComponentBase.extend({
-  useHooks: [makeIncrementingValue({ propName: 'value', step: 1 })],
-});
-```
-
-## Create a styled component from the base
-
-We use the `extend` static to create styled variations of the base component:
-
-`MyComponent.scss`:
-
-```scss
-.root {
-  background: red;
-}
-.icon {
-  background: green;
+{
+  a: { children: <JSX/> },
+  b: { children: 'string' },
+  c: { ... },
+  d: 'unchanged'
 }
 ```
-
-`MyComponent.tsx`:
-
-```jsx
-import * as styles from './MyComponent.scss';
-import { makeStyles } from '@fluentui/react-theme-provider';
-
-const MyComponent = MyComponentBase.extend({
-  useHooks: [
-    // hook to inject stylesheet as needed
-    makeStyles(styles),
-  ],
-});
-```
-
-The `makeStyles` helper injects styling on render as needed, in the correct window (respecting theme context.)
-
-### Tokenizing the component
-
-Tokens are simply css variables. They are replacement values in the stylesheet.
-
-As users wish to customize the component, they will want to provide new tokens.
-
-Your stylesheet needs to be adjusted respect the tokens:
-
-```
-.root {
-  background: var(--MyComponent-background, red);
-}
-.root:hover {
-  background: var(--MyComponent-hovered-background, pink);
-}
-```
-
-The user could now apply these overrides inline:
-
-```tsx
-<MyComponent style={{ '--MyComponent-background': 'blue' }} />
-```
-
-This gives a lot of power to the user; they no longer have to guess selectors to override and can override complex things inline, but it is still a guessing game. There is no type safety.
-
-To work through this, we want type safe tokens:
-
-```jsx
-<MyComponent tokens={{ background: 'blue', hoveredBackground: 'lightblue' }} />
-```
-
-There are a few helpers to make this easy:
-
-> TODO
-
-### Creating variants with tokens
-
-Component styling is not static; you need modifiers and enum values to create variations of the component in different states.
-
-Variants could be hardcoded in the styling, but they would not be easy to override in css due to specificity wars. We want variants to be easily overridable via the theme.
-
-```jsx
-export const MyComponentVariants = {
-  base: {
-    background: 'red',
-  },
-  primary: {
-    background: 'green',
-  },
-};
-```
-
-```jsx
-import * as styles from './MyComponent.scss';
-import { makeStyles, makeVariants } from '@fluentui/react-theme-provider';
-
-const MyComponent = MyComponentBase.extend({
-  displayName: 'MyComponent',
-  useHooks: [
-    // hook to inject stylesheet as needed
-    makeStyles(styles),
-    // hook to inject style variants
-    makeVariants(variants),
-  ],
-});
-```
-
-The makeVariants helper takes care of a lot of things for you so that you can't make a mistake:
-
-- Creates class names for variants on demand, only when necessary
-- Injects the correct classes to the root when matching state is provided
-- Respects variants defined in the theme
-
-```jsx
-<MyComponent /> // red background
-<MyComponent primary /> // green background
-
-<ThemeProvider
-  theme={{
-  components: {
-    MyComponent: {
-      variants: {
-        base: {
-         background: 'yellow'
-        }
-      }
-    }
-  }
-}}>
-  <MyComponent /> // yellow background
-</ThemeProvider>
-```
-
-### Processing inline tokens
