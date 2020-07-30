@@ -55,6 +55,9 @@ export const getStyles = memoizeFunction(
                 },
               },
             },
+            '.ms-Button--primary + .ms-Button': {
+              border: 'none',
+            },
           },
         },
       ],
