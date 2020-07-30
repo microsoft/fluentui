@@ -50,9 +50,9 @@ export function initializeResponsiveMode(element?: HTMLElement): void {
   }
 }
 
-export const getInitialResponsiveMode = () => {
+export function getInitialResponsiveMode() {
   return _defaultMode || _lastMode || ResponsiveMode.large;
-};
+}
 
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
@@ -106,7 +106,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   return hoistStatics(ComposedComponent, resultClass);
 }
 
-export const getResponsiveMode = (currentWindow: Window | undefined): ResponsiveMode => {
+export function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
   let responsiveMode = ResponsiveMode.small;
 
   if (currentWindow) {
@@ -134,4 +134,4 @@ export const getResponsiveMode = (currentWindow: Window | undefined): Responsive
   }
 
   return responsiveMode;
-};
+}
