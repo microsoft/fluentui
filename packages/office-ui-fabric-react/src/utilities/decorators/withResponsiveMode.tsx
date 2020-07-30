@@ -22,13 +22,13 @@ const RESPONSIVE_MAX_CONSTRAINT = [479, 639, 1023, 1365, 1919, 99999999];
 /**
  * User specified mode to default to, useful for server side rendering scenarios.
  */
-export let _defaultMode: ResponsiveMode | undefined;
+let _defaultMode: ResponsiveMode | undefined;
 
 /**
  * Tracking the last mode we successfully rendered, which allows us to
  * paint initial renders with the correct size.
  */
-export let _lastMode: ResponsiveMode | undefined;
+let _lastMode: ResponsiveMode | undefined;
 
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
@@ -50,6 +50,10 @@ export function initializeResponsiveMode(element?: HTMLElement): void {
   }
 }
 
+export const getInitialResponsiveMode = () => {
+  return _defaultMode || _lastMode || ResponsiveMode.large;
+};
+
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
@@ -62,7 +66,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
-        responsiveMode: _defaultMode || _lastMode || ResponsiveMode.large,
+        responsiveMode: getInitialResponsiveMode(),
       };
     }
 
@@ -112,7 +116,7 @@ export const getResponsiveMode = (currentWindow: Window | undefined): Responsive
       }
     } catch (e) {
       // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
-      responsiveMode = _defaultMode || _lastMode || ResponsiveMode.large;
+      responsiveMode = getInitialResponsiveMode();
     }
 
     // Tracking last mode just gives us a better default in future renders,

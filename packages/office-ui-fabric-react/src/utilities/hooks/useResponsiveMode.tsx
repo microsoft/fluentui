@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { getWindow } from '@uifabric/utilities';
 import { useOnEvent } from '@uifabric/react-hooks';
-import { ResponsiveMode, getResponsiveMode, _defaultMode, _lastMode } from '../decorators/withResponsiveMode';
+import { ResponsiveMode, getResponsiveMode, getInitialResponsiveMode } from '../decorators/withResponsiveMode';
 
 export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null>) => {
-  const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(
-    _defaultMode || _lastMode || ResponsiveMode.large,
-  );
+  const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(getInitialResponsiveMode());
 
   const onResize = React.useCallback(() => {
     // Setting the same value should not cause a re-render.
