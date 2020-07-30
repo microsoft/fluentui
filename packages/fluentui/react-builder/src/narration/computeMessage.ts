@@ -12,15 +12,19 @@ const USAGE = {
   combobox: 'To set the value use the Arrow keys or type the value.',
 };
 
+const defaultMessage = (element: HTMLElement) => {
+  return element?.getAttribute('aria-label') || element.textContent;
+};
+
 export async function computeMessage(element: HTMLElement) {
   if (!(window as any).getComputedAccessibleNode) {
-    return `Go to chrome://flags and enable Experimental Web Platform features. ${element.textContent}`;
+    return defaultMessage(element);
   }
 
   const aom = await (window as any).getComputedAccessibleNode(element);
 
   if (!aom || !aom.name) {
-    return element?.getAttribute('aria-label') || element.textContent;
+    return defaultMessage(element);
   }
 
   let role = aom.role;
