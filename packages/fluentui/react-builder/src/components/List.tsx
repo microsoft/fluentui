@@ -47,7 +47,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     );
   };
 
-  const treeobj = React.useMemo(
+  const treeObj: Record<string, any> = React.useMemo(
     () =>
       Object.keys(COMPONENT_GROUP).reduce((acc, key) => {
         return {
@@ -95,7 +95,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
       }, {}),
     [displayMode, handleMouseDown, supportedComponents],
   );
-  const treeItems = Object.values(treeobj).filter(treeItem => treeItem.items.length > 0);
+  const treeItems = Object.values(treeObj).filter(treeItem => treeItem.items.length > 0);
 
   return (
     <div

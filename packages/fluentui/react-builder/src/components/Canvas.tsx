@@ -1,12 +1,16 @@
 import * as React from 'react';
+import * as _ from 'lodash';
+
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { JSONTreeElement } from './types';
+import { JSONTreeElement, DesignerMode } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
+import { AbilityAttributesValidator, AccessibilityErrors } from './AbilityAttributesValidator';
+import { ErrorFrame } from './ErrorFrame';
 import { ReaderText } from './ReaderText';
 
 export type CanvasProps = {
@@ -26,8 +30,11 @@ export type CanvasProps = {
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   enabledVirtualCursor?: boolean;
   style?: React.CSSProperties;
-  mode?: 'build' | 'design' | 'use';
+  mode: DesignerMode;
+  onMessage: (message: string) => void;
   role?: string;
+  accessibilityErrors: AccessibilityErrors;
+  onAccessibilityErrorsChanged: (errors: AccessibilityErrors) => void;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -46,9 +53,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onGoToParentComponent,
   renderJSONTreeElement,
   enabledVirtualCursor,
-  mode,
   style,
+  mode,
+  onMessage,
   role,
+  accessibilityErrors,
+  onAccessibilityErrorsChanged,
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -58,6 +68,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [],
   );
 
+  const iframeRef = React.useRef<HTMLIFrameElement>();
   const [focusableElements, setFocusableElements] = React.useState([]);
   const [currentIndex, setIndex] = React.useState(0);
   const [currentFocusedNode, setCurrentFocusedNode] = React.useState(null);
@@ -92,6 +103,49 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       onMouseUp();
     },
     [onMouseUp],
+  );
+
+  const blur = React.useCallback(() => {
+    if (!iframeRef.current) return;
+
+    const document = iframeRef.current.contentDocument;
+    document.body.style.outline = '';
+    document.body.style.outlineOffset = '';
+    onMessage('');
+    // eslint-disable-next-line
+  }, [iframeRef.current]);
+
+  const handleFocus = React.useCallback(
+    (ev: FocusEvent) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+
+      const document = iframeRef.current?.contentDocument;
+      const fiberNav = FiberNavigator.fromDOMNode(ev.target);
+      const parent = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
+
+      // when the selected element was not created by the user, the focus is in the body
+      // therefore we need to warn the user because, in this case, the reader can read the entire document
+      if (document && !parent?.props?.['data-builder-id']) {
+        document.body.style.outline = '4px dashed red';
+        document.body.style.outlineOffset = '-4px';
+        onMessage('Warning: Focus on body. Developer might need to handle it and focus relevant element instead.');
+      } else {
+        blur();
+      }
+    },
+    // eslint-disable-next-line
+    [jsonTree, iframeRef.current, onMessage],
+  );
+
+  const handleBlur = React.useCallback(
+    (ev: FocusEvent) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      blur();
+    },
+    // eslint-disable-next-line
+    [blur],
   );
 
   const handleKeyDown = React.useCallback(
@@ -155,7 +209,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   const debugSize = '8px';
 
   React.useEffect(() => {
-    const iframe = document.getElementById(iframeId) as HTMLIFrameElement;
+    iframeRef.current = document.getElementById(iframeId) as HTMLIFrameElement;
+    const iframe = iframeRef.current;
 
     if (!iframe) {
       // console.log('Canvas:effect !iframe, stop');
@@ -217,6 +272,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       if (!style) {
         style = iframeDocument.createElement('style');
         style.id = 'builder-style';
+
         // console.log('Canvas:effect created style', style);
 
         iframeDocument.body.appendChild(style);
@@ -315,7 +371,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree, role, mode]);
+  }, [iframeId, isExpanding, isSelecting, mode, jsonTree, role]);
 
   return (
     <Frame
@@ -330,6 +386,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       <FrameContextConsumer>
         {({ document, window }) => (
           <>
+            <AbilityAttributesValidator window={window} onErrorsChanged={onAccessibilityErrorsChanged} />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
@@ -376,6 +433,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 onGoToParent={onGoToParentComponent}
               />
             )}
+            {_.keys(accessibilityErrors).map(uuid => (
+              <ErrorFrame
+                target={document}
+                selector={`[data-builder-id="${uuid}"]`}
+                errors={_.keys(accessibilityErrors[uuid]).length}
+              />
+            ))}
             {draggingElement && (
               <DropSelector
                 filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
@@ -385,9 +449,16 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               />
             )}
 
-            <Provider theme={teamsTheme} target={document}>
+            <Provider theme={teamsTheme} target={document} tabIndex={0} style={{ outline: 'none' }}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+              {mode === 'use' && (
+                <>
+                  <EventListener capture type="focus" listener={handleFocus} target={document} />
+                  <EventListener capture type="blur" listener={handleBlur} target={document} />
+                </>
+              )}
+              {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
               {mode === 'use' && enabledVirtualCursor && (
                 <>
@@ -395,7 +466,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                   <ReaderText node={currentFocusedNode} />
                 </>
               )}
-              {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
           </>
         )}
