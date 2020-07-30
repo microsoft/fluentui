@@ -47,7 +47,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onGoToParentComponent,
   renderJSONTreeElement,
   enabledVirtualCursor,
-  mode,
   style,
   mode,
   onMessage,
@@ -139,6 +138,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     },
     // eslint-disable-next-line
     [blur],
+  );
 
   const handleKeyDown = React.useCallback(
     e => {

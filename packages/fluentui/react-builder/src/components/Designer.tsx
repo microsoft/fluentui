@@ -651,7 +651,6 @@ export const Designer: React.FunctionComponent = () => {
                   onDeleteComponent={handleDeleteComponent}
                   onGoToParentComponent={handleGoToParentComponent}
                   onMessage={handleCanvasMessage}
-                  mode={mode}
                   role="main"
                 />
               </ErrorBoundary>
