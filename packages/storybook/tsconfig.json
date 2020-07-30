@@ -15,7 +15,7 @@
     "strict": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "types": ["react"],
+    "types": [],
     "esModuleInterop": true
   },
   "include": ["src"]
