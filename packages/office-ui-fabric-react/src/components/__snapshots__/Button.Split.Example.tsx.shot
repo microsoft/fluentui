@@ -93,11 +93,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             border: 1px solid WindowText;
             color: WindowText;
           }
-          @media screen and (forced-colors: active){& .ms-Button--primary {
-            forced-color-adjust: none;
-          }
           & .ms-Button--primary + .ms-Button {
-            border: 1px solid WindowText;
+            border: none;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -431,11 +428,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             border: 1px solid WindowText;
             color: WindowText;
           }
-          @media screen and (forced-colors: active){& .ms-Button--primary {
-            forced-color-adjust: none;
-          }
           & .ms-Button--primary + .ms-Button {
-            border: 1px solid WindowText;
+            border: none;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -788,11 +782,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             border: 1px solid WindowText;
             color: WindowText;
           }
-          @media screen and (forced-colors: active){& .ms-Button--primary {
-            forced-color-adjust: none;
-          }
           & .ms-Button--primary + .ms-Button {
-            border: 1px solid WindowText;
+            border: none;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -1134,11 +1125,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             border: 1px solid WindowText;
             color: WindowText;
           }
-          @media screen and (forced-colors: active){& .ms-Button--primary {
-            forced-color-adjust: none;
-          }
           & .ms-Button--primary + .ms-Button {
-            border: 1px solid WindowText;
+            border: none;
           }
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
@@ -1333,9 +1321,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 background-color: Window;
                 border: 1px solid GrayText;
                 color: GrayText;
-              }
-              @media screen and (forced-colors: active){& {
-                forced-color-adjust: none;
               }
           data-is-focusable={false}
           disabled={false}

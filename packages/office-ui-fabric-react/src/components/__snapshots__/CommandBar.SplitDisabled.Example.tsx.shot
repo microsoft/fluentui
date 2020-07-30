@@ -118,11 +118,8 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border: 1px solid WindowText;
                       color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& .ms-Button--primary {
-                      forced-color-adjust: none;
-                    }
                     & .ms-Button--primary + .ms-Button {
-                      border: 1px solid WindowText;
+                      border: none;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
@@ -535,11 +532,8 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border: 1px solid WindowText;
                       color: WindowText;
                     }
-                    @media screen and (forced-colors: active){& .ms-Button--primary {
-                      forced-color-adjust: none;
-                    }
                     & .ms-Button--primary + .ms-Button {
-                      border: 1px solid WindowText;
+                      border: none;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       background-color: Window;
@@ -746,6 +740,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         ms-Button
                         is-disabled
                         {
+                          @media screen and (forced-colors:  active);
                           background-color: #ffffff;
                           border-bottom-right-radius: 0;
                           border-left: none;
@@ -800,11 +795,8 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: Window;
-                          border: 1px solid GrayText;
+                          border: none;
                           color: GrayText;
-                        }
-                        @media screen and (forced-colors: active){& {
-                          forced-color-adjust: none;
                         }
                     data-is-focusable={false}
                     disabled={false}
@@ -898,7 +890,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           width: 1px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-color: GrayText;
+                          background-color: Window;
                         }
                     onClick={[Function]}
                   />
