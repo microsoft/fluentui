@@ -92,6 +92,15 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [onMouseUp],
   );
 
+  const blur = (): void => {
+    if (!iframeRef.current) return;
+
+    const document = iframeRef.current.contentDocument;
+    document.body.style.outline = '';
+    document.body.style.outlineOffset = '';
+    onMessage('');
+  };
+
   const handleFocus = React.useCallback(
     (ev: FocusEvent) => {
       ev.preventDefault();
@@ -108,13 +117,21 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         document.body.style.outlineOffset = '-4px';
         onMessage('Warning: Focus on body. Developer might need to handle it and focus relevant element instead.');
       } else {
-        document.body.style.outline = '';
-        document.body.style.outlineOffset = '';
-        onMessage('');
+        blur();
       }
     },
     // eslint-disable-next-line
     [jsonTree, iframeRef.current, onMessage],
+  );
+
+  const handleBlur = React.useCallback(
+    (ev: FocusEvent) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      blur();
+    },
+    // eslint-disable-next-line
+    [],
   );
 
   const handleSelectComponent = React.useCallback(
@@ -330,6 +347,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {mode === 'use' && <EventListener capture type="focus" listener={handleFocus} target={document} />}
+              {mode === 'use' && <EventListener capture type="blur" listener={handleBlur} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
               {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
