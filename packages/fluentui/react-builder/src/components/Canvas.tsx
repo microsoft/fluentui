@@ -112,8 +112,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     document.body.style.outline = '';
     document.body.style.outlineOffset = '';
     onMessage('');
-    // eslint-disable-next-line
-  }, [iframeRef.current]);
+  }, [onMessage]);
 
   const handleFocus = React.useCallback(
     (ev: FocusEvent) => {
@@ -134,8 +133,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         blur();
       }
     },
-    // eslint-disable-next-line
-    [jsonTree, iframeRef.current, onMessage],
+
+    [jsonTree, onMessage, blur],
   );
 
   const handleBlur = React.useCallback(
@@ -144,7 +143,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       ev.stopPropagation();
       blur();
     },
-    // eslint-disable-next-line
+
     [blur],
   );
 
