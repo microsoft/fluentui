@@ -287,6 +287,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       // console.log('Canvas:effect elements', elements);
 
+      if (!enabledVirtualCursor) {
+        iframeDocument.querySelector('.virtual-focused').classList.remove('virtual-focused');
+      }
+
       const elementStyles = !isExpanding
         ? ''
         : Array.from(elements)
@@ -370,7 +374,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, mode, jsonTree, role]);
+  }, [iframeId, isExpanding, isSelecting, mode, jsonTree, role, enabledVirtualCursor]);
 
   return (
     <Frame
