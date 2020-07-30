@@ -16,6 +16,7 @@ Helpful hooks not provided by React itself. These hooks were built for use in Fl
 - [useRefEffect](#userefeffect) - Call a function with cleanup when a ref changes. Like `useEffect` with a dependency on a ref.
 - [useSetInterval](#usesetinterval) - Version of `setInterval` that automatically cleans up when component is unmounted
 - [useSetTimeout](#usesettimeout) - Version of `setTimeout` that automatically cleans up when component is unmounted
+- [useWarnings](#usewarnings) - Display debug-only warnings for invalid or deprecated props or other issues
 
 ## useBoolean
 
@@ -314,3 +315,24 @@ const MyComponent = () => {
   clearTimeout(id);
 };
 ```
+
+## useWarnings
+
+```ts
+function useWarnings<P>(options: IWarningOptions<P>): void;
+```
+
+Display console warnings when certain conditions are met. If using webpack, the warning code will automatically be stripped out in production mode.
+
+The following types of warnings are supported (see typings for details on how to specify all of these):
+
+- `other`: Generic string messages.
+- `conditionallyRequired`: Warns about props that are required if a condition is met.
+- `deprecations`: Warns when deprecated props are being used.
+- `mutuallyExclusive`: Warns when two props which are mutually exclusive are both being used.
+- `controlledUsage`: Warns on any of the following error conditions in a form component (mimicking the warnings React gives for these error conditions on an input element):
+  - A value prop is provided (indicated it's being used as controlled) without a change handler, and the component is not read-only
+  - Both the value and default value props are provided
+  - The component is attempting to switch between controlled and uncontrolled
+
+Note that all warnings except `controlledUsage` will only be shown on first render. New `controlledUsage` warnings may be shown later based on prop changes. All warnings are shown synchronously during render (not wrapped in `useEffect`) for easier tracing/debugging.
