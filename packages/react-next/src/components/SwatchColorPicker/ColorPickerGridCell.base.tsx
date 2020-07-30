@@ -13,6 +13,7 @@ import {
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles,
 } from './ColorPickerGridCell.types';
+import { useConstCallback } from '@uifabric/react-hooks';
 
 const getColorPickerGridCellButtonClassNames = memoizeFunction(
   (
@@ -70,7 +71,8 @@ class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps
 export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps> = props => {
   const {
     item,
-    // tslint:disable-next-line:deprecation
+
+    // eslint-disable-next-line deprecation/deprecation
     idPrefix = props.id,
     selected = false,
     disabled = false,
@@ -103,14 +105,16 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
   });
 
   // Render the core of a color cell
-  const onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
-    // Build an SVG for the cell with the given shape and color properties
-    return (
-      <svg className={classNames.svg} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color!)!.str}>
-        {props.circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
-      </svg>
-    );
-  };
+  const onRenderColorOption = useConstCallback(
+    (colorOption: IColorCellProps): JSX.Element => {
+      // Build an SVG for the cell with the given shape and color properties
+      return (
+        <svg className={classNames.svg} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color!)!.str}>
+          {props.circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
+        </svg>
+      );
+    },
+  );
 
   return (
     <ColorCell

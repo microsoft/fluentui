@@ -165,6 +165,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
           >
             <ColorPicker
               color={colorPickerSlotRule.color!.str}
+              // eslint-disable-next-line react/jsx-no-bind
               onChange={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)}
             />
           </Callout>
@@ -334,6 +335,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
         key={slotRule.name}
         className="ms-themer-swatch"
         style={{ backgroundColor: slotRule.color!.str }}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onSwatchClick.bind(this, slotRule)}
       />
     );
@@ -427,7 +429,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
               <textarea
                 readOnly={true}
                 spellCheck={false}
-                value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2)}
+                value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), undefined, 2)}
                 style={{ width: 350 }}
               />
             </PivotItem>
@@ -447,6 +449,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
 
   private _makeNewTheme = (): void => {
     const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
+    // eslint-disable-next-line no-console
     console.log('New theme...', themeAsJson);
 
     const finalTheme = loadTheme({
@@ -462,6 +465,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
 
     document.body.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
     document.body.style.color = finalTheme.semanticColors.bodyText;
+    // eslint-disable-next-line no-console
     console.log('New theme:', finalTheme);
   };
 
@@ -493,6 +497,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
           <ColorPicker
             key={'baseslotcolorpicker' + baseSlot}
             color={this.state.themeRules[BaseSlots[baseSlot]].color!.str}
+            // eslint-disable-next-line react/jsx-no-bind
             onChange={onChange}
           />
         </div>

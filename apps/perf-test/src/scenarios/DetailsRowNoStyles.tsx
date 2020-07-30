@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { createTheme, DetailsRowBase, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react';
 
-// tslint:disable-next-line:typedef
 const Items = Array.from({ length: 10 }, (n, i) => ({
   key: `Item ${i}`,
   name: `Item ${i}`,

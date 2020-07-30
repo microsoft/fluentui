@@ -291,7 +291,7 @@ function _renderCell(
   item: IApiInterfaceProperty | IApiEnumProperty | IMethod,
   property: 'name' | 'description' | 'defaultValue' | 'value',
 ) {
-  let text = (item as any)[property] || ''; // tslint:disable-line:no-any
+  let text = (item as any)[property] || ''; // eslint-disable-line @typescript-eslint/no-explicit-any
   // Format property names and defaults as code for easier reading
   if (property !== 'description' && text.indexOf('`') === -1) {
     text = '`' + text + '`';

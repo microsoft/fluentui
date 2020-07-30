@@ -1,25 +1,19 @@
 {
   "compilerOptions": {
+    "outDir": "lib",
     "baseUrl": ".",
     "target": "es5",
-    "outDir": "lib",
-    "module": "commonjs",
-    "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "module": "commonjs",
+    "jsx": "react",
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "strict": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"],
-    "paths": {
-      "codesandbox-react-template/lib/*": ["./src/*"],
-      "codesandbox-react-template": ["./src"]
-    }
+    "lib": ["es5", "dom"]
   },
   "include": ["src"]
 }

@@ -12,10 +12,10 @@ export const GridBase = React.forwardRef((props: IGridProps, ref: React.Ref<HTML
     items,
     columnCount,
     onRenderItem,
-    // tslint:disable:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     ariaPosInSet = props.positionInSet,
+    // eslint-disable-next-line deprecation/deprecation
     ariaSetSize = props.setSize,
-    // tslint:enable:deprecation
     styles,
     doNotContainWithinFocusZone,
   } = props;
@@ -30,7 +30,8 @@ export const GridBase = React.forwardRef((props: IGridProps, ref: React.Ref<HTML
   const classNames = getClassNames(styles!, { theme: props.theme! });
 
   // Array to store the cells in the correct row index
-  // tslint:disable-next-line:no-any
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
   const content = (

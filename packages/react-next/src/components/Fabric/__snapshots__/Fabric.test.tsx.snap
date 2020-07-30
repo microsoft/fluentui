@@ -57,6 +57,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-0"
         onChange={[Function]}
         type="checkbox"
@@ -67,6 +68,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
           <span
             aria-hidden={true}
@@ -121,6 +123,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-1"
           onChange={[Function]}
           type="checkbox"
@@ -131,6 +134,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
             <span
               aria-hidden={true}
@@ -185,6 +189,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-2"
             onChange={[Function]}
             type="checkbox"
@@ -195,6 +200,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
               <span
                 aria-hidden={true}
@@ -252,6 +258,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-3"
         onChange={[Function]}
         type="checkbox"
@@ -262,6 +269,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
           <span
             aria-hidden={true}
@@ -316,6 +324,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-4"
           onChange={[Function]}
           type="checkbox"
@@ -326,6 +335,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
             <span
               aria-hidden={true}
@@ -380,6 +390,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-5"
             onChange={[Function]}
             type="checkbox"
@@ -390,6 +401,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
               <span
                 aria-hidden={true}
@@ -452,6 +464,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-6"
         onChange={[Function]}
         type="checkbox"
@@ -462,6 +475,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
           <span
             aria-hidden={true}
@@ -516,6 +530,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-7"
           onChange={[Function]}
           type="checkbox"
@@ -526,6 +541,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
             <span
               aria-hidden={true}
@@ -580,6 +596,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-8"
             onChange={[Function]}
             type="checkbox"
@@ -590,6 +607,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
               <span
                 aria-hidden={true}
@@ -647,6 +665,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-9"
         onChange={[Function]}
         type="checkbox"
@@ -657,6 +676,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
           <span
             aria-hidden={true}
@@ -711,6 +731,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-10"
           onChange={[Function]}
           type="checkbox"
@@ -721,6 +742,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
             <span
               aria-hidden={true}
@@ -775,6 +797,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-11"
             onChange={[Function]}
             type="checkbox"
@@ -785,6 +808,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
               <span
                 aria-hidden={true}
@@ -847,6 +871,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-12"
         onChange={[Function]}
         type="checkbox"
@@ -857,6 +882,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
           <span
             aria-hidden={true}
@@ -911,6 +937,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-13"
           onChange={[Function]}
           type="checkbox"
@@ -921,6 +948,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
             <span
               aria-hidden={true}
@@ -975,6 +1003,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-14"
             onChange={[Function]}
             type="checkbox"
@@ -985,6 +1014,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
               <span
                 aria-hidden={true}
@@ -1042,6 +1072,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
+        data-ktp-execute-target={true}
         id="checkbox-15"
         onChange={[Function]}
         type="checkbox"
@@ -1052,6 +1083,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
       >
         <div
           className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
           <span
             aria-hidden={true}
@@ -1106,6 +1138,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
+          data-ktp-execute-target={true}
           id="checkbox-16"
           onChange={[Function]}
           type="checkbox"
@@ -1116,6 +1149,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         >
           <div
             className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
             <span
               aria-hidden={true}
@@ -1170,6 +1204,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
+            data-ktp-execute-target={true}
             id="checkbox-17"
             onChange={[Function]}
             type="checkbox"
@@ -1180,6 +1215,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           >
             <div
               className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
               <span
                 aria-hidden={true}

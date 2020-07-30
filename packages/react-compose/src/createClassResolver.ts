@@ -21,7 +21,6 @@ export const createClassResolver = (classes: ClassDictionary) => {
 
   // Everything in the function below will happen at runtime, so it's very critical that this
   // code is as minimal as possible.
-  // tslint:disable-next-line:no-function-expression
   return function classResolver(state: GenericDictionary): ClassDictionary {
     const resolvedClasses: Record<string, string> = {};
 

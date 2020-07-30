@@ -25,7 +25,7 @@ const facepilePersonas: IFacepilePersona[] = [
     personaName: 'Alex Lundberg',
     data: '75%',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
+      console.log('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
   },
 ];
 
@@ -65,7 +65,7 @@ describe('Facepile', () => {
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
-  // tslint:disable-next-line:max-line-length
+  // eslint-disable-next-line @fluentui/max-len
   it('renders without descriptive overflow button if overflowButtonProps are not null and maximum personas are not exceeded', () => {
     const wrapper = mount(
       <Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.descriptive} />,
@@ -75,7 +75,7 @@ describe('Facepile', () => {
     expectMissing(wrapper, '.ms-Facepile-itemButton');
   });
 
-  // tslint:disable-next-line:max-line-length
+  // eslint-disable-next-line @fluentui/max-len
   it('renders with descriptive overflow button if overflowButtonProps are not null and maximum personas are exceeded', () => {
     const personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
     const wrapper = mount(

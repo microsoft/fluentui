@@ -45,10 +45,10 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
     colorCells,
     cellShape = 'circle',
     columnCount,
-    // tslint:disable:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     ariaPosInSet = props.positionInSet,
+    // eslint-disable-next-line deprecation/deprecation
     ariaSetSize = props.setSize,
-    // tslint:enable:deprecation
     shouldFocusCircularNavigate = true,
     className,
     disabled = false,
@@ -67,17 +67,17 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
    * When the whole swatchColorPicker is blurred,
    * make sure to clear the pending focused stated
    */
-  const onSwatchColorPickerBlur = (): void => {
+  const onSwatchColorPickerBlur = React.useCallback((): void => {
     if (props.onCellFocused) {
       cellFocused = false;
       props.onCellFocused();
     }
-  };
+  }, []);
 
   /**
    * Callback passed to the GridCell that will manage triggering the onCellHovered callback for mouseEnter
    */
-  const onMouseEnter = (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
+  const onMouseEnter = React.useCallback((ev: React.MouseEvent<HTMLButtonElement>): boolean => {
     if (!props.focusOnHover) {
       return !!props.disabled;
     }
@@ -85,12 +85,12 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
       ev.currentTarget.focus();
     }
     return true;
-  };
+  }, []);
 
   /**
    * Callback passed to the GridCell that will manage Hover/Focus updates
    */
-  const onMouseMove = (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
+  const onMouseMove = React.useCallback((ev: React.MouseEvent<HTMLButtonElement>): boolean => {
     if (!props.focusOnHover) {
       return !!props.disabled;
     }
@@ -100,12 +100,12 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
       targetElement.focus();
     }
     return true;
-  };
+  }, []);
 
   /**
    * Callback passed to the GridCell that will manage Hover/Focus updates
    */
-  const onMouseLeave = (ev: React.MouseEvent<HTMLButtonElement>): void => {
+  const onMouseLeave = React.useCallback((ev: React.MouseEvent<HTMLButtonElement>): void => {
     const parentSelector = props.mouseLeaveParentSelector;
 
     if (!props.focusOnHover || !parentSelector || props.disabled) {
@@ -123,10 +123,10 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
          * Edge and IE expose a setActive() function for focusable divs that
          * sets the page focus but does not scroll the parent element.
          */
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         if ((elements[index] as any).setActive) {
           try {
-            // tslint:disable-next-line:no-any
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (elements[index] as any).setActive();
           } catch (e) {
             /* no-op */
@@ -137,24 +137,24 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         break;
       }
     }
-  };
+  }, []);
 
   /**
    * Callback passed to the GridCell class that will trigger the onCellHovered callback of the SwatchColorPicker
    * NOTE: This will not be triggered if shouldFocusOnHover === true
    */
-  const onGridCellHovered = (item?: IColorCellProps): void => {
+  const onGridCellHovered = React.useCallback((item?: IColorCellProps): void => {
     const { onCellHovered } = props;
     if (onCellHovered) {
       return item ? onCellHovered(item.id, item.color) : onCellHovered();
     }
-  };
+  }, []);
 
   /**
    * Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
    * NOTE: This will not be triggered if shouldFocusOnHover === true
    */
-  const onGridCellFocused = (item?: IColorCellProps): void => {
+  const onGridCellFocused = React.useCallback((item?: IColorCellProps): void => {
     const { onCellFocused } = props;
     if (onCellFocused) {
       if (item) {
@@ -165,10 +165,10 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         return onCellFocused();
       }
     }
-  };
+  }, []);
 
   // Handle the click on a cell
-  const onCellClick = (item: IColorCellProps): void => {
+  const onCellClick = React.useCallback((item: IColorCellProps): void => {
     if (props.disabled) {
       return;
     }
@@ -189,12 +189,12 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         setSelectedIndex(index);
       }
     }
-  };
+  }, []);
 
   /**
    * Render a color cell
    */
-  const renderOption = (item: IColorCellProps): JSX.Element => {
+  const renderOption = React.useCallback((item: IColorCellProps): JSX.Element => {
     return (
       <ColorPickerGridCell
         item={item}
@@ -216,7 +216,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
         borderWidth={props.cellBorderWidth}
       />
     );
-  };
+  }, []);
 
   if (colorCells.length < 1 || columnCount < 1) {
     return null;

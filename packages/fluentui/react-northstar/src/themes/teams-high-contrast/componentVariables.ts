@@ -36,5 +36,7 @@ export { alertVariables as Alert } from './components/Alert/alertVariables';
 export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 export { providerVariables as Provider } from './components/Provider/providerVariables';
 export { dropdownVariables as Dropdown } from './components/Dropdown/dropdownVariables';
+export { dropdownItemVariables as DropdownItem } from './components/Dropdown/dropdownItemVariables';
+export { dropdownSelectedItemVariables as DropdownSelectedItem } from './components/Dropdown/dropdownSelectedItemVariables';
 export { labelVariables as Label } from './components/Label/labelVariables';
 export { tooltipContentVariables as TooltipContent } from './components/Tooltip/tooltipContentVariables';

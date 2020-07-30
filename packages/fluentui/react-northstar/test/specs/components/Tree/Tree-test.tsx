@@ -3,7 +3,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
-import Tree from 'src/components/Tree/Tree';
+import { Tree } from 'src/components/Tree/Tree';
 import { treeTitleClassName } from 'src/components/Tree/TreeTitle';
 import { treeItemClassName } from 'src/components/Tree/TreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';

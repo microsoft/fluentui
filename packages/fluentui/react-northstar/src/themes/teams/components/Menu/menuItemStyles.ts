@@ -119,7 +119,7 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
       display: 'block',
       cursor: 'pointer',
       whiteSpace: 'nowrap',
-
+      overflow: 'hidden',
       ...(pointing &&
         vertical && {
           border: '1px solid transparent',
@@ -140,6 +140,7 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        overflow: 'visible',
       }),
 
       // active styles

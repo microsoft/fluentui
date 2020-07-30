@@ -61,6 +61,7 @@ export { svgIconStyles as SvgIcon } from './components/SvgIcon/svgIconStyles';
 export { imageStyles as Image } from './components/Image/imageStyles';
 
 export { inputStyles as Input } from './components/Input/inputStyles';
+export { inputLabelStyles as InputLabel } from './components/Input/inputLabelStyles';
 
 export { labelStyles as Label } from './components/Label/labelStyles';
 
@@ -144,3 +145,8 @@ export { cardFooterStyles as CardFooter } from './components/Card/cardFooterStyl
 export { cardPreviewStyles as CardPreview } from './components/Card/cardPreviewStyles';
 export { cardTopControlsStyles as CardTopControls } from './components/Card/cardTopControlsStyles';
 export { cardExpandableBoxStyles as CardExpandableBox } from './components/Card/cardExpandableBoxStyles';
+
+export { datepickerStyles as Datepicker } from './components/Datepicker/datepickerStyles';
+export { datepickerCalendarStyles as DatepickerCalendar } from './components/Datepicker/datepickerCalendarStyles';
+export { datepickerCalendarHeaderStyles as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderStyles';
+export { datepickerCalendarHeaderCellStyles as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellStyles';

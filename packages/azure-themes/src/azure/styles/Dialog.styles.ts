@@ -15,7 +15,7 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
   return {
     content: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
     title: [
       {
@@ -45,11 +45,11 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
     },
     innerContent: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
     subText: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
   };
 };
