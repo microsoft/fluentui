@@ -176,7 +176,6 @@ export const getStyles = memoizeFunction(
             border: '1px solid GrayText',
             backgroundColor: 'Window',
           },
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
 
