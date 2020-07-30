@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef, classNamesFunction, FocusRects } from '../../Utilities';
 import {
   IGroupedList,
   IGroupedListProps,
@@ -8,6 +7,7 @@ import {
   IGroupedListStyleProps,
   IGroupedListStyles,
 } from './GroupedList.types';
+import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode } from '../../Utilities';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
@@ -15,12 +15,12 @@ import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
 import { IGroupHeaderProps } from './GroupHeader';
 import { IGroupShowAllProps } from './GroupShowAll.styles';
 import { IGroupFooterProps } from './GroupFooter.types';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 
 export interface IGroupedListState {
-  lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   groups?: IGroup[];
 }
@@ -51,7 +51,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
-      lastWidth: 0,
       groups: props.groups,
     };
   }
@@ -66,7 +65,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     return this._list.current!.getStartItemIndexInView() || 0;
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void {
     const { groups, selectionMode, compact } = this.props;
     let shouldForceUpdates = false;
@@ -105,13 +103,14 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     const { version } = listProps;
 
     return (
-      <div
+      <FocusZone
+        isInnerZoneKeystroke={this._isInnerZoneKeystroke}
+        direction={FocusZoneDirection.vertical}
         className={this._classNames.root}
         data-automationid="GroupedList"
         data-is-scrollable="false"
         role="presentation"
       >
-        <FocusRects />
         {!groups ? (
           this._renderGroup(undefined, 0)
         ) : (
@@ -128,7 +127,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
             version={version}
           />
         )}
-      </div>
+      </FocusZone>
     );
   }
 
@@ -300,6 +299,10 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     }
   };
 
+  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+    return ev.which === getRTLSafeKeyCode(KeyCodes.right);
+  };
+
   private _forceListUpdates(groups?: IGroup[]): void {
     groups = groups || this.state.groups;
 
@@ -315,6 +318,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
         }
       }
     } else {
+      // eslint-disable-next-line react/no-string-refs
       const group = this.refs['group_' + String(0)] as GroupedListSection;
       if (group) {
         group.forceListUpdate();

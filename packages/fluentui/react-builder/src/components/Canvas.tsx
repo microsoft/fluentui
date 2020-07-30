@@ -17,7 +17,6 @@ export type CanvasProps = {
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
-  onSelectorHover?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
@@ -27,7 +26,7 @@ export type CanvasProps = {
   style?: React.CSSProperties;
 };
 
-const Canvas: React.FunctionComponent<CanvasProps> = ({
+export const Canvas: React.FunctionComponent<CanvasProps> = ({
   draggingElement,
   isExpanding,
   isSelecting,
@@ -36,7 +35,6 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
   onMouseMove,
   onMouseUp,
   onSelectComponent,
-  onSelectorHover,
   selectedComponent,
   onCloneComponent,
   onMoveComponent,
@@ -90,13 +88,6 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
       onSelectComponent?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
     },
     [onSelectComponent, jsonTree],
-  );
-
-  const handleSelectorHover = React.useCallback(
-    (fiberNav: FiberNavigator) => {
-      onSelectorHover?.(fiberNavFindJSONTreeElement(jsonTree, fiberNav));
-    },
-    [onSelectorHover, jsonTree],
   );
 
   const handleCloneComponent = React.useCallback(
@@ -227,7 +218,7 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree]);
 
   return (
     <Frame
@@ -276,7 +267,6 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
               showElement={false}
               showCropMarks={false}
               onSelect={handleSelectComponent}
-              onHover={handleSelectorHover}
             />
             {selectedComponent && (
               <DebugFrame
@@ -309,5 +299,3 @@ const Canvas: React.FunctionComponent<CanvasProps> = ({
     </Frame>
   );
 };
-
-export default Canvas;

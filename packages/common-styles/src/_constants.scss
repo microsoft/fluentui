@@ -1,0 +1,14 @@
+$fontWeightLight: 100;
+$fontWeightSemilight: 300;
+$fontWeightRegular: 400;
+$fontWeightSemibold: 600;
+$fontWeightBold: 700;
+
+$animationEaseFunction1: cubic-bezier(0.1, 0.9, 0.2, 1.0);
+$animationEaseFunction2: cubic-bezier(0.1, 0.25, 0.75, 0.9);
+$animationDuration1: 0.167s;
+$animationDuration2: 0.267s;
+$animationDuration3: 0.367s;
+$animationDuration4: 0.467s;
+
+$CONTEXTUAL_MENU_ITEM_HEIGHT: 36px; // Must match CONTEXTUAL_MENU_ITEM_HEIGHT in ContextualMenu.cnstyles.ts

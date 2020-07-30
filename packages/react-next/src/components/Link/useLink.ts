@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useMergedRefs } from '@uifabric/react-hooks';
 import { classNamesFunction, useFocusRects } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
@@ -8,12 +9,14 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>({ useStat
  * The useLink hook processes the Link component props and returns
  * state, slots and slotProps for consumption by the component.
  */
-// tslint:disable-next-line:no-any
-export const useLink = (props: ILinkProps): any => {
-  const { as, className, disabled, href, onClick, ref, styles, theme } = props;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const useLink = (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>): any => {
+  const { as, className, disabled, href, onClick, styles, theme } = props;
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
 
-  useComponentRef(props, ref);
-  useFocusRects(ref);
+  useComponentRef(props, rootRef);
+  useFocusRects(rootRef);
 
   const classNames = getClassNames(styles!, {
     className,
@@ -40,7 +43,7 @@ export const useLink = (props: ILinkProps): any => {
       'aria-disabled': disabled,
       className: classNames.root,
       onClick: _onClick,
-      ref: ref,
+      ref: mergedRootRefs,
     },
   };
 
@@ -63,7 +66,7 @@ const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
 
 const adjustPropsForRootType = (
   RootType: string | React.ComponentClass | React.FunctionComponent,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props: ILinkProps & { getStyles?: any },
 ): Partial<ILinkProps> => {
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`

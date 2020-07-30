@@ -1,7 +1,7 @@
 import { handlesAccessibility, isConformant } from 'test/specs/commonTests';
 
-import ToolbarMenuRadioGroup from 'src/components/Toolbar/ToolbarMenuRadioGroup';
-import ToolbarMenuRadioGroupWrapper from 'src/components/Toolbar/ToolbarMenuRadioGroupWrapper';
+import { ToolbarMenuRadioGroup } from 'src/components/Toolbar/ToolbarMenuRadioGroup';
+import { ToolbarMenuRadioGroupWrapper } from 'src/components/Toolbar/ToolbarMenuRadioGroupWrapper';
 
 describe('ToolbarMenuRadioGroup', () => {
   isConformant(ToolbarMenuRadioGroup, {

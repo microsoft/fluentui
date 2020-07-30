@@ -27,7 +27,7 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
       },
     },
     itemLink: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       outline: 'none',
       fontWeight: FontWeights.regular,
       color: semanticColors.link,

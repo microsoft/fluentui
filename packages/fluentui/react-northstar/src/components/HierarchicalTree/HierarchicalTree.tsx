@@ -7,7 +7,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import HierarchicalTreeItem, { HierarchicalTreeItemProps } from './HierarchicalTreeItem';
+import { HierarchicalTreeItem, HierarchicalTreeItemProps } from './HierarchicalTreeItem';
 import { HierarchicalTreeTitleProps } from './HierarchicalTreeTitle';
 import {
   childrenExist,
@@ -20,23 +20,20 @@ import {
 import {
   ShorthandValue,
   ShorthandRenderFunction,
-  WithAsProp,
-  withSafeTypeForAs,
   ShorthandCollection,
   ComponentEventHandler,
   FluentComponentStaticProps,
-  ProviderContextPrepared,
 } from '../../types';
 import {
+  ComponentWithAs,
   useTelemetry,
+  useFluentContext,
   useAutoControlled,
   useUnhandledProps,
   getElementType,
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 export interface HierarchicalTreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Index of the currently active subtree. */
@@ -79,9 +76,15 @@ export const hierarchicalTreeClassName = 'ui-hierarchicaltree';
 
 export type HierarchicalTreeStylesProps = never;
 
-const HierarchicalTree: React.FC<WithAsProp<HierarchicalTreeProps>> &
+/**
+ * (DEPRECATED) A Tree displays data organised in tree hierarchy.
+ *
+ * @accessibility
+ * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
+ */
+export const HierarchicalTree: ComponentWithAs<'ul', HierarchicalTreeProps> &
   FluentComponentStaticProps<HierarchicalTreeProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HierarchicalTree.displayName, context.telemetry);
   setStart();
 
@@ -228,11 +231,3 @@ HierarchicalTree.create = createShorthandFactory({
   Component: HierarchicalTree,
   mappedArrayProp: 'items',
 });
-
-/**
- * (DEPRECATED) A Tree displays data organised in tree hierarchy.
- *
- * @accessibility
- * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
- */
-export default withSafeTypeForAs<typeof HierarchicalTree, HierarchicalTreeProps, 'ul'>(HierarchicalTree);

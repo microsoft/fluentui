@@ -57,7 +57,7 @@ const toggleMovementDistance = pxToRem(20);
 const padding = pxToRem(2);
 const defaultValue = 'red';
 
-export default (siteVars: any): CheckboxVariables => ({
+export const checkboxVariables = (siteVars: any): CheckboxVariables => ({
   checkboxColor: 'transparent',
 
   toggleBackground: 'transparent',

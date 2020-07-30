@@ -3,13 +3,14 @@ import { FormFieldStylesProps } from '../../../../components/Form/FormField';
 import { pxToRem } from '../../../../utils';
 import { FormFieldVariables } from './formFieldVariables';
 
-const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
+export const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFieldVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
   label: ({ props }): ICSSInJSStyle => {
     const { type, inline, required } = props;
     return {
       ...((!type || (type !== 'radio' && type !== 'checkbox')) && {
         display: 'block',
+        marginBottom: pxToRem(4),
       }),
       ...(inline && { marginRight: pxToRem(10), display: 'inline' }),
       ...(required && {
@@ -31,10 +32,9 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldStylesProps, FormFie
   message: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
     display: 'block',
+    paddingLeft: v.messagePaddingLeft,
   }),
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...(p.hasErrorMessage && { color: v.colorScheme.red.foreground }),
   }),
 };
-
-export default formFieldStyles;

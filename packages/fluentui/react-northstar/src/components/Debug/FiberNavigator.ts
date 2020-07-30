@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ForwardRef } from 'react-is';
 
 // ========================================================
 // react/packages/shared/ReactTypes.js
@@ -242,7 +243,7 @@ type Fiber = {
 
 const isDOMNode = e => e && typeof e.tagName === 'string' && e.nodeType === Node.ELEMENT_NODE;
 
-class FiberNavigator {
+export class FiberNavigator {
   __fiber: Fiber;
 
   static domNodeToReactFiber = (elm: HTMLElement): Fiber => {
@@ -299,11 +300,21 @@ class FiberNavigator {
   }
 
   get name() {
-    return this.isClassComponent || this.isFunctionComponent
-      ? this.__fiber.type.displayName || this.__fiber.type.name
-      : this.isHostComponent
-      ? this.__fiber.stateNode.constructor.name
-      : null;
+    if (this.isClassComponent || this.isFunctionComponent) {
+      return this.__fiber.type.displayName || this.__fiber.type.name;
+    }
+    if (this.isForwardRef) {
+      return (
+        this.__fiber.type.displayName ||
+        this.__fiber.type.name ||
+        this.__fiber.type.return?.displayName ||
+        this.__fiber.type.return?.name
+      );
+    }
+    if (this.isHostComponent) {
+      return this.__fiber.stateNode.constructor.name;
+    }
+    return null;
   }
 
   get parent(): FiberNavigator {
@@ -332,7 +343,7 @@ class FiberNavigator {
       return this.__fiber.stateNode;
     }
 
-    if (this.isFunctionComponent) {
+    if (this.isFunctionComponent || this.isForwardRef) {
       // assumes functional component w/useRef
       return this.findDebugHookState(this.__fiber.memoizedState);
     }
@@ -428,6 +439,10 @@ class FiberNavigator {
     return typeof this.__fiber.type === 'function' && !this.__fiber.type.prototype.isReactComponent;
   }
 
+  get isForwardRef() {
+    return this.__fiber.type?.$$typeof === ForwardRef;
+  }
+
   get isHostComponent() {
     // Host components are platform components (i.e. 'div' on web)
     // https://github.com/acdlite/react-fiber-architecture#type-and-key
@@ -447,5 +462,3 @@ class FiberNavigator {
     return this.isDOMComponent ? false : !!this.instance && !!this.instance.render && !!this.instance.setState;
   }
 }
-
-export default FiberNavigator;

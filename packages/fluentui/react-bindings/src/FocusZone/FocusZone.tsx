@@ -21,8 +21,8 @@ import {
   shouldWrapFocus,
 } from '@uifabric/utilities';
 
-import getElementType from '../utils/getElementType';
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { getElementType } from '../utils/getElementType';
+import { getUnhandledProps } from '../utils/getUnhandledProps';
 import { FocusZoneProps, IFocusZone } from './FocusZone.types';
 import {
   getNextElement,
@@ -55,7 +55,16 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export default class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
+/**
+ * Handle global tab presses so that we can patch tabindexes on the fly.
+ */
+function _onKeyDownCapture(ev: KeyboardEvent) {
+  if (getCode(ev) === keyboardKey.Tab) {
+    _outerZones.forEach(zone => zone.updateTabIndexes());
+  }
+}
+
+export class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
   static propTypes = {
     className: PropTypes.string,
     direction: PropTypes.number,
@@ -163,7 +172,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       _outerZones.add(this);
 
       if (this.windowElement && _outerZones.size === 1) {
-        this.windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
+        this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
       }
     }
 
@@ -216,7 +225,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       _outerZones.delete(this);
 
       if (this.windowElement && _outerZones.size === 0) {
-        this.windowElement.removeEventListener('keydown', this._onKeyDownCapture, true);
+        this.windowElement.removeEventListener('keydown', _onKeyDownCapture, true);
       }
     }
 
@@ -458,15 +467,6 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     }
 
     _.invoke(this.props, 'onFocus', ev);
-  };
-
-  /**
-   * Handle global tab presses so that we can patch tabindexes on the fly.
-   */
-  _onKeyDownCapture = (ev: KeyboardEvent) => {
-    if (getCode(ev) === keyboardKey.Tab) {
-      _outerZones.forEach(zone => zone.updateTabIndexes());
-    }
   };
 
   _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
@@ -1075,7 +1075,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     let candidateElement = undefined;
     let targetTop = -1;
     let targetBottom = -1;
-    const pagesize = scrollableParent.clientHeight;
+    const pagesize = (scrollableParent as HTMLElement).clientHeight;
     const activeRect = element.getBoundingClientRect();
     do {
       element = isForward

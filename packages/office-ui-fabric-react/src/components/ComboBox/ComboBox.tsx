@@ -241,7 +241,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
@@ -335,10 +334,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     const errorMessageId = id + '-error';
     const {
       className,
-      label,
       disabled,
-      ariaLabel,
-      ariaDescribedBy,
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
@@ -347,17 +343,10 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       onRenderItem = this._onRenderItem,
       onRenderOption = this._onRenderOptionContent,
       allowFreeform,
-      buttonIconProps,
-      isButtonAriaHidden = true,
       styles: customStyles,
       theme,
-      title,
       keytipProps,
-      placeholder: placeholderProp,
-      tabIndex,
-      autofill,
       persistMenu,
-      iconButtonProps,
       multiSelect,
     } = this.props;
     const { isOpen, suggestedDisplayValue } = this.state;
@@ -376,15 +365,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     ]);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
-
-    // If the combobox has focus, is multiselect, and has a display string, then use that placeholder
-    // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
-    // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
-    // should be removed and the multiselect combobox should behave like a picker.
-    const placeholder =
-      this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
-        ? multiselectAccessibleText
-        : placeholderProp;
 
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(
@@ -408,76 +388,20 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           !!hasErrorMessage,
         );
 
+    const comboBoxWrapper = keytipProps ? (
+      <KeytipData keytipProps={keytipProps} disabled={disabled}>
+        {(keytipAttributes: any): JSX.Element =>
+          this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId, keytipAttributes)
+        }
+      </KeytipData>
+    ) : (
+      this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId)
+    );
+
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
-        <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {(keytipAttributes: any): JSX.Element => (
-            <div
-              data-ktp-target={keytipAttributes['data-ktp-target']}
-              ref={this._comboBoxWrapper}
-              id={id + 'wrapper'}
-              className={this._classNames.root}
-            >
-              <Autofill
-                data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-                data-is-interactable={!disabled}
-                componentRef={this._autofill}
-                id={id + '-input'}
-                className={this._classNames.input}
-                type="text"
-                onFocus={this._onFocus}
-                onBlur={this._onBlur}
-                onKeyDown={this._onInputKeyDown}
-                onKeyUp={this._onInputKeyUp}
-                onClick={this._onAutofillClick}
-                onTouchStart={this._onTouchStart}
-                onInputValueChange={this._onInputChange}
-                aria-expanded={isOpen}
-                aria-autocomplete={this._getAriaAutoCompleteValue()}
-                role="combobox"
-                readOnly={disabled || !allowFreeform}
-                aria-labelledby={label && id + '-label'}
-                aria-label={ariaLabel && !label ? ariaLabel : undefined}
-                aria-describedby={
-                  errorMessage !== undefined
-                    ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
-                    : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
-                }
-                aria-activedescendant={this._getAriaActiveDescendantValue()}
-                aria-required={required}
-                aria-disabled={disabled}
-                aria-owns={isOpen ? id + '-list' : undefined}
-                spellCheck={false}
-                defaultVisibleValue={this._currentVisibleValue}
-                suggestedDisplayValue={suggestedDisplayValue}
-                updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
-                shouldSelectFullInputValueInComponentDidUpdate={
-                  this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
-                }
-                title={title}
-                preventValueSelection={!this._hasFocus()}
-                placeholder={placeholder}
-                tabIndex={tabIndex}
-                {...autofill}
-              />
-              <IconButton
-                className={'ms-ComboBox-CaretDown-button'}
-                styles={this._getCaretButtonStyles()}
-                role="presentation"
-                aria-hidden={isButtonAriaHidden}
-                data-is-focusable={false}
-                tabIndex={-1}
-                onClick={this._onComboBoxClick}
-                onBlur={this._onBlur}
-                iconProps={buttonIconProps}
-                disabled={disabled}
-                checked={isOpen}
-                {...iconButtonProps}
-              />
-            </div>
-          )}
-        </KeytipData>
+        {comboBoxWrapper}
         {(persistMenu || isOpen) &&
           onRenderContainer(
             {
@@ -561,6 +485,106 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     }
 
     return comboBox.value;
+  };
+
+  private _renderComboBoxWrapper = (
+    multiselectAccessibleText: string | undefined,
+    errorMessageId: string,
+    keytipAttributes: any = {},
+  ): JSX.Element => {
+    const {
+      label,
+      disabled,
+      ariaLabel,
+      ariaDescribedBy,
+      required,
+      errorMessage,
+      allowFreeform,
+      buttonIconProps,
+      isButtonAriaHidden = true,
+      title,
+      placeholder: placeholderProp,
+      tabIndex,
+      autofill,
+      iconButtonProps,
+    } = this.props;
+
+    const { isOpen, suggestedDisplayValue } = this.state;
+
+    // If the combobox has focus, is multiselect, and has a display string, then use that placeholder
+    // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
+    // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
+    // should be removed and the multiselect combobox should behave like a picker.
+    const placeholder =
+      this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
+        ? multiselectAccessibleText
+        : placeholderProp;
+
+    return (
+      <div
+        data-ktp-target={keytipAttributes['data-ktp-target']}
+        ref={this._comboBoxWrapper}
+        id={this._id + 'wrapper'}
+        className={this._classNames.root}
+      >
+        <Autofill
+          data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+          data-is-interactable={!disabled}
+          componentRef={this._autofill}
+          id={this._id + '-input'}
+          className={this._classNames.input}
+          type="text"
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          onKeyDown={this._onInputKeyDown}
+          onKeyUp={this._onInputKeyUp}
+          onClick={this._onAutofillClick}
+          onTouchStart={this._onTouchStart}
+          onInputValueChange={this._onInputChange}
+          aria-expanded={isOpen}
+          aria-autocomplete={this._getAriaAutoCompleteValue()}
+          role="combobox"
+          readOnly={disabled || !allowFreeform}
+          aria-labelledby={label && this._id + '-label'}
+          aria-label={ariaLabel && !label ? ariaLabel : undefined}
+          aria-describedby={
+            errorMessage !== undefined
+              ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
+              : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
+          }
+          aria-activedescendant={this._getAriaActiveDescendantValue()}
+          aria-required={required}
+          aria-disabled={disabled}
+          aria-owns={isOpen ? this._id + '-list' : undefined}
+          spellCheck={false}
+          defaultVisibleValue={this._currentVisibleValue}
+          suggestedDisplayValue={suggestedDisplayValue}
+          updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
+          shouldSelectFullInputValueInComponentDidUpdate={
+            this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
+          }
+          title={title}
+          preventValueSelection={!this._hasFocus()}
+          placeholder={placeholder}
+          tabIndex={tabIndex}
+          {...autofill}
+        />
+        <IconButton
+          className={'ms-ComboBox-CaretDown-button'}
+          styles={this._getCaretButtonStyles()}
+          role="presentation"
+          aria-hidden={isButtonAriaHidden}
+          data-is-focusable={false}
+          tabIndex={-1}
+          onClick={this._onComboBoxClick}
+          onBlur={this._onBlur}
+          iconProps={buttonIconProps}
+          disabled={disabled}
+          checked={isOpen}
+          {...iconButtonProps}
+        />
+      </div>
+    );
   };
 
   /**
@@ -681,14 +705,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           : this._normalizeToString(suggestedDisplayValue),
       );
     }
-    let displayString = '';
-    for (let idx = 0; idx < displayValues.length; idx++) {
-      if (idx > 0) {
-        displayString += ', ';
-      }
-      displayString += displayValues[idx];
-    }
-    return displayString;
+    const { multiSelectDelimiter = ', ' } = this.props;
+    return displayValues.join(multiSelectDelimiter);
   }
 
   /**
@@ -1066,7 +1084,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * OnBlur handler. Set the focused state to false
    * and submit any pending value
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
@@ -1376,7 +1394,9 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           checked={isSelected}
           className={'ms-ComboBox-option'}
           onClick={this._onItemClick(item)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseEnter={this._onOptionMouseEnter.bind(this, item.index)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
@@ -1406,6 +1426,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           checked={isChecked}
           title={title}
           disabled={item.disabled}
+          // eslint-disable-next-line react/jsx-no-bind
           onRenderLabel={onRenderCheckboxLabel}
           inputProps={{
             'aria-selected': isSelected ? 'true' : 'false',
@@ -1422,6 +1443,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         isSelected={isSelected}
         isChecked={isChecked}
         text={item.text}
+        // eslint-disable-next-line react/jsx-no-bind
         render={getOptionComponent}
         data={item.data}
       />
@@ -1956,6 +1978,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         this._setPendingInfoFromIndexAndDirection(index, directionToSearch);
         break;
 
+      /* eslint-disable no-fallthrough */
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
         if (!allowFreeform && autoComplete === 'off') {
@@ -1963,6 +1986,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         }
 
       default:
+        /* eslint-enable no-fallthrough */
         // are we processing a function key? if so bail out
         if (ev.which >= 112 /* F1 */ && ev.which <= 123 /* F12 */) {
           return;

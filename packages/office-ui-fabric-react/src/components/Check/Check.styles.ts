@@ -11,7 +11,7 @@ export const CheckGlobalClassNames = {
 };
 
 export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   const { height = props.checkBoxHeight || '18px', checked, className, theme } = props;
 
   const { palette, semanticColors, fonts } = theme;

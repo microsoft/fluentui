@@ -104,9 +104,9 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-// tslint:disable-next-line:no-function-expression
-export const Popup = React.forwardRef(function(props: IPopupProps, forwardedRef: React.Ref<HTMLDivElement>) {
+export const Popup = React.forwardRef((props: IPopupProps, forwardedRef: React.Ref<HTMLDivElement>) => {
   // Default props
+  // eslint-disable-next-line deprecation/deprecation
   props = { shouldRestoreFocus: true, ...props };
 
   const root = React.useRef<HTMLDivElement>();
@@ -119,7 +119,7 @@ export const Popup = React.forwardRef(function(props: IPopupProps, forwardedRef:
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
-      // tslint:disable-next-line: deprecation
+      // eslint-disable-next-line deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.escape:
           if (props.onDismiss) {

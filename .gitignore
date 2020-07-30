@@ -147,3 +147,11 @@ rush.json
 
 # Copied monaco-editor files
 /packages/monaco-editor/esm
+
+.eslintcache
+
+# Rollup cache
+.rollupcache
+
+# tsdoc
+tsdoc-metadata.json

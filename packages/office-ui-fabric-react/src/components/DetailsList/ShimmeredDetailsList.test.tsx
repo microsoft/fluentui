@@ -19,16 +19,12 @@ function mockItems(count: number): any {
 
 describe('ShimmeredDetailsList', () => {
   it('renders List correctly', () => {
-    ShimmeredDetailsList.prototype.componentDidMount = jest.fn();
-
     const component = renderer.create(
       <ShimmeredDetailsList
         items={mockItems(5)}
-        // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={() => null}
         enableShimmer={true}
         skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
       />,
     );

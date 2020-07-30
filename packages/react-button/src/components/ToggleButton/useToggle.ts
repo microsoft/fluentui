@@ -1,31 +1,35 @@
 import * as React from 'react';
 import { useControllableValue } from '@uifabric/react-hooks';
 
-interface ToggleProps {
+export interface ToggleProps {
   checked?: boolean;
   defaultChecked?: boolean;
   onClick?: React.DOMAttributes<HTMLElement>['onClick'];
 }
 
-interface ToggleState extends ToggleProps {}
+export interface ToggleState extends ToggleProps {}
 
 /**
- * The useToggleButton hook processes the Button component props and returns state.
- * @param props
+ * The useToggle hook processes adds the correct toggled state needed.
+ * @param props - props to derive state from.
  */
 export const useToggle = <TProps, TState extends TProps = TProps>(
   props: TProps & ToggleProps,
 ): TState & ToggleState => {
-  const { checked: controlledChecked, defaultChecked = false, onClick: onButtonClick } = props;
+  const { checked: controlledChecked, defaultChecked = false, onClick, ...rest } = props;
   const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked);
 
-  const onClick = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (onButtonClick) {
-      onButtonClick(ev);
+  const _onClick = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (onClick) {
+      onClick(ev);
+
+      if (ev.defaultPrevented) {
+        return;
+      }
     }
 
     setChecked(!checked);
   };
 
-  return { ...props, checked, onClick } as TState & ToggleState;
+  return { ...rest, checked, onClick: _onClick } as TState & ToggleState;
 };

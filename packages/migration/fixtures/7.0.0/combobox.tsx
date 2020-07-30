@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ComboBox, Fabric } from 'office-ui-fabric-react';
 
 class ComboBoxControlledExample extends React.Component<{}, {}> {

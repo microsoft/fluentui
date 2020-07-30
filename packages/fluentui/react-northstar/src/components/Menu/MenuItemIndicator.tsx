@@ -1,9 +1,9 @@
-import { compose, ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { indicatorBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 
 import { commonPropTypes } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 interface MenuItemIndicatorOwnProps {
   /** Indicates if the parent menu item may have just icons. */
@@ -36,21 +36,27 @@ export const menuItemIndicatorClassName = 'ui-menu__itemindicator';
 /**
  * A MenuItemIndicator allows a user to have a dedicated component that can be targeted from the theme.
  */
-const MenuItemIndicator = compose<'span', MenuItemIndicatorProps, MenuItemIndicatorStylesProps, BoxProps, {}>(Box, {
-  className: menuItemIndicatorClassName,
-  displayName: 'MenuItemIndicator',
-  mapPropsToStylesProps: props => ({
-    iconOnly: props.iconOnly,
-    vertical: props.vertical,
-    inSubmenu: props.inSubmenu,
-    active: props.active,
-    primary: props.primary,
-    underlined: props.underlined,
-  }),
-  handledProps: ['iconOnly', 'vertical', 'inSubmenu', 'active', 'primary', 'underlined'],
+export const MenuItemIndicator = compose<'span', MenuItemIndicatorProps, MenuItemIndicatorStylesProps, BoxProps, {}>(
+  Box,
+  {
+    className: menuItemIndicatorClassName,
+    displayName: 'MenuItemIndicator',
+    mapPropsToStylesProps: props => ({
+      iconOnly: props.iconOnly,
+      vertical: props.vertical,
+      inSubmenu: props.inSubmenu,
+      active: props.active,
+      primary: props.primary,
+      underlined: props.underlined,
+    }),
+    handledProps: ['iconOnly', 'vertical', 'inSubmenu', 'active', 'primary', 'underlined'],
 
-  overrideStyles: true,
-}) as ComponentWithAs<'span', MenuItemIndicatorProps> & { shorthandConfig: ShorthandConfig<MenuItemIndicatorProps> };
+    overrideStyles: true,
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
+  },
+);
 
 MenuItemIndicator.defaultProps = {
   as: 'span',
@@ -65,8 +71,3 @@ MenuItemIndicator.propTypes = {
   primary: PropTypes.bool,
   underlined: PropTypes.bool,
 };
-MenuItemIndicator.shorthandConfig = {
-  mappedProp: 'content',
-};
-
-export default MenuItemIndicator;

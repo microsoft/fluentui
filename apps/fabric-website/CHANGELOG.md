@@ -1,8 +1,71 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 22 May 2020 12:37:35 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.6)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.4..@uifabric/fabric-website_v7.13.6)
+
+### Patches
+
+- add aria label to searchbox ([PR #14118](https://github.com/microsoft/fluentui/pull/14118) by mgodbolt@microsoft.com)
+
+## [7.13.4](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.4)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.2..@uifabric/fabric-website_v7.13.4)
+
+### Patches
+
+- Hiding an unexpected link shown in the footer of the website. ([PR #14092](https://github.com/microsoft/fluentui/pull/14092) by dzearing@hotmail.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.0)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.12.0..@uifabric/fabric-website_v7.13.0)
+
+### Minor changes
+
+- Remove tslint references and fix violations; add react peerDependencies ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+### Patches
+
+- revert to getId as svg is not a react component ([PR #13989](https://github.com/microsoft/fluentui/pull/13989) by mgodbolt@microsoft.com)
+- docs: fix spelling mistake ([PR #13996](https://github.com/microsoft/fluentui/pull/13996) by tyx1703@gmail.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.12.0)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.11.0..@uifabric/fabric-website_v7.12.0)
+
+### Minor changes
+
+- new macOS Button and Separator control ([PR #13910](https://github.com/microsoft/fluentui/pull/13910) by saadnajmi2@gmail.com)
+
+### Patches
+
+- give icons unique ids ([PR #13967](https://github.com/microsoft/fluentui/pull/13967) by mgodbolt@microsoft.com)
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.11.0)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.76..@uifabric/fabric-website_v7.11.0)
+
+### Minor changes
+
+- New macos link control documentation ([PR #13892](https://github.com/microsoft/fluentui/pull/13892) by saadnajmi2@gmail.com)
+
+## [7.10.71](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.71)
+
+Tue, 16 Jun 2020 17:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.10.58..@uifabric/fabric-website_v7.10.71)
+
+### Patches
+
+- Clean up dependencies and clarify version file placeholder comments ([PR #13585](https://github.com/microsoft/fluentui/pull/13585) by elcraig@microsoft.com)
 
 ## [7.10.58](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.10.58)
 

@@ -2,7 +2,7 @@ import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { ListItemStylesProps, listItemSlotClassNames } from '../../../../components/List/ListItem';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { ListItemVariables } from './listItemVariables';
 
 const truncateStyle: ICSSInJSStyle = {
@@ -35,7 +35,7 @@ const selectedStyle = variables => ({
   color: variables.selectedColor,
 });
 
-const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemVariables> = {
+export const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
@@ -62,7 +62,7 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
         ...(p.selected && selectedStyle(v)),
       }),
       ...(p.important && {
-        fontWeight: 'bold',
+        fontWeight: v.importantFontWeight,
       }),
     };
   },
@@ -137,5 +137,3 @@ const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemV
     minWidth: 0, // needed for the truncate styles to work
   }),
 };
-
-export default listItemStyles;

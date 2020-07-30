@@ -9,7 +9,7 @@ import { Accessibility, AccessibilityDefinition } from '../../types';
  * Adds attribute 'aria-disabled=true' based on the property 'loading'.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
+export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
   const definition: AccessibilityDefinition = {
     attributes: {
       root: {
@@ -39,8 +39,6 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
 
   return definition;
 };
-
-export default buttonBehavior;
 
 export type ButtonBehaviorProps = {
   /** Element type. */

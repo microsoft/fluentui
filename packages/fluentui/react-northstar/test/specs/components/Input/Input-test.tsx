@@ -1,22 +1,16 @@
-import * as faker from 'faker';
-import * as React from 'react';
 import { keyboardKey } from '@fluentui/keyboard-key';
-
 import { ReactWrapper } from 'enzyme';
-import { mountWithProvider as mount } from 'test/utils';
+import * as faker from 'faker';
+import * as _ from 'lodash';
+import * as React from 'react';
+
+import { htmlInputAttrs } from 'src/utils';
+import { Box } from 'src/components/Box/Box';
+import { Input, inputSlotClassNames } from 'src/components/Input/Input';
+import { consoleUtil, mountWithProvider as mount } from 'test/utils';
 import { isConformant, implementsShorthandProp, implementsWrapperProp } from 'test/specs/commonTests';
 
-import Input, { inputSlotClassNames } from 'src/components/Input/Input';
-import Box from 'src/components/Box/Box';
-
 const testValue = 'test value';
-const htmlInputAttrs = ['id', 'name', 'pattern', 'placeholder', 'type', 'value'];
-
-const getInputAttrsObject = (value: string) =>
-  htmlInputAttrs.reduce((acc, attr) => {
-    acc[attr] = value;
-    return acc;
-  }, {});
 
 const getInputDomNode = (inputComp: ReactWrapper): HTMLInputElement =>
   inputComp.find('input').getDOMNode() as HTMLInputElement;
@@ -35,25 +29,33 @@ describe('Input', () => {
       onKeyUp: 'input',
     },
     autoControlledProps: ['value'],
+    forwardsRefTo: `Box[className~="${inputSlotClassNames.input}"]`,
   });
   implementsShorthandProp(Input)('input', Box, { mapsValueToProp: 'type' });
+
   describe('wrapper', () => {
     implementsShorthandProp(Input)('wrapper', Box, { mapsValueToProp: 'children' });
     implementsWrapperProp(Input, { wrapppedComponentSelector: 'input' });
   });
+
   it('renders a text <input> by default', () => {
     const inputComp = mount(<Input />);
     expect(inputComp.find('input[type="text"]').length).toBeGreaterThan(0);
   });
+
   describe('input related HTML attribute', () => {
-    const inputAttrsObject = getInputAttrsObject(testValue);
-    const domNode = getInputDomNode(mount(<Input {...inputAttrsObject} />));
-    htmlInputAttrs.forEach(attr => {
+    // `input` will be always controlled component so there is no need to pass down `defaultValue`
+    _.without(htmlInputAttrs, 'defaultValue').forEach(attr => {
       it(`'${attr}' is set correctly to '${testValue}'`, () => {
-        expect(domNode[attr]).toEqual(testValue);
+        // as `testValue` is a string it can cause propTypes errors on `Input`
+        consoleUtil.disableOnce();
+
+        const wrapper = mount(<Input {...{ [attr]: testValue }} />).find('input');
+        expect(wrapper.prop(attr)).toBe(testValue);
       });
     });
   });
+
   describe('clearable', () => {
     it('calls onChange on Clearable icon click with an `empty` value', () => {
       const onChange = jest.fn();
@@ -68,6 +70,7 @@ describe('Input', () => {
         expect.objectContaining({ value: '' }),
       );
     });
+
     it('calls onChange on Escape key with an `empty` value and stops propagation when has content', () => {
       const onChange = jest.fn();
       const stopPropagation = jest.fn();
@@ -121,6 +124,7 @@ describe('Input', () => {
       expect(inputComp.find(`Box[className~="${inputSlotClassNames.icon}"]`).length).toEqual(0); // the 'x' icon disappears
     });
   });
+
   it('disabled prop makes the input un-actionable', () => {
     const inputComp = mount(<Input disabled />);
     const domNode = getInputDomNode(inputComp);

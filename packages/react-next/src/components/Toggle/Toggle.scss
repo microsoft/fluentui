@@ -1,6 +1,6 @@
-@import '../../common/themeCssVariables';
-@import '../../common/highContrast';
-@import '../../common/focusBorder';
+@import '~@fluentui/common-styles/dist/sass/themeCssVariables';
+@import '~@fluentui/common-styles/dist/sass/highContrast';
+@import '~@fluentui/common-styles/dist/sass/focusBorder';
 
 $DEFAULT_PILL_HEIGHT: 20px;
 $DEFAULT_PILL_WIDTH: 40px;
@@ -56,7 +56,7 @@ $DEFAULT_THUMB_SIZE: 12px;
   transition: all 0.1s ease;
   width: $DEFAULT_PILL_WIDTH;
 
-  @include focus-border($padding: -2);
+  @include focus-border($padding: -2px);
 
   &:hover {
     border-color: var($semanticColorsInputBorderHovered);

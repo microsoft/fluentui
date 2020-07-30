@@ -1,9 +1,9 @@
 import { isMac } from './osDetector';
 
-// tslint:disable:max-line-length
+/* eslint-disable @fluentui/max-len */
 
 function testIsMac(agent: string, result: boolean): void {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (navigator as any).__defineGetter__('userAgent', (): string => {
     return agent;
   });

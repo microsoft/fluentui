@@ -95,7 +95,7 @@ export interface MenuVariables {
   indicatorColorHover: string;
 }
 
-export default (siteVars: any): MenuVariables => {
+export const menuVariables = (siteVars: any): MenuVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(
       extendColorScheme(siteVars.colorScheme, {

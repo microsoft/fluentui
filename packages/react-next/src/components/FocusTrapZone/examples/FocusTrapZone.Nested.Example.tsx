@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react-next/lib/Button';
+import { DefaultButton } from '@fluentui/react-next/lib/compat/Button';
 import { FocusTrapZone } from '@fluentui/react-next/lib/FocusTrapZone';
 import { Stack, IStackStyles } from '@fluentui/react-next/lib/Stack';
 import { Toggle, IToggleStyles } from '@fluentui/react-next/lib/Toggle';
@@ -33,7 +33,11 @@ const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zone
           // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
           styles={zoneNumber >= 2 && zoneNumber <= 4 ? fixedWidthToggleStyles : undefined}
         />
-        <DefaultButton onClick={onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
+        <DefaultButton
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={onStringButtonClicked}
+          text={`Zone ${zoneNumber} button`}
+        />
         {children}
       </Stack>
     </FocusTrapZone>

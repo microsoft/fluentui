@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from '@uifabric/utilities/lib/test';
 import { mount } from 'enzyme';
 import { KeyCodes } from '../../../Utilities';
 import { mockEvent } from '../../../common/testUtilities';
@@ -8,7 +8,7 @@ import { MaskedTextField } from './MaskedTextField';
 
 describe('MaskedTextField', () => {
   it('renders correctly', () => {
-    const component = renderer.create(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
+    const component = create(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -24,8 +24,8 @@ describe('MaskedTextField', () => {
   it('can change single character', () => {
     const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Simulate pressing the '1' key
@@ -44,8 +44,8 @@ describe('MaskedTextField', () => {
   it('can replace single character', () => {
     const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Simulate pressing the '1' key
@@ -64,8 +64,8 @@ describe('MaskedTextField', () => {
   it('should ignore incorrect format characters', () => {
     const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Simulate pressing the '1' key
@@ -86,8 +86,8 @@ describe('MaskedTextField', () => {
       <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Simulate backspacing the '2'
@@ -102,8 +102,8 @@ describe('MaskedTextField', () => {
       <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Simulate deleting the '3'
@@ -118,8 +118,8 @@ describe('MaskedTextField', () => {
       <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Simulate backspacing the '123'
@@ -135,8 +135,8 @@ describe('MaskedTextField', () => {
       <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Simulate deleting the '123'
@@ -151,8 +151,8 @@ describe('MaskedTextField', () => {
       <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Simulate selecting and backspacing the '123'
@@ -175,8 +175,8 @@ describe('MaskedTextField', () => {
       <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Paste a 7777 into the start of the input
@@ -203,8 +203,8 @@ describe('MaskedTextField', () => {
       <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Paste a 000 over the '123'
@@ -225,8 +225,8 @@ describe('MaskedTextField', () => {
       <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Replace '23) 45' text with '6'
@@ -248,7 +248,6 @@ describe('MaskedTextField', () => {
     let onChangeValue;
     const component = mount(
       <MaskedTextField
-        // tslint:disable-next-line jsx-no-lambda
         onChange={(ev, newValue) => (onChangeValue = newValue)}
         label="With input mask"
         mask="m\ask: (999) 999 - 9999"
@@ -256,8 +255,8 @@ describe('MaskedTextField', () => {
       />,
     );
 
-    const input = component.find('input'),
-      inputDOM = input.getDOMNode() as HTMLInputElement;
+    const input = component.find('input');
+    const inputDOM = input.getDOMNode() as HTMLInputElement;
     input.simulate('focus');
 
     // Add '1' to the end

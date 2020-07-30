@@ -1,3 +1,5 @@
+@import '~@fluentui/common-styles/dist/sass/focusBorder';
+
 /**
  * TODO: Once theming is updated, consider removing all of this.
  *
@@ -18,7 +20,7 @@
   --button-padding: 0 24px;
   --button-margin: 0;
   --button-width: auto;
-  --button-height: var(--button-size-regular);
+  --button-minHeight: var(--button-size-regular);
   --button-minWidth: 96px;
   --button-maxWidth: 280px;
 
@@ -128,7 +130,11 @@
   border-radius: var(--button-borderRadius);
   border-width: var(--button-borderWidth);
   box-shadow: var(--button-boxShadow);
+
+  width: var(--button-width);
   height: var(--button-height);
+  min-height: var(--button-minHeight);
+
   padding: var(--button-padding);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
@@ -136,6 +142,14 @@
   font-family: var(--button-fontFamily);
   font-size: var(--button-fontSize);
   font-weight: var(--button-fontWeight);
+
+  @include focus-border(
+    $padding: -1px,
+    $color: var(--button-focusColor),
+    $thickness: var(--button-focus-width, 2px),
+    $radius: var(--button-borderRadius)
+  );
+  @include focus-box-shadow($hOffset: 0, $vOffset: 0, $blur: 0, $thickness: 1px, $color: var(--button-focusInnerColor));
 
   /**
   * Modifiers
@@ -174,13 +188,12 @@
   }
 
   &._iconOnly {
-    width: var(--button-height);
+    --button-width: var(--button-height, var(--button-minHeight));
     --button-padding: 0;
   }
 
   &._circular {
     --button-borderRadius: 50000px;
-    --button-minWidth: var(--button-height);
   }
 
   &._fluid {
@@ -189,26 +202,26 @@
   }
 
   &._size_smallest {
-    --button-height: var(--button-size-smallest);
+    --button-minHeight: var(--button-size-smallest);
   }
 
   &._size_smaller {
-    --button-height: var(--button-size-smaller);
+    --button-minHeight: var(--button-size-smaller);
   }
 
   &._size_small {
-    --button-height: var(--button-size-small);
+    --button-minHeight: var(--button-size-small);
   }
 
   &._size_large {
-    --button-height: var(--button-size-large);
+    --button-minHeight: var(--button-size-large);
   }
 
   &._size_larger {
-    --button-height: var(--button-size-larger);
+    --button-minHeight: var(--button-size-larger);
   }
   &._size_largest {
-    --button-height: var(--button-size-largest);
+    --button-minHeight: var(--button-size-largest);
   }
 
   &._disabled {
@@ -230,7 +243,7 @@
   font-size: var(--button-iconSize, inherit);
   font-weight: normal;
 
-  &.disabled {
+  &._disabled {
     color: var(--button-disabled-iconColor, var(--button-disabled-contentColor));
   }
 }
@@ -264,17 +277,4 @@
   .icon {
     color: var(--button-pressed-iconColor, var(--button-pressed-contentColor));
   }
-}
-
-.root:focus::after {
-  position: absolute;
-  left: -1px;
-  top: -1px;
-  right: -1px;
-  bottom: -1px;
-  content: '';
-  box-sizing: border-box;
-  border-radius: var(--button-borderRadius);
-  border: var(--button-focus-width, 2px) solid var(--button-focusColor);
-  box-shadow: 0 0 0 var(--button-focus-innerWidth, 1px) var(--button-focusInnerColor) inset;
 }

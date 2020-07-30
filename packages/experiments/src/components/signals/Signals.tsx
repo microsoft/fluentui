@@ -119,15 +119,15 @@ export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
 };
 
 export const DesktopSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="desktopfolder" />;
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="TVMonitor" />;
 };
 
 export const DocumentsSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="documentsfolder" />;
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="Page" />;
 };
 
 export const PicturesSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="picturesfolder" />;
+  return <IconSignal {...props} signalClass={SignalsStyles.folder} iconName="Photo2" />;
 };
 
 export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element => {
@@ -162,11 +162,10 @@ type IIconSignalProps = ISignalProps &
 /**
  * Renders a signal as just an Icon. This is the simplest Signal case.
  */
-// tslint:disable-next-line:function-name
-function IconSignal(props: IIconSignalProps): JSX.Element {
+const IconSignal: React.FunctionComponent<IIconSignalProps> = props => {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 
   return (
     <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />
   );
-}
+};

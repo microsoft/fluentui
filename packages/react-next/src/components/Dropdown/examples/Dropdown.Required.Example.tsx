@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdown } from '@fluentui/react-next/lib/Dropdown';
-import { PrimaryButton } from '@fluentui/react-next/lib/Button';
+import { PrimaryButton } from '@fluentui/react-next/lib/compat/Button';
 import { IStackTokens, Stack } from '@fluentui/react-next/lib/Stack';
 
 const dropdownStyles = { dropdown: { width: 300 } };
@@ -28,7 +28,11 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
           required
           styles={dropdownStyles}
         />
-        <PrimaryButton text="Set focus" onClick={onSetFocus} />
+        <PrimaryButton
+          text="Set focus"
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={onSetFocus}
+        />
       </Stack>
       <Dropdown
         placeholder="Required with no label"

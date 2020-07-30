@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { CommandBarButton, IButtonStyles, IOverflowSetItemProps, OverflowSet, Checkbox } from '@fluentui/react-next';
+import { CommandBarButton, IButtonStyles } from '@fluentui/react-next/lib/compat/Button';
+import { IOverflowSetItemProps, OverflowSet, Checkbox } from '@fluentui/react-next';
 
 const noOp = () => undefined;
 
@@ -23,7 +24,7 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   );
 };
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
   const buttonStyles: Partial<IButtonStyles> = {
     root: {

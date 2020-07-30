@@ -3,10 +3,9 @@ import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
 import { IKeytipProps } from '../../Keytip';
-import { find } from '../../Utilities';
+import { find, KeyCodes } from '../../Utilities';
 import { KeytipTree } from './KeytipTree';
 import { KTP_FULL_PREFIX, KTP_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
-import { KeytipTransitionModifier } from '../../utilities/keytips/IKeytipTransitionKey';
 
 describe('KeytipLayer', () => {
   const ktpMgr = KeytipManager.getInstance();
@@ -183,13 +182,13 @@ describe('KeytipLayer', () => {
         });
 
         it('calls on enter keytip mode when we process alt + left win', () => {
-          layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] });
+          layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
           expect(onEnter).toBeCalled();
         });
 
         it('calls on exit keytip mode when we process alt + left win', () => {
           ktpTree.currentKeytip = ktpTree.root;
-          layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] });
+          layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
           expect(onExit).toBeCalled();
         });
 
@@ -393,7 +392,7 @@ describe('KeytipLayer', () => {
       expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
     });
 
-    // tslint:disable-next-line:max-line-length
+    // eslint-disable-next-line @fluentui/max-len
     it('keytipAdded event does not show a keytip if the current keytip is its parent when delay updating and not in keytip mode', () => {
       ktpMgr.delayUpdatingKeytipChange = true;
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
@@ -409,7 +408,7 @@ describe('KeytipLayer', () => {
       expect(getKeytip(visibleKeytips, 'X')).toBeUndefined();
     });
 
-    // tslint:disable-next-line:max-line-length
+    // eslint-disable-next-line @fluentui/max-len
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent when delay updating and in keytip mode', () => {
       ktpMgr.delayUpdatingKeytipChange = true;
       ktpMgr.inKeytipMode = true;

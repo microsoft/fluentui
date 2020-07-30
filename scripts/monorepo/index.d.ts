@@ -6,6 +6,7 @@ export interface PackageJson {
   module?: string;
   dependencies?: { [key: string]: string };
   devDependencies?: { [key: string]: string };
+  peerDependencies?: { [key: string]: string };
   [key: string]: any;
 }
 
@@ -24,6 +25,6 @@ export declare function findGitRoot(): string;
  * Find all the dependencies (and their dependencies) within the repo for a specific package
  * (in the CWD when this was called)
  */
-export declare function findRepoDeps(): Map<string, Set<string>>;
+export declare function findRepoDeps(): PackageInfo[];
 
 export declare function getAllPackageInfo(): AllPackageInfo;

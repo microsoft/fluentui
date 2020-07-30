@@ -17,7 +17,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
+export const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
   attributes: {
     wrapper: {
       role: 'presentation',
@@ -43,8 +43,6 @@ const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
     },
   },
 });
-
-export default tabBehavior;
 
 type TabBehaviorProps = {
   /** Indicates if tab is selected. */

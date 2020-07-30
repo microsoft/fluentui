@@ -10,7 +10,7 @@ const { copy } = require('./tasks/copy');
 const { jest: jestTask, jestWatch } = require('./tasks/jest');
 const { sass } = require('./tasks/sass');
 const { ts } = require('./tasks/ts');
-const { tslint } = require('./tasks/tslint');
+const { eslint } = require('./tasks/eslint');
 const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
 const lintImports = require('./tasks/lint-imports');
@@ -47,6 +47,7 @@ function basicPreset() {
 module.exports = function preset() {
   basicPreset();
 
+  task('no-op', () => {}).cached();
   task('clean', clean);
   task('copy', copy);
   task('jest', jestTask);
@@ -58,12 +59,12 @@ module.exports = function preset() {
   task('ts:commonjs', series(ts.commonjs, 'postprocess:commonjs'));
   task('ts:esm', ts.esm);
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
-  task('tslint', tslint);
+  task('eslint', eslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
-  task('api-extractor:verify', verifyApiExtractor);
-  task('api-extractor:update', updateApiExtractor);
+  task('api-extractor:verify', verifyApiExtractor());
+  task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('bundle-size-collect', bundleSizeCollect);
@@ -80,7 +81,7 @@ module.exports = function preset() {
     return argv().commonjs
       ? 'ts:commonjs-only'
       : parallel(
-          'ts:commonjs',
+          condition('ts:commonjs', () => !argv().min),
           'ts:esm',
           condition('ts:amd', () => !!argv().production),
         );
@@ -93,9 +94,9 @@ module.exports = function preset() {
     condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))),
   );
 
-  task('lint', parallel('lint-imports', 'tslint'));
+  task('lint', parallel('lint-imports', 'eslint'));
 
-  task('code-style', series('prettier', 'tslint'));
+  task('code-style', series('prettier', 'lint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
   task('dev:storybook', series('storybook:start'));
@@ -110,7 +111,7 @@ module.exports = function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json'))),
+      condition('api-extractor:verify', () => !argv().min),
     ),
   ).cached();
 
@@ -121,8 +122,6 @@ module.exports = function preset() {
       condition('storybook:build', () => !!resolveCwd('./.storybook/main.js')),
     ),
   );
-
-  task('no-op', () => {}).cached();
 };
 
 module.exports.basic = basicPreset;

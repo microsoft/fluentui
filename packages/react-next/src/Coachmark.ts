@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Coachmark';
+export * from './components/Coachmark';

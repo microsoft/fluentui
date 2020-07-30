@@ -1,6 +1,5 @@
 import {
   Box,
-  constants,
   Flex,
   HierarchicalTree,
   HierarchicalTreeItemProps,
@@ -18,10 +17,10 @@ import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
+import { NavLink, NavLinkProps, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
+import config from '../../config';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
@@ -29,16 +28,20 @@ const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design'];
+const componentsBlackList = ['Debug', 'Design', 'Datepicker'];
+const typeOrder = ['component', 'behavior'];
 
-class Sidebar extends React.Component<any, any> {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    style: PropTypes.object,
-  };
-  state: any = { query: '', activeCategoryIndex: 0 };
+interface SidebarState {
+  query: string;
+  activeCategoryIndex: number | number[];
+}
+
+interface SidebarProps {
+  width: number;
+  treeItemStyle: React.CSSProperties;
+}
+class Sidebar extends React.Component<SidebarProps & RouteComponentProps, SidebarState> {
+  state = { query: '', activeCategoryIndex: 0 };
   searchInputRef = React.createRef<HTMLInputElement>();
 
   componentDidMount() {
@@ -263,6 +266,10 @@ class Sidebar extends React.Component<any, any> {
               to: '/performance',
             },
           },
+          {
+            key: 'debugging',
+            title: { content: 'Debugging', as: NavLink, activeClassName: 'active', to: '/debugging' },
+          },
         ],
       },
     ];
@@ -295,7 +302,7 @@ class Sidebar extends React.Component<any, any> {
   };
 
   getSectionsWithoutSearchFilter = (): HierarchicalTreeItemProps[] => {
-    const treeItemsByType = _.map(constants.typeOrder, nextType => {
+    const treeItemsByType = _.map(typeOrder, nextType => {
       const items = _.chain([...componentMenu, ...behaviorMenu])
         .filter(({ type }) => type === nextType)
         .filter(({ displayName }) => !_.includes(componentsBlackList, displayName))
@@ -332,6 +339,11 @@ class Sidebar extends React.Component<any, any> {
       {
         key: 'editor-toolbar',
         title: { content: 'Editor Toolbar', as: NavLink, to: '/prototype-editor-toolbar' },
+        public: true,
+      },
+      {
+        key: 'form-validation',
+        title: { content: 'Form Validation', as: NavLink, to: '/prototype-form-validation' },
         public: true,
       },
       {
@@ -421,6 +433,11 @@ class Sidebar extends React.Component<any, any> {
         title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
         public: true,
       },
+      {
+        key: 'unstable-datepicker',
+        title: { content: 'Datepicker', as: NavLink, to: '/unstable-datepicker' },
+        public: true,
+      },
     ];
 
     const componentTreeSection = {
@@ -452,7 +469,7 @@ class Sidebar extends React.Component<any, any> {
       width: '36px',
     };
 
-    const changeLogUrl: string = `${constants.repoURL}/blob/master/packages/fluentui/CHANGELOG.md`;
+    const changeLogUrl: string = `${config.repoURL}/blob/master/packages/fluentui/CHANGELOG.md`;
     const allSectionsWithoutSearchFilter = this.getSectionsWithoutSearchFilter();
 
     const escapedQuery = _.escapeRegExp(this.state.query);
@@ -552,7 +569,7 @@ class Sidebar extends React.Component<any, any> {
           </CopyToClipboard>
         </Flex>
         <Flex column>
-          <a href={constants.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
+          <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
             <Box>
               GitHub
               <Image src="public/images/github.png" width="20px" height="20px" styles={{ float: 'right' }} />
