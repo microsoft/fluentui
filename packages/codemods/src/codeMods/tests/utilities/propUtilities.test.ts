@@ -173,18 +173,6 @@ describe('Props Utilities Test', () => {
           tags = findJsxTag(file, 'Spinner');
           /* Need to reacquire tags because the tags have been modified since then! */
           tags.forEach(val => {
-            // val.getAttributes().forEach(att => {
-            //   if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
-            //     att
-            //       .getFirstChildByKind(SyntaxKind.Identifier)
-            //       ?.getType()
-            //       .getProperties()
-            //       .forEach(prop => {
-            //         expect(prop.getName()).not.toEqual('SpinnerType');
-            //       });
-            //   }
-            //   /* Want to see these substrings somewhere in the Jsx element. */
-            // });
             expect(val.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
           });
         });
@@ -198,20 +186,9 @@ describe('Props Utilities Test', () => {
         tags = findJsxTag(file, 'Spinner');
         /* Need to reacquire tags because the tags have been modified since then! */
         tags.forEach(val => {
-          // val.getAttributes().forEach(att => {
-          //   if (att.getKind() === SyntaxKind.JsxSpreadAttribute) {
-          //     att
-          //       .getFirstChildByKind(SyntaxKind.Identifier)
-          //       ?.getType()
-          //       .getProperties()
-          //       .forEach(prop => {
-          //         expect(prop.getName()).not.toEqual('SpinnerType');
-          //       });
-          //   }
-          //   /* Want to see these substrings somewhere in the Jsx element. */
-          // });
           expect(val.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
         });
+        console.log(file);
       });
     });
   });

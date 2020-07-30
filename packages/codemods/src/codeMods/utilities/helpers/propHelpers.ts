@@ -10,7 +10,7 @@ import {
   Block,
   VariableStatement,
 } from 'ts-morph';
-import { ValueMap } from 'src/codeMods/types';
+import { ValueMap, SpreadPropInStatement } from '../../types';
 import { Maybe } from '../../../helpers/maybe';
 
 /* Helper function to rename a prop if in a spread operator.  */
@@ -76,6 +76,7 @@ export function renamePropInSpread(
            deconstruct it from the spread prop if not. */
           const variableStatementWithSpreadProp = parentContainer.getVariableStatement(
             (declaration: VariableStatement) => {
+              // needs to exclude propspreadname on the left side
               const elem = declaration.getFirstDescendantByKind(SyntaxKind.VariableDeclaration);
               return (
                 elem !== undefined &&
@@ -87,29 +88,74 @@ export function renamePropInSpread(
           );
           /* If a variable statement with the spread prop in question exists, try and use it.  */
           if (variableStatementWithSpreadProp) {
+            switch (locateSpreadPropInStatement(variableStatementWithSpreadProp, propSpreadName, newSpreadName)) {
+              case SpreadPropInStatement.PropLeft: {
+                parentContainer.insertVariableStatement(
+                  insertIndex,
+                  createDeconstructedProp(newSpreadName, toRename, propSpreadName),
+                );
+                break;
+              }
+              case SpreadPropInStatement.SpreadPropLeft: {
+                const existingDecomposedPropName = Maybe(
+                  variableStatementWithSpreadProp.getFirstDescendantByKind(SyntaxKind.DotDotDotToken),
+                )
+                  .then(val => val.getParent())
+                  .then(val => val.getFirstChildByKind(SyntaxKind.Identifier))
+                  .then(val => val.getText());
+                if (existingDecomposedPropName.something) {
+                  newSpreadName = existingDecomposedPropName.value;
+                }
+                if (!propAlreadyExists(parentContainer, toRename)) {
+                  tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
+                }
+                break;
+              }
+              case SpreadPropInStatement.PropRight: {
+                newSpreadName = propSpreadName;
+                if (!propAlreadyExists(parentContainer, toRename)) {
+                  tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
+                }
+                break;
+              }
+              case SpreadPropInStatement.NotFound:
+              default: {
+                newSpreadName = propSpreadName;
+                // If we failed here, we probably coulnd't handle their spread case.
+                break;
+              }
+            }
             /* Get the name of the deconstructed object, becuase we'll try and reuse it. */
-            const existingDecomposedPropName = Maybe(
-              variableStatementWithSpreadProp.getFirstDescendantByKind(SyntaxKind.DotDotDotToken),
-            )
-              .then(val => val.getParent())
-              .then(val => val.getFirstChildByKind(SyntaxKind.Identifier))
-              .then(val => val.getText());
-            if (existingDecomposedPropName.something) {
-              newSpreadName = existingDecomposedPropName.value;
-            } else {
-              /* If there is no spread prop on the left side, use the right-side prop name. */
-              newSpreadName = propSpreadName;
-            }
-            if (!propAlreadyExists(parentContainer, toRename)) {
-              tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
-            }
+            //   const existingDecomposedPropName = Maybe(
+            //     variableStatementWithSpreadProp.getFirstDescendantByKind(SyntaxKind.DotDotDotToken),
+            //   )
+            //     .then(val => val.getParent())
+            //     .then(val => val.getFirstChildByKind(SyntaxKind.Identifier))
+            //     .then(val => val.getText());
+            //   if (existingDecomposedPropName.something) {
+            //     newSpreadName = existingDecomposedPropName.value;
+            //   } else {
+            //     /* If there is no spread prop on the left side, use the right-side prop name. */
+            //     /* well it might not be on the left side at all */
+            //     newSpreadName = propSpreadName;
+            //   }
+            //   if (!propAlreadyExists(parentContainer, toRename)) {
+            //     tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
+            //   }
+            // } else {
+            //   /* If we could not find a variable statement with our spread prop in it, make one. */
+            //   parentContainer.insertVariableStatement(
+            //     insertIndex,
+            //     createDeconstructedProp(newSpreadName, toRename, propSpreadName),
+            //   );
+            // }
           } else {
-            /* If we could not find a variable statement with our spread prop in it, make one. */
             parentContainer.insertVariableStatement(
               insertIndex,
               createDeconstructedProp(newSpreadName, toRename, propSpreadName),
             );
           }
+
           /* Step 8: Declare other auxiliary objects if necessary (i.e. value mapping case). */
           if (changeValueMap && !parentContainer.getVariableStatement(newMapName)) {
             parentContainer.insertVariableStatement(
@@ -165,6 +211,38 @@ export function renamePropInSpread(
       }
     }
   });
+}
+
+/* Helper function that identifies the location of a spread prop within
+   a variable statement and returns an enum member to facilitate case handling.
+   MIGRATIONPROPNAME is custom made for each component, so if it's found, we
+   know we've already created a variable statement here before. */
+function locateSpreadPropInStatement(
+  statement: VariableStatement,
+  propNameFound: string,
+  migrationPropName: string,
+): SpreadPropInStatement {
+  const varDeclaration = statement.getFirstDescendantByKind(SyntaxKind.VariableDeclaration);
+  if (varDeclaration) {
+    const leftChild = varDeclaration.getChildAtIndex(0);
+    const rightChild = varDeclaration.getChildAtIndex(2); // Index 1 is '='.
+    if (rightChild && rightChild.getText().includes(propNameFound)) {
+      return SpreadPropInStatement.PropRight;
+    }
+    if (leftChild) {
+      const leftSideObject = leftChild.getFirstChild(child => {
+        return child.getText().includes(propNameFound) || child.getText().includes(migrationPropName);
+      });
+      if (leftSideObject) {
+        if (leftSideObject.getText().includes('...')) {
+          return SpreadPropInStatement.SpreadPropLeft;
+        } else {
+          return SpreadPropInStatement.PropRight;
+        }
+      }
+    }
+  }
+  return SpreadPropInStatement.NotFound;
 }
 
 /* Helper that identifies whether the prop TORENAME exists in a variable
