@@ -24,138 +24,135 @@ export function renamePropInSpread(
   /* Step 1: Figure out which attribute contains the spread prop. */
   const allAttributes = element.getAttributes();
   allAttributes.forEach(attribute => {
-    if (attribute.getKind() === SyntaxKind.JsxSpreadAttribute) {
-      const firstIdentifier = attribute.getFirstChildByKind(SyntaxKind.Identifier);
-      const propertyAccess = attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-      if (!attribute || (!firstIdentifier && !propertyAccess)) {
-        return;
-      }
-      const spreadIsIdentifier = firstIdentifier !== undefined;
-      /* Verify this attribute contains the name of our desired prop. */
-      if (spreadContains(toRename, spreadIsIdentifier, attribute)) {
-        console.log('contains, holy cow');
-        console.log(attribute.getText());
-        const elemmm = spreadIsIdentifier
-          ? attribute.getFirstChildByKind(SyntaxKind.Identifier)
-          : attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
-        console.log(elemmm?.getContextualType()?.getText());
-        /* Step 3: Create names for your new potential objects. */
-        const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
-        let newSpreadName = '__migProps';
-        const newMapName = '__migEnumMap';
-        /* Metadata in case we need to reacquire the current element (AST modification). */
-        let newJSXFlag = false;
-        const elementType = element.getKind();
+    if (!element.getAttribute(replacementName)) {
+      if (attribute.getKind() === SyntaxKind.JsxSpreadAttribute) {
+        const firstIdentifier = attribute.getFirstChildByKind(SyntaxKind.Identifier);
+        const propertyAccess = attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
+        if (!attribute || (!firstIdentifier && !propertyAccess)) {
+          return;
+        }
+        const spreadIsIdentifier = firstIdentifier !== undefined;
+        /* Verify this attribute contains the name of our desired prop. */
+        if (spreadContains(toRename, spreadIsIdentifier, attribute)) {
+          /* Step 3: Create names for your new potential objects. */
+          const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
+          let newSpreadName = '__migProps';
+          const newMapName = '__migEnumMap';
+          /* Metadata in case we need to reacquire the current element (AST modification). */
+          let newJSXFlag = false;
+          const elementType = element.getKind();
 
-        /* Step 4: Get the container node who is the direct child of the closest SyntaxKind.Block.
+          /* Step 4: Get the container node who is the direct child of the closest SyntaxKind.Block.
              If we need to insert auxiliary variables, we'll insert them before this node. */
-        let blockContainer = getBlockContainer(element);
-        if (blockContainer === undefined) {
-          /* In the case there was NO code block, the following function will create one for you.
+          let blockContainer = getBlockContainer(element);
+          if (blockContainer === undefined) {
+            /* In the case there was NO code block, the following function will create one for you.
                If successful, initialize the newJSXFlag because you'll need to reaquire the spread element. */
-          const containerMaybe = createBlockContainer(element);
-          if (containerMaybe.something) {
-            blockContainer = containerMaybe.value;
-            newJSXFlag = true;
-          } else {
-            // eslint-disable-next-line no-throw-literal
-            throw 'attempt to create a new block around prop failed.';
-          }
-        }
-
-        /* Step 5: Get the parent of BLOCKCONTAINER so that we can insert our own variable statements. */
-        const parentContainer = blockContainer!.getParentIfKind(SyntaxKind.Block);
-        if (parentContainer === undefined) {
-          // eslint-disable-next-line no-throw-literal
-          throw 'unable to get parent container from block';
-        }
-
-        /* Step 6: Get the index of BLOCKCONTAINER within PARENTCONTAINER that we'll use to insert our variables. */
-        const insertIndex = blockContainer!.getChildIndex();
-        if (insertIndex === undefined) {
-          // eslint-disable-next-line no-throw-literal
-          throw 'unable to find child index';
-        }
-
-        /* Step 7: Look to see if the prop we're looking for exists already. Manually
-           deconstruct it from the spread prop if not. */
-        const variableStatementWithSpreadProp = parentContainer.getVariableStatement(
-          (declaration: VariableStatement) => {
-            const elem = declaration.getFirstDescendantByKind(SyntaxKind.VariableDeclaration);
-            return (
-              elem !== undefined &&
-              (elem.getText().includes(`...${propSpreadName}`) ||
-                elem.getText().includes(`...${newSpreadName}`) ||
-                elem.getText().includes(propSpreadName))
-            );
-          },
-        );
-        /* If a variable statement with the spread prop in question exists, try and use it.  */
-        if (variableStatementWithSpreadProp) {
-          /* Get the name of the deconstructed object, becuase we'll try and reuse it. */
-          const existingDecomposedPropName = Maybe(
-            variableStatementWithSpreadProp.getFirstDescendantByKind(SyntaxKind.DotDotDotToken),
-          )
-            .then(val => val.getParent())
-            .then(val => val.getFirstChildByKind(SyntaxKind.Identifier))
-            .then(val => val.getText());
-          if (existingDecomposedPropName.something) {
-            newSpreadName = existingDecomposedPropName.value;
-          }
-          if (!propAlreadyExists(parentContainer, toRename)) {
-            tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
-          }
-        } else {
-          /* If we could not find a variable statement with our spread prop in it, make one. */
-          parentContainer.insertVariableStatement(
-            insertIndex,
-            createDeconstructedProp(newSpreadName, toRename, propSpreadName),
-          );
-        }
-        /* Step 8: Declare other auxiliary objects if necessary (i.e. value mapping case). */
-        if (changeValueMap && !parentContainer.getVariableStatement(newMapName)) {
-          parentContainer.insertVariableStatement(
-            insertIndex,
-            createAuxiliaryVariable(VariableDeclarationKind.Const, newMapName, JSON.stringify(changeValueMap)),
-          );
-        }
-
-        /* Step 9: Handle any last auxiliary cases (i.e. component rendered with no body). */
-        let attrToRename = attribute;
-        /* attribute is an iterator variable in the forEach function. */
-        if (newJSXFlag) {
-          const newSpreadProp = Maybe(blockContainer!.getFirstDescendantByKind(SyntaxKind.JsxSpreadAttribute));
-          const newJSXElem = Maybe(
-            blockContainer!.getFirstDescendantByKind(
-              elementType as SyntaxKind.JsxOpeningElement | SyntaxKind.JsxSelfClosingElement,
-            ),
-          );
-          if (newSpreadProp.something && newJSXElem.something) {
-            attrToRename = newSpreadProp.value;
-            element = newJSXElem.value;
-          }
-        }
-
-        /* Step 10: Replace the props in the component with your new ones! */
-        //console.log(newSpreadName);
-        if (
-          element.getAttributes().some(attr => {
-            if (attr.getKind() === SyntaxKind.JsxSpreadAttribute) {
-              const child = attr.getChildAtIndex(2);
-              if (child) {
-                return child.getText() === newSpreadName;
-              }
+            const containerMaybe = createBlockContainer(element);
+            if (containerMaybe.something) {
+              blockContainer = containerMaybe.value;
+              newJSXFlag = true;
+            } else {
+              // eslint-disable-next-line no-throw-literal
+              throw 'attempt to create a new block around prop failed.';
             }
-            return false;
-          })
-        ) {
-          if (attrToRename.getChildAtIndex(2)!.getText() !== newSpreadName) {
-            attrToRename.remove(); // Replace old spread name.
           }
-        } else {
-          attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
-        }
-        if (!element.getAttribute(replacementName)) {
+
+          /* Step 5: Get the parent of BLOCKCONTAINER so that we can insert our own variable statements. */
+          const parentContainer = blockContainer!.getParentIfKind(SyntaxKind.Block);
+          if (parentContainer === undefined) {
+            // eslint-disable-next-line no-throw-literal
+            throw 'unable to get parent container from block';
+          }
+
+          /* Step 6: Get the index of BLOCKCONTAINER within PARENTCONTAINER that we'll use to insert our variables. */
+          const insertIndex = blockContainer!.getChildIndex();
+          if (insertIndex === undefined) {
+            // eslint-disable-next-line no-throw-literal
+            throw 'unable to find child index';
+          }
+
+          /* Step 7: Look to see if the prop we're looking for exists already. Manually
+           deconstruct it from the spread prop if not. */
+          const variableStatementWithSpreadProp = parentContainer.getVariableStatement(
+            (declaration: VariableStatement) => {
+              const elem = declaration.getFirstDescendantByKind(SyntaxKind.VariableDeclaration);
+              return (
+                elem !== undefined &&
+                (elem.getText().includes(`...${propSpreadName}`) ||
+                  elem.getText().includes(`...${newSpreadName}`) ||
+                  elem.getText().includes(propSpreadName))
+              );
+            },
+          );
+          /* If a variable statement with the spread prop in question exists, try and use it.  */
+          if (variableStatementWithSpreadProp) {
+            /* Get the name of the deconstructed object, becuase we'll try and reuse it. */
+            const existingDecomposedPropName = Maybe(
+              variableStatementWithSpreadProp.getFirstDescendantByKind(SyntaxKind.DotDotDotToken),
+            )
+              .then(val => val.getParent())
+              .then(val => val.getFirstChildByKind(SyntaxKind.Identifier))
+              .then(val => val.getText());
+            if (existingDecomposedPropName.something) {
+              newSpreadName = existingDecomposedPropName.value;
+            } else {
+              /* If there is no spread prop on the left side, use the right-side prop name. */
+              newSpreadName = propSpreadName;
+            }
+            if (!propAlreadyExists(parentContainer, toRename)) {
+              tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
+            }
+          } else {
+            /* If we could not find a variable statement with our spread prop in it, make one. */
+            parentContainer.insertVariableStatement(
+              insertIndex,
+              createDeconstructedProp(newSpreadName, toRename, propSpreadName),
+            );
+          }
+          /* Step 8: Declare other auxiliary objects if necessary (i.e. value mapping case). */
+          if (changeValueMap && !parentContainer.getVariableStatement(newMapName)) {
+            parentContainer.insertVariableStatement(
+              insertIndex,
+              createAuxiliaryVariable(VariableDeclarationKind.Const, newMapName, JSON.stringify(changeValueMap)),
+            );
+          }
+
+          /* Step 9: Handle any last auxiliary cases (i.e. component rendered with no body). */
+          let attrToRename = attribute;
+          /* attribute is an iterator variable in the forEach function. */
+          if (newJSXFlag) {
+            const newSpreadProp = Maybe(blockContainer!.getFirstDescendantByKind(SyntaxKind.JsxSpreadAttribute));
+            const newJSXElem = Maybe(
+              blockContainer!.getFirstDescendantByKind(
+                elementType as SyntaxKind.JsxOpeningElement | SyntaxKind.JsxSelfClosingElement,
+              ),
+            );
+            if (newSpreadProp.something && newJSXElem.something) {
+              attrToRename = newSpreadProp.value;
+              element = newJSXElem.value;
+            }
+          }
+
+          /* Step 10: Replace the props in the component with your new ones! */
+          if (
+            element.getAttributes().some(attr => {
+              if (attr.getKind() === SyntaxKind.JsxSpreadAttribute) {
+                const child = attr.getChildAtIndex(2);
+                if (child) {
+                  return child.getText() === newSpreadName;
+                }
+              }
+              return false;
+            })
+          ) {
+            if (attrToRename.getChildAtIndex(2)!.getText() !== newSpreadName) {
+              attrToRename.remove(); // Replace old spread name.
+            }
+          } else {
+            // don't replace unless you know you added it
+            attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
+          }
           element.addAttribute({
             name: replacementName,
             initializer: changeValueMap
