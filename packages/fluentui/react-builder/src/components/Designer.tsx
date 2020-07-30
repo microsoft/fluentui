@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { useImmerReducer, Reducer } from 'use-immer';
 import * as axeCore from 'axe-core';
-import { Text, Button, Table } from '@fluentui/react-northstar';
+import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Editor, renderElementToJSX } from '@fluentui/docs-components';
 
@@ -55,26 +55,26 @@ const focusTreeTitle = uuid => {
 
 const affectedNodes = [];
 
-const tableOfViolations = violations => {
-  const rows = violations.map((violation, index) => {
-    return {
-      styles: { height: '12rem' },
-      key: index,
-      items: [
-        violation.failureSummary,
-        violation.description,
-        violation.target,
-        violation.html,
-        violation.xpath,
-        violation.dataBuilderId,
-      ],
-    };
-  });
-  const header = {
-    items: ['Failure summary', 'Description', 'Target', 'HTML', 'XPATH', 'DataBuilderId'],
-  };
-  return violations.length > 0 && <Table header={header} rows={rows} aria-label="Specification component table" />;
-};
+// const tableOfViolations = violations => {
+//   const rows = violations.map((violation, index) => {
+//     return {
+//       styles: { height: '12rem' },
+//       key: index,
+//       items: [
+//         violation.failureSummary,
+//         violation.description,
+//         violation.target,
+//         violation.html,
+//         violation.xpath,
+//         violation.dataBuilderId,
+//       ],
+//     };
+//   });
+//   const header = {
+//     items: ['Failure summary', 'Description', 'Target', 'HTML', 'XPATH', 'DataBuilderId'],
+//   };
+//   return violations.length > 0 && <Table header={header} rows={rows} aria-label="Specification component table" />;
+// };
 
 function findDataBuilderId(element) {
   const parentElement = element.parentElement;
@@ -280,11 +280,13 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       }
       break;
 
-    case 'OPEN_ADD_DIALOG': {
-      const parent = jsonTreeFindParent(draftState.jsonTree, action.uuid);
-      draftState.insertComponent = { where: action.where, uuid: action.uuid, parentUuid: `${parent?.uuid}` };
+    case 'OPEN_ADD_DIALOG':
+      draftState.insertComponent = {
+        where: action.where,
+        uuid: action.uuid,
+        parentUuid: `${jsonTreeFindParent(draftState.jsonTree, action.uuid)?.uuid}`,
+      };
       break;
-    }
 
     case 'CLOSE_ADD_DIALOG':
       draftState.insertComponent = null;
@@ -375,6 +377,18 @@ export const Designer: React.FunctionComponent = () => {
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
   const [axeErrors, setAxeErrors] = React.useState([]);
+  const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
+
+  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
+    _.mapValues(aaForComponent, message => ({ source: 'AA', error: message })),
+  );
+  for (let i = 0; i < axeErrors.length; i++) {
+    const id = axeErrors[i].dataBuilderId;
+    if (!accessibilityErrors[id]) {
+      accessibilityErrors[id] = {};
+    }
+    accessibilityErrors[id][i] = { source: 'AXE', error: axeErrors[i].failureSummary };
+  }
 
   const getAxeResults = () => {
     const iframeId = document.getElementsByTagName('iframe')[0].getAttribute('id');
@@ -412,9 +426,6 @@ export const Designer: React.FunctionComponent = () => {
       },
     );
   };
-
-  const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
-  axeErrors;
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -804,12 +815,6 @@ export const Designer: React.FunctionComponent = () => {
                 )}
               </div>
             )}
-            {axeErrors.length > 0 && (
-              <div style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd', height: '500px' }}>
-                <h3 style={{ margin: 0 }}>Accessibility Errors</h3>
-                {tableOfViolations(axeErrors)}
-              </div>
-            )}
           </div>
         </div>
 
@@ -842,7 +847,10 @@ export const Designer: React.FunctionComponent = () => {
                 </h4>
                 <ul>
                   {_.keys(accessibilityErrors[selectedComponent.uuid]).map(errorId => (
-                    <li>{accessibilityErrors[selectedComponent.uuid][errorId]}</li>
+                    <li>
+                      <strong>{accessibilityErrors[selectedComponent.uuid][errorId].source}</strong>&nbsp;
+                      {accessibilityErrors[selectedComponent.uuid][errorId].error}
+                    </li>
                   ))}
                 </ul>
               </div>
