@@ -11,6 +11,7 @@ import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { AbilityAttributesValidator, AccessibilityErrors } from './AbilityAttributesValidator';
 import { ErrorFrame } from './ErrorFrame';
+import { ReaderText } from './ReaderText';
 
 export type CanvasProps = {
   draggingElement: JSONTreeElement;
@@ -28,6 +29,7 @@ export type CanvasProps = {
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
+  role?: string;
   accessibilityErrors: AccessibilityErrors;
   onAccessibilityErrorsChanged: (errors: AccessibilityErrors) => void;
 };
@@ -48,6 +50,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onGoToParentComponent,
   renderJSONTreeElement,
   style,
+  role,
   accessibilityErrors,
   onAccessibilityErrorsChanged,
 }) => {
@@ -121,6 +124,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       // console.log('Canvas:effect !iframe, stop');
       return () => null;
     }
+
+    role && iframe.setAttribute('role', role);
 
     // We need to wait one frame in the iframe in order to find the DOM nodes we're looking for
     const animationFrame = iframe.contentWindow.setTimeout(() => {
@@ -201,7 +206,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           `
           [data-builder-id="builder-root"] {
             ${isExpanding ? `padding: ${debugSize};` : ''}
-            min-height: 100vh;
+            min-height: calc(100vh - 1.5rem);
           }
           `,
         isExpanding &&
@@ -226,7 +231,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree, role]);
 
   return (
     <Frame
@@ -308,6 +313,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
           </>
         )}
