@@ -1,13 +1,24 @@
 :root {
   --flex-display: flex;
+  --flex-wrap: nowrap;
+  --flex-direction: row;
+  --flex-verticalAlign: stretch;
+  --flex-horizontalAlign: flex-start;
+  --flex-padding: 0;
+  --flex-gap: 0 0;
 }
 
 .root {
+  background: var(--flex-background);
   display: var(--flex-display);
   flex-wrap: var(--flex-wrap);
   align-items: var(--flex-verticalAlign);
-  flex-direction: var(--flex-direction);
+  flex-direction: var(--flex-direction); // problem
   justify-content: var(--flex-horizontalAlign);
+  max-height: var(--flex-maxHeight);
+  max-width: var(--flex-maxWidth);
+  padding: var(--flex-padding);
+  margin: var(--flex-gap);
 
   &._column {
     --flex-direction: column;

@@ -1,65 +1,8 @@
 import * as React from 'react';
-import * as classes from './Flex.stories.scss';
-import { Flex } from './Flex';
-import { FlexItem } from '../FlexItem';
-import { FlexProps } from './Flex.types';
+import { Flex } from '../Flex';
+import { FlexItem } from '../../FlexItem';
+import { FlexProps, FlexTokens } from '../Flex.types';
 import { Slider, Dropdown, TextField, Checkbox, IDropdownOption, ICheckboxStyles } from 'office-ui-fabric-react';
-
-const flexStyle: React.CSSProperties = {
-  backgroundColor: 'lightblue',
-};
-
-const flexItemStyle: React.CSSProperties = {
-  backgroundColor: 'lightgreen',
-  width: '50px',
-  height: '50px',
-};
-
-const flexContainer: React.CSSProperties = {
-  backgroundColor: 'red',
-  width: '600px',
-  height: '400px',
-  maxHeight: '400px',
-};
-
-export const inlineFlex = () => (
-  <Flex style={flexContainer}>
-    <Flex fluid style={flexStyle}>
-      <FlexItem>AA</FlexItem>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>1</h2>
-      </FlexItem>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>2</h2>
-      </FlexItem>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>3</h2>
-      </FlexItem>
-    </Flex>
-    <Flex style={flexStyle}>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>1</h2>
-      </FlexItem>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>2</h2>
-      </FlexItem>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>3</h2>
-      </FlexItem>
-    </Flex>
-    <Flex style={flexStyle}>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>1</h2>
-      </FlexItem>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>2</h2>
-      </FlexItem>
-      <FlexItem style={flexItemStyle}>
-        <h2 className={classes.text}>3</h2>
-      </FlexItem>
-    </Flex>
-  </Flex>
-);
 
 export interface ExampleOptions {
   numItems: number;
@@ -78,8 +21,13 @@ export interface ExampleOptions {
   verticalAlignment: FlexProps['verticalAlign'];
   hideEmptyChildren: boolean;
   emptyChildren: string[];
-  flexDirection: 'row' | 'column';
 }
+
+const flexContainer: React.CSSProperties = {
+  width: '600px',
+  height: '400px',
+  maxWidth: '600px',
+};
 
 const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = props => {
   const {
@@ -99,7 +47,6 @@ const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = pro
     verticalAlignment,
     hideEmptyChildren,
     emptyChildren,
-    flexDirection,
   } = props;
   // Styles definition
   const flexStyles = {
@@ -127,16 +74,19 @@ const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = pro
     width: 50,
   };
 
+  const configureTokens: FlexTokens = {
+    gap: `${rowGap}px ${columnGap}px`,
+    padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`,
+  };
+
   return (
     <Flex
-      column={flexDirection === 'column' ? true : false}
       wrap={wrap}
       disableShrink={disableShrink}
       horizontalAlign={horizontalAlignment}
       verticalAlign={verticalAlignment}
       style={flexStyles}
-      gap={rowGap + ' ' + columnGap}
-      padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
+      tokens={configureTokens}
     >
       {_range(1, numItems).map((value: number, index: number) => {
         if (emptyChildren.indexOf(value.toString()) !== -1) {
@@ -168,6 +118,9 @@ function _range(start: number, end: number): number[] {
 const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
 
+const sectionFlexTokens: FlexTokens = { gap: '10px', maxHeight: '400px', maxWidth: '600px' };
+const configureFlexTokens: FlexTokens = { gap: '20px' };
+
 export class ConfigurableExample extends React.Component {
   public state: ExampleOptions = {
     numItems: 5,
@@ -186,7 +139,6 @@ export class ConfigurableExample extends React.Component {
     verticalAlignment: 'start',
     hideEmptyChildren: false,
     emptyChildren: [],
-    flexDirection: 'row',
   };
 
   private _horizontalAlignmentOptions: IDropdownOption[] = [
@@ -202,18 +154,14 @@ export class ConfigurableExample extends React.Component {
     { key: 'center', text: 'Center' },
     { key: 'end', text: 'Bottom' },
   ];
-  private _flexDirectionOptions: IDropdownOption[] = [
-    { key: 'column', text: 'Column' },
-    { key: 'row', text: 'Row' },
-  ];
 
   public render(): JSX.Element {
-    const { horizontalAlignment, verticalAlignment, flexDirection } = this.state;
+    const { horizontalAlignment, verticalAlignment } = this.state;
 
     return (
-      <Flex column style={{ width: '640px' }} gap={10}>
+      <Flex wrap column style={flexContainer} tokens={sectionFlexTokens}>
         <Flex disableShrink>
-          <FlexItem grow>
+          <FlexItem>
             <Flex column>
               <Slider
                 label="Number of items:"
@@ -234,13 +182,13 @@ export class ConfigurableExample extends React.Component {
               </Flex>
             </Flex>
           </FlexItem>
-          <FlexItem grow>
-            <Flex disableShrink gap={20}>
+          <FlexItem>
+            <Flex disableShrink tokens={configureFlexTokens}>
               <Flex column>
                 <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={wrapItemCheckboxStyles} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkChange} />
               </Flex>
-              <FlexItem grow>
+              <FlexItem>
                 <Slider
                   label="Container width:"
                   min={1}
@@ -255,8 +203,8 @@ export class ConfigurableExample extends React.Component {
           </FlexItem>
         </Flex>
 
-        <Flex disableShrink gap={20}>
-          <FlexItem grow>
+        <Flex disableShrink tokens={configureFlexTokens}>
+          <FlexItem>
             <Flex column>
               <Slider
                 label="Horizontal gap between items:"
@@ -278,7 +226,7 @@ export class ConfigurableExample extends React.Component {
               />
             </Flex>
           </FlexItem>
-          <FlexItem grow>
+          <FlexItem>
             <Flex column>
               <Slider
                 label="Left padding:"
@@ -300,7 +248,7 @@ export class ConfigurableExample extends React.Component {
               />
             </Flex>
           </FlexItem>
-          <FlexItem grow>
+          <FlexItem>
             <Flex column>
               <Slider
                 label="Top padding:"
@@ -324,17 +272,8 @@ export class ConfigurableExample extends React.Component {
           </FlexItem>
         </Flex>
 
-        <Flex disableShrink verticalAlign="end" gap={20}>
-          <FlexItem grow>
-            <Dropdown
-              selectedKey={flexDirection}
-              placeholder="Select Flex Direction"
-              label="Flex Direction:"
-              options={this._flexDirectionOptions}
-              onChange={this._onDirectionChange}
-            />
-          </FlexItem>
-          <FlexItem grow>
+        <Flex disableShrink verticalAlign="end" tokens={configureFlexTokens}>
+          <FlexItem>
             <Dropdown
               selectedKey={horizontalAlignment}
               placeholder="Select Horizontal Alignment"
@@ -343,7 +282,7 @@ export class ConfigurableExample extends React.Component {
               onChange={this._onHorizontalAlignChange}
             />
           </FlexItem>
-          <FlexItem grow>
+          <FlexItem>
             <Dropdown
               selectedKey={verticalAlignment}
               placeholder="Select Vertical Alignment"
@@ -355,7 +294,7 @@ export class ConfigurableExample extends React.Component {
           <FlexItem>
             <Checkbox label="Hide empty children" onChange={this._onHideEmptyChildrenChange} />
           </FlexItem>
-          <FlexItem grow>
+          <FlexItem>
             <TextField
               label="Enter a space-separated list of empty children (e.g. 1 2 3):"
               onChange={this._onEmptyChildrenChange}
@@ -424,13 +363,6 @@ export class ConfigurableExample extends React.Component {
     option: IDropdownOption | undefined,
   ): void => {
     this.setState({ horizontalAlignment: option!.key as FlexProps['horizontalAlign'] });
-  };
-
-  private _onDirectionChange = (
-    ev: React.FormEvent<HTMLDivElement> | undefined,
-    option: IDropdownOption | undefined,
-  ): void => {
-    this.setState({ flexDirection: option!.key });
   };
 
   private _onVerticalAlignChange = (

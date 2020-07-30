@@ -1,25 +1,40 @@
+:root {
+  --flexitem-align: auto;
+  --flexitem-shrink: 1;
+  --flexitem-order: 0;
+  --flexitem-grow: 0;
+}
+
 .root {
-  align-self: var(--flexItem-align);
-  flex-shrink: 0;
+  background: var(--flexitem-background);
+  align-self: var(--flexitem-align);
+  flex-shrink: var(--flexitem-shrink);
+  order: var(--flexitem-order);
+  flex-grow: var(--flexitem-grow);
+  display: flex;
+
+  &._align_auto {
+    --flexitem-align: auto;
+  }
 
   &._align_start {
-    --flexItem-align: flex-start;
+    --flexitem-align: flex-start;
   }
 
   &._align_end {
-    --flexItem-align: flex-end;
+    --flexitem-align: flex-end;
   }
 
   &._align_center {
-    --flexItem-align: center;
+    --flexitem-align: center;
   }
 
   &._align_baseline {
-    --flexItem-align: baseline;
+    --flexitem-align: baseline;
   }
 
   &._align_stretch {
-    --flexItem-align: stretch;
+    --flexitem-align: stretch;
   }
 
   &._fluid {

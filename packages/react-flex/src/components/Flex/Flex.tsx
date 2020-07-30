@@ -3,10 +3,11 @@ import { FlexProps, FlexSlots, FlexSlotProps } from './Flex.types';
 import { compose, createClassResolver, mergeProps } from '@fluentui/react-compose';
 import * as classes from './Flex.scss';
 import { FlexItem } from '../FlexItem';
+import { FlexContext } from './FlexContext';
 
 export const Flex = compose<'div', FlexProps, FlexProps, {}, {}>(
   (props, ref, options) => {
-    const { children } = props;
+    const { children, disableShrink } = props;
 
     const { state } = options;
     const { slots, slotProps } = mergeProps<FlexProps, FlexProps, FlexSlots, FlexSlotProps>(state, options);
@@ -15,30 +16,30 @@ export const Flex = compose<'div', FlexProps, FlexProps, {}, {}>(
 
     return (
       <slots.root {...slotProps.root}>
-        {flexChildren}
+        <FlexContext.Provider value={!!disableShrink}>{flexChildren}</FlexContext.Provider>
         {generalChildren}
       </slots.root>
     );
   },
   {
-    displayName: 'Flex',
     classes: createClassResolver(classes),
+    displayName: 'Flex',
     handledProps: [
       'inline',
       'column',
       'wrap',
       'horizontalAlign',
       'verticalAlign',
-      'padding',
       'reversed',
-      'gap',
       'disableShrink',
       'fluid',
-      'space',
+      'tokens',
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ] as any,
+    overrideStyles: true,
   },
 );
+
 const separateFlexChildren = (children: React.ReactNode) => {
   const flexChildren: React.ReactNode[] = [];
   const generalChildren: React.ReactNode[] = [];
