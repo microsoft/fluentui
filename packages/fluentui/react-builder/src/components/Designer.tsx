@@ -65,6 +65,7 @@ type DesignerState = {
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
+  canvasMessage?: string;
 };
 
 type DesignerAction =
@@ -275,6 +276,8 @@ function useMode(): [{ mode: DesignerMode; isExpanding: boolean; isSelecting: bo
 export const Designer: React.FunctionComponent = () => {
   debug('render');
 
+  const [canvasMessage, setCanvasMessage] = React.useState('');
+
   const dragAndDropData = React.useRef<{
     position: { x: number; y: number };
     dropIndex: number;
@@ -382,6 +385,8 @@ export const Designer: React.FunctionComponent = () => {
       draggingElementRef.current.style.top = `${dragAndDropData.current.position.y}px`;
     }
   }, []);
+
+  const handleCanvasMessage = React.useCallback((canvasMessage: string) => setCanvasMessage(canvasMessage), []);
 
   const handleCanvasMouseUp = React.useCallback(() => {
     dispatch({
@@ -605,6 +610,7 @@ export const Designer: React.FunctionComponent = () => {
             <BrowserWindow
               showNavBar={false}
               headerItems={[
+                <div style={{ marginLeft: 10 }}>{mode === 'use' && <Text error>{canvasMessage}</Text>}</div>,
                 <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                   {jsonTreeOrigin === 'url' && (
                     <>
@@ -653,6 +659,7 @@ export const Designer: React.FunctionComponent = () => {
                   onMoveComponent={handleMoveComponent}
                   onDeleteComponent={handleDeleteComponent}
                   onGoToParentComponent={handleGoToParentComponent}
+                  onMessage={handleCanvasMessage}
                   role="main"
                   accessibilityErrors={accessibilityErrors}
                   onAccessibilityErrorsChanged={handleAccessibilityErrors}
