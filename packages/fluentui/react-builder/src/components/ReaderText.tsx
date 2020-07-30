@@ -7,11 +7,11 @@ export type ReaderTextProps = {
 };
 
 export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector }) => {
-  const ref = React.createRef<HTMLElement>();
+  const ref = React.useRef<HTMLElement>();
   const [text, setText] = React.useState('');
 
   React.useEffect(() => {
-    if (ref.current) {
+    if (ref) {
       const element = ref.current.ownerDocument.querySelector(selector);
       const narration = computeMessage(element as HTMLElement);
       if (typeof narration === 'string') {
@@ -20,8 +20,7 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
         narration.then(n => setText(n));
       }
     }
-    // eslint-disable-next-line
-  }, [setText, ref.current, selector]);
+  }, [setText, ref, selector]);
 
   if (!selector) {
     return null;
