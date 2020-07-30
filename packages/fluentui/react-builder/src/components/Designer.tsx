@@ -744,7 +744,7 @@ export const Designer: React.FunctionComponent = () => {
             {showAccSpec && (
               <div style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}>
                 <h3 style={{ margin: 0 }}>Accessibility specification</h3>
-                <Button content="generate Acc Spec" onClick={generateAccSpec} />
+                <Button content="Generate" onClick={generateAccSpec} />
                 {tableOfComponents()}
               </div>
             )}
