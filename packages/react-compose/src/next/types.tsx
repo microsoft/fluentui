@@ -14,7 +14,7 @@ export interface ComponentProps extends GenericDictionary {
 }
 
 //
-// Slot Prop / Shorthand types
+// Shorthand types
 //
 
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
