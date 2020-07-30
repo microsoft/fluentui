@@ -92,14 +92,15 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [onMouseUp],
   );
 
-  const blur = (): void => {
+  const blur = React.useCallback(() => {
     if (!iframeRef.current) return;
 
     const document = iframeRef.current.contentDocument;
     document.body.style.outline = '';
     document.body.style.outlineOffset = '';
     onMessage('');
-  };
+    // eslint-disable-next-line
+  }, [iframeRef.current]);
 
   const handleFocus = React.useCallback(
     (ev: FocusEvent) => {
