@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/storybook",
   "version": "0.1.0",
-  "description": "Storybook addons",
+  "description": "Storybook addons for Fluent UI React",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {

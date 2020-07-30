@@ -1,6 +1,6 @@
 import { select } from '@storybook/addon-knobs';
-import * as V8Themes from '../themes/V8';
-import * as V7Themes from '../themes/V7';
+import * as V8Themes from '../themes/v8/index';
+import * as V7Themes from '../themes/v7/index';
 
 const themeSelectorLabel = 'Theme';
 

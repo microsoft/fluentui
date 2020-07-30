@@ -2,9 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "lib",
-    "target": "es5",
-    "module": "commonjs",
-    "lib": ["es5", "esnext", "dom"],
+    "target": "es6",
+    "module": "es6",
+    "lib": ["dom", "es6"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
@@ -15,7 +15,7 @@
     "strict": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "types": ["jest", "react", "react-dom"],
+    "types": ["react"],
     "esModuleInterop": true
   },
   "include": ["src"]
