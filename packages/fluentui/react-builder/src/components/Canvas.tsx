@@ -132,7 +132,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       blur();
     },
     // eslint-disable-next-line
-    [],
+    [blur],
   );
 
   const handleSelectComponent = React.useCallback(
@@ -347,8 +347,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             <Provider theme={teamsTheme} target={document} tabIndex={0} style={{ outline: 'none' }}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-              {mode === 'use' && <EventListener capture type="focus" listener={handleFocus} target={document} />}
-              {mode === 'use' && <EventListener capture type="blur" listener={handleBlur} target={document} />}
+              {mode === 'use' && (
+                <>
+                  <EventListener capture type="focus" listener={handleFocus} target={document} />
+                  <EventListener capture type="blur" listener={handleBlur} target={document} />
+                </>
+              )}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
               {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
