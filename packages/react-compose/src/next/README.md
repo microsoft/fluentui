@@ -1,15 +1,6 @@
 # @fluentui/react-compose
 
-Each Fluent UI React component is built from small building blocks, composed together in a way that is easy to customize and extend.
-
-Components are comprised of:
-
-- Default props
-- State/accessibility hooks
-- Styling hooks which provide class names for the parts of a component.
-- Render function: function which consumes the final state and styling and returns markup.
-
-The `react-compose` library includes simple utilities to help glue these parts together.
+`@fluentui/react-compose` is a librry of utilities for composing Fluent UI components.
 
 ## A basic component walkthrough
 
@@ -17,10 +8,12 @@ Building a reusable component requires that we build it from reusable layers. Th
 
 A component should consist of the following:
 
-- Render function - a function which takes in final state and returns JSX. (e.g. `renderButton`)
-- State hooks - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
-- Factory function - a create\* function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of teh component as needed.
-- One ore more components - components can now use the factory function to create variations of the component easily.
+- **Render function** - a function which takes in final state and returns JSX. (e.g. `renderButton`)
+- **State hooks** - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
+- **Factory function** - a create\* function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of teh component as needed.
+- **Style hooks** - hooks which can take in styles and provide appropriate classnames to the anatomy of the component.
+
+With these building blocks, you can compose or recompose the component in numerous ways.
 
 ### Simple example
 
