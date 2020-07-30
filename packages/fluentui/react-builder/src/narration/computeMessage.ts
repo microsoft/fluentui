@@ -12,16 +12,14 @@ const USAGE = {
   combobox: 'To set the value use the Arrow keys or type the value.',
 };
 
-const defaultMessage = (element: HTMLElement) => {
-  return element?.getAttribute('aria-label') || element.textContent;
-};
+const defaultMessage = (element: HTMLElement) => element?.getAttribute('aria-label') || element.textContent;
 
 export async function computeMessage(element: HTMLElement) {
-  if (!(window as any).getComputedAccessibleNode) {
+  if (!window.getComputedAccessibleNode) {
     return defaultMessage(element);
   }
 
-  const aom = await (window as any).getComputedAccessibleNode(element);
+  const aom = await window.getComputedAccessibleNode(element);
 
   if (!aom || !aom.name) {
     return defaultMessage(element);
@@ -40,7 +38,7 @@ export async function computeMessage(element: HTMLElement) {
 
   let state = '';
 
-  if (aom.role === 'button') {
+  if (aom.role === 'button' || aom.role === 'checkBox' || aom.role === 'radioButton') {
     if (element.hasAttribute('aria-expanded')) {
       state = aom.expanded ? 'expanded' : 'collapsed';
     } else if (aom.role === 'checkBox' || aom.role === 'radioButton') {

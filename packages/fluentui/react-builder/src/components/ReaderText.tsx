@@ -18,7 +18,7 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector,
   React.useEffect(() => {
     if (ref && ref.current) {
       const element = node || ref.current.ownerDocument.querySelector(selector);
-      const aomEnabled = false; // (window as any).getComputedAccessibleNode;
+      const aomEnabled = window.getComputedAccessibleNode;
       const narration = computeMessage(element as HTMLElement);
 
       if (typeof narration === 'string') {

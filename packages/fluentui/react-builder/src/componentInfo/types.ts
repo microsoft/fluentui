@@ -54,8 +54,12 @@ export type ComponentPropType = {
 
 declare global {
   interface ComputedAccessibleNode {
-    role?: string;
-    name?: string;
+    role: string;
+    name: string;
+    roleDescription: string;
+    expanded: boolean;
+    checked: string;
+    valueText: string;
   }
 
   interface Window {
