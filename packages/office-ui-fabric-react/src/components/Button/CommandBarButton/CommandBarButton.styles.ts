@@ -149,6 +149,14 @@ export const getStyles = memoizeFunction(
         },
       },
 
+      splitButtonDividerDisabled: {
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Window',
+          },
+        },
+      },
+
       splitButtonDivider: {
         backgroundColor: p.neutralTertiaryAlt,
       },
@@ -185,6 +193,14 @@ export const getStyles = memoizeFunction(
 
       splitButtonMenuButtonDisabled: {
         backgroundColor: p.white,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            border: 'none',
+            backgroundColor: 'Window',
+          },
+        },
+        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
 
       splitButtonMenuButtonChecked: {

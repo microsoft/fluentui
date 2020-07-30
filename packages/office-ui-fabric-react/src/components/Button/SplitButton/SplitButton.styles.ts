@@ -53,11 +53,7 @@ export const getStyles = memoizeFunction(
                   borderRightWidth: '0',
                   MsHighContrastAdjust: 'none',
                 },
-                ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
-            },
-            '.ms-Button--primary + .ms-Button': {
-              border: '1px solid WindowText',
             },
           },
         },
