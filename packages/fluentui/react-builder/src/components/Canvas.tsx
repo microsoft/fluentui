@@ -26,7 +26,7 @@ export type CanvasProps = {
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
   mode: DesignerMode;
-  onMessage: (string) => void;
+  onMessage: (message: string) => void;
   role?: string;
 };
 
