@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Alert, Ref } from '@fluentui/react-northstar';
+import { ExclamationTriangleIcon } from '@fluentui/react-icons-northstar';
 
 export type ReaderTextProps = {
   selector?: string;
   node?: HTMLElement;
 };
 
-const AOMDisabledMessage =
-  'Accessible Object Model (AOM) feature is not enable. For more information on how to enable it, access https://wicg.github.io/aom/caniuse.html';
+const AOMDisabledMessage = 'Accessible Object Model (AOM) feature is not enable.';
 
 export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector, node }) => {
   const ref = React.createRef<HTMLElement>();
@@ -22,8 +22,7 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector,
 
         if (!!window.getComputedAccessibleNode) {
           const accessibleNode = await window.getComputedAccessibleNode(element);
-          console.log(accessibleNode);
-          t = `${accessibleNode.role} ${accessibleNode.name}`;
+          t = `Role:  ${accessibleNode.role} ${accessibleNode.name || ''}`;
         } else {
           setAOMWarning(true);
         }
@@ -36,16 +35,28 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector,
     // eslint-disable-next-line
   }, [setText, ref.current, selector]);
 
-  if (!selector && !node) {
-    return null;
-  }
-
   return (
-    <Ref innerRef={ref}>
-      <>
-        <Alert warning content={text} />
-        {AOMWarning && <Alert warning content={AOMDisabledMessage} />}
-      </>
-    </Ref>
+    (selector || node) && (
+      <Ref innerRef={ref}>
+        <>
+          <Alert warning content={text} />
+          {AOMWarning && (
+            <Alert
+              tabIndex={0}
+              info
+              icon={<ExclamationTriangleIcon />}
+              content={AOMDisabledMessage}
+              actions={[
+                {
+                  content: 'More Info',
+                  primary: true,
+                  onClick: () => window.open('https://wicg.github.io/aom/caniuse.html', '_blank'),
+                },
+              ]}
+            />
+          )}
+        </>
+      </Ref>
+    )
   );
 };

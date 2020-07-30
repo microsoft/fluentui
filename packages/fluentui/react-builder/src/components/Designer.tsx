@@ -610,7 +610,9 @@ export const Designer: React.FunctionComponent = () => {
             <BrowserWindow
               showNavBar={false}
               headerItems={[
-                <div style={{ marginLeft: 10 }}>{mode === 'use' && <Text error>{canvasMessage}</Text>}</div>,
+                <div style={{ marginLeft: 10, lineHeight: 1 }}>
+                  {mode === 'use' && <Text error>{canvasMessage}</Text>}
+                </div>,
                 <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                   {jsonTreeOrigin === 'url' && (
                     <>
