@@ -288,7 +288,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       // console.log('Canvas:effect elements', elements);
 
       if (!enabledVirtualCursor) {
-        iframeDocument.querySelector('.virtual-focused').classList.remove('virtual-focused');
+        iframeDocument.querySelector('.virtual-focused')?.classList.remove('virtual-focused');
       }
 
       const elementStyles = !isExpanding
