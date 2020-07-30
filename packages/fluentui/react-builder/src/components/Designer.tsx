@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import { useImmerReducer, Reducer } from 'use-immer';
-import { Text, Button } from '@fluentui/react-northstar';
+import { Text, Button, Table } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Editor, renderElementToJSX } from '@fluentui/docs-components';
 
@@ -310,8 +310,43 @@ export const Designer: React.FunctionComponent = () => {
 
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+  const [showAccSpec, handleShowAccSpecChange] = React.useState(false);
 
   const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
+
+  const [components, setComponents] = React.useState([]);
+
+  const componentsExcludedFromAccSpec = ['Flex', 'Box', 'FlexItem'];
+  const componentsForAccSpec = [];
+
+  const jsonTreeToItems = (tree: any) => {
+    tree.props?.children?.forEach(item => {
+      if (componentsExcludedFromAccSpec.indexOf(item.displayName) === -1) {
+        componentsForAccSpec.push({
+          name: item.displayName,
+        });
+      }
+      jsonTreeToItems(item);
+    });
+  };
+
+  const generateAccSpec = () => {
+    jsonTreeToItems(jsonTree);
+    setComponents(componentsForAccSpec);
+  };
+
+  const tableOfComponents = () => {
+    const rows = components.map((item, index) => {
+      return {
+        key: index,
+        items: ['', item.name, '', '', ''],
+      };
+    });
+    const header = {
+      items: ['Element', 'Control type', 'Screen reader ', 'Behavior', 'Comments'],
+    };
+    return components.length > 0 && <Table header={header} rows={rows} aria-label="Specification component table" />;
+  };
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -550,6 +585,8 @@ export const Designer: React.FunctionComponent = () => {
         onReset={handleReset}
         onUpload={handleUpload}
         onModeChange={setMode}
+        onShowAccSpecChange={handleShowAccSpecChange}
+        showAccSpec={showAccSpec}
         showCode={showCode}
         showJSONTree={showJSONTree}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
@@ -704,6 +741,13 @@ export const Designer: React.FunctionComponent = () => {
                     <pre>{JSON.stringify(jsonTree, null, 2)}</pre>
                   </div>
                 )}
+              </div>
+            )}
+            {showAccSpec && (
+              <div style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}>
+                <h3 style={{ margin: 0 }}>Accessibility specification</h3>
+                <Button content="Generate" onClick={generateAccSpec} />
+                {tableOfComponents()}
               </div>
             )}
           </div>
