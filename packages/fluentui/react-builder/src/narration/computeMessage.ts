@@ -7,8 +7,8 @@ const USAGE = {
   toggleButton: 'To activate press Enter.',
   button: 'To activate press Enter.',
   input: 'Type in text.',
-  checkbox: 'To check press Spacebar.',
-  radio: 'To change the selection press Up or Down Arrow.',
+  checkBox: 'To check press Spacebar.',
+  radioButton: 'To change the selection press Up or Down Arrow.',
   combobox: 'To set the value use the Arrow keys or type the value.',
 };
 
@@ -20,7 +20,7 @@ export async function computeMessage(element: HTMLElement) {
   const aom = await (window as any).getComputedAccessibleNode(element);
 
   if (!aom || !aom.name) {
-    return element.textContent;
+    return element?.getAttribute('aria-label') || element.textContent;
   }
 
   let role = aom.role;
@@ -39,7 +39,7 @@ export async function computeMessage(element: HTMLElement) {
   if (aom.role === 'button') {
     if (element.hasAttribute('aria-expanded')) {
       state = aom.expanded ? 'expanded' : 'collapsed';
-    } else if (aom.role === 'checkbox' || aom.role === 'radio') {
+    } else if (aom.role === 'checkBox' || aom.role === 'radioButton') {
       state = aom.checked === 'true' ? 'checked' : 'not checked';
     }
   } else if (aom.role === 'toggleButton') {
