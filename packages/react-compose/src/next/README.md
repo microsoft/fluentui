@@ -130,7 +130,14 @@ Fluent UI components almost always contain sub parts, and these sub parts should
 <Button icon={{ as: 'i', children: getCode('Add') } } />
 
 // The icon can be a children function (which receives the original slot and props)
-<Button icon={{ children: (C, p) => <C {...p} otherThings /> }} />
+<Button icon={{
+  children: (Component, props) =>
+      <>
+         <Component {...props} />
+         //  other things
+      </>
+   }}
+/>
 ```
 
 Supporting this dynamic props input requires some helpers:
