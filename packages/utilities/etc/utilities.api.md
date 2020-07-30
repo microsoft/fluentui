@@ -4,12 +4,24 @@
 
 ```ts
 
+import { DATA_PORTAL_ATTRIBUTE } from '@fluentui/dom-utilities';
+import { elementContains } from '@fluentui/dom-utilities';
+import { elementContainsAttribute } from '@fluentui/dom-utilities';
+import { findElementRecursive } from '@fluentui/dom-utilities';
+import { getChildren } from '@fluentui/dom-utilities';
+import { getParent } from '@fluentui/dom-utilities';
+import { getVirtualParent } from '@fluentui/dom-utilities';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
+import { isVirtualElement } from '@fluentui/dom-utilities';
+import { IVirtualElement } from '@fluentui/dom-utilities';
 import { Omit } from '@uifabric/merge-styles';
+import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React from 'react';
+import { setPortalAttribute } from '@fluentui/dom-utilities';
+import { setVirtualParent } from '@fluentui/dom-utilities';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
@@ -176,8 +188,7 @@ export const CustomizerContext: React.Context<ICustomizerContext>;
 // @public
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
 
-// @public (undocumented)
-export const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
+export { DATA_PORTAL_ATTRIBUTE }
 
 // Warning: (ae-incompatible-release-tags) The symbol "DelayedRender" is marked as @public, but its signature references "IDelayedRenderState" which is marked as @internal
 //
@@ -205,11 +216,9 @@ export const divProperties: Record<string, number>;
 // @public
 export function doesElementContainFocus(element: HTMLElement): boolean;
 
-// @public
-export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents?: boolean): boolean;
+export { elementContains }
 
-// @public
-export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null;
+export { elementContainsAttribute }
 
 // @public
 export function enableBodyScroll(): void;
@@ -259,8 +268,7 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
 // @public
 export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined;
 
-// @public
-export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null;
+export { findElementRecursive }
 
 // @public
 export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex?: number): number;
@@ -296,8 +304,7 @@ export function format(s: string, ...values: any[]): string;
 // @public
 export const formProperties: Record<string, number>;
 
-// @public
-export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
+export { getChildren }
 
 // @public
 export function getDistanceBetweenPoints(point1: Point, point2: Point): number;
@@ -341,8 +348,7 @@ export function getNativeProps<T extends Record<string, any>>(props: Record<stri
 // @public
 export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
 
-// @public
-export function getParent(child: HTMLElement, allowVirtualParents?: boolean): HTMLElement | null;
+export { getParent }
 
 // @public
 export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
@@ -369,8 +375,7 @@ export function getRTLSafeKeyCode(key: number, theme?: {
 // @public
 export function getScrollbarWidth(): number;
 
-// @public
-export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
+export { getVirtualParent }
 
 // @public
 export function getWindow(rootElement?: Element | null): Window | undefined;
@@ -805,17 +810,9 @@ export { IStyleFunction }
 
 export { IStyleFunctionOrObject }
 
-// @public
-export function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement;
+export { isVirtualElement }
 
-// @public
-export interface IVirtualElement extends HTMLElement {
-    // (undocumented)
-    _virtual: {
-        parent?: IVirtualElement;
-        children: IVirtualElement[];
-    };
-}
+export { IVirtualElement }
 
 // @public (undocumented)
 export interface IWarnControlledUsageParams<P> {
@@ -1000,8 +997,7 @@ export interface Point {
     y?: number;
 }
 
-// @public
-export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
+export { portalContainsElement }
 
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
@@ -1143,8 +1139,7 @@ export function setLanguage(language: string, avoidPersisting?: boolean): void;
 // @internal
 export function setMemoizeWeakMap(weakMap: any): void;
 
-// @public
-export function setPortalAttribute(element: HTMLElement): void;
+export { setPortalAttribute }
 
 // @public
 export function setRTL(isRTL: boolean, persistSetting?: boolean): void;
@@ -1158,8 +1153,7 @@ export type Settings = ISettings;
 // @public @deprecated (undocumented)
 export type SettingsFunction = ISettingsFunction;
 
-// @public
-export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
+export { setVirtualParent }
 
 // @public
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
