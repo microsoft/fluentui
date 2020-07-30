@@ -68,7 +68,7 @@ const themeOverrides = {
     Text: {
       root: ({ variables: v }) => ({
         ...(v.isNameText && {
-          marginLeft: '0.7rem',
+          fontSize: '0.93rem',
         }),
         ...(v.isWorkNumber && {
           fontSize: '0.9rem',

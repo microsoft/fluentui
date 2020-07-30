@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Contact from './recentContact';
+import Contact from './Contact';
 import { AcceptIcon } from '@fluentui/react-icons-northstar';
 import getAvatar from './avatarImages';
 

@@ -9,10 +9,10 @@ const Contact: React.FC<{
 }> = ({ image, name, status }) => {
   return (
     <Flex fill gap="gap.small" space="between">
-      <div>
+      <Flex gap="gap.smaller" vAlign="center">
         <Avatar image={`data:image/jpeg;base64,${image}`} name={name} status={status} />
         <Text content={name} variables={{ isNameText: true }} />
-      </div>
+      </Flex>
       <Menu
         iconOnly
         items={[
@@ -25,7 +25,6 @@ const Contact: React.FC<{
             key: 'search',
           },
         ]}
-        variables={{ isContactMenu: true }}
       />
     </Flex>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import RecentContactsList from './recentContactsList';
+import RecentContactsList from './RecentContactsList';
 import themeOverrides from './styles';
 import historyRows from './history';
 import {
