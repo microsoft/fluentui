@@ -2,8 +2,7 @@ import * as React from 'react';
 import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat';
 import { useTheme } from '../knobs/useTheme';
 
-export const withThemeProvider = (storyFn: () => React.ReactNode) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const ThemeProviderWrapper: React.FunctionComponent<{}> = props => {
   const { theme, isDark } = useTheme();
   const style = {
     background: isDark ? 'black' : undefined,
@@ -11,7 +10,11 @@ export const withThemeProvider = (storyFn: () => React.ReactNode) => {
 
   return (
     <ThemeProvider style={style} theme={theme}>
-      {storyFn()}
+      {props.children}
     </ThemeProvider>
   );
+};
+
+export const withThemeProvider = (storyFn: () => React.ReactNode) => {
+  return <ThemeProviderWrapper>{storyFn()}</ThemeProviderWrapper>;
 };
