@@ -317,7 +317,7 @@ export const Designer: React.FunctionComponent = () => {
   const [components, setComponents] = React.useState([]);
 
   const componentsExcludedFromAccSpec = ['Flex', 'Box', 'FlexItem'];
-  let componentsForAccSpec = [];
+  const componentsForAccSpec = [];
 
   const jsonTreeToItems = (tree: any) => {
     tree.props?.children?.forEach(item => {
@@ -345,9 +345,7 @@ export const Designer: React.FunctionComponent = () => {
     const header = {
       items: ['Element', 'Control type', 'Screen reader ', 'Behavior', 'Comments'],
     };
-    {
-      return components.length > 0 && <Table header={header} rows={rows} aria-label="Specification component table" />;
-    }
+    return components.length > 0 && <Table header={header} rows={rows} aria-label="Specification component table" />;
   };
 
   React.useEffect(() => {

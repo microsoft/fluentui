@@ -119,7 +119,6 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           toggle
           checked={!!showAccSpec}
           onChange={(e, data) => {
-            debugger;
             onShowAccSpecChange(data.checked);
           }}
         />
