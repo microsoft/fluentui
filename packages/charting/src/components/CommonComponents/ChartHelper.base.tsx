@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from './ChartHelper.types';
+import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps, IYValueHover } from './ChartHelper.types';
 
 import {
   createNumericXAxis,
@@ -27,12 +27,6 @@ export interface IWrapperState {
   containerHeight: number;
   _width: number;
   _height: number;
-}
-
-interface IYValueHover {
-  legend?: string;
-  y?: number;
-  color?: string;
 }
 
 export class ChartHelperBaseComponent extends React.Component<IChartHelperProps, IWrapperState> {
