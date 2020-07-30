@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@uifabric/charting_v2.7.7",
+      "version": "2.7.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "common chartHelper added to charting package",
+            "author": "v-jasha@microsoft.com",
+            "commit": "5679d177d5febc6541806b31592d35a44fb9f139",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Add Accessibility support for Sankey chart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "e0cd2a86ed6c914206bbf72766c2bba10473dc92",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jul 2020 12:42:21 GMT",
       "tag": "@uifabric/charting_v2.7.6",
       "version": "2.7.6",

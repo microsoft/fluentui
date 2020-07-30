@@ -1,8 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jul 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.7.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.7)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.6..@uifabric/charting_v2.7.7)
+
+### Patches
+
+- common chartHelper added to charting package ([PR #14177](https://github.com/microsoft/fluentui/pull/14177) by v-jasha@microsoft.com)
+- Charting: Add Accessibility support for Sankey chart ([PR #14196](https://github.com/microsoft/fluentui/pull/14196) by v-gorraj@microsoft.com)
 
 ## [2.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.6)
 
