@@ -12,6 +12,33 @@ type FiberNavigator = FUI.FiberNavigator;
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
+export const COMPONENT_GROUP = {
+  Surfaces: ['Popup', 'Dialog'],
+  Content: [
+    'Text',
+    'Image',
+    'Avatar',
+    'Header',
+    'Divider',
+    'Embed',
+    'Alert',
+    'Attachment',
+    'Datepicker',
+    'Label',
+    'Loader',
+    'Reaction',
+    'Chat',
+    'SvgIcon',
+    'Status',
+    'Tooltip',
+    'Video',
+  ],
+  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
+  Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
+  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
+  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+};
+
 export const DRAGGING_ELEMENTS = {
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
@@ -506,12 +533,21 @@ export const renderJSONTreeToJSXElement = (
 
   props = resolveProps(props, iterator);
   const modifiedTree = iterator({ ...tree, props });
-
-  return React.createElement(resolveComponent(modifiedTree.type), {
-    ...modifiedTree.props,
-    key: modifiedTree.uuid,
-    'data-builder-id': modifiedTree.uuid,
-  });
+  const Comp = resolveComponent(modifiedTree.type);
+  return (
+    <Comp
+      {...{
+        ...modifiedTree.props,
+        key: modifiedTree.uuid,
+        'data-builder-id': modifiedTree.uuid,
+      }}
+    />
+  );
+  // React.createElement(resolveComponent(modifiedTree.type), {
+  //   ...modifiedTree.props,
+  //   key: modifiedTree.uuid,
+  //   'data-builder-id': modifiedTree.uuid,
+  // });
 };
 
 /**
