@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
+import * as axeCore from 'axe-core';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Editor, renderElementToJSX } from '@fluentui/docs-components';
