@@ -855,7 +855,11 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           >
             <div
               className=
+                  ms-FocusZone
                   ms-GroupedList
+                  &:focus {
+                    outline: none;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -868,7 +872,11 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                     min-height: 38px;
                   }
               data-automationid="GroupedList"
+              data-focuszone-id="FocusZone3"
               data-is-scrollable="false"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="presentation"
             >
               <div
@@ -953,23 +961,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               }
                           data-is-focusable={true}
                           onClick={[Function]}
+                          onKeyUp={[Function]}
                           style={Object {}}
                         >
                           <div
                             className=
-                                ms-FocusZone
-                                &:focus {
-                                  outline: none;
-                                }
+
                                 {
                                   align-items: center;
                                   display: flex;
                                   height: 48px;
                                 }
-                            data-focuszone-id="FocusZone4"
-                            onFocus={[Function]}
-                            onKeyDown={[Function]}
-                            onMouseDownCapture={[Function]}
                           >
                             <button
                               aria-checked={false}
@@ -1011,6 +1013,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   .ms-Fabric--isFocusVisible &:focus {
                                     opacity: 1;
                                   }
+                              data-is-focusable={false}
                               data-selection-toggle={true}
                               onClick={[Function]}
                               role="checkbox"
@@ -1178,7 +1181,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               </i>
                             </div>
                             <button
-                              aria-controls="GroupedListSection3"
+                              aria-controls="GroupedListSection4"
                               aria-expanded={true}
                               aria-label="expand collapse group"
                               className=
@@ -1222,6 +1225,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   &:active {
                                     background-color: #e1dfdd;
                                   }
+                              data-is-focusable={false}
                               onClick={[Function]}
                               type="button"
                             >
@@ -1281,7 +1285,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                         </div>
                         <div
                           className="ms-List"
-                          id="GroupedListSection3"
+                          id="GroupedListSection4"
                           role="grid"
                         >
                           <div

@@ -12,6 +12,8 @@ export type ToolbarProps = {
   onUpload: (jsonTree: {}) => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
+  eenabledVirtualCursor: boolean;
+  onEnableVirtualCursor: (enableVirtualCursor: boolean) => void;
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
@@ -31,6 +33,8 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   showCode,
   showJSONTree,
   style,
+  eenabledVirtualCursor,
+  onEnableVirtualCursor,
 }) => {
   const uploadInputRef = React.useRef<HTMLInputElement>();
   return (
@@ -87,6 +91,13 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         }}
       />
       <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+        <Checkbox
+          label="Enable virtual cursor"
+          toggle
+          checked={!!eenabledVirtualCursor}
+          onChange={(e, data) => onEnableVirtualCursor(data.checked)}
+        />
+        &emsp;
         <Checkbox
           label="Show Code"
           toggle

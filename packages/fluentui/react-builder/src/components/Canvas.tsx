@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as _ from 'lodash';
+
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
@@ -7,6 +9,8 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
+import { AbilityAttributesValidator, AccessibilityErrors } from './AbilityAttributesValidator';
+import { ErrorFrame } from './ErrorFrame';
 import { ReaderText } from './ReaderText';
 
 export type CanvasProps = {
@@ -24,8 +28,12 @@ export type CanvasProps = {
   onDeleteComponent?: () => void;
   onGoToParentComponent?: () => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
+  enabledVirtualCursor?: boolean;
   style?: React.CSSProperties;
+  mode?: 'build' | 'design' | 'use';
   role?: string;
+  accessibilityErrors: AccessibilityErrors;
+  onAccessibilityErrorsChanged: (errors: AccessibilityErrors) => void;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -43,8 +51,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onDeleteComponent,
   onGoToParentComponent,
   renderJSONTreeElement,
+  enabledVirtualCursor,
+  mode,
   style,
   role,
+  accessibilityErrors,
+  onAccessibilityErrorsChanged,
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -53,6 +65,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         .slice(2)}`,
     [],
   );
+
+  const [focusableElements, setFocusableElements] = React.useState([]);
+  const [currentIndex, setIndex] = React.useState(0);
+  const [currentFocusedNode, setCurrentFocusedNode] = React.useState(null);
 
   const iframeCoordinatesToWindowCoordinates = React.useCallback(
     (e: MouseEvent) => {
@@ -84,6 +100,43 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       onMouseUp();
     },
     [onMouseUp],
+  );
+
+  const handleKeyDown = React.useCallback(
+    e => {
+      switch (e.keyCode) {
+        case 40:
+        case 38:
+          focusableElements[currentIndex].classList.remove('virtual-focused');
+          setIndex(idx => {
+            const modifier = e.keyCode === 40 ? 1 : -1;
+            const nextIndex = idx + modifier;
+            // if nextIndex is bigger than number of elements move it to 0
+            // if nextIndex is smaller than 0 move it to the lastElement
+            // otherwise move to the nextIndex
+            const newIndex =
+              nextIndex >= focusableElements.length ? 0 : nextIndex < 0 ? focusableElements.length - 1 : nextIndex;
+            focusableElements[newIndex].classList.add('virtual-focused');
+            setCurrentFocusedNode(focusableElements[newIndex]);
+            return newIndex;
+          });
+          break;
+        case 13:
+          focusableElements[currentIndex].click();
+          return;
+        case 121:
+          if (e.shiftKey) {
+            const eve = document.createEvent('MouseEvents');
+            eve.initMouseEvent('contextmenu', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 2, null);
+            focusableElements[currentIndex].dispatchEvent(eve);
+            return;
+          }
+        default:
+          focusableElements[currentIndex].focus();
+          break;
+      }
+    },
+    [currentIndex, focusableElements],
   );
 
   const handleSelectComponent = React.useCallback(
@@ -125,6 +178,47 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       const iframeDocument = iframe.contentDocument;
       const iframeWindow = iframe.contentWindow;
+
+      setFocusableElements(
+        Array.from(
+          iframeDocument.querySelectorAll(
+            [
+              'a',
+              'button',
+              'checkbox',
+              'marquee',
+              'option',
+              'radio',
+              'input',
+              'textarea',
+              'select',
+              '[role="dialog"]',
+              '[role="gridcell"]',
+              '[role="link"]',
+              '[role="log"]',
+              '[role="menuitem"]',
+              '[role="menuitemcheckbox"]',
+              '[role="menuitemradio"]',
+              '[role="progressbar"]',
+              '[role="scrollbar"]',
+              '[role="slider"]',
+              '[role="spinbutton"]',
+              '[role="status"]',
+              '[role="tab"]',
+              '[role="tabpanel"]',
+              '[role="textbox"]',
+              '[role="timer"]',
+              '[role="tooltip"]',
+              '[role="treeitem"]',
+              '[role="switch"]',
+              '[role="details"]',
+              '[tabindex]',
+            ]
+              .map(selector => `*:not([aria-hidden]) >  ${selector}`)
+              .join(','),
+          ),
+        ),
+      );
 
       let style = iframeDocument.getElementById('builder-style');
 
@@ -208,6 +302,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             outline-offset: -1px;
           }
           `,
+        mode === 'use' &&
+          `
+            .virtual-focused {
+              border: 2px dashed black;
+            }
+          `,
         elementStyles,
       ]
         .filter(Boolean)
@@ -223,7 +323,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, jsonTree, role]);
+  }, [iframeId, isExpanding, isSelecting, jsonTree, role, mode]);
 
   return (
     <Frame
@@ -238,6 +338,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       <FrameContextConsumer>
         {({ document, window }) => (
           <>
+            <AbilityAttributesValidator window={window} onErrorsChanged={onAccessibilityErrorsChanged} />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
@@ -284,6 +385,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 onGoToParent={onGoToParentComponent}
               />
             )}
+            {_.keys(accessibilityErrors).map(uuid => (
+              <ErrorFrame
+                target={document}
+                selector={`[data-builder-id="${uuid}"]`}
+                errors={_.keys(accessibilityErrors[uuid]).length}
+              />
+            ))}
             {draggingElement && (
               <DropSelector
                 filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
@@ -297,6 +405,12 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              {mode === 'use' && enabledVirtualCursor && (
+                <>
+                  <EventListener type="keydown" listener={handleKeyDown} target={document} />
+                  <ReaderText node={currentFocusedNode} />
+                </>
+              )}
               {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
           </>

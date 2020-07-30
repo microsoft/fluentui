@@ -17,6 +17,11 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           fontSize: FontSizes.size13,
           verticalAlign: 'middle',
         },
+        '.is-inFocus': {
+          border: `${extendedSemanticColors.choiceGroupContainerBorder}
+          ${extendedSemanticColors.choiceGroupContainerBorderStyle}
+          ${extendedSemanticColors.checkboxBorderChecked}`,
+        },
       },
     },
     field: [
@@ -29,7 +34,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
             },
             checked && {
               backgroundColor: 'transparent',
-              borderColor: extendedSemanticColors.primaryButtonBackground,
+              borderColor: extendedSemanticColors.checkboxBorderChecked,
             },
             disabled && {
               backgroundColor: semanticColors.bodyBackground,
@@ -44,7 +49,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The dot
           ':after': [
             {
-              borderColor: semanticColors.primaryButtonBackground,
+              borderColor: extendedSemanticColors.checkboxBorderChecked,
             },
             checked &&
               disabled && {
@@ -63,13 +68,16 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                 ':before': {
                   borderColor: extendedSemanticColors.controlOutlineHovered,
                 },
+                ':after': {
+                  borderColor: extendedSemanticColors.checkboxBorderChecked,
+                  backgroundColor: extendedSemanticColors.choiceGroupUncheckedDotHover,
+                },
               },
             },
             !disabled &&
               checked && {
                 selectors: {
                   ':before': {
-                    // hover circle border
                     borderColor: extendedSemanticColors.primaryButtonBackgroundPressed,
                   },
                 },
