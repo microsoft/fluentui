@@ -16,7 +16,7 @@ import { getArrowButtonStyles } from './SpinButton.styles';
 import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { KeytipData } from '../../KeytipData';
-import { useBoolean, useSetTimeout, useControllableValue } from '@uifabric/react-hooks';
+import { useBoolean, useSetTimeout, useControllableValue, useWarnings } from '@uifabric/react-hooks';
 
 interface ISpinButtonState {
   inputId: string;
@@ -92,6 +92,14 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
     props.value,
     props.defaultValue !== undefined ? props.defaultValue : String(min || '0'),
   );
+
+  if (process.env.NODE_ENV !== 'production') {
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      mutuallyExclusive: { value: 'defaultValue' },
+    });
+  }
 
   useComponentRef(props, input, value);
   const callCalculatePrecision = (calculatePrecisionProps: ISpinButtonProps) => {
