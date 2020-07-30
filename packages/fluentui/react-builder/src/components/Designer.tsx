@@ -414,6 +414,7 @@ export const Designer: React.FunctionComponent = () => {
   };
 
   const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
+  axeErrors;
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -843,9 +844,6 @@ export const Designer: React.FunctionComponent = () => {
                   {_.keys(accessibilityErrors[selectedComponent.uuid]).map(errorId => (
                     <li>{accessibilityErrors[selectedComponent.uuid][errorId]}</li>
                   ))}
-                  {/* {axeErrors.map(err => (
-                    err.dataBuilderId === selectedComponent.uuid ? <li>{(err as any).failureSummary}</li> : undefined
-                  ))} */}
                 </ul>
               </div>
             )}
