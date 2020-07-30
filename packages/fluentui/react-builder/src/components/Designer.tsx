@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as _ from 'lodash';
 import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -33,6 +34,7 @@ import { codeToTree } from '../utils/codeToTree';
 import { ErrorBoundary } from './ErrorBoundary';
 import { InsertComponent } from './InsertComponent';
 import { DownloadIcon } from '@fluentui/react-icons-northstar';
+import { ErrorIcon } from './ErrorFrame';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -59,6 +61,7 @@ type DesignerState = {
   selectedComponentInfo: ComponentInfo; // FIXME: should be computed in render?
   selectedJSONTreeElementUuid: JSONTreeElement['uuid'];
   showCode: boolean;
+  enabledVirtualCursor: boolean;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
@@ -77,6 +80,7 @@ type DesignerAction =
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
+  | { type: 'ENABLE_VIRTUAL_CURSROR'; enabledVirtualCursor: boolean }
   | { type: 'SOURCE_CODE_CHANGE'; code: string }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
@@ -193,6 +197,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
         console.error('Failed to convert tree to code.', e.toString());
       }
       break;
+    case 'ENABLE_VIRTUAL_CURSROR':
+      draftState.enabledVirtualCursor = action.enabledVirtualCursor;
+      break;
 
     case 'SOURCE_CODE_CHANGE':
       draftState.code = action.code;
@@ -291,6 +298,7 @@ export const Designer: React.FunctionComponent = () => {
       selectedComponentInfo: null,
       selectedJSONTreeElementUuid: null,
       showCode: false,
+      enabledVirtualCursor: false,
       code: null,
       codeError: null,
       insertComponent: null,
@@ -299,6 +307,8 @@ export const Designer: React.FunctionComponent = () => {
 
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+
+  const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -313,6 +323,7 @@ export const Designer: React.FunctionComponent = () => {
     /* selectedComponentInfo, */
     selectedJSONTreeElementUuid,
     showCode,
+    enabledVirtualCursor,
     code,
     codeError,
     insertComponent,
@@ -341,6 +352,13 @@ export const Designer: React.FunctionComponent = () => {
   const handleShowCodeChange = React.useCallback(
     showCode => {
       dispatch({ type: 'SHOW_CODE', show: showCode });
+    },
+    [dispatch],
+  );
+
+  const handleEnableVirtualCursorChange = React.useCallback(
+    enableVirtualCursor => {
+      dispatch({ type: 'ENABLE_VIRTUAL_CURSROR', enabledVirtualCursor: enableVirtualCursor });
     },
     [dispatch],
   );
@@ -442,6 +460,11 @@ export const Designer: React.FunctionComponent = () => {
     // FIXME: remove tree_lz from current URL
   }, [dispatch]);
 
+  const handleAccessibilityErrors = React.useCallback(errors => {
+    setAccessibilityErrors(errors);
+    debug('handleAccessibilityErrors', errors);
+  }, []);
+
   const handleOpenAddComponentDialog = React.useCallback(
     (uuid: string, where: string) => {
       dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
@@ -515,6 +538,8 @@ export const Designer: React.FunctionComponent = () => {
         isExpanding={isExpanding}
         isSelecting={isSelecting}
         mode={mode}
+        onEnableVirtualCursor={handleEnableVirtualCursorChange}
+        eenabledVirtualCursor={enabledVirtualCursor}
         onShowCodeChange={handleShowCodeChange}
         onShowJSONTreeChange={handleShowJSONTreeChange}
         onReset={handleReset}
@@ -613,6 +638,8 @@ export const Designer: React.FunctionComponent = () => {
             >
               <ErrorBoundary code={code} jsonTree={jsonTree}>
                 <Canvas
+                  mode={mode}
+                  enabledVirtualCursor={enabledVirtualCursor}
                   draggingElement={draggingElement}
                   isExpanding={isExpanding}
                   isSelecting={isSelecting || !!draggingElement}
@@ -627,10 +654,11 @@ export const Designer: React.FunctionComponent = () => {
                   onDeleteComponent={handleDeleteComponent}
                   onGoToParentComponent={handleGoToParentComponent}
                   role="main"
+                  accessibilityErrors={accessibilityErrors}
+                  onAccessibilityErrorsChanged={handleAccessibilityErrors}
                 />
               </ErrorBoundary>
             </BrowserWindow>
-
             {(showCode || showJSONTree) && (
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
@@ -688,7 +716,25 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-            <pre>{JSON.stringify(selectedJSONTreeElement.props, null, 2)}</pre>
+
+            {accessibilityErrors[selectedComponent.uuid] && (
+              <div
+                style={{
+                  background: '#e3404022',
+                }}
+              >
+                <h4>
+                  <ErrorIcon style={{ width: '1em', height: '1em' }} />{' '}
+                  {_.keys(accessibilityErrors[selectedComponent.uuid]).length} accessibility errors
+                </h4>
+                <ul>
+                  {_.keys(accessibilityErrors[selectedComponent.uuid]).map(errorId => (
+                    <li>{accessibilityErrors[selectedComponent.uuid][errorId]}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
             {selectedJSONTreeElement && (
               <Knobs

@@ -3,16 +3,17 @@ import { Alert, Ref } from '@fluentui/react-northstar';
 import { computeMessage } from '../narration/computeMessage';
 
 export type ReaderTextProps = {
-  selector: string;
+  selector?: string;
+  node?: HTMLElement;
 };
 
-export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector }) => {
+export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector, node }) => {
   const ref = React.useRef<HTMLElement>();
   const [text, setText] = React.useState('');
 
   React.useEffect(() => {
-    if (ref) {
-      const element = ref.current.ownerDocument.querySelector(selector);
+    if (ref && ref.current) {
+      const element = node || ref.current.ownerDocument.querySelector(selector);
       const narration = computeMessage(element as HTMLElement);
       if (typeof narration === 'string') {
         setText(narration);
@@ -20,9 +21,9 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
         narration.then(n => setText(n));
       }
     }
-  }, [setText, ref, selector]);
+  }, [setText, ref, selector, node]);
 
-  if (!selector) {
+  if (!selector && !node) {
     return null;
   }
 

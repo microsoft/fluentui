@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef, classNamesFunction, FocusRects } from '../../Utilities';
 import {
   IGroupedList,
   IGroupedListProps,
@@ -8,6 +7,7 @@ import {
   IGroupedListStyleProps,
   IGroupedListStyles,
 } from './GroupedList.types';
+import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode } from '../../Utilities';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
@@ -15,6 +15,7 @@ import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
 import { IGroupHeaderProps } from './GroupHeader';
 import { IGroupShowAllProps } from './GroupShowAll.styles';
 import { IGroupFooterProps } from './GroupFooter.types';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
@@ -102,13 +103,14 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     const { version } = listProps;
 
     return (
-      <div
+      <FocusZone
+        isInnerZoneKeystroke={this._isInnerZoneKeystroke}
+        direction={FocusZoneDirection.vertical}
         className={this._classNames.root}
         data-automationid="GroupedList"
         data-is-scrollable="false"
         role="presentation"
       >
-        <FocusRects />
         {!groups ? (
           this._renderGroup(undefined, 0)
         ) : (
@@ -125,7 +127,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
             version={version}
           />
         )}
-      </div>
+      </FocusZone>
     );
   }
 
@@ -295,6 +297,10 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     if (group && selection && selectionMode === SelectionMode.multiple) {
       selection.toggleRangeSelected(group.startIndex, group.count);
     }
+  };
+
+  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+    return ev.which === getRTLSafeKeyCode(KeyCodes.right);
   };
 
   private _forceListUpdates(groups?: IGroup[]): void {
