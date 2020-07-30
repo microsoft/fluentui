@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Alert, Ref } from '@fluentui/react-northstar';
+import { computeMessage } from '../narration/computeMessage';
 
 export type ReaderTextProps = {
   selector: string;
@@ -11,9 +12,15 @@ export const ReaderText: React.FunctionComponent<ReaderTextProps> = ({ selector 
 
   React.useEffect(() => {
     if (ref.current) {
-      const t = ref.current.ownerDocument.querySelector(selector)?.textContent;
-      setText(t);
+      const element = ref.current.ownerDocument.querySelector(selector);
+      const narration = computeMessage(element as HTMLElement);
+      if (typeof narration === 'string') {
+        setText(narration);
+      } else {
+        narration.then(n => setText(n));
+      }
     }
+    // eslint-disable-next-line
   }, [setText, ref.current, selector]);
 
   if (!selector) {
