@@ -63,6 +63,6 @@ declare global {
   }
 
   interface Window {
-    getComputedAccessibleNode: (HTMLElement) => Promise<ComputedAccessibleNode>;
+    getComputedAccessibleNode: (node: HTMLElement) => Promise<ComputedAccessibleNode>;
   }
 }
