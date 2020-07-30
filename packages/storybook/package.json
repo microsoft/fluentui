@@ -30,9 +30,9 @@
     "tslib": "^1.10.0",
     "@fluentui/react-theme-provider": "^0.4.0",
     "@storybook/addon-knobs": "^5.3.8",
-    "@uifabric/azure-themes": "^7.1.49",
-    "@uifabric/mdl2-theme": "^0.1.118",
-    "@uifabric/theme-samples": "^7.0.112"
+    "@uifabric/azure-themes": "^7.2.0",
+    "@uifabric/mdl2-theme": "^0.1.119",
+    "@uifabric/theme-samples": "^7.0.113"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
