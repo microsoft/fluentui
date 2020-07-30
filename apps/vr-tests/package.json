@@ -16,7 +16,7 @@
   "dependencies": {
     "@fluentui/react-button": "^0.7.9",
     "@fluentui/react-icons": "^0.1.40",
-    "@fluentui/react-next": "^8.0.0-alpha.69",
+    "@fluentui/react-next": "^8.0.0-alpha.70",
     "@uifabric/example-data": "^7.0.20",
     "@uifabric/experiments": "^7.27.11",
     "@uifabric/react-cards": "^0.110.9",
