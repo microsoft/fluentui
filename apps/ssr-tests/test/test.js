@@ -22,7 +22,7 @@ responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 
 // Initialize icons.
 const { initializeIcons } = require('office-ui-fabric-react/lib/Icons');
-initializeIcons('dist/');
+initializeIcons('dist/', { disableWarnings: true });
 
 let React = require('react');
 let ReactDOMServer = require('react-dom/server');

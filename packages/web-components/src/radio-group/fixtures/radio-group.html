@@ -1,0 +1,82 @@
+<fast-design-system-provider use-defaults>
+  <h1>Radio Group</h1>
+
+  <h4>Defaults</h4>
+  <div>
+    <fast-radio-group name="numbers">
+      <label style="color: --var(neutral-foreground-rest);" slot="label">
+        Numbers
+      </label>
+      <fast-radio value="one">One</fast-radio>
+      <fast-radio value="two">Two</fast-radio>
+    </fast-radio-group>
+  </div>
+
+  <h4>Single radio</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <fast-radio-group name="players">
+      <label style="color: --var(neutral-foreground-rest);" slot="label">
+        Best basketball players
+      </label>
+      <fast-radio value="airjordan">Michael Jordan</fast-radio>
+    </fast-radio-group>
+  </div>
+
+  <h4>With label outside group</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label1">Outside label</label>
+    <fast-radio-group required="true" aria-labelledby="label1" name="fruits">
+      <fast-radio value="apples">Apples</fast-radio>
+      <fast-radio value="oranges">Oranges</fast-radio>
+      <fast-radio value="bananas">Bananas</fast-radio>
+      <fast-radio value="kiwi">Kiwi</fast-radio>
+      <fast-radio value="grapefruit">Grapefruit</fast-radio>
+      <fast-radio value="mango">Mango</fast-radio>
+      <fast-radio value="blueberries">Blueberries</fast-radio>
+      <fast-radio value="strawberries">Strawberries</fast-radio>
+      <fast-radio value="pineapple">Pineapple</fast-radio>
+    </fast-radio-group>
+  </div>
+
+  <h4>Within toolbar</h4>
+  <div role="toolbar" style="display: flex; flex-direction: column; margin-top: 12px;">
+    <div style="display: flex; flex-direction: row; align-items: stretch; width: 100%;">
+      <button style="width: 40px; margin-right: 4px;">go</button>
+      <fast-radio-group required="true" name="navigation">
+        <fast-radio value="back">back</fast-radio>
+        <fast-radio value="forward">forward</fast-radio>
+        <fast-radio value="refresh">refresh</fast-radio>
+      </fast-radio-group>
+      <button style="width: 40px; margin-left: 4px;">stop</button>
+    </div>
+  </div>
+
+  <h4>Disabled</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label2">Disabled radio group</label>
+    <fast-radio-group disabled aria-labelledby="label2" name="cars">
+      <fast-radio value="lambo">Lamborghini</fast-radio>
+      <fast-radio value="ferari">Ferari</fast-radio>
+    </fast-radio-group>
+  </div>
+
+  <h4>Readonly</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label3">readonly radio group</label>
+    <fast-radio-group readonly aria-labelledby="label3" name="office">
+      <fast-radio value="word">Word</fast-radio>
+      <fast-radio value="excel">Excel</fast-radio>
+    </fast-radio-group>
+  </div>
+
+  <h4>Preset value</h4>
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label4">Preset selected-value</label>
+    <fast-radio-group value="maverick" aria-labelledby="label4" name="best-pilot">
+      <fast-radio value="ice-man">Ice Man</fast-radio>
+      <fast-radio value="maverick">Maverick</fast-radio>
+      <fast-radio value="viper">Viper</fast-radio>
+      <fast-radio value="jester">Jester</fast-radio>
+    </fast-radio-group>
+  </div>
+</fast-design-system-provider>

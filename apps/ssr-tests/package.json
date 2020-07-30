@@ -14,7 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@types/mocha": "2.2.39",
+    "@types/mocha": "^7.0.2",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/fabric-website-resources": "^7.6.108",
