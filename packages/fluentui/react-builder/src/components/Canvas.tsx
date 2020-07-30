@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as _ from 'lodash';
+
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
@@ -7,6 +9,8 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
+import { AbilityAttributesValidator, AccessibilityErrors } from './AbilityAttributesValidator';
+import { ErrorFrame } from './ErrorFrame';
 import { ReaderText } from './ReaderText';
 
 export type CanvasProps = {
@@ -28,6 +32,8 @@ export type CanvasProps = {
   style?: React.CSSProperties;
   mode?: 'build' | 'design' | 'use';
   role?: string;
+  accessibilityErrors: AccessibilityErrors;
+  onAccessibilityErrorsChanged: (errors: AccessibilityErrors) => void;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -49,6 +55,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   mode,
   style,
   role,
+  accessibilityErrors,
+  onAccessibilityErrorsChanged,
 }) => {
   const iframeId = React.useMemo(
     () =>
@@ -330,6 +338,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       <FrameContextConsumer>
         {({ document, window }) => (
           <>
+            <AbilityAttributesValidator window={window} onErrorsChanged={onAccessibilityErrorsChanged} />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
@@ -376,6 +385,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 onGoToParent={onGoToParentComponent}
               />
             )}
+            {_.keys(accessibilityErrors).map(uuid => (
+              <ErrorFrame
+                target={document}
+                selector={`[data-builder-id="${uuid}"]`}
+                errors={_.keys(accessibilityErrors[uuid]).length}
+              />
+            ))}
             {draggingElement && (
               <DropSelector
                 filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
