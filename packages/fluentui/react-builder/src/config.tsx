@@ -533,12 +533,21 @@ export const renderJSONTreeToJSXElement = (
 
   props = resolveProps(props, iterator);
   const modifiedTree = iterator({ ...tree, props });
-
-  return React.createElement(resolveComponent(modifiedTree.type), {
-    ...modifiedTree.props,
-    key: modifiedTree.uuid,
-    'data-builder-id': modifiedTree.uuid,
-  });
+  const Comp = resolveComponent(modifiedTree.type);
+  return (
+    <Comp
+      {...{
+        ...modifiedTree.props,
+        key: modifiedTree.uuid,
+        'data-builder-id': modifiedTree.uuid,
+      }}
+    />
+  );
+  // React.createElement(resolveComponent(modifiedTree.type), {
+  //   ...modifiedTree.props,
+  //   key: modifiedTree.uuid,
+  //   'data-builder-id': modifiedTree.uuid,
+  // });
 };
 
 /**
