@@ -113,7 +113,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         onMessage('');
       }
     },
-    [jsonTree, iframeRef, onMessage],
+    // eslint-disable-next-line
+    [jsonTree, iframeRef.current, onMessage],
   );
 
   const handleSelectComponent = React.useCallback(
