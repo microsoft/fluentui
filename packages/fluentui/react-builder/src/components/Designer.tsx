@@ -382,7 +382,7 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, []);
 
-  const handleCanvasMessage = (canvasMessage: string) => setCanvasMessage(canvasMessage);
+  const handleCanvasMessage = React.useCallback((canvasMessage: string) => setCanvasMessage(canvasMessage), []);
 
   const handleCanvasMouseUp = React.useCallback(() => {
     dispatch({
