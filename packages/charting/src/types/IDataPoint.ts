@@ -168,7 +168,7 @@ export interface ILineChartDataPoint {
   /**
    * Callout data for y axis
    */
-  yAxisCalloutData?: string;
+  yAxisCalloutData?: string | { [id: string]: number };
 }
 
 export interface ILineChartPoints {

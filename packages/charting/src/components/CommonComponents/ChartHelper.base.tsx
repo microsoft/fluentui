@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from './ChartHelper.types';
+import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps, IYValueHover } from './ChartHelper.types';
 
 import {
   createNumericXAxis,
@@ -116,6 +116,7 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
         : createNumericXAxis(XAxisParams),
       yScale: createYAxis(YAxisParams),
     });
+    const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
     return (
       <div
         id={this.idForGraph}
@@ -157,41 +158,107 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
           <Callout {...calloutProps}>
             <div className={this._classNames.calloutContentRoot}>
-              <div className={this._classNames.calloutDateTimeContainer}>
+              <div
+                className={this._classNames.calloutDateTimeContainer}
+                style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
+              >
                 <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
               </div>
-              <div className={this._classNames.calloutInfoContainer}>
+              <div
+                className={this._classNames.calloutInfoContainer}
+                style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
+              >
                 {calloutProps!.YValueHover &&
-                  calloutProps!.YValueHover.map(
-                    (
-                      xValue: {
-                        legend?: string;
-                        y?: number;
-                        color?: string;
-                        yAxisCalloutData?: string;
-                      },
-                      index: number,
-                    ) => (
+                  calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
+                    const isLast: boolean = index + 1 === yValues.length;
+                    return (
                       <div
-                        key={`${index}_${xValue.y}`}
-                        id={`${index}_${xValue.y}`}
-                        className={mergeStyles(this._classNames.calloutBlockContainer, {
-                          borderLeft: `4px solid ${xValue.color}`,
-                        })}
+                        key={`callout-content-${index}`}
+                        style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
                       >
-                        <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
-                        <div className={this._classNames.calloutContentY}>
-                          {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
-                        </div>
+                        {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
                       </div>
-                    ),
-                  )}
+                    );
+                  })}
               </div>
             </div>
           </Callout>
         )}
       </div>
     );
+  }
+
+  private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
+    if (yValueHover) {
+      return yValueHover.some(
+        (yValue: {
+          legend?: string;
+          y?: number;
+          color?: string;
+          yAxisCalloutData?: string | { [id: string]: number };
+        }) => yValue.yAxisCalloutData && typeof yValue.yAxisCalloutData !== 'string',
+      );
+    }
+    return false;
+  }
+
+  private _getCalloutContent(
+    xValue: {
+      legend?: string;
+      y?: number;
+      color?: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+    },
+    index: number,
+    yValueHoverSubCountsExists: boolean,
+    isLast: boolean,
+  ): React.ReactNode {
+    const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
+
+    if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
+      return (
+        <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
+          {yValueHoverSubCountsExists && (
+            <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
+              {xValue.legend!} ({xValue.y})
+            </div>
+          )}
+          <div
+            id={`${index}_${xValue.y}`}
+            className={mergeStyles(this._classNames.calloutBlockContainer, {
+              borderLeft: `4px solid ${xValue.color}`,
+            })}
+          >
+            <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
+            <div className={this._classNames.calloutContentY}>
+              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y}
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
+      return (
+        <div style={marginStyle}>
+          <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
+            {xValue.legend!} ({xValue.y})
+          </div>
+          {Object.keys(subcounts).map((subcountName: string) => {
+            return (
+              <div
+                key={subcountName}
+                className={mergeStyles(this._classNames.calloutBlockContainer, {
+                  borderLeft: `4px solid ${xValue.color}`,
+                })}
+              >
+                <div className={this._classNames.calloutlegendText}> {subcountName}</div>
+                <div className={this._classNames.calloutContentY}>{subcounts[subcountName]}</div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
   }
 
   private _fitParentContainer(): void {

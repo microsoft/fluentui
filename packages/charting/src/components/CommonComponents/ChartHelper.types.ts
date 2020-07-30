@@ -94,6 +94,12 @@ export interface IChartHelperStyles {
   calloutlegendText?: IStyle;
 }
 
+export interface IYValueHover {
+  legend?: string;
+  y?: number;
+  color?: string;
+}
+
 export interface IChartHelperProps {
   /**
    * Data to render in the chart.
@@ -208,7 +214,7 @@ export interface IChartHelperProps {
     id: string;
     gapSpace: number;
     target: SVGAElement;
-    YValueHover?: { legend?: string; y?: number; color?: string }[];
+    YValueHover?: IYValueHover[];
     hoverXValue?: string | number | null;
     isBeakVisible?: boolean;
   };
