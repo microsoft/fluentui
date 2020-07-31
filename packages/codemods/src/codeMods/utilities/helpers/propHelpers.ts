@@ -86,10 +86,35 @@ export function renamePropInSpread(
               );
             },
           );
+
+          // check here to see if we need to create a line to declare the prop externally.
+          // if we do, there's no need to insert anything. Prop already exists checks this!
+
+          const type = element?.getContextualType();
+          if (type !== undefined && type.isUnion()) {
+            console.log('yes! Found union type');
+            console.log(type.getText());
+            if (type.getUnionTypes().some(t => t.isUndefined())) {
+              /* If our prop kind is potentially undefined, we need to insert a line to fix it. */
+              parentContainer.insertVariableStatement(insertIndex, {
+                declarationKind: VariableDeclarationKind.Const,
+                declarations: [
+                  {
+                    name: toRename,
+                    initializer: propSpreadName + '?.' + toRename,
+                  },
+                ],
+              });
+            }
+          }
+
           /* If a variable statement with the spread prop in question exists, try and use it.  */
           if (variableStatementWithSpreadProp) {
+            /* Depending on where this spread prop was in the statement, there are different things we need to do. */
             switch (locateSpreadPropInStatement(variableStatementWithSpreadProp, propSpreadName, newSpreadName)) {
               case SpreadPropInStatement.PropLeft: {
+                /* If the spread prop was on the left with no '...' in front of it, try and create a new variable
+                   statement, deconstructing this spread prop. */
                 if (!propAlreadyExists(parentContainer, toRename)) {
                   parentContainer.insertVariableStatement(
                     insertIndex,
@@ -100,34 +125,20 @@ export function renamePropInSpread(
                 }
                 break;
               }
-              case SpreadPropInStatement.SpreadPropLeft: {
-                const existingDecomposedPropName = Maybe(
-                  variableStatementWithSpreadProp.getFirstDescendantByKind(SyntaxKind.DotDotDotToken),
-                )
-                  .then(val => val.getParent())
-                  .then(val => val.getFirstChildByKind(SyntaxKind.Identifier))
-                  .then(val => val.getText());
-                if (existingDecomposedPropName.something) {
-                  newSpreadName = existingDecomposedPropName.value;
-                }
-                if (replacementValue === undefined && !propAlreadyExists(parentContainer, toRename)) {
-                  tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
-                }
-                break;
-              }
+              case SpreadPropInStatement.SpreadPropLeft:
               case SpreadPropInStatement.PropRight: {
+                /* If the prop is on the right or it's in spread form on the left,
+                   we can try and insert out TORENAME prop into its deconstruction. */
                 newSpreadName = propSpreadName;
                 if (!propAlreadyExists(parentContainer, toRename)) {
                   tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
-                } else {
-                  newSpreadName = propSpreadName;
                 }
                 break;
               }
               case SpreadPropInStatement.NotFound:
               default: {
+                /* We shoulnd't make any intermediate steps if we coulnd't find the spread prop. */
                 newSpreadName = propSpreadName;
-                // If we failed here, we probably coulnd't handle their spread case.
                 break;
               }
             }
@@ -212,12 +223,12 @@ function locateSpreadPropInStatement(
   if (varDeclaration) {
     const leftChild = varDeclaration.getChildAtIndex(0);
     const rightChild = varDeclaration.getChildAtIndex(2); // Index 1 is '='.
-    if (rightChild && rightChild.getText().includes(propNameFound)) {
+    if (rightChild && propNameFound.includes(rightChild.getText())) {
       return SpreadPropInStatement.PropRight;
     }
     if (leftChild) {
       const leftSideObject = leftChild.getFirstChild(child => {
-        return child.getText().includes(propNameFound) || child.getText().includes(migrationPropName);
+        return propNameFound.includes(child.getText()) || child.getText().includes(migrationPropName);
       });
       if (leftSideObject) {
         if (leftSideObject.getText().includes('...')) {
