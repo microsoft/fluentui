@@ -7,7 +7,7 @@ import {
   IGroupedListStyleProps,
   IGroupedListStyles,
 } from './GroupedList.types';
-import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css } from '../../Utilities';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
@@ -92,7 +92,16 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize, theme, styles, compact, listProps = {} } = this.props;
+    const {
+      className,
+      usePageCache,
+      onShouldVirtualize,
+      theme,
+      styles,
+      compact,
+      listProps = {},
+      focusZoneProps = {},
+    } = this.props;
     const { groups } = this.state;
     this._classNames = getClassNames(styles, {
       theme: theme!,
@@ -102,11 +111,14 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     const { version } = listProps;
 
+    const { isInnerZoneKeystroke = this._isInnerZoneKeystroke } = focusZoneProps;
+
     return (
       <FocusZone
-        isInnerZoneKeystroke={this._isInnerZoneKeystroke}
+        {...focusZoneProps}
+        isInnerZoneKeystroke={isInnerZoneKeystroke}
         direction={FocusZoneDirection.vertical}
-        className={this._classNames.root}
+        className={css(this._classNames.root, focusZoneProps.className)}
         data-automationid="GroupedList"
         data-is-scrollable="false"
         role="presentation"
