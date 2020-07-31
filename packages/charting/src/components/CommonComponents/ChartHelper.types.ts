@@ -186,7 +186,7 @@ export interface IChartHelperProps {
 
   /**
    * Number of ticks on the y-axis.
-   * This is a optional parameter and default value is 5.
+   * Tick count should be factor of difference between (yMinValue, yMaxValue)
    * @default 4
    */
   yAxisTickCount?: number;
