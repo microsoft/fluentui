@@ -19,193 +19,104 @@ import {
   IChoiceGroupStyles,
 } from './ChoiceGroup.types';
 import { ChoiceGroupOption, IChoiceGroupOptionProps } from './ChoiceGroupOption/index';
+import { useConst, useId, useConstCallback } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
+const useComponentRef = (
+  elementToFocus: HTMLElement | null,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  optionToFocus: any,
+  options,
+  keyChecked,
+) => {
+  React.useImperativeHandle(
+    () => ({
+      focus() {
+        if (elementToFocus) {
+          elementToFocus.focus();
+        }
+      },
+      checkedOption() {
+        return find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
+      },
+    }),
+    [],
+  );
+};
 
-export interface IChoiceGroupState {
-  /**
-   * Current selected option, for **internal use only**.
-   * External users should access `IChoiceGroup.checkedOption` instead.
-   */
-  // TODO (Fabric 8?) - once we removed the checked property from individual options,
-  // we can probably store only the uncontrolled value in the state (right now it tracks
-  // the value regardless of controlled/uncontrolled--though if controlled, it only updates
-  // the value in state when the selectedKey prop updates)
-  keyChecked?: string | number;
+export const ChoiceGroupBase: React.FunctionComponent = (props: IChoiceGroupProps) => {
+  const { className, theme, styles, options = [], label, required, disabled, name, defaultSelectedKey } = props;
+  const id = useId('ChoiceGroup');
+  const labelId = id + '-label';
+  const focusCallbacks: { [key: string]: IChoiceGroupOptionProps['onFocus'] } = {};
+  const changeCallbacks: { [key: string]: IChoiceGroupOptionProps['onBlur'] } = {};
 
-  /** Is set when the control has focus. */
-  keyFocused?: string | number;
-}
+  const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, [
+    'onChange',
+    'className',
+    'required',
+  ]);
 
-/**
- * {@docCategory ChoiceGroup}
- */
-export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
-  private _id: string;
-  private _labelId: string;
-  private _focusCallbacks: { [key: string]: IChoiceGroupOptionProps['onFocus'] } = {};
-  private _changeCallbacks: { [key: string]: IChoiceGroupOptionProps['onBlur'] } = {};
+  const classNames = getClassNames(styles!, {
+    theme: theme!,
+    className,
+    optionsContainIconOrImage: options.some(option => !!(option.iconProps || option.imageSrc)),
+  });
 
-  constructor(props: IChoiceGroupProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('ChoiceGroup', props, { onChanged: 'onChange' });
-      warnMutuallyExclusive('ChoiceGroup', props, {
-        selectedKey: 'defaultSelectedKey',
-      });
-    }
-
-    const { defaultSelectedKey, options = [] } = props;
-    const validDefaultSelectedKey =
-      !_isControlled(props) &&
-      defaultSelectedKey !== undefined &&
-      options.some(option => option.key === defaultSelectedKey);
-
-    this.state = {
-      keyChecked: validDefaultSelectedKey ? defaultSelectedKey : this._getKeyChecked(props),
-    };
-
-    this._id = getId('ChoiceGroup');
-    this._labelId = getId('ChoiceGroupLabel');
-  }
+  const ariaLabelledBy = props.ariaLabelledBy || (label ? labelId : props['aria-labelledby']);
 
   /**
-   * Gets the current checked option.
+   * Returns `selectedKey` if provided, or the key of the first option with the `checked` prop set.
    */
-  public get checkedOption(): IChoiceGroupOption | undefined {
-    const { options = [] } = this.props;
-    return find(options, (value: IChoiceGroupOption) => value.key === this.state.keyChecked);
-  }
-
-  public componentDidUpdate(prevProps: IChoiceGroupProps, prevState: IChoiceGroupState): void {
-    // Only update if a new props object has been passed in (don't care about state updates)
-    if (prevProps !== this.props) {
-      const newKeyChecked = this._getKeyChecked(this.props);
-      const oldKeyChecked = this._getKeyChecked(prevProps);
-
-      if (newKeyChecked !== oldKeyChecked) {
-        this.setState({
-          keyChecked: newKeyChecked,
-        });
-      }
+  const getKeyChecked = (): string | number | undefined => {
+    if (props.selectedKey !== undefined) {
+      return props.selectedKey;
     }
-  }
-
-  public render(): JSX.Element {
-    const { className, theme, styles, options = [], label, required, disabled, name } = this.props;
-    const { keyChecked, keyFocused } = this.state;
-
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
-      'onChange',
-      'className',
-      'required',
-    ]);
-
-    const classNames = getClassNames(styles!, {
-      theme: theme!,
-      className,
-      optionsContainIconOrImage: options.some(option => !!(option.iconProps || option.imageSrc)),
-    });
-
-    const labelId = this._id + '-label';
-    const ariaLabelledBy = this.props.ariaLabelledBy || (label ? labelId : this.props['aria-labelledby']);
-
-    // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
-    // `applicationRole` class (but the div structure will stay the same by necessity)
-    return (
-      // eslint-disable-next-line deprecation/deprecation
-      <div className={classNames.applicationRole} {...divProps}>
-        <div
-          className={classNames.root}
-          role="radiogroup"
-          {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}
-        >
-          {label && (
-            <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>
-              {label}
-            </Label>
-          )}
-          <div className={classNames.flexContainer}>
-            {options.map((option: IChoiceGroupOption) => {
-              const innerOptionProps = {
-                ...option,
-                focused: option.key === keyFocused,
-                checked: option.key === keyChecked,
-                disabled: option.disabled || disabled,
-                id: this._getOptionId(option),
-                labelId: `${this._labelId}-${option.key}`,
-                name: name || this._id,
-                required,
-              };
-
-              return (
-                <ChoiceGroupOption
-                  key={option.key}
-                  onBlur={this._onBlur}
-                  onFocus={this._onFocus(option.key)}
-                  onChange={this._onChange(option.key)}
-                  {...innerOptionProps}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  public focus() {
-    const { options = [] } = this.props;
-    const optionToFocus = this.checkedOption || options.filter(option => !option.disabled)[0];
-    const elementToFocus = optionToFocus && document.getElementById(this._getOptionId(optionToFocus));
-    if (elementToFocus) {
-      elementToFocus.focus();
-    }
-  }
-
-  private _onFocus(key: string) {
-    // This extra mess is necessary because React won't pass the `key` prop through to ChoiceGroupOption
-    if (!this._focusCallbacks[key]) {
-      this._focusCallbacks[key] = (
-        ev: React.FocusEvent<HTMLElement | HTMLInputElement>,
-        option: IChoiceGroupOption,
-      ) => {
-        this.setState({
-          keyFocused: key,
-        });
-      };
-    }
-    return this._focusCallbacks[key];
-  }
-
-  private _onBlur = (ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOption) => {
-    this.setState({
-      keyFocused: undefined,
-    });
+    // eslint-disable-next-line deprecation/deprecation
+    const optionsChecked = options.filter((option: IChoiceGroupOption) => option.checked);
+    return optionsChecked[0] && optionsChecked[0].key;
   };
 
-  private _onChange(key: string) {
+  const validDefaultSelectedKey =
+    !_isControlled(props) &&
+    defaultSelectedKey !== undefined &&
+    options.some(option => option.key === defaultSelectedKey);
+
+  const [keyChecked, setKeyChecked] = React.useState(validDefaultSelectedKey ? defaultSelectedKey : getKeyChecked());
+  const [keyFocused, setKeyFocused] = React.useState<string | number>();
+
+  const getOptionId = (option: IChoiceGroupOption): string => {
+    return `${id}-${option.key}`;
+  };
+
+  const onFocus = (key: string) => {
     // This extra mess is necessary because React won't pass the `key` prop through to ChoiceGroupOption
-    if (!this._changeCallbacks[key]) {
-      this._changeCallbacks[key] = (
-        evt: React.FormEvent<HTMLElement | HTMLInputElement>,
-        option: IChoiceGroupOption,
-      ) => {
+    if (!focusCallbacks[key]) {
+      focusCallbacks[key] = (ev: React.FocusEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOption) => {
+        setKeyFocused(key);
+      };
+    }
+    return focusCallbacks[key];
+  };
+
+  const onBlur = useConstCallback((ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOption) => {
+    setKeyFocused(undefined);
+  });
+
+  const choiceGroupOnChange = (key: string) => {
+    // This extra mess is necessary because React won't pass the `key` prop through to ChoiceGroupOption
+    if (!changeCallbacks[key]) {
+      changeCallbacks[key] = (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOption) => {
         // eslint-disable-next-line deprecation/deprecation
-        const { onChanged, onChange } = this.props;
+        const { onChanged, onChange } = props;
 
         // Only manage state in uncontrolled scenarios.
-        if (!_isControlled(this.props)) {
-          this.setState({
-            keyChecked: key,
-          });
+        if (!_isControlled(props)) {
+          setKeyChecked(key);
         }
 
         // Get the original option without the `key` prop removed
-        const originalOption = find(this.props.options || [], (value: IChoiceGroupOption) => value.key === key);
+        const originalOption = find(props.options || [], (value: IChoiceGroupOption) => value.key === key);
 
         // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
         if (onChange) {
@@ -215,27 +126,59 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
         }
       };
     }
-    return this._changeCallbacks[key];
+    return changeCallbacks[key];
+  };
+
+  if (process.env.NODE_ENV !== 'production') {
+    warnDeprecations('ChoiceGroup', props, { onChanged: 'onChange' });
+    warnMutuallyExclusive('ChoiceGroup', props, {
+      selectedKey: 'defaultSelectedKey',
+    });
   }
 
-  /**
-   * Returns `selectedKey` if provided, or the key of the first option with the `checked` prop set.
-   */
-  private _getKeyChecked(props: IChoiceGroupProps): string | number | undefined {
-    if (props.selectedKey !== undefined) {
-      return props.selectedKey;
-    }
+  const optionToFocus = checkedOption || options.filter(option => !option.disabled)[0];
+  const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus));
 
-    const { options = [] } = props;
+  useComponentRef(elementToFocus, optionToFocus);
+  // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
+  // `applicationRole` class (but the div structure will stay the same by necessity)
+  return (
     // eslint-disable-next-line deprecation/deprecation
-    const optionsChecked = options.filter((option: IChoiceGroupOption) => option.checked);
-    return optionsChecked[0] && optionsChecked[0].key;
-  }
+    <div className={classNames.applicationRole} {...divProps}>
+      <div className={classNames.root} role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
+        {label && (
+          <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>
+            {label}
+          </Label>
+        )}
+        <div className={classNames.flexContainer}>
+          {options.map((option: IChoiceGroupOption) => {
+            const innerOptionProps = {
+              ...option,
+              focused: option.key === keyFocused,
+              checked: option.key === keyChecked,
+              disabled: option.disabled || disabled,
+              id: getOptionId(option),
+              labelId: `${labelId}-${option.key}`,
+              name: name || id,
+              required,
+            };
 
-  private _getOptionId(option: IChoiceGroupOption): string {
-    return `${this._id}-${option.key}`;
-  }
-}
+            return (
+              <ChoiceGroupOption
+                key={option.key}
+                onBlur={onBlur}
+                onFocus={onFocus(option.key)}
+                onChange={choiceGroupOnChange(option.key)}
+                {...innerOptionProps}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 function _isControlled(props: IChoiceGroupProps): boolean {
   return isControlled(props, 'selectedKey');
