@@ -458,6 +458,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                   <EventListener capture type="blur" listener={handleBlur} target={document} />
                 </>
               )}
+              {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
               {mode === 'use' && enabledVirtualCursor && (
                 <>
@@ -465,7 +466,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                   <ReaderText node={currentFocusedNode} />
                 </>
               )}
-              {selectedComponent && <ReaderText selector={`[data-builder-id="${selectedComponent.uuid}"]`} />}
             </Provider>
           </>
         )}
