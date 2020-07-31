@@ -68,7 +68,7 @@ const Button = React.forwardRef((props, ref) => {
 
 #### Creating mutable state with `mergeProps`
 
-In the previous example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and using that to construct state simplifies hook development and usage; rather than trying to re-clone objects unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self contained hooks, which can ensure they are used correctly, avoid accidents like stomping on existing event handlers by blind object assigning the results.
+In the previous example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and using that to construct state simplifies hook development and usage; rather than trying to re-clone objects unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self contained hooks, which can ensure they are used correctly, avoiding accidents like stomping on existing event handlers by blind object assigning the results.
 
 However, deep merge overlooks many edge cases for component props:
 
