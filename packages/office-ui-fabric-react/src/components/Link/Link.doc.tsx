@@ -25,16 +25,6 @@ export const LinkPageProps: IDocPageProps = {
                 padding: 0,
                 overflow: 'inherit',
                 textOverflow: 'inherit',
-                selectors: {
-                  ':focus': {
-                    color: theme!.palette.themePrimary,
-                  },
-                },
-              },
-              '.ms-Link.is-disabled': {
-                color: theme!.palette.neutralTertiary,
-                pointerEvents: 'none',
-                cursor: 'default',
               },
             },
           },
@@ -43,9 +33,7 @@ export const LinkPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDonts.md'),
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
