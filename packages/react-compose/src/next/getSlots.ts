@@ -3,6 +3,12 @@ import { getNativeElementProps } from '@uifabric/utilities';
 import { GenericDictionary } from './types';
 import { nullRender } from './nullRender';
 
+/**
+ * Tiny helper to do the minimal amount of work in duplicating an object but omitting some
+ * props. This ends up faster than using object ...rest or reduce to filter.
+ *
+ * https://jsperf.com/omit-vs-rest-vs-reduce/1
+ */
 const _omit = <TObj>(obj: TObj, exclusions: GenericDictionary) => {
   const result = {};
 
