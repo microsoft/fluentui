@@ -103,7 +103,7 @@ const renderButton = state => {
 };
 ```
 
-This step has been abstracted in the `getSlots` helper:
+These steps have been abstracted in the `getSlots` helper:
 
 ```jsx
 const renderButton = state => {
