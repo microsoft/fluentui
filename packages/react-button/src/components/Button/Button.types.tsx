@@ -6,23 +6,8 @@ import { RecursivePartial } from '../../utils/tempTypes';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
-/**
- * {@docCategory Button}
- */
-export type ButtonRef = {
-  /**
-   * Sets focus to the button.
-   */
-  focus: () => void;
-};
-
 export type ButtonProps = ComponentProps &
-  React.HTMLAttributes<Element> & {
-    /**
-     * Access the imperative API of the Button.
-     */
-    componentRef?: React.RefObject<ButtonRef>;
-
+  React.HTMLAttributes<HTMLElement> & {
     /**
      * Shorthand icon. A shorthand prop can be a literal, object, or
      * JSX. The `children` prop of the object can be a render function,

@@ -25,7 +25,7 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
   if (slotNames) {
     for (const name of slotNames!) {
       const slotDefinition = state[name];
-      const { as: slotAs, children, ...rest } = slotDefinition;
+      const { as: slotAs, children } = slotDefinition;
 
       const slot = (slots[name] = slotDefinition.children || typeof slotAs !== 'string' ? slotAs : nullRender);
 
@@ -34,10 +34,10 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
           typeof slot === 'string'
             ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
               getNativeElementProps(slot as any, slotDefinition)
-            : { ...rest, children };
+            : slotDefinition;
 
         if (children === 'function') {
-          slotProps[name].children = children(slots[name], rest);
+          slotProps[name].children = children(slots[name], slotDefinition);
           slots[name] = React.Fragment;
         }
       }

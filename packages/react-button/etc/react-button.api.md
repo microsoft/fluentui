@@ -15,8 +15,7 @@ import { SlotProps } from '@fluentui/react-compose';
 export const Button: React.ForwardRefExoticComponent<Pick<ButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type ButtonProps = ComponentProps & React.HTMLAttributes<Element> & {
-    componentRef?: React.RefObject<ButtonRef>;
+export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps;
     loader?: ShorthandProps;
     children?: ShorthandProps;
@@ -33,11 +32,6 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<Element> & {
     secondary?: boolean;
     size?: SizeValue;
     tokens?: RecursivePartial<ButtonTokenSet>;
-};
-
-// @public (undocumented)
-export type ButtonRef = {
-    focus: () => void;
 };
 
 // @public
@@ -208,7 +202,7 @@ export const useMenuButtonClasses: (state: Record<string, any>) => void;
 
 // Warnings were encountered during analysis:
 //
-// lib/components/Button/Button.types.d.ts:78:5 - (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
+// lib/components/Button/Button.types.d.ts:65:5 - (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

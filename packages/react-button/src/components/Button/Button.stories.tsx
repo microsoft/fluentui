@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from './Button';
-import { ButtonProps, ButtonRef } from './Button.types';
+import { ButtonProps } from './Button.types';
 import * as classes from './Button.stories.scss';
 
 /**
@@ -36,7 +36,7 @@ const ButtonVariants = (props: ButtonProps) => (
 );
 
 export const ButtonFocus = () => {
-  const buttonRef = React.useRef<ButtonRef>();
+  const buttonRef = React.useRef<HTMLElement | null>(null);
   return (
     <Stack>
       <Button
@@ -47,7 +47,7 @@ export const ButtonFocus = () => {
       >
         Focus the other
       </Button>
-      <Button componentRef={buttonRef}>I get focused</Button>
+      <Button ref={buttonRef}>I get focused</Button>
     </Stack>
   );
 };

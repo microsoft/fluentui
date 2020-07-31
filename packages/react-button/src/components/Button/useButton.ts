@@ -1,23 +1,12 @@
 import * as React from 'react';
 import { ButtonState } from './Button.types';
-import { useMergedRefs } from '@uifabric/react-hooks';
+// import { useMergedRefs } from '@uifabric/react-hooks';
+
 /**
  * The useButton hook processes the Button draft state.
  * @param draftState - Button draft state to mutate.
  */
 export const useButton = (draftState: ButtonState) => {
-  const buttonRef = (draftState.buttonRef = React.useRef<HTMLButtonElement | null>(null));
-
-  // Ensure we can use a ref.
-  draftState.ref = useMergedRefs(draftState.ref, buttonRef);
-
-  // Define the componentRef contract.
-  React.useImperativeHandle(draftState.componentRef, () => ({
-    focus: () => {
-      buttonRef.current?.focus();
-    },
-  }));
-
   // Update the button's tab-index, keyboard handling, and aria attributes.
   if (draftState.as !== 'button') {
     draftState.role = 'button';
@@ -28,7 +17,7 @@ export const useButton = (draftState: ButtonState) => {
 
       draftState['data-isFocusable'] = true;
 
-      draftState.onKeyDown = (ev: React.KeyboardEvent<Element>) => {
+      draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
         if (onKeyDown) {
           onKeyDown(ev);
         }
