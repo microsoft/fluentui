@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding an option to show total counts in line chart legend, and new type in yCalloutData to support new tooltip design in line chart",
-  "packageName": "@uifabric/charting",
-  "email": "jijun@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-22T21:06:20.499Z"
-}

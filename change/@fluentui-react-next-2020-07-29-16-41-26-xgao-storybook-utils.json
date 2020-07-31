@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Use withThemeProvider storybook decorator from @fluentui/storybook package.",
-  "packageName": "@fluentui/react-next",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-29T23:40:57.782Z"
-}
