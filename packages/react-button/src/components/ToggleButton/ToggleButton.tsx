@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ToggleButtonProps } from './ToggleButton.types';
-import { makeClasses } from '@fluentui/react-compose/lib/next';
+import { makeClasses } from '@fluentui/react-compose/lib/next/index';
 import { createToggleButton } from './createToggleButton';
 import { useFocusRects } from '@uifabric/utilities';
 import { useInlineTokens } from '@fluentui/react-theme-provider';

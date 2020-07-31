@@ -6,9 +6,9 @@
 
 import { BaseSlots } from '@fluentui/react-compose';
 import { ColorTokens } from '@fluentui/react-theme-provider';
-import { ComponentProps } from '@fluentui/react-compose/lib/next';
+import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
-import { ShorthandProps } from '@fluentui/react-compose/lib/next';
+import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { SlotProps } from '@fluentui/react-compose';
 
 // @public

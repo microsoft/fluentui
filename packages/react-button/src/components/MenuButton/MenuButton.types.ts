@@ -1,4 +1,4 @@
-import { ShorthandProps } from '@fluentui/react-compose/lib/next';
+import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ButtonProps, ButtonState, ButtonTokenSet } from '../Button/Button.types';
 import { ExpandedState } from './useExpanded';
 

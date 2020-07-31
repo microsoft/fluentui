@@ -5,7 +5,7 @@ import { createMenuButton } from './createMenuButton';
 import { MenuButtonProps } from './MenuButton.types';
 import * as classes from './MenuButton.scss';
 import { useButtonClasses } from '../Button/Button';
-import { makeClasses } from '@fluentui/react-compose/lib/next';
+import { makeClasses } from '@fluentui/react-compose/lib/next/index';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 
 export const useMenuButtonClasses = makeClasses(classes);
