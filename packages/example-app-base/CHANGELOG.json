@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.101",
+      "version": "7.12.101",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated syntax highlighting to remove a11y violations",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "56673c9157fa64c2ac2d8684b0c9f119ee668990",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jul 2020 12:40:51 GMT",
       "tag": "@uifabric/example-app-base_v7.12.97",
       "version": "7.12.97",

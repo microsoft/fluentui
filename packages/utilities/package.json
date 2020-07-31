@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "7.24.5",
+  "version": "7.24.6",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

@@ -1,15 +1,14 @@
 import { Accessibility } from '../../types';
+import { datepickerCalendarGridBehavior } from './datepickerCalendarGridBehavior';
 /**
  * @description
  * Behavior for a datepicked calendar component
  * @specification
- * Adds role='group'.
+ * Applies 'datepickerCalendarGridBehavior' for 'calendarGrid' child component.
  */
 export const datepickerCalendarBehavior: Accessibility<DatepickerCalendarBehaviorProps> = props => ({
-  attributes: {
-    root: {
-      role: 'group',
-    },
+  childBehaviors: {
+    calendarGrid: datepickerCalendarGridBehavior,
   },
 });
 

@@ -31,6 +31,13 @@ export interface ISankeyChartProps {
   theme?: ITheme;
 
   /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>;
@@ -57,6 +64,7 @@ export interface ISankeyChartStyleProps {
   width: number;
   height: number;
   pathColor?: string;
+  calloutColor?: string;
 }
 
 export interface ISankeyChartStyles {
@@ -74,4 +82,43 @@ export interface ISankeyChartStyles {
    *  Style for the links.
    */
   links?: IStyle;
+
+  /**
+   *  Style for the links.
+   */
+  path?: IStyle;
+
+  /**
+   * styles for callout root-content
+   */
+  calloutContentRoot?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutDateTimeContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutInfoContainer?: IStyle;
+
+  /**
+   * styles for callout Date time container
+   */
+  calloutBlockContainer?: IStyle;
+
+  /**
+   * styles for callout y-content
+   */
+  calloutlegendText?: IStyle;
+
+  /**
+   * styles for callout x-content
+   */
+  calloutContentX?: IStyle;
+  /**
+   * styles for callout y-content
+   */
+  calloutContentY?: IStyle;
 }
