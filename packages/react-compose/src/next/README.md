@@ -1,6 +1,6 @@
 # @fluentui/react-compose
 
-`@fluentui/react-compose` is a librry of utilities for composing Fluent UI components.
+`@fluentui/react-compose` is a library of utilities for composing Fluent UI components.
 
 ## A basic component walkthrough
 
