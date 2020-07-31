@@ -214,7 +214,7 @@ const foo = simplifyShorthand(
 );
 ```
 
-Results in bojects which can be merged correctly:
+Results in objects which can be merged correctly:
 
 ```jsx
 {
