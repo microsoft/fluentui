@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
+import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps, EyeIcon } from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
 import { OpenOutsideIcon, TrashCanIcon, FilesUploadIcon } from '@fluentui/react-icons-northstar';
 
@@ -8,6 +8,7 @@ export type ToolbarProps = {
   isSelecting: boolean;
   onModeChange: (mode: DesignerMode) => void;
   onReset: () => void;
+  showAxeErrors: () => void;
   onUpload: (jsonTree: {}) => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
@@ -26,6 +27,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   isSelecting,
   onModeChange,
   onReset,
+  showAxeErrors,
   onUpload,
   onShowCodeChange,
   onShowJSONTreeChange,
@@ -147,6 +149,8 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           icon={<FilesUploadIcon />}
           content="Upload"
         />
+        &emsp;
+        <Button text onClick={showAxeErrors} icon={<EyeIcon />} content="Accessibility check" />
         &emsp;
         <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
       </div>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import { useImmerReducer, Reducer } from 'use-immer';
+import * as axeCore from 'axe-core';
 import { Text, Button, Table } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Editor, renderElementToJSX } from '@fluentui/docs-components';
@@ -50,6 +51,72 @@ const focusTreeTitle = uuid => {
   // TODO: use refs
   const element = document.querySelector(`#${uuid} [data-is-focusable]`) as HTMLElement;
   element && element.focus();
+};
+
+const affectedNodes = [];
+
+// const tableOfViolations = violations => {
+//   const rows = violations.map((violation, index) => {
+//     return {
+//       styles: { height: '12rem' },
+//       key: index,
+//       items: [
+//         violation.failureSummary,
+//         violation.description,
+//         violation.target,
+//         violation.html,
+//         violation.xpath,
+//         violation.dataBuilderId,
+//       ],
+//     };
+//   });
+//   const header = {
+//     items: ['Failure summary', 'Description', 'Target', 'HTML', 'XPATH', 'DataBuilderId'],
+//   };
+//   return violations.length > 0 && <Table header={header} rows={rows} aria-label="Specification component table" />;
+// };
+
+function findDataBuilderId(element) {
+  const parentElement = element.parentElement;
+  if (!parentElement) {
+    return 'cannot find parent element';
+  }
+  const parentElementDataBuilderId = parentElement.getAttribute('data-builder-id');
+  if (parentElementDataBuilderId) {
+    return parentElementDataBuilderId;
+  }
+  return findDataBuilderId(parentElement);
+}
+
+const getDataBuilderId = element => {
+  if (!element) {
+    return 'data-builder-id not found';
+  }
+  const dataBuilderId = (element as any).getAttribute('data-builder-id');
+  if (dataBuilderId) {
+    return dataBuilderId;
+  }
+  return findDataBuilderId(element);
+};
+
+const processNode = (node, errDescription) => {
+  if (node.target[0] && node.target[1] && node.target[0].indexOf('frame') >= 0 && node.target[1].indexOf('html') >= 0) {
+    // return because these errors are reported generally for iframe, what is not real case
+    return;
+  }
+
+  const iframe: any = document.querySelector(`${node.target[0]}`);
+  const affectedElement = iframe.contentWindow.document.querySelector(`${node.target[1]}`);
+
+  const dataBuilderIdValue = getDataBuilderId(affectedElement);
+  affectedNodes.push({
+    html: node.html,
+    dataBuilderId: dataBuilderIdValue,
+    failureSummary: node.failureSummary,
+    description: errDescription,
+    target: node.target.length > 1 ? node.target.join(' ') : node.target[0],
+    xpath: node.xpath.length > 1 ? node.xpath.join(' ') : node.xpath[0],
+  });
 };
 
 type JSONTreeOrigin = 'store' | 'url';
@@ -214,11 +281,13 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       }
       break;
 
-    case 'OPEN_ADD_DIALOG': {
-      const parent = jsonTreeFindParent(draftState.jsonTree, action.uuid);
-      draftState.insertComponent = { where: action.where, uuid: action.uuid, parentUuid: `${parent?.uuid}` };
+    case 'OPEN_ADD_DIALOG':
+      draftState.insertComponent = {
+        where: action.where,
+        uuid: action.uuid,
+        parentUuid: `${jsonTreeFindParent(draftState.jsonTree, action.uuid)?.uuid}`,
+      };
       break;
-    }
 
     case 'CLOSE_ADD_DIALOG':
       draftState.insertComponent = null;
@@ -310,9 +379,57 @@ export const Designer: React.FunctionComponent = () => {
 
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+  const [axeErrors, setAxeErrors] = React.useState([]);
+  const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
+
+  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
+    _.mapValues(aaForComponent, message => ({ source: 'AA', error: message })),
+  );
+  for (let i = 0; i < axeErrors.length; i++) {
+    const id = axeErrors[i].dataBuilderId;
+    if (!accessibilityErrors[id]) {
+      accessibilityErrors[id] = {};
+    }
+    accessibilityErrors[id][i] = { source: 'AXE', error: axeErrors[i].failureSummary };
+  }
   const [showAccSpec, handleShowAccSpecChange] = React.useState(false);
 
-  const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
+  const getAxeResults = () => {
+    const iframeId = document.getElementsByTagName('iframe')[0].getAttribute('id');
+    const $iframe = document.getElementById(iframeId);
+
+    axeCore.run(
+      $iframe,
+      {
+        xpath: true,
+        elementRef: true,
+        rules: {
+          // excluding rules which are related to the whole page not to components
+          'page-has-heading-one': { enabled: false },
+          region: { enabled: false },
+          'landmark-one-main': { enabled: false },
+        },
+      },
+      (err, result) => {
+        if (err) {
+          console.error('Axe failed', err);
+        } else {
+          console.table(result.violations);
+          if (result.violations.length > 0) {
+            result.violations.forEach(violation => {
+              if (violation.nodes.length > 0) {
+                const description = violation.description;
+                violation.nodes.forEach(node => {
+                  processNode(node, description);
+                });
+              }
+            });
+          }
+          setAxeErrors(affectedNodes);
+        }
+      },
+    );
+  };
 
   const [components, setComponents] = React.useState([]);
 
@@ -589,6 +706,7 @@ export const Designer: React.FunctionComponent = () => {
         showAccSpec={showAccSpec}
         showCode={showCode}
         showJSONTree={showJSONTree}
+        showAxeErrors={getAxeResults}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
@@ -782,7 +900,10 @@ export const Designer: React.FunctionComponent = () => {
                 </h4>
                 <ul>
                   {_.keys(accessibilityErrors[selectedComponent.uuid]).map(errorId => (
-                    <li>{accessibilityErrors[selectedComponent.uuid][errorId]}</li>
+                    <li>
+                      <strong>{accessibilityErrors[selectedComponent.uuid][errorId].source}</strong>&nbsp;
+                      {accessibilityErrors[selectedComponent.uuid][errorId].error}
+                    </li>
                   ))}
                 </ul>
               </div>
