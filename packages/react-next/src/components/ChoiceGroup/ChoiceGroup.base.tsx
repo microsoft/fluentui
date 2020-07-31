@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { Label } from '../../Label';
 import {
-  initializeComponentRef,
   warnDeprecations,
   warnMutuallyExclusive,
   classNamesFunction,
   find,
-  getId,
   isControlled,
   getNativeProps,
   divProperties,
@@ -22,22 +20,20 @@ import { ChoiceGroupOption, IChoiceGroupOptionProps } from './ChoiceGroupOption/
 import { useConst, useId, useConstCallback } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
-const useComponentRef = (
-  elementToFocus: HTMLElement | null,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  optionToFocus: any,
-  options,
-  keyChecked,
-) => {
+
+const useComponentRef = (props: IChoiceGroupProps, elementToFocus: HTMLElement | null, componentRef) => {
   React.useImperativeHandle(
+    props.componentRef,
     () => ({
+      get checkedOption() {
+        return find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
+      },
       focus() {
+        const optionToFocus = checkedOption || options.filter(option => !option.disabled)[0];
+        const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus));
         if (elementToFocus) {
           elementToFocus.focus();
         }
-      },
-      checkedOption() {
-        return find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
       },
     }),
     [],
@@ -64,6 +60,21 @@ export const ChoiceGroupBase: React.FunctionComponent = (props: IChoiceGroupProp
   });
 
   const ariaLabelledBy = props.ariaLabelledBy || (label ? labelId : props['aria-labelledby']);
+
+  // React.useImperativeHandle(
+  //   () => ({
+  //     checkedOption() {
+  //       return find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
+  //     },
+
+  //     focus() {
+  //       if (elementToFocus) {
+  //         elementToFocus.focus();
+  //       }
+  //     },
+  //   }),
+  //   [],
+  // );
 
   /**
    * Returns `selectedKey` if provided, or the key of the first option with the `checked` prop set.
@@ -136,10 +147,13 @@ export const ChoiceGroupBase: React.FunctionComponent = (props: IChoiceGroupProp
     });
   }
 
-  const optionToFocus = checkedOption || options.filter(option => !option.disabled)[0];
+  const optionToFocus =
+    find(options, (value: IChoiceGroupOption) => value.key === keyChecked) ||
+    options.filter(option => !option.disabled)[0];
+
   const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus));
 
-  useComponentRef(elementToFocus, optionToFocus);
+  useComponentRef(elementToFocus);
   // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
   // `applicationRole` class (but the div structure will stay the same by necessity)
   return (
