@@ -12,11 +12,13 @@ export type ToolbarProps = {
   onUpload: (jsonTree: {}) => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
+  onShowAccSpecChange: (showAccSpec: boolean) => void;
   eenabledVirtualCursor: boolean;
   onEnableVirtualCursor: (enableVirtualCursor: boolean) => void;
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
+  showAccSpec: boolean;
   style?: React.CSSProperties;
 };
 
@@ -35,6 +37,8 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   style,
   eenabledVirtualCursor,
   onEnableVirtualCursor,
+  onShowAccSpecChange,
+  showAccSpec,
 }) => {
   const uploadInputRef = React.useRef<HTMLInputElement>();
   return (
@@ -110,6 +114,15 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           toggle
           checked={!!showJSONTree}
           onChange={(e, data) => onShowJSONTreeChange(data.checked)}
+        />
+        &emsp;
+        <Checkbox
+          label="Show Acc Spec"
+          toggle
+          checked={!!showAccSpec}
+          onChange={(e, data) => {
+            onShowAccSpecChange(data.checked);
+          }}
         />
         &emsp;
         <input

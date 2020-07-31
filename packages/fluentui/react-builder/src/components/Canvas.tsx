@@ -112,8 +112,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     document.body.style.outline = '';
     document.body.style.outlineOffset = '';
     onMessage('');
-    // eslint-disable-next-line
-  }, [iframeRef.current]);
+  }, [onMessage]);
 
   const handleFocus = React.useCallback(
     (ev: FocusEvent) => {
@@ -134,8 +133,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
         blur();
       }
     },
-    // eslint-disable-next-line
-    [jsonTree, iframeRef.current, onMessage],
+
+    [jsonTree, onMessage, blur],
   );
 
   const handleBlur = React.useCallback(
@@ -144,7 +143,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       ev.stopPropagation();
       blur();
     },
-    // eslint-disable-next-line
+
     [blur],
   );
 
@@ -288,6 +287,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       // console.log('Canvas:effect elements', elements);
 
+      if (!enabledVirtualCursor) {
+        iframeDocument.querySelector('.virtual-focused')?.classList.remove('virtual-focused');
+      }
+
       const elementStyles = !isExpanding
         ? ''
         : Array.from(elements)
@@ -371,7 +374,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
       iframe.contentWindow.clearTimeout(animationFrame);
     };
-  }, [iframeId, isExpanding, isSelecting, mode, jsonTree, role]);
+  }, [iframeId, isExpanding, isSelecting, mode, jsonTree, role, enabledVirtualCursor]);
 
   return (
     <Frame
