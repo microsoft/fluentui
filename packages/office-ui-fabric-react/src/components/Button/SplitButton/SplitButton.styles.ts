@@ -57,6 +57,12 @@ export const getStyles = memoizeFunction(
             },
             '.ms-Button--primary + .ms-Button': {
               border: 'none',
+              selectors: {
+                [HighContrastSelector]: {
+                  border: '1px solid WindowText',
+                  borderLeftWidth: '0',
+                },
+              },
             },
           },
         },
