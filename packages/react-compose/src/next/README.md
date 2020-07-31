@@ -8,7 +8,7 @@ Building a recomposable component requires that we build legos; we put them toge
 
 - **State hooks** - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
 - **Render function** - a function which takes in final state and returns JSX. (e.g. `renderButton`)
-- **Component factory function** - a create\* function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of teh component as needed.
+- **Component factory function** - a create function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of the component as needed.
 - **Style hooks** - hooks which can take in styles and provide appropriate classnames to the anatomy of the component.
 
 With these building blocks, you can compose or recompose the component in numerous ways.
