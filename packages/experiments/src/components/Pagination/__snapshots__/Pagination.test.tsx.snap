@@ -61,6 +61,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -77,6 +78,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           }
           &:focus {
             outline: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: grayText;
+            color: grayText;
           }
       data-is-focusable={false}
       disabled={true}
@@ -127,9 +132,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: GrayText;
               }
           data-icon-name="Previous"
           role="presentation"
@@ -192,6 +194,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -208,6 +211,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           }
           &:focus {
             outline: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: grayText;
+            color: grayText;
           }
       data-is-focusable={false}
       disabled={true}
@@ -258,9 +265,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: GrayText;
               }
           data-icon-name="CaretSolidLeft"
           role="presentation"
@@ -323,6 +327,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -429,6 +434,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -535,6 +541,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -641,6 +648,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -747,6 +755,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -849,6 +858,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -990,6 +1000,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1142,6 +1153,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1158,6 +1170,10 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         }
         &:focus {
           outline: 0px;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-color: grayText;
+          color: grayText;
         }
     data-is-focusable={false}
     disabled={true}
@@ -1208,9 +1224,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
               text-align: center;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: GrayText;
             }
         data-icon-name="Previous"
         role="presentation"
@@ -1273,6 +1286,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1289,6 +1303,10 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         }
         &:focus {
           outline: 0px;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-color: grayText;
+          color: grayText;
         }
     data-is-focusable={false}
     disabled={true}
@@ -1339,9 +1357,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
               text-align: center;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: GrayText;
             }
         data-icon-name="CaretSolidLeft"
         role="presentation"
@@ -1610,6 +1625,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1767,6 +1783,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1895,6 +1912,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;

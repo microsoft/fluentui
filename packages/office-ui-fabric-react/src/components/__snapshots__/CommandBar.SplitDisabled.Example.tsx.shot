@@ -121,6 +121,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     & .ms-Button--primary + .ms-Button {
                       border: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+                      border-left-width: 0;
+                      border: 1px solid WindowText;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -534,6 +538,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     }
                     & .ms-Button--primary + .ms-Button {
                       border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+                      border-left-width: 0;
+                      border: 1px solid WindowText;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       background-color: Window;

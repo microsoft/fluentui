@@ -96,6 +96,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           & .ms-Button--primary + .ms-Button {
             border: none;
           }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
+          }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
             color: Window;
@@ -430,6 +434,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
@@ -785,6 +793,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           & .ms-Button--primary + .ms-Button {
             border: none;
           }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
+          }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
             background-color: Highlight;
             color: Window;
@@ -1127,6 +1139,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            border-left-width: 0;
+            border: 1px solid WindowText;
           }
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
