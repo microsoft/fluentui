@@ -16,7 +16,7 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
     },
     calloutMain: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
   };
 };

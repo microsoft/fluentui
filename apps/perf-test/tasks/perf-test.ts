@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const flamegrill = require('flamegrill');
 const scenarioIterations = require('../src/scenarioIterations');
-const scenarioNames = require('../src/scenarioNames');
 const { scenarioRenderTypes, DefaultRenderTypes } = require('../src/scenarioRenderTypes');
 const { argv } = require('@uifabric/build').just;
 
@@ -207,7 +206,6 @@ const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
 
-// tslint:disable-next-line:no-function-expression
 module.exports = async function getPerfRegressions() {
   const iterationsArgv = /** @type {number} */ argv().iterations;
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;

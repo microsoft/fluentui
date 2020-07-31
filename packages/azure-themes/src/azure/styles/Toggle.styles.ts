@@ -13,20 +13,42 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     pill: [
       {
         backgroundColor: semanticColors.bodyBackground,
+        selectors: {
+          '&:hover': {
+            backgroundColor: extendedSemanticColors.radioButtonPillUncheckedHover,
+          },
+        },
       },
       checked && {
         backgroundColor: extendedSemanticColors.controlAccent,
+        selectors: {
+          '&:hover': {
+            backgroundColor: extendedSemanticColors.radioButtonPillCheckedHover,
+          },
+        },
       },
       disabled && {
-        backgroundColor: BaseColors.GRAY_C8C6C4,
+        backgroundColor: extendedSemanticColors.radioButtonPillDisabled,
+        selectors: {
+          '&:hover': {
+            backgroundColor: `${extendedSemanticColors.radioButtonPillDisabled}`,
+          },
+        },
       },
+
       !checked &&
         disabled && {
-          backgroundColor: semanticColors.disabledBackground,
+          border: `1px solid ${extendedSemanticColors.radioButtonPillBorderDisabled} !important`,
+          backgroundColor: extendedSemanticColors.radioButtonPillDisabled,
         },
       disabled &&
         !checked && {
-          backgroundColor: extendedSemanticColors.toggleDisabledBackground,
+          backgroundColor: extendedSemanticColors.radioButtonPillUncheckedDisabled,
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.radioButtonPillUncheckedDisabled,
+            },
+          },
         },
     ],
     // toggle circle
@@ -35,10 +57,10 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         backgroundColor: extendedSemanticColors.controlOutlineHovered,
       },
       disabled && {
-        backgroundColor: extendedSemanticColors.buttonBackgroundHovered,
+        backgroundColor: extendedSemanticColors.radioButtonThumbCheckedDisabled,
       },
       !checked && {
-        backgroundColor: extendedSemanticColors.controlOutlineHovered,
+        backgroundColor: extendedSemanticColors.radioButtonThumbUnchecked,
       },
       checked &&
         !disabled && {
@@ -46,7 +68,7 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         },
       disabled &&
         !checked && {
-          backgroundColor: BaseColors.GRAY_C8C6C4,
+          backgroundColor: extendedSemanticColors.radioButtonThumbUncheckedDisabled,
         },
     ],
     root: [

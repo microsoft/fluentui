@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const CallIcon = createSvgIcon({
+export const CallIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg viewBox="8 8 16 16" role="presentation" focusable="false" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
@@ -27,5 +27,3 @@ const CallIcon = createSvgIcon({
   ),
   displayName: 'CallIcon',
 });
-
-export default CallIcon;

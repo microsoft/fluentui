@@ -219,6 +219,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={true}
               id="Slider0"
               onKeyDown={[Function]}
@@ -1137,6 +1140,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     top: 1px;
                     z-index: 1;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={false}
               id="Slider5"
               role="slider"
@@ -1635,6 +1641,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
               data-is-focusable={true}
               id="Slider7"
@@ -2780,6 +2789,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={true}
               id="Slider14"
               onKeyDown={[Function]}
@@ -3040,6 +3052,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
               data-is-focusable={true}
               id="Slider15"
@@ -3340,6 +3355,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={true}
               id="Slider16"
               onKeyDown={[Function]}
@@ -3600,6 +3618,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
               data-is-focusable={true}
               id="Slider17"

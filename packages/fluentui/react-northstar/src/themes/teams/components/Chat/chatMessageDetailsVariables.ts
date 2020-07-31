@@ -9,7 +9,7 @@ export interface ChatMessageDetailsVariables {
   detailsMargin: string;
 }
 
-export default (siteVars): ChatMessageDetailsVariables => ({
+export const chatMessageDetailsVariables = (siteVars): ChatMessageDetailsVariables => ({
   detailsColor: siteVars.colors.grey[350],
   detailsHoverColor: siteVars.colors.grey[500],
   detailsColorMine: siteVars.colors.grey[500],

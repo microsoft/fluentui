@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.97",
+      "version": "7.6.97",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove tslint references",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jun 2020 12:36:28 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.6.87",
       "version": "7.6.87",

@@ -15,7 +15,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
   const _onMenuDismiss = useCallback(() => {
     onMenuDismiss && onMenuDismiss();
     setExpanded(false);
-  }, [onMenuDismiss]);
+  }, [onMenuDismiss, setExpanded]);
 
   const _onClick = useCallback(
     (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
@@ -30,7 +30,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
         setExpanded(!expanded);
       }
     },
-    [disabled, expanded, onClick],
+    [disabled, expanded, onClick, setExpanded],
   );
 
   const _onKeyDown = useCallback(
@@ -49,7 +49,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
         }
       }
     },
-    [disabled, expanded, onKeyDown],
+    [disabled, onKeyDown, setExpanded],
   );
 
   const viewProps: IMenuButtonViewProps = {

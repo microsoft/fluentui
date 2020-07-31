@@ -6,6 +6,7 @@ import * as puppeteer from 'puppeteer';
 import * as os from 'os';
 import { getSarifReport } from '../getSarifReport';
 import { SarifLog } from 'axe-sarif-converter';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Result } from 'sarif';
 
 const ReactDOM = require('react-dom');
@@ -17,7 +18,7 @@ function dehydrateSarifReport(report: SarifLog): Result[] {
 
 async function testComponent(
   browserPromise: Promise<puppeteer.Browser>,
-  /* tslint:disable-next-line:no-any */
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   component: { name: string; pageName: string; elem: React.ReactElement<any> },
 ) {
   it(`checks accessibility of ${component.name} (${component.pageName})`, async () => {

@@ -209,7 +209,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
     );
   }
 
-  get isDisabled() {
+  public get isDisabled() {
     const { minYear } = this.props;
     return minYear !== undefined && this.props.fromYear < minYear;
   }
@@ -257,7 +257,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
     );
   }
 
-  get isDisabled() {
+  public get isDisabled() {
     const { maxYear } = this.props;
     return maxYear !== undefined && this.props.fromYear + CELL_COUNT > maxYear;
   }

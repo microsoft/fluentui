@@ -4,13 +4,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 import { ALIGNMENTS, POSITIONS } from '../../utils/positioner';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
   UIComponentProps,
   ChildrenComponentProps,
@@ -21,22 +15,22 @@ import {
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import SplitButtonToggle, { SplitButtonToggleProps } from './SplitButtonToggle';
-import Button, { ButtonProps } from '../Button/Button';
-import MenuButton, { MenuButtonProps } from '../MenuButton/MenuButton';
+import { SplitButtonToggle, SplitButtonToggleProps } from './SplitButtonToggle';
+import { Button, ButtonProps } from '../Button/Button';
+import { MenuButton, MenuButtonProps } from '../MenuButton/MenuButton';
 import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
 import { Ref } from '@fluentui/react-component-ref';
 import { PositioningProps } from '../../utils/positioner/types';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import {
   ComponentWithAs,
   useTelemetry,
   useAutoControlled,
   useAccessibility,
   getElementType,
+  useFluentContext,
   useUnhandledProps,
   useStyles,
 } from '@fluentui/react-bindings';
@@ -109,11 +103,11 @@ export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & 
 /**
  * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
  */
-const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
+export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
   FluentComponentStaticProps<SplitButtonProps> & {
     Toggle: typeof SplitButtonToggle;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(SplitButton.displayName, context.telemetry);
   setStart();
 
@@ -129,6 +123,7 @@ const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     align,
     flipBoundary,
     overflowBoundary,
+    popperRef,
     positionFixed,
     offset,
     unstable_pinned,
@@ -229,6 +224,7 @@ const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
                 align,
                 flipBoundary,
                 overflowBoundary,
+                popperRef,
                 positionFixed,
                 offset,
                 unstable_pinned,
@@ -284,6 +280,7 @@ SplitButton.propTypes = {
   onOpenChange: PropTypes.func,
   open: PropTypes.bool,
   size: customPropTypes.size,
+  popperRef: customPropTypes.ref,
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   toggleButton: customPropTypes.itemShorthand,
@@ -319,5 +316,3 @@ SplitButton.handledProps = Object.keys(SplitButton.propTypes) as any;
 SplitButton.create = createShorthandFactory({
   Component: SplitButton,
 });
-
-export default SplitButton;

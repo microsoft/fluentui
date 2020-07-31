@@ -3,7 +3,7 @@ import { Accessibility, AccessibilityDefinition } from '../../types';
 /**
  * @specification
  */
-const formFieldBehavior: Accessibility<FormFieldBehaviorProps> = props => {
+export const formFieldBehavior: Accessibility<FormFieldBehaviorProps> = props => {
   const definition: AccessibilityDefinition = {
     attributes: {
       root: {},
@@ -20,8 +20,6 @@ const formFieldBehavior: Accessibility<FormFieldBehaviorProps> = props => {
 
   return definition;
 };
-
-export default formFieldBehavior;
 
 export type FormFieldBehaviorProps = {
   /** Field has error message */

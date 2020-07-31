@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { useConst, usePrevious } from '@uifabric/react-hooks';
 import { mergeAriaAttributeValues } from '../../Utilities';
-import { IKeytipDataProps } from './KeytipData.types';
+import { KeytipDataOptions } from './KeytipData.types';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager, mergeOverflows, sequencesToID, getAriaDescribedBy } from '../../utilities/keytips/index';
 
-export type KeytipDataOptions = IKeytipDataProps;
-
 export interface IKeytipData {
   ariaDescribedBy: string | undefined;
-  targetElementAttributes: { [key: string]: string | undefined };
-  executeElementAttributes: { [key: string]: string | undefined };
+  keytipId: string | undefined;
 }
 
+/**
+ * Hook that creates attributes for components which are enabled with Keytip.
+ */
 export function useKeytipData(options: KeytipDataOptions): IKeytipData {
   const uniqueId = React.useRef<string>();
   const keytipProps: IKeytipProps | undefined = options.keytipProps
@@ -34,6 +34,8 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
       // Unregister Keytip in KeytipManager
       keytipProps && keytipManager.unregister(keytipProps, uniqueId.current!);
     };
+    // this is meant to run only at mount, and updates are handled separately
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const prevOptions = usePrevious(options);
@@ -48,12 +50,11 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
 
   let nativeKeytipProps: IKeytipData = {
     ariaDescribedBy: undefined,
-    targetElementAttributes: {},
-    executeElementAttributes: {},
+    keytipId: undefined,
   };
 
   if (keytipProps) {
-    nativeKeytipProps = getKtpAttrs(keytipManager, keytipProps, options.ariaDescribedBy);
+    nativeKeytipProps = getKeytipData(keytipManager, keytipProps, options.ariaDescribedBy);
   }
 
   return nativeKeytipProps;
@@ -64,7 +65,7 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
  * @param keytipProps - options for Keytip
  * @param describedByPrepend - ariaDescribedBy value to prepend
  */
-function getKtpAttrs(
+function getKeytipData(
   keytipManager: KeytipManager,
   keytipProps: IKeytipProps,
   describedByPrepend?: string,
@@ -82,15 +83,10 @@ function getKtpAttrs(
   if (newKeytipProps.overflowSetSequence) {
     keySequences = mergeOverflows(keySequences, newKeytipProps.overflowSetSequence);
   }
-  const ktpId = sequencesToID(keySequences);
+  const keytipId = sequencesToID(keySequences);
 
   return {
     ariaDescribedBy,
-    targetElementAttributes: {
-      'data-ktp-target': ktpId,
-    },
-    executeElementAttributes: {
-      'data-ktp-execute-target': ktpId,
-    },
+    keytipId,
   };
 }

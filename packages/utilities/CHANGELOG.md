@@ -1,8 +1,53 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 30 Jun 2020 12:33:36 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.24.5](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.5)
+
+Wed, 22 Jul 2020 12:40:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.4..@uifabric/utilities_v7.24.5)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14099](https://github.com/microsoft/fluentui/pull/14099) by elcraig@microsoft.com)
+
+## [7.24.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.3)
+
+Fri, 17 Jul 2020 12:38:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.2..@uifabric/utilities_v7.24.3)
+
+### Patches
+
+- fix: useFocusRects should resolve window inside useEffect ([PR #14063](https://github.com/microsoft/fluentui/pull/14063) by olfedias@microsoft.com)
+
+## [7.24.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.1)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.0..@uifabric/utilities_v7.24.1)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+
+## [7.24.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.23.0..@uifabric/utilities_v7.24.0)
+
+### Minor changes
+
+- findScrollableParent: Adding missing `Window` and `undefined` return types. ([PR #13953](https://github.com/microsoft/fluentui/pull/13953) by KevinTCoughlin@users.noreply.github.com)
+
+## [7.23.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.23.0)
+
+Fri, 03 Jul 2020 12:36:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.22.0..@uifabric/utilities_v7.23.0)
+
+### Minor changes
+
+- Refactor styled to return a functional component (with optional ref attribute) ([PR #13891](https://github.com/microsoft/fluentui/pull/13891) by miclo@microsoft.com)
 
 ## [7.22.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.22.0)
 

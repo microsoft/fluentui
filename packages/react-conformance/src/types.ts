@@ -62,10 +62,13 @@ export interface IsConformantOptions<TProps = {}> {
    */
   wrapperComponent?: React.ElementType;
   /**
-   * Child component that will receive unhandledProps
+   * Helpers such as FocusZone and Ref which should be ignored when finding nontrivial children.
    */
-  // tslint:disable-next-line:no-any
-  passesUnhandledPropsTo?: ComponentType<any>;
+  helperComponents?: React.ElementType[];
+  /**
+   * Child component that will receive unhandledProps.
+   */
+  passesUnhandledPropsTo?: ComponentType<TProps>;
 }
 
 export type ConformanceTest = (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => void;

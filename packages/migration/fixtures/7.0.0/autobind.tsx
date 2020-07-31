@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { Foo } from 'bar';
 
 import { IBaseProps, autobind } from 'office-ui-fabric-react/lib/Utilities';

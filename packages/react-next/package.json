@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.53",
+  "version": "8.0.0-alpha.71",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -34,6 +34,8 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
+    "@fluentui/common-styles": "^0.2.0",
+    "@fluentui/eslint-plugin": "^0.53.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -41,12 +43,12 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
-    "@fluentui/react-conformance": "^0.1.0",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-data": "^7.0.17",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.29",
-    "@uifabric/test-utilities": "^7.0.30",
-    "@uifabric/tslint-rules": "^7.2.2",
+    "@uifabric/example-data": "^7.0.20",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.32",
+    "@uifabric/test-utilities": "^7.0.34",
+    "@fluentui/react-conformance": "^0.1.0",
+    "@fluentui/storybook": "^0.1.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -57,17 +59,19 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.6.2",
-    "@fluentui/react-compose": "^0.11.8",
-    "@fluentui/react-focus": "^7.12.16",
-    "@fluentui/react-icons": "^0.1.33",
-    "@fluentui/react-theme-provider": "^0.3.4",
-    "@uifabric/icons": "^7.3.58",
-    "@uifabric/merge-styles": "^7.16.0",
-    "@uifabric/react-hooks": "^7.4.11",
-    "@uifabric/set-version": "^7.0.15",
-    "@uifabric/utilities": "^7.22.0",
-    "office-ui-fabric-react": "^7.121.8",
+    "@fluentui/react-button": "^0.7.10",
+    "@fluentui/react-compose": "^0.12.5",
+    "@fluentui/react-focus": "^7.12.25",
+    "@fluentui/react-icons": "^0.1.40",
+    "@fluentui/react-tabs": "^0.2.1",
+    "@fluentui/react-theme-provider": "^0.4.0",
+    "@uifabric/date-time": "^7.13.2",
+    "@uifabric/icons": "^7.3.65",
+    "@uifabric/merge-styles": "^7.16.3",
+    "@uifabric/react-hooks": "^7.6.2",
+    "@uifabric/set-version": "^7.0.18",
+    "@uifabric/utilities": "^7.24.5",
+    "office-ui-fabric-react": "^7.124.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

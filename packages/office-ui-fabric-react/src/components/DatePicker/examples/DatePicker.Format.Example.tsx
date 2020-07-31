@@ -90,11 +90,17 @@ export const DatePickerFormatExample: React.FC = () => {
         firstDayOfWeek={firstDayOfWeek}
         strings={DayPickerStrings}
         value={value!}
+        // eslint-disable-next-line react/jsx-no-bind
         onSelectDate={onSelectDate}
         formatDate={onFormatDate}
+        // eslint-disable-next-line react/jsx-no-bind
         parseDateFromString={onParseDateFromString}
       />
-      <DefaultButton onClick={onClick} text="Clear" />
+      <DefaultButton
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClick}
+        text="Clear"
+      />
       <div>{(value || '').toString()}</div>
     </div>
   );

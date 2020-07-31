@@ -40,7 +40,7 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
     disabled,
     underlined,
     styles,
-    /* tslint:disable-next-line:deprecation */
+    // eslint-disable-next-line deprecation/deprecation
     labelText,
     theme,
     clearButtonProps = { ariaLabel: 'Clear text' },
@@ -147,8 +147,19 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
-    <div role="search" ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
-      <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
+    <div
+      role="search"
+      ref={mergedRootRef}
+      className={classNames.root}
+      // eslint-disable-next-line react/jsx-no-bind
+      onFocusCapture={onFocusCapture}
+    >
+      <div
+        className={classNames.iconContainer}
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClickFocus}
+        aria-hidden
+      >
         <Icon iconName="Search" {...iconProps} className={classNames.icon} />
       </div>
       <input
@@ -156,9 +167,13 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
         id={id}
         className={classNames.field}
         placeholder={placeholderValue}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onInputChange}
+        // eslint-disable-next-line react/jsx-no-bind
         onInput={onInputChange}
+        // eslint-disable-next-line react/jsx-no-bind
         onBlur={onBlur}
+        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={onKeyDown}
         value={value}
         disabled={disabled}
@@ -169,10 +184,12 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
       {value!.length > 0 && (
         <div className={classNames.clearButton}>
           <IconButton
+            // eslint-disable-next-line react/jsx-no-bind
             onBlur={onBlur}
             styles={iconButtonStyles}
             iconProps={iconButtonProps}
             {...clearButtonProps}
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={onClearClick}
           />
         </div>

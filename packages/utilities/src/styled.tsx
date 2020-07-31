@@ -105,13 +105,14 @@ export function styled<
 
         return () => Customizations.unobserve(forceUpdate);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
     }, []);
 
     const settings = Customizations.getSettings(fields, scope, context.customizations);
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
 
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];
     if (!styles.current || customizedStyles !== cache[1] || props.styles !== cache[2]) {
       // Using styled components as the Component arg will result in nested styling arrays.
@@ -136,7 +137,7 @@ export function styled<
   });
   // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
   // able to drop IE 11 support and compile with ES6 libs
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Wrapped.displayName = `Styled${Component.displayName || (Component as any).name}`;
 
   // This preserves backwards compatibility.

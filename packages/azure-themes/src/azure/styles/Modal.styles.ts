@@ -10,7 +10,7 @@ export const ModalStyles = (props: IModalStyleProps): Partial<IModalStyles> => {
   return {
     root: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
     main: {
       borderColor: semanticColors.inputBorder,
