@@ -16,16 +16,13 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ComponentEventHandler, ComponentKeyboardEventHandler } from '../../types';
-import { commonPropTypes, UIComponentProps } from '../../utils';
+import { commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 
-export interface DatepickerCalendarCellProps extends UIComponentProps {
+export interface DatepickerCalendarCellProps extends UIComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<DatepickerCalendarCellBehaviorProps>;
-
-  /** Cell's primary content. */
-  content?: string;
 
   /**
    * Called on click.
@@ -34,14 +31,6 @@ export interface DatepickerCalendarCellProps extends UIComponentProps {
    * @param data - All props.
    */
   onClick?: ComponentEventHandler<DatepickerCalendarCellProps>;
-
-  /**
-   * Called on focus.
-   *
-   * @param event - React's original SyntheticEvent.
-   * @param data - All props.
-   */
-  onFocus?: ComponentEventHandler<DatepickerCalendarCellProps>;
 
   /** A cell can show that it cannot be interacted with. */
   disabled?: boolean;
@@ -113,11 +102,6 @@ export const DatepickerCalendarCell = compose<
       unstable_props: props,
     });
 
-    const handleFocus = (e: React.SyntheticEvent) => {
-      _.invoke(props, 'onFocus', e, props);
-    };
-
-
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
       if (disabled) {
         e.preventDefault();
@@ -132,8 +116,6 @@ export const DatepickerCalendarCell = compose<
         {...getA11yProps('root', {
           className: classes.root,
           onClick: handleClick,
-          onKeyDown: handleKeyDown,
-          onFocus: handleFocus,
           ref,
           ...unhandledProps,
         })}
@@ -156,7 +138,6 @@ export const DatepickerCalendarCell = compose<
       'design',
       'disabled',
       'onClick',
-      'onFocus',
       'selected',
       'styles',
       'variables',
@@ -167,7 +148,6 @@ export const DatepickerCalendarCell = compose<
 DatepickerCalendarCell.propTypes = {
   ...commonPropTypes.createCommon({ children: false }),
   onClick: PropTypes.func,
-  onFocus: PropTypes.func,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
 };

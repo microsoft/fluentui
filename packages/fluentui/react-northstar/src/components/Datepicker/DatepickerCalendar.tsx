@@ -288,9 +288,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             onDateChange(e, { ...predefinedProps, value: day });
             _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
           },
-          onFocus: e => {
-            _.invoke(predefinedProps, 'onFocus', e, { ...predefinedProps, value: day });
-          },
           onKeyDown: e => {
             handleKeyDown(e, day);
             _.invoke(predefinedProps, 'onKeyDown', e, { ...predefinedProps, value: day });
