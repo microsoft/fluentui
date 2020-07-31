@@ -4,6 +4,11 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
+/**
+ * Generic set of module to class name map.
+ */
+export type ClassDictionary = Record<string, string>;
+
 export interface ComponentProps extends GenericDictionary {
   as?: React.ElementType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

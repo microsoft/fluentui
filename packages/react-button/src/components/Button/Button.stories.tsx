@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from './Button';
-import { ButtonProps } from './Button.types';
+import { ButtonProps, ButtonRef } from './Button.types';
 import * as classes from './Button.stories.scss';
 
 /**
@@ -35,6 +35,22 @@ const ButtonVariants = (props: ButtonProps) => (
   </Stack>
 );
 
+export const ButtonFocus = () => {
+  const buttonRef = React.useRef<ButtonRef>();
+  return (
+    <Stack>
+      <Button
+        onClick={() => {
+          // ok
+          buttonRef.current?.focus();
+        }}
+      >
+        Focus the other
+      </Button>
+      <Button componentRef={buttonRef}>I get focused</Button>
+    </Stack>
+  );
+};
 export const ButtonCss = () => (
   <Stack>
     <Text>A button comes in default and `primary` flavors.</Text>

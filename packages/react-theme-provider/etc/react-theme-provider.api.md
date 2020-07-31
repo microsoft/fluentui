@@ -93,13 +93,17 @@ export type TokenSetType = string | {
 };
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: {
-    [key: string]: string | {
+export const tokensToStyleObject: (tokens?: string | {
+    [key: string]: string | any | undefined;
+} | undefined, prefix?: string | undefined, style?: import("react").CSSProperties | undefined) => import("react").CSSProperties;
+
+// @public
+export const useInlineTokens: (draftState: {
+    style?: import("react").CSSProperties | undefined;
+    tokens?: string | {
         [key: string]: string | any | undefined;
     } | undefined;
-} | undefined, prefix?: string | undefined, style?: {
-    [key: string]: string | number | undefined;
-}) => import("react").CSSProperties;
+}) => void;
 
 // @public
 export const useTheme: () => Theme;
