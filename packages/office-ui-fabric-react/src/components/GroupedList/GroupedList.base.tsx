@@ -111,12 +111,12 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     const { version } = listProps;
 
-    const { isInnerZoneKeystroke = this._isInnerZoneKeystroke } = focusZoneProps;
+    const { isInnerZoneKeystroke = this._isInnerZoneKeystroke, shouldEnterInnerZone } = focusZoneProps;
 
     return (
       <FocusZone
         {...focusZoneProps}
-        isInnerZoneKeystroke={isInnerZoneKeystroke}
+        shouldEnterInnerZone={shouldEnterInnerZone || isInnerZoneKeystroke}
         direction={FocusZoneDirection.vertical}
         className={css(this._classNames.root, focusZoneProps.className)}
         data-automationid="GroupedList"
