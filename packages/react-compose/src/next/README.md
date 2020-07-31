@@ -115,7 +115,7 @@ const renderButton = state => {
 
 #### Supporting shorthand props
 
-Fluent UI components almost always contain sub parts, and these sub parts should be configurable. We allows them to be configured through "shorthand props", which let's the caller pass in a variety of inputs for a given slot. Take a Button's "icon" slot:
+Fluent UI components almost always contain sub parts, and these sub parts should be configurable. We allow them to be configured through "shorthand props", which lets the caller pass in a variety of inputs for a given slot. Take a Button's "icon" slot:
 
 ```jsx
 // The icon can be a string
