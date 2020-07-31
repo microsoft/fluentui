@@ -143,9 +143,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           },
           highContrastItemAndTitleStateMixin,
         ],
-        [HighContrastSelector]: {
-          //borderColor: 'Window',
-        },
         [`.${IsFocusVisibleClassName} &:focus:after`]: {
           left: 0,
           top: 0,
@@ -198,7 +195,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       fonts.medium,
       {
         color: semanticColors.menuItemText,
-        //borderColor: semanticColors.focusBorder,
+        borderColor: semanticColors.focusBorder,
         position: 'relative',
         outline: 0,
         userSelect: 'none',
@@ -229,7 +226,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
 
               selectors: {
                 [HighContrastSelector]: {
-                  //borderColor: 'Highlight',
                   color: 'Highlight',
                 },
               },
@@ -237,7 +233,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ],
           ['&:active .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            //{ borderColor: palette.themePrimary },
+            { borderColor: palette.themePrimary },
             highContrastBorderState,
           ],
 
