@@ -187,7 +187,7 @@ const renderButton = state => {
 ### mergeProps(target, ...rest)
 
 The `mergeProps` function takes in state and compose options, and resolves slots and slotProps.
-It's expected that the component will call mergeProps(state, options) from within
+It's expected that the component will call `mergeProps(state, options)` from within
 render; after resolving state and before rendering slots and slotProps.
 
 Example:
