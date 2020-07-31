@@ -9,7 +9,7 @@ import {
   warnMutuallyExclusive,
 } from '@uifabric/utilities/lib/warn';
 import { usePrevious } from './usePrevious';
-import { useId } from './useId';
+import { useConst } from './useConst';
 
 export interface IWarningOptions<P> {
   /** Name of the component */
@@ -59,6 +59,8 @@ export interface IWarningOptions<P> {
   >;
 }
 
+let warningId = 0;
+
 /**
  * Only in development mode, display console warnings when certain conditions are met.
  * Note that all warnings except `controlledUsage` will only be shown on first render
@@ -78,7 +80,7 @@ export function useWarnings<P>(options: IWarningOptions<P>) {
 
     /* eslint-disable react-hooks/rules-of-hooks -- build-time conditional */
     const hasWarnedRef = React.useRef(false);
-    const componentId = useId();
+    const componentId = useConst(() => `useWarnings_${warningId++}`);
     const oldProps = usePrevious(props);
     /* eslint-enable react-hooks/rules-of-hooks */
 
