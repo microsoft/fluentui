@@ -222,7 +222,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._barWidth = this.props.barwidth!;
   }
 
-  private _fitParentContainer(calledFrom?: boolean): void {
+  private _fitParentContainer(calledFromDidMount?: boolean): void {
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
       const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
@@ -245,7 +245,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             containerHeight: currentContainerHeight - legendContainerHeight,
           },
           () => {
-            if (calledFrom) {
+            if (calledFromDidMount) {
               this._drawGraph();
             }
           },
