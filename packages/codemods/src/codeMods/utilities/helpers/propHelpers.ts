@@ -90,11 +90,14 @@ export function renamePropInSpread(
           if (variableStatementWithSpreadProp) {
             switch (locateSpreadPropInStatement(variableStatementWithSpreadProp, propSpreadName, newSpreadName)) {
               case SpreadPropInStatement.PropLeft: {
-                console.log('propleft found');
-                parentContainer.insertVariableStatement(
-                  insertIndex,
-                  createDeconstructedProp(newSpreadName, toRename, propSpreadName),
-                );
+                if (!propAlreadyExists(parentContainer, toRename)) {
+                  parentContainer.insertVariableStatement(
+                    insertIndex,
+                    createDeconstructedProp(newSpreadName, toRename, propSpreadName),
+                  );
+                } else {
+                  newSpreadName = propSpreadName;
+                }
                 break;
               }
               case SpreadPropInStatement.SpreadPropLeft: {
@@ -116,6 +119,8 @@ export function renamePropInSpread(
                 newSpreadName = propSpreadName;
                 if (!propAlreadyExists(parentContainer, toRename)) {
                   tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
+                } else {
+                  newSpreadName = propSpreadName;
                 }
                 break;
               }
@@ -127,10 +132,14 @@ export function renamePropInSpread(
               }
             }
           } else {
-            parentContainer.insertVariableStatement(
-              insertIndex,
-              createDeconstructedProp(newSpreadName, toRename, propSpreadName),
-            );
+            if (!propAlreadyExists(parentContainer, toRename)) {
+              parentContainer.insertVariableStatement(
+                insertIndex,
+                createDeconstructedProp(newSpreadName, toRename, propSpreadName),
+              );
+            } else {
+              newSpreadName = propSpreadName;
+            }
           }
 
           /* Step 8: Declare other auxiliary objects if necessary (i.e. value mapping case). */
@@ -176,7 +185,6 @@ export function renamePropInSpread(
             // don't replace unless you know you added it
             attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
           }
-          console.log('adding attribute');
           element.addAttribute({
             name: replacementName,
             initializer: changeValueMap
