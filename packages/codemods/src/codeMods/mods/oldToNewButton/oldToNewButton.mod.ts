@@ -6,7 +6,7 @@ const oldToNewButton: CodeMod = {
   run: (file: SourceFile) => {
     try {
       const tags = findJsxTag(file, 'DefaultButton');
-      renameProp(tags, 'ariaLabel', 'ariaLabel', 'newwwww label!');
+      renameProp(tags, 'ariaLabel', 'splitButtonAriaLabel', `'${'text'}'`);
     } catch (e) {
       return { success: false };
     }

@@ -90,6 +90,7 @@ export function renamePropInSpread(
           if (variableStatementWithSpreadProp) {
             switch (locateSpreadPropInStatement(variableStatementWithSpreadProp, propSpreadName, newSpreadName)) {
               case SpreadPropInStatement.PropLeft: {
+                console.log('propleft found');
                 parentContainer.insertVariableStatement(
                   insertIndex,
                   createDeconstructedProp(newSpreadName, toRename, propSpreadName),
@@ -106,7 +107,7 @@ export function renamePropInSpread(
                 if (existingDecomposedPropName.something) {
                   newSpreadName = existingDecomposedPropName.value;
                 }
-                if (!propAlreadyExists(parentContainer, toRename)) {
+                if (replacementValue === undefined && !propAlreadyExists(parentContainer, toRename)) {
                   tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
                 }
                 break;
@@ -125,30 +126,6 @@ export function renamePropInSpread(
                 break;
               }
             }
-            /* Get the name of the deconstructed object, becuase we'll try and reuse it. */
-            //   const existingDecomposedPropName = Maybe(
-            //     variableStatementWithSpreadProp.getFirstDescendantByKind(SyntaxKind.DotDotDotToken),
-            //   )
-            //     .then(val => val.getParent())
-            //     .then(val => val.getFirstChildByKind(SyntaxKind.Identifier))
-            //     .then(val => val.getText());
-            //   if (existingDecomposedPropName.something) {
-            //     newSpreadName = existingDecomposedPropName.value;
-            //   } else {
-            //     /* If there is no spread prop on the left side, use the right-side prop name. */
-            //     /* well it might not be on the left side at all */
-            //     newSpreadName = propSpreadName;
-            //   }
-            //   if (!propAlreadyExists(parentContainer, toRename)) {
-            //     tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
-            //   }
-            // } else {
-            //   /* If we could not find a variable statement with our spread prop in it, make one. */
-            //   parentContainer.insertVariableStatement(
-            //     insertIndex,
-            //     createDeconstructedProp(newSpreadName, toRename, propSpreadName),
-            //   );
-            // }
           } else {
             parentContainer.insertVariableStatement(
               insertIndex,
@@ -199,6 +176,7 @@ export function renamePropInSpread(
             // don't replace unless you know you added it
             attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
           }
+          console.log('adding attribute');
           element.addAttribute({
             name: replacementName,
             initializer: changeValueMap
@@ -237,7 +215,7 @@ function locateSpreadPropInStatement(
         if (leftSideObject.getText().includes('...')) {
           return SpreadPropInStatement.SpreadPropLeft;
         } else {
-          return SpreadPropInStatement.PropRight;
+          return SpreadPropInStatement.PropLeft;
         }
       }
     }
