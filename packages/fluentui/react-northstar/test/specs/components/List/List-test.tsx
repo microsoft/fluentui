@@ -3,9 +3,9 @@ import * as React from 'react';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 
-import List from 'src/components/List/List';
-import implementsCollectionShorthandProp from '../../commonTests/implementsCollectionShorthandProp';
-import ListItem, { ListItemProps } from 'src/components/List/ListItem';
+import { List } from 'src/components/List/List';
+import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
+import { ListItem, ListItemProps } from 'src/components/List/ListItem';
 
 const listImplementsCollectionShorthandProp = implementsCollectionShorthandProp(List);
 

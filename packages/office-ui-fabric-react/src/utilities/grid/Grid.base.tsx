@@ -29,10 +29,10 @@ export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
       columnCount,
       onRenderItem,
 
-      // tslint:disable:deprecation
+      /* eslint-disable deprecation/deprecation */
       ariaPosInSet = props.positionInSet,
       ariaSetSize = props.setSize,
-      // tslint:enable:deprecation
+      /* eslint-enable deprecation/deprecation */
 
       styles,
       doNotContainWithinFocusZone,

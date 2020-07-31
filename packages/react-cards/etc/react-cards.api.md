@@ -133,12 +133,15 @@ export type ICardTokenReturnType = ReturnType<Extract<ICardComponent['tokens'], 
 
 // @public (undocumented)
 export interface ICardTokens extends IStackTokens {
+    borderFocused?: string;
     boxShadow?: string;
+    boxShadowFocused?: string;
     boxShadowHovered?: string;
     childrenMargin?: number;
     cursor?: string;
     height?: number | string;
     highContrastBoxShadow?: string;
+    highContrastBoxShadowFocused?: string;
     highContrastBoxShadowHovered?: string;
     maxWidth?: number | string;
     minHeight?: number | string;

@@ -1,9 +1,7 @@
-import { ProviderContextPrepared, ColorVariants } from '@fluentui/react-northstar';
+import { useFluentContext, ColorVariants } from '@fluentui/react-northstar';
 import * as Color from 'color';
 import * as _ from 'lodash';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 type ComponentExampleColorPickerProps = {
   onChange: (colorValue: string) => void;
@@ -12,7 +10,7 @@ type ComponentExampleColorPickerProps = {
 
 const ComponentExampleColorPicker: React.FunctionComponent<ComponentExampleColorPickerProps> = props => {
   const { onChange, variableValue } = props;
-  const { theme } = React.useContext<ProviderContextPrepared>(ThemeContext);
+  const { theme } = useFluentContext();
 
   const handleClick = (colorValue: string) => () => {
     onChange(colorValue);

@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { MenuButtonProps } from '../../../../components/MenuButton/MenuButton';
 import { popupContentSlotClassNames } from '../../../../components/Popup/PopupContent';
 
-const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
+export const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
   root: () => ({
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -14,5 +14,3 @@ const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
     },
   }),
 };
-
-export default menuButtonStyles;

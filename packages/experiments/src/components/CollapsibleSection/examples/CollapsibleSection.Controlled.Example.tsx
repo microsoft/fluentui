@@ -9,7 +9,7 @@ export interface ICollapsibleSectionControlledExampleState {
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export class CollapsibleSectionControlledExample extends React.Component<
   {},
   ICollapsibleSectionControlledExampleState

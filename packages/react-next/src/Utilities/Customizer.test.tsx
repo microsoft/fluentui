@@ -119,10 +119,9 @@ describe('Customizer', () => {
     safeMount(
       <Customizer scopedSettings={{ Bar: { field: 'field' } }}>
         <Customizer
-          scopedSettings={
-            // tslint:disable-next-line:jsx-no-lambda
-            (scopedSettings: { Bar: { field2: string } }) => ({ Bar: { ...scopedSettings.Bar, field2: 'field2' } })
-          }
+          scopedSettings={(scopedSettings: { Bar: { field2: string } }) => ({
+            Bar: { ...scopedSettings.Bar, field2: 'field2' },
+          })}
         >
           <Bar />
         </Customizer>
@@ -137,10 +136,7 @@ describe('Customizer', () => {
     safeMount(
       <Customizer scopedSettings={{ Foo: { field: 'scopedToFoo' } }}>
         <Customizer
-          scopedSettings={
-            // tslint:disable-next-line:jsx-no-lambda
-            (settings: { Foo: { field: string } }) => ({ ...settings, Bar: { field: 'scopedToBar' } })
-          }
+          scopedSettings={(settings: { Foo: { field: string } }) => ({ ...settings, Bar: { field: 'scopedToBar' } })}
         >
           <div>
             <Foo />
@@ -170,12 +166,7 @@ describe('Customizer', () => {
   it('overrides the old settings when the parameter is ignored', () => {
     safeMount(
       <Customizer settings={{ field: 'field1' }}>
-        <Customizer
-          settings={
-            // tslint:disable-next-line:jsx-no-lambda
-            (settings: { field: string }) => ({ field: 'field2' })
-          }
-        >
+        <Customizer settings={(settings: { field: string }) => ({ field: 'field2' })}>
           <Bar />
         </Customizer>
       </Customizer>,
@@ -188,12 +179,7 @@ describe('Customizer', () => {
   it('can use a function to merge settings', () => {
     safeMount(
       <Customizer settings={{ field: 'field1' }}>
-        <Customizer
-          settings={
-            // tslint:disable-next-line:jsx-no-lambda
-            (settings: { field: string }) => ({ field: settings.field + 'field2' })
-          }
-        >
+        <Customizer settings={(settings: { field: string }) => ({ field: settings.field + 'field2' })}>
           <Bar />
         </Customizer>
       </Customizer>,

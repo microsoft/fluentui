@@ -1,7 +1,7 @@
 import * as React from 'react';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 
-const CustomerHubIcon = createSvgIcon({
+export const CustomerHubIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <path
@@ -67,5 +67,3 @@ const CustomerHubIcon = createSvgIcon({
   ),
   displayName: 'CustomerHubIcon',
 });
-
-export default CustomerHubIcon;

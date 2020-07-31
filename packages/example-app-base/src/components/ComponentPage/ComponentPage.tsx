@@ -139,7 +139,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
       }
 
-      // tslint:disable:max-line-length
+      /* eslint-disable @fluentui/max-len */
       return (
         <MessageBar>
           <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes
@@ -147,7 +147,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
           {componentNameJsx || 'this component'}.
         </MessageBar>
       );
-      // tslint:enable:max-line-length
+      /* eslint-enable @fluentui/max-len */
     }
   }
 
@@ -279,7 +279,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     return (
       <div key={id || title} className={css(classNames.section, wrapperClass)}>
         <Stack className={classNames.subHeading} {...headingWithEditStackProps}>
-          <h2 className={css(titleClass)} id={!!id ? id : undefined}>
+          <h2 className={css(titleClass)} id={id || undefined}>
             {title}
           </h2>
           {editUrl && <EditSection title={this.props.title} section={title} url={editUrl} />}

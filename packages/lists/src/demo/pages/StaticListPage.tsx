@@ -10,7 +10,7 @@ const StaticListExampleCode = require('!raw-loader!@uifabric/lists/src/component
 const StaticOrderedListExampleCode = require('!raw-loader!@uifabric/lists/src/components/StaticList/examples/StaticOrderedList.Example.tsx') as string;
 const StaticListTableExampleCode = require('!raw-loader!@uifabric/lists/src/components/StaticList/examples/StaticTable.Example.tsx') as string;
 
-/* tslint:disable-next-line:no-any */
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const Profiler = (React as any).unstable_Profiler;
 
 export class StaticListPage extends React.PureComponent<{}, { enableProfiler: boolean }> {
@@ -97,6 +97,7 @@ export class StaticListPage extends React.PureComponent<{}, { enableProfiler: bo
     startTime: number,
     commitTime: number,
   ): void {
+    // eslint-disable-next-line no-console
     console.table({ id, phase, actualTime, baseTime, startTime, commitTime });
   }
 }

@@ -21,7 +21,7 @@ export interface SliderVariables {
   trackColor: string;
   disabledTrackColor: string;
 }
-export default (siteVars: SiteVariablesPrepared): SliderVariables => {
+export const sliderVariables = (siteVars: SiteVariablesPrepared): SliderVariables => {
   const { colorScheme } = siteVars;
 
   return {

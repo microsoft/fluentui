@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
  *  Triggers 'nextItem' action with 'ArrowDown' or 'ArrowRight' on 'root'.
  *  Triggers 'prevItem' action with 'ArrowUp' or 'ArrowLeft' on 'root'.
  */
-const radioGroupBehavior: Accessibility<RadioGroupBehaviorProps> = () => ({
+export const radioGroupBehavior: Accessibility<RadioGroupBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'radiogroup',
@@ -29,5 +29,3 @@ const radioGroupBehavior: Accessibility<RadioGroupBehaviorProps> = () => ({
 });
 
 export type RadioGroupBehaviorProps = never;
-
-export default radioGroupBehavior;

@@ -45,7 +45,7 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// tslint:disable:jsx-no-lambda
+/* eslint-disable react/jsx-no-bind */
 export class ButtonStylesExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const testClassName = mergeStyles({ color: 'blue' });

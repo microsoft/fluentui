@@ -104,7 +104,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
     this._onClose = this._onClose.bind(this);
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps),
@@ -328,6 +327,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                             [styles.monthSelection]: dateRangeType === DateRangeType.Month,
                           },
                         )}
+                        // eslint-disable-next-line react/jsx-no-bind
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
                         onMouseOver={
                           dateRangeType !== DateRangeType.Day && day.isInBounds
@@ -364,6 +364,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                           aria-readonly={true}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
+                          // eslint-disable-next-line react/jsx-no-bind
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}
@@ -705,8 +706,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
 
   private _applyFunctionToDayRefs(func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void) {
     if (this.state.weeks) {
-      this.state.weeks.map((week: IDayInfo[], weekIndex: number) => {
-        week.map(day => {
+      this.state.weeks.forEach((week: IDayInfo[], weekIndex: number) => {
+        week.forEach(day => {
           const ref = this.days[day.key];
           func(ref, day, weekIndex);
         });

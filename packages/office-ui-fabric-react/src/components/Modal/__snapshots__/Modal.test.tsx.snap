@@ -258,6 +258,7 @@ exports[`Modal renders Modal correctly 1`] = `
               transition: opacity 0.267s;
               width: 100%;
             }
+        role="document"
       >
         <div
           className=

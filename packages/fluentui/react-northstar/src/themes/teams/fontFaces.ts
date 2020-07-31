@@ -1,6 +1,6 @@
 import { FontFaces } from '@fluentui/styles';
 
-const fontFaces: FontFaces = [
+export const fontFaces: FontFaces = [
   {
     name: 'Segoe UI',
     paths: [
@@ -21,5 +21,3 @@ const fontFaces: FontFaces = [
     props: { fontWeight: 700 },
   },
 ];
-
-export default fontFaces;

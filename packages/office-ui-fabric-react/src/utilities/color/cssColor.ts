@@ -118,7 +118,7 @@ function _hsla(str: string): IRGB | undefined {
  * Otherwise returns undefined.
  */
 function _hex6(str: string): IRGB | undefined {
-  if ('#' === str[0] && 7 === str.length && /^#[\da-fA-F]{6}$/.test(str)) {
+  if (str[0] === '#' && str.length === 7 && /^#[\da-fA-F]{6}$/.test(str)) {
     return {
       r: parseInt(str.slice(1, 3), 16),
       g: parseInt(str.slice(3, 5), 16),
@@ -133,7 +133,7 @@ function _hex6(str: string): IRGB | undefined {
  * Otherwise returns undefined.
  */
 function _hex3(str: string): IRGB | undefined {
-  if ('#' === str[0] && 4 === str.length && /^#[\da-fA-F]{3}$/.test(str)) {
+  if (str[0] === '#' && str.length === 4 && /^#[\da-fA-F]{3}$/.test(str)) {
     return {
       r: parseInt(str[1] + str[1], 16),
       g: parseInt(str[2] + str[2], 16),
