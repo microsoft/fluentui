@@ -144,7 +144,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           highContrastItemAndTitleStateMixin,
         ],
         [HighContrastSelector]: {
-          borderColor: 'Window',
+          //borderColor: 'Window',
         },
         [`.${IsFocusVisibleClassName} &:focus:after`]: {
           left: 0,
@@ -198,7 +198,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       fonts.medium,
       {
         color: semanticColors.menuItemText,
-        borderColor: semanticColors.focusBorder,
+        //borderColor: semanticColors.focusBorder,
         position: 'relative',
         outline: 0,
         userSelect: 'none',
@@ -229,7 +229,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
 
               selectors: {
                 [HighContrastSelector]: {
-                  borderColor: 'Highlight',
+                  //borderColor: 'Highlight',
                   color: 'Highlight',
                 },
               },
@@ -237,7 +237,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ],
           ['&:active .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: palette.themePrimary },
+            //{ borderColor: palette.themePrimary },
             highContrastBorderState,
           ],
 
@@ -353,9 +353,28 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
     dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
-    dropdownItem: [...dropdownItemStyle, itemSelectors()],
+    dropdownItem: [
+      ...dropdownItemStyle,
+      itemSelectors(),
+      {
+        selectors: {
+          [HighContrastSelector]: {
+            border: 'none',
+          },
+        },
+      },
+    ],
     dropdownItemSelected: dropdownItemSelected,
-    dropdownItemDisabled: dropdownItemDisabled,
+    dropdownItemDisabled: [
+      dropdownItemDisabled,
+      {
+        selectors: {
+          [HighContrastSelector]: {
+            border: 'none',
+          },
+        },
+      },
+    ],
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
     dropdownItemHidden: [...dropdownItemStyle, { display: 'none' }],
     dropdownDivider: [globalClassnames.dropdownDivider, { height: 1, backgroundColor: semanticColors.bodyDivider }],
