@@ -84,6 +84,8 @@ export function useWarnings<P>(options: IWarningOptions<P>) {
 
     // Warn synchronously (not in useEffect) on first render to make debugging easier.
     if (!hasWarnedRef.current) {
+      hasWarnedRef.current = true;
+
       for (const warning of other) {
         warn(warning);
       }
