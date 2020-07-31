@@ -1844,7 +1844,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      border-color: #605e5c;
                       box-shadow: none;
                       box-sizing: border-box;
                       color: #323130;
@@ -1889,11 +1888,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus:after {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:active .ms-Dropdown-title {
-                      border-color: #0078d4;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
@@ -2069,7 +2066,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      border-color: #605e5c;
                       box-shadow: none;
                       box-sizing: border-box;
                       color: #323130;
@@ -2114,11 +2110,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus:after {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:active .ms-Dropdown-title {
-                      border-color: #0078d4;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
