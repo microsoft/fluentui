@@ -117,9 +117,6 @@ export const DatepickerCalendarCell = compose<
       _.invoke(props, 'onFocus', e, props);
     };
 
-    const handleKeyDown = (e: React.SyntheticEvent) => {
-      _.invoke(props, 'onKeyDown', e, props);
-    };
 
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
       if (disabled) {

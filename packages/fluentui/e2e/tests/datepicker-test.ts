@@ -11,7 +11,7 @@ describe('Datepicker', () => {
     await e2e.gotoTestCase(__filename, datepicker);
   });
 
-  it('Click to the button should open popup', async () => {
+  it('Click to the button should open calendar', async () => {
     await e2e.clickOn(datepickerButton);
     expect(await e2e.exists(datepickerCalendar)).toBe(true);
   });

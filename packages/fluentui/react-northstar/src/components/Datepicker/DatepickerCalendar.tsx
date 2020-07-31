@@ -268,9 +268,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   };
 
   React.useEffect(() => {
-    if (focusDateRef.current) {
-      focusDateRef.current.focus();
-    }
+    focusDateRef.current?.focus();
   }, [grid]);
 
   const renderWeekRow = week =>
