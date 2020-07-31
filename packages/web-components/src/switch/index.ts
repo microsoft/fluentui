@@ -17,3 +17,9 @@ import { SwitchStyles as styles } from './switch.styles';
   styles,
 })
 export class FASTSwitch extends Switch {}
+
+/**
+ * Styles for Switch
+ * @public
+ */
+export const SwitchStyles = styles;

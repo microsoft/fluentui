@@ -17,3 +17,9 @@ import { SliderLabelStyles as styles } from './slider-label.styles';
   styles,
 })
 export class FASTSliderLabel extends SliderLabel {}
+
+/**
+ * Styles for SliderLabel
+ * @public
+ */
+export const SliderLabelStyles = styles;
