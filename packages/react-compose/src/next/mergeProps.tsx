@@ -3,9 +3,11 @@ import { css } from '@uifabric/utilities';
 import { GenericDictionary } from './types';
 
 /**
- * Helper which deep clones props, but respecting JSX and classnames.
- * @param target
- * @param propSets
+ * Helper which deep clones props, but respectively assigns JSX, object refs, and class names
+ * appropriately.
+ *
+ * @param target - the target object to merge onto.
+ * @param propSets - one or more prop sets to deep merge onto the target.
  */
 export const mergeProps = (target: GenericDictionary, ...propSets: (GenericDictionary | undefined)[]) => {
   for (const props of propSets) {
