@@ -53,7 +53,7 @@ export * from './memoize';
 export * from './merge';
 export * from './mobileDetector';
 export * from './modalize';
-export { assign, filteredAssign, mapEnumByName, shallowCompare, values } from './object';
+export { assign, filteredAssign, mapEnumByName, omit, shallowCompare, values } from './object';
 export * from './osDetector';
 export * from './overflow';
 export * from './properties';

@@ -3,24 +3,49 @@ import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities'
 import { ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as d3Sankey from 'd3-sankey';
+import { select as d3Select } from 'd3-selection';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
+
+export interface IRefArrayData {
+  index?: string;
+  refElement?: SVGGElement;
+}
 
 export class SankeyChartBase extends React.Component<
   ISankeyChartProps,
   {
     containerWidth: number;
     containerHeight: number;
+    showHover: boolean;
+    calloutSourceData: string;
+    calloutDestinationData: string;
+    calloutValue: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    selectedRef: any;
+    calloutColor: string;
   }
 > {
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
   private chartContainer: HTMLDivElement;
   private _reqID: number;
+  private _calloutId: string;
+  private _refArray: IRefArrayData[];
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
       containerHeight: 0,
       containerWidth: 0,
+      showHover: false,
+      calloutSourceData: '',
+      calloutDestinationData: '',
+      calloutValue: '',
+      selectedRef: '',
+      calloutColor: '',
     };
+    this._calloutId = getId('callout');
+    this._refArray = [];
   }
   public componentDidMount(): void {
     this._fitParentContainer();
@@ -41,6 +66,7 @@ export class SankeyChartBase extends React.Component<
       width: this.state.containerWidth,
       height: this.state.containerHeight,
       pathColor: pathColor,
+      calloutColor: this.state.calloutColor,
       className,
     });
     const margin = { top: 10, right: 0, bottom: 10, left: 0 };
@@ -69,12 +95,42 @@ export class SankeyChartBase extends React.Component<
         // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
-        <svg width={width} height={height} id={getId('sankeyChart')}>
-          <g className={this._classNames.nodes}>{nodeData}</g>
-          <g className={this._classNames.links} strokeOpacity={0.2}>
+        <FocusZone direction={FocusZoneDirection.bidirectional}>
+          <svg width={width} height={height} id={getId('sankeyChart')}>
+            <g className={this._classNames.nodes}>{nodeData}</g>
             {linkData}
-          </g>
-        </svg>
+          </svg>
+        </FocusZone>
+        <Callout
+          target={this.state.selectedRef}
+          alignTargetEdge={true}
+          isBeakVisible={false}
+          directionalHint={DirectionalHint.bottomRightEdge}
+          gapSpace={15}
+          hidden={!(!this.props.hideTooltip && this.state.showHover)}
+          id={this._calloutId}
+          preventDismissOnLostFocus={true}
+        >
+          <div className={this._classNames.calloutContentRoot}>
+            <div className={this._classNames.calloutDateTimeContainer}>
+              {/*TO DO  if we add time for callout then will use this */}
+              {/* <div className={this._classNames.calloutContentX}>07:00am</div> */}
+            </div>
+            <div className={this._classNames.calloutInfoContainer}>
+              <div className={this._classNames.calloutBlockContainer}>
+                <div className={this._classNames.calloutlegendText}>
+                  <b>Source: </b>
+                  {this.state.calloutSourceData}
+                </div>
+                <div className={this._classNames.calloutlegendText}>
+                  <b>Destination: </b>
+                  {this.state.calloutDestinationData}
+                </div>
+                <div className={this._classNames.calloutContentY}>{this.state.calloutValue}</div>
+              </div>
+            </div>
+          </div>
+        </Callout>
       </div>
     );
   }
@@ -86,23 +142,81 @@ export class SankeyChartBase extends React.Component<
       this.props.data.SankeyChartData.links.forEach((singleLink: any, index: number) => {
         const path = d3Sankey.sankeyLinkHorizontal();
         const pathValue = path(singleLink);
+        const linkId = getId('link');
         const link = (
-          <path
+          <g
+            // eslint-disable-next-line react/jsx-no-bind
+            ref={(e: SVGLineElement | null) => {
+              this._refCallback(e!, linkId);
+            }}
             key={index}
-            d={pathValue ? pathValue : undefined}
-            strokeWidth={Math.max(1, singleLink.width)}
-            id={getId('link')}
           >
-            <title>
-              <text>{singleLink.source.name + ' → ' + singleLink.target.name + '\n' + singleLink.value}</text>
-            </title>
-          </path>
+            <path
+              key={index}
+              d={pathValue ? pathValue : undefined}
+              strokeWidth={Math.max(1, singleLink.width)}
+              id={linkId}
+              // eslint-disable-next-line react/jsx-no-bind
+              onMouseOver={this._handleHover.bind(this, singleLink, linkId)}
+              // eslint-disable-next-line react/jsx-no-bind
+              onMouseMove={this._handleHover.bind(this, singleLink, linkId)}
+              // eslint-disable-next-line react/jsx-no-bind
+              onFocus={this._handleFocus.bind(this, singleLink, linkId)}
+              // eslint-disable-next-line react/jsx-no-bind
+              onBlur={this._hoverLeave.bind(this, linkId)}
+              // eslint-disable-next-line react/jsx-no-bind
+              onMouseLeave={this._hoverLeave.bind(this, linkId)}
+              data-is-focusable={true}
+              className={this._classNames.links}
+              strokeOpacity={0.2}
+            />
+          </g>
         );
         links.push(link);
       });
     }
     return links;
   }
+
+  private _refCallback(element: SVGGElement, linkID: string): void {
+    this._refArray.push({ index: linkID, refElement: element });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _handleFocus = (link: any, linkId: string) => {
+    d3Select(`#${linkId}`).attr('stroke-opacity', 0.3);
+    this._refArray.forEach((obj: IRefArrayData) => {
+      if (obj.index === linkId) {
+        this.setState({
+          calloutSourceData: link.source.name,
+          calloutDestinationData: link.target.name,
+          calloutValue: link.value,
+          showHover: true,
+          selectedRef: obj.refElement,
+          calloutColor: link.source.color,
+        });
+      }
+    });
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _handleHover = (link: any, linkId: string, mouseEvent: React.MouseEvent<SVGPathElement>) => {
+    mouseEvent.persist();
+    d3Select(`#${linkId}`).attr('stroke-opacity', 0.5);
+    this.setState({
+      calloutSourceData: link.source.name,
+      calloutDestinationData: link.target.name,
+      calloutValue: link.value,
+      showHover: true,
+      selectedRef: mouseEvent,
+      calloutColor: link.source.color,
+    });
+  };
+
+  private _hoverLeave = (linkId: string) => {
+    d3Select(`#${linkId}`).attr('stroke-opacity', 0.2);
+    this.setState({ showHover: false });
+  };
 
   private _createNodes(width: number): React.ReactNode[] | undefined {
     const nodes: React.ReactNode[] = [];
@@ -128,9 +242,6 @@ export class SankeyChartBase extends React.Component<
             >
               {singleNode.name}
             </text>
-            <title>
-              <text>{singleNode.name + '\n' + singleNode.value}</text>
-            </title>
           </g>
         );
         nodes.push(node);

@@ -1,16 +1,14 @@
 # @fluentui/react-compose
 
-`@fluentui/react-compose` is a librry of utilities for composing Fluent UI components.
+`@fluentui/react-compose` is a library of utilities for composing Fluent UI components.
 
 ## A basic component walkthrough
 
-Building a reusable component requires that we build it from reusable layers. The layers can be used as building blocks to scaffold or rescaffold components.
+Building a recomposable component requires that we build legos; we put them together, but we let others put them together how they may need. Here's what's needed:
 
-A component should consist of the following:
-
-- **Render function** - a function which takes in final state and returns JSX. (e.g. `renderButton`)
 - **State hooks** - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
-- **Factory function** - a create\* function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of teh component as needed.
+- **Render function** - a function which takes in final state and returns JSX. (e.g. `renderButton`)
+- **Component factory function** - a create function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of the component as needed.
 - **Style hooks** - hooks which can take in styles and provide appropriate classnames to the anatomy of the component.
 
 With these building blocks, you can compose or recompose the component in numerous ways.
@@ -70,12 +68,12 @@ const Button = React.forwardRef((props, ref) => {
 
 #### Creating mutable state with `mergeProps`
 
-In the simple example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and using that to construct state simplifies hook development and usage; rather than trying to re-clone objects unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self contained hooks, which can ensure they are used correctly, avoid accidents like stomping on existing event handlers by blind object assigning the results.
+In the previous example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and using that to construct state simplifies hook development and usage; rather than trying to re-clone objects unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self contained hooks, which can ensure they are used correctly, avoiding accidents like stomping on existing event handlers by blind object assigning the results.
 
 However, deep merge overlooks many edge cases for component props:
 
 - Deep merging classnames should append them, not replace
-- Deep merging JSX or arrays should replace, not recurse
+- Deep merging JSX, ref objects, or arrays should replace, not recurse/clone
 - Deep merging an object on a string should replace
 
 ...which introduces the first utility: `mergeProps`. Merge props works like a deep merge, but takes care of classnames, JSX, arrays, and object edge cases.
@@ -105,7 +103,7 @@ const renderButton = state => {
 };
 ```
 
-This step has been abstracted in the `getSlots` helper:
+These steps have been abstracted in the `getSlots` helper:
 
 ```jsx
 const renderButton = state => {
@@ -117,7 +115,7 @@ const renderButton = state => {
 
 #### Supporting shorthand props
 
-Fluent UI components almost always contain sub parts, and these sub parts should be configurable. We allows them to be configured through "shorthand props", which let's the caller pass in a variety of inputs for a given slot. Take a Button's "icon" slot:
+Fluent UI components almost always contain sub parts, and these sub parts should be configurable. We allow them to be configured through "shorthand props", which lets the caller pass in a variety of inputs for a given slot. Take a Button's "icon" slot:
 
 ```jsx
 // The icon can be a string
@@ -189,7 +187,7 @@ const renderButton = state => {
 ### mergeProps(target, ...rest)
 
 The `mergeProps` function takes in state and compose options, and resolves slots and slotProps.
-It's expected that the component will call mergeProps(state, options) from within
+It's expected that the component will call `mergeProps(state, options)` from within
 render; after resolving state and before rendering slots and slotProps.
 
 Example:
@@ -216,7 +214,7 @@ const foo = simplifyShorthand(
 );
 ```
 
-Results in bojects which can be merged correctly:
+Results in objects which can be merged correctly:
 
 ```jsx
 {

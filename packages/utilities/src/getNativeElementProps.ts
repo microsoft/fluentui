@@ -57,7 +57,7 @@ const nativeElementMap: Record<string, Record<string, number>> = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(
   tagName: string,
-  props: Record<string, unknown>,
+  props: {},
   excludedPropNames?: string[],
 ): TAttributes {
   const allowedPropNames = (tagName && nativeElementMap[tagName]) || htmlElementProperties;

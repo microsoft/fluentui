@@ -41,7 +41,6 @@ export const ButtonFocus = () => {
     <Stack>
       <Button
         onClick={() => {
-          // ok
           buttonRef.current?.focus();
         }}
       >

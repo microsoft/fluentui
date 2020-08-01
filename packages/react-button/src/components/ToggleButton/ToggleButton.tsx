@@ -4,10 +4,9 @@ import { makeClasses } from '@fluentui/react-compose/lib/next/index';
 import { createToggleButton } from './createToggleButton';
 import { useFocusRects } from '@uifabric/utilities';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
-import * as buttonClasses from '../Button/Button.scss';
 import * as toggleButtonClasses from './ToggleButton.scss';
+import { useButtonClasses } from '../Button/Button';
 
-const useButtonClasses = makeClasses(buttonClasses);
 const useToggleButtonClasses = makeClasses(toggleButtonClasses);
 
 /**

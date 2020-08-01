@@ -134,7 +134,7 @@
     "ts-jest": "24.0.1",
     "ts-loader": "^4.1.0",
     "ts-node": "^7.0.0",
-    "tsconfig-paths": "^3.7.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "3.7.2",
     "webpack": "4.35.0",
     "webpack-bundle-analyzer": "^3.6.0",
