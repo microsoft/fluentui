@@ -1,25 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@uifabric/utilities';
+import { getNativeElementProps, omit } from '@uifabric/utilities';
 import { GenericDictionary } from './types';
 import { nullRender } from './nullRender';
-
-/**
- * Tiny helper to do the minimal amount of work in duplicating an object but omitting some
- * props. This ends up faster than using object ...rest or reduce to filter.
- *
- * https://jsperf.com/omit-vs-rest-vs-reduce/1
- */
-const _omit = <TObj,>(obj: TObj, exclusions: GenericDictionary) => {
-  const result = {};
-
-  for (const key of Object.keys(obj)) {
-    if (!exclusions[key]) {
-      (result as GenericDictionary)[key] = (obj as GenericDictionary)[key];
-    }
-  }
-
-  return result as TObj;
-};
 
 /**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
@@ -42,7 +24,7 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
     root: state.as || nullRender,
   };
   const slotProps: GenericDictionary = {
-    root: typeof state.as === 'string' ? getNativeElementProps(state.as, state) : _omit(state, { as: 1 }),
+    root: typeof state.as === 'string' ? getNativeElementProps(state.as, state) : omit(state, { as: 1 }),
   };
 
   if (slotNames) {
@@ -56,7 +38,7 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
       if (slots[name] !== nullRender) {
         slotProps[name] = isSlotPrimitive
           ? getNativeElementProps(slotAs, slotDefinition)
-          : _omit(slotDefinition, { as: 1 });
+          : omit(slotDefinition, { as: 1 });
       }
 
       if (children === 'function') {

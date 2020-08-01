@@ -976,6 +976,9 @@ export const olProperties: Record<string, number>;
 
 export { Omit }
 
+// @public
+export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: Record<string, any>): TObj;
+
 // @public (undocumented)
 export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
