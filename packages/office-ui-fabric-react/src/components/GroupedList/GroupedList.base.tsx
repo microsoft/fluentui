@@ -115,13 +115,13 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     return (
       <FocusZone
-        {...focusZoneProps}
-        shouldEnterInnerZone={shouldEnterInnerZone}
         direction={FocusZoneDirection.vertical}
-        className={css(this._classNames.root, focusZoneProps.className)}
         data-automationid="GroupedList"
         data-is-scrollable="false"
         role="presentation"
+        {...focusZoneProps}
+        shouldEnterInnerZone={shouldEnterInnerZone}
+        className={css(this._classNames.root, focusZoneProps.className)}
       >
         {!groups ? (
           this._renderGroup(undefined, 0)
