@@ -28,7 +28,7 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
   };
 
   if (slotNames) {
-    for (const name of slotNames!) {
+    for (const name of slotNames) {
       const slotDefinition = state[name];
       const { as: slotAs, children } = slotDefinition;
       const isSlotPrimitive = typeof slotAs === 'string';
