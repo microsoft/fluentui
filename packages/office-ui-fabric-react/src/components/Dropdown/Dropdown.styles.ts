@@ -149,6 +149,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           bottom: 0,
           right: 0,
         },
+        [HighContrastSelector]: {
+          border: 'none',
+        },
       },
     };
   };
@@ -171,6 +174,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       selectors: {
         [HighContrastSelector]: {
           color: 'GrayText',
+          border: 'none',
         },
       },
     },
@@ -349,28 +353,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
     dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
-    dropdownItem: [
-      ...dropdownItemStyle,
-      itemSelectors(),
-      {
-        selectors: {
-          [HighContrastSelector]: {
-            border: 'none',
-          },
-        },
-      },
-    ],
+    dropdownItem: [...dropdownItemStyle, itemSelectors()],
     dropdownItemSelected: dropdownItemSelected,
-    dropdownItemDisabled: [
-      dropdownItemDisabled,
-      {
-        selectors: {
-          [HighContrastSelector]: {
-            border: 'none',
-          },
-        },
-      },
-    ],
+    dropdownItemDisabled: [dropdownItemDisabled],
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
     dropdownItemHidden: [...dropdownItemStyle, { display: 'none' }],
     dropdownDivider: [globalClassnames.dropdownDivider, { height: 1, backgroundColor: semanticColors.bodyDivider }],
