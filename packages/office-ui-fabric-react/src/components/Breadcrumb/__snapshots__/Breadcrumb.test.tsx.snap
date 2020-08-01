@@ -123,7 +123,6 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1309,7 +1308,6 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1543,7 +1541,6 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1777,7 +1774,6 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -2275,7 +2271,6 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;

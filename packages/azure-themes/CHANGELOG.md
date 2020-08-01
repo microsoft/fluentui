@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jul 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.2.0)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.49..@uifabric/azure-themes_v7.2.0)
+
+### Minor changes
+
+- High contrast light + dark themes ([PR #14193](https://github.com/microsoft/fluentui/pull/14193) by jagaheri@microsoft.com)
 
 ## [7.1.49](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.49)
 

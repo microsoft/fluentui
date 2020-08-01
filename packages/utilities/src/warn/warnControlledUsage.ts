@@ -53,7 +53,6 @@ export interface IWarnControlledUsageParams<P> {
  *    and the component is not read-only
  * - Both the value and defaultValue props are provided
  * - The component is attempting to switch between controlled and uncontrolled
- * - The value or default value are null (unless allowNullValue is set)
  *
  * The messages mimic the warnings React gives for these error conditions on input elements.
  * The warning will only be displayed once per component ID.

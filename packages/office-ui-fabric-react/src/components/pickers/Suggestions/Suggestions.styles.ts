@@ -68,6 +68,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
         overflowY: 'auto',
         overflowX: 'hidden',
         maxHeight: 300,
+        transform: 'translate3d(0,0,0)',
       },
       suggestionsClassName,
     ],

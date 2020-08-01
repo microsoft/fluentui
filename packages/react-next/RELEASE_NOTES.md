@@ -23,6 +23,9 @@
 ### Others
 
 - Function component conversion.
+  - The `ref` attribute for such components no longer refers to a component class instance; instead, the ref is forwarded to the underlying DOM.
+  - Class extension of converted components is no longer possible.
+    - Even for components which have not yet been converted to function components, class extension is no longer supported
 - `ThemeProvider` is required. (new)
 - `Customizer`. (shim)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.

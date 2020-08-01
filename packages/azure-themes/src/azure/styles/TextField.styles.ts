@@ -1,18 +1,21 @@
 import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextFieldStyles> => {
   const { focused, disabled, hasErrorMessage, multiline, theme } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     fieldGroup: [
       !multiline && {
         height: StyleConstants.inputControlHeight,
+
         selectors: {
           '::after': {
-            borderColor: semanticColors.primaryButtonBackground,
+            borderColor: semanticColors.primaryButtonBackgroundHovered,
           },
         },
       },
@@ -20,7 +23,8 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         borderColor: semanticColors.focusBorder,
       },
       disabled && {
-        borderColor: semanticColors.disabledBodyText,
+        borderColor: extendedSemanticColors.textFieldBorderDisabled,
+        backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       },
       hasErrorMessage && [
         {
@@ -66,8 +70,8 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         },
       },
       disabled && {
-        color: semanticColors.disabledBodyText,
-        backgroundColor: semanticColors.disabledBackground,
+        color: semanticColors.primaryButtonTextDisabled,
+        backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       },
     ],
     errorMessage: {
