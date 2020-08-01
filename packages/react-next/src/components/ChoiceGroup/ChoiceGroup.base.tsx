@@ -21,28 +21,38 @@ import { useConst, useId, useConstCallback } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
-const useComponentRef = (props: IChoiceGroupProps, elementToFocus: HTMLElement | null, componentRef) => {
+const getOptionId = (option: IChoiceGroupOption, id: string): string => {
+  return `${id}-${option.key}`;
+};
+
+const getCheckedOption = (options: IChoiceGroupOption[], keyChecked: string | number) =>
+  find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
+
+const useComponentRef = (props: IChoiceGroupProps, keyChecked: string | number | undefined, id: string) => {
   React.useImperativeHandle(
     props.componentRef,
     () => ({
       get checkedOption() {
-        return find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
+        const { options = [] } = props;
+        return getCheckedOption(options, keyChecked!);
       },
       focus() {
-        const optionToFocus = checkedOption || options.filter(option => !option.disabled)[0];
-        const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus));
+        const { options = [] } = props;
+        const optionToFocus = getCheckedOption(options, keyChecked!) || options.filter(option => !option.disabled)[0];
+        const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
         if (elementToFocus) {
           elementToFocus.focus();
         }
       },
     }),
-    [],
+    [props, keyChecked],
   );
 };
 
 export const ChoiceGroupBase: React.FunctionComponent = (props: IChoiceGroupProps) => {
   const { className, theme, styles, options = [], label, required, disabled, name, defaultSelectedKey } = props;
   const id = useId('ChoiceGroup');
+  const choiceGroupLabelId = useId('ChoiceGroupLabel');
   const labelId = id + '-label';
   const focusCallbacks: { [key: string]: IChoiceGroupOptionProps['onFocus'] } = {};
   const changeCallbacks: { [key: string]: IChoiceGroupOptionProps['onBlur'] } = {};
@@ -60,21 +70,6 @@ export const ChoiceGroupBase: React.FunctionComponent = (props: IChoiceGroupProp
   });
 
   const ariaLabelledBy = props.ariaLabelledBy || (label ? labelId : props['aria-labelledby']);
-
-  // React.useImperativeHandle(
-  //   () => ({
-  //     checkedOption() {
-  //       return find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
-  //     },
-
-  //     focus() {
-  //       if (elementToFocus) {
-  //         elementToFocus.focus();
-  //       }
-  //     },
-  //   }),
-  //   [],
-  // );
 
   /**
    * Returns `selectedKey` if provided, or the key of the first option with the `checked` prop set.
@@ -95,10 +90,6 @@ export const ChoiceGroupBase: React.FunctionComponent = (props: IChoiceGroupProp
 
   const [keyChecked, setKeyChecked] = React.useState(validDefaultSelectedKey ? defaultSelectedKey : getKeyChecked());
   const [keyFocused, setKeyFocused] = React.useState<string | number>();
-
-  const getOptionId = (option: IChoiceGroupOption): string => {
-    return `${id}-${option.key}`;
-  };
 
   const onFocus = (key: string) => {
     // This extra mess is necessary because React won't pass the `key` prop through to ChoiceGroupOption
@@ -147,13 +138,8 @@ export const ChoiceGroupBase: React.FunctionComponent = (props: IChoiceGroupProp
     });
   }
 
-  const optionToFocus =
-    find(options, (value: IChoiceGroupOption) => value.key === keyChecked) ||
-    options.filter(option => !option.disabled)[0];
+  useComponentRef(props, keyChecked, id);
 
-  const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus));
-
-  useComponentRef(elementToFocus);
   // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
   // `applicationRole` class (but the div structure will stay the same by necessity)
   return (
@@ -172,8 +158,8 @@ export const ChoiceGroupBase: React.FunctionComponent = (props: IChoiceGroupProp
               focused: option.key === keyFocused,
               checked: option.key === keyChecked,
               disabled: option.disabled || disabled,
-              id: getOptionId(option),
-              labelId: `${labelId}-${option.key}`,
+              id: getOptionId(option, id),
+              labelId: `${choiceGroupLabelId}-${option.key}`,
               name: name || id,
               required,
             };
