@@ -4,10 +4,11 @@ import { compose, createClassResolver, mergeProps } from '@fluentui/react-compos
 import * as classes from './Flex.scss';
 import { FlexItem } from '../FlexItem';
 import { FlexContext } from './FlexContext';
+import { useFlex } from './useFlex';
 
 export const Flex = compose<'div', FlexProps, FlexProps, {}, {}>(
   (props, ref, options) => {
-    const { children, disableShrink } = props;
+    const { children, disableShrink, tokens } = props;
 
     const { state } = options;
     const { slots, slotProps } = mergeProps<FlexProps, FlexProps, FlexSlots, FlexSlotProps>(state, options);
@@ -16,7 +17,9 @@ export const Flex = compose<'div', FlexProps, FlexProps, {}, {}>(
 
     return (
       <slots.root {...slotProps.root}>
-        <FlexContext.Provider value={!!disableShrink}>{flexChildren}</FlexContext.Provider>
+        <FlexContext.Provider value={{ disableShrink: !!disableShrink, gap: tokens?.gap! && '0' }}>
+          {flexChildren}
+        </FlexContext.Provider>
         {generalChildren}
       </slots.root>
     );
@@ -30,13 +33,13 @@ export const Flex = compose<'div', FlexProps, FlexProps, {}, {}>(
       'wrap',
       'horizontalAlign',
       'verticalAlign',
-      'reversed',
+      'reverse',
       'disableShrink',
       'fluid',
       'tokens',
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ] as any,
-    overrideStyles: true,
+    state: useFlex,
   },
 );
 
@@ -66,4 +69,16 @@ const isFlexItemElement = (item: React.ReactNode): item is typeof FlexItem => {
 
 Flex.defaultProps = {
   as: 'div',
+  inline: false,
+  column: false,
+  wrap: false,
+  horizontalAlign: 'start',
+  verticalAlign: 'stretch',
+  reverse: false,
+  disableShrink: false,
+  fluid: false,
+  tokens: {
+    padding: '0',
+    gap: '0',
+  },
 };

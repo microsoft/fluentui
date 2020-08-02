@@ -1,17 +1,13 @@
-:root {
-  --flexitem-align: auto;
-  --flexitem-shrink: 1;
-  --flexitem-order: 0;
-  --flexitem-grow: 0;
-}
-
 .root {
-  background: var(--flexitem-background);
+  width: auto;
+  display: flex;
+  position: relative;
+  order: var(--flexitem-order);
+  height: var(--flexitem-height);
+  flex-grow: var(--flexitem-grow);
   align-self: var(--flexitem-align);
   flex-shrink: var(--flexitem-shrink);
-  order: var(--flexitem-order);
-  flex-grow: var(--flexitem-grow);
-  display: flex;
+  max-height: var(--flexitem-maxHeight);
 
   &._align_auto {
     --flexitem-align: auto;
@@ -37,8 +33,13 @@
     --flexitem-align: stretch;
   }
 
-  &._fluid {
-    height: 100%;
-    max-height: 100%;
+  &._fluid_true {
+    --flex-height: 100%;
+    --flex-maxHeight: 100%;
+  }
+
+  &._fluid_false {
+    --flex-maxHeight: none;
+    --flex-height: auto;
   }
 }

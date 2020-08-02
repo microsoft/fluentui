@@ -24,8 +24,6 @@ export interface ExampleOptions {
 }
 
 const flexContainer: React.CSSProperties = {
-  width: '600px',
-  height: '400px',
   maxWidth: '600px',
 };
 
@@ -93,14 +91,14 @@ const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = pro
           return hideEmptyChildren ? (
             <FlexItem key={index} style={{ ...flexItemStyles, display: 'none' }} />
           ) : (
-            <span key={index} style={flexItemStyles} />
+            <FlexItem key={index} style={flexItemStyles} />
           );
         }
 
         return (
-          <span key={index} style={flexItemStyles}>
+          <FlexItem key={index} style={flexItemStyles}>
             {value}
-          </span>
+          </FlexItem>
         );
       })}
     </Flex>
@@ -118,10 +116,10 @@ function _range(start: number, end: number): number[] {
 const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
 
-const sectionFlexTokens: FlexTokens = { gap: '10px', maxHeight: '400px', maxWidth: '600px' };
+const sectionFlexTokens: FlexTokens = { gap: '10px' };
 const configureFlexTokens: FlexTokens = { gap: '20px' };
 
-export class ConfigurableExample extends React.Component {
+export class HorizontalFlexConfigurableExample extends React.Component {
   public state: ExampleOptions = {
     numItems: 5,
     showBoxShadow: false,

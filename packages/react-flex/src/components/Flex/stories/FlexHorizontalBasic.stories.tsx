@@ -34,7 +34,7 @@ const clickableFlexTokens = {
 
 export const HorizontalFlexBasicExample: React.FunctionComponent = () => {
   return (
-    <Flex tokens={containerFlexTokens}>
+    <Flex column tokens={containerFlexTokens}>
       <span>Default horizontal flex</span>
       <Flex disableShrink style={flexStyle}>
         <span>Item One</span>

@@ -2,15 +2,15 @@ import * as React from 'react';
 import { compose, createClassResolver, mergeProps } from '@fluentui/react-compose';
 import { FlexItemProps, FlexItemSlots, FlexItemSlotProps } from './FlexItem.types';
 import * as classes from './FlexItem.scss';
+import { useFlexItem } from './useFlexItem';
+// import { FlexContext } from '../Flex/FlexContext';
 // import { useContext } from 'react';
-// import { FlexContext } from '../Flex';
 
 export const FlexItem = compose<'div', FlexItemProps, FlexItemProps, {}, {}>(
   (props, ref, options) => {
-    // const disableShrink = useContext(FlexContext);
-    const { children } = props;
-
+    // const { disableShrink, gap } = useContext(FlexContext);
     const { state } = options;
+    const { children } = props;
     const { slots, slotProps } = mergeProps<FlexItemProps, FlexItemProps, FlexItemSlots, FlexItemSlotProps>(
       state,
       options,
@@ -28,10 +28,18 @@ export const FlexItem = compose<'div', FlexItemProps, FlexItemProps, {}, {}>(
       'tokens',
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ] as any,
-    overrideStyles: true,
+    state: useFlexItem,
   },
 );
 
 FlexItem.defaultProps = {
   as: 'div',
+  align: 'auto',
+  fluid: false,
+  push: false,
+  tokens: {
+    grow: '0',
+    order: '0',
+    shrink: '1',
+  },
 };

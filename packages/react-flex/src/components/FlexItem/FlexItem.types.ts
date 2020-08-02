@@ -18,6 +18,8 @@ export interface FlexItemProps extends ComponentProps, React.HTMLAttributes<HTML
   tokens?: FlexItemTokens;
 }
 
+export interface FlexItemState extends FlexItemProps {}
+
 export interface FlexItemSlots extends BaseSlots {}
 
 export type FlexItemSlotProps = SlotProps<FlexItemSlots, FlexItemProps, React.HTMLAttributes<HTMLElement>>;
@@ -28,11 +30,16 @@ export type FlexItemTokens = ColorPlateSet & {
    */
   grow?: string;
   /**
+   * Defines order of the Flexitem.
+   */
+  order?: string;
+  /**
    * Defines at what ratio should the Flexitem shrink to fit the available space.
    */
   shrink?: string;
   /**
-   * Defines order of the Flexitem.
+   * Defines margin of child.
+   * NOTE: This is used for gap.
    */
-  order?: string;
+  margin?: string;
 };

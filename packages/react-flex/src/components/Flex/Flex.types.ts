@@ -31,7 +31,7 @@ export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElem
   /**
    * Defines whether to render the children in the opposite direction.
    */
-  reversed?: boolean;
+  reverse?: boolean;
   /**
    * Defines whether the children should not shrink to fit the available space.
    */
@@ -43,19 +43,13 @@ export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElem
   tokens?: FlexTokens;
 }
 
+export interface FlexState extends FlexProps {}
+
 export interface FlexSlots extends BaseSlots {}
 
 export type FlexSlotProps = SlotProps<FlexSlots, FlexProps, React.HTMLAttributes<HTMLElement>>;
 
 export type FlexTokens = ColorPlateSet & {
-  /**
-   * Defines a maximum height for the Flex.
-   */
-  maxHeight?: string;
-  /**
-   * Defines a maximum width for the Flex.
-   */
-  maxWidth?: string;
   /**
    * Defines the padding to be applied to the Stack contents relative to its border.
    */
