@@ -2,17 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
 import { Callout } from './Callout';
-import { ICalloutProps } from './Callout.types';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
-
-class CalloutContentWrapper extends React.Component<ICalloutProps, {}> {
-  public render(): JSX.Element {
-    return <CalloutContent {...this.props} />;
-  }
-}
+import * as Utilities from '../../Utilities';
+import * as positioning from 'office-ui-fabric-react/lib/utilities/positioning';
+import { safeCreate } from '@uifabric/test-utilities';
 
 describe('Callout', () => {
   let realDom: HTMLDivElement;
@@ -28,9 +23,28 @@ describe('Callout', () => {
   });
 
   it('renders Callout correctly', () => {
-    const component = renderer.create(<CalloutContentWrapper>Content</CalloutContentWrapper>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    spyOn(Utilities, 'getWindow').and.returnValue({
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      document: {
+        documentElement: {
+          addEventListener: jest.fn(),
+          removeEventListener: jest.fn(),
+        },
+      },
+    });
+    spyOn(positioning, 'getBoundsFromTargetWindow').and.returnValue({
+      top: 0,
+      left: 0,
+      right: 100,
+      bottom: 768,
+      width: 100,
+      height: 768,
+    });
+    safeCreate(<CalloutContent>Content</CalloutContent>, component => {
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   it('target id strings does not throw exception', () => {
@@ -144,8 +158,12 @@ describe('Callout', () => {
     const focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
 
     // Move focus
-    jest.runAllTimers();
-    focusTarget.focus();
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
+    ReactTestUtils.act(() => {
+      focusTarget.focus();
+    });
     expect(gotEvent).toEqual(true);
   });
 
@@ -190,10 +208,13 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
     const focusTarget = document.querySelector('#inner') as HTMLDivElement;
 
-    jest.runAllTimers();
-
-    // Make sure that focus is in the callout
-    focusTarget.focus();
+    ReactTestUtils.act(() => {
+      jest.runAllTimers();
+    });
+    ReactTestUtils.act(() => {
+      // Make sure that focus is in the callout
+      focusTarget.focus();
+    });
 
     // Unmounting everything is the same as dismissing the Callout. As
     // the tree is unmounted, popup will get unmounted first and the

@@ -256,7 +256,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               width: 100%;
             }
             @media screen and (-ms-high-contrast: active){&:focus:after {
-              border-color: Highlight;
               color: Highlight;
             }
             &:active .ms-Dropdown-title {
