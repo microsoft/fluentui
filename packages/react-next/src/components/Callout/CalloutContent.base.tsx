@@ -62,6 +62,9 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 } as const;
 
+/**
+ * Get a reference to the configured target of the Callout, as well as its parent window.
+ */
 function useTargets({ target }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement | null>) {
   const previousTargetProp = React.useRef<
     Element | string | MouseEvent | Point | React.RefObject<Element> | null | undefined
@@ -106,6 +109,9 @@ function useTargets({ target }: ICalloutProps, calloutElement: React.RefObject<H
   return [targetRef, targetWindowRef] as const;
 }
 
+/**
+ * Returns a function to lazily fetch the bounds of the target element for the callout
+ */
 function useBounds(
   { bounds, minPagePadding = DEFAULT_PROPS.minPagePadding, target }: ICalloutProps,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
@@ -141,6 +147,9 @@ function useBounds(
   return getBounds;
 }
 
+/**
+ * Returns the maximum available height for the Callout to render into
+ */
 function useMaxHeight(
   { beakWidth, coverTarget, directionalHint, directionalHintFixed, gapSpace, isBeakVisible, hidden }: ICalloutProps,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
@@ -170,6 +179,9 @@ function useMaxHeight(
   return maxHeight;
 }
 
+/**
+ * Returns the height offset of the callout element and updates it each frame to approach the configured finalHeight
+ */
 function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement>) {
   const [heightOffset, setHeightOffset] = React.useState<number>(0);
   const async = useAsync();
@@ -188,7 +200,7 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
         const cardCurrHeight: number = calloutMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-        setHeightOffset(currentHeightOffset => (currentHeightOffset = scrollDiff));
+        setHeightOffset(currentHeightOffset => currentHeightOffset + scrollDiff);
 
         if (calloutMainElem.offsetHeight < finalHeight) {
           setHeightOffsetEveryFrame();
@@ -208,8 +220,11 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
   return heightOffset;
 }
 
+/**
+ * Get the position information for the callout. If the callout does not fit in the given orientation,
+ * a new position is calculated for the next frame, up to 5 attempts
+ */
 function usePositions(
-  this: unknown,
   props: ICalloutProps,
   hostElement: React.RefObject<HTMLDivElement>,
   calloutElement: React.RefObject<HTMLDivElement>,
@@ -265,6 +280,9 @@ function usePositions(
   return positions;
 }
 
+/**
+ * Hook to set up behavior to automatically focus the callout when it appears, if indicated by props.
+ */
 function useAutoFocus(
   { hidden, setInitialFocus }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
@@ -283,8 +301,10 @@ function useAutoFocus(
   }, [hidden, !!positions]);
 }
 
+/**
+ * Hook to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
+ */
 function useDismissHandlers(
-  this: unknown,
   { hidden, onDismiss, preventDismissOnScroll, preventDismissOnResize, preventDismissOnLostFocus }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
