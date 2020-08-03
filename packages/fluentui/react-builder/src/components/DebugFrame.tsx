@@ -9,6 +9,7 @@ export type DebugFrameProps = {
   onDelete?;
   onMove?;
   onGoToParent?;
+  onSelect?;
 };
 
 // FIXME: temporary hacky implementation! reuse DebugRect
@@ -20,6 +21,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   onDelete,
   onMove,
   onGoToParent,
+  onSelect,
 }) => {
   const frameRef = React.useRef<HTMLPreElement>();
   const animationFrameId = React.useRef<number>();
@@ -53,6 +55,13 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     [onClone],
   );
 
+  const handleSelect = React.useCallback(
+    e => {
+      onSelect?.(e);
+    },
+    [onSelect],
+  );
+
   const handleDelete = React.useCallback(() => {
     onDelete?.();
   }, [onDelete]);
@@ -83,6 +92,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   return (
     <pre
       ref={frameRef}
+      onClick={handleSelect}
       style={{
         position: 'fixed',
         padding: 0,
@@ -92,7 +102,6 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         border: '1px solid #ffc65ccc',
         color: '#444',
         zIndex: 99999998,
-        pointerEvents: 'none',
         userSelect: 'none',
       }}
     >

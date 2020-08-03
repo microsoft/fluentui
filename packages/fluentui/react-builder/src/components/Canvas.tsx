@@ -275,6 +275,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 componentName={selectedComponent.displayName}
                 onClone={handleCloneComponent}
                 onMove={handleMoveComponent}
+                onSelect={handleSelectComponent}
                 onDelete={onDeleteComponent}
                 onGoToParent={onGoToParentComponent}
               />
