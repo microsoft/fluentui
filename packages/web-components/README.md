@@ -34,10 +34,10 @@ A pre-bundled script that contains all APIs needed to use FAST Foundation is ava
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script type="module" src="https://unpkg.com/@microsoft/fast-components-msft">
-    </head>
-    <!-- ... -->
+  <head>
+    <script type="module" src="https://unpkg.com/@microsoft/fast-components-msft"></script>
+  </head>
+  <!-- ... -->
 </html>
 ```
 

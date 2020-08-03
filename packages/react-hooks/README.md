@@ -16,6 +16,7 @@ Helpful hooks not provided by React itself. These hooks were built for use in Fl
 - [useRefEffect](#userefeffect) - Call a function with cleanup when a ref changes. Like `useEffect` with a dependency on a ref.
 - [useSetInterval](#usesetinterval) - Version of `setInterval` that automatically cleans up when component is unmounted
 - [useSetTimeout](#usesettimeout) - Version of `setTimeout` that automatically cleans up when component is unmounted
+- [useWarnings](#usewarnings) - Display debug-only warnings for invalid or deprecated props or other issues
 
 ## useBoolean
 
@@ -105,11 +106,13 @@ If the callback should ever change based on dependencies, use `React.useCallback
 ## useControllableValue
 
 ```ts
+// Without onChange
 function useControllableValue<TValue, TElement extends HTMLElement>(
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
-): Readonly<[TValue | undefined, (newValue: TValue | undefined) => void]>;
+): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>) => void]>;
 
+// With onChange
 function useControllableValue<
   TValue,
   TElement extends HTMLElement,
@@ -118,7 +121,9 @@ function useControllableValue<
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
   onChange: TCallback,
-): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev: React.FormEvent<TElement>) => void]>;
+): Readonly<
+  [TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev: React.FormEvent<TElement>) => void]
+>;
 
 type ChangeCallback<TElement extends HTMLElement, TValue> = (
   ev: React.FormEvent<TElement> | undefined,
@@ -126,13 +131,20 @@ type ChangeCallback<TElement extends HTMLElement, TValue> = (
 ) => void;
 ```
 
-Hook to manage the current value for a component that could be either controlled or uncontrolled, such as a checkbox or input field.
+Hook to manage the current value for a component that could be either controlled or uncontrolled, such as a checkbox or input field. (See the [React docs](https://reactjs.org/docs/uncontrolled-components.html) about the distinction between controlled and uncontrolled components.)
 
-Its two required parameters are the `controlledValue` (the current value of the control in the controlled state), and the `defaultUncontrolledValue` (for the uncontrolled state). Optionally, you may pass a third `onChange` callback to be notified of any changes triggered by the control.
+Parameters:
 
-The return value will be a setter function that will set the internal state in the uncontrolled state, and invoke the `onChange` callback if present.
+- `controlledValue` (required): the current value if the component is controlled
+- `defaultUncontrolledValue` (required): the default value if the component is uncontrolled (will not be used if `controlledValue` is defined)
+- `onChange` (optional): callback to be notified of any changes triggered by the user
 
-See [React docs](https://reactjs.org/docs/uncontrolled-components.html) about the distinction between controlled and uncontrolled components.
+The returned value is an array with two elements:
+
+- The current value
+- A function that will update the internal state if uncontrolled, and invoke the `onChange` callback if present.
+  - Like the setter returned by `React.useState`, the identity of this callback will never change.
+  - Also like `React.useState`, you can call this function with either a value, or an updater function which takes the previous value as a parameter and returns the new value.
 
 ## useForceUpdate
 
@@ -303,3 +315,24 @@ const MyComponent = () => {
   clearTimeout(id);
 };
 ```
+
+## useWarnings
+
+```ts
+function useWarnings<P>(options: IWarningOptions<P>): void;
+```
+
+Display console warnings when certain conditions are met. If using webpack, the warning code will automatically be stripped out in production mode.
+
+The following types of warnings are supported (see typings for details on how to specify all of these):
+
+- `other`: Generic string messages.
+- `conditionallyRequired`: Warns about props that are required if a condition is met.
+- `deprecations`: Warns when deprecated props are being used.
+- `mutuallyExclusive`: Warns when two props which are mutually exclusive are both being used.
+- `controlledUsage`: Warns on any of the following error conditions in a form component (mimicking the warnings React gives for these error conditions on an input element):
+  - A value prop is provided (indicated it's being used as controlled) without a change handler, and the component is not read-only
+  - Both the value and default value props are provided
+  - The component is attempting to switch between controlled and uncontrolled
+
+Note that all warnings except `controlledUsage` will only be shown on first render. New `controlledUsage` warnings may be shown later based on prop changes. All warnings are shown synchronously during render (not wrapped in `useEffect`) for easier tracing/debugging.

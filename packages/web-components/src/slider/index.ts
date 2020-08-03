@@ -17,3 +17,9 @@ import { SliderStyles as styles } from './slider.styles';
   styles,
 })
 export class FASTSlider extends Slider {}
+
+/**
+ * Styles for Slider
+ * @public
+ */
+export const SliderStyles = styles;
