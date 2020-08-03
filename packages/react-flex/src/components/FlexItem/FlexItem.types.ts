@@ -37,9 +37,4 @@ export type FlexItemTokens = ColorPlateSet & {
    * Defines at what ratio should the Flexitem shrink to fit the available space.
    */
   shrink?: string;
-  /**
-   * Defines margin of child.
-   * NOTE: This is used for gap.
-   */
-  margin?: string;
 };

@@ -32,7 +32,7 @@ const flexItemStyles = {
 export const inlineFlex = () => (
   <Flex>
     <Flex tokens={containerTokens} style={containerStyles}>
-      <Flex reverse disableShrink tokens={flexTokens} style={flexStyles}>
+      <Flex disableShrink tokens={flexTokens} style={flexStyles}>
         <FlexItem tokens={flexItemTokens} style={flexItemStyles}>
           <h2>1</h2>
         </FlexItem>
@@ -66,7 +66,7 @@ export const inlineFlex = () => (
         </FlexItem>
       </Flex>
     </Flex>
-    <Flex column tokens={containerTokens} style={containerStyles}>
+    <Flex tokens={containerTokens} style={containerStyles}>
       <Flex tokens={flexTokens} style={flexStyles}>
         <FlexItem tokens={flexItemTokens} style={flexItemStyles}>
           <h2>1</h2>

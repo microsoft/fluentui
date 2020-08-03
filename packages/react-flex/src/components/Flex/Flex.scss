@@ -1,17 +1,22 @@
-@mixin calculate-flex-direction($column, $reverse) {
-  @if $reverse == 1 {
-    @if $column == 1 {
+@mixin calculate-flex-direction($column: false, $reverse: false) {
+  @if $reverse {
+    @if $column {
       flex-direction: column-reverse;
     } @else {
       flex-direction: row-reverse;
     }
   } @else {
-    @if $column == 1 {
+    @if $column {
       flex-direction: column;
     } @else {
       flex-direction: row;
     }
   }
+}
+
+:root {
+  --flex-direction: false;
+  --flex-direction: false;
 }
 
 .root {
@@ -28,22 +33,22 @@
   align-items: var(--flex-verticalAlign);
   justify-content: var(--flex-horizontalAlign);
 
+  // &._column_true {
+  //   --flex-direction: column;
+  // }
+
+  // &._column_false {
+  //   --flex-direction: row;
+  // }
+
   &._column_true {
-    --flex-direction: column;
+    --flex-column: true;
+  }
+  &._reverse_true {
+    --flex-reverse: true;
   }
 
-  &._column_false {
-    --flex-direction: row;
-  }
-
-  // &._column {
-  //   --flex-column: 1;
-  // }
-  // &._reverse {
-  //   --flex-reverse: 1;
-  // }
-
-  // @include calculate-flex-direction($column: var(--flex-column), $reverse: var(--flex-reverse));
+  @include calculate-flex-direction($column: var(--flex-column), $reverse: var(--flex-reverse));
 
   &._wrap_true {
     --flex-wrap: wrap;
