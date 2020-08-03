@@ -198,7 +198,28 @@ mergeProps(props, { ...etc }, { ...etc });
 
 ### getSlots(state: Record<string, any>, slotNames: string[])
 
-The `getSlots` function returns
+The `getSlots` function takes in a state object and a list of slot keys with the state, and returns
+`slots` and `slotProps` to be used in rendering the component.
+
+`slotProps` are calculated based on.
+
+It will also assume that the `as` prop represents the intrinsic element tag name. This will be used
+in determining the `root` slot value and the appropriate filtered `rootProps` for the `root` slot.
+
+Example:
+
+```jsx
+const Button = props => {
+  const { slots, slotProps } = getSlots(props, ['foo', 'bar']);
+
+  return (
+    <slots.root { slotProps.root}>
+      <slots.foo { slotProps.foo } />
+      <slots.bar { slotProps.foo } />
+    </slots.root>
+  );
+};
+```
 
 ### simplifyShorthand<TState>(state: TState, slotNames: string[]): TState
 
