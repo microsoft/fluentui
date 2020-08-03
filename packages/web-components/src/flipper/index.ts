@@ -17,3 +17,9 @@ import { FlipperStyles as styles } from './flipper.styles';
   styles,
 })
 export class FASTFlipper extends Flipper {}
+
+/**
+ * Styles for Flipper
+ * @public
+ */
+export const FlipperStyles = styles;

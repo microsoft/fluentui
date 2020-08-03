@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Jul 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Aug 2020 12:45:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.124.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.2)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.0..office-ui-fabric-react_v7.124.2)
+
+### Patches
+
+- Add high contrast styling for command bar ([PR #14215](https://github.com/microsoft/fluentui/pull/14215) by ololubek@microsoft.com)
 
 ## [7.124.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.0)
 

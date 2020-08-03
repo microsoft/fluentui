@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "omit: changed to for in for more perf improvement.",
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-03T19:26:01.457Z"
+}
