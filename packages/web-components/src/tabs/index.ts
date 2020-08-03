@@ -19,3 +19,9 @@ import { TabsStyles as styles } from './tabs.styles';
 export class FASTTabs extends Tabs {}
 export * from './tab/';
 export * from './tab-panel/';
+
+/**
+ * Styles for Tabs
+ * @public
+ */
+export const TabsStyles = styles;

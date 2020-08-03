@@ -78,4 +78,11 @@ describe('getSlots', () => {
       slotProps: { root: {}, icon: { id: 'id', href: 'href', blah: 1, children: 'children' } },
     });
   });
+
+  it('can use slot children functions to replace default slot rendering', () => {
+    expect(getSlots({ as: 'div', icon: { as: Foo, children: (C, p) => <C {...p} /> } }, ['icon'])).toEqual({
+      slots: { root: 'div', icon: React.Fragment },
+      slotProps: { root: {}, icon: { children: <Foo /> } },
+    });
+  });
 });

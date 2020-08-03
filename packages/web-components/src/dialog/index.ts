@@ -17,3 +17,9 @@ import { DialogStyles as styles } from './dialog.styles';
   styles,
 })
 export class FASTDialog extends Dialog {}
+
+/**
+ * Styles for Dialog
+ * @public
+ */
+export const DialogStyles = styles;

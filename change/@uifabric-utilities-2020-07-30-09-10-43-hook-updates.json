@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix warnControlledUsage doc comment",
-  "packageName": "@uifabric/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-30T16:10:43.525Z"
-}
