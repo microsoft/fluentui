@@ -1,15 +1,14 @@
-import { createButton } from '../Button/createButton';
+import { useButton } from '../Button/useButton';
 import { ToggleButtonProps } from './ToggleButton.types';
 import { useChecked } from './useChecked';
 
-export const createToggleButton = (
+export const useToggleButton = (
   props: ToggleButtonProps,
   ref: React.Ref<HTMLElement>,
   defaultProps?: ToggleButtonProps,
 ) => {
-  const buttonDefinition = createButton(props, ref, defaultProps);
+  const buttonDefinition = useButton(props, ref, defaultProps);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useChecked(buttonDefinition.state as ToggleButtonProps);
 
   return buttonDefinition;

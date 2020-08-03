@@ -6,7 +6,7 @@ import { ButtonState } from './Button.types';
  * The useButton hook processes the Button draft state.
  * @param draftState - Button draft state to mutate.
  */
-export const useButton = (draftState: ButtonState) => {
+export const useButtonState = (draftState: ButtonState) => {
   // Update the button's tab-index, keyboard handling, and aria attributes.
   if (draftState.as !== 'button') {
     draftState.role = 'button';
@@ -23,8 +23,11 @@ export const useButton = (draftState: ButtonState) => {
         }
 
         if (!ev.defaultPrevented && onClick && (ev.which === 20 || ev.which === 13)) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          onClick(ev as any);
+          // Translate the keydown enter/space to a click.
+          ev.preventDefault();
+          ev.stopPropagation();
+
+          (ev.target as HTMLElement).click();
         }
       };
     }

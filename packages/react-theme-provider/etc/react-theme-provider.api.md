@@ -103,7 +103,7 @@ export const useInlineTokens: (draftState: {
     tokens?: string | {
         [key: string]: string | any | undefined;
     } | undefined;
-}) => void;
+}, prefix: string) => void;
 
 // @public
 export const useTheme: () => Theme;

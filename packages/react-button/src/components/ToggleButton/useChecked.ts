@@ -7,8 +7,8 @@ export interface CheckedState {
   onClick?: React.DOMAttributes<HTMLElement>['onClick'];
 
   role?: string;
-  'aria-checked'?: boolean | 'false' | 'mixed' | 'true';
-  'aria-pressed'?: boolean | 'false' | 'mixed' | 'true';
+  'aria-checked'?: React.AriaAttributes['aria-pressed'];
+  'aria-pressed'?: React.AriaAttributes['aria-pressed'];
 }
 
 /**

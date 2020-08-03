@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mergeProps, getSlots, simplifyShorthand } from '@fluentui/react-compose/lib/next/index';
 import { ButtonProps, ButtonState } from './Button.types';
-import { useButton } from './useButton';
+import { useButtonState } from './useButtonState';
 
 /**
  * Consts listing which props are shorthand props.
@@ -28,7 +28,7 @@ export const renderButton = (state: ButtonState) => {
 /**
  * Given user props, returns state and render function for a Button.
  */
-export const createButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps) => {
+export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps) => {
   const state = mergeProps(
     {
       ref,
@@ -41,8 +41,7 @@ export const createButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, de
     simplifyShorthand(props, buttonShorthandProps),
   );
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useButton(state);
+  useButtonState(state);
 
   return { state, render: renderButton };
 };

@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { getSlots, simplifyShorthand, mergeProps } from '@fluentui/react-compose/lib/next/index';
 import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
-import { useButton } from '../Button/useButton';
-import { useExpanded } from './useExpanded';
-
-/* eslint-disable react-hooks/rules-of-hooks */
+import { useMenuButtonState } from './useMenuButtonState';
 
 const menuButtonShorthandProps = ['icon', 'children', 'menuIcon', 'menu'];
 
@@ -30,11 +27,7 @@ const renderMenuButton = (state: MenuButtonState) => {
 /**
  * Redefine the component factory, reusing button factory.
  */
-export const createMenuButton = (
-  props: MenuButtonProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuButtonProps,
-) => {
+export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps) => {
   const state = mergeProps(
     {
       ref,
@@ -48,11 +41,7 @@ export const createMenuButton = (
     simplifyShorthand(props, menuButtonShorthandProps),
   ) as MenuButtonState;
 
-  // It behaves like a button.
-  useButton(state);
-
-  // It can be expanded.
-  useExpanded(state);
+  useMenuButtonState(state);
 
   return {
     state,

@@ -91,9 +91,9 @@ export type ButtonTokenSet = ColorTokens & {
 // @public (undocumented)
 export interface CheckedState {
     // (undocumented)
-    'aria-checked'?: boolean | 'false' | 'mixed' | 'true';
+    'aria-checked'?: React.AriaAttributes['aria-pressed'];
     // (undocumented)
-    'aria-pressed'?: boolean | 'false' | 'mixed' | 'true';
+    'aria-pressed'?: React.AriaAttributes['aria-pressed'];
     // (undocumented)
     checked?: boolean;
     // (undocumented)
@@ -103,24 +103,6 @@ export interface CheckedState {
     // (undocumented)
     role?: string;
 }
-
-// @public
-export const createButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
-    state: Record<string, any>;
-    render: (state: ButtonState) => JSX.Element;
-};
-
-// @public
-export const createMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => {
-    state: MenuButtonState;
-    render: (state: MenuButtonState) => JSX.Element;
-};
-
-// @public (undocumented)
-export const createToggleButton: (props: ToggleButtonProps, ref: import("react").Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
-    state: Record<string, any>;
-    render: (state: import("../Button").ButtonState) => JSX.Element;
-};
 
 // @public (undocumented)
 export type ExpandedState = {
@@ -185,10 +167,16 @@ export interface ToggleButtonState extends ToggleButtonProps {
 }
 
 // @public
-export const useButton: (draftState: ButtonState) => void;
+export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
+    state: Record<string, any>;
+    render: (state: ButtonState) => JSX.Element;
+};
 
 // @public (undocumented)
 export const useButtonClasses: (state: Record<string, any>) => void;
+
+// @public
+export const useButtonState: (draftState: ButtonState) => void;
 
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
@@ -196,8 +184,23 @@ export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftSt
 // @public (undocumented)
 export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
 
+// @public
+export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => {
+    state: MenuButtonState;
+    render: (state: MenuButtonState) => JSX.Element;
+};
+
 // @public (undocumented)
 export const useMenuButtonClasses: (state: Record<string, any>) => void;
+
+// @public (undocumented)
+export const useMenuButtonState: (state: MenuButtonState) => void;
+
+// @public (undocumented)
+export const useToggleButton: (props: ToggleButtonProps, ref: import("react").Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
+    state: Record<string, any>;
+    render: (state: import("../Button").ButtonState) => JSX.Element;
+};
 
 
 // Warnings were encountered during analysis:
