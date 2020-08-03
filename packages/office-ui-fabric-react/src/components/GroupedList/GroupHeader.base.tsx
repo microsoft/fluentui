@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { IProcessedStyleSet, ITheme } from '../../Styling';
-import { classNamesFunction, getRTL, composeRenderFunction } from '../../Utilities';
+import { composeRenderFunction, classNamesFunction, getRTL, getRTLSafeKeyCode, KeyCodes } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
   IGroupHeaderStyleProps,
   IGroupHeaderStyles,
@@ -53,7 +52,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
   public render(): JSX.Element | null {
     const {
       group,
-      groupLevel,
+      groupLevel = 0,
       viewport,
       selectionMode,
       loadingText,
@@ -107,16 +106,18 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         className={this._classNames.root}
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
-        aria-expanded={!group.isCollapsed}
         aria-label={group.ariaLabel || group.name}
-        aria-level={groupLevel !== undefined ? groupLevel + 1 : undefined}
         aria-setsize={ariaSetSize}
         aria-posinset={ariaPosInSet}
         data-is-focusable={true}
+        onKeyUp={this._onKeyUp}
+        aria-expanded={!this.state.isCollapsed}
+        aria-level={groupLevel + 1}
       >
-        <FocusZone className={this._classNames.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
+        <div className={this._classNames.groupHeaderContainer}>
           {isSelectionCheckVisible ? (
             <button
+              data-is-focusable={false}
               type="button"
               className={this._classNames.check}
               role="checkbox"
@@ -137,10 +138,11 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             <Icon iconName="Tag" />
           </div>
           <button
+            data-is-focusable={false}
             type="button"
             className={this._classNames.expand}
-            onClick={this._onToggleCollapse}
-            aria-expanded={!group.isCollapsed}
+            onClick={this._onToggleClick}
+            aria-expanded={group ? !group.isCollapsed : undefined}
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
             {...expandButtonProps}
           >
@@ -151,14 +153,13 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
           </button>
 
           {onRenderTitle(this.props, this._onRenderTitle)}
-
           {isLoadingVisible && <Spinner label={loadingText} />}
-        </FocusZone>
+        </div>
       </div>
     );
   }
 
-  private _onToggleCollapse = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _toggleCollapse = () => {
     const { group, onToggleCollapse, isGroupLoading } = this.props;
     const { isCollapsed } = this.state;
 
@@ -172,7 +173,20 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     if (onToggleCollapse) {
       onToggleCollapse(group!);
     }
+  };
 
+  private _onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const shouldOpen = this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
+    const shouldClose = !this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.left, this.props.theme);
+    if (shouldClose || shouldOpen) {
+      this._toggleCollapse();
+      ev.stopPropagation();
+      ev.preventDefault();
+    }
+  };
+
+  private _onToggleClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    this._toggleCollapse();
     ev.stopPropagation();
     ev.preventDefault();
   };

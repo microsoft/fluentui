@@ -111,7 +111,6 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;

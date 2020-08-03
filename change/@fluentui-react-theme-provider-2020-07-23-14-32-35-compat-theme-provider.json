@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Move ThemeProvider from react-next to react-theme-provider's Compat folder",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-23T21:32:35.016Z"
-}

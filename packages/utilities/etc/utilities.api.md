@@ -1198,7 +1198,7 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export function useCustomizationSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): ISettings;
+export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
 
 // @public
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
