@@ -122,8 +122,8 @@ export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: Re
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: Record<string, any> = {};
 
-  for (const key of Object.keys(obj)) {
-    if (!exclusions[key]) {
+  for (const key in obj) {
+    if (!exclusions[key] && obj.hasOwnProperty(key)) {
       result[key] = obj[key];
     }
   }
