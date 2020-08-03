@@ -1119,7 +1119,6 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        border: none;
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -1954,7 +1953,6 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        border: none;
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;

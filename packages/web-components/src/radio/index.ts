@@ -17,3 +17,9 @@ import { RadioStyles as styles } from './radio.styles';
   styles,
 })
 export class FASTRadio extends Radio {}
+
+/**
+ * Styles for Radio
+ * @public
+ */
+export const RadioStyles = styles;

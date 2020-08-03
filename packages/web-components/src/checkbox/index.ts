@@ -17,3 +17,9 @@ import { CheckboxStyles as styles } from './checkbox.styles';
   styles,
 })
 export class FASTCheckbox extends Checkbox {}
+
+/**
+ * Styles for Checkbox
+ * @public
+ */
+export const CheckboxStyles = styles;

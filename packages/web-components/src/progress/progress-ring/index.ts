@@ -17,3 +17,9 @@ import { ProgressRingStyles as styles } from './progress-ring.styles';
   styles,
 })
 export class FASTProgressRing extends BaseProgress {}
+
+/**
+ * Styles for ProgressRing
+ * @public
+ */
+export const ProgressRingStyles = styles;

@@ -59,3 +59,9 @@ export class FASTTextField extends TextField {
     }
   }
 }
+
+/**
+ * Styles for TextField
+ * @public
+ */
+export const TextFieldStyles = styles;

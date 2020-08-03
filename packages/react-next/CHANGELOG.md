@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 29 Jul 2020 12:35:12 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Aug 2020 12:45:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.73)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.72..@fluentui/react-next_v8.0.0-alpha.73)
+
+### Changes
+
+- Use useWarnings hook ([PR #14263](https://github.com/microsoft/fluentui/pull/14263) by elcraig@microsoft.com)
 
 ## [8.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.70)
 

@@ -17,3 +17,9 @@ import { MenuItemStyles as styles } from './menu-item.styles';
   styles,
 })
 export class FASTMenuItem extends MenuItem {}
+
+/**
+ * Styles for MenuItem
+ * @public
+ */
+export const MenuItemStyles = styles;

@@ -976,6 +976,9 @@ export const olProperties: Record<string, number>;
 
 export { Omit }
 
+// @public
+export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
+
 // @public (undocumented)
 export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
@@ -1198,7 +1201,7 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export function useCustomizationSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): ISettings;
+export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
 
 // @public
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
