@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "reverted sankey chart code",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-08-03T07:29:31.876Z"
+}
