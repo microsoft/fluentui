@@ -19,7 +19,7 @@ describe('getSlots', () => {
     });
   });
 
-  it('renders root as a button, omitting the href prop', () => {
+  it('omits props which are not valid for the element rendered', () => {
     expect(getSlots({ as: 'button', id: 'id', href: 'href' })).toEqual({
       slots: { root: 'button' },
       slotProps: { root: { id: 'id' } },
