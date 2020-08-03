@@ -1889,7 +1889,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus:after {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:active .ms-Dropdown-title {
@@ -2114,7 +2113,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus:after {
-                      border-color: Highlight;
                       color: Highlight;
                     }
                     &:active .ms-Dropdown-title {

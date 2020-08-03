@@ -12,3 +12,4 @@ export * from './usePrevious';
 export * from './useRefEffect';
 export * from './useSetInterval';
 export * from './useSetTimeout';
+export * from './useWarnings';

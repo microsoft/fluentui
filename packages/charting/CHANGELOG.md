@@ -1,8 +1,46 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Jul 2020 12:47:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.8.0)
+
+Fri, 31 Jul 2020 12:47:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.7..@uifabric/charting_v2.8.0)
+
+### Minor changes
+
+- Adding an option to show total counts in line chart legend, and new type in yCalloutData to support new tooltip design in line chart ([PR #14169](https://github.com/microsoft/fluentui/pull/14169) by jijun@microsoft.com)
+
+## [2.7.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.7)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.6..@uifabric/charting_v2.7.7)
+
+### Patches
+
+- common chartHelper added to charting package ([PR #14177](https://github.com/microsoft/fluentui/pull/14177) by v-jasha@microsoft.com)
+- Charting: Add Accessibility support for Sankey chart ([PR #14196](https://github.com/microsoft/fluentui/pull/14196) by v-gorraj@microsoft.com)
+
+## [2.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.6)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.4..@uifabric/charting_v2.7.6)
+
+### Patches
+
+- Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers. ([PR #14195](https://github.com/microsoft/fluentui/pull/14195) by v-gorraj@microsoft.com)
+
+## [2.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.4)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.2..@uifabric/charting_v2.7.4)
+
+### Patches
+
+- Calling grouped vertical bar chart method in did mount and updated height proprty as if negtiva values apper, then need to sent 0 to eliminate unwanted console warnings. ([PR #14137](https://github.com/microsoft/fluentui/pull/14137) by v-jasha@microsoft.com)
+- Charting: Fix Line chart render with empty array of data + a event annotation, the chart throws a strange formatting exception. ([PR #14161](https://github.com/microsoft/fluentui/pull/14161) by v-gorraj@microsoft.com)
 
 ## [2.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.2)
 

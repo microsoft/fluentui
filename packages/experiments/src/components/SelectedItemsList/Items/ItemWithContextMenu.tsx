@@ -28,6 +28,12 @@ export const ItemWithContextMenu = <T extends any>(
     );
     const menuItems = React.useMemo(
       () => itemWithContextMenuProps.menuItems(selectedItemProps.item, selectedItemProps.onTrigger),
+      // TODO: evaluate whether anything should be changed here based on warning:
+      //   "React Hook React.useMemo has an unnecessary dependency: 'itemWithContextMenuProps.menuItems'.
+      //   Either exclude it or remove the dependency array. Outer scope values like
+      //   'itemWithContextMenuProps.menuItems' aren't valid dependencies because mutating them
+      //   doesn't re-render the component."
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [selectedItemProps.item, selectedItemProps.onTrigger, itemWithContextMenuProps.menuItems],
     );
 

@@ -57,7 +57,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
           width: 100%;
         }
         @media screen and (-ms-high-contrast: active){&:focus:after {
-          border-color: Highlight;
           color: Highlight;
         }
         &:active .ms-Dropdown-title {
@@ -234,7 +233,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
           width: 100%;
         }
         @media screen and (-ms-high-contrast: active){&:focus:after {
-          border-color: Highlight;
           color: Highlight;
         }
         &:active .ms-Dropdown-title {

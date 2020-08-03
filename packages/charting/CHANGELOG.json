@@ -2,6 +2,78 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@uifabric/charting_v2.8.0",
+      "version": "2.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding an option to show total counts in line chart legend, and new type in yCalloutData to support new tooltip design in line chart",
+            "author": "jijun@microsoft.com",
+            "commit": "40c70519bffb65b73f84a8e7c6332850aecd3c34",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@uifabric/charting_v2.7.7",
+      "version": "2.7.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "common chartHelper added to charting package",
+            "author": "v-jasha@microsoft.com",
+            "commit": "5679d177d5febc6541806b31592d35a44fb9f139",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Add Accessibility support for Sankey chart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "e0cd2a86ed6c914206bbf72766c2bba10473dc92",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@uifabric/charting_v2.7.6",
+      "version": "2.7.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "63dfc9eb7a361002f8d7eb123272f1957e718340",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@uifabric/charting_v2.7.4",
+      "version": "2.7.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calling grouped vertical bar chart method in did mount and updated height proprty as if negtiva values apper, then need to sent 0 to eliminate unwanted console warnings.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "68f77ba470b728bc947d37c4f2d3754d82f5bb3a",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Fix Line chart render with empty array of data + a event annotation, the chart throws a strange formatting exception.",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "f8def98981f2eba795fb88afd3887fedc0b56a9c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Jul 2020 12:43:08 GMT",
       "tag": "@uifabric/charting_v2.7.2",
       "version": "2.7.2",

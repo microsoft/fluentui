@@ -2,6 +2,42 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@uifabric/experiments_v7.27.14",
+      "version": "7.27.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4eef39d7498c16082b380c71779204a3483d329e",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@uifabric/experiments_v7.27.9",
+      "version": "7.27.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker and SelectedItemsList: minor accessibility fixes",
+            "author": "elvonspa@microsoft.com",
+            "commit": "767b6094a42a4b5171844ccdc95741029e6e0ae8",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Fix \"rules of hooks\" lint rule violations",
+            "author": "elcraig@microsoft.com",
+            "commit": "5e06d57166032a570b08f077ed7ab8d4cf8d95f6",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Jul 2020 12:43:08 GMT",
       "tag": "@uifabric/experiments_v7.27.7",
       "version": "7.27.7",

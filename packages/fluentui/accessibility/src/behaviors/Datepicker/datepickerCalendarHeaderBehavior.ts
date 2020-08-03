@@ -3,12 +3,12 @@ import { Accessibility } from '../../types';
  * @description
  * Behavior for a datepicked calendar component
  * @specification
- * Adds role='group'.
+ * Adds attribute 'aria-live=polite' to 'label' slot.
  */
 export const datepickerCalendarHeaderBehavior: Accessibility<DatepickerCalendarHeaderBehaviorProps> = props => ({
   attributes: {
-    root: {
-      role: 'group',
+    label: {
+      'aria-live': 'polite',
     },
   },
 });

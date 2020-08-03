@@ -7,7 +7,7 @@ import {
   getEnabledMods,
 } from '../runnerUtilities';
 import { CodeMod, CodeModResult } from '../../codeMods/types';
-import { Maybe, Nothing } from '../../maybe';
+import { Maybe, Nothing } from '../../helpers/maybe';
 
 describe('modRunner tests', () => {
   it('gets the appropriate path to mods based on current dir', () => {

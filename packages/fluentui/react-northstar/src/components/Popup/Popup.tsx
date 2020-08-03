@@ -354,7 +354,7 @@ export const Popup: React.FC<PopupProps> &
     }
 
     /**
-     * The hover is adding the mouseEnter, mouseLeave and click event (always opening on click)
+     * The hover is adding the mouseEnter, mouseLeave
      */
     if (_.includes(normalizedOn, 'hover')) {
       contentHandlerProps.onMouseEnter = (e, contentProps) => {
@@ -364,10 +364,6 @@ export const Popup: React.FC<PopupProps> &
       contentHandlerProps.onMouseLeave = (e, contentProps) => {
         setPopupOpen(false, e);
         predefinedProps && _.invoke(predefinedProps, 'onMouseLeave', e, contentProps);
-      };
-      contentHandlerProps.onClick = (e, contentProps) => {
-        setPopupOpen(true, e);
-        predefinedProps && _.invoke(predefinedProps, 'onClick', e, contentProps);
       };
     }
 
