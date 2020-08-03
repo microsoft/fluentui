@@ -17,3 +17,9 @@ import { TreeItemStyles as styles } from './tree-item.styles';
   styles,
 })
 export class FASTTreeItem extends TreeItem {}
+
+/**
+ * Styles for TreeItem
+ * @public
+ */
+export const TreeItemStyles = styles;

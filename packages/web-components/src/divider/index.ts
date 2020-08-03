@@ -17,3 +17,9 @@ import { DividerStyles as styles } from './divider.styles';
   styles,
 })
 export class FASTDivider extends Divider {}
+
+/**
+ * Styles for Divider
+ * @public
+ */
+export const DividerStyles = styles;

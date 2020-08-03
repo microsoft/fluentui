@@ -34,3 +34,9 @@ export class FASTBadge extends Badge {
     }
   }
 }
+
+/**
+ * Styles for Badge
+ * @public
+ */
+export const BadgeStyles = styles;

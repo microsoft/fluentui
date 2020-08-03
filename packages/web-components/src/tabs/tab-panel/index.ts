@@ -17,3 +17,9 @@ import { TabPanelStyles as styles } from './tab-panel.styles';
   styles,
 })
 export class FASTTabPanel extends TabPanel {}
+
+/**
+ * Styles for TabPanel
+ * @public
+ */
+export const TabPanelStyles = styles;
