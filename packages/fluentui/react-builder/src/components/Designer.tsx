@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { useImmerReducer, Reducer } from 'use-immer';
 import * as axeCore from 'axe-core';
-import { Text, Button, Table } from '@fluentui/react-northstar';
+import { Text, Button, Table, Divider } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Editor, renderElementToJSX } from '@fluentui/docs-components';
 
@@ -726,15 +726,18 @@ export const Designer: React.FunctionComponent = () => {
           <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
           <div role="complementary" aria-label="Component tree">
             {jsonTree?.props?.children?.length > 0 ? (
-              <ComponentTree
-                tree={jsonTree}
-                selectedComponent={selectedComponent}
-                onSelectComponent={handleSelectComponent}
-                onCloneComponent={handleCloneComponent}
-                onMoveComponent={handleMoveComponent}
-                onDeleteComponent={handleDeleteComponent}
-                onAddComponent={handleOpenAddComponentDialog}
-              />
+              <>
+                <Divider styles={{ margin: '0.5rem' }} />
+                <ComponentTree
+                  tree={jsonTree}
+                  selectedComponent={selectedComponent}
+                  onSelectComponent={handleSelectComponent}
+                  onCloneComponent={handleCloneComponent}
+                  onMoveComponent={handleMoveComponent}
+                  onDeleteComponent={handleDeleteComponent}
+                  onAddComponent={handleOpenAddComponentDialog}
+                />
+              </>
             ) : (
               <Button
                 text

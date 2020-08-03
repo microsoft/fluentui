@@ -46,6 +46,7 @@ const jsonTreeToTreeItems: (
   handleDelete: React.MouseEventHandler<HTMLButtonElement>,
   handleAddComponent: (uuid, where) => void,
   handleDeleteComponent: (uuid) => void,
+  titleRenderer: (Component, { content, expanded, hasSubtree, ...rest }) => React.ReactFragment,
 ) => TreeItemProps = (
   tree,
   selectedComponentId,
@@ -55,6 +56,7 @@ const jsonTreeToTreeItems: (
   handleDelete,
   handleAddComponent,
   handleDeleteComponent,
+  titleRenderer,
 ) => {
   if (typeof tree === 'string') {
     return {
@@ -68,6 +70,7 @@ const jsonTreeToTreeItems: (
     onTitleClick: handleSelectedComponent,
     id: tree.uuid as string,
     title: {
+      children: titleRenderer,
       content: tree.displayName,
       styles: {
         display: 'flex',
@@ -77,6 +80,7 @@ const jsonTreeToTreeItems: (
         ...(selectedComponentId === tree.uuid && {
           background: '#ffc65c',
           color: '#444',
+          borderBottomLeftRadius: '1.2vh',
         }),
       },
     },
@@ -87,23 +91,26 @@ const jsonTreeToTreeItems: (
         menu={menu(tree.uuid, handleAddComponent, handleDeleteComponent)}
       />
     ),
-    renderItemTitle: (C, { content, ...props }) => {
-      return (
-        <C {...props}>
-          <>
-            <span style={{ flex: 1 }}>{content}</span>
-            {selectedComponentId === tree.uuid && (
+    ...(selectedComponentId === tree.uuid && {
+      renderItemTitle: (C, { content, ...props }) => {
+        return (
+          <C {...props}>
+            <>
+              {props['level'] === 1 ? (
+                <span style={{ flex: 1 }}>{content}</span>
+              ) : (
+                <span style={{ flex: 1, marginLeft: '1rem' }}>{content}</span>
+              )}
               <>
                 <MoveDebugButton onClick={handleMove} />
                 <CloneDebugButton onClick={handleClone} />
                 <TrashDebugButton onClick={handleDelete} />
               </>
-            )}
-          </>
-        </C>
-      );
-    },
-    expanded: true,
+            </>
+          </C>
+        );
+      },
+    }),
     items: tree.props?.children?.map(item =>
       jsonTreeToTreeItems(
         item,
@@ -114,6 +121,7 @@ const jsonTreeToTreeItems: (
         handleDelete,
         handleAddComponent,
         handleDeleteComponent,
+        titleRenderer,
       ),
     ),
   };
@@ -179,6 +187,34 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     [onSelectComponent, onDeleteComponent, tree],
   );
 
+  const activeItems = [];
+  const getActiveItemIds = item => {
+    if (item.items) {
+      activeItems.push(item.id);
+      item.items.forEach(i => getActiveItemIds(i));
+    }
+  };
+
+  const titleRenderer = (Component, { content, expanded, hasSubtree, ...rest }) => {
+    return (
+      <>
+        {rest['level'] !== 1 ? (
+          <span
+            style={{
+              paddingRight: '1rem',
+              borderLeft: '1px solid #eee',
+              borderBottom: '1px solid #eee',
+              borderBottomLeftRadius: '1.2vh',
+            }}
+          />
+        ) : null}
+        <div {...rest} style={{ display: 'inline-block', cursor: 'pointer', padding: '2px 4px' }}>
+          {content}
+        </div>
+      </>
+    );
+  };
+
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
     tree.props?.children?.map(item =>
@@ -191,7 +227,19 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
         handleDelete,
         handleAddComponent,
         handleDeleteComponent,
+        titleRenderer,
       ),
     ) ?? [];
-  return <Tree accessibility={behavior} onKeyDown={treeKeyDown} items={items} />;
+
+  items.forEach(item => getActiveItemIds(item));
+
+  return (
+    <Tree
+      accessibility={behavior}
+      onKeyDown={treeKeyDown}
+      items={items}
+      activeItemIds={activeItems}
+      styles={{ maxHeight: '20rem', overflowY: 'auto' }}
+    />
+  );
 };
