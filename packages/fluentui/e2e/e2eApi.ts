@@ -31,6 +31,10 @@ export class E2EApi {
     return await this.page.waitForSelector(selector, { timeout: 10 * 1000 });
   };
 
+  public hover = async (selector: string) => {
+    return await this.page.hover(selector);
+  };
+
   public getAttributeValue = async (selector: string, attr) => {
     return this.page.$eval(selector, (el, attribute) => el.getAttribute(attribute), attr);
   };

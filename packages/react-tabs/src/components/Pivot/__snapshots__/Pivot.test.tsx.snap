@@ -64,7 +64,6 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -175,7 +174,6 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -325,7 +323,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -436,7 +433,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -580,7 +576,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -691,7 +686,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -809,7 +803,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -973,7 +966,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1084,7 +1076,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1228,7 +1219,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1339,7 +1329,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1481,7 +1470,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1592,7 +1580,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1735,7 +1722,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1846,7 +1832,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1987,7 +1972,6 @@ exports[`Pivot supports JSX expressions 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2099,7 +2083,6 @@ exports[`Pivot supports JSX expressions 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;

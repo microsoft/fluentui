@@ -1,8 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Aug 2020 12:45:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.124.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.2)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.0..office-ui-fabric-react_v7.124.2)
+
+### Patches
+
+- Add high contrast styling for command bar ([PR #14215](https://github.com/microsoft/fluentui/pull/14215) by ololubek@microsoft.com)
+
+## [7.124.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.0)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.10..office-ui-fabric-react_v7.124.0)
+
+### Minor changes
+
+- updated grouped list to be a11y compliant ([PR #11494](https://github.com/microsoft/fluentui/pull/11494) by mgodbolt@microsoft.com)
+
+### Patches
+
+- Add noop transform to force gpu on mobile ([PR #13875](https://github.com/microsoft/fluentui/pull/13875) by miles@substantial.com)
+
+## [7.123.9](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.9)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.7..office-ui-fabric-react_v7.123.9)
+
+### Patches
+
+- ScrollablePane: fix pointer events on sticky'd elements ([PR #13744](https://github.com/microsoft/fluentui/pull/13744) by edwl@microsoft.com)
+- Add high contrast adjust selector to dropdown styles ([PR #14176](https://github.com/microsoft/fluentui/pull/14176) by ololubek@microsoft.com)
 
 ## [7.123.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.7)
 
