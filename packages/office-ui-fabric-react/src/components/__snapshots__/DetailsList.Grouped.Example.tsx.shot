@@ -58,7 +58,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-            border: none;
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1199,7 +1198,11 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             >
               <div
                 className=
+                    ms-FocusZone
                     ms-GroupedList
+                    &:focus {
+                      outline: none;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1212,7 +1215,11 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       min-height: 38px;
                     }
                 data-automationid="GroupedList"
+                data-focuszone-id="FocusZone8"
                 data-is-scrollable="false"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
                 role="presentation"
               >
                 <div
@@ -1297,23 +1304,17 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 }
                             data-is-focusable={true}
                             onClick={[Function]}
+                            onKeyUp={[Function]}
                             style={Object {}}
                           >
                             <div
                               className=
-                                  ms-FocusZone
-                                  &:focus {
-                                    outline: none;
-                                  }
+
                                   {
                                     align-items: center;
                                     display: flex;
                                     height: 48px;
                                   }
-                              data-focuszone-id="FocusZone9"
-                              onFocus={[Function]}
-                              onKeyDown={[Function]}
-                              onMouseDownCapture={[Function]}
                             >
                               <button
                                 aria-checked={false}
@@ -1355,6 +1356,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     .ms-Fabric--isFocusVisible &:focus {
                                       opacity: 1;
                                     }
+                                data-is-focusable={false}
                                 data-selection-toggle={true}
                                 onClick={[Function]}
                                 role="checkbox"
@@ -1522,7 +1524,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 </i>
                               </div>
                               <button
-                                aria-controls="GroupedListSection8"
+                                aria-controls="GroupedListSection9"
                                 aria-expanded={true}
                                 aria-label="expand collapse group"
                                 className=
@@ -1566,6 +1568,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     &:active {
                                       background-color: #e1dfdd;
                                     }
+                                data-is-focusable={false}
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -1625,7 +1628,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           </div>
                           <div
                             className="ms-List"
-                            id="GroupedListSection8"
+                            id="GroupedListSection9"
                             role="grid"
                           >
                             <div
@@ -1713,7 +1716,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
-                                    data-focuszone-id="FocusZone14"
+                                    data-focuszone-id="FocusZone12"
                                     data-is-focusable={true}
                                     data-item-index={0}
                                     data-selection-index={0}
@@ -2192,7 +2195,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
-                                    data-focuszone-id="FocusZone15"
+                                    data-focuszone-id="FocusZone13"
                                     data-is-focusable={true}
                                     data-item-index={1}
                                     data-selection-index={1}
@@ -2675,23 +2678,17 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 }
                             data-is-focusable={true}
                             onClick={[Function]}
+                            onKeyUp={[Function]}
                             style={Object {}}
                           >
                             <div
                               className=
-                                  ms-FocusZone
-                                  &:focus {
-                                    outline: none;
-                                  }
+
                                   {
                                     align-items: center;
                                     display: flex;
                                     height: 48px;
                                   }
-                              data-focuszone-id="FocusZone11"
-                              onFocus={[Function]}
-                              onKeyDown={[Function]}
-                              onMouseDownCapture={[Function]}
                             >
                               <button
                                 aria-checked={false}
@@ -2733,6 +2730,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     .ms-Fabric--isFocusVisible &:focus {
                                       opacity: 1;
                                     }
+                                data-is-focusable={false}
                                 data-selection-toggle={true}
                                 onClick={[Function]}
                                 role="checkbox"
@@ -2944,6 +2942,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     &:active {
                                       background-color: #e1dfdd;
                                     }
+                                data-is-focusable={false}
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -3087,23 +3086,17 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 }
                             data-is-focusable={true}
                             onClick={[Function]}
+                            onKeyUp={[Function]}
                             style={Object {}}
                           >
                             <div
                               className=
-                                  ms-FocusZone
-                                  &:focus {
-                                    outline: none;
-                                  }
+
                                   {
                                     align-items: center;
                                     display: flex;
                                     height: 48px;
                                   }
-                              data-focuszone-id="FocusZone13"
-                              onFocus={[Function]}
-                              onKeyDown={[Function]}
-                              onMouseDownCapture={[Function]}
                             >
                               <button
                                 aria-checked={false}
@@ -3145,6 +3138,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     .ms-Fabric--isFocusVisible &:focus {
                                       opacity: 1;
                                     }
+                                data-is-focusable={false}
                                 data-selection-toggle={true}
                                 onClick={[Function]}
                                 role="checkbox"
@@ -3312,7 +3306,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 </i>
                               </div>
                               <button
-                                aria-controls="GroupedListSection12"
+                                aria-controls="GroupedListSection11"
                                 aria-expanded={true}
                                 aria-label="expand collapse group"
                                 className=
@@ -3356,6 +3350,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     &:active {
                                       background-color: #e1dfdd;
                                     }
+                                data-is-focusable={false}
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -3415,7 +3410,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           </div>
                           <div
                             className="ms-List"
-                            id="GroupedListSection12"
+                            id="GroupedListSection11"
                             role="grid"
                           >
                             <div
@@ -3503,7 +3498,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
-                                    data-focuszone-id="FocusZone16"
+                                    data-focuszone-id="FocusZone14"
                                     data-is-focusable={true}
                                     data-item-index={2}
                                     data-selection-index={2}
@@ -3982,7 +3977,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
-                                    data-focuszone-id="FocusZone17"
+                                    data-focuszone-id="FocusZone15"
                                     data-is-focusable={true}
                                     data-item-index={3}
                                     data-selection-index={3}
@@ -4461,7 +4456,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
-                                    data-focuszone-id="FocusZone18"
+                                    data-focuszone-id="FocusZone16"
                                     data-is-focusable={true}
                                     data-item-index={4}
                                     data-selection-index={4}
