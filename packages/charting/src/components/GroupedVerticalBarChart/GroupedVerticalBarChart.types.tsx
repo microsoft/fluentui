@@ -110,6 +110,20 @@ export interface IGroupedVerticalBarChartProps {
    * @default false
    */
   hideTooltip?: boolean;
+
+  /**
+   * x Axis labels tick padding
+   * @default 10
+   */
+  xAxisTickPadding?: number;
+
+  /**
+   *@default false
+   *Used for to elipse x axis labes and show tooltip on x axis labels
+   * @type {boolean}
+   * @memberof IGroupedVerticalBarChartProps
+   */
+  showTooltipOnAxisLables?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps {
@@ -179,4 +193,6 @@ export interface IGroupedVerticalBarChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  tooltip: IStyle;
 }

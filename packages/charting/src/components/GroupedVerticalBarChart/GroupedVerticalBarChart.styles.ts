@@ -83,5 +83,18 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
     opacityChangeOnHover: {
       cursor: href ? 'pointer' : 'default',
     },
+
+    tooltip: {
+      position: 'absolute',
+      textAlign: 'center',
+      // width: { tWidth },
+      // height: { tHeight },
+      padding: '2px',
+      font: '12px sans-serif',
+      background: 'blue',
+      border: '0px',
+      borderRadius: '8px',
+      pointerEvents: 'none',
+    },
   };
 };
