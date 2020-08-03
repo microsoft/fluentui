@@ -129,16 +129,9 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
 
     useComponentRef(props, keyChecked, id);
 
-    // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
-    // `applicationRole` class (but the div structure will stay the same by necessity)
     return (
-      // eslint-disable-next-line deprecation/deprecation
-      <div className={classNames.applicationRole} {...divProps} ref={forwardedRef}>
-        <div
-          className={classNames.root}
-          role="radiogroup"
-          {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}
-        >
+      <div className={classNames.root} {...divProps} ref={forwardedRef}>
+        <div role="radiogroup" ref={forwardedRef} {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
           {label && (
             <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>
               {label}
