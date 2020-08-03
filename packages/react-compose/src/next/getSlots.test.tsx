@@ -3,7 +3,7 @@ import { getSlots } from './getSlots';
 import { nullRender } from './nullRender';
 
 describe('getSlots', () => {
-  const Foo = () => <div />;
+  const Foo = (props: { id?: string }) => <div />;
 
   it('returns nullRender for root if the as prop is not provided', () => {
     expect(getSlots({})).toEqual({
@@ -80,9 +80,20 @@ describe('getSlots', () => {
   });
 
   it('can use slot children functions to replace default slot rendering', () => {
-    expect(getSlots({ as: 'div', icon: { as: Foo, children: (C, p) => <C {...p} /> } }, ['icon'])).toEqual({
+    expect(
+      getSlots({ as: 'div', icon: { as: Foo, id: 'bar', children: (C: React.ElementType, p: {}) => <C {...p} /> } }, [
+        'icon',
+      ]),
+    ).toEqual({
       slots: { root: 'div', icon: React.Fragment },
-      slotProps: { root: {}, icon: { children: <Foo /> } },
+      slotProps: { root: {}, icon: { children: <Foo id="bar" /> } },
+    });
+  });
+
+  it('can render a primitive input with no children', () => {
+    expect(getSlots({ as: 'div', input: { as: 'input', children: null } }, ['input'])).toEqual({
+      slots: { root: 'div', input: 'input' },
+      slotProps: { root: {}, input: { children: null } },
     });
   });
 });
