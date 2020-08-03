@@ -32,8 +32,9 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
       const slotDefinition = state[name];
       const { as: slotAs, children } = slotDefinition;
       const isSlotPrimitive = typeof slotAs === 'string';
+      const isSlotEmpty = isSlotPrimitive && slotDefinition.children === undefined;
 
-      slots[name] = slotDefinition.children !== undefined || !isSlotPrimitive ? slotAs : nullRender;
+      slots[name] = isSlotEmpty ? slotAs : nullRender;
 
       if (slots[name] !== nullRender) {
         slotProps[name] = isSlotPrimitive

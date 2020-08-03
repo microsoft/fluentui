@@ -221,7 +221,7 @@ const Button = props => {
 };
 ```
 
-### simplifyShorthand<TState>(state: TState, slotNames: string[]): TState
+### simplifyShorthand<TState>(state: TState, slotNames: (keyof TState)[]): TState
 
 Ensures that the given slots are represented using object syntax. This ensures that
 the object can be merged along with other objects.
