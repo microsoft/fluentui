@@ -161,7 +161,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       width: this.state.containerWidth || 600,
       height: this.state.containerHeight || 350,
     };
-
+    // try to reduce height at x axis and labels and utility methof
+    // try to reduce this.removalHeight
     return (
       <div
         id={`d3GroupedChart_${this._uniqLineText}`}
@@ -224,7 +225,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._showXAxisPath = this.props.showXAxisPath || false;
     this._showYAxisPath = this.props.showYAxisPath || false;
     this._barWidth = this.props.barwidth!;
-    this._xAxisTickPadding = this.props.xAxisTickPadding || 10;
+    this._xAxisTickPadding = this.props.xAxisTickPadding || 4;
   }
 
   private _fitParentContainer(): void {
@@ -431,10 +432,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .on('click', (d: IGVForBarChart) => that._redirectToUrl(this.props.href!));
     });
 
-    console.log('calling functions removal values', this._removalValue); // need to only one time
     if (this.props.showTooltipOnAxisLables) {
       document.getElementById(`#MyUniuqe${this._uniqLineText}`)?.remove();
-      // Multiple tolltips are adding, need to fix
       const div = d3Select('body')
         .append('div')
         .attr('id', `MyUniuqe${this._uniqLineText}`)
@@ -519,7 +518,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createx0Axis = (xScale0: any): any => {
-    const x0Axis = d3AxisBottom(xScale0).tickPadding(10);
+    const x0Axis = d3AxisBottom(xScale0).tickPadding(this._xAxisTickPadding);
 
     this._showXAxisGridLines &&
       x0Axis.tickSizeInner(-(this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top));
@@ -637,29 +636,26 @@ export class GroupedVerticalBarChartBase extends React.Component<
     if (node === null) {
       return;
     }
-
     const axisNode = d3Select(node).call(xAxis);
     axisNode.selectAll('.tick text').call(_wrap, 10);
-
     let removeVal = 0;
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function _wrap(text: any, width: number) {
       const arr: number[] = [];
       text.each(function() {
-        const text = d3Select(this);
+        let text = d3Select(this);
+        const totalWord = text.text();
+        const truncatedWord = `${text.text().slice(0, 4)}...`;
+        const totalWordLength = text.text().length;
         const words = text
           .text()
           .split(/\s+/)
           .reverse();
-
         arr.push(words.length);
-
         let word: string = '';
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let line: any = [];
         let lineNumber: number = 0;
-        const lineHeight = 1.1; // ems //0.87
+        const lineHeight = 1.1; // ems
         const y = text.attr('y');
         const dy = parseFloat(text.attr('dy'));
         let tspan = text
@@ -669,35 +665,52 @@ export class GroupedVerticalBarChartBase extends React.Component<
           .attr('y', y)
           .attr('id', 'myUnique')
           .attr('dy', dy + 'em');
-        while ((word = words.pop())) {
-          line.push(word);
-          tspan.text(line.join(' '));
-          if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
-            line.pop();
+
+        if (that.props.showDots && totalWordLength > 4) {
+          tspan = text
+            .append('tspan')
+            .attr('id', 'ididid')
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+            .text(truncatedWord);
+        } else if (that.props.showDots && totalWordLength <= 4) {
+          tspan = text
+            .append('tspan')
+            .attr('id', 'ididid')
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+            .text(totalWord);
+        } else {
+          while ((word = words.pop()!)) {
+            line.push(word);
             tspan.text(line.join(' '));
-            line = [word];
-            tspan = text
-              .append('tspan')
-              .attr('id', 'ididid')
-              .attr('x', 0)
-              .attr('y', y)
-              .attr('dy', ++lineNumber * lineHeight + dy + 'em')
-              .text(word);
+            if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
+              line.pop();
+              tspan.text(line.join(' '));
+              line = [word];
+              tspan = text
+                .append('tspan')
+                .attr('id', 'ididid')
+                .attr('x', 0)
+                .attr('y', y)
+                .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+                .text(word);
+            }
           }
         }
       });
-      console.log(document.getElementById('ididid'), ' idddddddddddddddddddd', arr);
       const maxDigit = Math.max(...arr);
       let maxHeight = 0;
-      axisNode.selectAll('text').each(() => {
-        const Box = document.getElementById('ididid')!.getBBox();
-        const boxHeight = Box.height;
-        if (boxHeight > maxHeight) {
-          maxHeight = boxHeight;
-        }
-      });
-
-      removeVal = (maxDigit - 3) * maxHeight;
+      // axisNode.selectAll('text').each(() => {
+      //   const Box = document.getElementById('ididid')!.getBBox();
+      //   const boxHeight = Box.height;
+      //   if (boxHeight > maxHeight) {
+      //     maxHeight = boxHeight;
+      //   }
+      // });
+      removeVal = (maxDigit - 3) * 13;
       that._removalValue = removeVal > 0 ? removeVal : 0;
     }
   }

@@ -124,6 +124,8 @@ export interface IGroupedVerticalBarChartProps {
    * @memberof IGroupedVerticalBarChartProps
    */
   showTooltipOnAxisLables?: boolean;
+
+  showDots?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps {

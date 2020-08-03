@@ -7,7 +7,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
   public render(): React.ReactNode {
     const data = [
       {
-        name: 'Hello ',
+        name: 'Heljkj jkjlo ',
         series: [
           {
             key: 'series1',
@@ -49,7 +49,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         ],
       },
       {
-        name: 'IamALLLincluded will test how much it can effort ',
+        name: 'IamALLLincluded will test how much it can effort jhjh jhh',
         series: [
           {
             key: 'series1',
@@ -112,7 +112,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
         ],
       },
       {
-        name: '1 2',
+        name: 'i o',
         series: [
           {
             key: 'series1',
@@ -327,7 +327,14 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
 
     return (
       <div className={rootStyle}>
-        <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines showTooltipOnAxisLables />
+        <GroupedVerticalBarChart
+          data={data}
+          height={400}
+          width={650}
+          showYAxisGridLines
+          showTooltipOnAxisLables={true}
+          showDots
+        />
         {/* <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines /> */}
       </div>
     );
