@@ -42,6 +42,9 @@ const useComponentRef = (props: IChoiceGroupProps, keyChecked: string | number |
   );
 };
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
   (props: IChoiceGroupProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const { className, theme, styles, options = [], label, required, disabled, name, defaultSelectedKey } = props;
@@ -83,6 +86,7 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
       options.some(option => option.key === defaultSelectedKey);
 
     const [keyChecked, setKeyChecked] = React.useState(validDefaultSelectedKey ? defaultSelectedKey : getKeyChecked());
+
     const [keyFocused, setKeyFocused] = React.useState<string | number>();
 
     const onFocus = (key: string) => {

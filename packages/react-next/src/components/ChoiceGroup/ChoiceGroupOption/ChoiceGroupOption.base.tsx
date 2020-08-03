@@ -15,6 +15,9 @@ const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGr
 
 const LARGE_IMAGE_SIZE = 71;
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export const ChoiceGroupOptionBase = (props: IChoiceGroupOptionProps) => {
   const {
     ariaLabel,
