@@ -42,12 +42,12 @@ const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
 const inputProps = {
   onFocus: () => console.log('onFocus called'),
   onBlur: () => console.log('onBlur called'),
-  'aria-label': 'Document Picker',
+  'aria-label': 'Document picker',
 };
 
 const pickerSuggestionsProps = {
-  suggestionsHeaderText: 'Suggested Documents',
-  noResultsFoundText: 'No Documents Found',
+  suggestionsHeaderText: 'Suggested documents',
+  noResultsFoundText: 'No documents found',
 };
 
 const rootClass = mergeStyles({
@@ -372,7 +372,7 @@ export const PickerCustomResultExample: React.FunctionComponent = () => {
     <div className={rootClass}>
       <Checkbox
         styles={checkboxStyles}
-        label="Disable Document Picker"
+        label="Disable document picker"
         checked={isPickerDisabled}
         onChange={toggleIsPickerDisabled}
       />

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { ICommandBarItemProps, CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { createListItems, IExampleItem } from '@uifabric/example-data';
-import { mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IExampleItem, createListItems } from '@uifabric/example-data';
+import { IRawStyle, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { useConst, useForceUpdate } from '@uifabric/react-hooks';
 
 interface ISelectionItemExampleProps {
@@ -99,33 +99,34 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
 
   const onSelectionModeChanged = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-      const newSelection = new Selection({
-        canSelectItem: canSelect === 'vowels' ? canSelectItem : undefined,
-        selectionMode: menuItem.data,
-        onSelectionChanged: forceUpdate,
-      });
-      newSelection.setItems(items, false);
-      setSelection(newSelection);
+      setSelection(
+        new Selection({
+          canSelectItem: canSelect === 'vowels' ? canSelectItem : undefined,
+          selectionMode: menuItem.data,
+          onSelectionChanged: forceUpdate,
+          items,
+        }),
+      );
     },
     [canSelect, forceUpdate, items],
   );
 
   const onCanSelectChanged = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-      const newSelection = new Selection({
-        canSelectItem: menuItem.data === 'vowels' ? canSelectItem : undefined,
-        selectionMode: selection.mode,
-        onSelectionChanged: forceUpdate,
-        items,
-      });
-      newSelection.setItems(items, false);
-      setSelection(newSelection);
+      setSelection(
+        new Selection({
+          canSelectItem: menuItem.data === 'vowels' ? canSelectItem : undefined,
+          selectionMode: selection.mode,
+          onSelectionChanged: forceUpdate,
+          items,
+        }),
+      );
       setCanSelect(menuItem.data === 'vowels' ? 'vowels' : 'all');
     },
     [selection, forceUpdate, items],
   );
 
-  const getCommandItems = React.useMemo(
+  const commandItems = React.useMemo<ICommandBarItemProps[]>(
     () => [
       {
         key: 'selectionMode',
@@ -194,8 +195,8 @@ export const SelectionBasicExample: React.FunctionComponent = () => {
   );
 
   return (
-    <div className="ms-SelectionBasicExample">
-      <CommandBar items={getCommandItems} />
+    <div>
+      <CommandBar items={commandItems} />
       <MarqueeSelection selection={selection} isEnabled={selection.mode === SelectionMode.multiple}>
         <SelectionZone selection={selection} onItemInvoked={alertItem}>
           {items.map((item: IExampleItem, index: number) => (
