@@ -2,6 +2,80 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "office-ui-fabric-react_v7.124.2",
+      "version": "7.124.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add high contrast styling for command bar",
+            "author": "ololubek@microsoft.com",
+            "commit": "4eef39d7498c16082b380c71779204a3483d329e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "office-ui-fabric-react_v7.124.0",
+      "version": "7.124.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add noop transform to force gpu on mobile",
+            "author": "miles@substantial.com",
+            "commit": "b42ae30fb2bf82da9dac0acec4e7c61431c59652",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "updated grouped list to be a11y compliant",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7fb345ceb101cf5b5ad6d046cf95a58195155d17",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "office-ui-fabric-react_v7.123.10",
+      "version": "7.123.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding wrapper for isConformant package",
+            "author": "esteban.230@hotmail.com",
+            "commit": "fdc095fd93f528381650e1215bcf2bfe1ff9acf6",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "office-ui-fabric-react_v7.123.9",
+      "version": "7.123.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ScrollablePane: fix pointer events on sticky'd elements",
+            "author": "edwl@microsoft.com",
+            "commit": "89ef7eab4d2f574977bf83256bde78d65e6f92da",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add high contrast adjust selector to dropdown styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ba783ab53821e4a70f61f823e87ca240a9665a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jul 2020 12:40:51 GMT",
       "tag": "office-ui-fabric-react_v7.123.7",
       "version": "7.123.7",

@@ -2,6 +2,109 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.73",
+      "version": "8.0.0-alpha.73",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "4eef39d7498c16082b380c71779204a3483d329e",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Use useWarnings hook",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.72",
+      "version": "8.0.0-alpha.72",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use withThemeProvider storybook decorator from @fluentui/storybook package.",
+            "author": "xgao@microsoft.com",
+            "commit": "eaada6f8e6499585952528ac8ebead0a8e7da906",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Jul 2020 12:35:12 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.70",
+      "version": "8.0.0-alpha.70",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update Release Notes with comment about ref changes in function components",
+            "author": "miclo@microsoft.com",
+            "commit": "a35dce221bb1e179dbc068cff67d02f6b75e67f3",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Updating existing react-next examples to use the newest ones found inside of office-ui-fabric-react.",
+            "author": "czearing@outlook.com",
+            "commit": "0dfa86ddfc41052efb58c5de5eb760f0020c18f8",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Copying teachingBubble to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "6b6f285bfcd8c6f5df8077605d8ea6b82d45bd85",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.69",
+      "version": "8.0.0-alpha.69",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding wrapper for isConformant package",
+            "author": "esteban.230@hotmail.com",
+            "commit": "fdc095fd93f528381650e1215bcf2bfe1ff9acf6",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Move ThemeProvider from react-next to react-theme-provider's Compat folder",
+            "author": "behowell@microsoft.com",
+            "commit": "20caabd592970eef8431d4b47c923e54767e3d3e",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.68",
+      "version": "8.0.0-alpha.68",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add high contrast adjust selector to dropdown styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ba783ab53821e4a70f61f823e87ca240a9665a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jul 2020 12:43:51 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.67",
       "version": "8.0.0-alpha.67",

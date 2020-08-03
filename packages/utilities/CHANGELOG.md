@@ -1,8 +1,26 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Aug 2020 12:45:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.0)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.6..@uifabric/utilities_v7.25.0)
+
+### Minor changes
+
+- Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce. ([PR #14281](https://github.com/microsoft/fluentui/pull/14281) by dzearing@microsoft.com)
+
+## [7.24.6](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.6)
+
+Fri, 31 Jul 2020 12:47:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.24.5..@uifabric/utilities_v7.24.6)
+
+### Patches
+
+- useCustomizationSettings: get settings from CustomizerContext if exists. ([PR #14145](https://github.com/microsoft/fluentui/pull/14145) by xgao@microsoft.com)
 
 ## [7.24.5](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.24.5)
 
