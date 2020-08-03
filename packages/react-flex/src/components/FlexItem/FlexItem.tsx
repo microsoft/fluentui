@@ -3,12 +3,9 @@ import { compose, createClassResolver, mergeProps } from '@fluentui/react-compos
 import { FlexItemProps, FlexItemSlots, FlexItemSlotProps } from './FlexItem.types';
 import * as classes from './FlexItem.scss';
 import { useFlexItem } from './useFlexItem';
-// import { FlexContext } from '../Flex/FlexContext';
-// import { useContext } from 'react';
 
 export const FlexItem = compose<'div', FlexItemProps, FlexItemProps, {}, {}>(
   (props, ref, options) => {
-    // const { disableShrink, gap } = useContext(FlexContext);
     const { state } = options;
     const { children } = props;
     const { slots, slotProps } = mergeProps<FlexItemProps, FlexItemProps, FlexItemSlots, FlexItemSlotProps>(
@@ -41,5 +38,6 @@ FlexItem.defaultProps = {
     grow: '0',
     order: '0',
     shrink: '1',
+    margin: '0',
   },
 };

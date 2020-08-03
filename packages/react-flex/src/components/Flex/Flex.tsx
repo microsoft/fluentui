@@ -70,11 +70,9 @@ const isFlexItemElement = (item: React.ReactNode): item is typeof FlexItem => {
 Flex.defaultProps = {
   as: 'div',
   inline: false,
-  column: false,
   wrap: false,
   horizontalAlign: 'start',
   verticalAlign: 'stretch',
-  reverse: false,
   disableShrink: false,
   fluid: false,
   tokens: {
