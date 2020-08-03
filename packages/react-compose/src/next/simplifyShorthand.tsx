@@ -6,7 +6,7 @@ import * as React from 'react';
  * @param props - The incoming props
  * @param shorthandPropNames - An array of prop names to apply simplification to
  */
-export const simplifyShorthand = <TProps,>(props: TProps, shorthandPropNames?: (keyof TProps)[]) => {
+export const simplifyShorthand = <TProps,>(props: TProps, shorthandPropNames: (keyof TProps)[]) => {
   let newProps = props;
 
   if (shorthandPropNames && shorthandPropNames.length) {
