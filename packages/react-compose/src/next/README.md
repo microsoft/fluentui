@@ -26,7 +26,7 @@ const renderButton = state => {
 A hook which can manipulate the state (defining accessibility and behaviors):
 
 ```jsx
-const useButton = state => {
+const useButtonState = state => {
   // If the button is rendered as something besides a button or anchor, make it focusable.
   if (state.as !== 'button' && state.as !== 'a') {
     state.tabIndex = 0;
@@ -37,13 +37,13 @@ const useButton = state => {
 A factory function sets up the state and render function:
 
 ```jsx
-const createButton = (userProps, ref, defaultProps) => {
+const useButton = (userProps, ref, defaultProps) => {
   const state = _.merge({}, defaultProps, userProps);
 
   // Apply button behaviors.
-  useButton(state);
+  useButtonState(state);
 
-  return { state, render };
+  return { state, render: renderButton };
 };
 ```
 
@@ -64,11 +64,29 @@ const Button = React.forwardRef((props, ref) => {
 });
 ```
 
+We can also use these building blocks to scaffold other types of buttons, transform input, pull values from
+context, redefine styling, or mix/match behaviors:
+
+```jsx
+const ToggleButton = React.forwardRef((props, ref) => {
+  const { state, render } = createButton(props, ref);
+
+  // Hand a "checked" and "defaultChecked" state, onClicks to toggle the value,
+  // and appropriate a11y attributes.
+  useChecked(state);
+
+  // Inject classNames as needed.
+  useStyles(state);
+
+  return render(state);
+
+```
+
 ### Details
 
 #### Creating mutable state with `mergeProps`
 
-In the previous example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and using that to construct state simplifies hook development and usage; rather than trying to re-clone objects unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self contained hooks, which can ensure they are used correctly, avoiding accidents like stomping on existing event handlers by blind object assigning the results.
+In the previous example, `_.merge` was used to deep clone the props into a state object. Creating a single clone and using that to construct state simplifies hook development and usage; rather than trying to re-clone objects unnecessarily on every small mutation, hooks can assume operating against a draft state. This creates more self contained hooks, which can ensure they apply state updates correctly, avoiding accidents like stomping on existing event handlers by blind object assigning the results.
 
 However, deep merge overlooks many edge cases for component props:
 
@@ -221,7 +239,7 @@ const Button = props => {
 };
 ```
 
-### simplifyShorthand<TState>(state: TState, slotNames: string[]): TState
+### simplifyShorthand<TState>(state: TState, slotNames: (keyof TState)[]): TState
 
 Ensures that the given slots are represented using object syntax. This ensures that
 the object can be merged along with other objects.
