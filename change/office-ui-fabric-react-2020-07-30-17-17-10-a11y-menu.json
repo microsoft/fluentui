@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update hc styling for Dropdown and ComboBox items to remove noisy borders",
+  "packageName": "office-ui-fabric-react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-31T00:17:10.503Z"
+}

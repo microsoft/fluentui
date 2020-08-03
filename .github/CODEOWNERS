@@ -34,6 +34,9 @@ sizeauditor.json @aftab-hassan
 #### Fluent UI
 packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajdova @dzearing @pompomon @silviuavram @jurokapsiar
 
+#### Web Components
+packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
+
 #### Deprecated API Files
 *.api.ts @natalieethell
 
@@ -49,7 +52,8 @@ Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
 packages/charting/ @Raghurk
-packages/date-time @lorejoh12 @evlevy
+packages/date-time @lorejoh12 @evlevy @pompomon
+packages/date-time-utilities @lorejoh12 @evlevy @pompomon
 packages/eslint-plugin/ @ecraig12345
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
@@ -81,7 +85,7 @@ packages/office-ui-fabric-react/src/components/Announced/ @natalieethell
 packages/office-ui-fabric-react/src/components/Breadcrumb/ @xugao
 packages/office-ui-fabric-react/src/components/Button/ @khmakoto
 packages/react-next/src/components/Button/ @khmakoto
-packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh12
+packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh12 @pompomon
 packages/office-ui-fabric-react/src/components/Callout/ @joschect
 packages/office-ui-fabric-react/src/components/react-cards/Card/  @khmakoto
 packages/office-ui-fabric-react/src/components/Check/ @dzearing @xugao
@@ -93,7 +97,7 @@ packages/office-ui-fabric-react/src/components/ColorPicker/ @ecraig12345
 packages/office-ui-fabric-react/src/components/ComboBox/ @joschect
 packages/office-ui-fabric-react/src/components/CommandBar/ @micahgodbolt @joschect
 packages/office-ui-fabric-react/src/components/ContextualMenu/ @joschect
-packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh12
+packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh12 @pompomon
 packages/office-ui-fabric-react/src/components/DetailsList/ @dzearing
 packages/office-ui-fabric-react/src/components/Dialog/ @joschect
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
