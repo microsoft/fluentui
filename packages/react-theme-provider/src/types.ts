@@ -55,7 +55,7 @@ export type ColorPlateSet = ColorTokens & ColorTokenStates;
 /**
  * A token set can provide a single string or object, mapping additional sub-parts of a token set.
  */
-export type TokenSetType = string | { [key: string]: TokenSetType | undefined };
+export type TokenSetType = { [key: string]: string | TokenSetType | undefined };
 
 /**
  * Recursive partial type.
