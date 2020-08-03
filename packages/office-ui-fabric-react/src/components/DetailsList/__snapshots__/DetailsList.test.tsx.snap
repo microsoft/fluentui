@@ -5011,7 +5011,11 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           >
             <div
               className=
+                  ms-FocusZone
                   ms-GroupedList
+                  &:focus {
+                    outline: none;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -5024,7 +5028,11 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     min-height: 38px;
                   }
               data-automationid="GroupedList"
+              data-focuszone-id="FocusZone18"
               data-is-scrollable="false"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="presentation"
             >
               <div
@@ -5057,6 +5065,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         <div
                           aria-expanded={true}
                           aria-label="Group 0"
+                          aria-level={1}
                           aria-posinset={1}
                           aria-setsize={2}
                           className=
@@ -5108,23 +5117,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               }
                           data-is-focusable={true}
                           onClick={[Function]}
+                          onKeyUp={[Function]}
                           style={Object {}}
                         >
                           <div
                             className=
-                                ms-FocusZone
-                                &:focus {
-                                  outline: none;
-                                }
+
                                 {
                                   align-items: center;
                                   display: flex;
                                   height: 48px;
                                 }
-                            data-focuszone-id="FocusZone19"
-                            onFocus={[Function]}
-                            onKeyDown={[Function]}
-                            onMouseDownCapture={[Function]}
                           >
                             <div
                               className=
@@ -5162,7 +5165,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               </i>
                             </div>
                             <button
-                              aria-controls="GroupedListSection18"
+                              aria-controls="GroupedListSection19"
                               aria-expanded={true}
                               aria-label="expand collapse group"
                               className=
@@ -5206,6 +5209,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   &:active {
                                     background-color: #e1dfdd;
                                   }
+                              data-is-focusable={false}
                               onClick={[Function]}
                               type="button"
                             >
@@ -5265,7 +5269,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         </div>
                         <div
                           className="ms-List"
-                          id="GroupedListSection18"
+                          id="GroupedListSection19"
                           role="grid"
                         >
                           <div
@@ -5353,7 +5357,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone22"
+                                  data-focuszone-id="FocusZone21"
                                   data-is-focusable={true}
                                   data-item-index={0}
                                   data-selection-index={0}
@@ -5538,7 +5542,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone23"
+                                  data-focuszone-id="FocusZone22"
                                   data-is-focusable={true}
                                   data-item-index={1}
                                   data-selection-index={1}
@@ -5675,6 +5679,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         <div
                           aria-expanded={true}
                           aria-label="Group 1"
+                          aria-level={1}
                           aria-posinset={2}
                           aria-setsize={2}
                           className=
@@ -5726,23 +5731,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               }
                           data-is-focusable={true}
                           onClick={[Function]}
+                          onKeyUp={[Function]}
                           style={Object {}}
                         >
                           <div
                             className=
-                                ms-FocusZone
-                                &:focus {
-                                  outline: none;
-                                }
+
                                 {
                                   align-items: center;
                                   display: flex;
                                   height: 48px;
                                 }
-                            data-focuszone-id="FocusZone21"
-                            onFocus={[Function]}
-                            onKeyDown={[Function]}
-                            onMouseDownCapture={[Function]}
                           >
                             <div
                               className=
@@ -5824,6 +5823,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   &:active {
                                     background-color: #e1dfdd;
                                   }
+                              data-is-focusable={false}
                               onClick={[Function]}
                               type="button"
                             >
@@ -5971,7 +5971,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone24"
+                                  data-focuszone-id="FocusZone23"
                                   data-is-focusable={true}
                                   data-item-index={2}
                                   data-selection-index={2}
@@ -6156,7 +6156,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone25"
+                                  data-focuszone-id="FocusZone24"
                                   data-is-focusable={true}
                                   data-item-index={3}
                                   data-selection-index={3}
@@ -6341,7 +6341,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone26"
+                                  data-focuszone-id="FocusZone25"
                                   data-is-focusable={true}
                                   data-item-index={4}
                                   data-selection-index={4}

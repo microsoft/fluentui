@@ -4,7 +4,6 @@ import { series, task } from 'gulp';
 import { colors, log } from 'gulp-util';
 import _ from 'lodash';
 import ProgressBar from 'progress';
-import puppeteer from 'puppeteer';
 import del from 'del';
 import { argv } from 'yargs';
 import markdownTable from 'markdown-table';
@@ -19,7 +18,7 @@ import {
 } from '../../../packages/fluentui/perf/types';
 import config from '../../config';
 import webpackPlugin from '../plugins/gulp-webpack';
-import { safeLaunchOptions } from '../../puppeteer/puppeteer.config';
+import { Browser, createChrome, createElectron } from './browserAdapters';
 
 const { paths } = config;
 
@@ -107,7 +106,14 @@ const createMarkdownTable = (perExamplePerfMeasures: PerExamplePerfMeasures) => 
   ]);
 };
 
-async function runMeasures(browser: any, filter: string, mode: string, times: number): Promise<ProfilerMeasureCycle[]> {
+async function runMeasures(
+  browser: Browser,
+  filter: string,
+  mode: string,
+  times: number,
+): Promise<ProfilerMeasureCycle[]> {
+  const codeToExecute = `window.runMeasures("${filter}")`;
+
   // Hides progress bar on CI
   const bar = process.env.TF_BUILD ? { tick: _.noop } : new ProgressBar(':bar :current/:total', { total: times });
   const measures: ProfilerMeasureCycle[] = [];
@@ -117,24 +123,22 @@ async function runMeasures(browser: any, filter: string, mode: string, times: nu
 
   if (mode === 'new-page') {
     for (let i = 0; i < times; i++) {
-      const page = await browser.newPage();
-      await page.goto(`http://${config.server_host}:${config.perf_port}`);
+      const page = await browser.openPage(`http://${config.server_host}:${config.perf_port}`);
 
-      const measuresFromStep = await page.evaluate(filter => window.runMeasures(filter), filter);
+      const measuresFromStep = await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
       measures.push(measuresFromStep);
       bar.tick();
 
       await page.close();
     }
   } else if (mode === 'same-page') {
-    const page = await browser.newPage();
-    await page.goto(`http://${config.server_host}:${config.perf_port}`);
+    const page = await browser.openPage(`http://${config.server_host}:${config.perf_port}`);
 
     // Empty run to skip slow first run
-    await page.evaluate(filter => window.runMeasures(filter), filter);
+    await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
 
     for (let i = 0; i < times; i++) {
-      const measuresFromStep = await page.evaluate(filter => window.runMeasures(filter), filter);
+      const measuresFromStep = await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
 
       measures.push(measuresFromStep);
       bar.tick();
@@ -155,20 +159,18 @@ task('perf:build', cb => {
 });
 
 task('perf:run', async () => {
-  const filter = argv.filter as string;
+  const filter = (argv.filter as string) || '';
+  const browserName: 'chrome' | 'electron' = (argv.browser as 'chrome' | 'electron') || 'chrome';
   const mode = (argv.mode as string) || 'new-page';
   const times = (argv.times as number) || DEFAULT_RUN_TIMES;
 
-  let browser;
+  const browser = browserName === 'electron' ? await createElectron(argv.electronPath as string) : await createChrome();
   let measures: ProfilerMeasureCycle[];
 
   try {
-    browser = await puppeteer.launch(safeLaunchOptions());
     measures = await runMeasures(browser, filter, mode, times);
   } finally {
-    if (browser) {
-      await browser.close();
-    }
+    await browser.close();
   }
 
   const resultsFile = paths.perfDist('result.json');
