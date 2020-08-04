@@ -20,7 +20,6 @@ export const getAnimations = (backgroundColor: string): Record<string, ICSSInJSS
       backgroundImage:
         'linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%)',
       backgroundSize: '1200px 100%',
-      maxWidth: '30rem',
     },
   },
 
