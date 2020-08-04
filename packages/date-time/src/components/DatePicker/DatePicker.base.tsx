@@ -163,7 +163,7 @@ function useErrorMessage(
         // Don't parse if the selected date has the same formatted string as what we're about to parse.
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
-        if (selectedDate && !errorMessage && formatDate && formatDate(selectedDate) === inputValue) {
+        if (selectedDate && !errorMessage && formatDate && formatDate(date ?? selectedDate) === inputValue) {
           return;
         }
         date = date || parseDateFromString!(inputValue);
