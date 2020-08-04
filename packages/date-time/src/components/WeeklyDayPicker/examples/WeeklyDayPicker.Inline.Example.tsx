@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WeeklyDayPicker, DayOfWeek, addDays, defaultDayPickerStrings } from '@uifabric/date-time';
+import { WeeklyDayPicker, DayOfWeek, addDays, defaultWeeklyDayPickerStrings } from '@uifabric/date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
@@ -27,7 +27,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<{}, IWeeklyDay
         <WeeklyDayPicker
           onSelectDate={this._onSelectDate}
           firstDayOfWeek={DayOfWeek.Sunday}
-          strings={defaultDayPickerStrings}
+          strings={defaultWeeklyDayPickerStrings}
           initialDate={this.state.selectedDate}
         />
         <div>

@@ -65,9 +65,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
   } = props;
 
-  const activeDescendant = '';
-  const isExpanded = true;
-
   const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which !== KeyCodes.backspace) {
       return;
@@ -231,30 +228,38 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
         <MarqueeSelection selection={selection} isEnabled={true}>
           <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', classNames.pickerText)} role={'list'}>
+            <div className={css('ms-BasePicker-text', classNames.pickerText)}>
               {headerComponent}
               {_renderSelectedItemsList()}
               {_canAddItems() && (
-                <Autofill
-                  {...(inputProps as IInputProps)}
-                  className={css('ms-BasePicker-input', classNames.pickerInput)}
-                  ref={input}
-                  /* eslint-disable react/jsx-no-bind */
-                  onFocus={_onInputFocus}
-                  onClick={_onInputClick}
-                  onInputValueChange={_onInputChange}
-                  /* eslint-enable react/jsx-no-bind */
-                  aria-activedescendant={activeDescendant}
-                  aria-owns={isExpanded ? 'suggestion-list' : undefined}
-                  aria-expanded={isExpanded}
-                  aria-haspopup="true"
+                <div
+                  aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
+                  aria-expanded={isSuggestionsShown}
+                  aria-haspopup="listbox"
                   role="combobox"
-                  disabled={false}
-                  /* eslint-disable react/jsx-no-bind */
-                  onPaste={_onPaste}
-                  onKeyDown={_onInputKeyDown}
-                  /* eslint-enable react/jsx-no-bind */
-                />
+                >
+                  <Autofill
+                    {...(inputProps as IInputProps)}
+                    className={css('ms-BasePicker-input', classNames.pickerInput)}
+                    ref={input}
+                    /* eslint-disable react/jsx-no-bind */
+                    onFocus={_onInputFocus}
+                    onClick={_onInputClick}
+                    onInputValueChange={_onInputChange}
+                    /* eslint-enable react/jsx-no-bind */
+                    aria-autocomplete="list"
+                    aria-activedescendant={
+                      isSuggestionsShown && focusItemIndex >= 0
+                        ? 'FloatingSuggestionsItemId-' + focusItemIndex
+                        : undefined
+                    }
+                    disabled={false}
+                    /* eslint-disable react/jsx-no-bind */
+                    onPaste={_onPaste}
+                    onKeyDown={_onInputKeyDown}
+                    /* eslint-enable react/jsx-no-bind */
+                  />
+                </div>
               )}
             </div>
           </SelectionZone>

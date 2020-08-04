@@ -1,0 +1,6 @@
+{
+  "copyTo": {
+    "dist/sass": ["office-ui-fabric-react/dist/sass/**/*"],
+    "dist/css": ["office-ui-fabric-react/dist/css/**/*"]
+  }
+}

@@ -2,9 +2,11 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import * as StyleConstants from '../Constants';
 import { FontSizes } from '../AzureType';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   const labelTextColor = (color: string) => {
     return {
       '.ms-Button-description': { color },
@@ -21,9 +23,26 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         ...labelTextColor(semanticColors.buttonText),
         '&.ms-Button--compoundPrimary': {
           backgroundColor: semanticColors.primaryButtonBackground,
-          border: `0px`,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryCompoundButtonBorder}`,
           selectors: {
             ...labelTextColor(semanticColors.primaryButtonText),
+          },
+        },
+        '&.ms-Button--compoundPrimary:focus': {
+          backgroundColor: semanticColors.primaryButtonBackground,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryCompoundButtonBorder}`,
+          selectors: {
+            ...labelTextColor(extendedSemanticColors.primaryButtonTextFocused),
+          },
+        },
+        '&.ms-Button--compound:focus': {
+          backgroundColor: semanticColors.buttonBackground,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
+          selectors: {
+            ...labelTextColor(semanticColors.buttonText),
+            '&.ms-Button--compound:hover': {
+              backgroundColor: semanticColors.buttonBackgroundHovered,
+            },
           },
         },
       },
@@ -33,6 +52,7 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
       selectors: {
         '&.ms-Button--compound:hover': {
+          borderColor: semanticColors.buttonBackgroundHovered,
           selectors: {
             ...labelTextColor(semanticColors.buttonTextHovered),
           },
@@ -40,7 +60,7 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         '&.ms-Button--compoundPrimary:hover': {
           backgroundColor: semanticColors.primaryButtonBackgroundHovered,
           color: semanticColors.primaryButtonTextHovered,
-          border: `0px`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBackgroundHovered}`,
           selectors: {
             ...labelTextColor(semanticColors.primaryButtonTextHovered),
           },
@@ -48,10 +68,11 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       },
     },
     rootPressed: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       selectors: {
         '&.ms-Button--compound:active': {
+          backgroundColor: semanticColors.buttonBackgroundPressed,
+          borderColor: semanticColors.buttonBackgroundPressed,
           selectors: {
             ...labelTextColor(semanticColors.buttonTextPressed),
           },
@@ -59,7 +80,8 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         '&.ms-Button--compoundPrimary:active': {
           backgroundColor: semanticColors.primaryButtonBackgroundPressed,
           color: semanticColors.primaryButtonTextPressed,
-          border: '0px',
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBackgroundPressed}`,
+
           selectors: {
             ...labelTextColor(semanticColors.primaryButtonTextPressed),
           },
@@ -72,10 +94,14 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       selectors: {
         ...labelTextColor(semanticColors.buttonTextDisabled),
         '&.ms-Button--compoundPrimary': {
-          backgroundColor: semanticColors.buttonBackgroundDisabled,
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled}`,
           selectors: {
-            ...labelTextColor(semanticColors.buttonTextDisabled),
+            ...labelTextColor(semanticColors.primaryButtonTextDisabled),
           },
+        },
+        '&.ms-Button--compound': {
+          border: extendedSemanticColors.primaryButtonBorderDisabled,
         },
       },
     },

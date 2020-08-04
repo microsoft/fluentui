@@ -105,6 +105,7 @@ export function styled<
 
         return () => Customizations.unobserve(forceUpdate);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
     }, []);
 
     const settings = Customizations.getSettings(fields, scope, context.customizations);

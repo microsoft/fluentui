@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import { Customizations, ISettings } from './Customizations';
+import { CustomizerContext } from './CustomizerContext';
 import { useCustomizationSettings } from './useCustomizationSettings';
 
 describe('useCustomizatioSettings', () => {
@@ -64,5 +65,25 @@ describe('useCustomizatioSettings', () => {
     wrapper = mount(<TestComponent />);
     expect(settingsStates.length).toBe(1);
     expect(settingsStates[0]).toEqual({ a: undefined });
+  });
+
+  it('get settings from CustomizerContext', () => {
+    const settingsStates: ISettings[] = [];
+
+    const TestComponent: React.FunctionComponent = () => {
+      const settings = useCustomizationSettings(['theme']);
+
+      settingsStates.push(settings);
+      return null;
+    };
+
+    const newContext = { customizations: { settings: { theme: { color: 'red' } }, scopedSettings: {} } };
+    wrapper = mount(
+      <CustomizerContext.Provider value={newContext}>
+        <TestComponent />
+      </CustomizerContext.Provider>,
+    );
+    expect(settingsStates.length).toBe(1);
+    expect(settingsStates[0]).toEqual({ theme: { color: 'red' } });
   });
 });

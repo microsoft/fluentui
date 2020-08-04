@@ -119,11 +119,9 @@ export const ContextualMenuPageProps: IDocPageProps = {
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuOverview.md'),
-  bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDos.md'),
-  donts: require<
+  bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDonts.md'),
+  >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
