@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeProps, getSlots, simplifyShorthand } from '@fluentui/react-compose/lib/next/index';
+import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { ButtonProps, ButtonState } from './Button.types';
 import { useButtonState } from './useButtonState';
 
@@ -38,7 +38,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
       loader: { as: 'span' },
     },
     defaultProps,
-    simplifyShorthand(props, buttonShorthandProps),
+    resolveShorthandProps(props, buttonShorthandProps),
   );
 
   useButtonState(state);

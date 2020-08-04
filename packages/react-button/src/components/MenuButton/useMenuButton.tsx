@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots, simplifyShorthand, mergeProps } from '@fluentui/react-compose/lib/next/index';
+import { getSlots, resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next/index';
 import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
 import { useMenuButtonState } from './useMenuButtonState';
 
@@ -38,7 +38,7 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
       menu: { as: 'span' },
     },
     defaultProps,
-    simplifyShorthand(props, menuButtonShorthandProps),
+    resolveShorthandProps(props, menuButtonShorthandProps),
   ) as MenuButtonState;
 
   useMenuButtonState(state);
