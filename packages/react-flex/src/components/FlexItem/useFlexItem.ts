@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FlexItemState, FlexItemProps, FlexItemTokens } from './FlexItem.types';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
-import { FlexContext } from '../Flex';
+import { FlexContext } from '../Flex/FlexContext';
 import { FlexProps } from '../Flex/Flex.types';
 
 export const useFlexItem = (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultPalette } from 'office-ui-fabric-react';
 import { Flex } from '../Flex';
-import { FlexItem } from '../../FlexItem';
+import { FlexItem } from '../../FlexItem/FlexItem';
 import { FlexTokens } from '../Flex.types';
 
 // Styles definition

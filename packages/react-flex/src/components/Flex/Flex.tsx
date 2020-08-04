@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FlexProps, FlexSlots, FlexSlotProps } from './Flex.types';
 import { compose, createClassResolver, mergeProps } from '@fluentui/react-compose';
 import * as classes from './Flex.scss';
-import { FlexItem } from '../FlexItem';
+import { FlexItem } from '../FlexItem/FlexItem';
 import { FlexContext } from './FlexContext';
 import { useFlex } from './useFlex';
 

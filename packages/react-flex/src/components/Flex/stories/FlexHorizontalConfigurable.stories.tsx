@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Flex } from '../Flex';
-import { FlexItem } from '../../FlexItem';
+import { FlexItem } from '../../FlexItem/FlexItem';
 import { FlexProps, FlexTokens } from '../Flex.types';
 import { Slider, Dropdown, TextField, Checkbox, IDropdownOption, ICheckboxStyles } from 'office-ui-fabric-react';
 
