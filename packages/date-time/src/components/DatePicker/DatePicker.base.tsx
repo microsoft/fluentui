@@ -403,6 +403,9 @@ export const DatePickerBase = React.forwardRef(
         setIsCalendarShown(false);
 
         validateTextInput(newlySelectedDate);
+        if (!allowTextInput) {
+          setSelectedDate(newlySelectedDate);
+        }
       }
     };
 
