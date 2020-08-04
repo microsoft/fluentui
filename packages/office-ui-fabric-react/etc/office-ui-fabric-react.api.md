@@ -1307,10 +1307,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     // (undocumented)
     getStartItemIndexInView(): number;
     // (undocumented)
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
-    // (undocumented)
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
@@ -8129,9 +8125,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
     // (undocumented)
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
+    readonly pageRefs: Readonly<Record<string, unknown>>;
     // (undocumented)
     render(): JSX.Element | null;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
