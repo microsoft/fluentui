@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "office-ui-fabric-react_v7.124.3",
+      "version": "7.124.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update hc styling for Dropdown and ComboBox items to remove noisy borders",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Aug 2020 12:45:42 GMT",
       "tag": "office-ui-fabric-react_v7.124.2",
       "version": "7.124.2",

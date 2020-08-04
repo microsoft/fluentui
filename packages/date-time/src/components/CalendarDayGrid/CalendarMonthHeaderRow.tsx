@@ -11,7 +11,7 @@ export interface ICalendarDayMonthHeaderRowProps extends ICalendarDayGridProps {
 }
 
 export const CalendarMonthHeaderRow = (props: ICalendarDayMonthHeaderRowProps) => {
-  const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow, weeks, classNames } = props;
+  const { showWeekNumbers, strings, allFocusable, weeksToShow, weeks, classNames } = props;
   const dayLabels = strings.shortDays.slice();
   const firstOfMonthIndex = findIndex(weeks![1], (day: IDayInfo) => day.originalDate.getDate() === 1);
   if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
@@ -23,7 +23,7 @@ export const CalendarMonthHeaderRow = (props: ICalendarDayMonthHeaderRowProps) =
     <tr>
       {showWeekNumbers && <th className={classNames.dayCell} />}
       {dayLabels.map((val: string, index: number) => {
-        const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
+        const i = index % DAYS_IN_WEEK;
         const label = index === firstOfMonthIndex ? strings.days[i] + ' ' + dayLabels[i] : strings.days[i];
         return (
           <th
