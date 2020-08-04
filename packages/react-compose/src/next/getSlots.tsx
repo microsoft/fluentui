@@ -21,7 +21,7 @@ import { nullRender } from './nullRender';
  */
 export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefined) => {
   const slots: GenericDictionary = {
-    root: state.as || nullRender,
+    root: state.as || 'div',
   };
   const slotProps: GenericDictionary = {
     root: typeof state.as === 'string' ? getNativeElementProps(state.as, state) : omit(state, ['as']),
