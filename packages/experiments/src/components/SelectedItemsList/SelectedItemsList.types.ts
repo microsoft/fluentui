@@ -60,6 +60,10 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
   eventsToRegister?: { eventName: string; callback: (item?: any, index?: number, event?: any) => void }[];
 }
 
+export type BaseSelectedItem = {
+  key?: React.Key;
+};
+
 // Type T is the type of the item that is displayed
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
 export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
@@ -93,7 +97,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * The items that the base picker should currently display as selected. If this is provided then the picker will
    * act as a controlled component.
    */
-  selectedItems?: T[]; // I think that I want to remove these and use the items on selection instead for al this stuff
+  selectedItems?: T[];
 
   /**
    * Aria label for the 'X' button in the selected item component.

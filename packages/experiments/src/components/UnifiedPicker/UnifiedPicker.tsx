@@ -54,6 +54,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const {
     selectedItems,
     addItems,
+    dropItemsAt,
     removeItems,
     removeItemAt,
     removeSelectedItems,
@@ -81,15 +82,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   } = props;
 
   const _insertBeforeItem = (item: T): void => {
-    const draggedItems = selection.isIndexSelected(draggedIndex) ? (getSelectedItems() as T[]) : [draggedItem!];
-
+    const draggedItemIndex = selectedItems.indexOf(draggedItem!);
+    const draggedItemsIndices = focusedItemIndices.includes(draggedItemIndex)
+      ? [...focusedItemIndices]
+      : [draggedItemIndex];
     const insertIndex = selectedItems.indexOf(item);
-    const items = selectedItems.filter(itm => draggedItems.indexOf(itm) === -1);
-
-    items.splice(insertIndex, 0, ...draggedItems);
-
-    setSelectedItems(items);
-    unselectAll();
+    dropItemsAt(insertIndex, draggedItemsIndices);
   };
 
   const _onDragEnter = (item?: any, event?: DragEvent): string => {
@@ -106,7 +104,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
     setDraggedItem(item);
     setDraggedIndex(itemIndex!);
-    //console.log('onDragStart. item: ' + item + ' index: ' + itemIndex);
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
