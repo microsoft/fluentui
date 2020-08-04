@@ -29,13 +29,13 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@fluentui/eslint-plugin": "^0.53.1",
+    "@fluentui/eslint-plugin": "^0.53.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.18",
+    "@uifabric/set-version": "^7.0.19",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

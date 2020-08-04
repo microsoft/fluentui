@@ -17,3 +17,9 @@ import { ProgressStyles as styles } from './progress.styles';
   styles,
 })
 export class FASTProgress extends BaseProgress {}
+
+/**
+ * Styles for Progress
+ * @public
+ */
+export const ProgressStyles = styles;

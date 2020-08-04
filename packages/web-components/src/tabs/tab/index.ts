@@ -17,3 +17,9 @@ import { TabStyles as styles } from './tab.styles';
   styles,
 })
 export class FASTTab extends Tab {}
+
+/**
+ * Styles for Tab
+ * @public
+ */
+export const TabStyles = styles;

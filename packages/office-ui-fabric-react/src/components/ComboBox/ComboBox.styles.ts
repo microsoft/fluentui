@@ -107,6 +107,7 @@ export const getOptionStyles = memoizeFunction(
           textAlign: 'left',
           selectors: {
             [HighContrastSelector]: {
+              border: 'none',
               borderColor: 'Background',
             },
             '&.ms-Checkbox': {

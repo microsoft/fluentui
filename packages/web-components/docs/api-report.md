@@ -99,6 +99,12 @@ export const accentForegroundLargeRestBehavior: CSSCustomPropertyBehavior;
 // @public
 export const accentForegroundRestBehavior: CSSCustomPropertyBehavior;
 
+// @public
+export const AccordionItemStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const AccordionStyles: import("@microsoft/fast-element").ElementStyles;
+
 // Warning: (ae-internal-missing-underscore) The name "ambientShadow" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -108,7 +114,13 @@ export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(
 export type AnchorAppearance = ButtonAppearance | 'hypertext';
 
 // @public
+export const AnchorStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
+
+// @public
+export const BadgeStyles: import("@microsoft/fast-element").ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "BaseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -118,10 +130,25 @@ export const BaseButtonStyles: ElementStyles;
 // @public
 export type ButtonAppearance = 'accent' | 'lightweight' | 'neutral' | 'outline' | 'stealth';
 
+// @public
+export const ButtonStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const CardStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const CheckboxStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const DialogStyles: import("@microsoft/fast-element").ElementStyles;
+
 // Warning: (ae-internal-missing-underscore) The name "directionalShadow" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const directionalShadow = "0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px)) rgba(0, 0, 0, calc(.13 * (2 - var(--background-luminance, 1))))";
+
+// @public
+export const DividerStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const elevation: string;
@@ -395,6 +422,9 @@ export class FASTTreeView extends TreeView {
 }
 
 // @public
+export const FlipperStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export const heightNumber = "(var(--base-height-multiplier) + var(--density)) * var(--design-unit)";
 
 // Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
@@ -412,6 +442,12 @@ export const inlineStartBehavior: CSSCustomPropertyBehavior;
 //
 // @internal (undocumented)
 export const LightweightButtonStyles: ElementStyles;
+
+// @public
+export const MenuItemStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const MenuStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const neutralDividerRestBehavior: CSSCustomPropertyBehavior;
@@ -547,16 +583,58 @@ export const OutlineButtonStyles: ElementStyles;
 // @public
 export function parseColorString(color: string): ColorRGBA64;
 
+// @public
+export const ProgressRingStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const ProgressStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const RadioGroupStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const RadioStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const SliderLabelStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const SliderStyles: import("@microsoft/fast-element").ElementStyles;
+
 // Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const StealthButtonStyles: ElementStyles;
 
 // @public
+export const SwitchStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TabPanelStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TabsStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TabStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export type TextAreaAppearance = 'filled' | 'outline';
 
 // @public
+export const TextAreaStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export type TextFieldAppearance = 'filled' | 'outline';
+
+// @public
+export const TextFieldStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TreeItemStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TreeViewStyles: import("@microsoft/fast-element").ElementStyles;
 
 
 // (No @packageDocumentation comment for this package)
