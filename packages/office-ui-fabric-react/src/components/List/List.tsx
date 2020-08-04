@@ -470,15 +470,14 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     const pageStyle = this._getPageStyle(page);
 
     const { onRenderPage = this._onRenderPage } = this.props;
-    const self = this;
 
     const pageElement = onRenderPage(
       {
         page: page,
         className: 'ms-List-page',
         key: page.key,
-        ref(newRef: unknown) {
-          self._pageRefs[this.page.key] = newRef;
+        ref: (newRef: unknown) => {
+          this._pageRefs[page.key] = newRef;
         },
         style: pageStyle,
         role: 'presentation',
