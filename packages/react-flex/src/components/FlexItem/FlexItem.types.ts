@@ -40,5 +40,5 @@ export type FlexItemTokens = ColorPlateSet & {
   /**
    * Defines the margin of the Flexitem.
    */
-  margin?: string;
+  gap?: string;
 };

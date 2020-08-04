@@ -14,11 +14,6 @@
   }
 }
 
-:root {
-  --flex-direction: false;
-  --flex-direction: false;
-}
-
 .root {
   width: auto;
   overflow: visible;
@@ -33,22 +28,17 @@
   align-items: var(--flex-verticalAlign);
   justify-content: var(--flex-horizontalAlign);
 
-  // &._column_true {
-  //   --flex-direction: column;
-  // }
-
-  // &._column_false {
-  //   --flex-direction: row;
-  // }
-
-  &._column_true {
-    --flex-column: true;
-  }
-  &._reverse_true {
-    --flex-reverse: true;
+  &._column {
+    @include calculate-flex-direction($column: true, $reverse: false);
   }
 
-  @include calculate-flex-direction($column: var(--flex-column), $reverse: var(--flex-reverse));
+  &._reverse {
+    @include calculate-flex-direction($column: false, $reverse: true);
+
+    &._column {
+      @include calculate-flex-direction($column: true, $reverse: true);
+    }
+  }
 
   &._wrap_true {
     --flex-wrap: wrap;

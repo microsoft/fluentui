@@ -23,10 +23,6 @@ export interface ExampleOptions {
   emptyChildren: string[];
 }
 
-const flexContainer: React.CSSProperties = {
-  maxWidth: '600px',
-};
-
 const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = props => {
   const {
     numItems,
@@ -116,8 +112,12 @@ function _range(start: number, end: number): number[] {
 const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
 
-const sectionFlexTokens: FlexTokens = { gap: '10px' };
-const configureFlexTokens: FlexTokens = { gap: '20px' };
+const sectionFlexTokens: FlexTokens = { gap: '5px' };
+const configureFlexTokens: FlexTokens = { gap: '10px' };
+
+const flexContainer: React.CSSProperties = {
+  maxWidth: '600px',
+};
 
 export class HorizontalFlexConfigurableExample extends React.Component {
   public state: ExampleOptions = {
@@ -160,7 +160,7 @@ export class HorizontalFlexConfigurableExample extends React.Component {
       <Flex wrap column style={flexContainer} tokens={sectionFlexTokens}>
         <Flex disableShrink>
           <FlexItem>
-            <Flex column>
+            <Flex disableShrink column>
               <Slider
                 label="Number of items:"
                 min={1}
@@ -201,9 +201,9 @@ export class HorizontalFlexConfigurableExample extends React.Component {
           </FlexItem>
         </Flex>
 
-        <Flex disableShrink tokens={configureFlexTokens}>
+        <Flex wrap disableShrink tokens={configureFlexTokens}>
           <FlexItem>
-            <Flex column>
+            <Flex disableShrink column>
               <Slider
                 label="Horizontal gap between items:"
                 min={0}
@@ -225,7 +225,7 @@ export class HorizontalFlexConfigurableExample extends React.Component {
             </Flex>
           </FlexItem>
           <FlexItem>
-            <Flex column>
+            <Flex disableShrink column>
               <Slider
                 label="Left padding:"
                 min={0}
@@ -247,7 +247,7 @@ export class HorizontalFlexConfigurableExample extends React.Component {
             </Flex>
           </FlexItem>
           <FlexItem>
-            <Flex column>
+            <Flex disableShrink column>
               <Slider
                 label="Top padding:"
                 min={0}
@@ -270,7 +270,7 @@ export class HorizontalFlexConfigurableExample extends React.Component {
           </FlexItem>
         </Flex>
 
-        <Flex disableShrink verticalAlign="end" tokens={configureFlexTokens}>
+        <Flex wrap disableShrink verticalAlign="end" tokens={configureFlexTokens}>
           <FlexItem>
             <Dropdown
               selectedKey={horizontalAlignment}

@@ -2,6 +2,7 @@
   width: auto;
   display: flex;
   position: relative;
+  margin: var(--flexitem-gap);
   order: var(--flexitem-order);
   height: var(--flexitem-height);
   flex-grow: var(--flexitem-grow);

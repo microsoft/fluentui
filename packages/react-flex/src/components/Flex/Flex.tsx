@@ -8,18 +8,16 @@ import { useFlex } from './useFlex';
 
 export const Flex = compose<'div', FlexProps, FlexProps, {}, {}>(
   (props, ref, options) => {
-    const { children, disableShrink, tokens } = props;
-
+    const { children, disableShrink } = props;
     const { state } = options;
     const { slots, slotProps } = mergeProps<FlexProps, FlexProps, FlexSlots, FlexSlotProps>(state, options);
+    const gap: string = props.tokens && props.tokens.gap ? props.tokens.gap : '0';
 
     const { flexChildren, generalChildren } = separateFlexChildren(children);
 
     return (
       <slots.root {...slotProps.root}>
-        <FlexContext.Provider value={{ disableShrink: !!disableShrink, gap: tokens?.gap! && '0' }}>
-          {flexChildren}
-        </FlexContext.Provider>
+        <FlexContext.Provider value={{ disableShrink: !!disableShrink, gap: gap }}>{flexChildren}</FlexContext.Provider>
         {generalChildren}
       </slots.root>
     );

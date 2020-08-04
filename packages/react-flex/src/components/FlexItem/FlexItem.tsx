@@ -38,6 +38,5 @@ FlexItem.defaultProps = {
     grow: '0',
     order: '0',
     shrink: '1',
-    margin: '0',
   },
 };
