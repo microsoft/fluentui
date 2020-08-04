@@ -2,7 +2,7 @@
   "name": "@fluentui/react-conformance",
   "version": "0.1.0",
   "description": "Customizable conformance testing utility for Fluent UI React components.",
-  "private": true,
+  "private": false,
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
@@ -38,7 +38,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "doctrine": "^2.0.0",
+    "doctrine": "^3.0.0",
     "lodash": "^4.17.15",
     "react-docgen-typescript": "^1.16.6",
     "react-is": "^16.6.3",

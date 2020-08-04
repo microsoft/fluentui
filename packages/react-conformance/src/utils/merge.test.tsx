@@ -61,7 +61,7 @@ describe('Merge', () => {
     const obj1 = { foo: 1 };
     const obj2 = { bar: 'baz' };
 
-    const merged = merge<Obj>(true, obj1, obj2);
+    const merged = merge<Obj>(obj1, obj2);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function isObj(obj: any): obj is Obj {

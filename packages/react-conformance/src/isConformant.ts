@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
+import * as _ from 'lodash';
 
 import { IsConformantOptions } from './types';
 import { withCustomConfig } from 'react-docgen-typescript';
