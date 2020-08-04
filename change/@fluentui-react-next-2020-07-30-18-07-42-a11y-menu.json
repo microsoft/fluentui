@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "update hc styling for Dropdown and ComboBox items to remove noisy borders",
+  "packageName": "@fluentui/react-next",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-31T01:07:39.966Z"
+}

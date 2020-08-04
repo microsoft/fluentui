@@ -17,3 +17,9 @@ import { CardStyles as styles } from './card.styles';
   styles,
 })
 export class FASTCard extends Card {}
+
+/**
+ * Styles for Card
+ * @public
+ */
+export const CardStyles = styles;

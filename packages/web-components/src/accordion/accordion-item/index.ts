@@ -17,3 +17,9 @@ import { AccordionItemStyles as styles } from './accordion-item.styles';
   styles,
 })
 export class FASTAccordionItem extends AccordionItem {}
+
+/**
+ * Styles for AccordionItem
+ * @public
+ */
+export const AccordionItemStyles = styles;

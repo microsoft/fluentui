@@ -17,3 +17,9 @@ import { RadioGroupStyles as styles } from './radio-group.styles';
   styles,
 })
 export class FASTRadioGroup extends RadioGroup {}
+
+/**
+ * Styles for RadioGroup
+ * @public
+ */
+export const RadioGroupStyles = styles;
