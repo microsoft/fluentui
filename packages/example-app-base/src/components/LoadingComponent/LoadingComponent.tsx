@@ -121,11 +121,6 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
   };
 
   private readonly _async: Async = new Async();
-  private _otherSections: IPageSectionProps[];
-
-  public UNSAFE_componentWillMount(): void {
-    this._otherSections = shimmerSections();
-  }
 
   public componentDidMount(): void {
     this.props.shimmer &&
@@ -150,7 +145,7 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
     return (
       <Page
         title={title}
-        otherSections={pastDelay ? this._otherSections : undefined}
+        otherSections={pastDelay ? shimmerSections() : undefined}
         sectionWrapperClassName={css(pastDelay && pastDelayClass, pastOffset && pastOffsetClass)}
         showSideRail={false}
         className={rootClass}
