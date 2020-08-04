@@ -311,7 +311,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       this._list.current.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        const group = this._list.current.PageRefs['group_' + String(i)] as GroupedListSection;
+        const group = this._list.current.pageRefs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }

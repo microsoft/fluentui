@@ -287,7 +287,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         const subGroupCount = group.children.length;
 
         for (let i = 0; i < subGroupCount; i++) {
-          const subGroup = this._list.current.PageRefs['subGroup_' + String(i)] as GroupedListSection;
+          const subGroup = this._list.current.pageRefs['subGroup_' + String(i)] as GroupedListSection;
 
           if (subGroup) {
             subGroup.forceListUpdate();

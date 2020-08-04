@@ -183,7 +183,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._pageCache = {};
   }
 
-  public get PageRefs(): Readonly<Record<string, unknown>> {
+  public get pageRefs(): Readonly<Record<string, unknown>> {
     return this._pageRefs;
   }
 

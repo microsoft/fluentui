@@ -8124,7 +8124,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
     // (undocumented)
-    readonly PageRefs: Readonly<Record<string, unknown>>;
+    readonly pageRefs: Readonly<Record<string, unknown>>;
     // (undocumented)
     render(): JSX.Element | null;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
