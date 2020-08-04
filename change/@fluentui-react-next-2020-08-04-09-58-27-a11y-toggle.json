@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "update Toggle in react-next package",
+  "comment": "Toggle: fix pill HC style when selected",
   "packageName": "@fluentui/react-next",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
