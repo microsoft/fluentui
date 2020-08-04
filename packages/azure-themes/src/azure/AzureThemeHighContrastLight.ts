@@ -109,7 +109,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   teachingBubbleBackground: HighContrastLightSemanticColors.teachingBubble.rest.background,
   teachingBubblePrimaryButtonHover: HighContrastLightSemanticColors.teachingBubble.hover.primaryButtonBackground,
   teachingBubbleSecondaryBackground: HighContrastLightSemanticColors.teachingBubble.rest.secondaryBackround,
-  teachingBubbleText: 'white', //HighContrastLightSemanticColors.teachingBubble.rest.text,
+  teachingBubbleText: HighContrastLightSemanticColors.teachingBubble.rest.text,
   textFieldBorderDisabled: HighContrastLightSemanticColors.text.disabled,
 
   // temporary work around for high contrast themes
