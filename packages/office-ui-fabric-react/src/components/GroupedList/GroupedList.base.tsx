@@ -33,15 +33,13 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     compact: false,
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-  };
-
   private _classNames: IProcessedStyleSet<IGroupedListStyles>;
 
   private _list = React.createRef<List>();
 
   private _isSomeGroupExpanded: boolean;
+
+  private _groupRefs: Record<string, GroupedListSection | null> = {};
 
   constructor(props: IGroupedListProps) {
     super(props);
@@ -195,7 +193,8 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     return (
       <GroupedListSection
-        ref={'group_' + groupIndex}
+        // eslint-disable-next-line react/jsx-no-bind
+        ref={ref => (this._groupRefs['group_' + groupIndex] = ref)}
         key={this._getGroupKey(group, groupIndex)}
         dragDropEvents={dragDropEvents}
         dragDropHelper={dragDropHelper}
@@ -312,14 +311,13 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       this._list.current.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        const group = this._list.current.refs['group_' + String(i)] as GroupedListSection;
+        const group = this._list.current.PageRefs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }
       }
     } else {
-      // eslint-disable-next-line react/no-string-refs
-      const group = this.refs['group_' + String(0)] as GroupedListSection;
+      const group = this._groupRefs['group_' + String(0)];
       if (group) {
         group.forceListUpdate();
       }
