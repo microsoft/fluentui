@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 03 Aug 2020 12:45:42 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2020 12:42:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.74)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.73..@fluentui/react-next_v8.0.0-alpha.74)
+
+### Changes
+
+- Migrate Callout to function component ([PR #14181](https://github.com/microsoft/fluentui/pull/14181) by miclo@microsoft.com)
+- Moving ChoiceGroup to react-next, in preparation for converting to a function component. ([PR #14267](https://github.com/microsoft/fluentui/pull/14267) by czearing@outlook.com)
+- update hc styling for Dropdown and ComboBox items to remove noisy borders ([PR #14273](https://github.com/microsoft/fluentui/pull/14273) by ololubek@microsoft.com)
 
 ## [8.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.73)
 

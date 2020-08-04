@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@fluentui/react-tabs_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Aug 2020 12:45:42 GMT",
       "tag": "@fluentui/react-tabs_v0.2.3",
       "version": "0.2.3",

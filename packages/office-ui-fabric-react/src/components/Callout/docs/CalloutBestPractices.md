@@ -7,7 +7,7 @@
 - Don’t open a callout from within another callout.
 - Don’t show callouts on hidden elements.
 - Don’t overuse callouts. Too many callouts opening automatically can be perceived as interrupting someone's workflow.
-- For a particularly complex concept that needs explanation, place an info icon (`iconClassNames.info`) next to the concept to indicate there's more helpful information available. When someone hovers over or selects the icon, the callout should appear. 
+- For a particularly complex concept that needs explanation, place an info icon (`iconClassNames.info`) next to the concept to indicate there's more helpful information available. When someone hovers over or selects the icon, the callout should appear.
 
 ### Content
 
