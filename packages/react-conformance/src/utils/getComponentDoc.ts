@@ -26,7 +26,7 @@ export function getComponentDoc(componentPath: string): ComponentDoc[] {
     // To reduce the number of files parsed, only list the index file as the entry point.
     // This should work okay because it would be strange if a component being conformance tested
     // was not also referenced from some file eventually imported by the index file.
-    const rootFile = path.join(path.basename(tsconfigPath), 'src', 'index.ts');
+    const rootFile = path.join(path.dirname(tsconfigPath), 'src', 'index.ts');
     if (!fs.existsSync(rootFile)) {
       throw new Error(`Index file does not exist at expected path ${rootFile}`);
     }
