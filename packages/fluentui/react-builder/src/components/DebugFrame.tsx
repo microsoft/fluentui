@@ -27,13 +27,14 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
 
   const setFramePosition = React.useCallback((frameEl, controlEl) => {
     const rect = controlEl.getBoundingClientRect();
-    rect.top < 20 ? setIsTopElement(true) : setIsTopElement(false);
 
     frameEl.style.top = `${rect.top}px`;
     frameEl.style.left = `${rect.left}px`;
     frameEl.style.width = `${rect.width}px`;
     frameEl.style.height = `${rect.height}px`;
     frameEl.style.display = 'block';
+
+    animationFrameId.current = requestAnimationFrame(() => setFramePosition(frameEl, controlEl));
   }, []);
 
   const hideFrame = frameEl => {
@@ -72,14 +73,16 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     }
 
     const el = target.querySelectorAll(selector);
-    console.log(animationFrameId);
-    animationFrameId.current =
-      el.length === 1
-        ? requestAnimationFrame(() => setFramePosition(frameRef.current, el[0]))
-        : requestAnimationFrame(() => hideFrame(frameRef.current));
+    if (el.length === 1) {
+      const rect = el[0].getBoundingClientRect();
+      rect.top < 20 ? !isTopElement && setIsTopElement(true) : isTopElement && setIsTopElement(false);
+      animationFrameId.current = requestAnimationFrame(() => setFramePosition(frameRef.current, el[0]));
+    } else {
+      animationFrameId.current = requestAnimationFrame(() => hideFrame(frameRef.current));
+    }
 
     return () => cancelAnimationFrame(animationFrameId.current);
-  }, [target, selector, setFramePosition]);
+  }, [target, selector, setFramePosition, isTopElement]);
 
   const styles = {
     position: 'absolute',
