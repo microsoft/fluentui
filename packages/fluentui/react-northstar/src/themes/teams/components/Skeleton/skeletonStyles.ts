@@ -6,6 +6,7 @@ import { getAnimations } from './utils/animations';
 export const skeletonStyles: ComponentSlotStylesPrepared<SkeletonStylesProps, SkeletonVariables> = {
   root: ({
     props: p,
+    variables: v,
     theme: {
       siteVariables: { colorScheme },
     },
@@ -13,6 +14,8 @@ export const skeletonStyles: ComponentSlotStylesPrepared<SkeletonStylesProps, Sk
     const animations = getAnimations(colorScheme.default.background);
 
     return {
+      width: '100%',
+      // marginBottom: `-${v.marginLineBottom}`,
       ...(p.animation && animations[p.animation]),
     };
   },

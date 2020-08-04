@@ -15,7 +15,7 @@ export interface SkeletonVariables {
 export const skeletonVariables = (siteVariables): SkeletonVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, segmentColorAreas),
-    marginLineBottom: pxToRem(8),
+    marginLineBottom: pxToRem(2),
     marginLineTop: pxToRem(8),
   };
 };

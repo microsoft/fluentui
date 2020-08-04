@@ -15,6 +15,8 @@ export const skeletonShapeStyles: ComponentSlotStylesPrepared<SkeletonShapeStyle
       width: p.width,
       height: p.height,
       backgroundColor: colorScheme.default.background4,
+      marginBottom: v.marginLineBottom,
+      ...(p.round && { borderRadius: '50%' }),
     };
   },
 };

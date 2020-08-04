@@ -14,6 +14,11 @@ const Usage = () => (
       description="A skeleton in a card."
       examplePath="components/Skeleton/Usage/SkeletonExampleCard"
     />
+    <ComponentExample
+      title="List"
+      description="A skeleton in a List."
+      examplePath="components/Skeleton/Usage/SkeletonExampleList"
+    />
   </ExampleSection>
 );
 
