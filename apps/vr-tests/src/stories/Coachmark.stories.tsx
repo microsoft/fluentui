@@ -62,9 +62,4 @@ storiesOf('Coachmark', module)
     <Fabric>
       <CoachmarkUsage />
     </Fabric>
-  ))
-  .addStory('Expanded', () => (
-    <Fabric>
-      <CoachmarkUsage isCollapsed={false} />
-    </Fabric>
   ));
