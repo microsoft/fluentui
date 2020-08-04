@@ -27,7 +27,6 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
 
   const setFramePosition = React.useCallback((frameEl, controlEl) => {
     const rect = controlEl.getBoundingClientRect();
-
     frameEl.style.top = `${rect.top}px`;
     frameEl.style.left = `${rect.left}px`;
     frameEl.style.width = `${rect.width}px`;
