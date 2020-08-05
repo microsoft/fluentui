@@ -1,6 +1,6 @@
 import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { SkeletonVariables } from './skeletonVariables';
-import { SkeletonStylesProps } from 'src/components/Skeleton/Skeleton';
+import { SkeletonStylesProps } from '../../../../components/Skeleton/Skeleton';
 import { getAnimations } from './utils/animations';
 
 export const skeletonStyles: ComponentSlotStylesPrepared<SkeletonStylesProps, SkeletonVariables> = {
