@@ -8,14 +8,12 @@ export type SegmentColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typ
 
 export interface SkeletonVariables {
   colorScheme?: SegmentColorSchemeMapping;
-  marginLineBottom?: string;
-  marginLineTop?: string;
+  lineMargin?: string;
 }
 
 export const skeletonVariables = (siteVariables): SkeletonVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, segmentColorAreas),
-    marginLineBottom: pxToRem(2),
-    marginLineTop: pxToRem(8),
+    lineMargin: `0 0 ${pxToRem(2)} 0`,
   };
 };
