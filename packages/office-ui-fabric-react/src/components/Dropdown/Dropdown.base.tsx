@@ -269,6 +269,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         {
           role: 'listbox',
           childRole: 'option',
+          ariaRequired: required,
           ariaSetSize: this._sizePosCache.optionSetSize,
           ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
           ariaSelected: selectedIndices[0] === undefined ? undefined : true,
@@ -313,7 +314,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 hasErrorMessage ? this._id + '-errorMessage' : undefined,
               )}
               aria-activedescendant={ariaActiveDescendant}
-              aria-required={required}
+              aria-required={ariaAttrs.ariaRequired}
               aria-disabled={disabled}
               aria-owns={isOpen ? this._listId : undefined}
               {...divProps}
