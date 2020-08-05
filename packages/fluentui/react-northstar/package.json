@@ -51,7 +51,8 @@
     "qs": "^6.8.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "simulant": "^0.2.2"
+    "simulant": "^0.2.2",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"
