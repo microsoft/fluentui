@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "ContextualMenu: Add another prop to allow users to override default focus restoring behavior. This fixes an issue where it would not restore focus correctly when contextualmenu is hidden.",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-05T02:44:40.774Z"
+}
