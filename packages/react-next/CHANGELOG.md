@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 04 Aug 2020 12:42:32 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Aug 2020 12:39:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.75)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.74..@fluentui/react-next_v8.0.0-alpha.75)
+
+### Changes
+
+- Toggle: fix pill HC style when selected ([PR #14316](https://github.com/microsoft/fluentui/pull/14316) by ololubek@microsoft.com)
+- Update HC hover styling to make checked state more apparent ([PR #14341](https://github.com/microsoft/fluentui/pull/14341) by ololubek@microsoft.com)
 
 ## [8.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.74)
 
