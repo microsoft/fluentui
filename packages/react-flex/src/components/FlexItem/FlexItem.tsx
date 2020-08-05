@@ -18,13 +18,7 @@ export const FlexItem = compose<'div', FlexItemProps, FlexItemProps, {}, {}>(
   {
     displayName: 'FlexItem',
     classes: createClassResolver(classes),
-    handledProps: [
-      'align',
-      'fluid',
-      'push',
-      'tokens',
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ] as any,
+    handledProps: ['align', 'fluid', 'push', 'tokens'],
     state: useFlexItem,
   },
 );

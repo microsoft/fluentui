@@ -43,7 +43,7 @@ const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = pro
     emptyChildren,
   } = props;
   // Styles definition
-  const flexStyles = {
+  const flexStyles: React.CSSProperties = {
     ...{
       background: 'lightblue',
       marginLeft: 10,
@@ -53,7 +53,7 @@ const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = pro
     },
     ...(preventOverflow
       ? {
-          overflow: 'hidden' as 'hidden',
+          overflow: 'hidden',
         }
       : {}),
   };

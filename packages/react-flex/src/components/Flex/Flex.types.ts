@@ -9,11 +9,11 @@ export type Alignment = 'auto' | 'start' | 'end' | 'center' | 'between' | 'aroun
 
 export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
-   * Defines if container should be inline element.
+   * Defines if container should be rendered as an inline block element or as a regular block element.
    */
   inline?: boolean;
   /**
-   * Defines whether to render the children horizontally.
+   * Defines whether the content inside of `Flex` wraps when trying to extend beyond its boundaries.
    */
   column?: boolean;
   /**
@@ -40,6 +40,9 @@ export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    * Defines whether the container should take up 100% of the height of its parent.
    */
   fluid?: boolean;
+  /**
+   * Defines the set of tokens that are used for style customizations.
+   */
   tokens?: FlexTokens;
 }
 
@@ -51,7 +54,7 @@ export type FlexSlotProps = SlotProps<FlexSlots, FlexProps, React.HTMLAttributes
 
 export type FlexTokens = ColorPlateSet & {
   /**
-   * Defines the padding to be applied to the Stack contents relative to its border.
+   * Defines the padding to be applied to the Flex contents relative to its border.
    */
   padding?: string;
   /**
