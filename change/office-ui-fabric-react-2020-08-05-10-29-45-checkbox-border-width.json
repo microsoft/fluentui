@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix border width styling for toggle icon image",
+  "comment": "Toggle: fix thumb border width style",
   "packageName": "office-ui-fabric-react",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
