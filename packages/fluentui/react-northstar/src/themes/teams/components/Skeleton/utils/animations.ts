@@ -1,7 +1,7 @@
 import { pulse, wave } from './keyframes';
 import { ICSSInJSStyle } from '@fluentui/styles';
-import { skeletonLineClassName } from 'src/components/Skeleton/SkeletonLine';
-import { skeletonShapeClassName } from 'src/components/Skeleton/SkeletonShape';
+import { skeletonLineClassName } from '../../../../../components/Skeleton/SkeletonLine';
+import { skeletonShapeClassName } from '../../../../../components/Skeleton/SkeletonShape';
 
 const waveStyles = {
   position: 'static',
