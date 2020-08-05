@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Update HC hover styling to make checked state more apparent",
+  "packageName": "@fluentui/react-next",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-04T21:14:17.171Z"
+}
