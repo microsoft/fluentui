@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Provider, teamsTheme } from '@fluentui/react-northstar';
 
-const ButtonDesignPerf = () => (
+const ButtonDesignMissPerf = () => (
   <Provider overwrite theme={teamsTheme}>
     <Button
       content="Click here"
@@ -233,4 +233,4 @@ const ButtonDesignPerf = () => (
   </Provider>
 );
 
-export default ButtonDesignPerf;
+export default ButtonDesignMissPerf;

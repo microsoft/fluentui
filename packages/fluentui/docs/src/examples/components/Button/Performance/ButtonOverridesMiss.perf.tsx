@@ -115,7 +115,7 @@ const overrides = mergeThemes(teamsTheme, {
   },
 });
 
-const ButtonOverridesPerf = () => (
+const ButtonOverridesMissPerf = () => (
   <Provider overwrite performance={{ enableBooleanVariablesCaching: true }} theme={overrides}>
     <Button content="Click here" variables={{ isFoo1: true }} /> {/* 1 */}
     <Button content="Click here" variables={{ isFoo2: true }} /> {/* 2 */}
@@ -167,4 +167,4 @@ const ButtonOverridesPerf = () => (
   </Provider>
 );
 
-export default ButtonOverridesPerf;
+export default ButtonOverridesMissPerf;
