@@ -12,7 +12,7 @@ The following code shows you how to specify a 96px product icon by brand using t
 <div class="ms-BrandIcon--icon96 ms-BrandIcon--word"></div>
 ```
 
-This following code shows you how to specify a 48px product icon by brand using the office-ui-fabric-core svg and a Fluent UI `<Image>` component (a regular `<img>` element can be used too):
+This following code shows you how to specify a 48px product icon by brand using the office-ui-fabric-core SVG and a Fluent UI `<Image>` component (a regular `<img>` element can be used too):
 
 ```jsx
 import { Image } from '@fluentui/react';
