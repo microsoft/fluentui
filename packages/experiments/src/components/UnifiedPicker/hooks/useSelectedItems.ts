@@ -62,7 +62,6 @@ export const useSelectedItems = <T extends {}>(
   const dropItemsAt = (insertIndex: number, draggedItemsIndices: number[]): void => {
     const currentItems: T[] = [...items];
     const updatedItems: T[] = [];
-    console.log(draggedItemsIndices);
 
     currentItems.forEach(item => {
       const currentIndex = currentItems.indexOf(item);

@@ -5,11 +5,7 @@ import {
   IDragDropEvents,
   IDragDropContext,
   IDragDropHelper,
-  IDragDropOptions,
 } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
-
-export { IDragDropContext, IDragDropEvents, IDragDropHelper, IDragDropOptions };
-
 export interface ISelectedItemsList<T> {
   /**
    * Current value of the input
