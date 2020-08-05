@@ -22,7 +22,7 @@ const options = [
   },
 ];
 
-storiesOf('ChoiceGroup Next', module)
+storiesOf('ChoiceGroup', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
