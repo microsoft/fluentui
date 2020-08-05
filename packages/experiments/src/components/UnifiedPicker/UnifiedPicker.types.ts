@@ -82,10 +82,4 @@ export interface IUnifiedPickerProps<T> {
    * On input value change
    */
   onInputChange?: (filter: string) => void;
-
-  /**
-   * The minimum mouse move distance to interpret the action as drag event.
-   * @defaultvalue 5
-   */
-  minimumPixelsForDrag?: number;
 }

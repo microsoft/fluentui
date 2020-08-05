@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { ISelectedItemsList, ISelectedItemsListProps } from './SelectedItemsList.types';
-import { IObjectWithKey } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
 
-const _SelectedItemsList = <TItem extends IObjectWithKey>( // do I need the IObjectWithKey modification?
+const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
@@ -81,5 +80,5 @@ const _SelectedItemsList = <TItem extends IObjectWithKey>( // do I need the IObj
 
 // Typescript only respects unifying a generic type with a generic const _function_ of the same name for function types.
 // In order to satisfy the type checker, here we lie about the type of the const so that it is still a generic function.
-export type SelectedItemsList<TItem extends IObjectWithKey> = React.Component<ISelectedItemsListProps<TItem>>;
+export type SelectedItemsList<TItem extends BaseSelectedItem> = React.Component<ISelectedItemsListProps<TItem>>;
 export const SelectedItemsList = React.forwardRef(_SelectedItemsList) as typeof _SelectedItemsList;

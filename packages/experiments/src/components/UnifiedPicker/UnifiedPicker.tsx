@@ -31,10 +31,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
   const [draggedItem, setDraggedItem] = React.useState<T>();
-  const [draggedIndex, setDraggedIndex] = React.useState(-1);
   const dragDropHelper = new DragDropHelper({
     selection: selection,
-    minimumPixelsForDrag: props.minimumPixelsForDrag,
   });
 
   const theme = getTheme();
@@ -103,12 +101,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
     setDraggedItem(item);
-    setDraggedIndex(itemIndex!);
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
     setDraggedItem(undefined);
-    setDraggedIndex(-1);
   };
 
   const dragDropEvents: IDragDropEvents = {

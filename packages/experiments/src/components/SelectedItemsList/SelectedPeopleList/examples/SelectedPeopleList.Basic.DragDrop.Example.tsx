@@ -14,7 +14,7 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Elem
   const [addMultipleKey, setAddMultipleKey] = React.useState(50);
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersona[]>([people[40]]);
 
-  const [selection, setSelection] = React.useState(new Selection());
+  const selection = new Selection();
   const [draggedItem, setDraggedItem] = React.useState<IPersona>();
   const [draggedIndex, setDraggedIndex] = React.useState(-1);
   const dragDropHelper = new DragDropHelper({
