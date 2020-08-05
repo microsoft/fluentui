@@ -9,7 +9,7 @@ The following code shows you how to specify a 96px product icon by brand using t
   href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
 />
 
-<div class="ms-BrandIcon--icon96 ms-BrandIcon--word" />
+<div class="ms-BrandIcon--icon96 ms-BrandIcon--word"></div>
 ```
 
 This following code shows you how to specify a 48px product icon by brand using the office-ui-fabric-core svg and a Fluent UI `<Image>` component (a regular `<img>` element can be used too):
