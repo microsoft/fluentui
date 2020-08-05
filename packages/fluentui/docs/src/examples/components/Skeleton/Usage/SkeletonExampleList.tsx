@@ -13,6 +13,7 @@ const SkeletonExampleList = () => {
     <List>
       {_.times(5, index => (
         <List.Item
+          key={index}
           styles={{
             backgroundColor: index % 2 === 0 ? '#f5f2f2' : 'transparet',
           }}

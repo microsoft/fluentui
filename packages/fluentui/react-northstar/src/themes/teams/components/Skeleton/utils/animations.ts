@@ -30,12 +30,4 @@ export const getAnimations = (backgroundColor: string): Record<string, ICSSInJSS
     [`& .${skeletonLineClassName}`]: waveStyles,
     [`& .${skeletonShapeClassName}`]: waveStyles,
   },
-
-  // '> span': {
-  //   animationName: wave,
-  //   animationDuration: '1.85s',
-  //   animationIterationCount: 'infinite',
-  //   background: `linear-gradient(90deg, ${colorScheme.default.background4} 25%, ${colorScheme.default.background} 37%, ${colorScheme.default.background4} 63% )`,
-  //   backgroundSize: '400% 100%',
-  // },
 });
