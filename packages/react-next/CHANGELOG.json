@@ -2,6 +2,35 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.75",
+      "version": "8.0.0-alpha.75",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Toggle: fix pill HC style when selected",
+            "author": "ololubek@microsoft.com",
+            "commit": "da3b655b635160de2f8a31d93f0d2780b26831a4",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update HC hover styling to make checked state more apparent",
+            "author": "ololubek@microsoft.com",
+            "commit": "588aa8f8c6efac2dfe5d451241d7609e7add4153",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add ways to test with strict mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Aug 2020 12:42:32 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.74",
       "version": "8.0.0-alpha.74",
