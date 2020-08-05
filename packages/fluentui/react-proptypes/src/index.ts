@@ -488,7 +488,11 @@ export const animation = PropTypes.oneOfType([
 
 // Heads Up!
 // Keep in sync with packages/react/src/themes/types.ts
-export const design = PropTypes.oneOfType([PropTypes.func, PropTypes.object]);
+export const design = PropTypes.oneOfType([
+  PropTypes.func,
+  PropTypes.object,
+  PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])),
+]);
 
 /** A checker that matches the React.Ref type. */
 export const ref = PropTypes.oneOfType([PropTypes.func, PropTypes.object as PropTypes.Validator<{ current: any }>]);
