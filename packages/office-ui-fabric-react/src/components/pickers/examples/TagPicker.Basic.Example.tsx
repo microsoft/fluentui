@@ -1,23 +1,29 @@
 import * as React from 'react';
 
-import { TagPicker, IBasePicker, ITag } from 'office-ui-fabric-react/lib/Pickers';
-import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import {
+  TagPicker,
+  IBasePicker,
+  ITag,
+  IInputProps,
+  IBasePickerSuggestionsProps,
+} from 'office-ui-fabric-react/lib/Pickers';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { useBoolean, useConstCallback } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 const rootClass = mergeStyles({
   maxWidth: 500,
 });
 
-const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
+const toggleStyles: Partial<IToggleStyles> = { root: { margin: '10px 0' } };
 
-const inputProps = {
+const inputProps: IInputProps = {
   onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
   onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
   'aria-label': 'Tag picker',
 };
 
-const pickerSuggestionsProps = {
+const pickerSuggestionsProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested tags',
   noResultsFoundText: 'No color tags found',
 };
@@ -47,34 +53,36 @@ const listContainsTagList = (tag: ITag, tagList?: ITag[]) => {
   return tagList.some(compareTag => compareTag.key === tag.key);
 };
 
+const filterSuggestedTags = (filterText: string, tagList: ITag[]): ITag[] => {
+  return filterText
+    ? testTags.filter(
+        tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0 && !listContainsTagList(tag, tagList),
+      )
+    : [];
+};
+
+const filterSelectedTags = (filterText: string, tagList: ITag[]): ITag[] => {
+  return filterText ? testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+};
+
+const getTextFromItem = (item: ITag) => item.name;
+
 export const TagPickerBasicExample: React.FunctionComponent = () => {
   // All pickers extend from BasePicker specifying the item type.
   const picker = React.useRef<IBasePicker<ITag>>(null);
   const [tagPicker, { toggle: toggleIsTagPickerVisible }] = useBoolean(false);
 
-  const filterSuggestedTags = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
-    return filterText
-      ? testTags.filter(
-          tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0 && !listContainsTagList(tag, tagList),
-        )
-      : [];
-  });
-
-  const filterSelectedTags = useConstCallback((filterText: string, tagList: ITag[]): ITag[] => {
-    return filterText ? testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
-  });
-
-  const onItemSelected = useConstCallback((item: ITag): ITag | null => {
+  const onItemSelected = React.useCallback((item: ITag): ITag | null => {
     if (picker.current && listContainsTagList(item, picker.current.items)) {
       return null;
     }
     return item;
-  });
+  }, []);
 
   return (
     <div className={rootClass}>
-      <Checkbox
-        styles={checkboxStyles}
+      <Toggle
+        styles={toggleStyles}
         label="Disable tag picker"
         checked={tagPicker}
         onChange={toggleIsTagPickerVisible}
@@ -83,7 +91,7 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
       <TagPicker
         removeButtonAriaLabel="Remove"
         onResolveSuggestions={filterSuggestedTags}
-        getTextFromItem={name}
+        getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
         itemLimit={2}
         disabled={tagPicker}
@@ -96,7 +104,7 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
         componentRef={picker}
         onResolveSuggestions={filterSelectedTags}
         onItemSelected={onItemSelected}
-        getTextFromItem={name}
+        getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
         itemLimit={2}
         disabled={tagPicker}

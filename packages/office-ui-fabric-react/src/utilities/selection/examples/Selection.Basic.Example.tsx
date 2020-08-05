@@ -64,9 +64,9 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
   }
 
   return (
-    <div className={classNames.item} data-is-focusable={true} data-selection-index={itemIndex}>
+    <div className={classNames.item} data-is-focusable data-selection-index={itemIndex}>
       {selection && selection.canSelectItem(item) && selection.mode !== SelectionMode.none && (
-        <div className={classNames.check} data-is-focusable={true} data-selection-toggle={true}>
+        <div className={classNames.check} data-is-focusable data-selection-toggle>
           <Check checked={isSelected} />
         </div>
       )}
@@ -74,7 +74,7 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
       <a className={classNames.cell} href="https://bing.com" target="_blank">
         Link that avoids selection
       </a>
-      <a className={classNames.cell} data-selection-select={true} href="https://bing.com" target="_blank">
+      <a className={classNames.cell} data-selection-select href="https://bing.com" target="_blank">
         Link that selects first
       </a>
     </div>
