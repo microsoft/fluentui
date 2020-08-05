@@ -245,12 +245,12 @@
 
       function loadAppScripts() {
         // Load app scripts (we don't need to load React because it's bundled)
-        loadScripts([appPath + entryPointFilename + '.js']);
+        loadScripts([appPath + entryPointFilename + (isDev ? '.js' : '.min.js')]);
 
         // Required configuration to make our Monaco wrapper work
         window.MonacoConfig = {
           baseUrl: appPath,
-          useMinified: isProduction,
+          useMinified: !isDev,
         };
       }
 
