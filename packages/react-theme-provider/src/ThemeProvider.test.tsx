@@ -55,7 +55,6 @@ describe('ThemeProvider', () => {
     let resolvedTheme: Theme | undefined = undefined;
     const TestComponent = () => {
       resolvedTheme = useTheme();
-
       return null;
     };
 
@@ -65,6 +64,8 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    expect(resolvedTheme).toEqual(lightTheme);
+    expect(resolvedTheme).toBeDefined();
+    expect(resolvedTheme!.tokens).toEqual(lightTheme.tokens);
+    expect(resolvedTheme!.stylesheets).toEqual(lightTheme.stylesheets);
   });
 });

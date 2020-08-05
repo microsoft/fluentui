@@ -1,12 +1,11 @@
 import { PartialTheme, Theme } from './types';
 import { merge } from '@uifabric/utilities';
-import { createDefaultTheme } from './createDefaultTheme';
 
 /**
  * Merges all themes on top of a blank initial theme and ensures the theme is fully qualified.
  */
 export const mergeThemes = (...themes: (undefined | PartialTheme | Theme)[]): Theme => {
-  const partialTheme = merge<PartialTheme | Theme>(createDefaultTheme(), ...themes);
+  const partialTheme = merge<PartialTheme | Theme>({}, ...themes);
 
   // Correctly merge stylesheets array
   partialTheme.stylesheets = [];

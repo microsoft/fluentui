@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { ITheme } from '@uifabric/styling';
 
 /**
  * A baseline set of color plates.
@@ -69,16 +71,24 @@ export type RecursivePartial<T> = {
     : T[P];
 };
 
-/**
- * A prepared (fully expanded) theme object.
- */
-export interface Theme {
-  tokens: {
-    body: ColorTokenSet & TokenSetType;
-    [key: string]: TokenSetType;
+export type Tokens = {
+  body: ColorPlateSet & TokenSetType;
+  [key: string]: TokenSetType;
+};
+
+export interface Theme extends ITheme {
+  components?: {
+    [componentName: string]: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      styles?: IStyleFunctionOrObject<any, any>;
+    };
   };
 
-  stylesheets: string[];
+  /** @internal */
+  tokens?: Tokens;
+
+  /** @internal */
+  stylesheets?: string[];
 }
 
 /**
