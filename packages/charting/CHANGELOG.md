@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 31 Jul 2020 12:47:45 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2020 12:42:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.0)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.8.0..@uifabric/charting_v3.0.0)
+
+### Major changes
+
+- reverted sankey chart code ([PR #14301](https://github.com/microsoft/fluentui/pull/14301) by v-jasha@microsoft.com)
 
 ## [2.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.8.0)
 

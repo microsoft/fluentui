@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.105",
+      "version": "7.12.105",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add query param to test with React.StrictMode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jul 2020 12:38:09 GMT",
       "tag": "@uifabric/example-app-base_v7.12.101",
       "version": "7.12.101",

@@ -2,6 +2,62 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "office-ui-fabric-react_v7.125.0",
+      "version": "7.125.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add focuszone props to GroupedList and change details list to only use a single focus zone",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "7e2b5e66a1e725d45bde7f5831af568ca74024ae",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Toggle: fix pill HC style when selected",
+            "author": "ololubek@microsoft.com",
+            "commit": "da3b655b635160de2f8a31d93f0d2780b26831a4",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix hc hover styling for checked checkbox to make checked state more visible on hover",
+            "author": "ololubek@microsoft.com",
+            "commit": "588aa8f8c6efac2dfe5d451241d7609e7add4153",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Remove findDOMNode usage from DragDropHelper",
+            "author": "miclo@microsoft.com",
+            "commit": "39330bc7a9f8d4d9325abd98f3b5b5f0cd35f2e9",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Remove all usage of string refs in OUFR",
+            "author": "miclo@microsoft.com",
+            "commit": "3e3f1b97ed09eec364f7654129389c91d84e4169",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "office-ui-fabric-react_v7.124.3",
+      "version": "7.124.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update hc styling for Dropdown and ComboBox items to remove noisy borders",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Aug 2020 12:45:42 GMT",
       "tag": "office-ui-fabric-react_v7.124.2",
       "version": "7.124.2",

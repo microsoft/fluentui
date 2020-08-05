@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { GroupedListBase } from './GroupedList.base';
 import { IList, IListProps } from '../../List';
+import { IFocusZoneProps } from '../../FocusZone';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 import { ISelection, SelectionMode } from '../../utilities/selection/index';
@@ -79,6 +80,9 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
 
   /** List of items to render. */
   items: any[];
+
+  /** Optional properties to pass through to the FocusZone. */
+  focusZoneProps?: IFocusZoneProps;
 
   /** Optional properties to pass through to the list components being rendered. */
   listProps?: IListProps;
