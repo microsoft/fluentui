@@ -15,7 +15,6 @@ export const skeletonStyles: ComponentSlotStylesPrepared<SkeletonStylesProps, Sk
 
     return {
       width: '100%',
-      // marginBottom: `-${v.marginLineBottom}`,
       ...(p.animation && animations[p.animation]),
     };
   },
