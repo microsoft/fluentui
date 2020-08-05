@@ -53,10 +53,9 @@ type DesignerState = {
   showCode: boolean;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
+  history: Array<JSONTreeElement>;
+  redo: Array<JSONTreeElement>;
 };
-
-const history = [];
-let redo = [];
 
 type DesignerAction =
   | { type: 'DRAG_START'; component: JSONTreeElement }
@@ -72,8 +71,8 @@ type DesignerAction =
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
   | { type: 'SOURCE_CODE_CHANGE'; code: string }
-  | { type: 'UNDO'; jsonTree: JSONTreeElement }
-  | { type: 'REDO'; jsonTree: JSONTreeElement };
+  | { type: 'UNDO' }
+  | { type: 'REDO' };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -81,14 +80,14 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
 
   switch (action.type) {
     case 'DRAG_START':
-      history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      redo = [];
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
 
       draftState.draggingElement = action.component;
       break;
 
     case 'DRAG_ABORT':
-      history.pop();
+      draftState.history.pop();
 
       draftState.draggingElement = null;
       break;
@@ -110,8 +109,8 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'DRAG_CLONE':
-      history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      redo = [];
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
 
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
@@ -120,8 +119,8 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'DRAG_MOVE':
-      history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      redo = [];
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
 
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
@@ -150,8 +149,8 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'DELETE_SELECTED_COMPONENT':
-      history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      redo = [];
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
 
       if (draftState.selectedJSONTreeElementUuid) {
         jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
@@ -162,8 +161,8 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'PROP_CHANGE':
-      history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      redo = [];
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
 
       const editedComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
       if (editedComponent) {
@@ -182,8 +181,8 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'RESET_STORE':
-      history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      redo = [];
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
 
       draftState.jsonTree = getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
@@ -213,13 +212,13 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'UNDO':
-      redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.jsonTree = action.jsonTree;
+      draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.jsonTree = draftState.history.pop();
       break;
 
     case 'REDO':
-      history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.jsonTree = action.jsonTree;
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.jsonTree = draftState.redo.pop();
       break;
 
     default:
@@ -268,6 +267,8 @@ export const Designer: React.FunctionComponent = () => {
       showCode: false,
       code: null,
       codeError: null,
+      history: [],
+      redo: [],
     };
   });
 
@@ -393,25 +394,14 @@ export const Designer: React.FunctionComponent = () => {
   }, [dispatch]);
 
   const handleUndo = () => {
-    const action = history.pop();
-    if (!action) {
-      return;
-    }
-
     dispatch({
       type: 'UNDO',
-      jsonTree: action,
     });
   };
 
   const handleRedo = () => {
-    const action = redo.pop();
-    if (!action) {
-      return;
-    }
     dispatch({
       type: 'REDO',
-      jsonTree: action,
     });
   };
 
@@ -487,8 +477,8 @@ export const Designer: React.FunctionComponent = () => {
         onShowJSONTreeChange={handleShowJSONTreeChange}
         onUndo={handleUndo}
         onRedo={handleRedo}
-        canUndo={history.length > 0}
-        canRedo={redo.length > 0}
+        canUndo={state.history.length > 0}
+        canRedo={state.redo.length > 0}
         onReset={handleReset}
         onModeChange={setMode}
         showCode={showCode}
