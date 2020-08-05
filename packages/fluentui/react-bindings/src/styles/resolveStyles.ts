@@ -12,6 +12,7 @@ import {
   withDebugId,
 } from '@fluentui/styles';
 import cx from 'classnames';
+import cssjanus from 'cssjanus';
 import * as _ from 'lodash';
 import { serializeStyles } from '@emotion/serialize';
 
@@ -230,8 +231,11 @@ export const resolveStyles = (
         if (slotName === 'root' && design) {
           const serializedValue = serializeStyles((Array.isArray(design) ? design : [design]) as any, {}, styleParam);
 
-          designClassName = `design-${serializedValue.name}`;
-          renderer.renderGlobal(serializedValue.styles, `.${componentClassName}.${designClassName}`);
+          designClassName = `design-${rtl ? 'rtl-' : ''}${serializedValue.name}`;
+          renderer.renderGlobal(
+            rtl ? cssjanus.transform(serializedValue.styles) : serializedValue.styles,
+            `.${componentClassName}.${designClassName}`,
+          );
         }
 
         if (cacheEnabled && theme) {

@@ -1,9 +1,12 @@
 import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
+// @ts-ignore
+import cssifyObject from 'css-in-js-utils/lib/cssifyObject';
 import { createRenderer, IRenderer, IStyle, TPlugin } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
+import { RULE_TYPE } from 'fela-utils';
 import * as React from 'react';
 import { RendererProvider } from 'react-fela';
 
@@ -93,7 +96,33 @@ export const createFelaRenderer: CreateRenderer = target => {
     renderFont: font => {
       felaRenderer.renderFont(font.name, font.paths, font.props);
     },
-    renderGlobal: felaRenderer.renderStatic,
+    renderGlobal: (styles, selector) => {
+      if (typeof styles === 'string' && typeof selector === 'undefined') {
+        felaRenderer.renderStatic(styles, selector);
+        return;
+      }
+
+      const declaration = typeof styles === 'string' ? styles : cssifyObject(styles);
+      const declarationReference = selector + declaration;
+
+      // @ts-ignore
+      if (!felaRenderer.cache.hasOwnProperty(declarationReference)) {
+        const change = {
+          type: RULE_TYPE,
+          className: '',
+          selector: selector || '',
+          declaration,
+          pseudo: '',
+          media: '',
+          support: '',
+        };
+
+        // @ts-ignore
+        felaRenderer.cache[declarationReference] = change;
+        // @ts-ignore
+        felaRenderer._emitChange(change);
+      }
+    },
     renderRule: (styles, param) => {
       const felaParam: FelaRendererParam = {
         ...param,

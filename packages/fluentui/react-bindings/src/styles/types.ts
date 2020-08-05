@@ -21,6 +21,7 @@ export type ComponentSlotClasses = Record<string, string>;
 
 // Heads Up!
 // Keep in sync with packages/react-proptypes/src/index.ts
+// TODO: restrict typings for "animationName"
 export type ComponentDesignProp<P = {}, V = {}> = ComponentSlotStyle<P, V> | ComponentSlotStyle<P, V>[];
 
 export type PrimitiveProps = Record<string, boolean | number | string | undefined>;
