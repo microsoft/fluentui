@@ -4,6 +4,7 @@ import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 import { SkeletonLine } from './SkeletonLine';
 import { SkeletonShape } from './SkeletonShape';
+import * as PropTypes from 'prop-types';
 
 export interface SkeletonOwnProps {
   /**
@@ -29,6 +30,7 @@ export const Skeleton = compose<'div', SkeletonOwnProps, SkeletonStylesProps, Bo
   displayName: 'Skeleton',
   overrideStyles: true,
   shorthandConfig: {},
+  handledProps: ['animation'],
   mapPropsToStylesProps: ({ animation }) => ({
     animation,
   }),
@@ -42,4 +44,7 @@ Skeleton.Shape = SkeletonShape;
 Skeleton.defaultProps = {
   accessibility: skeletonBehavior,
 };
-Skeleton.propTypes = commonPropTypes.createCommon();
+Skeleton.propTypes = {
+  ...commonPropTypes.createCommon(),
+  animation: PropTypes.oneOf(['wave', 'pulse']),
+};

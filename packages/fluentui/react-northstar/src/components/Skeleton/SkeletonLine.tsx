@@ -1,5 +1,5 @@
 import { compose } from '@fluentui/react-bindings';
-
+import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
@@ -27,7 +27,11 @@ export const SkeletonLine = compose<'span', SkeletonLineOwnProps, SkeletonLineSt
   },
 );
 
-SkeletonLine.propTypes = commonPropTypes.createCommon();
+SkeletonLine.propTypes = {
+  ...commonPropTypes.createCommon(),
+  width: PropTypes.string,
+  height: PropTypes.string,
+};
 
 SkeletonLine.defaultProps = {
   as: 'span',
