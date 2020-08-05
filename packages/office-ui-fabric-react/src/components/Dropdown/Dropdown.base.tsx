@@ -747,17 +747,17 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
         inputProps={{
+          'aria-selected': isItemSelected,
           onMouseEnter: this._onItemMouseEnter.bind(this, item),
           onMouseLeave: this._onMouseItemLeave.bind(this, item),
           onMouseMove: this._onItemMouseMove.bind(this, item),
+          role: 'option',
         }}
         label={item.text}
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
-        role="option"
-        aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
