@@ -122,7 +122,9 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   };
 
   const consumedContext = useFluentContext();
-  const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
+  const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite
+    ? { telemetry: consumedContext.telemetry }
+    : consumedContext;
   const createRenderer = React.useContext(RendererContext);
 
   const outgoingContext = mergeProviderContexts(createRenderer, incomingContext, inputContext);

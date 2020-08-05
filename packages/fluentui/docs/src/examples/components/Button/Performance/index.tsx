@@ -11,6 +11,10 @@ const Performance = () => (
       description="A default test."
       examplePath="components/Button/Performance/ButtonMinimal.perf"
     />
+
+    <ComponentPerfExample title="Design" examplePath="components/Button/Performance/ButtonDesign.perf" />
+    <ComponentPerfExample title="Variables" examplePath="components/Button/Performance/ButtonOverrides.perf" />
+
     <ComponentBundleSizeExample title="Bundle size" examplePath="components/Button/Performance/ButtonDefault.bsize" />
   </ExampleSection>
 );

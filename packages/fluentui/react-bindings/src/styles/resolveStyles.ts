@@ -60,8 +60,8 @@ export const resolveStyles = (
   } = options;
 
   const { className, design, styles, variables } = inlineStylesProps;
-  const noInlineStylesOverrides = !styles;
 
+  const noInlineStylesOverrides = !styles;
   let noVariableOverrides = performanceFlags.enableBooleanVariablesCaching || !variables;
 
   /* istanbul ignore else */
@@ -110,7 +110,7 @@ export const resolveStyles = (
   if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
-      design && withDebugId({ root: design }, 'props.design'),
+      // design && withDebugId({ root: design }, 'props.design'),
       styles && withDebugId({ root: styles } as ComponentSlotStylesInput, 'props.styles'),
     );
   }
@@ -224,9 +224,12 @@ export const resolveStyles = (
         classes[lazyEvaluationKey] = val;
       },
       get(): string {
+        const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
         let designClassName = '';
+
         if (slotName === 'root' && design) {
-          const serializedValue = serializeStyles([design as any], {}, styleParam);
+          const serializedValue = serializeStyles((Array.isArray(design) ? design : [design]) as any, {}, styleParam);
+
           designClassName = `design-${serializedValue.name}`;
           renderer.renderGlobal(serializedValue.styles, `.${componentClassName}.${designClassName}`);
         }
@@ -245,6 +248,8 @@ export const resolveStyles = (
               } else {
                 telemetry.performance[primaryDisplayName].stylesSlotsCacheHits++;
               }
+
+              telemetry.performance[primaryDisplayName].msRenderStylesTotal += performance.now() - telemetryPartStart;
             }
 
             return slotName === 'root'
@@ -265,7 +270,6 @@ export const resolveStyles = (
 
         // this resolves the getter magic
         const styleObj = resolvedStyles[slotName];
-        const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
         if (styleObj) {
           classes[lazyEvaluationKey] = renderer.renderRule(styleObj, rendererParam);

@@ -1,4 +1,4 @@
-import { ComponentSlotStyle, DebugData, ICSSInJSStyle, PropsWithVarsAndStyles } from '@fluentui/styles';
+import { ComponentSlotStyle, DebugData, PropsWithVarsAndStyles } from '@fluentui/styles';
 import { ProviderContextPrepared } from '../context';
 
 // Notice:
@@ -21,7 +21,7 @@ export type ComponentSlotClasses = Record<string, string>;
 
 // Heads Up!
 // Keep in sync with packages/react-proptypes/src/index.ts
-export type ComponentDesignProp<P = {}, V = {}> = ComponentSlotStyle<P, V>;
+export type ComponentDesignProp<P = {}, V = {}> = ComponentSlotStyle<P, V> | ComponentSlotStyle<P, V>[];
 
 export type PrimitiveProps = Record<string, boolean | number | string | undefined>;
 
