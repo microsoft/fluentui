@@ -79,15 +79,20 @@
       "packages/*",
       "scripts",
       "packages/fluentui/*"
+    ],
+    "nohoist": [
+      "packages/web-components/typescript",
+      "packages/web-components/typescript/**",
+      "packages/web-components/ts-loader",
+      "packages/web-components/ts-loader/**",
+      "packages/web-components/ts-node",
+      "packages/web-components/ts-node/**",
+      "packages/web-components/mocha",
+      "packages/web-components/mocha/**",
+      "packages/web-components/webpack",
+      "packages/web-components/webpack/**"
     ]
   },
-  "nohoist": [
-    "packages/web-components/typescript",
-    "packages/web-components/tsconfig-path",
-    "packages/web-components/ts-loader",
-    "packages/web-components/ts-node",
-    "packages/web-components/mocha/*"
-  ],
   "resolutions": {
     "eslint": "^7.1.0",
     "webpack": "^4.35.0",
