@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { BaseDecorator } from '../decorators/BaseDecorator';
+import { BaseDecorator } from './BaseDecorator';
 import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
 
 export interface IWithResponsiveModeState {
