@@ -3,19 +3,13 @@ import { SkeletonLineStylesProps } from 'src/components/Skeleton/SkeletonLine';
 import { SkeletonVariables } from './skeletonVariables';
 
 export const skeletonLineStyles: ComponentSlotStylesPrepared<SkeletonLineStylesProps, SkeletonVariables> = {
-  root: ({
-    props: p,
-    variables: v,
-    theme: {
-      siteVariables: { colorScheme },
-    },
-  }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       display: 'block',
       width: p.width,
       height: p.height,
-      backgroundColor: colorScheme.default.background4,
-      marginBottom: v.marginLineBottom,
+      backgroundColor: v.lineBackground,
+      margin: v.lineMargin,
     };
   },
 };
