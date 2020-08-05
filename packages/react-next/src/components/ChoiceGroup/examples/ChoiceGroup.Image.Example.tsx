@@ -4,7 +4,7 @@ import { TestImages } from '@uifabric/example-data';
 
 const options: IChoiceGroupOption[] = [
   {
-    key: 'bar',
+    optionKey: 'bar',
     imageSrc: TestImages.choiceGroupBarUnselected,
     imageAlt: 'Bar chart icon',
     selectedImageSrc: TestImages.choiceGroupBarSelected,
@@ -12,7 +12,7 @@ const options: IChoiceGroupOption[] = [
     text: 'Clustered bar chart', // This text is long to show text wrapping.
   },
   {
-    key: 'pie',
+    optionKey: 'pie',
     imageSrc: TestImages.choiceGroupBarUnselected,
     selectedImageSrc: TestImages.choiceGroupBarSelected,
     imageSize: { width: 32, height: 32 },

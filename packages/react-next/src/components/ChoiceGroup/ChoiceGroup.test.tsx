@@ -9,9 +9,9 @@ import { merge, resetIds } from '../../Utilities';
 import { mountAttached } from '../../common/testUtilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
-  { key: '1', text: '1', 'data-automation-id': 'auto1', autoFocus: true } as IChoiceGroupOption,
-  { key: '2', text: '2' },
-  { key: '3', text: '3' },
+  { optionKey: '1', text: '1', 'data-automation-id': 'auto1', autoFocus: true } as IChoiceGroupOption,
+  { optionKey: '2', text: '2' },
+  { optionKey: '3', text: '3' },
 ];
 const CHOICE_QUERY_SELECTOR = '.ms-ChoiceField-input';
 
@@ -184,7 +184,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('can assign a custom aria label', () => {
-    const option4: IChoiceGroupOption[] = [{ key: '4', text: '4', ariaLabel: 'Custom aria label' }];
+    const option4: IChoiceGroupOption[] = [{ optionKey: '4', text: '4', ariaLabel: 'Custom aria label' }];
     choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS.concat(option4)} required={true} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR) as NodeListOf<
@@ -262,7 +262,7 @@ describe('ChoiceGroup', () => {
     const choiceGroupRef = React.createRef<IChoiceGroup>();
     choiceGroup = mountAttached(
       <ChoiceGroup
-        options={[{ key: '0', text: 'disabled', disabled: true }, ...TEST_OPTIONS]}
+        options={[{ optionKey: '0', text: 'disabled', disabled: true }, ...TEST_OPTIONS]}
         componentRef={choiceGroupRef}
       />,
     );

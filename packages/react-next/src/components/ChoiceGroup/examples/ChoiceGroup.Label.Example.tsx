@@ -6,10 +6,10 @@ import { Stack } from '@fluentui/react-next/lib/Stack';
 import { useId } from '@uifabric/react-hooks';
 
 const options: IChoiceGroupOption[] = [
-  { key: 'A', text: 'Option A' },
-  { key: 'B', text: 'Option B' },
-  { key: 'C', text: 'Option C', disabled: true },
-  { key: 'D', text: 'Option D' },
+  { optionKey: 'A', text: 'Option A' },
+  { optionKey: 'B', text: 'Option B' },
+  { optionKey: 'C', text: 'Option C', disabled: true },
+  { optionKey: 'D', text: 'Option D' },
 ];
 
 export const ChoiceGroupLabelExample: React.FunctionComponent = () => {

@@ -101,7 +101,7 @@ export const ChoiceGroupOptionBase = (props: IChoiceGroupOptionProps) => {
 
   const onChange = useConstCallback((evt: React.FormEvent<HTMLInputElement>): void => {
     if (props.onChange) {
-      props.onChange(evt);
+      props.onChange(evt, props);
     }
   });
 
@@ -113,7 +113,7 @@ export const ChoiceGroupOptionBase = (props: IChoiceGroupOptionProps) => {
 
   const onFocus = useConstCallback((evt: React.FocusEvent<HTMLElement>) => {
     if (props.onFocus) {
-      props.onFocus(evt);
+      props.onFocus(evt, props);
     }
   });
 
