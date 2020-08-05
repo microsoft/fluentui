@@ -15,7 +15,7 @@ const SkeletonExampleList = () => {
         <List.Item
           key={index}
           styles={{
-            backgroundColor: index % 2 === 0 ? '#f5f2f2' : 'transparet',
+            backgroundColor: index % 2 === 0 ? '#f5f2f2' : 'transparent',
           }}
           media={
             loading ? (
