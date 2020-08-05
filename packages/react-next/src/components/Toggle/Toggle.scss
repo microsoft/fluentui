@@ -89,8 +89,10 @@ $DEFAULT_THUMB_SIZE: 12px;
     }
 
     @include high-contrast {
-      background-color: WindowText;
+      background-color: Highlight;
     }
+
+    @include high-contrast-edge-chromium-no-adjust;
   }
 
   &.disabled {

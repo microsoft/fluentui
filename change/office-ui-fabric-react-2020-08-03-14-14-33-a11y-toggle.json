@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "update hc styling for Dropdown and ComboBox items to remove noisy borders",
+  "comment": "Toggle: fix pill HC style when selected",
   "packageName": "office-ui-fabric-react",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-07-31T00:17:10.503Z"
+  "date": "2020-08-03T21:14:33.761Z"
 }
