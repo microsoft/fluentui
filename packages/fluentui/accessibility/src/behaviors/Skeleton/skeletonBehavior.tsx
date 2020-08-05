@@ -10,7 +10,7 @@ export const skeletonBehavior: Accessibility<SkeletonBehaviorProps> = props => (
   attributes: {
     root: {
       role: 'alert',
-      'aria-busy': 'true',
+      'aria-busy': true,
       'aria-live': 'polite',
     },
   },
