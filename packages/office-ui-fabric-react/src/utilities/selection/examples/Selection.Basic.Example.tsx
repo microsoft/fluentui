@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ICommandBarItemProps, CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Check } from 'office-ui-fabric-react/lib/Check';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { IExampleItem, createListItems } from '@uifabric/example-data';
@@ -47,8 +46,18 @@ const alertItem = (item: IExampleItem): void => {
   alert('item invoked: ' + item.name);
 };
 
-const canSelectItem = (item: IExampleItem): boolean => {
+const startsWithVowel = (item: IExampleItem): boolean => {
   return /^[aeiou]/.test(item.name || '');
+};
+
+const selectionModes = {
+  [SelectionMode[SelectionMode.none]]: 'None',
+  [SelectionMode[SelectionMode.single]]: 'Single select',
+  [SelectionMode[SelectionMode.multiple]]: 'Multi select',
+};
+const selectableItemTypes = {
+  all: 'All items',
+  vowels: 'Names starting with vowels',
 };
 
 const ITEM_COUNT = 100;
@@ -82,116 +91,57 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
 };
 
 export const SelectionBasicExample: React.FunctionComponent = () => {
-  const [canSelect, setCanSelect] = React.useState<'all' | 'vowels'>('all');
+  const [selectableItemType, setSelectableItemType] = React.useState<'all' | 'vowels'>('all');
+  const [selectionMode, setSelectionMode] = React.useState(SelectionMode.multiple);
   const forceUpdate = useForceUpdate();
   const items = useConst<IExampleItem[]>(() => createListItems(ITEM_COUNT));
-  const [selection, setSelection] = React.useState<Selection>(
+  const selection = React.useMemo(
     () =>
       new Selection({
+        canSelectItem: selectableItemType === 'vowels' ? startsWithVowel : undefined,
+        selectionMode,
         onSelectionChanged: forceUpdate,
         items,
       }),
-  );
-
-  const onToggleSelectAll = React.useCallback((): void => {
-    selection.toggleAllSelected();
-  }, [selection]);
-
-  const onSelectionModeChanged = React.useCallback(
-    (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-      setSelection(
-        new Selection({
-          canSelectItem: canSelect === 'vowels' ? canSelectItem : undefined,
-          selectionMode: menuItem.data,
-          onSelectionChanged: forceUpdate,
-          items,
-        }),
-      );
-    },
-    [canSelect, forceUpdate, items],
-  );
-
-  const onCanSelectChanged = React.useCallback(
-    (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-      setSelection(
-        new Selection({
-          canSelectItem: menuItem.data === 'vowels' ? canSelectItem : undefined,
-          selectionMode: selection.mode,
-          onSelectionChanged: forceUpdate,
-          items,
-        }),
-      );
-      setCanSelect(menuItem.data === 'vowels' ? 'vowels' : 'all');
-    },
-    [selection, forceUpdate, items],
+    [selectableItemType, selectionMode, forceUpdate, items],
   );
 
   const commandItems = React.useMemo<ICommandBarItemProps[]>(
     () => [
       {
         key: 'selectionMode',
-        text: 'Selection Mode',
+        text: 'Selection mode: ' + selectionModes[SelectionMode[selectionMode]],
         subMenuProps: {
-          items: [
-            {
-              key: SelectionMode[SelectionMode.none],
-              name: 'None',
-              canCheck: true,
-              checked: selection.mode === SelectionMode.none,
-              onClick: onSelectionModeChanged,
-              data: SelectionMode.none,
-            },
-            {
-              key: SelectionMode[SelectionMode.single],
-              name: 'Single select',
-              canCheck: true,
-              checked: selection.mode === SelectionMode.single,
-              onClick: onSelectionModeChanged,
-              data: SelectionMode.single,
-            },
-            {
-              key: SelectionMode[SelectionMode.multiple],
-              name: 'Multi select',
-              canCheck: true,
-              checked: selection.mode === SelectionMode.multiple,
-              onClick: onSelectionModeChanged,
-              data: SelectionMode.multiple,
-            },
-          ],
+          items: Object.keys(selectionModes).map((mode: keyof typeof SelectionMode) => ({
+            key: mode,
+            name: selectionModes[mode],
+            canCheck: true,
+            checked: selectionMode === SelectionMode[mode],
+            onClick: () => setSelectionMode(SelectionMode[mode]),
+          })),
+        },
+      },
+      {
+        key: 'allowCanSelect',
+        text: 'Selectable item type: ' + selectableItemType,
+        subMenuProps: {
+          items: Object.keys(selectableItemTypes).map((itemType: keyof typeof selectableItemTypes) => ({
+            key: itemType,
+            name: selectableItemTypes[itemType],
+            checked: selectableItemType === itemType,
+            onClick: () => setSelectableItemType(itemType),
+          })),
         },
       },
       {
         key: 'selectAll',
-        text: 'Select All',
+        text: 'Toggle select all',
         iconProps: { iconName: 'CheckMark' },
-        onClick: onToggleSelectAll,
-      },
-      {
-        key: 'allowCanSelect',
-        text: 'Choose selectable items',
-        subMenuProps: {
-          items: [
-            {
-              key: 'all',
-              name: 'All items',
-              canCheck: true,
-              checked: canSelect === 'all',
-              onClick: onCanSelectChanged,
-              data: 'all',
-            },
-            {
-              key: 'a',
-              name: 'Names starting with vowels',
-              canCheck: true,
-              checked: canSelect === 'vowels',
-              onClick: onCanSelectChanged,
-              data: 'vowels',
-            },
-          ],
-        },
+        onClick: () => selection.toggleAllSelected(),
+        disabled: selectionMode !== SelectionMode.multiple,
       },
     ],
-    [selection.mode, canSelect, onCanSelectChanged, onToggleSelectAll, onSelectionModeChanged],
+    [selectionMode, selection, selectableItemType],
   );
 
   return (
