@@ -39,7 +39,7 @@ import {
   getPropsWithDefaults,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
-import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import {
@@ -51,6 +51,7 @@ import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
 import { Target } from '@uifabric/react-hooks';
+import { useResponsiveMode } from 'office-ui-fabric-react/lib/utilities/hooks/useResponsiveMode';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -118,7 +119,9 @@ export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) =
 
   const hostElement = React.useRef<HTMLDivElement>(null);
 
-  return <ContextualMenuInternal {...props} hoisted={{ hostElement }} />;
+  const responsiveMode = useResponsiveMode(hostElement);
+
+  return <ContextualMenuInternal {...props} hoisted={{ hostElement }} responsiveMode={responsiveMode} />;
 };
 ContextualMenuBase.displayName = 'ContextualMenuBase';
 
@@ -128,7 +131,6 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
   };
 }
 
-@withResponsiveMode
 export class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, IContextualMenuState> {
   private _async: Async;
   private _events: EventGroup;
@@ -1112,7 +1114,7 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
         /* no-op */
       }
     } else {
-      this.props.hoisted.hostElement.current.focus();
+      this.props.hoisted.hostElement.current?.focus();
     }
   };
 
