@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Toggle: Fix thumb border-width style",
+  "packageName": "@fluentui/react-next",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-05T17:59:22.409Z"
+}

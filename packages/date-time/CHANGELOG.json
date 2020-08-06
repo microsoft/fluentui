@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@uifabric/date-time_v7.13.6",
+      "version": "7.13.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": " ",
+            "author": "lorejoh12@gmail.com",
+            "commit": "b0ad85aef3e82623a7146c33a696f215ccbd26ee",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Jul 2020 12:45:55 GMT",
       "tag": "@uifabric/date-time_v7.13.0",
       "version": "7.13.0",

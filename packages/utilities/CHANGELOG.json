@@ -2,6 +2,59 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/utilities_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "omit: changed to for in for more perf improvement.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2525478b18ee3fd3a66063d3fda329ee0d7b8a55",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@uifabric/utilities_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix warnControlledUsage doc comment",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@uifabric/utilities"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce.",
+            "author": "dzearing@microsoft.com",
+            "commit": "bc90b07e1da53cd189082f7b7bbf4d1118967c95",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@uifabric/utilities_v7.24.6",
+      "version": "7.24.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "useCustomizationSettings: get settings from CustomizerContext if exists.",
+            "author": "xgao@microsoft.com",
+            "commit": "f1047c3cd6fb28b558d2b40a005dc87a2f4ec714",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jul 2020 12:40:51 GMT",
       "tag": "@uifabric/utilities_v7.24.5",
       "version": "7.24.5",

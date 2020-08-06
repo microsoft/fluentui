@@ -2,6 +2,100 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.75",
+      "version": "8.0.0-alpha.75",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Toggle: fix pill HC style when selected",
+            "author": "ololubek@microsoft.com",
+            "commit": "da3b655b635160de2f8a31d93f0d2780b26831a4",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update HC hover styling to make checked state more apparent",
+            "author": "ololubek@microsoft.com",
+            "commit": "588aa8f8c6efac2dfe5d451241d7609e7add4153",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add ways to test with strict mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.74",
+      "version": "8.0.0-alpha.74",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Migrate Callout to function component",
+            "author": "miclo@microsoft.com",
+            "commit": "373bd784f97799e19de88005bd6254467f52fe2b",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving ChoiceGroup to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "358fae3dc06eaec001254efc993ade6cb8a8fa46",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "update hc styling for Dropdown and ComboBox items to remove noisy borders",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.73",
+      "version": "8.0.0-alpha.73",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "4eef39d7498c16082b380c71779204a3483d329e",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Use useWarnings hook",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.72",
+      "version": "8.0.0-alpha.72",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use withThemeProvider storybook decorator from @fluentui/storybook package.",
+            "author": "xgao@microsoft.com",
+            "commit": "eaada6f8e6499585952528ac8ebead0a8e7da906",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Jul 2020 12:35:12 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.70",
       "version": "8.0.0-alpha.70",

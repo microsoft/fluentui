@@ -1,4 +1,4 @@
-import { assign, filteredAssign, mapEnumByName, values } from './object';
+import { assign, filteredAssign, mapEnumByName, values, omit } from './object';
 
 describe('assign', () => {
   it('can copy an object', () => {
@@ -66,5 +66,11 @@ describe('values', () => {
     expect(objValues).toContain(1);
     expect(objValues).toContain(2);
     expect(objValues).toContain(3);
+  });
+});
+
+describe('omit', () => {
+  it('can omit excluded props and leave non-excluded alone', () => {
+    expect(omit({ a: 1, b: 2 }, ['a'])).toEqual({ b: 2 });
   });
 });

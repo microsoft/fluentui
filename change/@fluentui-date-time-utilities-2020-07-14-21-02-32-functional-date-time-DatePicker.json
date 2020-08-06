@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Expose getDatePartHashValue utility",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-14T21:02:21.607Z"
+}

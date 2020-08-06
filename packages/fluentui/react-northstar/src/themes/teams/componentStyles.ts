@@ -150,3 +150,4 @@ export { datepickerStyles as Datepicker } from './components/Datepicker/datepick
 export { datepickerCalendarStyles as DatepickerCalendar } from './components/Datepicker/datepickerCalendarStyles';
 export { datepickerCalendarHeaderStyles as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderStyles';
 export { datepickerCalendarHeaderCellStyles as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellStyles';
+export { datepickerCalendarCellStyles as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellStyles';

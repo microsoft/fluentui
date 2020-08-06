@@ -1,8 +1,55 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Aug 2020 12:39:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.125.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.125.0)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.3..office-ui-fabric-react_v7.125.0)
+
+### Minor changes
+
+- Remove all usage of string refs in OUFR ([PR #14342](https://github.com/microsoft/fluentui/pull/14342) by miclo@microsoft.com)
+
+### Patches
+
+- Add focuszone props to GroupedList and change details list to only use a single focus zone ([PR #14283](https://github.com/microsoft/fluentui/pull/14283) by mgodbolt@microsoft.com)
+- Toggle: fix pill HC style when selected ([PR #14316](https://github.com/microsoft/fluentui/pull/14316) by ololubek@microsoft.com)
+- Fix hc hover styling for checked checkbox to make checked state more visible on hover ([PR #14341](https://github.com/microsoft/fluentui/pull/14341) by ololubek@microsoft.com)
+- Remove findDOMNode usage from DragDropHelper ([PR #14348](https://github.com/microsoft/fluentui/pull/14348) by miclo@microsoft.com)
+
+## [7.124.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.3)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.2..office-ui-fabric-react_v7.124.3)
+
+### Patches
+
+- update hc styling for Dropdown and ComboBox items to remove noisy borders ([PR #14273](https://github.com/microsoft/fluentui/pull/14273) by ololubek@microsoft.com)
+
+## [7.124.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.2)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.0..office-ui-fabric-react_v7.124.2)
+
+### Patches
+
+- Add high contrast styling for command bar ([PR #14215](https://github.com/microsoft/fluentui/pull/14215) by ololubek@microsoft.com)
+
+## [7.124.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.0)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.123.10..office-ui-fabric-react_v7.124.0)
+
+### Minor changes
+
+- updated grouped list to be a11y compliant ([PR #11494](https://github.com/microsoft/fluentui/pull/11494) by mgodbolt@microsoft.com)
+
+### Patches
+
+- Add noop transform to force gpu on mobile ([PR #13875](https://github.com/microsoft/fluentui/pull/13875) by miles@substantial.com)
 
 ## [7.123.9](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.123.9)
 

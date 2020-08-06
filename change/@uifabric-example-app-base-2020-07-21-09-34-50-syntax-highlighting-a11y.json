@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "updated syntax highlighting to remove a11y violations",
-  "packageName": "@uifabric/example-app-base",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-21T16:34:50.192Z"
-}
