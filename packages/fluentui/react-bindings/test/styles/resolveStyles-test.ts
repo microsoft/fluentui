@@ -255,14 +255,12 @@ describe('resolveStyles', () => {
   test('does not cache styles if there are inline overrides', () => {
     spyOn(testComponentStyles, 'root').and.callThrough();
     const propsInlineOverrides: ResolveStylesOptions['inlineStylesProps'][] = [
-      { styles: { fontSize: '10px' } },
-      { design: { left: '10px' } },
+      { styles: { left: '10px', fontSize: '10px' } },
       { variables: { backgroundColor: 'yellow' } },
     ];
 
     const propsInlineOverridesResolvedStyles: ICSSInJSStyle[] = [
-      { color: 'red', fontSize: '10px' },
-      { color: 'red', left: '10px' },
+      { color: 'red', left: '10px', fontSize: '10px' },
       { color: 'red' },
     ];
 
