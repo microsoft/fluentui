@@ -22,7 +22,7 @@ yarn add @fluentui/web-components
 Within your JavaScript or TypeScript code, you can then import library APIs like this:
 
 ```ts
-import { FASTAnchor } from '@fluentui/web-components';
+import { FluentAnchor } from '@fluentui/web-components';
 ```
 
 Looking for a setup that integrates with a particular front-end framework or bundler? Check out [our integration docs](http://fast.design/docs/integrations/introduction).
