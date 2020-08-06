@@ -1,6 +1,6 @@
-@import '../../common/themeCssVariables';
-@import '../../common/highContrast';
-@import '../../common/focusBorder';
+@import '~@fluentui/common-styles/dist/sass/themeCssVariables';
+@import '~@fluentui/common-styles/dist/sass/highContrast';
+@import '~@fluentui/common-styles/dist/sass/focusBorder';
 
 $checkboxSize: 20px;
 $checkboxTransitionDuration: 200ms;
@@ -52,7 +52,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
 
       @include high-contrast {
         &:hover .checkbox {
-          background: Window;
+          background: Highlight;
           border-color: Highlight;
         }
 
@@ -66,7 +66,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
         }
 
         &:hover .checkmark {
-          color: Highlight;
+          color: Window;
         }
       }
     }

@@ -2,6 +2,51 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@fluentui/codemods_v0.6.4",
+      "version": "0.6.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Result: add in an result helper to assit in the creation of codemods",
+            "author": "joschect@microsoft.com",
+            "commit": "65b946bd6bc9381f190816307a18d866fa585e37",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jul 2020 12:45:55 GMT",
+      "tag": "@fluentui/codemods_v0.6.2",
+      "version": "0.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix documentation",
+            "author": "t-dama@microsoft.com",
+            "commit": "9f24389e2d1ec68a2555df860518273330e0e62a",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/codemods_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix conflicts with new maybe",
+            "author": "t-dama@microsoft.com",
+            "commit": "a9f932261132ead0df90ac81614068e9b0951824",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jul 2020 12:40:51 GMT",
       "tag": "@fluentui/codemods_v0.6.0",
       "version": "0.6.0",
