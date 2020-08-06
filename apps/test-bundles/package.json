@@ -32,7 +32,7 @@
     "@fluentui/keyboard-key": "^0.2.8",
     "@fluentui/react-button": "^0.7.16",
     "@fluentui/react-compose": "^0.13.0",
-    "@fluentui/react-next": "^8.0.0-alpha.77",
+    "@fluentui/react-next": "^8.0.0-alpha.78",
     "@uifabric/experiments": "^7.27.18",
     "@uifabric/set-version": "^7.0.19",
     "@uifabric/styling": "^7.14.9",

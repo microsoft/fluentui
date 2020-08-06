@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 22:49:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.78)
+
+Thu, 06 Aug 2020 22:49:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.76..@fluentui/react-next_v8.0.0-alpha.78)
+
+### Changes
+
+- Dropdown: Improving multiselect dropdown screen reader behavior. ([PR #14377](https://github.com/microsoft/fluentui/pull/14377) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.76)
 

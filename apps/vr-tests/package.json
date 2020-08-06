@@ -16,10 +16,10 @@
   "dependencies": {
     "@fluentui/react-button": "^0.7.16",
     "@fluentui/react-icons": "^0.1.44",
-    "@fluentui/react-next": "^8.0.0-alpha.77",
+    "@fluentui/react-next": "^8.0.0-alpha.78",
     "@uifabric/example-data": "^7.1.0",
     "@uifabric/experiments": "^7.27.18",
-    "@uifabric/react-cards": "^0.110.16",
+    "@uifabric/react-cards": "^0.110.17",
     "@uifabric/react-hooks": "^7.7.2",
     "@uifabric/set-version": "^7.0.19",
     "office-ui-fabric-react": "^7.126.1",

@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^0.7.16",
-    "@fluentui/react-next": "^8.0.0-alpha.77",
+    "@fluentui/react-next": "^8.0.0-alpha.78",
     "@uifabric/set-version": "^7.0.19",
     "@uifabric/example-app-base": "^7.12.107",
     "@uifabric/experiments": "^7.27.18",

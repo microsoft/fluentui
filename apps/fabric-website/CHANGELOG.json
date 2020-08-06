@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 22:49:13 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.18",
+      "version": "7.13.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove trailing whitespace from OfficeBrandIconsImplementation.md",
+            "author": "jslone@microsoft.com",
+            "commit": "833eec673044be946959cdba77bf6f43aa487f8f",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 00:30:40 GMT",
       "tag": "@uifabric/fabric-website_v7.13.16",
       "version": "7.13.16",

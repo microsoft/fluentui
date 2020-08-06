@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update rollup config and incorrect readme import",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-06T21:14:52.517Z"
-}
