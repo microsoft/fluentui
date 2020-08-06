@@ -167,10 +167,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                   hasNoHeight &&
                   `padding-top: calc(${debugSize} * 2);\n  padding-bottom: calc(${debugSize} * 2);`,
                 hasManyChildren && `padding: ${debugSize};`,
-                marginTop === '0px' && `margin-top: ${debugSize};`,
-                marginRight === '0px' && `margin-right: ${debugSize};`,
-                marginBottom === '0px' && `margin-bottom: ${debugSize};`,
-                marginLeft === '0px' && `margin-left: ${debugSize};`,
+                marginTop === '0px' ? `margin-top: ${debugSize};` : `margin-top: ${marginTop};`,
+                marginRight === '0px' ? `margin-right: ${debugSize};` : `margin-right: ${marginRight};`,
+                marginBottom === '0px' ? `margin-bottom: ${debugSize};` : `margin-bottom: ${marginBottom};`,
+                marginLeft === '0px' ? `margin-left: ${debugSize};` : `margin-left: ${marginLeft};`,
               ]
                 .filter(Boolean)
                 .join('\n');
