@@ -180,7 +180,7 @@ Array [
           id="Dropdown0-option"
           role="option"
         >
-          Bottom Auto Edge
+          Bottom auto edge
         </span>
         <span
           className=
@@ -336,7 +336,7 @@ Array [
                 }
             id="id__1"
           >
-            Show Coachmark
+            Show coachmark
           </span>
         </span>
       </span>

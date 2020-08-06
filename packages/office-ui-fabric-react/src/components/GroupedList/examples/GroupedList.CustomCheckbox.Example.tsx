@@ -4,6 +4,7 @@ import {
   GroupedList,
   IGroupHeaderCheckboxProps,
   IGroupHeaderProps,
+  IGroupRenderProps,
 } from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
@@ -15,9 +16,11 @@ import { createListItems, createGroups, IExampleItem } from '@uifabric/example-d
 const groupCount = 3;
 const groupDepth = 1;
 
-const onRenderHeader = (props: IGroupHeaderProps): JSX.Element => (
-  <GroupHeader onRenderGroupHeaderCheckbox={onRenderGroupHeaderCheckbox} {...props} />
-);
+const groupProps: IGroupRenderProps = {
+  onRenderHeader: (props: IGroupHeaderProps): JSX.Element => (
+    <GroupHeader onRenderGroupHeaderCheckbox={onRenderGroupHeaderCheckbox} {...props} />
+  ),
+};
 
 const onRenderGroupHeaderCheckbox = (props: IGroupHeaderCheckboxProps) => <Toggle checked={props.checked} />;
 
@@ -36,11 +39,7 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
         }),
       ),
   );
-  const selection = useConst(() => {
-    const s = new Selection();
-    s.setItems(items);
-    return s;
-  });
+  const selection = useConst(() => new Selection({ items }));
 
   const onRenderCell = React.useCallback(
     (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => (
@@ -66,9 +65,7 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
             selection={selection}
             selectionMode={SelectionMode.multiple}
             groups={groups}
-            groupProps={{
-              onRenderHeader: onRenderHeader,
-            }}
+            groupProps={groupProps}
           />
         </SelectionZone>
       </FocusZone>
