@@ -8,9 +8,7 @@ import {
   divProperties,
   elementContains,
   focusFirstChild,
-  getDocument,
   getNativeProps,
-  getWindow,
   on,
   shallowCompare,
   getPropsWithDefaults,
@@ -28,7 +26,7 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs, useAsync } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync, useTarget } from '@uifabric/react-hooks';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -61,53 +59,6 @@ const DEFAULT_PROPS = {
   minPagePadding: 8,
   directionalHint: DirectionalHint.bottomAutoEdge,
 } as const;
-
-/**
- * Get a reference to the configured target of the Callout, as well as its parent window.
- */
-function useTargets({ target }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement | null>) {
-  const previousTargetProp = React.useRef<
-    Element | string | MouseEvent | Point | React.RefObject<Element> | null | undefined
-  >();
-
-  const targetRef = React.useRef<Element | MouseEvent | Point | null>(null);
-  /**
-   * Stores an instance of Window, used to check
-   * for server side rendering and if focus was lost.
-   */
-  const targetWindowRef = React.useRef<Window>();
-
-  // If the target element changed, find the new one. If we are tracking
-  // target with class name, always find element because we do not know if
-  // fabric has rendered a new element and disposed the old element.
-  if (!target || target !== previousTargetProp.current || typeof target === 'string') {
-    const currentElement = calloutElement.current;
-    if (target) {
-      if (typeof target === 'string') {
-        const currentDoc: Document = getDocument(currentElement)!;
-        targetRef.current = currentDoc ? currentDoc.querySelector(target) : null;
-        targetWindowRef.current = getWindow(currentElement)!;
-      } else if ('stopPropagation' in target) {
-        targetWindowRef.current = getWindow(target.target as Element)!;
-        targetRef.current = target;
-      } else if ('getBoundingClientRect' in target) {
-        targetWindowRef.current = getWindow(currentElement)!;
-        targetRef.current = target;
-      } else if ('current' in target && target.current !== undefined) {
-        targetRef.current = target.current;
-        targetWindowRef.current = getWindow(target.current)!;
-      } else {
-        targetWindowRef.current = getWindow(currentElement)!;
-        targetRef.current = target as Point;
-      }
-    } else {
-      targetWindowRef.current = getWindow(currentElement)!;
-    }
-    previousTargetProp.current = target;
-  }
-
-  return [targetRef, targetWindowRef] as const;
-}
 
 /**
  * Returns a function to lazily fetch the bounds of the target element for the callout
@@ -394,7 +345,7 @@ export const CalloutContentBase = React.memo(
     const calloutElement = React.useRef<HTMLDivElement>(null);
     const rootRef = useMergedRefs(hostElement, forwardedRef);
 
-    const [targetRef, targetWindowRef] = useTargets(props, calloutElement);
+    const [targetRef, targetWindowRef] = useTarget(props.target, calloutElement);
     const getBounds = useBounds(props, targetRef, targetWindowRef);
     const maxHeight = useMaxHeight(props, targetRef, getBounds);
     const heightOffset = useHeightOffset(props, calloutElement);

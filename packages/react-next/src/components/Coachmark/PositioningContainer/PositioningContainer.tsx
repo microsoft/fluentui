@@ -11,8 +11,6 @@ import {
   css,
   elementContains,
   focusFirstChild,
-  getWindow,
-  getDocument,
   EventGroup,
   getPropsWithDefaults,
 } from '../../../Utilities';
@@ -27,7 +25,7 @@ import {
 } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
-import { useMergedRefs, useAsync } from '@uifabric/react-hooks';
+import { useMergedRefs, useAsync, useTarget } from '@uifabric/react-hooks';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
@@ -48,52 +46,6 @@ const DEFAULT_PROPS = {
   minPagePadding: 8,
   directionalHint: DirectionalHint.bottomAutoEdge,
 };
-
-function useTargets({ target }: IPositioningContainerProps, positionedHost: React.RefObject<HTMLDivElement | null>) {
-  const previousTargetProp = React.useRef<HTMLElement | string | MouseEvent | Point | null | undefined>();
-
-  const targetRef = React.useRef<HTMLElement | MouseEvent | Point | null>(null);
-  /**
-   * Stores an instance of Window, used to check
-   * for server side rendering and if focus was lost.
-   */
-  const targetWindowRef = React.useRef<Window>();
-
-  // If the target element changed, find the new one. If we are tracking
-  // target with class name, always find element because we do not know if
-  // fabric has rendered a new element and disposed the old element.
-  if (target !== previousTargetProp.current || typeof target === 'string') {
-    const currentElement = positionedHost.current;
-
-    if (target) {
-      if (typeof target === 'string') {
-        const currentDoc: Document = getDocument()!;
-        targetRef.current = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
-        targetWindowRef.current = getWindow(currentElement)!;
-      } else if ('stopPropagation' in target) {
-        targetWindowRef.current = getWindow((target as MouseEvent).target as HTMLElement)!;
-        targetRef.current = target;
-      } else if (
-        // eslint-disable-next-line deprecation/deprecation
-        ((target as Point).left !== undefined || (target as Point).x !== undefined) &&
-        // eslint-disable-next-line deprecation/deprecation
-        ((target as Point).top !== undefined || (target as Point).y !== undefined)
-      ) {
-        targetWindowRef.current = getWindow(currentElement)!;
-        targetRef.current = target;
-      } else {
-        const targetElement: HTMLElement = target as HTMLElement;
-        targetWindowRef.current = getWindow(targetElement)!;
-        targetRef.current = target;
-      }
-    } else {
-      targetWindowRef.current = getWindow(currentElement)!;
-    }
-    previousTargetProp.current = target;
-  }
-
-  return [targetRef, targetWindowRef] as const;
-}
 
 function useCachedBounds(props: IPositioningContainerProps, targetWindowRef: React.RefObject<Window | undefined>) {
   /**
@@ -128,7 +80,7 @@ function usePositionState(
   props: IPositioningContainerProps,
   positionedHost: React.RefObject<HTMLDivElement | null>,
   contentHost: React.RefObject<HTMLDivElement | null>,
-  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getCachedBounds: () => IRectangle,
 ) {
   const async = useAsync();
@@ -197,7 +149,7 @@ function useSetInitialFocus(
 
 function useMaxHeight(
   { directionalHintFixed, offsetFromTarget, directionalHint, target }: IPositioningContainerProps,
-  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getCachedBounds: () => IRectangle,
 ) {
   /**
@@ -239,7 +191,7 @@ function useAutoDismissEvents(
   { onDismiss, preventDismissOnScroll }: IPositioningContainerProps,
   positionedHost: React.RefObject<HTMLDivElement | null>,
   targetWindowRef: React.RefObject<Window | undefined>,
-  targetRef: React.RefObject<HTMLElement | MouseEvent | Point | null>,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   positions: IPositionedData | undefined,
   updateAsyncPosition: () => void,
 ) {
@@ -347,7 +299,7 @@ export const PositioningContainer = React.forwardRef(
     const positionedHost = React.useRef<HTMLDivElement>(null);
     const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
-    const [targetRef, targetWindowRef] = useTargets(props, positionedHost);
+    const [targetRef, targetWindowRef] = useTarget(props.target, positionedHost);
     const getCachedBounds = useCachedBounds(props, targetWindowRef);
     const [positions, updateAsyncPosition] = usePositionState(
       props,

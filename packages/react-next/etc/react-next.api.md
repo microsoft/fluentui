@@ -43,6 +43,7 @@ import { ReactNode } from 'react';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { SlotProp } from '@fluentui/react-compose';
 import { SlotProps } from '@fluentui/react-compose';
+import { Target } from '@uifabric/react-hooks';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 
 // @public (undocumented)
@@ -1984,9 +1985,6 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
 }
-
-// @public (undocumented)
-export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public (undocumented)
 export const TextField: React.FunctionComponent<ITextFieldProps>;

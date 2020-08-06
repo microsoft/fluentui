@@ -44,6 +44,7 @@ import { Selection } from '@uifabric/utilities';
 import { SELECTION_CHANGE } from '@uifabric/utilities';
 import { SelectionDirection } from '@uifabric/utilities';
 import { SelectionMode } from '@uifabric/utilities';
+import { Target } from '@uifabric/react-hooks';
 
 // @public (undocumented)
 export class ActionButton extends React.Component<IButtonProps, {}> {
@@ -9396,9 +9397,6 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
         onRenderSuggestionsItem: (props: ITag) => JSX.Element;
     };
 }
-
-// @public (undocumented)
-export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
 
 // @public (undocumented)
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
