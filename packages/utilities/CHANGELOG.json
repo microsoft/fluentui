@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/utilities_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "omit: changed to for in for more perf improvement.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2525478b18ee3fd3a66063d3fda329ee0d7b8a55",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Aug 2020 12:45:42 GMT",
       "tag": "@uifabric/utilities_v7.25.0",
       "version": "7.25.0",

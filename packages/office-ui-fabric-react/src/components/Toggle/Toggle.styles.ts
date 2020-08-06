@@ -1,4 +1,9 @@
-import { HighContrastSelector, getFocusStyle, FontWeights } from '../../Styling';
+import {
+  HighContrastSelector,
+  getFocusStyle,
+  FontWeights,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const DEFAULT_PILL_WIDTH = 40;
@@ -129,8 +134,9 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
                 },
               ],
               [HighContrastSelector]: {
-                backgroundColor: 'WindowText',
+                backgroundColor: 'Highlight',
               },
+              ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },
         ],
@@ -176,7 +182,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         backgroundColor: thumbBackground,
         /* Border is added to handle high contrast mode for Firefox */
         borderColor: 'transparent',
-        borderWidth: '.28em',
+        borderWidth: DEFAULT_THUMB_SIZE / 2,
         borderStyle: 'solid',
         boxSizing: 'border-box',
       },
