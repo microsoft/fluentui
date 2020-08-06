@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`] = `
-<div>
+Array [
   <div
     className=
         ms-Toggle
@@ -56,7 +56,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
       <button
         aria-checked={false}
         aria-labelledby="Toggle0-label Toggle0-stateText"
-        checked={false}
         className=
             ms-Toggle-background
             {
@@ -111,7 +110,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         role="switch"
         style={
           Object {
-            "display": "block",
             "marginBottom": "20px",
           }
         }
@@ -177,7 +175,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         Shimmer
       </label>
     </div>
-  </div>
+  </div>,
   <div>
     <div
       className="ms-Viewport"
@@ -3656,6 +3654,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;
