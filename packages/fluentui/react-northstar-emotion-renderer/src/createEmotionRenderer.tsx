@@ -1,5 +1,5 @@
 import createCache from '@emotion/cache';
-import { ObjectInterpolation, serializeStyles } from '@emotion/serialize';
+import { ObjectInterpolation, serializeStyles, SerializedStyles } from '@emotion/serialize';
 import { StyleSheet } from '@emotion/sheet';
 import { EmotionCache, insertStyles } from '@emotion/utils';
 import {
@@ -68,13 +68,23 @@ export function createEmotionRenderer(target?: Document): Renderer {
 
   const renderGlobal: RendererRenderGlobal = (styles, selector) => {
     if (typeof styles === 'string') {
-      const serializedStyles = serializeStyles(
-        [styles],
-        // This looks as a bug in typings as in Emotion code this function can be used with a single param.
-        // https://github.com/emotion-js/emotion/blob/a076e7fa5f78fec6515671b78801cfc9d6cf1316/packages/core/src/global.js#L45
-        // @ts-ignore
-        undefined,
-      );
+      let serializedStyles: SerializedStyles;
+
+      if (typeof selector === 'string') {
+        serializedStyles = {
+          name: selector,
+          styles: `${selector} { ${styles} }`,
+          map: '',
+        };
+      } else {
+        serializedStyles = serializeStyles(
+          [styles],
+          // This looks as a bug in typings as in Emotion code this function can be used with a single param.
+          // https://github.com/emotion-js/emotion/blob/a076e7fa5f78fec6515671b78801cfc9d6cf1316/packages/core/src/global.js#L45
+          // @ts-ignore
+          undefined,
+        );
+      }
 
       cacheLtr.insert(``, serializedStyles, sheet, false);
     }

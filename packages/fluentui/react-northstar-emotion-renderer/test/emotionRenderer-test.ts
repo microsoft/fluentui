@@ -141,4 +141,14 @@ describe('emotionRenderer', () => {
     );
     expect(document).toMatchSnapshot();
   });
+
+  test('renderGlobal', () => {
+    const renderer = createEmotionRenderer();
+
+    renderer.renderGlobal({ display: 'flex' }, 'body');
+    renderer.renderGlobal('display:flex', 'div');
+    renderer.renderGlobal('button, li { display:flex }');
+
+    expect(document).toMatchSnapshot();
+  });
 });

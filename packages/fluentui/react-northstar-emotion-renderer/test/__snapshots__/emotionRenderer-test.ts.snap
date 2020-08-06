@@ -84,3 +84,17 @@ exports[`emotionRenderer prefixes required styles 1`] = `
 }
 
 `;
+
+exports[`emotionRenderer renderGlobal 1`] = `
+body {
+  display: flex;
+}
+div {
+  display: flex;
+}
+button,
+li {
+  display: flex;
+}
+
+`;
