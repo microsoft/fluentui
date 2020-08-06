@@ -1,5 +1,4 @@
 import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore Typings require esModuleInterop
 import objectFitImages from 'object-fit-images';
@@ -17,11 +16,7 @@ const isFitSupported = (function() {
 /**
  * The useImage hook processes the Image component props and returns state.
  */
-export const useImage = (
-  props: ImageProps,
-  ref: React.Ref<HTMLElement>,
-  options: ComposePreparedOptions,
-): ImageState => {
+export const useImageState = (state: ImageProps & ImageState) => {
   const imageRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
@@ -30,9 +25,8 @@ export const useImage = (
     }
   }, []);
 
-  return {
-    ...props,
+  state = {
+    ...state,
     imageRef,
-    style: getStyleFromPropsAndOptions(props, options, '--image'),
   };
 };
