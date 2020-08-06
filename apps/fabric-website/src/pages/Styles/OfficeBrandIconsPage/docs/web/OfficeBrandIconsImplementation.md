@@ -19,6 +19,6 @@ This following code shows you how to specify a 48px product icon by brand using 
   src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_48x1.svg" 
   width="48"
   height="48"
-  alt="Word product icon"
+  alt="Word product icon" 
 />
 ```
