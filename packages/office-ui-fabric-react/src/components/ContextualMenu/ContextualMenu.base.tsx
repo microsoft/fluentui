@@ -36,6 +36,7 @@ import {
   isMac,
   initializeComponentRef,
   memoizeFunction,
+  getPropsWithDefaults,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -67,6 +68,15 @@ export interface IContextualMenuState {
   subMenuId?: string;
   submenuDirection?: DirectionalHint;
 }
+
+// The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
+const DEFAULT_PROPS: Partial<IContextualMenuProps> = {
+  items: [],
+  shouldFocusOnMount: true,
+  gapSpace: 0,
+  directionalHint: DirectionalHint.bottomAutoEdge,
+  beakWidth: 16,
+};
 
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
@@ -103,17 +113,19 @@ const _getMenuItemStylesFunction = memoizeFunction(
   },
 );
 
-@withResponsiveMode
-export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
-  // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
-  public static defaultProps: IContextualMenuProps = {
-    items: [],
-    shouldFocusOnMount: true,
-    gapSpace: 0,
-    directionalHint: DirectionalHint.bottomAutoEdge,
-    beakWidth: 16,
-  };
+export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) => {
+  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
+  return <ContextualMenuInternal {...props} hoisted={{}} />;
+};
+ContextualMenuBase.displayName = 'ContextualMenuBase';
+
+interface IContextualMenuInternalProps extends IContextualMenuProps {
+  hoisted: {};
+}
+
+@withResponsiveMode
+export class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, IContextualMenuState> {
   private _async: Async;
   private _events: EventGroup;
   private _id: string;
@@ -136,7 +148,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   // eslint-disable-next-line deprecation/deprecation
   private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
 
-  constructor(props: IContextualMenuProps) {
+  constructor(props: IContextualMenuInternalProps) {
     super(props);
 
     this._async = new Async(this);
@@ -167,7 +179,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     }
   };
 
-  public shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean {
+  public shouldComponentUpdate(newProps: IContextualMenuInternalProps, newState: IContextualMenuState): boolean {
     if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
@@ -176,7 +188,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
-  public UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void {
+  public UNSAFE_componentWillUpdate(newProps: IContextualMenuInternalProps): void {
     if (newProps.target !== this.props.target) {
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
@@ -405,7 +417,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
    * Undefined value for hidden is equivalent to hidden being false.
    * @param props - Props for the component
    */
-  private _isHidden(props: IContextualMenuProps) {
+  private _isHidden(props: IContextualMenuInternalProps) {
     return !!props.hidden;
   }
 
@@ -471,7 +483,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   }
 
   private _onRenderSubMenu(
-    subMenuProps: IContextualMenuProps,
+    subMenuProps: IContextualMenuInternalProps,
     defaultRender?: IRenderFunction<IContextualMenuProps>,
   ): JSX.Element {
     throw Error(
