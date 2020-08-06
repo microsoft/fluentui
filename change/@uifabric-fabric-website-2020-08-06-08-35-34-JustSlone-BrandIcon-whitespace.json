@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Remove trailing whitespace from markdown file",
+  "comment": "Remove trailing whitespace from OfficeBrandIconsImplementation.md",
   "packageName": "@uifabric/fabric-website",
   "email": "jslone@microsoft.com",
   "dependentChangeType": "none",
