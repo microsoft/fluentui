@@ -8,25 +8,24 @@ import { CustomizerContext } from './CustomizerContext';
  */
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings {
   const forceUpdate = useForceUpdate();
-  const customizerContext = React.useContext(CustomizerContext);
-  const localSettings = customizerContext.customizations;
-
+  const { customizations } = React.useContext(CustomizerContext);
+  const { inCustomizerContext } = customizations;
   React.useEffect(() => {
-    if (!localSettings.inCustomizerContext) {
+    if (!inCustomizerContext) {
       Customizations.observe(forceUpdate);
     }
     return () => {
-      if (!localSettings.inCustomizerContext) {
+      if (!inCustomizerContext) {
         Customizations.unobserve(forceUpdate);
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- exclude forceUpdate
-  }, [localSettings.inCustomizerContext]);
+  }, [inCustomizerContext]);
 
-  return Customizations.getSettings(properties, scopeName, localSettings);
+  return Customizations.getSettings(properties, scopeName, customizations);
 }
 
 function useForceUpdate() {
-  const [, reducer] = React.useReducer((state: number) => state + 1, 0);
-  return () => reducer(null);
+  const [, setValue] = React.useState(0);
+  return () => setValue(value => ++value);
 }
