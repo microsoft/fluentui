@@ -8,7 +8,7 @@ Building a recomposable component requires that we build legos; we put them toge
 
 - **State hooks** - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
 - **Render function** - a function which takes in final state and returns JSX. (e.g. `renderButton`)
-- **Component factory function** - a create function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of the component as needed.
+- **Component factory hook** - a hook which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of the component as needed.
 - **Style hooks** - hooks which can take in styles and provide appropriate classnames to the anatomy of the component.
 
 With these building blocks, you can compose or recompose the component in numerous ways.
@@ -34,7 +34,7 @@ const useButtonState = state => {
 };
 ```
 
-A factory function sets up the state and render function:
+A component hook sets up the state and render function:
 
 ```jsx
 const useButton = (userProps, ref, defaultProps) => {
@@ -55,7 +55,7 @@ import * as styles from './Button.scss';
 const useStyles = makeStyles(styles);
 
 const Button = React.forwardRef((props, ref) => {
-  const { state, render } = createButton(props, ref);
+  const { state, render } = useButton(props, ref);
 
   // Inject classNames as needed.
   useStyles(state);
@@ -68,8 +68,28 @@ We can also use these building blocks to scaffold other types of buttons, transf
 context, redefine styling, or mix/match behaviors:
 
 ```jsx
+
+const useChecked = (draftState) {
+  const { onClick } = draftState;
+
+  const [checked, setChecked] = useControlableState(draftState.checked, draftState.defaultChecked);
+
+  draftState.checked = checked;
+
+  draftState.onClick = (ev) => {
+    if (onClick) {
+      onClick(ev);
+    }
+
+    if (!ev.defaultPrevented) {
+      setChecked(!checked);
+    }
+  }
+  draftState['aria-checked'] = checked;
+};
+
 const ToggleButton = React.forwardRef((props, ref) => {
-  const { state, render } = createButton(props, ref);
+  const { state, render } = useButton(props, ref);
 
   // Hand a "checked" and "defaultChecked" state, onClicks to toggle the value,
   // and appropriate a11y attributes.
@@ -79,7 +99,6 @@ const ToggleButton = React.forwardRef((props, ref) => {
   useStyles(state);
 
   return render(state);
-
 ```
 
 ### Details
@@ -156,9 +175,9 @@ Fluent UI components almost always contain sub parts, and these sub parts should
 />
 ```
 
-Supporting this dynamic props input requires some helpers:
+Supporting shorthand input requires some helpers:
 
-1. A helper `simplifyShorthand` to simplify the user's input into an object for props merging
+1. A helper `resolveShorthandProps` to simplify the user's input into an object for props merging
 2. The `getSlots` helper to parse the slots out
 
 Here's how this looks:
@@ -166,7 +185,7 @@ Here's how this looks:
 The factory function, which deep clones the props, would need to simplify the shorthand first:
 
 ```jsx
-const createButton = (userProps, ref, defaultProps) => {
+const useButton = (userProps, ref, defaultProps) => {
   const state = mergeProps(
     {
       // default props
@@ -175,11 +194,11 @@ const createButton = (userProps, ref, defaultProps) => {
       icon: { as: 'span' },
     },
     defaultProps, // optional default props from the caller
-    simplifyShorthand(userProps, ['icon']), // simplify the user's props
+    resolveShorthandProps(userProps, ['icon']), // simplify the user's props
   );
 
   // Apply button behaviors.
-  useButton(state);
+  useButtonState(state);
 
   return { state, render };
 };
@@ -239,7 +258,7 @@ const Button = props => {
 };
 ```
 
-### simplifyShorthand<TState>(state: TState, slotNames: (keyof TState)[]): TState
+### resolveShorthandProps<TState>(state: TState, slotNames: (keyof TState)[]): TState
 
 Ensures that the given slots are represented using object syntax. This ensures that
 the object can be merged along with other objects.
@@ -247,7 +266,7 @@ the object can be merged along with other objects.
 Example:
 
 ```jsx
-const foo = simplifyShorthand(
+const foo = resolveShorthandProps(
   { a: <JSX/>, b: 'string', c: { ... }, d: 'unchanged' },
   [ 'a', 'b', 'c' ]
 );
