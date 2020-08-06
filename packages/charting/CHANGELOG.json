@@ -2,6 +2,78 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@uifabric/charting_v3.0.2",
+      "version": "3.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "yMax and yMin values added to prop types of chart helper",
+            "author": "v-jasha@microsoft.com",
+            "commit": "da829ab7a2d703e9fa792c2eebced2bc459fcf8f",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Grouped vertical bar chart refresh issue in admin controls resoled",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f8cf97b6c6ea125dfe6e98c92c716419a14db49d",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/charting_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "reverted sankey chart code",
+            "author": "v-jasha@microsoft.com",
+            "commit": "e4360d578f90e14c93c14a6b861674799b39295b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jul 2020 12:47:45 GMT",
+      "tag": "@uifabric/charting_v2.8.0",
+      "version": "2.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding an option to show total counts in line chart legend, and new type in yCalloutData to support new tooltip design in line chart",
+            "author": "jijun@microsoft.com",
+            "commit": "40c70519bffb65b73f84a8e7c6332850aecd3c34",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jul 2020 12:38:09 GMT",
+      "tag": "@uifabric/charting_v2.7.7",
+      "version": "2.7.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "common chartHelper added to charting package",
+            "author": "v-jasha@microsoft.com",
+            "commit": "5679d177d5febc6541806b31592d35a44fb9f139",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Charting: Add Accessibility support for Sankey chart",
+            "author": "v-gorraj@microsoft.com",
+            "commit": "e0cd2a86ed6c914206bbf72766c2bba10473dc92",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jul 2020 12:42:21 GMT",
       "tag": "@uifabric/charting_v2.7.6",
       "version": "2.7.6",

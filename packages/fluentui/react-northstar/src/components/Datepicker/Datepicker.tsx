@@ -1,4 +1,4 @@
-import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import {
   DateRangeType,
   DayOfWeek,
@@ -38,7 +38,7 @@ import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<DatepickerBehaviorProps>;
+  accessibility?: Accessibility<never>;
 
   /** Shorthand for the datepicker calendar. */
   calendar?: ShorthandValue<DatepickerCalendarProps>;
@@ -258,7 +258,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             defaultProps: () => ({
               open: openStateToBooleanKnob(openState) && !props.disabled,
               content: calendarElement,
-              trapFocus: true,
+              trapFocus: {
+                disableFirstFocus: true,
+              },
               trigger: <Button icon={<CalendarIcon />} title="Open calendar" iconOnly />,
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
@@ -334,7 +336,6 @@ Datepicker.propTypes = {
 };
 
 Datepicker.defaultProps = {
-  accessibility: datepickerBehavior,
   calendar: {},
   popup: {},
   input: {},

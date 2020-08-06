@@ -89,8 +89,10 @@ $DEFAULT_THUMB_SIZE: 12px;
     }
 
     @include high-contrast {
-      background-color: WindowText;
+      background-color: Highlight;
     }
+
+    @include high-contrast-edge-chromium-no-adjust;
   }
 
   &.disabled {
@@ -117,7 +119,7 @@ $DEFAULT_THUMB_SIZE: 12px;
   // Border is added to handle high contrast mode for Firefox.
   border-color: transparent;
   border-style: solid;
-  border-width: 0.28em;
+  border-width: $DEFAULT_THUMB_SIZE / 2;
 
   &.checked {
     background-color: var($semanticColorsInputForegroundChecked);

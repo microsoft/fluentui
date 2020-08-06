@@ -2,6 +2,36 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/experiments_v7.27.15",
+      "version": "7.27.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@uifabric/experiments_v7.27.14",
+      "version": "7.27.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "4eef39d7498c16082b380c71779204a3483d329e",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jul 2020 12:43:51 GMT",
       "tag": "@uifabric/experiments_v7.27.9",
       "version": "7.27.9",

@@ -89,7 +89,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -424,7 +423,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -598,7 +596,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -933,7 +930,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1114,7 +1110,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1449,7 +1444,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1623,7 +1617,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1958,7 +1951,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;

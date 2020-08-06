@@ -1,8 +1,46 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.2)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.0..@uifabric/charting_v3.0.2)
+
+### Patches
+
+- yMax and yMin values added to prop types of chart helper ([PR #14256](https://github.com/microsoft/fluentui/pull/14256) by v-jasha@microsoft.com)
+- Grouped vertical bar chart refresh issue in admin controls resoled ([PR #14277](https://github.com/microsoft/fluentui/pull/14277) by v-jasha@microsoft.com)
+
+## [3.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.0)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.8.0..@uifabric/charting_v3.0.0)
+
+### Major changes
+
+- reverted sankey chart code ([PR #14301](https://github.com/microsoft/fluentui/pull/14301) by v-jasha@microsoft.com)
+
+## [2.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.8.0)
+
+Fri, 31 Jul 2020 12:47:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.7..@uifabric/charting_v2.8.0)
+
+### Minor changes
+
+- Adding an option to show total counts in line chart legend, and new type in yCalloutData to support new tooltip design in line chart ([PR #14169](https://github.com/microsoft/fluentui/pull/14169) by jijun@microsoft.com)
+
+## [2.7.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.7)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.6..@uifabric/charting_v2.7.7)
+
+### Patches
+
+- common chartHelper added to charting package ([PR #14177](https://github.com/microsoft/fluentui/pull/14177) by v-jasha@microsoft.com)
+- Charting: Add Accessibility support for Sankey chart ([PR #14196](https://github.com/microsoft/fluentui/pull/14196) by v-gorraj@microsoft.com)
 
 ## [2.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.6)
 
