@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Simplify query params for dev and strict mode testing",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-04T21:07:41.842Z"
+}

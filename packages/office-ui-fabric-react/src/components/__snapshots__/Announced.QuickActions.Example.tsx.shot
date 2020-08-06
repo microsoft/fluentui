@@ -493,33 +493,33 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
         role="presentation"
       >
         <div
-          className=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                display: inline-block;
-                min-height: 1px;
-                min-width: 100%;
-              }
-          data-focuszone-id="FocusZone2"
-          onBlur={[Function]}
-          onFocus={[Function]}
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
           onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
           onMouseDownCapture={[Function]}
+          role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone2"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-List"
@@ -970,7 +970,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -1056,6 +1055,183 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                               </span>
                             </button>
                           </div>
+                        </div>
+                        <div
+                          aria-colindex={3}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modified"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Thu Jan 05 2017‌
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modifiedby"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Annie Lindqvist
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={5}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="filesize"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            0 MB
+                          </span>
                         </div>
                       </div>
                       <span
@@ -1511,7 +1687,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -2052,7 +2227,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -2138,6 +2312,183 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                               </span>
                             </button>
                           </div>
+                        </div>
+                        <div
+                          aria-colindex={3}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modified"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Thu Jan 05 2017‌
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modifiedby"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Annie Lindqvist
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={5}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="filesize"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            0 MB
+                          </span>
                         </div>
                       </div>
                       <span
@@ -2593,7 +2944,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -3134,7 +3484,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -3220,6 +3569,183 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                               </span>
                             </button>
                           </div>
+                        </div>
+                        <div
+                          aria-colindex={3}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modified"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Thu Jan 05 2017‌
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modifiedby"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Annie Lindqvist
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={5}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="filesize"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            0 MB
+                          </span>
                         </div>
                       </div>
                       <span
@@ -3675,7 +4201,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -4216,7 +4741,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -4302,6 +4826,183 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                               </span>
                             </button>
                           </div>
+                        </div>
+                        <div
+                          aria-colindex={3}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modified"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Thu Jan 05 2017‌
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modifiedby"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Annie Lindqvist
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={5}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="filesize"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            0 MB
+                          </span>
                         </div>
                       </div>
                       <span
@@ -4757,7 +5458,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -5298,7 +5998,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -5384,6 +6083,183 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                               </span>
                             </button>
                           </div>
+                        </div>
+                        <div
+                          aria-colindex={3}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modified"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Thu Jan 05 2017‌
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="modifiedby"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            Annie Lindqvist
+                          </span>
+                        </div>
+                        <div
+                          aria-colindex={5}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="filesize"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 220,
+                            }
+                          }
+                        >
+                          <span>
+                            0 MB
+                          </span>
                         </div>
                       </div>
                       <span
@@ -5839,7 +6715,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     z-index: 1;
                                   }
                                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                    border: none;
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;

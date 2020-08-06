@@ -723,8 +723,21 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
               role="presentation"
             >
               <div
-                className="ms-List"
-                role="presentation"
+                className=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                    {
+                      display: inline-block;
+                      min-height: 1px;
+                      min-width: 100%;
+                    }
+                data-focuszone-id="FocusZone2"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDownCapture={[Function]}
               >
                 <div
                   className="ms-List-surface"

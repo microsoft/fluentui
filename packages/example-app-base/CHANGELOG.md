@@ -1,8 +1,26 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Aug 2020 12:39:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.105](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.105)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.101..@uifabric/example-app-base_v7.12.105)
+
+### Patches
+
+- Add query param to test with React.StrictMode ([PR #14327](https://github.com/microsoft/fluentui/pull/14327) by elcraig@microsoft.com)
+
+## [7.12.101](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.101)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.97..@uifabric/example-app-base_v7.12.101)
+
+### Patches
+
+- updated syntax highlighting to remove a11y violations ([PR #14139](https://github.com/microsoft/fluentui/pull/14139) by mgodbolt@microsoft.com)
 
 ## [7.12.97](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.97)
 

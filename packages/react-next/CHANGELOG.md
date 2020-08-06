@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 27 Jul 2020 12:42:21 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Aug 2020 12:39:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.75)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.74..@fluentui/react-next_v8.0.0-alpha.75)
+
+### Changes
+
+- Toggle: fix pill HC style when selected ([PR #14316](https://github.com/microsoft/fluentui/pull/14316) by ololubek@microsoft.com)
+- Update HC hover styling to make checked state more apparent ([PR #14341](https://github.com/microsoft/fluentui/pull/14341) by ololubek@microsoft.com)
+
+## [8.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.74)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.73..@fluentui/react-next_v8.0.0-alpha.74)
+
+### Changes
+
+- Migrate Callout to function component ([PR #14181](https://github.com/microsoft/fluentui/pull/14181) by miclo@microsoft.com)
+- Moving ChoiceGroup to react-next, in preparation for converting to a function component. ([PR #14267](https://github.com/microsoft/fluentui/pull/14267) by czearing@outlook.com)
+- update hc styling for Dropdown and ComboBox items to remove noisy borders ([PR #14273](https://github.com/microsoft/fluentui/pull/14273) by ololubek@microsoft.com)
+
+## [8.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.73)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.72..@fluentui/react-next_v8.0.0-alpha.73)
+
+### Changes
+
+- Use useWarnings hook ([PR #14263](https://github.com/microsoft/fluentui/pull/14263) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.70)
+
+Wed, 29 Jul 2020 12:35:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.69..@fluentui/react-next_v8.0.0-alpha.70)
+
+### Changes
+
+- Update Release Notes with comment about ref changes in function components ([PR #14148](https://github.com/microsoft/fluentui/pull/14148) by miclo@microsoft.com)
+- Updating existing react-next examples to use the newest ones found inside of office-ui-fabric-react. ([PR #14217](https://github.com/microsoft/fluentui/pull/14217) by czearing@outlook.com)
+- Copying teachingBubble to react-next, in preparation for converting to a function component. ([PR #14220](https://github.com/microsoft/fluentui/pull/14220) by czearing@outlook.com)
 
 ## [8.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.69)
 

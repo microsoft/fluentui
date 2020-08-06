@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jul 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.6.4)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.6.2..@fluentui/codemods_v0.6.4)
+
+### Patches
+
+- Result: add in an result helper to assit in the creation of codemods ([PR #14154](https://github.com/microsoft/fluentui/pull/14154) by joschect@microsoft.com)
 
 ## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.6.2)
 
