@@ -12,7 +12,7 @@ The following code shows you how to specify a 96px product icon by brand using t
 <div class="ms-BrandIcon--icon96 ms-BrandIcon--word"></div>
 ```
 
-This following code shows you how to specify a 48px product icon by brand using the [office-ui-fabric-core](https://github.com/OfficeDev/office-ui-fabric-core) SVG and an `<img>` element:
+This following code shows you how to specify a 48px product icon by brand using the [office-ui-fabric-core](https://github.com/OfficeDev/office-ui-fabric-core) SVG and an `<img>` element: 
 
 ```jsx
 <img
