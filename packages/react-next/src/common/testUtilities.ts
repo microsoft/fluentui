@@ -4,23 +4,26 @@ import { Component } from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function findNodes(wrapper: ReactWrapper<any, any>, className: string): ReactWrapper<any, any> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return wrapper.find(className).filterWhere((node: ReactWrapper<any, any>) => typeof node.type() === 'string');
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function expectNodes(wrapper: ReactWrapper<any, any>, className: string, n: number): void {
   expect(findNodes(wrapper, className).length).toEqual(n);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function expectOne(wrapper: ReactWrapper<any, any>, className: string): void {
   expectNodes(wrapper, className, 1);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function expectMissing(wrapper: ReactWrapper<any, any>, className: string): void {
   expectNodes(wrapper, className, 0);
 }
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /** @deprecated Use fake timers and `jest.runAllTimers()` instead */
 export function delay(millisecond: number): Promise<void> {
