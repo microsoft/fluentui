@@ -20,6 +20,11 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
     },
     footer: {
       color: extendedSemanticColors.teachingBubbleText,
+      selectors: {
+        '.ms-Button-label': {
+          lineHeight: 22,
+        },
+      },
     },
     header: {
       color: extendedSemanticColors.teachingBubbleText,
