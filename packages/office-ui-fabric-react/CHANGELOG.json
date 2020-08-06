@@ -2,6 +2,33 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 12:40:48 GMT",
+      "tag": "office-ui-fabric-react_v7.126.1",
+      "version": "7.126.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating Shimmer and Stack to function components.",
+            "author": "czearing@outlook.com",
+            "commit": "aea3a8be1e98123cf840bc245274b84621635f4c",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Updating Picker, TagPicker, and Selection examples to use function components.",
+            "author": "czearing@outlook.com",
+            "commit": "4bd6add165341f36feb4911c2b4f5c949b9161b2",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Spinner: Fix HC styling of spinner componet to show highlight color",
+            "author": "ololubek@microsoft.com",
+            "commit": "d438d07a75b24e8273959321c3b3e01863a4db08",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 00:30:40 GMT",
       "tag": "office-ui-fabric-react_v7.126.0",
       "version": "7.126.0",
