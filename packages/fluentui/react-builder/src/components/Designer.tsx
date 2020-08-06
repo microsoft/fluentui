@@ -527,7 +527,9 @@ export const Designer: React.FunctionComponent = () => {
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
                   <div>
-                    <Editor mode="jsx" height="auto" value={code} onChange={handleSourceCodeChange} />
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                      <Editor mode="jsx" height="auto" value={code} onChange={handleSourceCodeChange} />
+                    </React.Suspense>
                     {codeError && (
                       <pre
                         style={{
