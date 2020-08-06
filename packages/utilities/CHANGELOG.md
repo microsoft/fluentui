@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 04 Aug 2020 12:42:32 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 12:40:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.0)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.25.1..@uifabric/utilities_v7.26.0)
+
+### Minor changes
+
+- Adding `omit` helper to performantly create shallow object clones which omit a few props. ([PR #14268](https://github.com/microsoft/fluentui/pull/14268) by dzearing@microsoft.com)
 
 ## [7.25.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.1)
 

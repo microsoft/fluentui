@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-data",
-  "version": "7.0.21",
+  "version": "7.1.0",
   "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

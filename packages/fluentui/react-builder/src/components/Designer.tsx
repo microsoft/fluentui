@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { Editor, renderElementToJSX } from '@fluentui/docs-components';
+import { renderElementToJSX } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -29,7 +29,6 @@ import { readTreeFromStore, readTreeFromURL, writeTreeToStore, writeTreeToURL } 
 import { DesignerMode, JSONTreeElement } from './types';
 import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
-import { codeToTree } from '../utils/codeToTree';
 import { ErrorBoundary } from './ErrorBoundary';
 
 const HEADER_HEIGHT = '3rem';
@@ -37,6 +36,13 @@ const HEADER_HEIGHT = '3rem';
 function debug(...args) {
   console.log('--Designer', ...args);
 }
+
+const CodeEditor = React.lazy(async () => {
+  const _CodeEditor = (await import(/* webpackChunkName: "codeeditor" */ './CodeEditor')).CodeEditor;
+  return {
+    default: _CodeEditor,
+  };
+});
 
 function getDefaultJSONTree(): JSONTreeElement {
   return { uuid: 'builder-root', type: 'div' };
@@ -68,7 +74,8 @@ type DesignerAction =
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
-  | { type: 'SOURCE_CODE_CHANGE'; code: string };
+  | { type: 'SOURCE_CODE_CHANGE'; code: string; jsonTree: JSONTreeElement }
+  | { type: 'SOURCE_CODE_ERROR'; code: string; error: string };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -179,13 +186,15 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       draftState.code = action.code;
       draftState.selectedJSONTreeElementUuid = null;
       draftState.selectedComponentInfo = null;
-      try {
-        draftState.jsonTree = codeToTree(action.code);
-        draftState.codeError = null;
-      } catch (e) {
-        draftState.codeError = e.message;
-      }
+      draftState.jsonTree = action.jsonTree;
+      draftState.codeError = null;
+      break;
 
+    case 'SOURCE_CODE_ERROR':
+      draftState.code = action.code;
+      draftState.selectedJSONTreeElementUuid = null;
+      draftState.selectedComponentInfo = null;
+      draftState.codeError = action.error;
       break;
 
     default:
@@ -359,8 +368,15 @@ export const Designer: React.FunctionComponent = () => {
   }, [dispatch]);
 
   const handleSourceCodeChange = React.useCallback(
-    code => {
-      dispatch({ type: 'SOURCE_CODE_CHANGE', code });
+    (code, jsonTree) => {
+      dispatch({ type: 'SOURCE_CODE_CHANGE', code, jsonTree });
+    },
+    [dispatch],
+  );
+
+  const handleSourceCodeError = React.useCallback(
+    (code, error) => {
+      dispatch({ type: 'SOURCE_CODE_ERROR', code, error });
     },
     [dispatch],
   );
@@ -520,7 +536,13 @@ export const Designer: React.FunctionComponent = () => {
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
                   <div>
-                    <Editor mode="jsx" height="auto" value={code} onChange={handleSourceCodeChange} />
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                      <CodeEditor
+                        code={code}
+                        onCodeChange={handleSourceCodeChange}
+                        onCodeError={handleSourceCodeError}
+                      />
+                    </React.Suspense>
                     {codeError && (
                       <pre
                         style={{

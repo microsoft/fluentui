@@ -1,8 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 12:40:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.126.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.1)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.126.0..office-ui-fabric-react_v7.126.1)
+
+### Patches
+
+- Updating Shimmer and Stack to function components. ([PR #13849](https://github.com/microsoft/fluentui/pull/13849) by czearing@outlook.com)
+- Updating Picker, TagPicker, and Selection examples to use function components. ([PR #14156](https://github.com/microsoft/fluentui/pull/14156) by czearing@outlook.com)
+- Spinner: Fix HC styling of spinner componet to show highlight color ([PR #14372](https://github.com/microsoft/fluentui/pull/14372) by ololubek@microsoft.com)
 
 ## [7.126.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.0)
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Spinner: Fix HC styling of spinner componet to show highlight color",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-05T22:38:43.868Z"
-}
