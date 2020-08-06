@@ -10,8 +10,7 @@ import { PrimaryButton, DefaultButton, IconButton } from '../../compat/Button';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { Image } from '../../Image';
-import { useOnEvent, useMergedRefs } from '@uifabric/react-hooks';
-import { getDocument } from '../../Utilities';
+import { useOnEvent, useMergedRefs, useDocumentRef } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
@@ -31,6 +30,7 @@ const useComponentRef = (
 export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps> = React.forwardRef(
   (props, forwardedRef: React.Ref<HTMLDivElement>) => {
     const rootElementRef = React.useRef<HTMLDivElement>(null);
+    const documentRef = useDocumentRef(rootElementRef);
     const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
 
     const {
@@ -66,23 +66,23 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
 
     const onKeyDown = React.useCallback(
       (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
-        if (props.onDismiss) {
+        if (onDismiss) {
           // eslint-disable-next-line deprecation/deprecation
           if (ev.which === KeyCodes.escape) {
-            props.onDismiss(ev);
+            onDismiss(ev);
           }
         }
       },
-      [props.onDismiss],
+      [onDismiss],
     );
 
-    useOnEvent(getDocument(rootElementRef.current), 'keydown', onKeyDown as (ev: Event) => void);
+    useOnEvent(documentRef.current, 'keydown', onKeyDown as (ev: Event) => void);
 
-    let imageContent;
-    let headerContent;
-    let bodyContent;
-    let footerContent;
-    let closeButton;
+    let imageContent: JSX.Element | undefined;
+    let headerContent: JSX.Element | undefined;
+    let bodyContent: JSX.Element | undefined;
+    let footerContent: JSX.Element | undefined;
+    let closeButton: JSX.Element | undefined;
 
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
