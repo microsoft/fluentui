@@ -12,10 +12,9 @@ import {
   withDebugId,
 } from '@fluentui/styles';
 import cx from 'classnames';
-import cssjanus from 'cssjanus';
 import * as _ from 'lodash';
-import { serializeStyles } from '@emotion/serialize';
 
+import { resolveDesignProp } from './resolveDesignProp';
 import { ComponentSlotClasses, ResolveStylesOptions } from './types';
 
 export type ResolveStylesResult = {
@@ -111,7 +110,6 @@ export const resolveStyles = (
   if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
-      // design && withDebugId({ root: design }, 'props.design'),
       styles && withDebugId({ root: styles } as ComponentSlotStylesInput, 'props.styles'),
     );
   }
@@ -229,13 +227,10 @@ export const resolveStyles = (
         let designClassName = '';
 
         if (slotName === 'root' && design) {
-          const serializedValue = serializeStyles((Array.isArray(design) ? design : [design]) as any, {}, styleParam);
+          const result = resolveDesignProp(design, styleParam);
 
-          designClassName = `design-${rtl ? 'rtl-' : ''}${serializedValue.name}`;
-          renderer.renderGlobal(
-            rtl ? cssjanus.transform(serializedValue.styles) : serializedValue.styles,
-            `.${componentClassName}.${designClassName}`,
-          );
+          designClassName = result.className;
+          renderer.renderGlobal(result.css, `.${componentClassName}.${designClassName}`);
         }
 
         if (cacheEnabled && theme) {
