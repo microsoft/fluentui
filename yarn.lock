@@ -10430,6 +10430,21 @@ execa@^4.0.0, execa@^4.0.1:
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
 
+execa@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-4.0.3.tgz#0a34dabbad6d66100bd6f2c576c8669403f317f2"
+  integrity sha512-WFDXGHckXPWZX19t1kCsXzOpqX9LWYNqn4C+HqZlk/V0imTkzJZqf87ZBhvpHaftERYknpk0fjSylnXVlVgI0A==
+  dependencies:
+    cross-spawn "^7.0.0"
+    get-stream "^5.0.0"
+    human-signals "^1.1.1"
+    is-stream "^2.0.0"
+    merge-stream "^2.0.0"
+    npm-run-path "^4.0.0"
+    onetime "^5.1.0"
+    signal-exit "^3.0.2"
+    strip-final-newline "^2.0.0"
+
 exenv-es6@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/exenv-es6/-/exenv-es6-1.0.0.tgz#bd459136369af17cf33f959b5af58803d4068c80"
@@ -15176,10 +15191,10 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@^0.15.4:
-  version "0.15.4"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.15.4.tgz#e3594fb64913d5362521de3e68aac43eb975e9a9"
-  integrity sha512-oe0BzpMxswgkft3hxBZGNpf/r6aFlqC6QGkw4lKN4WBd0/onQZC73G/WxL1/MeLYeoQ09BvPab2Dr5MEwbekYQ==
+lage@^0.17.3:
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.17.3.tgz#a5eb36ad841b814147688d84bf3a6a055c24282b"
+  integrity sha512-rlB2pcVMkCEePoKUN6PhHxTJ/8fEghgxARIPMQhENAAUab8MTbBlquTftHjyPDkly6Z/4KMFvGexCy0QQIbDWg==
   dependencies:
     "@microsoft/task-scheduler" "^2.4.0"
     abort-controller "^3.0.0"
@@ -15188,6 +15203,7 @@ lage@^0.15.4:
     backfill-logger "^5.0.0"
     chalk "^4.0.0"
     cosmiconfig "^6.0.0"
+    execa "^4.0.3"
     fast-glob "^3.2.2"
     git-url-parse "^11.1.2"
     npmlog "^4.1.2"
