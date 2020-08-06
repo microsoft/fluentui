@@ -16,7 +16,7 @@ This following code shows you how to specify a 48px product icon by brand using 
 
 ```jsx
 <img
-  src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_48x1.svg"
+  src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_48x1.svg" 
   width="48"
   height="48"
   alt="Word product icon"
