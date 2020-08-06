@@ -3,23 +3,26 @@ import { ISettings, Customizations } from './Customizations';
 import { CustomizerContext } from './CustomizerContext';
 
 /**
- * Hook to get Customizations settings. It will trigger component state update on settings change observed.
+ * Hook to get Customizations settings from Customizations singleton or CustomizerContext.
+ * It will trigger component state update on settings change observed.
  */
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings {
+  const forceUpdate = useForceUpdate();
   const customizerContext = React.useContext(CustomizerContext);
   const localSettings = customizerContext.customizations;
-  const [settings, setSettings] = React.useState(Customizations.getSettings(properties, scopeName, localSettings));
-
-  const onCustomizationChange = React.useCallback(() => {
-    const globalSettings = Customizations.getSettings(properties, scopeName, localSettings);
-    setSettings(globalSettings);
-  }, [properties, scopeName, localSettings]);
 
   React.useEffect(() => {
-    Customizations.observe(onCustomizationChange);
+    if (!localSettings.inCustomizerContext) {
+      Customizations.observe(forceUpdate);
+      return () => Customizations.unobserve(forceUpdate);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- exclude forceUpdate
+  }, [localSettings.inCustomizerContext]);
 
-    return () => Customizations.unobserve(onCustomizationChange);
-  }, [onCustomizationChange]);
+  return Customizations.getSettings(properties, scopeName, localSettings);
+}
 
-  return settings;
+function useForceUpdate() {
+  const [, reducer] = React.useReducer((state: number) => state + 1, 0);
+  return () => reducer(null);
 }
