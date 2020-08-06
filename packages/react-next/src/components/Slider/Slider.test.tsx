@@ -8,7 +8,6 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { sharedIsConformant } from '../../common/sharedIsConformant';
 import { resetIds, KeyCodes } from '@uifabric/utilities';
 
 describe('Slider', () => {
@@ -23,12 +22,6 @@ describe('Slider', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
-  });
-
-  sharedIsConformant({
-    componentPath: path.join(__dirname, 'Slider.tsx'),
-    Component: Slider,
-    displayName: 'Slider',
   });
 
   it('renders correctly', () => {
