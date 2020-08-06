@@ -1,11 +1,14 @@
 import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { ICSSInJSStyle } from '@fluentui/styles';
+import { renderToString } from 'fela-tools';
+import { IRenderer } from 'fela';
 // @ts-ignore
 import { createSnapshot } from 'jest-react-fela';
 import * as React from 'react';
 import { FelaComponent } from 'react-fela';
 
-const felaRenderer = (createFelaRenderer() as any).getOriginalRenderer();
+const fluentRenderer = createFelaRenderer();
+const felaRenderer: IRenderer = (fluentRenderer as any).getOriginalRenderer();
 
 describe('felaRenderer', () => {
   test('basic styles are rendered', () => {
@@ -124,5 +127,24 @@ describe('felaRenderer', () => {
       felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
+  });
+
+  describe('renderGlobal', () => {
+    beforeEach(() => {
+      felaRenderer.clear();
+    });
+
+    test('handles objects', () => {
+      fluentRenderer.renderGlobal({ color: 'green' }, 'body');
+
+      expect(renderToString(felaRenderer)).toMatchSnapshot();
+    });
+
+    test('handles strings', () => {
+      fluentRenderer.renderGlobal('color: "green"', 'body');
+      fluentRenderer.renderGlobal('html { background: "green" }');
+
+      expect(renderToString(felaRenderer)).toMatchSnapshot();
+    });
   });
 });

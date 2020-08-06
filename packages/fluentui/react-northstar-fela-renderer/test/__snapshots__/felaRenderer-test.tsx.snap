@@ -186,6 +186,10 @@ exports[`felaRenderer prefixes required styles 1`] = `
 "
 `;
 
+exports[`felaRenderer renderGlobal handles objects 1`] = `"body{color:green;}"`;
+
+exports[`felaRenderer renderGlobal handles strings 1`] = `"html { background: \\"green\\" }body{color:\\"green\\";}"`;
+
 exports[`felaRenderer styles are expanded to longhand values 1`] = `
 ".a {
   border-top-style: solid;

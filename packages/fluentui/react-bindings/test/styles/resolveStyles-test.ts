@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { ResolveStylesOptions, StylesContextPerformance } from '@fluentui/react-bindings';
-import { RendererRenderRule, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { RendererRenderRule, noopRenderer, RendererRenderGlobal } from '@fluentui/react-northstar-styles-renderer';
 import {
   ComponentSlotStylesPrepared,
   ComponentVariablesObject,
@@ -30,20 +30,24 @@ const defaultPerformanceOptions: StylesContextPerformance = {
 };
 
 const resolveStylesOptions = (options?: {
+  className?: string;
   displayNames?: ResolveStylesOptions['allDisplayNames'];
   componentStyles?: Record<string, ComponentSlotStylesPrepared>;
   performance?: Partial<ResolveStylesOptions['performance']>;
   componentProps?: ResolveStylesOptions['componentProps'];
   inlineStylesProps?: ResolveStylesOptions['inlineStylesProps'];
   rtl?: ResolveStylesOptions['rtl'];
+  renderGlobal?: RendererRenderGlobal;
   renderRule?: RendererRenderRule;
 }): ResolveStylesOptions => {
   const {
+    className,
     componentStyles,
     displayNames = ['Test'],
     performance,
     componentProps = {},
     inlineStylesProps = {},
+    renderGlobal = () => {},
     renderRule = () => '',
     rtl = false,
   } = options || {};
@@ -57,6 +61,7 @@ const resolveStylesOptions = (options?: {
   };
   return {
     theme,
+    className,
     allDisplayNames: displayNames,
     primaryDisplayName: displayNames[0],
     componentProps,
@@ -65,6 +70,7 @@ const resolveStylesOptions = (options?: {
     disableAnimations: false,
     renderer: {
       ...noopRenderer,
+      renderGlobal,
       renderRule,
     },
     performance: { ...defaultPerformanceOptions, ...performance },
@@ -410,6 +416,23 @@ describe('resolveStyles', () => {
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
       expect(testComponentStyles.root).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('design', () => {
+    it('generates className and calls renderer', () => {
+      const renderRule = jest.fn().mockReturnValue('foo');
+      const renderGlobal = jest.fn();
+
+      const options = resolveStylesOptions({
+        className: 'ui-test',
+        inlineStylesProps: { design: { color: 'red' } },
+        renderRule,
+        renderGlobal,
+      });
+
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('classes.root', 'ui-test foo design-tokvmb');
+      expect(renderGlobal).toHaveBeenCalledWith('color:red;', '.ui-test.design-tokvmb');
     });
   });
 });
