@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Dropdown: Improving multiselect dropdown screen reader behavior.",
+  "packageName": "@fluentui/react-next",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-06T00:56:05.706Z"
+}
