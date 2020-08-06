@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { create } from '@uifabric/utilities/lib/test';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as path from 'path';
 
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
