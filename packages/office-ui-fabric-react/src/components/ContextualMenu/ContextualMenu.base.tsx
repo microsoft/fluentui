@@ -116,12 +116,16 @@ const _getMenuItemStylesFunction = memoizeFunction(
 export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) => {
   const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-  return <ContextualMenuInternal {...props} hoisted={{}} />;
+  const hostElement = React.useRef<HTMLDivElement>(null);
+
+  return <ContextualMenuInternal {...props} hoisted={{ hostElement }} />;
 };
 ContextualMenuBase.displayName = 'ContextualMenuBase';
 
 interface IContextualMenuInternalProps extends IContextualMenuProps {
-  hoisted: {};
+  hoisted: {
+    hostElement: React.RefObject<HTMLDivElement>;
+  };
 }
 
 @withResponsiveMode
@@ -129,7 +133,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
   private _async: Async;
   private _events: EventGroup;
   private _id: string;
-  private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | undefined;
   private _enterTimerId: number | undefined;
   private _targetWindow: Window;
@@ -374,8 +377,7 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
-            // eslint-disable-next-line react/jsx-no-bind
-            ref={(host: HTMLDivElement) => (this._host = host)}
+            ref={this.props.hoisted.hostElement}
             id={id}
             className={this._classNames.container}
             tabIndex={shouldFocusOnContainer ? 0 : -1}
@@ -1004,7 +1006,7 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     // or if we are attempting to expand a submenu
     const handled = this._onKeyDown(ev);
 
-    if (handled || !this._host) {
+    if (handled || !this.props.hoisted.hostElement.current) {
       return;
     }
 
@@ -1015,8 +1017,16 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     const isDown = ev.which === KeyCodes.down;
     if (!hasModifier && (isUp || isDown)) {
       const elementToFocus = isUp
-        ? getLastFocusable(this._host, this._host.lastChild as HTMLElement, true)
-        : getFirstFocusable(this._host, this._host.firstChild as HTMLElement, true);
+        ? getLastFocusable(
+            this.props.hoisted.hostElement.current,
+            this.props.hoisted.hostElement.current.lastChild as HTMLElement,
+            true,
+          )
+        : getFirstFocusable(
+            this.props.hoisted.hostElement.current,
+            this.props.hoisted.hostElement.current.firstChild as HTMLElement,
+            true,
+          );
 
       if (elementToFocus) {
         elementToFocus.focus();
@@ -1095,14 +1105,14 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
      * Edge and IE expose a setActive() function for focusable divs that
      * sets the page focus but does not scroll the parent element.
      */
-    if ((this._host as any).setActive) {
+    if ((this.props.hoisted.hostElement.current as any).setActive) {
       try {
-        (this._host as any).setActive();
+        (this.props.hoisted.hostElement.current as any).setActive();
       } catch (e) {
         /* no-op */
       }
     } else {
-      this._host.focus();
+      this.props.hoisted.hostElement.current.focus();
     }
   };
 
@@ -1337,7 +1347,7 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
   };
 
   private _setTargetWindowAndElement(target: Target): void {
-    const currentElement = this._host;
+    const currentElement = this.props.hoisted.hostElement.current;
 
     if (target) {
       if (typeof target === 'string') {
