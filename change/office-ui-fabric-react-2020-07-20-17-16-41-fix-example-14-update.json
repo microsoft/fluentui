@@ -1,8 +1,8 @@
 {
   "type": "patch",
-  "comment": "Removing unused default props from TeachingBubbleContent.",
+  "comment": "Updating Shimmer and Stack to function components.",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
-  "date": "2020-07-29T20:56:05.714Z"
+  "date": "2020-07-21T00:16:41.461Z"
 }

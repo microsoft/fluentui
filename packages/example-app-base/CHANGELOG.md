@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 05 Aug 2020 12:39:43 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.106](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.106)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.105..@uifabric/example-app-base_v7.12.106)
+
+### Patches
+
+- Simplify query params for dev and strict mode testing ([PR #14347](https://github.com/microsoft/fluentui/pull/14347) by elcraig@microsoft.com)
 
 ## [7.12.105](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.105)
 

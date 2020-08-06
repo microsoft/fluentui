@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/text-field.html';
-import { FASTTextField } from './';
+import { FluentTextField } from './';
 
 // Prevent tree-shaking
-FASTTextField;
-FASTDesignSystemProvider;
+FluentTextField;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Text field',
