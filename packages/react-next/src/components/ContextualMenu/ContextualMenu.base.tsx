@@ -47,7 +47,7 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious } from '@uifabric/react-hooks';
+import { useTarget, usePrevious, useOnEvent } from '@uifabric/react-hooks';
 import { useResponsiveMode } from 'office-ui-fabric-react/lib/utilities/hooks/useResponsiveMode';
 import { ResponsiveMode } from 'office-ui-fabric-react/src/utilities/decorators/withResponsiveMode';
 
@@ -113,8 +113,8 @@ const _getMenuItemStylesFunction = memoizeFunction(
   },
 );
 
-function useVisibility(props: IContextualMenuProps) {
-  const { hidden = false, onMenuDismissed, onMenuOpened } = props;
+function useVisibility(props: IContextualMenuProps, targetWindowRef: React.RefObject<Window | undefined>) {
+  const { hidden = false, onMenuDismissed, onMenuOpened, onDismiss } = props;
   const previousHidden = usePrevious(hidden);
 
   React.useEffect(() => {
@@ -125,6 +125,8 @@ function useVisibility(props: IContextualMenuProps) {
       onMenuOpened?.(props);
     }
   }, [hidden]);
+
+  useOnEvent(targetWindowRef.current, 'resize', ev => onDismiss?.(ev));
 
   // Issue onDismissedCallback on unmount
   React.useEffect(() => () => onMenuDismissed?.(props), []);
@@ -138,7 +140,7 @@ export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) =
 
   const responsiveMode = useResponsiveMode(hostElement);
 
-  useVisibility(props);
+  useVisibility(props, targetWindowRef);
 
   return (
     <ContextualMenuInternal
@@ -427,14 +429,11 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
   }
 
   private _onMenuOpened() {
-    this._events.on(this.props.hoisted.targetWindowRef.current, 'resize', this.dismiss);
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
     this._gotMouseMove = false;
   }
 
   private _onMenuClosed() {
-    this._events.off(this.props.hoisted.targetWindowRef.current, 'resize', this.dismiss);
-
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
 
     // We need to dismiss any submenu related state properties,
