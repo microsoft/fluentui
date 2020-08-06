@@ -32,7 +32,7 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Elem
   const _insertBeforeItem = (item: T): void => {
     const draggedItems = selection.isIndexSelected(draggedIndex) ? (getSelectedItems() as T[]) : [draggedItem!];
     const insertIndex = selectedItems.indexOf(item);
-    const items = selectedItems.filter(itm => draggedItems.indexOf(itm) === -1);
+    const items = selectedItems.filter(current => draggedItems.indexOf(current) === -1);
     items.splice(insertIndex, 0, ...draggedItems);
 
     setCurrentSelectedItems(items);

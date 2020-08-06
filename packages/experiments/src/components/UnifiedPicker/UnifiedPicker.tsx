@@ -35,11 +35,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selection: selection,
   });
 
-  const theme = getTheme();
-  const dragEnterClass = mergeStyles({
-    backgroundColor: theme.palette.neutralLight,
-  });
-
   const {
     focusItemIndex,
     suggestionItems,
@@ -79,6 +74,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
   } = props;
 
+  // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
+
   const _insertBeforeItem = (item: T): void => {
     const draggedItemIndex = selectedItems.indexOf(draggedItem!);
     const draggedItemsIndices = focusedItemIndices.includes(draggedItemIndex)
@@ -87,6 +84,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     const insertIndex = selectedItems.indexOf(item);
     dropItemsAt(insertIndex, draggedItemsIndices);
   };
+
+  const theme = getTheme();
+  const dragEnterClass = mergeStyles({
+    backgroundColor: theme.palette.neutralLight,
+  });
 
   const _onDragEnter = (item?: any, event?: DragEvent): string => {
     // return string is the css classes that will be added to the entering element.
@@ -107,7 +109,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     setDraggedItem(undefined);
   };
 
-  const dragDropEvents: IDragDropEvents = {
+  const defaultDragDropEvents: IDragDropEvents = {
     canDrop: () => true,
     canDrag: () => true,
     onDragEnter: _onDragEnter,
@@ -224,7 +226,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       focusedItemIndices: focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems,
       dragDropHelper: dragDropHelper,
-      dragDropEvents: dragDropEvents,
+      dragDropEvents: props.dragDropEvents ? props.dragDropEvents : defaultDragDropEvents,
     });
   };
   const _canAddItems = () => true;

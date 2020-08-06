@@ -3,6 +3,7 @@ import { IRefObject } from '@uifabric/utilities';
 import { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite/FloatingSuggestions.types';
 import { ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
 import { IFocusZoneProps, IInputProps, Autofill } from 'office-ui-fabric-react';
+import { IDragDropEvents } from 'office-ui-fabric-react';
 
 export interface IUnifiedPickerProps<T> {
   /**
@@ -82,4 +83,9 @@ export interface IUnifiedPickerProps<T> {
    * On input value change
    */
   onInputChange?: (filter: string) => void;
+
+  /**
+   * Drag drop events
+   */
+  dragDropEvents?: IDragDropEvents;
 }
