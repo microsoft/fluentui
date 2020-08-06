@@ -4,13 +4,14 @@ import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withPerformance } from 'storybook-addon-performance';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withThemeProvider, withStrictMode } from '@fluentui/storybook';
 import { withKeytipLayer } from './decorators';
 
 addDecorator(withA11y());
 addDecorator(withPerformance);
 addDecorator(withKnobs({ escapeHTML: false }));
 addDecorator(withThemeProvider);
+addDecorator(withStrictMode);
 addDecorator(withKeytipLayer);
 
 addParameters({

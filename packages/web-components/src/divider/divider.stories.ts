@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import DividerTemplate from './fixtures/divider.html';
-import { FASTDivider } from './';
+import { FluentDivider } from './';
 
 // Prevent tree-shaking
-FASTDivider;
-FASTDesignSystemProvider;
+FluentDivider;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Divider',

@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose getDatePartHashValue utility",
+            "author": "miclo@microsoft.com",
+            "commit": "655580570512c48006a04ea80fd66e6273e7fae8",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Jul 2020 12:45:55 GMT",
       "tag": "@fluentui/date-time-utilities_v7.3.0",
       "version": "7.3.0",

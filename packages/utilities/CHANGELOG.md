@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 03 Aug 2020 12:45:42 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2020 12:42:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.25.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.1)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.25.0..@uifabric/utilities_v7.25.1)
+
+### Patches
+
+- omit: changed to for in for more perf improvement. ([PR #14313](https://github.com/microsoft/fluentui/pull/14313) by dzearing@microsoft.com)
 
 ## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.25.0)
 
