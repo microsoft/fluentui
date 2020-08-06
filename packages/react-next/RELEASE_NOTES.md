@@ -4,8 +4,8 @@
 
 ### Beak
 
-- Removed empty `IBeak` interface
-- Removed `componentRef` prop
+- Removed empty `IBeak` interface.
+- Removed `componentRef` prop.
 
 ### SpinButton
 
@@ -23,11 +23,16 @@
 
 ### Coachmark
 
-- Removed `isBeaconAnimating` and `isMeasured` style props
+- Removed `isBeaconAnimating` and `isMeasured` style props.
 
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
+
+### TeachingBubble
+
+- Removed unused defaultProps from TeachingBubbleContent.
+- Removed rootElementRef from public api.
 
 ### Others
 
