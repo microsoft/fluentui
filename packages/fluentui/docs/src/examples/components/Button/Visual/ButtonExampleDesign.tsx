@@ -14,7 +14,7 @@ const ButtonExample = () => (
     <Button content="Click here" design={{ border: '1px solid red' }} />
     <Button
       content="Click here"
-      design={({ theme: { siteVariables } }) => /*console.log(siteVariables) ||*/ ({
+      design={({ theme: { siteVariables } }) => /* console.log(siteVariables) || */ ({
         border: `1px solid ${siteVariables.colors.brand[500]}`,
         color: 'blue',
       })}
