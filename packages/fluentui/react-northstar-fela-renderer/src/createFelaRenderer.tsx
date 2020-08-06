@@ -17,7 +17,7 @@ import { felaInvokeKeyframesPlugin } from './felaInvokeKeyframesPlugin';
 import { felaPerformanceEnhancer } from './felaPerformanceEnhancer';
 import { felaSanitizeCssPlugin } from './felaSanitizeCssPlugin';
 import { felaStylisEnhancer } from './felaStylisEnhancer';
-import { FelaRendererParam } from './types';
+import { FelaRenderer, FelaRendererParam } from './types';
 
 let felaDevMode = false;
 
@@ -82,7 +82,7 @@ const rendererConfig = {
 };
 
 export const createFelaRenderer: CreateRenderer = target => {
-  const felaRenderer = createRenderer(rendererConfig);
+  const felaRenderer = createRenderer(rendererConfig) as FelaRenderer;
 
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
@@ -105,7 +105,6 @@ export const createFelaRenderer: CreateRenderer = target => {
       const declaration = typeof styles === 'string' ? styles : cssifyObject(styles);
       const declarationReference = selector + declaration;
 
-      // @ts-ignore
       if (!felaRenderer.cache.hasOwnProperty(declarationReference)) {
         const change = {
           type: RULE_TYPE,
@@ -117,9 +116,7 @@ export const createFelaRenderer: CreateRenderer = target => {
           support: '',
         };
 
-        // @ts-ignore
         felaRenderer.cache[declarationReference] = change;
-        // @ts-ignore
         felaRenderer._emitChange(change);
       }
     },

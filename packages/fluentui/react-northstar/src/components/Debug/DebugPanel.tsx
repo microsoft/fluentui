@@ -55,7 +55,7 @@ export const DebugPanel: React.FC<DebugPanelProps> = props => {
   debugData.componentStyles = debugData.componentStyles || {};
   debugData.componentVariables = debugData.componentVariables || [];
   debugData.siteVariables = debugData.siteVariables || [];
-  console.log('debugData.componentStyles', debugData.componentStyles, debugData, inputDebugData);
+
   const styleSlots = Object.keys(debugData.componentStyles);
   let siteVariablesUsedInComponentVariables = [];
 
