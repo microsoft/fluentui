@@ -832,7 +832,9 @@ describe('ContextualMenu', () => {
 
     const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
 
-    ReactTestUtils.Simulate.click(menuItem);
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(menuItem);
+    });
 
     expect(subMenuOpened).toEqual(true);
   });

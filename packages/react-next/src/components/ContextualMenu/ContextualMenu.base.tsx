@@ -47,7 +47,7 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget } from '@uifabric/react-hooks';
+import { useTarget, usePrevious } from '@uifabric/react-hooks';
 import { useResponsiveMode } from 'office-ui-fabric-react/lib/utilities/hooks/useResponsiveMode';
 import { ResponsiveMode } from 'office-ui-fabric-react/src/utilities/decorators/withResponsiveMode';
 
@@ -113,6 +113,23 @@ const _getMenuItemStylesFunction = memoizeFunction(
   },
 );
 
+function useVisibility(props: IContextualMenuProps) {
+  const { hidden = false, onMenuDismissed, onMenuOpened } = props;
+  const previousHidden = usePrevious(hidden);
+
+  React.useEffect(() => {
+    // Don't issue dismissed callbacks on initial mount
+    if (hidden && previousHidden !== undefined) {
+      onMenuDismissed?.(props);
+    } else {
+      onMenuOpened?.(props);
+    }
+  }, [hidden]);
+
+  // Issue onDismissedCallback on unmount
+  React.useEffect(() => () => onMenuDismissed?.(props), []);
+}
+
 export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) => {
   const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
@@ -120,6 +137,8 @@ export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) =
   const [targetRef, targetWindowRef] = useTarget(hostElement);
 
   const responsiveMode = useResponsiveMode(hostElement);
+
+  useVisibility(props);
 
   return (
     <ContextualMenuInternal
@@ -152,7 +171,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
   private _shouldUpdateFocusOnMouseEvent: boolean;
   private _gotMouseMove: boolean;
   private _mounted = false;
-  private _focusingPreviousElement: boolean;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
@@ -176,7 +194,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     };
 
     this._id = props.id || getId('ContextualMenu');
-    this._focusingPreviousElement = false;
     this._isScrollIdle = true;
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
     this._gotMouseMove = false;
@@ -206,9 +223,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
         this._onMenuClosed();
       } else {
         this._onMenuOpened();
-        this._previousActiveElement = this.props.hoisted.targetWindowRef.current
-          ? (this.props.hoisted.targetWindowRef.current.document.activeElement as HTMLElement)
-          : undefined;
       }
     }
     if (newProps.delayUpdateFocusOnHover !== this.props.delayUpdateFocusOnHover) {
@@ -220,21 +234,8 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     }
   }
 
-  // Invoked once, both on the client and server, immediately before the initial rendering occurs.
-  public UNSAFE_componentWillMount() {
-    if (!this.props.hidden) {
-      this._previousActiveElement = this.props.hoisted.targetWindowRef.current
-        ? (this.props.hoisted.targetWindowRef.current.document.activeElement as HTMLElement)
-        : undefined;
-    }
-  }
-
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount(): void {
-    if (!this.props.hidden) {
-      this._onMenuOpened();
-    }
-
     this._mounted = true;
   }
 
@@ -429,25 +430,10 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     this._events.on(this.props.hoisted.targetWindowRef.current, 'resize', this.dismiss);
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
     this._gotMouseMove = false;
-    this.props.onMenuOpened && this.props.onMenuOpened(this.props);
   }
 
   private _onMenuClosed() {
     this._events.off(this.props.hoisted.targetWindowRef.current, 'resize', this.dismiss);
-
-    // This is kept for backwards compatability with hidden for right now.
-    // This preserves the way that this behaved in the past
-    // TODO find a better way to handle this by using the same conventions that
-    // Popup uses to determine if focus is contained when dismissal occurs
-    this._tryFocusPreviousActiveElement({
-      containsFocus: this._focusingPreviousElement,
-      originalElement: this._previousActiveElement,
-    });
-    this._focusingPreviousElement = false;
-
-    if (this.props.onMenuDismissed) {
-      this.props.onMenuDismissed(this.props);
-    }
 
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
 
