@@ -6,7 +6,7 @@ module.exports = {
     screener: ['build'],
     lint: ['build'],
     clean: [],
-    test: ['build', '^test'],
+    test: ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
   },
