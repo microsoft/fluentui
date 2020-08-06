@@ -14,8 +14,12 @@ export function useCustomizationSettings(properties: string[], scopeName?: strin
   React.useEffect(() => {
     if (!localSettings.inCustomizerContext) {
       Customizations.observe(forceUpdate);
-      return () => Customizations.unobserve(forceUpdate);
     }
+    return () => {
+      if (!localSettings.inCustomizerContext) {
+        Customizations.unobserve(forceUpdate);
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- exclude forceUpdate
   }, [localSettings.inCustomizerContext]);
 
