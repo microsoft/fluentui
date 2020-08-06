@@ -1,8 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 05 Aug 2020 12:39:43 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.126.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.0)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.125.0..office-ui-fabric-react_v7.126.0)
+
+### Minor changes
+
+- Adding useResponsiveMode hook within office-ui-fabric-react utilities. ([PR #14229](https://github.com/microsoft/fluentui/pull/14229) by czearing@outlook.com)
+
+### Patches
+
+- Add deprecation notices ([PR #13626](https://github.com/microsoft/fluentui/pull/13626) by miclo@microsoft.com)
+- Removing unused default props from TeachingBubbleContent. ([PR #14239](https://github.com/microsoft/fluentui/pull/14239) by czearing@outlook.com)
+- Toggle: fix thumb border width style ([PR #14361](https://github.com/microsoft/fluentui/pull/14361) by ololubek@microsoft.com)
+- Dropdown: Fixing multiselect scenarios not reading out aria-setsize and aria-posinset due to incorrect placement of role=option in Checkbox. ([PR #14367](https://github.com/microsoft/fluentui/pull/14367) by humbertomakotomorimoto@gmail.com)
+- Dropdown: Removing aria-required from multiselect scenarios since it's not allowed for role='button'. ([PR #14369](https://github.com/microsoft/fluentui/pull/14369) by humbertomakotomorimoto@gmail.com)
 
 ## [7.125.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.125.0)
 
