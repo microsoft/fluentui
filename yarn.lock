@@ -15191,10 +15191,10 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@^0.17.3:
-  version "0.17.3"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.17.3.tgz#a5eb36ad841b814147688d84bf3a6a055c24282b"
-  integrity sha512-rlB2pcVMkCEePoKUN6PhHxTJ/8fEghgxARIPMQhENAAUab8MTbBlquTftHjyPDkly6Z/4KMFvGexCy0QQIbDWg==
+lage@^0.17.4:
+  version "0.17.4"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.17.4.tgz#0ac9f467448eb8bea362689844dd5f959e92e93f"
+  integrity sha512-3JVpI2SNFVqgq42wk//OtPBu34VcUmwSy+khgvIUTKVosK7Wy0pacJ/cjW+3O5mxgGBSl9RtveLXFOWz9EpHWw==
   dependencies:
     "@microsoft/task-scheduler" "^2.4.0"
     abort-controller "^3.0.0"
