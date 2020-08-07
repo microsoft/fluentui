@@ -222,7 +222,7 @@ The `getSlots` function takes in a state object and a list of slot keys with the
 In cases where the `as` prop of the slot represents a primitive element tag name, there are some additional behaviors:
 
 - Props will be automatically filtered based on the element type. E.g. `href` will be passed to `a` tag slots, but not `button` slots.
-- The slot will avoid rendering completely if children are undefined. This is to avoid requiring nearly every slot to be wrapped in a conditional to avoid rendering the parent. You can force rendering primitives without children by passing `null` in for the children. (E.g. `{ as: 'input', children: null }).
+- The slot will avoid rendering completely if children are undefined. This is to avoid requiring nearly every slot to be wrapped in a conditional to avoid rendering the parent. You can force rendering primitives without children by passing `null` in for the children. (E.g. `{ as: 'input', children: null }`).
 
 Example:
 
