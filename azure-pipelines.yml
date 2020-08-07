@@ -11,28 +11,23 @@ variables:
 pool: 'Self Host Ubuntu'
 
 jobs:
-  - job: BuildTestLint
-    workspace:
-      clean: all
+  - job: Build
     steps:
       - template: azure-pipelines.tools.yml
+
+      # - template: azure-pipelines.cache.yml
 
       - script: |
           yarn
         displayName: yarn
-
-      - template: .devops/templates/pr-target-branch.yml
 
       - script: |
           yarn checkchange
         displayName: check change
 
       - script: |
-          yarn lage build test lint --verbose --no-cache --grouped
-        displayName: build, test, lint
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+          yarn build
+        displayName: build
 
       - task: ArchiveFiles@2
         inputs:
@@ -62,17 +57,60 @@ jobs:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Trigger Perf-Test and Screener jobs
 
-  - job: ValidateFluent
-    workspace:
-      clean: all
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: Validate
+    dependsOn: Build
+    pool: 'Self Host Ubuntu'
     steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
       - template: azure-pipelines.tools.yml
 
       - script: |
-          yarn
-        displayName: yarn
+          yarn test
+        displayName: test
 
-      - template: .devops/templates/pr-target-branch.yml
+      - script: |
+          yarn lint
+        displayName: lint
+
+      - script: |
+          yarn check-for-changed-files
+        displayName: check for changed files
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: ValidateFluent
+    dependsOn: Build
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
 
       - script: |
           if [ $BUILD_REASON == "PullRequest" ]; then
@@ -83,13 +121,6 @@ jobs:
         displayName: danger
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
-
-      - script: |
-          yarn lage build --since $(target_branch) --scope @fluentui/* --no-deps --verbose --no-cache --grouped
-        displayName: build
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       - script: |
           yarn test:fluentui:e2e
@@ -107,26 +138,30 @@ jobs:
           yarn check-for-changed-files
         displayName: check for changed files
 
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
   - job: Deploy
-    workspace:
-      clean: all
+    dependsOn: Build
     variables:
       PR_DEPLOY: 1
     steps:
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
       - template: azure-pipelines.tools.yml
 
       - script: |
-          yarn
-        displayName: yarn
-
-      - template: .devops/templates/pr-target-branch.yml
-
-      - script: |
-          yarn lage bundle --since $(target_branch) --no-deps --verbose --no-cache --grouped
+          NODE_ENV=production yarn build:fluentui:docs
+          yarn bundle
         displayName: bundle
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       - task: AzureUpload@1
         displayName: Upload PR deploy site
@@ -137,13 +172,21 @@ jobs:
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
   - job: ScreenerFluent
     steps:
-      - template: azure-pipelines.tools.yml
-
       - script: |
           yarn
         displayName: yarn
+
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.tools.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
@@ -160,26 +203,33 @@ jobs:
         condition: always()
 
   - job: Screener
-    workspace:
-      clean: all
+    dependsOn: Build
+    # keeping this at microsoft hosted because this doesn't require builds
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+
+      # - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
       - template: azure-pipelines.tools.yml
-
-      - script: |
-          yarn
-        displayName: yarn
-
-      - template: .devops/templates/pr-target-branch.yml
 
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
           git config --global user.name "Fabric Tactical"
-        displayName: config git user and email
-
-      - script: |
-          yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache --grouped
+          yarn vrtest -- --debug
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
