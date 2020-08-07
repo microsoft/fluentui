@@ -1,8 +1,52 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Aug 2020 12:42:32 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 12:40:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.126.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.1)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.126.0..office-ui-fabric-react_v7.126.1)
+
+### Patches
+
+- Updating Shimmer and Stack to function components. ([PR #13849](https://github.com/microsoft/fluentui/pull/13849) by czearing@outlook.com)
+- Updating Picker, TagPicker, and Selection examples to use function components. ([PR #14156](https://github.com/microsoft/fluentui/pull/14156) by czearing@outlook.com)
+- Spinner: Fix HC styling of spinner componet to show highlight color ([PR #14372](https://github.com/microsoft/fluentui/pull/14372) by ololubek@microsoft.com)
+
+## [7.126.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.0)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.125.0..office-ui-fabric-react_v7.126.0)
+
+### Minor changes
+
+- Adding useResponsiveMode hook within office-ui-fabric-react utilities. ([PR #14229](https://github.com/microsoft/fluentui/pull/14229) by czearing@outlook.com)
+
+### Patches
+
+- Add deprecation notices ([PR #13626](https://github.com/microsoft/fluentui/pull/13626) by miclo@microsoft.com)
+- Removing unused default props from TeachingBubbleContent. ([PR #14239](https://github.com/microsoft/fluentui/pull/14239) by czearing@outlook.com)
+- Toggle: fix thumb border width style ([PR #14361](https://github.com/microsoft/fluentui/pull/14361) by ololubek@microsoft.com)
+- Dropdown: Fixing multiselect scenarios not reading out aria-setsize and aria-posinset due to incorrect placement of role=option in Checkbox. ([PR #14367](https://github.com/microsoft/fluentui/pull/14367) by humbertomakotomorimoto@gmail.com)
+- Dropdown: Removing aria-required from multiselect scenarios since it's not allowed for role='button'. ([PR #14369](https://github.com/microsoft/fluentui/pull/14369) by humbertomakotomorimoto@gmail.com)
+
+## [7.125.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.125.0)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.124.3..office-ui-fabric-react_v7.125.0)
+
+### Minor changes
+
+- Remove all usage of string refs in OUFR ([PR #14342](https://github.com/microsoft/fluentui/pull/14342) by miclo@microsoft.com)
+
+### Patches
+
+- Add focuszone props to GroupedList and change details list to only use a single focus zone ([PR #14283](https://github.com/microsoft/fluentui/pull/14283) by mgodbolt@microsoft.com)
+- Toggle: fix pill HC style when selected ([PR #14316](https://github.com/microsoft/fluentui/pull/14316) by ololubek@microsoft.com)
+- Fix hc hover styling for checked checkbox to make checked state more visible on hover ([PR #14341](https://github.com/microsoft/fluentui/pull/14341) by ololubek@microsoft.com)
+- Remove findDOMNode usage from DragDropHelper ([PR #14348](https://github.com/microsoft/fluentui/pull/14348) by miclo@microsoft.com)
 
 ## [7.124.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.124.3)
 

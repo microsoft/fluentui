@@ -1,8 +1,26 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.7](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.7)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.13.6..@uifabric/date-time_v7.13.7)
+
+### Patches
+
+- Refactor DatePicker as a function component ([PR #14030](https://github.com/microsoft/fluentui/pull/14030) by miclo@microsoft.com)
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.6)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.13.0..@uifabric/date-time_v7.13.6)
+
+### Patches
+
+-   ([PR #14312](https://github.com/microsoft/fluentui/pull/14312) by lorejoh12@gmail.com)
 
 ## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.0)
 

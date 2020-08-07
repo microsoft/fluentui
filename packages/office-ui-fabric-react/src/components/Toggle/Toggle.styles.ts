@@ -182,7 +182,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         backgroundColor: thumbBackground,
         /* Border is added to handle high contrast mode for Firefox */
         borderColor: 'transparent',
-        borderWidth: '.28em',
+        borderWidth: DEFAULT_THUMB_SIZE / 2,
         borderStyle: 'solid',
         boxSizing: 'border-box',
       },

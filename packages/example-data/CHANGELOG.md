@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-data
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 12:40:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-data_v7.1.0)
+
+Thu, 06 Aug 2020 12:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-data_v7.0.18..@uifabric/example-data_v7.1.0)
+
+### Minor changes
+
+- Adding range function. ([PR #13849](https://github.com/microsoft/fluentui/pull/13849) by czearing@outlook.com)
 
 ## [7.0.18](https://github.com/microsoft/fluentui/tree/@uifabric/example-data_v7.0.18)
 

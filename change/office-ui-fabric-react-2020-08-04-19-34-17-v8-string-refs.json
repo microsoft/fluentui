@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Remove all usage of string refs in OUFR",
-  "packageName": "office-ui-fabric-react",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-04T19:34:17.002Z"
-}
