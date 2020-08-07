@@ -84,7 +84,7 @@ storiesOf('ThemeProvider with loadTheme', module)
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.testLoadTheme')
-        .snapshot('theme changed', { cropTo: '.testWrapper' })
+        .snapshot('global theme changed', { cropTo: '.testWrapper' })
         .click('.testLoadTheme') // set default theme back
         .end()}
     >

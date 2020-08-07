@@ -20,8 +20,11 @@ function createCustomizerContext(theme: Theme): ICustomizerContext {
 }
 
 function getTokens(theme: Theme): Tokens | undefined {
-  const { tokens } = theme;
-  return tokens;
+  // TODO: ensure only used tokens are converted before shipping Fluent v8.
+  const { components, schemes, rtl, isInverted, tokens, ...passThroughTokens } = theme;
+  const preparedTokens = { ...passThroughTokens, ...tokens };
+
+  return preparedTokens as Tokens;
 }
 
 /**
