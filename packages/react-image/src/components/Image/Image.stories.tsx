@@ -12,19 +12,24 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
   return <div {...rest} className={horizontal ? classes.hStack : classes.vStack} />;
 };
 
-export const ImageVariations = () => (
-  <Stack horizontal>
-    <Image src="/images/avatar/ade.jpg" height={200} width={200} />
-    <Image circular src="/images/avatar/chris.jpg" height={200} width={200} />
-    <Image rounded src="/images/avatar/laura.jpg" height={200} width={200} />
-  </Stack>
-);
-
-export const ImageAppearance = () => (
-  <Stack horizontal>
-    <Image src="/images/avatar/ade.jpg" height={200} width={200} />
-    <Image bordered src="/images/avatar/ade.jpg" height={200} width={200} />
-  </Stack>
+export const ImageAppearanceVariations = () => (
+  <>
+    <Stack horizontal>
+      <Image alt="Ade's avatar" src="/images/avatar/ade.jpg" height={200} width={200} />
+      <Stack>
+        <Image alt="Chris's avatar" rounded src="/images/avatar/chris.jpg" height={24} width={24} />
+        <Image alt="Chris's avatar" rounded src="/images/avatar/chris.jpg" height={36} width={36} />
+        <Image alt="Chris's avatar" rounded src="/images/avatar/chris.jpg" height={96} width={96} />
+      </Stack>
+      <Image alt="Laura's avatar" circular src="/images/avatar/laura.jpg" height={150} width={150} />
+    </Stack>
+    <Stack horizontal>
+      <Image alt="Ade's avatar" src="/images/avatar/ade.jpg" height={150} width={150} />
+      <Image alt="Chris's avatar" bordered src="/images/avatar/chris.jpg" height={150} width={150} />
+      <Image alt="Laura's avatar" bordered rounded src="/images/avatar/chris.jpg" height={150} width={150} />
+      <Image bordered circular src="/images/avatar/chris.jpg" height={150} width={150} />
+    </Stack>
+  </>
 );
 
 export const ImageLayoutFit = () => (

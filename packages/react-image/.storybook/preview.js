@@ -5,11 +5,14 @@ import { withA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
+import { withThemeProvider, withStrictMode } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
 addDecorator(withA11y());
 addDecorator(withKnobs({ escapeHTML: false }));
+addDecorator(withThemeProvider);
+addDecorator(withStrictMode);
 addParameters({
   a11y: {
     manual: true,
