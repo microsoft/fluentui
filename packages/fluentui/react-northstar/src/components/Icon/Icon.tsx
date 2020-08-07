@@ -219,7 +219,7 @@ const iconPatchedShorthandFactory: ShorthandFactory<IconProps> = (value, options
   }
 
   if (isFluentJSXIcon(value)) {
-    const iconName = toIconNameFromDisplayName(value.type.displayName.replace('Icon', ''));
+    const iconName = toIconNameFromDisplayName(value.type.displayName);
 
     return iconOriginalShorthandFactory({ ...value.props, name: iconName }, options);
   }
