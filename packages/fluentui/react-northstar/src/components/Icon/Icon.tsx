@@ -4,11 +4,25 @@ import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTele
 import { callable } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { createShorthandFactory, UIComponentProps, commonPropTypes, ColorComponentProps, SizeValue } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import {
+  createShorthandFactory,
+  UIComponentProps,
+  commonPropTypes,
+  ColorComponentProps,
+  SizeValue,
+  ShorthandFactory,
+} from '../../utils';
+import {
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  ShorthandValue,
+  WithAsProp,
+  withSafeTypeForAs,
+} from '../../types';
 
 export type IconXSpacing = 'none' | 'before' | 'after' | 'both';
 
@@ -147,7 +161,75 @@ Icon.propTypes = {
 };
 Icon.handledProps = Object.keys(Icon.propTypes) as any;
 
-Icon.create = createShorthandFactory({ Component: Icon, mappedProp: 'name', allowsJSX: false });
+/**
+ * This augmented version of the create method for the Icon should help
+ * with the migration path from the old to the new icons definition.
+ */
+const inconsistentIconNames: Record<string, string> = {
+  AcceptIcon: 'icon-checkmark',
+  ChevronDownMediumIcon: 'icon-menu-arrow-down',
+  ChevronEndMediumIcon: 'icon-menu-arrow-end',
+  CircleIcon: 'icon-circle',
+  CloseIcon: 'icon-close',
+  OneDriveIcon: 'onedrive',
+  OneNoteColorIcon: 'onenote-color',
+  OneNoteIcon: 'onenote',
+  PauseIcon: 'icon-pause',
+  PlayIcon: 'icon-play',
+  PowerPointColorIcon: 'powerpoint-color',
+  PowerPointIcon: 'powerpoint',
+  TriangleDownIcon: 'icon-arrow-down',
+  TriangleEndIcon: 'icon-arrow-end',
+  TriangleUpIcon: 'icon-arrow-up',
+};
+
+function isFluentJSXIcon(value: ShorthandValue<IconProps>): value is React.ReactElement<IconProps, typeof Icon> {
+  return (
+    React.isValidElement(value) &&
+    typeof value.type === 'function' &&
+    (value.type as React.ComponentType).displayName?.indexOf('Icon') !== -1
+  );
+}
+
+function toIconNameFromDisplayName(displayName: string) {
+  return inconsistentIconNames[displayName]
+    ? inconsistentIconNames[displayName]
+    : _.kebabCase(displayName.replace('Icon', ''));
+}
+
+const iconOriginalShorthandFactory = createShorthandFactory({
+  Component: Icon,
+  mappedProp: 'name',
+  allowsJSX: false,
+});
+
+const iconPatchedShorthandFactory: ShorthandFactory<IconProps> = (value, options) => {
+  if (process.env.NODE_ENV === 'development') {
+    if (typeof value === 'string') {
+      console.warn(
+        `Fluent UI: Deprecation notice, please use JSX icon as a value instead of a string, for example replace <Button icon="bell" /> with <Button icon={<BellIcon />} />.`,
+      );
+    }
+
+    if (_.isPlainObject(value)) {
+      if ((value as IconProps).name) {
+        console.warn(
+          `Fluent UI: Deprecation notice, please use JSX icon as a value instead of an object, for example replace <Button icon={{ name: 'bell', outline: true }} /> with <Button icon={<BellIcon outline />} />.`,
+        );
+      }
+    }
+  }
+
+  if (isFluentJSXIcon(value)) {
+    const iconName = toIconNameFromDisplayName(value.type.displayName);
+
+    return iconOriginalShorthandFactory({ ...value.props, name: iconName }, options);
+  }
+
+  return iconOriginalShorthandFactory(value, options);
+};
+
+Icon.create = iconPatchedShorthandFactory;
 
 /**
  * An Icon displays a pictogram with semantic meaning.
