@@ -10,7 +10,7 @@ import { getEdgeChromiumNoHighContrastAdjustSelector } from '@fluentui/react-nex
 const getStackStyles = memoizeFunction(
   (isActive: boolean): Partial<IStackStyles> => ({
     root: {
-      border: `2px solid ${isActive ? '#ababab' : 'transparent'}`,
+      border: `2px solid ${isActive ? '#ababab' : 'Window'}`,
       padding: 10,
       selectors: {
         '*': {

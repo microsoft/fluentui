@@ -13,7 +13,7 @@ import { getEdgeChromiumNoHighContrastAdjustSelector } from '@fluentui/react-nex
 const getStackStyles = memoizeFunction(
   (useTrapZone: boolean): Partial<IStackStyles> => ({
     root: {
-      border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`,
+      border: `2px solid ${useTrapZone ? '#ababab' : 'Window'}`,
       padding: 10,
       selectors: {
         '*': {
