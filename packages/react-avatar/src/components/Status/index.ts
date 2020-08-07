@@ -1,3 +1,3 @@
 export * from './Status.types';
-export * from './Status.base';
+export * from './useStatus';
 export * from './Status';

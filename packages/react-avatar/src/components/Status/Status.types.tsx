@@ -1,5 +1,4 @@
 import { ComponentProps, ShorthandValue, SizeValue } from '../utils/commonTypes';
-import { ComposeOptions, ComposeStandardStatics } from '../utils/compose';
 
 // tslint:disable-next-line:no-any
 export interface StatusProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -24,13 +23,4 @@ export interface StatusProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';
 }
 
-export interface StatusSlots {
-  icon: React.ElementType;
-}
-
-export type StatusSlotProps = {
-  [key in keyof StatusSlots]: StatusProps[key];
-};
-
-export interface StatusOptions
-  extends ComposeOptions<StatusProps, StatusSlots, StatusSlotProps, ComposeStandardStatics> {}
+export type StatusState = StatusProps;

@@ -88,18 +88,18 @@ export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement>
 }
 
 // @public
-export type TokenSetType = string | {
-    [key: string]: TokenSetType | undefined;
+export type TokenSetType = {
+    [key: string]: string | TokenSetType | undefined;
 };
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: {
-    [key: string]: string | {
-        [key: string]: string | any | undefined;
-    } | undefined;
-} | undefined, prefix?: string | undefined, style?: {
-    [key: string]: string | number | undefined;
-}) => import("react").CSSProperties;
+export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: import("react").CSSProperties | undefined) => import("react").CSSProperties;
+
+// @public
+export const useInlineTokens: (draftState: {
+    style?: import("react").CSSProperties | undefined;
+    tokens?: TokenSetType | undefined;
+}, prefix: string) => void;
 
 // @public
 export const useTheme: () => Theme;

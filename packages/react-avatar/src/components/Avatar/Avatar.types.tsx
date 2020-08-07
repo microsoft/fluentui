@@ -1,6 +1,5 @@
 import { StatusProps } from '../Status/index';
 import { ComponentProps, ShorthandValue } from '../utils/commonTypes';
-import { ComposeOptions, ComposeStandardStatics } from '../utils/compose';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
@@ -30,15 +29,4 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   classes?: { [key: string]: string };
 }
 
-export interface AvatarSlots {
-  image: React.ElementType;
-  label: React.ElementType;
-  status: React.ElementType;
-}
-
-export type AvatarSlotProps = {
-  [key in keyof AvatarSlots]: AvatarProps[key];
-};
-
-export interface AvatarOptions
-  extends ComposeOptions<AvatarProps, AvatarSlots, AvatarSlotProps, ComposeStandardStatics> {}
+export type AvatarState = AvatarProps;

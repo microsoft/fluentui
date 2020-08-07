@@ -32,9 +32,9 @@ module.exports = ({ config }) => {
     enforce: 'pre',
     exclude: [/node_modules/],
     use: [
-      // {
-      //   loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
-      // },
+      {
+        loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
+      },
       {
         loader: 'css-loader', // translates CSS into CommonJS
         options: {

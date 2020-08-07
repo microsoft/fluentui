@@ -9,8 +9,10 @@
   --avatarSizeLargest: 96px;
   --avatarBorderColor: transparent;
   --avatarBorderWidth: 0;
+  --avatarBorderRadius: 9999px;
+
   --squareAvatarBorderRadius: 3px;
-  --statusBorderColor: var(--bodyBackground, white);
+  --statusBorderColor: transparent;
   --statusBorderWidth: 2px;
   --avatarFill: rgb(232, 232, 232);
 }
@@ -29,15 +31,11 @@
 // Image slot
 .image {
   position: absolute;
+  border-radius: var(--avatarBorderRadius);
   top: 0;
   left: 0;
   width: var(--avatarSize, var(--avatarSizeMedium));
   height: var(--avatarSize, var(--avatarSizeMedium));
-  border-radius: 99999px;
-
-  border-style: solid;
-  border-color: var(--avatarBorderColor);
-  border-width: var(--avatarBorderWidth);
   height: 100%;
   object-fit: cover;
   vertical-align: top;
@@ -69,38 +67,38 @@
 }
 
 // Root modifier when props.size_ smallest
-.size_smallest {
+._size_smallest {
   --avatarSize: var(--avatarSizeSmallest);
 }
 
 // Root modifier when props.size_ smaller
-.size_smaller {
+._size_smaller {
   --avatarSize: var(--avatarSizeSmaller);
 }
 
 // Root modifier when props.size_ small
-.size_small {
+._size_small {
   --avatarSize: var(--avatarSizeSmall);
 }
 
 // Root modifier when props.size_ large
-.size_large {
+._size_large {
   --avatarSize: var(--avatarSizeLarge);
 }
 
 // Root modifier when props.size_ larger
 // larger-abc123
-.size_larger {
+._size_larger {
   --avatarSize: var(--avatarSizeLarger);
 }
 
 // Root modifier when props.size_ largest
-.size_largest {
+._size_largest {
   --avatarSize: var(--avatarSizeLargest);
 }
 
 // Modifiers
-.square {
+._square {
   .image {
     border-radius: var(--squareAvatarBorderRadius);
   }

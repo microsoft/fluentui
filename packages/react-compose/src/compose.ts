@@ -39,11 +39,6 @@ function compose<
     Component.defaultProps = (input as InputComposeComponent).defaultProps;
   }
 
-  if (inputOptions.stylesheet) {
-    // tslint:disable-next-line:no-any
-    (Component as any).stylesheets = composeOptions.stylesheets;
-  }
-
   ((Component as unknown) as ComposedComponent).fluentComposeConfig = composeOptions;
 
   return Component;

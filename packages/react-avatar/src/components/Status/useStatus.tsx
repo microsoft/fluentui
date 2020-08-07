@@ -1,11 +1,34 @@
-import { StatusProps, StatusSlots, StatusSlotProps } from './Status.types';
-import { mergeProps } from '../utils/mergeProps';
-import { ComposePreparedOptions } from '@fluentui/react-compose';
+import * as React from 'react';
+import { StatusProps, StatusState } from './Status.types';
+import { getSlots, resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
-/**
- * The useStatus hook processes the status component props and returns
- * state, slots, and slotProps for consumption by the component.
- * @param props
- */
-export const useStatus = (props: StatusProps, options: ComposePreparedOptions) =>
-  mergeProps<StatusProps, StatusSlots, StatusSlotProps>(props, options, options.resolveSlotProps(props));
+export const statusShorthandProps: (keyof StatusProps)[] = ['icon'];
+
+export const renderStatus = (state: StatusState) => {
+  const { slots, slotProps } = getSlots(state, statusShorthandProps);
+
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.icon {...slotProps.icon} />
+    </slots.root>
+  );
+};
+
+export const useStatus = (props: StatusProps, ref: React.Ref<HTMLElement>, defaultProps?: StatusProps) => {
+  const state = mergeProps(
+    {
+      as: 'span',
+      ref: useMergedRefs(ref, React.useRef()),
+      icon: { as: 'span' },
+    },
+    defaultProps,
+    resolveShorthandProps(props, statusShorthandProps),
+    {
+      state: props.state || props.children, // Treat children as state fallback
+      children: undefined,
+    },
+  );
+
+  return { state, render: renderStatus };
+};
