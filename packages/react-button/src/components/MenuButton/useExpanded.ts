@@ -72,9 +72,7 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
     ...draftState.menu,
     target: rootRef,
     onDismiss: React.useCallback(() => {
-      if (onMenuDismiss) {
-        onMenuDismiss();
-      }
+      onMenuDismiss?.();
 
       setExpandedValue(false);
 

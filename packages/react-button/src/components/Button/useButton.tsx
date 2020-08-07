@@ -32,7 +32,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
   const state = mergeProps(
     {
       ref,
-      as: props.href ? 'a' : 'button',
+      as: 'button',
       icon: { as: 'span' },
       children: { as: 'span' },
       loader: { as: 'span' },
