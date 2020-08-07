@@ -17,10 +17,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
+
+### Features
+- Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
+- Add base `Skeleton` component @assuncaocharles ([#14354](https://github.com/microsoft/fluentui/pull/14354))
+
+### Documentation
+- Add undo and redo feature to UI builder @vyhnalekl ([#14336](https://github.com/microsoft/fluentui/pull/14336))
+
+<!--------------------------------[ v0.51.0 ]------------------------------- -->
+## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
+[Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.50.0..@fluentui/react-northstar_v0.51.0)
+
 ## BREAKING CHANGES
 - Restricted prop sets in the `Grid` component which are passed to styles functions @layershifter ([#13863](https://github.com/microsoft/fluentui/pull/13863))
 - Restricted prop sets in the `Dropdown` component which are passed to styles functions @layershifter ([#13962](https://github.com/microsoft/fluentui/pull/13962))
 - `UIComponent` and `AutoControlledComponent` are removed @layershifter ([#13962](https://github.com/microsoft/fluentui/pull/13962))
+- Set `Dropdown` to only stop `ESC` keydown propagation if `Dropdown` is open @assuncaocharles ([#14184](https://github.com/microsoft/fluentui/pull/14184))
 
 ### Fixes
 - Fix `Tooltip` layouting when it is closed @fealkhou ([#13237](https://github.com/microsoft/fluentui/pull/13237))
@@ -41,6 +56,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix an issue with throwing errors when a component is rendered outside of `Provider` @layershifter ([#14010](https://github.com/microsoft/fluentui/pull/14010))
 - Fix for `TeamsIcon`. Renamed current `TeamsIcon` to `ContactGroupIcon`. `TeamsIcon` is now the colored app icon as per current naming standards for other icons in project. @TanelVari ([#13966](https://github.com/microsoft/fluentui/pull/13966))
 - Fix memory leak in `FocusZone` @miroslavstastny ([#14031](https://github.com/microsoft/fluentui/pull/14031))
+- Fix `Popup` with `on="hover"` and controled close inside the content @assuncaocharles ([#14179](https://github.com/microsoft/fluentui/pull/14179))
+- Fix Timestamp in `Text` to match Teams redlines @notandrew ([#14153](https://github.com/microsoft/fluentui/pull/14153))
 
 ### Features
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))
@@ -49,6 +66,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `Datepicker` and `DatepickerCalendar` @rymeskar ([#13855](https://github.com/microsoft/fluentui/pull/13855))
 - Add `label` and `labelPosition` to `Input` to allow `inside` label variation @assuncaocharles ([#13949](https://github.com/microsoft/fluentui/pull/13949))
 - Add `HeadsetIcon` @PressX2Jason ([#12956](https://github.com/microsoft/fluentui/pull/12956))
+- Add navigation and shorthands for `Datepicker` @pompompon ([#14061](https://github.com/microsoft/fluentui/pull/14061))
 
 ### Documentation
 - Fix required version of CSB package, improve dependency generation for exported CodeSandboxes @layershifter ([#13637](https://github.com/microsoft/fluentui/pull/13637))

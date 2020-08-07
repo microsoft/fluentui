@@ -1,8 +1,44 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.16](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.16)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.15..@uifabric/fabric-website_v7.13.16)
+
+### Patches
+
+- Simplify query params for dev and strict mode testing ([PR #14347](https://github.com/microsoft/fluentui/pull/14347) by elcraig@microsoft.com)
+
+## [7.13.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.15)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.6..@uifabric/fabric-website_v7.13.15)
+
+### Patches
+
+- Add query param to test with React.StrictMode ([PR #14327](https://github.com/microsoft/fluentui/pull/14327) by elcraig@microsoft.com)
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.6)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.4..@uifabric/fabric-website_v7.13.6)
+
+### Patches
+
+- add aria label to searchbox ([PR #14118](https://github.com/microsoft/fluentui/pull/14118) by mgodbolt@microsoft.com)
+
+## [7.13.4](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.4)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.2..@uifabric/fabric-website_v7.13.4)
+
+### Patches
+
+- Hiding an unexpected link shown in the footer of the website. ([PR #14092](https://github.com/microsoft/fluentui/pull/14092) by dzearing@hotmail.com)
 
 ## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.0)
 

@@ -1,8 +1,57 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 13 Jul 2020 23:14:39 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.7](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.7)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.13.6..@uifabric/date-time_v7.13.7)
+
+### Patches
+
+- Refactor DatePicker as a function component ([PR #14030](https://github.com/microsoft/fluentui/pull/14030) by miclo@microsoft.com)
+
+## [7.13.6](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.6)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.13.0..@uifabric/date-time_v7.13.6)
+
+### Patches
+
+-   ([PR #14312](https://github.com/microsoft/fluentui/pull/14312) by lorejoh12@gmail.com)
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.13.0)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.12.0..@uifabric/date-time_v7.13.0)
+
+### Minor changes
+
+- adding ability to mark calendar days with a callback function ([PR #14074](https://github.com/microsoft/fluentui/pull/14074) by lorejoh12@gmail.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.12.0)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.11.5..@uifabric/date-time_v7.12.0)
+
+### Minor changes
+
+- fix next and previous month/week aria labels in weekly day picker, export new default strings ([PR #14073](https://github.com/microsoft/fluentui/pull/14073) by lorejoh12@gmail.com)
+
+### Patches
+
+- Fix "rules of hooks" lint rule violations ([PR #14098](https://github.com/microsoft/fluentui/pull/14098) by elcraig@microsoft.com)
+
+## [7.11.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.11.2)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.11.0..@uifabric/date-time_v7.11.2)
+
+### Patches
+
+- adding accessibility fixes for alt+tab to datepicker, turn button -> div if not clickable, and high contrast color selectors ([PR #14032](https://github.com/microsoft/fluentui/pull/14032) by lorejoh12@gmail.com)
 
 ## [7.11.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.11.0)
 

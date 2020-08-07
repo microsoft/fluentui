@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { warnMutuallyExclusive, FocusRects } from '../../Utilities';
+import { FocusRects } from '../../Utilities';
 import { ISliderProps } from './Slider.types';
 import { Label } from '../../Label';
 import { useSlider } from './useSlider';
+import { useWarnings } from '@uifabric/react-hooks';
 
 const COMPONENT_NAME = 'SliderBase';
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
@@ -12,9 +13,13 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
 
   const slotProps = useSlider(props, ref);
 
-  warnMutuallyExclusive(COMPONENT_NAME, props, {
-    value: 'defaultValue',
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      mutuallyExclusive: { value: 'defaultValue' },
+    });
+  }
 
   return (
     <div {...slotProps.root}>

@@ -50,7 +50,9 @@ export const CommandBarPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarOverview.md'),
-  bestPractices: '',
+  bestPractices: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md'),
   isHeaderVisible: true,

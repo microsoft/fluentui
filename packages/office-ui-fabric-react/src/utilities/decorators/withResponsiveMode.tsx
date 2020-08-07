@@ -50,6 +50,10 @@ export function initializeResponsiveMode(element?: HTMLElement): void {
   }
 }
 
+export function getInitialResponsiveMode() {
+  return _defaultMode || _lastMode || ResponsiveMode.large;
+}
+
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
@@ -62,7 +66,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
-        responsiveMode: _defaultMode || _lastMode || ResponsiveMode.large,
+        responsiveMode: getInitialResponsiveMode(),
       };
     }
 
@@ -102,7 +106,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   return hoistStatics(ComposedComponent, resultClass);
 }
 
-function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
+export function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
   let responsiveMode = ResponsiveMode.small;
 
   if (currentWindow) {
@@ -112,7 +116,7 @@ function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
       }
     } catch (e) {
       // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
-      responsiveMode = _defaultMode || _lastMode || ResponsiveMode.large;
+      responsiveMode = getInitialResponsiveMode();
     }
 
     // Tracking last mode just gives us a better default in future renders,

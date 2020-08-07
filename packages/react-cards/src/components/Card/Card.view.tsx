@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { withSlots, getSlots } from '@uifabric/foundation';
 import { getNativeProps, htmlElementProperties, warn, KeyCodes } from '@uifabric/utilities';
-import { Stack, IStackComponent } from 'office-ui-fabric-react';
+import { Stack, IStackComponent } from 'office-ui-fabric-react/lib/Stack';
 
 import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
 import { CardItem } from './CardItem/CardItem';

@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-image",
+  "entries": [
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@fluentui/react-image_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat: add @fluentui/react-image",
+            "author": "olfedias@microsoft.com",
+            "commit": "9c9ef94404e37645e271d920eb3c715b6adc0f3e",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    }
+  ]
+}

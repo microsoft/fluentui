@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { mergeSlotProp } from '@fluentui/react-compose';
-import { useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
+import { useControllableValue, useId, useMergedRefs, useWarnings } from '@uifabric/react-hooks';
 import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
-import { useFocusRects, warnMutuallyExclusive } from '../../Utilities';
+import { useFocusRects } from '../../Utilities';
 
 export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>): ICheckboxState => {
   const {
@@ -84,13 +84,14 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
 
 function useDebugWarning(props: ICheckboxProps) {
   if (process.env.NODE_ENV !== 'production') {
-    // This is a build-time conditional that will be constant at runtime
-    React.useEffect(() => {
-      warnMutuallyExclusive('Checkbox', props, {
+    useWarnings({
+      name: 'Checkbox',
+      props,
+      mutuallyExclusive: {
         checked: 'defaultChecked',
         indeterminate: 'defaultIndeterminate',
-      });
-    }, []);
+      },
+    });
   }
 }
 
