@@ -76,13 +76,13 @@ const cacheNonCi: (...args: Parameters<typeof cache>) => NodeJS.ReadWriteStream 
   process.env.TF_BUILD ? task : cache(task, options);
 
 task('build:docs:component-info', () =>
-  src(componentsSrc, { since: lastRun('build:docs:component-info') })
+  src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
     .pipe(
       cacheNonCi(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
         name: 'componentInfo-2.3',
       }),
     )
-    .pipe(dest(paths.docsSrc('componentInfo'))),
+    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() })),
 );
 
 task('build:docs:component-menu', () =>
