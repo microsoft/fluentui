@@ -13,11 +13,11 @@ export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    */
   inline?: boolean;
   /**
-   * Defines whether the content inside of `Flex` wraps when trying to extend beyond its boundaries.
+   * Sets vertical flow direction.
    */
   column?: boolean;
   /**
-   * Sets vertical flow direction.
+   * Defines whether the content inside of `Flex` wraps when trying to extend beyond its boundaries.
    */
   wrap?: boolean;
   /**
