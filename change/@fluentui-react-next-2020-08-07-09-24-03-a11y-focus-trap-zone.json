@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "update HC focus trap zone examples to hide and show border on toggle",
+  "packageName": "@fluentui/react-next",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-07T16:24:03.141Z"
+}
