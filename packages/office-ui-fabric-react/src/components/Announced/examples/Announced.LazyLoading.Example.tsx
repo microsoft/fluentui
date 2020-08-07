@@ -67,7 +67,7 @@ export const AnnouncedLazyLoadingExample = () => {
           toggleLoading();
           return t;
         });
-      }, 500);
+      }, 1000);
 
       const announceIntervalId = setInterval(() => {
         setTimeSinceLastAnnounce(timeSinceLastAnnounce => {
