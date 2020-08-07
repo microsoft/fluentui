@@ -9,6 +9,11 @@ const Variations = () => (
       description="A Skeleton can have different animations"
       examplePath="components/Skeleton/Variations/SkeletonExampleAnimations"
     />
+    <ComponentExample
+      title="Components"
+      description="There's different components' skeleton boilerplate"
+      examplePath="components/Skeleton/Variations/SkeletonExampleComponents"
+    />
   </ExampleSection>
 );
 
