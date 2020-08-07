@@ -21,6 +21,9 @@
     "react-dom": "16.8.6",
     "react-router-dom": "^5.2.0"
   },
+  "devDependencies": {
+    "typescript": "3.7.2"
+  },
   "publishConfig": {
     "access": "public"
   },

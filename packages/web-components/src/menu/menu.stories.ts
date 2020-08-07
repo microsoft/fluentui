@@ -1,12 +1,12 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
-import { FASTMenuItem } from '../menu-item';
+import { FluentDesignSystemProvider } from '../design-system-provider';
+import { FluentMenuItem } from '../menu-item';
 import MenuTemplate from './fixtures/menu.html';
-import { FASTMenu } from '.';
+import { FluentMenu } from '.';
 
 // Prevent tree-shaking
-FASTMenu;
-FASTMenuItem;
-FASTDesignSystemProvider;
+FluentMenu;
+FluentMenuItem;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Menu',

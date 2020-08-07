@@ -2,6 +2,36 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 12:40:48 GMT",
+      "tag": "@uifabric/utilities_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6ba23f1b86ab544afc2a7ff97a815a291ee17f8b",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/utilities_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "omit: changed to for in for more perf improvement.",
+            "author": "dzearing@microsoft.com",
+            "commit": "2525478b18ee3fd3a66063d3fda329ee0d7b8a55",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Aug 2020 12:45:42 GMT",
       "tag": "@uifabric/utilities_v7.25.0",
       "version": "7.25.0",

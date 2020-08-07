@@ -7,8 +7,9 @@ import * as React from 'react';
 export type GenericDictionary = Record<string, any>;
 
 /**
- * Generic set of module to class name map.
+ * Class dictionary.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ClassDictionary = Record<string, string>;
 
 export interface ComponentProps extends GenericDictionary {

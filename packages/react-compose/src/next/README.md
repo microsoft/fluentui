@@ -175,17 +175,27 @@ Fluent UI components almost always contain sub parts, and these sub parts should
 />
 ```
 
+<<<<<<< HEAD
 Supporting shorthand input requires some helpers:
 
-1. A helper `resolveShorthandProps` to simplify the user's input into an object for props merging
-2. The `getSlots` helper to parse the slots out
+1. # A helper `resolveShorthandProps` to simplify the user's input into an object for props merging
+
+   Supporting this dynamic props input requires some helpers:
+
+1. A helper `simplifyShorthand` to simplify the user's input into an object for props merging
+   > > > > > > > 833eec673044be946959cdba77bf6f43aa487f8f
+1. The `getSlots` helper to parse the slots out
 
 Here's how this looks:
 
 The factory function, which deep clones the props, would need to simplify the shorthand first:
 
 ```jsx
+<<<<<<< HEAD
 const useButton = (userProps, ref, defaultProps) => {
+=======
+const createButton = (userProps, ref, defaultProps) => {
+>>>>>>> 833eec673044be946959cdba77bf6f43aa487f8f
   const state = mergeProps(
     {
       // default props
@@ -194,11 +204,19 @@ const useButton = (userProps, ref, defaultProps) => {
       icon: { as: 'span' },
     },
     defaultProps, // optional default props from the caller
+<<<<<<< HEAD
     resolveShorthandProps(userProps, ['icon']), // simplify the user's props
   );
 
   // Apply button behaviors.
   useButtonState(state);
+=======
+    simplifyShorthand(userProps, ['icon']), // simplify the user's props
+  );
+
+  // Apply button behaviors.
+  useButton(state);
+>>>>>>> 833eec673044be946959cdba77bf6f43aa487f8f
 
   return { state, render };
 };
@@ -258,7 +276,15 @@ const Button = props => {
 };
 ```
 
+<<<<<<< HEAD
+
 ### resolveShorthandProps<TState>(state: TState, slotNames: (keyof TState)[]): TState
+
+=======
+
+### simplifyShorthand<TState>(state: TState, slotNames: (keyof TState)[]): TState
+
+> > > > > > > 833eec673044be946959cdba77bf6f43aa487f8f
 
 Ensures that the given slots are represented using object syntax. This ensures that
 the object can be merged along with other objects.
@@ -266,7 +292,11 @@ the object can be merged along with other objects.
 Example:
 
 ```jsx
+<<<<<<< HEAD
 const foo = resolveShorthandProps(
+=======
+const foo = simplifyShorthand(
+>>>>>>> 833eec673044be946959cdba77bf6f43aa487f8f
   { a: <JSX/>, b: 'string', c: { ... }, d: 'unchanged' },
   [ 'a', 'b', 'c' ]
 );

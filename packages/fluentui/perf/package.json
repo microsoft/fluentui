@@ -17,6 +17,9 @@
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
+  "devDependencies": {
+    "typescript": "3.7.2"
+  },
   "publishConfig": {
     "access": "public"
   },

@@ -7,13 +7,13 @@
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/date-time-utilities": "^7.3.1",
+    "@fluentui/date-time-utilities": "^7.4.0",
     "@fluentui/keyboard-key": "^0.2.8",
     "@fluentui/react-bindings": "^0.51.0",
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-component-nesting-registry": "^0.51.0",
     "@fluentui/react-component-ref": "^0.51.0",
-    "@fluentui/react-compose": "^0.12.7",
+    "@fluentui/react-compose": "^0.13.0",
     "@fluentui/react-context-selector": "^0.51.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar-styles-renderer": "^0.51.0",
@@ -51,7 +51,8 @@
     "qs": "^6.8.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "simulant": "^0.2.2"
+    "simulant": "^0.2.2",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"

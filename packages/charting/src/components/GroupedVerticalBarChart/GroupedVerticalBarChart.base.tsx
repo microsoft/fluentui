@@ -106,8 +106,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   }
 
   public componentDidMount(): void {
-    this._fitParentContainer();
-    this._drawGraph();
+    this._fitParentContainer(true);
   }
 
   public componentWillUnmount(): void {
@@ -223,7 +222,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._barWidth = this.props.barwidth!;
   }
 
-  private _fitParentContainer(): void {
+  private _fitParentContainer(calledFromDidMount?: boolean): void {
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
       const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
@@ -240,10 +239,17 @@ export class GroupedVerticalBarChartBase extends React.Component<
       const shouldResize =
         containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
       if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
+        this.setState(
+          {
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - legendContainerHeight,
+          },
+          () => {
+            if (calledFromDidMount) {
+              this._drawGraph();
+            }
+          },
+        );
       }
     });
   }

@@ -5,9 +5,9 @@ import { nullRender } from './nullRender';
 describe('getSlots', () => {
   const Foo = (props: { id?: string }) => <div />;
 
-  it('returns nullRender for root if the as prop is not provided', () => {
+  it('returns div for root if the as prop is not provided', () => {
     expect(getSlots({})).toEqual({
-      slots: { root: nullRender },
+      slots: { root: 'div' },
       slotProps: { root: {} },
     });
   });

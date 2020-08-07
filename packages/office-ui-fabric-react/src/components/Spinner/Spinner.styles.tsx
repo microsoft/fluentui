@@ -1,5 +1,11 @@
 import { ISpinnerStyleProps, ISpinnerStyles, SpinnerSize } from './Spinner.types';
-import { hiddenContentStyle, keyframes, HighContrastSelector, getGlobalClassNames } from '../../Styling';
+import {
+  hiddenContentStyle,
+  keyframes,
+  HighContrastSelector,
+  getGlobalClassNames,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -61,6 +67,7 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
           [HighContrastSelector]: {
             borderTopColor: 'Highlight',
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       size === SpinnerSize.xSmall && [
