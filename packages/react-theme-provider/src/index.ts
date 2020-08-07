@@ -5,5 +5,6 @@ export { useTheme } from './useTheme';
 export * from './types';
 export * from './getStyleFromPropsAndOptions';
 export * from './mergeThemes';
+export * from './createTheme';
 export * from './tokensToStyleObject';
 export * from './useInlineTokens';

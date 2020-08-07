@@ -9,13 +9,6 @@ import { mergeThemes } from './mergeThemes';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
 
-function convertThemeToTokens(theme: Theme): Tokens {
-  const { components, schemes, rtl, isInverted, tokens, ...passThroughTokens } = theme;
-  const preparedTokens = { ...passThroughTokens, ...tokens };
-
-  return (preparedTokens as unknown) as Tokens;
-}
-
 function createCustomizerContext(theme: Theme): ICustomizerContext {
   return {
     customizations: {
@@ -25,6 +18,12 @@ function createCustomizerContext(theme: Theme): ICustomizerContext {
     },
   };
 }
+
+function getTokens(theme: Theme): Tokens | undefined {
+  const { tokens } = theme;
+  return tokens;
+}
+
 /**
  * Props for the ThemeProvider component.
  */
@@ -51,7 +50,7 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
 
     // Generate the inline style object only when merged theme mutates.
     const inlineStyle = React.useMemo<React.CSSProperties>(
-      () => tokensToStyleObject(convertThemeToTokens(fullTheme), undefined, { ...style }),
+      () => tokensToStyleObject(getTokens(fullTheme), undefined, { ...style }),
       [fullTheme, style],
     );
 

@@ -3,20 +3,28 @@ import { useCustomizationSettings } from '@uifabric/utilities';
 import { ITheme } from '@uifabric/styling';
 import { ThemeContext } from './ThemeContext';
 import { Theme } from './types';
+import { createDefaultTheme } from './createDefaultTheme';
 
 /**
  * React hook for programatically accessing the theme.
  */
 export const useTheme = (): Theme => {
-  const contextualTheme = useContext(ThemeContext);
-  const globalTheme = useGlobalTheme();
-  if (contextualTheme) {
-    return contextualTheme;
+  const theme = useContext(ThemeContext);
+  const legacyTheme = useLegacyTheme();
+  if (theme) {
+    return theme;
   }
 
-  return globalTheme;
+  if (legacyTheme) {
+    return legacyTheme;
+  }
+
+  return createDefaultTheme();
 };
 
-function useGlobalTheme(): ITheme {
+/**
+ * Get theme from CustomizerContext or Customizations singleton.
+ */
+function useLegacyTheme(): ITheme {
   return useCustomizationSettings(['theme']).theme;
 }

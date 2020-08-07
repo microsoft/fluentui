@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
+import { IPartialTheme } from '@uifabric/styling';
 
 /**
  * A baseline set of color plates.
@@ -76,7 +76,7 @@ export type Tokens = {
   [key: string]: TokenSetType;
 };
 
-export interface Theme extends ITheme {
+export interface Theme extends IPartialTheme {
   components?: {
     [componentName: string]: {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

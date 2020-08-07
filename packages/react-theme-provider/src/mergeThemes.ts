@@ -2,14 +2,14 @@ import { PartialTheme, Theme } from './types';
 import { merge } from '@uifabric/utilities';
 
 /**
- * Merges all themes on top of a blank initial theme and ensures the theme is fully qualified.
+ * Merges multiple themes.
  */
-export const mergeThemes = (...themes: (undefined | PartialTheme | Theme)[]): Theme => {
+export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult {
   const partialTheme = merge<PartialTheme | Theme>({}, ...themes);
 
   // Correctly merge stylesheets array
   partialTheme.stylesheets = [];
   themes.forEach(theme => theme && theme.stylesheets && partialTheme.stylesheets?.push(...theme.stylesheets));
 
-  return partialTheme as Theme;
-};
+  return partialTheme as TResult;
+}

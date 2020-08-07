@@ -1,7 +1,7 @@
 import { Theme } from './types';
-import { getTheme } from '@uifabric/styling';
+import { createTheme } from '@uifabric/styling';
 
 /**
  * Creates a blank initial theme.
  */
-export const createDefaultTheme = (): Theme => getTheme();
+export const createDefaultTheme = (): Theme => createTheme({});

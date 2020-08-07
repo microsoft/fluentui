@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { loadTheme, createTheme } from 'office-ui-fabric-react';
+import { loadTheme, createTheme, Customizer } from 'office-ui-fabric-react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { FabricDecorator } from '../utilities';
@@ -63,7 +63,9 @@ const LoadThemeTestButton: React.FunctionComponent<{}> = props => {
       loadTheme(createTheme({}));
       setIsThemeCustomized(false);
     } else {
-      loadTheme({ semanticColors: { primaryButtonBackground: '#000' } });
+      loadTheme({
+        semanticColors: { primaryButtonBackground: '#000', primaryButtonBackgroundHovered: '#000' },
+      });
       setIsThemeCustomized(true);
     }
   };
@@ -75,14 +77,14 @@ const LoadThemeTestButton: React.FunctionComponent<{}> = props => {
   );
 };
 
-storiesOf('loadTheme', module)
+storiesOf('ThemeProvider with loadTheme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.testLoadTheme')
-        .snapshot('loadTheme', { cropTo: '.testWrapper' })
+        .snapshot('theme changed', { cropTo: '.testWrapper' })
         .click('.testLoadTheme') // set default theme back
         .end()}
     >
@@ -91,9 +93,68 @@ storiesOf('loadTheme', module)
   ))
   .addStory('Use contextual theme over global theme if defined', () => (
     <ThemeProvider>
-      <LoadThemeTestButton>Customized contextual theme</LoadThemeTestButton>
+      <LoadThemeTestButton>Customized contextual theme 1</LoadThemeTestButton>
+      <ThemeProvider theme={{ semanticColors: { primaryButtonText: 'yellow' } }}>
+        <PrimaryButton>Customized contextual theme 2</PrimaryButton>
+      </ThemeProvider>
+
+      <ThemeProvider
+        theme={{ semanticColors: { primaryButtonBackground: '#FFF', primaryButtonText: 'green' } }}
+      >
+        <PrimaryButton>Customized contextual theme 3</PrimaryButton>
+      </ThemeProvider>
     </ThemeProvider>
   ))
   .addStory('Use updated global theme', () => (
     <LoadThemeTestButton>Customized global theme</LoadThemeTestButton>
+  ));
+
+storiesOf('ThemeProvider with Customizer', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
+  .addStory('Customizer wraps ThemeProvider', () => (
+    <Customizer
+      settings={{
+        theme: createTheme({
+          semanticColors: { primaryButtonBackground: '#FFF', primaryButtonText: 'red' },
+        }),
+      }}
+    >
+      <PrimaryButton>Customized by Customizer</PrimaryButton>
+
+      <ThemeProvider
+        theme={{
+          semanticColors: {
+            primaryButtonBackground: '#000',
+          },
+        }}
+      >
+        <PrimaryButton>Customized by ThemeProvider</PrimaryButton>
+      </ThemeProvider>
+    </Customizer>
+  ))
+  .addStory('ThemeProvider wraps Customizer', () => (
+    <ThemeProvider
+      theme={{
+        semanticColors: {
+          primaryButtonBackground: '#FFF',
+          primaryButtonText: 'red',
+        },
+      }}
+    >
+      <PrimaryButton>Customized by ThemeProvider</PrimaryButton>
+      <Customizer
+        settings={{
+          theme: createTheme({
+            semanticColors: { primaryButtonBackground: '#000' },
+          }),
+        }}
+      >
+        <PrimaryButton>Customized by Customizer</PrimaryButton>
+      </Customizer>
+    </ThemeProvider>
   ));

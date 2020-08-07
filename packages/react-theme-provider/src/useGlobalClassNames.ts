@@ -1,4 +1,4 @@
-import { getGlobalClassNames, GlobalClassNames } from '@uifabric/styling';
+import { getGlobalClassNames, GlobalClassNames, ITheme } from '@uifabric/styling';
 import { useTheme } from './useTheme';
 
 /**
@@ -7,5 +7,5 @@ import { useTheme } from './useTheme';
 export function useGlobalClassNames<T>(classNames: GlobalClassNames<T>): GlobalClassNames<T> {
   const theme = useTheme();
 
-  return getGlobalClassNames(classNames, theme);
+  return getGlobalClassNames(classNames, theme as ITheme);
 }
