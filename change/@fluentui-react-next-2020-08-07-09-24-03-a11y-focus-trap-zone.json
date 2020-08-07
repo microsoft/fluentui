@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "update HC focus trap zone examples to hide and show border on toggle",
+  "comment": "FocusTrapZone: Updating High Contrast styling in examples to hide and show border on toggle.",
   "packageName": "@fluentui/react-next",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",

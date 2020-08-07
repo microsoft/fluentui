@@ -6,7 +6,7 @@ import { Toggle, IToggle } from '@fluentui/react-next/lib/Toggle';
 import { Stack, IStackStyles } from '@fluentui/react-next/lib/Stack';
 import { memoizeFunction } from '@fluentui/react-next/lib/Utilities';
 import { useBoolean } from '@uifabric/react-hooks';
-import { getEdgeChromiumNoHighContrastAdjustSelector } from '../../../Styling';
+import { getEdgeChromiumNoHighContrastAdjustSelector } from '@fluentui/react-next/lib/Styling';
 
 const getStackStyles = memoizeFunction(
   (useTrapZone: boolean): Partial<IStackStyles> => ({
