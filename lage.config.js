@@ -17,22 +17,38 @@ module.exports = {
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md
   cacheOptions: {
     // These are the subset of files in the package directories that will be saved into the cache
+    // Lots of these are from .gitignore file
     outputGlob: [
+      // dist files
       'dist/**/*',
+      'dist-storybook/**/*',
+      '**/dist.stats.json',
+
+      // generated files in src
+      'coverage/**/*',
+      'src/componentInfo/**/*',
+      'src/componentMenu.json',
+      'src/behaviorMenu.json',
+      'src/bundleStats.json',
+      'src/currentBundleStats.json',
+      'src/exampleMenus/**/*',
+      'src/exampleSources/**/*',
+      'src/schema.ts',
+      'src/**/*.scss.ts',
+      '**/*.source.json',
+      '**/*.info.json',
+      '**/*.tar.gz',
+      '**/*.event.ts',
+      '**/*.resx.ts',
+
+      // lib output
       'lib/**/*',
       'lib-commonjs/**/*',
       'lib-amd/**/*',
+      'lib-es2015/**/*',
       'esm/**/*',
-      '**/*.source.json',
-      '**/*.info.json',
-      '**/dist.stats.json',
-      'dist-storybook/**/*',
-      '**/*.tar.gz',
       '!bower_components',
       '!node_modules',
-      'lib-es2015/**/*',
-      'coverage/**/*',
-      'src/**/*.scss.ts',
     ],
 
     // These are relative to the git root, and affects the hash of the cache
