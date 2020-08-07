@@ -151,19 +151,8 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
-    <div
-      role="search"
-      ref={mergedRootRef}
-      className={classNames.root}
-      // eslint-disable-next-line react/jsx-no-bind
-      onFocusCapture={onFocusCapture}
-    >
-      <div
-        className={classNames.iconContainer}
-        // eslint-disable-next-line react/jsx-no-bind
-        onClick={onClickFocus}
-        aria-hidden
-      >
+    <div role="search" ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
+      <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
         <Icon iconName="Search" {...iconProps} className={classNames.icon} />
       </div>
       <input
@@ -171,13 +160,9 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
         id={id}
         className={classNames.field}
         placeholder={placeholderValue}
-        // eslint-disable-next-line react/jsx-no-bind
         onChange={onInputChange}
-        // eslint-disable-next-line react/jsx-no-bind
         onInput={onInputChange}
-        // eslint-disable-next-line react/jsx-no-bind
         onBlur={onBlur}
-        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={onKeyDown}
         value={value}
         disabled={disabled}
