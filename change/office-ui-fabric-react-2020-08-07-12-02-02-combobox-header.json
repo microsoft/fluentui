@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add HC styling to make clickable and nonclickable items differentiable",
+  "packageName": "office-ui-fabric-react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-07T19:02:02.893Z"
+}
