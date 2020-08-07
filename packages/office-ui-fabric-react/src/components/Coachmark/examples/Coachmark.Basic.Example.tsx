@@ -30,34 +30,39 @@ const buttonProps2: IButtonProps = {
 };
 
 const dropdownOptions: IDropdownOption[] = [
-  { key: 'A', text: 'Top Left Edge', data: DirectionalHint.topLeftEdge },
-  { key: 'B', text: 'Top Center', data: DirectionalHint.topCenter },
-  { key: 'C', text: 'Top Right Edge', data: DirectionalHint.topRightEdge },
-  { key: 'D', text: 'Top Auto Edge', data: DirectionalHint.topAutoEdge },
-  { key: 'E', text: 'Bottom Left Edge', data: DirectionalHint.bottomLeftEdge },
-  { key: 'F', text: 'Bottom Center', data: DirectionalHint.bottomCenter },
-  { key: 'G', text: 'Bottom Right Edge', data: DirectionalHint.bottomRightEdge },
-  { key: 'H', text: 'Bottom Auto Edge', data: DirectionalHint.bottomAutoEdge },
-  { key: 'I', text: 'Left Top Edge', data: DirectionalHint.leftTopEdge },
-  { key: 'J', text: 'Left Center', data: DirectionalHint.leftCenter },
-  { key: 'K', text: 'Left Bottom Edge', data: DirectionalHint.leftBottomEdge },
-  { key: 'L', text: 'Right Top Edge', data: DirectionalHint.rightTopEdge },
-  { key: 'M', text: 'Right Center', data: DirectionalHint.rightCenter },
-  { key: 'N', text: 'Right Bottom Edge', data: DirectionalHint.rightBottomEdge },
+  { key: 'A', text: 'Top left edge', data: DirectionalHint.topLeftEdge },
+  { key: 'B', text: 'Top center', data: DirectionalHint.topCenter },
+  { key: 'C', text: 'Top right edge', data: DirectionalHint.topRightEdge },
+  { key: 'D', text: 'Top auto edge', data: DirectionalHint.topAutoEdge },
+  { key: 'E', text: 'Bottom left edge', data: DirectionalHint.bottomLeftEdge },
+  { key: 'F', text: 'Bottom center', data: DirectionalHint.bottomCenter },
+  { key: 'G', text: 'Bottom right edge', data: DirectionalHint.bottomRightEdge },
+  { key: 'H', text: 'Bottom auto edge', data: DirectionalHint.bottomAutoEdge },
+  { key: 'I', text: 'Left top edge', data: DirectionalHint.leftTopEdge },
+  { key: 'J', text: 'Left center', data: DirectionalHint.leftCenter },
+  { key: 'K', text: 'Left bottom edge', data: DirectionalHint.leftBottomEdge },
+  { key: 'L', text: 'Right top edge', data: DirectionalHint.rightTopEdge },
+  { key: 'M', text: 'Right center', data: DirectionalHint.rightCenter },
+  { key: 'N', text: 'Right bottom edge', data: DirectionalHint.rightBottomEdge },
 ];
 
 export const CoachmarkBasicExample: React.FunctionComponent = () => {
   const targetButton = React.useRef<HTMLDivElement>(null);
   const [isCoachmarkVisible, { setFalse: hideCoachmark, setTrue: showCoachmark }] = useBoolean(false);
   const [coachmarkPosition, setCoachmarkPosition] = React.useState<DirectionalHint>(DirectionalHint.bottomAutoEdge);
-  const [dropdownSelectedOptionKey, setDropdownSelectedOptionKey] = React.useState<string | number>('H');
-
   const onDropdownChange = React.useCallback(
     (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
       setCoachmarkPosition(option.data);
-      setDropdownSelectedOptionKey(option.key);
     },
     [],
+  );
+
+  const positioningContainerProps = React.useMemo(
+    () => ({
+      directionalHint: coachmarkPosition,
+      doNotLayer: false,
+    }),
+    [coachmarkPosition],
   );
 
   return (
@@ -65,7 +70,7 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
       <div className={classNames.dropdownContainer}>
         <Dropdown
           label="Coachmark position"
-          selectedKey={dropdownSelectedOptionKey}
+          defaultSelectedKey="H"
           onFocus={hideCoachmark}
           options={dropdownOptions}
           onChange={onDropdownChange}
@@ -73,32 +78,29 @@ export const CoachmarkBasicExample: React.FunctionComponent = () => {
       </div>
 
       <div className={classNames.buttonContainer} ref={targetButton}>
-        <DefaultButton onClick={showCoachmark} text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'} />
+        <DefaultButton onClick={showCoachmark} text={isCoachmarkVisible ? 'Hide coachmark' : 'Show coachmark'} />
       </div>
       {isCoachmarkVisible && (
         <Coachmark
           target={targetButton.current}
-          positioningContainerProps={{
-            directionalHint: coachmarkPosition,
-            doNotLayer: false,
-          }}
-          ariaAlertText="A Coachmark has appeared"
-          ariaDescribedBy={'coachmark-desc1'}
-          ariaLabelledBy={'coachmark-label1'}
-          ariaDescribedByText={'Press enter or alt + C to open the Coachmark notification'}
-          ariaLabelledByText={'Coachmark notification'}
+          positioningContainerProps={positioningContainerProps}
+          ariaAlertText="A coachmark has appeared"
+          ariaDescribedBy="coachmark-desc1"
+          ariaLabelledBy="coachmark-label1"
+          ariaDescribedByText="Press enter or alt + C to open the coachmark notification"
+          ariaLabelledByText="Coachmark notification"
         >
           <TeachingBubbleContent
-            headline="Example Title"
+            headline="Example title"
             hasCloseButton
             closeButtonAriaLabel="Close"
             primaryButtonProps={buttonProps}
             secondaryButtonProps={buttonProps2}
             onDismiss={hideCoachmark}
-            ariaDescribedBy={'example-description1'}
-            ariaLabelledBy={'example-label1'}
+            ariaDescribedBy="example-description1"
+            ariaLabelledBy="example-label1"
           >
-            Welcome to the land of Coachmarks!
+            Welcome to the land of coachmarks!
           </TeachingBubbleContent>
         </Coachmark>
       )}

@@ -2,14 +2,17 @@ import { initializeIcons } from '@uifabric/icons';
 import generateStoriesFromExamples from '@uifabric/build/storybook/generateStoriesFromExamples';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
-import { withPerformance } from 'storybook-addon-performance';
+import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withPerformance } from 'storybook-addon-performance';
+import { withThemeProvider, withStrictMode } from '@fluentui/storybook';
 
-addDecorator(withA11y());
 addDecorator(withPerformance);
+addDecorator(withInfo());
+addDecorator(withA11y());
 addDecorator(withKnobs({ escapeHTML: false }));
 addDecorator(withThemeProvider);
+addDecorator(withStrictMode);
 addParameters({
   a11y: {
     manual: true,

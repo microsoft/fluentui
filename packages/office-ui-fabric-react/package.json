@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "7.124.2",
+  "version": "7.125.0",
   "description": "Reusable React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -66,17 +66,17 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^7.12.27",
-    "@fluentui/react-icons": "^0.1.42",
+    "@fluentui/react-focus": "^7.12.28",
+    "@fluentui/react-icons": "^0.1.43",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/date-time-utilities": "^7.3.1",
-    "@uifabric/foundation": "^7.7.41",
-    "@uifabric/icons": "^7.3.67",
+    "@uifabric/foundation": "^7.7.42",
+    "@uifabric/icons": "^7.3.68",
     "@uifabric/merge-styles": "^7.16.4",
-    "@uifabric/react-hooks": "^7.7.0",
+    "@uifabric/react-hooks": "^7.7.1",
     "@uifabric/set-version": "^7.0.19",
-    "@uifabric/styling": "^7.14.7",
-    "@uifabric/utilities": "^7.25.0",
+    "@uifabric/styling": "^7.14.8",
+    "@uifabric/utilities": "^7.25.1",
     "prop-types": "^15.7.2",
     "tslib": "^1.10.0"
   },

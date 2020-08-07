@@ -1,14 +1,6 @@
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { IBaseProps, IRefObject } from '../../../Utilities';
 
-export interface IBeak {}
-
-export interface IBeakProps extends IBaseProps<IBeak> {
-  /**
-   * All props for your component are to be defined here.
-   */
-  componentRef?: IRefObject<IBeak>;
-
+export interface IBeakProps {
   /**
    * Beak width.
    * @defaultvalue 18

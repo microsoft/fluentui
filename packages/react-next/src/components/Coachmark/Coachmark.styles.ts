@@ -134,9 +134,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
     beaconColorTwo,
     delayBeforeCoachmarkAnimation,
     isCollapsed,
-    isBeaconAnimating,
     isMeasuring,
-    isMeasured,
     entityHostHeight,
     entityHostWidth,
     transformOrigin,
@@ -183,7 +181,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         borderStyle: 'solid',
         opacity: '0',
       },
-      isCollapsed && isBeaconAnimating && ContinuousPulseAnimation,
+      isCollapsed && ContinuousPulseAnimation,
     ],
     // Translate Animation Layer
     translateAnimationContainer: [
@@ -260,9 +258,12 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
           },
         },
       },
+      !isMeasuring &&
+        isCollapsed && {
+          width: COACHMARK_WIDTH,
+          height: COACHMARK_HEIGHT,
+        },
       !isMeasuring && {
-        width: COACHMARK_WIDTH,
-        height: COACHMARK_HEIGHT,
         visibility: 'visible',
       },
       !isCollapsed && {
@@ -289,7 +290,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
     ],
     childrenContainer: [
       {
-        display: isMeasured && isCollapsed ? 'none' : 'block',
+        display: !isMeasuring && isCollapsed ? 'none' : 'block',
       },
     ],
     ariaContainer: {
