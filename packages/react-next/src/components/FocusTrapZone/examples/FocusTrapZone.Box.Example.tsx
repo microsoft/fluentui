@@ -8,10 +8,20 @@ import { TextField, ITextFieldStyles } from '@fluentui/react-next/lib/TextField'
 import { Toggle, IToggle } from '@fluentui/react-next/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react-next/lib/Utilities';
 import { useBoolean } from '@uifabric/react-hooks';
+import { getEdgeChromiumNoHighContrastAdjustSelector } from '../../../Styling';
 
 const getStackStyles = memoizeFunction(
   (useTrapZone: boolean): Partial<IStackStyles> => ({
-    root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
+    root: {
+      border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`,
+      padding: 10,
+      selectors: {
+        '*': {
+          forcedColorAdjust: 'auto',
+        },
+        ...getEdgeChromiumNoHighContrastAdjustSelector(),
+      },
+    },
   }),
 );
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
