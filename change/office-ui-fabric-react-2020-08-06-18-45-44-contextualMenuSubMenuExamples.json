@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Modifying examples so that screen readers read the different ways to open a submenu.",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-07T01:45:44.000Z"
+}
