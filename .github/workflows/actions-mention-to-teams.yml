@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Run
         continue-on-error: true
-        uses: JustSlone/actions-mention-to-teams@v0.4-beta
+        uses: JustSlone/actions-mention-to-teams@v0.4.1-beta
         with:
           teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
           run-id: ${{ github.run_id }}
