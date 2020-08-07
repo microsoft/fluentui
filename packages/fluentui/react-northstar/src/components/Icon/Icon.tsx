@@ -4,11 +4,25 @@ import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTele
 import { callable } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { createShorthandFactory, UIComponentProps, commonPropTypes, ColorComponentProps, SizeValue } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import {
+  createShorthandFactory,
+  UIComponentProps,
+  commonPropTypes,
+  ColorComponentProps,
+  SizeValue,
+  ShorthandFactory,
+} from '../../utils';
+import {
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  ShorthandValue,
+  WithAsProp,
+  withSafeTypeForAs,
+} from '../../types';
 
 export type IconXSpacing = 'none' | 'before' | 'after' | 'both';
 
@@ -178,7 +192,7 @@ function isFluentJSXIcon(value: ShorthandValue<IconProps>): value is React.React
 }
 
 function toIconNameFromDisplayName(displayName: string) {
-  return inconsistentIconNames[displayName] ? inconsistentIconNames : kebabCase(displayName.replace('Icon', ''));
+  return inconsistentIconNames[displayName] ? inconsistentIconNames : _.kebabCase(displayName.replace('Icon', ''));
 }
 
 const iconOriginalShorthandFactory = createShorthandFactory({
@@ -195,7 +209,7 @@ const iconPatchedShorthandFactory: ShorthandFactory<IconProps> = (value, options
       );
     }
 
-    if (isPlainObject(value)) {
+    if (_.isPlainObject(value)) {
       if ((value as IconProps).name) {
         console.warn(
           `Fluent UI: Deprecation notice, please use JSX icon as a value instead of an object, for example replace <Button icon={{ name: 'bell', outline: true }} /> with <Button icon={<BellIcon outline />} />.`,
