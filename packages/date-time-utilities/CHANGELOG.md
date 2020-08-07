@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Fri, 24 Jul 2020 12:45:55 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.4.0)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.3.0..@fluentui/date-time-utilities_v7.4.0)
+
+### Minor changes
+
+- Expose getDatePartHashValue utility ([PR #14030](https://github.com/microsoft/fluentui/pull/14030) by miclo@microsoft.com)
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.3.0)
 

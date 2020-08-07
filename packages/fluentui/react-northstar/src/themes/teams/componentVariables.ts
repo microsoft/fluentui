@@ -87,6 +87,10 @@ export { reactionGroupVariables as ReactionGroup } from './components/Reaction/r
 
 export { segmentVariables as Segment } from './components/Segment/segmentVariables';
 
+export { skeletonVariables as Skeleton } from './components/Skeleton/skeletonVariables';
+export { skeletonVariables as SkeletonLine } from './components/Skeleton/skeletonLineVariables';
+export { skeletonVariables as SkeletonShape } from './components/Skeleton/skeletonShapeVariables';
+
 export { sliderVariables as Slider } from './components/Slider/sliderVariables';
 
 export { statusVariables as Status } from './components/Status/statusVariables';
