@@ -192,7 +192,9 @@ function isFluentJSXIcon(value: ShorthandValue<IconProps>): value is React.React
 }
 
 function toIconNameFromDisplayName(displayName: string) {
-  return inconsistentIconNames[displayName] ? inconsistentIconNames : _.kebabCase(displayName.replace('Icon', ''));
+  return inconsistentIconNames[displayName]
+    ? inconsistentIconNames[displayName]
+    : _.kebabCase(displayName.replace('Icon', ''));
 }
 
 const iconOriginalShorthandFactory = createShorthandFactory({
