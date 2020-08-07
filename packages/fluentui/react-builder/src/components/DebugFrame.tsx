@@ -92,7 +92,6 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   return (
     <pre
       ref={frameRef}
-      onClick={handleSelect}
       style={{
         position: 'fixed',
         padding: 0,
@@ -105,6 +104,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         userSelect: 'none',
       }}
     >
+      <div style={{ width: '100%', height: '100%' }} onClick={handleSelect} />
       <div
         style={{
           position: 'absolute',
