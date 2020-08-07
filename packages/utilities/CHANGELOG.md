@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 06 Aug 2020 12:40:48 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Aug 2020 12:40:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.26.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.1)
+
+Fri, 07 Aug 2020 12:40:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.26.0..@uifabric/utilities_v7.26.1)
+
+### Patches
+
+- useCustomizationSettings: fix not getting correct settings from context when context updates, use it in styled ([PR #14393](https://github.com/microsoft/fluentui/pull/14393) by xgao@microsoft.com)
 
 ## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.26.0)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 22:49:13 GMT",
+      "tag": "@fluentui/web-components_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: update rollup config and incorrect readme import",
+            "author": "chhol@microsoft.com",
+            "commit": "ffe583186bef52adaf151e344a116cbbbd32c0fe",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 00:30:40 GMT",
       "tag": "@fluentui/web-components_v0.1.0",
       "version": "0.1.0",
