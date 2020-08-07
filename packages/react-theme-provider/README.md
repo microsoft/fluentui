@@ -22,12 +22,12 @@ export const App = () => (
 );
 ```
 
-You can also create and provide your own theme:
+You can also customize your own theme:
 
 ```tsx
-import { ThemeProvider, createTheme } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
 
-export const theme: Theme = createTheme({ palette: { themePrimary: 'purple' } });
+export const theme: Theme = { palette: { themePrimary: 'purple' } };
 export const App = () => (
   <ThemeProvider theme={theme}>
     <>...app</>
