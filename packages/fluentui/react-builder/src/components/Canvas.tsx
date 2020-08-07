@@ -158,8 +158,11 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               const hasNoHeight = height === 0;
               const hasNoChildren = element.childElementCount === 0;
               const hasManyChildren = element.childElementCount > 1;
-
+              const isEmptyFlex = hasNoChildren && element.classList.contains('ui-flex');
               const properties = [
+                isEmptyFlex &&
+                  `padding-left: calc(${debugSize} * 2);\n  padding-right: calc(${debugSize} * 2);\n
+                padding-top: calc(${debugSize} * 2);\n  padding-bottom: calc(${debugSize} * 2);`,
                 hasNoChildren &&
                   hasNoWidth &&
                   `padding-left: calc(${debugSize} * 2);\n  padding-right: calc(${debugSize} * 2);`,
@@ -171,6 +174,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 marginRight === '0px' ? `margin-right: ${debugSize};` : `margin-right: ${marginRight};`,
                 marginBottom === '0px' ? `margin-bottom: ${debugSize};` : `margin-bottom: ${marginBottom};`,
                 marginLeft === '0px' ? `margin-left: ${debugSize};` : `margin-left: ${marginLeft};`,
+                isEmptyFlex && 'height: 0px;',
               ]
                 .filter(Boolean)
                 .join('\n');
