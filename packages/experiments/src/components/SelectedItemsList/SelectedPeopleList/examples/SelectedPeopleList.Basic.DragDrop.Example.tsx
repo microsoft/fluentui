@@ -4,14 +4,12 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people } from '@uifabric/example-data';
 import { SelectedPeopleList } from '@uifabric/experiments/lib/SelectedItemsList';
-import { useSelectedItems } from '../../../UnifiedPicker/hooks/useSelectedItems';
 import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/DragDropHelper';
 import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { IDragDropEvents, Selection } from 'office-ui-fabric-react';
 
 export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => {
   const [index, setIndex] = React.useState(0);
-  const [addMultipleKey, setAddMultipleKey] = React.useState(50);
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersona[]>([people[40]]);
 
   const selection = new Selection();
@@ -22,21 +20,18 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Elem
     minimumPixelsForDrag: 5,
   });
 
-  const { selectedItems, unselectAll, getSelectedItems } = useSelectedItems(selection, currentSelectedItems);
-
   const theme = getTheme();
   const dragEnterClass = mergeStyles({
     backgroundColor: theme.palette.neutralLight,
   });
 
   const _insertBeforeItem = (item: T): void => {
-    const draggedItems = selection.isIndexSelected(draggedIndex) ? (getSelectedItems() as T[]) : [draggedItem!];
-    const insertIndex = selectedItems.indexOf(item);
-    const items = selectedItems.filter(current => draggedItems.indexOf(current) === -1);
+    const draggedItems = selection.isIndexSelected(draggedIndex) ? (selection.getSelection() as T[]) : [draggedItem!];
+    const insertIndex = currentSelectedItems.indexOf(item);
+    const items = currentSelectedItems.filter(current => draggedItems.indexOf(current) === -1);
     items.splice(insertIndex, 0, ...draggedItems);
 
     setCurrentSelectedItems(items);
-    unselectAll();
   };
 
   const _onDragEnter = (item?: any, event?: DragEvent): string => {
@@ -50,7 +45,7 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Elem
     }
   };
 
-  const _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
+  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: MouseEvent): void => {
     setDraggedItem(item);
     setDraggedIndex(itemIndex!);
   };
@@ -70,31 +65,26 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Elem
     onDragEnd: _onDragEnd,
   };
 
-  const _onAddItemButtonClicked = (): void => {
+  const _onAddItemButtonClicked = React.useCallback(() => {
     setCurrentSelectedItems([...currentSelectedItems, people[index]]);
     setIndex(index + 1);
-  };
+  }, [currentSelectedItems, index]);
 
-  const _addMoreItems = (): void => {
-    const moreItems = people.map(obj => {
-      return { ...obj, key: setAddMultipleKey(addMultipleKey + 1) };
-    });
-    setCurrentSelectedItems([...currentSelectedItems, ...moreItems]);
-  };
-
-  const _onItemsRemoved = (items: IPersona[]): void => {
-    const currentSelectedItemsCopy = [...currentSelectedItems];
-    items.forEach(item => {
-      const indexToRemove = currentSelectedItemsCopy.indexOf(item);
-      currentSelectedItemsCopy.splice(indexToRemove, 1);
-      setCurrentSelectedItems([...currentSelectedItemsCopy]);
-    });
-  };
+  const _onItemsRemoved = React.useCallback(
+    (items: IPersona[]) => {
+      const currentSelectedItemsCopy = [...currentSelectedItems];
+      items.forEach(item => {
+        const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+        currentSelectedItemsCopy.splice(indexToRemove, 1);
+        setCurrentSelectedItems([...currentSelectedItemsCopy]);
+      });
+    },
+    [currentSelectedItems],
+  );
 
   return (
     <div className={'ms-BasePicker-text'}>
       <PrimaryButton text="Add another item" onClick={_onAddItemButtonClicked} />
-      <PrimaryButton text="Add multiple items" onClick={_addMoreItems} />
       <SelectedPeopleList
         key={'normal'}
         removeButtonAriaLabel={'Remove'}

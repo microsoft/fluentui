@@ -69,9 +69,7 @@ const SelectedPersonaInner = React.memo(
     const [droppingClassName, setDroppingClassName] = React.useState('');
     const [isDraggable, setIsDraggable] = React.useState<boolean | undefined>(false);
 
-    const _events = new EventGroup(this);
-
-    const _onRootRef = (div: HTMLDivElement) => {
+    const _onRootRef = React.useCallback((div: HTMLDivElement) => {
       if (div) {
         // Need to resolve the actual DOM node, not the component.
         // The element itself will be used for drag/drop and focusing.
@@ -79,7 +77,7 @@ const SelectedPersonaInner = React.memo(
       } else {
         setRoot(undefined);
       }
-    };
+    }, []);
 
     const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
       if (!newValue) {
@@ -108,21 +106,27 @@ const SelectedPersonaInner = React.memo(
       onDragOver: dragDropEvents?.onDragOver,
     };
 
+    const events = new EventGroup(this);
+
+    function createDragDropSubscription() {
+      return dragDropHelper?.subscribe(root as HTMLElement, events, dragDropOptions);
+    }
+
     React.useEffect(() => {
-      setDragDropSubscription(dragDropHelper?.subscribe(root as HTMLElement, _events, dragDropOptions));
+      setDragDropSubscription(createDragDropSubscription());
       return () => {
         dragDropSubscription?.dispose();
         setDragDropSubscription(undefined);
       };
-    }, [dragDropHelper]);
+    }, [dragDropHelper, dragDropSubscription, createDragDropSubscription]);
 
     React.useEffect(() => {
-      setIsDraggable(dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined);
+      setIsDraggable(dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag) : undefined);
     }, [dragDropEvents]);
 
     React.useEffect(() => {
       setDroppingClassName(isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '');
-    }, [isDropping]);
+    }, [isDropping, droppingClassNames]);
 
     const onExpandClicked = React.useCallback(
       ev => {

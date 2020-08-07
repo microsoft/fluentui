@@ -101,7 +101,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
   };
 
-  const _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
+  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: MouseEvent): void => {
     setDraggedItem(item);
   };
 

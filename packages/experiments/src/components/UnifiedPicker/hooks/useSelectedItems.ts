@@ -66,9 +66,9 @@ export const useSelectedItems = <T extends {}>(
     currentItems.forEach(item => {
       const currentIndex = currentItems.indexOf(item);
       // If this is the insert before index, insert the dragged items, then the current item
-      if (currentIndex == insertIndex) {
-        draggedItemsIndices.forEach(item => {
-          updatedItems.push(currentItems[item]);
+      if (currentIndex === insertIndex) {
+        draggedItemsIndices.forEach(draggedItem => {
+          updatedItems.push(currentItems[draggedItem]);
         });
         updatedItems.push(item);
       } else if (!draggedItemsIndices.includes(currentIndex)) {
