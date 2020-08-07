@@ -34,7 +34,7 @@ const useButtonState = state => {
 };
 ```
 
-A component hook sets up the state and render function:
+A factory function sets up the state and render function:
 
 ```jsx
 const useButton = (userProps, ref, defaultProps) => {
@@ -68,26 +68,6 @@ We can also use these building blocks to scaffold other types of buttons, transf
 context, redefine styling, or mix/match behaviors:
 
 ```jsx
-
-const useChecked = (draftState) {
-  const { onClick } = draftState;
-
-  const [checked, setChecked] = useControlableState(draftState.checked, draftState.defaultChecked);
-
-  draftState.checked = checked;
-
-  draftState.onClick = (ev) => {
-    if (onClick) {
-      onClick(ev);
-    }
-
-    if (!ev.defaultPrevented) {
-      setChecked(!checked);
-    }
-  }
-  draftState['aria-checked'] = checked;
-};
-
 const ToggleButton = React.forwardRef((props, ref) => {
   const { state, render } = useButton(props, ref);
 
@@ -99,6 +79,7 @@ const ToggleButton = React.forwardRef((props, ref) => {
   useStyles(state);
 
   return render(state);
+
 ```
 
 ### Details
@@ -175,27 +156,17 @@ Fluent UI components almost always contain sub parts, and these sub parts should
 />
 ```
 
-<<<<<<< HEAD
-Supporting shorthand input requires some helpers:
+Supporting this dynamic props input requires some helpers:
 
-1. # A helper `resolveShorthandProps` to simplify the user's input into an object for props merging
-
-   Supporting this dynamic props input requires some helpers:
-
-1. A helper `simplifyShorthand` to simplify the user's input into an object for props merging
-   > > > > > > > 833eec673044be946959cdba77bf6f43aa487f8f
-1. The `getSlots` helper to parse the slots out
+1. A helper `resolveShorthandProps` to simplify the user's input into an object for props merging
+2. The `getSlots` helper to parse the slots out
 
 Here's how this looks:
 
 The factory function, which deep clones the props, would need to simplify the shorthand first:
 
 ```jsx
-<<<<<<< HEAD
 const useButton = (userProps, ref, defaultProps) => {
-=======
-const createButton = (userProps, ref, defaultProps) => {
->>>>>>> 833eec673044be946959cdba77bf6f43aa487f8f
   const state = mergeProps(
     {
       // default props
@@ -204,19 +175,11 @@ const createButton = (userProps, ref, defaultProps) => {
       icon: { as: 'span' },
     },
     defaultProps, // optional default props from the caller
-<<<<<<< HEAD
     resolveShorthandProps(userProps, ['icon']), // simplify the user's props
   );
 
   // Apply button behaviors.
-  useButtonState(state);
-=======
-    simplifyShorthand(userProps, ['icon']), // simplify the user's props
-  );
-
-  // Apply button behaviors.
   useButton(state);
->>>>>>> 833eec673044be946959cdba77bf6f43aa487f8f
 
   return { state, render };
 };
@@ -256,10 +219,10 @@ mergeProps(props, { ...etc }, { ...etc });
 The `getSlots` function takes in a state object and a list of slot keys with the state, and returns
 `slots` and `slotProps` to be used in rendering the component.
 
-`slotProps` are calculated based on.
+In cases where the `as` prop of the slot represents a primitive element tag name, there are some additional behaviors:
 
-It will also assume that the `as` prop represents the intrinsic element tag name. This will be used
-in determining the `root` slot value and the appropriate filtered `rootProps` for the `root` slot.
+- Props will be automatically filtered based on the element type. E.g. `href` will be passed to `a` tag slots, but not `button` slots.
+- The slot will avoid rendering completely if children are undefined. This is to avoid requiring nearly every slot to be wrapped in a conditional to avoid rendering the parent. You can force rendering primitives without children by passing `null` in for the children. (E.g. `{ as: 'input', children: null }).
 
 Example:
 
@@ -276,15 +239,7 @@ const Button = props => {
 };
 ```
 
-<<<<<<< HEAD
-
 ### resolveShorthandProps<TState>(state: TState, slotNames: (keyof TState)[]): TState
-
-=======
-
-### simplifyShorthand<TState>(state: TState, slotNames: (keyof TState)[]): TState
-
-> > > > > > > 833eec673044be946959cdba77bf6f43aa487f8f
 
 Ensures that the given slots are represented using object syntax. This ensures that
 the object can be merged along with other objects.
@@ -292,11 +247,7 @@ the object can be merged along with other objects.
 Example:
 
 ```jsx
-<<<<<<< HEAD
 const foo = resolveShorthandProps(
-=======
-const foo = simplifyShorthand(
->>>>>>> 833eec673044be946959cdba77bf6f43aa487f8f
   { a: <JSX/>, b: 'string', c: { ... }, d: 'unchanged' },
   [ 'a', 'b', 'c' ]
 );
