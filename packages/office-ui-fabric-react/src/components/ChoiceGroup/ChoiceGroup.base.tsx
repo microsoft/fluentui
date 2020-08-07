@@ -234,7 +234,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
   }
 
   private _getOptionId(option: IChoiceGroupOption): string {
-    return option.id ? option.id : `${this._id}-${option.key}`;
+    return option.id || `${this._id}-${option.key}`;
   }
 
   private _getOptionLabelId(option: IChoiceGroupOption): string {
