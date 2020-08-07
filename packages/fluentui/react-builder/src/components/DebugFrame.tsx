@@ -83,7 +83,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     return () => cancelAnimationFrame(animationFrameId.current);
   }, [target, selector, setFramePosition, isTopElement]);
 
-  const styles = {
+  const styles: React.CSSProperties = {
     position: 'absolute',
     padding: '2px 4px',
     margin: '-1px 0 0 -1px',
