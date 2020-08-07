@@ -26,12 +26,11 @@ export default (tsConfigPath: string, ignoredInterfaces: string[] = []) =>
     try {
       const infoFilename = file.basename.replace(/\.tsx$/, '.info.json');
       const contents = getComponentInfo(tsConfigPath, file.path, ignoredInterfaces);
-
       // Forcing the base & cwd to be paths.base() to make sure this is cached & restored at the right location
       const infoFile = new Vinyl({
-        base: paths.base(),
-        cwd: paths.base(),
-        path: `./${infoFilename}`,
+        base: paths.docs(),
+        cwd: paths.docsSrc('./componentInfo'),
+        path: paths.docsSrc(`./componentInfo/${infoFilename}`),
         contents: Buffer.from(JSON.stringify(contents, null, 2)),
       });
       // `gulp-cache` relies on this private entry
