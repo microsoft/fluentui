@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 07 Aug 2020 12:40:14 GMT",
+      "tag": "@uifabric/utilities_v7.26.1",
+      "version": "7.26.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "useCustomizationSettings: fix not getting correct settings from context when context updates, use it in styled",
+            "author": "xgao@microsoft.com",
+            "commit": "cbb81ccb1b78a8801abc8c272af331adb73edad0",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 12:40:48 GMT",
       "tag": "@uifabric/utilities_v7.26.0",
       "version": "7.26.0",
