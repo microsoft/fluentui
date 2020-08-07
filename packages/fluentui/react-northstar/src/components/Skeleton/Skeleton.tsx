@@ -24,6 +24,7 @@ export const skeletonClassName = 'ui-skeleton';
 
 /**
  * An Skeleton is a component to be placed while the content is loading.
+ * This component is currently UNSTABLE!
  */
 export const Skeleton = compose<'div', SkeletonOwnProps, SkeletonStylesProps, BoxProps, BoxStylesProps>(Box, {
   className: skeletonClassName,
