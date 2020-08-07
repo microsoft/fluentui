@@ -87,8 +87,7 @@ export interface ISemanticColors extends ISemanticTextColors {
   /**
    * The standout color for highlighted content backgrounds.
    * For highlighted content when there is no emphasis, use the neutral variant instead.
-   * This should be a shade darker than bodyBackground in light themes,
-   * and a shade lighter in inverted themes.
+   * This should be a shade darker than bodyBackground in light themes, and a shade lighter in inverted themes.
    */
   bodyStandoutBackground: string;
 
@@ -130,12 +129,36 @@ export interface ISemanticColors extends ISemanticTextColors {
   focusBorder: string;
 
   /**
-   * The color of the border that provides contrast between an element, such as a card, and an emphasized background.
+   * The background color of a card (or other surface) on a standout background.
+   * Cards usually have shadows, but the variantBorder slots can be used for a solid border.
+   * e.g. cards on a carousel of highlighted articles
+   */
+  cardStandoutBackground: string;
+
+  /**
+   * The default box-shadow for a card. In inverted themes, by default, this is set to `none` since shadows do not work
+   * well on dark backgrounds. If the card could be the same color as the background, it is recommended that
+   * `variantBorder` is used instead, so the card doesn't disappear in inverted themes.
+   * For use with `box-shadow`.
+   */
+  cardShadow: string;
+
+  /**
+   * The default box-shadow when hovering on a card. Generally, this is a deeper shadow than `cardShadow`, to give
+   * the effect that the card is lifting off the page.
+   * In inverted themes, this should be set to a box-shadow that looks like a solid border, because shadows are not
+   * visible on dark themes.
+   * For use with `box-shadow`.
+   */
+  cardShadowHovered: string;
+
+  /**
+   * The color of the border that provides contrast between an element, such as a card, and a standout background.
    */
   variantBorder: string;
 
   /**
-   * Hover color of border that provides contrast between an element, such as a card, and an emphasized background.
+   * Hover color of border that provides contrast between an element, such as a card, and a standout background.
    */
   variantBorderHovered: string;
 
@@ -195,11 +218,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    */
   successIcon: string;
   /**
-   * Color of links within a Message.
+   * Color of links within a message.
    */
   messageLink: string;
   /**
-   * Color of links within a Message when hovered.
+   * Color of links within a message when hovered.
    */
   messageLinkHovered: string;
 

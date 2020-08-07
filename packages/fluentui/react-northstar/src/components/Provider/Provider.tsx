@@ -1,14 +1,19 @@
-import { IStyle } from 'fela';
 import * as _ from 'lodash';
 import {
+  ComponentWithAs,
   getElementType,
   useUnhandledProps,
-  Renderer,
   StylesContextPerformanceInput,
+  RendererContext,
+  ProviderContextInput,
+  ProviderContextPrepared,
   Telemetry,
+  useFluentContext,
   unstable_getStyles,
   useIsomorphicLayoutEffect,
+  Unstable_FluentContextProvider,
 } from '@fluentui/react-bindings';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   mergeSiteVariables,
   StaticStyleObject,
@@ -20,18 +25,14 @@ import {
 } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { RendererProvider, ThemeProvider, ThemeContext } from 'react-fela';
 
 import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
 
-import { WithAsProp, ProviderContextInput, ProviderContextPrepared, withSafeTypeForAs } from '../../types';
-import mergeContexts from '../../utils/mergeProviderContexts';
-import ProviderConsumer from './ProviderConsumer';
-import usePortalBox, { PortalBoxContext } from './usePortalBox';
+import { mergeProviderContexts } from '../../utils/mergeProviderContexts';
+import { ProviderConsumer } from './ProviderConsumer';
+import { usePortalBox, PortalBoxContext } from './usePortalBox';
 
 export interface ProviderProps extends ChildrenComponentProps, UIComponentProps {
-  renderer?: Renderer;
   rtl?: boolean;
   disableAnimations?: boolean;
   performance?: StylesContextPerformanceInput;
@@ -51,7 +52,7 @@ const renderFontFaces = (renderer: Renderer, theme: ThemeInput) => {
       throw new Error(`fontFaces must be objects, got: ${typeof font}`);
     }
 
-    renderer.renderFont(font.name, font.paths, font.props);
+    renderer.renderFont(font);
   };
 
   theme.fontFaces.forEach((font: FontFace) => {
@@ -66,13 +67,13 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
 
   const renderObject = (object: StaticStyleObject) => {
     _.forEach(object, (style, selector) => {
-      renderer.renderStatic(style as IStyle, selector);
+      renderer.renderGlobal(style, selector);
     });
   };
 
   theme.staticStyles.forEach((staticStyle: StaticStyle) => {
     if (typeof staticStyle === 'string') {
-      renderer.renderStatic(staticStyle);
+      renderer.renderGlobal(staticStyle);
     } else if (_.isPlainObject(staticStyle)) {
       renderObject(staticStyle as StaticStyleObject);
     } else if (_.isFunction(staticStyle)) {
@@ -91,7 +92,7 @@ export const providerClassName = 'ui-provider';
 /**
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
-const Provider: React.FC<WithAsProp<ProviderProps>> & {
+export const Provider: ComponentWithAs<'div', ProviderProps> & {
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
@@ -112,30 +113,32 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     return telemetryRef.current;
   }, [telemetryRef]);
   const inputContext: ProviderContextInput = {
-    theme: props.theme,
-    rtl: props.rtl,
     disableAnimations: props.disableAnimations,
     performance: props.performance,
-    renderer: props.renderer,
+    rtl: props.rtl,
     target: props.target,
     telemetry,
+    theme: props.theme,
   };
 
-  const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
+  const consumedContext = useFluentContext();
   const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
+  const createRenderer = React.useContext(RendererContext);
 
-  const outgoingContext = mergeContexts(incomingContext, inputContext);
+  const outgoingContext = mergeProviderContexts(createRenderer, incomingContext, inputContext);
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
   // only add dir attribute for top level provider or when direction changes from parent to child
-  if (!consumedContext || (consumedContext.rtl !== outgoingContext.rtl && _.isBoolean(outgoingContext.rtl))) {
+  if (consumedContext.rtl !== outgoingContext.rtl && _.isBoolean(outgoingContext.rtl)) {
     rtlProps.dir = outgoingContext.rtl ? 'rtl' : 'ltr';
   }
 
   const { classes } = unstable_getStyles({
+    allDisplayNames: [Provider.displayName],
     className: providerClassName,
-    displayNames: [Provider.displayName],
-    props: {
+    primaryDisplayName: Provider.displayName,
+    componentProps: {},
+    inlineStylesProps: {
       className,
       design,
       styles,
@@ -148,6 +151,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     rtl: outgoingContext.rtl,
     theme: outgoingContext.theme,
     saveDebug: _.noop,
+    telemetry: undefined,
   });
 
   const element = usePortalBox({
@@ -180,20 +184,16 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
           ...rtlProps,
           ...unhandledProps,
         };
+  const RenderProvider = outgoingContext.renderer.Provider;
 
-  // rehydration disabled to avoid leaking styles between renderers
-  // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
   return (
-    <RendererProvider
-      renderer={outgoingContext.renderer}
-      {...{ rehydrate: false, targetDocument: outgoingContext.target }}
-    >
-      <ThemeProvider theme={outgoingContext} overwrite>
+    <RenderProvider>
+      <Unstable_FluentContextProvider value={outgoingContext}>
         <PortalBoxContext.Provider value={element}>
           <ElementType {...elementProps}>{children}</ElementType>
         </PortalBoxContext.Provider>
-      </ThemeProvider>
-    </RendererProvider>
+      </Unstable_FluentContextProvider>
+    </RenderProvider>
   );
 };
 
@@ -228,7 +228,6 @@ Provider.propTypes = {
     staticStyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func])),
     animations: PropTypes.object,
   }),
-  renderer: PropTypes.object as PropTypes.Validator<Renderer>,
   rtl: PropTypes.bool,
   disableAnimations: PropTypes.bool,
   // Heads Up!
@@ -246,5 +245,3 @@ Provider.propTypes = {
 Provider.handledProps = Object.keys(Provider.propTypes) as any;
 
 Provider.Consumer = ProviderConsumer;
-
-export default withSafeTypeForAs<typeof Provider, ProviderProps>(Provider);

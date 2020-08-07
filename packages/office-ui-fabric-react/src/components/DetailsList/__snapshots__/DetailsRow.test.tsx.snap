@@ -18,7 +18,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -41,9 +40,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -88,11 +85,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 24,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -141,9 +133,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -740,40 +730,38 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
         <div
-          className=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                display: inline-block;
-                min-height: 1px;
-                min-width: 100%;
-              }
-          data-focuszone-id="FocusZone2"
-          onBlur={[Function]}
-          onFocus={[Function]}
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
           onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
           onMouseDownCapture={[Function]}
+          role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone2"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-List"
@@ -867,7 +855,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -890,9 +877,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -937,11 +922,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 24,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -990,9 +970,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -1589,40 +1567,38 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
         <div
-          className=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                display: inline-block;
-                min-height: 1px;
-                min-width: 100%;
-              }
-          data-focuszone-id="FocusZone11"
-          onBlur={[Function]}
-          onFocus={[Function]}
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
           onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
           onMouseDownCapture={[Function]}
+          role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone11"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-List"
@@ -1770,6 +1746,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
+  data-selection-touch-invoke={true}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -1834,7 +1811,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       className=
           ms-DetailsRow-check
           ms-Check-checkHost
-
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2227,7 +2203,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -2250,9 +2225,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2297,11 +2270,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 24,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -2350,9 +2318,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -2949,40 +2915,38 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
         <div
-          className=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                display: inline-block;
-                min-height: 1px;
-                min-width: 100%;
-              }
-          data-focuszone-id="FocusZone5"
-          onBlur={[Function]}
-          onFocus={[Function]}
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
           onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
           onMouseDownCapture={[Function]}
+          role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone5"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-List"
@@ -3076,7 +3040,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
-          background: #ffffff;
           color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -3099,9 +3062,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
       role="grid"
     >
       <div
-        className=
-            ms-DetailsList-headerWrapper
-
+        className="ms-DetailsList-headerWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3146,11 +3107,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           onMouseDownCapture={[Function]}
           onMouseMove={[Function]}
           role="row"
-          style={
-            Object {
-              "minWidth": 24,
-            }
-          }
         >
           <div
             aria-colindex={1}
@@ -3199,9 +3155,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             role="columnheader"
           >
             <span
-              className=
-                  ms-DetailsHeader-checkTooltip
-
+              className="ms-DetailsHeader-checkTooltip"
             >
               <div
                 aria-checked={false}
@@ -3798,40 +3752,38 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         </div>
       </div>
       <div
-        className=
-            ms-DetailsList-contentWrapper
-
+        className="ms-DetailsList-contentWrapper"
         onKeyDown={[Function]}
         role="presentation"
       >
         <div
-          className=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                display: inline-block;
-                min-height: 1px;
-                min-width: 100%;
-              }
-          data-focuszone-id="FocusZone8"
-          onBlur={[Function]}
-          onFocus={[Function]}
+          className="ms-SelectionZone"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onDoubleClick={[Function]}
+          onFocusCapture={[Function]}
           onKeyDown={[Function]}
+          onKeyDownCapture={[Function]}
+          onMouseDown={[Function]}
           onMouseDownCapture={[Function]}
+          role="presentation"
         >
           <div
-            className="ms-SelectionZone"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onDoubleClick={[Function]}
-            onFocusCapture={[Function]}
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  display: inline-block;
+                  min-height: 1px;
+                  min-width: 100%;
+                }
+            data-focuszone-id="FocusZone8"
+            onBlur={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
-            onKeyDownCapture={[Function]}
-            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-List"

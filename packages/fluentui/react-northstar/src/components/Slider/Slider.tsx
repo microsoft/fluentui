@@ -1,9 +1,11 @@
 import { Accessibility, sliderBehavior, SliderBehaviorProps } from '@fluentui/accessibility';
 import {
+  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStateManager,
+  useFluentContext,
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
@@ -14,8 +16,6 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   ChildrenComponentProps,
@@ -25,17 +25,9 @@ import {
   setWhatInputSource,
   createShorthandFactory,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  WithAsProp,
-  withSafeTypeForAs,
-  Omit,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import Box, { BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 
 const processInputValues = (
   p: Pick<SliderProps, 'min' | 'max'> & { value: string },
@@ -125,8 +117,17 @@ export const sliderSlotClassNames: SliderSlotClassNames = {
   track: `${sliderClassName}__track`,
 };
 
-const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A Slider represents an input that allows user to choose a value from within a specific range.
+ *
+ * @accessibility
+ * Implements [ARIA Slider](https://www.w3.org/TR/wai-aria-practices-1.1/#slider) design pattern.
+ * @accessibilityIssues
+ * [Slider - JAWS narrates slider value twice when using PageUp / PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/220)
+ * [Slider - JAWS narrates current and new value in vertical slider](https://github.com/FreedomScientific/VFO-standards-support/issues/219)
+ */
+export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStaticProps = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
   setStart();
 
@@ -148,7 +149,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps = p
     vertical,
     disabled,
   } = props;
-  const inputRef = React.createRef<HTMLElement>();
+  const inputRef = React.useRef<HTMLElement>();
 
   const { state, actions } = useStateManager(createSliderManager, {
     mapPropsToInitialState: () => ({
@@ -217,14 +218,12 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps = p
         ...htmlInputProps,
         as: 'input',
         className: sliderSlotClassNames.input,
-        fluid,
         min: numericMin,
         max: numericMax,
         step,
         styles: resolvedStyles.input,
         type,
         value: numericValue,
-        vertical,
       }),
     overrideProps: handleInputOverrides,
   });
@@ -288,14 +287,3 @@ Slider.propTypes = {
 Slider.handledProps = Object.keys(Slider.propTypes) as any;
 
 Slider.create = createShorthandFactory({ Component: Slider, mappedProp: 'value' });
-
-/**
- * A Slider represents an input that allows user to choose a value from within a specific range.
- *
- * @accessibility
- * Implements [ARIA Slider](https://www.w3.org/TR/wai-aria-practices-1.1/#slider) design pattern.
- * @accessibilityIssues
- * [Slider - JAWS narrates slider value twice when using PageUp / PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/220)
- * [Slider - JAWS narrates current and new value in vertical slider](https://github.com/FreedomScientific/VFO-standards-support/issues/219)
- */
-export default withSafeTypeForAs<typeof Slider, SliderProps, 'input'>(Slider);

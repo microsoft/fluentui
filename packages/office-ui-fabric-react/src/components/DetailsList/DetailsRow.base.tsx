@@ -74,7 +74,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   }
 
   public componentDidMount(): void {
-    const { dragDropHelper } = this.props;
+    const { dragDropHelper, selection, item, onDidMount } = this.props;
 
     if (dragDropHelper) {
       this._dragDropSubscription = dragDropHelper.subscribe(
@@ -84,12 +84,14 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       );
     }
 
-    this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
+    if (selection) {
+      this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
+    }
 
-    if (this.props.onDidMount && this.props.item) {
+    if (onDidMount && item) {
       // If the item appears later, we should wait for it before calling this method.
       this._onDidMountCalled = true;
-      this.props.onDidMount(this);
+      onDidMount(this);
     }
   }
 
@@ -149,7 +151,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this._events.dispose();
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
     this.setState({
       selectionState: this._getSelectionState(newProps),
@@ -277,6 +278,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
+        data-selection-touch-invoke={true}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
         data-automationid="DetailsRow"
@@ -408,6 +410,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       updateDropState: this._updateDroppingState,
       onDrop: dragDropEvents!.onDrop,
       onDragEnd: dragDropEvents!.onDragEnd,
+      onDragOver: dragDropEvents!.onDragOver,
     };
 
     return options;

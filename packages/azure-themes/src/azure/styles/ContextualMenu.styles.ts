@@ -7,10 +7,12 @@ import {
 import { Depths } from '../AzureDepths';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
   const { theme } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     subComponentStyles: {
@@ -33,6 +35,20 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           root: [
             {
               fontSize: FontSizes.size13,
+              selectors: {
+                '&:hover': {
+                  backgroundColor: semanticColors.buttonBackgroundHovered,
+                  color: semanticColors.buttonTextHovered,
+                  selectors: {
+                    '.ms-ContextualMenu-icon': {
+                      color: extendedSemanticColors.iconButtonFillHovered,
+                    },
+                  },
+                },
+                '.ms-ContextualMenu-icon': {
+                  color: extendedSemanticColors.iconButtonFill,
+                },
+              },
             },
           ],
           splitPrimary: {

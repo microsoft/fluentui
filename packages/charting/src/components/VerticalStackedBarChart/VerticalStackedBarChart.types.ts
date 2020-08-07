@@ -1,8 +1,8 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IVerticalStackedChartProps } from '@uifabric/charting';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IVerticalStackedChartProps } from '../../types/index';
 
 export interface IVerticalStackedBarChartProps {
   /**
@@ -46,6 +46,11 @@ export interface IVerticalStackedBarChartProps {
   className?: string;
 
   /**
+   * this prop takes its parent as a HTML element to define the width and height of the line chart
+   */
+  parentRef?: HTMLElement | null;
+
+  /**
    * Theme (provided through customization.)
    */
   theme?: ITheme;
@@ -74,6 +79,13 @@ export interface IVerticalStackedBarChartProps {
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 export interface IVerticalStackedBarChartStyleProps {
@@ -90,12 +102,12 @@ export interface IVerticalStackedBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
+  width?: number;
 
   /**
    * Height of the chart.
    */
-  height: number;
+  height?: number;
 
   /**
    * color of the datapoint legend
@@ -168,26 +180,6 @@ export interface IVerticalStackedBarChartStyles {
    * Style for the text labeling each tick along the y-axis.
    */
   yAxisText?: IStyle;
-
-  /**
-   * Style for the element containing all the bars in the chart.
-   */
-  bars?: IStyle;
-
-  /**
-   * Style for the root of the hover card
-   */
-  hoverCardRoot: IStyle;
-
-  /**
-   * Style for the legend card title displayed in the hover card
-   */
-  hoverCardTextStyles: IStyle;
-
-  /**
-   * Style for the data displayed in the hover card
-   */
-  hoverCardDataStyles: IStyle;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

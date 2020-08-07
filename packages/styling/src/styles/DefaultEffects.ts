@@ -7,4 +7,6 @@ export const DefaultEffects: IEffects = {
   elevation64: '0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18)',
 
   roundedCorner2: '2px',
+  roundedCorner4: '4px',
+  roundedCorner6: '6px',
 };

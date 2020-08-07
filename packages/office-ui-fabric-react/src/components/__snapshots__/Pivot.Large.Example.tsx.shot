@@ -89,7 +89,6 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -256,7 +255,6 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -413,7 +411,6 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -524,7 +521,14 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
       </button>
     </div>
     <div
+      aria-hidden={false}
       aria-labelledby="Pivot0-Tab0"
+      className=
+
+          &[hidden] {
+            display: none;
+          }
+      hidden={false}
       role="tabpanel"
     >
       <div>

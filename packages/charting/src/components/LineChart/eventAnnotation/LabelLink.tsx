@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Callout, FocusZone, FocusZoneDirection, List } from 'office-ui-fabric-react';
-import { Textbox } from '@uifabric/charting/lib/components/LineChart/eventAnnotation/Textbox';
 import { IEventAnnotation } from '../../../types/IEventAnnotation';
+import { Textbox } from './Textbox';
 
 export interface ILineDef extends IEventAnnotation {
   x: number;
@@ -24,8 +24,7 @@ interface ILabelLinkProps {
   mergedLabel: (count: number) => string;
 }
 
-/* tslint:disable-next-line:function-name */
-export function LabelLink(props: ILabelLinkProps) {
+export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   const gRef = React.useRef<SVGGElement>(null);
   const [showCard, setShowCard] = React.useState(false);
   const onDismiss = () => setShowCard(false);
@@ -37,9 +36,19 @@ export function LabelLink(props: ILabelLinkProps) {
     const cards = props.labelDef.aggregatedIdx.map(i => props.lineDefs[i].onRenderCard!).filter(c => !!c);
     if (cards.length > 0) {
       callout = (
-        <Callout target={gRef.current} onDismiss={onDismiss} setInitialFocus={true} role="dialog">
+        <Callout
+          target={gRef.current}
+          // eslint-disable-next-line react/jsx-no-bind
+          onDismiss={onDismiss}
+          setInitialFocus={true}
+          role="dialog"
+        >
           <FocusZone isCircularNavigation={true} direction={FocusZoneDirection.vertical}>
-            <List<() => React.ReactNode> items={cards} onRenderCell={onRenderCell} />
+            <List<() => React.ReactNode>
+              items={cards}
+              // eslint-disable-next-line react/jsx-no-bind
+              onRenderCell={onRenderCell}
+            />
           </FocusZone>
         </Callout>
       );
@@ -58,8 +67,13 @@ export function LabelLink(props: ILabelLinkProps) {
 
   return (
     <>
-      {/* tslint:disable-next-line: jsx-ban-props */}
-      <g ref={gRef} onClick={onClick} data-is-focusable={true} style={{ cursor: 'pointer' }}>
+      <g
+        ref={gRef}
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onClick}
+        data-is-focusable={true}
+        style={{ cursor: 'pointer' }}
+      >
         <Textbox
           text={text}
           x={props.labelDef.x}
@@ -74,4 +88,4 @@ export function LabelLink(props: ILabelLinkProps) {
       {callout}
     </>
   );
-}
+};

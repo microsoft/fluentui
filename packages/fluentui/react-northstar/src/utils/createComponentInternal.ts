@@ -1,12 +1,10 @@
-import { AccessibilityActionHandlers } from '@fluentui/react-bindings';
+import { AccessibilityActionHandlers, useFluentContext } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import renderComponent, { RenderResultConfig } from './renderComponent';
+import { renderComponent, RenderResultConfig } from './renderComponent';
 import { createShorthandFactory, ShorthandFactory } from './factories';
-import { ObjectOf, ProviderContextPrepared } from '../types';
+import { ObjectOf } from '../types';
 
 export interface CreateComponentConfig<P> {
   displayName: string;
@@ -24,7 +22,7 @@ export type CreateComponentReturnType<P> = React.FunctionComponent<P> & {
   create: ShorthandFactory<P>;
 };
 
-const createComponentInternal = <P extends ObjectOf<any> = any>({
+export const createComponentInternal = <P extends ObjectOf<any> = any>({
   displayName = 'FluentUIComponent',
   className = 'fluent-ui-component',
   shorthandPropName = 'children',
@@ -44,7 +42,8 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
     // Note that this ref should go as the first one, to be discoverable by debug utils.
     const ref = React.useRef(null);
 
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
+    const isFirstRenderRef = React.useRef<boolean>(true);
 
     return renderComponent(
       {
@@ -56,6 +55,7 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
         actionHandlers,
         render: config => render(config, props),
         saveDebug: fluentUIDebug => (ref.current = { fluentUIDebug }),
+        isFirstRenderRef,
       },
       context,
     );
@@ -76,5 +76,3 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
 
   return FluentComponent;
 };
-
-export default createComponentInternal;

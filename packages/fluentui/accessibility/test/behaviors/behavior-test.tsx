@@ -87,9 +87,16 @@ import {
   cardsContainerBehavior,
   videoBehavior,
   buttonGroupBehavior,
+  hiddenComponentBehavior,
+  cardSelectableBehavior,
+  dropdownSelectedItemBehavior,
+  datepickerCalendarBehavior,
+  datepickerCalendarHeaderBehavior,
+  datepickerCalendarGridBehavior,
+  datepickerCalendarCellBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
-import definitions from './testDefinitions';
+import { definitions } from './testDefinitions';
 
 const behaviorMenuItems = require('../../../docs/src/behaviorMenu');
 
@@ -178,5 +185,12 @@ testHelper.addBehavior('cardFocusableBehavior', cardFocusableBehavior);
 testHelper.addBehavior('cardChildrenFocusableBehavior', cardChildrenFocusableBehavior);
 testHelper.addBehavior('cardsContainerBehavior', cardsContainerBehavior);
 testHelper.addBehavior('videoBehavior', videoBehavior);
+testHelper.addBehavior('hiddenComponentBehavior', hiddenComponentBehavior);
+testHelper.addBehavior('cardSelectableBehavior', cardSelectableBehavior);
+testHelper.addBehavior('dropdownSelectedItemBehavior', dropdownSelectedItemBehavior);
+testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior);
+testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHeaderBehavior);
+testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);
+testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellBehavior);
 
 testHelper.run(behaviorMenuItems);

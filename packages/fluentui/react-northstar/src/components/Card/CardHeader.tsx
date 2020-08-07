@@ -1,10 +1,17 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+
+import { FluentComponentStaticProps } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 
 export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProps {
@@ -20,8 +27,12 @@ export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProp
 export type CardHeaderStylesProps = Pick<CardHeaderProps, 'fitted'>;
 export const cardHeaderClassName = 'ui-card__header';
 
-const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticProps<CardHeaderProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A CardHeader is used to display data in Card header.
+ */
+export const CardHeader: ComponentWithAs<'div', CardHeaderProps> &
+  FluentComponentStaticProps<CardHeaderProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardHeader.displayName, context.telemetry);
   setStart();
 
@@ -69,8 +80,3 @@ CardHeader.propTypes = {
 CardHeader.handledProps = Object.keys(CardHeader.propTypes) as any;
 
 CardHeader.create = createShorthandFactory({ Component: CardHeader });
-
-/**
- * A CardHeader is used to display data in Card header.
- */
-export default withSafeTypeForAs<typeof CardHeader, CardHeaderProps, 'div'>(CardHeader);

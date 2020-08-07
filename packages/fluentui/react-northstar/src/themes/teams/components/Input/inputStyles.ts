@@ -1,18 +1,23 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { InputProps, InputState } from '../../../../components/Input/Input';
+import { InputStylesProps } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
 import { PositionProperty } from 'csstype';
-import clearIndicatorUrl from './clearIndicatorUrl';
+import { clearIndicatorUrl } from './clearIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVariables> = {
-  root: ({ props: p }): ICSSInJSStyle => ({
-    alignItems: 'center',
+export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
+  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    flexDirection: 'column',
+    justifyContent: 'center',
     display: 'inline-flex',
     position: 'relative',
     outline: 0,
-
+    verticalAlign: 'middle',
     ...(p.fluid && { width: '100%' }),
+    ...(p.labelPosition === 'inline' && {
+      flexDirection: 'row',
+      alignItems: 'center',
+    }),
   }),
 
   input: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -22,7 +27,6 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     }),
 
     lineHeight: 'unset',
-
     color: v.fontColor,
 
     borderColor: v.borderColor,
@@ -52,12 +56,27 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     },
 
     ':focus': {
-      borderColor: v.inputFocusBorderColor,
+      ...(!p.error && { borderColor: v.inputFocusBorderColor }),
     },
+
+    ...(!p.hasValue && {
+      ':-webkit-autofill:focus': {
+        '-webkit-text-fill-color': 'transparent',
+      },
+    }),
+
     ...(p.clearable && { padding: v.inputPaddingWithIconAtEnd }),
-    ...(p.icon && {
+    ...(p.hasIcon && {
       padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
     }),
+    ...(p.labelPosition === 'inside' && {
+      paddingTop: v.inputInsideLabelPaddingTop,
+    }),
+    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
+
+    '::-ms-clear': {
+      display: 'none',
+    },
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -67,6 +86,12 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     alignItems: 'center',
     justifyContent: 'center',
     position: v.iconPosition as PositionProperty,
+    top: 0,
+    bottom: 0,
+    ...(p.error && { color: v.colorError }),
+    ...(p.requiredAndSuccessful && {
+      color: v.successfulColor,
+    }),
     ...(p.disabled && {
       color: v.colorDisabled,
     }),
@@ -87,6 +112,8 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
         width: pxToRem(16),
       }),
   }),
-};
 
-export default inputStyles;
+  inputContainer: (): ICSSInJSStyle => ({
+    position: 'relative',
+  }),
+};

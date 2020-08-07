@@ -1,22 +1,31 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import * as d3 from 'd3-format';
 
-interface IRootStyles {
-  height: string;
-  width: string;
+interface ILineChartBasicState {
+  width: number;
+  height: number;
 }
 
-export class LineChartBasicExample extends React.Component<{}, {}> {
+export class LineChartBasicExample extends React.Component<{}, ILineChartBasicState> {
   constructor(props: ILineChartProps) {
     super(props);
+    this.state = {
+      width: 700,
+      height: 300,
+    };
   }
 
   public render(): JSX.Element {
     return <div>{this._basicExample()}</div>;
   }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
 
   private _basicExample(): JSX.Element {
     const data: IChartProps = {
@@ -27,31 +36,48 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 217,
+              y: 216000,
+              onDataPointClick: () => alert('click on 217000'),
+            },
+            {
+              x: new Date('2020-03-03T10:00:00.000Z'),
+              y: 218123,
+              onDataPointClick: () => alert('click on 217123'),
+            },
+            {
+              x: new Date('2020-03-03T11:00:00.000Z'),
+              y: 217124,
+              onDataPointClick: () => alert('click on 217124'),
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 248,
+              y: 248000,
+              onDataPointClick: () => alert('click on 248000'),
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 252,
+              y: 252000,
+              onDataPointClick: () => alert('click on 252000'),
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 274,
+              y: 274000,
+              onDataPointClick: () => alert('click on 274000'),
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 260,
+              y: 260000,
+              onDataPointClick: () => alert('click on 260000'),
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300,
+              y: 300000,
+              onDataPointClick: () => alert('click on 300000'),
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 218,
+              y: 218000,
+              onDataPointClick: () => alert('click on 218000'),
             },
           ],
           color: DefaultPalette.blue,
@@ -62,48 +88,59 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 297,
+              y: 297000,
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 284,
+              y: 284000,
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282,
+              y: 282000,
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 294,
+              y: 294000,
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 224,
+              y: 224000,
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300,
+              y: 300000,
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 298,
+              y: 298000,
             },
           ],
           color: DefaultPalette.green,
         },
       ],
     };
-    const rootStyle: IRootStyles = { width: '700px', height: '300px' };
+
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+    const margins = { left: 35, top: 20, bottom: 35, right: 20 };
+
     return (
-      <div className={mergeStyles(rootStyle)}>
-        <LineChart
-          data={data}
-          legendsOverflowText={'Overflow Items'}
-          yMinValue={200}
-          yMaxValue={301}
-          yAxisTickFormat={d3.format('$,')}
-        />
-      </div>
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div style={rootStyle}>
+          <LineChart
+            data={data}
+            legendsOverflowText={'Overflow Items'}
+            yMinValue={200}
+            yMaxValue={301}
+            height={this.state.height}
+            width={this.state.width}
+            margins={margins}
+          />
+        </div>
+      </>
     );
   }
 }

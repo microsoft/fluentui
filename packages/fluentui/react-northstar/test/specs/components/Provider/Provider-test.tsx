@@ -1,10 +1,13 @@
+import { useFluentContext, RendererContext } from '@fluentui/react-bindings';
+import { CreateRenderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
-import { createRenderer } from 'src/utils/felaRenderer';
+import * as faker from 'faker';
 import * as React from 'react';
 
-import Provider from 'src/components/Provider/Provider';
-import ProviderConsumer from 'src/components/Provider/ProviderConsumer';
+import { Provider } from 'src/components/Provider/Provider';
+import { ProviderConsumer } from 'src/components/Provider/ProviderConsumer';
+import { PortalInner } from 'src/components/Portal/PortalInner';
 
 const createDocumentMock = (): Document => {
   const externalDocument = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
@@ -37,20 +40,20 @@ describe('Provider', () => {
     const innerTheme = { siteVariables: { secondary: 'yellow' } };
 
     test('do not overwrite by default', () => {
-      const wrapper = mount(
+      const getContext = jest.fn();
+      const Consumer: React.FC = () => {
+        getContext(useFluentContext());
+        return null;
+      };
+      mount(
         <Provider theme={outerTheme}>
           <Provider theme={innerTheme}>
-            <span />
+            <Consumer />
           </Provider>
         </Provider>,
       );
 
-      expect(
-        wrapper
-          .find('ThemeProvider')
-          .at(1)
-          .prop('theme'),
-      ).toEqual(
+      expect(getContext).toBeCalledWith(
         expect.objectContaining({
           theme: expect.objectContaining({
             siteVariables: {
@@ -64,20 +67,20 @@ describe('Provider', () => {
     });
 
     test('does overwrite when is true', () => {
-      const wrapper = mount(
+      const getContext = jest.fn();
+      const Consumer: React.FC = () => {
+        getContext(useFluentContext());
+        return null;
+      };
+      mount(
         <Provider theme={outerTheme}>
           <Provider overwrite theme={innerTheme}>
-            <span />
+            <Consumer />
           </Provider>
         </Provider>,
       );
 
-      expect(
-        wrapper
-          .find('ThemeProvider')
-          .at(1)
-          .prop('theme'),
-      ).toEqual(
+      expect(getContext).toBeCalledWith(
         expect.objectContaining({
           theme: expect.objectContaining({
             siteVariables: {
@@ -205,6 +208,11 @@ describe('Provider', () => {
   });
 
   describe('calls provided renderer', () => {
+    //
+    // We don't support changing renderer on the fly.
+    // So mocks for `target` are required to create a new renderer.
+    //
+
     test('calls renderFont', () => {
       const theme: ThemeInput = {
         fontFaces: [
@@ -215,13 +223,19 @@ describe('Provider', () => {
           },
         ],
       };
-      const renderer = createRenderer();
-      const renderFont = jest.spyOn(renderer, 'renderFont');
+
+      const renderFont = jest.fn();
+      const createRenderer: CreateRenderer = () => ({
+        ...noopRenderer,
+        renderFont,
+      });
 
       mount(
-        <Provider theme={theme} renderer={renderer}>
-          <div />
-        </Provider>,
+        <RendererContext.Provider value={createRenderer}>
+          <Provider theme={theme} target={createDocumentMock()}>
+            <div />
+          </Provider>
+        </RendererContext.Provider>,
       );
 
       expect(renderFont).toHaveBeenCalled();
@@ -238,16 +252,22 @@ describe('Provider', () => {
         },
       ],
     };
-    const renderer = createRenderer();
-    const renderStatic = jest.spyOn(renderer, 'renderStatic');
+    const renderGlobal = jest.fn();
+
+    const createRenderer: CreateRenderer = () => ({
+      ...noopRenderer,
+      renderGlobal,
+    });
 
     mount(
-      <Provider theme={theme} renderer={renderer}>
-        <div />
-      </Provider>,
+      <RendererContext.Provider value={createRenderer}>
+        <Provider theme={theme} target={createDocumentMock()}>
+          <div />
+        </Provider>
+      </RendererContext.Provider>,
     );
 
-    expect(renderStatic).toHaveBeenCalled();
+    expect(renderGlobal).toHaveBeenCalled();
   });
 
   describe('target', () => {
@@ -285,6 +305,44 @@ describe('Provider', () => {
 
       // mousedown + touchstart + touchend + keyup + keydown
       expect(removeEventListener).toHaveBeenCalledTimes(5);
+    });
+  });
+
+  describe('document.body', () => {
+    it('adds an element to document.body', () => {
+      const className = faker.lorem.word();
+      const wrapper = mount(
+        <Provider className={className}>
+          <div />
+        </Provider>,
+      );
+
+      expect(document.querySelector(`.${className}`)).toBeInTheDocument();
+
+      // element should be removed on unmount
+      wrapper.unmount();
+      expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
+    });
+
+    it('reacts on "className" update and keeps node in HTML tree', () => {
+      const className = faker.lorem.word();
+      const wrapper = mount(
+        <Provider className={className}>
+          <PortalInner>
+            <div id="sample" />
+          </PortalInner>
+        </Provider>,
+      );
+
+      expect(document.querySelector(`.${className}`)).toBeInTheDocument();
+      expect(document.querySelector(`.${className} #sample`)).toBeInTheDocument();
+
+      const newClassName = faker.lorem.word();
+      wrapper.setProps({ className: newClassName });
+
+      expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
+      expect(document.querySelector(`.${newClassName}`)).toBeInTheDocument();
+      expect(document.querySelector(`.${newClassName} #sample`)).toBeInTheDocument();
     });
   });
 });

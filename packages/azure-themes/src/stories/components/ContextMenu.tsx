@@ -51,7 +51,6 @@ const menuItems: IContextualMenuItem[] = [
     name: 'Link click',
     href: 'http://bing.com',
     onClick: (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-      alert('Link clicked');
       ev.preventDefault();
     },
     target: '_blank',

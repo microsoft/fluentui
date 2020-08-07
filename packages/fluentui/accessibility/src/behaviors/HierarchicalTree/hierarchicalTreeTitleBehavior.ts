@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -11,7 +11,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const hierarchicalTreeTitleBehavior: Accessibility<TreeTitleBehavior> = props => ({
+export const hierarchicalTreeTitleBehavior: Accessibility<HierarchicalTreeTitleBehaviorProps> = props => ({
   attributes: {
     root: {
       ...(!props.hasSubtree && {
@@ -24,15 +24,13 @@ const hierarchicalTreeTitleBehavior: Accessibility<TreeTitleBehavior> = props =>
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },
 });
 
-export default hierarchicalTreeTitleBehavior;
-
-type TreeTitleBehavior = {
+export type HierarchicalTreeTitleBehaviorProps = {
   /** Indicated if tree title has a subtree */
   hasSubtree?: boolean;
   /** If subtree is opened. */

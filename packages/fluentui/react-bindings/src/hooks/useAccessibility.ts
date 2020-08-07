@@ -1,10 +1,10 @@
 import { Accessibility, AccessibilityAttributesBySlot } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import getAccessibility from '../accessibility/getAccessibility';
+import { getAccessibility } from '../accessibility/getAccessibility';
 import { AccessibilityActionHandlers, KeyboardEventHandler, ReactAccessibilityBehavior } from '../accessibility/types';
-import FocusZone from '../FocusZone/FocusZone';
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import { FocusZone } from '../FocusZone/FocusZone';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 type UseAccessibilityOptions<Props> = {
   actionHandlers?: AccessibilityActionHandlers;
@@ -18,6 +18,7 @@ type UseAccessibilityResult = (<SlotProps extends Record<string, any> & UserProp
   slotProps: SlotProps,
 ) => MergedProps<SlotProps>) & {
   unstable_wrapWithFocusZone: (children: React.ReactElement) => React.ReactElement;
+  unstable_behaviorDefinition: () => ReactAccessibilityBehavior;
 };
 
 type UserProps = {
@@ -28,7 +29,10 @@ type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps &
   Partial<AccessibilityAttributesBySlot> &
   UserProps;
 
-const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAccessibilityOptions<Props> = {}) => {
+export const useAccessibility = <Props>(
+  behavior: Accessibility<Props>,
+  options: UseAccessibilityOptions<Props> = {},
+) => {
   const { actionHandlers, debugName = 'Undefined', mapPropsToBehavior = () => ({}), rtl = false } = options;
 
   const definition = getAccessibility(debugName, behavior, mapPropsToBehavior(), rtl, actionHandlers);
@@ -91,7 +95,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
     return element;
   };
 
+  getA11yProps.unstable_behaviorDefinition = () => definition;
+
   return getA11yProps;
 };
-
-export default useAccessibility;

@@ -11,6 +11,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { ChartHoverCard } from '@uifabric/charting';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -23,12 +24,14 @@ export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
   selectedLegendTitle: string;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
   isLegendHovered: boolean;
   isLegendSelected: boolean;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -52,6 +55,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       color: '',
       isLegendHovered: false,
       isLegendSelected: false,
+      xCalloutValue: '',
+      yCalloutValue: '',
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
@@ -59,12 +64,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { barHeight, data, theme, hideRatio, hideLegend, styles, href, hideDenominator } = this.props;
+    const { barHeight, data, theme, hideRatio, hideLegend, styles, href, hideDenominator, hideTooltip } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, hideRatio!, palette);
-    const bars: JSX.Element[] = [];
-    data!.map((singleChartData: IChartProps, index: number) => {
+    const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
         singleChartData!,
         barHeight!,
@@ -73,7 +77,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         hideDenominator![index],
         href,
       );
-      bars.push(<div key={index}>{singleChartBars}</div>);
+      return <div key={index}>{singleChartBars}</div>;
     });
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
@@ -84,21 +88,21 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       <div className={this._classNames.root}>
         {bars}
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        {isCalloutVisible ? (
-          <Callout
-            gapSpace={10}
-            isBeakVisible={false}
-            target={this.state.refSelected}
-            setInitialFocus={true}
-            directionalHint={DirectionalHint.topRightEdge}
-            id={this._calloutId}
-          >
-            <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
-              <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
-            </div>
-          </Callout>
-        ) : null}
+        <Callout
+          gapSpace={15}
+          isBeakVisible={false}
+          target={this.state.refSelected}
+          setInitialFocus={true}
+          hidden={!(!hideTooltip && isCalloutVisible)}
+          directionalHint={DirectionalHint.topRightEdge}
+          id={this._calloutId}
+        >
+          <ChartHoverCard
+            Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+            YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+            color={this.state.color}
+          />
+        </Callout>
       </div>
     );
   }
@@ -146,17 +150,51 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         <g
           key={index}
           className={point.placeHolder ? this._classNames.placeHolderOnHover : this._classNames.opacityChangeOnHover}
+          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGGElement) => {
             this._refCallback(e, point.legend!);
           }}
           data-is-focusable={true}
           focusable={'true'}
-          onFocus={this._onBarFocus.bind(this, point.legend!, pointData, color)}
+          // eslint-disable-next-line react/jsx-no-bind
+          onFocus={this._onBarFocus.bind(
+            this,
+            point.legend!,
+            pointData,
+            color,
+            point.xAxisCalloutData!,
+            point.yAxisCalloutData!,
+          )}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
-          onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, pointData, color)}
-          onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, pointData, color)}
+          // eslint-disable-next-line react/jsx-no-bind
+          onMouseOver={
+            point.placeHolder
+              ? undefined
+              : this._onBarHover.bind(
+                  this,
+                  point.legend!,
+                  pointData,
+                  color,
+                  point.xAxisCalloutData!,
+                  point.yAxisCalloutData!,
+                )
+          }
+          // eslint-disable-next-line react/jsx-no-bind
+          onMouseMove={
+            point.placeHolder
+              ? undefined
+              : this._onBarHover.bind(
+                  this,
+                  point.legend!,
+                  pointData,
+                  color,
+                  point.xAxisCalloutData!,
+                  point.yAxisCalloutData!,
+                )
+          }
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
@@ -165,14 +203,24 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
     if (data.chartData!.length === 0) {
       bars.push(
-        <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
+        <g
+          key={0}
+          className={this._classNames.noData}
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={this._redirectToUrl.bind(this, href)}
+        >
           <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
         </g>,
       );
     }
     if (total === 0) {
       bars.push(
-        <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
+        <g
+          key={'empty'}
+          className={this._classNames.noData}
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={this._redirectToUrl.bind(this, href)}
+        >
           <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
         </g>,
       );
@@ -209,12 +257,18 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
-  private _onBarFocus(legendText: string, pointData: number, color: string): void {
+  private _onBarFocus(
+    legendText: string,
+    pointData: number,
+    color: string,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
+  ): void {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
     ) {
-      this.state.refArray.map((obj: IRefArrayData) => {
+      this.state.refArray.forEach((obj: IRefArrayData) => {
         if (obj.legendText === legendText) {
           this.setState({
             refSelected: obj.refElement,
@@ -222,6 +276,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             selectedLegendTitle: legendText,
             dataForHoverCard: pointData,
             color: color,
+            xCalloutValue: xAxisCalloutData,
+            yCalloutValue: yAxisCalloutData,
           });
         }
       });
@@ -255,12 +311,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSX.Element => {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
-    data.map((singleChartData: IChartProps, index: number) => {
+    data.forEach((singleChartData: IChartProps, index: number) => {
       const validChartData = singleChartData.chartData!.filter((_: IChartDataPoint) => !_.placeHolder);
       if (validChartData!.length < 3) {
         const hideNumber = hideRatio[index] === undefined ? false : hideRatio[index];
         if (hideNumber) {
-          validChartData!.map((point: IChartDataPoint) => {
+          validChartData!.forEach((point: IChartDataPoint) => {
             const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
             const checkSimilarLegends = actions.filter(
               (leg: ILegend) => leg.title === point.legend! && leg.color === color,
@@ -285,7 +341,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           });
         }
       } else {
-        validChartData!.map((point: IChartDataPoint) => {
+        validChartData!.forEach((point: IChartDataPoint) => {
           const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
           const checkSimilarLegends = actions.filter(
             (leg: ILegend) => leg.title === point.legend! && leg.color === color,
@@ -345,7 +401,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }
@@ -354,9 +410,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     customMessage: string,
     pointData: number,
     color: string,
+    xAxisCalloutData: string,
+    yAxisCalloutData: string,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
+
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)
@@ -367,6 +426,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         selectedLegendTitle: customMessage,
         dataForHoverCard: pointData,
         color: color,
+        xCalloutValue: xAxisCalloutData,
+        yCalloutValue: yAxisCalloutData,
       });
     }
   }

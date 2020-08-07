@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/web-components",
+  "entries": [
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@fluentui/web-components_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: update package namespace and update control names to prefix with fluent",
+            "author": "chhol@microsoft.com",
+            "commit": "1a3c2f87559c3a89cf79735ce974a939ec930bc6",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    }
+  ]
+}

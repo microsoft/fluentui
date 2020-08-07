@@ -101,15 +101,32 @@
     display: none !important;
   }
 
+  .c-uhfh .c-show-pipe::before {
+    color: #737373 !important
+  }
+
+  #uhfCatLogo {
+    color: #737373 !important
+  }
+
   @media screen and (min-width: $uhf-screen-min-mobile) {
     // Align logo with left nav
     .c-uhfh > div {
-      padding: 0 $App-padding-right-sm 0 $App-padding-left-sm;
+      padding: 0 $App-padding-right-lg 0 $App-padding-left-lg !important;
+    }
+
+    .c-uhfh-gcontainer-st {
+      max-width: 1636px !important;
     }
 
     #uhfLogo {
       padding: 16px 6px 16px 0;
       width: 125px;
     }
+  }
+
+  /* Hide the YouTube TOC link being shown incorrectly by the shared footer. */
+  a[href="https://www.youtube.com/t/terms"] {
+    display: none !important;
   }
 }

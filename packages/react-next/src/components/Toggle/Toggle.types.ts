@@ -18,7 +18,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Render the root element as another type.
    */
-  as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+  as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
 
   /**
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing
@@ -103,7 +103,9 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
 
   /**
-   * Optional keytip for this toggle
+   * Optional keytip.
+   *
+   * @deprecated This no longer works. Use `useKeytipData` hook instead.
    */
   keytipProps?: IKeytipProps;
 
@@ -183,3 +185,20 @@ export interface IToggleStyles {
    */
   text: IStyle;
 }
+
+/**
+ * {@docCategory Toggle}
+ */
+export interface IToggleSlots {}
+
+/**
+ * {@docCategory Toggle}
+ */
+export type IToggleSlotProps = {
+  [key in keyof IToggleSlots]: IToggleProps[key];
+};
+
+/**
+ * {@docCategory Toggle}
+ */
+export interface IToggleOptions {}

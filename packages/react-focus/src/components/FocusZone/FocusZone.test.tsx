@@ -2,11 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import { getCode, EnterKey } from '@fluentui/keyboard-key';
 import { setRTL, KeyCodes } from '@uifabric/utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
 
-// tslint:disable:typedef jsx-no-lambda no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -1398,7 +1399,7 @@ describe('FocusZone', () => {
   });
 
   it('skips subzone elements until manually entered', () => {
-    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
@@ -1480,7 +1481,7 @@ describe('FocusZone', () => {
   });
 
   it('skips child focusZone elements until manually entered', () => {
-    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
@@ -1630,7 +1631,7 @@ describe('FocusZone', () => {
   });
 
   it('Focus is not affected by readOnly inputs with values', () => {
-    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => e.which === KeyCodes.enter;
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean => getCode(e) === EnterKey;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>

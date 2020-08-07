@@ -15,7 +15,7 @@ import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
-import { copyToClipboard } from '@uifabric/experiments/src/components/SelectedItemsList/utils/copyToClipboard';
+import { copyToClipboard } from '../SelectedItemsList/index';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -35,10 +35,17 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectPreviousSuggestion,
     selectNextSuggestion,
   } = useFloatingSuggestionItems(suggestions, selectedSuggestionIndex, isSuggestionsVisible);
-  const { selectedItems, addItems, removeItems, removeItemAt, removeSelectedItems, unselectAll } = useSelectedItems(
-    selection,
-    props.selectedItemsListProps.selectedItems,
-  );
+
+  const {
+    selectedItems,
+    addItems,
+    removeItems,
+    removeItemAt,
+    removeSelectedItems,
+    unselectAll,
+    getSelectedItems,
+    setSelectedItems,
+  } = useSelectedItems(selection, props.selectedItemsListProps.selectedItems);
 
   const _onSelectionChanged = () => {
     showPicker(false);
@@ -52,14 +59,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     inputProps,
     onRenderSelectedItems,
     selectedItemsListProps,
-    onRederFloatingSuggestions,
+    onRenderFloatingSuggestions,
     floatingSuggestionProps,
     headerComponent,
     onInputChange,
   } = props;
-
-  const activeDescendant = '';
-  const isExpanded = true;
 
   const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which !== KeyCodes.backspace) {
@@ -77,10 +81,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       ) {
         showPicker(false);
         ev.preventDefault();
+        if (props.selectedItemsListProps.onItemsRemoved) {
+          props.selectedItemsListProps.onItemsRemoved([selectedItems[selectedItems.length - 1]]);
+        }
         removeItemAt(selectedItems.length - 1);
       } else if (focusedItemIndices.length > 0) {
         showPicker(false);
         ev.preventDefault();
+        if (props.selectedItemsListProps.onItemsRemoved) {
+          props.selectedItemsListProps.onItemsRemoved(getSelectedItems());
+        }
         removeSelectedItems();
         input.current?.focus();
       }
@@ -150,6 +160,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       ev.preventDefault();
       // Pass current selected items
       props.onPaste(inputText, selectedItems);
+      setSelectedItems(selectedItems);
+      selection.setItems(selectedItems);
     }
   };
 
@@ -168,24 +180,31 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
     showPicker(false);
   };
+  const _onFloatingSuggestionRemoved = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
+    if (props.floatingSuggestionProps.onRemoveSuggestion) {
+      props.floatingSuggestionProps.onRemoveSuggestion(ev, item);
+    }
+    // We want to keep showing the picker to show the user that the entry has been removed from the list.
+    showPicker(true);
+  };
   const _onSuggestionSelected = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
+    addItems([item.item]);
     if (props.floatingSuggestionProps.onSuggestionSelected) {
       props.floatingSuggestionProps.onSuggestionSelected(ev, item);
     }
-    addItems([item.item]);
     if (input.current) {
       input.current.clear();
     }
     showPicker(false);
   };
   const _onRemoveSelectedItems = (itemsToRemove: T[]) => {
+    removeItems(itemsToRemove);
     if (props.selectedItemsListProps.onItemsRemoved) {
       props.selectedItemsListProps.onItemsRemoved(itemsToRemove);
     }
-    removeItems(itemsToRemove);
   };
   const _renderFloatingPicker = () =>
-    onRederFloatingSuggestions({
+    onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
       targetElement: input.current?.inputElement,
       isSuggestionsVisible: isSuggestionsShown,
@@ -194,38 +213,53 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
       onSuggestionSelected: _onSuggestionSelected,
       onKeyDown: _onInputKeyDown,
+      onRemoveSuggestion: _onFloatingSuggestionRemoved,
     });
 
   return (
     <div
       ref={rootRef}
       className={css('ms-BasePicker ms-BaseExtendedPicker', className ? className : '')}
+      /* eslint-disable react/jsx-no-bind */
       onKeyDown={_onBackspace}
       onCopy={_onCopy}
+      /* eslint-enable react/jsx-no-bind */
     >
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
         <MarqueeSelection selection={selection} isEnabled={true}>
           <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', classNames.pickerText)} role={'list'}>
+            <div className={css('ms-BasePicker-text', classNames.pickerText)}>
               {headerComponent}
               {_renderSelectedItemsList()}
               {_canAddItems() && (
-                <Autofill
-                  {...(inputProps as IInputProps)}
-                  className={css('ms-BasePicker-input', classNames.pickerInput)}
-                  ref={input}
-                  onFocus={_onInputFocus}
-                  onClick={_onInputClick}
-                  onInputValueChange={_onInputChange}
-                  aria-activedescendant={activeDescendant}
-                  aria-owns={isExpanded ? 'suggestion-list' : undefined}
-                  aria-expanded={isExpanded}
-                  aria-haspopup="true"
+                <div
+                  aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
+                  aria-expanded={isSuggestionsShown}
+                  aria-haspopup="listbox"
                   role="combobox"
-                  disabled={false}
-                  onPaste={_onPaste}
-                  onKeyDown={_onInputKeyDown}
-                />
+                >
+                  <Autofill
+                    {...(inputProps as IInputProps)}
+                    className={css('ms-BasePicker-input', classNames.pickerInput)}
+                    ref={input}
+                    /* eslint-disable react/jsx-no-bind */
+                    onFocus={_onInputFocus}
+                    onClick={_onInputClick}
+                    onInputValueChange={_onInputChange}
+                    /* eslint-enable react/jsx-no-bind */
+                    aria-autocomplete="list"
+                    aria-activedescendant={
+                      isSuggestionsShown && focusItemIndex >= 0
+                        ? 'FloatingSuggestionsItemId-' + focusItemIndex
+                        : undefined
+                    }
+                    disabled={false}
+                    /* eslint-disable react/jsx-no-bind */
+                    onPaste={_onPaste}
+                    onKeyDown={_onInputKeyDown}
+                    /* eslint-enable react/jsx-no-bind */
+                  />
+                </div>
               )}
             </div>
           </SelectionZone>

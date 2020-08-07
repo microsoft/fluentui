@@ -1,8 +1,54 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 01 May 2020 12:28:41 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jul 2020 12:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.2.0)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.49..@uifabric/azure-themes_v7.2.0)
+
+### Minor changes
+
+- High contrast light + dark themes ([PR #14193](https://github.com/microsoft/fluentui/pull/14193) by jagaheri@microsoft.com)
+
+## [7.1.49](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.49)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.43..@uifabric/azure-themes_v7.1.49)
+
+### Patches
+
+- Fix choicegroup's disabled style for Azure theme ([PR #14190](https://github.com/microsoft/fluentui/pull/14190) by hyoshi@microsoft.com)
+
+## [7.1.43](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.43)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.41..@uifabric/azure-themes_v7.1.43)
+
+### Patches
+
+- style updates per devops  ([PR #14014](https://github.com/microsoft/fluentui/pull/14014) by jagaheri@microsoft.com)
+
+## [7.1.40](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.40)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.31..@uifabric/azure-themes_v7.1.40)
+
+### Patches
+
+- Fixed primary button color on expand ([PR #13878](https://github.com/microsoft/fluentui/pull/13878) by 67673432+q-xg@users.noreply.github.com)
+- undefined ([PR #13959](https://github.com/microsoft/fluentui/pull/13959) by jagaheri@microsoft.com)
+
+## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.3)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.0..@uifabric/azure-themes_v7.1.3)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.0)
 

@@ -1,6 +1,5 @@
-import getKeyDownHandlers from '../../src/accessibility/getKeyDownHandlers';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { getKeyDownHandlers } from '../../src/accessibility/getKeyDownHandlers';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { KeyActions } from '@fluentui/accessibility';
 
 const testKeyCode = keyboardKey.ArrowRight;

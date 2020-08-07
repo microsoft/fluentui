@@ -472,7 +472,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: none;
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -607,7 +606,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  border: none;
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -760,7 +758,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1229,10 +1226,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
   tabIndex={-1}
 >
   <div
-    className=
-        ms-TeachingBubble-header
-        ms-TeachingBubble-image
-
+    className="ms-TeachingBubble-header ms-TeachingBubble-image"
   >
     <div
       className=

@@ -28,7 +28,7 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
     }, timeout);
 
     return () => clearTimeout(timeoutId.current);
-  }, [copied]);
+  }, [copied, timeout]);
 
   const handleTriggerClick = React.useCallback(
     (e: React.MouseEvent, ...args) => {
@@ -40,6 +40,8 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
       copyToClipboard(value);
       _.invoke(trigger.props, 'onClick', e, ...args);
     },
+    // TODO: This is intentional, but may be buggy. Should be fixed later
+    // eslint-disable-next-line
     [value],
   );
 

@@ -12,17 +12,18 @@ import {
   createShorthandFactory,
   UIComponentProps,
 } from '../../utils';
-import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import Box, { BoxProps } from '../Box/Box';
 import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
+  ComponentWithAs,
+  useTelemetry,
+  useStyles,
+  useFluentContext,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+} from '@fluentui/react-bindings';
+
+import { Box, BoxProps } from '../Box/Box';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface TableCellProps
   extends UIComponentProps,
@@ -51,8 +52,11 @@ export const tableCellSlotClassNames: TableCellSlotClassNames = {
   content: `${tableCellClassName}__content`,
 };
 
-const TableCell: React.FC<WithAsProp<TableCellProps>> & FluentComponentStaticProps<TableCellProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * Component represents a table cell.
+ */
+export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponentStaticProps<TableCellProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
   setStart();
   const cellRef = React.useRef<HTMLElement>();
@@ -139,8 +143,3 @@ TableCell.defaultProps = {
 };
 
 TableCell.create = createShorthandFactory({ Component: TableCell, mappedProp: 'content' });
-
-/**
- * Component represents a table cell
- */
-export default withSafeTypeForAs<typeof TableCell, TableCellProps, 'div'>(TableCell);

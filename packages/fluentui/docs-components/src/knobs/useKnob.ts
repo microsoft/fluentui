@@ -3,7 +3,7 @@ import * as React from 'react';
 import { KnobContext } from './KnobContexts';
 import { KnobDefinition, UseKnobOptions } from './types';
 
-const useKnob = <T, O = unknown>(
+export const useKnob = <T, O = unknown>(
   options: UseKnobOptions<T> & { type: KnobDefinition['type'] } & O,
 ): [T, (newValue: T) => void] => {
   const { initialValue, name } = options;
@@ -14,16 +14,19 @@ const useKnob = <T, O = unknown>(
     knobContext.setKnobValue(name, newValue);
   };
 
-  React.useEffect(() => {
-    knobContext.registerKnob({
-      ...options,
-      value: initialValue,
-    });
+  React.useEffect(
+    () => {
+      knobContext.registerKnob({
+        ...options,
+        value: initialValue,
+      });
 
-    return () => knobContext.unregisterKnob(name);
-  }, [name]);
+      return () => knobContext.unregisterKnob(name);
+    },
+    // Fix dependencies if there will be any issues
+    // eslint-disable-next-line
+    [name],
+  );
 
   return [value, setValue];
 };
-
-export default useKnob;

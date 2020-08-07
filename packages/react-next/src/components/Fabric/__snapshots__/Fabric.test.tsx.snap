@@ -51,142 +51,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
     dir="ltr"
   >
     <div
-      className=
-          ms-Checkbox
-          is-enabled
-          {
-            display: flex;
-            position: relative;
-          }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #605e5c;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #201f1e;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #201f1e;
-          }
+      className="ms-Checkbox is-enabled"
     >
       <input
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
-        className=
-
-            {
-              background: none;
-              opacity: 0;
-              position: absolute;
-            }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
-              outline-offset: 2px;
-              outline: 1px solid #605e5c;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
-            }
-        id="checkbox-1"
-        onBlur={[Function]}
+        data-ktp-execute-target={true}
+        id="checkbox-0"
         onChange={[Function]}
-        onFocus={[Function]}
         type="checkbox"
       />
       <label
-        className=
-            ms-Checkbox-label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: flex-start;
-              cursor: pointer;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              position: relative;
-              text-align: left;
-              user-select: none;
-            }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
-            }
-        htmlFor="checkbox-1"
+        className="ms-Checkbox-label"
+        htmlFor="checkbox-0"
       >
         <div
-          className=
-              ms-Checkbox-checkbox
-              {
-                align-items: center;
-                border-radius: 2px;
-                border: 1px solid #323130;
-                box-sizing: border-box;
-                display: flex;
-                flex-shrink: 0;
-                height: 20px;
-                justify-content: center;
-                margin-right: 4px;
-                overflow: hidden;
-                position: relative;
-                transition-duration: 200ms;
-                transition-property: background, border, border-color;
-                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                width: 20px;
-              }
+          className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  opacity: 0;
-                  speak: none;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
-          className=
-              ms-Checkbox-text
-              {
-                color: #323130;
-                font-size: 14px;
-                line-height: 20px;
-                margin-left: 4px;
-              }
+          className="ms-Checkbox-text"
         >
           I am in ltr
         </span>
@@ -215,142 +117,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
       dir="rtl"
     >
       <div
-        className=
-            ms-Checkbox
-            is-enabled
-            {
-              display: flex;
-              position: relative;
-            }
-            &:hover .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-              border-color: Highlight;
-            }
-            &:focus .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            &:hover .ms-Checkbox-checkmark {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-              color: Highlight;
-            }
-            &:hover .ms-Checkbox-text {
-              color: #201f1e;
-            }
-            &:focus .ms-Checkbox-text {
-              color: #201f1e;
-            }
+        className="ms-Checkbox is-enabled"
       >
         <input
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
-          className=
-
-              {
-                background: none;
-                opacity: 0;
-                position: absolute;
-              }
-              .ms-Fabric--isFocusVisible &:focus + label::before {
-                outline-offset: 2px;
-                outline: 1px solid #605e5c;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
-              }
-          id="checkbox-2"
-          onBlur={[Function]}
+          data-ktp-execute-target={true}
+          id="checkbox-1"
           onChange={[Function]}
-          onFocus={[Function]}
           type="checkbox"
         />
         <label
-          className=
-              ms-Checkbox-label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: flex-start;
-                cursor: pointer;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
-                text-align: right;
-                user-select: none;
-              }
-              &::before {
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-              }
-          htmlFor="checkbox-2"
+          className="ms-Checkbox-label"
+          htmlFor="checkbox-1"
         >
           <div
-            className=
-                ms-Checkbox-checkbox
-                {
-                  align-items: center;
-                  border-radius: 2px;
-                  border: 1px solid #323130;
-                  box-sizing: border-box;
-                  display: flex;
-                  flex-shrink: 0;
-                  height: 20px;
-                  justify-content: center;
-                  margin-left: 4px;
-                  overflow: hidden;
-                  position: relative;
-                  transition-duration: 200ms;
-                  transition-property: background, border, border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
+            className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    opacity: 0;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
-            className=
-                ms-Checkbox-text
-                {
-                  color: #323130;
-                  font-size: 14px;
-                  line-height: 20px;
-                  margin-right: 4px;
-                }
+            className="ms-Checkbox-text"
           >
             I am in rtl, inside of ltr
           </span>
@@ -379,142 +183,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         dir="ltr"
       >
         <div
-          className=
-              ms-Checkbox
-              is-enabled
-              {
-                display: flex;
-                position: relative;
-              }
-              &:hover .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                border-color: Highlight;
-              }
-              &:focus .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              &:hover .ms-Checkbox-checkmark {
-                color: #605e5c;
-                opacity: 1;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                color: Highlight;
-              }
-              &:hover .ms-Checkbox-text {
-                color: #201f1e;
-              }
-              &:focus .ms-Checkbox-text {
-                color: #201f1e;
-              }
+          className="ms-Checkbox is-enabled"
         >
           <input
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
-            className=
-
-                {
-                  background: none;
-                  opacity: 0;
-                  position: absolute;
-                }
-                .ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline-offset: 2px;
-                  outline: 1px solid #605e5c;
-                }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
-                }
-            id="checkbox-3"
-            onBlur={[Function]}
+            data-ktp-execute-target={true}
+            id="checkbox-2"
             onChange={[Function]}
-            onFocus={[Function]}
             type="checkbox"
           />
           <label
-            className=
-                ms-Checkbox-label
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  align-items: flex-start;
-                  cursor: pointer;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  position: relative;
-                  text-align: left;
-                  user-select: none;
-                }
-                &::before {
-                  bottom: 0px;
-                  content: "";
-                  left: 0px;
-                  pointer-events: none;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                }
-            htmlFor="checkbox-3"
+            className="ms-Checkbox-label"
+            htmlFor="checkbox-2"
           >
             <div
-              className=
-                  ms-Checkbox-checkbox
-                  {
-                    align-items: center;
-                    border-radius: 2px;
-                    border: 1px solid #323130;
-                    box-sizing: border-box;
-                    display: flex;
-                    flex-shrink: 0;
-                    height: 20px;
-                    justify-content: center;
-                    margin-right: 4px;
-                    overflow: hidden;
-                    position: relative;
-                    transition-duration: 200ms;
-                    transition-property: background, border, border-color;
-                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                    width: 20px;
-                  }
+              className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #ffffff;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      opacity: 0;
-                      speak: none;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      color: Window;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
-              className=
-                  ms-Checkbox-text
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    line-height: 20px;
-                    margin-left: 4px;
-                  }
+              className="ms-Checkbox-text"
             >
               I am in ltr, inside of rtl, inside of ltr
             </span>
@@ -546,142 +252,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
     dir="rtl"
   >
     <div
-      className=
-          ms-Checkbox
-          is-enabled
-          {
-            display: flex;
-            position: relative;
-          }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #605e5c;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #201f1e;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #201f1e;
-          }
+      className="ms-Checkbox is-enabled"
     >
       <input
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
-        className=
-
-            {
-              background: none;
-              opacity: 0;
-              position: absolute;
-            }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
-              outline-offset: 2px;
-              outline: 1px solid #605e5c;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
-            }
-        id="checkbox-4"
-        onBlur={[Function]}
+        data-ktp-execute-target={true}
+        id="checkbox-3"
         onChange={[Function]}
-        onFocus={[Function]}
         type="checkbox"
       />
       <label
-        className=
-            ms-Checkbox-label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: flex-start;
-              cursor: pointer;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              position: relative;
-              text-align: right;
-              user-select: none;
-            }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
-            }
-        htmlFor="checkbox-4"
+        className="ms-Checkbox-label"
+        htmlFor="checkbox-3"
       >
         <div
-          className=
-              ms-Checkbox-checkbox
-              {
-                align-items: center;
-                border-radius: 2px;
-                border: 1px solid #323130;
-                box-sizing: border-box;
-                display: flex;
-                flex-shrink: 0;
-                height: 20px;
-                justify-content: center;
-                margin-left: 4px;
-                overflow: hidden;
-                position: relative;
-                transition-duration: 200ms;
-                transition-property: background, border, border-color;
-                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                width: 20px;
-              }
+          className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  opacity: 0;
-                  speak: none;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
-          className=
-              ms-Checkbox-text
-              {
-                color: #323130;
-                font-size: 14px;
-                line-height: 20px;
-                margin-right: 4px;
-              }
+          className="ms-Checkbox-text"
         >
           I am in rtl
         </span>
@@ -710,142 +318,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
       dir="ltr"
     >
       <div
-        className=
-            ms-Checkbox
-            is-enabled
-            {
-              display: flex;
-              position: relative;
-            }
-            &:hover .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-              border-color: Highlight;
-            }
-            &:focus .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            &:hover .ms-Checkbox-checkmark {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-              color: Highlight;
-            }
-            &:hover .ms-Checkbox-text {
-              color: #201f1e;
-            }
-            &:focus .ms-Checkbox-text {
-              color: #201f1e;
-            }
+        className="ms-Checkbox is-enabled"
       >
         <input
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
-          className=
-
-              {
-                background: none;
-                opacity: 0;
-                position: absolute;
-              }
-              .ms-Fabric--isFocusVisible &:focus + label::before {
-                outline-offset: 2px;
-                outline: 1px solid #605e5c;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
-              }
-          id="checkbox-5"
-          onBlur={[Function]}
+          data-ktp-execute-target={true}
+          id="checkbox-4"
           onChange={[Function]}
-          onFocus={[Function]}
           type="checkbox"
         />
         <label
-          className=
-              ms-Checkbox-label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: flex-start;
-                cursor: pointer;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
-                text-align: left;
-                user-select: none;
-              }
-              &::before {
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-              }
-          htmlFor="checkbox-5"
+          className="ms-Checkbox-label"
+          htmlFor="checkbox-4"
         >
           <div
-            className=
-                ms-Checkbox-checkbox
-                {
-                  align-items: center;
-                  border-radius: 2px;
-                  border: 1px solid #323130;
-                  box-sizing: border-box;
-                  display: flex;
-                  flex-shrink: 0;
-                  height: 20px;
-                  justify-content: center;
-                  margin-right: 4px;
-                  overflow: hidden;
-                  position: relative;
-                  transition-duration: 200ms;
-                  transition-property: background, border, border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
+            className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    opacity: 0;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
-            className=
-                ms-Checkbox-text
-                {
-                  color: #323130;
-                  font-size: 14px;
-                  line-height: 20px;
-                  margin-left: 4px;
-                }
+            className="ms-Checkbox-text"
           >
             I am in ltr, inside of rtl
           </span>
@@ -874,142 +384,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
         dir="rtl"
       >
         <div
-          className=
-              ms-Checkbox
-              is-enabled
-              {
-                display: flex;
-                position: relative;
-              }
-              &:hover .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                border-color: Highlight;
-              }
-              &:focus .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              &:hover .ms-Checkbox-checkmark {
-                color: #605e5c;
-                opacity: 1;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                color: Highlight;
-              }
-              &:hover .ms-Checkbox-text {
-                color: #201f1e;
-              }
-              &:focus .ms-Checkbox-text {
-                color: #201f1e;
-              }
+          className="ms-Checkbox is-enabled"
         >
           <input
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
-            className=
-
-                {
-                  background: none;
-                  opacity: 0;
-                  position: absolute;
-                }
-                .ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline-offset: 2px;
-                  outline: 1px solid #605e5c;
-                }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
-                }
-            id="checkbox-6"
-            onBlur={[Function]}
+            data-ktp-execute-target={true}
+            id="checkbox-5"
             onChange={[Function]}
-            onFocus={[Function]}
             type="checkbox"
           />
           <label
-            className=
-                ms-Checkbox-label
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  align-items: flex-start;
-                  cursor: pointer;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  position: relative;
-                  text-align: right;
-                  user-select: none;
-                }
-                &::before {
-                  bottom: 0px;
-                  content: "";
-                  left: 0px;
-                  pointer-events: none;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                }
-            htmlFor="checkbox-6"
+            className="ms-Checkbox-label"
+            htmlFor="checkbox-5"
           >
             <div
-              className=
-                  ms-Checkbox-checkbox
-                  {
-                    align-items: center;
-                    border-radius: 2px;
-                    border: 1px solid #323130;
-                    box-sizing: border-box;
-                    display: flex;
-                    flex-shrink: 0;
-                    height: 20px;
-                    justify-content: center;
-                    margin-left: 4px;
-                    overflow: hidden;
-                    position: relative;
-                    transition-duration: 200ms;
-                    transition-property: background, border, border-color;
-                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                    width: 20px;
-                  }
+              className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #ffffff;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      opacity: 0;
-                      speak: none;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      color: Window;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
-              className=
-                  ms-Checkbox-text
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    line-height: 20px;
-                    margin-right: 4px;
-                  }
+              className="ms-Checkbox-text"
             >
               I am in rtl, inside of rtl, inside of rtl
             </span>
@@ -1046,142 +458,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
     dir="ltr"
   >
     <div
-      className=
-          ms-Checkbox
-          is-enabled
-          {
-            display: flex;
-            position: relative;
-          }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #605e5c;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #201f1e;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #201f1e;
-          }
+      className="ms-Checkbox is-enabled"
     >
       <input
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
-        className=
-
-            {
-              background: none;
-              opacity: 0;
-              position: absolute;
-            }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
-              outline-offset: 2px;
-              outline: 1px solid #605e5c;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
-            }
-        id="checkbox-7"
-        onBlur={[Function]}
+        data-ktp-execute-target={true}
+        id="checkbox-6"
         onChange={[Function]}
-        onFocus={[Function]}
         type="checkbox"
       />
       <label
-        className=
-            ms-Checkbox-label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: flex-start;
-              cursor: pointer;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              position: relative;
-              text-align: left;
-              user-select: none;
-            }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
-            }
-        htmlFor="checkbox-7"
+        className="ms-Checkbox-label"
+        htmlFor="checkbox-6"
       >
         <div
-          className=
-              ms-Checkbox-checkbox
-              {
-                align-items: center;
-                border-radius: 2px;
-                border: 1px solid #323130;
-                box-sizing: border-box;
-                display: flex;
-                flex-shrink: 0;
-                height: 20px;
-                justify-content: center;
-                margin-right: 4px;
-                overflow: hidden;
-                position: relative;
-                transition-duration: 200ms;
-                transition-property: background, border, border-color;
-                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                width: 20px;
-              }
+          className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  opacity: 0;
-                  speak: none;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
-          className=
-              ms-Checkbox-text
-              {
-                color: #323130;
-                font-size: 14px;
-                line-height: 20px;
-                margin-left: 4px;
-              }
+          className="ms-Checkbox-text"
         >
           I am in ltr
         </span>
@@ -1210,142 +524,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
       dir="rtl"
     >
       <div
-        className=
-            ms-Checkbox
-            is-enabled
-            {
-              display: flex;
-              position: relative;
-            }
-            &:hover .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-              border-color: Highlight;
-            }
-            &:focus .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            &:hover .ms-Checkbox-checkmark {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-              color: Highlight;
-            }
-            &:hover .ms-Checkbox-text {
-              color: #201f1e;
-            }
-            &:focus .ms-Checkbox-text {
-              color: #201f1e;
-            }
+        className="ms-Checkbox is-enabled"
       >
         <input
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
-          className=
-
-              {
-                background: none;
-                opacity: 0;
-                position: absolute;
-              }
-              .ms-Fabric--isFocusVisible &:focus + label::before {
-                outline-offset: 2px;
-                outline: 1px solid #605e5c;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
-              }
-          id="checkbox-8"
-          onBlur={[Function]}
+          data-ktp-execute-target={true}
+          id="checkbox-7"
           onChange={[Function]}
-          onFocus={[Function]}
           type="checkbox"
         />
         <label
-          className=
-              ms-Checkbox-label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: flex-start;
-                cursor: pointer;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
-                text-align: right;
-                user-select: none;
-              }
-              &::before {
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-              }
-          htmlFor="checkbox-8"
+          className="ms-Checkbox-label"
+          htmlFor="checkbox-7"
         >
           <div
-            className=
-                ms-Checkbox-checkbox
-                {
-                  align-items: center;
-                  border-radius: 2px;
-                  border: 1px solid #323130;
-                  box-sizing: border-box;
-                  display: flex;
-                  flex-shrink: 0;
-                  height: 20px;
-                  justify-content: center;
-                  margin-left: 4px;
-                  overflow: hidden;
-                  position: relative;
-                  transition-duration: 200ms;
-                  transition-property: background, border, border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
+            className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    opacity: 0;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
-            className=
-                ms-Checkbox-text
-                {
-                  color: #323130;
-                  font-size: 14px;
-                  line-height: 20px;
-                  margin-right: 4px;
-                }
+            className="ms-Checkbox-text"
           >
             I am in rtl, inside of ltr
           </span>
@@ -1374,142 +590,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         dir="ltr"
       >
         <div
-          className=
-              ms-Checkbox
-              is-enabled
-              {
-                display: flex;
-                position: relative;
-              }
-              &:hover .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                border-color: Highlight;
-              }
-              &:focus .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              &:hover .ms-Checkbox-checkmark {
-                color: #605e5c;
-                opacity: 1;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                color: Highlight;
-              }
-              &:hover .ms-Checkbox-text {
-                color: #201f1e;
-              }
-              &:focus .ms-Checkbox-text {
-                color: #201f1e;
-              }
+          className="ms-Checkbox is-enabled"
         >
           <input
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
-            className=
-
-                {
-                  background: none;
-                  opacity: 0;
-                  position: absolute;
-                }
-                .ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline-offset: 2px;
-                  outline: 1px solid #605e5c;
-                }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
-                }
-            id="checkbox-9"
-            onBlur={[Function]}
+            data-ktp-execute-target={true}
+            id="checkbox-8"
             onChange={[Function]}
-            onFocus={[Function]}
             type="checkbox"
           />
           <label
-            className=
-                ms-Checkbox-label
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  align-items: flex-start;
-                  cursor: pointer;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  position: relative;
-                  text-align: left;
-                  user-select: none;
-                }
-                &::before {
-                  bottom: 0px;
-                  content: "";
-                  left: 0px;
-                  pointer-events: none;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                }
-            htmlFor="checkbox-9"
+            className="ms-Checkbox-label"
+            htmlFor="checkbox-8"
           >
             <div
-              className=
-                  ms-Checkbox-checkbox
-                  {
-                    align-items: center;
-                    border-radius: 2px;
-                    border: 1px solid #323130;
-                    box-sizing: border-box;
-                    display: flex;
-                    flex-shrink: 0;
-                    height: 20px;
-                    justify-content: center;
-                    margin-right: 4px;
-                    overflow: hidden;
-                    position: relative;
-                    transition-duration: 200ms;
-                    transition-property: background, border, border-color;
-                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                    width: 20px;
-                  }
+              className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #ffffff;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      opacity: 0;
-                      speak: none;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      color: Window;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
-              className=
-                  ms-Checkbox-text
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    line-height: 20px;
-                    margin-left: 4px;
-                  }
+              className="ms-Checkbox-text"
             >
               I am in ltr, inside of rtl, inside of ltr
             </span>
@@ -1541,142 +659,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
     dir="rtl"
   >
     <div
-      className=
-          ms-Checkbox
-          is-enabled
-          {
-            display: flex;
-            position: relative;
-          }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #605e5c;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #201f1e;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #201f1e;
-          }
+      className="ms-Checkbox is-enabled"
     >
       <input
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
-        className=
-
-            {
-              background: none;
-              opacity: 0;
-              position: absolute;
-            }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
-              outline-offset: 2px;
-              outline: 1px solid #605e5c;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
-            }
-        id="checkbox-10"
-        onBlur={[Function]}
+        data-ktp-execute-target={true}
+        id="checkbox-9"
         onChange={[Function]}
-        onFocus={[Function]}
         type="checkbox"
       />
       <label
-        className=
-            ms-Checkbox-label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: flex-start;
-              cursor: pointer;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              position: relative;
-              text-align: right;
-              user-select: none;
-            }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
-            }
-        htmlFor="checkbox-10"
+        className="ms-Checkbox-label"
+        htmlFor="checkbox-9"
       >
         <div
-          className=
-              ms-Checkbox-checkbox
-              {
-                align-items: center;
-                border-radius: 2px;
-                border: 1px solid #323130;
-                box-sizing: border-box;
-                display: flex;
-                flex-shrink: 0;
-                height: 20px;
-                justify-content: center;
-                margin-left: 4px;
-                overflow: hidden;
-                position: relative;
-                transition-duration: 200ms;
-                transition-property: background, border, border-color;
-                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                width: 20px;
-              }
+          className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  opacity: 0;
-                  speak: none;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
-          className=
-              ms-Checkbox-text
-              {
-                color: #323130;
-                font-size: 14px;
-                line-height: 20px;
-                margin-right: 4px;
-              }
+          className="ms-Checkbox-text"
         >
           I am in rtl
         </span>
@@ -1705,142 +725,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
       dir="ltr"
     >
       <div
-        className=
-            ms-Checkbox
-            is-enabled
-            {
-              display: flex;
-              position: relative;
-            }
-            &:hover .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-              border-color: Highlight;
-            }
-            &:focus .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            &:hover .ms-Checkbox-checkmark {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-              color: Highlight;
-            }
-            &:hover .ms-Checkbox-text {
-              color: #201f1e;
-            }
-            &:focus .ms-Checkbox-text {
-              color: #201f1e;
-            }
+        className="ms-Checkbox is-enabled"
       >
         <input
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
-          className=
-
-              {
-                background: none;
-                opacity: 0;
-                position: absolute;
-              }
-              .ms-Fabric--isFocusVisible &:focus + label::before {
-                outline-offset: 2px;
-                outline: 1px solid #605e5c;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
-              }
-          id="checkbox-11"
-          onBlur={[Function]}
+          data-ktp-execute-target={true}
+          id="checkbox-10"
           onChange={[Function]}
-          onFocus={[Function]}
           type="checkbox"
         />
         <label
-          className=
-              ms-Checkbox-label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: flex-start;
-                cursor: pointer;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
-                text-align: left;
-                user-select: none;
-              }
-              &::before {
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-              }
-          htmlFor="checkbox-11"
+          className="ms-Checkbox-label"
+          htmlFor="checkbox-10"
         >
           <div
-            className=
-                ms-Checkbox-checkbox
-                {
-                  align-items: center;
-                  border-radius: 2px;
-                  border: 1px solid #323130;
-                  box-sizing: border-box;
-                  display: flex;
-                  flex-shrink: 0;
-                  height: 20px;
-                  justify-content: center;
-                  margin-right: 4px;
-                  overflow: hidden;
-                  position: relative;
-                  transition-duration: 200ms;
-                  transition-property: background, border, border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
+            className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    opacity: 0;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
-            className=
-                ms-Checkbox-text
-                {
-                  color: #323130;
-                  font-size: 14px;
-                  line-height: 20px;
-                  margin-left: 4px;
-                }
+            className="ms-Checkbox-text"
           >
             I am in ltr, inside of rtl
           </span>
@@ -1869,142 +791,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
         dir="rtl"
       >
         <div
-          className=
-              ms-Checkbox
-              is-enabled
-              {
-                display: flex;
-                position: relative;
-              }
-              &:hover .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                border-color: Highlight;
-              }
-              &:focus .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              &:hover .ms-Checkbox-checkmark {
-                color: #605e5c;
-                opacity: 1;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                color: Highlight;
-              }
-              &:hover .ms-Checkbox-text {
-                color: #201f1e;
-              }
-              &:focus .ms-Checkbox-text {
-                color: #201f1e;
-              }
+          className="ms-Checkbox is-enabled"
         >
           <input
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
-            className=
-
-                {
-                  background: none;
-                  opacity: 0;
-                  position: absolute;
-                }
-                .ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline-offset: 2px;
-                  outline: 1px solid #605e5c;
-                }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
-                }
-            id="checkbox-12"
-            onBlur={[Function]}
+            data-ktp-execute-target={true}
+            id="checkbox-11"
             onChange={[Function]}
-            onFocus={[Function]}
             type="checkbox"
           />
           <label
-            className=
-                ms-Checkbox-label
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  align-items: flex-start;
-                  cursor: pointer;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  position: relative;
-                  text-align: right;
-                  user-select: none;
-                }
-                &::before {
-                  bottom: 0px;
-                  content: "";
-                  left: 0px;
-                  pointer-events: none;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                }
-            htmlFor="checkbox-12"
+            className="ms-Checkbox-label"
+            htmlFor="checkbox-11"
           >
             <div
-              className=
-                  ms-Checkbox-checkbox
-                  {
-                    align-items: center;
-                    border-radius: 2px;
-                    border: 1px solid #323130;
-                    box-sizing: border-box;
-                    display: flex;
-                    flex-shrink: 0;
-                    height: 20px;
-                    justify-content: center;
-                    margin-left: 4px;
-                    overflow: hidden;
-                    position: relative;
-                    transition-duration: 200ms;
-                    transition-property: background, border, border-color;
-                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                    width: 20px;
-                  }
+              className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #ffffff;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      opacity: 0;
-                      speak: none;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      color: Window;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
-              className=
-                  ms-Checkbox-text
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    line-height: 20px;
-                    margin-right: 4px;
-                  }
+              className="ms-Checkbox-text"
             >
               I am in rtl, inside of rtl, inside of rtl
             </span>
@@ -2041,142 +865,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
     dir="ltr"
   >
     <div
-      className=
-          ms-Checkbox
-          is-enabled
-          {
-            display: flex;
-            position: relative;
-          }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #605e5c;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #201f1e;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #201f1e;
-          }
+      className="ms-Checkbox is-enabled"
     >
       <input
         aria-checked="false"
         aria-label="I am in ltr"
         checked={false}
-        className=
-
-            {
-              background: none;
-              opacity: 0;
-              position: absolute;
-            }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
-              outline-offset: 2px;
-              outline: 1px solid #605e5c;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
-            }
-        id="checkbox-13"
-        onBlur={[Function]}
+        data-ktp-execute-target={true}
+        id="checkbox-12"
         onChange={[Function]}
-        onFocus={[Function]}
         type="checkbox"
       />
       <label
-        className=
-            ms-Checkbox-label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: flex-start;
-              cursor: pointer;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              position: relative;
-              text-align: left;
-              user-select: none;
-            }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
-            }
-        htmlFor="checkbox-13"
+        className="ms-Checkbox-label"
+        htmlFor="checkbox-12"
       >
         <div
-          className=
-              ms-Checkbox-checkbox
-              {
-                align-items: center;
-                border-radius: 2px;
-                border: 1px solid #323130;
-                box-sizing: border-box;
-                display: flex;
-                flex-shrink: 0;
-                height: 20px;
-                justify-content: center;
-                margin-right: 4px;
-                overflow: hidden;
-                position: relative;
-                transition-duration: 200ms;
-                transition-property: background, border, border-color;
-                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                width: 20px;
-              }
+          className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  opacity: 0;
-                  speak: none;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
-          className=
-              ms-Checkbox-text
-              {
-                color: #323130;
-                font-size: 14px;
-                line-height: 20px;
-                margin-left: 4px;
-              }
+          className="ms-Checkbox-text"
         >
           I am in ltr
         </span>
@@ -2205,142 +931,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
       dir="rtl"
     >
       <div
-        className=
-            ms-Checkbox
-            is-enabled
-            {
-              display: flex;
-              position: relative;
-            }
-            &:hover .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-              border-color: Highlight;
-            }
-            &:focus .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            &:hover .ms-Checkbox-checkmark {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-              color: Highlight;
-            }
-            &:hover .ms-Checkbox-text {
-              color: #201f1e;
-            }
-            &:focus .ms-Checkbox-text {
-              color: #201f1e;
-            }
+        className="ms-Checkbox is-enabled"
       >
         <input
           aria-checked="false"
           aria-label="I am in rtl, inside of ltr"
           checked={false}
-          className=
-
-              {
-                background: none;
-                opacity: 0;
-                position: absolute;
-              }
-              .ms-Fabric--isFocusVisible &:focus + label::before {
-                outline-offset: 2px;
-                outline: 1px solid #605e5c;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
-              }
-          id="checkbox-14"
-          onBlur={[Function]}
+          data-ktp-execute-target={true}
+          id="checkbox-13"
           onChange={[Function]}
-          onFocus={[Function]}
           type="checkbox"
         />
         <label
-          className=
-              ms-Checkbox-label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: flex-start;
-                cursor: pointer;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
-                text-align: right;
-                user-select: none;
-              }
-              &::before {
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-              }
-          htmlFor="checkbox-14"
+          className="ms-Checkbox-label"
+          htmlFor="checkbox-13"
         >
           <div
-            className=
-                ms-Checkbox-checkbox
-                {
-                  align-items: center;
-                  border-radius: 2px;
-                  border: 1px solid #323130;
-                  box-sizing: border-box;
-                  display: flex;
-                  flex-shrink: 0;
-                  height: 20px;
-                  justify-content: center;
-                  margin-left: 4px;
-                  overflow: hidden;
-                  position: relative;
-                  transition-duration: 200ms;
-                  transition-property: background, border, border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
+            className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    opacity: 0;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
-            className=
-                ms-Checkbox-text
-                {
-                  color: #323130;
-                  font-size: 14px;
-                  line-height: 20px;
-                  margin-right: 4px;
-                }
+            className="ms-Checkbox-text"
           >
             I am in rtl, inside of ltr
           </span>
@@ -2369,142 +997,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         dir="ltr"
       >
         <div
-          className=
-              ms-Checkbox
-              is-enabled
-              {
-                display: flex;
-                position: relative;
-              }
-              &:hover .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                border-color: Highlight;
-              }
-              &:focus .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              &:hover .ms-Checkbox-checkmark {
-                color: #605e5c;
-                opacity: 1;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                color: Highlight;
-              }
-              &:hover .ms-Checkbox-text {
-                color: #201f1e;
-              }
-              &:focus .ms-Checkbox-text {
-                color: #201f1e;
-              }
+          className="ms-Checkbox is-enabled"
         >
           <input
             aria-checked="false"
             aria-label="I am in ltr, inside of rtl, inside of ltr"
             checked={false}
-            className=
-
-                {
-                  background: none;
-                  opacity: 0;
-                  position: absolute;
-                }
-                .ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline-offset: 2px;
-                  outline: 1px solid #605e5c;
-                }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
-                }
-            id="checkbox-15"
-            onBlur={[Function]}
+            data-ktp-execute-target={true}
+            id="checkbox-14"
             onChange={[Function]}
-            onFocus={[Function]}
             type="checkbox"
           />
           <label
-            className=
-                ms-Checkbox-label
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  align-items: flex-start;
-                  cursor: pointer;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  position: relative;
-                  text-align: left;
-                  user-select: none;
-                }
-                &::before {
-                  bottom: 0px;
-                  content: "";
-                  left: 0px;
-                  pointer-events: none;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                }
-            htmlFor="checkbox-15"
+            className="ms-Checkbox-label"
+            htmlFor="checkbox-14"
           >
             <div
-              className=
-                  ms-Checkbox-checkbox
-                  {
-                    align-items: center;
-                    border-radius: 2px;
-                    border: 1px solid #323130;
-                    box-sizing: border-box;
-                    display: flex;
-                    flex-shrink: 0;
-                    height: 20px;
-                    justify-content: center;
-                    margin-right: 4px;
-                    overflow: hidden;
-                    position: relative;
-                    transition-duration: 200ms;
-                    transition-property: background, border, border-color;
-                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                    width: 20px;
-                  }
+              className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #ffffff;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      opacity: 0;
-                      speak: none;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      color: Window;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
-              className=
-                  ms-Checkbox-text
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    line-height: 20px;
-                    margin-left: 4px;
-                  }
+              className="ms-Checkbox-text"
             >
               I am in ltr, inside of rtl, inside of ltr
             </span>
@@ -2536,142 +1066,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
     dir="rtl"
   >
     <div
-      className=
-          ms-Checkbox
-          is-enabled
-          {
-            display: flex;
-            position: relative;
-          }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #323130;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #605e5c;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #201f1e;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #201f1e;
-          }
+      className="ms-Checkbox is-enabled"
     >
       <input
         aria-checked="false"
         aria-label="I am in rtl"
         checked={false}
-        className=
-
-            {
-              background: none;
-              opacity: 0;
-              position: absolute;
-            }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
-              outline-offset: 2px;
-              outline: 1px solid #605e5c;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
-            }
-        id="checkbox-16"
-        onBlur={[Function]}
+        data-ktp-execute-target={true}
+        id="checkbox-15"
         onChange={[Function]}
-        onFocus={[Function]}
         type="checkbox"
       />
       <label
-        className=
-            ms-Checkbox-label
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: flex-start;
-              cursor: pointer;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              position: relative;
-              text-align: right;
-              user-select: none;
-            }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
-            }
-        htmlFor="checkbox-16"
+        className="ms-Checkbox-label"
+        htmlFor="checkbox-15"
       >
         <div
-          className=
-              ms-Checkbox-checkbox
-              {
-                align-items: center;
-                border-radius: 2px;
-                border: 1px solid #323130;
-                box-sizing: border-box;
-                display: flex;
-                flex-shrink: 0;
-                height: 20px;
-                justify-content: center;
-                margin-left: 4px;
-                overflow: hidden;
-                position: relative;
-                transition-duration: 200ms;
-                transition-property: background, border, border-color;
-                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                width: 20px;
-              }
+          className="ms-Checkbox-checkbox"
+          data-ktp-target={true}
         >
-          <i
+          <span
             aria-hidden={true}
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  opacity: 0;
-                  speak: none;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-icon-name="CheckMark"
+            className="ms-Checkbox-checkmark"
+            role="presentation"
+            style={Object {}}
           >
-            
-          </i>
+            <svg
+              viewBox="0 0 2048 2048"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+              />
+            </svg>
+          </span>
         </div>
         <span
           aria-hidden="true"
-          className=
-              ms-Checkbox-text
-              {
-                color: #323130;
-                font-size: 14px;
-                line-height: 20px;
-                margin-right: 4px;
-              }
+          className="ms-Checkbox-text"
         >
           I am in rtl
         </span>
@@ -2700,142 +1132,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
       dir="ltr"
     >
       <div
-        className=
-            ms-Checkbox
-            is-enabled
-            {
-              display: flex;
-              position: relative;
-            }
-            &:hover .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-              border-color: Highlight;
-            }
-            &:focus .ms-Checkbox-checkbox {
-              border-color: #323130;
-            }
-            &:hover .ms-Checkbox-checkmark {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-              color: Highlight;
-            }
-            &:hover .ms-Checkbox-text {
-              color: #201f1e;
-            }
-            &:focus .ms-Checkbox-text {
-              color: #201f1e;
-            }
+        className="ms-Checkbox is-enabled"
       >
         <input
           aria-checked="false"
           aria-label="I am in ltr, inside of rtl"
           checked={false}
-          className=
-
-              {
-                background: none;
-                opacity: 0;
-                position: absolute;
-              }
-              .ms-Fabric--isFocusVisible &:focus + label::before {
-                outline-offset: 2px;
-                outline: 1px solid #605e5c;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
-              }
-          id="checkbox-17"
-          onBlur={[Function]}
+          data-ktp-execute-target={true}
+          id="checkbox-16"
           onChange={[Function]}
-          onFocus={[Function]}
           type="checkbox"
         />
         <label
-          className=
-              ms-Checkbox-label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: flex-start;
-                cursor: pointer;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
-                text-align: left;
-                user-select: none;
-              }
-              &::before {
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                pointer-events: none;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-              }
-          htmlFor="checkbox-17"
+          className="ms-Checkbox-label"
+          htmlFor="checkbox-16"
         >
           <div
-            className=
-                ms-Checkbox-checkbox
-                {
-                  align-items: center;
-                  border-radius: 2px;
-                  border: 1px solid #323130;
-                  box-sizing: border-box;
-                  display: flex;
-                  flex-shrink: 0;
-                  height: 20px;
-                  justify-content: center;
-                  margin-right: 4px;
-                  overflow: hidden;
-                  position: relative;
-                  transition-duration: 200ms;
-                  transition-property: background, border, border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
+            className="ms-Checkbox-checkbox"
+            data-ktp-target={true}
           >
-            <i
+            <span
               aria-hidden={true}
-              className=
-                  ms-Checkbox-checkmark
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
-                    font-style: normal;
-                    font-weight: normal;
-                    opacity: 0;
-                    speak: none;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    color: Window;
-                  }
-              data-icon-name="CheckMark"
+              className="ms-Checkbox-checkmark"
+              role="presentation"
+              style={Object {}}
             >
-              
-            </i>
+              <svg
+                viewBox="0 0 2048 2048"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                />
+              </svg>
+            </span>
           </div>
           <span
             aria-hidden="true"
-            className=
-                ms-Checkbox-text
-                {
-                  color: #323130;
-                  font-size: 14px;
-                  line-height: 20px;
-                  margin-left: 4px;
-                }
+            className="ms-Checkbox-text"
           >
             I am in ltr, inside of rtl
           </span>
@@ -2864,142 +1198,44 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
         dir="rtl"
       >
         <div
-          className=
-              ms-Checkbox
-              is-enabled
-              {
-                display: flex;
-                position: relative;
-              }
-              &:hover .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                border-color: Highlight;
-              }
-              &:focus .ms-Checkbox-checkbox {
-                border-color: #323130;
-              }
-              &:hover .ms-Checkbox-checkmark {
-                color: #605e5c;
-                opacity: 1;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                color: Highlight;
-              }
-              &:hover .ms-Checkbox-text {
-                color: #201f1e;
-              }
-              &:focus .ms-Checkbox-text {
-                color: #201f1e;
-              }
+          className="ms-Checkbox is-enabled"
         >
           <input
             aria-checked="false"
             aria-label="I am in rtl, inside of rtl, inside of rtl"
             checked={false}
-            className=
-
-                {
-                  background: none;
-                  opacity: 0;
-                  position: absolute;
-                }
-                .ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline-offset: 2px;
-                  outline: 1px solid #605e5c;
-                }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
-                }
-            id="checkbox-18"
-            onBlur={[Function]}
+            data-ktp-execute-target={true}
+            id="checkbox-17"
             onChange={[Function]}
-            onFocus={[Function]}
             type="checkbox"
           />
           <label
-            className=
-                ms-Checkbox-label
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  align-items: flex-start;
-                  cursor: pointer;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  position: relative;
-                  text-align: right;
-                  user-select: none;
-                }
-                &::before {
-                  bottom: 0px;
-                  content: "";
-                  left: 0px;
-                  pointer-events: none;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                }
-            htmlFor="checkbox-18"
+            className="ms-Checkbox-label"
+            htmlFor="checkbox-17"
           >
             <div
-              className=
-                  ms-Checkbox-checkbox
-                  {
-                    align-items: center;
-                    border-radius: 2px;
-                    border: 1px solid #323130;
-                    box-sizing: border-box;
-                    display: flex;
-                    flex-shrink: 0;
-                    height: 20px;
-                    justify-content: center;
-                    margin-left: 4px;
-                    overflow: hidden;
-                    position: relative;
-                    transition-duration: 200ms;
-                    transition-property: background, border, border-color;
-                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                    width: 20px;
-                  }
+              className="ms-Checkbox-checkbox"
+              data-ktp-target={true}
             >
-              <i
+              <span
                 aria-hidden={true}
-                className=
-                    ms-Checkbox-checkmark
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #ffffff;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons";
-                      font-style: normal;
-                      font-weight: normal;
-                      opacity: 0;
-                      speak: none;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      color: Window;
-                    }
-                data-icon-name="CheckMark"
+                className="ms-Checkbox-checkmark"
+                role="presentation"
+                style={Object {}}
               >
-                
-              </i>
+                <svg
+                  viewBox="0 0 2048 2048"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1837 557L768 1627l-557-558 90-90 467 466 979-978 90 90z"
+                  />
+                </svg>
+              </span>
             </div>
             <span
               aria-hidden="true"
-              className=
-                  ms-Checkbox-text
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    line-height: 20px;
-                    margin-right: 4px;
-                  }
+              className="ms-Checkbox-text"
             >
               I am in rtl, inside of rtl, inside of rtl
             </span>

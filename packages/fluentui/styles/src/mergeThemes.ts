@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import callable from './callable';
+import { callable } from './callable';
 import {
   ComponentSlotStyle,
   ComponentSlotStylesInput,
@@ -21,10 +21,10 @@ import {
 } from './types';
 
 import { isEnabled as isDebugEnabled } from './debugEnabled';
-import deepmerge from './deepmerge';
-import objectKeyToValues from './objectKeysToValues';
-import toCompactArray from './toCompactArray';
-import withDebugId from './withDebugId';
+import { deepmerge } from './deepmerge';
+import { objectKeyToValues } from './objectKeysToValues';
+import { toCompactArray } from './toCompactArray';
+import { withDebugId } from './withDebugId';
 
 export const emptyTheme: ThemePrepared = {
   siteVariables: {
@@ -68,7 +68,7 @@ export const mergeComponentStyles__PROD = (
       // no target means source doesn't need to merge onto anything
       // just ensure source is callable (prepared format)
       if (typeof originalTarget === 'undefined') {
-        partStylesPrepared[partName] = callable(originalSource);
+        partStylesPrepared[partName] = typeof originalSource === 'function' ? originalSource : callable(originalSource);
         return;
       }
 
@@ -151,10 +151,19 @@ export const mergeComponentStyles: (
 export const mergeComponentVariables__PROD = (...sources: ComponentVariablesInput[]): ComponentVariablesPrepared => {
   const initial = () => ({});
 
-  return sources.reduce<ComponentVariablesPrepared>((acc, next) => {
-    return (...args) => {
+  // filtering is required as some arguments can be undefined
+  const filteredSources = sources.filter(Boolean);
+
+  // a short circle to avoid calls of deepmerge()
+  if (filteredSources.length === 1) {
+    return typeof filteredSources[0] === 'function' ? filteredSources[0] : callable(filteredSources[0]);
+  }
+
+  return filteredSources.reduce<ComponentVariablesPrepared>((acc, next) => {
+    return function mergeComponentVariables(...args) {
       const accumulatedVariables = acc(...args);
-      const computedComponentVariables = callable(next)(...args);
+      const fn = typeof next === 'function' ? next : callable(next);
+      const computedComponentVariables = fn(...args);
 
       return deepmerge(accumulatedVariables, computedComponentVariables);
     };
@@ -314,7 +323,7 @@ export const mergeStyles = (...sources: ComponentSlotStyle[]) => {
   };
 };
 
-const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
+export const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
   return themes.reduce<ThemePrepared>(
     (acc: ThemePrepared, next: ThemeInput) => {
       if (!next) return acc;
@@ -341,5 +350,3 @@ const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
     { ...emptyTheme },
   );
 };
-
-export default mergeThemes;

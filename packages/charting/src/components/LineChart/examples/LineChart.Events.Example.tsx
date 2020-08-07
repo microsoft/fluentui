@@ -9,19 +9,38 @@ const calloutItemStyle = mergeStyles({
   padding: '3px',
 });
 
-interface IRootStyles {
-  height: string;
-  width: string;
+interface ILineChartEventsExampleState {
+  width: number;
+  height: number;
 }
 
-export class LineChartEventsExample extends React.Component<{}, {}> {
+export class LineChartEventsExample extends React.Component<{}, ILineChartEventsExampleState> {
   constructor(props: ILineChartProps) {
     super(props);
+    this.state = {
+      width: 700,
+      height: 330,
+    };
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return (
+      <>
+        <label>change Width:</label>
+        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <div>{this._basicExample()}</div>
+      </>
+    );
   }
+
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
 
   private _basicExample(): JSX.Element {
     const data: IChartProps = {
@@ -97,9 +116,14 @@ export class LineChartEventsExample extends React.Component<{}, {}> {
         },
       ],
     };
-    const rootStyle: IRootStyles = { width: '700px', height: '330px' };
+
+    const rootStyle = {
+      width: `${this.state.width}px`,
+      height: `${this.state.height}px`,
+    };
+
     return (
-      <div className={mergeStyles(rootStyle)}>
+      <div style={rootStyle}>
         <LineChart
           data={data}
           legendsOverflowText={'Overflow Items'}
@@ -150,6 +174,8 @@ export class LineChartEventsExample extends React.Component<{}, {}> {
             labelWidth: 50,
             mergedLabel: (count: number) => `${count} events`,
           }}
+          height={this.state.height}
+          width={this.state.width}
         />
       </div>
     );

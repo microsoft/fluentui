@@ -1,4 +1,4 @@
-// @uifabric/file-type-icons@7.0.7
-// Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
+// Do not modify this file; it is generated as part of publish.
+// The checked in version is a placeholder only and will not be updated.
 import { setVersion } from '@uifabric/set-version';
-setVersion('@uifabric/file-type-icons', '7.0.7');
+setVersion('@uifabric/file-type-icons', '0.0.0');

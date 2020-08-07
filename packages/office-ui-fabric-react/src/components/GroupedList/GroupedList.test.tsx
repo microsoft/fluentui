@@ -8,6 +8,8 @@ import { IColumn } from '../DetailsList/DetailsList.types';
 import { List } from '../List/List';
 import { GroupShowAll } from './GroupShowAll';
 import { Link } from '../Link/Link';
+import { GroupHeader } from './GroupHeader';
+import { getTheme } from '../../Styling';
 
 describe('GroupedList', () => {
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {
@@ -211,7 +213,7 @@ describe('GroupedList', () => {
     wrapper.unmount();
   });
 
-  // tslint:disable-next-line:max-line-length
+  // eslint-disable-next-line @fluentui/max-len
   it('renders the specified count of rows if "Show All" is to be displayed and all rows once "Show All" is clicked', () => {
     const _selection = new Selection();
     const _items: Array<{ key: string }> = [{ key: '1' }, { key: '2' }, { key: '3' }];
@@ -266,5 +268,29 @@ describe('GroupedList', () => {
     expect(listRows).toHaveLength(3);
 
     wrapper.unmount();
+  });
+
+  it('renders group header with custom checkbox render', () => {
+    const onRenderCheckboxMock = jest.fn();
+
+    mount(
+      <GroupHeader
+        selectionMode={SelectionMode.multiple}
+        onRenderGroupHeaderCheckbox={onRenderCheckboxMock}
+        isCollapsedGroupSelectVisible={true}
+        group={{
+          count: 1,
+          hasMoreData: true,
+          isCollapsed: false,
+          key: 'group0',
+          name: 'group 0',
+          startIndex: 0,
+          level: 0,
+        }}
+      />,
+    );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
+    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false, theme: getTheme() });
   });
 });

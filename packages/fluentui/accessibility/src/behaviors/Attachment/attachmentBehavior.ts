@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -8,7 +8,7 @@ import { Accessibility } from '../../types';
  * Adds attribute 'tabIndex=0' to 'root' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const attachmentBehavior: Accessibility<AttachmentBehaviorProps> = () => ({
+export const attachmentBehavior: Accessibility<AttachmentBehaviorProps> = () => ({
   attributes: {
     root: {
       tabIndex: 0,
@@ -18,12 +18,10 @@ const attachmentBehavior: Accessibility<AttachmentBehaviorProps> = () => ({
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
       },
     },
   },
 });
 
 export type AttachmentBehaviorProps = never;
-
-export default attachmentBehavior;

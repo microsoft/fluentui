@@ -1,15 +1,28 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint } from '../index';
 export interface IArcProps {
+  /**
+   * Theme
+   */
+  theme: ITheme;
   /**
    * Data to render in the Arc.
    */
   data?: IArcData;
 
   /**
+   * Data to render focused Arc
+   */
+  focusData?: IArcData;
+
+  /**
+   * id of the focused arc
+   */
+  focusedArcId?: string;
+  /**
    * shape for  Arc.
    */
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   arc?: any;
 
   /**
@@ -110,4 +123,9 @@ export interface IArcStyles {
    * Style set for the inside donut string
    */
   insideDonutString: IStyle;
+
+  /**
+   * styles for the focus
+   */
+  focusRing: IStyle;
 }

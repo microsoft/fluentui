@@ -1,6 +1,14 @@
 import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
-import { useTelemetry, getElementType, useUnhandledProps, useAccessibility, useStyles } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
+import {
+  ComponentWithAs,
+  useTelemetry,
+  mergeVariablesOverrides,
+  getElementType,
+  useFluentContext,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -14,17 +22,8 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import {
-  withSafeTypeForAs,
-  WithAsProp,
-  ShorthandCollection,
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ShorthandCollection, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
 
 export interface CarouselNavigationProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -68,9 +67,12 @@ export type CarouselNavigationStylesProps = Required<
 
 export const carouselNavigationClassName = 'ui-carousel__navigation';
 
-export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
+/**
+ * A Carousel navigation helps switching between Carousel items.
+ */
+export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
   FluentComponentStaticProps<CarouselNavigationProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
   setStart();
   const {
@@ -119,7 +121,7 @@ export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
       _.invoke(props, 'onItemClick', e, itemProps);
       _.invoke(predefinedProps, 'onClick', e, itemProps);
     },
-    variables: mergeComponentVariables(variables, predefinedProps.variables),
+    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
   });
 
   const renderItems = () => {
@@ -140,7 +142,7 @@ export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
     );
   };
 
-  const element = (
+  const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
@@ -149,7 +151,7 @@ export const CarouselNavigation: React.FC<WithAsProp<CarouselNavigationProps>> &
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
       {childrenExist(children) ? children : renderItems()}
-    </ElementType>
+    </ElementType>,
   );
 
   setEnd();
@@ -184,8 +186,3 @@ CarouselNavigation.create = createShorthandFactory({
   Component: CarouselNavigation,
   mappedArrayProp: 'items',
 });
-
-/**
- * A Carousel navigation helps switching between Carousel items.
- */
-export default withSafeTypeForAs<typeof CarouselNavigation, CarouselNavigationProps, 'ul'>(CarouselNavigation);

@@ -1,26 +1,29 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import { Accessibility, menuButtonBehavior } from '@fluentui/accessibility';
+import { Accessibility, menuButtonBehavior, MenuButtonBehaviorProps } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
-import {
-  AutoControlledComponent,
-  RenderResultConfig,
-  applyAccessibilityKeyHandlers,
-  getOrGenerateIdFromShorthand,
-  commonPropTypes,
-  StyledComponentProps,
-} from '../../utils';
-import { ShorthandValue, ComponentEventHandler, ShorthandCollection } from '../../types';
+import { commonPropTypes, StyledComponentProps, getOrGenerateIdFromShorthand } from '../../utils';
+import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 
-import { createShorthandFactory, ShorthandFactory } from '../../utils/factories';
-import Popup, { PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
-import Menu, { MenuProps } from '../Menu/Menu';
+import { createShorthandFactory } from '../../utils/factories';
+import { Popup, PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
+import { Menu, MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
 import { ALIGNMENTS, POSITIONS, PositioningProps } from '../../utils/positioner';
+import {
+  ComponentWithAs,
+  useAccessibility,
+  useTelemetry,
+  getElementType,
+  useUnhandledProps,
+  useFluentContext,
+  useAutoControlled,
+  useStyles,
+} from '@fluentui/react-bindings';
 
 export interface MenuButtonSlotClassNames {
   menu: string;
@@ -31,7 +34,7 @@ export interface MenuButtonProps extends StyledComponentProps<MenuButtonProps>, 
    * Accessibility behavior if overridden by the user.
    * @default menuButtonBehavior
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<MenuButtonBehaviorProps>;
 
   /** Additional CSS class name(s) to apply.  */
   className?: string;
@@ -98,218 +101,247 @@ export const menuButtonSlotClassNames: MenuButtonSlotClassNames = {
   menu: `${menuButtonClassName}__menu`,
 };
 
+export type MenuButtonStylesProps = never;
+
 /**
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-export default class MenuButton extends AutoControlledComponent<MenuButtonProps, MenuButtonState> {
-  static displayName = 'MenuButton';
+export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
+  FluentComponentStaticProps<MenuButtonProps> = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
+  setStart();
 
-  static deprecated_className = menuButtonClassName;
+  const {
+    // MenuButton props:
+    contextMenu,
+    menu,
+    // Popup props:
+    accessibility,
+    align,
+    className,
+    defaultOpen,
+    flipBoundary,
+    mountNode,
+    mouseLeaveDelay,
+    offset,
+    on,
+    onOpenChange,
+    overflowBoundary,
+    pointing,
+    popperRef,
+    position,
+    positionFixed,
+    tabbableTrigger,
+    target,
+    trigger,
+    unstable_pinned,
+    variables,
+  } = props;
 
-  static create: ShorthandFactory<MenuButtonProps>;
+  const [open, setOpen] = useAutoControlled({
+    defaultValue: props.defaultOpen,
+    value: props.open,
+    initialValue: false,
+  });
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      as: true,
-      content: false,
+  const menuId = React.useRef<string>();
+  menuId.current = getOrGenerateIdFromShorthand('menubutton-menu-', menu, menuId.current);
+  const triggerId = React.useRef<string>();
+  triggerId.current = getOrGenerateIdFromShorthand('menubutton-trigger-', trigger, triggerId.current);
+
+  const triggerRef = React.useRef<HTMLElement>();
+  const menuRef = React.useRef<HTMLElement>();
+
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(MenuButton.handledProps, props);
+
+  const getA11yProps = useAccessibility<MenuButtonBehaviorProps>(accessibility, {
+    debugName: MenuButton.displayName,
+    actionHandlers: {
+      closeMenu: e => closeMenu(e),
+      openAndFocusFirst: e => openAndFocus(e, 'first'),
+      openAndFocusLast: e => openAndFocus(e, 'last'),
+    },
+    mapPropsToBehavior: () => ({
+      menuId: menuId.current,
+      triggerId: triggerId.current,
+      open,
+      trigger: props.trigger,
+      contextMenu,
+      on,
+      tabbableTrigger,
     }),
-    align: PropTypes.oneOf(ALIGNMENTS),
-    defaultOpen: PropTypes.bool,
-    mountNode: customPropTypes.domNode,
-    mouseLeaveDelay: PropTypes.number,
-    offset: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
-    ]),
-    on: PropTypes.oneOfType([
-      PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
-      PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
-      PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context'])),
-    ]),
-    flipBoundary: PropTypes.oneOfType([
-      PropTypes.object as PropTypes.Requireable<HTMLElement>,
-      PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
-      PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
-    ]),
-    overflowBoundary: PropTypes.oneOfType([
-      PropTypes.object as PropTypes.Requireable<HTMLElement>,
-      PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
-      PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
-    ]),
-    open: PropTypes.bool,
-    onMenuItemClick: PropTypes.func,
-    onOpenChange: PropTypes.func,
-    position: PropTypes.oneOf(POSITIONS),
-    positionFixed: PropTypes.bool,
-    target: PropTypes.any,
-    trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
-    tabbableTrigger: PropTypes.bool,
-    unstable_pinned: PropTypes.bool,
-    menu: PropTypes.oneOfType([
-      customPropTypes.itemShorthandWithoutJSX,
-      PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX),
-    ]),
-    contextMenu: PropTypes.bool,
+    rtl: context.rtl,
+  });
+
+  const popupProps: PopupProps = {
+    accessibility,
+    align,
+    className,
+    defaultOpen,
+    mountNode,
+    mouseLeaveDelay,
+    flipBoundary,
+    offset,
+    on,
+    onOpenChange,
+    open,
+    overflowBoundary,
+    pointing,
+    popperRef,
+    position,
+    positionFixed,
+    tabbableTrigger,
+    styles: props.styles,
+    target,
+    trigger,
+    unstable_pinned,
+    variables,
   };
 
-  static defaultProps: MenuButtonProps = {
-    accessibility: menuButtonBehavior,
-    align: 'start',
-    position: 'below',
+  const { classes, styles: resolvedStyles } = useStyles<MenuButtonStylesProps>(MenuButton.displayName, {
+    className: menuButtonClassName,
+    mapPropsToInlineStyles: () => ({
+      className,
+      styles: props.styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const closeMenu = (e: React.KeyboardEvent) => {
+    handleOpenChange(e, false);
   };
 
-  static autoControlledProps = ['open'];
-
-  static getAutoControlledStateFromProps(props: MenuButtonProps, state: MenuButtonState): Partial<MenuButtonState> {
-    return {
-      menuId: getOrGenerateIdFromShorthand('menubutton-menu-', props.menu, state.menuId),
-      triggerId: getOrGenerateIdFromShorthand('menubutton-trigger-', props.trigger, state.triggerId),
-    };
-  }
-
-  triggerRef = React.createRef<HTMLElement>();
-  menuRef = React.createRef<HTMLElement>();
-
-  actionHandlers = {
-    closeMenu: e => this.closeMenu(e),
-    openAndFocusFirst: e => this.openAndFocus(e, 'first'),
-    openAndFocusLast: e => this.openAndFocus(e, 'last'),
-  };
-
-  closeMenu(e: React.KeyboardEvent) {
-    this.handleOpenChange(e, false);
-  }
-
-  openAndFocus(e: React.KeyboardEvent, which: 'first' | 'last') {
+  const openAndFocus = (e: React.KeyboardEvent, which: 'first' | 'last') => {
     e.preventDefault();
-    this.handleOpenChange(e, true, () => focusMenuItem(this.menuRef.current, which));
-  }
-
-  handleOpenChange = (e: React.SyntheticEvent, open: boolean, callback?: () => void) => {
-    _.invoke(this.props, 'onOpenChange', e, { ...this.props, open });
-    this.setState({ open }, callback);
+    handleOpenChange(e, true, () => menuRef.current && focusMenuItem(menuRef.current, which));
   };
 
-  handleMenuOverrides = (predefinedProps?: MenuProps) => ({
+  const handleOpenChange = (e: React.SyntheticEvent, open: boolean, callback?: () => void) => {
+    _.invoke(props, 'onOpenChange', e, { ...props, open });
+    setOpen(open);
+    callback && callback();
+  };
+
+  const handleMenuOverrides = (predefinedProps: MenuProps) => ({
     onItemClick: (e: React.SyntheticEvent, itemProps: MenuItemProps) => {
       _.invoke(predefinedProps, 'onItemClick', e, itemProps);
-      _.invoke(this.props, 'onMenuItemClick', e, itemProps);
+      _.invoke(props, 'onMenuItemClick', e, itemProps);
       if (!itemProps || !itemProps.menu) {
         // do not close if clicked on item with submenu
-        this.handleOpenChange(e, false);
+        handleOpenChange(e, false);
       }
     },
   });
 
-  renderComponent({
-    ElementType,
-    classes,
-    unhandledProps,
-    accessibility,
-    styles,
-  }: RenderResultConfig<MenuButtonProps>): React.ReactNode {
-    const {
-      // MenuButton props:
-      contextMenu,
-      menu,
-      // Popup props:
-      accessibility: accessibilityProp,
-      align,
-      className,
-      defaultOpen,
-      flipBoundary,
-      mountNode,
-      mouseLeaveDelay,
-      offset,
-      on,
-      onOpenChange,
-      open,
-      overflowBoundary,
-      pointing,
-      position,
-      positionFixed,
-      tabbableTrigger,
-      styles: stylesProp,
-      target,
-      trigger,
-      unstable_pinned,
-      variables,
-    } = this.props;
-
-    const popupProps = {
-      accessibility: accessibilityProp,
-      align,
-      className,
-      defaultOpen,
-      mountNode,
-      mouseLeaveDelay,
-      flipBoundary,
-      offset,
-      on,
-      onOpenChange,
-      open,
-      overflowBoundary,
-      pointing,
-      position,
-      positionFixed,
-      tabbableTrigger,
-      styles: stylesProp,
-      target,
-      trigger,
-      unstable_pinned,
-      variables,
-    };
-
-    const content = Menu.create(menu, {
-      defaultProps: () => ({
-        ...accessibility.attributes.menu,
+  const content = Menu.create(menu, {
+    defaultProps: () =>
+      getA11yProps('menu', {
         vertical: true,
         className: menuButtonSlotClassNames.menu,
       }),
-      overrideProps: this.handleMenuOverrides,
-    });
+    overrideProps: handleMenuOverrides,
+  });
 
-    const overrideProps: PopupProps = {
-      accessibility: () => accessibility,
-      open: this.state.open,
-      onOpenChange: (e, { open }) => {
-        this.handleOpenChange(e, open);
-      },
-      content: {
-        styles: styles.popupContent,
-        content: content && <Ref innerRef={this.menuRef}>{content}</Ref>,
-      },
-      children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger
-      ...(contextMenu
-        ? {
-            on: 'context',
-            trapFocus: true,
-            tabbableTrigger: false,
-          }
-        : {
-            inline: true,
-            autoFocus: true,
-          }),
-    };
+  const overrideProps: PopupProps = {
+    accessibility: getA11yProps.unstable_behaviorDefinition,
+    open,
+    onOpenChange: (e, { open }) => {
+      handleOpenChange(e, open);
+    },
+    content: {
+      styles: resolvedStyles.popupContent,
+      content: content && <Ref innerRef={menuRef}>{content}</Ref>,
+    },
+    children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger
+    ...(contextMenu
+      ? {
+          on: 'context',
+          trapFocus: true,
+          tabbableTrigger: false,
+        }
+      : {
+          inline: true,
+          autoFocus: true,
+        }),
+  };
 
-    const popup = Popup.create(popupProps, { overrideProps });
+  const popup = Popup.create(popupProps, { overrideProps });
 
-    if (contextMenu) {
-      return popup;
-    }
-
-    return (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        <Ref innerRef={this.triggerRef}>{popup}</Ref>
-      </ElementType>
-    );
+  if (contextMenu) {
+    setEnd();
+    return popup;
   }
-}
+
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      <Ref innerRef={triggerRef}>{popup}</Ref>
+    </ElementType>,
+  );
+  setEnd();
+  return element;
+};
+
+MenuButton.displayName = 'MenuButton';
+
+MenuButton.propTypes = {
+  ...commonPropTypes.createCommon({
+    content: false,
+  }),
+  align: PropTypes.oneOf(ALIGNMENTS),
+  defaultOpen: PropTypes.bool,
+  mountNode: customPropTypes.domNode,
+  mouseLeaveDelay: PropTypes.number,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
+  on: PropTypes.oneOfType([
+    PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
+    PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
+    PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context'])),
+  ]) as any,
+  flipBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  overflowBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  open: PropTypes.bool,
+  onMenuItemClick: PropTypes.func,
+  onOpenChange: PropTypes.func,
+  popperRef: customPropTypes.ref,
+  position: PropTypes.oneOf(POSITIONS),
+  positionFixed: PropTypes.bool,
+  target: PropTypes.any,
+  trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
+  tabbableTrigger: PropTypes.bool,
+  unstable_pinned: PropTypes.bool,
+  menu: PropTypes.oneOfType([
+    customPropTypes.itemShorthandWithoutJSX,
+    PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX),
+  ]),
+  contextMenu: PropTypes.bool,
+};
+
+MenuButton.defaultProps = {
+  accessibility: menuButtonBehavior,
+  align: 'start',
+  position: 'below',
+};
+
+MenuButton.handledProps = Object.keys(MenuButton.propTypes) as any;
 
 MenuButton.create = createShorthandFactory({ Component: MenuButton, mappedProp: 'menu' });

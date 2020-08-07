@@ -1,5 +1,10 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { HighContrastSelector, getGlobalClassNames, IStyle } from '../../Styling';
+import {
+  HighContrastSelector,
+  getGlobalClassNames,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+  IStyle,
+} from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -56,6 +61,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       transitionProperty: 'border-width, border, border-color',
       transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
       transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: 'WindowText',
+        },
+      },
     },
   ];
 
@@ -104,14 +114,10 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
                 background: checkboxBackgroundCheckedHovered,
                 borderColor: checkboxBorderColorCheckedHovered,
               },
-              [`.${classNames.checkbox}`]: {
-                background: checkboxBorderColorChecked,
-                borderColor: checkboxBorderColorChecked,
-              },
               [HighContrastSelector]: {
                 selectors: {
                   [`:hover .${classNames.checkbox}`]: {
-                    background: 'Window',
+                    background: 'Highlight',
                     borderColor: 'Highlight',
                   },
                   [`:focus .${classNames.checkbox}`]: {
@@ -124,7 +130,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
                     color: 'Window',
                   },
                   [`:hover .${classNames.checkmark}`]: {
-                    color: 'Highlight',
+                    color: 'Window',
                   },
                 },
               },
@@ -134,6 +140,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
           selectors: {
             [`:hover .${classNames.checkbox}, :hover .${classNames.checkbox}:after`]: {
               borderColor: checkboxBorderIndeterminateHoveredColor,
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'WindowText',
+                },
+              },
             },
             [`:focus .${classNames.checkbox}`]: {
               borderColor: checkboxBorderIndeterminateHoveredColor,
@@ -145,8 +156,14 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         },
         {
           selectors: {
-            [`:hover .${classNames.text}`]: { color: checkboxHoveredTextColor },
-            [`:focus .${classNames.text}`]: { color: checkboxHoveredTextColor },
+            [`:hover .${classNames.text}, :focus .${classNames.text}`]: {
+              color: checkboxHoveredTextColor,
+              selectors: {
+                [HighContrastSelector]: {
+                  color: disabled ? 'GrayText' : 'WindowText',
+                },
+              },
+            },
           },
         },
       ],
@@ -178,7 +195,6 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         cursor: disabled ? 'default' : 'pointer',
         position: 'relative',
         userSelect: 'none',
-        textAlign: 'left',
       },
       reversed && {
         flexDirection: 'row-reverse',
@@ -219,6 +235,10 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         overflow: 'hidden',
         selectors: {
           ':after': indeterminate ? indeterminateDotStyles : null,
+          [HighContrastSelector]: {
+            borderColor: 'WindowText',
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       indeterminate && {
@@ -251,7 +271,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         borderColor: checkboxBorderColorDisabled,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'InactiveBorder',
+            borderColor: 'GrayText',
           },
         },
       },
@@ -259,6 +279,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         disabled && {
           background: checkboxBackgroundDisabledChecked,
           borderColor: checkboxBorderColorDisabled,
+          selectors: {
+            [HighContrastSelector]: {
+              background: 'Window',
+            },
+          },
         },
     ],
     checkmark: [
@@ -268,7 +293,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         color: checkmarkFontColor,
         selectors: {
           [HighContrastSelector]: {
-            color: disabled ? 'InactiveBorder' : 'Window',
+            color: disabled ? 'GrayText' : 'Window',
             MsHighContrastAdjust: 'none',
           },
         },
@@ -280,6 +305,12 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
         fontSize: fonts.medium.fontSize,
         lineHeight: '20px',
+        selectors: {
+          [HighContrastSelector]: {
+            color: disabled ? 'GrayText' : 'WindowText',
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
       !reversed
         ? {
@@ -288,15 +319,6 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         : {
             marginRight: 4,
           },
-      disabled && {
-        selectors: {
-          [HighContrastSelector]: {
-            // backwards compat for the color of the text when the checkbox was rendered
-            // using a Button.
-            color: 'InactiveBorder',
-          },
-        },
-      },
     ],
   };
 };

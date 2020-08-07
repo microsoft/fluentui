@@ -1,4 +1,4 @@
-import { Tree, Avatar, List } from '@fluentui/react-northstar';
+import { Tree, Avatar, List, ShorthandRenderFunction, TreeTitleProps } from '@fluentui/react-northstar';
 import { AcceptIcon } from '@fluentui/react-icons-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -25,6 +25,7 @@ const itemData = id =>
     id: `tree-perf-60-item-${id}${i}`,
     key: `key${id}${i}`,
     title: {
+      index: i,
       content: `${contents[i % contents.length]}`,
       media: <Avatar {...janeAvatar} />,
       headerMedia: `${headerMedias[i % headerMedias.length]}`,
@@ -53,13 +54,25 @@ const items = [
 
 // This renders titles depending on their level. The level one titles are rendered as default
 // TreeTitle with just text, while the level 2 titles are rendered as ListItems.
-const titleRenderer = (Component, { content, header, headerMedia, media, ...restProps }) => {
+const titleRenderer: ShorthandRenderFunction<TreeTitleProps & {
+  header?: React.ReactElement;
+  headerMedia?: React.ReactElement;
+  media?: React.ReactElement;
+  index?: number;
+}> = (Component, { content, header, headerMedia, media, index, ...restProps }) => {
   // as providing all props to List.Item was showing console errors, therefore reducing props
   const { treeSize, expanded, hasSubtree, selectableParent, selectionIndicator, ...restReducedProps } = restProps;
-  return !header ? (
-    <Component {...restProps}>{content}</Component>
+  return header ? (
+    <List.Item
+      {...restReducedProps}
+      content={content}
+      header={header}
+      headerMedia={headerMedia}
+      media={media}
+      index={index}
+    />
   ) : (
-    <List.Item {...restReducedProps} content={content} header={header} headerMedia={headerMedia} media={media} />
+    <Component {...restProps}>{content}</Component>
   );
 };
 

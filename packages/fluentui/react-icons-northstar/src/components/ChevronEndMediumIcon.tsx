@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
-import createSvgIcon from '../utils/createSvgIcon';
+import { createSvgIcon } from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const ChevronEndMediumIcon = createSvgIcon({
+export const ChevronEndMediumIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svgFlippingInRtl}>
       <path
@@ -18,5 +18,3 @@ const ChevronEndMediumIcon = createSvgIcon({
   ),
   displayName: 'ChevronEndMediumIcon',
 });
-
-export default ChevronEndMediumIcon;

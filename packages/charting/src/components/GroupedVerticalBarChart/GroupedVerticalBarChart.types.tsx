@@ -1,8 +1,8 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IGroupedVerticalBarChartData } from '@uifabric/charting';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
+import { IGroupedVerticalBarChartData } from '../../types/index';
 
 export interface IGroupedVerticalBarChartProps {
   /**
@@ -103,6 +103,13 @@ export interface IGroupedVerticalBarChartProps {
    * color of the datapoint legend
    */
   legendColor?: string;
+
+  /**
+   * Do not show tooltips in chart
+   *
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps {
@@ -114,12 +121,12 @@ export interface IGroupedVerticalBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
+  width?: number;
 
   /**
    * Height of the chart.
    */
-  height: number;
+  height?: number;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
@@ -167,21 +174,6 @@ export interface IGroupedVerticalBarChartStyles {
    * Style for the legends container
    */
   legendContainer?: IStyle;
-
-  /**
-   * Style for the root of the hover card
-   */
-  hoverCardRoot: IStyle;
-
-  /**
-   * Style for the legend card title displayed in the hover card
-   */
-  hoverCardTextStyles: IStyle;
-
-  /**
-   * Style for the data displayed in the hover card
-   */
-  hoverCardDataStyles: IStyle;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

@@ -43,7 +43,8 @@ class RadioGroupVerticalExample extends React.Component {
     ];
   }
 
-  handleChange = (e, props) => this.setState({ selectedValue: props.value });
+  handleChange = (e, props) =>
+    this.setState({ selectedValue: props.value, inputTabIndex: props.value === 'custom' ? '0' : '-1' });
 }
 
 export default RadioGroupVerticalExample;

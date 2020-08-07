@@ -265,7 +265,9 @@ task('test:projects:typings', async () => {
 
   logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
 
-  const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', 'typescript'].join(' ');
+  // Install dependencies, ensuring we specify the same TS version as our projects use
+  const tsVersion = fs.readJSONSync(paths.base('scripts', 'package.json')).dependencies.typescript;
+  const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', `typescript@${tsVersion}`].join(' ');
   await sh(`yarn add ${dependencies}`, tmpDirectory);
   logger(`✔️ Dependencies were installed`);
 

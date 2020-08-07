@@ -1,17 +1,17 @@
 ### Control name
 
-`MSShimmerView`
+`ShimmerView` in Swift, `MSFShimmerView` in Objective-C
 
-`MSShimmerLinesView`
+`ShimmerLinesView` in Swift, `MSFShimmerLinesView` in Objective-C
 
 ### Source code
 
-[MSShimmerView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Shimmer/MSShimmerView.swift)
+[ShimmerView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Shimmer/ShimmerView.swift)
 
-[MSShimmerLinesView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Shimmer/MSShimmerLinesView.swift)
+[ShimmerLinesView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Shimmer/ShimmerLinesView.swift)
 
 ### Sample code
 
-[MSShimmerView in Collection View Cell demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSCollectionViewCellShimmerDemoController.swift)
+[ShimmerView in Table View Cell demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewCellShimmerDemoController.swift)
 
-[MSShimmerLinesView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSShimmerLinesViewDemoController.swift)
+[ShimmerLinesView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/ShimmerLinesViewDemoController.swift)

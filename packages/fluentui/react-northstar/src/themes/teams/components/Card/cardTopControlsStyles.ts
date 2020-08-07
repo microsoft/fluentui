@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardTopControlsStylesProps } from '../../../../components/Card/CardTopControls';
 
-const cardTopControlsStyles: ComponentSlotStylesPrepared<CardTopControlsStylesProps, CardVariables> = {
+export const cardTopControlsStyles: ComponentSlotStylesPrepared<CardTopControlsStylesProps, CardVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => {
     return {
       position: 'absolute',
@@ -11,5 +11,3 @@ const cardTopControlsStyles: ComponentSlotStylesPrepared<CardTopControlsStylesPr
     };
   },
 };
-
-export default cardTopControlsStyles;

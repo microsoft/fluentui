@@ -184,8 +184,3 @@ export const hasShape = (event: object, type: string | object): boolean => {
   const shape = typeof type === 'string' ? types[type].shape : type;
   return Object.keys(event).every(key => key in shape);
 };
-
-export default {
-  types,
-  hasShape,
-};

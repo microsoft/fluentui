@@ -1,8 +1,7 @@
 import { Accessibility } from '@fluentui/accessibility';
 import { useAccessibility } from '@fluentui/react-bindings';
 import { mount, shallow } from 'enzyme';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import * as React from 'react';
 
 type TestBehaviorProps = {
@@ -165,6 +164,17 @@ const FocusZoneComponent: React.FunctionComponent<FocusZoneComponentProps> = pro
   return getA11Props.unstable_wrapWithFocusZone(<ElementType {...getA11Props('root', {})}>{children}</ElementType>);
 };
 
+const UnstableBehaviorDefinitionComponent: React.FunctionComponent<TestComponentProps> = props => {
+  const { accessibility = testBehavior } = props;
+  const getA11Props = useAccessibility(accessibility, {
+    mapPropsToBehavior: () => ({
+      disabled: false,
+    }),
+  });
+
+  return <div {...getA11Props.unstable_behaviorDefinition().attributes.root} />;
+};
+
 describe('useAccessibility', () => {
   it('sets attributes', () => {
     const wrapper = shallow(<TestComponent />);
@@ -201,6 +211,19 @@ describe('useAccessibility', () => {
         .find('ChildComponent')
         .prop('accessibility'),
     ).toBe(childOverriddenBehavior);
+  });
+
+  it('it shoult return current definition from unstable_behaviorDefinition', () => {
+    expect(
+      shallow(<UnstableBehaviorDefinitionComponent />)
+        .find('div')
+        .prop('aria-disabled'),
+    ).toBe(false);
+    expect(
+      shallow(<UnstableBehaviorDefinitionComponent />)
+        .find('div')
+        .prop('tabIndex'),
+    ).toBe(1);
   });
 
   it('adds event handlers', () => {
@@ -318,6 +341,19 @@ describe('useAccessibility', () => {
         expect.objectContaining({
           disabled: true,
           shouldFocusOnMount: true,
+        }),
+      );
+    });
+
+    it('applies default props for FocusZone', () => {
+      expect(
+        shallow(<FocusZoneComponent />)
+          .find('FocusZone')
+          .props(),
+      ).toEqual(
+        expect.objectContaining({
+          preventFocusRestoration: true,
+          shouldRaiseClicks: false,
         }),
       );
     });

@@ -7,7 +7,6 @@ import {
   htmlElementProperties,
   css,
   initializeComponentRef,
-  Customizer,
 } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -45,6 +44,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     initializeComponentRef(this);
     this.state = {
       labelId: getId('MessageBar'),
+      // eslint-disable-next-line react/no-unused-state
       showContent: false,
       expandSingleLine: false,
     };
@@ -74,6 +74,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
           className={this._classNames.dismissal}
           onClick={onDismiss}
           iconProps={dismissIconProps ? dismissIconProps : { iconName: 'Clear' }}
+          title={this.props.dismissButtonAriaLabel}
           ariaLabel={this.props.dismissButtonAriaLabel}
         />
       );
@@ -150,34 +151,20 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, [
       'className',
     ]);
-    const theme = this.props.theme!;
-
-    const settings = {
-      theme: {
-        ...theme,
-        semanticColors: {
-          ...theme.semanticColors,
-          link: theme.semanticColors.messageLink,
-          linkHovered: theme.semanticColors.messageLinkHovered,
-        },
-      },
-    };
 
     return (
-      <Customizer settings={settings}>
-        <div
-          className={this._classNames.text}
-          id={this.state.labelId}
-          role="status"
-          aria-live={this._getAnnouncementPriority()}
-        >
-          <span className={this._classNames.innerText} {...nativeProps}>
-            <DelayedRender>
-              <span>{this.props.children}</span>
-            </DelayedRender>
-          </span>
-        </div>
-      </Customizer>
+      <div
+        className={this._classNames.text}
+        id={this.state.labelId}
+        role="status"
+        aria-live={this._getAnnouncementPriority()}
+      >
+        <span className={this._classNames.innerText} {...nativeProps}>
+          <DelayedRender>
+            <span>{this.props.children}</span>
+          </DelayedRender>
+        </span>
+      </div>
     );
   }
 

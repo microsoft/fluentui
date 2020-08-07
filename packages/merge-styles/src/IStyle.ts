@@ -8,6 +8,13 @@ import { IRawStyleBase } from './IRawStyleBase';
  */
 export interface IRawStyle extends IRawStyleBase {
   /**
+   * Allow css variables, strings, objects. While we should have more strict typing
+   * here, partners are broken in many unpredictable cases where typescript can't infer
+   * the right typing. Loosening the typing to both allow for css variables and other things.
+   */
+  [key: string]: any;
+
+  /**
    * Display name for the style.
    */
   displayName?: string;

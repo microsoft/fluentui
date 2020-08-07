@@ -13,44 +13,41 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import {
+  compose,
   focusAsync,
+  mergeVariablesOverrides,
   useTelemetry,
   useStyles,
   useAutoControlled,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
 } from '@fluentui/react-bindings';
-import { mergeComponentVariables } from '@fluentui/styles';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
+import { useContextSelectors } from '@fluentui/react-context-selector';
 
 import {
+  createShorthand,
   ChildrenComponentProps,
   commonPropTypes,
   ContentComponentProps,
   UIComponentProps,
-  createShorthandFactory,
   childrenExist,
   doesNodeContainClick,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  WithAsProp,
-  withSafeTypeForAs,
-  Omit,
-  ShorthandCollection,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
+import { partitionPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
-import Box, { BoxProps } from '../Box/Box';
-import Popup, { PopupProps } from '../Popup/Popup';
-import ToolbarMenu, { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
+import { Box, BoxProps } from '../Box/Box';
+import { Popup, PopupProps } from '../Popup/Popup';
+import { ToolbarMenu, ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
+import { ToolbarMenuItemIcon, ToolbarMenuItemIconProps } from './ToolbarMenuItemIcon';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
+import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicator';
+import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
+import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -68,7 +65,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   disabled?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: ShorthandValue<ToolbarMenuItemIconProps>;
 
   /** ToolbarMenuItem index inside ToolbarMenu. */
   index?: number;
@@ -120,329 +117,378 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
 export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'> & { hasContent: boolean };
 
 export interface ToolbarMenuItemSlotClassNames {
-  activeIndicator: string;
   wrapper: string;
   submenu: string;
-  submenuIndicator: string;
 }
 
 export const toolbarMenuItemClassName = 'ui-toolbar__menuitem';
 export const toolbarMenuItemSlotClassNames: ToolbarMenuItemSlotClassNames = {
-  activeIndicator: `${toolbarMenuItemClassName}__activeIndicator`,
   wrapper: `${toolbarMenuItemClassName}__wrapper`,
   submenu: `${toolbarMenuItemClassName}__submenu`,
-  submenuIndicator: `${toolbarMenuItemClassName}__submenuIndicator`,
 };
 
-const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
-  FluentComponentStaticProps<ToolbarMenuItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(ToolbarMenuItem.displayName, context.telemetry);
-  setStart();
+/**
+ * A ToolbarMenuItem renders ToolbarMenu item as button.
+ */
+export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemStylesProps, {}, {}>(
+  (props, ref, composeOptions) => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
+    setStart();
 
-  const {
-    active,
-    activeIndicator,
-    children,
-    content,
-    disabled,
-    submenuIndicator,
-    icon,
-    menu,
-    popup,
-    wrapper,
-    inSubmenu,
-    className,
-    design,
-    styles,
-    variables,
-  } = props;
-
-  const [menuOpen, setMenuOpen] = useAutoControlled({
-    defaultValue: props.defaultMenuOpen,
-    value: props.menuOpen,
-    initialValue: false,
-  });
-
-  const itemRef = React.useRef<HTMLElement>();
-  const menuRef = React.useRef<HTMLElement>();
-
-  const parentVariables = React.useContext(ToolbarVariablesContext);
-  const mergedVariables = mergeComponentVariables(parentVariables, variables);
-
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(ToolbarMenuItem.handledProps, props);
-
-  const getA11yProps = useAccessibility(props.accessibility, {
-    debugName: ToolbarMenuItem.displayName,
-    mapPropsToBehavior: () => ({
-      menu,
+    const {
       active,
-      menuOpen,
+      activeIndicator,
+      children,
+      content,
       disabled,
-      'aria-label': props['aria-label'],
-      'aria-labelledby': props['aria-labelledby'],
-      'aria-describedby': props['aria-describedby'],
-    }),
-    actionHandlers: {
-      performClick: event => {
-        event.preventDefault();
-        handleClick(event);
-      },
-      openMenu: event => openMenu(event),
-      closeAllMenusAndFocusNextParentItem: event => closeAllMenus(event),
-      closeMenu: event => closeMenu(event),
-      closeMenuAndFocusTrigger: event => closeMenu(event),
-      doNotNavigateNextParentItem: event => {
-        event.stopPropagation();
-      },
-      closeAllMenus: event => closeAllMenus(event),
-    },
-    rtl: context.rtl,
-  });
-
-  const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuItemStylesProps>(ToolbarMenuItem.displayName, {
-    className: toolbarMenuItemClassName,
-    mapPropsToStyles: () => ({
-      disabled,
-      hasContent: !!content,
-    }),
-    mapPropsToInlineStyles: () => ({
+      submenuIndicator,
+      icon,
+      popup,
+      wrapper,
+      inSubmenu,
       className,
       design,
       styles,
-      variables: mergedVariables,
-    }),
-    rtl: context.rtl,
-  });
+      variables,
+    } = props;
+    const [menu, menuPositioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
-  const openMenu = (e: React.KeyboardEvent) => {
-    if (menu && !menuOpen) {
-      trySetMenuOpen(true, e);
-      e.stopPropagation();
-      e.preventDefault();
-    }
-  };
-
-  const closeMenu = (e: React.KeyboardEvent) => {
-    if (!isSubmenuOpen()) {
-      return;
-    }
-
-    trySetMenuOpen(false, e, () => {
-      focusAsync(itemRef.current);
+    const [menuOpen, setMenuOpen] = useAutoControlled({
+      defaultValue: props.defaultMenuOpen,
+      value: props.menuOpen,
+      initialValue: false,
     });
 
-    e.stopPropagation();
-  };
+    const itemRef = React.useRef<HTMLElement>();
+    const menuRef = React.useRef<HTMLElement>();
 
-  const closeAllMenus = (e: React.KeyboardEvent) => {
-    if (!isSubmenuOpen()) {
-      return;
-    }
-    trySetMenuOpen(false, e, () => {
-      if (!inSubmenu) {
-        focusAsync(itemRef.current);
+    const { menuSlot } = (useContextSelectors(ToolbarMenuContext, {
+      menuSlot: v => v.slots.menu,
+    }) as unknown) as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+
+    const parentVariables = React.useContext(ToolbarVariablesContext);
+    const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
+
+    const ElementType = getElementType(props);
+    const slotProps = composeOptions.resolveSlotProps<ToolbarMenuItemProps>(props);
+    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+
+    const getA11yProps = useAccessibility(props.accessibility, {
+      debugName: composeOptions.displayName,
+      mapPropsToBehavior: () => ({
+        menu,
+        active,
+        menuOpen,
+        disabled,
+        'aria-label': props['aria-label'],
+        'aria-labelledby': props['aria-labelledby'],
+        'aria-describedby': props['aria-describedby'],
+      }),
+      actionHandlers: {
+        performClick: event => {
+          event.preventDefault();
+          handleClick(event);
+        },
+        openMenu: event => openMenu(event),
+        closeAllMenusAndFocusNextParentItem: event => closeAllMenus(event),
+        closeMenu: event => closeMenu(event),
+        closeMenuAndFocusTrigger: event => closeMenu(event),
+        doNotNavigateNextParentItem: event => {
+          event.stopPropagation();
+        },
+        closeAllMenus: event => closeAllMenus(event),
+      },
+      rtl: context.rtl,
+    });
+
+    const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuItemStylesProps>(composeOptions.displayName, {
+      className: composeOptions.className,
+      composeOptions,
+      mapPropsToStyles: () => ({
+        disabled,
+        hasContent: !!content,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables: mergedVariables,
+      }),
+      rtl: context.rtl,
+      unstable_props: props,
+    });
+
+    const openMenu = (e: React.KeyboardEvent) => {
+      if (menu && !menuOpen) {
+        trySetMenuOpen(true, e);
+        e.stopPropagation();
+        e.preventDefault();
       }
-    });
+    };
 
-    // avoid spacebar scrolling the page
-    if (!inSubmenu) {
-      e.preventDefault();
-    }
-  };
-
-  const isSubmenuOpen = (): boolean => {
-    return !!(menu && menuOpen);
-  };
-
-  const trySetMenuOpen = (newValue: boolean, e: Event | React.SyntheticEvent, onStateChanged?: any) => {
-    setMenuOpen(newValue);
-    // The reason why post-effect is not passed as callback to trySetState method
-    // is that in 'controlled' mode the post-effect is applied before final re-rendering
-    // which cause a broken behavior: for e.g. when it is needed to focus submenu trigger on ESC.
-    // TODO: all DOM post-effects should be applied at componentDidMount & componentDidUpdated stages.
-    onStateChanged && onStateChanged();
-    _.invoke(props, 'onMenuOpenChange', e, {
-      ...props,
-      menuOpen: newValue,
-    });
-  };
-
-  const outsideClickHandler = (getRefs: GetRefs) => (e: MouseEvent) => {
-    const isItemClick = doesNodeContainClick(itemRef.current, e, context.target);
-    const isNestedClick = _.some(getRefs(), (childRef: NodeRef) => {
-      return doesNodeContainClick(childRef.current as HTMLElement, e, context.target);
-    });
-    const isInside = isItemClick || isNestedClick;
-
-    if (!isInside) {
-      trySetMenuOpen(false, e);
-    }
-  };
-
-  const handleMenuOverrides = (predefinedProps: ToolbarMenuProps) => ({
-    onItemClick: (e, itemProps: ToolbarMenuItemProps) => {
-      const { popup, menuOpen } = itemProps;
-      _.invoke(predefinedProps, 'onItemClick', e, itemProps);
-      if (popup) {
+    const closeMenu = (e: React.KeyboardEvent) => {
+      if (!isSubmenuOpen()) {
         return;
       }
 
-      trySetMenuOpen(menuOpen, e);
-      if (!menuOpen) {
-        _.invoke(itemRef.current, 'focus');
+      trySetMenuOpen(false, e, () => {
+        focusAsync(itemRef.current);
+      });
+
+      e.stopPropagation();
+    };
+
+    const closeAllMenus = (e: React.KeyboardEvent) => {
+      if (!isSubmenuOpen()) {
+        return;
       }
-    },
-  });
+      trySetMenuOpen(false, e, () => {
+        if (!inSubmenu) {
+          focusAsync(itemRef.current);
+        }
+      });
 
-  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (disabled) {
-      e.preventDefault();
-      return;
-    }
+      // avoid spacebar scrolling the page
+      if (!inSubmenu) {
+        e.preventDefault();
+      }
+    };
 
-    if (menu) {
-      // the menuItem element was clicked => toggle the open/close and stop propagation
-      trySetMenuOpen(!menuOpen, e);
-      e.stopPropagation();
-      e.preventDefault();
-    }
+    const isSubmenuOpen = (): boolean => {
+      return !!(menu && menuOpen);
+    };
 
-    if (popup) {
-      e.stopPropagation();
-      e.preventDefault();
-      return;
-    }
+    const trySetMenuOpen = (newValue: boolean, e: Event | React.SyntheticEvent, onStateChanged?: any) => {
+      setMenuOpen(newValue);
+      // The reason why post-effect is not passed as callback to trySetState method
+      // is that in 'controlled' mode the post-effect is applied before final re-rendering
+      // which cause a broken behavior: for e.g. when it is needed to focus submenu trigger on ESC.
+      // TODO: all DOM post-effects should be applied at componentDidMount & componentDidUpdated stages.
+      onStateChanged && onStateChanged();
+      _.invoke(props, 'onMenuOpenChange', e, {
+        ...props,
+        menuOpen: newValue,
+      });
+    };
 
-    _.invoke(props, 'onClick', e, props);
-  };
+    const outsideClickHandler = (getRefs: GetRefs) => (e: MouseEvent) => {
+      const isItemClick = doesNodeContainClick(itemRef.current, e, context.target);
+      const isNestedClick = _.some(getRefs(), (childRef: NodeRef) => {
+        return doesNodeContainClick(childRef.current as HTMLElement, e, context.target);
+      });
+      const isInside = isItemClick || isNestedClick;
 
-  const element = (
-    <ElementType
-      {...getA11yProps('root', {
-        className: classes.root,
-        onClick: handleClick,
-        disabled,
-        ...unhandledProps,
-      })}
-    >
-      {childrenExist(children) ? (
-        children
-      ) : (
-        <>
-          {Box.create(icon, {
-            defaultProps: () => ({
-              styles: resolvedStyles.icon,
-            }),
-          })}
-          {content}
-          {active &&
-            Box.create(activeIndicator, {
-              defaultProps: () => ({
-                as: 'span',
-                className: toolbarMenuItemSlotClassNames.activeIndicator,
-                styles: resolvedStyles.activeIndicator,
-                accessibility: indicatorBehavior,
-              }),
-            })}
-          {menu &&
-            Box.create(submenuIndicator, {
-              defaultProps: () => ({
-                as: 'span',
-                className: toolbarMenuItemSlotClassNames.submenuIndicator,
-                styles: resolvedStyles.submenuIndicator,
-                accessibility: indicatorBehavior,
-              }),
-            })}
-        </>
-      )}
-    </ElementType>
-  );
+      if (!isInside) {
+        trySetMenuOpen(false, e);
+      }
+    };
 
-  const hasChildren = childrenExist(children);
+    const handleMenuOverrides = (predefinedProps: ToolbarMenuProps) => ({
+      onItemClick: (e, itemProps: ToolbarMenuItemProps) => {
+        const { popup, menuOpen } = itemProps;
+        _.invoke(predefinedProps, 'onItemClick', e, itemProps);
+        if (popup) {
+          return;
+        }
 
-  if (popup && !hasChildren) {
-    const popupElement = Popup.create(popup, {
-      defaultProps: () => ({
-        trapFocus: true,
-        onOpenChange: e => {
-          e.stopPropagation();
-        },
-      }),
-      overrideProps: {
-        trigger: element,
-        children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger`
+        trySetMenuOpen(menuOpen, e);
+        if (!menuOpen) {
+          _.invoke(itemRef.current, 'focus');
+        }
       },
+    });
+
+    const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      if (menu) {
+        // the menuItem element was clicked => toggle the open/close and stop propagation
+        trySetMenuOpen(!menuOpen, e);
+        e.stopPropagation();
+        e.preventDefault();
+      }
+
+      if (popup) {
+        e.stopPropagation();
+        e.preventDefault();
+        return;
+      }
+
+      _.invoke(props, 'onClick', e, props);
+    };
+
+    const element = (
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          onClick: handleClick,
+          disabled,
+          ref,
+          ...unhandledProps,
+        })}
+      >
+        {childrenExist(children) ? (
+          children
+        ) : (
+          <>
+            {createShorthand(composeOptions.slots.icon, icon, { defaultProps: () => slotProps.icon })}
+            {content}
+            {active &&
+              createShorthand(composeOptions.slots.activeIndicator, activeIndicator, {
+                defaultProps: () => slotProps.activeIndicator,
+              })}
+            {menu &&
+              createShorthand(composeOptions.slots.submenuIndicator, submenuIndicator, {
+                defaultProps: () => slotProps.submenuIndicator,
+              })}
+          </>
+        )}
+      </ElementType>
+    );
+
+    const hasChildren = childrenExist(children);
+
+    if (popup && !hasChildren) {
+      const popupElement = createShorthand(composeOptions.slots.popup, popup, {
+        defaultProps: () => ({
+          ...slotProps.popup,
+          onOpenChange: e => {
+            e.stopPropagation();
+          },
+        }),
+        overrideProps: {
+          trigger: element,
+          children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger`
+        },
+      });
+      setEnd();
+
+      return popupElement;
+    }
+
+    const menuItemInner = hasChildren ? (children as React.ReactElement) : <Ref innerRef={itemRef}>{element}</Ref>;
+
+    const maybeSubmenu =
+      menu && menuOpen ? (
+        <Unstable_NestingAuto>
+          {(getRefs, nestingRef) => {
+            return (
+              <>
+                <Ref
+                  innerRef={(node: HTMLElement) => {
+                    nestingRef.current = node;
+                    menuRef.current = node;
+                  }}
+                >
+                  <Popper
+                    align="top"
+                    position={context.rtl ? 'before' : 'after'}
+                    targetRef={itemRef}
+                    {...menuPositioningProps}
+                  >
+                    <ToolbarVariablesProvider value={mergedVariables}>
+                      {createShorthand(composeOptions.slots.menu || menuSlot || ToolbarMenu, menu, {
+                        defaultProps: () => ({
+                          className: toolbarMenuItemSlotClassNames.submenu,
+                          styles: resolvedStyles.menu,
+                          submenu: true,
+                          submenuIndicator,
+                          ...slotProps.menu,
+                        }),
+                        overrideProps: handleMenuOverrides,
+                      })}
+                    </ToolbarVariablesProvider>
+                  </Popper>
+                </Ref>
+                <EventListener listener={outsideClickHandler(getRefs)} target={context.target} type="click" />
+              </>
+            );
+          }}
+        </Unstable_NestingAuto>
+      ) : null;
+
+    if (!wrapper) {
+      setEnd();
+      return menuItemInner;
+    }
+
+    const wrapperElement = Box.create(wrapper, {
+      defaultProps: () =>
+        getA11yProps('wrapper', {
+          className: cx(toolbarMenuItemSlotClassNames.wrapper, classes.wrapper),
+        }),
+      overrideProps: () => ({
+        children: (
+          <>
+            {menuItemInner}
+            {maybeSubmenu}
+          </>
+        ),
+      }),
     });
     setEnd();
 
-    return popupElement;
-  }
+    return wrapperElement;
+  },
+  {
+    className: toolbarMenuItemClassName,
+    displayName: 'ToolbarMenuItem',
 
-  const menuItemInner = hasChildren ? (children as React.ReactElement) : <Ref innerRef={itemRef}>{element}</Ref>;
-
-  const maybeSubmenu =
-    menu && menuOpen ? (
-      <Unstable_NestingAuto>
-        {(getRefs, nestingRef) => (
-          <>
-            <Ref
-              innerRef={(node: HTMLElement) => {
-                nestingRef.current = node;
-                menuRef.current = node;
-              }}
-            >
-              <Popper
-                align="top"
-                position={context.rtl ? 'before' : 'after'}
-                targetRef={itemRef}
-                {...getPopperPropsFromShorthand(menu)}
-              >
-                <ToolbarVariablesProvider value={mergedVariables}>
-                  {ToolbarMenu.create(menu, {
-                    defaultProps: () => ({
-                      className: toolbarMenuItemSlotClassNames.submenu,
-                      styles: resolvedStyles.menu,
-                      submenu: true,
-                      submenuIndicator,
-                    }),
-                    overrideProps: handleMenuOverrides,
-                  })}
-                </ToolbarVariablesProvider>
-              </Popper>
-            </Ref>
-            <EventListener listener={outsideClickHandler(getRefs)} target={context.target} type="click" />
-          </>
-        )}
-      </Unstable_NestingAuto>
-    ) : null;
-
-  if (!wrapper) {
-    setEnd();
-    return menuItemInner;
-  }
-
-  const wrapperElement = Box.create(wrapper, {
-    defaultProps: () =>
-      getA11yProps('wrapper', {
-        className: cx(toolbarMenuItemSlotClassNames.wrapper, classes.wrapper),
-      }),
-    overrideProps: () => ({
-      children: (
-        <>
-          {menuItemInner}
-          {maybeSubmenu}
-        </>
-      ),
+    slots: {
+      icon: ToolbarMenuItemIcon,
+      submenuIndicator: ToolbarMenuItemSubmenuIndicator,
+      activeIndicator: ToolbarMenuItemActiveIndicator,
+      popup: Popup,
+    },
+    slotProps: props => ({
+      icon: {
+        hasContent: !!props.content,
+      },
+      submenuIndicator: {
+        accessibility: indicatorBehavior,
+      },
+      activeIndicator: {
+        accessibility: indicatorBehavior,
+      },
+      popup: {
+        trapFocus: true,
+      },
     }),
-  });
-  setEnd();
 
-  return wrapperElement;
-};
+    shorthandConfig: {
+      mappedProp: 'content',
+    },
+    handledProps: [
+      'accessibility',
+      'as',
+      'children',
+      'className',
+      'content',
+      'design',
+      'styles',
+      'variables',
 
-ToolbarMenuItem.displayName = 'ToolbarMenuItem';
+      'active',
+      'activeIndicator',
+      'defaultMenuOpen',
+      'disabled',
+      'icon',
+      'index',
+      'submenuIndicator',
+      'inSubmenu',
+      'menu',
+      'menuOpen',
+      'onClick',
+      'onMenuOpenChange',
+      'popup',
+      'wrapper',
+    ],
+  },
+);
 
 ToolbarMenuItem.propTypes = {
   ...commonPropTypes.createCommon(),
@@ -468,23 +514,10 @@ ToolbarMenuItem.propTypes = {
   ]),
   wrapper: customPropTypes.itemShorthand,
 };
-
-ToolbarMenuItem.handledProps = Object.keys(ToolbarMenuItem.propTypes) as any;
-
 ToolbarMenuItem.defaultProps = {
   as: 'button',
   accessibility: toolbarMenuItemBehavior,
-  wrapper: { as: 'li' },
   activeIndicator: {},
   submenuIndicator: {},
+  wrapper: { as: 'li' },
 };
-
-ToolbarMenuItem.create = createShorthandFactory({
-  Component: ToolbarMenuItem,
-  mappedProp: 'content',
-});
-
-/**
- * A ToolbarMenuItem renders ToolbarMenu item as button.
- */
-export default withSafeTypeForAs<typeof ToolbarMenuItem, ToolbarMenuItemProps, 'button'>(ToolbarMenuItem);

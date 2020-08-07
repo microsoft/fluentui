@@ -1,8 +1,8 @@
-export { default as implementsCollectionShorthandProp } from './implementsCollectionShorthandProp';
-export { default as implementsShorthandProp } from './implementsShorthandProp';
-export { default as implementsWrapperProp } from './implementsWrapperProp';
+export { implementsCollectionShorthandProp } from './implementsCollectionShorthandProp';
+export { implementsShorthandProp } from './implementsShorthandProp';
+export { implementsWrapperProp } from './implementsWrapperProp';
 
-export { default as handlesAccessibility, getRenderedAttribute } from './handlesAccessibility';
+export { handlesAccessibility, getRenderedAttribute } from './handlesAccessibility';
 
-export { default as isConformant } from './isConformant';
-export { default as htmlIsAccessibilityCompliant } from './htmlIsAccessibilityCompliant';
+export { isConformant } from './isConformant';
+export { htmlIsAccessibilityCompliant } from './htmlIsAccessibilityCompliant';

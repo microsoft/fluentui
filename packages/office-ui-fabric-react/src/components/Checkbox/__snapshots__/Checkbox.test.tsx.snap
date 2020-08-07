@@ -18,12 +18,8 @@ exports[`Checkbox renders checked correctly 1`] = `
         background: #005a9e;
         border-color: #005a9e;
       }
-      & .ms-Checkbox-checkbox {
-        background: #0078d4;
-        border-color: #0078d4;
-      }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-        background: Window;
+        background: Highlight;
         border-color: Highlight;
       }
       @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
@@ -36,13 +32,19 @@ exports[`Checkbox renders checked correctly 1`] = `
         color: Window;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-        color: Highlight;
+        color: Window;
       }
       &:hover .ms-Checkbox-text {
         color: #201f1e;
       }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        color: WindowText;
+      }
       &:focus .ms-Checkbox-text {
         color: #201f1e;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        color: WindowText;
       }
 >
   <input
@@ -82,7 +84,6 @@ exports[`Checkbox renders checked correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           position: relative;
-          text-align: left;
           user-select: none;
         }
         &::before {
@@ -122,6 +123,9 @@ exports[`Checkbox renders checked correctly 1`] = `
             background: Highlight;
             border-color: Highlight;
           }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
     >
       <i
         aria-hidden={true}
@@ -157,6 +161,12 @@ exports[`Checkbox renders checked correctly 1`] = `
             line-height: 20px;
             margin-left: 4px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            color: WindowText;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
     >
       Standard checkbox
     </span>
@@ -177,7 +187,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
         border-color: #005a9e;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-        border-color: Highlight;
+        border-color: WindowText;
       }
       &:focus .ms-Checkbox-checkbox {
         border-color: #005a9e;
@@ -192,11 +202,20 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
       &:hover .ms-Checkbox-checkbox:after {
         border-color: #005a9e;
       }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox:after {
+        border-color: WindowText;
+      }
       &:hover .ms-Checkbox-text {
         color: #201f1e;
       }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        color: WindowText;
+      }
       &:focus .ms-Checkbox-text {
         color: #201f1e;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        color: WindowText;
       }
 >
   <input
@@ -236,7 +255,6 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           position: relative;
-          text-align: left;
           user-select: none;
         }
         &::before {
@@ -287,6 +305,15 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
             transition-timing-function: cubic-bezier(.4, 0, .23, 1);
             width: 10px;
           }
+          @media screen and (-ms-high-contrast: active){&:after {
+            border-color: WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: WindowText;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
     >
       <i
         aria-hidden={true}
@@ -321,6 +348,12 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
             font-size: 14px;
             line-height: 20px;
             margin-left: 4px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: WindowText;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
     >
       Standard checkbox
@@ -357,8 +390,14 @@ exports[`Checkbox renders unchecked correctly 1`] = `
       &:hover .ms-Checkbox-text {
         color: #201f1e;
       }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        color: WindowText;
+      }
       &:focus .ms-Checkbox-text {
         color: #201f1e;
+      }
+      @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        color: WindowText;
       }
 >
   <input
@@ -398,7 +437,6 @@ exports[`Checkbox renders unchecked correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           position: relative;
-          text-align: left;
           user-select: none;
         }
         &::before {
@@ -431,6 +469,12 @@ exports[`Checkbox renders unchecked correctly 1`] = `
             transition-property: background, border, border-color;
             transition-timing-function: cubic-bezier(.4, 0, .23, 1);
             width: 20px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: WindowText;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
     >
       <i
@@ -466,6 +510,12 @@ exports[`Checkbox renders unchecked correctly 1`] = `
             font-size: 14px;
             line-height: 20px;
             margin-left: 4px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: WindowText;
+          }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
           }
     >
       Standard checkbox

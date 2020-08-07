@@ -46,33 +46,7 @@ interface IPhoto {
   height: number;
 }
 
-export const FocusZonePhotosExample: React.FunctionComponent = () => {
-  //  Initialize the items when the component is first rendered (same array will be reused)
-  const items = useConst(_getItems);
-  return (
-    <FocusZone as="ul" className={classNames.photoList}>
-      {items.map((item: IPhoto, index: number) => (
-        <li
-          key={item.id}
-          className={classNames.photoCell}
-          aria-posinset={index + 1}
-          aria-setsize={items.length}
-          aria-label="Photo"
-          data-is-focusable={true}
-        >
-          <Image
-            src={item.url}
-            width={item.width}
-            height={item.height}
-            alt={`${item.width} by ${item.height} placeholder image`}
-          />
-        </li>
-      ))}
-    </FocusZone>
-  );
-};
-
-function _getItems(): IPhoto[] {
+const getItems = (): IPhoto[] => {
   const items: IPhoto[] = [];
 
   for (let i = 0; i < MAX_COUNT; i++) {
@@ -85,6 +59,31 @@ function _getItems(): IPhoto[] {
       height: 100,
     });
   }
-
   return items;
-}
+};
+
+export const FocusZonePhotosExample: React.FunctionComponent = () => {
+  //  Initialize the items when the component is first rendered (same array will be reused)
+  const items = useConst(getItems);
+  return (
+    <FocusZone as="ul" className={classNames.photoList}>
+      {items.map((item: IPhoto, index: number) => (
+        <li
+          key={item.id}
+          className={classNames.photoCell}
+          aria-posinset={index + 1}
+          aria-setsize={items.length}
+          aria-label="Photo"
+          data-is-focusable
+        >
+          <Image
+            src={item.url}
+            width={item.width}
+            height={item.height}
+            alt={`${item.width} by ${item.height} placeholder image`}
+          />
+        </li>
+      ))}
+    </FocusZone>
+  );
+};

@@ -4,10 +4,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
 <div>
   <div>
     <div
-      className=
-          ms-BasePicker
-          ms-PeoplePicker
-
+      className="ms-BasePicker ms-PeoplePicker"
       onBlur={[Function]}
       onKeyDown={[Function]}
     >
@@ -151,7 +148,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -539,7 +535,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -921,7 +916,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1309,7 +1303,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1710,7 +1703,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -2082,8 +2074,14 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
         }
   >
     <input
@@ -2123,7 +2121,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -2156,6 +2153,12 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               transition-property: background, border, border-color;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         <i
@@ -2192,6 +2195,12 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               line-height: 20px;
               margin-left: 4px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
       >
         Disable People Picker
       </span>
@@ -2225,8 +2234,14 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
         }
   >
     <input
@@ -2266,7 +2281,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             font-size: 14px;
             font-weight: 400;
             position: relative;
-            text-align: left;
             user-select: none;
           }
           &::before {
@@ -2299,6 +2313,12 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               transition-property: background, border, border-color;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         <i
@@ -2334,6 +2354,12 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               font-size: 14px;
               line-height: 20px;
               margin-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: WindowText;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
       >
         Delay Suggestion Results

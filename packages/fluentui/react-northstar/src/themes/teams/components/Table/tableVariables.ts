@@ -1,6 +1,6 @@
 import { pxToRem } from '../../../../utils';
 
-export interface TeamsTableVariables {
+export interface TableVariables {
   color: string;
   hoverColor: string;
   backgroundColor: string;
@@ -24,7 +24,7 @@ export interface TeamsTableVariables {
   bodyFontSize: string;
 }
 
-export default (siteVariables): Partial<TeamsTableVariables> => {
+export const tableVariables = (siteVariables): Partial<TableVariables> => {
   return {
     color: siteVariables.colorScheme.default.foreground,
     hoverColor: siteVariables.colorScheme.default.foregroundHover,

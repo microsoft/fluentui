@@ -17,7 +17,7 @@ export interface DividerVariables {
   dividerPadding: string;
 }
 
-export default (siteVars: any): DividerVariables => ({
+export const dividerVariables = (siteVars: any): DividerVariables => ({
   colorScheme: pickValuesFromColorScheme(siteVars.colorScheme, dividerColorAreas),
   dividerColor: siteVars.colors.grey[150],
   textColor: siteVars.colors.grey[450],

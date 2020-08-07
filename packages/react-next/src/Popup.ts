@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Popup';
+export * from './components/Popup';

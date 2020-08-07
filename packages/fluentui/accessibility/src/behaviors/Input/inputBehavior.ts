@@ -1,15 +1,17 @@
 import { Accessibility } from '../../types';
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey } from '@fluentui/keyboard-key';
 
 /**
  * @specification
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
  * Triggers 'clear' action with 'Escape' on 'input'.
  */
-const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
+export const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-disabled': props.disabled,
+      ...(props.required && { 'aria-required': true }),
+      ...(props.error && { 'aria-invalid': true }),
     },
   },
   keyActions: {
@@ -21,8 +23,8 @@ const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
   },
 });
 
-export default inputBehavior;
-
-type InputBehaviorProps = {
+export type InputBehaviorProps = {
   disabled?: boolean;
+  required?: boolean;
+  error?: boolean;
 };

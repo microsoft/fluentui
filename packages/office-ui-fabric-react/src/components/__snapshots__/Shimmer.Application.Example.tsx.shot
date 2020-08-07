@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`] = `
-<div>
+Array [
   <div
     className=
         ms-Toggle
@@ -55,8 +55,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
     >
       <button
         aria-checked={false}
-        aria-labelledby="Toggle0-label"
-        checked={false}
+        aria-labelledby="Toggle0-label Toggle0-stateText"
         className=
             ms-Toggle-background
             {
@@ -111,7 +110,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         role="switch"
         style={
           Object {
-            "display": "block",
             "marginBottom": "20px",
           }
         }
@@ -125,7 +123,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 border-color: transparent;
                 border-radius: 50%;
                 border-style: solid;
-                border-width: .28em;
+                border-width: 6px;
                 box-sizing: border-box;
                 display: block;
                 height: 12px;
@@ -177,7 +175,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         Shimmer
       </label>
     </div>
-  </div>
+  </div>,
   <div>
     <div
       className="ms-Viewport"
@@ -196,7 +194,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               -webkit-overflow-scrolling: touch;
-              background: #ffffff;
               color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
@@ -221,9 +218,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
           role="grid"
         >
           <div
-            className=
-                ms-DetailsList-headerWrapper
-
+            className="ms-DetailsList-headerWrapper"
             onKeyDown={[Function]}
             role="presentation"
           >
@@ -268,11 +263,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
               onMouseDownCapture={[Function]}
               onMouseMove={[Function]}
               role="row"
-              style={
-                Object {
-                  "minWidth": 16,
-                }
-              }
             >
               <div
                 aria-colindex={1}
@@ -466,40 +456,38 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
             </div>
           </div>
           <div
-            className=
-                ms-DetailsList-contentWrapper
-
+            className="ms-DetailsList-contentWrapper"
             onKeyDown={[Function]}
             role="presentation"
           >
             <div
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-                  {
-                    display: inline-block;
-                    min-height: 1px;
-                    min-width: 100%;
-                  }
-              data-focuszone-id="FocusZone3"
-              onBlur={[Function]}
-              onFocus={[Function]}
+              className="ms-SelectionZone"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDoubleClick={[Function]}
+              onFocusCapture={[Function]}
               onKeyDown={[Function]}
+              onKeyDownCapture={[Function]}
+              onMouseDown={[Function]}
               onMouseDownCapture={[Function]}
+              role="presentation"
             >
               <div
-                className="ms-SelectionZone"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onDoubleClick={[Function]}
-                onFocusCapture={[Function]}
+                className=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                    {
+                      display: inline-block;
+                      min-height: 1px;
+                      min-width: 100%;
+                    }
+                data-focuszone-id="FocusZone3"
+                onBlur={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
-                onKeyDownCapture={[Function]}
-                onMouseDown={[Function]}
                 onMouseDownCapture={[Function]}
-                role="presentation"
               >
                 <div
                   className=
@@ -568,6 +556,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -879,6 +870,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -1188,6 +1182,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -1499,6 +1496,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -1808,6 +1808,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -2119,6 +2122,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -2428,6 +2434,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -2739,6 +2748,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -3048,6 +3060,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                           transparent 100%)
                                                         0 0 / 90% 100%
                                                         no-repeat;
+                                }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
                                 }
                             style={
                               Object {
@@ -3359,6 +3374,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                                                         0 0 / 90% 100%
                                                         no-repeat;
                                 }
+                                @media screen and (forced-colors: active){& {
+                                  forced-color-adjust: none;
+                                }
                             style={
                               Object {
                                 "width": "100%",
@@ -3636,6 +3654,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;

@@ -1,4 +1,4 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
 import {
   ICalendarStrings,
   DayOfWeek,
@@ -8,12 +8,13 @@ import {
   AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme, IProcessedStyleSet } from '@uifabric/styling';
+import { IDayGridOptions } from '@fluentui/date-time-utilities';
 
 export interface ICalendarDayGrid {
   focus(): void;
 }
 
-export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
+export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICalendarDayGrid> {
   /**
    * Optional callback to access the ICalendarDayGrid interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -175,6 +176,13 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
    * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
    */
   animationDirection?: AnimationDirection;
+
+  /**
+   * Optional callback function to mark specific days with a small symbol. Fires when the date range changes,
+   * gives the starting and ending displayed dates and expects the list of which days in between should be
+   * marked.
+   */
+  getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
 }
 
 export interface ICalendarDayGridStyleProps {
@@ -279,6 +287,11 @@ export interface ICalendarDayGridStyles {
    * The style applied to the last placeholder week used during transitions
    */
   lastTransitionWeek?: IStyle;
+
+  /**
+   * The style applied to the marker on days to mark as important
+   */
+  dayMarker?: IStyle;
 
   /**
    * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners

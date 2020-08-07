@@ -63,6 +63,7 @@ function lintImports() {
     '@uifabric/merge-styles': 'Styling',
     '@uifabric/styling': 'Styling',
     '@uifabric/utilities': 'Utilities',
+    '@fluentui/date-time-utilities': 'DateTimeUtilities',
   };
 
   const packagesInfo = getAllPackageInfo();
@@ -258,7 +259,9 @@ function lintImports() {
       }
 
       // A "deep" path is anything that goes further into the package than <pkg>/lib/<file>
-      const allowedSegments = pkgName[0] === '@' ? 4 : 3;
+      let allowedSegments = pkgName[0] === '@' ? 4 : 3;
+      const isCompatImport = importPath.match(/\/compat/g);
+      allowedSegments = isCompatImport ? allowedSegments + 1 : allowedSegments;
       pathIsDeep = importPath.split(/\//g).length > allowedSegments;
     }
 

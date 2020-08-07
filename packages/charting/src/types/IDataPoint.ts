@@ -1,3 +1,37 @@
+export interface IRefArrayData {
+  index?: string;
+  refElement?: SVGGElement;
+}
+export interface IBasestate {
+  _width?: number;
+  _height?: number;
+  activeLegend?: string;
+  color?: string;
+  dataForHoverCard?: number;
+  isCalloutVisible: boolean;
+  isLegendSelected?: boolean;
+  isLegendHovered?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  refSelected?: any;
+  YValueHover?: { legend?: string; y?: number; color?: string }[];
+  hoverYValue?: string | number | null;
+  hoverXValue?: string | number | null;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
+  lineColor?: string;
+  hoveredLineColor?: string;
+  selectedLegend?: string;
+  containerWidth?: number;
+  containerHeight?: number;
+}
+export interface IChildProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  xScale?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  yScale?: any;
+  containerHeight?: number;
+  containerWidth?: number;
+}
 export interface IDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -56,6 +90,18 @@ export interface IChartDataPoint {
    * placeholder data point
    */
   placeHolder?: boolean;
+
+  /**
+   * Callout data for x axis
+   * This is an optional prop, If haven;t given legend will take
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * This is an optional prop, If haven't given data will take
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface IVerticalBarChartDataPoint {
@@ -80,6 +126,18 @@ export interface IVerticalBarChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Callout data for x axis
+   * This is an optional prop, If haven;t given legend will take
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * This is an optional prop, If haven't given data will take
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface ILineChartDataPoint {
@@ -96,6 +154,11 @@ export interface ILineChartDataPoint {
   y: number;
 
   /**
+   * Defines the function that is executed on clicking  line
+   */
+  onDataPointClick?: () => void;
+
+  /**
    * Callout data for x axis
    */
   xAxisCalloutData?: string;
@@ -103,7 +166,7 @@ export interface ILineChartDataPoint {
   /**
    * Callout data for y axis
    */
-  yAxisCalloutData?: string;
+  yAxisCalloutData?: string | { [id: string]: number };
 }
 
 export interface ILineChartPoints {
@@ -165,6 +228,18 @@ export interface IVSChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Callout data for x axis
+   * This is an optional prop, If haven;t given legend will take
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * This is an optional prop, If haven't given data will take
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface IVerticalStackedChartProps {
@@ -204,6 +279,18 @@ export interface IGVBarChartSeriesPoint {
    * Legend text in the chart
    */
   legend: string;
+
+  /**
+   * Callout data for x axis
+   * This is an optional prop, If haven;t given legend will take
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * This is an optional prop, If haven't given data will take
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface IGroupedVerticalBarChartData {

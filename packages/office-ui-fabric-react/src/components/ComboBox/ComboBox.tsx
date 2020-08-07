@@ -40,7 +40,7 @@ export interface IComboBoxState {
   selectedIndices?: number[];
 
   /** The focused state of the comboBox */
-  focused?: boolean;
+  focusState?: 'none' | 'focused' | 'focusing';
 
   /** This value is used for the autocomplete hint value */
   suggestedDisplayValue?: string;
@@ -210,7 +210,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     this.state = {
       isOpen: false,
       selectedIndices: initialSelectedIndices,
-      focused: false,
+      focusState: 'none',
       suggestedDisplayValue: undefined,
       currentOptions: this.props.options,
       currentPendingValueValidIndex: -1,
@@ -241,7 +241,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
@@ -267,7 +266,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     const { allowFreeform, text, onMenuOpen, onMenuDismissed } = this.props;
-    const { isOpen, focused, selectedIndices, currentPendingValueValidIndex } = this.state;
+    const { isOpen, selectedIndices, currentPendingValueValidIndex } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
     // make sure the currently selected/pending option is scrolled into view
@@ -280,7 +279,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     // and If we are open or we are just closed, shouldFocusAfterClose is set,
     // but we are not the activeElement set focus on the input
     if (
-      focused &&
+      this._hasFocus() &&
       (isOpen ||
         (prevState.isOpen &&
           !isOpen &&
@@ -301,7 +300,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     if (
       this._focusInputAfterClose &&
       ((prevState.isOpen && !isOpen) ||
-        (focused &&
+        (this._hasFocus() &&
           ((!isOpen &&
             !this.props.multiSelect &&
             prevState.selectedIndices &&
@@ -310,7 +309,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
             !allowFreeform ||
             text !== prevProps.text)))
     ) {
-      this._select();
+      this._onFocus();
     }
 
     this._notifyPendingValueChanged(prevState);
@@ -335,10 +334,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     const errorMessageId = id + '-error';
     const {
       className,
-      label,
       disabled,
-      ariaLabel,
-      ariaDescribedBy,
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
@@ -347,20 +343,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       onRenderItem = this._onRenderItem,
       onRenderOption = this._onRenderOptionContent,
       allowFreeform,
-      buttonIconProps,
-      isButtonAriaHidden = true,
       styles: customStyles,
       theme,
-      title,
       keytipProps,
-      placeholder: placeholderProp,
-      tabIndex,
-      autofill,
       persistMenu,
-      iconButtonProps,
       multiSelect,
     } = this.props;
-    const { isOpen, focused, suggestedDisplayValue } = this.state;
+    const { isOpen, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     // Single select is already accessible since the whole text is selected
@@ -377,20 +366,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
 
-    // If the combobox has focus, is multiselect, and has a display string, then use that placeholder
-    // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
-    // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
-    // should be removed and the multiselect combobox should behave like a picker.
-    const placeholder =
-      focused && this.props.multiSelect && multiselectAccessibleText ? multiselectAccessibleText : placeholderProp;
-
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(
           theme!,
           !!isOpen,
           !!disabled,
           !!required,
-          !!focused,
+          !!this._hasFocus(),
           !!allowFreeform,
           !!hasErrorMessage,
           className,
@@ -401,81 +383,25 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           !!isOpen,
           !!disabled,
           !!required,
-          !!focused,
+          !!this._hasFocus(),
           !!allowFreeform,
           !!hasErrorMessage,
         );
 
+    const comboBoxWrapper = keytipProps ? (
+      <KeytipData keytipProps={keytipProps} disabled={disabled}>
+        {(keytipAttributes: any): JSX.Element =>
+          this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId, keytipAttributes)
+        }
+      </KeytipData>
+    ) : (
+      this._renderComboBoxWrapper(multiselectAccessibleText, errorMessageId)
+    );
+
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
-        <KeytipData keytipProps={keytipProps} disabled={disabled}>
-          {(keytipAttributes: any): JSX.Element => (
-            <div
-              data-ktp-target={keytipAttributes['data-ktp-target']}
-              ref={this._comboBoxWrapper}
-              id={id + 'wrapper'}
-              className={this._classNames.root}
-            >
-              <Autofill
-                data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-                data-is-interactable={!disabled}
-                componentRef={this._autofill}
-                id={id + '-input'}
-                className={this._classNames.input}
-                type="text"
-                onFocus={this._select}
-                onBlur={this._onBlur}
-                onKeyDown={this._onInputKeyDown}
-                onKeyUp={this._onInputKeyUp}
-                onClick={this._onAutofillClick}
-                onTouchStart={this._onTouchStart}
-                onInputValueChange={this._onInputChange}
-                aria-expanded={isOpen}
-                aria-autocomplete={this._getAriaAutoCompleteValue()}
-                role="combobox"
-                readOnly={disabled || !allowFreeform}
-                aria-labelledby={label && id + '-label'}
-                aria-label={ariaLabel && !label ? ariaLabel : undefined}
-                aria-describedby={
-                  errorMessage !== undefined
-                    ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
-                    : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
-                }
-                aria-activedescendant={this._getAriaActiveDescendantValue()}
-                aria-required={required}
-                aria-disabled={disabled}
-                aria-owns={isOpen ? id + '-list' : undefined}
-                spellCheck={false}
-                defaultVisibleValue={this._currentVisibleValue}
-                suggestedDisplayValue={suggestedDisplayValue}
-                updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
-                shouldSelectFullInputValueInComponentDidUpdate={
-                  this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
-                }
-                title={title}
-                preventValueSelection={!focused}
-                placeholder={placeholder}
-                tabIndex={tabIndex}
-                {...autofill}
-              />
-              <IconButton
-                className={'ms-ComboBox-CaretDown-button'}
-                styles={this._getCaretButtonStyles()}
-                role="presentation"
-                aria-hidden={isButtonAriaHidden}
-                data-is-focusable={false}
-                tabIndex={-1}
-                onClick={this._onComboBoxClick}
-                onBlur={this._onBlur}
-                iconProps={buttonIconProps}
-                disabled={disabled}
-                checked={isOpen}
-                {...iconButtonProps}
-              />
-            </div>
-          )}
-        </KeytipData>
+        {comboBoxWrapper}
         {(persistMenu || isOpen) &&
           onRenderContainer(
             {
@@ -518,6 +444,12 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         });
       }
     }
+
+    // Programatically setting focus means that there is nothing else that needs to be done
+    // Focus is now contained
+    if (!this._hasFocus()) {
+      this.setState({ focusState: 'focused' });
+    }
   };
 
   /**
@@ -555,6 +487,106 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     return comboBox.value;
   };
 
+  private _renderComboBoxWrapper = (
+    multiselectAccessibleText: string | undefined,
+    errorMessageId: string,
+    keytipAttributes: any = {},
+  ): JSX.Element => {
+    const {
+      label,
+      disabled,
+      ariaLabel,
+      ariaDescribedBy,
+      required,
+      errorMessage,
+      allowFreeform,
+      buttonIconProps,
+      isButtonAriaHidden = true,
+      title,
+      placeholder: placeholderProp,
+      tabIndex,
+      autofill,
+      iconButtonProps,
+    } = this.props;
+
+    const { isOpen, suggestedDisplayValue } = this.state;
+
+    // If the combobox has focus, is multiselect, and has a display string, then use that placeholder
+    // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
+    // to correct the behavior where the input is cleared so the user can type. If a full refactor is done, then this
+    // should be removed and the multiselect combobox should behave like a picker.
+    const placeholder =
+      this._hasFocus() && this.props.multiSelect && multiselectAccessibleText
+        ? multiselectAccessibleText
+        : placeholderProp;
+
+    return (
+      <div
+        data-ktp-target={keytipAttributes['data-ktp-target']}
+        ref={this._comboBoxWrapper}
+        id={this._id + 'wrapper'}
+        className={this._classNames.root}
+      >
+        <Autofill
+          data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+          data-is-interactable={!disabled}
+          componentRef={this._autofill}
+          id={this._id + '-input'}
+          className={this._classNames.input}
+          type="text"
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          onKeyDown={this._onInputKeyDown}
+          onKeyUp={this._onInputKeyUp}
+          onClick={this._onAutofillClick}
+          onTouchStart={this._onTouchStart}
+          onInputValueChange={this._onInputChange}
+          aria-expanded={isOpen}
+          aria-autocomplete={this._getAriaAutoCompleteValue()}
+          role="combobox"
+          readOnly={disabled || !allowFreeform}
+          aria-labelledby={label && this._id + '-label'}
+          aria-label={ariaLabel && !label ? ariaLabel : undefined}
+          aria-describedby={
+            errorMessage !== undefined
+              ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
+              : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
+          }
+          aria-activedescendant={this._getAriaActiveDescendantValue()}
+          aria-required={required}
+          aria-disabled={disabled}
+          aria-owns={isOpen ? this._id + '-list' : undefined}
+          spellCheck={false}
+          defaultVisibleValue={this._currentVisibleValue}
+          suggestedDisplayValue={suggestedDisplayValue}
+          updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
+          shouldSelectFullInputValueInComponentDidUpdate={
+            this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
+          }
+          title={title}
+          preventValueSelection={!this._hasFocus()}
+          placeholder={placeholder}
+          tabIndex={tabIndex}
+          {...autofill}
+        />
+        <IconButton
+          className={'ms-ComboBox-CaretDown-button'}
+          styles={this._getCaretButtonStyles()}
+          role="presentation"
+          aria-hidden={isButtonAriaHidden}
+          data-is-focusable={false}
+          tabIndex={-1}
+          onClick={this._onComboBoxClick}
+          onBlur={this._onBlur}
+          iconProps={buttonIconProps}
+          disabled={disabled}
+          checked={isOpen}
+          {...iconButtonProps}
+        />
+      </div>
+    );
+  };
+
   /**
    * componentDidUpdate handler for the auto fill component
    *
@@ -581,7 +613,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       currentPendingValue,
       suggestedDisplayValue,
       isOpen,
-      focused,
     } = this.state;
 
     const currentPendingIndexValid = this._indexWithinBounds(currentOptions, currentPendingValueValidIndex);
@@ -598,7 +629,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
     if (this.props.multiSelect) {
       // Multi-select
-      if (focused) {
+      if (this._hasFocus()) {
         let index = -1;
         if (autoComplete === 'on' && currentPendingIndexValid) {
           index = currentPendingValueValidIndex;
@@ -674,14 +705,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           : this._normalizeToString(suggestedDisplayValue),
       );
     }
-    let displayString = '';
-    for (let idx = 0; idx < displayValues.length; idx++) {
-      if (idx > 0) {
-        displayString += ', ';
-      }
-      displayString += displayValues[idx];
-    }
-    return displayString;
+    const { multiSelectDelimiter = ', ' } = this.props;
+    return displayValues.join(multiSelectDelimiter);
   }
 
   /**
@@ -1013,18 +1038,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * Focus (and select) the content of the input
    * and set the focused state
    */
-  private _select = (): void => {
+  private _onFocus = (): void => {
     if (this._autofill.current && this._autofill.current.inputElement) {
       this._autofill.current.inputElement.select();
     }
 
-    if (!this.state.focused) {
-      const state: Pick<IComboBoxState, 'focused'> | Pick<IComboBoxState, 'focused' | 'isOpen'> = { focused: true };
-
-      if (this.props.openOnKeyboardFocus && !this.state.isOpen && !this.props.disabled) {
-        (state as Pick<IComboBoxState, 'focused' | 'isOpen'>).isOpen = true;
-      }
-      this.setState(state);
+    if (!this._hasFocus()) {
+      this.setState({ focusState: 'focusing' });
     }
   };
 
@@ -1064,7 +1084,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * OnBlur handler. Set the focused state to false
    * and submit any pending value
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
@@ -1094,8 +1114,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       return;
     }
 
-    if (this.state.focused) {
-      this.setState({ focused: false });
+    if (this._hasFocus()) {
+      this.setState({ focusState: 'none' });
       if (!this.props.multiSelect || this.props.allowFreeform) {
         this._submitPendingValue(event);
       }
@@ -1374,7 +1394,9 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           checked={isSelected}
           className={'ms-ComboBox-option'}
           onClick={this._onItemClick(item)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseEnter={this._onOptionMouseEnter.bind(this, item.index)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
@@ -1404,6 +1426,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           checked={isChecked}
           title={title}
           disabled={item.disabled}
+          // eslint-disable-next-line react/jsx-no-bind
           onRenderLabel={onRenderCheckboxLabel}
           inputProps={{
             'aria-selected': isSelected ? 'true' : 'false',
@@ -1420,6 +1443,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         isSelected={isSelected}
         isChecked={isChecked}
         text={item.text}
+        // eslint-disable-next-line react/jsx-no-bind
         render={getOptionComponent}
         data={item.data}
       />
@@ -1954,6 +1978,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         this._setPendingInfoFromIndexAndDirection(index, directionToSearch);
         break;
 
+      /* eslint-disable no-fallthrough */
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
         if (!allowFreeform && autoComplete === 'off') {
@@ -1961,6 +1986,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         }
 
       default:
+        /* eslint-enable no-fallthrough */
         // are we processing a function key? if so bail out
         if (ev.which >= 112 /* F1 */ && ev.which <= 123 /* F12 */) {
           return;
@@ -2031,6 +2057,13 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       default:
         if (shouldHandleKey && isOpen) {
           this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+        } else {
+          if (this.state.focusState === 'focusing' && this.props.openOnKeyboardFocus) {
+            this.setState({ isOpen: true });
+          }
+          if (this.state.focusState !== 'focused') {
+            this.setState({ focusState: 'focused' });
+          }
         }
         return;
     }
@@ -2116,7 +2149,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
     if (!disabled) {
       this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
-      this.setState({ focused: true });
+      this.setState({ focusState: 'focused' });
     }
   };
 
@@ -2199,7 +2232,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length > 0
         ? this._id + '-list' + this.state.selectedIndices[0]
         : undefined;
-    if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
+    if (this.state.isOpen && this._hasFocus() && this.state.currentPendingValueValidIndex !== -1) {
       descendantText = this._id + '-list' + this.state.currentPendingValueValidIndex;
     }
     return descendantText;
@@ -2257,5 +2290,12 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   private _normalizeToString(value?: string): string {
     return value || '';
+  }
+
+  /**
+   * Returns true if the component has some kind of focus. If it's either focusing or if it's focused
+   */
+  private _hasFocus() {
+    return this.state.focusState !== 'none';
   }
 }

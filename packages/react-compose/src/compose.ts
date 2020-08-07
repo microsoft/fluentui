@@ -1,12 +1,18 @@
 import * as React from 'react';
 
 import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
-import { mergeComposeOptions, wasComposedPreviously } from './utils';
-import { useStylesheet } from '@fluentui/react-stylesheets';
+import { wasComposedPreviously } from './wasComposedPreviously';
+import { mergeComposeOptions } from './mergeComposeOptions';
 
-function compose<T extends React.ElementType, InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
-  input: Input<T, InputProps>,
-  inputOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {},
+function compose<
+  TElementType extends keyof JSX.IntrinsicElements,
+  TInputProps,
+  TInputStylesProps,
+  TParentProps,
+  TParentStylesProps
+>(
+  input: Input<TElementType, TInputProps>,
+  inputOptions: ComposeOptions<TInputProps, TInputStylesProps, TParentProps, TParentStylesProps> = {},
 ) {
   const composeOptions = mergeComposeOptions(
     input as Input,
@@ -14,14 +20,18 @@ function compose<T extends React.ElementType, InputProps, InputStylesProps, Pare
     wasComposedPreviously(input) ? input.fluentComposeConfig : undefined,
   );
 
-  const Component = (React.forwardRef<T, InputProps & ParentProps & { as?: React.ElementType }>((props, ref) => {
-    // Register styles as needed. Compose options won't mutate, so conditionalizing the hook is ok.
-    if (composeOptions.stylesheets && composeOptions.stylesheets.length) {
-      useStylesheet(composeOptions.stylesheets);
-    }
-
-    return composeOptions.render(props, ref as React.Ref<'div'>, composeOptions);
-  }) as unknown) as ComponentWithAs<T, InputProps & ParentProps>;
+  const Component = (React.forwardRef<HTMLElement, TInputProps & TParentProps & { as?: React.ElementType }>(
+    (props, ref) => {
+      return composeOptions.render(props, ref as React.Ref<HTMLDivElement>, {
+        ...composeOptions,
+        state: composeOptions.state(props, ref, composeOptions),
+        slots: {
+          ...composeOptions.slots,
+          __self: Component,
+        },
+      });
+    },
+  ) as unknown) as ComponentWithAs<TElementType, TInputProps & TParentProps>;
 
   Component.displayName = composeOptions.displayName;
 

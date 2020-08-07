@@ -60,9 +60,7 @@ exports[`Panel renders Panel correctly 1`] = `
     <div
       aria-labelledby="Panel0-headerText"
       aria-modal="true"
-      className=
-
-
+      className=""
       onKeyDown={[Function]}
       role="dialog"
       style={
@@ -262,7 +260,6 @@ exports[`Panel renders Panel correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;

@@ -1,8 +1,8 @@
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayProps, ICalendarDayGridStyles } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
+import { IDateGridStrings, DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
 
 export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarDayGridStyles, ICalendarMonthProps };
 
@@ -183,31 +183,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   allFocusable?: boolean;
 }
 
-export interface ICalendarStrings {
-  /**
-   * An array of strings for the full names of months.
-   * The array is 0-based, so months[0] should be the full name of January.
-   */
-  months: string[];
-
-  /**
-   * An array of strings for the short names of months.
-   * The array is 0-based, so shortMonths[0] should be the short name of January.
-   */
-  shortMonths: string[];
-
-  /**
-   * An array of strings for the full names of days of the week.
-   * The array is 0-based, so days[0] should be the full name of Sunday.
-   */
-  days: string[];
-
-  /**
-   * An array of strings for the initials of the days of the week.
-   * The array is 0-based, so days[0] should be the initial of Sunday.
-   */
-  shortDays: string[];
-
+export interface ICalendarStrings extends IDateGridStrings {
   /**
    * String to render for button to direct the user to today's date.
    */
@@ -275,6 +251,11 @@ export interface ICalendarStrings {
    * Aria-label format string for today's date. Should have 1 string param, e.g. "Today's date `{0}`"
    */
   todayDateFormatString?: string;
+
+  /**
+   * Aria-label for when a date is marked
+   */
+  dayMarkedAriaLabel?: string;
 }
 
 export interface ICalendarIconStrings {
@@ -301,12 +282,12 @@ export interface ICalendarFormatDateCallbacks {
   /**
    * Callback to apply formatting to mmmm d, yyyy formated dates
    */
-  formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
+  formatMonthDayYear: (date: Date, strings?: IDateGridStrings) => string;
 
   /**
    * Callback to apply formatting to the month and year in the Day Picker header
    */
-  formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+  formatMonthYear: (date: Date, strings?: IDateGridStrings) => string;
 
   /**
    * Callback to apply formatting to the days in the Day Picker calendar

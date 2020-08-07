@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import {
   IExtendedPersonaProps,
@@ -7,74 +6,53 @@ import {
   ISelectedPeopleItemProps,
   ExtendedSelectedItem,
 } from 'office-ui-fabric-react/lib/SelectedItemsList';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { people, groupOne, groupTwo } from '@uifabric/example-data';
 
 const primaryButtonStyles: Partial<IButtonStyles> = { root: { display: 'block', marginBottom: 20 } };
+const onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
+  return <ExtendedSelectedItem {...props} />;
+};
+const onCopyItems = (items: IExtendedPersonaProps[]): string => {
+  return items.map((item: IExtendedPersonaProps) => item.text).join(', ');
+};
 
-export interface ISelectedPeopleListBasicExampleState {
-  nextPersonIndex: number;
-}
-
-export class SelectedPeopleListBasicExample extends React.Component<{}, ISelectedPeopleListBasicExampleState> {
-  private _selectionList = React.createRef<SelectedPeopleList>();
-  private _selection: Selection;
-
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      nextPersonIndex: 0,
-    };
-    this._selection = new Selection({ onSelectionChanged: () => this.forceUpdate() });
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div>
-        <PrimaryButton
-          text="Add another item"
-          onClick={this._onAddItemButtonClicked}
-          disabled={this.state.nextPersonIndex >= people.length}
-          styles={primaryButtonStyles}
-        />
-        <Stack horizontal wrap>
-          <SelectedPeopleList
-            key="normal"
-            removeButtonAriaLabel="Remove"
-            defaultSelectedItems={[people[40]]}
-            componentRef={this._selectionList}
-            onCopyItems={this._onCopyItems}
-            onExpandGroup={this._onExpandItem}
-            copyMenuItemText="Copy"
-            removeMenuItemText="Remove"
-            selection={this._selection}
-            onRenderItem={this._onRenderItem}
-          />
-        </Stack>
-      </div>
-    );
-  }
-
-  private _onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
-    return <ExtendedSelectedItem {...props} />;
+export const SelectedPeopleListBasicExample: React.FunctionComponent = () => {
+  const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
+  const selectionList = React.useRef<SelectedPeopleList>(null);
+  const onExpandItem = (item: IExtendedPersonaProps): void => {
+    const expandedItem = item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
+    selectionList.current!.replaceItem(item, expandedItem);
   };
-
-  private _onAddItemButtonClicked = (): void => {
-    if (this._selectionList.current) {
-      const { nextPersonIndex } = this.state;
-      this._selectionList.current.addItems([people[nextPersonIndex]]);
-      this.setState({ nextPersonIndex: nextPersonIndex + 1 });
+  const onAddItemButtonClicked = (): void => {
+    if (selectionList.current) {
+      selectionList.current.addItems([people[nextPersonIndex]]);
+      setNextPersonIndex(nextPersonIndex + 1);
     }
   };
-
-  private _onExpandItem = (item: IExtendedPersonaProps): void => {
-    const expandedItem = item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
-    this._selectionList.current!.replaceItem(item, expandedItem);
-  };
-
-  private _onCopyItems(items: IExtendedPersonaProps[]): string {
-    return items.map((item: IExtendedPersonaProps) => item.text).join(', ');
-  }
-}
+  return (
+    <div>
+      <PrimaryButton
+        text="Add another item"
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={onAddItemButtonClicked}
+        disabled={nextPersonIndex >= people.length}
+        styles={primaryButtonStyles}
+      />
+      <Stack horizontal wrap>
+        <SelectedPeopleList
+          key="normal"
+          removeButtonAriaLabel="Remove"
+          defaultSelectedItems={[people[40]]}
+          componentRef={selectionList}
+          onCopyItems={onCopyItems}
+          // eslint-disable-next-line react/jsx-no-bind
+          onExpandGroup={onExpandItem}
+          copyMenuItemText="Copy"
+          removeMenuItemText="Remove"
+          onRenderItem={onRenderItem}
+        />
+      </Stack>
+    </div>
+  );
+};

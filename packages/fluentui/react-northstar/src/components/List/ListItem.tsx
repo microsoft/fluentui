@@ -1,22 +1,21 @@
 import { Accessibility, listItemBehavior, ListItemBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useFluentContext,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import Box, { BoxProps } from '../Box/Box';
-import {
-  ShorthandValue,
-  WithAsProp,
-  ComponentEventHandler,
-  withSafeTypeForAs,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
+import { Box, BoxProps } from '../Box/Box';
+import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, ContentComponentProps } from '../../utils';
 import { ListContext, ListContextSubscribedValue } from './listContext';
 
@@ -89,9 +88,12 @@ export const listItemSlotClassNames: ListItemSlotClassNames = {
   endMedia: `${listItemClassName}__endMedia`,
 };
 
-const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
+/**
+ * A ListItem contains a single piece of content within a List.
+ */
+export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> &
   FluentComponentStaticProps<ListItemProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
 
   setStart();
@@ -210,7 +212,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     }),
   });
 
-  const element = (
+  const element = getA11Props.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
@@ -236,7 +238,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
       </div>
 
       {endMediaElement}
-    </ElementType>
+    </ElementType>,
   );
 
   setEnd();
@@ -280,8 +282,3 @@ ListItem.propTypes = {
 ListItem.handledProps = Object.keys(ListItem.propTypes) as any;
 
 ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' });
-
-/**
- * A ListItem contains a single piece of content within a List.
- */
-export default withSafeTypeForAs<typeof ListItem, ListItemProps, 'li'>(ListItem);

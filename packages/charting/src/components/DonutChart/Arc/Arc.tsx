@@ -26,25 +26,32 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   public render(): JSX.Element {
-    const { color, arc, href, valueInsideDonut } = this.props;
+    const { color, arc, href, valueInsideDonut, theme, focusedArcId } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
-    const classNames = getClassNames(getStyles, { color, href });
+    const classNames = getClassNames(getStyles, { color, href, theme });
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
     const opacity: number =
       this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
     return (
       <g ref={this.currentRef}>
+        {!!focusedArcId && focusedArcId === id && (
+          <path id={id + 'focusRing'} d={arc(this.props.focusData)} className={classNames.focusRing} />
+        )}
         <path
           id={id}
           d={arc(this.props.data)}
-          onFocus={this._onFocus.bind(this, this.props.data!.data)}
+          // eslint-disable-next-line react/jsx-no-bind
+          onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
           data-is-focusable={true}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
           onBlur={this._onBlur}
           opacity={opacity}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._redirectToUrl.bind(this, href)}
           aria-labelledby={this.props.calloutId}
         />
@@ -55,10 +62,8 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     );
   }
 
-  private _onFocus(data: IChartDataPoint): void {
-    if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
-      this.props.onFocusCallback!(data, this.currentRef.current);
-    }
+  private _onFocus(data: IChartDataPoint, id: string): void {
+    this.props.onFocusCallback!(data, id, this.currentRef.current);
   }
 
   private _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {

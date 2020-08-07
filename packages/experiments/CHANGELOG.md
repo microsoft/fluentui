@@ -1,8 +1,186 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 04 May 2020 12:33:29 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2020 12:42:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.27.15](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.15)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.14..@uifabric/experiments_v7.27.15)
+
+### Patches
+
+- update snapshots ([PR #14273](https://github.com/microsoft/fluentui/pull/14273) by ololubek@microsoft.com)
+
+## [7.27.14](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.14)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.9..@uifabric/experiments_v7.27.14)
+
+### Patches
+
+- Updating snapshots. ([PR #14215](https://github.com/microsoft/fluentui/pull/14215) by humbertomakotomorimoto@gmail.com)
+
+## [7.27.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.9)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.7..@uifabric/experiments_v7.27.9)
+
+### Patches
+
+- UnifiedPicker and SelectedItemsList: minor accessibility fixes ([PR #14090](https://github.com/microsoft/fluentui/pull/14090) by elvonspa@microsoft.com)
+- Fix "rules of hooks" lint rule violations ([PR #14100](https://github.com/microsoft/fluentui/pull/14100) by elcraig@microsoft.com)
+
+## [7.27.7](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.7)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.2..@uifabric/experiments_v7.27.7)
+
+### Patches
+
+- UnifiedPicker: Fixing paste logic ([PR #14121](https://github.com/microsoft/fluentui/pull/14121) by nebhatna@microsoft.com)
+
+## [7.27.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.2)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.1..@uifabric/experiments_v7.27.2)
+
+### Patches
+
+- Replace tslint with eslint; fix some violations including naming ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+- UnifiedPeoplePicker: Fixing order of hooks ([PR #13998](https://github.com/microsoft/fluentui/pull/13998) by nebhatna@microsoft.com)
+
+## [7.27.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.1)
+
+Fri, 10 Jul 2020 12:40:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.0..@uifabric/experiments_v7.27.1)
+
+### Patches
+
+- Fixing sample storyboard for icons to initialize properly and show different icons. ([PR #13970](https://github.com/microsoft/fluentui/pull/13970) by caperez@microsoft.com)
+
+## [7.27.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.12..@uifabric/experiments_v7.27.0)
+
+### Minor changes
+
+- Support for linked folder in FolderCover component ([PR #13960](https://github.com/microsoft/fluentui/pull/13960) by hemanp@microsoft.com)
+
+## [7.26.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.12)
+
+Wed, 01 Jul 2020 12:35:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.11..@uifabric/experiments_v7.26.12)
+
+### Patches
+
+- High Contrast in Edge Chromium: fix Label and TextField. ([PR #13844](https://github.com/microsoft/fluentui/pull/13844) by xgao@microsoft.com)
+
+## [7.26.11](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.11)
+
+Tue, 30 Jun 2020 12:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.9..@uifabric/experiments_v7.26.11)
+
+### Patches
+
+- Updating some typings. ([PR #13842](https://github.com/microsoft/fluentui/pull/13842) by dzearing@microsoft.com)
+
+## [7.26.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.9)
+
+Fri, 26 Jun 2020 12:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.6..@uifabric/experiments_v7.26.9)
+
+### Patches
+
+- UnifiedPicker: Fixing failing import file ([PR #13806](https://github.com/microsoft/fluentui/pull/13806) by nebhatna@microsoft.com)
+
+## [7.26.6](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.6)
+
+Mon, 22 Jun 2020 12:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.5..@uifabric/experiments_v7.26.6)
+
+### Patches
+
+- Fix width of header rows in TilesList ([PR #13697](https://github.com/microsoft/fluentui/pull/13697) by tmichon@microsoft.com)
+
+## [7.26.5](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.5)
+
+Wed, 17 Jun 2020 16:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.4..@uifabric/experiments_v7.26.5)
+
+### Patches
+
+- Fix icon names for DesktopSignal, DocumentsSignal, and PicturesSignal. Update example page. ([PR #13625](https://github.com/microsoft/fluentui/pull/13625) by taenri@microsoft.com)
+
+## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.0)
+
+Mon, 08 Jun 2020 12:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.3..@uifabric/experiments_v7.26.0)
+
+### Minor changes
+
+- Added missing functionalities in UnifiedPeoplePicker and Example ([PR #13271](https://github.com/microsoft/fluentui/pull/13271) by nebhatna@microsoft.com)
+
+## [7.25.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.3)
+
+Fri, 05 Jun 2020 05:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.0..@uifabric/experiments_v7.25.3)
+
+### Patches
+
+- Adjusting Tile scss ([PR #13478](https://github.com/microsoft/fluentui/pull/13478) by dzearing@microsoft.com)
+
+## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.0)
+
+Fri, 29 May 2020 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.24.8..@uifabric/experiments_v7.25.0)
+
+### Minor changes
+
+- Add special folder icon signals for Desktop, Documents, and Pictures. ([PR #13347](https://github.com/microsoft/fluentui/pull/13347) by taenri@microsoft.com)
+
+### Patches
+
+- Fix Tile border color declarations so they don't get elided ([PR #13386](https://github.com/microsoft/fluentui/pull/13386) by tmichon@microsoft.com)
+- Add dedicated touch invoke functionality to SelectionZone ([PR #13241](https://github.com/microsoft/fluentui/pull/13241) by sebastian.oettl@microsoft.com)
+
+## [7.24.8](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.24.8)
+
+Mon, 25 May 2020 12:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.24.6..@uifabric/experiments_v7.24.8)
+
+### Patches
+
+- Fixed typos ([PR #13247](https://github.com/microsoft/fluentui/pull/13247) by xia_tony@hotmail.com)
+
+## [7.24.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.24.0)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.22..@uifabric/experiments_v7.24.0)
+
+### Minor changes
+
+- fixing removing of duplicate entries at once ([PR #13102](https://github.com/microsoft/fluentui/pull/13102) by nebhatna@microsoft.com)
+
+## [7.23.22](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.22)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.21..@uifabric/experiments_v7.23.22)
+
+### Patches
+
+- update snapshots for merge-styles change to not generate class with no styles ([PR #13029](https://github.com/microsoft/fluentui/pull/13029) by pingj@microsoft.com)
+
+## [7.23.21](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.21)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.18..@uifabric/experiments_v7.23.21)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
 
 ## [7.23.18](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.18)
 

@@ -1,7 +1,5 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
 import { IBaseFloatingPickerProps } from './BaseFloatingPicker.types';

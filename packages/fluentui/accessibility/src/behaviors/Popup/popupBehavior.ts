@@ -1,4 +1,4 @@
-import * as keyboardKey from 'keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
@@ -12,14 +12,14 @@ import { Accessibility } from '../../types';
  * Adds attribute 'role=dialog' to 'popup' slot if 'trapFocus' property is true. Sets the attribute to 'complementary' otherwise.
  * Adds attribute 'aria-modal=true' to 'popup' slot if 'trapFocus' property is true. Does not set the attribute otherwise.
  */
-const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
+export const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
   const onAsArray = _.isArray(props.on) ? props.on : [props.on];
   const tabbableTriggerProps = props.tabbableTrigger
     ? { tabIndex: getAriaAttributeFromProps('tabIndex', props, 0) }
     : undefined;
 
   if (tabbableTriggerProps) {
-    tabbableTriggerProps['aria-haspopup'] = 'true';
+    tabbableTriggerProps['aria-haspopup'] = 'dialog';
 
     if (process.env.NODE_ENV !== 'production') {
       // Override the default trigger's accessibility schema class.
@@ -60,14 +60,15 @@ const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
           keyCombinations: [{ keyCode: keyboardKey.Escape }],
         },
         toggle: {
-          keyCombinations: _.includes(onAsArray, 'click') && [
-            { keyCode: keyboardKey.Enter },
-            { keyCode: keyboardKey.Spacebar },
-          ],
+          keyCombinations: _.includes(onAsArray, 'click') && [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
         open: {
           keyCombinations: _.includes(onAsArray, 'hover') &&
-            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
+        },
+        click: {
+          keyCombinations: _.includes(onAsArray, 'hover') &&
+            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
       },
     },
@@ -95,8 +96,6 @@ const getAriaAttributeFromProps = (attributeName: string, props: any, defaultVal
   }
   return defaultValue;
 };
-
-export default popupBehavior;
 
 type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
 type RestrictedClickEvents = 'click' | 'focus';
