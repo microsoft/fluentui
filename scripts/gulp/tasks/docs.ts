@@ -79,7 +79,7 @@ task('build:docs:component-info', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-info') })
     .pipe(
       cacheNonCi(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
-        name: 'componentInfo-2.2',
+        name: 'componentInfo-2.3',
       }),
     )
     .pipe(dest(paths.docsSrc('componentInfo'))),
