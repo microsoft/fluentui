@@ -11,7 +11,7 @@ variables:
 pool: 'Self Host Ubuntu'
 
 jobs:
-  - job: BuildTest
+  - job: BuildTestLint
     workspace:
       clean: all
     steps:
@@ -28,11 +28,24 @@ jobs:
         displayName: check change
 
       - script: |
-          yarn lage build test lint --verbose --no-cache
+          yarn lage build test lint --verbose --no-cache --grouped
         displayName: build, test, lint
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      - task: ArchiveFiles@2
+        inputs:
+          rootFolderOrFile: $(Build.Repository.LocalPath)
+          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
+          includeRootFolder: true
+          archiveType: 'tar'
+          tarCompression: 'gz'
+          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
+          replaceExistingArchive: true
+
+      - publish: $(Build.ArtifactStagingDirectory)
+        artifact: Build-PR-$(Build.BuildNumber)
 
       - script: |
           az --version
@@ -72,8 +85,8 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn lage build --since $(target_branch) --scope @fluentui/* --no-deps --verbose --no-cache
-        displayName: build, test, lint
+          yarn lage build --since $(target_branch) --scope @fluentui/* --no-deps --verbose --no-cache --grouped
+        displayName: build
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
@@ -109,7 +122,7 @@ jobs:
       - template: .devops/templates/pr-target-branch.yml
 
       - script: |
-          yarn lage bundle --since $(target_branch) --no-deps --verbose --no-cache
+          yarn lage bundle --since $(target_branch) --no-deps --verbose --no-cache --grouped
         displayName: bundle
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
@@ -164,7 +177,7 @@ jobs:
         displayName: config git user and email
 
       - script: |
-          yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache
+          yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache --grouped
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
