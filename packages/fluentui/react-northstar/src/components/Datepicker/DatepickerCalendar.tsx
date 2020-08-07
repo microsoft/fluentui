@@ -364,7 +364,7 @@ DatepickerCalendar.propTypes = {
 
 DatepickerCalendar.defaultProps = {
   accessibility: datepickerCalendarBehavior,
-  firstDayOfWeek: DayOfWeek.Sunday,
+  firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
   header: {},

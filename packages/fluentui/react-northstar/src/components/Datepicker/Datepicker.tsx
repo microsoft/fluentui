@@ -340,7 +340,7 @@ Datepicker.defaultProps = {
   popup: {},
   input: {},
 
-  firstDayOfWeek: DayOfWeek.Sunday,
+  firstDayOfWeek: DayOfWeek.Monday,
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
 
