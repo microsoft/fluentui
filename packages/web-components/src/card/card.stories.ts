@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import CardTemplate from './fixtures/card.html';
-import { FASTCard } from './';
+import { FluentCard } from './';
 
 // Prevent tree-shaking
-FASTCard;
-FASTDesignSystemProvider;
+FluentCard;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Card',

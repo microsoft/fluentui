@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import TreeViewTemplate from './fixtures/tree-view.html';
-import { FASTTreeView } from './';
+import { FluentTreeView } from './';
 
 // Prevent tree-shaking
-FASTTreeView;
-FASTDesignSystemProvider;
+FluentTreeView;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Tree View',

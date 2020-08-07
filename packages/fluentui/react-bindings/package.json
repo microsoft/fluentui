@@ -10,12 +10,12 @@
     "@fluentui/keyboard-key": "^0.2.8",
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-component-ref": "^0.51.0",
-    "@fluentui/react-compose": "^0.12.8",
+    "@fluentui/react-compose": "^0.13.1",
     "@fluentui/react-northstar-fela-renderer": "^0.51.0",
     "@fluentui/react-northstar-styles-renderer": "^0.51.0",
     "@fluentui/state": "^0.51.0",
     "@fluentui/styles": "^0.51.0",
-    "@uifabric/utilities": "^7.25.1",
+    "@uifabric/utilities": "^7.26.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2"
@@ -28,7 +28,8 @@
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"

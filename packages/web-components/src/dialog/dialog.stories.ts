@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import DialogTemplate from './fixtures/dialog.html';
-import { FASTDialog } from './';
+import { FluentDialog } from './';
 
 // Prevent tree-shaking
-FASTDialog;
-FASTDesignSystemProvider;
+FluentDialog;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Dialog',

@@ -136,6 +136,16 @@ export interface IChartHelperProps {
    */
   height?: number;
 
+  /**
+   * minimum  data value point in y-axis
+   */
+  yMinValue?: number;
+
+  /**
+   * maximum data value point in y-axis
+   */
+  yMaxValue?: number;
+
   /** decides wether to show/hide legends
    * @defaultvalue false
    */
@@ -179,6 +189,13 @@ export interface IChartHelperProps {
    * If not given, will take maximum of given data.
    */
   domainXMax?: number;
+
+  /**
+   * Number of ticks on the y-axis.
+   * Tick count should be factor of difference between (yMinValue, yMaxValue)
+   * @default 4
+   */
+  yAxisTickCount?: number;
 
   hideTooltip?: boolean;
 
