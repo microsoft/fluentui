@@ -15,26 +15,25 @@ The Skeleton component is primarily leveraged to reserve a place in the layout f
 
 ## &lt;Skeleton&gt; Properties <a href="#skeleton-properties" id="skeleton-properties"></a>
 
-| Attribute Name | Type     | Default Value | Description                                                                                |     |
-| -------------- | -------- | ------------- | ------------------------------------------------------------------------------------------ | --- |
-| `fluid`        | `bool`   | `false`       | A fluid Skeleton fills up the entire width of its container.                               |     |
-| `animation`    | `string` | `off`         | Define the animation for the Skeleton, possible "wave", "pulse" or "off" for no animation. |     |
+| Attribute Name | Type     | Default Value | Description                                                                                |
+| -------------- | -------- | ------------- | ------------------------------------------------------------------------------------------ |
+| `animation`    | `string` | `off`         | Define the animation for the Skeleton, possible "wave", "pulse" or "off" for no animation. |
 
 ## &lt;Skeleton.Line&gt; Properties <a href="#skeleton-line-properties" id="skeleton-line-properties"></a>
 
-| Attribute Name | Type     | Default Value | Description                             |     |
-| -------------- | -------- | ------------- | --------------------------------------- | --- |
-| `height`       | `string` | `100%`        | The height the line should fill.        |     |
-| `width`        | `string` | `100%`        | The width the line should fill.         |     |
-| `round`        | `bool`   | `false`       | Set whether should have rounded borders |     |
+| Attribute Name | Type     | Default Value | Description                             |
+| -------------- | -------- | ------------- | --------------------------------------- |
+| `height`       | `string` | `100%`        | The height the line should fill.        |
+| `width`        | `string` | `100%`        | The width the line should fill.         |
+| `round`        | `bool`   | `false`       | Set whether should have rounded borders |
 
 ## &lt;Skeleton.Shape&gt; Properties <a href="#skeleton-shape-properties" id="skeleton-shape-properties"></a>
 
-| Attribute Name | Type     | Default Value | Description                            |     |
-| -------------- | -------- | ------------- | -------------------------------------- | --- |
-| `height`       | `string` | `0px`         | The height the line should fill.       |     |
-| `width`        | `string` | `0px`         | The width the line should fill.        |     |
-| `circle`       | `bool`   | `false`       | Define if the shape should be a circle |     |
+| Attribute Name | Type     | Default Value | Description                            |
+| -------------- | -------- | ------------- | -------------------------------------- |
+| `height`       | `string` | `0px`         | The height the line should fill.       |
+| `width`        | `string` | `0px`         | The width the line should fill.        |
+| `round`        | `bool`   | `false`       | Define if the shape should be a circle |
 
 ## Slots
 
