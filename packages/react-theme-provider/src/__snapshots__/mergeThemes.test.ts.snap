@@ -11,9 +11,3 @@ Object {
   },
 }
 `;
-
-exports[`mergeThemes fills in blanks 1`] = `
-Object {
-  "stylesheets": Array [],
-}
-`;

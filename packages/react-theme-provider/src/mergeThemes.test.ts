@@ -1,9 +1,6 @@
 import { mergeThemes } from './mergeThemes';
 
 describe('mergeThemes', () => {
-  it('fills in blanks', () => {
-    expect(mergeThemes({})).toMatchSnapshot();
-  });
   it('can merge 2 themes', () => {
     expect(
       mergeThemes(
