@@ -121,12 +121,6 @@ jobs:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Set up Azure CLI with DevOps
 
-      - script: |
-          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
-        env:
-          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-        displayName: Trigger Perf-Test job
-
       - task: AzureUpload@1
         displayName: Upload PR deploy site
         inputs:
@@ -135,6 +129,12 @@ jobs:
           storage: fabricweb
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
+
+      - script: |
+          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
+        env:
+          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
+        displayName: Trigger Perf-Test job
 
   - job: ScreenerFluent
     steps:
