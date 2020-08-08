@@ -18,10 +18,7 @@ export function renameProp(
       /* If found, do a simple name-replacementName. */
       foundProp.value.set({ name: replacementName });
       if (replacementValue) {
-        console.log('replacing text');
-        console.log(foundProp.value.getText());
         foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression)?.replaceWithText(`{${replacementValue}}`);
-        console.log(foundProp.value.getText()); // no print
       } else {
         const enumInJsx = Maybe(foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression));
         if (enumInJsx.something) {

@@ -76,7 +76,6 @@ export function renamePropInSpread(
            deconstruct it from the spread prop if not. */
           const variableStatementWithSpreadProp = parentContainer.getVariableStatement(
             (declaration: VariableStatement) => {
-              // needs to exclude propspreadname on the left side
               const elem = declaration.getFirstDescendantByKind(SyntaxKind.VariableDeclaration);
               return (
                 elem !== undefined &&
@@ -92,6 +91,7 @@ export function renamePropInSpread(
             /* Depending on where this spread prop was in the statement, there are different things we need to do. */
             switch (locateSpreadPropInStatement(variableStatementWithSpreadProp, propSpreadName, newSpreadName)) {
               case SpreadPropInStatement.PropLeft: {
+                console.log(variableStatementWithSpreadProp.getText());
                 /* If the spread prop was on the left with no '...' in front of it, try and create a new variable
                    statement, deconstructing this spread prop. */
                 if (!propAlreadyExists(parentContainer, toRename)) {
