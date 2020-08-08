@@ -25,6 +25,12 @@
 
 - Removed `isBeaconAnimating` and `isMeasured` style props
 
+### OverflowSet
+
+- Removed deprecated `focusZoneProps` and `doNotContainWithinFocusZone` from types.
+- Removed uses of `FocusZone` from render and the public-api.
+- Added OverflowButton.base.tsx
+
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.

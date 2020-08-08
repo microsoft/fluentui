@@ -920,7 +920,7 @@ export interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-export interface IOverflowSetProps extends React.ClassAttributes<HTMLElement> {
+export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
     // @deprecated
@@ -1711,6 +1711,9 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 
 // @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
+// @public (undocumented)
+export const OverflowButtonBase: (props: IOverflowSetProps) => JSX.Element;
 
 // @public (undocumented)
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
