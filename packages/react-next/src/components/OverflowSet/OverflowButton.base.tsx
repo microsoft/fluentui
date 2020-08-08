@@ -47,6 +47,7 @@ export const OverflowButtonBase = (props: IOverflowSetProps) => {
   const keytipManager: KeytipManager = KeytipManager.getInstance();
   const { className, styles, vertical, overflowItems, keytipSequences } = props;
   const classNames: IProcessedStyleSet<IOverflowSetStyles> = getClassNames(styles, { className, vertical });
+
   const internalState = useConst<IOverflowInternalState>(() => ({
     persistedKeytips: {},
     wrapperDivProps: {
@@ -72,6 +73,7 @@ export const OverflowButtonBase = (props: IOverflowSetProps) => {
   if (internalState.overflowKeytipSequences) {
     overflowItems?.forEach(overflowItem => {
       const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
+
       if (keytip) {
         // Create persisted keytip
         const persistedKeytip: IKeytipProps = {
@@ -81,6 +83,7 @@ export const OverflowButtonBase = (props: IOverflowSetProps) => {
           hasDynamicChildren: keytip.hasDynamicChildren,
           hasMenu: keytip.hasMenu,
         };
+
         if (keytip.hasDynamicChildren || getSubMenuForItem(overflowItem)) {
           // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
           persistedKeytip.onExecute = keytipManager.menuExecute.bind(
@@ -92,9 +95,11 @@ export const OverflowButtonBase = (props: IOverflowSetProps) => {
           // If the keytip doesn't have a submenu, just execute the original function
           persistedKeytip.onExecute = keytip.onExecute;
         }
+
         // Add this persisted keytip to our internal list, use a temporary uniqueID (its content)
         // uniqueID will get updated on register
         internalState.persistedKeytips[persistedKeytip.content] = persistedKeytip;
+
         // Add the overflow sequence to this item
         const newOverflowItem = {
           ...overflowItem,
