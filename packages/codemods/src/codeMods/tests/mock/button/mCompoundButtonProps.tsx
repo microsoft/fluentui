@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { CompoundButton } from 'office-ui-fabric-react/lib/Button';
-import { ButtonProps } from './mButtonStyles';
 
-export class RenderButton extends React.Component<ButtonProps> {
+export class RenderButton extends React.Component<LocalButtonProps> {
   public render(): JSX.Element {
     const { id, ...restProps } = this.props;
     return (
@@ -13,4 +12,11 @@ export class RenderButton extends React.Component<ButtonProps> {
       </div>
     );
   }
+}
+
+export interface LocalButtonProps {
+  id: string;
+  description?: string;
+  imageSource: string;
+  toggled?: boolean;
 }

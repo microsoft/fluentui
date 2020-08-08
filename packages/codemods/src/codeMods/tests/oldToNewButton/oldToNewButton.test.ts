@@ -33,7 +33,8 @@ describe('Persona props mod tests', () => {
   it('can rename a prop in a spread operator with complex spread examples', () => {
     const file = project.getSourceFileOrThrow('mCompoundButtonProps.tsx');
     const tags = findJsxTag(file, 'CompoundButton');
-    renameProp(tags, 'toggled', 'checked');
+    renameProp(tags, 'toggled', 'checked', undefined, undefined);
+
     tags.forEach(val => {
       expect(val.getText().includes('checked={toggled}')).toBeTruthy();
     });

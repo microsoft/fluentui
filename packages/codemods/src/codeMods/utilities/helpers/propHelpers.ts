@@ -76,7 +76,6 @@ export function renamePropInSpread(
            deconstruct it from the spread prop if not. */
           const variableStatementWithSpreadProp = parentContainer.getVariableStatement(
             (declaration: VariableStatement) => {
-              // needs to exclude propspreadname on the left side
               const elem = declaration.getFirstDescendantByKind(SyntaxKind.VariableDeclaration);
               return (
                 elem !== undefined &&
@@ -87,32 +86,12 @@ export function renamePropInSpread(
             },
           );
 
-          // check here to see if we need to create a line to declare the prop externally.
-          // if we do, there's no need to insert anything. Prop already exists checks this!
-
-          const type = element?.getContextualType();
-          if (type !== undefined && type.isUnion()) {
-            console.log('yes! Found union type');
-            console.log(type.getText());
-            if (type.getUnionTypes().some(t => t.isUndefined())) {
-              /* If our prop kind is potentially undefined, we need to insert a line to fix it. */
-              parentContainer.insertVariableStatement(insertIndex, {
-                declarationKind: VariableDeclarationKind.Const,
-                declarations: [
-                  {
-                    name: toRename,
-                    initializer: propSpreadName + '?.' + toRename,
-                  },
-                ],
-              });
-            }
-          }
-
           /* If a variable statement with the spread prop in question exists, try and use it.  */
           if (variableStatementWithSpreadProp) {
             /* Depending on where this spread prop was in the statement, there are different things we need to do. */
             switch (locateSpreadPropInStatement(variableStatementWithSpreadProp, propSpreadName, newSpreadName)) {
               case SpreadPropInStatement.PropLeft: {
+                console.log(variableStatementWithSpreadProp.getText());
                 /* If the spread prop was on the left with no '...' in front of it, try and create a new variable
                    statement, deconstructing this spread prop. */
                 if (!propAlreadyExists(parentContainer, toRename)) {
@@ -128,7 +107,7 @@ export function renamePropInSpread(
               case SpreadPropInStatement.SpreadPropLeft:
               case SpreadPropInStatement.PropRight: {
                 /* If the prop is on the right or it's in spread form on the left,
-                   we can try and insert out TORENAME prop into its deconstruction. */
+                   we can try and insert out TORENAME prop into its detruction. */
                 newSpreadName = propSpreadName;
                 if (!propAlreadyExists(parentContainer, toRename)) {
                   tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
@@ -189,11 +168,11 @@ export function renamePropInSpread(
               return false;
             })
           ) {
+            /* Check to make sure that you're not renaming attrToRename to an extant prop. */
             if (attrToRename.getChildAtIndex(2)!.getText() !== newSpreadName) {
               attrToRename.remove(); // Replace old spread name.
             }
           } else {
-            // don't replace unless you know you added it
             attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
           }
           element.addAttribute({
@@ -309,7 +288,7 @@ function spreadContains(oldPropName: string, spreadIsIdentifier: boolean, spread
   return (
     element !== undefined &&
     element
-      .getContextualType()!
+      .getType()!
       .getProperties()
       .some(name => {
         return name.getName() === oldPropName;
