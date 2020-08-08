@@ -28,7 +28,7 @@ jobs:
         displayName: check change
 
       - script: |
-          yarn lage build test lint --verbose --no-cache --grouped --since ${target_branch}
+          yarn lage build test lint --verbose --no-cache --grouped --since $(target_branch)
         displayName: build, test, lint
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
