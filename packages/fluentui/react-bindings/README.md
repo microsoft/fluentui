@@ -109,7 +109,7 @@ type InputProps = {
   onChange?: (value: string) => void;
 };
 
-const Input: React.FC<InputProps> = props => {
+const Input: React.FunctionComponent<InputProps> = props => {
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
     value: props.value,
