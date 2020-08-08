@@ -15,7 +15,6 @@ import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/pos
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
-import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { ILayerProps } from 'office-ui-fabric-react/lib/Layer';
@@ -923,10 +922,6 @@ export interface IOverflowSetItemProps {
 export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
-    // @deprecated
-    doNotContainWithinFocusZone?: boolean;
-    // @deprecated
-    focusZoneProps?: IFocusZoneProps;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -1719,7 +1714,7 @@ export const OverflowButtonBase: (props: IOverflowSetProps) => JSX.Element;
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export const OverflowSetBase: React.ForwardRefExoticComponent<Pick<IOverflowSetProps, "vertical" | "key" | "items" | "styles" | "className" | "role" | "componentRef" | "focusZoneProps" | "onRenderItem" | "overflowSide" | "overflowItems" | "onRenderOverflowButton" | "doNotContainWithinFocusZone" | "keytipSequences" | "itemSubMenuProvider"> & React.RefAttributes<HTMLDivElement>>;
+export const OverflowSetBase: React.ForwardRefExoticComponent<Pick<IOverflowSetProps, "vertical" | "key" | "items" | "styles" | "className" | "role" | "componentRef" | "onRenderItem" | "overflowSide" | "overflowItems" | "onRenderOverflowButton" | "keytipSequences" | "itemSubMenuProvider"> & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export const Persona: React.FunctionComponent<IPersonaProps>;
