@@ -6,6 +6,11 @@ import * as React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
+/**
+ * Class dictionary.
+ */
+export type ClassDictionary = Record<string, string>;
+
 export interface ComponentProps extends GenericDictionary {
   as?: React.ElementType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

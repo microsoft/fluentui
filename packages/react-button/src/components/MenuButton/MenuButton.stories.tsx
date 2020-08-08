@@ -19,16 +19,16 @@ const menuProps = {
 
 const MenuButtonVariants = (props: MenuButtonProps) => (
   <div className={classes.hStack}>
-    <MenuButton {...props} menu={menuProps}>
+    <MenuButton {...props} icon="O" menu={menuProps}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} primary menu={menuProps}>
+    <MenuButton {...props} icon="O" primary menu={menuProps}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} disabled menu={menuProps}>
+    <MenuButton {...props} icon="O" disabled menu={menuProps}>
       Hello, world
     </MenuButton>
-    <MenuButton {...props} primary disabled menu={menuProps}>
+    <MenuButton {...props} icon="O" primary disabled menu={menuProps}>
       Hello, world
     </MenuButton>
   </div>

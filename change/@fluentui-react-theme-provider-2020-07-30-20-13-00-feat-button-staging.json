@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding useInlineTokens hook.",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-07-31T03:12:37.202Z"
+}

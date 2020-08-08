@@ -23,8 +23,12 @@ export const mergeProps = (target: GenericDictionary, ...propSets: (GenericDicti
           } else {
             target[propName] = target[propName] || {};
 
-            if (typeof target[propName] !== 'object' || React.isValidElement(propValue)) {
-              // if target is not an object, or value is JSX, replace
+            if (
+              typeof target[propName] !== 'object' ||
+              React.isValidElement(propValue) ||
+              propValue.hasOwnProperty('current')
+            ) {
+              // if target is not an object, or value is JSX,  or a ref object, replace
               target[propName] = propValue;
             } else {
               // else merge.
