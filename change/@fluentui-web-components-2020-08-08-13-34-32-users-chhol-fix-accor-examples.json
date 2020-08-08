@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "chore: fix accordion web component examples",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-08-08T20:34:32.582Z"
+}
