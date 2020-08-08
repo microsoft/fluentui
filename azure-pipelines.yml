@@ -98,28 +98,8 @@ jobs:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
-      - task: ArchiveFiles@2
-        displayName: Archiving for Perf Test
-        inputs:
-          rootFolderOrFile: $(Build.Repository.LocalPath)
-          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
-          includeRootFolder: true
-          archiveType: 'tar'
-          tarCompression: 'gz'
-          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
-          replaceExistingArchive: true
-
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build-PR-$(Build.BuildNumber)
-
-      - script: |
-          az --version
-          az extension add -n azure-devops
-          echo $(buildQueuePat) | az devops login --organization https://dev.azure.com/uifabric
-          az devops configure --defaults organization=https://dev.azure.com/uifabric project="fabricpublic" --use-git-aliases true
-        env:
-          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-        displayName: Set up Azure CLI with DevOps
 
       - task: AzureUpload@1
         displayName: Upload PR deploy site
@@ -129,12 +109,6 @@ jobs:
           storage: fabricweb
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
-
-      - script: |
-          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
-        env:
-          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-        displayName: Trigger Perf-Test job
 
   - job: ScreenerFluent
     steps:
