@@ -8,6 +8,7 @@ The following code shows you how to specify a 96px product icon by brand using t
   rel="stylesheet"
   href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
 />
+
 <div class="ms-BrandIcon--icon96 ms-BrandIcon--word"></div>
 ```
 
