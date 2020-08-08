@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-08-07T22:55:09.188Z"
+}

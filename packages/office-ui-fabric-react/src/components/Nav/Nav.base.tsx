@@ -172,7 +172,6 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         {link.links && link.links.length > 0 ? (
           <button
             className={classNames.chevronButton}
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={this._onLinkExpandClicked.bind(this, link)}
             aria-label={finalExpandBtnAriaLabel}
             aria-expanded={link.isExpanded ? 'true' : 'false'}
@@ -272,13 +271,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       : undefined;
 
     return (
-      <button
-        className={classNames.chevronButton}
-        // eslint-disable-next-line react/jsx-no-bind
-        onClick={onClick}
-        aria-label={label}
-        aria-expanded={isExpanded}
-      >
+      <button className={classNames.chevronButton} onClick={onClick} aria-label={label} aria-expanded={isExpanded}>
         <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
         {group.name}
       </button>
