@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
+import { CustomizerContext, ICustomizerContext, merge } from '@uifabric/utilities';
 import { useStylesheet } from '@fluentui/react-stylesheets';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
@@ -23,7 +23,73 @@ function createCustomizerContext(theme: Theme): ICustomizerContext {
 function getTokens(theme: Theme): Tokens | undefined {
   // TODO: ensure only used tokens are converted before shipping Fluent v8.
   const { components, schemes, rtl, isInverted, tokens, ...passThroughTokens } = theme;
-  const preparedTokens = { ...passThroughTokens, ...tokens };
+  const { fonts, effects, palette, semanticColors } = theme;
+  const mappedTokens: Tokens | undefined = palette &&
+    semanticColors &&
+    fonts &&
+    effects && {
+      accent: {
+        background: palette.themePrimary,
+        borderColor: 'transparent',
+        contentColor: palette.white,
+        iconColor: palette.white,
+
+        hovered: {
+          background: palette.themeDarkAlt,
+          borderColor: 'transparent',
+          contentColor: palette.white,
+          iconColor: palette.white,
+        },
+      },
+
+      body: {
+        background: semanticColors.bodyBackground,
+      },
+
+      button: {
+        contentGap: '8px',
+        padding: '0 16px',
+        minWidth: '80px',
+        fontWeight: fonts.medium?.fontWeight,
+        fontSize: fonts.medium?.fontSize,
+        fontFamily: fonts.medium?.fontFamily,
+        iconSize: fonts.mediumPlus?.fontSize,
+        borderRadius: effects.roundedCorner2,
+        focusColor: palette.neutralSecondary,
+        focusInnerColor: palette.white,
+
+        background: semanticColors.buttonBackground,
+        borderColor: semanticColors.buttonBorder,
+        contentColor: semanticColors.buttonText,
+
+        hovered: {
+          background: semanticColors.buttonBackgroundHovered,
+          borderColor: semanticColors.buttonBorder,
+          contentColor: semanticColors.buttonTextHovered,
+        },
+
+        pressed: {
+          background: semanticColors.buttonBackgroundPressed,
+          contentColor: semanticColors.buttonTextPressed,
+          borderColor: semanticColors.buttonBorder,
+          transform: 'none',
+          transition: 'none',
+        },
+
+        disabled: {
+          background: semanticColors.buttonBackgroundDisabled,
+          borderColor: semanticColors.buttonBorderDisabled,
+          contentColor: semanticColors.buttonTextDisabled,
+        },
+
+        primary: {
+          background: semanticColors.primaryButtonBackground,
+          borderColor: semanticColors.buttonBorder,
+          contentColor: semanticColors.buttonText,
+        },
+      },
+    };
+  const preparedTokens = { ...passThroughTokens, ...merge({}, mappedTokens, tokens) };
 
   return preparedTokens as Tokens;
 }

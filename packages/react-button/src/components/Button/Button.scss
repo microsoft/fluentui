@@ -150,7 +150,7 @@
   font-weight: normal;
 
   &._disabled {
-    color: var(--button-disabled-iconColor, var(--button-disabled-contentColor));
+    color: var(--button-disabled-iconColor);
   }
 }
 
@@ -167,7 +167,7 @@
   box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
 
   .icon {
-    color: var(--button-hovered-iconColor, var(--button-hovered-contentColor));
+    color: var(--button-hovered-iconColor, var(--button-iconColor));
   }
 }
 
@@ -181,6 +181,6 @@
   transition: var(--button-pressed-transition);
 
   .icon {
-    color: var(--button-pressed-iconColor, var(--button-pressed-contentColor));
+    color: var(--button-pressed-iconColor, var(--button-iconColor));
   }
 }
