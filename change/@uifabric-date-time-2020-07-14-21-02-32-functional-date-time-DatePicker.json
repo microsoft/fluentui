@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Refactor DatePicker as a function component",
-  "packageName": "@uifabric/date-time",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-14T21:02:31.999Z"
-}

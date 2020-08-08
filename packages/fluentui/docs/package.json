@@ -59,7 +59,8 @@
     "@types/react-virtualized": "^9.21.8",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "typescript": "3.7.2"
   },
   "publishConfig": {
     "access": "public"

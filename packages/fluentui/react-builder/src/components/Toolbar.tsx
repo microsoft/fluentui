@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
-import { OpenOutsideIcon, TrashCanIcon } from '@fluentui/react-icons-northstar';
+import { OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
   isExpanding: boolean;
   isSelecting: boolean;
+  canRedo: boolean;
+  canUndo: boolean;
   onModeChange: (mode: DesignerMode) => void;
   onReset: () => void;
+  onUndo: () => void;
+  onRedo: () => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
   mode: DesignerMode;
@@ -19,8 +23,12 @@ export type ToolbarProps = {
 export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   isExpanding,
   isSelecting,
+  canRedo,
+  canUndo,
   onModeChange,
   onReset,
+  onUndo,
+  onRedo,
   onShowCodeChange,
   onShowJSONTreeChange,
   mode,
@@ -79,6 +87,8 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
       }}
     />
+    <Button text icon={<UndoIcon />} content="Undo" onClick={onUndo} disabled={!canUndo} />
+    <Button text icon={<RedoIcon />} content="Redo" onClick={onRedo} disabled={!canRedo} />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
       <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
       &emsp;

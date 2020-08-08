@@ -245,7 +245,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       >
         <div
           className={classNames.overflowIndicationTextStyle}
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
           data-is-focusable={false}
         >
@@ -309,14 +308,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       <button
         key={index}
         className={classNames.legend}
-        /* eslint-disable react/jsx-no-bind */
         onClick={onClickHandler}
         onMouseOver={onHoverHandler}
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
         data-is-focusable={false}
-        /* eslint-enable react/jsx-no-bind */
       >
         <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>

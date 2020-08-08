@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 05 Aug 2020 12:39:43 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.16](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.16)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.13.15..@uifabric/fabric-website_v7.13.16)
+
+### Patches
+
+- Simplify query params for dev and strict mode testing ([PR #14347](https://github.com/microsoft/fluentui/pull/14347) by elcraig@microsoft.com)
 
 ## [7.13.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.13.15)
 

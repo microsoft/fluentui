@@ -11,7 +11,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '@uifabric/charting';
+import { ChartHoverCard } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -150,13 +150,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         <g
           key={index}
           className={point.placeHolder ? this._classNames.placeHolderOnHover : this._classNames.opacityChangeOnHover}
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: SVGGElement) => {
             this._refCallback(e, point.legend!);
           }}
           data-is-focusable={true}
           focusable={'true'}
-          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onBarFocus.bind(
             this,
             point.legend!,
@@ -167,7 +165,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           )}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={
             point.placeHolder
               ? undefined
@@ -180,7 +177,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                   point.yAxisCalloutData!,
                 )
           }
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={
             point.placeHolder
               ? undefined
@@ -194,7 +190,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 )
           }
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
@@ -203,24 +198,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
     if (data.chartData!.length === 0) {
       bars.push(
-        <g
-          key={0}
-          className={this._classNames.noData}
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={this._redirectToUrl.bind(this, href)}
-        >
+        <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
           <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
         </g>,
       );
     }
     if (total === 0) {
       bars.push(
-        <g
-          key={'empty'}
-          className={this._classNames.noData}
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={this._redirectToUrl.bind(this, href)}
-        >
+        <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
           <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
         </g>,
       );
