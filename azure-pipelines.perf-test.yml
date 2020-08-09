@@ -35,7 +35,7 @@ steps:
   # @fluentui/perf-test PR
   - script: |
       yarn perf:test
-    condition: eq(variables['Build.Reason'], 'PullRequest')
+    condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
 
