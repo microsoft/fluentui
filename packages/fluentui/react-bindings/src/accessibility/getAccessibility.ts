@@ -61,5 +61,6 @@ export const getAccessibility = <Props extends Record<string, any>>(
     ...emptyBehavior,
     ...definition,
     keyHandlers,
+    ...{},
   };
 };
