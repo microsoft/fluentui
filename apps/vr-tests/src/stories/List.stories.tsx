@@ -8,7 +8,7 @@ import { List } from 'office-ui-fabric-react';
 /* eslint-disable @fluentui/max-len */
 const items = [
   {
-    thumbnail: '//placehold.it/233x233',
+    thumbnail: '/208x208.png',
     key: 'item-0 sit Lorem culpa cillum',
     name: 'reprehenderit dolore nulla laborum officia',
     description:
@@ -20,7 +20,7 @@ const items = [
     height: 233,
   },
   {
-    thumbnail: '//placehold.it/210x210',
+    thumbnail: '/208x208.png',
     key: 'item-1 dolor elit, sit mollit',
     name: 'consectetur ipsum tempor nostrud commodo',
     description:
@@ -32,7 +32,7 @@ const items = [
     height: 210,
   },
   {
-    thumbnail: '//placehold.it/231x231',
+    thumbnail: '/208x208.png',
     key: 'item-2 dolor reprehenderit id sint',
     name: 'velit nisi aliquip do minim',
     description:
@@ -44,7 +44,7 @@ const items = [
     height: 231,
   },
   {
-    thumbnail: '//placehold.it/158x158',
+    thumbnail: '/208x208.png',
     key: 'item-3 magna Ut nisi dolor',
     name: 'nostrud in reprehenderit eu anim',
     description:
@@ -56,7 +56,7 @@ const items = [
     height: 158,
   },
   {
-    thumbnail: '//placehold.it/165x165',
+    thumbnail: '/208x208.png',
     key: 'item-4 nisi proident, in dolore',
     name: 'nostrud Duis aliquip Lorem sunt',
     description:
@@ -68,7 +68,7 @@ const items = [
     height: 165,
   },
   {
-    thumbnail: '//placehold.it/226x226',
+    thumbnail: '/208x208.png',
     key: 'item-5 mollit elit, ex elit,',
     name: 'nulla ipsum esse Lorem sed',
     description:
@@ -80,7 +80,7 @@ const items = [
     height: 226,
   },
   {
-    thumbnail: '//placehold.it/182x182',
+    thumbnail: '/208x208.png',
     key: 'item-6 ut irure dolor et',
     name: 'nulla consectetur eiusmod velit sed',
     description:
@@ -92,7 +92,7 @@ const items = [
     height: 182,
   },
   {
-    thumbnail: '//placehold.it/206x206',
+    thumbnail: '/208x208.png',
     key: 'item-7 non ad consequat. mollit',
     name: 'sint quis in Excepteur enim',
     description:
@@ -104,7 +104,7 @@ const items = [
     height: 206,
   },
   {
-    thumbnail: '//placehold.it/240x240',
+    thumbnail: '/208x208.png',
     key: 'item-8 enim et aliqua. enim',
     name: 'in commodo dolore ea Duis',
     description:
@@ -116,7 +116,7 @@ const items = [
     height: 240,
   },
   {
-    thumbnail: '//placehold.it/158x158',
+    thumbnail: '/208x208.png',
     key: 'item-9 reprehenderit minim cillum do',
     name: 'dolore et sed dolore sed',
     description:

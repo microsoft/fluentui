@@ -63,7 +63,7 @@ const footerCardSectionStyles: ICardSectionStyles = {
 };
 const backgroundImageCardSectionStyles: ICardSectionStyles = {
   root: {
-    backgroundImage: 'url(https://placehold.it/256x144)',
+    backgroundImage: 'url(/256x144.png)',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
     height: 144,
@@ -212,7 +212,7 @@ storiesOf('Card', module)
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
         </Card.Item>
         <Card.Item fill>
-          <Image src="https://placehold.it/256x144" width="100%" alt="Placeholder image." />
+          <Image src="/256x144.png" width="100%" alt="Placeholder image." />
         </Card.Item>
         <Card.Section>
           <Text variant="medium" styles={siteTextStyles}>
@@ -304,7 +304,7 @@ storiesOf('Card', module)
     <Fabric>
       <Card horizontal onClick={cardClicked} tokens={cardTokens}>
         <Card.Item fill>
-          <Image src="https://placehold.it/180x135" alt="Placeholder image." />
+          <Image src="/180x135.png" alt="Placeholder image." />
         </Card.Item>
         <Card.Section>
           <Text variant="medium" styles={siteTextStyles}>

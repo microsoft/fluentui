@@ -5,44 +5,44 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { FabricDecorator } from '../utilities';
 
-const img350x150 = 'http://placehold.it/350x150';
+const img350x150 = '/350x150.png';
 
 const imagePropsFitNone: IImageProps = {
-  src: 'http://placehold.it/500x250',
+  src: '/500x250.png',
   imageFit: ImageFit.none,
   width: 350,
   height: 150,
 };
 
 const imagePropsFitCenter: IImageProps = {
-  src: 'http://placehold.it/800x300',
+  src: '/800x300.png',
   imageFit: ImageFit.center,
   width: 350,
   height: 150,
 };
 
 const imagePropsFitContain: IImageProps = {
-  src: 'http://placehold.it/700x300',
+  src: '/700x300.png',
   imageFit: ImageFit.contain,
 };
 
 const imagePropsFitCover: IImageProps = {
-  src: 'http://placehold.it/500x500',
+  src: '/500x500.png',
   imageFit: ImageFit.cover,
 };
 
 const imagePropsFitCenterContain: IImageProps = {
-  src: 'http://placehold.it/400x400',
+  src: '/400x400.png',
   imageFit: ImageFit.centerContain,
 };
 
 const imagePropsFitCenterCover: IImageProps = {
-  src: 'http://placehold.it/400x400',
+  src: '/400x400.png',
   imageFit: ImageFit.centerCover,
 };
 
 const imagePropsMaximizeFrame: IImageProps = {
-  src: 'http://placehold.it/500x500',
+  src: '/500x500.png',
   imageFit: ImageFit.cover,
   maximizeFrame: true,
 };
@@ -103,7 +103,7 @@ storiesOf('Image', module)
         The image is smaller than the frame, so there is empty space within the frame. The image is
         positioned at the upper left of the frame.
       </Label>
-      <Image {...imagePropsFitNone} src="http://placehold.it/100x100" />
+      <Image {...imagePropsFitNone} src="/100x100.png" />
     </div>
   ))
   .addStory('Fit: center, image larger', () => (
@@ -111,7 +111,7 @@ storiesOf('Image', module)
       <Label>
         The image is larger than the frame, so all sides are cropped to center the image.
       </Label>
-      <Image {...imagePropsFitCenter} src="http://placehold.it/800x300" />
+      <Image {...imagePropsFitCenter} src="/800x300.png" />
     </div>
   ))
   .addStory('Fit: center, image smaller', () => (
@@ -120,7 +120,7 @@ storiesOf('Image', module)
         The image is smaller than the frame, so there is empty space within the frame. The image is
         centered in the available space.
       </Label>
-      <Image {...imagePropsFitCenter} src="http://placehold.it/100x100" />
+      <Image {...imagePropsFitCenter} src="/100x100.png" />
     </div>
   ))
   .addStory('Fit: contain, image wider', () => (

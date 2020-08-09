@@ -72,12 +72,7 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
       mode: 'contain',
     });
 
-    return (
-      <img
-        src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
-        style={{ display: 'block' }}
-      />
-    );
+    return <img src={`/200x150.png`} style={{ display: 'block' }} />;
   }
 
   return (

@@ -20,7 +20,7 @@ storiesOf('TeachingBubble', module)
     () => {
       return (
         <TeachingBubble
-          illustrationImage={{ src: 'http://placehold.it/364x220' }}
+          illustrationImage={{ src: '/364x220.png' }}
           calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
           isWide={true}
           hasSmallHeadline={true}
