@@ -589,6 +589,11 @@ export interface IMenuItemStyles extends IButtonStyles {
    * Styles for a divider item of a ConextualMenu.
    */
   divider: IStyle;
+
+  /**
+   * Styles for wrapper of a ConextualMenu text and secondary text.
+   */
+  textWrapper: IStyle;
 }
 
 /**

@@ -35,6 +35,7 @@ export interface IMenuItemClassNames {
   splitPrimary: string;
   splitMenu: string;
   linkContentMenu: string;
+  textWrapper: string;
 }
 
 const CONTEXTUAL_SPLIT_MENU_MINWIDTH = '28px';
@@ -79,6 +80,7 @@ const GlobalClassNames = {
   label: 'ms-ContextualMenu-itemText',
   secondaryText: 'ms-ContextualMenu-secondaryText',
   splitMenu: 'ms-ContextualMenu-splitMenu',
+  textWrapper: 'ms-ContextualMenu-textWrapper',
 };
 
 /**
@@ -213,6 +215,7 @@ export const getItemClassNames = memoizeFunction(
             },
           ],
       ],
+      textWrapper: [classNames.textWrapper, styles.textWrapper],
     });
   },
 );

@@ -81,8 +81,12 @@ export class ContextualMenuItemBase extends React.Component<IContextualMenuItemP
       <div className={item.split ? classNames.linkContentMenu : classNames.linkContent}>
         {renderCheckMarkIcon(this.props)}
         {renderItemIcon(this.props)}
-        {renderItemName(this.props)}
-        {renderSecondaryText(this.props)}
+        <div className={this.props.classNames.textWrapper}>
+          {renderItemName(this.props)}
+          {renderSecondaryText(this.props)}
+        </div>
+        {/* {renderItemName(this.props)}
+        {renderSecondaryText(this.props)} */}
         {renderSubMenuIcon(this.props)}
       </div>
     );
