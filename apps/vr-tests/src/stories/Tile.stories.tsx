@@ -64,14 +64,6 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
   props: IDocumentTileWithThumbnailProps,
 ): JSX.Element => {
   function renderForeground(foregroundProps: { foregroundSize?: ISize }) {
-    const { foregroundSize = { width: 0, height: 0 } } = foregroundProps;
-
-    const imageSize = fitContentToBounds({
-      contentSize: props.originalImageSize,
-      boundsSize: foregroundSize,
-      mode: 'contain',
-    });
-
     return <img src={`/200x150.png`} style={{ display: 'block' }} />;
   }
 
