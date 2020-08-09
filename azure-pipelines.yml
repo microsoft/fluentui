@@ -27,9 +27,20 @@ jobs:
           yarn checkchange
         displayName: check change
 
+      ## only do scoped builds with PRs
       - script: |
           yarn lage build test lint --verbose --no-cache --grouped --since $(target_branch)
-        displayName: build, test, lint
+        displayName: build, test, lint (pr, scoped)
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+        env:
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      ## duplicated build step, but without --since flag for master CI builds
+      - script: |
+          yarn lage build test lint --verbose --no-cache --grouped
+        displayName: build, test, lint (master)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
