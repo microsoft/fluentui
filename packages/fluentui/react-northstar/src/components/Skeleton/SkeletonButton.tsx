@@ -20,7 +20,7 @@ export interface SkeletonButtonOwnProps {
 export interface SkeletonButtonProps extends SkeletonButtonOwnProps, SkeletonShapeProps {}
 
 export type SkeletonButtonStylesProps = Required<
-  Pick<SkeletonButtonOwnProps, 'size' | 'icon' | 'fluid' | 'circular' | 'iconOnly'>
+  Pick<SkeletonButtonOwnProps, 'size' | 'fluid' | 'circular' | 'iconOnly'>
 >;
 export const skeletonButtonClassName = 'ui-skeleton__button';
 
@@ -39,9 +39,8 @@ export const SkeletonButton = compose<
   overrideStyles: true,
   shorthandConfig: {},
   handledProps: ['size', 'circular'],
-  mapPropsToStylesProps: ({ size, icon, fluid, iconOnly, circular }) => ({
+  mapPropsToStylesProps: ({ size, fluid, iconOnly, circular }) => ({
     size,
-    icon,
     fluid,
     iconOnly,
     circular,
