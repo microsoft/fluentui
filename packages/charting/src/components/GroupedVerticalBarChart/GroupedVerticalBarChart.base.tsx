@@ -76,6 +76,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _uniqLineText: string;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
+  private _noOfCharsToTruncate: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxis: any;
   private _xAxisTickPadding: number;
   private _removalValue: number = 0;
@@ -161,8 +163,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
       width: this.state.containerWidth || 600,
       height: this.state.containerHeight || 350,
     };
-    // try to reduce height at x axis and labels and utility methof
-    // try to reduce this.removalHeight
     return (
       <div
         id={`d3GroupedChart_${this._uniqLineText}`}
@@ -226,6 +226,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._showYAxisPath = this.props.showYAxisPath || false;
     this._barWidth = this.props.barwidth!;
     this._xAxisTickPadding = this.props.xAxisTickPadding || 4;
+    this._noOfCharsToTruncate = this.props.noOfCharsToTruncate || 4;
   }
 
   private _fitParentContainer(): void {
@@ -432,16 +433,21 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .on('click', (d: IGVForBarChart) => that._redirectToUrl(this.props.href!));
     });
 
-    if (this.props.showTooltipOnAxisLables) {
-      document.getElementById(`#MyUniuqe${this._uniqLineText}`)?.remove();
+    if (this.props.showXAxisLablesTooltip && !this.props.wrapXAxisLables) {
+      const aa = document.getElementsByClassName('tooltip-47');
+      while (aa[0]) {
+        // removing multiple elemnts
+        aa[0].remove();
+      }
       const div = d3Select('body')
         .append('div')
-        .attr('id', `MyUniuqe${this._uniqLineText}`)
+        .attr('id', 'tooltipId')
         .attr('class', this._classNames.tooltip)
         .style('opacity', 0);
 
-      this._xAxis.selectAll('.tick')._groups[0].forEach((d1: any) => {
-        const data = d3Select(d1).data();
+      this._xAxis.selectAll('.tick')._groups[0].forEach((d1: SVGGElement) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const data: any = d3Select(d1).data();
         d3Select(d1)
           .on('mouseover', d => {
             div.style('opacity', 0.9);
@@ -631,7 +637,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _createWrapOfXLabels(node: SVGGElement | null, xAxis: any): any {
+  private _createWrapOfXLabels(node: SVGGElement | null, xAxis: any) {
     const that = this;
     if (node === null) {
       return;
@@ -640,12 +646,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
     axisNode.selectAll('.tick text').call(_wrap, 10);
     let removeVal = 0;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function _wrap(text: any, width: number) {
+    function _wrap(allTexts: any, width: number) {
       const arr: number[] = [];
-      text.each(function() {
-        let text = d3Select(this);
+      allTexts.each(function() {
+        const text = d3Select(this);
         const totalWord = text.text();
-        const truncatedWord = `${text.text().slice(0, 4)}...`;
+        const truncatedWord = `${text.text().slice(0, that._noOfCharsToTruncate)}...`;
         const totalWordLength = text.text().length;
         const words = text
           .text()
@@ -653,7 +659,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
           .reverse();
         arr.push(words.length);
         let word: string = '';
-        let line: any = [];
+        let line: string[] = [];
         let lineNumber: number = 0;
         const lineHeight = 1.1; // ems
         const y = text.attr('y');
@@ -663,21 +669,22 @@ export class GroupedVerticalBarChartBase extends React.Component<
           .append('tspan')
           .attr('x', 0)
           .attr('y', y)
-          .attr('id', 'myUnique')
+          .attr('id', 'BaseSpan')
           .attr('dy', dy + 'em');
 
-        if (that.props.showDots && totalWordLength > 4) {
+        if (that.props.showXAxisLablesTooltip && totalWordLength > that._noOfCharsToTruncate) {
           tspan = text
             .append('tspan')
-            .attr('id', 'ididid')
+            .attr('id', 'showDots')
             .attr('x', 0)
             .attr('y', y)
             .attr('dy', ++lineNumber * lineHeight + dy + 'em')
             .text(truncatedWord);
-        } else if (that.props.showDots && totalWordLength <= 4) {
+          this._target = tspan;
+        } else if (that.props.showXAxisLablesTooltip && totalWordLength <= that._noOfCharsToTruncate) {
           tspan = text
             .append('tspan')
-            .attr('id', 'ididid')
+            .attr('id', 'LessLength')
             .attr('x', 0)
             .attr('y', y)
             .attr('dy', ++lineNumber * lineHeight + dy + 'em')
@@ -692,26 +699,28 @@ export class GroupedVerticalBarChartBase extends React.Component<
               line = [word];
               tspan = text
                 .append('tspan')
-                .attr('id', 'ididid')
+                .attr('id', 'WordBreakId')
                 .attr('x', 0)
                 .attr('y', y)
                 .attr('dy', ++lineNumber * lineHeight + dy + 'em')
                 .text(word);
             }
           }
+          const maxDigit = Math.max(...arr);
+          let maxHeight = 0;
+          axisNode.selectAll('text').each(() => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const outerHTMLElement = document.getElementById('WordBreakId') as any;
+            const BoxCordinates = outerHTMLElement ? outerHTMLElement.getBBox() : '';
+            const boxHeight = BoxCordinates!.height || 12;
+            if (boxHeight > maxHeight) {
+              maxHeight = boxHeight;
+            }
+          });
+          removeVal = (maxDigit - 3) * maxHeight;
+          that._removalValue = removeVal > 0 ? removeVal : 0;
         }
       });
-      const maxDigit = Math.max(...arr);
-      let maxHeight = 0;
-      // axisNode.selectAll('text').each(() => {
-      //   const Box = document.getElementById('ididid')!.getBBox();
-      //   const boxHeight = Box.height;
-      //   if (boxHeight > maxHeight) {
-      //     maxHeight = boxHeight;
-      //   }
-      // });
-      removeVal = (maxDigit - 3) * 13;
-      that._removalValue = removeVal > 0 ? removeVal : 0;
     }
   }
 
@@ -720,7 +729,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       return;
     }
     this._xAxis = d3Select(node).call(xAxis);
-    this._createWrapOfXLabels(node, xAxis);
+
+    (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) && this._createWrapOfXLabels(node, xAxis);
   }
 
   private _setYAxis(node: SVGElement | null, yAxis: NumericAxis): void {

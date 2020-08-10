@@ -120,12 +120,21 @@ export interface IGroupedVerticalBarChartProps {
   /**
    *@default false
    *Used for to elipse x axis labes and show tooltip on x axis labels
-   * @type {boolean}
-   * @memberof IGroupedVerticalBarChartProps
    */
-  showTooltipOnAxisLables?: boolean;
+  showXAxisLablesTooltip?: boolean;
 
-  showDots?: boolean;
+  /**
+   * @default 4
+   * Used for X axis labels
+   * While Giving showXAxisLablesTooltip prop, need to define after how many chars, we need to truncate the word.
+   */
+  noOfCharsToTruncate?: number;
+
+  /**
+   * @default false
+   * Used to display x axis labels values (whole value)
+   */
+  wrapXAxisLables?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps {

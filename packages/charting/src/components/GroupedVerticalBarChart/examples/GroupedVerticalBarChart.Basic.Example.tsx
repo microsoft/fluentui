@@ -7,76 +7,13 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
   public render(): React.ReactNode {
     const data = [
       {
-        name: 'Heljkj jkjlo ',
-        series: [
-          {
-            key: 'series1',
-            data: 90000,
-            color: DefaultPalette.accent,
-            legend: 'MetaData1',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '9%',
-          },
-          {
-            key: 'series2',
-            data: 85000,
-            color: DefaultPalette.blueMid,
-            legend: 'MetaData2',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '85%',
-          },
-        ],
-      },
-      {
-        name: 'Second Graphj',
-        series: [
-          {
-            key: 'series1',
-            data: 36000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData3',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '36%',
-          },
-          {
-            key: 'series2',
-            data: 66000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '66%',
-          },
-        ],
-      },
-      {
-        name: 'IamALLLincluded will test how much it can effort jhjh jhh',
-        series: [
-          {
-            key: 'series1',
-            data: 14000,
-            color: DefaultPalette.accent,
-            legend: 'MetaData1',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '14%',
-          },
-          {
-            key: 'series2',
-            data: 50000,
-            color: DefaultPalette.blueMid,
-            legend: 'MetaData2',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '50%',
-          },
-        ],
-      },
-      {
-        name: 'third Graph',
+        name: 'thirdGraph third Graphthir  dGraphthir dGraphthird Graphthird Graphthird Graphthird Graphthird Graph',
         series: [
           {
             key: 'series1',
             data: 33000,
             color: DefaultPalette.blueLight,
-            legend: 'MetaData3',
+            legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '33%',
           },
@@ -96,7 +33,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.accent,
+            color: DefaultPalette.blueLight,
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '33%',
@@ -104,125 +41,42 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           {
             key: 'series2',
             data: 3000,
-            color: DefaultPalette.blueMid,
-            legend: 'MetaData2',
+            color: DefaultPalette.blue,
+            legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '3%',
           },
         ],
       },
+
       {
-        name: 'i o',
+        name: 'SecondONe IamALLL ',
         series: [
           {
             key: 'series1',
-            data: 75000,
+            data: 14000,
             color: DefaultPalette.blueLight,
-            legend: 'MetaData3',
+            legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '75%',
+            yAxisCalloutData: '14%',
           },
           {
             key: 'series2',
-            data: 29000,
+            data: 50000,
             color: DefaultPalette.blue,
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '29%',
+            yAxisCalloutData: '50%',
           },
         ],
       },
-      // {
-      //   name: 'SecondONe IamALLL ',
-      //   series: [
-      //     {
-      //       key: 'series1',
-      //       data: 14000,
-      //       color: DefaultPalette.accent,
-      //       legend: 'MetaData1',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '14%',
-      //     },
-      //     {
-      //       key: 'series2',
-      //       data: 50000,
-      //       color: DefaultPalette.blueMid,
-      //       legend: 'MetaData2',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '50%',
-      //     },
-      //   ],
-      // },
-      // {
-      //   name: 'testing',
-      //   series: [
-      //     {
-      //       key: 'series1',
-      //       data: 7000,
-      //       color: DefaultPalette.blueLight,
-      //       legend: 'MetaData3',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '75%',
-      //     },
-      //     {
-      //       key: 'series2',
-      //       data: 56000,
-      //       color: DefaultPalette.blue,
-      //       legend: 'MetaData4',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '29%',
-      //     },
-      //   ],
-      // },
-      // {
-      //   name: 'last onee',
-      //   series: [
-      //     {
-      //       key: 'series1',
-      //       data: 75000,
-      //       color: DefaultPalette.blueLight,
-      //       legend: 'MetaData3',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '75%',
-      //     },
-      //     {
-      //       key: 'series2',
-      //       data: 29000,
-      //       color: DefaultPalette.blue,
-      //       legend: 'MetaData4',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '29%',
-      //     },
-      //   ],
-      // },
-      // {
-      //   name: 'single',
-      //   series: [
-      //     {
-      //       key: 'series1',
-      //       data: 90000,
-      //       color: DefaultPalette.accent,
-      //       legend: 'MetaData1',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '9%',
-      //     },
-      //     {
-      //       key: 'series2',
-      //       data: 85000,
-      //       color: DefaultPalette.blueMid,
-      //       legend: 'MetaData2',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '85%',
-      //     },
-      //   ],
-      // },
       {
-        name: 'JuSt TeSt',
+        name: 'kowsar shaik',
         series: [
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.accent,
+            color: DefaultPalette.blueLight,
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '33%',
@@ -230,112 +84,28 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
           {
             key: 'series2',
             data: 3000,
-            color: DefaultPalette.blueMid,
-            legend: 'MetaData2',
+            color: DefaultPalette.blue,
+            legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '3%',
           },
         ],
       },
-      // {
-      //   name: 'yes Graph',
-      //   series: [
-      //     {
-      //       key: 'series1',
-      //       data: 33000,
-      //       color: DefaultPalette.blueLight,
-      //       legend: 'MetaData3',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '33%',
-      //     },
-      //     {
-      //       key: 'series2',
-      //       data: 44000,
-      //       color: DefaultPalette.blue,
-      //       legend: 'MetaData4',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '44%',
-      //     },
-      //   ],
-      // },
-      // {
-      //   name: 'small text',
-      //   series: [
-      //     {
-      //       key: 'series1',
-      //       data: 14000,
-      //       color: DefaultPalette.accent,
-      //       legend: 'MetaData1',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '14%',
-      //     },
-      //     {
-      //       key: 'series2',
-      //       data: 50000,
-      //       color: DefaultPalette.blueMid,
-      //       legend: 'MetaData2',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '50%',
-      //     },
-      //   ],
-      // },
-      // {
-      //   name: 'xyz',
-      //   series: [
-      //     {
-      //       key: 'series1',
-      //       data: 90000,
-      //       color: DefaultPalette.accent,
-      //       legend: 'MetaData1',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '9%',
-      //     },
-      //     {
-      //       key: 'series2',
-      //       data: 85000,
-      //       color: DefaultPalette.blueMid,
-      //       legend: 'MetaData2',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '85%',
-      //     },
-      //   ],
-      // },
-      // {
-      //   name: 'kowsar shaik',
-      //   series: [
-      //     {
-      //       key: 'series1',
-      //       data: 33000,
-      //       color: DefaultPalette.accent,
-      //       legend: 'MetaData1',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '33%',
-      //     },
-      //     {
-      //       key: 'series2',
-      //       data: 3000,
-      //       color: DefaultPalette.blueMid,
-      //       legend: 'MetaData2',
-      //       xAxisCalloutData: '2020/04/30',
-      //       yAxisCalloutData: '3%',
-      //     },
-      //   ],
-      // },
     ];
 
     const rootStyle = mergeStyles({ width: '650px', height: '400px' });
 
     return (
       <div className={rootStyle}>
+        <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines wrapXAxisLables />
         <GroupedVerticalBarChart
           data={data}
           height={400}
           width={650}
           showYAxisGridLines
-          showTooltipOnAxisLables={true}
-          showDots
+          showXAxisLablesTooltip
+          noOfCharsToTruncate={6}
         />
-        {/* <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines /> */}
       </div>
     );
   }

@@ -85,15 +85,15 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
     },
 
     tooltip: {
+      ...theme.fonts.medium,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '8px',
       position: 'absolute',
       textAlign: 'center',
-      // width: { tWidth },
-      // height: { tHeight },
-      padding: '2px',
-      font: '12px sans-serif',
-      background: 'blue',
-      border: '0px',
-      borderRadius: '8px',
+      top: '0px',
+      background: theme.semanticColors.bodyBackground,
+      borderRadius: '2px',
       pointerEvents: 'none',
     },
   };
