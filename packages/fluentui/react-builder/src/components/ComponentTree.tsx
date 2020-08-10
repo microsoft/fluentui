@@ -180,7 +180,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
       accessibility={treeBehavior}
       items={items}
       activeItemIds={activeItems}
-      styles={{ minHeight: '20rem', overflowY: 'auto' }}
+      styles={{ minHeight: '17rem', maxHeight: '17rem', overflowY: 'auto' }}
     />
   );
 };
