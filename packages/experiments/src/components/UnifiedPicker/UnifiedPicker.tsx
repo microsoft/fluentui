@@ -75,7 +75,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   } = props;
 
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
-
   const _insertBeforeItem = (item: T): void => {
     const draggedItemIndex = selectedItems.indexOf(draggedItem!);
     const draggedItemsIndices = focusedItemIndices.includes(draggedItemIndex)

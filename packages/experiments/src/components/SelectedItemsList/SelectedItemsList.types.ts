@@ -111,14 +111,11 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    */
   canRemoveItem?: (item: T) => boolean;
 
-  /** Map of callback functions related to row drag and drop functionality. */
+  /** Drag & drop event callback interface. */
   dragDropEvents?: IDragDropEvents;
 
   /**
    * Helper for the drag and drop
    */
   dragDropHelper?: IDragDropHelper;
-
-  /** Event names and corresponding callbacks that will be registered to rendered selected items. */
-  selectedItemEventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 }
