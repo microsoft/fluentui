@@ -3,7 +3,9 @@ import { Skeleton, Flex, Text } from '@fluentui/react-northstar';
 
 const SkeletonExampleComponents = () => (
   <Flex column gap="gap.medium">
-    <Text size="large">Button</Text>
+    <Text size="large" weight="bold">
+      Button
+    </Text>
     <Skeleton>
       <Flex gap="gap.medium">
         <Skeleton.Button />

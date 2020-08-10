@@ -5,15 +5,16 @@ import { commonPropTypes, SizeValue } from '../../utils';
 import { SkeletonShapeProps, SkeletonShapeStylesProps, SkeletonShape } from './SkeletonShape';
 
 export interface SkeletonButtonOwnProps {
-  /** A button can be sized. */
+  /** A skeleton button can be sized. */
   size?: SizeValue;
-  /** A button can have an icon. */
-  icon?: boolean;
-  /** A button can fill the width of its container. */
+
+  /** A skeleton button can fill the width of its container. */
   fluid?: boolean;
-  /** A button can appear circular. */
+
+  /** A skeleton button can appear circular. */
   circular?: boolean;
-  /** A button can contain only an icon. */
+
+  /** A skeleton button can contain only an icon. */
   iconOnly?: boolean;
 }
 export interface SkeletonButtonProps extends SkeletonButtonOwnProps, SkeletonShapeProps {}
@@ -24,7 +25,7 @@ export type SkeletonButtonStylesProps = Required<
 export const skeletonButtonClassName = 'ui-skeleton__button';
 
 /**
- * An SkeletonButton represents a shape (Image/Button/etc...) that will be loaded
+ * An SkeletonButton represents a buton component that will be loaded
  */
 export const SkeletonButton = compose<
   'span',
