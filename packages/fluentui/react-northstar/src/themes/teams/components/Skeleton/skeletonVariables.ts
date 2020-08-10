@@ -14,6 +14,11 @@ export interface SkeletonVariables {
   buttonSmallWidth?: string;
   buttonBackground?: string;
   buttonCircularBorderRadius?: string;
+
+  // Skeleton Input
+  inputHeight?: string;
+  inputWidth?: string;
+  inputBackground?: string;
 }
 
 export const skeletonVariables = (siteVariables): SkeletonVariables => {
@@ -31,5 +36,10 @@ export const skeletonVariables = (siteVariables): SkeletonVariables => {
     buttonSmallWidth: pxToRem(72),
     buttonBackground: siteVariables.colorScheme.default.background4,
     buttonCircularBorderRadius: pxToRem(999),
+
+    // Skeleton Input
+    inputHeight: pxToRem(32),
+    inputWidth: pxToRem(154),
+    inputBackground: siteVariables.colorScheme.default.background4,
   };
 };

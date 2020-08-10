@@ -91,6 +91,7 @@ export { skeletonVariables as Skeleton } from './components/Skeleton/skeletonVar
 export { skeletonVariables as SkeletonLine } from './components/Skeleton/skeletonLineVariables';
 export { skeletonVariables as SkeletonShape } from './components/Skeleton/skeletonShapeVariables';
 export { skeletonVariables as SkeletonButton } from './components/Skeleton/skeletonButtonVariables';
+export { skeletonVariables as SkeletonInput } from './components/Skeleton/skeletonInputVariables';
 
 export { sliderVariables as Slider } from './components/Slider/sliderVariables';
 
