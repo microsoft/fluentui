@@ -21,6 +21,10 @@
 - Deprecated `onRenderLabel`.
 - Added `label`/`checkmark` slot props.
 
+### ChoiceGroup
+
+- Removed applicationRole from `ChoiceGroup` and replaced it with root.
+
 ### Coachmark
 
 - Removed `isBeaconAnimating` and `isMeasured` style props
