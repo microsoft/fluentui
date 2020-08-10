@@ -1,6 +1,6 @@
 import { SourceFile } from 'ts-morph';
 import { CodeMod } from '../../types';
-import { renameProp, findJsxTag } from '../../utilities';
+import { renameProp, findJsxTag } from '../../utilities/index';
 
 const oldToNewButton: CodeMod = {
   run: (file: SourceFile) => {
