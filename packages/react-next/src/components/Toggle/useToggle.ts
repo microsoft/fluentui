@@ -1,14 +1,7 @@
 import * as React from 'react';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { useControllableValue, useId } from '@uifabric/react-hooks';
-import {
-  classNamesFunction,
-  getNativeProps,
-  inputProperties,
-  useFocusRects,
-  warnDeprecations,
-  warnMutuallyExclusive,
-} from '../../Utilities';
+import { useControllableValue, useId, useWarnings } from '@uifabric/react-hooks';
+import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '../../Utilities';
 import { IToggle, IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ useStaticStyles: true });
@@ -19,7 +12,7 @@ export const useToggle = (
   props: IToggleProps,
   ref: React.Ref<HTMLDivElement>,
   options: ComposePreparedOptions,
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any => {
   const {
     ariaLabel,
@@ -30,10 +23,10 @@ export const useToggle = (
     id: toggleId,
     inlineLabel,
     label,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     offAriaLabel,
     offText,
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     onAriaLabel,
     onChange,
     onClick: onToggleClick,
@@ -57,7 +50,9 @@ export const useToggle = (
   const labelId = `${id}-label`;
   const stateTextId = `${id}-stateText`;
   const stateText = checked ? onText : offText;
-  const toggleNativeProps = getNativeProps<HTMLInputElement>(props, inputProperties, ['defaultChecked']);
+  const toggleNativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties, [
+    'defaultChecked',
+  ]);
 
   // The following properties take priority for what Narrator should read:
   // 1. ariaLabel
@@ -78,14 +73,18 @@ export const useToggle = (
   useFocusRects(toggleButton);
   useComponentRef(props, checked, toggleButton);
 
-  warnDeprecations(COMPONENT_NAME, props, {
-    offAriaLabel: undefined,
-    onAriaLabel: 'ariaLabel',
-    onChanged: 'onChange',
-  });
-  warnMutuallyExclusive(COMPONENT_NAME, props, {
-    checked: 'defaultChecked',
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      deprecations: {
+        offAriaLabel: undefined,
+        onAriaLabel: 'ariaLabel',
+        onChanged: 'onChange',
+      },
+      mutuallyExclusive: { checked: 'defaultChecked' },
+    });
+  }
 
   const onClick = (ev: React.MouseEvent<HTMLElement>) => {
     if (!disabled) {
@@ -102,7 +101,7 @@ export const useToggle = (
 
   const slots = {
     ...options.slots,
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     root: props.as || ((options as any).defaultProps as any)?.as,
   };
 
@@ -128,6 +127,7 @@ export const useToggle = (
       'aria-labelledby': labelledById,
       className: classNames.pill,
       'data-is-focusable': true,
+      'data-ktp-target': true,
       disabled: disabled,
       id: id,
       onClick: onClick,

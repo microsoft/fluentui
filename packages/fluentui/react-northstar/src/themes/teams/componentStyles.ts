@@ -61,6 +61,7 @@ export { svgIconStyles as SvgIcon } from './components/SvgIcon/svgIconStyles';
 export { imageStyles as Image } from './components/Image/imageStyles';
 
 export { inputStyles as Input } from './components/Input/inputStyles';
+export { inputLabelStyles as InputLabel } from './components/Input/inputLabelStyles';
 
 export { labelStyles as Label } from './components/Label/labelStyles';
 
@@ -90,6 +91,10 @@ export { providerStyles as Provider } from './components/Provider/providerStyles
 export { radioGroupItemStyles as RadioGroupItem } from './components/RadioGroup/radioGroupItemStyles';
 
 export { segmentStyles as Segment } from './components/Segment/segmentStyles';
+
+export { skeletonStyles as Skeleton } from './components/Skeleton/skeletonStyles';
+export { skeletonLineStyles as SkeletonLine } from './components/Skeleton/skeletonLineStyles';
+export { skeletonShapeStyles as SkeletonShape } from './components/Skeleton/skeletonShapeStyles';
 
 export { sliderStyles as Slider } from './components/Slider/sliderStyles';
 
@@ -144,3 +149,9 @@ export { cardFooterStyles as CardFooter } from './components/Card/cardFooterStyl
 export { cardPreviewStyles as CardPreview } from './components/Card/cardPreviewStyles';
 export { cardTopControlsStyles as CardTopControls } from './components/Card/cardTopControlsStyles';
 export { cardExpandableBoxStyles as CardExpandableBox } from './components/Card/cardExpandableBoxStyles';
+
+export { datepickerStyles as Datepicker } from './components/Datepicker/datepickerStyles';
+export { datepickerCalendarStyles as DatepickerCalendar } from './components/Datepicker/datepickerCalendarStyles';
+export { datepickerCalendarHeaderStyles as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderStyles';
+export { datepickerCalendarHeaderCellStyles as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellStyles';
+export { datepickerCalendarCellStyles as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellStyles';

@@ -6,7 +6,7 @@ import {
   IStyleFunction,
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { FontSizes } from '@uifabric/fluent-theme';
+import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
 
 /**
  * The component props.
@@ -59,6 +59,7 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
         {
           fontSize: FontSizes.size32,
           marginBottom: '28px',
+          color: NeutralColors.gray160,
         },
       ],
 
@@ -66,6 +67,7 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
         {
           fontSize: FontSizes.size24,
           marginBottom: '20px',
+          color: NeutralColors.gray160,
         },
       ],
 
@@ -73,6 +75,14 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
         {
           fontSize: FontSizes.size20,
           marginBottom: '8px',
+          color: NeutralColors.gray130,
+        },
+      ],
+      props.as === 'h4' && [
+        {
+          fontSize: FontSizes.size16,
+          marginBottom: '6px',
+          color: NeutralColors.gray160,
         },
       ],
       className,

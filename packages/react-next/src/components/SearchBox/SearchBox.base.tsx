@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
-import { warnDeprecations, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
-import { useBoolean, useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
+import { KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
+import { useBoolean, useControllableValue, useId, useMergedRefs, useWarnings } from '@uifabric/react-hooks';
 import { IconButton } from '../../compat/Button';
 import { Icon } from '../../Icon';
 
@@ -40,7 +40,7 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
     disabled,
     underlined,
     styles,
-    /* tslint:disable-next-line:deprecation */
+    // eslint-disable-next-line deprecation/deprecation
     labelText,
     theme,
     clearButtonProps = { ariaLabel: 'Clear text' },
@@ -140,9 +140,13 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
     ev.stopPropagation();
   };
 
-  warnDeprecations(COMPONENT_NAME, props, {
-    labelText: 'placeholder',
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      deprecations: { labelText: 'placeholder' },
+    });
+  }
 
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
@@ -169,10 +173,12 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
       {value!.length > 0 && (
         <div className={classNames.clearButton}>
           <IconButton
+            // eslint-disable-next-line react/jsx-no-bind
             onBlur={onBlur}
             styles={iconButtonStyles}
             iconProps={iconButtonProps}
             {...clearButtonProps}
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={onClearClick}
           />
         </div>

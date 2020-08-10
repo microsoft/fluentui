@@ -1,8 +1,117 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.2)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.0..@uifabric/charting_v3.0.2)
+
+### Patches
+
+- yMax and yMin values added to prop types of chart helper ([PR #14256](https://github.com/microsoft/fluentui/pull/14256) by v-jasha@microsoft.com)
+- Grouped vertical bar chart refresh issue in admin controls resoled ([PR #14277](https://github.com/microsoft/fluentui/pull/14277) by v-jasha@microsoft.com)
+
+## [3.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.0)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.8.0..@uifabric/charting_v3.0.0)
+
+### Major changes
+
+- reverted sankey chart code ([PR #14301](https://github.com/microsoft/fluentui/pull/14301) by v-jasha@microsoft.com)
+
+## [2.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.8.0)
+
+Fri, 31 Jul 2020 12:47:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.7..@uifabric/charting_v2.8.0)
+
+### Minor changes
+
+- Adding an option to show total counts in line chart legend, and new type in yCalloutData to support new tooltip design in line chart ([PR #14169](https://github.com/microsoft/fluentui/pull/14169) by jijun@microsoft.com)
+
+## [2.7.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.7)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.6..@uifabric/charting_v2.7.7)
+
+### Patches
+
+- common chartHelper added to charting package ([PR #14177](https://github.com/microsoft/fluentui/pull/14177) by v-jasha@microsoft.com)
+- Charting: Add Accessibility support for Sankey chart ([PR #14196](https://github.com/microsoft/fluentui/pull/14196) by v-gorraj@microsoft.com)
+
+## [2.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.6)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.4..@uifabric/charting_v2.7.6)
+
+### Patches
+
+- Linechart : Fix issue The tool tip seems to display all the data in same day, instead of the point where my mouse hovers. ([PR #14195](https://github.com/microsoft/fluentui/pull/14195) by v-gorraj@microsoft.com)
+
+## [2.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.4)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.2..@uifabric/charting_v2.7.4)
+
+### Patches
+
+- Calling grouped vertical bar chart method in did mount and updated height proprty as if negtiva values apper, then need to sent 0 to eliminate unwanted console warnings. ([PR #14137](https://github.com/microsoft/fluentui/pull/14137) by v-jasha@microsoft.com)
+- Charting: Fix Line chart render with empty array of data + a event annotation, the chart throws a strange formatting exception. ([PR #14161](https://github.com/microsoft/fluentui/pull/14161) by v-gorraj@microsoft.com)
+
+## [2.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.2)
+
+Tue, 21 Jul 2020 12:43:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.0..@uifabric/charting_v2.7.2)
+
+### Patches
+
+- Charting: Fix sankey chart dark mode text not visble properly ([PR #14082](https://github.com/microsoft/fluentui/pull/14082) by v-gorraj@microsoft.com)
+- Updating valueInsideDonut to be set to yAxisCalloutData if the value is defined ([PR #14093](https://github.com/microsoft/fluentui/pull/14093) by 57419611+hki-237@users.noreply.github.com)
+
+## [2.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.0)
+
+Fri, 17 Jul 2020 12:38:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.6.0..@uifabric/charting_v2.7.0)
+
+### Minor changes
+
+- When legend is hovered, center of donut chart updates to the value cooresponding to the legend. ([PR #14055](https://github.com/microsoft/fluentui/pull/14055) by 57419611+hki-237@users.noreply.github.com)
+
+## [2.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.6.0)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.2..@uifabric/charting_v2.6.0)
+
+### Minor changes
+
+- Charting:Add New Sankey chart to charting package ([PR #13982](https://github.com/microsoft/fluentui/pull/13982) by v-gorraj@microsoft.com)
+
+### Patches
+
+- lineChart & verticalCharts - y axis lines high contrast styles updated ([PR #14037](https://github.com/microsoft/fluentui/pull/14037) by v-jasha@microsoft.com)
+- wrapping chartHoverCard in styled component and deleting static Theme ([PR #14038](https://github.com/microsoft/fluentui/pull/14038) by v-sivsar@microsoft.com)
+
+## [2.5.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.2)
+
+Wed, 15 Jul 2020 12:41:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.1..@uifabric/charting_v2.5.2)
+
+### Patches
+
+- Legends:Skip all legends in data viz as it is confusing to non sighted users as they have just gone through the data viz. ([PR #14019](https://github.com/microsoft/fluentui/pull/14019) by v-gorraj@microsoft.com)
+
+## [2.5.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.1)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.0..@uifabric/charting_v2.5.1)
+
+### Patches
+
+- Replace tslint with eslint and fix some violations, including unnecessary map() usage and naming ([PR #13944](https://github.com/microsoft/fluentui/pull/13944) by elcraig@microsoft.com)
+- Donut chart: when hover/focus on arc the arc should be highlight and remaining arcs are disable ([PR #13980](https://github.com/microsoft/fluentui/pull/13980) by v-gorraj@microsoft.com)
 
 ## [2.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.0)
 

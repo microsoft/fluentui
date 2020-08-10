@@ -6,7 +6,7 @@ import { IChartDataPoint, IChartProps } from './index';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '@uifabric/charting';
+import { ChartHoverCard } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 
@@ -19,7 +19,7 @@ export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
   selectedLegendTitle: string;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
@@ -331,7 +331,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
     ) {
-      this.state.refArray.map((obj: IRefArrayData) => {
+      this.state.refArray.forEach((obj: IRefArrayData) => {
         if (obj.legendText === legendText) {
           this.setState({
             refSelected: obj.refElement,
@@ -406,7 +406,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }

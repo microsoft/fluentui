@@ -117,7 +117,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
     // `applicationRole` class (but the div structure will stay the same by necessity)
     return (
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       <div className={classNames.applicationRole} {...divProps}>
         <div
           className={classNames.root}
@@ -137,7 +137,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
                 checked: option.key === keyChecked,
                 disabled: option.disabled || disabled,
                 id: this._getOptionId(option),
-                labelId: `${this._labelId}-${option.key}`,
+                labelId: this._getOptionLabelId(option),
                 name: name || this._id,
                 required,
               };
@@ -195,7 +195,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
         evt: React.FormEvent<HTMLElement | HTMLInputElement>,
         option: IChoiceGroupOption,
       ) => {
-        // tslint:disable-next-line:deprecation
+        // eslint-disable-next-line deprecation/deprecation
         const { onChanged, onChange } = this.props;
 
         // Only manage state in uncontrolled scenarios.
@@ -228,13 +228,17 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     }
 
     const { options = [] } = props;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const optionsChecked = options.filter((option: IChoiceGroupOption) => option.checked);
     return optionsChecked[0] && optionsChecked[0].key;
   }
 
   private _getOptionId(option: IChoiceGroupOption): string {
-    return `${this._id}-${option.key}`;
+    return option.id || `${this._id}-${option.key}`;
+  }
+
+  private _getOptionLabelId(option: IChoiceGroupOption): string {
+    return option.labelId || `${this._labelId}-${option.key}`;
   }
 }
 

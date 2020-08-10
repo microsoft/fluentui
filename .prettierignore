@@ -6,11 +6,9 @@ version.ts
 dndSim.js
 monaco-typescript.d.ts
 *.api.md
+api-report.md
 *.scss.ts
 _*.scss
-
-# messes up formatting
-packages/tslint-rules/tslint.json
 
 # folders of generated files
 lib
@@ -24,3 +22,6 @@ common/scripts
 coverage
 etc
 change
+
+# package specific files
+packages/web-components/**/*.spec.ts

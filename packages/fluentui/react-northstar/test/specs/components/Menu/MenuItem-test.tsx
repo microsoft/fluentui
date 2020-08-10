@@ -1,17 +1,16 @@
 import * as React from 'react';
 
 import { Accessibility, menuItemAsToolbarButtonBehavior, tabBehavior } from '@fluentui/accessibility';
-import { isConformant as newIsConformant } from '@fluentui/react-conformance';
 import {
   isConformant,
   handlesAccessibility,
   getRenderedAttribute,
   implementsShorthandProp,
 } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent, mountWithProvider as mount } from 'test/utils';
-import MenuItem from 'src/components/Menu/MenuItem';
-import Menu from 'src/components/Menu/Menu';
-import MenuItemWrapper, { menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
+import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils';
+import { MenuItem } from 'src/components/Menu/MenuItem';
+import { Menu } from 'src/components/Menu/Menu';
+import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
@@ -23,14 +22,14 @@ describe('MenuItem', () => {
     autoControlledProps: ['menuOpen'],
   });
 
-  newIsConformant({
-    Component: MenuItem,
-    displayName: 'MenuItem',
-    customMount: mount,
-    componentPath: __filename.replace(/test[/\\]specs/, 'src').replace('-test.tsx', '.tsx'),
-    wrapperComponent: MenuItemWrapper,
-    disabledTests: ['has-top-level-file'],
-  });
+  sharedIsConformant(
+    {
+      Component: MenuItem,
+      displayName: 'MenuItem',
+      wrapperComponent: MenuItemWrapper,
+    },
+    __filename,
+  );
 
   implementsShorthandProp(MenuItem)('menu', Menu, {
     implementsPopper: true,

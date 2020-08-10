@@ -4,6 +4,7 @@ import {
   useStyles,
   useUnhandledProps,
   ComponentWithAs,
+  useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
@@ -15,16 +16,8 @@ import * as _ from 'lodash';
 import cx from 'classnames';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import computeScrollIntoView from 'compute-scroll-into-view';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
-import {
-  ShorthandRenderFunction,
-  ShorthandValue,
-  ShorthandCollection,
-  ProviderContextPrepared,
-  FluentComponentStaticProps,
-} from '../../types';
+import { ShorthandRenderFunction, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import Downshift, {
   DownshiftState,
   StateChangeOptions,
@@ -41,21 +34,21 @@ import {
   isFromKeyboard as detectIsFromKeyboard,
   createShorthand,
 } from '../../utils';
-import List, { ListProps } from '../List/List';
-import DropdownItem, { DropdownItemProps } from './DropdownItem';
-import DropdownSelectedItem, { DropdownSelectedItemProps } from './DropdownSelectedItem';
-import DropdownSearchInput, { DropdownSearchInputProps } from './DropdownSearchInput';
-import Button, { ButtonProps } from '../Button/Button';
+import { List, ListProps } from '../List/List';
+import { DropdownItem, DropdownItemProps } from './DropdownItem';
+import { DropdownSelectedItem, DropdownSelectedItemProps } from './DropdownSelectedItem';
+import { DropdownSearchInput, DropdownSearchInputProps } from './DropdownSearchInput';
+import { Button, ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import Box, { BoxProps } from '../Box/Box';
-import Portal from '../Portal/Portal';
+import { Box, BoxProps } from '../Box/Box';
+import { Portal } from '../Portal/Portal';
 import {
   ALIGNMENTS,
   POSITIONS,
   Popper,
   PositioningProps,
   PopperShorthandProps,
-  getPopperPropsFromShorthand,
+  partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
@@ -361,13 +354,13 @@ const isEmpty = prop => {
  * @accessibilityIssues
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
  */
-const Dropdown: ComponentWithAs<'div', DropdownProps> &
+export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   FluentComponentStaticProps<DropdownProps> & {
     Item: typeof DropdownItem;
     SearchInput: typeof DropdownSearchInput;
     SelectedItem: typeof DropdownSelectedItem;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dropdown.displayName, context.telemetry);
 
   setStart();
@@ -396,7 +389,6 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
     headerMessage,
     moveFocusOnTab,
     noResultsMessage,
-    list,
     loading,
     loadingMessage,
     placeholder,
@@ -412,6 +404,7 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
     unstable_pinned,
     variables,
   } = props;
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
 
   const buttonRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
@@ -645,7 +638,7 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
           targetRef={containerRef}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
-          {...getPopperPropsFromShorthand(list)}
+          {...positioningProps}
         >
           {List.create(list, {
             defaultProps: () => ({
@@ -1042,7 +1035,11 @@ const Dropdown: ComponentWithAs<'div', DropdownProps> &
             tryRemoveItemFromValue();
             break;
           case keyboardKey.Escape:
-            e.stopPropagation();
+            // If dropdown list is open ESC should close it and not propagate to the parent
+            // otherwise event should propagate
+            if (open) {
+              e.stopPropagation();
+            }
           default:
             break;
         }
@@ -1701,5 +1698,3 @@ Dropdown.defaultProps = {
 Dropdown.Item = DropdownItem;
 Dropdown.SearchInput = DropdownSearchInput;
 Dropdown.SelectedItem = DropdownSelectedItem;
-
-export default Dropdown;

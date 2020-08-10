@@ -3,7 +3,6 @@ import {
   ICalendarYearStrings,
   ICalendarYearProps,
   ICalendarYearRange,
-  ICalendarYearRangeToString,
   ICalendarYearHeaderProps,
   ICalendarYearStyleProps,
   ICalendarYearStyles,
@@ -246,11 +245,7 @@ const CalendarYearNavArrow = React.forwardRef(
       direction === CalendarYearNavDirection.Previous ? yearStrings.prevRangeAriaLabel : yearStrings.nextRangeAriaLabel;
     const newRangeOffset = direction === CalendarYearNavDirection.Previous ? -CELL_COUNT : CELL_COUNT;
     const newRange = { fromYear: fromYear + newRangeOffset, toYear: toYear + newRangeOffset };
-    const ariaLabelString = ariaLabel
-      ? typeof ariaLabel === 'string'
-        ? (ariaLabel as string)
-        : (ariaLabel as ICalendarYearRangeToString)(newRange)
-      : undefined;
+    const ariaLabelString = ariaLabel ? (typeof ariaLabel === 'string' ? ariaLabel : ariaLabel(newRange)) : undefined;
     const disabled =
       direction === CalendarYearNavDirection.Previous
         ? minYear !== undefined && fromYear < minYear
@@ -339,8 +334,8 @@ const CalendarYearTitle = React.forwardRef(
       const headerAriaLabelFormatString = strings!.headerAriaLabelFormatString;
       const currentDateRange = rangeAriaLabel
         ? typeof rangeAriaLabel === 'string'
-          ? (rangeAriaLabel as string)
-          : (rangeAriaLabel as ICalendarYearRangeToString)(props)
+          ? rangeAriaLabel
+          : rangeAriaLabel(props)
         : undefined;
 
       const ariaLabel = headerAriaLabelFormatString

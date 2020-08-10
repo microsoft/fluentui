@@ -50,8 +50,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     });
 
     // Handle changes (debounced)
-    // tslint:disable-next-line:no-any due to mismatch between Node and browser typings
-    let debounceTimeout: any;
+    let debounceTimeout: number;
     editor.onDidChangeModelContent(() => {
       // Destructure these locally to get the latest values
       const { debounceTime: currDebounceTime, onChange: currOnChange } = internalState.current!;
@@ -64,7 +63,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       }
 
       if (currDebounceTime) {
-        debounceTimeout = setTimeout(() => currOnChange(model.getValue()), currDebounceTime);
+        debounceTimeout = window.setTimeout(() => currOnChange(model.getValue()), currDebounceTime);
       } else {
         currOnChange(model.getValue());
       }

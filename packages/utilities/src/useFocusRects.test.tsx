@@ -9,7 +9,6 @@ describe('useFocusRects', () => {
   let focusRects1: ReactWrapper;
   let focusRects2: ReactWrapper;
 
-  // tslint:disable-next-line:no-any
   class MockWindow {
     public classNames: string[] = [];
     public addEventListenerCallCount = 0;

@@ -34,7 +34,7 @@ describe('ResizeGroup', () => {
   it('renders the ResizeGroup correctly', () => {
     const initialData = { content: 5 };
     const renderedDataId = 'onRenderDataId';
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
     expect(
       renderer
@@ -53,7 +53,7 @@ describe('ResizeGroup', () => {
   it('renders the result of onRenderData', () => {
     const initialData = { content: 5 };
     const renderedDataId = 'onRenderDataId';
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
 
     const wrapper = mount(
@@ -328,7 +328,7 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
 
-    // tslint:disable-next-line:max-line-length
+    // eslint-disable-next-line @fluentui/max-len
     it('sets resize direction to shrink when resizeDirection is grow, contents do not fit, and there is no onGrowData', () => {
       const dataToMeasure = { index: 8 };
       const resizeGroupProps = getRequiredResizeGroupProps();

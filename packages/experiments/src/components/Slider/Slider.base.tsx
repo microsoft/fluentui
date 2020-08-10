@@ -24,7 +24,6 @@ const COMPONENT_NAME = 'Slider';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
-// tslint:disable:jsx-ban-props
 export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
@@ -437,7 +436,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     let diff: number | undefined = 0;
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left):
       case KeyCodes.down:

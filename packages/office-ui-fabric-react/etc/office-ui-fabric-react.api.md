@@ -1307,10 +1307,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     // (undocumented)
     getStartItemIndexInView(): number;
     // (undocumented)
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
-    // (undocumented)
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
@@ -2399,8 +2395,10 @@ export interface ICoachmarkStyleProps {
     entityHostHeight?: string;
     entityHostWidth?: string;
     height?: string;
+    // @deprecated
     isBeaconAnimating: boolean;
     isCollapsed: boolean;
+    // @deprecated
     isMeasured: boolean;
     isMeasuring: boolean;
     theme?: ITheme;
@@ -2754,6 +2752,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
+    multiSelectDelimiter?: string;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
@@ -3018,6 +3017,8 @@ export interface IContextualMenuListProps {
     hasIcons: boolean;
     // (undocumented)
     items: IContextualMenuItem[];
+    // (undocumented)
+    role?: string;
     // (undocumented)
     totalItemCount: number;
 }
@@ -3534,8 +3535,6 @@ export interface IDetailsListState {
     focusedItemIndex: number;
     // (undocumented)
     isCollapsed?: boolean;
-    // (undocumented)
-    isDropping?: boolean;
     // (undocumented)
     isSizing?: boolean;
     // (undocumented)
@@ -4787,6 +4786,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
     }[];
+    focusZoneProps?: IFocusZoneProps;
     getGroupHeight?: (group: IGroup, groupIndex: number) => number;
     groupProps?: IGroupRenderProps;
     groups?: IGroup[];
@@ -4849,8 +4849,6 @@ export interface IGroupedListState {
     groups?: IGroup[];
     // (undocumented)
     lastSelectionMode?: SelectionMode;
-    // (undocumented)
-    lastWidth?: number;
 }
 
 // @public (undocumented)
@@ -8029,6 +8027,9 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderComponent<{}>>;
 
 // @public (undocumented)
+export type KeytipDataOptions = IKeytipDataProps;
+
+// @public (undocumented)
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;
 
 // @public
@@ -8126,9 +8127,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
     // (undocumented)
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
+    readonly pageRefs: Readonly<Record<string, unknown>>;
     // (undocumented)
     render(): JSX.Element | null;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
@@ -9436,15 +9435,6 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    static defaultProps: {
-        hasCondensedHeadline: boolean;
-        imageProps: {
-            imageFit: ImageFit;
-            width: number;
-            height: number;
-        };
-    };
-    // (undocumented)
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
@@ -9581,6 +9571,9 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
 export function updateT(color: IColor, t: number): IColor;
+
+// @public
+export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
 // @public
 export enum ValidationState {

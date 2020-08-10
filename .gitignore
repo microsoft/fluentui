@@ -149,3 +149,9 @@ rush.json
 /packages/monaco-editor/esm
 
 .eslintcache
+
+# Rollup cache
+.rollupcache
+
+# tsdoc
+tsdoc-metadata.json

@@ -72,8 +72,6 @@ const SpinnerAtEndButton: React.FunctionComponent<IButtonProps> = composed<IButt
   },
 );
 
-// tslint:disable:jsx-no-lambda
-// tslint:disable:jsx-key
 export class SlotsRecompositionExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (

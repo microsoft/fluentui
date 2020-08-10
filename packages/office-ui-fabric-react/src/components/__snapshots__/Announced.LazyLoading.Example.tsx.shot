@@ -83,7 +83,6 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -221,6 +220,9 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
             }
             @media screen and (-ms-high-contrast: active){& {
               background-color: highlight;
+            }
+            @media screen and (forced-colors: active){& {
+              forced-color-adjust: none;
             }
         role="progressbar"
         style={

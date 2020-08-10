@@ -1,4 +1,4 @@
-@import '../MenuButton/MenuButton.scss';
+@import '~@fluentui/common-styles/dist/sass/focusBorder';
 
 :root {
   /* divider variables */
@@ -16,6 +16,43 @@
   --button-dividerLength: var(--button-minHeight);
 
   width: auto;
+
+  &._circular {
+    > .button {
+      border-top-left-radius: var(--button-borderRadius);
+      border-bottom-left-radius: var(--button-borderRadius);
+    }
+
+    > .menuButton {
+      border-top-right-radius: var(--button-borderRadius);
+      border-bottom-right-radius: var(--button-borderRadius);
+    }
+  }
+
+  &._fluid {
+    > .button {
+      flex-grow: 1;
+      text-align: right;
+    }
+  }
+
+  &._iconOnly {
+    > .button {
+      --button-padding: 0;
+      --button-width: var(--button-height, var(--button-minHeight));
+
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+      width: var(--button-width);
+    }
+  }
+
+  &._primary {
+    > .divider {
+      --button-dividerColor: var(--accent-dividerColor);
+    }
+  }
 }
 
 .button,
@@ -32,10 +69,6 @@
   min-height: var(--button-minHeight);
 
   @include focus-border($thickness: 0);
-
-  &._fluid {
-    flex-grow: 1;
-  }
 }
 
 .button {
@@ -43,25 +76,6 @@
   --button-padding: 0 16px;
 
   padding: var(--button-padding);
-
-  &._circular {
-    border-top-left-radius: var(--button-borderRadius);
-    border-bottom-left-radius: var(--button-borderRadius);
-  }
-
-  &._fluid {
-    text-align: right;
-  }
-
-  &._iconOnly {
-    --button-padding: 0;
-    --button-width: var(--button-height, var(--button-minHeight));
-
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    width: var(--button-width);
-  }
 }
 
 .menuButton {
@@ -69,25 +83,12 @@
   --button-width: var(--button-height, var(--button-minHeight));
 
   width: var(--button-width);
-
-  &._circular {
-    border-top-right-radius: var(--button-borderRadius);
-    border-bottom-right-radius: var(--button-borderRadius);
-  }
-
-  &._fluid {
-    text-align: left;
-  }
 }
 
 .divider {
   border-left: var(--button-dividerThickness) solid var(--button-dividerColor);
   height: var(--button-dividerLength);
   width: 0px;
-
-  &._primary {
-    --button-dividerColor: var(--accent-dividerColor);
-  }
 }
 
 /* selectors */

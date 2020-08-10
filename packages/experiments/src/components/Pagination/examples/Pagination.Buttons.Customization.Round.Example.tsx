@@ -25,7 +25,7 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
         lastPageAriaLabel={'last page'}
         pageAriaLabel={'page'}
         selectedAriaLabel={'selected'}
-        onPageChange={this.onPageChange}
+        onPageChange={this._onPageChange}
         styles={{
           previousNextPage: {
             color: '#0078d4',
@@ -55,7 +55,7 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
     );
   }
 
-  private onPageChange = (index: number): void => {
+  private _onPageChange = (index: number): void => {
     this.setState({
       selectedPageIndex: index,
     });

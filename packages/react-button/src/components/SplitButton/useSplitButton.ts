@@ -1,48 +1,43 @@
 import * as React from 'react';
-import { mergeSlotProp, ComposePreparedOptions } from '@fluentui/react-compose';
-import { useMenuButton } from '../MenuButton/useMenuButton';
+import { resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next/index';
+import { menuButtonShorthandProps } from '../MenuButton/useMenuButton';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
+import { useSplitButtonState } from './useSplitButtonState';
+import { renderSplitButton } from './renderSplitButton';
+
+export const splitButtonShorthandProps = [...menuButtonShorthandProps, 'button', 'divider', 'loader', 'menuButton'];
 
 /**
- * The useSplitButton hook processes the SplitButton component props and returns state.
- * @param props - SplitButton props to derive state from.
+ * Redefine the component factory, reusing button factory.
  */
 export const useSplitButton = (
   props: SplitButtonProps,
   ref: React.Ref<HTMLElement>,
-  options: ComposePreparedOptions,
-): SplitButtonState => {
-  const { button, menuButton } = props;
-  const { onClick, ...menuButtonProps } = props;
+  defaultProps?: SplitButtonProps,
+) => {
+  // Note: because menu button's template and slots are different, we can't reuse
+  // those, but the useMenuButtonState hook can reuse useButtonState.
+  const state = mergeProps(
+    {
+      ref,
+      as: 'button',
+      button: { as: 'button' },
+      children: { as: 'span' },
+      divider: { as: 'span' },
+      icon: { as: 'span' },
+      loader: { as: 'span' },
+      menu: { as: 'span' },
+      menuButton: { as: 'button' },
+      menuIcon: { as: 'span' },
+    },
+    defaultProps,
+    resolveShorthandProps(props, splitButtonShorthandProps),
+  ) as SplitButtonState;
 
-  const menuButtonState = useMenuButton(menuButtonProps, ref, options);
-  const { expanded, menu, onClick: onMenuButtonClick, onKeyDown, ...rest } = menuButtonState;
+  useSplitButtonState(state);
 
-  const state = {
-    ...rest,
-    'aria-expanded': expanded,
-    expanded,
-    onKeyDown,
-    tabIndex: 0,
-
-    // Button slot props.
-    button: mergeSlotProp(button, {
-      onClick,
-      onKeyDown,
-      tabIndex: -1,
-    }),
-
-    // Menu slot props.
-    menu,
-
-    // Menu button slot props.
-    menuButton: mergeSlotProp(menuButton, {
-      'aria-expanded': expanded,
-      onClick: onMenuButtonClick,
-      onKeyDown,
-      tabIndex: -1,
-    }),
+  return {
+    state,
+    render: renderSplitButton,
   };
-
-  return state;
 };

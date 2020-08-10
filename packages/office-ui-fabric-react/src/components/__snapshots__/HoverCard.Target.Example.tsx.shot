@@ -24,13 +24,18 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
 >
   <p>
     Hover over the 
-    <i>
+    <strong>
       key
-    </i>
+    </strong>
      cell of a row item to see the card or use the keyboard to navigate to it by tabbing to a row and hitting the right arrow key.
   </p>
   <p>
-    When using the keyboard to navigate, open the card with the hotKey and it will automatically focus the first focusable element in the card allowing further navigation inside the card. The hotKey is defined by the hotKey prop and is defined as 'enter' in the following example.
+    When using the keyboard to navigate, open the card with the hotkey and it will automatically focus the first focusable element in the card allowing further navigation inside the card. The hotkey is defined by the
+     
+    <code>
+      openHotKey
+    </code>
+     prop and is defined as 'enter' in the following example.
   </p>
   <div
     className="ms-Viewport"
@@ -499,33 +504,33 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
           role="presentation"
         >
           <div
-            className=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-                {
-                  display: inline-block;
-                  min-height: 1px;
-                  min-width: 100%;
-                }
-            data-focuszone-id="FocusZone2"
-            onBlur={[Function]}
-            onFocus={[Function]}
+            className="ms-SelectionZone"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onDoubleClick={[Function]}
+            onFocusCapture={[Function]}
             onKeyDown={[Function]}
+            onKeyDownCapture={[Function]}
+            onMouseDown={[Function]}
             onMouseDownCapture={[Function]}
+            role="presentation"
           >
             <div
-              className="ms-SelectionZone"
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onDoubleClick={[Function]}
-              onFocusCapture={[Function]}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+                  {
+                    display: inline-block;
+                    min-height: 1px;
+                    min-width: 100%;
+                  }
+              data-focuszone-id="FocusZone2"
+              onBlur={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
-              onKeyDownCapture={[Function]}
-              onMouseDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <div
                 className="ms-List"

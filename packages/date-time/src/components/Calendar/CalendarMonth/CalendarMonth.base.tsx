@@ -16,7 +16,7 @@ import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calend
 import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
-import { usePrevious } from '@uifabric/react-hooks';
+import { usePrevious, useConstCallback } from '@uifabric/react-hooks';
 
 const MONTHS_PER_ROW = 4;
 
@@ -46,13 +46,13 @@ function useFocusLogic({ componentRef }: ICalendarMonthProps) {
   const calendarYearRef = React.useRef<ICalendarYear>(null);
   const focusOnUpdate = React.useRef(false);
 
-  const focus = () => {
+  const focus = useConstCallback(() => {
     if (calendarYearRef.current) {
       calendarYearRef.current.focus();
     } else if (navigatedMonthRef.current) {
       navigatedMonthRef.current.focus();
     }
-  };
+  });
 
   React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
 
@@ -176,8 +176,10 @@ export const CalendarMonthBase = React.forwardRef(
           key={'calendarYear'}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
+          // eslint-disable-next-line react/jsx-no-bind
           onSelectYear={onSelectYear}
           navigationIcons={navigationIcons}
+          // eslint-disable-next-line react/jsx-no-bind
           onHeaderSelect={onYearPickerHeaderSelect}
           selectedYear={
             selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined

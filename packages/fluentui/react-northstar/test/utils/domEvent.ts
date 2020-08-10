@@ -86,15 +86,3 @@ export const resize = (node: Element | string, data?: any) => fire(node, 'resize
  * @returns The event
  */
 export const scroll = (node: Element | string, data?: any) => fire(node, 'scroll', data);
-
-export default {
-  fire,
-  click,
-  keyDown,
-  mouseEnter,
-  mouseLeave,
-  mouseOver,
-  mouseUp,
-  resize,
-  scroll,
-};

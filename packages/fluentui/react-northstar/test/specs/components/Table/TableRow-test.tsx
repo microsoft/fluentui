@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
-import TableCell from 'src/components/Table/TableCell';
+import { TableCell } from 'src/components/Table/TableCell';
 
-import TableRow from 'src/components/Table/TableRow';
+import { TableRow } from 'src/components/Table/TableRow';
 
 describe('TableRow', () => {
   isConformant(TableRow, { constructorName: 'TableRow' });

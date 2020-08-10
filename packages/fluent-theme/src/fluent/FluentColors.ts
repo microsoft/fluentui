@@ -1,4 +1,3 @@
-/* tslint:disable:no-any */
 export namespace CommunicationColors {
   export const shade30 = '#004578';
   export const shade20 = '#005a9e';

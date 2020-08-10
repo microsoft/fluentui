@@ -2,13 +2,15 @@ import { ITheme } from 'office-ui-fabric-react';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from '../AzureType';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     icon: {
-      color: semanticColors.primaryButtonBackground,
+      color: extendedSemanticColors.iconButtonFill,
     },
     menuIcon: {
       color: semanticColors.bodyText,
@@ -18,18 +20,56 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
+      paddingLeft: 4,
+      paddingRight: 4,
     },
     rootExpanded: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,
-      color: semanticColors.bodyText,
+      color: semanticColors.buttonTextHovered,
+      selectors: {
+        '.ms-Button-icon': {
+          color: extendedSemanticColors.iconButtonFillHovered,
+        },
+        '.ms-Button-menuIcon': {
+          color: semanticColors.buttonTextHovered,
+        },
+      },
+    },
+    rootExpandedHovered: {
+      backgroundColor: semanticColors.menuItemBackgroundHovered,
+      color: semanticColors.buttonTextHovered,
+      selectors: {
+        '.ms-Button-icon': {
+          color: extendedSemanticColors.iconButtonFillHovered,
+        },
+        '.ms-Button-menuIcon': {
+          color: extendedSemanticColors.buttonTextHovered,
+        },
+      },
     },
     rootHovered: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,
-      color: semanticColors.bodyText,
+      color: semanticColors.buttonTextHovered,
+      selectors: {
+        '.ms-Button-icon': {
+          color: extendedSemanticColors.iconButtonFillHovered,
+        },
+        '.ms-Button-menuIcon': {
+          color: semanticColors.buttonTextHovered,
+        },
+      },
     },
     rootPressed: {
       backgroundColor: semanticColors.menuItemBackgroundPressed,
-      color: semanticColors.bodyText,
+      color: semanticColors.buttonTextHovered,
+      selectors: {
+        '.ms-Button-icon': {
+          color: extendedSemanticColors.iconButtonFillHovered,
+        },
+        '.ms-Button-menuIcon': {
+          color: extendedSemanticColors.buttonTextHovered,
+        },
+      },
     },
     rootChecked: {
       backgroundColor: semanticColors.listItemBackgroundChecked,
@@ -38,6 +78,18 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
     rootDisabled: {
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.disabledBodyText,
+    },
+    rootFocused: {
+      backgroundColor: semanticColors.menuItemBackgroundHovered,
+      color: semanticColors.buttonTextHovered,
+      selectors: {
+        '.ms-Button-icon': {
+          color: extendedSemanticColors.iconButtonFillHovered,
+        },
+        '.ms-Button-menuIcon': {
+          color: semanticColors.buttonTextHovered,
+        },
+      },
     },
     splitButtonMenuButton: {
       backgroundColor: semanticColors.bodyBackground,

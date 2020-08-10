@@ -24,7 +24,7 @@ export interface IMarkdownStyles {
 
 export interface IMarkdownSubComponentStyles {
   // TODO: remove anys
-  // tslint:disable:no-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   header: IStyleFunctionOrObject<IMarkdownHeaderStyleProps, any>;
   paragraph: IStyleFunctionOrObject<IMarkdownParagraphStyleProps, any>;
   code: IStyleFunctionOrObject<IMarkdownCodeStyleProps, any>;

@@ -1,7 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import Checkbox, { CheckboxProps } from '../Checkbox/Checkbox';
-import _FormFieldBase, { FormFieldBaseProps } from './utils/formFieldBase';
+import { Checkbox, CheckboxProps } from '../Checkbox/Checkbox';
+import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormCheckboxOwnProps extends CheckboxProps {}
 type SelectedFormFieldCustomProps = Omit<
@@ -16,28 +16,32 @@ export const formCheckboxClassName = 'ui-form__checkbox';
 /**
  * An FormCheckbox renders a Checkbox wrapped by FormField.
  */
-const FormCheckbox = compose<'div', FormCheckboxProps, FormCheckboxStylesProps, SelectedFormFieldCustomProps, {}>(
-  _FormFieldBase,
-  {
-    className: formCheckboxClassName,
-    displayName: 'FormCheckbox',
-    overrideStyles: true,
-    handledProps: ['label'],
-    slots: {
-      label: () => null,
-      control: Checkbox,
-    },
-    slotProps: ({ label }) => ({
-      control: {
-        label,
-      },
-    }),
+export const FormCheckbox = compose<
+  'div',
+  FormCheckboxProps,
+  FormCheckboxStylesProps,
+  SelectedFormFieldCustomProps,
+  {}
+>(_FormFieldBase, {
+  className: formCheckboxClassName,
+  displayName: 'FormCheckbox',
+  overrideStyles: true,
+  handledProps: ['label'],
+  slots: {
+    label: () => null,
+    control: Checkbox,
   },
-);
+  slotProps: ({ label, errorMessage }) => ({
+    control: {
+      label,
+    },
+    message: {
+      error: !!errorMessage,
+    },
+  }),
+});
 
 FormCheckbox.propTypes = commonPropTypes.createCommon({
   content: false,
   children: false,
 });
-
-export default FormCheckbox;

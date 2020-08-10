@@ -53,7 +53,7 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
     if (hasLoadedTypes && modelRef.current) {
       onChangeRef.current!(modelRef.current.getValue());
     }
-  }, [onChangeRef, hasLoadedTypes, modelRef.current]);
+  }, [onChangeRef, hasLoadedTypes, modelRef]);
 
   return (
     <Editor
@@ -71,7 +71,8 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
   React.useEffect(() => {
     setHasLoadedGlobals(false);
 
-    const win = getWindow() as Window & { [key: string]: any }; // tslint:disable-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const win = getWindow() as Window & { [key: string]: any };
     if (!win.React) {
       win.React = React;
     }
@@ -81,7 +82,7 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
     Promise.all(
       supportedPackages.map(group => {
         if (!win[group.globalName]) {
-          // tslint:disable:no-any
+          /* eslint-disable @typescript-eslint/no-explicit-any */
           return new Promise<any>(resolve => {
             // handle either promise or callback function
             const globalResult = group.loadGlobal(resolve);
@@ -89,7 +90,9 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
               globalResult.then(resolve);
             }
           }).then((globalModule: any) => (win[group.globalName] = globalModule));
-          // tslint:enable:no-any
+          /* eslint-enable @typescript-eslint/no-explicit-any */
+        } else {
+          return undefined;
         }
       }),
     ).then(() => setHasLoadedGlobals(true));

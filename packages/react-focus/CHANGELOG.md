@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 09 Jul 2020 21:59:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jul 2020 21:33:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.12.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.22)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.12.19..@fluentui/react-focus_v7.12.22)
+
+### Patches
+
+- Fix memory leak in FocusZone ([PR #14031](https://github.com/microsoft/fluentui/pull/14031) by mistastn@microsoft.com)
 
 ## [7.12.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.18)
 

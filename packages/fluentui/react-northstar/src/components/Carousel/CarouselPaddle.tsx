@@ -14,23 +14,17 @@ import {
   ContentComponentProps,
 } from '../../utils';
 
-import {
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandValue,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import {
   ComponentWithAs,
   getElementType,
+  useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-import Box, { BoxProps } from '../Box/Box';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface CarouselPaddleProps
   extends UIComponentProps,
@@ -75,9 +69,9 @@ export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
+export const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
   FluentComponentStaticProps<CarouselPaddleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
   setStart();
 
@@ -191,5 +185,3 @@ CarouselPaddle.propTypes = {
 CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 
 CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
-
-export default CarouselPaddle;

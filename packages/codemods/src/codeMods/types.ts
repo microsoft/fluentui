@@ -1,4 +1,4 @@
-import { SourceFile } from 'ts-morph';
+import { SourceFile, JsxExpression, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
 
 export interface CodeModResult {
   success?: boolean;
@@ -26,3 +26,25 @@ export interface CodeMod<T = SourceFile> {
    */
   enabled?: boolean;
 }
+
+/**
+ * Generic map used if developers need to convert values dynamically
+ * rather than statically -- if prop values have a well-defined domain
+ * of values, the developer can provide a mapping of old-to-new values to
+ * fine-tune upgradess. */
+export type ValueMap<T> = {
+  [key: string]: T;
+};
+
+/**
+ * Generic function provided by the utility caller that executes a
+ * transform for a prop's value. This transform takes a node in
+ * the AST and replaces it with a new node, giving the most control
+ * to the developer.
+ * TODO -- Can we limit the damage a dev can potentially do given a malformed transform?
+ */
+export type PropTransform = (
+  node: JsxExpression | JsxOpeningElement | JsxSelfClosingElement,
+  toRename: string,
+  replacementName: string,
+) => void;

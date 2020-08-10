@@ -69,7 +69,7 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
       directionalHintFixed: false,
       items: menuItems,
     }),
-    [isBeakVisible, directionalHint, directionalHintForRTL],
+    [isBeakVisible, directionalHint, directionalHintForRTL, useDirectionalHintForRTL],
   );
 
   return (

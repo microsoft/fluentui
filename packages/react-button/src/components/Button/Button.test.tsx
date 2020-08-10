@@ -3,7 +3,6 @@ import * as path from 'path';
 import { isConformant } from '@fluentui/react-conformance';
 import { Button } from './Button';
 import * as renderer from 'react-test-renderer';
-import { ButtonRef } from './Button.types';
 import { mount, ReactWrapper } from 'enzyme';
 
 describe('Button', () => {
@@ -34,18 +33,13 @@ describe('Button', () => {
 
   it('can be focused', () => {
     const rootRef = React.createRef<HTMLButtonElement>();
-    const componentRef = React.createRef<ButtonRef>();
 
-    wrapper = mount(
-      <Button ref={rootRef} componentRef={componentRef}>
-        Focus me
-      </Button>,
-    );
+    wrapper = mount(<Button ref={rootRef}>Focus me</Button>);
 
     expect(typeof rootRef.current).toEqual('object');
     expect(document.activeElement).not.toEqual(rootRef.current);
 
-    componentRef.current?.focus();
+    rootRef.current?.focus();
 
     expect(document.activeElement).toEqual(rootRef.current);
   });

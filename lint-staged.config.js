@@ -10,16 +10,15 @@ const nonEslintPrettierExtensions = prettierExtensions.filter(ext => !eslintExte
 
 // https://www.npmjs.com/package/lint-staged
 module.exports = {
-  '*.{ts,tsx}': ['prettier --write', 'node ./scripts/lint-staged/tslint'],
+  // Run eslint in fix mode followed by prettier
+  [`*.{${eslintExtensions.join(',')}}`]: ['node ./scripts/lint-staged/eslint', 'prettier --write'],
 
-  '*.{js,jsx,json,scss,css,html,htm,md,yml}': ['prettier --write'],
-
-  // New config
-  // // Run eslint in fix mode followed by prettier
-  // [`*.{${eslintExtensions.join(',')}}`]: ['node ./scripts/lint-staged/eslint', 'prettier --write'],
-
-  // // Run prettier on non-eslintable files (ignores handled by .prettierignore)
-  // [`*.{${nonEslintPrettierExtensions.join(',')}}`]: 'prettier --write',
+  // Run prettier on non-eslintable files (ignores handled by .prettierignore)
+  [`*.{${nonEslintPrettierExtensions.join(',')}}`]: 'prettier --write',
 
   'common/changes/*.json': 'node ./scripts/lint-staged/auto-convert-change-files',
+
+  '**/tslint.json': 'node ./scripts/lint-staged/no-tslint-json',
+
+  '**/package.json': 'node ./scripts/lint-staged/no-tslint-deps',
 };
