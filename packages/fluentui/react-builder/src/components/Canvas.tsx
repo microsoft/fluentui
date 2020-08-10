@@ -43,6 +43,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   renderJSONTreeElement,
   style,
 }) => {
+  const [hideDropSelector, setHideDropSelector] = React.useState(false);
+
   const iframeId = React.useMemo(
     () =>
       `frame-${Math.random()
@@ -66,9 +68,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
   const handleMouseMove = React.useCallback(
     (e: MouseEvent) => {
+      hideDropSelector && setHideDropSelector(false);
       onMouseMove?.(iframeCoordinatesToWindowCoordinates(e));
     },
-    [iframeCoordinatesToWindowCoordinates, onMouseMove],
+    [iframeCoordinatesToWindowCoordinates, onMouseMove, hideDropSelector],
   );
 
   const handleMouseUp = React.useCallback(
@@ -78,9 +81,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       e.preventDefault();
       e.stopPropagation();
 
+      hideDropSelector && setHideDropSelector(false);
       onMouseUp();
     },
-    [onMouseUp],
+    [onMouseUp, hideDropSelector],
   );
 
   const handleSelectComponent = React.useCallback(
@@ -285,12 +289,20 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 jsonTree={jsonTree}
                 mountDocument={document}
                 onDropPositionChange={onDropPositionChange}
+                hideSelector={hideDropSelector}
               />
             )}
 
             <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+              {draggingElement && (
+                <EventListener
+                  type="scroll"
+                  listener={() => !hideDropSelector && setHideDropSelector(true)}
+                  target={document}
+                />
+              )}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
             </Provider>
           </>

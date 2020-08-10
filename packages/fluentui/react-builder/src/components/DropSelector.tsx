@@ -11,6 +11,7 @@ export type DropSelectorProps = {
   filter?;
   jsonTree: JSONTreeElement;
   mountDocument?: Document;
+  hideSelector?: Boolean;
 };
 
 type InElementPosition = 'top' | 'right' | 'bottom' | 'left' | 'center';
@@ -66,6 +67,7 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
   onDropPositionChange,
   mountDocument = isBrowser() ? window.document : null,
   filter = fiberNav => fiberNav,
+  hideSelector = false,
 }) => {
   const selectorRef = React.createRef<HTMLDivElement>();
   const mouseRef = React.createRef<HTMLDivElement>();
@@ -158,32 +160,36 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
 
   return (
     <>
-      <div
-        ref={selectorRef}
-        style={{
-          position: 'fixed',
-          zIndex: 99999999,
-          pointerEvents: 'none',
-          userSelect: 'none',
-          outlineOffset: '-1px',
-        }}
-      />
-      <div
-        ref={mouseRef}
-        style={{
-          position: 'fixed',
-          width: '8px',
-          height: '8px',
-          borderRadius: '50%',
-          border: '2px solid red',
-          margin: '-5px 0 0 -5px',
-          zIndex: 99999999,
-          pointerEvents: 'none',
-          userSelect: 'none',
-        }}
-      />
-      <EventListener listener={handleMouseMove} target={mountDocument.body} type="mousemove" />
-      <EventListener listener={handleMouseLeave} target={mountDocument.body} type="mouseleave" />
+      {!hideSelector && (
+        <>
+          <div
+            ref={selectorRef}
+            style={{
+              position: 'fixed',
+              zIndex: 99999999,
+              pointerEvents: 'none',
+              userSelect: 'none',
+              outlineOffset: '-1px',
+            }}
+          />
+          <div
+            ref={mouseRef}
+            style={{
+              position: 'fixed',
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              border: '2px solid red',
+              margin: '-5px 0 0 -5px',
+              zIndex: 99999999,
+              pointerEvents: 'none',
+              userSelect: 'none',
+            }}
+          />
+          <EventListener listener={handleMouseMove} target={mountDocument.body} type="mousemove" />
+          <EventListener listener={handleMouseLeave} target={mountDocument.body} type="mouseleave" />
+        </>
+      )}
     </>
   );
 };
