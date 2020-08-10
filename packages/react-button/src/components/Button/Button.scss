@@ -200,6 +200,8 @@
   &._fluid {
     width: 100%;
     max-width: 100%;
+
+    --button-pressed-transform: scale(0.98);
   }
 
   &._size_smallest {

@@ -114,6 +114,7 @@ export type ExpandedState = {
     onMenuDismiss?: () => void;
     onKeyDown?: (ev: React.KeyboardEvent) => void;
     'aria-expanded'?: boolean;
+    'aria-haspopup'?: boolean;
     menu: {
         target?: React.Ref<HTMLElement | undefined>;
         onDismiss?: () => void;

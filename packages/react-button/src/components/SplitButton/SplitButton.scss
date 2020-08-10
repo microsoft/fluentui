@@ -32,7 +32,7 @@
   &._fluid {
     > .button {
       flex-grow: 1;
-      text-align: right;
+      justify-content: flex-end;
     }
   }
 
@@ -57,15 +57,18 @@
 
 .button,
 .menuButton {
+  align-items: center;
   background: inherit;
   border: none;
   box-shadow: none;
   color: inherit;
   cursor: pointer;
+  display: flex;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   height: var(--button-height);
+  justify-content: center;
   min-height: var(--button-minHeight);
 
   @include focus-border($thickness: 0);

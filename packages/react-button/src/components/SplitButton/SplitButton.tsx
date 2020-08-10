@@ -11,17 +11,10 @@ import { useSplitButton } from './useSplitButton';
 
 export const useSplitButtonClasses = makeClasses(classes);
 
-const button = (props: React.HTMLAttributes<HTMLButtonElement>) => <button {...props}>{props.children}</button>;
-const divider = (props: React.HTMLAttributes<HTMLButtonElement>) => <span {...props}>{props.children}</span>;
-
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((props, ref) => {
   const { state, render } = useSplitButton(props, ref, {
     menuIcon: { as: ChevronDownIcon },
     menu: { as: ContextualMenu },
-
-    button: { as: button },
-    divider: { as: divider },
-    menuButton: { as: button },
   });
 
   // Styling hooks.

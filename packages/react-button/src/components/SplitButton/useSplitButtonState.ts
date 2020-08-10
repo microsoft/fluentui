@@ -9,20 +9,16 @@ export const useSplitButtonState = (state: SplitButtonState) => {
 
   // It can be expanded.
   useExpanded(state);
-  const { button, expanded, menuButton, onClick: onMenuButtonClick, onKeyDown } = state;
 
-  state.button = {
-    ...button,
-    onClick: onButtonClick,
-    onKeyDown: onKeyDown,
-    tabIndex: -1,
-  };
+  const { expanded, onClick: onMenuButtonClick, onKeyDown } = state;
 
-  state.menuButton = {
-    ...menuButton,
-    'aria-expanded': expanded,
-    onClick: onMenuButtonClick,
-    onKeyDown: state.onKeyDown,
-    tabIndex: -1,
-  };
+  state.onClick = onButtonClick;
+
+  state.button.onClick = onButtonClick;
+  state.button.onKeyDown = onKeyDown;
+
+  state.menuButton['aria-expanded'] = expanded;
+  state.menuButton['aria-haspopup'] = true;
+  state.menuButton.onClick = onMenuButtonClick;
+  state.menuButton.onKeyDown = onKeyDown;
 };
