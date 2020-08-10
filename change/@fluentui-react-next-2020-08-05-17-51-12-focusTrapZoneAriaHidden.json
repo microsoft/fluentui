@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "FocusTrapZone: Adding aria-hidden to bumper elements so that they are not read by screen readers.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-06T00:51:12.447Z"
-}

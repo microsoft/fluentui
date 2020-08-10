@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Lint: update jsx-no-bind settings to ignore native elements",
-  "packageName": "@uifabric/charting",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-08-07T22:55:06.397Z"
-}
