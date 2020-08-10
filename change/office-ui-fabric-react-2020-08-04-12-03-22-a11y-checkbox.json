@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix hc hover styling for checked checkbox to make checked state more visible on hover",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-04T19:03:22.142Z"
-}

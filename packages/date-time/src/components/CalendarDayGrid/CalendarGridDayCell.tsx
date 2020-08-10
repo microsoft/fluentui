@@ -216,7 +216,6 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         !day.isInBounds && classNames.dayOutsideBounds,
         !day.isInMonth && classNames.dayOutsideNavigatedMonth,
       )}
-      // eslint-disable-next-line react/jsx-no-bind
       ref={(element: HTMLTableCellElement) => {
         customDayCellRef?.(element, day.originalDate, classNames);
         day.setRef(element);

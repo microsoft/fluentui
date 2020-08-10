@@ -13,7 +13,7 @@ export type SkeletonLineStylesProps = Required<Pick<SkeletonLineOwnProps, 'width
 export const skeletonLineClassName = 'ui-skeleton__line';
 
 /**
- * An SkeletonLine represents a text line that will be loaded
+ * A SkeletonLine represents a text line that will be loaded
  */
 export const SkeletonLine = compose<'span', SkeletonLineOwnProps, SkeletonLineStylesProps, BoxProps, BoxStylesProps>(
   Box,

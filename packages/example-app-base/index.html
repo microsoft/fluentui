@@ -22,7 +22,7 @@
       var url = document.location.href;
       var isLocalHost = url.indexOf('localhost') !== -1 || url.indexOf('127.0.0.1') !== -1;
 
-      var isDev = getParameterByName('isDev') === '1';
+      var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
       var minParam = getParameterByName('min');
       var useMinified =
         !isDev && minParam !== '0' && (minParam === '1' || location.pathname === '/fabric-react/master/');

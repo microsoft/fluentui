@@ -11,7 +11,7 @@ const Variations = () => (
     />
     <ComponentExample
       title="Components"
-      description="There's different components' skeleton boilerplate"
+      description="Some components has its' own pre defined skeleton"
       examplePath="components/Skeleton/Variations/SkeletonExampleComponents"
     />
   </ExampleSection>

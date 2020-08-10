@@ -14,7 +14,7 @@ export type SkeletonShapeStylesProps = Required<Pick<SkeletonShapeOwnProps, 'wid
 export const skeletonShapeClassName = 'ui-skeleton__shape';
 
 /**
- * An SkeletonShape represents a shape (Image/Button/etc...) that will be loaded
+ * A SkeletonShape represents a shape (Image/Button/etc...) that will be loaded
  */
 export const SkeletonShape = compose<'span', SkeletonShapeOwnProps, SkeletonShapeStylesProps, BoxProps, BoxStylesProps>(
   Box,
