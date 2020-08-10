@@ -45,5 +45,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
     linkContentMenu: 'linkContentMenu',
+    textWrapper: 'textWrapper',
   };
 }
