@@ -108,17 +108,13 @@ const SelectedPersonaInner = React.memo(
 
     const events = new EventGroup(this);
 
-    function createDragDropSubscription() {
-      return dragDropHelper?.subscribe(root as HTMLElement, events, dragDropOptions);
-    }
-
     React.useEffect(() => {
-      setDragDropSubscription(createDragDropSubscription());
+      setDragDropSubscription(dragDropHelper?.subscribe(root as HTMLElement, events, dragDropOptions));
       return () => {
         dragDropSubscription?.dispose();
         setDragDropSubscription(undefined);
       };
-    }, [dragDropHelper, dragDropSubscription, createDragDropSubscription]);
+    }, [dragDropHelper, dragDropSubscription, root, events, dragDropOptions]);
 
     React.useEffect(() => {
       setIsDraggable(dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrop) : undefined);
