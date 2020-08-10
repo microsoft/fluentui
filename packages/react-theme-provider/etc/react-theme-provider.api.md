@@ -4,6 +4,8 @@
 
 ```ts
 
+import { IPartialTheme } from '@uifabric/styling';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import * as React from 'react';
 
 // @public
@@ -44,7 +46,7 @@ export type FontTokens = Partial<{
 export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
 
 // @public
-export const mergeThemes: (...themes: (Theme | PartialTheme | undefined)[]) => Theme;
+export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
 
 // @public
 export interface PartialTheme extends RecursivePartial<Theme> {
@@ -70,14 +72,17 @@ export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
 }
 
 // @public
-export interface Theme {
+export interface Theme extends IPartialTheme {
     // (undocumented)
-    stylesheets: string[];
-    // (undocumented)
-    tokens: {
-        body: ColorTokenSet & TokenSetType;
-        [key: string]: TokenSetType;
+    components?: {
+        [componentName: string]: {
+            styles?: IStyleFunctionOrObject<any, any>;
+        };
     };
+    // (undocumented)
+    stylesheets?: string[];
+    // (undocumented)
+    tokens?: Tokens;
 }
 
 // @public
@@ -86,6 +91,14 @@ export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps &
 // @public
 export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
     theme?: PartialTheme | Theme;
+}
+
+// @public (undocumented)
+export interface Tokens {
+    // (undocumented)
+    [key: string]: TokenSetType;
+    // (undocumented)
+    body: ColorTokenSet & TokenSetType;
 }
 
 // @public

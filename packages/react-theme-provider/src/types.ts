@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IPartialTheme } from '@uifabric/styling';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 /**
  * A baseline set of color plates.
@@ -71,11 +71,14 @@ export type RecursivePartial<T> = {
     : T[P];
 };
 
-export type Tokens = {
-  body: ColorPlateSet & TokenSetType;
+export interface Tokens {
+  body: ColorTokenSet & TokenSetType;
   [key: string]: TokenSetType;
-};
+}
 
+/**
+ * A prepared (fully expanded) theme object.
+ */
 export interface Theme extends IPartialTheme {
   components?: {
     [componentName: string]: {
@@ -84,10 +87,8 @@ export interface Theme extends IPartialTheme {
     };
   };
 
-  /** @internal */
   tokens?: Tokens;
 
-  /** @internal */
   stylesheets?: string[];
 }
 

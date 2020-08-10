@@ -27,7 +27,22 @@ You can also customize your own theme:
 ```tsx
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 
-export const theme: Theme = { palette: { themePrimary: 'purple' } };
+export const theme: Theme = {
+  /* Provide any stylesheets which should come along with the theme */
+  stylesheets: [
+    '.className { ... }',
+    ...
+  ],
+
+  /* Provide standard fluent tokens here. */
+  tokens: {
+    body: {
+      fill: '#fafafa',
+      text: '#333'
+    }
+  }
+};
+
 export const App = () => (
   <ThemeProvider theme={theme}>
     <>...app</>
