@@ -103,7 +103,12 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         ...unhandledProps,
       })}
     >
-      {createShorthand(Text, label, { defaultProps: () => getA11yProps('label', {}) })}
+      {createShorthand(Text, label, {
+        defaultProps: () =>
+          getA11yProps('label', {
+            weight: 'bold',
+          }),
+      })}
 
       {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
         defaultProps: () =>
