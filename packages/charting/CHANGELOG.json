@@ -2,6 +2,42 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/charting_v3.0.5",
+      "version": "3.0.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@uifabric/charting_v3.0.2",
+      "version": "3.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "yMax and yMin values added to prop types of chart helper",
+            "author": "v-jasha@microsoft.com",
+            "commit": "da829ab7a2d703e9fa792c2eebced2bc459fcf8f",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Grouped vertical bar chart refresh issue in admin controls resoled",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f8cf97b6c6ea125dfe6e98c92c716419a14db49d",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Aug 2020 12:42:32 GMT",
       "tag": "@uifabric/charting_v3.0.0",
       "version": "3.0.0",

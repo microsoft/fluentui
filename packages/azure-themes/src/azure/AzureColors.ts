@@ -2,6 +2,7 @@ import { IAzureSemanticColors } from './IAzureSemanticColors';
 
 export namespace BaseColors {
   export const BLUE_CCE1FF = '#cce1ff';
+  export const BLUE_DEECF9 = '#deecf9';
   export const BLUE_0000CD = '#0000cd';
   export const BLUE_00E8E8 = '#00e8e8';
   export const BLUE_00FFFF = '#00ffff';
@@ -14,6 +15,7 @@ export namespace BaseColors {
   export const BLUE_012B65 = '#012b65';
   export const BLUE_106EBE = '#106EBE';
   export const BLUE_02FEFF = '#02FEFF';
+  export const BLUE_043862 = '#043862';
   export const BLUE_6CA9FE = '#6ca9fe';
   export const BLUE_6CB8F6 = '#6cb8f6';
   export const BLUE_4894FE = '#4894fe';
@@ -267,6 +269,16 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   tabs: {
     hover: BaseColors.GRAY_252423,
   },
+  teachingBubble: {
+    rest: {
+      background: BaseColors.BLUE_2899F5,
+      text: BaseColors.BLACK,
+      secondaryBackround: BaseColors.BLACK,
+    },
+    hover: {
+      primaryButtonBackground: BaseColors.BLUE_043862,
+    },
+  },
 };
 
 export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
@@ -414,6 +426,16 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   tabs: {
     hover: BaseColors.GRAY_252423,
+  },
+  teachingBubble: {
+    rest: {
+      background: BaseColors.BLUE_00FFFF,
+      text: BaseColors.BLACK,
+      secondaryBackround: BaseColors.BLACK,
+    },
+    hover: {
+      primaryButtonBackground: BaseColors.BLUE_043862,
+    },
   },
 };
 
@@ -563,6 +585,16 @@ export const LightSemanticColors: IAzureSemanticColors = {
   tabs: {
     hover: BaseColors.GRAY_F3F2F1,
   },
+  teachingBubble: {
+    rest: {
+      background: BaseColors.BLUE_0078D4,
+      text: BaseColors.WHITE,
+      secondaryBackround: BaseColors.WHITE,
+    },
+    hover: {
+      primaryButtonBackground: BaseColors.BLUE_DEECF9,
+    },
+  },
 };
 
 export const HighContrastLightSemanticColors: IAzureSemanticColors = {
@@ -710,5 +742,15 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   tabs: {
     hover: BaseColors.GRAY_F3F2F1,
+  },
+  teachingBubble: {
+    rest: {
+      background: BaseColors.PURPLE_800080,
+      text: BaseColors.WHITE,
+      secondaryBackround: BaseColors.WHITE,
+    },
+    hover: {
+      primaryButtonBackground: BaseColors.BLUE_DEECF9,
+    },
   },
 };

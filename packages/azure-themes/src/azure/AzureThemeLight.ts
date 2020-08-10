@@ -67,7 +67,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   primaryButtonBackgroundHovered: LightSemanticColors.primaryButton.hover.background,
   primaryButtonBackgroundPressed: LightSemanticColors.primaryButton.pressed.background,
   primaryButtonBorder: LightSemanticColors.primaryButton.rest.border,
-  primaryButtonBorderDisabled: LightSemanticColors.primaryButton.disabled.border, //
+  primaryButtonBorderDisabled: LightSemanticColors.primaryButton.disabled.border,
   primaryButtonText: LightSemanticColors.primaryButton.rest.text,
   primaryButtonTextDisabled: LightSemanticColors.disabledButton.text,
   primaryButtonTextFocused: LightSemanticColors.primaryButton.focus.text,
@@ -105,6 +105,10 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   statusWarningBackground: LightSemanticColors.statusBar.warning,
   statusWarningText: LightSemanticColors.text.body,
   statusWarningIcon: CommonSemanticColors.icons.warning,
+  teachingBubbleBackground: LightSemanticColors.teachingBubble.rest.background,
+  teachingBubblePrimaryButtonHover: LightSemanticColors.teachingBubble.hover.primaryButtonBackground,
+  teachingBubbleSecondaryBackground: LightSemanticColors.teachingBubble.rest.secondaryBackround,
+  teachingBubbleText: LightSemanticColors.teachingBubble.rest.text,
   textFieldBorderDisabled: LightSemanticColors.disabledButton.background,
 
   // temporary work around for high contrast themes

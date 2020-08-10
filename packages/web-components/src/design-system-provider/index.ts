@@ -18,7 +18,7 @@ import { DesignSystemProviderStyles as styles } from './design-system-provider.s
 const color = new CSSCustomPropertyBehavior(
   'neutral-foreground-rest',
   neutralForegroundRest,
-  (el: FASTDesignSystemProvider) => el,
+  (el: FluentDesignSystemProvider) => el,
 );
 
 const backgroundStyles = css`
@@ -29,20 +29,20 @@ const backgroundStyles = css`
 `.withBehaviors(color);
 
 /**
- * The FAST DesignSystemProvider Element. Implements {@link @microsoft/fast-foundation#DesignSystemProvider},
+ * The Fluent DesignSystemProvider Element. Implements {@link @microsoft/fast-foundation#DesignSystemProvider},
  * {@link @microsoft/fast-foundation#DesignSystemProviderTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-design-system-provider\>
+ * HTML Element: \<fluent-design-system-provider\>
  */
 @designSystemProvider({
-  name: 'fast-design-system-provider',
+  name: 'fluent-design-system-provider',
   template,
   styles,
 })
-export class FASTDesignSystemProvider extends DesignSystemProvider
+export class FluentDesignSystemProvider extends DesignSystemProvider
   implements
     Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'> {
   /**
