@@ -41,6 +41,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
 
   const handleMove = React.useCallback(
     e => {
+      console.log('HANDLE MOVE');
       onMove?.(e);
     },
     [onMove],
@@ -92,10 +93,10 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         border: '1px solid #ffc65ccc',
         color: '#444',
         zIndex: 99999998,
-        pointerEvents: 'none',
         userSelect: 'none',
       }}
     >
+      <div style={{ width: '100%', height: '100%' }} onMouseDown={handleMove} />
       <div
         style={{
           position: 'absolute',
