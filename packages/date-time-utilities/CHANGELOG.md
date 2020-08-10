@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.4.1)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v7.4.0..@fluentui/date-time-utilities_v7.4.1)
+
+### Patches
+
+- date time utilities unit tests were timezone dependent, because the start date was right on the border between two months and when getting run locally the dates convert to local time zone. changing initial date fixes it ([PR #14395](https://github.com/microsoft/fluentui/pull/14395) by lorejoh12@gmail.com)
 
 ## [7.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v7.4.0)
 

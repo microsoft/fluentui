@@ -2,6 +2,35 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.80",
+      "version": "8.0.0-alpha.80",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "FocusTrapZone: Adding aria-hidden to bumper elements so that they are not read by screen readers.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e4928eb34675f5332995f886267f682cb7d5a34f",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update Dropdown HC styling",
+            "author": "ololubek@microsoft.com",
+            "commit": "71d0f8fe22cd5af791702c327fc58368be3c25ba",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 22:49:13 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.78",
       "version": "8.0.0-alpha.78",

@@ -7,13 +7,17 @@ import {
   AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from '../CalendarDayGrid/CalendarDayGrid.types';
+import {
+  ICalendarDayGridProps,
+  ICalendarDayGridStyleProps,
+  ICalendarDayGridStyles,
+} from '../CalendarDayGrid/CalendarDayGrid.types';
 
 export interface IWeeklyDayPicker {
   focus(): void;
 }
 
-export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
+export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Partial<ICalendarDayGridProps> {
   /**
    * Optional callback to access the IWeeklyDayPicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

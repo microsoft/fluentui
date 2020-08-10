@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "useMergedRefs - adjusting typing to allow undefined refs.",
-  "packageName": "@uifabric/react-hooks",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-31T03:12:21.546Z"
-}
