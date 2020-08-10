@@ -150,31 +150,21 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               // We need to measure nodes without our style overrides applied.
               // Remove our attribute used in our debug style selector.
               element.removeAttribute('data-builder-id');
-              const { width, height } = element.getBoundingClientRect();
               const { marginTop, marginRight, marginBottom, marginLeft } = iframeWindow.getComputedStyle(element);
               element.setAttribute('data-builder-id', builderId);
 
-              const hasNoWidth = width === 0;
-              const hasNoHeight = height === 0;
               const hasNoChildren = element.childElementCount === 0;
               const hasManyChildren = element.childElementCount > 1;
-              const isEmptyFlex = hasNoChildren && element.classList.contains('ui-flex');
               const properties = [
-                isEmptyFlex &&
-                  `padding-left: calc(${debugSize} * 2);\n  padding-right: calc(${debugSize} * 2);\n
-                padding-top: calc(${debugSize} * 2);\n  padding-bottom: calc(${debugSize} * 2);`,
                 hasNoChildren &&
-                  hasNoWidth &&
-                  `padding-left: calc(${debugSize} * 2);\n  padding-right: calc(${debugSize} * 2);`,
-                hasNoChildren &&
-                  hasNoHeight &&
-                  `padding-top: calc(${debugSize} * 2);\n  padding-bottom: calc(${debugSize} * 2);`,
+                  `height: 0px;
+                  padding-left: calc(${debugSize} * 2);\n  padding-right: calc(${debugSize} * 2);
+                  padding-top: calc(${debugSize} * 2);\n  padding-bottom: calc(${debugSize} * 2);`,
                 hasManyChildren && `padding: ${debugSize};`,
                 marginTop === '0px' ? `margin-top: ${debugSize};` : `margin-top: ${marginTop};`,
                 marginRight === '0px' ? `margin-right: ${debugSize};` : `margin-right: ${marginRight};`,
                 marginBottom === '0px' ? `margin-bottom: ${debugSize};` : `margin-bottom: ${marginBottom};`,
                 marginLeft === '0px' ? `margin-left: ${debugSize};` : `margin-left: ${marginLeft};`,
-                isEmptyFlex && 'height: 0px;',
               ]
                 .filter(Boolean)
                 .join('\n');
