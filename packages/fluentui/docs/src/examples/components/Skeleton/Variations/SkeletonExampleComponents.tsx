@@ -7,13 +7,18 @@ const SkeletonExampleComponents = () => (
       Button
     </Text>
     <Skeleton>
-      <Flex gap="gap.medium">
-        <Skeleton.Button />
-        <Skeleton.Button size="small" />
-        <Skeleton.Button circular />
-        <Skeleton.Button circular size="small" />
-        <Skeleton.Button iconOnly />
-        <Skeleton.Button iconOnly size="small" />
+      <Flex gap="gap.medium" column>
+        <Flex gap="gap.medium">
+          <Skeleton.Button />
+          <Skeleton.Button size="small" />
+          <Skeleton.Button circular />
+          <Skeleton.Button circular size="small" />
+          <Skeleton.Button iconOnly />
+          <Skeleton.Button iconOnly size="small" />
+        </Flex>
+        <div>
+          <Skeleton.Button fluid />
+        </div>
       </Flex>
     </Skeleton>
   </Flex>
