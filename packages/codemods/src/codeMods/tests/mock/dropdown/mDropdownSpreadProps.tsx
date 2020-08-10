@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable prefer-const */
 import * as React from 'react';
 import { Dropdown, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 
