@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Adding null check in mergeProps.",
+  "packageName": "@fluentui/react-compose",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-10T22:30:55.881Z"
+}
