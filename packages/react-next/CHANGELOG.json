@@ -2,6 +2,127 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.80",
+      "version": "8.0.0-alpha.80",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "FocusTrapZone: Adding aria-hidden to bumper elements so that they are not read by screen readers.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e4928eb34675f5332995f886267f682cb7d5a34f",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update Dropdown HC styling",
+            "author": "ololubek@microsoft.com",
+            "commit": "71d0f8fe22cd5af791702c327fc58368be3c25ba",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 22:49:13 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.78",
+      "version": "8.0.0-alpha.78",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Dropdown: Improving multiselect dropdown screen reader behavior.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0c8f5780b187c3f533a179c79221d7ade32e05b9",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.76",
+      "version": "8.0.0-alpha.76",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Toggle: Fix thumb border-width style",
+            "author": "ololubek@microsoft.com",
+            "commit": "c7ffce2b0c530f073531a1989f28e9caa2163155",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Migrate Coachmark and associated components to function components",
+            "author": "miclo@microsoft.com",
+            "commit": "3ac63363452364787abdcb0f59f17ed51ccc9088",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.75",
+      "version": "8.0.0-alpha.75",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Toggle: fix pill HC style when selected",
+            "author": "ololubek@microsoft.com",
+            "commit": "da3b655b635160de2f8a31d93f0d2780b26831a4",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Update HC hover styling to make checked state more apparent",
+            "author": "ololubek@microsoft.com",
+            "commit": "588aa8f8c6efac2dfe5d451241d7609e7add4153",
+            "package": "@fluentui/react-next"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add ways to test with strict mode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.74",
+      "version": "8.0.0-alpha.74",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Migrate Callout to function component",
+            "author": "miclo@microsoft.com",
+            "commit": "373bd784f97799e19de88005bd6254467f52fe2b",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "Moving ChoiceGroup to react-next, in preparation for converting to a function component.",
+            "author": "czearing@outlook.com",
+            "commit": "358fae3dc06eaec001254efc993ade6cb8a8fa46",
+            "package": "@fluentui/react-next"
+          },
+          {
+            "comment": "update hc styling for Dropdown and ComboBox items to remove noisy borders",
+            "author": "ololubek@microsoft.com",
+            "commit": "4d82fc74127e0d905735b1755fb525a49bea9478",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Aug 2020 12:45:42 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.73",
       "version": "8.0.0-alpha.73",

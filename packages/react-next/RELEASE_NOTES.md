@@ -2,6 +2,11 @@
 
 ## Breaking changes
 
+### Beak
+
+- Removed empty `IBeak` interface
+- Removed `componentRef` prop
+
 ### SpinButton
 
 - Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with
@@ -15,6 +20,10 @@
 - Removed `checkmarkIconProps` prop.
 - Deprecated `onRenderLabel`.
 - Added `label`/`checkmark` slot props.
+
+### Coachmark
+
+- Removed `isBeaconAnimating` and `isMeasured` style props
 
 ### Pivot
 
