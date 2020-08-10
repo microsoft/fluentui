@@ -191,7 +191,7 @@ export const Accordion: ComponentWithAs<'dl', AccordionProps> &
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: panels?.length }, () => React.createRef()),
-    // As we are using "panels.length" it's fine to have dependency on them
+    // As we are using "panels.length" it's fine to have dependency on them.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [panels?.length],
   );
