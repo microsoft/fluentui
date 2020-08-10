@@ -1307,10 +1307,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     // (undocumented)
     getStartItemIndexInView(): number;
     // (undocumented)
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
-    // (undocumented)
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
@@ -2399,8 +2395,10 @@ export interface ICoachmarkStyleProps {
     entityHostHeight?: string;
     entityHostWidth?: string;
     height?: string;
+    // @deprecated
     isBeaconAnimating: boolean;
     isCollapsed: boolean;
+    // @deprecated
     isMeasured: boolean;
     isMeasuring: boolean;
     theme?: ITheme;
@@ -4788,6 +4786,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
     }[];
+    focusZoneProps?: IFocusZoneProps;
     getGroupHeight?: (group: IGroup, groupIndex: number) => number;
     groupProps?: IGroupRenderProps;
     groups?: IGroup[];
@@ -8128,9 +8127,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
     // (undocumented)
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
+    readonly pageRefs: Readonly<Record<string, unknown>>;
     // (undocumented)
     render(): JSX.Element | null;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
@@ -9437,15 +9434,6 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: {
-        hasCondensedHeadline: boolean;
-        imageProps: {
-            imageFit: ImageFit;
-            width: number;
-            height: number;
-        };
-    };
     // (undocumented)
     focus(): void;
     // (undocumented)

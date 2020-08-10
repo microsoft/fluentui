@@ -1,0 +1,3 @@
+- Use when the options are numbers that have fixed steps, like 10, 20, 30. Use a Slider component instead.
+- Use if there are more than 7 options, use a Dropdown instead.
+- Nest with other ChoiceGroup or CheckBoxes. If possible, keep all the options at the same level.

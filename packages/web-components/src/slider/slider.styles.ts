@@ -69,19 +69,19 @@ export const SliderStyles = css`
         transform: translateY(calc(var(--thumb-translate) * 1px));
     }
     :host(.horizontal) {
-        min-width: calc(var(--design-unit) * 60px);
+        min-width: calc(var(--thumb-size) * 1px);
     }
     :host(.horizontal) .track {
         right: calc(var(--track-overhang) * 1px);
         left: calc(var(--track-overhang) * 1px);
         align-self: start;
-        margin-top: calc((var(--design-unit) + 2) * 1px);
+        margin-top: calc((var(--design-unit) + calc(var(--density) + 2)) * 1px);
         height: calc(var(--track-width) * 1px);
     }
     :host(.vertical) .track {
         top: calc(var(--track-overhang) * 1px);
         bottom: calc(var(--track-overhang) * 1px);
-        margin-left: calc((var(--design-unit) + 2) * 1px);
+        margin-left: calc((var(--design-unit) + calc(var(--density) + 2)) * 1px);
         width: calc(var(--track-width) * 1px);
         height: 100%;
     }

@@ -3,17 +3,23 @@ import { Card, CardTemplate as template } from '@microsoft/fast-foundation';
 import { CardStyles as styles } from './card.styles';
 
 /**
- * The FAST Card Element. Implements {@link @microsoft/fast-foundation#Card},
+ * The Fluent Card Element. Implements {@link @microsoft/fast-foundation#Card},
  * {@link @microsoft/fast-foundation#CardTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-card\>
+ * HTML Element: \<fluent-card\>
  */
 @customElement({
-  name: 'fast-card',
+  name: 'fluent-card',
   template,
   styles,
 })
-export class FASTCard extends Card {}
+export class FluentCard extends Card {}
+
+/**
+ * Styles for Card
+ * @public
+ */
+export const CardStyles = styles;

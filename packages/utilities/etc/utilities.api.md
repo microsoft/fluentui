@@ -330,7 +330,7 @@ export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLE
 export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
-export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: keyof React.ReactHTML, props: {}, excludedPropNames?: string[]): TAttributes;
+export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
@@ -975,6 +975,9 @@ export function nullRender(): JSX.Element | null;
 export const olProperties: Record<string, number>;
 
 export { Omit }
+
+// @public
+export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
 
 // @public (undocumented)
 export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;

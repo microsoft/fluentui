@@ -115,6 +115,7 @@ const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 export class GroupedListSection extends React.Component<IGroupedListSectionProps, IGroupedListSectionState> {
   private _root = React.createRef<HTMLDivElement>();
   private _list = React.createRef<List>();
+  private _subGroupRefs: Record<string, GroupedListSection | null> = {};
   private _id: string;
   private _events: EventGroup;
 
@@ -286,7 +287,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         const subGroupCount = group.children.length;
 
         for (let i = 0; i < subGroupCount; i++) {
-          const subGroup = this._list.current.refs['subGroup_' + String(i)] as GroupedListSection;
+          const subGroup = this._list.current.pageRefs['subGroup_' + String(i)] as GroupedListSection;
 
           if (subGroup) {
             subGroup.forceListUpdate();
@@ -294,8 +295,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         }
       }
     } else {
-      // eslint-disable-next-line deprecation/deprecation, react/no-string-refs
-      const subGroup = this.refs['subGroup_' + String(0)] as GroupedListSection;
+      const subGroup = this._subGroupRefs['subGroup_' + String(0)];
 
       if (subGroup) {
         subGroup.forceListUpdate();
@@ -384,7 +384,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
       <GroupedListSection
-        ref={'subGroup_' + subGroupIndex}
+        ref={ref => (this._subGroupRefs['subGroup_' + subGroupIndex] = ref)}
         key={this._getGroupKey(subGroup, subGroupIndex)}
         dragDropEvents={dragDropEvents}
         dragDropHelper={dragDropHelper}

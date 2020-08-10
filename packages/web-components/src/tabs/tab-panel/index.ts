@@ -3,17 +3,23 @@ import { TabPanel, TabPanelTemplate as template } from '@microsoft/fast-foundati
 import { TabPanelStyles as styles } from './tab-panel.styles';
 
 /**
- * The FAST Tab Panel Custom Element. Implements {@link @microsoft/fast-foundation#TabPanel},
+ * The Fluent Tab Panel Custom Element. Implements {@link @microsoft/fast-foundation#TabPanel},
  * {@link @microsoft/fast-foundation#TabPanelTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-tab-panel\>
+ * HTML Element: \<fluent-tab-panel\>
  */
 @customElement({
-  name: 'fast-tab-panel',
+  name: 'fluent-tab-panel',
   template,
   styles,
 })
-export class FASTTabPanel extends TabPanel {}
+export class FluentTabPanel extends TabPanel {}
+
+/**
+ * Styles for TabPanel
+ * @public
+ */
+export const TabPanelStyles = styles;

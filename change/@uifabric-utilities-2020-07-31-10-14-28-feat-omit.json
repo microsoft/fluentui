@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding omit utility as a tiny helper for cloning an object but omitting a few values. This is significantly faster than object spreading or using reduce.",
-  "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-31T17:14:28.977Z"
-}

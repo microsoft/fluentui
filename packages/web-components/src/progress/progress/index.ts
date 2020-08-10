@@ -3,17 +3,23 @@ import { BaseProgress, ProgressTemplate as template } from '@microsoft/fast-foun
 import { ProgressStyles as styles } from './progress.styles';
 
 /**
- * The FAST Progress Element. Implements {@link @microsoft/fast-foundation#BaseProgress},
+ * The Fluent Progress Element. Implements {@link @microsoft/fast-foundation#BaseProgress},
  * {@link @microsoft/fast-foundation#ProgressTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-progress\>
+ * HTML Element: \<fluent-progress\>
  */
 @customElement({
-  name: 'fast-progress',
+  name: 'fluent-progress',
   template,
   styles,
 })
-export class FASTProgress extends BaseProgress {}
+export class FluentProgress extends BaseProgress {}
+
+/**
+ * Styles for Progress
+ * @public
+ */
+export const ProgressStyles = styles;

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use useWarnings hook",
-  "packageName": "@fluentui/react-next",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-30T16:25:12.663Z"
-}

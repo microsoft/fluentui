@@ -32,7 +32,7 @@ Array [
             border-color: #005a9e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            background: Window;
+            background: Highlight;
             border-color: Highlight;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
@@ -45,7 +45,7 @@ Array [
             color: Window;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
+            color: Window;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
@@ -799,7 +799,6 @@ Array [
               width: 100%;
             }
             @media screen and (-ms-high-contrast: active){&:focus:after {
-              border-color: Highlight;
               color: Highlight;
             }
             &:active .ms-Dropdown-title {

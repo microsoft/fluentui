@@ -1,8 +1,26 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Tue, 21 Jul 2020 12:43:08 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.53.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.3)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.2..@fluentui/eslint-plugin_v0.53.3)
+
+### Patches
+
+- Lint: update jsx-no-bind settings to ignore native elements ([PR #14416](https://github.com/microsoft/fluentui/pull/14416) by elcraig@microsoft.com)
+
+## [0.53.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.2)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.1..@fluentui/eslint-plugin_v0.53.2)
+
+### Patches
+
+- Add testUtilities.{ts,tsx} to list of test files ([PR #14263](https://github.com/microsoft/fluentui/pull/14263) by elcraig@microsoft.com)
 
 ## [0.53.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.1)
 

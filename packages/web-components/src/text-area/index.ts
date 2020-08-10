@@ -9,22 +9,22 @@ import { TextAreaStyles as styles } from './text-area.styles';
 export type TextAreaAppearance = 'filled' | 'outline';
 
 /**
- * The FAST Text Area Custom Element. Implements {@link @microsoft/fast-foundation#TextArea},
+ * The Fluent Text Area Custom Element. Implements {@link @microsoft/fast-foundation#TextArea},
  * {@link @microsoft/fast-foundation#TextAreaTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-text-area\>
+ * HTML Element: \<fluent-text-area\>
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */
 @customElement({
-  name: 'fast-text-area',
+  name: 'fluent-text-area',
   template,
   styles,
 })
-export class FASTTextArea extends TextArea {
+export class FluentTextArea extends TextArea {
   /**
    * The appearance of the element.
    *
@@ -56,3 +56,9 @@ export class FASTTextArea extends TextArea {
     }
   }
 }
+
+/**
+ * Styles for TextArea
+ * @public
+ */
+export const TextAreaStyles = styles;

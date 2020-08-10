@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update snapshots",
-  "packageName": "@fluentui/react-tabs",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-29T21:31:10.798Z"
-}

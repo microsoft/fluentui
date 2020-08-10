@@ -68,6 +68,7 @@ const menuItems: IContextualMenuItem[] = [
     href: 'https://bing.com',
     text: 'New',
     target: '_blank',
+    ariaLabel: 'New. Press enter or right arrow keys to open submenu.',
   },
   {
     key: 'share',
@@ -102,6 +103,7 @@ const menuItems: IContextualMenuItem[] = [
       ],
     },
     text: 'Share',
+    ariaLabel: 'Share. Press enter, space or right arrow keys to open submenu.',
   },
   {
     key: 'shareSplit',
@@ -138,5 +140,6 @@ const menuItems: IContextualMenuItem[] = [
       ],
     },
     text: 'Share w/ Split',
+    ariaLabel: 'Share w/ Split. Press enter or space keys to trigger action. Press right arrow key to open submenu.',
   },
 ];

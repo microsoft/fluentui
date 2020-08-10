@@ -3,17 +3,23 @@ import { SliderLabel, SliderLabelTemplate as template } from '@microsoft/fast-fo
 import { SliderLabelStyles as styles } from './slider-label.styles';
 
 /**
- * The FAST Slider Label Custom Element. Implements {@link @microsoft/fast-foundation#SliderLabel},
+ * The Fluent Slider Label Custom Element. Implements {@link @microsoft/fast-foundation#SliderLabel},
  * {@link @microsoft/fast-foundation#SliderLabelTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-slider-label\>
+ * HTML Element: \<fluent-slider-label\>
  */
 @customElement({
-  name: 'fast-slider-label',
+  name: 'fluent-slider-label',
   template,
   styles,
 })
-export class FASTSliderLabel extends SliderLabel {}
+export class FluentSliderLabel extends SliderLabel {}
+
+/**
+ * Styles for SliderLabel
+ * @public
+ */
+export const SliderLabelStyles = styles;

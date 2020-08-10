@@ -10,25 +10,25 @@ import { AnchorStyles as styles } from './anchor.styles';
 export type AnchorAppearance = ButtonAppearance | 'hypertext';
 
 /**
- * The FAST Anchor Element. Implements {@link @microsoft/fast-foundation#Anchor},
+ * The Fluent Anchor Element. Implements {@link @microsoft/fast-foundation#Anchor},
  * {@link @microsoft/fast-foundation#AnchorTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-anchor\>
+ * HTML Element: \<fluent-anchor\>
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */
 @customElement({
-  name: 'fast-anchor',
+  name: 'fluent-anchor',
   template,
   styles,
   shadowOptions: {
     delegatesFocus: true,
   },
 })
-export class FASTAnchor extends Anchor {
+export class FluentAnchor extends Anchor {
   /**
    * The appearance the anchor should have.
    *
@@ -56,3 +56,9 @@ export class FASTAnchor extends Anchor {
     }
   }
 }
+
+/**
+ * Styles for Anchor
+ * @public
+ */
+export const AnchorStyles = styles;

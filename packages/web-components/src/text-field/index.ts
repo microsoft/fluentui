@@ -9,25 +9,25 @@ import { TextFieldStyles as styles } from './text-field.styles';
 export type TextFieldAppearance = 'filled' | 'outline';
 
 /**
- * The FAST Text Field Custom Element. Implements {@link @microsoft/fast-foundation#TextField},
+ * The Fluent Text Field Custom Element. Implements {@link @microsoft/fast-foundation#TextField},
  * {@link @microsoft/fast-foundation#TextFieldTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-text-field\>
+ * HTML Element: \<fluent-text-field\>
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */
 @customElement({
-  name: 'fast-text-field',
+  name: 'fluent-text-field',
   template,
   styles,
   shadowOptions: {
     delegatesFocus: true,
   },
 })
-export class FASTTextField extends TextField {
+export class FluentTextField extends TextField {
   /**
    * The appearance of the element.
    *
@@ -59,3 +59,9 @@ export class FASTTextField extends TextField {
     }
   }
 }
+
+/**
+ * Styles for TextField
+ * @public
+ */
+export const TextFieldStyles = styles;

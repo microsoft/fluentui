@@ -144,4 +144,14 @@ export interface IAzureSemanticColors {
   tabs: {
     hover: string;
   };
+  teachingBubble: {
+    rest: {
+      background: string;
+      text: string;
+      secondaryBackround: string;
+    };
+    hover: {
+      primaryButtonBackground: string;
+    };
+  };
 }

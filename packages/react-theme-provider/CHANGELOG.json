@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding useInlineTokens hook.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jul 2020 12:42:21 GMT",
       "tag": "@fluentui/react-theme-provider_v0.4.0",
       "version": "0.4.0",

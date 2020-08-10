@@ -143,14 +143,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           },
           highContrastItemAndTitleStateMixin,
         ],
-        [HighContrastSelector]: {
-          borderColor: 'Window',
-        },
         [`.${IsFocusVisibleClassName} &:focus:after`]: {
           left: 0,
           top: 0,
           bottom: 0,
           right: 0,
+        },
+        [HighContrastSelector]: {
+          border: 'none',
         },
       },
     };
@@ -174,6 +174,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       selectors: {
         [HighContrastSelector]: {
           color: 'GrayText',
+          border: 'none',
         },
       },
     },
@@ -229,7 +230,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
 
               selectors: {
                 [HighContrastSelector]: {
-                  borderColor: 'Highlight',
                   color: 'Highlight',
                 },
               },
@@ -387,6 +387,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         padding: '0 8px',
         userSelect: 'none',
         textAlign: 'left',
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
     ],
     subComponentStyles: {

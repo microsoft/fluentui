@@ -2,6 +2,57 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.109",
+      "version": "7.12.109",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/example-app-base"
+          },
+          {
+            "comment": "Link: Update to use Text component",
+            "author": "marygans@microsoft.com",
+            "commit": "60bbc7434c612d338197107c29846e0f48115f04",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.106",
+      "version": "7.12.106",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Simplify query params for dev and strict mode testing",
+            "author": "elcraig@microsoft.com",
+            "commit": "8d2a5881fdf52aad5c28af74c33bbf454edccb51",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.105",
+      "version": "7.12.105",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add query param to test with React.StrictMode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jul 2020 12:38:09 GMT",
       "tag": "@uifabric/example-app-base_v7.12.101",
       "version": "7.12.101",
