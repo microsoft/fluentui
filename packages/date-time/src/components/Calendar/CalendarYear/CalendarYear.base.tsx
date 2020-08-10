@@ -346,9 +346,7 @@ const CalendarYearTitle = React.forwardRef(
         <button
           ref={forwardedRef as React.Ref<HTMLButtonElement>}
           className={classNames.currentItemButton}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={onHeaderSelect}
-          // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={onHeaderKeyDown}
           aria-label={ariaLabel}
           role="button"

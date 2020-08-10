@@ -21,24 +21,10 @@ export const LinkPageProps: IDocPageProps = {
           root: {
             selectors: {
               '.ms-Link': {
-                color: theme!.palette.themePrimary,
                 margin: 0,
                 padding: 0,
                 overflow: 'inherit',
                 textOverflow: 'inherit',
-                selectors: {
-                  ':active, :hover, :active:hover': {
-                    color: theme!.palette.themeDarker,
-                  },
-                  ':focus': {
-                    color: theme!.palette.themePrimary,
-                  },
-                },
-              },
-              '.ms-Link.is-disabled': {
-                color: theme!.palette.neutralTertiary,
-                pointerEvents: 'none',
-                cursor: 'default',
               },
             },
           },

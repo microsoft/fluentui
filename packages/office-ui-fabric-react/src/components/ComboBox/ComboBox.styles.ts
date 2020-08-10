@@ -9,6 +9,7 @@ import {
   getPlaceholderStyles,
   hiddenContentStyle,
   getInputFocusStyle,
+  getEdgeChromiumNoHighContrastAdjustSelector,
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
@@ -488,6 +489,12 @@ export const getStyles = memoizeFunction(
           padding: '0 8px',
           userSelect: 'none',
           textAlign: 'left',
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'GrayText',
+            },
+            ...getEdgeChromiumNoHighContrastAdjustSelector(),
+          },
         },
       ],
 

@@ -161,7 +161,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return (
       <div
         id={`d3GroupedChart_${this._uniqLineText}`}
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         className={this._classNames.root}
       >
@@ -169,14 +168,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
           <svg width={svgDimensions.width} height={svgDimensions.height} id={this._uniqLineText}>
             <g
               id="xAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setXAxis(node, x0Axis)}
               className={this._classNames.xAxis}
               transform={`translate(0, ${svgDimensions.height - 35})`}
             />
             <g
               id="yAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               className={this._classNames.yAxis}
               transform={`translate(40, 0)`}
@@ -185,7 +182,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
           </svg>
         </FocusZone>
         <div
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: HTMLDivElement) => (this.legendContainer = e)}
           id={this._uniqLineText}
           className={this._classNames.legendContainer}

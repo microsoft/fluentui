@@ -166,6 +166,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
       className,
       showFullMonth,
       weeksToShow,
+      ...calendarDayGridProps
     } = this.props;
 
     const classNames = getClassNames(styles, {
@@ -183,6 +184,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
       >
         {this._renderPreviousWeekNavigationButton(classNames)}
         <CalendarDayGrid
+          {...calendarDayGridProps}
           styles={styles}
           componentRef={this._dayGrid}
           strings={strings}

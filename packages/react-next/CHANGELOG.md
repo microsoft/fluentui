@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.80)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.78..@fluentui/react-next_v8.0.0-alpha.80)
+
+### Changes
+
+- FocusTrapZone: Adding aria-hidden to bumper elements so that they are not read by screen readers. ([PR #14376](https://github.com/microsoft/fluentui/pull/14376) by humbertomakotomorimoto@gmail.com)
+- Update Dropdown HC styling ([PR #14411](https://github.com/microsoft/fluentui/pull/14411) by ololubek@microsoft.com)
+
+## [8.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.78)
+
+Thu, 06 Aug 2020 22:49:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.76..@fluentui/react-next_v8.0.0-alpha.78)
+
+### Changes
+
+- Dropdown: Improving multiselect dropdown screen reader behavior. ([PR #14377](https://github.com/microsoft/fluentui/pull/14377) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.76)
 

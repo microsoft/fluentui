@@ -189,6 +189,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -627,6 +628,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
       </a>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
