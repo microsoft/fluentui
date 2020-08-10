@@ -5,7 +5,10 @@ import * as V7Themes from '../themes/v7/index';
 const themeSelectorLabel = 'Theme';
 
 const defaultThemeOption = { label: 'None', theme: undefined };
-const v8ThemeOptions = [{ label: 'V8 - Fluent', theme: V8Themes.FluentTheme }];
+const v8ThemeOptions = [
+  { label: 'V8 - Fluent', theme: V8Themes.FluentTheme },
+  { label: 'V8 - Teams', theme: V8Themes.TeamsTheme },
+];
 const v7ThemeOptions = [
   { label: 'V7 - Fluent', theme: V7Themes.FluentTheme },
   { label: 'V7 - Dark', theme: V7Themes.DarkTheme, isDark: true },

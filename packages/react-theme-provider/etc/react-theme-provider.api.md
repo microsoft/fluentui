@@ -105,7 +105,7 @@ export interface Tokens {
 
 // @public
 export type TokenSetType = {
-    [key: string]: string | TokenSetType | undefined;
+    [key: string]: TokenSetType | string | number | undefined;
 };
 
 // @public (undocumented)
