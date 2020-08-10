@@ -38,7 +38,7 @@ export const SkeletonButton = compose<
   displayName: 'SkeletonButton',
   overrideStyles: true,
   shorthandConfig: {},
-  handledProps: ['size', 'circular'],
+  handledProps: ['size', 'circular', 'iconOnly', 'fluid'],
   mapPropsToStylesProps: ({ size, fluid, iconOnly, circular }) => ({
     size,
     fluid,
@@ -51,6 +51,8 @@ SkeletonButton.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,
   circular: PropTypes.bool,
+  iconOnly: PropTypes.bool,
+  fluid: PropTypes.bool,
 };
 
 SkeletonButton.defaultProps = {
