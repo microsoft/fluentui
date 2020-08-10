@@ -23,7 +23,8 @@
 
 ### ChoiceGroup
 
-- Removed applicationRole from `ChoiceGroup` and replaced it with root.
+- Moved `root` class to the actual root element by replacing `applicationRole`.
+- Removed `applicationRole` from IChoiceGroupStyles.
 
 ### Coachmark
 
