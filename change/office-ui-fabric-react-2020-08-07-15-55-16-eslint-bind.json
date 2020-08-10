@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Lint: update jsx-no-bind settings to ignore native elements",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-08-07T22:55:11.645Z"
-}

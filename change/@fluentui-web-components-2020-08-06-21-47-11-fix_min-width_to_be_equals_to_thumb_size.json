@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix min-width to be equals to thumb size",
-  "packageName": "@fluentui/web-components",
-  "email": "barahonajm@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-07T01:47:11.657Z"
-}
