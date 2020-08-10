@@ -959,7 +959,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     let handled = false;
 
     if (shouldHandleKey(ev)) {
-      this._focusingPreviousElement = true;
       this.dismiss(ev, dismissAllMenus);
       ev.preventDefault();
       ev.stopPropagation();
@@ -1219,13 +1218,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
 
     if (dismiss || !ev.defaultPrevented) {
       this.dismiss(ev, true);
-
-      // This should be removed whenever possible.
-      // This ensures that the hidden dismissal action maintains the same behavior.
-      // If the menu is being dismissed then the previously focused element should
-      // get focused since the dismiss was triggered by a user click on an item
-      // Rather than focus being lost.
-      this._focusingPreviousElement = true;
     }
   };
 

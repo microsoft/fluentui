@@ -139,24 +139,28 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
-    constructor(props: IContextualMenuProps);
+export const ContextualMenuBase: {
+    (propsWithoutDefaults: IContextualMenuProps): JSX.Element;
+    displayName: string;
+};
+
+// Warning: (ae-forgotten-export) The symbol "IContextualMenuInternalProps" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, IContextualMenuState> {
+    constructor(props: IContextualMenuInternalProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    static defaultProps: IContextualMenuProps;
-    // (undocumented)
     dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
-    shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean;
+    shouldComponentUpdate(newProps: IContextualMenuInternalProps, newState: IContextualMenuState): boolean;
     // (undocumented)
-    UNSAFE_componentWillMount(): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void;
+    UNSAFE_componentWillUpdate(newProps: IContextualMenuInternalProps): void;
     }
 
 // @public
@@ -798,8 +802,6 @@ export interface IContextualMenuState {
     contextualMenuItems?: IContextualMenuItem[];
     // (undocumented)
     contextualMenuTarget?: Element;
-    // (undocumented)
-    dismissedMenuItemKey?: string;
     expandedByMouseClick?: boolean;
     // (undocumented)
     expandedMenuItemKey?: string;
