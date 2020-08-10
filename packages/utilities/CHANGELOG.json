@@ -2,6 +2,27 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/utilities_v7.27.0",
+      "version": "7.27.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating getNativeProps default attribute set to include \"ref\" as a safe prop.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@uifabric/utilities"
+          },
+          {
+            "comment": "Adding `omit` helper to performantly create shallow object clones which omit a few props.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6ba23f1b86ab544afc2a7ff97a815a291ee17f8b",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Aug 2020 12:40:14 GMT",
       "tag": "@uifabric/utilities_v7.26.1",
       "version": "7.26.1",

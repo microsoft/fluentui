@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Lint: update jsx-no-bind settings to ignore native elements",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-07T22:55:48.328Z"
-}
