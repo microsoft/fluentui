@@ -41,7 +41,6 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
 
   const handleMove = React.useCallback(
     e => {
-      console.log('HANDLE MOVE');
       onMove?.(e);
     },
     [onMove],
