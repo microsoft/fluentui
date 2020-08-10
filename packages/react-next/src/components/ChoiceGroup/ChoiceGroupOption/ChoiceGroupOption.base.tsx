@@ -9,7 +9,6 @@ import {
 import { classNamesFunction, getNativeProps, inputProperties, css } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 import { composeRenderFunction } from '@uifabric/utilities';
-import { useConstCallback } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
@@ -60,28 +59,19 @@ export const ChoiceGroupOptionBase = (props: IChoiceGroupOptionProps) => {
   const renderField = (): JSX.Element => {
     const { imageAlt = '', selectedImageSrc } = props;
 
-    const currentImageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
+    const onRenderComposedLabel = composeRenderFunction(props.onRenderLabel, onRenderLabel);
 
-    const renderedLabel = props.onRenderLabel
-      ? composeRenderFunction(props.onRenderLabel, onRenderLabel)
-      : onRenderLabel;
-
-    const label = renderedLabel(props);
+    const label = onRenderComposedLabel(props);
 
     return (
       <label htmlFor={id} className={classNames.field}>
         {imageSrc && (
           <div className={classNames.innerField}>
             <div className={classNames.imageWrapper}>
-              <Image src={imageSrc} alt={imageAlt} width={currentImageSize.width} height={currentImageSize.height} />
+              <Image src={selectedImageSrc} alt={imageAlt} {...imageSize} />
             </div>
             <div className={classNames.selectedImageWrapper}>
-              <Image
-                src={selectedImageSrc}
-                alt={imageAlt}
-                width={currentImageSize.width}
-                height={currentImageSize.height}
-              />
+              <Image src={selectedImageSrc} alt={imageAlt} {...imageSize} />
             </div>
           </div>
         )}
@@ -99,23 +89,23 @@ export const ChoiceGroupOptionBase = (props: IChoiceGroupOptionProps) => {
 
   const { onRenderField = renderField } = props;
 
-  const onChange = useConstCallback((evt: React.FormEvent<HTMLInputElement>): void => {
+  const onChange = (evt: React.FormEvent<HTMLInputElement>): void => {
     if (props.onChange) {
       props.onChange(evt, props);
     }
-  });
+  };
 
-  const onBlur = useConstCallback((evt: React.FocusEvent<HTMLElement>) => {
+  const onBlur = (evt: React.FocusEvent<HTMLElement>) => {
     if (props.onBlur) {
       props.onBlur(evt);
     }
-  });
+  };
 
-  const onFocus = useConstCallback((evt: React.FocusEvent<HTMLElement>) => {
+  const onFocus = (evt: React.FocusEvent<HTMLElement>) => {
     if (props.onFocus) {
       props.onFocus(evt, props);
     }
-  });
+  };
 
   return (
     <div className={classNames.root}>

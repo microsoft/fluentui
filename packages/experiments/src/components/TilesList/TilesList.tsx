@@ -152,12 +152,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     const { onRenderRoot, onRenderPage, ...otherListProps } = listProps;
 
-    const finalOnRenderRoot = onRenderRoot
-      ? composeRenderFunction(onRenderRoot, this._onRenderListRoot)
-      : this._onRenderListRoot;
-    const finalOnRenderPage = onRenderPage
-      ? composeRenderFunction(onRenderPage, this._onRenderPage)
-      : this._onRenderPage;
+    const finalOnRenderRoot = composeRenderFunction(onRenderRoot, this._onRenderListRoot);
+
+    const finalOnRenderPage = composeRenderFunction(onRenderPage, this._onRenderPage);
 
     return (
       <FocusZone
@@ -298,7 +295,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       });
     };
 
-    const finalOnRenderRoot = onRenderRoot ? composeRenderFunction(onRenderRoot, baseOnRenderRoot) : baseOnRenderRoot;
+    const finalOnRenderRoot = composeRenderFunction(onRenderRoot, baseOnRenderRoot);
 
     return finalOnRenderRoot({
       surfaceElement: props.surfaceElement,
@@ -320,7 +317,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     const { role, onRenderRow } = this.props;
 
-    const finalOnRenderRow = onRenderRow ? composeRenderFunction(onRenderRow, this._renderRow) : this._renderRow;
+    const finalOnRenderRow = composeRenderFunction(onRenderRow, this._renderRow);
 
     const { page, className: pageClassName, ...divProps } = pageProps;
 

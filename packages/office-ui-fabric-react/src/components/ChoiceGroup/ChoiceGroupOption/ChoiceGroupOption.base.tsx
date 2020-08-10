@@ -111,9 +111,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
 
     const imageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
 
-    const onRenderLabel = props.onRenderLabel
-      ? composeRenderFunction(props.onRenderLabel, this._onRenderLabel)
-      : this._onRenderLabel;
+    const onRenderLabel = composeRenderFunction(props.onRenderLabel, this._onRenderLabel);
 
     const label = onRenderLabel(props);
 

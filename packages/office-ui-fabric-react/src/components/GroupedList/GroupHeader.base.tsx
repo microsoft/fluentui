@@ -78,9 +78,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
     const defaultCheckboxRender = useFastIcons ? this._fastDefaultCheckboxRender : this._defaultCheckboxRender;
 
-    const onRenderCheckbox = onRenderGroupHeaderCheckbox
-      ? composeRenderFunction(onRenderGroupHeaderCheckbox, defaultCheckboxRender)
-      : defaultCheckboxRender;
+    const onRenderCheckbox = composeRenderFunction(onRenderGroupHeaderCheckbox, defaultCheckboxRender);
 
     const { isCollapsed, isLoadingVisible } = this.state;
 

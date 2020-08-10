@@ -18,7 +18,8 @@ export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
+export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
+  itemKey?: string;
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -19,7 +19,7 @@ const dropdownOptions: IDropdownOption[] = [
 
 const options: IChoiceGroupOption[] = [
   {
-    optionKey: 'A',
+    key: 'A',
     text: 'Mark displayed items as read after',
     ariaLabel: 'Mark displayed items as read after - Press tab for further action',
     onRenderField: (props, render) => {
@@ -38,7 +38,7 @@ const options: IChoiceGroupOption[] = [
       );
     },
   },
-  { optionKey: 'B', text: 'Option B', styles: { root: { border: '1px solid green' } } },
-  { optionKey: 'C', text: 'Option C', disabled: true },
-  { optionKey: 'D', text: 'Option D' },
+  { key: 'B', text: 'Option B', styles: { root: { border: '1px solid green' } } },
+  { key: 'C', text: 'Option C', disabled: true },
+  { key: 'D', text: 'Option D' },
 ];

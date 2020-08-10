@@ -416,13 +416,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       pageElements.push(this._renderPage(page));
     }
 
-    const finalOnRenderSurface = onRenderSurface
-      ? composeRenderFunction(onRenderSurface, this._onRenderSurface)
-      : this._onRenderSurface;
+    const finalOnRenderSurface = composeRenderFunction(onRenderSurface, this._onRenderSurface);
 
-    const finalOnRenderRoot = onRenderRoot
-      ? composeRenderFunction(onRenderRoot, this._onRenderRoot)
-      : this._onRenderRoot;
+    const finalOnRenderRoot = composeRenderFunction(onRenderRoot, this._onRenderRoot);
 
     return finalOnRenderRoot({
       rootRef: this._root,

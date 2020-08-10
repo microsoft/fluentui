@@ -32,8 +32,8 @@ const memoizer = createMemoizer<IRenderFunctionComposer>(createComposedRenderFun
  * @public
  */
 export function composeRenderFunction<TProps>(
-  outer: IRenderFunction<TProps>,
+  outer: IRenderFunction<TProps> | undefined,
   inner: IRenderFunction<TProps>,
 ): IRenderFunction<TProps> {
-  return memoizer(outer)(inner);
+  return outer ? memoizer(outer)(inner) : inner;
 }

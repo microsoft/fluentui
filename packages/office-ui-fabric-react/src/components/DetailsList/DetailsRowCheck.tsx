@@ -31,9 +31,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
   } = props;
   const defaultCheckboxRender = useFastIcons ? _fastDefaultCheckboxRender : _defaultCheckboxRender;
 
-  const onRenderCheckbox = onRenderDetailsCheckbox
-    ? composeRenderFunction(onRenderDetailsCheckbox, defaultCheckboxRender)
-    : defaultCheckboxRender;
+  const onRenderCheckbox = composeRenderFunction(onRenderDetailsCheckbox, defaultCheckboxRender);
 
   const classNames = getClassNames(styles, {
     theme: theme!,

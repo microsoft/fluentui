@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import { warnMutuallyExclusive, classNamesFunction, find, getNativeProps, divProperties } from '../../Utilities';
+import { classNamesFunction, find, getNativeProps, divProperties } from '../../Utilities';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
+import { IChoiceGroupOptionProps } from './ChoiceGroupOption/ChoiceGroupOption.types';
 import { ChoiceGroupOption } from './ChoiceGroupOption/index';
-import { useId, useControllableValue } from '@uifabric/react-hooks';
+import { useId, useControllableValue, useWarnings, useConstCallback } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
 const getOptionId = (option: IChoiceGroupOption, id: string): string => {
-  return `${id}-${option.optionKey}`;
+  return `${id}-${option.key}`;
 };
 
 const getCheckedOption = (options: IChoiceGroupOption[], keyChecked: string | number) =>
-  find(options, (value: IChoiceGroupOption) => value.optionKey === keyChecked);
+  find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
 
 const useComponentRef = (props: IChoiceGroupProps, keyChecked: string | number | undefined, id: string) => {
   React.useImperativeHandle(
@@ -34,6 +35,18 @@ const useComponentRef = (props: IChoiceGroupProps, keyChecked: string | number |
     [props, keyChecked],
   );
 };
+
+function useDebugWarnings(props: IChoiceGroupProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    useWarnings({
+      name: 'Checkbox',
+      props,
+      mutuallyExclusive: {
+        selectedKey: 'defaultSelectedKey',
+      },
+    });
+  }
+}
 
 /**
  * {@docCategory ChoiceGroup}
@@ -60,37 +73,33 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
     const ariaLabelledBy = props.ariaLabelledBy || (label ? labelId : props['aria-labelledby']);
 
     const [keyChecked, setKeyChecked] = useControllableValue(props.selectedKey, defaultSelectedKey);
-
     const [keyFocused, setKeyFocused] = React.useState<string | number>();
 
+    useDebugWarnings(props);
     useComponentRef(props, keyChecked, id);
 
-    const onFocus = (ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOption) => {
-      setKeyFocused(option.optionKey);
-    };
+    const onFocus = useConstCallback((ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOptionProps) => {
+      setKeyFocused(option.itemKey);
+    });
 
-    const onBlur = (ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOption) => {
+    const onBlur = useConstCallback((ev: React.FocusEvent<HTMLElement>) => {
       setKeyFocused(undefined);
-    };
+    });
 
-    const onOptionChange = (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOption) => {
-      const { onChange } = props;
+    const onOptionChange = useConstCallback(
+      (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOptionProps) => {
+        const { onChange } = props;
 
-      setKeyChecked(option.optionKey);
+        setKeyChecked(option.itemKey);
 
-      if (onChange) {
-        onChange(
-          evt,
-          find(props.options || [], (value: IChoiceGroupOption) => value.optionKey === option.optionKey),
-        );
-      }
-    };
-
-    if (process.env.NODE_ENV !== 'production') {
-      warnMutuallyExclusive('ChoiceGroup', props, {
-        selectedKey: 'defaultSelectedKey',
-      });
-    }
+        if (onChange) {
+          onChange(
+            evt,
+            find(props.options || [], (value: IChoiceGroupOption) => value.key === option.itemKey),
+          );
+        }
+      },
+    );
 
     return (
       <div className={classNames.root} {...divProps} ref={forwardedRef}>
@@ -104,23 +113,21 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
             {options.map((option: IChoiceGroupOption) => {
               const innerOptionProps = {
                 ...option,
-                focused: option.optionKey === keyFocused,
-                checked: option.optionKey === keyChecked,
+                focused: option.key === keyFocused,
+                checked: option.key === keyChecked,
                 disabled: option.disabled || disabled,
                 id: getOptionId(option, id),
-                labelId: `${choiceGroupLabelId}-${option.optionKey}`,
+                labelId: `${choiceGroupLabelId}-${option.key}`,
                 name: name || id,
                 required,
               };
 
               return (
                 <ChoiceGroupOption
-                  key={option.optionKey}
-                  // eslint-disable-next-line react/jsx-no-bind
+                  key={option.key}
+                  itemKey={option.key}
                   onBlur={onBlur}
-                  // eslint-disable-next-line react/jsx-no-bind
                   onFocus={onFocus}
-                  // eslint-disable-next-line react/jsx-no-bind
                   onChange={onOptionChange}
                   {...innerOptionProps}
                 />
