@@ -93,7 +93,7 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
       const jsonTreeElement = fiberNavFindJSONTreeElement(jsonTree, fiberNav);
 
       const targetRect = targetElement.getBoundingClientRect();
-      // console.log('DropSelector:handleMouseMove', targetElement, targetRect, jsonTreeElement);
+      console.log('DropSelector:handleMouseMove', targetElement, targetRect, jsonTreeElement);
 
       mouseRef.current.style.left = `${e.x}px`;
       mouseRef.current.style.top = `${e.y}px`;
@@ -113,7 +113,7 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
         { x: e.x, y: e.y },
       );
 
-      if (inElementPosition === 'center') {
+      if (inElementPosition === 'center' || jsonTreeElement.uuid === 'builder-root') {
         // We're inside an element so we care about where we drop among it's children here
         if (jsonTreeElement.props?.children?.length > 0) {
           // Drop inside parent WITH children
