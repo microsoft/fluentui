@@ -4,7 +4,7 @@ import { commonPropTypes } from '../../utils';
 import { SkeletonShapeProps, SkeletonShapeStylesProps, SkeletonShape } from './SkeletonShape';
 
 export interface SkeletonInputOwnProps {
-  /** A skeleton button can fill the width of its container. */
+  /** A skeleton input can fill the width of its container. */
   fluid?: boolean;
 }
 export interface SkeletonInputProps extends SkeletonInputOwnProps, SkeletonShapeProps {}
@@ -13,7 +13,7 @@ export type SkeletonInputStylesProps = Required<Pick<SkeletonInputOwnProps, 'flu
 export const skeletonInputClassName = 'ui-skeleton__input';
 
 /**
- * An SkeletonInput represents a buton component that will be loaded
+ * An SkeletonInput represents a input component that will be loaded
  */
 export const SkeletonInput = compose<
   'span',
