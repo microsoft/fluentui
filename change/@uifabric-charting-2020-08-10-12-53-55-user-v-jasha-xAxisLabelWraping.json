@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "truncating the word and tooltip",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-08-10T07:23:55.241Z"
+}
