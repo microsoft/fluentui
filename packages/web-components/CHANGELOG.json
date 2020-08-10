@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/web-components_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix min-width to be equals to thumb size",
+            "author": "barahonajm@outlook.com",
+            "commit": "e0e6494bdf8668da6776a1cca5ac738aac788feb",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 22:49:13 GMT",
+      "tag": "@fluentui/web-components_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: update rollup config and incorrect readme import",
+            "author": "chhol@microsoft.com",
+            "commit": "ffe583186bef52adaf151e344a116cbbbd32c0fe",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 00:30:40 GMT",
       "tag": "@fluentui/web-components_v0.1.0",
       "version": "0.1.0",

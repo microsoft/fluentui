@@ -124,13 +124,11 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
         id={this.idForGraph}
         className={this._classNames.root}
         role={'presentation'}
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
               }}
@@ -139,7 +137,6 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
               className={this._classNames.xAxis}
             />
             <g
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
               }}
@@ -150,11 +147,7 @@ export class ChartHelperBaseComponent extends React.Component<IChartHelperProps,
             {children}
           </svg>
         </FocusZone>
-        <div
-          // eslint-disable-next-line react/jsx-no-bind
-          ref={(e: HTMLDivElement) => (this.legendContainer = e)}
-          className={this._classNames.legendContainer}
-        >
+        <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
           {this.props.legendBars}
         </div>
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (

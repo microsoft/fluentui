@@ -8,6 +8,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     onFocusCapture={[Function]}
   >
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={
@@ -336,6 +337,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         onFocusCapture={[Function]}
       >
         <div
+          aria-hidden={true}
           data-is-visible={true}
           onFocus={[Function]}
           style={
@@ -665,6 +667,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             onFocusCapture={[Function]}
           >
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -990,6 +993,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               </button>
             </div>
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -1007,6 +1011,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             onFocusCapture={[Function]}
           >
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -1332,6 +1337,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               </button>
             </div>
             <div
+              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -1345,6 +1351,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           </div>
         </div>
         <div
+          aria-hidden={true}
           data-is-visible={true}
           onFocus={[Function]}
           style={
@@ -1362,6 +1369,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         onFocusCapture={[Function]}
       >
         <div
+          aria-hidden={true}
           data-is-visible={true}
           onFocus={[Function]}
           style={
@@ -1686,6 +1694,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           </button>
         </div>
         <div
+          aria-hidden={true}
           data-is-visible={true}
           onFocus={[Function]}
           style={
@@ -1699,6 +1708,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
       </div>
     </div>
     <div
+      aria-hidden={true}
       data-is-visible={true}
       onFocus={[Function]}
       style={

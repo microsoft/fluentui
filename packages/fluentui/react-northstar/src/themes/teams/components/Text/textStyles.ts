@@ -57,7 +57,6 @@ export const textStyles: ComponentSlotStylesPrepared<TextStylesProps, TextVariab
       }),
       ...(p.timestamp && {
         color: v.timestampColor,
-        ':hover': { color: v.timestampHoverColor },
       }),
       ...(p.important && {
         color: v.importantColor,

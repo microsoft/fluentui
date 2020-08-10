@@ -40,18 +40,14 @@ export class Arc extends React.Component<IArcProps, IArcState> {
         <path
           id={id}
           d={arc(this.props.data)}
-          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
           data-is-focusable={true}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
           onBlur={this._onBlur}
           opacity={opacity}
-          // eslint-disable-next-line react/jsx-no-bind
           onClick={this._redirectToUrl.bind(this, href)}
           aria-labelledby={this.props.calloutId}
         />
