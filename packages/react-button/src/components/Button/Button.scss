@@ -67,6 +67,7 @@
   --button-pressed-contentColor: var(--button-contentColor);
   --button-pressed-iconColor: var(--button-iconColor);
 
+  --button-disabled-opacity: 1;
   --button-disabled-background: rgb(237, 235, 233);
   --button-disabled-borderColor: var(--button-disabled-background);
   --button-disabled-contentColor: rgb(200, 198, 196);
@@ -113,6 +114,7 @@
  **/
 
 .root {
+  cursor: pointer;
   align-items: center;
   border-style: solid;
   display: inline-flex;
@@ -225,7 +227,8 @@
   }
 
   &._disabled {
-    pointer-events: none;
+    opacity: var(--button-disabled-opacity);
+    cursor: not-allowed;
     background-color: var(--button-disabled-background);
     color: var(--button-disabled-contentColor);
     border-color: var(--button-disabled-borderColor);
