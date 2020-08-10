@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,7 +47,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.14.1",
+    "@fluentui/react-compose": "^0.14.2",
     "@fluentui/keyboard-key": "^0.2.9",
     "@fluentui/react-icons": "^0.1.46",
     "@fluentui/react-theme-provider": "^0.5.0",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-next",
-  "version": "8.0.0-alpha.81",
+  "version": "8.0.0-alpha.82",
   "beachball": {
     "disallowedChangeTypes": [
       "patch",
@@ -59,8 +59,8 @@
     "storybook-addon-performance": "^0.9.0"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.8.1",
-    "@fluentui/react-compose": "^0.14.1",
+    "@fluentui/react-button": "^0.8.2",
+    "@fluentui/react-compose": "^0.14.2",
     "@fluentui/react-focus": "^7.12.31",
     "@fluentui/react-icons": "^0.1.46",
     "@fluentui/react-tabs": "^0.2.9",
