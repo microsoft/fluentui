@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 15:56:27 GMT",
+      "tag": "@fluentui/react-compose_v0.14.1",
+      "version": "0.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "next mergeProps: adding type check",
+            "author": "dzearing@hotmail.com",
+            "commit": "042ed4c59b8d9547aaa40696ab6938a09def177e",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@fluentui/react-compose_v0.14.0",
       "version": "0.14.0",
