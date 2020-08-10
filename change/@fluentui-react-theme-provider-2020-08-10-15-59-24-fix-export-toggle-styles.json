@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Renaming TokenPlateSet to TokenColorSet",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-10T22:59:24.739Z"
+}
