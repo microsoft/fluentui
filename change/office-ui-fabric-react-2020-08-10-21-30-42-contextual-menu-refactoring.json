@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "refactor contextual menu",
+  "packageName": "office-ui-fabric-react",
+  "email": "michael.mao99@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-11T01:30:42.586Z"
+}
