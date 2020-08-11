@@ -17,9 +17,9 @@ const SkeletonExampleComponents = () => (
             <Skeleton.Button iconOnly />
             <Skeleton.Button iconOnly size="small" />
           </Flex>
-          <div>
+          <Flex.Item>
             <Skeleton.Button fluid />
-          </div>
+          </Flex.Item>
         </Flex>
       </Skeleton>
     </Flex>
