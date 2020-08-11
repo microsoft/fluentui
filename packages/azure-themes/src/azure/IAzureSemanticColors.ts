@@ -1,11 +1,31 @@
 export interface IAzureSemanticColors {
   background: string;
   statusBar: {
-    okay: string;
-    error: string;
-    warning: string;
-    information: string;
-    upsell: string;
+    link: string;
+    background: {
+      default: string;
+      okay: string;
+      error: string;
+      warning: string;
+      information: string;
+      upsell: string;
+    };
+    border: {
+      default: string;
+      okay: string;
+      error: string;
+      warning: string;
+      information: string;
+      upsell: string;
+    };
+    icon: {
+      default: string;
+      okay: string;
+      error: string;
+      warning: string;
+      information: string;
+      upsell: string;
+    };
   };
   text: {
     list: string;

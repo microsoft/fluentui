@@ -39,11 +39,18 @@ import { DetailsListCompactExample } from '../components/detailsList';
 import { DatePickerBoundedExample } from '../components/dateBoundary';
 import { PivotBasicExample } from '../components/Pivots';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble';
+import { MessageBarBasicExample } from '../components/messageBar';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
+      <DefaultButton primary={true} text="bug" />
+      <DefaultButton primary={true} disabled={true} text="bug" />
+      <Label>MessageBar / InfoBox</Label>
+      <MessageBarBasicExample />
+      <Label>TeachingBubble</Label>
       <TeachingBubbleBasicExample />
+      <Label>Pivots</Label>
       <PivotBasicExample />
       <Label>Buttons</Label>
       <DefaultButton text="DefaultButton" />

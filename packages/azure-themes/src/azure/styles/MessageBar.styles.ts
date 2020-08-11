@@ -49,43 +49,6 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
   const iconButtonStyles = IconButtonStyles(props);
 
   return {
-    actions: {
-      // Buttons utilizes an alpha channel < 1 for their pressed and hover state background colors.
-      // This styling effectively makes the button background the body background and applies hover / active styles
-      // to next child down.
-      selectors: {
-        '.ms-Button': {
-          backgroundColor: semanticColors.bodyBackground,
-          color: semanticColors.buttonText,
-          padding: '0px',
-          border: `1px solid ${semanticColors.buttonText}`,
-          selectors: {
-            '.ms-Button-flexContainer': {
-              paddingLeft: '16px',
-              paddingRight: '16px',
-              selectors: {
-                ':hover': {
-                  backgroundColor: semanticColors.buttonBackgroundHovered,
-                  color: semanticColors.buttonTextHovered,
-                },
-                ':active': {
-                  backgroundColor: semanticColors.buttonBackgroundPressed,
-                  color: semanticColors.buttonTextPressed,
-                },
-              },
-            },
-            ':hover': {
-              backgroundColor: semanticColors.bodyBackground,
-              color: semanticColors.buttonText,
-            },
-            ':active': {
-              backgroundColor: semanticColors.bodyBackground,
-              color: semanticColors.buttonText,
-            },
-          },
-        },
-      },
-    },
     dismissSingleLine: iconButtonStyles,
     dismissal: iconButtonStyles,
     expand: iconButtonStyles,
@@ -108,34 +71,46 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
       },
 
       !messageBarType && {
-        color: semanticColors.bodyText,
+        color: semanticColors.statusInformationIcon,
       },
     ],
     root: [
-      (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) &&
-        generateBaseStyle(semanticColors.statusErrorBackground, semanticColors.statusErrorText),
-
-      messageBarType === MessageBarType.info &&
-        generateBaseStyle(semanticColors.statusInformationBackground, semanticColors.statusInformationText),
-
-      messageBarType === MessageBarType.success &&
-        generateBaseStyle(semanticColors.statusSuccessBackground, semanticColors.statusSuccessText),
-
-      (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) &&
-        generateBaseStyle(semanticColors.statusWarningBackground, semanticColors.statusWarningText),
-
-      !messageBarType && {
-        backgroundColor: semanticColors.bodyBackground,
+      {
         color: semanticColors.bodyText,
-        border: `2px solid ${semanticColors.bodyDivider}`,
+        width: 'calc(100% - 2px)', // needed for border-right to be visible
         selectors: {
-          '&:hover': {
-            backgroundColor: semanticColors.bodyBackground,
+          '.ms-Link': {
+            color: semanticColors.statusLink,
+            textDecoration: 'underline',
           },
-          '&:active': {
-            backgroundColor: semanticColors.bodyBackground,
+          '.ms-Link:hover': {
+            color: semanticColors.linkHovered,
           },
         },
+      },
+      (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) && {
+        backgroundColor: semanticColors.statusErrorBackground,
+        border: `1px solid ${semanticColors.statusErrorBorder}`,
+      },
+
+      messageBarType === MessageBarType.info && {
+        backgroundColor: semanticColors.statusInformationBackground,
+        border: `1px solid ${semanticColors.statusDefaultBorder}`,
+      },
+
+      messageBarType === MessageBarType.success && {
+        backgroundColor: semanticColors.statusSuccessBackground,
+        border: `1px solid ${semanticColors.statusSuccessBorder}`,
+      },
+
+      (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) && {
+        backgroundColor: semanticColors.statusWarningBackground,
+        border: `1px solid ${semanticColors.statusWarningBorder}`,
+      },
+
+      !messageBarType && {
+        backgroundColor: semanticColors.statusDefaultBackground,
+        border: `1px solid ${semanticColors.statusDefaultBorder}`,
       },
     ],
   };
