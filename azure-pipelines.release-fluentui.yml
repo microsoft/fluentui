@@ -8,7 +8,7 @@ name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
 variables:
   - group: 'Github and NPM secrets'
 
-pool: 'Self Host Ubuntu'
+pool: 'fluentbuild'
 
 steps:
   - task: NodeTool@0
