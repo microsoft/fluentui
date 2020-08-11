@@ -191,7 +191,7 @@ export const DRAGGING_ELEMENTS = {
           key: 'conditions',
         },
         {
-          control: { as: FUI.Button, content: 'Submit' },
+          control: { content: <FUI.Button>Submit</FUI.Button> },
           key: 'submit',
         },
       ],
