@@ -9,6 +9,11 @@ const Variations = () => (
       description="A Skeleton can have different animations"
       examplePath="components/Skeleton/Variations/SkeletonExampleAnimations"
     />
+    <ComponentExample
+      title="Components"
+      description="Some components has its' own pre defined skeleton"
+      examplePath="components/Skeleton/Variations/SkeletonExampleComponents"
+    />
   </ExampleSection>
 );
 

@@ -2,11 +2,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { create } from '@uifabric/utilities/lib/test';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as path from 'path';
 
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
+import { sharedIsConformant } from '../../common/sharedIsConformant';
 import { resetIds, KeyCodes } from '@uifabric/utilities';
 
 describe('Slider', () => {
@@ -21,6 +23,12 @@ describe('Slider', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+  });
+
+  sharedIsConformant({
+    componentPath: path.join(__dirname, 'Slider.tsx'),
+    Component: Slider,
+    displayName: 'Slider',
   });
 
   it('renders correctly', () => {

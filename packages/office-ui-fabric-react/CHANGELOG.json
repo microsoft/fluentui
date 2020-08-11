@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "office-ui-fabric-react_v7.127.0",
+      "version": "7.127.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating Announced, GroupedList, Coachmark, and ExtendedPeoplePicker examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "b58c2892276d632d5c9c5d74061a54e3cf1b56d8",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier fix.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b2a8ecd1bd60d7d4111fa12e6ecda0855dc03032",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ContextualMenu: Add another prop to allow users to override default focus restoring behavior. This fixes an issue where it would not restore focus correctly when contextualmenu is hidden.",
+            "author": "joschect@microsoft.com",
+            "commit": "1e8785a125b75926404a973d10fc6925e752be19",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "office-ui-fabric-react_v7.126.3",
       "version": "7.126.3",
