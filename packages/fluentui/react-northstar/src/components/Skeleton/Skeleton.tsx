@@ -6,6 +6,7 @@ import { SkeletonLine } from './SkeletonLine';
 import { SkeletonShape } from './SkeletonShape';
 import { SkeletonButton } from './SkeletonButton';
 import * as PropTypes from 'prop-types';
+import { SkeletonText } from './SkeletonText';
 
 export interface SkeletonOwnProps {
   /**
@@ -40,11 +41,13 @@ export const Skeleton = compose<'div', SkeletonOwnProps, SkeletonStylesProps, Bo
   Line: typeof SkeletonLine;
   Shape: typeof SkeletonShape;
   Button: typeof SkeletonButton;
+  Text: typeof SkeletonText;
 };
 
 Skeleton.Line = SkeletonLine;
 Skeleton.Shape = SkeletonShape;
 Skeleton.Button = SkeletonButton;
+Skeleton.Text = SkeletonText;
 Skeleton.defaultProps = {
   accessibility: skeletonBehavior,
 };
