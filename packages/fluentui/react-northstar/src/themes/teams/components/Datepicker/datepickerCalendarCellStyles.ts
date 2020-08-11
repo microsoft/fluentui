@@ -1,14 +1,13 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DatepickerVariables } from './datepickerVariables';
+import { DatepickerCalendarCellVariables } from './datepickerCalendarCellVariables';
 import { DatepickerCalendarCellStylesProps } from '../../../../components/Datepicker/DatepickerCalendarCell';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { pxToRem } from '../../../../utils';
 
 export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarCellStylesProps,
-  DatepickerVariables
+  DatepickerCalendarCellVariables
 > = {
-  root: ({ props: p, theme }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
 
@@ -19,47 +18,39 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
 
     return {
       textAlign: 'center',
-      height: pxToRem(32),
-      width: pxToRem(32),
+      height: v.height,
+      width: v.width,
+
+      cursor: 'pointer',
+      background: 'none',
+      border: 'none',
+
+      backgroundColor: v.backgroundColor,
+      color: v.color,
 
       ...borderFocusStyles,
-
-      ...{
-        backgroundColor: 'white',
-        cursor: 'pointer',
-        position: 'relative',
-        background: 'none',
-        color: 'inherit',
-        border: 'none',
-        padding: 0,
-        font: 'inherit',
-      },
 
       msGridRow: p.rowNumber,
       msGridColumn: p.columnNumber,
 
       ...(p.unfocused && {
-        color: 'rgb(200, 198, 196)',
-        fontWeight: '400',
+        color: v.unfocusedColor,
       }),
 
       ...(p.selected && {
-        cursor: 'pointer',
-        fontWeight: 'normal',
-        color: 'rgb(37, 36, 35)',
-        backgroundColor: 'rgb(226, 226, 246) !important',
+        color: v.selectedColor,
+        backgroundColor: v.selectedBackgroundColor,
       }),
 
       ...(p.reference && {
-        backgroundColor: 'rgb(98, 100, 167)',
-        fontWeight: 'normal',
-        color: 'rgb(255, 255, 255)',
+        backgroundColor: v.referenceBackgroundColor,
+        color: v.referenceColor,
         borderRadius: '50%',
       }),
 
       ':hover': {
-        backgroundColor: siteVariables.colorScheme.silver.backgroundHover,
-        color: siteVariables.colorScheme.black.foregroundHover,
+        backgroundColor: v.hoverBackgroundColor,
+        color: v.hoverColor,
       },
     };
   },

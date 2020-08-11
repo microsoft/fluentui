@@ -17,7 +17,7 @@ export interface DatepickerCalendarHeaderCellProps extends UIComponentProps, Con
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<DatepickerCalendarHeaderCellProps>;
+  accessibility?: Accessibility<never>;
 
   /** Row number */
   rowNumber?: number;

@@ -21,7 +21,6 @@ import { commonPropTypes, ContentComponentProps, UIComponentProps } from '../../
 export interface DatepickerCalendarCellProps extends UIComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
-   * TODO: DatepickerCalendarCellBehaviorProps
    */
   accessibility?: Accessibility<DatepickerCalendarCellBehaviorProps>;
 
