@@ -1,7 +1,7 @@
-import { getDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.classNames';
+import { getDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.classNames';
 import { getMenuItemStyles } from './ContextualMenu.cnstyles';
 import { ITheme, mergeStyleSets, getGlobalClassNames, getScreenSelector, ScreenWidthMaxMedium } from '../../Styling';
-import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/components/Divider/VerticalDivider.types';
+import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.types';
 import { memoizeFunction, IsFocusVisibleClassName } from '../../Utilities';
 import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
 import { IContextualMenuSubComponentStyles } from './ContextualMenu.types';
