@@ -228,8 +228,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     focusDateRef.current?.focus();
   }, [grid]);
 
-  const renderWeekRow = (week: IDay[], weekIdx: number) =>
-    _.map(week, (day: IDay, idx: number) =>
+  const renderWeekRow = (week: IDay[]) =>
+    _.map(week, (day: IDay) =>
       createShorthand(DatepickerCalendarCell, calendarCell, {
         defaultProps: () =>
           getA11yProps('calendarCell', {
@@ -241,8 +241,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             unfocused: !day.isInMonth,
             reference: compareDates(day.originalDate, today ?? new Date()),
             ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
-            rowNumber: weekIdx + 2,
-            columnNumber: idx + 1,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
@@ -299,12 +297,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                             'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                             content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                             key: dayNumber,
-                            rowNumber: 1,
-                            columnNumber: dayNumber + 1,
                           }),
                       }),
                     )}
-                    {_.map(visibledGrid, (week, idx) => renderWeekRow(week, idx))}
+                    {_.map(visibledGrid, (week, idx) => renderWeekRow(week))}
                   </>
                 ),
               }),

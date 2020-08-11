@@ -8,7 +8,6 @@ import {
   getElementType,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { commonPropTypes, createShorthand, ContentComponentProps, UIComponentProps } from '../../utils';
 import { Text } from '../Text/Text';
@@ -18,18 +17,9 @@ export interface DatepickerCalendarHeaderCellProps extends UIComponentProps, Con
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<never>;
-
-  /** Row number */
-  rowNumber?: number;
-
-  /** Column number */
-  columnNumber?: number;
 }
 
-export type DatepickerCalendarHeaderCellStylesProps = Pick<
-  DatepickerCalendarHeaderCellProps,
-  'columnNumber' | 'rowNumber'
->;
+export type DatepickerCalendarHeaderCellStylesProps = {};
 
 export const datepickerCalendarHeaderCellClassName = 'ui-datepicker__calendarheadercell';
 /**
@@ -46,26 +36,20 @@ export const DatepickerCalendarHeaderCell = compose<
   (props, ref, composeOptions) => {
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    const { className, design, styles, variables, columnNumber, rowNumber, content } = props;
+    const { className, design, styles, variables, content } = props;
     setStart();
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
       debugName: composeOptions.displayName,
-      mapPropsToBehavior: () => ({
-        columnNumber,
-        rowNumber,
-      }),
+      mapPropsToBehavior: () => ({}),
       rtl: context.rtl,
     });
 
     const { classes } = useStyles<DatepickerCalendarHeaderCellStylesProps>(DatepickerCalendarHeaderCell.displayName, {
       className: composeOptions.className,
-      mapPropsToStyles: () => ({
-        columnNumber,
-        rowNumber,
-      }),
+      mapPropsToStyles: () => ({}),
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -86,10 +70,7 @@ export const DatepickerCalendarHeaderCell = compose<
         })}
       >
         {createShorthand(Text, content, {
-          defaultProps: () =>
-            getA11yProps('label', {
-              content,
-            }),
+          defaultProps: () => getA11yProps('label', {}),
         })}
       </ElementType>
     );
@@ -101,24 +82,12 @@ export const DatepickerCalendarHeaderCell = compose<
     className: datepickerCalendarHeaderCellClassName,
     displayName: 'DatepickerCalendarHeaderCell',
 
-    handledProps: [
-      'accessibility',
-      'as',
-      'className',
-      'content',
-      'design',
-      'styles',
-      'variables',
-      'columnNumber',
-      'rowNumber',
-    ],
+    handledProps: ['accessibility', 'as', 'className', 'content', 'design', 'styles', 'variables'],
   },
 );
 
 DatepickerCalendarHeaderCell.propTypes = {
   ...commonPropTypes.createCommon({ children: false }),
-  columnNumber: PropTypes.number,
-  rowNumber: PropTypes.number,
 };
 
 DatepickerCalendarHeaderCell.defaultProps = {

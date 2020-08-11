@@ -44,12 +44,6 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
   /** A cell can show that it is currently not in the main focus. */
   unfocused?: boolean;
 
-  /** Row number */
-  rowNumber?: number;
-
-  /** Column number */
-  columnNumber?: number;
-
   /**
    * Called on selected item key down.
    *
@@ -61,7 +55,7 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
 
 export type DatepickerCalendarCellStylesProps = Pick<
   DatepickerCalendarCellProps,
-  'disabled' | 'selected' | 'unfocused' | 'reference' | 'columnNumber' | 'rowNumber'
+  'disabled' | 'selected' | 'unfocused' | 'reference'
 >;
 
 export const datepickerCalendarCellClassName = 'ui-datepicker__calendarcell';
@@ -81,19 +75,7 @@ export const DatepickerCalendarCell = compose<
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const {
-      className,
-      design,
-      styles,
-      variables,
-      disabled,
-      selected,
-      unfocused,
-      reference,
-      content,
-      columnNumber,
-      rowNumber,
-    } = props;
+    const { className, design, styles, variables, disabled, selected, unfocused, reference, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
@@ -110,8 +92,6 @@ export const DatepickerCalendarCell = compose<
         disabled,
         unfocused,
         reference,
-        columnNumber,
-        rowNumber,
       }),
       rtl: context.rtl,
     });
@@ -123,8 +103,6 @@ export const DatepickerCalendarCell = compose<
         selected,
         unfocused,
         reference,
-        columnNumber,
-        rowNumber,
       }),
       mapPropsToInlineStyles: () => ({
         className,
@@ -177,8 +155,6 @@ export const DatepickerCalendarCell = compose<
       'variables',
       'unfocused',
       'reference',
-      'columnNumber',
-      'rowNumber',
     ],
   },
 );
@@ -190,8 +166,6 @@ DatepickerCalendarCell.propTypes = {
   selected: PropTypes.bool,
   unfocused: PropTypes.bool,
   reference: PropTypes.bool,
-  columnNumber: PropTypes.number,
-  rowNumber: PropTypes.number,
 };
 
 DatepickerCalendarCell.defaultProps = {

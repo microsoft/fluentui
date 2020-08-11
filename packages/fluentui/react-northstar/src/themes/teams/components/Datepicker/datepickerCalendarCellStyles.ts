@@ -30,9 +30,6 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
 
       ...borderFocusStyles,
 
-      msGridRow: p.rowNumber,
-      msGridColumn: p.columnNumber,
-
       ...(p.unfocused && {
         color: v.unfocusedColor,
       }),
