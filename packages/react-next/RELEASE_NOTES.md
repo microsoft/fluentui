@@ -41,7 +41,6 @@
   - Class extension of converted components is no longer possible.
     - Even for components which have not yet been converted to function components, class extension is no longer supported
 - `ThemeProvider` is required. (new)
-- `Customizer`. (shim)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
 

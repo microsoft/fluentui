@@ -60,6 +60,10 @@ export const RadioStyles = css`
         line-height: var(--type-ramp-base-line-height);
     }
 
+    .control, .checked-indicator {
+      flex-shrink: 0;
+    }
+
     .checked-indicator {
         position: absolute;
         top: 5px;
@@ -68,7 +72,6 @@ export const RadioStyles = css`
         bottom: 5px;
         border-radius: 50%;
         display: inline-block;
-        flex-shrink: 0;
         background: ${neutralForegroundRestBehavior.var};
         fill: ${neutralForegroundRestBehavior.var};
         opacity: 0;

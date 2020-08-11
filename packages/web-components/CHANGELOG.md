@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.3)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.2..@fluentui/web-components_v0.1.3)
+
+### Patches
+
+- fix: tab should have pointer as cursor ([PR #14421](https://github.com/microsoft/fluentui/pull/14421) by chhol@microsoft.com)
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.2)
 

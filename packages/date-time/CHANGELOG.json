@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@uifabric/date-time_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding dayGridProps to weeklyDayPicker so it can pass them through to the underlying day grid. Adding example of marking days to show usage",
+            "author": "lorejoh12@gmail.com",
+            "commit": "a20547d3dc9136acdb7ab32470728ea779d54fe6",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@uifabric/date-time_v7.13.10",
       "version": "7.13.10",

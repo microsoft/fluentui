@@ -6,6 +6,15 @@ export interface SkeletonVariables {
   lineBackground?: string;
   shapeBackground?: string;
   animationBackground?: string;
+  animationBackgroundSecondary?: string;
+
+  // Skeleton Button
+  buttonHeight?: string;
+  buttonWidth?: string;
+  buttonSmallHeight?: string;
+  buttonSmallWidth?: string;
+  buttonBackground?: string;
+  buttonCircularBorderRadius?: string;
 }
 
 export const skeletonVariables = (siteVariables): SkeletonVariables => {
@@ -13,7 +22,16 @@ export const skeletonVariables = (siteVariables): SkeletonVariables => {
     lineBackground: siteVariables.colorScheme.default.background4,
     shapeBackground: siteVariables.colorScheme.default.background4,
     animationBackground: siteVariables.colorScheme.default.background,
+    animationBackgroundSecondary: siteVariables.colorScheme.default.background5,
     lineMargin: `0 0 ${pxToRem(2)} 0`,
     shapeMargin: `0 0 ${pxToRem(2)} 0`,
+
+    // Skeleton Button
+    buttonHeight: pxToRem(32),
+    buttonWidth: pxToRem(96),
+    buttonSmallHeight: pxToRem(24),
+    buttonSmallWidth: pxToRem(72),
+    buttonBackground: siteVariables.colorScheme.default.background4,
+    buttonCircularBorderRadius: pxToRem(999),
   };
 };
