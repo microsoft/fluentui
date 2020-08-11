@@ -245,7 +245,7 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
   linkContentMenu: IStyle;
 
   /**
-   * Styles for a menu item that is a link.
+   * Styles for wrapper of a ConextualMenu text and secondary text.
    */
   textWrapper: IStyle;
 }
