@@ -9,7 +9,6 @@ import { ColorTokens } from '@fluentui/react-theme-provider';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ShorthandProps as ShorthandProps_2 } from '@fluentui/react-compose/lib/next';
 import { SlotProps } from '@fluentui/react-compose';
 
 // @public
@@ -153,9 +152,9 @@ export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps,
 
 // @public (undocumented)
 export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
-    button?: ShorthandProps_2;
-    divider?: ShorthandProps_2;
-    menuButton?: ShorthandProps_2;
+    button?: ShorthandProps;
+    divider?: ShorthandProps;
+    menuButton?: ShorthandProps;
 }
 
 // @public (undocumented)
