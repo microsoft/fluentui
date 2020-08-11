@@ -106,5 +106,9 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   textFieldBackgroundDisabled: string;
   textFieldBorderDisabled: string;
   tabHover: string;
+  teachingBubbleBackground: string;
+  teachingBubblePrimaryButtonHover: string;
+  teachingBubbleSecondaryBackground: string;
+  teachingBubbleText: string;
   variantBorder: string;
 }

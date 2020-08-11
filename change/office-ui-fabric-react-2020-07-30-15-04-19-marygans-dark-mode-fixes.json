@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Accessibility fix for links in dark mode",
-  "packageName": "office-ui-fabric-react",
-  "email": "marygans@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-30T22:04:19.321Z"
-}

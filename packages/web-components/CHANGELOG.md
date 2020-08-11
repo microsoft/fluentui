@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 06 Aug 2020 22:49:13 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.2)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.1..@fluentui/web-components_v0.1.2)
+
+### Patches
+
+- Fix min-width to be equals to thumb size ([PR #14400](https://github.com/microsoft/fluentui/pull/14400) by barahonajm@outlook.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.1)
 

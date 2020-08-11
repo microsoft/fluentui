@@ -40,7 +40,6 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
   public render(): JSX.Element {
     return (
       <div>
-        {/* eslint-disable-next-line react/jsx-no-bind */}
         <div ref={(calendarBtn: HTMLDivElement) => (this._calendarButtonElement = calendarBtn!)}>
           <DefaultButton
             onClick={this._onClick}
