@@ -114,7 +114,20 @@ export class VerticalStackedBarChartBasicExample extends React.Component<Readonl
 
     return (
       <div className={rootStyle}>
-        <VerticalStackedBarChart data={data} chartLabel="Card title" height={350} width={600} />
+        <VerticalStackedBarChart
+          data={data}
+          chartLabel="Card title"
+          height={350}
+          width={600}
+          legendProps={{
+            overflowProps: {
+              focusZoneProps: {
+                'aria-label': 'Legends container',
+              },
+            },
+            allowFocusOnLegends: true,
+          }}
+        />
       </div>
     );
   }
