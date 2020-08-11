@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "show tooltipHost.content when iconMode = true and even when text/name is provided in commandBarItemProps",
+  "comment": "CommandBar: Show tooltipHost.content when iconMode = true even when text/name is provided in commandBarItemProps",
   "packageName": "office-ui-fabric-react",
   "email": "prandala@microsoft.com",
   "dependentChangeType": "patch",
