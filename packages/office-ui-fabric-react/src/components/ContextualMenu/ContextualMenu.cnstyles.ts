@@ -62,6 +62,7 @@ export const getMenuItemStyles = memoizeFunction(
           backgroundColor: 'transparent',
           border: 'none',
           width: '100%',
+          // Without vertical align:
           height: CONTEXTUAL_MENU_ITEM_HEIGHT,
           lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
           display: 'block',
@@ -151,11 +152,18 @@ export const getMenuItemStyles = memoizeFunction(
         textOverflow: 'ellipsis',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
+        // With vertical align:
+        // lineHeight: fonts.medium.fontSize,
       },
       secondaryText: {
         color: theme.palette.neutralSecondary,
+        // Without vertical align:
         paddingLeft: '20px',
         textAlign: 'right',
+        // With vertical align:
+        // margin: '0 4px',
+        // fontSize: fonts.small.fontSize,
+        // lineHeight: fonts.small.fontSize,
       },
       icon: {
         display: 'inline-block',
@@ -240,6 +248,15 @@ export const getMenuItemStyles = memoizeFunction(
           alignItems: 'flex-start',
         },
       ],
+      textWrapper: {
+        display: 'flex',
+        alignItems: 'flex-end',
+        gap: '20px',
+        width: '100%',
+        // With vertical align:
+        // margin: '10px 0',
+        // flexDirection: 'column',
+      },
     };
 
     return concatStyleSets(menuItemStyles);

@@ -31,6 +31,7 @@ describe('ContextualMenu', () => {
         splitPrimary: 'splitPrimaryFoo',
         splitMenu: 'splitMenuFoo',
         linkContentMenu: 'linkContentMenuFoo',
+        textWrapper: 'textWrapperFoo',
       };
     };
   });
