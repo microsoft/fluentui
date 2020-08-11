@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.127.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.127.0)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.126.3..office-ui-fabric-react_v7.127.0)
+
+### Minor changes
+
+- ContextualMenu: Add another prop to allow users to override default focus restoring behavior. This fixes an issue where it would not restore focus correctly when contextualmenu is hidden. ([PR #14351](https://github.com/microsoft/fluentui/pull/14351) by joschect@microsoft.com)
+
+### Patches
+
+- Updating Announced, GroupedList, Coachmark, and ExtendedPeoplePicker examples to use function components ([PR #13912](https://github.com/microsoft/fluentui/pull/13912) by czearing@outlook.com)
+- Prettier fix. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
 
 ## [7.126.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.126.3)
 

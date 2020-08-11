@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.6.0)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v0.5.0..@fluentui/react-theme-provider_v0.6.0)
+
+### Minor changes
+
+- Renaming TokenPlateSet to TokenColorSet ([PR #14455](https://github.com/microsoft/fluentui/pull/14455) by dzearing@hotmail.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v0.5.0)
 

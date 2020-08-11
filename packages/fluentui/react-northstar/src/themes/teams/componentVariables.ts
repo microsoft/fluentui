@@ -90,6 +90,7 @@ export { segmentVariables as Segment } from './components/Segment/segmentVariabl
 export { skeletonVariables as Skeleton } from './components/Skeleton/skeletonVariables';
 export { skeletonVariables as SkeletonLine } from './components/Skeleton/skeletonLineVariables';
 export { skeletonVariables as SkeletonShape } from './components/Skeleton/skeletonShapeVariables';
+export { skeletonVariables as SkeletonButton } from './components/Skeleton/skeletonButtonVariables';
 
 export { sliderVariables as Slider } from './components/Slider/sliderVariables';
 

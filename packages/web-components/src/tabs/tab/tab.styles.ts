@@ -14,7 +14,7 @@ export const TabStyles = css`
         box-sizing: border-box;
         font-family: var(--body-font);
         ${
-          /* Font size, weight, and line height are temporary - 
+          /* Font size, weight, and line height are temporary -
             replace when adaptive typography is figured out */ ''
         } font-size: 12px;
         font-weight: 400;
@@ -27,6 +27,7 @@ export const TabStyles = css`
         align-items: center;
         justify-content: center;
         grid-row: 1;
+        cursor: pointer;
     }
 
     :host([aria-selected="true"]) {

@@ -6,9 +6,6 @@
 
 import * as React from 'react';
 
-// @public (undocumented)
-export type ColorPlateSet = ColorTokens & ColorTokenStates;
-
 // @public
 export type ColorTokens = Partial<{
     background: string;
@@ -20,7 +17,11 @@ export type ColorTokens = Partial<{
     dividerColor: string;
     focusColor: string;
     focusInnerColor: string;
+    opacity: string;
 }>;
+
+// @public (undocumented)
+export type ColorTokenSet = ColorTokens & ColorTokenStates;
 
 // @public
 export type ColorTokenStates = Partial<{
@@ -40,7 +41,7 @@ export type FontTokens = Partial<{
 }>;
 
 // @public (undocumented)
-export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorPlateSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
+export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./types").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => import("react").CSSProperties;
 
 // @public
 export const mergeThemes: (...themes: (Theme | PartialTheme | undefined)[]) => Theme;
@@ -61,7 +62,7 @@ export interface StyleOptions<TProps> {
 }
 
 // @public
-export interface StyleProps<TTokens extends ColorPlateSet = ColorPlateSet> {
+export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     // (undocumented)
     style?: React.CSSProperties;
     // (undocumented)
@@ -74,7 +75,7 @@ export interface Theme {
     stylesheets: string[];
     // (undocumented)
     tokens: {
-        body: ColorPlateSet & TokenSetType;
+        body: ColorTokenSet & TokenSetType;
         [key: string]: TokenSetType;
     };
 }
