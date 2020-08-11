@@ -13,6 +13,7 @@ export * from './FocusZone/focusUtilities';
 
 export { useAccessibility } from './hooks/useAccessibility';
 export { useAutoControlled } from './hooks/useAutoControlled';
+export * from './hooks/useCSS';
 export { useDispatchEffect as unstable_useDispatchEffect } from './hooks/useDispatchEffect';
 export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
 export { useStateManager } from './hooks/useStateManager';
