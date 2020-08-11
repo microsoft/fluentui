@@ -10,8 +10,7 @@ import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator'
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { useBoolean, useSetInterval, useConst } from '@uifabric/react-hooks';
 
-const DELAY = 10;
-const PHOTO_COUNT = 15;
+const PHOTO_COUNT = 40;
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
 const photoStackTokens: IStackTokens = { childrenGap: '6 6' };
@@ -39,9 +38,10 @@ interface IPhoto {
 
 export const AnnouncedLazyLoadingExample = () => {
   const [total, setTotal] = React.useState<number>(0);
-  const [, setTimeSinceLastAnnounce] = React.useState<number>(0);
+  const [announcedMessage, setAnnouncedMessage] = React.useState<string | undefined>(undefined);
   const [loading, { toggle: toggleLoading }] = useBoolean(false);
   const percentComplete = total / PHOTO_COUNT;
+
   const { setInterval, clearInterval } = useSetInterval();
 
   const photos: IPhoto[] = useConst(() => {
@@ -64,22 +64,20 @@ export const AnnouncedLazyLoadingExample = () => {
             return t + 1;
           }
           clearInterval(itemIntervalId);
+          clearInterval(announceIntervalId);
           toggleLoading();
           return t;
         });
-      }, 1000);
+      }, 500);
 
       const announceIntervalId = setInterval(() => {
-        setTimeSinceLastAnnounce(timeSinceLastAnnounce => {
-          if (timeSinceLastAnnounce === DELAY || total === PHOTO_COUNT) {
-            if (total === PHOTO_COUNT) {
-              clearInterval(announceIntervalId);
-            }
-            return 0;
-          }
-          return timeSinceLastAnnounce + 1;
+        // Refering to total directly would cause the effect to dispose.
+        // Instead pull the total value from the setter to apply to the announcement.
+        setTotal((t: number) => {
+          setAnnouncedMessage(`${t} of ${PHOTO_COUNT} photos loaded`);
+          return t;
         });
-      }, 2000);
+      }, 4000);
 
       return () => {
         clearInterval(itemIntervalId);
@@ -94,7 +92,7 @@ export const AnnouncedLazyLoadingExample = () => {
       <Stack tokens={stackTokens}>
         <Text>
           Turn on Narrator and press the button to start loading photos. The number of photos loaded will be announced
-          every 2 seconds.
+          every four seconds.
         </Text>
         <DefaultButton text={loading ? 'Cancel' : 'Load photos'} onClick={toggleLoading} styles={defaultButtonStyles} />
         <ProgressIndicator label={!loading ? 'Paused' : 'Loading photos'} percentComplete={percentComplete} />
@@ -121,7 +119,7 @@ export const AnnouncedLazyLoadingExample = () => {
           </Stack>
         </FocusZone>
       </Stack>
-      {loading && <Announced message={`${total} of ${PHOTO_COUNT} photos loaded`} />}
+      {loading && <Announced message={announcedMessage} />}
     </>
   );
 };
