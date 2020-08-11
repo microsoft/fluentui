@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Messagebar palette update, defaultbutton as primiary styling fix",
+  "packageName": "@uifabric/azure-themes",
+  "email": "jagaheri@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-11T16:42:26.182Z"
+}
