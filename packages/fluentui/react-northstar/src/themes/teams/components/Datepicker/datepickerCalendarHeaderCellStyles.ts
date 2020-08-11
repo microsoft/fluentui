@@ -6,9 +6,12 @@ export const datepickerCalendarHeaderCellStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarHeaderCellStylesProps,
   DatepickerVariables
 > = {
-  root: (): ICSSInJSStyle => {
+  root: ({ props: p }): ICSSInJSStyle => {
     return {
       textAlign: 'center',
+
+      msGridRow: p.rowNumber,
+      msGridColumn: p.columnNumber,
     };
   },
 };

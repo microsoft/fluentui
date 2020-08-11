@@ -35,6 +35,9 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
         font: 'inherit',
       },
 
+      msGridRow: p.rowNumber,
+      msGridColumn: p.columnNumber,
+
       ...(p.unfocused && {
         color: 'rgb(200, 198, 196)',
         fontWeight: '400',

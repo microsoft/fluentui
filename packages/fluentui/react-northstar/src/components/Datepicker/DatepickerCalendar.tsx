@@ -102,6 +102,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     formatMonthDayYear,
     formatMonthYear,
     shortDays,
+    days,
   } = props;
 
   const ElementType = getElementType(props);
@@ -227,8 +228,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     focusDateRef.current?.focus();
   }, [grid]);
 
-  const renderWeekRow = week =>
-    _.map(week, (day: IDay) =>
+  const renderWeekRow = (week: IDay[], weekIdx: number) =>
+    _.map(week, (day: IDay, idx: number) =>
       createShorthand(DatepickerCalendarCell, calendarCell, {
         defaultProps: () =>
           getA11yProps('calendarCell', {
@@ -240,6 +241,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             unfocused: !day.isInMonth,
             reference: compareDates(day.originalDate, today ?? new Date()),
             ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
+            rowNumber: weekIdx + 2,
+            columnNumber: idx + 1,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
@@ -265,6 +268,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         {createShorthand(DatepickerCalendarHeader, header, {
           defaultProps: () => ({
             label: formatMonthYear(gridNavigatedDate),
+            'aria-label': formatMonthYear(gridNavigatedDate),
           }),
           overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
             onPreviousClick: (e, data) => {
@@ -292,12 +296,15 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                       createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
                         defaultProps: () =>
                           getA11yProps('calendarHeaderCell', {
+                            'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                             content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                             key: dayNumber,
+                            rowNumber: 1,
+                            columnNumber: dayNumber + 1,
                           }),
                       }),
                     )}
-                    {_.map(visibledGrid, week => renderWeekRow(week))}
+                    {_.map(visibledGrid, (week, idx) => renderWeekRow(week, idx))}
                   </>
                 ),
               }),
