@@ -10,24 +10,17 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
 
   const renderedItems = React.useMemo(() => items, [items]);
+  const didMountRef = React.useRef(false);
 
-  const useDidUpdate = (callback: VoidFunction, dependencies: TItem[] | undefined) => {
-    const didMountRef = React.useRef(false);
-
-    React.useEffect(() => {
-      // block first call of the hook and forward each consecutive one
-      // We do this so that if defaultSelectedItems are set, they don't get overwritten
-      if (didMountRef.current) {
-        callback();
-      } else {
-        didMountRef.current = true;
-      }
-    }, [dependencies]);
-  };
-
-  useDidUpdate(() => {
-    setItems(selectedItems || []);
-  }, selectedItems);
+  React.useEffect(() => {
+    // block first call of the hook and forward each consecutive one
+    // We do this so that if defaultSelectedItems are set, they don't get overwritten
+    if (didMountRef.current) {
+      setItems(selectedItems || []);
+    } else {
+      didMountRef.current = true;
+    }
+  }, [selectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
     // Intentionally not using .filter here as we want to only remove a specific
