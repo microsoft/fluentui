@@ -135,6 +135,7 @@
   height: var(--button-height);
   min-height: var(--button-minHeight);
 
+  cursor: pointer;
   padding: var(--button-padding);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
@@ -199,6 +200,8 @@
   &._fluid {
     width: 100%;
     max-width: 100%;
+
+    --button-pressed-transform: scale(0.98);
   }
 
   &._size_smallest {
