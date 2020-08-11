@@ -2,8 +2,7 @@ import * as React from 'react';
 import { IRefObject } from '@uifabric/utilities';
 import { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite/FloatingSuggestions.types';
 import { ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
-import { IFocusZoneProps, IInputProps, Autofill } from 'office-ui-fabric-react';
-import { IDragDropEvents } from 'office-ui-fabric-react';
+import { IFocusZoneProps, IInputProps, Autofill, IDragDropEvents } from 'office-ui-fabric-react';
 
 export interface IUnifiedPickerProps<T> {
   /**

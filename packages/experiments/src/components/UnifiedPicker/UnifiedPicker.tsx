@@ -10,6 +10,7 @@ import {
   Autofill,
   IInputProps,
   MarqueeSelection,
+  IDragDropEvents,
 } from 'office-ui-fabric-react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
 import { useQueryString } from './hooks/useQueryString';
@@ -18,7 +19,6 @@ import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 import { copyToClipboard } from '../SelectedItemsList/index';
 import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { IDragDropEvents } from 'office-ui-fabric-react';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
