@@ -95,6 +95,7 @@ export { segmentStyles as Segment } from './components/Segment/segmentStyles';
 export { skeletonStyles as Skeleton } from './components/Skeleton/skeletonStyles';
 export { skeletonLineStyles as SkeletonLine } from './components/Skeleton/skeletonLineStyles';
 export { skeletonShapeStyles as SkeletonShape } from './components/Skeleton/skeletonShapeStyles';
+export { skeletonButtonStyles as SkeletonButton } from './components/Skeleton/skeletonButtonStyles';
 
 export { sliderStyles as Slider } from './components/Slider/sliderStyles';
 
