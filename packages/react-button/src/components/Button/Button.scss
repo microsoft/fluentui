@@ -67,6 +67,7 @@
   --button-pressed-contentColor: var(--button-contentColor);
   --button-pressed-iconColor: var(--button-iconColor);
 
+  --button-disabled-opacity: 1;
   --button-disabled-background: rgb(237, 235, 233);
   --button-disabled-borderColor: var(--button-disabled-background);
   --button-disabled-contentColor: rgb(200, 198, 196);
@@ -113,6 +114,7 @@
  **/
 
 .root {
+  cursor: pointer;
   align-items: center;
   border-style: solid;
   display: inline-flex;
@@ -135,6 +137,7 @@
   height: var(--button-height);
   min-height: var(--button-minHeight);
 
+  cursor: pointer;
   padding: var(--button-padding);
   transition: var(--button-transition);
   white-space: var(--button-whiteSpace, nowrap);
@@ -199,6 +202,8 @@
   &._fluid {
     width: 100%;
     max-width: 100%;
+
+    --button-pressed-transform: scale(0.98);
   }
 
   &._size_smallest {
@@ -226,6 +231,7 @@
 
   &._disabled {
     pointer-events: none;
+    opacity: var(--button-disabled-opacity);
     background-color: var(--button-disabled-background);
     color: var(--button-disabled-contentColor);
     border-color: var(--button-disabled-borderColor);

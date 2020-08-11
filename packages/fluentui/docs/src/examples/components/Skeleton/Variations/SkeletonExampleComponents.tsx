@@ -17,9 +17,9 @@ const SkeletonExampleComponents = () => (
             <Skeleton.Button iconOnly />
             <Skeleton.Button iconOnly size="small" />
           </Flex>
-          <div>
+          <Flex.Item>
             <Skeleton.Button fluid />
-          </div>
+          </Flex.Item>
         </Flex>
       </Skeleton>
     </Flex>
@@ -32,9 +32,9 @@ const SkeletonExampleComponents = () => (
           <Flex gap="gap.medium">
             <Skeleton.Input />
           </Flex>
-          <div>
+          <Flex.Item>
             <Skeleton.Input fluid />
-          </div>
+          </Flex.Item>
         </Flex>
       </Skeleton>
     </Flex>
