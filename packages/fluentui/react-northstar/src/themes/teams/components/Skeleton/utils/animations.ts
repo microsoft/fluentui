@@ -2,6 +2,7 @@ import { pulse, wave } from './keyframes';
 import { ICSSInJSStyle } from '@fluentui/styles';
 import { skeletonLineClassName } from '../../../../../components/Skeleton/SkeletonLine';
 import { skeletonShapeClassName } from '../../../../../components/Skeleton/SkeletonShape';
+import { skeletonButtonClassName } from '../../../../../components/Skeleton/SkeletonButton';
 
 const waveStyles = (primaryColor: string, secondoryColor: string) => ({
   position: 'static',
@@ -24,9 +25,11 @@ export const getAnimations = (primaryColor: string, secondoryColor: string): Rec
   pulse: {
     [`& .${skeletonLineClassName}`]: pulseStyles,
     [`& .${skeletonShapeClassName}`]: pulseStyles,
+    [`& .${skeletonButtonClassName}`]: pulseStyles,
   },
   wave: {
     [`& .${skeletonLineClassName}`]: waveStyles(primaryColor, secondoryColor),
     [`& .${skeletonShapeClassName}`]: waveStyles(primaryColor, secondoryColor),
+    [`& .${skeletonButtonClassName}`]: waveStyles(primaryColor, secondoryColor),
   },
 });
