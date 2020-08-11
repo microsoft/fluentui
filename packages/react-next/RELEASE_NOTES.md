@@ -29,7 +29,6 @@
 
 - Removed deprecated `focusZoneProps` and `doNotContainWithinFocusZone` from types.
 - Removed uses of `FocusZone` from render and the public-api.
-- Added OverflowButton.base.tsx
 
 ### Pivot
 

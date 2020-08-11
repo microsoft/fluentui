@@ -1708,9 +1708,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 // @public (undocumented)
-export const OverflowButtonBase: (props: IOverflowSetProps) => JSX.Element;
-
-// @public (undocumented)
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
