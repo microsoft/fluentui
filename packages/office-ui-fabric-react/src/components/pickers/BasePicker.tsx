@@ -199,9 +199,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
   public dismissSuggestions = (ev?: any): void => {
     const selectItemFunction = () => {
-      let addItemOnDismimss: boolean | void = true;
+      let addItemOnDismiss: boolean | void = true;
       if (this.props.onDismiss) {
-        addItemOnDismimss = this.props.onDismiss(
+        addItemOnDismiss = this.props.onDismiss(
           ev,
           this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined,
         );
@@ -210,7 +210,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       if (!ev || (ev && !ev.defaultPrevented)) {
         // Select the first suggestion if one is available and permitted by onDismiss when user leaves.
         if (
-          addItemOnDismimss !== false &&
+          addItemOnDismiss !== false &&
           this.canAddItems() &&
           this.suggestionStore.hasSelectedSuggestion() &&
           this.state.suggestedDisplayValue
