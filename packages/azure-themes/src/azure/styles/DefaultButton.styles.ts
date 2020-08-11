@@ -21,6 +21,36 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           color: semanticColors.buttonTextHovered,
           borderColor: semanticColors.inputBorderHovered,
         },
+        '&.ms-Button--primary.is-disabled': {
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+          color: semanticColors.primaryButtonTextDisabled,
+          border: `${StyleConstants.borderWidth} solid
+          ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+        },
+        '&.ms-Button--primary': {
+          backgroundColor: semanticColors.primaryButtonBackground,
+          height: StyleConstants.inputControlHeight,
+          padding: '0px 16px',
+          color: semanticColors.primaryButtonText,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
+          selectors: {
+            ':hover': {
+              backgroundColor: semanticColors.primaryButtonBackgroundHovered,
+              color: semanticColors.primaryButtonTextHovered,
+              borderColor: semanticColors.primaryButtonBackgroundHovered,
+            },
+            ':active': {
+              backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+              color: semanticColors.primaryButtonTextPressed,
+              borderColor: semanticColors.primaryButtonBackgroundPressed,
+            },
+            ':focus': {
+              backgroundColor: semanticColors.primaryButtonBackground,
+              color: semanticColors.primaryButtonText,
+              borderColor: extendedSemanticColors.primaryCompoundButtonBorder,
+            },
+          },
+        },
       },
     },
     rootDisabled: {
