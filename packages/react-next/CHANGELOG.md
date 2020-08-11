@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.83)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.80..@fluentui/react-next_v8.0.0-alpha.83)
+
+### Changes
+
+- Re-exporting MenuButton, SplitButton and ToggleButton in react-next. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.80)
 

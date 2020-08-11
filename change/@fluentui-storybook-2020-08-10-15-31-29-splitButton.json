@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding divider customization in Fluent v8 theme.",
-  "packageName": "@fluentui/storybook",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-10T22:31:29.122Z"
-}

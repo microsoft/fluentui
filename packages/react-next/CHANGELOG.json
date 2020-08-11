@@ -2,6 +2,21 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.83",
+      "version": "8.0.0-alpha.83",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Re-exporting MenuButton, SplitButton and ToggleButton in react-next.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b2a8ecd1bd60d7d4111fa12e6ecda0855dc03032",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.80",
       "version": "8.0.0-alpha.80",
