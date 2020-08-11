@@ -227,8 +227,8 @@
   }
 
   &._disabled {
+    pointer-events: none;
     opacity: var(--button-disabled-opacity);
-    cursor: not-allowed;
     background-color: var(--button-disabled-background);
     color: var(--button-disabled-contentColor);
     border-color: var(--button-disabled-borderColor);
