@@ -33,7 +33,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   onMenuDismiss?: () => void;
 };
 
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader' | 'menu'> {
+export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
   menu: ExpandedState['menu'];
 }
 

@@ -113,6 +113,7 @@ export type ExpandedState = {
     onMenuDismiss?: () => void;
     onKeyDown?: (ev: React.KeyboardEvent) => void;
     'aria-expanded'?: boolean;
+    'aria-haspopup'?: boolean;
     menu: {
         target?: React.Ref<HTMLElement | undefined>;
         onDismiss?: () => void;
@@ -135,7 +136,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
 export const menuButtonShorthandProps: string[];
 
 // @public (undocumented)
-export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader' | 'menu'> {
+export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader'> {
     // (undocumented)
     menu: ExpandedState['menu'];
 }
@@ -145,6 +146,28 @@ export type MenuButtonTokens = ButtonTokenSet;
 
 // @public (undocumented)
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
+// @public (undocumented)
+export const SplitButton: React.ForwardRefExoticComponent<Pick<SplitButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
+    button?: ShorthandProps;
+    divider?: ShorthandProps;
+    menuButton?: ShorthandProps;
+}
+
+// @public (undocumented)
+export const splitButtonShorthandProps: string[];
+
+// @public (undocumented)
+export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuButtonState {
+    // (undocumented)
+    menuButtonRef?: React.RefObject<HTMLButtonElement>;
+}
+
+// @public (undocumented)
+export type SplitButtonTokens = MenuButtonTokens;
 
 // @public
 export const ToggleButton: React.ForwardRefExoticComponent<Pick<ToggleButtonProps, string | number> & React.RefAttributes<HTMLElement>>;
@@ -195,6 +218,18 @@ export const useMenuButtonClasses: (state: Record<string, any>) => void;
 
 // @public (undocumented)
 export const useMenuButtonState: (state: MenuButtonState) => void;
+
+// @public
+export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => {
+    state: SplitButtonState;
+    render: (state: SplitButtonState) => JSX.Element;
+};
+
+// @public (undocumented)
+export const useSplitButtonClasses: (state: Record<string, any>) => void;
+
+// @public (undocumented)
+export const useSplitButtonState: (state: SplitButtonState) => void;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: import("react").Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => {
