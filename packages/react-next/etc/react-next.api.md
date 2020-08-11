@@ -15,7 +15,6 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compat/Button';
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IFocusZoneProps as IFocusZoneProps_2 } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
@@ -28,8 +27,6 @@ import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positionin
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { ISettings } from 'office-ui-fabric-react/lib/Utilities';
-import { ISettingsFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
@@ -185,9 +182,6 @@ export enum ContextualMenuItemType {
     // (undocumented)
     Section = 3
 }
-
-// @public
-export const Customizer: React.FunctionComponent<ICustomizerProps>;
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -836,14 +830,6 @@ export interface IContextualMenuStyles {
 export interface IContextualMenuSubComponentStyles {
     callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
     menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
-}
-
-// @public (undocumented)
-export interface ICustomizerProps {
-    contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
-    disableThemeProvider?: boolean;
-    scopedSettings?: ISettings | ISettingsFunction;
-    settings?: ISettings | ISettingsFunction;
 }
 
 // @public (undocumented)
@@ -2353,8 +2339,11 @@ export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, op
 
 
 export * from "@fluentui/react-button/lib/Button";
+export * from "@fluentui/react-button/lib/MenuButton";
+export * from "@fluentui/react-button/lib/SplitButton";
+export * from "@fluentui/react-button/lib/ToggleButton";
 export * from "@fluentui/react-tabs/lib/Pivot";
-export * from "@fluentui/react-theme-provider/lib/compat";
+export * from "@fluentui/react-theme-provider";
 export * from "@uifabric/date-time/lib/Calendar";
 export * from "@uifabric/date-time/lib/DatePicker";
 export * from "office-ui-fabric-react/lib/ActivityItem";

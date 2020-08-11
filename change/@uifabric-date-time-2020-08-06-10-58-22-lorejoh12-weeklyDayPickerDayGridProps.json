@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "adding dayGridProps to weeklyDayPicker so it can pass them through to the underlying day grid. Adding example of marking days to show usage",
-  "packageName": "@uifabric/date-time",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-06T17:58:22.931Z"
-}
