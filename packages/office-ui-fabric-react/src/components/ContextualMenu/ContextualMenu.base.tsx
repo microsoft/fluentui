@@ -361,7 +361,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
-            // eslint-disable-next-line react/jsx-no-bind
             ref={(host: HTMLDivElement) => (this._host = host)}
             id={id}
             className={this._classNames.container}
@@ -426,6 +425,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       containsFocus: this._focusingPreviousElement,
       originalElement: this._previousActiveElement,
     });
+
     this._focusingPreviousElement = false;
 
     if (this.props.onMenuDismissed) {
@@ -448,12 +448,16 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     containsFocus: boolean;
     originalElement: HTMLElement | Window | undefined;
   }) => {
-    if (options && options.containsFocus && this._previousActiveElement) {
-      // Make sure that the focus method actually exists
-      // In some cases the object might exist but not be a real element.
-      // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-      if (this._previousActiveElement.focus) {
-        this._previousActiveElement.focus();
+    if (this.props.onRestoreFocus) {
+      this.props.onRestoreFocus(options);
+    } else {
+      if (options && options.containsFocus && this._previousActiveElement) {
+        // Make sure that the focus method actually exists
+        // In some cases the object might exist but not be a real element.
+        // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
+        if (this._previousActiveElement.focus) {
+          this._previousActiveElement.focus();
+        }
       }
     }
   };

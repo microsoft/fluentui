@@ -210,7 +210,6 @@ export const CalendarMonthBase = React.forwardRef(
         <div className={classNames.headerContainer}>
           <button
             className={classNames.currentItemButton}
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={onHeaderSelect}
             onKeyDown={onButtonKeyDown(onHeaderSelect)}
             aria-label={headerAriaLabel}

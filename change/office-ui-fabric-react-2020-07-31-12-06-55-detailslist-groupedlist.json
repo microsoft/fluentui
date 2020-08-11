@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add focuszone props to GroupedList and change details list to only use a single focus zone",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-07-31T19:06:55.073Z"
-}

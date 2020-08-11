@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Toggle: fix pill HC style when selected",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-03T21:14:33.761Z"
-}

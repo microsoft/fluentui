@@ -106,8 +106,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   }
 
   public componentDidMount(): void {
-    this._fitParentContainer();
-    this._drawGraph();
+    this._fitParentContainer(true);
   }
 
   public componentWillUnmount(): void {
@@ -162,7 +161,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return (
       <div
         id={`d3GroupedChart_${this._uniqLineText}`}
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         className={this._classNames.root}
       >
@@ -170,14 +168,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
           <svg width={svgDimensions.width} height={svgDimensions.height} id={this._uniqLineText}>
             <g
               id="xAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setXAxis(node, x0Axis)}
               className={this._classNames.xAxis}
               transform={`translate(0, ${svgDimensions.height - 35})`}
             />
             <g
               id="yAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               className={this._classNames.yAxis}
               transform={`translate(40, 0)`}
@@ -186,7 +182,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
           </svg>
         </FocusZone>
         <div
-          // eslint-disable-next-line react/jsx-no-bind
           ref={(e: HTMLDivElement) => (this.legendContainer = e)}
           id={this._uniqLineText}
           className={this._classNames.legendContainer}
@@ -223,7 +218,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._barWidth = this.props.barwidth!;
   }
 
-  private _fitParentContainer(): void {
+  private _fitParentContainer(calledFromDidMount?: boolean): void {
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
       const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
@@ -240,10 +235,17 @@ export class GroupedVerticalBarChartBase extends React.Component<
       const shouldResize =
         containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
       if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
+        this.setState(
+          {
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - legendContainerHeight,
+          },
+          () => {
+            if (calledFromDidMount) {
+              this._drawGraph();
+            }
+          },
+        );
       }
     });
   }
