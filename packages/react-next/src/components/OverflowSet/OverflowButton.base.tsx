@@ -1,17 +1,8 @@
 import * as React from 'react';
 import { KeytipManager } from 'office-ui-fabric-react/lib/utilities/keytips/KeytipManager';
 import { IKeytipProps } from '../../Keytip';
-import { IProcessedStyleSet } from '../../Styling';
-import {
-  IOverflowSetItemProps,
-  IOverflowSetProps,
-  IOverflowSetStyles,
-  IOverflowSetStyleProps,
-} from './OverflowSet.types';
-import { classNamesFunction } from '../../Utilities';
+import { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 import { useConst } from '@uifabric/react-hooks';
-
-const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
 const useKeytipRegistrations = (
   persistedKeytips: { [uniqueID: string]: IKeytipProps },
@@ -37,8 +28,7 @@ const useKeytipRegistrations = (
 
 export const OverflowButtonBase = (props: IOverflowSetProps) => {
   const keytipManager: KeytipManager = KeytipManager.getInstance();
-  const { className, styles, vertical, overflowItems, keytipSequences } = props;
-  const classNames: IProcessedStyleSet<IOverflowSetStyles> = getClassNames(styles, { className, vertical });
+  const { className, overflowItems, keytipSequences } = props;
   const persistedKeytips = useConst<{ [uniqueID: string]: IKeytipProps }>({});
 
   // Gets the subMenu for an overflow item
@@ -108,5 +98,5 @@ export const OverflowButtonBase = (props: IOverflowSetProps) => {
 
   useKeytipRegistrations(persistedKeytips, keytipManager);
 
-  return <div className={classNames.overflowButton}>{props.onRenderOverflowButton(newOverflowItems)}</div>;
+  return <div className={className}>{props.onRenderOverflowButton(newOverflowItems)}</div>;
 };
