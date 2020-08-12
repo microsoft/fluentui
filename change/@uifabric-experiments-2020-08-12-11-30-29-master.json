@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Adding a two well example for UPP",
+  "packageName": "@uifabric/experiments",
+  "email": "sadelson@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-12T18:30:29.746Z"
+}
