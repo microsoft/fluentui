@@ -196,7 +196,9 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
-    initialValue: expandedItemsGenerator(items),
+    initialValue: props.activeItemIds
+      ? [...expandedItemsGenerator(items), ...props.activeItemIds]
+      : expandedItemsGenerator(items),
   });
 
   const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled<string[]>({
@@ -243,7 +245,6 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         ...stableProps.current,
         selectedItemIds: updateSelectedItemIds,
       });
-
       setSelectedItemIdsState(updateSelectedItemIds);
     },
     [stableProps, setSelectedItemIdsState],
@@ -251,11 +252,15 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
   const setActiveItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateActiveItemIds: (activeItemIds: string[]) => string[]) => {
-      _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
-        ...stableProps.current,
-        activeItemIds: updateActiveItemIds,
+      let nextActiveItemIds;
+      setActiveItemIdsState(prevActiveItemIds => {
+        nextActiveItemIds = updateActiveItemIds(prevActiveItemIds);
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+        return nextActiveItemIds;
       });
-      setActiveItemIdsState(updateActiveItemIds);
     },
     [stableProps, setActiveItemIdsState],
   );

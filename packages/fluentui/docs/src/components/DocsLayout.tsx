@@ -100,7 +100,7 @@ class DocsLayout extends React.Component<any, any> {
               {
                 // adjust Teams' theme to Semantic UI's font size scheme
                 componentVariables: {
-                  HierarchicalTreeItem: {
+                  TreeItem: {
                     padding: `${pxToRem(7)} ${pxToRem(16)}`,
                     textDecoration: 'none',
                     fontSize: pxToRem(12),
@@ -113,13 +113,13 @@ class DocsLayout extends React.Component<any, any> {
                   },
                 },
                 componentStyles: {
-                  HierarchicalTreeItem: {
+                  TreeItem: {
                     root: ({ variables: v, props: p }) => ({
                       ...(!p.items && treeItemStyle),
                       ...(p.items && treeSectionStyle),
                     }),
                   },
-                  HierarchicalTreeTitle: {
+                  TreeTitle: {
                     root: {
                       display: 'block',
                       width: '100%',
