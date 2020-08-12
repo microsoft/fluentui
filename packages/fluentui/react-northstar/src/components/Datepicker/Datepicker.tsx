@@ -71,6 +71,9 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
 
   /** Should calendar be initially opened or closed. */
   defaultCalendarOpenState?: boolean;
+
+  /** Controls the calendar's open state. */
+  calendarOpenState?: boolean;
 }
 
 export type DatepickerStylesProps = never;
@@ -99,9 +102,15 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
+  const convertBoolToOpenState = (flag: boolean): OpenState => {
+    if (flag === undefined || flag === null) {
+      return undefined;
+    }
+    return flag ? OpenState.Open : OpenState.Closed;
+  };
   const [openState, setOpenState] = useAutoControlled<OpenState>({
-    defaultValue: props.defaultCalendarOpenState ? OpenState.Open : OpenState.Closed,
-    value: undefined,
+    defaultValue: convertBoolToOpenState(props.defaultCalendarOpenState),
+    value: convertBoolToOpenState(props.calendarOpenState),
     initialValue: OpenState.Closed,
   });
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
@@ -245,7 +254,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         >
           {createShorthand(Input, input, {
             defaultProps: () => ({
-              disabled: props.disabled || !props.allowManualInput,
+              disabled: props.disabled,
               error: !!error,
               value: formattedDate,
             }),

@@ -1,7 +1,7 @@
 import { Datepicker } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const DatepickerExampleLocaliation = () => (
+const DatepickerExampleLocalization = () => (
   <Datepicker
     shortDays={['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت']}
     months={[
@@ -21,4 +21,4 @@ const DatepickerExampleLocaliation = () => (
   />
 );
 
-export default DatepickerExampleLocaliation;
+export default DatepickerExampleLocalization;

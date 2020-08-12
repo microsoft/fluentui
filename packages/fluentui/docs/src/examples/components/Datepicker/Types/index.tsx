@@ -11,8 +11,8 @@ const Types = () => (
       examplePath="components/Datepicker/Types/DatepickerExample"
     />
     <ComponentExample
-      title="Open"
-      description="The calendar starts with an open state."
+      title="Controlled Open"
+      description="The calendar's open state can be controlled by its parent."
       examplePath="components/Datepicker/Types/DatepickerExampleOpen"
     />
     <ComponentExample

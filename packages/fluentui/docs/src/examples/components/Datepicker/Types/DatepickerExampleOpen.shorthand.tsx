@@ -1,6 +1,11 @@
-import { Datepicker } from '@fluentui/react-northstar';
+import { useBooleanKnob } from '@fluentui/docs-components';
 import * as React from 'react';
+import { Datepicker } from '@fluentui/react-northstar';
 
-const DatepickerExampleOpen = () => <Datepicker defaultCalendarOpenState={true} />;
+const PopupControlledExample = () => {
+  const [open] = useBooleanKnob({ name: 'open' });
 
-export default DatepickerExampleOpen;
+  return <Datepicker calendarOpenState={open} />;
+};
+
+export default PopupControlledExample;

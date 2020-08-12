@@ -1,6 +1,6 @@
 import { Datepicker } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const DatepickerExampleDisabled = () => <Datepicker required={true} />;
+const DatepickerExampleRequired = () => <Datepicker required={true} />;
 
-export default DatepickerExampleDisabled;
+export default DatepickerExampleRequired;
