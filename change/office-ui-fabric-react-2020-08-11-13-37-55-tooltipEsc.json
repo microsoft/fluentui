@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Tooltip: Stopping propagation when clicking Esc on tooltip host.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-11T20:37:55.359Z"
-}
