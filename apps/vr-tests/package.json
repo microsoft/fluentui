@@ -17,6 +17,7 @@
     "@fluentui/react-button": "^0.9.0",
     "@fluentui/react-icons": "^0.1.46",
     "@fluentui/react-next": "^8.0.0-alpha.83",
+    "@fluentui/react-theme-provider": "^0.6.0",
     "@uifabric/example-data": "^7.1.1",
     "@uifabric/experiments": "^7.27.21",
     "@uifabric/react-cards": "^0.110.20",
