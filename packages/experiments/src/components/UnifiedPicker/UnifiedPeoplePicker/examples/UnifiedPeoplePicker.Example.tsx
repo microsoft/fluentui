@@ -180,3 +180,12 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     </>
   );
 };
+
+export const DoubleUnifiedPeoplePickerExample = (): JSX.Element => {
+  return (
+    <>
+      To: <UnifiedPeoplePickerExample />
+      CC: <UnifiedPeoplePickerExample />
+    </>
+  );
+};

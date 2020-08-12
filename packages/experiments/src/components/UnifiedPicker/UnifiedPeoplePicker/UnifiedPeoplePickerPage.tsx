@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { UnifiedPeoplePickerExample } from './examples/UnifiedPeoplePicker.Example';
+import { UnifiedPeoplePickerExample, DoubleUnifiedPeoplePickerExample } from './examples/UnifiedPeoplePicker.Example';
 
 const UnifiedPeoplePickerExampleCode = require('!raw-loader!./examples/UnifiedPeoplePicker.Example') as string;
 
@@ -12,8 +12,12 @@ export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageP
         componentName="UnifiedPeoplePicker"
         exampleCards={
           <div>
-            <ExampleCard title="Basic" isOptIn={true} code={UnifiedPeoplePickerExampleCode}>
+            <ExampleCard title="Single Well" isOptIn={true} code={UnifiedPeoplePickerExampleCode}>
               <UnifiedPeoplePickerExample />
+            </ExampleCard>
+
+            <ExampleCard title="Double Well" isOptIn={true} code={UnifiedPeoplePickerExampleCode}>
+              <DoubleUnifiedPeoplePickerExample />
             </ExampleCard>
           </div>
         }
