@@ -118,7 +118,7 @@ function useBeakPosition(
   targetAlignment: RectangleEdge | undefined,
   targetPosition: RectangleEdge | undefined,
 ) {
-  const { theme } = props;
+  const isRTL = getRTL(props.theme);
 
   return React.useMemo(() => {
     const beakDirection = targetPosition === undefined ? RectangleEdge.bottom : getOppositeEdge(targetPosition);
@@ -178,14 +178,14 @@ function useBeakPosition(
         }
 
         if (beakDirection === RectangleEdge.left) {
-          if (getRTL(theme)) {
+          if (isRTL) {
             beakPosition.right = distanceAdjustment;
           } else {
             beakPosition.left = distanceAdjustment;
           }
           transformOriginX = 'left';
         } else {
-          if (getRTL(theme)) {
+          if (isRTL) {
             beakPosition.left = distanceAdjustment;
           } else {
             beakPosition.right = distanceAdjustment;
@@ -196,7 +196,7 @@ function useBeakPosition(
     }
 
     return [beakPosition as Readonly<BeakPosition>, `${transformOriginX} ${transformOriginY}`] as const;
-  }, [targetAlignment, targetPosition, theme]);
+  }, [targetAlignment, targetPosition, isRTL]);
 }
 
 function useListeners(
