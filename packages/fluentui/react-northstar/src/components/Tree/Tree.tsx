@@ -297,7 +297,6 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   const onTitleClick = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
       const treeItemHasSubtree = hasSubtree(treeItemProps);
-
       if (!treeItemProps) {
         return;
       }

@@ -145,9 +145,6 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
-        e.stopPropagation();
-
         handleTitleClick(e);
       },
       focusParent: e => {
@@ -215,6 +212,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const handleTitleClick = e => {
     onTitleClick(e, props);
+    _.invoke(props, 'onClick', e, props);
     _.invoke(props, 'onTitleClick', e, props);
   };
   const handleFocusFirstChild = e => {

@@ -15,10 +15,10 @@ import {
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { NavLink, NavLinkProps, withRouter, RouteComponentProps } from 'react-router-dom';
+import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 import { SidebarTitle } from './SidebarTitle';
 import config from '../../config';
@@ -183,10 +183,10 @@ const baseTreeItems: TreeProps['items'] = [
       {
         id: 'intro',
         title: {
+          as: NavLink,
           content: 'Introduction',
           exact: true,
           activeClassName: 'active',
-          as: NavLink,
           to: '/',
         },
       },
@@ -391,30 +391,6 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
     };
   }, [handleDocumentKeyDown, props.location.pathname, treeItems]);
 
-  const keyDownCallback = e => {
-    if (getCode(e) !== keyboardKey.Enter) {
-      return;
-    }
-    e.stopPropagation();
-    e.target.click();
-  };
-
-  const addItemKeyCallbacks = React.useCallback((sections: ShorthandValue<any>[]) => {
-    for (let i = 0; i < sections.length; i++) {
-      const category = sections[i];
-      if ('items' in category) {
-        addItemKeyCallbacks(category.items);
-      } else {
-        if (!('title' in category)) {
-          continue;
-        }
-        category['onKeyDown'] = e => {
-          keyDownCallback(e);
-        };
-      }
-    }
-  }, []);
-
   const allSections = React.useMemo(
     () =>
       treeItems
@@ -429,42 +405,6 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         .filter((section: TreeItemProps) => Array.isArray(section.items) && section.items.length > 0),
     [regexQuery, treeItems],
   );
-
-  const handleItemClick = React.useCallback(
-    (e: React.SyntheticEvent, data: TreeItemProps) => {
-      if (query) {
-        setQuery('');
-        const at = (data.title as NavLinkProps).to as string;
-        const id = findActiveCategoryId(at, treeItems);
-        setActiveItemIds(prev => (prev.includes(id) ? prev : [...prev, id]));
-      }
-    },
-    [query, treeItems],
-  );
-
-  const addItemOnClickCallbacks = React.useCallback(
-    (sections: ShorthandValue<any>[]) => {
-      for (let i = 0; i < sections.length; i++) {
-        const category = sections[i];
-        if ('items' in category) {
-          addItemOnClickCallbacks(category.items);
-        } else {
-          if (!('title' in category)) {
-            continue;
-          }
-          category['onTitleClick'] = (e, data) => {
-            handleItemClick(e, data);
-          };
-        }
-      }
-    },
-    [handleItemClick],
-  );
-
-  React.useEffect(() => {
-    addItemKeyCallbacks(treeItems);
-    addItemOnClickCallbacks(treeItems);
-  }, [addItemKeyCallbacks, addItemOnClickCallbacks, treeItems]);
 
   React.useEffect(() => {
     if (query.length) {

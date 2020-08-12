@@ -120,8 +120,8 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     debugName: TreeTitle.displayName,
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
-        e.stopPropagation();
+        // e.preventDefault();
+        // e.stopPropagation();
         handleClick(e);
       },
       performSelection: e => {
