@@ -175,6 +175,7 @@ export function renamePropInSpread(
           } else {
             attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
           }
+          console.log('adding attribute');
           element.addAttribute({
             name: replacementName,
             initializer: changeValueMap
