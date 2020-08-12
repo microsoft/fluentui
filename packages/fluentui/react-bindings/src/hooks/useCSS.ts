@@ -14,7 +14,8 @@ import { useFluentContext } from '../context';
 // Types
 //
 
-export type UseCSSStyle = Omit<ICSSInJSStyle, 'animationName'>;
+// Inline keyframe definitions are not supported by useCSS() hook
+export type UseCSSStyle = Omit<ICSSInJSStyle, 'animationName'> & { animationName?: string };
 export type UseCSSStyleInput = string | UseCSSStyle | ((theme: ThemePrepared) => UseCSSStyle);
 
 //
@@ -75,7 +76,7 @@ export function useCSS(...styles: UseCSSStyleInput[]) {
 
   // serializeStyles() will concat all passed styles and will resolve functions
   const serializedStyles = serializeStyles(resolvedStyles, stylesCache, theme);
-  // ".name" is not a valid CSS classname
+  // ".name" is not a valid CSS classname as it can start from a digit
   const serializedClassName = `${CSS_PREFIX}${serializedStyles.name}`;
 
   stylesCache[serializedClassName] = serializedStyles.styles;
