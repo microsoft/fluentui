@@ -119,8 +119,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
-    //unselectAll();
-
     if (ev.which !== KeyCodes.backspace) {
       return;
     }
