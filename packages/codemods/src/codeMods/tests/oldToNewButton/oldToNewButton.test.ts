@@ -39,5 +39,6 @@ describe('Persona props mod tests', () => {
     tags.forEach(val => {
       expect(val.getText().includes('checked={toggled}')).toBeTruthy();
     });
+    console.log(file);
   });
 });
