@@ -106,7 +106,7 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
       {createShorthand(Text, label, {
         defaultProps: () =>
           getA11yProps('label', {
-            weight: 'bold',
+            className: classes.month,
           }),
       })}
 
