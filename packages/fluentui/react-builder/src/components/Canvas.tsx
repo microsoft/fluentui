@@ -17,7 +17,6 @@ export type CanvasProps = {
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
   onKeyPress?: (KeyboardEvent) => void;
-  onKeyRelease?: (KeyboardEvent) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
@@ -37,7 +36,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onMouseMove,
   onMouseUp,
   onKeyPress,
-  onKeyRelease,
   onSelectComponent,
   selectedComponent,
   onCloneComponent,
@@ -110,10 +108,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
   const handleKeyPress = e => {
     onKeyPress(e);
-  };
-
-  const handleKeyRelease = e => {
-    onKeyRelease(e);
   };
 
   const debugSize = '8px';
@@ -300,7 +294,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               />
             )}
             <EventListener type="keydown" listener={handleKeyPress} target={document} />
-            <EventListener type="keyup" listener={handleKeyRelease} target={document} />
             <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}

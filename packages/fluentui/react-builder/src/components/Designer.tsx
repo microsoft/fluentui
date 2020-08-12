@@ -441,11 +441,10 @@ export const Designer: React.FunctionComponent = () => {
     // FIXME: remove tree_lz from current URL
   }, [dispatch]);
 
-  const [pressedKeys, setPressedKeys] = React.useState([]);
   const hotkeys = {
-    'Control+z': handleUndo,
+    'Ctrl+z': handleUndo,
     'Shift+P': handleGoToParentComponent,
-    'Control+Shift+Z': handleRedo,
+    'Ctrl+Shift+Z': handleRedo,
     Delete: handleDeleteComponent,
     'Shift+D': () => {
       setMode('design');
@@ -466,42 +465,14 @@ export const Designer: React.FunctionComponent = () => {
 
   const handleKeyDown = React.useCallback(
     e => {
-      if (!pressedKeys.includes(e.key)) {
-        pressedKeys.push(e.key);
-        pressedKeys.sort();
-        setPressedKeys(pressedKeys);
-      }
-
-      for (const [keyCombination, action] of Object.entries(hotkeys)) {
-        const keys = keyCombination.split('+');
-        keys.sort();
-        if (keys.length === pressedKeys.length) {
-          let fireEvent = true;
-          for (let i = 0; i < keys.length; i++) {
-            if (keys[i] !== pressedKeys[i]) {
-              fireEvent = false;
-              break;
-            }
-          }
-          if (fireEvent) {
-            action();
-            break;
-          }
-        }
-      }
+      let command = '';
+      command += e.altKey ? 'Alt+' : '';
+      command += e.ctrlKey ? 'Ctrl+' : '';
+      command += e.shiftKey ? 'Shift+' : '';
+      command += e.key;
+      hotkeys.hasOwnProperty(command) && hotkeys[command]();
     },
-    [pressedKeys, hotkeys],
-  );
-
-  const handleKeyUp = React.useCallback(
-    e => {
-      if (pressedKeys.includes(e.key)) {
-        const index = pressedKeys.indexOf(e.key);
-        pressedKeys.splice(index, 1);
-        setPressedKeys(pressedKeys);
-      }
-    },
-    [pressedKeys],
+    [hotkeys],
   );
 
   const selectedComponent =
@@ -523,7 +494,6 @@ export const Designer: React.FunctionComponent = () => {
       }}
     >
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
-      <EventListener type="keyup" listener={handleKeyUp} target={document} />
       {draggingElement && (
         <>
           <EventListener type="mousemove" listener={handleDrag} target={document} />
@@ -641,7 +611,6 @@ export const Designer: React.FunctionComponent = () => {
                   onMouseMove={handleDrag}
                   onMouseUp={handleCanvasMouseUp}
                   onKeyPress={handleKeyDown}
-                  onKeyRelease={handleKeyUp}
                   onSelectComponent={handleSelectComponent}
                   onDropPositionChange={handleDropPositionChange}
                   jsonTree={jsonTree}
