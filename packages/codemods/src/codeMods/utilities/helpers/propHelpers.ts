@@ -76,6 +76,7 @@ export function renamePropInSpread(
            deconstruct it from the spread prop if not. */
           const variableStatementWithSpreadProp = parentContainer.getVariableStatement(
             (declaration: VariableStatement) => {
+              // needs to exclude propspreadname on the left side
               const elem = declaration.getFirstDescendantByKind(SyntaxKind.VariableDeclaration);
               return (
                 elem !== undefined &&

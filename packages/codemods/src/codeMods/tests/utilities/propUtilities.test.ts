@@ -188,6 +188,7 @@ describe('Props Utilities Test', () => {
         tags.forEach(val => {
           expect(val.getText().includes('size={__migEnumMap[type]}')).toBeTruthy();
         });
+        console.log(file);
       });
     });
   });
