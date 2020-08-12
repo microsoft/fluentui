@@ -35,7 +35,7 @@ function getMountOptions(renderGlobal: RendererRenderGlobal, rtl: boolean = fals
 }
 
 describe('useCSS', () => {
-  it('returns a className that contains', () => {
+  it('returns a className', () => {
     const styles = [{ color: 'red' }];
     const wrapper = mount(<TestComponent styles={styles} />);
 
