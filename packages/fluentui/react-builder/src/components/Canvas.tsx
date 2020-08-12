@@ -16,7 +16,7 @@ export type CanvasProps = {
   onDropPositionChange: (dropParent: JSONTreeElement, dropIndex: number) => void;
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
-  onKeyPress?: (KeyboardEvent) => void;
+  onKeyDown?: (KeyboardEvent) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
@@ -35,7 +35,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onDropPositionChange,
   onMouseMove,
   onMouseUp,
-  onKeyPress,
+  onKeyDown,
   onSelectComponent,
   selectedComponent,
   onCloneComponent,
@@ -106,8 +106,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [iframeCoordinatesToWindowCoordinates, onMoveComponent],
   );
 
-  const handleKeyPress = e => {
-    onKeyPress(e);
+  const handleKeyDown = e => {
+    onKeyDown(e);
   };
 
   const debugSize = '8px';
@@ -293,7 +293,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 onDropPositionChange={onDropPositionChange}
               />
             )}
-            <EventListener type="keydown" listener={handleKeyPress} target={document} />
+            <EventListener type="keydown" listener={handleKeyDown} target={document} />
             <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}

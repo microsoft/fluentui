@@ -610,7 +610,7 @@ export const Designer: React.FunctionComponent = () => {
                   isSelecting={isSelecting || !!draggingElement}
                   onMouseMove={handleDrag}
                   onMouseUp={handleCanvasMouseUp}
-                  onKeyPress={handleKeyDown}
+                  onKeyDown={handleKeyDown}
                   onSelectComponent={handleSelectComponent}
                   onDropPositionChange={handleDropPositionChange}
                   jsonTree={jsonTree}
