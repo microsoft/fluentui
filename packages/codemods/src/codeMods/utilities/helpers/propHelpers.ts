@@ -111,6 +111,8 @@ export function renamePropInSpread(
                 newSpreadName = propSpreadName;
                 if (!propAlreadyExists(parentContainer, toRename)) {
                   tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
+                } else {
+                  newSpreadName = propSpreadName;
                 }
                 break;
               }
@@ -175,7 +177,6 @@ export function renamePropInSpread(
           } else {
             attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
           }
-          console.log('adding attribute');
           element.addAttribute({
             name: replacementName,
             initializer: changeValueMap
