@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "add generic config mod",
+  "packageName": "@fluentui/codemods",
+  "email": "t-dama@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-12T22:44:18.748Z"
+}
