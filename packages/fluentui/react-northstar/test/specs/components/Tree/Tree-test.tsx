@@ -197,7 +197,7 @@ describe('Tree', () => {
 
       expect(cb).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),
-        expect.objectContaining({ activeItemIds: expect.objectContaining(['2', '21', '1']) }),
+        expect.objectContaining({ activeItemIds: expect.arrayContaining(['2', '21', '1']) }),
       );
     });
   });
