@@ -7,7 +7,7 @@ const config: ScreenerTestsConfig = {
       builder
         .click(`.${inputClassName}`)
         .snapshot('Shows datepicker popup')
-        .click(`.${datepickerCalendarCellClassName}:nth-child(2)`)
+        .click(`.${datepickerCalendarCellClassName}:nth-child(20)`)
         .snapshot('Shows selected date'),
   ],
 };
