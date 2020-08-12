@@ -381,15 +381,17 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
   );
 
   React.useEffect(() => {
-    document.addEventListener('keydown', handleDocumentKeyDown);
-
     const at = props.location.pathname;
     const id = findActiveCategoryId(at, treeItems);
     setActiveItemIds(prev => (prev.includes(id) ? prev : [...prev, id]));
+  }, [props.location.pathname, treeItems]);
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', handleDocumentKeyDown);
     return () => {
       document.removeEventListener('keydown', handleDocumentKeyDown);
     };
-  }, [handleDocumentKeyDown, props.location.pathname, treeItems]);
+  }, [handleDocumentKeyDown]);
 
   const allSections = React.useMemo(
     () =>
