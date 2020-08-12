@@ -205,12 +205,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp]),
       });
     }
-
-    if (
-      newProps.options !== this.props.options // preexisting code assumes purity of the options...
-    ) {
-      this._sizePosCache.updateOptions(newProps.options);
-    }
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
@@ -249,6 +243,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     // eslint-disable-next-line deprecation/deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
+    // If our cached options are out of date update our cache
+    if (options !== this._sizePosCache.cachedOptions) {
+      this._sizePosCache.updateOptions(options);
+    }
+
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(props, divProperties);
 
@@ -269,6 +268,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         {
           role: 'listbox',
           childRole: 'option',
+          ariaRequired: required,
           ariaSetSize: this._sizePosCache.optionSetSize,
           ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
           ariaSelected: selectedIndices[0] === undefined ? undefined : true,
@@ -313,7 +313,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 hasErrorMessage ? this._id + '-errorMessage' : undefined,
               )}
               aria-activedescendant={ariaActiveDescendant}
-              aria-required={required}
+              aria-required={ariaAttrs.ariaRequired}
               aria-disabled={disabled}
               aria-owns={isOpen ? this._listId : undefined}
               {...divProps}
@@ -747,17 +747,17 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
         inputProps={{
+          'aria-selected': isItemSelected,
           onMouseEnter: this._onItemMouseEnter.bind(this, item),
           onMouseLeave: this._onMouseItemLeave.bind(this, item),
           onMouseMove: this._onItemMouseMove.bind(this, item),
+          role: 'option',
         }}
         label={item.text}
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
         onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
-        role="option"
-        aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}

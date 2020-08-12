@@ -68,10 +68,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
 
   return (
     <div>
-      <div
-        // eslint-disable-next-line react/jsx-no-bind
-        ref={calendarBtn => (calendarButtonElement = calendarBtn!)}
-      >
+      <div ref={calendarBtn => (calendarButtonElement = calendarBtn!)}>
         <DefaultButton
           onClick={toggleShowCalendar}
           text={!selectedDate ? buttonString : selectedDate.toLocaleDateString()}

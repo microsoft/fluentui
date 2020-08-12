@@ -1,4 +1,4 @@
-<fast-design-system-provider use-defaults>
+<fluent-design-system-provider use-defaults>
   <div style="display: flex; flex-direction: column; justify-content: space-evenly; width: 500px;">
     <h4>Toggle orientation</h4>
     <div style="margin-bottom: 60px;">
@@ -8,54 +8,54 @@
       >
         Toggle orientation
       </button>
-      <fast-slider id="switcher" orientation="vertical" min="0" max="100" step="10" value="70">
-        <fast-slider-label position="0">
+      <fluent-slider id="switcher" orientation="vertical" min="0" max="100" step="10" value="70">
+        <fluent-slider-label position="0">
           0&#8451;
-        </fast-slider-label>
-        <fast-slider-label position="10">
+        </fluent-slider-label>
+        <fluent-slider-label position="10">
           10&#8451;
-        </fast-slider-label>
-        <fast-slider-label position="90">
+        </fluent-slider-label>
+        <fluent-slider-label position="90">
           90&#8451;
-        </fast-slider-label>
-        <fast-slider-label position="100">
+        </fluent-slider-label>
+        <fluent-slider-label position="100">
           100&#8451;
-        </fast-slider-label>
-      </fast-slider>
+        </fluent-slider-label>
+      </fluent-slider>
     </div>
     <h4>Vertical</h4>
     <div style="display: flex; flex-direction: column; justify-content: space-evenly; width: 500px;">
-      <fast-slider orientation="vertical" min="0" max="100" step="10" value="50" style="height: 300px; width: 50px;">
-        <fast-slider-label position="0">
+      <fluent-slider orientation="vertical" min="0" max="100" step="10" value="50" style="height: 300px; width: 50px;">
+        <fluent-slider-label position="0">
           0&#8451;
-        </fast-slider-label>
-        <fast-slider-label position="10">
+        </fluent-slider-label>
+        <fluent-slider-label position="10">
           10&#8451;
-        </fast-slider-label>
-        <fast-slider-label position="90">
+        </fluent-slider-label>
+        <fluent-slider-label position="90">
           90&#8451;
-        </fast-slider-label>
-        <fast-slider-label position="100">
+        </fluent-slider-label>
+        <fluent-slider-label position="100">
           100&#8451;
-        </fast-slider-label>
-      </fast-slider>
+        </fluent-slider-label>
+      </fluent-slider>
 
       <!-- No max or min -->
       <h4>Defaults</h4>
-      <fast-slider></fast-slider>
+      <fluent-slider></fluent-slider>
 
       <!-- Text Labels -->
       <h4>Text labels</h4>
       <div style="display: flex; flex-direction: column; height: min-content;">
         <label for="slider1" style="margin-left: 8px;">Temperature:</label>
-        <fast-slider id="slider1" min="0" max="100" step="10">
-          <fast-slider-label position="10">
+        <fluent-slider id="slider1" min="0" max="100" step="10">
+          <fluent-slider-label position="10">
             10&#8451;
-          </fast-slider-label>
-          <fast-slider-label position="90">
+          </fluent-slider-label>
+          <fluent-slider-label position="90">
             90&#8451;
-          </fast-slider-label>
-        </fast-slider>
+          </fluent-slider-label>
+        </fluent-slider>
       </div>
 
       <!-- Custom labels (rtl) -->
@@ -63,136 +63,136 @@
       <div style="display: flex; flex-direction: column; align-items: flex-start; height: min-content;">
         <label for="rtl-slider" style="margin-left: 8px;">rtl support</label>
         <div dir="rtl" style="width: 100%;">
-          <fast-slider id="rtl-slider" min="0" max="100" step="10" value="80">
-            <fast-slider-label position="10">
+          <fluent-slider id="rtl-slider" min="0" max="100" step="10" value="80">
+            <fluent-slider-label position="10">
               10
-            </fast-slider-label>
-            <fast-slider-label position="20">
+            </fluent-slider-label>
+            <fluent-slider-label position="20">
               20
-            </fast-slider-label>
-            <fast-slider-label position="40">
+            </fluent-slider-label>
+            <fluent-slider-label position="40">
               40
-            </fast-slider-label>
-            <fast-slider-label position="60">
+            </fluent-slider-label>
+            <fluent-slider-label position="60">
               60
-            </fast-slider-label>
-            <fast-slider-label position="80">
+            </fluent-slider-label>
+            <fluent-slider-label position="80">
               80
-            </fast-slider-label>
-          </fast-slider>
+            </fluent-slider-label>
+          </fluent-slider>
         </div>
       </div>
 
       <!-- Using slot for custom thumb -->
       <h4 style="margin-top: 60px;">Custom thumb</h4>
-      <fast-slider min="0" max="100" step="10">
-        <fast-slider-label position="0">
+      <fluent-slider min="0" max="100" step="10">
+        <fluent-slider-label position="0">
           0
-        </fast-slider-label>
-        <fast-slider-label position="10">
+        </fluent-slider-label>
+        <fluent-slider-label position="10">
           10
-        </fast-slider-label>
-        <fast-slider-label position="20">
+        </fluent-slider-label>
+        <fluent-slider-label position="20">
           20
-        </fast-slider-label>
-        <fast-slider-label position="30">
+        </fluent-slider-label>
+        <fluent-slider-label position="30">
           30
-        </fast-slider-label>
-        <fast-slider-label position="40">
+        </fluent-slider-label>
+        <fluent-slider-label position="40">
           40
-        </fast-slider-label>
-        <fast-slider-label position="50">
+        </fluent-slider-label>
+        <fluent-slider-label position="50">
           50
-        </fast-slider-label>
-        <fast-slider-label position="60">
+        </fluent-slider-label>
+        <fluent-slider-label position="60">
           60
-        </fast-slider-label>
-        <fast-slider-label position="70">
+        </fluent-slider-label>
+        <fluent-slider-label position="70">
           70
-        </fast-slider-label>
-        <fast-slider-label position="80">
+        </fluent-slider-label>
+        <fluent-slider-label position="80">
           80
-        </fast-slider-label>
-        <fast-slider-label position="90">
+        </fluent-slider-label>
+        <fluent-slider-label position="90">
           90
-        </fast-slider-label>
-        <fast-slider-label position="100">
+        </fluent-slider-label>
+        <fluent-slider-label position="100">
           100
-        </fast-slider-label>
+        </fluent-slider-label>
         <svg slot="thumb" xmlns="http://www.w3.org/2000/svg" height="13" width="16" viewBox="0 0 16 13">
           <path
             d="M0 0H16V13H0V0ZM15 12V1H1V12H15ZM12 3V4H4V3H12ZM5 7V10H2V7H5ZM4 9V8H3V9H4ZM6.5 10V7H9.5V10H6.5ZM7.5 8V9H8.5V8H7.5ZM11 10V7H14V10H11ZM12 8V9H13V8H12Z"
           />
         </svg>
-      </fast-slider>
+      </fluent-slider>
 
       <!-- Custom labels and thumb hide marks on labels -->
       <h4 style="margin-top: 60px;">
         Custom labels and thumb and hidden marks on labels
       </h4>
-      <fast-slider min="0" max="100" step="10">
-        <fast-slider-label position="0" hide-mark="true">
+      <fluent-slider min="0" max="100" step="10">
+        <fluent-slider-label position="0" hide-mark="true">
           <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
             <path
               d="M11.0625 9.79688L13 16L8 12.1562L3 16L4.9375 9.79688L0 6H6.125L8 0L9.875 6H16L11.0625 9.79688ZM11.1016 13.2812C10.9036 12.6354 10.7057 11.9948 10.5078 11.3594C10.3099 10.7188 10.1068 10.0755 9.89844 9.42969C10.4349 9.02865 10.9635 8.625 11.4844 8.21875C12.0052 7.8125 12.5312 7.40625 13.0625 7H9.14062L8 3.35156L6.85938 7H2.9375C3.46875 7.40625 3.99479 7.8125 4.51562 8.21875C5.03646 8.625 5.5651 9.02865 6.10156 9.42969C5.89323 10.0755 5.6901 10.7188 5.49219 11.3594C5.29427 11.9948 5.09635 12.6354 4.89844 13.2812L8 10.8906L11.1016 13.2812Z"
             />
           </svg>
-        </fast-slider-label>
-        <fast-slider-label position="50" hide-mark="true">
+        </fluent-slider-label>
+        <fluent-slider-label position="50" hide-mark="true">
           50
-        </fast-slider-label>
-        <fast-slider-label position="100" hide-mark="true">
+        </fluent-slider-label>
+        <fluent-slider-label position="100" hide-mark="true">
           <svg width="14px" height="14px" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
             <title>Clock Icon</title>
             <path
               d="M7 14C6.35417 14 5.73177 13.9167 5.13281 13.75C4.53906 13.5833 3.98177 13.349 3.46094 13.0469C2.94531 12.7396 2.47396 12.375 2.04688 11.9531C1.625 11.526 1.26042 11.0547 0.953125 10.5391C0.651042 10.0182 0.416667 9.46094 0.25 8.86719C0.0833333 8.26823 0 7.64583 0 7C0 6.35417 0.0833333 5.73438 0.25 5.14062C0.416667 4.54167 0.651042 3.98438 0.953125 3.46875C1.26042 2.94792 1.625 2.47656 2.04688 2.05469C2.47396 1.6276 2.94531 1.26302 3.46094 0.960938C3.98177 0.653646 4.53906 0.416667 5.13281 0.25C5.73177 0.0833333 6.35417 0 7 0C7.64583 0 8.26562 0.0833333 8.85938 0.25C9.45833 0.416667 10.0156 0.653646 10.5312 0.960938C11.0521 1.26302 11.5234 1.6276 11.9453 2.05469C12.3724 2.47656 12.737 2.94792 13.0391 3.46875C13.3464 3.98438 13.5833 4.54167 13.75 5.14062C13.9167 5.73438 14 6.35417 14 7C14 7.64583 13.9167 8.26823 13.75 8.86719C13.5833 9.46094 13.3464 10.0182 13.0391 10.5391C12.737 11.0547 12.3724 11.526 11.9453 11.9531C11.5234 12.375 11.0521 12.7396 10.5312 13.0469C10.0156 13.349 9.45833 13.5833 8.85938 13.75C8.26562 13.9167 7.64583 14 7 14ZM7 1C6.17188 1 5.39323 1.15885 4.66406 1.47656C3.9401 1.78906 3.30469 2.21875 2.75781 2.76562C2.21615 3.30729 1.78646 3.94271 1.46875 4.67188C1.15625 5.39583 1 6.17188 1 7C1 7.82812 1.15625 8.60677 1.46875 9.33594C1.78646 10.0599 2.21615 10.6953 2.75781 11.2422C3.30469 11.7839 3.9401 12.2135 4.66406 12.5312C5.39323 12.8438 6.17188 13 7 13C7.82812 13 8.60417 12.8438 9.32812 12.5312C10.0573 12.2135 10.6927 11.7839 11.2344 11.2422C11.7812 10.6953 12.2109 10.0599 12.5234 9.33594C12.8411 8.60677 13 7.82812 13 7C13 6.17188 12.8411 5.39583 12.5234 4.67188C12.2109 3.94271 11.7812 3.30729 11.2344 2.76562C10.6927 2.21875 10.0573 1.78906 9.32812 1.47656C8.60417 1.15885 7.82812 1 7 1ZM7 7V3H6V8H10V7H7Z"
             />
           </svg>
-        </fast-slider-label>
+        </fluent-slider-label>
         <svg slot="thumb" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M15.4922 9.5H5.26562C5.26562 9.88542 5.32552 10.2344 5.44531 10.5469C5.5651 10.8594 5.72917 11.138 5.9375 11.3828C6.14583 11.6224 6.39062 11.8307 6.67188 12.0078C6.95312 12.1797 7.2526 12.3229 7.57031 12.4375C7.88802 12.5521 8.21615 12.638 8.55469 12.6953C8.89844 12.7474 9.23698 12.7734 9.57031 12.7734C9.99219 12.7734 10.3906 12.7396 10.7656 12.6719C11.1406 12.6042 11.5052 12.513 11.8594 12.3984C12.2188 12.2786 12.5729 12.138 12.9219 11.9766C13.2708 11.8151 13.6276 11.638 13.9922 11.4453V14.8359C13.5859 15.0339 13.1823 15.2057 12.7812 15.3516C12.3854 15.4922 11.9844 15.612 11.5781 15.7109C11.1719 15.8099 10.7578 15.8828 10.3359 15.9297C9.91406 15.9766 9.47656 16 9.02344 16C8.42448 16 7.84635 15.9323 7.28906 15.7969C6.73177 15.6562 6.20833 15.4583 5.71875 15.2031C5.22917 14.9427 4.78125 14.6276 4.375 14.2578C3.96875 13.888 3.61979 13.4714 3.32812 13.0078C3.03646 12.5443 2.8099 12.0391 2.64844 11.4922C2.48698 10.9453 2.40625 10.3646 2.40625 9.75C2.40625 9.09375 2.49479 8.46875 2.67188 7.875C2.85417 7.27604 3.11458 6.72656 3.45312 6.22656C3.79167 5.72656 4.20312 5.28385 4.6875 4.89844C5.17708 4.50781 5.72656 4.1901 6.33594 3.94531C6.0026 4.27865 5.74219 4.67448 5.55469 5.13281C5.3724 5.58594 5.25521 6.04167 5.20312 6.5H10.8984C10.8984 5.92708 10.8385 5.42708 10.7188 5C10.6042 4.56771 10.4167 4.21094 10.1562 3.92969C9.89583 3.64323 9.5599 3.42969 9.14844 3.28906C8.73698 3.14323 8.23958 3.07031 7.65625 3.07031C6.96875 3.07031 6.28125 3.17448 5.59375 3.38281C4.90625 3.58594 4.2526 3.86979 3.63281 4.23438C3.01302 4.59896 2.44271 5.03125 1.92188 5.53125C1.40104 6.02604 0.963542 6.5651 0.609375 7.14844C0.6875 6.47135 0.830729 5.82552 1.03906 5.21094C1.2526 4.59115 1.52344 4.01823 1.85156 3.49219C2.1849 2.96094 2.57292 2.48177 3.01562 2.05469C3.45833 1.6224 3.94792 1.25521 4.48438 0.953125C5.02604 0.645833 5.60938 0.411458 6.23438 0.25C6.85938 0.0833333 7.52344 0 8.22656 0C8.63281 0 9.03906 0.0364583 9.44531 0.109375C9.85677 0.182292 10.2552 0.283854 10.6406 0.414062C11.4115 0.679688 12.099 1.04948 12.7031 1.52344C13.3073 1.99219 13.8151 2.53646 14.2266 3.15625C14.638 3.77083 14.9505 4.45052 15.1641 5.19531C15.3828 5.9349 15.4922 6.70573 15.4922 7.50781V9.5Z"
           />
         </svg>
-      </fast-slider>
+      </fluent-slider>
 
       <!-- Disabled -->
       <h4 style="margin-top: 60px;">Disabled</h4>
-      <fast-slider min="0" max="100" step="5" disabled>
-        <fast-slider-label position="0">
+      <fluent-slider min="0" max="100" step="5" disabled>
+        <fluent-slider-label position="0">
           0
-        </fast-slider-label>
-        <fast-slider-label position="10">
+        </fluent-slider-label>
+        <fluent-slider-label position="10">
           10
-        </fast-slider-label>
-        <fast-slider-label position="20">
+        </fluent-slider-label>
+        <fluent-slider-label position="20">
           20
-        </fast-slider-label>
-        <fast-slider-label position="30">
+        </fluent-slider-label>
+        <fluent-slider-label position="30">
           30
-        </fast-slider-label>
-        <fast-slider-label position="40">
+        </fluent-slider-label>
+        <fluent-slider-label position="40">
           40
-        </fast-slider-label>
-        <fast-slider-label position="50">
+        </fluent-slider-label>
+        <fluent-slider-label position="50">
           50
-        </fast-slider-label>
-        <fast-slider-label position="60">
+        </fluent-slider-label>
+        <fluent-slider-label position="60">
           60
-        </fast-slider-label>
-        <fast-slider-label position="70">
+        </fluent-slider-label>
+        <fluent-slider-label position="70">
           70
-        </fast-slider-label>
-        <fast-slider-label position="80">
+        </fluent-slider-label>
+        <fluent-slider-label position="80">
           80
-        </fast-slider-label>
-        <fast-slider-label position="90">
+        </fluent-slider-label>
+        <fluent-slider-label position="90">
           90
-        </fast-slider-label>
-        <fast-slider-label position="100">
+        </fluent-slider-label>
+        <fluent-slider-label position="100">
           100
-        </fast-slider-label>
-      </fast-slider>
+        </fluent-slider-label>
+      </fluent-slider>
     </div>
   </div>
-</fast-design-system-provider>
+</fluent-design-system-provider>

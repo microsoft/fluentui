@@ -315,7 +315,7 @@ export interface IWeeklyDayPicker {
 }
 
 // @public (undocumented)
-export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
+export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Partial<ICalendarDayGridProps> {
     animationDirection?: AnimationDirection;
     className?: string;
     componentRef?: IRefObject<IWeeklyDayPicker>;

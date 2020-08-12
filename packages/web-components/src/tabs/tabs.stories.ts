@@ -1,14 +1,14 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/tabs.html';
-import { FASTTab } from './tab';
-import { FASTTabPanel } from './tab-panel';
-import { FASTTabs } from './';
+import { FluentTab } from './tab';
+import { FluentTabPanel } from './tab-panel';
+import { FluentTabs } from './';
 
 // Prevent tree-shaking
-FASTTab;
-FASTTabPanel;
-FASTTabs;
-FASTDesignSystemProvider;
+FluentTab;
+FluentTabPanel;
+FluentTabs;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Tabs',

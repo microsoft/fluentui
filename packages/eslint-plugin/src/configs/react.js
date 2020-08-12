@@ -104,6 +104,8 @@ const config = {
         allowArrowFunctions: false, // tslint: jsx-no-lambda
         allowFunctions: false,
         allowBind: false,
+        ignoreDOMComponents: true,
+        ignoreRefs: true,
       },
     ],
     'react/no-string-refs': 'error',
