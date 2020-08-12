@@ -196,7 +196,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   const [activeItemIds, setActiveItemIds] = useAutoControlled<string[]>({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
-    initialValue: props.activeItemIds || expandedItemsGenerator(items),
+    initialValue: expandedItemsGenerator(items),
   });
 
   const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled<string[]>({
@@ -252,7 +252,8 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
       const { id } = treeItemProps;
 
-      setActiveItemIds(currActiveItemIds => {
+      setActiveItemIds(prevActiveItemIds => {
+        const currActiveItemIds = stableProps.current.activeItemIds || prevActiveItemIds;
         const siblings = getSiblings(stableProps.current.items, id);
         const activeItemIdIndex = currActiveItemIds.indexOf(id);
         let nextActiveItemsIds = currActiveItemIds;
@@ -344,7 +345,8 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
       const { id } = treeItemProps;
       const siblings = getSiblings(stableProps.current.items, id);
 
-      setActiveItemIds(currActiveItemIds => {
+      setActiveItemIds(prevActiveItemIds => {
+        const currActiveItemIds = stableProps.current.activeItemIds || prevActiveItemIds;
         const nextActiveItemsIds = [...currActiveItemIds];
 
         siblings.forEach(sibling => {

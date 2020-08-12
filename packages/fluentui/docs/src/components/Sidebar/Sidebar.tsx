@@ -528,8 +528,8 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         items={allSections}
         renderItemTitle={SidebarTitle}
         activeItemIds={activeItemIds}
-        onActiveItemIdsChange={(e, data) => {
-          setActiveItemIds(data.activeItemIds);
+        onActiveItemIdsChange={(e, { activeItemIds }) => {
+          setActiveItemIds(activeItemIds);
         }}
       />
     </Segment>
