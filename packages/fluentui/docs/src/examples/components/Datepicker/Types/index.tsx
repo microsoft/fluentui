@@ -11,16 +11,6 @@ const Types = () => (
       examplePath="components/Datepicker/Types/DatepickerExample"
     />
     <ComponentExample
-      title="Disabled"
-      description="The datepicker can be disabled."
-      examplePath="components/Datepicker/Types/DatepickerExampleDisabled"
-    />
-    <ComponentExample
-      title="Required"
-      description="The user needs to fill out the date."
-      examplePath="components/Datepicker/Types/DatepickerExampleRequired"
-    />
-    <ComponentExample
       title="Open"
       description="The calendar starts with an open state."
       examplePath="components/Datepicker/Types/DatepickerExampleOpen"
@@ -29,6 +19,11 @@ const Types = () => (
       title="No manual input"
       description="The user cannot enter the date manually."
       examplePath="components/Datepicker/Types/DatepickerExampleNoInput"
+    />
+    <ComponentExample
+      title="Localized Calendar"
+      description="The dates can be localized."
+      examplePath="components/Datepicker/Types/DatepickerExampleLocalization"
     />
   </ExampleSection>
 );
