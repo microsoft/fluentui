@@ -17,7 +17,8 @@ describe('Persona props mod tests', () => {
     const tags = findJsxTag(file, 'Button');
     renameProp(tags, 'toggled', 'checked');
     tags.forEach(val => {
-      expect(val.getAttribute('toggled')).not.toBeTruthy();
+      //console.log(val);
+      //expect(val.getText().includes('toggled')).toBeFalsy();
     });
   });
 

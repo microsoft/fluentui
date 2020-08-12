@@ -183,6 +183,7 @@ export function renamePropInSpread(
               : `{${toRename}}`,
           }); // Add the updated prop name and set its value.
         }
+        console.log(element.getText()); // first case doesn't get this far :0
       }
     }
   });
