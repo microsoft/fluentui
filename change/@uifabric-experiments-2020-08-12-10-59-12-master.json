@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add two well example for the UPP"
+  "comment": "Add two well example for the UPP",
   "email": "sadelson@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-08-12T17:59:12.035Z"
