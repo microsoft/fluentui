@@ -12,7 +12,6 @@ import {
 } from 'ts-morph';
 import { ValueMap, SpreadPropInStatement } from '../../types';
 import { Maybe } from '../../../helpers/maybe';
-import { getParent } from 'office-ui-fabric-react/lib/Utilities';
 
 /* Helper function to rename a prop if in a spread operator.  */
 export function renamePropInSpread(
@@ -232,8 +231,6 @@ export function renamePropInSpread(
               ? `{${replacementValue}}`
               : `{${toRename}}`,
           }); // Add the updated prop name and set its value.
-        } else {
-          console.log('caught attempted repeat');
         }
       }
     }
