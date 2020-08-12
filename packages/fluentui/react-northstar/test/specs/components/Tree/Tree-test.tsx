@@ -186,16 +186,16 @@ describe('Tree', () => {
 
     it('should propagate correct items through onActiveItemIdsChange', () => {
       const itemsClone = JSON.parse(JSON.stringify(items));
-      const cb = jest.fn();
+      const onActiveItemIdsChange = jest.fn();
       const wrapper = mountWithProvider(
-        <Tree items={itemsClone} activeItemIds={['2', '21']} onActiveItemIdsChange={cb} />,
+        <Tree items={itemsClone} activeItemIds={['2', '21']} onActiveItemIdsChange={onActiveItemIdsChange} />,
       );
 
       getTitles(wrapper)
         .at(0) // title 1
         .simulate('click');
 
-      expect(cb).toHaveBeenCalledWith(
+      expect(onActiveItemIdsChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),
         expect.objectContaining({ activeItemIds: expect.arrayContaining(['2', '21', '1']) }),
       );
