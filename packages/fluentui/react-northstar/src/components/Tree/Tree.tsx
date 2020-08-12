@@ -252,9 +252,8 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
   const setActiveItemIds = React.useCallback(
     (e: React.SyntheticEvent, updateActiveItemIds: (activeItemIds: string[]) => string[]) => {
-      let nextActiveItemIds;
       setActiveItemIdsState(prevActiveItemIds => {
-        nextActiveItemIds = updateActiveItemIds(prevActiveItemIds);
+        const nextActiveItemIds = updateActiveItemIds(prevActiveItemIds);
         _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
           ...stableProps.current,
           activeItemIds: nextActiveItemIds,
