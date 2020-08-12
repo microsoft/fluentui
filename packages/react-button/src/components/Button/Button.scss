@@ -49,7 +49,7 @@
   @include focus-border(
     $padding: -1px,
     $color: var(--button-focusColor),
-    $thickness: var(--button-focus-width, 2px),
+    $thickness: var(--button-focusWidth, 2px),
     $radius: var(--button-borderRadius)
   );
   @include focus-box-shadow($hOffset: 0, $vOffset: 0, $blur: 0, $thickness: 1px, $color: var(--button-focusInnerColor));

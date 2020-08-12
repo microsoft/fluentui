@@ -13,10 +13,7 @@ export const createDefaultTheme = (): Theme => {
 };
 
 export const defaultTokens: Tokens = {
-  body: {
-    background: 'white',
-    contentColor: 'black',
-  },
+  body: {},
 
   accent: {
     background: '#0078d4',
