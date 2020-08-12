@@ -39,7 +39,7 @@ describe('useCSS', () => {
     const styles = [{ color: 'red' }];
     const wrapper = mount(<TestComponent styles={styles} />);
 
-    expect(wrapper.find('div').prop('className')).toBeDefined();
+    expect(wrapper.find('div').prop('className')).toBe('fcss ftokvmb');
   });
 
   it('handles nested selectors', () => {
