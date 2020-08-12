@@ -221,13 +221,17 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'UNDO':
-      draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.jsonTree = draftState.history.pop();
+      if (draftState.history.length > 0) {
+        draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.history.pop();
+      }
       break;
 
     case 'REDO':
-      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.jsonTree = draftState.redo.pop();
+      if (draftState.redo.length > 0) {
+        draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.redo.pop();
+      }
       break;
 
     default:
@@ -437,6 +441,69 @@ export const Designer: React.FunctionComponent = () => {
     // FIXME: remove tree_lz from current URL
   }, [dispatch]);
 
+  const [pressedKeys, setPressedKeys] = React.useState([]);
+  const hotkeys = {
+    'Control+z': handleUndo,
+    'Shift+P': handleGoToParentComponent,
+    'Control+Shift+Z': handleRedo,
+    Delete: handleDeleteComponent,
+    'Shift+D': () => {
+      setMode('design');
+    },
+    'Shift+U': () => {
+      setMode('use');
+    },
+    'Shift+B': () => {
+      setMode('build');
+    },
+    'Shift+C': () => {
+      handleShowCodeChange(!state.showCode);
+    },
+    'Shift+J': () => {
+      handleShowJSONTreeChange(!showJSONTree);
+    },
+  };
+
+  const handleKeyDown = React.useCallback(
+    e => {
+      if (!pressedKeys.includes(e.key)) {
+        pressedKeys.push(e.key);
+        pressedKeys.sort();
+        setPressedKeys(pressedKeys);
+      }
+
+      for (const [keyCombination, action] of Object.entries(hotkeys)) {
+        const keys = keyCombination.split('+');
+        keys.sort();
+        if (keys.length === pressedKeys.length) {
+          let fireEvent = true;
+          for (let i = 0; i < keys.length; i++) {
+            if (keys[i] !== pressedKeys[i]) {
+              fireEvent = false;
+              break;
+            }
+          }
+          if (fireEvent) {
+            action();
+            break;
+          }
+        }
+      }
+    },
+    [pressedKeys, hotkeys],
+  );
+
+  const handleKeyUp = React.useCallback(
+    e => {
+      if (pressedKeys.includes(e.key)) {
+        const index = pressedKeys.indexOf(e.key);
+        pressedKeys.splice(index, 1);
+        setPressedKeys(pressedKeys);
+      }
+    },
+    [pressedKeys],
+  );
+
   const selectedComponent =
     !draggingElement &&
     mode !== 'use' &&
@@ -455,6 +522,8 @@ export const Designer: React.FunctionComponent = () => {
         overflow: 'hidden',
       }}
     >
+      <EventListener type="keydown" listener={handleKeyDown} target={document} />
+      <EventListener type="keyup" listener={handleKeyUp} target={document} />
       {draggingElement && (
         <>
           <EventListener type="mousemove" listener={handleDrag} target={document} />
@@ -571,6 +640,8 @@ export const Designer: React.FunctionComponent = () => {
                   isSelecting={isSelecting || !!draggingElement}
                   onMouseMove={handleDrag}
                   onMouseUp={handleCanvasMouseUp}
+                  onKeyPress={handleKeyDown}
+                  onKeyRelease={handleKeyUp}
                   onSelectComponent={handleSelectComponent}
                   onDropPositionChange={handleDropPositionChange}
                   jsonTree={jsonTree}
