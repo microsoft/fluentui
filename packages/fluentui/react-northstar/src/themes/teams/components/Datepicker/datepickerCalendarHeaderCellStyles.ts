@@ -1,14 +1,15 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DatepickerVariables } from './datepickerVariables';
+import { DatepickerCalendarHeaderCellVariables } from './datepickerCalendarHeaderCellVariables';
 import { DatepickerCalendarHeaderCellStylesProps } from '../../../../components/Datepicker/DatepickerCalendarHeaderCell';
 
 export const datepickerCalendarHeaderCellStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarHeaderCellStylesProps,
-  DatepickerVariables
+  DatepickerCalendarHeaderCellVariables
 > = {
-  root: ({ props: p }): ICSSInJSStyle => {
+  root: ({ variables: v }): ICSSInJSStyle => {
     return {
       textAlign: 'center',
+      fontWeight: v.fontWeight,
     };
   },
 };
