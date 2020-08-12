@@ -73,6 +73,10 @@ export { itemLayoutStyles as ItemLayout } from './components/ItemLayout/itemLayo
 
 export { listStyles as List } from './components/List/listStyles';
 export { listItemStyles as ListItem } from './components/List/listItemStyles';
+export { listItemContentStyles as ListItemContent } from './components/List/listItemContentStyles';
+export { listItemContentMediaStyles as ListItemContentMedia } from './components/List/listItemContentMediaStyles';
+export { listItemHeaderStyles as ListItemHeader } from './components/List/listItemHeaderStyles';
+export { listItemHeaderMediaStyles as ListItemHeaderMedia } from './components/List/listItemHeaderMediaStyles';
 
 export { menuStyles as Menu } from './components/Menu/menuStyles';
 export { menuItemStyles as MenuItem } from './components/Menu/menuItemStyles';
