@@ -205,15 +205,36 @@ export function renamePropInSpread(
         }
 
         /* Step 10: Replace the props in the component with your new ones! */
-        attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
-        element.addAttribute({
-          name: replacementName,
-          initializer: changeValueMap
-            ? `{${newMapName}[${toRename}]}`
-            : replacementValue
-            ? `{${replacementValue}}`
-            : `{${toRename}}`,
-        }); // Add the updated prop name and set its value.
+        //console.log(newSpreadName);
+        if (
+          element.getAttributes().some(attr => {
+            if (attr.getKind() === SyntaxKind.JsxSpreadAttribute) {
+              const child = attr.getChildAtIndex(2);
+              if (child) {
+                return child.getText() === newSpreadName;
+              }
+            }
+            return false;
+          })
+        ) {
+          if (attrToRename.getChildAtIndex(2)!.getText() !== newSpreadName) {
+            attrToRename.remove(); // Replace old spread name.
+          }
+        } else {
+          attrToRename.replaceWithText(`{...${newSpreadName}}`); // Replace old spread name.
+        }
+        if (!element.getAttribute(replacementName)) {
+          element.addAttribute({
+            name: replacementName,
+            initializer: changeValueMap
+              ? `{${newMapName}[${toRename}]}`
+              : replacementValue
+              ? `{${replacementValue}}`
+              : `{${toRename}}`,
+          }); // Add the updated prop name and set its value.
+        } else {
+          console.log('caught attempted repeat');
+        }
       }
     }
   });

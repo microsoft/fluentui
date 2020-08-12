@@ -190,5 +190,6 @@ describe('Props Utilities Test', () => {
         });
       });
     });
+    console.log(file);
   });
 });
