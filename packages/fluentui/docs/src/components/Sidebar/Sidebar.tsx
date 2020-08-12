@@ -328,6 +328,21 @@ const removePublicTags = prototyptesTreeItems => {
   });
 };
 
+const getSectionsWithPrototypeSectionIfApplicable = (currentSections, allPrototypes) => {
+  let prototypes = process.env.NODE_ENV === 'production' ? _.filter(allPrototypes, { public: true }) : allPrototypes;
+
+  if (prototypes.length === 0) {
+    return currentSections;
+  }
+  prototypes = removePublicTags(prototypes);
+  const prototypeTreeSection = {
+    id: 'prototypes',
+    title: 'Prototypes',
+    items: prototypes,
+  };
+  return currentSections.concat(prototypeTreeSection);
+};
+
 const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
   const [query, setQuery] = React.useState('');
   const [activeItemIds, setActiveItemIds] = React.useState<string[]>([]);
@@ -360,24 +375,9 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
     })?.id;
   };
 
-  const getSectionsWithPrototypeSectionIfApplicable = React.useCallback((currentSections, allPrototypes) => {
-    let prototypes = process.env.NODE_ENV === 'production' ? _.filter(allPrototypes, { public: true }) : allPrototypes;
-
-    if (prototypes.length === 0) {
-      return currentSections;
-    }
-    prototypes = removePublicTags(prototypes);
-    const prototypeTreeSection = {
-      id: 'prototypes',
-      title: 'Prototypes',
-      items: prototypes,
-    };
-    return currentSections.concat(prototypeTreeSection);
-  }, []);
-
   const treeItems = React.useMemo(
     () => getSectionsWithPrototypeSectionIfApplicable(baseTreeItems, prototypesTreeItems),
-    [getSectionsWithPrototypeSectionIfApplicable],
+    [],
   );
 
   React.useEffect(() => {
