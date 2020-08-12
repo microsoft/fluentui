@@ -18,7 +18,7 @@ export function renameProp(
       /* If found, do a simple name-replacementName. */
       foundProp.value.set({ name: replacementName });
       if (replacementValue) {
-        foundProp.value.set({ initializer: `{${replacementValue}}` });
+        foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression)?.replaceWithText(`{${replacementValue}}`);
       } else {
         const enumInJsx = Maybe(foundProp.value.getFirstChildByKind(SyntaxKind.JsxExpression));
         if (enumInJsx.something) {
@@ -32,7 +32,7 @@ export function renameProp(
       if (transform) {
         transform(val, toRename, replacementName);
       } else {
-        renamePropInSpread(val, toRename, replacementName);
+        renamePropInSpread(val, toRename, replacementName, undefined, replacementValue);
       }
     }
   });
