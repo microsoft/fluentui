@@ -12,16 +12,6 @@ describe('Persona props mod tests', () => {
     project.addSourceFilesAtPaths(`${process.cwd()}${dropDownPath}`);
   });
 
-  it('can rename the toggled feature in Button', () => {
-    const file = project.getSourceFileOrThrow('mButtonProps.tsx');
-    const tags = findJsxTag(file, 'Button');
-    renameProp(tags, 'toggled', 'checked');
-    tags.forEach(val => {
-      //console.log(val);
-      //expect(val.getText().includes('toggled')).toBeFalsy();
-    });
-  });
-
   it('can work on the dropdown example', () => {
     const file = project.getSourceFileOrThrow('mDropdownSpreadProps.tsx');
     const tags = findJsxTag(file, 'Dropdown');
