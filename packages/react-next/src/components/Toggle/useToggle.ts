@@ -1,14 +1,7 @@
 import * as React from 'react';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { useControllableValue, useId } from '@uifabric/react-hooks';
-import {
-  classNamesFunction,
-  getNativeProps,
-  inputProperties,
-  useFocusRects,
-  warnDeprecations,
-  warnMutuallyExclusive,
-} from '../../Utilities';
+import { useControllableValue, useId, useWarnings } from '@uifabric/react-hooks';
+import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '../../Utilities';
 import { IToggle, IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ useStaticStyles: true });
@@ -80,14 +73,18 @@ export const useToggle = (
   useFocusRects(toggleButton);
   useComponentRef(props, checked, toggleButton);
 
-  warnDeprecations(COMPONENT_NAME, props, {
-    offAriaLabel: undefined,
-    onAriaLabel: 'ariaLabel',
-    onChanged: 'onChange',
-  });
-  warnMutuallyExclusive(COMPONENT_NAME, props, {
-    checked: 'defaultChecked',
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      deprecations: {
+        offAriaLabel: undefined,
+        onAriaLabel: 'ariaLabel',
+        onChanged: 'onChange',
+      },
+      mutuallyExclusive: { checked: 'defaultChecked' },
+    });
+  }
 
   const onClick = (ev: React.MouseEvent<HTMLElement>) => {
     if (!disabled) {

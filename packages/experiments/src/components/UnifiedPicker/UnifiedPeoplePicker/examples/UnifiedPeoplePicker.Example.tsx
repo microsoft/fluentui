@@ -8,6 +8,7 @@ import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePick
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
+import { IInputProps } from 'office-ui-fabric-react';
 
 const _suggestions = [
   {
@@ -167,11 +168,16 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     getItemCopyText: _getItemsCopyText,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
+  const inputProps = {
+    'aria-label': 'Add people',
+  } as IInputProps;
+
   return (
     <>
       <UnifiedPeoplePicker
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
+        inputProps={inputProps}
         // eslint-disable-next-line react/jsx-no-bind
         onInputChange={_onInputChange}
         // eslint-disable-next-line react/jsx-no-bind

@@ -125,7 +125,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return (
       <div
         id="VerticalBarChart"
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         className={this._classNames.root}
       >
@@ -133,14 +132,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
               id="xAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
               className={this._classNames.xAxis}
               transform={`translate(0, ${svgDimensions.height - this.margins.bottom})`}
             />
             <g
               id="yAxisGElement"
-              // eslint-disable-next-line react/jsx-no-bind
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               className={this._classNames.yAxis}
               transform={`translate(40, 0)`}
@@ -149,11 +146,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           </svg>
         </FocusZone>
         {!hideLegend && (
-          <div
-            // eslint-disable-next-line react/jsx-no-bind
-            ref={(e: HTMLDivElement) => (this.legendContainer = e)}
-            className={this._classNames.legendContainer}
-          >
+          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {legends!}
           </div>
         )}
@@ -375,12 +368,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
           data-is-focusable={true}
-          height={yBarScale(point.y)!}
-          // eslint-disable-next-line react/jsx-no-bind
+          height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!, refArrayIndexNumber);
           }}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend,
@@ -392,7 +383,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           )}
           aria-labelledby={this._calloutId}
           onMouseLeave={this._onBarLeave}
-          // eslint-disable-next-line react/jsx-no-bind
           onFocus={this._onBarFocus.bind(
             this,
             point.legend,
@@ -436,9 +426,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           x={xBarScale(index)}
           y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
-          height={yBarScale(point.y)}
+          height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
           aria-labelledby={this._calloutId}
-          // eslint-disable-next-line react/jsx-no-bind
           onMouseOver={this._onBarHover.bind(
             this,
             point.legend!,

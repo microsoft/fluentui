@@ -1,8 +1,114 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 22 Jul 2020 12:40:51 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.83)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.80..@fluentui/react-next_v8.0.0-alpha.83)
+
+### Changes
+
+- Re-exporting MenuButton, SplitButton and ToggleButton in react-next. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.80)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.78..@fluentui/react-next_v8.0.0-alpha.80)
+
+### Changes
+
+- FocusTrapZone: Adding aria-hidden to bumper elements so that they are not read by screen readers. ([PR #14376](https://github.com/microsoft/fluentui/pull/14376) by humbertomakotomorimoto@gmail.com)
+- Update Dropdown HC styling ([PR #14411](https://github.com/microsoft/fluentui/pull/14411) by ololubek@microsoft.com)
+
+## [8.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.78)
+
+Thu, 06 Aug 2020 22:49:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.76..@fluentui/react-next_v8.0.0-alpha.78)
+
+### Changes
+
+- Dropdown: Improving multiselect dropdown screen reader behavior. ([PR #14377](https://github.com/microsoft/fluentui/pull/14377) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.76)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.75..@fluentui/react-next_v8.0.0-alpha.76)
+
+### Changes
+
+- Toggle: Fix thumb border-width style ([PR #14361](https://github.com/microsoft/fluentui/pull/14361) by ololubek@microsoft.com)
+- Migrate Coachmark and associated components to function components ([PR #13626](https://github.com/microsoft/fluentui/pull/13626) by miclo@microsoft.com)
+
+## [8.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.75)
+
+Wed, 05 Aug 2020 12:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.74..@fluentui/react-next_v8.0.0-alpha.75)
+
+### Changes
+
+- Toggle: fix pill HC style when selected ([PR #14316](https://github.com/microsoft/fluentui/pull/14316) by ololubek@microsoft.com)
+- Update HC hover styling to make checked state more apparent ([PR #14341](https://github.com/microsoft/fluentui/pull/14341) by ololubek@microsoft.com)
+
+## [8.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.74)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.73..@fluentui/react-next_v8.0.0-alpha.74)
+
+### Changes
+
+- Migrate Callout to function component ([PR #14181](https://github.com/microsoft/fluentui/pull/14181) by miclo@microsoft.com)
+- Moving ChoiceGroup to react-next, in preparation for converting to a function component. ([PR #14267](https://github.com/microsoft/fluentui/pull/14267) by czearing@outlook.com)
+- update hc styling for Dropdown and ComboBox items to remove noisy borders ([PR #14273](https://github.com/microsoft/fluentui/pull/14273) by ololubek@microsoft.com)
+
+## [8.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.73)
+
+Mon, 03 Aug 2020 12:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.72..@fluentui/react-next_v8.0.0-alpha.73)
+
+### Changes
+
+- Use useWarnings hook ([PR #14263](https://github.com/microsoft/fluentui/pull/14263) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.70)
+
+Wed, 29 Jul 2020 12:35:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.69..@fluentui/react-next_v8.0.0-alpha.70)
+
+### Changes
+
+- Update Release Notes with comment about ref changes in function components ([PR #14148](https://github.com/microsoft/fluentui/pull/14148) by miclo@microsoft.com)
+- Updating existing react-next examples to use the newest ones found inside of office-ui-fabric-react. ([PR #14217](https://github.com/microsoft/fluentui/pull/14217) by czearing@outlook.com)
+- Copying teachingBubble to react-next, in preparation for converting to a function component. ([PR #14220](https://github.com/microsoft/fluentui/pull/14220) by czearing@outlook.com)
+
+## [8.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.69)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.68..@fluentui/react-next_v8.0.0-alpha.69)
+
+### Changes
+
+- Move ThemeProvider from react-next to react-theme-provider's Compat folder ([PR #14187](https://github.com/microsoft/fluentui/pull/14187) by behowell@microsoft.com)
+
+## [8.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.68)
+
+Fri, 24 Jul 2020 12:45:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.67..@fluentui/react-next_v8.0.0-alpha.68)
+
+### Changes
+
+- Add high contrast adjust selector to dropdown styles ([PR #14176](https://github.com/microsoft/fluentui/pull/14176) by ololubek@microsoft.com)
+
+## [8.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.67)
+
+Thu, 23 Jul 2020 12:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.66..@fluentui/react-next_v8.0.0-alpha.67)
+
+### Changes
+
+- Move shared .scss files to @fluentui/common-styles ([PR #14155](https://github.com/microsoft/fluentui/pull/14155) by behowell@microsoft.com)
 
 ## [8.0.0-alpha.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.66)
 

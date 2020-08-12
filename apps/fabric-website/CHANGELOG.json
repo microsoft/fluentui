@@ -2,6 +2,59 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 22:49:13 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.18",
+      "version": "7.13.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove trailing whitespace from OfficeBrandIconsImplementation.md",
+            "author": "jslone@microsoft.com",
+            "commit": "833eec673044be946959cdba77bf6f43aa487f8f",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.16",
+      "version": "7.13.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Simplify query params for dev and strict mode testing",
+            "author": "elcraig@microsoft.com",
+            "commit": "8d2a5881fdf52aad5c28af74c33bbf454edccb51",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update brand icon usage example on website",
+            "author": "jslone@microsoft.com",
+            "commit": "6f6626e54c7145fbd8612f072801db22796dbfe5",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Aug 2020 12:39:43 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.15",
+      "version": "7.13.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add query param to test with React.StrictMode",
+            "author": "elcraig@microsoft.com",
+            "commit": "9067994208834f125ce36e2a92e5bd83139bb243",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Jul 2020 12:43:08 GMT",
       "tag": "@uifabric/fabric-website_v7.13.6",
       "version": "7.13.6",

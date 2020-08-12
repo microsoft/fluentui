@@ -27,11 +27,20 @@ export default (tsConfigPath: string, ignoredInterfaces: string[] = []) =>
       const infoFilename = file.basename.replace(/\.tsx$/, '.info.json');
       const contents = getComponentInfo(tsConfigPath, file.path, ignoredInterfaces);
 
-      // Forcing the base & cwd to be paths.base() to make sure this is cached & restored at the right location
+      // Forcing the base & cwd to be paths.docsSrc('componentInfo') to make sure this is cached & restored at the
+      // right location. While abs path is important for the first write, the relative calculation is important to
+      // gulp-cache
+      //
+      // vinyl uses these cwd + path to calculate a relative path:
+      // https://github.com/gulpjs/vinyl/blob/2e5d7af4ea79f6330b457eb505903c45b4e2365b/index.js#L230
+      //
+      // Then the vinyl write contents uses relative path to resolve to the output path
+      // https://github.com/gulpjs/vinyl-fs/blob/bbfb50c0311a489fd8238a2cbf9524eac0f6bb04/lib/dest/prepare.js#L30
+
       const infoFile = new Vinyl({
-        base: paths.base(),
-        cwd: paths.base(),
-        path: `./${infoFilename}`,
+        base: paths.docsSrc('componentInfo'),
+        cwd: paths.docsSrc('componentInfo'),
+        path: paths.docsSrc(`componentInfo/${infoFilename}`),
         contents: Buffer.from(JSON.stringify(contents, null, 2)),
       });
       // `gulp-cache` relies on this private entry

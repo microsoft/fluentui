@@ -1,4 +1,11 @@
-import { HighContrastSelector, keyframes, noWrap, getGlobalClassNames, IRawStyle } from '../../Styling';
+import {
+  HighContrastSelector,
+  keyframes,
+  noWrap,
+  getGlobalClassNames,
+  IRawStyle,
+  getEdgeChromiumNoHighContrastAdjustSelector,
+} from '../../Styling';
 import { getRTL, memoizeFunction } from '../../Utilities';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
@@ -104,6 +111,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
           [HighContrastSelector]: {
             backgroundColor: 'highlight',
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
 

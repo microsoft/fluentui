@@ -28,12 +28,14 @@ export interface IXAxisParams {
   margins: IMargins;
   containerWidth: number;
   xAxisElement?: SVGElement | null;
-  xMin?: number | Date | null;
-  xMax?: number | Date | null;
+  domainXMin?: number | Date | null;
+  domainXMax?: number | Date | null;
   xAxisCount?: number;
   showRoundOffXTickValues?: boolean;
   tickSize?: number;
   tickPadding?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  points?: any;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[];
@@ -41,6 +43,8 @@ export interface ITickParams {
 }
 
 export interface IYAxisParams {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  points?: any;
   margins: IMargins;
   containerWidth: number;
   containerHeight: number;
@@ -73,10 +77,10 @@ export interface IFitContainerParams {
   container: HTMLDivElement | null | HTMLElement;
 }
 
-export function createNumericXAxis(points: ILineChartPoints[], xAxisParams: IXAxisParams) {
+export function createNumericXAxis(xAxisParams: IXAxisParams) {
   const {
-    xMin,
-    xMax,
+    domainXMin,
+    domainXMax,
     margins,
     containerWidth,
     showRoundOffXTickValues = false,
@@ -84,10 +88,15 @@ export function createNumericXAxis(points: ILineChartPoints[], xAxisParams: IXAx
     tickPadding = 10,
     xAxisCount = 10,
     xAxisElement,
+    points,
   } = xAxisParams;
-  const xMinVal = xMin ? xMin : 0;
-  const xMaxVal = xMax
-    ? xMax
+  const xMinVal = domainXMin
+    ? domainXMin
+    : d3Min(points, (point: ILineChartPoints) => {
+        return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number);
+      })!;
+  const xMaxVal = domainXMax
+    ? domainXMax
     : d3Max(points, (point: ILineChartPoints) => {
         return d3Max(point.data, (item: ILineChartDataPoint) => {
           return item.x as number;
@@ -111,12 +120,12 @@ export function createNumericXAxis(points: ILineChartPoints[], xAxisParams: IXAx
   return xAxisScale;
 }
 
-export function createDateXAxis(points: ILineChartPoints[], xAxisParams: IXAxisParams, tickParams: ITickParams) {
+export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
   const xAxisData: Date[] = [];
   let sDate = new Date();
   // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
   let lDate = new Date(-8640000000000000);
-  points.forEach((singleLineChartData: ILineChartPoints) => {
+  xAxisParams.points.forEach((singleLineChartData: ILineChartPoints) => {
     singleLineChartData.data.forEach((point: ILineChartDataPoint) => {
       xAxisData.push(point.x as Date);
       if (point.x < sDate) {
@@ -153,7 +162,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
   return dataPointsArray;
 }
 
-export function createYAxis(points: ILineChartPoints[], yAxisParams: IYAxisParams) {
+export function createYAxis(yAxisParams: IYAxisParams) {
   const {
     finalYMaxVal = 0,
     finalYMinVal = 0,
@@ -169,6 +178,7 @@ export function createYAxis(points: ILineChartPoints[], yAxisParams: IYAxisParam
     yAxisTickCount = 4,
     eventAnnotationProps,
     eventLabelHeight,
+    points,
   } = yAxisParams;
   let finalYmax: number;
   let finalYmin: number;
@@ -209,7 +219,7 @@ export function calloutData(values: ILineChartPoints[]) {
     y: number;
     x: number | Date | string;
     color: string;
-    yAxisCalloutData?: string;
+    yAxisCalloutData?: string | { [id: string]: number };
   }[] = [];
 
   values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
@@ -225,13 +235,13 @@ export function calloutData(values: ILineChartPoints[]) {
       e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
       index: number,
     ) => {
-      e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
+      e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
       const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
       combinedResult
         .slice(index + 1)
         .forEach(
           (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
-            e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
+            e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
             if (e1.x === e2.x) {
               filteredValues.push({
                 legend: e2.legend,

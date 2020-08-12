@@ -45,7 +45,6 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     return (
       <div
         role="row"
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(ref: HTMLDivElement) => (this._rowItem = ref)}
         className={className}
         aria-label={this._ariaLabel}

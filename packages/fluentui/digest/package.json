@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/digest",
-  "version": "0.50.0",
+  "version": "0.51.0",
   "private": true,
   "main": "lib/digest.js",
   "module": "lib/digest.js",
@@ -24,7 +24,8 @@
   },
   "devDependencies": {
     "@types/node": "^10.3.2",
-    "@types/webpack": "4.4.0"
+    "@types/webpack": "4.4.0",
+    "typescript": "3.7.2"
   },
   "publishConfig": {
     "access": "public"

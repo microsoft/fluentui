@@ -92,6 +92,11 @@ export { radioGroupItemStyles as RadioGroupItem } from './components/RadioGroup/
 
 export { segmentStyles as Segment } from './components/Segment/segmentStyles';
 
+export { skeletonStyles as Skeleton } from './components/Skeleton/skeletonStyles';
+export { skeletonLineStyles as SkeletonLine } from './components/Skeleton/skeletonLineStyles';
+export { skeletonShapeStyles as SkeletonShape } from './components/Skeleton/skeletonShapeStyles';
+export { skeletonButtonStyles as SkeletonButton } from './components/Skeleton/skeletonButtonStyles';
+
 export { sliderStyles as Slider } from './components/Slider/sliderStyles';
 
 export { reactionStyles as Reaction } from './components/Reaction/reactionStyles';
@@ -150,3 +155,4 @@ export { datepickerStyles as Datepicker } from './components/Datepicker/datepick
 export { datepickerCalendarStyles as DatepickerCalendar } from './components/Datepicker/datepickerCalendarStyles';
 export { datepickerCalendarHeaderStyles as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderStyles';
 export { datepickerCalendarHeaderCellStyles as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellStyles';
+export { datepickerCalendarCellStyles as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellStyles';

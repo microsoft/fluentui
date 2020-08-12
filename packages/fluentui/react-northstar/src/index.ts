@@ -138,6 +138,11 @@ export * from './components/RadioGroup/RadioGroupItem';
 
 export * from './components/Segment/Segment';
 
+export * from './components/Skeleton/Skeleton';
+export * from './components/Skeleton/SkeletonLine';
+export * from './components/Skeleton/SkeletonShape';
+export * from './components/Skeleton/SkeletonButton';
+
 export * from './components/Slider/Slider';
 
 export * from './components/Status/Status';

@@ -84,6 +84,8 @@ export * from './MenuButton/menuButtonBehavior';
 
 export * from './SplitButton/splitButtonBehavior';
 
+export * from './Skeleton/skeletonBehavior';
+
 export * from './Tree/treeBehavior';
 export * from './Tree/treeItemBehavior';
 export * from './Tree/treeTitleBehavior';
@@ -119,7 +121,7 @@ export * from './Video/videoBehavior';
 
 export { hiddenComponentBehavior } from './Common/hiddenComponentBehavior';
 
-export * from './Datepicker/datepickerBehavior';
-
 export * from './Datepicker/datepickerCalendarBehavior';
 export * from './Datepicker/datepickerCalendarHeaderBehavior';
+export * from './Datepicker/datepickerCalendarGridBehavior';
+export * from './Datepicker/datepickerCalendarCellBehavior';

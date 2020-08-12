@@ -2,6 +2,11 @@
 
 ## Breaking changes
 
+### Beak
+
+- Removed empty `IBeak` interface
+- Removed `componentRef` prop
+
 ### SpinButton
 
 - Simplified props to `ISpinButtonStyles` to include only the parts of the component to bring inline with
@@ -16,6 +21,10 @@
 - Deprecated `onRenderLabel`.
 - Added `label`/`checkmark` slot props.
 
+### Coachmark
+
+- Removed `isBeaconAnimating` and `isMeasured` style props
+
 ### Pivot
 
 - Removed deprecated and redundant props from v7, including: `initialSelectedKey` and `defaultSelectedIndex`. Use `selectedKey` or `defaultSelectedKey` to define the selected tab, and provide `itemKey` on pivot item children.
@@ -23,8 +32,10 @@
 ### Others
 
 - Function component conversion.
+  - The `ref` attribute for such components no longer refers to a component class instance; instead, the ref is forwarded to the underlying DOM.
+  - Class extension of converted components is no longer possible.
+    - Even for components which have not yet been converted to function components, class extension is no longer supported
 - `ThemeProvider` is required. (new)
-- `Customizer`. (shim)
 - `KeytipData`/`keytipProps` removed from `Link`/`Toggle`/`Checkbox`.
 - `Button` and `Card` are new components that break from their previous implementation.
 

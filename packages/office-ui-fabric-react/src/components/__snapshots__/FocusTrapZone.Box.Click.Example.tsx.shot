@@ -7,6 +7,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
   onFocusCapture={[Function]}
 >
   <div
+    aria-hidden={true}
     data-is-visible={true}
     onFocus={[Function]}
     style={
@@ -161,7 +162,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   border-color: transparent;
                   border-radius: 50%;
                   border-style: solid;
-                  border-width: .28em;
+                  border-width: 6px;
                   box-sizing: border-box;
                   display: block;
                   height: 12px;
@@ -444,6 +445,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
     </a>
   </div>
   <div
+    aria-hidden={true}
     data-is-visible={true}
     onFocus={[Function]}
     style={

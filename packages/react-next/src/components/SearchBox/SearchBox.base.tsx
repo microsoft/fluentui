@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
-import { warnDeprecations, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
-import { useBoolean, useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
+import { KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
+import { useBoolean, useControllableValue, useId, useMergedRefs, useWarnings } from '@uifabric/react-hooks';
 import { IconButton } from '../../compat/Button';
 import { Icon } from '../../Icon';
 
@@ -140,26 +140,19 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
     ev.stopPropagation();
   };
 
-  warnDeprecations(COMPONENT_NAME, props, {
-    labelText: 'placeholder',
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      deprecations: { labelText: 'placeholder' },
+    });
+  }
 
   useComponentRef(props.componentRef, inputElementRef, hasFocus);
 
   return (
-    <div
-      role="search"
-      ref={mergedRootRef}
-      className={classNames.root}
-      // eslint-disable-next-line react/jsx-no-bind
-      onFocusCapture={onFocusCapture}
-    >
-      <div
-        className={classNames.iconContainer}
-        // eslint-disable-next-line react/jsx-no-bind
-        onClick={onClickFocus}
-        aria-hidden
-      >
+    <div role="search" ref={mergedRootRef} className={classNames.root} onFocusCapture={onFocusCapture}>
+      <div className={classNames.iconContainer} onClick={onClickFocus} aria-hidden>
         <Icon iconName="Search" {...iconProps} className={classNames.icon} />
       </div>
       <input
@@ -167,13 +160,9 @@ export const SearchBoxBase = React.forwardRef((props: ISearchBoxProps, forwarded
         id={id}
         className={classNames.field}
         placeholder={placeholderValue}
-        // eslint-disable-next-line react/jsx-no-bind
         onChange={onInputChange}
-        // eslint-disable-next-line react/jsx-no-bind
         onInput={onInputChange}
-        // eslint-disable-next-line react/jsx-no-bind
         onBlur={onBlur}
-        // eslint-disable-next-line react/jsx-no-bind
         onKeyDown={onKeyDown}
         value={value}
         disabled={disabled}
