@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Provider, useCSS, teamsTheme } from '@fluentui/react-northstar';
 
-const ButtonUseCssPerf = () => {
+const ButtonUseCssNestingPerf = () => {
   const foo1 = useCSS({
     border: '1px solid black',
     display: 'flex',
@@ -215,4 +215,4 @@ const ButtonUseCssPerf = () => {
   );
 };
 
-export default ButtonUseCssPerf;
+export default ButtonUseCssNestingPerf;
