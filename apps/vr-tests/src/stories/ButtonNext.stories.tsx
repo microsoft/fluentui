@@ -5,6 +5,8 @@ import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { FabricDecorator } from '../utilities';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
@@ -26,7 +28,7 @@ storiesOf('Button Next', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => <Button>Hello, world</Button>)

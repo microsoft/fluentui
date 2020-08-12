@@ -64,6 +64,8 @@
   * 3. Avoid defining styles directly.
  **/
   &._primary {
+    // TODO: Check with David
+    // unable to map V7 semantic color e.g. primaryButtonBackground to global/accent token.
     --button-background: var(--accent-background);
     --button-borderColor: var(--accent-borderColor);
     --button-contentColor: var(--accent-contentColor);
@@ -102,8 +104,6 @@
   &._fluid {
     width: 100%;
     max-width: 100%;
-
-    --button-pressed-transform: scale(0.98);
   }
 
   &._size_smallest {
@@ -149,7 +149,7 @@
   font-size: var(--button-iconSize, inherit);
   font-weight: normal;
 
-  &._disabled {
+  ._disabled & {
     color: var(--button-disabled-iconColor);
   }
 }

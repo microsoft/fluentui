@@ -1,20 +1,10 @@
 @import '~@fluentui/common-styles/dist/sass/focusBorder';
 
-:root {
-  /* divider variables */
-  --button-dividerColor: rgba(0, 0, 0, 0.1);
-  --button-dividerLength: var(--button-minHeight);
-  --button-dividerThickness: var(--button-borderWidth);
-
-  --accent-dividerColor: var(--button-dividerColor);
-}
-
 .root {
   --button-contentGap: 0;
   --button-padding: 0;
 
-  --button-dividerLength: var(--button-minHeight);
-
+  height: auto;
   width: auto;
 
   &._circular {
