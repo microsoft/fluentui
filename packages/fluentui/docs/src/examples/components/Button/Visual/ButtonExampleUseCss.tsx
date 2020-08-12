@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, useCSS } from '@fluentui/react-northstar';
 
-const ButtonExample = () => {
+const ButtonExampleUseCss = () => {
   const className1 = useCSS(({ siteVariables }) => ({ border: `1px solid ${siteVariables.colors.brand[500]}` }), {
     color: 'blue',
   });
@@ -24,4 +24,4 @@ const ButtonExample = () => {
   );
 };
 
-export default ButtonExample;
+export default ButtonExampleUseCss;
