@@ -111,8 +111,6 @@ export function renamePropInSpread(
                 newSpreadName = propSpreadName;
                 if (!propAlreadyExists(parentContainer, toRename)) {
                   tryInsertExistingDecomposedProp(toRename, variableStatementWithSpreadProp);
-                } else {
-                  newSpreadName = propSpreadName;
                 }
                 break;
               }
