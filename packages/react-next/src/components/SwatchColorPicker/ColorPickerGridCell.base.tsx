@@ -2,8 +2,7 @@ import * as React from 'react';
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
 import { getColorFromString } from 'office-ui-fabric-react/lib/utilities/color/getColorFromString';
-import { GridCell } from '../../Utilities/grid/GridCell';
-import { IGridCellProps } from '../../Utilities/grid/GridCell.types';
+import { GridCell, IGridCellProps } from '../../utilities/grid/index';
 import { getStyles as getActionButtonStyles } from 'office-ui-fabric-react/lib/components/Button/ActionButton/ActionButton.styles';
 import { IButtonClassNames } from 'office-ui-fabric-react/lib/components/Button/BaseButton.classNames';
 import {
