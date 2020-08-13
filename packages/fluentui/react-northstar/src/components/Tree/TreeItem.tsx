@@ -145,6 +145,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
       performClick: e => {
+        e.stopPropagation();
         handleTitleClick(e);
       },
       focusParent: e => {
