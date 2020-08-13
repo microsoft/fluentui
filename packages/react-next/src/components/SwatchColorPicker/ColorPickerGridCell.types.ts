@@ -30,7 +30,7 @@ export interface IColorPickerGridCellProps {
   /**
    * The CSS-compatible string to describe the color
    */
-  color?: string;
+  color: string;
 
   /**
    * Index for this option
@@ -125,7 +125,7 @@ export interface IColorCellProps {
   /**
    * The CSS-compatible string to describe the color
    */
-  color?: string;
+  color: string;
 
   /**
    * Index for this option

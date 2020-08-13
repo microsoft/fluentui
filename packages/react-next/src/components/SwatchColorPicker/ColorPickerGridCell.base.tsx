@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, mergeStyleSets } from '../../Styling';
 import { classNamesFunction } from '../../Utilities';
 import { getColorFromString } from 'office-ui-fabric-react/lib/Color';
 import { GridCell } from '../../Utilities/grid/GridCell';
@@ -17,9 +17,9 @@ import { useConstCallback } from '@uifabric/react-hooks';
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
 /** Validate if the cell's color is white or not to apply whiteCell style */
-const isWhiteCell = (inputColor: string | undefined): boolean => {
+const isWhiteCell = (inputColor: string): boolean => {
   const currentColor = getColorFromString(inputColor!);
-  return currentColor!.hex === 'ffffff';
+  return currentColor?.hex === 'ffffff';
 };
 
 export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps> = props => {
@@ -50,7 +50,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     disabled,
     selected,
     circle,
-    isWhite: isWhiteCell(color),
+    isWhite: isWhiteCell(color!),
     height,
     width,
     borderWidth,
