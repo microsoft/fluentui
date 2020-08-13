@@ -468,6 +468,7 @@ export const Designer: React.FunctionComponent = () => {
       let command = '';
       command += e.altKey ? 'Alt+' : '';
       command += e.ctrlKey ? 'Ctrl+' : '';
+      command += e.metaKey ? 'Ctrl+' : ''; // Command key on Mac OS
       command += e.shiftKey ? 'Shift+' : '';
       command += e.key;
       hotkeys.hasOwnProperty(command) && hotkeys[command]();
