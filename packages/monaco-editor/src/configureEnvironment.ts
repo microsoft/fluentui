@@ -10,6 +10,7 @@ export interface IMonacoConfig {
   crossDomain?: boolean;
 }
 
+// eslint-disable-next-line no-restricted-globals
 const globalObj = (typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {}) as Window & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   MonacoEnvironment?: any;

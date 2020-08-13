@@ -29,8 +29,7 @@ import { useMergedRefs, useAsync, useTarget } from '@uifabric/react-hooks';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
-// In order for some of the max height logic to work
-// properly we need to set the border.
+// In order for some of the max height logic to work properly we need to set the border.
 // The value is abitrary.
 const BORDER_WIDTH = 1;
 const SLIDE_ANIMATIONS = {
@@ -48,10 +47,7 @@ const DEFAULT_PROPS = {
 };
 
 function useCachedBounds(props: IPositioningContainerProps, targetWindowRef: React.RefObject<Window | undefined>) {
-  /**
-   * The bounds used when determing if and where the
-   * PositioningContainer should be placed.
-   */
+  /** The bounds used when determining if and where the PositioningContainer should be placed. */
   const positioningBounds = React.useRef<IRectangle>();
 
   const getCachedBounds = (): IRectangle => {
@@ -241,6 +237,7 @@ function useAutoDismissEvents(
     }, 0);
 
     return () => events.dispose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
   }, []);
 }
 
@@ -256,9 +253,7 @@ export function useHeightOffset(
   const async = useAsync();
   const setHeightOffsetTimer = React.useRef<number>(0);
 
-  /**
-   * Animates the height if finalHeight was given.
-   */
+  /** Animates the height if finalHeight was given. */
   const setHeightOffsetEveryFrame = (): void => {
     if (contentHost && finalHeight) {
       setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
@@ -282,6 +277,7 @@ export function useHeightOffset(
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- should only re-run if finalHeight changes
   React.useEffect(setHeightOffsetEveryFrame, [finalHeight]);
 
   return heightOffset;
@@ -314,6 +310,7 @@ export const PositioningContainer = React.forwardRef(
     useSetInitialFocus(props, contentHost, positions);
     useAutoDismissEvents(props, positionedHost, targetWindowRef, targetRef, positions, updateAsyncPosition);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on initial render
     React.useEffect(() => props.onLayerMounted?.(), []);
 
     // If there is no target window then we are likely in server side rendering and we should not render anything.

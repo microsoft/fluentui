@@ -116,19 +116,27 @@ function useVisibility(props: IContextualMenuProps, targetWindowRef: React.RefOb
   const { hidden = false, onMenuDismissed, onMenuOpened, onDismiss } = props;
   const previousHidden = usePrevious(hidden);
 
+  const onMenuOpenedRef = React.useRef(onMenuOpened);
+  const onMenuClosedRef = React.useRef(onMenuDismissed);
+  const propsRef = React.useRef(props);
+
+  onMenuOpenedRef.current = onMenuOpened;
+  onMenuClosedRef.current = onMenuDismissed;
+  propsRef.current = props;
+
   React.useEffect(() => {
     // Don't issue dismissed callbacks on initial mount
-    if (hidden && previousHidden !== undefined) {
-      onMenuDismissed?.(props);
-    } else {
-      onMenuOpened?.(props);
+    if (hidden && previousHidden === false) {
+      onMenuClosedRef.current?.(propsRef.current);
+    } else if (!hidden && previousHidden === true) {
+      onMenuOpenedRef.current?.(propsRef.current);
     }
-  }, [hidden]);
+  }, [hidden, previousHidden]);
 
   useOnEvent(targetWindowRef.current, 'resize', ev => onDismiss?.(ev));
 
   // Issue onDismissedCallback on unmount
-  React.useEffect(() => () => onMenuDismissed?.(props), []);
+  React.useEffect(() => () => onMenuClosedRef.current?.(propsRef.current), []);
 }
 
 export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) => {
