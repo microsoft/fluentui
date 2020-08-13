@@ -5,6 +5,7 @@ const config: ScreenerTestsConfig = {
   steps: [
     builder =>
       builder
+        .snapshot('Input shows error.')
         .click(`.${buttonClassName}`)
         .snapshot('Shows datepicker popup through button and error is shown.')
         .click(`.${datepickerCalendarCellClassName}:nth-child(15)`)

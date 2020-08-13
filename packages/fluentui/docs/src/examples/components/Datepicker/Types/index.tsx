@@ -23,7 +23,7 @@ const Types = () => (
     <ComponentExample
       title="Localized Calendar"
       description="The dates can be localized."
-      examplePath="components/Datepicker/Types/DatepickerExampleLocalization"
+      examplePath="components/Datepicker/Types/DatepickerExampleLocalizationStrings"
     />
   </ExampleSection>
 );
