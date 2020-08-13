@@ -54,6 +54,11 @@ TODO: document any API or functionality changes
 
 - Updated enums to string union type: `PivotLinkFormat`, `PivotLinkSize`. (#13370)
 
+### SwatchColorPicker
+
+- Added an onChange prop and deprecated onColorChanged.
+- Deprecated isControlled.
+
 ## Other notable changes
 
 - `styles` prop backward compat solution.
