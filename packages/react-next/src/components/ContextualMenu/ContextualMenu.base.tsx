@@ -49,7 +49,7 @@ import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './Cont
 import { getItemStyles } from './ContextualMenu.classNames';
 import { useTarget, usePrevious, useOnEvent } from '@uifabric/react-hooks';
 import { useResponsiveMode } from 'office-ui-fabric-react/lib/utilities/hooks/useResponsiveMode';
-import { ResponsiveMode } from 'office-ui-fabric-react/src/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
