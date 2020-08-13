@@ -22,8 +22,10 @@ export type UseCSSStyleInput = string | UseCSSStyle | ((theme: ThemePrepared) =>
 // Definitions
 //
 
-const SPECIFICITY_CLASSNAME = 'fcss';
-const CSS_PREFIX = 'f';
+// SPECIFICITY_CLASSNAME is used to increase the specificity of produced CSS to win over other defined classes.
+// "css" used for production to decrease DOM size.
+const SPECIFICITY_CLASSNAME = process.env.NODE_ENV === 'production' ? 'css' : 'use-css';
+const CLASSNAME_PREFIX = 'f';
 
 // `stylis@3` is a CJS library, there are known issues with them:
 // https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
@@ -77,7 +79,7 @@ export function useCSS(...styles: UseCSSStyleInput[]) {
   // serializeStyles() will concat all passed styles and will resolve functions
   const serializedStyles = serializeStyles(resolvedStyles, stylesCache, theme);
   // ".name" is not a valid CSS classname as it can start from a digit
-  const serializedClassName = `${CSS_PREFIX}${serializedStyles.name}`;
+  const serializedClassName = `${CLASSNAME_PREFIX}${serializedStyles.name}`;
 
   stylesCache[serializedClassName] = serializedStyles.styles;
 

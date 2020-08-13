@@ -39,7 +39,7 @@ describe('useCSS', () => {
     const styles = [{ color: 'red' }];
     const wrapper = mount(<TestComponent styles={styles} />);
 
-    expect(wrapper.find('div').prop('className')).toBe('fcss ftokvmb');
+    expect(wrapper.find('div').prop('className')).toBe('use-css ftokvmb');
   });
 
   it('handles nested selectors', () => {
@@ -61,19 +61,19 @@ describe('useCSS', () => {
     mount(<TestComponent styles={styles} />, getMountOptions(renderGlobal));
 
     expect(renderGlobal).toMatchInlineSnapshot(`
-      .fcss.f1j1cyx0 {
+      .use-css.f1j1cyx0 {
         left: 20px;
       }
-      .fcss.f1j1cyx0 p {
+      .use-css.f1j1cyx0 p {
         color: green;
       }
-      .fcss.f1j1cyx0 p > span {
+      .use-css.f1j1cyx0 p > span {
         color: yellow;
       }
-      .fcss.f1j1cyx0.ui-image {
+      .use-css.f1j1cyx0.ui-image {
         color: blue;
       }
-      .fcss.f1j1cyx0 .ui-loader {
+      .use-css.f1j1cyx0 .ui-loader {
         color: blue;
       }
     `);
@@ -92,14 +92,14 @@ describe('useCSS', () => {
     mount(<TestComponent styles={styles} />, getMountOptions(renderGlobal));
 
     expect(renderGlobal).toMatchInlineSnapshot(`
-      .fcss.f1yae8dp:before {
+      .use-css.f1yae8dp:before {
         color: red;
       }
-      .fcss.f1yae8dp:focus {
+      .use-css.f1yae8dp:focus {
         color: green;
       }
-      [data-whatinput="keyboard"] .fcss.f1yae8dp:focus,
-      [data-whatinput="initial"] .fcss.f1yae8dp:focus {
+      [data-whatinput="keyboard"] .use-css.f1yae8dp:focus,
+      [data-whatinput="initial"] .use-css.f1yae8dp:focus {
         color: red;
       }
     `);
@@ -113,11 +113,11 @@ describe('useCSS', () => {
     mount(<TestComponent styles={styles} />, getMountOptions(renderGlobal, true));
 
     expect(renderGlobal).toMatchInlineSnapshot(`
-      .fcss.fl5cdwz {
+      .use-css.fl5cdwz {
         left: 20px;
         padding-left: 20px;
       }
-      .fcss.rfl5cdwz {
+      .use-css.rfl5cdwz {
         right: 20px;
         padding-right: 20px;
       }
@@ -133,7 +133,7 @@ describe('useCSS', () => {
     mount(<TestComponent styles={[firstClassName, { color: 'red', left: '30px' }]} />, getMountOptions(renderGlobal));
 
     expect(renderGlobal).toMatchInlineSnapshot(`
-      .fcss.fgam49s {
+      .use-css.fgam49s {
         left: 20px;
         color: red;
         left: 30px;
