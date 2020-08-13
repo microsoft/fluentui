@@ -15,6 +15,16 @@ export interface SkeletonVariables {
   buttonSmallWidth?: string;
   buttonBackground?: string;
   buttonCircularBorderRadius?: string;
+
+  // Skeleton Avatar
+  avatarBackground?: string;
+  avatarSmallest?: string;
+  avatarSmaller?: string;
+  avatarSmall?: string;
+  avatarMedium?: string;
+  avatarLarge?: string;
+  avatarLarger?: string;
+  avatarLargest?: string;
 }
 
 export const skeletonVariables = (siteVariables): SkeletonVariables => {
@@ -33,5 +43,15 @@ export const skeletonVariables = (siteVariables): SkeletonVariables => {
     buttonSmallWidth: pxToRem(72),
     buttonBackground: siteVariables.colorScheme.default.background4,
     buttonCircularBorderRadius: pxToRem(999),
+
+    // Skeleton Avatar
+    avatarBackground: siteVariables.colorScheme.default.background4,
+    avatarSmallest: pxToRem(20),
+    avatarSmaller: pxToRem(24),
+    avatarSmall: pxToRem(28),
+    avatarMedium: pxToRem(32),
+    avatarLarge: pxToRem(44),
+    avatarLarger: pxToRem(64),
+    avatarLargest: pxToRem(96),
   };
 };

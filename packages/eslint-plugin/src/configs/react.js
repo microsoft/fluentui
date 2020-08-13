@@ -87,6 +87,13 @@ const config = {
     'no-empty': 'error',
     'no-eval': 'error',
     'no-new-wrappers': 'error',
+    'no-restricted-globals': [
+      'error',
+      ...['blur', 'close', 'focus', 'length', 'name', 'parent', 'self', 'stop'].map(name => ({
+        name,
+        message: `"${name}" refers to a DOM global. Did you mean to reference a local value instead?`,
+      })),
+    ],
     'no-restricted-properties': [
       'error',
       { object: 'describe', property: 'only', message: 'describe.only should only be used during test development' },
@@ -204,7 +211,6 @@ const config = {
     // permanently disable because we disagree with these rules
     'import/prefer-default-export': 'off',
     'no-await-in-loop': 'off', // contrary to rule docs, awaited things often are NOT parallelizable
-    'no-restricted-globals': 'off', // airbnb bans isNaN in favor of Number.isNaN which is unavailable in IE 11
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
 

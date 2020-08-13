@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ensure radio control does not shrink",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-11T17:24:32.852Z"
-}

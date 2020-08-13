@@ -2,9 +2,8 @@ import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 
 /**
- * Calls renderer.create from react-test-renderer, then calls the callback,
- * then unmounts. This prevents mounted components from sitting around doing
- * unfathomable things in the background while other tests start executing.
+ * Calls `mount` from enzyme, calls the callback, and unmounts. This prevents mounted components
+ * from sitting around doing unfathomable things in the background while other tests execute.
  *
  * @param content - JSX content to test.
  * @param callback - Function callback which receives the component to use.

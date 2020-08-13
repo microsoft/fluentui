@@ -255,6 +255,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         // This is a hack to make it work with useAutoControlled since it's not keeping track of
         // the controlled state in the first interaction breaking the expected behavior
         // Remove this once the useAutoControle is fixed and the prevState will be stable
+        // see https://github.com/microsoft/fluentui/issues/14509
         const nextActiveItemIds = updateActiveItemIds(stableProps.current.activeItemIds || prevActiveItemIds);
         _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
           ...stableProps.current,
