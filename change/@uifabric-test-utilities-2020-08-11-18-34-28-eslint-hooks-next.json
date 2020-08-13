@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix misleading docs for safeMount",
-  "packageName": "@uifabric/test-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-08-12T01:34:27.992Z"
-}
