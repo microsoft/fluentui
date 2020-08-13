@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BasePicker's onDismiss can now return a boolean to decide if an item is selected",
-  "packageName": "office-ui-fabric-react",
-  "email": "t-jamle@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-03T08:23:54.017Z"
-}

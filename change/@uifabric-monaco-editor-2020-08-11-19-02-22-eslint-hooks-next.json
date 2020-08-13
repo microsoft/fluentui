@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix violation of newly added lint rule",
-  "packageName": "@uifabric/monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-08-12T02:02:22.263Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add full width to text-area and text-field controls to expand properly with component",
-  "packageName": "@fluentui/web-components",
-  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-12T18:41:04.074Z"
-}

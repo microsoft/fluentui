@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add rule to prevent accidental references to globals",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-12T01:34:12.441Z"
-}
