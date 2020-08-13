@@ -20,7 +20,6 @@ const unsupportedComponents = [
   'Flex',
   'Form',
   'Grid',
-  'HierarchicalTree',
   'ItemLayout',
   'Layout',
   'List',
