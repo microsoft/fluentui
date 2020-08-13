@@ -274,13 +274,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
   }
 
   public UNSAFE_componentWillUpdate(newProps: IContextualMenuInternalProps): void {
-    if (this._isHidden(newProps) !== this._isHidden(this.props)) {
-      if (this._isHidden(newProps)) {
-        this._onMenuClosed();
-      } else {
-        this._onMenuOpened();
-      }
-    }
     if (newProps.delayUpdateFocusOnHover !== this.props.delayUpdateFocusOnHover) {
       // update shouldUpdateFocusOnMouseEvent to follow what was passed in
       this._shouldUpdateFocusOnMouseEvent = !newProps.delayUpdateFocusOnHover;
@@ -472,24 +465,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     } else {
       return null;
     }
-  }
-
-  /**
-   * Return whether the contextual menu is hidden.
-   * Undefined value for hidden is equivalent to hidden being false.
-   * @param props - Props for the component
-   */
-  private _isHidden(props: IContextualMenuInternalProps) {
-    return !!props.hidden;
-  }
-
-  private _onMenuOpened() {
-    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
-    this._gotMouseMove = false;
-  }
-
-  private _onMenuClosed() {
-    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
   }
 
   private _tryFocusPreviousActiveElement = (options: {
