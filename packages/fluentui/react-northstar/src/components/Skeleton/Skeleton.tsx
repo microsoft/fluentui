@@ -7,6 +7,7 @@ import { SkeletonLine } from './SkeletonLine';
 import { SkeletonShape } from './SkeletonShape';
 import { SkeletonButton } from './SkeletonButton';
 import { SkeletonInput } from './SkeletonInput';
+import { SkeletonAvatar } from './SkeletonAvatar';
 
 export interface SkeletonOwnProps {
   /**
@@ -42,12 +43,14 @@ export const Skeleton = compose<'div', SkeletonOwnProps, SkeletonStylesProps, Bo
   Shape: typeof SkeletonShape;
   Button: typeof SkeletonButton;
   Input: typeof SkeletonInput;
+  Avatar: typeof SkeletonAvatar;
 };
 
 Skeleton.Line = SkeletonLine;
 Skeleton.Shape = SkeletonShape;
 Skeleton.Button = SkeletonButton;
 Skeleton.Input = SkeletonInput;
+Skeleton.Avatar = SkeletonAvatar;
 Skeleton.defaultProps = {
   accessibility: skeletonBehavior,
 };

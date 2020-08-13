@@ -1636,7 +1636,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     itemLimit?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
     onChange?: (items?: T[]) => void;
-    onDismiss?: (ev?: any, selectedItem?: T) => void;
+    onDismiss?: (ev?: any, selectedItem?: T) => boolean | void;
     // @deprecated
     onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;

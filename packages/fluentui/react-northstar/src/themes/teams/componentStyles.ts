@@ -97,6 +97,7 @@ export { skeletonLineStyles as SkeletonLine } from './components/Skeleton/skelet
 export { skeletonShapeStyles as SkeletonShape } from './components/Skeleton/skeletonShapeStyles';
 export { skeletonButtonStyles as SkeletonButton } from './components/Skeleton/skeletonButtonStyles';
 export { skeletonInputStyles as SkeletonInput } from './components/Skeleton/skeletonInputStyles';
+export { skeletonAvatarStyles as SkeletonAvatar } from './components/Skeleton/skeletonAvatarStyles';
 
 export { sliderStyles as Slider } from './components/Slider/sliderStyles';
 
