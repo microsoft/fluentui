@@ -382,6 +382,12 @@ function useDismissHandlers(
       }
     };
 
+    const dismissOnTargetWindowBlur = (ev: FocusEvent) => {
+      if (ev.relatedTarget === null && !document.hasFocus()) {
+        this.dismiss(ev);
+      }
+    };
+
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -393,6 +399,7 @@ function useDismissHandlers(
           on(targetWindowRef.current, 'resize', dismissOnResize, true),
           on(targetWindowRef.current.document.documentElement, 'focus', dismissOnLostFocus, true),
           on(targetWindowRef.current.document.documentElement, 'click', dismissOnLostFocus, true),
+          on(targetWindowRef.current, 'blur', dismissOnTargetWindowBlur, true),
         ];
 
         return () => {
