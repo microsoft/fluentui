@@ -28,8 +28,7 @@ describe('Tests a simple data-driven codeMod', () => {
         }
       });
     }
-    /* Visual inspection. TODO: make automated tests */
-    console.log(project.getSourceFile('mCompoundButtonProps.tsx')?.getFullText());
-    console.log(project.getSourceFile('mDropdownProps.tsx')?.getFullText());
+    expect(project.getSourceFile('mCompoundButtonProps.tsx')?.getFullText()).toMatchSnapshot();
+    expect(project.getSourceFile('mDropdownProps.tsx')?.getFullText()).toMatchSnapshot();
   });
 });
