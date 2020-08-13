@@ -143,6 +143,7 @@ export interface ICalendarStrings extends IDateFormatting {
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
     nextYearRangeAriaLabel?: string;
+    openCalendarTitle: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
