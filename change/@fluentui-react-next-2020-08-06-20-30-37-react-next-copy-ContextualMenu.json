@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Copy ContextualMenu to react-next",
-  "packageName": "@fluentui/react-next",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-06T20:30:37.314Z"
-}

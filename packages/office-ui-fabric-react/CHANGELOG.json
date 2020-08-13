@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "office-ui-fabric-react_v7.128.0",
+      "version": "7.128.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "BasePicker's onDismiss can now return a boolean to decide if an item is selected",
+            "author": "t-jamle@microsoft.com",
+            "commit": "11f792c8335095322dde622a3f64e6c378e0d202",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Aug 2020 18:34:18 GMT",
       "tag": "office-ui-fabric-react_v7.127.1",
       "version": "7.127.1",
