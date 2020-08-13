@@ -193,7 +193,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
 
-  const [activeItemIds, setActiveItemIds] = useAutoControlled<string[]>({
+  const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
     defaultValue: props.defaultActiveItemIds,
     value: props.activeItemIds,
     initialValue: expandedItemsGenerator(items),
@@ -243,17 +243,34 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         ...stableProps.current,
         selectedItemIds: updateSelectedItemIds,
       });
+
       setSelectedItemIdsState(updateSelectedItemIds);
     },
     [stableProps, setSelectedItemIdsState],
+  );
+
+  const setActiveItemIds = React.useCallback(
+    (e: React.SyntheticEvent, updateActiveItemIds: (activeItemIds: string[]) => string[]) => {
+      setActiveItemIdsState(prevActiveItemIds => {
+        // This is a hack to make it work with useAutoControlled since it's not keeping track of
+        // the controlled state in the first interaction breaking the expected behavior
+        // Remove this once the useAutoControle is fixed and the prevState will be stable
+        const nextActiveItemIds = updateActiveItemIds(stableProps.current.activeItemIds || prevActiveItemIds);
+        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
+          ...stableProps.current,
+          activeItemIds: nextActiveItemIds,
+        });
+        return nextActiveItemIds;
+      });
+    },
+    [stableProps, setActiveItemIdsState],
   );
 
   const expandItems = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
       const { id } = treeItemProps;
 
-      setActiveItemIds(prevActiveItemIds => {
-        const currActiveItemIds = stableProps.current.activeItemIds || prevActiveItemIds;
+      setActiveItemIds(e, currActiveItemIds => {
         const siblings = getSiblings(stableProps.current.items, id);
         const activeItemIdIndex = currActiveItemIds.indexOf(id);
         let nextActiveItemsIds = currActiveItemIds;
@@ -272,19 +289,16 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
           }
           nextActiveItemsIds = [...nextActiveItemsIds, id];
         }
-        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
-          ...stableProps.current,
-          activeItemIds: nextActiveItemsIds,
-        });
         return nextActiveItemsIds;
       });
     },
-    [setActiveItemIds, stableProps, exclusive],
+    [stableProps, setActiveItemIds, exclusive],
   );
 
   const onTitleClick = React.useCallback(
     (e: React.SyntheticEvent, treeItemProps: TreeItemProps, executeSelection: boolean = false) => {
       const treeItemHasSubtree = hasSubtree(treeItemProps);
+
       if (!treeItemProps) {
         return;
       }
@@ -331,7 +345,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
 
   const isActiveItem = React.useCallback(
     (id: string): boolean => {
-      return activeItemIds?.indexOf(id) > -1;
+      return activeItemIds.indexOf(id) > -1;
     },
     [activeItemIds],
   );
@@ -345,8 +359,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
       const { id } = treeItemProps;
       const siblings = getSiblings(stableProps.current.items, id);
 
-      setActiveItemIds(prevActiveItemIds => {
-        const currActiveItemIds = stableProps.current.activeItemIds || prevActiveItemIds;
+      setActiveItemIds(e, currActiveItemIds => {
         const nextActiveItemsIds = [...currActiveItemIds];
 
         siblings.forEach(sibling => {
@@ -358,15 +371,10 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         if (hasSubtree(treeItemProps) && !isActiveItem(id)) {
           nextActiveItemsIds.push(id);
         }
-
-        _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
-          ...stableProps.current,
-          activeItemIds: nextActiveItemsIds,
-        });
         return nextActiveItemsIds;
       });
     },
-    [exclusive, stableProps, setActiveItemIds, isActiveItem],
+    [exclusive, stableProps, isActiveItem, setActiveItemIds],
   );
 
   const isIndeterminate = (item: TreeItemProps) => {
