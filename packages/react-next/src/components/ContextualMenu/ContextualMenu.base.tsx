@@ -171,12 +171,31 @@ function useSubMenuState({ hidden }: IContextualMenuProps) {
   return [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] as const;
 }
 
+function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IContextualMenuProps) {
+  const shouldUpdateFocusOnMouseEvent = React.useRef<boolean>(!delayUpdateFocusOnHover);
+  const gotMouseMove = React.useRef<boolean>(false);
+
+  React.useEffect(() => {
+    shouldUpdateFocusOnMouseEvent.current = !delayUpdateFocusOnHover;
+    gotMouseMove.current = hidden ? false : !delayUpdateFocusOnHover && gotMouseMove.current;
+  }, [delayUpdateFocusOnHover, hidden]);
+
+  const onMenuFocusCapture = React.useCallback(() => {
+    if (delayUpdateFocusOnHover) {
+      shouldUpdateFocusOnMouseEvent.current = true;
+    }
+  }, [delayUpdateFocusOnHover]);
+
+  return [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] as const;
+}
+
 export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) => {
   const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
   const hostElement = React.useRef<HTMLDivElement>(null);
   const [targetRef, targetWindowRef] = useTarget(hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
+  const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
 
   const responsiveMode = useResponsiveMode(hostElement);
 
@@ -194,6 +213,9 @@ export const ContextualMenuBase = (propsWithoutDefaults: IContextualMenuProps) =
         expandedByMouseClick,
         openSubMenu,
         closeSubMenu,
+        shouldUpdateFocusOnMouseEvent,
+        gotMouseMove,
+        onMenuFocusCapture,
       }}
       responsiveMode={responsiveMode}
     />
@@ -209,8 +231,11 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     expandedMenuItemKey?: string;
     submenuTarget?: Element;
     expandedByMouseClick?: boolean;
+    shouldUpdateFocusOnMouseEvent: React.MutableRefObject<boolean>;
+    gotMouseMove: React.MutableRefObject<boolean>;
     openSubMenu(submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean): void;
     closeSubMenu(): void;
+    onMenuFocusCapture(): void;
   };
 }
 
@@ -224,8 +249,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
   private _scrollIdleTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
-  private _shouldUpdateFocusOnMouseEvent: boolean;
-  private _gotMouseMove: boolean;
   private _mounted = false;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
@@ -251,8 +274,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
 
     this._id = props.id || getId('ContextualMenu');
     this._isScrollIdle = true;
-    this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
-    this._gotMouseMove = false;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -271,16 +292,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     }
 
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
-  }
-
-  public UNSAFE_componentWillUpdate(newProps: IContextualMenuInternalProps): void {
-    if (newProps.delayUpdateFocusOnHover !== this.props.delayUpdateFocusOnHover) {
-      // update shouldUpdateFocusOnMouseEvent to follow what was passed in
-      this._shouldUpdateFocusOnMouseEvent = !newProps.delayUpdateFocusOnHover;
-
-      // If shouldUpdateFocusOnMouseEvent is false, we need to reset gotMouseMove to false
-      this._gotMouseMove = this._shouldUpdateFocusOnMouseEvent && this._gotMouseMove;
-    }
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
@@ -436,7 +447,7 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
             tabIndex={shouldFocusOnContainer ? 0 : -1}
             onKeyDown={this._onMenuKeyDown}
             onKeyUp={this._onKeyUp}
-            onFocusCapture={this._onMenuFocusCapture}
+            onFocusCapture={this.props.hoisted.onMenuFocusCapture}
           >
             {title && <div className={this._classNames.title}> {title} </div>}
             {items && items.length ? (
@@ -938,12 +949,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     );
   };
 
-  private _onMenuFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
-    if (this.props.delayUpdateFocusOnHover) {
-      this._shouldUpdateFocusOnMouseEvent = true;
-    }
-  };
-
   private _onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     return this._keyHandler(ev, this._shouldHandleKeyUp, true /* dismissAllMenus */);
   };
@@ -1080,8 +1085,8 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     const targetElement = ev.currentTarget as HTMLElement;
 
     // Always do this check to make sure we record a mouseMove if needed (even if we are timed out)
-    if (this._shouldUpdateFocusOnMouseEvent) {
-      this._gotMouseMove = true;
+    if (this.props.hoisted.shouldUpdateFocusOnMouseEvent.current) {
+      this.props.hoisted.gotMouseMove.current = true;
     } else {
       return;
     }
@@ -1098,7 +1103,7 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
   };
 
   private _shouldIgnoreMouseEvent(): boolean {
-    return !this._isScrollIdle || !this._gotMouseMove;
+    return !this._isScrollIdle || !this.props.hoisted.gotMouseMove.current;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
