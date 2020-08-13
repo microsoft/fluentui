@@ -3,6 +3,7 @@
  * token values to the container DIV, so that fonts and default colors, which
  * refer to token values, can be applied.
  */
+// TODO: ensure correct styles are being set here
 .root {
   background: var(--body-background);
   color: var(--body-contentColor);

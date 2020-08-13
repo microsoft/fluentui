@@ -120,7 +120,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   );
 
   const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear } = props;
-  const valueFormatter = date => (date ? formatMonthDayYear(date) : '');
 
   const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
 
@@ -153,6 +152,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     invalidInputErrorMessage: props.invalidInputErrorMessage,
     isOutOfBoundsErrorMessage: props.isOutOfBoundsErrorMessage,
     goToToday: props.goToToday,
+    openCalendarTitle: props.openCalendarTitle,
     prevMonthAriaLabel: props.prevMonthAriaLabel,
     nextMonthAriaLabel: props.nextMonthAriaLabel,
     prevYearAriaLabel: props.prevYearAriaLabel,
@@ -166,6 +166,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     selectedDateFormatString: props.selectedDateFormatString,
     todayDateFormatString: props.todayDateFormatString,
   };
+
+  const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
@@ -330,6 +332,7 @@ Datepicker.propTypes = {
   invalidInputErrorMessage: PropTypes.string,
   isOutOfBoundsErrorMessage: PropTypes.string,
   goToToday: PropTypes.string,
+  openCalendarTitle: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,
   nextMonthAriaLabel: PropTypes.string,
   prevYearAriaLabel: PropTypes.string,
@@ -358,11 +361,6 @@ Datepicker.defaultProps = {
   required: false,
 
   ...DEFAULT_CALENDAR_STRINGS,
-
-  // TODO: move defaults to date-time-utilities
-  isRequiredErrorMessage: 'A date selection is required',
-  invalidInputErrorMessage: 'Manually entered date is not in correct format.',
-  isOutOfBoundsErrorMessage: 'The selected date is from the restricted range.',
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;

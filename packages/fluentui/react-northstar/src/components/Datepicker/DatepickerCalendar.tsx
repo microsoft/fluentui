@@ -159,6 +159,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     invalidInputErrorMessage: props.invalidInputErrorMessage,
     isOutOfBoundsErrorMessage: props.isOutOfBoundsErrorMessage,
     goToToday: props.goToToday,
+    openCalendarTitle: props.openCalendarTitle,
     prevMonthAriaLabel: props.prevMonthAriaLabel,
     nextMonthAriaLabel: props.nextMonthAriaLabel,
     prevYearAriaLabel: props.prevYearAriaLabel,
@@ -235,7 +236,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           getA11yProps('calendarCell', {
             content: day.date,
             key: day.key,
-            'aria-label': formatMonthDayYear(day.originalDate),
+            'aria-label': formatMonthDayYear(day.originalDate, dateFormatting),
             selected: day.isSelected,
             disabled: !day.isInBounds,
             unfocused: !day.isInMonth,
@@ -265,7 +266,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       >
         {createShorthand(DatepickerCalendarHeader, header, {
           defaultProps: () => ({
-            label: formatMonthYear(gridNavigatedDate),
+            label: formatMonthYear(gridNavigatedDate, dateFormatting),
             'aria-label': formatMonthYear(gridNavigatedDate),
           }),
           overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
@@ -353,6 +354,7 @@ DatepickerCalendar.propTypes = {
   invalidInputErrorMessage: PropTypes.string,
   isOutOfBoundsErrorMessage: PropTypes.string,
   goToToday: PropTypes.string,
+  openCalendarTitle: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,
   nextMonthAriaLabel: PropTypes.string,
   prevYearAriaLabel: PropTypes.string,
