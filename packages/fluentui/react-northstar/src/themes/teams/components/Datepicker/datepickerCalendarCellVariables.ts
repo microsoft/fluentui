@@ -23,7 +23,7 @@ export const datepickerCalendarCellVariables = (siteVars: any): DatepickerCalend
   height: pxToRem(32),
   width: pxToRem(32),
 
-  backgroundColor: siteVars.colorScheme.white.foreground,
+  backgroundColor: siteVars.colorScheme.default.background,
   color: 'inherit',
 
   unfocusedColor: siteVars.colorScheme.brand.foregroundDisabled,
