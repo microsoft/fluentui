@@ -146,7 +146,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
   }
 
   public componentDidUpdate(prevProps: IModalProps, prevState: IDialogState) {
-    if (!prevProps.isOpen && !prevState.isVisible) {
+    if (!prevProps.isOpen && !prevState.isVisible && this.props.isOpen) {
       this.setState({
         isVisible: true,
       });

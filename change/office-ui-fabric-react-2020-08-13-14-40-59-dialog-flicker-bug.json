@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix modal getting visible shortly when re-rendering while closing",
+  "packageName": "office-ui-fabric-react",
+  "email": "mail@lenzw.de",
+  "dependentChangeType": "patch",
+  "date": "2020-08-13T12:40:59.832Z"
+}
