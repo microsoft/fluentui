@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updating localization defaults and changing type of formatting functions",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "karymes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-12T13:24:49.112Z"
+}

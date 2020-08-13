@@ -143,6 +143,7 @@ export interface ICalendarStrings extends IDateFormatting {
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
     nextYearRangeAriaLabel?: string;
+    openCalendarTitle: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
@@ -155,8 +156,8 @@ export interface ICalendarStrings extends IDateFormatting {
 // @public (undocumented)
 export interface IDateFormatting extends IDateGridStrings {
     formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date) => string;
-    formatMonthYear: (date: Date) => string;
+    formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
+    formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
     formatYear: (date: Date) => string;
     parseDate: (date: string) => Date | null;
 }
