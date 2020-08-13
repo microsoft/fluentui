@@ -1,12 +1,12 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DatepickerCalendarHeaderVariables } from './datepickerCalendarHeaderVariables';
+import { DatepickerVariables } from './datepickerVariables';
 import { DatepickerCalendarHeaderStylesProps } from '../../../../components/Datepicker/DatepickerCalendarHeader';
 
 import { pxToRem } from '../../../../utils';
 
 export const datepickerCalendarHeaderStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarHeaderStylesProps,
-  DatepickerCalendarHeaderVariables
+  DatepickerVariables
 > = {
   root: ({ variables: v }): ICSSInJSStyle => {
     return {
@@ -18,7 +18,7 @@ export const datepickerCalendarHeaderStyles: ComponentSlotStylesPrepared<
   },
   month: ({ variables: v }): ICSSInJSStyle => {
     return {
-      fontWeight: v.monthFontWeight,
+      fontWeight: v.datepickerCalendarHeaderMonthFontWeight,
       flexGrow: 1,
       paddingLeft: pxToRem(10),
     };

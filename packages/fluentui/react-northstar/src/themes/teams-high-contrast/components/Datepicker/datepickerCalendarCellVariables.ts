@@ -1,10 +1,10 @@
-import { DatepickerCalendarCellVariables } from '../../../teams/components/Datepicker/datepickerCalendarCellVariables';
+import { DatepickerVariables } from '../../../teams/components/Datepicker/datepickerVariables';
 
-export const datepickerCalendarCellVariables = (siteVars: any): Partial<DatepickerCalendarCellVariables> => {
+export const datepickerCalendarCellVariables = (siteVars: any): Partial<DatepickerVariables> => {
   return {
-    selectedColor: siteVars.colors.black,
-    hoverColor: siteVars.colors.black,
-    referenceColor: siteVars.colors.black,
-    unfocusedColor: siteVars.colors.white,
+    datepickerCalendarCellSelectedColor: siteVars.colors.black,
+    datepickerCalendarCellHoverColor: siteVars.colors.black,
+    datepickerCalendarCellReferenceColor: siteVars.colors.black,
+    datepickerCalendarCellUnfocusedColor: siteVars.colors.white,
   };
 };
