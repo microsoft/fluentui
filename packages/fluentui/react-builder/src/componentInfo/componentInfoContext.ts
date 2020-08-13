@@ -23,6 +23,33 @@ componentInfoContext.byDisplayName = infoObjects.reduce((acc, next) => {
   return acc;
 }, {});
 
+componentInfoContext.byDisplayName['MaterialButton'] = {
+  constructorName: 'MaterialButton',
+  componentClassName: 'MaterialButton',
+  implementsCreateShorthand: false,
+  displayName: 'MaterialButton',
+  filename: 'foo',
+  filenameWithoutExt: 'foo',
+  docblock: {
+    description: 'foo',
+    tags: [
+      {
+        description: 'foo',
+        title: 'foo',
+      },
+    ],
+  },
+  apiPath: 'foo',
+  isChild: false,
+  isParent: false,
+  parentDisplayName: 'foo',
+  props: [],
+  repoPath: 'ff',
+  subcomponentName: 'ff',
+  subcomponents: [],
+  type: 'component',
+};
+
 componentInfoContext.fromComponent = Component => {
   const displayName = Component.displayName || Component.name;
 

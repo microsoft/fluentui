@@ -5,6 +5,8 @@ import * as _ from 'lodash';
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 
+import Button from '@material-ui/core/Button';
+
 import { JSONTreeElement } from './components/types';
 import { getUUID } from './utils/getUUID';
 
@@ -13,6 +15,13 @@ type FiberNavigator = FUI.FiberNavigator;
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const DRAGGING_ELEMENTS = {
+  // MATERIAL Elements
+  MaterialButton: (
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
+  ),
+
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
   span: { children: 'I am a <span>' },
@@ -389,6 +398,9 @@ export const DRAGGING_ELEMENTS = {
 };
 
 export const resolveComponent = (displayName): React.ElementType => {
+  if (displayName === 'WithStyles(ForwardRef(Button))') {
+    return Button;
+  }
   return FUI[displayName] || FUIIcons[displayName] || displayName;
 };
 

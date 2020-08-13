@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
+import { StylesProvider, useTheme } from '@material-ui/styles';
+import NoSsr from '@material-ui/core/NoSsr';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
@@ -288,11 +290,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               />
             )}
 
-            <Provider theme={teamsTheme} target={document}>
-              {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
-              {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-              {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-            </Provider>
+            <StylesProvider>
+              <Provider theme={teamsTheme} target={document}>
+                {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
+                {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+                {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              </Provider>
+            </StylesProvider>
           </>
         )}
       </FrameContextConsumer>
