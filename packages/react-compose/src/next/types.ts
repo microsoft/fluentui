@@ -7,7 +7,7 @@ import * as React from 'react';
 export type GenericDictionary = Record<string, any>;
 
 /**
- * Generic set of module to class name map.
+ * Class dictionary.
  */
 export type ClassDictionary = Record<string, string>;
 

@@ -1,12 +1,12 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/base.html';
-import { FASTAccordionItem } from './accordion-item';
-import { FASTAccordion } from '.';
+import { FluentAccordionItem } from './accordion-item';
+import { FluentAccordion } from '.';
 
 // Prevent tree-shaking
-FASTAccordion;
-FASTAccordionItem;
-FASTDesignSystemProvider;
+FluentAccordion;
+FluentAccordionItem;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Accordion',

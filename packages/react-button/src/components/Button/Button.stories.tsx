@@ -44,7 +44,7 @@ export const ButtonFocus = () => {
           buttonRef.current?.focus();
         }}
       >
-        Focus the other
+        Focus the other button
       </Button>
       <Button ref={buttonRef}>I get focused</Button>
     </Stack>

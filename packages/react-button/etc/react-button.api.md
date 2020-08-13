@@ -132,6 +132,9 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
 };
 
 // @public (undocumented)
+export const menuButtonShorthandProps: string[];
+
+// @public (undocumented)
 export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'iconPosition' | 'loader' | 'menu'> {
     // (undocumented)
     menu: ExpandedState['menu'];
@@ -139,9 +142,6 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokenSet;
-
-// @public
-export const renderButton: (state: ButtonState) => JSX.Element;
 
 // @public (undocumented)
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
@@ -169,7 +169,7 @@ export interface ToggleButtonState extends ToggleButtonProps {
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => {
     state: Record<string, any>;
-    render: (state: ButtonState) => JSX.Element;
+    render: (state: import("./Button.types").ButtonState) => JSX.Element;
 };
 
 // @public (undocumented)

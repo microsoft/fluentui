@@ -31,7 +31,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           border-color: #005a9e;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          background: Window;
+          background: Highlight;
           border-color: Highlight;
         }
         @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
@@ -44,7 +44,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           color: Window;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-          color: Highlight;
+          color: Window;
         }
         &:hover .ms-Checkbox-text {
           color: #201f1e;

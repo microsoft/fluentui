@@ -27,10 +27,10 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/icons": "^7.3.67",
+    "@uifabric/icons": "^7.3.70",
     "@uifabric/merge-styles": "^7.16.4",
     "@uifabric/set-version": "^7.0.19",
-    "office-ui-fabric-react": "^7.124.2",
+    "office-ui-fabric-react": "^7.126.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
