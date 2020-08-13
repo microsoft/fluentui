@@ -6,7 +6,7 @@ import { pickValuesFromColorScheme } from '../../../colorUtils';
 export const textColorAreas = stringLiteralsArray('foreground');
 export type TextColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof textColorAreas>>;
 
-export interface TeamsTextVariables {
+export interface TextVariables {
   colorScheme: TextColorSchemeMapping;
 
   importantColor: string;
@@ -42,10 +42,9 @@ export interface TeamsTextVariables {
   atMentionOtherColor: string;
   atMentionMeFontWeight: number;
   importantWeight: number;
-  timestampHoverColor: string;
 }
 
-export default (siteVariables): Partial<TeamsTextVariables> => {
+export const textVariables = (siteVariables): TextVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(siteVariables.colorScheme, textColorAreas),
 
@@ -83,7 +82,6 @@ export default (siteVariables): Partial<TeamsTextVariables> => {
     importantWeight: siteVariables.fontWeightBold,
     importantColor: siteVariables.colors.red[400],
     successColor: siteVariables.colors.green[600],
-    timestampColor: siteVariables.colors.grey[350],
-    timestampHoverColor: siteVariables.colors.grey[500],
+    timestampColor: siteVariables.colorScheme.default.foreground1,
   };
 };

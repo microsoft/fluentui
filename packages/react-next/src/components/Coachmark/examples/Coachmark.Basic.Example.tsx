@@ -2,14 +2,13 @@ import * as React from 'react';
 import {
   classNamesFunction,
   Coachmark,
-  DefaultButton,
   DirectionalHint,
   Dropdown,
-  IButtonProps,
   IDropdownOption,
   IStyle,
   TeachingBubbleContent,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react-next';
+import { DefaultButton, IButtonProps } from '@fluentui/react-next/lib/compat/Button';
 
 export interface ICoachmarkBasicExampleState {
   isCoachmarkVisible?: boolean;

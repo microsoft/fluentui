@@ -1,12 +1,12 @@
 import * as PopperJs from '@popperjs/core';
 
-import getScrollParent from './getScrollParent';
+import { getScrollParent } from './getScrollParent';
 import { Boundary } from './types';
 
 /**
  * Allows to mimic a behavior from V1 of Popper and accept `window` and `scrollParent` as strings.
  */
-export default function getBoundary(element: HTMLElement, boundary: Boundary): PopperJs.Boundary {
+export function getBoundary(element: HTMLElement, boundary: Boundary): PopperJs.Boundary {
   if (boundary === 'window') {
     return element.ownerDocument.documentElement;
   }

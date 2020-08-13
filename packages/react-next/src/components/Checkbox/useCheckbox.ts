@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { mergeSlotProp } from '@fluentui/react-compose';
-import { useControllableValue, useId, useMergedRefs } from '@uifabric/react-hooks';
+import { useControllableValue, useId, useMergedRefs, useWarnings } from '@uifabric/react-hooks';
 import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
-import { useFocusRects, warnMutuallyExclusive } from '../../Utilities';
+import { useFocusRects } from '../../Utilities';
 
 export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLDivElement>): ICheckboxState => {
   const {
@@ -58,6 +58,7 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
       id,
       title,
       onChange,
+      'data-ktp-execute-target': true,
       'aria-disabled': disabled,
       'aria-label': ariaLabel || label,
       'aria-labelledby': ariaLabelledBy,
@@ -65,6 +66,9 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
       'aria-posinset': ariaPositionInSet,
       'aria-setsize': ariaSetSize,
       'aria-checked': isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false',
+    },
+    checkbox: {
+      'data-ktp-target': true,
     },
     container: {
       htmlFor: id,
@@ -80,14 +84,15 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
 
 function useDebugWarning(props: ICheckboxProps) {
   if (process.env.NODE_ENV !== 'production') {
-    // This is a build-time conditional that will be constant at runtime
-    // tslint:disable-next-line:react-hooks-nesting
-    React.useEffect(() => {
-      warnMutuallyExclusive('Checkbox', props, {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: 'Checkbox',
+      props,
+      mutuallyExclusive: {
         checked: 'defaultChecked',
         indeterminate: 'defaultIndeterminate',
-      });
-    }, []);
+      },
+    });
   }
 }
 
@@ -112,6 +117,6 @@ function useComponentRef(
         }
       },
     }),
-    [isChecked, isIndeterminate],
+    [checkBoxRef, isChecked, isIndeterminate],
   );
 }

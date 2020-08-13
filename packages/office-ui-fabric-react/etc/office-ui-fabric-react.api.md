@@ -290,6 +290,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBasePickerState): void;
+    // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     protected currentPromise: PromiseLike<any> | undefined;
@@ -303,6 +305,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected focusZone: React.RefObject<IFocusZone>;
     // (undocumented)
     protected getActiveDescendant(): string | undefined;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
@@ -365,10 +371,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsController<T>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBasePickerState): void;
     // (undocumented)
     protected updateSuggestions(suggestions: any[]): void;
     // (undocumented)
@@ -1116,7 +1118,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
 }
 
 // @public (undocumented)
-export const Fabric: React.FunctionComponent<IFabricProps>;
+export const Fabric: import("react").ForwardRefExoticComponent<IFabricProps & import("react").RefAttributes<FabricBase>>;
 
 // @public (undocumented)
 export class FabricBase extends React.Component<IFabricProps> {
@@ -1306,10 +1308,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     forceUpdate(): void;
     // (undocumented)
     getStartItemIndexInView(): number;
-    // (undocumented)
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
@@ -1640,7 +1638,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     itemLimit?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
     onChange?: (items?: T[]) => void;
-    onDismiss?: (ev?: any, selectedItem?: T) => void;
+    onDismiss?: (ev?: any, selectedItem?: T) => boolean | void;
     // @deprecated
     onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
@@ -2399,8 +2397,10 @@ export interface ICoachmarkStyleProps {
     entityHostHeight?: string;
     entityHostWidth?: string;
     height?: string;
+    // @deprecated
     isBeaconAnimating: boolean;
     isCollapsed: boolean;
+    // @deprecated
     isMeasured: boolean;
     isMeasuring: boolean;
     theme?: ITheme;
@@ -2754,6 +2754,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
+    multiSelectDelimiter?: string;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
@@ -3019,6 +3020,8 @@ export interface IContextualMenuListProps {
     // (undocumented)
     items: IContextualMenuItem[];
     // (undocumented)
+    role?: string;
+    // (undocumented)
     totalItemCount: number;
 }
 
@@ -3058,6 +3061,10 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
     shouldUpdateWhenHidden?: boolean;
@@ -3534,8 +3541,6 @@ export interface IDetailsListState {
     focusedItemIndex: number;
     // (undocumented)
     isCollapsed?: boolean;
-    // (undocumented)
-    isDropping?: boolean;
     // (undocumented)
     isSizing?: boolean;
     // (undocumented)
@@ -4787,6 +4792,7 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
     }[];
+    focusZoneProps?: IFocusZoneProps;
     getGroupHeight?: (group: IGroup, groupIndex: number) => number;
     groupProps?: IGroupRenderProps;
     groups?: IGroup[];
@@ -4849,8 +4855,6 @@ export interface IGroupedListState {
     groups?: IGroup[];
     // (undocumented)
     lastSelectionMode?: SelectionMode;
-    // (undocumented)
-    lastWidth?: number;
 }
 
 // @public (undocumented)
@@ -8029,6 +8033,9 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderComponent<{}>>;
 
 // @public (undocumented)
+export type KeytipDataOptions = IKeytipDataProps;
+
+// @public (undocumented)
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;
 
 // @public
@@ -8126,9 +8133,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
     // (undocumented)
-    refs: {
-        [key: string]: React.ReactInstance;
-    };
+    readonly pageRefs: Readonly<Record<string, unknown>>;
     // (undocumented)
     render(): JSX.Element | null;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
@@ -9436,15 +9441,6 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    static defaultProps: {
-        hasCondensedHeadline: boolean;
-        imageProps: {
-            imageFit: ImageFit;
-            width: number;
-            height: number;
-        };
-    };
-    // (undocumented)
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
@@ -9581,6 +9577,9 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
 export function updateT(color: IColor, t: number): IColor;
+
+// @public
+export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
 // @public
 export enum ValidationState {

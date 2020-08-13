@@ -24,7 +24,7 @@ const getDefinedProps = <Props extends Record<string, any>>(props: Props): Parti
   return definedProps;
 };
 
-const useStateManager = <State extends Record<string, any>, Actions extends Record<string, AnyAction>>(
+export const useStateManager = <State extends Record<string, any>, Actions extends Record<string, AnyAction>>(
   managerFactory: ManagerFactory<State, Actions>,
   options: UseStateManagerOptions<State> = {},
 ): UseStateManagerResult<State, Actions> => {
@@ -82,5 +82,3 @@ const useStateManager = <State extends Record<string, any>, Actions extends Reco
     actions: latestActions,
   };
 };
-
-export default useStateManager;

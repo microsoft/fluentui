@@ -14,18 +14,17 @@ import {
   ContentComponentProps,
 } from '../../utils';
 
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import {
-  ComponentEventHandler,
-  WithAsProp,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  ShorthandValue,
-} from '../../types';
-import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
-import Box, { BoxProps } from '../Box/Box';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+  ComponentWithAs,
+  getElementType,
+  useFluentContext,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface CarouselPaddleProps
   extends UIComponentProps,
@@ -64,9 +63,15 @@ export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
   content: `${carouselPaddleClassName}__content`,
 };
 
-const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
+/**
+ * A CarouselPaddle allows users to customize the paddles inside the Carousel component.
+ *
+ * @accessibility
+ * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
+ */
+export const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
   FluentComponentStaticProps<CarouselPaddleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
   setStart();
 
@@ -90,7 +95,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
   const getA11Props = useAccessibility(accessibility, {
     debugName: CarouselPaddle.displayName,
     mapPropsToBehavior: () => ({
-      as,
+      as: String(as),
       disabled,
     }),
     actionHandlers: {
@@ -180,11 +185,3 @@ CarouselPaddle.propTypes = {
 CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 
 CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
-
-/**
- * A CarouselPaddle allows users to customize the paddles inside the Carousel component.
- *
- * @accessibility
- * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
- */
-export default withSafeTypeForAs<typeof CarouselPaddle, CarouselPaddleProps, 'button'>(CarouselPaddle);

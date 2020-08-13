@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { warnDeprecations, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
+import {
+  classNamesFunction,
+  divProperties,
+  getNativeProps,
+  IRenderFunction,
+  getPropsWithDefaults,
+} from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
@@ -10,7 +16,7 @@ import {
   PersonaSize,
   IPersonaCoinProps,
 } from './Persona.types';
-import { getPropsWithDefaults } from '../../Utilities';
+import { useWarnings } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
@@ -20,12 +26,15 @@ const DEFAULT_PROPS = {
   imageAlt: '',
 };
 
-function useWarnDeprecations(props: IPersonaProps) {
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('Persona', props, { primaryText: 'text' });
-    }
-  }, []);
+function useDebugWarnings(props: IPersonaProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: 'Persona',
+      props,
+      deprecations: { primaryText: 'text' },
+    });
+  }
 }
 
 /**
@@ -36,13 +45,13 @@ export const PersonaBase = React.forwardRef(
   (propsWithoutDefaults: IPersonaProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    useWarnDeprecations(props);
+    useDebugWarnings(props);
 
     /**
      * Deprecation helper for getting text.
      */
     const getText = (): string => {
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       return props.text || props.primaryText || '';
     };
 
@@ -93,10 +102,10 @@ export const PersonaBase = React.forwardRef(
     };
 
     // wrapping default render behavior based on various props properties
-    const onInternalRenderPrimaryText = onRenderText(getText()),
-      onInternalRenderSecondaryText = onRenderText(props.secondaryText),
-      onInternalRenderTertiaryText = onRenderText(props.tertiaryText),
-      onInternalRenderOptionalText = onRenderText(props.optionalText);
+    const onInternalRenderPrimaryText = onRenderText(getText());
+    const onInternalRenderSecondaryText = onRenderText(props.secondaryText);
+    const onInternalRenderTertiaryText = onRenderText(props.tertiaryText);
+    const onInternalRenderOptionalText = onRenderText(props.optionalText);
 
     const {
       hidePersonaDetails,
@@ -124,7 +133,7 @@ export const PersonaBase = React.forwardRef(
       initialsColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       onRenderCoin,
       onRenderInitials,
       presence,
@@ -184,13 +193,14 @@ export const PersonaBase = React.forwardRef(
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >
         {onRenderPersonaCoin(personaCoinProps, onRenderPersonaCoin)}
-        {// tslint:disable:deprecation
+        {/* eslint-disable deprecation/deprecation */
+
         (!hidePersonaDetails ||
           size === PersonaSize.size8 ||
           size === PersonaSize.size10 ||
           size === PersonaSize.tiny) &&
           personaDetails
-        // tslint:enable:deprecation
+        /* eslint-enable deprecation/deprecation */
         }
       </div>
     );

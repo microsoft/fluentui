@@ -2,6 +2,7 @@ import * as React from 'react';
 import { VerticalStackedBarChart } from '@uifabric/charting';
 import { IVSChartDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
 import { DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -55,15 +56,20 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
         },
       };
     };
-
+    const rootStyle = mergeStyles({ width: '600px', height: '350px' });
     return (
-      <VerticalStackedBarChart
-        data={data}
-        yAxisTickCount={10}
-        href={'www.google.com'}
-        styles={customStyles}
-        chartLabel="Card title"
-      />
+      <div className={rootStyle}>
+        <VerticalStackedBarChart
+          data={data}
+          height={350}
+          width={600}
+          yAxisTickCount={10}
+          href={'www.google.com'}
+          // eslint-disable-next-line react/jsx-no-bind
+          styles={customStyles}
+          chartLabel="Card title"
+        />
+      </div>
     );
   }
 }

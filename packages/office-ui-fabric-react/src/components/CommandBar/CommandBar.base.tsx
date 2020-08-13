@@ -126,7 +126,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       >
         {/*Primary Items*/}
         <OverflowSet
-          // tslint:disable-next-line:deprecation
           componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
           doNotContainWithinFocusZone={true}
@@ -157,7 +156,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       return item.onRender(item, () => undefined);
     }
 
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     const itemText = item.text || item.name;
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
@@ -170,7 +169,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       onClick: this._onButtonClick(item),
     };
 
-    if (item.iconOnly && itemText !== undefined) {
+    if (item.iconOnly && (itemText !== undefined || item.tooltipHostProps)) {
       return (
         <TooltipHost content={itemText} {...item.tooltipHostProps}>
           {this._commandButton(item, commandButtonProps)}
@@ -204,7 +203,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return ev => {
       // inactive is deprecated. remove check in 7.0
-      // tslint:disable-next-line:deprecation
+      // eslint-disable-next-line deprecation/deprecation
       if (item.inactive) {
         return;
       }

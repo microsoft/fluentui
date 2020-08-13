@@ -4,8 +4,6 @@ import { MAX_COLOR_RGB } from './consts';
 /** Converts RGB components to an HSV color. */
 export function rgb2hsv(r: number, g: number, b: number): IHSV {
   let h = NaN;
-  let s;
-  let v;
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   const delta = max - min;
@@ -28,10 +26,10 @@ export function rgb2hsv(r: number, g: number, b: number): IHSV {
   }
 
   // saturation
-  s = Math.round((max === 0 ? 0 : delta / max) * 100);
+  const s = Math.round((max === 0 ? 0 : delta / max) * 100);
 
   // value
-  v = Math.round((max / MAX_COLOR_RGB) * 100);
+  const v = Math.round((max / MAX_COLOR_RGB) * 100);
 
   return { h, s, v };
 }

@@ -500,6 +500,9 @@ export interface ISemanticColors extends ISemanticTextColors {
     buttonBackgroundPressed: string;
     buttonBorder: string;
     buttonBorderDisabled: string;
+    cardShadow: string;
+    cardShadowHovered: string;
+    cardStandoutBackground: string;
     defaultStateBackground: string;
     disabledBackground: string;
     disabledBorder: string;

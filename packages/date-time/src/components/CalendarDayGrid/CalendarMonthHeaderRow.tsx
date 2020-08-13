@@ -16,7 +16,8 @@ export const CalendarMonthHeaderRow = (props: ICalendarDayMonthHeaderRowProps) =
   const firstOfMonthIndex = findIndex(weeks![1], (day: IDayInfo) => day.originalDate.getDate() === 1);
   if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
     // if we only show one week, replace the header with short month name
-    dayLabels[firstOfMonthIndex] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
+    const firstOfMonthIndexOffset = (firstOfMonthIndex + firstDayOfWeek) % DAYS_IN_WEEK;
+    dayLabels[firstOfMonthIndexOffset] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
   }
 
   return (

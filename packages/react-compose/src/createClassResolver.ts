@@ -21,7 +21,6 @@ export const createClassResolver = (classes: ClassDictionary) => {
 
   // Everything in the function below will happen at runtime, so it's very critical that this
   // code is as minimal as possible.
-  // tslint:disable-next-line:no-function-expression
   return function classResolver(state: GenericDictionary): ClassDictionary {
     const resolvedClasses: Record<string, string> = {};
 
@@ -60,7 +59,7 @@ type ResolvedMap = {
  * name/value, and modifiers are everything else. Creating this split definition keeps runtime
  * resolution work to a minimum.
  */
-function createResolvedMap(classes: ClassDictionary): ResolvedMap {
+export function createResolvedMap(classes: ClassDictionary): ResolvedMap {
   const resolvedMap: ResolvedMap = {
     slots: {},
     modifiers: {},

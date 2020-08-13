@@ -21,11 +21,11 @@ import {
   IGVSingleDataPoint,
   IGVBarChartSeriesPoint,
 } from '../../types/index';
-import { ChartHoverCard } from '@uifabric/charting';
+import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
-type stringAxis = D3Axis<string>;
-type numericAxis = D3Axis<number | { valueOf(): number }>;
+type StringAxis = D3Axis<string>;
+type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
 export interface IRefArrayData {
   legendText?: string;
@@ -41,7 +41,7 @@ export interface IGroupedVerticalBarChartState {
   isLegendSelected: boolean;
   isLegendHovered: boolean;
   titleForHoverCard: string;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   xCalloutValue?: string;
   yCalloutValue?: string;
@@ -67,15 +67,20 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _reqID: number;
   private _calloutId: string;
   private _yMax: number;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _datasetForBars: any;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale0: any;
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale1: any;
   private _uniqLineText: string;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
+  private _noOfCharsToTruncate: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xAxis: any;
+  private _xAxisTickPadding: number;
+  private _removalValue: number = 0;
   private _isGraphDraw: boolean = true;
   private legendContainer: HTMLDivElement;
   private chartContainer: HTMLDivElement;
@@ -106,7 +111,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   }
 
   public componentDidMount(): void {
-    this._fitParentContainer();
+    this._fitParentContainer(true);
   }
 
   public componentWillUnmount(): void {
@@ -116,13 +121,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
     if (this._isGraphDraw || prevProps.data !== this.props.data) {
-      // drawing graph after first update only to avoid multile g tags
       this._drawGraph();
       this._isGraphDraw = false;
     }
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
       this._drawGraph();
+      this._isGraphDraw = false;
     }
   }
 
@@ -139,7 +144,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._xScale0 = this._createX0Scale(this._xAxisLabels);
     this._xScale1 = this._createX1Scale(this._xScale0);
     const x0Axis = this._createx0Axis(this._xScale0);
-    const yAxis: numericAxis = this._createYAxis(this._dataset);
+    const yAxis: NumericAxis = this._createYAxis(this._dataset);
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette);
 
     this._classNames = getClassNames(styles!, {
@@ -157,7 +162,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
       width: this.state.containerWidth || 600,
       height: this.state.containerHeight || 350,
     };
-
     return (
       <div
         id={`d3GroupedChart_${this._uniqLineText}`}
@@ -170,7 +174,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, x0Axis)}
               className={this._classNames.xAxis}
-              transform={`translate(0, ${svgDimensions.height - 35})`}
+              transform={`translate(0, ${svgDimensions.height - 35 - this._removalValue})`}
             />
             <g
               id="yAxisGElement"
@@ -216,9 +220,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._showXAxisPath = this.props.showXAxisPath || false;
     this._showYAxisPath = this.props.showYAxisPath || false;
     this._barWidth = this.props.barwidth!;
+    this._xAxisTickPadding = this.props.xAxisTickPadding || 4;
+    this._noOfCharsToTruncate = this.props.noOfCharsToTruncate || 4;
   }
 
-  private _fitParentContainer(): void {
+  private _fitParentContainer(calledFromDidMount?: boolean): void {
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
       const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
@@ -235,10 +241,17 @@ export class GroupedVerticalBarChartBase extends React.Component<
       const shouldResize =
         containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
       if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
+        this.setState(
+          {
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - legendContainerHeight,
+          },
+          () => {
+            if (calledFromDidMount) {
+              this._drawGraph();
+            }
+          },
+        );
       }
     });
   }
@@ -275,7 +288,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
   };
 
-  private mouseAction = (
+  private _mouseAction = (
     type: string,
     color: string,
     data: number,
@@ -304,7 +317,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.titleForHoverCard === legendText)
     ) {
-      this._refArray.map((obj: IRefArrayData, index: number) => {
+      this._refArray.forEach((obj: IRefArrayData, index: number) => {
         if (obj.legendText === legendText && refArrayIndexNumber === index) {
           this.setState({
             refSelected: obj.refElement,
@@ -320,7 +333,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
   };
 
-  private focusAction = (
+  private _focusAction = (
     type: string,
     color: string,
     data: number,
@@ -342,7 +355,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
     const yBarScale = d3ScaleLinear()
       .domain([0, this._yMax])
-      .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
+      .range([0, this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top]);
 
     // previous <g> - graph need to remove otherwise multile g elements will create
     d3Select(`#firstGElementForBars_${this._uniqLineText}`).remove();
@@ -365,7 +378,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
 
     const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
-    tempDataSet.map((datasetKey: string, index: number) => {
+    tempDataSet.forEach((datasetKey: string, index: number) => {
       seriesName
         .selectAll(`.${datasetKey}`)
         .data(d => [d])
@@ -378,15 +391,15 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('fill-opacity', (d: IGVForBarChart) => that._getOpacity(d[datasetKey].legend))
         .attr('x', (d: IGVSingleDataPoint) => this._xScale1(datasetKey)!)
         .attr('y', (d: IGVForBarChart) => {
-          return this.state.containerHeight - this.margins.bottom - yBarScale(d[datasetKey].data);
+          return this.state.containerHeight - this._removalValue - this.margins.bottom - yBarScale(d[datasetKey].data);
         })
         .attr('aria-labelledby', this._calloutId)
         .attr('width', widthOfBar)
         .attr('height', (d: IGVForBarChart) => {
-          return yBarScale(d[datasetKey].data);
+          return yBarScale(d[datasetKey].data) > 0 ? yBarScale(d[datasetKey].data) : 0;
         })
         .on('mouseover', (d: IGVForBarChart) => {
-          return that.mouseAction(
+          return that._mouseAction(
             'mouseover',
             d[datasetKey].color,
             d[datasetKey].data,
@@ -396,7 +409,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
           );
         })
         .on('mousemove', (d: IGVForBarChart) =>
-          that.mouseAction(
+          that._mouseAction(
             'mousemove',
             d[datasetKey].color,
             d[datasetKey].data,
@@ -406,9 +419,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
           ),
         )
         .on('mouseout', this._onBarLeave)
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .on('focus', (d: any) =>
-          that.focusAction(
+          that._focusAction(
             'focus',
             d[datasetKey].color,
             d[datasetKey].data,
@@ -421,18 +434,44 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .on('blur', that._onBarLeave)
         .on('click', (d: IGVForBarChart) => that._redirectToUrl(this.props.href!));
     });
+
+    if (this.props.showXAxisLablesTooltip && !this.props.wrapXAxisLables) {
+      const aa = document.getElementsByClassName('tooltip-47');
+      while (aa[0]) {
+        // removing multiple elemnts
+        aa[0].remove();
+      }
+      const div = d3Select('body')
+        .append('div')
+        .attr('id', 'tooltipId')
+        .attr('class', this._classNames.tooltip)
+        .style('opacity', 0);
+
+      this._xAxis.selectAll('.tick')._groups[0].forEach((d1: SVGGElement) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const data: any = d3Select(d1).data();
+        d3Select(d1)
+          .on('mouseover', d => {
+            div.style('opacity', 0.9);
+            div
+              .html(data)
+              .style('left', d3Event.pageX + 'px')
+              .style('top', d3Event.pageY - 28 + 'px');
+          })
+          .on('mouseout', d => {
+            div.style('opacity', 0);
+          });
+      });
+    }
   };
 
   private _createXAxisProperties = (): string[] => {
-    const xAxisLabels: string[] = [];
     const keys: string[] = [];
     const colors: string[] = [];
 
-    this._points.map((singlePoint: IGroupedVerticalBarChartData) => {
-      xAxisLabels.push(singlePoint.name);
-    });
+    const xAxisLabels: string[] = this._points.map(singlePoint => singlePoint.name);
 
-    this._points[0].series.map((singleKey: IGVBarChartSeriesPoint) => {
+    this._points[0].series.forEach((singleKey: IGVBarChartSeriesPoint) => {
       keys.push(singleKey.key);
       colors.push(singleKey.color);
     });
@@ -443,16 +482,16 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _createDataset = () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
     const dataset: IGVDataPoint[] = [];
 
-    this._points.map((point: IGroupedVerticalBarChartData, index: number) => {
+    this._points.forEach((point: IGroupedVerticalBarChartData, index: number) => {
       const singleDatasetPoint: IGVDataPoint = {};
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const singleDatasetPointforBars: any = {};
 
-      point.series.map((seriesPoint: IGVBarChartSeriesPoint) => {
+      point.series.forEach((seriesPoint: IGVBarChartSeriesPoint) => {
         singleDatasetPoint[seriesPoint.key] = seriesPoint.data;
         singleDatasetPointforBars[seriesPoint.key] = {
           ...seriesPoint,
@@ -477,7 +516,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return x0Axis;
   };
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createX1Scale = (xScale0: any): any => {
     return d3ScaleBand()
       .domain(this._keys)
@@ -485,17 +524,17 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .padding(0.05);
   };
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createx0Axis = (xScale0: any): any => {
-    const x0Axis = d3AxisBottom(xScale0).tickPadding(10);
+    const x0Axis = d3AxisBottom(xScale0).tickPadding(this._xAxisTickPadding);
 
     this._showXAxisGridLines &&
-      x0Axis.tickSizeInner(-(this.state.containerHeight - this.margins.bottom - this.margins.top));
+      x0Axis.tickSizeInner(-(this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top));
     return x0Axis;
   };
 
-  private _createYAxis(dataset: IGVDataPoint[]): numericAxis {
-    // tslint:disable-next-line:no-any
+  private _createYAxis(dataset: IGVDataPoint[]): NumericAxis {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yMax: number = d3Max(dataset, (point: any) => d3Max(this._keys, (key: string) => point[key]));
     this._yMax = yMax;
     const interval = Math.ceil(yMax / this._yAxisTickCount);
@@ -505,7 +544,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
+      .range([this.state.containerHeight - this._removalValue - this.margins.bottom, this.margins.top]);
     const yAxis = d3AxisLeft(yAxisScale)
       .tickPadding(5)
       .ticks(this._yAxisTickCount, 's')
@@ -553,7 +592,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       this.setState({
         isLegendHovered: false,
         titleForHoverCard: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
       this._isGraphDraw = true;
     }
@@ -564,8 +603,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
 
-    data.map((singleChartData: IGroupedVerticalBarChartData) => {
-      singleChartData.series.map((point: IGVBarChartSeriesPoint) => {
+    data.forEach((singleChartData: IGroupedVerticalBarChartData) => {
+      singleChartData.series.forEach((point: IGVBarChartSeriesPoint) => {
         const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
         const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend && leg.color === color);
         if (checkSimilarLegends!.length > 0) {
@@ -599,14 +638,104 @@ export class GroupedVerticalBarChartBase extends React.Component<
     );
   };
 
-  private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _createWrapOfXLabels(node: SVGGElement | null, xAxis: any) {
+    const that = this;
     if (node === null) {
       return;
     }
-    d3Select(node).call(xAxis);
+    const axisNode = d3Select(node).call(xAxis);
+    axisNode.selectAll('.tick text').call(_wrap, 10);
+    let removeVal = 0;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function _wrap(allTexts: any, width: number) {
+      const arr: number[] = [];
+      allTexts.each(function() {
+        const text = d3Select(this);
+        const totalWord = text.text();
+        const truncatedWord = `${text.text().slice(0, that._noOfCharsToTruncate)}...`;
+        const totalWordLength = text.text().length;
+        const words = text
+          .text()
+          .split(/\s+/)
+          .reverse();
+        arr.push(words.length);
+        let word: string = '';
+        let line: string[] = [];
+        let lineNumber: number = 0;
+        const lineHeight = 1.1; // ems
+        const y = text.attr('y');
+        const dy = parseFloat(text.attr('dy'));
+        let tspan = text
+          .text(null)
+          .append('tspan')
+          .attr('x', 0)
+          .attr('y', y)
+          .attr('id', 'BaseSpan')
+          .attr('dy', dy + 'em');
+
+        if (that.props.showXAxisLablesTooltip && totalWordLength > that._noOfCharsToTruncate) {
+          tspan = text
+            .append('tspan')
+            .attr('id', 'showDots')
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+            .text(truncatedWord);
+          this._target = tspan;
+        } else if (that.props.showXAxisLablesTooltip && totalWordLength <= that._noOfCharsToTruncate) {
+          tspan = text
+            .append('tspan')
+            .attr('id', 'LessLength')
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+            .text(totalWord);
+        } else {
+          while ((word = words.pop()!)) {
+            line.push(word);
+            tspan.text(line.join(' '));
+            if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
+              line.pop();
+              tspan.text(line.join(' '));
+              line = [word];
+              tspan = text
+                .append('tspan')
+                .attr('id', 'WordBreakId')
+                .attr('x', 0)
+                .attr('y', y)
+                .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+                .text(word);
+            }
+          }
+          const maxDigit = Math.max(...arr);
+          let maxHeight = 0;
+          axisNode.selectAll('text').each(() => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const outerHTMLElement = document.getElementById('WordBreakId') as any;
+            const BoxCordinates = outerHTMLElement ? outerHTMLElement.getBBox() : '';
+            const boxHeight = BoxCordinates!.height || 12;
+            if (boxHeight > maxHeight) {
+              maxHeight = boxHeight;
+            }
+          });
+          removeVal = (maxDigit - 3) * maxHeight;
+          that._removalValue = removeVal > 0 ? removeVal : 0;
+        }
+      });
+    }
   }
 
-  private _setYAxis(node: SVGElement | null, yAxis: numericAxis): void {
+  private _setXAxis(node: SVGGElement | null, xAxis: NumericAxis | StringAxis): void {
+    if (node === null) {
+      return;
+    }
+    this._xAxis = d3Select(node).call(xAxis);
+
+    (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) && this._createWrapOfXLabels(node, xAxis);
+  }
+
+  private _setYAxis(node: SVGElement | null, yAxis: NumericAxis): void {
     if (node === null) {
       return;
     }

@@ -52,6 +52,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
   }
 
+  public componentDidUpdate(prevProps: ILegendsProps) {
+    if (prevProps.selectedLegend !== this.props.selectedLegend) {
+      this.setState({ selectedLegend: this.props.selectedLegend! });
+    }
+  }
+
   public render(): JSX.Element {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
@@ -76,11 +82,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _generateData(): ILegendOverflowData {
-    const dataItems: ILegend[] = [];
-    this.props.legends.map((legend: ILegend, index: number) => {
-      const legendItem: ILegendItem = {
-        'aria-setsize': this.props.legends.length,
-        'aria-posinset': index + 1,
+    const dataItems: ILegendItem[] = this.props.legends.map((legend: ILegend, index: number) => {
+      return {
         title: legend.title,
         action: legend.action!,
         hoverAction: legend.hoverAction!,
@@ -89,7 +92,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         shape: legend.shape,
         key: index,
       };
-      dataItems.push(legendItem);
     });
     const result: ILegendOverflowData = {
       primary: dataItems,
@@ -102,7 +104,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const { overflowProps } = this.props;
     return (
       <OverflowSet
-        role={'listbox'}
         {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}
@@ -173,7 +174,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const hoverCardData = (
       <FocusZone
         direction={FocusZoneDirection.vertical}
-        role={'listbox'}
         {...this.props.focusZonePropsInHoverCard}
         className="hoverCardRoot"
       >
@@ -234,6 +234,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         type={HoverCardType.plain}
         plainCardProps={plainCardProps}
         instantOpenOnClick={true}
+        // eslint-disable-next-line react/jsx-no-bind
         onCardHide={onHoverCardHideHandler}
         setInitialFocus={true}
         trapFocus={true}
@@ -244,11 +245,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       >
         <div
           className={classNames.overflowIndicationTextStyle}
-          role={'combobox'}
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
-          aria-expanded={this.state.isHoverCardVisible}
-          aria-label={`${items.length} ${overflowString}`}
-          data-is-focusable={true}
+          data-is-focusable={false}
         >
           {items.length} {overflowString}
         </div>
@@ -308,11 +306,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     };
     return (
       <button
-        aria-selected={this.state.selectedLegend === legend.title}
-        role={'option'}
-        aria-label={legend.title}
-        aria-setsize={data['aria-setsize']}
-        aria-posinset={data['aria-posinset']}
         key={index}
         className={classNames.legend}
         onClick={onClickHandler}
@@ -320,6 +313,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
+        data-is-focusable={false}
       >
         <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>

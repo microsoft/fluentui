@@ -6,7 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
 import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-// tslint:disable:max-line-length
+/* eslint-disable @fluentui/max-len */
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/LinkPage';
 
@@ -23,6 +23,14 @@ export const LinkPage: React.FunctionComponent<IControlsPageProps> = props => {
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
   switch (platform) {
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/LinkImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/LinkPage/docs/mac/LinkImplementation.md') as string,
+        },
+      ];
     case 'cross':
       return [
         {

@@ -5,7 +5,7 @@ import { ComponentVariablesInput, ComponentVariablesPrepared, mergeComponentVari
  fix in place to avoid creating empty function because it is breaking caching we should either fix
  mergeComponentVariables(), or handle this in a more generic way.
  */
-export default function mergeVariablesOverrides(
+export function mergeVariablesOverrides(
   variables: ComponentVariablesInput,
   overrides: ComponentVariablesInput,
 ): ComponentVariablesPrepared {

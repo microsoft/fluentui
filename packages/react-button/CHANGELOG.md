@@ -1,8 +1,63 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 30 Jun 2020 12:33:36 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.9.0)
+
+Tue, 11 Aug 2020 05:47:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.8.0..@fluentui/react-button_v0.9.0)
+
+### Minor changes
+
+- SplitButton: Initial implementation. ([PR #14018](https://github.com/microsoft/fluentui/pull/14018) by humbertomakotomorimoto@gmail.com)
+- Adding opacity control for button tokens. ([PR #14455](https://github.com/microsoft/fluentui/pull/14455) by dzearing@hotmail.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.8.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.7.14..@fluentui/react-button_v0.8.0)
+
+### Minor changes
+
+- Button: removing compose usage in favor of hooks and factories. ([PR #14274](https://github.com/microsoft/fluentui/pull/14274) by dzearing@microsoft.com)
+
+## [0.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.9)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.7.3..@fluentui/react-button_v0.7.9)
+
+### Patches
+
+- Update react-button to use common-styles ([PR #14189](https://github.com/microsoft/fluentui/pull/14189) by behowell@microsoft.com)
+
+## [0.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.3)
+
+Fri, 17 Jul 2020 12:38:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.7.1..@fluentui/react-button_v0.7.3)
+
+### Patches
+
+- fix: use a proper ref in useButton hook ([PR #14063](https://github.com/microsoft/fluentui/pull/14063) by olfedias@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.7.0)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.6.2..@fluentui/react-button_v0.7.0)
+
+### Minor changes
+
+- MenuButton: Creating component using compose. ([PR #13812](https://github.com/microsoft/fluentui/pull/13812) by humbertomakotomorimoto@gmail.com)
+
+## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.2)
+
+Thu, 02 Jul 2020 12:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.6.0..@fluentui/react-button_v0.6.2)
+
+### Patches
+
+- Adding bundle task to react-button package. ([PR #13873](https://github.com/microsoft/fluentui/pull/13873) by humbertomakotomorimoto@gmail.com)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.6.0)
 

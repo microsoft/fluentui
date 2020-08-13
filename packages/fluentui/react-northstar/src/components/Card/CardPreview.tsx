@@ -1,10 +1,17 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useFluentContext,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+
+import { FluentComponentStaticProps } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 
 export interface CardPreviewProps extends UIComponentProps, ChildrenComponentProps {
@@ -23,8 +30,12 @@ export interface CardPreviewProps extends UIComponentProps, ChildrenComponentPro
 export type CardPreviewStylesProps = Pick<CardPreviewProps, 'horizontal' | 'fitted'>;
 export const cardPreviewClassName = 'ui-card__preview';
 
-const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStaticProps<CardPreviewProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * A CardPreview is used to display data Card preview.
+ */
+export const CardPreview: ComponentWithAs<'div', CardPreviewProps> &
+  FluentComponentStaticProps<CardPreviewProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardPreview.displayName, context.telemetry);
   setStart();
 
@@ -73,8 +84,3 @@ CardPreview.propTypes = {
 CardPreview.handledProps = Object.keys(CardPreview.propTypes) as any;
 
 CardPreview.create = createShorthandFactory({ Component: CardPreview });
-
-/**
- * A CardPreview is used to display data Card preview.
- */
-export default withSafeTypeForAs<typeof CardPreview, CardPreviewProps, 'div'>(CardPreview);

@@ -56,7 +56,7 @@ export const allowScrollOnElement = (element: HTMLElement | null, events: EventG
 
     const clientY = event.targetTouches[0].clientY - _previousClientY;
 
-    const scrollableParent = findScrollableParent(event.target as HTMLElement);
+    const scrollableParent = findScrollableParent(event.target as HTMLElement) as HTMLElement;
     if (scrollableParent) {
       _element = scrollableParent;
     }
@@ -161,8 +161,8 @@ export function getScrollbarWidth(): number {
  *
  * @public
  */
-export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null {
-  let el: HTMLElement | null = startingElement;
+export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | Window | undefined | null {
+  let el: HTMLElement | Window | undefined | null = startingElement;
   const doc = getDocument(startingElement)!;
 
   // First do a quick scan for the scrollable attribute.
@@ -191,8 +191,7 @@ export function findScrollableParent(startingElement: HTMLElement | null): HTMLE
 
   // Fall back to window scroll.
   if (!el || el === doc.body) {
-    // tslint:disable-next-line:no-any
-    el = getWindow(startingElement) as any;
+    el = getWindow(startingElement);
   }
 
   return el;

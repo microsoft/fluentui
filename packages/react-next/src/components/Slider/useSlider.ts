@@ -10,11 +10,11 @@ const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
   useStaticStyles: true,
 });
 
-type dimension = 'height' | 'width';
-type position = 'bottom' | 'left' | 'right';
-type positionOrDimension = dimension | position;
+type Dimension = 'height' | 'width';
+type Position = 'bottom' | 'left' | 'right';
+type PositionOrDimension = Dimension | Position;
 
-const getSlotStyleFn = (sty: positionOrDimension) => {
+const getSlotStyleFn = (sty: PositionOrDimension) => {
   return (value: number) => {
     return {
       [sty]: `${value}%`,
@@ -50,7 +50,7 @@ const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanEle
         }
       },
     }),
-    [value],
+    [thumb, value],
   );
 };
 
@@ -107,7 +107,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         if (props.onChanged) {
           props.onChanged(event, value as number);
         }
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }, ONKEYDOWN_TIMEOUT_DURATION) as any,
     );
   };
@@ -140,7 +140,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
   const onKeyDown = (event: KeyboardEvent): void => {
     let newCurrentValue: number | undefined = value;
     let diff: number | undefined = 0;
-    // tslint:disable-next-line:deprecation
+    // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left, props.theme):
       case KeyCodes.down:

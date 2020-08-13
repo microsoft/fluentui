@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Async, divProperties, getNativeProps, warnDeprecations } from '../../Utilities';
+import { Async, divProperties, getNativeProps } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
-import { useConst, useMergedRefs, useAsync, useOnEvent } from '@uifabric/react-hooks';
+import { useConst, useMergedRefs, useAsync, useOnEvent, useWarnings } from '@uifabric/react-hooks';
 
 const RESIZE_DELAY = 16;
 
@@ -9,13 +9,13 @@ export interface IResizeGroupState {
   /**
    * Final data used to render proper sized component
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   renderedData?: any;
 
   /**
    * Data to render in a hidden div for measurement
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dataToMeasure?: any;
 
   /**
@@ -46,7 +46,7 @@ export const getMeasurementCache = () => {
      * corresponding entry in the measurementsCache, then it will return that value.
      * Returns undefined otherwise.
      */
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getCachedMeasurement: (data: any): number | undefined => {
       if (data && data.cacheKey && measurementsCache.hasOwnProperty(data.cacheKey)) {
         return measurementsCache[data.cacheKey];
@@ -58,7 +58,7 @@ export const getMeasurementCache = () => {
      * Should be called whenever there is a new measurement associated with a given data object.
      * If the data has a cacheKey, store that measurement in the measurementsCache.
      */
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     addMeasurementToCache: (data: any, measurement: number): void => {
       if (data.cacheKey) {
         measurementsCache[data.cacheKey] = measurement;
@@ -81,7 +81,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * @param getElementToMeasureDimension - A function that returns the measurement of the rendered data.
    * Only called when the measurement is not in the cache.
    */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _getMeasuredDimension(measuredData: any, getElementToMeasureDimension: () => number): number {
     const cachedDimension = _measurementCache.getCachedMeasurement(measuredData);
     if (cachedDimension !== undefined) {
@@ -102,9 +102,9 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * Only called when the measurement is not in the cache.
    */
   function _shrinkContentsUntilTheyFit(
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data: any,
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onReduceData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
   ): IResizeGroupState {
@@ -154,12 +154,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * Only called when the measurement is not in the cache.
    */
   function _growDataUntilItDoesNotFit(
-    // tslint:disable:no-any
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     data: any,
     onGrowData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
     onReduceData: (prevData: any) => any,
-    // tslint:enable:no-any
+    /* eslint-enable @typescript-eslint/no-explicit-any */
   ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
@@ -206,11 +206,11 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    */
   function _updateContainerDimension(
     newDimension: number,
-    // tslint:disable:no-any
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     fullDimensionData: any,
     renderedData: any,
     onGrowData?: (prevData: any) => any,
-    // tslint:enable:no-any
+    /* eslint-enable @typescript-eslint/no-explicit-any */
   ): IResizeGroupState {
     let nextState: IResizeGroupState;
     if (newDimension > _containerDimension!) {
@@ -287,7 +287,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   }
 
   /** Function that determines if we need to render content for measurement based on the measurement cache contents. */
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function shouldRenderDataForMeasurement(dataToMeasure: any | undefined): boolean {
     if (!dataToMeasure || _measurementCache.getCachedMeasurement(dataToMeasure) !== undefined) {
       return false;
@@ -296,7 +296,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return true;
   }
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function getInitialResizeGroupState(data: any): IResizeGroupState {
     return {
       dataToMeasure: { ...data },
@@ -453,12 +453,15 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
   ] as const;
 }
 
-function useDeprecationWarning(props: IResizeGroupProps) {
-  React.useEffect(() => {
-    warnDeprecations(COMPONENT_NAME, props, {
-      styles: 'className',
+function useDebugWarnings(props: IResizeGroupProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      deprecations: { styles: 'className' },
     });
-  }, []);
+  }
 }
 
 export const ResizeGroupBase = React.forwardRef((props: IResizeGroupProps, forwardedRef: React.Ref<HTMLDivElement>) => {
@@ -478,7 +481,7 @@ export const ResizeGroupBase = React.forwardRef((props: IResizeGroupProps, forwa
 
   React.useImperativeHandle(props.componentRef, () => ({ remeasure }), [remeasure]);
 
-  useDeprecationWarning(props);
+  useDebugWarnings(props);
 
   const { className, onRenderData } = props;
   const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['data']);

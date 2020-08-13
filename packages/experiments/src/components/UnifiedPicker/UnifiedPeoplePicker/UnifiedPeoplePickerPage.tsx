@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { UnifiedPeoplePickerExample } from './examples/UnifiedPeoplePicker.Example';
 
+import { UnifiedPeoplePickerExample } from './examples/UnifiedPeoplePicker.Example';
 const UnifiedPeoplePickerExampleCode = require('!raw-loader!./examples/UnifiedPeoplePicker.Example') as string;
 
 export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -22,7 +22,6 @@ export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageP
             sources={[
               require<
                 string
-                // tslint:disable-next-line:max-line-length
               >('!raw-loader!@uifabric/experiments/src/components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePicker.types.ts'),
             ]}
           />

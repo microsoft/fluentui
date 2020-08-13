@@ -27,7 +27,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
     >
       <div
         className=
+            ms-FocusZone
             ms-GroupedList
+            &:focus {
+              outline: none;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -40,7 +44,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
               min-height: 38px;
             }
         data-automationid="GroupedList"
+        data-focuszone-id="FocusZone1"
         data-is-scrollable="false"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
         role="presentation"
       >
         <div
@@ -125,23 +133,17 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         }
                     data-is-focusable={true}
                     onClick={[Function]}
+                    onKeyUp={[Function]}
                     style={Object {}}
                   >
                     <div
                       className=
-                          ms-FocusZone
-                          &:focus {
-                            outline: none;
-                          }
+
                           {
                             align-items: center;
                             display: flex;
                             height: 48px;
                           }
-                      data-focuszone-id="FocusZone2"
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onMouseDownCapture={[Function]}
                     >
                       <button
                         aria-checked={false}
@@ -183,6 +185,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             .ms-Fabric--isFocusVisible &:focus {
                               opacity: 1;
                             }
+                        data-is-focusable={false}
                         data-selection-toggle={true}
                         onClick={[Function]}
                         role="checkbox"
@@ -274,7 +277,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                       border-color: transparent;
                                       border-radius: 50%;
                                       border-style: solid;
-                                      border-width: .28em;
+                                      border-width: 6px;
                                       box-sizing: border-box;
                                       display: block;
                                       height: 12px;
@@ -322,7 +325,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         </i>
                       </div>
                       <button
-                        aria-controls="GroupedListSection1"
+                        aria-controls="GroupedListSection2"
                         aria-expanded={true}
                         aria-label="expand collapse group"
                         className=
@@ -366,6 +369,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             &:active {
                               background-color: #e1dfdd;
                             }
+                        data-is-focusable={false}
                         onClick={[Function]}
                         type="button"
                       >
@@ -425,7 +429,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                   </div>
                   <div
                     className="ms-List"
-                    id="GroupedListSection1"
+                    id="GroupedListSection2"
                     role="grid"
                   >
                     <div
@@ -513,7 +517,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone10"
+                            data-focuszone-id="FocusZone8"
                             data-is-focusable={true}
                             data-item-index={0}
                             data-selection-index={0}
@@ -1040,7 +1044,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone11"
+                            data-focuszone-id="FocusZone9"
                             data-is-focusable={true}
                             data-item-index={1}
                             data-selection-index={1}
@@ -1567,7 +1571,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone12"
+                            data-focuszone-id="FocusZone10"
                             data-is-focusable={true}
                             data-item-index={2}
                             data-selection-index={2}
@@ -2098,23 +2102,17 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         }
                     data-is-focusable={true}
                     onClick={[Function]}
+                    onKeyUp={[Function]}
                     style={Object {}}
                   >
                     <div
                       className=
-                          ms-FocusZone
-                          &:focus {
-                            outline: none;
-                          }
+
                           {
                             align-items: center;
                             display: flex;
                             height: 48px;
                           }
-                      data-focuszone-id="FocusZone5"
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onMouseDownCapture={[Function]}
                     >
                       <button
                         aria-checked={false}
@@ -2156,6 +2154,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             .ms-Fabric--isFocusVisible &:focus {
                               opacity: 1;
                             }
+                        data-is-focusable={false}
                         data-selection-toggle={true}
                         onClick={[Function]}
                         role="checkbox"
@@ -2233,7 +2232,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     border-color: Highlight;
                                   }
                               data-is-focusable={true}
-                              id="Toggle6"
+                              id="Toggle5"
                               onChange={[Function]}
                               onClick={[Function]}
                               role="switch"
@@ -2247,7 +2246,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                       border-color: transparent;
                                       border-radius: 50%;
                                       border-style: solid;
-                                      border-width: .28em;
+                                      border-width: 6px;
                                       box-sizing: border-box;
                                       display: block;
                                       height: 12px;
@@ -2339,6 +2338,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             &:active {
                               background-color: #e1dfdd;
                             }
+                        data-is-focusable={false}
                         onClick={[Function]}
                         type="button"
                       >
@@ -2486,7 +2486,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone13"
+                            data-focuszone-id="FocusZone11"
                             data-is-focusable={true}
                             data-item-index={3}
                             data-selection-index={3}
@@ -3013,7 +3013,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone14"
+                            data-focuszone-id="FocusZone12"
                             data-is-focusable={true}
                             data-item-index={4}
                             data-selection-index={4}
@@ -3540,7 +3540,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone15"
+                            data-focuszone-id="FocusZone13"
                             data-is-focusable={true}
                             data-item-index={5}
                             data-selection-index={5}
@@ -4071,23 +4071,17 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         }
                     data-is-focusable={true}
                     onClick={[Function]}
+                    onKeyUp={[Function]}
                     style={Object {}}
                   >
                     <div
                       className=
-                          ms-FocusZone
-                          &:focus {
-                            outline: none;
-                          }
+
                           {
                             align-items: center;
                             display: flex;
                             height: 48px;
                           }
-                      data-focuszone-id="FocusZone8"
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onMouseDownCapture={[Function]}
                     >
                       <button
                         aria-checked={false}
@@ -4129,6 +4123,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             .ms-Fabric--isFocusVisible &:focus {
                               opacity: 1;
                             }
+                        data-is-focusable={false}
                         data-selection-toggle={true}
                         onClick={[Function]}
                         role="checkbox"
@@ -4206,7 +4201,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     border-color: Highlight;
                                   }
                               data-is-focusable={true}
-                              id="Toggle9"
+                              id="Toggle7"
                               onChange={[Function]}
                               onClick={[Function]}
                               role="switch"
@@ -4220,7 +4215,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                       border-color: transparent;
                                       border-radius: 50%;
                                       border-style: solid;
-                                      border-width: .28em;
+                                      border-width: 6px;
                                       box-sizing: border-box;
                                       display: block;
                                       height: 12px;
@@ -4268,7 +4263,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         </i>
                       </div>
                       <button
-                        aria-controls="GroupedListSection7"
+                        aria-controls="GroupedListSection6"
                         aria-expanded={true}
                         aria-label="expand collapse group"
                         className=
@@ -4312,6 +4307,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             &:active {
                               background-color: #e1dfdd;
                             }
+                        data-is-focusable={false}
                         onClick={[Function]}
                         type="button"
                       >
@@ -4371,7 +4367,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                   </div>
                   <div
                     className="ms-List"
-                    id="GroupedListSection7"
+                    id="GroupedListSection6"
                     role="grid"
                   >
                     <div
@@ -4459,7 +4455,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone16"
+                            data-focuszone-id="FocusZone14"
                             data-is-focusable={true}
                             data-item-index={6}
                             data-selection-index={6}
@@ -4986,7 +4982,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone17"
+                            data-focuszone-id="FocusZone15"
                             data-is-focusable={true}
                             data-item-index={7}
                             data-selection-index={7}
@@ -5513,7 +5509,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone18"
+                            data-focuszone-id="FocusZone16"
                             data-is-focusable={true}
                             data-item-index={8}
                             data-selection-index={8}

@@ -241,7 +241,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
@@ -706,14 +705,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           : this._normalizeToString(suggestedDisplayValue),
       );
     }
-    let displayString = '';
-    for (let idx = 0; idx < displayValues.length; idx++) {
-      if (idx > 0) {
-        displayString += ', ';
-      }
-      displayString += displayValues[idx];
-    }
-    return displayString;
+    const { multiSelectDelimiter = ', ' } = this.props;
+    return displayValues.join(multiSelectDelimiter);
   }
 
   /**
@@ -1091,7 +1084,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * OnBlur handler. Set the focused state to false
    * and submit any pending value
    */
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
@@ -1401,7 +1394,9 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           checked={isSelected}
           className={'ms-ComboBox-option'}
           onClick={this._onItemClick(item)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseEnter={this._onOptionMouseEnter.bind(this, item.index)}
+          // eslint-disable-next-line react/jsx-no-bind
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
@@ -1431,6 +1426,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           checked={isChecked}
           title={title}
           disabled={item.disabled}
+          // eslint-disable-next-line react/jsx-no-bind
           onRenderLabel={onRenderCheckboxLabel}
           inputProps={{
             'aria-selected': isSelected ? 'true' : 'false',
@@ -1447,6 +1443,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         isSelected={isSelected}
         isChecked={isChecked}
         text={item.text}
+        // eslint-disable-next-line react/jsx-no-bind
         render={getOptionComponent}
         data={item.data}
       />
@@ -1981,6 +1978,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         this._setPendingInfoFromIndexAndDirection(index, directionToSearch);
         break;
 
+      /* eslint-disable no-fallthrough */
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
         if (!allowFreeform && autoComplete === 'off') {
@@ -1988,6 +1986,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         }
 
       default:
+        /* eslint-enable no-fallthrough */
         // are we processing a function key? if so bail out
         if (ev.which >= 112 /* F1 */ && ev.which <= 123 /* F12 */) {
           return;

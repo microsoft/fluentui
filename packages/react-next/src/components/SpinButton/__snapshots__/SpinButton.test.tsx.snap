@@ -48,8 +48,8 @@ exports[`SpinButton renders correctly 1`] = `
             pointer-events: none;
             word-wrap: break-word;
           }
-      htmlFor="input1"
-      id="Label0"
+      htmlFor="input0"
+      id="Label1"
     >
       label
     </label>
@@ -86,7 +86,7 @@ exports[`SpinButton renders correctly 1`] = `
   >
     <input
       aria-disabled={false}
-      aria-labelledby="Label0"
+      aria-labelledby="Label1"
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
@@ -131,7 +131,7 @@ exports[`SpinButton renders correctly 1`] = `
           }
       data-lpignore={true}
       disabled={false}
-      id="input1"
+      id="input0"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -196,7 +196,6 @@ exports[`SpinButton renders correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -337,7 +336,6 @@ exports[`SpinButton renders correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -486,8 +484,8 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
             pointer-events: none;
             word-wrap: break-word;
           }
-      htmlFor="input1"
-      id="Label0"
+      htmlFor="input0"
+      id="Label1"
     >
       label
     </label>
@@ -525,7 +523,7 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
   >
     <input
       aria-disabled={false}
-      aria-labelledby="Label0"
+      aria-labelledby="Label1"
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
@@ -571,7 +569,7 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
           }
       data-lpignore={true}
       disabled={false}
-      id="input1"
+      id="input0"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -636,7 +634,6 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -777,7 +774,6 @@ exports[`SpinButton renders correctly with user-provided values 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;

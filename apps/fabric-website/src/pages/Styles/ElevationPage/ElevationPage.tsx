@@ -101,7 +101,6 @@ function _renderDepthsTable() {
           level: '64',
         },
       ]}
-      /* tslint:disable-next-line jsx-no-lambda */
       formatter={(column, row) => {
         const depth = depthUsage.filter(x => x.level === row.level)[0];
         switch (column.title) {

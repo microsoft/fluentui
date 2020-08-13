@@ -1,8 +1,10 @@
 import { Accessibility, loaderBehavior, LoaderBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import {
+  ComponentWithAs,
   ShorthandConfig,
   useTelemetry,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useStyles,
@@ -17,17 +19,9 @@ import {
   SizeValue,
   getOrGenerateIdFromShorthand,
 } from '../../utils';
-import {
-  WithAsProp,
-  ShorthandValue,
-  withSafeTypeForAs,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-} from '../../types';
-import Box, { BoxProps } from '../Box/Box';
-import Text, { TextProps } from '../Text/Text';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Box, BoxProps } from '../Box/Box';
+import { Text, TextProps } from '../Text/Text';
 
 export interface LoaderSlotClassNames {
   indicator: string;
@@ -77,12 +71,15 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
 
 /**
  * A loader alerts a user that content is being loaded or processed and they should wait for the activity to complete.
+ *
+ * @accessibility
+ * Implements [ARIA progressbar](https://www.w3.org/TR/wai-aria-1.1/#progressbar) role.
  */
-const Loader: React.FC<WithAsProp<LoaderProps>> &
+export const Loader: ComponentWithAs<'div', LoaderProps> &
   FluentComponentStaticProps<LoaderProps> & {
     shorthandConfig: ShorthandConfig<LoaderProps>;
   } = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
   setStart();
   const { delay, label, indicator, svg, inline, labelPosition, className, design, styles, variables, size } = props;
@@ -194,11 +191,3 @@ Loader.handledProps = Object.keys(Loader.propTypes) as any;
 Loader.create = createShorthandFactory({ Component: Loader, mappedProp: 'label' });
 
 Loader.shorthandConfig = { mappedProp: 'label' };
-
-/**
- * A Loader alerts a user to wait for an activity to complete.
- *
- * @accessibility
- * Implements [ARIA progressbar](https://www.w3.org/TR/wai-aria-1.1/#progressbar) role.
- */
-export default withSafeTypeForAs<typeof Loader, LoaderProps>(Loader);

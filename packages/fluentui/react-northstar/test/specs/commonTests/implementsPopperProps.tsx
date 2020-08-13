@@ -12,12 +12,16 @@ export const positioningProps: Required<PositioningProps> = {
   flipBoundary: document.body,
   offset: [20, 20],
   overflowBoundary: document.body,
+  popperRef: React.createRef(),
   position: 'above',
   positionFixed: true,
   unstable_pinned: true,
 };
 
-function implementsPopperProps<P>(Component: React.ComponentType<P>, options: ImplementsPopperPropsOptions<P> = {}) {
+export function implementsPopperProps<P>(
+  Component: React.ComponentType<P>,
+  options: ImplementsPopperPropsOptions<P> = {},
+) {
   describe('implements all positioning props for Popper', () => {
     Object.entries(positioningProps).forEach(([positioningProp, positioningValue]) => {
       test(`"${positioningProp}" is passed to a Popper component`, () => {
@@ -34,5 +38,3 @@ function implementsPopperProps<P>(Component: React.ComponentType<P>, options: Im
     });
   });
 }
-
-export default implementsPopperProps;

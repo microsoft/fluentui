@@ -6,7 +6,7 @@ import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { ImplementationSection } from '@uifabric/example-app-base/lib/index2';
 import { ApiKind } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
-// tslint:disable:max-line-length
+/* eslint-disable @fluentui/max-len */
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage/';
@@ -40,6 +40,15 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/SeparatorImplementation.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/android/SeparatorImplementation.md') as string,
+        },
+      ];
+
+    case 'mac':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/mac/SeparatorImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/mac/SeparatorImplementation.md') as string,
         },
       ];
 

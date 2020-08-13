@@ -42,11 +42,12 @@ describe('SelectedItemsList', () => {
         />,
       );
       expect(wrapper).toBeDefined();
-      expect(wrapper.find('div').length).toEqual(2);
+      expect(wrapper.find('div').length).toEqual(3);
       expect(
         wrapper
           .find('div')
           .first()
+          .childAt(0)
           .text(),
       ).toEqual('a');
       expect(
@@ -75,11 +76,12 @@ describe('SelectedItemsList', () => {
       />,
     );
     expect(wrapper).toBeDefined();
-    expect(wrapper.find('div').length).toEqual(2);
+    expect(wrapper.find('div').length).toEqual(3);
     expect(
       wrapper
         .find('div')
         .first()
+        .childAt(0)
         .text(),
     ).toEqual('da');
     expect(
@@ -88,5 +90,32 @@ describe('SelectedItemsList', () => {
         .last()
         .text(),
     ).toEqual('db');
+  });
+
+  it('renders items that are passed in as default', () => {
+    const wrapper = mount<ISelectedItemsList<ISimple>>(
+      <SelectedItemsList
+        onRenderItem={basicItemRenderer}
+        defaultSelectedItems={[
+          { key: 'd1', name: 'Person A' },
+          { key: 'd2', name: 'Person B' },
+        ]}
+      />,
+    );
+    expect(wrapper).toBeDefined();
+    expect(wrapper.find('div').length).toEqual(3);
+    expect(
+      wrapper
+        .find('div')
+        .first()
+        .childAt(0)
+        .text(),
+    ).toEqual('Person A');
+    expect(
+      wrapper
+        .find('div')
+        .last()
+        .text(),
+    ).toEqual('Person B');
   });
 });

@@ -33,7 +33,11 @@ const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zone
           // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
           styles={zoneNumber >= 2 && zoneNumber <= 4 ? fixedWidthToggleStyles : undefined}
         />
-        <DefaultButton onClick={onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
+        <DefaultButton
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={onStringButtonClicked}
+          text={`Zone ${zoneNumber} button`}
+        />
         {children}
       </Stack>
     </FocusTrapZone>

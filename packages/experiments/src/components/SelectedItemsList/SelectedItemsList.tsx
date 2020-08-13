@@ -1,16 +1,26 @@
 import * as React from 'react';
 
 import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
+
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
+  const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems } = props;
+  const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
+
   const renderedItems = React.useMemo(() => items, [items]);
+  const didMountRef = React.useRef(false);
 
   React.useEffect(() => {
-    updateItems(props.selectedItems || []);
-  }, [props.selectedItems]);
+    // block first call of the hook and forward each consecutive one
+    // We do this so that if defaultSelectedItems are set, they don't get overwritten
+    if (didMountRef.current) {
+      setItems(selectedItems || []);
+    } else {
+      didMountRef.current = true;
+    }
+  }, [selectedItems]);
 
   const removeItems = (itemsToRemove: TItem[]): void => {
     // Intentionally not using .filter here as we want to only remove a specific
@@ -20,8 +30,8 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       const index: number = updatedItems.indexOf(item);
       updatedItems.splice(index, 1);
     });
-    updateItems(updatedItems);
-    props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
+    setItems(updatedItems);
+    props.onItemsRemoved?.(itemsToRemove);
   };
 
   const replaceItem = React.useCallback(
@@ -31,10 +41,10 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       if (index >= 0) {
         const newItems: TItem[] = [...items];
         newItems.splice(index, 1, ...newItemsArray);
-        updateItems(newItems);
+        setItems(newItems);
       }
     },
-    [updateItems, items],
+    [items],
   );
 
   const onRemoveItemCallbacks = React.useMemo(
@@ -42,26 +52,35 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       // create callbacks ahead of time with memo.
       // (hooks have to be called in the same order)
       items.map((item: TItem) => () => removeItems([item])),
+    // TODO: consider whether dependency on removeItems should be added
+    // (removeItems would likely need to be wrapped in useCallback)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [items],
   );
 
   const SelectedItem = props.onRenderItem;
   return (
     <>
-      {SelectedItem &&
-        renderedItems.map((item: TItem, index: number) => (
-          <SelectedItem
-            item={item}
-            index={index}
-            // To keep react from complaining for duplicate elements with the same key
-            // we will append the index to the key so that we have unique key for each item
-            key={item.key !== undefined ? item.key + '_' + index : index}
-            selected={props.focusedItemIndices?.includes(index)}
-            removeButtonAriaLabel={props.removeButtonAriaLabel}
-            onRemoveItem={onRemoveItemCallbacks[index]}
-            onItemChange={replaceItem}
-          />
-        ))}
+      {items.length > 0 && (
+        <div role={'list'}>
+          {SelectedItem &&
+            renderedItems.map((item: TItem, index: number) => (
+              <SelectedItem
+                item={item}
+                index={index}
+                // To keep react from complaining for duplicate elements with the same key
+                // we will append the index to the key so that we have unique key for each item
+                key={item.key !== undefined ? item.key + '_' + index : index}
+                selected={props.focusedItemIndices?.includes(index)}
+                removeButtonAriaLabel={props.removeButtonAriaLabel}
+                onRemoveItem={onRemoveItemCallbacks[index]}
+                onItemChange={replaceItem}
+                dragDropEvents={dragDropEvents}
+                dragDropHelper={dragDropHelper}
+              />
+            ))}
+        </div>
+      )}
     </>
   );
 };

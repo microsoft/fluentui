@@ -4,14 +4,14 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { CODE_FONT_FAMILY } from './consts';
 
 // react-syntax-highlighter has typings, but they're wrong aside from the props and missing many paths...
-// tslint:disable no-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 const SyntaxHighlighter = require<{
   default: React.ComponentType<SyntaxHighlighterProps> & { registerLanguage: (lang: string, func: any) => void };
 }>('react-syntax-highlighter/dist/esm/prism-light').default;
 const ts = require<any>('react-syntax-highlighter/dist/esm/languages/prism/tsx').default;
 const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/prism/vs').default;
-// tslint:enable no-any
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Register languages
 SyntaxHighlighter.registerLanguage('tsx', ts);

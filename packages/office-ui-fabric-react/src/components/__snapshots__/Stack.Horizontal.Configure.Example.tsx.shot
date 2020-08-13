@@ -218,6 +218,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={true}
               id="Slider0"
               onKeyDown={[Function]}
@@ -1212,6 +1215,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                       background-color: Highlight;
                     }
+                    @media screen and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
                 data-is-focusable={true}
                 id="Slider5"
                 onKeyDown={[Function]}
@@ -1533,6 +1539,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={true}
               id="Slider6"
               onKeyDown={[Function]}
@@ -1793,6 +1802,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
               data-is-focusable={true}
               id="Slider7"
@@ -2092,6 +2104,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={true}
               id="Slider8"
               onKeyDown={[Function]}
@@ -2352,6 +2367,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
+                  }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
                   }
               data-is-focusable={true}
               id="Slider9"
@@ -2651,6 +2669,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={true}
               id="Slider10"
               onKeyDown={[Function]}
@@ -2912,6 +2933,9 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
+                  @media screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
               data-is-focusable={true}
               id="Slider11"
               onKeyDown={[Function]}
@@ -3158,7 +3182,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 width: 100%;
               }
               @media screen and (-ms-high-contrast: active){&:focus:after {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:active .ms-Dropdown-title {
@@ -3382,7 +3405,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 width: 100%;
               }
               @media screen and (-ms-high-contrast: active){&:focus:after {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:active .ms-Dropdown-title {

@@ -109,6 +109,7 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
           >
             <ColorPicker
               color={colorPickerProps.value}
+              // eslint-disable-next-line react/jsx-no-bind
               onChange={this._onColorChanged.bind(this, colorPickerProps.index)}
             />
           </Callout>

@@ -66,10 +66,7 @@ describe('resolveSlotProps', () => {
         defaultOptionsWithSlots,
       ),
     ).toEqual({
-      slots: {
-        ...getDefaultSlots().slots,
-        slot1: React.Fragment,
-      },
+      ...getDefaultSlots(),
       state,
       slotProps: {
         root: {},
@@ -106,7 +103,7 @@ describe('resolveSlotProps', () => {
   });
 
   it('provide children function correct params', () => {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const renderFunction = (Component: React.ElementType, props: any) => {
       expect(Component).toEqual(nullRenderer);
       expect(props).toEqual({

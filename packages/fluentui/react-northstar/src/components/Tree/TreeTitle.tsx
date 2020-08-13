@@ -1,13 +1,19 @@
 import { Accessibility, treeTitleBehavior, TreeTitleBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
-import Box, { BoxProps } from '../Box/Box';
+import {
+  ComponentWithAs,
+  getElementType,
+  useUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useFluentContext,
+  useTelemetry,
+} from '@fluentui/react-bindings';
+import { Box, BoxProps } from '../Box/Box';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import {
   childrenExist,
@@ -18,14 +24,7 @@ import {
   ContentComponentProps,
   rtlTextContainer,
 } from '../../utils';
-import {
-  ComponentEventHandler,
-  FluentComponentStaticProps,
-  ProviderContextPrepared,
-  WithAsProp,
-  withSafeTypeForAs,
-  ShorthandValue,
-} from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;
@@ -87,8 +86,12 @@ export const treeTitleClassName = 'ui-tree__title';
 export const treeTitleSlotClassNames = {
   indicator: `${treeTitleClassName}__selection-indicator`,
 };
-const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticProps<TreeTitleProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+
+/**
+ * A TreeTitle renders a title of TreeItem.
+ */
+export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
 
@@ -224,8 +227,3 @@ TreeTitle.create = createShorthandFactory({
   Component: TreeTitle,
   mappedProp: 'content',
 });
-
-/**
- * A TreeTitle renders a title of TreeItem.
- */
-export default withSafeTypeForAs<typeof TreeTitle, TreeTitleProps, 'a'>(TreeTitle);

@@ -5,6 +5,7 @@ import {
   mergeVariablesOverrides,
   useTelemetry,
   useAutoControlled,
+  useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -28,15 +29,14 @@ import {
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
 } from '../../utils';
-import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
-import MenuItemIcon, { MenuItemIconProps } from './MenuItemIcon';
-import MenuItemContent, { MenuItemContentProps } from './MenuItemContent';
-import MenuItemIndicator, { MenuItemIndicatorProps } from './MenuItemIndicator';
-import MenuItemWrapper, { MenuItemWrapperProps } from './MenuItemWrapper';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
-import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { Menu, MenuProps, MenuShorthandKinds } from './Menu';
+import { MenuItemIcon, MenuItemIconProps } from './MenuItemIcon';
+import { MenuItemContent, MenuItemContentProps } from './MenuItemContent';
+import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
+import { MenuItemWrapper, MenuItemWrapperProps } from './MenuItemWrapper';
+import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
+import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
+
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 
@@ -177,7 +177,7 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
  */
 export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>(
   (inputProps, ref, composeOptions) => {
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
+    const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
@@ -204,7 +204,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       content,
       icon,
       wrapper,
-      menu,
       primary,
       secondary,
       active,
@@ -221,6 +220,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       styles,
       variables,
     } = props;
+    const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
       defaultValue: props.defaultMenuOpen,
@@ -444,6 +444,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         </ElementType>
       </Ref>
     );
+
     const maybeSubmenu =
       menu && active && menuOpen ? (
         <>
@@ -452,7 +453,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
               align={vertical ? 'top' : context.rtl ? 'end' : 'start'}
               position={vertical ? (context.rtl ? 'before' : 'after') : 'below'}
               targetRef={itemRef}
-              {...getPopperPropsFromShorthand(menu)}
+              {...positioningProps}
             >
               {createShorthand(parentProps.menuSlot || composeOptions.slots.menu || Menu, menu, {
                 defaultProps: () => ({
@@ -618,5 +619,3 @@ MenuItem.defaultProps = {
   wrapper: {},
   indicator: {},
 };
-
-export default MenuItem;

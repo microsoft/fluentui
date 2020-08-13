@@ -1,14 +1,11 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
-import { TeamsTextVariables } from './textVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { TextVariables } from './textVariables';
 import { TextStylesProps } from '../../../../components/Text/Text';
 import { getColorSchemeKey } from '../../colors';
-import translateAlignProp from '../../../../styles/translateAlignProp';
+import { translateAlignProp } from '../../../../styles/translateAlignProp';
 
-export default {
-  root: ({
-    props: p,
-    variables: v,
-  }: ComponentStyleFunctionParam<TextStylesProps, TeamsTextVariables>): ICSSInJSStyle => {
+export const textStyles: ComponentSlotStylesPrepared<TextStylesProps, TextVariables> = {
+  root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const colors = v.colorScheme[getColorSchemeKey(p.color)];
     return {
       ...(p.color && { color: colors.foreground }),
@@ -60,7 +57,6 @@ export default {
       }),
       ...(p.timestamp && {
         color: v.timestampColor,
-        ':hover': { color: v.timestampHoverColor },
       }),
       ...(p.important && {
         color: v.importantColor,

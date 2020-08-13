@@ -50,7 +50,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
   props: ICalendarButtonExampleProps,
 ) => {
   const [showCalendar, { toggle: toggleShowCalendar }] = useBoolean(false);
-  const [selectedDate, setSelectedDate] = React.useState();
+  const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const {
     showMonthPickerAsOverlay = false,
@@ -87,6 +87,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
         >
           <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap>
             <Calendar
+              // eslint-disable-next-line react/jsx-no-bind
               onSelectDate={onSelectDate}
               onDismiss={toggleShowCalendar}
               isMonthPickerVisible={isMonthPickerVisible}

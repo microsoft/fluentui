@@ -58,7 +58,7 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
   useEffect(() => {
     if (scrollContainerRef.current) {
       const onScroll = (event: Event) => {
-        // tslint:disable-next-line:no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const { scrollLeft: scrollX, scrollTop: scrollY } = ((event as any) as React.UIEvent<
           HTMLDivElement
         >).currentTarget;
@@ -87,12 +87,14 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
 
       return () => {
         if (scrollContainerRef.current) {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           scrollContainerRef.current.removeEventListener('scroll', onScroll);
         }
 
         clearStoppedScrollingTimeout();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const style: React.CSSProperties = {
@@ -110,7 +112,7 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
       ref={scrollContainerRef}
       // some Fabric components need this to detect their parent scroll container more efficiently
       data-is-scrollable={true}
-      style={style} // tslint:disable-line:jsx-ban-props
+      style={style}
     >
       {children(viewportState)}
     </div>

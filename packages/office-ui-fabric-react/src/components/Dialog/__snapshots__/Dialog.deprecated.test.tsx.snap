@@ -91,6 +91,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
               transition: opacity 0.267s;
               width: 100%;
             }
+        role="document"
       >
         <div
           className=
@@ -136,6 +137,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
           onFocusCapture={[Function]}
         >
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -292,6 +294,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
             </div>
           </div>
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -400,6 +403,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
               transition: opacity 0.267s;
               width: 100%;
             }
+        role="document"
       >
         <div
           className=
@@ -445,6 +449,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
           onFocusCapture={[Function]}
         >
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -601,6 +606,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
             </div>
           </div>
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -709,6 +715,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
               transition: opacity 0.267s;
               width: 100%;
             }
+        role="document"
       >
         <div
           className=
@@ -754,6 +761,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
           onFocusCapture={[Function]}
         >
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -906,7 +914,6 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          border: none;
                           bottom: -2px;
                           left: -2px;
                           outline-color: ButtonText;
@@ -1043,6 +1050,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
             </div>
           </div>
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -1151,6 +1159,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
               transition: opacity 0.267s;
               width: 100%;
             }
+        role="document"
       >
         <div
           className=
@@ -1196,6 +1205,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
           onFocusCapture={[Function]}
         >
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -1352,6 +1362,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
             </div>
           </div>
           <div
+            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={

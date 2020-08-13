@@ -19,6 +19,14 @@ export type ClassDictionary = Record<string, string>;
 export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
 
 // @public (undocumented)
+export interface ComponentProps {
+    // (undocumented)
+    as?: React.ElementType;
+    // (undocumented)
+    className?: string;
+}
+
+// @public (undocumented)
 export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<TExtendedElementType extends React.ElementType = TElementType>(props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & {
     as?: TExtendedElementType;
 } & TProps) => JSX.Element) & {
@@ -30,7 +38,7 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
         as: TElementType;
     }>;
     displayName?: string;
-    __PRIVATE_PROPS: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & {
+    readonly __PRIVATE_PROPS?: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & {
         as?: TElementType;
     } & TProps;
 };

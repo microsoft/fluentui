@@ -4,10 +4,16 @@ import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import { UIComponentProps, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
-import { withSafeTypeForAs, ProviderContextPrepared } from '../../types';
-import { useStyles, getElementType, useUnhandledProps, useAccessibility, useTelemetry } from '@fluentui/react-bindings';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { FluentComponentStaticProps } from '../../types';
+import {
+  ComponentWithAs,
+  useStyles,
+  getElementType,
+  useFluentContext,
+  useUnhandledProps,
+  useAccessibility,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 
 export interface LayoutSlotClassNames {
   start: string;
@@ -21,10 +27,10 @@ export interface LayoutSlotClassNames {
 
 export interface LayoutProps extends UIComponentProps {
   debug?: boolean;
-  renderStartArea?: (params: object) => React.ReactNode;
-  renderMainArea?: (params: object) => React.ReactNode;
-  renderEndArea?: (params: object) => React.ReactNode;
-  renderGap?: (params: object) => React.ReactNode;
+  renderStartArea?: (params: LayoutProps & { classes: Record<string, string> }) => React.ReactNode;
+  renderMainArea?: (params: LayoutProps & { classes: Record<string, string> }) => React.ReactNode;
+  renderEndArea?: (params: LayoutProps & { classes: Record<string, string> }) => React.ReactNode;
+  renderGap?: (params: LayoutProps & { classes: Record<string, string> }) => React.ReactNode;
   /** Styled applied to the root element of the rendered component. */
   rootCSS?: ICSSInJSStyle;
   start?: any;
@@ -64,8 +70,11 @@ export type LayoutStylesProps = Required<
   Pick<LayoutProps, 'alignItems' | 'debug' | 'gap' | 'justifyItems' | 'mainSize' | 'endSize' | 'startSize' | 'vertical'>
 > & { hasStart: boolean; hasMain: boolean; hasEnd: boolean };
 
-const Layout = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+/**
+ * (DEPRECATED) A layout is a utility for arranging the content of a component.
+ */
+export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStaticProps<LayoutProps> = props => {
+  const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Layout.displayName, context.telemetry);
   setStart();
   const {
@@ -283,8 +292,3 @@ Layout.handledProps = Object.keys(Layout.propTypes) as any;
 Layout.create = createShorthandFactory({
   Component: Layout,
 });
-
-/**
- * (DEPRECATED) A layout is a utility for arranging the content of a component.
- */
-export default withSafeTypeForAs<typeof Layout, LayoutProps>(Layout);

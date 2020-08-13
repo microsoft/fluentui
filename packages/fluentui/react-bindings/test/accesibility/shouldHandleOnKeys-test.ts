@@ -1,4 +1,4 @@
-import shouldHandleOnKeys from '../../src/accessibility/shouldHandleOnKeys';
+import { shouldHandleOnKeys } from '../../src/accessibility/shouldHandleOnKeys';
 
 const getEventArg = (
   keyCode: number,
