@@ -12,13 +12,15 @@ export const datepickerCalendarHeaderStyles: ComponentSlotStylesPrepared<
     return {
       display: 'flex',
       alignItems: 'center',
+      paddingTop: pxToRem(5),
+      paddingBottom: pxToRem(5),
     };
   },
   month: ({ variables: v }): ICSSInJSStyle => {
     return {
       fontWeight: v.monthFontWeight,
       flexGrow: 1,
-      marginLeft: pxToRem(10),
+      paddingLeft: pxToRem(10),
     };
   },
 };
