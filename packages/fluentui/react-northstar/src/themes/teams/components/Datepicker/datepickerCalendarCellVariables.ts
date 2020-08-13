@@ -29,11 +29,11 @@ export const datepickerCalendarCellVariables = (siteVars: any): DatepickerCalend
   unfocusedColor: siteVars.colorScheme.brand.foregroundDisabled,
 
   selectedColor: siteVars.colorScheme.brand.background4,
-  selectedBackgroundColor: siteVars.colorScheme.brand.foregroundFocus3,
+  selectedBackgroundColor: siteVars.colorScheme.brand.borderActive1,
 
-  referenceBackgroundColor: siteVars.colorScheme.brand.foregroundFocus1,
+  referenceBackgroundColor: siteVars.colorScheme.brand.backgroundFocus,
   referenceColor: siteVars.colorScheme.white.foreground,
 
-  hoverBackgroundColor: siteVars.colorScheme.brand.backgroundHover1,
+  hoverBackgroundColor: siteVars.colorScheme.brand.backgroundHover2,
   hoverColor: 'inherit',
 });

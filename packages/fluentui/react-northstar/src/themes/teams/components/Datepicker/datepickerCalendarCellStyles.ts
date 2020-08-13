@@ -2,6 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DatepickerCalendarCellVariables } from './datepickerCalendarCellVariables';
 import { DatepickerCalendarCellStylesProps } from '../../../../components/Datepicker/DatepickerCalendarCell';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { pxToRem } from '../../../../utils';
 
 export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarCellStylesProps,
@@ -21,6 +22,7 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
       height: v.height,
       width: v.width,
 
+      borderRadius: pxToRem(2),
       cursor: 'pointer',
       background: 'none',
       border: 'none',
