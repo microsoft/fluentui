@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TriangleDownIcon, TriangleUpIcon } from '@fluentui/react-icons-northstar';
 import { pxToRem } from '@fluentui/react-northstar';
 
-export const SidebarTitle = (Component, { content, expanded, open, hasSubtree, styles, ...restProps }) => {
+export const renderSidebarTitle = (Component, { content, expanded, open, hasSubtree, styles, ...restProps }) => {
   return (
     <Component
       expanded={expanded}

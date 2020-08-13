@@ -20,7 +20,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
-import { SidebarTitle } from './SidebarTitle';
+import { renderSidebarTitle } from './SidebarTitle';
 import config from '../../config';
 
 type ComponentMenuItem = { displayName: string; type: string };
@@ -526,7 +526,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
       </Flex>
       <Tree
         items={allSections}
-        renderItemTitle={SidebarTitle}
+        renderItemTitle={renderSidebarTitle}
         activeItemIds={activeItemIds}
         onActiveItemIdsChange={(e, { activeItemIds }) => {
           setActiveItemIds(activeItemIds);
