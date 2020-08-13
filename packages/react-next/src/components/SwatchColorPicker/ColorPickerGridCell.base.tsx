@@ -56,7 +56,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     borderWidth,
   });
 
-  const getColorPickerGridCellButtonClassNames = useConstCallback(
+  const getColorPickerGridCellButtonClassNames = React.useCallback(
     (
       theme: ITheme,
       className: string,
@@ -94,9 +94,10 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
         flexContainer: ['ms-Button-flexContainer', actionButtonStyles.flexContainer],
       });
     },
+    [disabled],
   );
   // Render the core of a color cell
-  const onRenderColorOption = useConstCallback(
+  const onRenderColorOption = React.useCallback(
     (colorOption: IColorCellProps): JSX.Element => {
       // Build an SVG for the cell with the given shape and color properties
       return (
@@ -105,6 +106,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
         </svg>
       );
     },
+    [classNames.svg, props.circle],
   );
 
   return (
