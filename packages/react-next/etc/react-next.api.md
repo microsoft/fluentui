@@ -156,8 +156,6 @@ export class ContextualMenuInternal extends React.Component<IContextualMenuInter
     render(): JSX.Element | null;
     // (undocumented)
     shouldComponentUpdate(newProps: IContextualMenuInternalProps, newState: IContextualMenuState): boolean;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: IContextualMenuInternalProps): void;
     }
 
 // @public
@@ -796,9 +794,6 @@ export interface IContextualMenuState {
     contextualMenuItems?: IContextualMenuItem[];
     // (undocumented)
     contextualMenuTarget?: Element;
-    expandedByMouseClick?: boolean;
-    // (undocumented)
-    expandedMenuItemKey?: string;
     // (undocumented)
     positions?: any;
     // (undocumented)
@@ -807,8 +802,6 @@ export interface IContextualMenuState {
     submenuDirection?: DirectionalHint_2;
     // (undocumented)
     subMenuId?: string;
-    // (undocumented)
-    submenuTarget?: Element;
 }
 
 // @public (undocumented)
