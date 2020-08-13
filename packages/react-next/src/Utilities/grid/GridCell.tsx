@@ -3,97 +3,103 @@ import { css, getId } from '../../Utilities';
 import { IGridCellProps } from './GridCell.types';
 import { CommandButton } from '../../compat/Button';
 
-export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
-  public static defaultProps = {
-    disabled: false,
-    id: getId('gridCell'),
-  };
+// export const TriggerOnContextMenu = <T extends any>(ItemComponent: React.ComponentType<ISelectedItemProps<T>>) => {
+//   return (props: TriggerProps<T>) => {
 
-  public render(): JSX.Element {
-    const {
-      item,
-      id,
-      className,
-      role,
-      selected,
-      disabled,
-      onRenderItem,
-      cellDisabledStyle,
-      cellIsSelectedStyle,
-      index,
-      label,
-      getClassNames,
-    } = this.props;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const GridCell = <T, P extends IGridCellProps<T>>(props: IGridCellProps<T>) => {
+  const {
+    item,
+    id = getId('gridCell'),
+    className,
+    role,
+    selected,
+    disabled = false,
+    onRenderItem,
+    cellDisabledStyle,
+    cellIsSelectedStyle,
+    index,
+    label,
+    getClassNames,
+  } = props;
 
-    return (
-      <CommandButton
-        id={id}
-        data-index={index}
-        data-is-focusable={true}
-        disabled={disabled}
-        className={css(className, {
-          ['' + cellIsSelectedStyle]: selected,
-          ['' + cellDisabledStyle]: disabled,
-        })}
-        onClick={this._onClick}
-        onMouseEnter={this._onMouseEnter}
-        onMouseMove={this._onMouseMove}
-        onMouseLeave={this._onMouseLeave}
-        onFocus={this._onFocus}
-        role={role}
-        aria-selected={selected}
-        ariaLabel={label}
-        title={label}
-        getClassNames={getClassNames}
-      >
-        {onRenderItem(item)}
-      </CommandButton>
-    );
-  }
-
-  private _onClick = (): void => {
-    const { onClick, disabled, item } = this.props as P;
+  const _onClick = React.useCallback((): void => {
+    const { onClick } = props as P;
 
     if (onClick && !disabled) {
       onClick(item);
     }
-  };
+  }, [disabled, item, props]);
 
-  private _onMouseEnter = (ev: React.MouseEvent<HTMLButtonElement>): void => {
-    const { onHover, disabled, item, onMouseEnter } = this.props as P;
+  const _onMouseEnter = React.useCallback(
+    (ev: React.MouseEvent<HTMLButtonElement>): void => {
+      const { onHover, onMouseEnter } = props as P;
 
-    const didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
+      const didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
 
-    if (!didUpdateOnEnter && onHover && !disabled) {
-      onHover(item);
-    }
-  };
+      if (!didUpdateOnEnter && onHover && !disabled) {
+        onHover(item);
+      }
+    },
+    [disabled, item, props],
+  );
 
-  private _onMouseMove = (ev: React.MouseEvent<HTMLButtonElement>): void => {
-    const { onHover, disabled, item, onMouseMove } = this.props as P;
+  const _onMouseMove = React.useCallback(
+    (ev: React.MouseEvent<HTMLButtonElement>): void => {
+      const { onHover, onMouseMove } = props as P;
 
-    const didUpdateOnMove = onMouseMove && onMouseMove(ev);
+      const didUpdateOnMove = onMouseMove && onMouseMove(ev);
 
-    if (!didUpdateOnMove && onHover && !disabled) {
-      onHover(item);
-    }
-  };
+      if (!didUpdateOnMove && onHover && !disabled) {
+        onHover(item);
+      }
+    },
+    [disabled, item, props],
+  );
 
-  private _onMouseLeave = (ev: React.MouseEvent<HTMLButtonElement>): void => {
-    const { onHover, disabled, onMouseLeave } = this.props as P;
+  const _onMouseLeave = React.useCallback(
+    (ev: React.MouseEvent<HTMLButtonElement>): void => {
+      const { onMouseLeave, onHover } = props as P;
 
-    const didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
+      const didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
 
-    if (!didUpdateOnLeave && onHover && !disabled) {
-      onHover();
-    }
-  };
+      if (!didUpdateOnLeave && onHover && !disabled) {
+        onHover();
+      }
+    },
+    [disabled, props],
+  );
 
-  private _onFocus = (): void => {
-    const { onFocus, disabled, item } = this.props as P;
+  const _onFocus = React.useCallback((): void => {
+    const { onFocus } = props as P;
 
     if (onFocus && !disabled) {
       onFocus(item);
     }
-  };
-}
+  }, [disabled, item, props]);
+
+  return (
+    <CommandButton
+      id={id}
+      data-index={index}
+      data-is-focusable={true}
+      disabled={disabled}
+      className={css(className, {
+        ['' + cellIsSelectedStyle]: selected,
+        ['' + cellDisabledStyle]: disabled,
+      })}
+      onClick={_onClick}
+      onMouseEnter={_onMouseEnter}
+      onMouseMove={_onMouseMove}
+      onMouseLeave={_onMouseLeave}
+      onFocus={_onFocus}
+      role={role}
+      aria-selected={selected}
+      ariaLabel={label}
+      title={label}
+      getClassNames={getClassNames}
+    >
+      {onRenderItem(item)}
+    </CommandButton>
+  );
+};
