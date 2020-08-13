@@ -15,7 +15,10 @@ describe('Tests a simple data-driven codeMod', () => {
     project.addSourceFilesAtPaths(`${process.cwd()}${dropDownPath}`);
   });
 
-  it('can rename the isDisabled feature in Dropdown', () => {
+  // TODO: Can you raise more errors in renameProp for better mod logging?
+  // TODO: Add value change examples && more mods in a later, larger PR.
+
+  it('can rename props in CompoundButton and Dropdown', () => {
     const mod = Maybe(createCodeModFromJson());
     if (mod.something) {
       const mods = [];
