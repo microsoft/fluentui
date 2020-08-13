@@ -84,6 +84,7 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLD
 
 function useDebugWarning(props: ICheckboxProps) {
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
       name: 'Checkbox',
       props,
@@ -116,6 +117,6 @@ function useComponentRef(
         }
       },
     }),
-    [isChecked, isIndeterminate],
+    [checkBoxRef, isChecked, isIndeterminate],
   );
 }
