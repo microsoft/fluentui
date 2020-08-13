@@ -12,7 +12,6 @@ import {
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles,
 } from './ColorPickerGridCell.types';
-import { useConstCallback } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
