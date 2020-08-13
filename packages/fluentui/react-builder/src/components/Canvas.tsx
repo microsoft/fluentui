@@ -1,7 +1,8 @@
 import * as React from 'react';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
-import { StylesProvider, useTheme } from '@material-ui/styles';
-import NoSsr from '@material-ui/core/NoSsr';
+
+import { create } from 'jss';
+import { jssPreset, createMuiTheme, ThemeProvider, StylesProvider } from '@material-ui/core/styles';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
@@ -233,72 +234,79 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       id={iframeId}
     >
       <FrameContextConsumer>
-        {({ document, window }) => (
-          <>
-            {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
-              <div
-                style={{
-                  padding: '8rem',
-                  textAlign: 'center',
-                  position: 'absolute',
-                  pointerEvents: 'none',
-                  width: '100%',
+        {({ document, window }) => {
+          const jss = create({
+            plugins: [...jssPreset().plugins],
+            insertionPoint: document.head,
+          });
+          return (
+            <>
+              {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
+                <div
+                  style={{
+                    padding: '8rem',
+                    textAlign: 'center',
+                    position: 'absolute',
+                    pointerEvents: 'none',
+                    width: '100%',
+                  }}
+                >
+                  <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
+                    👈
+                  </span>
+                  <div style={{ fontSize: '1.2rem', opacity: 0.5 }}>Drag n' Drop some components</div>
+                </div>
+              )}
+
+              <DebugSelector
+                active={isSelecting}
+                key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}
+                filter={fiberNav => {
+                  const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
+                  if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
+                    return null;
+                  }
+                  return owner;
                 }}
-              >
-                <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
-                  👈
-                </span>
-                <div style={{ fontSize: '1.2rem', opacity: 0.5 }}>Drag n' Drop some components</div>
-              </div>
-            )}
-
-            <DebugSelector
-              active={isSelecting}
-              key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}
-              filter={fiberNav => {
-                const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
-                if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
-                  return null;
-                }
-                return owner;
-              }}
-              mountDocument={document}
-              renderLabel={fiberNav => fiberNav.name}
-              showBackground={false}
-              showClassName={false}
-              showElement={false}
-              showCropMarks={false}
-              onSelect={handleSelectComponent}
-            />
-            {selectedComponent && (
-              <DebugFrame
-                target={document}
-                selector={`[data-builder-id="${selectedComponent.uuid}"]`}
-                componentName={selectedComponent.displayName}
-                onClone={handleCloneComponent}
-                onMove={handleMoveComponent}
-                onDelete={onDeleteComponent}
-                onGoToParent={onGoToParentComponent}
-              />
-            )}
-            {draggingElement && (
-              <DropSelector
-                filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
-                jsonTree={jsonTree}
                 mountDocument={document}
-                onDropPositionChange={onDropPositionChange}
+                renderLabel={fiberNav => fiberNav.name}
+                showBackground={false}
+                showClassName={false}
+                showElement={false}
+                showCropMarks={false}
+                onSelect={handleSelectComponent}
               />
-            )}
-
-            <StylesProvider>
-              <Provider theme={teamsTheme} target={document}>
-                {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
-                {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-                {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
-              </Provider>
-            </StylesProvider>
-          </>
-        )}
+              {selectedComponent && (
+                <DebugFrame
+                  target={document}
+                  selector={`[data-builder-id="${selectedComponent.uuid}"]`}
+                  componentName={selectedComponent.displayName}
+                  onClone={handleCloneComponent}
+                  onMove={handleMoveComponent}
+                  onDelete={onDeleteComponent}
+                  onGoToParent={onGoToParentComponent}
+                />
+              )}
+              {draggingElement && (
+                <DropSelector
+                  filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
+                  jsonTree={jsonTree}
+                  mountDocument={document}
+                  onDropPositionChange={onDropPositionChange}
+                />
+              )}
+              <StylesProvider jss={jss}>
+                <ThemeProvider theme={createMuiTheme()}>
+                  <Provider theme={teamsTheme} target={document}>
+                    {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
+                    {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+                    {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+                  </Provider>
+                </ThemeProvider>
+              </StylesProvider>
+            </>
+          );
+        }}
       </FrameContextConsumer>
     </Frame>
   );
