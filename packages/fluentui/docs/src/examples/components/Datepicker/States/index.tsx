@@ -15,6 +15,11 @@ const States = () => (
       description="The user needs to fill out the date."
       examplePath="components/Datepicker/States/DatepickerExampleRequired"
     />
+    <ComponentExample
+      title="Today's date"
+      description="The user can fill out the today's date."
+      examplePath="components/Datepicker/States/DatepickerExampleToday"
+    />
   </ExampleSection>
 );
 
