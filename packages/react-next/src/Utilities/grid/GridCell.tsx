@@ -3,10 +3,6 @@ import { css, getId } from '../../Utilities';
 import { IGridCellProps } from './GridCell.types';
 import { CommandButton } from '../../compat/Button';
 
-// export const TriggerOnContextMenu = <T extends any>(ItemComponent: React.ComponentType<ISelectedItemProps<T>>) => {
-//   return (props: TriggerProps<T>) => {
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const GridCell = <T, P extends IGridCellProps<T>>(props: IGridCellProps<T>) => {
   const {
     item,

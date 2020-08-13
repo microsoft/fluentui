@@ -67,7 +67,7 @@ export const GridBase = React.forwardRef((props: IGridProps, ref: React.Ref<HTML
     content
   ) : (
     <FocusZone
-      // Needs FocusZone to be converted in order for ref functionality.
+      // Needs FocusZone to be converted in order for ref to function correctly.
       // ref={ref}
       isCircularNavigation={props.shouldFocusCircularNavigate}
       className={classNames.focusedContainer}
