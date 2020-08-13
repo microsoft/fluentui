@@ -10,6 +10,7 @@
     "@fluentui/date-time-utilities": "^7.4.1",
     "@fluentui/keyboard-key": "^0.2.9",
     "@fluentui/react-bindings": "^0.51.0",
+    "@fluentui/react-button": "^0.9.0",
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-component-nesting-registry": "^0.51.0",
     "@fluentui/react-component-ref": "^0.51.0",

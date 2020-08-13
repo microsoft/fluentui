@@ -1,36 +1,38 @@
 import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
+import { mergeProps } from '@fluentui/react-compose/lib/next';
 import {
-  compose,
-  ComponentWithAs,
-  getElementType,
-  useAccessibility,
+  // compose,
+  // ComponentWithAs,
+  // getElementType,
+  // useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
-  useUnhandledProps,
-  ShorthandConfig,
+  // useUnhandledProps,
+  // ShorthandConfig,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import {
-  childrenExist,
+  // childrenExist,
   createShorthandFactory,
   UIComponentProps,
   ContentComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
-  rtlTextContainer,
+  // rtlTextContainer,
   SizeValue,
-  ShorthandFactory,
-  createShorthand,
+  // ShorthandFactory,
+  // createShorthand,
 } from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
-import { Loader, LoaderProps } from '../Loader/Loader';
+import { /* Box, */ BoxProps } from '../Box/Box';
+import { /* Loader, */ LoaderProps } from '../Loader/Loader';
 import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonContent, ButtonContentProps } from './ButtonContent';
+import { useButton } from '@fluentui/react-button/src/components/Button/useButton';
 
 export interface ButtonProps
   extends UIComponentProps,
@@ -108,207 +110,236 @@ export const buttonClassName = 'ui-button';
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
-  (props, ref, composeOptions) => {
-    const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
+export const Button = React.forwardRef<HTMLElement, ButtonProps>((props: ButtonProps, ref) => {
+  const { state, render } = useButton(props, ref);
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry);
+  setStart();
 
-    const {
-      accessibility,
-      // @ts-ignore
-      active,
-      as,
-      children,
-      content,
-      icon,
-      loader,
-      disabled,
-      iconPosition,
-      loading,
+  const {
+    // accessibility,
+    // // @ts-ignore
+    // active,
+    // as,
+    // children,
+    content,
+    // icon,
+    // loader,
+    disabled,
+    iconPosition,
+    loading,
+    text,
+    primary,
+    inverted,
+    size,
+    iconOnly,
+    fluid,
+    circular,
+    className,
+    styles,
+    variables,
+    design,
+  } = props;
+
+  // const hasChildren = childrenExist(children);
+  //
+  // const getA11yProps = useAccessibility(accessibility, {
+  //   debugName: composeOptions.displayName,
+  //   mapPropsToBehavior: () => ({
+  //     as,
+  //     active,
+  //     disabled,
+  //     loading,
+  //   }),
+  //   actionHandlers: {
+  //     performClick: event => {
+  //       event.preventDefault();
+  //       handleClick(event);
+  //     },
+  //   },
+  //   rtl: context.rtl,
+  // });
+
+  const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(Button.displayName, {
+    className: Button.className,
+    mapPropsToStyles: () => ({
       text,
       primary,
-      inverted,
-      size,
-      iconOnly,
-      fluid,
+      disabled,
       circular,
+      size,
+      loading,
+      inverted,
+      iconOnly,
+      iconPosition,
+      fluid,
+      hasContent: !!content,
+    }),
+    mapPropsToInlineStyles: () => ({
       className,
+      design,
       styles,
       variables,
-      design,
-    } = props;
-
-    const hasChildren = childrenExist(children);
-
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
-      mapPropsToBehavior: () => ({
-        as,
-        active,
-        disabled,
-        loading,
-      }),
-      actionHandlers: {
-        performClick: event => {
-          event.preventDefault();
-          handleClick(event);
-        },
-      },
-      rtl: context.rtl,
-    });
-    const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(composeOptions.displayName, {
-      className: composeOptions.className,
-      mapPropsToStyles: () => ({
-        text,
-        primary,
-        disabled,
-        circular,
-        size,
-        loading,
-        inverted,
-        iconOnly,
-        iconPosition,
-        fluid,
-        hasContent: !!content,
-      }),
-      mapPropsToInlineStyles: () => ({
-        className,
-        design,
-        styles,
-        variables,
-      }),
-      rtl: context.rtl,
-      composeOptions,
-      unstable_props: props,
-    });
-
-    const slotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
-
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-    const ElementType = getElementType(props);
-
-    const renderIcon = () => {
-      return createShorthand(composeOptions.slots.icon, icon, {
-        defaultProps: () =>
-          getA11yProps('icon', {
-            styles: resolvedStyles.icon,
-            ...slotProps.icon,
-          }),
-      });
-    };
-
-    const renderLoader = () => {
-      return createShorthand(composeOptions.slots.loader, loader || {}, {
-        defaultProps: () =>
-          getA11yProps('loader', {
-            styles: resolvedStyles.loader,
-            ...slotProps.loader,
-          }),
-      });
-    };
-
-    const renderContent = () => {
-      return createShorthand(composeOptions.slots.content, content, {
-        defaultProps: () => getA11yProps('content', slotProps.content),
-      });
-    };
-
-    const handleClick = (e: React.SyntheticEvent) => {
-      if (disabled) {
-        e.preventDefault();
-        return;
-      }
-
-      _.invoke(props, 'onClick', e, props);
-    };
-
-    const handleFocus = (e: React.SyntheticEvent) => {
-      _.invoke(props, 'onFocus', e, props);
-    };
-
-    const result = (
-      <ElementType
-        {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...getA11yProps('root', {
-          onClick: handleClick,
-          disabled,
-          className: classes.root,
-          onFocus: handleFocus,
-          ref,
-          ...unhandledProps,
-        })}
-      >
-        {hasChildren ? (
-          children
-        ) : (
-          <>
-            {loading && renderLoader()}
-            {iconPosition !== 'after' && renderIcon()}
-            {renderContent()}
-            {iconPosition === 'after' && renderIcon()}
-          </>
-        )}
-      </ElementType>
-    );
-
-    setEnd();
-
-    return result;
-  },
-  {
-    className: buttonClassName,
-    displayName: 'Button',
-
-    slots: {
-      content: ButtonContent,
-      icon: Box,
-      loader: Loader,
-    },
-    slotProps: props => ({
-      content: {
-        size: props.size,
-      },
-      loader: {
-        role: undefined,
-      },
     }),
-
-    shorthandConfig: {
-      mappedProp: 'content',
+    rtl: context.rtl,
+    composeOptions: {
+      mapPropsToStylesPropsChain: [
+        (props: ButtonProps) => ({
+          text: props.text,
+          primary: props.primary,
+          disabled: props.disabled,
+          circular: props.circular,
+          size: props.size,
+          loading: props.loading,
+          inverted: props.inverted,
+          iconOnly: props.iconOnly,
+          iconPosition: props.iconPosition,
+          fluid: props.fluid,
+          hasContent: !!props.content,
+        }),
+      ],
+      displayNames: [Button.displayName],
+      className: Button.className,
+      displayName: Button.displayName,
     },
-    handledProps: [
-      'accessibility',
-      'as',
-      'children',
-      'circular',
-      'className',
-      'content',
-      'design',
-      'disabled',
-      'fluid',
-      'icon',
-      'iconOnly',
-      'iconPosition',
-      'inverted',
-      'loader',
-      'loading',
-      'onClick',
-      'onFocus',
-      'primary',
-      'text',
-      'secondary',
-      'size',
-      'styles',
-      'variables',
-    ],
-  },
-) as ComponentWithAs<'button', ButtonProps> & {
-  create: ShorthandFactory<ButtonProps>;
-  shorthandConfig: ShorthandConfig<ButtonProps>;
-  Content: typeof ButtonContent;
-  Group: typeof ButtonGroup;
-};
+    unstable_props: props,
+  });
+
+  mergeProps(state, {
+    className: classes.root,
+    styles: resolvedStyles.root,
+    icon: {
+      className: classes.icon,
+      styles: resolvedStyles.icon,
+    },
+    loader: {
+      className: classes.loader,
+      styles: resolvedStyles.loader,
+    },
+    children: /* analogous to the `content` slot in v0 */ {
+      as: ButtonContent,
+      content: props.content,
+    },
+  });
+
+  // const slotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
+  //
+  // const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
+  // const ElementType = getElementType(props);
+  //
+  // const renderIcon = () => {
+  //   return createShorthand(composeOptions.slots.icon, icon, {
+  //     defaultProps: () =>
+  //       getA11yProps('icon', {
+  //         styles: resolvedStyles.icon,
+  //         ...slotProps.icon,
+  //       }),
+  //   });
+  // };
+  //
+  // const renderLoader = () => {
+  //   return createShorthand(composeOptions.slots.loader, loader || {}, {
+  //     defaultProps: () =>
+  //       getA11yProps('loader', {
+  //         styles: resolvedStyles.loader,
+  //         ...slotProps.loader,
+  //       }),
+  //   });
+  // };
+  //
+  // const renderContent = () => {
+  //   return createShorthand(composeOptions.slots.content, content, {
+  //     defaultProps: () => getA11yProps('content', slotProps.content),
+  //   });
+  // };
+  //
+  // const handleClick = (e: React.SyntheticEvent) => {
+  //   if (disabled) {
+  //     e.preventDefault();
+  //     return;
+  //   }
+  //
+  //   _.invoke(props, 'onClick', e, props);
+  // };
+  //
+  // const handleFocus = (e: React.SyntheticEvent) => {
+  //   _.invoke(props, 'onFocus', e, props);
+  // };
+  //
+  // const result = (
+  //   <ElementType
+  //     {...rtlTextContainer.getAttributes({ forElements: [children] })}
+  //     {...getA11yProps('root', {
+  //       onClick: handleClick,
+  //       disabled,
+  //       className: classes.root,
+  //       onFocus: handleFocus,
+  //       ref,
+  //       ...unhandledProps,
+  //     })}
+  //   >
+  //     {hasChildren ? (
+  //       children
+  //     ) : (
+  //       <>
+  //         {loading && renderLoader()}
+  //         {iconPosition !== 'after' && renderIcon()}
+  //         {renderContent()}
+  //         {iconPosition === 'after' && renderIcon()}
+  //       </>
+  //     )}
+  //   </ElementType>
+  // );
+
+  setEnd();
+
+  // return result;
+  return render(state);
+}) as any; // TODO :)
+
+Button.className = buttonClassName;
+Button.displayName = 'Button';
+
+// slots: {
+//   content: ButtonContent,
+//   icon: Box,
+//   loader: Loader,
+// },
+
+// slotProps: props => ({
+//   content: {
+//     size: props.size,
+//   },
+//   loader: {
+//     role: undefined,
+//   },
+// }),
+
+// handledProps: [
+//   'accessibility',
+//   'as',
+//   'children',
+//   'circular',
+//   'className',
+//   'content',
+//   'design',
+//   'disabled',
+//   'fluid',
+//   'icon',
+//   'iconOnly',
+//   'iconPosition',
+//   'inverted',
+//   'loader',
+//   'loading',
+//   'onClick',
+//   'onFocus',
+//   'primary',
+//   'text',
+//   'secondary',
+//   'size',
+//   'styles',
+//   'variables',
+// ],
 
 Button.defaultProps = {
   as: 'button',
