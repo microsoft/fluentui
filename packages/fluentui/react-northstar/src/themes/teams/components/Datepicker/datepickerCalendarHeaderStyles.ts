@@ -8,14 +8,15 @@ export const datepickerCalendarHeaderStyles: ComponentSlotStylesPrepared<
 > = {
   root: ({ variables: v }): ICSSInJSStyle => {
     return {
-      display: ['grid', '-ms-grid'],
-      gridTemplateColumns: '1fr auto auto',
-      msGridColumns: '1fr auto auto',
+      display: 'flex',
+      alignItems: 'center',
+      marginLeft: '1ch',
     };
   },
   month: ({ variables: v }): ICSSInJSStyle => {
     return {
       fontWeight: v.monthFontWeight,
+      flexGrow: 1,
     };
   },
 };
