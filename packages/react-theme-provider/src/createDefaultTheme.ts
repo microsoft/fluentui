@@ -13,14 +13,12 @@ export const createDefaultTheme = (): Theme => {
 };
 
 export const defaultTokens: Tokens = {
-  body: {},
-
+  body: { background: '#ffffff' },
   accent: {
     background: '#0078d4',
     contentColor: '#ffffff',
     borderColor: 'transparent',
-    iconColor: 'inherit',
-
+    iconColor: '#ffffff',
     disabled: {
       background: '#f3f2f1',
       contentColor: '#c8c6c4',
@@ -29,9 +27,9 @@ export const defaultTokens: Tokens = {
     },
     hovered: {
       background: '#106ebe',
-      contentColor: 'var(--accent-contentColor)',
+      contentColor: '#ffffff',
       borderColor: 'var(--accent-borderColor)',
-      iconColor: 'var(--accent-iconColor)',
+      iconColor: '#ffffff',
     },
     pressed: {
       background: '#005a9e',
@@ -46,7 +44,6 @@ export const defaultTokens: Tokens = {
       iconColor: 'var(--accent-iconColor)',
     },
   },
-
   button: {
     size: {
       smallest: '8px',
@@ -58,45 +55,40 @@ export const defaultTokens: Tokens = {
       largest: '64px',
     },
     padding: '0 16px',
-    height: 'var(--button-size-regular)',
     minHeight: 'var(--button-size-regular)',
     contentGap: '10px',
     iconSize: '16px',
     borderRadius: '2px',
     borderWidth: '1px',
-
-    fontFamily: `'Segoe UI', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', Helvetica, Arial, sans-serif`,
+    // eslint-disable-next-line @fluentui/max-len
+    fontFamily: `'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
     fontSize: '14px',
-    fontWeight: 'normal',
-
-    focusColor: '#000',
-    focusInnerColor: '#fff',
-
-    background: 'white',
+    fontWeight: 400,
+    focusColor: '#605e5c',
+    focusInnerColor: '#ffffff',
+    background: '#ffffff',
     borderColor: '#8a8886',
-    contentColor: '#2c2621',
+    contentColor: '#323130',
     iconColor: 'inherit',
-
     dividerColor: 'rgba(0, 0, 0, 0.1)',
     dividerLength: 'var(--button-minHeight)',
     dividerThickness: 'var(--button-borderWidth)',
-
     disabled: {
       background: '#f3f2f1',
-      borderColor: 'var(--button-disabled-background)',
-      contentColor: '#c8c6c4',
+      borderColor: '#f3f2f1',
+      contentColor: '#a19f9d',
       iconColor: 'var(--button-disabled-contentColor)',
     },
     hovered: {
       background: '#f3f2f1',
-      borderColor: 'var(--button-borderColor)',
-      contentColor: 'var(--button-contentColor)',
+      borderColor: '#8a8886',
+      contentColor: '#201f1e',
       iconColor: 'var(--button-iconColor)',
     },
     pressed: {
       background: '#edebe9',
-      borderColor: 'var(--button-borderColor)',
-      contentColor: 'var(--button-contentColor)',
+      borderColor: '#8a8886',
+      contentColor: '#201f1e',
       iconColor: 'var(--button-iconColor)',
     },
     focused: {
