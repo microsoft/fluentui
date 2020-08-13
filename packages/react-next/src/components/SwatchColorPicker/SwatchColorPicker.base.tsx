@@ -337,7 +337,8 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
 
     return (
       <Grid
-        ref={ref}
+        // Needs FocusZone to be converted in order for ref functionality.
+        // ref={ref}
         {...((props as unknown) as IGridProps)}
         id={id}
         items={getItemsWithIndex}
