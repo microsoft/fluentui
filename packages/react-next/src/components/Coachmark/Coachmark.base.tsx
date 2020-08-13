@@ -8,7 +8,6 @@ import {
   IRectangle,
   KeyCodes,
   getRTL,
-  warnDeprecations,
   EventGroup,
   getPropsWithDefaults,
 } from '../../Utilities';
@@ -23,7 +22,8 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
-import { useAsync, useOnEvent } from '@uifabric/react-hooks';
+import { useAsync, useOnEvent, useSetTimeout, useWarnings } from '@uifabric/react-hooks';
+import { IBeakProps } from './Beak/Beak.types';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -37,6 +37,8 @@ export interface IEntityRect {
   height?: number;
 }
 
+type BeakPosition = Pick<IBeakProps, 'left' | 'top' | 'right' | 'bottom' | 'direction'>;
+
 const DEFAULT_PROPS: Partial<ICoachmarkProps> = {
   isCollapsed: true,
   mouseProximityOffset: 10,
@@ -49,43 +51,43 @@ const DEFAULT_PROPS: Partial<ICoachmarkProps> = {
 };
 
 function useCollapsedState(props: ICoachmarkProps, entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
-  /**
-   * Is the Coachmark currently collapsed into
-   * a tear drop shape
-   */
-  const [isCollapsed, setIsCollapsed] = React.useState<boolean>(!!props.isCollapsed);
-  const async = useAsync();
+  const { isCollapsed: propsIsCollapsed, onAnimationOpenStart, onAnimationOpenEnd } = props;
+
+  /** Is the Coachmark currently collapsed into a tear drop shape */
+  const [isCollapsed, setIsCollapsed] = React.useState<boolean>(!!propsIsCollapsed);
+  const { setTimeout } = useSetTimeout();
 
   // Rather than pushing out logic elsewhere to prevent openCoachmark from being called repeatedly,
   // we'll track it here and only invoke the logic once. We do this with a ref, rather than just the state,
   // because the openCoachmark callback can be captured in scope for an effect
   const hasCoachmarkBeenOpened = React.useRef(!isCollapsed);
 
-  const openCoachmark = () => {
+  const openCoachmark = React.useCallback(() => {
     if (!hasCoachmarkBeenOpened.current) {
       setIsCollapsed(false);
 
-      props.onAnimationOpenStart?.();
+      onAnimationOpenStart?.();
 
       entityInnerHostElementRef.current?.addEventListener?.('transitionend', (): void => {
         // Need setTimeout to trigger narrator
-        async.setTimeout(() => {
+        setTimeout(() => {
           if (entityInnerHostElementRef.current) {
             focusFirstChild(entityInnerHostElementRef.current);
           }
         }, 1000);
 
-        props.onAnimationOpenEnd?.();
+        onAnimationOpenEnd?.();
       });
       hasCoachmarkBeenOpened.current = true;
     }
-  };
+  }, [entityInnerHostElementRef, onAnimationOpenEnd, onAnimationOpenStart, setTimeout]);
 
   React.useEffect(() => {
-    if (!props.isCollapsed) {
+    if (!propsIsCollapsed) {
       openCoachmark();
     }
-  }, [props.isCollapsed]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run if isCollapsed changes
+  }, [propsIsCollapsed]);
 
   return [isCollapsed, openCoachmark] as const;
 }
@@ -116,36 +118,15 @@ function useBeakPosition(
   targetAlignment: RectangleEdge | undefined,
   targetPosition: RectangleEdge | undefined,
 ) {
-  const beakDirection = targetPosition === undefined ? RectangleEdge.bottom : getOppositeEdge(targetPosition);
+  const isRTL = getRTL(props.theme);
 
-  /**
-   * The left position of the beak
-   */
-  const [beakLeft, setBeakLeft] = React.useState<string>();
+  return React.useMemo(() => {
+    const beakDirection = targetPosition === undefined ? RectangleEdge.bottom : getOppositeEdge(targetPosition);
 
-  /**
-   * The right position of the beak
-   */
-  const [beakTop, setBeakTop] = React.useState<string>();
+    const beakPosition: BeakPosition = { direction: beakDirection };
 
-  /**
-   * The right position of the beak
-   */
-  const [beakRight, setBeakRight] = React.useState<string>();
-
-  /**
-   * The bottom position of the beak
-   */
-  const [beakBottom, setBeakBottom] = React.useState<string>();
-
-  /**
-   * Transform origin of teaching bubble callout
-   */
-  const [transformOrigin, setTransformOrigin] = React.useState<string>();
-
-  React.useEffect(() => {
-    let transformOriginX;
-    let transformOriginY;
+    let transformOriginX: string;
+    let transformOriginY: string;
 
     const distanceAdjustment = '3px'; // Adjustment distance for Beak to shift towards Coachmark bubble.
 
@@ -155,25 +136,25 @@ function useBeakPosition(
       case RectangleEdge.bottom:
         // If there is no target alignment, then beak is X-axis centered in callout
         if (!targetAlignment) {
-          setBeakLeft(`calc(50% - ${BEAK_WIDTH / 2}px)`);
+          beakPosition.left = `calc(50% - ${BEAK_WIDTH / 2}px)`;
           transformOriginX = 'center';
         } else {
           // Beak is aligned to the left of target
           if (targetAlignment === RectangleEdge.left) {
-            setBeakLeft(`${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`);
+            beakPosition.left = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
             transformOriginX = 'left';
           } else {
             // Beak is aligned to the right of target
-            setBeakRight(`${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`);
+            beakPosition.right = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
             transformOriginX = 'right';
           }
         }
 
         if (beakDirection === RectangleEdge.top) {
-          setBeakTop(distanceAdjustment);
+          beakPosition.top = distanceAdjustment;
           transformOriginY = 'top';
         } else {
-          setBeakBottom(distanceAdjustment);
+          beakPosition.bottom = distanceAdjustment;
           transformOriginY = 'bottom';
         }
         break;
@@ -182,45 +163,40 @@ function useBeakPosition(
       case RectangleEdge.right:
         // If there is no target alignment, then beak is Y-axis centered in callout
         if (!targetAlignment) {
-          setBeakTop(`calc(50% - ${BEAK_WIDTH / 2}px)`);
+          beakPosition.top = `calc(50% - ${BEAK_WIDTH / 2}px)`;
           transformOriginY = `center`;
         } else {
           // Beak is aligned to the top of target
           if (targetAlignment === RectangleEdge.top) {
-            setBeakTop(`${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`);
+            beakPosition.top = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
             transformOriginY = `top`;
           } else {
             // Beak is aligned to the bottom of target
-            setBeakBottom(`${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`);
+            beakPosition.bottom = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
             transformOriginY = `bottom`;
           }
         }
 
         if (beakDirection === RectangleEdge.left) {
-          if (getRTL(props.theme)) {
-            setBeakRight(distanceAdjustment);
+          if (isRTL) {
+            beakPosition.right = distanceAdjustment;
           } else {
-            setBeakLeft(distanceAdjustment);
+            beakPosition.left = distanceAdjustment;
           }
           transformOriginX = 'left';
         } else {
-          if (getRTL(props.theme)) {
-            setBeakLeft(distanceAdjustment);
+          if (isRTL) {
+            beakPosition.left = distanceAdjustment;
           } else {
-            setBeakRight(distanceAdjustment);
+            beakPosition.right = distanceAdjustment;
           }
           transformOriginX = 'right';
         }
         break;
     }
 
-    setTransformOrigin(`${transformOriginX} ${transformOriginY}`);
-  }, [targetAlignment, targetPosition]);
-
-  return [
-    { direction: beakDirection, top: beakTop, bottom: beakBottom, left: beakLeft, right: beakRight } as const,
-    transformOrigin,
-  ] as const;
+    return [beakPosition as Readonly<BeakPosition>, `${transformOriginX} ${transformOriginY}`] as const;
+  }, [targetAlignment, targetPosition, isRTL]);
 }
 
 function useListeners(
@@ -270,58 +246,50 @@ function useProximityHandlers(
   translateAnimationContainer: React.RefObject<HTMLDivElement>,
   openCoachmark: () => void,
 ) {
-  const async = useAsync();
+  const { setTimeout, clearTimeout } = useSetTimeout();
 
-  /**
-   * The target element the mouse would be in
-   * proximity to
-   */
+  /** The target element the mouse would be in proximity to */
   const targetElementRect = React.useRef<DOMRect>();
 
-  const setTargetElementRect = (): void => {
-    if (translateAnimationContainer?.current) {
-      targetElementRect.current = translateAnimationContainer.current.getBoundingClientRect();
-    }
-  };
-
   React.useEffect(() => {
+    const setTargetElementRect = (): void => {
+      if (translateAnimationContainer.current) {
+        targetElementRect.current = translateAnimationContainer.current.getBoundingClientRect();
+      }
+    };
+
     const events = new EventGroup({});
 
-    // We don't want to the user to immediately trigger the Coachmark when it's opened
-    async.setTimeout(() => {
+    // We don't want the user to immediately trigger the Coachmark when it's opened
+    setTimeout(() => {
       const { mouseProximityOffset = 0 } = props;
-      /**
-       * An array of cached ids returned when setTimeout runs during
-       * the window resize event trigger.
-       */
+
+      /** Cached ids returned when setTimeout runs during the window resize event trigger. */
       const timeoutIds: number[] = [];
 
-      // Take the initial measure out of the initial render to prevent
-      // an unnecessary render.
-      async.setTimeout(() => {
+      // Take the initial measure out of the initial render to prevent an unnecessary render.
+      setTimeout(() => {
         setTargetElementRect();
 
-        // When the window resizes we want to async
-        // get the bounding client rectangle.
-        // Every time the event is triggered we want to
-        // setTimeout and then clear any previous instances
-        // of setTimeout.
+        // When the window resizes we want to async get the bounding client rectangle.
+        // Every time the event is triggered we want to setTimeout and then clear any previous
+        // instances of setTimeout.
         events.on(window, 'resize', (): void => {
           timeoutIds.forEach((value: number): void => {
-            clearInterval(value);
+            clearTimeout(value);
           });
+          timeoutIds.splice(0, timeoutIds.length); // clear array
 
           timeoutIds.push(
-            async.setTimeout((): void => {
+            setTimeout((): void => {
               setTargetElementRect();
             }, 100),
           );
         });
       }, 10);
 
-      // Every time the document's mouse move is triggered
-      // we want to check if inside of an element and
-      // set the state with the result.
+      // Every time the document's mouse move is triggered, we want to check if inside of an element
+      // and set the state with the result.
       events.on(document, 'mousemove', (e: MouseEvent) => {
         const mouseY = e.clientY;
         const mouseX = e.clientX;
@@ -336,27 +304,27 @@ function useProximityHandlers(
     }, props.delayBeforeMouseOpen!);
 
     return () => events.dispose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
   }, []);
 }
 
 function useComponentRef(props: ICoachmarkProps) {
+  const { onDismiss } = props;
   React.useImperativeHandle(
     props.componentRef,
     (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => ({
       dismiss() {
-        props.onDismiss?.(ev);
+        onDismiss?.(ev);
       },
     }),
-    [props.onDismiss],
+    [onDismiss],
   );
 }
 
 function useAriaAlert({ ariaAlertText }: ICoachmarkProps) {
   const async = useAsync();
 
-  /**
-   * ARIA alert text to read aloud with Narrator once the Coachmark is mounted
-   */
+  /** ARIA alert text to read aloud with Narrator once the Coachmark is mounted */
   const [alertText, setAlertText] = React.useState<string | undefined>();
 
   React.useEffect(() => {
@@ -364,13 +332,14 @@ function useAriaAlert({ ariaAlertText }: ICoachmarkProps) {
     async.requestAnimationFrame(() => {
       setAlertText(ariaAlertText);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
   }, []);
 
   return alertText;
 }
 
 function useAutoFocus({ preventFocusOnMount }: ICoachmarkProps) {
-  const async = useAsync();
+  const { setTimeout } = useSetTimeout();
 
   /**
    * The cached HTMLElement reference to the Entity Inner Host
@@ -380,22 +349,18 @@ function useAutoFocus({ preventFocusOnMount }: ICoachmarkProps) {
 
   React.useEffect(() => {
     if (!preventFocusOnMount) {
-      async.setTimeout(() => entityHost.current?.focus(), 1000);
+      setTimeout(() => entityHost.current?.focus(), 1000);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
   }, []);
 
   return entityHost;
 }
 
 function useEntityHostMeasurements(props: ICoachmarkProps, entityInnerHostElementRef: React.RefObject<HTMLDivElement>) {
-  /**
-   * Is the teaching bubble currently retreiving the
-   * original dimensions of the hosted entity.
-   */
+  /** Is the teaching bubble currently retrieving the original dimensions of the hosted entity. */
   const [isMeasuring, setIsMeasuring] = React.useState<boolean>(!!props.isCollapsed);
-  /**
-   * Cached width and height of _entityInnerHostElement
-   */
+  /** Cached width and height of _entityInnerHostElement */
   const [entityInnerHostRect, setEntityInnerHostRect] = React.useState<IEntityRect>(
     props.isCollapsed ? { width: 0, height: 0 } : {},
   );
@@ -411,22 +376,28 @@ function useEntityHostMeasurements(props: ICoachmarkProps, entityInnerHostElemen
         setIsMeasuring(false);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
   }, []);
 
   return [isMeasuring, entityInnerHostRect] as const;
 }
 
 function useDeprecationWarning(props: ICoachmarkProps) {
-  React.useEffect(() => {
-    warnDeprecations(COMPONENT_NAME, props, {
-      teachingBubbleRef: undefined,
-      collapsed: 'isCollapsed',
-      beakWidth: undefined,
-      beakHeight: undefined,
-      width: undefined,
-      height: undefined,
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
+    useWarnings({
+      name: COMPONENT_NAME,
+      props,
+      deprecations: {
+        teachingBubbleRef: undefined,
+        collapsed: 'isCollapsed',
+        beakWidth: undefined,
+        beakHeight: undefined,
+        width: undefined,
+        height: undefined,
+      },
     });
-  }, []);
+  }
 }
 
 const COMPONENT_NAME = 'CoachmarkBase';

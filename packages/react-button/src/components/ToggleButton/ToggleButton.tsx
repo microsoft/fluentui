@@ -7,7 +7,7 @@ import { useInlineTokens } from '@fluentui/react-theme-provider';
 import * as toggleButtonClasses from './ToggleButton.scss';
 import { useButtonClasses } from '../Button/Button';
 
-const useToggleButtonClasses = makeClasses(toggleButtonClasses);
+export const useToggleButtonClasses = makeClasses(toggleButtonClasses);
 
 /**
  * Define a styled Button, using the `createButton` factory.

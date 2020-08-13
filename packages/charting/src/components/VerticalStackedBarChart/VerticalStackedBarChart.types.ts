@@ -89,7 +89,7 @@ export interface IVerticalStackedBarChartProps {
   hideTooltip?: boolean;
 
   /**
-   * props for the legneds in the chart
+   * props for the legends in the chart
    */
   legendProps?: Partial<ILegendsProps>;
 }
