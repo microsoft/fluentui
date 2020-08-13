@@ -77,6 +77,11 @@ export interface ICalendarStrings extends IDateFormatting {
   goToToday: string;
 
   /**
+   * Title for button to open the calendar.
+   */
+  openCalendarTitle: string;
+
+  /**
    * Aria-label for the "previous month" button in day picker.
    */
   prevMonthAriaLabel?: string;
