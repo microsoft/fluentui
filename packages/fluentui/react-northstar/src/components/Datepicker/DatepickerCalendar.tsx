@@ -267,7 +267,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         {createShorthand(DatepickerCalendarHeader, header, {
           defaultProps: () => ({
             label: formatMonthYear(gridNavigatedDate, dateFormatting),
-            'aria-label': formatMonthYear(gridNavigatedDate),
+            'aria-label': formatMonthYear(gridNavigatedDate, dateFormatting),
           }),
           overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
             onPreviousClick: (e, data) => {
