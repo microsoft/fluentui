@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.5)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.4..@fluentui/web-components_v0.1.5)
+
+### Patches
+
+- fix: add full width to text-area and text-field controls to expand properly with component ([PR #14492](https://github.com/microsoft/fluentui/pull/14492) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.4)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.3..@fluentui/web-components_v0.1.4)
+
+### Patches
+
+- fix: ensure radio control does not shrink ([PR #14473](https://github.com/microsoft/fluentui/pull/14473) by chhol@microsoft.com)
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.3)
 

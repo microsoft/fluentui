@@ -37,6 +37,7 @@ const DEFAULT_PROPS = {
 
 function useDebugWarnings(props: IPersonaCoinProps) {
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
       name: 'PersonaCoin',
       props,
