@@ -482,7 +482,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
                 }),
               }}
             >
-              {active ? 'Copied! Happy coding :)' : `yarn add ${pkg.name}@${pkg.version}`}
+              {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
             </Box>
           )}
         </CopyToClipboard>
