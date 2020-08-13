@@ -110,7 +110,7 @@ describe('useCSS', () => {
     const renderGlobal = jest.fn();
 
     mount(<TestComponent styles={styles} />, getMountOptions(renderGlobal, false));
-    mount(<TestComponent styles={styles} />, getMountOptions(renderGlobal, true));
+    const rtlWrapper = mount(<TestComponent styles={styles} />, getMountOptions(renderGlobal, true));
 
     expect(renderGlobal).toMatchInlineSnapshot(`
       .use-css.fl5cdwz {
@@ -122,6 +122,7 @@ describe('useCSS', () => {
         padding-right: 20px;
       }
     `);
+    expect(rtlWrapper.find('div').prop('className')).toBe('use-css rfl5cdwz');
   });
 
   it('handles merge via passed "className"', () => {

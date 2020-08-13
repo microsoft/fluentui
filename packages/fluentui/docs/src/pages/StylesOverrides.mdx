@@ -1,4 +1,10 @@
-import { StyleOverridesConcatenation, StyleOverridesPseudo, StyleOverridesText, StyleOverridesSlots } from './examples';
+import {
+  StyleOverridesConcatenation,
+  StyleOverridesPseudo,
+  StyleOverridesText,
+  StyleOverridesSlots,
+  StyleOverridesRTL,
+} from './examples';
 
 export const meta = {
   title: 'Styles overrides',
@@ -50,10 +56,18 @@ const className = useCSS(classNameFromProps, { color: 'green' });
 
 <StyleOverridesConcatenation />
 
-Like in usual CSS in JS styles that exists in Fluent UI Northstar `useCSS()` also handles pseudo selectors and RTL.
+Like in usual CSS in JS styles that exists in Fluent UI Northstar `useCSS()` also handles pseudo selectors.
 
 ```js
 const className = useCSS({ ':hover': { textDecoration: 'underline' } });
 ```
 
 <StyleOverridesPseudo />
+
+RTL transforms will be handled `useCSS()` based on `Provider`'s settings.
+
+```js
+const className = useCSS({ borderLeft: '2px solid green', borderRight: '2px solid red' });
+```
+
+<StyleOverridesRTL />

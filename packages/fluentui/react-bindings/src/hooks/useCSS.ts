@@ -79,14 +79,13 @@ export function useCSS(...styles: UseCSSStyleInput[]) {
   // serializeStyles() will concat all passed styles and will resolve functions
   const serializedStyles = serializeStyles(resolvedStyles, stylesCache, theme);
   // ".name" is not a valid CSS classname as it can start from a digit
-  const serializedClassName = `${CLASSNAME_PREFIX}${serializedStyles.name}`;
+  //  "r" prefix is used to avoid collision between LTR and RTL styles
+  const serializedClassName = `${rtl ? 'r' : ''}${CLASSNAME_PREFIX}${serializedStyles.name}`;
 
   stylesCache[serializedClassName] = serializedStyles.styles;
 
-  // Selector should include:
-  // - specificity className to have higher specificity than other passed classes
-  // - "r" to avoid collision between LTR and RTL styles
-  const selector = `.${SPECIFICITY_CLASSNAME}.${rtl ? 'r' : ''}${serializedClassName}`;
+  // Selector should include specificity className to have higher specificity than other passed classes
+  const selector = `.${SPECIFICITY_CLASSNAME}.${serializedClassName}`;
 
   // Stylis performs transform of nested selectors and ":focus-visible"
   const css = rtl ? rtlStylis(selector, serializedStyles.styles) : stylis(selector, serializedStyles.styles);
