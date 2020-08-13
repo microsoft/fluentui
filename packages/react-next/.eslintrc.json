@@ -3,9 +3,6 @@
   "extends": ["../office-ui-fabric-react/.eslintrc"],
   "root": true,
   "rules": {
-    "@typescript-eslint/no-explicit-any": "error",
-    // Disable until issues are dealt with
-    "react-hooks/exhaustive-deps": "off",
-    "react-hooks/rules-of-hooks": "off"
+    "@typescript-eslint/no-explicit-any": "error"
   }
 }

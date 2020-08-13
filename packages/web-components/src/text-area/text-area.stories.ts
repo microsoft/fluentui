@@ -7,7 +7,7 @@ FluentTextArea;
 FluentDesignSystemProvider;
 
 export default {
-  title: 'Text area',
+  title: 'Text Area',
 };
 
 export const TextArea = (): string => Examples;

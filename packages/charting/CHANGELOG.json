@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@uifabric/charting_v3.0.7",
+      "version": "3.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Grouped vertical bar chart - x axis labels wrapping and truncating the word. Showing the tooltip when word truncated.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "530cd421124afefdbf87013a1583a4a3149681ba",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@uifabric/charting_v3.0.5",
       "version": "3.0.5",

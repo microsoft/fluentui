@@ -50,7 +50,7 @@ const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanEle
         }
       },
     }),
-    [value],
+    [thumb, value],
   );
 };
 
