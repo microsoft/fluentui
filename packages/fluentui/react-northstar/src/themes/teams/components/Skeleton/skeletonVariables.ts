@@ -16,6 +16,15 @@ export interface SkeletonVariables {
   buttonBackground?: string;
   buttonCircularBorderRadius?: string;
 
+  // Skeleton Text
+  textBackground?: string;
+  textWidth?: string;
+  textSmallerHeight?: string;
+  textSmallHeight?: string;
+  textMediumHeight?: string;
+  textLargeHeight?: string;
+  textLargerHeight?: string;
+
   // Skeleton Input
   inputHeight?: string;
   inputWidth?: string;
@@ -48,6 +57,15 @@ export const skeletonVariables = (siteVariables): SkeletonVariables => {
     buttonSmallWidth: pxToRem(72),
     buttonBackground: siteVariables.colorScheme.default.background4,
     buttonCircularBorderRadius: pxToRem(999),
+
+    // Skeleton Text
+    textBackground: siteVariables.colorScheme.default.background4,
+    textWidth: '100%',
+    textSmallerHeight: pxToRem(14),
+    textSmallHeight: pxToRem(16),
+    textMediumHeight: pxToRem(19),
+    textLargeHeight: pxToRem(24),
+    textLargerHeight: pxToRem(32),
 
     // Skeleton Input
     inputHeight: pxToRem(32),

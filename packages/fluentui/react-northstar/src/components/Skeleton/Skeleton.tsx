@@ -6,6 +6,7 @@ import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 import { SkeletonLine } from './SkeletonLine';
 import { SkeletonShape } from './SkeletonShape';
 import { SkeletonButton } from './SkeletonButton';
+import { SkeletonText } from './SkeletonText';
 import { SkeletonInput } from './SkeletonInput';
 import { SkeletonAvatar } from './SkeletonAvatar';
 
@@ -42,6 +43,7 @@ export const Skeleton = compose<'div', SkeletonOwnProps, SkeletonStylesProps, Bo
   Line: typeof SkeletonLine;
   Shape: typeof SkeletonShape;
   Button: typeof SkeletonButton;
+  Text: typeof SkeletonText;
   Input: typeof SkeletonInput;
   Avatar: typeof SkeletonAvatar;
 };
@@ -49,6 +51,7 @@ export const Skeleton = compose<'div', SkeletonOwnProps, SkeletonStylesProps, Bo
 Skeleton.Line = SkeletonLine;
 Skeleton.Shape = SkeletonShape;
 Skeleton.Button = SkeletonButton;
+Skeleton.Text = SkeletonText;
 Skeleton.Input = SkeletonInput;
 Skeleton.Avatar = SkeletonAvatar;
 Skeleton.defaultProps = {
