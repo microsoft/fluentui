@@ -271,7 +271,7 @@ export default () => (
 
     <GuidesNavigationFooter
       previous={{ name: 'Layout', url: 'layout' }}
-      next={{ name: 'Performance', url: 'performance' }}
+      next={{ name: 'Styles Overrides', url: 'styles-overrides' }}
     />
   </DocPage>
 );

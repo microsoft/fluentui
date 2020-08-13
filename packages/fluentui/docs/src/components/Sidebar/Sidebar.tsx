@@ -258,6 +258,15 @@ class Sidebar extends React.Component<SidebarProps & RouteComponentProps, Sideba
             },
           },
           {
+            key: 'styles-overrides',
+            title: {
+              content: 'Styles overrides',
+              as: NavLink,
+              activeClassName: 'active',
+              to: '/styles-overrides',
+            },
+          },
+          {
             key: 'performance',
             title: {
               content: 'Performance',

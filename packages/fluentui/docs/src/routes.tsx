@@ -13,6 +13,7 @@ import * as Composition from './pages/Composition.mdx';
 import * as Debugging from './pages/Debugging.mdx';
 import * as Layout from './pages/Layout.mdx';
 import * as ComponentArchitecture from './pages/ComponentArchitecture.mdx';
+import * as StylesOverrides from './pages/StylesOverrides.mdx';
 import Accessibility from './views/Accessibility';
 import Colors from './views/Colors';
 import ColorPalette from './views/ColorPalette';
@@ -173,6 +174,9 @@ const Routes = () => (
                 </Route>
                 <Route exact path="/theming-specification">
                   <MarkdownPage page={ThemingSpecification} />
+                </Route>
+                <Route exact path="/styles-overrides">
+                  <MarkdownPage page={StylesOverrides} />
                 </Route>
                 <Route exact path="/integrate-custom-components" component={IntegrateCustomComponents} />
                 <Route exact path="/performance" component={Performance} />
