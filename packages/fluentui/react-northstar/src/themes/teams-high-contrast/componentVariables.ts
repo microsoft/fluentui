@@ -32,7 +32,7 @@ export { toolbarMenuItemSubmenuIndicatorVariables as ToolbarMenuItemSubmenuIndic
 export { toolbarMenuItemActiveIndicatorVariables as ToolbarMenuItemActiveIndicator } from './components/Toolbar/toolbarMenuItemActiveIndicatorVariables';
 export { toolbarMenuRadioGroupVariables as ToolbarMenuRadioGroup } from './components/Toolbar/toolbarMenuRadioGroupVariables';
 export { toolbarMenuRadioGroupWrapperVariables as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/toolbarMenuRadioGroupWrapperVariables';
-export { hierarchicalTreeTitleVariables as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
+
 export { reactionVariables as Reaction } from './components/Reaction/reactionVariables';
 export { alertVariables as Alert } from './components/Alert/alertVariables';
 export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';

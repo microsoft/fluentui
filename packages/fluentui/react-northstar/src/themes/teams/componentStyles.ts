@@ -52,10 +52,6 @@ export { gridStyles as Grid } from './components/Grid/gridStyles';
 export { headerStyles as Header } from './components/Header/headerStyles';
 export { headerDescriptionStyles as HeaderDescription } from './components/Header/headerDescriptionStyles';
 
-export { hierarchicalTreeStyles as HierarchicalTree } from './components/HierarchicalTree/hierarchicalTreeStyles';
-export { hierarchicalTreeItemStyles as HierarchicalTreeItem } from './components/HierarchicalTree/hierarchicalTreeItemStyles';
-export { hierarchicalTreeTitleStyles as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleStyles';
-
 export { svgIconStyles as SvgIcon } from './components/SvgIcon/svgIconStyles';
 
 export { imageStyles as Image } from './components/Image/imageStyles';

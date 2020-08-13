@@ -49,8 +49,6 @@ export { gridVariables as Grid } from './components/Grid/gridVariables';
 export { headerVariables as Header } from './components/Header/headerVariables';
 export { headerDescriptionVariables as HeaderDescription } from './components/Header/headerDescriptionVariables';
 
-export { hierarchicalTreeTitleVariables as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
-
 export { svgIconVariables as SvgIcon } from './components/SvgIcon/svgIconVariables';
 
 export { imageVariables as Image } from './components/Image/imageVariables';
