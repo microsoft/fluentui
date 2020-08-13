@@ -41,12 +41,12 @@ export function useTarget<TElement extends HTMLElement = HTMLElement>(
       } else if ('getBoundingClientRect' in target) {
         targetWindowRef.current = getWindow(currentElement)!;
         targetRef.current = target;
-      } else if ('current' in target && target.current !== undefined) {
+      } else if ('current' in target) {
         targetRef.current = target.current;
         targetWindowRef.current = getWindow(target.current)!;
       } else {
         targetWindowRef.current = getWindow(currentElement)!;
-        targetRef.current = target as Point;
+        targetRef.current = target;
       }
     } else {
       targetWindowRef.current = getWindow(currentElement)!;
