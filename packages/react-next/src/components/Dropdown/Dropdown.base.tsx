@@ -185,6 +185,7 @@ export const DropdownBase = React.forwardRef(
     );
   },
 );
+DropdownBase.displayName = 'DropdownBase';
 
 class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
   public static defaultProps = {
