@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/codemods",
-  "version": "0.6.15",
+  "version": "0.6.16",
   "description": "Tool enabling easy upgrades to new Fluent UI versions",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -19,7 +19,8 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test"
+    "test": "just-scripts test",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.53.4",
@@ -31,7 +32,7 @@
   },
   "dependencies": {
     "tslib": "^1.10.0",
-    "office-ui-fabric-react": "^7.128.0",
+    "office-ui-fabric-react": "^7.128.1",
     "react": "16.8.6",
     "semver": "^6.2.0",
     "ts-morph": "^6.0.0",

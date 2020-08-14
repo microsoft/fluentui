@@ -134,6 +134,9 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 // @public
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
+// @public
+export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (((instance: TType | TValue | null) => void) | React.RefObject<TType | TValue | null> | null | undefined)[]) => (newValue: TType | TValue | null) => void;
+
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
 // @public

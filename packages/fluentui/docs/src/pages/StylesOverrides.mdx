@@ -1,0 +1,73 @@
+import {
+  StyleOverridesConcatenation,
+  StyleOverridesPseudo,
+  StyleOverridesText,
+  StyleOverridesSlots,
+  StyleOverridesRTL,
+} from './examples';
+
+export const meta = {
+  title: 'Styles overrides',
+  previous: { name: 'Integrate custom components', url: 'integrate-custom-components' },
+  next: { name: 'Performance', url: 'performance' },
+};
+
+Fluent UI Northstar features `useCSS()` React hook to apply style overrides to our components or third party components. It can be imported from `@fluentui/react-northstar` package:
+
+```js
+import { useCSS } from '@fluentui/react-northstar';
+```
+
+It accepts objects with styles and functions to generate classes. Generated classes have higher specificity to win over default component's styles.
+
+```jsx
+const redClassName = useCSS({ color: 'red' });
+const themedClassName = useCSS(theme => ({ color: theme.siteVariables.colorScheme.brand.foreground1 }));
+```
+
+```jsx
+<>
+  <span className={redClassName}>A red text</span>
+  <span className={themedClassName}>A themed text</span>
+</>
+```
+
+<StyleOverridesText />
+
+Generated classes can be applied to any Fluent UI Northstar components and their slots:
+
+```js
+const rootClassName = useCSS({ padding: '0.5rem' });
+const contentClassName = useCSS(theme => ({ fontWeight: theme.siteVariables.fontWeightSemilight }));
+```
+
+```jsx
+<Button className={rootClassName} content={{ className: contentClassName, content: 'A styled button' }} />
+```
+
+<StyleOverridesSlots />
+
+`useCSS()` hook also handles classes concatenation. It's useful for components that can be composed and can accept styles overrides.
+
+```js
+const classNameFromProps = useCSS({ color: 'red', border: '2px solid red' });
+const className = useCSS(classNameFromProps, { color: 'green' });
+```
+
+<StyleOverridesConcatenation />
+
+Like in usual CSS in JS styles that exists in Fluent UI Northstar `useCSS()` also handles pseudo selectors.
+
+```js
+const className = useCSS({ ':hover': { textDecoration: 'underline' } });
+```
+
+<StyleOverridesPseudo />
+
+RTL transforms will be handled `useCSS()` based on `Provider`'s settings.
+
+```js
+const className = useCSS({ borderLeft: '2px solid green', borderRight: '2px solid red' });
+```
+
+<StyleOverridesRTL />

@@ -72,4 +72,6 @@ export * from './getPropsWithDefaults';
 export { IStyleFunctionOrObject, Omit } from '@uifabric/merge-styles';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
 export { setSSR } from './dom/setSSR';
+export { createMergedRef } from './createMergedRef';
+
 import './version';
