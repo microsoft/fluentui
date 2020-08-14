@@ -10,9 +10,9 @@ import {
 } from '@fluentui/react-bindings';
 import * as React from 'react';
 import { commonPropTypes, createShorthand, ContentComponentProps, UIComponentProps } from '../../utils';
-import { Text } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 
-export interface DatepickerCalendarHeaderCellProps extends UIComponentProps, ContentComponentProps {
+export interface DatepickerCalendarHeaderCellProps extends UIComponentProps, ContentComponentProps<TextProps> {
   /**
    * Accessibility behavior if overridden by the user.
    */
