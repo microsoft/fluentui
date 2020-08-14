@@ -15,7 +15,7 @@ jobs:
     workspace:
       clean: all
     steps:
-      - checkout: source
+      - checkout: self
         fetchDepth: 1000
 
       - template: azure-pipelines.tools.yml
@@ -50,7 +50,7 @@ jobs:
     workspace:
       clean: all
     steps:
-      - checkout: source
+      - checkout: self
         fetchDepth: 10
 
       - template: azure-pipelines.tools.yml
@@ -100,7 +100,7 @@ jobs:
     variables:
       PR_DEPLOY: 1
     steps:
-      - checkout: source
+      - checkout: self
         fetchDepth: 10
 
       - template: azure-pipelines.tools.yml
@@ -130,7 +130,7 @@ jobs:
 
   - job: ScreenerFluent
     steps:
-      - checkout: source
+      - checkout: self
         fetchDepth: 10
 
       - template: azure-pipelines.tools.yml
@@ -157,7 +157,7 @@ jobs:
     workspace:
       clean: all
     steps:
-      - checkout: source
+      - checkout: self
         fetchDepth: 10
 
       - template: azure-pipelines.tools.yml
