@@ -347,7 +347,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _dismissOnTargetWindowBlur = (ev: FocusEvent) => {
-    if (ev.relatedTarget === null && !document.hasFocus()) {
+    if (ev.relatedTarget === null && !this._targetWindow.document.hasFocus()) {
       this.dismiss(ev);
     }
   };

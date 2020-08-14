@@ -383,7 +383,7 @@ function useDismissHandlers(
     };
 
     const dismissOnTargetWindowBlur = (ev: FocusEvent) => {
-      if (ev.relatedTarget === null && !document.hasFocus()) {
+      if (ev.relatedTarget === null && !targetWindowRef.current?.document?.hasFocus()) {
         onDismiss?.(ev);
       }
     };
@@ -476,7 +476,7 @@ export const CalloutContentBase = React.memo(
     }
 
     // We probably just switched focus context to another window. Don't rerender
-    if (!document.hasFocus()) {
+    if (!targetWindowRef.current.document.hasFocus()) {
       return null;
     }
 
