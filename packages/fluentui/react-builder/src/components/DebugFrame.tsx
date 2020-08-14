@@ -72,16 +72,19 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     }
 
     const el = target.querySelectorAll(selector);
+    const isTopElementThreshold = 20;
     if (el.length === 1) {
       const rect = el[0].getBoundingClientRect();
-      rect.top < 20 ? !isTopElement && setIsTopElement(true) : isTopElement && setIsTopElement(false);
+      rect.top < isTopElementThreshold
+        ? !isTopElement && setIsTopElement(true)
+        : isTopElement && setIsTopElement(false);
       animationFrameId.current = requestAnimationFrame(() => setFramePosition(frameRef.current, el[0]));
     } else {
       animationFrameId.current = requestAnimationFrame(() => hideFrame(frameRef.current));
     }
 
     return () => cancelAnimationFrame(animationFrameId.current);
-  }, [target, selector, setFramePosition, isTopElement]);
+  }, [target, selector, animationFrameId, setFramePosition, isTopElement]);
 
   const styles: React.CSSProperties = {
     position: 'absolute',
