@@ -92,6 +92,14 @@ export { radioGroupItemStyles as RadioGroupItem } from './components/RadioGroup/
 
 export { segmentStyles as Segment } from './components/Segment/segmentStyles';
 
+export { skeletonStyles as Skeleton } from './components/Skeleton/skeletonStyles';
+export { skeletonLineStyles as SkeletonLine } from './components/Skeleton/skeletonLineStyles';
+export { skeletonShapeStyles as SkeletonShape } from './components/Skeleton/skeletonShapeStyles';
+export { skeletonButtonStyles as SkeletonButton } from './components/Skeleton/skeletonButtonStyles';
+export { skeletonTextStyles as SkeletonText } from './components/Skeleton/skeletonTextStyles';
+export { skeletonInputStyles as SkeletonInput } from './components/Skeleton/skeletonInputStyles';
+export { skeletonAvatarStyles as SkeletonAvatar } from './components/Skeleton/skeletonAvatarStyles';
+
 export { sliderStyles as Slider } from './components/Slider/sliderStyles';
 
 export { reactionStyles as Reaction } from './components/Reaction/reactionStyles';

@@ -14,7 +14,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { Ref } from '@fluentui/react-component-ref';
-
+import { SpacebarKey } from '@fluentui/keyboard-key';
 import {
   childrenExist,
   createShorthandFactory,
@@ -145,9 +145,13 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
       performClick: e => {
-        e.preventDefault();
+        // This is a temporary fix to only prevent default if it's the space bar pressed to avoid the page scroll
+        // We should handle it correct for all components performing click either by having separated handlers for space or enter
+        // or by dispatching proper event from it
+        if (e.keyCode === SpacebarKey) {
+          e.preventDefault();
+        }
         e.stopPropagation();
-
         handleTitleClick(e);
       },
       focusParent: e => {

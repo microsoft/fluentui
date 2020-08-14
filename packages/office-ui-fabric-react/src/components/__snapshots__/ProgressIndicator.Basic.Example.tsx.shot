@@ -68,6 +68,9 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
           @media screen and (-ms-high-contrast: active){& {
             background-color: highlight;
           }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
       role="progressbar"
       style={
         Object {

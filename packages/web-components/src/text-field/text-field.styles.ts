@@ -37,6 +37,7 @@ export const TextFieldStyles = css`
         background: transparent;
         border: 0;
         height: calc(100% - 4px);
+        width: 100%;
         margin-top: auto;
         margin-bottom: auto;
         border: none;

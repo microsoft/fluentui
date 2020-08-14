@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: Removing aria-required from multiselect scenarios since it's not allowed for role='button'.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-05T22:01:13.918Z"
-}

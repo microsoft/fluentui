@@ -112,7 +112,7 @@ export const enum PivotLinkSize {
 export type PivotLinkSizeType = 'normal' | 'large';
 
 
-export * from "@fluentui/react-theme-provider/lib/compat";
+export * from "@fluentui/react-theme-provider";
 
 // (No @packageDocumentation comment for this package)
 

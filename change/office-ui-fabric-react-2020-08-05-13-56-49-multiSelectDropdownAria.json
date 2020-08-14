@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: Fixing multiselect scenarios not reading out aria-setsize and aria-posinset due to incorrect placement of role=option in Checkbox.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-05T20:56:49.492Z"
-}

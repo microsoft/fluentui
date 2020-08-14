@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Toggle: fix thumb border width style",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-05T17:29:45.730Z"
-}
