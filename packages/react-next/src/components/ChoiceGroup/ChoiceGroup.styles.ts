@@ -7,12 +7,13 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => {
-  const { optionsContainIconOrImage, theme } = props;
+  const { className, optionsContainIconOrImage, theme } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
+      className,
       classNames.root,
       theme.fonts.medium,
       {

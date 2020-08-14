@@ -3,6 +3,7 @@
 exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 <div
   className=
+      testClassName
       ms-ChoiceFieldGroup
       {
         -moz-osx-font-smoothing: grayscale;
@@ -434,6 +435,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
 <div
   className=
+      testClassName
       ms-ChoiceFieldGroup
       {
         -moz-osx-font-smoothing: grayscale;
