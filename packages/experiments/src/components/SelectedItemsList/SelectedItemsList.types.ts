@@ -118,4 +118,6 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   getSerializedItems?: (items: T[]) => string;
 
   getDeserializedItems?: (input: string) => T[];
+
+  customItemType?: string;
 }

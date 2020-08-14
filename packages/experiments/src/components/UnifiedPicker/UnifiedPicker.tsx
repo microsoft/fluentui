@@ -47,6 +47,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const {
     selectedItems,
     addItems,
+    addItemsAt,
     dropItemsAt,
     removeItems,
     removeItemAt,
@@ -97,15 +98,42 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _onDrop = (item?: any, event?: DragEvent): void => {
     if (draggedItem) {
       _insertBeforeItem(item);
+    } else if (event?.dataTransfer) {
+      event.preventDefault();
+      var data = event.dataTransfer.items;
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].kind == 'string' && data[i].type == 'recipient') {
+          data[i].getAsString(function(s) {
+            if (props.selectedItemsListProps.getDeserializedItems) {
+              const insertIndex = selectedItems.indexOf(item);
+              addItemsAt(insertIndex, props.selectedItemsListProps.getDeserializedItems(s));
+            }
+          });
+        }
+        // do we also want to allow drag drop of plain text?
+      }
     }
   };
 
-  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: MouseEvent): void => {
+  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
     setDraggedItem(item);
+
+    if (event) {
+      var dataList = event?.dataTransfer?.items;
+      if (props.selectedItemsListProps.getSerializedItems && props.selectedItemsListProps.customItemType) {
+        var str = props.selectedItemsListProps.getSerializedItems(selectedItems);
+        dataList?.add(str, props.selectedItemsListProps.customItemType);
+      }
+    }
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
     setDraggedItem(undefined);
+    if (event) {
+      var dataList = event?.dataTransfer?.items;
+      // Clear any remaining drag data
+      dataList?.clear();
+    }
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
