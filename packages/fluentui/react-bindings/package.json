@@ -6,6 +6,7 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
+    "@emotion/serialize": "^0.11.16",
     "@fluentui/accessibility": "^0.51.0",
     "@fluentui/keyboard-key": "^0.2.7",
     "@fluentui/react-component-event-listener": "^0.51.0",
@@ -15,11 +16,14 @@
     "@fluentui/react-northstar-styles-renderer": "^0.51.0",
     "@fluentui/state": "^0.51.0",
     "@fluentui/styles": "^0.51.0",
+    "@quid/stylis-plugin-focus-visible": "^4.0.0",
     "@uifabric/utilities": "^7.24.5",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
-    "react-is": "^16.6.3"
+    "react-is": "^16.6.3",
+    "stylis": "^3.5.4",
+    "stylis-plugin-rtl": "^1.0.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.53.1",
@@ -29,7 +33,8 @@
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"
