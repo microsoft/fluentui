@@ -115,15 +115,15 @@ export function values<T>(obj: any): T[] {
  * https://jsperf.com/omit-vs-rest-vs-reduce/1
  *
  * @param obj - The object to clone
- * @param exclusions - The object of keys to exclude
+ * @param exclusions - The array of keys to exclude
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: Record<string, any>): TObj {
+export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: Record<string, any> = {};
 
-  for (const key of Object.keys(obj)) {
-    if (!exclusions[key]) {
+  for (const key in obj) {
+    if (exclusions.indexOf(key) === -1 && obj.hasOwnProperty(key)) {
       result[key] = obj[key];
     }
   }

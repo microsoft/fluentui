@@ -79,7 +79,7 @@ export const TreeItemStyles = css`
     .items {
         display: none;
         ${
-          /* Font size should be based off calc(1em + (design-unit + glyph-size-number) * 1px) - 
+          /* Font size should be based off calc(1em + (design-unit + glyph-size-number) * 1px) -
             update when density story is figured out */ ''
         } font-size: calc(1em + (var(--design-unit) + 16) * 1px);
     }
@@ -89,7 +89,7 @@ export const TreeItemStyles = css`
         border: none;
         outline: none;
         ${
-          /* Width and Height should be based off calc(glyph-size-number + (design-unit * 4) * 1px) - 
+          /* Width and Height should be based off calc(glyph-size-number + (design-unit * 4) * 1px) -
             update when density story is figured out */ ''
         } width: var(--expand-collapse-button-size);
         height: var(--expand-collapse-button-size);
@@ -101,7 +101,7 @@ export const TreeItemStyles = css`
     }
 
     .expand-collapse-glyph {
-        ${/* Glyph size is temporary - 
+        ${/* Glyph size is temporary -
             replace when glyph-size var is added */ ''} width: 16px;
         height: 16px;
         transition: transform 0.1s linear;
@@ -111,7 +111,7 @@ export const TreeItemStyles = css`
     }
     .start,
     .end {
-        ${/* Glyph size is temporary - 
+        ${/* Glyph size is temporary -
             replace when glyph-size var is added */ ''} width: 16px;
         height: 16px;
         fill: ${neutralForegroundRestBehavior.var};
@@ -172,7 +172,7 @@ export const TreeItemStyles = css`
         left: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
     }
 
-    ::slotted(fast-tree-item) {
+    ::slotted(fluent-tree-item) {
         --tree-item-nested-width: 1em;
         --expand-collapse-button-nested-width: calc(${heightNumber} * -1px);
     }

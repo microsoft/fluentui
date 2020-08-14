@@ -3,17 +3,23 @@ import { RadioGroup, RadioGroupTemplate as template } from '@microsoft/fast-foun
 import { RadioGroupStyles as styles } from './radio-group.styles';
 
 /**
- * The FAST Radio Group Element. Implements {@link @microsoft/fast-foundation#RadioGroup},
+ * The Fluent Radio Group Element. Implements {@link @microsoft/fast-foundation#RadioGroup},
  * {@link @microsoft/fast-foundation#RadioGroupTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-radio-group\>
+ * HTML Element: \<fluent-radio-group\>
  */
 @customElement({
-  name: 'fast-radio-group',
+  name: 'fluent-radio-group',
   template,
   styles,
 })
-export class FASTRadioGroup extends RadioGroup {}
+export class FluentRadioGroup extends RadioGroup {}
+
+/**
+ * Styles for RadioGroup
+ * @public
+ */
+export const RadioGroupStyles = styles;

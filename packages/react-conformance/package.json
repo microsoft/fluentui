@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/doctrine": "0.0.3",
-    "@fluentui/eslint-plugin": "^0.53.2",
+    "@fluentui/eslint-plugin": "^0.53.4",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -35,7 +35,8 @@
     "jest": "~24.9.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "typescript": "3.7.2"
   },
   "dependencies": {
     "doctrine": "^2.0.0",
@@ -51,6 +52,7 @@
     "enzyme-adapter-react-16": "^1.0.0",
     "jest": "^24.0.0",
     "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "react-dom": ">=16.8.0 <17.0.0",
+    "typescript": "^3.5.0"
   }
 }

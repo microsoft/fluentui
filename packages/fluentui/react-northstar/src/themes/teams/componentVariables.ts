@@ -49,8 +49,6 @@ export { gridVariables as Grid } from './components/Grid/gridVariables';
 export { headerVariables as Header } from './components/Header/headerVariables';
 export { headerDescriptionVariables as HeaderDescription } from './components/Header/headerDescriptionVariables';
 
-export { hierarchicalTreeTitleVariables as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
-
 export { svgIconVariables as SvgIcon } from './components/SvgIcon/svgIconVariables';
 
 export { imageVariables as Image } from './components/Image/imageVariables';
@@ -86,6 +84,14 @@ export { reactionVariables as Reaction } from './components/Reaction/reactionVar
 export { reactionGroupVariables as ReactionGroup } from './components/Reaction/reactionGroupVariables';
 
 export { segmentVariables as Segment } from './components/Segment/segmentVariables';
+
+export { skeletonVariables as Skeleton } from './components/Skeleton/skeletonVariables';
+export { skeletonVariables as SkeletonLine } from './components/Skeleton/skeletonLineVariables';
+export { skeletonVariables as SkeletonShape } from './components/Skeleton/skeletonShapeVariables';
+export { skeletonVariables as SkeletonButton } from './components/Skeleton/skeletonButtonVariables';
+export { skeletonVariables as SkeletonText } from './components/Skeleton/skeletonTextVariables';
+export { skeletonVariables as SkeletonInput } from './components/Skeleton/skeletonInputVariables';
+export { skeletonVariables as SkeletonAvatar } from './components/Skeleton/skeletonVariables';
 
 export { sliderVariables as Slider } from './components/Slider/sliderVariables';
 

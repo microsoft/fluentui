@@ -35,7 +35,7 @@ import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
-import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
@@ -392,8 +392,18 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       className,
     });
 
+    const focusZoneProps: IFocusZoneProps = {
+      componentRef: this._focusZone,
+      className: classNames.focusZone,
+      direction: FocusZoneDirection.vertical,
+      shouldEnterInnerZone: this._isRightArrow,
+      onActiveElementChanged: this._onActiveRowChanged,
+      onBlur: this._onBlur,
+    };
+
     const list = groups ? (
       <GroupedList
+        focusZoneProps={focusZoneProps}
         componentRef={this._groupedList}
         groups={groups}
         groupProps={groupProps ? this._getGroupProps(groupProps) : undefined}
@@ -412,15 +422,17 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         compact={compact}
       />
     ) : (
-      <List
-        ref={this._list}
-        role="presentation"
-        items={items}
-        onRenderCell={this._onRenderListCell(0)}
-        usePageCache={usePageCache}
-        onShouldVirtualize={onShouldVirtualize}
-        {...additionalListProps}
-      />
+      <FocusZone {...focusZoneProps}>
+        <List
+          ref={this._list}
+          role="presentation"
+          items={items}
+          onRenderCell={this._onRenderListCell(0)}
+          usePageCache={usePageCache}
+          onShouldVirtualize={onShouldVirtualize}
+          {...additionalListProps}
+        />
+      </FocusZone>
     );
 
     return (
@@ -481,31 +493,22 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
               )}
           </div>
           <div onKeyDown={this._onContentKeyDown} role="presentation" className={classNames.contentWrapper}>
-            <FocusZone
-              componentRef={this._focusZone}
-              className={classNames.focusZone}
-              direction={FocusZoneDirection.vertical}
-              shouldEnterInnerZone={this._isRightArrow}
-              onActiveElementChanged={this._onActiveRowChanged}
-              onBlur={this._onBlur}
-            >
-              {!this.props.disableSelectionZone ? (
-                <SelectionZone
-                  ref={this._selectionZone}
-                  selection={selection}
-                  selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
-                  selectionMode={selectionMode}
-                  onItemInvoked={onItemInvoked}
-                  onItemContextMenu={onItemContextMenu}
-                  enterModalOnTouch={this.props.enterModalSelectionOnTouch}
-                  {...(selectionZoneProps || {})}
-                >
-                  {list}
-                </SelectionZone>
-              ) : (
-                list
-              )}
-            </FocusZone>
+            {!this.props.disableSelectionZone ? (
+              <SelectionZone
+                ref={this._selectionZone}
+                selection={selection}
+                selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
+                selectionMode={selectionMode}
+                onItemInvoked={onItemInvoked}
+                onItemContextMenu={onItemContextMenu}
+                enterModalOnTouch={this.props.enterModalSelectionOnTouch}
+                {...(selectionZoneProps || {})}
+              >
+                {list}
+              </SelectionZone>
+            ) : (
+              list
+            )}
           </div>
           {onRenderDetailsFooter(
             {

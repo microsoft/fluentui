@@ -2,6 +2,72 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@uifabric/charting_v3.0.7",
+      "version": "3.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Grouped vertical bar chart - x axis labels wrapping and truncating the word. Showing the tooltip when word truncated.",
+            "author": "v-jasha@microsoft.com",
+            "commit": "530cd421124afefdbf87013a1583a4a3149681ba",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/charting_v3.0.5",
+      "version": "3.0.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Aug 2020 00:30:40 GMT",
+      "tag": "@uifabric/charting_v3.0.2",
+      "version": "3.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "yMax and yMin values added to prop types of chart helper",
+            "author": "v-jasha@microsoft.com",
+            "commit": "da829ab7a2d703e9fa792c2eebced2bc459fcf8f",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Grouped vertical bar chart refresh issue in admin controls resoled",
+            "author": "v-jasha@microsoft.com",
+            "commit": "f8cf97b6c6ea125dfe6e98c92c716419a14db49d",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2020 12:42:32 GMT",
+      "tag": "@uifabric/charting_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "reverted sankey chart code",
+            "author": "v-jasha@microsoft.com",
+            "commit": "e4360d578f90e14c93c14a6b861674799b39295b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jul 2020 12:47:45 GMT",
       "tag": "@uifabric/charting_v2.8.0",
       "version": "2.8.0",

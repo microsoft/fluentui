@@ -117,7 +117,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
               [HighContrastSelector]: {
                 selectors: {
                   [`:hover .${classNames.checkbox}`]: {
-                    background: 'Window',
+                    background: 'Highlight',
                     borderColor: 'Highlight',
                   },
                   [`:focus .${classNames.checkbox}`]: {
@@ -130,7 +130,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
                     color: 'Window',
                   },
                   [`:hover .${classNames.checkmark}`]: {
-                    color: 'Highlight',
+                    color: 'Window',
                   },
                 },
               },

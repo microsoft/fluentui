@@ -2,6 +2,21 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Thu, 06 Aug 2020 22:49:13 GMT",
+      "tag": "@uifabric/react-cards_v0.110.17",
+      "version": "0.110.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "react-cards: Importing Stack from lib specific path.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f63d521d625032919c12f706dd88887247d5e49a",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jul 2020 12:41:43 GMT",
       "tag": "@uifabric/react-cards_v0.110.0",
       "version": "0.110.0",

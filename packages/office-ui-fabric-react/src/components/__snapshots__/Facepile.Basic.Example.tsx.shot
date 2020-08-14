@@ -980,7 +980,6 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               width: 100%;
             }
             @media screen and (-ms-high-contrast: active){&:focus:after {
-              border-color: Highlight;
               color: Highlight;
             }
             &:active .ms-Dropdown-title {
@@ -1126,7 +1125,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
             border-color: #005a9e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            background: Window;
+            background: Highlight;
             border-color: Highlight;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
@@ -1139,7 +1138,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
             color: Window;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
+            color: Window;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;

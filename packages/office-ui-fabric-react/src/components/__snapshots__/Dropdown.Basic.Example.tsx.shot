@@ -109,7 +109,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {
@@ -322,7 +321,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {
@@ -527,7 +525,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             width: 100%;
           }
           @media screen and (-ms-high-contrast: active){&:focus:after {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active .ms-Dropdown-title {

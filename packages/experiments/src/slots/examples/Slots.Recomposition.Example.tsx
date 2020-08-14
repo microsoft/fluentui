@@ -46,7 +46,6 @@ const IconAtEndButtonView: IButtonComponent['view'] = (props, slots) => {
     <slots.root
       type="button"
       role="button"
-      // eslint-disable-next-line react/jsx-no-bind
       onClick={_onClick}
       {...buttonProps}
       disabled={disabled && !allowDisabledFocus}

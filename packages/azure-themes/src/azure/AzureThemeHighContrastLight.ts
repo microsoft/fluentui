@@ -106,8 +106,11 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   statusWarningBackground: HighContrastLightSemanticColors.statusBar.warning,
   statusWarningText: HighContrastLightSemanticColors.text.body,
   statusWarningIcon: CommonSemanticColors.icons.warning,
+  teachingBubbleBackground: HighContrastLightSemanticColors.teachingBubble.rest.background,
+  teachingBubblePrimaryButtonHover: HighContrastLightSemanticColors.teachingBubble.hover.primaryButtonBackground,
+  teachingBubbleSecondaryBackground: HighContrastLightSemanticColors.teachingBubble.rest.secondaryBackround,
+  teachingBubbleText: HighContrastLightSemanticColors.teachingBubble.rest.text,
   textFieldBorderDisabled: HighContrastLightSemanticColors.text.disabled,
-  textFieldBackgroundDisabled: HighContrastLightSemanticColors.disabledButton.background,
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '1px',

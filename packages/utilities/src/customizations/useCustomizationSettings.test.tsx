@@ -85,5 +85,37 @@ describe('useCustomizatioSettings', () => {
     );
     expect(settingsStates.length).toBe(1);
     expect(settingsStates[0]).toEqual({ theme: { color: 'red' } });
+
+    const updatedContext = { customizations: { settings: { theme: { color: 'green' } }, scopedSettings: {} } };
+    wrapper.setProps({ value: updatedContext });
+
+    expect(settingsStates.length).toBe(2);
+    expect(settingsStates[1]).toEqual({ theme: { color: 'green' } });
+  });
+
+  it('does not re-render if global settings update but within context', () => {
+    Customizations.applySettings({ a: 'a' });
+    const settingsStates: ISettings[] = [];
+
+    const TestComponent: React.FunctionComponent = () => {
+      const settings = useCustomizationSettings(['a']);
+
+      settingsStates.push(settings);
+      return null;
+    };
+
+    const newContext = { customizations: { settings: { a: 'aa' }, scopedSettings: {}, inCustomizerContext: true } };
+    wrapper = mount(
+      <CustomizerContext.Provider value={newContext}>
+        <TestComponent />
+      </CustomizerContext.Provider>,
+    );
+
+    ReactTestUtils.act(() => {
+      Customizations.applySettings({ a: 'aaa' });
+    });
+
+    expect(settingsStates.length).toBe(1);
+    expect(settingsStates[0]).toEqual({ a: 'aa' });
   });
 });

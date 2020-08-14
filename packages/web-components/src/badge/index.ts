@@ -9,20 +9,20 @@ import { BadgeStyles as styles } from './badge.styles';
 export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
 
 /**
- * The FAST Badge Element. Implements {@link @microsoft/fast-foundation#Badge},
+ * The Fluent Badge Element. Implements {@link @microsoft/fast-foundation#Badge},
  * {@link @microsoft/fast-foundation#BadgeTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-badge\>
+ * HTML Element: \<fluent-badge\>
  */
 @customElement({
-  name: 'fast-badge',
+  name: 'fluent-badge',
   template,
   styles,
 })
-export class FASTBadge extends Badge {
+export class FluentBadge extends Badge {
   @attr({ mode: 'fromView' })
   public appearance: BadgeAppearance = 'lightweight';
   private appearanceChanged(oldValue: BadgeAppearance, newValue: BadgeAppearance): void {
@@ -34,3 +34,9 @@ export class FASTBadge extends Badge {
     }
   }
 }
+
+/**
+ * Styles for Badge
+ * @public
+ */
+export const BadgeStyles = styles;

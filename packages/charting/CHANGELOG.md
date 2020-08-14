@@ -1,8 +1,36 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 31 Jul 2020 12:47:45 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Aug 2020 18:34:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.7)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.5..@uifabric/charting_v3.0.7)
+
+### Patches
+
+- Grouped vertical bar chart - x axis labels wrapping and truncating the word. Showing the tooltip when word truncated. ([PR #14433](https://github.com/microsoft/fluentui/pull/14433) by v-jasha@microsoft.com)
+
+## [3.0.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.2)
+
+Thu, 06 Aug 2020 00:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.0..@uifabric/charting_v3.0.2)
+
+### Patches
+
+- yMax and yMin values added to prop types of chart helper ([PR #14256](https://github.com/microsoft/fluentui/pull/14256) by v-jasha@microsoft.com)
+- Grouped vertical bar chart refresh issue in admin controls resoled ([PR #14277](https://github.com/microsoft/fluentui/pull/14277) by v-jasha@microsoft.com)
+
+## [3.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.0)
+
+Tue, 04 Aug 2020 12:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.8.0..@uifabric/charting_v3.0.0)
+
+### Major changes
+
+- reverted sankey chart code ([PR #14301](https://github.com/microsoft/fluentui/pull/14301) by v-jasha@microsoft.com)
 
 ## [2.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.8.0)
 

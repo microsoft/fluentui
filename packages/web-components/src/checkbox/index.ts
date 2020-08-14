@@ -3,17 +3,23 @@ import { Checkbox, CheckboxTemplate as template } from '@microsoft/fast-foundati
 import { CheckboxStyles as styles } from './checkbox.styles';
 
 /**
- * The FAST Checkbox Element. Implements {@link @microsoft/fast-foundation#Checkbox},
+ * The Fluent Checkbox Element. Implements {@link @microsoft/fast-foundation#Checkbox},
  * {@link @microsoft/fast-foundation#CheckboxTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-checkbox\>
+ * HTML Element: \<fluent-checkbox\>
  */
 @customElement({
-  name: 'fast-checkbox',
+  name: 'fluent-checkbox',
   template,
   styles,
 })
-export class FASTCheckbox extends Checkbox {}
+export class FluentCheckbox extends Checkbox {}
+
+/**
+ * Styles for Checkbox
+ * @public
+ */
+export const CheckboxStyles = styles;

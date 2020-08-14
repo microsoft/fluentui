@@ -19,10 +19,11 @@
     "use-immer": "^0.4.1"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.2",
+    "@fluentui/eslint-plugin": "^0.53.4",
     "@types/react-frame-component": "^4.1.1",
     "@uifabric/build": "^7.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "typescript": "3.7.2"
   },
   "peerDependencies": {
     "@babel/standalone": "^7.8.3"

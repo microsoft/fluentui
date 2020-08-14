@@ -71,7 +71,7 @@ packages/styling/src/styles/ @phkuo
 packages/tsx-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
-packages/azure-themes/ @hyoshis @Jacqueline-ms
+packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
 
 ### Fabric
 # common/

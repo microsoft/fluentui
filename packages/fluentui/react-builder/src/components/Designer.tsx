@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { Editor, renderElementToJSX } from '@fluentui/docs-components';
+import { renderElementToJSX } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -29,7 +29,6 @@ import { readTreeFromStore, readTreeFromURL, writeTreeToStore, writeTreeToURL } 
 import { DesignerMode, JSONTreeElement } from './types';
 import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
-import { codeToTree } from '../utils/codeToTree';
 import { ErrorBoundary } from './ErrorBoundary';
 
 const HEADER_HEIGHT = '3rem';
@@ -37,6 +36,13 @@ const HEADER_HEIGHT = '3rem';
 function debug(...args) {
   console.log('--Designer', ...args);
 }
+
+const CodeEditor = React.lazy(async () => {
+  const _CodeEditor = (await import(/* webpackChunkName: "codeeditor" */ './CodeEditor')).CodeEditor;
+  return {
+    default: _CodeEditor,
+  };
+});
 
 function getDefaultJSONTree(): JSONTreeElement {
   return { uuid: 'builder-root', type: 'div' };
@@ -53,6 +59,8 @@ type DesignerState = {
   showCode: boolean;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
+  history: Array<JSONTreeElement>;
+  redo: Array<JSONTreeElement>;
 };
 
 type DesignerAction =
@@ -68,7 +76,10 @@ type DesignerAction =
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
-  | { type: 'SOURCE_CODE_CHANGE'; code: string };
+  | { type: 'SOURCE_CODE_CHANGE'; code: string; jsonTree: JSONTreeElement }
+  | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
+  | { type: 'UNDO' }
+  | { type: 'REDO' };
 
 const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -76,10 +87,15 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
 
   switch (action.type) {
     case 'DRAG_START':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       draftState.draggingElement = action.component;
       break;
 
     case 'DRAG_ABORT':
+      draftState.history.pop();
+
       draftState.draggingElement = null;
       break;
 
@@ -97,10 +113,12 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
         draftState.selectedJSONTreeElementUuid = addedComponent.uuid;
         draftState.selectedComponentInfo = componentInfoContext.byDisplayName[addedComponent.displayName];
       }
-
       break;
 
     case 'DRAG_CLONE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
@@ -108,6 +126,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'DRAG_MOVE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
@@ -135,6 +156,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'DELETE_SELECTED_COMPONENT':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       if (draftState.selectedJSONTreeElementUuid) {
         jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
         draftState.selectedJSONTreeElementUuid = null;
@@ -144,6 +168,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'PROP_CHANGE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       const editedComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
       if (editedComponent) {
         if (!editedComponent.props) {
@@ -161,6 +188,9 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'RESET_STORE':
+      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      draftState.redo = [];
+
       draftState.jsonTree = getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
       treeChanged = true;
@@ -179,13 +209,29 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       draftState.code = action.code;
       draftState.selectedJSONTreeElementUuid = null;
       draftState.selectedComponentInfo = null;
-      try {
-        draftState.jsonTree = codeToTree(action.code);
-        draftState.codeError = null;
-      } catch (e) {
-        draftState.codeError = e.message;
-      }
+      draftState.jsonTree = action.jsonTree;
+      draftState.codeError = null;
+      break;
 
+    case 'SOURCE_CODE_ERROR':
+      draftState.code = action.code;
+      draftState.selectedJSONTreeElementUuid = null;
+      draftState.selectedComponentInfo = null;
+      draftState.codeError = action.error;
+      break;
+
+    case 'UNDO':
+      if (draftState.history.length > 0) {
+        draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.history.pop();
+      }
+      break;
+
+    case 'REDO':
+      if (draftState.redo.length > 0) {
+        draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.redo.pop();
+      }
       break;
 
     default:
@@ -234,6 +280,8 @@ export const Designer: React.FunctionComponent = () => {
       showCode: false,
       code: null,
       codeError: null,
+      history: [],
+      redo: [],
     };
   });
 
@@ -358,9 +406,28 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'SELECT_PARENT' });
   }, [dispatch]);
 
+  const handleUndo = () => {
+    dispatch({
+      type: 'UNDO',
+    });
+  };
+
+  const handleRedo = () => {
+    dispatch({
+      type: 'REDO',
+    });
+  };
+
   const handleSourceCodeChange = React.useCallback(
-    code => {
-      dispatch({ type: 'SOURCE_CODE_CHANGE', code });
+    (code, jsonTree) => {
+      dispatch({ type: 'SOURCE_CODE_CHANGE', code, jsonTree });
+    },
+    [dispatch],
+  );
+
+  const handleSourceCodeError = React.useCallback(
+    (code, error) => {
+      dispatch({ type: 'SOURCE_CODE_ERROR', code, error });
     },
     [dispatch],
   );
@@ -373,6 +440,40 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'SWITCH_TO_STORE' });
     // FIXME: remove tree_lz from current URL
   }, [dispatch]);
+
+  const hotkeys = {
+    'Ctrl+z': handleUndo,
+    'Shift+P': handleGoToParentComponent,
+    'Ctrl+Shift+Z': handleRedo,
+    Delete: handleDeleteComponent,
+    'Shift+D': () => {
+      setMode('design');
+    },
+    'Shift+U': () => {
+      setMode('use');
+    },
+    'Shift+B': () => {
+      setMode('build');
+    },
+    'Shift+C': () => {
+      handleShowCodeChange(!state.showCode);
+    },
+    'Shift+J': () => {
+      handleShowJSONTreeChange(!showJSONTree);
+    },
+  };
+
+  const handleKeyDown = React.useCallback(
+    e => {
+      let command = '';
+      command += e.altKey ? 'Alt+' : '';
+      command += e.ctrlKey | e.metaKey ? 'Ctrl+' : '';
+      command += e.shiftKey ? 'Shift+' : '';
+      command += e.key;
+      hotkeys.hasOwnProperty(command) && hotkeys[command]();
+    },
+    [hotkeys],
+  );
 
   const selectedComponent =
     !draggingElement &&
@@ -392,6 +493,7 @@ export const Designer: React.FunctionComponent = () => {
         overflow: 'hidden',
       }}
     >
+      <EventListener type="keydown" listener={handleKeyDown} target={document} />
       {draggingElement && (
         <>
           <EventListener type="mousemove" listener={handleDrag} target={document} />
@@ -428,6 +530,10 @@ export const Designer: React.FunctionComponent = () => {
         mode={mode}
         onShowCodeChange={handleShowCodeChange}
         onShowJSONTreeChange={handleShowJSONTreeChange}
+        onUndo={handleUndo}
+        onRedo={handleRedo}
+        canUndo={state.history.length > 0}
+        canRedo={state.redo.length > 0}
         onReset={handleReset}
         onModeChange={setMode}
         showCode={showCode}
@@ -504,6 +610,7 @@ export const Designer: React.FunctionComponent = () => {
                   isSelecting={isSelecting || !!draggingElement}
                   onMouseMove={handleDrag}
                   onMouseUp={handleCanvasMouseUp}
+                  onKeyDown={handleKeyDown}
                   onSelectComponent={handleSelectComponent}
                   onDropPositionChange={handleDropPositionChange}
                   jsonTree={jsonTree}
@@ -520,7 +627,13 @@ export const Designer: React.FunctionComponent = () => {
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
                   <div>
-                    <Editor mode="jsx" height="auto" value={code} onChange={handleSourceCodeChange} />
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                      <CodeEditor
+                        code={code}
+                        onCodeChange={handleSourceCodeChange}
+                        onCodeError={handleSourceCodeError}
+                      />
+                    </React.Suspense>
                     {codeError && (
                       <pre
                         style={{

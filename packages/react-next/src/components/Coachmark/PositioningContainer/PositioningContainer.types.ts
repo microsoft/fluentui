@@ -1,6 +1,7 @@
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
 import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ReactNode } from 'react';
 
 /**
  * {@docCategory Coachmark}
@@ -166,6 +167,11 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
    * When not set the positioningContainer will expand with contents up to the bottom of the screen
    */
   positioningContainerMaxHeight?: number;
+
+  /**
+   * Child nodes to render
+   */
+  children?: ReactNode;
 }
 
 /**

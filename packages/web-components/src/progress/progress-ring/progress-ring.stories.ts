@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../../design-system-provider';
+import { FluentDesignSystemProvider } from '../../design-system-provider';
 import Examples from './fixtures/circular.html';
-import { FASTProgressRing } from './';
+import { FluentProgressRing } from './';
 
 // Prevent tree-shaking
-FASTProgressRing;
-FASTDesignSystemProvider;
+FluentProgressRing;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Progress Ring',

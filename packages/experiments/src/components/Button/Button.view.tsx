@@ -44,7 +44,6 @@ export const ButtonView: IButtonComponent['view'] = (props, slots) => {
     <slots.root
       type={htmlType}
       role="button"
-      // eslint-disable-next-line react/jsx-no-bind
       onClick={_onClick}
       {...buttonProps}
       {...keytipAttributes}

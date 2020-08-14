@@ -52,7 +52,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
 
       @include high-contrast {
         &:hover .checkbox {
-          background: Window;
+          background: Highlight;
           border-color: Highlight;
         }
 
@@ -66,7 +66,7 @@ $checkboxTransitionTiming: cubic-bezier(0.4, 0, 0.23, 1);
         }
 
         &:hover .checkmark {
-          color: Highlight;
+          color: Window;
         }
       }
     }

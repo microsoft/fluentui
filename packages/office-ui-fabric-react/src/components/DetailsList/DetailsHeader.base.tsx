@@ -645,7 +645,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             [classNames.cellIsResizing]: columnResizeDetails && columnResizeDetails.columnIndex === columnIndex,
           },
         )}
-        // eslint-disable-next-line react/jsx-no-bind
         onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}
       />
     ) : null;

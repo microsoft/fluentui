@@ -5,17 +5,23 @@ import { AccordionStyles as styles } from './accordion.styles';
 export * from './accordion-item/index';
 
 /**
- * The FAST Accordion Element. Implements {@link @microsoft/fast-foundation#Accordion},
+ * The FluentUI Accordion Element. Implements {@link @microsoft/fast-foundation#Accordion},
  * {@link @microsoft/fast-foundation#AccordionTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-accordion\>
+ * HTML Element: \<fluent-accordion\>
  */
 @customElement({
-  name: 'fast-accordion',
+  name: 'fluent-accordion',
   template,
   styles,
 })
-export class FASTAccordion extends Accordion {}
+export class FluentAccordion extends Accordion {}
+
+/**
+ * Styles for Accordion
+ * @public
+ */
+export const AccordionStyles = styles;

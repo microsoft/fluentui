@@ -138,6 +138,14 @@ export * from './components/RadioGroup/RadioGroupItem';
 
 export * from './components/Segment/Segment';
 
+export * from './components/Skeleton/Skeleton';
+export * from './components/Skeleton/SkeletonLine';
+export * from './components/Skeleton/SkeletonShape';
+export * from './components/Skeleton/SkeletonButton';
+export * from './components/Skeleton/SkeletonText';
+export * from './components/Skeleton/SkeletonInput';
+export * from './components/Skeleton/SkeletonAvatar';
+
 export * from './components/Slider/Slider';
 
 export * from './components/Status/Status';
@@ -164,10 +172,6 @@ export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';
 export * from './components/Toolbar/ToolbarMenuRadioGroup';
 export * from './components/Toolbar/ToolbarMenuRadioGroupWrapper';
 export * from './components/Toolbar/ToolbarRadioGroup';
-
-export * from './components/HierarchicalTree/HierarchicalTree';
-export * from './components/HierarchicalTree/HierarchicalTreeItem';
-export * from './components/HierarchicalTree/HierarchicalTreeTitle';
 
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';

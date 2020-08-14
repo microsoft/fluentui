@@ -53,7 +53,7 @@ export * from './memoize';
 export * from './merge';
 export * from './mobileDetector';
 export * from './modalize';
-export { assign, filteredAssign, mapEnumByName, shallowCompare, values } from './object';
+export { assign, filteredAssign, mapEnumByName, shallowCompare, values, omit } from './object';
 export * from './osDetector';
 export * from './overflow';
 export * from './properties';
@@ -72,4 +72,6 @@ export * from './getPropsWithDefaults';
 export { IStyleFunctionOrObject, Omit } from '@uifabric/merge-styles';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
 export { setSSR } from './dom/setSSR';
+export { createMergedRef } from './createMergedRef';
+
 import './version';

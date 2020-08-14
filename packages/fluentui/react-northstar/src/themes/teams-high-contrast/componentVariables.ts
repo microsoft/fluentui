@@ -16,6 +16,8 @@ export { menuItemContentVariables as MenuItemIndicator } from './components/Menu
 export { menuItemWrapperVariables as MenuItemWrapper } from './components/Menu/menuItemWrapperVariables';
 export { radioGroupItemVariables as RadioGroupItem } from './components/RadioGroup/radioGroupItemVariables';
 export { segmentVariables as Segment } from './components/Segment/segmentVariables';
+export { skeletonVariables as SkeletonShape } from './components/Skeleton/skeletonVariables';
+export { skeletonVariables as SkeletonLine } from './components/Skeleton/skeletonVariables';
 export { textVariables as Text } from './components/Text/textVariables';
 export { textAreaVariables as TextArea } from './components/TextArea/textAreaVariables';
 export { toolbarVariables as Toolbar } from './components/Toolbar/toolbarVariables';
@@ -30,7 +32,7 @@ export { toolbarMenuItemSubmenuIndicatorVariables as ToolbarMenuItemSubmenuIndic
 export { toolbarMenuItemActiveIndicatorVariables as ToolbarMenuItemActiveIndicator } from './components/Toolbar/toolbarMenuItemActiveIndicatorVariables';
 export { toolbarMenuRadioGroupVariables as ToolbarMenuRadioGroup } from './components/Toolbar/toolbarMenuRadioGroupVariables';
 export { toolbarMenuRadioGroupWrapperVariables as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/toolbarMenuRadioGroupWrapperVariables';
-export { hierarchicalTreeTitleVariables as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
+
 export { reactionVariables as Reaction } from './components/Reaction/reactionVariables';
 export { alertVariables as Alert } from './components/Alert/alertVariables';
 export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';

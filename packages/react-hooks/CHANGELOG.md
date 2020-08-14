@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Mon, 03 Aug 2020 12:45:42 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.8.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.7.0..@uifabric/react-hooks_v7.8.0)
+
+### Minor changes
+
+- useMergedRefs - adjusting typing to allow undefined refs. ([PR #14274](https://github.com/microsoft/fluentui/pull/14274) by dzearing@microsoft.com)
 
 ## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.7.0)
 

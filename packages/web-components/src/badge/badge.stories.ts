@@ -1,10 +1,10 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import BadgeTemplate from './fixtures/badge.html';
-import { FASTBadge } from './';
+import { FluentBadge } from './';
 
 // Prevent tree-shaking
-FASTBadge;
-FASTDesignSystemProvider;
+FluentBadge;
+FluentDesignSystemProvider;
 
 export default {
   title: 'Badge',

@@ -1,13 +1,13 @@
-import { FASTDesignSystemProvider } from '../design-system-provider';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/text-area.html';
-import { FASTTextArea } from './';
+import { FluentTextArea } from './';
 
 // Prevent tree-shaking
-FASTTextArea;
-FASTDesignSystemProvider;
+FluentTextArea;
+FluentDesignSystemProvider;
 
 export default {
-  title: 'Text area',
+  title: 'Text Area',
 };
 
 export const TextArea = (): string => Examples;

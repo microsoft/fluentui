@@ -3,17 +3,23 @@ import { TreeViewTemplate as template, TreeView } from '@microsoft/fast-foundati
 import { TreeViewStyles as styles } from './tree-view.styles';
 
 /**
- * The FAST Tree View Custom Element. Implements {@link @microsoft/fast-foundation#TreeView},
+ * The Fluent Tree View Custom Element. Implements {@link @microsoft/fast-foundation#TreeView},
  * {@link @microsoft/fast-foundation#TreeView}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fast-tree-view\>
+ * HTML Element: \<fluent-tree-view\>
  */
 @customElement({
-  name: 'fast-tree-view',
+  name: 'fluent-tree-view',
   template,
   styles,
 })
-export class FASTTreeView extends TreeView {}
+export class FluentTreeView extends TreeView {}
+
+/**
+ * Styles for TreeView
+ * @public
+ */
+export const TreeViewStyles = styles;

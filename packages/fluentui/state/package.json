@@ -8,9 +8,10 @@
     "@babel/runtime": "^7.10.4"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.2",
+    "@fluentui/eslint-plugin": "^0.53.4",
     "@uifabric/build": "^7.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "typescript": "3.7.2"
   },
   "files": [
     "dist"
