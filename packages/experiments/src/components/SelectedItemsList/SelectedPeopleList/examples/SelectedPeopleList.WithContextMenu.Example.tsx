@@ -5,7 +5,6 @@ import { IPersonaProps, IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people } from '@uifabric/example-data';
 import {
   SelectedPeopleList,
-  ISelectedPeopleList,
   SelectedPersona,
   ItemWithContextMenu,
   TriggerOnContextMenu,
@@ -20,19 +19,17 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<
   {},
   IPeopleSelectedItemsListExampleState
 > {
-  private _selectionList: ISelectedPeopleList;
-
   /**
    * Build a custom selected item capable of being edited with a dropdown and
    * capable of editing
    */
-  private SelectedItem = ItemWithContextMenu({
+  private SelectedItem = ItemWithContextMenu<IPersona>({
     menuItems: item => [
       {
         key: 'remove',
         text: 'Remove',
         onClick: () => {
-          this._selectionList.removeItems([item]);
+          this._onItemsRemoved([item]);
         },
       },
       {

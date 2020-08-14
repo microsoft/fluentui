@@ -5,7 +5,6 @@ import { IPersonaProps, IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people } from '@uifabric/example-data';
 import {
   SelectedPeopleList,
-  ISelectedPeopleList,
   SelectedPersona,
   TriggerOnContextMenu,
   ItemWithContextMenu,
@@ -25,8 +24,6 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
   {},
   IPeopleSelectedItemsListExampleState
 > {
-  private _selectionList: ISelectedPeopleList;
-
   // Used to resolve suggestions on the editableItem
   private model = new ExampleSuggestionsModel<IPersonaProps>(people);
   private suggestionsStore = new SuggestionsStore<IPersonaProps>();
@@ -45,13 +42,13 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
         />
       ),
     }),
-    itemComponent: ItemWithContextMenu({
+    itemComponent: ItemWithContextMenu<IPersona>({
       menuItems: (item, onTrigger) => [
         {
           key: 'remove',
           text: 'Remove',
           onClick: () => {
-            this._selectionList.removeItems([item]);
+            this._onItemsRemoved([item]);
           },
         },
         {
