@@ -21,7 +21,7 @@ const horizontalStackProps: IStackProps = {
   tokens: { childrenGap: 16 },
 };
 const verticalStackProps: IStackProps = {
-  styles: { root: { overflow: 'hidden', width: '100%', maxWidth: 500 } },
+  styles: { root: { overflow: 'hidden', width: '100%', maxWidth: 600 } },
   tokens: { childrenGap: 20 },
 };
 
@@ -148,10 +148,6 @@ const choiceOptions = [
   {
     key: 'warning',
     text: 'Warning MessageBar - single line',
-  },
-  {
-    key: 'warning2',
-    text: 'Warning MessageBar - multiline',
   },
   {
     key: 'all',

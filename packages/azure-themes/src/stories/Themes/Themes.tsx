@@ -57,7 +57,8 @@ const Example = () => (
       <PrimaryButton text="PrimaryButton" />
       <CompoundButton primary text="CompoundButton" />
       <CompoundButton secondaryText="secondary text." text="CompoundButton" />
-
+      <DefaultButton primary={true} text="Default button as primary" />
+      <DefaultButton primary={true} disabled={true} text="Default w/ primary disabled" />
       <Label>Disabled Buttons</Label>
       <DefaultButton disabled text="DefaultButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />
