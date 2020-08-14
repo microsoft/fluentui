@@ -8,7 +8,7 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool: 'fluentbuild'
+pool: 'Self Host Ubuntu'
 
 jobs:
   - job: BuildTestLint
