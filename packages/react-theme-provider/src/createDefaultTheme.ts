@@ -46,8 +46,9 @@ export const defaultTokens: Tokens = {
   },
   button: {
     size: {
-      smallest: '8px',
-      smaller: '16px',
+      // smallest size supported by default theme is 24px.
+      smallest: '24px',
+      smaller: '24px',
       small: '24px',
       regular: '32px',
       large: '40px',

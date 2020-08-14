@@ -20,58 +20,60 @@ export function getTokens(theme: Theme): Tokens {
   } = theme;
   const { fonts, effects, palette, semanticColors } = theme;
 
-  const tokensFromCompatTheme: Tokens | undefined = palette &&
-    semanticColors &&
-    fonts &&
-    effects && {
+  const preparedTokens: Tokens = merge(
+    {},
+    defaultTokens,
+    {
       accent: {
-        background: palette.themePrimary,
-        contentColor: palette.white,
-        iconColor: palette.white,
+        background: palette?.themePrimary,
+        contentColor: palette?.white,
+        iconColor: palette?.white,
 
         hovered: {
-          background: palette.themeDarkAlt,
-          contentColor: palette.white,
-          iconColor: palette.white,
+          background: palette?.themeDarkAlt,
+          contentColor: palette?.white,
+          iconColor: palette?.white,
         },
       },
 
       body: {
-        background: semanticColors.bodyBackground,
+        background: semanticColors?.bodyBackground,
       },
 
       button: {
-        fontWeight: fonts.medium?.fontWeight,
-        fontSize: fonts.medium?.fontSize,
-        fontFamily: fonts.medium?.fontFamily,
-        iconSize: fonts.mediumPlus?.fontSize,
-        borderRadius: effects.roundedCorner2,
-        focusColor: palette.neutralSecondary,
-        focusInnerColor: palette.white,
+        fontWeight: fonts?.medium?.fontWeight,
+        fontSize: fonts?.medium?.fontSize,
+        fontFamily: fonts?.medium?.fontFamily,
+        iconSize: fonts?.mediumPlus?.fontSize,
+        borderRadius: effects?.roundedCorner2,
+        focusColor: palette?.neutralSecondary,
+        focusInnerColor: palette?.white,
 
-        background: semanticColors.buttonBackground,
-        borderColor: semanticColors.buttonBorder,
-        contentColor: semanticColors.buttonText,
+        background: semanticColors?.buttonBackground,
+        borderColor: semanticColors?.buttonBorder,
+        contentColor: semanticColors?.buttonText,
 
         hovered: {
-          background: semanticColors.buttonBackgroundHovered,
-          borderColor: semanticColors.buttonBorder,
-          contentColor: semanticColors.buttonTextHovered,
+          background: semanticColors?.buttonBackgroundHovered,
+          borderColor: semanticColors?.buttonBorder,
+          contentColor: semanticColors?.buttonTextHovered,
         },
 
         pressed: {
-          background: semanticColors.buttonBackgroundPressed,
-          contentColor: semanticColors.buttonTextPressed,
-          borderColor: semanticColors.buttonBorder,
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextPressed,
+          borderColor: semanticColors?.buttonBorder,
         },
 
         disabled: {
-          background: semanticColors.buttonBackgroundDisabled,
-          borderColor: semanticColors.buttonBorderDisabled,
-          contentColor: semanticColors.buttonTextDisabled,
+          background: semanticColors?.buttonBackgroundDisabled,
+          borderColor: semanticColors?.buttonBorderDisabled,
+          contentColor: semanticColors?.buttonTextDisabled,
         },
       },
-    };
+    },
+    tokens,
+  );
 
-  return merge({}, defaultTokens, tokensFromCompatTheme, tokens, passThroughTokens as Tokens);
+  return { ...preparedTokens, ...(passThroughTokens as Tokens) };
 }

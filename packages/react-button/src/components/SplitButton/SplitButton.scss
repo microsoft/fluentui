@@ -44,13 +44,11 @@
   }
 
   &._size_smallest {
-    --button-dividerLength: var(--button-size-small);
-    --button-minHeight: var(--button-size-small);
+    --button-dividerLength: var(--button-size-smallest);
   }
 
   &._size_smaller {
-    --button-dividerLength: var(--button-size-small);
-    --button-minHeight: var(--button-size-small);
+    --button-dividerLength: var(--button-size-smaller);
   }
 
   &._size_small {
