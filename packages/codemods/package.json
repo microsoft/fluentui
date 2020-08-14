@@ -19,7 +19,8 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test"
+    "test": "just-scripts test",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.53.4",
