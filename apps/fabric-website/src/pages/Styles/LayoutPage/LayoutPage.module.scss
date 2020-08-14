@@ -1,14 +1,21 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+:global {
+  // This is so the class can be used directly in a Markdown file
+  .LayoutPage-demoBlock {
+    background-color: $ms-color-neutralTertiary;
+    color: $ms-color-white;
+    font-weight: $ms-font-weight-semibold;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+}
+
 .demoBlock {
-  background-color: $ms-color-neutralTertiary;
-  color: $ms-color-white;
-  font-weight: $ms-font-weight-semibold;
-  height: 40px;
-  line-height: 40px;
-  margin-bottom: 16px;
-  text-align: center;
+  @extend .LayoutPage-demoBlock;
 }
 
 .demoBlockCol {

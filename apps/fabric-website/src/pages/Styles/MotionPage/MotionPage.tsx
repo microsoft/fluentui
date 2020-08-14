@@ -19,26 +19,11 @@ const baseUrl =
 const PatternTable = ({ rows }) => (
   <Table
     columns={[
-      {
-        title: 'Element',
-        data: 'element',
-      },
-      {
-        title: 'Animation',
-        data: 'animation',
-      },
-      {
-        title: 'Duration',
-        data: 'duration',
-      },
-      {
-        title: 'Timing function',
-        data: 'timing',
-      },
-      {
-        title: 'Delay',
-        data: 'delay',
-      },
+      { title: 'Element', data: 'element' },
+      { title: 'Animation', data: 'animation' },
+      { title: 'Duration', data: 'duration' },
+      { title: 'Timing function', data: 'timing' },
+      { title: 'Delay', data: 'delay' },
     ]}
     rows={rows}
     formatter={(column, row) => row[column.data]}

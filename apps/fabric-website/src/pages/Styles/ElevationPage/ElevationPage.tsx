@@ -41,13 +41,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/ElevationImplementation.md`,
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string
-              }
-            </Markdown>
-          ),
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
         },
       ];
 
@@ -107,7 +101,7 @@ function _renderDepthsTable() {
           case 'Core class':
             return `ms-depth-${row.level}`;
           case 'React variable':
-            return `Depths.depth${row.level}`;
+            return `DefaultEffects.elevation${row.level} or Depths.depth${row.level}`;
           case 'Usage':
             return (
               <ul className={styles.usageList}>
