@@ -1,9 +1,9 @@
 ### Fluent UI React (JavaScript variables)
 
 ```jsx
-import { Depths } from '@uifabric/fluent-theme/lib/fluent/FluentDepths';
+import { DefaultEffects } from '@fluentui/react';
 
-<div style={{ boxShadow: Depths.depth8 }} />;
+<div style={{ boxShadow: DefaultEffects.elevation }} />;
 ```
 
 ### Fabric Core (SCSS variables)
