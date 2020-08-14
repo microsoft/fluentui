@@ -25,6 +25,16 @@ const Types = () => (
       description="The dates can be localized."
       examplePath="components/Datepicker/Types/DatepickerExampleLocalizationStrings"
     />
+    <ComponentExample
+      title="Date Boundary"
+      description="The datepicker can restrict the date selection to a min and max."
+      examplePath="components/Datepicker/Types/DatepickerExampleMinMaxDate"
+    />
+    <ComponentExample
+      title="Restricted"
+      description="The datepicker can exclude a list of dates from being selected."
+      examplePath="components/Datepicker/Types/DatepickerExampleRestrictedDates"
+    />
   </ExampleSection>
 );
 

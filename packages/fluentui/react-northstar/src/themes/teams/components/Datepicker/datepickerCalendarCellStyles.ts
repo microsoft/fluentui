@@ -47,10 +47,18 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
         backgroundColor: v.datepickerCalendarCellSelectedBackgroundColor,
       }),
 
-      ':hover': {
-        backgroundColor: v.datepickerCalendarCellHoverBackgroundColor,
-        color: v.datepickerCalendarCellHoverColor,
-      },
+      ...(!p.disabled && {
+        ':hover': {
+          backgroundColor: v.datepickerCalendarCellHoverBackgroundColor,
+          color: v.datepickerCalendarCellHoverColor,
+        },
+      }),
+
+      ...(p.disabled && {
+        color: v.datepickerCalendarCellDisabledColor,
+        cursor: 'default',
+        backgroundColor: v.datepickerCalendarCellDisabledBackgroundColor,
+      }),
     };
   },
 };

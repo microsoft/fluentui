@@ -12,6 +12,8 @@ export interface DatepickerVariables {
   datepickerCalendarCellReferenceBackgroundColor: string;
   datepickerCalendarCellHoverColor: string;
   datepickerCalendarCellHoverBackgroundColor: string;
+  datepickerCalendarCellDisabledColor: string;
+  datepickerCalendarCellDisabledBackgroundColor: string;
 
   datepickerCalendarHeaderCellFontWeight: number;
 
@@ -30,6 +32,8 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   datepickerCalendarCellReferenceColor: siteVars.colorScheme.white.foreground,
   datepickerCalendarCellHoverBackgroundColor: siteVars.colorScheme.brand.backgroundHover2,
   datepickerCalendarCellHoverColor: 'inherit',
+  datepickerCalendarCellDisabledColor: siteVars.colorScheme.brand.foregroundDisabled,
+  datepickerCalendarCellDisabledBackgroundColor: siteVars.colorScheme.default.background,
 
   datepickerCalendarHeaderCellFontWeight: siteVars.fontWeightRegular,
 
