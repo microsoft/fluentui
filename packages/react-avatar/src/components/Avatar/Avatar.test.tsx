@@ -3,7 +3,7 @@ import * as path from 'path';
 import { isConformant } from '@fluentui/react-conformance';
 import { Avatar } from './Avatar';
 import * as renderer from 'react-test-renderer';
-import { mount, ReactWrapper } from 'enzyme';
+import { ReactWrapper } from 'enzyme';
 
 describe('Avatar', () => {
   let wrapper: ReactWrapper | undefined;
