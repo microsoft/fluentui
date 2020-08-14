@@ -88,9 +88,5 @@ export interface IUnifiedPickerProps<T> {
    */
   dragDropEvents?: IDragDropEvents;
 
-  getSerializedItems?: (items: T[]) => string;
-
-  getDeserializedItems?: (input: string) => T[];
-
   customClipboardType?: string;
 }

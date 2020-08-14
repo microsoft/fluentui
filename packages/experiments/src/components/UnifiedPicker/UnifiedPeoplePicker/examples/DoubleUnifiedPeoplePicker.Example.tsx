@@ -9,6 +9,7 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
 import { IInputProps } from 'office-ui-fabric-react';
+import { PropertiesTable } from '@uifabric/example-app-base';
 
 const _suggestions = [
   {
@@ -126,20 +127,31 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     return _getItemsCopyText(items); // Do we want to combine these or have them be separate?
   };
 
-  const _getDeserializedItems = (input: string): IPersonaProps[] => {
-    const newList: IPersonaProps[] = [];
+  const _insertItemsAt = (insertIndex: number, input: string, selectedItemsList: IPersonaProps[]): void => {
+    // Turn the dropped text into items
+    const newItems: IPersonaProps[] = [];
     if (input !== null) {
       input.split(',').forEach(textValue => {
         if (textValue) {
           people.forEach(suggestionItem => {
             if (suggestionItem.text === textValue) {
-              newList.push(suggestionItem);
+              newItems.push(suggestionItem);
             }
           });
         }
       });
     }
-    return newList;
+
+    // Insert those items into the current list
+    if (insertIndex > -1) {
+      const currentItems: IPersonaProps[] = [...peopleSelectedItems];
+      const updatedItems = currentItems
+        .slice(0, insertIndex)
+        .concat(newItems)
+        .concat(currentItems.slice(insertIndex));
+      setPeopleSelectedItems(updatedItems);
+      selectedPeopleListProps.selectedItems = updatedItems;
+    }
   };
 
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
@@ -182,10 +194,12 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {
-    //selectedItems: [...peopleSelectedItems],
+    selectedItems: [...peopleSelectedItems],
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
+    getSerializedItems: _getSerializedItems,
+    insertItemsAt: _insertItemsAt,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
@@ -202,8 +216,6 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
         onInputChange={_onInputChange}
         // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
-        getSerializedItems={_getSerializedItems}
-        getDeserializedItems={_getDeserializedItems}
         customClipboardType="recipients"
       />
     </>
