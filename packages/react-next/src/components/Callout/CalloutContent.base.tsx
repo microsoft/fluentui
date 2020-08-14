@@ -384,7 +384,7 @@ function useDismissHandlers(
 
     const dismissOnTargetWindowBlur = (ev: FocusEvent) => {
       if (ev.relatedTarget === null && !document.hasFocus()) {
-        this.dismiss(ev);
+        onDismiss?.(ev);
       }
     };
 
@@ -472,6 +472,11 @@ export const CalloutContentBase = React.memo(
 
     // If there is no target window then we are likely in server side rendering and we should not render anything.
     if (!targetWindowRef.current) {
+      return null;
+    }
+
+    // We probably just switched focus context to another window. Don't rerender
+    if (!document.hasFocus()) {
       return null;
     }
 
