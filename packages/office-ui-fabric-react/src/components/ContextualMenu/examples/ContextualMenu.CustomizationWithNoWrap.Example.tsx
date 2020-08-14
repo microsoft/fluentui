@@ -72,6 +72,7 @@ const menuItems: IContextualMenuItem[] = [
     key: 'charm',
     text: 'Charm',
     className: 'Charm-List',
+    ariaLabel: 'Charm. Press enter, space or right arrow keys to open submenu.',
     subMenuProps: {
       focusZoneProps: {
         direction: FocusZoneDirection.bidirectional,
@@ -178,6 +179,7 @@ const menuItems: IContextualMenuItem[] = [
   {
     key: 'categories',
     text: 'Categorize',
+    ariaLabel: 'Categorize. Press enter, space or right arrow keys to open submenu.',
     subMenuProps: {
       items: [
         {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps -- will come back and fix separately */
 import * as React from 'react';
 import { IconButton } from '../../compat/Button';
 import { Label } from '../../Label';
@@ -94,6 +95,7 @@ export const SpinButtonBase = (props: ISpinButtonProps) => {
   );
 
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
       name: COMPONENT_NAME,
       props,

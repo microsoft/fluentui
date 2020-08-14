@@ -2,6 +2,36 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@uifabric/experiments_v7.28.0",
+      "version": "7.28.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add drag drop to the experiments SelectedItemsList (and therefor also UnifiedPicker)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "f47fe2c912f2b5f48cf4c3913ac18f817af4fd49",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/experiments_v7.27.20",
+      "version": "7.27.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Aug 2020 12:42:32 GMT",
       "tag": "@uifabric/experiments_v7.27.15",
       "version": "7.27.15",

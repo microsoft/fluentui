@@ -6,7 +6,7 @@ import {
   datepickerCalendarHeaderBehavior,
   DatepickerCalendarHeaderBehaviorProps,
 } from '@fluentui/accessibility';
-import { IDateGridStrings } from '@fluentui/date-time-utilities';
+import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
   getElementType,
@@ -29,15 +29,15 @@ import {
 import { DatepickerCalendarHeaderAction, DatepickerCalendarHeaderActionProps } from './DatepickerCalendarHeaderAction';
 import { Text, TextProps } from '../Text/Text';
 
-export interface DatepickerCalendarHeaderProps extends UIComponentProps, ContentComponentProps {
+export interface DatepickerCalendarHeaderProps
+  extends UIComponentProps,
+    ContentComponentProps,
+    Partial<ICalendarStrings> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerCalendarHeaderBehaviorProps>;
 
   /** Shorthand for text label. */
   label?: ShorthandValue<TextProps>;
-
-  /** Localized labels */
-  localizedStrings?: IDateGridStrings;
 
   /** Action to happen on click on the previous button */
   onPreviousClick?: ComponentEventHandler<DatepickerCalendarHeaderActionProps>;
@@ -109,8 +109,7 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         defaultProps: () =>
           getA11yProps('previousButton', {
             icon: {},
-            // TODO: use value from `localizationStrings` after #14058 implements needed values
-            title: 'Previous Month',
+            title: props.prevMonthAriaLabel,
             direction: 'previous',
           }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
@@ -124,8 +123,7 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         defaultProps: () =>
           getA11yProps('nextButton', {
             icon: {},
-            // TODO: use value from `localizationStrings` after #14058 implements needed values
-            title: 'Next Month',
+            title: props.nextMonthAriaLabel,
             direction: 'next',
           }),
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
@@ -146,11 +144,40 @@ DatepickerCalendarHeader.displayName = 'DatepickerCalendarHeader';
 DatepickerCalendarHeader.propTypes = {
   ...commonPropTypes.createCommon(),
   label: customPropTypes.itemShorthand,
-  localizedStrings: PropTypes.object as PropTypes.Validator<IDateGridStrings>,
   nextButton: customPropTypes.itemShorthand,
   previousButton: customPropTypes.itemShorthand,
   onPreviousClick: PropTypes.func,
   onNextClick: PropTypes.func,
+
+  formatDay: PropTypes.func,
+  formatYear: PropTypes.func,
+  formatMonthDayYear: PropTypes.func,
+  formatMonthYear: PropTypes.func,
+
+  parseDate: PropTypes.func,
+
+  months: PropTypes.arrayOf(PropTypes.string),
+  shortMonths: PropTypes.arrayOf(PropTypes.string),
+  days: PropTypes.arrayOf(PropTypes.string),
+  shortDays: PropTypes.arrayOf(PropTypes.string),
+
+  isRequiredErrorMessage: PropTypes.string,
+  invalidInputErrorMessage: PropTypes.string,
+  isOutOfBoundsErrorMessage: PropTypes.string,
+  goToToday: PropTypes.string,
+  openCalendarTitle: PropTypes.string,
+  prevMonthAriaLabel: PropTypes.string,
+  nextMonthAriaLabel: PropTypes.string,
+  prevYearAriaLabel: PropTypes.string,
+  nextYearAriaLabel: PropTypes.string,
+  prevYearRangeAriaLabel: PropTypes.string,
+  nextYearRangeAriaLabel: PropTypes.string,
+  monthPickerHeaderAriaLabel: PropTypes.string,
+  yearPickerHeaderAriaLabel: PropTypes.string,
+  closeButtonAriaLabel: PropTypes.string,
+  weekNumberFormatString: PropTypes.string,
+  selectedDateFormatString: PropTypes.string,
+  todayDateFormatString: PropTypes.string,
 };
 
 DatepickerCalendarHeader.defaultProps = {
@@ -158,6 +185,8 @@ DatepickerCalendarHeader.defaultProps = {
   nextButton: {},
   previousButton: {},
   label: {},
+
+  ...DEFAULT_CALENDAR_STRINGS,
 };
 
 DatepickerCalendarHeader.handledProps = Object.keys(DatepickerCalendarHeader.propTypes) as any;

@@ -2,7 +2,20 @@
 
 exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
 <div>
-  <p>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
     When a link has an href,
      
     <a
@@ -33,13 +46,31 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: white-on-black){&:active {
+            color: #FFFF00;
+          }
+          @media screen and (-ms-high-contrast: black-on-white){&:active {
+            color: #00009F;
+          }
           &:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: white-on-black){&:hover {
+            color: #FFFF00;
+          }
+          @media screen and (-ms-high-contrast: black-on-white){&:hover {
+            color: #00009F;
+          }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+            color: #FFFF00;
+          }
+          @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+            color: #00009F;
           }
           &:focus {
             color: #0078d4;
@@ -98,17 +129,38 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: black-on-white){& {
             color: #00009F;
           }
+          @media screen and (forced-colors: active){& {
+            forced-color-adjust: none;
+          }
           &:active {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: white-on-black){&:active {
+            color: #FFFF00;
+          }
+          @media screen and (-ms-high-contrast: black-on-white){&:active {
+            color: #00009F;
           }
           &:hover {
             color: #004578;
             text-decoration: underline;
           }
+          @media screen and (-ms-high-contrast: white-on-black){&:hover {
+            color: #FFFF00;
+          }
+          @media screen and (-ms-high-contrast: black-on-white){&:hover {
+            color: #00009F;
+          }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
+          }
+          @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+            color: #FFFF00;
+          }
+          @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+            color: #00009F;
           }
           &:focus {
             color: #0078d4;
@@ -157,9 +209,22 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
     >
       disabled link.
     </a>
-  </p>
-  <p>
+  </span>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
     It's not recommended to use Links with imgs because Links are meant to render textual inline content. Buttons are inline-block or in the case of imgs, block. However, it is possible to create a linked image button by making a button with an unstyled variant and adding the img content and href source to that.
-  </p>
+  </span>
 </div>
 `;

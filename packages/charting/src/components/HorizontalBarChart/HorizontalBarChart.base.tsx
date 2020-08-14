@@ -98,12 +98,10 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     <g
                       id={keyVal}
                       key={keyVal}
-                      // eslint-disable-next-line react/jsx-no-bind
                       ref={(e: SVGGElement) => {
                         this._refCallback(e, points!.chartData![0].legend);
                       }}
                       className={this._classNames.barWrapper}
-                      // eslint-disable-next-line react/jsx-no-bind
                       onMouseOver={this._hoverOn.bind(
                         this,
                         points!
@@ -114,7 +112,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                         points!.chartData![0].xAxisCalloutData!,
                         points!.chartData![0].yAxisCalloutData!,
                       )}
-                      // eslint-disable-next-line react/jsx-no-bind
                       onFocus={this._hoverOn.bind(
                         this,
                         points!

@@ -2,6 +2,21 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@uifabric/test-utilities_v7.0.37",
+      "version": "7.0.37",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix misleading docs for safeMount",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@uifabric/test-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jul 2020 23:14:39 GMT",
       "tag": "@uifabric/test-utilities_v7.0.32",
       "version": "7.0.32",
