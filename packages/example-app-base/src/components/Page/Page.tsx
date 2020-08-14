@@ -19,6 +19,7 @@ import {
 } from './sections/index';
 import { IPageProps, IPageSectionProps } from './Page.types';
 import * as styles from './Page.module.scss';
+import { getLinkColors } from '../../utilities/getLinkColors';
 
 const SECTION_STAGGER_INTERVAL = 0.05;
 /** Section key/id prefix for sections which don't have a title */
@@ -32,22 +33,7 @@ const linkCustomizations: Partial<ILinkProps> = {
   styles: props => {
     const { semanticColors } = props.theme;
     return {
-      root: {
-        selectors: {
-          // Be specific to override UHF styles
-          '& a.ms-Link': {
-            color: semanticColors.link,
-            selectors: {
-              '&:link': {
-                color: semanticColors.link,
-              },
-              '&:active, &:hover, &:active:hover': {
-                color: semanticColors.linkHovered,
-              },
-            },
-          },
-        },
-      },
+      root: getLinkColors(semanticColors.link, semanticColors.linkHovered),
     };
   },
 };
