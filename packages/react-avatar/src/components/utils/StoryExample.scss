@@ -2,9 +2,9 @@
   padding: 10px;
 }
 
-.flex {
-  display: 'flex';
-  flex-wrap: 'wrap';
+.content {
+  display: flex;
+  flex-wrap: wrap;
 
   & > *:not(:first-child) {
     margin-left: 8px;
