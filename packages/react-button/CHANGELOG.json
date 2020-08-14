@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@fluentui/react-button_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SplitButton: Initial implementation.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b2a8ecd1bd60d7d4111fa12e6ecda0855dc03032",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Adding opacity control for button tokens.",
+            "author": "dzearing@hotmail.com",
+            "commit": "59a535edb9ef5b85fada1259818a3758197ed27d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@fluentui/react-button_v0.8.0",
       "version": "0.8.0",

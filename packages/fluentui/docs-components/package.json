@@ -15,7 +15,7 @@
     "react-element-to-jsx-string": "^14.0.2"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.3",
+    "@fluentui/eslint-plugin": "^0.53.4",
     "@types/gulp": "^4.0.6",
     "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",

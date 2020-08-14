@@ -5,6 +5,7 @@ import { Theme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { mergeThemes } from './mergeThemes';
+import { createDefaultTheme } from './createDefaultTheme';
 
 const lightTheme = mergeThemes({
   stylesheets: [],
@@ -55,7 +56,6 @@ describe('ThemeProvider', () => {
     let resolvedTheme: Theme | undefined = undefined;
     const TestComponent = () => {
       resolvedTheme = useTheme();
-
       return null;
     };
 
@@ -65,6 +65,7 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    expect(resolvedTheme).toEqual(lightTheme);
+    const expectedTheme = mergeThemes(createDefaultTheme(), lightTheme);
+    expect(resolvedTheme).toEqual(expectedTheme);
   });
 });

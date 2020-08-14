@@ -1,6 +1,6 @@
 import { ComponentProps, BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { Alignment } from '../Flex/Flex.types';
-import { ColorPlateSet } from '@fluentui/react-theme-provider';
+import { ColorTokenSet } from '@fluentui/react-theme-provider';
 
 export interface FlexItemProps extends ComponentProps, React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -27,7 +27,7 @@ export interface FlexItemSlots extends BaseSlots {}
 
 export type FlexItemSlotProps = SlotProps<FlexItemSlots, FlexItemProps, React.HTMLAttributes<HTMLElement>>;
 
-export type FlexItemTokens = ColorPlateSet & {
+export type FlexItemTokens = ColorTokenSet & {
   /**
    * Defines how much to grow the FlexItem in proportion to its siblings.
    */

@@ -2,6 +2,98 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "office-ui-fabric-react_v7.128.1",
+      "version": "7.128.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers: Update to be concurrent compatible",
+            "author": "joschect@microsoft.com",
+            "commit": "94206626814975b383a2529a72b0978a49691164",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Link: Fixing High Contrast styling of links rendered as buttons.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8866e2b7858c1d45452d7cb5890b1dab2d814d10",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "office-ui-fabric-react_v7.128.0",
+      "version": "7.128.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "BasePicker's onDismiss can now return a boolean to decide if an item is selected",
+            "author": "t-jamle@microsoft.com",
+            "commit": "11f792c8335095322dde622a3f64e6c378e0d202",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "office-ui-fabric-react_v7.127.1",
+      "version": "7.127.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Show tooltipHost.content when iconMode = true even when text/name is provided in commandBarItemProps",
+            "author": "prandala@microsoft.com",
+            "commit": "f2c29686e5fb0d71db3a1e02ee4a7f3fdc185d03",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Dropdown: Correctly updating set-size when number of options updates after first render.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "44befb4af953e60cfb3d5c27dbfc5736bd40a452",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Tooltip: Stopping propagation when clicking Esc on tooltip host.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e9f54d7fd752e8dd6e431ace9e2696a5ba8c732e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "office-ui-fabric-react_v7.127.0",
+      "version": "7.127.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating Announced, GroupedList, Coachmark, and ExtendedPeoplePicker examples to use function components",
+            "author": "czearing@outlook.com",
+            "commit": "b58c2892276d632d5c9c5d74061a54e3cf1b56d8",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Prettier fix.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b2a8ecd1bd60d7d4111fa12e6ecda0855dc03032",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ContextualMenu: Add another prop to allow users to override default focus restoring behavior. This fixes an issue where it would not restore focus correctly when contextualmenu is hidden.",
+            "author": "joschect@microsoft.com",
+            "commit": "1e8785a125b75926404a973d10fc6925e752be19",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "office-ui-fabric-react_v7.126.3",
       "version": "7.126.3",

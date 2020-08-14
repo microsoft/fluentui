@@ -10,6 +10,7 @@ export type ExpandedState = {
   onMenuDismiss?: () => void;
   onKeyDown?: (ev: React.KeyboardEvent) => void;
   'aria-expanded'?: boolean;
+  'aria-haspopup'?: boolean;
 
   menu: {
     target?: React.Ref<HTMLElement | undefined>;
@@ -81,4 +82,5 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
   };
 
   draftState['aria-expanded'] = expandedValue;
+  draftState['aria-haspopup'] = true;
 };
