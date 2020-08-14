@@ -39,10 +39,10 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
   selected?: boolean;
 
   /** Denotes that the cell marks today's date. */
-  reference?: boolean;
+  isToday?: boolean;
 
   /** A cell can show that it is currently not in the main focus. */
-  unfocused?: boolean;
+  quiet?: boolean;
 
   /**
    * Called on selected item key down.
@@ -55,7 +55,7 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
 
 export type DatepickerCalendarCellStylesProps = Pick<
   DatepickerCalendarCellProps,
-  'disabled' | 'selected' | 'unfocused' | 'reference'
+  'disabled' | 'selected' | 'quiet' | 'isToday'
 >;
 
 export const datepickerCalendarCellClassName = 'ui-datepicker__calendarcell';
@@ -75,7 +75,17 @@ export const DatepickerCalendarCell = compose<
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const { className, design, styles, variables, disabled, selected, unfocused, reference, content } = props;
+    const {
+      className,
+      design,
+      styles,
+      variables,
+      disabled,
+      selected,
+      quiet: unfocused,
+      isToday: reference,
+      content,
+    } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
@@ -101,8 +111,8 @@ export const DatepickerCalendarCell = compose<
       mapPropsToStyles: () => ({
         disabled,
         selected,
-        unfocused,
-        reference,
+        quiet: unfocused,
+        isToday: reference,
       }),
       mapPropsToInlineStyles: () => ({
         className,
@@ -153,8 +163,8 @@ export const DatepickerCalendarCell = compose<
       'selected',
       'styles',
       'variables',
-      'unfocused',
-      'reference',
+      'quiet',
+      'isToday',
     ],
   },
 );
@@ -164,8 +174,8 @@ DatepickerCalendarCell.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
-  unfocused: PropTypes.bool,
-  reference: PropTypes.bool,
+  quiet: PropTypes.bool,
+  isToday: PropTypes.bool,
 };
 
 DatepickerCalendarCell.defaultProps = {

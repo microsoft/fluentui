@@ -2,8 +2,6 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DatepickerVariables } from './datepickerVariables';
 import { DatepickerCalendarHeaderStylesProps } from '../../../../components/Datepicker/DatepickerCalendarHeader';
 
-import { pxToRem } from '../../../../utils';
-
 export const datepickerCalendarHeaderStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarHeaderStylesProps,
   DatepickerVariables

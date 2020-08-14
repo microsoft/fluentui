@@ -239,8 +239,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             'aria-label': formatMonthDayYear(day.originalDate, dateFormatting),
             selected: day.isSelected,
             disabled: !day.isInBounds,
-            unfocused: !day.isInMonth,
-            reference: compareDates(day.originalDate, today ?? new Date()),
+            quiet: !day.isInMonth,
+            isToday: compareDates(day.originalDate, today ?? new Date()),
             ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({

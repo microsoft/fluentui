@@ -31,13 +31,13 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
 
       ...borderFocusStyles,
 
-      ...(p.reference && {
+      ...(p.isToday && {
         backgroundColor: v.calendarCellReferenceBackgroundColor,
         color: v.calendarCellReferenceColor,
         borderRadius: v.calendarCellReferenceBorderRadius,
       }),
 
-      ...(p.unfocused && {
+      ...(p.quiet && {
         color: v.calendarCellUnfocusedColor,
       }),
 
