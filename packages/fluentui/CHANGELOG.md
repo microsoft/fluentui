@@ -28,6 +28,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Documentation
 - Add undo and redo feature to UI builder @vyhnalekl ([#14336](https://github.com/microsoft/fluentui/pull/14336))
+- Removed props JSON from right side menu @vyhnalekl ([#14503](https://github.com/microsoft/fluentui/pull/14503))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
