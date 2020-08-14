@@ -14,7 +14,6 @@ export const Image = React.forwardRef<HTMLElement, ImageProps>((props, ref) => {
 
   // Apply styling.
   useImageClasses(state);
-  useFocusRects(state.imageRef);
   useInlineTokens(state, '--image');
 
   // Render component.
