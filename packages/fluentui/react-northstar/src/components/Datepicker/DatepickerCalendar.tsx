@@ -10,6 +10,7 @@ import {
   DEFAULT_CALENDAR_STRINGS,
   ICalendarStrings,
   IDayGridOptions,
+  IAvailableDateOptions,
   findAvailableDate,
   compareDates,
   addDays,
@@ -75,10 +76,6 @@ export type DatepickerCalendarStylesProps = never;
 
 export const datepickerCalendarClassName = 'ui-datepicker__calendar';
 
-const dayInGrid = (grid: IDay[][], findDate: Date) => {
-  return _.flatten(grid).some(day => compareDates(day.originalDate, findDate));
-};
-
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
@@ -108,6 +105,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     days,
     minDate,
     maxDate,
+    restrictedDates,
   } = props;
 
   const ElementType = getElementType(props);
@@ -222,13 +220,28 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       // if we couldn't find a target date at all, do nothing
       return;
     }
-    const newNavigateDate = findAvailableDate({
+
+    const findAvailableDateOptions: IAvailableDateOptions = {
       initialDate,
       targetDate,
       direction,
-    });
-    if (!dayInGrid(visibledGrid, newNavigateDate)) {
-      setGridNavigatedDate(newNavigateDate);
+      restrictedDates,
+      minDate,
+      maxDate,
+    };
+
+    let newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+
+    if (!newNavigatedDate) {
+      // if no dates available in initial direction, try going backwards
+      findAvailableDateOptions.direction = -direction;
+      newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+    }
+
+    if (!newNavigatedDate) {
+      e.preventDefault();
+    } else {
+      setGridNavigatedDate(newNavigatedDate);
       e.preventDefault();
     }
   };
