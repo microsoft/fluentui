@@ -21,7 +21,7 @@ const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={c
 const ButtonVariants = (props: ButtonProps) => (
   <Stack horizontal>
     <Button {...props} icon="O">
-      Hello, world
+      Hello, world TESTTESTEST
     </Button>
     <Button {...props} primary icon="X">
       Hello, world
