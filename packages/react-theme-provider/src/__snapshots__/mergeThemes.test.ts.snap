@@ -5,28 +5,8 @@ Object {
   "stylesheets": Array [],
   "tokens": Object {
     "body": Object {
-      "background": "white",
-      "captionColor": "#333",
-      "contentColor": "black",
-      "dividerColor": "#eee",
       "fill": "red",
-      "linkColor": "blue",
       "text": "white",
-    },
-  },
-}
-`;
-
-exports[`mergeThemes fills in blanks 1`] = `
-Object {
-  "stylesheets": Array [],
-  "tokens": Object {
-    "body": Object {
-      "background": "white",
-      "captionColor": "#333",
-      "contentColor": "black",
-      "dividerColor": "#eee",
-      "linkColor": "blue",
     },
   },
 }

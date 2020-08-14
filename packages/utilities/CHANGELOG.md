@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.28.0)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.27.0..@uifabric/utilities_v7.28.0)
+
+### Minor changes
+
+- Adding `createMergedRef` utility for merging refs in a class component. ([PR #14517](https://github.com/microsoft/fluentui/pull/14517) by dzearing@hotmail.com)
 
 ## [7.27.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.27.0)
 

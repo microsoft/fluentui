@@ -2,6 +2,51 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@fluentui/react-compose_v0.14.3",
+      "version": "0.14.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding null check in mergeProps.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "b2a8ecd1bd60d7d4111fa12e6ecda0855dc03032",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 18:27:32 GMT",
+      "tag": "@fluentui/react-compose_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "next mergeProps: adding type check",
+            "author": "dzearing@hotmail.com",
+            "commit": "042ed4c59b8d9547aaa40696ab6938a09def177e",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 15:56:27 GMT",
+      "tag": "@fluentui/react-compose_v0.14.1",
+      "version": "0.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "next mergeProps: adding type check",
+            "author": "dzearing@hotmail.com",
+            "commit": "042ed4c59b8d9547aaa40696ab6938a09def177e",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@fluentui/react-compose_v0.14.0",
       "version": "0.14.0",

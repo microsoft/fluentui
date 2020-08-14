@@ -9,7 +9,7 @@
     "@fluentui/accessibility": "^0.51.0",
     "@fluentui/code-sandbox": "^0.51.0",
     "@fluentui/docs-components": "^0.51.0",
-    "@fluentui/keyboard-key": "^0.2.9",
+    "@fluentui/keyboard-key": "^0.2.10",
     "@fluentui/react-bindings": "^0.51.0",
     "@fluentui/react-builder": "^0.51.0",
     "@fluentui/react-component-event-listener": "^0.51.0",
@@ -46,7 +46,7 @@
     "react-vis": "^1.11.6"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.3",
+    "@fluentui/eslint-plugin": "^0.53.4",
     "@types/classnames": "^2.2.9",
     "@types/color": "^3.0.0",
     "@types/faker": "^4.1.3",

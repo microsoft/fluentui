@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getStyles } from './UnifiedPicker.styles';
 import { classNamesFunction, css, SelectionMode, Selection, KeyCodes } from '../../Utilities';
+import { DragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/DragDropHelper';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import {
   FocusZoneDirection,
@@ -9,6 +10,7 @@ import {
   Autofill,
   IInputProps,
   MarqueeSelection,
+  IDragDropEvents,
 } from 'office-ui-fabric-react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
 import { useQueryString } from './hooks/useQueryString';
@@ -16,6 +18,7 @@ import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 import { copyToClipboard } from '../SelectedItemsList/index';
+import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -27,6 +30,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
+  const [draggedItem, setDraggedItem] = React.useState<T>();
+  const dragDropHelper = new DragDropHelper({
+    selection: selection,
+  });
+
   const {
     focusItemIndex,
     suggestionItems,
@@ -39,6 +47,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const {
     selectedItems,
     addItems,
+    dropItemsAt,
     removeItems,
     removeItemAt,
     removeSelectedItems,
@@ -64,6 +73,50 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     headerComponent,
     onInputChange,
   } = props;
+
+  // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
+  const _insertBeforeItem = (item: T): void => {
+    const draggedItemIndex = selectedItems.indexOf(draggedItem!);
+    const draggedItemsIndices = focusedItemIndices.includes(draggedItemIndex)
+      ? [...focusedItemIndices]
+      : [draggedItemIndex];
+    const insertIndex = selectedItems.indexOf(item);
+    dropItemsAt(insertIndex, draggedItemsIndices);
+  };
+
+  const theme = getTheme();
+  const dragEnterClass = mergeStyles({
+    backgroundColor: theme.palette.neutralLight,
+  });
+
+  const _onDragEnter = (item?: any, event?: DragEvent): string => {
+    // return string is the css classes that will be added to the entering element.
+    return dragEnterClass;
+  };
+
+  const _onDrop = (item?: any, event?: DragEvent): void => {
+    if (draggedItem) {
+      _insertBeforeItem(item);
+    }
+  };
+
+  const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: MouseEvent): void => {
+    setDraggedItem(item);
+  };
+
+  const _onDragEnd = (item?: any, event?: DragEvent): void => {
+    setDraggedItem(undefined);
+  };
+
+  const defaultDragDropEvents: IDragDropEvents = {
+    canDrop: () => true,
+    canDrag: () => true,
+    onDragEnter: _onDragEnter,
+    onDragLeave: () => undefined,
+    onDrop: _onDrop,
+    onDragStart: _onDragStart,
+    onDragEnd: _onDragEnd,
+  };
 
   const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which !== KeyCodes.backspace) {
@@ -107,6 +160,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           ev.stopPropagation();
           break;
         case KeyCodes.enter:
+        case KeyCodes.tab:
           if (!ev.shiftKey && !ev.ctrlKey && focusItemIndex >= 0) {
             ev.preventDefault();
             ev.stopPropagation();
@@ -171,6 +225,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedItems: selectedItems,
       focusedItemIndices: focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems,
+      dragDropHelper: dragDropHelper,
+      dragDropEvents: props.dragDropEvents ? props.dragDropEvents : defaultDragDropEvents,
     });
   };
   const _canAddItems = () => true;

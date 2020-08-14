@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokens } from '@fluentui/react-theme-provider';
+import { ColorTokenSet } from '@fluentui/react-theme-provider';
 import { RecursivePartial } from '../../utils/tempTypes';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
@@ -101,7 +101,7 @@ export interface ButtonSlots extends BaseSlots {
 
 export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
-export type ButtonTokenSet = ColorTokens & {
+export type ButtonTokenSet = ColorTokenSet & {
   /* sizing */
   padding: string;
   margin: string;
