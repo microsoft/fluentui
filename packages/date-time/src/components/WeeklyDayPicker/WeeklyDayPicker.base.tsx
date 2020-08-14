@@ -184,7 +184,6 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
       >
         {this._renderPreviousWeekNavigationButton(classNames)}
         <CalendarDayGrid
-          {...calendarDayGridProps}
           styles={styles}
           componentRef={this._dayGrid}
           strings={strings}
@@ -203,6 +202,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
           today={today}
           lightenDaysOutsideNavigatedMonth={showFullMonth}
           animationDirection={this.state.animationDirection}
+          {...calendarDayGridProps}
         />
         {this._renderNextWeekNavigationButton(classNames)}
       </div>

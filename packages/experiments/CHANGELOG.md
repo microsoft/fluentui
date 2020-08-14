@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 04 Aug 2020 12:42:32 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Aug 2020 18:34:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.0)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.20..@uifabric/experiments_v7.28.0)
+
+### Minor changes
+
+- Add drag drop to the experiments SelectedItemsList (and therefor also UnifiedPicker) ([PR #14360](https://github.com/microsoft/fluentui/pull/14360) by elvonspa@microsoft.com)
 
 ## [7.27.15](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.15)
 

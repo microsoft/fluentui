@@ -169,7 +169,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       onClick: this._onButtonClick(item),
     };
 
-    if (item.iconOnly && itemText !== undefined) {
+    if (item.iconOnly && (itemText !== undefined || item.tooltipHostProps)) {
       return (
         <TooltipHost content={itemText} {...item.tooltipHostProps}>
           {this._commandButton(item, commandButtonProps)}

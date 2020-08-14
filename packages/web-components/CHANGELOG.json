@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/web-components_v0.1.5",
+      "version": "0.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: add full width to text-area and text-field controls to expand properly with component",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "b9a825d40f0e6549802284afc3ba4d06778f5e01",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@fluentui/web-components_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: ensure radio control does not shrink",
+            "author": "chhol@microsoft.com",
+            "commit": "68d4bb69e3da8146eca3bada175669f1f32e8629",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2020 05:47:07 GMT",
       "tag": "@fluentui/web-components_v0.1.3",
       "version": "0.1.3",
