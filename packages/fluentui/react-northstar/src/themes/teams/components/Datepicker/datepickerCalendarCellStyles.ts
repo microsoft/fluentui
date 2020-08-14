@@ -24,8 +24,8 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
 
       borderRadius: pxToRem(2),
       cursor: 'pointer',
-      background: 'none',
-      border: 'none',
+      border: v.datepickerCalendarCellBorder,
+      position: 'relative',
 
       backgroundColor: v.datepickerCalendarCellBackgroundColor,
       color: v.datepickerCalendarCellColor,
