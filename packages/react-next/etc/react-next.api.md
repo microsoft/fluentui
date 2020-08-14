@@ -6,6 +6,7 @@
 
 import { BaseSlots } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
+import * as CSS from 'csstype';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
@@ -38,6 +39,7 @@ import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/component
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
@@ -124,12 +126,7 @@ export const CoachmarkBase: React.ForwardRefExoticComponent<ICoachmarkProps & Re
 export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public (undocumented)
-export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGridCellProps, {}> {
-    // (undocumented)
-    static defaultProps: Partial<IColorPickerGridCellProps>;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps>;
 
 // @public
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
@@ -534,7 +531,7 @@ export type ICoachmarkTypes = ICoachmarkProps;
 
 // @public (undocumented)
 export interface IColorCellProps {
-    color?: string;
+    color: string;
     id: string;
     index?: number;
     label?: string;
@@ -544,7 +541,7 @@ export interface IColorCellProps {
 export interface IColorPickerGridCellProps {
     borderWidth?: number;
     circle?: boolean;
-    color?: string;
+    color: string;
     disabled?: boolean;
     height?: number;
     // @deprecated
@@ -1727,15 +1724,20 @@ export interface ISwatchColorPickerProps {
     className?: string;
     colorCells: IColorCellProps[];
     columnCount: number;
+    defaultSelectedId?: string | undefined;
     disabled?: boolean;
     doNotContainWithinFocusZone?: boolean;
     focusOnHover?: boolean;
     getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
     id?: string;
+    // @deprecated (undocumented)
     isControlled?: boolean;
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
+    // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
+    onChange?: (event: React_2.MouseEvent<HTMLElement>, color?: string) => void;
+    // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
     // @deprecated (undocumented)
     positionInSet?: number;
@@ -1750,7 +1752,13 @@ export interface ISwatchColorPickerProps {
 // @public (undocumented)
 export interface ISwatchColorPickerState {
     // (undocumented)
-    selectedIndex?: number;
+    cellFocused: boolean;
+    // (undocumented)
+    isNavigationIdle: boolean;
+    // (undocumented)
+    navigationIdleDelay: number;
+    // (undocumented)
+    navigationIdleTimeoutId: number | undefined;
 }
 
 // @public
@@ -2275,17 +2283,7 @@ export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
-export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
-    constructor(props: ISwatchColorPickerProps);
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: ISwatchColorPickerProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
-}
+export const SwatchColorPickerBase: React.ForwardRefExoticComponent<ISwatchColorPickerProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;

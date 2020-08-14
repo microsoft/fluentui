@@ -5,7 +5,7 @@ import {
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles,
 } from './SwatchColorPicker.types';
-import { Grid } from '../../Utilities/grid/Grid';
+import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 import {
@@ -14,9 +14,9 @@ import {
   useSetTimeout,
   useControllableValue,
   useWarnings,
-  useMergedRefs,
+  // useMergedRefs,
 } from '@uifabric/react-hooks';
-import { IGridProps } from '../../Utilities/grid/Grid.types';
+import { IGridProps } from '../../utilities/grid/Grid.types';
 
 export interface ISwatchColorPickerState {
   isNavigationIdle: boolean;
