@@ -93,13 +93,13 @@ function useSelectedItemsState({
         }
         const selectedIndex = getSelectedIndex(null);
         return selectedIndex !== -1 ? [selectedIndex] : [];
-      } else if (!Array.isArray(selectedKey)) {
-        const selectedIndex = getSelectedIndex(selectedKey);
+      } else if (!Array.isArray(selectedKeyPropToUse)) {
+        const selectedIndex = getSelectedIndex(selectedKeyPropToUse);
         return selectedIndex !== -1 ? [selectedIndex] : [];
       }
 
       const returnValue: number[] = [];
-      for (const key of selectedKey) {
+      for (const key of selectedKeyPropToUse) {
         const selectedIndex = getSelectedIndex(key);
         selectedIndex !== -1 && returnValue.push(selectedIndex);
       }
@@ -146,7 +146,10 @@ function useSelectedItemsState({
       }
     }
 
-    if (selectedKeyPropToUse && (selectedKeyPropToUse !== selectedIndices || didOptionsChange)) {
+    if (
+      (selectedKeyPropToUse !== undefined || !oldOptions) &&
+      (selectedKeyPropToUse !== selectedIndices || didOptionsChange)
+    ) {
       setSelectedIndices(getSelectedIndexes());
     }
   }, [
