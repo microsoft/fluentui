@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
-import { Text, Button } from '@fluentui/react-northstar';
+import { Text, Button, Divider } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX } from '@fluentui/docs-components';
 
@@ -555,6 +555,7 @@ export const Designer: React.FunctionComponent = () => {
           }}
         >
           <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+          <Divider style={{ margin: '1rem' }} />
           <ComponentTree
             tree={jsonTree}
             selectedComponent={selectedComponent}
