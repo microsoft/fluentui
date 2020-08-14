@@ -59,7 +59,6 @@ export function styled<
   customizable?: ICustomizableProps,
   pure?: boolean,
 ): React.FunctionComponent<TComponentProps>;
-
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
@@ -72,7 +71,6 @@ export function styled<
   customizable?: ICustomizableProps,
   pure?: boolean,
 ): React.ForwardRefExoticComponent<React.PropsWithoutRef<TComponentProps> & React.RefAttributes<TRef>>;
-
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
