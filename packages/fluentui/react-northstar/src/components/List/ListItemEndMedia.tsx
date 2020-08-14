@@ -3,8 +3,8 @@ import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 export interface ListItemEndMediaOwnProps {
-  selectable?: boolean;
   navigable?: boolean;
+  selectable?: boolean;
 }
 export interface ListItemEndMediaProps extends ListItemEndMediaOwnProps, BoxProps {}
 
@@ -23,8 +23,9 @@ export const ListItemEndMedia = compose<
 >(Box, {
   className: listItemEndMediaClassName,
   displayName: 'ListItemEndMedia',
+  mapPropsToStyles: ({ navigable, selectable }) => ({ navigable, selectable }),
 
-  handledProps: [],
+  handledProps: ['navigable', 'selectable'],
   overrideStyles: true,
   shorthandConfig: {
     mappedProp: 'content',

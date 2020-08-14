@@ -24,6 +24,7 @@ export const ListItemHeader = compose<
 >(Box, {
   className: listItemHeaderClassName,
   displayName: 'ListItemHeader',
+  mapPropsToStylesProps: ({ hasContent, hasHeaderMedia, truncate }) => ({ hasContent, hasHeaderMedia, truncate }),
 
   handledProps: ['hasContent', 'hasHeaderMedia', 'truncate'],
   overrideStyles: true,

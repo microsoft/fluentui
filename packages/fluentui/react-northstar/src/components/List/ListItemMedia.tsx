@@ -20,6 +20,7 @@ export const ListItemMedia = compose<'div', ListItemMediaOwnProps, ListItemMedia
   {
     className: listItemMediaClassName,
     displayName: 'ListItemMedia',
+    mapPropsToStylesProps: ({ hasContent, hasHeader, important }) => ({ hasContent, hasHeader, important }),
 
     handledProps: ['hasContent', 'hasHeader', 'important'],
     overrideStyles: true,
