@@ -14,7 +14,6 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
 
   const selection = new Selection();
   const [draggedItem, setDraggedItem] = React.useState<IPersona>();
-  const [draggedIndex, setDraggedIndex] = React.useState(-1);
   const dragDropHelper = new DragDropHelper({
     selection: selection,
     minimumPixelsForDrag: 5,
@@ -25,8 +24,8 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
     backgroundColor: theme.palette.neutralLight,
   });
 
-  const _insertBeforeItem = (item: T): void => {
-    const draggedItems = selection.isIndexSelected(draggedIndex) ? (selection.getSelection() as T[]) : [draggedItem!];
+  const _insertBeforeItem = (item: T, itemToInsert: IPersona): void => {
+    const draggedItems = [itemToInsert];
     const insertIndex = currentSelectedItems.indexOf(item);
     const items = currentSelectedItems.filter(current => draggedItems.indexOf(current) === -1);
     items.splice(insertIndex, 0, ...draggedItems);
@@ -41,14 +40,18 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
 
   const _onDrop = (item?: any, event?: DragEvent): void => {
     if (draggedItem) {
-      _insertBeforeItem(item);
+      _insertBeforeItem(item, draggedItem);
     } else if (event?.dataTransfer) {
       event.preventDefault();
       var data = event.dataTransfer.items;
       for (var i = 0; i < data.length; i++) {
-        if (data[i].kind == 'string' && data[i].type == 'recipient') {
+        if (data[i].kind == 'string' && data[i].type == 'persona') {
           data[i].getAsString(function(s) {
-            console.log('... Drop: ' + s);
+            people.forEach(suggestionItem => {
+              if (suggestionItem.text === s) {
+                _insertBeforeItem(item, suggestionItem);
+              }
+            });
           });
         }
       }
@@ -57,18 +60,16 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
     setDraggedItem(item);
-    setDraggedIndex(itemIndex!);
 
     if (event) {
       var dataList = event?.dataTransfer?.items;
       var str = (draggedItem as IPersonaProps).text;
-      dataList?.add(str || '', 'recipient');
+      dataList?.add(str || '', 'persona');
     }
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
     setDraggedItem(undefined);
-    setDraggedIndex(-1);
     if (event) {
       var dataList = event?.dataTransfer?.items;
       // Clear any remaining drag data
