@@ -106,10 +106,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     [iframeCoordinatesToWindowCoordinates, onMoveComponent],
   );
 
-  const handleKeyDown = e => {
-    onKeyDown(e);
-  };
-
   const debugSize = '8px';
 
   React.useEffect(() => {
@@ -293,7 +289,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 onDropPositionChange={onDropPositionChange}
               />
             )}
-            <EventListener type="keydown" listener={handleKeyDown} target={document} />
+            <EventListener type="keydown" listener={onKeyDown} target={document} />
             <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
