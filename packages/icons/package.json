@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/icons",
-  "version": "7.3.72",
+  "version": "7.3.73",
   "description": "Fluent UI React icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.21",
-    "@uifabric/styling": "^7.14.12",
+    "@uifabric/styling": "^7.14.13",
     "tslib": "^1.10.0"
   }
 }

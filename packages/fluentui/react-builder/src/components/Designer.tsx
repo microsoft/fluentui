@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
-import { Text, Button } from '@fluentui/react-northstar';
+import { Text, Button, Divider } from '@fluentui/react-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX } from '@fluentui/docs-components';
 
@@ -221,13 +221,17 @@ const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action
       break;
 
     case 'UNDO':
-      draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.jsonTree = draftState.history.pop();
+      if (draftState.history.length > 0) {
+        draftState.redo.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.history.pop();
+      }
       break;
 
     case 'REDO':
-      draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      draftState.jsonTree = draftState.redo.pop();
+      if (draftState.redo.length > 0) {
+        draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+        draftState.jsonTree = draftState.redo.pop();
+      }
       break;
 
     default:
@@ -437,6 +441,40 @@ export const Designer: React.FunctionComponent = () => {
     // FIXME: remove tree_lz from current URL
   }, [dispatch]);
 
+  const hotkeys = {
+    'Ctrl+z': handleUndo,
+    'Shift+P': handleGoToParentComponent,
+    'Ctrl+Shift+Z': handleRedo,
+    Delete: handleDeleteComponent,
+    'Shift+D': () => {
+      setMode('design');
+    },
+    'Shift+U': () => {
+      setMode('use');
+    },
+    'Shift+B': () => {
+      setMode('build');
+    },
+    'Shift+C': () => {
+      handleShowCodeChange(!state.showCode);
+    },
+    'Shift+J': () => {
+      handleShowJSONTreeChange(!showJSONTree);
+    },
+  };
+
+  const handleKeyDown = React.useCallback(
+    e => {
+      let command = '';
+      command += e.altKey ? 'Alt+' : '';
+      command += e.ctrlKey | e.metaKey ? 'Ctrl+' : '';
+      command += e.shiftKey ? 'Shift+' : '';
+      command += e.key;
+      hotkeys.hasOwnProperty(command) && hotkeys[command]();
+    },
+    [hotkeys],
+  );
+
   const selectedComponent =
     !draggingElement &&
     mode !== 'use' &&
@@ -455,6 +493,7 @@ export const Designer: React.FunctionComponent = () => {
         overflow: 'hidden',
       }}
     >
+      <EventListener type="keydown" listener={handleKeyDown} target={document} />
       {draggingElement && (
         <>
           <EventListener type="mousemove" listener={handleDrag} target={document} />
@@ -516,6 +555,7 @@ export const Designer: React.FunctionComponent = () => {
           }}
         >
           <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+          <Divider style={{ margin: '1rem' }} />
           <ComponentTree
             tree={jsonTree}
             selectedComponent={selectedComponent}
@@ -571,6 +611,7 @@ export const Designer: React.FunctionComponent = () => {
                   isSelecting={isSelecting || !!draggingElement}
                   onMouseMove={handleDrag}
                   onMouseUp={handleCanvasMouseUp}
+                  onKeyDown={handleKeyDown}
                   onSelectComponent={handleSelectComponent}
                   onDropPositionChange={handleDropPositionChange}
                   jsonTree={jsonTree}
@@ -640,7 +681,6 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-            <pre>{JSON.stringify(selectedJSONTreeElement.props, null, 2)}</pre>
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
             {selectedJSONTreeElement && (
               <Knobs

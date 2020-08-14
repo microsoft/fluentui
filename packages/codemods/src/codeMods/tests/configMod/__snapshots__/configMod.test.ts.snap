@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests a simple data-driven codeMod can rename props in CompoundButton and Dropdown 1`] = `
+"import * as React from 'react';
+import { CompoundButton } from 'office-ui-fabric-react/lib/Button';
+
+export class RenderButton extends React.Component<LocalButtonProps> {
+  public render(): JSX.Element {
+    const { toggled, id, ...restProps } = this.props;
+    return (
+      <div>
+        <CompoundButton {...this.props} {...restProps} id={'d2'} checked={toggled}>
+          Button!
+        </CompoundButton>
+      </div>
+    );
+  }
+}
+
+export interface LocalButtonProps {
+  id: string;
+  description?: string;
+  imageSource: string;
+  toggled?: boolean;
+}
+"
+`;
+
+exports[`Tests a simple data-driven codeMod can rename props in CompoundButton and Dropdown 2`] = `
+"import * as React from 'react';
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const RenderDropdown = (props: any) => {
+  return (
+    <div>
+      <Dropdown options={[]} dropdownWidth={0} placeHolder={'placeholder!'} disabled={true} />
+      <Dropdown options={[]} dropdownWidth={5} placeHolder={'placeholder!'} disabled={false}>
+        {' '}
+        Woo Hoo!{' '}
+      </Dropdown>
+    </div>
+  );
+};
+"
+`;
