@@ -11,6 +11,7 @@ import {
   SearchBox,
   Link,
   Label,
+  Text,
 } from 'office-ui-fabric-react';
 import {
   AzureCustomizationsLight,
@@ -43,6 +44,7 @@ import { TeachingBubbleBasicExample } from '../components/TeachingBubble';
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
+      <Text>13px body text</Text>
       <TeachingBubbleBasicExample />
       <PivotBasicExample />
       <Label>Buttons</Label>

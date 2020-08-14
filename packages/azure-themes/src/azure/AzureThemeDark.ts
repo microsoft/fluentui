@@ -123,7 +123,7 @@ export const AzureThemeDark: ITheme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
   },
   palette: {
