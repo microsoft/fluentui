@@ -17,6 +17,7 @@ TODO: Diff of OUFR vs date-time Calendar
 
 - Moved `root` class to the actual root element by replacing `applicationRole`.
 - Removed `applicationRole` from IChoiceGroupStyles.
+- Removed deprecated `onChanged` prop.
 
 ### Coachmark
 
