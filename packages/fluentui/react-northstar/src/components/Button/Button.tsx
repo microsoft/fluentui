@@ -182,26 +182,6 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props: ButtonP
       variables,
     }),
     rtl: context.rtl,
-    composeOptions: {
-      mapPropsToStylesPropsChain: [
-        (props: ButtonProps) => ({
-          text: props.text,
-          primary: props.primary,
-          disabled: props.disabled,
-          circular: props.circular,
-          size: props.size,
-          loading: props.loading,
-          inverted: props.inverted,
-          iconOnly: props.iconOnly,
-          iconPosition: props.iconPosition,
-          fluid: props.fluid,
-          hasContent: !!props.content,
-        }),
-      ],
-      displayNames: [Button.displayName],
-      className: Button.className,
-      displayName: Button.displayName,
-    },
     unstable_props: props,
   });
 

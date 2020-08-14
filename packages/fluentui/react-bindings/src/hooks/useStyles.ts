@@ -69,12 +69,11 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
   } = options;
   const componentStylesProps = mapPropsToStyles();
 
+  const mapPropsToStylesPropsChain = composeOptions?.mapPropsToStylesPropsChain || [mapPropsToStyles];
+
   // `composeProps` should include all props including stylesProps as they can contain state
   const composeProps = { ...unstable_props, ...componentStylesProps };
-  const composeStylesProps = composeOptions?.mapPropsToStylesPropsChain?.reduce(
-    (acc, fn) => ({ ...acc, ...fn(composeProps) }),
-    {},
-  );
+  const composeStylesProps = mapPropsToStylesPropsChain?.reduce((acc, fn) => ({ ...acc, ...fn(composeProps) }), {});
 
   // Stores debug information for component.
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
