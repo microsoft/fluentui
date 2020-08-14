@@ -4960,25 +4960,6 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@uifabric/react-hooks@^7.7.3":
-  version "7.7.3"
-  resolved "https://registry.yarnpkg.com/@uifabric/react-hooks/-/react-hooks-7.7.3.tgz#1f33654e60f07af1e25707ec57705f9ffbd31cef"
-  integrity sha512-WAhMcnQSRgSQr0wkw8paESqxHCDWL2vdgTcDNKSj550GpAzD9BgZSBp3v3yln/qA4pN/nfjeU0CX9HujidSbMA==
-  dependencies:
-    "@uifabric/set-version" "^7.0.19"
-    "@uifabric/utilities" "^7.26.1"
-    tslib "^1.10.0"
-
-"@uifabric/utilities@^7.26.1":
-  version "7.26.1"
-  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-7.26.1.tgz#fc6add065a524173f17a4b0c2f3a2ccbbeca96de"
-  integrity sha512-FX/Gu4XY6YlvBEyTyEeXUOtPpgTy1irHpSAE/vDbDZQlksVNv4FPnVingQZI9T/rA96ivP4q1PUutrb3X3hfsw==
-  dependencies:
-    "@uifabric/merge-styles" "^7.16.4"
-    "@uifabric/set-version" "^7.0.19"
-    prop-types "^15.7.2"
-    tslib "^1.10.0"
-
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
