@@ -327,7 +327,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
   return (
     <Grid
       {...((props as unknown) as IGridProps)}
-      // ref={ref}
+      ref={ref}
       id={id}
       items={getItemsWithIndex}
       columnCount={columnCount}
