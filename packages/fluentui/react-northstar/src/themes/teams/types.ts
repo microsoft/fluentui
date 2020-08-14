@@ -96,6 +96,12 @@ import { SplitButtonStylesProps } from '../../components/SplitButton/SplitButton
 import { CarouselNavigationStylesProps } from '../../components/Carousel/CarouselNavigation';
 import { CarouselItemStylesProps } from '../../components/Carousel/CarouselItem';
 import { CarouselStylesProps } from '../../components/Carousel/Carousel';
+import { SkeletonStylesProps } from '../../components/Skeleton/Skeleton';
+import { SkeletonTextStylesProps } from '../../components/Skeleton/SkeletonText';
+import { SkeletonShapeStylesProps } from '../../components/Skeleton/SkeletonShape';
+import { SkeletonLineStylesProps } from '../../components/Skeleton/SkeletonLine';
+import { SkeletonAvatarStylesProps } from '../../components/Skeleton/SkeletonAvatar';
+import { SkeletonInputStylesProps } from '../../components/Skeleton/SkeletonInput';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -160,6 +166,12 @@ export type TeamsThemeStylesProps = {
   ReactionGroup: ReactionGroupStylesProps;
   Segment: SegmentStylesProps;
   Slider: SliderStylesProps;
+  Skeleton: SkeletonStylesProps;
+  SkeletonLine: SkeletonLineStylesProps;
+  SkeletonShape: SkeletonShapeStylesProps;
+  SkeletonAvatar: SkeletonAvatarStylesProps;
+  SkeletonInput: SkeletonInputStylesProps;
+  SkeletonText: SkeletonTextStylesProps;
   SplitButton: SplitButtonStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarStylesProps;
