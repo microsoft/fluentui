@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "office-ui-fabric-react_v7.128.1",
+      "version": "7.128.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers: Update to be concurrent compatible",
+            "author": "joschect@microsoft.com",
+            "commit": "94206626814975b383a2529a72b0978a49691164",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Link: Fixing High Contrast styling of links rendered as buttons.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8866e2b7858c1d45452d7cb5890b1dab2d814d10",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Aug 2020 12:41:58 GMT",
       "tag": "office-ui-fabric-react_v7.128.0",
       "version": "7.128.0",

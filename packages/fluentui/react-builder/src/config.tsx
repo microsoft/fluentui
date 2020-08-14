@@ -12,6 +12,33 @@ type FiberNavigator = FUI.FiberNavigator;
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
+export const COMPONENT_GROUP = {
+  Surfaces: ['Popup', 'Dialog'],
+  Content: [
+    'Text',
+    'Image',
+    'Avatar',
+    'Header',
+    'Divider',
+    'Embed',
+    'Alert',
+    'Attachment',
+    'Datepicker',
+    'Label',
+    'Loader',
+    'Reaction',
+    'Chat',
+    'SvgIcon',
+    'Status',
+    'Tooltip',
+    'Video',
+  ],
+  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
+  Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
+  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
+  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+};
+
 export const DRAGGING_ELEMENTS = {
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
@@ -203,8 +230,6 @@ export const DRAGGING_ELEMENTS = {
   Header: {
     props: { content: 'Header', description: 'Description' } as FUI.HeaderProps,
   },
-
-  // HierarchicalTree: { props: { content: 'HierarchicalTree' } as FUI.HierarchicalTreeProps },
 
   // Icon: { props: { name: 'like' } as FUI.IconProps },
 
