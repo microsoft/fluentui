@@ -204,8 +204,6 @@ export const DRAGGING_ELEMENTS = {
     props: { content: 'Header', description: 'Description' } as FUI.HeaderProps,
   },
 
-  // HierarchicalTree: { props: { content: 'HierarchicalTree' } as FUI.HierarchicalTreeProps },
-
   // Icon: { props: { name: 'like' } as FUI.IconProps },
 
   Image: {
