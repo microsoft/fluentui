@@ -30,7 +30,6 @@ const createResolver = <TType, TValue>(local: LocalState<TType, TValue>) => (new
 export const createMergedRef = <TType, TValue = null>(value?: TValue) => {
   const local: LocalState<TType, TValue> = ({
     refs: [],
-    resolver: undefined,
   } as unknown) as LocalState<TType, TValue>;
 
   return (
