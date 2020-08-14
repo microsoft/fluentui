@@ -32,12 +32,13 @@ const useComponentRef = (props: IChoiceGroupProps, keyChecked: string | number |
         }
       },
     }),
-    [props, keyChecked],
+    [props, keyChecked, id],
   );
 };
 
 function useDebugWarnings(props: IChoiceGroupProps) {
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useWarnings({
       name: 'Checkbox',
       props,
