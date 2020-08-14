@@ -1,43 +1,53 @@
 import { pxToRem } from '../../../../utils';
 
 export interface DatepickerVariables {
-  datepickerCalendarCellBorder: string;
-  datepickerCalendarCellHeight: string;
-  datepickerCalendarCellWidth: string;
-  datepickerCalendarCellBackgroundColor: string;
-  datepickerCalendarCellColor: string;
-  datepickerCalendarCellUnfocusedColor: string;
-  datepickerCalendarCellSelectedColor: string;
-  datepickerCalendarCellSelectedBackgroundColor: string;
-  datepickerCalendarCellReferenceColor: string;
-  datepickerCalendarCellReferenceBackgroundColor: string;
-  datepickerCalendarCellHoverColor: string;
-  datepickerCalendarCellHoverBackgroundColor: string;
-  datepickerCalendarCellDisabledColor: string;
-  datepickerCalendarCellDisabledBackgroundColor: string;
+  calendarCellBorder: string;
+  calendarCellHeight: string;
+  calendarCellWidth: string;
+  calendarCellBorderRadius: string;
+  calendarCellBackgroundColor: string;
+  calendarCellColor: string;
+  calendarCellUnfocusedColor: string;
+  calendarCellSelectedColor: string;
+  calendarCellSelectedBackgroundColor: string;
+  calendarCellReferenceColor: string;
+  calendarCellReferenceBackgroundColor: string;
+  calendarCellReferenceBorderRadius: string;
+  calendarCellHoverColor: string;
+  calendarCellHoverBackgroundColor: string;
+  calendarCellDisabledColor: string;
+  calendarCellDisabledBackgroundColor: string;
 
-  datepickerCalendarHeaderCellFontWeight: number;
+  calendarHeaderCellFontWeight: number;
 
-  datepickerCalendarHeaderMonthFontWeight;
+  calendarHeaderPaddingTop: string;
+  calendarHeaderPaddingBottom: string;
+  calendarHeaderLabelPaddingLeft: string;
+  calendarHeaderLabelFontWeight;
 }
 
 export const datepickerVariables = (siteVars): DatepickerVariables => ({
-  datepickerCalendarCellBorder: 'none',
-  datepickerCalendarCellHeight: pxToRem(32),
-  datepickerCalendarCellWidth: pxToRem(32),
-  datepickerCalendarCellBackgroundColor: siteVars.colorScheme.default.background,
-  datepickerCalendarCellColor: 'inherit',
-  datepickerCalendarCellUnfocusedColor: siteVars.colorScheme.brand.foregroundDisabled,
-  datepickerCalendarCellSelectedColor: siteVars.colorScheme.brand.background4,
-  datepickerCalendarCellSelectedBackgroundColor: siteVars.colorScheme.brand.borderActive1,
-  datepickerCalendarCellReferenceBackgroundColor: siteVars.colorScheme.brand.backgroundFocus,
-  datepickerCalendarCellReferenceColor: siteVars.colorScheme.white.foreground,
-  datepickerCalendarCellHoverBackgroundColor: siteVars.colorScheme.brand.backgroundHover2,
-  datepickerCalendarCellHoverColor: 'inherit',
-  datepickerCalendarCellDisabledColor: siteVars.colorScheme.brand.foregroundDisabled,
-  datepickerCalendarCellDisabledBackgroundColor: siteVars.colorScheme.default.background,
+  calendarCellBorder: 'none',
+  calendarCellHeight: pxToRem(32),
+  calendarCellWidth: pxToRem(32),
+  calendarCellBorderRadius: pxToRem(2),
+  calendarCellBackgroundColor: siteVars.colorScheme.default.background,
+  calendarCellColor: 'inherit',
+  calendarCellUnfocusedColor: siteVars.colorScheme.brand.foregroundDisabled,
+  calendarCellSelectedColor: siteVars.colorScheme.brand.background4,
+  calendarCellSelectedBackgroundColor: siteVars.colorScheme.brand.borderActive1,
+  calendarCellReferenceBackgroundColor: siteVars.colorScheme.brand.backgroundFocus,
+  calendarCellReferenceColor: siteVars.colorScheme.white.foreground,
+  calendarCellReferenceBorderRadius: '50%',
+  calendarCellHoverBackgroundColor: siteVars.colorScheme.brand.backgroundHover2,
+  calendarCellHoverColor: 'inherit',
+  calendarCellDisabledColor: siteVars.colorScheme.brand.foregroundDisabled,
+  calendarCellDisabledBackgroundColor: siteVars.colorScheme.default.background,
 
-  datepickerCalendarHeaderCellFontWeight: siteVars.fontWeightRegular,
+  calendarHeaderCellFontWeight: siteVars.fontWeightRegular,
 
-  datepickerCalendarHeaderMonthFontWeight: siteVars.fontWeightBold,
+  calendarHeaderPaddingTop: pxToRem(5),
+  calendarHeaderPaddingBottom: pxToRem(5),
+  calendarHeaderLabelPaddingLeft: pxToRem(10),
+  calendarHeaderLabelFontWeight: siteVars.fontWeightBold,
 });

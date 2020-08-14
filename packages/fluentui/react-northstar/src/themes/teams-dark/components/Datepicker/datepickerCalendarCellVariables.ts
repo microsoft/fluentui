@@ -2,6 +2,6 @@ import { DatepickerVariables } from '../../../teams/components/Datepicker/datepi
 
 export const datepickerCalendarCellVariables = (siteVars: any): Partial<DatepickerVariables> => {
   return {
-    datepickerCalendarCellSelectedColor: siteVars.colors.white,
+    calendarCellSelectedColor: siteVars.colors.white,
   };
 };

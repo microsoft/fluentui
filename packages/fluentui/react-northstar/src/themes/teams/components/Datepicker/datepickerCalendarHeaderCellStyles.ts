@@ -9,7 +9,7 @@ export const datepickerCalendarHeaderCellStyles: ComponentSlotStylesPrepared<
   root: ({ variables: v }): ICSSInJSStyle => {
     return {
       textAlign: 'center',
-      fontWeight: v.datepickerCalendarHeaderCellFontWeight,
+      fontWeight: v.calendarHeaderCellFontWeight,
     };
   },
 };

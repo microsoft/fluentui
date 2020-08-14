@@ -301,7 +301,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                           }),
                       }),
                     )}
-                    {_.map(visibledGrid, (week, idx) => renderWeekRow(week))}
+                    {_.map(visibledGrid, week => renderWeekRow(week))}
                   </>
                 ),
               }),

@@ -2,7 +2,6 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DatepickerVariables } from './datepickerVariables';
 import { DatepickerCalendarCellStylesProps } from '../../../../components/Datepicker/DatepickerCalendarCell';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { pxToRem } from '../../../../utils';
 
 export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarCellStylesProps,
@@ -19,45 +18,45 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
 
     return {
       textAlign: 'center',
-      height: v.datepickerCalendarCellHeight,
-      width: v.datepickerCalendarCellWidth,
+      height: v.calendarCellHeight,
+      width: v.calendarCellWidth,
 
-      borderRadius: pxToRem(2),
+      borderRadius: v.calendarCellBorderRadius,
       cursor: 'pointer',
-      border: v.datepickerCalendarCellBorder,
+      border: v.calendarCellBorder,
       position: 'relative',
 
-      backgroundColor: v.datepickerCalendarCellBackgroundColor,
-      color: v.datepickerCalendarCellColor,
+      backgroundColor: v.calendarCellBackgroundColor,
+      color: v.calendarCellColor,
 
       ...borderFocusStyles,
 
       ...(p.reference && {
-        backgroundColor: v.datepickerCalendarCellReferenceBackgroundColor,
-        color: v.datepickerCalendarCellReferenceColor,
-        borderRadius: '50%',
+        backgroundColor: v.calendarCellReferenceBackgroundColor,
+        color: v.calendarCellReferenceColor,
+        borderRadius: v.calendarCellReferenceBorderRadius,
       }),
 
       ...(p.unfocused && {
-        color: v.datepickerCalendarCellUnfocusedColor,
+        color: v.calendarCellUnfocusedColor,
       }),
 
       ...(p.selected && {
-        color: v.datepickerCalendarCellSelectedColor,
-        backgroundColor: v.datepickerCalendarCellSelectedBackgroundColor,
+        color: v.calendarCellSelectedColor,
+        backgroundColor: v.calendarCellSelectedBackgroundColor,
       }),
 
       ...(!p.disabled && {
         ':hover': {
-          backgroundColor: v.datepickerCalendarCellHoverBackgroundColor,
-          color: v.datepickerCalendarCellHoverColor,
+          backgroundColor: v.calendarCellHoverBackgroundColor,
+          color: v.calendarCellHoverColor,
         },
       }),
 
       ...(p.disabled && {
-        color: v.datepickerCalendarCellDisabledColor,
+        color: v.calendarCellDisabledColor,
         cursor: 'default',
-        backgroundColor: v.datepickerCalendarCellDisabledBackgroundColor,
+        backgroundColor: v.calendarCellDisabledBackgroundColor,
       }),
     };
   },
