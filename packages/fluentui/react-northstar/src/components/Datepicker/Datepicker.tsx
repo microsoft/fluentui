@@ -303,6 +303,7 @@ Datepicker.propTypes = {
   placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
+  calendarOpenState: PropTypes.bool,
 
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
@@ -357,7 +358,6 @@ Datepicker.defaultProps = {
   dateRangeType: DateRangeType.Day,
 
   allowManualInput: true,
-  defaultCalendarOpenState: false,
   required: false,
 
   ...DEFAULT_CALENDAR_STRINGS,
