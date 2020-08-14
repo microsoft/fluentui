@@ -27,18 +27,20 @@ jobs:
           yarn checkchange
         displayName: check change
 
-      ## TODO: clean up the @fluentui/docs build and @fluentui/react-northstar test WRT component-info generation
-      ## the dependency order cannot be expressed with lage configuration currently
+      ## only do scoped builds with PRs
       - script: |
-          yarn lage build --only --verbose --no-cache --grouped
-        displayName: build
+          yarn lage build test lint --verbose --no-cache --grouped --since $(target_branch)
+        displayName: build, test, lint (pr, scoped)
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
+      ## duplicated build step, but without --since flag for master CI builds
       - script: |
-          yarn lage test lint --only --verbose --no-cache --grouped
-        displayName: test, lint
+          yarn lage build test lint --verbose --no-cache --grouped
+        displayName: build, test, lint (master)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
