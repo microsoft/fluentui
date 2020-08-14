@@ -6,5 +6,6 @@ export const datepickerCalendarCellVariables = (siteVars: any): Partial<Datepick
     datepickerCalendarCellHoverColor: siteVars.colors.black,
     datepickerCalendarCellReferenceColor: siteVars.colors.black,
     datepickerCalendarCellUnfocusedColor: siteVars.colors.white,
+    datepickerCalendarCellDisabledColor: siteVars.colors.white,
   };
 };
