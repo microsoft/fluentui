@@ -10,7 +10,7 @@ const SyntaxHighlighter = require<{
   default: React.ComponentType<SyntaxHighlighterProps> & { registerLanguage: (lang: string, func: any) => void };
 }>('react-syntax-highlighter/dist/esm/prism-light').default;
 const ts = require<any>('react-syntax-highlighter/dist/esm/languages/prism/tsx').default;
-const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/esm/styles/prism/vs').default;
+const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/prism/vs').default;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Register languages
