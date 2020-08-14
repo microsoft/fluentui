@@ -45,7 +45,7 @@ const _allInstances: {
   [key: string]: FocusZone;
 } = {};
 
-const _outerZones: Set<FocusZone> = new Set();
+const _outerZones: Map<Window, Set<FocusZone>> = new Map<Window, Set<FocusZone>>();
 
 interface Point {
   left: number;
@@ -58,9 +58,9 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
 /**
  * Handle global tab presses so that we can patch tabindexes on the fly.
  */
-function _onKeyDownCapture(ev: KeyboardEvent) {
+function _onKeyDownCapture(this: Window, ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
-    _outerZones.forEach(zone => zone.updateTabIndexes());
+    _outerZones.get(this)?.forEach(zone => zone.updateTabIndexes());
   }
 }
 
@@ -101,8 +101,8 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
   static className = 'ms-FocusZone';
 
   /** Used for testing purposes only. */
-  static getOuterZones(): number {
-    return _outerZones.size;
+  static getOuterZones(wdw: Window): number {
+    return _outerZones.get(wdw)?.size || 0;
   }
 
   _root: { current: HTMLElement | null } = { current: null };
@@ -156,6 +156,8 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
 
     // @ts-ignore
     this.windowElement = getWindow(this._root.current);
+    // console.log(this.windowElement);
+    // console.log(_outerZones);
     let parentElement = getParent(this._root.current, ALLOW_VIRTUAL_ELEMENTS);
     const doc = getDocument(this._root.current);
 
@@ -169,9 +171,13 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
 
     if (!this._isInnerZone) {
-      _outerZones.add(this);
+      if (_outerZones.get(this.windowElement!)) {
+        _outerZones.get(this.windowElement!)?.add(this);
+      } else {
+        _outerZones.set(this.windowElement!, new Set([this]));
+      }
 
-      if (this.windowElement && _outerZones.size === 1) {
+      if (this.windowElement && _outerZones.get(this.windowElement)?.size === 1) {
         this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
       }
     }
@@ -222,9 +228,9 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     delete _allInstances[this._id];
 
     if (!this._isInnerZone) {
-      _outerZones.delete(this);
+      _outerZones.get(this.windowElement!)?.delete(this);
 
-      if (this.windowElement && _outerZones.size === 0) {
+      if (this.windowElement && _outerZones.get(this.windowElement)?.size === 0) {
         this.windowElement.removeEventListener('keydown', _onKeyDownCapture, true);
       }
     }
