@@ -28,7 +28,7 @@ import {
   // createShorthand,
 } from '../../utils';
 import { /* Box, */ BoxProps } from '../Box/Box';
-import { /* Loader, */ LoaderProps } from '../Loader/Loader';
+import { Loader, LoaderProps } from '../Loader/Loader';
 import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonContent, ButtonContentProps } from './ButtonContent';
@@ -213,8 +213,10 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props: ButtonP
       styles: resolvedStyles.icon,
     },
     loader: {
+      as: Loader,
       className: classes.loader,
       styles: resolvedStyles.loader,
+      role: undefined,
     },
     children: /* analogous to the `content` slot in v0 */ {
       as: ButtonContent,
