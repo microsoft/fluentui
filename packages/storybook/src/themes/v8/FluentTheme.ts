@@ -1,11 +1,7 @@
-import { Theme } from '@fluentui/react-theme-provider';
+import { PartialTheme } from '@fluentui/react-theme-provider';
 
-export const FluentTheme: Theme = {
+export const FluentTheme: PartialTheme = {
   tokens: {
-    palette: {
-      accent: '#0078D4',
-    },
-
     body: {
       background: 'white',
       contentColor: 'black',
@@ -13,6 +9,7 @@ export const FluentTheme: Theme = {
 
     accent: {
       background: 'var(--palette-accent)',
+      dividerColor: '#EAEAEA',
       disabled: {
         background: '#FAFAFA',
       },

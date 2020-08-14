@@ -2,6 +2,51 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support v7 theme (ITheme)",
+            "author": "xgao@microsoft.com",
+            "commit": "306edd737757ba27ae55332825d200fddcfa5bd7",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Renaming TokenPlateSet to TokenColorSet",
+            "author": "dzearing@hotmail.com",
+            "commit": "59a535edb9ef5b85fada1259818a3758197ed27d",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding useInlineTokens hook.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jul 2020 12:42:21 GMT",
       "tag": "@fluentui/react-theme-provider_v0.4.0",
       "version": "0.4.0",

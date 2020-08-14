@@ -2,6 +2,36 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating localization defaults and changing type of formatting functions",
+            "author": "karymes@microsoft.com",
+            "commit": "e4e1b36c2724372d3ac6a3fe26c8a2cc1d038128",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "date time utilities unit tests were timezone dependent, because the start date was right on the border between two months and when getting run locally the dates convert to local time zone. changing initial date fixes it",
+            "author": "lorejoh12@gmail.com",
+            "commit": "81c58f809c023b81cd45cb211b0a88aa5c14d249",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 00:30:40 GMT",
       "tag": "@fluentui/date-time-utilities_v7.4.0",
       "version": "7.4.0",

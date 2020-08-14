@@ -7,13 +7,13 @@
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/date-time-utilities": "^7.4.0",
-    "@fluentui/keyboard-key": "^0.2.8",
+    "@fluentui/date-time-utilities": "^7.5.0",
+    "@fluentui/keyboard-key": "^0.2.10",
     "@fluentui/react-bindings": "^0.51.0",
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-component-nesting-registry": "^0.51.0",
     "@fluentui/react-component-ref": "^0.51.0",
-    "@fluentui/react-compose": "^0.13.1",
+    "@fluentui/react-compose": "^0.14.4",
     "@fluentui/react-context-selector": "^0.51.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar-styles-renderer": "^0.51.0",
@@ -30,7 +30,7 @@
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.2",
+    "@fluentui/eslint-plugin": "^0.53.4",
     "@fluentui/react-conformance": "^0.1.0",
     "@testing-library/jest-dom": "^5.1.1",
     "@types/classnames": "^2.2.9",

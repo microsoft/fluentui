@@ -327,7 +327,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                             [styles.monthSelection]: dateRangeType === DateRangeType.Month,
                           },
                         )}
-                        // eslint-disable-next-line react/jsx-no-bind
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
                         onMouseOver={
                           dateRangeType !== DateRangeType.Day && day.isInBounds
@@ -364,7 +363,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                           aria-readonly={true}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
-                          // eslint-disable-next-line react/jsx-no-bind
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}

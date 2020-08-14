@@ -2,6 +2,27 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.109",
+      "version": "7.12.109",
+      "comments": {
+        "none": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@uifabric/example-app-base"
+          },
+          {
+            "comment": "Link: Update to use Text component",
+            "author": "marygans@microsoft.com",
+            "commit": "60bbc7434c612d338197107c29846e0f48115f04",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 00:30:40 GMT",
       "tag": "@uifabric/example-app-base_v7.12.106",
       "version": "7.12.106",

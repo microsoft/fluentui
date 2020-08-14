@@ -8,7 +8,7 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool: 'Self Host Ubuntu'
+pool: 'fluentbuild'
 
 jobs:
   - job: BuildTestLint
@@ -27,40 +27,21 @@ jobs:
           yarn checkchange
         displayName: check change
 
+      ## TODO: clean up the @fluentui/docs build and @fluentui/react-northstar test WRT component-info generation
+      ## the dependency order cannot be expressed with lage configuration currently
       - script: |
-          yarn lage build test lint --verbose --no-cache --grouped
-        displayName: build, test, lint
+          yarn lage build --only --verbose --no-cache --grouped
+        displayName: build
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
-      - task: ArchiveFiles@2
-        inputs:
-          rootFolderOrFile: $(Build.Repository.LocalPath)
-          # Include root folder so archive can just be extracted into $(Pipeline.Workspace)
-          includeRootFolder: true
-          archiveType: 'tar'
-          tarCompression: 'gz'
-          archiveFile: $(Build.ArtifactStagingDirectory)/build.tar.gz
-          replaceExistingArchive: true
-
-      - publish: $(Build.ArtifactStagingDirectory)
-        artifact: Build-PR-$(Build.BuildNumber)
-
       - script: |
-          az --version
-          az extension add -n azure-devops
-          echo $(buildQueuePat) | az devops login --organization https://dev.azure.com/uifabric
-          az devops configure --defaults organization=https://dev.azure.com/uifabric project="fabricpublic" --use-git-aliases true
+          yarn lage test lint --only --verbose --no-cache --grouped
+        displayName: test, lint
         env:
-          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-        displayName: Set up Azure CLI with DevOps
-
-      - script: |
-          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
-        env:
-          AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
-        displayName: Trigger Perf-Test and Screener jobs
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
   - job: ValidateFluent
     workspace:
@@ -85,7 +66,7 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn lage build --since $(target_branch) --scope @fluentui/* --no-deps --verbose --no-cache --grouped
+          yarn lage build --scope @fluentui/e2e --no-deps --verbose --no-cache --grouped
         displayName: build
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
@@ -119,14 +100,15 @@ jobs:
           yarn
         displayName: yarn
 
-      - template: .devops/templates/pr-target-branch.yml
-
       - script: |
-          yarn lage bundle --since $(target_branch) --no-deps --verbose --no-cache --grouped
+          yarn lage bundle --scope @uifabric/pr-deploy-site --no-deps --verbose --no-cache --grouped
         displayName: bundle
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      - publish: $(Build.ArtifactStagingDirectory)
+        artifact: Build-PR-$(Build.BuildNumber)
 
       - task: AzureUpload@1
         displayName: Upload PR deploy site

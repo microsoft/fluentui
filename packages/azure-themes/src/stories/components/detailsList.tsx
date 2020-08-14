@@ -72,7 +72,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
         <Announced message={`Number of items after filter applied: ${items.length}.`} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
-            compact={false}
+            compact={true}
             items={items}
             columns={this._columns}
             setKey="set"

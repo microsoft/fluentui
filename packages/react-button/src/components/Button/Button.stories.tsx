@@ -35,6 +35,21 @@ const ButtonVariants = (props: ButtonProps) => (
   </Stack>
 );
 
+export const ButtonFocus = () => {
+  const buttonRef = React.useRef<HTMLElement | null>(null);
+  return (
+    <Stack>
+      <Button
+        onClick={() => {
+          buttonRef.current?.focus();
+        }}
+      >
+        Focus the other button
+      </Button>
+      <Button ref={buttonRef}>I get focused</Button>
+    </Stack>
+  );
+};
 export const ButtonCss = () => (
   <Stack>
     <Text>A button comes in default and `primary` flavors.</Text>

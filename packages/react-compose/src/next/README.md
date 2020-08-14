@@ -8,7 +8,7 @@ Building a recomposable component requires that we build legos; we put them toge
 
 - **State hooks** - all processing of the component should be done within one or more reusable hooks. The hooks should be allowed to manipulate the state in some reusable way, so that recomposing the component can be easily done.
 - **Render function** - a function which takes in final state and returns JSX. (e.g. `renderButton`)
-- **Component factory function** - a create function which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of the component as needed.
+- **Component factory hook** - a hook which returns `{ state, render }` parts for creating the component. This is used to scaffold a new version of the component as needed.
 - **Style hooks** - hooks which can take in styles and provide appropriate classnames to the anatomy of the component.
 
 With these building blocks, you can compose or recompose the component in numerous ways.
@@ -55,7 +55,7 @@ import * as styles from './Button.scss';
 const useStyles = makeStyles(styles);
 
 const Button = React.forwardRef((props, ref) => {
-  const { state, render } = createButton(props, ref);
+  const { state, render } = useButton(props, ref);
 
   // Inject classNames as needed.
   useStyles(state);
@@ -69,7 +69,7 @@ context, redefine styling, or mix/match behaviors:
 
 ```jsx
 const ToggleButton = React.forwardRef((props, ref) => {
-  const { state, render } = createButton(props, ref);
+  const { state, render } = useButton(props, ref);
 
   // Hand a "checked" and "defaultChecked" state, onClicks to toggle the value,
   // and appropriate a11y attributes.
@@ -158,7 +158,7 @@ Fluent UI components almost always contain sub parts, and these sub parts should
 
 Supporting this dynamic props input requires some helpers:
 
-1. A helper `simplifyShorthand` to simplify the user's input into an object for props merging
+1. A helper `resolveShorthandProps` to simplify the user's input into an object for props merging
 2. The `getSlots` helper to parse the slots out
 
 Here's how this looks:
@@ -166,7 +166,7 @@ Here's how this looks:
 The factory function, which deep clones the props, would need to simplify the shorthand first:
 
 ```jsx
-const createButton = (userProps, ref, defaultProps) => {
+const useButton = (userProps, ref, defaultProps) => {
   const state = mergeProps(
     {
       // default props
@@ -175,7 +175,7 @@ const createButton = (userProps, ref, defaultProps) => {
       icon: { as: 'span' },
     },
     defaultProps, // optional default props from the caller
-    simplifyShorthand(userProps, ['icon']), // simplify the user's props
+    resolveShorthandProps(userProps, ['icon']), // simplify the user's props
   );
 
   // Apply button behaviors.
@@ -219,10 +219,10 @@ mergeProps(props, { ...etc }, { ...etc });
 The `getSlots` function takes in a state object and a list of slot keys with the state, and returns
 `slots` and `slotProps` to be used in rendering the component.
 
-`slotProps` are calculated based on.
+In cases where the `as` prop of the slot represents a primitive element tag name, there are some additional behaviors:
 
-It will also assume that the `as` prop represents the intrinsic element tag name. This will be used
-in determining the `root` slot value and the appropriate filtered `rootProps` for the `root` slot.
+- Props will be automatically filtered based on the element type. E.g. `href` will be passed to `a` tag slots, but not `button` slots.
+- The slot will avoid rendering completely if children are undefined. This is to avoid requiring nearly every slot to be wrapped in a conditional to avoid rendering the parent. You can force rendering primitives without children by passing `null` in for the children. (E.g. `{ as: 'input', children: null }`).
 
 Example:
 
@@ -239,7 +239,7 @@ const Button = props => {
 };
 ```
 
-### simplifyShorthand<TState>(state: TState, slotNames: (keyof TState)[]): TState
+### resolveShorthandProps<TState>(state: TState, slotNames: (keyof TState)[]): TState
 
 Ensures that the given slots are represented using object syntax. This ensures that
 the object can be merged along with other objects.
@@ -247,7 +247,7 @@ the object can be merged along with other objects.
 Example:
 
 ```jsx
-const foo = simplifyShorthand(
+const foo = resolveShorthandProps(
   { a: <JSX/>, b: 'string', c: { ... }, d: 'unchanged' },
   [ 'a', 'b', 'c' ]
 );

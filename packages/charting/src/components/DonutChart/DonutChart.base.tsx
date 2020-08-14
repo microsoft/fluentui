@@ -103,18 +103,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const outerRadius = radius;
     const chartData = data && data.chartData;
     return (
-      <div
-        className={this._classNames.root}
-        // eslint-disable-next-line react/jsx-no-bind
-        ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
-      >
+      <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
         <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
           <div>
-            <svg
-              className={this._classNames.chart}
-              // eslint-disable-next-line react/jsx-no-bind
-              ref={(node: SVGElement | null) => this._setViewBox(node)}
-            >
+            <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
               <Pie
                 width={_width!}
                 height={_height!}

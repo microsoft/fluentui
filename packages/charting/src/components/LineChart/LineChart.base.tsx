@@ -226,7 +226,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const y2 = this._points[i].data[j].y;
         const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
-          /* eslint-disable react/jsx-no-bind */
           lines.push(
             <line
               id={lineId}
@@ -300,7 +299,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 strokeWidth={3}
               />,
             );
-            /* eslint-enable react/jsx-no-bind */
           }
         } else {
           lines.push(

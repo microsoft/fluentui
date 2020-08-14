@@ -387,6 +387,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         padding: '0 8px',
         userSelect: 'none',
         textAlign: 'left',
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+          },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
     ],
     subComponentStyles: {

@@ -106,6 +106,10 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   statusWarningBackground: DarkSemanticColors.statusBar.warning,
   statusWarningText: DarkSemanticColors.text.body,
   statusWarningIcon: CommonSemanticColors.icons.warning,
+  teachingBubbleBackground: DarkSemanticColors.teachingBubble.rest.background,
+  teachingBubblePrimaryButtonHover: DarkSemanticColors.teachingBubble.hover.primaryButtonBackground,
+  teachingBubbleSecondaryBackground: DarkSemanticColors.teachingBubble.rest.secondaryBackround,
+  teachingBubbleText: DarkSemanticColors.teachingBubble.rest.text,
   textFieldBorderDisabled: DarkSemanticColors.primaryButton.disabled.border,
 
   // temporary work around for high contrast themes

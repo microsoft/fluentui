@@ -28,6 +28,7 @@ const DEFAULT_PROPS = {
 
 function useDebugWarnings(props: IPersonaProps) {
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
       name: 'Persona',
       props,

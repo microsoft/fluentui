@@ -17,14 +17,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## BREAKING CHANGES
+- Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
+
 ### Fixes
 - Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
+- Fix `Tree` component to correctly keep track of the `activeItemIds` @assuncaocharles ([#14507](https://github.com/microsoft/fluentui/pull/14507))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
+- Add `onDateChange` handler to `Datepicker.Input` field @karymes ([#14167](https://github.com/microsoft/fluentui/pull/14167))
+- Add base `Skeleton` component @assuncaocharles ([#14354](https://github.com/microsoft/fluentui/pull/14354))
+- Add base `SkeletonButton` component @assuncaocharles ([#14405](https://github.com/microsoft/fluentui/pull/14405))
+- Add base `SkeletonAvatar` component @assuncaocharles ([#14471](https://github.com/microsoft/fluentui/pull/14471))
+- Add base `SkeletonInput` component @assuncaocharles ([#14439](https://github.com/microsoft/fluentui/pull/14439))
+- Add base `SkeletonText` component @assuncaocharles ([#14460](https://github.com/microsoft/fluentui/pull/14460))
 
 ### Documentation
 - Add undo and redo feature to UI builder @vyhnalekl ([#14336](https://github.com/microsoft/fluentui/pull/14336))
+- Added keyboard shortcuts to UI builder @vyhnalekl ([#14483](https://github.com/microsoft/fluentui/pull/14483))
+- Add `formatDayMonthYear` and `parseDate` examples for `Datepicker` @pompomon ([#14484](https://github.com/microsoft/fluentui/pull/14484))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
@@ -56,6 +68,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix for `TeamsIcon`. Renamed current `TeamsIcon` to `ContactGroupIcon`. `TeamsIcon` is now the colored app icon as per current naming standards for other icons in project. @TanelVari ([#13966](https://github.com/microsoft/fluentui/pull/13966))
 - Fix memory leak in `FocusZone` @miroslavstastny ([#14031](https://github.com/microsoft/fluentui/pull/14031))
 - Fix `Popup` with `on="hover"` and controled close inside the content @assuncaocharles ([#14179](https://github.com/microsoft/fluentui/pull/14179))
+- Fix Timestamp in `Text` to match Teams redlines @notandrew ([#14153](https://github.com/microsoft/fluentui/pull/14153))
 
 ### Features
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))

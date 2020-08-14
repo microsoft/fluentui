@@ -7,6 +7,7 @@ export interface ISelectedPersonaStyleProps {
   theme: ITheme;
   isValid: boolean;
   isSelected: boolean;
+  droppingClassName: string;
 }
 
 export interface ISelectedPersonaStyles {

@@ -67,9 +67,7 @@ function useRenderedContent(
   if (needsTheme) {
     // Disabling ThemeProvider here because theme doesn't need to be re-provided by ThemeProvider if dir has changed.
     renderedContent = (
-      <Customizer disableThemeProvider settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>
-        {renderedContent}
-      </Customizer>
+      <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
     );
   }
 
@@ -91,7 +89,8 @@ function useApplyThemeToBody(
         };
       }
     }
-  }, [bodyThemed]);
+    // TODO: verify with Michael
+  }, [bodyThemed, applyThemeToBody, rootElement]);
 
   return rootElement;
 }
