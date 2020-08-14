@@ -14,6 +14,9 @@ import {
   compareDates,
   addDays,
   addWeeks,
+  compareDatePart,
+  getMonthStart,
+  getMonthEnd,
 } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
@@ -103,6 +106,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     formatMonthYear,
     shortDays,
     days,
+    minDate,
+    maxDate,
   } = props;
 
   const ElementType = getElementType(props);
@@ -180,6 +185,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     const updatedGridNavigatedDate = addMonths(gridNavigatedDate, nextMonth ? 1 : -1);
     setGridNavigatedDate(updatedGridNavigatedDate);
   };
+
+  const prevMonthOutOfBounds = minDate ? compareDatePart(minDate, getMonthStart(gridNavigatedDate)) >= 0 : false;
+  const nextMonthOutOfBounds = maxDate ? compareDatePart(getMonthEnd(gridNavigatedDate), maxDate) >= 0 : false;
 
   const handleKeyDown = (e, day) => {
     const keyCode = getCode(e);
@@ -268,6 +276,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           defaultProps: () => ({
             label: formatMonthYear(gridNavigatedDate, dateFormatting),
             'aria-label': formatMonthYear(gridNavigatedDate, dateFormatting),
+            disabledNextButton: nextMonthOutOfBounds,
+            disabledPreviousButton: prevMonthOutOfBounds,
+            ...dateFormatting,
           }),
           overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
             onPreviousClick: (e, data) => {
@@ -278,7 +289,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
               changeMonth(true);
               _.invoke(predefinedProps, 'onNextClick', e, data);
             },
-            ...dateFormatting,
           }),
         })}
         {createShorthand(
