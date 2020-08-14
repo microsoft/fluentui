@@ -1,4 +1,5 @@
 import {
+  getEdgeChromiumNoHighContrastAdjustSelector,
   getGlobalClassNames,
   HighContrastSelectorWhite,
   HighContrastSelectorBlack,
@@ -73,6 +74,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           [HighContrastSelectorWhite]: {
             color: '#00009F',
           },
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       !isButton && {
@@ -103,6 +105,15 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           '&:active, &:hover, &:active:hover': {
             color: linkInteractedColor,
             textDecoration: 'underline',
+
+            selectors: {
+              [HighContrastSelectorBlack]: {
+                color: '#FFFF00',
+              },
+              [HighContrastSelectorWhite]: {
+                color: '#00009F',
+              },
+            },
           },
           '&:focus': {
             color: linkColor,
