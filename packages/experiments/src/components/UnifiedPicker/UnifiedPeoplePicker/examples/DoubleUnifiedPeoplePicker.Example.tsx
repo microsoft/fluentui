@@ -122,6 +122,26 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, ...newList]);
   };
 
+  const _getSerializedItems = (items: IPersonaProps[]): string => {
+    return _getItemsCopyText(items); // Do we want to combine these or have them be separate?
+  };
+
+  const _getDeserializedItems = (input: string): IPersonaProps[] => {
+    const newList: IPersonaProps[] = [];
+    if (input !== null) {
+      input.split(',').forEach(textValue => {
+        if (textValue) {
+          people.forEach(suggestionItem => {
+            if (suggestionItem.text === textValue) {
+              newList.push(suggestionItem);
+            }
+          });
+        }
+      });
+    }
+    return newList;
+  };
+
   const _onItemsRemoved = (itemsToRemove: IPersonaProps[]): void => {
     // Updating the local copy as well at the parent level.
     const currentItems: IPersonaProps[] = [...peopleSelectedItems];
@@ -162,7 +182,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {
-    selectedItems: [...peopleSelectedItems],
+    //selectedItems: [...peopleSelectedItems],
     removeButtonAriaLabel: 'Remove',
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
@@ -182,6 +202,9 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
         onInputChange={_onInputChange}
         // eslint-disable-next-line react/jsx-no-bind
         onPaste={_onPaste}
+        getSerializedItems={_getSerializedItems}
+        getDeserializedItems={_getDeserializedItems}
+        customClipboardType="recipients"
       />
     </>
   );

@@ -102,11 +102,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       event.preventDefault();
       var data = event.dataTransfer.items;
       for (var i = 0; i < data.length; i++) {
-        if (data[i].kind == 'string' && data[i].type == 'recipient') {
+        if (data[i].kind == 'string' && data[i].type == props.customClipboardType) {
           data[i].getAsString(function(s) {
-            if (props.selectedItemsListProps.getDeserializedItems) {
+            if (props.getDeserializedItems) {
               const insertIndex = selectedItems.indexOf(item);
-              addItemsAt(insertIndex, props.selectedItemsListProps.getDeserializedItems(s));
+              addItemsAt(insertIndex, props.getDeserializedItems(s));
             }
           });
         }
@@ -120,9 +120,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
     if (event) {
       var dataList = event?.dataTransfer?.items;
-      if (props.selectedItemsListProps.getSerializedItems && props.selectedItemsListProps.customItemType) {
-        var str = props.selectedItemsListProps.getSerializedItems(selectedItems);
-        dataList?.add(str, props.selectedItemsListProps.customItemType);
+      if (props.getSerializedItems && props.customClipboardType) {
+        const draggedItemIndex = selectedItems.indexOf(draggedItem!);
+        const draggedItems = focusedItemIndices.includes(draggedItemIndex) ? [...getSelectedItems()] : [draggedItem!];
+        var str = props.getSerializedItems(draggedItems);
+        dataList?.add(str, props.customClipboardType);
       }
     }
   };
