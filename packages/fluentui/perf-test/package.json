@@ -4,7 +4,7 @@
   "version": "0.51.0",
   "private": true,
   "dependencies": {
-    "office-ui-fabric-react": "^7.128.0"
+    "office-ui-fabric-react": "^7.128.1"
   },
   "scripts": {
     "build": "just-scripts build",
