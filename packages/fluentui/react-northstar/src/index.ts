@@ -141,6 +141,10 @@ export * from './components/Segment/Segment';
 export * from './components/Skeleton/Skeleton';
 export * from './components/Skeleton/SkeletonLine';
 export * from './components/Skeleton/SkeletonShape';
+export * from './components/Skeleton/SkeletonButton';
+export * from './components/Skeleton/SkeletonText';
+export * from './components/Skeleton/SkeletonInput';
+export * from './components/Skeleton/SkeletonAvatar';
 
 export * from './components/Slider/Slider';
 

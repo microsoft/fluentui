@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 30 Jul 2020 12:38:09 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.6.15)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.6.4..@fluentui/codemods_v0.6.15)
+
+### Patches
+
+- polish renameProp ([PR #14451](https://github.com/microsoft/fluentui/pull/14451) by t-dama@microsoft.com)
 
 ## [0.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.6.4)
 

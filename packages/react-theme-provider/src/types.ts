@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { IPartialTheme } from '@uifabric/styling';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 /**
  * A baseline set of color plates.
@@ -13,6 +15,7 @@ export type ColorTokens = Partial<{
   dividerColor: string;
   focusColor: string;
   focusInnerColor: string;
+  opacity: string;
 }>;
 
 /**
@@ -44,13 +47,13 @@ export type ColorTokenStates = Partial<{
   checkedPressed: ColorTokens;
 }>;
 
+export type ColorTokenSet = ColorTokens & ColorTokenStates;
+
 export type FontTokens = Partial<{
   fontFamily: string;
   fontSize: string;
   fontWeight: string;
 }>;
-
-export type ColorPlateSet = ColorTokens & ColorTokenStates;
 
 /**
  * A token set can provide a single string or object, mapping additional sub-parts of a token set.
@@ -68,16 +71,25 @@ export type RecursivePartial<T> = {
     : T[P];
 };
 
+export interface Tokens {
+  body: ColorTokenSet & TokenSetType;
+  [key: string]: TokenSetType;
+}
+
 /**
  * A prepared (fully expanded) theme object.
  */
-export interface Theme {
-  tokens: {
-    body: ColorPlateSet & TokenSetType;
-    [key: string]: TokenSetType;
+export interface Theme extends IPartialTheme {
+  components?: {
+    [componentName: string]: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      styles?: IStyleFunctionOrObject<any, any>;
+    };
   };
 
-  stylesheets: string[];
+  tokens?: Tokens;
+
+  stylesheets?: string[];
 }
 
 /**
@@ -89,7 +101,7 @@ export interface PartialTheme extends RecursivePartial<Theme> {}
  * Typing containing the definition for the `style` and `tokens` props that will be extended for the calculation of the
  * style prop.
  */
-export interface StyleProps<TTokens extends ColorPlateSet = ColorPlateSet> {
+export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
   style?: React.CSSProperties;
   tokens?: TTokens;
 }

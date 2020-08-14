@@ -1,10 +1,14 @@
+import * as PropTypes from 'prop-types';
 import { compose, ComponentWithAs } from '@fluentui/react-bindings';
 import { Accessibility, SkeletonBehaviorProps, skeletonBehavior } from '@fluentui/accessibility';
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 import { SkeletonLine } from './SkeletonLine';
 import { SkeletonShape } from './SkeletonShape';
-import * as PropTypes from 'prop-types';
+import { SkeletonButton } from './SkeletonButton';
+import { SkeletonText } from './SkeletonText';
+import { SkeletonInput } from './SkeletonInput';
+import { SkeletonAvatar } from './SkeletonAvatar';
 
 export interface SkeletonOwnProps {
   /**
@@ -38,10 +42,18 @@ export const Skeleton = compose<'div', SkeletonOwnProps, SkeletonStylesProps, Bo
 }) as ComponentWithAs<'div', SkeletonProps> & {
   Line: typeof SkeletonLine;
   Shape: typeof SkeletonShape;
+  Button: typeof SkeletonButton;
+  Text: typeof SkeletonText;
+  Input: typeof SkeletonInput;
+  Avatar: typeof SkeletonAvatar;
 };
 
 Skeleton.Line = SkeletonLine;
 Skeleton.Shape = SkeletonShape;
+Skeleton.Button = SkeletonButton;
+Skeleton.Text = SkeletonText;
+Skeleton.Input = SkeletonInput;
+Skeleton.Avatar = SkeletonAvatar;
 Skeleton.defaultProps = {
   accessibility: skeletonBehavior,
 };

@@ -290,6 +290,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBasePickerState): void;
+    // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     protected currentPromise: PromiseLike<any> | undefined;
@@ -303,6 +305,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected focusZone: React.RefObject<IFocusZone>;
     // (undocumented)
     protected getActiveDescendant(): string | undefined;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
@@ -365,10 +371,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsController<T>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBasePickerState): void;
     // (undocumented)
     protected updateSuggestions(suggestions: any[]): void;
     // (undocumented)
@@ -1636,7 +1638,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     itemLimit?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
     onChange?: (items?: T[]) => void;
-    onDismiss?: (ev?: any, selectedItem?: T) => void;
+    onDismiss?: (ev?: any, selectedItem?: T) => boolean | void;
     // @deprecated
     onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
@@ -3059,6 +3061,10 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+    onRestoreFocus?: (options: {
+        originalElement?: HTMLElement | Window;
+        containsFocus: boolean;
+    }) => void;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
     shouldUpdateWhenHidden?: boolean;

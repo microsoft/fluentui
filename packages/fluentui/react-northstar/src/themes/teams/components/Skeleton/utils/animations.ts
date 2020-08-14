@@ -2,18 +2,20 @@ import { pulse, wave } from './keyframes';
 import { ICSSInJSStyle } from '@fluentui/styles';
 import { skeletonLineClassName } from '../../../../../components/Skeleton/SkeletonLine';
 import { skeletonShapeClassName } from '../../../../../components/Skeleton/SkeletonShape';
+import { skeletonButtonClassName } from '../../../../../components/Skeleton/SkeletonButton';
+import { skeletonInputClassName } from '../../../../../components/Skeleton/SkeletonInput';
+import { skeletonAvatarClassName } from '../../../../../components/Skeleton/SkeletonAvatar';
 
-const waveStyles = {
+const waveStyles = (primaryColor: string, secondoryColor: string) => ({
   position: 'static',
   overflow: 'hidden',
   animationDuration: '2s',
   animationName: wave,
   animationIterationCount: 'infinite',
   backgroundColor: '#FFFFFF',
-  backgroundImage:
-    'linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%)',
+  backgroundImage: `linear-gradient(to right, ${primaryColor}, ${secondoryColor} 15%, ${primaryColor})`,
   backgroundSize: '1200px 100%',
-};
+});
 
 const pulseStyles = {
   animationName: pulse,
@@ -21,13 +23,19 @@ const pulseStyles = {
   animationIterationCount: 'infinite',
 };
 
-export const getAnimations = (backgroundColor: string): Record<string, ICSSInJSStyle> => ({
+export const getAnimations = (primaryColor: string, secondoryColor: string): Record<string, ICSSInJSStyle> => ({
   pulse: {
     [`& .${skeletonLineClassName}`]: pulseStyles,
     [`& .${skeletonShapeClassName}`]: pulseStyles,
+    [`& .${skeletonButtonClassName}`]: pulseStyles,
+    [`& .${skeletonAvatarClassName}`]: pulseStyles,
+    [`& .${skeletonInputClassName}`]: pulseStyles,
   },
   wave: {
-    [`& .${skeletonLineClassName}`]: waveStyles,
-    [`& .${skeletonShapeClassName}`]: waveStyles,
+    [`& .${skeletonLineClassName}`]: waveStyles(primaryColor, secondoryColor),
+    [`& .${skeletonShapeClassName}`]: waveStyles(primaryColor, secondoryColor),
+    [`& .${skeletonButtonClassName}`]: waveStyles(primaryColor, secondoryColor),
+    [`& .${skeletonAvatarClassName}`]: waveStyles(primaryColor, secondoryColor),
+    [`& .${skeletonInputClassName}`]: waveStyles(primaryColor, secondoryColor),
   },
 });
