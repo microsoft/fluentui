@@ -65,3 +65,50 @@ export enum SpreadPropInStatement {
   PropRight,
   NotFound,
 }
+
+/* Type definition for the mod type - mod function dictionary used
+   in configMod.ts. */
+export type CodeModMapType = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: (file: SourceFile, mod: any) => () => void;
+};
+
+/* Type definition for a CodeMod object representing a renameProp mod. */
+export type RenamePropModType = {
+  name: string;
+  type: 'renameProp';
+  options: {
+    from: {
+      importName: string;
+      toRename: string;
+      paths?: string[];
+    };
+    to: {
+      replacementName: string;
+      replacementValue?: string;
+    };
+  };
+};
+
+/* Type definition for a CodeMod object representing a repathImport mod. */
+export type RepathImportModType = {
+  name: string;
+  type: 'repathImport';
+  options: {
+    from: {
+      searchString: string | RegExp;
+    };
+    to: {
+      replacementValue: string;
+    };
+  };
+};
+
+/* upgrades.json internal mods are of this type: a union of supported types. */
+export type ModTypes = RenamePropModType | RepathImportModType;
+
+/* Type of the upgrades.json object */
+export type UpgradeJSONType = {
+  name: string;
+  upgrades: ModTypes[];
+};
