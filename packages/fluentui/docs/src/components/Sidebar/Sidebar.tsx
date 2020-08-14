@@ -298,7 +298,7 @@ const baseTreeItems: TreeProps['items'] = [
         },
       },
       {
-        key: 'styles-overrides',
+        id: 'styles-overrides',
         title: {
           content: 'Styles overrides',
           as: NavLink,
