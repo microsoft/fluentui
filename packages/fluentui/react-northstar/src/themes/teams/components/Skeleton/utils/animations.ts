@@ -3,6 +3,7 @@ import { ICSSInJSStyle } from '@fluentui/styles';
 import { skeletonLineClassName } from '../../../../../components/Skeleton/SkeletonLine';
 import { skeletonShapeClassName } from '../../../../../components/Skeleton/SkeletonShape';
 import { skeletonButtonClassName } from '../../../../../components/Skeleton/SkeletonButton';
+import { skeletonInputClassName } from '../../../../../components/Skeleton/SkeletonInput';
 import { skeletonAvatarClassName } from '../../../../../components/Skeleton/SkeletonAvatar';
 
 const waveStyles = (primaryColor: string, secondoryColor: string) => ({
@@ -28,11 +29,13 @@ export const getAnimations = (primaryColor: string, secondoryColor: string): Rec
     [`& .${skeletonShapeClassName}`]: pulseStyles,
     [`& .${skeletonButtonClassName}`]: pulseStyles,
     [`& .${skeletonAvatarClassName}`]: pulseStyles,
+    [`& .${skeletonInputClassName}`]: pulseStyles,
   },
   wave: {
     [`& .${skeletonLineClassName}`]: waveStyles(primaryColor, secondoryColor),
     [`& .${skeletonShapeClassName}`]: waveStyles(primaryColor, secondoryColor),
     [`& .${skeletonButtonClassName}`]: waveStyles(primaryColor, secondoryColor),
     [`& .${skeletonAvatarClassName}`]: waveStyles(primaryColor, secondoryColor),
+    [`& .${skeletonInputClassName}`]: waveStyles(primaryColor, secondoryColor),
   },
 });
