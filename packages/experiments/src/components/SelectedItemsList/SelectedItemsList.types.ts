@@ -114,4 +114,8 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * Helper for the drag and drop
    */
   dragDropHelper?: IDragDropHelper;
+
+  getSerializedItems?: (items: T[]) => string;
+
+  getDeserializedItems?: (input: string) => T[];
 }

@@ -46,7 +46,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
       event.preventDefault();
       var data = event.dataTransfer.items;
       for (var i = 0; i < data.length; i++) {
-        if (data[i].kind == 'string') {
+        if (data[i].kind == 'string' && data[i].type == 'recipient') {
           data[i].getAsString(function(s) {
             console.log('... Drop: ' + s);
           });
@@ -62,7 +62,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
     if (event) {
       var dataList = event?.dataTransfer?.items;
       var str = (draggedItem as IPersonaProps).text;
-      dataList?.add(str || '', 'text/plain');
+      dataList?.add(str || '', 'recipient');
     }
   };
 
