@@ -1,6 +1,7 @@
 import { pxToRem } from '../../../../utils';
 
 export interface DatepickerVariables {
+  datepickerCalendarCellBorder: string;
   datepickerCalendarCellHeight: string;
   datepickerCalendarCellWidth: string;
   datepickerCalendarCellBackgroundColor: string;
@@ -21,6 +22,7 @@ export interface DatepickerVariables {
 }
 
 export const datepickerVariables = (siteVars): DatepickerVariables => ({
+  datepickerCalendarCellBorder: 'none',
   datepickerCalendarCellHeight: pxToRem(32),
   datepickerCalendarCellWidth: pxToRem(32),
   datepickerCalendarCellBackgroundColor: siteVars.colorScheme.default.background,
