@@ -106,6 +106,7 @@
     max-width: 100%;
   }
 
+  // TODO: fix styles for variations of buttions when size is smallest/smaller.
   &._size_smallest {
     --button-minHeight: var(--button-size-smallest);
   }

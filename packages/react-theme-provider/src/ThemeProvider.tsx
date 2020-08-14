@@ -33,11 +33,15 @@ export const ThemeProvider = React.forwardRef<HTMLDivElement, ThemeProviderProps
     const parentTheme = useTheme();
 
     // Merge the theme only when parent theme or props theme mutates.
-    const fullTheme = React.useMemo<Theme>(() => mergeThemes(parentTheme, theme), [parentTheme, theme]);
+    const fullTheme = React.useMemo<Theme>(() => {
+      const mergedTheme = mergeThemes<Theme>(parentTheme, theme);
+      mergedTheme.tokens = getTokens(mergedTheme);
+      return mergedTheme;
+    }, [parentTheme, theme]);
 
     // Generate the inline style object only when merged theme mutates.
     const inlineStyle = React.useMemo<React.CSSProperties>(
-      () => tokensToStyleObject(getTokens(fullTheme), undefined, { ...style }),
+      () => tokensToStyleObject(fullTheme.tokens, undefined, { ...style }),
       [fullTheme, style],
     );
 

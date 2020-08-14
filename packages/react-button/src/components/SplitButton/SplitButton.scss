@@ -4,7 +4,6 @@
   --button-contentGap: 0;
   --button-padding: 0;
 
-  height: auto;
   width: auto;
 
   &._circular {
@@ -40,8 +39,33 @@
 
   &._primary {
     > .divider {
-      --button-dividerColor: var(--accent-dividerColor);
+      --button-dividerColor: var(--accent-contentColor);
     }
+  }
+
+  &._size_smallest {
+    --button-dividerLength: var(--button-size-small);
+    --button-minHeight: var(--button-size-small);
+  }
+
+  &._size_smaller {
+    --button-dividerLength: var(--button-size-small);
+    --button-minHeight: var(--button-size-small);
+  }
+
+  &._size_small {
+    --button-dividerLength: var(--button-size-small);
+  }
+
+  &._size_large {
+    --button-dividerLength: var(--button-size-large);
+  }
+
+  &._size_larger {
+    --button-dividerLength: var(--button-size-larger);
+  }
+  &._size_largest {
+    --button-dividerLength: var(--button-size-largest);
   }
 }
 
