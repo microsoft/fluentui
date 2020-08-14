@@ -220,6 +220,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props: ButtonP
     },
     children: /* analogous to the `content` slot in v0 */ {
       as: ButtonContent,
+      size,
       content: props.content,
     },
   });
