@@ -21,7 +21,7 @@ const horizontalStackProps: IStackProps = {
   tokens: { childrenGap: 16 },
 };
 const verticalStackProps: IStackProps = {
-  styles: { root: { overflow: 'hidden', width: '100%' } },
+  styles: { root: { overflow: 'hidden', width: '100%', maxWidth: 500 } },
   tokens: { childrenGap: 20 },
 };
 
@@ -112,11 +112,8 @@ const WarningExample = (p: IExampleProps) => (
     dismissButtonAriaLabel="Close"
     actions={
       <div>
-        {/* <MessageBarButton>Action</MessageBarButton> */}
-        {/* <> */}
         <DefaultButton>Action</DefaultButton>
         <PrimaryButton>Action</PrimaryButton>
-        {/* </> */}
       </div>
     }
   >
@@ -192,8 +189,6 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
         {(choice === 'success' || showAll) && <SuccessExample />}
 
         {(choice === 'warning' || showAll) && <WarningExample resetChoice={resetChoice} />}
-
-        {/* {(choice === 'warning2' || showAll) && <WarningExample2 resetChoice={resetChoice} />} */}
       </Stack>
     </Stack>
   );

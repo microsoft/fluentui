@@ -11,6 +11,7 @@ import {
   SearchBox,
   Link,
   Label,
+  Text,
 } from 'office-ui-fabric-react';
 import {
   AzureCustomizationsLight,
@@ -44,8 +45,7 @@ import { MessageBarBasicExample } from '../components/messageBar';
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
-      <DefaultButton primary={true} text="bug" />
-      <DefaultButton primary={true} disabled={true} text="bug" />
+      <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
       <Label>TeachingBubble</Label>
