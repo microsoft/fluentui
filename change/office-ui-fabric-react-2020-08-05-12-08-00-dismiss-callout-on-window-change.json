@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "dismiss callout when blurring to a new window",
+  "comment": "Callout: Dismiss when blurring to a new window.",
   "packageName": "office-ui-fabric-react",
   "email": "jokonuko@microsoft.com",
   "dependentChangeType": "patch",
