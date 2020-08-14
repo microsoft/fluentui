@@ -64,7 +64,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
                     key={info.displayName}
                     onMouseDown={handleMouseDown(info)}
                     styles={{
-                      padding: '0.25em 0.75em',
+                      padding: '0.25rem 0.75rem',
                       cursor: 'pointer',
                       ':hover': {
                         background: '#ddd',

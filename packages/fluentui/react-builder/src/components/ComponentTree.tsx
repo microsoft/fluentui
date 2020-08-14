@@ -52,7 +52,7 @@ const jsonTreeToTreeItems: (
         ...(selectedComponentId === tree.uuid && {
           background: '#ffc65c',
           color: '#444',
-          borderBottomLeftRadius: '1.2vh',
+          borderBottomLeftRadius: '0.5rem',
         }),
       },
     },
@@ -149,7 +149,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
               paddingRight: '1rem',
               borderLeft: '1px solid #eee',
               borderBottom: '1px solid #eee',
-              borderBottomLeftRadius: '1.2vh',
+              borderBottomLeftRadius: '0.5rem',
             }}
           />
         ) : null}
