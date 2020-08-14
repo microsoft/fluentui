@@ -23,7 +23,7 @@ export const ListItemEndMedia = compose<
 >(Box, {
   className: listItemEndMediaClassName,
   displayName: 'ListItemEndMedia',
-  mapPropsToStyles: ({ navigable, selectable }) => ({ navigable, selectable }),
+  mapPropsToStylesProps: ({ navigable, selectable }) => ({ navigable, selectable }),
 
   handledProps: ['navigable', 'selectable'],
   overrideStyles: true,
