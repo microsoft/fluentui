@@ -29,13 +29,31 @@ exports[`Link renders Link correctly 1`] = `
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: white-on-black){&:active {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active {
+        color: #00009F;
+      }
       &:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+        color: #00009F;
+      }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+        color: #00009F;
       }
       &:focus {
         color: #0078d4;
@@ -96,17 +114,38 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
+      }
       &:active {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){&:active {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active {
+        color: #00009F;
       }
       &:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+        color: #00009F;
+      }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+        color: #00009F;
       }
       &:focus {
         color: #0078d4;
@@ -147,13 +186,31 @@ exports[`Link renders Link with a custom class name 1`] = `
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: white-on-black){&:active {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active {
+        color: #00009F;
+      }
       &:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+        color: #00009F;
+      }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+        color: #00009F;
       }
       &:focus {
         color: #0078d4;
@@ -213,17 +270,38 @@ exports[`Link renders Link with no href as a button 1`] = `
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
+      }
       &:active {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){&:active {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active {
+        color: #00009F;
       }
       &:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+        color: #00009F;
+      }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+        color: #00009F;
       }
       &:focus {
         color: #0078d4;
@@ -325,6 +403,9 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
+      }
       &:link {
         pointer-events: none;
       }
@@ -389,17 +470,38 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
+      }
       &:active {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){&:active {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active {
+        color: #00009F;
       }
       &:hover {
         color: #004578;
         text-decoration: underline;
       }
+      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+        color: #00009F;
+      }
       &:active:hover {
         color: #004578;
         text-decoration: underline;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+        color: #00009F;
       }
       &:focus {
         color: #0078d4;
