@@ -141,4 +141,21 @@ describe('useCSS', () => {
       }
     `);
   });
+
+  it('handles merge via passed "className" in reverse order', () => {
+    const renderGlobal = jest.fn();
+
+    const wrapper = mount(<TestComponent styles={[{ left: '20px' }]} />);
+    const className = wrapper.find('div').prop('className') as string;
+
+    mount(<TestComponent styles={[{ color: 'red', left: '30px' }, className]} />, getMountOptions(renderGlobal));
+
+    expect(renderGlobal).toMatchInlineSnapshot(`
+      .use-css.f1kzxssy {
+        color: red;
+        left: 30px;
+        left: 20px;
+      }
+    `);
+  });
 });
