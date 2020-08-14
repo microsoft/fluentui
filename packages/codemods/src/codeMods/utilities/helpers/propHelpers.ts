@@ -183,8 +183,6 @@ export function renamePropInSpread(
         } else {
           throw 'Could not find prop in component specified.';
         }
-      } else {
-        throw 'Could not ID any spread object to be destructured.';
       }
     }
   });
