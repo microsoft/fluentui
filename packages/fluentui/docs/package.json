@@ -8,6 +8,7 @@
     "@fluentui/ability-attributes": "^0.51.0",
     "@fluentui/accessibility": "^0.51.0",
     "@fluentui/code-sandbox": "^0.51.0",
+    "@fluentui/date-time-utilities": "^7.5.0",
     "@fluentui/docs-components": "^0.51.0",
     "@fluentui/keyboard-key": "^0.2.10",
     "@fluentui/react-bindings": "^0.51.0",

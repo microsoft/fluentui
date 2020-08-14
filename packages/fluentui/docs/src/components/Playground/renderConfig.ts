@@ -1,6 +1,7 @@
 import * as Accessibility from '@fluentui/accessibility';
 import * as CodeSandbox from '@fluentui/code-sandbox';
 import * as Bindings from '@fluentui/react-bindings';
+import * as DateTimeUtilities from '@fluentui/date-time-utilities';
 import * as DocsComponent from '@fluentui/docs-components';
 import * as FluentUI from '@fluentui/react-northstar';
 import * as FluentUIIcons from '@fluentui/react-icons-northstar';
@@ -39,6 +40,11 @@ export const imports: Record<string, CodeSandboxImport> = {
   '@fluentui/code-sandbox': {
     version: sandboxPackageJson.version,
     module: CodeSandbox,
+    required: true,
+  },
+  '@fluentui/date-time-utilities': {
+    version: projectPackageJson.peerDependencies['@fluentui/date-time-utilities'],
+    module: DateTimeUtilities,
     required: true,
   },
   '@fluentui/docs-components': {
