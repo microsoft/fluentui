@@ -10,7 +10,7 @@ export interface ListItemContentOwnProps {
 export interface ListItemContentProps extends ListItemContentOwnProps, BoxProps {}
 
 export type ListItemContentStylesProps = ListItemContentOwnProps;
-export const listItemContentClassName = 'ui-list__item__content';
+export const listItemContentClassName = 'ui-list__itemcontent';
 
 /**
  * Provides a content for the ListItem.

@@ -6,7 +6,7 @@ export interface ListItemHeaderMediaOwnProps {}
 export interface ListItemHeaderMediaProps extends ListItemHeaderMediaOwnProps, BoxProps {}
 
 export type ListItemHeaderMediaStylesProps = ListItemHeaderMediaOwnProps;
-export const listItemHeaderMediaClassName = 'ui-list__item____headerMedia';
+export const listItemHeaderMediaClassName = 'ui-list__itemheadermedia';
 
 /**
  * Provides a header media for the ListItem.

@@ -10,7 +10,7 @@ export interface ListItemHeaderOwnProps {
 export interface ListItemHeaderProps extends ListItemHeaderOwnProps, BoxProps {}
 
 export type ListItemHeaderStylesProps = ListItemHeaderOwnProps;
-export const listItemHeaderClassName = 'ui-list__item__header';
+export const listItemHeaderClassName = 'ui-list__itemheader';
 
 /**
  * Provides a header for the ListItem.

@@ -6,7 +6,7 @@ export interface ListItemContentMediaOwnProps {}
 export interface ListItemContentMediaProps extends ListItemContentMediaOwnProps, BoxProps {}
 
 export type ListItemContentMediaStylesProps = ListItemContentMediaOwnProps;
-export const listItemContentMediaClassName = 'ui-list__item__contentMedia';
+export const listItemContentMediaClassName = 'ui-list__itemcontentmedia';
 
 /**
  * Provides a content media for the ListItem.

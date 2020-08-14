@@ -9,7 +9,7 @@ export interface ListItemEndMediaOwnProps {
 export interface ListItemEndMediaProps extends ListItemEndMediaOwnProps, BoxProps {}
 
 export type ListItemEndMediaStylesProps = ListItemEndMediaOwnProps;
-export const listItemEndMediaClassName = 'ui-list__item____endMedia';
+export const listItemEndMediaClassName = 'ui-list__itemendmedia';
 
 /**
  * Provides a header media for the ListItem.
