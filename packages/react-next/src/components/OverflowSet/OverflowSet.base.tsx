@@ -31,7 +31,7 @@ const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject
         return focusSucceeded;
       },
     }),
-    [],
+    [divContainer],
   );
 };
 
