@@ -25,6 +25,7 @@ import {
   Point,
   getWindow,
   findScrollableParent,
+  createMergedRef,
 } from '@uifabric/utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -75,6 +76,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   };
 
   private _root: React.RefObject<HTMLElement> = React.createRef();
+  private _mergedRef = createMergedRef<HTMLElement>();
+
   private _id: string;
 
   /** The most recently focused child element. */
@@ -264,7 +267,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         // be replaced so that className is passed to getRootClass and is included there so
         // the class names will always be in the same order.
         className={css(getRootClass(), className)}
-        ref={this._root}
+        ref={this._mergedRef(this.props.elementRef, this._root)}
         data-focuszone-id={this._id}
         onKeyDown={this._onKeyDown}
         onFocus={this._onFocus}

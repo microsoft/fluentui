@@ -5,7 +5,7 @@ import { IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 import { useId } from '@uifabric/react-hooks';
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
-export const GridBase = React.forwardRef((props: IGridProps, ref: React.Ref<HTMLTableElement>) => {
+export const GridBase = React.forwardRef<HTMLElement, IGridProps>((props, ref) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const id = props.id || useId();
 
@@ -37,6 +37,7 @@ export const GridBase = React.forwardRef((props: IGridProps, ref: React.Ref<HTML
 
   const content = (
     <table
+      ref={doNotContainWithinFocusZone ? (ref as React.Ref<HTMLTableElement>) : undefined}
       aria-posinset={ariaPosInSet}
       aria-setsize={ariaSetSize}
       id={id}
@@ -67,8 +68,7 @@ export const GridBase = React.forwardRef((props: IGridProps, ref: React.Ref<HTML
     content
   ) : (
     <FocusZone
-      // Needs FocusZone to be converted in order for ref to function correctly.
-      // ref={ref}
+      elementRef={ref}
       isCircularNavigation={props.shouldFocusCircularNavigate}
       className={classNames.focusedContainer}
       onBlur={props.onBlur}

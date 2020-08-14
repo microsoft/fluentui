@@ -74,6 +74,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     disabled?: boolean;
     // @deprecated
     doNotAllowFocusEventToPropagate?: boolean;
+    elementRef?: React.Ref<HTMLElement>;
     // @deprecated
     elementType?: any;
     handleTabKey?: FocusZoneTabbableElements;

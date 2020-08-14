@@ -50,6 +50,11 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   componentRef?: IRefObject<IFocusZone>;
 
   /**
+   * Optional callback to access the root DOM element.
+   */
+  elementRef?: React.Ref<HTMLElement>;
+
+  /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
    */
   className?: string;
