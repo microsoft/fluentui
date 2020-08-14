@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/charting",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.12.112",
+    "@uifabric/example-app-base": "^7.12.113",
     "@uifabric/jest-serializer-merge-styles": "^7.0.35",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -47,7 +47,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^7.12.32",
+    "@fluentui/react-focus": "^7.12.33",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "1.2.1",
     "@types/d3-axis": "1.0.10",
@@ -56,7 +56,7 @@
     "@types/d3-selection": "1.4.1",
     "@types/d3-shape": "^1.2.3",
     "@types/d3-time-format": "^2.1.0",
-    "@uifabric/icons": "^7.3.72",
+    "@uifabric/icons": "^7.3.73",
     "@uifabric/set-version": "^7.0.21",
     "d3-array": "1.2.1",
     "d3-axis": "1.0.8",
@@ -70,7 +70,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
-    "office-ui-fabric-react": "^7.128.0",
+    "office-ui-fabric-react": "^7.128.1",
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"

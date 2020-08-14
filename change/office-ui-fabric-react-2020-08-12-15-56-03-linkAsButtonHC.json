@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Link: Fixing High Contrast styling of links rendered as buttons.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-12T22:56:03.220Z"
-}
