@@ -204,12 +204,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp]),
       });
     }
-
-    if (
-      newProps.options !== this.props.options // preexisting code assumes purity of the options...
-    ) {
-      this._sizePosCache.updateOptions(newProps.options);
-    }
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
@@ -247,6 +241,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { isOpen, selectedIndices, calloutRenderEdge } = this.state;
     // eslint-disable-next-line deprecation/deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
+
+    // If our cached options are out of date update our cache
+    if (options !== this._sizePosCache.cachedOptions) {
+      this._sizePosCache.updateOptions(options);
+    }
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(props, divProperties);

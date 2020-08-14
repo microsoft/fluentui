@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/codemods_v0.6.15",
+      "version": "0.6.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "polish renameProp",
+            "author": "t-dama@microsoft.com",
+            "commit": "e6bac42a577d96a922c62e38c7b733d9496048f4",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jul 2020 12:38:09 GMT",
       "tag": "@fluentui/codemods_v0.6.4",
       "version": "0.6.4",

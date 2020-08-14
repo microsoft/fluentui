@@ -52,10 +52,6 @@ export { gridStyles as Grid } from './components/Grid/gridStyles';
 export { headerStyles as Header } from './components/Header/headerStyles';
 export { headerDescriptionStyles as HeaderDescription } from './components/Header/headerDescriptionStyles';
 
-export { hierarchicalTreeStyles as HierarchicalTree } from './components/HierarchicalTree/hierarchicalTreeStyles';
-export { hierarchicalTreeItemStyles as HierarchicalTreeItem } from './components/HierarchicalTree/hierarchicalTreeItemStyles';
-export { hierarchicalTreeTitleStyles as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleStyles';
-
 export { svgIconStyles as SvgIcon } from './components/SvgIcon/svgIconStyles';
 
 export { imageStyles as Image } from './components/Image/imageStyles';
@@ -100,6 +96,9 @@ export { skeletonStyles as Skeleton } from './components/Skeleton/skeletonStyles
 export { skeletonLineStyles as SkeletonLine } from './components/Skeleton/skeletonLineStyles';
 export { skeletonShapeStyles as SkeletonShape } from './components/Skeleton/skeletonShapeStyles';
 export { skeletonButtonStyles as SkeletonButton } from './components/Skeleton/skeletonButtonStyles';
+export { skeletonTextStyles as SkeletonText } from './components/Skeleton/skeletonTextStyles';
+export { skeletonInputStyles as SkeletonInput } from './components/Skeleton/skeletonInputStyles';
+export { skeletonAvatarStyles as SkeletonAvatar } from './components/Skeleton/skeletonAvatarStyles';
 
 export { sliderStyles as Slider } from './components/Slider/sliderStyles';
 

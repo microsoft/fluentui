@@ -1,6 +1,6 @@
 import * as classes from './Checkbox.scss';
 import { createClassResolver, ClassFunction } from '@fluentui/react-compose';
-import { useGlobalClassNames } from '../../Styling';
+import { useGlobalClassNames } from '@fluentui/react-theme-provider/lib/useGlobalClassNames';
 import { css } from '../../Utilities';
 import { ICheckboxClasses } from './Checkbox.types';
 

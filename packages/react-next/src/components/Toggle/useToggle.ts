@@ -20,7 +20,6 @@ export const useToggle = (
     className,
     defaultChecked = false,
     disabled,
-    id: toggleId,
     inlineLabel,
     label,
     // eslint-disable-next-line deprecation/deprecation
@@ -46,7 +45,7 @@ export const useToggle = (
     onOffMissing: !onText && !offText,
   });
   const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
-  const id = toggleId || useId();
+  const id = useId(COMPONENT_NAME, props.id);
   const labelId = `${id}-label`;
   const stateTextId = `${id}-stateText`;
   const stateText = checked ? onText : offText;
@@ -74,6 +73,7 @@ export const useToggle = (
   useComponentRef(props, checked, toggleButton);
 
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
       name: COMPONENT_NAME,
       props,
@@ -166,6 +166,6 @@ const useComponentRef = (
         }
       },
     }),
-    [isChecked],
+    [isChecked, toggleButtonRef],
   );
 };
