@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Seeding initial package.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-14T01:36:08.465Z"
+}
