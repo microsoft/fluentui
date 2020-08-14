@@ -24,13 +24,13 @@
     "lodash": "^4.17.15"
   },
   "dependencies": {
-    "@fluentui/react-button": "^0.9.2",
-    "@fluentui/react-next": "^8.0.0-alpha.85",
+    "@fluentui/react-button": "^0.9.3",
+    "@fluentui/react-next": "^8.0.0-alpha.86",
     "@uifabric/set-version": "^7.0.21",
-    "@uifabric/example-app-base": "^7.12.112",
-    "@uifabric/experiments": "^7.28.1",
+    "@uifabric/example-app-base": "^7.12.113",
+    "@uifabric/experiments": "^7.28.2",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "office-ui-fabric-react": "^7.128.0",
+    "office-ui-fabric-react": "^7.128.1",
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
