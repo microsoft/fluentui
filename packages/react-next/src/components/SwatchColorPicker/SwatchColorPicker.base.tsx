@@ -258,7 +258,7 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
   }, [setNavigationTimeout]);
 
   /**
-   * Callback that
+   * Callback used to handle KeyCode events
    */
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLButtonElement>): void => {
@@ -276,7 +276,10 @@ export const SwatchColorPickerBase = React.forwardRef<HTMLElement, ISwatchColorP
 
   /**
    * Render a color cell
+   * @param item - The item to render
+   * @returns - Element representing the item
    */
+
   const renderOption = React.useCallback(
     (item: IColorCellProps): JSX.Element => {
       return (
