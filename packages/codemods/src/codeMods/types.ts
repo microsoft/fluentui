@@ -48,3 +48,20 @@ export type PropTransform = (
   toRename: string,
   replacementName: string,
 ) => void;
+
+/**
+ * Enum that defines the cases by which this codemod can
+ * handle a prop in a spread operator. Called on a variable
+ * statement that contains the identified spread prop.
+ * Cases are
+ * SpreadPropLeft: if the desired spread prop exists on the left side of the deconstruction with '...' before it.
+ * PropLeft: if the desired prop exists on the left side of the deconstruction with no '...'.
+ * PropRight: if the desired prop exists on the right side of the variable statement.
+ * NotFound: if the variable statement does not match one of these cases, mark it as incompatible with the mod.
+ */
+export enum SpreadPropInStatement {
+  SpreadPropLeft,
+  PropLeft,
+  PropRight,
+  NotFound,
+}

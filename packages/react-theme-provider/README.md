@@ -10,9 +10,23 @@ yarn add @fluentui/react-theme-provider
 
 ## Example usage
 
-First, ensure you use an existing theme, or create your own. Example:
+Use the theme with Fluent UI by wrapping content within the provider. If `theme` is not provided, default (Fluent) theme will be provided:
 
-```js
+```tsx
+import { ThemeProvider } from '@fluentui/react-theme-provider';
+
+export const App = () => (
+  <ThemeProvider>
+    <>...app</>
+  </ThemeProvider>
+);
+```
+
+You can also customize your own theme:
+
+```tsx
+import { ThemeProvider } from '@fluentui/react-theme-provider';
+
 export const theme: Theme = {
   /* Provide any stylesheets which should come along with the theme */
   stylesheets: [
@@ -28,13 +42,6 @@ export const theme: Theme = {
     }
   }
 };
-```
-
-Use the theme with Fluent UI by wrapping content within the provider:
-
-```tsx
-import { ThemeProvider } from '@fluentui/react-theme-provider';
-import { theme } from './theme';
 
 export const App = () => (
   <ThemeProvider theme={theme}>
@@ -43,10 +50,19 @@ export const App = () => (
 );
 ```
 
-## `ThemeProvider` api
+You can apply component-level styles:
 
-The `ThemeProvider` component takes all default `div` html attributes, in addition to the following:
+```tsx
+import { Checkbox } from '@fluentui/react';
+import { ThemeProvider, createTheme } from '@fluentui/react-theme-provider';
 
-| Prop name | Description       |
-| --------- | ----------------- |
-| theme     | The partial theme |
+export const App = () => (
+  <ThemeProvider
+    theme={{
+      components: { Checkbox: { styles: { root: { background: 'red' } } } },
+    }}
+  >
+    <Checkbox />
+  </ThemeProvider>
+);
+```

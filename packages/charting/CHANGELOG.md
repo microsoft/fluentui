@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Aug 2020 18:34:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.7)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.5..@uifabric/charting_v3.0.7)
+
+### Patches
+
+- Grouped vertical bar chart - x axis labels wrapping and truncating the word. Showing the tooltip when word truncated. ([PR #14433](https://github.com/microsoft/fluentui/pull/14433) by v-jasha@microsoft.com)
 
 ## [3.0.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.2)
 

@@ -115,7 +115,7 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
         { x: e.x, y: e.y },
       );
 
-      if (inElementPosition === 'center') {
+      if (inElementPosition === 'center' || jsonTreeElement.uuid === 'builder-root') {
         // We're inside an element so we care about where we drop among it's children here
         if (jsonTreeElement.props?.children?.length > 0) {
           // Drop inside parent WITH children

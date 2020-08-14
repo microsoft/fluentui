@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 10 Aug 2020 06:19:21 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.53.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.4)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.53.3..@fluentui/eslint-plugin_v0.53.4)
+
+### Patches
+
+- Add rule to prevent accidental references to globals ([PR #14478](https://github.com/microsoft/fluentui/pull/14478) by elcraig@microsoft.com)
 
 ## [0.53.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.53.3)
 
