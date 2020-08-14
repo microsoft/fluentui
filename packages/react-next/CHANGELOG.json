@@ -2,6 +2,21 @@
   "name": "@fluentui/react-next",
   "entries": [
     {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@fluentui/react-next_v8.0.0-alpha.86",
+      "version": "8.0.0-alpha.86",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix casing for utilities folder",
+            "author": "xgao@microsoft.com",
+            "commit": "25bf42e97cc676794bef61b5c442bc8fc90123f0",
+            "package": "@fluentui/react-next"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Aug 2020 12:41:58 GMT",
       "tag": "@fluentui/react-next_v8.0.0-alpha.85",
       "version": "8.0.0-alpha.85",
