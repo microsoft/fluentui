@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import { ComponentInfo } from './types';
-
+import { materialComponentsInfo } from './materialComponentsInfo';
 /**
  * Get the Webpack Context for all Component.info.json files.
  */
@@ -23,32 +23,9 @@ componentInfoContext.byDisplayName = infoObjects.reduce((acc, next) => {
   return acc;
 }, {});
 
-componentInfoContext.byDisplayName['MaterialButton'] = {
-  constructorName: 'MaterialButton',
-  componentClassName: 'MaterialButton',
-  implementsCreateShorthand: false,
-  displayName: 'MaterialButton',
-  filename: 'foo',
-  filenameWithoutExt: 'foo',
-  docblock: {
-    description: 'foo',
-    tags: [
-      {
-        description: 'foo',
-        title: 'foo',
-      },
-    ],
-  },
-  apiPath: 'foo',
-  isChild: false,
-  isParent: false,
-  parentDisplayName: 'foo',
-  props: [],
-  repoPath: 'ff',
-  subcomponentName: 'ff',
-  subcomponents: [],
-  type: 'component',
-};
+materialComponentsInfo.forEach(item => {
+  componentInfoContext.byDisplayName[item.displayName] = item;
+});
 
 componentInfoContext.fromComponent = Component => {
   const displayName = Component.displayName || Component.name;
