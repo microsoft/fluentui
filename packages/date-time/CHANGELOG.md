@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.14.2](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.2)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.14.0..@uifabric/date-time_v7.14.2)
+
+### Patches
+
+- adding fix for first day of week changing away from Sunday that I broke with previous PR ([PR #14475](https://github.com/microsoft/fluentui/pull/14475) by lorejoh12@gmail.com)
 
 ## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.14.0)
 

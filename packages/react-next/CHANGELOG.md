@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Wed, 12 Aug 2020 18:34:18 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.86)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.85..@fluentui/react-next_v8.0.0-alpha.86)
+
+### Changes
+
+- fix casing for utilities folder ([PR #14512](https://github.com/microsoft/fluentui/pull/14512) by xgao@microsoft.com)
+
+## [8.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.85)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.84..@fluentui/react-next_v8.0.0-alpha.85)
+
+### Changes
+
+- Copy ContextualMenu to react-next ([PR #14391](https://github.com/microsoft/fluentui/pull/14391) by miclo@microsoft.com)
+- Enable eslint-plugin-react-hooks in react-next and fix a few bugs ([PR #14478](https://github.com/microsoft/fluentui/pull/14478) by elcraig@microsoft.com)
 
 ## [8.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.84)
 
