@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatusProps, StatusState } from './Status.types';
-import { getSlots, resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next';
+import { getSlots, resolveShorthandProps, mergeProps } from '@fluentui/react-compose/lib/next/index';
 import { useMergedRefs } from '@uifabric/react-hooks';
 
 export const statusShorthandProps: (keyof StatusProps)[] = ['icon'];

@@ -1,6 +1,5 @@
 import * as React from 'react';
-// TODO: add correct typings
-import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next';
+import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { AvatarProps, AvatarState } from './Avatar.types';
 import { useMergedRefs } from '@uifabric/react-hooks';
 import { getInitials, nullRender } from '@fluentui/react';

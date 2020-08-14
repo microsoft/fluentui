@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ImageProps, ImageState } from './Image.types';
-import { getSlots, mergeProps } from '@fluentui/react-compose/lib/next';
+import { getSlots, mergeProps } from '@fluentui/react-compose/lib/next/index';
 
 export const renderImage = (state: ImageState) => {
   const { slots, slotProps } = getSlots(state);
