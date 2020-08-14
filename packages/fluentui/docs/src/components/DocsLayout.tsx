@@ -1,4 +1,4 @@
-import { Provider, pxToRem, createTheme, teamsDarkTheme } from '@fluentui/react-northstar';
+import { Provider, createTheme, teamsDarkTheme } from '@fluentui/react-northstar';
 // This is loaded from a CDN, so it's not in dependencies.
 // @ts-ignore
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -98,28 +98,14 @@ class DocsLayout extends React.Component<any, any> {
             teamsDarkTheme,
             createTheme(
               {
-                // adjust Teams' theme to Semantic UI's font size scheme
-                componentVariables: {
-                  HierarchicalTreeItem: {
-                    padding: `${pxToRem(7)} ${pxToRem(16)}`,
-                    textDecoration: 'none',
-                    fontSize: pxToRem(12),
-                    fontWeight: 400,
-                    color: '#ffffff80',
-
-                    '& .active': {
-                      fontWeight: 'bold',
-                    },
-                  },
-                },
                 componentStyles: {
-                  HierarchicalTreeItem: {
+                  TreeItem: {
                     root: ({ variables: v, props: p }) => ({
                       ...(!p.items && treeItemStyle),
                       ...(p.items && treeSectionStyle),
                     }),
                   },
-                  HierarchicalTreeTitle: {
+                  TreeTitle: {
                     root: {
                       display: 'block',
                       width: '100%',

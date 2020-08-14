@@ -171,10 +171,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -182,10 +191,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;
@@ -332,10 +353,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -343,10 +373,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;
@@ -493,10 +535,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -504,10 +555,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;
@@ -654,10 +717,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -665,10 +737,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;
@@ -904,10 +988,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -915,10 +1008,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;
@@ -1327,10 +1432,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -1338,10 +1452,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;
@@ -1577,10 +1703,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -1588,10 +1723,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;
@@ -1807,10 +1954,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -1818,10 +1974,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;
@@ -2162,10 +2330,19 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
+                      @media screen and (forced-colors: active){& {
+                        forced-color-adjust: none;
+                      }
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active {
+                        color: #00009F;
                       }
                       &:hover {
                         background-color: #f3f2f1;
@@ -2173,10 +2350,22 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black){&:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:hover {
+                        color: #00009F;
+                      }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
                         text-decoration: none;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black){&:active:hover {
+                        color: #FFFF00;
+                      }
+                      @media screen and (-ms-high-contrast: black-on-white){&:active:hover {
+                        color: #00009F;
                       }
                       &:focus {
                         color: #201f1e;

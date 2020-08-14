@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Dropdown: Correctly updating set-size when number of options updates after first render.",
-  "packageName": "@fluentui/react-next",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-07T23:17:16.796Z"
-}

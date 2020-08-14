@@ -14,7 +14,7 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
       data-is-focusable={true}
       data-ktp-target={true}
       hidden={true}
-      id="id__0"
+      id="Toggle0"
       onClick={[Function]}
       role="switch"
       type="button"
@@ -56,8 +56,8 @@ exports[`Toggle renders toggle correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="id__0"
-    id="id__0-label"
+    htmlFor="Toggle0"
+    id="Toggle0-label"
   >
     Label
   </label>
@@ -66,11 +66,11 @@ exports[`Toggle renders toggle correctly 1`] = `
   >
     <button
       aria-checked={false}
-      aria-labelledby="id__0-label"
+      aria-labelledby="Toggle0-label"
       className="ms-Toggle-background"
       data-is-focusable={true}
       data-ktp-target={true}
-      id="id__0"
+      id="Toggle0"
       onClick={[Function]}
       role="switch"
       type="button"
@@ -112,8 +112,8 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="id__0"
-    id="id__0-label"
+    htmlFor="Toggle0"
+    id="Toggle0-label"
   >
     <p>
       Label
@@ -124,11 +124,11 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
   >
     <button
       aria-checked={false}
-      aria-labelledby="id__0-label"
+      aria-labelledby="Toggle0-label"
       className="ms-Toggle-background"
       data-is-focusable={true}
       data-ktp-target={true}
-      id="id__0"
+      id="Toggle0"
       onClick={[Function]}
       role="switch"
       type="button"
@@ -170,8 +170,8 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="id__0"
-    id="id__0-label"
+    htmlFor="Toggle0"
+    id="Toggle0-label"
   >
     Label
   </label>
@@ -180,11 +180,11 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
   >
     <button
       aria-checked={false}
-      aria-labelledby="id__0-label"
+      aria-labelledby="Toggle0-label"
       className="ms-Toggle-background"
       data-is-focusable={true}
       data-ktp-target={true}
-      id="id__0"
+      id="Toggle0"
       onClick={[Function]}
       role="switch"
       type="button"
@@ -226,8 +226,8 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="id__0"
-    id="id__0-label"
+    htmlFor="Toggle0"
+    id="Toggle0-label"
   >
     Label
   </label>
@@ -236,11 +236,11 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
   >
     <button
       aria-checked={false}
-      aria-labelledby="id__0-label id__0-stateText"
+      aria-labelledby="Toggle0-label Toggle0-stateText"
       className="ms-Toggle-background"
       data-is-focusable={true}
       data-ktp-target={true}
-      id="id__0"
+      id="Toggle0"
       onClick={[Function]}
       role="switch"
       type="button"
@@ -274,8 +274,8 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="id__0"
-      id="id__0-stateText"
+      htmlFor="Toggle0"
+      id="Toggle0-stateText"
     >
       Off
     </label>

@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "update ThemeProvider to support v7 theme",
+  "comment": "fix casing for utilities folder",
   "packageName": "@fluentui/react-next",
   "email": "xgao@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2020-08-07T00:37:43.211Z"
+  "date": "2020-08-13T17:07:03.016Z"
 }

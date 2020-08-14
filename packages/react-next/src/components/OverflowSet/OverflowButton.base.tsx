@@ -32,16 +32,19 @@ export const OverflowButtonBase = (props: IOverflowSetProps) => {
   const persistedKeytips = useConst<{ [uniqueID: string]: IKeytipProps }>({});
 
   // Gets the subMenu for an overflow item
-  const getSubMenuForItem = (item: IOverflowSetItemProps) => {
-    // Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
-    if (props.itemSubMenuProvider) {
-      return props.itemSubMenuProvider(item);
-    }
-    if (item.subMenuProps) {
-      return item.subMenuProps.items;
-    }
-    return undefined;
-  };
+  const getSubMenuForItem = React.useCallback(
+    (item: IOverflowSetItemProps) => {
+      // Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
+      if (props.itemSubMenuProvider) {
+        return props.itemSubMenuProvider(item);
+      }
+      if (item.subMenuProps) {
+        return item.subMenuProps.items;
+      }
+      return undefined;
+    },
+    [props],
+  );
 
   const newOverflowItems = React.useMemo(() => {
     let currentOverflowItems: IOverflowSetItemProps[] | undefined = [];
@@ -94,7 +97,7 @@ export const OverflowButtonBase = (props: IOverflowSetProps) => {
       currentOverflowItems = overflowItems!;
     }
     return currentOverflowItems;
-  }, [overflowItems]);
+  }, [overflowItems, getSubMenuForItem, keytipManager, keytipSequences, persistedKeytips]);
 
   useKeytipRegistrations(persistedKeytips, keytipManager);
 
