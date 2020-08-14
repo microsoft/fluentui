@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@uifabric/experiments_v7.28.2",
+      "version": "7.28.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add two well example and fix Remove ctx menu example",
+            "author": "sadelson@microsoft.com",
+            "commit": "ebe232d0c187ffa21e0c6f549d67d0d7b126e23d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Aug 2020 18:34:18 GMT",
       "tag": "@uifabric/experiments_v7.28.0",
       "version": "7.28.0",

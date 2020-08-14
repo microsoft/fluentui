@@ -8,7 +8,7 @@ export { headerDescriptionVariables as HeaderDescription } from './components/He
 export { radioGroupItemVariables as RadioGroupItem } from './components/RadioGroup/radioGroupItemVariables';
 export { segmentVariables as Segment } from './components/Segment/segmentVariables';
 export { textVariables as Text } from './components/Text/textVariables';
-export { hierarchicalTreeTitleVariables as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
+
 export { menuVariables as Menu } from './components/Menu/menuVariables';
 export { menuDividerVariables as MenuDivider } from './components/Menu/menuDividerVariables';
 export { menuItemVariables as MenuItem } from './components/Menu/menuItemVariables';
