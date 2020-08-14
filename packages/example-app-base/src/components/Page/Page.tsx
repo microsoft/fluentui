@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, css } from 'office-ui-fabric-react';
+import { Async, css, Customizer, ICustomizations, ILinkProps } from 'office-ui-fabric-react';
 import { slugify } from '../../utilities/index2';
 import { PageHeader } from '../PageHeader/index';
 import { Markdown } from '../Markdown/index';
@@ -27,6 +27,34 @@ const GENERIC_SECTION = 'genericsection';
 export interface IPageState {
   isMountedOffset?: boolean;
 }
+
+const linkCustomizations: Partial<ILinkProps> = {
+  styles: props => {
+    const { semanticColors } = props.theme;
+    return {
+      root: {
+        selectors: {
+          // Be specific to override UHF styles
+          '& a.ms-Link': {
+            color: semanticColors.link,
+            selectors: {
+              '&:link': {
+                color: semanticColors.link,
+              },
+              '&:active, &:hover, &:active:hover': {
+                color: semanticColors.linkHovered,
+              },
+            },
+          },
+        },
+      },
+    };
+  },
+};
+
+const scopedSettings: ICustomizations['scopedSettings'] = {
+  Link: linkCustomizations,
+};
 
 // TODO: I think this component should be templated to forward the TPlatform type to props.
 //        It can then be used in JSX like this:
@@ -65,13 +93,15 @@ export class Page extends React.Component<IPageProps, IPageState> {
 
     const sections = this._getPageSections();
     return (
-      <div className={css(styles.Page, className)}>
-        {this._getPageHeader()}
-        <div className={styles.main}>
-          {this._pageContent(sections)}
-          {this._getSideRail(sections)}
+      <Customizer scopedSettings={scopedSettings}>
+        <div className={css(styles.Page, className)}>
+          {this._getPageHeader()}
+          <div className={styles.main}>
+            {this._pageContent(sections)}
+            {this._getSideRail(sections)}
+          </div>
         </div>
-      </div>
+      </Customizer>
     );
   }
 
