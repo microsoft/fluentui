@@ -57,12 +57,30 @@ jobs:
           yarn
         displayName: yarn
 
+      - template: .devops/templates/pr-target-branch.yml
+
+      ## only do scoped bundle with PRs
       - script: |
-          yarn lage bundle --scope @uifabric/pr-deploy-site --no-deps --verbose --no-cache --grouped
-        displayName: bundle
+          yarn lage bundle --verbose --no-cache --grouped --since $(target_branch)
+        displayName: bundle (pr, scoped)
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      ## duplicated for  master CI builds
+      - script: |
+          yarn lage bundle --verbose --no-cache --grouped
+        displayName: bundle (master)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        env:
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      ## This runs regardless of scope, the app will adapt to the scope as well
+      - script: |
+          yarn workspace @uifabric/pr-deploy-site generate-site
+        displayName: generate PR Deploy Site
 
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build-PR-$(Build.BuildNumber)
