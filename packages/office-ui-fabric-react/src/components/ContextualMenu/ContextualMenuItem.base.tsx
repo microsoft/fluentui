@@ -2,7 +2,7 @@ import * as React from 'react';
 import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { getRTL, initializeComponentRef } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuItemRenderFunctions } from './ContextualMenuItem.types';
 
 const renderItemIcon = (props: IContextualMenuItemProps) => {
   const { item, hasIcons, classNames } = props;
@@ -76,14 +76,17 @@ export class ContextualMenuItemBase extends React.Component<IContextualMenuItemP
 
   public render() {
     const { item, classNames } = this.props;
+    const RenderLayout = item.onRenderLayout ? item.onRenderLayout : this._renderLayout;
 
     return (
       <div className={item.split ? classNames.linkContentMenu : classNames.linkContent}>
-        {renderCheckMarkIcon(this.props)}
-        {renderItemIcon(this.props)}
-        {renderItemName(this.props)}
-        {renderSecondaryText(this.props)}
-        {renderSubMenuIcon(this.props)}
+        {RenderLayout(this.props, {
+          renderCheckMarkIcon,
+          renderItemIcon,
+          renderItemName,
+          renderSecondaryText,
+          renderSubMenuIcon,
+        })}
       </div>
     );
   }
@@ -111,4 +114,16 @@ export class ContextualMenuItemBase extends React.Component<IContextualMenuItemP
       dismissMenu(undefined /* ev */, dismissAll);
     }
   };
+
+  private _renderLayout(props: IContextualMenuItemProps, defaultRenders: IContextualMenuItemRenderFunctions) {
+    return (
+      <>
+        {defaultRenders.renderCheckMarkIcon(props)}
+        {defaultRenders.renderItemIcon(props)}
+        {defaultRenders.renderItemName(props)}
+        {defaultRenders.renderSecondaryText(props)}
+        {defaultRenders.renderSubMenuIcon(props)}
+      </>
+    );
+  }
 }
