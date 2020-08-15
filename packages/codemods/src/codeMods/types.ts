@@ -5,7 +5,7 @@ export interface ModResult {
   logs: string[];
 }
 export type NoOp = {
-  type: 'Error' | 'NoOp';
+  reason: string;
   log?: string;
 };
 export type CodeModResult = Result<ModResult, NoOp>;
