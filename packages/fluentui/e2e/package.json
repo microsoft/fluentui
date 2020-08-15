@@ -28,6 +28,7 @@
     "access": "public"
   },
   "scripts": {
+    "test": "gulp test",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix"
   }
