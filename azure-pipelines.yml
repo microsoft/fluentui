@@ -79,7 +79,7 @@ jobs:
 
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
-          yarn workspace @uifabric/pr-deploy-site generate-site
+          yarn workspace @uifabric/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
 
       - publish: $(Build.ArtifactStagingDirectory)
