@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IContextualMenuItemProps, IContextualMenuItemRenderFunctions } from '../ContextualMenuItem.types';
+import {
+  IContextualMenuProps,
+  IContextualMenuItem,
+  IContextualMenuItemProps,
+  IContextualMenuItemRenderFunctions,
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 
 export const ContextualMenuIconCustomLayoutExample: React.FunctionComponent = () => {
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
