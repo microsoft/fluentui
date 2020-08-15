@@ -45,51 +45,6 @@ jobs:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
-  - job: ValidateFluent
-    workspace:
-      clean: all
-    steps:
-      - template: azure-pipelines.tools.yml
-
-      - script: |
-          yarn
-        displayName: yarn
-
-      - template: .devops/templates/pr-target-branch.yml
-
-      - script: |
-          if [ $BUILD_REASON == "PullRequest" ]; then
-            yarn danger ci
-          else
-            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-          fi
-        displayName: danger
-        env:
-          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
-
-      - script: |
-          yarn lage build --scope @fluentui/e2e --no-deps --verbose --no-cache --grouped
-        displayName: build
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
-
-      - script: |
-          yarn test:fluentui:e2e
-        displayName: E2E Tests
-
-      - script: |
-          yarn test:fluentui:projects
-        displayName: Project Tests
-
-      - script: |
-          yarn test:fluentui:circulars
-        displayName: Circular Dependencies Tests
-
-      - script: |
-          yarn check-for-changed-files
-        displayName: check for changed files
-
   - job: Deploy
     workspace:
       clean: all
