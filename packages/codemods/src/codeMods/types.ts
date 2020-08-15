@@ -1,9 +1,14 @@
 import { SourceFile, JsxExpression, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
+import { Result } from '../helpers/result';
 
-export interface CodeModResult {
-  success?: boolean;
+export interface ModResult {
+  logs: string[];
 }
-
+export type NoOp = {
+  type: 'Error' | 'NoOp';
+  log?: string;
+};
+export type CodeModResult = Result<ModResult, NoOp>;
 export interface CodeMod<T = SourceFile> {
   /**
    * Each type of codemod can have multiple versions which work on different versions of its targeted package.
