@@ -3,13 +3,13 @@ module.exports = {
   pipeline: {
     build: ['^build'],
     bundle: ['build'],
-    screener: ['build'],
+    'test:visual': [],
     lint: ['build'],
     clean: [],
     test: ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
-    '@fluentui/docs:build': ['@fluentui/react-northstar:test'],
+    '@fluentui/docs#build': ['@fluentui/react-northstar#test'],
   },
 
   // Ignores these minimatch patterns when considers what packages have changed for the --since flag

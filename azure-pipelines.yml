@@ -94,28 +94,6 @@ jobs:
           ContainerName: '$web'
           BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
-  - job: ScreenerFluent
-    steps:
-      - template: azure-pipelines.tools.yml
-
-      - script: |
-          yarn
-        displayName: yarn
-
-      - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
-          yarn test:fluentui:visual
-        displayName: run FUI VR Test
-        env:
-          SCREENER_API_KEY: $(screener.key)
-
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
-
   - job: Screener
     workspace:
       clean: all
@@ -134,7 +112,7 @@ jobs:
         displayName: config git user and email
 
       - script: |
-          yarn lage screener --scope vr-tests --debug --verbose --no-deps --no-cache --grouped
+          yarn lage test:visual --verbose --no-cache --grouped --since $(target_branch)
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)

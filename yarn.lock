@@ -2468,10 +2468,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/package-deps-hash/-/package-deps-hash-2.2.158.tgz#57a02d6ee62fd95390a477120ab24186767cb0fe"
   integrity sha512-gN0vkVrF38flbxbPJlEEGJi72Hxqn9JFYILCs0rOSL+LZOGuKUzaZYm3B7XbX7GF6LzPs2R3T5gmWx1EHxxQAQ==
 
-"@microsoft/task-scheduler@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.6.0.tgz#6108b2264711299d1d0350c4def6f038b73ea504"
-  integrity sha512-KeMyrw5c9IAQxKYn/QrnqT9BNfLC7UUY2OwyXNaMKOcSRKMscPzYilPir0LzwHwSzg9uAmNX9rJ87sKKJ7mOVw==
+"@microsoft/task-scheduler@^2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/task-scheduler/-/task-scheduler-2.6.1.tgz#6a9ec9306b3d2ddc9d93449259b0c13e81d19201"
+  integrity sha512-d/18aM0TC81sLJpxm5D+ca8sfcBYnXYvlFA0RZq2TMROl+PCZGQ+NWHXW9pBqqkXwZ+VJ2ih5vrg8x/B333t9g==
 
 "@microsoft/ts-command-line@4.3.6":
   version "4.3.6"
@@ -15191,12 +15191,12 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@^0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.19.0.tgz#b95f59a80b784ff3e2391adc497b165e18c15963"
-  integrity sha512-PFyOWebV+Za5n5e4uuk66TZQNiFD4OG3UUnrM3JoqOPAxFPogMDr+PuYDj01R0U6ENMaOrH0pC0EypcH+P9HrQ==
+lage@^0.19.2:
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.19.2.tgz#3fb0f239af863f4eaee681dda86f8161b805a3fe"
+  integrity sha512-F591K5JQTd+WMuC30a8yd2/LkIoqjifZZ8Wdq9xBG/NuD8e65FqPxKv0dcJbJzgO9RBxoghpm2uMzwjx3qwSeg==
   dependencies:
-    "@microsoft/task-scheduler" "^2.6.0"
+    "@microsoft/task-scheduler" "^2.6.1"
     abort-controller "^3.0.0"
     backfill "^6.0.1"
     backfill-config "^6.0.0"
