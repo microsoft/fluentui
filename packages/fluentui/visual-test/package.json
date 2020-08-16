@@ -15,6 +15,6 @@
     "access": "public"
   },
   "scripts": {
-    "test:visual": "gulp screener"
+    "screener": "gulp screener"
   }
 }

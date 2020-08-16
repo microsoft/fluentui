@@ -11,8 +11,7 @@
     "screener": "screener-storybook --conf screener.config.js",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "start": "start-storybook --port 5555",
-    "test": "just-scripts test",
-    "test:visual": "yarn run screener"
+    "test": "just-scripts test"
   },
   "dependencies": {
     "@fluentui/react-button": "^0.9.3",

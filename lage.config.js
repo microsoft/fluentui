@@ -3,7 +3,7 @@ module.exports = {
   pipeline: {
     build: ['^build'],
     bundle: ['build'],
-    'test:visual': [],
+    screener: [],
     lint: ['build'],
     clean: [],
     test: ['build'],

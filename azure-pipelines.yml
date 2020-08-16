@@ -112,7 +112,7 @@ jobs:
         displayName: config git user and email
 
       - script: |
-          yarn lage test:visual --verbose --no-cache --grouped --since $(target_branch)
+          yarn lage screener --verbose --no-cache --grouped --since $(target_branch)
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
