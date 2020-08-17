@@ -46,6 +46,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const {
     selectedItems,
     addItems,
+    addItemsAt,
     removeItems,
     removeItemAt,
     removeSelectedItems,
@@ -83,6 +84,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return dragEnterClass;
   };
 
+  const _insertItemsAt = (insertIndex: number, s: string): void => {
+    if (props.selectedItemsListProps.getDeserializedItems) {
+      const newItems = props.selectedItemsListProps.getDeserializedItems(s);
+      if (props.selectedItemsListProps.insertItemsAt) {
+        props.selectedItemsListProps.insertItemsAt(insertIndex, newItems);
+      }
+      addItemsAt(insertIndex, newItems);
+    }
+  };
+
   const _onDrop = (item?: any, event?: DragEvent): void => {
     if (event?.dataTransfer) {
       event.preventDefault();
@@ -91,9 +102,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
           data[i].getAsString((s: string) => {
             const insertIndex = selectedItems.indexOf(item);
-            if (props.selectedItemsListProps.insertItemsAt) {
-              props.selectedItemsListProps.insertItemsAt(insertIndex, s);
-            }
+            _insertItemsAt(insertIndex, s);
           });
         }
       }

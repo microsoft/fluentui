@@ -5,6 +5,7 @@ export interface IUseSelectedItemsResponse<T> {
   selectedItems: T[];
   setSelectedItems: (items: T[]) => void;
   addItems: (items: T[]) => void;
+  addItemsAt: (insertIndex: number, itemsToAdd: T[]) => void;
   removeItemAt: (index: number) => void;
   removeItem: (item: T) => void;
   replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
@@ -29,6 +30,16 @@ export const useSelectedItems = <T extends {}>(
     const newItems: T[] = items.concat(itemsToAdd);
     setSelectedItems(newItems);
     selection.setItems(newItems);
+  };
+
+  const addItemsAt = (insertIndex: number, itemsToAdd: T[]): void => {
+    const currentItems: T[] = [...items];
+    const updatedItems = currentItems
+      .slice(0, insertIndex)
+      .concat(itemsToAdd)
+      .concat(currentItems.slice(insertIndex));
+    setSelectedItems(updatedItems);
+    selection.setItems(updatedItems);
   };
 
   const removeItemAt = (index: number): void => {
@@ -101,6 +112,7 @@ export const useSelectedItems = <T extends {}>(
     selectedItems: items,
     setSelectedItems: setSelectedItems,
     addItems: addItems,
+    addItemsAt: addItemsAt,
     removeItemAt: removeItemAt,
     removeItem: removeItem,
     replaceItem: replaceItem,

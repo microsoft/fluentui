@@ -117,5 +117,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
 
   getSerializedItems?: (items: T[]) => string;
 
-  insertItemsAt?: (insertIndex: number, input: string) => void;
+  getDeserializedItems?: (input: string) => T[];
+
+  insertItemsAt?: (insertIndex: number, itemsToInsert: T[]) => void;
 }

@@ -126,7 +126,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     return _getItemsCopyText(items); // Do we want to combine these or have them be separate?
   };
 
-  const _insertItemsAt = (insertIndex: number, input: string, selectedItemsList: IPersonaProps[]): void => {
+  const _getDeserializedItems = (input: string): IPersonaProps[] => {
     // Turn the dropped text into items
     const newItems: IPersonaProps[] = [];
     if (input !== null) {
@@ -140,7 +140,10 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
         }
       });
     }
+    return newItems;
+  };
 
+  const _insertItemsAt = (insertIndex: number, newItems: IPersonaProps[]): void => {
     // Insert those items into the current list
     if (insertIndex > -1) {
       const currentItems: IPersonaProps[] = [...peopleSelectedItems];
@@ -149,7 +152,6 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
         .concat(newItems)
         .concat(currentItems.slice(insertIndex));
       setPeopleSelectedItems(updatedItems);
-      selectedPeopleListProps.selectedItems = updatedItems;
     }
   };
 
@@ -198,6 +200,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     onItemsRemoved: _onItemsRemoved,
     getItemCopyText: _getItemsCopyText,
     getSerializedItems: _getSerializedItems,
+    getDeserializedItems: _getDeserializedItems,
     insertItemsAt: _insertItemsAt,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
