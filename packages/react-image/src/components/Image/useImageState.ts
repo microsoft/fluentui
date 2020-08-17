@@ -3,7 +3,7 @@
 import objectFitImages from 'object-fit-images';
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 import * as React from 'react';
-s;
+
 import { ImageState } from './Image.types';
 
 const isFitSupported = (function() {
