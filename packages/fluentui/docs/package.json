@@ -30,6 +30,7 @@
     "formik": "2.0.3",
     "lodash": "^4.17.15",
     "moment": "^2.18.1",
+    "next": "^9.5.2",
     "prop-types": "^15.7.2",
     "qs": "^6.8.0",
     "react": "16.8.6",
@@ -70,6 +71,8 @@
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
-    "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs"
+    "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
+    "next:start": "next",
+    "next:build": "next build && next export"
   }
 }

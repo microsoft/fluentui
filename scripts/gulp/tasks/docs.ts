@@ -178,7 +178,7 @@ task('deploy:docs', cb => {
 let server: Server;
 
 task('serve:docs', async () => {
-  server = await serve(paths.docsDist(), config.server_host, config.server_port);
+  server = await serve(paths.docs('out'), config.server_host, config.server_port);
 });
 
 task('serve:docs:hot', async () => {

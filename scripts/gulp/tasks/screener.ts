@@ -30,4 +30,4 @@ task('screener:runner', cb => {
 // Default
 // ----------------------------------------
 
-task('screener', series('build:docs', 'serve:docs', 'screener:runner'));
+task('screener', series('screener:runner'));

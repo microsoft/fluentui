@@ -4,13 +4,10 @@ import * as React from 'react';
 import { match } from 'react-router-dom';
 import { KnobProvider } from '@fluentui/docs-components';
 
-import { ExampleSource } from '../types';
-import { exampleSourcesContext, exampleKebabNameToSourceFilename, parseExamplePath } from '../utils';
+import { examplesContext, exampleKebabNameToSourceFilename, parseExamplePath } from '../utils';
 import PageNotFound from '../views/PageNotFound';
-import { SourceRender } from './ComponentDoc/SourceRender';
-import { babelConfig, importResolver } from './Playground/renderConfig';
 
-const examplePaths = exampleSourcesContext.keys();
+const examplePaths = examplesContext.keys();
 
 type ExternalExampleLayoutProps = {
   match: match<{
@@ -28,7 +25,6 @@ const themes = {
 const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
   const { exampleName, rtl } = props.match.params;
 
-  const [error, setError] = React.useState<Error | null>(null);
   const [renderId, setRenderId] = React.useState<number>(0);
   const [themeName, setThemeName] = React.useState<string>();
 
@@ -42,22 +38,12 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
 
   if (!examplePath) return <PageNotFound />;
 
-  const exampleSource: ExampleSource = exampleSourcesContext(examplePath);
+  const exampleModule = examplesContext(examplePath).default;
   const theme = (themeName && themes[themeName]) || {};
 
   return (
     <Provider key={renderId} theme={theme} rtl={rtl === 'true'}>
-      <KnobProvider>
-        <SourceRender
-          babelConfig={babelConfig}
-          onRender={setError}
-          source={exampleSource.js}
-          resolver={importResolver}
-          hot
-        />
-        {/* This block allows to see issues with examples as visual regressions. */}
-        {error && <div style={{ fontSize: '5rem', color: 'red' }}>{error.toString()}</div>}
-      </KnobProvider>
+      <KnobProvider>{React.createElement(exampleModule)}</KnobProvider>
     </Provider>
   );
 };

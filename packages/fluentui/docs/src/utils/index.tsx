@@ -2,7 +2,6 @@ export { default as componentInfoContext } from './componentInfoContext';
 export {
   examplesContext,
   exampleIndexContext,
-  usageIndexContext,
   exampleBestPracticesContext,
   examplePlaygroundContext,
   exampleSourcesContext,

@@ -56,7 +56,9 @@
     "test": "lerna run test --stream",
     "test:fluentui:circulars": "gulp test:circulars:run",
     "test:fluentui:e2e": "gulp test:e2e",
-    "test:fluentui:visual": "gulp screener",
+    "test:fluentui:visual-host": "yarn workspace @fluentui/docs next:build && serve -l 8080 -n --single packages/fluentui/docs/out",
+    "test:fluentui:visual-test": "gulp screener",
+    "test:fluentui:visual": "start-server-and-test test:fluentui:visual-host http://localhost:8080 test:fluentui:visual-test",
     "test:fluentui:projects": "gulp test:projects",
     "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "lerna run update-snapshots --stream",
@@ -68,8 +70,8 @@
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
-    "lerna": "^3.15.0",
     "lage": "^0.17.5",
+    "lerna": "^3.15.0",
     "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
@@ -101,5 +103,9 @@
     "webpack": "^4.35.0",
     "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
+  },
+  "dependencies": {
+    "serve": "^11.3.2",
+    "start-server-and-test": "^1.11.3"
   }
 }

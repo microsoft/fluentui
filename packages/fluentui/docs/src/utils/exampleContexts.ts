@@ -9,11 +9,6 @@ export const exampleIndexContext = require.context('../examples/', true, /index.
 export const examplesContext = require.context('../examples/', true, /(\w+Example(\w|\.)*|\w+.perf|\w+.bsize)\.tsx$/);
 
 /**
- * The Webpack Context for doc site usage groups.
- */
-export const usageIndexContext = require.context('../examples', true, /Usage\/index.tsx$/);
-
-/**
  * The Webpack Context for doc site example groups.
  */
 export const exampleBestPracticesContext = require.context('../examples/', true, /BestPractices.tsx$/);

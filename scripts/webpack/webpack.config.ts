@@ -23,7 +23,6 @@ const webpackConfig: webpack.Configuration = {
     // https://webpack.js.org/guides/build-performance/#avoid-production-specific-tooling
     filename: __DEV__ ? '[name].js' : `[name].[${config.compiler_hash_type}].js`,
     path: config.compiler_output_path,
-    pathinfo: true,
     publicPath: config.compiler_public_path,
   },
   devtool: config.compiler_devtool as webpack.Options.Devtool,

@@ -14,7 +14,15 @@
       "test/*": ["packages/fluentui/react-northstar/test/*"]
     },
     "typeRoots": ["../../../typings", "../../../node_modules/@types"],
-    "types": ["node", "webpack-env", "screener-runner"]
+    "types": ["node", "webpack-env", "screener-runner"],
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve"
   },
-  "include": ["./src"]
+  "include": ["pages"],
+  "exclude": ["node_modules"]
 }
