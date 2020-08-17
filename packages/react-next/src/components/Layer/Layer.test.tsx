@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
@@ -20,8 +21,11 @@ describe('Layer', () => {
   it('renders Layer correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
+
+    ReactTestUtils.act(() => {
+      ReactDOM.createPortal = jest.fn(element => {
+        return element;
+      });
     });
 
     const component = renderer.create(<Layer>Content</Layer>);
@@ -66,8 +70,10 @@ describe('Layer', () => {
     const appElement = document.createElement('div');
 
     try {
-      document.body.appendChild(appElement);
-      ReactDOM.render(<App />, appElement);
+      ReactTestUtils.act(() => {
+        document.body.appendChild(appElement);
+        ReactDOM.render(<App />, appElement);
+      });
 
       const parentElement = appElement.querySelector('#parent');
 

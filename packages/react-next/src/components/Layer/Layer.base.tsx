@@ -51,6 +51,8 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     // eslint-disable-next-line deprecation/deprecation
     onLayerMounted = () => undefined,
     onLayerWillUnmount,
+    insertFirst,
+    children,
   } = props;
 
   const classNames = getClassNames(styles!, {
@@ -103,7 +105,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     setPortalAttribute(layerElement);
     setVirtualParent(layerElement, rootRef.current!);
 
-    props.insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
+    insertFirst ? host.insertBefore(layerElement, host.firstChild) : host.appendChild(layerElement);
 
     setCurrentHostId(hostId);
     setCurrentlayerElement(layerElement);
@@ -115,18 +117,20 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     if (onLayerDidMount) {
       onLayerDidMount();
     }
-  }, [onLayerMounted, onLayerDidMount, rootRef.current, getHost, props.insertFirst]);
+  }, [onLayerMounted, onLayerDidMount, getHost, insertFirst, classNames.root, hostId, removeLayerElement]);
 
   React.useEffect(() => {
     createLayerElement();
     if (hostId) {
       registerLayer(hostId, createLayerElement);
     }
+  }, []);
+
+  React.useEffect(() => {
     if (hostId !== currentHostId) {
       createLayerElement();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hostId, currentHostId]);
+  }, [hostId, currentHostId, createLayerElement]);
 
   useUnmount(() => {
     removeLayerElement();
@@ -142,7 +146,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
       {currentlayerElement &&
         ReactDOM.createPortal(
           <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
-            {props.children}
+            {children}
           </Fabric>,
           currentlayerElement,
         )}
