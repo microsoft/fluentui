@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "StackItem: Fixing issue #12592 - StackItem does not use its `padding` token",
+  "packageName": "office-ui-fabric-react",
+  "email": "pavanpadavala@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-17T08:31:50.541Z"
+}
