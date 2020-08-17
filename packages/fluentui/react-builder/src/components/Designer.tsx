@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
-import { Text, Button, Divider } from '@fluentui/react-northstar';
+import { Text, Button, Divider, Loader } from '@fluentui/react-northstar';
+import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
+import ComponentControlsCodeSandbox, {
+  CodeSandboxState,
+} from '../../../docs/src/components/ComponentDoc/ComponentControls/ComponentControlsCodeSandbox/ComponentControlsCodeSandbox';
 
 // import Anatomy from './Anatomy';
 import { BrowserWindow } from './BrowserWindow';
@@ -21,6 +25,7 @@ import {
   jsonTreeFindElement,
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
+  getCodeSandboxImports,
   resolveDraggingElement,
   resolveDrop,
 } from '../config';
@@ -595,6 +600,39 @@ export const Designer: React.FunctionComponent = () => {
                     </>
                   )}
                   {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                  <ComponentControlsCodeSandbox
+                    exampleCode={`${getCodeSandboxImports(jsonTree)}\nexport default function example() {
+                      return (\n ${renderElementToJSX(renderJSONTreeToJSXElement(jsonTree))}\n);}`}
+                    exampleLanguage="js"
+                    exampleName="uibuilder"
+                  >
+                    {(state, onCodeSandboxClick) => {
+                      const codeSandboxContent =
+                        state === CodeSandboxState.Default
+                          ? 'CodeSandbox'
+                          : state === CodeSandboxState.Loading
+                          ? 'Exporting...'
+                          : 'Click to open';
+
+                      const codeSandboxIcon =
+                        state === CodeSandboxState.Default ? (
+                          <FilesCodeIcon />
+                        ) : state === CodeSandboxState.Loading ? (
+                          <Loader size="small" />
+                        ) : (
+                          <AcceptIcon />
+                        );
+
+                      return (
+                        <Button
+                          styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
+                          onClick={onCodeSandboxClick}
+                          icon={codeSandboxIcon}
+                          content={codeSandboxContent}
+                        />
+                      );
+                    }}
+                  </ComponentControlsCodeSandbox>
                 </div>,
               ]}
               style={{

@@ -538,6 +538,28 @@ export const renderJSONTreeToJSXElement = (
   });
 };
 
+export const JSONTreeToImports = (tree: JSONTreeElement, imports = '', icons = '') => {
+  if (tree.props?.icon) {
+    if (!icons.includes(tree.props?.icon.type)) {
+      icons += `${tree.props?.icon.type}, `;
+    }
+  }
+  tree.props?.children?.forEach(item => {
+    if (!imports.includes(item.displayName) && item.$$typeof === 'Symbol(react.element)') {
+      imports += `${item.displayName}, `;
+    }
+    [imports, icons] = JSONTreeToImports(item, imports, icons);
+  });
+  return [imports, icons];
+};
+
+export const getCodeSandboxImports = (tree: JSONTreeElement) => {
+  const [components, icons] = JSONTreeToImports(tree);
+  return `import * as React from "react";
+  import {${components}} from "@fluentui/react-northstar";
+  import {${icons}} from "@fluentui/react-icons-northstar";`;
+};
+
 /**
  * Converts a fiberNav into a JSON Tree element
  */
