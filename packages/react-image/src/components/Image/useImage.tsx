@@ -17,7 +17,7 @@ export const renderImage = (state: ImageState) => {
   const { imageRef } = state;
   const { ref, ...rest } = slotProps.root;
 
-  return <slots.root ref={useMergedRefs(ref, imageRef)} {...rest} />;
+  return <slots.root ref={useMergedRefs(ref, ...(imageRef ? [imageRef] : []))} {...rest} />;
 };
 
 /**
