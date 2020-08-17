@@ -1,4 +1,4 @@
-import { buttonClassName } from '@fluentui/react-northstar';
+import { inputClassName, buttonClassName } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
