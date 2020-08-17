@@ -51,7 +51,7 @@ export interface ButtonProps
   /** A button can have an icon. */
   icon?: ShorthandValue<BoxProps>;
 
-  /** A button can cosssntain only an icon. */
+  /** A button can contain only an icon. */
   iconOnly?: boolean;
 
   /** An icon button can format its Icon to appear before or after its content */
