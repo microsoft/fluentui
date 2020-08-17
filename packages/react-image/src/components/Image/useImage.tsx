@@ -17,6 +17,7 @@ export const renderImage = (state: ImageState) => {
   const { imageRef } = state;
   const { ref, ...rest } = slotProps.root;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   return <slots.root ref={useMergedRefs(ref, ...(imageRef ? [imageRef] : []))} {...rest} />;
 };
 
