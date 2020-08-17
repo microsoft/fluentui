@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^0.9.3",
-    "@fluentui/react-compose": "^0.14.5",
+    "@fluentui/react-compose": "^0.15.0",
     "@fluentui/react-focus": "^7.12.33",
     "@fluentui/react-icons": "^0.1.48",
     "@fluentui/react-tabs": "^0.2.13",
@@ -71,7 +71,7 @@
     "@uifabric/react-hooks": "^7.8.2",
     "@uifabric/set-version": "^7.0.21",
     "@uifabric/utilities": "^7.28.0",
-    "office-ui-fabric-react": "^7.128.1",
+    "office-ui-fabric-react": "^7.128.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -25,7 +25,7 @@
     "jest-environment-node": "~24.9.0",
     "jest-environment-puppeteer": "^4.1.0",
     "jest-puppeteer": "^4.0.0",
-    "office-ui-fabric-react": "^7.128.1",
+    "office-ui-fabric-react": "^7.128.2",
     "puppeteer": "^1.13.0",
     "react-dom": "16.8.6",
     "react": "16.8.6",
