@@ -104,20 +104,19 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
 }
 
 /**
- * Internal class that is used to wrap all ComboBox options.
+ * Internal component that is used to wrap all ComboBox options.
  * This is used to customize when we want to rerender components,
  * so we don't rerender every option every time render is executed.
  */
-class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps, {}> {
-  public render(): React.ReactNode {
-    return this.props.render();
-  }
-
-  public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps): boolean {
+const ComboBoxOptionWrapper = React.memo(
+  ({ render }: IComboBoxOptionWrapperProps) => render(),
+  (
+    { render: oldRender, ...oldProps }: IComboBoxOptionWrapperProps,
+    { render: newRender, ...newProps }: IComboBoxOptionWrapperProps,
+  ) =>
     // The render function will always be different, so we ignore that prop
-    return !shallowCompare({ ...this.props, render: undefined }, { ...newProps, render: undefined });
-  }
-}
+    shallowCompare(oldProps, newProps),
+);
 
 const COMPONENT_NAME = 'ComboBox';
 
