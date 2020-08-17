@@ -1,4 +1,4 @@
-# @fluentui/ie-eleven-custom-properties
+# @fluentui/ie11-custom-properties
 
 **Ie Eleven Custom Properties for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 

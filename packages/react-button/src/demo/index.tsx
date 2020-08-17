@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as path from 'path';
 import { createApp, Markdown, examplesOf } from '@uifabric/example-app-base';
-//import '@fluentui/ie-eleven-custom-properties';
+import '@fluentui/ie11-custom-properties';
 
 const req = require.context('../components', true, /\.stories\.tsx$/, 'sync');
 createApp(
