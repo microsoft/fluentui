@@ -18,3 +18,5 @@ export const Image = React.forwardRef<HTMLElement, ImageProps>((props, ref) => {
   // Render component.
   return render(state);
 });
+
+Image.displayName = 'Image';
