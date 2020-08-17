@@ -1,4 +1,4 @@
-import { inputClassName, buttonClassName, datepickerCalendarCellClassName } from '@fluentui/react-northstar';
+import { buttonClassName, datepickerCalendarCellClassName } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -11,10 +11,8 @@ const config: ScreenerTestsConfig = {
         .snapshot('Shows selected date in input')
         .click(`.${buttonClassName}`)
         .snapshot('Shows selected date in calendar')
-        .hover(`.${datepickerCalendarCellClassName}:nth-child(2)`)
-        .snapshot('Shows calendar with hover')
-        .click(`.${inputClassName}`)
-        .snapshot('Final state'),
+        .hover(`.${datepickerCalendarCellClassName}:nth-child(22)`)
+        .snapshot('Shows calendar with hover'),
   ],
 };
 
