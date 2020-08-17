@@ -91,7 +91,9 @@ export interface Theme extends IPartialTheme {
 /**
  * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
  */
-export interface PartialTheme extends RecursivePartial<Theme> {}
+export interface PartialTheme extends Omit<Theme, 'tokens'> {
+  tokens?: RecursivePartial<Tokens>;
+}
 
 /**
  * Typing containing the definition for the `style` and `tokens` props that will be extended for the calculation of the

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Theme, PartialTheme } from './types';
 
 /**
