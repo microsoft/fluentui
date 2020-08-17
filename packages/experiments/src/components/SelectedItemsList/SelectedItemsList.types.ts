@@ -115,9 +115,18 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    */
   dragDropHelper?: IDragDropHelper;
 
+  /**
+   * Callback for when items need to be converted to a string for a drag action
+   */
   getSerializedItems?: (items: T[]) => string;
 
+  /**
+   * Callback for when a data transfer item (drag drop action) needs to be converted to an item or items
+   */
   getDeserializedItems?: (input: string) => T[];
 
+  /**
+   * Callback for when an item or items needs to be inserted into the list
+   */
   insertItemsAt?: (insertIndex: number, itemsToInsert: T[]) => void;
 }
