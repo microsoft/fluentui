@@ -13,7 +13,6 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersona[]>([people[40]]);
 
   const selection = new Selection();
-  const [draggedItem, setDraggedItem] = React.useState<IPersona>();
   const dragDropHelper = new DragDropHelper({
     selection: selection,
     minimumPixelsForDrag: 5,
@@ -39,9 +38,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
   };
 
   const _onDrop = (item?: any, event?: DragEvent): void => {
-    if (draggedItem) {
-      _insertBeforeItem(item, draggedItem);
-    } else if (event?.dataTransfer) {
+    if (event?.dataTransfer) {
       event.preventDefault();
       var data = event.dataTransfer.items;
       for (var i = 0; i < data.length; i++) {
@@ -59,21 +56,25 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
   };
 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
-    setDraggedItem(item);
-
     if (event) {
       var dataList = event?.dataTransfer?.items;
-      var str = (draggedItem as IPersonaProps).text;
+      var str = (item as IPersonaProps).text;
       dataList?.add(str || '', 'persona');
     }
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    setDraggedItem(undefined);
     if (event) {
       var dataList = event?.dataTransfer?.items;
       // Clear any remaining drag data
       dataList?.clear();
+    }
+
+    if (item) {
+      const currentItems: IPersona[] = [...currentSelectedItems];
+      const index = currentItems.indexOf(item);
+      const updatedItems = currentItems.slice(0, index).concat(currentItems.slice(index + 1));
+      setCurrentSelectedItems(updatedItems);
     }
   };
 
