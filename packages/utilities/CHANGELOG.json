@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "@uifabric/utilities_v7.28.0",
+      "version": "7.28.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `createMergedRef` utility for merging refs in a class component.",
+            "author": "dzearing@hotmail.com",
+            "commit": "79d99c0b79518ff201cd070e7aa597d5ba8d1864",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2020 06:19:21 GMT",
       "tag": "@uifabric/utilities_v7.27.0",
       "version": "7.27.0",

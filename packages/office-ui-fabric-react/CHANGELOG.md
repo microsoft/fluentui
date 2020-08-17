@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.128.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.1)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.0..office-ui-fabric-react_v7.128.1)
+
+### Patches
+
+- Pickers: Update to be concurrent compatible ([PR #14491](https://github.com/microsoft/fluentui/pull/14491) by joschect@microsoft.com)
+- Link: Fixing High Contrast styling of links rendered as buttons. ([PR #14497](https://github.com/microsoft/fluentui/pull/14497) by humbertomakotomorimoto@gmail.com)
 
 ## [7.128.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.0)
 

@@ -34,10 +34,6 @@ import {
   toggleButtonBehavior,
   menuAsToolbarBehavior,
   menuItemAsToolbarButtonBehavior,
-  hierarchicalTreeBehavior,
-  hierarchicalTreeTitleBehavior,
-  hierarchicalTreeItemBehavior,
-  hierarchicalSubtreeBehavior,
   gridBehavior,
   gridHorizontalBehavior,
   statusBehavior,
@@ -134,10 +130,6 @@ testHelper.addBehavior('tabListBehavior', tabListBehavior);
 testHelper.addBehavior('menuAsToolbarBehavior', menuAsToolbarBehavior);
 testHelper.addBehavior('toggleButtonBehavior', toggleButtonBehavior);
 testHelper.addBehavior('menuItemAsToolbarButtonBehavior', menuItemAsToolbarButtonBehavior);
-testHelper.addBehavior('hierarchicalTreeTitleBehavior', hierarchicalTreeTitleBehavior);
-testHelper.addBehavior('hierarchicalTreeBehavior', hierarchicalTreeBehavior);
-testHelper.addBehavior('hierarchicalTreeItemBehavior', hierarchicalTreeItemBehavior);
-testHelper.addBehavior('hierarchicalSubtreeBehavior', hierarchicalSubtreeBehavior);
 testHelper.addBehavior('gridBehavior', gridBehavior);
 testHelper.addBehavior('gridHorizontalBehavior', gridHorizontalBehavior);
 testHelper.addBehavior('dialogBehavior', dialogBehavior);

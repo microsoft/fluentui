@@ -89,7 +89,6 @@ function useApplyThemeToBody(
         };
       }
     }
-    // TODO: verify with Michael
   }, [bodyThemed, applyThemeToBody, rootElement]);
 
   return rootElement;
