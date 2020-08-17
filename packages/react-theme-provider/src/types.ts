@@ -83,10 +83,32 @@ export interface Theme extends IPartialTheme {
     };
   };
 
+  /**
+   * Tokens are providable value which translate to css variables. To reduce redundant prefixes,
+   * tokens can be defined as javascript objects which nest, where each branch will translate into
+   * a dash separation within the final token name.
+   */
   tokens?: Tokens;
 
+  /**
+   * Variants provide a way for theme to map a variant name to a set of token values.
+   */
+  variants?: {
+    [componentName: string]: {
+      [variantName: string]: VariantDefinition;
+    };
+  };
+
+  /**
+   * Set of static stylesheets to be registers for the theme.
+   */
   stylesheets?: string[];
 }
+
+type VariantDefinition = {
+  className?: string;
+  tokens?: TokenSetType;
+};
 
 /**
  * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
