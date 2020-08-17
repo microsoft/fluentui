@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import * as gulp from 'gulp';
+import gulp from 'gulp';
 import cache from 'gulp-cache';
 import { log } from 'gulp-util';
 import del from 'del';
@@ -18,6 +18,23 @@ const logWatchUnlink = (filePath: string) => log('Deleted', chalk.red(path.basen
 const cacheNonCi: (...args: Parameters<typeof cache>) => NodeJS.ReadWriteStream | Transform = (task, options) =>
   process.env.TF_BUILD ? task : cache(task, options);
 
+async function detectPaths() {
+  const info = await readPkgUp();
+  const componentsSrc = info.packageJson.gulp.componentInfo;
+
+  if (!componentsSrc) {
+    throw new Error(
+      `There is no "gulp.componentInfo" section in "${info.path}". Please add it before running this task`,
+    );
+  }
+
+  return {
+    componentsSrc,
+    outputPath: path.resolve(path.dirname(info.path), 'componentInfo'),
+    tsConfigPath: config.paths.docs('tsconfig.json'),
+  };
+}
+
 gulp.task('clean:component-info', async () => {
   const info = await readPkgUp();
   const outputPath = path.resolve(path.dirname(info.path), 'componentInfo');
@@ -26,14 +43,7 @@ gulp.task('clean:component-info', async () => {
 });
 
 gulp.task('build:component-info', async () => {
-  const info = await readPkgUp();
-  const componentsSrc = info.pkg.gulp.componentInfo;
-
-  if (!componentsSrc) {
-  }
-
-  const tsConfigPath = config.paths.docs('tsconfig.json');
-  const outputPath = path.resolve(path.dirname(info.path), 'componentInfo');
+  const { componentsSrc, outputPath, tsConfigPath } = await detectPaths();
 
   await new Promise(resolve => {
     gulp
@@ -49,8 +59,7 @@ gulp.task('build:component-info', async () => {
 });
 
 gulp.task('watch:component-info', async () => {
-  const info = await readPkgUp();
-  const componentsSrc = info.pkg.gulp.componentInfo;
+  const { componentsSrc } = await detectPaths();
 
   gulp
     .watch(componentsSrc, gulp.series('build:component-info'))
