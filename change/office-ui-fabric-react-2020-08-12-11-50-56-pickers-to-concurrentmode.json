@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pickers: Update to be concurrent compatible",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-12T18:50:56.914Z"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-hooks",
-  "version": "7.8.1",
+  "version": "7.8.2",
   "description": "Fluent UI React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.21",
-    "@uifabric/utilities": "^7.27.1",
+    "@uifabric/utilities": "^7.28.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

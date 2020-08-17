@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding `createMergedRef` utility for merging refs in a class component.",
-  "packageName": "@uifabric/utilities",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-13T22:11:09.460Z"
-}
