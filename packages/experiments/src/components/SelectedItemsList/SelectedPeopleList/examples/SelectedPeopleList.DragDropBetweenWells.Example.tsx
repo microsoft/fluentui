@@ -40,10 +40,10 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
   const _onDrop = (item?: any, event?: DragEvent): void => {
     if (event?.dataTransfer) {
       event.preventDefault();
-      var data = event.dataTransfer.items;
-      for (var i = 0; i < data.length; i++) {
-        if (data[i].kind == 'string' && data[i].type == 'persona') {
-          data[i].getAsString(function(s) {
+      const data = event.dataTransfer.items;
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].kind === 'string' && data[i].type === 'persona') {
+          data[i].getAsString((s: string) => {
             people.forEach(suggestionItem => {
               if (suggestionItem.text === s) {
                 _insertBeforeItem(item, suggestionItem);
@@ -57,25 +57,28 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
     if (event) {
-      var dataList = event?.dataTransfer?.items;
-      var str = (item as IPersonaProps).text;
+      const dataList = event?.dataTransfer?.items;
+      const str = (item as IPersonaProps).text;
       dataList?.add(str || '', 'persona');
     }
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
     if (event) {
-      var dataList = event?.dataTransfer?.items;
+      const dataList = event?.dataTransfer?.items;
       // Clear any remaining drag data
       dataList?.clear();
     }
-
     if (item) {
-      const currentItems: IPersona[] = [...currentSelectedItems];
-      const index = currentItems.indexOf(item);
-      const updatedItems = currentItems.slice(0, index).concat(currentItems.slice(index + 1));
-      setCurrentSelectedItems(updatedItems);
+      _onItemRemoved(item);
     }
+  };
+
+  const _onItemRemoved = (item: IPersona) => {
+    const currentSelectedItemsCopy = [...currentSelectedItems];
+    const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+    currentSelectedItemsCopy.splice(indexToRemove, 1);
+    setCurrentSelectedItems([...currentSelectedItemsCopy]);
   };
 
   const dragDropEvents: IDragDropEvents = {

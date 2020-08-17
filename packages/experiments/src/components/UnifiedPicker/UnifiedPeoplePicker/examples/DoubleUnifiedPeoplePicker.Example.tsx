@@ -9,7 +9,6 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
 import { IInputProps } from 'office-ui-fabric-react';
-import { PropertiesTable } from '@uifabric/example-app-base';
 
 const _suggestions = [
   {

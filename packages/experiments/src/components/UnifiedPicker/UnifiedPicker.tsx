@@ -30,7 +30,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
-  const [draggedItem, setDraggedItem] = React.useState<T>();
   const dragDropHelper = new DragDropHelper({
     selection: selection,
   });
@@ -47,7 +46,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const {
     selectedItems,
     addItems,
-    dropItemsAt,
     removeItems,
     removeItemAt,
     removeSelectedItems,
@@ -75,15 +73,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   } = props;
 
   // All of the drag drop functions are the default behavior. Users can override that by setting the dragDropEvents prop
-  const _insertBeforeItem = (item: T): void => {
-    const draggedItemIndex = selectedItems.indexOf(draggedItem!);
-    const draggedItemsIndices = focusedItemIndices.includes(draggedItemIndex)
-      ? [...focusedItemIndices]
-      : [draggedItemIndex];
-    const insertIndex = selectedItems.indexOf(item);
-    dropItemsAt(insertIndex, draggedItemsIndices);
-  };
-
   const theme = getTheme();
   const dragEnterClass = mergeStyles({
     backgroundColor: theme.palette.neutralLight,
@@ -95,14 +84,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDrop = (item?: any, event?: DragEvent): void => {
-    if (draggedItem) {
-      _insertBeforeItem(item);
-    } else if (event?.dataTransfer) {
+    if (event?.dataTransfer) {
       event.preventDefault();
-      var data = event.dataTransfer.items;
-      for (var i = 0; i < data.length; i++) {
-        if (data[i].kind == 'string' && data[i].type == props.customClipboardType) {
-          data[i].getAsString(function(s) {
+      const data = event.dataTransfer.items;
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
+          data[i].getAsString((s: string) => {
             const insertIndex = selectedItems.indexOf(item);
             if (props.selectedItemsListProps.insertItemsAt) {
               props.selectedItemsListProps.insertItemsAt(insertIndex, s);
@@ -114,26 +101,24 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
-    setDraggedItem(item);
-
     if (event) {
-      var dataList = event?.dataTransfer?.items;
+      const dataList = event?.dataTransfer?.items;
       if (props.selectedItemsListProps.getSerializedItems && props.customClipboardType) {
-        const draggedItemIndex = selectedItems.indexOf(draggedItem!);
-        const draggedItems = focusedItemIndices.includes(draggedItemIndex) ? [...getSelectedItems()] : [draggedItem!];
-        var str = props.selectedItemsListProps.getSerializedItems(draggedItems);
+        const draggedItemIndex = selectedItems.indexOf(item);
+        const draggedItems = focusedItemIndices.includes(draggedItemIndex) ? [...getSelectedItems()] : [item];
+        const str = props.selectedItemsListProps.getSerializedItems(draggedItems);
         dataList?.add(str, props.customClipboardType);
       }
     }
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    setDraggedItem(undefined);
     if (event) {
-      var dataList = event?.dataTransfer?.items;
+      const dataList = event?.dataTransfer?.items;
       // Clear any remaining drag data
       dataList?.clear();
     }
+    _onRemoveSelectedItems(getSelectedItems());
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
