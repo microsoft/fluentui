@@ -75,6 +75,13 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
   const composeProps = { ...unstable_props, ...componentStylesProps };
   const composeStylesProps = mapPropsToStylesPropsChain?.reduce((acc, fn) => ({ ...acc, ...fn(composeProps) }), {});
 
+  const inlineStylesProps = mapPropsToInlineStyles() || {
+    className: composeProps.className,
+    debug: composeProps.debug,
+    styles: composeProps.styles,
+    variables: composeProps.variables,
+  };
+
   // Stores debug information for component.
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
   const { classes, styles: resolvedStyles } = getStyles({
@@ -86,7 +93,7 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
       ...componentStylesProps,
       ...composeStylesProps,
     },
-    inlineStylesProps: mapPropsToInlineStyles(),
+    inlineStylesProps,
 
     // Context values
     disableAnimations: context.disableAnimations,

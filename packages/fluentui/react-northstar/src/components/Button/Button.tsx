@@ -1,31 +1,17 @@
 import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
 import { mergeProps } from '@fluentui/react-compose/lib/next';
-import {
-  // compose,
-  // ComponentWithAs,
-  // getElementType,
-  // useAccessibility,
-  useFluentContext,
-  useStyles,
-  useTelemetry,
-  // useUnhandledProps,
-  // ShorthandConfig,
-} from '@fluentui/react-bindings';
+import { ComponentWithAs, ShorthandConfig, useFluentContext, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-// import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import {
-  // childrenExist,
   createShorthandFactory,
   UIComponentProps,
   ContentComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
-  // rtlTextContainer,
   SizeValue,
-  // ShorthandFactory,
-  // createShorthand,
+  ShorthandFactory,
 } from '../../utils';
 import { /* Box, */ BoxProps } from '../Box/Box';
 import { Loader, LoaderProps } from '../Loader/Loader';
@@ -110,58 +96,16 @@ export const buttonClassName = 'ui-button';
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-export const Button = React.forwardRef<HTMLElement, ButtonProps>((props: ButtonProps, ref) => {
+export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: ButtonProps, ref) => {
   const { state, render } = useButton(props, ref);
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry);
   setStart();
 
-  const {
-    // accessibility,
-    // // @ts-ignore
-    // active,
-    // as,
-    // children,
-    content,
-    // icon,
-    // loader,
-    disabled,
-    iconPosition,
-    loading,
-    text,
-    primary,
-    inverted,
-    size,
-    iconOnly,
-    fluid,
-    circular,
-    className,
-    styles,
-    variables,
-    design,
-  } = props;
-
-  // const hasChildren = childrenExist(children);
-  //
-  // const getA11yProps = useAccessibility(accessibility, {
-  //   debugName: composeOptions.displayName,
-  //   mapPropsToBehavior: () => ({
-  //     as,
-  //     active,
-  //     disabled,
-  //     loading,
-  //   }),
-  //   actionHandlers: {
-  //     performClick: event => {
-  //       event.preventDefault();
-  //       handleClick(event);
-  //     },
-  //   },
-  //   rtl: context.rtl,
-  // });
+  const { content, disabled, iconPosition, loading, text, primary, inverted, size, iconOnly, fluid, circular } = props;
 
   const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(Button.displayName, {
-    className: Button.className,
+    className: buttonClassName,
     mapPropsToStyles: () => ({
       text,
       primary,
@@ -175,12 +119,6 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props: ButtonP
       fluid,
       hasContent: !!content,
     }),
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables,
-    }),
     rtl: context.rtl,
     unstable_props: props,
   });
@@ -188,6 +126,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props: ButtonP
   mergeProps(state, {
     className: classes.root,
     styles: resolvedStyles.root,
+    // TODO: previously icon was rendered as Box
     icon: {
       className: classes.icon,
       styles: resolvedStyles.icon,
@@ -205,124 +144,18 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props: ButtonP
     },
   });
 
-  // const slotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
-  //
-  // const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-  // const ElementType = getElementType(props);
-  //
-  // const renderIcon = () => {
-  //   return createShorthand(composeOptions.slots.icon, icon, {
-  //     defaultProps: () =>
-  //       getA11yProps('icon', {
-  //         styles: resolvedStyles.icon,
-  //         ...slotProps.icon,
-  //       }),
-  //   });
-  // };
-  //
-  // const renderLoader = () => {
-  //   return createShorthand(composeOptions.slots.loader, loader || {}, {
-  //     defaultProps: () =>
-  //       getA11yProps('loader', {
-  //         styles: resolvedStyles.loader,
-  //         ...slotProps.loader,
-  //       }),
-  //   });
-  // };
-  //
-  // const renderContent = () => {
-  //   return createShorthand(composeOptions.slots.content, content, {
-  //     defaultProps: () => getA11yProps('content', slotProps.content),
-  //   });
-  // };
-  //
-  // const handleClick = (e: React.SyntheticEvent) => {
-  //   if (disabled) {
-  //     e.preventDefault();
-  //     return;
-  //   }
-  //
-  //   _.invoke(props, 'onClick', e, props);
-  // };
-  //
-  // const handleFocus = (e: React.SyntheticEvent) => {
-  //   _.invoke(props, 'onFocus', e, props);
-  // };
-  //
-  // const result = (
-  //   <ElementType
-  //     {...rtlTextContainer.getAttributes({ forElements: [children] })}
-  //     {...getA11yProps('root', {
-  //       onClick: handleClick,
-  //       disabled,
-  //       className: classes.root,
-  //       onFocus: handleFocus,
-  //       ref,
-  //       ...unhandledProps,
-  //     })}
-  //   >
-  //     {hasChildren ? (
-  //       children
-  //     ) : (
-  //       <>
-  //         {loading && renderLoader()}
-  //         {iconPosition !== 'after' && renderIcon()}
-  //         {renderContent()}
-  //         {iconPosition === 'after' && renderIcon()}
-  //       </>
-  //     )}
-  //   </ElementType>
-  // );
-
+  const result = render(state);
   setEnd();
 
-  // return result;
-  return render(state);
-}) as any; // TODO :)
+  return result;
+}) as unknown) as ComponentWithAs<'button', ButtonProps> & {
+  create: ShorthandFactory<ButtonProps>;
+  shorthandConfig: ShorthandConfig<ButtonProps>;
+  Content: typeof ButtonContent;
+  Group: typeof ButtonGroup;
+};
 
-Button.className = buttonClassName;
 Button.displayName = 'Button';
-
-// slots: {
-//   content: ButtonContent,
-//   icon: Box,
-//   loader: Loader,
-// },
-
-// slotProps: props => ({
-//   content: {
-//     size: props.size,
-//   },
-//   loader: {
-//     role: undefined,
-//   },
-// }),
-
-// handledProps: [
-//   'accessibility',
-//   'as',
-//   'children',
-//   'circular',
-//   'className',
-//   'content',
-//   'design',
-//   'disabled',
-//   'fluid',
-//   'icon',
-//   'iconOnly',
-//   'iconPosition',
-//   'inverted',
-//   'loader',
-//   'loading',
-//   'onClick',
-//   'onFocus',
-//   'primary',
-//   'text',
-//   'secondary',
-//   'size',
-//   'styles',
-//   'variables',
-// ],
 
 Button.defaultProps = {
   as: 'button',
@@ -353,5 +186,9 @@ Button.propTypes = {
 
 Button.Group = ButtonGroup;
 Button.Content = ButtonContent;
+
+Button.shorthandConfig = {
+  mappedProp: 'content',
+};
 
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
