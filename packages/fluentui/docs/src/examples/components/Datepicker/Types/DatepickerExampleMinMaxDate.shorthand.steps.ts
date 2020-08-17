@@ -1,4 +1,8 @@
-import { buttonClassName, datepickerCalendarCellClassName } from '@fluentui/react-northstar';
+import {
+  buttonClassName,
+  datepickerCalendarCellClassName,
+  datepickerCalendarHeaderActionClassName,
+} from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -8,7 +12,10 @@ const config: ScreenerTestsConfig = {
         .click(`.${buttonClassName}`)
         .snapshot('Shows min max dates.')
         .click(`.${datepickerCalendarCellClassName}:nth-child(10)`)
-        .snapshot('Disabled date is not clickable.'),
+        .snapshot('Disabled date is not clickable.')
+        .click(`.${datepickerCalendarHeaderActionClassName}:nth-child(1)`)
+        .snapshot('Month icon is not clickable.'),
+    ,
   ],
 };
 
