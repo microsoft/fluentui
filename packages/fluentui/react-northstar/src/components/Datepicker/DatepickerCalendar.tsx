@@ -10,10 +10,14 @@ import {
   DEFAULT_CALENDAR_STRINGS,
   ICalendarStrings,
   IDayGridOptions,
+  IAvailableDateOptions,
   findAvailableDate,
   compareDates,
   addDays,
   addWeeks,
+  compareDatePart,
+  getMonthStart,
+  getMonthEnd,
 } from '@fluentui/date-time-utilities';
 import {
   ComponentWithAs,
@@ -72,10 +76,6 @@ export type DatepickerCalendarStylesProps = never;
 
 export const datepickerCalendarClassName = 'ui-datepicker__calendar';
 
-const dayInGrid = (grid: IDay[][], findDate: Date) => {
-  return _.flatten(grid).some(day => compareDates(day.originalDate, findDate));
-};
-
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
@@ -103,6 +103,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     formatMonthYear,
     shortDays,
     days,
+    minDate,
+    maxDate,
+    restrictedDates,
   } = props;
 
   const ElementType = getElementType(props);
@@ -181,6 +184,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     setGridNavigatedDate(updatedGridNavigatedDate);
   };
 
+  const prevMonthOutOfBounds = minDate ? compareDatePart(minDate, getMonthStart(gridNavigatedDate)) >= 0 : false;
+  const nextMonthOutOfBounds = maxDate ? compareDatePart(getMonthEnd(gridNavigatedDate), maxDate) >= 0 : false;
+
   const handleKeyDown = (e, day) => {
     const keyCode = getCode(e);
     const initialDate = day.originalDate;
@@ -214,13 +220,28 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       // if we couldn't find a target date at all, do nothing
       return;
     }
-    const newNavigateDate = findAvailableDate({
+
+    const findAvailableDateOptions: IAvailableDateOptions = {
       initialDate,
       targetDate,
       direction,
-    });
-    if (!dayInGrid(visibledGrid, newNavigateDate)) {
-      setGridNavigatedDate(newNavigateDate);
+      restrictedDates,
+      minDate,
+      maxDate,
+    };
+
+    let newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+
+    if (!newNavigatedDate) {
+      // if no dates available in initial direction, try going backwards
+      findAvailableDateOptions.direction = -direction;
+      newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+    }
+
+    if (!newNavigatedDate) {
+      e.preventDefault();
+    } else {
+      setGridNavigatedDate(newNavigatedDate);
       e.preventDefault();
     }
   };
@@ -268,6 +289,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           defaultProps: () => ({
             label: formatMonthYear(gridNavigatedDate, dateFormatting),
             'aria-label': formatMonthYear(gridNavigatedDate, dateFormatting),
+            disabledNextButton: nextMonthOutOfBounds,
+            disabledPreviousButton: prevMonthOutOfBounds,
+            ...dateFormatting,
           }),
           overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
             onPreviousClick: (e, data) => {
@@ -278,7 +302,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
               changeMonth(true);
               _.invoke(predefinedProps, 'onNextClick', e, data);
             },
-            ...dateFormatting,
           }),
         })}
         {createShorthand(
