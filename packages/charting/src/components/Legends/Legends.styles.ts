@@ -48,11 +48,14 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       },
       width: '12px',
       height: '12px',
-      backgroundColor: props.colorOnSelectedState,
+      backgroundColor: props.fill ? '' : props.colorOnSelectedState,
       marginRight: '8px',
       border: '1px solid',
       borderColor: props.borderColor ? props.borderColor : theme?.semanticColors.buttonBorder,
-      opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
+      opacity: props.colorOnSelectedState === palette.white ? '0.6' : props.opacity ? props.opacity : '',
+      backgroundImage: props.fill
+        ? `repeating-linear-gradient(135deg, transparent, transparent 3px, ${props.colorOnSelectedState} 1px, ${props.colorOnSelectedState} 4px)`
+        : '',
     },
     triangle: {
       width: '0',
@@ -62,6 +65,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       borderTop: '10.4px solid',
       borderTopColor: props.colorOnSelectedState,
       marginRight: '8px',
+      opacity: props.colorOnSelectedState === palette.white ? '0.6' : props.opacity ? props.opacity : '',
       selectors: {
         [HighContrastSelector]: {
           border: '0px',

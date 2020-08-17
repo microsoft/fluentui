@@ -3,11 +3,12 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
-import { ILineChartProps, ILineChartPoints, IBasestate, IChildProps } from './LineChart.types';
+import { ILineChartProps, ILineChartPoints, IBasestate, IChildProps, IOverlayProps } from './LineChart.types';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { calloutData, IMargins } from '../../utilities/index';
 import { ChartHelper } from '../CommonComponents/ChartHelper';
+import { thresholdSturges } from 'd3-array';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -34,11 +35,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _circleId: string;
   private _lineId: string;
   private _verticalLine: string;
+  private _overlayPatternId: string;
   private _uniqueCallOutID: string;
   private _refArray: IRefArrayData[];
   private margins: IMargins;
   private eventLabelHeight: number = 36;
   private lines: JSX.Element[];
+  private overlays: IOverlayProps[];
+  private _renderedOverlays: JSX.Element[];
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -53,9 +57,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._refArray = [];
     this._points = this.props.data.lineChartData || [];
     this._calloutPoints = calloutData(this._points) || [];
+    this.overlays = this.props.overlays || [];
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
+    this._overlayPatternId = getId('overlayPattern');
     this.margins = {
       top: this.props.margins?.top || 20,
       right: this.props.margins?.right || 20,
@@ -113,7 +119,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       <ChartHelper
         {...this.props}
         points={this._points}
-        getGraphData={this._getLinesData}
+        getGraphData={this._initializeLineChartData}
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
@@ -136,7 +142,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
                 />
-                <g>{this.lines}</g>
+                <g>
+                  {this._renderedOverlays}
+                  {this.lines}
+                </g>
                 {eventAnnotationProps && (
                   <EventsAnnotation
                     {...eventAnnotationProps}
@@ -154,10 +163,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getLinesData = (xScale: any, yScale: NumericAxis, containerHeight: number, containerWidth: number) => {
+  private _initializeLineChartData = (
+    xScale: any,
+    yScale: NumericAxis,
+    containerHeight: number,
+    containerWidth: number,
+  ) => {
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
-    return (this.lines = this._createLines());
+    this._renderedOverlays = this._createOverlays(containerHeight);
+    this.lines = this._createLines();
   };
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
@@ -186,9 +201,37 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       };
       return legend;
     });
+
+    const overlayLegendDataItems = this.overlays.map((overlay: IOverlayProps, index: number) => {
+      const title = overlay.name;
+      const legend: ILegend = {
+        title,
+        color: overlay.color,
+        action: () => {
+          if (this.state.selectedLegend === title) {
+            this.setState({ selectedLegend: '' });
+            this._handleOverlayLengendClick(overlay, null);
+          } else {
+            this.setState({ selectedLegend: title });
+            this._handleOverlayLengendClick(overlay, title);
+          }
+          this.setState({ activeLegend: title });
+        },
+        onMouseOutAction: () => {
+          this.setState({ activeLegend: '' });
+        },
+        hoverAction: () => {
+          this.setState({ activeLegend: title });
+        },
+        opacity: 0.4,
+        fill: overlay.applyPattern ? `url(#${this._overlayPatternId}${index})` : undefined,
+      };
+      return legend;
+    });
+
     const legends = (
       <Legends
-        legends={legendDataItems}
+        legends={[...legendDataItems, ...overlayLegendDataItems]}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
@@ -226,6 +269,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const y2 = this._points[i].data[j].y;
         const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
+          /* eslint-disable react/jsx-no-bind */
           lines.push(
             <line
               id={lineId}
@@ -299,6 +343,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 strokeWidth={3}
               />,
             );
+            /* eslint-enable react/jsx-no-bind */
           }
         } else {
           lines.push(
@@ -414,5 +459,48 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     if (point.onLegendClick) {
       point.onLegendClick(selectedLegend);
     }
+  };
+
+  private _handleOverlayLengendClick = (overlay: IOverlayProps, selectedLegend: string | null): void => {
+    if (overlay.onLegendClick) {
+      overlay.onLegendClick(selectedLegend);
+    }
+  };
+
+  private _createOverlays = (containerHeight: number) => {
+    const overlays: JSX.Element[] = [];
+    for (let i = 0; i < this.overlays.length; i++) {
+      const overlay = this.overlays[i];
+      const overlayId = getId(overlay.name.replace(/\W/g, ''));
+      if (overlay.applyPattern) {
+        overlays.push(
+          <pattern
+            id={`${this._overlayPatternId}${i}`}
+            width={16}
+            height={16}
+            key={`${this._overlayPatternId}${i}`}
+            patternUnits={'userSpaceOnUse'}
+          >
+            <path d={'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8'} stroke={overlay.color} strokeWidth={2} />
+          </pattern>,
+        );
+      }
+      for (let j = 0; j < overlay.data.length; j++) {
+        const startX = overlay.data[j].startX;
+        const endX = overlay.data[j].endX;
+        overlays.push(
+          <rect
+            fill={overlay.applyPattern ? `url(#${this._overlayPatternId}${i})` : overlay.color}
+            fillOpacity={this.state.activeLegend === overlay.name || this.state.activeLegend === '' ? 0.4 : 0.1}
+            x={this._xAxisScale(startX)}
+            y={this._yAxisScale(0) - containerHeight}
+            width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
+            height={containerHeight}
+            key={`${overlayId}${j}`}
+          />,
+        );
+      }
+    }
+    return overlays;
   };
 }

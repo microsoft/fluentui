@@ -138,6 +138,33 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             height={this.state.height}
             width={this.state.width}
             margins={margins}
+            overlays={[
+              {
+                name: 'Time range 1',
+                color: 'blue',
+                data: [
+                  {
+                    startX: new Date('2020-03-03T10:00:00.000Z'),
+                    endX: new Date('2020-03-05T00:00:00.000Z'),
+                  },
+                ],
+              },
+              {
+                name: 'Time range 2',
+                color: 'red',
+                data: [
+                  {
+                    startX: new Date('2020-03-07T00:00:00.000Z'),
+                    endX: new Date('2020-03-08T00:00:00.000Z'),
+                  },
+                  {
+                    startX: new Date('2020-03-04T10:00:00.000Z'),
+                    endX: new Date('2020-03-06T00:00:00.000Z'),
+                  },
+                ],
+                applyPattern: true,
+              },
+            ]}
           />
         </div>
       </>

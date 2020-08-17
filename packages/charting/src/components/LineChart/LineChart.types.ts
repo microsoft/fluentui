@@ -153,6 +153,11 @@ export interface ILineChartProps extends Partial<IChartHelperProps> {
    * Margins for the chart
    */
   margins?: IMargins;
+
+  /*
+   * EXPERIMENTING
+   */
+  overlays?: IOverlayProps[];
 }
 
 export interface IEventsAnnotationProps {
@@ -167,3 +172,18 @@ export interface IEventsAnnotationProps {
 export interface ILineChartStyles extends IChartHelperStyles {}
 
 export interface ILineChartStyleProps extends IChartHelperStyleProps {}
+
+// Experimentation
+
+export interface IOverlayProps {
+  name: string;
+  color: string;
+  data: IOverlayData[];
+  applyPattern?: boolean;
+  onLegendClick?: (selectedLegend: string | null) => void | undefined;
+}
+
+export interface IOverlayData {
+  startX: number | Date;
+  endX: number | Date;
+}

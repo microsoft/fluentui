@@ -28,6 +28,8 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: string;
   shape?: LegendShape;
   key: number;
+  opacity?: number;
+  fill?: string;
 }
 
 export interface ILegendState {
@@ -90,6 +92,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
         shape: legend.shape,
+        fill: legend.fill,
+        opacity: legend.opacity,
         key: index,
       };
     });
@@ -245,6 +249,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       >
         <div
           className={classNames.overflowIndicationTextStyle}
+          // eslint-disable-next-line react/jsx-no-bind
           ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
           data-is-focusable={false}
         >
@@ -284,6 +289,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       action: data.action,
       hoverAction: data.hoverAction,
       onMouseOutAction: data.onMouseOutAction,
+      fill: data.fill,
+      opacity: data.opacity,
     };
     const color = this._getColor(legend.title, legend.color);
     const { theme, className, styles } = this.props;
@@ -293,8 +300,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       colorOnSelectedState: color,
       borderColor: legend.color,
       overflow: overflow,
+      fill: legend.fill,
+      opacity: legend.opacity,
     });
-
     const onClickHandler = () => {
       this._onClick(legend);
     };
@@ -308,12 +316,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       <button
         key={index}
         className={classNames.legend}
+        /* eslint-disable react/jsx-no-bind */
         onClick={onClickHandler}
         onMouseOver={onHoverHandler}
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
         data-is-focusable={false}
+        /* eslint-enable react/jsx-no-bind */
       >
         <div className={this._getShapeClass(classNames, legend)} />
         <div className={classNames.text}>{legend.title}</div>
