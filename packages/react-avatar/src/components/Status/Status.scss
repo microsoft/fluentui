@@ -1,0 +1,87 @@
+:root {
+  --statusSizeSmallest: 8px;
+  --statusSizeSmaller: 8px;
+  --statusSizeSmall: 8px;
+  --statusSizeMedium: 10px;
+  --statusSizeLarge: 12px;
+  --statusSizeLarger: 14px;
+  --statusSizeLargest: 16px;
+
+  --borderColor: transparent;
+  --borderWidth: 2px;
+  --defaultBackgroundColor: var(--siteVariables-colors-grey-350, rgb(151, 149, 147));
+  --defaultTextColor: var(--siteVariables-colors-white, white);
+  --errorBackgroundColor: var(--siteVariables-colors-red-400, rgb(196, 49, 75));
+  --errorTextColor: var(--siteVariables-colors-white, white);
+  --infoBackgroundColor: var(--siteVariables-colors-brand500, rgb(151, 149, 147));
+  --infoTextColor: var(--siteVariables-colors-white, white);
+  --successBackgroundColor: var(--siteVariables-colors-green200, rgb(146, 195, 83));
+  --successTextColor: var(--siteVariables-colors-white, white);
+  --warningBackgroundColor: var(--siteVariables-colors-yellow-400, rgb(248, 210, 42));
+  --warningTextColor: var(--siteVariables-colors-white, white);
+}
+
+.root {
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: stretch;
+  vertical-align: middle;
+  border-radius: 9999px;
+  border-color: var(--borderColor);
+  border-width: var(--borderWidth);
+  border-style: solid;
+  background-color: var(--backgroundColor, var(--defaultBackgroundColor));
+  color: var(--defaultTextColor);
+  width: var(--statusSizeMedium);
+  height: var(--statusSizeMedium);
+}
+
+._state_success {
+  background-color: var(--successBackgroundColor);
+  color: var(--successTextColor);
+}
+
+._state_info {
+  background-color: var(--infoBackgroundColor);
+  color: var(--infoTextColor);
+}
+
+._state_warning {
+  background-color: var(--warningBackgroundColor);
+  color: var(--warningTextColor);
+}
+
+._state_error {
+  background-color: var(--errorBackgroundColor);
+  color: var(--errorTextColor);
+}
+
+._size_smallest {
+  width: var(--statusSizeSmallest);
+  height: var(--statusSizeSmallest);
+}
+
+._size_smaller {
+  width: var(--statusSizeSmaller);
+  height: var(--statusSizeSmaller);
+}
+
+._size_small {
+  width: var(--statusSizeSmall);
+  height: var(--statusSizeSmall);
+}
+
+._size_large {
+  width: var(--statusSizeLarge);
+  height: var(--statusSizeLarge);
+}
+
+._size_larger {
+  width: var(--statusSizeLarger);
+  height: var(--statusSizeLarger);
+}
+
+._size_largest {
+  width: var(--statusSizeLargest);
+  height: var(--statusSizeLargest);
+}

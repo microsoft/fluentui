@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Fix ESLint TODOs in CalloutContent",
+  "packageName": "@fluentui/react-next",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-13T19:33:12.264Z"
+}

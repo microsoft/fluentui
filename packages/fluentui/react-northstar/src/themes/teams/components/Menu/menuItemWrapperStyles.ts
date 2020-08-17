@@ -121,7 +121,7 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
             color: v.primaryWrapperColorFocus,
           }),
         }),
-        ...(!iconOnly && getFocusedStyles({ props, variables: v, colors })),
+        ...(!iconOnly && !underlined && getFocusedStyles({ props, variables: v, colors })),
         ...(iconOnly && {
           background: v.iconOnlyWrapperBackgroundColorFocus,
           color: v.iconOnlyColorActive,

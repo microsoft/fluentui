@@ -157,9 +157,14 @@ function useMaxHeight(
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const async = useAsync();
+
+  // Updating targetRef won't rerender the component, but it's recalcuated (if needed) with every render
+  // If it mutates, we want to re-run the effect
+  const currentTarget = targetRef.current;
+
   React.useEffect(() => {
     if (!maxHeight && !hidden) {
-      if (directionalHintFixed && targetRef.current) {
+      if (directionalHintFixed && currentTarget) {
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
         const totalGap: number = (gapSpace ?? 0) + (isBeakVisible && beakWidth ? beakWidth : 0);
@@ -174,13 +179,20 @@ function useMaxHeight(
     } else if (hidden) {
       setMaxHeight(undefined);
     }
-    // TODO: check with Michael
-    // - Missing dependencies: coverTarget, directionalHintFixed, isBeakVisible, maxHeight
-    //   (and immutable values async, targetRef)
-    // - "Mutable values like 'targetRef.current' aren't valid dependencies because mutating them
-    //   doesn't re-render the component"
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetRef.current, gapSpace, beakWidth, directionalHint, getBounds, hidden]);
+  }, [
+    targetRef,
+    currentTarget,
+    gapSpace,
+    beakWidth,
+    getBounds,
+    hidden,
+    async,
+    coverTarget,
+    directionalHint,
+    directionalHintFixed,
+    isBeakVisible,
+    maxHeight,
+  ]);
 
   return maxHeight;
 }
@@ -193,7 +205,7 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
   const async = useAsync();
   const setHeightOffsetTimer = React.useRef<number | undefined>();
 
-  const setHeightOffsetEveryFrame = (): void => {
+  const setHeightOffsetEveryFrame = React.useCallback((): void => {
     if (calloutElement.current && finalHeight) {
       setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
         const calloutMainElem = calloutElement.current?.lastChild as HTMLElement;
@@ -215,16 +227,13 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
         }
       }, calloutElement.current);
     }
-  };
+  }, [async, calloutElement, finalHeight]);
 
   React.useEffect(() => {
     if (!hidden) {
       setHeightOffsetEveryFrame();
     }
-    // TODO: check with Michael
-    // (missing dep on setHeightOffsetEveryFrame)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [finalHeight, hidden]);
+  }, [finalHeight, hidden, setHeightOffsetEveryFrame]);
 
   return heightOffset;
 }
@@ -284,11 +293,20 @@ function usePositions(
 
       return () => async.cancelAnimationFrame(timerId);
     }
-    // TODO: check with Michael
-    // missing deps finalHeight, getBounds, onPositioned, positions, props, target
-    // (and immutable values async, calloutElement, hostElement, targetRef)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hidden, directionalHint]);
+  }, [
+    hidden,
+    directionalHint,
+    async,
+    calloutElement,
+    hostElement,
+    targetRef,
+    finalHeight,
+    getBounds,
+    onPositioned,
+    positions,
+    props,
+    target,
+  ]);
 
   return positions;
 }
@@ -312,11 +330,7 @@ function useAutoFocus(
 
       return () => async.cancelAnimationFrame(timerId);
     }
-    // TODO: check with Michael
-    // missing dep on setInitialFocus
-    // (and immutable values async, calloutElement)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hidden, hasPositions]);
+  }, [hidden, hasPositions, async, calloutElement, setInitialFocus]);
 }
 
 /**
@@ -341,9 +355,11 @@ function useDismissHandlers(
     },
   ] as const);
 
+  const positionsExists = !!positions;
+
   React.useEffect(() => {
     const dismissOnScroll = (ev: Event) => {
-      if (positions && !preventDismissOnScroll) {
+      if (positionsExists && !preventDismissOnScroll) {
         dismissOnClickOrScroll(ev);
       }
     };
@@ -400,11 +416,18 @@ function useDismissHandlers(
         };
       }
     }, 0);
-    // TODO: check with Michael
-    // missing deps on onDismiss, positions, preventDismissOnLostFocus, preventDismissOnResize, preventDismissOnScroll
-    // (and immutable values async, hostElement, targetRef, targetWindowRef
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hidden]);
+  }, [
+    hidden,
+    async,
+    hostElement,
+    targetRef,
+    targetWindowRef,
+    onDismiss,
+    preventDismissOnLostFocus,
+    preventDismissOnResize,
+    preventDismissOnScroll,
+    positionsExists,
+  ]);
 
   return mouseDownHandlers;
 }
