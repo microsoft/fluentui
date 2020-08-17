@@ -1,3 +1,4 @@
+/* eslint-disable no-throw-literal */
 import {
   ts,
   Node,
@@ -29,7 +30,7 @@ export function renamePropInSpread(
         const firstIdentifier = attribute.getFirstChildByKind(SyntaxKind.Identifier);
         const propertyAccess = attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
         if (!attribute || (!firstIdentifier && !propertyAccess)) {
-          return;
+          throw 'Invalid spread prop. Could access internal identifiers successfully.';
         }
         const spreadIsIdentifier = firstIdentifier !== undefined;
         /* Verify this attribute contains the name of our desired prop. */
@@ -53,7 +54,6 @@ export function renamePropInSpread(
               blockContainer = containerMaybe.value;
               newJSXFlag = true;
             } else {
-              // eslint-disable-next-line no-throw-literal
               throw 'attempt to create a new block around prop failed.';
             }
           }
@@ -61,14 +61,12 @@ export function renamePropInSpread(
           /* Step 5: Get the parent of BLOCKCONTAINER so that we can insert our own variable statements. */
           const parentContainer = blockContainer!.getParentIfKind(SyntaxKind.Block);
           if (parentContainer === undefined) {
-            // eslint-disable-next-line no-throw-literal
             throw 'unable to get parent container from block';
           }
 
           /* Step 6: Get the index of BLOCKCONTAINER within PARENTCONTAINER that we'll use to insert our variables. */
           const insertIndex = blockContainer!.getChildIndex();
           if (insertIndex === undefined) {
-            // eslint-disable-next-line no-throw-literal
             throw 'unable to find child index';
           }
 
@@ -182,6 +180,8 @@ export function renamePropInSpread(
               ? `{${replacementValue}}`
               : `{${toRename}}`,
           }); // Add the updated prop name and set its value.
+        } else {
+          throw 'Could not find prop in component specified.';
         }
       }
     }
