@@ -252,6 +252,30 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     }
   };
 
+  const onInputFocus = ev => {
+    if (!props.allowManualInput) {
+      setOpenState(OpenState.Opening);
+      ev.preventDefault();
+    }
+  };
+
+  const onInputBlur = () => {
+    if (props.autoCorrectManualInput && !!error) {
+      setFormattedDate(valueFormatter(selectedDate));
+      if (selectedDate) {
+        if (isRestrictedDate(selectedDate, calendarOptions)) {
+          setError(props.isOutOfBoundsErrorMessage);
+        } else {
+          setError('');
+        }
+      } else if (props.required) {
+        setError(props.isRequiredErrorMessage);
+      } else {
+        setError('');
+      }
+    }
+  };
+
   const element = (
     <Ref innerRef={datepickerRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
@@ -269,28 +293,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               readOnly: !props.allowManualInput,
             }),
             overrideProps: (predefinedProps: InputProps): InputProps => ({
-              onFocus: ev => {
-                if (!props.allowManualInput) {
-                  setOpenState(OpenState.Opening);
-                  ev.preventDefault();
-                }
-              },
-              onBlur: ev => {
-                if (props.autoCorrectManualInput && !!error) {
-                  setFormattedDate(valueFormatter(selectedDate));
-                  if (selectedDate) {
-                    if (isRestrictedDate(selectedDate, calendarOptions)) {
-                      setError(props.isOutOfBoundsErrorMessage);
-                    } else {
-                      setError('');
-                    }
-                  } else if (props.required) {
-                    setError(props.isRequiredErrorMessage);
-                  } else {
-                    setError('');
-                  }
-                }
-              },
+              onFocus: onInputFocus,
+              onBlur: onInputBlur,
               onClick: onInputClick,
               onChange: onInputChange,
             }),
