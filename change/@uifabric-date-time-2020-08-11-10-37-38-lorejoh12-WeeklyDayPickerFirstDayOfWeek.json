@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "adding fix for first day of week changing away from Sunday that I broke with previous PR",
-  "packageName": "@uifabric/date-time",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-11T17:37:38.307Z"
-}

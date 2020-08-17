@@ -290,6 +290,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
+    componentDidUpdate(oldProps: P, oldState: IBasePickerState): void;
+    // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     protected currentPromise: PromiseLike<any> | undefined;
@@ -303,6 +305,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected focusZone: React.RefObject<IFocusZone>;
     // (undocumented)
     protected getActiveDescendant(): string | undefined;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
+        items: any[];
+    } | null;
     // (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
@@ -365,10 +371,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsController<T>;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: P): void;
-    // (undocumented)
-    UNSAFE_componentWillUpdate(newProps: P, newState: IBasePickerState): void;
     // (undocumented)
     protected updateSuggestions(suggestions: any[]): void;
     // (undocumented)

@@ -11,6 +11,7 @@ import {
   SearchBox,
   Link,
   Label,
+  Text,
 } from 'office-ui-fabric-react';
 import {
   AzureCustomizationsLight,
@@ -39,18 +40,25 @@ import { DetailsListCompactExample } from '../components/detailsList';
 import { DatePickerBoundedExample } from '../components/dateBoundary';
 import { PivotBasicExample } from '../components/Pivots';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble';
+import { MessageBarBasicExample } from '../components/messageBar';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
+      <Text>13px body text</Text>
+      <Label>MessageBar / InfoBox</Label>
+      <MessageBarBasicExample />
+      <Label>TeachingBubble</Label>
       <TeachingBubbleBasicExample />
+      <Label>Pivots</Label>
       <PivotBasicExample />
       <Label>Buttons</Label>
       <DefaultButton text="DefaultButton" />
       <PrimaryButton text="PrimaryButton" />
       <CompoundButton primary text="CompoundButton" />
       <CompoundButton secondaryText="secondary text." text="CompoundButton" />
-
+      <DefaultButton primary={true} text="Default button as primary" />
+      <DefaultButton primary={true} disabled={true} text="Default w/ primary disabled" />
       <Label>Disabled Buttons</Label>
       <DefaultButton disabled text="DefaultButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />
