@@ -52,7 +52,6 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
       selectors: {
         '&.ms-Button--compound:hover': {
-          borderColor: semanticColors.buttonBackgroundHovered,
           selectors: {
             ...labelTextColor(semanticColors.buttonTextHovered),
           },

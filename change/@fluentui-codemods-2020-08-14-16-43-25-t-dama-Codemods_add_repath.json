@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "add support for repathing and function dictionary",
+  "packageName": "@fluentui/codemods",
+  "email": "t-dama@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-14T20:43:25.769Z"
+}

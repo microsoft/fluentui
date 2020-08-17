@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updating readme.",
+  "packageName": "@fluentui/react-compose",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-14T01:32:24.265Z"
+}

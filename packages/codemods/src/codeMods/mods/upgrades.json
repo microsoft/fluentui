@@ -28,6 +28,19 @@
           "replacementName": "checked"
         }
       }
+    },
+    {
+      "name": "Repathing imports from office to fluent",
+      "type": "repathImport",
+      "options": {
+        "from": {
+          "searchString": "/^office\\-ui\\-fabric\\-react/",
+          "isRegex": true
+        },
+        "to": {
+          "replacementValue": "@fluentui/react"
+        }
+      }
     }
   ]
 }

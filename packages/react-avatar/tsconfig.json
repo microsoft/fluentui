@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "lib": ["es2015", "dom", "es2015.promise"],
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "webpack-env", "custom-global"],
+    "paths": {
+      "@uifabric/react-avatar/lib/*": ["./src/*"],
+      "@uifabric/react-avatar": ["./src"]
+    }
+  },
+  "include": ["src"]
+}
