@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix: apply badge appearance styling to control not host element",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-14T21:13:52.358Z"
+}
