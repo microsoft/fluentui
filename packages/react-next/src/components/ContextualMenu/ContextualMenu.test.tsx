@@ -13,6 +13,11 @@ import { DefaultButton, IButton } from '../../compat/Button';
 import { IRenderFunction, resetIds } from '@uifabric/utilities';
 
 describe('ContextualMenu', () => {
+  beforeEach(() => {
+    // Rendering Callouts require the current window to have focus
+    jest.spyOn(window.document, 'hasFocus').mockImplementation(jest.fn(() => true));
+  });
+
   afterEach(() => {
     for (let i = 0; i < document.body.children.length; i++) {
       if (document.body.children[i].tagName === 'DIV') {

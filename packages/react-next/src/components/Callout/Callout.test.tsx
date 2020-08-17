@@ -14,7 +14,10 @@ describe('Callout', () => {
   beforeEach(() => {
     realDom = document.createElement('div');
     document.body.appendChild(realDom);
+    // Rendering Callouts require the current window to have focus
+    jest.spyOn(window.document, 'hasFocus').mockImplementation(jest.fn(() => true));
   });
+
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(realDom);
     document.body.removeChild(realDom);
@@ -31,6 +34,7 @@ describe('Callout', () => {
           addEventListener: jest.fn(),
           removeEventListener: jest.fn(),
         },
+        hasFocus: jest.fn(() => true),
       },
     });
     spyOn(positioning, 'getBoundsFromTargetWindow').and.returnValue({

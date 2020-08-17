@@ -5,6 +5,9 @@ import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { mount } from 'enzyme';
 
+// Rendering Callouts require the current window to have focus
+jest.spyOn(window.document, 'hasFocus').mockImplementation(jest.fn(() => true));
+
 describe('TeachingBubble', () => {
   it('renders TeachingBubble using a <div> for the child content if the child is not a string', () => {
     const component = mount(

@@ -7,6 +7,9 @@ import { ContextualMenuItemType } from './ContextualMenu.types';
 import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
 import { createTheme } from '../../Styling';
 
+// Rendering Callouts require the current window to have focus
+jest.spyOn(window.document, 'hasFocus').mockImplementation(jest.fn(() => true));
+
 let customClassNames: () => IMenuItemClassNames;
 
 describe('ContextualMenu', () => {

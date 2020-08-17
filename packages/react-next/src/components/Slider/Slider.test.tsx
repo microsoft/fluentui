@@ -11,6 +11,9 @@ import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { sharedIsConformant } from '../../common/sharedIsConformant';
 import { resetIds, KeyCodes } from '@uifabric/utilities';
 
+// Rendering Callouts require the current window to have focus
+jest.spyOn(window.document, 'hasFocus').mockImplementation(jest.fn(() => true));
+
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
 
