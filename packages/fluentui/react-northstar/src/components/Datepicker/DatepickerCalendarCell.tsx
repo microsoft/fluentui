@@ -41,7 +41,7 @@ export interface DatepickerCalendarCellProps extends UIComponentProps, ContentCo
   /** Denotes that the cell marks today's date. */
   isToday?: boolean;
 
-  /** A cell can show that it is currently not in the main focus. */
+  /** A cell can show that it currently has dimmed styles. */
   quiet?: boolean;
 
   /**
