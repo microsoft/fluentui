@@ -76,12 +76,13 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   calendarOpenState?: boolean;
 }
 
-export type DatepickerStylesProps = never;
+export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
 
 enum OpenState {
   Open,
+  Opening,
   Closing,
   Closed,
 }
@@ -119,7 +120,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     props.required && !selectedDate ? props.isRequiredErrorMessage : '',
   );
 
-  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear } = props;
+  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
 
   const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
 
@@ -179,6 +180,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const { classes } = useStyles<DatepickerStylesProps>(Datepicker.displayName, {
     className: datepickerClassName,
+    mapPropsToStyles: () => ({
+      allowManualInput,
+    }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -208,13 +212,13 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   });
 
   const openStateToBooleanKnob = (openState: OpenState): boolean => {
-    return openState === OpenState.Open;
+    return openState === OpenState.Open || openState === OpenState.Opening;
   };
 
   const onInputClick = (): void => {
     if (openState === OpenState.Closed) {
       setOpenState(OpenState.Open);
-    } else if (openState === OpenState.Open || openState === OpenState.Closing) {
+    } else if (openState === OpenState.Open || openState === OpenState.Closing || openState === OpenState.Opening) {
       // Keep popup open in case we can only enter the date through calendar.
       if (props.allowManualInput) {
         setOpenState(OpenState.Closed);
@@ -259,8 +263,15 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               disabled: props.disabled,
               error: !!error,
               value: formattedDate,
+              readOnly: !props.allowManualInput,
             }),
             overrideProps: (predefinedProps: InputProps): InputProps => ({
+              onFocus: ev => {
+                if (!props.allowManualInput) {
+                  setOpenState(OpenState.Opening);
+                  ev.preventDefault();
+                }
+              },
               onClick: onInputClick,
               onChange: onInputChange,
             }),
@@ -276,7 +287,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
-                setOpenState(open ? OpenState.Open : OpenState.Closing);
+                setOpenState(open || openState === OpenState.Opening ? OpenState.Open : OpenState.Closing);
                 _.invoke(predefinedProps, 'onOpenChange', e, { open });
               },
             }),
