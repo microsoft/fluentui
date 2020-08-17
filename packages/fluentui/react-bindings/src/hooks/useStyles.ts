@@ -75,11 +75,12 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
   const composeProps = { ...unstable_props, ...componentStylesProps };
   const composeStylesProps = mapPropsToStylesPropsChain?.reduce((acc, fn) => ({ ...acc, ...fn(composeProps) }), {});
 
-  const inlineStylesProps = mapPropsToInlineStyles() || {
+  const inlineStylesProps = {
     className: composeProps.className,
     debug: composeProps.debug,
     styles: composeProps.styles,
     variables: composeProps.variables,
+    ...mapPropsToInlineStyles(),
   };
 
   // Stores debug information for component.
