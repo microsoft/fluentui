@@ -6,7 +6,7 @@
 
 ### childrenExist(children)
 
-Tests if children are nil in React and Preact.
+Tests if children are nil in React and Preact. React `children` can be one many types. See the [tests](./src/childrenExist.test.tsx) for all the covered cases.
 
 Example:
 
