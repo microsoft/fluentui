@@ -51,9 +51,9 @@ export function createCodeMod(modName: string, mod: (file: SourceFile) => void):
         /* Codemod body. */
         mod(file);
       } catch (e) {
-        return { success: false };
+        return Err({ reason: `Mod failed: ${e}` });
       }
-      return { success: true };
+      return Ok({ logs: ['Upgrade completed'] });
     },
     version: '100000',
     name: modName,
@@ -63,9 +63,7 @@ export function createCodeMod(modName: string, mod: (file: SourceFile) => void):
 
 /* Dictionary that maps codemod names to functions that execute said mod.
    Used by getCodeModUtilitiesFromJson to easily get the desired function
-   from the json object.
-
-   TODO: How well does this scale for devs who want to add mods but don't care about json?*/
+   from the json object. */
 const codeModMap: CodeModMapType = {
   renameProp: function(mod: RenamePropModType) {
     return function(file: SourceFile) {
