@@ -24,15 +24,26 @@ export function getTokens(theme: Theme): Tokens {
     {},
     defaultTokens,
     {
+      // accent is currently only mapped for primary button to use.
       accent: {
-        background: palette?.themePrimary,
-        contentColor: palette?.white,
+        background: semanticColors?.primaryButtonBackground,
+        borderColor: semanticColors?.primaryButtonBorder,
+        contentColor: semanticColors?.primaryButtonText,
         iconColor: palette?.white,
 
         hovered: {
-          background: palette?.themeDarkAlt,
-          contentColor: palette?.white,
-          iconColor: palette?.white,
+          background: semanticColors?.primaryButtonBackgroundHovered,
+          contentColor: semanticColors?.primaryButtonTextHovered,
+        },
+
+        pressed: {
+          background: semanticColors?.primaryButtonBackgroundPressed,
+          contentColor: semanticColors?.primaryButtonTextPressed,
+        },
+
+        disabled: {
+          background: semanticColors?.primaryButtonBackgroundDisabled,
+          contentColor: semanticColors?.primaryButtonTextDisabled,
         },
       },
 
