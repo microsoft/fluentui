@@ -1,4 +1,4 @@
-import { dest, lastRun, parallel, series, src, task, watch } from 'gulp';
+import { dest, lastRun, parallel, series, src, task, watch, TaskFunction } from 'gulp';
 import chalk from 'chalk';
 import cache from 'gulp-cache';
 import remember from 'gulp-remember';
@@ -206,7 +206,7 @@ task('serve:docs:stop', () => forceClose(server));
 task('watch:docs:component-info', () => {
   Object.values(getAllPackageInfo()).forEach(pkg => {
     if (pkg.packageJson.gulp?.componentInfo) {
-      const internalTask = () =>
+      const internalTask: TaskFunction = () =>
         src(pkg.packageJson.gulp?.componentInfo, { cwd: pkg.packagePath })
           .pipe(
             cacheNonCi(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
@@ -214,7 +214,6 @@ task('watch:docs:component-info', () => {
             }),
           )
           .pipe(dest('componentInfo', { cwd: pkg.packagePath }));
-      // @ts-ignore
       internalTask.displayName = 'build:docs:component-info';
 
       const watcher = watch(pkg.packageJson.gulp?.componentInfo, { cwd: pkg.packagePath }, internalTask);
