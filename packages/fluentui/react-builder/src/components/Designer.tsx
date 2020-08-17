@@ -614,17 +614,11 @@ export const Designer: React.FunctionComponent = () => {
                           ? 'Exporting...'
                           : 'Click to open';
 
-                      const codeSandboxIcon =
-                        state === CodeSandboxState.Default ? (
-                          <FilesCodeIcon />
-                        ) : state === CodeSandboxState.Loading ? (
-                          <Loader size="small" />
-                        ) : (
-                          <AcceptIcon />
-                        );
+                      const codeSandboxIcon = state === CodeSandboxState.Default ? <FilesCodeIcon /> : <AcceptIcon />;
 
                       return (
                         <Button
+                          loading={state === CodeSandboxState.Loading}
                           styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
                           onClick={onCodeSandboxClick}
                           icon={codeSandboxIcon}
