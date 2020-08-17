@@ -347,6 +347,7 @@ Datepicker.propTypes = {
   disabled: PropTypes.bool,
   required: PropTypes.bool,
   onDateChange: PropTypes.func,
+  onError: PropTypes.func,
   placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
   autoCorrectManualInput: PropTypes.bool,
