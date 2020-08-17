@@ -1,12 +1,10 @@
-import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore Typings require esModuleInterop
 import objectFitImages from 'object-fit-images';
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 import * as React from 'react';
 
-import { ImageProps, ImageState } from './Image.types';
+import { ImageState } from './Image.types';
 
 const isFitSupported = (function() {
   const testImg = new Image();
@@ -17,11 +15,7 @@ const isFitSupported = (function() {
 /**
  * The useImage hook processes the Image component props and returns state.
  */
-export const useImage = (
-  props: ImageProps,
-  ref: React.Ref<HTMLElement>,
-  options: ComposePreparedOptions,
-): ImageState => {
+export const useImageState = (state: ImageState) => {
   const imageRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
@@ -30,9 +24,6 @@ export const useImage = (
     }
   }, []);
 
-  return {
-    ...props,
-    imageRef,
-    style: getStyleFromPropsAndOptions(props, options, '--image'),
-  };
+  state['aria-hidden'] = state.alt || state['aria-label'] ? undefined : 'true';
+  state.imageRef = imageRef;
 };
