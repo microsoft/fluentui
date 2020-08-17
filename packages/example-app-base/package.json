@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "7.12.110",
+  "version": "7.12.113",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,7 +21,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.53.3",
+    "@fluentui/eslint-plugin": "^0.53.4",
     "@types/color-check": "0.0.0",
     "@types/jest": "~24.9.0",
     "@types/markdown-to-jsx": "6.9.0",
@@ -42,15 +42,15 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/example-data": "^7.1.1",
-    "@uifabric/fluent-theme": "^7.1.127",
-    "@uifabric/react-hooks": "^7.8.0",
-    "@uifabric/set-version": "^7.0.20",
-    "@uifabric/tsx-editor": "^0.11.126",
+    "@uifabric/example-data": "^7.1.2",
+    "@uifabric/fluent-theme": "^7.1.130",
+    "@uifabric/react-hooks": "^7.8.2",
+    "@uifabric/set-version": "^7.0.21",
+    "@uifabric/tsx-editor": "^0.11.129",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.6.1",
     "office-ui-fabric-core": "^11.0.0",
-    "office-ui-fabric-react": "^7.127.0",
+    "office-ui-fabric-react": "^7.128.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^1.10.0"

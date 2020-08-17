@@ -60,7 +60,7 @@ const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
         }
       },
     }),
-    [],
+    [link],
   );
 };
 

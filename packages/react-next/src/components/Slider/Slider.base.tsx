@@ -14,6 +14,7 @@ export const SliderBase = React.forwardRef((props: ISliderProps, ref: React.Ref<
   const slotProps = useSlider(props, ref);
 
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
       name: COMPONENT_NAME,
       props,

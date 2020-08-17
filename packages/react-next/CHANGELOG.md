@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Tue, 11 Aug 2020 05:47:07 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.86)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.85..@fluentui/react-next_v8.0.0-alpha.86)
+
+### Changes
+
+- fix casing for utilities folder ([PR #14512](https://github.com/microsoft/fluentui/pull/14512) by xgao@microsoft.com)
+
+## [8.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.85)
+
+Thu, 13 Aug 2020 12:41:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.84..@fluentui/react-next_v8.0.0-alpha.85)
+
+### Changes
+
+- Copy ContextualMenu to react-next ([PR #14391](https://github.com/microsoft/fluentui/pull/14391) by miclo@microsoft.com)
+- Enable eslint-plugin-react-hooks in react-next and fix a few bugs ([PR #14478](https://github.com/microsoft/fluentui/pull/14478) by elcraig@microsoft.com)
+
+## [8.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.84)
+
+Wed, 12 Aug 2020 18:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.83..@fluentui/react-next_v8.0.0-alpha.84)
+
+### Changes
+
+- update ThemeProvider to support v7 theme ([PR #14398](https://github.com/microsoft/fluentui/pull/14398) by xgao@microsoft.com)
+- Dropdown: Correctly updating set-size when number of options updates after first render. ([PR #14415](https://github.com/microsoft/fluentui/pull/14415) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.83)
 
