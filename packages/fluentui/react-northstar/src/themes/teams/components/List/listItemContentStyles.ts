@@ -1,6 +1,5 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-import { pxToRem } from '../../../../utils';
 import { ListItemContentStylesProps } from '../../../../components/List/ListItemContent';
 import { ListItemVariables } from './listItemVariables';
 
@@ -16,7 +15,7 @@ export const listItemContentStyles: ComponentSlotStylesPrepared<ListItemContentS
       whiteSpace: 'nowrap',
     }),
     ...((!p.hasHeader || p.hasContentMedia) && {
-      marginRight: pxToRem(8),
+      marginRight: v.gap,
     }),
   }),
 };

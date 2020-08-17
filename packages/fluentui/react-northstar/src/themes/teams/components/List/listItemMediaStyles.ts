@@ -5,7 +5,7 @@ import { ListItemMediaStylesProps } from '../../../../components/List/ListItemMe
 import { ListItemVariables } from './listItemVariables';
 
 export const listItemMediaStyles: ComponentSlotStylesPrepared<ListItemMediaStylesProps, ListItemVariables> = {
-  root: ({ props: p }): ICSSInJSStyle => ({
+  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...(p.important && {
       '::before': {
         content: '""',
@@ -17,7 +17,7 @@ export const listItemMediaStyles: ComponentSlotStylesPrepared<ListItemMediaStyle
       },
     }),
     ...((p.hasHeader || p.hasContent) && {
-      marginRight: pxToRem(8),
+      marginRight: v.gap,
     }),
   }),
 };
