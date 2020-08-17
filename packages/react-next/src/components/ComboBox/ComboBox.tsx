@@ -33,6 +33,7 @@ import {
 } from 'office-ui-fabric-react/lib/utilities/selectableOption/index';
 import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../compat/Button';
 import { ICalloutProps } from '../../Callout';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 export interface IComboBoxState {
   /** The open state */
@@ -120,16 +121,29 @@ const ComboBoxOptionWrapper = React.memo(
 
 const COMPONENT_NAME = 'ComboBox';
 
+export const ComboBox = React.forwardRef((props: IComboBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  const mergedRootRef = useMergedRefs(rootRef, forwardedRef);
+
+  return <ComboBoxInternal {...props} hoisted={{ mergedRootRef, rootRef }} />;
+});
+ComboBox.displayName = COMPONENT_NAME;
+
+interface IComboBoxInternalProps extends IComboBoxProps {
+  hoisted: {
+    mergedRootRef: React.Ref<HTMLDivElement>;
+    rootRef: React.RefObject<HTMLDivElement>;
+  };
+}
+
 @customizable('ComboBox', ['theme', 'styles'], true)
-export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
+class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> {
   public static defaultProps: IComboBoxProps = {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
     buttonIconProps: { iconName: 'ChevronDown' },
   };
-
-  private _root = React.createRef<HTMLDivElement>();
 
   /** The input aspect of the comboBox */
   private _autofill = React.createRef<IAutofill>();
@@ -181,7 +195,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   private _async: Async;
   private _events: EventGroup;
 
-  constructor(props: IComboBoxProps) {
+  constructor(props: IComboBoxInternalProps) {
     super(props);
 
     initializeComponentRef(this);
@@ -242,7 +256,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  public UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void {
+  public UNSAFE_componentWillReceiveProps(newProps: IComboBoxInternalProps): void {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
     if (
@@ -265,7 +279,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
+  public componentDidUpdate(prevProps: IComboBoxInternalProps, prevState: IComboBoxState) {
     const { allowFreeform, text, onMenuOpen, onMenuDismissed } = this.props;
     const { isOpen, selectedIndices, currentPendingValueValidIndex } = this.state;
 
@@ -400,7 +414,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     );
 
     return (
-      <div {...divProps} ref={this._root} className={this._classNames.container}>
+      <div {...divProps} ref={this.props.hoisted.mergedRootRef} className={this._classNames.container}>
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
         {comboBoxWrapper}
         {(persistMenu || isOpen) &&
@@ -1104,7 +1118,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     if (
       relatedTarget &&
       // when event coming from withing the comboBox title
-      ((this._root.current && this._root.current.contains(relatedTarget as HTMLElement)) ||
+      ((this.props.hoisted.rootRef.current &&
+        this.props.hoisted.rootRef.current.contains(relatedTarget as HTMLElement)) ||
         // when event coming from within the comboBox list menu
         (this._comboBoxMenu.current &&
           (this._comboBoxMenu.current.contains(relatedTarget as HTMLElement) ||
