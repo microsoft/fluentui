@@ -6,6 +6,7 @@ import NonPublicSection from '../../../../components/ComponentDoc/NonPublicSecti
 const Types = () => (
   <NonPublicSection title="Visual tests">
     <ComponentExample examplePath="components/Button/Visual/ButtonExampleCompose" />
+    <ComponentExample examplePath="components/Button/Visual/ButtonExampleUseCss" />
   </NonPublicSection>
 );
 

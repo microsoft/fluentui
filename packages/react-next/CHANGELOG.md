@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.86)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.85..@fluentui/react-next_v8.0.0-alpha.86)
+
+### Changes
+
+- fix casing for utilities folder ([PR #14512](https://github.com/microsoft/fluentui/pull/14512) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.85)
 

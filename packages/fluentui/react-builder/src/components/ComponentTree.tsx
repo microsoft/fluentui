@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { JSONTreeElement } from './types';
-import { TreeItemProps, Tree } from '@fluentui/react-northstar';
+import { TreeItemProps, Tree, treeBehavior } from '@fluentui/react-northstar';
 import { jsonTreeFindElement } from '../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
 
@@ -20,7 +20,16 @@ const jsonTreeToTreeItems: (
   handleClone: React.MouseEventHandler<HTMLButtonElement>,
   handleMove: React.MouseEventHandler<HTMLButtonElement>,
   handleDelete: React.MouseEventHandler<HTMLButtonElement>,
-) => TreeItemProps = (tree, selectedComponentId, handleSelectedComponent, handleClone, handleMove, handleDelete) => {
+  titleRenderer: (Component, { content, expanded, hasSubtree, ...rest }) => React.ReactFragment,
+) => TreeItemProps = (
+  tree,
+  selectedComponentId,
+  handleSelectedComponent,
+  handleClone,
+  handleMove,
+  handleDelete,
+  titleRenderer,
+) => {
   if (typeof tree === 'string') {
     return {
       id: Math.random()
@@ -33,6 +42,7 @@ const jsonTreeToTreeItems: (
     onTitleClick: handleSelectedComponent,
     id: tree.uuid as string,
     title: {
+      children: titleRenderer,
       content: tree.displayName,
       styles: {
         display: 'flex',
@@ -42,6 +52,7 @@ const jsonTreeToTreeItems: (
         ...(selectedComponentId === tree.uuid && {
           background: '#ffc65c',
           color: '#444',
+          borderBottomLeftRadius: '0.5rem',
         }),
       },
     },
@@ -49,17 +60,32 @@ const jsonTreeToTreeItems: (
       renderItemTitle: (C, { content, ...props }) => {
         return (
           <C {...props}>
-            <span style={{ flex: 1 }}>{content}</span>
-            <MoveDebugButton onClick={handleMove} />
-            <CloneDebugButton onClick={handleClone} />
-            <TrashDebugButton onClick={handleDelete} />
+            <>
+              {props['level'] === 1 ? (
+                <span style={{ flex: 1 }}>{content}</span>
+              ) : (
+                <span style={{ flex: 1, marginLeft: '1rem' }}>{content}</span>
+              )}
+              <>
+                <MoveDebugButton onClick={handleMove} />
+                <CloneDebugButton onClick={handleClone} />
+                <TrashDebugButton onClick={handleDelete} />
+              </>
+            </>
           </C>
         );
       },
     }),
-    expanded: true,
     items: tree.props?.children?.map(item =>
-      jsonTreeToTreeItems(item, selectedComponentId, handleSelectedComponent, handleClone, handleMove, handleDelete),
+      jsonTreeToTreeItems(
+        item,
+        selectedComponentId,
+        handleSelectedComponent,
+        handleClone,
+        handleMove,
+        handleDelete,
+        titleRenderer,
+      ),
     ),
   };
 };
@@ -106,10 +132,55 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
     [onDeleteComponent],
   );
 
+  const activeItems = [];
+  const getActiveItemIds = item => {
+    if (item.items) {
+      activeItems.push(item.id);
+      item.items.forEach(i => getActiveItemIds(i));
+    }
+  };
+
+  const titleRenderer = (Component, { content, expanded, hasSubtree, ...rest }) => {
+    return (
+      <>
+        {rest['level'] !== 1 ? (
+          <span
+            style={{
+              paddingRight: '1rem',
+              borderLeft: '1px solid #eee',
+              borderBottom: '1px solid #eee',
+              borderBottomLeftRadius: '0.5rem',
+            }}
+          />
+        ) : null}
+        <div {...rest} style={{ display: 'inline-block', cursor: 'pointer', padding: '2px 4px' }}>
+          {content}
+        </div>
+      </>
+    );
+  };
+
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
     tree.props?.children?.map(item =>
-      jsonTreeToTreeItems(item, selectedComponentId, handleSelectComponent, handleClone, handleMove, handleDelete),
+      jsonTreeToTreeItems(
+        item,
+        selectedComponentId,
+        handleSelectComponent,
+        handleClone,
+        handleMove,
+        handleDelete,
+        titleRenderer,
+      ),
     ) ?? [];
-  return <Tree items={items} />;
+  items.forEach(item => getActiveItemIds(item));
+
+  return (
+    <Tree
+      accessibility={treeBehavior}
+      items={items}
+      activeItemIds={activeItems}
+      styles={{ minHeight: '17rem', maxHeight: '17rem', overflowY: 'auto' }}
+    />
+  );
 };

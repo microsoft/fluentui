@@ -17,9 +17,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## BREAKING CHANGES
+- Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
+- Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
+
 ### Fixes
 - Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
 - Fix `Tree` component to correctly keep track of the `activeItemIds` @assuncaocharles ([#14507](https://github.com/microsoft/fluentui/pull/14507))
+- Fix `Menu` underlined focus style @assuncaocharles ([#14525](https://github.com/microsoft/fluentui/pull/14525))
 
 ### Features
 - Add basic keyboard navigation for `Datepicker` @pompompon ([#14138](https://github.com/microsoft/fluentui/pull/14138))
@@ -29,10 +34,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add base `SkeletonAvatar` component @assuncaocharles ([#14471](https://github.com/microsoft/fluentui/pull/14471))
 - Add base `SkeletonInput` component @assuncaocharles ([#14439](https://github.com/microsoft/fluentui/pull/14439))
 - Add base `SkeletonText` component @assuncaocharles ([#14460](https://github.com/microsoft/fluentui/pull/14460))
+- Add styling for `Datepicker` component @karymes ([#14469](https://github.com/microsoft/fluentui/pull/14469))
 
 ### Documentation
+- Edited left side menu in UI builder @vyhnalekl ([#14436](https://github.com/microsoft/fluentui/pull/14436))
+- Fixed issue with a drop near the edge of iframe in UI builder @vyhnalekl ([#14440](https://github.com/microsoft/fluentui/pull/14440))
 - Add undo and redo feature to UI builder @vyhnalekl ([#14336](https://github.com/microsoft/fluentui/pull/14336))
+- Added keyboard shortcuts to UI builder @vyhnalekl ([#14483](https://github.com/microsoft/fluentui/pull/14483))
 - Add `formatDayMonthYear` and `parseDate` examples for `Datepicker` @pompomon ([#14484](https://github.com/microsoft/fluentui/pull/14484))
+- Move component in iframe by drag and drop @vyhnalekl ([#14432](https://github.com/microsoft/fluentui/pull/14432))
+- Removed props JSON from right side menu @vyhnalekl ([#14503](https://github.com/microsoft/fluentui/pull/14503))
+- Fixed top's component debug frame above iframe @vyhnalekl ([#14329](https://github.com/microsoft/fluentui/pull/14329))
+- Hide drop selector on scroll in iframe (UI builder) @vyhnalekl ([#14443](https://github.com/microsoft/fluentui/pull/14443))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)

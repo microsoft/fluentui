@@ -16,6 +16,7 @@ export type CanvasProps = {
   onDropPositionChange: (dropParent: JSONTreeElement, dropIndex: number) => void;
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
+  onKeyDown?: (KeyboardEvent) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
@@ -34,6 +35,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   onDropPositionChange,
   onMouseMove,
   onMouseUp,
+  onKeyDown,
   onSelectComponent,
   selectedComponent,
   onCloneComponent,
@@ -43,6 +45,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   renderJSONTreeElement,
   style,
 }) => {
+  const [hideDropSelector, setHideDropSelector] = React.useState(false);
+
   const iframeId = React.useMemo(
     () =>
       `frame-${Math.random()
@@ -66,9 +70,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 
   const handleMouseMove = React.useCallback(
     (e: MouseEvent) => {
+      hideDropSelector && setHideDropSelector(false);
       onMouseMove?.(iframeCoordinatesToWindowCoordinates(e));
     },
-    [iframeCoordinatesToWindowCoordinates, onMouseMove],
+    [iframeCoordinatesToWindowCoordinates, onMouseMove, hideDropSelector],
   );
 
   const handleMouseUp = React.useCallback(
@@ -78,9 +83,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       e.preventDefault();
       e.stopPropagation();
 
+      hideDropSelector && setHideDropSelector(false);
       onMouseUp();
     },
-    [onMouseUp],
+    [onMouseUp, hideDropSelector],
   );
 
   const handleSelectComponent = React.useCallback(
@@ -285,12 +291,20 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 jsonTree={jsonTree}
                 mountDocument={document}
                 onDropPositionChange={onDropPositionChange}
+                hideSelector={hideDropSelector}
               />
             )}
-
+            <EventListener type="keydown" listener={onKeyDown} target={document} />
             <Provider theme={teamsTheme} target={document}>
               {draggingElement && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {draggingElement && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
+              {draggingElement && (
+                <EventListener
+                  type="scroll"
+                  listener={() => !hideDropSelector && setHideDropSelector(true)}
+                  target={document}
+                />
+              )}
               {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
             </Provider>
           </>

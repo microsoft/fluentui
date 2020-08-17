@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add two well example and fix Remove ctx menu example",
-  "packageName": "@uifabric/experiments",
-  "email": "sadelson@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-13T16:40:51.406Z"
-}
