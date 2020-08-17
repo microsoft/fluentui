@@ -63,6 +63,14 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
    */
   onDateChange?: ComponentEventHandler<DatepickerProps & { value: Date }>;
 
+  /**
+   * Called on change of the date.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onError?: ComponentEventHandler<DatepickerProps & { error: string }>;
+
   /** Text placeholder for the input field. */
   placeholder?: string;
 
@@ -238,6 +246,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     if (parsedDate) {
       if (isRestrictedDate(parsedDate, calendarOptions)) {
         setError(props.isOutOfBoundsErrorMessage);
+        _.invoke(props, 'onError', e, { ...props, error: props.isOutOfBoundsErrorMessage });
       } else {
         setError('');
         setSelectedDate(parsedDate);
@@ -245,31 +254,35 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       }
     } else if (target.value) {
       setError(props.invalidInputErrorMessage);
+      _.invoke(props, 'onError', e, { ...props, error: props.invalidInputErrorMessage });
     } else if (props.required && !selectedDate) {
       setError(props.isRequiredErrorMessage);
+      _.invoke(props, 'onError', e, { ...props, error: props.isRequiredErrorMessage });
     } else {
       setError('');
     }
   };
 
-  const onInputFocus = ev => {
+  const onInputFocus = e => {
     if (!props.allowManualInput) {
       setOpenState(OpenState.Opening);
-      ev.preventDefault();
+      e.preventDefault();
     }
   };
 
-  const onInputBlur = () => {
+  const onInputBlur = e => {
     if (props.autoCorrectManualInput && !!error) {
       setFormattedDate(valueFormatter(selectedDate));
       if (selectedDate) {
         if (isRestrictedDate(selectedDate, calendarOptions)) {
           setError(props.isOutOfBoundsErrorMessage);
+          _.invoke(props, 'onError', e, { ...props, error: props.isOutOfBoundsErrorMessage });
         } else {
           setError('');
         }
       } else if (props.required) {
         setError(props.isRequiredErrorMessage);
+        _.invoke(props, 'onError', e, { ...props, error: props.isRequiredErrorMessage });
       } else {
         setError('');
       }
