@@ -27,66 +27,23 @@ jobs:
           yarn checkchange
         displayName: check change
 
-      ## TODO: clean up the @fluentui/docs build and @fluentui/react-northstar test WRT component-info generation
-      ## the dependency order cannot be expressed with lage configuration currently
+      ## only do scoped builds with PRs
       - script: |
-          yarn lage build --only --verbose --no-cache --grouped
-        displayName: build
+          yarn lage build test lint --verbose --no-cache --grouped --since $(target_branch)
+        displayName: build, test, lint (pr, scoped)
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
+      ## duplicated build step, but without --since flag for master CI builds
       - script: |
-          yarn lage test lint --only --verbose --no-cache --grouped
-        displayName: test, lint
+          yarn lage build test lint --verbose --no-cache --grouped
+        displayName: build, test, lint (master)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
-
-  - job: ValidateFluent
-    workspace:
-      clean: all
-    steps:
-      - template: azure-pipelines.tools.yml
-
-      - script: |
-          yarn
-        displayName: yarn
-
-      - template: .devops/templates/pr-target-branch.yml
-
-      - script: |
-          if [ $BUILD_REASON == "PullRequest" ]; then
-            yarn danger ci
-          else
-            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-          fi
-        displayName: danger
-        env:
-          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
-
-      - script: |
-          yarn lage build --scope @fluentui/e2e --no-deps --verbose --no-cache --grouped
-        displayName: build
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
-
-      - script: |
-          yarn test:fluentui:e2e
-        displayName: E2E Tests
-
-      - script: |
-          yarn test:fluentui:projects
-        displayName: Project Tests
-
-      - script: |
-          yarn test:fluentui:circulars
-        displayName: Circular Dependencies Tests
-
-      - script: |
-          yarn check-for-changed-files
-        displayName: check for changed files
 
   - job: Deploy
     workspace:
@@ -100,12 +57,30 @@ jobs:
           yarn
         displayName: yarn
 
+      - template: .devops/templates/pr-target-branch.yml
+
+      ## only do scoped bundle with PRs
       - script: |
-          yarn lage bundle --scope @uifabric/pr-deploy-site --no-deps --verbose --no-cache --grouped
-        displayName: bundle
+          yarn lage bundle --verbose --no-cache --grouped --since $(target_branch)
+        displayName: bundle (pr, scoped)
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
         env:
           BACKFILL_CACHE_PROVIDER: 'azure-blob'
           BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      ## duplicated for  master CI builds
+      - script: |
+          yarn lage bundle --verbose --no-cache --grouped
+        displayName: bundle (master)
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        env:
+          BACKFILL_CACHE_PROVIDER: 'azure-blob'
+          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+
+      ## This runs regardless of scope, the app will adapt to the scope as well
+      - script: |
+          yarn workspace @uifabric/pr-deploy-site generate:site
+        displayName: generate PR Deploy Site
 
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: Build-PR-$(Build.BuildNumber)

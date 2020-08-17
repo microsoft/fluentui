@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tests a simple data-driven codeMod can rename props in CompoundButton and Dropdown 1`] = `
+exports[`Tests a simple data-driven codeMod can run all mods in upgrades.json successfully 1`] = `
 "import * as React from 'react';
-import { CompoundButton } from 'office-ui-fabric-react/lib/Button';
+import { CompoundButton } from '@fluentui/react';
 
 export class RenderButton extends React.Component<LocalButtonProps> {
   public render(): JSX.Element {
@@ -26,9 +26,9 @@ export interface LocalButtonProps {
 "
 `;
 
-exports[`Tests a simple data-driven codeMod can rename props in CompoundButton and Dropdown 2`] = `
+exports[`Tests a simple data-driven codeMod can run all mods in upgrades.json successfully 2`] = `
 "import * as React from 'react';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown } from '@fluentui/react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RenderDropdown = (props: any) => {
