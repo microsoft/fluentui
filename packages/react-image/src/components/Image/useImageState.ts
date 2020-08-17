@@ -4,7 +4,7 @@ import objectFitImages from 'object-fit-images';
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 import * as React from 'react';
 
-import { ImageProps } from './Image.types';
+import { ImageState } from './Image.types';
 
 const isFitSupported = (function() {
   const testImg = new Image();
