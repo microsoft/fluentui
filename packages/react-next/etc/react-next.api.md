@@ -6,7 +6,6 @@
 
 import { BaseSlots } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
-import * as CSS from 'csstype';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
@@ -39,7 +38,6 @@ import { IVerticalDividerClassNames } from 'office-ui-fabric-react/src/component
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Point } from 'office-ui-fabric-react/lib/Utilities';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
@@ -1735,8 +1733,7 @@ export interface ISwatchColorPickerProps {
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
-    // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
-    onChange?: (event: React_2.MouseEvent<HTMLElement>, color?: string) => void;
+    onChange?: (event: React.FormEvent<HTMLElement>, color?: string) => void;
     // @deprecated (undocumented)
     onColorChanged?: (id?: string, color?: string) => void;
     // @deprecated (undocumented)

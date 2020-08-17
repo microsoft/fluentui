@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import {
@@ -68,7 +69,7 @@ export interface ISwatchColorPickerProps {
    * If `id` and `color` are unspecified, there is no selected cell.
    * (e.g. the user executed the currently selected cell to unselect it)
    */
-  onChange?: (event: React.MouseEvent<HTMLElement>, color?: string) => void;
+  onChange?: (event: React.FormEvent<HTMLElement>, color?: string) => void;
   /**
    * Callback for when the user hovers over a color cell.
    * If `id` and `color` are unspecified, cells are no longer being hovered.
