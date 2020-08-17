@@ -34,6 +34,7 @@ import {
 import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../compat/Button';
 import { ICalloutProps } from '../../Callout';
 import { useMergedRefs } from '@uifabric/react-hooks';
+import { getPropsWithDefaults } from '../../utilities';
 
 export interface IComboBoxState {
   /** The open state */
@@ -120,13 +121,22 @@ const ComboBoxOptionWrapper = React.memo(
 );
 
 const COMPONENT_NAME = 'ComboBox';
+const DEFAULT_PROPS: Partial<IComboBoxProps> = {
+  options: [],
+  allowFreeform: false,
+  autoComplete: 'on',
+  buttonIconProps: { iconName: 'ChevronDown' },
+};
 
-export const ComboBox = React.forwardRef((props: IComboBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-  const rootRef = React.useRef<HTMLDivElement>(null);
-  const mergedRootRef = useMergedRefs(rootRef, forwardedRef);
+export const ComboBox = React.forwardRef(
+  (propsWithoutDefaults: IComboBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+    const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+    const rootRef = React.useRef<HTMLDivElement>(null);
+    const mergedRootRef = useMergedRefs(rootRef, forwardedRef);
 
-  return <ComboBoxInternal {...props} hoisted={{ mergedRootRef, rootRef }} />;
-});
+    return <ComboBoxInternal {...props} hoisted={{ mergedRootRef, rootRef }} />;
+  },
+);
 ComboBox.displayName = COMPONENT_NAME;
 
 interface IComboBoxInternalProps extends IComboBoxProps {
@@ -138,13 +148,6 @@ interface IComboBoxInternalProps extends IComboBoxProps {
 
 @customizable('ComboBox', ['theme', 'styles'], true)
 class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> {
-  public static defaultProps: IComboBoxProps = {
-    options: [],
-    allowFreeform: false,
-    autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' },
-  };
-
   /** The input aspect of the comboBox */
   private _autofill = React.createRef<IAutofill>();
 
