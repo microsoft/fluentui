@@ -1,5 +1,5 @@
 import { Project } from 'ts-morph';
-import { createCodeModFromJson } from '../../mods/configMod/configMod';
+import { createCodeModsFromJson } from '../../mods/configMod/configMod';
 import { Maybe } from '../../../helpers/maybe';
 import { runMods } from '../../../modRunner/runnerUtilities';
 
@@ -20,11 +20,9 @@ describe('Tests a simple data-driven codeMod', () => {
   });
 
   it('can run all mods in upgrades.json successfully', () => {
-    const mod = Maybe(createCodeModFromJson());
-    if (mod.something) {
-      const mods = [];
-      mods.push(mod.value);
-      runMods(mods, project.getSourceFiles(), result => {
+    const mods = Maybe(createCodeModsFromJson());
+    if (mods.something) {
+      runMods(mods.value, project.getSourceFiles(), result => {
         if (result.error) {
           console.error(`Error running mod ${result.mod.name} on file ${result.file.getBaseName()}`, result.error);
         } else {
