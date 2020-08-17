@@ -2,6 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 import { CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { useStylesheet } from '@fluentui/react-stylesheets';
+import { getTokens } from '@fluentui/themes/lib/getTokens';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
 import { Theme } from './types';
@@ -9,7 +10,6 @@ import { ThemeProviderProps } from './ThemeProvider.types';
 import { mergeThemes } from './mergeThemes';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
-import { getTokens } from './getTokens';
 
 function createCustomizerContext(theme: Theme): ICustomizerContext {
   return {

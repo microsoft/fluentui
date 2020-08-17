@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { useCustomizationSettings } from '@uifabric/utilities';
 import { ITheme } from '@uifabric/styling';
+import { createDefaultTheme } from '@fluentui/themes/lib/createDefaultTheme';
 import { ThemeContext } from './ThemeContext';
 import { Theme } from './types';
-import { createDefaultTheme } from './createDefaultTheme';
 
 const defaultTheme = createDefaultTheme();
 

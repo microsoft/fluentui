@@ -1,6 +1,6 @@
+import { merge } from '@uifabric/utilities';
 import { Tokens, Theme } from './types';
 import { defaultTokens } from './createDefaultTheme';
-import { merge } from '@uifabric/utilities';
 
 /**
  * Get tokens from theme object.

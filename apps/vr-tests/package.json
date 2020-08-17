@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.53.4",
+    "@fluentui/themes": "^0.1.0",
     "@babel/core": "^7.10.4",
     "@storybook/addon-options": "^5.3.8",
     "@storybook/addons": "^5.3.8",

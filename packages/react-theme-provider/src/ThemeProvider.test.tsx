@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
+import { createDefaultTheme } from '@fluentui/themes';
 import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { mergeThemes } from './mergeThemes';
-import { createDefaultTheme } from './createDefaultTheme';
+import { ThemeProvider } from './ThemeProvider';
 
 const lightTheme = mergeThemes({
   stylesheets: [],

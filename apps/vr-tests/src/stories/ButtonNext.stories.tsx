@@ -5,7 +5,8 @@ import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { FabricDecorator } from '../utilities';
-import { ThemeProvider, TeamsTheme } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { TeamsTheme } from '@fluentui/themes';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)

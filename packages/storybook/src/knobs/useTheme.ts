@@ -1,13 +1,13 @@
 import { select } from '@storybook/addon-knobs';
-import * as V8Themes from '@fluentui/react-theme-provider/lib/themes/index';
+import { FluentTheme, TeamsTheme } from '@fluentui/themes';
 import * as V7Themes from '../themes/v7/index';
 
 const themeSelectorLabel = 'Theme';
 
 const defaultThemeOption = { label: 'None', theme: undefined };
 const v8ThemeOptions = [
-  { label: 'V8 - Fluent', theme: V8Themes.FluentTheme },
-  { label: 'V8 - Teams', theme: V8Themes.TeamsTheme },
+  { label: 'V8 - Fluent', theme: FluentTheme },
+  { label: 'V8 - Teams', theme: TeamsTheme },
 ];
 const v7ThemeOptions = [
   { label: 'V7 - Fluent', theme: V7Themes.FluentTheme },

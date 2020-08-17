@@ -35,12 +35,6 @@ export type ColorTokenStates = Partial<{
     checkedPressed: ColorTokens;
 }>;
 
-// @public
-export const createDefaultTheme: () => Theme;
-
-// @public (undocumented)
-export const FluentTheme: Theme;
-
 // @public (undocumented)
 export type FontTokens = Partial<{
     fontFamily: string;
@@ -78,9 +72,6 @@ export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     // (undocumented)
     tokens?: TTokens;
 }
-
-// @public (undocumented)
-export const TeamsTheme: PartialTheme;
 
 // @public
 export interface Theme extends IPartialTheme {
