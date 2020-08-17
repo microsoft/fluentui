@@ -69,6 +69,9 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Target dates can be also entered through the input field. */
   allowManualInput?: boolean;
 
+  /** The component automatically overrides faulty manual input upon blur. */
+  autoCorrectManualInput?: boolean;
+
   /** Should calendar be initially opened or closed. */
   defaultCalendarOpenState?: boolean;
 
@@ -272,6 +275,22 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
                   ev.preventDefault();
                 }
               },
+              onBlur: ev => {
+                if (props.autoCorrectManualInput && !!error) {
+                  setFormattedDate(valueFormatter(selectedDate));
+                  if (selectedDate) {
+                    if (isRestrictedDate(selectedDate, calendarOptions)) {
+                      setError(props.isOutOfBoundsErrorMessage);
+                    } else {
+                      setError('');
+                    }
+                  } else if (props.required) {
+                    setError(props.isRequiredErrorMessage);
+                  } else {
+                    setError('');
+                  }
+                }
+              },
               onClick: onInputClick,
               onChange: onInputChange,
             }),
@@ -313,6 +332,7 @@ Datepicker.propTypes = {
   onDateChange: PropTypes.func,
   placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
+  autoCorrectManualInput: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
   calendarOpenState: PropTypes.bool,
 
@@ -368,6 +388,7 @@ Datepicker.defaultProps = {
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
 
+  autoCorrectManualInput: true,
   allowManualInput: true,
   required: false,
 
