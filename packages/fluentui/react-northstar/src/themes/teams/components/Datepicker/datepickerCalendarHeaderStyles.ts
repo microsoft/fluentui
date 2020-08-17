@@ -6,12 +6,19 @@ export const datepickerCalendarHeaderStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarHeaderStylesProps,
   DatepickerVariables
 > = {
-  root: (): ICSSInJSStyle => {
+  root: ({ variables: v }): ICSSInJSStyle => {
     return {
-      // TODO: check if grid is needed here and if so, make sure that it works in IE11
-      display: 'grid',
-      gridTemplateColumns: '1fr auto auto',
-      msGridColumns: '1fr auto auto',
+      display: 'flex',
+      alignItems: 'center',
+      paddingTop: v.calendarHeaderPaddingTop,
+      paddingBottom: v.calendarHeaderPaddingBottom,
+    };
+  },
+  label: ({ variables: v }): ICSSInJSStyle => {
+    return {
+      fontWeight: v.calendarHeaderLabelFontWeight,
+      flexGrow: 1,
+      paddingLeft: v.calendarHeaderLabelPaddingLeft,
     };
   },
 };

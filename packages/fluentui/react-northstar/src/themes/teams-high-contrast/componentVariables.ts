@@ -42,3 +42,4 @@ export { dropdownItemVariables as DropdownItem } from './components/Dropdown/dro
 export { dropdownSelectedItemVariables as DropdownSelectedItem } from './components/Dropdown/dropdownSelectedItemVariables';
 export { labelVariables as Label } from './components/Label/labelVariables';
 export { tooltipContentVariables as TooltipContent } from './components/Tooltip/tooltipContentVariables';
+export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellVariables';
