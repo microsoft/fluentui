@@ -66,7 +66,15 @@ const codeModMap: CodeModMapType = {
   },
   repathImport: function(file: SourceFile, mod: RepathImportModType) {
     return function() {
-      const imports = getImportsByPath(file, mod.options.from.searchString);
+      /* If the json indicates our search string is a regex, convert it. */
+      const searchString = mod.options.from.isRegex
+        ? new RegExp(
+            (mod.options.from.searchString as string)
+              .substring(1)
+              .substring(0, (mod.options.from.searchString as string).length - 2),
+          )
+        : mod.options.from.searchString;
+      const imports = getImportsByPath(file, searchString);
       imports.forEach(val => {
         repathImport(val, mod.options.to.replacementValue);
       });

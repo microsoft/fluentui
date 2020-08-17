@@ -97,6 +97,7 @@ export type RepathImportModType = {
   options: {
     from: {
       searchString: string | RegExp;
+      isRegex: boolean;
     };
     to: {
       replacementValue: string;
