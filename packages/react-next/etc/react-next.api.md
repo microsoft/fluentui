@@ -136,27 +136,7 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
 }
 
 // @public (undocumented)
-export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
-    constructor(props: IComboBoxProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IComboBoxProps;
-    dismissMenu: () => void;
-    // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
-    //
-    // (undocumented)
-    focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
-    // (undocumented)
-    render(): JSX.Element;
-    readonly selectedOptions: IComboBoxOption[];
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void;
-}
+export const ComboBox: React.ForwardRefExoticComponent<IComboBoxProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
@@ -677,14 +657,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
 
 // @public (undocumented)
 export interface IComboBoxState {
-    currentOptions: IComboBoxOption[];
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
     focusState?: 'none' | 'focused' | 'focusing';
     isOpen?: boolean;
-    selectedIndices?: number[];
-    suggestedDisplayValue?: string;
 }
 
 // @public (undocumented)
