@@ -1,3 +1,4 @@
+import { initializeIcons } from '@uifabric/icons';
 import generateStoriesFromExamples from '@uifabric/build/storybook/generateStoriesFromExamples';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
@@ -17,6 +18,8 @@ addParameters({
     manual: true,
   },
 });
+
+initializeIcons();
 
 const req = require.context('../src', true, /\.stories\.tsx$/);
 
