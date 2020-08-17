@@ -224,7 +224,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this.setState({ activeLegend: title });
         },
         opacity: 0.4,
-        fill: overlay.applyPattern ? `url(#${this._overlayPatternId}${index})` : undefined,
+        stripePattern: overlay.applyPattern,
       };
       return legend;
     });
@@ -366,6 +366,43 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return lines;
   }
 
+  private _createOverlays = (containerHeight: number) => {
+    const overlays: JSX.Element[] = [];
+    for (let i = 0; i < this.overlays.length; i++) {
+      const overlay = this.overlays[i];
+      const overlayId = getId(overlay.name.replace(/\W/g, ''));
+      if (overlay.applyPattern) {
+        overlays.push(
+          <pattern
+            id={`${this._overlayPatternId}${i}`}
+            width={16}
+            height={16}
+            key={`${this._overlayPatternId}${i}`}
+            patternUnits={'userSpaceOnUse'}
+          >
+            <path d={'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8'} stroke={overlay.color} strokeWidth={2} />
+          </pattern>,
+        );
+      }
+      for (let j = 0; j < overlay.data.length; j++) {
+        const startX = overlay.data[j].startX;
+        const endX = overlay.data[j].endX;
+        overlays.push(
+          <rect
+            fill={overlay.applyPattern ? `url(#${this._overlayPatternId}${i})` : overlay.color}
+            fillOpacity={this.state.activeLegend === overlay.name || this.state.activeLegend === '' ? 0.4 : 0.1}
+            x={this._xAxisScale(startX)}
+            y={this._yAxisScale(0) - containerHeight}
+            width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
+            height={containerHeight}
+            key={`${overlayId}${j}`}
+          />,
+        );
+      }
+    }
+    return overlays;
+  };
+
   private _refCallback(element: SVGGElement, legendTitle: string): void {
     this._refArray.push({ index: legendTitle, refElement: element });
   }
@@ -465,42 +502,5 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     if (overlay.onLegendClick) {
       overlay.onLegendClick(selectedLegend);
     }
-  };
-
-  private _createOverlays = (containerHeight: number) => {
-    const overlays: JSX.Element[] = [];
-    for (let i = 0; i < this.overlays.length; i++) {
-      const overlay = this.overlays[i];
-      const overlayId = getId(overlay.name.replace(/\W/g, ''));
-      if (overlay.applyPattern) {
-        overlays.push(
-          <pattern
-            id={`${this._overlayPatternId}${i}`}
-            width={16}
-            height={16}
-            key={`${this._overlayPatternId}${i}`}
-            patternUnits={'userSpaceOnUse'}
-          >
-            <path d={'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8'} stroke={overlay.color} strokeWidth={2} />
-          </pattern>,
-        );
-      }
-      for (let j = 0; j < overlay.data.length; j++) {
-        const startX = overlay.data[j].startX;
-        const endX = overlay.data[j].endX;
-        overlays.push(
-          <rect
-            fill={overlay.applyPattern ? `url(#${this._overlayPatternId}${i})` : overlay.color}
-            fillOpacity={this.state.activeLegend === overlay.name || this.state.activeLegend === '' ? 0.4 : 0.1}
-            x={this._xAxisScale(startX)}
-            y={this._yAxisScale(0) - containerHeight}
-            width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
-            height={containerHeight}
-            key={`${overlayId}${j}`}
-          />,
-        );
-      }
-    }
-    return overlays;
   };
 }

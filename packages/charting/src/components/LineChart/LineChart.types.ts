@@ -155,7 +155,7 @@ export interface ILineChartProps extends Partial<IChartHelperProps> {
   margins?: IMargins;
 
   /*
-   * EXPERIMENTING
+   * Overlays for the chart,
    */
   overlays?: IOverlayProps[];
 }
@@ -172,8 +172,6 @@ export interface IEventsAnnotationProps {
 export interface ILineChartStyles extends IChartHelperStyles {}
 
 export interface ILineChartStyleProps extends IChartHelperStyleProps {}
-
-// Experimentation
 
 export interface IOverlayProps {
   name: string;

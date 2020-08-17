@@ -29,7 +29,7 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   shape?: LegendShape;
   key: number;
   opacity?: number;
-  fill?: string;
+  stripePattern?: boolean;
 }
 
 export interface ILegendState {
@@ -92,7 +92,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
         shape: legend.shape,
-        fill: legend.fill,
+        stripePattern: legend.stripePattern,
         opacity: legend.opacity,
         key: index,
       };
@@ -289,7 +289,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       action: data.action,
       hoverAction: data.hoverAction,
       onMouseOutAction: data.onMouseOutAction,
-      fill: data.fill,
+      stripePattern: data.stripePattern,
       opacity: data.opacity,
     };
     const color = this._getColor(legend.title, legend.color);
@@ -300,7 +300,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       colorOnSelectedState: color,
       borderColor: legend.color,
       overflow: overflow,
-      fill: legend.fill,
+      stripePattern: legend.stripePattern,
       opacity: legend.opacity,
     });
     const onClickHandler = () => {

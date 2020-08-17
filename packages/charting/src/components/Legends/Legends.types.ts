@@ -83,13 +83,19 @@ export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: string;
 
   /**
+   * The opacity of the legend color
+   */
+  opacity?: number;
+
+  /**
    * The shape for the legend
    */
   shape?: LegendShape;
 
-  opacity?: number;
-
-  fill?: string;
+  /**
+   * The opacity of the legend color
+   */
+  stripePattern?: boolean;
 }
 
 export interface ILegendStyleProps {
@@ -97,10 +103,9 @@ export interface ILegendStyleProps {
   className?: string;
   colorOnSelectedState?: string;
   borderColor?: string;
-  overflow?: boolean;
-  //
   opacity?: number;
-  fill?: string;
+  overflow?: boolean;
+  stripePattern?: boolean;
 }
 
 export interface ILegendsProps {
