@@ -7,12 +7,12 @@ export interface DatepickerVariables {
   calendarCellBorderRadius: string;
   calendarCellBackgroundColor: string;
   calendarCellColor: string;
-  calendarCellUnfocusedColor: string;
+  calendarCellQuietColor: string;
   calendarCellSelectedColor: string;
   calendarCellSelectedBackgroundColor: string;
-  calendarCellReferenceColor: string;
-  calendarCellReferenceBackgroundColor: string;
-  calendarCellReferenceBorderRadius: string;
+  calendarCellTodayColor: string;
+  calendarCellTodayBackgroundColor: string;
+  calendarCellTodayBorderRadius: string;
   calendarCellHoverColor: string;
   calendarCellHoverBackgroundColor: string;
   calendarCellDisabledColor: string;
@@ -33,12 +33,12 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarCellBorderRadius: pxToRem(2),
   calendarCellBackgroundColor: siteVars.colorScheme.default.background,
   calendarCellColor: 'inherit',
-  calendarCellUnfocusedColor: siteVars.colorScheme.brand.foregroundDisabled,
+  calendarCellQuietColor: siteVars.colorScheme.brand.foregroundDisabled,
   calendarCellSelectedColor: siteVars.colorScheme.brand.background4,
   calendarCellSelectedBackgroundColor: siteVars.colorScheme.brand.borderActive1,
-  calendarCellReferenceBackgroundColor: siteVars.colorScheme.brand.backgroundFocus,
-  calendarCellReferenceColor: siteVars.colorScheme.white.foreground,
-  calendarCellReferenceBorderRadius: '50%',
+  calendarCellTodayBackgroundColor: siteVars.colorScheme.brand.backgroundFocus,
+  calendarCellTodayColor: siteVars.colorScheme.white.foreground,
+  calendarCellTodayBorderRadius: '50%',
   calendarCellHoverBackgroundColor: siteVars.colorScheme.brand.backgroundHover2,
   calendarCellHoverColor: 'inherit',
   calendarCellDisabledColor: siteVars.colorScheme.brand.foregroundDisabled,

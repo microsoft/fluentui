@@ -32,13 +32,13 @@ export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
       ...borderFocusStyles,
 
       ...(p.isToday && {
-        backgroundColor: v.calendarCellReferenceBackgroundColor,
-        color: v.calendarCellReferenceColor,
-        borderRadius: v.calendarCellReferenceBorderRadius,
+        backgroundColor: v.calendarCellTodayBackgroundColor,
+        color: v.calendarCellTodayColor,
+        borderRadius: v.calendarCellTodayBorderRadius,
       }),
 
       ...(p.quiet && {
-        color: v.calendarCellUnfocusedColor,
+        color: v.calendarCellQuietColor,
       }),
 
       ...(p.selected && {

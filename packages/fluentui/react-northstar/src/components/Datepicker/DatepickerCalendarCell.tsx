@@ -75,17 +75,7 @@ export const DatepickerCalendarCell = compose<
     const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
     setStart();
 
-    const {
-      className,
-      design,
-      styles,
-      variables,
-      disabled,
-      selected,
-      quiet: unfocused,
-      isToday: reference,
-      content,
-    } = props;
+    const { className, design, styles, variables, disabled, selected, quiet, isToday, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(props.accessibility, {
@@ -100,8 +90,8 @@ export const DatepickerCalendarCell = compose<
       mapPropsToBehavior: () => ({
         selected,
         disabled,
-        unfocused,
-        reference,
+        quiet,
+        isToday,
       }),
       rtl: context.rtl,
     });
@@ -111,8 +101,8 @@ export const DatepickerCalendarCell = compose<
       mapPropsToStyles: () => ({
         disabled,
         selected,
-        quiet: unfocused,
-        isToday: reference,
+        quiet,
+        isToday,
       }),
       mapPropsToInlineStyles: () => ({
         className,
