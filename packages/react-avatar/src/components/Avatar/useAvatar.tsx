@@ -6,7 +6,7 @@ import { getInitials, nullRender } from '@uifabric/utilities';
 import { Image } from '../Image/index';
 import { SizeValue } from '../utils/commonTypes';
 
-const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'status'];
+const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
 const getBadgeSize = (size: NumericSizeValue | undefined): SizeValue | undefined => {
   if (size === undefined) return undefined;
@@ -26,7 +26,7 @@ export const renderAvatar = (state: AvatarState) => {
     <slots.root {...slotProps.root}>
       <slots.label {...slotProps.label} />
       <slots.image {...slotProps.image} />
-      <slots.status {...slotProps.status} />
+      <slots.badge {...slotProps.badge} />
     </slots.root>
   );
 };
@@ -40,7 +40,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
         children: props.getInitials ? props.getInitials(props.name || '', false) : getInitials(props.name || '', false),
       },
       image: { as: props.image ? Image : nullRender },
-      status: { as: 'span', size: getBadgeSize(props.size) },
+      badge: { as: 'span', size: getBadgeSize(props.size) },
       ref: useMergedRefs(ref, React.useRef(null)),
       tokens: { size: props.size ? `${props.size}px` : undefined },
     },

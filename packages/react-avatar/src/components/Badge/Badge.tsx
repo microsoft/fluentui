@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { makeClasses } from '@fluentui/react-compose/lib/next/index';
-import { useStatus } from './useStatus';
-import { StatusProps } from './Status.types';
-import * as classes from './Status.scss';
+import { useBadge } from './useBadge';
+import { BadgeProps } from './Badge.types';
+import * as classes from './Badge.scss';
 
 // Create a hook to resolve classnames.
-export const useStatusClasses = makeClasses(classes);
+export const useBadgeClasses = makeClasses(classes);
 
-export const Status = React.forwardRef((props: StatusProps, ref: React.Ref<HTMLElement>) => {
-  const { render, state } = useStatus(props, ref);
+export const Badge = React.forwardRef((props: BadgeProps, ref: React.Ref<HTMLElement>) => {
+  const { render, state } = useBadge(props, ref);
 
-  useStatusClasses(state);
+  useBadgeClasses(state);
 
   return render(state);
 });
 
-Status.displayName = 'Status';
+Badge.displayName = 'Badge';

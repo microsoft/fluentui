@@ -8,8 +8,8 @@
   --avatar-squareBorderRadius: 3px;
   --avatar-fill: rgb(232, 232, 232);
 
-  --avatar-status-borderColor: transparent;
-  --avatar-status-borderWidth: 2px;
+  --avatar-badge-borderColor: transparent;
+  --avatar-badge-borderWidth: 2px;
 }
 
 // Root slot
@@ -52,12 +52,12 @@
   border-radius: 99999px;
 }
 
-// Status slot
-.status {
+// Badge slot
+.badge {
   position: absolute;
   bottom: 0;
   right: 0;
-  box-shadow: 0 0 0 var(--avatar-status-borderWidth) var(--avatar-status-borderColor);
+  box-shadow: 0 0 0 var(--avatar-badge-borderWidth) var(--avatar-badge-borderColor);
 }
 
 // Modifiers

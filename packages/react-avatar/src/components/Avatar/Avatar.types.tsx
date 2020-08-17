@@ -1,4 +1,4 @@
-import { StatusProps } from '../Status/index';
+import { BadgeProps } from '../Badge/index';
 import { ComponentProps, ShorthandValue } from '../utils/commonTypes';
 
 /**
@@ -35,8 +35,8 @@ export type AvatarTokens = {
   /** Font size used by the initials */
   fontSize?: string;
 
-  /** Tokens for the status slot (state indicator) */
-  status?: {
+  /** Tokens for the badge slot (state indicator) */
+  badge?: {
     borderColor?: string;
     borderWidth?: string;
   };
@@ -49,8 +49,8 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   /** Shorthand for the label. */
   label?: ShorthandValue<{}>;
 
-  /** Shorthand for the status of the user. */
-  status?: ShorthandValue<StatusProps>;
+  /** Shorthand for the badge of the user. */
+  badge?: ShorthandValue<BadgeProps>;
 
   /** The name used for displaying the initials of the avatar if the image is not provided. */
   name?: string;

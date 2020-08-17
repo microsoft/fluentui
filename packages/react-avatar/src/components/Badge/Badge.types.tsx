@@ -1,9 +1,9 @@
 import { ComponentProps, ShorthandValue, SizeValue } from '../utils/commonTypes';
 
 // tslint:disable-next-line:no-any
-export interface StatusProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
-   * Renders the status using a custom color to be inlined using  `style`.
+   * Renders the badge using a custom color to be inlined using  `style`.
    * Note: May want to deprecate in favor of variables.
    */
   color?: string;
@@ -23,4 +23,4 @@ export interface StatusProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';
 }
 
-export type StatusState = StatusProps;
+export type BadgeState = BadgeProps;

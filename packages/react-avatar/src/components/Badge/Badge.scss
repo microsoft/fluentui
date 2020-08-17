@@ -1,11 +1,11 @@
 :root {
-  --statusSizeSmallest: 8px;
-  --statusSizeSmaller: 8px;
-  --statusSizeSmall: 8px;
-  --statusSizeMedium: 10px;
-  --statusSizeLarge: 12px;
-  --statusSizeLarger: 14px;
-  --statusSizeLargest: 16px;
+  --badgeSizeSmallest: 8px;
+  --badgeSizeSmaller: 8px;
+  --badgeSizeSmall: 8px;
+  --badgeSizeMedium: 10px;
+  --badgeSizeLarge: 12px;
+  --badgeSizeLarger: 14px;
+  --badgeSizeLargest: 16px;
 
   --borderColor: transparent;
   --borderWidth: 2px;
@@ -32,8 +32,8 @@
   border-style: solid;
   background-color: var(--backgroundColor, var(--defaultBackgroundColor));
   color: var(--defaultTextColor);
-  width: var(--statusSizeMedium);
-  height: var(--statusSizeMedium);
+  width: var(--badgeSizeMedium);
+  height: var(--badgeSizeMedium);
 }
 
 ._state_success {
@@ -57,31 +57,31 @@
 }
 
 ._size_smallest {
-  width: var(--statusSizeSmallest);
-  height: var(--statusSizeSmallest);
+  width: var(--badgeSizeSmallest);
+  height: var(--badgeSizeSmallest);
 }
 
 ._size_smaller {
-  width: var(--statusSizeSmaller);
-  height: var(--statusSizeSmaller);
+  width: var(--badgeSizeSmaller);
+  height: var(--badgeSizeSmaller);
 }
 
 ._size_small {
-  width: var(--statusSizeSmall);
-  height: var(--statusSizeSmall);
+  width: var(--badgeSizeSmall);
+  height: var(--badgeSizeSmall);
 }
 
 ._size_large {
-  width: var(--statusSizeLarge);
-  height: var(--statusSizeLarge);
+  width: var(--badgeSizeLarge);
+  height: var(--badgeSizeLarge);
 }
 
 ._size_larger {
-  width: var(--statusSizeLarger);
-  height: var(--statusSizeLarger);
+  width: var(--badgeSizeLarger);
+  height: var(--badgeSizeLarger);
 }
 
 ._size_largest {
-  width: var(--statusSizeLargest);
-  height: var(--statusSizeLargest);
+  width: var(--badgeSizeLargest);
+  height: var(--badgeSizeLargest);
 }

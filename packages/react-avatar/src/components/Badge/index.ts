@@ -1,3 +1,3 @@
-export * from './Status.types';
-export * from './useStatus';
-export * from './Status';
+export * from './Badge.types';
+export * from './useBadge';
+export * from './Badge';
