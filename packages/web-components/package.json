@@ -94,8 +94,8 @@
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-components-styles-msft": "^4.29.0",
-    "@microsoft/fast-element": "^0.15.2",
-    "@microsoft/fast-foundation": "^1.6.0",
+    "@microsoft/fast-element": "^0.16.0",
+    "@microsoft/fast-foundation": "^1.7.0",
     "tslib": "^1.13.0"
   }
 }
