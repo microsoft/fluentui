@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@fluentui/react-conformance": "^0.1.0",
+    "@fluentui/storybook": "^0.2.8",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -48,7 +49,6 @@
   "dependencies": {
     "@fluentui/accessibility": "^0.51.0",
     "@fluentui/react-compose": "^0.14.5",
-    "@fluentui/react-icons": "^0.1.48",
     "@fluentui/react-stylesheets": "^0.1.16",
     "@fluentui/react-theme-provider": "^0.7.2",
     "@uifabric/react-hooks": "^7.8.2",
