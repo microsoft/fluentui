@@ -43,7 +43,8 @@ export const OverflowButtonBase = (props: IOverflowSetProps) => {
       }
       return undefined;
     },
-    [props],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [props.itemSubMenuProvider],
   );
 
   const newOverflowItems = React.useMemo(() => {
