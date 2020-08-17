@@ -6,7 +6,6 @@ import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
 import { Theme, Tokens } from './types';
 import { ThemeProviderProps } from './ThemeProvider.types';
-
 import { mergeThemes } from './mergeThemes';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
