@@ -8,11 +8,10 @@
 :root {
   --image-borderColor: rgb(225, 223, 221) /* TODO: replace with a proper value */;
   --image-borderRadius: none;
-  --imageBoxShadhow: 0px 2px 4px -0.75px rgba(0, 0, 0, 0.1) /* --effects-elevation4 */;
-
-  --image-rounded-borderWidth: 4px /* --effects-roundedCorner4 */;
+  --image-boxShadow: 0px 2px 4px -0.75px rgba(0, 0, 0, 0.1) /* --effects-elevation4 */;
 
   --image-circular-borderRadius: 50%;
+  --image-rounded-borderWidth: 4px /* --effects-roundedCorner4 */;
 }
 
 /**
@@ -31,6 +30,7 @@
 .root {
   border-color: var(--image-borderColor);
   border-radius: var(--image-borderRadius);
+  box-shadow: var(--image-boxShadow);
 
   box-sizing: border-box;
   display: inline-block;
