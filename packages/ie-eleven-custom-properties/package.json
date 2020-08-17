@@ -1,0 +1,11 @@
+{
+  "name": "@fluentui/ie-eleven-custom-properties",
+  "version": "0.1.0",
+  "description": "Package to hold ie11 polyfill",
+  "main": "ie11CustomProperties.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT"
+}
