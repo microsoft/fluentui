@@ -19,7 +19,7 @@ steps:
   # @fluentui/perf-test needs build and bundle steps
   - script: |
       yarn lage build --scope @fluentui/perf-test --scope perf-test --no-deps --verbose --no-cache --grouped
-    displayName: build, bundle @fluentui v0
+    displayName: build  @fluentui v0
     env:
       BACKFILL_CACHE_PROVIDER: 'azure-blob'
       BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'

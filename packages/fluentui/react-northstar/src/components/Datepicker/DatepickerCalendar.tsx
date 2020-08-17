@@ -102,6 +102,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     formatMonthDayYear,
     formatMonthYear,
     shortDays,
+    days,
   } = props;
 
   const ElementType = getElementType(props);
@@ -228,7 +229,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     focusDateRef.current?.focus();
   }, [grid]);
 
-  const renderWeekRow = week =>
+  const renderWeekRow = (week: IDay[]) =>
     _.map(week, (day: IDay) =>
       createShorthand(DatepickerCalendarCell, calendarCell, {
         defaultProps: () =>
@@ -237,7 +238,9 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             key: day.key,
             'aria-label': formatMonthDayYear(day.originalDate, dateFormatting),
             selected: day.isSelected,
-            disabled: !day.isInMonth,
+            disabled: !day.isInBounds,
+            quiet: !day.isInMonth,
+            isToday: compareDates(day.originalDate, today ?? new Date()),
             ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
@@ -264,6 +267,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         {createShorthand(DatepickerCalendarHeader, header, {
           defaultProps: () => ({
             label: formatMonthYear(gridNavigatedDate, dateFormatting),
+            'aria-label': formatMonthYear(gridNavigatedDate, dateFormatting),
           }),
           overrideProps: (predefinedProps: DatepickerCalendarHeaderProps): DatepickerCalendarHeaderProps => ({
             onPreviousClick: (e, data) => {
@@ -291,6 +295,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                       createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
                         defaultProps: () =>
                           getA11yProps('calendarHeaderCell', {
+                            'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                             content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
                             key: dayNumber,
                           }),
