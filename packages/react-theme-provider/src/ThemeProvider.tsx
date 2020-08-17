@@ -4,7 +4,9 @@ import { CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { useStylesheet } from '@fluentui/react-stylesheets';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
-import { PartialTheme, Theme, Tokens } from './types';
+import { Theme, Tokens } from './types';
+import { ThemeProviderProps } from './ThemeProvider.types';
+
 import { mergeThemes } from './mergeThemes';
 import { useTheme } from './useTheme';
 import * as classes from './ThemeProvider.scss';
@@ -25,16 +27,6 @@ function getTokens(theme: Theme): Tokens | undefined {
   const preparedTokens = { ...passThroughTokens, ...tokens };
 
   return preparedTokens as Tokens;
-}
-
-/**
- * Props for the ThemeProvider component.
- */
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Defines the theme provided by the user.
-   */
-  theme?: PartialTheme | Theme;
 }
 
 /**

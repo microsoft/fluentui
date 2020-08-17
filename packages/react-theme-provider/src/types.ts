@@ -64,11 +64,7 @@ export type TokenSetType = { [key: string]: string | TokenSetType | undefined };
  * Recursive partial type.
  */
 export type RecursivePartial<T> = {
-  [P in keyof T]?: T[P] extends (infer U)[]
-    ? RecursivePartial<U>[]
-    : T[P] extends object
-    ? RecursivePartial<T[P]>
-    : T[P];
+  [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
 };
 
 export interface Tokens {

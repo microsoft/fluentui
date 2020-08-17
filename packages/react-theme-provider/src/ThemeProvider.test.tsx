@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
-import { Theme } from './types';
+import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
 import { mergeThemes } from './mergeThemes';
@@ -29,6 +29,20 @@ const darkTheme = mergeThemes({
 describe('ThemeProvider', () => {
   it('renders a div', () => {
     const component = renderer.create(<ThemeProvider>Hello</ThemeProvider>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('can handle a partial theme', () => {
+    const partialTheme: PartialTheme = {
+      tokens: {
+        foo: {
+          background: 'red',
+        },
+      },
+    };
+
+    const component = renderer.create(<ThemeProvider theme={partialTheme}>Hello</ThemeProvider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
