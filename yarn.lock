@@ -4177,10 +4177,10 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
   integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
 
-"@types/markdown-to-jsx@6.9.0":
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/@types/markdown-to-jsx/-/markdown-to-jsx-6.9.0.tgz#799fb134f91ffe585dba826f3029101910750de4"
-  integrity sha512-LO/oxz+ZfwBDciiVGqLhhdyeWt196kgICe0QS88K1a2u/FgUF1QkeMAm4zdnAo1kNgo2KgFP1Uqy2IiPJLWppA==
+"@types/markdown-to-jsx@6.11.0":
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/@types/markdown-to-jsx/-/markdown-to-jsx-6.11.0.tgz#a19e458a9415763859f2c92c4c5b07a80bea8c14"
+  integrity sha512-OFFHQ3LK+g8lSfwdqjXBbrGFdgH/MYXhzIYSOJ5xapT++eEhRx7wOfY3xxtktVtQyQtsB7Wljs7IDGgKfurm2A==
   dependencies:
     "@types/react" "*"
 
@@ -16234,12 +16234,12 @@ markdown-table@^2.0.0:
   dependencies:
     repeat-string "^1.0.0"
 
-markdown-to-jsx@6.6.1:
-  version "6.6.1"
-  resolved "https://registry.yarnpkg.com/markdown-to-jsx/-/markdown-to-jsx-6.6.1.tgz#858b37f8a92526b1f3407593ff77c95927720bef"
-  integrity sha1-hYs3+KklJrHzQHWT/3fJWSdyC+8=
+markdown-to-jsx@6.11.4:
+  version "6.11.4"
+  resolved "https://registry.yarnpkg.com/markdown-to-jsx/-/markdown-to-jsx-6.11.4.tgz#b4528b1ab668aef7fe61c1535c27e837819392c5"
+  integrity sha512-3lRCD5Sh+tfA52iGgfs/XZiw33f7fFX9Bn55aNnVNUd2GzLDkOWyKYYD8Yju2B1Vn+feiEdgJs8T6Tg0xNokPw==
   dependencies:
-    prop-types "^15.5.10"
+    prop-types "^15.6.2"
     unquote "^1.1.0"
 
 markdown-to-jsx@^6.9.1, markdown-to-jsx@^6.9.3:
