@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/web-components_v0.1.7",
+      "version": "0.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: apply badge appearance styling to control not host element",
+            "author": "chhol@microsoft.com",
+            "commit": "5cceb3c4292381b9d68acc33de82c3a936d53a6d",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "update fast element version to leverage latest changes",
+            "author": "chhol@microsoft.com",
+            "commit": "298f84c36dc52c4cf0220d48a7b398ecc6f9408a",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Aug 2020 12:41:58 GMT",
       "tag": "@fluentui/web-components_v0.1.5",
       "version": "0.1.5",

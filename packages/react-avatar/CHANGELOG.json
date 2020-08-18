@@ -1,4 +1,32 @@
 {
   "name": "@fluentui/react-avatar",
-  "entries": []
+  "entries": [
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-avatar_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Seeding initial package.",
+            "author": "dzearing@hotmail.com",
+            "commit": "b483aa1280a38bafcb1e166148513964d5b545e8",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Fixing lint error that's breaking master build due to mismatched package versions.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f550420c490b22b50b543204447efa7802b37b60",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    }
+  ]
 }

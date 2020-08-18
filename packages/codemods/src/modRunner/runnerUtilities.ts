@@ -1,6 +1,7 @@
 import { CodeMod } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Maybe, Nothing, Something } from '../helpers/maybe';
+import { Logger } from './logger';
 
 // TODO ensure that async for all these utilities works
 export function runMods<T>(
@@ -71,12 +72,12 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<
   return Nothing();
 }
 
-export function getEnabledMods(getPaths = getModsPaths, loadM = loadMod) {
+export function getEnabledMods(logger: Logger, getPaths = getModsPaths, loadM = loadMod) {
   return getPaths()
     .map(pth => {
-      console.log('fetching codeMod at ', pth);
+      logger.log('fetching codeMod at ', pth);
       return loadM(pth, e => {
-        console.error(e);
+        logger.error(e);
       });
     })
     .filter(modEnabled)

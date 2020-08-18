@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AnimationClassNames, mergeStyles, getTheme } from '@fluentui/react-next/lib/Styling';
 import { Layer } from '@fluentui/react-next/lib/Layer';
 import { Toggle } from '@fluentui/react-next/lib/Toggle';
-import { useBoolean, useWarnings } from '@uifabric/react-hooks';
+import { useBoolean } from '@uifabric/react-hooks';
 
 export const LayerBasicExample: React.FunctionComponent = () => {
   const [showLayer, { toggle: toggleShowLayer }] = useBoolean(false);
