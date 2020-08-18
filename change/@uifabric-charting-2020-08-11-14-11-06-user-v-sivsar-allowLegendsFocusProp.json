@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "focusing the legends based on the the prop 'allowFocusOnLegends' and exposing all the new prop 'legendProps' on all the charts which are using legends form which they can manipulate the respective lengends with this prop",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-11T08:41:06.160Z"
+}
