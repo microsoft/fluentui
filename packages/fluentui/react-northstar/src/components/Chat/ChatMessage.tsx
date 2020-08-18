@@ -50,6 +50,7 @@ import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
+import { ChatMessageReadStatusIndicator, ChatMessageReadStatusIndicatorProps } from './ChatMessageReadStatusIndicator';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -87,6 +88,10 @@ export interface ChatMessageProps
 
   /** Message details info slot for the header. */
   details?: ShorthandValue<ChatMessageDetailsProps>;
+
+  readStatus?: string;
+
+  readStatusIndicator?: ShorthandValue<ChatMessageReadStatusIndicatorProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -173,6 +178,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     variables,
     header,
     details,
+    readStatus,
+    readStatusIndicator,
     unstable_overflow: overflow,
   } = props;
   const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
@@ -201,6 +208,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       },
     },
   });
+
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
     className: chatMessageClassName,
     mapPropsToStyles: () => ({
@@ -334,6 +342,10 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     defaultProps: () => ({ mine }),
   });
 
+  const readStatusIndicatorElement = createShorthand(ChatMessageReadStatusIndicator, readStatusIndicator, {
+    defaultProps: () => ({ title: readStatus }),
+  });
+
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({
       content: (
@@ -370,6 +382,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
               {messageContent}
               {reactionGroupPosition === 'end' && reactionGroupElement}
               {badgePosition === 'end' && badgeElement}
+              {readStatusIndicatorElement}
             </>
           )}
         </ElementType>,
