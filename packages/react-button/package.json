@@ -47,7 +47,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.14.5",
+    "@fluentui/react-compose": "^0.15.0",
     "@fluentui/keyboard-key": "^0.2.10",
     "@fluentui/react-icons": "^0.1.48",
     "@fluentui/react-theme-provider": "^0.7.2",
@@ -55,7 +55,7 @@
     "@uifabric/react-hooks": "^7.8.2",
     "@uifabric/set-version": "^7.0.21",
     "@uifabric/utilities": "^7.28.0",
-    "office-ui-fabric-react": "^7.128.1",
+    "office-ui-fabric-react": "^7.128.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

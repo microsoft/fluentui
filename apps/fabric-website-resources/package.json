@@ -38,9 +38,9 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.3.39",
-    "@uifabric/azure-themes": "^7.3.4",
+    "@uifabric/azure-themes": "^7.3.5",
     "@uifabric/example-app-base": "^7.12.113",
-    "@uifabric/fluent-theme": "^7.1.130",
+    "@uifabric/fluent-theme": "^7.1.131",
     "@uifabric/icons": "^7.3.73",
     "@uifabric/mdl2-theme": "^0.1.131",
     "@uifabric/merge-styles": "^7.16.6",
@@ -48,11 +48,11 @@
     "@uifabric/set-version": "^7.0.21",
     "@uifabric/styling": "^7.14.13",
     "@uifabric/theme-samples": "^7.0.125",
-    "@uifabric/tsx-editor": "^0.11.129",
+    "@uifabric/tsx-editor": "^0.11.130",
     "@uifabric/utilities": "^7.28.0",
-    "@uifabric/variants": "^7.1.115",
+    "@uifabric/variants": "^7.1.116",
     "office-ui-fabric-core": "^11.0.0",
-    "office-ui-fabric-react": "^7.128.1",
+    "office-ui-fabric-react": "^7.128.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

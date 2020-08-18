@@ -6,6 +6,9 @@ import { runMods } from '../../../modRunner/runnerUtilities';
 const buttonPath = '/**/tests/mock/**/button/**/*.tsx';
 const dropDownPath = '/**/tests/mock/**/dropdown/**/*.tsx';
 
+const basicFileName = 'mockImports.tsx';
+const oldRoot = 'office-ui-fabric-react';
+
 describe('Tests a simple data-driven codeMod', () => {
   let project: Project;
 
@@ -13,12 +16,10 @@ describe('Tests a simple data-driven codeMod', () => {
     project = new Project();
     project.addSourceFilesAtPaths(`${process.cwd()}${buttonPath}`);
     project.addSourceFilesAtPaths(`${process.cwd()}${dropDownPath}`);
+    project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/utils/*.tsx`);
   });
 
-  // TODO: Can you raise more errors in renameProp for better mod logging?
-  // TODO: Add value change examples && more mods in a later, larger PR.
-
-  it('can rename props in CompoundButton and Dropdown', () => {
+  it('can run all mods in upgrades.json successfully', () => {
     const mod = Maybe(createCodeModFromJson());
     if (mod.something) {
       const mods = [];
@@ -31,7 +32,14 @@ describe('Tests a simple data-driven codeMod', () => {
         }
       });
     }
+    /* Test for renameProp. */
     expect(project.getSourceFile('mCompoundButtonProps.tsx')?.getFullText()).toMatchSnapshot();
     expect(project.getSourceFile('mDropdownProps.tsx')?.getFullText()).toMatchSnapshot();
+    /* Test for repathImport. */
+    const file = project.getSourceFileOrThrow(basicFileName);
+    file.getImportStringLiterals().forEach(val => {
+      const impPath = val.getLiteralValue();
+      expect(impPath.indexOf(oldRoot)).not.toEqual(0);
+    });
   });
 });

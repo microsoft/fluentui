@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix publish",
+  "packageName": "@uifabric/azure-themes",
+  "email": "kchau@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-18T01:43:10.482Z"
+}
