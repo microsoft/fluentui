@@ -11,14 +11,12 @@ const useAvatarClasses = makeClasses(classes);
 
 export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
   const { state, render } = useAvatar(props, ref, {
-    badge: { as: Badge },
+    badge: props.badge && { as: Badge },
   });
 
   // Apply styling.
   useAvatarClasses(state);
   useFocusRects(state.ref);
-
-  // AvatarProps.tokens must be defined
   useInlineTokens(state, '--avatar');
 
   return render(state);

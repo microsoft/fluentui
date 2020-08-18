@@ -2,13 +2,31 @@ import * as React from 'react';
 import { Avatar } from './Avatar';
 import { AvatarProps } from './Avatar.types';
 import { StoryExample } from '../utils/StoryExample';
-import { mergeProps } from '@fluentui/react-compose/lib/next/index';
-import { RobotIcon } from '@fluentui/react-icons';
+import {
+  GroupIcon,
+  CatIcon,
+  IDBadgeIcon,
+  CalendarIcon,
+  TelemarketerIcon,
+  RoomIcon,
+  RobotIcon,
+  ChatBotIcon,
+} from '@fluentui/react-icons';
 
 const imageUrl = 'http://www.fillmurray.com/192/192';
 
 export const AvatarExamples = () => (
   <div>
+    <StoryExample title="Round with icon">
+      <Avatar size={20} icon={<CatIcon />} />
+      <Avatar size={24} icon={<CalendarIcon />} />
+      <Avatar size={28} icon={<RoomIcon />} />
+      <Avatar />
+      <Avatar size={48} icon={<TelemarketerIcon />} />
+      <Avatar size={64} icon={<IDBadgeIcon />} />
+      <Avatar size={96} icon={<GroupIcon />} />
+      <Avatar size={128} />
+    </StoryExample>
     <StoryExample title="Round with initials">
       <Avatar size={20} name="John Doe" badge="success" />
       <Avatar size={24} name="John Doe" badge="success" />
@@ -50,14 +68,14 @@ export const AvatarExamples = () => (
       <Avatar square size={128} name="Lorem Ipsum" badge="warning" image={imageUrl} />
     </StoryExample>
     <StoryExample title="Custom Shape">
-      <RobotAvatar size={20} name="Mr. Robot" badge="success" />
-      <RobotAvatar size={24} name="Mr. Robot" badge="success" />
-      <RobotAvatar size={28} name="Mr. Robot" badge="success" />
-      <RobotAvatar size={32} name="Mr. Robot" badge="success" />
-      <RobotAvatar size={48} name="Mr. Robot" badge="success" />
-      <RobotAvatar size={64} name="Mr. Robot" badge="success" />
-      <RobotAvatar size={96} name="Mr. Robot" badge="success" />
-      <RobotAvatar size={128} name="Mr. Robot" badge="success" />
+      <RobotAvatar size={20} name="Mr. Robot" />
+      <RobotAvatar size={24} name="Mr. Robot" />
+      <RobotAvatar size={28} name="Mr. Robot" />
+      <RobotAvatar size={32} name="Mr. Robot" />
+      <RobotAvatar size={48} name="Mr. Robot" />
+      <RobotAvatar size={64} name="Chat Bot" icon={<ChatBotIcon />} badge="warning" />
+      <RobotAvatar size={96} name="Mr. Robot" />
+      <RobotAvatar size={128} name="Mr. Robot" />
     </StoryExample>
     <StoryExample title="Custom Size">
       <Avatar name="Custom Size" badge="success" tokens={{ size: '17px' }} />
@@ -69,29 +87,11 @@ export const AvatarExamples = () => (
   </div>
 );
 
-const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
-  return (
-    <Avatar
-      {...mergeProps(
-        {
-          image: {
-            as: RobotIcon,
-            style: {
-              top: 'calc(var(--avatar-size) * 0.10)',
-              left: 'calc(var(--avatar-size) * 0.15)',
-              width: 'calc(var(--avatar-size) * 0.75)',
-              height: 'calc(var(--avatar-size) * 0.75)',
-            },
-          },
-          label: {
-            children: null,
-            style: {
-              clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
-            },
-          },
-        },
-        props,
-      )}
-    />
-  );
-});
+const RobotAvatar = (props: AvatarProps) => (
+  <Avatar
+    icon={<RobotIcon />}
+    display="icon"
+    tokens={{ clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)' }}
+    {...props}
+  />
+);

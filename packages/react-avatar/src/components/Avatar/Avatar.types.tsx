@@ -1,6 +1,42 @@
 import { BadgeProps } from '../Badge/index';
 import { ComponentProps, ShorthandValue } from '../utils/commonTypes';
 
+export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /** The Avatar's image. */
+  image?: ShorthandValue<{}>;
+
+  /** The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`. */
+  label?: ShorthandValue<{}>;
+
+  /** Icon displayed when there's no image or intials available, or if showIcon is true. */
+  icon?: ShorthandValue<{}>;
+
+  /** What the avatar displays. This can be used to override the default behavior, for example to show the icon even
+   *  if the avatar has initials that could be shown as the label. */
+  display?: 'image' | 'label' | 'icon';
+
+  /** Badge to show the avatar's status. */
+  badge?: ShorthandValue<BadgeProps>;
+
+  /** The name used for displaying the initials of the avatar if the image is not provided. */
+  name?: string;
+
+  /** The avatar can have a square shape. */
+  square?: boolean;
+
+  /** Size of the avatar */
+  size?: NumericSizeValue;
+
+  /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
+  getInitials?: (name: string, isRtl: boolean) => string;
+
+  /** Classes for the parts of the component */
+  classes?: { [key: string]: string };
+
+  /** Style tokens */
+  tokens?: AvatarTokens;
+}
+
 /**
  * Sizes for the Avatar
  *
@@ -25,15 +61,21 @@ export type AvatarTokens = {
 
   /** Border color */
   borderColor?: string;
+
   /** Border width */
   borderWidth?: string;
+
   /** Border radius */
   borderRadius?: string;
+
   /** Border radius when the Avatar is square */
   squareBorderRadius?: string;
 
   /** Font size used by the initials */
   fontSize?: string;
+
+  /** Custom clip path for the avatar's image or label */
+  clipPath?: string;
 
   /** Tokens for the badge slot (state indicator) */
   badge?: {
@@ -41,34 +83,5 @@ export type AvatarTokens = {
     borderWidth?: string;
   };
 };
-
-export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /** Shorthand for the image. */
-  image?: ShorthandValue<{}>;
-
-  /** Shorthand for the label. */
-  label?: ShorthandValue<{}>;
-
-  /** Shorthand for the badge of the user. */
-  badge?: ShorthandValue<BadgeProps>;
-
-  /** The name used for displaying the initials of the avatar if the image is not provided. */
-  name?: string;
-
-  /** The avatar can have a square shape. */
-  square?: boolean;
-
-  /** Size of the avatar */
-  size?: NumericSizeValue;
-
-  /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
-  getInitials?: (name: string, isRtl: boolean) => string;
-
-  /** Classes for the parts of the component */
-  classes?: { [key: string]: string };
-
-  /** Style tokens */
-  tokens?: AvatarTokens;
-}
 
 export type AvatarState = AvatarProps;

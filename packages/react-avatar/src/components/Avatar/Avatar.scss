@@ -33,6 +33,7 @@
   height: var(--avatar-size);
   object-fit: cover;
   vertical-align: top;
+  clip-path: var(--avatar-clipPath);
 }
 
 // Label slot
@@ -50,6 +51,7 @@
   text-align: center;
   padding: 0px;
   border-radius: 99999px;
+  clip-path: var(--avatar-clipPath);
 }
 
 // Badge slot
@@ -68,5 +70,12 @@
 
   .label {
     border-radius: var(--avatar-squareBorderRadius);
+  }
+}
+
+._display_icon {
+  .label {
+    // The icon should be half the size of the avatar
+    font-size: calc(var(--avatar-size) / 2);
   }
 }
