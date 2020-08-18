@@ -197,8 +197,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   });
 
   const overrideDatepickerCalendarProps = (predefinedProps: DatepickerCalendarProps): DatepickerCalendarProps => ({
-    ...calendarOptions,
-    ...dateFormatting,
     onDateChange: (e, itemProps) => {
       const targetDay = itemProps.value;
       setSelectedDate(targetDay.originalDate);
@@ -206,66 +204,73 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       setError('');
       setFormattedDate(valueFormatter(targetDay.originalDate));
 
-      _.invoke(props, 'onDateChange', e, { ...props, value: targetDay.originalDate });
+      _.invoke(predefinedProps, 'onDateChange', e, { itemProps, value: targetDay.originalDate });
     },
   });
 
   const calendarElement = createShorthand(DatepickerCalendar, calendar, {
-    defaultProps: () => getA11yProps('calendar', {}),
+    defaultProps: () => getA11yProps('calendar', { ...calendarOptions, ...dateFormatting }),
     overrideProps: overrideDatepickerCalendarProps,
   });
 
-  const onInputClick = (): void => {
-    if (preventOpeningOnClick && !openState) {
-      setPreventOpeningOnClick(false);
-    } else if (!openState) {
-      setOpenState(true);
-    } // Keep popup open in case we can only enter the date through calendar.
-    else if (props.allowManualInput) {
-      setOpenState(false);
-    }
-  };
+  const overrideInputProps = (predefinedProps: InputProps): InputProps => ({
+    onClick: (e): void => {
+      if (preventOpeningOnClick && !openState) {
+        setPreventOpeningOnClick(false);
+      } else if (!openState) {
+        setOpenState(true);
+      } // Keep popup open in case we can only enter the date through calendar.
+      else if (props.allowManualInput) {
+        setOpenState(false);
+      }
 
-  const onInputChange = (e, target: { value: string }) => {
-    const parsedDate = props.parseDate(target.value);
-    const futureError = validateDate(parsedDate, target.value, calendarOptions, dateFormatting, props.required);
-    setError(futureError);
-    setFormattedDate(target.value);
-    if (!futureError && !!parsedDate) {
-      setSelectedDate(parsedDate);
-      _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
-    }
-
-    if (!!futureError) {
-      _.invoke(props, 'onDateEntryError', e, { ...props, error: futureError });
-    }
-  };
-
-  const onInputFocus = e => {
-    if (!props.allowManualInput) {
-      setOpenState(true);
-      setPreventClosing(true);
-      e.preventDefault();
-    }
-  };
-
-  const onInputBlur = e => {
-    if (props.autoCorrectManualInput && !!error) {
-      const futureFormattedDate = valueFormatter(selectedDate);
-      const futureError = validateDate(
-        selectedDate,
-        futureFormattedDate,
-        calendarOptions,
-        dateFormatting,
-        props.required,
-      );
+      _.invoke(predefinedProps, 'onClick', e, predefinedProps);
+    },
+    onChange: (e, target: { value: string }) => {
+      const parsedDate = props.parseDate(target.value);
+      const futureError = validateDate(parsedDate, target.value, calendarOptions, dateFormatting, props.required);
       setError(futureError);
-      setFormattedDate(futureFormattedDate);
+      setFormattedDate(target.value);
+      if (!futureError && !!parsedDate) {
+        setSelectedDate(parsedDate);
+        _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
+      }
+
       if (!!futureError) {
         _.invoke(props, 'onDateEntryError', e, { ...props, error: futureError });
       }
-    }
-  };
+
+      _.invoke(predefinedProps, 'onChange', e, target);
+    },
+    onFocus: e => {
+      if (!props.allowManualInput) {
+        setOpenState(true);
+        setPreventClosing(true);
+        e.preventDefault();
+      }
+
+      _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
+    },
+    onBlur: e => {
+      if (props.autoCorrectManualInput && !!error) {
+        const futureFormattedDate = valueFormatter(selectedDate);
+        const futureError = validateDate(
+          selectedDate,
+          futureFormattedDate,
+          calendarOptions,
+          dateFormatting,
+          props.required,
+        );
+        setError(futureError);
+        setFormattedDate(futureFormattedDate);
+        if (!!futureError) {
+          _.invoke(props, 'onDateEntryError', e, { ...props, error: futureError });
+        }
+      }
+
+      _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
+    },
+  });
 
   const element = (
     <Ref innerRef={datepickerRef}>
@@ -283,12 +288,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               value: formattedDate,
               readOnly: !props.allowManualInput,
             }),
-            overrideProps: (predefinedProps: InputProps): InputProps => ({
-              onFocus: onInputFocus,
-              onBlur: onInputBlur,
-              onClick: onInputClick,
-              onChange: onInputChange,
-            }),
+            overrideProps: overrideInputProps,
           })}
           {createShorthand(Popup, popup, {
             defaultProps: () => ({

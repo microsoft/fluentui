@@ -310,7 +310,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           Grid,
           {},
           {
-            overrideProps: () =>
+            defaultProps: () =>
               getA11yProps('calendarGrid', {
                 rows: visibledGrid.length + 1, // additional row for header
                 columns: DAYS_IN_WEEK,
