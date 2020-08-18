@@ -1,24 +1,12 @@
 import * as React from 'react';
 import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { AvatarProps, AvatarState, NumericSizeValue } from './Avatar.types';
+import { AvatarProps, AvatarState } from './Avatar.types';
 import { useMergedRefs } from '@uifabric/react-hooks';
 import { getInitials, nullRender } from '@uifabric/utilities';
 import { Image } from '../Image/index';
-import { SizeValue } from '../utils/commonTypes';
 import { ContactIcon } from '@fluentui/react-icons';
 
 const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
-
-const getBadgeSize = (size: NumericSizeValue | undefined): SizeValue | undefined => {
-  if (size === undefined) return undefined;
-  if (size < 24) return 'smallest';
-  if (size < 28) return 'smaller';
-  if (size < 52) return 'small';
-  if (size < 72) return 'medium';
-  if (size < 96) return 'large';
-  if (size < 120) return 'larger';
-  return 'largest';
-};
 
 export const renderAvatar = (state: AvatarState) => {
   const { slots, slotProps } = getSlots(state, avatarShorthandProps);
@@ -36,13 +24,12 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
   const state = mergeProps(
     {
       as: 'span',
-      label: {
-        as: 'span',
-        children: (props.getInitials || getInitials)(props.name || '', /*isRtl:*/ false),
-      },
+      display: props.image ? 'image' : 'label',
+      label: { as: 'span' },
       image: { as: Image },
-      badge: { as: 'span', size: getBadgeSize(props.size) },
+      badge: { as: nullRender },
       icon: <ContactIcon />,
+      getInitials: getInitials,
       ref: useMergedRefs(ref, React.useRef(null)),
       tokens: props.size && { size: `${props.size}px` },
     },
@@ -50,21 +37,24 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     resolveShorthandProps(props, avatarShorthandProps),
   );
 
-  if (!state.display) {
-    // Pick the default display mode based on whether the image and/or label exist
-    state.display = props.image ? 'image' : state.label.children ? 'label' : 'icon';
+  // Display the initials if the label has no children
+  if (!state.label.children) {
+    state.label.children = state.getInitials(props.name || '', /*isRtl: */ false);
   }
 
-  // Update the displayed content based on the final display mode
-  switch (state.display) {
-    case 'icon':
-      state.label.children = state.icon;
-      state.image = { as: nullRender };
-      break;
+  // Display the icon instead of the initials if requested or there are no initials
+  if (state.display === 'icon' || !state.label.children) {
+    state.label.children = state.icon;
 
-    case 'label':
-      state.image = { as: nullRender };
-      break;
+    // Make sure the display prop reflects what's being shown, so styles are applied appropriately
+    if (state.display === 'label') {
+      state.display = 'icon';
+    }
+  }
+
+  // Don't show the image if it's not supposed to be displayed
+  if (state.display !== 'image') {
+    state.image.as = nullRender;
   }
 
   return { state, render: renderAvatar };

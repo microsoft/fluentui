@@ -1,21 +1,57 @@
 import * as React from 'react';
 import { Badge } from '../Badge/Badge';
 import { StoryExample } from '../utils/StoryExample';
+import { SkypeCheckIcon, SkypeArrowIcon, SkypeMinusIcon, SkypeClockIcon } from '@fluentui/react-icons';
 
 export const BadgeExamples = () => (
   <>
     <StoryExample title="Badge">
       <Badge size="smallest" state="error" />
-      <Badge size="smaller" state="info" />
+      <Badge size="smaller" state="warning" />
       <Badge size="small" state="success" />
-      <Badge />
-      <Badge size="large" state="warning" />
-      <Badge size="larger" />
-      <Badge size="largest" />
+      <Badge size="medium" />
+      <Badge size="large" state="error" />
+      <Badge size="larger" state="warning" />
+      <Badge size="largest" state="success" />
     </StoryExample>
-    <StoryExample title="Custom tokens">
-      <Badge tokens={{ borderColor: 'chartreuse', backgroundColor: 'green' }} />
-      <Badge tokens={{ size: '20px' }} />
+    <StoryExample title="Badge with icon">
+      <Badge size="smallest" state="error" icon={{ as: SkypeMinusIcon }} />
+      <Badge size="smaller" state="warning" icon={{ as: SkypeClockIcon }} />
+      <Badge size="small" state="success" icon={{ as: SkypeCheckIcon }} />
+      <Badge size="medium" state="info" icon={{ as: SkypeArrowIcon }} />
+      <Badge size="large" state="error" icon={{ as: SkypeMinusIcon }} />
+      <Badge size="larger" state="warning" icon={{ as: SkypeClockIcon }} />
+      <Badge size="largest" state="success" icon={{ as: SkypeCheckIcon }} />
+    </StoryExample>
+    <StoryExample title="Badge styled with tokens">
+      <Badge
+        tokens={{
+          size: '13px',
+        }}
+      />
+      <Badge
+        size="medium"
+        icon={{ as: SkypeArrowIcon }}
+        tokens={{
+          color: 'mistyrose',
+          iconColor: 'hotpink',
+          borderColor: 'hotpink',
+        }}
+      />
+      <Badge
+        size="large"
+        state="success"
+        tokens={{
+          borderRadius: '2px',
+        }}
+      />
+      <Badge
+        size="larger"
+        state="error"
+        tokens={{
+          clipPath: 'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
+        }}
+      />
     </StoryExample>
   </>
 );

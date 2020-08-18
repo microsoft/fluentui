@@ -4,7 +4,6 @@
   --avatar-borderColor: transparent;
   --avatar-borderWidth: 0;
   --avatar-borderRadius: 9999px;
-  --avatar-square-borderRadius: 3px;
   --avatar-fill: rgb(232, 232, 232);
 }
 
@@ -55,16 +54,19 @@
   position: absolute;
   bottom: 0;
   right: 0;
+
+  // Size the badge appropriately for this avatar size
+  --badge-size: calc(var(--avatar-size) / 4);
 }
 
 // Modifiers
 ._square {
   .image {
-    border-radius: var(--avatar-square-borderRadius);
+    border-radius: var(--avatar-square-borderRadius, calc(var(--avatar-size) / 12));
   }
 
   .label {
-    border-radius: var(--avatar-square-borderRadius);
+    border-radius: var(--avatar-square-borderRadius, calc(var(--avatar-size) / 12));
   }
 }
 

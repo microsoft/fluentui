@@ -33,8 +33,10 @@ export type BadgeTokens = {
   size?: string;
   borderColor?: string;
   borderWidth?: string;
-  backgroundColor?: string;
-  textColor?: string;
+  borderRadius?: string;
+  clipPath?: string;
+  color?: string;
+  iconColor?: string;
 };
 
 export type BadgeState = BadgeProps;
