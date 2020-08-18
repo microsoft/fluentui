@@ -1,0 +1,47 @@
+{
+  "name": "@fluentui.react",
+  "upgrades": [
+    {
+      "name": "Renaming 'isDisabled' to 'disabled' in Dropdown",
+      "type": "renameProp",
+      "version": "100000",
+      "options": {
+        "from": {
+          "importName": "Dropdown",
+          "paths": ["office-ui-fabric-react/lib"],
+          "toRename": "isDisabled"
+        },
+        "to": {
+          "replacementName": "disabled"
+        }
+      }
+    },
+    {
+      "name": "Renaming 'toggled' to 'checked' in CompoundButton WITH spread",
+      "type": "renameProp",
+      "options": {
+        "from": {
+          "importName": "CompoundButton",
+          "paths": ["office-ui-fabric-react/lib"],
+          "toRename": "toggled"
+        },
+        "to": {
+          "replacementName": "checked"
+        }
+      }
+    },
+    {
+      "name": "Repathing imports from office to fluent",
+      "type": "repathImport",
+      "options": {
+        "from": {
+          "searchString": "/^office\\-ui\\-fabric\\-react/",
+          "isRegex": true
+        },
+        "to": {
+          "replacementValue": "@fluentui/react"
+        }
+      }
+    }
+  ]
+}

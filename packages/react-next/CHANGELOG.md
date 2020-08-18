@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-next
 
-This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-alpha.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.87)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.86..@fluentui/react-next_v8.0.0-alpha.87)
+
+### Changes
+
+- Fix ESLint TODOs in CalloutContent ([PR #14514](https://github.com/microsoft/fluentui/pull/14514) by miclo@microsoft.com)
+- fix publishing by syncing packages (#12715) ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [8.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.86)
+
+Fri, 14 Aug 2020 12:43:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-next_v8.0.0-alpha.85..@fluentui/react-next_v8.0.0-alpha.86)
+
+### Changes
+
+- fix casing for utilities folder ([PR #14512](https://github.com/microsoft/fluentui/pull/14512) by xgao@microsoft.com)
 
 ## [8.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-next_v8.0.0-alpha.85)
 

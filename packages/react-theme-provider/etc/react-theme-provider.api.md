@@ -35,6 +35,12 @@ export type ColorTokenStates = Partial<{
     checkedPressed: ColorTokens;
 }>;
 
+// @public
+export const createDefaultTheme: () => Theme;
+
+// @public (undocumented)
+export const FluentTheme: Theme;
+
 // @public (undocumented)
 export type FontTokens = Partial<{
     fontFamily: string;
@@ -49,12 +55,14 @@ export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("./t
 export function mergeThemes<TResult = PartialTheme>(...themes: (undefined | PartialTheme | Theme)[]): TResult;
 
 // @public
-export interface PartialTheme extends RecursivePartial<Theme> {
+export interface PartialTheme extends Omit<Theme, 'tokens'> {
+    // (undocumented)
+    tokens?: RecursivePartial<Tokens>;
 }
 
 // @public
 export type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+    [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
 };
 
 // @public (undocumented)
@@ -70,6 +78,9 @@ export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
     // (undocumented)
     tokens?: TTokens;
 }
+
+// @public (undocumented)
+export const TeamsTheme: PartialTheme;
 
 // @public
 export interface Theme extends IPartialTheme {
@@ -103,7 +114,7 @@ export interface Tokens {
 
 // @public
 export type TokenSetType = {
-    [key: string]: string | TokenSetType | undefined;
+    [key: string]: TokenSetType | string | number | undefined;
 };
 
 // @public (undocumented)

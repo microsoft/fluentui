@@ -52,10 +52,6 @@ export { gridStyles as Grid } from './components/Grid/gridStyles';
 export { headerStyles as Header } from './components/Header/headerStyles';
 export { headerDescriptionStyles as HeaderDescription } from './components/Header/headerDescriptionStyles';
 
-export { hierarchicalTreeStyles as HierarchicalTree } from './components/HierarchicalTree/hierarchicalTreeStyles';
-export { hierarchicalTreeItemStyles as HierarchicalTreeItem } from './components/HierarchicalTree/hierarchicalTreeItemStyles';
-export { hierarchicalTreeTitleStyles as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleStyles';
-
 export { svgIconStyles as SvgIcon } from './components/SvgIcon/svgIconStyles';
 
 export { imageStyles as Image } from './components/Image/imageStyles';
@@ -73,6 +69,12 @@ export { itemLayoutStyles as ItemLayout } from './components/ItemLayout/itemLayo
 
 export { listStyles as List } from './components/List/listStyles';
 export { listItemStyles as ListItem } from './components/List/listItemStyles';
+export { listItemContentStyles as ListItemContent } from './components/List/listItemContentStyles';
+export { listItemContentMediaStyles as ListItemContentMedia } from './components/List/listItemContentMediaStyles';
+export { listItemEndMediaStyles as ListItemEndMedia } from './components/List/listItemEndMediaStyles';
+export { listItemHeaderStyles as ListItemHeader } from './components/List/listItemHeaderStyles';
+export { listItemHeaderMediaStyles as ListItemHeaderMedia } from './components/List/listItemHeaderMediaStyles';
+export { listItemMediaStyles as ListItemMedia } from './components/List/listItemMediaStyles';
 
 export { menuStyles as Menu } from './components/Menu/menuStyles';
 export { menuItemStyles as MenuItem } from './components/Menu/menuItemStyles';

@@ -13,6 +13,7 @@ export {
   IChildProps,
 } from '../../types/IDataPoint';
 import { IChartHelperStyles, IChartHelperStyleProps, IChartHelperProps } from '@uifabric/charting';
+import { ILegendsProps } from '../Legends/index';
 
 // export interface ILineChart {}
 
@@ -158,6 +159,12 @@ export interface ILineChartProps extends Partial<IChartHelperProps> {
    * Color fill bars for the chart,
    */
   colorFillBars?: IColorFillBarsProps[];
+
+  /**
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
+
 }
 
 export interface IEventsAnnotationProps {

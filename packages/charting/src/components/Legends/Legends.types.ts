@@ -56,7 +56,7 @@ export interface ILegendsStyles {
   subComponentStyles: ILegendSubComponentStyles;
 }
 
-export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ILegend {
   /**
    * Defines the title of the legend
    */
@@ -93,9 +93,14 @@ export interface ILegend extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   shape?: LegendShape;
 
   /**
-   * The opacity of the legend color
+   * Indicated whether of not to apply stripe pattern
    */
   stripePattern?: boolean;
+  
+  /*
+   *  native button props for the legend button
+   */
+  nativeButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 export interface ILegendStyleProps {
@@ -158,6 +163,12 @@ export interface ILegendsProps {
    * Prop that takes the active legend
    */
   selectedLegend?: string;
+
+  /**
+   * prop that decides if legends are focusable
+   * @default false
+   */
+  allowFocusOnLegends?: boolean;
 }
 
 /**

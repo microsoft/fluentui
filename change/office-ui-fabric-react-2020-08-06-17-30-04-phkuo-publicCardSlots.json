@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Export new theming variables, and fix theming variable generation script",
+  "packageName": "office-ui-fabric-react",
+  "email": "phkuo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-07T00:30:04.122Z"
+}

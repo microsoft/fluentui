@@ -235,6 +235,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
     return legends;
