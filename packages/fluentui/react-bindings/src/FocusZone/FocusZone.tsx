@@ -58,7 +58,7 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
 /**
  * Handle global tab presses so that we can patch tabindexes on the fly.
  */
-function _onKeyDownCapture(currentWindow: Window, ev: KeyboardEvent) {
+function _onKeyDownCapture(this: Window, ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
     _outerZones.get(this)?.forEach(zone => zone.updateTabIndexes());
   }
