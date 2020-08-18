@@ -26,7 +26,7 @@ const useKeytipRegistrations = (
   }, [persistedKeytips, keytipManager]);
 };
 
-export const OverflowButtonBase = (props: IOverflowSetProps) => {
+export const OverflowButton = (props: IOverflowSetProps) => {
   const keytipManager: KeytipManager = KeytipManager.getInstance();
   const { className, overflowItems, keytipSequences, itemSubMenuProvider, onRenderOverflowButton } = props;
   const persistedKeytips = useConst<{ [uniqueID: string]: IKeytipProps }>({});

@@ -3,7 +3,7 @@ import { useMergedRefs } from '@uifabric/react-hooks';
 import { IProcessedStyleSet } from '../../Styling';
 import { IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps, IOverflowSet } from './OverflowSet.types';
 import { classNamesFunction, divProperties, elementContains, getNativeProps, focusFirstChild } from '../../Utilities';
-import { OverflowButtonBase } from './OverflowButton.base';
+import { OverflowButton } from './OverflowButton';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 const COMPONENT_NAME = 'OverflowSet';
@@ -54,18 +54,14 @@ export const OverflowSetBase = React.forwardRef((props: IOverflowSetProps, forwa
       ref={mergedRef}
       {...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties)}
     >
-      {overflowSide === 'start' && showOverflow && (
-        <OverflowButtonBase className={classNames.overflowButton} {...props} />
-      )}
+      {overflowSide === 'start' && showOverflow && <OverflowButton className={classNames.overflowButton} {...props} />}
       {items &&
         items.map((item, i) => (
           <div key={item.key} className={classNames.item}>
             {props.onRenderItem(item)}
           </div>
         ))}
-      {overflowSide === 'end' && showOverflow && (
-        <OverflowButtonBase className={classNames.overflowButton} {...props} />
-      )}
+      {overflowSide === 'end' && showOverflow && <OverflowButton className={classNames.overflowButton} {...props} />}
     </div>
   );
 });
