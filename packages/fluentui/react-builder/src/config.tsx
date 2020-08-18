@@ -545,10 +545,12 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = '', icons = '
     }
   }
   tree.props?.children?.forEach(item => {
-    if (!imports.includes(item.displayName) && item.$$typeof === 'Symbol(react.element)') {
-      imports += `${item.displayName}, `;
+    if (typeof item !== 'string') {
+      if (!imports.includes(item.displayName) && item.$$typeof === 'Symbol(react.element)') {
+        imports += `${item.displayName}, `;
+      }
+      [imports, icons] = JSONTreeToImports(item, imports, icons);
     }
-    [imports, icons] = JSONTreeToImports(item, imports, icons);
   });
   return [imports, icons];
 };

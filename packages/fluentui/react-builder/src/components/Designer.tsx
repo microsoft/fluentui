@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useImmerReducer, Reducer } from 'use-immer';
-import { Text, Button, Divider, Loader } from '@fluentui/react-northstar';
+import { Text, Button, Divider } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX } from '@fluentui/docs-components';
