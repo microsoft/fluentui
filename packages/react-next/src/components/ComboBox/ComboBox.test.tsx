@@ -9,6 +9,7 @@ import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { expectOne, expectMissing, renderIntoDocument } from '../../common/testUtilities';
+import { safeCreate } from '@uifabric/test-utilities';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
@@ -49,6 +50,12 @@ const createNodeMock = (el: React.ReactElement<{}>) => {
 };
 
 describe('ComboBox', () => {
+  beforeEach(() => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(element => {
+      return element;
+    });
+  });
+
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();
@@ -602,17 +609,23 @@ describe('ComboBox', () => {
   });
 
   it('merges callout classNames', () => {
-    domNode = renderIntoDocument(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} calloutProps={{ className: 'foo' }} />,
+      container => {
+        const buttonElement = container.root.find(
+          node => node.type === 'button' && node.props?.className?.includes?.('ms-ComboBox'),
+        );
+
+        ReactTestUtils.act(() => {
+          buttonElement?.props?.onClick?.();
+        });
+
+        const callout = container.root.find(node => node.props?.className?.split?.(' ').includes?.('ms-Callout'));
+        expect(callout).toBeDefined();
+        expect(callout.props.className.includes('ms-ComboBox-callout')).toBeTruthy();
+        expect(callout.props.className.includes('foo')).toBeTruthy();
+      },
     );
-
-    const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
-    ReactTestUtils.Simulate.click(buttonElement);
-
-    const callout = document.querySelector('.ms-Callout')!;
-    expect(callout).toBeDefined();
-    expect(callout.classList.contains('ms-ComboBox-callout')).toBeTruthy();
-    expect(callout.classList.contains('foo')).toBeTruthy();
   });
 
   it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
@@ -734,89 +747,88 @@ describe('ComboBox', () => {
     expect(((inputElement.instance() as unknown) as HTMLInputElement).value).toEqual(compare);
   });
 
-  it('in multiSelect mode, input has correct value when multiSelectDelimiter specified', () => {
-    const comboBoxRef = React.createRef<IComboBox>();
-    wrapper = mount(
-      <ComboBox multiSelect multiSelectDelimiter="; " options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />,
-    );
+  fit('in multiSelect mode, input has correct value when multiSelectDelimiter specified', () => {
+    safeCreate(<ComboBox multiSelect multiSelectDelimiter="; " options={DEFAULT_OPTIONS} />, container => {
+      const comboBoxRoot = findNodeWithClass(container, 'ms-ComboBox');
+      const inputElement = comboBoxRoot.findByType('input');
+      const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
+      renderer.act(() => {
+        caretElement?.props?.onClick?.();
+      });
+      const button = findNodeWithClass(container, 'ms-ComboBox-option', true).map(node => node.findByType('input'));
+      renderer.act(() => {
+        button[0]?.props?.onChange?.({ persist: jest.fn() });
+      });
+      renderer.act(() => {
+        button[2]?.props?.onChange?.({ persist: jest.fn() });
+      });
+      const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].map(({ text }) => text).join('; ');
 
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
-
-    ReactTestUtils.Simulate.change(buttons[0]);
-    ReactTestUtils.Simulate.change(buttons[2]);
-    const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].reduce((previous: string, current: IComboBoxOption) => {
-      if (previous !== '') {
-        return previous + '; ' + current.text;
-      }
-      return current.text;
-    }, '');
-
-    expect(((inputElement.instance() as unknown) as HTMLInputElement).value).toEqual(compare);
+      expect(inputElement.props.value).toEqual(compare);
+    });
   });
 
   it('in multiSelect mode, optional onItemClick callback invoked per option select', () => {
     const onItemClickMock = jest.fn();
-    wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
-
-    ReactTestUtils.Simulate.change(buttons[0]);
-    ReactTestUtils.Simulate.change(buttons[1]);
-    ReactTestUtils.Simulate.change(buttons[2]);
-
-    expect(onItemClickMock).toHaveBeenCalledTimes(3);
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, container => {
+      const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
+      ReactTestUtils.act(() => {
+        caretElement?.props?.onClick?.();
+      });
+      const button = findNodeWithClass(container, 'ms-ComboBox-option', true).map(node => node.findByType('input'));
+      renderer.act(() => {
+        button[0]?.props?.onClick?.({ persist: jest.fn() });
+        button[1]?.props?.onClick?.({ persist: jest.fn() });
+        button[2]?.props?.onClick?.({ persist: jest.fn() });
+      });
+      expect(onItemClickMock).toHaveBeenCalledTimes(3);
+    });
   });
 
   it('invokes optional onItemClick callback on option select', () => {
     const onItemClickMock = jest.fn();
-    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option');
-
-    (buttons[0] as HTMLInputElement).click();
-
-    expect(onItemClickMock).toHaveBeenCalledTimes(1);
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, container => {
+      const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
+      ReactTestUtils.act(() => {
+        caretElement?.props?.onClick?.();
+      });
+      const button = findNodeWithClass(container, 'ms-ComboBox-option', true);
+      renderer.act(() => {
+        button?.[0]?.props?.onClick?.({ persist: jest.fn() });
+      });
+      expect(onItemClickMock).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('allows adding a custom aria-describedby id to the input', () => {
-    const comboBoxRef = React.createRef<IComboBox>();
     const customId = 'customAriaDescriptionId';
-    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} ariaDescribedBy={customId} />);
-
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement = comboBoxRoot.find('input').getDOMNode();
-    const ariaDescribedByAttribute = inputElement.getAttribute('aria-describedby');
-    expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={customId} />, container => {
+      const inputElement = container.root.findByType('input');
+      expect((inputElement.props as React.HTMLAttributes<HTMLInputElement>)['aria-describedby']).toMatch(
+        new RegExp('\\b' + customId + '\\b'),
+      );
+    });
   });
 
   it('adds aria-required to the DOM when the required prop is set to true', () => {
-    const comboBoxRef = React.createRef<IComboBox>();
-    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} required={true} />);
-
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement = comboBoxRoot.find('input').getDOMNode();
-    const ariaRequiredAttribute = inputElement.getAttribute('aria-required');
-    expect(ariaRequiredAttribute).toEqual('true');
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} required={true} />, container => {
+      const inputElement = container.root.findByType('input');
+      expect((inputElement.props as React.HTMLAttributes<HTMLInputElement>)['aria-required']).toBe(true);
+    });
   });
 
   it('does not add aria-required to the DOM when the required prop is not set', () => {
-    const comboBoxRef = React.createRef<IComboBox>();
-    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
-
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement = comboBoxRoot.find('input').getDOMNode();
-    const ariaRequiredAttribute = inputElement.getAttribute('aria-required');
-    expect(ariaRequiredAttribute).toBeNull();
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS} />, container => {
+      const inputElement = container.root.findByType('input');
+      expect((inputElement.props as React.HTMLAttributes<HTMLInputElement>)['aria-required']).toBeUndefined();
+    });
   });
 
   it('test persistMenu, callout should exist before and after opening menu', () => {
     const onMenuOpenMock = jest.fn();
     const onMenuDismissedMock = jest.fn();
 
-    wrapper = mount(
+    safeCreate(
       <ComboBox
         defaultSelectedKey="1"
         persistMenu={true}
@@ -824,27 +836,33 @@ describe('ComboBox', () => {
         onMenuOpen={onMenuOpenMock}
         onMenuDismissed={onMenuDismissedMock}
       />,
+      container => {
+        const comboBoxRoot = findNodeWithClass(container, 'ms-ComboBox');
+
+        // Find menu
+        const calloutBeforeOpen = findNodeWithClass(container, 'ms-Callout');
+        expect(calloutBeforeOpen).toBeDefined();
+        expect(calloutBeforeOpen?.props?.className?.includes?.('ms-ComboBox-callout')).toBeTruthy();
+
+        // Open combobox
+        const buttonElement = comboBoxRoot.findByType('button');
+        ReactTestUtils.act(() => {
+          buttonElement?.props?.onClick();
+        });
+        expect(onMenuOpenMock.mock.calls.length).toBe(1);
+
+        // Close combobox
+        ReactTestUtils.act(() => {
+          buttonElement?.props?.onClick();
+        });
+        expect(onMenuDismissedMock.mock.calls.length).toBe(1);
+
+        // Ensure menu is still there
+        const calloutAfterClose = findNodeWithClass(container, 'ms-Callout');
+        expect(calloutAfterClose).toBeDefined();
+        expect(calloutBeforeOpen?.props?.className?.includes?.('ms-ComboBox-callout')).toBeTruthy();
+      },
     );
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-
-    // Find menu
-    const calloutBeforeOpen = document.querySelector('.ms-Callout')!;
-    expect(calloutBeforeOpen).toBeDefined();
-    expect(calloutBeforeOpen.classList.contains('ms-ComboBox-callout')).toBeTruthy();
-
-    // Open combobox
-    const buttonElement = comboBoxRoot.find('button');
-    buttonElement.simulate('click');
-    expect(onMenuOpenMock.mock.calls.length).toBe(1);
-
-    // Close combobox
-    buttonElement.simulate('click');
-    expect(onMenuDismissedMock.mock.calls.length).toBe(1);
-
-    // Ensure menu is still there
-    const calloutAfterClose = document.querySelector('.ms-Callout')!;
-    expect(calloutAfterClose).toBeDefined();
-    expect(calloutAfterClose.classList.contains('ms-ComboBox-callout')).toBeTruthy();
   });
 
   // Adds currentPendingValue to options and makes it selected onBlur
@@ -965,3 +983,17 @@ describe('ComboBox', () => {
   //   expect((componentRef.current as ComboBox).state.currentOptions).toEqual(currentOptions);
   // }
 });
+
+function findNodeWithClass(container: renderer.ReactTestRenderer, className: string): renderer.ReactTestInstance;
+function findNodeWithClass(
+  container: renderer.ReactTestRenderer,
+  className: string,
+  findAll: true,
+): renderer.ReactTestInstance[];
+function findNodeWithClass(
+  container: renderer.ReactTestRenderer,
+  className: string,
+  findAll?: true,
+): renderer.ReactTestInstance | renderer.ReactTestInstance[] {
+  return container.root[findAll ? 'findAll' : 'find'](node => node.props?.className?.split(' ')?.includes?.(className));
+}

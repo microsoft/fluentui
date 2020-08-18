@@ -20,7 +20,7 @@ import {
   EventGroup,
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
+import { Checkbox } from '../../compat/Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
@@ -1636,7 +1636,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _onItemClick(item: IComboBoxOption): (ev: React.MouseEvent<any>) => void {
     const { onItemClick } = this.props;
     const { index } = item;
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (ev: React.MouseEvent<any>): void => {
       onItemClick && onItemClick(ev, item, index);
