@@ -45,21 +45,20 @@ const _allInstances: {
   [key: string]: FocusZone;
 } = {};
 
-const _outerZones: Map<Window, Set<FocusZone>> = new Map<Window, Set<FocusZone>>();
-
 const outZones = {
+  _outerZones: new Map<Window, Set<FocusZone>>(),
   register(window: Window, FZ: FocusZone) {
-    if (_outerZones.get(window)) {
-      _outerZones.get(window)?.add(FZ);
+    if (this._outerZones.get(window)) {
+      this._outerZones.get(window)?.add(FZ);
     } else {
-      _outerZones.set(window, new Set([FZ]));
+      this._outerZones.set(window, new Set([FZ]));
     }
   },
   unregister(window: Window, FZ: FocusZone) {
-    _outerZones.get(window)?.delete(FZ);
+    this._outerZones.get(window)?.delete(FZ);
   },
   getOutZone(window: Window) {
-    return _outerZones.get(window);
+    return this._outerZones.get(window);
   },
 };
 
