@@ -1,5 +1,6 @@
 {
   "type": "patch",
+  "comment": "fix publish",
   "packageName": "@uifabric/charting",
   "email": "kchau@microsoft.com",
   "dependentChangeType": "patch",

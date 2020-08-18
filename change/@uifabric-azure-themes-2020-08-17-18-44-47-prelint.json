@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix publishing by syncing packages (#12715)",
+  "comment": "fix publish",
   "packageName": "@uifabric/azure-themes",
   "email": "kchau@microsoft.com",
   "dependentChangeType": "patch",
