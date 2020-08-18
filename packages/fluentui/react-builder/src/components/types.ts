@@ -7,7 +7,7 @@ export type JSONTreeElement = {
     [key: string]: any;
     children?: (string | JSONTreeElement)[];
   };
-  moduleName: string;
+  moduleName?: string;
 };
 
 export type DesignerMode = 'build' | 'design' | 'use';

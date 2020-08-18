@@ -10,6 +10,7 @@ import * as CodeSandbox from '@fluentui/code-sandbox';
 
 import { JSONTreeElement } from './components/types';
 import { getUUID } from './utils/getUUID';
+import { CodeSandboxImport } from '@fluentui/docs-components';
 
 type FiberNavigator = FUI.FiberNavigator;
 
@@ -547,7 +548,7 @@ export const renderJSONTreeToJSXElement = (
   });
 };
 
-const packageImportList = {
+const packageImportList: Record<string, CodeSandboxImport> = {
   '@fluentui/react-icons-northstar': {
     version: projectPackageJson.version,
     module: FUIIcons,
@@ -593,7 +594,7 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
 export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   const imports = JSONTreeToImports(tree);
   let codeSandboxExport = 'import * as React from "react";\n';
-  const packageImports = {
+  const packageImports: Record<string, CodeSandboxImport> = {
     '@fluentui/code-sandbox': {
       version: sandboxPackageJson.version,
       module: CodeSandbox,
@@ -623,7 +624,7 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   codeSandboxExport += code;
   codeSandboxExport += '\n);}';
 
-  return [codeSandboxExport, packageImports];
+  return { code: codeSandboxExport, imports: packageImports };
 };
 
 /**

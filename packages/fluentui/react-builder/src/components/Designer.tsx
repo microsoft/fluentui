@@ -22,7 +22,6 @@ import {
   jsonTreeFindElement,
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
-  getCodeForCodeSandbox,
   getCodeSandboxInfo,
   resolveDraggingElement,
   resolveDrop,
@@ -488,10 +487,7 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
 
-  const [sandbxCode, sandboxPackageImports] = getCodeSandboxInfo(
-    jsonTree,
-    renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)),
-  );
+  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
 
   return (
     <div
@@ -607,10 +603,10 @@ export const Designer: React.FunctionComponent = () => {
                   )}
                   {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
                   <ComponentControlsCodeSandbox
-                    exampleCode={sandbxCode}
+                    exampleCode={codeSandboxData.code}
                     exampleLanguage="js"
                     exampleName="uibuilder"
-                    imports={sandboxPackageImports}
+                    imports={codeSandboxData.imports}
                   >
                     {(state, onCodeSandboxClick) => {
                       const codeSandboxContent =
