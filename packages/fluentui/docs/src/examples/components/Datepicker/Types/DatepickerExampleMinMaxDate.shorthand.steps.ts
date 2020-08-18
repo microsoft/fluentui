@@ -13,7 +13,7 @@ const config: ScreenerTestsConfig = {
         .snapshot('Shows min max dates.')
         .click(`.${datepickerCalendarCellClassName}:nth-child(10)`)
         .snapshot('Disabled date is not clickable.')
-        .click(`.${datepickerCalendarHeaderActionClassName}:nth-child(1)`)
+        .click(`.${datepickerCalendarHeaderActionClassName}:nth-of-type(1)`)
         .snapshot('Month icon is not clickable.'),
   ],
 };
