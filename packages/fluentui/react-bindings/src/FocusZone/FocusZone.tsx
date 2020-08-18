@@ -183,10 +183,10 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
-    if (!this._isInnerZone) {
-      outZones.register(this.windowElement!, this);
+    if (!this._isInnerZone && this.windowElement) {
+      outZones.register(this.windowElement, this);
 
-      if (this.windowElement && outZones.getOutZone(this.windowElement)?.size === 1) {
+      if (outZones.getOutZone(this.windowElement)?.size === 1) {
         this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
       }
     }
