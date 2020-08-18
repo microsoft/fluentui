@@ -5,10 +5,9 @@ import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 import { classNamesFunction, getDocument } from '../../Utilities';
 import { setPortalAttribute, setVirtualParent } from '@uifabric/utilities/src/dom';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
-import { useMergedRefs, useWarnings, useConstCallback } from '@uifabric/react-hooks';
+import { useMergedRefs, useWarnings } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
-let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };
 
 const onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
   // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though
@@ -37,6 +36,8 @@ const useUnmount = (unmountFunction: () => void) => {
     [unmountFunction],
   );
 };
+
+let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };
 
 function useDebugWarnings(props: ILayerProps) {
   if (process.env.NODE_ENV !== 'production') {
@@ -84,7 +85,8 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
         parentNode.removeChild(currentLayerElement);
       }
     }
-  }, [currentLayerElement, onLayerWillUnmount]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run if onLayerWillUnmount changes
+  }, [onLayerWillUnmount]);
 
   const getHost = React.useCallback((): Node | undefined => {
     const doc = getDocument(rootRef.current);
@@ -131,14 +133,14 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     }
   }, [onLayerMounted, onLayerDidMount, getHost, insertFirst, classNames.root, hostId, removeLayerElement]);
 
-  // React.useEffect(() => {
-  //   createLayerElement();
+  React.useEffect(() => {
+    createLayerElement();
 
-  // }, []);
-
-  if (hostId) {
-    registerLayer(hostId, createLayerElement);
-  }
+    if (hostId) {
+      registerLayer(hostId, createLayerElement);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
+  }, []);
 
   React.useEffect(() => {
     if (hostId !== currentHostId) {
@@ -146,55 +148,14 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     }
   }, [hostId, currentHostId, createLayerElement]);
 
+  useDebugWarnings(props);
+
   useUnmount(() => {
     removeLayerElement();
     if (hostId) {
       unregisterLayer(hostId, createLayerElement);
     }
   });
-
-  const getFilteredEvents = useConstCallback(() => {
-    if (!filteredEventProps) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      filteredEventProps = {} as any;
-      [
-        'onClick',
-        'onContextMenu',
-        'onDoubleClick',
-        'onDrag',
-        'onDragEnd',
-        'onDragEnter',
-        'onDragExit',
-        'onDragLeave',
-        'onDragOver',
-        'onDragStart',
-        'onDrop',
-        'onMouseDown',
-        'onMouseEnter',
-        'onMouseLeave',
-        'onMouseMove',
-        'onMouseOver',
-        'onMouseOut',
-        'onMouseUp',
-        'onTouchMove',
-        'onTouchStart',
-        'onTouchCancel',
-        'onTouchEnd',
-        'onKeyDown',
-        'onKeyPress',
-        'onKeyUp',
-        'onFocus',
-        'onBlur',
-        'onChange',
-        'onInput',
-        'onInvalid',
-        'onSubmit',
-      ].forEach(name => (filteredEventProps[name] = onFilterEvent));
-    }
-    return filteredEventProps;
-  });
-
-  useDebugWarnings(props);
 
   return (
     <span className="ms-layer" ref={mergedRef}>
@@ -209,3 +170,44 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
   );
 });
 LayerBase.displayName = 'LayerBase';
+
+const getFilteredEvents = () => {
+  if (!filteredEventProps) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filteredEventProps = {} as any;
+    [
+      'onClick',
+      'onContextMenu',
+      'onDoubleClick',
+      'onDrag',
+      'onDragEnd',
+      'onDragEnter',
+      'onDragExit',
+      'onDragLeave',
+      'onDragOver',
+      'onDragStart',
+      'onDrop',
+      'onMouseDown',
+      'onMouseEnter',
+      'onMouseLeave',
+      'onMouseMove',
+      'onMouseOver',
+      'onMouseOut',
+      'onMouseUp',
+      'onTouchMove',
+      'onTouchStart',
+      'onTouchCancel',
+      'onTouchEnd',
+      'onKeyDown',
+      'onKeyPress',
+      'onKeyUp',
+      'onFocus',
+      'onBlur',
+      'onChange',
+      'onInput',
+      'onInvalid',
+      'onSubmit',
+    ].forEach(name => (filteredEventProps[name] = onFilterEvent));
+  }
+  return filteredEventProps;
+};

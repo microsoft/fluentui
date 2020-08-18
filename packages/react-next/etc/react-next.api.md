@@ -19,7 +19,6 @@ import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IFocusZoneProps as IFocusZoneProps_2 } from '@fluentui/react-focus';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { ILayerProps } from 'office-ui-fabric-react/lib/Layer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverlayProps } from 'office-ui-fabric-react/lib/Overlay';
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
@@ -1021,6 +1020,38 @@ export interface IImageStyles {
 }
 
 // @public (undocumented)
+export interface ILayer {
+}
+
+// @public (undocumented)
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement> {
+    className?: string;
+    componentRef?: IRefObject<ILayer>;
+    eventBubblingEnabled?: boolean;
+    hostId?: string;
+    insertFirst?: boolean;
+    onLayerDidMount?: () => void;
+    // @deprecated
+    onLayerMounted?: () => void;
+    onLayerWillUnmount?: () => void;
+    styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ILayerStyleProps {
+    className?: string;
+    isNotHost?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ILayerStyles {
+    content?: IStyle;
+    root?: IStyle;
+}
+
+// @public (undocumented)
 export interface ILink {
     focus(): void;
 }
@@ -1941,6 +1972,17 @@ export enum KeyboardSpinDirection {
 }
 
 // @public (undocumented)
+export const Layer: React.FunctionComponent<ILayerProps>;
+
+// @public (undocumented)
+export const LayerBase: React.ForwardRefExoticComponent<ILayerProps & React.RefAttributes<HTMLDivElement>>;
+
+// Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const LayerHost: React.MemoExoticComponent<(props: ILayerHostProps) => JSX.Element>;
+
+// @public (undocumented)
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
@@ -2374,7 +2416,6 @@ export * from "office-ui-fabric-react/lib/Keytip";
 export * from "office-ui-fabric-react/lib/KeytipData";
 export * from "office-ui-fabric-react/lib/KeytipLayer";
 export * from "office-ui-fabric-react/lib/Label";
-export * from "office-ui-fabric-react/lib/Layer";
 export * from "office-ui-fabric-react/lib/List";
 export * from "office-ui-fabric-react/lib/MarqueeSelection";
 export * from "office-ui-fabric-react/lib/MessageBar";

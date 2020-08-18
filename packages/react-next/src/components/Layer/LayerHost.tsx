@@ -21,7 +21,7 @@ export const LayerHost = React.memo((props: ILayerHostProps) => {
 
   React.useEffect(() => {
     notifyHostChanged(id!);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- componentDidMount
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
   }, []);
 
   useUnmount(() => {
