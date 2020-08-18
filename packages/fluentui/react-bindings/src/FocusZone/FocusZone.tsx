@@ -156,8 +156,6 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
 
     // @ts-ignore
     this.windowElement = getWindow(this._root.current);
-    // console.log(this.windowElement);
-    // console.log(_outerZones);
     let parentElement = getParent(this._root.current, ALLOW_VIRTUAL_ELEMENTS);
     const doc = getDocument(this._root.current);
 
