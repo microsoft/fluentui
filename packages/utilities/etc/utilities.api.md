@@ -126,7 +126,7 @@ export const colProperties: Record<string, number>;
 export function composeComponentAs<TProps>(outer: IComponentAs<TProps>, inner: IComponentAs<TProps>): IComponentAs<TProps>;
 
 // @public
-export function composeRenderFunction<TProps>(outer: IRenderFunction<TProps> | undefined, inner: IRenderFunction<TProps>): IRenderFunction<TProps>;
+export function composeRenderFunction<TProps>(outer: IRenderFunction<TProps>, inner: IRenderFunction<TProps>): IRenderFunction<TProps>;
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];

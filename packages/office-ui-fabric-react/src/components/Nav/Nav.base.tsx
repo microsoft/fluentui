@@ -116,7 +116,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
     const LinkAs = this.props.linkAs ? composeComponentAs(this.props.linkAs, ActionButton) : ActionButton;
-    const onRenderLink = composeRenderFunction(this.props.onRenderLink, this._onRenderLink);
+    const onRenderLink = this.props.onRenderLink
+      ? composeRenderFunction(this.props.onRenderLink, this._onRenderLink)
+      : this._onRenderLink;
 
     return (
       <LinkAs
