@@ -209,9 +209,13 @@ task('watch:docs:component-info', () => {
       const internalTask: TaskFunction = () =>
         src(pkg.packageJson.gulp?.componentInfo, { cwd: pkg.packagePath })
           .pipe(
-            cacheNonCi(gulpReactDocgen(paths.docs('tsconfig.json'), ['DOMAttributes', 'HTMLAttributes']), {
-              name: 'componentInfo-3',
-            }),
+            cacheNonCi(
+              gulpReactDocgen({
+                ignoredParentInterfaces: ['DOMAttributes', 'HTMLAttributes'],
+                tsconfigPath: paths.docs('tsconfig.json'),
+              }),
+              { name: 'componentInfo-3' },
+            ),
           )
           .pipe(dest('componentInfo', { cwd: pkg.packagePath }));
       internalTask.displayName = 'build:docs:component-info';

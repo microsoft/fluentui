@@ -4,7 +4,7 @@ import cache from 'gulp-cache';
 import { log } from 'gulp-util';
 import del from 'del';
 import path from 'path';
-const readPkgUp = require('read-pkg-up');
+import readPkgUp from 'read-pkg-up';
 import { Transform } from 'stream';
 
 import config from '../../config';
@@ -31,7 +31,7 @@ async function detectPaths() {
   return {
     componentsSrc,
     outputPath: path.resolve(path.dirname(info.path), 'componentInfo'),
-    tsConfigPath: config.paths.docs('tsconfig.json'),
+    tsconfigPath: config.paths.docs('tsconfig.json'),
   };
 }
 
@@ -43,15 +43,19 @@ gulp.task('clean:component-info', async () => {
 });
 
 gulp.task('build:component-info', async () => {
-  const { componentsSrc, outputPath, tsConfigPath } = await detectPaths();
+  const { componentsSrc, outputPath, tsconfigPath } = await detectPaths();
 
   await new Promise(resolve => {
     gulp
       .src(componentsSrc, { since: gulp.lastRun('build:component-info') })
       .pipe(
-        cacheNonCi(gulpReactDocgen(tsConfigPath, ['DOMAttributes', 'HTMLAttributes']), {
-          name: 'componentInfo-3',
-        }),
+        cacheNonCi(
+          gulpReactDocgen({
+            ignoredParentInterfaces: ['DOMAttributes', 'HTMLAttributes'],
+            tsconfigPath,
+          }),
+          { name: 'componentInfo-3' },
+        ),
       )
       .pipe(gulp.dest(outputPath))
       .on('end', resolve);
