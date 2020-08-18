@@ -56,6 +56,9 @@ const outZones = {
   },
   unregister(window: Window, FZ: FocusZone) {
     this._outerZones.get(window)?.delete(FZ);
+    if (this._outerZones.get(window)?.size === 0) {
+      this._outerZones.delete(window);
+    }
   },
   getOutZone(window: Window) {
     return this._outerZones.get(window);
