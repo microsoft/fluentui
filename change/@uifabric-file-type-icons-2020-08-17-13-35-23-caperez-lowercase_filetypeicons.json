@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating to use latest iconset from latest versioned CDN. All filetypes are lowercase. SVGs for 20_1.5x are now available.",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-17T20:35:23.970Z"
+}
