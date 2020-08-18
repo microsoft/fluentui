@@ -11,14 +11,16 @@ const supportsESM = caller => {
 module.exports = api => {
   const isDistBundle = api.caller(isDistCaller);
   const isNode = api.caller(isNodeCaller);
+
   const useESModules = !isNode && api.caller(supportsESM);
+  const useCommonJSModules = !useESModules;
 
   const presets = [
     [
       '@babel/preset-env',
       {
         loose: true,
-        modules: useESModules ? false : 'cjs',
+        modules: false,
         targets: isNode ? { node: '10' } : undefined,
         exclude: [
           // https://github.com/microsoft/fluent-ui-react/pull/1895
@@ -31,6 +33,14 @@ module.exports = api => {
     ['@babel/preset-typescript', { allowNamespaces: true }],
   ];
   const plugins = [
+    useCommonJSModules && [
+      '@babel/plugin-transform-modules-commonjs',
+      {
+        lazy: isNode,
+        loose: true,
+      },
+    ],
+
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     ['@babel/plugin-proposal-nullish-coalescing-operator', { loose: true }],
     ['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }],
