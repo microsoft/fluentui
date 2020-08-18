@@ -495,13 +495,12 @@ export interface IContextualMenuItem {
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 
   /**
-   * Method to reorganize sub-components of this menu item.
+   * Method to customize sub-components rendering of this menu item.
    *
    * @param props - Props used to pass into render functions
    * @param defaultRenders - Default render functions that renders default sub-components
-   * @param customClasses - Custom classes to add to renders of default render functions
    */
-  onRenderLayout?: (
+  onRenderContent?: (
     props: IContextualMenuItemProps,
     defaultRenders: IContextualMenuItemRenderFunctions,
   ) => React.ReactNode;

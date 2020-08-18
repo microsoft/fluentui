@@ -76,11 +76,11 @@ export class ContextualMenuItemBase extends React.Component<IContextualMenuItemP
 
   public render() {
     const { item, classNames } = this.props;
-    const RenderLayout = item.onRenderLayout ? item.onRenderLayout : this._renderLayout;
+    const RenderContent = item.onRenderContent ? item.onRenderContent : this._renderLayout;
 
     return (
       <div className={item.split ? classNames.linkContentMenu : classNames.linkContent}>
-        {RenderLayout(this.props, {
+        {RenderContent(this.props, {
           renderCheckMarkIcon,
           renderItemIcon,
           renderItemName,

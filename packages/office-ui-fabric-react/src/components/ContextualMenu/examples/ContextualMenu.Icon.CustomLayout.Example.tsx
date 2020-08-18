@@ -11,7 +11,7 @@ export const ContextualMenuIconCustomLayoutExample: React.FunctionComponent = ()
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
-const renderLayout = (props: IContextualMenuItemProps, defaultRenders: IContextualMenuItemRenderFunctions) => {
+const renderContent = (props: IContextualMenuItemProps, defaultRenders: IContextualMenuItemRenderFunctions) => {
   return (
     <>
       {defaultRenders.renderCheckMarkIcon(props)}
@@ -33,7 +33,7 @@ const menuItems: IContextualMenuItem[] = [
     },
     text: 'Later Today',
     secondaryText: '7:00 PM',
-    onRenderLayout: renderLayout,
+    onRenderContent: renderContent,
   },
   {
     key: 'Tomorrow',
@@ -42,7 +42,7 @@ const menuItems: IContextualMenuItem[] = [
     },
     text: 'Tomorrow',
     secondaryText: 'Thu. 8:00 AM',
-    onRenderLayout: renderLayout,
+    onRenderContent: renderContent,
   },
   {
     key: 'This Weekend',
@@ -51,7 +51,7 @@ const menuItems: IContextualMenuItem[] = [
     },
     text: 'This Weekend',
     secondaryText: 'Sat. 10:00 AM',
-    onRenderLayout: renderLayout,
+    onRenderContent: renderContent,
   },
   {
     key: 'Next Week',
@@ -60,7 +60,7 @@ const menuItems: IContextualMenuItem[] = [
     },
     text: 'Next Week',
     secondaryText: 'Mon. 8:00 AM',
-    onRenderLayout: renderLayout,
+    onRenderContent: renderContent,
   },
 ];
 
