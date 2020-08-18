@@ -1,6 +1,9 @@
 {
   "extends": "../../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
+    "paths": {
+      "@fluentui/react-component-nesting-registry": ["src"]
+    },
     "composite": true,
     "outDir": "dist/dts",
     "noImplicitReturns": true,

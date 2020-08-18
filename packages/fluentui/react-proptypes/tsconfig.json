@@ -2,6 +2,9 @@
   "extends": "../../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
     "composite": true,
+    "paths": {
+      "@fluentui/react-proptypes": ["src"]
+    },
     "outDir": "dist/dts"
   },
   "include": ["src", "test"],

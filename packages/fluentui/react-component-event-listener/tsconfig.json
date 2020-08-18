@@ -2,6 +2,9 @@
   "extends": "../../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
     "composite": true,
+    "paths": {
+      "@fluentui/react-component-event-listener": ["src"]
+    },
     "outDir": "dist/dts",
     "noImplicitReturns": true,
     "noImplicitThis": true,

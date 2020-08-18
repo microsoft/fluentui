@@ -7,7 +7,10 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@fluentui/react-component-ref": ["src"]
+    }
   },
   "include": ["src", "test"],
   "references": []
