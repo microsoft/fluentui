@@ -3,7 +3,8 @@
   "compilerOptions": {
     "composite": true,
     "paths": {
-      "@fluentui/react-component-event-listener": ["src"]
+      "@uifabric/build": ["scripts"],
+      "@fluentui/*": ["packages/fluentui/*/src"]
     },
     "outDir": "dist/dts",
     "noImplicitReturns": true,

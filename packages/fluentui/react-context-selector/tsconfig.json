@@ -7,7 +7,11 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@uifabric/build": ["scripts"],
+      "@fluentui/*": ["packages/fluentui/*/src"]
+    }
   },
   "include": ["src", "test"],
   "references": []

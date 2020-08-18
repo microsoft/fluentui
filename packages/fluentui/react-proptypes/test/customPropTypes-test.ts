@@ -1,4 +1,4 @@
-import * as customPropTypes from '@fluentui/react-proptypes';
+import * as customPropTypes from '../src';
 
 describe('suggest prop type', () => {
   test('should throw error when non-array argument given', () => {

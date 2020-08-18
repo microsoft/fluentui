@@ -4,6 +4,10 @@
     "target": "es5",
     "lib": ["es2015", "dom"],
     "baseUrl": "../../",
+    "paths": {
+      "@uifabric/build": ["scripts"],
+      "@fluentui/*": ["packages/fluentui/*/src"]
+    },
     "types": ["node", "jest"],
     "jsx": "react",
     "importHelpers": true,

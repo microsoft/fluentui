@@ -9,7 +9,8 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "paths": {
-      "@fluentui/react-component-ref": ["src"]
+      "@uifabric/build": ["scripts"],
+      "@fluentui/*": ["packages/fluentui/*/src"]
     }
   },
   "include": ["src", "test"],
