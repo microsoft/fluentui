@@ -32,12 +32,14 @@ export function renamePropInSpread(
         if (!attribute || (!firstIdentifier && !propertyAccess)) {
           throw 'Invalid spread prop. Could access internal identifiers successfully.';
         }
+        /* SPREADISIDENTIFIER tells us whether we should look at an Identifier or a P.A.E. node. */
         const spreadIsIdentifier = firstIdentifier !== undefined;
         /* Verify this attribute contains the name of our desired prop. */
         if (spreadContains(toRename, spreadIsIdentifier, attribute)) {
           /* Step 3: Create names for your new potential objects. */
+          const componentName = element.getFirstChildByKind(SyntaxKind.Identifier)?.getText();
           const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
-          let newSpreadName = '__migProps';
+          let newSpreadName = `__mig${componentName}Props`;
           const newMapName = '__migEnumMap';
           /* Metadata in case we need to reacquire the current element (AST modification). */
           let newJSXFlag = false;
@@ -119,6 +121,7 @@ export function renamePropInSpread(
               }
             }
           } else {
+            /* If a viable spread prop wasn't found, make a new one. */
             if (!propAlreadyExists(parentContainer, toRename)) {
               parentContainer.insertVariableStatement(
                 insertIndex,
@@ -180,8 +183,6 @@ export function renamePropInSpread(
               ? `{${replacementValue}}`
               : `{${toRename}}`,
           }); // Add the updated prop name and set its value.
-        } else {
-          throw 'Could not find prop in component specified.';
         }
       }
     }
