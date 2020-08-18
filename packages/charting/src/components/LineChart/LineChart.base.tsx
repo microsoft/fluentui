@@ -3,12 +3,11 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
-import { ILineChartProps, ILineChartPoints, IBasestate, IChildProps, IOverlayProps } from './LineChart.types';
+import { ILineChartProps, ILineChartPoints, IBasestate, IChildProps, IColorFillBarsProps } from './LineChart.types';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { calloutData, IMargins } from '../../utilities/index';
 import { ChartHelper } from '../CommonComponents/ChartHelper';
-import { thresholdSturges } from 'd3-array';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -35,14 +34,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _circleId: string;
   private _lineId: string;
   private _verticalLine: string;
-  private _overlayPatternId: string;
+  private _colorFillBarPatternId: string;
   private _uniqueCallOutID: string;
   private _refArray: IRefArrayData[];
   private margins: IMargins;
   private eventLabelHeight: number = 36;
   private lines: JSX.Element[];
-  private overlays: IOverlayProps[];
-  private _renderedOverlays: JSX.Element[];
+  private colorFillBars: IColorFillBarsProps[];
+  private _renderedColorFillBars: JSX.Element[];
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -57,11 +56,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._refArray = [];
     this._points = this.props.data.lineChartData || [];
     this._calloutPoints = calloutData(this._points) || [];
-    this.overlays = this.props.overlays || [];
+    this.colorFillBars = this.props.colorFillBars || [];
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
-    this._overlayPatternId = getId('overlayPattern');
+    this._colorFillBarPatternId = getId('colorFillBarPattern');
     this.margins = {
       top: this.props.margins?.top || 20,
       right: this.props.margins?.right || 20,
@@ -143,7 +142,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   strokeDasharray={'5,5'}
                 />
                 <g>
-                  {this._renderedOverlays}
+                  {this._renderedColorFillBars}
                   {this.lines}
                 </g>
                 {eventAnnotationProps && (
@@ -171,7 +170,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   ) => {
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
-    this._renderedOverlays = this._createOverlays(containerHeight);
+    this._renderedColorFillBars = this._createColorFillBars(containerHeight);
     this.lines = this._createLines();
   };
 
@@ -202,18 +201,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       return legend;
     });
 
-    const overlayLegendDataItems = this.overlays.map((overlay: IOverlayProps, index: number) => {
-      const title = overlay.name;
+    const colorFillBarsLegendDataItems = this.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
+      const title = colorFillBar.name;
       const legend: ILegend = {
         title,
-        color: overlay.color,
+        color: colorFillBar.color,
         action: () => {
           if (this.state.selectedLegend === title) {
             this.setState({ selectedLegend: '' });
-            this._handleOverlayLengendClick(overlay, null);
+            this._handleColorFillBarLengendClick(colorFillBar, null);
           } else {
             this.setState({ selectedLegend: title });
-            this._handleOverlayLengendClick(overlay, title);
+            this._handleColorFillBarLengendClick(colorFillBar, title);
           }
           this.setState({ activeLegend: title });
         },
@@ -224,14 +223,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this.setState({ activeLegend: title });
         },
         opacity: 0.4,
-        stripePattern: overlay.applyPattern,
+        stripePattern: colorFillBar.applyPattern,
       };
       return legend;
     });
 
     const legends = (
       <Legends
-        legends={[...legendDataItems, ...overlayLegendDataItems]}
+        legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
@@ -366,41 +365,41 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return lines;
   }
 
-  private _createOverlays = (containerHeight: number) => {
-    const overlays: JSX.Element[] = [];
-    for (let i = 0; i < this.overlays.length; i++) {
-      const overlay = this.overlays[i];
-      const overlayId = getId(overlay.name.replace(/\W/g, ''));
-      if (overlay.applyPattern) {
-        overlays.push(
+  private _createColorFillBars = (containerHeight: number) => {
+    const colorFillBars: JSX.Element[] = [];
+    for (let i = 0; i < this.colorFillBars.length; i++) {
+      const colorFillBar = this.colorFillBars[i];
+      const colorFillBarId = getId(colorFillBar.name.replace(/\W/g, ''));
+      if (colorFillBar.applyPattern) {
+        colorFillBars.push(
           <pattern
-            id={`${this._overlayPatternId}${i}`}
+            id={`${this._colorFillBarPatternId}${i}`}
             width={16}
             height={16}
-            key={`${this._overlayPatternId}${i}`}
+            key={`${this._colorFillBarPatternId}${i}`}
             patternUnits={'userSpaceOnUse'}
           >
-            <path d={'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8'} stroke={overlay.color} strokeWidth={2} />
+            <path d={'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8'} stroke={colorFillBar.color} strokeWidth={2} />
           </pattern>,
         );
       }
-      for (let j = 0; j < overlay.data.length; j++) {
-        const startX = overlay.data[j].startX;
-        const endX = overlay.data[j].endX;
-        overlays.push(
+      for (let j = 0; j < colorFillBar.data.length; j++) {
+        const startX = colorFillBar.data[j].startX;
+        const endX = colorFillBar.data[j].endX;
+        colorFillBars.push(
           <rect
-            fill={overlay.applyPattern ? `url(#${this._overlayPatternId}${i})` : overlay.color}
-            fillOpacity={this.state.activeLegend === overlay.name || this.state.activeLegend === '' ? 0.4 : 0.1}
+            fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}${i})` : colorFillBar.color}
+            fillOpacity={this.state.activeLegend === colorFillBar.name || this.state.activeLegend === '' ? 0.4 : 0.1}
             x={this._xAxisScale(startX)}
             y={this._yAxisScale(0) - containerHeight}
             width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
             height={containerHeight}
-            key={`${overlayId}${j}`}
+            key={`${colorFillBarId}${j}`}
           />,
         );
       }
     }
-    return overlays;
+    return colorFillBars;
   };
 
   private _refCallback(element: SVGGElement, legendTitle: string): void {
@@ -498,9 +497,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   };
 
-  private _handleOverlayLengendClick = (overlay: IOverlayProps, selectedLegend: string | null): void => {
-    if (overlay.onLegendClick) {
-      overlay.onLegendClick(selectedLegend);
+  private _handleColorFillBarLengendClick = (
+    colorFillBar: IColorFillBarsProps,
+    selectedLegend: string | null,
+  ): void => {
+    if (colorFillBar.onLegendClick) {
+      colorFillBar.onLegendClick(selectedLegend);
     }
   };
 }

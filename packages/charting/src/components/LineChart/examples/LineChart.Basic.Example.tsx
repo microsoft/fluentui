@@ -138,7 +138,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             height={this.state.height}
             width={this.state.width}
             margins={margins}
-            overlays={[
+            colorFillBars={[
               {
                 name: 'Time range 1',
                 color: 'blue',

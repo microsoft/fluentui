@@ -155,9 +155,9 @@ export interface ILineChartProps extends Partial<IChartHelperProps> {
   margins?: IMargins;
 
   /*
-   * Overlays for the chart,
+   * Color fill bars for the chart,
    */
-  overlays?: IOverlayProps[];
+  colorFillBars?: IColorFillBarsProps[];
 }
 
 export interface IEventsAnnotationProps {
@@ -173,15 +173,15 @@ export interface ILineChartStyles extends IChartHelperStyles {}
 
 export interface ILineChartStyleProps extends IChartHelperStyleProps {}
 
-export interface IOverlayProps {
+export interface IColorFillBarsProps {
   name: string;
   color: string;
-  data: IOverlayData[];
+  data: IColorFillBarData[];
   applyPattern?: boolean;
   onLegendClick?: (selectedLegend: string | null) => void | undefined;
 }
 
-export interface IOverlayData {
+export interface IColorFillBarData {
   startX: number | Date;
   endX: number | Date;
 }
