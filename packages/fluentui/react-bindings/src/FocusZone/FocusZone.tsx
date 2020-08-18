@@ -45,7 +45,7 @@ const _allInstances: {
   [key: string]: FocusZone;
 } = {};
 
-const outZones = {
+const outerZones = {
   _outerZones: new Map<Window, Set<FocusZone>>(),
   register(window: Window, FZ: FocusZone) {
     if (this._outerZones.get(window)) {
@@ -78,7 +78,7 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
  */
 function _onKeyDownCapture(this: Window, ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
-    outZones.getOutZone(this)?.forEach(zone => zone.updateTabIndexes());
+    outerZones.getOutZone(this)?.forEach(zone => zone.updateTabIndexes());
   }
 }
 
@@ -118,7 +118,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
   static displayName = 'FocusZone';
   static className = 'ms-FocusZone';
 
-  static outZones = outZones;
+  static outerZones = outerZones;
 
   _root: { current: HTMLElement | null } = { current: null };
   _id: string;
@@ -184,9 +184,9 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
 
     if (!this._isInnerZone && this.windowElement) {
-      outZones.register(this.windowElement, this);
+      outerZones.register(this.windowElement, this);
 
-      if (outZones.getOutZone(this.windowElement)?.size === 1) {
+      if (outerZones.getOutZone(this.windowElement)?.size === 1) {
         this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
       }
     }
@@ -235,12 +235,12 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
 
   componentWillUnmount() {
     delete _allInstances[this._id];
-    outZones.unregister(this.windowElement!, this);
+    outerZones.unregister(this.windowElement!, this);
 
     if (!this._isInnerZone) {
-      if (this.windowElement && outZones.getOutZone(this.windowElement)?.size === 0) {
+      if (this.windowElement && outerZones.getOutZone(this.windowElement)?.size === 0) {
         this.windowElement.removeEventListener('keydown', _onKeyDownCapture, true);
-        outZones.deleteOutZone(this.windowElement!);
+        outerZones.deleteOutZone(this.windowElement!);
       }
     }
 
