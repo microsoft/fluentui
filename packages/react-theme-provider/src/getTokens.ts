@@ -43,7 +43,17 @@ export function getTokens(theme: Theme): Tokens {
 
         disabled: {
           background: semanticColors?.primaryButtonBackgroundDisabled,
-          contentColor: semanticColors?.primaryButtonTextDisabled,
+          contentColor: semanticColors?.buttonTextDisabled,
+        },
+
+        checked: {
+          background: semanticColors?.primaryButtonBackgroundPressed,
+          contentColor: semanticColors?.primaryButtonTextPressed,
+        },
+
+        checkedHovered: {
+          background: semanticColors?.primaryButtonBackgroundPressed,
+          contentColor: semanticColors?.primaryButtonTextPressed,
         },
       },
 
@@ -80,6 +90,16 @@ export function getTokens(theme: Theme): Tokens {
           background: semanticColors?.buttonBackgroundDisabled,
           borderColor: semanticColors?.buttonBorderDisabled,
           contentColor: semanticColors?.buttonTextDisabled,
+        },
+
+        checked: {
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextChecked,
+        },
+
+        checkedHovered: {
+          background: semanticColors?.buttonBackgroundPressed,
+          contentColor: semanticColors?.buttonTextCheckedHovered,
         },
       },
     },

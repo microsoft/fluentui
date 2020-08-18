@@ -43,6 +43,14 @@ export const defaultTokens: Tokens = {
       contentColor: 'var(--accent-contentColor)',
       iconColor: 'var(--accent-iconColor)',
     },
+    checked: {
+      background: 'var(--acent-pressed-background)',
+      contentColor: 'var(--acent-pressed-contentColor)',
+    },
+    checkedHovered: {
+      background: 'var(--acent-pressed-background)',
+      contentColor: 'var(--acent-pressed-contentColor)',
+    },
   },
   button: {
     size: {
@@ -97,6 +105,14 @@ export const defaultTokens: Tokens = {
       borderColor: 'var(--button-borderColor)',
       contentColor: 'var(--button-contentColor)',
       iconColor: 'var(--button-iconColor)',
+    },
+    checked: {
+      background: 'var(--button-pressed-background)',
+      contentColor: 'var(--button-pressed-contentColor)',
+    },
+    checkedHovered: {
+      background: 'var(--button-pressed-background)',
+      contentColor: 'var(--button-pressed-contentColor)',
     },
   },
 };

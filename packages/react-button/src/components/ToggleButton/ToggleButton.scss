@@ -21,18 +21,18 @@
    * 3. Avoid defining styles directly.
    */
   &._checked {
-    --button-background: var(--button-pressed-background);
-    --button-contentColor: var(--button-pressed-contentColor);
+    --button-background: var(--button-checked-background);
+    --button-contentColor: var(--button-checked-contentColor);
 
-    --button-hovered-background: var(--button-pressed-background);
-    --button-hovered-contentColor: var(--button-pressed-contentColor);
+    --button-hovered-background: var(--button-checkedHovered-background);
+    --button-hovered-contentColor: var(--button-checkedHovered-contentColor);
 
     &._primary {
-      --button-background: var(--accent-pressed-background);
-      --button-contentColor: var(--accent-pressed-contentColor);
+      --button-background: var(--accent-checked-background);
+      --button-contentColor: var(--accent-checked-contentColor);
 
-      --button-hovered-background: var(--accent-pressed-background);
-      --button-hovered-contentColor: var(--accent-pressed-contentColor);
+      --button-hovered-background: var(--accent-checkedHovered-background);
+      --button-hovered-contentColor: var(--accent-checkedHovered-contentColor);
     }
   }
 }
