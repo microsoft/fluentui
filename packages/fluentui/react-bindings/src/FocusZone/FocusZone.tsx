@@ -53,6 +53,8 @@ const outerZones = {
     } else {
       this._windowToOuterZoneMap.set(window, new Set([FZ]));
     }
+
+    return this._windowToOuterZoneMap.get(window)?.size;
   },
   unregister(window: Window, FZ: FocusZone) {
     this._windowToOuterZoneMap.get(window)?.delete(FZ);
