@@ -91,12 +91,6 @@ export type DatepickerStylesProps = Pick<DatepickerProps, 'allowManualInput'>;
 
 export const datepickerClassName = 'ui-datepicker';
 
-enum OpenState {
-  Open,
-  Opening,
-  Closing,
-  Closed,
-}
 /**
  * A Datepicker is used to display dates.
  * This component is currently UNSTABLE!
@@ -114,17 +108,16 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const datepickerRef = React.useRef<HTMLElement>();
-  const convertBoolToOpenState = (flag: boolean): OpenState => {
-    if (flag === undefined || flag === null) {
-      return undefined;
-    }
-    return flag ? OpenState.Open : OpenState.Closed;
-  };
-  const [openState, setOpenState] = useAutoControlled<OpenState>({
-    defaultValue: convertBoolToOpenState(props.defaultCalendarOpenState),
-    value: convertBoolToOpenState(props.calendarOpenState),
-    initialValue: OpenState.Closed,
+
+  const [openState, setOpenState] = useAutoControlled<boolean>({
+    defaultValue: props.defaultCalendarOpenState,
+    value: props.calendarOpenState,
+    initialValue: false,
   });
+
+  const [preventClosing, setPreventClosing] = React.useState<boolean>();
+  const [preventOpeningOnClick, setPreventOpeningOnClick] = React.useState<boolean>();
+
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const [formattedDate, setFormattedDate] = React.useState<string>('');
   const [error, setError] = React.useState<string>(() =>
@@ -209,7 +202,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     onDateChange: (e, itemProps) => {
       const targetDay = itemProps.value;
       setSelectedDate(targetDay.originalDate);
-      setOpenState(OpenState.Closing);
+      setOpenState(false);
       setError('');
       setFormattedDate(valueFormatter(targetDay.originalDate));
 
@@ -222,20 +215,14 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     overrideProps: overrideDatepickerCalendarProps,
   });
 
-  const openStateToBooleanKnob = (openState: OpenState): boolean => {
-    return openState === OpenState.Open || openState === OpenState.Opening;
-  };
-
   const onInputClick = (): void => {
-    if (openState === OpenState.Closed) {
-      setOpenState(OpenState.Open);
-    } else if (openState === OpenState.Open || openState === OpenState.Closing || openState === OpenState.Opening) {
-      // Keep popup open in case we can only enter the date through calendar.
-      if (props.allowManualInput) {
-        setOpenState(OpenState.Closed);
-      } else {
-        setOpenState(OpenState.Open);
-      }
+    if (preventOpeningOnClick && !openState) {
+      setPreventOpeningOnClick(false);
+    } else if (!openState) {
+      setOpenState(true);
+    } // Keep popup open in case we can only enter the date through calendar.
+    else if (props.allowManualInput) {
+      setOpenState(false);
     }
   };
 
@@ -265,7 +252,8 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const onInputFocus = e => {
     if (!props.allowManualInput) {
-      setOpenState(OpenState.Opening);
+      setOpenState(true);
+      setPreventClosing(true);
       e.preventDefault();
     }
   };
@@ -314,7 +302,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           })}
           {createShorthand(Popup, popup, {
             defaultProps: () => ({
-              open: openStateToBooleanKnob(openState) && !props.disabled,
+              open: openState && !props.disabled,
               content: calendarElement,
               trapFocus: {
                 disableFirstFocus: true,
@@ -323,7 +311,18 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
             }),
             overrideProps: (predefinedProps: PopupProps): PopupProps => ({
               onOpenChange: (e, { open }) => {
-                setOpenState(open || openState === OpenState.Opening ? OpenState.Open : OpenState.Closing);
+                if (preventClosing) {
+                  setPreventClosing(false);
+
+                  if (!open) {
+                    return;
+                  }
+                }
+                if (!open) {
+                  setPreventOpeningOnClick(true);
+                }
+
+                setOpenState(open);
                 _.invoke(predefinedProps, 'onOpenChange', e, { open });
               },
             }),
