@@ -6,67 +6,78 @@ import {
   RenamePropModType,
   RepathImportModType,
   CodeModMapType,
+  ModOptions,
 } from '../../types';
 import { findJsxTag, renameProp, getImportsByPath, repathImport } from '../../utilities/index';
 import { Ok, Err } from '../../../helpers/result';
 
 const jsonObj: UpgradeJSONType = require('../upgrades.json');
 
-/* Intermediate file that reads upgrades.json and returns
-   a codemod object to be run. */
-export function createCodeModFromJson(): CodeMod | undefined {
-  return {
-    run: (file: SourceFile) => {
-      try {
-        /* Codemod body, which can be added to */
-        const funcs = getCodeModUtilitiesFromJson(file);
-        funcs.forEach(func => {
-          func();
-        });
-      } catch (e) {
-        Err({ reason: 'Error' });
-      }
-      return Ok({ logs: ['Updated Successfully'] });
-    },
-    version: '100000',
-    name: jsonObj.name,
-    enabled: true,
-  };
+/* Creates and returns an array of CodeMod objects from a JSON file. Optionally takes in
+   an array of functions from user to turn into codemods as well. */
+export function createCodeModsFromJson(userMods?: CodeMod[]): CodeMod[] | undefined {
+  const funcs = getCodeModsFromJson();
+  /* If the user wants to supply any codemods (as a void function that takes in a sourcefile),
+     add those offerings right now! */
+  if (userMods) {
+    funcs.concat(userMods);
+  }
+  return funcs;
 }
 
 /* Helper function that parses a json object for details about individual
    codemods and formats each into a function. These functions are stored in
    an array that is returned to the user. */
-export function getCodeModUtilitiesFromJson(file: SourceFile): (() => void)[] {
-  const functions = [];
+export function getCodeModsFromJson(): CodeMod[] {
+  const mods = [];
   const modDetails: ModTypes[] = jsonObj.upgrades;
   for (let i = 0; i < modDetails.length; i++) {
     /* Try and get the codemod function associated with the mod type. */
-    const func = codeModMap[modDetails[i].type](file, modDetails[i]);
+    const func = codeModMap[modDetails[i].type](modDetails[i]);
     if (func) {
-      functions.push(func);
+      const options: ModOptions = {
+        name: modDetails[i].name,
+        version: modDetails[i].version ? modDetails[i].version! : '100000',
+      };
+      mods.push(createCodeMod(options, func));
     } else {
       // eslint-disable-next-line no-throw-literal
       throw 'Error: attempted to access a codeMod mapping from an unsupported type.';
     }
   }
-  return functions;
+  return mods;
+}
+
+/* Helper function that creates a codeMod given a name and a list of functions that compose the mod. */
+export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => void): CodeMod {
+  return {
+    run: (file: SourceFile) => {
+      try {
+        /* Codemod body. */
+        mod(file);
+      } catch (e) {
+        return Err({ reason: `Mod failed: ${e}` });
+      }
+      return Ok({ logs: ['Upgrade completed'] });
+    },
+    version: options.version,
+    name: options.name,
+    enabled: true,
+  };
 }
 
 /* Dictionary that maps codemod names to functions that execute said mod.
    Used by getCodeModUtilitiesFromJson to easily get the desired function
-   from the json object.
-
-   TODO: How well does this scale for devs who want to add mods but don't care about json?*/
+   from the json object. */
 const codeModMap: CodeModMapType = {
-  renameProp: function(file: SourceFile, mod: RenamePropModType) {
-    return function() {
+  renameProp: function(mod: RenamePropModType) {
+    return function(file: SourceFile) {
       const tags = findJsxTag(file, mod.options.from.importName);
       renameProp(tags, mod.options.from.toRename, mod.options.to.replacementName);
     };
   },
-  repathImport: function(file: SourceFile, mod: RepathImportModType) {
-    return function() {
+  repathImport: function(mod: RepathImportModType) {
+    return function(file: SourceFile) {
       /* If the json indicates our search string is a regex, convert it. */
       const searchString = mod.options.from.isRegex
         ? new RegExp(
