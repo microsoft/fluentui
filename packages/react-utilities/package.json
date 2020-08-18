@@ -37,6 +37,7 @@
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/jest-serializer-merge-styles": "^7.0.35",
+    "@uifabric/test-utilities": "^7.0.37",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
