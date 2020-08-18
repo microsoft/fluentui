@@ -3,7 +3,7 @@ import glob from 'glob';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import parseExamplePath from '../../src/utils/parseExamplePath';
+import parseExamplePath from '../../../src/utils/parseExamplePath';
 
 const ShimmedPage: React.FC<{ slug: string }> = props => {
   return <ul>{props.slug}</ul>;
