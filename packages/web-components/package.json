@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"

@@ -2,6 +2,41 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/codemods_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add generic config mod",
+            "author": "t-dama@microsoft.com",
+            "commit": "d6a07da5cdffa784a570af0915151f628387dddf",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "add support for repathing and function dictionary",
+            "author": "t-dama@microsoft.com",
+            "commit": "3c63867445e6f9fcec486e9d891dd904db85a04b",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Codemods: Implement result and prepare for logging changes",
+            "author": "joschect@microsoft.com",
+            "commit": "160f6141e0bf41a118d71cac0744fd6282333f86",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Aug 2020 12:41:58 GMT",
       "tag": "@fluentui/codemods_v0.6.15",
       "version": "0.6.15",

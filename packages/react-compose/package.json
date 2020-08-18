@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compose",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Fluent UI React component composition.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
