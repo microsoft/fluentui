@@ -448,8 +448,9 @@ const toJSONTreeElement = input => {
   return result;
 };
 
-export const resolveDraggingElement: (displayName: string, draggingElements?) => JSONTreeElement = (
+export const resolveDraggingElement: (displayName: string, module: string, draggingElements?) => JSONTreeElement = (
   displayName,
+  module,
   draggingElements = DRAGGING_ELEMENTS,
 ) => {
   const jsonTreeElement = toJSONTreeElement(draggingElements[displayName]);
@@ -457,6 +458,7 @@ export const resolveDraggingElement: (displayName: string, draggingElements?) =>
     uuid: getUUID(),
     $$typeof: 'Symbol(react.element)',
     type: displayName,
+    moduleName: module,
     displayName,
     ...jsonTreeElement,
   };
@@ -545,21 +547,56 @@ export const renderJSONTreeToJSXElement = (
   });
 };
 
-export const getCodeSandboxPackageImports = () => {
-  return {
+const packageImportList = {
+  '@fluentui/react-icons-northstar': {
+    version: projectPackageJson.version,
+    module: FUIIcons,
+    required: false,
+  },
+  '@fluentui/react-northstar': {
+    version: projectPackageJson.version,
+    module: FUI,
+    required: true,
+  },
+};
+
+export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
+  if (tree.props?.icon) {
+    const iconModule =
+      (tree.moduleName === '@fluentui/react-northstar' && '@fluentui/react-icons-northstar') || 'ErrorNoPackage';
+    if (imports.hasOwnProperty(iconModule)) {
+      if (!imports[iconModule].includes(tree.props?.icon.type)) {
+        imports[iconModule] += `${tree.props?.icon.type}, `;
+      }
+    } else {
+      imports[iconModule] = `${tree.props?.icon.type}, `;
+    }
+  }
+  if (tree.moduleName && tree.$$typeof === 'Symbol(react.element)') {
+    if (imports.hasOwnProperty(tree.moduleName)) {
+      if (!imports[tree.moduleName].includes(tree.displayName)) {
+        imports[tree.moduleName] += `${tree.displayName}, `;
+      }
+    } else {
+      imports[tree.moduleName] = `${tree.displayName}, `;
+    }
+  }
+
+  tree.props?.children?.forEach(item => {
+    if (typeof item !== 'string') {
+      imports = JSONTreeToImports(item, imports);
+    }
+  });
+  return imports;
+};
+
+export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
+  const imports = JSONTreeToImports(tree);
+  let codeSandboxExport = 'import * as React from "react";\n';
+  const packageImports = {
     '@fluentui/code-sandbox': {
       version: sandboxPackageJson.version,
       module: CodeSandbox,
-      required: true,
-    },
-    '@fluentui/react-icons-northstar': {
-      version: projectPackageJson.version,
-      module: FUIIcons,
-      required: false,
-    },
-    '@fluentui/react-northstar': {
-      version: projectPackageJson.version,
-      module: FUI,
       required: true,
     },
     react: {
@@ -574,34 +611,19 @@ export const getCodeSandboxPackageImports = () => {
     },
     prettier: {
       version: docsComponentsPackageJson.peerDependencies['prettier'],
-      module: null, // no need to use it in our examples
+      module: null,
       required: true,
     },
   };
-};
-
-export const JSONTreeToImports = (tree: JSONTreeElement, imports = '', icons = '') => {
-  if (tree.props?.icon) {
-    if (!icons.includes(tree.props?.icon.type)) {
-      icons += `${tree.props?.icon.type}, `;
-    }
+  for (const [module, components] of Object.entries(imports)) {
+    codeSandboxExport += `import {${components}} from "${module}";\n`;
+    packageImports[module] = packageImportList[module];
   }
-  tree.props?.children?.forEach(item => {
-    if (typeof item !== 'string') {
-      if (!imports.includes(item.displayName) && item.$$typeof === 'Symbol(react.element)') {
-        imports += `${item.displayName}, `;
-      }
-      [imports, icons] = JSONTreeToImports(item, imports, icons);
-    }
-  });
-  return [imports, icons];
-};
+  codeSandboxExport += '\n export default function example() { \n return (\n';
+  codeSandboxExport += code;
+  codeSandboxExport += '\n);}';
 
-export const getCodeSandboxImports = (tree: JSONTreeElement) => {
-  const [components, icons] = JSONTreeToImports(tree);
-  return `import * as React from "react";
-  import {${components}} from "@fluentui/react-northstar";
-  import {${icons}} from "@fluentui/react-icons-northstar";`;
+  return [codeSandboxExport, packageImports];
 };
 
 /**

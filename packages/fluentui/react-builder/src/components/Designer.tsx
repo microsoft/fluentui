@@ -22,8 +22,8 @@ import {
   jsonTreeFindElement,
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
-  getCodeSandboxImports,
-  getCodeSandboxPackageImports,
+  getCodeForCodeSandbox,
+  getCodeSandboxInfo,
   resolveDraggingElement,
   resolveDrop,
 } from '../config';
@@ -331,7 +331,10 @@ export const Designer: React.FunctionComponent = () => {
   const handleDragStart = React.useCallback(
     (info, e) => {
       dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
-      dispatch({ type: 'DRAG_START', component: resolveDraggingElement(info.displayName) });
+      dispatch({
+        type: 'DRAG_START',
+        component: resolveDraggingElement(info.displayName, info.moduleName),
+      });
     },
     [dispatch],
   );
@@ -485,6 +488,11 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
 
+  const [sandbxCode, sandboxPackageImports] = getCodeSandboxInfo(
+    jsonTree,
+    renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)),
+  );
+
   return (
     <div
       style={{
@@ -599,11 +607,10 @@ export const Designer: React.FunctionComponent = () => {
                   )}
                   {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
                   <ComponentControlsCodeSandbox
-                    exampleCode={`${getCodeSandboxImports(jsonTree)}\nexport default function example() {
-                      return (\n ${renderElementToJSX(renderJSONTreeToJSXElement(jsonTree))}\n);}`}
+                    exampleCode={sandbxCode}
                     exampleLanguage="js"
                     exampleName="uibuilder"
-                    imports={getCodeSandboxPackageImports()}
+                    imports={sandboxPackageImports}
                   >
                     {(state, onCodeSandboxClick) => {
                       const codeSandboxContent =
