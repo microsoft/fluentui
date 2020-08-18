@@ -11,7 +11,7 @@ export type ChatMessageReadStatusIndicatorStylesProps = { title?: string };
 export const chatMessageReadStatusIndicatorClassName = `ui-chat__messagereadstatusindicator`;
 
 /**
- * A ChatMessageReadStatusIndicator
+ * A ChatMessageReadStatusIndicator places a indicator to represent the read status of the message
  */
 export const ChatMessageReadStatusIndicator = compose<
   'div',

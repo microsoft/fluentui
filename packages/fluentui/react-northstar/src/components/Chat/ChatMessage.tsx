@@ -89,8 +89,10 @@ export interface ChatMessageProps
   /** Message details info slot for the header. */
   details?: ShorthandValue<ChatMessageDetailsProps>;
 
+  /** Read status of the message to be added as title for readStatusIndicator */
   readStatus?: string;
 
+  /** Message read status indicator */
   readStatusIndicator?: ShorthandValue<ChatMessageReadStatusIndicatorProps>;
 
   /** Badge attached to the message. */
