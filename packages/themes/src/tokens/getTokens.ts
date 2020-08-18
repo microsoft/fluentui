@@ -1,6 +1,7 @@
 import { merge } from '@uifabric/utilities';
-import { Tokens, Theme } from './types';
-import { defaultTokens } from './createDefaultTheme';
+import { Tokens, Theme } from '../types';
+import { defaultTokens } from './defaultTokens';
+import { getButtonTokensFromCompatTheme } from './button/tokens';
 
 /**
  * Get tokens from theme object.
@@ -18,7 +19,7 @@ export function getTokens(theme: Theme): Tokens {
     stylesheets,
     ...passThroughTokens
   } = theme;
-  const { fonts, effects, palette, semanticColors } = theme;
+  const { palette, semanticColors } = theme;
 
   const preparedTokens: Tokens = merge(
     {},
@@ -61,47 +62,7 @@ export function getTokens(theme: Theme): Tokens {
         background: semanticColors?.bodyBackground,
       },
 
-      button: {
-        fontWeight: fonts?.medium?.fontWeight,
-        fontSize: fonts?.medium?.fontSize,
-        fontFamily: fonts?.medium?.fontFamily,
-        iconSize: fonts?.mediumPlus?.fontSize,
-        borderRadius: effects?.roundedCorner2,
-        focusColor: palette?.neutralSecondary,
-        focusInnerColor: palette?.white,
-
-        background: semanticColors?.buttonBackground,
-        borderColor: semanticColors?.buttonBorder,
-        contentColor: semanticColors?.buttonText,
-
-        hovered: {
-          background: semanticColors?.buttonBackgroundHovered,
-          borderColor: semanticColors?.buttonBorder,
-          contentColor: semanticColors?.buttonTextHovered,
-        },
-
-        pressed: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextPressed,
-          borderColor: semanticColors?.buttonBorder,
-        },
-
-        disabled: {
-          background: semanticColors?.buttonBackgroundDisabled,
-          borderColor: semanticColors?.buttonBorderDisabled,
-          contentColor: semanticColors?.buttonTextDisabled,
-        },
-
-        checked: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextChecked,
-        },
-
-        checkedHovered: {
-          background: semanticColors?.buttonBackgroundPressed,
-          contentColor: semanticColors?.buttonTextCheckedHovered,
-        },
-      },
+      button: getButtonTokensFromCompatTheme(theme),
     },
     tokens,
   );

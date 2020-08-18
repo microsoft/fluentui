@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 import { CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { useStylesheet } from '@fluentui/react-stylesheets';
-import { getTokens } from '@fluentui/themes/lib/getTokens';
+import { getTokens } from '@fluentui/themes';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { ThemeContext } from './ThemeContext';
 import { Theme } from './types';

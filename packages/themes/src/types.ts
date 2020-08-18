@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { IPartialTheme } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
@@ -58,11 +57,18 @@ export type FontTokens = Partial<{
 /**
  * A token set can provide a single string or object, mapping additional sub-parts of a token set.
  */
-export type TokenSetType = { [key: string]: TokenSetType | string | number | undefined };
+export type TokenSet = { [key: string]: TokenSet | string | number | undefined };
+
+/**
+ * Recursive partial type.
+ */
+export type RecursivePartial<T> = {
+  [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
+};
 
 export interface Tokens {
-  body: ColorTokenSet & TokenSetType;
-  [key: string]: TokenSetType;
+  body: ColorTokenSet & TokenSet;
+  [key: string]: TokenSet;
 }
 
 /**
@@ -85,18 +91,5 @@ export interface Theme extends IPartialTheme {
  * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
  */
 export interface PartialTheme extends Omit<Theme, 'tokens'> {
-  tokens?: Partial<Tokens>;
-}
-
-/**
- * Typing containing the definition for the `style` and `tokens` props that will be extended for the calculation of the
- * style prop.
- */
-export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
-  style?: React.CSSProperties;
-  tokens?: TTokens;
-}
-
-export interface StyleOptions<TProps> {
-  slotProps: ((props: TProps) => Record<string, object>)[];
+  tokens?: RecursivePartial<Tokens>;
 }

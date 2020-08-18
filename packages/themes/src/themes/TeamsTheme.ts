@@ -1,4 +1,4 @@
-import { PartialTheme } from './types';
+import { PartialTheme } from '../types';
 
 export const TeamsTheme: PartialTheme = {
   tokens: {

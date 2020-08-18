@@ -7,23 +7,127 @@
 import { IPartialTheme } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
-// Warning: (ae-forgotten-export) The symbol "Theme" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export type ButtonTokenSet = ColorTokenSet & {
+    size: {
+        smallest: string;
+        smaller: string;
+        small: string;
+        regular: string;
+        large: string;
+        larger: string;
+        largest: string;
+    };
+    padding: string;
+    margin: string;
+    height: string;
+    minHeight: string;
+    width: string;
+    contentGap: string;
+    borderRadius: string;
+    borderWidth: string;
+    boxShadow: string;
+    iconSize: string | number;
+    transition: string;
+    dividerLength: string;
+    dividerThickness: string;
+    fontFamily: string;
+    fontSize: string | number;
+    fontWeight: string | number;
+};
+
+// @public
+export type ColorTokens = Partial<{
+    background: string;
+    contentColor: string;
+    subTextColor: string;
+    linkColor: string;
+    iconColor: string;
+    borderColor: string;
+    dividerColor: string;
+    focusColor: string;
+    focusInnerColor: string;
+    opacity: string;
+}>;
+
+// @public (undocumented)
+export type ColorTokenSet = ColorTokens & ColorTokenStates;
+
+// @public
+export type ColorTokenStates = Partial<{
+    hovered: ColorTokens;
+    pressed: ColorTokens;
+    disabled: ColorTokens;
+    checked: ColorTokens;
+    checkedHovered: ColorTokens;
+    checkedPressed: ColorTokens;
+}>;
+
 // @public
 export const createDefaultTheme: () => Theme;
 
 // @public (undocumented)
+export const defaultButtonTokens: RecursivePartial<ButtonTokenSet>;
+
+// @public
+export const defaultTokens: Tokens;
+
+// @public (undocumented)
 export const FluentTheme: Theme;
 
-// Warning: (ae-forgotten-export) The symbol "Tokens" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export type FontTokens = Partial<{
+    fontFamily: string;
+    fontSize: string;
+    fontWeight: string;
+}>;
+
+// @public
+export function getButtonTokensFromCompatTheme(theme: Theme): RecursivePartial<ButtonTokenSet>;
+
 // @public
 export function getTokens(theme: Theme): Tokens;
 
-// Warning: (ae-forgotten-export) The symbol "PartialTheme" needs to be exported by the entry point index.d.ts
-//
+// @public
+export interface PartialTheme extends Omit<Theme, 'tokens'> {
+    // (undocumented)
+    tokens?: RecursivePartial<Tokens>;
+}
+
+// @public
+export type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
+};
+
 // @public (undocumented)
 export const TeamsTheme: PartialTheme;
+
+// @public
+export interface Theme extends IPartialTheme {
+    // (undocumented)
+    components?: {
+        [componentName: string]: {
+            styles?: IStyleFunctionOrObject<any, any>;
+        };
+    };
+    // (undocumented)
+    stylesheets?: string[];
+    // (undocumented)
+    tokens?: Tokens;
+}
+
+// @public (undocumented)
+export interface Tokens {
+    // (undocumented)
+    [key: string]: TokenSet;
+    // (undocumented)
+    body: ColorTokenSet & TokenSet;
+}
+
+// @public
+export type TokenSet = {
+    [key: string]: TokenSet | string | number | undefined;
+};
 
 
 // (No @packageDocumentation comment for this package)

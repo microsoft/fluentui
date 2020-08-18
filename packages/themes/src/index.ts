@@ -1,4 +1,5 @@
-export * from './FluentTheme';
-export * from './TeamsTheme';
+export * from './themes/index';
+export * from './tokens/index';
 export { createDefaultTheme } from './createDefaultTheme';
-export { getTokens } from './getTokens';
+export { getTokens } from './tokens/getTokens';
+export * from './types';

@@ -1,4 +1,4 @@
-import { PartialTheme, Theme } from './types';
+import { PartialTheme, Theme } from '@fluentui/themes';
 import { merge } from '@uifabric/utilities';
 
 /**

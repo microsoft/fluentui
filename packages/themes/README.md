@@ -1,11 +1,16 @@
 # @fluentui/themes
 
-**Themes components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Themes for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
-To import Themes components:
+To import theme and provide the theme down to components:
 
 ```js
-import { ComponentName } from '@fluentui/themes';
+import { FluentTheme } from '@fluentui/themes';
+import { ThemeProvider, Button } from '@fluentui/react';
+
+const App = () => (
+  <ThemeProvider theme={FluentTheme}>
+    <Button />
+  </ThemeProvider>
+);
 ```

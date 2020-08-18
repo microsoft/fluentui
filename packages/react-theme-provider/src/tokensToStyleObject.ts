@@ -1,7 +1,7 @@
-import { TokenSetType } from './types';
+import { TokenSet } from './types';
 
 export const tokensToStyleObject = (
-  tokens?: TokenSetType,
+  tokens?: TokenSet,
   prefix?: string,
   style: React.CSSProperties | undefined = {},
 ): React.CSSProperties => {
@@ -11,7 +11,7 @@ export const tokensToStyleObject = (
       const varValue = tokens[name];
 
       if (varValue && typeof varValue === 'object') {
-        tokensToStyleObject(varValue as { [key: string]: TokenSetType }, varName, style);
+        tokensToStyleObject(varValue as { [key: string]: TokenSet }, varName, style);
       } else {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (style as any)[varName] = varValue;

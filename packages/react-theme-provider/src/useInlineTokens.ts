@@ -1,4 +1,4 @@
-import { TokenSetType } from './types';
+import { TokenSet } from './types';
 import { tokensToStyleObject } from './tokensToStyleObject';
 
 /**
@@ -7,7 +7,7 @@ import { tokensToStyleObject } from './tokensToStyleObject';
  * transform into inline
  * @param prefix - prefix to prepend to variables (e.g. "--button")
  */
-export const useInlineTokens = (draftState: { style?: React.CSSProperties; tokens?: TokenSetType }, prefix: string) => {
+export const useInlineTokens = (draftState: { style?: React.CSSProperties; tokens?: TokenSet }, prefix: string) => {
   const { tokens, style } = draftState;
 
   if (tokens) {

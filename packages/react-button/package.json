@@ -51,6 +51,7 @@
     "@fluentui/keyboard-key": "^0.2.10",
     "@fluentui/react-icons": "^0.2.0",
     "@fluentui/react-theme-provider": "^0.8.0",
+    "@fluentui/themes": "^0.1.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/react-hooks": "^7.9.0",
     "@uifabric/set-version": "^7.0.21",

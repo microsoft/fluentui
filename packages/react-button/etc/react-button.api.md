@@ -5,9 +5,10 @@
 ```ts
 
 import { BaseSlots } from '@fluentui/react-compose';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
+import { ButtonTokenSet } from '@fluentui/themes';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
+import { RecursivePartial } from '@fluentui/themes';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { SlotProps } from '@fluentui/react-compose';
 
@@ -54,39 +55,7 @@ export interface ButtonState extends ButtonProps {
     buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
-// @public (undocumented)
-export type ButtonTokenSet = ColorTokenSet & {
-    padding: string;
-    margin: string;
-    height: string;
-    minWidth: string;
-    maxWidth: string;
-    minHeight: string;
-    contentGap: string;
-    iconSize: string;
-    borderRadius: string;
-    borderWidth: string;
-    boxShadow: string;
-    width: string;
-    size: {
-        smallest: string;
-        smaller: string;
-        small: string;
-        regular: string;
-        large: string;
-        larger: string;
-        largest: string;
-    };
-    transform: string;
-    transition: string;
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-    pressed: {
-        transform: string;
-        transition: string;
-    };
-};
+export { ButtonTokenSet }
 
 // @public (undocumented)
 export interface CheckedState {
@@ -143,6 +112,8 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokenSet;
+
+export { RecursivePartial }
 
 // @public (undocumented)
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
@@ -240,10 +211,6 @@ export const useToggleButton: (props: ToggleButtonProps, ref: import("react").Re
 // @public (undocumented)
 export const useToggleButtonClasses: (state: Record<string, any>) => void;
 
-
-// Warnings were encountered during analysis:
-//
-// lib/components/Button/Button.types.d.ts:65:5 - (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
