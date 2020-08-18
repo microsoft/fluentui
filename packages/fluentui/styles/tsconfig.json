@@ -2,7 +2,11 @@
   "extends": "../../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
     "composite": true,
-    "outDir": "dist/dts"
+    "outDir": "dist/dts",
+    "paths": {
+      "@uifabric/build": ["scripts"],
+      "@fluentui/*": ["packages/fluentui/*/src"]
+    }
   },
   "include": ["src", "test"],
   "references": []
