@@ -276,6 +276,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         overflowProps={this.props.legendsOverflowProps}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        {...this.props.legendProps}
       />
     );
   };
