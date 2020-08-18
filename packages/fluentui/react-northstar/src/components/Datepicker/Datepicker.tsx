@@ -3,7 +3,6 @@ import {
   DateRangeType,
   DayOfWeek,
   FirstWeekOfYear,
-  isRestrictedDate,
   DEFAULT_CALENDAR_STRINGS,
   IDayGridOptions,
   ICalendarStrings,
@@ -35,6 +34,7 @@ import { DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
+import { validateDate } from './validateDate';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
@@ -123,19 +123,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const [error, setError] = React.useState<string>(() =>
     props.required && !selectedDate ? props.isRequiredErrorMessage : '',
   );
-
-  const validateDate = (futureSelectedDate: Date, futureFormattedDate: string): string => {
-    if (futureSelectedDate) {
-      if (isRestrictedDate(futureSelectedDate, calendarOptions)) {
-        return props.isOutOfBoundsErrorMessage;
-      }
-    } else if (futureFormattedDate) {
-      return props.invalidInputErrorMessage;
-    } else if (props.required && !futureSelectedDate) {
-      return props.isRequiredErrorMessage;
-    }
-    return '';
-  };
 
   const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
 
@@ -241,7 +228,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const onInputChange = (e, target: { value: string }) => {
     const parsedDate = props.parseDate(target.value);
-    const futureError = validateDate(parsedDate, target.value);
+    const futureError = validateDate(parsedDate, target.value, calendarOptions, dateFormatting, props.required);
     setError(futureError);
     setFormattedDate(target.value);
     if (!futureError && !!parsedDate) {
@@ -265,7 +252,13 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const onInputBlur = e => {
     if (props.autoCorrectManualInput && !!error) {
       const futureFormattedDate = valueFormatter(selectedDate);
-      const futureError = validateDate(selectedDate, futureFormattedDate);
+      const futureError = validateDate(
+        selectedDate,
+        futureFormattedDate,
+        calendarOptions,
+        dateFormatting,
+        props.required,
+      );
       setError(futureError);
       setFormattedDate(futureFormattedDate);
       if (!!futureError) {
