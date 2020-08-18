@@ -18,14 +18,14 @@ const imageUrl = 'http://www.fillmurray.com/192/192';
 export const AvatarExamples = () => (
   <div>
     <StoryExample title="Round with icon">
-      <Avatar size={20} icon={<CatIcon />} />
-      <Avatar size={24} icon={<CalendarIcon />} />
-      <Avatar size={28} icon={<RoomIcon />} />
-      <Avatar />
-      <Avatar size={48} icon={<TelemarketerIcon />} />
-      <Avatar size={64} icon={<IDBadgeIcon />} />
-      <Avatar size={96} icon={<GroupIcon />} />
-      <Avatar size={128} />
+      <Avatar size={20} icon={<CatIcon />} badge="success" />
+      <Avatar size={24} icon={<CalendarIcon />} badge="success" />
+      <Avatar size={28} icon={<RoomIcon />} badge="success" />
+      <Avatar badge="success" />
+      <Avatar size={48} icon={<TelemarketerIcon />} name="(206) 555-0123" badge="error" />
+      <Avatar size={64} icon={<IDBadgeIcon />} badge="warning" />
+      <Avatar size={96} icon={<GroupIcon />} badge="warning" />
+      <Avatar size={128} badge="warning" />
     </StoryExample>
     <StoryExample title="Round with initials">
       <Avatar size={20} name="John Doe" badge="success" />
