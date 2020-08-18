@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import { classNamesFunction, find, getNativeProps, divProperties } from '../../Utilities';
-import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
+import { classNamesFunction, find, getNativeProps, divProperties, IRefObject } from '../../Utilities';
+import {
+  IChoiceGroupOption,
+  IChoiceGroupProps,
+  IChoiceGroupStyleProps,
+  IChoiceGroupStyles,
+  IChoiceGroup,
+} from './ChoiceGroup.types';
 import { IChoiceGroupOptionProps } from './ChoiceGroupOption/ChoiceGroupOption.types';
 import { ChoiceGroupOption } from './ChoiceGroupOption/index';
 import { useId, useControllableValue, useWarnings, useConstCallback } from '@uifabric/react-hooks';
@@ -15,30 +21,34 @@ const getOptionId = (option: IChoiceGroupOption, id: string): string => {
 const getCheckedOption = (options: IChoiceGroupOption[], keyChecked: string | number) =>
   find(options, (value: IChoiceGroupOption) => value.key === keyChecked);
 
-const useComponentRef = (props: IChoiceGroupProps, keyChecked: string | number | undefined, id: string) => {
+const useComponentRef = (
+  options: IChoiceGroupOption[],
+  keyChecked: string | number | undefined,
+  id: string,
+  componentRef?: IRefObject<IChoiceGroup>,
+) => {
   React.useImperativeHandle(
-    props.componentRef,
+    componentRef,
     () => ({
       get checkedOption() {
-        const { options = [] } = props;
         return getCheckedOption(options, keyChecked!);
       },
       focus() {
-        const { options = [] } = props;
         const optionToFocus = getCheckedOption(options, keyChecked!) || options.filter(option => !option.disabled)[0];
         const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
+
         if (elementToFocus) {
           elementToFocus.focus();
         }
       },
     }),
-    [props, keyChecked, id],
+    [options, keyChecked, id],
   );
 };
 
 function useDebugWarnings(props: IChoiceGroupProps) {
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
     useWarnings({
       name: 'Checkbox',
       props,
@@ -54,10 +64,21 @@ function useDebugWarnings(props: IChoiceGroupProps) {
  */
 export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
   (props: IChoiceGroupProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const { className, theme, styles, options = [], label, required, disabled, name, defaultSelectedKey } = props;
+    const {
+      className,
+      theme,
+      styles,
+      options = [],
+      label,
+      required,
+      disabled,
+      name,
+      defaultSelectedKey,
+      componentRef,
+      onChange,
+    } = props;
     const id = useId('ChoiceGroup');
-    const choiceGroupLabelId = useId('ChoiceGroupLabel');
-    const labelId = id + '-label';
+    const labelId = useId('ChoiceGroupLabel');
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, [
       'onChange',
@@ -77,7 +98,7 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
     const [keyFocused, setKeyFocused] = React.useState<string | number>();
 
     useDebugWarnings(props);
-    useComponentRef(props, keyChecked, id);
+    useComponentRef(options, keyChecked, id, componentRef);
 
     const onFocus = useConstCallback((ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOptionProps) => {
       setKeyFocused(option.itemKey);
@@ -87,19 +108,18 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
       setKeyFocused(undefined);
     });
 
-    const onOptionChange = useConstCallback(
+    const onOptionChange = React.useCallback(
       (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOptionProps) => {
-        const { onChange } = props;
-
         setKeyChecked(option.itemKey);
 
         if (onChange) {
           onChange(
             evt,
-            find(props.options || [], (value: IChoiceGroupOption) => value.key === option.itemKey),
+            find(options || [], (value: IChoiceGroupOption) => value.key === option.itemKey),
           );
         }
       },
+      [onChange, options, setKeyChecked],
     );
 
     return (
@@ -112,17 +132,6 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
           )}
           <div className={classNames.flexContainer}>
             {options.map((option: IChoiceGroupOption) => {
-              const innerOptionProps = {
-                ...option,
-                focused: option.key === keyFocused,
-                checked: option.key === keyChecked,
-                disabled: option.disabled || disabled,
-                id: getOptionId(option, id),
-                labelId: `${choiceGroupLabelId}-${option.key}`,
-                name: name || id,
-                required,
-              };
-
               return (
                 <ChoiceGroupOption
                   key={option.key}
@@ -130,7 +139,14 @@ export const ChoiceGroupBase: React.FunctionComponent = React.forwardRef(
                   onBlur={onBlur}
                   onFocus={onFocus}
                   onChange={onOptionChange}
-                  {...innerOptionProps}
+                  {...option}
+                  focused={option.key === keyFocused}
+                  checked={option.key === keyChecked}
+                  disabled={option.disabled || disabled}
+                  id={getOptionId(option, id)}
+                  labelId={option.labelId || `${labelId}-${option.key}`}
+                  name={name || id}
+                  required={required}
                 />
               );
             })}
