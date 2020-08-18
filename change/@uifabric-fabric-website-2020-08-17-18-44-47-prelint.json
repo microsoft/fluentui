@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update web components to use latest version of fast-element (#14573)",
+  "packageName": "@uifabric/fabric-website",
+  "email": "kchau@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-18T01:43:02.681Z"
+}
