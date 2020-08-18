@@ -4,6 +4,7 @@
     {
       "name": "Renaming 'isDisabled' to 'disabled' in Dropdown",
       "type": "renameProp",
+      "version": "100000",
       "options": {
         "from": {
           "importName": "Dropdown",
@@ -26,6 +27,19 @@
         },
         "to": {
           "replacementName": "checked"
+        }
+      }
+    },
+    {
+      "name": "Repathing imports from office to fluent",
+      "type": "repathImport",
+      "options": {
+        "from": {
+          "searchString": "/^office\\-ui\\-fabric\\-react/",
+          "isRegex": true
+        },
+        "to": {
+          "replacementValue": "@fluentui/react"
         }
       }
     }
