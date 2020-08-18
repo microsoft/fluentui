@@ -47,6 +47,22 @@ const _allInstances: {
 
 const _outerZones: Map<Window, Set<FocusZone>> = new Map<Window, Set<FocusZone>>();
 
+const outZones = {
+  register(window: Window, FZ: FocusZone) {
+    if (_outerZones.get(window)) {
+      _outerZones.get(window)?.add(FZ);
+    } else {
+      _outerZones.set(window, new Set([FZ]));
+    }
+  },
+  unregister(window: Window, FZ: FocusZone) {
+    _outerZones.get(window)?.delete(FZ);
+  },
+  getOutZone(window: Window) {
+    return _outerZones.get(window);
+  },
+};
+
 interface Point {
   left: number;
   top: number;
@@ -60,7 +76,7 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
  */
 function _onKeyDownCapture(this: Window, ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
-    _outerZones.get(this)?.forEach(zone => zone.updateTabIndexes());
+    outZones.getOutZone(this)?.forEach(zone => zone.updateTabIndexes());
   }
 }
 
@@ -100,10 +116,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
   static displayName = 'FocusZone';
   static className = 'ms-FocusZone';
 
-  /** Used for testing purposes only. */
-  static getOuterZones(wdw: Window): number {
-    return _outerZones.get(wdw)?.size || 0;
-  }
+  static outZones = outZones;
 
   _root: { current: HTMLElement | null } = { current: null };
   _id: string;
@@ -169,13 +182,9 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     }
 
     if (!this._isInnerZone) {
-      if (_outerZones.get(this.windowElement!)) {
-        _outerZones.get(this.windowElement!)?.add(this);
-      } else {
-        _outerZones.set(this.windowElement!, new Set([this]));
-      }
+      outZones.register(this.windowElement!, this);
 
-      if (this.windowElement && _outerZones.get(this.windowElement)?.size === 1) {
+      if (this.windowElement && outZones.getOutZone(this.windowElement)?.size === 1) {
         this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
       }
     }
@@ -226,9 +235,9 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     delete _allInstances[this._id];
 
     if (!this._isInnerZone) {
-      _outerZones.get(this.windowElement!)?.delete(this);
+      outZones.unregister(this.windowElement!, this);
 
-      if (this.windowElement && _outerZones.get(this.windowElement)?.size === 0) {
+      if (this.windowElement && outZones.getOutZone(this.windowElement)?.size === 0) {
         this.windowElement.removeEventListener('keydown', _onKeyDownCapture, true);
       }
     }

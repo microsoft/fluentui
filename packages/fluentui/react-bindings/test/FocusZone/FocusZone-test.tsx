@@ -1508,7 +1508,7 @@ describe('FocusZone', () => {
   });
 
   it('only adds outerzones to be updated for tab changes', () => {
-    const activeZones = FocusZone.getOuterZones(window);
+    const activeZones = FocusZone.outZones.getOutZone(window)?.size || 0;
 
     host = document.createElement('div');
 
@@ -1522,11 +1522,11 @@ describe('FocusZone', () => {
       host,
     );
 
-    expect(FocusZone.getOuterZones(window)).toEqual(activeZones + 1);
+    expect(FocusZone.outZones.getOutZone(window)?.size).toEqual(activeZones + 1);
 
     ReactDOM.unmountComponentAtNode(host);
 
-    expect(FocusZone.getOuterZones(window)).toEqual(activeZones);
+    expect(FocusZone.outZones.getOutZone(window)?.size).toEqual(activeZones);
   });
 
   describe('restores focus', () => {
