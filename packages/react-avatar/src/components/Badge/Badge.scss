@@ -31,7 +31,6 @@
   justify-content: center;
   vertical-align: middle;
   border-radius: var(--badge-borderRadius);
-  clip-path: var(--badge-clipPath);
   box-shadow: 0 0 0 var(--badge-borderWidth, calc(var(--badge-size) / 8)) var(--badge-borderColor);
   background-color: var(--badge-color);
   color: var(--badge-iconColor);

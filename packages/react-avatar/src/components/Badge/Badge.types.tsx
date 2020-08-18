@@ -34,7 +34,6 @@ export type BadgeTokens = {
   borderColor?: string;
   borderWidth?: string;
   borderRadius?: string;
-  clipPath?: string;
   color?: string;
   iconColor?: string;
 };
