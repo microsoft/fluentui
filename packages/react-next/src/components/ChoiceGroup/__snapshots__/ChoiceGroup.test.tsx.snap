@@ -447,7 +447,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
       }
 >
   <div
-    aria-labelledby="ChoiceGroup0-label"
+    aria-labelledby="ChoiceGroupLabel1"
     role="radiogroup"
   >
     <label
@@ -479,7 +479,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
             content: ' *';
             padding-right: 12px;
           }
-      id="ChoiceGroup0-label"
+      id="ChoiceGroupLabel1"
     >
       test label
     </label>
