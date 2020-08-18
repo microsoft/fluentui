@@ -11,12 +11,12 @@ const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
 const getBadgeSize = (size: NumericSizeValue | undefined): SizeValue | undefined => {
   if (size === undefined) return undefined;
-  if (size <= 20) return 'smallest';
-  if (size <= 24) return 'smaller';
-  if (size <= 28) return 'small';
-  if (size <= 32) return 'medium';
-  if (size <= 44) return 'large';
-  if (size <= 64) return 'larger';
+  if (size < 24) return 'smallest';
+  if (size < 28) return 'smaller';
+  if (size < 52) return 'small';
+  if (size < 72) return 'medium';
+  if (size < 96) return 'large';
+  if (size < 120) return 'larger';
   return 'largest';
 };
 

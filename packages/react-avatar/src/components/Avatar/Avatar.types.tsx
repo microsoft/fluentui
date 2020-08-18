@@ -68,19 +68,15 @@ export type AvatarTokens = {
   /** Border radius */
   borderRadius?: string;
 
-  /** Border radius when the Avatar is square */
-  squareBorderRadius?: string;
-
   /** Font size used by the initials */
   fontSize?: string;
 
   /** Custom clip path for the avatar's image or label */
   clipPath?: string;
 
-  /** Tokens for the badge slot (state indicator) */
-  badge?: {
-    borderColor?: string;
-    borderWidth?: string;
+  /** Square state */
+  square?: {
+    borderRadius?: string;
   };
 };
 

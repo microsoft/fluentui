@@ -21,6 +21,20 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
 
   /** The pre-defined state values which can be consumed directly. */
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';
+
+  /** Style tokens */
+  tokens?: BadgeTokens;
 }
+
+/**
+ * Style tokens for Badge
+ */
+export type BadgeTokens = {
+  size?: string;
+  borderColor?: string;
+  borderWidth?: string;
+  backgroundColor?: string;
+  textColor?: string;
+};
 
 export type BadgeState = BadgeProps;

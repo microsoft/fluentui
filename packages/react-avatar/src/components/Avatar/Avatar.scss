@@ -4,12 +4,8 @@
   --avatar-borderColor: transparent;
   --avatar-borderWidth: 0;
   --avatar-borderRadius: 9999px;
-
-  --avatar-squareBorderRadius: 3px;
+  --avatar-square-borderRadius: 3px;
   --avatar-fill: rgb(232, 232, 232);
-
-  --avatar-badge-borderColor: transparent;
-  --avatar-badge-borderWidth: 2px;
 }
 
 // Root slot
@@ -59,17 +55,16 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  box-shadow: 0 0 0 var(--avatar-badge-borderWidth) var(--avatar-badge-borderColor);
 }
 
 // Modifiers
 ._square {
   .image {
-    border-radius: var(--avatar-squareBorderRadius);
+    border-radius: var(--avatar-square-borderRadius);
   }
 
   .label {
-    border-radius: var(--avatar-squareBorderRadius);
+    border-radius: var(--avatar-square-borderRadius);
   }
 }
 
