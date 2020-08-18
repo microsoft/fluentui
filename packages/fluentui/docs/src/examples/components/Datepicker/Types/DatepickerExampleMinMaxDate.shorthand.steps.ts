@@ -15,7 +15,6 @@ const config: ScreenerTestsConfig = {
         .snapshot('Disabled date is not clickable.')
         .click(`.${datepickerCalendarHeaderActionClassName}:nth-child(1)`)
         .snapshot('Month icon is not clickable.'),
-    ,
   ],
 };
 

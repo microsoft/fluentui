@@ -69,7 +69,7 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
-  onError?: ComponentEventHandler<DatepickerProps & { error: string }>;
+  onDateEntryError?: ComponentEventHandler<DatepickerProps & { error: string }>;
 
   /** Text placeholder for the input field. */
   placeholder?: string;
@@ -246,7 +246,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     if (parsedDate) {
       if (isRestrictedDate(parsedDate, calendarOptions)) {
         setError(props.isOutOfBoundsErrorMessage);
-        _.invoke(props, 'onError', e, { ...props, error: props.isOutOfBoundsErrorMessage });
+        _.invoke(props, 'onDateEntryError', e, { ...props, error: props.isOutOfBoundsErrorMessage });
       } else {
         setError('');
         setSelectedDate(parsedDate);
@@ -254,10 +254,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       }
     } else if (target.value) {
       setError(props.invalidInputErrorMessage);
-      _.invoke(props, 'onError', e, { ...props, error: props.invalidInputErrorMessage });
+      _.invoke(props, 'onDateEntryError', e, { ...props, error: props.invalidInputErrorMessage });
     } else if (props.required && !selectedDate) {
       setError(props.isRequiredErrorMessage);
-      _.invoke(props, 'onError', e, { ...props, error: props.isRequiredErrorMessage });
+      _.invoke(props, 'onDateEntryError', e, { ...props, error: props.isRequiredErrorMessage });
     } else {
       setError('');
     }
@@ -276,13 +276,13 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       if (selectedDate) {
         if (isRestrictedDate(selectedDate, calendarOptions)) {
           setError(props.isOutOfBoundsErrorMessage);
-          _.invoke(props, 'onError', e, { ...props, error: props.isOutOfBoundsErrorMessage });
+          _.invoke(props, 'onDateEntryError', e, { ...props, error: props.isOutOfBoundsErrorMessage });
         } else {
           setError('');
         }
       } else if (props.required) {
         setError(props.isRequiredErrorMessage);
-        _.invoke(props, 'onError', e, { ...props, error: props.isRequiredErrorMessage });
+        _.invoke(props, 'onDateEntryError', e, { ...props, error: props.isRequiredErrorMessage });
       } else {
         setError('');
       }
@@ -347,7 +347,7 @@ Datepicker.propTypes = {
   disabled: PropTypes.bool,
   required: PropTypes.bool,
   onDateChange: PropTypes.func,
-  onError: PropTypes.func,
+  onDateEntryError: PropTypes.func,
   placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
   autoCorrectManualInput: PropTypes.bool,
