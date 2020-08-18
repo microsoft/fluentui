@@ -1,5 +1,5 @@
 import {
-  compose,
+  // compose,
   Button,
   ButtonProps,
   ButtonStylesProps,
@@ -8,11 +8,17 @@ import {
   Provider,
   ButtonContent,
   ButtonContentProps,
-  ShorthandValue,
-  ButtonContentStylesProps,
+  // ShorthandValue,
+  // ButtonContentStylesProps,
+  useButton,
+  useButtonStyles,
+  useTelemetry,
+  Loader,
 } from '@fluentui/react-northstar';
 import { ComponentSlotStylesInput, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import * as React from 'react';
+import { useFluentContext } from '@fluentui/react-bindings';
+import { mergeProps } from '@fluentui/react-compose/lib/next';
 
 //
 // Components
@@ -21,72 +27,123 @@ import * as React from 'react';
 // Adds a custom design term
 //
 
-type TertiaryButtonContentProps = {
-  tertiary?: boolean;
-};
+// type TertiaryButtonContentProps = {
+//   tertiary?: boolean;
+// };
+//
+// type TertiaryButtonContentStylesProps = TertiaryButtonContentProps;
+//
+// type TertiaryButtonProps = {
+//   tertiary?: boolean;
+//   content?: ShorthandValue<ButtonContentProps & TertiaryButtonContentProps>;
+// };
 
-type TertiaryButtonContentStylesProps = TertiaryButtonContentProps;
+// type TertiaryButtonStylesProps = TertiaryButtonProps;
 
-type TertiaryButtonProps = {
-  tertiary?: boolean;
-  content?: ShorthandValue<ButtonContentProps & TertiaryButtonContentProps>;
-};
+type TertiaryButtonProps = ButtonProps & { tertiary?: boolean };
 
-type TertiaryButtonStylesProps = TertiaryButtonProps;
+const TertiaryButton = React.forwardRef<HTMLElement, TertiaryButtonProps>((props, ref) => {
+  const { state, render } = useButton(props, ref);
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry);
+  setStart();
 
-const TertiaryButtonContent = compose<
-  'span',
-  TertiaryButtonContentProps,
-  TertiaryButtonContentStylesProps,
-  ButtonContentProps,
-  {}
->(ButtonContent, {
-  displayName: 'TertiaryButtonContent',
-  mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
-  handledProps: ['tertiary'],
+  const { size, tertiary } = props;
+
+  const { classes, styles: resolvedStyles } = useButtonStyles({
+    props,
+    rtl: context.rtl,
+    displayName: 'TertiaryButton',
+    overrides: {
+      className: 'ui-tertiary-button',
+      stylingTokens: {
+        tertiary,
+      },
+    },
+  });
+
+  mergeProps(state, {
+    className: classes.root,
+    styles: resolvedStyles.root,
+    // TODO: previously icon was rendered as Box
+    icon: {
+      className: classes.icon,
+      styles: resolvedStyles.icon,
+    },
+    loader: {
+      as: Loader,
+      className: classes.loader,
+      styles: resolvedStyles.loader,
+      role: undefined,
+    },
+    children: /* analogous to the `content` slot in v0 */ {
+      as: ButtonContent,
+      size,
+      content: props.content,
+    },
+  });
+
+  const result = render(state);
+  setEnd();
+
+  return result;
 });
 
-const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
-  className: 'ui-tertiary-button',
-  displayName: 'TertiaryButton',
-  mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
-  handledProps: ['tertiary'],
-  slots: { content: TertiaryButtonContent },
-  slotProps: props => ({
-    content: { tertiary: props.tertiary },
-  }),
-});
+//
+//
+// const TertiaryButtonContent = compose<
+//   'span',
+//   TertiaryButtonContentProps,
+//   TertiaryButtonContentStylesProps,
+//   ButtonContentProps,
+//   {}
+// >(ButtonContent, {
+//   displayName: 'TertiaryButtonContent',
+//   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
+//   handledProps: ['tertiary'],
+// });
+//
+// const TertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
+//   className: 'ui-tertiary-button',
+//   displayName: 'TertiaryButton',
+//   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
+//   handledProps: ['tertiary'],
+//   slots: { content: TertiaryButtonContent },
+//   slotProps: props => ({
+//     content: { tertiary: props.tertiary },
+//   }),
+// });
 
 // Adds overrides for a design term
 //
-const CompactTertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(
-  TertiaryButton,
-  {
-    displayName: 'CompactTertiaryButton',
-  },
-);
-
-// Composes custom button
+// const CompactTertiaryButton = compose<'button', TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(
+//   TertiaryButton,
+//   {
+//     displayName: 'CompactTertiaryButton',
+//   },
+// );
 //
+// // Composes custom button
+// //
+//
+// type OverriddenButtonProps = {
+//   fitted?: boolean;
+// };
 
-type OverriddenButtonProps = {
-  fitted?: boolean;
-};
-
-type OverriddenButtonStylesProps = Required<OverriddenButtonProps>;
-
-const OverriddenButton = compose<'button', OverriddenButtonProps, OverriddenButtonStylesProps, ButtonProps, {}>(
-  Button,
-  {
-    className: 'ui-overridden-button',
-    displayName: 'OverriddenButton',
-    mapPropsToStylesProps: props => ({
-      fitted: props.fitted,
-    }),
-    handledProps: ['fitted'],
-    overrideStyles: true,
-  },
-);
+// type OverriddenButtonStylesProps = Required<OverriddenButtonProps>;
+//
+// const OverriddenButton = compose<'button', OverriddenButtonProps, OverriddenButtonStylesProps, ButtonProps, {}>(
+//   Button,
+//   {
+//     className: 'ui-overridden-button',
+//     displayName: 'OverriddenButton',
+//     mapPropsToStylesProps: props => ({
+//       fitted: props.fitted,
+//     }),
+//     handledProps: ['fitted'],
+//     overrideStyles: true,
+//   },
+// );
 
 //
 // Theme
@@ -96,8 +153,8 @@ type ComponentStylesProps = {
   CompactTertiaryButton: ButtonStylesProps & TertiaryButtonProps;
   CompactTertiaryButtonContent: ButtonContentProps;
   TertiaryButton: ButtonStylesProps & TertiaryButtonProps;
-  TertiaryButtonContent: ButtonContentStylesProps & TertiaryButtonContentProps;
-  OverriddenButton: ButtonStylesProps & OverriddenButtonProps;
+  // TertiaryButtonContent: ButtonContentStylesProps & TertiaryButtonContentProps;
+  // OverriddenButton: ButtonStylesProps & OverriddenButtonProps;
 };
 
 type ComponentVariables = {
@@ -130,13 +187,13 @@ const componentStyles: {
       }),
     }),
   },
-  TertiaryButtonContent: {
-    root: ({ props: p, variables: v }) => ({
-      ...(p.tertiary && {
-        fontWeight: v.tertiaryFontWeight,
-      }),
-    }),
-  },
+  // TertiaryButtonContent: {
+  //   root: ({ props: p, variables: v }) => ({
+  //     ...(p.tertiary && {
+  //       fontWeight: v.tertiaryFontWeight,
+  //     }),
+  //   }),
+  // },
   CompactTertiaryButton: {
     root: ({ props: p, variables: v }) => ({
       ...(p.tertiary && {
@@ -150,36 +207,36 @@ const componentStyles: {
     }),
   },
 
-  OverriddenButton: {
-    root: ({ props: p }) => ({
-      backgroundColor: '#c0c1c2',
-      borderRadius: '.28571429rem',
-      border: 'none',
-
-      margin: '0 .25em 0 0',
-      padding: '.78571429em 1.5em .78571429em',
-      minHeight: '1em',
-      outline: 0,
-
-      fontSize: '1rem',
-      fontWeight: 700,
-      fontStyle: 'normal',
-      lineHeight: '1em',
-      textAlign: 'center',
-
-      textDecoration: 'none',
-
-      cursor: 'pointer',
-      display: 'inline-block',
-      verticalAlign: 'baseline',
-
-      ...(p.fitted && { padding: '.78571429em' }),
-      ...(p.primary && {
-        backgroundColor: '#2185d0',
-        color: '#fff',
-      }),
-    }),
-  },
+  // OverriddenButton: {
+  //   root: ({ props: p }) => ({
+  //     backgroundColor: '#c0c1c2',
+  //     borderRadius: '.28571429rem',
+  //     border: 'none',
+  //
+  //     margin: '0 .25em 0 0',
+  //     padding: '.78571429em 1.5em .78571429em',
+  //     minHeight: '1em',
+  //     outline: 0,
+  //
+  //     fontSize: '1rem',
+  //     fontWeight: 700,
+  //     fontStyle: 'normal',
+  //     lineHeight: '1em',
+  //     textAlign: 'center',
+  //
+  //     textDecoration: 'none',
+  //
+  //     cursor: 'pointer',
+  //     display: 'inline-block',
+  //     verticalAlign: 'baseline',
+  //
+  //     ...(p.fitted && { padding: '.78571429em' }),
+  //     ...(p.primary && {
+  //       backgroundColor: '#2185d0',
+  //       color: '#fff',
+  //     }),
+  //   }),
+  // },
 };
 
 const componentVariables: ComponentVariablesInput = {
@@ -221,16 +278,16 @@ const ButtonExample = () => (
 
     <Header as="h3" content="A tertiary button" description="Provides overrides for a design term" />
     <Flex>
-      <CompactTertiaryButton content="Click here" />
-      <CompactTertiaryButton content="Click here" tertiary />
+      {/*<CompactTertiaryButton content="Click here" />*/}
+      {/*<CompactTertiaryButton content="Click here" tertiary />*/}
     </Flex>
 
     <Header as="h3" content="An overridden button" description="All styles will be empty" />
     <Flex>
-      <OverriddenButton content="Overridden" />
-      <OverriddenButton content="With `fitted`" fitted />
-      <OverriddenButton content="With `primary`" primary />
-      <OverriddenButton content="With `fitted` & `primary`" fitted primary />
+      {/*<OverriddenButton content="Overridden" />*/}
+      {/*<OverriddenButton content="With `fitted`" fitted />*/}
+      {/*<OverriddenButton content="With `primary`" primary />*/}
+      {/*<OverriddenButton content="With `fitted` & `primary`" fitted primary />*/}
     </Flex>
   </Provider>
 );

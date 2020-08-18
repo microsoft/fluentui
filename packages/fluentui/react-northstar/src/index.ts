@@ -43,6 +43,8 @@ export * from './components/Box/Box';
 export * from './components/Button/Button';
 export * from './components/Button/ButtonGroup';
 export * from './components/Button/ButtonContent';
+export * from './components/Button/useButtonStyles';
+export { useButton } from '@fluentui/react-button/src/components/Button/useButton';
 
 export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';

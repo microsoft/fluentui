@@ -1,6 +1,6 @@
 import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
 import { mergeProps } from '@fluentui/react-compose/lib/next';
-import { ComponentWithAs, ShorthandConfig, useFluentContext, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { ComponentWithAs, ShorthandConfig, useFluentContext, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -19,6 +19,7 @@ import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonContent, ButtonContentProps } from './ButtonContent';
 import { useButton } from '@fluentui/react-button/src/components/Button/useButton';
+import { useButtonStyles } from './useButtonStyles';
 
 export interface ButtonProps
   extends UIComponentProps,
@@ -102,26 +103,9 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
   const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry);
   setStart();
 
-  const { content, disabled, iconPosition, loading, text, primary, inverted, size, iconOnly, fluid, circular } = props;
+  const { size } = props;
 
-  const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(Button.displayName, {
-    className: buttonClassName,
-    mapPropsToStyles: () => ({
-      text,
-      primary,
-      disabled,
-      circular,
-      size,
-      loading,
-      inverted,
-      iconOnly,
-      iconPosition,
-      fluid,
-      hasContent: !!content,
-    }),
-    rtl: context.rtl,
-    unstable_props: props,
-  });
+  const { classes, styles: resolvedStyles } = useButtonStyles({ props, rtl: context.rtl });
 
   mergeProps(state, {
     className: classes.root,

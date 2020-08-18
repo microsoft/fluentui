@@ -14,6 +14,7 @@
     "@fluentui/react-builder": "^0.51.0",
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-component-ref": "^0.51.0",
+    "@fluentui/react-compose": "^0.16.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar": "^0.51.0",
     "@fluentui/react-northstar-emotion-renderer": "^0.51.0",
