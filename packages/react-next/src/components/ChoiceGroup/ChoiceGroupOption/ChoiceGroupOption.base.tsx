@@ -59,7 +59,9 @@ export const ChoiceGroupOptionBase = (props: IChoiceGroupOptionProps) => {
   const renderField = (): JSX.Element => {
     const { imageAlt = '', selectedImageSrc } = props;
 
-    const onRenderComposedLabel = composeRenderFunction(props.onRenderLabel, onRenderLabel);
+    const onRenderComposedLabel = props.onRenderLabel
+      ? composeRenderFunction(props.onRenderLabel, onRenderLabel)
+      : onRenderLabel;
 
     const label = onRenderComposedLabel(props);
 
