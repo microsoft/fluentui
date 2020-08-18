@@ -18,7 +18,8 @@ import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 import { copyToClipboard } from '../SelectedItemsList/index';
-import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
