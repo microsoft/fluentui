@@ -2170,7 +2170,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _onAutofillClick = (): void => {
     const { disabled, allowFreeform } = this.props;
-
     if (allowFreeform && !disabled) {
       this.focus(this.state.isOpen || this._processingTouch);
     } else {

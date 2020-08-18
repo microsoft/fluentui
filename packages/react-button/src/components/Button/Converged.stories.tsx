@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from './Button';
-import { mergeThemes, ThemeProvider, Theme, PartialTheme } from '@fluentui/react-theme-provider';
+import { mergeThemes, ThemeProvider, PartialTheme } from '@fluentui/react-theme-provider';
 import { UploadIcon } from '@fluentui/react-icons';
 import { Stack, Text, ColorPicker, IColor } from 'office-ui-fabric-react';
 
@@ -80,7 +80,7 @@ const getThemes = (accent: string) => {
   return { lightTheme, darkTheme };
 };
 
-const ExampleBox = ({ title, theme }: { title: string; theme: Theme }) => (
+const ExampleBox = ({ title, theme }: { title: string; theme: PartialTheme }) => (
   <ThemeProvider theme={theme} style={{ padding: 20 }}>
     <Stack
       tokens={{

@@ -31,7 +31,6 @@ export function getImportsByPath(file: SourceFile, pathOrRegex: string | RegExp)
       return pathOrRegex.test(cond.getModuleSpecifierValue());
     });
   }
-
   return imps;
 }
 

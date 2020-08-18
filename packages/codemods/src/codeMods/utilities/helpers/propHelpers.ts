@@ -1,3 +1,4 @@
+/* eslint-disable no-throw-literal */
 import {
   ts,
   Node,
@@ -29,14 +30,16 @@ export function renamePropInSpread(
         const firstIdentifier = attribute.getFirstChildByKind(SyntaxKind.Identifier);
         const propertyAccess = attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
         if (!attribute || (!firstIdentifier && !propertyAccess)) {
-          return;
+          throw 'Invalid spread prop. Could access internal identifiers successfully.';
         }
+        /* SPREADISIDENTIFIER tells us whether we should look at an Identifier or a P.A.E. node. */
         const spreadIsIdentifier = firstIdentifier !== undefined;
         /* Verify this attribute contains the name of our desired prop. */
         if (spreadContains(toRename, spreadIsIdentifier, attribute)) {
           /* Step 3: Create names for your new potential objects. */
+          const componentName = element.getFirstChildByKind(SyntaxKind.Identifier)?.getText();
           const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
-          let newSpreadName = '__migProps';
+          let newSpreadName = `__mig${componentName}Props`;
           const newMapName = '__migEnumMap';
           /* Metadata in case we need to reacquire the current element (AST modification). */
           let newJSXFlag = false;
@@ -53,7 +56,6 @@ export function renamePropInSpread(
               blockContainer = containerMaybe.value;
               newJSXFlag = true;
             } else {
-              // eslint-disable-next-line no-throw-literal
               throw 'attempt to create a new block around prop failed.';
             }
           }
@@ -61,14 +63,12 @@ export function renamePropInSpread(
           /* Step 5: Get the parent of BLOCKCONTAINER so that we can insert our own variable statements. */
           const parentContainer = blockContainer!.getParentIfKind(SyntaxKind.Block);
           if (parentContainer === undefined) {
-            // eslint-disable-next-line no-throw-literal
             throw 'unable to get parent container from block';
           }
 
           /* Step 6: Get the index of BLOCKCONTAINER within PARENTCONTAINER that we'll use to insert our variables. */
           const insertIndex = blockContainer!.getChildIndex();
           if (insertIndex === undefined) {
-            // eslint-disable-next-line no-throw-literal
             throw 'unable to find child index';
           }
 
@@ -121,6 +121,7 @@ export function renamePropInSpread(
               }
             }
           } else {
+            /* If a viable spread prop wasn't found, make a new one. */
             if (!propAlreadyExists(parentContainer, toRename)) {
               parentContainer.insertVariableStatement(
                 insertIndex,

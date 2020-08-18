@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "update semantic slots",
+  "packageName": "@uifabric/example-app-base",
+  "email": "phkuo@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-18T19:18:44.221Z"
+}

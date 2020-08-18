@@ -462,55 +462,65 @@ describe('ComboBox', () => {
   });
 
   it('Cannot expand the menu when clicking on the input while disabled', () => {
-    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS2} disabled={true} />);
-    wrapper.find('input').simulate('click');
-    expect(wrapper.find('.is-opened').length).toEqual(0);
+    safeCreate(<ComboBox options={DEFAULT_OPTIONS2} disabled={true} />, container => {
+      const input = container.root.findByType('input');
+      input.props.onClick({});
+      expect(findNodeWithClass(container, 'is-opened', true).length).toEqual(0);
+    });
   });
 
   it('Cannot expand the menu when clicking on the button while disabled', () => {
-    wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />);
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const buttonElement = wrapper.find('button');
-    buttonElement.simulate('click');
-    expect(comboBoxRoot.find('.is-opened').length).toEqual(0);
+    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />, container => {
+      const buttonElement = container.root.findByType('button');
+      buttonElement.props.onClick({});
+      expect(findNodeWithClass(container, 'is-opened', true).length).toEqual(0);
+    });
   });
 
   it('Call onMenuOpened when clicking on the button', () => {
     const onMenuOpenMock = jest.fn();
 
-    wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />);
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const buttonElement = comboBoxRoot.find('button');
-    buttonElement.simulate('click');
-    expect(onMenuOpenMock.mock.calls.length).toBe(1);
+    safeCreate(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />,
+      container => {
+        const buttonElement = container.root.findByType('button');
+        buttonElement.props.onClick({});
+        expect(onMenuOpenMock.mock.calls.length).toBe(1);
+      },
+    );
   });
 
   it('Opens on focus when openOnKeyboardFocus is true', () => {
     const onMenuOpenMock = jest.fn();
 
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" openOnKeyboardFocus options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />,
+      container => {
+        const input = container.root.findByType('input');
+
+        input.props.onFocus?.();
+        input.props.onKeyUp?.({});
+        expect(onMenuOpenMock.mock.calls.length).toBe(1);
+      },
     );
-    const comboBoxRoot = wrapper.find('.ms-ComboBox-Input').find('input');
-    comboBoxRoot.simulate('focus');
-    comboBoxRoot.simulate('keyup');
-    expect(onMenuOpenMock.mock.calls.length).toBe(1);
   });
 
   it('Call onMenuOpened when touch start on the input', () => {
-    wrapper = mount(
+    safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={returnUndefined} allowFreeform={true} />,
+      container => {
+        const input = container.root.findByType('input');
+
+        input.props.onTouchStart?.();
+        input.props.onClick?.();
+
+        expect(findNodeWithClass(container, 'is-open', true).length).toEqual(1);
+      },
+      {
+        createNodeMock: element =>
+          element.type === 'div' ? { addEventListener: jest.fn(), removeEventListener: jest.fn() } : undefined,
+      },
     );
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement = comboBoxRoot.find('input');
-
-    // in a normal scenario, when we do a touchstart we would also cause a
-    // click event to fire. This doesn't happen in the simulator so we're
-    // manually adding this in.
-    inputElement.simulate('touchstart');
-    inputElement.simulate('click');
-
-    expect(wrapper.find('.is-open').length).toEqual(1);
   });
 
   it('onPendingValueChanged triggers for all indexes', () => {
@@ -520,20 +530,23 @@ describe('ComboBox', () => {
         indexSeen.push(index);
       }
     };
-    wrapper = mount(
+    safeCreate(
       <ComboBox
         options={DEFAULT_OPTIONS}
         defaultSelectedKey="1"
         allowFreeform={true}
         onPendingValueChanged={pendingValueChangedHandler}
       />,
+      container => {
+        const input = container.root.findByType('input');
+
+        simulateInputEvent(input, 'f');
+        simulateKeydown(input, KeyCodes.down);
+        simulateKeydown(input, KeyCodes.up);
+        expect(indexSeen).toContain(0);
+        expect(indexSeen).toContain(1);
+      },
     );
-    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
-    inputElement.simulate('input', { target: { value: 'f' } });
-    inputElement.simulate('keydown', { which: KeyCodes.down });
-    inputElement.simulate('keydown', { which: KeyCodes.up });
-    expect(indexSeen).toContain(0);
-    expect(indexSeen).toContain(1);
   });
 
   it('onPendingValueChanged is called with an empty string when the input is cleared', () => {
@@ -542,30 +555,18 @@ describe('ComboBox', () => {
       changedValue = value;
     };
 
-    const baseNode = document.createElement('div');
-    document.body.appendChild(baseNode);
-
-    const component = ReactDOM.render(
+    safeCreate(
       <ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} onPendingValueChanged={pendingValueChangedHandler} />,
-      baseNode,
+      container => {
+        const input = container.root.findByType('input');
+
+        simulateInputEvent(input, 'a');
+        expect(changedValue).toEqual('a');
+
+        simulateInputEvent(input, '');
+        expect(changedValue).toEqual('');
+      },
     );
-
-    const input = (ReactDOM.findDOMNode((component as unknown) as React.ReactInstance) as Element).querySelector(
-      'input',
-    ) as HTMLInputElement;
-    if (input === null) {
-      throw new Error('ComboBox input element is null');
-    }
-
-    // Simulate typing one character into the ComboBox input
-    input.value = 'a';
-    ReactTestUtils.Simulate.input(input);
-    expect(changedValue).toEqual('a');
-
-    // Simulate clearing the ComboBox input
-    input.value = '';
-    ReactTestUtils.Simulate.input(input);
-    expect(changedValue).toEqual('');
   });
 
   // it('suggestedDisplayValue is called undefined when the selected input is cleared', () => {
@@ -585,27 +586,31 @@ describe('ComboBox', () => {
   // });
 
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
-    let updatedOption;
-    let updatedIndex;
+    let updatedOption: IComboBoxOption | undefined;
+    let updatedIndex: number | undefined;
     const onChange = jest.fn((event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => {
       updatedOption = option;
       updatedIndex = index;
     });
     const initialOption = { key: '1', text: 'Text' };
 
-    wrapper = mount(<ComboBox options={[initialOption]} autoComplete="on" allowFreeform={true} onChange={onChange} />);
-    const inputElement: InputElementWrapper = wrapper.find('input');
-    inputElement.simulate('input', { target: { value: 't' } });
-    inputElement.simulate('input', { target: { value: 'e' } });
-    inputElement.simulate('input', { target: { value: 'x' } });
-    inputElement.simulate('input', { target: { value: 't' } });
-    inputElement.simulate('keydown', { which: KeyCodes.enter });
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(updatedOption).toEqual(initialOption);
-    expect(updatedIndex).toEqual(0);
+    safeCreate(
+      <ComboBox options={[initialOption]} autoComplete="on" allowFreeform={true} onChange={onChange} />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, 't');
+        simulateInputEvent(input, 'te');
+        simulateInputEvent(input, 'tex');
+        simulateInputEvent(input, 'text');
+        simulateKeydown(input, KeyCodes.enter);
 
-    wrapper.update();
-    expect(wrapper.find('.ms-ComboBox input').props().value).toEqual('Text');
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(updatedOption).toEqual(initialOption);
+        expect(updatedIndex).toEqual(0);
+
+        expect(input.props.value).toEqual('Text');
+      },
+    );
   });
 
   it('merges callout classNames', () => {
@@ -629,8 +634,8 @@ describe('ComboBox', () => {
   });
 
   it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
-    let updatedText;
-    wrapper = mount(
+    let updatedText: string | undefined;
+    safeCreate(
       <ComboBox
         options={DEFAULT_OPTIONS}
         autoComplete="off"
@@ -640,20 +645,19 @@ describe('ComboBox', () => {
           updatedText = value;
         }}
       />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, '');
+        simulateKeydown(input, KeyCodes.enter);
+
+        expect(updatedText).toEqual('');
+      },
     );
-
-    const input = wrapper.find('input');
-    ((input.instance() as unknown) as HTMLInputElement).value = '';
-    input.simulate('input', { target: { value: '' } });
-    input.simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-
-    expect(updatedText).toEqual('');
   });
 
   it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
-    let updatedText;
-    wrapper = mount(
+    let updatedText: string | undefined;
+    safeCreate(
       <ComboBox
         options={DEFAULT_OPTIONS}
         autoComplete="off"
@@ -662,23 +666,18 @@ describe('ComboBox', () => {
           updatedText = value;
         }}
       />,
+      container => {
+        const input = container.root.findByType('input');
+        simulateInputEvent(input, 'ab');
+        simulateKeydown(input, KeyCodes.backspace);
+        simulateInputEvent(input, 'a');
+        simulateKeydown(input, KeyCodes.backspace);
+        simulateInputEvent(input, '');
+        expect(input.props.value).toEqual('');
+        simulateKeydown(input, KeyCodes.enter);
+        expect(updatedText).toEqual('');
+      },
     );
-
-    const input = wrapper.find('input');
-    ((input.instance() as unknown) as HTMLInputElement).value = 'ab';
-    input.simulate('input', { target: { value: 'ab' } });
-    input.simulate('keydown', { which: KeyCodes.backspace });
-    input.simulate('input', { target: { value: 'a' } });
-    input.simulate('keydown', { which: KeyCodes.backspace });
-    wrapper.update();
-
-    ((input.instance() as unknown) as HTMLInputElement).value = '';
-    input.simulate('input', { target: { value: '' } });
-    wrapper.update();
-    expect(((input.instance() as unknown) as HTMLInputElement).value).toEqual('');
-    input.simulate('keydown', { which: KeyCodes.enter });
-
-    expect(updatedText).toEqual('');
   });
 
   //it('in multiSelect mode, selectedIndices are correct after performing multiple selections using mouse click', () =>
@@ -699,63 +698,78 @@ describe('ComboBox', () => {
   // });
 
   it('in multiSelect mode, defaultselected keys produce correct display input', () => {
-    const comboBoxRef = React.createRef<IComboBox>();
-    wrapper = mount(
+    safeCreate(
       <ComboBox
         multiSelect
         options={DEFAULT_OPTIONS}
-        componentRef={comboBoxRef}
         selectedKey={[DEFAULT_OPTIONS[0].key as string, DEFAULT_OPTIONS[2].key as string]}
       />,
+      container => {
+        const comboBoxRoot = findNodeWithClass(container, 'ms-ComboBox');
+        const inputElement = comboBoxRoot.findByType('input');
+        const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
+        renderer.act(() => {
+          caretElement.props?.onClick?.();
+        });
+        renderer.act(() => {
+          inputElement.props.onBlur?.({});
+        });
+        const button = findNodeWithClass(container, 'ms-ComboBox-option', true)
+          .filter(node => node.props.className.includes('ms-Checkbox'))
+          .map(node => node.findByType('input'));
+        renderer.act(() => {
+          button[2]?.props?.onChange?.({ persist: jest.fn() });
+        });
+        renderer.act(() => {
+          button[0]?.props?.onChange?.({ persist: jest.fn() });
+        });
+        const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].map(({ text }) => text).join(', ');
+
+        expect(inputElement.props.value).toEqual(compare);
+      },
     );
-
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
-
-    ReactTestUtils.Simulate.change(buttons[2]);
-    ReactTestUtils.Simulate.change(buttons[0]);
-    const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].reduce((previous: string, current: IComboBoxOption) => {
-      if (previous !== '') {
-        return previous + ', ' + current.text;
-      }
-      return current.text;
-    }, '');
-
-    expect(((inputElement.instance() as unknown) as HTMLInputElement).value).toEqual(compare);
   });
 
   it('in multiSelect mode, input has correct value', () => {
-    const comboBoxRef = React.createRef<IComboBox>();
-    wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
+    safeCreate(<ComboBox multiSelect options={DEFAULT_OPTIONS} />, container => {
+      const comboBoxRoot = findNodeWithClass(container, 'ms-ComboBox');
+      const inputElement = comboBoxRoot.findByType('input');
+      const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
+      renderer.act(() => {
+        caretElement.props?.onClick?.();
+      });
+      renderer.act(() => {
+        inputElement.props.onBlur?.({});
+      });
+      const button = findNodeWithClass(container, 'ms-ComboBox-option', true)
+        .filter(node => node.props.className.includes('ms-Checkbox'))
+        .map(node => node.findByType('input'));
+      renderer.act(() => {
+        button[0]?.props?.onChange?.({ persist: jest.fn() });
+      });
+      renderer.act(() => {
+        button[2]?.props?.onChange?.({ persist: jest.fn() });
+      });
+      const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].map(({ text }) => text).join(', ');
 
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
-    const inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
-
-    ReactTestUtils.Simulate.change(buttons[0]);
-    ReactTestUtils.Simulate.change(buttons[2]);
-    const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].reduce((previous: string, current: IComboBoxOption) => {
-      if (previous !== '') {
-        return previous + ', ' + current.text;
-      }
-      return current.text;
-    }, '');
-
-    expect(((inputElement.instance() as unknown) as HTMLInputElement).value).toEqual(compare);
+      expect(inputElement.props.value).toEqual(compare);
+    });
   });
 
-  fit('in multiSelect mode, input has correct value when multiSelectDelimiter specified', () => {
+  it('in multiSelect mode, input has correct value when multiSelectDelimiter specified', () => {
     safeCreate(<ComboBox multiSelect multiSelectDelimiter="; " options={DEFAULT_OPTIONS} />, container => {
       const comboBoxRoot = findNodeWithClass(container, 'ms-ComboBox');
       const inputElement = comboBoxRoot.findByType('input');
       const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
       renderer.act(() => {
-        caretElement?.props?.onClick?.();
+        caretElement.props?.onClick?.();
       });
-      const button = findNodeWithClass(container, 'ms-ComboBox-option', true).map(node => node.findByType('input'));
+      renderer.act(() => {
+        inputElement.props.onBlur?.({});
+      });
+      const button = findNodeWithClass(container, 'ms-ComboBox-option', true)
+        .filter(node => node.props.className.includes('ms-Checkbox'))
+        .map(node => node.findByType('input'));
       renderer.act(() => {
         button[0]?.props?.onChange?.({ persist: jest.fn() });
       });
@@ -772,10 +786,10 @@ describe('ComboBox', () => {
     const onItemClickMock = jest.fn();
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, container => {
       const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
-      ReactTestUtils.act(() => {
+      renderer.act(() => {
         caretElement?.props?.onClick?.();
       });
-      const button = findNodeWithClass(container, 'ms-ComboBox-option', true).map(node => node.findByType('input'));
+      const button = findNodeWithClass(container, 'ms-ComboBox-option', true);
       renderer.act(() => {
         button[0]?.props?.onClick?.({ persist: jest.fn() });
         button[1]?.props?.onClick?.({ persist: jest.fn() });
@@ -983,6 +997,24 @@ describe('ComboBox', () => {
   //   expect((componentRef.current as ComboBox).state.currentOptions).toEqual(currentOptions);
   // }
 });
+
+function simulateInputEvent(input: renderer.ReactTestInstance, value: string) {
+  renderer.act(() => {
+    input.props.onInput?.({ target: { value }, nativeEvent: { isComposing: false } });
+  });
+}
+
+function simulateKeydown(input: renderer.ReactTestInstance, which: KeyCodes) {
+  renderer.act(() => {
+    input.props.onKeyDown?.({
+      which,
+      nativeEvent: { isComposing: false },
+      stopPropagation: jest.fn(),
+      preventDefault: jest.fn(),
+      persist: jest.fn(),
+    });
+  });
+}
 
 function findNodeWithClass(container: renderer.ReactTestRenderer, className: string): renderer.ReactTestInstance;
 function findNodeWithClass(
