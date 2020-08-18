@@ -106,5 +106,5 @@ export function getTokens(theme: Theme): Tokens {
     tokens,
   );
 
-  return { ...preparedTokens, ...(passThroughTokens as Tokens) };
+  return { ...(passThroughTokens as Tokens), ...preparedTokens };
 }
