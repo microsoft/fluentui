@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
-import { classNamesFunction, getDocument, setPortalAttribute, setVirtualParent } from '../../Utilities';
+import { classNamesFunction, getDocument } from '../../Utilities';
+import { setPortalAttribute, setVirtualParent } from '@uifabric/utilities/src/dom';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 import { useMergedRefs, useWarnings, useConstCallback } from '@uifabric/react-hooks';
 
@@ -130,13 +131,14 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     }
   }, [onLayerMounted, onLayerDidMount, getHost, insertFirst, classNames.root, hostId, removeLayerElement]);
 
-  React.useEffect(() => {
-    createLayerElement();
+  // React.useEffect(() => {
+  //   createLayerElement();
 
-    if (hostId) {
-      registerLayer(hostId, createLayerElement);
-    }
-  }, []);
+  // }, []);
+
+  if (hostId) {
+    registerLayer(hostId, createLayerElement);
+  }
 
   React.useEffect(() => {
     if (hostId !== currentHostId) {
