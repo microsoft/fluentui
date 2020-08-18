@@ -56,9 +56,9 @@ const outerZones = {
   },
   unregister(window: Window, FZ: FocusZone) {
     this._windowToOuterZoneMap.get(window)?.delete(FZ);
-  },
-  deleteOutZone(window: Window) {
-    this._windowToOuterZoneMap.delete(window);
+    if (this._windowToOuterZoneMap.get(window)?.size === 0) {
+      this._windowToOuterZoneMap.delete(window);
+    }
   },
   getOutZone(window: Window) {
     return this._windowToOuterZoneMap.get(window);
@@ -238,9 +238,8 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     outerZones.unregister(this.windowElement!, this);
 
     if (!this._isInnerZone) {
-      if (this.windowElement && outerZones.getOutZone(this.windowElement)?.size === 0) {
+      if (this.windowElement && !outerZones.getOutZone(this.windowElement)) {
         this.windowElement.removeEventListener('keydown', _onKeyDownCapture, true);
-        outerZones.deleteOutZone(this.windowElement!);
       }
     }
 
