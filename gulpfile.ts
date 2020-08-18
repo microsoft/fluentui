@@ -8,7 +8,7 @@ import * as tsPaths from 'tsconfig-paths';
 
 import config from './scripts/config';
 
-const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
+// const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
 
 // add node_modules/.bin to the path so we can invoke .bin CLIs in tasks
 process.env.PATH = process.env.PATH + path.delimiter + path.resolve(__dirname, 'node_modules', '.bin');
@@ -16,15 +16,13 @@ process.env.PATH = process.env.PATH + path.delimiter + path.resolve(__dirname, '
 tsPaths.register({
   baseUrl: config.path_base,
   paths: {
-    '@fluentui/*': ['packages/fluentui/*/src/index'],
+    '@fluentui/*': ['packages/fluentui/*/src'],
     '@fluentui/keyboard-key': ['packages/keyboard-key/src/index'],
     '@fluentui/react-compose': ['packages/react-compose/src/index'],
     '@uifabric/merge-styles': ['packages/merge-styles/src'],
     '@uifabric/set-version': ['packages/set-version/src'],
     '@uifabric/utilities': ['packages/utilities/src'],
     '@fluentui/date-time-utilities': ['packages/date-time-utilities/src'],
-    'src/*': ['packages/fluentui/react-northstar/src/*'],
-    'test/*': ['packages/fluentui/react-northstar/test/*'],
   },
 });
 
