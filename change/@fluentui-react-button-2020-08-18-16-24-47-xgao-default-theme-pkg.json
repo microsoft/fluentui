@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Move button token typings to themes package",
+  "packageName": "@fluentui/react-button",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-18T23:23:28.161Z"
+}
