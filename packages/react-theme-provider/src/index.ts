@@ -1,6 +1,7 @@
 import './version';
 
-export { ThemeProvider, ThemeProviderProps } from './ThemeProvider';
+export { ThemeProvider } from './ThemeProvider';
+export { ThemeProviderProps } from './ThemeProvider.types';
 export { useTheme } from './useTheme';
 export * from './types';
 export * from './getStyleFromPropsAndOptions';

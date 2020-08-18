@@ -4,8 +4,7 @@
 *.tsbuildinfo
 packages/fluentui/docs/.next
 packages/fluentui/docs/out
-packages/fluentui/docs/src/componentInfo
-packages/fluentui/docs/src/componentMenu.json
+packages/fluentui/*/componentInfo
 packages/fluentui/docs/src/behaviorMenu.json
 packages/fluentui/docs/src/bundleStats.json
 packages/fluentui/docs/src/currentBundleStats.json

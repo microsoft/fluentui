@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.128.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.3)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.128.1..office-ui-fabric-react_v7.128.3)
+
+### Patches
+
+- StackItem: Fixing issue #12592 - StackItem does not use its `padding` token ([PR #14554](https://github.com/microsoft/fluentui/pull/14554) by pavanpadavala@hotmail.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.128.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.128.1)
 
