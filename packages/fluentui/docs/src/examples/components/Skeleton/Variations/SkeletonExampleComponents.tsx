@@ -41,6 +41,35 @@ const SkeletonExampleComponents = () => (
         </Flex>
       </Skeleton>
     </Flex>
+    <Flex column gap="gap.medium">
+      <Text size="large" weight="bold">
+        Input
+      </Text>
+      <Skeleton>
+        <Flex gap="gap.medium" column>
+          <Flex gap="gap.medium">
+            <Skeleton.Input />
+          </Flex>
+          <Flex.Item>
+            <Skeleton.Input fluid />
+          </Flex.Item>
+        </Flex>
+      </Skeleton>
+    </Flex>
+    <Flex column gap="gap.medium">
+      <Text size="large" weight="bold">
+        Text
+      </Text>
+      <Skeleton>
+        <Flex gap="gap.medium" column>
+          <Skeleton.Text size="smaller" />
+          <Skeleton.Text size="small" />
+          <Skeleton.Text size="medium" />
+          <Skeleton.Text size="large" />
+          <Skeleton.Text size="larger" />
+        </Flex>
+      </Skeleton>
+    </Flex>
   </Flex>
 );
 

@@ -23,6 +23,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
 }) => {
   const frameRef = React.useRef<HTMLPreElement>();
   const animationFrameId = React.useRef<number>();
+  const [isTopElement, setIsTopElement] = React.useState(false);
 
   const setFramePosition = React.useCallback((frameEl, controlEl) => {
     const rect = controlEl.getBoundingClientRect();
@@ -71,14 +72,35 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     }
 
     const el = target.querySelectorAll(selector);
-
-    animationFrameId.current =
-      el.length === 1
-        ? requestAnimationFrame(() => setFramePosition(frameRef.current, el[0]))
-        : requestAnimationFrame(() => hideFrame(frameRef.current));
+    const isTopElementThreshold = 20;
+    if (el.length === 1) {
+      const rect = el[0].getBoundingClientRect();
+      rect.top < isTopElementThreshold
+        ? !isTopElement && setIsTopElement(true)
+        : isTopElement && setIsTopElement(false);
+      animationFrameId.current = requestAnimationFrame(() => setFramePosition(frameRef.current, el[0]));
+    } else {
+      animationFrameId.current = requestAnimationFrame(() => hideFrame(frameRef.current));
+    }
 
     return () => cancelAnimationFrame(animationFrameId.current);
-  }, [target, selector, setFramePosition]);
+  }, [target, selector, animationFrameId, setFramePosition, isTopElement]);
+
+  const styles: React.CSSProperties = {
+    position: 'absolute',
+    padding: '2px 4px',
+    margin: '-1px 0 0 -1px',
+    left: 0,
+    whiteSpace: 'nowrap',
+    background: '#ffc65c',
+    border: '1px solid #ffc65c',
+    pointerEvents: 'initial',
+
+    display: 'flex',
+    alignItems: 'flex-end',
+    zIndex: 99999998,
+  };
+  isTopElement ? (styles['top'] = '100%') : (styles['bottom'] = '100%');
 
   return (
     <pre
@@ -92,28 +114,11 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         border: '1px solid #ffc65ccc',
         color: '#444',
         zIndex: 99999998,
-        pointerEvents: 'none',
         userSelect: 'none',
       }}
     >
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '100%',
-          padding: '2px 4px',
-          margin: '-1px 0 0 -1px',
-          left: 0,
-
-          whiteSpace: 'nowrap',
-          background: '#ffc65c',
-          border: '1px solid #ffc65c',
-          pointerEvents: 'initial',
-
-          display: 'flex',
-          alignItems: 'flex-end',
-          zIndex: 99999998,
-        }}
-      >
+      <div style={{ width: '100%', height: '100%' }} onMouseDown={handleMove} />
+      <div style={styles}>
         <span style={{ fontWeight: 'bold' }}>{componentName}</span>
         <LevelUpDebugButton onClick={handleGoToParent} />
         <MoveDebugButton onClick={handleMove} />

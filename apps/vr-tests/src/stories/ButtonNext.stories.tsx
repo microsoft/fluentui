@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { FabricDecorator } from '../utilities';
+import { ThemeProvider, TeamsTheme } from '@fluentui/react-theme-provider';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
@@ -26,7 +27,7 @@ storiesOf('Button Next', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => <Button>Hello, world</Button>)
@@ -58,7 +59,7 @@ storiesOf('Button Next - With icon before content', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => <Button icon="X">Hello, world</Button>)
@@ -98,7 +99,7 @@ storiesOf('Button Next - With icon after content', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => (
@@ -142,7 +143,7 @@ storiesOf('Button Next - Circular', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => (
@@ -186,7 +187,7 @@ storiesOf('Button Next - Icon only', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => (
@@ -230,7 +231,7 @@ storiesOf('Button Next - Fluid', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => (
@@ -274,7 +275,7 @@ storiesOf('Button Next - Inverted', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => (
@@ -318,7 +319,7 @@ storiesOf('Button Next - Loading', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => (
@@ -362,7 +363,7 @@ storiesOf('Button Next - Sizes', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Smallest', () => (
@@ -416,7 +417,7 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
         )
         .end()}
     >
-      {story()}
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
   .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)

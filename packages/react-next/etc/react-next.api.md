@@ -7,10 +7,12 @@
 import { BaseSlots } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { IAutofillProps } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill.types';
 import { IBaseFloatingPickerProps } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { IButtonProps } from '@fluentui/react-next/lib/compat/Button';
-import { IButtonProps as IButtonProps_2 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonProps as IButtonProps_2 } from '@fluentui/react-next/lib/compat/Button';
+import { IButtonProps as IButtonProps_3 } from 'office-ui-fabric-react/lib/components/Button/Button.types';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IButtonStyles as IButtonStyles_2 } from '@fluentui/react-next/lib/compat/Button';
 import { ICalloutPositionedInfo } from 'office-ui-fabric-react/lib/utilities/positioning';
@@ -27,6 +29,8 @@ import { IPositionedData } from 'office-ui-fabric-react/lib/utilities/positionin
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ISelectableDroppableTextProps } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableDroppableText.types';
+import { ISelectableOption } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
@@ -130,6 +134,29 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
     static defaultProps: Partial<IColorPickerGridCellProps>;
     // (undocumented)
     render(): JSX.Element;
+}
+
+// @public (undocumented)
+export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
+    constructor(props: IComboBoxProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IComboBoxProps;
+    dismissMenu: () => void;
+    // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
+    //
+    // (undocumented)
+    focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
+    // (undocumented)
+    render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void;
 }
 
 // @public
@@ -591,6 +618,99 @@ export interface IColorPickerGridCellStyleProps {
 export interface IColorPickerGridCellStyles {
     colorCell: IStyle;
     svg: IStyle;
+}
+
+// @public (undocumented)
+export interface IComboBox {
+    dismissMenu: () => void;
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    readonly selectedOptions: IComboBoxOption[];
+}
+
+// @public (undocumented)
+export interface IComboBoxOption extends ISelectableOption {
+    styles?: Partial<IComboBoxOptionStyles>;
+    useAriaLabelAsText?: boolean;
+}
+
+// @public (undocumented)
+export interface IComboBoxOptionStyles extends IButtonStyles {
+    optionText: IStyle;
+    optionTextWrapper: IStyle;
+}
+
+// @public (undocumented)
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
+    allowFreeform?: boolean;
+    ariaDescribedBy?: string;
+    autoComplete?: 'on' | 'off';
+    autofill?: IAutofillProps;
+    buttonIconProps?: IIconProps;
+    caretDownButtonStyles?: Partial<IButtonStyles>;
+    comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+    componentRef?: IRefObject<IComboBox>;
+    dropdownMaxWidth?: number;
+    dropdownWidth?: number;
+    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
+    getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
+    iconButtonProps?: IButtonProps;
+    isButtonAriaHidden?: boolean;
+    keytipProps?: IKeytipProps;
+    multiSelectDelimiter?: string;
+    onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+    onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
+    onMenuDismiss?: () => void;
+    onMenuDismissed?: () => void;
+    onMenuOpen?: () => void;
+    onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+    onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
+    onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
+    onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
+    onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
+    onScrollToItem?: (itemIndex: number) => void;
+    options: IComboBoxOption[];
+    persistMenu?: boolean;
+    scrollSelectedToTop?: boolean;
+    shouldRestoreFocus?: boolean;
+    styles?: Partial<IComboBoxStyles>;
+    text?: string;
+    theme?: ITheme;
+    useComboBoxAsMenuWidth?: boolean;
+}
+
+// @public (undocumented)
+export interface IComboBoxState {
+    currentOptions: IComboBoxOption[];
+    currentPendingValue?: string;
+    currentPendingValueValidIndex: number;
+    currentPendingValueValidIndexOnHover: number;
+    focusState?: 'none' | 'focused' | 'focusing';
+    isOpen?: boolean;
+    selectedIndices?: number[];
+    suggestedDisplayValue?: string;
+}
+
+// @public (undocumented)
+export interface IComboBoxStyles {
+    callout: IStyle;
+    container: IStyle;
+    divider: IStyle;
+    errorMessage: IStyle;
+    header: IStyle;
+    input: IStyle;
+    inputDisabled: IStyle;
+    label: IStyle;
+    labelDisabled: IStyle;
+    optionsContainer: IStyle;
+    optionsContainerWrapper: IStyle;
+    root: IStyle;
+    rootDisabled: IStyle;
+    rootDisallowFreeForm: IStyle;
+    rootError: IStyle;
+    rootFocused: IStyle;
+    rootHovered: IStyle;
+    rootPressed: IStyle;
+    screenReaderText: IStyle;
 }
 
 // @public (undocumented)
@@ -1205,6 +1325,12 @@ export interface IModalStyles {
 }
 
 // @public (undocumented)
+export interface IOnRenderComboBoxLabelProps {
+    multiselectAccessibleText?: string;
+    props: IComboBoxProps;
+}
+
+// @public (undocumented)
 export interface IOverflowSet {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
@@ -1492,7 +1618,7 @@ export interface ISearchBox {
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
     ariaLabel?: string;
     className?: string;
-    clearButtonProps?: IButtonProps;
+    clearButtonProps?: IButtonProps_2;
     componentRef?: React.Ref<ISearchBox>;
     defaultValue?: string;
     disableAnimation?: boolean;
@@ -1660,7 +1786,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     defaultValue?: string;
     disabled?: boolean;
     downArrowButtonStyles?: Partial<IButtonStyles_2>;
-    iconButtonProps?: IButtonProps_2;
+    iconButtonProps?: IButtonProps_3;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
@@ -2330,6 +2456,22 @@ export const useLink: (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>) 
 // @public (undocumented)
 export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLDivElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
+// @public (undocumented)
+export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
+    constructor(props: IComboBoxProps);
+    // (undocumented)
+    dismissMenu(): void;
+    // (undocumented)
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    // (undocumented)
+    protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
+    // (undocumented)
+    protected _onScrollToItem: (itemIndex: number) => void;
+    // (undocumented)
+    render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
+}
+
 
 export * from "@fluentui/react-button/lib/Button";
 export * from "@fluentui/react-button/lib/MenuButton";
@@ -2347,7 +2489,6 @@ export * from "office-ui-fabric-react/lib/Check";
 export * from "office-ui-fabric-react/lib/ChoiceGroup";
 export * from "office-ui-fabric-react/lib/Color";
 export * from "office-ui-fabric-react/lib/ColorPicker";
-export * from "office-ui-fabric-react/lib/ComboBox";
 export * from "office-ui-fabric-react/lib/CommandBar";
 export * from "office-ui-fabric-react/lib/DetailsList";
 export * from "office-ui-fabric-react/lib/Dialog";

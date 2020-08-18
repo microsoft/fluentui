@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Change default theme to fluent; minor styles fixes; add Teams/Fluent themes; Convert v7 theme to tokens.",
+  "packageName": "@fluentui/react-button",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-12T23:36:45.287Z"
+}

@@ -2,6 +2,48 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "office-ui-fabric-react_v7.128.3",
+      "version": "7.128.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "StackItem: Fixing issue #12592 - StackItem does not use its `padding` token",
+            "author": "pavanpadavala@hotmail.com",
+            "commit": "bb0183ea569b621349fe8e1daefdd42440f560f5",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Aug 2020 12:43:53 GMT",
+      "tag": "office-ui-fabric-react_v7.128.1",
+      "version": "7.128.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers: Update to be concurrent compatible",
+            "author": "joschect@microsoft.com",
+            "commit": "94206626814975b383a2529a72b0978a49691164",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Link: Fixing High Contrast styling of links rendered as buttons.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8866e2b7858c1d45452d7cb5890b1dab2d814d10",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Aug 2020 12:41:58 GMT",
       "tag": "office-ui-fabric-react_v7.128.0",
       "version": "7.128.0",
