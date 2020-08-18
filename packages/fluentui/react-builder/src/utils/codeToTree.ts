@@ -1,5 +1,4 @@
 import { transform } from '@babel/standalone';
-import { getUUID } from './getUUID';
 import { JSONTreeElement } from '../components/types';
 
 const prefixElementNamesPlugin = ({ types }) => {
@@ -47,7 +46,7 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
       }
     }
 
-    const uuid = props?.['data-builder-id'] ?? getUUID();
+    const uuid = props?.['data-builder-id'];
     delete props?.['data-builder-id'];
 
     return {
