@@ -124,6 +124,19 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     props.required && !selectedDate ? props.isRequiredErrorMessage : '',
   );
 
+  const validateDate = (futureSelectedDate: Date, futureFormattedDate: string): string => {
+    if (futureSelectedDate) {
+      if (isRestrictedDate(futureSelectedDate, calendarOptions)) {
+        return props.isOutOfBoundsErrorMessage;
+      }
+    } else if (futureFormattedDate) {
+      return props.invalidInputErrorMessage;
+    } else if (props.required && !futureSelectedDate) {
+      return props.isRequiredErrorMessage;
+    }
+    return '';
+  };
+
   const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
 
   const nonNullSelectedDate = selectedDate ?? props.today ?? new Date();
@@ -228,25 +241,16 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const onInputChange = (e, target: { value: string }) => {
     const parsedDate = props.parseDate(target.value);
-
+    const futureError = validateDate(parsedDate, target.value);
+    setError(futureError);
     setFormattedDate(target.value);
-    if (parsedDate) {
-      if (isRestrictedDate(parsedDate, calendarOptions)) {
-        setError(props.isOutOfBoundsErrorMessage);
-        _.invoke(props, 'onDateEntryError', e, { ...props, error: props.isOutOfBoundsErrorMessage });
-      } else {
-        setError('');
-        setSelectedDate(parsedDate);
-        _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
-      }
-    } else if (target.value) {
-      setError(props.invalidInputErrorMessage);
-      _.invoke(props, 'onDateEntryError', e, { ...props, error: props.invalidInputErrorMessage });
-    } else if (props.required && !selectedDate) {
-      setError(props.isRequiredErrorMessage);
-      _.invoke(props, 'onDateEntryError', e, { ...props, error: props.isRequiredErrorMessage });
-    } else {
-      setError('');
+    if (!futureError && !!parsedDate) {
+      setSelectedDate(parsedDate);
+      _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
+    }
+
+    if (!!futureError) {
+      _.invoke(props, 'onDateEntryError', e, { ...props, error: futureError });
     }
   };
 
@@ -260,19 +264,12 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const onInputBlur = e => {
     if (props.autoCorrectManualInput && !!error) {
-      setFormattedDate(valueFormatter(selectedDate));
-      if (selectedDate) {
-        if (isRestrictedDate(selectedDate, calendarOptions)) {
-          setError(props.isOutOfBoundsErrorMessage);
-          _.invoke(props, 'onDateEntryError', e, { ...props, error: props.isOutOfBoundsErrorMessage });
-        } else {
-          setError('');
-        }
-      } else if (props.required) {
-        setError(props.isRequiredErrorMessage);
-        _.invoke(props, 'onDateEntryError', e, { ...props, error: props.isRequiredErrorMessage });
-      } else {
-        setError('');
+      const futureFormattedDate = valueFormatter(selectedDate);
+      const futureError = validateDate(selectedDate, futureFormattedDate);
+      setError(futureError);
+      setFormattedDate(futureFormattedDate);
+      if (!!futureError) {
+        _.invoke(props, 'onDateEntryError', e, { ...props, error: futureError });
       }
     }
   };
