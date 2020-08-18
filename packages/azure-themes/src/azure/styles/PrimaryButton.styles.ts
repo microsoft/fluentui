@@ -20,6 +20,10 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.primaryButtonTextDisabled,
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
+    rootExpanded: {
+      color: semanticColors.primaryButtonTextHovered,
+      borderColor: semanticColors.primaryButtonBackgroundHovered,
+    },
     rootFocused: {
       backgroundColor: semanticColors.primaryButtonBackground,
       color: semanticColors.primaryButtonText,

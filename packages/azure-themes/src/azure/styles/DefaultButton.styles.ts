@@ -15,18 +15,15 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       padding: '0px 16px',
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       color: semanticColors.buttonText,
-      selectors: {
-        // standard button
-        '&.is-expanded': {
-          color: semanticColors.buttonTextHovered,
-          borderColor: semanticColors.inputBorderHovered,
-        },
-      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       color: semanticColors.primaryButtonTextDisabled,
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+    },
+    rootExpanded: {
+      color: semanticColors.buttonTextHovered,
+      borderColor: semanticColors.inputBorderHovered,
     },
     rootFocused: {
       backgroundColor: semanticColors.buttonBackground,
