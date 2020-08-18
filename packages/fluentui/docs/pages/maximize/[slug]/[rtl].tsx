@@ -30,8 +30,8 @@ export async function getStaticPaths() {
 
   return {
     paths: files.reduce((acc, filename) => {
-      acc.push(`/${examplePathToHash(filename)}/false`);
-      acc.push(`/${examplePathToHash(filename)}/true`);
+      acc.push(`/maximize/${examplePathToHash(filename)}/false`);
+      acc.push(`/maximize${examplePathToHash(filename)}/true`);
 
       return acc;
     }, []),
