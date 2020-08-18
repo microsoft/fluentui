@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+/**
+ * Props for the WindowProvider component.
+ */
 export type WindowProviderProps = {
   /**
    * Provide the active window.
@@ -7,6 +10,9 @@ export type WindowProviderProps = {
   window: Window | undefined;
 };
 
+/**
+ * Context for providing the window.
+ */
 export const WindowContext = React.createContext<WindowProviderProps>({
   window: typeof window === 'object' ? window : undefined,
 });
