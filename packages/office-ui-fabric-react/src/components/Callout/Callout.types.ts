@@ -6,6 +6,8 @@ import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 import { Target } from '@uifabric/react-hooks';
 
+export { Target };
+
 /**
  * {@docCategory Callout}
  */

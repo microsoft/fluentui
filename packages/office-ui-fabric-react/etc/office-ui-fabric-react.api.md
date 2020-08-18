@@ -9404,6 +9404,8 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
     };
 }
 
+export { Target }
+
 // @public (undocumented)
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
 
