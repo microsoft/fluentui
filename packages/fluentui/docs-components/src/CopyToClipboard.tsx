@@ -11,6 +11,7 @@ export type CopyToClipboardProps = {
 export const useCopyToClipboard = (value: string | (() => string), timeout: number = 3000): [boolean, () => void] => {
   const [active, setActive] = React.useState(false);
   const onCopy = React.useCallback(() => {
+    // @ts-ignore
     copyToClipboard(typeof value === 'function' ? value() : value);
     setActive(true);
 
