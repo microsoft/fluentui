@@ -47,7 +47,7 @@ require('tsconfig-paths').register({
 
 const baseBranch = 'master';
 const sourceBranch = process.env.BUILD_SOURCEBRANCH;
-console.log(require('./screener.states').default);
+
 // https://github.com/screener-io/screener-runner
 module.exports = {
   projectRepo: 'microsoft/fluentui/fluentui',
