@@ -30,6 +30,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
+  const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
   const dragDropHelper = new DragDropHelper({
     selection: selection,
   });
@@ -46,7 +47,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const {
     selectedItems,
     addItems,
-    addItemsAt,
+    dropItemsAt,
     removeItems,
     removeItemAt,
     removeSelectedItems,
@@ -84,13 +85,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return dragEnterClass;
   };
 
-  const _insertItemsAt = (insertIndex: number, s: string): void => {
+  const _dropItemsAt = (insertIndex: number, s: string): void => {
     if (props.selectedItemsListProps.getDeserializedItems) {
       const newItems = props.selectedItemsListProps.getDeserializedItems(s);
-      if (props.selectedItemsListProps.insertItemsAt) {
-        props.selectedItemsListProps.insertItemsAt(insertIndex, newItems);
+      let indicesToRemove: number[] = [];
+      // If we are moving items within the same picker, remove them from their old places as well
+      if (draggedIndex > -1) {
+        indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
       }
-      addItemsAt(insertIndex, newItems);
+      if (props.selectedItemsListProps.dropItemsAt) {
+        props.selectedItemsListProps.dropItemsAt(insertIndex, newItems, indicesToRemove);
+      }
+      dropItemsAt(insertIndex, newItems, indicesToRemove);
     }
   };
 
@@ -102,7 +108,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
           data[i].getAsString((s: string) => {
             const insertIndex = selectedItems.indexOf(item);
-            _insertItemsAt(insertIndex, s);
+            _dropItemsAt(insertIndex, s);
           });
         }
       }
@@ -110,10 +116,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragStart = (item?: any, itemIndex?: number, tempSelectedItems?: any[], event?: DragEvent): void => {
+    const draggedItemIndex = selectedItems.indexOf(item);
+    setDraggedIndex(draggedItemIndex);
     if (event) {
       const dataList = event?.dataTransfer?.items;
       if (props.selectedItemsListProps.getSerializedItems && props.customClipboardType) {
-        const draggedItemIndex = selectedItems.indexOf(item);
         const draggedItems = focusedItemIndices.includes(draggedItemIndex) ? [...getSelectedItems()] : [item];
         const str = props.selectedItemsListProps.getSerializedItems(draggedItems);
         dataList?.add(str, props.customClipboardType);
@@ -122,12 +129,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
+    setDraggedIndex(-1);
     if (event) {
       const dataList = event?.dataTransfer?.items;
       // Clear any remaining drag data
       dataList?.clear();
     }
-    _onRemoveSelectedItems(getSelectedItems());
   };
 
   const defaultDragDropEvents: IDragDropEvents = {

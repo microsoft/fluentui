@@ -143,14 +143,25 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     return newItems;
   };
 
-  const _insertItemsAt = (insertIndex: number, newItems: IPersonaProps[]): void => {
+  const _dropItemsAt = (insertIndex: number, newItems: IPersonaProps[], indicesToRemove: number[]): void => {
     // Insert those items into the current list
     if (insertIndex > -1) {
       const currentItems: IPersonaProps[] = [...peopleSelectedItems];
-      const updatedItems = currentItems
-        .slice(0, insertIndex)
-        .concat(newItems)
-        .concat(currentItems.slice(insertIndex));
+      const updatedItems: IPersonaProps[] = [];
+
+      currentItems.forEach(item => {
+        const currentIndex = currentItems.indexOf(item);
+        // If this is the insert before index, insert the dragged items, then the current item
+        if (currentIndex === insertIndex) {
+          newItems.forEach(draggedItem => {
+            updatedItems.push(draggedItem);
+          });
+          updatedItems.push(item);
+        } else if (!indicesToRemove.includes(currentIndex)) {
+          // only insert items into the new list that are not being dragged
+          updatedItems.push(item);
+        }
+      });
       setPeopleSelectedItems(updatedItems);
     }
   };
@@ -201,7 +212,7 @@ const UnifiedPeoplePickerExample = (): JSX.Element => {
     getItemCopyText: _getItemsCopyText,
     getSerializedItems: _getSerializedItems,
     getDeserializedItems: _getDeserializedItems,
-    insertItemsAt: _insertItemsAt,
+    dropItemsAt: _dropItemsAt,
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {

@@ -5,7 +5,7 @@ export interface IUseSelectedItemsResponse<T> {
   selectedItems: T[];
   setSelectedItems: (items: T[]) => void;
   addItems: (items: T[]) => void;
-  addItemsAt: (insertIndex: number, itemsToAdd: T[]) => void;
+  dropItemsAt: (insertIndex: number, itemsToAdd: T[], indicesToRemove: number[]) => void;
   removeItemAt: (index: number) => void;
   removeItem: (item: T) => void;
   replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
@@ -32,12 +32,23 @@ export const useSelectedItems = <T extends {}>(
     selection.setItems(newItems);
   };
 
-  const addItemsAt = (insertIndex: number, itemsToAdd: T[]): void => {
+  const dropItemsAt = (insertIndex: number, itemsToAdd: T[], indicesToRemove: number[]): void => {
     const currentItems: T[] = [...items];
-    const updatedItems = currentItems
-      .slice(0, insertIndex)
-      .concat(itemsToAdd)
-      .concat(currentItems.slice(insertIndex));
+    const updatedItems: T[] = [];
+
+    currentItems.forEach(item => {
+      const currentIndex = currentItems.indexOf(item);
+      // If this is the insert before index, insert the dragged items, then the current item
+      if (currentIndex === insertIndex) {
+        itemsToAdd.forEach(draggedItem => {
+          updatedItems.push(draggedItem);
+        });
+        updatedItems.push(item);
+      } else if (!indicesToRemove.includes(currentIndex)) {
+        // only insert items into the new list that are not being dragged
+        updatedItems.push(item);
+      }
+    });
     setSelectedItems(updatedItems);
     selection.setItems(updatedItems);
   };
@@ -112,7 +123,7 @@ export const useSelectedItems = <T extends {}>(
     selectedItems: items,
     setSelectedItems: setSelectedItems,
     addItems: addItems,
-    addItemsAt: addItemsAt,
+    dropItemsAt: dropItemsAt,
     removeItemAt: removeItemAt,
     removeItem: removeItem,
     replaceItem: replaceItem,

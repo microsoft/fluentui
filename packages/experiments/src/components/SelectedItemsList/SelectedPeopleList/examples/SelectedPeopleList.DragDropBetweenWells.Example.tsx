@@ -69,9 +69,6 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
       // Clear any remaining drag data
       dataList?.clear();
     }
-    if (item) {
-      _onItemRemoved(item);
-    }
   };
 
   const _onItemRemoved = (item: IPersona) => {
