@@ -3,7 +3,7 @@ import { GroupedVerticalBarChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export class GroupedVerticalBarChartBasicExample extends React.Component<Readonly<{}>, {}> {
+export class GroupedVerticalBarChartBasic2Example extends React.Component<Readonly<{}>, {}> {
   public render(): React.ReactNode {
     const data = [
       {
@@ -97,7 +97,14 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
 
     return (
       <div className={rootStyle}>
-        <GroupedVerticalBarChart data={data} height={400} width={650} showYAxisGridLines wrapXAxisLables />
+        <GroupedVerticalBarChart
+          data={data}
+          height={400}
+          width={650}
+          showYAxisGridLines
+          showXAxisLablesTooltip
+          noOfCharsToTruncate={6}
+        />
       </div>
     );
   }

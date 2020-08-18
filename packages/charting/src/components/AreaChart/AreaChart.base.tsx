@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { ILineChartProps, IBasestate, IChildProps } from '../LineChart/index';
 import { ILegend, Legends } from '../Legends/index';
@@ -58,6 +58,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
   private _xAxisScale: any;
   private yAxisElement: SVGElement | null;
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private _isRtl: boolean = getRTL();
 
   public constructor(props: ILineChartProps) {
     super(props);
@@ -437,7 +438,7 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
       showYAxisGridLines: showYAxisGridLines!,
       data: this._points,
     };
-    createYAxis(yAxisParams);
+    createYAxis(yAxisParams, this._isRtl);
 
     const yScale = d3ScaleLinear()
       .range([containerHeight - this.margins.bottom, this.margins.top])

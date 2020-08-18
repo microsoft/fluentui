@@ -31,7 +31,7 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/AreaChart/AreaChart.types.ts')]}
+            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/LineChart/LineChart.types.ts')]}
           />
         }
         overview={

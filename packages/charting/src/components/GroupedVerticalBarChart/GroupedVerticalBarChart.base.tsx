@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
-import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
+import { axisRight as d3AxisRight, axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
-import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
@@ -86,6 +86,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private chartContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
+  private _isRtl: boolean = getRTL();
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -156,6 +157,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       href: this.props.href,
       width: this.state._width,
       height: this.state._height,
+      isRtl: this._isRtl,
     });
 
     const svgDimensions = {
@@ -180,7 +182,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
               id="yAxisGElement"
               ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)}
               className={this._classNames.yAxis}
-              transform={`translate(40, 0)`}
+              transform={`translate(${this._isRtl ? svgDimensions.width - this.margins.right - 10 : 40}, 0)`}
             />
             <g id={`barGElement_${this._uniqLineText}`} className="barGElement" />
           </svg>
@@ -511,7 +513,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _createX0Scale = (xAxisLabels: string[]) => {
     const x0Axis = d3ScaleBand()
       .domain(xAxisLabels.map((label: string) => label))
-      .range([this.margins.left, this.state.containerWidth - this.margins.right])
+      .range(
+        this._isRtl
+          ? [this.state.containerWidth - this.margins.right, this.margins.left]
+          : [this.margins.left, this.state.containerWidth - this.margins.right],
+      )
       .padding(this._groupPadding / 100);
     return x0Axis;
   };
@@ -520,7 +526,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _createX1Scale = (xScale0: any): any => {
     return d3ScaleBand()
       .domain(this._keys)
-      .range([0, xScale0.bandwidth()])
+      .range(this._isRtl ? [xScale0.bandwidth(), 0] : [0, xScale0.bandwidth()])
       .padding(0.05);
   };
 
@@ -545,7 +551,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
       .range([this.state.containerHeight - this._removalValue - this.margins.bottom, this.margins.top]);
-    const yAxis = d3AxisLeft(yAxisScale)
+    const axis = this._isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+    const yAxis = axis
       .tickPadding(5)
       .ticks(this._yAxisTickCount, 's')
       .tickValues(domains);

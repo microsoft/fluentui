@@ -177,6 +177,11 @@ export interface IGroupedVerticalBarChartStyleProps {
    * Prop to display or transparent of y-axis path
    */
   showYAxisPath?: boolean;
+
+  /**
+   * prop to check if the Page is in Rtl
+   */
+  isRtl?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyles {

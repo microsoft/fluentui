@@ -30,6 +30,11 @@ export interface IChartHelperStyleProps {
    * Color of the chart.
    */
   color?: string;
+
+  /**
+   * prop to check if the Page is in Rtl
+   */
+  isRtl?: boolean;
 }
 
 export interface IChartHelperStyles {
