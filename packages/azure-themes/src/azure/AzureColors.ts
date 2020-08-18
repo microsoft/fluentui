@@ -501,7 +501,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   text: {
     list: BaseColors.GRAY_302928,
     heading: BaseColors.GRAY_302928,
-    body: BaseColors.GRAY_302928,
+    body: BaseColors.GRAY_323130,
     bodyHovered: BaseColors.GRAY_201F1E,
     value: BaseColors.GRAY_302928,
     icon: BaseColors.GRAY_302928,

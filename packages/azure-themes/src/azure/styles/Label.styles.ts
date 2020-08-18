@@ -10,7 +10,7 @@ export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {
   return {
     root: [
       {
-        fontSize: FontSizes.size13,
+        fontSize: FontSizes.size14,
         color: extendedSemanticColors.labelText,
       },
       disabled && {

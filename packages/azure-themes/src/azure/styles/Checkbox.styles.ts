@@ -1,5 +1,4 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
-import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { BaseColors } from '../AzureColors';
 
@@ -11,7 +10,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
   return {
     text: [
       {
-        fontSize: FontSizes.size13,
+        fontSize: theme.fonts.medium.fontSize,
         color: semanticColors.bodyText,
       },
       disabled && {
