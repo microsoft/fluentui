@@ -22,12 +22,14 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "gulp": "^4.0.2",
     "typescript": "3.7.2"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
+    "test": "gulp test",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix"
   }

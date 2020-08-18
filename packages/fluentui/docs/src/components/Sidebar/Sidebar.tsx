@@ -22,11 +22,13 @@ import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 import { renderSidebarTitle } from './SidebarTitle';
 import config from '../../config';
+import componentInfoContext from '../../utils/componentInfoContext';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
 const pkg = require('@fluentui/react-northstar/package.json');
-const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
+
+const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
 const componentsBlackList = ['Debug', 'Design', 'Datepicker'];

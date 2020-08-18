@@ -1,0 +1,109 @@
+// Define default variable values
+:root {
+  --avatarSizeSmallest: 20px;
+  --avatarSizeSmaller: 24px;
+  --avatarSizeSmall: 28px;
+  --avatarSizeMedium: 32px;
+  --avatarSizeLarge: 44px;
+  --avatarSizeLarger: 64px;
+  --avatarSizeLargest: 96px;
+  --avatarBorderColor: transparent;
+  --avatarBorderWidth: 0;
+  --avatarBorderRadius: 9999px;
+
+  --squareAvatarBorderRadius: 3px;
+  --statusBorderColor: transparent;
+  --statusBorderWidth: 2px;
+  --avatarFill: rgb(232, 232, 232);
+}
+
+// Root slot
+.root {
+  position: relative;
+  background-color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  width: var(--avatarSize, var(--avatarSizeMedium));
+  height: var(--avatarSize, var(--avatarSizeMedium));
+}
+
+// Image slot
+.image {
+  position: absolute;
+  border-radius: var(--avatarBorderRadius);
+  top: 0;
+  left: 0;
+  width: var(--avatarSize, var(--avatarSizeMedium));
+  height: var(--avatarSize, var(--avatarSizeMedium));
+  height: 100%;
+  object-fit: cover;
+  vertical-align: top;
+}
+
+// Label slot
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--avatarFill);
+
+  font-size: calc(var(--avatarSize) / 2.333);
+  width: var(--avatarSize, var(--avatarSizeMedium));
+  height: var(--avatarSize, var(--avatarSizeMedium));
+
+  vertical-align: top;
+  text-align: center;
+  padding: 0px;
+  border-radius: 99999px;
+}
+
+// Status slot
+.status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0 0 0 var(--statusBorderWidth) var(--statusBorderColor);
+}
+
+// Root modifier when props.size_ smallest
+._size_smallest {
+  --avatarSize: var(--avatarSizeSmallest);
+}
+
+// Root modifier when props.size_ smaller
+._size_smaller {
+  --avatarSize: var(--avatarSizeSmaller);
+}
+
+// Root modifier when props.size_ small
+._size_small {
+  --avatarSize: var(--avatarSizeSmall);
+}
+
+// Root modifier when props.size_ large
+._size_large {
+  --avatarSize: var(--avatarSizeLarge);
+}
+
+// Root modifier when props.size_ larger
+// larger-abc123
+._size_larger {
+  --avatarSize: var(--avatarSizeLarger);
+}
+
+// Root modifier when props.size_ largest
+._size_largest {
+  --avatarSize: var(--avatarSizeLargest);
+}
+
+// Modifiers
+._square {
+  .image {
+    border-radius: var(--squareAvatarBorderRadius);
+  }
+
+  .label {
+    border-radius: var(--squareAvatarBorderRadius);
+  }
+}
