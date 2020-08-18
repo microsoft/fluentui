@@ -43,6 +43,7 @@
     }
   }
 
+  // TODO: confirm if we should support size prop.
   &._size_smallest {
     --button-dividerLength: var(--button-size-smallest);
   }
@@ -62,6 +63,7 @@
   &._size_larger {
     --button-dividerLength: var(--button-size-larger);
   }
+
   &._size_largest {
     --button-dividerLength: var(--button-size-largest);
   }

@@ -104,7 +104,7 @@
     max-width: 100%;
   }
 
-  // TODO: fix styles for variations of buttions when size is smallest/smaller.
+  // TODO: confirm if we should support size prop.
   &._size_smallest {
     --button-minHeight: var(--button-size-smallest);
   }
@@ -124,6 +124,7 @@
   &._size_larger {
     --button-minHeight: var(--button-size-larger);
   }
+
   &._size_largest {
     --button-minHeight: var(--button-size-largest);
   }
