@@ -159,6 +159,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     noResultsFoundText: 'No suggestions',
     onFloatingSuggestionsDismiss: undefined,
     showSuggestionRemoveButton: true,
+    pickerWidth: '300px',
   } as IFloatingPeopleSuggestionsProps;
 
   const selectedPeopleListProps = {
