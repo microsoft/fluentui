@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@fluentui/common-styles": "^0.2.2",
+    "@fluentui/react-utilities": "^0.1.1",
     "@fluentui/eslint-plugin": "^0.53.3",
     "@fluentui/react-conformance": "^0.1.0",
     "@fluentui/storybook": "^0.2.5",

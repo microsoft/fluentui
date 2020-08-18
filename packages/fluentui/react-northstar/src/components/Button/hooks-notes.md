@@ -1,4 +1,4 @@
-# Testing Hooks Apprroach
+# Testing Hooks Approach
 
 ## Surprises / Confusions
 
@@ -46,3 +46,16 @@ const myProps = {
 
 mergeProps(state, myProps);
 ```
+
+### Fix!
+
+```jsx
+<Button icon={<UserIcon />} iconPosition="end" content={<div>Yaya!</div>} />
+```
+
+We have these constraints:
+
+- Children can never be an object, why? Must be valid React children
+- Props objects passed to mergeProps should be identical to props objects spread on components
+- Library should be able to render props.children in a helpful place in the template
+- User must be able to redefine ALL children if they need to

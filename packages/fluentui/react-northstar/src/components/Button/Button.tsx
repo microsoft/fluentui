@@ -13,7 +13,7 @@ import {
   SizeValue,
   ShorthandFactory,
 } from '../../utils';
-import { /* Box, */ BoxProps } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { Loader, LoaderProps } from '../Loader/Loader';
 import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
@@ -103,31 +103,51 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
   const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry);
   setStart();
 
-  const { size } = props;
+  const { size, disabled } = props;
 
   const { classes, styles: resolvedStyles } = useButtonStyles({ props, rtl: context.rtl });
 
   mergeProps(state, {
     className: classes.root,
     styles: resolvedStyles.root,
-    // TODO: previously icon was rendered as Box
+    // TODO: test that this works as expected still, without merging these props
+    onClick: (e: React.SyntheticEvent<HTMLElement, Event>) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      props?.onClick?.(e, props);
+    },
+    onFocus: (e: React.SyntheticEvent<HTMLElement, Event>) => {
+      props?.onFocus?.(e, props);
+    },
+
+    components: {
+      Loader,
+      Content: ButtonContent,
+    },
+
     icon: {
+      // TODO: previously icon was rendered as Box, is this correct now?
+      as: Box,
       className: classes.icon,
       styles: resolvedStyles.icon,
     },
+
     loader: {
-      as: Loader,
       className: classes.loader,
       styles: resolvedStyles.loader,
-      role: undefined,
+      role: undefined, // TODO: why is this `undefined`?
     },
-    children: /* analogous to the `content` slot in v0 */ {
-      as: ButtonContent,
+
+    content: /* analogous to the `content` slot in v0 */ {
       size,
       content: props.content,
     },
   });
 
+  // TODO: verify all accessibility features are the same as they were
   const result = render(state);
   setEnd();
 
@@ -175,4 +195,5 @@ Button.shorthandConfig = {
   mappedProp: 'content',
 };
 
+// TODO: plan deprecation and removal of .create() methods in favor of hooks approach
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
