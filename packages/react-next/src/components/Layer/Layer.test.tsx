@@ -84,8 +84,10 @@ describe('Layer', () => {
 
       expect(childElement.textContent).toEqual('bar');
     } finally {
+      ReactTestUtils.act(() => {
       ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();
+      }
     }
   });
 
