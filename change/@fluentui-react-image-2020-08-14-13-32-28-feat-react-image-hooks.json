@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Image: removing compose usage in favor of hooks and factories",
+  "packageName": "@fluentui/react-image",
+  "email": "mnajdova@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-14T11:32:27.900Z"
+}

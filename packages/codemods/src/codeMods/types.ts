@@ -1,9 +1,14 @@
 import { SourceFile, JsxExpression, JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph';
+import { Result } from '../helpers/result';
 
-export interface CodeModResult {
-  success?: boolean;
+export interface ModResult {
+  logs: string[];
 }
-
+export type NoOp = {
+  reason: string;
+  log?: string;
+};
+export type CodeModResult = Result<ModResult, NoOp>;
 export interface CodeMod<T = SourceFile> {
   /**
    * Each type of codemod can have multiple versions which work on different versions of its targeted package.
@@ -65,3 +70,51 @@ export enum SpreadPropInStatement {
   PropRight,
   NotFound,
 }
+
+/* Type definition for the mod type - mod function dictionary used
+   in configMod.ts. */
+export type CodeModMapType = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: (file: SourceFile, mod: any) => () => void;
+};
+
+/* Type definition for a CodeMod object representing a renameProp mod. */
+export type RenamePropModType = {
+  name: string;
+  type: 'renameProp';
+  options: {
+    from: {
+      importName: string;
+      toRename: string;
+      paths?: string[];
+    };
+    to: {
+      replacementName: string;
+      replacementValue?: string;
+    };
+  };
+};
+
+/* Type definition for a CodeMod object representing a repathImport mod. */
+export type RepathImportModType = {
+  name: string;
+  type: 'repathImport';
+  options: {
+    from: {
+      searchString: string | RegExp;
+      isRegex: boolean;
+    };
+    to: {
+      replacementValue: string;
+    };
+  };
+};
+
+/* upgrades.json internal mods are of this type: a union of supported types. */
+export type ModTypes = RenamePropModType | RepathImportModType;
+
+/* Type of the upgrades.json object */
+export type UpgradeJSONType = {
+  name: string;
+  upgrades: ModTypes[];
+};

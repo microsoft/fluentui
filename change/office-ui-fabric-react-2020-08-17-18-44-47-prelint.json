@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fixing publish",
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-18T01:43:42.139Z"
+}
