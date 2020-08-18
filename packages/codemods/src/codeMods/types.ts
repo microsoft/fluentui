@@ -82,6 +82,7 @@ export type CodeModMapType = {
 export type RenamePropModType = {
   name: string;
   type: 'renameProp';
+  version?: string;
   options: {
     from: {
       importName: string;
@@ -99,6 +100,7 @@ export type RenamePropModType = {
 export type RepathImportModType = {
   name: string;
   type: 'repathImport';
+  version?: string;
   options: {
     from: {
       searchString: string | RegExp;
@@ -117,4 +119,10 @@ export type ModTypes = RenamePropModType | RepathImportModType;
 export type UpgradeJSONType = {
   name: string;
   upgrades: ModTypes[];
+};
+
+/* Type storing codemod metadata. */
+export type ModOptions = {
+  name: string;
+  version: string;
 };

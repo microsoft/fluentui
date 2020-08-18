@@ -6,6 +6,7 @@ import {
   RenamePropModType,
   RepathImportModType,
   CodeModMapType,
+  ModOptions,
 } from '../../types';
 import { findJsxTag, renameProp, getImportsByPath, repathImport } from '../../utilities/index';
 import { Ok, Err } from '../../../helpers/result';
@@ -34,7 +35,11 @@ export function getCodeModsFromJson(): CodeMod[] {
     /* Try and get the codemod function associated with the mod type. */
     const func = codeModMap[modDetails[i].type](modDetails[i]);
     if (func) {
-      mods.push(createCodeMod(modDetails[i].name, func));
+      const options: ModOptions = {
+        name: modDetails[i].name,
+        version: modDetails[i].version ? modDetails[i].version! : '100000',
+      };
+      mods.push(createCodeMod(options, func));
     } else {
       // eslint-disable-next-line no-throw-literal
       throw 'Error: attempted to access a codeMod mapping from an unsupported type.';
@@ -44,7 +49,7 @@ export function getCodeModsFromJson(): CodeMod[] {
 }
 
 /* Helper function that creates a codeMod given a name and a list of functions that compose the mod. */
-export function createCodeMod(modName: string, mod: (file: SourceFile) => void): CodeMod {
+export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => void): CodeMod {
   return {
     run: (file: SourceFile) => {
       try {
@@ -55,8 +60,8 @@ export function createCodeMod(modName: string, mod: (file: SourceFile) => void):
       }
       return Ok({ logs: ['Upgrade completed'] });
     },
-    version: '100000',
-    name: modName,
+    version: options.version,
+    name: options.name,
     enabled: true,
   };
 }
