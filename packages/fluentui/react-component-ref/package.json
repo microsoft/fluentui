@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-component-ref",
   "description": "A set of components and utils to deal with React refs.",
-  "version": "0.47.8",
+  "version": "0.47.9",
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "dependencies": {

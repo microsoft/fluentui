@@ -1,11 +1,11 @@
 {
   "name": "@fluentui/perf",
-  "version": "0.47.8",
+  "version": "0.47.9",
   "private": true,
   "license": "MIT",
   "devDependencies": {
     "@babel/polyfill": "^7.7.0",
-    "@fluentui/react-northstar": "^0.47.8",
+    "@fluentui/react-northstar": "^0.47.9",
     "@types/react": "16.8.11",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
