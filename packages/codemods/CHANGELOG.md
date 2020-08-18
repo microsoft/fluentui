@@ -1,8 +1,23 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.8.0)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.6.15..@fluentui/codemods_v0.8.0)
+
+### Minor changes
+
+- add generic config mod ([PR #14496](https://github.com/microsoft/fluentui/pull/14496) by t-dama@microsoft.com)
+- add support for repathing and function dictionary ([PR #14536](https://github.com/microsoft/fluentui/pull/14536) by t-dama@microsoft.com)
+
+### Patches
+
+- Codemods: Implement result and prepare for logging changes ([PR #14548](https://github.com/microsoft/fluentui/pull/14548) by joschect@microsoft.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [0.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.6.15)
 
