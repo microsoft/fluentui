@@ -48,8 +48,6 @@ export const useButtonStyles = ({
     ...stylingTokens,
   };
 
-  console.log(displayName);
-
   const result = useStyles(displayName, {
     className: buttonClassName,
     mapPropsToStyles: () => resolvedStylingTokens,
