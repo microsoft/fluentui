@@ -110,6 +110,7 @@ jobs:
       - script: |
           git config --global user.email "fabrictactical@microsoft.com"
           git config --global user.name "Fabric Tactical"
+          yarn buildto @fluentui/react-northstar
           yarn test:fluentui:visual
         displayName: run FUI VR Test
         env:

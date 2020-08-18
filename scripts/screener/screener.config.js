@@ -28,16 +28,26 @@ function getCurrentHash() {
 
 const config = require('../config').default;
 
-const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
+// const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
 
 require('tsconfig-paths').register({
   baseUrl: config.path_base,
-  paths: compilerOptions.paths,
+  paths: {
+    '@fluentui/*': ['packages/fluentui/*/src/index'],
+    '@fluentui/keyboard-key': ['packages/keyboard-key/src/index'],
+    '@fluentui/react-compose': ['packages/react-compose/src/index'],
+    '@uifabric/merge-styles': ['packages/merge-styles/src'],
+    '@uifabric/set-version': ['packages/set-version/src'],
+    '@uifabric/utilities': ['packages/utilities/src'],
+    '@fluentui/date-time-utilities': ['packages/date-time-utilities/src'],
+    'src/*': ['packages/fluentui/react-northstar/src/*'],
+    'test/*': ['packages/fluentui/react-northstar/test/*'],
+  },
 });
 
 const baseBranch = 'master';
 const sourceBranch = process.env.BUILD_SOURCEBRANCH;
-
+console.log(require('./screener.states').default);
 // https://github.com/screener-io/screener-runner
 module.exports = {
   projectRepo: 'microsoft/fluentui/fluentui',
