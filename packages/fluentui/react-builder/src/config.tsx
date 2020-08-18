@@ -1,14 +1,21 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { isElement } from 'react-is';
 import * as _ from 'lodash';
 
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 
+import * as CodeSandbox from '@fluentui/code-sandbox';
+
 import { JSONTreeElement } from './components/types';
 import { getUUID } from './utils/getUUID';
 
 type FiberNavigator = FUI.FiberNavigator;
+
+const projectPackageJson = require('@fluentui/react-northstar/package.json');
+const sandboxPackageJson = require('@fluentui/code-sandbox/package.json');
+const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
@@ -536,6 +543,41 @@ export const renderJSONTreeToJSXElement = (
     key: modifiedTree.uuid,
     'data-builder-id': modifiedTree.uuid,
   });
+};
+
+export const getCodeSandboxPackageImports = () => {
+  return {
+    '@fluentui/code-sandbox': {
+      version: sandboxPackageJson.version,
+      module: CodeSandbox,
+      required: true,
+    },
+    '@fluentui/react-icons-northstar': {
+      version: projectPackageJson.version,
+      module: FUIIcons,
+      required: false,
+    },
+    '@fluentui/react-northstar': {
+      version: projectPackageJson.version,
+      module: FUI,
+      required: true,
+    },
+    react: {
+      version: projectPackageJson.peerDependencies['react'],
+      module: React,
+      required: true,
+    },
+    'react-dom': {
+      version: projectPackageJson.peerDependencies['react-dom'],
+      module: ReactDOM,
+      required: true,
+    },
+    prettier: {
+      version: docsComponentsPackageJson.peerDependencies['prettier'],
+      module: null, // no need to use it in our examples
+      required: true,
+    },
+  };
 };
 
 export const JSONTreeToImports = (tree: JSONTreeElement, imports = '', icons = '') => {

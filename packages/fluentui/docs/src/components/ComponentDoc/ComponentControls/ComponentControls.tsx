@@ -1,13 +1,12 @@
-import { CopyToClipboard } from '@fluentui/docs-components';
+import { CopyToClipboard, ComponentControlsCodeSandbox, CodeSandboxState } from '@fluentui/docs-components';
 import { Menu, menuAsToolbarBehavior, Tooltip, Loader, MenuProps, MenuItem } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { imports } from '../../Playground/renderConfig';
 import { ComponentSourceManagerLanguage } from '../ComponentSourceManager';
-import ComponentControlsCodeSandbox, {
-  CodeSandboxState,
-} from './ComponentControlsCodeSandbox/ComponentControlsCodeSandbox';
+
 import {
   EditIcon,
   FilesCodeIcon,
@@ -56,7 +55,12 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
   } = props;
 
   return (
-    <ComponentControlsCodeSandbox exampleCode={exampleCode} exampleLanguage={exampleLanguage} exampleName={examplePath}>
+    <ComponentControlsCodeSandbox
+      exampleCode={exampleCode}
+      exampleLanguage={exampleLanguage}
+      exampleName={examplePath}
+      imports={imports}
+    >
       {(state, onCodeSandboxClick) => {
         const codeSandboxTooltip =
           state === CodeSandboxState.Default

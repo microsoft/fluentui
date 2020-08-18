@@ -19,6 +19,7 @@ export const componentInfoContext: {
 } = {} as any;
 
 componentInfoContext.byDisplayName = infoObjects.reduce((acc, next) => {
+  next.moduleName = '@fluentui/react-northstar';
   acc[next.displayName] = next;
   return acc;
 }, {});

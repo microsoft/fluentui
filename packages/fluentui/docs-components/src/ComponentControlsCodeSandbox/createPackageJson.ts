@@ -1,11 +1,10 @@
 import * as _ from 'lodash';
-import { ComponentSourceManagerLanguage } from '../../../docs/src/components/ComponentDoc/ComponentSourceManager';
-import { imports } from '../../../docs/src/components/Playground/renderConfig';
+import { CodeSandboxImport, SourceManagerLanguage } from './types';
 
 const name = 'fluent-ui-example';
 const description = 'An exported example from Fluent UI React, https://aka.ms/fluent-ui/';
 
-function createDependencies(code: string) {
+function createDependencies(code: string, imports: Record<string, CodeSandboxImport>) {
   // Will include only required packages intentionally like "react" or required by a current example
   const filteredPackages = _.pickBy(
     imports,
@@ -20,14 +19,19 @@ function createDependencies(code: string) {
   };
 }
 
-export const createPackageJson = (mainFilename: string, code: string, language: ComponentSourceManagerLanguage) => ({
+export const createPackageJson = (
+  mainFilename: string,
+  code: string,
+  language: SourceManagerLanguage,
+  imports: Record<string, CodeSandboxImport>,
+) => ({
   content: JSON.stringify(
     {
       name,
       version: '1.0.0',
       description,
       main: mainFilename,
-      dependencies: createDependencies(code),
+      dependencies: createDependencies(code, imports),
     },
     null,
     2,

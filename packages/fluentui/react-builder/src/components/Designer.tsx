@@ -3,13 +3,10 @@ import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button, Divider } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { renderElementToJSX } from '@fluentui/docs-components';
+import { renderElementToJSX, ComponentControlsCodeSandbox, CodeSandboxState } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
-import ComponentControlsCodeSandbox, {
-  CodeSandboxState,
-} from '../../../docs/src/components/ComponentDoc/ComponentControls/ComponentControlsCodeSandbox/ComponentControlsCodeSandbox';
 
 // import Anatomy from './Anatomy';
 import { BrowserWindow } from './BrowserWindow';
@@ -26,6 +23,7 @@ import {
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
   getCodeSandboxImports,
+  getCodeSandboxPackageImports,
   resolveDraggingElement,
   resolveDrop,
 } from '../config';
@@ -605,6 +603,7 @@ export const Designer: React.FunctionComponent = () => {
                       return (\n ${renderElementToJSX(renderJSONTreeToJSXElement(jsonTree))}\n);}`}
                     exampleLanguage="js"
                     exampleName="uibuilder"
+                    imports={getCodeSandboxPackageImports()}
                   >
                     {(state, onCodeSandboxClick) => {
                       const codeSandboxContent =

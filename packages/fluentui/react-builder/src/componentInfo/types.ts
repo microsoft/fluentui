@@ -29,6 +29,7 @@ export type ComponentInfo = {
   subcomponentName: null | string;
   subcomponents: string[] | null;
   type: 'component';
+  moduleName: string;
 };
 
 export type ComponentProp = {
