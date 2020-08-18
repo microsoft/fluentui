@@ -30,7 +30,7 @@
     "@uifabric/example-app-base": "^7.12.113",
     "@uifabric/experiments": "^7.28.2",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "office-ui-fabric-react": "^7.128.1",
+    "office-ui-fabric-react": "^7.128.2",
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

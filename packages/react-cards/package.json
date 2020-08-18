@@ -47,14 +47,14 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/azure-themes": "^7.3.4",
+    "@uifabric/azure-themes": "^7.3.5",
     "@uifabric/file-type-icons": "^7.4.14",
     "@uifabric/foundation": "^7.7.47",
     "@uifabric/set-version": "^7.0.21",
     "@uifabric/styling": "^7.14.13",
     "@uifabric/theme-samples": "^7.0.125",
     "@uifabric/utilities": "^7.28.0",
-    "office-ui-fabric-react": "^7.128.1",
+    "office-ui-fabric-react": "^7.128.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
