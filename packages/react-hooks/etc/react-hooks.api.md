@@ -57,6 +57,9 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
+export const useDocumentRef: (elementRef: import("react").RefObject<HTMLElement | null>) => import("react").RefObject<Document>;
+
+// @public
 export function useForceUpdate(): () => void;
 
 // @public
@@ -66,7 +69,7 @@ export function useId(prefix?: string, providedId?: string): string;
 export function useMergedRefs<T>(...refs: (Ref<T> | undefined)[]): (instance: T) => void;
 
 // @public
-export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
+export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | Document | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
 
 // @public
 export function usePrevious<T>(value: T): T | undefined;
@@ -94,6 +97,9 @@ export type UseSetTimeoutReturnType = {
 
 // @public
 export function useWarnings<P>(options: IWarningOptions<P>): void;
+
+// @public
+export const useWindowRef: (elementRef: import("react").RefObject<HTMLElement | null>) => import("react").RefObject<Window>;
 
 
 // (No @packageDocumentation comment for this package)
