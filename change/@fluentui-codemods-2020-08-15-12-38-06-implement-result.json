@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Codemods: Implement result and prepare for logging changes",
-  "packageName": "@fluentui/codemods",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-15T19:38:06.133Z"
-}

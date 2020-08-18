@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@uifabric/fabric-website_v7.13.25",
+      "version": "7.13.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update web components to use latest version of fast-element (#14573)",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Aug 2020 22:49:13 GMT",
       "tag": "@uifabric/fabric-website_v7.13.18",
       "version": "7.13.18",

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 14 Aug 2020 12:43:53 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.28.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.3)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.2..@uifabric/experiments_v7.28.3)
+
+### Patches
+
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.28.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.2)
 

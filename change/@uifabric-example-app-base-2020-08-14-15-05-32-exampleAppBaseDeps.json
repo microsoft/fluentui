@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "@uifabric/example-app-base: Updating dependencies to resolve security issues.",
-  "packageName": "@uifabric/example-app-base",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-14T22:05:32.209Z"
-}
