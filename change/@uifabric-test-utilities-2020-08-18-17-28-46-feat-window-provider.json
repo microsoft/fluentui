@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Making safeMount take the callback as optional.",
-  "packageName": "@uifabric/test-utilities",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "minor",
-  "date": "2020-08-19T00:28:46.590Z"
-}
