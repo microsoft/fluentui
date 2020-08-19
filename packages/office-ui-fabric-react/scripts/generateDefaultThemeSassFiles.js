@@ -34,7 +34,7 @@ for (const fontName in fonts) {
   lines.push(`}`);
 }
 
-const srcRoot = '../src/common';
+const srcRoot = './src/common';
 const fontsOutputFilename = '_themeVariables.scss';
 fs.writeFileSync(path.join(srcRoot, fontsOutputFilename), lines.join('\n'));
 
