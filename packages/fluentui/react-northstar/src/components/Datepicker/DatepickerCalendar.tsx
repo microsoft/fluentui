@@ -246,7 +246,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         break;
       }
       default:
-        break;
+        return;
     }
 
     const newNavigatedDate = contstraintNavigatedDate(initialDate, targetDate, direction);
