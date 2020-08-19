@@ -1,12 +1,9 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { isElement } from 'react-is';
 import * as _ from 'lodash';
 
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
-
-import * as CodeSandbox from '@fluentui/code-sandbox';
 
 import { JSONTreeElement } from './components/types';
 import { getUUID } from './utils/getUUID';
@@ -555,7 +552,6 @@ const packageImportList: Record<string, CodeSandboxImport> = {
   },
   '@fluentui/react-northstar': {
     version: projectPackageJson.version,
-    module: FUI,
     required: false,
   },
 };
@@ -607,22 +603,18 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   const packageImports: Record<string, CodeSandboxImport> = {
     '@fluentui/code-sandbox': {
       version: sandboxPackageJson.version,
-      module: CodeSandbox,
       required: true,
     },
     react: {
       version: projectPackageJson.peerDependencies['react'],
-      module: React,
       required: true,
     },
     'react-dom': {
       version: projectPackageJson.peerDependencies['react-dom'],
-      module: ReactDOM,
       required: true,
     },
     prettier: {
       version: docsComponentsPackageJson.peerDependencies['prettier'],
-      module: null,
       required: true,
     },
   };
