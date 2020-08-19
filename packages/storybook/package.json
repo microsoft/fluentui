@@ -28,6 +28,7 @@
     "tslib": "^1.10.0",
     "@fluentui/react-theme-provider": "^0.8.0",
     "@storybook/addon-knobs": "^5.3.8",
+    "@storybook/addons": "^5.3.8",
     "@uifabric/azure-themes": "^7.4.0",
     "@uifabric/mdl2-theme": "^0.2.0",
     "@uifabric/theme-samples": "^7.1.0"

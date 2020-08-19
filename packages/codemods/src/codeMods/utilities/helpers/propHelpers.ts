@@ -14,7 +14,17 @@ import {
 import { ValueMap, SpreadPropInStatement } from '../../types';
 import { Maybe } from '../../../helpers/maybe';
 
-/* Helper function to rename a prop if in a spread operator.  */
+/* Helper function to rename a prop if in a spread operator.
+
+   Known cases that can't be handled:
+   * If the prop is a union type with UNDEFINED, ts-morph might not pick
+     up on that union, so it will try and extract the component when it
+     might not exist -- this will cause an error.
+   * If the spread prop's TYPE comes from a local file that is imported,
+     ts-morph's getType() might not identify it, causing nothing to be changed.
+     If, instead, one uses getContextualType(), ts-morph tends to infer the prop
+     type as the default for the component, leading to potentially incorrect behavior.
+*/
 export function renamePropInSpread(
   element: JsxOpeningElement | JsxSelfClosingElement,
   toRename: string,
@@ -34,8 +44,9 @@ export function renamePropInSpread(
         }
         /* SPREADISIDENTIFIER tells us whether we should look at an Identifier or a P.A.E. node. */
         const spreadIsIdentifier = firstIdentifier !== undefined;
-        /* Verify this attribute contains the name of our desired prop. */
-        if (spreadContains(toRename, spreadIsIdentifier, attribute)) {
+        /* Verify this attribute contains the name of our desired prop and DOES NOT
+           contain the name of the replacement name. */
+        if (spreadContains(toRename, replacementName, spreadIsIdentifier, attribute)) {
           /* Step 3: Create names for your new potential objects. */
           const componentName = element.getFirstChildByKind(SyntaxKind.Identifier)?.getText();
           const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
@@ -280,8 +291,15 @@ function createDeconstructedProp(newSpreadPropName: string, toRename: string, ol
 }
 
 /* Helper function that returns TRUE if the supplied spread object
-   contains the prop we're looking for. Else returns FALSE. */
-function spreadContains(oldPropName: string, spreadIsIdentifier: boolean, spreadProp: JsxAttributeLike): boolean {
+   contains the prop we're looking for AND if REPLACEMENTNAME cannot
+   be found in the prop. This is because standard props often contain
+   both old and new prop name. Else returns FALSE. */
+function spreadContains(
+  oldPropName: string,
+  replacementName: string,
+  spreadIsIdentifier: boolean,
+  spreadProp: JsxAttributeLike,
+): boolean {
   const element = spreadIsIdentifier
     ? spreadProp.getFirstChildByKind(SyntaxKind.Identifier)
     : spreadProp.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
@@ -292,6 +310,12 @@ function spreadContains(oldPropName: string, spreadIsIdentifier: boolean, spread
       .getProperties()
       .some(name => {
         return name.getName() === oldPropName;
+      }) &&
+    !element
+      .getType()!
+      .getProperties()
+      .some(name => {
+        return name.getName() === replacementName;
       })
   );
 }
