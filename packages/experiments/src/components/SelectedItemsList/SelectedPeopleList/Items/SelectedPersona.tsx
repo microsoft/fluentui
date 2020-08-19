@@ -63,6 +63,7 @@ const SelectedPersonaInner = React.memo(
     } = props;
     const itemId = getId();
     const [root, setRoot] = React.useState<HTMLElement | undefined>();
+    const rootRef = React.useRef<HTMLElement>(null);
     const [dragDropSubscription, setDragDropSubscription] = React.useState<IDisposable>();
     const [isDropping, setIsDropping] = React.useState(false);
     const [droppingClassNames, setDroppingClassNames] = React.useState('');
@@ -79,42 +80,38 @@ const SelectedPersonaInner = React.memo(
       }
     }, []);
 
-    const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
-      if (!newValue) {
-        if (dragDropEvents!.onDragLeave) {
-          dragDropEvents!.onDragLeave(item, event);
-        }
-      } else if (dragDropEvents!.onDragEnter) {
-        setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
-      }
-
-      if (isDropping !== newValue) {
-        setIsDropping(newValue);
-      }
-    };
-
-    const dragDropOptions: IDragDropOptions = {
-      eventMap: eventsToRegister,
-      selectionIndex: index,
-      context: { data: item, index: index },
-      canDrag: dragDropEvents?.canDrag,
-      canDrop: dragDropEvents?.canDrop,
-      onDragStart: dragDropEvents?.onDragStart,
-      updateDropState: _updateDroppingState,
-      onDrop: dragDropEvents?.onDrop,
-      onDragEnd: dragDropEvents?.onDragEnd,
-      onDragOver: dragDropEvents?.onDragOver,
-    };
-
-    const events = new EventGroup(this);
-
     React.useEffect(() => {
-      setDragDropSubscription(dragDropHelper?.subscribe(root as HTMLElement, events, dragDropOptions));
-      return () => {
-        dragDropSubscription?.dispose();
-        setDragDropSubscription(undefined);
+      const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
+        if (!newValue) {
+          if (dragDropEvents!.onDragLeave) {
+            dragDropEvents!.onDragLeave(item, event);
+          }
+        } else if (dragDropEvents!.onDragEnter) {
+          setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
+        }
+
+        if (isDropping !== newValue) {
+          setIsDropping(newValue);
+        }
       };
-    }, [dragDropHelper, dragDropSubscription, root, events, dragDropOptions]);
+
+      const dragDropOptions: IDragDropOptions = {
+        eventMap: eventsToRegister,
+        selectionIndex: index,
+        context: { data: item, index: index },
+        ...dragDropEvents,
+        updateDropState: _updateDroppingState,
+      };
+
+      const events = new EventGroup(this);
+
+      const subscription = dragDropHelper?.subscribe(root as HTMLElement, events, dragDropOptions);
+
+      return () => {
+        subscription?.dispose();
+        events.dispose();
+      };
+    }, [dragDropEvents, dragDropHelper, eventsToRegister, index, isDropping, item, root]);
 
     React.useEffect(() => {
       setIsDraggable(dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrop) : undefined);
