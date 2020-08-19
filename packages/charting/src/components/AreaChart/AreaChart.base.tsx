@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { select as d3Select, event as d3Event } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis } from 'd3-shape';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { getId, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { ILineChartProps, IBasestate, IChildProps } from '../LineChart/index';
 import { ILegend, Legends } from '../Legends/index';
@@ -289,7 +289,8 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
   private _onMouseHover = (target: SVGCircleElement, x: number | Date, xAxisCalloutData: string) => {
     const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === xVal);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const found: any = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     const presentData = found.values[0];
     if (
       this.state.isLegendSelected === false ||
@@ -333,7 +334,9 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
   ) => {
     const formattedDate = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
-    const found = this._calloutPoints.find((element: { x: string | number }) => element.x === xVal);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const found: any = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     const presentData = found.values[0];
     if (
       this.state.isLegendSelected === false ||
@@ -496,14 +499,14 @@ export class AreaChartBase extends React.Component<ILineChartProps, IAreaChartSt
         return that._getOpacityOfCircle(this._points[d.index].legend);
       })
       .attr('fill', (d: IDPointType, index: number) => this._points[d.index].color)
-      .on('mouseover', (d: IDPointType, index: number) => {
-        return that._handleMouseAction(
+      .on('mouseover', (d: IDPointType, index: number) =>
+        that._handleMouseAction(
           xScale(d.point.xVal),
           d.point.xVal,
           `${this._circleId}_${d.index * stackedData[0].length + index}`,
           this._points[d.index].data[index].xAxisCalloutData!,
-        );
-      })
+        ),
+      )
       .on('mouseout', (d: IDPointType, index: number) =>
         that._mouseOutAction(
           `${this._circleId}_${d.index * stackedData[0].length + index}`,

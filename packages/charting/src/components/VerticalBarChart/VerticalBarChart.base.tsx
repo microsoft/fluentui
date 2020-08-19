@@ -2,12 +2,13 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
-import { select as d3Select } from 'd3-selection';
+import { select as d3Select, event as d3Event } from 'd3-selection';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
+import { createWrapOfXLabels } from '../../utilities/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
 
 import {
@@ -51,7 +52,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
   private _reqID: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xAxis: any;
+  private _tickPadding: number;
   private _calloutId: string;
+  private _removalValue: number = 0;
+  private _noOfCharsToTruncate: number;
   private legendContainer: HTMLDivElement;
   private chartContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
@@ -134,7 +140,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
               id="xAxisGElement"
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
               className={this._classNames.xAxis}
-              transform={`translate(0, ${svgDimensions.height - this.margins.bottom})`}
+              transform={`translate(0, ${svgDimensions.height - this._removalValue - this.margins.bottom})`}
             />
             <g
               id="yAxisGElement"
@@ -176,6 +182,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     this._yAxisTickCount = this.props.yAxisTickCount || 5;
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
+    this._noOfCharsToTruncate = this.props.noOfCharsToTruncate || 4;
+    this._tickPadding = this.props.tickPadding || 10;
   }
 
   private _fitParentContainer(): void {
@@ -217,7 +225,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       .domain([0, xMax])
       .nice()
       .range([this.margins.left + this._barWidth, this.state.containerWidth - this.margins.right - this._barWidth]);
-    const xAxis = d3AxisBottom(xAxisScale).tickPadding(10);
+    const xAxis = d3AxisBottom(xAxisScale).tickPadding(this._tickPadding);
     return xAxis;
   }
 
@@ -227,7 +235,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       .range([this.margins.left, this.state.containerWidth - this.margins.right]);
     const xAxis = d3AxisBottom(xAxisScale)
       .tickFormat((x: string, index: number) => this._points[index].x as string)
-      .tickPadding(10);
+      .tickPadding(this._tickPadding);
     return xAxis;
   }
 
@@ -240,7 +248,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
+      .range([this.state.containerHeight - this._removalValue - this.margins.bottom, this.margins.top]);
     const yAxis = d3AxisLeft(yAxisScale)
       .tickPadding(5)
       .tickValues(domains)
@@ -342,7 +350,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
-      .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
+      .range([0, this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top]);
 
     const colorScale = this._createColors(yMax);
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
@@ -365,7 +373,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           key={point.x}
           x={xBarScale(point.x as number)}
           className={this._classNames.opacityChangeOnHover}
-          y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
+          y={this.state.containerHeight - this._removalValue - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
           data-is-focusable={true}
           height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
@@ -415,7 +423,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
-      .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
+      .range([0, this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top]);
 
     const colorScale = this._createColors(yMax);
 
@@ -424,7 +432,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         <rect
           key={point.x}
           x={xBarScale(index)}
-          y={this.state.containerHeight - this.margins.bottom - yBarScale(point.y)}
+          y={this.state.containerHeight - this._removalValue - this.margins.bottom - yBarScale(point.y)}
           width={this._barWidth}
           height={yBarScale(point.y) > 0 ? yBarScale(point.y) : 0}
           aria-labelledby={this._calloutId}
@@ -519,11 +527,58 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return legends;
   }
 
+  private _tooltipHandle = () => {
+    const that = this;
+    if (!this.props.wrapXAxisLables) {
+      const temp = document.getElementsByClassName('tooltip-47');
+      while (temp[0]) {
+        // removing multiple elemnts
+        temp[0].remove();
+      }
+      const div = d3Select('body')
+        .append('div')
+        .attr('id', 'tooltipId')
+        .attr('class', that._classNames.tooltip)
+        .style('opacity', 0);
+      const tickObject = that._xAxis!.selectAll('.tick')._groups[0];
+      const tickObjectLength = Object.keys(tickObject).length;
+      for (let i = 0; i < tickObjectLength; i++) {
+        const d1 = tickObject[i];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const data: any = d3Select(d1).data();
+        d3Select(d1)
+          .on('mouseover', d => {
+            div.style('opacity', 0.9);
+            div
+              .html(data)
+              .style('left', d3Event.pageX + 'px')
+              .style('top', d3Event.pageY - 28 + 'px');
+          })
+          .on('mouseout', d => {
+            div.style('opacity', 0);
+          });
+      }
+    }
+  };
+
   private _setXAxis(node: SVGGElement | null, xAxis: NumericAxis | StringAxis): void {
     if (node === null) {
       return;
     }
-    d3Select(node).call(xAxis);
+    this._xAxis = d3Select(node).call(xAxis);
+
+    const wrapLabelProps = {
+      node: node,
+      xAxis: xAxis,
+      showXAxisLablesTooltip: this.props.showXAxisLablesTooltip,
+      noOfCharsToTruncate: this._noOfCharsToTruncate,
+    };
+    let temp = 0;
+    if (this.props.showXAxisLablesTooltip || this.props.wrapXAxisLables) {
+      temp = createWrapOfXLabels(wrapLabelProps) as number;
+    }
+    this._removalValue = temp;
+    !this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip && this._tooltipHandle();
   }
 
   private _setYAxis(node: SVGElement | null, yAxis: NumericAxis | StringAxis): void {

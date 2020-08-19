@@ -295,3 +295,87 @@ export function fitContainer(containerParams: IFitContainerParams) {
   };
   return containerValues;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function createWrapOfXLabels(wrapLabelProps: any) {
+  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
+  if (node === null) {
+    return;
+  }
+  const axisNode = d3Select(node).call(xAxis);
+  let removeVal = 0;
+  const width = 10;
+  const arr: number[] = [];
+  axisNode.selectAll('.tick text').each(function() {
+    const text = d3Select(this);
+    const totalWord = text.text();
+    const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
+    const totalWordLength = text.text().length;
+    const words = text
+      .text()
+      .split(/\s+/)
+      .reverse();
+    arr.push(words.length);
+    let word: string = '';
+    let line: string[] = [];
+    let lineNumber: number = 0;
+    const lineHeight = 1.1; // ems
+    const y = text.attr('y');
+    const dy = parseFloat(text.attr('dy'));
+    let tspan = text
+      .text(null)
+      .append('tspan')
+      .attr('x', 0)
+      .attr('y', y)
+      .attr('id', 'BaseSpan')
+      .attr('dy', dy + 'em');
+
+    if (showXAxisLablesTooltip && totalWordLength > noOfCharsToTruncate) {
+      tspan = text
+        .append('tspan')
+        .attr('id', 'showDots')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .text(truncatedWord);
+    } else if (showXAxisLablesTooltip && totalWordLength <= noOfCharsToTruncate) {
+      tspan = text
+        .append('tspan')
+        .attr('id', 'LessLength')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .text(totalWord);
+    } else {
+      while ((word = words.pop()!)) {
+        line.push(word);
+        tspan.text(line.join(' '));
+        if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
+          line.pop();
+          tspan.text(line.join(' '));
+          line = [word];
+          tspan = text
+            .append('tspan')
+            .attr('id', 'WordBreakId')
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+            .text(word);
+        }
+      }
+      const maxDigit = Math.max(...arr);
+      let maxHeight: number = 12; // intial value to render corretly first time
+      axisNode.selectAll('text').each(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const outerHTMLElement = document.getElementById('WordBreakId') as any;
+        const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
+        const boxHeight = BoxCordinates && BoxCordinates.height;
+        if (boxHeight > maxHeight) {
+          maxHeight = boxHeight;
+        }
+      });
+      removeVal = (maxDigit - 3) * maxHeight; // we are getting more height if take direclty
+    }
+  });
+  return removeVal > 0 ? removeVal : 0;
+}

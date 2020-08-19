@@ -86,6 +86,19 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
       },
     },
 
+    tooltip: {
+      ...theme.fonts.medium,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '8px',
+      position: 'absolute',
+      textAlign: 'center',
+      top: '0px',
+      background: theme.semanticColors.bodyBackground,
+      borderRadius: '2px',
+      pointerEvents: 'none',
+    },
+
     xAxisTicks: [],
 
     yAxisTicks: [

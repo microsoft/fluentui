@@ -12,12 +12,12 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
       { x: 'One', y: 20 },
       { x: 'Two', y: 48 },
       { x: 'Three', y: 30 },
-      { x: 'Four', y: 40 },
+      { x: 'Fourioio Four Four FourFour Four done still there', y: 40 },
       { x: 'Five', y: 13 },
       { x: 'Six', y: 60 },
       { x: 'Seven', y: 60 },
       { x: 'Eight', y: 57 },
-      { x: 'Nine', y: 14 },
+      { x: 'Nine Nine agsdsagkh nine done', y: 14 },
       { x: 'Ten', y: 35 },
       { x: 'Elven', y: 20 },
       { x: 'Twelve', y: 44 },
@@ -64,6 +64,20 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
           colors={customColors}
           hideLegend={true}
           hideTooltip={true}
+          wrapXAxisLables
+          tickPadding={5}
+        />
+        <VerticalBarChart
+          data={points}
+          width={800}
+          height={400}
+          barWidth={20}
+          yAxisTickCount={6}
+          hideLegend={true}
+          hideTooltip={true}
+          showXAxisLablesTooltip
+          noOfCharsToTruncate={8}
+          tickPadding={3}
         />
       </div>
     );

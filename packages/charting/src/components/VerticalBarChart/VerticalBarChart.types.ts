@@ -96,6 +96,31 @@ export interface IVerticalBarChartProps {
    * this prop takes its parent as a HTML element to define the width and height of the line chart
    */
   parentRef?: HTMLElement | null;
+
+  /**
+   *@default false
+   *Used for to elipse x axis labes and show tooltip on x axis labels
+   */
+  showXAxisLablesTooltip?: boolean;
+
+  /**
+   * @default 4
+   * Used for X axis labels
+   * While Giving showXAxisLablesTooltip prop, need to define after how many chars, we need to truncate the word.
+   */
+  noOfCharsToTruncate?: number;
+
+  /**
+   * @default false
+   * Used to display x axis labels values (whole value)
+   */
+  wrapXAxisLables?: boolean;
+
+  /**
+   * @default 10
+   * tickPadding - used for space between x line and tick valeus
+   */
+  tickPadding?: number;
 }
 
 export interface IVerticalBarChartStyleProps {
@@ -195,4 +220,9 @@ export interface IVerticalBarChartStyles {
    * Style for the legends container
    */
   legendContainer?: IStyle;
+
+  /**
+   * Style for tick values tooltip
+   */
+  tooltip: IStyle;
 }
