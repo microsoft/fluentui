@@ -274,17 +274,17 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
             selected: day.isSelected,
             disabled: !day.isInBounds,
             quiet: !day.isInMonth,
-            isToday: compareDates(day.originalDate, today ?? new Date()),
+            today: compareDates(day.originalDate, props.today ?? new Date()),
             ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
-            onDateChange(e, { ...predefinedProps, value: day });
+            onDateChange(e, { ...props, value: day });
             _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
           },
           onKeyDown: e => {
             handleKeyDown(e, day);
-            _.invoke(predefinedProps, 'onKeyDown', e, { ...predefinedProps, value: day });
+            _.invoke(predefinedProps, 'onKeyDown', e, { ...props, value: day });
           },
         }),
       }),
