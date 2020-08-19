@@ -16,19 +16,13 @@ export const RenderSpinner = (props: any) => {
     </div>
   );
 };
-
+/* Render an component awkwardly. */
 export const RenderLetSpinner = (props: any) => {
   let propsTest = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
-  return (
-    <div>
-      <Spinner {...propsTest} id="l">
-        Woo hoo!
-      </Spinner>
-      <Spinner {...propsTest} />
-    </div>
-  );
+  const someThing = true;
+  return <div>{someThing ? <Spinner {...propsTest} /> : <div />}</div>;
 };
 
 const propsForArrow = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
 
-export const RenderSpinnerPropsArrow = (): any => <Spinner {...propsForArrow} />;
+export const RenderSpinnerPropsArrow = (props: any): any => <Spinner {...propsForArrow} />;

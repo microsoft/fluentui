@@ -14,7 +14,17 @@ import {
 import { ValueMap, SpreadPropInStatement } from '../../types';
 import { Maybe } from '../../../helpers/maybe';
 
-/* Helper function to rename a prop if in a spread operator.  */
+/* Helper function to rename a prop if in a spread operator.
+
+   Known cases that can't be handled:
+   * If the prop is a union type with UNDEFINED, ts-morph might not pick
+     up on that union, so it will try and extract the component when it
+     might not exist -- this will cause an error.
+   * If the spread prop's TYPE comes from a local file that is imported,
+     ts-morph's getType() might not identify it, causing nothing to be changed.
+     If, instead, one uses getContextualType(), ts-morph tends to infer the prop
+     type as the default for the component, leading to potentially incorrect behavior.
+*/
 export function renamePropInSpread(
   element: JsxOpeningElement | JsxSelfClosingElement,
   toRename: string,
