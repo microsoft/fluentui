@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {
   styled,
   classNamesFunction,
@@ -61,19 +60,10 @@ const SelectedPersonaInner = React.memo(
       eventsToRegister,
     } = props;
     const itemId = useId();
-    const [root, setRoot] = React.useState<HTMLElement | undefined>();
     const [isDropping, setIsDropping] = React.useState(false);
     const [droppingClassNames, setDroppingClassNames] = React.useState('');
 
-    const _onRootRef = React.useCallback((div: HTMLDivElement) => {
-      if (div) {
-        // Need to resolve the actual DOM node, not the component.
-        // The element itself will be used for drag/drop and focusing.
-        setRoot(ReactDOM.findDOMNode(div) as HTMLElement);
-      } else {
-        setRoot(undefined);
-      }
-    }, []);
+    const rootRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(
       () => {
@@ -101,7 +91,7 @@ const SelectedPersonaInner = React.memo(
 
         const events = new EventGroup(this);
 
-        const subscription = dragDropHelper?.subscribe(root as HTMLElement, events, dragDropOptions);
+        const subscription = dragDropHelper?.subscribe(rootRef.current as HTMLElement, events, dragDropOptions);
 
         return () => {
           subscription?.dispose();
@@ -159,7 +149,7 @@ const SelectedPersonaInner = React.memo(
 
     return (
       <div
-        ref={_onRootRef}
+        ref={rootRef}
         {...(typeof isDraggable === 'boolean'
           ? {
               'data-is-draggable': isDraggable, // This data attribute is used by some host applications.
