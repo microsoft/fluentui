@@ -26,7 +26,7 @@ const items: ChatProps['items'] = [
         content="I'm back!"
         author="John Doe"
         timestamp="Yesterday, 10:15 PM"
-        readStatusIndicator={{
+        readIndicator={{
           title: 'Read by All',
           content: <EyeFriendlierIcon size="small" />,
         }}
