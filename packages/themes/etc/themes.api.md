@@ -8,7 +8,7 @@ import { IPartialTheme } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 // @public (undocumented)
-export type ButtonTokenSet = ColorTokenSet & {
+export type ButtonTokenSet = RecursivePartial<ColorTokenSet & {
     size: {
         smallest: string;
         smaller: string;
@@ -34,7 +34,7 @@ export type ButtonTokenSet = ColorTokenSet & {
     fontFamily: string;
     fontSize: string | number;
     fontWeight: string | number;
-};
+}>;
 
 // @public
 export type ColorTokens = Partial<{
@@ -67,10 +67,24 @@ export type ColorTokenStates = Partial<{
 export const createDefaultTheme: () => Theme;
 
 // @public (undocumented)
-export const defaultButtonTokens: RecursivePartial<ButtonTokenSet>;
+export const defaultButtonTokens: ButtonTokenSet;
 
 // @public
 export const defaultTokens: Tokens;
+
+// @public (undocumented)
+export type FlexItemTokens = RecursivePartial<ColorTokenSet & {
+    grow: string;
+    order: string;
+    shrink: string;
+    gap: string;
+}>;
+
+// @public (undocumented)
+export type FlexTokens = RecursivePartial<ColorTokenSet & {
+    padding: string;
+    gap: string;
+}>;
 
 // @public (undocumented)
 export const FluentTheme: Theme;
@@ -83,7 +97,7 @@ export type FontTokens = Partial<{
 }>;
 
 // @public
-export function getButtonTokensFromCompatTheme(theme: Theme): RecursivePartial<ButtonTokenSet>;
+export function getButtonTokensFromCompatTheme(theme: Theme): ButtonTokenSet;
 
 // @public
 export function getTokens(theme: Theme): Tokens;

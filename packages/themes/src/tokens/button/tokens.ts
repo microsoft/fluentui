@@ -1,7 +1,7 @@
-import { RecursivePartial, Theme } from '../../types';
+import { Theme } from '../../types';
 import { ButtonTokenSet } from './types';
 
-export const defaultButtonTokens: RecursivePartial<ButtonTokenSet> = {
+export const defaultButtonTokens: ButtonTokenSet = {
   size: {
     // smallest size supported by default theme is 24px.
     smallest: '24px',
@@ -62,7 +62,7 @@ export const defaultButtonTokens: RecursivePartial<ButtonTokenSet> = {
 /**
  * Get button tokens from compat (v7) theme.
  */
-export function getButtonTokensFromCompatTheme(theme: Theme): RecursivePartial<ButtonTokenSet> {
+export function getButtonTokensFromCompatTheme(theme: Theme): ButtonTokenSet {
   const { fonts, effects, palette, semanticColors } = theme;
 
   return {

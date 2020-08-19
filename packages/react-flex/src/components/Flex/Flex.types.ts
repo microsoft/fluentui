@@ -1,5 +1,7 @@
 import { ComponentProps, BaseSlots, SlotProps } from '@fluentui/react-compose';
-import { ColorTokenSet } from '@fluentui/react-theme-provider';
+import { FlexTokens } from '@fluentui/themes';
+
+export { FlexTokens } from '@fluentui/themes';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
@@ -51,14 +53,3 @@ export interface FlexState extends FlexProps {}
 export interface FlexSlots extends BaseSlots {}
 
 export type FlexSlotProps = SlotProps<FlexSlots, FlexProps, React.HTMLAttributes<HTMLElement>>;
-
-export type FlexTokens = ColorTokenSet & {
-  /**
-   * Defines the padding to be applied to the Flex contents relative to its border.
-   */
-  padding?: string;
-  /**
-   * Defines the spacing between the children.
-   */
-  gap?: string;
-};

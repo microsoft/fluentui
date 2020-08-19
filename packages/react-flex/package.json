@@ -39,6 +39,7 @@
     "@fluentui/react-button": "^0.10.0",
     "@fluentui/react-compose": "^0.17.0",
     "@fluentui/react-theme-provider": "^0.8.0",
+    "@fluentui/themes": "^0.1.0",
     "@uifabric/set-version": "^7.0.21",
     "office-ui-fabric-react": "^7.129.0",
     "tslib": "^1.10.0"
