@@ -25,8 +25,13 @@ const Usage = () => (
     />
     <ComponentExample
       title="Standalone DatepickerCalendar"
-      description="One can also use the standalone DatepickerCalendar.
-      In that case, the developer needs to take care of the selectedDate state control."
+      description={
+        <>
+          One can also use the <code>DatepickerCalendar</code> without <code>Input</code>. In that case, the developer
+          needs to take care of the
+          <code>selectedDate</code> state control.
+        </>
+      }
       examplePath="components/Datepicker/Usage/DatepickerExampleStandaloneCalendar"
     />
   </ExampleSection>
