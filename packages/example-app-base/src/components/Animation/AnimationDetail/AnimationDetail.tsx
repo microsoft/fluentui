@@ -3,7 +3,7 @@ import { mergeStyleSets, FontWeights } from 'office-ui-fabric-react';
 import { IAnimationDetailProps } from './AnimationDetail.types';
 
 import { AnimationExample } from '../index';
-import { MarkdownCode } from '../../Markdown';
+import { MarkdownCode } from '../../Markdown/index';
 
 const styles = mergeStyleSets({
   root: {
