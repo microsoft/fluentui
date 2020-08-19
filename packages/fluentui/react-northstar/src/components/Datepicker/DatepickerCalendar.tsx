@@ -223,18 +223,18 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     const keyCode = getCode(e);
     const initialDate = day.originalDate;
     let targetDate: Date | null = null;
-    const visuallyPleasingWeekJumpNavigation = false;
+    const skipWeekOnArrowNavigation = false;
     let direction = 1; // by default search forward
 
     switch (keyCode) {
       case keyboardKey.ArrowDown: {
         targetDate = addWeeks(initialDate, 1);
-        direction = visuallyPleasingWeekJumpNavigation ? 7 : 1;
+        direction = skipWeekOnArrowNavigation ? 7 : 1;
         break;
       }
       case keyboardKey.ArrowUp: {
         targetDate = addWeeks(initialDate, -1);
-        direction = visuallyPleasingWeekJumpNavigation ? -7 : -1;
+        direction = skipWeekOnArrowNavigation ? -7 : -1;
         break;
       }
       case keyboardKey.ArrowLeft: {
@@ -279,7 +279,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
-            onDateChange(e, { ...props, value: day });
+            _.invoke(props, 'onDateChange', e, { ...props, value: day });
             _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
           },
           onKeyDown: e => {

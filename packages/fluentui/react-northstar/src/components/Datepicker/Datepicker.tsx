@@ -78,7 +78,7 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   allowManualInput?: boolean;
 
   /** The component automatically overrides faulty manual input upon blur. */
-  autoCorrectManualInput?: boolean;
+  fallbackToLastCorrectDateOnBlur?: boolean;
 
   /** Should calendar be initially opened or closed. */
   defaultCalendarOpenState?: boolean;
@@ -252,7 +252,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
     },
     onBlur: e => {
-      if (props.autoCorrectManualInput && !!error) {
+      if (props.fallbackToLastCorrectDateOnBlur && !!error) {
         const futureFormattedDate = valueFormatter(selectedDate);
         const validationError = validateDate(
           selectedDate,
@@ -340,7 +340,7 @@ Datepicker.propTypes = {
   onDateChangeError: PropTypes.func,
   placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
-  autoCorrectManualInput: PropTypes.bool,
+  fallbackToLastCorrectDateOnBlur: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
   calendarOpenState: PropTypes.bool,
 
@@ -396,7 +396,7 @@ Datepicker.defaultProps = {
   firstWeekOfYear: FirstWeekOfYear.FirstDay,
   dateRangeType: DateRangeType.Day,
 
-  autoCorrectManualInput: true,
+  fallbackToLastCorrectDateOnBlur: true,
   allowManualInput: true,
   required: false,
 
