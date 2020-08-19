@@ -179,9 +179,41 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
   const focusDateRef = React.useRef(null);
 
+  const contstraintNavigatedDate = (initialDate: Date, targetDate: Date, direction: number) => {
+    if (!targetDate) {
+      // if we couldn't find a target date at all, do nothing
+      return undefined;
+    }
+
+    const findAvailableDateOptions: IAvailableDateOptions = {
+      initialDate,
+      targetDate,
+      direction,
+      restrictedDates,
+      minDate,
+      maxDate,
+    };
+
+    let newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+
+    if (!newNavigatedDate) {
+      // if no dates available in initial direction, try going backwards
+      findAvailableDateOptions.direction = -direction;
+      newNavigatedDate = findAvailableDate(findAvailableDateOptions);
+    }
+
+    return newNavigatedDate;
+  };
+
   const changeMonth = (nextMonth: boolean) => {
+    const direction = nextMonth ? 1 : -1;
     const updatedGridNavigatedDate = addMonths(gridNavigatedDate, nextMonth ? 1 : -1);
-    setGridNavigatedDate(updatedGridNavigatedDate);
+
+    const newNavigatedDate = contstraintNavigatedDate(gridNavigatedDate, updatedGridNavigatedDate, direction);
+
+    if (newNavigatedDate) {
+      setGridNavigatedDate(newNavigatedDate);
+    }
   };
 
   const prevMonthOutOfBounds = minDate ? compareDatePart(minDate, getMonthStart(gridNavigatedDate)) >= 0 : false;
@@ -218,34 +250,13 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         break;
     }
 
-    if (!targetDate) {
-      // if we couldn't find a target date at all, do nothing
-      return;
-    }
+    const newNavigatedDate = contstraintNavigatedDate(initialDate, targetDate, direction);
 
-    const findAvailableDateOptions: IAvailableDateOptions = {
-      initialDate,
-      targetDate,
-      direction,
-      restrictedDates,
-      minDate,
-      maxDate,
-    };
-
-    let newNavigatedDate = findAvailableDate(findAvailableDateOptions);
-
-    if (!newNavigatedDate) {
-      // if no dates available in initial direction, try going backwards
-      findAvailableDateOptions.direction = -direction;
-      newNavigatedDate = findAvailableDate(findAvailableDateOptions);
-    }
-
-    if (!newNavigatedDate) {
-      e.preventDefault();
-    } else {
+    if (newNavigatedDate) {
       setGridNavigatedDate(newNavigatedDate);
-      e.preventDefault();
     }
+
+    e.preventDefault();
   };
 
   React.useEffect(() => {
