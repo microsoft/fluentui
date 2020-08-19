@@ -205,11 +205,11 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                     background: Highlight;
                     border-color: Highlight;
                   }
-              data-is-draggable={false}
+              data-is-draggable={true}
               data-is-focusable={true}
               data-is-sub-focuszone={true}
               data-selection-index={0}
-              draggable={false}
+              draggable={true}
               role="listitem"
             >
               <div
