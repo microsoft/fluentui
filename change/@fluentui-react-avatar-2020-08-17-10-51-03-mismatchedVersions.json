@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing lint error that's breaking master build due to mismatched package versions.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-17T17:51:03.355Z"
-}
