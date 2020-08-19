@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixing the infinite loop in drag drop",
+  "packageName": "@uifabric/experiments",
+  "email": "nebhatna@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-19T00:21:38.364Z"
+}
