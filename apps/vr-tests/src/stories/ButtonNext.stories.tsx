@@ -2,10 +2,10 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@fluentui/react-button';
+import { Button, MenuButton, SplitButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { FabricDecorator } from '../utilities';
-import { ThemeProvider, TeamsTheme } from '@fluentui/react-theme-provider';
+import { ThemeProvider, TeamsTheme, FluentTheme } from '@fluentui/react-theme-provider';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
@@ -27,6 +27,7 @@ storiesOf('Button Next', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -59,6 +60,7 @@ storiesOf('Button Next - With icon before content', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -99,6 +101,7 @@ storiesOf('Button Next - With icon after content', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -143,6 +146,7 @@ storiesOf('Button Next - Circular', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -187,6 +191,7 @@ storiesOf('Button Next - Icon only', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -231,6 +236,7 @@ storiesOf('Button Next - Fluid', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -275,6 +281,7 @@ storiesOf('Button Next - Inverted', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -319,6 +326,7 @@ storiesOf('Button Next - Loading', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -363,6 +371,7 @@ storiesOf('Button Next - Sizes', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -417,6 +426,7 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
         )
         .end()}
     >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
       <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
     </Screener>
   ))
@@ -425,4 +435,86 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
   .addStory('Primary Disabled', () => (
     <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ));
+
+storiesOf('Button Next - MenuButton', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .end()}
+    >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
+    </Screener>
+  ))
+  .addStory('Default', () => <MenuButton icon="X">Hello, world</MenuButton>)
+  .addStory('Primary', () => (
+    <MenuButton primary icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Disabled', () => (
+    <MenuButton disabled icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Primary Disabled', () => (
+    <MenuButton primary disabled icon="X">
+      Hello, world
+    </MenuButton>
+  ));
+
+storiesOf('Button Next - SplitButton', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .end()}
+    >
+      <ThemeProvider theme={FluentTheme}>{story()}</ThemeProvider>
+      <ThemeProvider theme={TeamsTheme}>{story()}</ThemeProvider>
+    </Screener>
+  ))
+  .addStory('Default', () => <SplitButton icon="X">Hello, world</SplitButton>)
+  .addStory('Primary', () => (
+    <SplitButton primary icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Disabled', () => (
+    <SplitButton disabled icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Primary Disabled', () => (
+    <SplitButton primary disabled icon="X">
+      Hello, world
+    </SplitButton>
   ));
