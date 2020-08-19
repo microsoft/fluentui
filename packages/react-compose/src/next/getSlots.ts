@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, omit } from '@uifabric/utilities';
 import { GenericDictionary } from './types';
+import { nullRender } from './nullRender';
 
 /**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
@@ -22,32 +23,28 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
   const slots: GenericDictionary = {
     root: state.as || 'div',
   };
-
   const slotProps: GenericDictionary = {
-    root: typeof state.as === 'string' ? getNativeElementProps(state.as, state) : state,
+    root: typeof state.as === 'string' ? getNativeElementProps(state.as, state) : omit(state, ['as']),
   };
 
   if (slotNames) {
     for (const name of slotNames) {
-      const Component = state?.components[name];
-      const userProps = state[name];
-      const hasComponent = typeof Component === null;
-      const isPrimitive = typeof Component === 'string';
+      const slotDefinition = state[name];
+      const { as: slotAs, children } = slotDefinition;
+      const isSlotPrimitive = typeof slotAs === 'string';
+      const isSlotEmpty = isSlotPrimitive && slotDefinition.children === undefined;
 
-      // slot has been opted-out
-      if (hasComponent === null || userProps === null) {
-        continue;
-      }
+      slots[name] = isSlotEmpty ? nullRender : slotAs;
 
-      slots[name] = Component;
-
-      if (typeof userProps.children === 'function') {
+      if (typeof children === 'function') {
         slotProps[name] = {
-          children: userProps.children(slots[name], omit(userProps, ['children'])),
+          children: children(slots[name], omit(slotDefinition, ['as', 'children'])),
         };
         slots[name] = React.Fragment;
-      } /* is a valid react component (div | MyThing) */ else {
-        slotProps[name] = isPrimitive ? getNativeElementProps(Component, userProps) : userProps;
+      } else if (slots[name] !== nullRender) {
+        slotProps[name] = isSlotPrimitive
+          ? getNativeElementProps(slotAs, slotDefinition)
+          : omit(slotDefinition, ['as']);
       }
     }
   }

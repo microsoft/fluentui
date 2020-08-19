@@ -1,6 +1,6 @@
 import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
 import { mergeProps } from '@fluentui/react-compose/lib/next';
-import { ComponentWithAs, ShorthandConfig, useFluentContext, useTelemetry } from '@fluentui/react-bindings';
+import { ComponentWithAs, ShorthandConfig, useFluentContext, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -13,13 +13,12 @@ import {
   SizeValue,
   ShorthandFactory,
 } from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
+import { /* Box, */ BoxProps } from '../Box/Box';
 import { Loader, LoaderProps } from '../Loader/Loader';
 import { ComponentEventHandler, ShorthandValue } from '../../types';
 import { ButtonGroup } from './ButtonGroup';
 import { ButtonContent, ButtonContentProps } from './ButtonContent';
 import { useButton } from '@fluentui/react-button/src/components/Button/useButton';
-import { useButtonStyles } from './useButtonStyles';
 
 export interface ButtonProps
   extends UIComponentProps,
@@ -103,51 +102,48 @@ export const Button = (React.forwardRef<HTMLElement, ButtonProps>((props: Button
   const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry);
   setStart();
 
-  const { size, disabled } = props;
+  const { content, disabled, iconPosition, loading, text, primary, inverted, size, iconOnly, fluid, circular } = props;
 
-  const { classes, styles: resolvedStyles } = useButtonStyles({ props, rtl: context.rtl });
+  const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(Button.displayName, {
+    className: buttonClassName,
+    mapPropsToStyles: () => ({
+      text,
+      primary,
+      disabled,
+      circular,
+      size,
+      loading,
+      inverted,
+      iconOnly,
+      iconPosition,
+      fluid,
+      hasContent: !!content,
+    }),
+    rtl: context.rtl,
+    unstable_props: props,
+  });
 
   mergeProps(state, {
     className: classes.root,
     styles: resolvedStyles.root,
-    // TODO: test that this works as expected still, without merging these props
-    onClick: (e: React.SyntheticEvent<HTMLElement, Event>) => {
-      if (disabled) {
-        e.preventDefault();
-        return;
-      }
-
-      props?.onClick?.(e, props);
-    },
-    onFocus: (e: React.SyntheticEvent<HTMLElement, Event>) => {
-      props?.onFocus?.(e, props);
-    },
-
-    components: {
-      Loader,
-      Content: ButtonContent,
-    },
-
+    // TODO: previously icon was rendered as Box
     icon: {
-      // TODO: previously icon was rendered as Box, is this correct now?
-      as: Box,
       className: classes.icon,
       styles: resolvedStyles.icon,
     },
-
     loader: {
+      as: Loader,
       className: classes.loader,
       styles: resolvedStyles.loader,
-      role: undefined, // TODO: why is this `undefined`?
+      role: undefined,
     },
-
-    content: /* analogous to the `content` slot in v0 */ {
+    children: /* analogous to the `content` slot in v0 */ {
+      as: ButtonContent,
       size,
       content: props.content,
     },
   });
 
-  // TODO: verify all accessibility features are the same as they were
   const result = render(state);
   setEnd();
 
@@ -195,5 +191,4 @@ Button.shorthandConfig = {
   mappedProp: 'content',
 };
 
-// TODO: plan deprecation and removal of .create() methods in favor of hooks approach
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });

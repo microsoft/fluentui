@@ -19,13 +19,11 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
   const resolvedRef = ref || React.useRef();
   const state = mergeProps(
     {
-      components: {
-        icon: 'span',
-        children: 'span',
-        loader: 'span',
-      },
       ref: resolvedRef,
       as: 'button',
+      icon: { as: 'span' },
+      children: { as: 'span' },
+      loader: { as: 'span' },
     },
     defaultProps,
     resolveShorthandProps(props, buttonShorthandProps),
