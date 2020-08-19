@@ -8,7 +8,6 @@ import { BaseSlots } from '@fluentui/react-compose';
 import { ButtonTokenSet } from '@fluentui/themes';
 import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
 import * as React from 'react';
-import { RecursivePartial } from '@fluentui/themes';
 import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
 import { SlotProps } from '@fluentui/react-compose';
 
@@ -32,7 +31,7 @@ export type ButtonProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {
     primary?: boolean;
     secondary?: boolean;
     size?: SizeValue;
-    tokens?: RecursivePartial<ButtonTokenSet>;
+    tokens?: ButtonTokenSet;
 };
 
 // @public
@@ -112,8 +111,6 @@ export interface MenuButtonState extends MenuButtonProps, Omit<ButtonState, 'ico
 
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokenSet;
-
-export { RecursivePartial }
 
 // @public (undocumented)
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';

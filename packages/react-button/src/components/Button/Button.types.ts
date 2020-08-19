@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ButtonTokenSet, RecursivePartial } from '@fluentui/themes';
+import { ButtonTokenSet } from '@fluentui/themes';
 
-export { ButtonTokenSet, RecursivePartial } from '@fluentui/themes';
+export { ButtonTokenSet } from '@fluentui/themes';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
@@ -88,7 +88,7 @@ export type ButtonProps = ComponentProps &
     /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
     // text?: boolean;
 
-    tokens?: RecursivePartial<ButtonTokenSet>;
+    tokens?: ButtonTokenSet;
   };
 
 export interface ButtonState extends ButtonProps {
