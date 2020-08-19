@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Initial publish",
+  "packageName": "@fluentui/react-flex",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-19T00:28:01.098Z"
+}
