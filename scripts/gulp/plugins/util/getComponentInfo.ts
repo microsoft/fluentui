@@ -6,6 +6,7 @@ import fs from 'fs';
 
 import { BehaviorInfo, ComponentInfo, ComponentProp } from './docs-types';
 import * as docgen from './docgen';
+import parseDefaultPropsValues from './parseDefaultPropsValues';
 import parseDocblock from './parseDocblock';
 import parseType from './parseType';
 import getShorthandInfo from './getShorthandInfo';
@@ -120,6 +121,11 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
     .replace(`${process.cwd()}${path.sep}`, '')
     .replace(new RegExp(_.escapeRegExp(path.sep), 'g'), '/');
 
+  const defaultProps = parseDefaultPropsValues({
+    componentAst,
+    componentName: info.displayName,
+    props: info.props,
+  });
   let props: ComponentProp[] = [];
 
   _.forEach(info.props, (propDef: docgen.PropItem, propName: string) => {
@@ -132,11 +138,10 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
 
     if (visibleInDefinition && visibleInTags) {
       const types = parseType(componentAst, info.displayName, propName, propDef);
-      const defaultValue = undefined; // parseDefaultValue(Component, propDef, types);
 
       props.push({
         description,
-        defaultValue,
+        defaultValue: defaultProps[propName],
         tags,
         types,
         name: propName,
@@ -149,7 +154,7 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
   if (info.props.as) {
     props.push({
       description: 'An element type to render as (string or component).',
-      defaultValue: undefined, // parseDefaultValue(Component, info.props.as, []) || 'div',
+      defaultValue: defaultProps.as,
       tags: [],
       types: [{ name: 'React.ElementType' }],
       name: 'as',
