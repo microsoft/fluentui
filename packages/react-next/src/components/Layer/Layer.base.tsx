@@ -149,7 +149,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onLayerWillUnmount]);
 
-  const createLayerElement = () => {
+  const createLayerElement = React.useCallback(() => {
     const host = getHost();
 
     // If both the document object and host are undefined then return null and don't create a layerElement.
@@ -170,10 +170,22 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
 
     setLayerHostId(hostId);
     setCurrentLayerElement(layerElement);
+    console.log(currentLayerElement);
 
     onLayerMounted?.();
     onLayerDidMount?.();
-  };
+  }, [
+    classNames.root,
+    currentLayerElement,
+
+    doc,
+    getHost,
+    hostId,
+    insertFirst,
+    onLayerDidMount,
+    onLayerMounted,
+    removeLayerElement,
+  ]);
 
   React.useEffect(() => {
     // On initial render:
@@ -192,7 +204,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     if (hostId !== layerHostId) {
       createLayerElement();
     }
-  }, [hostId, layerHostId]);
+  }, [createLayerElement, hostId, layerHostId]);
 
   useDebugWarnings(props);
 
@@ -207,7 +219,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
   });
 
   return (
-    <span className="ms-layer" ref={rootRef}>
+    <span className="ms-layer" ref={mergedRef}>
       {currentLayerElement &&
         ReactDOM.createPortal(
           <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
