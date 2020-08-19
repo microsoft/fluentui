@@ -98,7 +98,6 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     navigatedDate,
     firstDayOfWeek,
     today,
-    onDateChange,
     formatMonthDayYear,
     formatMonthYear,
     shortDays,
