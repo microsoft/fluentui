@@ -64,12 +64,12 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   onDateChange?: ComponentEventHandler<DatepickerProps & { value: Date }>;
 
   /**
-   * Called on change of the date.
+   * Called on error when changing the date.
    *
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
-  onDateEntryError?: ComponentEventHandler<DatepickerProps & { error: string }>;
+  onDateChangeError?: ComponentEventHandler<DatepickerProps & { error: string }>;
 
   /** Text placeholder for the input field. */
   placeholder?: string;
@@ -228,16 +228,16 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     },
     onChange: (e, target: { value: string }) => {
       const parsedDate = props.parseDate(target.value);
-      const futureError = validateDate(parsedDate, target.value, calendarOptions, dateFormatting, props.required);
-      setError(futureError);
+      const validationError = validateDate(parsedDate, target.value, calendarOptions, dateFormatting, props.required);
+      setError(validationError);
       setFormattedDate(target.value);
-      if (!futureError && !!parsedDate) {
+      if (!validationError && !!parsedDate) {
         setSelectedDate(parsedDate);
         _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
       }
 
-      if (!!futureError) {
-        _.invoke(props, 'onDateEntryError', e, { ...props, error: futureError });
+      if (!!validationError) {
+        _.invoke(props, 'onDateChangeError', e, { ...props, error: validationError });
       }
 
       _.invoke(predefinedProps, 'onChange', e, target);
@@ -254,17 +254,17 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     onBlur: e => {
       if (props.autoCorrectManualInput && !!error) {
         const futureFormattedDate = valueFormatter(selectedDate);
-        const futureError = validateDate(
+        const validationError = validateDate(
           selectedDate,
           futureFormattedDate,
           calendarOptions,
           dateFormatting,
           props.required,
         );
-        setError(futureError);
+        setError(validationError);
         setFormattedDate(futureFormattedDate);
-        if (!!futureError) {
-          _.invoke(props, 'onDateEntryError', e, { ...props, error: futureError });
+        if (!!validationError) {
+          _.invoke(props, 'onDateChangeError', e, { ...props, error: validationError });
         }
       }
 
@@ -337,7 +337,7 @@ Datepicker.propTypes = {
   disabled: PropTypes.bool,
   required: PropTypes.bool,
   onDateChange: PropTypes.func,
-  onDateEntryError: PropTypes.func,
+  onDateChangeError: PropTypes.func,
   placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
   autoCorrectManualInput: PropTypes.bool,
