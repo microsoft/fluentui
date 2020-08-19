@@ -1,19 +1,8 @@
 @import '~@fluentui/common-styles/dist/sass/focusBorder';
 
-:root {
-  /* divider variables */
-  --button-dividerColor: rgba(0, 0, 0, 0.1);
-  --button-dividerLength: var(--button-minHeight);
-  --button-dividerThickness: var(--button-borderWidth);
-
-  --accent-dividerColor: var(--button-dividerColor);
-}
-
 .root {
   --button-contentGap: 0;
   --button-padding: 0;
-
-  --button-dividerLength: var(--button-minHeight);
 
   width: auto;
 
@@ -50,8 +39,33 @@
 
   &._primary {
     > .divider {
-      --button-dividerColor: var(--accent-dividerColor);
+      --button-dividerColor: var(--accent-contentColor);
     }
+  }
+
+  // TODO: confirm if we should support size prop.
+  &._size_smallest {
+    --button-dividerLength: var(--button-size-smallest);
+  }
+
+  &._size_smaller {
+    --button-dividerLength: var(--button-size-smaller);
+  }
+
+  &._size_small {
+    --button-dividerLength: var(--button-size-small);
+  }
+
+  &._size_large {
+    --button-dividerLength: var(--button-size-large);
+  }
+
+  &._size_larger {
+    --button-dividerLength: var(--button-size-larger);
+  }
+
+  &._size_largest {
+    --button-dividerLength: var(--button-size-largest);
   }
 }
 

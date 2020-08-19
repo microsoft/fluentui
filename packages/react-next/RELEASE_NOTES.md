@@ -13,6 +13,12 @@ TODO: Diff of OUFR vs date-time Calendar
 - Deprecated `onRenderLabel`.
 - Added `label`/`checkmark` slot props.
 
+### ChoiceGroup
+
+- Moved `root` class to the actual root element by replacing `applicationRole`.
+- Removed `applicationRole` from IChoiceGroupStyles.
+- Removed deprecated `onChanged` prop.
+
 ### Coachmark
 
 - Removed `isBeaconAnimating` and `isMeasured` style props
@@ -23,6 +29,11 @@ TODO: Diff of OUFR vs date-time Calendar
 ### DatePicker
 
 TODO: Diff of OUFR vs date-time DatePicker
+
+### OverflowSet
+
+- Removed deprecated `focusZoneProps` and `doNotContainWithinFocusZone` from types.
+- Removed uses of `FocusZone` from render and the public-api.
 
 ### Pivot
 

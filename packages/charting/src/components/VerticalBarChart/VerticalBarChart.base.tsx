@@ -514,6 +514,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
+        {...this.props.legendProps}
       />
     );
     return legends;

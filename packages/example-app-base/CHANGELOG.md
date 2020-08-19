@@ -1,8 +1,28 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 06 Aug 2020 00:30:40 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Aug 2020 12:44:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.13.0)
+
+Wed, 19 Aug 2020 12:44:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.114..@uifabric/example-app-base_v7.13.0)
+
+### Patches
+
+- Add back UHF link style overrides via Customizer ([PR #14542](https://github.com/microsoft/fluentui/pull/14542) by elcraig@microsoft.com)
+- update semantic slots ([PR #14396](https://github.com/microsoft/fluentui/pull/14396) by phkuo@microsoft.com)
+
+## [7.12.114](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.114)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.109..@uifabric/example-app-base_v7.12.114)
+
+### Patches
+
+- @uifabric/example-app-base: Updating dependencies to resolve security issues. ([PR #14543](https://github.com/microsoft/fluentui/pull/14543) by humbertomakotomorimoto@gmail.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [7.12.106](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.106)
 

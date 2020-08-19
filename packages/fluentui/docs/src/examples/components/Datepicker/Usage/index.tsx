@@ -23,6 +23,16 @@ const Usage = () => (
       }
       examplePath="components/Datepicker/Usage/DatepickerParseExample"
     />
+
+    <ComponentExample
+      title="First day of week"
+      description={
+        <>
+          <code>firstDayOfWeek</code> prop can be used to specify first day of the week. Sunday is default.
+        </>
+      }
+      examplePath="components/Datepicker/Usage/DatepickerFirstWeekDayExample"
+    />
   </ExampleSection>
 );
 
