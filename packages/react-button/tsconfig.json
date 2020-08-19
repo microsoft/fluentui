@@ -22,5 +22,6 @@
       "@fluentui/react-button/lib/*": ["./src/*"],
       "@fluentui/react-button": ["./src"]
     }
-  }
+  },
+  "include": ["src"]
 }
