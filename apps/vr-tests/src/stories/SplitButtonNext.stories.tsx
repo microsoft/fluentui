@@ -2,13 +2,13 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@fluentui/react-button';
+import { SplitButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { TeamsTheme } from '@fluentui/react-theme-provider';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator } from '../utilities';
 
-storiesOf('Button Next', module)
+storiesOf('SplitButton Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -32,16 +32,16 @@ storiesOf('Button Next', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button>Hello, world</Button>)
-  .addStory('Primary', () => <Button primary>Hello, world</Button>)
-  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Default', () => <SplitButton>Hello, world</SplitButton>)
+  .addStory('Primary', () => <SplitButton primary>Hello, world</SplitButton>)
+  .addStory('Disabled', () => <SplitButton disabled>Hello, world</SplitButton>)
   .addStory('Primary Disabled', () => (
-    <Button primary disabled>
+    <SplitButton primary disabled>
       Hello, world
-    </Button>
+    </SplitButton>
   ));
 
-storiesOf('Button Next - Teams Theme', module)
+storiesOf('SplitButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
@@ -65,17 +65,17 @@ storiesOf('Button Next - Teams Theme', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button>Hello, world</Button>)
-  .addStory('Primary', () => <Button primary>Hello, world</Button>)
-  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Default', () => <SplitButton>Hello, world</SplitButton>)
+  .addStory('Primary', () => <SplitButton primary>Hello, world</SplitButton>)
+  .addStory('Disabled', () => <SplitButton disabled>Hello, world</SplitButton>)
   .addStory('Primary Disabled', () => (
-    <Button primary disabled>
+    <SplitButton primary disabled>
       Hello, world
-    </Button>
+    </SplitButton>
   ))
-  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>);
+  .addStory('With icon before content', () => <SplitButton icon="X">Hello, world</SplitButton>);
 
-storiesOf('Button Next - With icon before content', module)
+storiesOf('SplitButton Next - With icon before content', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -98,68 +98,24 @@ storiesOf('Button Next - With icon before content', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button icon="X">Hello, world</Button>)
+  .addStory('Default', () => <SplitButton icon="X">Hello, world</SplitButton>)
   .addStory('Primary', () => (
-    <Button primary icon="X">
+    <SplitButton primary icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Disabled', () => (
-    <Button disabled icon="X">
+    <SplitButton disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button primary disabled icon="X">
+    <SplitButton primary disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ));
 
-storiesOf('Button Next - With icon after content', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => (
-    <Button icon="X" iconPosition="after">
-      Hello, world
-    </Button>
-  ))
-  .addStory('Primary', () => (
-    <Button primary icon="X" iconPosition="after">
-      Hello, world
-    </Button>
-  ))
-  .addStory('Disabled', () => (
-    <Button disabled icon="X" iconPosition="after">
-      Hello, world
-    </Button>
-  ))
-  .addStory('Primary Disabled', () => (
-    <Button primary disabled icon="X" iconPosition="after">
-      Hello, world
-    </Button>
-  ));
-
-storiesOf('Button Next - Circular', module)
+storiesOf('SplitButton Next - With icon after content', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -183,27 +139,27 @@ storiesOf('Button Next - Circular', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button circular icon="X">
+    <SplitButton icon="X" iconPosition="after">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary', () => (
-    <Button circular primary icon="X">
+    <SplitButton primary icon="X" iconPosition="after">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Disabled', () => (
-    <Button circular disabled icon="X">
+    <SplitButton disabled icon="X" iconPosition="after">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button circular primary disabled icon="X">
+    <SplitButton primary disabled icon="X" iconPosition="after">
       Hello, world
-    </Button>
+    </SplitButton>
   ));
 
-storiesOf('Button Next - Icon only', module)
+storiesOf('SplitButton Next - Circular', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -227,27 +183,27 @@ storiesOf('Button Next - Icon only', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button iconOnly icon="X">
+    <SplitButton circular icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary', () => (
-    <Button iconOnly primary icon="X">
+    <SplitButton circular primary icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Disabled', () => (
-    <Button iconOnly disabled icon="X">
+    <SplitButton circular disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button iconOnly primary disabled icon="X">
+    <SplitButton circular primary disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ));
 
-storiesOf('Button Next - Fluid', module)
+storiesOf('SplitButton Next - Icon only', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -271,27 +227,27 @@ storiesOf('Button Next - Fluid', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button fluid icon="X">
+    <SplitButton iconOnly icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary', () => (
-    <Button fluid primary icon="X">
+    <SplitButton iconOnly primary icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Disabled', () => (
-    <Button fluid disabled icon="X">
+    <SplitButton iconOnly disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button fluid primary disabled icon="X">
+    <SplitButton iconOnly primary disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ));
 
-storiesOf('Button Next - Inverted', module)
+storiesOf('SplitButton Next - Fluid', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -315,27 +271,27 @@ storiesOf('Button Next - Inverted', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button inverted icon="X">
+    <SplitButton fluid icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary', () => (
-    <Button inverted primary icon="X">
+    <SplitButton fluid primary icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Disabled', () => (
-    <Button inverted disabled icon="X">
+    <SplitButton fluid disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button inverted primary disabled icon="X">
+    <SplitButton fluid primary disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ));
 
-storiesOf('Button Next - Loading', module)
+storiesOf('SplitButton Next - Inverted', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -359,27 +315,71 @@ storiesOf('Button Next - Loading', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button loading icon="X">
+    <SplitButton inverted icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary', () => (
-    <Button loading primary icon="X">
+    <SplitButton inverted primary icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Disabled', () => (
-    <Button loading disabled icon="X">
+    <SplitButton inverted disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button loading primary disabled icon="X">
+    <SplitButton inverted primary disabled icon="X">
       Hello, world
-    </Button>
+    </SplitButton>
   ));
 
-storiesOf('Button Next - Sizes', module)
+storiesOf('SplitButton Next - Loading', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
+        )
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
+        )
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => (
+    <SplitButton loading icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Primary', () => (
+    <SplitButton loading primary icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Disabled', () => (
+    <SplitButton loading disabled icon="X">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Primary Disabled', () => (
+    <SplitButton loading primary disabled icon="X">
+      Hello, world
+    </SplitButton>
+  ));
+
+storiesOf('SplitButton Next - Sizes', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -403,37 +403,37 @@ storiesOf('Button Next - Sizes', module)
     </Screener>
   ))
   .addStory('Smallest', () => (
-    <Button icon="X" size="smallest">
+    <SplitButton icon="X" size="smallest">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Smaller', () => (
-    <Button icon="X" size="smaller">
+    <SplitButton icon="X" size="smaller">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Small', () => (
-    <Button icon="X" size="small">
+    <SplitButton icon="X" size="small">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Large', () => (
-    <Button icon="X" size="large">
+    <SplitButton icon="X" size="large">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Larger', () => (
-    <Button icon="X" size="larger">
+    <SplitButton icon="X" size="larger">
       Hello, world
-    </Button>
+    </SplitButton>
   ))
   .addStory('Largest', () => (
-    <Button icon="X" size="largest">
+    <SplitButton icon="X" size="largest">
       Hello, world
-    </Button>
+    </SplitButton>
   ));
 
-storiesOf('Button Next - With styled icon from react-icons via tokens', module)
+storiesOf('SplitButton Next - With styled icon from react-icons via tokens', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -456,9 +456,13 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
-  .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
-  .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Default', () => <SplitButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Primary', () => (
+    <SplitButton primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ))
+  .addStory('Disabled', () => (
+    <SplitButton disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ))
   .addStory('Primary Disabled', () => (
-    <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <SplitButton primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
   ));

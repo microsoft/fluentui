@@ -2,13 +2,13 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@fluentui/react-button';
+import { ToggleButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons';
 import { TeamsTheme } from '@fluentui/react-theme-provider';
 import { withThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator } from '../utilities';
 
-storiesOf('Button Next', module)
+storiesOf('ToggleButton Next', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider)
   .addDecorator(story => (
@@ -17,8 +17,8 @@ storiesOf('Button Next', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('checked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -32,16 +32,16 @@ storiesOf('Button Next', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button>Hello, world</Button>)
-  .addStory('Primary', () => <Button primary>Hello, world</Button>)
-  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>)
+  .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
+  .addStory('Disabled', () => <ToggleButton disabled>Hello, world</ToggleButton>)
   .addStory('Primary Disabled', () => (
-    <Button primary disabled>
+    <ToggleButton primary disabled>
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - Teams Theme', module)
+storiesOf('ToggleButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
   .addDecorator(withThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
@@ -50,8 +50,8 @@ storiesOf('Button Next - Teams Theme', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -65,17 +65,17 @@ storiesOf('Button Next - Teams Theme', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button>Hello, world</Button>)
-  .addStory('Primary', () => <Button primary>Hello, world</Button>)
-  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>)
+  .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
+  .addStory('Disabled', () => <ToggleButton disabled>Hello, world</ToggleButton>)
   .addStory('Primary Disabled', () => (
-    <Button primary disabled>
+    <ToggleButton primary disabled>
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
-  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>);
+  .addStory('With icon before content', () => <ToggleButton icon="X">Hello, world</ToggleButton>);
 
-storiesOf('Button Next - With icon before content', module)
+storiesOf('ToggleButton Next - With icon before content', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -83,8 +83,8 @@ storiesOf('Button Next - With icon before content', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -98,24 +98,24 @@ storiesOf('Button Next - With icon before content', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button icon="X">Hello, world</Button>)
+  .addStory('Default', () => <ToggleButton icon="X">Hello, world</ToggleButton>)
   .addStory('Primary', () => (
-    <Button primary icon="X">
+    <ToggleButton primary icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Disabled', () => (
-    <Button disabled icon="X">
+    <ToggleButton disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button primary disabled icon="X">
+    <ToggleButton primary disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - With icon after content', module)
+storiesOf('ToggleButton Next - With icon after content', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -123,8 +123,8 @@ storiesOf('Button Next - With icon after content', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -139,27 +139,27 @@ storiesOf('Button Next - With icon after content', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button icon="X" iconPosition="after">
+    <ToggleButton icon="X" iconPosition="after">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary', () => (
-    <Button primary icon="X" iconPosition="after">
+    <ToggleButton primary icon="X" iconPosition="after">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Disabled', () => (
-    <Button disabled icon="X" iconPosition="after">
+    <ToggleButton disabled icon="X" iconPosition="after">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button primary disabled icon="X" iconPosition="after">
+    <ToggleButton primary disabled icon="X" iconPosition="after">
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - Circular', module)
+storiesOf('ToggleButton Next - Circular', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -167,8 +167,8 @@ storiesOf('Button Next - Circular', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -183,27 +183,27 @@ storiesOf('Button Next - Circular', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button circular icon="X">
+    <ToggleButton circular icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary', () => (
-    <Button circular primary icon="X">
+    <ToggleButton circular primary icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Disabled', () => (
-    <Button circular disabled icon="X">
+    <ToggleButton circular disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button circular primary disabled icon="X">
+    <ToggleButton circular primary disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - Icon only', module)
+storiesOf('ToggleButton Next - Icon only', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -211,8 +211,8 @@ storiesOf('Button Next - Icon only', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -227,27 +227,27 @@ storiesOf('Button Next - Icon only', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button iconOnly icon="X">
+    <ToggleButton iconOnly icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary', () => (
-    <Button iconOnly primary icon="X">
+    <ToggleButton iconOnly primary icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Disabled', () => (
-    <Button iconOnly disabled icon="X">
+    <ToggleButton iconOnly disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button iconOnly primary disabled icon="X">
+    <ToggleButton iconOnly primary disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - Fluid', module)
+storiesOf('ToggleButton Next - Fluid', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -255,8 +255,8 @@ storiesOf('Button Next - Fluid', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -271,27 +271,27 @@ storiesOf('Button Next - Fluid', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button fluid icon="X">
+    <ToggleButton fluid icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary', () => (
-    <Button fluid primary icon="X">
+    <ToggleButton fluid primary icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Disabled', () => (
-    <Button fluid disabled icon="X">
+    <ToggleButton fluid disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button fluid primary disabled icon="X">
+    <ToggleButton fluid primary disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - Inverted', module)
+storiesOf('ToggleButton Next - Inverted', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -299,8 +299,8 @@ storiesOf('Button Next - Inverted', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -315,27 +315,27 @@ storiesOf('Button Next - Inverted', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button inverted icon="X">
+    <ToggleButton inverted icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary', () => (
-    <Button inverted primary icon="X">
+    <ToggleButton inverted primary icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Disabled', () => (
-    <Button inverted disabled icon="X">
+    <ToggleButton inverted disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button inverted primary disabled icon="X">
+    <ToggleButton inverted primary disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - Loading', module)
+storiesOf('ToggleButton Next - Loading', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -343,8 +343,8 @@ storiesOf('Button Next - Loading', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -359,27 +359,27 @@ storiesOf('Button Next - Loading', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <Button loading icon="X">
+    <ToggleButton loading icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary', () => (
-    <Button loading primary icon="X">
+    <ToggleButton loading primary icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Disabled', () => (
-    <Button loading disabled icon="X">
+    <ToggleButton loading disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Primary Disabled', () => (
-    <Button loading primary disabled icon="X">
+    <ToggleButton loading primary disabled icon="X">
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - Sizes', module)
+storiesOf('ToggleButton Next - Sizes', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -387,8 +387,8 @@ storiesOf('Button Next - Sizes', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -403,37 +403,37 @@ storiesOf('Button Next - Sizes', module)
     </Screener>
   ))
   .addStory('Smallest', () => (
-    <Button icon="X" size="smallest">
+    <ToggleButton icon="X" size="smallest">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Smaller', () => (
-    <Button icon="X" size="smaller">
+    <ToggleButton icon="X" size="smaller">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Small', () => (
-    <Button icon="X" size="small">
+    <ToggleButton icon="X" size="small">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Large', () => (
-    <Button icon="X" size="large">
+    <ToggleButton icon="X" size="large">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Larger', () => (
-    <Button icon="X" size="larger">
+    <ToggleButton icon="X" size="larger">
       Hello, world
-    </Button>
+    </ToggleButton>
   ))
   .addStory('Largest', () => (
-    <Button icon="X" size="largest">
+    <ToggleButton icon="X" size="largest">
       Hello, world
-    </Button>
+    </ToggleButton>
   ));
 
-storiesOf('Button Next - With styled icon from react-icons via tokens', module)
+storiesOf('ToggleButton Next - With styled icon from react-icons via tokens', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -441,8 +441,8 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .click('button')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -456,9 +456,13 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
-  .addStory('Primary', () => <Button primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
-  .addStory('Disabled', () => <Button disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Default', () => <ToggleButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
+  .addStory('Primary', () => (
+    <ToggleButton primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ))
+  .addStory('Disabled', () => (
+    <ToggleButton disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  ))
   .addStory('Primary Disabled', () => (
-    <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+    <ToggleButton primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
   ));
