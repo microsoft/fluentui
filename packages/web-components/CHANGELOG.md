@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 13 Aug 2020 12:41:58 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Aug 2020 07:58:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.7)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.1.5..@fluentui/web-components_v0.1.7)
+
+### Patches
+
+- fix: apply badge appearance styling to control not host element ([PR #14539](https://github.com/microsoft/fluentui/pull/14539) by chhol@microsoft.com)
+- update fast element version to leverage latest changes ([PR #14573](https://github.com/microsoft/fluentui/pull/14573) by chhol@microsoft.com)
+- fixing publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.1.5)
 
