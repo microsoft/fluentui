@@ -1,4 +1,4 @@
-The `ms-Grid` classes are only available via Fabric Core CSS. If you're not using Fabric Core, Fluent UI React's [`Stack`](#/controls/web/stack) can cover some of the same use cases, or you can use [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
+**The `ms-Grid` classes are only available via Fabric Core CSS.** If you're not using Fabric Core, Fluent UI React's [`Stack`](#/controls/web/stack) can cover some of the same use cases, or you can use [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
 
 To start using the `ms-Grid` styles, ensure that you've loaded the Fabric Core stylesheet following the [getting started instructions](#/get-started/web#fabric-core).
 
@@ -15,16 +15,18 @@ A grid (`ms-Grid`) can contain multiple rows (`ms-Grid-row`), each of which has 
 </div>
 ```
 
-<div className="ms-Grid">
-  <div className="ms-Grid-row">
-    <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg2">
-      <div className="LayoutPage-demoBlock">A</div>
+```renderhtml
+<div class="ms-Grid">
+  <div class="ms-Grid-row">
+    <div class="ms-Grid-col ms-sm6 ms-md4 ms-lg2">
+      <div class="LayoutPage-demoBlock">A</div>
     </div>
-    <div className="ms-Grid-col ms-sm6 ms-md8 ms-lg10">
-      <div className="LayoutPage-demoBlock">B</div>
+    <div class="ms-Grid-col ms-sm6 ms-md8 ms-lg10">
+      <div class="LayoutPage-demoBlock">B</div>
     </div>
   </div>
 </div>
+```
 
 #### Inheritance
 
@@ -36,13 +38,15 @@ Try this out! On a large screen, the example block will be smaller. Try shrinkin
 <div class="ms-Grid-col ms-sm12 ms-lg4">Example</div>
 ```
 
-<div className="ms-Grid">
-  <div className="ms-Grid-row">
-    <div className="ms-Grid-col ms-sm12 ms-lg4">
-      <div className="LayoutPage-demoBlock">Example</div>
+```renderhtml
+<div class="ms-Grid">
+  <div class="ms-Grid-row">
+    <div class="ms-Grid-col ms-sm12 ms-lg4">
+      <div class="LayoutPage-demoBlock">Example</div>
     </div>
   </div>
 </div>
+```
 
 #### Push and pull
 
@@ -53,13 +57,15 @@ You might want your column source order to differ from the display order, or to 
 <div class="ms-Grid-col ms-sm8 ms-smPull4">Second in code</div>
 ```
 
-<div className="ms-Grid">
-  <div className="ms-Grid-row">
-    <div className="ms-Grid-col ms-sm4 ms-smPush8">
-      <div className="LayoutPage-demoBlock">First in code</div>
+```renderhtml
+<div class="ms-Grid">
+  <div class="ms-Grid-row">
+    <div class="ms-Grid-col ms-sm4 ms-smPush8">
+      <div class="LayoutPage-demoBlock">First in code</div>
     </div>
-    <div className="ms-Grid-col ms-sm8 ms-smPull4">
-      <div className="LayoutPage-demoBlock">Second in code</div>
+    <div class="ms-Grid-col ms-sm8 ms-smPull4">
+      <div class="LayoutPage-demoBlock">Second in code</div>
     </div>
   </div>
 </div>
+```

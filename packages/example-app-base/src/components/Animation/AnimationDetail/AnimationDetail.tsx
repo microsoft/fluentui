@@ -3,6 +3,7 @@ import { mergeStyleSets, FontWeights } from 'office-ui-fabric-react';
 import { IAnimationDetailProps } from './AnimationDetail.types';
 
 import { AnimationExample } from '../index';
+import { MarkdownCode } from '../../Markdown';
 
 const styles = mergeStyleSets({
   root: {
@@ -39,11 +40,15 @@ export const AnimationDetail: React.FunctionComponent<IAnimationDetailProps> = p
         </div>
         <div>
           <div className={styles.detailTitle}>Core variable/mixin/class</div>
-          <span>{coreClass}</span>
+          <span>
+            <MarkdownCode>{coreClass}</MarkdownCode>
+          </span>
         </div>
         <div>
           <div className={styles.detailTitle}>React variable</div>
-          <span>{reactVariable}</span>
+          <span>
+            <MarkdownCode>{reactVariable}</MarkdownCode>
+          </span>
         </div>
       </div>
     </div>

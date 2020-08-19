@@ -48,9 +48,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 layouts for a variety of screen sizes and device types.
               </p>
               <p>
-                Note that this grid is only available via Fabric Core CSS. If you're not using Fabric Core, Fluent UI
-                React's <MarkdownLink href="#/controls/web/stack">Stack</MarkdownLink> can cover some of the same use
-                cases, or you can use{' '}
+                <strong>Note that this grid is only available via Fabric Core CSS.</strong> If you're not using Fabric
+                Core, Fluent UI React's <MarkdownLink href="#/controls/web/stack">Stack</MarkdownLink> can cover some of
+                the same use cases, or you can use{' '}
                 <MarkdownLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">
                   CSS grid
                 </MarkdownLink>
@@ -164,7 +164,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Implementation',
           content: (
             <>
-              <Markdown>
+              <Markdown enableRenderHtmlBlock>
                 {
                   require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LayoutPage/docs/web/LayoutGridImplementation.md') as string
                 }

@@ -2,12 +2,12 @@ import * as React from 'react';
 import {
   AnimationDetail,
   AnimationDetailGrid,
-  AnimationExample,
   IPageSectionProps,
   Markdown,
   MarkdownHeader,
   Table,
   Video,
+  MarkdownCode,
 } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { MotionPageProps } from './MotionPage.doc';
@@ -46,7 +46,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
     case 'web':
       return [
         {
-          sectionName: 'Animation Patterns',
+          sectionName: 'Animation patterns',
           editUrl: `${baseUrl}/web/MotionAnimationPatterns.md`,
           content: (
             <>
@@ -193,7 +193,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         },
 
         {
-          sectionName: 'Basic Animations',
+          sectionName: 'Basic animations',
           editUrl: `${baseUrl}/web/MotionBasicAnimations.md`,
           content: (
             <>
@@ -299,7 +299,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 {
                   title: 'Duration',
                   data: 'duration',
-                  percentWidth: 50,
+                  percentWidth: 25,
                 },
                 {
                   title: 'Core variable',
@@ -332,32 +332,22 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   react: 'MotionDurations.duration4',
                 },
               ]}
-              formatter={(column, row) => row[column.data]}
+              formatter={(column, row) =>
+                column.data === 'duration' ? row[column.data] : <MarkdownCode>{row[column.data]}</MarkdownCode>
+              }
             />
           ),
         },
 
         {
-          sectionName: 'Timing Functions',
+          sectionName: 'Timing functions',
           content: (
             <Table
               columns={[
-                {
-                  title: 'Name',
-                  data: 'name',
-                },
-                {
-                  title: 'Value',
-                  data: 'value',
-                },
-                {
-                  title: 'Core variable',
-                  data: 'core',
-                },
-                {
-                  title: 'React variable',
-                  data: 'react',
-                },
+                { title: 'Name', data: 'name' },
+                { title: 'Value', data: 'value' },
+                { title: 'Core variable', data: 'core' },
+                { title: 'React variable', data: 'react' },
               ]}
               rows={[
                 {
@@ -385,12 +375,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   react: 'MotionTimings.decelerate',
                 },
               ]}
-              formatter={(column, row) => {
-                if (column.title === 'Example') {
-                  return <AnimationExample animation={row.class} />;
-                }
-                return row[column.data];
-              }}
+              formatter={(column, row) =>
+                column.data === 'name' ? row[column.data] : <MarkdownCode>{row[column.data]}</MarkdownCode>
+              }
             />
           ),
         },

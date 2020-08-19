@@ -3,10 +3,20 @@ import { IMarkdownHeaderStyleProps } from './MarkdownHeader';
 import { IMarkdownParagraphStyleProps } from './MarkdownParagraph';
 import { IMarkdownCodeStyleProps } from './MarkdownCode';
 import { IMarkdownTableStyleProps } from '../MarkdownTable/index';
+import { MarkdownOptions } from 'markdown-to-jsx';
 
 export interface IMarkdownProps {
   className?: string;
   children?: React.ReactNode;
+
+  /**
+   * If true, using a code block with language name `renderhtml` will render the contents as HTML.
+   * This is to work around markdown-to-jsx's limited support for nested HTML elements.
+   */
+  enableRenderHtmlBlock?: boolean;
+
+  /** Additional component overrides for markdown rendering */
+  overrides?: MarkdownOptions['overrides'];
 
   /** Theme provided by higher-order component. */
   theme?: ITheme;

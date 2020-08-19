@@ -1,8 +1,7 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IMargins } from '../../utilities/index';
-import { IChildProps } from '../../types/IDataPoint';
-import { ILineChartPoints } from '@uifabric/charting';
+import { IChildProps, ILineChartPoints } from '../../types/IDataPoint';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 export interface IChartHelperStyleProps {
