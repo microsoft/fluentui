@@ -77,6 +77,7 @@ storiesOf('Button Next - Teams Theme', module)
 
 storiesOf('Button Next - With icon before content', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -117,6 +118,7 @@ storiesOf('Button Next - With icon before content', module)
 
 storiesOf('Button Next - With icon after content', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -161,6 +163,7 @@ storiesOf('Button Next - With icon after content', module)
 
 storiesOf('Button Next - Circular', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -205,6 +208,7 @@ storiesOf('Button Next - Circular', module)
 
 storiesOf('Button Next - Icon only', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -249,6 +253,7 @@ storiesOf('Button Next - Icon only', module)
 
 storiesOf('Button Next - Fluid', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -293,6 +298,7 @@ storiesOf('Button Next - Fluid', module)
 
 storiesOf('Button Next - Inverted', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -337,6 +343,7 @@ storiesOf('Button Next - Inverted', module)
 
 storiesOf('Button Next - Loading', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -381,6 +388,7 @@ storiesOf('Button Next - Loading', module)
 
 storiesOf('Button Next - Sizes', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -435,6 +443,7 @@ storiesOf('Button Next - Sizes', module)
 
 storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()

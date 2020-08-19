@@ -39,6 +39,40 @@ storiesOf('MenuButton Next', module)
     <MenuButton primary disabled>
       Hello, world
     </MenuButton>
+  ))
+  .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>)
+  .addStory('With icon after content', () => (
+    <MenuButton icon="X" iconPosition="after">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Circular', () => (
+    <MenuButton circular icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Size largest', () => (
+    <MenuButton icon="X" size="largest">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Inverted', () => (
+    <MenuButton inverted icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Fluid', () => (
+    <MenuButton fluid icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Icon only', () => (
+    <MenuButton iconOnly icon="X">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('With styled icon from react-icons via tokens', () => (
+    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
   ));
 
 storiesOf('MenuButton Next - Teams Theme', module)
@@ -73,396 +107,37 @@ storiesOf('MenuButton Next - Teams Theme', module)
       Hello, world
     </MenuButton>
   ))
-  .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>);
-
-storiesOf('MenuButton Next - With icon before content', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => <MenuButton icon="X">Hello, world</MenuButton>)
-  .addStory('Primary', () => (
-    <MenuButton primary icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Disabled', () => (
-    <MenuButton disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary Disabled', () => (
-    <MenuButton primary disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ));
-
-storiesOf('MenuButton Next - With icon after content', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => (
+  .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>)
+  .addStory('With icon after content', () => (
     <MenuButton icon="X" iconPosition="after">
       Hello, world
     </MenuButton>
   ))
-  .addStory('Primary', () => (
-    <MenuButton primary icon="X" iconPosition="after">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Disabled', () => (
-    <MenuButton disabled icon="X" iconPosition="after">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary Disabled', () => (
-    <MenuButton primary disabled icon="X" iconPosition="after">
-      Hello, world
-    </MenuButton>
-  ));
-
-storiesOf('MenuButton Next - Circular', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => (
+  .addStory('Circular', () => (
     <MenuButton circular icon="X">
       Hello, world
     </MenuButton>
   ))
-  .addStory('Primary', () => (
-    <MenuButton circular primary icon="X">
+  .addStory('Size largest', () => (
+    <MenuButton icon="X" size="largest">
       Hello, world
     </MenuButton>
   ))
-  .addStory('Disabled', () => (
-    <MenuButton circular disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary Disabled', () => (
-    <MenuButton circular primary disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ));
-
-storiesOf('MenuButton Next - Icon only', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => (
-    <MenuButton iconOnly icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary', () => (
-    <MenuButton iconOnly primary icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Disabled', () => (
-    <MenuButton iconOnly disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary Disabled', () => (
-    <MenuButton iconOnly primary disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ));
-
-storiesOf('MenuButton Next - Fluid', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => (
-    <MenuButton fluid icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary', () => (
-    <MenuButton fluid primary icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Disabled', () => (
-    <MenuButton fluid disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary Disabled', () => (
-    <MenuButton fluid primary disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ));
-
-storiesOf('MenuButton Next - Inverted', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => (
+  .addStory('Inverted', () => (
     <MenuButton inverted icon="X">
       Hello, world
     </MenuButton>
   ))
-  .addStory('Primary', () => (
-    <MenuButton inverted primary icon="X">
+  .addStory('Fluid', () => (
+    <MenuButton fluid icon="X">
       Hello, world
     </MenuButton>
   ))
-  .addStory('Disabled', () => (
-    <MenuButton inverted disabled icon="X">
+  .addStory('Icon only', () => (
+    <MenuButton iconOnly icon="X">
       Hello, world
     </MenuButton>
   ))
-  .addStory('Primary Disabled', () => (
-    <MenuButton inverted primary disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ));
-
-storiesOf('MenuButton Next - Loading', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => (
-    <MenuButton loading icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary', () => (
-    <MenuButton loading primary icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Disabled', () => (
-    <MenuButton loading disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary Disabled', () => (
-    <MenuButton loading primary disabled icon="X">
-      Hello, world
-    </MenuButton>
-  ));
-
-storiesOf('MenuButton Next - Sizes', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Smallest', () => (
-    <MenuButton icon="X" size="smallest">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Smaller', () => (
-    <MenuButton icon="X" size="smaller">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Small', () => (
-    <MenuButton icon="X" size="small">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Large', () => (
-    <MenuButton icon="X" size="large">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Larger', () => (
-    <MenuButton icon="X" size="larger">
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Largest', () => (
-    <MenuButton icon="X" size="largest">
-      Hello, world
-    </MenuButton>
-  ));
-
-storiesOf('MenuButton Next - With styled icon from react-icons via tokens', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => <MenuButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />)
-  .addStory('Primary', () => (
-    <MenuButton primary icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
-  ))
-  .addStory('Disabled', () => (
-    <MenuButton disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
-  ))
-  .addStory('Primary Disabled', () => (
-    <MenuButton primary disabled icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
+  .addStory('With styled icon from react-icons via tokens', () => (
+    <MenuButton icon={<AddIcon />} tokens={{ iconSize: '40px' }} />
   ));
