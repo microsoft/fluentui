@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Added document type to useOnEvent element parameter and adding useDocumentRef and useWindowRef hooks.",
-  "packageName": "@uifabric/react-hooks",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "none",
-  "date": "2020-07-29T19:48:06.451Z"
-}
