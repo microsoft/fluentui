@@ -2,6 +2,11 @@ import * as fs from 'fs';
 import path from 'path';
 import * as ts from 'typescript';
 
+// The implementation was taken from "react-docgen-typescript-loader"
+// @see https://github.com/strothj/react-docgen-typescript-loader/blob/7c5803c5e12ca5648466856bc5409bf23aa84be3/src/loader.ts#L25
+// Files registration allows to handle file changes i.e. watch mode and handle multiple "tsconfig.json".
+// That will allow to reuse `getComponentInfo()` as Webpack loader or data source.
+
 export type TSFile = {
   text?: string;
   version: number;
@@ -10,6 +15,7 @@ export type TSFile = {
 function getTSConfigFile(tsconfigPath: string): ts.ParsedCommandLine {
   const basePath = path.dirname(tsconfigPath);
   const configFile = ts.readConfigFile(tsconfigPath, ts.sys.readFile);
+
   return ts.parseJsonConfigFileContent(configFile!.config, ts.sys, basePath, {}, tsconfigPath);
 }
 
