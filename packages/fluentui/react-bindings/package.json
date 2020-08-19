@@ -11,13 +11,13 @@
     "@fluentui/keyboard-key": "^0.2.10",
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-component-ref": "^0.51.0",
-    "@fluentui/react-compose": "^0.14.5",
+    "@fluentui/react-compose": "^0.17.0",
     "@fluentui/react-northstar-fela-renderer": "^0.51.0",
     "@fluentui/react-northstar-styles-renderer": "^0.51.0",
     "@fluentui/state": "^0.51.0",
     "@fluentui/styles": "^0.51.0",
     "@quid/stylis-plugin-focus-visible": "^4.0.0",
-    "@uifabric/utilities": "^7.28.0",
+    "@uifabric/utilities": "^7.29.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
@@ -50,10 +50,14 @@
   "publishConfig": {
     "access": "public"
   },
+  "gulp": {
+    "componentInfo": "./src/FocusZone/[A-Z]!(*.types).tsx"
+  },
   "repository": "microsoft/fluentui.git",
   "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
+    "build": "gulp bundle:package:no-umd && yarn build:info",
+    "build:info": "gulp build:component-info",
+    "clean": "gulp clean:component-info bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "test": "gulp test",

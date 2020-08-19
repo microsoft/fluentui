@@ -1,6 +1,7 @@
 import { runComponentToCompat, buildCompatHash, RawCompat, ComponentToCompat, getNamedExports } from './compatHelpers';
 import { CodeMod } from '../../types';
 import { SourceFile } from 'ts-morph';
+import { Ok } from '../../../helpers/result';
 
 // Not sure if this the best way to get all the things exported from button. It's dependent on version
 // And other things. Ideally we'd be able to get it from within ts-morph.
@@ -40,7 +41,7 @@ export function createComponentToCompat(comp: RawCompat): ComponentToCompat {
 const ComponentToCompat: CodeMod = {
   run: (file: SourceFile) => {
     runComponentToCompat(file, buildCompatHash(exportMapping, createComponentToCompat), fabricindex);
-    return { success: true };
+    return Ok({ logs: ['Moved imports to compat'] });
   },
   name: 'ComponentToCompat',
   version: '1.0.0',

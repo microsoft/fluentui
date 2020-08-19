@@ -13,7 +13,7 @@
     "@fluentui/react-component-event-listener": "^0.51.0",
     "@fluentui/react-component-nesting-registry": "^0.51.0",
     "@fluentui/react-component-ref": "^0.51.0",
-    "@fluentui/react-compose": "^0.14.5",
+    "@fluentui/react-compose": "^0.17.0",
     "@fluentui/react-context-selector": "^0.51.0",
     "@fluentui/react-icons-northstar": "^0.51.0",
     "@fluentui/react-northstar-styles-renderer": "^0.51.0",
@@ -70,9 +70,13 @@
     "access": "public"
   },
   "repository": "microsoft/fluentui.git",
+  "gulp": {
+    "componentInfo": "./src/components/*/[A-Z]*.tsx"
+  },
   "scripts": {
-    "build": "gulp bundle:package",
-    "clean": "gulp bundle:package:clean",
+    "build": "gulp bundle:package:no-umd && yarn build:info",
+    "build:info": "gulp build:component-info",
+    "clean": "gulp clean:component-info bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "test": "gulp test",
