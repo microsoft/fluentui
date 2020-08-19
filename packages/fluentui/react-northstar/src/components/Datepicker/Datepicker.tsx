@@ -287,6 +287,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               error: !!error,
               value: formattedDate,
               readOnly: !props.allowManualInput,
+              required: props.required,
             }),
             overrideProps: overrideInputProps,
           })}
