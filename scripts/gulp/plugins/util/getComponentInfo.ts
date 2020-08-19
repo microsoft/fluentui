@@ -15,7 +15,7 @@ import { getProgram, loadFiles } from './tsLanguageService';
 export type GetComponentInfoOptions = {
   /** Path to the file containing a single component. */
   filePath: string;
-  /** Path to the tsconfig to use for processing the component file. Not used if `program` is provided. */
+  /** Path to the tsconfig to use for processing the component file. */
   tsconfigPath: string;
   /** Ignore props inherited from these interfaces. */
   ignoredParentInterfaces?: string[];
