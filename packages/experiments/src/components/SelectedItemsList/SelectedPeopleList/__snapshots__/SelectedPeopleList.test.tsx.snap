@@ -91,6 +91,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -425,6 +426,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -600,6 +602,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -934,6 +937,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1032,7 +1036,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
   role="list"
 >
   <div
-    aria-labelledby="selectedItemPersona-id__36"
+    aria-labelledby="selectedItemPersona-id__18"
     className=
         ms-PickerPersona-container
         {
@@ -1060,9 +1064,11 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
           background: Highlight;
           border-color: Highlight;
         }
+    data-is-draggable={false}
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={0}
+    draggable={false}
     role="listitem"
   >
     <div
@@ -1114,6 +1120,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1219,7 +1226,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               max-width: 100%;
               min-width: 0px;
             }
-        id="selectedItemPersona-id__36"
+        id="selectedItemPersona-id__18"
       >
         <div
           className=
@@ -1448,6 +1455,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1539,7 +1547,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
     </div>
   </div>
   <div
-    aria-labelledby="selectedItemPersona-id__37"
+    aria-labelledby="selectedItemPersona-id__26"
     className=
         ms-PickerPersona-container
         {
@@ -1567,9 +1575,11 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
           background: Highlight;
           border-color: Highlight;
         }
+    data-is-draggable={false}
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={1}
+    draggable={false}
     role="listitem"
   >
     <div
@@ -1621,6 +1631,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1726,7 +1737,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               max-width: 100%;
               min-width: 0px;
             }
-        id="selectedItemPersona-id__37"
+        id="selectedItemPersona-id__26"
       >
         <div
           className=
@@ -1955,6 +1966,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
