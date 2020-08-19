@@ -1,106 +1,6 @@
 @import '~@fluentui/common-styles/dist/sass/focusBorder';
 
 /**
- * TODO: Once theming is updated, consider removing all of this.
- *
- * Note: All :root rules must be literals, OR references to variables
- * defined as literals in the same scope. If you refer to variables,
- * they will be resolved on the :root element only; not at usage time.
-**/
-:root {
-  /* sizing */
-  --button-size-smallest: 24px;
-  --button-size-smaller: 24px;
-  --button-size-small: 24px;
-  --button-size-regular: 32px;
-  --button-size-large: 40px;
-  --button-size-larger: 48px;
-  --button-size-largest: 64px;
-
-  --button-padding: 0 24px;
-  --button-margin: 0;
-  --button-width: auto;
-  --button-minHeight: var(--button-size-regular);
-  --button-minWidth: 96px;
-  --button-maxWidth: 280px;
-
-  --button-contentGap: 10px;
-  --button-iconSize: 16px;
-
-  /* borders and shadow */
-  --button-borderRadius: 2px;
-  --button-borderWidth: 1px;
-  --button-boxShadow: 0px 2px 4px -0.75px rgba(0, 0, 0, 0.1);
-  --button-disabled-boxShadow: none;
-
-  /* transforms */
-  --button-pressed-transform: scale(0.95);
-  --button-transition: transform 0.1s linear;
-
-  /* TODO: Remove. Fonts should only be defined in the theme. */
-  --button-fontFamily: 'Segoe UI', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', Helvetica, Arial, sans-serif;
-  --button-fontSize: 14px;
-  --button-fontWeight: 600;
-
-  /* TODO: Consider remove. Colors should only be defined in the theme. */
-
-  --button-focusColor: #000;
-  --button-focusInnerColor: #fff;
-
-  --button-background: white;
-  --button-borderColor: rgb(225, 223, 221);
-  --button-contentColor: rgb(44, 38, 33);
-  --button-iconColor: inherit;
-
-  --button-hovered-background: rgb(237, 235, 233);
-  --button-hovered-borderColor: var(--button-borderColor);
-  --button-hovered-contentColor: var(--button-contentColor);
-  --button-hovered-iconColor: var(--button-iconColor);
-
-  --button-focused-background: var(--button-background);
-  --button-focused-borderColor: var(--button-borderColor);
-  --button-focused-contentColor: var(--button-contentColor);
-  --button-focused-iconColor: var(--button-iconColor);
-
-  --button-pressed-background: rgb(225, 223, 221);
-  --button-pressed-borderColor: var(--button-borderColor);
-  --button-pressed-contentColor: var(--button-contentColor);
-  --button-pressed-iconColor: var(--button-iconColor);
-
-  --button-disabled-opacity: 1;
-  --button-disabled-background: rgb(237, 235, 233);
-  --button-disabled-borderColor: var(--button-disabled-background);
-  --button-disabled-contentColor: rgb(200, 198, 196);
-  --button-disabled-iconColor: var(--button-disabled-contentColor);
-
-  /* TODO: Remove. Accent should only be defined in the theme, though primary depends on it. */
-  --accent-background: rgb(98, 100, 167);
-  --accent-borderColor: transparent;
-  --accent-contentColor: white;
-  --accent-iconColor: inherit;
-
-  --accent-hovered-background: rgb(88, 90, 150);
-  --accent-hovered-borderColor: var(--accent-borderColor);
-  --accent-hovered-contentColor: var(--accent-contentColor);
-  --accent-hovered-iconColor: var(--accent-icon);
-
-  --accent-focused-background: rgb(88, 90, 150);
-  --accent-focused-borderColor: var(--accent-borderColor);
-  --accent-focused-contentColor: var(--accent-contentColor);
-  --accent-focused-iconColor: var(--accent-iconColor);
-
-  --accent-pressed-background: rgb(70, 71, 117);
-  --accent-pressed-borderColor: var(--accent-borderColor);
-  --accent-pressed-contentColor: var(--accent-contentColor);
-  --accent-pressed-iconColor: var(--accent-iconColor);
-
-  --accent-disabled-background: rgb(237, 235, 233);
-  --accent-disabled-borderColor: var(--accent-disabled-background);
-  --accent-disabled-contentColor: rgb(200, 198, 196);
-  --accent-disabled-iconColor: var(--accent-disabled-contentColor);
-}
-
-/**
   * Slot definitions
   *
   * Slot definitions must align to the names of the slots themselves. They should:
@@ -126,7 +26,7 @@
   vertical-align: middle;
 
   background: var(--button-background, white);
-  color: var(--button-contentColor, rgb(44, 38, 33));
+  color: var(--button-contentColor, #2c2621);
 
   border-color: var(--button-borderColor);
   border-radius: var(--button-borderRadius);
@@ -149,7 +49,7 @@
   @include focus-border(
     $padding: -1px,
     $color: var(--button-focusColor),
-    $thickness: var(--button-focus-width, 2px),
+    $thickness: var(--button-focusWidth, 2px),
     $radius: var(--button-borderRadius)
   );
   @include focus-box-shadow($hOffset: 0, $vOffset: 0, $blur: 0, $thickness: 1px, $color: var(--button-focusInnerColor));
@@ -202,10 +102,9 @@
   &._fluid {
     width: 100%;
     max-width: 100%;
-
-    --button-pressed-transform: scale(0.98);
   }
 
+  // TODO: confirm if we should support size prop.
   &._size_smallest {
     --button-minHeight: var(--button-size-smallest);
   }
@@ -225,6 +124,7 @@
   &._size_larger {
     --button-minHeight: var(--button-size-larger);
   }
+
   &._size_largest {
     --button-minHeight: var(--button-size-largest);
   }
@@ -249,8 +149,8 @@
   font-size: var(--button-iconSize, inherit);
   font-weight: normal;
 
-  &._disabled {
-    color: var(--button-disabled-iconColor, var(--button-disabled-contentColor));
+  ._disabled & {
+    color: var(--button-disabled-iconColor);
   }
 }
 
@@ -267,7 +167,7 @@
   box-shadow: var(--button-hovered-boxShadow, var(--button-boxShadow));
 
   .icon {
-    color: var(--button-hovered-iconColor, var(--button-hovered-contentColor));
+    color: var(--button-hovered-iconColor, var(--button-iconColor));
   }
 }
 
@@ -281,6 +181,6 @@
   transition: var(--button-pressed-transition);
 
   .icon {
-    color: var(--button-pressed-iconColor, var(--button-pressed-contentColor));
+    color: var(--button-pressed-iconColor, var(--button-iconColor));
   }
 }
