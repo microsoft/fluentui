@@ -10,7 +10,8 @@ import { PrimaryButton, DefaultButton, IconButton } from '../../compat/Button';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { Image } from '../../Image';
-import { useOnEvent, useMergedRefs, useDocumentRef } from '@uifabric/react-hooks';
+import { useOnEvent, useMergedRefs } from '@uifabric/react-hooks';
+import { useDocument } from '@fluentui/react-window-provider';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
@@ -30,7 +31,7 @@ const useComponentRef = (
 export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleProps> = React.forwardRef(
   (props, forwardedRef: React.Ref<HTMLDivElement>) => {
     const rootElementRef = React.useRef<HTMLDivElement>(null);
-    const documentRef = useDocumentRef(rootElementRef);
+    const documentRef = useDocument();
     const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
 
     const {
@@ -76,7 +77,7 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
       [onDismiss],
     );
 
-    useOnEvent(documentRef.current, 'keydown', onKeyDown as (ev: Event) => void);
+    useOnEvent(documentRef, 'keydown', onKeyDown as (ev: Event) => void);
 
     let imageContent: JSX.Element | undefined;
     let headerContent: JSX.Element | undefined;

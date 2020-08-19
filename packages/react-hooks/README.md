@@ -146,25 +146,6 @@ The returned value is an array with two elements:
   - Like the setter returned by `React.useState`, the identity of this callback will never change.
   - Also like `React.useState`, you can call this function with either a value, or an updater function which takes the previous value as a parameter and returns the new value.
 
-## useDocumentRef
-
-```ts
-const useDocumentRef: (elementRef: React.RefObject<HTMLElement | null>) => React.RefObject<Document>;
-```
-
-Hook that returns the document ref from a provided element ref.
-
-```tsx
-const Example = () => {
-  const rootRef = React.useRef<HTMLDivElement | null>(null);
-  const documentRef = useDocumentRef(rootRef);
-
-  useOnEvent(documentRef, 'keydown', () => console.log());
-
-  return <div ref={rootRef} />;
-};
-```
-
 ## useForceUpdate
 
 ```ts
@@ -355,22 +336,3 @@ The following types of warnings are supported (see typings for details on how to
   - The component is attempting to switch between controlled and uncontrolled
 
 Note that all warnings except `controlledUsage` will only be shown on first render. New `controlledUsage` warnings may be shown later based on prop changes. All warnings are shown synchronously during render (not wrapped in `useEffect`) for easier tracing/debugging.
-
-## useWindowRef
-
-```ts
-const useWindowRef: (elementRef: React.RefObject<HTMLElement | null>) => React.RefObject<Window>;
-```
-
-Hook that returns the window ref from a provided element ref.
-
-```tsx
-const Example = () => {
-  const rootRef = React.useRef<HTMLDivElement | null>(null);
-  const windowRef = useWindowRef(rootRef);
-
-  useOnEvent(windowRef, 'resize', () => console.log(windowRef.current?.innerWidth));
-
-  return <div ref={rootRef} />;
-};
-```

@@ -57,9 +57,6 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
-export const useDocumentRef: (elementRef: import("react").RefObject<HTMLElement | null>) => import("react").RefObject<Document>;
-
-// @public
 export function useForceUpdate(): () => void;
 
 // @public
@@ -97,9 +94,6 @@ export type UseSetTimeoutReturnType = {
 
 // @public
 export function useWarnings<P>(options: IWarningOptions<P>): void;
-
-// @public
-export const useWindowRef: (elementRef: import("react").RefObject<HTMLElement | null>) => import("react").RefObject<Window>;
 
 
 // (No @packageDocumentation comment for this package)
