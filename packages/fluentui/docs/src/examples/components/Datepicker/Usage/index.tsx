@@ -23,6 +23,12 @@ const Usage = () => (
       }
       examplePath="components/Datepicker/Usage/DatepickerParseExample"
     />
+    <ComponentExample
+      title="Standalone DatepickerCalendar"
+      description="One can also use the standalone DatepickerCalendar.
+      In that case, the developer needs to take care of the selectedDate state control."
+      examplePath="components/Datepicker/Usage/DatepickerExampleStandaloneCalendar"
+    />
   </ExampleSection>
 );
 

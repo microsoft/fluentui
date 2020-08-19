@@ -130,7 +130,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   });
 
   const dayGridOptions = {
-    selectedDate,
+    selectedDate: selectedDate || today || new Date(),
     navigatedDate: gridNavigatedDate,
     weeksToShow: props.weeksToShow,
     firstDayOfWeek: props.firstDayOfWeek,
@@ -268,7 +268,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           }),
         overrideProps: (predefinedProps: DatepickerCalendarCellProps): DatepickerCalendarCellProps => ({
           onClick: e => {
-            onDateChange(e, { ...predefinedProps, value: day });
+            _.invoke(props, 'onDateChange', e, { ...props, value: day });
             _.invoke(predefinedProps, 'onClick', e, { ...predefinedProps, value: day });
           },
           onKeyDown: e => {
