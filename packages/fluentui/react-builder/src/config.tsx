@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
+import * as FabricButtons from '@fluentui/react/lib/Button';
 
 import { JSONTreeElement } from './components/types';
 import { getUUID } from './utils/getUUID';
@@ -37,9 +38,17 @@ export const COMPONENT_GROUP = {
   Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
   Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
   Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Fabric: ['FabricButton', 'FabricDefaultButton', 'FabricActionButton'],
 };
 
 export const DRAGGING_ELEMENTS = {
+  // Fabric Elements
+  FabricButton: <FabricButtons.PrimaryButton>I am a fabric button.</FabricButtons.PrimaryButton>,
+
+  FabricDefaultButton: <FabricButtons.DefaultButton>I am a fabric default button.</FabricButtons.DefaultButton>,
+
+  FabricActionButton: <FabricButtons.ActionButton>I am a fabric action button.</FabricButtons.ActionButton>,
+
   // HTML ELEMENTS
   div: { children: 'I am a <div>' },
   span: { children: 'I am a <span>' },
@@ -413,7 +422,15 @@ export const DRAGGING_ELEMENTS = {
   // Video: { props: { content: 'Video' } as FUI.VideoProps },
 };
 
-export const resolveComponent = (displayName): React.ElementType => {
+const resolveImport = {
+  '@fluentui/react/lib/Button': FabricButtons,
+  '@fluentui/react-northstar': FUI,
+};
+
+export const resolveComponent = (displayName, moduleName): React.ElementType => {
+  if (moduleName) {
+    return resolveImport[moduleName][displayName.replace('Customized', '')];
+  }
   return FUI[displayName] || FUIIcons[displayName] || displayName;
 };
 
@@ -441,8 +458,9 @@ const toJSONTreeElement = input => {
   return result;
 };
 
-export const resolveDraggingElement: (displayName: string, draggingElements?) => JSONTreeElement = (
+export const resolveDraggingElement: (displayName: string, module: string, draggingElements?) => JSONTreeElement = (
   displayName,
+  module,
   draggingElements = DRAGGING_ELEMENTS,
 ) => {
   const jsonTreeElement = toJSONTreeElement(draggingElements[displayName]);
@@ -450,6 +468,7 @@ export const resolveDraggingElement: (displayName: string, draggingElements?) =>
     uuid: getUUID(),
     $$typeof: 'Symbol(react.element)',
     type: displayName,
+    moduleName: module,
     displayName,
     ...jsonTreeElement,
   };
@@ -531,7 +550,7 @@ export const renderJSONTreeToJSXElement = (
   props = resolveProps(props, iterator);
   const modifiedTree = iterator({ ...tree, props });
 
-  return React.createElement(resolveComponent(modifiedTree.type), {
+  return React.createElement(resolveComponent(modifiedTree.type, modifiedTree.moduleName), {
     ...modifiedTree.props,
     key: modifiedTree.uuid,
     'data-builder-id': modifiedTree.uuid,

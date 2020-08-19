@@ -1384,6 +1384,15 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/react@7.126.1":
+  version "7.126.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/react/-/react-7.126.1.tgz#cf10f8ffb0ece513928a004edf526edaeaf3efb2"
+  integrity sha512-dhx8x1Q7Bs+d+JZ9CTCFk3B4wFMvbyONs0TmQmqZ/RYCythbx8yeRtWGrIx1M7ViiNsm+QgQQn+9LLGDGw2/8g==
+  dependencies:
+    "@uifabric/set-version" "^7.0.19"
+    office-ui-fabric-react "^7.126.1"
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -4750,6 +4759,12 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
+
+"@uifabric/merge-styles@^7.126.1":
+  version "7.16.6"
+  dependencies:
+    "@uifabric/set-version" "^7.0.21"
+    tslib "^1.10.0"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

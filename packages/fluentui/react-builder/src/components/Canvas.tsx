@@ -7,6 +7,7 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
+import { StyleProvider } from '../utils/StyleProvider';
 
 export type CanvasProps = {
   draggingElement: JSONTreeElement;
@@ -305,7 +306,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                   target={document}
                 />
               )}
-              {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              <StyleProvider childWindow={window} tree={jsonTree}>
+                {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
+              </StyleProvider>
             </Provider>
           </>
         )}

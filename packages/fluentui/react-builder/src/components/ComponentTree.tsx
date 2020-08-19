@@ -76,17 +76,19 @@ const jsonTreeToTreeItems: (
         );
       },
     }),
-    items: tree.props?.children?.map(item =>
-      jsonTreeToTreeItems(
-        item,
-        selectedComponentId,
-        handleSelectedComponent,
-        handleClone,
-        handleMove,
-        handleDelete,
-        titleRenderer,
+    items:
+      Array.isArray(tree.props?.children) &&
+      tree.props?.children?.map(item =>
+        jsonTreeToTreeItems(
+          item,
+          selectedComponentId,
+          handleSelectedComponent,
+          handleClone,
+          handleMove,
+          handleDelete,
+          titleRenderer,
+        ),
       ),
-    ),
   };
 };
 
@@ -162,17 +164,19 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
 
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
-    tree.props?.children?.map(item =>
-      jsonTreeToTreeItems(
-        item,
-        selectedComponentId,
-        handleSelectComponent,
-        handleClone,
-        handleMove,
-        handleDelete,
-        titleRenderer,
-      ),
-    ) ?? [];
+    (Array.isArray(tree.props?.children) &&
+      tree.props?.children?.map(item =>
+        jsonTreeToTreeItems(
+          item,
+          selectedComponentId,
+          handleSelectComponent,
+          handleClone,
+          handleMove,
+          handleDelete,
+          titleRenderer,
+        ),
+      )) ||
+    [];
   items.forEach(item => getActiveItemIds(item));
 
   return (
