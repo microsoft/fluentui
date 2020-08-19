@@ -1,13 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
-  getId,
   styled,
   classNamesFunction,
   IStyleFunctionOrObject,
   css,
   EventGroup,
-  IDisposable,
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ISelectedItemProps } from '../../SelectedItemsList.types';
@@ -16,6 +14,7 @@ import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPe
 import { ITheme, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { IDragDropOptions } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
+import { useId } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<ISelectedPersonaStyleProps, ISelectedPersonaStyles>();
 
@@ -61,13 +60,10 @@ const SelectedPersonaInner = React.memo(
       dragDropEvents,
       eventsToRegister,
     } = props;
-    const itemId = getId();
+    const itemId = useId();
     const [root, setRoot] = React.useState<HTMLElement | undefined>();
-    const [dragDropSubscription, setDragDropSubscription] = React.useState<IDisposable>();
     const [isDropping, setIsDropping] = React.useState(false);
     const [droppingClassNames, setDroppingClassNames] = React.useState('');
-    const [droppingClassName, setDroppingClassName] = React.useState('');
-    const [isDraggable, setIsDraggable] = React.useState<boolean | undefined>(false);
 
     const _onRootRef = React.useCallback((div: HTMLDivElement) => {
       if (div) {
@@ -79,50 +75,52 @@ const SelectedPersonaInner = React.memo(
       }
     }, []);
 
-    const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
-      if (!newValue) {
-        if (dragDropEvents!.onDragLeave) {
-          dragDropEvents!.onDragLeave(item, event);
-        }
-      } else if (dragDropEvents!.onDragEnter) {
-        setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
-      }
+    React.useEffect(
+      () => {
+        const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
+          if (!newValue) {
+            if (dragDropEvents!.onDragLeave) {
+              dragDropEvents!.onDragLeave(item, event);
+            }
+          } else if (dragDropEvents!.onDragEnter) {
+            setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
+          }
 
-      if (isDropping !== newValue) {
-        setIsDropping(newValue);
-      }
-    };
+          if (isDropping !== newValue) {
+            setIsDropping(newValue);
+          }
+        };
 
-    const dragDropOptions: IDragDropOptions = {
-      eventMap: eventsToRegister,
-      selectionIndex: index,
-      context: { data: item, index: index },
-      canDrag: dragDropEvents?.canDrag,
-      canDrop: dragDropEvents?.canDrop,
-      onDragStart: dragDropEvents?.onDragStart,
-      updateDropState: _updateDroppingState,
-      onDrop: dragDropEvents?.onDrop,
-      onDragEnd: dragDropEvents?.onDragEnd,
-      onDragOver: dragDropEvents?.onDragOver,
-    };
+        const dragDropOptions: IDragDropOptions = {
+          eventMap: eventsToRegister,
+          selectionIndex: index,
+          context: { data: item, index: index },
+          ...dragDropEvents,
+          updateDropState: _updateDroppingState,
+        };
 
-    const events = new EventGroup(this);
+        const events = new EventGroup(this);
 
-    React.useEffect(() => {
-      setDragDropSubscription(dragDropHelper?.subscribe(root as HTMLElement, events, dragDropOptions));
-      return () => {
-        dragDropSubscription?.dispose();
-        setDragDropSubscription(undefined);
-      };
-    }, [dragDropHelper]);
+        const subscription = dragDropHelper?.subscribe(root as HTMLElement, events, dragDropOptions);
 
-    React.useEffect(() => {
-      setIsDraggable(dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrop) : undefined);
-    }, [dragDropEvents]);
+        return () => {
+          subscription?.dispose();
+          events.dispose();
+        };
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- this is the only dependency which matters
+      [dragDropHelper],
+    );
 
-    React.useEffect(() => {
-      setDroppingClassName(isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '');
-    }, [isDropping, droppingClassNames]);
+    const isDraggable = React.useMemo(
+      () => (dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrop) : undefined),
+      [dragDropEvents],
+    );
+
+    const droppingClassName = React.useMemo(
+      () => (isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : ''),
+      [isDropping, droppingClassNames],
+    );
 
     const onExpandClicked = React.useCallback(
       ev => {
