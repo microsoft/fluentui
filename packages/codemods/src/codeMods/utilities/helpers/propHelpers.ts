@@ -34,8 +34,9 @@ export function renamePropInSpread(
         }
         /* SPREADISIDENTIFIER tells us whether we should look at an Identifier or a P.A.E. node. */
         const spreadIsIdentifier = firstIdentifier !== undefined;
-        /* Verify this attribute contains the name of our desired prop. */
-        if (spreadContains(toRename, spreadIsIdentifier, attribute)) {
+        /* Verify this attribute contains the name of our desired prop and DOES NOT
+           contain the name of the replacement name. */
+        if (spreadContains(toRename, replacementName, spreadIsIdentifier, attribute)) {
           /* Step 3: Create names for your new potential objects. */
           const componentName = element.getFirstChildByKind(SyntaxKind.Identifier)?.getText();
           const propSpreadName = spreadIsIdentifier ? firstIdentifier!.getText() : propertyAccess!.getText();
@@ -280,8 +281,15 @@ function createDeconstructedProp(newSpreadPropName: string, toRename: string, ol
 }
 
 /* Helper function that returns TRUE if the supplied spread object
-   contains the prop we're looking for. Else returns FALSE. */
-function spreadContains(oldPropName: string, spreadIsIdentifier: boolean, spreadProp: JsxAttributeLike): boolean {
+   contains the prop we're looking for AND if REPLACEMENTNAME cannot
+   be found in the prop. This is because standard props often contain
+   both old and new prop name. Else returns FALSE. */
+function spreadContains(
+  oldPropName: string,
+  replacementName: string,
+  spreadIsIdentifier: boolean,
+  spreadProp: JsxAttributeLike,
+): boolean {
   const element = spreadIsIdentifier
     ? spreadProp.getFirstChildByKind(SyntaxKind.Identifier)
     : spreadProp.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
@@ -292,6 +300,12 @@ function spreadContains(oldPropName: string, spreadIsIdentifier: boolean, spread
       .getProperties()
       .some(name => {
         return name.getName() === oldPropName;
+      }) &&
+    !element
+      .getType()!
+      .getProperties()
+      .some(name => {
+        return name.getName() === replacementName;
       })
   );
 }

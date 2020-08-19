@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable prefer-const */
 /* eslint-disable deprecation/deprecation */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { Spinner, SpinnerType, ISpinnerProps } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 
 export const RenderSpinner = (props: any) => {
   const propsTest = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
@@ -30,26 +29,6 @@ export const RenderLetSpinner = (props: any) => {
   );
 };
 
-export const RenderSpinnerProps = (props: ISpinnerProps) => {
-  return (
-    <div>
-      <Spinner {...props} id="pl">
-        Spinner
-      </Spinner>
-      <Spinner {...props} />
-    </div>
-  );
-};
+const propsForArrow = { type: SpinnerType.normal, ariaLabel: 'Spinner!' };
 
-export function RenderSpinnerPropsFunc(props: ISpinnerProps) {
-  return (
-    <div>
-      <Spinner {...props} id="pf">
-        Spinner
-      </Spinner>
-      <Spinner {...props} />
-    </div>
-  );
-}
-
-export const RenderSpinnerPropsArrow = (props: ISpinnerProps): any => <Spinner {...props} />;
+export const RenderSpinnerPropsArrow = (): any => <Spinner {...propsForArrow} />;
