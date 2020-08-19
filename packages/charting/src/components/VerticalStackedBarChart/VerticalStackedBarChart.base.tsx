@@ -2,14 +2,14 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
-import { select as d3Select } from 'd3-selection';
+import { select as d3Select, event as d3Event } from 'd3-selection';
 import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/index';
-
+import { createWrapOfXLabels } from '../../utilities/index';
 import {
   IVerticalStackedBarChartProps,
   IVerticalStackedBarChartStyleProps,
@@ -56,6 +56,10 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _refArray: IRefArrayData[];
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
+  private _noOfCharsToTruncate: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xAxis: any;
+  private _removalValue: number = 0;
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   private minLegendContainerHeight: number = 32;
@@ -129,7 +133,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
               ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)}
-              transform={`translate(0, ${svgDimensions.height - this.margins.bottom})`}
+              transform={`translate(0, ${svgDimensions.height - this._removalValue - this.margins.bottom})`}
               className={this._classNames.xAxis}
             />
             <g
@@ -169,6 +173,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._points = this.props.data || [];
     this._barWidth = this.props.barWidth || 32;
     this._yAxisTickCount = this.props.yAxisTickCount || 5;
+    this._noOfCharsToTruncate = this.props.noOfCharsToTruncate || 4;
     const { theme } = this.props;
     const { palette } = theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
@@ -253,7 +258,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
+      .range([this.state.containerHeight - this._removalValue - this.margins.bottom, this.margins.top]);
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSizeInner(-(this.state.containerWidth - this.margins.left - this.margins.right))
       .tickPadding(5)
@@ -447,7 +452,12 @@ export class VerticalStackedBarChartBase extends React.Component<
           key={index + indexNumber}
           className={this._classNames.opacityChangeOnHover}
           x={xPoint}
-          y={this.state.containerHeight - this.margins.bottom - yBarScale(startingPointOfY)}
+          y={
+            this.state.containerHeight -
+            this._removalValue -
+            this.margins.bottom -
+            (yBarScale(startingPointOfY) > 0 ? yBarScale(startingPointOfY) : 0)
+          }
           width={this._barWidth}
           height={yBarScale(point.data) > 0 ? yBarScale(point.data) : 0}
           fill={color}
@@ -509,7 +519,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       .range([this.margins.left, this.state.containerWidth - this.margins.right - this._barWidth]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
-      .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
+      .range([0, this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top]);
 
     return this._createBar(singleChartData, xBarScale, yBarScale, indexNumber, href, true);
   };
@@ -531,7 +541,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       ]);
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
-      .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
+      .range([0, this.state.containerHeight - this._removalValue - this.margins.bottom - this.margins.top]);
 
     return this._createBar(singleChartData, xBarScale, yBarScale, indexNumber, href, false);
   };
@@ -550,12 +560,60 @@ export class VerticalStackedBarChartBase extends React.Component<
     return bars;
   };
 
+  private _tooltipHandle = () => {
+    const that = this;
+    if (!this.props.wrapXAxisLables) {
+      const temp = document.getElementsByClassName('tooltip-47');
+      while (temp[0]) {
+        // removing multiple elemnts
+        temp[0].remove();
+      }
+      const div = d3Select('body')
+        .append('div')
+        .attr('id', 'tooltipId')
+        .attr('class', that._classNames.tooltip!)
+        .style('opacity', 0);
+      const tickObject = that._xAxis!.selectAll('.tick')._groups[0];
+      const tickObjectLength = Object.keys(tickObject).length;
+      for (let i = 0; i < tickObjectLength; i++) {
+        const d1 = tickObject[i];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const data: any = d3Select(d1).data();
+        d3Select(d1)
+          .on('mouseover', d => {
+            div.style('opacity', 0.9);
+            div
+              .html(data)
+              .style('left', d3Event.pageX + 'px')
+              .style('top', d3Event.pageY - 28 + 'px');
+          })
+          .on('mouseout', d => {
+            div.style('opacity', 0);
+          });
+      }
+    }
+  };
+
   private _setXAxis(node: SVGGElement | null, xAxis: NumericAxis | StringAxis): void {
     if (node === null) {
       return;
     }
     const axisNode = d3Select(node).call(xAxis);
     axisNode.selectAll('text').attr('class', this._classNames.xAxisText!);
+    this._xAxis = axisNode;
+
+    const wrapLabelProps = {
+      node: node,
+      xAxis: xAxis,
+      showXAxisLablesTooltip: this.props.showXAxisLablesTooltip,
+      noOfCharsToTruncate: this._noOfCharsToTruncate,
+    };
+    let temp = 0;
+    if (this.props.showXAxisLablesTooltip || this.props.wrapXAxisLables) {
+      temp = createWrapOfXLabels(wrapLabelProps) as number;
+    }
+    this._removalValue = temp;
+    !this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip && this._tooltipHandle();
   }
 
   private _setYAxis(node: SVGElement | null, yAxis: NumericAxis): void {

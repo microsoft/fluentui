@@ -117,10 +117,10 @@ export interface IVerticalBarChartProps {
   wrapXAxisLables?: boolean;
 
   /**
-   * @default 10
+   * @default 5
    * tickPadding - used for space between x line and tick valeus
    */
-  tickPadding?: number;
+  XAxistickPadding?: number;
 }
 
 export interface IVerticalBarChartStyleProps {

@@ -183,7 +183,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
     this._noOfCharsToTruncate = this.props.noOfCharsToTruncate || 4;
-    this._tickPadding = this.props.tickPadding || 10;
+    this._tickPadding = this.props.XAxistickPadding || 5;
   }
 
   private _fitParentContainer(): void {

@@ -26,9 +26,9 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
 
     const data: IVerticalStackedChartProps[] = [
       { chartData: firstChartPoints, xAxisPoint: 'Jan' },
-      { chartData: secondChartPoints, xAxisPoint: 'Feb' },
+      { chartData: secondChartPoints, xAxisPoint: 'Feb month' },
       { chartData: thirdChartPoints, xAxisPoint: 'March' },
-      { chartData: firstChartPoints, xAxisPoint: 'April' },
+      { chartData: firstChartPoints, xAxisPoint: 'I am April Month' },
       { chartData: thirdChartPoints, xAxisPoint: 'May' },
       { chartData: firstChartPoints, xAxisPoint: 'June' },
       { chartData: secondChartPoints, xAxisPoint: 'July' },
@@ -68,6 +68,20 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
           // eslint-disable-next-line react/jsx-no-bind
           styles={customStyles}
           chartLabel="Card title"
+          wrapXAxisLables
+        />
+        <VerticalStackedBarChart
+          data={data}
+          height={350}
+          width={600}
+          yAxisTickCount={10}
+          href={'www.google.com'}
+          // eslint-disable-next-line react/jsx-no-bind
+          styles={customStyles}
+          chartLabel="Card title"
+          showXAxisLablesTooltip
+          noOfCharsToTruncate={8}
+          XAxistickPadding={4}
         />
       </div>
     );

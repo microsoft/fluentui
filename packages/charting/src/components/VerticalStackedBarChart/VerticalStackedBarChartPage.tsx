@@ -8,7 +8,7 @@ import { VerticalStackedBarChartStyledExample } from './examples/VerticalStacked
 const VerticalBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/examples/VerticalStackedBarChart.Basic.Example.tsx') as string;
 const VerticalBarChartStyledExampleCode = require('!raw-loader!@uifabric/charting/src/components/VerticalStackedBarChart/examples/VerticalStackedBarChart.Styled.Example.tsx') as string;
 
-export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
+export class VerticalStackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage

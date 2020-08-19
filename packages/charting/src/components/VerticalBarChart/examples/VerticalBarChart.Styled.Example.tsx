@@ -65,7 +65,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
           hideLegend={true}
           hideTooltip={true}
           wrapXAxisLables
-          tickPadding={5}
+          XAxistickPadding={8}
         />
         <VerticalBarChart
           data={points}
@@ -77,7 +77,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
           hideTooltip={true}
           showXAxisLablesTooltip
           noOfCharsToTruncate={8}
-          tickPadding={3}
+          XAxistickPadding={3}
         />
       </div>
     );
