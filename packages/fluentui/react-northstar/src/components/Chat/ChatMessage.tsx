@@ -89,9 +89,6 @@ export interface ChatMessageProps
   /** Message details info slot for the header. */
   details?: ShorthandValue<ChatMessageDetailsProps>;
 
-  /** Read status of the message to be added as title for readStatusIndicator */
-  readStatus?: string;
-
   /** Message read status indicator */
   readStatusIndicator?: ShorthandValue<ChatMessageReadStatusIndicatorProps>;
 
@@ -180,7 +177,6 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     variables,
     header,
     details,
-    readStatus,
     readStatusIndicator,
     unstable_overflow: overflow,
   } = props;
@@ -344,9 +340,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     defaultProps: () => ({ mine }),
   });
 
-  const readStatusIndicatorElement = createShorthand(ChatMessageReadStatusIndicator, readStatusIndicator, {
-    defaultProps: () => ({ title: readStatus }),
-  });
+  const readStatusIndicatorElement = createShorthand(ChatMessageReadStatusIndicator, readStatusIndicator, {});
 
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({
