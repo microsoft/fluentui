@@ -1,7 +1,7 @@
 export type CodeSandboxImport = {
-  module: any;
+  module?: any;
   version: string;
   required: boolean;
 };
 
-export type SourceManagerLanguage = 'js' | 'ts';
+export type CodeSandboxLanguage = 'js' | 'ts';

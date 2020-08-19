@@ -551,13 +551,12 @@ export const renderJSONTreeToJSXElement = (
 const packageImportList: Record<string, CodeSandboxImport> = {
   '@fluentui/react-icons-northstar': {
     version: projectPackageJson.version,
-    module: FUIIcons,
     required: false,
   },
   '@fluentui/react-northstar': {
     version: projectPackageJson.version,
     module: FUI,
-    required: true,
+    required: false,
   },
 };
 
@@ -567,19 +566,30 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
       (tree.moduleName === '@fluentui/react-northstar' && '@fluentui/react-icons-northstar') || 'ErrorNoPackage';
     if (imports.hasOwnProperty(iconModule)) {
       if (!imports[iconModule].includes(tree.props?.icon.type)) {
-        imports[iconModule] += `${tree.props?.icon.type}, `;
+        imports[iconModule].push(tree.props?.icon.type);
       }
     } else {
-      imports[iconModule] = `${tree.props?.icon.type}, `;
+      imports[iconModule] = [tree.props?.icon.type];
+    }
+  }
+  if (tree.moduleName && tree.props?.trigger) {
+    if (tree.props?.trigger.$$typeof === 'Symbol(react.element)') {
+      if (imports.hasOwnProperty(tree.moduleName)) {
+        if (!imports[tree.moduleName].includes(tree.props?.trigger.type)) {
+          imports[tree.moduleName].push(tree.props?.trigger.type);
+        }
+      } else {
+        imports[tree.moduleName] = [tree.props?.trigger.type];
+      }
     }
   }
   if (tree.moduleName && tree.$$typeof === 'Symbol(react.element)') {
     if (imports.hasOwnProperty(tree.moduleName)) {
       if (!imports[tree.moduleName].includes(tree.displayName)) {
-        imports[tree.moduleName] += `${tree.displayName}, `;
+        imports[tree.moduleName].push(tree.displayName);
       }
     } else {
-      imports[tree.moduleName] = `${tree.displayName}, `;
+      imports[tree.moduleName] = [tree.displayName];
     }
   }
 
@@ -592,7 +602,7 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
 };
 
 export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
-  const imports = JSONTreeToImports(tree);
+  const imports: Record<string, string[]> = JSONTreeToImports(tree);
   let codeSandboxExport = 'import * as React from "react";\n';
   const packageImports: Record<string, CodeSandboxImport> = {
     '@fluentui/code-sandbox': {
@@ -617,12 +627,11 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
     },
   };
   for (const [module, components] of Object.entries(imports)) {
-    codeSandboxExport += `import {${components}} from "${module}";\n`;
+    codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
     packageImports[module] = packageImportList[module];
   }
-  codeSandboxExport += '\n export default function example() { \n return (\n';
-  codeSandboxExport += code;
-  codeSandboxExport += '\n);}';
+  codeSandboxExport += `\n export default function Example() { \n return (\n
+  ${code} \n);}`;
 
   return { code: codeSandboxExport, imports: packageImports };
 };

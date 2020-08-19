@@ -23,5 +23,5 @@ export { renderElementToJSX } from './renderElementToJSX';
 
 export * from './Editor/Editor';
 
-export * from './ComponentControlsCodeSandbox';
-export * from './ComponentControlsCodeSandbox/types';
+export * from './CodeSandboxExporter';
+export * from './CodeSandboxExporter/types';

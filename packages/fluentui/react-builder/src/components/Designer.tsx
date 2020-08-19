@@ -3,7 +3,7 @@ import { useImmerReducer, Reducer } from 'use-immer';
 import { Text, Button, Divider } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { renderElementToJSX, ComponentControlsCodeSandbox, CodeSandboxState } from '@fluentui/docs-components';
+import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { ComponentInfo } from '../componentInfo/types';
@@ -602,7 +602,7 @@ export const Designer: React.FunctionComponent = () => {
                     </>
                   )}
                   {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
-                  <ComponentControlsCodeSandbox
+                  <CodeSandboxExporter
                     exampleCode={codeSandboxData.code}
                     exampleLanguage="js"
                     exampleName="uibuilder"
@@ -628,7 +628,7 @@ export const Designer: React.FunctionComponent = () => {
                         />
                       );
                     }}
-                  </ComponentControlsCodeSandbox>
+                  </CodeSandboxExporter>
                 </div>,
               ]}
               style={{

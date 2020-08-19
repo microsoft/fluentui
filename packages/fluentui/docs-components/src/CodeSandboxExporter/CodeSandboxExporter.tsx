@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CodeSandboxer from 'react-codesandboxer';
 
-import { CodeSandboxImport, SourceManagerLanguage } from './types';
+import { CodeSandboxImport, CodeSandboxLanguage } from './types';
 import { appTemplate } from './indexTemplates';
 import { createPackageJson } from './createPackageJson';
 
@@ -11,25 +11,22 @@ export enum CodeSandboxState {
   Success = 'SUCCESS',
 }
 
-type ComponentControlsCodeSandboxProps = {
+type CodeSandboxExporterProps = {
   children: (state: CodeSandboxState, onClick?: (e: React.SyntheticEvent) => void) => React.ReactNode;
   exampleCode: string;
-  exampleLanguage: SourceManagerLanguage;
+  exampleLanguage: CodeSandboxLanguage;
   exampleName: string;
   imports: Record<string, CodeSandboxImport>;
 };
 
-type ComponentControlsCodeSandboxState = {
+type CodeSandboxExporterState = {
   exampleCode: string;
   examplePath: string;
   state: CodeSandboxState;
   sandboxUrl: string;
 };
 
-export class ComponentControlsCodeSandbox extends React.Component<
-  ComponentControlsCodeSandboxProps,
-  ComponentControlsCodeSandboxState
-> {
+export class CodeSandboxExporter extends React.Component<CodeSandboxExporterProps, CodeSandboxExporterState> {
   state = {
     exampleCode: '',
     examplePath: '',
@@ -39,9 +36,9 @@ export class ComponentControlsCodeSandbox extends React.Component<
   codeSandboxerRef = React.createRef<{ deployToCSB: Function }>();
 
   static getDerivedStateFromProps(
-    props: ComponentControlsCodeSandboxProps,
-    state: ComponentControlsCodeSandboxState,
-  ): Partial<ComponentControlsCodeSandboxState> {
+    props: CodeSandboxExporterProps,
+    state: CodeSandboxExporterState,
+  ): Partial<CodeSandboxExporterState> {
     const shouldKeepState = props.exampleCode === state.exampleCode;
 
     return {

@@ -1,4 +1,4 @@
-import { CopyToClipboard, ComponentControlsCodeSandbox, CodeSandboxState } from '@fluentui/docs-components';
+import { CopyToClipboard, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { Menu, menuAsToolbarBehavior, Tooltip, Loader, MenuProps, MenuItem } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -55,7 +55,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
   } = props;
 
   return (
-    <ComponentControlsCodeSandbox
+    <CodeSandboxExporter
       exampleCode={exampleCode}
       exampleLanguage={exampleLanguage}
       exampleName={examplePath}
@@ -178,7 +178,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
           />
         );
       }}
-    </ComponentControlsCodeSandbox>
+    </CodeSandboxExporter>
   );
 };
 

@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { CodeSandboxImport, SourceManagerLanguage } from './types';
+import { CodeSandboxImport, CodeSandboxLanguage } from './types';
 
 const name = 'fluent-ui-example';
 const description = 'An exported example from Fluent UI React, https://aka.ms/fluent-ui/';
@@ -22,7 +22,7 @@ function createDependencies(code: string, imports: Record<string, CodeSandboxImp
 export const createPackageJson = (
   mainFilename: string,
   code: string,
-  language: SourceManagerLanguage,
+  language: CodeSandboxLanguage,
   imports: Record<string, CodeSandboxImport>,
 ) => ({
   content: JSON.stringify(
