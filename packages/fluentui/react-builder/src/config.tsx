@@ -38,7 +38,7 @@ export const COMPONENT_GROUP = {
   Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
   Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
   Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
-  Fabric: ['FabricButton', 'FabricDefaultButton', 'FabricActionButton'],
+  FabricActionable: ['FabricButton', 'FabricDefaultButton', 'FabricActionButton'],
 };
 
 export const DRAGGING_ELEMENTS = {

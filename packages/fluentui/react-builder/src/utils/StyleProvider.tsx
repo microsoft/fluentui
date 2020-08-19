@@ -56,8 +56,6 @@ function _projectRule(rule: string): void {
  * @returns A dispose function for manually disposing; will disconnect on child window unload as well.
  */
 export function projectStyles(childWindow: Window): () => void {
-  console.log('projecting styles', childWindow);
-
   let childWindows: Window[] = global.__childWindows__;
   // If necessary, initialize child window tracking and listen for styles being registered.
   if (!childWindows) {
@@ -83,8 +81,6 @@ export function projectStyles(childWindow: Window): () => void {
   });
 
   const dispose = () => {
-    console.log('disposing projecting styles', childWindow);
-
     childWindows.splice(childWindows.indexOf(childWindow), 1);
   };
 
@@ -101,7 +97,6 @@ export const useProjectedStyles = (childWindow: Window, tree: JSONTreeElement) =
 };
 
 export const StyleProvider: React.FunctionComponent<{ childWindow: Window; tree: JSONTreeElement }> = props => {
-  console.log('styleprovider', props.childWindow);
   useProjectedStyles(props.childWindow, props.tree);
 
   return <>{props.children}</>;
