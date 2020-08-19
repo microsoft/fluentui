@@ -22,10 +22,8 @@ describe('Layer', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
 
-    ReactTestUtils.act(() => {
-      ReactDOM.createPortal = jest.fn(element => {
-        return element;
-      });
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
     });
 
     const component = renderer.create(<Layer>Content</Layer>);
@@ -72,9 +70,9 @@ describe('Layer', () => {
     try {
       ReactTestUtils.act(() => {
         document.body.appendChild(appElement);
-        ReactDOM.render(<App />, appElement);
       });
 
+      ReactDOM.render(<App />, appElement);
       const parentElement = appElement.querySelector('#parent');
 
       expect(parentElement).toBeDefined();
