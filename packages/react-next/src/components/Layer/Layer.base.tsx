@@ -6,6 +6,7 @@ import { classNamesFunction, getDocument } from '../../Utilities';
 import { setPortalAttribute, setVirtualParent } from '@uifabric/utilities/src/dom';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 import { useMergedRefs, useWarnings } from '@uifabric/react-hooks';
+import { useDocument } from '@fluentui/react-window-provider';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
@@ -54,6 +55,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
   const [currentHostId, setCurrentHostId] = React.useState<string | undefined>();
   const [currentLayerElement, setCurrentLayerElement] = React.useState<HTMLElement | undefined>();
   const rootRef = React.useRef<HTMLSpanElement>(null);
+  const doc = useDocument();
   const mergedRef = useMergedRefs(rootRef, ref);
   const {
     eventBubblingEnabled,
@@ -89,7 +91,6 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
   }, [onLayerWillUnmount]);
 
   const getHost = React.useCallback((): Node | undefined => {
-    const doc = getDocument(rootRef.current);
     if (!doc) {
       return undefined;
     }
@@ -103,7 +104,6 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
   }, [hostId]);
 
   const createLayerElement = React.useCallback(() => {
-    const doc = getDocument(rootRef.current);
     const host = getHost();
 
     if (!doc || !host) {
