@@ -77,6 +77,9 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Target dates can be also entered through the input field. */
   allowManualInput?: boolean;
 
+  /** A property that will add the clear icon on the input; and clear the selectedDate on click on Cancel. */
+  clearable?: boolean;
+
   /** The component automatically overrides faulty manual input upon blur. */
   autoCorrectManualInput?: boolean;
 
@@ -231,7 +234,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       const futureError = validateDate(parsedDate, target.value, calendarOptions, dateFormatting, props.required);
       setError(futureError);
       setFormattedDate(target.value);
-      if (!futureError && !!parsedDate) {
+      if (!futureError) {
         setSelectedDate(parsedDate);
         _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
       }
@@ -287,6 +290,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               error: !!error,
               value: formattedDate,
               readOnly: !props.allowManualInput,
+              clearable: props.clearable,
             }),
             overrideProps: overrideInputProps,
           })}
@@ -339,6 +343,7 @@ Datepicker.propTypes = {
   onDateEntryError: PropTypes.func,
   placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
+  clearable: PropTypes.bool,
   autoCorrectManualInput: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
   calendarOpenState: PropTypes.bool,
@@ -398,6 +403,7 @@ Datepicker.defaultProps = {
   autoCorrectManualInput: true,
   allowManualInput: true,
   required: false,
+  clearable: false,
 
   ...DEFAULT_CALENDAR_STRINGS,
 };

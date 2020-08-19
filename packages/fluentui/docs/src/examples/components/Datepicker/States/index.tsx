@@ -20,6 +20,11 @@ const States = () => (
       description="The user can fill out the today's date."
       examplePath="components/Datepicker/States/DatepickerExampleToday"
     />
+    <ComponentExample
+      title="Clearable Input"
+      description="The user can clear selected date by clicking on the cancel button."
+      examplePath="components/Datepicker/States/DatepickerExampleClearable"
+    />
   </ExampleSection>
 );
 
