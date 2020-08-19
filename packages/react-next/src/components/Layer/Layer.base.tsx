@@ -38,6 +38,7 @@ let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, 
 
 function getFilteredEvents() {
   if (!filteredEventProps) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     filteredEventProps = {} as any;
 
     [
@@ -206,7 +207,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
   });
 
   return (
-    <span className="ms-layer" ref={mergedRef}>
+    <span className="ms-layer" ref={rootRef}>
       {currentLayerElement &&
         ReactDOM.createPortal(
           <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>

@@ -73,6 +73,7 @@ describe('Layer', () => {
       });
 
       ReactDOM.render(<App />, appElement);
+
       const parentElement = appElement.querySelector('#parent');
 
       expect(parentElement).toBeDefined();
