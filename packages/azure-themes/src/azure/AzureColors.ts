@@ -43,7 +43,7 @@ export namespace BaseColors {
   export const RED_E00B1C = '#e00b1c';
   export const RED_442726 = '#442726';
   export const RED_61050C = '#61050c';
-  export const RED_800002 = '#800002';
+  export const RED_800000 = '#800002';
   export const ORANGE_DB7500 = '#DB7500';
   export const ORANGE_FFDFB8 = '#ffdfb8';
   export const ORANGE_FFF8F0 = '#FFF8F0';
@@ -328,7 +328,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     value: BaseColors.WHITE,
     icon: BaseColors.WHITE,
     label: BaseColors.WHITE,
-    disabled: BaseColors.GRAY_A19F9D,
+    disabled: BaseColors.GREEN_0AFF00,
     hyperlink: BaseColors.YELLOW_FEFF00,
     hyperlinkHovered: BaseColors.BLACK,
     hyperlinkBackgroundHovered: BaseColors.BLUE_00FFFF,
@@ -684,13 +684,13 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     value: BaseColors.BLACK,
     icon: BaseColors.BLACK,
     label: BaseColors.BLACK,
-    disabled: BaseColors.GRAY_A19F9D,
+    disabled: BaseColors.RED_800000,
     hyperlink: BaseColors.BLUE_0000CD,
     hyperlinkHovered: BaseColors.WHITE,
     hyperlinkBackgroundHovered: BaseColors.PURPLE_800080,
     success: BaseColors.GREEN_428000,
     error: BaseColors.RED_E00B1C,
-    placeholder: BaseColors.RED_800002,
+    placeholder: BaseColors.RED_800000,
   },
   statusBar: {
     link: BaseColors.BLUE_0000CD,
@@ -735,8 +735,8 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       background: BaseColors.GRAY_F3F2F1,
-      border: BaseColors.RED_800002,
-      text: BaseColors.RED_800002,
+      border: BaseColors.RED_800000,
+      text: BaseColors.RED_800000,
     },
     focus: {
       text: BaseColors.BLACK,
@@ -744,7 +744,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   disabledButton: {
     background: BaseColors.WHITE,
-    text: BaseColors.RED_800002,
+    text: BaseColors.RED_800000,
   },
   secondaryButton: {
     rest: {
@@ -828,11 +828,11 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     circle: {
       uncheckedRest: BaseColors.BLACK,
       checkedDisabled: BaseColors.BLACK,
-      borderDisabled: BaseColors.RED_800002,
+      borderDisabled: BaseColors.RED_800000,
     },
     pill: {
-      disabled: BaseColors.RED_800002,
-      uncheckedDisabled: BaseColors.RED_800002,
+      disabled: BaseColors.RED_800000,
+      uncheckedDisabled: BaseColors.RED_800000,
       checkedHover: BaseColors.BLUE_0078D4,
       uncheckedHover: BaseColors.PURPLE_800080,
     },
