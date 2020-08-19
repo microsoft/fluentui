@@ -36,10 +36,10 @@ function useDebugWarnings(props: ILayerProps) {
 
 let filteredEventProps: { [key: string]: (ev: React.SyntheticEvent<HTMLElement, Event>) => void };
 
-const getFilteredEvents = () => {
+function getFilteredEvents() {
   if (!filteredEventProps) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     filteredEventProps = {} as any;
+
     [
       'onClick',
       'onContextMenu',
@@ -74,8 +74,9 @@ const getFilteredEvents = () => {
       'onSubmit',
     ].forEach(name => (filteredEventProps[name] = onFilterEvent));
   }
+
   return filteredEventProps;
-};
+}
 
 const onFilterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
   // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though
@@ -147,7 +148,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onLayerWillUnmount]);
 
-  const createLayerElement = React.useCallback(() => {
+  const createLayerElement = () => {
     const host = getHost();
 
     // If both the document object and host are undefined then return null and don't create a layerElement.
@@ -171,7 +172,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
 
     onLayerMounted?.();
     onLayerDidMount?.();
-  }, [classNames.root, doc, getHost, hostId, insertFirst, onLayerDidMount, onLayerMounted, removeLayerElement]);
+  };
 
   React.useEffect(() => {
     // On initial render:
@@ -190,7 +191,7 @@ export const LayerBase = React.forwardRef<HTMLDivElement, ILayerProps>((props, r
     if (hostId !== layerHostId) {
       createLayerElement();
     }
-  }, [hostId, layerHostId, createLayerElement]);
+  }, [hostId, layerHostId]);
 
   useDebugWarnings(props);
 
