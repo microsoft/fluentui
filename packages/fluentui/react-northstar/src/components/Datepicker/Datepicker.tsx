@@ -253,7 +253,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         >
           {createShorthand(Input, input, {
             defaultProps: () => ({
-              placeholder: props.selectDateInputPlaceholder,
+              placeholder: props.inputPlaceholder,
               disabled: props.disabled,
               error: !!error,
               value: formattedDate,
