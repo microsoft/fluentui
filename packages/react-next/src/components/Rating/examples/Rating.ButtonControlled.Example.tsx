@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Rating } from '@fluentui/react-next';
-import { PrimaryButton } from '@fluentui/react-next/lib/compat';
+import { PrimaryButton } from '@fluentui/react-next/lib/compat/Button';
 
 export const RatingButtonControlledExample: React.FunctionComponent = () => {
   const [currentRating, setCurrentRating] = React.useState(5);
