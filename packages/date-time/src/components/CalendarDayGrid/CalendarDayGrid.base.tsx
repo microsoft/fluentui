@@ -256,19 +256,19 @@ export const CalendarDayGridBase = React.forwardRef(
 
     const activeDescendantId = useId();
 
-    const [daysToSelectInDayView, setDaysToSelectInDayView] = React.useState<number | undefined>(
+    const [effectiveDaysToSelectInDayView, setEffectiveDaysToSelectInDayView] = React.useState<number | undefined>(
       props.daysToSelectInDayView,
     );
     React.useEffect(() => {
-      setDaysToSelectInDayView(props.daysToSelectInDayView);
+      setEffectiveDaysToSelectInDayView(props.daysToSelectInDayView);
     }, [props.daysToSelectInDayView]);
 
-    const [selectedDate, setSelectedDate] = React.useState<Date>(props.selectedDate);
+    const [effectiveSelectedDate, setEffectiveSelectedDate] = React.useState<Date>(props.selectedDate);
     React.useEffect(() => {
-      setSelectedDate(props.selectedDate);
+      setEffectiveSelectedDate(props.selectedDate);
     }, [props.selectedDate]);
 
-    const propsToUse = { ...props, daysToSelectInDayView, selectedDate };
+    const propsToUse = { ...props, effectiveDaysToSelectInDayView, effectiveSelectedDate };
 
     const onSelectDate = (selectedDate: Date): void => {
       const { firstDayOfWeek, minDate, maxDate, workWeekDays, restrictedDates } = props;
@@ -279,7 +279,7 @@ export const CalendarDayGridBase = React.forwardRef(
         dateRangeType,
         firstDayOfWeek,
         workWeekDays,
-        daysToSelectInDayView,
+        effectiveDaysToSelectInDayView,
       );
       dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
 
@@ -371,17 +371,17 @@ export const CalendarDayGridBase = React.forwardRef(
       );
 
       currentDay.current = startDay;
-      setSelectedDate(startDay.originalDate);
+      setEffectiveSelectedDate(startDay.originalDate);
     };
 
     const onDragSelectOverDay = (day: IDayInfo): void => {
-      if (!props.enableClickAndDragToSelect || compareDates(day.originalDate, selectedDate)) {
+      if (!props.enableClickAndDragToSelect || compareDates(day.originalDate, effectiveSelectedDate)) {
         return;
       }
 
       if (currentDay.current) {
-        let difference = differenceInDays(currentDay.current.originalDate, day.originalDate);
-        if (numberDaysSelected.current != difference) {
+        const difference = differenceInDays(currentDay.current.originalDate, day.originalDate);
+        if (numberDaysSelected.current !== difference) {
           numberDaysSelected.current = difference;
           let startOfRange = currentDay.current;
           const lengthOfRange = Math.abs(difference) + 1;
@@ -389,25 +389,25 @@ export const CalendarDayGridBase = React.forwardRef(
           if (difference <= 0) {
             // find the day in weeks corresponding to the actual start of range, since we went backwards
             weeks.forEach(week =>
-              week.forEach(day => {
+              week.forEach(dayInWeek => {
                 if (
                   currentDay.current &&
-                  compareDates(day.originalDate, addDays(currentDay.current.originalDate, difference))
+                  compareDates(dayInWeek.originalDate, addDays(currentDay.current.originalDate, difference))
                 ) {
-                  startOfRange = day;
+                  startOfRange = dayInWeek;
                 }
               }),
             );
           }
 
-          setDaysToSelectInDayView(lengthOfRange);
-          setSelectedDate(startOfRange.originalDate);
+          setEffectiveDaysToSelectInDayView(lengthOfRange);
+          setEffectiveSelectedDate(startOfRange.originalDate);
 
           if (previousSelectedDays.current) {
-            previousSelectedDays.current.forEach(day => (day.isSelected = false));
+            previousSelectedDays.current.forEach(selectedDay => (selectedDay.isSelected = false));
           }
           const selectedDays = getDayInfosInRangeOfDay(startOfRange, lengthOfRange);
-          selectedDays.forEach(day => (day.isSelected = true));
+          selectedDays.forEach(selectedDay => (selectedDay.isSelected = true));
           previousSelectedDays.current = selectedDays;
         }
       }
@@ -419,7 +419,7 @@ export const CalendarDayGridBase = React.forwardRef(
       }
 
       if (currentDay.current && onSelectDate) {
-        onSelectDate(selectedDate);
+        onSelectDate(effectiveSelectedDate);
       }
       currentDay.current = null;
       initiallySelectedDays.current = [];
@@ -431,7 +431,7 @@ export const CalendarDayGridBase = React.forwardRef(
         currentDays.forEach(day => (day.isSelected = false));
       }
       initiallySelectedDays.current.forEach(day => (day.isSelected = true));
-      setDaysToSelectInDayView(props.daysToSelectInDayView);
+      setEffectiveDaysToSelectInDayView(props.daysToSelectInDayView);
       currentDay.current = null;
     };
 
@@ -471,7 +471,7 @@ export const CalendarDayGridBase = React.forwardRef(
       onDragSelectStart,
       onDragSelectOverDay,
       onDragSelectEnd,
-      daysToSelectInDayView,
+      effectiveDaysToSelectInDayView,
     } as const;
 
     return (

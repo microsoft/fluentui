@@ -12,10 +12,10 @@ export const CalendarInlineDragSelectExample = () => {
   const [selectedDates, setSelectedDates] = React.useState<Date[]>([new Date()]);
   const [daysToSelectInDayView, setDaysToSelectInDayView] = React.useState<number>(1);
 
-  const onSelectDate = (date: Date, dates: Date[]) => {
+  const onSelectDate = React.useCallback((date: Date, dates: Date[]) => {
     setSelectedDates(dates);
     setDaysToSelectInDayView(dates.length);
-  };
+  }, []);
 
   let dateRangeString: string | null = null;
   if (selectedDates) {
