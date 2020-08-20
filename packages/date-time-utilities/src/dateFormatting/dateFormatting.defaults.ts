@@ -45,6 +45,7 @@ export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
 
   goToToday: 'Go to today',
   openCalendarTitle: 'Open calendar',
+  selectDateInputPlaceholder: 'Select a date...',
   weekNumberFormatString: 'Week number {0}',
   prevMonthAriaLabel: 'Previous month',
   nextMonthAriaLabel: 'Next month',

@@ -82,6 +82,11 @@ export interface ICalendarStrings extends IDateFormatting {
   openCalendarTitle: string;
 
   /**
+   * Placeholder string for an unfilled input.
+   */
+  selectDateInputPlaceholder: string;
+
+  /**
    * Aria-label for the "previous month" button in day picker.
    */
   prevMonthAriaLabel?: string;

@@ -63,9 +63,6 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
    */
   onDateChange?: ComponentEventHandler<DatepickerProps & { value: Date }>;
 
-  /** Text placeholder for the input field. */
-  placeholder?: string;
-
   /** Target dates can be also entered through the input field. */
   allowManualInput?: boolean;
 
@@ -256,6 +253,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         >
           {createShorthand(Input, input, {
             defaultProps: () => ({
+              placeholder: props.selectDateInputPlaceholder,
               disabled: props.disabled,
               error: !!error,
               value: formattedDate,
