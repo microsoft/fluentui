@@ -1,4 +1,4 @@
-import { IPartialTheme } from '@uifabric/styling';
+import { ITheme, IPartialTheme } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 /**
@@ -74,7 +74,7 @@ export interface Tokens {
 /**
  * A prepared (fully expanded) theme object.
  */
-export interface Theme extends IPartialTheme {
+export interface Theme extends ITheme {
   components?: {
     [componentName: string]: {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -90,6 +90,10 @@ export interface Theme extends IPartialTheme {
 /**
  * A partial theme, provided by the customer. The internal `createTheme` helper will fill in the rest.
  */
-export interface PartialTheme extends Omit<Theme, 'tokens'> {
+export interface PartialTheme extends IPartialTheme {
+  components?: Theme['components'];
+
   tokens?: RecursivePartial<Tokens>;
+
+  stylesheets?: string[];
 }
