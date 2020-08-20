@@ -78,9 +78,6 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Target dates can be also entered through the input field. */
   allowManualInput?: boolean;
 
-  /** A property that will add the clear icon on the input; and clear the selectedDate on click on Cancel. */
-  clearable?: boolean;
-
   /** The component automatically overrides faulty manual input upon blur. */
   fallbackToLastCorrectDateOnBlur?: boolean;
 
@@ -247,13 +244,11 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       const validationError = validateDate(parsedDate, target.value, calendarOptions, dateFormatting, props.required);
       setError(validationError);
       setFormattedDate(target.value);
-      if (!validationError) {
-        setSelectedDate(parsedDate);
-        _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
-      }
-
       if (!!validationError) {
         _.invoke(props, 'onDateChangeError', e, { ...props, error: validationError });
+      } else {
+        setSelectedDate(parsedDate);
+        _.invoke(props, 'onDateChange', e, { ...props, value: parsedDate });
       }
 
       _.invoke(predefinedProps, 'onChange', e, target);
@@ -304,7 +299,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
               value: formattedDate,
               readOnly: !allowManualInput,
               required: props.required,
-              clearable: props.clearable,
             }),
             overrideProps: overrideInputProps,
           })}
@@ -357,7 +351,6 @@ Datepicker.propTypes = {
   onDateChangeError: PropTypes.func,
   placeholder: PropTypes.string,
   allowManualInput: PropTypes.bool,
-  clearable: PropTypes.bool,
   fallbackToLastCorrectDateOnBlur: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
   calendarOpenState: PropTypes.bool,
@@ -420,7 +413,6 @@ Datepicker.defaultProps = {
   fallbackToLastCorrectDateOnBlur: true,
   allowManualInput: true,
   required: false,
-  clearable: false,
 
   ...DEFAULT_CALENDAR_STRINGS,
 };

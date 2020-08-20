@@ -25,11 +25,6 @@ const States = () => (
       description="The user can pre-fill the selected date."
       examplePath="components/Datepicker/States/DatepickerExampleSelectedDate"
     />
-    <ComponentExample
-      title="Clearable Input"
-      description="The user can clear selected date by clicking on the cancel button."
-      examplePath="components/Datepicker/States/DatepickerExampleClearable"
-    />
   </ExampleSection>
 );
 
