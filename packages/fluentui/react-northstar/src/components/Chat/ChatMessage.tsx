@@ -50,7 +50,7 @@ import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
-import { ChatMessageReadStatusIndicator, ChatMessageReadStatusIndicatorProps } from './ChatMessageReadStatusIndicator';
+import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -90,7 +90,7 @@ export interface ChatMessageProps
   details?: ShorthandValue<ChatMessageDetailsProps>;
 
   /** Message read status indicator */
-  readIndicator?: ShorthandValue<ChatMessageReadStatusIndicatorProps>;
+  readIndicator?: ShorthandValue<ChatMessageReadStatusProps>;
 
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
@@ -340,7 +340,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     defaultProps: () => ({ mine }),
   });
 
-  const readIndicatorElement = createShorthand(ChatMessageReadStatusIndicator, readIndicator, {});
+  const readIndicatorElement = createShorthand(ChatMessageReadStatus, readIndicator, {});
 
   const headerElement = createShorthand(ChatMessageHeader, header, {
     overrideProps: () => ({

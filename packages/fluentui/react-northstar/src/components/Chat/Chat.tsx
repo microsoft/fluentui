@@ -25,7 +25,7 @@ import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { ChatItem, ChatItemProps } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
-import { ChatMessageReadStatusIndicator } from './ChatMessageReadStatusIndicator';
+import { ChatMessageReadStatus } from './ChatMessageReadStatus';
 
 export interface ChatSlotClassNames {
   item: string;
@@ -53,7 +53,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
     MessageDetails: typeof ChatMessageDetails;
-    MessageReadStatusIndicator: typeof ChatMessageReadStatusIndicator;
+    MessageReadStatusIndicator: typeof ChatMessageReadStatus;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
@@ -118,6 +118,6 @@ Chat.handledProps = Object.keys(Chat.propTypes) as any;
 Chat.Item = ChatItem;
 Chat.Message = ChatMessage;
 Chat.MessageDetails = ChatMessageDetails;
-Chat.MessageReadStatusIndicator = ChatMessageReadStatusIndicator;
+Chat.MessageReadStatusIndicator = ChatMessageReadStatus;
 
 Chat.create = createShorthandFactory({ Component: Chat });
