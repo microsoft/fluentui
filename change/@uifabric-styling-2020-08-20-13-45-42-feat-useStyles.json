@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding `useStyles` hook to leverage contextual themes in rendering styling.",
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-08-20T20:45:42.593Z"
+}
