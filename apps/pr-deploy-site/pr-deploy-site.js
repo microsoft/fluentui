@@ -27,6 +27,12 @@ const siteInfo = [
     title: 'Button',
   },
   {
+    package: '@fluentui/react-image',
+    link: './react-button/dist-storybook/index.html',
+    icon: 'FileImage',
+    title: 'Image',
+  },
+  {
     package: '@fluentui/react-tabs',
     link: './react-tabs/dist-storybook/index.html',
     icon: 'BrowserTab',
