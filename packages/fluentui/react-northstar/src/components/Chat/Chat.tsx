@@ -53,7 +53,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
     Item: typeof ChatItem;
     Message: typeof ChatMessage;
     MessageDetails: typeof ChatMessageDetails;
-    MessageReadStatusIndicator: typeof ChatMessageReadStatus;
+    MessageReadStatus: typeof ChatMessageReadStatus;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
