@@ -1,6 +1,5 @@
 export { AnimationStyles, AnimationVariables } from './AnimationStyles';
-export { DefaultPalette } from './DefaultPalette';
-export { DefaultEffects } from './DefaultEffects';
+export { DefaultPalette, DefaultEffects, DefaultSpacing } from '@fluentui/theme/lib/constants';
 export { DefaultFontStyles, registerDefaultFontFaces } from './DefaultFontStyles';
 export { FontSizes, FontWeights, IconFontSizes, createFontStyles } from './fonts';
 export * from './getFocusStyle';
