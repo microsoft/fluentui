@@ -240,7 +240,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         _.invoke(props, 'onDateChangeError', e, { ...props, error: validationError });
       }
 
-      _.invoke(predefinedProps, 'onChange', e, target);
+      _.invoke(predefinedProps, 'onChange', e, predefinedProps);
     },
     onFocus: e => {
       if (!props.allowManualInput) {
